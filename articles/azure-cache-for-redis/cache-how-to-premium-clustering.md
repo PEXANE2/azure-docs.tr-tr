@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433444"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714475"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
@@ -58,12 +58,7 @@ StackExchange. Redo istemcisiyle kümeleme ile çalışma hakkında örnek kod i
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Çalışan bir Premium önbellekte küme boyutunu değiştirme
-Kümeleme etkin olan çalışan bir Premium önbellekteki küme boyutunu değiştirmek için, **Kaynak menüsünden** **Redsıs küme boyutu** ' na tıklayın.
-
-> [!NOTE]
-> Redsıs Premium katmanı için Azure önbelleği genel kullanıma sunulurken, Redsıs küme boyutu özelliği şu anda önizlemededir.
-> 
-> 
+Kümeleme etkin olan çalışan bir Premium önbellekteki küme boyutunu değiştirmek için **Kaynak menüsünden** **küme boyutu** ' na tıklayın.
 
 ![Redsıs kümesi boyutu][redis-cache-redis-cluster-size]
 

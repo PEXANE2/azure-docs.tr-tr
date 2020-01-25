@@ -5,22 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928630"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722093"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
 
 [Azure SQL veritabanı denetimi](sql-database-auditing.md) , veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar veya bunları aşağı akış işleme ve analiz Için Olay Hub 'ına veya Log Analytics gönderir.
 
-## <a name="naming-conventions"></a>Adlandırma Kuralları
+## <a name="naming-conventions"></a>Adlandırma kuralları
 
 ### <a name="blob-audit"></a>Blob denetimi
 
@@ -43,23 +43,23 @@ Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytic
 
 ## <a id="subheading-1"></a>Denetim günlüğü alanları
 
-| Ad (blob) | Ad (Event Hubs/Log Analytics) | Açıklama | Blob Türü | Event Hubs/Log Analytics türü |
+| Ad (blob) | Ad (Event Hubs/Log Analytics) | Açıklama | Blob türü | Event Hubs/Log Analytics türü |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | Eylemin KIMLIĞI | varchar (4) | string |
 | action_name | action_name_s | Eylemin adı | Yok | string |
 | additional_information | additional_information_s | XML olarak depolanan olayla ilgili ek bilgiler | nvarchar (4000) | string |
-| etkilenen_sütunlar | affected_rows_d | Sorgudan etkilenen satır sayısı | bigint | int |
-| uygulama_adı | application_name_s| İstemci uygulamasının adı | nvarchar (128) | string |
+| affected_rows | affected_rows_d | Sorgudan etkilenen satır sayısı | bigint | int |
+| application_name | application_name_s| İstemci uygulamasının adı | nvarchar (128) | string |
 | audit_schema_version | audit_schema_version_d | Always 1 | int | int |
 | class_type | class_type_s | Denetim üzerinde gerçekleştiği denetlenebilir varlık türü | varchar (2) | string |
 | class_type_desc | class_type_description_s | Denetim üzerinde gerçekleştiği denetlenebilir varlığın açıklaması | Yok | string |
-| istemci_ip_adresi | client_ip_s | İstemci uygulamasının kaynak IP 'si | nvarchar (128) | string |
-| bağlantı_kimliği | Yok | Sunucudaki bağlantının KIMLIĞI | GUID | Yok |
+| client_ip | client_ip_s | İstemci uygulamasının kaynak IP 'si | nvarchar (128) | string |
+| connection_id | Yok | Sunucudaki bağlantının KIMLIĞI | GUID | Yok |
 | data_sensitivity_information | data_sensitivity_information_s | Veritabanındaki sınıflandırılan sütunlara göre denetlenen sorgu tarafından döndürülen bilgi türleri ve duyarlılık etiketleri. [Azure SQL veritabanı veri bulma ve sınıflandırma](sql-database-data-discovery-and-classification.md) hakkında daha fazla bilgi edinin | nvarchar (4000) | string |
 | database_name | database_name_s | Eylemin gerçekleştiği veritabanı bağlamı | döndürmeli | string |
 | database_principal_id | database_principal_id_d | İşlemin gerçekleştirildiği veritabanı kullanıcı bağlamının KIMLIĞI | int | int |
 | database_principal_name | database_principal_name_s | Eylemin gerçekleştirildiği veritabanı kullanıcı bağlamının adı | döndürmeli | string |
-| süre_milisaniye | duration_milliseconds_d | Milisaniye cinsinden sorgu yürütme süresi | bigint | int |
+| duration_milliseconds | duration_milliseconds_d | Milisaniye cinsinden sorgu yürütme süresi | bigint | int |
 | event_time | event_time_t | Denetlenebilir eylemin harekete geçirildiğinde tarih ve saat | datetime2 | datetime |
 | host_name | Yok | İstemci konak adı | string | Yok |
 | is_column_permission | is_column_permission_s | Bu sütun düzeyi izninin olup olmadığını belirten bayrak. 1 = true, 0 = false | bit | string |
@@ -67,7 +67,7 @@ Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytic
 | object_ kimliği | object_id_d | Üzerinde denetim gerçekleştiği varlığın KIMLIĞI. Buna: sunucu nesneleri, veritabanları, veritabanı nesneleri ve şema nesneleri dahildir. varlık sunucunun kendisi ise veya denetim bir nesne düzeyinde gerçekleştirildiyse 0 | int | int |
 | object_name | object_name_s | Üzerinde denetim gerçekleştiği varlığın adı. Buna: sunucu nesneleri, veritabanları, veritabanı nesneleri ve şema nesneleri dahildir. varlık sunucunun kendisi ise veya denetim bir nesne düzeyinde gerçekleştirildiyse 0 | döndürmeli | string |
 | permission_bitmask | permission_bitmask_s | Uygun olduğunda, verilen, reddedilen veya iptal edilen izinleri gösterir | varbinary (16) | string |
-| yanıt_sütunları | response_rows_d | Sonuç kümesinde döndürülen satır sayısı | bigint | int |
+| response_rows | response_rows_d | Sonuç kümesinde döndürülen satır sayısı | bigint | int |
 | schema_name | schema_name_s | Eylemin gerçekleştiği şema bağlamı. Şema dışında gerçekleşen denetimler için NULL | döndürmeli | string |
 | Yok | securable_class_type_s | Denetlenen class_type eşleyen güvenli kılınabilir nesne | Yok | string |
 | sequence_group_id | sequence_group_id_g | Benzersiz tanımlayıcı | varbinary | GUID |
@@ -78,8 +78,8 @@ Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytic
 | server_principal_sid | server_principal_sid_s | Geçerli oturum açma SID 'SI | varbinary | string |
 | session_id | session_id_d | Olayın gerçekleştiği oturumun KIMLIĞI | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Oturum için sunucu sorumlusu | döndürmeli | string |
-| deyim | statement_s | Yürütülen T-SQL deyimleri (varsa) | nvarchar (4000) | string |
-| başarılı | succeeded_s | Olayı tetikleyen eylemin başarılı olup olmadığını gösterir. Login ve Batch dışındaki olaylar için, bu yalnızca izin denetiminin başarılı veya başarısız olduğunu bildirir, işlem değildir. 1 = başarılı, 0 = başarısız | bit | string |
+| Ekstre | statement_s | Yürütülen T-SQL deyimleri (varsa) | nvarchar (4000) | string |
+| baarı | succeeded_s | Olayı tetikleyen eylemin başarılı olup olmadığını gösterir. Login ve Batch dışındaki olaylar için, bu yalnızca izin denetiminin başarılı veya başarısız olduğunu bildirir, işlem değildir. 1 = başarılı, 0 = başarısız | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Veritabanı sorumlusu verme/reddetme/Iptal etme işlemi üzerinde gerçekleştirilir. geçerli değilse 0 | int | int |
 | target_database_principal_name | target_database_principal_name_s | İşlemin kullanıcısını hedefleyin. Geçerli değilse NULL | string | string |
 | target_server_principal_id | target_server_principal_id_d | VERME/reddetme/Iptal etme işleminin gerçekleştirildiği sunucu sorumlusu. Uygulanabilir değilse 0 döndürür | int | int |

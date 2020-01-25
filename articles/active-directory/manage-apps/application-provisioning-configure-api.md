@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275729"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712227"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API 'Leri kullanarak sağlamayı yapılandırma
 
-Azure portal, bireysel uygulamalar için tek seferde sağlamayı yapılandırmanın kolay bir yoludur. Ancak, bir uygulamanın birkaç veya hatta yüzlerce — örneğini oluşturuyorsanız, uygulama oluşturma ve yapılandırmayı Microsoft Graph API 'lerle otomatik hale getirmek daha kolay olabilir. Bu makalede API 'Ler aracılığıyla sağlama yapılandırmasının nasıl otomatikleştirilmesi özetlenmektedir. Bu yöntem, genellikle [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso)gibi uygulamalar için kullanılır.
+Azure portal, bireysel uygulamalar için tek seferde sağlamayı yapılandırmanın kolay bir yoludur. Ancak, bir uygulamanın birkaç veya hatta yüzlerce — örneğini oluşturuyorsanız, uygulama oluşturma ve yapılandırmayı Microsoft Graph API 'lerle otomatik hale getirmek daha kolay olabilir. Bu makalede API 'Ler aracılığıyla sağlama yapılandırmasının nasıl otomatikleştirilmesi özetlenmektedir. Bu yöntem, genellikle [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)gibi uygulamalar için kullanılır.
 
 **Sağlama yapılandırmasını otomatikleştirmek için Microsoft Graph API 'Leri kullanmaya yönelik adımlara genel bakış**
 
@@ -48,7 +48,7 @@ Azure portal, bireysel uygulamalar için tek seferde sağlamayı yapılandırman
 1. [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) Başlat
 1. "Microsoft ile oturum aç" düğmesini seçin ve Azure AD Genel Yöneticisi veya uygulama Yöneticisi kimlik bilgilerini kullanarak oturum açın.
 
-    ![Graph oturum açma](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph oturum açma](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. Oturum açma başarılı olduğunda, Kullanıcı hesabı ayrıntılarını sol bölmede görürsünüz.
 

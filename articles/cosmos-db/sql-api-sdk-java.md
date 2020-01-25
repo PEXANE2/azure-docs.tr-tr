@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444837"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718182"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API'si için Azure Cosmos DB Java SDK: yayın notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 |**En düşük desteklenen çalışma zamanı**|[Java Geliştirme Seti (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
+* DatabaseAccount üzerinde doğru istemci tarafı çoğaltma ilkesi etiketi güncelleştirildi ve önbellekten databaseAccount yapılandırma okumaları yaptı.
 
 ### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
 * Kullanıcı Prangeıd sağlıyorsa geçersiz bölüm anahtar aralığı hatası durumunda yeniden denemeyi önleme.

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705675"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715569"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -72,13 +72,16 @@ Aşağıdaki adımları izleyerek yukarıdaki bilgileri oluşturabilirsiniz: (l�
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme
 
-Önceki bölümde oluşturduğunuz kimlik bilgileri kümesini kullanarak Farmtts 'leri bağlamak için cihaz iş ortağı portalına gidin:
-
+Şimdi aşağıdaki bilgiler önceki bölümden oluşturulmuştur.
  - API uç noktası
  - EventHub bağlantı dizesi
  - İstemci Kimliği
  - Gizli anahtar
  - Kiracı Kimliği
+ 
+Bunu, Farmtts 'leri bağlamak için cihaz iş ortağınıza sağlamanız gerekir. Aynı işlemi gerçekleştirmek için cihaz iş ortağı portalına gidin. Örneğin, Davis aletlerinin cihazlarını kullanıyorsanız lütfen aşağıdaki sayfaya gidin:
+
+[Davis gereçleri](https://weatherlink.github.io/azure-farmbeats/setup)
 
  Cihaz sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay sonrasında, tüm cihazları ve algılayıcıları Azure Farmtts üzerinde görüntüleyebilirsiniz.
 

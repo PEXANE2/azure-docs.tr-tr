@@ -1,40 +1,40 @@
 ---
-title: Bir sanal makine görüntüsü oluşturma ve (Önizleme) Azure depolamadaki dosyalara erişmek için bir kullanıcı tarafından atanan bir yönetilen kimliği kullanma
-description: Kullanıcı tarafından atanan yönetilen kimlik kullanarak Azure depolama alanında depolanmış dosyaları erişebileceği Azure görüntü Oluşturucusu kullanarak sanal makine görüntüsü oluşturun.
+title: Azure depolama 'daki dosyalara erişmek için bir sanal makine görüntüsü oluşturma ve Kullanıcı tarafından atanan yönetilen kimlik kullanma (Önizleme)
+description: Azure depolama 'da depolanan dosyalara Kullanıcı tarafından atanan yönetilen kimlik kullanılarak erişebilen Azure Image Builder 'ı kullanarak sanal makine görüntüsü oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: b6347765f8d2e21c352834dc8d28b65c28f99758
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 36016e462e3f4906c4dfe8c58501c82fd554f3bd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671440"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720597"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Görüntü oluşturma ve Azure depolamadaki dosyalara erişmek için bir kullanıcı tarafından atanan bir yönetilen kimliği kullanma 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Azure Storage 'da dosyalara erişmek için bir görüntü oluşturma ve Kullanıcı tarafından atanan yönetilen kimlik kullanma 
 
-Betik kullanarak ya da birden fazla konuma, GitHub ve Azure depolama vb. gibi dosyaları kopyalama, azure Görüntü Oluşturucu destekler. Bunları kullanmak için Azure görüntü oluşturucusu için harici olarak erişilebilen verilmiş olması gerekir, ancak, SAS belirteçleri kullanarak Azure depolama blobları koruyabilir.
+Azure Image Builder, betikleri kullanmayı veya GitHub ve Azure depolama gibi birden çok konumdan dosya kopyalamayı destekler. Bunları kullanmak için Azure Image Builder 'ın dışarıdan erişimine açık olmaları gerekir, ancak SAS belirteçlerini kullanarak Azure Storage bloblarını koruyabilirsiniz.
 
-Bu makalede, Azure VM görüntüsü burada kullanılacak oluşturucu kullanılarak özelleştirilmiş bir görüntü oluşturma işlemi gösterilmektedir bir [yönetilen kullanıcı tarafından atanan kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Azure depolamadaki dosyalara görüntü özelleştirme olmadan olun gerek kalmadan erişmek için dosyalar genel anlamda erişilebilen veya SAS belirteçlerini ayarlama.
+Bu makalede, Azure VM görüntü Oluşturucu kullanılarak özelleştirilmiş bir görüntünün nasıl oluşturulduğu gösterilir. burada, hizmet, dosyaları herkese açık bir şekilde erişilebilir hale getirmek veya SAS belirteçleri ayarlamak zorunda kalmadan görüntü özelleştirmesi için Azure depolama 'daki dosyalara erişmek üzere [Kullanıcı tarafından atanan bir yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kullanır.
 
-Aşağıdaki örnekte, iki kaynak grubu oluşturur, bir özel görüntü için kullanılır ve başka bir komut dosyası içeren bir Azure depolama hesabını barındıracak. Bu derleme yapıtları veya görüntü dosyaları Görüntü Oluşturucu dışında farklı depolama hesaplarında burada sahip olabilen bir gerçek yaşam senaryo benzetimini yapar. Bir kullanıcı tarafından atanan kimlik ve ardından komut dosyasını okuma izni oluşturur, ancak o dosya için herhangi bir genel erişimi ayarlamaz. Ardından, indirmek ve depolama hesabından bu betiği çalıştırmak için kabuk Özelleştirici kullanacaktır.
+Aşağıdaki örnekte, biri özel görüntü için kullanılacak olan iki kaynak grubu oluşturacaksınız ve diğeri bir betik dosyası içeren bir Azure depolama hesabı barındıracaktır. Bu, görüntü Oluşturucu dışında, derleme yapıtlarının veya farklı depolama hesaplarında görüntü dosyalarının bulunduğu gerçek bir yaşam senaryosuna benzetir. Kullanıcı tarafından atanan bir kimlik oluşturacak ve sonra bu okuma izinlerini betik dosyasında verirsiniz, ancak bu dosyaya hiçbir ortak erişim ayarlayamezsiniz. Daha sonra bu betiği depolama hesabından indirmek ve çalıştırmak için kabuk Özelleştirici 'yi kullanacaksınız.
 
 
 > [!IMPORTANT]
-> Azure Görüntü Oluşturucu şu anda genel Önizleme aşamasındadır.
+> Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Özellikleri kaydetme
-Önizleme sırasında Azure Görüntü Oluşturucu kullanmak için yeni özelliği'ni kaydetmeniz gerekir.
+Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Özellik kaydı durumunu denetleyin.
+Özellik kaydının durumunu denetleyin.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
@@ -48,7 +48,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Kayıtlı diyor değil, aşağıdaki komutu çalıştırın:
+Kayıtlı değilse, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -59,7 +59,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bu bilgileri depolamak için bazı değişkenler oluşturacağız. böylece biz bazı bilgilere tekrar tekrar kullanacaklardır.
+Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız.
 
 
 ```azurecli-interactive
@@ -75,13 +75,13 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-Abonelik kimliğiniz için bir değişken oluşturun Bu kullanarak elde edebilirsiniz `az account show | grep id`.
+Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
 
-Hem yansıma hem de betik depolama için kaynak grupları oluşturun.
+Hem görüntü hem de betik depolaması için kaynak grupları oluşturun.
 
 ```azurecli-interactive
 # create resource group for image template
@@ -91,7 +91,7 @@ az group create -n $strResourceGroup -l $location
 ```
 
 
-Depolama alanı oluşturun ve içine Github'dan örnek komut dosyasını kopyalayın.
+Depolama alanını oluşturun ve örnek betiği GitHub 'dan buraya kopyalayın.
 
 ```azurecli-interactive
 # script storage account
@@ -118,7 +118,7 @@ az storage blob copy start \
 
 
 
-Görüntü kaynak grubunda kaynak oluşturmak üzere Görüntü Oluşturucu izin verin. `--assignee` Uygulama kayıt kimliği Görüntü Oluşturucu hizmeti için bir değerdir. 
+Görüntü kaynak grubunda kaynak oluşturmak için görüntü Oluşturucu iznini verin. `--assignee` değeri, görüntü Oluşturucu hizmeti için uygulama kayıt KIMLIĞIDIR. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -130,7 +130,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
-Kimlik oluşturun ve betik depolama hesabı için izinler atayın. Daha fazla bilgi için [User-Assigned yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Kimlik oluşturma ve betik depolama hesabı için izinleri atama. Daha fazla bilgi için bkz. [Kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ```azurecli-interactive
 # Create the user assigned identity 
@@ -147,9 +147,9 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 ```
 
 
-## <a name="modify-the-example"></a>Örneği değiştirin
+## <a name="modify-the-example"></a>Örneği değiştirme
 
-Örnek .json dosyasını indirin ve oluşturduğunuz değişkenleri ile yapılandırın.
+Örnek. json dosyasını indirin ve oluşturduğunuz değişkenlerle yapılandırın.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
@@ -164,7 +164,7 @@ sed -i -e "s%<runOutputName>%$runOutputName%g" helloImageTemplateMsi.json
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Görüntü yapılandırma Azure Görüntü Oluşturucu hizmete gönderin.
+Görüntü yapılandırmasını Azure görüntü Oluşturucu hizmetine gönderme.
 
 ```azurecli-interactive
 az resource create \
@@ -175,7 +175,7 @@ az resource create \
     -n helloImageTemplateMsi01
 ```
 
-Görüntü derlemeyi Başlat.
+Görüntü derlemesini başlatın.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -185,7 +185,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Derlemenin tamamlanmasını bekleyin. Bu işlem yaklaşık 15 dakika sürebilir.
+Oluşturma işleminin tamamlanmasını bekleyin. Bu, yaklaşık 15 dakika sürebilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -207,7 +207,7 @@ VM oluşturulduktan sonra VM ile bir SSH oturumu başlatın.
 ssh aibuser@<publicIp>
 ```
 
-Görüntü içeren bir ileti, SSH bağlantı hemen sonra günün özelleştirildiğinden görmeniz gerekir!
+Görüntünün, SSH bağlantınız kurulduğu anda günün Iletisiyle özelleştirildiğini görmeniz gerekir!
 
 ```console
 
@@ -220,7 +220,7 @@ Görüntü içeren bir ileti, SSH bağlantı hemen sonra günün özelleştirild
 
 ## <a name="clean-up"></a>Temizleme
 
-İşlemi tamamladığınızda, kaynaklar artık gerekli değilse silebilirsiniz.
+İşiniz bittiğinde, kaynakları artık gerekmiyorsa silebilirsiniz.
 
 ```azurecli-interactive
 az identity delete --ids $imgBuilderId
@@ -234,4 +234,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Görüntü Oluşturucu ile çalışan herhangi bir sorun varsa, bkz: [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).
+Azure Image Builder ile ilgili herhangi bir sorununuz varsa bkz. [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).

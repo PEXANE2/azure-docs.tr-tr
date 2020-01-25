@@ -1,68 +1,68 @@
 ---
-title: Portal üzerinden Azure Event Grid abonelikleri
-description: Portal üzerinden Event Grid abonelikleri oluşturma işlemini açıklar.
+title: Portal üzerinden abonelikler Azure Event Grid
+description: Bu makalede, Azure portal kullanılarak Azure Blob depolama gibi desteklenen kaynaklar için Event Grid aboneliklerin nasıl oluşturulacağı açıklanır.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823561"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721515"
 ---
-# <a name="subscribe-to-events-through-portal"></a>İçin portal aracılığıyla olaylara abone olma
+# <a name="subscribe-to-events-through-portal"></a>Portala etkinliklere abone olma
 
-Bu makalede, portal üzerinden Event Grid abonelikleri oluşturma açıklanır.
+Bu makalede Portal üzerinden Event Grid aboneliklerin nasıl oluşturulacağı açıklanır.
 
 ## <a name="create-event-subscriptions"></a>Olay abonelikleri oluşturma
 
-İçin desteklenen bir Event Grid aboneliği oluşturmak için [olay kaynakları](event-sources.md), aşağıdaki adımları kullanın. Bu makalede bir Azure aboneliği için Event Grid aboneliği oluşturmak nasıl gösterir.
+Desteklenen [olay kaynaklarından](event-sources.md)herhangi biri için bir Event Grid aboneliği oluşturmak için aşağıdaki adımları kullanın. Bu makalede, bir Azure aboneliği için Event Grid aboneliğinin nasıl oluşturulacağı gösterilmektedir.
 
 1. **Tüm Hizmetler**’i seçin.
 
    ![Tüm hizmetleri seçin](./media/subscribe-through-portal/select-all-services.png)
 
-1. Arama **Event Grid abonelikleri** ve kullanılabilir seçenekler arasından seçin.
+1. **Event Grid abonelikleri** arayın ve kullanılabilir seçeneklerden seçin.
 
-   ![Ara](./media/subscribe-through-portal/search.png)
+   ![Arama](./media/subscribe-through-portal/search.png)
 
 1. **+ Olay Aboneliği**'ni seçin.
 
    ![Abonelik ekleme](./media/subscribe-through-portal/add-subscription.png)
 
-1. Tür, oluşturmak istediğiniz aboneliği seçin. Örneğin, bir Azure aboneliği için olaylara abone olmak için seçin **Azure abonelikleri** ve hedef aboneliği.
+1. Oluşturmak istediğiniz abonelik türünü seçin. Örneğin, Azure Aboneliğinize yönelik olaylara abone olmak için **Azure abonelikleri** ' ni ve hedef aboneliği seçin.
 
    ![Azure aboneliğini seçin](./media/subscribe-through-portal/azure-subscription.png)
 
-1. Bu olay kaynağı için tüm olay türlerine abone olmak için tutmak **tüm olay türlerine abone** teslim seçeneği. Aksi takdirde, bu abonelik için olay türlerini seçin.
+1. Bu olay kaynağı için tüm olay türlerine abone olmak için **tüm olay türlerine abone ol** seçeneğini işaretlenmiş olarak tutun. Aksi takdirde, bu abonelik için olay türlerini seçin.
 
    ![Olay türlerini seçin](./media/subscribe-through-portal/select-event-types.png)
 
-1. Olayları ve bir abonelik adı işleme için uç nokta gibi bir olay aboneliği hakkında ek ayrıntılar sağlayın.
+1. Olay aboneliği hakkında olayları ve abonelik adını işlemek için uç nokta gibi ek ayrıntılar sağlayın.
 
-   ![Abonelik ayrıntılarını sağlayın](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Abonelik ayrıntılarını belirtin](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. Geçersiz yazımın ardından gerçekleşen etkinleştirin ve yeniden deneme ilkeleri özelleştirmek için **ek özellikler**.
+1. Geçersiz kılmak ve yeniden deneme ilkelerini özelleştirmek için **ek özellikler**' i seçin.
 
    ![Ek özellikleri seçin](./media/subscribe-through-portal/select-additional-features.png)
 
-1. Kapsayıcı teslim olmayan olayları depolamak için kullanarak ve yeniden deneme nasıl gönderileceğini seçin.
+1. Teslim edilmeyen olayları depolamak için kullanılacak bir kapsayıcı seçin ve yeniden denemelerin gönderilme şeklini ayarlayın.
 
-   ![Geçersiz yazımın ardından gerçekleşen ve yeniden etkinleştirme](./media/subscribe-through-portal/set-deadletter-retry.png)
+   ![Atılacak ve yeniden denemeyi etkinleştir](./media/subscribe-through-portal/set-deadletter-retry.png)
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.
 
-## <a name="create-subscription-on-resource"></a>Kaynak abonelik oluşturma
+## <a name="create-subscription-on-resource"></a>Kaynak üzerinde abonelik oluştur
 
-Bazı olay kaynakları bu kaynak için portal arabirimi aracılığıyla bir olay aboneliği oluşturma desteği. Olay kaynağını seçin ve Ara **olayları** sol bölmesinde.
+Bazı olay kaynakları, bu kaynak için Portal arabirimi aracılığıyla bir olay aboneliği oluşturmayı destekler. Olay kaynağını seçin ve sol bölmedeki **olayları** arayın.
 
-![Abonelik ayrıntılarını sağlayın](./media/subscribe-through-portal/resource-events.png)
+![Abonelik ayrıntılarını belirtin](./media/subscribe-through-portal/resource-events.png)
 
-Portal bu kaynak için ilgili olay aboneliği oluşturmak için seçenekler sunar.
+Portal size bu kaynakla ilgili bir olay aboneliği oluşturma seçeneklerini sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,20 +3,20 @@ title: Tahmine dayalı bakım çözümleri - Team Data Science Process için Azu
 description: Veri bilimi, Tahmine dayalı bakım çözümleri birden çok dikey sektörler çalışmasını sağlayan kapsamlı bir açıklaması.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5cd16280ba942404ffb23fd1c9d0e1a20af8c7c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977140"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721821"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Tahmine dayalı bakım çözümleri için Azure yapay ZEKA Kılavuzu
 
@@ -43,7 +43,7 @@ Bu kılavuzun ilk yarısında, bu sorunları gidermeye yönelik PdM uygulama ava
 
 İşletmeler sermaye yatırımlarının karşılığını alabilmek için kritik ekipmanlarının en üst verimlilik ve kullanım düzeyinde çalışmasına gereksinim duyar. Bu varlıklar arasında uçak motorlarından türbinlere, asansörlerden endüstriyel soğutuculara milyonlarca liralık varlıklar yer alabileceği gibi fotokopi makineleri, kahve makineleri veya su sebilleri gibi daha basit gereçler de yer alabilir.
 - Varsayılan olarak, çoğu işletmenin dayanan _düzeltici Bakım_, burada parçaları olarak değiştirilir ve bunlar başarısız olduğunda. Düzeltici bakım ile parçalar sonuna kadar kullanılır (bileşen ömrü konusunda israf olmaz), ancak işletmeye kapalı kalma süresi, emek ve zamanlanmamış bakım gereksinimleri (mesai dışı saatler veya konum açısından olumsuzluklar) açısından yük getirir.
-- İleri düzey, işletmelerin uygulama sırasında _önleyici bakım_, nerede bunlar bir bölümü için faydalı ömrü belirlemek ve korumak veya bir hatadan önce değiştirin. Önleyici bakım, zamanlanmamış veya yıkıcı arızaların yaşanmasını engeller. Ancak yüksek maliyetinden zamanlanmış bir kapalı kalma süresi, bileşenin tam yaşam kullanın ve hala işçilik önce eksik kullanımı kalır.
+- İleri düzey, işletmelerin uygulama sırasında _önleyici bakım_, nerede bunlar bir bölümü için faydalı ömrü belirlemek ve korumak veya bir hatadan önce değiştirin. Önleyici bakım, zamanlanmamış veya yıkıcı arızaların yaşanmasını engeller. Ancak, zamanlanan kapalı kalma süresi, bileşenin kullanım ömrü boyunca kullanılması ve işgücü hala devam etmektedir.
 - Amacı _Tahmine dayalı Bakım_ etkinleştirerek düzeltme ve önleyici bakım, arasındaki dengeyi optimize etmek için _zamanında_ bileşenlerinin değiştirme. Bu yaklaşımda yalnızca arızalanmak üzere olan bileşenler değiştirilir. Bileşenlerin ömrünü uzatmasının (önleyici bakımla karşılaştırıldığında) yanı sıra zamanlanmamış bakım ve emek maliyetlerini azaltması (düzeltici bakıma göre) sayesinde işletmeler hem maliyet tasarrufu gerçekleştirebilir hem de rakiplerinin önüne geçebilir.
 
 ## <a name="business-problems-in-pdm"></a>PdM iş sorunları
@@ -92,7 +92,7 @@ Bu bölümde PdM Havacılık yardımcı programları ve taşıma gibi çeşitli 
 |**Finans** |                         |
 |_ATM hatası_ bankacılık sektör içinde sık karşılaşılan bir sorundur. Buradaki sorun, bir ATM nakit mevzuatı işlem nakit dağıtıcısı kağıt sıkıştı veya bölümü hata nedeniyle kesintiye uğrarsa olasılık rapor etmektir. İşlem hata tahminlere göre ATM proaktif olarak hatalarının oluşmasını önlemek için hizmet verebilir.| Makine sürecin yarısında bir işlem başarısız olmasına izin vermek yerine, istenen hizmetini reddetmek için makine üzerinde Tahmine dayalı programa alternatiftir.|
 |**Enerji** |                          |
-|_Rüzgar türbin hatalarıyla_: Rüzgar türbinler, çevre açısından sorumlu ülkelerde/bölgelerde ana enerji kaynağıdır ve yüksek sermaye maliyetlerini içerir. Bir anahtar Rüzgar turbines Oluşturucu motor bileşenidir. kendi hata türbinin etkisiz işler. Ayrıca, düzeltmek son derece pahalı olur.|MTTF (ortalama süresi hatası) gibi KPI'leri tahmin etme, enerji şirketlerinin türbinin hatalarını önlemek ve çok az kesinti olun yardımcı olabilir. Hata olasılığını yakında başarısız olma olasılığı yüksek olan turbines izlemek için teknisyenleri bildirmek ve Bakım zaman tabanlı regimes zamanlayın. Tahmine dayalı modeller, sorunların kök nedenlerini teknisyenleri yardımcı olan hataya katkıda bulunan farklı faktörlerden Öngörüler daha iyi anlamak sağlar.|
+|_Rüzgar türbin hatalarıyla_: Rüzgar türbinler, çevre açısından sorumlu ülkelerde/bölgelerde ana enerji kaynağıdır ve yüksek sermaye maliyetlerini içerir. Rüzgar türbinler içindeki bir anahtar bileşen, hata türbin verimsiz bir şekilde işleyen Oluşturucu motorunındır. Ayrıca, düzeltmek son derece pahalı olur.|MTTF (ortalama süresi hatası) gibi KPI'leri tahmin etme, enerji şirketlerinin türbinin hatalarını önlemek ve çok az kesinti olun yardımcı olabilir. Hata olasılığını yakında başarısız olma olasılığı yüksek olan turbines izlemek için teknisyenleri bildirmek ve Bakım zaman tabanlı regimes zamanlayın. Tahmine dayalı modeller, sorunların kök nedenlerini teknisyenleri yardımcı olan hataya katkıda bulunan farklı faktörlerden Öngörüler daha iyi anlamak sağlar.|
 |_Devre kesici hataları_: ev ve işletmelerin elektrik dağıtımını power satırları enerji teslimi garanti etmek için her zaman çalışır durumda gerektirir. Devre kesicilerin yardımcı sınırlamak veya zarar gücüne önlemek satırları aşırı yüklemesi sırasında veya olumsuz koşullar hava durumu. İş sorununu Burada, devre kesici hataları tahmin etmektir.| PdM çözümleri onarım maliyetleri azaltıp devre Kesiciler gibi donanım ömrü yardımcı olur. Beklenmeyen hataları ve hizmet kesintilerine azaltarak güç ağ kalitesini artırmak yardımcı olurlar.|
 |**Nakliye ve lojistik** |    |
 |_Asansör kapı hataları_: büyük Asansör şirketler işlevsel elevators dünyanın dört bir yanındaki milyonlarca için tam bir yığın hizmet sağlar. Asansör güvenlik, güvenilirlik ve çalışma süresi müşterileri için temel sorun var. Bu şirketler bu ve diğer çeşitli özniteliklerini düzeltme ve önleyici bakımla yardımcı olmak için algılayıcılar aracılığıyla izler. İçinde bir Asansör, en yaygın müşteri sorunu Asansör kapılar gerçekleştiriyor. Bu durumda iş sorununu kapı hatalarının olası neden tahmin eden bir Bilgi Bankası Tahmine dayalı uygulama sağlamaktır.| Elevators sermaye yatırımlarınızı için büyük olasılıkla bir 20-30 yıl kullanım ömrü ' dir. Bu nedenle her bir potansiyel satış son derece rekabetçi olabilir. Bu nedenle hizmeti ve Destek beklentileri yüksektir. Tahmine dayalı bakım, bu şirketler, rakiplerini, üründeki bir avantajı sağlar ve hizmet.|
@@ -271,7 +271,7 @@ Burada soru şudur: "varlık sonraki başarısız olduğunu belirten olasılığ
 Şekil 3. İkili sınıflandırma etiketleme
 
 Bazı kullanım örnekleri için stratejisi etiketleme örnekleri aşağıda listelenmiştir.
-- _Uçuş gecikme_: X seçilebilir 1 gün gecikmeler sonraki 24 saat içindeki tahmin etmek için. Ardından hataları önce 24 saat içinde olan tüm uçuşlar 1 etiketlenmiştir.
+- _Uçuş gecikmeleri_: X bir gün olarak seçilebilir ve bu da sonraki 24 saat içindeki gecikmeleri tahmin edebilir. Ardından hataları önce 24 saat içinde olan tüm uçuşlar 1 etiketlenmiştir.
 - _ATM nakit etiket hataları_: sonraki bir saat içinde bir işlem hatası olasılığını belirlemek için bir hedef olabilir. Bu durumda, hatanın son bir saat içinde gerçekleşen tüm işlemleri 1 etiketlenmiştir. Sonraki N para birimi hata olasılığını tahmin dispensed, notları hata son N notlarına dispensed tüm notları 1 etiketlenmiştir.
 - _Devre kesici hataları_: sonraki devre kesici komut hatası tahmin etmek için hedef olabilir. Bu durumda, bir sonraki komuttan olmasını X seçilir.
 - _Eğitim kapı hataları_: X iki gün olarak seçilebilir.

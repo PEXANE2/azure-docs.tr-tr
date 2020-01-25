@@ -3,20 +3,20 @@ title: SQL bölüm tablolarından - Team Data Science Process içinde paralel to
 description: Hızlı paralel toplu veri bir SQL Server veritabanına içeri aktarmak için bölümlenmiş tabloları oluşturun.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428315"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721345"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Derleme ve bir Azure VM'deki SQL Server'a hızlı paralel içeri aktarılacak veri tabloları iyileştirin
 
@@ -57,7 +57,7 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
 ## <a name="create-a-partitioned-table"></a>Bölümlenmiş bir tablo oluşturma
 Önceki adımda oluşturduğunuz veritabanı dosya grupları için eşlenmiş veri şemasını göre bölümlenmiş tabloları oluşturmak için öncelikle bir bölüm işlevini ve düzeni oluşturmanız gerekir. Veriler için bölümlenmiş tabloları içeri toplu olduğunda, kayıtları arasında bir bölüm düzeni göre dosya gruplarını aşağıda açıklandığı şekilde dağıtılır.
 
-### <a name="1-create-a-partition-function"></a>1. Bölümleme işlevi oluşturma
+### <a name="1-create-a-partition-function"></a>1. Bölüm işlevi oluşturma
 [Bölümleme işlevi oluşturma](https://msdn.microsoft.com/library/ms187802.aspx) aralığı değerleri/sınırları her tek bölüm tablosunda örneğin dahil edilecek, aya göre bölümlere sınırlamak için bu işlevi tanımlar (bazı\_datetime\_alan) 2013 yılında:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -66,7 +66,7 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. Bir bölüm düzeni oluşturma
+### <a name="2-create-a-partition-scheme"></a>2. Bölüm şeması oluşturma
 [Bir bölüm düzeni oluşturma](https://msdn.microsoft.com/library/ms179854.aspx). Bu düzen, her bölüm aralığı bölüm işlevindeki örneğin fiziksel bir dosya grubu eşler:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
@@ -85,7 +85,7 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. Bölüm tablosu oluşturma
+### <a name="3-create-a-partition-table"></a>3. bölüm tablosu oluşturma
 [Bölümlenmiş bir tablo oluşturma](https://msdn.microsoft.com/library/ms174979.aspx)(s) için veri şemasına göre ve örneğin, tabloyu bölümlemek için kullanılan bölüm düzeni ve kısıtlama alanı belirtin:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
@@ -99,7 +99,7 @@ Daha fazla bilgi için [bölümlenmiş tablolar oluşturun ve dizinler](https://
 * [Veritabanı alter](https://msdn.microsoft.com/library/bb522682.aspx) günlüğü, örneğin yükünü en aza indirmek için toplu_günlüklü için işlem günlüğü düzenini değiştirmek için:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Veri yükleme hızlandırmak için paralel toplu içeri aktarma işlemlerinde başlatın. SQL Server veritabanlarına büyük veri alma toplu hızlandırılması ipuçları için bkz [1 saatten kısa bir süre içinde 1 TB yükleme](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Veri yükleme hızlandırmak için paralel toplu içeri aktarma işlemlerinde başlatın. Büyük verilerin SQL Server veritabanlarına toplu olarak içe aktarılması hakkında ipuçları için [1 saatten az bir süre içinde 1 TB yükleme](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)bölümüne bakın.
 
 Aşağıdaki PowerShell betiğini bir paralel veri BCP kullanarak yükleme örneğidir.
 

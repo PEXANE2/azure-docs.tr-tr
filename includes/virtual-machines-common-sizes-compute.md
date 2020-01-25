@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 16a0fa29c067262f1794528b16abfce662d05605
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75752269"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748981"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,7 +31,7 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-| Boyut             | Sanal çekirdek | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut             | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31 (32)           | 3200/47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63 (64)           | 6400/95                | 2 / 1750               |
@@ -48,7 +48,7 @@ Premium depolama önbelleği: desteklenir
 - Windows Server 2016 veya üzeri
 - Ubuntu 16,04 LTS veya üzeri, Azure ayarlanmış çekirdekle (4,15 çekirdek veya üzeri)
 - SLES 12 SP2 veya üzeri
-- RHEL veya CentOS Sürüm 6,7, Microsoft tarafından sunulan LIS paketi 4.3.1 (veya üzeri) yüklenmiş olarak 6,10
+- RHEL veya CentOS Sürüm 6,7 ile 6,10, Microsoft tarafından sunulan LIS paketi 4.3.1 (veya üzeri) yüklü
 - RHEL veya CentOS Sürüm 7,3, Microsoft tarafından sunulan LIS paketi 4.2.1 (veya üzeri) yüklü
 - RHEL veya CentOS Sürüm 7,6 veya üzeri
 - UEK4 veya üzeri ile Oracle Linux

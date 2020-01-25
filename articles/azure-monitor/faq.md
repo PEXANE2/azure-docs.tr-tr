@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290351"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715925"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -85,7 +85,7 @@ Azure portal çözümleri görüntülemek için **izleyici** menüsünün **Öng
 ## <a name="logs"></a>Günlükler
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure Izleyici günlükleri ve Azure Veri Gezgini arasındaki fark nedir?
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Izleyici günlükleri Azure Veri Gezgini üzerine kurulmuştur ve bazı küçük farklılıklar ile aynı kusto sorgu dilini (KQL) kullanır. Bkz. [Azure izleyici günlük sorgusu dil farkları](log-query/data-explorer-difference.md).
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Izleyici günlükleri Azure Veri Gezgini üzerine kurulmuştur ve bazı küçük farklılıklar ile aynı kusto sorgu dilini (KQL) kullanır. Bkz. [Azure izleyici günlük sorgusu dil farkları](log-query/data-explorer-difference.md).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Günlük verilerini almak Nasıl yaparım??
 Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorgusu kullanarak bir Log Analytics çalışma alanından alınır. Kendi sorgularınızı yazabilir veya belirli bir uygulama veya hizmete ait günlük sorgularını içeren çözüm ve Öngörüler kullanabilirsiniz. Bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query/log-query-overview.md).
@@ -95,6 +95,18 @@ Azure Izleyici tarafından toplanan tüm günlük verileri Log Analytics çalı�
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Mevcut bir Log Analytics çalışma alanını başka bir Azure aboneliğine taşıyabilir miyim?
 Çalışma alanını kaynak grupları veya abonelikler arasında, farklı bir bölgeye taşıyabilirsiniz. Bkz. [Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıma](platform/move-workspace.md).
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Sorgu Gezginini neden göremiyorum ve düğmeleri Log Analytics Kaydet?
+
+Sorgu [kapsamı](log-query/scope.md) belirli bir kaynağa ayarlandığında, **sorgu Gezgini**, **Kaydet** ve **Yeni uyarı kuralı** düğmeleri kullanılamaz. Uyarı oluşturmak, bir sorguyu kaydetmek veya yüklemek için Log Analytics bir çalışma alanı kapsamında olmalıdır. Çalışma alanı bağlamında Log Analytics açmak için **Azure izleyici** menüsünden **Günlükler** ' i seçin. Son kullanılan çalışma alanına seçtiğiniz, ancak diğer çalışma alanı seçebilirsiniz. Bkz. [Azure izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics](log-query/scope.md)
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Neden "Bu sorguyu etkinleştirmek için bu aboneliğin ' Microsoft. Insights ' kaynak sağlayıcısını Kaydet" ' I bir VM 'den Log Analytics açarken bu sorguyu etkinleştirmek istiyor musunuz? 
+Birçok kaynak sağlayıcısı otomatik olarak kaydedilir, ancak bazı kaynak sağlayıcılarını el ile kaydetmeniz gerekebilir. Kayıt için kapsam her zaman aboneliktir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Bir VM 'den Log Analytics açarken neden erişim hatası mesajı alıyorum? 
+VM günlüklerini görüntülemek için, VM günlüklerini depolayan çalışma alanları için okuma izni verilmesi gerekir. Bu gibi durumlarda yöneticinize ile azure'da izinlerini sağlamanız gerekir.
+
+
 
 
 ## <a name="alerts"></a>Uyarılar
@@ -181,6 +193,12 @@ Mevcut veya yeni bir [eylem grubu](platform/action-groups.md) belirtin, böylece
 Güvenlik Duvarı gereksinimleriyle ilgili ayrıntılar için bkz. [ağ güvenlik duvarı gereksinimleri](platform/log-analytics-agent.md#network-firewall-requirements).
 
 
+## <a name="visualizations"></a>Görsel öğeler
+
+### <a name="why-cant-i-cant-see-view-designer"></a>Neden görünüm tasarımcısını göremiyorum?
+
+Görünüm Tasarımcısı yalnızca Log Analytics çalışma alanında katkıda bulunan izinlerle veya üzeri olarak atanmış kullanıcılar için kullanılabilir.
+
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -242,7 +260,7 @@ Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
   * Microsoft.ApplicationInsights.Platform
 * İçine öğe ekler:
   * Web.config
-  * packages.config
+  * Packages. config
 * (Yalnızca yeni projeler- [var olan bir projeye Application Insights eklerseniz][start]bunu el ile yapmanız gerekir.) , Application Insights kaynak KIMLIĞI ile başlatmak için istemci ve sunucu koduna kod parçacıkları ekler. Örneğin, bir MVC uygulamasında kod ana sayfa görünümleri/paylaşılan/\_düzeni. cshtml 'ye eklenir
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Nasıl yaparım? eski SDK sürümlerinden yükseltme yapılsın mı?

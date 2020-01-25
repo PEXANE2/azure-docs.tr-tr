@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB hizmet kotaları
 description: Farklı kaynak türlerindeki hizmet kotalarını ve varsayılan limitleri Azure Cosmos DB.
-author: arramac
-ms.author: arramac
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b954b56d3c4f9d3ae0ad3142b11a8660e341b74a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887623"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711307"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
-Bu makalede, Azure Cosmos DB farklı kaynaklara sunulan varsayılan kotalarla bir genel bakış sunulmaktadır.
+Bu makale, Azure Cosmos DB’deki farklı kaynaklara sunulan varsayılan kotalara ilişkin bir genel bakış sunar.
 
 ## <a name="storage-and-throughput"></a>Depolama ve aktarım hızı
 

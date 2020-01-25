@@ -3,23 +3,23 @@ title: Azure HDInsight Hive tabloları - Team Data Science Process içinde örne
 description: Aşağı örnek verileri analiz için daha kolay yönetilebilir bir boyuta azaltmak için Hive sorgularını kullanarak Azure HDInsight Hive tablolarında depolanan veriler.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042892"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720002"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive tablolarındaki örnek veriler
-Bu makalede, aşağı örnek bunu analiz için daha kolay yönetilebilir bir boyuta indirmeyi Hive sorgularını kullanarak Azure HDInsight Hive tablolarında depolanan veriler açıklar. Üç bu özellik kullanılan örnekleme yöntemleri kapsar:
+Bu makalede, aşağı örnek bunu analiz için daha kolay yönetilebilir bir boyuta indirmeyi Hive sorgularını kullanarak Azure HDInsight Hive tablolarında depolanan veriler açıklar. Üç adet popuya kullanılan örnekleme yöntemini içerir:
 
 * Tekdüzen rastgele örnekleme
 * Gruplara göre rastgele örnekleme
@@ -31,7 +31,7 @@ Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek
 Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Hive sorguları göndermek nasıl
-Hive sorguları, Hadoop küme baş düğümü üzerinde Hadoop komut satırı konsolundan gönderilebilir. Bunu yapmak için Hadoop küme baş düğümüne oturum, Hadoop komut satırı konsolu açın ve buradan Hive sorguları göndermek. Hadoop komut satırı konsolunda Hive sorguları gönderme ile ilgili yönergeler için bkz: [Hive sorguları göndermek için nasıl](move-hive-tables.md#submit).
+Hive sorguları, Hadoop küme baş düğümü üzerinde Hadoop komut satırı konsolundan gönderilebilir.  Hadoop kümesinin baş düğümünde oturum açın, Hadoop komut satırı konsolunu açın ve Hive sorgularını buradan gönderebilirsiniz. Hadoop komut satırı konsolunda Hive sorguları gönderme ile ilgili yönergeler için bkz: [Hive sorguları göndermek için nasıl](move-hive-tables.md#submit).
 
 ## <a name="uniform"></a> Tekdüzen rastgele örnekleme
 Tekdüzen rastgele örnekleme, her satırda bir veri kümesi örnekleniyor eşit bir olasılığını olduğunu gösterir. Ek alan rand() veri kümesine iç sorgu "Seç" ve "seçin" dış sorgu bu koşul, rastgele alan ekleyerek uygulanabilir.
@@ -81,7 +81,7 @@ Gruplandırma ölçütü bu örnekleri örnek bir sorgu aşağıdadır:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Stratified örnekleme
-Elde edilen örnekler üst popülasyon oldukları gibi aynı oranı mevcut olan kategorik değerlere sahip olduğunda rastgele örnekleme Kategorik bir değişkene göre stratified. Aynı örneği kullanarak yukarıdaki verilerinizi durumlara göre aşağıdaki gözlemlere sahip olduğunu varsayalım: 100 gözlemler NJ sahip, NY 60 gözlemler varsa ve WA 300 gözlemler. 0,5 olmasını stratified örnekleme oranını belirtin, ardından alınan örnek yaklaşık 50, 30 ve 150 gözlemleri NJ, NY ve WA sırasıyla olmalıdır.
+Elde edilen örnekler üst popülasyon oldukları gibi aynı oranı mevcut olan kategorik değerlere sahip olduğunda rastgele örnekleme Kategorik bir değişkene göre stratified. Yukarıdaki olarak aynı örneği kullanarak verilerinizi durumlara göre aşağıdaki gözlemlere sahip olduğunu varsayalım: NJ varsa 100 gözlemleri, NY olan 60 gözlemleri ve WA 300 gözlemler. 0,5 olmasını stratified örnekleme oranını belirtin, ardından alınan örnek yaklaşık 50, 30 ve 150 gözlemleri NJ, NY ve WA sırasıyla olmalıdır.
 
 Örnek bir sorgu aşağıda verilmiştir:
 

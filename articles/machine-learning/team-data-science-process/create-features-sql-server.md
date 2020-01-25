@@ -3,20 +3,20 @@ title: SQL ve Python - Team Data Science Process kullanarak SQL Server özellikl
 description: SQL ve Python - Team Data Science Process parçası kullanarak azure'da bir SQL Server VM'si depolanan verilerin özelliklerini oluşturur.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982067"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721753"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL ve Python kullanarak SQL Server’daki verilerin özelliklerini oluşturma
 Bu belge, daha verimli bir şekilde verilerden bilgi algoritmaları yardımcı olan bir SQL Server VM'si, azure'da depolanan verilerin özelliklerini oluşturma adımları anlatılmaktadır. Bu görevi gerçekleştirmek için SQL veya Python gibi bir programlama dili kullanabilirsiniz. Her iki yaklaşım burada gösterilmiştir.
@@ -37,9 +37,9 @@ Bu makalede, olduğunu varsayar:
 ## <a name="sql-featuregen"></a>SQL ile özellik oluşturma
 Bu bölümde, biz özellikleri SQL kullanarak oluşturma yolları açıklanmaktadır:  
 
-1. [Özellik nesil sayısı tabanlı](#sql-countfeature)
-2. [Gruplama özellik oluşturma](#sql-binningfeature)
-3. [Tek bir sütundan özellikleri alınıyor](#sql-featurerollout)
+* [Özellik nesil sayısı tabanlı](#sql-countfeature)
+* [Gruplama özellik oluşturma](#sql-binningfeature)
+* [Tek bir sütundan özellikleri alınıyor](#sql-featurerollout)
 
 > [!NOTE]
 > Ek özellikler oluşturduktan sonra bunları mevcut tabloya sütun olarak ekleyin veya özgün tabloyla birleştirilen birincil anahtar ve ek özellikler ile yeni bir tablo oluşturabilirsiniz.
@@ -47,7 +47,7 @@ Bu bölümde, biz özellikleri SQL kullanarak oluşturma yolları açıklanmakta
 > 
 
 ### <a name="sql-countfeature"></a>Temel sayısı özelliği oluşturma
-Bu belge sayısı özellikleri oluşturmanın iki yolunu gösterir. İlk yöntem koşullu toplamı ve ikinci yöntem 'where' yan tümcesi kullanır. Bunlar daha sonra (birincil anahtar sütunlarını kullanarak) özgün tablo ile özgün veri yanı sıra sayısı özelliğiniz için katılabilir.
+Bu belge sayısı özellikleri oluşturmanın iki yolunu gösterir. İlk yöntem koşullu toplamı ve ikinci yöntem 'where' yan tümcesi kullanır. Bu yeni özellikler daha sonra orijinal verilerle birlikte sayı özelliklerinin olması için özgün tabloyla (birincil anahtar sütunları kullanılarak) birleştirilmiş olabilir.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -55,7 +55,7 @@ Bu belge sayısı özellikleri oluşturmanın iki yolunu gösterir. İlk yöntem
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
 ### <a name="sql-binningfeature"></a>Gruplama özellik oluşturma
-Aşağıdaki örnek, bunun yerine bir özelliği olarak kullanılabilir bir sayısal sütun göre gruplama (5 depo kullanarak) binned özellikleri oluşturma adımları anlatılmaktadır:
+Aşağıdaki örnek, bunun yerine bir özelliği olarak kullanılabilir bir sayısal sütun göre gruplama (beş depo kullanarak) binned özellikleri oluşturma adımları anlatılmaktadır:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -74,9 +74,9 @@ Enlem/boylam konumu veri kısa öncü İşte (stackoverflow kaynak var `https://
 * Üçüncü ondalık en fazla 110 m: büyük Tarım alan veya Kurumsal kampüs tanımlayabilirsiniz yerdir.
 * Dördüncü ondalık en fazla 11 m: olan bir paket tanımanıza yerdir. Tipik doğruluğunu düzeltilemeyen bir GPS birim için hiçbir engelleme ile karşılaştırılabilir.
 * Beşinci ondalık en fazla 1.1 m: ağaçları birbirinden ayıran yerdir. Bu düzey ticari GPS birimleri ile tutarlılık yalnızca fark düzeltme ile gerçekleştirilebilir.
-* Altıncı ondalık en fazla 0.11 m: Bu yapıları ortamlarını, tasarlamak için ayrıntılı olarak yerleştirmek için yollar oluşturma kullanabileceğiniz yerdir. Hareketleri glaciers rivers ve izlemek için birden fazla yeterince iyi olmalıdır. Bu, GPS, differentially düzeltilmiş GPS gibi painstaking ölçülerle yararlanarak gerçekleştirilebilir.
+* Altıncı ondalık basamak 0,11 ' ye kadar olur: Bu düzeyi, yapıları tasarlamak için, yapıları oluşturmak amacıyla yapıları ayrıntılı olarak düzenlemek için kullanabilirsiniz. Hareketleri glaciers rivers ve izlemek için birden fazla yeterince iyi olmalıdır. Bu amaca, farklı şekilde düzeltilen GPS gibi GPS ile sorunsuz ölçüler elde edilebilir.
 
-Konum bilgileri, bölge, konum ve Şehir bilgilerini ayrılarak özellikleri tespit olabilir. Bing Haritalar API'si kullanılabilir gibi bir REST uç noktası bir kez de çağırabilirsiniz Not `https://msdn.microsoft.com/library/ff701710.aspx` bölge/bölge bilgileri alınacak.
+Konum bilgileri, bölge, konum ve Şehir bilgilerini ayrılarak özellikleri tespit olabilir. Bir kez, Bing Haritalar API 'SI gibi bir REST uç noktasını da çağırabilir (bölge/bölge bilgilerini almak için bkz. `https://msdn.microsoft.com/library/ff701710.aspx`).
 
     select
         <location_columnname>

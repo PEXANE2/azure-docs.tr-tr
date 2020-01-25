@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979689"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715438"
 ---
 # <a name="payout-reporting"></a>Ödeme raporlaması
 
@@ -46,7 +46,7 @@ Azure Market 'te teklifler satmanız durumunda, **ödeme özetinde başarılı �
 
 | | Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
 |---------|---------|---------|
-| Bağlantılar | https://cloudpartner.azure.com/ | https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory ve https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| Bağlantılar | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) ve [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Gezinme | Öngörüler ödeme için sunulan ödeme raporlaması | Iş Ortağı Merkezi – ödeme simgesinde sunulan ödeme raporlaması |
 | Kapsam | <ul> <li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olarak </li> <li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir. </li> </ul> | <ul> <li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li> <li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li> <li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.  </li> </ul>  |
 | İşlem ödeme için hazır değil | Faturalama devam ediyor | Sonraki tahmini ödeme: ödeme durumu işlenmemiş durumundadır.  |
@@ -70,21 +70,21 @@ Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu d
 
 |Açıklama    |    Tarih  | Siparişler/kullanım  | Ödeme |
 |----------|----------|-----------|-------------|
-|Sipariş dönemi   | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Kullanım** <br> <ul> <li>CustomerId </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> |  |
+|Sipariş dönemi   | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>Sipariş</li> <li>Ister</li> </ul> <br> **Kullanım** <br> <ul> <li>Ister </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> |  |
 |Dönem sonu (ay)   | 30 Ağu, 2019 | | |
 |Faturalama tarihi | 1 Eylül 2019 | | |
 |Müşteri ödeme tarihi | 1 Eylül 2019 | | |
-|Emanet dönemi (yalnızca kredi kartları, 30 gün) | 1 Eylül 2019-Eyl 30, 2019 | | **Bağıntı öznitelikleri siparişleri:** <br> <ul><li>AssetId</li> <li>Müşteri Kimliği</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Müşteri adı</li> <li>OrderId</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** İşlenmemiş |
+|Emanet dönemi (yalnızca kredi kartları, 30 gün) | 1 Eylül 2019-Eyl 30, 2019 | | **Bağıntı öznitelikleri siparişleri:** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** İşlenmemiş |
 |Toplama dönemi başlangıcı | 1 Eylül 2019 | | |
 |Toplama dönemi sonu (maksimum, 30 gün) | 30 Eylül 2019 | | |
-|Ödeme hesaplama tarihi (aylık 15 ' te) | 1 Eki, 2019 | | **Bağıntı öznitelikleri** <br> <ul><li>AssetId</li> <li>Müşteri Kimliği</li> <li>Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Müşteri adı</li> <li>OrderId</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** Ilerideki |
-|Ödeme tarihi | 15 Ekim 2019 | | **Bağıntı öznitelikleri** <br> <ul><li>AssetId</li> <li>Müşteri Kimliği</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Müşteri adı</li> <li>OrderId</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** Ödeme gönderildi |
+|Ödeme hesaplama tarihi (aylık 15 ' te) | 1 Eki, 2019 | | **Bağıntı öznitelikleri** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li>Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** Ilerideki |
+|Ödeme tarihi | 15 Ekim 2019 | | **Bağıntı öznitelikleri** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** Ödeme gönderildi |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Kurumsal Anlaşma (üç aylık/aylık müşteriler)
 
 | Açıklama |    Tarih  | Kullanım | Ödeme |
 |----------|----------|---------|-----------|
-|Sipariş dönemi | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Kullanım raporu** <br> <ul> <li>CustomerId </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> | |
+|Sipariş dönemi | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>Sipariş</li> <li>Ister</li> </ul> <br> **Kullanım raporu** <br> <ul> <li>Ister </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> | |
 |Dönem sonu (çeyrek) | 30 Eylül 2019 | | |
 |Faturalama tarihi | 15 Ekim 2019 | | |
 |Emanet dönemi (yalnızca kredi kartları, 30 gün) | Yok | | |
@@ -93,13 +93,13 @@ Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu d
 |Toplama dönemi sonu (maksimum, 90 gün) | 15 Ocak 2020 | | |
 |Müşteri ödeme tarihi | 30 Aralık 2019 | | |
 |Ödeme hesaplaması | 15 Ocak 2020 | | |
-|Ödeme tarihi | 15 Şubat 2020 | | **Üç aylık tabanlı müşteriler için** <br> <br> **Sipariş raporu** <br> <ul><li>AssetId</li> <li>Müşteri Kimliği</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Müşteri adı</li> <li>OrderId</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** gönderildi |
+|Ödeme tarihi | 15 Şubat 2020 | | **Üç aylık tabanlı müşteriler için** <br> <br> **Sipariş raporu** <br> <ul><li>AssetId</li> <li>Müşteri KIMLIĞI</li> <li> Müşteri adı</li> </ul> <br> **Kullanım** <br> <ul> <li>AssetId</li> <li>Ister</li> <li>Müşteri adı</li> <li>Sipariş</li> <li>Lineıtemıd</li> <li>Işlem miktarı</li> <li>Earningamountınlastpaymentcurrency</li> </ul> <br> **Ödeme durumu:** gönderildi |
 
 ## <a name="transaction-history-download-export"></a>İşlem geçmişi indirme dışarı aktarma
 
 Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfasında gördüğünüz her bir atma satırı öğesinin bir indirisini, tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını sağlar.
 
-| Sütun adı     | Açıklama    |
+| sütun adı     | Açıklama    |
 |-------------|-------------------------------|
 | Eardokgıd                      | Her bir atma için benzersiz tanımlayıcı                                                                                                       |
 | participantId                  | İş ortağının birincil kimliği program altında                                                                            |
@@ -130,7 +130,7 @@ Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfası
 | Paymentıd            | Ödeme için benzersiz tanımlayıcı. Bu sayı, banka ekstreninizde görülebilir                                            |
 | paymentStatus            | Ödeme durumu                                            |
 | paymentStatusDescription            | Ödeme durumunun kolay açıklaması                                            |
-| customerId                     | Her zaman boş kalır                                                                                                                     |
+| Ister                     | Her zaman boş kalır                                                                                                                     |
 | customerName                   | Her zaman boş kalır                                                                                                                     |
 | partNumber                     | Her zaman boş kalır                                                                                                                     |
 | productName                    | İşlemle bağlantılı ürün adı                                                                                                       |
@@ -165,7 +165,7 @@ Bu seçenek, teşvikleri programı için geçerli olan Işlem geçmişi sayfası
 | Earningamountınlastpaymentcurrency       | Son ödeme para biriminde (önceki ödemeler ödeniyorsa, alan boş olur) miktarı kazanlama                                                                                                                   |
 | lastPaymentCurrency       | Son ödeme para birimi (önceki ödeme ödeniyorsa, alan boş olacaktır)                                                                                                                   |
 | AssetId       | Market hizmetiniz için müşteri siparişlerinin benzersiz tanımlayıcısı.  Bu işlem, işlenen satın alma satırı öğelerini temsil eder. Birden çok varlık olabilir.                                                                                                                   |
-| OrderId       | müşterinin faturasıyla ilişkili                                                                                                                   |
+| Sipariş       | müşterinin faturasıyla ilişkili                                                                                                                   |
 | Lineıtemıd       | müşterinin faturasında tek satırlık                                                                                                                   |
 | Müşteri ülkesi       | Müşterinin sunduğu ülke adı.  Bu, müşterinin Azure aboneliğindeki ülkeden farklı olabilir.                                                                                                                   |
 | Müşteri EMAA adresi       | Son müşteri tarafından sunulan e-posta adresi.  Bu, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir.                                                                                                                   |

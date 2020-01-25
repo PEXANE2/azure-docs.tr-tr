@@ -1,51 +1,51 @@
 ---
-title: Azure Container Instance tarif
+title: Azure Container Instance tarifi
 titleSuffix: Azure Cognitive Services
-description: Azure Container Instance üzerinde Bilişsel Hizmetleri kapsayıcıları dağıtma hakkında bilgi edinin
+description: Bilişsel hizmetler kapsayıcılarını Azure Container Instance üzerinde dağıtmayı öğrenin
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78f35042678aa7c30cebf73796df3e5d564b4502
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704366"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717008"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance"></a>Dağıtma ve Azure Container Instance üzerinde kapsayıcı çalıştırma
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure Container Örneğinde kapsayıcı dağıtma ve çalıştırma
 
-Azure ile kolayca bulut uygulamalarında Azure Bilişsel hizmetler aşağıdaki adımlarla ölçeklendirme [kapsayıcı örneği](https://docs.microsoft.com/azure/container-instances/). Bu altyapıyı yönetmek yerine uygulamalarınıza oluşturmaya odaklanmanıza yardımcı olur.
+Aşağıdaki adımlarla, Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)Ile Bulutta Azure bilişsel hizmetler uygulamalarını kolayca ölçeklendirin. Kapsayıcılama, altyapıyı yönetmek yerine uygulamalarınızı oluşturmaya odaklanmanıza yardımcı olur. Kapsayıcıları kullanma hakkında daha fazla bilgi için bkz. [Özellikler ve avantajlar](../cognitive-services-container-support.md#features-and-benefits).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu çözüm, tüm Bilişsel hizmetler kapsayıcısı ile çalışır. Bilişsel Hizmet kaynağı Azure portalında bu tarif kullanmadan önce oluşturulması gerekir. Yükleme ve yapılandırma için bir kapsayıcı hizmeti için özel bir "nasıl yükleneceği" Belge kapsayıcıları destekleyen her Bilişsel hizmet içerir. Bazı hizmetler kapsayıcısı için giriş olarak bir dosya veya dosyalar kümesi gerektirdiği için anlamak ve bu çözümü kullanarak önce kapsayıcı başarıyla kullandınız önemlidir.
+Tarif, tüm bilişsel hizmetler kapsayıcısıyla birlikte çalışarak. Bilişsel hizmet kaynağının, tarif kullanılmadan önce Azure portal oluşturulması gerekir. Kapsayıcıları destekleyen her bilişsel hizmet hizmeti, bir kapsayıcı için hizmeti yüklemek ve yapılandırmak üzere özellikle bir "yükleme" belgesine sahiptir. Bazı hizmetler, kapsayıcı için girdi olarak bir dosya veya dosya kümesi gerektirir, bu çözümü kullanmadan önce kapsayıcıyı anlamanız ve başarıyla kullanmış olmanız önemlidir.
 
-* Azure portalında oluşturulan bir Bilişsel Hizmet kaynağı.
-* Bilişsel hizmet **uç nokta URL'si** -", belirli hizmetin nasıl yükleneceği" için kapsayıcı gözden geçirin, uç nokta URL'sini gelen Azure portalı ve hangi içinde olduğu bulmak için bir doğru örnek URL'sini benzer. Hizmetten hizmete tam biçimini değiştirebilirsiniz.
-* Bilişsel hizmet **anahtarı** -anahtarları bulunan **anahtarları** Azure kaynak sayfası. Yalnızca iki anahtarlarından biri gerekir. Anahtar 32 alfasayısal karakter, bir dizedir.
-* Tek bir Bilişsel hizmetler kapsayıcısı yerel ana bilgisayarınızda (bilgisayar). Emin olun, şunları yapabilirsiniz:
-  * Görüntüyü aşağı çekmek bir `docker pull` komutu.
-  * Yerel kapsayıcı ile tüm gerekli yapılandırma ayarlarıyla başarıyla çalıştırılmış bir `docker run` komutu.
-  * Kapsayıcının uç noktası, 2xx yanıtı ve bir JSON yanıtı geri alma çağırın.
+* Azure portal içinde oluşturulan bilişsel hizmet kaynağı.
+* Bilişsel hizmet **uç noktası URL 'si** -uç nokta url 'sinin Azure Portal içinden nerede olduğunu ve URL 'nin doğru bir örneğini nasıl göründüğünü bulmak için, belirli hizmetinizin "nasıl yüklenir" konusunu gözden geçirin. Tam biçim hizmetten hizmete değiştirilebilir.
+* Bilişsel hizmet **anahtarı** -anahtarlar, Azure kaynağı için **anahtarlar** sayfasıdır. Yalnızca iki anahtarlarından biri gerekir. Anahtar, 32 alfasayısal karakterlerden oluşan bir dizedir.
+* Yerel ana bilgisayarınızda (Bilgisayarınız) tek bir bilişsel hizmetler kapsayıcısı. Şunları yapadığınızdan emin olun:
+  * `docker pull` komutuyla görüntüyü çekin.
+  * Tüm gerekli yapılandırma ayarları ile bir `docker run` komutuyla yerel kapsayıcıyı başarıyla çalıştırın.
+  * HTTP 2xx ve JSON yanıtının geri yanıtını alarak kapsayıcının uç noktasını çağırın.
 
-Açılı ayraçlar içinde tüm değişkenlerinin `<>`, kendi değerlerinizle değiştirilmesi gerekebilir. Bu değişiklik, açılı ayraçlar içerir.
+Açılı parantezdeki tüm değişkenlerin (`<>`) kendi değerlerinizle değiştirilmesini gerektirir. Bu değiştirme açılı ayraçları içerir.
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
-## <a name="use-the-container-instance"></a>Kapsayıcı örneğini kullan
+## <a name="use-the-container-instance"></a>Kapsayıcı örneğini kullanma
 
-1. Seçin **genel bakış** ve IP adresini kopyalayın. Sayısal bir IP adresi gibi olacaktır `55.55.55.55`.
-1. Örneğin, IP adresi kullanın ve yeni bir tarayıcı sekmesi açın `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcıyı çalıştıran tamamlanamayacağını kapsayıcının giriş sayfasını görürsünüz.
+1. **Genel bakış** ' ı SEÇIN ve IP adresini kopyalayın. `55.55.55.55`gibi sayısal bir IP adresi olacaktır.
+1. Yeni bir tarayıcı sekmesi açın ve IP adresini kullanın, örneğin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfasını görürsünüz ve kapsayıcının çalıştığını bilmenizi sağlar.
 
-1. Seçin **hizmet API açıklaması** kapsayıcısı için swagger sayfasını görüntülemek için.
+1. Kapsayıcının Swagger sayfasını görüntülemek için **hizmet API 'Si açıklaması** ' nı seçin.
 
-1. Herhangi bir **POST** API'ler ve select **denemek**.  Giriş dahil olmak üzere parametreler görüntülenir. Parametrelerini doldurun.
+1. **Post** API 'lerinden birini seçin ve **deneyin**' i seçin.  Parametreler, giriş dahil görüntülenir. Parametreleri girin.
 
-1. Seçin **yürütme** kapsayıcı Örneğinize isteği göndermek için.
+1. İsteği kapsayıcı örneğinize göndermek için **Yürüt** ' ü seçin.
 
-    Başarıyla oluşturulan ve Bilişsel hizmetler, kapsayıcılar, Azure Container Instance üzerinde kullanılır.
+    Azure Container Instance 'da bilişsel hizmetler kapsayıcılarını başarıyla oluşturdunuz ve kullandınız.

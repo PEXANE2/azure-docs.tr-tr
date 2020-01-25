@@ -2,34 +2,35 @@
 title: Platform ve veri bilimi projeleri - Team Data Science Process için Araçlar
 description: Maddeler halinde listeler ve üzerinde Team Data Science Process Standartlaştırma kuruluşların kullanabileceği veri ve analiz kaynaklarını ele alır.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978518"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718897"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformlar ve araçlar için veri bilimi projeleri
 
-Microsoft, hem bulut hem de şirket içi platformlar için bir tam spektrumlu veri ve Analiz Hizmetleri ve kaynakları sağlar. Veri bilimi projelerinizi yürütülmesini etkili ve ölçeklenebilir hale getirmek için dağıtılabilir. Veri bilimi projeleri bir izlenebilir uygulayan ekipler için yönergeler, sürüm denetimli ve işbirliğine dayalı yolu tarafından sağlanan [Team Data Science Process](overview.md) (TDSP).  Personel roller ve bir veri bilimi takım bu işlemle ilgili hale getirerek işlenen ilişkilendirilen görevlerinin ana hat için bkz. [Team Data Science Process rolleri ve görevleri](roles-tasks.md).
+Microsoft, hem bulut hem de şirket içi platformlar için eksiksiz bir analiz kaynakları yelpazesi sağlar. Veri bilimi projelerinizi yürütülmesini etkili ve ölçeklenebilir hale getirmek için dağıtılabilir. Veri bilimi projeleri bir izlenebilir uygulayan ekipler için yönergeler, sürüm denetimli ve işbirliğine dayalı yolu tarafından sağlanan [Team Data Science Process](overview.md) (TDSP).  Personel roller ve bir veri bilimi takım bu işlemle ilgili hale getirerek işlenen ilişkilendirilen görevlerinin ana hat için bkz. [Team Data Science Process rolleri ve görevleri](roles-tasks.md).
 
-TDSP kullanan veri bilimi ekipleri için kullanılabilir veri ve Analiz Hizmetleri şunlardır:
+TDSP kullanan veri bilimi ekipleri için kullanılabilen analiz kaynakları şunları içerir:
 
 - Veri bilimi sanal makineleri (Windows ve Linux CentOS)
 - HDInsight Spark kümeleri
-- SQL Veri Ambarı
+- Synapse Analytics
 - Azure Data Lake
 - HDInsight Hive kümeleri
 - Azure Dosya Depolama
-- SQL Server 2016 R Services
+- SQL Server 2019 R ve Python Hizmetleri
+- Azure Databricks
 
 Bu belgede, size kısaca kaynaklar açıklanır ve öğreticiler ve Kılavuzlar TDSP takımlar yayımladıktan bağlantılar sağlar. Bunlar, bunları adım adım kullanın ve bunları, akıllı uygulamalar oluşturmak için kullanmaya başlama öğrenmenize yardımcı olabilir. Bu kaynaklar hakkında daha fazla bilgi ürün sayfalarında kullanılabilir. 
 
@@ -48,9 +49,9 @@ Ayrıca, xgboost, mxnet ve Vowpal Wabbit gibi **ml ve AI araçları** da içerir
 
 Şu anda DSVM kullanılabilir **Windows** ve **Linux CentOS** işletim sistemleri. Üzerinde yürütmek için planlama veri bilimi projeleri gereksinimlerine göre DSVM (CPU çekirdek sayısı) ve bellek boyutunu seçin. 
 
-Windows DSVM sürümü hakkında daha fazla bilgi için bkz. [Microsoft Veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) Azure Marketi'nde. DSVM'nin Linux sürümü için bkz: [Linux veri bilimi sanal makinesi](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+DSVM 'nin Windows sürümü hakkında daha fazla bilgi için bkz. Azure Marketi 'nde [Microsoft veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) . DSVM'nin Linux sürümü için bkz: [Linux veri bilimi sanal makinesi](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Bazı genel veri bilimi görevlerini verimli bir şekilde DSVM üzerinde çalıştırma hakkında bilgi edinmek için bkz: [veri bilimi sanal makinesi üzerinde yapabileceğiniz on işlem](../data-science-virtual-machine/vm-do-ten-things.md)
+DSVM 'de ortak veri bilimi görevlerinin bazılarının nasıl yürütüleceğini öğrenmek için bkz. [veri bilimi sanal makinesi üzerinde yapabileceğiniz 10 şey](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark kümeleri
@@ -71,7 +72,7 @@ Azure SQL veri ambarı hakkında daha fazla bilgi için bkz. [SQL veri ambarı](
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Bir Kurumsal Çapta depo her türde herhangi bir resmi gereksinim veya uygulanan şema önce tek bir konumda toplanan verileri Azure veri gölü gibidir. Her türde verinin boyutu ya da yapı bağımsız olarak bir veri gölü veya ne kadar hızlı içe alındığından tutulması için bu esneklik sağlar. Kuruluşlar, ardından Hadoop kullanabilir veya bulmak için Gelişmiş analiz bu veri gölleri desen. Veri gölleri veri puanlamalar ve veri ambarı'na taşımadan önce daha düşük maliyetli veri hazırlığı için bir depo görebilir.
+Azure Data Lake, tek bir konumda toplanan tüm veri türlerinin kurumsal çapta bir deposudur, herhangi bir biçimsel gereksinimden önce veya uygulanan şemadan oluşur. Her türde verinin boyutu ya da yapı bağımsız olarak bir veri gölü veya ne kadar hızlı içe alındığından tutulması için bu esneklik sağlar. Kuruluşlar, ardından Hadoop kullanabilir veya bulmak için Gelişmiş analiz bu veri gölleri desen. Veri gölleri veri puanlamalar ve veri ambarı'na taşımadan önce daha düşük maliyetli veri hazırlığı için bir depo görebilir.
 
 Azure Data Lake hakkında daha fazla bilgi için bkz. [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Bir Azure Data Lake ile ölçeklenebilir uçtan uca veri bilimi çözümü oluşturmayı öğrenmek için bkz: [Azure Data lake'te ölçeklenebilir veri bilimi: uçtan uca kılavuz](data-lake-walkthrough.md)
 
@@ -94,11 +95,11 @@ Azure dosya depolama standart sunucu ileti bloğu (SMB) protokolünü kullanarak
 Proje verileri proje takım üyelerinizle paylaşın yer olarak bir Azure dosya depolama oluşturma özelliği, veri bilimi projeleri için özellikle yararlıdır. Her birinin ardından verilerin aynı kopyasını Azure dosya depolama alanına erişebilir. Bunlar ayrıca, bu dosya depolama proje yürütülmesi sırasında oluşturulan özellik kümeleri paylaşmak için kullanabilirsiniz. Bir istemci engagement projesiyse istemcilerinize özellikler ve proje verilerini sizinle paylaşmak için kendi Azure aboneliği kapsamında bir Azure dosya depolama oluşturabilirsiniz. Bu şekilde, istemci projesi veri varlıklarını tam denetime sahiptir. Azure dosya depolama hakkında daha fazla bilgi için bkz. [Windows üzerinde Azure dosya depolama ile çalışmaya başlama](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) ve [Azure dosya depolamayı Linux ile kullanma konusunda](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R ve Python Hizmetleri
 
-R Services (veritabanında) yeni Öngörüler keşfederek akıllı uygulama geliştirme ve dağıtma için bir platform sağlar. R topluluk tarafından sağlanan birçok paketleri de dahil olmak üzere zengin ve güçlü R dil modelleri oluşturun ve SQL Server verilerinizden Öngörüler oluşturmak için kullanabilirsiniz. R Services (veritabanında) R dili, SQL Server ile tümleştirmek için analiz maliyetlerini ve veri taşıma ile ilişkili güvenlik riskleri ortadan verilere yaklaştırılmasıyla tutulur.
+R Services (veritabanı Içi), yeni Öngörüler açığa çıkarmak için akıllı uygulamalar geliştirmeye ve dağıtmaya yönelik bir platform sağlar. R topluluk tarafından sağlanan birçok paketleri de dahil olmak üzere zengin ve güçlü R dil modelleri oluşturun ve SQL Server verilerinizden Öngörüler oluşturmak için kullanabilirsiniz. R Services (veritabanı Içi) R dilini SQL Server ile tümleştirdiğinden, analiz verileri yakın tutulur; bu da verileri taşıma ile ilişkili maliyetleri ve güvenlik risklerini ortadan kaldırır.
 
-R Services (veritabanında) SQL Server araçları ve teknolojileri kapsamlı bir dizi açık kaynak R diliyle destekler. Bunlar, üstün performans, güvenlik, güvenilirlik ve yönetilebilirlik sunar. Kolay ve bilindik araçları kullanarak R çözümleri dağıtabilirsiniz. Üretim uygulamalarınızı, R çalışma çağırın ve Öngörüler ve Transact-SQL kullanarak görselleri alma. Ayrıca R çözümlerinizin performansı ve ölçeği artırmak için ScaleR kitaplıkları kullanın. Daha fazla bilgi için [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+R Services (veritabanı Içi), kapsamlı bir SQL Server araçları ve teknolojileri kümesiyle açık kaynak R dilini destekler. Bunlar, üstün performans, güvenlik, güvenilirlik ve yönetilebilirlik sunar. Kolay ve bilindik araçları kullanarak R çözümleri dağıtabilirsiniz. Üretim uygulamalarınızı, R çalışma çağırın ve Öngörüler ve Transact-SQL kullanarak görselleri alma. Ayrıca R çözümlerinizin performansı ve ölçeği artırmak için ScaleR kitaplıkları kullanın. Daha fazla bilgi için [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
 TDSP takım Microsoft SQL Server 2016 R Services veri bilimi çözümlerini oluşturmak nasıl gösteren iki uçtan uca izlenecek yollar yayımladığı: biri R programcılarının, diğeri SQL geliştiricileri için. İçin **R programcılarının**, bkz: [veri bilimi uçtan uca kılavuz](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). İçin **SQL geliştiricileri**, bkz: [(eğitim) SQL geliştiricileri için veritabanında Advanced Analytics](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
@@ -135,7 +136,7 @@ Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsan
 
 1. Kopyalama tüm ssh anahtarı dahil olmak üzere *ssh-rsa*. 
 1. Azure DevOps hizmetleriniz için oturum açın. 
-1. Tıklayın **< adınız\>**  tıklayın ve sayfanın sağ üst köşesinde, **güvenlik**. 
+1. Sayfanın sağ üst köşesindeki **adınızı\>** tıklayın ve **güvenlik**' e tıklayın. 
     
    ![Adınıza tıklayın ve ardından güvenlik öğesini tıklatın](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -143,7 +144,7 @@ Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsan
 
    ![SSH ortak anahtarları ve ardından tıklama + Ekle'e tıklayın](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Yapıştırma ssh anahtarı yalnızca kopyaladığınız metin kutusuna ve kaydedin.
+1. Metin kutusuna kopyalanmış olan SSH anahtarını yapıştırın ve kaydedin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

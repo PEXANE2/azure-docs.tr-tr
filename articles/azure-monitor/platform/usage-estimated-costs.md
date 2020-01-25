@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
-description: Azure Izleyici kullanımını ve tahmini maliyetleri kullanma sürecine genel bakış sayfası
+title: Kullanım ve Tahmini maliyetler Azure İzleyici'de izleme
+description: Azure İzleyici kullanım ve Tahmini maliyetler sayfasında kullanma işlemine genel bakış
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 48abf95e65b6185f5c95a1f5d942091ed0f33122
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3fb51a9dc3f607d89934f6962588195e0f5c83f5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044169"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715777"
 ---
-# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Kullanım ve Tahmini maliyetler Azure İzleyici'de izleme
 
 > [!NOTE]
 > Bu makalede, birden çok Azure izleme özelliği genelinde kullanımı ve tahmini maliyetlerin nasıl görüntüleneceği açıklanmaktadır. Azure Izleyici 'nin belirli bileşenlerine ilişkin makaleler şunlardır:
@@ -68,28 +68,28 @@ Bu, şöyle bir görünüme neden olur:
 
 Buradan, "kaynağa göre maliyet" görünümünde daha ayrıntılı bilgi edinmek için bu birikmiş maliyet özetinden ayrıntıya gidebilirsiniz. Geçerli fiyatlandırma katmanlarında Azure günlük verileri, Log Analytics veya Application Insights kaynaklanıp aynı ölçüm kümesi üzerinden ücretlendirilir. Log Analytics veya Application Insights kullanımınızdan maliyetleri ayırmak için, **kaynak türüne**bir filtre ekleyebilirsiniz. Tüm Application Insights maliyetlerini görmek için kaynak türünü "Microsoft. Insights/bileşenler" olarak filtreleyin ve Log Analytics maliyetleri için kaynak türünü "Microsoft. operationalınsights/çalışma alanları" olarak filtreleyin. 
 
-[Kullanımınız Azure Portal kullanımınıza indirerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınıza daha fazla ayrıntı bulabilirsiniz. İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Contains" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir Microsoft. Insights/bileşenler ".  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
+[Kullanımınız Azure Portal kullanımınıza indirerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınıza daha fazla ayrıntı bulabilirsiniz. İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım, "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Microsoft. Insights/bileşenleri içerir" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir.  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
 
 > [!NOTE]
 > **Maliyet yönetimi** 'Ni **Azure maliyet yönetimi + faturalandırma** merkezinde kullanmak, izleme maliyetlerini büyük ölçüde anlamak için tercih edilen yaklaşımdır.  [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) ve [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) Için **kullanım ve tahmini maliyet** deneyimleri, Azure izleyici 'nin bu parçalarından her biri için daha derin öngörüler sağlar.
 
-Azure Izleyici kullanımınızı görüntülemeye yönelik başka bir seçenek de Izleyici hub 'ındaki **kullanım ve tahmini maliyetler** sayfasıdır. Bu, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)ve [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)gibi çekirdek izleme özelliklerinin kullanımını gösterir. Fiyatlandırma planlarındaki müşteriler 2018 Nisan 'dan önce kullanılabilir ve ayrıca, Öngörüler ve analiz teklifiyle satın alınan Log Analytics kullanımını da içerir.
+Azure Izleyici kullanımınızı görüntülemeye yönelik başka bir seçenek de Izleyici hub 'ındaki **kullanım ve tahmini maliyetler** sayfasıdır. Bu, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)ve [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)gibi çekirdek izleme özelliklerinin kullanımını gösterir. Nisan 2018 tarihinden önce kullanılabilir fiyatlandırma planları müşteriler, bu öngörüleri satın alınan Log Analytics kullanımı da içerir ve analizi sunar.
 
-Bu sayfada, kullanıcılar, abonelik başına toplanan son 31 gün boyunca kaynak kullanımını görüntüleyebilirler. kullanım eğilimlerini 31 günlük dönemde göstermek `Drill-ins`. Bu tahmin için çok fazla veri gelmesi gerekir, bu nedenle lütfen sayfa yüklenirken hasta olun.
+Bu sayfada, kullanıcılar kendi kaynak kullanımı son 31 gün için abonelik başına toplanan görüntüleyebilir. kullanım eğilimlerini 31 günlük dönemde göstermek `Drill-ins`. Çok fazla veri için bu tahmin, bu nedenle birlikte gelen gerektiğinde sayfa yüklenirken lütfen sabırlı olun.
 
-Bu örnekte, izleme kullanımı ve elde edilen maliyetlerin tahmini gösterilmektedir:
+Bu örnek, izleme kullanımını ve elde edilen maliyet tahmini gösterir:
 
-![Kullanım ve tahmini maliyetler portalı ekran görüntüsü](./media/usage-estimated-costs/001.png)
+![Kullanım ve Tahmini maliyetler portalı ekran görüntüsü](./media/usage-estimated-costs/001.png)
 
-Son 31 günlük dönemde kullanım eğilimlerini gösteren bir grafik açmak için aylık kullanım sütunundaki bağlantıyı seçin: 
+Son 31 gün dönem boyunca kullanım eğilimlerini gösteren bir grafiği'ni açmak için aylık kullanım sütunundaki bağlantıyı seçin: 
 
-![Düğüm başına çubuk grafik ekran görüntüsü](./media/usage-estimated-costs/002.png)
+![Çubuk grafik ekran düğüm başına dahil edilen](./media/usage-estimated-costs/002.png)
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Operations Management Suite abonelik yetkilendirmeleri
 
-Microsoft Operations Management Suite E1 ve E2 satın alan müşteriler, [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) ve [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)için düğüm başına veri alma yetkilendirmelerinde uygun değildir. Log Analytics çalışma alanları için bu yetkilendirmeleri veya belirli bir abonelikteki kaynakları Application Insights almak için: 
+Microsoft Operations Management Suite E1 ve E2 satın alan müşteriler için düğüm başına veri alımı yetkilendirmeler için uygun [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) ve [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Belirli bir abonelikte Bu destek haklarını Log Analytics çalışma alanları veya Application Insights kaynakları almak için: 
 
-- Log Analytics çalışma alanları "düğüm başına (OMS)" fiyatlandırma katmanını kullanmalıdır.
+- Log Analytics çalışma alanları "fiyatlandırma katmanında düğüm başına (OMS)" kullanmanız gerekir.
 - Application Insights kaynaklar "Kurumsal" fiyatlandırma katmanını kullanmalıdır.
 
 Kuruluşunuzun satın aldığı paketin düğüm sayısına bağlı olarak, bazı abonelikleri Kullandıkça Öde (GB başına) fiyatlandırma katmanına taşımak avantajlı olabilir, ancak bu dikkatli bir göz önünde bulundurmanız gerekir.

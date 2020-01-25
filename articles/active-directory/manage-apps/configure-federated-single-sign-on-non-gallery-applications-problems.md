@@ -15,17 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422545"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711882"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapılandırma sorunu
 
-Bir uygulamayı yapılandırırken sorunla karşılaşırsanız. [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery) makalesindeki tüm adımları izlemediğinizi doğrulayın.
+Bir uygulamayı yapılandırırken sorunla karşılaşırsanız. [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](configure-federated-single-sign-on-non-gallery-applications.md) makalesindeki tüm adımları izlemediğinizi doğrulayın.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Uygulamanın başka bir örneği eklenemiyor
 
@@ -41,7 +40,7 @@ Uygulama, önceki bir sürümü desteklemiyorsa, ikinci bir örnek yapılandıra
 
 Azure AD 'nin Kullanıcı kimlik doğrulamasından sonra yanıtta uygulamaya gönderdiği EntityId (Kullanıcı tanımlayıcısı) biçimini seçemezsiniz.
 
-Azure AD, NameID özniteliği (Kullanıcı tanımlayıcısı) için seçilen değere veya SAML AuthRequest içinde uygulama tarafından istenen biçime göre biçim seçer. Daha fazla bilgi için, Nameıdpolicy bölümünde [Çoklu oturum açma SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) makalesini ziyaret edin.
+Azure AD, NameID özniteliği (Kullanıcı tanımlayıcısı) için seçilen değere veya SAML AuthRequest içinde uygulama tarafından istenen biçime göre biçim seçer. Daha fazla bilgi için, Nameıdpolicy bölümünde [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md#authnrequest) makalesini ziyaret edin.
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Azure AD 'den uygulama meta verilerini veya sertifikayı nereden alabilirim?
 
@@ -69,7 +68,7 @@ Azure AD meta verileri almak için bir URL sağlamıyor. Meta veriler yalnızca 
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Bir uygulamaya gönderilen SAML taleplerini özelleştirmeyi bilmiyorum
 
-Uygulamanıza gönderilen SAML öznitelik taleplerini özelleştirmeyi öğrenmek için, daha fazla bilgi için [Azure Active Directory 'Da talep eşleme](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) konusuna bakın.
+Uygulamanıza gönderilen SAML öznitelik taleplerini özelleştirmeyi öğrenmek için, daha fazla bilgi için [Azure Active Directory 'Da talep eşleme](../develop/active-directory-claims-mapping.md) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Uygulamaları Azure Active Directory ile yönetme](what-is-application-management.md)

@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 2d2cb113261495b0217d056cf62019b79be7fa27
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8964f710ca4dfdf4710458f857c3a930fd755654
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767866"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711508"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
 Geçmişte, BT personeli çalışanları oluşturmak, güncelleştirmek ve silmek için el ile gerçekleştirilen yöntemlere güvendi. Çalışan verilerini eşitlemek için CSV dosyalarını veya özel betikleri karşıya yükleme gibi yöntemleri kullandık. Bu sağlama işlemlerinde hata açık, güvensiz ve yönetimi zor.
 
-Çalışanların, satıcıların veya contentik çalışanların kimlik yaşam döngülerini yönetmek için [Azure Active Directory (Azure AD) Kullanıcı sağlama hizmeti](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , bulut tabanlı insan kaynakları (hr) uygulamalarıyla tümleştirme sunar. Uygulama örnekleri, Workday veya başarılı faktörleri içerir.
+Çalışanların, satıcıların veya contentik çalışanların kimlik yaşam döngülerini yönetmek için [Azure Active Directory (Azure AD) Kullanıcı sağlama hizmeti](user-provisioning.md) , bulut tabanlı insan kaynakları (hr) uygulamalarıyla tümleştirme sunar. Uygulama örnekleri, Workday veya başarılı faktörleri içerir.
 
 Azure AD, aşağıdaki bulut HR uygulaması (uygulama) iş akışlarını etkinleştirmek için bu tümleştirmeyi kullanır:
 
@@ -86,7 +86,7 @@ Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azu
 - Bulut HR uygulamasının test ve üretim örneği.
 - Bulut HR uygulamasındaki Yönetici izinleri bir sistem tümleştirme kullanıcısı oluşturur ve test amacıyla çalışan verilerini test etmek için değişiklikler yapar.
 - Active Directory Kullanıcı sağlaması için, [Azure AD Connect sağlama aracısını](https://go.microsoft.com/fwlink/?linkid=847801)barındırmak üzere .NET 4.7.1 + Runtime Ile Windows Server 2012 veya üstünü çalıştıran bir sunucu gerekir.
-- Kullanıcıları Active Directory ve Azure AD arasında eşitlemeye yönelik [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect) .
+- Kullanıcıları Active Directory ve Azure AD arasında eşitlemeye yönelik [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) .
 
 ### <a name="training-resources"></a>Eğitim kaynakları
 
@@ -94,10 +94,10 @@ Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azu
 |:-|:-|
 | Videolar | [Etkin Azure dizininde kullanıcı hazırlama nedir?](https://youtu.be/_ZjARPpI6NI) |
 | | [Etkin Azure dizininde kullanıcı hazırlama dağıtımı](https://youtu.be/pKzyts6kfrw) |
-| Öğreticiler | [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) |
-| | [Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| SSS | [Otomatik Kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [Workday 'den Azure AD 'ye sağlama](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
+| Öğreticiler | [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi](../saas-apps/tutorial-list.md) |
+| | [Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| SSS | [Otomatik Kullanıcı sağlama](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| | [Workday 'den Azure AD 'ye sağlama](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Çözüm mimarisi
 
@@ -106,7 +106,7 @@ Aşağıdaki örnek, genel karma ortamlar için uçtan uca Kullanıcı sağlama 
 - **Bulut HR uygulamasından Active Directory 'e kadar yetkili ık veri akışı.** Bu akışta, HR olayı (Joiners-broşür-Leavers işlemi), Cloud HR App kiracısında başlatılır. Azure AD sağlama hizmeti ve Azure AD Connect sağlama Aracısı, Kullanıcı verilerini Cloud ık uygulama kiracısından Active Directory olarak temin edin. Olaya bağlı olarak, Active Directory işlemleri oluşturma, güncelleştirme, etkinleştirme ve devre dışı bırakma işlemlerine neden olabilir.
 - **Azure AD ile eşitleyin ve şirket içi Active Directory bulut HR uygulamasına geri e-posta ve Kullanıcı adı yazın.** Hesaplar Active Directory güncelleştirildikten sonra Azure AD ile Azure AD Connect arasında eşitlenir. E-posta adresleri ve Kullanıcı adı öznitelikleri, bulut HR uygulaması kiracıya geri yazılabilir.
 
-![İş akışı diyagramı](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
+![İş akışı diyagramı](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>İş akışının açıklaması
 
@@ -116,7 +116,7 @@ Diyagramda aşağıdaki anahtar adımları belirtilmiştir:  
 2. **Azure AD sağlama hizmeti** , bulut HR App kiracısından zamanlanan döngüleri çalıştırır ve Active Directory eşitleme için işlenmesi gereken değişiklikleri belirler.
 3. **Azure AD sağlama hizmeti** , Active Directory hesabı oluşturma, güncelleştirme, etkinleştirme ve devre dışı bırakma işlemlerini içeren bir istek yüküyle Azure AD Connect sağlama aracısını çağırır.
 4. **Azure AD Connect sağlama aracısı** Active Directory hesabı verilerini yönetmek için bir hizmet hesabı kullanır.
-5. **Azure AD Connect** , güncelleştirmeleri Active Directory çekmek için Delta [eşitlemesi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) çalıştırır.
+5. **Azure AD Connect** , güncelleştirmeleri Active Directory çekmek için Delta [eşitlemesi](../hybrid/how-to-connect-sync-whatis.md) çalıştırır.
 6. **Active Directory** GÜNCELLEŞTIRMELER Azure AD ile eşitlenir.
 7. **Azure AD sağlama hizmeti** , Azure AD 'den e-posta özniteliği ve Kullanıcı adı ' nı Cloud HR App kiracısına yazar.
 
@@ -130,7 +130,7 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlul
 
 IK kuruluştan, mevcut ık iş süreçlerine ve çalışan kimliğine ve iş verileri işleme gereksinimlerine giriş sağlayabilen bir temsilci ekleyin.
 
-### <a name="plan-communications"></a>İletişimi planlama
+### <a name="plan-communications"></a>İletişimleri planlayın
 
 İletişim, her yeni hizmetin başarısı için önemlidir. Deneyimlerinizin ne zaman ve nasıl değiştirileceği hakkında kullanıcılarınız ile etkin bir şekilde iletişim kurun. Sorunlarla karşılaştıklarında nasıl destek elde edebileceklerini öğrenin.
 
@@ -138,7 +138,7 @@ IK kuruluştan, mevcut ık iş süreçlerine ve çalışan kimliğine ve iş ver
 
 Bulut HR uygulamasından hedef sistemlere ık iş süreçlerini ve kimlik iş akışlarını tümleştirmek, çözümü üretime dağıtabilmeniz için önemli miktarda veri doğrulaması, veri dönüştürme, veri temizleme ve uçtan uca test gerektirir.
 
-İlk yapılandırmayı üretimdeki tüm kullanıcılara ölçeklendirmadan önce bir [pilot ortamda](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) çalıştırın.
+İlk yapılandırmayı üretimdeki tüm kullanıcılara ölçeklendirmadan önce bir [pilot ortamda](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) çalıştırın.
 
 ## <a name="select-cloud-hr-provisioning-connector-apps"></a>Cloud HR sağlama bağlayıcı uygulamalarını seçin
 
@@ -150,13 +150,13 @@ Bulut HR uygulaması ve Active Directory arasında Azure AD sağlama iş akışl
 
 Örneğin, aşağıdaki görüntüde Azure AD uygulama galerisinde bulunan Workday Bağlayıcısı uygulamaları listelenmektedir.
 
-![Azure Active Directory Portal Uygulama Galerisi](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
+![Azure Active Directory Portal Uygulama Galerisi](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
 
 ### <a name="decision-flow-chart"></a>Karar akışı grafiği
 
 Hangi bulut HR sağlama uygulamalarının senaryolarınızla ilgili olduğunu belirlemek için aşağıdaki karar akışı grafiğini kullanın.
 
-![Karar akışı grafiği](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
+![Karar akışı grafiği](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
 
 ## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>Azure AD Connect sağlama Aracısı dağıtım topolojisini tasarlama
 
@@ -184,7 +184,7 @@ Aşağıdaki üretim yapılandırması önerilir:
 |Yapılandırılacak sağlama bağlayıcı uygulamalarının sayısı|alt etki alanı başına bir uygulama|
 |Azure AD Connect sağlama Aracısı için sunucu Konağı|Windows 2012 R2 + etki alanı denetleyicileri Active Directory</br>Azure AD Connect hizmetiyle birlikte çalışabilir|
 
-![Şirket içi aracılara akış](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
+![Şirket içi aracılara akış](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
 
 ### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Tek bulut HR App Tenant-> ayrık Active Directory ormanında birden çok alt etki alanını hedefleme
 
@@ -198,13 +198,13 @@ Aşağıdaki üretim yapılandırması önerilir:
 |Yapılandırılacak sağlama bağlayıcı uygulamalarının sayısı|alt etki alanı başına bir uygulama|
 |Azure AD Connect sağlama Aracısı için sunucu Konağı|Windows 2012 R2 + etki alanı denetleyicileri Active Directory</br>Azure AD Connect hizmetiyle birlikte çalışabilir|
 
-![Tek bulut ık uygulama kiracısı Active Directory ormanı kopuk](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
+![Tek bulut ık uygulama kiracısı Active Directory ormanı kopuk](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect sağlama Aracısı gereksinimleri
 
 Active Directory Kullanıcı sağlama çözümüne yönelik bulut HR uygulaması, Windows 2012 R2 veya üstünü çalıştıran sunuculara bir veya daha fazla Azure AD Connect sağlama Aracısı dağıtmanızı gerektirir. Sunucular en az 4 GB RAM ve .NET 4.7.1 + çalışma zamanına sahip olmalıdır. Konak sunucusunun hedef Active Directory etki alanına ağ erişimi olduğundan emin olun.
 
-Şirket içi ortamı hazırlamak için Azure AD Connect sağlama Aracısı Yapılandırma Sihirbazı aracıyı Azure AD kiracınızla kaydeder, [bağlantı noktaları açar](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports), [URL 'lere erişim sağlar](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#allow-access-to-urls)ve [giden HTTPS proxy yapılandırmasını](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)destekler.
+Şirket içi ortamı hazırlamak için Azure AD Connect sağlama Aracısı Yapılandırma Sihirbazı aracıyı Azure AD kiracınızla kaydeder, [bağlantı noktaları açar](application-proxy-add-on-premises-application.md#open-ports), [URL 'lere erişim sağlar](application-proxy-add-on-premises-application.md#allow-access-to-urls)ve [giden HTTPS proxy yapılandırmasını](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)destekler.
 
 Sağlama Aracısı, Active Directory etki alanlarıyla iletişim kurmak için bir hizmet hesabı kullanır. Aracıyı yüklemeden önce, aşağıdaki gereksinimleri karşılayan Active Directory Kullanıcıları ve Bilgisayarları ' nda bir hizmet hesabı oluşturun:
 
@@ -221,7 +221,7 @@ Bulut HR uygulamasından Active Directory veya Azure AD 'ye sağlamayı etkinle�
 
 ### <a name="define-scoping-filters"></a>Kapsam filtrelerini tanımlama
 
-Bulut HR uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcıların sağlanması gerektiğini belirleyen öznitelik tabanlı kuralları tanımlamak için [kapsam filtrelerini](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) kullanın.
+Bulut HR uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcıların sağlanması gerektiğini belirleyen öznitelik tabanlı kuralları tanımlamak için [kapsam filtrelerini](define-conditional-rules-for-provisioning-user-accounts.md) kullanın.
 
 Birleştiriciler sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın:
 
@@ -233,7 +233,7 @@ Gereksinimlerinize bağlı olarak, öznitelik eşlemelerini yapılandırırken, 
 
 ### <a name="determine-matching-attributes"></a>Eşleşen öznitelikleri belirleme
 
-Sağlama sayesinde, kaynak ve hedef sistem arasındaki mevcut hesapları eşleştirme imkanını alırsınız. Bulut HR uygulamasını Azure AD sağlama hizmeti ile tümleştirdiğinizde, bulut HR uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcı verilerinin akaceğini belirlemek için [öznitelik eşlemesini yapılandırabilirsiniz](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal#mappings) .
+Sağlama sayesinde, kaynak ve hedef sistem arasındaki mevcut hesapları eşleştirme imkanını alırsınız. Bulut HR uygulamasını Azure AD sağlama hizmeti ile tümleştirdiğinizde, bulut HR uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcı verilerinin akaceğini belirlemek için [öznitelik eşlemesini yapılandırabilirsiniz](configure-automatic-user-provisioning-portal.md#mappings) .
 
 Birleştiriciler sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın:
 
@@ -243,13 +243,13 @@ Birleştiriciler sürecini başlattığınızda, aşağıdaki gereksinimleri top
 - Bir kimlik yaşam döngüsü perspektifinden, çalışanı iş dönüşümünü veya başka bir şekilde nasıl işleyeceğinizi?
 - Dönüştürülmüş kullanıcılar eski Active Directory hesaplarını saklar veya yenilerini alırlar mi?
 
-Gereksinimlerinize bağlı olarak, Azure AD, öznitelik eşlemeleri için sabit değerler veya [yazma ifadeleri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings)sağlayarak doğrudan öznitelik eşlemesini destekler. Bu esneklik, hedeflenen uygulama özniteliğinde doldurulduğuna ilişkin nihai denetim sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) ve Graf Gezginini kullanabilirsiniz.
+Gereksinimlerinize bağlı olarak, Azure AD, öznitelik eşlemeleri için sabit değerler veya [yazma ifadeleri](functions-for-customizing-application-data.md)sağlayarak doğrudan öznitelik eşlemesini destekler. Bu esneklik, hedeflenen uygulama özniteliğinde doldurulduğuna ilişkin nihai denetim sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](export-import-provisioning-configuration.md) ve Graf Gezginini kullanabilirsiniz.
 
 Varsayılan olarak, bulut HR uygulamasındaki benzersiz çalışan KIMLIĞINI temsil eden öznitelik, *Active Directory ' deki Unique özniteliğiyle eşlenen* eşleşen öznitelik olarak kullanılır. Örneğin, Workday App senaryosunda, **Workday** **workerıd** özniteliği Active Directory **ÇalışanNo** özniteliğiyle eşleştirilir.
 
 Birden çok eşleşen öznitelik ayarlayabilir ve eşleşen önceliği atayabilirsiniz. Eşleşen önceliğe göre değerlendirilir. Bir eşleşme bulunur başlamaz, başka eşleşen öznitelikler değerlendirilir.
 
-Ayrıca, varolan öznitelik eşlemelerini değiştirme veya silme gibi [varsayılan öznitelik eşlemelerini özelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes#understanding-attribute-mapping-types). Ayrıca, iş gereksinimlerinize göre yeni öznitelik eşlemeleri de oluşturabilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için Cloud HR App öğreticisi ( [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) konusuna bakın.
+Ayrıca, varolan öznitelik eşlemelerini değiştirme veya silme gibi [varsayılan öznitelik eşlemelerini özelleştirebilirsiniz](customize-application-attributes.md#understanding-attribute-mapping-types). Ayrıca, iş gereksinimlerinize göre yeni öznitelik eşlemeleri de oluşturabilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için Cloud HR App öğreticisi ( [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) konusuna bakın.
 
 ### <a name="determine-user-account-status"></a>Kullanıcı hesabı durumunu belirleme
 
@@ -268,7 +268,7 @@ Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksi
 | | Çalışan ve çalışanların çalışan dönüştürmeleri mevcut Active Directory hesaplarını nasıl etkiler? |
 | | Active Directory de rescind işlemini nasıl işleirsiniz? Daha sonra Active Directory, birleştirici işlemin bir parçası olarak, bu işlemlerin oluşturulması gerekir. |
 
-Gereksinimlerinize bağlı olarak, Active Directory hesabının bir veri noktalarının birleşimine göre etkinleştirilmesi veya devre dışı bırakılması için [Azure AD deyimlerini](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data) kullanarak eşleme mantığını özelleştirebilirsiniz.
+Gereksinimlerinize bağlı olarak, Active Directory hesabının bir veri noktalarının birleşimine göre etkinleştirilmesi veya devre dışı bırakılması için [Azure AD deyimlerini](functions-for-customizing-application-data.md) kullanarak eşleme mantığını özelleştirebilirsiniz.
 
 ### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Cloud ık uygulamasını Active Directory Kullanıcı özniteliklerine eşleyin
 
@@ -286,13 +286,13 @@ Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki ger
 | | Kullanıcı sonlandırmasını işlemek için hangi etkin tarihler dikkate alınır? |
 | | Çalışan ve iş çalışanı dönüştürmelerinde var olan Active Directory hesapları nasıl etkiler? |
 
-Gereksinimlerinize bağlı olarak, eşlemeleri tümleştirme hedeflerinize uyacak şekilde değiştirebilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için belirli bulut HR uygulama öğreticisine ( [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) bakın.
+Gereksinimlerinize bağlı olarak, eşlemeleri tümleştirme hedeflerinize uyacak şekilde değiştirebilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için belirli bulut HR uygulama öğreticisine ( [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) bakın.
 
 ### <a name="generate-a-unique-attribute-value"></a>Benzersiz bir öznitelik değeri oluştur
 
 Birleştiriciler sürecini başlattığınızda, CN, samAccountName ve benzersiz kısıtlamalara sahip UPN gibi öznitelikleri ayarladığınızda benzersiz öznitelik değerleri oluşturmanız gerekebilir.
 
-Azure AD işlevi [Selectuniquevalues](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#selectuniquevalue) her kuralı değerlendirir ve hedef sistemde benzersizlik için oluşturulan değeri denetler. Bir örnek için bkz. [userPrincipalName (UPN) özniteliği için benzersiz değer oluşturma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#generate-unique-value-for-userprincipalname-upn-attribute).
+Azure AD işlevi [Selectuniquevalues](functions-for-customizing-application-data.md#selectuniquevalue) her kuralı değerlendirir ve hedef sistemde benzersizlik için oluşturulan değeri denetler. Bir örnek için bkz. [userPrincipalName (UPN) özniteliği için benzersiz değer oluşturma](functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute).
 
 > [!NOTE]
 > Bu işlev şu anda yalnızca Kullanıcı sağlama Active Directory için iş günü için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz.
@@ -301,7 +301,7 @@ Azure AD işlevi [Selectuniquevalues](https://docs.microsoft.com/azure/active-di
 
 Active Directory Kullanıcı hesaplarını iş birimlerine, konumlarına ve departmanlara göre kapsayıcılara yerleştirmek yaygın bir gereksinimdir. Bir geçiş işlemi başlattığınızda ve bir gözehirde kuruluş değişikliği varsa, kullanıcıyı Active Directory bir OU 'dan diğerine taşımanız gerekebilir.
 
-OU atamasının iş mantığını yapılandırmak ve onu **parentDistinguishedName**Active Directory özniteliğiyle eşlemek için [Switch ()](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#switch) işlevini kullanın.
+OU atamasının iş mantığını yapılandırmak ve onu **parentDistinguishedName**Active Directory özniteliğiyle eşlemek için [Switch ()](functions-for-customizing-application-data.md#switch) işlevini kullanın.
 
 Örneğin, kullanıcı OU 'da ık özniteliği **Municipsellik**temelinde oluşturmak istiyorsanız aşağıdaki ifadeyi kullanabilirsiniz:
 
@@ -313,20 +313,20 @@ Bu ifadeyle, Municipitesi değeri Dallas, Austin, Seattle veya Londra ise, Kulla
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Yeni Kullanıcı hesaplarının parola teslimini planlayın
 
-Birleştiriciler sürecini başlattığınızda, Yeni Kullanıcı hesaplarının geçici bir parolasını ayarlayıp teslim etmeniz gerekir. Azure AD Kullanıcı sağlama ile bulut HR ile Kullanıcı için Azure AD [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) özelliğini bir gün boyunca alabilirsiniz.
+Birleştiriciler sürecini başlattığınızda, Yeni Kullanıcı hesaplarının geçici bir parolasını ayarlayıp teslim etmeniz gerekir. Azure AD Kullanıcı sağlama ile bulut HR ile Kullanıcı için Azure AD [self servis parola sıfırlama](../authentication/quickstart-sspr.md) (SSPR) özelliğini bir gün boyunca alabilirsiniz.
 
 SSPR, BT yöneticilerinin kullanıcıların parolalarını sıfırlamalarını veya hesaplarının kilidini açmalarına olanak tanımak için basit bir araçtır. Bulut HR uygulamasından **Mobil sayı** özniteliğini Active Directory ve Azure AD ile eşitlemek için sağlayabilirsiniz. **Cep telefonu numarası** ÖZNITELIĞI Azure AD 'de olduktan sonra, Kullanıcı hesabı için SSPR 'yi etkinleştirebilirsiniz. Ardından, bir gün sonra Yeni Kullanıcı, kimlik doğrulaması için kayıtlı ve doğrulanan mobil numarayı kullanabilir.
 
 ## <a name="plan-for-initial-cycle"></a>İlk döngüyü planlayın
 
-Azure AD sağlama hizmeti ilk kez çalıştırıldığında, bulut HR uygulamasındaki tüm Kullanıcı nesnelerinin anlık görüntüsünü oluşturmak için bulut HR uygulamasına karşı bir [Başlangıç döngüsünü](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) gerçekleştirir. İlk Döngülerde geçen süre, kaynak sistemde kaç kullanıcının var olduğunu doğrudan bağlıdır. 100.000 ' den fazla kullanıcısı olan bazı bulut ık uygulama kiracılarının ilk döngüsünün süresi uzun sürebilir.
+Azure AD sağlama hizmeti ilk kez çalıştırıldığında, bulut HR uygulamasındaki tüm Kullanıcı nesnelerinin anlık görüntüsünü oluşturmak için bulut HR uygulamasına karşı bir [Başlangıç döngüsünü](how-provisioning-works.md#initial-cycle) gerçekleştirir. İlk Döngülerde geçen süre, kaynak sistemde kaç kullanıcının var olduğunu doğrudan bağlıdır. 100.000 ' den fazla kullanıcısı olan bazı bulut ık uygulama kiracılarının ilk döngüsünün süresi uzun sürebilir.
 
 **Büyük bulut İK uygulama kiracılar (> 30000 kullanıcıları) için,** aşamalı aşamalar içinde ilk döngüyü çalıştırın. Artımlı güncelleştirmeleri yalnızca, farklı Kullanıcı hazırlama senaryoları için Active Directory doğru özniteliklerin ayarlandığını doğruladıktan sonra başlatın. Buradaki sırayı izleyin.
 
 1. [Kapsam filtresini](#plan-scoping-filters-and-attribute-mapping)ayarlayarak yalnızca sınırlı bir kullanıcı kümesi için başlangıç döngüsünü çalıştırın.
 2. İlk çalıştırma için seçilen kullanıcılar için ayarlanan Active Directory hesap sağlamayı ve öznitelik değerlerini doğrulayın. Sonuç beklentilerinizi karşılıyorsa, daha fazla kullanıcı eklemek ve ikinci çalıştırmanın sonuçlarını doğrulamak için kapsam filtresini genişletin.
 
-Test kullanıcıları için başlangıç döngüsünün sonuçlarını tatmin ettikten sonra, [Artımlı güncelleştirmeleri](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles)başlatın.
+Test kullanıcıları için başlangıç döngüsünün sonuçlarını tatmin ettikten sonra, [Artımlı güncelleştirmeleri](how-provisioning-works.md#incremental-cycles)başlatın.
 
 ## <a name="plan-testing-and-security"></a>Test ve güvenlik planlaması
 
@@ -366,7 +366,7 @@ Bulut HR Kullanıcı sağlama uygulamasının üretim ortamında istendiği gibi
 
 Çözüm gereksinimlerinize göre hizalanan bulut HR uygulamasını seçin.
 
-**Workday**: çalışan profillerini Workday 'den Active Directory ve Azure AD 'ye aktarmak için bkz. [öğretici: otomatik Kullanıcı sağlaması Için Workday 'yi yapılandırma](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-your-deployment). İsteğe bağlı olarak, e-posta adresini ve Kullanıcı adını Workday 'e geri yazabilirsiniz.
+**Workday**: çalışan profillerini Workday 'den Active Directory ve Azure AD 'ye aktarmak için bkz. [öğretici: otomatik Kullanıcı sağlaması Için Workday 'yi yapılandırma](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). İsteğe bağlı olarak, e-posta adresini ve Kullanıcı adını Workday 'e geri yazabilirsiniz.
 
 ## <a name="manage-your-configuration"></a>Yapılandırmanızı yönetin
 
@@ -374,21 +374,21 @@ Azure AD, kuruluşunuzun Kullanıcı sağlama kullanımı ve denetim günlükler
 
 ### <a name="gain-insights-from-reports-and-logs"></a>Raporlardan ve günlüklerden öngörü elde edin
 
-Başarılı bir [Başlangıç döngüsünden](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü öğreticilerde tanımlanan aralıklarda sonsuza kadar sürekli artımlı güncelleştirmeler çalıştırmaya devam eder:
+Başarılı bir [Başlangıç döngüsünden](how-provisioning-works.md#initial-cycle)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü öğreticilerde tanımlanan aralıklarda sonsuza kadar sürekli artımlı güncelleştirmeler çalıştırmaya devam eder:
 
 - Hizmet el ile durduruldu. [Azure Portal](https://portal.azure.com/) veya uygun [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
 - Yeni bir başlangıç çevrimi, öznitelik eşlemelerinde veya kapsam filtrelerinizdeki bir değişikliğe göre tetiklenir.
 - Sağlama işlemi, yüksek hata oranı nedeniyle karantinaya alınır. Dört haftadan uzun bir süre içinde kalır ve bu süre otomatik olarak devre dışıdır.
 
-Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için, [günlükleri incelemeyi ve sağlama etkinliğine ilişkin raporları almayı öğrenin](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için, [günlükleri incelemeyi ve sağlama etkinliğine ilişkin raporları almayı öğrenin](check-status-user-account-provisioning.md).
 
 #### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
 Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD denetim günlüklerine kaydedilir. Azure AD denetim günlüklerini daha fazla analiz için Azure Izleyici günlüklerine yönlendirebilirsiniz. Azure Izleyici günlükleri (Log Analytics çalışma alanı olarak da bilinir) sayesinde, olayları bulmak, eğilimleri çözümlemek ve çeşitli veri kaynakları arasında bağıntı gerçekleştirmek için verileri sorgulayabilirsiniz. Pratik Kullanıcı senaryolarında Azure AD günlükleri için Azure Izleyici günlüklerini kullanmanın avantajlarını öğrenmek için bu [videoyu](https://youtu.be/MP5IaCTwkQg) izleyin.
 
-Ortamınızdaki sağlama olayları etrafında [önceden oluşturulmuş raporlara](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) erişim sağlamak IÇIN [Azure ad etkinlik günlükleri için Log Analytics görünümlerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views) yükler.
+Ortamınızdaki sağlama olayları etrafında [önceden oluşturulmuş raporlara](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) erişim sağlamak IÇIN [Azure ad etkinlik günlükleri için Log Analytics görünümlerini](../reports-monitoring/howto-install-use-log-analytics-views.md) yükler.
 
-Daha fazla bilgi için bkz. Azure [izleyici günlüklerinizi Azure ad etkinlik günlüklerini çözümleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics).
+Daha fazla bilgi için bkz. Azure [izleyici günlüklerinizi Azure ad etkinlik günlüklerini çözümleme](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
 
 ### <a name="manage-personal-data"></a>Kişisel verileri yönetme
 
@@ -400,21 +400,21 @@ Azure AD sağlama hizmeti, raporlar oluşturmaz, analiz gerçekleştirmez veya 3
 
 Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki makalelere bakın:
 
-- [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-- [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
-- [Azure AD Galeri uygulamasına Kullanıcı hazırlama saati veya daha fazlasını sürüyor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
-- [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
-- [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
-- [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
-- [Windows Olay Görüntüleyicisi aracı sorunlarını giderme için ayarlama](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [Hizmet sorunlarını giderme için Azure portal denetim günlüklerini ayarlama](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [AD Kullanıcı hesabı oluşturma işlemleri için günlükleri anlama](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-ad-user-account-create-operations)
-- [Yönetici güncelleştirme işlemlerine yönelik günlükleri anlama](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-manager-update-operations)
-- [Yaygın olarak karşılaşılan hatalar çözümleniyor](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#resolving-commonly-encountered-errors)
+- [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](application-provisioning-config-problem.md)
+- [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](user-provisioning-sync-attributes-for-mapping.md)
+- [Azure AD Galeri uygulamasına Kullanıcı hazırlama saati veya daha fazlasını sürüyor](application-provisioning-when-will-provisioning-finish.md)
+- [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](application-provisioning-config-problem-storage-limit.md)
+- [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](application-provisioning-config-problem-no-users-provisioned.md)
+- [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Windows Olay Görüntüleyicisi aracı sorunlarını giderme için ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [Hizmet sorunlarını giderme için Azure portal denetim günlüklerini ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [AD Kullanıcı hesabı oluşturma işlemleri için günlükleri anlama](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [Yönetici güncelleştirme işlemlerine yönelik günlükleri anlama](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [Yaygın olarak karşılaşılan hatalar çözümleniyor](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-- [Öznitelik eşlemeleri için ifadeler yazma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+- [Öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)
 - [Azure AD eşitleme API 'sine genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-- [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
-- [Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+- [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](skip-out-of-scope-deletions.md)
+- [Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi](provisioning-agent-release-version-history.md)

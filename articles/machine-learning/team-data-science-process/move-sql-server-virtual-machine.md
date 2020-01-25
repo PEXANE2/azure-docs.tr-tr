@@ -3,20 +3,20 @@ title: Bir SQL Server sanal makinesi - Team Data Science Process için veri taş
 description: Verileri düz dosyalara veya bir şirket içi SQL Server'dan Azure sanal makinesinde SQL Server'a taşıyın.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ddc732655c7cfb72c4948f83752440608332915d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974081"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721379"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Bir Azure sanal makinesinde SQL Server’a veri taşıma
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda, verileri bir Azure sanal makinesinde SQL Server'a taşıma
 | <b>Düz dosya</b> |1. <a href="#insert-tables-bcp">komut satırı toplu kopyalama yardımcı programı (bcp)</a><br> 2. <a href="#insert-tables-bulkquery">SQL sorgusunu toplu ekleme</a><br> 3. <a href="#sql-builtin-utilities">SQL Server Içindeki grafik yerleşik yardımcı programlar</a> |
 | <b>Şirket içi SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">bir SQL Server veritabanını MICROSOFT Azure VM sihirbazına dağıtma</a><br> 2. <a href="#export-flat-file">düz bir dosyaya aktarın</a><br> 3. <a href="#sql-migration">SQL veritabanı geçiş Sihirbazı</a> <br> 4. <a href="#sql-backup">veritabanı yedekleme ve geri yükleme</a><br> |
 
-Bu belge SQL komutlarını SQL Server Management Studio veya Visual Studio veritabanı Gezgini yürütülür varsaydığını unutmayın.
+Bu belgede SQL komutlarının SQL Server Management Studio veya Visual Studio Veritabanı Gezgini yürütüldüğü varsayılmaktadır.
 
 > [!TIP]
 > Alternatif olarak, kullandığınız [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) oluşturmak ve verileri Azure'da bir SQL Server VM taşıyacaktır bir işlem hattı zamanlamak için. Daha fazla bilgi için [Azure Data Factory (kopyalama etkinliği) ile veri kopyalama](../../data-factory/copy-activity-overview.md).
@@ -54,7 +54,7 @@ Verilerinizi (bir satır/sütun biçimde düzenlenmesi) düz bir dosya ise, bu S
 3. [SQL Server'ın (içeri/dışarı aktarma, SSIS) grafik yerleşik yardımcı programları](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>Komut satırı toplu kopyalama (BCP) yardımcı programı
-BCP ile SQL Server yüklü bir komut satırı yardımcı programıdır ve verilerini taşımak için hızlı yollarından biridir. Bu, tüm üç SQL Server çeşitleri (şirket içi SQL Server, SQL Azure ve Azure üzerinde SQL Server VM) üzerinde çalışır.
+BCP ile SQL Server yüklü bir komut satırı yardımcı programıdır ve verilerini taşımak için hızlı yollarından biridir. Bu, üç SQL Server varyantları (Şirket içi SQL Server, SQL Azure ve SQL Server VM Azure 'da) üzerinde çalışmaktadır.
 
 > [!NOTE]
 > **Verilerim için BCP olduğu?**  
@@ -64,21 +64,21 @@ BCP ile SQL Server yüklü bir komut satırı yardımcı programıdır ve verile
 
 1. Hedef SQL Server veritabanında veritabanı ve tabloları oluşturduğunuzdan emin olun. Bunu yapmak nasıl bir örnek aşağıdadır `Create Database` ve `Create Table` komutları:
 
-```sql
-CREATE DATABASE <database_name>
+    ```sql
+    CREATE DATABASE <database_name>
+    
+    CREATE TABLE <tablename>
+    (
+        <columnname1> <datatype> <constraint>,
+        <columnname2> <datatype> <constraint>,
+        <columnname3> <datatype> <constraint>
+    )
+    ```
 
-CREATE TABLE <tablename>
-(
-    <columnname1> <datatype> <constraint>,
-    <columnname2> <datatype> <constraint>,
-    <columnname3> <datatype> <constraint>
-)
-```
-
-1. Bcp, yüklü olduğu makinenin komut satırından aşağıdaki komutu gönderdikten tarafından tablo şemasını açıklayan biçim dosyası oluşturur.
+1. BCP 'nin yüklü olduğu makinenin komut satırından aşağıdaki komutu vererek tablo şemasını açıklayan biçim dosyasını oluşturun.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-1. Bcp komut aşağıdaki gibi kullanarak veritabanına veri ekleyin. SQL Server aynı makinede yüklü varsayılarak bu komut satırından çalışması gerekir:
+1. Aynı makineye SQL Server yüklendiğinde komut satırından çalışması gereken bcp komutunu kullanarak verileri veritabanına ekleyin:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -87,7 +87,7 @@ CREATE TABLE <tablename>
 >
 
 ### <a name="insert-tables-bulkquery-parallel"></a>Eklemeleri paralelleştirmek için daha hızlı veri taşıma
-Taşınan veriler büyükse, şeyler paralel bir PowerShell Betiği olarak aynı anda birden çok BCP komutları yürüterek düşebileceğimizi.
+Taşıdığınız veriler büyükse, bir PowerShell betiğinden paralel olarak birden çok BCP komutunu aynı anda yürüten şeyleri hızlandırabilirsiniz.
 
 > [!NOTE]
 > **Büyük veri** alımı Büyük ve çok büyük veri kümelerinde veri yüklemeyi iyileştirmek için, mantıksal ve fiziksel veritabanı tablolarınızı birden çok dosya grubu ve bölüm tablosu kullanarak bölümleyin. Oluşturma ve bölüm tablolara veri yükleme hakkında daha fazla bilgi için bkz. [paralel yük SQL bölüm tablolarından](parallel-load-sql-partitioned-tables.md).
@@ -139,25 +139,25 @@ Toplu ekleme için bazı örnek komutlar şunlardır aşağıda gösterildiği g
 
 1. Verilerinizi analiz edin ve SQL Server veritabanı herhangi bir özel alanın tarihler gibi aynı biçimde varsayar emin olmak için içeri aktarmadan önce tüm özel seçenekleri belirleyin. (Verilerinizi yıl ay gün biçimine tarihi içeriyorsa) tarih biçimini yıl ay-günlük ayarlamak nasıl bir örnek aşağıda verilmiştir:
 
-```sql
-SET DATEFORMAT ymd;
-```
-1. Toplu içeri aktarma deyimlerini kullanarak verileri içeri aktarın:
+    ```sql
+    SET DATEFORMAT ymd;
+    ```
+2. Toplu içeri aktarma deyimlerini kullanarak verileri içeri aktarın:
 
-```sql
-BULK INSERT <tablename>
-FROM
-'<datafilename>'
-WITH
-(
-    FirstRow = 2,
-    FIELDTERMINATOR = ',', --this should be column separator in your data
-    ROWTERMINATOR = '\n'   --this should be the row separator in your data
-)
-```
+    ```sql
+    BULK INSERT <tablename>
+    FROM
+    '<datafilename>'
+    WITH
+    (
+        FirstRow = 2,
+        FIELDTERMINATOR = ',', --this should be column separator in your data
+        ROWTERMINATOR = '\n'   --this should be the row separator in your data
+    )
+    ```
 
 ### <a name="sql-builtin-utilities"></a>SQL Server'da yerleşik yardımcı programları
-Azure'da bir düz dosyadan SQL Server VM veri aktarmak için SQL Server tümleştirmeler Services (SSIS) kullanabilirsiniz.
+SQL Server Integration Services (SSIS) kullanarak verileri Azure üzerinde SQL Server VM bir düz dosyadan içeri aktarabilirsiniz.
 SSIS iki studio ortamlarında kullanılabilir. Ayrıntılar için bkz [Integration Services (SSIS) ve Studio ortamları](https://technet.microsoft.com/library/ms140028.aspx):
 
 * SQL Server veri araçları hakkında daha fazla bilgi için bkz: [Microsoft SQL Server veri araçları](https://msdn.microsoft.com/data/tools.aspx)  
@@ -171,7 +171,7 @@ Aşağıdaki geçiş stratejileri de kullanabilirsiniz:
 3. [SQL veritabanı Geçiş Sihirbazı](#sql-migration)
 4. [Yedekleme geri veritabanı ve geri yükleme](#sql-backup)
 
-Biz bunların her biri aşağıda açıklanmıştır:
+Aşağıdaki seçeneklerin her birini aşağıda anladık:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Bir Microsoft Azure VM Sihirbazı için bir SQL Server veritabanı dağıtma
 **Bir Microsoft Azure VM Sihirbazı için bir SQL Server veritabanı dağıtma** verileri bir şirket içi SQL Server örneğinden bir Azure sanal makinesinde SQL Server'a taşımak için bir basit ve önerilen yoludur. Ayrıntılı adımlar yanı sıra başka alternatifler hakkında ayrıntılı bilgi, bkz. [bir veritabanını Azure VM'deki SQL Server'a geçirme](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
@@ -203,7 +203,7 @@ Açıklandığı gibi bir şirket içi SQL Server'dan dışarı aktarma verileri
 SQL Server'ı destekler:
 
 1. [Arka veritabanı yedeklemek ve geri yükleme işlevselliğinin](https://msdn.microsoft.com/library/ms187048.aspx) (her ikisi de bir yerel dosya veya bacpac vermek için blob) ve [veri katmanı uygulamaları](https://msdn.microsoft.com/library/ee210546.aspx) (bacpac kullanarak).
-2. Doğrudan kopyalanmış veritabanı veya varolan bir SQL Azure veritabanına kopyalama Azure'da SQL Server Vm'leri oluşturma olanağı. Daha fazla ayrıntı için [veritabanı kopyalama Sihirbazı'nı](https://msdn.microsoft.com/library/ms188664.aspx).
+2. Doğrudan kopyalanmış veritabanı veya varolan bir SQL Azure veritabanına kopyalama Azure'da SQL Server Vm'leri oluşturma olanağı. Daha fazla bilgi için bkz. [veritabanını kopyalama Sihirbazı 'Nı kullanma](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Veritabanı geri görüntüsü yukarı/geri yükleme SQL Server Management Studio seçenekleri aşağıda gösterilmiştir.
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: e97a6e1adff02001e36a43d9fb4a917b7e133257
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 11f5c07305fa9192097dbcb1386c13707c0d46f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922447"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711127"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları
 
@@ -825,7 +825,7 @@ Anahtar, yukarıdaki `code`adlı bir sorgu dizesi değişkenine dahil edilebilir
 Anahtar gerektirmeyen anonim isteklere izin verebilirsiniz. Ana anahtarın kullanılmasını da gerekli kılabilirsiniz. JSON bağlamasındaki `authLevel` özelliğini kullanarak varsayılan yetkilendirme düzeyini değiştirirsiniz. Daha fazla bilgi için bkz. [tetikleyici-yapılandırma](#trigger---configuration).
 
 > [!NOTE]
-> İşlevler yerel olarak çalıştırılırken, kimlik doğrulama, belirtilen Yetkilendirme düzeyi ayarından bağımsız olarak devre dışıdır. Azure 'da yayımladıktan sonra, tetikleyicinizdeki `authLevel` ayarı zorlanır. [Bir kapsayıcıda yerel olarak](functions-create-function-linux-custom-image.md#run-the-image-locally)çalıştırılırken Anahtarlar hala gereklidir.
+> İşlevler yerel olarak çalıştırılırken, kimlik doğrulama, belirtilen Yetkilendirme düzeyi ayarından bağımsız olarak devre dışıdır. Azure 'da yayımladıktan sonra, tetikleyicinizdeki `authLevel` ayarı zorlanır. [Bir kapsayıcıda yerel olarak](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)çalıştırılırken Anahtarlar hala gereklidir.
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>Üretimde bir HTTP uç noktasının güvenliğini sağlama
@@ -872,7 +872,7 @@ HTTP tetikleyicisini kullanan bir işlev 230 saniye içinde tamamlanmazsa, [Azur
 
 ## <a name="output"></a>Çıktı
 
-Http istek göndericisine yanıt vermek için HTTP çıkış bağlamasını kullanın. Bu bağlama bir HTTP tetikleyici gerektirir ve tetikleyicinin isteğiyle ilişkilendirilen yanıtı özelleştirme imkanı sunar. Bir HTTP çıkış bağlaması sağlanmazsa, bir HTTP tetikleyicisi, 1. x 204 veya 2. x ve üzeri Işlevlerde boş bir gövdeye sahip bir Içerik olmayan http 200 ' i döndürür.
+Http istek göndericisine yanıt vermek için HTTP çıkış bağlamasını kullanın. Bu bağlama bir HTTP tetikleyicisi gerektirir ve tetikleyicinin isteğiyle ilişkili yanıtı özelleştirmenize olanak sağlar. Bir HTTP çıkış bağlaması sağlanmazsa, bir HTTP tetikleyicisi, 1. x 204 veya 2. x ve üzeri Işlevlerde boş bir gövdeye sahip bir Içerik olmayan http 200 ' i döndürür.
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
@@ -924,7 +924,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 |HSTS|etkin değil|`isEnabled` `true`olarak ayarlandığında, [.NET Core 'un http katı taşıma güvenliği (HSTS) davranışı](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) [`HstsOptions` sınıfında](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)tanımlandığı gibi zorlanır. Yukarıdaki örnek ayrıca [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) özelliğini 10 gün olarak ayarlar. `hsts` desteklenen özellikleri şunlardır: <table><tr><th>Özellik</th><th>Açıklama</th></tr><tr><td>Excludedkonakları</td><td>HSTS üstbilgisinin eklendiği ana bilgisayar adlarının dize dizisi.</td></tr><tr><td>includeSubDomains</td><td>Strict-Transport-Security üstbilgisinin ıncludealt etki alanı parametresinin etkinleştirilip etkinleştirilmeyeceğini gösteren Boolean değer.</td></tr><tr><td>maxAge</td><td>Strict-Transport-Security üstbilgisinin Max-Age parametresini tanımlayan dize.</td></tr><tr><td>preload</td><td>Strict-Transport-Security üstbilgisinin preload parametresinin etkin olup olmadığını gösteren Boolean.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Paralel olarak yürütülen HTTP işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir HTTP işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir. <br/><sup>*</sup> Tüketim planı için varsayılan değer 100 ' dir. Adanmış bir plan için varsayılan değer sınırsız (`-1`).|
 |maxOutstandingRequests|200<sup>\*</sup>|Belirli bir zamanda tutulan bekleyen istek sayısı üst sınırı. Bu sınır, kuyruğa alınmış ancak yürütmeyi başlatmayan isteklerin yanı sıra devam eden yürütmeler içerir. Bu sınırın üzerindeki tüm gelen istekler, 429 "çok meşgul" yanıtıyla reddedilir. Bu, çağıranların zamana dayalı yeniden deneme stratejileri kullanmasına izin verir ve ayrıca en fazla istek gecikme sürelerini denetlemenize yardımcı olur. Bu, yalnızca betik ana bilgisayar yürütme yolu içinde oluşan kuyruğu denetler. ASP.NET istek kuyruğu gibi diğer kuyruklar da etkin olmaya devam eder ve bu ayardan etkilenmez. <br/><sup>\*</sup> Tüketim planı için varsayılan değer 200 ' dir. Adanmış bir plan için varsayılan değer sınırsız (`-1`).|
-|routePrefix|api|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
+|routePrefix|API|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

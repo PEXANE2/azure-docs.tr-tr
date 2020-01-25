@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977578"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715851"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>Eski ayarlarla Azure etkinlik günlüğü toplayın
-[Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Son olarak, etkinlik günlüğü girdilerini bir [Olay Hub 'ına veya depolama hesabına](activity-log-export.md) göndermek için bir günlük profili oluşturdunuz ve bir [Log Analytics çalışma alanına](activity-log-collect.md)toplamak için bağlayıcı kullandınız. Bu makalede, Yöntemler arasındaki fark, var olan eski ayarlarla çalışma ve tanılama ayarlarına hazırlık için eski ayarların nasıl temizleneceğini açıklanmaktadır.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Azure etkinlik günlüğü koleksiyonuna ve dışarı aktarmaya Güncelleştir
+[Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Etkinlik günlüğü girdilerini [bir olay hub 'ına veya depolama hesabına](activity-log-export.md) veya bir [Log Analytics çalışma alanına](activity-log-collect.md) gönderme yöntemi, [tanılama ayarlarını](diagnostic-settings.md)kullanacak şekilde değiştirilmiştir. Bu makalede, Yöntemler ve tanılama ayarlarına geçiş hazırlığı sırasında eski ayarların nasıl temizleneceğini gösteren farklar açıklanmaktadır.
 
 
 ## <a name="differences-between-methods"></a>Yöntemler arasındaki farklılıklar
@@ -39,14 +39,16 @@ Bu özelliği etkinleştirmeden önce tanılama ayarlarını kullanarak etkinlik
 ### <a name="differences-in-data"></a>Verilerdeki farklılıklar
 Tanılama ayarları, aşağıdaki geçerli farklılıklarla etkinlik günlüğünü toplamak için kullanılan önceki yöntemlerle aynı verileri toplar:
 
-Aşağıdaki özellikler kaldırılmıştır:
+Aşağıdaki sütunlar kaldırılmıştır. Bu sütunların yerini değiştirmek farklı bir biçimde olduğundan, bunları kullanan günlük sorgularını değiştirmeniz gerekebilir. Şemada kaldırılan sütunları görmeye devam edebilirsiniz, ancak bunlar verilerle doldurulmaz.
 
-- ActivityStatus
-- Etkinlik alt durumu
-- ThrottledRequests
-- ResourceProvider
+| Sütun kaldırıldı | Değiştirme sütunu |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| Etkinlik alt durumu | ActivitySubstatusValue |
+| ThrottledRequests     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-Aşağıdaki özellikler eklendi:
+Aşağıdaki sütun eklendi:
 
 - Authorization_d
 - Claims_d

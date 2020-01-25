@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257231"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719345"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB ile bir Azure Resource Manager şablonu kullanarak Azure App Service Web Apps'e dağıtın
 Bu öğretici bir Azure Resource Manager şablonu dağıtma ve tümleştirme için nasıl kullanılacağını gösterir [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)e [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web uygulaması ve bir örnek web uygulaması.
@@ -25,7 +25,7 @@ Bu öğreticiyi tamamladıktan sonra aşağıdaki soruları yanıtlamak mümkün
 
 <a id="Prerequisites"></a>
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 > [!TIP]
 > Bu öğreticide, Azure Resource Manager şablonları ya da JSON deneyiminiz olmasa varsaymaz olsa da başvurulan şablonları veya dağıtım seçenekleri değiştirmek istemeniz durumunda sonra bu alanların her birini bilgisi gereklidir.
 > 
@@ -33,7 +33,7 @@ Bu öğreticiyi tamamladıktan sonra aşağıdaki soruları yanıtlamak mümkün
 
 Bu öğreticide yönergeleri izlemeden önce sahip olduğunuzdan emin olun Azure aboneliği. Azure abonelik tabanlı bir platformdur.  Bir aboneliği edinme hakkında daha fazla bilgi için bkz. [satın alma seçenekleri](https://azure.microsoft.com/pricing/purchase-options/), [üye Tekliflerimizi](https://azure.microsoft.com/pricing/member-offers/), veya [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a id="CreateDB"></a>1. adım: Şablon dosyalarını indirme
+## <a id="CreateDB"></a>1. adım: şablon dosyalarını indirme
 Bu öğretici şablon dosyaları yükleyerek başlayalım.
 
 1. İndirme [Web uygulamaları, bir Azure Cosmos DB hesabı oluşturma ve bir tanıtım uygulaması örneği dağıtma](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) şablonu yerel bir klasöre (örneğin, C:\Azure Cosmos DBTemplates). Bu şablon, bir Azure Cosmos DB hesabı, bir App Service web uygulaması ve bir web uygulaması dağıtır.  Azure Cosmos DB hesabına bağlanmak için web uygulaması da otomatik olarak yapılandırır.
@@ -56,7 +56,7 @@ Artık ilk şablonunuzu dağıtalım.
    ![Şablon dağıtımı kullanıcı Arabirimi ekran görüntüsü](./media/create-website/TemplateDeployment3.png)
 4. Tıklayın **parametreleri Düzenle**, her zorunlu parametreler için değerler sağlayın ve tıklayın **Tamam**.  Parametreleri aşağıdaki gibidir:
    
-   1. SİTE ADI: App Service web uygulaması adını belirtir ve web uygulaması (örneğin, "mydemodocdbwebapp", ardından web uygulaması tarafından erişim URL'si olan mydemodocdbwebapp.azurewebsites.net belirtirseniz) erişmek için kullandığınız URL'yi oluşturmak için kullanılır.
+   1. SITENAME: App Service Web uygulaması adını belirtir ve Web uygulamasına erişmek için kullandığınız URL 'YI oluşturmak için kullanılır (örneğin, "mydemodocdbwebapp" belirtirseniz, Web uygulamasına erişiminizin URL 'SI `mydemodocdbwebapp.azurewebsites.net`).
    2. HOSTINGPLANNAME: App Service barındırma planı oluşturmak için adını belirtir.
    3. KONUM: Azure Cosmos DB ile web uygulaması kaynakları oluşturmak Azure konumu belirtir.
    4. DATABASEACCOUNTNAME: Azure Cosmos DB hesabı oluşturmak için adını belirtir.   
@@ -78,7 +78,7 @@ Artık ilk şablonunuzu dağıtalım.
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3\. adım: Belge hesabı ve web uygulaması örneği dağıtma
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3\. adım: belge hesabı ve web uygulaması örneği dağıtma
 Şimdi ikinci şablonunuzu dağıtalım.  Bu şablonu nasıl, uygulama ayarları veya özel bir bağlantı dizesi olarak web uygulamasıyla Azure Cosmos DB hesabınızın uç noktası ve ana anahtarı gibi bağlantı bilgilerini ekleyebilir göstermek kullanışlıdır. Örneğin, bir Azure Cosmos DB hesabı dağıtabiliyorum ve dağıtım sırasında otomatik olarak doldurulur bağlantı bilgilerini istediğiniz kendi web Uygulamam var belki de.
 
 > [!TIP]
@@ -93,7 +93,7 @@ Artık ilk şablonunuzu dağıtalım.
    ![Şablon dağıtımı kullanıcı Arabirimi ekran görüntüsü](./media/create-website/TemplateDeployment3.png)
 4. Tıklayın **parametreleri Düzenle**, her zorunlu parametreler için değerler sağlayın ve tıklayın **Tamam**.  Parametreleri aşağıdaki gibidir:
    
-   1. SİTE ADI: App Service web uygulaması adını belirtir ve (örneğin, "mydemodocdbwebapp", ardından web uygulaması tarafından erişim URL'si olan mydemodocdbwebapp.azurewebsites.net belirtirseniz), web uygulamasına erişmek için kullanacağı URL'yi oluşturmak için kullanılır.
+   1. SITENAME: App Service web uygulaması adını belirtir ve (örneğin, "mydemodocdbwebapp", ardından web uygulaması tarafından erişim URL'si olan mydemodocdbwebapp.azurewebsites.net belirtirseniz), web uygulamasına erişmek için kullanacağı URL'yi oluşturmak için kullanılır.
    2. HOSTINGPLANNAME: App Service barındırma planı oluşturmak için adını belirtir.
    3. KONUM: Azure Cosmos DB ile web uygulaması kaynakları oluşturmak Azure konumu belirtir.
    4. DATABASEACCOUNTNAME: Azure Cosmos DB hesabı oluşturmak için adını belirtir.   
@@ -121,11 +121,11 @@ Tebrikler! Azure Cosmos DB, App Service web uygulaması ve Azure Resource Manage
 * Azure App Service Web apps hakkında daha fazla bilgi edinmek için tıklayın [burada](https://go.microsoft.com/fwlink/?LinkId=325362).
 * Azure Resource Manager şablonları hakkında daha fazla bilgi edinmek için tıklayın [burada](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 
-## <a name="whats-changed"></a>Yapılan değişiklikler
-* Web sitelerinden App Service'e kadar değiştirme kılavuzu için bkz: [Azure App Service ve mevcut Azure hizmetlerine etkileri](https://go.microsoft.com/fwlink/?LinkId=529714)
+## <a name="whats-changed"></a>Değişiklikler
+* Web Sitelerinden App Service’e kadar değiştirme kılavuzu için bkz. [Azure App Service ve Mevcut Azure Hizmetlerine Etkileri](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> Azure hesabı için kaydolmadan önce Azure App Service’i kullanmaya başlamak isterseniz, App Service’te hemen kısa süreli bir başlangıç web uygulaması oluşturabileceğiniz [App Service’i Deneyin](https://go.microsoft.com/fwlink/?LinkId=523751) sayfasına gidin. Kredi kartı ve taahhüt gerekmez.
+> Azure hesabı için kaydolmadan önce Azure App Service’i kullanmaya başlamak isterseniz, App Service’de hemen kısa süreli bir başlangıç web uygulaması oluşturabileceğiniz [App Service’i Deneyin](https://go.microsoft.com/fwlink/?LinkId=523751) sayfasına gidin. Kredi kartı ve taahhüt gerekmez.
 > 
 > 
 

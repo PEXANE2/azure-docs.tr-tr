@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
-ms.openlocfilehash: ad9437b135e48dcfaff9efa5f6daf345d78e79ef
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895329"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720342"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
@@ -52,10 +52,10 @@ Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisa
 
 Sonraki sürümden itibaren, yeni HDInsight kümelerinizi yalnızca TLS 1,2 bağlantılarını kabul edecek şekilde kabul edebilir ve yapılandırabilirsiniz. 
 
-6/30/2020 tarihinden itibaren Azure HDInsight, yılda daha sonra tüm HTTPS bağlantıları için TLS 1,2 veya sonraki sürümleri uygular. Tüm istemcilerinizin TLS 1,2 veya sonraki sürümlerini işlemeye hazırlanmasını öneririz.
+6/30/2020 tarihinden itibaren Azure HDInsight, yılda daha sonra tüm HTTPS bağlantıları için TLS 1,2 veya sonraki sürümleri uygular. Tüm istemcilerinizin TLS 1.2 veya sonraki sürümlerini işlemeye hazır olduğundan emin olmanızı öneririz.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Feburary 2020 'den başlayarak (tam tarihin daha sonra iletileceği), HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz.
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Şubat 2020 tarihinden itibaren (tam tarihin daha sonra iletileceği), HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz.
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark kümesi düğüm boyutu değişikliği 
 Yakında çıkacak sürümde:
@@ -212,7 +212,7 @@ HDInsight 4,0 için aşağıdaki adımları uygulayın:
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
-1. Şu komutu yazın: `sudo kinit <domainuser>`.
+1. Komutu `sudo kinit <domainuser>`yazın.
 1. Betiği çalıştırmak için aşağıdaki komutu yazın:
 
     ```
@@ -225,7 +225,7 @@ HDInsight 3,6 için aşağıdakileri yapın:
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
-1. Şu komutu yazın: `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`.
+1. Komutu `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`yazın.
 1. Aşağıdaki komutu yazın:
 
     ```bash
@@ -1673,7 +1673,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-### <a name="upgrading"></a>Yükseltme
+### <a name="upgrading"></a>Yükseltmenin
 
 Bu özelliklerin tümü HDInsight 3,6 ' de mevcuttur. Spark, Kafka ve R Server 'ın (Machine Learning Services) en son sürümünü almak için, [hdınsight 3,6 kümesi oluştururken](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)lütfen Spark, Kafka, ml Hizmetleri sürümünü seçin. ADLS için destek almak üzere ADLS depolama türünü bir seçenek olarak seçebilirsiniz. Mevcut kümeler bu sürümlere otomatik olarak yükseltilmeyecek.
 

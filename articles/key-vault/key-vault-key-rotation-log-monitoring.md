@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1f60ce3a23882a48e6008b76c0eedcab99e013b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883456"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720121"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Anahtar döndürme ve denetimle Azure Key Vault ayarlama
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Anahtar kasasından sonra anahtarları ve gizli dizileri depolamak için kullanmaya başlayabilirsiniz. Uygulamalarınızın artık anahtarlarınızı veya gizli dizileri kalıcı hale getirmek zorunda kalmaz, ancak gerektiğinde bunları kasadan talep edebilir. Anahtar Kasası, uygulamanızın davranışını etkilemeden anahtarları ve gizli dizileri güncelleştirmenize olanak tanır. Bu, anahtar ve gizli yönetibilmeniz için bir dizi olasılıktan oluşur.
 
@@ -36,7 +36,7 @@ Bu makalede izlenecek yol:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="set-up-key-vault"></a>Anahtar Kasası ayarlama
+## <a name="set-up-key-vault"></a>Key Vault ayarlama
 
 Bir uygulamanın Key Vault bir gizli dizi almasına izin vermek için, öncelikle gizli anahtarı oluşturmanız ve bunu kasanıza yüklemeniz gerekir.
 
@@ -119,7 +119,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Uygulama kodunuzda, Azure Active Directory kimlik doğrulaması için yöntemi tutacak bir sınıf oluşturun. Bu örnekte, bu sınıf **yardımcı programlar**olarak adlandırılır. Aşağıdaki `using` ifadeyi ekleyin:
+Uygulama kodunuzda, Azure Active Directory kimlik doğrulaması için yöntemi tutacak bir sınıf oluşturun. Bu örnekte, bu sınıf **yardımcı programlar**olarak adlandırılır. Aşağıdaki `using` ifadesini ekleyin:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -144,7 +144,7 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Key Vault çağırmak ve gizli değeri almak için gerekli kodu ekleyin. İlk olarak, aşağıdaki `using` ifadeyi eklemeniz gerekir:
+Key Vault çağırmak ve gizli değeri almak için gerekli kodu ekleyin. İlk olarak, aşağıdaki `using` ifadesini eklemeniz gerekir:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
@@ -163,7 +163,7 @@ Uygulamanızı çalıştırdığınızda, artık Azure Active Directory kimlik d
 ## <a name="key-rotation-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak anahtar döndürme
 
 > [!IMPORTANT]
-> Azure Otomasyonu runbook 'ları hâlâ `AzureRM` modülün kullanılmasını gerektirir.
+> Azure Otomasyonu runbook 'ları hala `AzureRM` modülünün kullanılmasını gerektirir.
 
 Artık Key Vault gizli dizileri olarak depoladığınız değerler için bir döndürme stratejisi ayarlamaya hazırsınız. Gizli dizileri çeşitli yollarla döndürülebilir:
 
@@ -265,14 +265,14 @@ Sonraki adım [Azure Service Bus kuyruğu oluşturmaktır](../service-bus-messag
 
 1. Service Bus ad alanı oluşturun (kullanmak istediğiniz bir tane varsa, 2. adıma atlayın).
 2. Azure portal Service Bus örneğine gidin ve kuyruğu oluşturmak istediğiniz ad alanını seçin.
-3.  > **Service Bus** **kurumsal tümleştirme**kaynakoluştur'useçinveardındangerekliayrıntıları > girin.
+3.  > **Service Bus** **kurumsal tümleştirme** > **kaynak oluştur** ' u seçin ve ardından gerekli ayrıntıları girin.
 4. Ad alanını seçip **bağlantı bilgileri**' ni seçerek Service Bus bağlantı bilgilerini bulun. Sonraki bölümde bu bilgilere ihtiyacınız olacaktır.
 
 Daha sonra, depolama hesabındaki Anahtar Kasası günlüklerini yoklamak ve yeni olayları almak için [bir Azure işlevi oluşturun](../azure-functions/functions-create-first-azure-function.md) . Bu işlev bir zamanlamaya göre tetiklenecektir.
 
 Bir Azure işlev uygulaması oluşturmak için **kaynak oluştur**' u seçin, market 'te **işlev uygulaması**arayın ve ardından **Oluştur**' u seçin. Oluşturma sırasında, mevcut bir barındırma planını kullanabilir veya yeni bir tane oluşturabilirsiniz. Dinamik barındırmayı da tercih edebilirsiniz. Azure Işlevleri barındırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure işlevlerini ölçeklendirme](../azure-functions/functions-scale.md).
 
-Azure işlevi uygulaması oluşturulduktan sonra, bu uygulamaya gidin ve dil için **Zamanlayıcı** senaryosunu ve **C\#**  'yi seçin. Sonra **Bu Işlevi oluştur**' u seçin.
+Azure işlevi uygulaması oluşturulduktan sonra, bu uygulamaya gidin ve dil için **Zamanlayıcı** senaryosunu ve **C\#** seçin. Sonra **Bu Işlevi oluştur**' u seçin.
 
 ![Azure Işlevleri başlangıç dikey penceresi](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -314,7 +314,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didn't have a date. Setting to now.");
         }
     }
 
@@ -417,9 +417,9 @@ Aşağıdaki içeriğe sahip Project. JSON adlı bir dosya ekleyin:
 
 **Kaydet**' i seçtikten sonra, Azure işlevleri gerekli ikilileri indirir.
 
-**Tümleştirin** sekmesine geçin ve Zamanlayıcı parametresine işlev içinde kullanmak için anlamlı bir ad verin. Yukarıdaki kodda, işlev zamanlayıcının *MyTimer*olarak çağrılmasına bekliyor. Süreölçer için bir [cron ifadesini](../app-service/webjobs-create.md#CreateScheduledCRON) aşağıdaki gibi belirtin: `0 * * * * *`. Bu ifade, işlevin dakikada bir kez çalışmasına neden olur.
+**Tümleştirin** sekmesine geçin ve Zamanlayıcı parametresine işlev içinde kullanmak için anlamlı bir ad verin. Yukarıdaki kodda, işlev zamanlayıcının *MyTimer*olarak çağrılmasına bekliyor. Süreölçer için bir [cron ifadesini](../app-service/webjobs-create.md#CreateScheduledCRON) şu şekilde belirtin: `0 * * * * *`. Bu ifade, işlevin dakikada bir kez çalışmasına neden olur.
 
-Aynı **tümleştirme** sekmesinde **Azure Blob depolama**türünde bir giriş ekleyin. Bu giriş, işlevine baktığı son olayın zaman damgasını içeren Sync. txt dosyasına işaret eder. Bu girişe, işlev içinde parametre adı kullanılarak erişilir. Yukarıdaki kodda, Azure Blob depolama girişi parametre adının *Inputblob*olmasını bekler. Sync. txt dosyasının bulunacağı depolama hesabını seçin (aynı veya farklı bir depolama hesabı olabilir). Yol alanında, dosyanın yolunu biçiminde `{container-name}/path/to/sync.txt`girin.
+Aynı **tümleştirme** sekmesinde **Azure Blob depolama**türünde bir giriş ekleyin. Bu giriş, işlevine baktığı son olayın zaman damgasını içeren Sync. txt dosyasına işaret eder. Bu girişe, işlev içinde parametre adı kullanılarak erişilir. Yukarıdaki kodda, Azure Blob depolama girişi parametre adının *Inputblob*olmasını bekler. Sync. txt dosyasının bulunacağı depolama hesabını seçin (aynı veya farklı bir depolama hesabı olabilir). Yol alanında `{container-name}/path/to/sync.txt`biçimindeki dosyanın yolunu belirtin.
 
 **Azure Blob depolama**türünde bir çıkış ekleyin. Bu çıktı, girişte tanımladığınız Sync. txt dosyasına işaret eder. Bu çıktı, işlevi tarafından, en son olayın zaman damgasını yazmak için kullanılır. Yukarıdaki kod bu parametrenin *outputblob*olarak adlandırıldığını bekliyor.
 
@@ -429,13 +429,13 @@ Aynı **tümleştirme** sekmesinde **Azure Blob depolama**türünde bir giriş e
 
 Ardından, işlevin Service Bus kuyruğuna itileceği olayları oluşturan, içeriği ayrıştırdığı ve eşleşen koşula göre bir e-posta gönderen bir Azure mantıksal uygulaması oluşturmanız gerekir.
 
-**Kaynak** [](../logic-apps/quickstart-create-first-logic-app-workflow.md)  > tümleştirmemantıksaluygulamasıoluşturseçeneğinibelirleyerekbirmantıksaluygulamaoluşturun. > 
+**Kaynak oluştur** > **tümleştirme** > **mantıksal uygulama**' yı seçerek [bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md) .
 
 Mantıksal uygulama oluşturulduktan sonra şuraya gidin ve **Düzenle**' yi seçin. Mantıksal uygulama Düzenleyicisi 'nde **Service Bus kuyruğu** ' nu seçin ve kuyruğa bağlamak için Service Bus kimlik bilgilerinizi girin.
 
 ![Azure Logic App Service veriyolu](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-**Koşul Ekle**' yi seçin. Koşulda, gelişmiş düzenleyiciye geçin ve aşağıdaki kodu girin. *APP_ID* değerini Web uygulamanızın gerçek uygulama kimliğiyle değiştirin:
+**Koşul Ekle**' yi seçin. Koşulda, gelişmiş düzenleyiciye geçin ve aşağıdaki kodu girin. *APP_ID* , Web uygulamanızın gerçek uygulama kimliğiyle değiştirin:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])

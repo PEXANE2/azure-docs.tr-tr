@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: a6ad3e91b6826680eb8bcc9da4fc9d1cee37564c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940881"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711620"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -49,7 +49,7 @@ Bir uygulamaya sağlamanın otomatikleştirilmesi, Azure AD SCıM ile uyumlu bir
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>1\. Adım: Kullanıcı ve grup şemanızı tasarlama
 
-Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gerektirir. Uygulamanızın gerektirdiği nesneleri (Kullanıcı, Grup) ve öznitelikleri (ad, yönetici, iş unvanı vb.) tanımlayarak tümleştirmenizi başlatın. Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özniteliğe ve SCıM RFC 'ye nasıl eşlendiğini anlamak için aşağıdaki tabloyu kullanabilirsiniz. Özniteliklerin Azure AD ile SCıM uç noktanız arasında nasıl eşleştirildiğini [özelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) . 
+Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gerektirir. Uygulamanızın gerektirdiği nesneleri (Kullanıcı, Grup) ve öznitelikleri (ad, yönetici, iş unvanı vb.) tanımlayarak tümleştirmenizi başlatın. Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özniteliğe ve SCıM RFC 'ye nasıl eşlendiğini anlamak için aşağıdaki tabloyu kullanabilirsiniz. Özniteliklerin Azure AD ile SCıM uç noktanız arasında nasıl eşleştirildiğini [özelleştirebilirsiniz](customize-application-attributes.md) . 
 
 Kullanıcı kaynakları, bu protokol belirtimine dahil olan `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`şema tanımlayıcısı tarafından tanımlanır: https://tools.ietf.org/html/rfc7643.  Azure AD 'deki kullanıcı özniteliklerinin özniteliklerin varsayılan eşlemesi, Tablo 1 ' de verilmiştir.  
 
@@ -119,14 +119,14 @@ Azure AD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken bu ge
     - `and`
 * Bazı düzeltme ekinde, https://tools.ietf.org/html/rfc7644#section-3.5.2 tanımlanan şekilde işlem değerlerini `op`, özel bir düzeltme ekinde, SCıM içindeki yapısal öğelerde büyük/küçük harfe duyarlı bir eşleşme gerektirmez. Azure AD, ' op ' değerlerini `Add`, `Replace`ve `Remove`olarak yayar.
 * Microsoft Azure AD bitiş noktasının ve kimlik bilgilerinin geçerli olduğundan emin olmak için rastgele bir Kullanıcı ve grup getirme isteklerinin olmasını sağlar. Ayrıca, [Azure Portal](https://portal.azure.com) **Test bağlantı** akışının bir parçası olarak da yapılır. 
-* Kaynakların sorgulanabileceği öznitelik, [Azure Portal](https://portal.azure.com)uygulamada eşleşen bir öznitelik olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* Kaynakların sorgulanabileceği öznitelik, [Azure Portal](https://portal.azure.com)uygulamada eşleşen bir öznitelik olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)
 
 ### <a name="user-provisioning-and-deprovisioning"></a>Kullanıcı hazırlama ve sağlamayı kaldırma
 
 Aşağıdaki çizim Azure Active Directory, uygulamanızın kimlik deposundaki bir kullanıcının yaşam döngüsünü yönetmek üzere bir SCıM hizmetine gönderdiği iletileri gösterir.  
 
-![, Kullanıcı hazırlama ve sağlamayı kaldırma sırasını gösterir][4]<br/>
-*Şekil 4: Kullanıcı hazırlama ve sağlamayı kaldırma sırası*
+![, Kullanıcı hazırlama ve sağlamayı kaldırma sırasını gösterir](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+*Kullanıcı hazırlama ve sağlamayı kaldırma sırası*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>Grup sağlama ve sağlamayı kaldırma
 
@@ -135,8 +135,8 @@ Grup sağlama ve sağlamayı kaldırma isteğe bağlıdır. Uygulandığında ve
 * Grupları alma istekleri, Üyeler özniteliğinin, isteğe yanıt olarak belirtilen herhangi bir kaynaktan dışlanacağını belirtir.  
 * Bir başvuru özniteliği, belirli bir değere sahip olup olmadığını belirlemek üzere istekleri üyeleri özniteliği hakkında isteklerdir.  
 
-![grup sağlama ve sağlamayı kaldırma sırasını gösterir][5]<br/>
-*Şekil 5: Grup sağlama ve sağlamayı kaldırma sırası*
+![grup sağlama ve sağlamayı kaldırma sırasını gösterir](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+*Grup sağlama ve sağlamayı kaldırma sırası*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCıM protokol istekleri ve yanıtları
 Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekleri ve örnek beklenen yanıtlar sağlanmaktadır. En iyi sonuçlar için, bu istekleri bu biçimde işleyecek ve beklenen yanıtları yaymak üzere uygulamanızı kodmalısınız.
@@ -167,8 +167,8 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
  [yanıtı](#response-10))
   - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members) ( [istek](#request-11) /
 [yanıtı](#response-11))
-  - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members) ( [istek](#request-12) /
-[yanıtı](#response-12)) (
+  - [Güncelleştirme grubu [üyeleri kaldırma]](#update-group-remove-members) ( [istek](#request-12) /
+[yanıtı](#response-12))
   - [Grubu Sil](#delete-group) ([istek](#request-13) /
 [yanıtı](#response-13))
 
@@ -752,7 +752,7 @@ SCIM Belirtimi'ne kendi web hizmeti geliştirmek için önce aşağıdaki kitapl
 
 * Ortak dil altyapısı (CLI) kitaplıkları, C# gibi bu altyapısının temel dilleri ile kullanım için sunulur. Bu kitaplıklardan biri olan Microsoft. Systemforcrossdomainıdentitymanagement. Service, aşağıdaki çizimde gösterilen Microsoft. Systemforcrossdomainıdentitymanagement. ıprovider arabirimini bildirir. Kitaplıkları kullanan bir geliştirici, bu arabirime, genel olarak sağlayıcı olarak başvurulabilen bir sınıfı uygular. Kitaplıklar, geliştiricinin SCıM belirtimine uyan bir Web hizmeti dağıtmasını sağlar. Web hizmeti Internet Information Services veya herhangi bir yürütülebilir CLı derlemesi içinde barındırılabilir. İstek, geliştirici tarafından bazı kimlik deposu üzerinde çalışılacak programlanmak sağlayıcının yöntemlere yapılan çağrılar veri dönüştürülür.
   
-   ![Döküm: sağlayıcının yöntemlerine yapılan çağrılara çevrilen bir istek][3]
+   ![Döküm: sağlayıcının yöntemlerine yapılan çağrılara çevrilen bir istek](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
   
 * [Express route işleyicileri](https://expressjs.com/guide/routing.html) bir node.js web hizmeti çağrıları (SCIM belirtimi tarafından tanımlanan) temsil eden node.js istek nesneleri ayrıştırmak için kullanılabilir yapılır.
 
@@ -1328,14 +1328,14 @@ Bu makalede açıklanan SCIM profilini destekleyen uygulamalar, Azure Active Dir
 3. **Galeri dışı** > **Tüm** >  **+ Yeni uygulama** ' yı seçin.
 4. Uygulamanız için bir ad girin ve uygulama nesnesi oluşturmak için **Ekle** ' yi seçin. Yeni uygulama, kurumsal uygulamalar listesine eklenir ve uygulama yönetimi ekranına açılır.
 
-   ![ekran görüntüsünde Azure AD Uygulama Galerisi gösterilmektedir][1]<br/>
-   *Şekil 2: Azure AD Uygulama Galerisi*
+   ![ekran görüntüsünde Azure AD Uygulama Galerisi gösterilmektedir](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   *Azure AD Uygulama Galerisi*
 
 5. Uygulama yönetimi ekranında, sol panelde **sağlama** ' yı seçin.
 6. İçinde **sağlama modu** menüsünde **otomatik**.
 
-   ![örnek: bir uygulamanın sağlama sayfası Azure portal][2]<br/>
-   *Şekil 3: Azure portal sağlamayı yapılandırma*
+   ![örnek: bir uygulamanın sağlama sayfası Azure portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   *Azure portal sağlamayı yapılandırma*
 
 7. İçinde **Kiracı URL'si** uygulamanın SCIM uç nokta URL'sini girin. Örnek: https://api.contoso.com/scim/
 8. SCIM uç noktanın bir OAuth taşıyıcı belirtecinden bir veren Azure AD dışındaki gerektiriyorsa, gerekli OAuth taşıyıcı belirteci sonra isteğe bağlı kopyalayın **gizli belirteç** alan. Bu alan boş bırakılırsa Azure AD, Azure AD 'den her istekle verilen bir OAuth taşıyıcı belirteci içerir. Kimlik sağlayıcısı olarak Azure AD kullanan uygulamalar, bu Azure AD veren belirtecini doğrulayabilir. 
@@ -1347,7 +1347,7 @@ Bu makalede açıklanan SCIM profilini destekleyen uygulamalar, Azure Active Dir
     > **Test bağlantısı** , mevcut olmayan bir kullanıcı için SCIM uç noktasını sorgular, bu da Azure AD yapılandırmasında eşleşen özellik olarak rastgele bir GUID kullanılıyor. Beklenen doğru yanıt, boş bir SCIM ListResponse iletisi ile HTTP 200 Tamam ' dır.
 
 10. Uygulamaya bağlanma denemeleri başarılı olursa, yönetici kimlik bilgilerini kaydetmek için **Kaydet** ' i seçin.
-11. **Eşlemeler** bölümünde, biri Kullanıcı nesneleri ve bir grup nesnesi için olmak üzere iki seçilebilir [öznitelik eşlemesi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)vardır. Uygulamanızı Azure Active Directory'den eşitlenen öznitelikler gözden geçirmek için her birini seçin. Seçilen öznitelikler **eşleşen** özellikleri, kullanıcıları ve grupları güncelleştirme işlemleri için uygulamanızda eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
+11. **Eşlemeler** bölümünde, biri Kullanıcı nesneleri ve bir grup nesnesi için olmak üzere iki seçilebilir [öznitelik eşlemesi](customize-application-attributes.md)vardır. Uygulamanızı Azure Active Directory'den eşitlenen öznitelikler gözden geçirmek için her birini seçin. Seçilen öznitelikler **eşleşen** özellikleri, kullanıcıları ve grupları güncelleştirme işlemleri için uygulamanızda eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
     > [!NOTE]
     > İsteğe bağlı olarak, "eşleme grupları" devre dışı bırakarak Grup nesnelerini eşitlemeyi devre dışı bırakın.
@@ -1364,7 +1364,7 @@ Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tar
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>5\. Adım: uygulamanızı Azure AD Uygulama Galerisi 'nde yayımlama
 
-Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) yayınlama konusunda sizinle birlikte çalışacaktır. 
+Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](../develop/howto-app-gallery-listing.md)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](../saas-apps/tutorial-list.md) yayınlama konusunda sizinle birlikte çalışacaktır. 
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
@@ -1380,7 +1380,7 @@ En iyi uygulamalar (önerilir ancak gerekli değildir):
 * Birden çok yeniden yönlendirme URL 'sini destekler. Yöneticiler, "portal.azure.com" ve "aad.portal.azure.com" ile sağlamayı yapılandırabilir. Birden çok yeniden yönlendirme URL 'Leri desteklemek, kullanıcıların her iki portaldan da erişim yetkisi alabilmek için
 * Kapalı kalma süresi olmadan sorunsuz gizli yenilemeyi sağlamak için birden çok gizli dizi desteği. 
 
-**Uzun süreli OAuth taşıyıcı belirteçleri:** Uygulamanız OAuth yetkilendirme kodu verme akışını desteklemiyorsa, yöneticinin sağlama tümleştirmesini ayarlamak için kullanabileceği bir uzun süreli OAuth taşıyıcı belirteci de oluşturabilirsiniz. Belirtecin kalıcı olması gerekir, aksi takdirde, belirtecin süresi dolarsa sağlama işi [karantinaya](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) alınır. Bu belirtecin boyutu 1KB 'tan sonra olmalıdır.  
+**Uzun süreli OAuth taşıyıcı belirteçleri:** Uygulamanız OAuth yetkilendirme kodu verme akışını desteklemiyorsa, yöneticinin sağlama tümleştirmesini ayarlamak için kullanabileceği bir uzun süreli OAuth taşıyıcı belirteci de oluşturabilirsiniz. Belirtecin kalıcı olması gerekir, aksi takdirde, belirtecin süresi dolarsa sağlama işi [karantinaya](application-provisioning-quarantine-status.md) alınır. Bu belirtecin boyutu 1KB 'tan sonra olmalıdır.  
 
 Ek kimlik doğrulama ve yetkilendirme yöntemleri için [UserVoice](https://aka.ms/appprovisioningfeaturerequest)'ta bize bilgi verin.
 
@@ -1396,11 +1396,3 @@ Belirli uygulamalar, uygulamalarına gelen trafiğe izin verir. Azure AD sağlam
 * [Kullanıcı hazırlama için kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Hesap sağlama bildirimleri](user-provisioning.md)
 * [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
-
-<!--Image references-->
-[0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png
-[1]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2a.png
-[2]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2b.png
-[3]: ./media/use-scim-to-provision-users-and-groups/scim-figure-3.png
-[4]: ./media/use-scim-to-provision-users-and-groups/scim-figure-4.png
-[5]: ./media/use-scim-to-provision-users-and-groups/scim-figure-5.png

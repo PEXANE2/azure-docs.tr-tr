@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 01/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e41c3409ac5b81fe9e099ab34abd7256ef39d330
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd81942832e598319261829e67fd0b8f1704fc99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930586"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716196"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Hızlı Başlangıç: Node.js için Bing Görüntü Arama SDK'sı ile görüntü arama
 
@@ -24,10 +24,10 @@ Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren B
 
 Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js)'da bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Node.js için Bilişsel Hizmetler Görüntü Arama SDK'sı](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
-    * `npm install azure-cognitiveservices-imagesearch` kullanarak yükleme
+* [Node.js için Bilişsel Hizmetler Görüntü Arama SDK'sı](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+    * `npm install @azure/cognitiveservices-imagesearch` kullanarak yükleme
 * [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) modülü
     * `npm install ms-rest-azure` kullanarak yükleme
 
@@ -39,11 +39,11 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
 
     ```javascript
     'use strict';
-    const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
+    const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     ```
 
-2. Projenizin main yönteminde geçerli abonelik anahtarınız, Bing tarafından döndürülecek görüntü sonuçları ve bir arama terimi için değişkenler oluşturun. Ardından anahtarı kullanılarak görüntü arama istemcisinin bir örneğini oluşturun.
+2. Projenizin main yönteminde geçerli abonelik anahtarınız, Bing tarafından döndürülecek görüntü sonuçları ve bir arama terimi için değişkenler oluşturun. Ardından anahtarı kullanarak görüntü arama istemcisinin örneğini oluşturun.
 
     ```javascript
     //replace this value with your valid subscription key.
@@ -52,7 +52,7 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
     //the search term for the request
     let searchTerm = "canadian rockies";
 
-    //instantiate the image search client 
+    //instantiate the image search client
     let credentials = new CognitiveServicesCredentials(serviceKey);
     let imageSearchApiClient = new ImageSearchAPIClient(credentials);
 
@@ -60,7 +60,7 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
 
 ## <a name="create-an-asynchronous-helper-function"></a>Zaman uyumsuz yardımcı işlev oluşturma
 
-1. İstemciyi zaman uyumsuz olarak çağırmak için bir işlev oluşturun ve Bing Görüntü Arama hizmetinin yanıtını döndürün.  
+1. İstemciyi zaman uyumsuz olarak çağırmak için bir işlev oluşturun ve Bing Görüntü Arama hizmetinin yanıtını döndürün.
     ```javascript
     //a helper function to perform an async call to the Bing Image Search API
     const sendQuery = async () => {
@@ -71,7 +71,7 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
 
 1. Yardımcı işlevi çağırın ve yanıtta döndürülen görüntü sonuçlarını ayrıştırmak için `promise` değerini işleyin.
 
-    Yanıt arama sonuçları içeriyorsa, ilk sonucu depolayın ve döndürülen toplam görüntü sayısının yanı sıra bu ilk sonucun küçük resim URL'si, asıl URL gibi ayrıntılarını yazdırın.  
+    Yanıt arama sonuçları içeriyorsa, ilk sonucu depolayın ve döndürülen toplam görüntü sayısının yanı sıra bu ilk sonucun küçük resim URL'si, asıl URL gibi ayrıntılarını yazdırın.
     ```javascript
     sendQuery().then(imageResults => {
         if (imageResults == null) {
@@ -98,8 +98,8 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bing Resim Arama nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Bing Resim Arama nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
+* [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Ücretsiz bir Bilişsel Hizmetler erişim anahtarı alın](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure Bilişsel Hizmetler SDK'sı için Node.js örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Azure Bilişsel Hizmetler Belgeleri](https://docs.microsoft.com/azure/cognitive-services)

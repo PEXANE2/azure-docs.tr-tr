@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745401"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717781"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -96,8 +96,8 @@ Genellikle basit bir veritabanı geçişi sırasında şunları yapabilirsiniz:
 1. Hedef veritabanı (ler) oluşturun.
 2. Kaynak veritabanınızı değerlendirin.
     * Hogenler geçişleri için, [DMA](https://www.microsoft.com/download/details.aspx?id=53595)kullanarak var olan veritabanınızı değerlendirin.
-    * Heterojen geçişleri (rekabet kaynaklarından) için, var olan veritabanınızı [SSMA](https://aka.ms/get-ssma)ile değerlendirin. Ayrıca SSMA 'yı kullanarak veritabanı nesnelerini dönüştürüp şemayı hedef platformunuza geçirebilirsiniz.
-3. Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
+    * Heterojen geçişler (rekabet kaynaklarından) için, var olan veritabanınızı [SSMA](https://aka.ms/get-ssma)ile değerlendirin. Ayrıca SSMA 'yı kullanarak veritabanı nesnelerini dönüştürüp şemayı hedef platformunuza geçirebilirsiniz.
+3. Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturun.
 4. Kaynak veritabanlarını, hedef veritabanlarını ve geçirilecek tabloları belirten bir geçiş projesi oluşturun.
 5. Tam yüklemeyi başlatın.
 6. Sonraki doğrulamayı seçin.

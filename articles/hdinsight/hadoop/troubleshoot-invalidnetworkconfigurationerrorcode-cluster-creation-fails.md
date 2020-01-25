@@ -1,18 +1,18 @@
 ---
 title: Invalidnetworkconfigurationerrorcode hatası-Azure HDInsight
 description: Azure HDInsight 'ta ınvalidnetworkconfigurationerrorcode ile başarısız küme oluşturmaları için çeşitli nedenler
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: f857ee47f5dd8018d2e26aab47252533b0b17617
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 01/22/2020
+ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887113"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720393"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight 'ta küme oluşturma işlemi ınvalidnetworkconfigurationerrorcode ile başarısız oluyor
 
@@ -28,7 +28,7 @@ Hata açıklaması "konak adı çözümlemesi başarısız oldu" öğesini içer
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, özel DNS yapılandırmasıyla ilgili bir sorunu işaret eder. Bir sanal ağ içindeki DNS sunucuları DNS sorgularını, bu sanal ağdaki konak adlarını çözümlemek için Azure 'un özyinelemeli çözümleyicilerine iletebilir (Ayrıntılar için bkz. [sanal ağlardaki ad çözümlemesi](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ). Azure 'un özyinelemeli çözümleyicilerine erişimi, sanal IP 168.63.129.16 aracılığıyla sağlanır. Bu IP 'ye yalnızca Azure VM 'lerinden erişilebilir. Bu nedenle, bir Onpred DNS sunucusu kullanıyorsanız veya DNS sunucunuz, kümenin vNet 'in parçası olmayan bir Azure VM 'se çalışmaz.
+Bu hata, özel DNS yapılandırmasıyla ilgili bir sorunu işaret eder. Bir sanal ağ içindeki DNS sunucuları DNS sorgularını, bu sanal ağdaki konak adlarını çözümlemek için Azure 'un özyinelemeli çözümleyicilerine iletebilir (Ayrıntılar için bkz. [sanal ağlardaki ad çözümlemesi](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ). Azure 'un özyinelemeli çözümleyicilerine erişimi, sanal IP 168.63.129.16 aracılığıyla sağlanır. Bu IP 'ye yalnızca Azure VM 'lerinden erişilebilir. Bu nedenle, bir Onpred DNS sunucusu kullanıyorsanız veya DNS sunucunuz, kümenin sanal ağının bir parçası olmayan bir Azure VM 'si ise çalışmaz.
 
 ### <a name="resolution"></a>Çözünürlük
 
@@ -36,11 +36,11 @@ Bu hata, özel DNS yapılandırmasıyla ilgili bir sorunu işaret eder. Bir sana
 
 1. Sonra, komut `nslookup <host_fqdn>` çalıştırın (örneğin, `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Bu komut, adı bir IP adresi olarak çözümlerse, DNS sunucunuzun doğru şekilde çalıştığı anlamına gelir. Bu durumda, HDInsight ile bir destek talebi oluşturup sorununuzu araştıracağız. Destek durumda, yürüttüğünüz sorun giderme adımlarını ekleyin. Bu, sorunu daha hızlı çözmemize yardımcı olur.
 
-1. Yukarıdaki komut bir IP adresi döndürmezse `nslookup <host_fqdn> 168.63.129.16` çalıştırın (örneğin, `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Bu komut IP 'yi çözümleyebilse, DNS sunucunuz sorguyu Azure 'un DNS 'sine iletmediği ya da kümeyle aynı vNet 'in parçası olan bir VM olmadığı anlamına gelir.
+1. Yukarıdaki komut bir IP adresi döndürmezse `nslookup <host_fqdn> 168.63.129.16` çalıştırın (örneğin, `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Bu komut IP 'yi çözümleyemezse, DNS sunucunuz sorguyu Azure 'un DNS 'sine iletmediği veya kümeyle aynı sanal ağın parçası olan bir VM olmadığı anlamına gelir.
 
-1. Kümenin vNet 'inde özel bir DNS sunucusu işlevi görecek bir Azure VM 'iniz yoksa, önce bunu eklemeniz gerekir. VNet 'te, DNS ileticisi olarak yapılandırılacak bir VM oluşturun.
+1. Kümenin sanal ağında özel bir DNS sunucusu işlevi görecek bir Azure VM 'si yoksa, önce bunu eklemeniz gerekir. Sanal ağda, DNS ileticisi olarak yapılandırılacak bir VM oluşturun.
 
-1. VNet 'iniz üzerinde dağıtılmış bir VM 'niz olduktan sonra, bu VM 'de DNS iletme kurallarını yapılandırın. Tüm IDNs ad çözümleme isteklerini 168.63.129.16 'e ve REST 'i DNS sunucunuza iletin. Özel bir DNS sunucusu için bu kuruluma bir örnek [aşağıda](../hdinsight-plan-virtual-network-deployment.md) verilmiştir.
+1. Sanal ağınızda dağıtılan bir VM 'niz olduktan sonra, bu VM 'de DNS iletme kurallarını yapılandırın. Tüm IDNs ad çözümleme isteklerini 168.63.129.16 'e ve REST 'i DNS sunucunuza iletin. Özel bir DNS sunucusu için bu kuruluma bir örnek [aşağıda](../hdinsight-plan-virtual-network-deployment.md) verilmiştir.
 
 1. Bu VM 'nin IP adresini, sanal ağ DNS yapılandırması için ilk DNS girişi olarak ekleyin.
 
@@ -70,6 +70,73 @@ Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişi
 
 ---
 
+## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"Sanal ağ yapılandırması HDInsight gereksinimi ile uyumlu değil"
+
+### <a name="issue"></a>Sorun
+
+Hata açıklamaları aşağıdaki gibi iletileri içerir:
+
+```
+ErrorCode: InvalidNetworkConfigurationErrorCode
+ErrorDescription: Virtual Network configuration is not compatible with HDInsight Requirement. Error: 'Failed to connect to Azure Storage Account; Failed to connect to Azure SQL; HostName Resolution failed', Please follow https://go.microsoft.com/fwlink/?linkid=853974 to fix it.
+```
+
+### <a name="cause"></a>Nedeni
+
+Özel DNS kurulumuyla ilgili bir sorun olabilir.
+
+### <a name="resolution"></a>Çözünürlük
+
+168.63.129.16 'in özel DNS zincirinde olduğunu doğrulayın. Bir sanal ağ içindeki DNS sunucuları DNS sorgularını, bu sanal ağdaki konak adlarını çözümlemek için Azure 'un özyinelemeli çözümleyicilerine iletebilir. Daha fazla bilgi için bkz. [sanal ağlarda ad çözümleme](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Azure 'un özyinelemeli çözümleyicilerine erişimi, sanal IP 168.63.129.16 aracılığıyla sağlanır.
+
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. Aşağıdaki komutu yürütün:
+
+    ```bash
+    cat /etc/resolv.conf | grep nameserver*
+    ```
+
+    Şuna benzer bir şey görmeniz gerekir:
+
+    ```output
+    nameserver 168.63.129.16
+    nameserver 10.21.34.43
+    nameserver 10.21.34.44
+    ```
+
+    Sonuca bağlı olarak aşağıdaki adımlardan birini seçin:
+
+#### <a name="1686312916-is-not-in-this-list"></a>168.63.129.16 bu listede değil
+
+**Seçenek 1**  
+[Azure HDInsight için bir sanal ağ planlayın](../hdinsight-plan-virtual-network-deployment.md)bölümünde açıklanan adımları kullanarak sanal ağın Ilk özel DNS olarak 168.63.129.16 ekleyin. Bu adımlar yalnızca özel DNS sunucunuz Linux üzerinde çalışıyorsa geçerlidir.
+
+**Seçenek 2**  
+Sanal ağ için bir DNS sunucusu VM 'si dağıtın. Bu, aşağıdaki adımları içerir:
+
+* Sanal ağda, DNS ileticisi (Linux veya Windows VM olabilir) olarak yapılandırılacak bir VM oluşturun.
+* Bu VM 'de DNS iletme kurallarını yapılandırın (tüm IDNs ad çözümleme isteklerini 168.63.129.16 'ye ve DNS sunucunuza Rest 'e ilet).
+* Sanal ağ DNS yapılandırması için bu VM 'nin IP adresini ilk DNS girişi olarak ekleyin.
+
+#### <a name="1686312916-is-in-the-list"></a>168.63.129.16 listede
+
+Bu durumda, lütfen HDInsight ile bir destek durumu oluşturun ve sorununuzu araştıracağız. Aşağıdaki komutların sonucunu destek çalışmanıza ekleyin. Bu, sorunu daha hızlı araştırıp çözmemize yardımcı olur.
+
+Baş düğümdeki bir SSH oturumunda aşağıdakileri düzenleyin ve çalıştırın:
+
+```bash
+hostname -f
+nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+```
+
+---
+
 ### <a name="next-steps"></a>Sonraki adımlar
 
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
@@ -78,4 +145,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

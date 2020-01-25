@@ -1,23 +1,22 @@
 ---
 title: Azure PowerShell betik örneği - Özel konuya abone olma | Microsoft Docs
-description: Azure PowerShell betik örneği - Özel konuya abone olma
+description: Bu makalede, bir özel konu için Event Grid olaylarına nasıl abone olunacağı gösteren örnek bir Azure PowerShell betiği sunulmaktadır.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: f16a02cd110397b1ef6bb3aa00ea12c44e4b9563
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 1c3b158a2608d63fae6eea38c7263d0614519a5e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117128"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721532"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>PowerShell ile bir özel konu için olaylara abone olma
 
@@ -25,7 +24,7 @@ Bu betik, bir özel konu için olaylara bir Event Grid aboneliği oluşturur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Önizleme örnek betik, Event Grid modülü gerektirir. Yüklemek için çalıştırın `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` çalıştırın
 
 ## <a name="sample-script---stable"></a>Örnek betik - kararlı
 
@@ -33,7 +32,7 @@ Bu betik, bir özel konu için olaylara bir Event Grid aboneliği oluşturur.
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-custom-topic/subscribe-to-custom-topic.ps1 "Subscribe to custom topic")]
 
-## <a name="sample-script---preview-module"></a>Örnek betik - Önizleme Modülü
+## <a name="sample-script---preview-module"></a>Örnek betik-önizleme modülü
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
@@ -45,7 +44,7 @@ Bu betik, olay aboneliğini oluşturmak için aşağıdaki komutu kullanır. Tab
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid aboneliği oluşturun. |
+| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid aboneliği oluşturun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7da3c3de5074df80c676238e4d43dbd677b0a3b4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091821"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720240"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>İleti oturumları: ilk gelen, ilk çıkar (FıFO) 
 
@@ -54,13 +54,13 @@ Oturumlar, sıralı teslimi korurken ve garanti edilirken, araya eklemeli ileti 
 
 İstemci tarafından oturum kabul eden bir [Messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) alıcısı oluşturulur. İstemci [queueclient. acceptmessagesession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) veya [Queueclient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) ' C#i çağırır. Reaktif geri çağırma modelinde bir oturum işleyicisi kaydeder.
 
-[Messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) nesnesi kabul edildiğinde ve bir istemci tarafından tutulurken, bu istemci kuyrukta veya abonelikte var olan [SessionID](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) 'ye sahip tüm Iletilerde ve ayrıca bu SessionID 'ye sahip tüm iletilerde özel bir kilit barındırırbu, oturum tutulurken yine de ulaşır.
+[Messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) nesnesi kabul edildiğinde ve bir istemci tarafından tutulurken, bu istemci kuyrukta veya abonelikte var olan [SessionID](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) 'ye sahip tüm iletilerde ve ayrıca oturum tutulurken hala gelen **SessionID** 'ye sahip tüm iletilerde özel bir kilit barındırır.
 
 **Close** veya **CloseAsync** çağrıldığında kilit serbest bırakılır veya kilit, uygulamanın kapatma işlemini gerçekleştiremedik durumlarda zaman aşımına uğrar. Oturum kilidi bir dosya üzerinde özel bir kilit gibi değerlendirilmelidir, yani uygulamanın oturumu artık gerektirmez ve/veya başka ileti beklemediğinde oturumu kapatması gerekir.
 
 Kuyruktan birden çok eşzamanlı alıcı geldiğinde, belirli bir oturuma ait iletiler, o oturum için kilidi Şu anda tutan belirli bir alıcıya dağıtılır. Bu işlemle, bir kuyrukta veya abonelikte bulunan bir araya eklemeli ileti akışı, farklı alıcılar için düzgün şekilde çoğullanmış ve bu alıcılar farklı istemci makinelerde da kullanılabilir, çünkü kilit Yönetimi hizmet tarafı Service Bus.
 
-Önceki çizimde üç eşzamanlı oturum alıcısı gösterilmektedir. = 4 olan `SessionId` bir oturumda etkin, sahip olmayan bir istemci yoktur ve bu belirli oturumdan hiçbir ileti teslim edimediği anlamına gelir. Bir oturum, alt sıra gibi birçok şekilde davranır.
+Önceki çizimde üç eşzamanlı oturum alıcısı gösterilmektedir. `SessionId` = 4 olan bir oturum, etkin ve sahip olmayan bir istemciye sahip değil ve bu belirli oturumdan hiçbir ileti teslim edimediği anlamına gelir. Bir oturum, alt sıra gibi birçok şekilde davranır.
 
 Oturum alıcısı tarafından tutulan oturum kilidi, *Peek-kilit* kapatma modu tarafından kullanılan ileti kilitleri için bir şemsiye. Alıcının aynı anda "uçuş" olarak iki mesajı olamaz, ancak iletilerin sırayla işlenmesi gerekir. Yeni bir ileti yalnızca önceki ileti tamamlandığında veya kullanımdan alınamadığı zaman elde edilebilir. Bir iletiyi terk etmek, bir sonraki alma işlemiyle aynı iletinin yeniden sunulmasını sağlar.
 
@@ -82,7 +82,7 @@ Bir kuyrukta veya abonelikte tutulan oturum durumu, söz konusu varlığın depo
 
 ## <a name="impact-of-delivery-count"></a>Teslimat sayısının etkisi
 
-Oturum bağlamındaki ileti başına teslim sayısı tanımı, bağlanılabilirliğinin olmaması ' deki tanımdan biraz farklılık gösterir. Burada, teslim sayısı arttırılır.
+Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğunda tanımdan biraz farklılık gösterir. Burada, teslim sayısı arttırılır.
 
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|

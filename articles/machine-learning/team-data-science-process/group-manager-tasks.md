@@ -1,23 +1,23 @@
 ---
-title: Team Data Science Işlem Grubu Yöneticisi görevleri
+title: Team Data Science Process grup yöneticisi görevleri
 description: Bir grup yöneticisi 'nin bir veri bilimi takım projesinde tamamladığı görevlere ilişkin ayrıntılı izlenecek yolu izleyin.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053318"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721362"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Işlem Grubu Yöneticisi görevleri
+# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process grup yöneticisi görevleri
 
 Bu makalede bir veri bilimi organizasyonu için bir *grup yöneticisinin* tamamladığı görevler açıklanmaktadır. Grup Yöneticisi, bir kuruluştaki tüm veri bilimi birimini yönetir. Bir veri bilimi birimi, her biri ayrı iş verticinde birçok veri bilimi projesi üzerinde çalışan çeşitli takımlara sahip olabilir. Grup yöneticisinin hedefi, [ekip veri bilimi işlemini](overview.md) (TDSP) standartlaştırın bir işbirliğine dayalı grup ortamı kurmak. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen tüm personel rollerinin ve ilişkili görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
@@ -166,7 +166,7 @@ Depo içeriğini özelleştirmek için:
 Yerel makinenizi veya DSVM 'yi kullanarak değişiklik yapmak ve değişiklikleri grup depolarına iletmek istiyorsanız git ve DSVMs ile çalışmaya yönelik önkoşullara sahip olduğunuzdan emin olun:
 
 - DSVM oluşturmak istiyorsanız, bir Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -258,6 +258,6 @@ Gruba üye eklemek için:
 
 Team Data Science Işlemindeki diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
-- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
+- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
+- [Proje için bir veri bilimi ekibi müşteri adayı görevleri](project-lead-tasks.md)
 - [Bir veri bilimi ekibi için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md)

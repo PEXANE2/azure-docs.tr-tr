@@ -8,12 +8,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615038"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715185"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL veritabanı güvenlik en iyi uygulamaları PlayBook
 
@@ -260,7 +260,7 @@ Aşağıdaki en iyi yöntemler isteğe bağlıdır, ancak güvenlik stratejinizi
   - Yönetici 
   - Geliştirici 
   - Destek personeli 
-  - Denetçi 
+  - Ekleme 
   - Otomatikleştirilmiş süreçler 
   - Son kullanıcı 
 
@@ -339,7 +339,7 @@ SoD 'ye daha ayrıntılı bir şekilde geçmek isteyen okuyucular için aşağı
   - [SQL veritabanı ve SQL veri ambarı 'na veritabanı erişimini denetleme ve verme](sql-database-manage-logins.md)
   - [Uygulama geliştiricisi için görevlerin altyapı ayrımı](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
   - [SQL Server 2014 ' de görevlerin ayrımı](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [SQL Server'da Saklı Yordam İmzalama](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [SQL Server saklı yordamları imzalama](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Azure Kaynak yönetimi için:
   - [Azure için yerleşik roller](../role-based-access-control/built-in-roles.md) 
@@ -462,7 +462,7 @@ CLE kullanırken:
 - 3DES kullanmaktan kaçınmak için simetrik anahtarları asimetrik anahtarlar/sertifikalarla koruyun (parolalar). 
 
 - Dışarı aktarma/içeri aktarma (bacpac dosyaları) aracılığıyla hücre düzeyinde şifreleme kullanarak bir veritabanını geçirirken dikkatli olun. 
-  - Verileri geçirirken ve diğer en iyi Yöntem Kılavuzu için, [Azure SQL veritabanı 'Nda hücre düzeyinde şifrelemeyi kullanma önerilerini](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) ve bu makaleye bakın.
+  - Verileri geçirirken anahtar kaybını önleme ve diğer en iyi Yöntem Kılavuzu için [Azure SQL veritabanı 'Nda hücre düzeyinde şifrelemeyi kullanma önerileri](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) başlıklı makaleye bakın.
 
 Always Encrypted kullanırken, Always Encrypted birincil olarak Azure SQL veritabanı 'nın (bulut işletmenleri, DBAs) yüksek ayrıcalıklı kullanıcılardan kullanımda olan hassas verileri korumak için tasarlandığını unutmayın. [yüksek ayrıcalıklı, yetkisiz kullanıcılardan kullanımda olan hassas verileri koruma](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)konusuna bakın. Uygulama kullanıcılarından verileri korumak için Always Encrypted kullanırken aşağıdaki güçlükleri göz önünde bulundurun:
 

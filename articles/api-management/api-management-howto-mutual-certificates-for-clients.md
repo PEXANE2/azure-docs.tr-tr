@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 60cd9a1454704fae17ccdcf39b9de2745ae4fd2c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121021"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713138"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management 'de istemci sertifikası kimlik doğrulaması kullanarak API 'Leri güvenli hale getirme
 
@@ -34,7 +34,7 @@ API Management, istemci sertifikaları kullanarak API 'lere (yani API Management
 > [!IMPORTANT]
 > Tüketim katmanında istemci sertifikalarını almak ve doğrulamak için aşağıda gösterildiği gibi "özel etki alanları" dikey penceresinde "istemci sertifikası ıste" ayarını açmanız gerekir.
 
-![İstemci sertifikası isteme](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![İstemci sertifikası iste](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>Veren ve Subject denetleniyor
 
@@ -93,7 +93,7 @@ Aşağıdaki örnek, API Management yüklenen sertifikalara karşı bir istemci 
 
 > [!TIP]
 > Bu [makalede](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) açıklanan istemci sertifikası kilitlenmesi sorunu, tek bir şekilde kendi kendine bildirimde bulunabilir. Örneğin, istekler dondurduktan sonra istekler, zaman aşımından sonra `403 Forbidden` durum koduna neden olur `context.Request.Certificate` `null`. Bu sorun genellikle, yaklaşık 60 KB veya daha büyük içerik uzunluğuna sahip `POST` ve `PUT` isteklerini etkiler.
-> Bu sorunun oluşmasını engellemek için, "özel etki alanları" dikey penceresindeki istenen ana bilgisayar adları için "istemci sertifikası anlaş" ayarını aşağıda gösterildiği gibi etkinleştirin. Bu özellik, tüketim katmanında kullanılamaz.
+> Bu sorunun oluşmasını önlemek için, aşağıda gösterildiği gibi, "özel etki alanları" dikey penceresinde istenen ana bilgisayar adları için "istemci sertifikası anlaş" ayarını etkinleştirin. Bu özellik, tüketim katmanında kullanılamaz.
 
 ![İstemci sertifikası ile anlaş](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 

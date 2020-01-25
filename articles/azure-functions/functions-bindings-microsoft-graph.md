@@ -2,15 +2,15 @@
 title: Azure Işlevleri için Microsoft Graph bağlamaları
 description: Azure Işlevlerinde Microsoft Graph Tetikleyicileri ve bağlamaları nasıl kullanacağınızı anlayın.
 author: craigshoemaker
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 770187693e5bac6e059dfd20455099fcc695b74b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121208"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715022"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Işlevleri için Microsoft Graph bağlamaları
 
@@ -993,7 +993,7 @@ Web kancaları hakkında daha fazla bilgi için bkz. [Microsoft Graph 'de Web ka
 
 ## <a name="webhook-trigger"></a>Web kancası tetikleyicisi
 
-Microsoft Graph Web kancası tetikleyicisi, bir işlevin Microsoft Graph gelen bir Web kancasına tepki vermesini sağlar. Bu tetikleyicinin her örneği bir Microsoft Graph kaynak türüne tepki gösterebilir.
+Microsoft Graph Web kancası tetikleyicisi, bir işlevin Microsoft Graph gelen bir Web kancasına tepki vermesini sağlar. Bu tetikleyicinin her örneği bir Microsoft Graph kaynak türüne tepki verebilir.
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
@@ -1247,7 +1247,7 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 |**Adı**| Yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**type**| Yok |Gerekli-`graphWebhookSubscription`olarak ayarlanmalıdır.|
 |**direction**| Yok |Gerekli-`in`olarak ayarlanmalıdır.|
-|**filter (filtre)**|**Filtre**| `userFromRequest`olarak ayarlanırsa bağlama yalnızca çağıran kullanıcı tarafından sahip olunan abonelikleri alır (yalnızca [HTTP tetikleyicisi]geçerlidir).| 
+|**filtreyle**|**Filtre**| `userFromRequest`olarak ayarlanırsa bağlama yalnızca çağıran kullanıcı tarafından sahip olunan abonelikleri alır (yalnızca [HTTP tetikleyicisi]geçerlidir).| 
 
 ### <a name="webhook-input---usage"></a>Web kancası girişi kullanımı
 

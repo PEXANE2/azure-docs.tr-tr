@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275809"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712353"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -38,10 +38,10 @@ Bu makalede, Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokolüne u
 
 | **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  
 |---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | 
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | 
-|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | 
-|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | 
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | 
+|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | 
+|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Hizmet düzeltmeleri önceden mevcut SCIM uygulamama otomatik olarak uygulandı mi?
 
@@ -58,7 +58,7 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
 > [!NOTE]
 > Uygulamanız hala geliştirilmeye devam ediyorsa ve henüz çoklu oturum açma ya da Kullanıcı sağlama için dağıtılmamışsa, en kolay çözüm Azure portal **Azure Active Directory > kurumsal uygulamalar** bölümünde uygulama girişini silmek ve uygulama Için **Galeri olmayan bir seçenek > Oluştur** seçeneğini kullanarak uygulama için yeni bir giriş eklemektir. Bu, aşağıdaki yordamı çalıştırmaya alternatiftir.
  
-1. https://portal.azure.comAzure portal oturum açın.
+1. https://portal.azure.com Azure portal oturum açın.
 2. Azure portal **Azure Active Directory > Enterprise Applications** bölümünde, mevcut SCIM uygulamanızı bulun ve seçin.
 3. Mevcut SCıM uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.
 4. Yeni bir Web tarayıcısı penceresinde, https://developer.microsoft.com/graph/graph-explorer gidin ve uygulamanızın eklendiği Azure AD kiracısı için yönetici olarak oturum açın.
@@ -66,7 +66,7 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Işleri al](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Işleri al") 
+   ![Işleri al](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Işleri al") 
 
 
 6. Sonuçlarda, "customappsso" veya "Scim" ile başlayan tam "ID" dizesini kopyalayın.
@@ -74,7 +74,7 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Şemayı al](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Şemayı al") 
+   ![Şemayı al](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Şemayı al") 
 
 8. JSON çıkışını son adımdan kopyalayın ve bir metin dosyasına kaydedin. Bu, eski uygulamanıza eklediğiniz tüm özel öznitelik eşlemelerini içerir ve yaklaşık binlerce satır JSON satırı olmalıdır.
 9. Sağlama işini silmek için aşağıdaki komutu çalıştırın:
@@ -98,7 +98,7 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
 
 Evet. Düzeltmelerden önce varolan eski davranışa bir uygulamayı kodlandırdıysanız ve yeni bir örneğini dağıtmanız gerekiyorsa, aşağıdaki yordamı izleyin. Bu yordamda, eski davranışı gösteren bir SCıM sağlama işi oluşturmak için Microsoft Graph API ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanmaktadır.
  
-1. https://portal.azure.comAzure portal oturum açın.
+1. https://portal.azure.com Azure portal oturum açın.
 2. **Azure Active Directory > kurumsal uygulamalar > uygulama oluştur** Azure Portal bölümünde, **Galeri olmayan** yeni bir uygulama oluşturun.
 3. Yeni özel uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.
 4. Yeni bir Web tarayıcısı penceresinde, https://developer.microsoft.com/graph/graph-explorer gidin ve uygulamanızın eklendiği Azure AD kiracısı için yönetici olarak oturum açın.

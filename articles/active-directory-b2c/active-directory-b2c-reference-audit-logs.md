@@ -12,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e79b2342f481786caf46aeb9454e2961637da335
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948241"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712940"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -53,11 +53,11 @@ Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 
 |Section|Alan|Açıklama|
 |-------|-----|-----------|
-| Etkinlik | Adı | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
+| Etkinlik | Ad | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
 | Başlatan (aktör) | ObjectId | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
 | Başlatan (aktör) | SPN | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
-| Hedefler | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |
-| Ek Ayrıntılar | TenantId | Azure AD B2C kiracının **KIRACı kimliği** . |
+| Hedef (ler) | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |
+| Ek Ayrıntılar | Değerine | Azure AD B2C kiracının **KIRACı kimliği** . |
 | Ek Ayrıntılar | `PolicyId` | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
 | Ek Ayrıntılar | ApplicationId | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 
@@ -165,7 +165,7 @@ Write-Output "Searching for events starting $7daysago"
 $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-# Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+# Parse audit report items, save output to file(s): auditX.json, where X = 0 through n for number of nextLink pages
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}

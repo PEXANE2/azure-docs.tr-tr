@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c24e8b6098ba33a2e738a7f5f310ae7e65ee516
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925285"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715069"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Işlevleri için Twilio bağlama
 
@@ -31,181 +31,11 @@ Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example---functions-1x"></a>Örnek-1. x Işlevleri
-
-Dile özgü örneğe bakın:
-
-* [C#](#c-example)
-* [C# betiği (.csx)](#c-script-example)
-* [JavaScript](#javascript-example)
-
-### <a name="c-example"></a>C#örneğinde
-
-Aşağıdaki örnek, bir kuyruk iletisi tarafından tetiklendiğinde kısa mesaj gönderen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
-
-```cs
-[FunctionName("QueueTwilio")]
-[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
-    TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {order}");
-
-    var message = new SMSMessage()
-    {
-        Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
-    };
-
-    return message;
-}
-```
-
-Bu örnek, `TwilioSms` özniteliğini yöntem dönüş değeri ile kullanır. Diğer bir seçenek de `out SMSMessage` parametresi veya `ICollector<SMSMessage>` veya `IAsyncCollector<SMSMessage>` parametresiyle özniteliği kullanmaktır.
-
-### <a name="c-script-example"></a>C#betik örneği
-
-Aşağıdaki örnek, bir *function. JSON* dosyasında Twilio çıkış bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi bir metin mesajı göndermek için bir `out` parametresi kullanır.
-
-İşte, *function. JSON* dosyasındaki veri bağlama:
-
-Örnek Function. JSON:
-
-```json
-{
-  "type": "twilioSms",
-  "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
-  "from": "+1425XXXXXXX",
-  "direction": "out",
-  "body": "Azure Functions Testing"
-}
-```
-
-C# Betik kodu aşağıdadır:
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using Newtonsoft.Json;
-using Twilio;
-
-public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    dynamic order = JsonConvert.DeserializeObject(myQueueItem);
-    string msg = "Hello " + order.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    message = new SMSMessage();
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    message.Body = msg;
-    message.To = order.mobileNumber;
-}
-```
-
-Zaman uyumsuz kodda Out parametrelerini kullanamazsınız. Zaman uyumsuz C# betik kodu örneği:
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Twilio;
-
-public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> message,  ILogger log)
-{
-    log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    dynamic order = JsonConvert.DeserializeObject(myQueueItem);
-    string msg = "Hello " + order.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    SMSMessage smsText = new SMSMessage();
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    smsText.Body = msg;
-    smsText.To = order.mobileNumber;
-
-    await message.AddAsync(smsText);
-}
-```
-
-### <a name="javascript-example"></a>JavaScript örneği
-
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki Twilio çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
-
-İşte, *function. JSON* dosyasındaki veri bağlama:
-
-Örnek Function. JSON:
-
-```json
-{
-  "type": "twilioSms",
-  "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
-  "from": "+1425XXXXXXX",
-  "direction": "out",
-  "body": "Azure Functions Testing"
-}
-```
-
-JavaScript kod aşağıdaki gibidir:
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    var msg = "Hello " + myQueueItem.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the message binding.
-    context.bindings.message = {};
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    context.bindings.message = {
-        body : msg,
-        to : myQueueItem.mobileNumber
-    };
-
-    context.done();
-};
-```
+<a id="example"></a>
 
 ## <a name="example---functions-2x-and-higher"></a>Örnek-Işlevler 2. x ve üzeri
 
-Dile özgü örneğe bakın:
-
-* [2. x +C#](#2x-c-example)
-* [2. x + C# betiği (. CSX)](#2x-c-script-example)
-* [2. x + JavaScript](#2x-javascript-example)
-
-### <a name="2x-c-example"></a>2. x + C# örnek
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, bir kuyruk iletisi tarafından tetiklendiğinde kısa mesaj gönderen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
 
@@ -240,7 +70,7 @@ namespace TwilioQueueOutput
 
 Bu örnek, `TwilioSms` özniteliğini yöntem dönüş değeri ile kullanır. Diğer bir seçenek de `out CreateMessageOptions` parametresi veya `ICollector<CreateMessageOptions>` veya `IAsyncCollector<CreateMessageOptions>` parametresiyle özniteliği kullanmaktır.
 
-### <a name="2x-c-script-example"></a>2. x + C# betik örneği
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasında Twilio çıkış bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi bir metin mesajı göndermek için bir `out` parametresi kullanır.
 
@@ -326,7 +156,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-### <a name="2x-javascript-example"></a>2. x + JavaScript örneği
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki Twilio çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
@@ -371,7 +201,93 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="attributes"></a>Öznitelikler
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Aşağıdaki örnek, aşağıdaki *function. js*' de tanımlanan çıktı bağlamasını kullanarak nasıl SMS iletisi gönderileceğini gösterir.
+
+```json
+    {
+      "type": "twilioSms",
+      "name": "twilioMessage",
+      "accountSidSetting": "TwilioAccountSID",
+      "authTokenSetting": "TwilioAuthToken",
+      "from": "+1XXXXXXXXXX",
+      "direction": "out",
+      "body": "Azure Functions Testing"
+    }
+```
+
+SMS iletisini göndermek için, seri hale getirilmiş bir JSON nesnesini `func.Out` parametresine geçirebilirsiniz.
+
+```python
+import logging
+import json
+import azure.functions as func
+
+def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpResponse:
+
+    message = req.params.get('message')
+    to = req.params.get('to')
+
+    value = {
+      "body": message,
+      "to": to
+    }
+
+    twilioMessage.set(json.dumps(value))
+
+    return func.HttpResponse(f"Message sent")
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Aşağıdaki örnek, [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamanın SMS iletisi göndermek için nasıl kullanılacağını gösterir. `to`, `from`ve `body` değerleri, program aracılığıyla geçersiz kılsanız bile öznitelik tanımında gereklidir.
+
+```java
+package com.function;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class TwilioOutput {
+
+    @FunctionName("TwilioOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST },
+                authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @TwilioSmsOutput(
+                name = "twilioMessage",
+                accountSid = "AzureWebJobsTwilioAccountSID",
+                authToken = "AzureWebJobsTwilioAuthToken",
+                to = "+1XXXXXXXXXX",
+                body = "From Azure Functions",
+                from = "+1XXXXXXXXXX") OutputBinding<String> twilioMessage,
+            final ExecutionContext context) {
+
+        String message = request.getQueryParameters().get("message");
+        String to = request.getQueryParameters().get("to");
+
+        StringBuilder builder = new StringBuilder()
+            .append("{")
+            .append("\"body\": \"%s\",")
+            .append("\"to\": \"%s\"")
+            .append("}");
+
+        final String body = String.format(builder.toString(), message, to);
+
+        twilioMessage.setValue(body);
+
+        return request.createResponseBuilder(HttpStatus.OK).body("Message sent").build();
+    }
+}
+```
+
+---
+
+## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) özniteliğini kullanın.
 
@@ -387,7 +303,25 @@ public static CreateMessageOptions Run(
 }
  ```
 
-Tüm örnek için bkz [ C# . örnek](#c-example).
+Tüm örnek için bkz [ C# . örnek](#example).
+
+# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+
+Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`T` [ek açıklamayı](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) , `int`, `String`, `byte[]`veya Pojo türü gibi herhangi bir yerel Java türü olabileceği bir [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) parametresine yerleştirin.
+
+---
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -398,8 +332,8 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 |**type**|**type**| `twilioSms`olarak ayarlanmalıdır.|
 |**direction**|**direction**| `out`olarak ayarlanmalıdır.|
 |**Adı**|**Adı**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
-|**accountSid**|**Accountsıdsetting**| **AccountSidSetting**| Bu değer, Twilio hesabı SID 'nizi (örn. TwilioAccountSid) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi tutan bir uygulama ayarının adına ayarlanmalıdır, örn. TwilioAccountAuthToken. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
+|**accountSid**|**Accountsıdsetting**| **Accountsıdsetting**| Bu değer, Twilio hesabı SID 'nizi (`TwilioAccountSid`) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi (`TwilioAccountAuthToken`) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
 |**to**| Yok-kodda belirt | **Alıcı**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**from**|**from** | **From**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**body**|**body** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  

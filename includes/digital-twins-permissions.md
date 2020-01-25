@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/06/2020
+ms.date: 01/23/2020
 ms.custom: include file
-ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895450"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748839"
 ---
 >[!NOTE]
 >Bu bölümde [Azure AD uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)için yönergeler sağlanmaktadır.
@@ -33,9 +33,18 @@ ms.locfileid: "75895450"
 
 1. [Uygulamanın bir **ortak istemci**olarak kaydedildiğinden](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)emin olmak için, uygulama kaydlarınızın **kimlik doğrulama** bölmesini açın ve bu bölmeyi aşağı kaydırın. **Varsayılan istemci türü** bölümünde, **uygulamayı ortak istemci olarak değerlendir**' **i seçin ve** **Kaydet**' i tıklayın.
 
-    Manifest. JSON 'inizdeki **oauth2AllowImplicitFlow** ayarını etkinleştirmek için **erişim belirteçlerini** denetleyin.
+    1. **Yeniden yönlendirme URI 'leri** , kimlik doğrulama isteği tarafından sağlanan adresle eşleşmelidir:
 
-    [![ortak istemci yapılandırma ayarı](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+        * Yerel bir geliştirme ortamında barındırılan uygulamalar için **ortak istemci (mobil & Masaüstü)** öğesini seçin. **Varsayılan istemci türünü** Evet olarak ayarladığınızdan emin olun.
+        * Azure App Service barındırılan tek sayfalı uygulamalar için **Web**' i seçin.
+
+        **Ortak istemci (mobil & Masaüstü)** öğesini seçin ve `http://localhost:8080/`girin.
+
+        [Yeniden yönlendirme URI 'Lerini yapılandırma ![](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+
+    1. **Oauth2AllowImplicitFlow** ayarını kaynağınızın **bildiriminde** `true` üzere yapılandırmak için **erişim belirteçlerine** bakın.
+
+        [![ortak istemci yapılandırma ayarı](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  Kayıtlı uygulamanızın **genel bakış** bölmesini açın ve aşağıdaki varlıkların değerlerini geçici bir dosyaya kopyalayın. Aşağıdaki bölümlerde örnek uygulamanızı yapılandırmak için bu değerleri kullanacaksınız.
 

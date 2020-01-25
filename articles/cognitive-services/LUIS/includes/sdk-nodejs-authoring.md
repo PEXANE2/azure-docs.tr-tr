@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/22/2020
 ms.author: diberry
-ms.openlocfilehash: 65611dfb171008deab9d1d6cb15f0470fcbc2753
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 808fdfb04cbe3b2b9e5f2de0c653bb978196269c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170557"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748950"
 ---
 Node. js için Language Understanding (LUSıS) yazma istemci kitaplığını kullanarak şunları yapın:
 
@@ -25,7 +25,7 @@ Node. js için Language Understanding (LUSıS) yazma istemci kitaplığını kul
 * Bir uygulamayı eğitme ve yayımlama.
 * Uygulamayı Sil
 
-[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [yazma paketi (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [yazma paketi (NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)), [çalışma zamanı paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -125,7 +125,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Anahtarınızla bir [Biliveservicescredentials]() nesnesi oluşturun ve bir [Luisauthoringclient]() nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) nesnesi oluşturun ve bir [Luisauthoringclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-javascript[Create LUIS client object](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringCreateClient)]
 

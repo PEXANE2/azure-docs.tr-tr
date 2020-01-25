@@ -3,26 +3,26 @@ title: Azure DevOps Hizmetleri - Team Data Science Process ile veri bilimi kodu 
 description: Veri bilimi kod ile Team Data Science Process UCI yetişkinlere yönelik gelir tahmin veri kümesi ile Azure ve Azure DevOps hizmetleriyle test etme
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/19/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336703"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722065"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process ile Azure ve Azure DevOps hizmetleriyle sınama veri bilimi kodu
 Bu makalede, kodu test etmek için bir veri bilimi iş akışında başlangıç yönergeleri sağlar. Veri bilimcileri, bu tür bir testi beklenen sonuç kodlarını ve kalite kontrol etmek için sistematik ve etkili bir yol sağlar. Team Data Science işlem (TDSP) kullanıyoruz [UCI yetişkinlere yönelik gelir veri kümesini kullanan proje](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) biz nasıl kodu test yapılabilir göstermek için daha önce yayımlanmış. 
 
 ## <a name="introduction-on-code-testing"></a>Sınama kodu giriş
-"Birim testi", yazılım geliştirme çalışmalarını uzun süredir davam bir uygulamadır. Ancak veri bilimi için hangi, NET değildir anlamına gelir ve nasıl kod bir veri bilimi yaşam döngüsünün farklı aşamalarında gibi test etmelisiniz:
+"Birim testi", yazılım geliştirme çalışmalarını uzun süredir davam bir uygulamadır. Ancak veri bilimi için, "birim testi" ne anlama geldiğini ve bir veri bilimi yaşam döngüsünün farklı aşamaları için kodu test etmeyi nasıl test etmemelisiniz, örneğin:
 
 * Veri hazırlama
 * Veri Kalitesi İnceleme
@@ -114,35 +114,35 @@ Ayarlanmış ve bir yapı aracısı ve Azure DevOps kullanarak kodu test etme ve
 
     a. Proje deposu seçin **derleme ve yayın**ve ardından **+ yeni** yeni bir yapı işlemi oluşturmak için.
 
-       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
+    ![Yeni derleme işlemi başlatma seçimleri](./media/code-test/create_new_build.PNG)
 
     b. Kaynak kodu konumu, proje adı, depo ve dal bilgilerini seçmek için yönergeleri izleyin.
     
-       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
+    ![Kaynak, ad, depo ve dal bilgileri](./media/code-test/fill_in_build_info.PNG)
 
     c. Bir şablon seçin. Hiçbir Python proje şablonu olduğundan seçerek başlayın **boş işlem**. 
 
-       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
+    ![Şablonların listesi ve "boş işlem" düğmesi](./media/code-test/start_empty_process_template.PNG)
 
-    d. Derleme adı ve Aracı'nı seçin. Yapı işlemini tamamlamak için bir DSVM kullanmak istiyorsanız, varsayılan buradan seçebilirsiniz. Ayar aracıları hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Derleme adı ve Aracı'nı seçin. Derleme işlemini gerçekleştirmek için DSVM kullanmak istiyorsanız, varsayılan olarak bu seçeneği belirleyebilirsiniz. Ayar aracıları hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
-       ![Build and agent selections](./media/code-test/select_agent.PNG)
+    ![Yapı ve aracı seçimleri](./media/code-test/select_agent.PNG)
 
-    e. Seçin **+** bu derleme aşaması için bir görev eklemek için sol bölmedeki. Python betiğini çalıştırılacak yapacağız çünkü **test1.py** tüm denetimleri tamamlamak için bu görev bir PowerShell komutu Python kodu çalıştırmak için kullanıyor.
+    e. Seçin **+** bu derleme aşaması için bir görev eklemek için sol bölmedeki. Tüm denetimleri tamamlaması için Python betiğini **test1.py** çalıştıracağız, bu görev Python kodunu çalıştırmak Için bir PowerShell komutu kullanıyor.
     
-       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
+    ![PowerShell seçiliyken "görev ekleme" bölmesi](./media/code-test/add_task_powershell.PNG)
 
     f. PowerShell ayrıntılarında adı ve PowerShell sürümü gibi gerekli bilgileri doldurun. Seçin **satır içi betik** türü. 
     
-       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
+    **Satır Içi betik**altındaki kutuya **Python test1.py**yazabilirsiniz. Ortam değişkeninin Python için doğru şekilde ayarlandığından emin olun. Python 'un farklı bir sürümüne veya çekirdeğe ihtiyacınız varsa, yolu şekilde gösterildiği gibi açıkça belirtebilirsiniz: 
     
-       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
+    ![PowerShell ayrıntıları](./media/code-test/powershell_scripts.PNG)
 
-    g. Seçin **Kaydet ve kuyruğa** derleme işlem hattı işlemini tamamlamak için.
+    g. Derleme ardışık düzeni işlemini gerçekleştirmek için **& kuyruğu kaydet** ' i seçin.
 
-       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
+    !["& Kuyruğunu kaydet" düğmesi](./media/code-test/save_and_queue_build_definition.PNG)
 
-Artık her seferinde yeni bir işleme kodu depoya gönderildiğinde, yapı işlemi otomatik olarak başlatılacak. (Ana depo burada kullanıyoruz, ancak herhangi bir dala tanımlayabilirsiniz.) İşlem sürerken **test1.py** kod içinde tanımlanan her şeyin düzgün çalıştığından emin olmak için aracı makinede dosyasında. 
+Artık her seferinde yeni bir işleme kodu depoya gönderildiğinde, yapı işlemi otomatik olarak başlatılacak. (Burada depo olarak ana öğe kullanıyoruz, ancak herhangi bir dalı tanımlayabilirsiniz.) İşlem, kodda tanımlanan her şeyin düzgün çalıştığından emin olmak için aracı makinesinde **test1.py** dosyasını çalıştırır. 
 
 Uyarılar doğru şekilde ayarlanmışsa, derleme tamamlandığında e-posta ile bildirilir. Ayrıca, Azure DevOps içindeki derleme durumunu kontrol edebilirsiniz. Başarısız olursa, derleme ayrıntılarını kontrol edin ve hangi parçanın bozuk olduğunu öğrenin.
 

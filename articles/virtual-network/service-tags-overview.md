@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543044"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715403"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri 
 <a name="network-service-tags"></a>
@@ -64,7 +64,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **Azureınformationprotection** | Azure Information Protection.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory** ve **Azurefrontkapısı. ön uç** etiketlerine bağımlılığı vardır. Ayrıca, aşağıdaki IP 'Leri de beyaz listeye girin (Bu bağımlılık yakında kaldırılacak): 13.107.6.181 & 13.107.9.181. | Giden | Hayır | Hayır |
 | **AzureIoTHub** | Azure IoT Hub. | Giden | Hayır | Hayır |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory** etiketine bağımlılığı vardır. | Giden | Evet | Evet |
-| **AzureLoadBalancer** | Azure altyapı yük dengeleyici. Etiketi, Azure sistem durumu araştırmalarının gerçekleştiği [konağın sanal IP adresine](security-overview.md#azure-platform-considerations) (168.63.129.16) çevirir. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. | Her ikisi de | Hayır | Hayır |
+| **AzureLoadBalancer** | Azure altyapı yük dengeleyici. Etiketi, Azure sistem durumu araştırmalarının gerçekleştiği [konağın sanal IP adresine](security-overview.md#azure-platform-considerations) (168.63.129.16) çevirir. Bu, Azure Load Balancer kaynağına giden trafiği içermez. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. | Her ikisi de | Hayır | Hayır |
 | **AzureMachineLearning** | Azure Machine Learning. | Her ikisi de | Hayır | Evet |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon ve özel ölçümler (GB uç noktaları).<br/><br/>*Note:* Log Analytics için, bu etiketin **depolama** etiketine bağımlılığı vardır. | Giden | Hayır | Evet |
 | **AzurePlatformDNS** | Temel altyapı (varsayılan) DNS hizmeti.<br/><br>Varsayılan DNS 'yi devre dışı bırakmak için bu etiketi kullanabilirsiniz. Bu etiketi kullanırken dikkatli olun. [Azure platformu konularını](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)okumanızı öneririz. Ayrıca, bu etiketi kullanmadan önce test gerçekleştirmenizi öneririz. | Giden | Hayır | Hayır |
@@ -83,7 +83,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **HDInsight** | Azure HDInsight. | Gelen | Evet | Hayır |
 | **Internet** | Sanal ağın dışında olan ve genel İnternet tarafından erişilebilen IP adresi alanı.<br/><br/>Adres aralığı, [Azure 'a ait genel IP adresi alanını](https://www.microsoft.com/download/details.aspx?id=41653)içerir. | Her ikisi de | Hayır | Hayır |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Giden | Hayır | Hayır |
-| **MicrosoftContainerRegistry** | Azure Container Registry. | Giden | Evet | Evet |
+| **MicrosoftContainerRegistry** | Microsoft Container görüntüleri için kapsayıcı kayıt defteri. <br/><br/>*Note:* Lütfen aşağıdaki IP 'yi de beyaz listeye ekleyin (Bu bağımlılık yakında kaldırılacak): 204.79.197.219. | Giden | Evet | Evet |
 | **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Giden | Evet | Evet |
 | **ServiceFabric** | Azure Service Fabric. | Giden | Hayır | Hayır |
 | **Sql** | Azure SQL veritabanı, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı ve Azure SQL veri ambarı.<br/><br/>*Note:* Bu etiket hizmetin belirli örneklerini değil hizmeti temsil eder. Örneğin etiket belirli bir SQL veritabanını veya sunucusunu değil Azure SQL Veritabanı hizmetini temsil eder. | Giden | Evet | Evet |

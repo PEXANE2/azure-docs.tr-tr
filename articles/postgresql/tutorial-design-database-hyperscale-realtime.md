@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978109"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716321"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak gerçek zamanlı analiz panosu tasarlama
 
@@ -28,7 +28,7 @@ Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQ
 > * Ham ve toplanmış verileri sorgulama
 > * Süre sonu verisi
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -222,7 +222,7 @@ Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir hiper ölçek (Citus) sunucu grubu sağlamayı öğrendiniz. Bu ağa psql ile bağlanırsınız, bir şema oluşturdunuz ve dağıtılmış veriler. Verilerin her ikisi de ham biçimde sorgulanmasını, verileri düzenli olarak toplamasını, toplanmış tabloları sorgulamayı ve eski verilerin sona ermesini öğrendiniz.
+Bu öğreticide, bir hiper ölçek (Citus) sunucu grubu sağlamayı öğrendiniz. Bu ağa psql ile bağlanırsınız, bir şema oluşturdunuz ve dağıtılmış veriler. Ham formdaki verileri sorgulamayı, verileri düzenli olarak toplamasını, toplanmış tabloları sorgulamayı ve eski verilerin zaman dolmasını öğrendiniz.
 
 Ardından, hyperscale kavramlarını öğrenin.
 > [!div class="nextstepaction"]

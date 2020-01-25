@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814593"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721634"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modülü Market sekmesi
 
@@ -129,7 +129,7 @@ Bir Hero logosu için aşağıdaki yönergeleri kullanın:
 *  Logoyu tasarlarken çoğu metni kullanmaktan kaçının. Teklif listelendiğinde yayımcı adı, plan başlığı, teklif uzun Özeti ve bir oluştur düğmesi, logo içine programlı bir şekilde katıştırılır. 
 * Hero logosunun sağ tarafında kullanılmayan dikdörtgen bir boşluk ekleyin. Bu boş alan 415x100 pikseldir ve soldan 370 piksel arasında olacak şekilde denkleştirilir.  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)

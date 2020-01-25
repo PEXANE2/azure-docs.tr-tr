@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 214797f187c1812932c00bdf2a39c5ed79e15d4b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425478"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712665"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Öğretici: uygulamayı Azure Active Directory B2C kaydetme
 
@@ -88,7 +88,7 @@ Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 
 ## <a name="create-a-client-secret"></a>İstemci parolası oluşturma
 
-Uygulamanız belirteç için bir kod alışverişi yaptıysanız, bir uygulama gizli anahtarı oluşturmanız gerekir.
+Uygulamanız bir erişim belirteci için bir yetkilendirme kodu alışverişi yaptıysanız, bir uygulama gizli anahtarı oluşturmanız gerekir.
 
 #### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
 

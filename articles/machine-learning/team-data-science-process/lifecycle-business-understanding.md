@@ -3,20 +3,20 @@ title: Team Data Science Process içinde iş anlama
 description: Hedefleri, görevleri ve iş anlama aşamasına veri bilimi projelerinizi Team Data Science Process için teslim edilebilirler.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303562"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710340"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process yaşam döngüsü aşaması iş anlama
 
@@ -40,8 +40,8 @@ TDSP yaşam döngüsü görsel bir temsilini şu şekildedir:
 ## <a name="how-to-do-it"></a>Nasıl yapılır
 Bu aşamada ele iki ana görevi vardır: 
 
-   * **Hedefleri tanımlamanıza**: Anlama ve iş sorunlarını belirlemek için müşteri ve diğer proje katılımcıları çalışın. Veri bilimi teknikleri hedefleyebilen iş hedeflerinizi sorular düzenleyin.
-   * **Veri kaynaklarını tanımlama**: Projenin hedefleri tanımlamanıza soruları yanıtlamanıza yardımcı olan ilgili verileri bulun.
+   * **Hedefleri tanımlamanıza**: anlamak ve iş sorunlarını belirlemek için müşteri ve diğer proje katılımcıları ile çalışma. Veri bilimi teknikleri hedefleyebilen iş hedeflerinizi sorular düzenleyin.
+   * **Veri kaynaklarını tanımlama**: yardımcı olan ilgili verileri projenin hedefleri tanımlamanıza ve sorulara yanıt bulun.
 
 ### <a name="define-objectives"></a>Hedeflerini belirleyin
 1. Bu adımın merkezi bir hedefi tahmin analizi ihtiyaçlarınızın önemli iş değişkenleri belirlemektir. Bu değişkenler diyoruz *model hedefleri*, ve onlarla ilişkili ölçümleri projenin başarısını belirlemek için kullanıyoruz. İki tür hedeflerle satış tahminlerini veya bir sipariş edilen sahte olasılığını örnekleridir.
@@ -74,12 +74,12 @@ Diyez sorularınızın yanıtlarını bilinen örneklerini içeren veri kaynakla
 
 Örneğin, var olan sistemler toplamak ve sorunu çözmek ve proje hedeflere ulaşmak için veri ek türleri oturum gerektiğini fark edebilirsiniz. Bu durumda, dış veri kaynakları için aramak veya yeni veriler toplamak için sistemlerinizi update isteyebilirsiniz.
 
-## <a name="artifacts"></a>Yapıtlar
+## <a name="artifacts"></a>Artifacts
 Bu aşamada teslim edilebilir öğeler şunlardır:
 
-   * [Kurucu belge](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): Standart şablon TDSP projesi yapı tanımında sağlanır. Kurucu, oturma belge belgesidir. Şablon proje boyunca yeni bulmalar yaptığınız ve iş gereksinimleri değiştikçe güncelleştirin. Bulma işlemi ilerlemeyi olarak daha fazla ayrıntı ekleme, bu belge üzerinde yineleme yapmak için kullanılan anahtardır. Bir müşteriye ve diğer proje katılımcıları söz konusu değişiklikler yaparken ve açıkça bunları değişiklikleri nedenlerle iletişim.  
-   * [Veri kaynakları](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **Ham veri kaynakları** bölümünü **veri tanımlarını** TDSP projesinde bulunan rapor **veri raporu** klasörü, veri kaynaklarını içerir. Bu bölümde, ham veriler için özgün ve hedef konumları belirtir. Daha sonraki aşamalarda, analitik ortamınıza verileri taşımak için komut dosyaları gibi ek ayrıntıları doldurun.  
-   * [Veri sözlükleri](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Bu belge, istemci tarafından sağlanan veri açıklamaları sağlar. Bu açıklamalar varsa şema (veri türleri ve varsa doğrulama kuralları bilgi) ve varlık ilişkisi diyagramları hakkında bilgi içerir.
+   * [Kurucu belge](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standart şablonunu TDSP projesi yapı tanımında sağlanır. Kurucu, oturma belge belgesidir. Şablon proje boyunca yeni bulmalar yaptığınız ve iş gereksinimleri değiştikçe güncelleştirin. Bulma işlemi ilerlemeyi olarak daha fazla ayrıntı ekleme, bu belge üzerinde yineleme yapmak için kullanılan anahtardır. Bir müşteriye ve diğer proje katılımcıları söz konusu değişiklikler yaparken ve açıkça bunları değişiklikleri nedenlerle iletişim.  
+   * [Veri kaynakları](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **ham veri kaynakları** bölümünü **veri tanımlarını** TDSP projesinde bulunan rapor **veri raporu** klasör verileri içerir kaynakları. Bu bölümde, ham veriler için özgün ve hedef konumları belirtir. Daha sonraki aşamalarda, analitik ortamınıza verileri taşımak için komut dosyaları gibi ek ayrıntıları doldurun.  
+   * [Veri sözlükleri](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Bu belgede istemci tarafından sağlanan veri açıklamaları sağlanır. Bu açıklamalar varsa şema (veri türleri ve varsa doğrulama kuralları bilgi) ve varlık ilişkisi diyagramları hakkında bilgi içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -91,4 +91,4 @@ TDSP yaşam döngüsü içinde her adım için bağlantılar şunlardır:
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-İşlemin belirli senaryolar için tüm adımları gösteren uçtan uca tam talimatlara sunuyoruz. [Örnek izlenecek yollar](walkthroughs.md) makale bağlantıları ve küçük resim açıklamaları senaryolarıyla bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek izlenecek yollar](walkthroughs.md) makale bağlantıları ve küçük resim açıklamaları senaryolarıyla bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 

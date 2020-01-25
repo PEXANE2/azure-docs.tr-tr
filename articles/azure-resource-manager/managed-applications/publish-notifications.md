@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651637"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715678"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Bildirimleri olan Azure yönetilen uygulamalar
 
@@ -28,7 +28,7 @@ Hızlıca kullanmaya başlamak için önerilen adımlar aşağıda verilmiştir:
 6. Bildirim isteklerini ayrıştırmak ve bildirime göre iş mantığınızı uygulamak için bu makalenin **bildirim şeması** bölümündeki yönergeleri izleyin.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Hizmet kataloğu uygulama tanımı bildirimleri ekleme
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portalında
 Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](./publish-portal.md).
 
 ![Azure portal Hizmet kataloğu uygulama tanımı bildirimleri](./media/publish-notifications/service-catalog-notifications.png)
@@ -67,12 +67,12 @@ Daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](../../marketplac
 ## <a name="event-triggers"></a>Olay tetikleyicileri
 Aşağıdaki tabloda, EventType ve ProvisioningState 'in tüm olası birleşimleri ve Tetikleyicileri açıklanmaktadır:
 
-Olay türü | ProvisioningState | Bildirim için Tetikle
+Türü | ProvisioningState | Bildirim için Tetikle
 ---|---|---
-PUT | Kabul edildi | Yönetilen kaynak grubu, uygulama KONDUKTAN sonra (yönetilen kaynak grubundaki dağıtıma konmadan önce) başarıyla oluşturuldu ve yansıtılmıştır.
+PUT | Eden | Yönetilen kaynak grubu, uygulama KONDUKTAN sonra (yönetilen kaynak grubundaki dağıtıma konmadan önce) başarıyla oluşturuldu ve yansıtılmıştır.
 PUT | Başarılı oldu | Yönetilen uygulamanın tam olarak sağlanması, bir KONDUKTAN sonra başarılı oldu.
 PUT | Başarısız | Herhangi bir noktada uygulama örneği sağlamayı YERLEŞTIRME hatası.
-YAMA | Başarılı oldu | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
+DÜZELTMESI | Başarılı oldu | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
 DELETE | Siliniyor | Kullanıcı, yönetilen uygulama örneğinin bir SILME işlemini başlatır.
 DELETE | Silinen | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
 DELETE | Başarısız | Silme işlemini engelleyen kaldırma işlemi sırasında herhangi bir hatadan sonra.
@@ -179,7 +179,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 Parametre | Açıklama
 ---|---
 eventType | Bildirimi tetikleyen olay türü. (Örneğin, PUT, PATCH, DELETE.)
-applicationId | Bildirimin tetiklendiği yönetilen uygulamanın tam kaynak tanımlayıcısı.
+Uygulama | Bildirimin tetiklendiği yönetilen uygulamanın tam kaynak tanımlayıcısı.
 eventTime | Bildirimi tetikleyen olayın zaman damgası. (UTC ISO 8601 biçiminde tarih ve saat.)
 ProvisioningState | Yönetilen uygulama örneğinin sağlama durumu. (Örneğin, başarılı, başarısız, silme, silindi.)
 error | *Yalnızca provisioningState başarısız olduğunda belirtilir*. Hata kodunu, iletisini ve hataya neden olan sorunun ayrıntılarını içerir.
@@ -189,7 +189,7 @@ billingDetails | *Yalnızca Azure Marketi tarafından yönetilen uygulamalar iç
 
 ## <a name="endpoint-authentication"></a>Uç nokta kimlik doğrulaması
 Web kancası uç noktasını güvenli hale getirmek ve bildirimin orijinalliğini sağlamak için:
-1. Web kancası URI 'sinin üstünde, şöyle bir sorgu parametresi sağlayın: https://your-endpoint.com?sig=Guid. Her bildirimle, `sig` sorgu parametresinin beklenen değer `Guid`sahip olup olmadığını denetleyin.
+1. Web kancası URI 'sinin üstünde şu şekilde bir sorgu parametresi sağlayın: https\://Your-Endpoint.com? SIG = GUID. Her bildirimle, `sig` sorgu parametresinin beklenen değer `Guid`sahip olup olmadığını denetleyin.
 2. ApplicationId kullanarak yönetilen uygulama örneğinde bir GET verme. Tutarlılık sağlamak için provisioningState 'in bildirimin provisioningState ile eşleştiğini doğrulayın.
 
 ## <a name="notification-retries"></a>Bildirim yeniden denemeleri

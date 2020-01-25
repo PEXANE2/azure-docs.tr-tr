@@ -1,6 +1,6 @@
 ---
 title: Azure Lab Services kullanarak sınıf laboratuvarı ayarlama | Microsoft Docs
-description: Bu öğreticide, bir sınıfta kullanılacak laboratuvar ayarlarsınız.
+description: Bu öğreticide, sınıfınızda öğrenciler tarafından kullanılan sanal makinelerle bir derslik Laboratuvarı kurmak için Azure Lab Services kullanırsınız.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2c28375ce7252e93340f395b97224d292940ce65
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584903"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719186"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  

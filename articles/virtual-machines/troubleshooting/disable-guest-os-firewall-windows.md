@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705543"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718880"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
 
@@ -118,9 +118,9 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz varsa, Özel Betik uzantısı başarısız olur ve doğrudan sistem diski aracılığıyla çalışarak ÇEVRIMDıŞı modda çalışmanız gerekir. Bunu yapmak için şu adımları uygulayın:
 
-1.  [Sistem diskini bir kurtarma VM 'Sine bağlayın](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Bir kurtarma VM'si sistem diski](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın.
+2.  Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın.
 
 3.  Diskin Disk Yönetimi konsolunda çevrimiçi olarak işaretlendiğinden emin olun. Eklenmiş sistem diskine atanan sürücü harfini unutmayın.
 
@@ -148,7 +148,7 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
@@ -160,6 +160,6 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Sistem diskini ayırın ve VM 'yi yeniden oluşturun](troubleshoot-recovery-disks-portal-windows.md).
+10. [VM yeniden oluşturma ve sistem diskini](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Sorunun çözümlenip çözümlenmediğini denetleyin.
+11. Sorunun çözülüp çözülmediğini denetleyin.

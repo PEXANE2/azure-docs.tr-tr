@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 7/5/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 52d2e3ed59a7ad71177f34909e37ce885d603297
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2fba0a0d64502a30b6dfbc9f4f109bca65cca8b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515282"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716354"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Azure Container Instances için bir anomali algılayıcı kapsayıcısı dağıtın
 
@@ -23,7 +23,7 @@ Bilişsel Hizmetler [anomali algılayıcısı](../anomaly-detector-container-how
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
+## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
 
 Kapsayıcıya erişim istemek için öncelikle [anomali algılayıcı kapsayıcı isteği formunu](https://aka.ms/adcontainer) tamamlayıp göndermeniz gerekir.
 
@@ -38,5 +38,5 @@ Kapsayıcıya erişim istemek için öncelikle [anomali algılayıcı kapsayıc�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kapsayıcı görüntüsünü çekmek ve kapsayıcıyı çalıştırmak için [kapsayıcıları yüklemeyi ve çalıştırmayı](../anomaly-detector-container-configuration.md) gözden geçirin
-* Yapılandırma ayarları için [kapsayıcıları](../anomaly-detector-container-configuration.md) yapılandırmayı gözden geçir
+* Gözden geçirme [kapsayıcıları yapılandırma](../anomaly-detector-container-configuration.md) yapılandırma ayarları
 * [Anomali algılayıcı API hizmeti hakkında daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

@@ -3,24 +3,24 @@ title: Azure Pipelines Team Data Science Işlemiyle bir CI/CD Işlem hattı olu�
 description: Docker ve Kubernetes kullanarak yapay zeka (AI) uygulamaları için sürekli tümleştirme ve sürekli teslim işlem hattı oluşturun.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260661"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721838"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Azure Pipelines, Docker ve Kubernetes kullanarak AI uygulamaları için CI/CD işlem hatları oluşturma
 
-Yapay zeka (AI) uygulaması, önceden eğitilen makine öğrenimi (ML) modeliyle eklenmiş uygulama kodudur. Bir AI uygulaması için her zaman iki iş akışı vardır: Veri bilimcileri, ML modelini oluşturur ve uygulama geliştiricileri uygulamayı oluşturup son kullanıcılara kullanması için kullanıma sunar. Bu makalede, ML modelini uygulama kaynak koduna katıştıran bir AI uygulaması için sürekli tümleştirme ve sürekli teslim (CI/CD) işlem hattının nasıl uygulanacağı açıklanır. Örnek kod ve öğretici basit bir Python Flask Web uygulaması kullanır ve özel bir Azure Blob depolama hesabından önceden eğitilen bir model getirir. AWS S3 depolama hesabı da kullanabilirsiniz.
+Yapay zeka (AI) uygulaması, önceden eğitilen makine öğrenimi (ML) modeliyle eklenmiş uygulama kodudur. Bir AI uygulaması için her zaman iki iş akışı vardır: veri bilimcileri, ML modelini oluşturur ve uygulama geliştiricileri uygulamayı oluşturup son kullanıcılara tüketmek üzere kullanıma sunar. Bu makalede, ML modelini uygulama kaynak koduna katıştıran bir AI uygulaması için sürekli tümleştirme ve sürekli teslim (CI/CD) işlem hattının nasıl uygulanacağı açıklanır. Örnek kod ve öğretici bir Python Flask Web uygulaması kullanır ve özel bir Azure Blob depolama hesabından önceden eğitilen bir model getirir. AWS S3 depolama hesabı da kullanabilirsiniz.
 
 > [!NOTE]
 > Aşağıdaki işlem, CI/CD yapmak için çeşitli yollarla biridir. Bu araç ve önkoşulların alternatifleri vardır.

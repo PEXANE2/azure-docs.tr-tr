@@ -1,19 +1,19 @@
 ---
 title: İleti teslimini izleme Azure Event Grid
-description: Azure Event Grid iletilerinin teslimini nasıl izleyebileceğinizi açıklar.
+description: Bu makalede, Azure Event Grid iletilerinin teslim durumunu görmek için Azure portal nasıl kullanılacağı açıklanır.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169996"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722144"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>İleti teslimini izleme Event Grid 
 
@@ -76,7 +76,7 @@ Bu kaynakla ilgili abonelikler için ölçümleri görürsünüz.
 
 ![Olay ölçümlerini görüntüle](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="set-alerts"></a>Uyarı ayarlama
+## <a name="set-alerts"></a>Uyarılar ayarlama
 
 Özel konular ve olay etki alanları için konu başlığı ve etki alanı düzeyi ölçümlerinde uyarılar ayarlayabilirsiniz. İçin genel bakış dikey penceresinde, uyarı kurallarını görüntülemek, yönetmek ve oluşturmak için sol taraftaki kaynak menüsünde **Uyarılar** ' ı seçin. [Azure Izleyici uyarıları hakkında daha fazla bilgi edinin](../azure-monitor/platform/alerts-overview.md)
 

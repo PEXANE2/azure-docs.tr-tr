@@ -2,24 +2,24 @@
 title: Veri bilimi görevleri - Team Data Science Process yürütme
 description: Bir veri Bilimcisi bir veri bilimi proje nasıl izlenebilir, yürütebilir sürüm denetimli ve işbirliğine dayalı yolu.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772287"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722212"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Veri bilimi görevleri yürütme: keşfi, modelleme ve dağıtım
 
-Veri keşfi, modelleme ve dağıtım tipik veri bilimi görevleri içerir. Bu makalede nasıl kullanılacağını gösterir **etkileşimli veri keşfi, analiz ve Raporlama (IDEAR)** ve **otomatik modelleme ve Raporlama (AMAR)** çeşitli genel veri bilimi görevlerini tamamlamak için yardımcı programlar Etkileşimli veri keşfi, veri analizi, raporlama ve modeli oluşturma gibi. Ayrıca, bir model çeşitli aşağıdaki gibi araç setleri ve veri platformları kullanarak bir üretim ortamına dağıtmak için seçenekler özetlenmektedir:
+Veri keşfi, modelleme ve dağıtım tipik veri bilimi görevleri içerir. Bu makalede nasıl kullanılacağını gösterir **etkileşimli veri keşfi, analiz ve Raporlama (IDEAR)** ve **otomatik modelleme ve Raporlama (AMAR)** çeşitli genel veri bilimi görevlerini tamamlamak için yardımcı programlar Etkileşimli veri keşfi, veri analizi, raporlama ve modeli oluşturma gibi. Bir üretim ortamına model dağıtmaya yönelik seçenekler şunlar olabilir:
 
 - [Azure Machine Learning](../index.yml)
 - [SQL Server ML Hizmetleri ile](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)

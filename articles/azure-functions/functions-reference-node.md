@@ -4,12 +4,12 @@ description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921994"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714786"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-Tetikleyici meta verilerini ve işlev çağırma verilerini (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) içeren adlandırılmış bir nesne döndürür. Tetikleyici meta verileri örneği için bkz. bu [Olay Hub 'ları örneği](functions-bindings-event-hubs.md#trigger---javascript-example).
+Tetikleyici meta verilerini ve işlev çağırma verilerini (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) içeren adlandırılmış bir nesne döndürür. Tetikleyici meta verileri örneği için bkz. bu [Olay Hub 'ları örneği](functions-bindings-event-hubs.md#trigger).
 
 ### <a name="contextdone-method"></a>Context. Done yöntemi
 
@@ -348,7 +348,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 | _headers_     | İstek üst bilgilerini içeren bir nesne.                   |
 | _method_      | İsteğin HTTP yöntemi.                                |
 | _originalUrl 'Si_ | İsteğin URL'si.                                        |
-| _params_      | İsteğin yönlendirme parametrelerini içeren nesne. |
+| _parametrelerin_      | İsteğin yönlendirme parametrelerini içeren nesne. |
 | _query_       | Sorgu parametrelerini içeren bir nesne.                  |
 | _rawBody_     | İleti gövdesi dize olarak.                           |
 

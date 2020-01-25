@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672254"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715115"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure Uygulama Hizmeti’nde kimlik doğrulaması ve yetkilendirme
 
@@ -24,9 +24,9 @@ Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sunarak
 Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web belirteçleri (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) yönetimi, [izin verme](https://oauth.net/2/grant-types/)vb. gibi güvenlik konusunda ayrıntılı bilgiler gerektirir. App Service, müşterinize iş değeri sağlamaya yönelik daha fazla zaman ve enerji harcayabilmeniz için bu yardımcı programları sağlar.
 
 > [!IMPORTANT]
-> AuthN/AuthO için App Service kullanmanız gerekli değildir. Birçok Web çerçevesi güvenlik özellikleriyle birlikte paketlenmiştir ve isterseniz bunları kullanabilirsiniz. App Service sağladığından daha fazla esneklik gerekiyorsa kendi yardımcı programlarını da yazabilirsiniz.  
+> AuthN/AuthO için App Service kullanmanız gerekli değildir. Seçtiğiniz Web çerçevesindeki paketlenmiş güvenlik özelliklerini kullanabilir veya kendi yardımcı programlarını yazabilirsiniz. Bununla birlikte, Chrome 80 ' in, farklı tanımlama bilgileri için (2020 Mart 'ta Yayın tarihi) ve özel uzaktan kimlik doğrulama veya siteler arası tanımlama bilgisine bağlı diğer senaryolar, istemci Chrome tarayıcıları güncelleştirilirken kesintiye uğrayabilecek [şekilde değişiklik yapıyor](https://www.chromestatus.com/feature/5088147346030592) . Farklı tarayıcılar için farklı SameSite davranışlarını desteklemesi gerektiğinden geçici çözüm karmaşıktır. 
 >
-> Ancak, uzaktan kimlik doğrulaması için App Service olmayan seçeneklerden herhangi biriyle karşılaşırsanız, Chrome 80 ' in, [tanımlama bilgileri Için SameSite uygulamasında önemli değişiklikler](https://www.chromestatus.com/feature/5088147346030592) (2020 Mart 'ta Yayın tarihi) ve istemci tarayıcıları güncelleştirilirken uygulamanızın kimlik doğrulama mekanizması kesintiye uğrayacağını unutmayın. ASP.NET Core belge, uygulamanızda bu bilgilerin nasıl ele alınacağını öğrenmek için, [http: Browser SameSite değiştiğinde kimlik doğrulamasını etkiler](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). ASP.NET Core kullanıyor olmanız durumunda önemli tarayıcılarda bu son değişiklik için nasıl test ettiğinize ilişkin yararlı yönergeler içerir.
+> App Service tarafından barındırılan ASP.NET Core 2,1 ve üzeri sürümleri, bu son değişiklik için zaten düzeltme eki uygulanmış ve Chrome 80 ve daha eski tarayıcıları uygun şekilde işleyecek. Ayrıca, ASP.NET Framework 4.7.2 için de aynı düzeltme eki, Ocak 2020 boyunca App Service örneklerine dağıtılır. Uygulamanızın düzeltme ekini aldığını nasıl öğrendiklerini de içeren daha fazla bilgi için, [Azure App Service SameSite tanımlama bilgisi güncelleştirmesi](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)' ne bakın.
 >
 
 Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](../app-service-mobile/app-service-mobile-auth.md).
@@ -85,7 +85,7 @@ App Service, üçüncü taraf bir kimlik sağlayıcısının sizin için Kullan�
 
 Kimlik doğrulama ve yetkilendirmeyi bu sağlayıcılardan biriyle etkinleştirdiğinizde, oturum açma uç noktası Kullanıcı kimlik doğrulaması ve sağlayıcıdan kimlik doğrulama belirteçleri doğrulaması için kullanılabilir. Kullanıcılarınıza dilediğiniz sayıda bu oturum açma seçeneğini kolayca sağlayabilirsiniz. Ayrıca, başka bir kimlik sağlayıcısını veya [kendi özel kimlik çözümünüzü][custom-auth]tümleştirebilirsiniz.
 
-## <a name="authentication-flow"></a>Kimlik doğrulama akışı
+## <a name="authentication-flow"></a>kimlik doğrulama akışı
 
 Kimlik doğrulama akışı tüm sağlayıcılar için aynıdır, ancak sağlayıcının SDK 'Sı ile oturum açmak isteyip istemediğinize bağlı olarak farklılık gösterir:
 

@@ -4,14 +4,14 @@ description: Azure Cosmos veritabanı performansını geliştirmek için istemci
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261320"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721005"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -30,7 +30,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 1. **Bağlantı ilkesi: doğrudan bağlantı modunu kullan**
 
-    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de gözlemlenen istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. İstemci bağlantı Ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *Protokolü*.  Kullanılabilir iki mod şunlardır:
+    İstemcinin Azure Cosmos DB'ye nasıl bağlandığının performans üzerinde, özellikle de gözlemlenen istemci tarafı gecikme süresi olarak önemli etkileri olur. İstemci bağlantı Ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *Protokolü*.  Kullanılabilir iki mod şunlardır:
 
    * Ağ Geçidi modu
       
@@ -40,7 +40,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
    * Doğrudan mod
 
-     Doğrudan mod, TCP ve HTTPS protokolleriyle bağlantıyı destekler ve [Microsoft. Azure. Cosmos/.net v3 SDK](sql-api-sdk-dotnet-standard.md)kullanıyorsanız varsayılan bağlantı modudur.
+     Doğrudan mod, TCP protokolü ile bağlantıyı destekler ve [Microsoft. Azure. Cosmos/.net v3 SDK](sql-api-sdk-dotnet-standard.md)kullanıyorsanız varsayılan bağlantı modudur.
 
      Cosmos DB, ağ geçidi modu kullanırken, MongoDB için Azure Cosmos DB API 'SI kullanılırken bağlantı noktası 443 ve 10250, 10255 ve 10256 bağlantı noktalarını kullanır. 10250 bağlantı noktası, coğrafi çoğaltma işlevselliği ile MongoDB örneğine eşlenen coğrafi çoğaltma ve 10255/10256 bağlantı noktaları olmadan bir varsayılan MongoDB örneğine eşlenir. Doğrudan modda TCP kullanırken, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından 10000 ve 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir. Bu bağlantı noktaları açık değilse ve TCP kullanmaya çalışırsanız, 503 hizmetinde kullanılamayan bir hata alırsınız. Aşağıdaki tabloda, her API için farklı API 'Ler ve hizmet bağlantı noktaları kullanıcısı için kullanılabilen bağlantı modları gösterilmektedir:
 
@@ -49,9 +49,9 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
      |Ağ Geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
      |Doğrudan    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
 
-     Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. Hem doğrudan TCP hem de HTTPS, ilk kimlik doğrulaması ve trafiği şifrelemek için SSL kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
+     Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifrelemek için SSL kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
 
-     SDK V3 için, CosmosClientOptions 'ın bir parçası olarak CosmosClient örneği oluşturulurken bağlantı modu yapılandırılır.
+     SDK V3 için bağlantı modu, CosmosClientOptions 'ın bir parçası olarak CosmosClient örneği oluşturulurken yapılandırılır, doğrudan modunun varsayılan olduğunu unutmayın.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
@@ -165,7 +165,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
    > [!NOTE] 
    > Maxıtemcount özelliği yalnızca sayfalandırma amacıyla kullanılmamalıdır. Tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmak için bu asıl kullanım önemlidir.  
 
-   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
+   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -185,7 +185,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     - VSTest **tabanlı test projeleri** Için, **Visual Studio test** menü seçeneğinden **X64 olarak varsayılan Işlemci mimarisi**->test->**Test ayarları** ' nı seçerek bu işlemi gerçekleştirebilirsiniz.
 
-    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için, bu işlem, **Web siteleri ve projeleri için IIS Express 64 bitlik sürümünü kullan**, **araçlar**->**Seçenekler**->**Projeler ve çözümler** altında-> **Web projeleri**.
+    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için 64 Bu, Web **siteleri ve projeler için IIS Express->bit sürümü** **->,** **Web projeleri**->**Projeler ve çözümler** ' in altında kullanılabilir.
 
     - Azure 'da dağıtılan ASP.NET Web uygulamaları için, Azure portal **uygulama ayarlarında** **Platform 64-bit olarak** seçilerek bu yapılabilir.
 
@@ -209,13 +209,13 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 1. **Düşük istek birimleri/ikinci kullanım için ölçme ve ayarlama**
 
-    Azure Cosmos DB, UDF 'ler, saklı yordamlar ve tetikleyicilerle ilişkisel ve hiyerarşik sorgular dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar ve bunların tümü bir veritabanı koleksiyonu içindeki belgeler üzerinde çalışıyor. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi gerçekleştirmek için gereken CPU, GÇ ve belleğe göre değişir. Donanım kaynaklarını düşünmek ve yönetmek yerine, çeşitli veritabanı işlemlerini gerçekleştirmek ve bir uygulama isteğine hizmet vermek için gereken kaynaklar için bir istek birimi (RU) tek bir ölçü olarak düşünebilirsiniz.
+    Azure Cosmos DB, UDF 'ler, saklı yordamlar ve tetikleyicilerle ilişkisel ve hiyerarşik sorgular dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar ve bunların tümü bir veritabanı koleksiyonu içindeki belgeler üzerinde çalışıyor. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi tamamlamak için gereken CPU, GÇ ve belleğe göre değişiklik gösterir. Donanım kaynaklarını düşünmek ve yönetmek yerine, çeşitli veritabanı işlemlerini gerçekleştirmek ve bir uygulama isteğine hizmet vermek için gereken kaynaklar için bir istek birimi (RU) tek bir ölçü olarak düşünebilirsiniz.
 
     Aktarım hızı, her bir kapsayıcı için ayarlanan [istek birimi](request-units.md) sayısına göre sağlanır. İstek birimi tüketimi, saniye başına bir hız olarak değerlendirilir. Kapsayıcı için sağlanan istek birimi oranını aşan uygulamalar, oran için sağlanan düzeyin altına düşene kadar sınırlandırılır. Uygulamanız daha yüksek bir işleme düzeyi gerektiriyorsa, ek istek birimleri sağlayarak aktarım hızını artırabilirsiniz. 
 
     Bir sorgunun karmaşıklığı, bir işlem için kaç Istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya .NET SDK 'Da bulunan Resourceres,\<t > veya feedresponse\<t > ile) inceleyin. Bu işlemler tarafından tüketilen istek birimi sayısı.
+    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), bu işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya .NET SDK 'Da bulunan Resourcereslik\<t > veya feedresponse\<t >) inceleyin.
 
     ```csharp
     // Measure the performance (request units) of writes

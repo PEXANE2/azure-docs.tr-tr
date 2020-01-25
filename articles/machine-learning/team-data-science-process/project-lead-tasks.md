@@ -2,20 +2,20 @@
 title: Team Data Science Process içinde proje için görevleri sağlama
 description: Takım veri bilimi süreç ekibi üzerinde bir proje için görevlere ilişkin ayrıntılı bir anlatım
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244360"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714422"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Işlemindeki proje sağlama görevleri
 
@@ -36,7 +36,7 @@ Bu öğreticide 1. Adım: proje deposu oluşturma ve adım 2: çekirdek proje de
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin uygulanması nedeniyle bir TDSP projesi kurmak için Azure Repos kullanılmıştır. Ekibiniz başka bir kod barındırma platformu kullanıyorsa, proje sağlama görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, [Grup Yöneticisi](group-manager-tasks.md) ve [ekip lideri](team-lead-tasks.md) aşağıdaki kaynakları ve izinleri ayarladığını varsayar:
 
@@ -45,7 +45,7 @@ Bu öğreticide, [Grup Yöneticisi](group-manager-tasks.md) ve [ekip lideri](tea
 - Ekip şablonu ve yardımcı program **depoları**
 - Projeniz için depolar oluşturmanız ve düzenlemeniz için kuruluş hesabınızdaki **izinler**
 
-Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM) içeriğini değiştirmek ya da Azure dosya depolama alanını ayarlayıp DSVM 'nize bağlamak için şunlar gerekir:
+Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM) içeriğini değiştirmek ya da Azure dosya depolama alanını ayarlayıp DSVM 'nize bağlamak için şu denetim listesini göz önünde bulundurmanız gerekir:
 
 - Azure aboneliği.
 - Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).

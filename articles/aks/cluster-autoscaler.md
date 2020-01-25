@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 033cf88e29ba4a9f7ce9397fe216f7380e70be07
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885772"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713388"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
 
@@ -41,7 +41,7 @@ Workday ve akşam ya da bir hafta sonu arasındaki uygulama taleplerini değişt
 
 Hem yatay Pod otomatik Scaler hem de Cluster otomatik Scaler, gereken düğüm sayısını ve düğümleri de azaltabilir. Küme otomatik yüklemesi, bir süre için kullanılmayan kapasiteden fazla düğüm sayısını düşürür. Küme otomatik olarak kaldırılacak bir düğümdeki düğüm, kümede başka bir yerde güvenle zamanlanır. Küme otomatik olarak, aşağıdaki durumlarda olduğu gibi, Pod taşınmadığı takdirde ölçeği ölçeklendiremeyebilir:
 
-* Doğrudan oluşturulup oluşturulan bir pod, bir dağıtım veya çoğaltma kümesi gibi bir denetleyici nesnesi tarafından yedeklenmez.
+* Pod, doğrudan oluşturulur ve dağıtım veya çoğaltma kümesi gibi bir denetleyici nesnesi tarafından yedeklenmez.
 * Pod kesinti bütçesi (pdb) çok kısıtlayıcıdır ve pod sayısının belirli bir eşiğin altına düşmeye izin vermez.
 * Pod, farklı bir düğümde zamanlanırsa, düğüm seçicileri veya benzeşim önleme kullanır.
 
@@ -154,7 +154,7 @@ Otomatik olarak kaydedilen öğeler hakkında daha fazla bilgi edinmek için [Ku
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Birden çok düğüm havuzu etkin olan küme otomatik Scaler 'ı kullanma
 
-Küme otomatik Scaler, [birden çok düğüm havuzu](use-multiple-node-pools.md) etkinleştirilmiş olarak birlikte kullanılabilir. Birden çok düğüm havuzunun nasıl etkinleştirileceğini ve var olan bir kümeye ek düğüm havuzları nasıl ekleneceğini öğrenmek için bu belgeyi izleyin. Her iki özelliği birlikte kullanırken kümedeki her bir düğüm havuzunda küme otomatik Scaler ' ı etkinleştirir ve her birine benzersiz otomatik ölçeklendirme kuralları geçirebilir.
+Küme otomatik Scaler, [birden çok düğüm havuzu](use-multiple-node-pools.md) etkin olarak birlikte kullanılabilir. Birden çok düğüm havuzunun nasıl etkinleştirileceğini ve var olan bir kümeye ek düğüm havuzları nasıl ekleneceğini öğrenmek için bu belgeyi izleyin. Her iki özelliği birlikte kullanırken kümedeki her bir düğüm havuzunda küme otomatik Scaler ' ı etkinleştirir ve her birine benzersiz otomatik ölçeklendirme kuralları geçirebilir.
 
 Aşağıdaki komut, bu belgede daha önce [ilk yönergeleri](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) izlediğinizi ve mevcut düğüm havuzunun en büyük sayısını *3* ' ten *5*' e kadar güncelleştirmek istediğinizi varsayar. Mevcut bir düğüm havuzunun ayarlarını güncelleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
 
@@ -178,7 +178,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-Küme otomatik olarak var olan bir kümede yeniden etkinleştirmek istiyorsanız, [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanarak, *--Enable-Cluster-otomatik Scaler*, *--Min-Count*ve *--Max-Count* parametrelerini belirterek yeniden etkinleştirebilirsiniz .
+Küme otomatik olarak var olan bir kümede yeniden etkinleştirmek istiyorsanız, [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanarak, *--Enable-Cluster-otomatik Scaler*, *--Min-Count*ve *--Max-Count* parametrelerini belirterek yeniden etkinleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

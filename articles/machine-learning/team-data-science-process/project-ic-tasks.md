@@ -2,20 +2,20 @@
 title: Team Data Science Process içinde tek bir katkıda bulunan görevleri
 description: Bir veri bilimi takım projesindeki bireysel katkıda bulunan görevlere ilişkin ayrıntılı bir anlatım.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244304"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721260"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process içinde tek bir katkıda bulunan görevleri
 
@@ -32,7 +32,7 @@ Aşağıdaki diyagramda, takım ortamlarını ayarlamak için projenin bireysel 
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin nasıl uygulanacağı için bir TDSP ortamı ayarlamak üzere Azure Repos ve bir Veri Bilimi Sanal Makinesi (DSVM) kullanılmaktadır. Takımınız diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, bireysel katkıda bulunan görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](group-manager-tasks.md), [ekip lideri](team-lead-tasks.md)ve [Proje lideri](project-lead-tasks.md)tarafından ayarlandığı varsayılır:
 
@@ -42,7 +42,7 @@ Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](grou
 - Varsa, takımınız veya projeniz için paylaşılan varlıklar için Azure **dosya depolama** ayarı
 - Proje deponuzdan kopyalamanız ve geri göndermeniz için **izinler** 
 
-Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değiştirmek ya da Azure dosya depolama alanını DSVM 'nize bağlamak için şunlar gerekir:
+Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değiştirmek veya Azure dosya depolama alanını DSVM 'nize bağlamak için şu denetim listesini göz önünde bulundurmanız gerekir:
 
 - Azure aboneliği.
 - Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).

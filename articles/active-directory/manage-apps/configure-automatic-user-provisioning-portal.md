@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e776ce8a455f2a5b453e23ebb996de9ddb5175a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430189"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711969"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
@@ -38,7 +38,7 @@ Bir dizinde çoklu oturum açma için yapılandırılmış tüm uygulamaları g�
 1. Kaynak bölmesini yüklemek için herhangi bir uygulamayı seçin, burada raporları görüntüleyebilir ve uygulama ayarlarını yönetebilirsiniz.
 1. Seçili uygulama için Kullanıcı hesabı sağlama ayarlarını yönetmek üzere **sağlamayı** seçin.
 
-   ![Kullanıcı hesabı sağlama ayarlarını yönetmek için sağlama ekranı](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Kullanıcı hesabı sağlama ayarlarını yönetmek için sağlama ekranı](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Sağlama modları
 
@@ -68,7 +68,7 @@ Kullanıcı hesapları sağlandığında veya güncelleştirilirken Azure AD ile
 
 Azure AD Kullanıcı nesneleri ile her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir eşlemeler kümesi vardır. Bazı uygulamalar, gruplar veya kişiler gibi diğer nesne türlerini yönetir. Eşleme düzenleyicisini sağ tarafta açmak için tabloda bir eşleme seçin; burada bunları görüntüleyebilir ve özelleştirebilirsiniz.
 
-![Öznitelik eşleme ekranını gösterir](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Öznitelik eşleme ekranını gösterir](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Desteklenen özelleştirmeler şunlardır:
 
@@ -88,4 +88,4 @@ Hazırlama işlemi bir uygulama için ilk kez etkinleştiriliyorsa, **sağlama d
 
 Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı** olarak değiştirin. Bu durumda, Azure uygulamadaki hiçbir Kullanıcı veya Grup nesnesini oluşturmaz, güncelleştirmez veya kaldırmaz. Durumu yeniden **Açık** olarak değiştirin ve hizmet kaldığınız yerden gelir.
 
-**Geçerli durumu temizle ve yeniden başlatma eşitlemesi** bir başlangıç döngüsünü tetikler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu, uygulamanız Şu anda karantinaya alındı veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerektiğinde yararlı olabilir. İlk döngüsünün değerlendirilmesi gereken nesne sayısı nedeniyle, tipik artımlı döngüden daha uzun sürdüğüne göz önünde unutmayın. Burada ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 
+**Geçerli durumu temizle ve yeniden başlatma eşitlemesi** bir başlangıç döngüsünü tetikler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu, uygulamanız Şu anda karantinaya alındı veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerektiğinde yararlı olabilir. İlk döngüsünün değerlendirilmesi gereken nesne sayısı nedeniyle, tipik artımlı döngüden daha uzun sürdüğüne göz önünde unutmayın. [Burada](application-provisioning-when-will-provisioning-finish-specific-user.md)ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz. 

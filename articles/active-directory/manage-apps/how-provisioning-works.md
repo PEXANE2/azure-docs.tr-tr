@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719979"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711567"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -29,13 +29,13 @@ Otomatik sağlama, kullanıcıların erişmesi gereken bulut uygulamalarında ku
 **Azure AD sağlama hizmeti** , uygulama satıcısı tarafından sağlanan etki alanları arası kimlik yönetimi (SCIM) 2,0 Kullanıcı yönetimi API uç noktası Için bir sisteme bağlanarak kullanıcılara ve diğer sistemlere SaaS uygulamaları sağlar. Bu SCıM uç noktası, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir. Seçilen uygulamalarda, sağlama hizmeti gruplar ve roller gibi kimlik ile ilgili diğer nesneleri de oluşturabilir, güncelleştirebilir ve kaldırabilir. Azure AD ile uygulama arasında sağlama için kullanılan kanal, HTTPS SSL şifrelemesi kullanılarak şifrelenir.
 
 
-![Azure AD sağlama hizmeti](./media/user-provisioning/provisioning0.PNG)
+![Azure AD sağlama hizmeti](media/how-provisioning-works/provisioning0.PNG)
 *Şekil 1: Azure AD sağlama hizmeti*
 
-Giden Kullanıcı sağlama iş akışı ![](./media/user-provisioning/provisioning1.PNG)
+Giden Kullanıcı sağlama iş akışı ![](media/how-provisioning-works/provisioning1.PNG)
 *Şekil 2: Azure AD 'den popüler SaaS uygulamalarına "giden" Kullanıcı sağlama iş akışı*
 
-![gelen Kullanıcı sağlama iş akışı](./media/user-provisioning/provisioning2.PNG)
+![gelen Kullanıcı sağlama iş akışı](media/how-provisioning-works/provisioning2.PNG)
 *Şekil 3: popüler ınsan büyük yönetim (HCM) uygulamalarından Azure Active Directory ve Windows Server 'a "gelen" Kullanıcı sağlama iş akışı Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>SCıM 2,0 kullanarak sağlama
@@ -62,7 +62,7 @@ Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştireb
 
 Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz için öznitelik eşlemelerini türdeki bir ifade eşleme biridir. Bu eşlemeler için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenizi sağlayan bir betik benzeri ifade yazmalısınız. Ayrıntılar için bkz. [öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md).
 
-## <a name="scoping"></a>Kapsam 
+## <a name="scoping"></a>Kapsamlar 
 ### <a name="assignment-based-scoping"></a>Atama tabanlı kapsam
 
 Azure AD 'den bir SaaS uygulamasına giden sağlama için, [Kullanıcı veya grup atamalarına](assign-user-or-group-access-portal.md) güvenmek, hangi kullanıcıların sağlama kapsamında olduğunu belirlemenin en yaygın yoludur. Kullanıcı atamaları çoklu oturum açmayı etkinleştirmek için de kullanıldığından, aynı yöntem hem erişim hem de sağlamayı yönetmek için kullanılabilir. Atama tabanlı kapsam, Workday ve başarılı etmenler gibi gelen sağlama senaryolarına uygulanmaz.
@@ -73,11 +73,11 @@ Azure AD 'den bir SaaS uygulamasına giden sağlama için, [Kullanıcı veya gru
 
   * Dinamik Gruplar, Azure AD 'den SaaS uygulamalarına kadar uçtan uca sağlamanın performansını etkileyebilir.
 
-  * Bir SaaS uygulamasında, dinamik bir gruptaki bir kullanıcının ne kadar hızlı sağlandığını veya sağlanması gerektiğini, dinamik grubun üyelik değişikliklerini ne kadar hızlı değerlendirebileceğinizi gösterir. Dinamik bir grubun işleme durumunu denetleme hakkında daha fazla bilgi için bkz. [bir üyelik kuralı için işleme durumunu denetleme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
+  * Bir SaaS uygulamasında, dinamik bir gruptaki bir kullanıcının ne kadar hızlı sağlandığını veya sağlanması gerektiğini, dinamik grubun üyelik değişikliklerini ne kadar hızlı değerlendirebileceğinizi gösterir. Dinamik bir grubun işleme durumunu denetleme hakkında daha fazla bilgi için bkz. [bir üyelik kuralı için işleme durumunu denetleme](../users-groups-roles/groups-create-rule.md).
 
   * Bir kullanıcı dinamik gruptaki üyeliği kaybettiğinde, bu, bir sağlama olayı olarak kabul edilir. Dinamik Gruplar için kurallar oluştururken bu senaryoyu göz önünde bulundurun.
 
-* **İç içe gruplar.** Azure AD Kullanıcı sağlama hizmeti iç içe gruplardaki kullanıcıları okuyamıyor veya sağlayamaz. Hizmet yalnızca açıkça atanan bir grubun hemen üyesi olan kullanıcıları okuyabilir ve sağlayabilir. "Uygulamalara grup tabanlı atamalar" da bu sınırlama çoklu oturum açmayı da etkiler (bkz. [SaaS uygulamalarına erişimi yönetmek için Grup kullanma](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Bunun yerine, sağlanması gereken kullanıcıları içeren gruplarda doğrudan atayın veya başka bir şekilde [kapsamı](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) yoktur.
+* **İç içe gruplar.** Azure AD Kullanıcı sağlama hizmeti iç içe gruplardaki kullanıcıları okuyamıyor veya sağlayamaz. Hizmet yalnızca açıkça atanan bir grubun hemen üyesi olan kullanıcıları okuyabilir ve sağlayabilir. "Uygulamalara grup tabanlı atamalar" da bu sınırlama çoklu oturum açmayı da etkiler (bkz. [SaaS uygulamalarına erişimi yönetmek için Grup kullanma](../users-groups-roles/groups-saasapps.md)). Bunun yerine, sağlanması gereken kullanıcıları içeren gruplarda doğrudan atayın veya başka bir şekilde [kapsamı](define-conditional-rules-for-provisioning-user-accounts.md) yoktur.
 
 ### <a name="attribute-based-scoping"></a>Öznitelik tabanlı kapsam 
 
@@ -85,7 +85,7 @@ Bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik t
 
 ### <a name="b2b-guest-users"></a>B2B (konuk) kullanıcıları
 
-Azure AD Kullanıcı sağlama hizmeti 'ni kullanarak Azure AD 'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlayabilirsiniz. Ancak, B2B kullanıcılarının Azure AD 'yi kullanarak SaaS uygulamasında oturum açması için, SaaS uygulamasının SAML tabanlı çoklu oturum açma yeteneğine belirli bir şekilde yapılandırılmış olması gerekir. SaaS uygulamalarının B2B kullanıcılarından oturum açma işlemlerini desteklemesi için nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [B2B işbirliği Için SaaS uygulamalarını yapılandırma]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Azure AD Kullanıcı sağlama hizmeti 'ni kullanarak Azure AD 'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlayabilirsiniz. Ancak, B2B kullanıcılarının Azure AD 'yi kullanarak SaaS uygulamasında oturum açması için, SaaS uygulamasının SAML tabanlı çoklu oturum açma yeteneğine belirli bir şekilde yapılandırılmış olması gerekir. SaaS uygulamalarının B2B kullanıcılarından oturum açma işlemlerini desteklemesi için nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [B2B işbirliği Için SaaS uygulamalarını yapılandırma](../b2b/configure-saas-apps.md).
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Sağlama döngüleri: Ilk ve artımlı
 
@@ -154,13 +154,13 @@ Hedef sistemdeki bir hata, hedef sistemde tek bir kullanıcının eklenmesini, g
 
 Kaynak sistemdeki etkilenen kullanıcının öznitelik değerlerini ayarlayarak veya öznitelik eşlemelerini çakışmalara neden olmayan şekilde ayarlayarak bu sorunları çözün.
 
-### <a name="quarantine"></a>Karantina
+### <a name="quarantine"></a>Ada
 
 Hedef sisteme karşı gerçekleştirilen çağrıların çoğu veya hepsi bir hata nedeniyle (örneğin, geçersiz yönetici kimlik bilgileri) başarısız olursa, sağlama işi "Karantina" durumuna geçer. Bu durum, [sağlama Özeti raporunda](check-status-user-account-provisioning.md) ve Azure Portal e-posta bildirimleri yapılandırılmışsa e-postayla belirtilir.
 
 Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez yavaş şekilde azaltılır.
 
-Tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlaması durumunda sağlama işi karantinadan çıkar. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır. [Burada karantina durumu hakkında](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)daha fazla bilgi edinin.
+Tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlaması durumunda sağlama işi karantinadan çıkar. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır. [Burada karantina durumu hakkında](application-provisioning-quarantine-status.md)daha fazla bilgi edinin.
 
 ### <a name="how-long-provisioning-takes"></a>Sağlamanın tamamlanma süresi
 
@@ -184,7 +184,7 @@ Azure AD sağlama hizmeti, uygulama suupports geçici olarak silindiğinde (etki
 
 Yukarıdaki dört olaydan biri meydana gelirse ve hedef uygulama geçici silme işlemini desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir SILME isteği gönderir. 
 
-Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore). Bu, uygulamaya bir silme isteği gönderir.
+Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md). Bu, uygulamaya bir silme isteği gönderir.
 
 Öznitelik eşlemelerinizde bir öznitelik ıssoftdeleted görürseniz, kullanıcının durumunu ve etkin = false olan bir güncelleştirme isteğinin Kullanıcı tarafından geçici olarak silinmesini sağlamak için kullanılır. 
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931150"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716032"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ıllogger günlükleri için Applicationınsightsloggerprovider
 
@@ -29,7 +29,7 @@ Applicationınsightsloggerprovider, standart yöntemlerden birini kullanarak dü
 
 Applicationınsightsloggerprovider yakalamaları, toplanan diğer telemetriyle aynı yapılandırmaya tabidir. Aynı TelemetryInitializers ve TelemetryProcessors kümesine sahiptir, aynı TelemetryChannel kullanır ve bağıntılı ve örneklenir ve diğer telemetriyle aynı şekilde örneklenir. Sürüm 2.7.1 veya üstünü kullanıyorsanız, ıllogger günlüklerini yakalamak için herhangi bir eylem gerekmez.
 
-Yalnızca *Uyarı* veya daha yüksek bir ILogger günlüğü (tüm kategoriler) varsayılan olarak Application Insights gönderilir. Ancak, [Bu davranışı değiştirmek için filtre uygulayabilirsiniz](#control-logging-level). **Program.cs** veya **Startup.cs**' den ıllogger günlüklerini yakalamak için ek adımlar gereklidir. (Bkz. [ASP.NET Core uygulamalarında Startup.cs ve program.cs ' den ILogger günlüklerini yakalama](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Yalnızca *Uyarı* veya daha yüksek bir ILogger günlüğü (tüm [Kategoriler](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) varsayılan olarak Application Insights gönderilir. Ancak, [Bu davranışı değiştirmek için filtre uygulayabilirsiniz](#control-logging-level). **Program.cs** veya **Startup.cs**' den ıllogger günlüklerini yakalamak için ek adımlar gereklidir. (Bkz. [ASP.NET Core uygulamalarında Startup.cs ve program.cs ' den ILogger günlüklerini yakalama](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Microsoft. ApplicationInsights. AspNet SDK 'sının önceki bir sürümünü kullanıyorsanız veya başka bir Application Insights izleme olmadan yalnızca Applicationınsightsloggerprovider kullanmak istiyorsanız aşağıdaki yordamı kullanın:
 
@@ -108,7 +108,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ASP.NET Core uygulamalarda Startup.cs ve Program.cs ' den ILogger günlüklerini yakala
 
 > [!NOTE]
-> ASP.NET Core 3,0 ve üzeri sürümlerde, artık Startup.cs ve Program.cs içinde `ILogger` eklemek mümkün değildir. Daha fazla ayrıntı için bkz. https://github.com/aspnet/Announcements/issues/353.
+> ASP.NET Core 3,0 ve üzeri sürümlerde, artık Startup.cs ve Program.cs içinde `ILogger` eklemek mümkün değildir. Daha fazla bilgi için bkz. https://github.com/aspnet/Announcements/issues/353.
 
 Yeni Applicationınsightsloggerprovider, uygulama başlatma ardışık düzeninde günlüklerin erken yakalanmasını sağlayabilir. Applicationınsightsloggerprovider, Application Insights (sürüm 2.7.1 ile başlayarak) otomatik olarak etkin olsa da, ardışık düzende daha sonra bir izleme anahtarı ayarlanmamış. Bu nedenle, yalnızca **Denetleyici**/diğer sınıflardan Günlükler yakalanır. **Program.cs** ve **Startup.cs** ile başlayan her günlüğü yakalamak Için, Applicationınsightsloggerprovider için bir izleme anahtarını açıkça etkinleştirmeniz gerekir. Ayrıca, **program.cs** veya **Startup.cs** içinden oturum açtığınızda *TelemetryConfiguration* tam olarak ayarlanamaz. Bu nedenle, bu Günlükler ınmemorychannel, örnekleme olmadan ve standart telemetri başlatıcıları ya da işlemciler kullanan minimum yapılandırmaya sahip olur.
 

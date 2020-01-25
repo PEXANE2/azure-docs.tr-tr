@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894031"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720410"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -153,9 +153,15 @@ Basıklık| Bu sütun verilerinin ne kadar süden bir normal dağıtımla karş�
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Gelişmiş ön işleme seçenekleri
+## <a name="advanced-featurization-options"></a>Gelişmiş özellik seçenekleri
 
-Denemeleri 'nizi yapılandırırken `Preprocess`gelişmiş ayarı etkinleştirebilirsiniz. Bunun yapılması, aşağıdaki veri taşıma ve işlem adımlarının otomatik olarak gerçekleştirildiği bir parçası olarak gerçekleştirilir.
+Denemeleri 'nizi yapılandırırken `feauturization`gelişmiş ayarı etkinleştirebilirsiniz. 
+
+|Korleştirme yapılandırması | Açıklama |
+| ------------- | ------------- |
+|"feauturization" = ' FeaturizationConfig '| Özelleştirilmiş basamak kullanılması gerektiğini gösterir. [Korleştirme özelleştirmeyi öğrenin](how-to-configure-auto-train.md#customize-feature-engineering).|
+|"feauturization" = ' off '| Korleştirme adımının otomatik olarak yapılmayacağını gösterir.|
+|"feauturization" = ' Auto '| Aşağıdaki veri guardları ve korleştirme adımlarının ön işleme bir parçası olarak otomatik olarak gerçekleştirileceğini gösterir.|
 
 |&nbsp;adımları ön işleme| Açıklama |
 | ------------- | ------------- |
@@ -177,11 +183,11 @@ Aşağıdaki tabloda, şu anda desteklenen veri guardı ve kullanıcıların den
 
 Guarddemiryolu|Durum|&nbsp;tetikleyicisi için koşul&nbsp;
 ---|---|---
-Eksik&nbsp;değerleri&nbsp;imputation |**Geçirilen** <br> <br> **Sabit**|    Giriş&nbsp;sütunlarında eksik değer yok <br> <br> Bazı sütunlarda eksik değerler var
+Eksik&nbsp;değerleri&nbsp;imputation |**Geçirilen** <br> <br> **Düzenle**|    Giriş&nbsp;sütunlarında eksik değer yok <br> <br> Bazı sütunlarda eksik değerler var
 Çapraz doğrulama|**Yapıldığını**|Açık bir doğrulama kümesi sağlanmazsa
 Yüksek&nbsp;kardinalite&nbsp;Özellik&nbsp;algılama|  **Geçirilen** <br> <br>**Yapıldığını**|   Yüksek kardinalite özellikleri algılanmadı <br><br> Yüksek kardinalite girdi sütunları algılandı
 Sınıf dengesi algılama |**Geçirilen** <br><br><br>**Uyarı** |Sınıflar eğitim verilerinde dağıtılır; Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir <br> <br> Eğitim verilerinde sınıflar imlenebilir
-Zaman serisi veri tutarlılığı|**Geçirilen** <br><br><br><br> **Sabit** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. <br> <br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya kayan pencere kapatılmış.
+Zaman serisi veri tutarlılığı|**Geçirilen** <br><br><br><br> **Düzenle** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. <br> <br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya kayan pencere kapatılmış.
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 

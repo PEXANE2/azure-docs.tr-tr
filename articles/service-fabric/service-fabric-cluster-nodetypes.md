@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4175dfe4ed5b7aa1064e8ba25c5b44243e4c79b0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028494"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722348"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
@@ -70,7 +70,7 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 
 Özellik açıklamaları aşağıda verilmiştir:
 
-| **Adı** | **İzin verilen değerler** | **Kılavuz veya kısa açıklama** |
+| **Ad** | **İzin verilen değerler** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
 | ad | string | uzantı için benzersiz ad |
 | type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | Önyükleme Service Fabric işletim sistemini tanımlar |

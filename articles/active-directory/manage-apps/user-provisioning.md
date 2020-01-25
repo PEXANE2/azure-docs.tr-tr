@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433777"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711481"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalara Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme
 
-Azure Active Directory (Azure AD) ' de, **uygulama sağlama** terimi, kullanıcıların erişmesi gereken bulut ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bir Azure AD kullanıcısını [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)gibi uygulamalarda sağlamayı içerir.
+Azure Active Directory (Azure AD) ' de, **uygulama sağlama** terimi, kullanıcıların erişmesi gereken bulut ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bir Azure AD kullanıcısını [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)gibi uygulamalarda sağlamayı içerir.
 
 ![Sağlama genel bakış Diyagramı](media/user-provisioning/provisioning-overview.png)
 
@@ -63,7 +63,7 @@ Azure AD, birçok popüler SaaS uygulaması ve insan kaynakları sistemi için �
 
    ![Salesforce logosu](media/user-provisioning/gallery-app-logos.png)
 
-   Sağlama için yeni bir uygulama istemek istiyorsanız [uygulamanızın uygulama galerimiz ile tümleştirmesini](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)isteyebilirsiniz. Bir Kullanıcı sağlama isteği için uygulamanın SCıM ile uyumlu bir uç noktaya sahip olmasını gerektiririz. Uygulamayı platformumuza hızlı bir şekilde sunabilmeniz için lütfen uygulama satıcısının SCıM standardını izlediğinden emin olun.
+   Sağlama için yeni bir uygulama istemek istiyorsanız [uygulamanızın uygulama galerimiz ile tümleştirmesini](../develop/howto-app-gallery-listing.md)isteyebilirsiniz. Bir Kullanıcı sağlama isteği için uygulamanın SCıM ile uyumlu bir uç noktaya sahip olmasını gerektiririz. Uygulamayı platformumuza hızlı bir şekilde sunabilmeniz için lütfen uygulama satıcısının SCıM standardını izlediğinden emin olun.
 
 * **SCıM 2,0 ' i destekleyen uygulamalar**. SCıM 2,0 tabanlı kullanıcı yönetimi API 'Leri uygulayan uygulamaları genel olarak bağlama hakkında daha fazla bilgi için bkz. [SCIM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](use-scim-to-provision-users-and-groups.md).
 
@@ -81,7 +81,7 @@ Azure AD galerisinde bulunan uygulamalar, iki sağlama modundan birini destekler
 
 * **El ile** sağlama, henüz uygulama Için OTOMATIK Azure AD sağlama Bağlayıcısı olmadığı anlamına gelir. Kullanıcı hesaplarının el ile oluşturulması gerekir. Örneğin, kullanıcıları doğrudan uygulamanın yönetim portalına ekleyerek veya Kullanıcı hesabı ayrıntısı olan bir elektronik tablo karşıya yükleyerek. Uygulama tarafından sağlanan belgelere başvurun veya hangi mekanizmaların kullanılabildiğini belirlemek için uygulama geliştiricisine başvurun.
 
-* **Otomatik** , bu uygulama Için BIR Azure AD sağlama bağlayıcısının geliştirildiği anlamına gelir. Uygulama için sağlamayı ayarlamaya özgü kurulum öğreticisini izlemelisiniz. Uygulama öğreticileri, [SaaS uygulamalarını Azure Active Directory Ile tümleştirme hakkındaki öğreticiler listesinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)bulunabilir.
+* **Otomatik** , bu uygulama Için BIR Azure AD sağlama bağlayıcısının geliştirildiği anlamına gelir. Uygulama için sağlamayı ayarlamaya özgü kurulum öğreticisini izlemelisiniz. Uygulama öğreticileri, [SaaS uygulamalarını Azure Active Directory Ile tümleştirme hakkındaki öğreticiler listesinde](../saas-apps/tutorial-list.md)bulunabilir.
 
 Azure AD galerisinde, otomatik sağlamayı destekleyen uygulamalar bir **sağlama** simgesiyle belirlenir. Yeni Galeri önizleme deneyimine geçiş yapın ( **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**) bağlantısını seçin.
 
@@ -91,7 +91,7 @@ Uygulama tarafından desteklenen sağlama modu, uygulamayı **Kurumsal uygulamal
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Nasıl yaparım? bir uygulamaya otomatik sağlama mi ayarlanacak?
 
-Galeride listelenen önceden tümleştirilmiş uygulamalar için, otomatik sağlamayı ayarlamaya yönelik adım adım yönergeler sunulmaktadır. [Tümleşik Galeri uygulamaları için öğreticilerin listesine](https://docs.microsoft.com/azure/active-directory/saas-apps/)bakın. Aşağıdaki videoda SalesForce için otomatik Kullanıcı sağlamayı ayarlama işlemi gösterilmektedir.
+Galeride listelenen önceden tümleştirilmiş uygulamalar için, otomatik sağlamayı ayarlamaya yönelik adım adım yönergeler sunulmaktadır. [Tümleşik Galeri uygulamaları için öğreticilerin listesine](../saas-apps/tutorial-list.md)bakın. Aşağıdaki videoda SalesForce için otomatik Kullanıcı sağlamayı ayarlama işlemi gösterilmektedir.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

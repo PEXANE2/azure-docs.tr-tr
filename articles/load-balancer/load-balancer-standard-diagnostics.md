@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772049"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722450"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -27,7 +27,7 @@ Azure Standart Load Balancer aşağıdaki tanılama yeteneklerini kullanıma sun
 
 * **Kaynak sistem durumu**: Azure portal ve Kaynak Durumu sayfasındaki Load Balancer sayfası (izleyici altında) Standart Load Balancer için kaynak durumu bölümünü kullanıma sunar. 
 
-Bu makalede, bu yetenekler için hızlı bir tura yer verilmiştir ve bunları Standart Load Balancer için kullanmanın yolları sunulmaktadır.
+Bu makalede, bu yetenekler için hızlı bir tura yer verilmiştir ve bunları Standart Load Balancer için kullanmanın yolları sunulmaktadır. 
 
 ## <a name = "MultiDimensionalMetrics"></a>Çok boyutlu ölçümler
 
@@ -41,7 +41,7 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 | Durum araştırma durumu (DIP kullanılabilirliği) | Ortak ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her bir örnek uç noktasının toplam veya uç nokta başına filtrelenmiş bir görünümünü sağlar. Durum araştırma yapılandırmanızla gösterildiği gibi, uygulamanızın sistem durumunu nasıl görüntülemelerini Load Balancer görebilirsiniz. |  Ortalama |
 | SYN (Synchronize) paketleri | Ortak ve iç yük dengeleyici | Standart Load Balancer, Iletim Denetim Protokolü (TCP) bağlantılarını sonlandırır veya TCP veya UDP paket akışlarıyla etkileşime girmez. Akışlar ve bunların el sıkışmaları her zaman kaynak ve sanal makine örneği arasındadır. TCP protokol senaryolarınızı daha iyi gidermek için, kaç TCP bağlantı denemesi yapıldığını anlamak üzere SYN paketleri sayaçlarını kullanabilirsiniz. Ölçüm, alınan TCP SYN paketlerinin sayısını bildirir.| Ortalama |
 | SNAT bağlantıları | Ortak yük dengeleyici |Standart Load Balancer, genel IP adresi ön ucuna bağlı olan giden akış sayısını raporlar. Kaynak ağ adresi çevirisi (SNAT) bağlantı noktaları, tüketilülmüş bir kaynaktır. Bu ölçüm, uygulamanızın giden kaynaklı akışlar için SNAT 'ye ne kadar yoğun bir şekilde bağlı olduğunu belirten bir gösterge verebilir. Başarılı ve başarısız giden SNAT akışları için sayaçlar raporlanır ve giden akışlarınızın durumunu gidermek ve anlamak için kullanılabilir.| Ortalama |
-| Bayt sayaçları |  Ortak ve iç yük dengeleyici | Standart Load Balancer, ön uç başına işlenen verileri raporlar.| Ortalama |
+| Bayt sayaçları |  Ortak ve iç yük dengeleyici | Standart Load Balancer, ön uç başına işlenen verileri raporlar. Baytların arka uç örnekleri arasında eşit olarak dağıtılmadığını fark edebilirsiniz. Azure 'un Load Balancer algoritması akışlara dayalı olduğu için bu beklenmektedir | Ortalama |
 | Paket sayaçları |  Ortak ve iç yük dengeleyici | Standart Load Balancer, ön uç başına işlenen paketleri raporlar.| Ortalama |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Yük dengeleyici ölçülerinizi Azure portal görüntüleyin
@@ -61,7 +61,7 @@ Standart Load Balancer kaynaklarınızın ölçümlerini görüntülemek için:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API 'Ler aracılığıyla çok boyutlu ölçümleri program aracılığıyla alma
 
-Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
+Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler yalnızca ' tüm ölçümler ' seçeneği aracılığıyla bir depolama hesabına yazılabilir. 
 
 ### <a name = "DiagnosticScenarios"></a>Yaygın tanılama senaryoları ve önerilen görünümler
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848315"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712528"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication tümleştirin
 
@@ -43,11 +43,11 @@ NPS uzantısı, artıklığı otomatik olarak işler, bu nedenle özel bir yapı
 
 VPN sunucuları, kimlik doğrulama isteklerini yönlendirdiklerinden, yeni Azure MFA özellikli NPS sunucularının farkında olmaları gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 NPS uzantısı, Mevcut altyapınızla birlikte çalışmak üzere tasarlanmıştır. Başlamadan önce aşağıdaki önkoşullara sahip olduğunuzdan emin olun.
 
-### <a name="licenses"></a>Lisanslar
+### <a name="licenses"></a>Lisanslarının
 
 Azure MFA için NPS uzantısı, [azure Multi-Factor Authentication lisanslarına](multi-factor-authentication.md) (Azure AD PREMIUM, EMS veya MFA tek başına lisansa dahildir) sahip müşteriler tarafından kullanılabilir. Azure MFA için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir. 
 
@@ -165,7 +165,7 @@ Mevcut bir NPS uzantısı yüklemesini yükseltirken, temeldeki sunucunun yenide
 
 Yükleyici şu konumda bir PowerShell betiği oluşturuyor: `C:\Program Files\Microsoft\AzureMfa\Config` (burada C:\ yükleme sürücünüz). Bu PowerShell betiği her çalıştırılışında aşağıdaki eylemleri gerçekleştirir:
 
-- Otomatik olarak imzalanan bir sertifika oluşturun.
+- Kendinden imzalı bir sertifika oluşturun.
 - Sertifikanın ortak anahtarını Azure AD 'de hizmet sorumlusu ile ilişkilendirin.
 - Sertifikayı yerel makine sertifika deposunda depolayın.
 - Sertifikanın özel anahtarına ağ kullanıcısı için erişim izni verin.
@@ -273,7 +273,7 @@ Geçerli-ve geçerli-Until zaman damgalarına, bir komut birden fazla sertifika 
 
 ---
 
-### <a name="why-cant-i-sign-in"></a>Neden oturum açamıyorum?
+### <a name="why-cannot-i-sign-in"></a>Neden oturum açamıyorum?
 
 Parolanızın süresinin dolmadığından emin olun. NPS uzantısı, oturum açma iş akışının bir parçası olarak parolaların değiştirilmesini desteklemez. Daha fazla yardım için kuruluşunuzun BT ekibine başvurun.
 

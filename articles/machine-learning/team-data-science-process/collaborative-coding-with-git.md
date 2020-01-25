@@ -2,20 +2,20 @@
 title: Git - Team Data Science Process ile işbirliğine dayalı kodlama
 description: Çevik planlama ile Git kullanarak veri bilimi projeleri için işbirliğine dayalı kod geliştirme yapmakla.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195517"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721906"
 ---
 # <a name="collaborative-coding-with-git"></a>Git ile işbirliği içinde kodlama
 
@@ -27,7 +27,7 @@ Azure DevOps, bir Azure Boards Kullanıcı hikayesine veya görev iş öğesini 
 
 Bir iş öğesini yeni bir dala bağlamak için, iş öğesinin yanındaki **Eylemler** üç nokta ( **...** ) simgesini seçin ve bağlam menüsünde, ' ye kaydırın ve **yeni dal**' ı seçin.  
 
-![1\.](./media/collaborative-coding-with-git/1-sprint-board-view.png)
+![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
 **Dal oluştur** iletişim kutusunda yeni dal adını ve temel Azure Repos git deposu ve dalını sağlayın. Temel Depo, iş öğesiyle aynı Azure DevOps projesinde olmalıdır. Temel dal, ana dal veya var olan başka bir dal olabilir. **Dal oluştur**' u seçin. 
 
@@ -39,7 +39,7 @@ Ayrıca, Windows veya Linux 'ta aşağıdaki git Bash komutunu kullanarak yeni b
 git checkout -b <new branch name> <base branch name>
 
 ```
-> Bir \<temel dal adı belirtmezseniz, yeni dal temel alır `master`. 
+> \<temel dal adı belirtmezseniz, yeni dal `master`temel alır. 
 
 Çalışma dalınıza geçiş yapmak için aşağıdaki komutu çalıştırın: 
 
@@ -47,7 +47,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-Çalışma dalına geçiş yaptıktan sonra, iş öğesini tamamlamaya yönelik kod veya belge yapıtları geliştirmeye başlayabilirsiniz. Çalışan `git checkout master` anahtarlar, `master` dala geri döner.
+Çalışma dalına geçiş yaptıktan sonra, iş öğesini tamamlamaya yönelik kod veya belge yapıtları geliştirmeye başlayabilirsiniz. `git checkout master` çalıştırmak, `master` dalına geri götürür.
 
 Her Kullanıcı hikayesi iş öğesi için bir git dalı oluşturmak iyi bir uygulamadır. Ardından, her görev iş öğesi için Kullanıcı hikayesi dalını temel alan bir dal oluşturabilirsiniz. Aynı proje için farklı Kullanıcı hikayeleri üzerinde çalışan birden fazla kişiye veya aynı kullanıcı hikayesine yönelik farklı görevlere sahip olduğunuzda, dalları Kullanıcı hikayesi-görev ilişkisine karşılık gelen bir hiyerarşide düzenleyin. Her bir takım üyesinin farklı bir dalda veya bir dalı paylaşırken farklı bir kodda ya da diğer yapıtlarda çalışmasını sağlayarak çakışmaları en aza indirmenize neden olabilirsiniz. 
 
@@ -76,11 +76,11 @@ git push origin script
 
 Bir veya daha fazla işleme ve gönderim sonrasında, geçerli çalışma dalınızı temel dalına birleştirmeye hazırsanız, Azure Repos bir *çekme isteği* oluşturabilir ve gönderebilirsiniz. 
 
-Azure DevOps projenizin ana sayfasından, sol gezinti bölmesinde bulunan **Repos** > **çekme istekleri** ' ni işaret edin. Ardından **Yeni çekme isteği** düğmelerinden birini veya **çekme isteği oluştur** bağlantısını seçin.
+Azure DevOps projenizin ana sayfasından, sol gezinti bölmesinde **çekme istekleri** > **Repos** ' ın üzerine gelin. Ardından **Yeni çekme isteği** düğmelerinden birini veya **çekme isteği oluştur** bağlantısını seçin.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-**Yeni çekme isteği** ekranında, gerekirse Değişikliklerinizi birleştirmek istediğiniz git deposuna ve dalına gidin. İstediğiniz diğer bilgileri ekleyin veya değiştirin. **Gözden geçirenler**altında, değişikliklerinizi gözden geçirmek için ihtiyacınız olan adların adlarını ekleyin ve ardından **Oluştur**' u seçin. 
+**Yeni çekme isteği** ekranında, gerekirse Değişikliklerinizi birleştirmek istediğiniz git deposuna ve dalına gidin. İstediğiniz diğer bilgileri ekleyin veya değiştirin. **Gözden geçirenler**altında, gözden geçirenlerin adlarını ekleyin ve ardından **Oluştur**' u seçin. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -98,11 +98,11 @@ Gözden geçirenler değişiklikleri onayladıktan sonra, sizin veya birleştirm
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Sol gezinmede yer alan **depoya** geri döndüğünüzde, `script` dal silindiğinden Ana dala geçtiniz görürsünüz.
+Sol gezinmede yer alan **depoya** geri döndüğünüzde, `script` dalı silindiğinden Ana dala geçtiyseniz görebilirsiniz.
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-Ayrıca, `script` çalışma dalını temel dalında birleştirmek ve Birleştirmeden sonra çalışma dalını silmek için aşağıdaki git Bash komutlarını da kullanabilirsiniz:
+Ayrıca, `script` çalışan dalını temel dalına birleştirmek ve Birleştirmeden sonra çalışma dalını silmek için aşağıdaki git Bash komutlarını da kullanabilirsiniz:
 
 ```bash
 git checkout master

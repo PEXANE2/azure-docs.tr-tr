@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940902"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711869"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -39,17 +39,17 @@ Kullanıcı hazırlama 'nin **eşlemeler** özelliğine erişmek için şu adım
 1. Seçili uygulama için Kullanıcı hesabı sağlama ayarlarını yönetmek üzere **sağlamayı** seçin.
 1. Azure AD ile hedef uygulama arasında akan Kullanıcı özniteliklerini görüntülemek ve düzenlemek için **eşlemeler** ' i genişletin. Hedef uygulama destekliyorsa, bu bölüm, isteğe bağlı olarak grupların ve Kullanıcı hesaplarının sağlanması yapılandırmanızı sağlar.
 
-   ![Kullanıcı özniteliklerini görüntülemek ve düzenlemek için eşlemeleri kullanın](./media/customize-application-attributes/21.png)
+   ![Kullanıcı özniteliklerini görüntülemek ve düzenlemek için eşlemeleri kullanın](media/customize-application-attributes/21.png)
 
 1. İlgili **öznitelik eşleme** ekranını açmak Için bir **eşleme** yapılandırması seçin. Bir SaaS uygulamasının doğru çalışması için bazı öznitelik eşlemeleri gereklidir. Gerekli öznitelikler için, **silme** özelliği kullanılamaz.
 
-   ![Uygulamalar için öznitelik eşlemelerini yapılandırmak üzere öznitelik eşlemesini kullanın](./media/customize-application-attributes/22.png)
+   ![Uygulamalar için öznitelik eşlemelerini yapılandırmak üzere öznitelik eşlemesini kullanın](media/customize-application-attributes/22.png)
 
    Bu ekran görüntüsünde, Salesforce 'ta yönetilen bir nesnenin **Kullanıcı adı** özniteliğinin, bağlantılı Azure Active Directory nesnesinin **userPrincipalName** değeriyle doldurulduğunu görebilirsiniz.
 
 1. **Özniteliği Düzenle** ekranını açmak için varolan bir **öznitelik eşlemesi** seçin. Burada Azure AD ile hedef uygulama arasında akan Kullanıcı özniteliklerini düzenleyebilirsiniz.
 
-   ![Kullanıcı özniteliklerini düzenlemek için özniteliği Düzenle özelliğini kullanın](./media/customize-application-attributes/23.png)
+   ![Kullanıcı özniteliklerini düzenlemek için özniteliği Düzenle özelliğini kullanın](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>Öznitelik eşleme türlerini anlama
 
@@ -71,7 +71,7 @@ Bu özellik ile birlikte, öznitelik eşlemeleri de aşağıdaki öznitelikleri 
 
 - **Source özniteliği** -kaynak sistemden Kullanıcı özniteliği (örnek: Azure Active Directory).
 - **Target özniteliği** – hedef sistemdeki kullanıcı özniteliği (örnek: ServiceNow).
-- **Null Ise varsayılan değer (isteğe bağlı)** -kaynak özniteliği null ise hedef sisteme geçirilecek değer. Bu değer, yalnızca bir kullanıcı oluşturulduğunda sağlanacak. Mevcut bir Kullanıcı güncelleştirilirken "null olduğunda varsayılan değer" sağlanmayacak. Örneğin, hedef sistemdeki tüm mevcut kullanıcıları belirli bir Iş başlığıyla (kaynak sistemde null olduğunda) sağlamak istiyorsanız, şu [ifadeyi](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)kullanabilirsiniz: Switch (ısun ([JobTitle]), "DefaultValue", "true", [JobTitle]). "Varsayılan değer" değerini kaynak sistemde null olduğunda sağlamak istediğiniz şekilde değiştirdiğinizden emin olun. 
+- **Null Ise varsayılan değer (isteğe bağlı)** -kaynak özniteliği null ise hedef sisteme geçirilecek değer. Bu değer, yalnızca bir kullanıcı oluşturulduğunda sağlanacak. Mevcut bir Kullanıcı güncelleştirilirken "null olduğunda varsayılan değer" sağlanmayacak. Örneğin, hedef sistemdeki tüm mevcut kullanıcıları belirli bir Iş başlığıyla (kaynak sistemde null olduğunda) sağlamak istiyorsanız, şu [ifadeyi](functions-for-customizing-application-data.md)kullanabilirsiniz: Switch (ısun ([JobTitle]), "DefaultValue", "true", [JobTitle]). "Varsayılan değer" değerini kaynak sistemde null olduğunda sağlamak istediğiniz şekilde değiştirdiğinizden emin olun. 
 - **Bu özniteliği kullanarak nesneleri Eşleştir** – bu eşlemenin, kaynak ve hedef sistemler arasında kullanıcıları benzersiz şekilde tanımlamak için kullanılması gerekip gerekmediğini belirtir. Genellikle, Azure AD 'deki userPrincipalName veya mail özniteliğinde ayarlanır; Bu, genellikle hedef uygulamadaki bir Kullanıcı adı alanına eşlenir.
 - **Eşleşen öncelik** – birden çok eşleşen öznitelik ayarlanabilir. Birden çok olduğunda, bu alan tarafından tanımlanan sıraya göre değerlendirilir. Bir eşleşme bulunur başlamaz, başka eşleşen öznitelikler değerlendirilir.
 - **Bu eşlemeyi Uygula**
@@ -92,7 +92,7 @@ Azure AD sağlama hizmeti hem "doğa alan" senaryolarında (kullanıcıların he
 
 ServiceNow, Box ve G Suite gibi seçilen sayıda uygulama, Grup nesneleri ve Kullanıcı nesneleri sağlama yeteneğini destekler. Grup nesneleri, Grup üyeleri ile birlikte görünen adlar ve e-posta diğer adları gibi grup özellikleri içerebilir.
 
-![Örnek, sağlanan grup ve Kullanıcı nesneleri ile ServiceNow 'ı gösterir](./media/customize-application-attributes/24.png)
+![Örnek, sağlanan grup ve Kullanıcı nesneleri ile ServiceNow 'ı gösterir](media/customize-application-attributes/24.png)
 
 Grup sağlama, **eşlemeler**altında Grup eşlemesi seçilerek etkinleştirilebilir veya devre dışı bırakılabilir ve bu ayar, **öznitelik eşleme** ekranında istediğiniz **seçeneğe ayarlanabilir.**
 
@@ -193,13 +193,13 @@ Bu yönergeler yalnızca SCıM özellikli uygulamalar için geçerlidir. Service
 ## <a name="provisioning-a-role-to-a-scim-app"></a>SCıM uygulamasına bir rol sağlama
 Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımları kullanın. Aşağıdaki açıklamanın özel SCIM uygulamalarına özgü olduğunu unutmayın. Salesforce ve ServiceNow gibi Galeri uygulamaları için önceden tanımlı rol eşlemelerini kullanın. Aşağıdaki madde işaretleri, Approtaatamalar özniteliğini uygulamanızın beklediği biçime nasıl dönüştürebileceğinizi açıklamaktadır.
 
-- Azure AD 'de Approlet atamasını uygulamanızdaki bir role eşlemek için özniteliği bir [ifade](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)kullanarak dönüştürmeniz gerekir. Approtaatama özniteliği rol ayrıntılarını ayrıştırmak için bir ifade kullanılmadan doğrudan bir rol özniteliğiyle **eşlenmemelidir** . 
+- Azure AD 'de Approlet atamasını uygulamanızdaki bir role eşlemek için özniteliği bir [ifade](functions-for-customizing-application-data.md)kullanarak dönüştürmeniz gerekir. Approtaatama özniteliği rol ayrıntılarını ayrıştırmak için bir ifade kullanılmadan doğrudan bir rol özniteliğiyle **eşlenmemelidir** . 
 
 - **Singleapprotaatama** 
   - **Ne zaman kullanılır:** Bir kullanıcı için tek bir rol sağlamak ve birincil rolü belirtmek için Singleapprotaatama ifadesini kullanın. 
   - **Nasıl yapılandırılır:** Öznitelik eşlemeleri sayfasına gitmek için yukarıda açıklanan adımları kullanın ve Roles özniteliğiyle eşlemek için Singleapprotaatama ifadesini kullanın. Aralarından seçim yapabileceğiniz üç rol özniteliği vardır: (roller [birincil EQ "true"]. görüntüleme, roller [birincil EQ "true]. Type ve Roles [PRIMARY EQ" true "]. Value). Eşlemelerinizde rol özniteliklerinin herhangi birini veya tümünü eklemeyi seçebilirsiniz. Birden fazla eklemek isterseniz, yeni bir eşleme ekleyin ve onu Target özniteliği olarak dahil edin.  
   
-  ![Singleapprotaatama Ekle](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![Singleapprotaatama Ekle](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **Dikkate alınması gereken noktalar**
     - Bir kullanıcıya birden çok rolün atanmadığından emin olun. Hangi rolün sağlanacağı garanti edilemez.
     
@@ -231,11 +231,11 @@ Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımla
   - **Ne zaman kullanılır:** Bir kullanıcı için birden çok rol sağlamak üzere Approleatamamentscomplex ifadesini kullanın. 
   - **Nasıl yapılandırılır:** Roller için yeni bir öznitelik eklemek üzere yukarıda açıklanan desteklenen özniteliklerin listesini düzenleyin: 
   
-    ![Rolleri ekleme](./media/customize-application-attributes/add-roles.png)<br>
+    ![Rol Ekleme](media/customize-application-attributes/add-roles.png)<br>
 
     Ardından, aşağıdaki görüntüde gösterildiği gibi özel rol özniteliğiyle eşlemek için Approleatamasınscomplex ifadesini kullanın:
 
-    ![Approleatamamentscomplex ekleyin](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![Approleatamamentscomplex ekleyin](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **Dikkate alınması gereken noktalar**
     - Tüm roller birincil = yanlış olarak sağlanacak.
     - GÖNDERI, rol türünü içerir. Düzeltme Eki isteği türü içermiyor. Hem POST hem de PATCH isteklerinde türü göndermek için çalışıyoruz.

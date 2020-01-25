@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 933217b2ad86535d45f6674165ee162f263a8cd7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882887"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712164"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -63,7 +63,7 @@ Sağlama işinin durumunu almak için bir Microsoft Graph isteği, karantinaya a
 
 - [Geçerli yönetici kimlik bilgilerini girdiğinizden](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)emin olmak için uygulamanın sağlama ayarlarını kontrol edin. Azure AD, hedef uygulamayla bir güven kurabilmesi gerekir. Geçerli kimlik bilgilerini girdiğinizden ve hesabınızda gerekli izinlere sahip olduğunuzdan emin olun.
 
-- Hangi hataların karantinaya neden olduğunu araştırmak ve hatayı gidermek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gözden geçirin. **Etkinlik** bölümündeki **Azure Active Directory** &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** Azure Portal giderek sağlama günlüklerine erişin.
+- Hangi hataların karantinaya neden olduğunu araştırmak ve hatayı gidermek için [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) gözden geçirin. **Etkinlik** bölümündeki **Azure Active Directory** &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** Azure Portal giderek sağlama günlüklerine erişin.
 
 Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Uygulamanın sağlama ayarlarında öznitelik eşlemeleri veya kapsam filtreleri gibi bazı değişiklikler, sağlamayı sizin için otomatik olarak yeniden başlatacak. Uygulamanın **sağlama** sayfasındaki ilerleme çubuğu, sağlamanın en son ne zaman başlatıldığını gösterir. Sağlama işini el ile yeniden başlatmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:  
 

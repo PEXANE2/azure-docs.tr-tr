@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0eafd090366623919891ff0b03dd85a0d3dbcf88
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: da84bea51271829e7d3e513ada21c69dbd61916c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263583"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719968"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -163,7 +163,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 
 ### <a name="national-cloud-environment"></a>Ulusal bulut ortamı
 
-Azure Ulusal bulutlar birbirinden ve küresel ticari bir Azure 'dan yalıtılmıştır. Bir Azure bulutu için ExpressRoute, diğer Azure bölgelerine bağlanamaz. 
+Azure Ulusal bulutlar birbirinden ve küresel ticari Azure 'dan yalıtılmıştır. Bir Azure bulutu için ExpressRoute, diğer Azure bölgelerine bağlanamaz. 
 
 ### <a name="us-government-cloud"></a>US Government bulutu
 

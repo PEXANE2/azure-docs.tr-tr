@@ -1,19 +1,18 @@
 ---
 title: Azure Event Grid abonelik şeması
-description: Azure Event Grid ile bir olaya abone olmak için özellikleri tanımlar.
+description: Bu makalede, Azure Event Grid bir olaya abone olmak için özellikler açıklanmaktadır. Event Grid abonelik şeması.
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 01/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845463"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720767"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid abonelik şeması
 

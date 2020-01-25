@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732425"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722552"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -71,6 +71,13 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 - **Elastik havuzdaki veritabanlarını yük devretme grubuna ekleme**
 
   Elastik havuz içindeki tüm veya birkaç veritabanını aynı yük devretme grubuna yerleştirebilirsiniz. Birincil veritabanı elastik bir havuzda ise, ikincil havuz aynı ada (ikincil havuz) sahip esnek havuzda otomatik olarak oluşturulur. İkincil sunucunun, yük devretme grubu tarafından oluşturulacak ikincil veritabanlarını barındırmak için aynı tam adı ve yeterli boş kapasiteye sahip esnek bir havuz içerdiğinden emin olmanız gerekir. Havuza ikincil havuzda zaten ikincil bir veritabanı olan bir veritabanı eklerseniz, bu coğrafi çoğaltma bağlantısı Grup tarafından devralınır. Yük devretme grubunun parçası olmayan bir sunucuda zaten ikincil veritabanına sahip bir veritabanı eklediğinizde ikincil havuzda yeni bir ikincil oluşturulur.
+  
+- **İlk dengeli dağıtım** 
+
+  Veritabanları, elastik havuzlar veya yönetilen örnekleri bir yük devretme grubuna eklerken, veri çoğaltma başlamadan önce bir ilk dengeli dağıtım aşaması vardır. İlk dengeli dağıtım aşaması en uzun ve en pahalı işlemdir. İlk dengeli dağıtım tamamlandıktan sonra veriler eşitlenir ve ardından yalnızca sonraki veri değişiklikleri çoğaltılır. İlk çekirdek işleminin tamamlaması için gereken süre, verilerinizin boyutuna, çoğaltılan veritabanlarının sayısına ve yük devretme grubundaki varlıklar arasındaki bağlantının hızına bağlıdır. Normal koşullarda tipik dengeli dağıtım hızı, tek bir veritabanı veya elastik havuz için 50-500 GB, yönetilen bir örnek için saat 18-35 GB 'dir. Dengeli dağıtım, tüm veritabanları için paralel olarak gerçekleştirilir. Belirtilen dengeli dağıtım hızını, veri çoğaltma başlamadan önce ilk dengeli dağıtım aşamasının ne kadar süreyle alınacağını tahmin etmek için veritabanlarının sayısı ve toplam veri boyutu ile birlikte kullanabilirsiniz.
+
+  Yönetilen örnekler için, iki örnek arasındaki hızlı rota bağlantısının hızının, ilk dengeli dağıtım aşamasının süresi tahmin edildiğinde dikkate alınması gerekir. İki örnek arasındaki bağlantının hızı gerekenden daha yavaşsa, tohum süresi büyük olasılıkla özellikle etkilendi. Veri çoğaltma başlamadan önce ilk dengeli dağıtım aşamasının ne kadar süreyle yapılacağını tahmin etmek için belirtilen dengeli dağıtım hızını, veritabanı sayısını, toplam veri boyutunu ve bağlantı hızını kullanabilirsiniz. Örneğin, tek bir 100 GB veritabanı için ilk Çekirdek aşaması, bağlantının saat başına 35 GB ile uyumlu olması halinde 2,8-5,5 saatten herhangi bir yere kadar sürer. Bağlantı yalnızca saat başına 10 GB aktarabiliyorsanız, 100 GB 'lik bir veritabanının dağıtımı, yaklaşık 10 saat sürer. Çoğaltılacak birden çok veritabanı varsa, sağlama paralel olarak yürütülür ve yavaş bir bağlantı hızıyla birleştirildiğinde, özellikle tüm veritabanlarındaki verilerin paralel dağıtımı kullanılabilir olan değeri aşarsa, ilk dengeli dağıtım aşaması önemli ölçüde uzun sürebilir. bant genişliğini bağlayın. İki örnek arasındaki ağ bant genişliği sınırlıysa ve bir yük devretme grubuna birden çok yönetilen örnek ekliyorsanız, yük devretme grubuna birden çok yönetilen örnek eklemeyi göz önünde bulundurun.
+
   
 - **DNS bölgesi**
 
@@ -453,7 +460,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu örnekten kaldırır |
 | [Yük devretme (planlı)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Tam veri eşitlemesi ile bu örneğe geçerli birincil örnekten yük devretmeyi tetikler. |
 | [Yük devretmeyi zorla veri kaybına Izin ver](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Verileri eşitlemeden geçerli birincil örnekten ikincil örneğe yük devretmeyi tetikler. Bu işlem, veri kaybına neden olabilir. |
-| [Yük devretme grubunu al](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | bir yük devretme grubunun yapılandırmasını alır. |
+| [Yük devretme grubunu al](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Bir yük devretme grubunun yapılandırmasını alır. |
 | [Yük devretme gruplarını listeleme-konuma göre listeleme](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Bir konumdaki yük devretme gruplarını listeler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

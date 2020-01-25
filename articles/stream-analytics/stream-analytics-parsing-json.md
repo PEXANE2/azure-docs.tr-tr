@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbfa6f8b85814f0f77234e014ade0ff757a4c4b8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431601"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720087"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics JSON ve avro verilerini ayrıştırın
 
@@ -78,7 +78,7 @@ Sonuç:
 
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Özellik adı bir değişken olduğunda iç içe alanlara erişin
-Özellik adı bir değişken ise [Getrecordpropertyvalue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) işlevini kullanın. 
+Özellik adı bir değişken ise [Getrecordpropertyvalue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) işlevini kullanın. 
 
 Örneğin, bir örnek veri akışının her bir cihaz algılayıcısı için eşikler içeren başvuru verileriyle katılması gerektiğini düşünün. Bu tür başvuru verilerinin bir parçacığı aşağıda gösterilmiştir.
 

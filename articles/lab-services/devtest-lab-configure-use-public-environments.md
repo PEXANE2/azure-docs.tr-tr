@@ -1,6 +1,6 @@
 ---
-title: Yapılandırma ve Azure DevTest Labs'de ortak ortamlardaki kullanma | Microsoft Docs
-description: Yapılandırma ve Azure DevTest Labs'de ortak ortamlardaki kullanma hakkında bilgi edinin.
+title: Azure DevTest Labs 'de ortak ortamları yapılandırma ve kullanma | Microsoft Docs
+description: Bu makalede, Azure DevTest Labs ' de genel ortamların (bir git deposunda Azure Resource Manager şablonları) nasıl yapılandırılacağı ve kullanılacağı açıklanmaktadır.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,39 +12,39 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cd6998c7ac11638ead67fde384bdf4599692781
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706036"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721702"
 ---
-# <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Yapılandırma ve Azure DevTest Labs'de ortak ortamlardaki kullanma
-Azure DevTest Labs sahip bir [Azure Resource Manager şablonları, ortak depo](https://github.com/Azure/azure-devtestlab/tree/master/Environments) kendiniz bir dış GitHub kaynağına bağlanmak zorunda kalmadan ortamlar oluşturmak için kullanabileceğiniz. Bu depo, Azure Web Apps, Service Fabric kümesi ve SharePoint grubu ortamı geliştirme gibi sık kullanılan şablonları içerir. Bu özellik, oluşturduğunuz her bir laboratuvar için gelen ortak depo yapıtları benzer. Ortam depo labs PaaS kaynaklar için bir yumuşak Başlarken deneyimini ile sağlamak için en düşük giriş parametrelerini içeren önceden yazılmış ortam şablonlarını kullanmaya hızlıca başlayın sağlar. 
+# <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Azure DevTest Labs ortak ortamları yapılandırma ve kullanma
+Azure DevTest Labs, sizin tarafınızdan bir dış GitHub kaynağına bağlanmak zorunda kalmadan ortamlar oluşturmak için kullanabileceğiniz [Azure Resource Manager şablonlarının ortak bir deposudur](https://github.com/Azure/azure-devtestlab/tree/master/Environments) . Bu depo, Azure Web Apps, Service Fabric kümesi ve geliştirme SharePoint grubu ortamı gibi sık kullanılan şablonları içerir. Bu özellik, oluşturduğunuz her laboratuvar için dahil edilen yapıların genel deposuna benzer. Ortam deposu, Labs içinde PaaS kaynakları için sorunsuz bir başlangıç deneyimi sunmak üzere en az giriş parametreleriyle önceden yazılmış ortam şablonlarına hızla başlamanızı sağlar. 
 
-## <a name="configuring-public-environments"></a>Ortak ortamlardaki yapılandırma
-Laboratuvar sahibi olarak, ortam genel deponun Laboratuvar oluşturma sırasında laboratuvarınız için etkinleştirebilirsiniz. Laboratuvarınız için ortak ortamlardaki etkinleştirmek için seçin **üzerinde** için **ortak ortamlardaki** bir laboratuvar oluşturma sırasında alan. 
+## <a name="configuring-public-environments"></a>Ortak ortamları yapılandırma
+Laboratuvar sahibi olarak laboratuvar oluşturma sırasında laboratuvarınız için ortak ortam deposunu etkinleştirebilirsiniz. Laboratuvarınız için ortak ortamları etkinleştirmek üzere laboratuvar oluştururken **genel ortamlar** alanı için **Açık** ' ı seçin. 
 
-![Yeni bir laboratuvara yönelik genel ortam etkinleştir](media/devtest-lab-configure-use-public-environments/enable-public-environment-new-lab.png)
+![Yeni laboratuvar için ortak ortamı etkinleştir](media/devtest-lab-configure-use-public-environments/enable-public-environment-new-lab.png)
 
 
-Ortam genel deponun mevcut Laboratuvar için etkin değil. El ile depoda şablonları kullanacak şekilde etkinleştirin. Resource Manager şablonları kullanılarak oluşturulan Laboratuvar için depo de varsayılan olarak devre dışıdır.
+Mevcut laboratuvarlarda, ortak ortam deposu etkinleştirilmemiştir. Depodaki şablonları kullanmak için el ile etkinleştirin. Kaynak Yöneticisi şablonlar kullanılarak oluşturulan laboratuvarlar için, depo varsayılan olarak devre dışıdır.
 
-Etkinleştirmek/ortak ortamlardaki laboratuvarınız için devre dışı ve ayrıca yalnızca belirli ortamlara kullanılabilir Laboratuvar kullanıcıları için aşağıdaki adımları kullanarak hale getirebilirsiniz: 
+Laboratuvarınız için genel ortamları etkinleştirebilir/devre dışı bırakabilir ve ayrıca aşağıdaki adımları kullanarak yalnızca belirli ortamları laboratuvar kullanıcıları için kullanılabilir hale getirebilirsiniz: 
 
-1. Seçin **yapılandırması ve ilkelerini** laboratuvarınız için. 
-2. İçinde **sanal makine TABANLARI** bölümünden **ortak ortamlardaki**.
-3. Laboratuvar için ortak ortamlardaki etkinleştirmek için seçin **Evet**. Aksi takdirde seçin **Hayır**. 
-4. Ortak ortamlardaki etkinleştirilirse, depodaki tüm ortamları varsayılan etkindir. Laboratuvar kullanıcılarınız için kullanılabilir yapmak için bir ortam da seçebilirsiniz. 
+1. Laboratuvarınız için **yapılandırma ve ilkeler '** i seçin. 
+2. **Sanal makıne tabanları** bölümünde **ortak ortamlar**' ı seçin.
+3. Laboratuvar için ortak ortamları etkinleştirmek üzere **Evet**' i seçin. Aksi takdirde seçin **Hayır**. 
+4. Ortak ortamları etkinleştirdiyseniz, depodaki tüm ortamlar varsayılanlar tarafından etkinleştirilir. Laboratuvar kullanıcılarınız için kullanılamaz hale getirmek üzere bir ortamı devre dışı bırakabilirsiniz. 
 
-![Ortak ortamlardaki sayfası](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
+![Ortak ortamlar sayfası](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
 
-## <a name="use-environment-templates-as-a-lab-user"></a>Bir laboratuvar kullanıcı olarak ortam şablonlarını kullanma
-Bir laboratuvar kullanıcı olarak yeni bir ortam ortam şablonlarını etkin listesinden yalnızca seçerek oluşturabileceğiniz **+ Ekle** Laboratuvar sayfasında araç çubuğundan. Listenin üst kısmındaki Laboratuvar yöneticinize etkin ortak ortamlardaki şablonları tabanları listesini içerir.
+## <a name="use-environment-templates-as-a-lab-user"></a>Ortam şablonlarını laboratuvar kullanıcısı olarak kullanma
+Laboratuvar kullanıcısı olarak, laboratuvar sayfasındaki araç çubuğundan **+ Ekle** ' yi seçerek ortam şablonlarının etkin listesinden yeni bir ortam oluşturabilirsiniz. Temellerin listesi, laboratuvar yöneticiniz tarafından etkinleştirilen ortak ortamlar şablonlarını listenin en üstünde içerir.
 
-![Genel ortam şablonlarını](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
+![Genel ortam şablonları](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu depo sık kullanılan ve yararlı Resource Manager şablonları kendi ekleme katkıda bulunmak istediğiniz bir açık kaynaklı bir depodur. Katkıda bulunmak için yalnızca karşı deponun çekme isteği gönderin.  
+Bu depo, kendi sık kullanılan ve yararlı Kaynak Yöneticisi şablonlarını eklemek için katkıda bulunabileceğiniz açık kaynaklı bir depodur. Katkıda bulunmak için, depoya karşı bir çekme isteği göndermeniz yeterlidir.  

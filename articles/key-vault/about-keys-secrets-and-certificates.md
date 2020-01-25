@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832927"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720070"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Anahtarlar, gizli diziler ve sertifikalar hakkında
 
@@ -76,7 +76,7 @@ Nerede:
 |`keyvault-name`|Microsoft Azure Key Vault hizmetindeki bir anahtar kasasının adı.<br /><br /> Key Vault adlar Kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br /> Key Vault ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 3-24 karakter dizesi olmalıdır.|  
 |`object-type`|Nesnenin türü, "anahtarlar" veya "gizlilikler" olabilir.|  
 |`object-name`|`object-name`, için Kullanıcı tarafından sağlanmış bir addır ve bir Key Vault içinde benzersiz olmalıdır. Ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır.|  
-|`object-version`|`object-version`, isteğe bağlı olarak kullanılan * o bir nesnenin benzersiz bir sürümünü ele alan sistem tarafından 32 oluşturulmuş bir karakter dizesi tanımlayıcısıdır.|  
+|`object-version`|`object-version`, isteğe bağlı olarak bir nesnenin benzersiz bir sürümünü ele almak için kullanılan, sistem tarafından oluşturulan 32 karakter dizesi tanımlayıcısıdır.|  
 
 ## <a name="key-vault-keys"></a>Key Vault anahtarları
 
@@ -166,7 +166,7 @@ JWK nesneleri hakkında daha fazla bilgi için bkz. [JSON Web anahtarı (JWK)](h
 
 ###  <a name="key-attributes"></a>Anahtar öznitelikleri
 
-Anahtar malzemeye ek olarak aşağıdaki öznitelikler de belirtilebilir. Bir JSON Isteğinde, belirtilen öznitelik olmadığından bile ' {' '} ' öznitelikler anahtar sözcüğü ve ayraçları gereklidir.  
+Anahtar malzemeye ek olarak, aşağıdaki öznitelikler de belirtilebilir. Bir JSON Isteğinde, belirtilen öznitelik olmadığından bile ' {' '} ' öznitelikler anahtar sözcüğü ve ayraçları gereklidir.  
 
 - *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. Anahtarın etkinleştirilip etkinleştirilmeyeceğini ve şifreleme işlemleri için kullanılıp kullanılamayacağını belirtir. *Enabled* özniteliği, *NBF* ve *Exp*ile birlikte kullanılır. *NBF* ve *Exp*arasında bir işlem olduğunda, yalnızca *etkin* değeri **true**olarak ayarlandıysa izin verilir. [Belirli koşullarda](#date-time-controlled-operations)belirli işlem türleri dışında, *NBF* / *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.
 - *NBF*: intdate, isteðe baðlý, default artık. *NBF* (before) özniteliği, [belirli koşullarda](#date-time-controlled-operations)belirli işlem türleri dışında, anahtarın ŞIFRELEME işlemleri için kullanılması gereken süreyi tanımlar. *NBF* özniteliğinin işlenmesi, geçerli tarih/saatin, *NBF* özniteliğinde listelenen son tarih/saat değerinden önce veya buna eşit olması gerekir. Key Vault saat eğimlerini hesaba çıkarak, genellikle birkaç dakikadan daha uzun bir süre boyunca daha fazla bilgi verebilir. Değeri, bir IntDate değeri içeren bir sayı OLMALıDıR.  
@@ -230,7 +230,7 @@ Anahtarlarla çalışma hakkında daha fazla bilgi için bkz. [Key Vault REST AP
 
 Geliştirici perspektifinden Key Vault API 'Leri, gizli değerleri dizeler olarak kabul eder ve döndürür. Dahili olarak Key Vault, gizli dizileri, her biri en fazla 25k bayt boyutunda olan sekizlik (8 bit bayt) dizileri olarak depolar ve yönetir. Key Vault hizmeti gizli dizileri için semantik bir sağlamaz. Yalnızca verileri kabul eder, şifreler, kaydeder ve gizli bir tanımlayıcı ("kimlik") döndürür. Tanımlayıcı, daha sonraki bir zamanda gizli dizi almak için kullanılabilir.  
 
-Son derece hassas veriler söz konusu olduğunda müşterilerin veriler için ek koruma katmanlarını göz önünde bulundurması gerekir. Anahtarı Anahtar Kasasında depolamadan önce ayrı bir koruma anahtarı kullanarak verileri şifrelemek bunun bir örneğidir.  
+Son derece hassas veriler için istemciler, veriler için ek koruma katmanları düşünmelidir. Key Vault depolama öncesinde ayrı bir koruma anahtarı kullanarak verileri şifrelemek bir örnektir.  
 
 Key Vault, gizlilikler için bir contentType alanını da destekler. İstemciler, alındığı sırada gizli verilerin yorumlanmasına yardımcı olmak için bir gizli dizi içerik türünü belirtebilir. Bu alanın uzunluk üst sınırı 255 karakterdir. Önceden tanımlı değer yok. Önerilen kullanım, gizli verileri yorumlamak için bir ipucu olarak kullanılır. Örneğin, bir uygulama parolaları ve sertifikaları gizli dizi olarak saklayabilir, ardından bu alanı ayırt etmek için kullanabilirsiniz. Önceden tanımlanmış değer yok.  
 
@@ -372,7 +372,7 @@ Aşağıdaki tablo, x509 anahtar kullanımı ilkesinin Key Vault sertifikası ol
 |Kabullenme|imzala, Doğrula| Yok |
 |crlsign|imzala, Doğrula| Yok |
 
-### <a name="certificate-issuer"></a>Sertifikayı Veren
+### <a name="certificate-issuer"></a>Sertifikayı veren
 
 Key Vault bir sertifika nesnesi, x509 sertifikalarını sıralamak için seçilen bir sertifika veren sağlayıcısıyla iletişim kurmak için kullanılan bir yapılandırma barındırır.  
 

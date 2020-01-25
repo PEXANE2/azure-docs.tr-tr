@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465260"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717076"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -139,7 +139,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |---|
 |<ul><li>VPN tüneli bağlı mı?</li><li>Bağlantıda yapılandırma çakışması var mı?</li><li>Önceden paylaşılan anahtarlar düzgün şekilde yapılandırılmış mi?</li><li>VPN şirket içi cihaz erişilebilir mi?</li><li>IPSec/ıKE güvenlik ilkesinde uyuşmazlıklar var mı?</li><li>S2S VPN bağlantısı düzgün şekilde sağlandı veya hatalı durumda mı?</li><li>VNET-VNET bağlantısının düzgün bir şekilde sağlanması veya başarısız olması durumunda mi?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft. Network/expressreoutedevreleri
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressroutedevreleri
 |Yürütülen denetimler|
 |---|
 |<ul><li>ExpressRoute devresi sağlıklı mı?</li></ul>|

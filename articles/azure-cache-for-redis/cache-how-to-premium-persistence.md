@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412839"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714881"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için veri kalıcılığını yapılandırma
 Redsıs için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium bir Azure önbelleğinde kalıcılığı yapılandırma açıklanmaktadır.
@@ -26,7 +26,13 @@ Redsıs için Azure önbelleği, aşağıdaki modelleri kullanarak Redsıs kalı
 * **RDB kalıcılığı** -RDB (redsıs veritabanı) kalıcılığı yapılandırıldığında, Redsıs Için Azure önbelleği, yapılandırılabilir bir yedekleme sıklığına bağlı olarak redsıs binary biçimindeki redin Için Azure önbelleğinin bir anlık görüntüsünü diske devam ettirir. Hem birincil hem de çoğaltma önbelleğini devre dışı bırakan çok zararlı bir olay oluşursa, önbellek en son anlık görüntü kullanılarak yeniden oluşturulur. RDB kalıcılığı 'nin [avantajları](https://redis.io/topics/persistence#rdb-advantages) ve [dezavantajları](https://redis.io/topics/persistence#rdb-disadvantages) hakkında daha fazla bilgi edinin.
 * **AOF kalıcılığı** -AOF (yalnızca ekleme dosyası) kalıcılığı yapılandırıldığında, reddir Için Azure önbelleği, her yazma işlemini saniyede en az bir kez bir Azure depolama hesabına kaydeder. Hem birincil hem de çoğaltma önbelleğini devre dışı bırakan çok zararlı bir olay oluşursa, önbellek, depolanan yazma işlemleri kullanılarak yeniden oluşturulur. AOF kalıcılığın [avantajları](https://redis.io/topics/persistence#aof-advantages) ve [dezavantajları](https://redis.io/topics/persistence#aof-disadvantages) hakkında daha fazla bilgi edinin.
 
-Kalıcı hale getirme, önbellek oluşturma sırasında ve mevcut Premium önbellekler için **kaynak menüsünde** **yeni Azure önbelleğinden redin** dikey penceresinden yapılandırılır.
+Kalıcılık, Redsıs verilerini sahip olduğunuz ve yönettiğiniz bir Azure depolama hesabına yazar. Önbellek oluşturma sırasında ve mevcut Premium önbellekler için **kaynak menüsünde** **yeni Azure önbelleğinden** yapılandırma yapabilirsiniz.
+
+> [!NOTE]
+> 
+> Kalıcı olduğunda Azure Storage verileri otomatik olarak şifreler. Şifreleme için kendi anahtarlarınızı kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault Ile müşteri tarafından yönetilen anahtarlar](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault).
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ Sonraki bölümdeki adımlarda, yeni Premium önbelleğinizin Redsıs kalıcıl�
 
 ## <a name="enable-redis-persistence"></a>Redsıs kalıcılığını etkinleştir
 
-Redsıs kalıcılığı, **RDB** ya da **AOF** kalıcılığı seçerek **redsıs veri kalıcılığı** dikey penceresinde etkinleştirilir. Yeni önbellekler için, önceki bölümde açıklandığı gibi, önbellek oluşturma işlemi sırasında bu dikey pencereye erişilir. Mevcut önbellekler için, **redsıs veri kalıcılığı** dikey penceresine önbelleğiniz için **Kaynak menüsünden** erişilir.
+Redsıs kalıcılığı, **RDB** ya da **AOF** kalıcılığı seçerek **veri kalıcılığı** dikey penceresinde etkinleştirilir. Yeni önbellekler için, önceki bölümde açıklandığı gibi, önbellek oluşturma işlemi sırasında bu dikey pencereye erişilir. Mevcut önbellekler için, **veri Kalıcılık** dikey penceresine önbelleğiniz için **Kaynak menüsünden** erişilir.
 
 ![Redsıs ayarları][redis-cache-settings]
 
@@ -125,7 +131,7 @@ Hem RDB hem de sürekliliği için:
 * Daha küçük bir boyuta ölçeklendirdiyseniz ve son yedeklemeden tüm verileri tutmak için daha küçük boyutta bir boşluk yoksa, anahtarlar geri yükleme işlemi sırasında, genellikle [AllKeys-LRU](https://redis.io/topics/lru-cache) çıkarma ilkesi kullanılarak çıkarılacaktır.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Önbelleği oluşturduktan sonra RDB yedekleme sıklığını değiştirebilir miyim?
-Evet, **redsıs veri kalıcılığı** DIKEY penceresinde RDB kalıcılığı için yedekleme sıklığını değiştirebilirsiniz. Yönergeler için bkz. Redsıs kalıcılığını yapılandırma.
+Evet, **veri kalıcılığı** DIKEY penceresinde RDB kalıcılığı için yedekleme sıklığını değiştirebilirsiniz. Yönergeler için bkz. Redsıs kalıcılığını yapılandırma.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>60 dakikalık bir RDB yedekleme sıklığım neden olursa yedeklemeler arasında 60 dakikadan fazla olur?
 Bir önceki yedekleme işlemi başarıyla tamamlanana kadar RDB Kalıcılık yedekleme sıklığı aralığı başlatılmaz. Yedekleme sıklığı 60 dakikadır ve başarılı bir şekilde tamamlanışında bir yedekleme işlemi 15 dakika sürüyorsa, sonraki yedekleme, önceki yedeklemenin başlangıç zamanından sonra 75 dakika sonrasına kadar başlamaz.

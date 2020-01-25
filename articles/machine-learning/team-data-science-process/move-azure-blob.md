@@ -1,57 +1,57 @@
 ---
-title: Verileri Azure Blob depolama alanı 'na veya sunucudan taşıma-Team Data Science Işlemi
+title: Verileri Azure Blob depolamadan - Team Data Science Process taşıma
 description: Azure Depolama Gezgini, AzCopy, Python ve SSIS kullanarak Azure Blob Storage 'a ve bu depolama alanından veri taşıma.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d885a7fad6e958507e7d9df34bd2b1fb222c6f86
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053672"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717579"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage"></a>Azure Blob depolamadan veri taşıma
+# <a name="move-data-to-and-from-azure-blob-storage"></a>İçin ve Azure Blob depolamadan/depolamaya veri taşıma
 
-Ekip veri bilimi süreci, verilerin her bir aşamasında işlenmek veya analiz edilmesi için verilerin farklı depolama ortamlarına toplanmasını veya bu ortamlara yüklenmesini gerektirir.
+Team Data Science Process veri veya alınan farklı depolama ortamları işlenen ya da işlemin her aşamasında en uygun şekilde analiz için çeşitli yüklenmiş olmasını gerektirir.
 
-## <a name="different-technologies-for-moving-data"></a>Veri taşımaya yönelik farklı teknolojiler
+## <a name="different-technologies-for-moving-data"></a>Verileri taşımak için farklı teknolojiler
 
-Aşağıdaki makalelerde, farklı teknolojiler kullanılarak verilerin Azure Blob depolama alanına ve içine nasıl taşınacağı açıklanır.
+Aşağıdaki makaleleri ve farklı teknolojileri kullanarak Azure Blob depolama alanından veri taşıma konusunda açıklanmaktadır.
 
-* [Azure depolama-gezgin](move-data-to-azure-blob-using-azure-storage-explorer.md)
+* [Azure Depolama Gezgini](move-data-to-azure-blob-using-azure-storage-explorer.md)
 * [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 * [Python](move-data-to-azure-blob-using-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
-Sizin için en uygun yöntem, senaryonuza bağlıdır. Azure Machine Learning makalesinde gelişmiş analizler [Için senaryolar](plan-sample-scenarios.md) , gelişmiş analiz işleminde kullanılan çeşitli veri bilimi iş akışları için ihtiyaç duyduğunuz kaynakları belirlemenize yardımcı olur.
+Hangi sizin için en iyi bir yöntemdir, senaryoya bağlıdır. [Azure Machine learning'de Gelişmiş analiz senaryoları](plan-sample-scenarios.md) makale Gelişmiş analiz işleminde kullanılan veri bilimi iş akışları çeşitli için ihtiyacınız olan kaynakları belirlemenize yardımcı olur.
 
 > [!NOTE]
-> Azure Blob depolamaya yönelik kapsamlı bir giriş için [Azure Blob temelleri](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) ve [Azure Blob hizmeti](https://msdn.microsoft.com/library/azure/dd179376.aspx)' ne bakın.
+> Azure blob depolama için bir tam giriş için başvurmak [Azure Blob Temelleri](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) ve [Azure Blob hizmeti](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
 ## <a name="using-azure-data-factory"></a>Azure Data Factory'yi kullanma
 
-Alternatif olarak, [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) için kullanabilirsiniz: 
+Alternatif olarak, kullandığınız [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) için: 
 
-* Azure Blob depolamadan veri yükleyen bir işlem hattı oluşturma ve zamanlama 
-* Bunu yayımlanmış bir Azure Machine Learning Web hizmetine geçirin, 
-* tahmine dayalı analiz sonuçlarını alın ve 
-* sonuçları depolamaya yükleyin. 
+* oluşturun ve Azure blob depolamadan veri yükleyen işlem hattı zamanlama 
+* yayımlanan bir Azure Machine Learning web hizmeti ile geçirin, 
+* Tahmine dayalı analiz sonuçlarını almak ve 
+* Sonuçları depolama alanına yükleyin. 
 
-Daha fazla bilgi için bkz. [Azure Data Factory ve Azure Machine Learning kullanarak tahmine dayalı işlem hatları oluşturma](../../data-factory/transform-data-using-machine-learning.md).
+Daha fazla bilgi için [Azure Data Factory ve Azure Machine Learning kullanarak öngörülebilir komut zincirleri oluşturma](../../data-factory/transform-data-using-machine-learning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu makalede, bu hesap için bir Azure aboneliğiniz, bir depolama hesabınız ve karşılık gelen depolama anahtarınız olduğunu varsaymaktadır. Verileri karşıya yüklemeden/indirmeden önce Azure depolama hesabı adınızı ve hesap anahtarınızı bilmeniz gerekir.
+## <a name="prerequisites"></a>Ön koşullar
+Bu makalede, bir Azure aboneliği, bir depolama hesabı ve karşılık gelen depolama anahtarını ilgili hesabın sahibi olduğunuzu varsayar. Verileri karşıya yüklemeden/indirmeden önce Azure depolama hesabı adınızı ve hesap anahtarınızı bilmeniz gerekir.
 
-* Bir Azure aboneliği ayarlamak için bkz. [ücretsiz bir aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Bir Azure aboneliğini ayarlama hakkında bilgi için bkz: [ücretsiz bir aylık deneme](https://azure.microsoft.com/pricing/free-trial/).
 * Depolama hesabı oluşturma ve hesap ve anahtar bilgilerini alma hakkında yönergeler için bkz. [Azure Storage hesapları hakkında](../../storage/common/storage-create-storage-account.md).
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658347"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714863"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -53,7 +53,7 @@ Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak bazı 
 - Giden internet bağlantısı engellenmiyor. NSG 'deki varsayılan giden kurallar internet bağlantısına izin verir. Şunları yapmanızı öneririz:
 
   - Varsayılan giden kurallarını kaldırmayın.
-  - Giden internet bağlantısını reddeden diğer çıkış kuralları oluşturmayın.
+  - Giden bağlantıları reddeden diğer çıkış kuralları oluşturmayın.
 
 - **AzureLoadBalancer** etiketinin trafiğine izin verilmelidir.
 
@@ -220,7 +220,7 @@ Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)* , *geçici (.)* 
 
 Yeniden yönlendirme hedefi olarak başka bir dinleyici veya dış site seçin.
 
-##### <a name="listener"></a>Dinleyici
+##### <a name="listener"></a>Oluşturulurken
 
 Trafiği bir dinleyicisinden ağ geçidinde diğerine yeniden yönlendirmek için yeniden yönlendirme hedefi olarak dinleyici ' i seçin. HTTP-HTTPS yeniden yönlendirmeyi etkinleştirmek istediğinizde bu ayar gereklidir. Gelen HTTP isteklerini, gelen HTTPS isteklerini denetleyen hedef dinleyiciye denetleyen kaynak dinleyicisinden trafiği yeniden yönlendirir. Ayrıca, yeniden yönlendirme hedefine iletilen istekteki özgün istekten sorgu dizesini ve yolunu eklemeyi de tercih edebilirsiniz.
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971805"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714511"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
 İçeri/dışarı aktarma, redsıs veri yönetimi işlemi için bir Azure önbelleğidir. Bu, redsıs veritabanı (RDB) anlık görüntüsü için bir Azure önbelleğini bir Azure depolama hesabındaki bir Blobun içeri aktarıp dışarı aktararak redsıs için Azure Cache 'e içeri aktarıp dışarı aktarmanıza olanak tanır.
@@ -24,7 +24,7 @@ ms.locfileid: "75971805"
 Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarmaya yönelik bir kılavuz ve sık sorulan soruların yanıtları sağlanır.
 
 > [!IMPORTANT]
-> İçeri/dışarı aktarma önizlemededir ve yalnızca [Premium katman](cache-premium-tier-intro.md) önbellekler için kullanılabilir.
+> İçeri/dışarı aktarma yalnızca [Premium katman](cache-premium-tier-intro.md) önbellekler için kullanılabilir.
 >
 >
 
@@ -41,7 +41,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
     ![Veri içeri aktarma](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. **BLOB Seç** ' e tıklayın ve içeri aktarılacak verileri içeren depolama hesabını seçin.
 
-    ![Depolama hesabı seç](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Depolama hesabı seçin](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. İçeri aktarılacak verileri içeren kapsayıcıya tıklayın.
 
     ![Kapsayıcı seçin](./media/cache-how-to-import-export-data/cache-import-choose-container.png)

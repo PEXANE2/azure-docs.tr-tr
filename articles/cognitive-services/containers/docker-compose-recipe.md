@@ -1,5 +1,5 @@
 ---
-title: Birden çok kapsayıcıyı dağıtmak için Docker Compose kullanma
+title: Docker Compose kullanarak birden çok kapsayıcı dağıtma
 titleSuffix: Azure Cognitive Services
 description: Birden çok bilişsel hizmet kapsayıcılarını dağıtmayı öğrenin. Bu makalede, Docker Compose kullanarak birden çok Docker kapsayıcı görüntüsünü nasıl düzenleyeceğinizi gösterilmektedir.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311545"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716904"
 ---
-# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Birden çok kapsayıcıyı dağıtmak için Docker Compose kullanma
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose kullanarak birden çok kapsayıcı dağıtma
 
 Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağıtılacağı gösterilir. Özellikle birden çok Docker kapsayıcı görüntüsünü düzenlemek için Docker Compose kullanmayı öğreneceksiniz.
 
@@ -25,7 +25,7 @@ Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağı
 
 Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede, Metin Tanıma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir:
 
@@ -46,7 +46,7 @@ Bilişsel [Hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/spe
 
 ## <a name="docker-compose-file"></a>Docker Compose dosyası
 
-YAML dosyası, dağıtılacak tüm hizmetleri tanımlar. Bu hizmetler, `DockerFile` ya da mevcut bir kapsayıcı görüntüsünü kullanır. Bu durumda, iki önizleme görüntüsü kullanacağız. Aşağıdaki YAML dosyasını kopyalayıp yapıştırın ve *Docker-Compose. YAML*olarak kaydedin. Dosyada uygun **apikey**, **faturalandırma**ve **dosyasında değiştirilecek endpointUri** değerlerini sağlayın.
+YAML dosyası, dağıtılacak tüm hizmetleri tanımlar. Bu hizmetler `DockerFile` veya var olan bir kapsayıcı görüntüsünü kullanır. Bu durumda, iki önizleme görüntüsü kullanacağız. Aşağıdaki YAML dosyasını kopyalayıp yapıştırın ve *Docker-Compose. YAML*olarak kaydedin. Dosyada uygun **apikey**, **faturalandırma**ve **dosyasında değiştirilecek endpointUri** değerlerini sağlayın.
 
 ```yaml
 version: '3.7'
@@ -172,13 +172,13 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>Metin Tanıma kapsayıcısını test etme
 
-Ana makinede bir tarayıcı açın ve Docker-Compose  . YAML dosyasından http://localhost:5021/swagger/index.html belirtilen bağlantı noktasını kullanarak localhost 'a gidin. Metin Tanıma uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
+Konak makinede bir tarayıcı açın ve http://localhost:5021/swagger/index.html gibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Metin Tanıma uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
 
 ![Metin Tanıma kapsayıcı](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>Form tanıyıcı kapsayıcısını test etme
 
-Ana makinede bir tarayıcı açın ve Docker-Compose  . YAML dosyasından http://localhost:5010/swagger/index.html belirtilen bağlantı noktasını kullanarak localhost 'a gidin. Form tanıyıcı uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
+Konak makinede bir tarayıcı açın ve http://localhost:5010/swagger/index.html gibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Form tanıyıcı uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
 
 ![Form tanıyıcı kapsayıcısı](media/form-recognizer-swagger-page.png)
 

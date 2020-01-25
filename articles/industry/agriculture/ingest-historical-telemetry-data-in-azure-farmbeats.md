@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513941"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715530"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -72,7 +72,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
  Artık gerekli kimlik bilgilerine sahip olduğunuza göre, cihazı ve algılayıcıları tanımlayabilirsiniz. Bunu yapmak için, Farmpts API 'Lerini çağırarak meta verileri oluşturun. Lütfen yukarıdaki bölümde oluşturduğunuz istemci uygulaması olarak API 'Leri çağırmanız gerekeceğini unutmayın.
 
- Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir.
+ Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir. Lütfen bir iş ortağı olarak yalnızca okumak, meta verileri oluşturmak ve güncelleştirmek için erişiminiz olduğunu unutmayın; **İş ortağı tarafından silmeye izin verilmiyor.**
 
 - /**devicemodel**: devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir.
 - **cihaz**/: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
@@ -381,6 +381,41 @@ Telemetri iletisine bir örnek aşağıda verilmiştir:
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Sensörlerden geçmiş/akış verileri alındıktan sonra telemetri verileri görüntülenemiyor
+
+**Belirti**: cihazlar veya algılayıcılar dağıtılır ve bu cihaz/sensörler ve EventHub üzerinde telemetri/algılayıcılar oluşturdunuz, ancak bu verileri, farmınts üzerinde telemetri verilerini alamıyor veya görüntüleyemezsiniz.
+
+**Düzeltici eylem**:
+
+1. İş ortağı kaydını doğru bir şekilde gerçekleştirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve ortağın kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için lütfen [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
+2. İş ortağı istemci kimlik bilgilerini kullanarak meta verileri (DeviceModel, cihaz, Sensormodeli, algılayıcı) oluşturduğunuzdan emin olun.
+3. Doğru telemetri ileti biçimini kullandığınızdan emin olun (aşağıda belirtildiği gibi):
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

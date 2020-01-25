@@ -7,20 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 01/24/2020
+ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793462"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721583"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 Bu makalede, toplam sayımlar, belge alımı, sıralama düzenleri ve gezinti gibi bir arama sonuçları sayfasının standart öğelerinin nasıl uygulanacağı hakkında rehberlik sunulmaktadır. Arama sonuçlarınıza veri veya bilgi katkıda bulunan sayfayla ilgili seçenekler, Azure Bilişsel Arama hizmetinize gönderilen [Arama belgesi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) istekleri aracılığıyla belirtilir. 
 
 REST API istekler, hizmete ne istenmekte olduğunu ve yanıtı nasıl ifade edeceğinizi bildiren bir GET komutu, yolu ve sorgu parametreleri içerir. .NET SDK 'sında, eşdeğer API [Documentsearchresult sınıfıdır](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Birçok kod örneği, burada bulabileceğiniz bir Web ön uç arabirimi içerir: [New York City işleri tanıtım uygulaması](https://azjobsdemo.azurewebsites.net/) ve [Bilivesearchön uç](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+İstemcinizi hızlı bir şekilde bir arama sayfası oluşturmak için aşağıdaki seçenekleri gözden geçirebilirsiniz:
+
++ Bir arama çubuğu, çok yönlü gezinme ve sonuç alanı içeren bir HTML sayfası oluşturmak için portalda [uygulama oluşturucusunu](search-create-app-portal.md) kullanın.
++ İşlevsel bir istemci oluşturmak için [ilk uygulamanızı C# ](tutorial-csharp-create-first-app.md) öğreticide Oluşturma öğreticisini izleyin.
+
+Birçok kod örneği, burada bulabileceğiniz bir Web ön uç arabirimi içerir: [New York City işleri tanıtım uygulaması](https://azjobsdemo.azurewebsites.net/), [canlı tanıtım sitesiyle JavaScript örnek kodu](https://github.com/liamca/azure-search-javascript-samples)ve [bilivesearchön uç](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Geçerli bir istek, hizmet URL 'SI ve yol, HTTP fiili, `api-version`vb. gibi çeşitli öğeleri içerir. Kısaltma için, yalnızca Sayfalandırmaya uygun olan sözdizimini vurgulamak üzere örnekleri kırptık. İstek sözdizimi hakkında daha fazla bilgi için bkz. [Azure BILIŞSEL arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice).
@@ -88,13 +93,29 @@ Giriş olarak seçilen sıralama seçeneğini kabul eden bir yöntem oluşturur 
 > Varsayılan Puanlama birçok senaryo için yeterli olsa da, bunun yerine özel bir Puanlama profiliyle ilgili olarak bir ilgiyi dayandırın. Özel bir Puanlama profili, işletmenize daha faydalı olan öğeleri artırmak için bir yol sağlar. Daha fazla bilgi için bkz. [Puanlama profilleri ekleme](index-add-scoring-profiles.md) .
 >
 
+## <a name="hit-highlighting"></a>İsabet vurgulama
+
+Arama sonuçlarında eşleşen koşullara biçimlendirme uygulayabilirsiniz, bu da eşleştirmeyi daha kolay hale getirir. [Sorgu isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)isabet vurgulama yönergeleri verilmiştir. 
+
+Biçimlendirme, tüm terim sorgularına uygulanır. Benzer arama veya joker karakter araması gibi kısmi şartlarındaki sorgular, altyapıda sorgu genişlemesiyle sonuçlanır, vuruş vurgulaması kullanamaz.
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
+
 ## <a name="faceted-navigation"></a>Çok yönlü navigasyon
 
 Arama gezinmesi, genellikle bir sayfanın yanında veya üstünde bulunan bir sonuçlar sayfasında ortaktır. Azure Bilişsel Arama 'de, çok yönlü gezinme, önceden tanımlanmış filtreleri temel alan otomatik olarak yönlendirilmiş arama sağlar. Ayrıntılar için bkz. [Azure 'da çok yönlü gezinme bilişsel arama](search-faceted-navigation.md) .
 
 ## <a name="filters-at-the-page-level"></a>Sayfa düzeyinde filtreler
 
-Çözüm tasarımınız belirli içerik türleri için adanmış arama sayfaları içeriyorsa (örneğin, sayfanın üst kısmında listelenen departmanlara sahip bir çevrimiçi perakende uygulaması), bir **OnClick** olayının yanına bir [filtre ifadesi](search-filters.md) ekleyebilirsiniz önceden filtrelenmiş durumda bir sayfa açın.
+Çözüm tasarımınız belirli içerik türleri (örneğin, sayfanın üst kısmında listelenen bölümler içeren bir çevrimiçi perakende uygulaması) için özel arama sayfaları içeriyorsa, önceden filtrelenmiş durumda bir sayfa açmak için bir **OnClick** olayının yanı sıra bir [filtre ifadesi](search-filters.md) ekleyebilirsiniz.
 
 Arama ifadesi içeren veya içermeyen bir filtre gönderebilirsiniz. Örneğin, aşağıdaki istek marka adını filtreleyecek ve yalnızca onunla eşleşen belgeleri döndürüyor.
 

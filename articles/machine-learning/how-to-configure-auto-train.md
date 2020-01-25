@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277982"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722161"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak �
 
 [Otomatik makine öğrenimi sonuçlarını anlamak](how-to-understand-automated-ml.md)için bu ölçümlerin belirli tanımları hakkında bilgi edinin.
 
-### <a name="data-preprocessing--featurization"></a>Veri ön işlemesi &
+### <a name="data-featurization"></a>Veri korturlama
 
-Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bulunan özelliklerle hassas olan *belirli* algoritmalara yardımcı olacak şekilde [otomatik olarak ölçeklendirilir ve normalleştirilir](concept-automated-ml.md#preprocess) .  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek ön işleme/korleştirme de etkinleştirebilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess).
+Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bulunan özelliklerle hassas olan *belirli* algoritmalara yardımcı olacak şekilde [otomatik olarak ölçeklendirilir ve normalleştirilir](concept-automated-ml.md#preprocess) .  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek özellikler de sağlayabilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess).
 
-Bu özelliği etkinleştirmek için [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)için `"preprocess": True` belirtin.
+Bu özelliği etkinleştirmek için [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)için `"featurization": 'auto'` belirtin.
 
 > [!NOTE]
 > Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
@@ -240,7 +240,7 @@ Enseletirme modelleri varsayılan olarak etkindir ve otomatik makine öğrenimi 
 
 Varsayılan yığın zenginme davranışını değiştirmek için bir `AutoMLConfig` nesnesinde `kwargs` olarak sağlanbir çoklu varsayılan bağımsız değişken vardır.
 
-* `stack_meta_learner_type`: meta-Learner, bireysel heterojen modellerinin çıktısı üzerinde eğitilen bir modeldir. Varsayılan meta öğrenenler, Sınıflandırma görevleri için `LogisticRegression` (veya çapraz doğrulama etkinse `LogisticRegressionCV`) ve gerileme/tahmin görevleri için `ElasticNet` (veya çapraz doğrulama etkinse `ElasticNetCV`). Bu parametre şu dizelerden biri olabilir: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`veya `LinearRegression`.
+* `stack_meta_learner_type`: meta-Learner, tek tek heterojen modellerin çıktılarına eğitilen bir modeldir. Varsayılan meta öğrenenler, Sınıflandırma görevleri için `LogisticRegression` (veya çapraz doğrulama etkinse `LogisticRegressionCV`) ve gerileme/tahmin görevleri için `ElasticNet` (veya çapraz doğrulama etkinse `ElasticNetCV`). Bu parametre şu dizelerden biri olabilir: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`veya `LinearRegression`.
 * `stack_meta_learner_train_percentage`: meta-Learner eğitimi için ayrılacak eğitim kümesinin oranını belirtir (eğitim ve doğrulama türünü seçerken). Varsayılan değer `0.2`.
 * `stack_meta_learner_kwargs`: meta-Learner başlatıcısına geçirilecek isteğe bağlı parametreler. Bu parametreler ve parametre türleri, karşılık gelen model oluşturucusundan parametreleri ve parametre türlerini yansıtır ve model oluşturucusuna iletilir.
 
@@ -324,7 +324,7 @@ Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya 
 ## <a name="understand-automated-ml-models"></a>Otomatik ML modellerini anlama
 
 Otomatikleştirilmiş ML kullanılarak oluşturulan herhangi bir model aşağıdaki adımları içerir:
-+ Otomatik Özellik Mühendisliği (Eğer preprocess = true ise)
++ Otomatik Özellik Mühendisliği (`"featurization": 'auto'`)
 + Hiper parametre değerleriyle ölçekleme/normalleştirme ve algoritma
 
 Otomatikleştirilmiş ML 'den fitted_model çıktısından bu bilgileri almak için saydam hale gelir.
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Otomatik Özellik Mühendisliği
 
-Feauturization = Auto olduğunda gerçekleşen ön işleme ve [Otomatik Özellik Mühendisliği](concept-automated-ml.md#preprocess) listesine bakın.
+`"featurization": 'auto'`olduğunda gerçekleşen ön işleme ve [Otomatik Özellik Mühendisliği](concept-automated-ml.md#preprocess) listesine bakın.
 
 Şu örneği göz önünde bulundurun:
 + Dört giriş özelliği vardır: A (sayısal), B (sayısal), C (sayısal), D (TarihSaat)

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232306"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711461"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
 
@@ -56,7 +56,7 @@ Kullanıcının ilk oturum açması Kullanıcı tarafından sağlanmadan önce u
 
 Azure AD, uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirmek üzere çeşitli Tümleştirme yolları sağlar.
 
-* [Azure AD sağlama hizmeti](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , Azure AD 'den uygulamanıza (giden sağlama) ve UYGULAMANıZDAN Azure AD 'ye (gelen sağlama) yönelik sağlama ve sağlamayı kaldırmayı yönetir. Hizmet, uygulamanız tarafından sağlanmış olan etki alanları arası kimlik yönetimi (SCıM) Kullanıcı yönetimi API uç noktaları için sisteme bağlanır.
+* [Azure AD sağlama hizmeti](user-provisioning.md) , Azure AD 'den uygulamanıza (giden sağlama) ve UYGULAMANıZDAN Azure AD 'ye (gelen sağlama) yönelik sağlama ve sağlamayı kaldırmayı yönetir. Hizmet, uygulamanız tarafından sağlanmış olan etki alanları arası kimlik yönetimi (SCıM) Kullanıcı yönetimi API uç noktaları için sisteme bağlanır.
 
 * [Microsoft Graph](https://docs.microsoft.com/graph/)kullanılırken, UYGULAMANıZ Microsoft Graph API 'Sini SORGULAYARAK Azure AD 'den uygulamanıza yönelik kullanıcı ve grupların gelen ve giden sağlamasını yönetir.
 
@@ -87,9 +87,9 @@ Azure AD sağlama hizmeti kullanıcılarının SCıM hakkında daha fazla bilgi 
 
 * [SCıM standardı hakkında daha fazla bilgi edinin](https://aka.ms/SCIMOverview)
 
-* [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamak için etki alanları arası kimlik yönetimi (SCıM) için sistem kullanma](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamak için etki alanları arası kimlik yönetimi (SCıM) için sistem kullanma](use-scim-to-provision-users-and-groups.md)
 
-* [Azure AD SCıM uygulamasını anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Azure AD SCıM uygulamasını anlama](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Sağlama için Microsoft Graph
 
@@ -115,7 +115,7 @@ SAML JıT, uygulama içindeki kullanıcı bilgilerini oluşturmak ve güncelleş
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Uygulamanız için çoklu oturum açmayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Uygulamanız için çoklu oturum açmayı etkinleştirme](isv-sso-content.md)
 
 * Microsoft 'un sitesinde belge oluşturmak için [uygulama listelemeyi ve iş ortaklarınızı](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) Microsoft Ile birlikte gönderebilirsiniz.
 

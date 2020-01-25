@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796210"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748969"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -45,8 +45,10 @@ Azure görüntü Oluşturucu hizmeti bu bölgelerde önizleme için kullanılabi
 AıB, Azure Marketi temel işletim sistemi görüntülerini destekleyecektir:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7,6
-- CentOS 7,6
+- RHEL 7,6, 7,7
+- CentOS 7,6, 7,7
+- SLES 12 SP4
+- SLES 15, SLES 15 SP1
 - Sanal Masaüstü için Windows 10 RS5 Enterprise/Professional/Enterprise (EVD) 
 - Windows 2016
 - Windows 2019
@@ -91,6 +93,13 @@ az role assignment create \
     --role Contributor \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
+
+PowerShell kullanarak erişim atayabilirsiniz:
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
 
 Hizmet hesabı bulunmazsa, rol atamasını eklediğiniz aboneliğin kaynak sağlayıcısı için henüz kaydolmadığından bu durum oluşabilir.
 

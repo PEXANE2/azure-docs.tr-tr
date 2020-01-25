@@ -8,16 +8,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806982"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721311"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
-Key Vault VM uzantısı, Azure Anahtar Kasası 'nda depolanan sertifikaların otomatik olarak yenilenmesini sağlar. Özellikle uzantı, anahtar kasalarında depolanan gözlemlenen sertifikaların listesini izler.  Bir değişiklik algılandıktan sonra uzantı alır ve ilgili sertifikaları kurar. Key Vault VM uzantısı, şu anda Linux VM 'lerinde Microsoft tarafından yayımlanır ve desteklenir. Bu belgede, Linux için Key Vault VM uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. 
+Key Vault VM uzantısı, Azure Anahtar Kasası 'nda depolanan sertifikaların otomatik olarak yenilenmesini sağlar. Özellikle uzantı, anahtar kasalarında depolanan gözlemlenen sertifikaların listesini izler.  Bir değişiklik algılandıktan sonra uzantı ilgili sertifikaları alır ve kurar. Key Vault VM uzantısı, şu anda Linux VM 'lerinde Microsoft tarafından yayımlanır ve desteklenir. Bu belgede, Linux için Key Vault VM uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. 
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -67,16 +67,16 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer / örnek | Veri Türü |
+| Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft. Azure. Keykasası | string |
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
-| certificateStoreName | MY | string |
+| CertificateStoreName | MY | string |
 | Linkonyenilemeye | yanlış | boole |
-| certificateStoreLocation  | LocalMachine | string |
+| CertificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | doğru | boole |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
 

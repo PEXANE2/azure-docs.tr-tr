@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997080"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711685"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın
 
@@ -37,14 +37,14 @@ Bu yapılandırma, *Kullanıcı sağlama uygulamasını Active Directory Için W
 1. [Azure Portal](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *Workday 'NIZI ad Kullanıcı sağlama uygulama* eşlemesinde dışarı aktarmak istiyorsanız, uygulamanın Özellikler bölümüne gidin. 
 1. Sağlama uygulamanızın Özellikler bölümünde, *nesne kimliği* ALANıYLA ilişkili GUID değerini kopyalayın. Bu değer, uygulamanızın **Serviceprincipalıd** olarak da adlandırılır ve Graph Explorer işlemlerinde kullanılacaktır.
 
-   ![App Service ana iş günü KIMLIĞI](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![App Service ana iş günü KIMLIĞI](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>2\. Adım: Microsoft Graph Explorer 'da oturum açın
 
 1. [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) Başlat
 1. "Microsoft 'a oturum aç" düğmesine tıklayın ve Azure AD Genel yönetici veya uygulama Yöneticisi kimlik bilgilerini kullanarak oturum açın.
 
-    ![Graph oturum açma](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph oturum açma](media/skip-out-of-scope-deletions/wd_export_02.png)
 
 1. Başarılı oturum açma işlemi tamamlandıktan sonra, sol bölmedeki Kullanıcı hesabı ayrıntılarını görürsünüz.
 
@@ -56,11 +56,11 @@ Microsoft Graph Gezgini ' nde, [Adım 1](#step-1-retrieve-your-provisioning-app-
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![İş sorgusunu al](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![İş sorgusunu al](media/skip-out-of-scope-deletions/skip-03.png)
 
 Yanıtı bir metin dosyasına kopyalayın. Bu, dağıtımınız için özel sarı renkle vurgulanmış şekilde aşağıda gösterildiği gibi JSON metni gibi görünür. Yeşil renkle vurgulanmış satırları sonuna ekleyin ve Blue 'da vurgulanmış olan Workday bağlantı parolasını güncelleştirin. 
 
-   ![İş yanıtı al](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![İş yanıtı al](media/skip-out-of-scope-deletions/skip-04.png)
 
 Eşlemeye eklenecek JSON bloğu aşağıda verilmiştir. 
 
@@ -82,22 +82,22 @@ Aşağıdaki URL 'de, [Serviceprincipalıd] öğesini [Adım 1](#step-1-retrieve
 ```
 Adım 3 ' teki güncelleştirilmiş metni "istek gövdesine" kopyalayın ve "Istek üstbilgileri" içinde "Content-Type" başlığını "Application/JSON" olarak ayarlayın. 
 
-   ![İsteği koy](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![İsteği koy](media/skip-out-of-scope-deletions/skip-05.png)
 
 "Sorguyu Çalıştır" seçeneğine tıklayın. 
 
 Çıktıyı "başarılı – durum kodu 204" olarak almalısınız. 
 
-   ![Yanıtı koy](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![Yanıtı koy](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>5\. Adım: kapsam dışı kullanıcıların devre dışı bırakıldığını doğrulama
 
 Kapsam kurallarınızı belirli bir kullanıcıyı atlayacak şekilde güncelleştirerek, bu bayrak sonuçlarını beklenen davranışa göre test edebilirsiniz. Aşağıdaki örnekte, KIMLIĞI 21173 olan çalışanı (kapsam içinde daha önce olan) yeni bir kapsam kuralı ekleyerek dışlıyoruz: 
 
-   ![Kapsam oluşturma örneği](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Kapsam oluşturma örneği](media/skip-out-of-scope-deletions/skip-07.png)
 
 Bir sonraki sağlama döngüsünün Azure AD sağlama hizmeti, 21173 kullanıcısının kapsam dışına çıkış olduğunu ve Skipoutofscopesilmeleri özelliğinin etkin olduğunu belirler, bu durumda Kullanıcı için eşitleme kuralı aşağıda gösterildiği gibi bir ileti görüntüler: 
 
-   ![Kapsam oluşturma örneği](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Kapsam oluşturma örneği](media/skip-out-of-scope-deletions/skip-08.png)
 
 

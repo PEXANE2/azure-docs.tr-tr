@@ -3,24 +3,24 @@ title: SQL Server sanal makinesinde - Team Data Science Process verilerini keşf
 description: Bir SQL Server VM'si SQL veya Python gibi programlama dilini kullanarak azure'da depolanan verileri araştırmak nasıl.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be75490e4e86956337ce38133df6095790b3a374
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303664"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720104"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure üzerindeki SQL Server Sanal Makinesi verilerini keşfetme
 
-Bu makalede, bir SQL Server VM'si, azure'da depolanan verileri araştırmak nasıl ele alınmaktadır. Bu SQL kullanarak veri denetimi veya Python gibi bir programlama dili kullanılarak yapılabilir.
+Bu makalede, bir SQL Server VM'si, azure'da depolanan verileri araştırmak nasıl ele alınmaktadır. Verileri incelemek için SQL veya Python kullanın.
 
 Bu görev bir adımdır [Team Data Science Process](overview.md).
 
@@ -51,7 +51,7 @@ SQL Server veri depolarında keşfetmek için kullanılan SQL betiklerini birka�
 > 
 
 ## <a name="python"></a>Python ile SQL veri keşfedin
-Verileri araştırmak ve verileri SQL Server olduğunda özellikler oluşturmak için Python'ı kullanarak benzer açıklandığı gibi Python kullanarak Azure blob veri işleme için [işlem Azure Blob veri, veri bilimi ortamınızdaki](data-blob.md). Veriler veritabanından pandas DataFrame yüklenmesi gerektiğini ve daha sonra işlenebilir. Biz veritabanına bağlanma ve veri çerçevesi'Bu bölümde veri yükleme işleminin belgeleyin.
+Verileri araştırmak ve verileri SQL Server olduğunda özellikler oluşturmak için Python'ı kullanarak benzer açıklandığı gibi Python kullanarak Azure blob veri işleme için [işlem Azure Blob veri, veri bilimi ortamınızdaki](data-blob.md). Veritabanından verileri bir Pandas DataFrame 'e yükleyin ve daha sonra işlem yapabilirsiniz. Biz veritabanına bağlanma ve veri çerçevesi'Bu bölümde veri yükleme işleminin belgeleyin.
 
 Aşağıdaki bağlantı dizesi biçimi python'dan pyodbc (Değiştir servername, dbname, kullanıcı adı ve parola, belirli değerleri içeren) kullanarak bir SQL Server veritabanına bağlanmak için kullanılabilir:
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681387"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712113"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Kullanıcı hazırlama durumunu denetleme
 
@@ -35,7 +35,7 @@ Otomatik sağlamayı ilk yapılandırdığınızda, sayfanın en altındaki **ge
 - Şu anda çalışmakta olan veya en son tamamlanan sağlama döngüsünün (ilk veya artımlı) türü.
 - Tamamlanan sağlama döngüsünün yüzdesini gösteren bir **ilerleme çubuğu** . Yüzde değeri, sağlanan sayfa sayısını yansıtır. Her sayfanın birden çok kullanıcı veya grup içerebileceğini unutmayın. bu nedenle yüzde, izin sağlanan Kullanıcı, Grup veya rol sayısıyla doğrudan bağıntılı değildir.
 - Görünümü güncelleştirilmesini sağlamak için kullanabileceğiniz bir **yenileme** düğmesi.
-- Bağlayıcı veri deposundaki **Kullanıcı** ve **grupların** sayısı. Sayma, sağlama kapsamına her bir nesne eklendiğinde artar. Kullanıcı geçici olarak silinmiş veya kalıcı olarak siliniyorsa, bu, nesneyi bağlayıcı veri deposundan kaldırmadığından, sayı aşağı gitmeyecektir. CD [sıfırlandıktan](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) sonra sayı ilk eşitleme yeniden alınır 
+- Bağlayıcı veri deposundaki **Kullanıcı** ve **grupların** sayısı. Sayma, sağlama kapsamına her bir nesne eklendiğinde artar. Kullanıcı geçici olarak silinmiş veya kalıcı olarak siliniyorsa, bu, nesneyi bağlayıcı veri deposundan kaldırmadığından, sayı aşağı gitmeyecektir. Bu sayı, CD [sıfırlandıktan](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) sonra ilk eşitlemenin yeniden dengelenebilmesi gerekir 
 - Bireysel kullanıcıların sağlama durumu da dahil olmak üzere, Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler hakkındaki ayrıntılar için Azure AD sağlama günlüklerini **görüntüleme** (aşağıdaki [sağlama günlüklerini kullanma](#use-provisioning-logs-to-check-a-users-provisioning-status) bölümüne bakın).
 
 Bir sağlama süresi tamamlandıktan sonra, tarihe göre **İstatistikler** bölümü, son döngüsünün tamamlanma tarihi ve süresiyle birlikte tarih olarak sağlanan Toplam Kullanıcı ve grup sayısını gösterir. **Etkınlık kimliği** en son sağlama döngüsünü benzersiz şekilde tanımlar. **Iş kimliği** , sağlama işi için benzersiz bir tanımlayıcıdır ve kiracınızdaki uygulamaya özeldir.
@@ -60,7 +60,7 @@ Sağlama günlükleri aşağıdakiler de dahil olmak üzere, sağlama hizmeti ta
 Azure portal sağlama günlüklerinin nasıl okunmasıyla ilgili daha fazla bilgi için bkz. [sağlama Raporlama Kılavuzu](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Kullanıcıları sağlamak için ne kadar sürer?
-Azure AD, bir uygulamayla otomatik Kullanıcı sağlamayı kullanırken, düzenli olarak zamanlanan bir zaman aralığında, genellikle her 40 dakikada bir [Kullanıcı ve grup ataması](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) gibi öğelere dayalı olarak bir uygulamadaki Kullanıcı hesaplarını otomatik olarak sağlar ve güncelleştirir.
+Azure AD, bir uygulamayla otomatik Kullanıcı sağlamayı kullanırken, düzenli olarak zamanlanan bir zaman aralığında, genellikle her 40 dakikada bir [Kullanıcı ve grup ataması](assign-user-or-group-access-portal.md) gibi öğelere dayalı olarak bir uygulamadaki Kullanıcı hesaplarını otomatik olarak sağlar ve güncelleştirir.
 
 Belirli bir kullanıcının sağlanması için gereken süre, genellikle sağlama işinizin bir başlangıç döngüsünü mi yoksa artımlı bir döngüyü mi çalıştırdığına bağlıdır.
 
@@ -102,7 +102,7 @@ Bir **Başlangıç döngüsünün**tamamlanışında geçen süreyi etkileyen fa
 
 - Atanan grupların sayısı ve boyutları. Atanan grupların eşitlenmesi, kullanıcıları eşitlemeye göre daha uzun sürer. Atanan grupların sayısı ve boyutları, performansı etkiler. Bir uygulamada, [Grup nesnesi eşitlemesi için etkin eşlemeler](customize-application-attributes.md#editing-group-attribute-mappings)varsa, grup adları ve üyelikleri gibi Grup Özellikleri, kullanıcılara ek olarak eşitlenir. Bu ek eşitlemeler, yalnızca kullanıcı nesnelerinden eşitlemeden daha uzun sürer.
 
-- Performans bir sorun haline gelirse ve kiracınızdaki Kullanıcı ve grupların çoğunu sağlamaya çalışıyorsanız, kapsam filtrelerini kullanın. Kapsam filtreleri, kullanıcıları belirli öznitelik değerlerine göre filtreleyerek, sağlama hizmetinin Azure AD 'den ayıklayan verileri ayarlamanıza olanak sağlar. Kapsam filtreleri hakkında daha fazla bilgi için bkz. [kapsam filtreleriyle öznitelik tabanlı uygulama sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+- Performans bir sorun haline gelirse ve kiracınızdaki Kullanıcı ve grupların çoğunu sağlamaya çalışıyorsanız, kapsam filtrelerini kullanın. Kapsam filtreleri, kullanıcıları belirli öznitelik değerlerine göre filtreleyerek, sağlama hizmetinin Azure AD 'den ayıklayan verileri ayarlamanıza olanak sağlar. Kapsam filtreleri hakkında daha fazla bilgi için bkz. [kapsam filtreleriyle öznitelik tabanlı uygulama sağlama](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatik hale getirme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
+[Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatik hale getirme](user-provisioning.md)

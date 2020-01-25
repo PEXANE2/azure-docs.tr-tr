@@ -3,20 +3,20 @@ title: Spark'a yerleşik machine learning modelleri - Team Data Science Process 
 description: Yükleme ve Python ile Azure Blob Storage (WASB) içinde depolanan öğrenimi modellerini puanlamanıza nasıl.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253169"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718557"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark'a yerleşik machine learning modelleri kullanıma hazır hale getirme
 
@@ -32,10 +32,10 @@ Kurulum adımları ve ML modeli hazır hale getirmek için kodu bu kılavuzda bi
 Bir HDInsight Spark 2.0 kümesi ile kullanmak üzere Spark 1.6 için Jupyter not defterini değiştirmek için Python kodu dosyayla değiştirin [bu dosyayı](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Bu kod, Spark 2.0 sürümünde oluşturulmuş modelleri kullanma işlemi gösterilmektedir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Bir Azure hesabı ve Spark 1.6 (veya Spark 2.0) ihtiyacınız Bu izlenecek yolu tamamlamak için HDInsight kümesi. Bkz: [genel bakış, verilerin Azure HDInsight üzerinde Spark'ı kullanarak bilimi](spark-overview.md) bu gereksinimleri karşılamak yönergeler. Bu konu ayrıca açıklamasını burada kullanılan NYC 2013 taksi verileri ve Spark kümesinde Jupyter not defteri gelen kodu çalıştırmak yönergeler içerir. 
-2. Ayrıca makine öğrenimi modelleri aracılığıyla burada puanlanması oluşturmalısınız [Spark ile veri keşfi ve modelleme](spark-data-exploration-modeling.md) Spark 1.6 küme veya not defterlerini Spark 2.0 için konu. 
+2. Spark 1,6 kümesi veya Spark 2,0 Not defterleri için veri araştırması [ve Spark ile modelleme](spark-data-exploration-modeling.md) konularında çalışarak, burada puanlanması gereken makine öğrenimi modellerini oluşturun. 
 3. Spark 2.0 not defterleri, sınıflandırma görevi, iyi bilinen Havayolu zamanında kalkış veri kümesinden 2011 ve 2012 için ek bir veri kümesi kullanın. Not defterlerini ve bağlantıları onlara bir açıklamasını sağlanan [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) bunları içeren GitHub deposu. Ayrıca, kodu buraya bağlı not defterlerinde geneldir ve herhangi bir Spark kümesi üzerinde çalışması gerekir. HDInsight Spark kullanmıyorsanız, küme kurulum ve yönetim adımları ne burada gösterilenden biraz farklı olabilir. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -104,7 +104,7 @@ Spark bağlamını ayarlayın ve gerekli kitaplıkları aşağıdaki kod ile iç
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Spark bağlamını ve PySpark işlevlerini hazır
-Jupyter not defterleri ile sağlanan PySpark çekirdekleri, önceden ayarlanmış bir bağlam yoktur. Bu nedenle bir Spark kümesi gerekmez veya açıkça, uygulama ile çalışmaya başlamadan önce Hive bağlamları geliştirme. Bunlar varsayılan olarak sizin için kullanılabilir. Şu bağlamlarda şunlardır:
+Jupyter not defterleri ile sağlanan PySpark çekirdekleri, önceden ayarlanmış bir bağlam yoktur. Bu nedenle, geliştirmekte olduğunuz uygulamayla çalışmaya başlamadan önce Spark veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Bu bağlamlar varsayılan olarak kullanılabilir:
 
 * SC - Spark 
 * sqlContext - Hive için
@@ -112,7 +112,7 @@ Jupyter not defterleri ile sağlanan PySpark çekirdekleri, önceden ayarlanmı�
 PySpark çekirdeği bazı önceden tanımlanmış "işlevlerini" ile çağırabileceğiniz özel komutlar olduğu sağlar %%. Bu kod örneklerinde kullanılan iki tür komutlar vardır.
 
 * **%% yerel** belirtilen sonraki satırların kodu yerel olarak yürütülür. Kod, geçerli Python kodu olmalıdır.
-* **%% sql -o \<değişken adı >** 
+* **%% SQL-o \<değişken adı >** 
 * Bir Hive sorgusu sqlContext karşı yürütür. -O parametreye geçirilmişse, sorgu sonucu kalıcı hale getirilir %% Pandas dataframe olarak yerel Python bağlamı.
 
 Jupyter not defterleri ve önceden tanımlanmış çekirdekler hakkında daha fazla bilgi "magics için" sağlarlar, bkz: [için Jupyter not defterlerinde kullanılabilen çekirdekler HDInsight Spark Linux kümeleri HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -257,7 +257,7 @@ Bu bölüm sütunları ise kategorik veriler kullanılarak dizinleme gösterir b
 Hücre yürütülmesi için geçen süre: 5.37 saniye
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Giriş modelleri için özellik dizilerle RDD nesneleri oluşturma
-Bu bölüm RDD nesne olarak kategorik metin verileri ve eğitme ve test MLlib Lojistik regresyon ve ağaç tabanlı modeller için kullanılabilmesi için bir anında kodlayamadığı gösteren kod içerir. Dizinlenmiş verileri depolanan [dayanıklı Dağıtılmış veri kümesi (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) nesneleri. Bu, Spark temel soyutlama vardır. RDD nesne üzerinde Spark ile paralel işletilebilir öğelerinin sabit, bölümlenmiş bir koleksiyonunu temsil eder.
+Bu bölüm RDD nesne olarak kategorik metin verileri ve eğitme ve test MLlib Lojistik regresyon ve ağaç tabanlı modeller için kullanılabilmesi için bir anında kodlayamadığı gösteren kod içerir. Dizinlenmiş verileri depolanan [dayanıklı Dağıtılmış veri kümesi (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) nesneleri. RDDs Spark 'ta temel soyutlamadır. RDD nesne üzerinde Spark ile paralel işletilebilir öğelerinin sabit, bölümlenmiş bir koleksiyonunu temsil eder.
 
 Ayrıca verilerle ölçeklendirme gösteren kod içeren `StandardScalar` kullanılmak üzere doğrusal regresyon ile Stokastik gradyan düşüşü (SGD), makine öğrenimi modelleri çok çeşitli eğitim için popüler bir algoritma MLlib tarafından sağlanan. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) birim varyansı özellikleri ölçeklendirmek için kullanılır. Veri normalleştirme da bilinen özellik ölçeklendirme, yaygın olarak yapılan değerlerle özellikleri olan belirli bir aşırı ağırlık, hedef işlevi oluşturmasını sağlar. 
 
@@ -443,9 +443,9 @@ Hücre yürütülmesi için geçen süre: 31.07 saniye
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Sınıflandırma ve regresyon gradyan artırma ağaç modellerini Puanlama
 Bu bölümdeki kod, Sınıflandırma ve regresyon gradyan artırma ağaç modeller Azure blob depolama alanından yüklenemiyor, standart sınıflandırıcı ve regresyon ölçülerle performanslarını ve sonuçları blob depolama alanına kaydedin işlemi gösterilmektedir. 
 
-**Spark.mllib** GBTs ikili sınıflandırma ve regresyon, sürekli ve kategorik özelliklerini kullanarak destekler. 
+**spark. mllib** , hem sürekli hem de kategorik özellikler kullanarak ikili sınıflandırma ve gerileme için GBTS 'yi destekler. 
 
-[Gradyan artırma ağaçları](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) olan Kümelemeler karar ağaçları (GBTs). GBTs çalıştırmalarınızı kaybı işlevi en aza indirmek için karar ağaçları eğitin. GBTs kategorik özellikleri işleyebilir, özellik ölçeklendirme gerektirmez ve sapmalar yakalamak ve etkileşimleri özellik olanağına sahip olursunuz. Bir sınıflandırma veya çoklu sınıflar ayarında de kullanılabilir.
+[Gradyan arttırma ağaçları](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS), karar ağaçları Kümelemeler. GBTS, bir kayıp işlevini en aza indirmek için karar ağaçlarını tekrarlayarak eğitme. GBTS, kategorik özellikleri işleyebilir, özellik ölçeklendirmesini gerektirmez ve özyinelemesiz ve özellik etkileşimlerini yakalayabilir. Bu algoritma, birden çok Lass sınıflandırma ayarında da kullanılabilir.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -524,7 +524,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Bir web arabirimi aracılığıyla Spark modelleri kullanma
-Spark uzaktan Livy adlı bir bileşen ile batch işleri veya bir REST arabirimi üzerinden etkileşimli sorguları göndermek için bir mekanizma sağlar. Livy HDInsight Spark kümeniz üzerindeki varsayılan olarak etkindir. Livy ile ilgili daha fazla bilgi için bkz: [Uzaktan Livy kullanarak Spark işleri göndermek](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark uzaktan Livy adlı bir bileşen ile batch işleri veya bir REST arabirimi üzerinden etkileşimli sorguları göndermek için bir mekanizma sağlar. Livy HDInsight Spark kümeniz üzerindeki varsayılan olarak etkindir. Livy ile ilgili daha fazla bilgi için bkz: [uzaktan Livy kullanarak Spark gönderme işleri](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Bir Azure blob içinde depolanır ve ardından sonuçları başka bir bloba yazan bir dosya uzaktan puanlarını toplu bir işi göndermek için Livy kullanabilirsiniz. Bunu yapmak için Python betiği karşıya yükleyin.  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) Spark kümesinin blob için. Gibi bir araç kullanabilirsiniz **Microsoft Azure Depolama Gezgini** veya **AzCopy** betik küme bloba kopyalamak için. Örneğimizde betiği dosyamızı ***wasb:///example/python/ConsumeGBNYCReg.py***.   
@@ -587,5 +587,5 @@ Bir kod ücretsiz istemci deneyimi tercih ediyorsanız, kullanın [Azure Logic A
 ![Logic Apps Tasarımcısı](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Sırada ne var?
-**Çapraz doğrulama ve hiper parametre Süpürme**: Bkz: [Gelişmiş Veri keşfi ve modelleme Spark ile](spark-advanced-data-exploration-modeling.md) modelleri nasıl olabileceğini üzerinde çapraz doğrulama ve hiper parametreli Süpürme kullanarak eğitim.
+**Çapraz doğrulama ve hiper parametre Süpürme**: bkz [Gelişmiş Veri keşfi ve modelleme Spark ile](spark-advanced-data-exploration-modeling.md) modelleri nasıl olabileceğini üzerinde çapraz doğrulama ve hiper parametreli Süpürme kullanarak eğitilir.
 

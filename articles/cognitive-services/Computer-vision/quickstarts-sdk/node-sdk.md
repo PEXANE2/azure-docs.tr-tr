@@ -7,25 +7,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 95b15924db7e5b1b788656d7592bb4ad87e07ce2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 530665168cc1ed21f1664e3012bbf37e52d96fbf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166758"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716172"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için Görüntü İşleme istemci kitaplığı
 
-Node. js için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
+Node. js için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
 Node. js için Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 
 * [Resim çözümleme](#analyze-an-image)
 * [Yazdırılmış ve el yazısı metin oku](#read-printed-and-handwritten-text)
 
-[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [paketi (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -38,20 +38,20 @@ Node. js için Görüntü İşleme istemci kitaplığını kullanarak şunları 
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak görüntü işleme için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
+* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.
 * [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
 
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, anahtar ve uç nokta URL 'SI için sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
- 
+
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Bir `package.json` dosyası ile bir düğüm uygulaması oluşturmak için `npm init` komutunu çalıştırın. 
+Bir `package.json` dosyası ile bir düğüm uygulaması oluşturmak için `npm init` komutunu çalıştırın.
 
 ```console
 npm init
@@ -59,7 +59,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-`ms-rest-azure` ve `azure-cognitiveservices-computervision` NPM paketlerini yükler:
+`ms-rest-azure` ve `@azure/cognitiveservices-computervision` NPM paketlerini yükler:
 
 ```console
 npm install @azure/cognitiveservices-computervision
@@ -177,11 +177,11 @@ Aşağıdaki kod görüntüde yetişkinlere yönelik içeriğin algılanan varl�
 
 Kullanılacak görüntünün URL 'sini tanımlayın:
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)] 
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult_image)]
 
 Ardından, Yetişkin içeriğini algılamak ve sonuçları konsola yazdırmak için aşağıdaki kodu ekleyin.
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)] 
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_adult)]
 
 ### <a name="get-image-color-scheme"></a>Görüntü renk düzenini al
 
@@ -195,7 +195,7 @@ Renk düzeninin ayrıntılarını konsola yazdırmak için `printColorScheme` ya
 
 ### <a name="get-domain-specific-content"></a>Etki alanına özgü içerik al
 
-Görüntü İşleme, görüntüler üzerinde daha fazla analiz yapmak için özel model kullanabilir. Daha fazla ayrıntı için bkz. [etki alanına özgü içerik](../concept-detecting-domain-content.md) . 
+Görüntü İşleme, görüntüler üzerinde daha fazla analiz yapmak için özel model kullanabilir. Daha fazla ayrıntı için bkz. [etki alanına özgü içerik](../concept-detecting-domain-content.md) .
 
 İlk olarak, analiz edilecek bir görüntünün URL 'sini tanımlayın:
 

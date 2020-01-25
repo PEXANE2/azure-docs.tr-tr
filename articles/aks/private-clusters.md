@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154350"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713333"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
 
@@ -128,14 +128,16 @@ API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağd
 
 ## <a name="dependencies"></a>Bağımlılıklar  
 * Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
+* Özel bir DNS sunucusu kullanmak için, bu IP 168.63.129.16 iletmek üzere DNS ile bir AD sunucusu dağıtın
 
 ## <a name="limitations"></a>Sınırlamalar 
+* Kullanılabilirlik Alanları Şu anda desteklenmiyor
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] , özel kümeler, Azure özel uç noktaları ve sanal ağ hizmeti uç noktaları için geçerlidir; bu, şu anda aynı sanal ağda desteklenmemektedir.
-* Özel bir kümedeki sanal düğümlerin özel bir Azure sanal ağında özel Azure Container Instances (acı) dönmesi desteklenmez.
-* Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteklenmez.
+* Özel bir kümede özel bir Azure sanal ağında özel Azure Container Instances (ACI) döndürme için sanal düğümler desteklenmez
+* Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteği yok
 * Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
-* Azure Dev Spaces için geçerli destek yok.
-* Mevcut AKS kümelerini özel kümelere dönüştürmeye yönelik destek yoktur.  
+* Azure Dev Spaces için geçerli destek yok
+* Mevcut AKS kümelerini özel kümelere dönüştürme desteği yok
 * Müşteri alt ağındaki özel uç noktasını silmek veya değiştirmek kümenin çalışmayı durdurmasına neden olur. 
 * Kapsayıcılar için Azure Izleyici canlı veriler şu anda desteklenmiyor.
 * *Kendı DNS 'Nizi getir* Şu anda desteklenmiyor.

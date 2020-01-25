@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 79d578c910c7d08355901308e00db5912d1f3baf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176241"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721498"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Verilerinizi Azure Blob depolama alanına aktarma
 
@@ -27,7 +27,7 @@ Bu makalede, Azure **BLOB depolama hesabınıza** veya **Azure Data Lake Storage
 > Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - IoT Central uygulamanızda yönetici olmanız gerekir
 
@@ -620,7 +620,7 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
+        // Fetch the template ID and version from the id and version properties.
         const templateId = record.id;
         const templateVersion = record.version;
 

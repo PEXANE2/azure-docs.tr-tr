@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830386"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720359"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: sık sorulan sorular
 
@@ -151,7 +151,7 @@ Evet, aynı HDInsight sürümünü kullandıkları sürece, birden çok kümede 
 
 Bağlantı noktalarını 22 ve bağlantı noktası 23 ' ü engellerseniz, kümeye SSH erişimi olmayacaktır. Bu bağlantı noktaları HDInsight hizmeti tarafından kullanılmaz.
 
-Daha fazla bilgi için, aşağıdaki belgelere bakın:
+Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 - [Ağ trafiğini denetleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
 
@@ -233,7 +233,7 @@ Bir cron işini ayarlama ve çalıştırma hakkında daha fazla bilgi için bkz.
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Spark ESP kümelerinde neden LLAP var?
 ESP Spark kümelerinde, LLAP, güvenlik nedenleriyle (ör. Apache Ranger), performans için de etkindir. LLAP 'nin kaynak kullanımını karşılamak için daha büyük düğüm VM 'Leri kullanmanız gerekir (ör. minimum D13V2). 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Bir ESP kümesi oluşturduktan sonra eklenebilir AAD grupları nasıl ekleyebilirim?
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Bir ESP kümesi oluşturduktan sonra nasıl ek AAD grupları ekleyebilirim?
 Bunu başarmanın iki yolu vardır: 1-kümeyi yeniden oluşturabilir ve küme oluşturma sırasında ek grubu ekleyebilirsiniz. AAD-DS ' d a kapsamlı eşitleme kullanıyorsanız, lütfen Grup B 'nin kapsamlı eşitlemeye eklendiğinden emin olun.
 2-grubu, ESP kümesini oluşturmak için kullanılan önceki grubun iç içe geçmiş alt grubu olarak ekleyin. Örneğin, Grup `A`ile bir ESP kümesi oluşturduysanız, daha sonra grup ekleme `B` `A` iç içe geçmiş bir alt grubu olarak ve bir saatten sonra otomatik olarak eşitlenecek ve kullanılabilir. 
 

@@ -2,13 +2,13 @@
 title: 800 olmayan kaynaklar sayısı sınırı
 description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659330"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715617"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -26,6 +26,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * kayıtlarında
 * kayıt/müşteri abonelikleri
 * kayıtlar/ürünler
+* Doğrulama parametreleri
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
@@ -33,7 +34,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* diskler
+* disklerinden
 * images
 * anlık görüntüler
 * virtualMachines
@@ -74,7 +75,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 * leriniz
-* ad alanları
+* öznitelikleri
 
 ## <a name="microsoftexperimentation"></a>Microsoft. deneme
 
@@ -82,16 +83,17 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
+* Oto Managedvmconfigurationprofiles
 * Configurationprofileatamalar
 * Guestconfigurationatamaları
-* yazılım
+* yazılımıdır
 * softwareUpdateProfile
 * softwareUpdates
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 * Tümleştirme hesapları
-* iş akışları
+* sürdürülen
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -150,7 +152,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
-* ad alanları
+* öznitelikleri
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
@@ -158,14 +160,14 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* ad alanları
+* öznitelikleri
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
 
 * uygulama
 * Kapsayıcı grupları
 * geçidinin
-* ağlar
+* Mamak
 * kaynaklanır
 * volumes
 
@@ -176,8 +178,12 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 * apiManagementAccounts/API 'ler
-* siteler
+* barındıra
+
+## <a name="microsoftinsights"></a>Microsoft. Insights
+
+* metricalerts
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm kotalar ve limitlerin listesi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+Tüm kotalar ve limitlerin listesi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](azure-subscription-service-limits.md).

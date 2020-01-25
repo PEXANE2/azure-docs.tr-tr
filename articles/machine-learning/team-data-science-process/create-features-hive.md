@@ -1,22 +1,22 @@
 ---
-title: Bir Hadoop kümesi - Team Data Science Process verilerin özelliklerini oluşturma
+title: Azure HDInsight Hadoop kümesinde veri için özellikler oluşturma-Team Data Science Işlemi
 description: Bir Azure HDInsight Hadoop kümesinde depolanan verilerin özelliklerini oluşturma Hive sorgularının örnekleri.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982039"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721787"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Bir Hadoop kümesinde Hive sorgularını kullanarak verilerin özelliklerini oluşturma
 Bu belge, Hive sorgularını kullanarak bir Azure HDInsight Hadoop kümesinde depolanan verilerin özelliklerini oluşturma işlemi gösterilmektedir. Bu Hive sorguları katıştırılmış Hive User-Defined betikleri, sağlanan işlevler (UDF'ler) kullanın.
@@ -144,14 +144,14 @@ Hive kümesinin varsayılan parametre ayarları Hive sorguları ve sorgular işl
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Bu parametre, Java yığın alanı için 4 GB bellek ayırır ve ayrıca sıralama daha verimli daha fazla bellek ayırarak yapar. Yığın alanı ilgili bir başarısızlık hatalarını herhangi bir iş varsa bu ayırmaları ile yürütmek için iyi bir fikirdir.
+    Bu parametre, Java yığın alanına 4 GB bellek ayırır ve ayrıca sıralama, daha fazla bellek ayırarak daha verimli hale gelir. Yığın alanı ilgili bir başarısızlık hatalarını herhangi bir iş varsa bu ayırmaları ile yürütmek için iyi bir fikirdir.
 
 1. **DFS bloğu boyutunu**: Bu parametre en küçük birim dosya sistemi depolar veri ayarlar. DFS blok boyutu düşük ve en fazla 128 MB, ardından boyuttaki veriyi olursa örnek olarak, 128 MB tek bir blok içinde depolanır. 128 MB'den büyük veri, ek blokları atanır. 
 2. Ad düğümü dosyasıyla ilgili blok bulmak için çok daha fazla isteklerini işlemek olduğundan küçük blok boyutu seçme büyük ek yüklerini Hadoop neden olur. Bir önerilen ilgilenme gigabayt ile (veya daha büyük olduğunda) ayarı veriler:
 
         set dfs.block.size=128m;
 
-2. **Hive katılma işleminde en iyi duruma getirme**: birleştirme işlemleri map/reduce Framework azaltın aşamasında, bazen bir yerde genellikle alırken çok büyük bir kazanç birleşimler ("mapjoins" olarak da bilinir) map aşamasında zamanlama tarafından gerçekleştirilebilir. Mümkün olduğunda bunu yapmak için Hive yönlendirmek için aşağıdakileri ayarlayın:
+2. **Hive katılma işleminde en iyi duruma getirme**: birleştirme işlemleri map/reduce Framework azaltın aşamasında, bazen bir yerde genellikle alırken çok büyük bir kazanç birleşimler ("mapjoins" olarak da bilinir) map aşamasında zamanlama tarafından gerçekleştirilebilir. Bu seçeneği ayarlayın:
    
        set hive.auto.convert.join=true;
 
@@ -167,7 +167,7 @@ Hive kümesinin varsayılan parametre ayarları Hive sorguları ve sorgular işl
 
      Biz, veri boyutu verilen görebileceğiniz gibi "ayarı" tarafından bu parametreleri ayarlama sağlar bize kullanılan azaltıcının sayısını ayarlamak.
 
-4. İşte birkaç daha **Gelişmiş Seçenekler** Hive performansını iyileştirme için. Bu harita ve görevleri azaltmak için ayrılan bellek ayarlamanıza olanak sağlar ve performans ince ayar yapma yararlı olabilir. Aklınızda *mapreduce.reduce.memory.mb* Hadoop kümesindeki her çalışan düğümüne fiziksel bellek boyutu büyük olamaz.
+4. İşte birkaç daha **Gelişmiş Seçenekler** Hive performansını iyileştirme için. Bu seçenekler, görevleri eşlemek ve azaltmak için ayrılan belleği ayarlamanıza olanak tanır ve performans için çok daha fazla performans sağlar. Aklınızda *mapreduce.reduce.memory.mb* Hadoop kümesindeki her çalışan düğümüne fiziksel bellek boyutu büyük olamaz.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

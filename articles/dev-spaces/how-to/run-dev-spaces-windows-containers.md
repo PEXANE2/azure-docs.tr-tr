@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows kapsayıcıları ile mevcut bir kümede Azure Dev Spaces çalıştırmayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Windows kapsayıcıları
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157007"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720376"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces kullanarak Windows kapsayıcılarıyla etkileşim kurma
 
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Örnek uygulama, Windows hizmetini kümenizde çalıştırmak için [Held][helm-installed] kullanır. `charts` dizinine gidin ve Held 'yi kullanarak Windows hizmetini çalıştırın:
+Örnek uygulama, Windows hizmetini kümenizde çalıştırmak için [Held 3][helm-installed] kullanır. `charts` dizinine gidin ve Held 'yi kullanarak Windows hizmetini çalıştırın:
 
 ```console
 cd charts/

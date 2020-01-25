@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665081"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721396"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process nedir?
 
@@ -36,11 +36,11 @@ TDSP anahtar aşağıdaki bileşenlerden oluşur:
 
 ## <a name="data-science-lifecycle"></a>Veri bilimi yaşam döngüsü
 
-Team Data Science işlem (TDSP), veri bilimi proje geliştirme yapısı için bir yaşam döngüsü sağlar. Yaşam döngüsü, başlangıçtan bitişe kadar bunlar yürütüldüğünde projeleri genellikle izlemeniz adımlarını özetler.
+Team Data Science işlem (TDSP), veri bilimi proje geliştirme yapısı için bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği tam adımları özetler.
 
-Başka bir veri bilimi yaşam döngüsünü, gibi kullanıyorsanız [NET-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) veya kuruluşun kendi özel işleminizi, görev tabanlı TDSP bu geliştirme yaşam döngüleri bağlamında kullanmaya devam edebilirsiniz. Yüksek düzeyde, bu farklı yöntemleri çok ortaktır. 
+[Net DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [kdd](https://wikipedia.org/wiki/Data_mining#Process) veya kuruluşunuzun kendi özel süreci gibi başka bir veri bilimi yaşam döngüsü kullanıyorsanız, görev tabanlı TDSP 'yi bu geliştirme ömürleri bağlamında kullanmaya devam edebilirsiniz. Yüksek düzeyde, bu farklı yöntemleri çok ortaktır. 
 
-Bu yaşam döngüsünü, akıllı uygulamalar bir parçası olarak gönderilen veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, Tahmine dayalı analiz için makine öğrenme veya yapay zeka modelleri dağıtın. Bu işlemi kullanarak keşif veri bilimi projeleri veya geçici analiz projeleri de yararlanabilir. Ancak, bu gibi durumlarda, bazı açıklanan adımları gerekmeyebilir.    
+Bu yaşam döngüsünü, akıllı uygulamalar bir parçası olarak gönderilen veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, Tahmine dayalı analiz için makine öğrenme veya yapay zeka modelleri dağıtın. Araştırmacı veri bilimi projeleri veya improvised Analytics projeleri, bu işlemi kullanmanın da avantajlarından yararlanabilir. Ancak, bu gibi durumlarda, bazı açıklanan adımları gerekmeyebilir.    
 
 Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
 
@@ -69,7 +69,7 @@ Aşağıdaki diyagramda görevlerinde (mavi) ve bu rolleri (dikey eksende) için
 
 Bir dizin yapısına paylaşın ve proje belgelerini şablonlarını kullanma tüm projeleri sahip, onların projeleri hakkında bilgi, takım üyeleri için kolaylaştırır. Tüm kod ve belgelere işbirliğini etkinleştirmek için Git, TFS veya Subversion gibi bir sürüm denetim sistemi (VC) depolanır. İzleme görevleri ve izleme sistemi Jıra, yarışı ve Azure DevOps gibi bir Çevik proje özelliklerinde, tek tek özellikler için kodun yakın izleme sağlar. Bu tür izleme de daha iyi maliyet tahminlerini almak takımların imkan tanır. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC'ler her proje için ayrı bir depo oluşturmanızı önerir. Tüm projeler için standartlaştırılmış yapısı kuruluş genelinde kurumsal bilgi yapı yardımcı olur.
 
-Klasör yapısını ve standart olmayan konumlara gerekli belgeleri için şablonlar sağlar. Veri keşfi ve özellik ayıklama kodunu içeren ve bu modeli yinelemeler kayıt dosyaları bu klasör yapısını düzenler. Bu şablonlar, başkaları tarafından yapılan iş anlamak ve takıma yeni üyeler eklemek için takım üyeleri için kolaylaştırır. Belge şablonları markdown biçiminde görebilecek ve kolay bir işlemdir. Anahtar sorular sorun iyi tanımlanmış ve teslim edilebilirler beklenen kaliteyi karşıladığını sağlamak üzere her proje için denetim listeleri sağlamak için şablonları kullanın. Örneğin:
+Klasör yapısını ve standart olmayan konumlara gerekli belgeleri için şablonlar sağlar. Veri keşfi ve özellik ayıklama kodunu içeren ve bu modeli yinelemeler kayıt dosyaları bu klasör yapısını düzenler. Bu şablonlar, başkaları tarafından yapılan iş anlamak ve takıma yeni üyeler eklemek için takım üyeleri için kolaylaştırır. Belge şablonları markdown biçiminde görebilecek ve kolay bir işlemdir. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneğin:
 
 - projenin kapsamını ve iş sorununu belge için bir proje kurucu
 - Belge yapısı ve istatistikleri ham verilerin veri raporlarını
@@ -90,7 +90,7 @@ TDSP paylaşılan analiz ve depolama altyapısı gibi yönetmek için öneriler 
 - büyük veri (Hadoop veya Spark) kümeleri 
 - Machine learning hizmeti 
 
-Analiz ve depolama altyapısı, bulutta veya şirket içinde olabilir. Ham ve işlenen veri kümeleri depolandığı budur. Bu Altyapı yeniden üretilebilen analizi sağlar. Ayrıca, tutarsızlıklar ve gereksiz altyapı maliyetlerinden açabilir çoğaltma önler. Bu kaynaklara güvenli bir şekilde bağlanmak her takım üyesinin izin paylaşılan kaynakları sağlamak ve bunları izlemek için Araçlar sağlanır. Proje üyelerini tutarlı işlem ortamı oluşturmak için de iyi bir uygulamadır. Farklı ekip üyelerinin çoğaltabilir ve denemeleri doğrulayın.
+Ham ve işlenen veri kümelerinin depolandığı analiz ve depolama altyapısı, bulutta veya şirket içinde olabilir. Bu Altyapı yeniden üretilebilen analizi sağlar. Ayrıca, tutarsızlıklar ve gereksiz altyapı maliyetlerinden açabilir çoğaltma önler. Bu kaynaklara güvenli bir şekilde bağlanmak her takım üyesinin izin paylaşılan kaynakları sağlamak ve bunları izlemek için Araçlar sağlanır. Proje üyelerini tutarlı işlem ortamı oluşturmak için de iyi bir uygulamadır. Farklı ekip üyelerinin çoğaltabilir ve denemeleri doğrulayın.
 
 Birden fazla proje üzerinde çalışma ve çeşitli bulut analiz altyapısı bileşenleriyle paylaşımı takım örneği aşağıda verilmiştir.
 

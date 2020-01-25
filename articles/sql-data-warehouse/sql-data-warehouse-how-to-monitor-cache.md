@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b33f7cedca4ef130eefa28c1dbaaedd82d11a9e4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 924705b7ce1d324583077797714491bdf3fc5cc9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645762"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721226"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 önbelleğini izleme
 Gen2 depolama mimarisi, en sık sorgulanan columnstore segmentlerinizi, Gen2 veri ambarları için tasarlanan NVMe tabanlı SSD 'lerde bulunan bir önbellekte otomatik olarak katmanlar. Sorgularınızı önbellekte bulunan segmentleri aldığında daha fazla performans yapılır. Bu makalede, iş yükünüzün Gen2 önbelleğini en iyi şekilde kullanıp kullanmadığını belirleyerek yavaş sorgu performansının nasıl izleneceği ve giderileceği açıklanır.  
@@ -39,34 +39,16 @@ Aşağıdaki matris, önbellek ölçümlerinin değerlerine göre senaryolar anl
 | **Yüksek önbellek kullanılan yüzde** |          Senaryo 1           |          Senaryo 2          |
 | **Düşük önbellek kullanılan yüzde**  |          Senaryo 3           |          Senaryo 4          |
 
-**Senaryo 1:** Önbelleğinizi en iyi şekilde kullanıyorsunuz. Sorgularınızın yavaşlatılabilen diğer alanlarla [Ilgili sorunları giderin](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) .
+**Senaryo 1:** Önbelleğinizi en iyi şekilde kullanıyorsunuz. Sorgularınızın yavaşlatılabilen diğer alanlarla [Ilgili sorunları giderin](sql-data-warehouse-manage-monitor.md) .
 
 **Senaryo 2:** Geçerli çalışma verileri kümesi, fiziksel okumalar nedeniyle düşük önbellek okuması yüzdesine neden olan önbelleğe sığmayacak. Performans düzeyinizi ölçeklendirmenizi ve önbelleği doldurmak için iş yükünüzü yeniden çalıştırmayı göz önünde bulundurun.
 
-**Senaryo 3:** Önbelleğiniz, önbellekte ilgisiz olan nedenlerden dolayı yavaş çalışıyor olabilir. Sorgularınızın yavaşlatılabilen diğer alanlarla [Ilgili sorunları giderin](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) . Ayrıca, maliyetleri kaydetmek için önbelleğin boyutunu azaltmak üzere [örneğinizi ölçeklendirmeye](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) de göz önünde bulundurmanız gerekir. 
+**Senaryo 3:** Önbelleğiniz, önbellekte ilgisiz olan nedenlerden dolayı yavaş çalışıyor olabilir. Sorgularınızın yavaşlatılabilen diğer alanlarla [Ilgili sorunları giderin](sql-data-warehouse-manage-monitor.md) . Ayrıca, maliyetleri kaydetmek için önbelleğin boyutunu azaltmak üzere [örneğinizi ölçeklendirmeye](sql-data-warehouse-manage-monitor.md) de göz önünde bulundurmanız gerekir. 
 
 **Senaryo 4:** Sorgunuzun yavaşlamasına neden olabilecek bir soğuk önbelleğiniz vardı. Çalışma Veri kümeniz şimdi önbelleğe alınmış olması gerektiği için sorgunuzu yeniden çalıştırmayı deneyin. 
 
-**Önemli: iş yükünüzü yeniden çalıştırdıktan sonra önbellek isabet yüzdesi veya kullanılan önbellek yüzdesi güncelleştirilse, çalışma kümesi bellekte zaten bulunabilir. Note yalnızca kümelenmiş columnstore tabloları önbelleğe alınır.**
+> [!IMPORTANT]
+> İş yükünüzü yeniden çalıştırdıktan sonra önbellek isabet yüzdesi veya kullanılan önbellek yüzdesi güncelleştirilmemişse, çalışma kümesi bellekte zaten bulunabilir. Yalnızca kümelenmiş columnstore tabloları önbelleğe alınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Genel sorgu performansı ayarlama hakkında daha fazla bilgi için bkz. [izleyici sorgu yürütme](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).
-
-
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
-[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
-
-<!--MSDN references-->
-[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
+Genel sorgu performansı ayarlama hakkında daha fazla bilgi için bkz. [izleyici sorgu yürütme](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution).

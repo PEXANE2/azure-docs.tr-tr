@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/14/2019
+ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 4cdc2fff05270a296d9c4c9151f73cadeb2a1cfc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ddf6c9238cabedfbdeeb8056864072edc543c342
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754384"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712618"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Bir CoreOS sanal makinesini Azure AD Domain Services yönetilen bir etki alanına katma
 
@@ -24,7 +24,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede, bir CoreOS VM 'sini Azure AD DS yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -42,7 +42,7 @@ Azure 'da mevcut bir CoreOS Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir CoreOS Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalda](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 *Konaklar* dosyasında, *localhost* adresini güncelleştirin. Aşağıdaki örnekte:
 
-* *contoso.com* , Azure AD DS yönetilen etkı alanının DNS etki alanı adıdır.
+* *aadds.contoso.com* , Azure AD DS yönetilen etkı alanının DNS etki alanı adıdır.
 * *CoreOS* , yönetilen etki alanına katıldığınız COREOS VM 'nizin ana bilgisayar adıdır.
 
 Bu adları kendi değerlerinizle güncelleştirin:
 
 ```console
-127.0.0.1 coreos coreos.contoso.com
+127.0.0.1 coreos coreos.aadds.contoso.com
 ```
 
 İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *konaklar* dosyasını kaydedin ve kapatın.
@@ -85,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 Aşağıdaki parametreler için kendi Azure AD DS yönetilen etki alanı adınızı belirtin:
 
 * Tüm büyük durumlarda *etki alanları*
-* *[etkialanı/contoso]* burada contoso her büyük durumda
+* *[Domain/aeklemeleri]* , AEKLEMELERI her büyük durumda olduğunda
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -95,15 +95,15 @@ Aşağıdaki parametreler için kendi Azure AD DS yönetilen etki alanı adını
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = CONTOSO.COM
+domains = AADDS.CONTOSO.COM
 
-[domain/CONTOSO.COM]
+[domain/AADDS.CONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
 
-ldap_uri = ldap://contoso.com
-ldap_search_base = dc=contoso,dc=com
+ldap_uri = ldap://aadds.contoso.com
+ldap_search_base = dc=aadds.contoso,dc=com
 ldap_schema = rfc2307bis
 ldap_sasl_mech = GSSAPI
 ldap_user_object_class = user
@@ -114,35 +114,35 @@ ldap_account_expire_policy = ad
 ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
-krb5_server = contoso.com
-krb5_realm = CONTOSO.COM
+krb5_server = aadds.contoso.com
+krb5_realm = AADDS.CONTOSO.COM
 ```
 
 ## <a name="join-the-vm-to-the-managed-domain"></a>VM 'yi yönetilen etki alanına katma
 
 SSSD yapılandırma dosyası güncelleştirildiğinden, artık sanal makineyi yönetilen etki alanına katın.
 
-1. İlk olarak, Azure AD DS yönetilen etki alanı hakkında bilgi görebildiğinizi doğrulamak için `adcli info` komutunu kullanın. Aşağıdaki örnek, *contoso.com*etki alanı için bilgileri alır. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
+1. İlk olarak, Azure AD DS yönetilen etki alanı hakkında bilgi görebildiğinizi doğrulamak için `adcli info` komutunu kullanın. Aşağıdaki örnek etki alanı Aeklemesine ilişkin bilgileri alır *. CONTOSO.COM*. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
 
     ```console
-    sudo adcli info CONTOSO.COM
+    sudo adcli info AADDS.CONTOSO.COM
     ```
 
-   @No__t_0 komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
+   `adcli info` komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
 
-    * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping contoso.com` deneyin.
+    * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping aadds.contoso.com` deneyin.
     * VM 'nin aynı veya Azure AD DS yönetilen etki alanının kullanılabildiği eşlenmiş bir sanal ağa dağıtıldığını denetleyin.
     * Sanal ağ için DNS sunucu ayarlarının, Azure AD DS yönetilen etki alanının etki alanı denetleyicilerini işaret etmek üzere güncelleştirildiğinden emin olun.
 
 1. Şimdi `adcli join` komutunu kullanarak VM 'yi Azure AD DS tarafından yönetilen etki alanına katın. *AAD DC Administrators* grubuna ait olan bir kullanıcı belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, `contosoadmin@contoso.com` adlı hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin.
+    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, `contosoadmin@aadds.contoso.com` adlı hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin.
 
     ```console
-    sudo adcli join -D CONTOSO.COM -U contosoadmin@CONTOSO.COM -K /etc/krb5.keytab -H coreos.contoso.com -N coreos
+    sudo adcli join -D AADDS.CONTOSO.COM -U contosoadmin@AADDS.CONTOSO.COM -K /etc/krb5.keytab -H coreos.aadds.contoso.com -N coreos
     ```
 
-    @No__t_0 komutu, sanal makine Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığında hiçbir bilgi döndürmez.
+    `adcli join` komutu, sanal makine Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığında hiçbir bilgi döndürmez.
 
 1. Etki alanına katılacak yapılandırmayı uygulamak için SSSD hizmetini başlatın:
   
@@ -154,10 +154,10 @@ SSSD yapılandırma dosyası güncelleştirildiğinden, artık sanal makineyi y�
 
 VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. @No__t_1 gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından sanal makinenizin adresini girin (örneğin, *CoreOS.contoso.com*). Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. `contosoadmin@aadds.contoso.com` gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından sanal makinenizin adresini girin (örneğin, *CoreOS.aadds.contoso.com*). Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
-    ssh -l contosoadmin@CONTOSO.com coreos.contoso.com
+    ssh -l contosoadmin@AADDS.CONTOSO.com coreos.aadds.contoso.com
     ```
 
 1. Şimdi grup üyeliklerinin doğru çözümlendiğini kontrol edin:

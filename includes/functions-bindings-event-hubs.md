@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694384"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748908"
 ---
 ## <a name="trigger"></a>Tetikleyici
 
@@ -394,7 +394,7 @@ Bkz: [kod örnekleri](#trigger) bu makalenin önceki bölümlerinde bu özellikl
 
 ## <a name="output"></a>Çıktı
 
-Olayları bir olay akışına yazmak için Event Hubs çıkış bağlamasını kullanın. Olayları yazacağınız olay hub'ı üzerinde gönderme iznine sahip olmanız gerekir.
+Olayları bir olay akışına yazmak için Event Hubs çıkış bağlamasını kullanın. Olayları yazmak için bir olay hub 'ına gönderme izninizin olması gerekir.
 
 Çıkış bağlamayı uygulamayı denemeden önce gerekli paket başvurularının yerinde olduğundan emin olun.
 
@@ -699,6 +699,6 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|`maxBatchSize`|64|Alma döngüsü başına alınan en yüksek olay sayısı.|
-|`prefetchCount`|Yok|Temel alınan `EventProcessorHost`tarafından kullanılan varsayılan ön alma sayısı.|
+|`maxBatchSize`|10|Alma döngüsü başına alınan en yüksek olay sayısı.|
+|`prefetchCount`|300|Temel alınan `EventProcessorHost`tarafından kullanılan varsayılan ön alma sayısı.|
 |`batchCheckpointFrequency`|1|Bir EventHub imleç denetim noktası oluşturmadan önce işlenecek olay toplu işlemlerinin sayısı.|

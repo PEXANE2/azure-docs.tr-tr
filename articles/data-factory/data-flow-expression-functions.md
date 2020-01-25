@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 8cbc067326bf77648d242cadaf91b491f50c3848
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294278"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716727"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri 
 
@@ -485,7 +485,7 @@ NULL değeri döndürür. ' Null ' adlı bir sütun varsa işlev sözdizimini (n
 ___
 ### <code>or</code>olur 
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Mantıksal VEYA operatörüdür. Aynı | | * ``or(true, false) -> true``
+Mantıksal OR işleci. Aynı | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>
@@ -529,33 +529,33 @@ Bir dizeyi Regex temelinde bir sınırlayıcı temelinde böler ve
 ___
 ### <code>replace</code>* ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``bir dize dizisi döndürür 
 <code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/>
-Bir alt dizenin tüm tekrarlamalarını verilen dizedeki başka bir alt dize ile değiştirin. Son parametre atlanırsa, 
+Bir alt dizenin tüm tekrarlamalarını verilen dizedeki başka bir alt dize ile değiştirin. If the last parameter is omitted, it is default to empty string * ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``
 * ``replace('doggie dog', 'dog', '') -> 'gie '``
 * ``replace('doggie dog', 'dog') -> 'gie '``
 ___
-### <code>reverse</code>* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``dize boş değer olarak ayarlanır 
+### <code>reverse</code>
 <code><b>reverse(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Bir dizeyi * ``reverse('gunchus') -> 'suhcnug'``
+Reverses a string * ``reverse('gunchus') -> 'suhcnug'``
 ___
-### <code>right</code>tersine çevirir 
+### <code>right</code>
 <code><b>right(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
-Sağdan karakter sayısıyla bir alt dize ayıklar. Alt DIZE (Str, LENGTH (str)-n, n) * ``right('bojjus', 2) -> 'us'``
+Extracts a substring with number of characters from the right. Same as SUBSTRING(str, LENGTH(str) - n, n) * ``right('bojjus', 2) -> 'us'``
 * ``right('bojjus', 20) -> 'bojjus'``
 ___
-### <code>rlike</code>ile aynı 
+### <code>rlike</code>
 <code><b>rlike(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-Dizenin * ``rlike('200.50', `(\d+).(\d+)`) -> true``
+Checks if the string matches the given regex pattern * ``rlike('200.50', `(\d+).(\d+)`) -> true``
 * ``rlike('bogus', `M[0-9]+.*`) -> false``
 ___
-### <code>round</code>belirtilen Regex düzeniyle eşleşip eşleşmediğini denetler 
+### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Bir sayıyı isteğe bağlı bir ölçek ve isteğe bağlı bir yuvarlama modu olarak yuvarlar. Ölçek atlanırsa, varsayılan olarak 0 olur.  Mod atlanırsa, varsayılan olarak ROUND_HALF_UP (5) olarak ayarlanır. Yuvarlama değerleri şunlardır 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY * ``round(100.123) -> 100.0``
+Rounds a number given an optional scale and an optional rounding mode. If the scale is omitted, it is defaulted to 0.  If the mode is omitted, it is defaulted to ROUND_HALF_UP(5). The values for rounding include 1 - ROUND_UP 2 - ROUND_DOWN 3 - ROUND_CEILING 4 - ROUND_FLOOR 5 - ROUND_HALF_UP 6 - ROUND_HALF_DOWN 7 - ROUND_HALF_EVEN 8 - ROUND_UNNECESSARY * ``round(100.123) -> 100.0``
 * ``round(2.5, 0) -> 3.0``
 * ``round(5.3999999999999995, 2, 7) -> 5.40``
 ___
 ### <code>rpad</code>
 <code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-Dizeyi, belirli bir uzunluğa ulaşana kadar sağlanan doldurmaya göre sağ Altlar. Dize uzunluğuna eşit veya daha büyük ise, 
+Right pads the string by the supplied padding until it is of a certain length. Dize uzunluğuna eşit veya daha büyük ise, 
 * ``rpad('dumbo', 4, '-') -> 'dumb'``
 * ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``
 ___
@@ -717,7 +717,7 @@ ___
 ___
 ### <code>toTimestamp</code>
 <code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Bir dizeyi, isteğe bağlı bir zaman damgası biçimi verilen bir zaman damgasına dönüştürür. Tüm olası biçimler için Java SimpleDateFormat bölümüne bakın. Zaman damgası varsayılan düzende yoksayılırsa. yyyy-[M] M-[d] d hh: mm: SS [. f...] kullanılır. İsteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Zaman damgası, kullanılabilir biçimler için Java 'nın SimpleDateFormat değerini Ifade eden 999'A göre daha fazla milisaniyelik doğruluğu destekler. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
+Bir dizeyi, isteğe bağlı bir zaman damgası biçimi verilen bir zaman damgasına dönüştürür. Tüm olası biçimler için Java SimpleDateFormat bölümüne bakın. Zaman damgası varsayılan düzende yoksayılırsa. yyyy-[M] M-[d] d hh: mm: SS [. f...] kullanılır. İsteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Zaman damgası, kullanılabilir biçimler için Java 'nın SimpleDateFormat değerini Ifade eden en fazla milisaniyelik değeri destekler. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
 * ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``
 * ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``
 * ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``

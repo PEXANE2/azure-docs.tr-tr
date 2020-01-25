@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433512"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714455"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -22,9 +22,9 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 Ölçeklendirmeniz gerekip gerekmediğini belirlemenize yardımcı olması için aşağıdaki ölçümleri izleyebilirsiniz.
 
 * Redsıs sunucu yükü
-* Memory Usage
+* Bellek kullanımı
 * Ağ bant genişliği
-* CPU Kullanımı
+* CPU kullanımı
 
 Önbelleğinizin artık uygulamanızın gereksinimlerini karşılamadığını belirlerseniz, uygulamanız için uygun olan daha büyük veya daha küçük bir önbellek fiyatlandırma katmanına ölçeklendirebilirsiniz. Hangi önbellek fiyatlandırma katmanını kullanacağınızı belirleme hakkında daha fazla bilgi için bkz. [redne Için Azure Cache ve size ne kadar bellek kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -166,7 +166,7 @@ Bir ölçeklendirme işlemi başarısız olursa, hizmet işlemi döndürmeye ça
 
 
 ### <a name="how-long-does-scaling-take"></a>Ölçeklendirme ne kadar sürer?
-Önbellekte ne kadar veri olduğuna bağlı olarak ölçekleme yaklaşık 20 dakika sürer.
+Ölçeklendirme süresi, daha fazla miktarda verinin daha uzun sürede tamamlanmasını sağlamak için önbellekte ne kadar veri olduğuna bağlıdır. Ölçeklendirme yaklaşık 20 dakika sürer. Kümelenmiş önbellekler için ölçeklendirme, parça başına yaklaşık 20 dakika sürer.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Ölçeklendirmenin tamamlandığını nasıl anlayabilirim?
 Azure portal ölçeklendirme işleminin devam ettiğini görebilirsiniz. Ölçeklendirme tamamlandığında, önbelleğin durumu **çalışıyor**olarak değişir.
@@ -176,6 +176,3 @@ Azure portal ölçeklendirme işleminin devam ettiğini görebilirsiniz. Ölçek
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
-
-

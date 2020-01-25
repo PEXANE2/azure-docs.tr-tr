@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939923"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721039"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL veri ambarı Iş yükü grubu yalıtımı (Önizleme)
 
@@ -32,7 +32,7 @@ Aşağıdaki bölümler, iş yükü gruplarının yalıtım, kapsama, istek kayn
 
 İş yükü yalıtımı, kaynakların yalnızca bir iş yükü grubu için ayrılmış olması anlamına gelir.  İş yükü yalıtımı, MIN_PERCENTAGE_RESOURCE parametresi, [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) sözdiziminde sıfırdan büyük olacak şekilde yapılandırılarak elde edilir.  Sıkı SLA 'Lara uyması gereken sürekli yürütme iş yükleri için yalıtım, kaynakların iş yükü grubu için her zaman kullanılabilir olmasını sağlar. 
 
-İş yükü yalıtımını yapılandırma, örtülü olarak garantili bir eşzamanlılık düzeyi tanımlar. %30 ' a ayarlanmış bir MIN_PERCENTAGE_RESOURCE ve REQUEST_MIN_RESOURCE_GRANT_PERCENT %2 ' ye ayarlandığında, iş yükü grubu için 15 eşzamanlılık düzeyi garanti edilir.  Garantili eşzamanlılık belirlemek için aşağıdaki yöntemi göz önünde bulundurun:
+İş yükü yalıtımını yapılandırma, örtülü olarak garantili bir eşzamanlılık düzeyi tanımlar. Örneğin, %30 ' a ayarlanmış `MIN_PERCENTAGE_RESOURCE` ve `REQUEST_MIN_RESOURCE_GRANT_PERCENT` %2 ' ye ayarlanmış bir iş yükü grubu, 15 eşzamanlılık olarak garanti edilir.  % 15-2 kaynak yuvaları her zaman iş yükü grubu içinde ayrıldığından eşzamanlılık düzeyi garanti edilir (`REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` yapılandırıldıktan bağımsız olarak).  `REQUEST_MAX_RESOURCE_GRANT_PERCENT` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` daha büyükse ve `CAP_PERCENTAGE_RESOURCE` `MIN_PERCENTAGE_RESOURCE`, istek başına ek kaynaklar eklenmiştir.  `REQUEST_MAX_RESOURCE_GRANT_PERCENT` ve `REQUEST_MIN_RESOURCE_GRANT_PERCENT` eşitse ve `CAP_PERCENTAGE_RESOURCE` `MIN_PERCENTAGE_RESOURCE`daha büyükse, ek eşzamanlılık mümkündür.  Garantili eşzamanlılık belirlemek için aşağıdaki yöntemi göz önünde bulundurun:
 
 [Garantili eşzamanlılık] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

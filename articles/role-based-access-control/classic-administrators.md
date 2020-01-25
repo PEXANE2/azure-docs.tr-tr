@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979334"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720665"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
@@ -62,7 +62,7 @@ Dizininize Konuk Kullanıcı ekleme hakkında daha fazla bilgi için, bkz. [Azur
 
 ### <a name="differences-for-guest-users"></a>Konuk kullanıcılar için farklılıklar
 
-Ortak yönetici rolüne atanan Konuk kullanıcılar, ortak yönetici rolüne sahip üye kullanıcılarla karşılaştırıldığında bazı farklılıklar görebilirler. Aşağıdaki senaryoyu ele alalım:
+Ortak yönetici rolüne atanan Konuk kullanıcılar, ortak yönetici rolüne sahip üye kullanıcılarla karşılaştırıldığında bazı farklılıklar görebilirler. Şu senaryoyu göz önünde bulundurun:
 
 - Bir Azure AD hesabı (iş veya okul hesabı) olan A kullanıcısı, bir Azure aboneliği için hizmet yöneticisidir.
 - B kullanıcısının bir Microsoft hesabı vardır.
@@ -89,7 +89,7 @@ Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk ku
 
 1. Kaldırmak istediğiniz ortak yöneticinin yanına onay işareti ekleyin.
 
-1. **Kaldır**’a tıklayın.
+1. **Kaldır**' a tıklayın.
 
 1. Görüntülenen ileti kutusunda **Evet**' e tıklayın.
 
@@ -99,29 +99,11 @@ Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk ku
 
 Yalnızca hesap yöneticisi bir abonelik için hizmet yöneticisini değiştirebilir. Varsayılan olarak, bir Azure aboneliğine kaydolduğunuzda, hizmet yöneticisi hesap yöneticisiyle aynı olur. Hesap Yöneticisi rolüne sahip kullanıcının Azure portal erişimi yok. Hizmet Yöneticisi rolüne sahip kullanıcının Azure portal tam erişimi vardır. Hesap Yöneticisi ve hizmet yöneticisi aynı kullanıcı ise ve hizmet yöneticisini farklı bir kullanıcıyla değiştirirseniz, hesap yöneticisi Azure portal erişimi kaybeder. Ancak hesap yöneticisi her zaman hesap merkezini kullanarak hizmet yöneticisini kendilerine geri değiştirebilir.
 
-Hizmet Yöneticisi’ni değiştirmenin iki yolu vardır. **Azure Portal** veya **Hesap Merkezi**' nde değişiklik yapabilirsiniz.
-
-### <a name="azure-portal"></a>Azure Portal
-
-1. Service Administrators 'ı değiştirme sınırlamalarını denetleyerek senaryonuzun desteklendiğinden emin olun.
-
-1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
-
-1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
-
-1. **Özellikler**'e tıklayın.
-
-    ![Hesap yöneticisini gösteren ekran görüntüsü](./media/classic-administrators/account-admin.png)
-
-1. Hizmet Yöneticisi bölmesini açmak için üst taraftaki **hizmet** Yöneticisi ' ne tıklayın.
-
-    Hizmet Yöneticisi düğmesi devre dışıysa, izinleriniz yoktur. Hizmet Yöneticisi yalnızca hesap yöneticisi olan kullanıcı tarafından değiştirilebilir.
-
-1. Yeni bir hizmet yöneticisi seçip **Kaydet**' e tıklayın.
+**Hesap Merkezi**'Nde hizmet yöneticisini değiştirmek için bu adımları izleyin.
 
 ### <a name="account-center"></a>Hesap Merkezi
 
-1. Service Administrators 'ı değiştirme sınırlamalarını denetleyerek senaryonuzun desteklendiğinden emin olun.
+1. [Hizmet yöneticisini değiştirme sınırlamalarını](#limitations-for-changing-the-service-administrator)denetleyerek senaryonuzun desteklendiğinden emin olun.
 
 1. Hesap [Merkezi](https://account.windowsazure.com/subscriptions) 'Nde hesap yöneticisi olarak oturum açın.
 

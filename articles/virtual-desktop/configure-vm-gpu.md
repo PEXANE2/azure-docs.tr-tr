@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953943"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719764"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -37,9 +37,9 @@ Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsay
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Sanal makinenize desteklenen grafik sürücülerini yükler
 
-Windows sanal masaüstündeki Azure N serisi sanal makinelerin GPU yeteneklerini avantajlarından yararlanmak için NVıDıA grafik sürücülerini yüklemelisiniz. Sürücüleri el ile ya da [NVıDıA GPU sürücü uzantısını](/azure/virtual-machines/extensions/hpccompute-gpu-windows)kullanarak yüklemek için [Windows çalıştıran N SERISI VM 'lerde NVIDIA GPU sürücülerini yüklemek](/azure/virtual-machines/windows/n-series-driver-setup) için yönergeleri izleyin.
+Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Uygun grafik satıcısından sürücüleri el ile veya bir Azure VM uzantısı kullanarak yüklemek için [desteklenen işletim sistemleri ve sürücüler](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin.
 
-Yalnızca Azure tarafından dağıtılan [NVıDıA GRID sürücülerinin](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) Windows sanal masaüstü için desteklendiğini unutmayın.
+Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. Additionaly, NVıDıA GPU 'lara sahip Azure VM 'Leri için yalnızca [NVıDıA kılavuz sürücüleri](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) Windows sanal masaüstü için desteklenir.
 
 Sürücü yüklemesinden sonra, bir VM yeniden başlatması gerekir. Grafik sürücülerinin başarıyla yüklendiğini doğrulamak için yukarıdaki yönergelerdeki doğrulama adımlarını kullanın.
 
@@ -74,7 +74,7 @@ Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve m
 
 Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağıdakilerden birini deneyin:
 
-* Uygulamalarınızı çalıştırırken GPU kullanımını denetlemek için [Sürücü yüklemesini doğrula](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) bölümünde açıklandığı gibi `nvidia-smi` yardımcı programını kullanın.
+* NVıDıA GPU ile Azure VM 'Leri için, uygulamalarınızı çalıştırırken GPU kullanımını denetlemek üzere [Sürücü yüklemesini doğrula](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) bölümünde açıklandığı gibi `nvidia-smi` yardımcı programını kullanın.
 * Desteklenen işletim sistemi sürümlerinde, Görev Yöneticisi 'Ni kullanarak GPU kullanımını kontrol edebilirsiniz. Uygulamaların GPU 'YU kullanıp kullanmadığını görmek için "performans" sekmesindeki GPU 'YU seçin.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını doğrulama
@@ -90,5 +90,5 @@ Uzak Masaüstü 'Nün GPU hızlandırmalı kodlama kullandığını doğrulamak 
 
 Bu yönergelerin tek bir oturum ana bilgisayar VM 'sinde GPU hızlandırmalı ve üzerinde çalışıyor olması gerekir. Daha büyük bir konak havuzu genelinde GPU hızlandırmayı etkinleştirmeye yönelik bazı ek noktalar:
 
-* Bir dizi sanal makine genelinde sürücü yüklemeyi ve güncelleştirmeleri basitleştirmek için [NVıDıA GPU sürücü uzantısını](/azure/virtual-machines/extensions/hpccompute-gpu-windows) kullanmayı düşünün.
+* Bir dizi sanal makinede sürücü yüklemeyi ve güncelleştirmeleri basitleştirmek için bir [VM Uzantısı](/azure/virtual-machines/extensions/overview) kullanmayı düşünün. NVıDıA GPU 'lara sahip VM 'Ler için [NVıDıA GPU sürücü uzantısını](/azure/virtual-machines/extensions/hpccompute-gpu-windows) kullanın ve AMD GPU 'Lar Ile VM 'ler IÇIN AMD GPU sürücü uzantısı 'nı (yakında kullanıma sunulacak) kullanın.
 * Bir dizi sanal makine genelinde Grup ilkesi yapılandırmasını basitleştirmek için Active Directory grup ilkesi kullanmayı düşünün. Active Directory etki alanında grup ilkesi dağıtma hakkında daha fazla bilgi için bkz. [Grup İlkesi nesneleriyle çalışma](https://go.microsoft.com/fwlink/p/?LinkId=620889).

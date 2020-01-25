@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045657"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719900"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Öğretici: iki yönetilen örnek ve SQL Server arasında işlem çoğaltması yapılandırma
 
@@ -385,7 +385,7 @@ Olası çözümler:
 
 **Yeni** abonelik Sihirbazı 'nı kullanarak yeni bir abonelik eklerken, **yayın** sayfasında, kullanılabilir seçenekler olarak listelenen veritabanı ve yayınlar olmadığını fark edebilirsiniz ve aşağıdaki hata iletisini görebilirsiniz:
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 Bu hata iletisi doğru olsa da, bağlandığınız yayımcıdaki yayınlar gerçekten mevcut olmadığından veya yeterli izinlere sahip olmadığınızdan, bu hataya SQL Server Management Studio eski bir sürümü de neden olabilir. Bu soruna bir kök neden olarak kural yapmak için SQL Server Management Studio 18,0 veya üstünü yükseltmeyi deneyin. 
 

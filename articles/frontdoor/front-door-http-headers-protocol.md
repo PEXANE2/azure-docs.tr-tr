@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790521"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720444"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde HTTP üstbilgileri için protokol desteği
 Bu makalede, ön kapı hizmeti 'nin, çağrı yolunun bölümleriyle desteklediği protokol (bkz. görüntü) özetlenmektedir. Aşağıdaki bölümlerde, ön kapı hizmeti tarafından desteklenen HTTP üstbilgileri hakkında daha fazla bilgi sağlanmaktadır.
@@ -43,7 +43,7 @@ Bu makalede, ön kapı hizmeti 'nin, çağrı yolunun bölümleriyle destekledi�
 | X-Iletilmiş-Için | X-Iletildi-for: 127.0.0.1 </br> X-Iletilmiş-for (XFF) HTTP üstbilgisi alanı, genellikle bir HTTP proxy veya yük dengeleyici aracılığıyla bir Web sunucusuna bağlanan bir istemcinin kaynak IP adresini belirler. Var olan bir XFF üst bilgisi varsa, ön kapı istemci yuvasını IP 'ye ekler veya XFF üstbilgisini istemci yuvası IP 'si ile ekler. |
 | X-Iletilen-konak | X-Iletilen-ana bilgisayar: contoso.azurefd.net </br> X-Iletilen ana bilgisayar HTTP üst bilgisi alanı, istemci tarafından istenen özgün Konağı tanımlamak için kullanılan ortak bir yöntemdir, ana bilgisayar HTTP istek üst bilgisi. Bunun nedeni, ön kapıdan ana bilgisayar adının isteği işleyen arka uç sunucusu için farklı olabilir. |
 | X-Iletilen-proto | X-Iletilen-proto: http </br> , Yapılandırmaya bağlı olan ön kapı, HTTPS kullanarak arka uca iletişim kurabildiğinden, bir HTTP isteğinin kaynak protokolünü belirlemek için genellikle X-Iletilen-proto HTTP üstbilgisi alanı kullanılır. Bu, ters proxy 'ye yönelik istek HTTP olsa bile geçerlidir. |
-| X-FD-Healtharaştırması | X-FD-Healtharaştırması HTTP üstbilgisi alanı, ön kapıdan sistem durumu araştırmasını belirlemek için kullanılır. Bu üstbilgi 1 olarak ayarlandıysa, istek sistem durumu araştırmasına sahip olur. X-Iletilen ana bilgisayar üst bilgisi alanı ile paticsel ön kapıdan katı erişim sağlamak istediğinizde ' i kullanabilirsiniz. |
+| X-FD-Healtharaştırması | X-FD-Healtharaştırması HTTP üstbilgisi alanı, ön kapıdan sistem durumu araştırmasını belirlemek için kullanılır. Bu üstbilgi 1 olarak ayarlandıysa, istek sistem durumu araştırmasına sahip olur. X ile Iletilen ana bilgisayar üst bilgisi alanı ile belirli ön kapıdan katı erişim sağlamak istediğinizde ' i kullanabilirsiniz. |
 
 ## <a name="front-door-service-to-client"></a>Ön kapı hizmeti istemciye
 

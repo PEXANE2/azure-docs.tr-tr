@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 69b58b402b49e2346621bf473a0e897809f1c008
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829570"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712832"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma
 
@@ -267,7 +267,7 @@ Kullanıcının uygulamadan oturum açmasını istediğinizde, uygulamanın tan�
 Kullanıcının oturumunu kapatmak için kullanıcıyı daha önce açıklanan OpenID Connect meta veri belgesinde listelenen `end_session` uç noktaya yönlendirin:
 
 ```HTTP
-GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
 | Parametre | Gereklidir | Açıklama |
@@ -275,7 +275,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | Kiracı | Evet | Azure AD B2C kiracınızın adı |
 | ilkesinin | Evet | Kullanıcıyı uygulamanızda imzalamak için kullanmak istediğiniz kullanıcı akışı. |
 | id_token_hint| Hayır | Son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirilecek daha önceden verilen bir KIMLIK belirteci. `id_token_hint`, `post_logout_redirect_uri` Azure AD B2C uygulama ayarlarınızda kayıtlı bir yanıt URL 'SI olmasını sağlar. |
-| client_id | Hayır* | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği.<br><br>\* *`Application` yalıtım SSO yapılandırması kullanılırken bu gereklidir ve oturum kapatma ISTEĞINDE _kimlik belirteci iste_ `No`olarak ayarlanmıştır.* |
+| client_id | Eşleşen | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği.<br><br>\* *`Application` yalıtım SSO yapılandırması kullanılırken bu gereklidir ve oturum kapatma ISTEĞINDE _kimlik belirteci iste_ `No`olarak ayarlanmıştır.* |
 | post_logout_redirect_uri | Hayır | Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti gösterir Azure AD B2C. Bir `id_token_hint`sağlamazsanız, bu URL 'YI Azure AD B2C uygulama ayarlarınızda bir yanıt URL 'SI olarak kaydetmemelisiniz. |
 | durum | Hayır | İsteğe bir `state` parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta `state` değerlerin özdeş olduğunu doğrulamalıdır. |
 

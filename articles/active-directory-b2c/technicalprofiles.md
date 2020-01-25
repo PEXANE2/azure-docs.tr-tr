@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3275e31744faba5b029e5a4619a51420400b9d0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162597bf3d02cdfe53d321185b326bfbb1f6bd0d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425601"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712762"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -99,6 +99,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | OutputClaimsTransformations | 0:1 | Talep dönüşümlerinden talepler alındıktan sonra yürütülmesi gereken talep dönüştürmelerine yönelik önceden tanımlanmış başvuruların listesi. |
 | Validationcealprofiles | 0: n | Teknik profilin doğrulama amacıyla kullandığı diğer teknik profillerin başvurularını içeren bir liste. Daha fazla bilgi için bkz. [doğrulama teknik profili](validation-technical-profile.md)|
 | Subjectnamingınfo | 0:1 | Konu adının taleplerden ayrı olarak belirtildiği belirteçlerde konu adının üretimini denetler. Örneğin, OAuth veya SAML.  |
+| Includeınsso | 0:1 |  Bu teknik profilin kullanımının oturum için çoklu oturum açma (SSO) davranışını uygulayıp uygulamamalıdır, bunun yerine açık etkileşim gerekir. Olası değerler: `true` (varsayılan) veya `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Tüm giriş ve çıkış taleplerinin bu teknik profile eklenmesini istediğiniz teknik profilin bir tanımlayıcısı. Başvurulan teknik profil aynı ilke dosyasında tanımlanmalıdır. |
 | Includetekchnicalprofile |0:1 | Bu teknik profile tüm verilerin eklenmesini istediğiniz teknik profilin bir tanımlayıcısı. Başvurulan teknik profil aynı ilke dosyasında bulunmalıdır. |
 | Useteknisyen Alprofileforsessionmanagement | 0:1 | Oturum yönetimi için kullanılacak farklı bir teknik profil. |
@@ -111,7 +112,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | Ad | Evet | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`, `session management`, `self-asserted`veya `None`. |
-| İşleyici | Hayır | Protokol adı `Proprietary`olarak ayarlandığında, protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin tam nitelikli adını belirtin. |
+| Iy | Hayır | Protokol adı `Proprietary`olarak ayarlandığında, protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin tam nitelikli adını belirtin. |
 
 ## <a name="metadata"></a>Meta Veriler
 

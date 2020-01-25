@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895190"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719101"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>Bölge yedekli depolama (ZRS) ile yüksek oranda kullanılabilir uygulamalar oluşturun
 
@@ -34,6 +34,7 @@ Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma s
 - Batı Avrupa
 - Fransa Orta
 - Doğu Japonya
+- Güney Afrika Kuzey
 - Birleşik Krallık, Güney
 - ABD Orta
 - ABD Doğu
@@ -88,7 +89,7 @@ Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama düğümleri a
 Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulundurun:
 
 - Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin belirli bir tarihe kadar ZRS'ye geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş yapmanızı önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer. 
-- Dinamik geçiş yalnızca LRS veya GRS çoğaltmasını kullanan depolama hesapları için desteklenir. Hesabınız RA-GRS kullanıyorsa, önce devam etmeden önce hesabınızın çoğaltma türünü LRS veya GRS olarak değiştirmeniz gerekir. Bu ara adım, geçişten önce RA-GRS tarafından sunulan ikincil salt okuma uç noktasını kaldırır.
+- Dinamik geçiş yalnızca LRS çoğaltmasını kullanan depolama hesapları için desteklenir. Hesabınız GRS veya RA-GRS kullanıyorsa, önce devam etmeden önce hesabınızın çoğaltma türünü LRS olarak değiştirmeniz gerekir. Bu ara adım, GRS/RA-GRS tarafından sunulan ikincil uç noktayı kaldırır.
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz. Verilerinizi kaynak hesaptan farklı bir bölgede bulunan bir ZRS hesabına geçirmek istiyorsanız, el ile geçiş gerçekleştirmeniz gerekir.
 - Yalnızca standart depolama hesabı türleri dinamik geçişi destekler. Premium Depolama hesaplarının el ile geçirilmesi gerekir.
@@ -108,7 +109,7 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
     - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_\_ bölgesindeki [LRS, GRS] öğesinden ZRS 'ye geçmek istiyorum. 
 5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**'u seçin.
+7. **Oluştur**’u seçin.
 
 Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi bir yardımı sağlar.
 
@@ -130,9 +131,9 @@ Geçiş işlemi tamamlandıktan sonra, hesap (ler) in çoğaltma türü "bölges
 
 ZRS, ZRS 'ye dinamik geçiş için bir istek göndermeden önce genel amaçlı v2 hesaplarını destekler, böylece, hesaplarınızı genel amaçlı v2 'ye yükseltdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview) ve [genel amaçlı v2 depolama hesabına yükseltme](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) .
 
-**Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) hesaplarının ZRS 'ye dinamik geçişini isteyebilir miyim?**
+**Coğrafi olarak yedekli veya Okuma Erişimli Coğrafi olarak yedekli depolama (GRS/RA-GRS) hesaplarının ZRS 'ye Canlı geçişini isteyebilir miyim?**
 
-ZRS 'ye dinamik geçiş isteği göndermeden önce, uygulamanızın veya iş yüklerinizin artık ikincil salt okunurdur uç noktaya erişim gerektirmediğinden emin olun ve depolama hesabınızın çoğaltma türünü coğrafi olarak yedekli depolama (GRS) olarak değiştirin. Daha fazla ayrıntı için bkz. [çoğaltma stratejisini değiştirme](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) .
+Dinamik geçiş yalnızca LRS çoğaltmasını kullanan depolama hesapları için desteklenir. Hesabınız GRS veya RA-GRS kullanıyorsa, önce devam etmeden önce hesabınızın çoğaltma türünü LRS olarak değiştirmeniz gerekir. Bu ara adım, GRS/RA-GRS tarafından sunulan ikincil uç noktayı kaldırır. Ayrıca, ZRS 'ye dinamik geçişe yönelik bir istek göndermeden önce, uygulamanızın veya iş yüklerinizin artık ikincil salt okunurdur uç noktaya erişimi gerektirmediğinden ve depolama hesabınızın çoğaltma türünü yerel olarak yedekli depolama (LRS) olarak değiştirdiğinizden emin olun. Daha fazla ayrıntı için bkz. [çoğaltma stratejisini değiştirme](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) .
 
 **Depolama hesabımın, başka bir bölgeye ZRS 'ye dinamik geçişini isteyebilir miyim?**
 

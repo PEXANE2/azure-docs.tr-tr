@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975200"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712561"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 
 Kaynak Yöneticisi şablonlar, Azure altyapısını kodda tanımlamanıza olanak sağlar. Gerekli kaynaklar, ağ bağlantıları ya da VM 'lerin yapılandırılması bir şablonda tanımlanabilir. Bu şablonlar her seferinde tutarlı, tekrarlanabilir dağıtımlar oluşturur ve değişiklik yaptığınız sürece sürümlenebilir. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarına genel bakış][template-overview].
 
-Her kaynak JSON kullanılarak bir şablonda tanımlanır. Aşağıdaki JSON örneği, Active Directory etki alanına JOIN uzantısını yüklemek için *Microsoft. COMPUTE/virtualMachines/Extensions* kaynak türünü kullanır. Dağıtım zamanında belirttiğiniz parametreler kullanılır. Uzantı dağıtıldığında, VM belirtilen Azure AD DS yönetilen etki alanına katılır.
+Her kaynak JavaScript Nesne Gösterimi (JSON) kullanılarak bir şablonda tanımlanır. Aşağıdaki JSON örneği, Active Directory etki alanına JOIN uzantısını yüklemek için *Microsoft. COMPUTE/virtualMachines/Extensions* kaynak türünü kullanır. Dağıtım zamanında belirttiğiniz parametreler kullanılır. Uzantı dağıtıldığında, VM belirtilen Azure AD DS yönetilen etki alanına katılır.
 
 ```json
  {
@@ -94,7 +94,7 @@ Bir Windows Server sanal makinesi oluşturup Azure AD DS yönetilen bir etki ala
     | DNS etiketi öneki          | VM için kullanmak üzere *myvm*gıbı bir DNS adı girin. |
     | VM boyutu                   | *Standard_DS2_v2*gıbı bir VM boyutu belirtin. |
     | Katılacak etki alanı            | Azure AD DS yönetilen etki alanı DNS adı, örneğin *aadds.contoso.com*. |
-    | Etki alanı Kullanıcı adı           | Azure AD DS yönetilen etki alanındaki, VM 'yi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, *Azure AD DC Administrators* grubunun bir üyesi olmalıdır. |
+    | Etki alanı Kullanıcı adı           | Azure AD DS yönetilen etki alanındaki, sanal makineyi, `contosoadmin@aadds.contoso.com`gibi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, *Azure AD DC Administrators* grubunun bir üyesi olmalıdır. |
     | Etki alanı parolası           | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
     | İsteğe bağlı OU yolu          | VM 'nin ekleneceği özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC bilgisayarları* OU 'ya eklenir. |
     | VM Yöneticisi Kullanıcı adı         | VM 'de oluşturulacak bir yerel yönetici hesabı belirtin. |
@@ -123,7 +123,7 @@ Mevcut bir Windows Server VM 'sini Azure AD DS yönetilen bir etki alanına katm
     | Kaynak grubu            | Mevcut VM 'niz ile kaynak grubunu seçin. |
     | Konum                  | Var olan sanal makinenizin konumunu seçin. |
     | VM listesi                   | *MyVM1, myVM2*gibi Azure AD DS yönetilen etki alanına KATıLACAK mevcut VM 'ler için virgülle ayrılmış bir liste girin. |
-    | Etki alanına katılması Kullanıcı adı     | Azure AD DS yönetilen etki alanındaki, VM 'yi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, *Azure AD DC Administrators* grubunun bir üyesi olmalıdır. |
+    | Etki alanına katılması Kullanıcı adı     | Azure AD DS yönetilen etki alanındaki, sanal makineyi, `contosoadmin@aadds.contoso.com`gibi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, *Azure AD DC Administrators* grubunun bir üyesi olmalıdır. |
     | Etki alanına katılması Kullanıcı parolası | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
     | İsteğe bağlı OU yolu          | VM 'nin ekleneceği özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC bilgisayarları* OU 'ya eklenir. |
 

@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443430"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712313"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma
 
@@ -40,19 +40,19 @@ Belirli bir uygulama için otomatik sağlama desteği istemek isterseniz, [Azure
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Otomatik sağlama için bir uygulamayı yapılandırma
 
-*Otomatik* , bu uygulama Için BIR Azure AD sağlama bağlayıcısının geliştirildiği anlamına gelir. Azure AD sağlama hizmeti ve nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Otomatik* , bu uygulama Için BIR Azure AD sağlama bağlayıcısının geliştirildiği anlamına gelir. Azure AD sağlama hizmeti ve nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md).
 
-Bir uygulamaya belirli kullanıcılar ve gruplar sağlama hakkında daha fazla bilgi için bkz. [Enterprise Apps için Kullanıcı hesabı sağlamayı yönetme](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Bir uygulamaya belirli kullanıcılar ve gruplar sağlama hakkında daha fazla bilgi için bkz. [Enterprise Apps için Kullanıcı hesabı sağlamayı yönetme](configure-automatic-user-provisioning-portal.md).
 
 Otomatik sağlamayı etkinleştirmek ve yapılandırmak için gereken gerçek adımlar uygulamaya bağlı olarak değişir.
 
 > [!NOTE]
-> Uygulamanız için sağlamayı ayarlamaya özgü kurulum öğreticisini bularak ve sağlama bağlantısı oluşturmak için hem uygulamayı hem de Azure AD 'yi yapılandırmak üzere bu adımları takip ederek başlamanız gerekir. 
+> Uygulamanız için sağlamayı ayarlamaya özgü kurulum öğreticisini bularak ve sağlama bağlantısı oluşturmak için hem uygulamayı hem de Azure AD 'yi yapılandırmak üzere bu adımları takip ederek başlamanız gerekir.
 
-Uygulama öğreticileri, [SaaS uygulamalarını Azure Active Directory Ile tümleştirme hakkındaki öğreticiler listesinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)bulunabilir.
+Uygulama öğreticileri, [SaaS uygulamalarını Azure Active Directory Ile tümleştirme hakkındaki öğreticiler listesinde](../saas-apps/tutorial-list.md)bulunabilir.
 
 Sağlamayı ayarlarken göz önünde bulundurmanız gereken önemli bir şey, Azure AD 'den uygulamaya hangi kullanıcı (veya grup) özelliklerinin akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmaktır. Bu, iki sistem arasında kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan "eşleşen özelliği" ayarlamayı içerir. Öznitelik eşlemeleri hakkında daha fazla bilgi için *sonraki adımlarda* yer alan bağlantıya bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Active Directory 'da SaaS uygulamaları için Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+[Azure Active Directory 'da SaaS uygulamaları için Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](customize-application-attributes.md)
 

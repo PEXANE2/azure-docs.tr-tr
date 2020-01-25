@@ -3,32 +3,32 @@ title: Bir Hadoop kümesinde - Team Data Science Process verilerini keşfedin
 description: Team Data Science Process, yapı ve model dağıtma için bir HDInsight Hadoop kümesi kullanan bir uçtan uca senaryo için kullanma.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0549427cfc99703af9f13280cf7377106423367b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982001"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720580"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process'in çalışması: kullanımı Azure HDInsight Hadoop kümeleri
 Bu kılavuzda kullandığımız [Team Data Science işlem (TDSP)](overview.md) uçtan uca bir senaryoda. Kullandığımız bir [Azure HDInsight Hadoop kümesi](https://azure.microsoft.com/services/hdinsight/) depolamak için keşfetmek, özellik mühendisi verileri genel olarak kullanılabilir ve [NYC taksi Gelişlerin](https://www.andresmh.com/nyctaxitrips/) dataset ve aşağı örnek veriler için. İkili ve çok sınıflı sınıflandırma ve regresyon Tahmine dayalı görevler işlemek üzere Azure Machine Learning ile veri modelleri ekleriz. 
 
-Daha büyük bir veri kümesi ne yapılacağını gösteren bir kılavuz için bkz. [Team Data Science Process - Azure HDInsight Hadoop kümeleri kullanan bir 1 TB veri çubuğunda](hive-criteo-walkthrough.md).
+Daha büyük bir veri kümesini nasıl işleyeceğinizi gösteren bir anlatım için, bkz. [Team Data Science Process-1-TB veri kümesinde Azure HDInsight Hadoop kümeleri kullanma](hive-criteo-walkthrough.md).
 
-Ipython notebook, 1 TB veri kümesini kullanan izlenecek yolda gösterilen görevler gerçekleştirmek için de kullanabilirsiniz. Daha fazla bilgi için [Criteo izlenecek bir Hive ODBC bağlantısı kullanarak](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
+Ayrıca, 1 TB 'lık veri kümesini kullanan yönergede sunulan görevleri gerçekleştirmek için bir IPython Not defteri de kullanabilirsiniz. Daha fazla bilgi için [Criteo izlenecek bir Hive ODBC bağlantısı kullanarak](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
 
 ## <a name="dataset"></a>NYC taksi Gelişlerin veri kümesi açıklaması
 Yaklaşık 20 GB sıkıştırılmış virgülle ayrılmış değerler (CSV) dosyaları (~ 48 sıkıştırılmamış GB) NYC taksi seyahat verilerdir. 173 milyondan fazla bireysel gelişlerin sahiptir ve her seyahat için ücretli fares içerir. Her bir seyahat kaydı toplama ve dropoff konumu ve zaman, anonim hack (sürücü) lisans numarası ve medallion sayı (benzersiz Tanımlayıcı taksi ait) içerir. Veriler tüm dönüş 2013 yılında kapsar ve aşağıdaki iki veri kümesi için her ay sağlanır:
 
-- Trip_data CSV dosyaları seyahat ayrıntıları içerir. Bu Yolcuların, toplama ve dropoff noktaları, seyahat süresini ve seyahat uzunluğu sayısını içerir. Birkaç örnek kayıt şunlardır:
+- Trip_data CSV dosyaları seyahat ayrıntıları içeriyor: pascuların sayısı, seçme ve açılan noktaları, seyahat süresi ve seyahat uzunluğu. Birkaç örnek kayıt şunlardır:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ Yaklaşık 20 GB sıkıştırılmış virgülle ayrılmış değerler (CSV) dosy
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-- Trip_fare CSV dosyaları için her bir seyahat Ücretli taksi ayrıntılarını içerir. Bu ödeme türü, taksi tutar, ek ücret ve vergiler, ipuçları ve Ücretli geçişler içerir ve ödenen toplam tutar. Birkaç örnek kayıt şunlardır:
+- Trip_fare CSV dosyaları her seyahat için ödenen tarifeli havayolu ayrıntılarını içerir: ödeme türü, tarifeli havayolu miktarı, ek ücret, vergiler, ipuçları ve Tolls ve ödenen toplam tutar. Birkaç örnek kayıt şunlardır:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -48,7 +48,7 @@ Yaklaşık 20 GB sıkıştırılmış virgülle ayrılmış değerler (CSV) dosy
 Seyahat katılmak için benzersiz anahtar\_veri ve seyahat\_taksi alanlarını oluşur: medallion hack\_lisans ve alma\_datetime. Tüm Ayrıntılar için belirli bir seyahat ilgili almak için bu üç anahtar ile katılmak yeterli olur.
 
 ## <a name="mltasks"></a>Tahmin görev örnekleri
-Yapmak istediğiniz Öngörüler tür veri Analizine göre belirleyin. Bu, işleminize dahil etmek için gereken görevleri açıklamak yardımcı olur. Biz bu kılavuzda ele tahmin sorunları üç örnekleri aşağıda verilmiştir. Bu temel alan *İpucu\_tutarı*:
+Gerekli işlem görevlerinin açıklanmasına yardımcı olmak için veri analizinden göre yapmak istediğiniz tahmine yönelik türü belirleme. Bu kılavuzda, *ipucu\_miktarına*bağlı olarak, bu kılavuzda yer alan tahmin sorunlarına yönelik üç örnek verilmiştir:
 
 - **İkili sınıflandırma**: bir ipucu için bir seyahat Ücretli olup olmadığını tahmin edin. Diğer bir deyişle, bir *İpucu\_tutarı* büyük pozitif bir örnek 0 TL'dir daha açıkken bir *İpucu\_tutarı* 0 veya negatif bir örnektir.
    
@@ -104,7 +104,7 @@ Aşağıdaki AzCopy komutları, Hadoop kümesi oluştururken belirttiğiniz ger�
 
 * ***\<path_to_data_folder >*** Makinenizde, ZIP üzerinde olmayan veri dosyalarını içeren dizin (yol ile birlikte).  
 * ***Hadoop kümesinin\<depolama hesabı adı >*** HDInsight kümeniz ile ilişkili depolama hesabı.
-* ***Hadoop kümesinin varsayılan kapsayıcısını\<*** Kümeniz tarafından kullanılan varsayılan kapsayıcı. Varsayılan kapsayıcı adı genellikle küme adıyla aynı olduğunu unutmayın. Örneğin, "abc123.azurehdinsight.net" Küme çağrılırsa, varsayılan kapsayıcı abc123 ' dir.
+* ***Hadoop kümesinin varsayılan kapsayıcısını\<*** Kümeniz tarafından kullanılan varsayılan kapsayıcı. Varsayılan kapsayıcının adı genellikle kümenin kendisiyle aynı addır. Örneğin, "abc123.azurehdinsight.net" Küme çağrılırsa, varsayılan kapsayıcı abc123 ' dir.
 * ***\<depolama hesabı anahtarı >*** Kümeniz tarafından kullanılan depolama hesabı için anahtar.
 
 Bir komut istemi veya bir Windows PowerShell penceresi, aşağıdaki iki AzCopy komutları çalıştırın.
@@ -127,19 +127,19 @@ Verilerin şimdi Blob Depolama ve HDInsight küme içinde kullanılacak hazır o
 
 Keşif veri analizi için küme baş düğümü ve alt-örnekleme verileri erişmek için bölümünde açıklanan yordamı izleyin [Hadoop kümesinin baş düğümünü erişim](customize-hadoop-cluster.md).
 
-Bu kılavuzda, öncelikli olarak yazılmış sorguları kullandığımız [Hive](https://hive.apache.org/), ön veri araştırmaları gerçekleştirmek için bir SQL benzeri sorgu dili. Hive sorguları .hql dosyalarında depolanır. Biz ardından aşağı bu veri modelleri oluşturmak için Machine Learning'i kullanılacak örnek.
+Bu kılavuzda, öncelikli olarak yazılmış sorguları kullandığımız [Hive](https://hive.apache.org/), ön veri araştırmaları gerçekleştirmek için bir SQL benzeri sorgu dili. Hive sorguları '. HQL ' dosyalarında depolanır. Biz ardından aşağı bu veri modelleri oluşturmak için Machine Learning'i kullanılacak örnek.
 
-Küme keşif verileri analize hazırlamak için ilgili Hive komut dosyalarından içeren .hql dosyaları indirme [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) baş düğümü üzerindeki yerel bir dizine (C:\temp). Bunu yapmak için kümenin baş düğümüne içinde komut istemi açın ve aşağıdaki iki komutu çalıştırın:
+Kümeyi araştırmacı veri analizi için hazırlamak üzere [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 'Dan ilgili Hive betiklerini içeren '. HQL ' dosyalarını baş düğümde bir yerel dizine (C:\Temp) indirin. Kümenin baş düğümü içinden komut istemi ' ni açın ve aşağıdaki iki komutu çalıştırın:
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-Bu iki komut bu kılavuzda yerel bir dizin için gereken tüm .hql dosyaları indirme ***C:\temp&#92;***  baş düğümünde.
+Bu iki komut, Bu izlenecek yolda gereken tüm '. HQL ' dosyalarını baş düğümündeki ***C:\Temp&#92;***  yerel dizinine indirir.
 
 ## <a name="#hive-db-tables"></a>Hive veritabanı ve aya göre bölümlenmiş tabloları oluşturma
 > [!NOTE]
-> Bu genellikle bir yönetim görevidir.
+> Bu görev genellikle yönetici içindir.
 > 
 > 
 
@@ -153,11 +153,11 @@ Hadoop kümesi baş düğümünde masaüstünde baş düğümü, Hadoop komut sa
 > 
 > 
 
-Hive directory isteminden baş düğüm Hadoop komut satırında aşağıdaki komutu çalıştırın. Bu, Hive veritabanı ve tablo oluşturma için Hive sorgusu gönderir:
+Hive Dizin isteminde, Hive veritabanını ve tablolarını oluşturan baş düğümün Hadoop komut satırında aşağıdaki komutu çalıştırın:
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-İçeriği işte **C:\temp\sample\_hive\_oluşturma\_db\_ve\_tables.hql** dosya. Bu Hive veritabanı oluşturur **nyctaxidb**ve tabloları **seyahat** ve **taksi**.
+Bu, **Nyctaxidb**Hive veritabanını ve **seyahat** ve **tarifeli havayolu**tablolarını oluşturan **\_DB\_ve\_Tables. hql dosyası oluşturmak\_c:\temp\sample\_Hive** içeriğini aşağıda bulabilirsiniz.
 
     create database if not exists nyctaxidb;
 
@@ -207,7 +207,7 @@ Bu yordamları ile herhangi bir ek yardıma ihtiyacınız veya alternatif olanla
 
 ## <a name="#load-data"></a>Bölümler tarafından veri Hive tablolarına yükleme
 > [!NOTE]
-> Bu genellikle bir yönetim görevidir.
+> Bu görev genellikle yönetici içindir.
 > 
 > 
 
@@ -220,7 +220,7 @@ Daha hızlı işleme ve sorgu süreleri etkinleştirmek için kullandığımız 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-Burada araştırma işleminde kullanılan Hive sorguları bir dizi yalnızca bir veya iki bölüm bakarak ilgili dikkat edin. Ancak, veri kümesi genelinde bu sorguları çalıştırabilirsiniz.
+Araştırma sürecinde burada kullanılan Hive sorgularının sayısı yalnızca bir veya iki bölüme bakmayı içerir. Ancak, veri kümesi genelinde bu sorguları çalıştırabilirsiniz.
 
 ### <a name="#show-db"></a>HDInsight Hadoop kümesinde veritabanlarını gösterin
 HDInsight Hadoop kümesinde Hadoop komut satırı penceresini içinde oluşturulan veritabanlarını göstermek için Hadoop komut satırında aşağıdaki komutu çalıştırın:
@@ -302,7 +302,7 @@ Verilerin nasıl göründüğünü görmek için her tablodan 10 kayıt inceleyi
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-Kayıtların uygun görüntülemek için bir dosyaya kaydedebilirsiniz. Önceki sorguya küçük bir değişiklik bunu gerçekleştirir:
+Önceki sorguda küçük bir değişiklik ile uygun bir şekilde görüntülemek için kayıtları bir dosyaya kaydedebilirsiniz:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
@@ -316,7 +316,7 @@ Dönüş sayısı takvim yılı nasıl değişeceğini ilgi çekecektir. Gruplan
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-Bu bize şu çıktıyı verir:
+Bu komut aşağıdaki çıktıyı üretir:
 
     1       14776615
     2       13990176
@@ -338,7 +338,7 @@ Biz de toplam kayıt sayısı, Hive directory isteminde aşağıdaki komutu çal
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
-Bu verir:
+Bu komut şunları verir:
 
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
@@ -347,7 +347,7 @@ Seyahat veri kümesi için gösterilen benzer komutları kullanarak Hive sorgula
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
-Bu bize şu çıktıyı verir:
+Bu komut bu çıktıyı oluşturur:
 
     1       14776615
     2       13990176
@@ -363,22 +363,22 @@ Bu bize şu çıktıyı verir:
     12      13971118
     Time taken: 253.955 seconds, Fetched: 12 row(s)
 
-Her iki veri kümeleri için tam olarak aynı dönüş aylık sayısı döndürülür unutmayın. Bu verileri doğru şekilde yüklenmemiş olduğunu ilk doğrulama sağlar.
+Her iki veri kümesi için de tam olarak aynı gidiş dönüş sayısı döndürülür ve verilerin doğru şekilde yüklendiği ilk doğrulamayı sağlar.
 
 Hive directory isteminden aşağıdaki komutu kullanarak kayıt taksi kümesindeki toplam sayısını güvenebilirsiniz:
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
-Bu verir:
+Bu komut şunları verir:
 
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
 
-Her iki tablodaki kayıtları toplam sayısı da de aynıdır. Bu verileri doğru şekilde yüklenmiş olan ikinci bir doğrulama sağlar.
+Her iki tablodaki kayıtların toplam sayısı aynı zamanda, verilerin doğru şekilde yüklendiğinden ikinci bir doğrulama sağlamak için de aynıdır.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>İnceleme: Seyahat dağıtım medallion tarafından
 > [!NOTE]
-> Bu genellikle bir veri Bilimcisi görevdir.
+> Bu analiz genellikle bir veri bilimi görevidir.
 > 
 > 
 
@@ -412,11 +412,11 @@ Hive directory isteminden aşağıdaki komutu çalıştırın:
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>İnceleme: Seyahat dağıtım medallion ve hack lisans tarafından
 > [!NOTE]
-> Bu genellikle bir veri Bilimcisi görevdir.
+> Bu görev genellikle bir veri bilimcisini için kullanılır.
 > 
 > 
 
-Bir veri kümesini Keşfetmenin, sık değerlerinin gruplarının ortak oluşumları incelemek istiyoruz. Bu bölümde, cab ve sürücüleri için bunun nasıl yapılacağını gösteren bir örnek sağlar.
+Bir veri kümesini araştırırken, genellikle değer gruplarının dağıtımlarını incelemek istiyoruz. Bu bölüm, cab ve sürücüler için bu çözümlemenin nasıl yapılacağını gösteren bir örnek sağlar.
 
 **Örnek\_hive\_seyahat\_sayısı\_tarafından\_medallion\_license.hql** dosya gruplarını taksi dataset **medallion** ve **hack_license**ve her birleşim sayısını döndürür. İçeriği şunlardır:
 
@@ -457,7 +457,7 @@ Hive directory isteminde çalıştırın:
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-*-S* Bu komutta yer alan bir bağımsız değişken Hive Map/Reduce işleri durumu ekran çıktısını engeller. Bunu bir ekran daha okunabilir Hive sorgusu çıkışı yazdırma yaptığından, bu yararlıdır.
+*-S* Bu komutta yer alan bir bağımsız değişken Hive Map/Reduce işleri durumu ekran çıktısını engeller. Bu komut, Hive sorgu çıkışının ekran yazdırmasını daha okunaklı hale getiren yararlı olur.
 
 ### <a name="exploration-binary-class-distributions-of-trip-tips"></a>İnceleme: İkili sınıfı dağıtımlarını seyahat ipuçları
 > [!NOTE]
@@ -470,7 +470,7 @@ Hive directory isteminde çalıştırın:
 * verilen İpucu (sınıf 1, İpucu\_> 0 ABD Doları tutar)  
 * İpucu yok (TIP, sınıf 0\_miktarı = 0 ABD Doları)
 
-Aşağıdaki **örnek\_hive\_Eğimli\_frequencies.hql** dosya bunu yapar:
+Aşağıdaki **örnek\_hive\_eğimli\_frekansları. HQL** dosyası çalıştırılacak komutu gösterir:
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -537,7 +537,7 @@ Gerçek seyahat uzaklık karşılaştırması görmek için ve [Haversine uzakl�
     and dropoff_longitude between -90 and -30
     and dropoff_latitude between 30 and 90;
 
-Yukarıdaki sorguda, R mil olarak dünya yüzdesi olan ve PI radyana dönüştürülür. Boylam-enlem noktaları NYC alan gölgeden uzak olan değerleri kaldırmak için filtrelenir.
+Yukarıdaki sorguda, R mil olarak dünya yüzdesi olan ve PI radyana dönüştürülür. Boylam-Enlem noktaları, NYC alanından uzak değerleri kaldıracak şekilde filtrelenmiştir.
 
 Bu durumda, biz sonuçları adlı bir dizin için yazma **queryoutputdir**. Aşağıdaki komutları dizisini ilk olarak bu çıkış dizinini oluşturur ve ardından Hive komut çalıştırır.
 
@@ -578,10 +578,10 @@ Bu yordamda iki adımı vardır. Biz öncelikle katılın **nyctaxidb.trip** ve 
 
 Machine Learning ' deki [verileri Içeri aktarma][import-data] modülünden doğrudan örnek olarak kullanabilmek için, önceki sorgunun sonuçlarını bir iç Hive tablosuna depolamanız gerekir. Aşağıda, biz iç bir Hive tablosu oluşturmak ve içeriğini birleştirilmiş ve alt örneklenen verileri ile doldurun.
 
-Sorguyu doğrudan aşağıdakilerden oluşturmak için standart Hive işlev uygular **toplama\_datetime** alan:
+Sorgu, **toplama\_tarih saat** alanından aşağıdaki zaman parametrelerini oluşturmak için doğrudan standart Hive işlevlerini uygular:
 - günün saati
 - yılın haftası
-- Haftanın günü (Pazartesi 1 anlamına gelir ve Pazar 7 anlamına gelir)
+- hafta içi (' 1 ' Pazartesi için gelir ve ' 7 ' Pazar günü temsil eder)
 
 Sorgu, toplama ve dropoff konumlar arasında doğrudan uzaklık de oluşturur. Bu tür işlevleri tam bir listesi için bkz. [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF).
 
@@ -721,17 +721,17 @@ Machine Learning [veri Içeri aktarma][import-data] modülünde Hive sorguları 
 
 [Veri Içeri aktarma][import-data] modülü ve giriş için parametreler hakkında bazı ayrıntılar aşağıda verilmiştir:
 
-**HCatalog sunucusu URI**: küme adı ise **abc123**, sadece budur: https://abc123.azurehdinsight.net.
+**Hcatalog sunucusu URI 'si**: küme adı **abc123**ise, şunu kullanın: https://abc123.azurehdinsight.net.
 
 **Hadoop kullanıcı hesabı adı**: (uzaktan erişim kullanıcı adı değil) küme için seçilen kullanıcı adı.
 
-**Hadoop kullanıcı hesabı parolasını**: (uzaktan erişim parolayı değil) kümenin seçtiğiniz parola.
+**Hadoop Kullanıcı hesabı parolası**: küme için seçilen parola (uzaktan erişim parolası değil).
 
-**Çıktı verilerini konumunu**: Bu Azure olarak seçilir.
+**Çıkış verilerinin konumu**: Azure olarak seçildi.
 
-**Azure depolama hesabı adı**: varsayılan depolama hesabı adı, kümeyle ilişkili.
+**Azure depolama hesabı adı**: kümeyle ilişkili varsayılan depolama hesabının adı.
 
-**Azure kapsayıcı adı**: Bu küme için varsayılan kapsayıcı adı ve genellikle küme adıyla aynı. Adlı bir küme için **abc123**, abc123 budur.
+**Azure Container Name**: küme için varsayılan kapsayıcı adı ve genellikle küme adıyla aynıdır. **Abc123**adlı bir küme için ad abc123 olur.
 
 > [!IMPORTANT]
 > Machine Learning [veri alma][import-data] modülünü kullanarak sorgulamak istediğimiz herhangi bir tablo, iç tablo olmalıdır.
@@ -750,7 +750,7 @@ Hive sorgusunun ve [veri Içeri aktarma][import-data] modülünün bir ekran gö
 
 ![Verileri içeri aktarma modülü için ekran görüntüsü, Hive sorgusu](./media/hive-walkthrough/1eTYf52.png)
 
-Varsayılan kapsayıcıda alt örneklenen verilerimizi bulunduğu için makine öğreniminin elde edilen Hive sorgusu çok kolaydır. Yalnızca olduğu bir **seçin * nyctaxidb.nyctaxi gelen\_altörnekleme\_veri**.
+Aşağı örneklerimizin verileri varsayılan kapsayıcıda bulunduğundan, Machine Learning elde edilen Hive sorgusu basittir. Yalnızca olduğu bir **seçin * nyctaxidb.nyctaxi gelen\_altörnekleme\_veri**.
 
 Veri kümesi, makine öğrenimi modelleri oluşturmak için başlangıç noktası olarak artık kullanılabilir.
 
@@ -791,11 +791,11 @@ Veri kümesi, makine öğrenimi modelleri oluşturmak için başlangıç noktas�
 
   ![Test sınıfı dağılım grafiği](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b. Bu deneme için bir karışıklık matrisi tahmin doğruluk aramak için kullanırız. Bu aşağıda gösterilmiştir:
+  b. Bu deneme için, burada gösterildiği gibi tahmin accuracies bakmak için bir karışıklık matrisi kullanırız:
 
   ![Karışıklık Matrisi](./media/hive-walkthrough/cxFmErM.png)
 
-  Yaygın sınıflarda sınıfı doğruluk oldukça iyi olsa da, model "öğrenme" iyi bir iş nadir sınıflarında edilmediğini unutmayın.
+  Yaygın sınıfların accuracies sınıfı iyi olsa da, model, rarer sınıflarında "öğrenme" işleminin iyi bir işini yapmaz.
 
 - **Regresyon görev**: ipucu için bir seyahat Ücretli miktarını tahmin edin.
 
@@ -819,7 +819,7 @@ Veri kümesi, makine öğrenimi modelleri oluşturmak için başlangıç noktas�
 > 
 
 ## <a name="license-information"></a>Lisans bilgileri
-Bu örnek gözden geçirme ve eşlik eden kodlarını MIT lisansı altında Microsoft tarafından paylaşılır. Daha fazla ayrıntı için **LICENSE.txt** GitHub üzerinde örnek kod, dizinde dosya.
+Bu örnek gözden geçirme ve eşlik eden kodlarını MIT lisansı altında Microsoft tarafından paylaşılır. Daha fazla bilgi için GitHub 'daki örnek kodun dizinindeki **LICENSE. txt** dosyasına bakın.
 
 ## <a name="references"></a>Başvurular
 • [Andrés Monroy NYC taksi Gelişlerin indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  

@@ -1,30 +1,23 @@
 ---
 title: Veri ayıklama-LUSıS
-titleSuffix: Azure Cognitive Services
 description: Amaç ve varlıklar ile söylenişi metinlerdeki verileri ayıklayın. Language Understanding (LUSıS) öğesinden ne tür verilerin ayıklanabileceği hakkında bilgi edinin.
-services: cognitive-services
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 01/23/2020
+ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703146"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716298"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Amaç ve varlıklar ile söylenişi metinlerinde veri ayıklama
-LUO, kullanıcının doğal dil dıklarından bilgi almanıza olanak tanır. Bilgiler, bir program, uygulama veya sohbet bot tarafından işlem gerçekleştirmek üzere kullanılabilecek şekilde ayıklanır. Aşağıdaki bölümlerde, veri ve varlıklardan JSON örnekleri ile hangi verilerin döndürüldüğünü öğrenin.
+LUIS, bir kullanıcının doğal dil konuşma bilgi almak için sağlar. Bilgiler bir program, uygulama veya sohbet Robotu eyleme kullanılabilmesi için bir şekilde ayıklanır. Aşağıdaki bölümlerde, hangi verilerin hedefleri ve JSON örneklerini varlıklarla döndürülür öğrenin.
 
 Bir tam metin eşleşmesi olmadığından Ayıklanacak en zor veriler makine tarafından öğrenilen veri. Makine tarafından öğrenilen [varlıkların](luis-concept-entity-types.md) veri ayıklamasıyla, beklediğiniz verileri elde edinceye kadar, [yazma döngüsünün](luis-concept-app-iteration.md) bir parçası olması gerekir.
 
-## <a name="data-location-and-key-usage"></a>Veri konumu ve anahtar kullanımı
-LUO, yayımlanan [uç noktadan](luis-glossary.md#endpoint)verileri sağlar. **Https isteği** (Post veya Get), hazırlama veya üretim ortamları gibi bazı isteğe bağlı yapılandırmalara sahiptir.
+## <a name="data-location-and-key-usage"></a>Veri konum ve anahtar kullanımı
+LUIS, yayımlanan verilerden sağlar [uç nokta](luis-glossary.md#endpoint). **HTTPS isteğini** hazırlık veya üretim ortamları gibi bazı isteğe bağlı yapılandırmalar yanı sıra utterance (POST veya GET) içerir.
 
 #### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 tahmin uç noktası isteği](#tab/V2)
 
@@ -36,14 +29,14 @@ LUO, yayımlanan [uç noktadan](luis-glossary.md#endpoint)verileri sağlar. **Ht
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-* * * 
+* * *
 
-@No__t-0, lusıs uygulamasının **Ayarlar** sayfasında (`/apps/` ' den sonra), bu Luo uygulamayı düzenlediğinizde URL 'nin bir parçası olarak kullanılabilir. @No__t-0, uygulamanızı sorgulamak için kullanılan uç nokta anahtarıdır. LUSıS öğrenirken ücretsiz yazma/başlangıç anahtarınızı kullanabilirsiniz, ancak Endpoint tuşunun [beklenen lusıs kullanımınızı](luis-boundaries.md#key-limits)destekleyen bir anahtarla değiştirilmesi önemlidir. @No__t-0 birimi dakikadır.
+`appID`, bu Luo uygulamasını düzenlediğinizde, LUSıS uygulamanızın **Ayarlar** SAYFASıNDA ve URL 'nin (`/apps/`sonra) bir parçası olarak kullanılabilir. `subscription-key` Uygulamanızı sorgulamak için kullanılan uç noktası anahtarı. LUSıS öğrenirken ücretsiz yazma/başlangıç anahtarınızı kullanabilirsiniz, ancak Endpoint tuşunun [beklenen lusıs kullanımınızı](luis-boundaries.md#key-limits)destekleyen bir anahtarla değiştirilmesi önemlidir. `timezoneOffset` Dakika birimidir.
 
-**Https yanıtı** , her türlü amaç ve varlık bilgisini içerir. Bu, hazırlama veya üretim uç noktasının geçerli yayımlanmış modeline göre belirlenir. Uç nokta URL 'SI, bu web sitesinde, **anahtarlar ve uç noktalar** sayfasındaki **Yönet** bölümünde bulunan [halsıs](luis-reference-regions.md) Web sitesinde bulunur.
+**HTTPS yanıtı** LUIS belirleyebilir hedefi ve varlık bilgilerini herhangi birinin geçerli yayımlanan model tabanlı hazırlık veya üretim uç noktası içerir. Uç nokta URL'si bulundu [LUIS](luis-reference-regions.md) Web sitesi, **Yönet** üzerinde bölümünde **anahtarları ve uç noktaları** sayfası.
 
-## <a name="data-from-intents"></a>Amaçlardan alınan veriler
-Birincil veri, en üst Puanlama **hedefi adıdır**. Uç nokta yanıtı:
+## <a name="data-from-intents"></a>Intents verileri
+Üst birincil verilerdir Puanlama **hedefi adı**. Uç nokta yanıt şöyledir:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -78,18 +71,18 @@ Birincil veri, en üst Puanlama **hedefi adıdır**. Uç nokta yanıtı:
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-* * * 
+* * *
 
-|Veri nesnesi|Veri Türü|Veri konumu|Değer|
+|Veri nesnesi|Veri Türü|Veri Konumu|Değer|
 |--|--|--|--|
-|Varsayılandır|Dize|topScoringIntent. amaç|"GetStoreInfo"|
+|Amaç|Dize|topScoringIntent.intent|"GetStoreInfo"|
 
 Sohbet botu veya lu, çağırma uygulamanız birden fazla amaç puanı temelinde bir karar yapıyorsa, tüm amaç puanlarını döndürün.
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-QueryString parametresini `verbose=true` olarak ayarlayın. Uç nokta yanıtı:
+`verbose=true`QueryString parametresini ayarlayın. Uç nokta yanıt şöyledir:
 
 ```JSON
 {
@@ -114,7 +107,7 @@ QueryString parametresini `verbose=true` olarak ayarlayın. Uç nokta yanıtı:
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-QueryString parametresini `show-all-intents=true` olarak ayarlayın. Uç nokta yanıtı:
+`show-all-intents=true`QueryString parametresini ayarlayın. Uç nokta yanıt şöyledir:
 
 ```JSON
 {
@@ -138,16 +131,16 @@ QueryString parametresini `show-all-intents=true` olarak ayarlayın. Uç nokta y
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-* * * 
+* * *
 
-Amaçlar, en yüksekten en düşük puanla sıralanır.
+Intents en yüksek öncelikten en düşük puan için sıralanır.
 
-|Veri nesnesi|Veri Türü|Veri konumu|Değer|ınızı|
+|Veri nesnesi|Veri Türü|Veri Konumu|Değer|Puan|
 |--|--|--|--|:--|
-|Varsayılandır|Dize|amaçlar [0]. amaç|"GetStoreInfo"|0,984749258|
-|Varsayılandır|Dize|amaçlar [1]. amaç|Seçim|0,0168218873|
+|Amaç|Dize|ıntents [0] .intent|"GetStoreInfo"|0.984749258|
+|Amaç|Dize|ıntents [1] .intent|"None"|0.0168218873|
 
-Önceden oluşturulmuş etki alanları eklerseniz, amaç adı etki alanını belirtir (örneğin, `Utilties` veya `Communication`) ve Amaç:
+Önceden oluşturulmuş etki alanları eklerseniz, hedefi adı etki alanı gibi gösterir `Utilties` veya `Communication` amaç yanı sıra:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -201,21 +194,21 @@ Amaçlar, en yüksekten en düşük puanla sıralanır.
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-* * * 
+* * *
 
-|Etki Alanı|Veri nesnesi|Veri Türü|Veri konumu|Değer|
+|Domain|Veri nesnesi|Veri Türü|Veri Konumu|Değer|
 |--|--|--|--|--|
-|Yardımcı Programlar|Varsayılandır|Dize|amaçlar [0]. amaç|"<b>Yardımcı programları</b>. ShowNext "|
-|Kurulan|Varsayılandır|Dize|amaçlar [1]. amaç|<b>İletişim</b>. StartOver "|
-||Varsayılandır|Dize|amaçlar [2]. amaç|Seçim|
+|Altyapı Hizmetleri|Amaç|Dize|ıntents [0] .intent|"<b>Yardımcı programları</b>. ShowNext"|
+|İletişim|Amaç|Dize|ıntents [1] .intent|<b>İletişim</b>. StartOver"|
+||Amaç|Dize|[2] hedefleri .intent|"None"|
 
 
-## <a name="data-from-entities"></a>Varlıklardan veriler
-Çoğu chatbots ve uygulamanın, amaç adından daha fazla ihtiyacı vardır. Bu ek, isteğe bağlı veriler, utterance 'te bulunan varlıklardan gelir. Her varlık türü, eşleşme hakkındaki farklı bilgileri döndürür.
+## <a name="data-from-entities"></a>Veri varlıkları
+Çoğu sohbet robotları ve uygulamaların birden çok hedefi adı gerekir. Bu ek, isteğe bağlı veri varlıkları utterance içinde bulunan gelir. Her varlık türü eşleşme ile ilgili farklı bilgileri döndürür.
 
-Söylenişi 'teki tek bir sözcük veya tümcecik birden fazla varlıkla eşleşiyor olabilir. Bu durumda, eşleşen her varlık puanı ile döndürülür.
+Bir tek sözcük veya tümcecik bir utterance içinde birden fazla varlık eşleşebilir. Bu durumda, eşleşen her varlık kendi puanıyla döndürülür.
 
-Tüm varlıklar uç noktadan yanıtın **varlıklar** dizisinde döndürülür:
+Tüm varlıklar döndürülür **varlıkları** uç noktasından yanıt bir dizi:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -250,27 +243,26 @@ Tüm varlıklar uç noktadan yanıtın **varlıklar** dizisinde döndürülür:
 ```
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-* * * 
+* * *
 
-## <a name="tokenized-entity-returned"></a>Simgeleştirilmiş varlık döndürüldü
-Çeşitli [kültürler](luis-language-support.md#tokenization) , `entity` değeri [simgeleştirilmiş](luis-glossary.md#token)varlık nesnesini döndürür. ISIS tarafından döndürülen startIndex ve endIndex, varlık nesnesinde yeni ve simgeleştirilmiş değere eşlenmiyor, ancak ham varlığı programlı bir şekilde ayıklamanız için özgün sorguya değil. 
+## <a name="tokenized-entity-returned"></a>parçalanmış varlık döndürdü
 
-Örneğin, Almanya 'da, `das Bauernbrot` kelimesi `das bauern brot` ' e ayarlanır. @No__t-0 olan simgeleştirilmiş değer döndürülür ve özgün değer özgün sorgunun startIndex ve endIndex öğesinden programlı bir şekilde belirlenebilir ve bu da `das Bauernbrot` ' i verir.
+LUSıS 'deki [belirteç desteğini](luis-language-support.md#tokenization) gözden geçirin.
 
-## <a name="simple-entity-data"></a>Basit varlık verileri
+## <a name="simple-entity-data"></a>Basit bir varlığın verilerinin
 
-[Basit bir varlık](reference-entity-simple.md) , makine tarafından öğrenilen bir değerdir. Bu bir sözcük veya tümcecik olabilir.
+A [varlığın](reference-entity-simple.md) bir makine öğrenilen değerdir. Bir sözcük veya tümcecik olabilir.
 
-## <a name="composite-entity-data"></a>Bileşik varlık verileri
+## <a name="composite-entity-data"></a>Bileşik bir varlığın verilerinin
 
-[Bileşik bir varlık](reference-entity-composite.md) , önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur. 
+[Bileşik bir varlık](reference-entity-composite.md) , önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar, tam bir varlık oluşturur.
 
-## <a name="list-entity-data"></a>Varlık verilerini listeleme
+## <a name="list-entity-data"></a>Varlık verilerini listesi
 
-[Liste varlıkları](reference-entity-list.md) , sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUSıS, liste varlıkları için ek değerler bulamaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için **öner** özelliğini kullanın. Aynı değere sahip birden fazla liste varlığı varsa, her bir varlık uç nokta sorgusunda döndürülür. 
+[Liste varlıkları](reference-entity-list.md) , sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Kullanım **önerilir** yeni sözcükleri sunabileceği önerileri görmek için özellik geçerli listede bağlı. Birden fazla liste varlığı ile aynı değeri varsa, her varlık uç nokta sorguda döndürülür.
 
-## <a name="prebuilt-entity-data"></a>Önceden oluşturulmuş varlık verileri
-[Önceden oluşturulmuş](luis-concept-entity-types.md) varlıklar, açık kaynaklı [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text) projesi kullanılarak normal ifade eşleşmesi temel alınarak bulunur. Önceden oluşturulmuş varlıklar, varlıklar dizisinde döndürülür ve `builtin::` ' dan önekli tür adını kullanır. Aşağıdaki metin, döndürülen önceden oluşturulmuş varlıklar ile bir örnektir:
+## <a name="prebuilt-entity-data"></a>Önceden oluşturulmuş bir varlığın verilerinin
+[Önceden oluşturulmuş](luis-concept-entity-types.md) varlıkları kullanarak açık kaynaklı bir normal ifade eşleştirmesi üzerinde temel saptandığında [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text) proje. Önceden oluşturulmuş varlıklarla varlık dizide döndürülen ve tür adı ön ekine sahip kullanın `builtin::`. Aşağıda bir örnek utterance döndürülen önceden oluşturulmuş varlıklarla gösterilmiştir:
 
 `Dec 5th send to +1 360-555-1212`
 
@@ -357,7 +349,7 @@ Tüm varlıklar uç noktadan yanıtın **varlıklar** dizisinde döndürülür:
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-QueryString parametresi olmadan, `verbose=true`:
+QueryString parametresi olmadan `verbose=true`:
 
 ```json
 "entities": {
@@ -534,39 +526,39 @@ QueryString parametresiyle `verbose=true`:
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-* * * 
-## <a name="regular-expression-entity-data"></a>Normal ifade varlık verileri
+* * *
+## <a name="regular-expression-entity-data"></a>Normal ifade varlık verilerini
 
 [Normal ifade varlığı](reference-entity-regular-expression.md) , sağladığınız normal ifade düzenine göre bir varlığı ayıklar.
 
-## <a name="extracting-names"></a>Adları ayıklama
-Bir ad, neredeyse tüm harflerin ve sözcüklerin bir birleşimi olabileceğinden, bir tanınaradan adların alınması zordur. Hangi tür adı ayıkladığınıza bağlı olarak, birkaç seçeneğiniz vardır. Aşağıdaki öneriler kurallar değildir ancak daha fazla yönerge değildir.
+## <a name="extracting-names"></a>Ayıklanan adları
+Bir ad, harf ve sözcükler neredeyse her bir birleşimi olabilir çünkü bir utterance adları alınıyor zordur. Hangi tür adı ayıkladığınıza bağlı olarak, birkaç seçeneğiniz vardır. Aşağıdaki öneriler kurallar değildir ancak daha fazla yönerge değildir.
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Önceden oluşturulmuş PersonName ve GeographyV2 varlıklarını ekleyin
 
-[PersonName](luis-reference-prebuilt-person.md) ve [GeographyV2](luis-reference-prebuilt-geographyV2.md) varlıkları bazı [dil kültürleri](luis-reference-prebuilt-entities.md)içinde kullanılabilir. 
+[PersonName](luis-reference-prebuilt-person.md) ve [GeographyV2](luis-reference-prebuilt-geographyV2.md) varlıkları bazı [dil kültürleri](luis-reference-prebuilt-entities.md)içinde kullanılabilir.
 
 ### <a name="names-of-people"></a>Kişilerin adları
 
-Kişilerin adı, dile ve kültüre bağlı olarak bazı hafif biçimlendirmeye sahip olabilir. Önceden oluşturulmuş bir **[PersonName](luis-reference-prebuilt-person.md)** varlığı veya ad ve soyadı [rollerine](luis-concept-roles.md) sahip **[basit bir varlık](luis-concept-entity-types.md#simple-entity)** kullanın. 
+Kişi adı, dil ve kültür bağlı olarak bazı küçük biçimi olabilir. Önceden oluşturulmuş bir **[PersonName](luis-reference-prebuilt-person.md)** varlığı veya ad ve soyadı [rollerine](luis-concept-roles.md) sahip **[basit bir varlık](luis-concept-entity-types.md#simple-entity)** kullanın.
 
-Basit varlığı kullanırsanız, farklı uzunluklarda Farklı uzunluklardaki ilk ve son adı kullanan örneklere ve hiçbir türlü amaç dahil olmak üzere tüm amaçlar genelinde dikkat edilecek örneklere sahip olun. Doğru tahmin edilemeyen adların etiketlenmesi için düzenli olarak uç nokta utslarını [gözden geçirin](luis-how-to-review-endoint-utt.md) .
+Basit varlığı kullanırsanız, farklı uzunluklarda Farklı uzunluklardaki ilk ve son adı kullanan örneklere ve hiçbir türlü amaç dahil olmak üzere tüm amaçlar genelinde dikkat edilecek örneklere sahip olun. [Gözden geçirme](luis-how-to-review-endoint-utt.md) doğru şekilde tahmin değil herhangi bir adı etiketlemek için düzenli olarak konuşma uç noktası.
 
-### <a name="names-of-places"></a>Yerlerin adları
+### <a name="names-of-places"></a>Basamak adları
 
 Konum adları, şehir, ilçe, eyalet, eyalet ve ülke/bölge gibi bir şekilde ayarlanır ve bilinmektedir. Konum bilgilerini ayıklamak için önceden oluşturulan **[geographyV2](luis-reference-prebuilt-geographyv2.md)** varlığını kullanın.
 
-### <a name="new-and-emerging-names"></a>Yeni ve gelişen adlar
+### <a name="new-and-emerging-names"></a>Yeni ve geliştirilmekte olan adları
 
-Bazı uygulamaların, ürünler veya şirketler gibi yeni ve gelişmekte olan adları bulabilmeleri gerekir. Bu tür adlar, veri ayıklamanın en zor türüdür. **[Basit bir varlıkla](luis-concept-entity-types.md#simple-entity)** başlayın ve [tümcecik listesi](luis-concept-feature.md)ekleyin. Doğru tahmin edilemeyen adların etiketlenmesi için düzenli olarak uç nokta utslarını [gözden geçirin](luis-how-to-review-endoint-utt.md) .
+Bazı uygulamalar, ürünleri veya şirketler gibi yeni ve geliştirilmekte olan adlarını bulmak gerekir. Bu tür adlar, veri ayıklamanın en zor türüdür. **[Basit bir varlıkla](luis-concept-entity-types.md#simple-entity)** başlayın ve [tümcecik listesi](luis-concept-feature.md)ekleyin. [Gözden geçirme](luis-how-to-review-endoint-utt.md) doğru şekilde tahmin değil herhangi bir adı etiketlemek için düzenli olarak konuşma uç noktası.
 
-## <a name="pattern-roles-data"></a>Model rolü verileri
-Roller, varlıkların bağlamsal farklarıdır.
+## <a name="pattern-roles-data"></a>Desen rolleri veri
+Roller, varlık bağlamsal fark vardır.
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Varlık adı, iki rol içeren `Location`, `Origin` ve `Destination` ' dir.
+Varlık adı, iki rol `Origin` ve `Destination``Location`.
 
 ```JSON
 "entities": [
@@ -599,11 +591,11 @@ Varlık adı, iki rol içeren `Location`, `Origin` ve `Destination` ' dir.
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-V3 'de **rol adı** nesnenin birincil adıdır. 
+V3 'de **rol adı** nesnenin birincil adıdır.
 
-Varlık adı, iki rol içeren `Location`, `Origin` ve `Destination` ' dir.
+Varlık adı, iki rol `Origin` ve `Destination``Location`.
 
-QueryString parametresi olmadan, `verbose=true`:
+QueryString parametresi olmadan `verbose=true`:
 
 ```json
 "entities": {
@@ -685,17 +677,17 @@ QueryString parametresiyle `verbose=true`:
 
 * * *
 
-## <a name="patternany-entity-data"></a>Model. tüm varlık verileri
+## <a name="patternany-entity-data"></a>Varlık verilerini pattern.Any
 
-[Desen. any](reference-entity-pattern-any.md) , varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur.  
+[Desen. any](reference-entity-pattern-any.md) , varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur.
 
-## <a name="sentiment-analysis"></a>Yaklaşım Analizi
-Yaklaşım Analizi yapılandırılırsa, LUSıS JSON yanıtı yaklaşım analizini içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
+## <a name="sentiment-analysis"></a>Duygu analizi
+Yaklaşım analizi yapılandırılmışsa, yaklaşım analizi LUIS json yanıtı içerir. Yaklaşım analizi hakkında daha fazla bilgi [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgeleri.
 
-### <a name="sentiment-data"></a>Yaklaşım verileri
-Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır.
+### <a name="sentiment-data"></a>Duygu verilerini
+Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri.
 
-Kültür `en-us` olduğunda yanıt şu şekilde olur:
+Kültür olduğunda `en-us`, yanıt:
 
 ```JSON
 "sentimentAnalysis": {
@@ -704,7 +696,7 @@ Kültür `en-us` olduğunda yanıt şu şekilde olur:
 }
 ```
 
-Diğer tüm kültürler için yanıt şu şekilde yapılır:
+Diğer tüm kültürler için yanıt şöyledir:
 
 ```JSON
 "sentimentAnalysis": {
@@ -713,8 +705,8 @@ Diğer tüm kültürler için yanıt şu şekilde yapılır:
 ```
 
 
-### <a name="key-phrase-extraction-entity-data"></a>Anahtar tümceciği ayıklama varlığı verileri
-Anahtar tümceciği ayıklama varlığı, [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)tarafından sunulan, utterance 'teki anahtar tümceleri döndürür.
+### <a name="key-phrase-extraction-entity-data"></a>Anahtar ifade ayıklama varlık verilerini
+Anahtar ifade ayıklama varlık tarafından sağlanan utterance, anahtar ifadeleri döndürür [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
@@ -756,7 +748,7 @@ Anahtar tümceciği ayıklama varlığı, [metin analizi](https://docs.microsoft
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-QueryString parametresi olmadan, `verbose=true`:
+QueryString parametresi olmadan `verbose=true`:
 
 ```json
 "entities": {
@@ -822,9 +814,9 @@ QueryString parametresiyle `verbose=true`:
 * * *
 
 
-## <a name="data-matching-multiple-entities"></a>Birden çok varlıkla eşleşen veriler
+## <a name="data-matching-multiple-entities"></a>Birden çok varlık eşleşen veri
 
-LUSıS, utterance 'te bulunan tüm varlıkları döndürür. Sonuç olarak, sohbet botu için sonuçlara göre karar vermeniz gerekebilir. Söylenişi, bir utterde birçok varlığa sahip olabilir:
+LUIS utterance içinde bulunan tüm varlıkları döndürür. Sonuç olarak, sohbet botu sonuçlarına göre karar vermeniz gerekebilir. Bir utterance birçok varlığın bir utterance sahip olabilir:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
@@ -995,7 +987,7 @@ QueryString parametresi olarak `verbose=true` olmadan.
 }
 ```
 
-@No__t-0 ile QueryString parametresi olarak.
+`verbose=true` bir QueryString parametresi olarak.
 
 
 ```json
@@ -1139,9 +1131,9 @@ QueryString parametresi olarak `verbose=true` olmadan.
 
 ## <a name="data-matching-multiple-list-entities"></a>Birden çok liste varlığı ile eşleşen veriler
 
-Bir sözcük veya tümcecik birden fazla liste varlığıyla eşleşiyorsa, uç nokta sorgusu her bir liste varlığını döndürür.
+Bir sözcük veya tümcecik birden fazla liste varlığı eşleşirse, uç nokta sorgu her liste varlığı döndürür.
 
-@No__t-0 sorgusu için ve uygulamanın birden fazla listede `red` kelimesi varsa, LUSıS tüm varlıkları tanır ve JSON uç noktası yanıtının bir parçası olarak bir varlık dizisi döndürür: 
+Sorgu için `when is the best time to go to red rock?`, ve uygulama word `red` LUIS birden fazla listesinde, tüm varlıkları tanıyan ve JSON bitiş noktası yanıtın bir parçası varlıkları bir dizi döndürür:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -1276,4 +1268,4 @@ Sorgu dizesinde `verbose=true` ile:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .
+Bkz: [varlık Ekle](luis-how-to-add-entities.md) LUIS uygulamanızı varlıklar ekleme hakkında daha fazla bilgi için.

@@ -3,32 +3,32 @@ title: Örnek verileri Azure blob depolama - Team Data Science Process
 description: Örnekleme, programlı olarak indirerek ve Python'da yazılan yordamları kullanarak örnekleme Azure blob depolamada depolanan verileri.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1c455106e5faa4aa20ec56f37788e0b8c324fee1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042925"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720291"
 ---
 # <a name="heading"></a>Örnek verileri Azure blob depolama
 
 Bu makale, örnekleme verileri program aracılığıyla indiriliyor ve Python'da yazılan yordamları kullanarak örnekleme tarafından Azure blob depolamada depolanan kapsar.
 
 **Neden verilerinizi örnek?**
-Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek veriler için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için iyi bir fikir olduğunu. Bu, özellik Mühendisliği veri anlama ve keşfetme kolaylaştırır. Kendi Cortana Analytics süreci rolünde hızlı prototip oluşturma veri işleme işlevleri ve makine öğrenimi modellerini etkinleştirmektir.
+Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek veriler için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için iyi bir fikir olduğunu. Örnekleme, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırır. Kendi Cortana Analytics süreci rolünde hızlı prototip oluşturma veri işleme işlevleri ve makine öğrenimi modellerini etkinleştirmektir.
 
 Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>İndirme ve aşağı örnek veriler
-1. Blob hizmeti aşağıdaki örnek Python kodu aracılığıyla Azure blob depolamadan veri indirin: 
+1. Aşağıdaki örnek Python kodundan blob hizmetini kullanarak Azure Blob depolama 'dan verileri indirin: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +61,7 @@ Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://do
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Artık daha fazla araştırma ve özellik oluşturma için yüzde 1 örnek ile Yukarıdaki veri çerçevesi ile çalışabilirsiniz.
+Artık, daha fazla keşif ve özellik oluşturma için yukarıdaki veri çerçevesiyle birlikte bir yüzde örneği ile çalışabilirsiniz.
 
 ## <a name="heading"></a>Karşıya yüklemek ve Azure Machine Learning içine okuyun
 Aşağıdaki örnek kod, aşağı örnek veriler ve doğrudan Azure Machine Learning'de kullanmak üzere kullanabilirsiniz:

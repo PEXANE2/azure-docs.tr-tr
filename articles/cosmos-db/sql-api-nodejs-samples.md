@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220162"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718302"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB verileri yönetmek için Node. js örnekleri
 
@@ -71,7 +71,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 
 ## <a name="item-examples"></a>Öğe örnekleri
 
-[Itemmanagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) dosyası öğede CRUD işlemlerinin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
+[Itemmanagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) dosyası öğede CRUD işlemlerinin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -98,7 +98,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 
 ## <a name="server-side-programming-examples"></a>Sunucu tarafı programlama örnekleri
 
-[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) projesinin [app.js](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) dosyasında aşağıdaki görevlerin nasıl gerçekleştirileceği gösterilir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB içindeki sunucu tarafı programlama hakkında bilgi edinmek için bkz. [saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md) kavramsal makalesi. 
+[Serversıdescripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) projesinin [index. TS](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB içindeki sunucu tarafı programlama hakkında bilgi edinmek için bkz. [saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md) kavramsal makalesi. 
 
 | Görev | API başvurusu |
 | --- | --- |

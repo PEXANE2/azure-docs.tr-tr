@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973373"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719084"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -32,6 +32,7 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 - Güneydoğu Asya
 - Kuzey Avrupa
 - Batı Avrupa
+- Doğu Japonya
 - Birleşik Krallık, Güney
 - ABD Doğu
 - ABD Doğu 2
@@ -129,6 +130,7 @@ Geçiş işlemi tamamlandıktan sonra, depolama hesabının çoğaltma ayarı **
 Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulundurun:
 
 - Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin belirli bir tarihe göre GZRS veya RA-GZRS 'e geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş gerçekleştirmenizi önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer.
+- Dinamik geçiş yalnızca GRS veya RA-GRS çoğaltmasını kullanan depolama hesapları için desteklenir. Hesabınız LRS kullanıyorsa, devam etmeden önce hesabınızın çoğaltma türünü GRS veya RA-GRS olarak değiştirmeniz gerekir. Bu ara adım, GRS/RA-GRS tarafından sunulan ikincil uç noktayı ekler.
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz.
 - Yalnızca standart depolama hesabı türleri dinamik geçişi destekler. Premium Depolama hesaplarının el ile geçirilmesi gerekir.

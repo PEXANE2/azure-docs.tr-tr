@@ -1,22 +1,22 @@
 ---
-title: Farklı Azure depolama konumları - Team Data Science Process verileri örneklendirme
+title: Farklı Azure depolama konumlarında örnek veriler-ekip veri bilimi Işlemi
 description: Örnek verileri Azure blob kapsayıcıları, SQL Server ve Hive tablolarındaki için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253092"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718612"
 ---
 # <a name="heading"></a>Örnek verileri Azure blob kapsayıcıları, SQL Server ve Hive tablolarındaki
 
@@ -30,5 +30,5 @@ Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://do
 
 **Neden veri örneği?**
 
-Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek veriler için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için iyi bir fikir olduğunu. Bu, özellik Mühendisliği veri anlama ve keşfetme kolaylaştırır. Kendi Cortana Analytics süreci rolünde hızlı prototip oluşturma veri işleme işlevleri ve makine öğrenimi modellerini etkinleştirmektir.
+Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek veriler için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için iyi bir fikir olduğunu. Yeniden boyutlandırma, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırabilir. Cortana Analytics Işlemindeki bu örnekleme rolü, veri işleme işlevlerinin ve makine öğrenimi modellerinin hızlı prototipini etkinleştirmektir.
 
