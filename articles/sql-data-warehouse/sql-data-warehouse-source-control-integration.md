@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645255"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720036"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için kaynak denetimi tümleştirmesi
 
@@ -37,7 +37,7 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
    ![Bağlantıları Yönet](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönet")
 
-   ![Bağlanma](media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlan")
+   ![Bağlanma](media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlayın")
 
 3. Azure depoyu deponuzu projenizden yerel makinenize kopyalayın
 
@@ -82,13 +82,3 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure SQL veri ambarı için geliştirme](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f570e0cd7361b365a4034e318511cf8227c425a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263549"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722484"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer bileşenleri ve sınırlamaları
 Azure Load Balancer, işlem için birkaç temel bileşen içerir.  Bu bileşenler aboneliğinizde Azure portal, Azure CLı veya Azure PowerShell aracılığıyla yapılandırılabilir.  
@@ -58,7 +58,7 @@ Temel Load Balancer giden kuralları desteklemez.
 
 Load Balancer, TCP ve UDP uygulamaları için aşağıdaki temel özellikleri sunar:
 
-* **Yük dengeleme algoritması**: Azure Load Balancer, ön uç, arka uç havuzu örneklerine ulaşan trafiği dağıtmak için bir yük dengeleme kuralı oluşturabilirsiniz. Load Balancer, gelen akışların dağıtılması için bir karma algoritması kullanır ve akışların üst bilgilerini arka uç havuz örneklerine yeniden yazar. Bir sistem durumu araştırması sağlıklı bir arka uç bitiş noktasını gösterdiğinde yeni akışlar almak için bir sunucu kullanılabilir.
+* **Yük dengeleme algoritması**: Azure Load Balancer, ön uç, arka uç havuzu örneklerine ulaşan trafiği dağıtmak için bir yük dengeleme kuralı oluşturabilirsiniz. Load Balancer gelen akışlar (bayt değil) dağıtımı için bir karma algoritması kullanır ve akışların üst bilgilerini arka uç havuz örneklerine yeniden yazar. Bir sistem durumu araştırması sağlıklı bir arka uç bitiş noktasını gösterdiğinde yeni akışlar almak için bir sunucu kullanılabilir.
 Varsayılan olarak, Load Balancer 5 demet karma kullanır. 
 
    Karma değeri şunları içerir: 

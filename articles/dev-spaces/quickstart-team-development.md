@@ -1,17 +1,17 @@
 ---
 title: Kubernetes üzerinde takım geliştirme
 services: azure-dev-spaces
-ms.date: 04/25/2019
+ms.date: 01/22/2020
 ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Dev Spaces ile takım Kubernetes geliştirme işlemlerini ve mikro hizmetleri nasıl yapabileceğiniz gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290419"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721600"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'de takım geliştirme-Azure Dev Spaces
 
@@ -27,7 +27,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 - Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [Held 2,13-2,16 yüklendi][helm-installed].
+- [Held 3 yüklendi][helm-installed].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
@@ -82,39 +82,14 @@ Kubernetes üzerinde örnek uygulamayı çalıştırmaya yönelik komutlar, var 
 
 Bir uygulama bir kümede çalıştıktan sonra, dağıtımı yapmak için kullanılan araç ne olursa olsun, takım geliştirmesi için Azure Dev Spaces kullanabilirsiniz.
 
-`helm init` ve `helm install` komutlarını kullanarak, kümenize örnek uygulamayı ayarlayıp kurun.
+Örnek uygulamayı kümenize kurmak ve kurmak için `helm install` komutunu kullanın.
 
 ```cmd
 cd charts/
-helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic 
-```
-> [!Note]
-> **RBAC özellikli bir küme kullanıyorsanız**, [Tiller için bir hizmet hesabı](https://helm.sh/docs/using_helm/#role-based-access-control)yapılandırmadığınızdan emin olun. Aksi takdirde, `helm` komutları başarısız olur.
-
-`helm install` komutun tamamlanması birkaç dakika sürebilir. Komutun çıktısı tamamlandığında kümeye dağıtıldığı tüm hizmetlerin durumunu gösterir:
-
-```cmd
-$ cd charts/
-$ helm init --wait
-...
-Happy Helming!
-
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic
-
-Hang tight while we grab the latest from your chart repositories...
-...
-NAME               READY  UP-TO-DATE  AVAILABLE  AGE
-bikes              1/1    1           1          4m32s
-bikesharingweb     1/1    1           1          4m32s
-billing            1/1    1           1          4m32s
-gateway            1/1    1           1          4m32s
-reservation        1/1    1           1          4m32s
-reservationengine  1/1    1           1          4m32s
-users              1/1    1           1          4m32s
+helm install bikesharing . --dependency-update --namespace dev --atomic
 ```
 
-Örnek uygulama kümenize yüklendikten sonra ve kümenizde geliştirme alanları etkinleştirildikten sonra, şu anda seçili olan *dev* 'de örnek uygulamanın URL 'lerini göstermek için `azds list-uris` komutunu kullanın.
+`helm install` komutun tamamlanması birkaç dakika sürebilir. Örnek uygulama kümenize yüklendikten sonra ve kümenizde geliştirme alanları etkinleştirildikten sonra, şu anda seçili olan *dev* 'de örnek uygulamanın URL 'lerini göstermek için `azds list-uris` komutunu kullanın.
 
 ```cmd
 $ azds list-uris
@@ -235,5 +210,5 @@ Azure Dev Spaces uygulamasının birden fazla kapsayıcı arasında daha karmaş
 > [!div class="nextstepaction"]
 > [Birden çok kapsayıcı ve takım geliştirme ile çalışma](multi-service-nodejs.md)
 
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

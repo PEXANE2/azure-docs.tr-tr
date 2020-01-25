@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/17/2019
+ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779612"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719679"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -29,18 +29,7 @@ Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) canlı 
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>kaynak dosyalarınızın teslim edilmek üzere hazırlanması <a id="delivery-protocols"/>
 
-Dinamik paketlemeden yararlanmak için, Mezzanine (kaynak) dosyanızı çoklu bit hızı MP4 (ISO tabanlı medya 14496-12) dosyaları kümesine [kodlamanız](encoding-concept.md) gerekir. Media Services dinamik paketleme için, kodlanmış MP4 ve akış yapılandırma [dosyalarını içeren bir](assets-concept.md) varlığınız olması gerekir. Bu MP4 dosyaları kümesinden, aşağıdaki akış medya protokolleri aracılığıyla video teslim etmek için dinamik paketleme kullanabilirsiniz:
-
-|Protokol|Örnek|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|Kesintisiz Akış| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
-
-İçeriğinizi Media Services dinamik şifrelemeyi kullanarak korumayı planlıyorsanız, bkz. [akış protokolleri ve şifreleme türleri](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Dinamik paketlemeden yararlanmak için, Mezzanine (kaynak) dosyanızı çoklu bit hızı MP4 (ISO tabanlı medya 14496-12) dosyaları kümesine [kodlamanız](encoding-concept.md) gerekir. Media Services dinamik paketleme için, kodlanmış MP4 ve akış yapılandırma [dosyalarını içeren bir](assets-concept.md) varlığınız olması gerekir. Bu MP4 dosyaları kümesinden, aşağıda açıklanan akış medya protokolleri aracılığıyla video teslim etmek için dinamik paketleme kullanabilirsiniz.
 
 > [!TIP]
 > MP4 ve akış yapılandırma dosyalarını almanın bir yolu, [Media Services ile Mezzanine dosyanızı kodlayakullanmaktır](#encode-to-adaptive-bitrate-mp4s). 
@@ -48,6 +37,36 @@ Dinamik paketlemeden yararlanmak için, Mezzanine (kaynak) dosyanızı çoklu bi
 Kodlanmış varlıktaki videoları kayıttan yürütme için kullanılabilir hale getirmek için bir [akış Bulucu](streaming-locators-concept.md) oluşturmanız ve akış URL 'leri oluşturmanız gerekir. Daha sonra akış istemci bildiriminde (HLS, MPEG DASH veya Kesintisiz Akış) belirtilen biçime göre akışı seçtiğiniz protokolde alırsınız.
 
 Bunu sonucunda, dosyaları yalnızca tek bir depolama biçiminde depolamanız ve buna göre ödeme yapmanız gerekir. Media Services hizmeti, istemciden gelen isteklere göre uygun yanıtı derler ve sunar.
+
+İçeriğinizi Media Services dinamik şifrelemeyi kullanarak korumayı planlıyorsanız, bkz. [akış protokolleri ve şifreleme türleri](content-protection-overview.md#streaming-protocols-and-encryption-types).
+
+### <a name="hls-protocol"></a>HLS Protokolü
+
+Akış istemciniz aşağıdaki HLS biçimlerini belirtebilir:
+
+|Protokol|Örnek|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+### <a name="mpeg-dash-protocol"></a>MPEG-DASH Protokolü
+
+Akış istemciniz aşağıdaki MPEG-DASH biçimlerini belirtebilir:
+
+|Protokol|Örnek|
+|---|---|
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+
+### <a name="smooth-streaming-protocol"></a>Kesintisiz Akış Protokolü
+
+Akış istemciniz aşağıdaki Kesintisiz Akış biçimlerini belirtebilir:
+
+|Protokol|Notlar/örnekler| 
+|---|---|
+|Kesintisiz Akış| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Kesintisiz Akış 2,0 (eski bildirim)|Varsayılan olarak, Kesintisiz Akış bildirim biçimi Yinele etiketini (r-Tag) içerir. Ancak bazı oyuncular `r-tag`desteklemez. Bu oyunculara sahip istemciler, r-Tag ' i devre dışı bırakan bir biçim kullanabilir:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 ## <a name="on-demand-streaming-workflow"></a>İsteğe bağlı akış iş akışı
 

@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167621"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712544"
 ---
 # <a name="what-is-identity-provisioning"></a>Kimlik sağlama nedir?
 
 Bugün, işletmeler ve şirketler, şirket içi ve bulut uygulamalarının daha fazla ve daha fazlasını haline geliyor.  Kullanıcıların hem şirket içinde hem de bulutta uygulamalara erişmesi gerekir. Bu çeşitli uygulamalar (Şirket içi ve bulut) genelinde tek bir kimliğe sahip olması gerekir.
 
-Sağlama, belirli koşullara göre nesne oluşturma, nesneyi güncel tutma ve koşullar artık karşılanmamaları durumunda nesneyi silme işlemidir. Örneğin, yeni bir Kullanıcı kuruluşunuza katıldığında, bu kullanıcı HR sistemine girilir.  Bu noktada, sağlama bulutta karşılık gelen bir kullanıcı hesabı, Active Directory ve kullanıcının erişmesi gereken farklı uygulamalar oluşturabilir.  Bu, kullanıcının çalışmaya başlamasını ve gün içinde ihtiyaç duydukları uygulamalara ve sistemlere erişmesini sağlar. 
+Sağlama, belirli koşullara göre nesne oluşturma, nesneyi güncel tutma ve koşullar artık karşılanmadıklarından nesneyi silme işlemidir. Örneğin, yeni bir Kullanıcı kuruluşunuza katıldığında, bu kullanıcı HR sistemine girilir.  Bu noktada, sağlama bulutta karşılık gelen bir kullanıcı hesabı, Active Directory ve kullanıcının erişmesi gereken farklı uygulamalar oluşturabilir.  Bu, kullanıcının çalışmaya başlamasını ve gün içinde ihtiyaç duydukları uygulamalara ve sistemlere erişmesini sağlar. 
 
 ![bulut sağlama](media/what-is-provisioning/cloud1.png)
 

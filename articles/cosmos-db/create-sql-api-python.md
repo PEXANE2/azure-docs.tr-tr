@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: a794a9ed35cbbdd36c2cf136b8afc208c3ea0692
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1e0016e8ce6bc9178befd1a5ca96aa2554929ac5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549027"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719543"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
 
@@ -51,11 +51,11 @@ Bu hızlı başlangıçta [Python SDK 'sının](https://pypi.org/project/azure-c
 
 Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini aracı 'nı kullanabilirsiniz. 
 
-1. **Veri Gezgini** > **Yeni Kapsayıcı**’yı seçin. 
+1. **Yeni kapsayıcı** > **Veri Gezgini** seçin. 
     
     **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
-    ![Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    ![Azure portal Veri Gezgini, kapsayıcı bölmesi Ekle](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
 
 2. **Kapsayıcı Ekle** sayfasında, yeni kapsayıcının ayarlarını girin.
 
@@ -63,12 +63,12 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
     |---|---|---|
     |**Veritabanı Kimliği**|Görevler|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adı 1 ila 255 karakter içermeli ve içeremezler `/, \\, #, ?`, veya bir boşluk. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
     |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
-    |**Kapsayıcı Kimliği**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
+    |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimlikleri, veritabanı adlarıyla aynı karakter gereksinimlerine sahiptir.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
     
     Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
     
-    **Tamam**’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
+    **Tamam**’ı seçin. Veri Gezgini yeni veritabanını ve kapsayıcıyı görüntüler.
 
 ## <a name="add-sample-data"></a>Örnek verileri ekleme
 

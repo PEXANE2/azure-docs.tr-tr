@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824128"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712910"
 ---
 # <a name="run-opc-publisher"></a>OPC Yayımcısını Çalıştırma
 
@@ -532,7 +532,7 @@ Bellek ve performans birbirine bağımlıdır ve her ikisi de, yayımlanacak dü
 - IoT Hub ileti boyutu (varsayılan `1`): `--ms`
 - İzlenen öğeler kuyruk kapasitesi: `--mq`
 
-`--mq` parametresi, tüm OPC düğümü değer değişikliği bildirimlerini arabelleğe alarak iç sıranın kapasitesinin üst sınırını denetler. OPC yayımcısı IoT Hub yeterince hızlı bir şekilde ileti gönderemıyorsa, bu sıra bildirimleri arabelleğe alır. Parametresi, ara belleğe kullanılabilecek bildirimlerin sayısını ayarlar. Bu kuyruktaki öğelerin sayısını test çalıştırmalarınız içinde artırdıysanız, iletileri gevzleşmemek için şunları yapmanız gerekir:
+`--mq` parametresi, tüm OPC düğümü değer değişikliği bildirimlerini arabelleğe alarak iç sıranın kapasitesinin üst sınırını denetler. OPC yayımcısı IoT Hub yeterince hızlı bir şekilde ileti gönderemıyorsa, bu sıra bildirimleri arabelleğe alır. Parametresi, ara belleğe kullanılabilecek bildirimlerin sayısını ayarlar. Bu kuyruktaki öğelerin sayısını test çalıştırmalarınız içinde artırdıysanız, ileti kaybını önlemek için şunları yapmanız gerekir:
 
 - IoT Hub gönderme aralığını azaltma
 - IoT Hub ileti boyutunu artır
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Varsayılan yapılandırma, verileri her 10 saniyede bir IoT Hub veya IoT Hub almak için 256 kB 'Lık verilerin kullanılabilir olduğu durumlarda gönderir. Bu yapılandırma yaklaşık 10 saniyelik bir gecikme süresi ekler, ancak büyük ileti boyutu nedeniyle verilerin gevleşmesinin en düşük olasılığa sahiptir. Tanılama çıkışında kayıp OPC düğümü güncelleştirmesi olmadığını gösterilmektedir: `monitored item notifications enqueue failure: 0`.
+Varsayılan yapılandırma, verileri her 10 saniyede bir IoT Hub veya IoT Hub almak için 256 kB 'Lık verilerin kullanılabilir olduğu durumlarda gönderir. Bu yapılandırma yaklaşık 10 saniyelik bir gecikme süresi ekler, ancak büyük ileti boyutu nedeniyle verilerin kaybedilmesi için en düşük olasılığa sahiptir. Tanılama çıkışında kayıp OPC düğümü güncelleştirmesi olmadığını gösterilmektedir: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Sabit gönderme aralığı (--si 1--MS 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Bu yapılandırma, olabildiğince fazla OPC düğüm değeri güncelleştirmesi olarak toplu işler. En büyük IoT Hub ileti boyutu, burada yapılandırılan 256 kB 'tır. Gönderme aralığı istenmez, bu, alma için IoT Hub veri miktarının gecikme süresini belirlediği anlamına gelir. Bu yapılandırma, herhangi bir OPC düğümü değerini gevşmek için en az olasılığa sahiptir ve çok sayıda düğüm yayımlamak için uygundur. Bu yapılandırmayı kullandığınızda, 256 kB 'lik ileti boyutuna ulaşılmazsa, senaryonuzun gecikme süresi yüksek olan koşullar olmadığından emin olun.
+Bu yapılandırma, olabildiğince fazla OPC düğüm değeri güncelleştirmesi olarak toplu işler. En büyük IoT Hub ileti boyutu, burada yapılandırılan 256 kB 'tır. Gönderme aralığı istenmez, bu, alma için IoT Hub veri miktarının gecikme süresini belirlediği anlamına gelir. Bu yapılandırma, tüm OPC düğüm değerlerini kaybetme olasılığının en az olasılığını içerir ve çok sayıda düğüm yayımlamak için uygundur. Bu yapılandırmayı kullandığınızda, 256 kB 'lik ileti boyutuna ulaşılmazsa, senaryonuzun gecikme süresi yüksek olan koşullar olmadığından emin olun.
 
 ## <a name="debug-the-application"></a>Uygulamada hata ayıklama
 

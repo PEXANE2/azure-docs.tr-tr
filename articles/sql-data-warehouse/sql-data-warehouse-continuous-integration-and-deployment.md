@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708660"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712993"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için sürekli tümleştirme ve dağıtım
 
@@ -30,11 +30,11 @@ Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi A
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Visual Studio derlemesi ile sürekli tümleştirme
 
-1. Azure Pipelines gidin ve yeni bir derleme işlem hattı oluşturun
+1. Azure Pipelines gidin ve yeni bir derleme işlem hattı oluşturun.
 
       ![Yeni işlem hattı](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Yeni İşlem Hattı")
 
-2. Kaynak kodu deponuzu (Azure Repos git) seçin ve .NET Masaüstü uygulama şablonunu seçin
+2. Kaynak kodu deponuzu (Azure Repos git) seçin ve .NET Masaüstü uygulama şablonunu seçin.
 
       ![İşlem hattı kurulumu](media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "İşlem hattı kurulumu") 
 
@@ -47,7 +47,7 @@ Bu noktada, kaynak denetimi depo ana dalınızdaki tüm iadelerinizin, veritaban
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL veri ambarı (veya veritabanı) dağıtım göreviyle sürekli dağıtım
 
-1. [Azure SQL veritabanı dağıtım görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları girin. Bu görev çalıştırıldığında, önceki derleme işleminden oluşturulan DACPAC, hedef veri ambarına dağıtılır. [Azure SQL DataWarehouse dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) de kullanabilirsiniz 
+1. [Azure SQL veritabanı dağıtım görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları girin. Bu görev çalıştırıldığında, önceki derleme işleminden oluşturulan DACPAC, hedef veri ambarına dağıtılır. [Azure SQL veri ambarı dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)de kullanabilirsiniz. 
 
       ![Dağıtım görevi](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Dağıtım görevi")
 
@@ -61,37 +61,7 @@ Bu noktada, kaynak denetimi depo ana dalınızdaki tüm iadelerinizin, veritaban
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL veri ambarı mimarisini](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture) keşfet
-- Hızlı [bir şekılde SQL veri ambarı oluşturun][create a SQL Data Warehouse]
-- [Örnek verileri yükleyin][load sample data].
+- [Azure SQL veri ambarı mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
+- Hızlı [bir şekılde SQL veri ambarı oluşturun](create-data-warehouse-portal.md)
+- [Örnek verileri yükleme](sql-data-warehouse-load-sample-databases.md)
 - [Videoları](/azure/sql-data-warehouse/sql-data-warehouse-videos) keşfet
-
-
-
-<!--Image references-->
-
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Feature requests]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN forum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

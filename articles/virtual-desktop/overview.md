@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514281"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721430"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -67,7 +67,7 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 |İşletim Sistemi|Gerekli lisans|
 |---|---|
 |Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
+|Windows 7 kurumsal |Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
 |Windows Server 2012 R2, 2016, 2019|Yazılım güvencesi içeren RDS Istemci erişim lisansı (CAL)|
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
@@ -92,20 +92,22 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |---|---|---|
 |*. wvd.microsoft.com|TCP bağlantı noktası 443|Hizmet trafiği|
 |*.blob.core.windows.net|TCP bağlantı noktası 443|Aracı, SXS yığın güncelleştirmeleri ve aracı trafiği|
-|*.core.windows.net|TCP bağlantı noktası 443|Aracı trafiği|
+|*. core.windows.net|TCP bağlantı noktası 443|Aracı trafiği|
 |*.servicebus.windows.net|TCP bağlantı noktası 443|Aracı trafiği|
 |prod.warmpath.msftcloudes.com|TCP bağlantı noktası 443|Aracı trafiği|
 |catalogartifact.azureedge.net|TCP bağlantı noktası 443|Azure Marketi|
 |kms.core.windows.net|TCP bağlantı noktası 1688|Windows 10 etkinleştirme|
 
 >[!IMPORTANT]
->Bu URL 'Leri açmak, güvenilir bir Windows sanal masaüstü dağıtımı için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure AD gibi diğer hizmetlere yönelik URL 'Leri içermez.
+>Bu URL 'Leri açmak, güvenilir bir Windows sanal masaüstü dağıtımı için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
 
 >[!NOTE]
+>Windows sanal masaüstü, ağ trafiğine izin vermek için beyaz listeye sahip bir IP adresi aralığı listesine sahip değil. Şu anda yalnızca belirli URL 'Lerin beyaz listeye alınmasını destekliyoruz.
+>
 >Hizmet trafiğiyle ilgili URL 'Ler için (*) joker karakterini kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmayı tercih ediyorsanız, joker karakterleri olmayan URL 'Leri bulma hakkında bilgi edinebilirsiniz:
 >
 >1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
->2. **Olay Görüntüleyicisi** 'ni açın ve **Windows** > **uygulama günlüklerine** gidin ve olay kimliği 3702 ' i arayın.
+>2. **Olay Görüntüleyicisi 'ni** açın ve **Windows günlükleri** > **uygulaması** > **WVD-Agent** ' a gidin ve olay kimliği 3702 ' i arayın.
 >3. Olay KIMLIĞI 3702 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3702 altındaki URL 'Ler bölgeye özeldir. Beyaz Listeleme işlemini, sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle tekrarlamanız gerekecektir.
 
 Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
@@ -132,7 +134,7 @@ Windows sanal masaüstü aşağıdaki x64 işletim sistemi görüntülerini dest
 
 * Windows 10 Enterprise multi-session, sürüm 1809 veya üzeri
 * Windows 10 Enterprise, sürüm 1809 veya üzeri
-* Windows 7 Enterprise
+* Windows 7 kurumsal
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
@@ -147,7 +149,7 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 |Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
 |Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
 |Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 7 Enterprise|Evet|Evet|Hayır|Hayır|Manual|
+|Windows 7 kurumsal|Evet|Evet|Hayır|Hayır|Manual|
 |Windows Server 2019|Evet|Evet|Hayır|Hayır|Automatic|
 |Windows Server 2016|Evet|Evet|Evet|Evet|Automatic|
 |Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Automatic|
