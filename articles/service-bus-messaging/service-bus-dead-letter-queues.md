@@ -1,6 +1,6 @@
 ---
 title: Service Bus atılacak ileti sıraları | Microsoft Docs
-description: Azure Service Bus atılacak ileti sıralarına genel bakış
+description: Azure Service Bus içindeki atılacak ileti kuyruklarını açıklar. Service Bus kuyrukları ve konu abonelikleri, atılacak ileti sırası adlı bir ikincil alt kuyruk sağlar.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: afa2e6e46579d9ce2906e2686cf40adf4b65ab2b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: e1c3798c36b497423ea1d0cb5da6fabbd6a935f7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516590"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761024"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus atılacak ileti sıralarına genel bakış
 
@@ -39,9 +39,9 @@ DLCı 'nin otomatik olarak temizlenmesi olmadığını unutmayın. İletiler, DL
 
 Service Bus, iletilerin ileti altyapısı içinden DLCı 'ye itilmesine neden olan birkaç etkinlik vardır. Bir uygulama Ayrıca iletileri doğrudan DLCı 'ye taşıyabilir. 
 
-İleti, aracı tarafından taşındığında, aracı ileti üzerinde [sahipsiz](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) yöntemin iç sürümünü çağırdığı için iletiye iki özellik eklenir: `DeadLetterReason` ve. `DeadLetterErrorDescription`
+İleti, aracı tarafından taşındığında, aracı ileti üzerinde [sahipsiz](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) yöntemin iç sürümünü çağırdığı için iletiye iki özellik eklenir: `DeadLetterReason` ve `DeadLetterErrorDescription`.
 
-Uygulamalar, `DeadLetterReason` özelliği için kendi kodlarını tanımlayabilir, ancak sistem aşağıdaki değerleri ayarlar.
+Uygulamalar `DeadLetterReason` özelliği için kendi kodlarını tanımlayabilir, ancak sistem aşağıdaki değerleri ayarlar.
 
 | Koşul | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
@@ -54,19 +54,19 @@ Uygulamalar, `DeadLetterReason` özelliği için kendi kodlarını tanımlayabil
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount aşılıyor
 
-Kuyruklar ve abonelikler sırasıyla bir [queuedescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) ve [Subscriptiondescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) özelliğine sahiptir; Varsayılan değer 10 ' dur. Bir kilit ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) altına bir ileti teslim edildiğinde, ancak açıkça terk edildiğinde ya da kilidin süresi dolmuşsa, [Brokeredmessage. deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) değeri artırılır. [Deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) , [maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount)değerini aştığında, ileti, `MaxDeliveryCountExceeded` neden kodunu belirterek DLQ öğesine taşınır.
+Kuyruklar ve abonelikler sırasıyla bir [queuedescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) ve [Subscriptiondescription. maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) özelliğine sahiptir; Varsayılan değer 10 ' dur. Bir kilit ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) altına bir ileti teslim edildiğinde, ancak açıkça terk edildiğinde ya da kilidin süresi dolmuşsa, [Brokeredmessage. deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) değeri artırılır. [Deliverycount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) , [maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount)değerini aştığında, ileti `MaxDeliveryCountExceeded` neden kodunu belirterek DLQ öğesine taşınır.
 
 Bu davranış devre dışı bırakılamaz, ancak [Maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 'u çok büyük bir sayı olarak ayarlayabilirsiniz.
 
 ## <a name="exceeding-timetolive"></a>TimeToLive aşma
 
-[Queuedescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) veya [Subscriptiondescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği **true** olarak ayarlandığında (varsayılan değer **false**), süresi dolan tüm iletiler `TTLExpiredException` neden kodunu belirterek DLQ öğesine taşınır.
+[Queuedescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) veya [Subscriptiondescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği **true** olarak ayarlandığında (varsayılan değer **false**'dur), tüm süresi dolan iletiler DLQ 'a taşınır ve `TTLExpiredException` neden kodu belirlenir.
 
 Süre dolma iletilerinin yalnızca, ana kuyruktan veya abonelikten çeken en az bir etkin alıcı olduğunda, DLCı 'ye taşındığını unutmayın; Bu davranış tasarıma göre yapılır.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Abonelik kuralları işlenirken hatalar oluştu
 
-Abonelik için [Subscriptiondescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği etkinleştirildiğinde, BIR aboneliğin SQL filtre kuralı yürütülürken oluşan tüm hatalar, sorun OLUŞMASı durumunda DLCI ile birlikte yakalanır İleti.
+Abonelik için [Subscriptiondescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği etkinleştirildiğinde, BIR aboneliğin SQL filtre kuralı yürütülürken oluşan tüm hatalar, sorunlu iletiyle birlikte DLQ içinde yakalanır.
 
 ## <a name="application-level-dead-lettering"></a>Uygulama düzeyi atılacak
 
@@ -84,7 +84,7 @@ Bu kullanılmayan iletileri almak için [FormatTransferDeadletterPath](/dotnet/a
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki kod parçacığı bir ileti alıcısı oluşturur. Ana sıranın Alım döngüsünde, kod [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)ile iletiyi alır. Bu, aracıda, aracı açık bir şekilde kullanılabilir olan herhangi bir iletiyi anında döndürmesini veya sonuç olmadan dönmesini ister. Kod bir ileti alırsa, onu artıran `DeliveryCount`. Sistem iletiyi DLCı 'ye taşıdıktan sonra, [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **null**döndürdüğünden, ana sıra boştur ve döngü çıkar.
+Aşağıdaki kod parçacığı bir ileti alıcısı oluşturur. Ana sıranın Alım döngüsünde, kod [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)ile iletiyi alır. Bu, aracıda, aracı açık bir şekilde kullanılabilir olan herhangi bir iletiyi anında döndürmesini veya sonuç olmadan dönmesini ister. Kod bir ileti alırsa, `DeliveryCount`artan hale gelir. Sistem iletiyi DLCı 'ye taşıdıktan sonra, [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **null**döndürdüğünden, ana sıra boştur ve döngü çıkar.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

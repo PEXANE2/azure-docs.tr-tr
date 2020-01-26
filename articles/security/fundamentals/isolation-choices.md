@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121956"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756169"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 Azure, paylaşılan fiziksel altyapıda uygulama ve sanal makine (VM) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
@@ -73,7 +73,7 @@ Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
 - **Okuyucu** , mevcut Azure kaynaklarını görüntüleyebilir.
 
-![Azure Rol Tabanlı Erişim Denetimi](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure rol tabanlı Access Control](./media/isolation-choices/azure-isolation-fig3.png)
 
 Azure 'daki RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin, sanal makine katılımcısı rolü, kullanıcının sanal makineler oluşturmasına ve yönetmesine izin verir. Azure sanal ağına veya sanal makinenin bağlandığı alt ağa erişim vermez.
 
@@ -111,6 +111,9 @@ Microsoft Azure, uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılay
 ### <a name="isolated-virtual-machine-sizes"></a>Yalıtılmış sanal makine boyutları
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>Ayrılmış konaklar
+Önceki bölümde açıklanan yalıtılmış konaklara ek olarak, Azure ayrıca adanmış konaklar da sunar. Azure 'daki adanmış konaklar, bir veya daha fazla sanal makineyi barındırabilen ve tek bir Azure aboneliğine adanmış fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, fiziksel sunucu düzeyinde donanım yalıtımı sağlar. Konaklarınıza başka VM 'Ler yerleştirilmeyecektir. Ayrılmış konaklar aynı veri merkezlerinde dağıtılır ve aynı ağı ve temel alınan depolama altyapısını diğer, yalıtılmış olmayan konaklarla paylaşır. Daha fazla bilgi için bkz. [Azure adanmış konaklara](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)yönelik ayrıntılı genel bakış.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & kök VM & Konuk VM 'Ler arasında kök işletim sistemi yalıtımı
 Azure 'un işlem platformu, makine sanallaştırmaya dayalıdır; yani tüm müşteri kodu bir Hyper-V sanal makinesinde yürütülür. Her bir Azure düğümünde (veya ağ uç noktası), doğrudan donanım üzerinde çalışan ve bir düğümü değişken sayıda konuk sanal makineye (VM) ayıran bir hiper yönetici vardır.
@@ -161,10 +164,10 @@ Programlanmış iki kural kategorisi vardır:
 
 -   **Rol yapılandırma dosyası:** Bu, kiracının hizmet modeline göre gelen Access Control listelerini (ACL 'Ler) tanımlar.
 
-### <a name="vlan-isolation"></a>VLAN Yalıtımı
+### <a name="vlan-isolation"></a>VLAN yalıtımı
 Her kümede üç VLAN vardır:
 
-![VLAN Yalıtımı](./media/isolation-choices/azure-isolation-fig8.jpg)
+![VLAN yalıtımı](./media/isolation-choices/azure-isolation-fig8.jpg)
 
 
 -   Ana VLAN – güvenilmeyen Müşteri düğümlerini birbirine bağlar

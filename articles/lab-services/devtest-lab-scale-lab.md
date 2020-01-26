@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs 'de laboratuvarınızda kotaları ve sınırları ölçeklendirin | Microsoft Docs
-description: Azure DevTest Labs bir laboratuvarı ölçeklendirmeyi öğrenin
+description: Bu makalede, Azure DevTest Labs ' de laboratuvarınızı nasıl ölçekleyebileceğinizi anlatmaktadır. Kullanım kotaları ve limitlerinizi görüntüleyin ve artış isteyin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644860"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761194"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs 'de kotaları ve sınırları ölçeklendirin
 DevTest Labs 'de çalışırken, bazı Azure kaynakları için DevTest Labs hizmetini etkileyebilecek bazı varsayılan limitlerin olduğunu fark edebilirsiniz. Bu sınırlar, **Kotalar**olarak adlandırılır.
@@ -26,7 +26,7 @@ DevTest Labs 'de çalışırken, bazı Azure kaynakları için DevTest Labs hizm
 > [!NOTE]
 > DevTest Labs hizmeti hiçbir kota vermez. Karşılaşabileceğiniz kotalar Genel Azure aboneliğinin varsayılan kısıtlamalardır.
 
-Kotasına ulaşana kadar her bir Azure kaynağını kullanabilirsiniz. Her abonelikte ayrı kotalar vardır ve kullanım abonelik başına izlenir.
+Kotasına ulaşana kadar her bir Azure kaynağını kullanabilirsiniz. Her abonelikte ayrı kotalar ve kullanım, abonelik başına izlenir.
 
 Örneğin, her aboneliğin varsayılan bir 20 çekirdek kotası vardır. Bu nedenle, laboratuvarınızda sanal makineleri dört çekirdekli bir şekilde oluşturuyorsanız yalnızca beş VM oluşturabilirsiniz.
 

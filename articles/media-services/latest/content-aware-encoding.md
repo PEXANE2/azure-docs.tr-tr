@@ -1,5 +1,5 @@
 ---
-title: İçerik kullanan kodlama için deneysel önayar-Azure | Microsoft Docs
+title: İçeriğe duyarlı kodlama için önceden ayarlanmış-Azure Media Services |
 description: Bu makalede, Microsoft Azure Media Services v3 'de içeriğe duyarlı kodlama ele alınmaktadır.
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933476"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759355"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>İçerik algılayan kodlama için deneysel önayar
+# <a name="a-preset-for-content-aware-encoding"></a>İçerik duyarlı kodlama için önceden ayarlanmış
 
 İçeriği [Uyarlamalı bit hızı akışı](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)ile teslim etmek üzere hazırlamak için videonun birden çok bit hızında (yüksek-düşük) kodlanması gerekir. Hızını düzgün bir şekilde azalmadan emin olmak için bit hızı düşürüldü, bu nedenle videonun çözümlenme olur. Bu, bir çözüm ve bit fiyatları tablosu olarak adlandırılır; buna neden olur. bkz. Media Services [yerleşik kodlama önayarları](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 

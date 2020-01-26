@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9d3a876b75e7d3ed8ff43217227db1a524206f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273489"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759867"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma
 
@@ -133,6 +133,9 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
+> [!IMPORTANT]
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, bu parametre listesine `-EnableHierarchicalNamespace $True` ekleyin. 
+
 Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluşturmak için, **Skuname** parametresi için aşağıdaki tabloda istenen değeri değiştirin.
 
 |Çoğaltma seçeneği  |SkuName parametresi  |
@@ -172,6 +175,9 @@ az storage account create \
     --sku Standard_RAGRS \
     --kind StorageV2
 ```
+
+> [!IMPORTANT]
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, bu parametre listesine `--enable-hierarchical-namespace true` ekleyin. 
 
 Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluşturmak için, **SKU** parametresi için aşağıdaki tabloda istenen değeri değiştirin.
 

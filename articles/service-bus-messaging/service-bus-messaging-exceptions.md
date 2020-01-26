@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus için sorun giderme kılavuzu | Microsoft Docs
-description: Service Bus mesajlaşma özel durumları ve önerilen eylemler listesi.
+description: Bu makale, özel durum oluştuğunda gerçekleştirilecek Azure Service Bus mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2020
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 20d9fc141fa19a5c6d01f33c2a5398ca84497b9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 37f316af68bc0b20f21eb606e2abc8232f29ce32
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309974"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759372"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus için sorun giderme kılavuzu
 Bu makalede, Service Bus .NET Framework API 'Leri tarafından oluşturulan bazı .NET özel durumları ve sorun giderme sorunları için başka ipuçları sunulmaktadır. 

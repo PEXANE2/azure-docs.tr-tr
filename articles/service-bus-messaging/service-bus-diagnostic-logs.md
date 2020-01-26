@@ -1,6 +1,6 @@
 ---
 title: Tanılama günlüklerini Azure Service Bus | Microsoft Docs
-description: Azure 'da Service Bus için tanılama günlüklerini ayarlamayı öğrenin.
+description: Bu makalede, Azure Service Bus için kullanılabilen tüm işletimsel ve tanılama günlüklerine bir genel bakış sunulmaktadır.
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 5bdda54ef46085cb1f3e33fe1d9f60937da9706f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355202"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761007"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus için tanılama günlüklerini etkinleştirme
 
@@ -76,9 +76,9 @@ Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır:
 
 | Kapsam | İşlem|
 |-------| -------- |
-| Ad Alanı | <ul> <li> Ad Alanı Oluştur</li> <li> Ad alanını güncelleştir </li> <li> Ad alanını sil </li>  </ul> | 
-| Kuyruk | <ul> <li> Kuyruk Oluştur</li> <li> Kuyruğu Güncelleştir</li> <li> Kuyruğu Sil </li> </ul> | 
-| Konu | <ul> <li> Konu Oluştur </li> <li> Konuyu Güncelleştir </li> <li> Konuyu sil </li> </ul> |
+| Ad Alanı | <ul> <li> Ad alanı oluştur</li> <li> Ad alanını güncelleştir </li> <li> Ad alanını sil </li>  </ul> | 
+| Kuyruk | <ul> <li> Sıra oluştur</li> <li> Kuyruğu Güncelleştir</li> <li> Kuyruğu Sil </li> </ul> | 
+| Konu başlığı | <ul> <li> Konu Oluştur </li> <li> Konuyu Güncelleştir </li> <li> Konuyu sil </li> </ul> |
 | Abonelik | <ul> <li> Abonelik Oluşturma </li> <li> Aboneliği Güncelleştir </li> <li> Aboneliği Sil </li> </ul> |
 
 > [!NOTE]

@@ -13,28 +13,33 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4db4bf7c9d35d9715f24ac0480abfaad7eb7c9e6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123188"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760088"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL veritabanı 'nda basit R betikleri oluşturma ve çalıştırma Machine Learning Services (Önizleme)
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL veritabanı Machine Learning Services basit R betikleri oluşturma ve çalıştırma (Önizleme)
 
-Bu hızlı başlangıçta, [Azure SQL veritabanı 'nda Machine Learning Services (R ile)](sql-database-machine-learning-services-overview.md)genel önizlemesini kullanarak bir basit R betikleri kümesi oluşturup çalıştıracaksınız. [Sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamında iyi biçimlendirilmiş bir R betiğini nasıl kaydıracağınızı ve BETIĞI bir SQL veritabanında nasıl çalıştıracağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, Azure SQL veritabanı 'nda Machine Learning Services (R ile) kullanarak bir R betikleri kümesi oluşturup çalıştırırsınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/) .
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Örnek kodu bu alıştırmalarda çalıştırmak için öncelikle Machine Learning Services (R ile) etkin bir Azure SQL veritabanınızın olması gerekir. Microsoft, genel önizleme sırasında, mevcut veya yeni veritabanınız için sizi kullanıma sunulacaktır ve makine öğrenimini etkinleştirecektir. [Önizlemeye kaydolma](sql-database-machine-learning-services-overview.md#signup)adımlarını izleyin.
+- [Sunucu düzeyinde güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md) olan BIR [Azure SQL veritabanı](sql-database-single-database-get-started.md)
 
-- En son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) yüklediğinizden emin olun. R komut dosyalarını diğer veritabanı yönetimini veya sorgu araçlarını kullanarak çalıştırabilirsiniz, ancak bu hızlı başlangıçta SSMS 'yi kullanacaksınız.
+- R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) . [Önizleme Için kaydolun](sql-database-machine-learning-services-overview.md#signup).
 
-- Bu hızlı başlangıç, sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırmanızı gerektirir. Bunun nasıl yapılacağı hakkında bilgi için bkz. [sunucu düzeyinde güvenlik duvarı kuralı oluşturma](sql-database-server-level-firewall-rule.md).
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
+
+> [!NOTE]
+> Microsoft, genel önizleme sırasında, mevcut veya yeni veritabanınız için sizi kullanıma sunulacaktır ve makine öğrenimini etkinleştirecektir.
+
+Bu örnek, iyi biçimlendirilmiş bir R betiğini kaydırmak için [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamını kullanır.
 
 ## <a name="run-a-simple-script"></a>Basit bir komut dosyası çalıştırma
 
@@ -52,11 +57,11 @@ print(c(c, d))
 
 1. **SQL Server Management Studio**’yu açın ve SQL veritabanınıza bağlanın.
 
-   Bağlantı için yardıma ihtiyacınız varsa bkz [. hızlı başlangıç: Azure SQL veritabanına bağlanmak ve veritabanını](sql-database-connect-query-ssms.md)sorgulamak için SQL Server Management Studio kullanın.
+   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md).
 
 1. Tüm R betiğini [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamına geçirin.
 
-   Betiği, `@script` bağımsız değişkeniyle geçirilir. `@script` Bağımsız değişkenin içindeki her şey geçerli bir R kodu olmalıdır.
+   Betik `@script` bağımsız değişkeniyle geçirilir. `@script` bağımsız değişkeninin içindeki her şey geçerli bir R kodu olmalıdır.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -73,7 +78,7 @@ print(c(c, d))
 
    > [!NOTE]
    > Yönetici değilseniz, dış kodu otomatik olarak çalıştırabilirsiniz. Komutunu kullanarak diğer kullanıcılara izin verebilirsiniz:
-   <br>**herhangi BIR dış BETIĞI yürütmeye ver** *Kullanıcıadı\>. \<*
+   <br>*\<Kullanıcı adı\>* **BIR dış betik yürütün** .
 
 2. Doğru sonuç hesaplanır ve R `print` işlevi sonucu **iletiler** penceresine döndürür.
 
@@ -111,13 +116,13 @@ Komut aşağıdaki metni verir:
 
 | Hello World |
 |-------------|
-| 1\. |
+| 1 |
 
 ## <a name="use-inputs-and-outputs"></a>Girişleri ve çıkışları kullanma
 
-Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , genellikle GEÇERLI bir SQL sorgusu biçiminde sağladığınız tek bir veri kümesini girdi olarak kabul eder. Ardından, çıkış olarak tek bir R veri çerçevesini döndürür.
+Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , genellikle GEÇERLI bir SQL sorgusu biçiminde sağladığınız, giriş olarak tek bir veri kümesini kabul eder. Ardından, çıkış olarak tek bir R veri çerçevesini döndürür.
 
-Şimdilik, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)öğesinin varsayılan giriş ve çıkış değişkenlerini kullanalım: **Inputdataset** ve **outputdataset**.
+Şimdilik, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **ınputdataset** ve **outputdataset**' in varsayılan giriş ve çıkış değişkenlerini kullanalım.
 
 1. Test verilerinin küçük bir tablosunu oluşturun.
 
@@ -135,7 +140,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     GO
     ```
 
-1. Tabloyu sorgulamak için ifadesini kullanın. `SELECT`
+1. Tabloyu sorgulamak için `SELECT` ifadesini kullanın.
   
     ```sql
     SELECT *
@@ -146,7 +151,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
 
     ![RTestData tablosunun içeriği](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Aşağıdaki R betiğini çalıştırın. `SELECT` Deyimini kullanarak tablodaki verileri alır, R çalışma zamanına geçirir ve verileri veri çerçevesi olarak döndürür. Yan tümce SQL veritabanı için döndürülen veri tablosunun şemasını tanımlar, *newcolname*sütun adını ekler. `WITH RESULT SETS`
+1. Aşağıdaki R betiğini çalıştırın. `SELECT` deyimini kullanarak tablodaki verileri alır, R çalışma zamanına geçirir ve verileri veri çerçevesi olarak döndürür. `WITH RESULT SETS` yan tümcesi, SQL veritabanı için döndürülen veri tablosunun şemasını tanımlar, *newcolname*sütun adını ekler.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -159,7 +164,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
 
     ![Tablodan veri döndüren R betiğinin çıktısı](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. Şimdi giriş ve çıkış değişkenlerinin adlarını değiştirelim. Varsayılan giriş ve çıkış değişkeni adları **ınputdataset** ve **outputdataset**, bu betik Ise adları **SQL_in** ve **SQL_out**olarak değiştirir:
+1. Şimdi giriş ve çıkış değişkenlerinin adlarını değiştirelim. Varsayılan giriş ve çıkış değişkeni adları **ınputdataset** ve **outputdataset**, bu betik adları **SQL_in** ve **SQL_out**olarak değiştirir:
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -170,12 +175,12 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    R 'nin büyük/küçük harfe duyarlı olduğunu unutmayın. R betiğindeki (**SQL_out**, **SQL_in**) giriş ve çıkış değişkenlerinin, ve `@input_data_1_name` `@output_data_1_name`ile tanımlanan değerlerle eşleşmesi gerekir (örneğin, büyük/küçük harf).
+    R 'nin büyük/küçük harfe duyarlı olduğunu unutmayın. R betikte (**SQL_out**, **SQL_in**) kullanılan giriş ve çıkış değişkenlerinin, büyük/küçük harf ile `@input_data_1_name` ve `@output_data_1_name`ile tanımlanan değerlerle eşleşmesi gerekir.
 
    > [!TIP]
    > Yalnızca bir giriş veri kümesi parametre olarak iletilebilir ve yalnızca bir veri kümesini döndürebilirsiniz. Ancak R kodunuzdan diğer tüm veri kümelerini çağırabilir ve veri kümesine ek olarak diğer türlerin çıkışlarını döndürebilirsiniz. Ayrıca OUTPUT anahtar sözcüğünü herhangi bir parametreye ekleyerek sonuçlarla birlikte döndürülmesini sağlayabilirsiniz.
 
-1. Ayrıca, giriş verisi olmayan (`@input_data_1` boş olarak ayarlanır) R betiği kullanarak yalnızca değerler oluşturabilirsiniz.
+1. Ayrıca, giriş verisi olmayan (`@input_data_1` boş olarak ayarlanır) R betiğini kullanarak yalnızca değerler oluşturabilirsiniz.
 
    Aşağıdaki betik "Hello" ve "World" metnini çıktı olarak verir.
 
@@ -245,7 +250,7 @@ WITH result sets((
             ));
 ```
 
-Çıktı R 'den `installed.packages()` ve sonuç kümesi olarak döndürülür.
+Çıktı R 'deki `installed.packages()` ve bir sonuç kümesi olarak döndürülür.
 
 **Sonuçlar**
 

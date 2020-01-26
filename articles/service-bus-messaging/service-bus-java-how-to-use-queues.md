@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Java ile Azure Service Bus kuyruklarını kullanma'
-description: "Hızlı başlangıç: Azure 'da Service Bus kuyruklarını nasıl kullanacağınızı öğrenin. Java 'da yazılan kod örnekleri."
+title: Java ile Azure Service Bus kuyruklarını kullanma
+description: Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğreneceksiniz.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721694"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760649"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: ileti göndermek ve almak için Java ile Azure Service Bus kuyrukları kullanma
 

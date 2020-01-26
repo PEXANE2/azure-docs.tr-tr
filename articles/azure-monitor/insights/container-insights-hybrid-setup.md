@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977750"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759901"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -39,7 +39,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
     |*.blob.core.windows.net |Bağlantı noktası 443 |  
     |*. dc.services.visualstudio.com |Bağlantı noktası 443 |
 
-* Kapsayıcılı aracının, performans ölçümlerini toplamak için kümedeki tüm düğümlerde açılmasını `cAdvisor port: 10255` gerekir.
+* Kapsayıcılı Aracı, performans ölçümlerini toplamak için Kubelet 'in `cAdvisor secure port: 10250` `unsecure port :10255` veya kümedeki tüm düğümlerde açılmasını gerektirir. Zaten yapılandırılmamışsa Kubelet 'in Cadvizörü üzerinde `secure port: 10250` yapılandırmanızı öneririz.
 
 * Kapsayıcılı Aracı, envanter verilerini toplamak için küme içindeki Kubernetes API hizmetiyle iletişim kurmak üzere kapsayıcıda aşağıdaki çevresel değişkenlerin belirtilmesini gerektirir-`KUBERNETES_SERVICE_HOST` ve `KUBERNETES_PORT_443_TCP_PORT`.
 
@@ -290,12 +290,12 @@ Karma Kubernetes kümeniz için izlemeyi etkinleştirmeye çalışırken bir hat
 * OmsAgent Health hizmeti çalışıyor
 * Kapsayıcılı aracıda yapılandırılan Log Analytics çalışma alanı kimliği ve anahtarı, Insight ile yapılandırılan çalışma alanıyla eşleşir.
 * Tüm Linux çalışan düğümlerinin RS Pod zamanlamak için `kubernetes.io/role=agent` etiketine sahip olduğunu doğrulayın. Mevcut değilse, ekleyin.
-* Doğrulama `cAdvisor port: 10255` kümedeki tüm düğümlerde açılır.
+* `cAdvisor secure port:10250` veya `unsecure port: 10255` doğrulama kümedeki tüm düğümlerde açıldı.
 
 Azure PowerShell ile yürütmek için, komut dosyasını içeren klasörde aşağıdaki komutları kullanın:
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

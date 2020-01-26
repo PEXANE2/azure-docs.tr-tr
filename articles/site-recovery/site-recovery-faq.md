@@ -2,14 +2,14 @@
 title: Azure Site Recovery hizmetiyle ilgili genel sorular
 description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular ele alınmaktadır.
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863572"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760360"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -147,7 +147,7 @@ Azure Site Recovery, verileri bir Azure depolama hesabına veya yönetilen diskl
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Neden VPN üzerinden çoğaltılamam?
 
-Azure 'a çoğaltma yaptığınızda, çoğaltma trafiği bir Azure depolama alanının genel uç noktalarına ulaşır. Bu nedenle, yalnızca ExpressRoute (Microsoft eşlemesi veya var olan bir genel eşleme) ile genel İnternet üzerinden çoğaltma yapabilirsiniz ve VPN çalışmaz.
+Azure 'a çoğaltma yaptığınızda, çoğaltma trafiği bir Azure depolama alanının genel uç noktalarına ulaşır. Bu nedenle, yalnızca genel İnternet üzerinden veya ExpressRoute aracılığıyla (Microsoft eşlemesi veya var olan bir genel eşleme) çoğaltma yapabilirsiniz.
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Çoğaltma için Rivervisteelheads kullanabilir miyim?
 
@@ -219,7 +219,7 @@ Evet, Azure 'dan farklı bir konağa yeniden çalışma yapmak için alternatif 
 * [VMware sanal makineleri için](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V sanal makineleri için](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Otomasyon
+## <a name="automation"></a>Automation
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Site Recovery senaryolarını bir SDK ile otomatikleştirebilirim miyim?
 Evet. Rest API'si, PowerShell veya Azure SDK kullanarak Site Recovery iş akışlarını otomatikleştirebilirsiniz. PowerShell kullanarak Site Recovery dağıtmaya yönelik Şu anda desteklenen senaryolar:

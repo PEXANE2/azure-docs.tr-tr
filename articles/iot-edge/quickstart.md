@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: aa6d3d61cb2ce0972653f787976a89e3d372ae27
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cefd8472c23458b94c4da5ae3c239e9d427276bf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912351"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760190"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
-Kapsayıcılı kodu bir sanal IoT Edge cihazına dağıtarak bu hızlı başlangıçta Azure IoT Edge test edin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bu, hızlı bir şekilde bir test makinesi oluşturmanıza, önkoşulları yüklemenize ve sonra işiniz bittiğinde silmeniz sağlar.
+Kapsayıcılı kodu bir sanal IoT Edge cihazına dağıtarak Azure IoT Edge deneyin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bir sanal makinenin kullanılması, hızlıca bir test makinesi oluşturmanıza, önkoşulları yüklemenize ve sonra işiniz bittiğinde silmeniz sağlar.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
@@ -50,7 +50,7 @@ Bulut kaynakları:
 * Bu hızlı başlangıçta kullandığınız tüm kaynakları yönetmek için kullanacağınız bir kaynak grubu.
 
    ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus2 
+   az group create --name IoTEdgeResources --location westus2
    ```
 
 IoT Edge cihazı:
@@ -61,7 +61,7 @@ IoT Edge cihazı:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Yeni sanal makinenin oluşturulup başlatılması birkaç dakika sürebilir. Daha sonra, sanal makinenize bağlanırken kullanmak üzere bir RDP dosyası indirebilirsiniz:
+  Yeni sanal makinenin oluşturulması ve başlatılması birkaç dakika sürebilir. Daha sonra, sanal makinenize bağlanırken kullanmak üzere bir RDP dosyası indirebilirsiniz:
 
   1. Azure portal yeni Windows sanal makinenize gidin.
   1. **Bağlan**’ı seçin.
@@ -113,7 +113,7 @@ IOT Edge cihazları sınıflardır ve tipik bir IOT cihazlarında farklı yönet
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. `connectionString` anahtarının değerini JSON çıktısından kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.
+3. `connectionString` anahtarının değerini JSON çıktısından kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için bu bağlantı dizesini kullanacaksınız.
 
    ![CLı çıktısından bağlantı dizesini al](./media/quickstart/retrieve-connection-string.png)
 
@@ -158,7 +158,7 @@ PowerShell'i kullanarak IoT Edge çalışma zamanını indirin ve yükleyin. Cih
 
 5. PowerShell 'i yönetici olarak yeniden çalıştırın.
 
-6. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler. 
+6. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -206,7 +206,7 @@ IoT Hub 'ye telemetri verileri gönderen bir modül dağıtmak için Azure IoT E
 
 Bu hızlı başlangıçta, IoT Edge bir cihaz kaydettiniz ve IoT Edge çalışma zamanını üzerine yüklediniz. Ardından, cihazın kendisinde değişiklik yapmak zorunda kalmadan cihazda çalıştırmak üzere bir IoT Edge modülünü dağıtmak için Azure portal kullandınız.
 
-Bu durumda, gönderdiğiniz modül test için kullanabileceğiniz örnek veriler oluşturur. Sanal sıcaklık algılayıcı modülü, daha sonra test için kullanabileceğiniz ortam verileri oluşturur. Sanal algılayıcı hem makinenin hem de makinenin bulunduğu ortamın izlenmesini izler. Örneğin bu sensör bir sunucu odasında, fabrika sahasında veya rüzgar türbininde olabilir. İletide ortam sıcaklığı ve nemi, makine sıcaklığı ve basıncı ile bir zaman damgası bulunur. IoT Edge öğreticileri, bu modülle oluşturulan verileri analiz için test verileri olarak kullanır.
+Bu durumda, gönderdiğiniz modül test için kullanabileceğiniz örnek veriler oluşturur. Sanal sıcaklık algılayıcı modülü, daha sonra test için kullanabileceğiniz ortam verileri oluşturur. Sanal algılayıcı hem makinenin hem de makinenin bulunduğu ortamın izlenmesini izler. Örneğin, bu algılayıcı bir sunucu odasında, bir fabrika katında veya bir rüzgar Turbin üzerinde olabilir. İleti çevresel sıcaklık ve nem, makine sıcaklığı ve basınç ve bir zaman damgası içerir. IoT Edge öğreticileri, bu modülle oluşturulan verileri analiz için test verileri olarak kullanır.
 
 Buluttan dağıtılan modülün IoT Edge cihazınızda çalıştığından emin olun.
 
@@ -245,7 +245,7 @@ az group delete --name IoTEdgeResources
 
 Bu hızlı başlangıçta bir IoT Edge cihaz oluşturdunuz ve cihaza kod dağıtmak için Azure IoT Edge bulut arabirimini kullandınız. Artık ortamı hakkında ham veri üreten bir test cihazınız var.
 
-Bir sonraki adım, iş mantığınızı çalıştıran IoT Edge modüller oluşturmaya başlayabilmeniz için yerel geliştirme ortamınızı ayarlamanıza olanak sağlar. 
+Bir sonraki adım, iş mantığınızı çalıştıran IoT Edge modüller oluşturmaya başlayabilmeniz için yerel geliştirme ortamınızı ayarlamanıza olanak sağlar.
 
 > [!div class="nextstepaction"]
 > [Windows cihazları için IoT Edge modülleri geliştirmeye başlama](tutorial-develop-for-windows.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus SQLFilter sözdizimi başvurusu | Microsoft Docs
-description: SQLFilter dilbilgisi hakkında ayrıntılar.
+description: Bu makalede, SQLFilter dilbilgisi hakkında ayrıntılar sağlanmaktadır. Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60591798"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759672"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter söz dizimi
 
@@ -60,13 +60,13 @@ ms.locfileid: "60591798"
   
 ## <a name="arguments"></a>Bağımsız Değişkenler  
   
--   `<scope>`, `<property_name>`kapsamını belirten isteğe bağlı bir dizedir. Geçerli değerler veya `sys` `user`' dir. Değer, [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı `<property_name>` olan sistem kapsamını gösterir. `sys` `user`Kullanıcı kapsamını `<property_name>` , [aracılı edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user`belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
+-   `<scope>`, `<property_name>`kapsamını belirten isteğe bağlı bir dizedir. Geçerli değerler `sys` veya `user`. `sys` değeri, `<property_name>` [Brokeredmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olduğu sistem kapsamını gösterir. `user`, `<property_name>` [Brokeredmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğu Kullanıcı kapsamını gösterir. `<scope>` belirtilmemişse `user` kapsam varsayılan kapsamdır.  
   
 ## <a name="remarks"></a>Açıklamalar
 
 Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolmayan bir Kullanıcı özelliğine erişme girişimi bir hata değildir. Bunun yerine, var olmayan bir Kullanıcı özelliği, dahili olarak bilinmeyen bir değer olarak değerlendirilir. Bilinmeyen bir değer, işleç değerlendirmesi sırasında özel olarak değerlendirilir.  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -88,13 +88,13 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/rakam gelen bir dize anlamına gelir.  
   
-`[:IsLetter:]`Unicode harfi olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsLetter(c)`bir Unicode harfse döndürür `true`. `c`  
+`[:IsLetter:]`, Unicode harfi olarak kategorilere ayrılan herhangi bir Unicode karakteri anlamına gelir. `System.Char.IsLetter(c)`, `c` Unicode bir harfle `true` döndürür.  
   
-`[:IsDigit:]`ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsDigit(c)`Unicode `true` basamağı `c` ise döndürür.  
+`[:IsDigit:]`, ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakteri anlamına gelir. `System.Char.IsDigit(c)`, `c` Unicode bir sayı ise `true` döndürür.  
   
-`<regular_identifier>` , Ayrılmış bir anahtar sözcük olamaz.  
+`<regular_identifier>` ayrılmış bir anahtar sözcük olamaz.  
   
-`<delimited_identifier>`sol/sağ köşeli ayraç ([]) ile çevrelenen herhangi bir dizedir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. Aşağıdakiler aşağıda `<delimited_identifier>`verilmiştir:  
+`<delimited_identifier>`, sol/sağ köşeli ayraç ([]) ile birlikte gelen dizelerdir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. `<delimited_identifier>`örnekleri aşağıda verilmiştir:  
   
 ```  
 [Property With Space]  
@@ -102,7 +102,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ```  
   
-`<quoted_identifier>`, çift tırnak işaretleriyle çevrelenen herhangi bir dizedir. Tanımlayıcıdaki çift tırnak işareti iki çift tırnak işareti olarak temsil edilir. Bir dize sabiti ile kolayca karışabileceğinden, tırnak işareti tanımlayıcıları kullanılması önerilmez. Mümkünse sınırlı bir tanımlayıcı kullanın. Aşağıda bir örneği `<quoted_identifier>`verilmiştir:  
+`<quoted_identifier>`, çift tırnak işaretleriyle çevrelenen herhangi bir dizedir. Tanımlayıcıdaki çift tırnak işareti iki çift tırnak işareti olarak temsil edilir. Bir dize sabiti ile kolayca karışabileceğinden, tırnak işareti tanımlayıcıları kullanılması önerilmez. Mümkünse sınırlı bir tanımlayıcı kullanın. Aşağıda bir `<quoted_identifier>`örneği verilmiştir:  
   
 ```  
 "Contoso & Northwind"  
@@ -117,13 +117,13 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ### <a name="remarks"></a>Açıklamalar
   
-`<pattern>`dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir model olarak kullanılır.      Aşağıdaki joker karakterleri içerebilir:  
+`<pattern>`, dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir model olarak kullanılır.      Aşağıdaki joker karakterleri içerebilir:  
   
--   `%`:  Herhangi bir sıfır veya daha fazla karakter dizesi.  
+-   `%`: herhangi bir sıfır veya daha fazla karakter dizesi.  
   
--   `_`: Herhangi bir tek karakter.  
+-   `_`: herhangi bir tek karakter.  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -132,9 +132,9 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ### <a name="remarks"></a>Açıklamalar  
 
-`<escape_char>`1 uzunluğunda bir dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir kaçış karakteri olarak kullanılır.  
+`<escape_char>`, 1 uzunluğunda bir dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir kaçış karakteri olarak kullanılır.  
   
- Örneğin, `property LIKE 'ABC\%' ESCAPE '\'` ile `ABC%` başlayanbir`ABC`dize yerine eşleşmeler.  
+ Örneğin, `property LIKE 'ABC\%' ESCAPE '\'`, `ABC`ile başlayan bir dize yerine `ABC%` ile eşleşir.  
   
 ## <a name="constant"></a>Sabit  
   
@@ -145,7 +145,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ### <a name="arguments"></a>Bağımsız Değişkenler  
   
--   `<integer_constant>`, tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak `System.Int64` depolanır ve aynı aralığı izler.  
+-   `<integer_constant>`, tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak `System.Int64` olarak depolanır ve aynı aralığı izler.  
   
      Bunlar, uzun sabitler örneğidir:  
   
@@ -154,9 +154,9 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
     2  
     ```  
   
--   `<decimal_constant>`, tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak `System.Double` depolanır ve aynı aralığa/duyarlığa uyar.  
+-   `<decimal_constant>`, tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak `System.Double` olarak depolanır ve aynı aralığı/duyarlılığı izler.  
   
-     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün için `System.Double` `<decimal_constant>`olduğu olguyu temel almamalıdır.  
+     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türü `<decimal_constant>`için `System.Double`.  
   
      Ondalık sabitlerin örnekleri aşağıda verilmiştir:  
   
@@ -165,14 +165,14 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
     2.0  
     ```  
   
--   `<approximate_number_constant>`bilimsel gösterimde yazılmış bir sayıdır. Değerler dahili olarak `System.Double` depolanır ve aynı aralığa/duyarlığa uyar. Aşağıda, yaklaşık sayıda Sabitte örnek verilmiştir:  
+-   `<approximate_number_constant>` bilimsel gösterimde yazılmış bir sayıdır. Değerler dahili olarak `System.Double` olarak depolanır ve aynı aralığı/duyarlılığı izler. Aşağıda, yaklaşık sayıda Sabitte örnek verilmiştir:  
   
     ```  
     101.5E5  
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -181,9 +181,9 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ### <a name="remarks"></a>Açıklamalar  
 
-Boole sabitleri, **true** veya **false**anahtar sözcükleriyle temsil edilir. Değerler olarak `System.Boolean`depolanır.  
+Boole sabitleri, **true** veya **false**anahtar sözcükleriyle temsil edilir. Değerler `System.Boolean`olarak depolanır.  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -193,7 +193,7 @@ Boole sabitleri, **true** veya **false**anahtar sözcükleriyle temsil edilir. D
 
 Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karakterleri içerir. Bir dize sabitine gömülü tek bir tırnak işareti, iki tek tırnak işareti olarak temsil edilir.  
   
-## <a name="function"></a>işlev  
+## <a name="function"></a>çalışmayacaktır  
   
 ```  
 <function> :=  
@@ -203,9 +203,9 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
   
 ### <a name="remarks"></a>Açıklamalar
   
-İşlevi, `System.Guid.NewGuid()` yöntemi tarafından oluşturulan bir **System. Guid** döndürür. `newid()`  
+`newid()` işlevi, `System.Guid.NewGuid()` yöntemi tarafından oluşturulan bir **System. Guid** döndürür.  
   
-`property(name)` İşlevi tarafından`name`başvurulan özelliğin değerini döndürür. Değer `name` , bir dize değeri döndüren geçerli bir ifade olabilir.  
+`property(name)` işlevi, `name`tarafından başvurulan özelliğin değerini döndürür. `name` değeri, bir dize değeri döndüren geçerli bir ifade olabilir.  
   
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
   
@@ -219,7 +219,7 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
     Aşağıdaki `IS [NOT] NULL` semantiğini göz önünde bulundurun:  
   
-    -   `property IS NULL`, özelliği yoksa `true` veya özelliğin değeri olan `null`olarak değerlendirilir.  
+    -   `property IS NULL`, özellik yoksa veya özelliğin değeri `null``true` olarak değerlendirilir.  
   
 ### <a name="property-evaluation-semantics"></a>Özellik değerlendirmesi semantiği  
   
@@ -237,11 +237,11 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 - İşlenenlerin sol ve/veya sağ tarafı **bilinmiyor**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
-  İçinde `[NOT] LIKE`bilinmeyen değerlendirme:  
+  `[NOT] LIKE`içinde bilinmeyen değerlendirme:  
   
-- Herhangi bir işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç bilinmez.  
+- Herhangi bir işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
-  İçinde `[NOT] IN`bilinmeyen değerlendirme:  
+  `[NOT] IN`içinde bilinmeyen değerlendirme:  
   
 - Sol işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
@@ -275,9 +275,9 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 ### <a name="operator-binding-semantics"></a>İşleç bağlama semantiği
   
--   `>` ,`>=` ,,`!=` C# , Ve gibikarşılaştırmaişleçleri,veritürüyükseltmeleriveörtükdönüştürmelerdeişleçbağlamasıylaaynısemantiğiniizler.`=` `<` `<=`  
+-   `>`, `>=`, `<`, `<=`, `!=`ve `=` gibi karşılaştırma işleçleri, veri türü yükseltmeleri ve örtük dönüştürmelerde C# işleç bağlamasıyla aynı semantiğini izler.  
   
--   ,,, Ve `+` `*` C# gibi aritmetik işleçler `/` `-`, veri türü yükseltmeleri ve örtük dönüştürmelerde işleç bağlamasıyla aynı semantiğini izler. `%`
+-   `+`, `-`, `*`, `/`ve `%` gibi aritmetik işleçler, veri türü yükseltmeleri ve örtük dönüştürmelerde C# işleç bağlamasıyla aynı semantiğini izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

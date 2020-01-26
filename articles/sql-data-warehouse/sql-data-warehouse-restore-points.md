@@ -11,12 +11,12 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 61ceb2f1271d085321215aff1c6d138feb95d743
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692499"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759610"
 ---
 # <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
 
@@ -24,9 +24,9 @@ Bu makalede, PowerShell ve Azure portal kullanarak Azure SQL veri ambarı için 
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>PowerShell aracılığıyla Kullanıcı tanımlı geri yükleme noktaları oluşturma
 
-Kullanıcı tanımlı geri yükleme noktası oluşturmak için [New-AzSqlDatabaseRestorePoint][New-AzSqlDatabaseRestorePoint] PowerShell cmdlet 'ini kullanın.
+Kullanıcı tanımlı geri yükleme noktası oluşturmak için [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint?view=azps-2.4.0) PowerShell cmdlet 'ini kullanın.
 
-1. Başlamadan önce [Azure PowerShell][Install Azure PowerShell]' yi yüklediğinizden emin olun.
+1. Başlamadan önce [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)' yi yüklediğinizden emin olun.
 2. PowerShell’i açın.
 3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listeleyin.
 4. Geri yüklenecek veritabanını içeren aboneliği seçin.
@@ -60,7 +60,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da oluşturulabilir.
 
-1. [Azure Portal][Azure portal] hesabınızda oturum açın.
+1. [Azure Portal](https://portal.azure.com/) hesabınızda oturum açın.
 
 2. İçin geri yükleme noktası oluşturmak istediğiniz SQL veri ambarına gidin.
 
@@ -74,28 +74,7 @@ Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Mevcut bir veri ambarını geri yükleme][Restore an existing data warehouse]
-- [Silinen bir veri ambarını geri yükleme][Restore a deleted data warehouse]
-- [Coğrafi yedekleme veri ambarından geri yükleme][Restore from a geo-backup data warehouse]
+- [Mevcut bir veri ambarını geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
+- [Silinen bir veri ambarını geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
+- [Coğrafi yedekleme veri ambarından geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)
 
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[PowerShelldoc]:./sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-powershell
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-<!--MSDN references-->
-[New-AzSqlDatabaseRestorePoint]: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint?view=azps-2.4.0
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/

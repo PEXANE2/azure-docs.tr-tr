@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/23/2020
 ms.author: raynew
-ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754508"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759815"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -146,7 +146,7 @@ Ağ bağlantısı gereksinimlerinin ayrıntılarının [ağ teknik incelemesi](a
 **Kural** |  **Ayrıntılar** | **Hizmet etiketi**
 --- | --- | --- 
 HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >
-HTTPS giden izin ver: bağlantı noktası 443 | Azure Active Directory (Azure AD) öğesine karşılık gelen aralıklara izin verin.<br/><br/> Daha sonra Azure AD adresleri eklenirse yeni ağ güvenlik grubu (NSG) kuralları oluşturmanız gerekir.  | AzureActiveDirectory
+HTTPS giden izin ver: bağlantı noktası 443 | Azure Active Directory karşılık gelen aralıklara izin ver (Azure AD)  | AzureActiveDirectory
 HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki Olay Hub 'ına karşılık gelen aralıklarına izin verin. | EventsHub.\<bölge adı >
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
 
@@ -155,7 +155,7 @@ HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık 
 **Kural** |  **Ayrıntılar** | **Hizmet etiketi**
 --- | --- | --- 
 HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<bölge adı >
-HTTPS giden izin ver: bağlantı noktası 443 | Azure AD 'ye karşılık gelen aralıklarına izin verin.<br/><br/> Daha sonra Azure AD adresleri eklenirse yeni NSG kuralları oluşturmanız gerekir.  | AzureActiveDirectory
+HTTPS giden izin ver: bağlantı noktası 443 | Azure AD 'ye karşılık gelen aralıklara izin ver  | AzureActiveDirectory
 HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki Olay Hub 'ına karşılık gelen aralıklara izin verin. | EventsHub.\<bölge adı >
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
 

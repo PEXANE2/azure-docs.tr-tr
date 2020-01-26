@@ -1,22 +1,14 @@
 ---
 title: Sınırları ve sınır - soru-cevap Oluşturucu
-titleSuffix: Azure Cognitive Services
 description: Soru-cevap Oluşturucu, bölümlerini Bilgi Bankası ve hizmet için meta-sınırlara sahiptir. Sınama ve yayımlama için bu sınırları içinde bilgi bankanızı tutmak önemlidir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381129"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760241"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -33,6 +25,15 @@ En fazla bilgi Bankası sayısı, [Azure bilişsel arama katmanı sınırlarına
  Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, 14 bilgi tabanı (yayımlanan Bilgi Bankası başına 1 Dizin) yayımlayabilirsiniz. On beşinci Dizin, `testkb`, yazma ve test için tüm bilgi tabanları için kullanılır.
 
 ## <a name="extraction-limits"></a>Ayıklama sınırları
+
+### <a name="file-naming-constraints"></a>Dosya adlandırma kısıtlamaları
+
+Dosya adları aşağıdaki karakterleri içeremez:
+
+|Karakter kullanma|
+|--|
+|Tek tırnak `'`|
+|Çift tırnak `"`|
 
 ### <a name="maximum-file-size"></a>En büyük dosya boyutu
 

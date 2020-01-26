@@ -1,5 +1,5 @@
 ---
-title: Sorgulamak için Java kullanın
+title: Veritabanını sorgulamak için Java kullanma
 description: Java kullanarak bir Azure SQL veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturmayı gösterir.
 services: sql-database
 ms.service: sql-database
@@ -11,49 +11,54 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 6d4d9353e29a29b0cd6db7575e49a00a213355d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e23f7d165a09a3730019cd9e2d279a01d2fa1e49
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827039"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758522"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Java kullanarak bir Azure SQL veritabanına bağlanma ve sorgulama
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Java kullanarak Azure SQL veritabanı sorgulama
 
-Bu makalede, [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) kullanarak BIR Azure SQL veritabanına nasıl bağlanacağı gösterilmektedir. Daha sonra verileri sorgulamak için T-SQL deyimlerini kullanabilirsiniz.
+Bu hızlı başlangıçta, Java kullanarak Azure SQL veritabanına bağlanın ve T-SQL deyimlerini kullanarak verileri sorgulayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu örneği gerçekleştirmek için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
-
-  || Tek veritabanı | Yönetilen örnek |
-  |:--- |:--- |:---|
-  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
-  |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
+- [Azure SQL veritabanı](sql-database-single-database-get-started.md)
   
-  > [!IMPORTANT]
-  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
+- [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)ile ilgili yazılımlar
 
-- İşletim sisteminiz için yüklenmiş Java ile ilgili yazılımlar:
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  - **MacOS**, homebrew ve Java 'Yı yükleyip Maven 'i yükler. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
+  Homebrew ve Java 'yı yükledikten sonra [macOS üzerinde SQL Server kullanarak Java uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)bölümünde **1,2** ve **1,3** adımlarını kullanarak Maven 'yi oluşturun.
 
-  - **Ubuntu**, Java geliştirme seti, ardından Maven 'i yükler. Bkz: [1.2, 1.3 ve 1.4 adımları](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  - **Windows**, Java 'yı yükledikten sonra Maven 'i de yüklemelisiniz. Bkz: [1.2 ve 1.3 adımları](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
+  Java Geliştirme Seti ' ni, sonra da [Ubuntu üzerinde SQL Server kullanarak Java uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)bölümünde **1,2**, **1,3**ve **1,4** adımlarını kullanarak Maven 'i yüklersiniz.
+
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+  Java 'yı yükleyip [Windows üzerinde SQL Server kullanarak Java uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)bölümünde **1,2** ve **1,3** adımlarını kullanarak Maven 'yi oluşturun.
+
+  ---
+
+> [!IMPORTANT]
+> Bu makaledeki betikler, **Adventure Works** veritabanını kullanmak için yazılmıştır.
+
+> [!NOTE]
+> İsteğe bağlı olarak bir Azure SQL yönetilen örneği kullanmayı seçebilirsiniz.
+>
+> Oluşturmak ve yapılandırmak için [Azure portalını](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)'i veya [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)'Yi kullanın, sonra [yerinde veya](sql-database-managed-instance-configure-p2s.md) [VM](sql-database-managed-instance-configure-vm.md) bağlantısı kurun.
+>
+> Verileri yüklemek için bkz. [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) dosyası Ile [bacpac ile geri yükleme](sql-database-import.md) veya bkz. [Wide World Importers veritabanını geri yükleme](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanlarını** seçin veya **SQL yönetilen örnekler** sayfasını açın.
 

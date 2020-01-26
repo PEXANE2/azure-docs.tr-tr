@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus mesajlaşma varlıklarını otomatik iletme | Microsoft Docs
-description: Service Bus kuyruğu veya aboneliğini başka bir kuyruğa veya konuya nasıl zincirleyebilirsiniz.
+title: Azure Service Bus mesajlaşma varlıklarını otomatik iletme
+description: Bu makalede bir Azure Service Bus kuyruğu veya aboneliği başka bir kuyruğa veya konuya nasıl zincirleyen açıklanır.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390141"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761058"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Oto Service Bus varlıkları tekrar yönlendirme ile zincirle
 
@@ -27,7 +27,7 @@ Service Bus *oto iletme* özelliği, bir kuyruğu veya aboneliği aynı ad alan�
 
 ## <a name="using-autoforwarding"></a>Oto iletmeyi kullanma
 
-Queuedescription [. ForwardTo][QueueDescription.ForwardTo] veya [Subscriptiondescription. ForwardTo][SubscriptionDescription.ForwardTo] ayarlarını, kaynak Için [queuedescription][QueueDescription] veya [subscriptiondescription][SubscriptionDescription] nesnelerinde Aşağıdaki örnek:
+Aşağıdaki örnekte olduğu gibi, kaynak [için queuedescription veya][QueueDescription] [Subscriptiondescription][SubscriptionDescription] nesnelerindeki [queuedescription. ForwardTo][QueueDescription.ForwardTo] veya [subscriptiondescription. ForwardTo][SubscriptionDescription.ForwardTo] özelliklerini ayarlayarak, oto iletmeyi etkinleştirebilirsiniz:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);

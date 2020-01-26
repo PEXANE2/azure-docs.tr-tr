@@ -1,6 +1,6 @@
 ---
 title: Yönetim kitaplıklarını Azure Service Bus | Microsoft Docs
-description: .NET ' ten Service Bus ad alanlarını ve mesajlaşma varlıklarını yönetin.
+description: Bu makalede, Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlamak için Azure Service Bus yönetim kitaplıklarının nasıl kullanılacağı açıklanmaktadır.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816085"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756275"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus yönetim kitaplıkları
 
@@ -32,7 +32,7 @@ Azure Service Bus yönetim kitaplıkları, Service Bus ad alanlarını ve varlı
 * Konu oluşturma, güncelleştirme, silme
 * Abonelik oluşturma, güncelleştirme, silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Service Bus yönetim kitaplıklarını kullanmaya başlamak için Azure Active Directory (Azure AD) hizmeti ile kimlik doğrulaması yapmanız gerekir. Azure AD, Azure kaynaklarınıza erişim sağlayan bir hizmet sorumlusu olarak kimlik doğrulaması yapmanızı gerektirir. Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için şu makalelerden birine bakın:  
 
@@ -52,7 +52,7 @@ Herhangi bir Service Bus kaynağını işlemek için kullanılan desenler ortak 
 
    var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. `ServiceBusManagementClient` Nesneyi oluşturun:
+2. `ServiceBusManagementClient` nesnesini oluşturun:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +61,7 @@ Herhangi bir Service Bus kaynağını işlemek için kullanılan desenler ortak 
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. `CreateOrUpdate` Parametreleri belirtilen değerlerinizle ayarlayın:
+3. `CreateOrUpdate` parametrelerini belirtilen değerlerinizle ayarlayın:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()

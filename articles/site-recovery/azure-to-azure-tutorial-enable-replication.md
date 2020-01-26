@@ -2,14 +2,15 @@
 title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarmayı ayarlama
 description: Azure Site Recovery (Önizleme) ile Azure VM’leri için ikincil Azure bölgesine olağanüstü durum kurtarmanın nasıl ayarlanacağını öğrenin.
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169329"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759798"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -38,7 +39,7 @@ Bu öğreticiyi tamamlamak için:
 Kasayı, kaynak bölgesi dışında herhangi bir bölgede oluşturun.
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. Ardından, **yedekleme ve Site Recovery** > **Yönetim Araçları &** seçin.
+1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. Ardından, **yedekleme ve Site Recovery** > **Yönetim Araçları &** seçin.
 1. **Ad** alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. Kaynak grubu oluşturun veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 1. Panodan kasaya erişmek için **panoya sabitle** ' yi seçin ve ardından **Oluştur**' u seçin.
@@ -75,17 +76,6 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
 Bir ağ güvenlik grubu (NSG) kullanıyorsanız, Azure depolama, Azure Active Directory, Site Recovery hizmeti ve Site Recovery izlemeye erişim için hizmet etiketi tabanlı NSG kuralları oluşturun. [Daha fazla bilgi edinin](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
-
-> [!NOTE]
-> Giden erişim için NSG kurallarının her zaman hizmet etiketleriyle yapılandırılması önerilir.
-
-IP adreslerini kullanarak giden bağlantıyı denetlemek için IP tabanlı güvenlik duvarları, proxy veya NSG kuralları için bu adreslere izin verin:
-
-- [Microsoft Azure Veri Merkezi IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=41653)
-- [Almanya’daki Windows Azure Veri Merkezi IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=54770)
-- [Çin’deki Windows Azure Veri Merkezi IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=42064)
-- [Office 365 URL’leri ve IP adresi aralıkları](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [Site Recovery hizmeti uç nokta IP adresleri](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM sertifikalarını doğrulama
 

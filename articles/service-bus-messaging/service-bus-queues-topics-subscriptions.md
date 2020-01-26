@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus mesajlaşma-kuyruklar, konular ve abonelikler
-description: Service Bus mesajlaşma varlıklarına genel bakış.
+description: Bu makalede, Azure Service Bus mesajlaşma varlıklarına (kuyruk, konular ve abonelikler) genel bir bakış sunulmaktadır.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: e5ef189f5ce7b0cb53e5070fcc88630c72239503
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260732"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759593"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus kuyrukları, konu başlıkları ve abonelikleri
 

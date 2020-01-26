@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus ileti erteleme | Microsoft Docs
-description: Service Bus iletilerinin teslimini erteleyin
+title: Azure Service Bus-ileti erteleme
+description: Bu makalede Azure Service Bus iletilerinin teslimini erteleme açıklanır. İleti sıra veya abonelikte kalır ancak bir kenara ayrılır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: fc7e40661ae345412eb0336322599616dc89d6c4
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 249cf7414143f59540d198bb460d8b215f6a7664
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122194"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756360"
 ---
 # <a name="message-deferral"></a>İleti erteleme
 

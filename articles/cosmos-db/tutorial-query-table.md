@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9502829dcf7b49675b67e05cb923e28f378859d1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869927"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760173"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Öğretici: Tablo API’sini kullanarak Azure Cosmos DB’yi sorgulama
 
@@ -36,7 +36,7 @@ Tablo API’sini kullanarak nasıl sorgulama yapılacağı ile ilgili ayrıntıl
 
 Azure Cosmos DB’nin sunduğu üstün yetenekler hakkında daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si](table-introduction.md) ve [.NET’te Tablo API’si ile geliştirme](tutorial-develop-table-dotnet.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu sorguların çalışması için bir Azure Cosmos DB hesabınız ve kapsayıcıda varlık verileriniz olmalıdır. Bunlardan biri yok mu? Bir hesap oluşturmak ve veritabanınızı doldurmak için [beş dakikalık hızlı başlangıç](create-table-dotnet.md) veya [geliştirici öğreticisini](tutorial-develop-table-dotnet.md) tamamlayın.
 
@@ -84,18 +84,9 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 İlgili OData sorgu ifadelerine çeviri yapan LINQ kullanarak da sorgulama yapabilirsiniz. Aşağıda, .NET SDK kullanılarak sorgu derlemeye ilişkin bir örnek verilmiştir:
 
 ```csharp
-CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("People");
-
-TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
-    .Where(
-        TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"),
-            TableOperators.And,
-            TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal,"Ben@contoso.com")
-    ));
-
-await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
+IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
+            .Where(x => x.PartitionKey == "4")
+            .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

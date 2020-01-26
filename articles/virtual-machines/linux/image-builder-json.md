@@ -1,18 +1,18 @@
 ---
 title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763088"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760020"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -28,11 +28,15 @@ Bu, temel şablon biçimidir:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizleme
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+Varsayılan olarak, görüntü Oluşturucu bir "Standard_D1_v2" derleme VM 'si kullanır, bunu geçersiz kılabilirsiniz; Örneğin, bir GPU VM 'si için bir görüntüyü özelleştirmek istiyorsanız, bir GPU VM boyutu gerekir. Bu isteğe bağlıdır.
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+Varsayılan olarak, görüntü Oluşturucu görüntünün boyutunu değiştirmez, kaynak görüntüden boyutu kullanır. İşletim sistemi diskinin boyutunu (Win ve Linux) ayarlayabilirsiniz, Not, işletim sistemi için gereken en düşük alana göre çok küçük bir değer geçmeyin. Bu isteğe bağlıdır ve 0 değeri, kaynak görüntüyle aynı boyutu bırakır. Bu isteğe bağlıdır.
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>Etiketler
@@ -135,13 +157,7 @@ Azure Image Builder, önizleme için yalnızca yayınlanmış Red Hat Enterprise
 > Bağlantıların erişim belirteçleri sık aralıklarla yenilenir, bu nedenle bir şablonu her göndermek istediğinizde, RH bağlantı adresinin değişip değişmediğini denetlemeniz gerekir.
  
 ### <a name="platformimage-source"></a>Platformımage kaynağı 
-Azure görüntü Oluşturucu aşağıdaki Azure Marketi görüntülerini destekler:
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7,6
-* CentOS 7,6
-* Windows 2016
-* Windows 2019
+Azure Image Builder, Windows Server ve Client ve Linux Azure Marketi görüntülerini destekler, tam liste için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) bakın. 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ Görüntü Oluşturucu çoklu ' özelleştiriciler ' destekler. Özelleştiricil
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin
 - **ad** -özelleştirmeyi izlemek için ad 
 - **Scripturi** -URI, dosyanın konumuna 
 - noktalı virgülle ayrılmış kabuk komutlarının **satır içi** dizisi.
- 
+- **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
+    * Mac/Linux çalıştıran bir Terminal kullanarak sha256Checksum oluşturmak için: `sha256sum <fileName>`
+
+
+Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, `sudo`ön eki olmalıdır.
+
 > [!NOTE]
 > RHEL ISO kaynağı ile kabuk Özelleştirici çalıştırırken, özelleştirme gerçekleşmeden önce, ilk özelleştirme kabuğunuzun bir Red Hat yetkilendirme sunucusuyla kaydolduğunu güvence altına almanız gerekir. Özelleştirme tamamlandıktan sonra betiğin, yetkilendirme sunucusuyla kaydı yapılmalıdır.
 
@@ -275,12 +298,15 @@ Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatm
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 İşletim sistemi desteği: Windows
@@ -300,13 +326,16 @@ Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırm
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırm
 - **Scripturi** -URI, PowerShell betik dosyasının konumuna. 
 - **satır içi** – çalıştırılacak olan satır içi komutlar, virgülle ayrılır.
 - **valid_exit_codes** : isteğe bağlı, betiğe/satır içi komuttan döndürülebilecek geçerli kodlar, bu komut dosyası/satır içi komutunun bildirilen başarısızlığından kaçınacaktır.
+- **runyükseltici** – isteğe bağlı, Boole, yükseltilmiş izinlerle komutları ve betikleri çalıştırmaya yönelik destek.
+- **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
+    * Windows [Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) üzerinde bir PowerShell kullanarak sha256Checksum oluşturmak için
+
 
 ### <a name="file-customizer"></a>Dosya Özelleştirici
 
@@ -330,7 +363,8 @@ Dosya Özelleştirici, görüntü oluşturucunun bir GitHub veya Azure depolamad
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Azure görüntü Oluşturucu üç dağıtım hedefini destekler:
 
 Aynı yapılandırmadaki her iki hedef türüne bir görüntü dağıtabilirsiniz, lütfen [örneklere](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)bakın.
 
-' Ye dağıtım için birden fazla hedef olabileceğinden, görüntü Oluşturucu `runOutputName`sorgulayarak erişilebilen her dağıtım hedefi için bir durum tutar.  `runOutputName`, bu dağıtım hakkında daha fazla bilgi için gönderi dağıtımını Sorgulayabileceğiniz bir nesnedir. Örneğin, VHD konumunu veya görüntü sürümünün çoğaltılacağı bölgeleri sorgulayabilirsiniz. Bu, her dağıtım hedefinin bir özelliğidir. `runOutputName` her dağıtım hedefi için benzersiz olmalıdır.
- 
+' Ye dağıtım için birden fazla hedef olabileceğinden, görüntü Oluşturucu `runOutputName`sorgulayarak erişilebilen her dağıtım hedefi için bir durum tutar.  `runOutputName`, bu dağıtım hakkında daha fazla bilgi için gönderi dağıtımını Sorgulayabileceğiniz bir nesnedir. Örneğin, VHD konumunu veya görüntü sürümünün çoğaltılacağı bölgeleri veya SıG görüntü sürümü oluşturulmasını sorgulayabilirsiniz. Bu, her dağıtım hedefinin bir özelliğidir. `runOutputName` her dağıtım hedefi için benzersiz olmalıdır. İşte bu, paylaşılan görüntü Galerisi dağıtımını sorgulmıştır:
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+Çıktı:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>Dağıt: Managedımage
 
 Görüntü çıkışı yönetilen bir görüntü kaynağı olacaktır.
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure görüntü Oluşturucu GitHub](https://github.com/danielsollondon/azvmimagebuilder)'da farklı senaryolar için Sample. JSON dosyaları vardır.
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

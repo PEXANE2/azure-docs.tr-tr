@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services'i için Azure CLI örnekleri | Microsoft Docs
-description: Azure CLI örnekleri - Azure Lab Services Labs'de yönetmenize yardımcı olmak için komut dosyaları
+title: Azure Lab Services için Azure CLı örnekleri | Microsoft Docs
+description: Bu makale, Azure Lab Services Labs 'i yönetmenize yardımcı olan Azure CLı betik oluşturma örneklerinin bir listesini sağlar.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,22 +10,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 5c713215001c65c4bf735817f2e15caad0ae7eb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35c1a18587ebae1253bd1661a57e21c39f34ee51
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084857"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760513"
 ---
-# <a name="azure-cli-samples-for-azure-lab-services"></a>Azure Lab Services'i için Azure CLI örnekleri
+# <a name="azure-cli-samples-for-azure-lab-services"></a>Azure Lab Services için Azure CLı örnekleri
 
-Aşağıdaki tabloda Azure Lab Services için Azure CLI betikleri kullanılarak oluşturulan bash betiklerine yönelik bağlantılar içerir. 
+Aşağıdaki tabloda Azure Lab Services için Azure CLı betikleri kullanılarak oluşturulan Bash betiklerinin bağlantıları yer almaktadır. 
 
 | | |
 |---|---|
-| [Oluşturun ve bir sanal makine kullanılabilirliğini doğrulayın](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | En düşük yapılandırmayla bir Windows sanal makine oluşturur. |
-| [VM başlatma](scripts/start-connect-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Bir VM'yi başlatır. |
-| [Durdur ve VM silme](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Durdurur ve bir VM siler. |
+| [VM 'nin kullanılabilirliğini oluşturma ve doğrulama](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | En az yapılandırmaya sahip bir Windows sanal makinesi oluşturur. |
+| [VM başlatma](scripts/start-connect-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Bir VM başlatır. |
+| [VM 'yi durdurma ve silme](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Bir VM 'yi durdurup siler. |

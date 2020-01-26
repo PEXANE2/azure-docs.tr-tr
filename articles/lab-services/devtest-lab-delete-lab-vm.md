@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest labs'deki bir laboratuvara Laboratuvar veya VM sildiğiniz | Microsoft Docs
-description: Bu makalede bir laboratuvar veya VM bir laboratuar ortamında nasıl silineceği gösterilmektedir.
+title: Azure DevTest Labs laboratuarda laboratuvar veya VM silme
+description: Bu makalede, Azure DevTest Labs Azure portal kullanarak laboratuvarda bir laboratuvarı silme veya bir VM silme işlemlerinin nasıl yapılacağı gösterilir.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,68 +11,68 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127421"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759729"
 ---
-# <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest labs'deki bir laboratuvara, Laboratuvar veya VM silme
-Bu makalede bir laboratuvar veya VM bir laboratuar ortamında nasıl silineceği gösterilmektedir.
+# <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuarda laboratuvar veya VM silme
+Bu makalede, laboratuvarda bir laboratuvarın veya VM 'nin nasıl silineceği gösterilir.
 
-## <a name="delete-a-lab"></a>Bir laboratuvar Sil
-DevTest Labs örnek bir kaynak grubundan silme işleminin DevTest Labs hizmeti aşağıdaki eylemleri gerçekleştirir: 
+## <a name="delete-a-lab"></a>Laboratuvarı silme
+Bir kaynak grubundan bir DevTest Labs örneğini sildiğinizde, DevTest Labs hizmeti aşağıdaki eylemleri gerçekleştirir: 
 
-- Laboratuvar oluşturma sırasında otomatik olarak oluşturulan tüm kaynakları otomatik olarak silinir. Kaynak grubu silinmez. Bu kaynak grubu tüm kaynakları el ile oluşturduysanız, bunları hizmet silmez. 
-- Bu VM'ler ile ilişkili Laboratuvar ve kaynak grupları içindeki tüm sanal makineleri otomatik olarak silinir. Bir laboratuar ortamında bir VM oluşturduğunuzda, hizmet kaynakları (disk, ağ arabirimi, genel IP adresi, vb.) ayrı bir kaynak grubu içinde VM oluşturur. Bu kaynak grubunda ek kaynakları el ile oluşturursanız, ancak, DevTest Labs hizmeti bu kaynakları ve kaynak grubunu silmez. 
+- Laboratuvar oluşturma sırasında otomatik olarak oluşturulan tüm kaynaklar otomatik olarak silinir. Kaynak grubunun kendisi silinmez. Bu kaynak grubundaki kaynakları el ile oluşturduysanız, hizmet onları silmez. 
+- Laboratuvar ve bu VM 'lerle ilişkili kaynak gruplarındaki tüm VM 'Ler otomatik olarak silinir. Laboratuvarda bir sanal makine oluşturduğunuzda, hizmet ayrı bir kaynak grubundaki VM için kaynaklar (disk, ağ arabirimi, genel IP adresi vb.) oluşturur. Ancak, bu kaynak gruplarında el ile ek kaynaklar oluşturursanız, DevTest Labs hizmeti bu kaynakları ve kaynak grubunu silmez. 
 
-Bir laboratuvar silmek için aşağıdaki eylemleri gerçekleştirin: 
+Bir laboratuvarı silmek için aşağıdaki işlemleri yapın: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Seçin **tüm kaynak** sol taraftaki menüden **DevTest Labs** türünün hizmet ve Laboratuvar seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Sol taraftaki menüden **tüm kaynak** ' ı seçin, hizmet türü Için **DevTest Labs** ' i seçin ve Laboratuvarı seçin.
 
     ![Laboratuvarınızı seçin](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Üzerinde **DevTest Labs** sayfasında **Sil** araç. 
+3. **DevTest Lab** sayfasında, araç çubuğunda **Sil** ' e tıklayın. 
 
     ![Sil düğmesi](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. Üzerinde **onay** want **adı** Laboratuvar ve select **Sil**. 
+4. **Onay** sayfasında, laboratuvarınızın **adını** girin ve **Sil**' i seçin. 
 
     ![Onayla](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. İşlemin durumunu görmek için seçin **bildirimleri** simgesine (zil). 
+5. İşlemin durumunu görmek için **Bildirimler** simgesini (zil) seçin. 
 
     ![Bildirimler](media/devtest-lab-delete-lab-vm/delete-status.png)
 
  
 ## <a name="delete-a-vm-in-a-lab"></a>Laboratuvarda VM silme
-Laboratuvarda VM silersem, Laboratuvar oluşturma sırasında oluşturulan bazı (Tümü değil) kaynakları silinir. Aşağıdaki kaynaklar silinmez: 
+Laboratuvardaki bir VM 'yi silersem, Laboratuvar oluşturma sırasında oluşturulan kaynaklardan bazıları (tümü değil) silinir. Aşağıdaki kaynaklar silinmez: 
 
--   Anahtar kasası ana kaynak grubunda
--   Kullanılabilirlik kümesi, yük dengeleyici, VM kaynak grubu içinde genel IP adresi. Bu kaynaklar bir kaynak grubunda birden çok VM tarafından paylaşılır. 
+-   Ana kaynak grubundaki Anahtar Kasası
+-   VM kaynak grubundaki kullanılabilirlik kümesi, yük dengeleyici, genel IP adresi. Bu kaynaklar bir kaynak grubundaki birden çok VM tarafından paylaşılır. 
 
-Sanal makine ve ağ arabiriminin VM ile ilişkili disk silinir. 
+Sanal makine, ağ arabirimi ve VM ile ilişkili disk silinir. 
 
-Laboratuvarda bir VM'yi silmek için aşağıdaki eylemleri gerçekleştirin: 
+Laboratuvara bir sanal makineyi silmek için aşağıdaki işlemleri yapın: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Seçin **tüm kaynak** sol taraftaki menüden **DevTest Labs** türünün hizmet ve Laboratuvar seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Sol taraftaki menüden **tüm kaynak** ' ı seçin, hizmet türü Için **DevTest Labs** ' i seçin ve Laboratuvarı seçin.
 
     ![Laboratuvarınızı seçin](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Seçin **... (üç nokta)**  VM'ler ve seçim listesi içinde VM için **Sil**. 
+3. Seç **... (üç nokta)** sanal makine listesindeki VM için **Sil**' i seçin. 
 
-    ![VM menüsünde Sil](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
-4. Üzerinde **onay** iletişim kutusunda **Tamam**. 
-5. İşlemin durumunu görmek için seçin **bildirimleri** simgesine (zil). 
+    ![Menüdeki VM 'yi Sil](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
+4. **Onay** Iletişim kutusunda **Tamam**' ı seçin. 
+5. İşlemin durumunu görmek için **Bildirimler** simgesini (zil) seçin. 
 
-Bir sanal makineden silinemedi **sanal makine sayfasında**seçin **Sil** aşağıdaki görüntüde gösterildiği gibi araç çubuğundan:
+**Sanal makine sayfasından**bir VM 'yi silmek için, aşağıdaki görüntüde gösterildiği gibi araç çubuğundan **Sil** ' i seçin:
 
-![VM VM sayfasından silin.](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
+![VM 'yi VM 'den silme sayfası](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir laboratuvar oluşturmak istiyorsanız, aşağıdaki makalelere bakın: 
+Laboratuvar oluşturmak istiyorsanız aşağıdaki makalelere bakın: 
 
 - [Laboratuvar oluşturma](devtest-lab-create-lab.md)
-- [Bir VM'yi laboratuvara ekleme](devtest-lab-add-vm.md)
+- [Laboratuvara VM ekleme](devtest-lab-add-vm.md)

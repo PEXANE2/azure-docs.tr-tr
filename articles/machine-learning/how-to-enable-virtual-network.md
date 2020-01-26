@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289621"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760869"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
 
 - NSG kurallarını kullanarak giden internet bağlantısını reddedin.
 
-- Giden trafiği şu öğelerle sınırla:
-   - Depolama alanı __hizmet etiketi__ kullanılarak Azure storage __. Region_Name__ (örneğin, Storage. EastUS)
-   - Azure Container Registry, __AzureContainerRegistry. Region_Name__ __hizmet etiketi__ kullanılarak (örneğin, AzureContainerRegistry. EastUS)
+- Bir __işlem örneği__ veya bir __işlem kümesi__için, giden trafiği aşağıdaki öğelerle sınırlayın:
+   - Azure depolama, __depolama__ __hizmet etiketi__ kullanılarak
+   - __AzureContainerRegistry__ __hizmet etiketi__ kullanılarak Azure Container Registry
    - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
-   - İşlem örneği olması durumunda, __AzureResourceManager__ __Service Tag__ ile Azure bulutu
+   
+- Bir __işlem örneği__için, aşağıdaki öğeleri de ekleyin:
+   - __AzureResourceManager__ __hizmet etiketi__ kullanılarak Azure Resource Manager
+   - __AzureActiveDirectory__ __hizmet etiketi__ kullanılarak Azure Active Directory
 
 Azure portal NSG kural yapılandırması aşağıdaki görüntüde gösterilmektedir:
 
@@ -206,12 +209,12 @@ Azure portal NSG kural yapılandırması aşağıdaki görüntüde gösterilmekt
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Estimator training__
+> __Estimator eğitimi__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus ileti tarama | Microsoft Docs
-description: Göz atma ve Service Bus iletiye göz atın
+title: Azure Service Bus-iletiye göz atma
+description: Göz atma ve göz atma Service Bus iletilerinde Azure Service Bus istemcinin bir kuyrukta veya abonelikte bulunan tüm iletileri listeleyebilmesine olanak sağlar.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,40 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402760"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756405"
 ---
 # <a name="message-browsing"></a>İletilere göz atma
 
-İletilere gözatma veya gözatma, bir kuyrukta veya abonelikte, tanılama ve hata ayıklama amaçları için tipik olarak bulunan tüm iletileri numaralandırmak bir Service Bus istemci sağlar.
+İletiye göz atma veya gözatma, bir Service Bus istemcisinin, genellikle tanılama ve hata ayıklama amacıyla bir kuyrukta veya abonelikte bulunan tüm iletileri listeleyebilmesine olanak sağlar.
 
-Göz atma işlemleri mevcut tüm iletileri kuyruk veya abonelik ileti günlüğünde, yalnızca bu ile hemen alım için kullanılabilir dönüş `Receive()` veya `OnMessage()` döngü. `State` Her iletinin özelliği bildirir, ileti etkin olup (alınabilmesi kullanılabilir), [ertelenmiş](message-deferral.md), veya [zamanlanmış](message-sequencing.md).
+Göz atma işlemleri, yalnızca `Receive()` veya `OnMessage()` döngüsüyle anında alma için kullanılabilir olan sıra veya abonelik ileti günlüğünde bulunan tüm iletileri döndürür. Her iletinin `State` özelliği, iletinin etkin (alınması için kullanılabilir), [ertelenmiş](message-deferral.md)veya [Zamanlanmış](message-sequencing.md)olduğunu bildirir.
 
-Tüketilen ve süresi dolan iletileri Temizlenen bir zaman uyumsuz "Çöp toplama Çalıştır" ve mutlaka tam olarak ne zaman iletilerin süresi dolar ve bu nedenle `Peek` gerçekten de kaldırılacak ve süresi zaten dolmuş olan iletileri ya da eski lettered olduğunda döndürebilir alma işlemi, kuyruk veya abonelik sonra çağrılır.
+Tüketilen ve dolan iletiler, zaman uyumsuz bir "çöp toplama" çalıştırması tarafından temizlenir ve iletilerin kullanım süreleri dolduğunda tam olarak zaman aşımına uğradı ve bu nedenle `Peek` sırada veya abonelikte bir alma işlemi çalıştırıldığında kaldırılacak veya atılacak bir duruma getirilir.
 
-Bu, özellikle bir kuyruktan ertelenmiş ileti kurtarmayı denediğinizde göz önünde bulundurmanız önemlidir. Kendisi için bir ileti [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) anında sonlanana gözlem tarafından bile döndürülüyor olduğunda artık diğer yollarla normal alma için uygun değil. Özet günlüğü geçerli durumunu yansıtan bir tanılama aracı olduğundan bu iletiler döndüren öğrenirken değerindedir.
+Bu özellikle ertelenmiş iletileri kuyruktan kurtarmaya çalışırken göz önünde bulundurmanız önemlidir. [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) Instant 'ın geçirildiği bir Ileti, göz atma tarafından döndürülse bile diğer yollarla düzenli alma için artık uygun değildir. Peek, günlüğün geçerli durumunu yansıtan bir tanılama aracı olduğundan, bu iletilerin döndürülmesi bilinçli.
 
-Özet ayrıca kilitlenmiş ve diğer alıcılar tarafından işlenmekte, ancak henüz tamamlamadıysanız iletileri döndürür. Gözlem bağlantısı kesilmiş bir anlık görüntü döndürdüğünden, ancak iletinin kilit durumu baktı iletilerde nebyly nalezeny instance ve [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) ve [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) özellikleri throw bir [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) çalıştığında uygulama bunları okuyun.
+Göz atma ayrıca kilitli olan ve şu anda diğer alıcılar tarafından işlenmekte olan ancak henüz tamamlanmamış iletileri döndürür. Ancak, Peek bağlantısı kesik bir anlık görüntü döndürdüğünden, iletinin kilit durumu atılamıyor iletilerinde gözlemlenemez ve [Lockeduntilutc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) ve [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) özellikleri uygulama bunları okumaya çalıştığında bir [InvalidOperationException](/dotnet/api/system.invalidoperationexception) oluşturur.
 
-## <a name="peek-apis"></a>Özet API'leri
+## <a name="peek-apis"></a>API 'Leri göz atma
 
-[Gözlem/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) ve [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) yöntemleri mevcut tüm .NET ve Java istemci kitaplıkları ve tüm alıcı nesneler: **MessageReceiver**, **MessageSession**, **QueueClient**, ve **SubscriptionClient**. Tüm Kuyruklar, abonelikler ve bunların ilgili edilemeyen gözlem çalışır.
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) ve [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) yöntemleri tüm .net ve Java istemci kitaplıklarında ve tüm alıcı nesnelerinde bulunur: **MessageReceiver**, **messagesession**, **queueclient**ve **subscriptionclient**. Tüm kuyruklar ve aboneliklerde ve ilgili atılacak iletiler sıralarında göz atın.
 
-Art arda çağrıldığında, Peek metodunu dizisi sayısı, sırası en yüksek kullanılabilir dizisi en düşük sayıya kuyruk veya abonelik günlüğünde kayıtlı tüm iletileri numaralandırır. Bu, sıraya alınan iletileri olan sırasını ve hangi iletilerin sonunda alınması sırası değildir.
+Tekrar tekrar çağrıldığında, Peek yöntemi kuyruk veya abonelik günlüğünde bulunan tüm iletileri sıra numarası sırasıyla, en düşük kullanılabilir sıra numarasından en yükseğe sıralar. Bu, iletilerin sıraya alınma sırası ve iletilerin sonunda ne sırada alınamayacağını gösteren bir sıradır.
 
-[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) birden çok ileti alır ve bunları bir sabit listesi döndürür. İleti kullanılabilir olduğunda sabit listesi nesnesi boş, null olur.
+[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) birden çok ileti alır ve bunları bir sabit listesi olarak döndürür. Kullanılabilir bir ileti yoksa, numaralandırma nesnesi boş değildir, null değildir.
 
-Ayrıca bir aşırı yüklemesini yöntemiyle çekirdeğini oluşturabileceğiniz bir [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) veren başlatın ve sonra daha fazla numaralandırma parametresiz yöntemi aşırı yüklemesini çağırın. **PeekBatch** eşdeğer işlevleri, ancak tek seferde bir dizi ileti alır.
+Ayrıca, başlatılacak bir [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) ile metodun aşırı yüklemesini temel alabilir ve daha sonra numaralandırmak için parametresiz yöntem aşırı yüklemesini çağırabilirsiniz. **PeekBatch** işlevleri equivalently, ancak her seferinde bir dizi ileti alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

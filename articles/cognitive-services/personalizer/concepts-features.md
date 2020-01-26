@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490771"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760836"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -107,6 +107,7 @@ Ad alanını adlandırırken kullandığınız dize bazı kısıtlamalara uymal�
 * Unicode olamaz.
 * Ad alanı adları için < 256 kodlu bazı yazdırılabilir sembolleri kullanabilirsiniz. 
 * Sembolleri < 32 (yazdırılamaz), 32 (boşluk), 58 (iki nokta), 124 (pipe) ve 126 – 140 kodlarla kullanamazsınız.
+* "_" Alt çizgiyle başlamamalıdır veya özellik yok sayılır.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Özellik kümelerini kişiselleştirici için nasıl daha etkili hale getirme
 

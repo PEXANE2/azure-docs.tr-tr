@@ -1,6 +1,6 @@
 ---
 title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
-description: Azure Service Bus ile Azure kaynakları için Yönetilen kimlikler kullanma
+description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793146"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756292"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
-[Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
+[Kimlikler Azure kaynakları için yönetilen](../active-directory/managed-identities-azure-resources/overview.md) uygulama kodunuzun çalıştığı dağıtımla ilişkili güvenli bir kimlik oluşturmanızı sağlayan bir çapraz Azure özelliğidir. Ardından, uygulamanızın belirli Azure kaynaklarına erişmek için özel izinler erişim denetimi rolleri kimliğe ilişkilendirebilirsiniz.
 
-Yönetilen kimlikler ile Azure platformu bu çalışma zamanı kimliğini yönetir. Uygulama kodunuzda veya yapılandırmanızda, kimliğin kendisi için ya da erişmeniz gereken kaynaklar için erişim anahtarlarını depolamanız ve korumanız gerekmez. Bir Azure App Service uygulamasının içinde veya Azure kaynakları için etkinleştirilmiş yönetilen varlıklara sahip bir sanal makinede çalışan Service Bus istemci uygulamasının SAS kurallarını ve anahtarlarını veya diğer erişim belirteçlerini işlemesi gerekmez. İstemci uygulaması yalnızca Service Bus mesajlaşma ad alanının uç nokta adresine ihtiyaç duyuyor. Uygulama bağlandığında, Service Bus yönetilen varlığın bağlamını Bu makalenin ilerleyen kısımlarında bir örnekte gösterilen bir işlemde istemciye bağlar. Yönetilen bir kimlikle ilişkilduktan sonra, Service Bus istemciniz tüm yetkili işlemleri yapabilir. Yönetilen bir varlık Service Bus rolleriyle ilişkilendirerek yetki verilir. 
+İle yönetilen kimlikleri, Azure platformu bu çalışma zamanı kimlik yönetir. Depolayın ve uygulama kodu veya yapılandırma, kimlik için veya erişmek için ihtiyacınız olan kaynakları için erişim anahtarlarını korumak gerekmez. Bir Azure App Service uygulamasının içinde veya Azure kaynakları için etkinleştirilmiş yönetilen varlıklara sahip bir sanal makinede çalışan Service Bus istemci uygulamasının SAS kurallarını ve anahtarlarını veya diğer erişim belirteçlerini işlemesi gerekmez. İstemci uygulaması yalnızca Service Bus mesajlaşma ad alanının uç nokta adresine ihtiyaç duyuyor. Uygulama bağlandığında, Service Bus yönetilen varlığın bağlamını Bu makalenin ilerleyen kısımlarında bir örnekte gösterilen bir işlemde istemciye bağlar. Yönetilen bir kimlikle ilişkilduktan sonra, Service Bus istemciniz tüm yetkili işlemleri yapabilir. Yönetilen bir varlık Service Bus rolleriyle ilişkilendirerek yetki verilir. 
 
 ## <a name="overview"></a>Genel Bakış
 Bir güvenlik sorumlusu (Kullanıcı, Grup veya uygulama) bir Service Bus varlığına erişmeyi denediğinde, isteğin yetkilendirilmiş olması gerekir. Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir. 
@@ -75,7 +75,7 @@ Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz.
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 'de yönetilen kimlikleri etkinleştirme
 VM 'nizden Service Bus kaynaklarını yetkilendirmek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için önce VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştireceğinizi öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portalda](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -130,9 +130,9 @@ Rolü atadıktan sonra, Web uygulamasının tanımlı kapsamda Service Bus varl�
 
 Varsayılan. aspx sayfası, giriş sayfanız. Kodu Default.aspx.cs dosyasında bulabilirsiniz. Sonuç olarak, birkaç giriş alanı olan en az bir Web uygulaması ve ileti göndermek ya da almak için Service Bus bağlanan **Gönder** ve **Al** düğmeleri vardır.
 
-[Messagingfactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) nesnesinin nasıl başlatıldığını aklınızda edin. Kod, paylaşılan erişim belirteci (SAS) belirteci sağlayıcısını kullanmak yerine, yönetilen kimlik için `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` çağrısıyla bir belirteç sağlayıcısı oluşturur. Bu nedenle, tutulacak ve kullanılacak gizli dizi yok. Yönetilen kimlik bağlamının Service Bus ve yetkilendirme el sıkışması akışı, otomatik olarak belirteç sağlayıcısı tarafından işlenir. SAS kullanmaktan daha basit bir modeldir.
+Not nasıl [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) nesnesi. Paylaşılan erişim belirteci (SAS) belirteç sağlayıcısı kullanmak yerine, kod ile yönetilen kimlik için bir belirteç sağlayıcısı oluşturur `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` çağırın. Bu nedenle, tutulacak ve kullanılacak gizli dizi yok. Yönetilen kimlik bağlamının Service Bus ve yetkilendirme el sıkışması akışı, otomatik olarak belirteç sağlayıcısı tarafından işlenir. SAS kullanmaktan daha basit bir modeldir.
 
-Bu değişiklikleri yaptıktan sonra, uygulamayı yayımlayın ve çalıştırın. Visual Studio 'da bir yayımlama profilini indirerek ve içeri aktararak doğru yayımlama verilerini kolayca edinebilirsiniz:
+Bu değişiklikleri yaptıktan sonra yayımlama ve uygulamayı çalıştırın. Visual Studio 'da bir yayımlama profilini indirerek ve içeri aktararak doğru yayımlama verilerini kolayca edinebilirsiniz:
 
 ![Yayımlama profili al](./media/service-bus-managed-service-identity/msi3.png)
  

@@ -3,20 +3,20 @@ title: Dil desteği-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşma hizmeti, konuşmadan metne ve metinden konuşmaya dönüştürmeye, konuşma çevirisi ile birlikte çok sayıda dili destekler. Bu makale, hizmet özelliğine göre dil desteğinin kapsamlı bir listesini sağlar.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/23/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381061"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760632"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
@@ -24,49 +24,58 @@ Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aş
 
 ## <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 
-Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur.  Telaffuz özelleştirmesi Şu anda yalnızca `en-US` ve `de-DE`için kullanılabilir. [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
+Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dilin bir alt kümesi için, ses + ınsan etiketli yazılı döküm veya Ilgili metin: cümleler karşıya yüklenirken özelleştirme sunulur. Telaffuz özelleştirmesi Şu anda yalnızca `en-US` ve `de-DE`için kullanılabilir. [Özelleştirme hakkında](how-to-custom-speech.md)daha fazla bilgi edinin.
 
- Yerel ayar | Dil | Desteklenen | Özelleştirilebilir
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ Yerel ayar | Dil | Desteklenen | Özelleştirmeler
 ------|------------|-----------|-------------
-`ar-EG` | Arapça (Mısır) modern standart | Evet | Evet
-`ar-SA` | Arapça (Suudi Arabistan) | Evet | Evet
-`ar-AE` | Arapça (UAE) | Evet | Evet
-`ar-KW` | Arapça (Kuveyt) | Evet | Evet
-`ar-QA` | Arapça (Qtor) | Evet | Evet
-`ca-ES` | Katalanca | Evet | Hayır
-`da-DK` | Danca (Danimarka) | Evet | Hayır
-`de-DE` | Almanca (Almanya) | Evet | Evet
-`en-AU` | İngilizce (Avustralya) | Evet | Evet
-`en-CA` | İngilizce (Kanada) | Evet | Evet
-`en-GB` | İngilizce (Birleşik Krallık) | Evet | Evet
-`en-IN` | English (India) | Evet | Evet
-`en-NZ` | İngilizce (Yeni Zelanda) | Evet | Evet
-`en-US` | İngilizce (ABD) | Evet | Evet
-`es-ES` | İspanyolca (İspanya) | Evet | Evet
-`es-MX` | İspanyolca (Meksika) | Evet | Evet
-`fi-FI` | Fince (Finlandiya) | Evet | Hayır
-`fr-CA` | Fransızca (Kanada) | Evet | Evet
-`fr-FR` | Fransızca (Fransa) | Evet | Evet
-`gu-IN` | Gucerat dili (Hindistan) | Evet | Evet
-`hi-IN` | Hintçe (Hindistan) | Evet | Evet
-`it-IT` | İtalyanca (İtalya) | Evet | Evet
-`ja-JP` | Japonca (Japonya) | Evet | Evet
-`ko-KR` | Korece (Güney Kore) | Evet | Evet
-`mr-IN` | Marathi dili (Hindistan) | Evet | Evet
-`nb-NO` | Norveççe (Bokmal) (Norveç) | Evet | Hayır
-`nl-NL` | Hollanda dili (Hollanda) | Evet | Evet
-`pl-PL` | Lehçe (Polonya) | Evet | Hayır
-`pt-BR` | Portekizce (Brezilya) | Evet | Evet
-`pt-PT` | Portekizce (Portekiz) | Evet | Evet
-`ru-RU` | Rusça (Rusya) | Evet | Evet
-`sv-SE` | İsveççe (İsveç) | Evet | Hayır
-`ta-IN` | Tamilce (Hindistan) | Evet | Evet
-`te-IN` | Telugu dili (Hindistan) | Evet | Evet
-`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Evet | Evet
-`zh-HK` | Çince (Cantoneo, geleneksel) | Evet | Evet
-`zh-TW` | Çince (Tayvan Mandarin) | Evet | Evet
+`ar-AE` | Arapça (UAE) | Evet | Hayır
+`ar-BH` | Arapça (Bahreyn) | Evet | Dil modeli
+`ar-EG` | Arapça (Mısır) modern standart | Evet | Dil modeli
+`ar-KW` | Arapça (Kuveyt) | Evet | Hayır
+`ar-QA` | Arapça (Qtor) | Evet | Hayır
+`ar-SA` | Arapça (Suudi Arabistan) | Evet | Hayır
+`ca-ES` | Katalanca | Evet | Dil modeli
+`da-DK` | Danca (Danimarka) | Evet | Dil modeli
+`de-DE` | Almanca (Almanya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`en-AU` | İngilizce (Avustralya) | Evet | Akustik model<br>Dil modeli
+`en-CA` | İngilizce (Kanada) | Evet | Akustik model<br>Dil modeli
+`en-GB` | İngilizce (Birleşik Krallık) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`en-IN` | English (India) | Evet | Akustik model<br>Dil modeli
+`en-NZ` | İngilizce (Yeni Zelanda) | Evet | Akustik model<br>Dil modeli
+`en-US` | İngilizce (ABD) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`es-ES` | İspanyolca (İspanya) | Evet | Akustik model<br>Dil modeli
+`es-MX` | İspanyolca (Meksika) | Evet | Akustik model<br>Dil modeli
+`fi-FI` | Fince (Finlandiya) | Evet | Dil modeli
+`fr-CA` | Fransızca (Kanada) | Evet | Akustik model<br>Dil modeli
+`fr-FR` | Fransızca (Fransa) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`gu-IN` | Gucerat dili (Hindistan) | Evet | Dil modeli
+`hi-IN` | Hintçe (Hindistan) | Evet | Akustik model<br>Dil modeli
+`it-IT` | İtalyanca (İtalya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`ja-JP` | Japonca (Japonya) | Evet | Dil modeli
+`ko-KR` | Korece (Güney Kore) | Evet | Dil modeli
+`mr-IN` | Marathi dili (Hindistan) | Evet | Dil modeli
+`nb-NO` | Norveççe (Bokmal) (Norveç) | Evet | Dil modeli
+`nl-NL` | Hollanda dili (Hollanda) | Evet | Dil modeli
+`pl-PL` | Lehçe (Polonya) | Evet | Dil modeli
+`pt-BR` | Portekizce (Brezilya) | Evet | Akustik model<br>Dil modeli<br>Söylenişi
+`pt-PT` | Portekizce (Portekiz) | Evet | Dil modeli
+`ru-RU` | Rusça (Rusya) | Evet | Akustik model<br>Dil modeli
+`sv-SE` | İsveççe (İsveç) | Evet | Dil modeli
+`ta-IN` | Tamilce (Hindistan) | Evet | Dil modeli
+`te-IN` | Telugu dili (Hindistan) | Evet | Hayır
 `th-TH` | Tayca (Tayland) | Evet | Hayır
-`tr-TR` | Türkiye | Evet | Evet
+`tr-TR` | Türkiye | Evet | Hayır
+`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Evet | Akustik model<br>Dil modeli
+`zh-HK` | Çince (Cantoneo, geleneksel) | Evet | Dil modeli
+`zh-TW` | Çince (Tayvan Mandarin) | Evet | Dil modeli
 
 ## <a name="text-to-speech"></a>Metin okuma
 
@@ -102,7 +111,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | Arapça (Mısır) | Kadın | "Microsoft sunucu konuşma Sesli konuşmayı metne (ar-Örneğin, Hoda)" | "ar-EG-Hoda"
+<sup>**1**</sup>`ar-EG` | Arapça (Mısır) | Kadın | "Microsoft sunucu konuşma Sesli konuşmayı metne (ar-Örneğin, Hoda)" | "ar-EG-Hoda"
 `ar-SA` | Arapça (Suudi Arabistan) | Erkek | "Microsoft Server Konuşma metin konuşma ses (ar-SA, Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bulgarca | Erkek | "Microsoft Server Konuşma metin okuma ses (bg-BG, çalışan Ivan)" | "BG-BG-Ivan"
 `ca-ES` | Katalanca (İspanya) | Kadın | "Microsoft Server Konuşma metin okuma ses (ca-ES, HerenaRUS)" | "CA-ES-HerenaRUS"
@@ -184,7 +193,7 @@ Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Erkek | "Microsoft Server Konuşma metin konuşma ses (zh-TW Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar-ÖRN Modern standart Arapça (MSA) destekler.*
+**1** *ar-örneğin modern Standart Arapça (MSA) desteği.*
 
 > [!NOTE]
 > Konuşma senssıs isteklerinizin tam hizmet adı eşlemesini veya kısa ses adını kullanabilirsiniz.

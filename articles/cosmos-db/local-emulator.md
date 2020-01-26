@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309991"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760581"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -47,7 +47,7 @@ Azure Cosmos öykünücüsü, aşağıdaki donanım ve yazılım gereksinimlerin
 
 * Yazılım gereksinimleri
   * Windows Server 2012 R2, Windows Server 2016 veya Windows 10
-  * 64 bit işletim sistemi
+  * 64-bit işletim sistemi
 * Minimum Donanım gereksinimleri
   * 2-GB RAM
   * 10 GB kullanılabilir sabit disk alanı
@@ -181,7 +181,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 "/EnableGremlinEndpoint" ile yönetici komut isteminden öykünücü başlatın. Alternatif olarak, ortam değişkenini de ayarlayabilirsiniz `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [Apache-tinkerpop-Gremlin-Console-3.3.4 ' i yükler](https://tinkerpop.apache.org/downloads.html)
+* [Apache-tinkerpop-Gremlin-Console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4)' i yükler.
 
 * Öykünücü Veri Gezgini, "DB1" veritabanını ve "coll1" koleksiyonunu oluşturun; bölüm anahtarı için "/Name" öğesini seçin
 

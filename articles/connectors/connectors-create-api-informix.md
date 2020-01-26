@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665876"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757977"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM Informix veritabanı kaynaklarını yönetme
 
@@ -117,7 +117,7 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
 1. Girişleri görüntülemek için, **girişler bağlantısı**altında URL bağlantısını seçin. Çıkışları görüntülemek için, **çıktılar bağlantı** BAĞLANTıSı altında URL bağlantısını seçin. Örnek çıktıları aşağıda verilmiştir:
 
-   * **Tabloları al** , tabloların bir listesini gösterir:
+   * **Get_tables** , tabloların bir listesini gösterir:
 
      !["Tabloları al" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

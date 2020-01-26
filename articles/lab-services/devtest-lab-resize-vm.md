@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest labs'deki bir laboratuvara, VM'yi yeniden boyutlandırma | Microsoft Docs
-description: Azure DevTest labs'deki bir sanal makine yeniden boyutlandırma hakkında bilgi edinin
+title: Azure DevTest Labs laboratuvardaki bir VM 'yi yeniden boyutlandırma
+description: Azure DevTest Labs bir sanal makinenin (VM) boyutunu CPU, ağ veya disk performansı gereksinimlerinize göre değiştirme hakkında bilgi edinin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,44 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a0bc618a9c0a02aae884d8be359df6bdbf4c0d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868103"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756186"
 ---
-# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest labs'deki bir laboratuvara, VM'yi yeniden boyutlandırma
-Azure sanal makineleri önemli özellikleri, CPU, ağ veya disk performans ihtiyaçlarınıza göre sanal makine (VM) değiştirmenizi sağlayan biridir. Azure DevTest Labs bu özellik VM'ler için bir laboratuar ortamında artık desteklemektedir. Yeniden boyutlandırma özelliği için izin verilen VM boyutları Laboratuvardaki Laboratuvar ilkesine uyar. Diğer bir deyişle, yalnızca verilen boyutlar laboratuvarda bir VM boyutunu değiştirebilirsiniz. 
+# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuvardaki bir VM 'yi yeniden boyutlandırma
+Azure sanal makinelerinin önemli özelliklerinden biri, bir sanal makinenin (VM) boyutunu CPU, ağ veya disk performansı gereksinimlerinize göre değiştirmenize olanak sağlar. Azure DevTest Labs, şimdi bir laboratuvardaki VM 'Ler için bu özelliği destekler. Yeniden boyutlandır özelliği, laboratuvardaki izin verilen VM boyutları için laboratuvar ilkesine uyar. Diğer bir deyişle, bir sanal makinenin boyutunu laboratuvardaki yalnızca izin verilen boyutlarla değiştirebilirsiniz. 
 
 
-## <a name="steps-to-resize-a-vm-in-a-lab"></a>Bir VM'yi yeniden boyutlandırma için adımları 
-Azure DevTest labs'deki bir laboratuvara VM'nin yeniden boyutlandırmak için aşağıdaki adımları uygulayın: 
+## <a name="steps-to-resize-a-vm-in-a-lab"></a>Laboratuvarda bir VM 'yi yeniden boyutlandırma adımları 
+Azure DevTest Labs bir laboratuvardaki bir sanal makineyi yeniden boyutlandırmak için aşağıdaki adımları uygulayın: 
 
 > [!NOTE]
-> VM'ye Uzak Masaüstü oturumu (RDP) aracılığıyla birbirine bağlandıysa çalışmanızı kaydedin ve yeniden boyutlandırmadan önce VM'den kesin.
+> VM 'ye Uzak Masaüstü oturumu (RDP) aracılığıyla bağlıysanız, çalışmanızı kaydedin ve yeniden boyutlandırmadan önce VM bağlantısını kesin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
-3. Yeniden boyutlandırmak istediğiniz VM içeren laboratuar labs listesinden seçin.  
-4. Sol bölmede bulunan seçin **My sanal makineler**. 
-5. VM listesinden bir VM'yi seçin.
-6. Seçin **Durdur** VM çalışıyorsa araç çubuğundaki. İşlemin durumunu **bildirimleri** penceresi. VM durduruldu ve ardından Kapat tamamlanana kadar bekleyin **bildirimleri** penceresi. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+3. Laboratuvarlar listesinden, yeniden boyutlandırmak istediğiniz VM 'yi içeren Laboratuvarı seçin.  
+4. Sol bölmede **sanal makinelerim**' ı seçin. 
+5. VM 'Ler listesinden bir VM seçin.
+6. VM çalışıyorsa, araç çubuğunda **Durdur** ' u seçin. **Bildirimler** penceresinde işlemin durumunu kontrol edin. VM durduruluncaya kadar bekleyin ve ardından **Bildirimler** penceresini kapatın. 
 
     ![VM’yi durdurma](media/devtest-lab-resize-vm/stop-vm.png)
-1. VM'niz için sanal makine sayfasında seçin **boyutu** altında **ayarları** soldaki menüde.
+1. VM 'nizin sanal makine sayfasında, Sol menüdeki **Ayarlar** altında **Boyut** ' u seçin.
 
-    ![Boyutu menüsü](media/devtest-lab-resize-vm/size-menu.png)
-1. İçinde **bir boyut seçin** penceresinde, Gözat ve sanal Makineniz için bir boyut seçin ve tıklayın **seçin**.     
-1. Yeniden boyutlandırma işleminin durumunu **bildirimleri** penceresi.
+    ![Boyut menüsü](media/devtest-lab-resize-vm/size-menu.png)
+1. **Boyut seçin** PENCERESINDE, VM 'niz için bir boyut seçin ve seçin ve **Seç**' e tıklayın.     
+1. **Bildirimler** penceresindeki yeniden boyutlandırma işleminin durumunu denetleyin.
 
-    ![Durum yeniden boyutlandırma](media/devtest-lab-resize-vm/resize-status.png)
-10. Sonra bir yeniden boyutlandırma işlemi, yakın başarılı **bildirimleri** penceresi. 
-11. Seçin **genel bakış** seçin ve soldaki menüden **yeniden** araç çubuğundaki VM'yi yeniden başlatın. 
+    ![Durumu yeniden boyutlandır](media/devtest-lab-resize-vm/resize-status.png)
+10. Yeniden boyutlandırma işlemi başarılı olduktan sonra **Bildirimler** penceresini kapatın. 
+11. Sol menüden **genel bakış** ' ı seçin ve sanal makineyi yeniden başlatmak için araç çubuğundan **Yeniden Başlat** ' ı seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure sanal makineler tarafından desteklenen yeniden boyutlandırma özelliği hakkında ayrıntılı bilgi için bkz. [yeniden boyutlandırma, sanal makineler](https://azure.microsoft.com/blog/resize-virtual-machines/).
+Azure sanal makineleri tarafından desteklenen yeniden boyutlandırma özelliği hakkında ayrıntılı bilgi için bkz. [sanal makineleri yeniden boyutlandırma](https://azure.microsoft.com/blog/resize-virtual-machines/).
 
 

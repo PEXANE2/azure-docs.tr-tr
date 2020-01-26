@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a6d61580eb97e5793e05faf204f1acba19c1f5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701289"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758844"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph çağırın 
 
@@ -85,7 +85,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 6. **Android uygulamanızı yapılandırma** sayfanızın **imza karması** bölümünde, **bir geliştirme imza karması oluşturma** ' ya tıklayın. ve platformunuz için kullanmak üzere KeyTool komutunu kopyalayın.
 
    > [!Note]
-   > KeyTool. exe, Java Development Kit 'in (JDK) bir parçası olarak yüklenir. Ayrıca, KeyTool komutunu yürütmek için OpenSSL aracını da yüklemelisiniz.
+   > KeyTool. exe, Java Development Kit 'in (JDK) bir parçası olarak yüklenir. Ayrıca, KeyTool komutunu yürütmek için OpenSSL aracını da yüklemelisiniz. Daha fazla bilgi için [bir anahtar oluşturma hakkındaki Android belgelerine](https://developer.android.com/studio/publish/app-signing#generate-key) bakın. 
 
 7. KeyTool tarafından oluşturulan **imza karmasını** girin.
 8. `Configure` ' a tıklayın ve **Android yapılandırma** sayfasında görüntülenen **msal yapılandırmasını** kaydederek uygulamanızı daha sonra yapılandırdığınızda girebilmenizi sağlayabilirsiniz.  **Bitti**’ye tıklayın.
@@ -155,13 +155,16 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
         jcenter()
     }  
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.identity.client:msal:1.2.+'
         implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
+    packagingOptions{
+        exclude("META-INF/jersey-module-version") 
     }
     ```
     [Microsoft Graph SDK üzerinde daha fazla bilgi](https://github.com/microsoftgraph/msgraph-sdk-java/)
 
-### <a name="required-imports"></a>Gerekli İçeri Aktarmalar 
+### <a name="required-imports"></a>Gerekli Içeri aktarmalar 
 
 Aşağıdaki **uygulamayı** > **src** > **Main**> **Java** > com ' un en üstüne ekleyin **. örnek (yourapp)**  > **MainActivity. Java** 
 
@@ -190,7 +193,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>PublicClientApplication örneği oluştur
 #### <a name="initialize-variables"></a>Değişkenleri Başlat 
 ```java
-private final static String[] SCOPES = {"User.Read"};
+private final static String[] SCOPES = {"File.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

@@ -1,37 +1,40 @@
 ---
 title: Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanma
-description: Azure Data Lake Storage 2. hesabında bir dosya sistemi ve bir dizin ve dosya oluşturmak için Azure Depolama Gezgini nasıl kullanacağınızı öğrenin. Ardından, dosyanın yerel bilgisayarınıza nasıl indirileceği ve tüm dosyanın bir dizinde nasıl görüntüleneceği hakkında bilgi edineceksiniz.
+description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için Azure Depolama Gezgini kullanın.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b300d96408bed621a0687c04a9c94021af009f95
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fca9fa8a964c6c9d69ffbb3036bd4774e0d1bd34
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484471"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761173"
 ---
-# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanma
+# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için Azure Depolama Gezgini kullanın
 
-Bu makalede, bir dizin ve bir blob oluşturmak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanmayı öğreneceksiniz. Ardından, Blobun yerel bilgisayarınıza nasıl indirileceği ve bir dizindeki tüm Blobların nasıl görüntüleneceği hakkında bilgi edineceksiniz. Ayrıca, bir Blobun anlık görüntüsünü oluşturmayı, Dizin erişim ilkelerini yönetmeyi ve paylaşılan erişim imzası oluşturmayı öğreneceksiniz.
+Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-Bu hızlı başlangıç Azure Depolama Gezgini'ni yüklemenizi gerektirir. Windows, Macintosh veya Linux işletim sisteminde Azure Depolama Gezgini’ni yüklemek için bkz. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/).
+> [!div class="checklist"]
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
+> * Yerel bilgisayarınızda yüklü Azure Depolama Gezgini. Windows, Macintosh veya Linux işletim sisteminde Azure Depolama Gezgini’ni yüklemek için bkz. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/).
 
 ## <a name="sign-in-to-storage-explorer"></a>Depolama Gezgini oturum açın
 
-Uygulamayı ilk kez başlattığınızda **Microsoft Azure Depolama Gezgini - Bağlan** penceresi görüntülenir. Depolama Gezgini depolama hesaplarına bağlanmak için çeşitli yollar sağladığından, ACL 'Leri yönetmek için şu anda yalnızca bir yol desteklenir.
+Depolama Gezgini’ni ilk kez başlattığınızda **Microsoft Azure Depolama Gezgini - Bağlan** penceresi görüntülenir. Depolama Gezgini depolama hesaplarına bağlanmak için çeşitli yollar sağladığından, ACL 'Leri yönetmek için şu anda yalnızca bir yol desteklenir.
 
 |Görev|Amaç|
 |---|---|
-|Azure Hesabı ekleme | Azure'da kimlik doğrulaması gerçekleştirmek için kuruluşunuzun oturum açma sayfasını açar. ACL 'Leri yönetmek ve ayarlamak istiyorsanız şu anda desteklenen tek kimlik doğrulama yöntemidir. |
+|Azure Hesabı ekleme | Sizi Azure 'da kimlik doğrulaması yapmak için kuruluşunuzun oturum açma sayfasına yönlendirir. ACL 'Leri yönetmek ve ayarlamak istiyorsanız şu anda desteklenen tek kimlik doğrulama yöntemidir.|
+|Bağlantı dizesi veya paylaşılan erişim imzası URI'si kullanma | SAS belirteci veya paylaşılan bağlantı dizesiyle doğrudan bir kapsayıcıya veya depolama hesabına erişmek için kullanılabilir. |
+|Depolama hesabı adını ve anahtarını kullanma| Azure depolama alanına bağlanmak için depolama hesabı adını ve anahtarını kullanın.|
 
 **Azure hesabı ekle** ' yi seçin ve **oturum aç**' a tıklayın... Azure hesabınızda oturum açmak için ekrandaki istemleri izleyin.
 
@@ -43,25 +46,23 @@ Bağlantı kurulduğunda Azure Depolama Gezgini yüklenir ve **Gezgin** sekmesi 
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Blob 'lar her zaman bir dizine yüklenir. Bu, blob gruplarını bilgisayarınızdaki dosyaları klasörler halinde düzenlediğiniz gibi düzenleyebilmenizi sağlar.
+Kapsayıcı dizinleri ve dosyaları barındırır. Bir tane oluşturmak için, devam adımında oluşturduğunuz depolama hesabını genişletin. **Blob Kapsayıcıları**'nı ve ardından **Blob Kapsayıcısı Oluştur**'u seçin. Kapsayıcının adını girin. Adlandırma kapsayıcılarındaki kuralların ve kısıtlamaların listesi için [kapsayıcı oluşturma](storage-quickstart-blobs-dotnet.md#create-a-container) bölümüne bakın. Tamamlandığında, kapsayıcıyı oluşturmak için **ENTER** tuşuna basın. Kapsayıcı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcıları** klasörü altında görüntülenir.
 
-Bir dizin oluşturmak için, devam adımında oluşturduğunuz depolama hesabını genişletin. **BLOB kapsayıcısı**' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin. Kapsayıcının adını girin. Tamamlandığında, kapsayıcıyı oluşturmak için **ENTER** tuşuna basın. Blob dizini başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcısı** klasörü altında görüntülenir.
+![Microsoft Azure Depolama Gezgini-kapsayıcı oluşturma](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
-![Microsoft Azure Depolama Gezgini-kapsayıcı oluşturma](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+## <a name="create-a-directory"></a>Dizin oluşturma
+
+Bir dizin oluşturmak için, devam adımında oluşturduğunuz kapsayıcıyı seçin. Kapsayıcı şeridinde **Yeni klasör** düğmesini seçin. Dizininizin adını girin. Tamamlandığında, dizini oluşturmak için **ENTER** tuşuna basın. Dizin başarıyla oluşturulduktan sonra düzenleyici penceresinde görünür.
+
+![Microsoft Azure Depolama Gezgini-dizin oluşturma](media/data-lake-storage-explorer/creating-a-directory.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>Blob 'ları dizine yükleme
 
-Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. IaaS VM’lerini yedeklemek için kullanılan VHD dosyaları sayfa bloblarıdır. Ekleme blobları, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetme için kullanılır. Blob depolamada depolanan çoğu dosya blok blobudur.
+Dizin şeridinde **karşıya yükle** düğmesini seçin. Bu işlemi kullanarak klasör veya dosya yükleyebilirsiniz.
 
-Dizin şeridinde **karşıya yükle**' yi seçin. Bu işlemi kullanarak klasör veya dosya yükleyebilirsiniz.
+Yüklenecek dosyaları veya klasörü seçin.
 
-Yüklenecek dosyaları veya klasörü seçin. **Blob türü**'nü seçin. **Ekleme**, **Sayfa** veya **Blok** bloblarını seçebilirsiniz.
-
-.vhd veya .vhdx dosyası yüklüyorsanız **.vhd/.vhdx dosyalarını sayfa blobları olarak yükle (önerilen)** seçeneğini belirleyin.
-
-**Klasöre yükle (isteğe bağlı)** alanına, dosya veya klasörleri dizin altındaki bir klasöre depolamak için bir klasör adı. Klasör seçili değilse, dosyalar doğrudan dizinin altına yüklenir.
-
-![Microsoft Azure Depolama Gezgini - blob yükleme](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
+![Microsoft Azure Depolama Gezgini - blob yükleme](media/data-lake-storage-explorer/upload-file.png)
 
 **Tamam**'ı seçtiğinizde dosyalar yüklenmek üzere kuyruğa alınır ve tüm dosyalar yüklenir. Yükleme işlemi tamamlandığında sonuçlar **Etkinlikler** penceresinde gösterilir.
 
@@ -69,15 +70,45 @@ Yüklenecek dosyaları veya klasörü seçin. **Blob türü**'nü seçin. **Ekle
 
 **Azure Depolama Gezgini** uygulamasında, depolama hesabı altında bir dizin seçin. Ana bölmede, seçili dizindeki Blobların bir listesi gösterilir.
 
-![Bir dizindeki Microsoft Azure Depolama Gezgini Blobları listeleme](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Bir dizindeki Microsoft Azure Depolama Gezgini Blobları listeleme](media/data-lake-storage-explorer/list-files.png)
 
 ## <a name="download-blobs"></a>Blob’ları indirme
 
-**Azure Depolama Gezgini**'ni kullanarak blobları indirmek için istediğiniz blobu seçtikten sonra şeritteki **İndir**'e tıklayın. Açılan dosya iletişim kutusuna dosya adı girebilirsiniz. Blobu yerel konuma indirmeye başlamak için **Kaydet**'i seçin.
+**Azure Depolama Gezgini**kullanarak dosyaları indirmek için, bir dosya seçiliyken şeritten **İndir** ' i seçin. Açılan dosya iletişim kutusuna dosya adı girebilirsiniz. Yerel konuma bir dosyanın indirilmesini başlatmak için **Kaydet** ' i seçin.
+
+## <a name="managing-access"></a>Erişimi yönetme
+
+Kapsayıcının kökündeki izinleri ayarlayabilirsiniz. Bunu yapmak için, tek yapmanız gereken haklara sahip Azure Depolama Gezgini oturum açmanız gerekir (bağlantı dizesi ile aksine). Kapsayıcıya sağ tıklayın ve Izinleri **Yönet iletişim kutusunu** getirerek **izinleri yönet**' i seçin.
+
+![Microsoft Azure Depolama Gezgini-dizin erişimini yönetme](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+
+**Izni Yönet** iletişim kutusu, sahip ve sahipler grubu için izinleri yönetmenizi sağlar. Ayrıca, izinleri yönetebilmeniz için erişim denetim listesine yeni kullanıcılar ve gruplar eklemenize olanak tanır.
+
+Erişim denetim listesine yeni bir kullanıcı veya grup eklemek için **Kullanıcı veya Grup Ekle** alanını seçin.
+
+Listeye eklemek istediğiniz karşılık gelen Azure Active Directory (AAD) girişini girin ve **Ekle**' yi seçin.
+
+Kullanıcı veya grup artık **Kullanıcılar ve gruplar:** alanında görünür ve bu da izinlerini yönetmeye başlamanızı sağlar.
+
+> [!NOTE]
+> AAD 'de bir güvenlik grubu oluşturmak ve tek kullanıcılar yerine grupta izinleri sürdürmek için en iyi uygulamadır ve önerilir. Bu öneriye ilişkin ayrıntılar ve diğer en iyi uygulamalar için bkz. [Data Lake Storage 2. için en iyi uygulamalar](data-lake-storage-best-practices.md).
+
+Atayabileceğiniz iki izin kategorisi vardır: erişim ACL 'Leri ve varsayılan ACL 'Ler.
+
+* **Erişim**: ACL denetim erişimi bir nesneye erişin. Dosya ve dizinlerin her ikisi de erişim ACL 'Lerine sahiptir.
+
+* **Varsayılan**: Bu dizin altında oluşturulan tüm alt öğeler Için erişim ACL 'lerini belirleyen bir dizinle ilişkili ACL 'lerin bir şablonu. Dosyaların varsayılan ACL 'Leri yok.
+
+Bu kategorilerin her ikisinde de, dosyalara veya dizinlere atayabileceğiniz üç izin vardır: **okuma**, **yazma**ve **yürütme**.
+
+>[!NOTE]
+> Burada seçimler yapıldığında, dizin içindeki mevcut olan herhangi bir öğe için izinler ayarlanmamaktadır. Dosya zaten varsa, her bir öğeye gitmeniz ve izinleri el ile ayarlamanız gerekir.
+
+Tek tek dizinlerde ve tek tek dosyalar üzerinde izinleri yönetebilir, bu da size daha iyi erişim denetimi sağlar. Her iki dizin ve dosya için izinleri yönetme işlemi yukarıda açıklanan şekilde aynıdır. İzinlerini yönetmek istediğiniz dosya veya dizine sağ tıklayın ve aynı süreci izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, dosyaları **Azure Depolama Gezgini** kullanarak yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Dosyalarınızda ve dizinlerinizde ACL 'Lerin nasıl ayarlanacağı hakkında bilgi edinmek için, konudaki nasıl yapılır? konusundaki deneyimimize devam edin.
+Data Lake Storage 2. erişim denetim listelerine öğrenin.
 
 > [!div class="nextstepaction"]
-> [Dosyalar ve dizinler üzerinde ACL 'Ler ayarlama](data-lake-storage-how-to-set-permissions-storage-explorer.md)
+> [Azure Data Lake Storage 2. Nesil'de Erişim Denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

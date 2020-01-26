@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs | Azure DevOps 'dan bir görüntü fabrikası çalıştırın | Microsoft Docs
-description: Azure DevTest Labs bir özel görüntü fabrikası oluşturmayı öğrenin.
+title: Azure DevTest Labs 'de Azure DevOps 'dan bir görüntü fabrikası çalıştırın
+description: Bu makalede, Azure DevOps 'tan (eski adıyla Visual Studio Team Services) görüntü fabrikası çalıştırmak için gereken tüm hazırlıklar ele alınmaktadır.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638961"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758691"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps’tan bir görüntü fabrikası çalıştırma
 Bu makalede, Azure DevOps 'tan (eski adıyla Visual Studio Team Services) görüntü fabrikası çalıştırmak için gereken tüm hazırlıklar ele alınmaktadır.
@@ -32,7 +32,7 @@ Görüntü fabrikası ayarlamanın ilk adımı Azure DevTest Labs bir laboratuva
 Takımınızın görüntü fabrikasını benimsedeki bir sonraki adım, nelerin kullanılabildiğini öğrenmektir. Görüntü fabrikası betikleri ve şablonları, [DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)deposunda herkese açık bir şekilde bulunabilir. Parçaların ana hattı aşağıda verilmiştir:
 
 - Görüntü fabrikası. Kök klasörüdür.
-    - Yapılandırma. Görüntü fabrikası için girişler
+    - Yapılandırmada. Görüntü fabrikası için girişler
         - Altın Dengörüntüler. Bu klasör, özel görüntülerin tanımlarını temsil eden JSON dosyalarını içerir.
         - Labs. JSON. Takım, belirli özel görüntüleri almak için kaydolan dosya.
 - Betikleri. Görüntü fabrikası için altyapı.
@@ -52,7 +52,7 @@ Görüntü fabrikası için tüm PowerShell, şablonlar ve yapılandırmalar [or
 1. Önceki adımda oluşturduğunuz Azure DevOps projesini ziyaret edin (URL, https gibi görünür **:\//\<accountname >. VisualStudio. com/MyFirstProject**).
 2. **Depoyu Içeri aktar**' ı seçin.
 3. DevTest Labs deposunun **kopya URL** 'sini girin: `https://github.com/Azure/azure-devtestlab`.
-4. **Al**'ı seçin.
+4. **Içeri aktar**' ı seçin.
 
     ![Git deposunu içeri aktar](./media/set-up-devops-lab/import-git-repo.png)
 
@@ -78,7 +78,7 @@ Bu noktada, Azure DevOps 'daki bir git deposunda depolanan kaynak dosyaları var
 Komut satırı parametrelerini basitleştirmek için, görüntü fabrikasını oluşturan anahtar değerlerini bir dizi derleme değişkenine kapsülleyebilirsiniz. **Değişkenler** sekmesini seçin ve birkaç varsayılan değişkenin listesini görürsünüz. Azure DevOps 'a girilecek değişkenlerin listesi aşağıdadır:
 
 
-| Değişken Adı | Değer | Notlar |
+| Değişken adı | Değer | Notlar |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ımagefactory/Configuration | Bu, depodaki **yapılandırma** klasörünün tam yoludur. Yukarıdaki tüm depoyu içeri aktardıysanız, soldaki değer doğrudur. Aksi takdirde yapılandırma konumunu işaret etmek için güncelleştirin. |
 | DevTestLabName | Myımagefactory | Görüntü oluşturmak için fabrika olarak kullanılan Azure DevTest Labs laboratuvarın adı. Yoksa, bir tane oluşturun. Laboratuvarın, hizmet uç noktasının erişimi olan aynı abonelikte olduğundan emin olun. |
@@ -106,7 +106,7 @@ Hizmet sorumlusu oluşturmanın en hızlı yolu, Azure DevOps 'ın bunu bizim i�
 2. **Azure bağlantı türü**için **Azure Resource Manager**seçin.
 3. Hizmet sorumlusunu ayarlamak için **Yönet** bağlantısını seçin.
 
-Daha fazla bilgi için [bu blog gönderisine](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) bakın. **Yönet** bağlantısını seçtiğinizde, Azure bağlantısı kurmak Için DevOps (blog gönderisine ikinci ekran görüntüsü) içinde doğru yere gideceksiniz. Bunu ayarlarken **Azure Resource Manager hizmet uç noktası** ' nı seçtiğinizden emin olun.
+Daha fazla bilgi için bu [blog gönderisine](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)bakın. **Yönet** bağlantısını seçtiğinizde, Azure bağlantısı kurmak Için DevOps (blog gönderisine ikinci ekran görüntüsü) içinde doğru yere gideceksiniz. Bunu ayarlarken **Azure Resource Manager hizmet uç noktası** ' nı seçtiğinizden emin olun.
 
 ## <a name="complete-the-build-task"></a>Derleme görevini doldurun
 Yapı görevini seçerseniz, sağ bölmedeki, doldurulması gereken tüm ayrıntıları görürsünüz.

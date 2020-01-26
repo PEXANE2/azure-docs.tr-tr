@@ -4,14 +4,14 @@ description: Azure bölgeleri arasında taşınabilecek Azure Kaynak türlerini 
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/21/2019
+ms.date: 01/20/2020
 ms.author: raynew
-ms.openlocfilehash: 60b8708458e081d66514e092edc9ef9af7c33494
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485253"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760717"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Bölgeler arasında Azure kaynaklarını taşıma desteği
 
@@ -186,7 +186,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | hizmet | Hayır |
+> | hizmet |  Evet | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -259,7 +259,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | leriniz | Hayır | 
 > | dosya sunucuları | Hayır | 
 > | Çizelge | Hayır | 
-> | çalışma alanları | Hayır | 
+> | Onlarla | Hayır | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -363,7 +363,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | availabilitysets | Hayır | 
 > | diskencryptionsets | Hayır | 
-> | diskler | Hayır | 
+> | disklerinden | Hayır | 
 > | Galeriler | Hayır | 
 > | Galeriler/görüntüler | Hayır | 
 > | Galeriler/resimler/sürümler | Hayır | 
@@ -439,7 +439,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | hub'lar | Hayır |  
+> | Lara | Hayır |  
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
@@ -467,7 +467,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | çalışma alanları | Hayır | 
+> | Onlarla | Hayır | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -489,8 +489,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | paketler | Hayır | 
-> | planlar | Hayır | 
+> | paketlerle | Hayır | 
+> | Planlama | Hayır | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -498,7 +498,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | veri fabrikaları | Hayır | 
-> | oluşturucular | Hayır |  
+> | larının | Hayır |  
 
 ## <a name="microsoftdatalake"></a>Microsoft. DataLake
 
@@ -587,7 +587,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | denetleyiciler | Hayır | 
+> | örleri | Hayır | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -595,7 +595,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | labcenters | Hayır | 
-> | labs | Hayır | 
+> | larda | Hayır | 
 > | Laboratuvarlar/ortamlar | Hayır |  
 > | Labs/servicerunanlar | Hayır | 
 > | Labs/virtualmachines | Hayır |  
@@ -628,7 +628,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | etki alanları | Hayır |  
-> | konuları | Hayır | 
+> | konularıyla | Hayır | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -636,7 +636,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | leriniz | Hayır |  
-> | ad alanları | Hayır | 
+> | öznitelikleri | Hayır | 
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
 
@@ -705,7 +705,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | notificationrules | Hayır | 
 > | scheduledqueryrules |  Hayır | 
 > | Web testleri |  Hayır | 
-> | çalışma kitapları |  Hayır |  
+> | kitabı |  Hayır |  
 
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
@@ -769,7 +769,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Tümleştirme hesapları |  Hayır |  
 > | ıntegrationserviceortamortamları | Hayır | 
 > | ısotedenvironments | Hayır | 
-> | iş akışları |  Hayır |  
+> | sürdürülen |  Hayır |  
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
@@ -778,7 +778,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | commitmentplanlar |  Hayır | 
 > | Hizmetleri |  Hayır | 
-> | çalışma alanları |  Hayır | 
+> | Onlarla |  Hayır | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
@@ -818,7 +818,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | çalışma alanları | Hayır | 
+> | Onlarla | Hayır | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
 
@@ -864,7 +864,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | assessmentprojects | Hayır | 
 > | migrateprojects | Hayır | 
-> | projeler | Hayır | 
+> | projeyle | Hayır | 
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -887,7 +887,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | applicationsecuritygroups |  Hayır |  
 > | azurefirewalls |  Hayır |  
 > | Savunma Konakları | Hayır | 
-> | bağlantılar |  Hayır | 
+> | bağlantının |  Hayır | 
 > | ddoscustompolicies |  Hayır | 
 > | ddosprotectionplanlar | Hayır | 
 > | dnszones |  Hayır | 
@@ -934,7 +934,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | ad alanları |  Hayır | 
+> | öznitelikleri |  Hayır | 
 > | ad alanları/notificationhub 'lar |  Hayır |  
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -942,7 +942,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | çalışma alanları |  Hayır | 
+> | Onlarla |  Hayır | 
 
 
 
@@ -952,7 +952,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | managementconfigurations |  Hayır | 
-> | görüntüleme |  Hayır | 
+> | Görünümler |  Hayır | 
 
 ## <a name="microsoftpeering"></a>Microsoft. eşleme
 
@@ -966,7 +966,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | panolar | Hayır | 
+> | panoların | Hayır | 
 
 ## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 
@@ -1001,7 +1001,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | kasaları | Evet (göz önünde bulundurdum yedekleme kasaları için mi? | 
+> | kasaları | Hayır. [Kasayı devre dışı bırakın ve Site Recovery için yeniden oluşturun](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
@@ -1009,7 +1009,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | ad alanları |  Hayır | 
+> | öznitelikleri |  Hayır | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
@@ -1030,7 +1030,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | flows |  Hayır |  
+> | var |  Hayır |  
 > | işlere |  Hayır | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1062,7 +1062,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | ad alanları |  Hayır | 
+> | öznitelikleri |  Hayır | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
@@ -1075,7 +1075,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | kapsayıcı grupları | Hayır | 
 > | containergroupsets | Hayır | 
 > | edgeclusters | Hayır | 
-> | ağlar | Hayır | 
+> | Mamak | Hayır | 
 > | secretmağazaları | Hayır | 
 > | volumes | Hayır | 
 
@@ -1087,7 +1087,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | uygulama |  Hayır | 
 > | kapsayıcı grupları | Hayır | 
 > | geçidinin |  Hayır | 
-> | ağlar |  Hayır | 
+> | Mamak |  Hayır | 
 > | kaynaklanır |  Hayır | 
 > | volumes |  Hayır |  
 
@@ -1142,14 +1142,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | storageaccounts | Evet?? | 
+> | storageaccounts | Evet | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | Önbelleklerinde | Hayır | 
+> | önbelleklerinde | Hayır | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1192,7 +1192,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | ortamlar | Hayır | 
+> | lý | Hayır | 
 > | ortamlar/EventSources | Hayır | 
 > | örnekler | Hayır | 
 > | örnekler/ortamlar | Hayır | 
@@ -1211,7 +1211,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | ortamlar |  Hayır | 
+> | lý |  Hayır | 
 > | ortamlar/EventSources |  Hayır |  
 > | ortamlar/referencedataset 'ler |  Hayır | 
 
@@ -1220,7 +1220,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | depolar | Hayır | 
+> | depolaya | Hayır | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. Virtualmachineımages
 
@@ -1254,13 +1254,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | sertifikalar | Hayır | 
+> | Sertifika | Hayır | 
 > | connectiongateway 'ler |  Hayır |  
-> | bağlantılar |  Hayır |  
+> | bağlantının |  Hayır |  
 > | customapsıs |  Hayır | 
 > | hostingenvironments | Hayır | 
 > | serverfarms |  Hayır |  
-> | siteler |  Hayır | 
+> | barındıra |  Hayır | 
 > | siteler/premieraddons |  Hayır |  
 > | siteler/yuvalar |  Hayır |  
 
@@ -1279,7 +1279,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | applicationgroups | Hayır | 
 > | Ana bilgisayar havuzları | Hayır | 
-> | çalışma alanları | Hayır | 
+> | Onlarla | Hayır | 
 
 ## <a name="third-party-services"></a>Üçüncü taraf hizmetleri
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 01/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e85b0ae298589c0e0e051a24e5db89eae81db62
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f0a71da025b8b2bb571dc9b00e23bc691ecdd44c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272130"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758300"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
 
@@ -76,7 +76,7 @@ Dizininizde, Konuk **davetinin kabul edilebilir** değeri **Evet**olarak değiş
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-- [Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin](add-users-administrator.md)
+- [Azure portalında Azure Active Directory B2B işbirliği kullanıcıları ekleme](add-users-administrator.md)
 - [Bilgi çalışanları, Azure Active Directory B2B işbirliği kullanıcılarını nasıl ekler?](add-users-information-worker.md)
 - [PowerShell kullanarak Azure Active Directory B2B işbirliği kullanıcıları ekleme](customize-invitation-api.md#powershell)
 - [Bir kuruluştan Konuk Kullanıcı olarak ayrılın](leave-the-organization.md)

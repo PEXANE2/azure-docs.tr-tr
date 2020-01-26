@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: PHP ile Service Bus kuyruklarını kullanma'
-description: "Hızlı başlangıç: Azure 'da Service Bus kuyruklarını nasıl kullanacağınızı öğrenin. PHP 'de yazılan kod örnekleri."
+title: PHP ile Azure Service Bus kuyruklarını kullanma
+description: Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için PHP uygulamaları oluşturmayı öğreneceksiniz.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719194"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760700"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Hızlı başlangıç: PHP ile Service Bus kuyruklarını kullanma
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

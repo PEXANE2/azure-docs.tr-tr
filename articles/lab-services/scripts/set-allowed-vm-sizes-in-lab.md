@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell Betiği: Azure Lab Services sanal makine boyutlarını izin | Microsoft Docs'
-description: Bu PowerShell Betiği, Azure Lab Services içinde izin verilen VM boyutları ayarlar.
+title: 'PowerShell betiği: Azure Lab Services izin verilen VM boyutlarını ayarlama | Microsoft Docs'
+description: Bu makaleler, Azure Lab Services izin verilen sanal makine (VM) boyutlarını ayarlayan bir örnek PowerShell betiği içerir.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0c82e304d3e3d8df1206c7c05883399b74229af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1b0e9a4aed475f04ec8dcffa9bc95b7c7c713e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160541"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760479"
 ---
-# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Ayarlamak için PowerShell kullanarak VM boyutları Azure Lab Services içinde izin verilir.
+# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Azure Lab Services izin verilen VM boyutlarını ayarlamak için PowerShell 'i kullanma
 
-Bu örnek PowerShell Betiği, Azure Lab Services içinde izin verilen sanal makine (VM) boyutları ayarlar.
+Bu örnek PowerShell betiği, Azure Lab Services izin verilen sanal makine (VM) boyutlarını ayarlar.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-* **Bir laboratuvar**. Komut dosyası var olan bir laboratuvar olmasını gerektirir. 
+## <a name="prerequisites"></a>Ön koşullar
+* **Laboratuvar**. Betik, mevcut bir laboratuvarınızın olmasını gerektirir. 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -40,13 +40,13 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| AzResource Bul | Belirtilen parametrelere bağlı kaynakları arar. |
+| Find-AzResource | Belirtilen parametrelere göre kaynak arar. |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Kaynakları alır. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Bir kaynağı değiştirir. |
-| [Yeni AzResource](/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturun. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Lab Services PowerShell Betiği örnekleri, içinde bulunabilir [Azure Lab Services PowerShell örnekleri](../samples-powershell.md).
+Ek Azure Lab Services PowerShell betiği örnekleri [Azure Lab Services PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

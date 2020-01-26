@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: PHP ile Service Bus konuları kullanma'
-description: "Hızlı başlangıç: Azure 'da PHP ile Service Bus konularına nasıl kullanacağınızı öğrenin."
+title: PHP ile Azure Service Bus konuları kullanma
+description: Bu öğreticide, bir PHP uygulamasından Azure Service Bus konuları ve abonelikleri kullanmayı öğreneceksiniz.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721644"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760683"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Hızlı başlangıç: PHP ile Service Bus konuları ve abonelikleri kullanma
 

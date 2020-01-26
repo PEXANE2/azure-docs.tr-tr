@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SQLRuleAction söz dizimi başvurusu | Microsoft Docs
-description: SQLRuleAction dilbilgisinde ayrıntılar.
+title: Azure Service Bus 'de SQLRuleAction söz dizimi başvurusu
+description: Bu makale, SQLRuleAction söz dizimi için bir başvuru sağlar. Eylemler, aracılı bir iletiyle gerçekleştirilen SQL dil tabanlı söz dizimine yazılır.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60307487"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759637"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction söz dizimi
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus için SQLRuleAction söz dizimi başvurusu
 
 Bir *Sqlruleaction* , [sqlruleaction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) sınıfının bir örneğidir ve bir [brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)öğesine karşı gerçekleştirilen SQL dil tabanlı sözdiziminde yazılmış eylemlerin kümesini temsil eder.   
   
@@ -65,13 +65,13 @@ Bu makalede, SQL kuralı eylem dilbilgisinde ayrıntıları listelenmektedir.
   
 ## <a name="arguments"></a>Bağımsız Değişkenler  
   
--   `<scope>`, `<property_name>`kapsamını belirten isteğe bağlı bir dizedir. Geçerli değerler veya `sys` `user`' dir. Değer, [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı `<property_name>` olan sistem kapsamını gösterir. `sys` `user`Kullanıcı kapsamını `<property_name>` , [aracılı edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user`belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
+-   `<scope>`, `<property_name>`kapsamını belirten isteğe bağlı bir dizedir. Geçerli değerler `sys` veya `user`. `sys` değeri, `<property_name>` [Brokeredmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olduğu sistem kapsamını gösterir. `user`, `<property_name>` [Brokeredmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğu Kullanıcı kapsamını gösterir. `<scope>` belirtilmemişse `user` kapsam varsayılan kapsamdır.  
   
 ### <a name="remarks"></a>Açıklamalar  
 
 Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolmayan bir Kullanıcı özelliğine erişme girişimi bir hata değildir. Bunun yerine, var olmayan bir Kullanıcı özelliği, dahili olarak bilinmeyen bir değer olarak değerlendirilir. Bilinmeyen bir değer, işleç değerlendirmesi sırasında özel olarak değerlendirilir.  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -92,13 +92,13 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
  Bu, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/rakam gelen bir dize anlamına gelir.  
   
- `[:IsLetter:]`Unicode harfi olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsLetter(c)`bir Unicode harfse döndürür `true`. `c`  
+ `[:IsLetter:]`, Unicode harfi olarak kategorilere ayrılan herhangi bir Unicode karakteri anlamına gelir. `System.Char.IsLetter(c)`, `c` Unicode bir harfle `true` döndürür.  
   
- `[:IsDigit:]`ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsDigit(c)`Unicode `true` basamağı `c` ise döndürür.  
+ `[:IsDigit:]`, ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakteri anlamına gelir. `System.Char.IsDigit(c)`, `c` Unicode bir sayı ise `true` döndürür.  
   
- `<regular_identifier>` , Ayrılmış bir anahtar sözcük olamaz.  
+ `<regular_identifier>` ayrılmış bir anahtar sözcük olamaz.  
   
- `<delimited_identifier>`sol/sağ köşeli ayraç ([]) ile çevrelenen herhangi bir dizedir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. Aşağıdakiler aşağıda `<delimited_identifier>`verilmiştir:  
+ `<delimited_identifier>`, sol/sağ köşeli ayraç ([]) ile birlikte gelen dizelerdir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. `<delimited_identifier>`örnekleri aşağıda verilmiştir:  
   
 ```  
 [Property With Space]  
@@ -106,7 +106,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ```  
   
- `<quoted_identifier>`, çift tırnak işaretleriyle çevrelenen herhangi bir dizedir. Tanımlayıcıdaki çift tırnak işareti iki çift tırnak işareti olarak temsil edilir. Bir dize sabiti ile kolayca karışabileceğinden, tırnak işareti tanımlayıcıları kullanılması önerilmez. Mümkünse sınırlı bir tanımlayıcı kullanın. Aşağıda bir örneği `<quoted_identifier>`verilmiştir:  
+ `<quoted_identifier>`, çift tırnak işaretleriyle çevrelenen herhangi bir dizedir. Tanımlayıcıdaki çift tırnak işareti iki çift tırnak işareti olarak temsil edilir. Bir dize sabiti ile kolayca karışabileceğinden, tırnak işareti tanımlayıcıları kullanılması önerilmez. Mümkünse sınırlı bir tanımlayıcı kullanın. Aşağıda bir `<quoted_identifier>`örneği verilmiştir:  
   
 ```  
 "Contoso & Northwind"  
@@ -121,13 +121,13 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ### <a name="remarks"></a>Açıklamalar
   
- `<pattern>`dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir model olarak kullanılır.      Aşağıdaki joker karakterleri içerebilir:  
+ `<pattern>`, dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir model olarak kullanılır.      Aşağıdaki joker karakterleri içerebilir:  
   
--   `%`:  Herhangi bir sıfır veya daha fazla karakter dizesi.  
+-   `%`: herhangi bir sıfır veya daha fazla karakter dizesi.  
   
--   `_`: Herhangi bir tek karakter.  
+-   `_`: herhangi bir tek karakter.  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -136,9 +136,9 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ### <a name="remarks"></a>Açıklamalar
   
- `<escape_char>`1 uzunluğunda bir dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir kaçış karakteri olarak kullanılır.  
+ `<escape_char>`, 1 uzunluğunda bir dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir kaçış karakteri olarak kullanılır.  
   
- Örneğin, `property LIKE 'ABC\%' ESCAPE '\'` ile `ABC%` başlayanbir`ABC`dize yerine eşleşmeler.  
+ Örneğin, `property LIKE 'ABC\%' ESCAPE '\'`, `ABC`ile başlayan bir dize yerine `ABC%` ile eşleşir.  
   
 ## <a name="constant"></a>Sabit  
   
@@ -149,7 +149,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ### <a name="arguments"></a>Bağımsız Değişkenler  
   
--   `<integer_constant>`, tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak `System.Int64` depolanır ve aynı aralığı izler.  
+-   `<integer_constant>`, tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak `System.Int64` olarak depolanır ve aynı aralığı izler.  
   
      Aşağıda, uzun sabitler örnekleri verilmiştir:  
   
@@ -158,9 +158,9 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
     2  
     ```  
   
--   `<decimal_constant>`, tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak `System.Double` depolanır ve aynı aralığa/duyarlığa uyar.  
+-   `<decimal_constant>`, tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak `System.Double` olarak depolanır ve aynı aralığı/duyarlılığı izler.  
   
-     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün için `System.Double` `<decimal_constant>`olduğu olguyu temel almamalıdır.  
+     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türü `<decimal_constant>`için `System.Double`.  
   
      Ondalık sabitlerin örnekleri aşağıda verilmiştir:  
   
@@ -169,14 +169,14 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
     2.0  
     ```  
   
--   `<approximate_number_constant>`bilimsel gösterimde yazılmış bir sayıdır. Değerler dahili olarak `System.Double` depolanır ve aynı aralığa/duyarlığa uyar. Aşağıda, yaklaşık sayıda Sabitte örnek verilmiştir:  
+-   `<approximate_number_constant>` bilimsel gösterimde yazılmış bir sayıdır. Değerler dahili olarak `System.Double` olarak depolanır ve aynı aralığı/duyarlılığı izler. Aşağıda, yaklaşık sayıda Sabitte örnek verilmiştir:  
   
     ```  
     101.5E5  
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -185,9 +185,9 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ### <a name="remarks"></a>Açıklamalar
   
-Boole sabitleri, anahtar kelimeleri `TRUE` veya `FALSE`ile temsil edilir. Değerler olarak `System.Boolean`depolanır.  
+Boolean sabitleri `TRUE` veya `FALSE`anahtar sözcükleriyle temsil edilir. Değerler `System.Boolean`olarak depolanır.  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -197,7 +197,7 @@ Boole sabitleri, anahtar kelimeleri `TRUE` veya `FALSE`ile temsil edilir. Değer
   
 Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karakterleri içerir. Bir dize sabitine gömülü tek bir tırnak işareti, iki tek tırnak işareti olarak temsil edilir.  
   
-## <a name="function"></a>işlev  
+## <a name="function"></a>çalışmayacaktır  
   
 ```  
 <function> :=  
@@ -207,9 +207,9 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
   
 ### <a name="remarks"></a>Açıklamalar  
 
-İşlevi, `System.Guid.NewGuid()` yöntemi tarafından oluşturulan bir **System. Guid** döndürür. `newid()`  
+`newid()` işlevi, `System.Guid.NewGuid()` yöntemi tarafından oluşturulan bir **System. Guid** döndürür.  
   
-`property(name)` İşlevi tarafından`name`başvurulan özelliğin değerini döndürür. Değer `name` , bir dize değeri döndüren geçerli bir ifade olabilir.  
+`property(name)` işlevi, `name`tarafından başvurulan özelliğin değerini döndürür. `name` değeri, bir dize değeri döndüren geçerli bir ifade olabilir.  
   
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 

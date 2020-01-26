@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7af4f68417b25b480ea5422eb13d6b2a5748212c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431733"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759712"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (Storagessync. sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
  
-Kullanıcı katmanlı bir dosya açtığında, kullanıcının dosyanın gerçekten Azure 'da depolandığını bilmesi gerekmeden dosya verilerini Azure dosyalarından sorunsuz bir şekilde geri çeker Azure Dosya Eşitleme. 
+Bir Kullanıcı katmanlı bir dosya açtığında, kullanıcının dosyanın Azure 'da depolandığını bilmeleri gerekmeden Azure dosyalarından dosya verilerini sorunsuzca geri çeker Azure Dosya Eşitleme. 
  
  > [!Important]  
  > Bulut katmanlaması, Windows sistem birimlerindeki sunucu uç noktaları için desteklenmez ve yalnızca boyutu 64 KiB 'den büyük dosyalar Azure dosyaları için katmanlanmış olabilir.
@@ -127,6 +127,13 @@ Bulut katmanlama özelliği etkinleştirildiğinde, bulut katmanlaması, dosyala
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Katmanlı dosyalar neden Windows Gezgini 'nde küçük resimleri veya önizlemeleri gösterilmiyor?
+Katmanlı dosyalar için, küçük resimler ve önizlemeler sunucu uç noktanıza görünmez. Bu davranış, Windows 'daki küçük resim önbelleği özelliği, çevrimdışı özniteliği olan dosyaların okunmasına göre atlanmasından bu yana beklenmektedir. Bulut katmanlama özelliği etkinken katmanlı dosyalar aracılığıyla okuma, bunların indirilememesine (geri çekilir) neden olur.
+
+Bu davranış Azure Dosya Eşitleme özgü değildir, Windows Gezgini, çevrimdışı özniteliği ayarlanmış herhangi bir dosya için "gri X" görüntüler. SMB üzerinden dosyalara erişirken X simgesini görürsünüz. Bu davranışın ayrıntılı bir açıklaması için bkz. [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Azure Dosya Eşitleme dağıtımı için planlama yapma](storage-sync-files-planning.md)

@@ -1,6 +1,6 @@
 ---
 title: PowerShell-Azure DevTest Labs bir laboratuvarda özel rol oluşturma
-description: Bu PowerShell betiği, Azure DevTest Labs bir laboratuvara dış Kullanıcı ekler.
+description: Bu makalede, Azure DevTest Labs bir laboratuvara dış Kullanıcı ekleyen bir Azure PowerShell betiği sunulmaktadır.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: bcad4e02105bff2dc78a4adc3ca614f997794d52
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9605b3c63877335b8f180ae5fd2b06edc1601096
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166434"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760478"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuarda özel bir rol oluşturmak için PowerShell kullanın
 

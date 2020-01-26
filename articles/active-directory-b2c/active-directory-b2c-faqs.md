@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289093"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756203"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -39,7 +39,7 @@ Bir Azure AD kiracısında kiracıya ait olan kullanıcılar `<xyz>@<tenant doma
 
 Azure AD B2C kiracısında çoğu uygulama, kullanıcının rastgele herhangi bir e-posta adresiyle oturum açmasını ister (örneğin, joe@comcast.net, bob@gmail.com, sarah@contoso.comveya jim@live.com). Bu hesap türü yerel bir hesaptır. Yerel hesap olarak (örneğin, Ali, Bob, Sarah veya Jim) rastgele Kullanıcı adlarını da destekliyoruz. Azure portal Azure AD B2C için kimlik sağlayıcılarını yapılandırırken bu iki yerel hesap türünden birini seçebilirsiniz. Azure AD B2C kiracınızda **kimlik sağlayıcıları**' nı seçin, **yerel hesap**' ı seçin ve ardından **Kullanıcı adı**' nı seçin.
 
-Uygulamalar için Kullanıcı hesaplarının her zaman bir kaydolma Kullanıcı akışı, kaydolma veya oturum açma Kullanıcı akışından veya Azure AD Graph API kullanılarak oluşturulması gerekir. Azure portal oluşturulan kullanıcı hesapları yalnızca kiracıyı yönetmek için kullanılır.
+Uygulamalar için Kullanıcı hesapları, kaydolma Kullanıcı akışı, kaydolma veya oturum açma Kullanıcı akışı, Microsoft Graph API 'SI veya Azure portal aracılığıyla oluşturulabilir.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Şu anda hangi sosyal kimlik sağlayıcılarını destekliyoruz? Gelecekte hangi olanları desteklemeyi planlıyorsunuz?
 
@@ -150,7 +150,7 @@ Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.
-1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
+1. **Azure kaynakları Için erişim yönetimi**altında **Evet**' i seçin ve ardından **Kaydet**' i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.
@@ -170,7 +170,7 @@ Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.
-1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
+1. **Azure kaynakları Için erişim yönetimi**altında **Evet**' i seçin ve ardından **Kaydet**' i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721413"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760819"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Ekip veri bilimi Işlemi, 1 TB 'lik bir veri kümesinde Azure HDInsight Hadoop kümesi kullanılarak yapılır.
 
@@ -56,7 +56,8 @@ Bu veri kümesinde içinde hem bir sayısal ve kategorik sütunlar eksik değerl
 2. **Regresyon**: bir ad tıklatma kullanıcı özelliklerinden olasılığını tahmin eder.
 
 ## <a name="setup"></a>Veri bilimi için ayarlanmış yukarı bir HDInsight Hadoop kümesi
-**Note:** Bu adım genellikle bir **Yönetim** görevidir.
+> [!NOTE]
+> Bu adım genellikle bir **Yönetim** görevidir.
 
 Üç adımda HDInsight kümeleri ile Tahmine dayalı analiz çözümleri oluşturmak için Azure veri bilimi ortamınızı ayarlayın:
 
@@ -107,10 +108,8 @@ Criteo kümemizi için Hive tabloları oluşturmak için açık ***Hadoop komut 
 > [!NOTE]
 > Herhangi bir Hive sorgusu çalıştırmak için bir her zaman aşağıdaki komutları kullanabilirsiniz:
 >
->
-
-        cd %hive_home%\bin
-        hive
+>        cd %hive_home%\bin
+>        hive
 
 Hive REPL ile göründükten sonra bir "hive >"oturum, yalnızca Kes ve onu yürütmek için sorguyu yapıştırın.
 

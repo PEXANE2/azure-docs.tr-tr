@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84296631e35de759fbb971f5de2d918afa5d17f0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3090c0bb809b302f0326d2586d2ce1426e4ace85
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967567"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760615"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -219,7 +219,7 @@ Bu yönetici Azure Active Directory kiracılar ve dış kimlik sağlayıcıları
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[Genel yönetici/Şirket Yöneticisi](#company-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim özelliklerine ve Azure Active Directory ayrıca Microsoft 365 Güvenlik Merkezi, Microsoft 365 Uyumluluk Merkezi, Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi Azure Active Directory kiracıya kaydolan kişi genel yönetici olur. Yalnızca küresel yöneticiler diğer yönetici rollerini atayabilir. Şirketinizde birden fazla genel yönetici olabilir. Genel yöneticiler, tüm kullanıcıların ve diğer tüm yöneticilerin parolalarını sıfırlayabilir.
+Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim özelliklerine ve Azure Active Directory ayrıca Microsoft 365 Güvenlik Merkezi, Microsoft 365 Uyumluluk Merkezi, Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi Azure Active Directory kiracıya kaydolan kişi genel yönetici olur. Yalnızca genel Yöneticiler, diğer yönetici rollerini atayabilir. Şirketinizde birden fazla genel yönetici olabilir. Genel Yöneticiler, tüm kullanıcılar ve diğer tüm yöneticiler için parolayı sıfırlayabilir.
 
 > [!NOTE]
 > Microsoft Graph API, Azure AD Graph API ve Azure AD PowerShell 'de, bu rol "Şirket Yöneticisi" olarak tanımlanır. [Azure Portal](https://portal.azure.com), "genel yönetici" dir.
@@ -375,7 +375,7 @@ Windows Defender ATP ve EDR | Rol atama<br>Makine gruplarını yönetme<br>Uç n
 
 ### <a name="security-operatorsecurity-operator-permissions"></a>[Güvenlik operatörü](#security-operator-permissions)
 
-Bu role sahip kullanıcılar, uyarıları yönetebilir ve güvenlikle ilgili özellik üzerinde, Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması Privileged Identity Management ve Office 365 ' deki tüm bilgiler dahil olmak üzere genel salt okuma erişimine sahip olabilir Güvenlik ve Uyumluluk Merkezi. Office 365 izinleri hakkında daha fazla bilgi [Için office 365 güvenlik ve Uyumluluk Merkezi izinleri](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)bulabilirsiniz.
+Bu role sahip kullanıcılar, uyarıları yönetebilir ve güvenlikle ilgili özelliklerde, Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması Privileged Identity Management ve Office 365 ' deki tüm bilgiler dahil olmak üzere genel salt okuma erişimine sahip olabilir Güvenlik ve Uyumluluk Merkezi. Office 365 izinleri hakkında daha fazla bilgi [Için office 365 güvenlik ve Uyumluluk Merkezi izinleri](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)bulabilirsiniz.
 
 İçinde | Yapılabilir
 --- | ---
@@ -399,7 +399,7 @@ Kimlik koruma Merkezi | Güvenlik özellikleri için tüm güvenlik raporların�
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Azure AD Privileged Identity Management ' de ortaya çıkacak tüm bilgilere salt okuma erişimi vardır: Azure AD rol atamaları ve güvenlik incelemeleri için Ilkeler ve raporlar.<br>Azure AD Privileged Identity Management için **kaydolabilir veya** herhangi bir değişiklik yapabilirsiniz. Privileged Identity Management portalında veya PowerShell aracılığıyla, bu roldeki birisi, Kullanıcı için uygun olması durumunda ek rolleri (örneğin, genel yönetici veya ayrıcalıklı rol yöneticisi) etkinleştirebilir.
 [Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Güvenlik ilkelerini görüntüleme<br>Güvenlik tehditlerini görüntüle ve araştır<br>Raporları görüntüle
 Windows Defender ATP ve EDR | Uyarıları görüntüleyin ve araştırın. Windows Defender ATP 'de rol tabanlı erişim denetimini açtığınızda, Azure AD güvenlik okuyucusu rolü gibi salt okuma izinlerine sahip kullanıcılar bir Windows Defender ATP rolüne atanana kadar erişimi kaybeder.
-[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Kullanıcı, cihaz, kayıt, yapılandırma ve uygulama bilgilerini görüntüler. Intune’da değişiklik yapamaz.
+[Intune](https://docs.microsoft.com/intune/role-based-access-control) | Kullanıcı, cihaz, kayıt, yapılandırma ve uygulama bilgilerini görüntüler. Intune üzerinde değişiklik yapılamıyor.
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir
 [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Önerileri ve uyarıları görüntüleyebilir, güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz
 [Office 365 hizmet durumu](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 hizmetlerinin sistem durumunu görüntüleme
@@ -1670,7 +1670,7 @@ Temel araçları kullanarak takımlar içindeki iletişim sorunlarını giderebi
 | Microsoft. Directory/Users/Approtaatamalar/güncelleştirme | Azure Active Directory Users. Approtaatamalar özelliğini güncelleştirin. |
 | Microsoft. Directory/Users/Atamalisansı | Azure Active Directory kullanıcılar üzerinde lisansları yönetin. |
 | Microsoft. Directory/Users/Basic/Update | Azure Active Directory kullanıcıların temel özelliklerini güncelleştirin. |
-| Microsoft. Directory/kullanıcılar/oluştur | Azure Active Directory’de kullanıcılar oluşturun. |
+| Microsoft. Directory/kullanıcılar/oluştur | Azure Active Directory kullanıcılar oluşturun. |
 | Microsoft. Directory/kullanıcılar/Sil | Azure Active Directory Kullanıcıları silin. |
 | Microsoft. Directory/Users/ınvalidateallrefreshtokens | Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar. |
 | Microsoft. Directory/Users/Manager/Update | Azure Active Directory içindeki Users. Manager özelliğini güncelleştirin. |
@@ -1689,7 +1689,7 @@ Rol şablonu kimlikleri genellikle Graph API veya PowerShell kullanıcıları ta
 
 Grafik displayName | Görünen ad Azure portal | Directoryroletemplateıd
 ----------------- | ------------------------- | -------------------------
-Uygulama Yöneticisi | Uygulama yöneticisi | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
+Uygulama Yöneticisi | Uygulama Yöneticisi | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Uygulama geliştiricisi | Uygulama geliştiricisi | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Kimlik doğrulama Yöneticisi | Kimlik doğrulama Yöneticisi | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps Yöneticisi | Azure DevOps Yöneticisi | e3973bdf-4987-49ae-837a-ba8e231c7286
@@ -1708,39 +1708,39 @@ Koşullu Erişim Yöneticisi | Koşullu Erişim Yöneticisi | b1be1c3e-b65d-4f19
 CRM hizmet Yöneticisi | Dynamics 365 Yöneticisi | 44367163-eba1-44c3-98af-f5787879f96a
 Müşteri Kasası erişim onaylayıcısı | Müşteri Kasası erişimi onaylayan | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Masaüstü Analizi Yöneticisi | Masaüstü Analizi Yöneticisi | 38a96431-2bdf-4B4C-8B6E-5d3d8abac1a4
-Cihaz Yöneticileri | Cihaz yöneticileri | 9f06204d-73c1-4d4c-880a-6edb90606fd8
+Cihaz yöneticileri | Cihaz yöneticileri | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Cihaz katılımı | Cihaz katılımı | 9c094953-4995-41C8-84c8-3ebb9b32c93f
 Cihaz yöneticileri | Cihaz yöneticileri | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Cihaz kullanıcıları | Cihaz kullanıcıları | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Dizin okuyucuları | Dizin okuyucuları | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Dizin eşitleme hesapları | Dizin eşitleme hesapları | d29b2b05-8046-44ba-8758-1e26182fcf32
 Dizin yazarları | Dizin yazarları | 9360feb5-f418-4baa-8175-e2a00bac4301
-Exchange hizmeti Yöneticisi | Exchange yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Exchange hizmeti Yöneticisi | Exchange Yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Dış kimlik sağlayıcısı Yöneticisi | Dış kimlik sağlayıcısı Yöneticisi | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Genel okuyucu | Genel okuyucu | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Grup Yöneticisi | Grup Yöneticisi | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Konuk davetci | Konuk davetci | 95e79109-95c0-4d8e-aee3-d01accf2d47b
-Yardım Masası Yöneticisi | Parola yöneticisi | 729827e3-9c14-49f7-bb1b-9608f156bbb8
-Intune Hizmet Yöneticisi | Intune yöneticisi | 3a2c62db-5318-420d-8d74-23afee5d9d5
+Yardım Masası Yöneticisi | Parola Yöneticisi | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+Intune Hizmet Yöneticisi | Intune Yöneticisi | 3a2c62db-5318-420d-8d74-23afee5d9d5
 Kaizala Yöneticisi | Kaizala Yöneticisi | 74ef975b-6605-40af-a5d2-b9539d836353
 Lisans Yöneticisi | Lisans Yöneticisi | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Lync Hizmet Yöneticisi | Skype Kurumsal yöneticisi | 75941009-915a-4869-ABE7-691bff18279e
+Lync Hizmet Yöneticisi | Skype Kurumsal Yöneticisi | 75941009-915a-4869-ABE7-691bff18279e
 İleti Merkezi Gizlilik okuyucusu | İleti Merkezi Gizlilik okuyucusu | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 İleti Merkezi okuyucusu | İleti Merkezi okuyucusu | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Office uygulamaları Yöneticisi | Office uygulamaları Yöneticisi | 2b745bdf-0803-4d80-aa65-822c4493dadac
 Partner Tier1 Desteği | Partner Katman1 desteği | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Partner Tier2 Desteği | Partner Katman2 desteği | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
-Parola Yöneticisi | Parola yöneticisi | 966707d0-3269-4727-9be2-8c3a10f19b9d
+Parola Yöneticisi | Parola Yöneticisi | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI Hizmet Yöneticisi | Power BI Yöneticisi | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform Yöneticisi | Power platformu Yöneticisi | 11648597-926c-4CF3-9c36-bcebb0ba8dcc
 Ayrıcalıklı kimlik doğrulama Yöneticisi | Ayrıcalıklı kimlik doğrulama Yöneticisi | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
-Ayrıcalıklı Rol Yöneticisi | Ayrıcalıklı rol yöneticisi | e8611ab8-c189-46e8-94e1-60213ab1f814
+Ayrıcalıklı rol yöneticisi | Ayrıcalıklı rol yöneticisi | e8611ab8-c189-46e8-94e1-60213ab1f814
 Rapor okuyucu | Rapor okuyucu | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Yönetici ara | Yönetici ara | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Arama Düzenleyicisi | Arama Düzenleyicisi | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Güvenlik Yöneticisi | Güvenlik yöneticisi | 194ae4cb-B126-40b2-bd5b-6091b380977d
 Güvenlik operatörü | Güvenlik operatörü | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
-Güvenlik Okuyucusu | Güvenlik okuyucusu | 5d6b6bb7-de71-4623-B4AF-96380a352509
+Güvenlik okuyucusu | Güvenlik okuyucusu | 5d6b6bb7-de71-4623-B4AF-96380a352509
 Hizmet desteği Yöneticisi | Hizmet yöneticisi | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint Hizmet Yöneticisi | SharePoint yöneticisi | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Takımlar Iletişim Yöneticisi | Takımlar Iletişim Yöneticisi | baf37b3a-610e-45da-9e62-d9d1e5e8914b
@@ -1755,7 +1755,7 @@ Kullanıcı Hesabı Yöneticisi | Kullanıcı Yöneticisi | fe930be7-5e62-47db-9
 
 Aşağıdaki roller kullanılmamalıdır. Bunlar kullanım dışı bırakılmıştır ve gelecekte Azure AD 'den kaldırılacaktır.
 
-* AdHoc Lisans Yöneticisi
+* Geçici Lisans Yöneticisi
 * Cihaz katılımı
 * Cihaz yöneticileri
 * Cihaz kullanıcıları

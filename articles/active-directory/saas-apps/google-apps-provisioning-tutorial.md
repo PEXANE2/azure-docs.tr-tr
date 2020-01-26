@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: d754964ac6c16c87e6f0825b4f1a955d38fa3530
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720317"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756237"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -30,9 +30,9 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları G Suit
 
 > [!NOTE]
 > G Suite Bağlayıcısı son zamanlarda 2019 Ekim tarihinde güncelleştirildi. G Suite bağlayıcısında yapılan değişiklikler şunları içerir:
-- Ek G Suite Kullanıcı ve grup öznitelikleri için destek eklendi. 
-- [Burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
-- Varsayılan öznitelik eşlemeleri güncelleştirildi.
+> - Ek G Suite Kullanıcı ve grup öznitelikleri için destek eklendi. 
+> - [Burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
+> - Varsayılan öznitelik eşlemeleri güncelleştirildi.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -161,7 +161,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 1. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
 1. **Save (Kaydet)** düğmesine tıklayın.
 

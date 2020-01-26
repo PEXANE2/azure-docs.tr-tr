@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus ileti sıralama ve zaman damgaları | Microsoft Docs
-description: Service Bus ileti dizisi ve zaman damgalı sipariş koru
+title: Azure Service Bus ileti sıralaması ve zaman damgaları | Microsoft Docs
+description: Bu makalede, Azure Service Bus iletilerinin sıralama ve sıralamayı (zaman damgalarına) nasıl koruyabileceğiniz açıklanır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,44 +11,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 8665d0a1fccecf5521a553a894e2a55e52384ec3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402730"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756326"
 ---
 # <a name="message-sequencing-and-timestamps"></a>İleti sıralama ve zaman damgaları
 
-Sıralama ve zaman damgası olan tüm Service Bus varlıklarının her zaman etkin ve aracılığıyla yüzey iki özellik [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) ve [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) alınan ya da taranan özellikleri iletileri.
+Sıralama ve zaman damgalama, tüm Service Bus varlıklarda her zaman etkin olan ve alınan veya taranan iletilerin [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) ve [Enqueuedtimeutc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) özellikleri aracılığıyla yüzey olan iki özellikten oluşur.
 
-Mutlak iletilerin sırasını önemli olduğu durumlara yönelik ve/veya, bir tüketici güvenilir benzersiz bir tanımlayıcı iletileri, bir boşluk içermeyen ile Aracısı Damgalar iletileri için sıra numarası kuyruğuna veya konusuna göre artan gerekir. Bölümlenen varlıklar için sıra numarasına göre bölüm verilir.
+İletilerin mutlak sırasının önemli olduğu ve/veya bir tüketicinin iletiler için güvenilir benzersiz bir tanımlayıcıya ihtiyacı olan bu durumlar için, aracı, bir boşluk içermeyen iletileri damgalarına ve sıra veya konuya göre artan sıra numarasına sahip olur. Bölümlenmiş varlıklar için sıra numarası bölüme göre verilir.
 
-**SequenceNumber** olarak kabul edilir ve işlevleri ve Aracısı kendi iç tanımlayıcı olarak depolanan bir ileti atanmış bir benzersiz bir 64-bit tamsayı değeridir. Bölümlenen varlıklar için bölüm tanımlayıcısı üst 16 bit yansıtır. Sıra numaraları 48/64 bit aralığı kaldığında sıfır olarak geçir.
+**SequenceNumber** değeri, aracı ve işlevleri tarafından iç tanımlayıcı olarak kabul edildiği ve depolandığı için bir iletiye atanan benzersiz bir 64 bitlik tamsayıdır. Bölümlenmiş varlıklarda en üstteki 16 bit, Bölüm tanımlayıcısını yansıtır. 48/64 bit Aralık tükendiğinde sıra numaraları sıfıra geçer.
 
-Orta ve bağımsız bir yetkili tarafından ve istemciler tarafından atandıktan sonra sıra numarası benzersiz bir tanımlayıcı olarak güvenilir olabilir. Ayrıca varış true sırayı temsil eder ve zaman damgaları yeterince yüksek bir çözünürlük ileti olağanüstü fiyatlarıyla olmayabilir ve (ancak en düşük) saat eğriltme durumlarda tabi olabilir çünkü zaman damgası bir sipariş ölçütü olarak daha kesin burada Aracısı sahipliği düğümler arasında geçiş yapar.
+Sıra numarası, istemcilere göre değil, merkezi ve bağımsız bir yetkili tarafından atandığı için benzersiz bir tanımlayıcı olarak güvenilir olabilir. Ayrıca, aynı zamanda gerçek varış sırasını temsil eder ve zaman damgalarının sıra ölçütü olarak çok daha kesin olması nedeniyle, zaman damgaları yoğun olmayan bir şekilde yüksek çözünürlüğe sahip olabileceğinden ve bu durum, aracının düğümler arasında sahiplik geçişleri.
 
-Mutlak varış sırasındaki önemlidir, örneğin, iş'te, sınırlı sayıda mal satışa senaryoları kaynakları sırasında ilk-gelen-ilk-hizmet olarak son sunulur. Konser bileti satış buna örnek verilebilir.
+Mutlak varış siparişi, örneğin, en son tedarik edilirken sınırlı sayıda sunulan malları ilk kez sunulan bir kez sunulan iş senaryolarında önemli, konser bilet satışları bir örnektir.
 
-Zaman damgası özelliği, yansıtılan bir ileti geliş UTC zamanını doğru bir şekilde yakalar nötr ve güvenilir yetkili görür **EnqueuedTimeUtc** özelliği. Gibi belirli bir tarihte gece yarısından önce bir iş öğesi olup gönderilen son tarihleri, bir iş senaryosuna bağlıdır, değeri kullanışlıdır ancak şu ana kadar kuyruk biriktirme listesi işlemesidir.
+Zaman damgalama özelliği, bir iletinin, **Enqueuedtimeutc** ÖZELLIĞINDE yansıtılan UTC saatini doğru bir şekilde yakalayan, nötr ve güvenilir bir yetkili olarak davranır. Bir iş senaryosu, gece yarısından önce belirli bir tarihte gönderilip gönderilmediğine karşın işlem sıranın biriktirme listesinin en altında olduğundan, bu değer yararlı olur.
 
 ## <a name="scheduled-messages"></a>Zamanlanan mesajlar
 
-Bir kuyruk veya konuda Gecikmeli işleme iletiler gönderebilirsiniz; Örneğin, belirli bir zamanda bir sistem tarafından işlenmek üzere kullanılabilir hale gelmesi için bir iş zamanlama. Bu özellik zaman tabanlı güvenilir dağıtılmış Zamanlayıcı fark etti.
+Gecikmeli işleme için bir kuyruğa veya konuya ileti gönderebilirsiniz; Örneğin, bir işi belirli bir zamanda bir sistem tarafından işlenmek üzere kullanılabilir hale gelecek şekilde zamanlamak için. Bu yetenek, güvenilir bir dağıtılmış zaman tabanlı Scheduler 'ı daha gerçekçi hale getirir.
 
-Zamanlanmış iletileri tanımlanmış kuyruğa zamana kadar kuyrukta depolanabildiği değil. Bu tarihten önce zamanlanmış iletileri iptal edilebilir. İptal iletisini siler.
+Zamanlanan iletiler, tanımlanan sıraya alma zamanına kadar sırada bir şekilde çalışmaz. Bu süreden önce zamanlanan iletiler iptal edilebilir. İptal etme iletiyi siler.
 
-Zamanlayabilirsiniz ayarlayarak ya da iletileri [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) normal gönderme yolundan veya açıkça ile ileti gönderilirken özelliği [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. İkinci hemen zamanlanmış iletinin döndürür **SequenceNumber**, daha sonra zamanlanmış iletileri gerekirse iptal etmek için kullanabileceğiniz. Zamanlanan mesajlar ve kendi sıra numaraları ayrıca bulunması kullanarak [iletilere gözatma](message-browsing.md).
+Sıradan gönderme yoluyla bir ileti gönderirken ya da [Schedulemessageasync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API ile açık olarak [Scheduledenqueuetimeutc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) özelliğini ayarlayarak iletileri zamanlayabilirsiniz. İkinci olarak, daha sonra gerekirse zamanlanmış iletiyi iptal etmek için kullanabileceğiniz zamanlanmış iletinin **SequenceNumber**döndürür. Zamanlanan iletiler ve sıra numaraları [ileti tarama](message-browsing.md)kullanılarak da bulunabilir.
 
-**SequenceNumber** için zamanlanmış bir ileti yalnızca geçerli sırasında bu durumdayken iletisidir. Etkin duruma ileti geçişleri ileti kuyruğuna sıraya içeren yeni bir atama geçerli anlık olsaydı gibi eklenir **SequenceNumber**.
+Zamanlanmış bir ileti için **SequenceNumber** yalnızca ileti bu durumda olduğunda geçerlidir. İleti etkin duruma geçiş yaparken, ileti geçerli anında sıraya alınmış gibi sıraya eklenir, bu da yeni bir **SequenceNumber**atamayı içerir.
 
-Service Bus özelliği tek bir ileti sabitlenmiştir ve iletileri yalnızca sıraya alınan bir kez olabilir çünkü yinelenen zamanlamalar iletileri desteklemez.
+Özelliği tek tek iletilere sabitlenmiş olduğundan ve mesajlar yalnızca bir kez sıraya alınmışsa Service Bus iletiler için yinelenen zamanlamaları desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

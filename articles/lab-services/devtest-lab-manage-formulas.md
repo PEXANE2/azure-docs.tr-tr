@@ -1,6 +1,6 @@
 ---
-title: Sanal makineler oluşturmak için Azure DevTest labs'deki formülleri yönetme | Microsoft Docs
-description: Azure DevTest Labs formülleri kaldırır ve güncelleştirme hakkında bilgi edinin
+title: VM 'Ler oluşturmak için Azure DevTest Labs formülleri yönetme | Microsoft Docs
+description: Bu makalede, bir temel (özel görüntü, Market görüntüsü veya başka bir formülden) veya var olan bir VM 'den nasıl formül oluşturacağınız gösterilmektedir.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,124 +12,124 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a668c1f7cf401c109c1041232d7f28dd2accd750
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60562602"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760411"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formülleri yönetme
 
 [!INCLUDE [devtest-lab-formula-definition](../../includes/devtest-lab-formula-definition.md)]
 
-Bu makalede bir formül temel (özel görüntü, Market görüntüsü veya başka bir formül) veya varolan bir VM'yi oluşturma işlemini göstermektedir. Bu makalede ayrıca, mevcut formülleri yönetme aracılığıyla size yol gösterir.
+Bu makalede, bir temel (özel görüntü, Market görüntüsü veya başka bir formülden) veya var olan bir VM 'den nasıl formül oluşturacağınız gösterilmektedir. Bu makale ayrıca mevcut formülleri yönetirken size rehberlik eder.
 
 ## <a name="create-a-formula"></a>Formül oluşturma
-DevTest Labs kimseyle *kullanıcılar* izinlerdir formülde bir temel olarak kullanan VM'ler oluşturabilirsiniz. Formülleri oluşturmanın iki yolu vardır: 
+DevTest Labs *kullanıcıları* izinleri olan herkes, bir formülü temel olarak kullanarak VM 'ler oluşturabilir. Formül oluşturmanın iki yolu vardır: 
 
-* Formülün tüm özelliklerini tanımlamak bir temel - kullanın.
-* Var olan bir laboratuvarda VM - bağlı olarak var olan bir sanal makinenin ayarlarını bir formül oluşturmak istediğinizde kullanın.
+* Bir taban kullanımı, formülün tüm özelliklerini tanımlamak istediğinizde.
+* Mevcut bir laboratuvar VM 'sinden-mevcut bir sanal makinenin ayarlarına bağlı olarak bir formül oluşturmak istediğinizde kullanın.
 
-Kullanıcıları ve izinleri ekleme hakkında daha fazla bilgi için bkz. [Azure DevTest Labs'de sahibini ve kullanıcıları ekleme](./devtest-lab-add-devtest-user.md).
+Kullanıcıları ve izinleri ekleme hakkında daha fazla bilgi için, bkz. [Azure DevTest Labs sahip ve Kullanıcı ekleme](./devtest-lab-add-devtest-user.md).
 
-### <a name="create-a-formula-from-a-base"></a>Bir temel formül oluşturma
-Aşağıdaki adımlar özel bir görüntü, Market görüntüsü ya da başka bir formülü bir formül oluşturma işleminde size kılavuzluk eder.
+### <a name="create-a-formula-from-a-base"></a>Bir tabandan formül oluşturma
+Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka bir formülden formül oluşturma sürecinde size kılavuzluk gösterir.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
-2. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
+2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
-3. İstenen Laboratuvar labs listesinden seçin.  
+3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 
-4. Laboratuvar sayfasında seçin **formülleri (yeniden kullanılabilir tabanları)** .
+4. Laboratuvarın sayfasında **formüller (yeniden kullanılabilir tabanlar)** öğesini seçin.
    
     ![Formül menüsü](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
-5. Üzerinde **formülleri** sayfasında **+ Ekle**.
+5. **Formüller** sayfasında **+ Ekle**' yi seçin.
    
-    ![Bir formül ekleyin](./media/devtest-lab-create-formulas/add-formula.png)
+    ![Formül Ekle](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. Üzerinde **temel seçin** sayfasında, istediğiniz bir formül oluşturmak temel (özel görüntü, Market görüntü veya formül) seçin.
+6. **Temel seçin** sayfasında, formülü oluşturmak istediğiniz temel (özel görüntü, Market görüntüsü veya formül) öğesini seçin.
    
-    ![Temel listesi](./media/devtest-lab-create-formulas/base-list.png)
+    ![Temel liste](./media/devtest-lab-create-formulas/base-list.png)
 
-7. Üzerinde **temel ayarları** sekmesinde **formül oluşturma** sayfasında, aşağıdaki değerleri belirtin:
+7. **Formül oluştur** sayfasının **temel ayarlar** sekmesinde, aşağıdaki değerleri belirtin:
    
-    * **Formül adı** -formülünüz için bir ad girin. Bir VM oluşturduğunuzda, bu değeri temel görüntüleri listesinde görüntülenir. Adı, türü ve geçerli değil, bir ileti geçerli bir adı gereksinimlerini gösterir doğrulanır.
-    * **Kullanıcı adı** -yönetici ayrıcalıkları verilmiş bir kullanıcı adı girin.
-    * **Parola** - girin - veya açılan listeden seçin - belirtilen kullanıcı için kullanmak istediğiniz gizli dizisini (parola) ile ilişkili olan bir değer. Bir anahtar kasasındaki gizli dizileri kaydetme ve Laboratuvar kaynaklarını oluştururken kullanma hakkında bilgi edinmek için [gizli dizileri Azure Key Vault'ta Store](devtest-lab-store-secrets-in-key-vault.md).
-    * **VM boyutu** - seçin **değiştirme boyutu** VM'nin boyutunu değiştirmek için. 
-    * **Yapıtları** - seçin **ekleme veya kaldırma yapıtları** sayfasında, seçin ve temel görüntüye eklemek istediğiniz yapıtları yapılandırın. Yapılar hakkında daha fazla bilgi için bkz: [Azure DevTest Labs'teki sanal makineniz için özel yapıtlar oluşturma](devtest-lab-artifact-author.md).
-8. Geçiş **Gelişmiş ayarlar** sekmesini tıklatın ve aşağıdaki değerleri belirtin:
-    - **Sanal ağ** - sanal ağ değiştirmek için seçin **değiştirme Vnet**. 
-    - **Alt ağ** - alt değiştirmek için seçin **değiştirmek alt**. 
-    - **IP adresi yapılandırması** -genel, özel veya paylaşılan IP adreslerini isteyip istemediğinizi belirtin. Paylaşılan IP adresleri hakkında daha fazla bilgi için bkz. [anlayın paylaşılan IP adresleri Azure DevTest labs'deki](./devtest-lab-shared-ip.md).
-    - **Sona erme tarihi ve saati** - sona erme tarihi ve saati belirtin sanal makine için VM otomatik olarak silinir. 
-    - **Bu makineyi talep edilebilir hale** -bir makine "talep edilebilir" yapma anlamına gelir, sahipliği oluşturma sırasında atanması değil. Bunun yerine Laboratuvar kullanıcıları ("talep") makine Laboratuvar sayfasında sahipliğini mümkün olacaktır.     
-    - **Talep edilebilir örneklerinin** -oluşturmak istediğiniz talep edilebilir örneklerin sayısını belirtin. 
-8. Seçin **Gönder** formül oluşturma.
+    * **Formül adı** -formülünüz için bir ad girin. Bu değer, bir VM oluşturduğunuzda temel görüntüler listesinde görüntülenir. Ad siz yazarken onaylanır ve geçerli değilse, bir ileti geçerli bir ad için gereksinimleri gösterir.
+    * **Kullanıcı adı** -yönetici ayrıcalıkları verilen bir Kullanıcı adı girin.
+    * **Parola** -belirtilen kullanıcı için kullanmak istediğiniz gizli dizi (parola) ile ilişkili bir değer olan açılan menüden girin veya seçin. Gizli dizileri bir anahtar kasasında kaydetme ve laboratuvar kaynakları oluştururken kullanma hakkında bilgi edinmek için bkz. [Azure Key Vault gizli dizileri depolama](devtest-lab-store-secrets-in-key-vault.md).
+    * **VM boyutu** -sanal makinenin boyutunu değiştirmek Için **boyutu Değiştir** ' i seçin. 
+    * **Yapıtlar** -temel görüntüye eklemek istediğiniz yapıtları seçip yapılandırdığınız **yapıtları Ekle veya Kaldır** sayfasını seçin. Yapıtlar hakkında daha fazla bilgi için bkz. [Azure DevTest Labs sanal makineniz için özel yapılar oluşturma](devtest-lab-artifact-author.md).
+8. **Gelişmiş ayarlar** sekmesine geçin ve aşağıdaki değerleri belirtin:
+    - **Sanal ağ** -sanal ağı değiştirmek için **VNET 'i Değiştir**' i seçin. 
+    - **Alt ağ** -alt ağı değiştirmek Için **alt ağı Değiştir**' i seçin. 
+    - **IP adresi yapılandırması** -genel, özel veya paylaşılan IP adreslerini istediğinizi belirtin. Paylaşılan IP adresleri hakkında daha fazla bilgi için bkz. [Azure DevTest Labs PAYLAŞıLAN IP adreslerini anlama](./devtest-lab-shared-ip.md).
+    - **Sona erme tarihi ve saati** -VM 'nin otomatik olarak SILINMESI için VM 'nin sona erme tarihini ve saatini belirtin. 
+    - **Bu makineyi çakışmadan oluşturun** -makinenin "çakışmaz" olması, oluşturma sırasında sahiplik atanmayacağı anlamına gelir. Bunun yerine, laboratuar kullanıcıları laboratuvar sayfasında makineye sahiplik ("talep") alabilir.     
+    - Çakışan **örneklerin sayısı** -oluşturmak istediğiniz kaç tane sayıda örnek oluşturmak istediğinizi belirtin. 
+8. Formülü oluşturmak için **Gönder** ' i seçin.
 
-9. Formülü oluşturduğunuzda listede görüntüler **formülleri** sayfası.
+9. Formül oluşturulduğunda, **formüller** sayfasındaki listede görüntülenir.
 
-### <a name="create-a-formula-from-a-vm"></a>VM'den bir formül oluşturma
-Aşağıdaki adımları varolan bir VM'yi temel alan bir formül oluşturma işleminde size kılavuzluk eder. 
+### <a name="create-a-formula-from-a-vm"></a>VM 'den formül oluşturma
+Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sürecinde size kılavuzluk gösterir. 
 
 > [!NOTE]
-> Bir sanal makineden bir formül oluşturmak için VM 30 Mart 2016'dan sonra oluşturulmuş gerekir. 
+> VM 'den bir formül oluşturmak için, VM 'nin 30 Mart 2016 ' den sonra oluşturulmuş olması gerekir. 
 > 
 > 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
-2. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
-3. İstenen Laboratuvar labs listesinden seçin.  
-4. Laboratuvar'ın **genel bakış** sayfasında, kendisinden istediğiniz bir formül oluşturmak sanal Makineyi seçin.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
+4. Laboratuvarın **genel bakış** sayfasında, formülü oluşturmak istediğiniz VM 'yi seçin.
    
-    ![Labs sanal makineleri](./media/devtest-lab-create-formulas/my-vms.png)
-5. Sanal makinenin sayfasında seçin **(yeniden kullanılabilir temel) formülü oluşturursunuz**.
+    ![Labs VM 'Leri](./media/devtest-lab-create-formulas/my-vms.png)
+5. VM 'nin sayfasında **Formül oluştur (yeniden kullanılabilir temel)** öğesini seçin.
    
-    ![Formül oluşturma](./media/devtest-lab-create-formulas/create-formula-menu.png)
-6. Üzerinde **formül oluşturma** want bir **adı** ve **açıklama** için yeni formül.
+    ![Formül oluştur](./media/devtest-lab-create-formulas/create-formula-menu.png)
+6. **Formül oluştur** sayfasında, yeni formülünüz Için bir **ad** ve **Açıklama** girin.
    
-    ![Formül sayfası oluşturma](./media/devtest-lab-create-formulas/create-formula-blade.png)
-7. Seçin **Tamam** formül oluşturma.
+    ![Formül Oluştur sayfası](./media/devtest-lab-create-formulas/create-formula-blade.png)
+7. Formülü oluşturmak için **Tamam ' ı** seçin.
 
 ## <a name="modify-a-formula"></a>Bir formülü değiştirme
-Bir formül değiştirmek için aşağıdaki adımları izleyin:
+Bir formülü değiştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
-2. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
-3. İstenen Laboratuvar labs listesinden seçin.  
-4. Laboratuvar sayfasında seçin **formülleri (yeniden kullanılabilir tabanları)** .
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
+4. Laboratuvarın sayfasında **formüller (yeniden kullanılabilir tabanlar)** öğesini seçin.
    
     ![Formül menüsü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. Üzerinde **Laboratuvar formülleri** sayfasında, değiştirmek istediğiniz formülü seçin.
-6. Üzerinde **güncelleştirme formül** sayfasında, istenen düzenlemeleri yapın ve seçin **güncelleştirme**.
+5. **Laboratuvar formülleri** sayfasında, değiştirmek istediğiniz formülü seçin.
+6. **Formülü Güncelleştir** sayfasında, istenen düzenlemeleri yapın ve **Güncelleştir**' i seçin.
 
-## <a name="delete-a-formula"></a>Bir formül Sil
-Bir formülü silmek için aşağıdaki adımları izleyin:
+## <a name="delete-a-formula"></a>Formül silme
+Bir formülü silmek için şu adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
-2. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
-3. İstenen Laboratuvar labs listesinden seçin.  
-4. Laboratuvar **ayarları** sayfasında **formülleri**.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
+4. Laboratuvar **ayarları** sayfasında **formüller**' i seçin.
    
     ![Formül menüsü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. Üzerinde **Laboratuvar formülleri** sayfasında, silmek istediğiniz formül sağındaki üç nokta simgesini seçin.
+5. **Laboratuvar formülleri** sayfasında, silmek istediğiniz formülün sağ tarafındaki üç noktayı seçin.
    
     ![Formül menüsü](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
-6. Formülün bağlam menüsünde **Sil**.
+6. Formülün bağlam menüsünde **Sil**' i seçin.
    
     ![Formül bağlam menüsü](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)
-7. Seçin **Evet** silme onay iletişim kutusunda.
+7. Silme onayı iletişim kutusunda **Evet** ' i seçin.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>İlgili blog gönderileri
-* [Özel görüntü veya formül?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [Özel görüntüler veya formüller mi?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir VM oluştururken kullanmak için bir formül oluşturduktan sonra sonraki adım olarak [bir VM, laboratuvara ekleme](devtest-lab-add-vm.md).
+Bir VM oluştururken kullanılmak üzere bir formül oluşturduktan sonra, bir sonraki adım [laboratuvarınızda BIR VM eklemektir](devtest-lab-add-vm.md).
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046036"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760921"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -156,19 +156,9 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 Teklifinizi uygun Market arama alanına yerleştirmek için kullanılacak en az bir ve en fazla üç kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğine dikkat edin. 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>Standart Market hüküm ve koşulları
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
-Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, Market 'teki bir işlemin kolaylaştırılmasına yardımcı olmak üzere standart bir sözleşme şablonu sunmaktadır.
-
-Özel hüküm ve koşulları ortadan kaldırmaktansa, yazılımınızı standart sözleşme altında sunmayı tercih edebilirsiniz; bu da müşterilerin yalnızca VET ve bir kez kabul etmesi gerekir.
-
-Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Standart sözleşmeyi kullanmak için **Standart sözleşmeyi kullan?** kutusunu işaretleyin.
-
-#### <a name="terms-of-use"></a>Kullanım koşulları
-
-**Standart sözleşmeyi kullan?** kutusunu denetlemeyin, **kullanım koşulları** alanında kendi yasal kullanım koşullarınızı sağlamanız gerekir. En fazla 10.000 karakter girin veya kullanım koşullarınız daha uzun bir açıklama gerektiriyorsa, ek lisans koşullarınızın bulunabileceği URL 'YI sağlayın. Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>Teklif listesi
 
@@ -508,7 +498,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 

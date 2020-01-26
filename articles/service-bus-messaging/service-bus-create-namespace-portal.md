@@ -1,6 +1,6 @@
 ---
-title: Azure portalında Service Bus ad alanı oluşturma | Microsoft Docs
-description: Azure portalını kullanarak bir Service Bus ad alanı oluşturun.
+title: Azure portal Service Bus ad alanı oluşturma
+description: Bu makalede Azure portal bir Azure Service Bus ad alanı oluşturmaya yönelik yönergeler sağlanmaktadır.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,18 +12,18 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/12/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: a893cdf49792a8df624786804ec0ca4d8f043ec4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6351fade23f1671573964f946005d57671d3cc7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714498"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761075"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure portalı ile Service Bus ad alanı oluşturma
 
-Ad alanı, tüm mesajlaşma bileşenlerini kapsayan bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar. Bu makalede, Azure portalında bir ad alanı oluşturmak için yönergeler sağlar. 
+Ad alanı, tüm mesajlaşma bileşenlerini kapsayan bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar. Bu makalede Azure portal ad alanı oluşturmaya yönelik yönergeler sağlanmaktadır. 
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -31,7 +31,7 @@ Tebrikler! Bir Service Bus Mesajlaşması ad alanı oluşturdunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşmasının daha gelişmiş özelliklerinden bazılarını gösteren Service Bus [GitHub örneklerine][github-samples] göz atın.
+Service Bus mesajlaşma 'nın daha gelişmiş özelliklerinden bazılarını gösteren [GitHub örneklerine][github-samples]Service Bus göz atın.
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

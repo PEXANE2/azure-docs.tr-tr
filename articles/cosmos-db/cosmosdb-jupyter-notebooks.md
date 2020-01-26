@@ -6,14 +6,14 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 5c6d7ae458c30d462c599042e254f4243daf474c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260880"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760292"
 ---
-# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği
+# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği (Önizleme)
 
 Jupyter Not defteri, canlı kod, denklem, görselleştirmeler ve anlatım metni içeren belgeler oluşturmanıza ve paylaşmanıza olanak sağlayan açık kaynaklı bir Web uygulamasıdır. Azure Cosmos DB Cassandra, MongoDB, SQL, Gremlin ve Table gibi tüm API 'Lerde yerleşik jupi not defterlerini destekler. Tüm Azure Cosmos DB API 'Leri ve veri modelleri için yerleşik Not Defteri desteği, sorguları etkileşimli olarak çalıştırmanızı sağlar. Jupi Not defterleri, Azure Cosmos hesaplarında çalışır ve geliştiricilerin veri keşif, veri temizleme, veri dönüştürmeleri, sayısal benzetimler, istatistiksel modelleme, veri görselleştirme ve makine öğrenimi gerçekleştirmesini sağlar.
 

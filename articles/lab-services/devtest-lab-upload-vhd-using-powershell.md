@@ -1,6 +1,6 @@
 ---
-title: PowerShell kullanarak Azure DevTest Labs kullanarak karşıya VHD dosyası yükleme | Microsoft Docs
-description: Laboratuvar depolama hesabına PowerShell kullanarak karşıya VHD dosyası yükleme
+title: PowerShell kullanarak VHD dosyasını Azure DevTest Labs karşıya yükleme | Microsoft Docs
+description: Bu makalede, PowerShell kullanarak Azure DevTest Labs VHD dosyasını karşıya yükleme işleminin nasıl yapılacağı gösterilmektedir.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,54 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 56a66c3eb1dad93fad3ad1572989dc0c0aa14632
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a9e5a69cd7840bbaff081a4d47cb60f62a76eda6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622788"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759764"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Laboratuvar depolama hesabına PowerShell kullanarak karşıya VHD dosyası yükleme
+# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>PowerShell kullanarak VHD dosyasını laboratuvar depolama hesabına yükleyin
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs'de sanal makineler sağlamak için kullanılan özel görüntüler oluşturmak için VHD dosyaları kullanılabilir. Aşağıdaki adımlarda bir laboratuvar depolama hesabına VHD dosyası yüklemek için PowerShell'i kullanma aracılığıyla yol. VHD dosyasını yükledikten sonra [Bölümü'sonraki adımlar](#next-steps) karşıya yüklenen VHD dosyasından bir özel görüntü oluşturma işlemini göstermektedir bazı makaleler listeler. Diskler ve VHD'ler Azure hakkında daha fazla bilgi için bkz: [yönetilen disklere giriş](../virtual-machines/linux/managed-disks-overview.md)
+Azure DevTest Labs, VHD dosyaları, sanal makineleri sağlamak için kullanılan özel görüntüler oluşturmak için kullanılabilir. Aşağıdaki adımlarda, PowerShell kullanarak bir laboratuvarın depolama hesabına VHD dosyası yükleme işleminde izlenecek yol gösterilmektedir. VHD dosyanızı karşıya yükledikten sonra, [sonraki adımlar bölümünde](#next-steps) KARŞıYA yüklenen VHD dosyasından nasıl özel bir görüntü oluşturulacağını gösteren bazı makaleler listelenmektedir. Azure 'daki diskler ve VHD 'ler hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../virtual-machines/linux/managed-disks-overview.md)
 
 ## <a name="step-by-step-instructions"></a>Adım adım yönergeler
 
-Aşağıdaki adımlarda PowerShell kullanarak Azure DevTest Labs kullanarak bir VHD dosyasını karşıya yükleme aracılığıyla yol. 
+Aşağıdaki adımlarda, PowerShell kullanarak Azure DevTest Labs bir VHD dosyasını karşıya yükleme işlemi adım adım gösterilmektedir. 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
-1. Seçin **tüm hizmetleri**ve ardından **DevTest Labs** listeden.
+1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
-1. İstenen Laboratuvar labs listesinden seçin.  
+1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 
-1. Laboratuvar dikey penceresinde seçin **yapılandırma**. 
+1. Laboratuvarın dikey penceresinde **yapılandırma**' yı seçin. 
 
-1. Laboratuvar **yapılandırma** dikey penceresinde **özel görüntülerin (VHD)** .
+1. Laboratuvar **yapılandırması** dikey penceresinde **özel görüntüler (VHD)** seçeneğini belirleyin.
 
-1. Üzerinde **özel görüntüleri** dikey penceresinde seçin **+ Ekle**. 
+1. **Özel görüntüler** dikey penceresinde **+ Ekle**' yi seçin. 
 
-1. Üzerinde **özel görüntü** dikey penceresinde **VHD**.
+1. **Özel görüntü** dikey penceresinde, **VHD**' yi seçin.
 
-1. Üzerinde **VHD** dikey penceresinde **PowerShell kullanarak bir VHD'yi karşıya yükleme**.
+1. **VHD** dikey penceresinde **PowerShell kullanarak bir VHD 'yi karşıya yükle**' yi seçin.
 
-    ![PowerShell kullanarak bir VHD'yi karşıya yükleme](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
+    ![PowerShell kullanarak VHD 'YI karşıya yükleme](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
 
-1. Üzerinde **PowerShell kullanarak bir görüntüyü karşıya yükleme** dikey penceresinde oluşturulan PowerShell komut dosyasını bir metin düzenleyicisine kopyalayın.
+1. **PowerShell kullanarak bir görüntüyü karşıya yükle** dikey penceresinde, oluşturulan PowerShell betiğini bir metin düzenleyicisine kopyalayın.
 
-1. Değiştirme **LocalFilePath** parametresinin **Add-AzureVhd** karşıya yüklemek istediğiniz VHD dosyasının konumunu gösterecek şekilde cmdlet'i.
+1. **Add-AzureVhd** cmdlet 'Inin **LocalFilePath** PARAMETRESINI, yüklemek istediğiniz VHD dosyasının konumunu işaret etmek üzere değiştirin.
 
-1. Bir PowerShell isteminde çalıştırın **Add-AzureVhd** cmdlet (değiştirilmiş ile **LocalFilePath** parametresi).
+1. Bir PowerShell isteminde **Add-AzureVhd** cmdlet 'ini (Modified **LocalFilePath** parametresiyle birlikte) çalıştırın.
 
 > [!WARNING] 
 > 
-> Bir VHD dosyasını karşıya yükleme işlemi, VHD dosyasının ve bağlantı hızınızı boyutuna bağlı olarak uzun olabilir.
+> Bir VHD dosyasını karşıya yükleme işlemi, VHD dosyasının boyutuna ve bağlantı hızına bağlı olarak uzun olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure DevTest Labs Azure portalını kullanarak bir VHD dosyasından bir özel görüntü oluşturma](devtest-lab-create-template.md)
-- [Azure DevTest labs'teki PowerShell kullanarak bir VHD dosyasından özel bir görüntü oluşturma](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Azure portal kullanarak bir VHD dosyasından Azure DevTest Labs özel görüntü oluşturma](devtest-lab-create-template.md)
+- [PowerShell kullanarak bir VHD dosyasından Azure DevTest Labs özel görüntü oluşturma](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

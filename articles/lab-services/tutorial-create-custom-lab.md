@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs kullanarak bir laboratuvar oluşturma | Microsoft Docs
-description: Bu hızlı başlangıçta, Azure DevTest Labs kullanarak bir laboratuvar oluşturursunuz.
+description: Bu öğreticide, Azure portal kullanarak Azure DevTest Labs bir laboratuvar oluşturacaksınız. Laboratuvar Yöneticisi laboratuvar yapar, laboratuvarda VM 'Ler oluşturur ve ilkeleri yapılandırır.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/18/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61084808"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759542"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Öğretici: Azure DevTest Labs'i kullanarak bir laboratuvarı ayarlama ayarlayın
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Öğretici: Azure DevTest Labs kullanarak bir laboratuvar ayarlama
 Bu öğreticide, Azure portalı kullanarak bir laboratuvar oluşturursunuz. Laboratuvar yöneticisi bir kuruluşta laboratuvar ayarlar, laboratuvarda sanal makineler oluşturur ve ilkeler yapılandırır. Laboratuvar kullanıcıları (örneğin: geliştirici ve test ediciler), laboratuvarda sanal makineler talep eder, sanal makinelere bağlanır ve sanal makineleri kullanır. 
 
 Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="create-a-lab"></a>Laboratuvar oluşturma
 Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bir laboratuvar oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Sol taraftaki ana menüden **Kaynak oluştur**’u (listenin en üstünde) seçin, **Geliştirici araçları**’nın üzerine gelin ve **DevTest Labs** seçeneğine tıklayın. 
 
     ![Yeni DevTest Laboratuvarı menüsü](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)
@@ -49,26 +49,26 @@ Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bi
     6. **Panoya sabitle**’yi seçin. Laboratuvarı oluşturduktan sonra laboratuvar, panoda gösterilir. 
 
         ![DevTest Labs laboratuvar bölümü oluşturma](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
-2. Laboratuvar bildirimleri bakarak başarıyla oluşturulduğunu onaylayın. Seçin **kaynağa Git**.  
+2. Bildirimlere bakarak laboratuvarın başarıyla oluşturulduğunu doğrulayın. **Kaynağa Git**' i seçin.  
 
     ![Bildirim](./media/tutorial-create-custom-lab/creation-notification.png)
-3. Gördüğünüzü onaylayın **DevTest Labs** laboratuvarınız için sayfa. 
+3. Laboratuvarınız için **DevTest Lab** sayfasını görtığınızdan emin olun. 
 
-    ![Laboratuvarınız için giriş sayfası](./media/tutorial-create-custom-lab/lab-home-page.png)
+    ![Laboratuvarınız için ana sayfa](./media/tutorial-create-custom-lab/lab-home-page.png)
 
 ## <a name="add-a-vm-to-the-lab"></a>Laboratuvara bir sanal makine ekleme
 
 1. **DevTest Lab** sayfasında, araç çubuğunda **+Ekle**’yi seçin. 
 
     ![Ekle düğmesi](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Üzerinde **temel seçin** sayfasında, bir anahtar sözcükle arama (örneğin: Windows, Ubuntu) ve temel görüntülerinden birini listeden seçin. 
+1. **Temel seçin** sayfasında, anahtar sözcüğüyle (örn.: Windows, Ubuntu) arama yapın ve listedeki temel görüntülerden birini seçin. 
 1. **Sanal makine** sayfasında aşağıdaki eylemleri gerçekleştirin: 
     1. **Sanal makine adı** alanına, sanal makine için bir ad girin. 
     2. **Kullanıcı adı** alanına, sanal makineye erişimi olan kullanıcı için bir ad girin. 
-    3. İçin **parola**, kullanıcı için parola girin. 
+    3. **Parola**için kullanıcının parolasını girin. 
 
         ![Bir temel seçin](./media/tutorial-create-custom-lab/new-virtual-machine.png)
-1. Seçin **Gelişmiş ayarlar** sekmesi.
+1. **Gelişmiş ayarlar** sekmesini seçin.
     1. **Bu makineyi talep edilebilir yap** için **Evet**’i seçin.
     2. **Örnek sayısı** değerinin **1** olarak ayarlandığını onaylayın. **2** olarak ayarlarsanız `<base image name>00' and <base image name>01` adlarıyla 2 sanal makine oluşturulur. Örneğin: `win10vm00` ve `win10vm01`.     
     3. Seçin **gönderme**. 
@@ -80,16 +80,16 @@ Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bi
 1. Sanal makine oluşturulduktan sonra, **Talep edilebilir sanal makineler** listesinde bu sanal makineyi görürsünüz. 
 
     > [!NOTE] 
-    > Üzerinde **Gelişmiş ayarlar** sayfasında, sanal makine için genel, özel veya paylaşılan bir IP adresi yapılandırabilirsiniz. Zaman **IP paylaşılan** olan etkin, Azure DevTest Labs otomatik olarak Windows VM'ler için RDP ve SSH Linux Vm'leri için etkinleştirir. Vm'lerle oluşturursanız **genel IP** adresler, RDP ve SSH DevTest Labs öğesinden herhangi bir değişiklik yapmadan etkinleştirilir.  
+    > **Gelişmiş ayarlar** SAYFASıNDA, VM için ortak, özel veya PAYLAŞıLAN bir IP adresi yapılandırabilirsiniz. **PAYLAŞıLAN IP** etkinleştirildiğinde Azure DevTest Labs otomatik olarak Windows VM 'LERI için RDP 'Yi ve Linux sanal MAKINELERI için SSH 'yi otomatik olarak etkinleştirilir. **Ortak IP** adresleriyle VM 'ler OLUŞTURURSANıZ, RDP ve SSH, DevTest Labs 'den herhangi bir değişiklik yapılmadan etkinleştirilir.  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Laboratuvar Kullanıcısı rolüne kullanıcı ekleme
 
 1. Soldaki menüden **Yapılandırma ve ilkeler**’i seçin. 
 
     ![Yapılandırma ve ilkeler](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. Seçin **erişim denetimi (IAM)** seçin ve menü **+ rol ataması Ekle** araç. 
+1. Menüden **erişim denetimi (IAM)** seçeneğini belirleyin ve araç çubuğunda **+ rol ataması Ekle** ' yi seçin. 
 
-    ![Rol ataması Ekle - düğme](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
+    ![Rol ataması Ekle-düğme](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
 1. **İzin ekle** sayfasında aşağıdaki eylemleri gerçekleştirin:
     1. **Rol** için **DevTest Labs Kullanıcısı**’nı seçin. 
     2. Eklemek istediğiniz **kullanıcıyı** seçin. 
@@ -113,5 +113,5 @@ Sonraki öğreticide, bir laboratuvar kullanıcısının laboratuvardaki bir san
 Bu öğreticide, bir sanal makine ile laboratuvar oluşturdunuz ve bir kullanıcıya bu laboratuvara erişme izni verdiniz. Laboratuvar kullanıcısı olarak laboratuvara erişme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Bir laboratuvara erişim](tutorial-use-custom-lab.md)
+> [Öğretici: Laboratuvara erişme](tutorial-use-custom-lab.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus Mesajlaşma varlıklarını askıya alma | Microsoft Docs
-description: Askıya alma ve Azure Service Bus ileti varlıkları yeniden etkinleştirin.
+title: Azure Service Bus-mesajlaşma varlıklarını askıya alma
+description: Bu makalede Azure Service Bus ileti varlıklarının (kuyruklar, konular ve abonelikler) geçici olarak askıya alınması ve yeniden etkinleştirilmesi açıklanmaktadır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,28 +11,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: e2ffda3141462d19557af3af26c117ee505c40ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170806"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760394"
 ---
-# <a name="suspend-and-reactivate-messaging-entities-disable"></a>Askıya alma ve mesajlaşma varlıkları (devre dışı bırak) yeniden etkinleştirme
+# <a name="suspend-and-reactivate-messaging-entities-disable"></a>Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme (devre dışı bırakma)
 
-Kuyruklar, konular ve abonelikler geçici olarak askıya alınabilir. Askıya alma varlığın tüm iletileri depolama alanında tutulur devre dışı bırakılmış bir duruma koyar. Ancak, iletileri kaldırıldı veya eklenemez ve ilgili protokol işlemlerini hataları yield.
+Kuyruklar, konular ve abonelikler geçici olarak askıya alınabilir. Askıya alma, varlığı tüm iletilerin depolamada bulunduğu devre dışı durumuna geçirir. Ancak, iletiler kaldırılamaz veya eklenemez ve ilgili protokol işlemleri hatalara sebep olur.
 
-Bir varlık askıya alma, genellikle Acil Yönetim amaçları için gerçekleştirilir. Senaryolardan biri Kuyruk iletilerini alan hatalı bir alıcı dağıtılan işlem başarısız olur ve henüz yanlış iletileri tamamlar ve bunları kaldırır. Bu davranışı tanı koydu, kuyruk için devre dışı bırakılabilir Düzeltilen kod dağıtılır ve başka hatalı kod tarafından kaynaklanan veri kayıplarını engellenebilir kadar alır.
+Bir varlığın askıya alınması genellikle acil yönetim nedenleriyle yapılır. Tek bir senaryo, iletileri kuyruktan alan, işleme başarısız olan ve iletileri yanlış bir şekilde tamamlayan ve bunları kaldıran hatalı bir alıcı dağıtmış olur. Bu davranış tanılıyorsa, düzeltilen kod dağıtılana ve hatalı kodun neden olduğu daha fazla veri kaybı önyükleninceye kadar kuyruk alma için devre dışı bırakılabilir.
 
-Kullanıcı veya sistem tarafından askıya alma veya yeniden etkinleştirme gerçekleştirilebilir. Sistem, harcama limiti aboneliği ulaşma gibi grave yönetim nedenlerden dolayı varlıkları yalnızca askıya alır. Sistemi devre dışı varlıklar kullanıcı tarafından yeniden etkinleştirilemez, ancak askıya alınma nedenini ele alındığında geri yüklenir.
+Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından gerçekleştirilebilir. Sistem yalnızca abonelik harcama sınırına vurmaya yönelik aksan nedeniyle yönetim nedenlerinden dolayı varlıkları askıya alır. Sistem devre dışı bırakılmış varlıklar Kullanıcı tarafından yeniden etkinleştirilemez, ancak askıya alınma nedeni sağlandığında geri yüklenir.
 
-Portalda, **özellikleri** ilgili varlığın bölüm sağlar durumunu değiştirme; bir kuyruk için iki durumlu düğme aşağıdaki ekran görüntüsünde gösterilmektedir:
+Portalda ilgili varlık için **Özellikler** bölümü, durumun değiştirilmesini mümkün; Aşağıdaki ekran görüntüsünde bir sıranın geçişi gösterilmektedir:
 
 ![][1]
 
-Portal, yalnızca tamamen kuyrukları devre dışı bırakma verir. Ayrıca gönderme devre dışı bırakma ve alma işlemleri ayrı olarak Service Bus'ı kullanarak [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API'ler .NET Framework SDK veya Azure CLI veya Azure PowerShell ile Azure Resource Manager şablonu ile.
+Portal yalnızca sıraların tamamen devre dışı bırakılmasını sağlar. Ayrıca, .NET Framework SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak veya Azure clı veya Azure PowerShell aracılığıyla Azure Resource Manager şablonuyla, gönderme ve alma işlemlerini ayrı olarak devre dışı bırakabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,14 +40,14 @@ Portal, yalnızca tamamen kuyrukları devre dışı bırakma verir. Ayrıca gön
 
 Bir kuyruk için ayarlanabilir durumlar şunlardır:
 
--   **Etkin**: Sıranın etkin değil.
--   **Devre dışı bırakılmış**: Sıranın askıya alınır.
--   **SendDisabled**: Sıranın kısmen, izin verilen Al ile askıya alınır.
--   **ReceiveDisabled**: Sıranın kısmen, gönderme işlemine izin askıya alınır.
+-   **Etkin**: kuyruk etkin.
+-   **Devre dışı**: sıra askıya alındı.
+-   **Senddisabled**: sıra, almaya izin verildiğinde kısmen askıya alınır.
+-   **Receivedisabled**: sıra, gönderilmeye izin verilen kısmen askıya alındı.
 
-Abonelikler ve konular, yalnızca **etkin** ve **devre dışı bırakılmış** ayarlanabilir.
+Abonelikler ve konular için yalnızca **etkin** ve **devre dışı** ayarlanabilir.
 
-[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) numaralandırması da bir dizi yalnızca sistem tarafından ayarlanabilir geçiş durumları tanımlar. Bir kuyruk devre dışı bırakmak için PowerShell komutunu aşağıdaki örnekte gösterilmiştir. Ayarı yeniden etkinleştirme komut eşdeğer `Status` için **etkin**.
+[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) numaralandırması Ayrıca yalnızca sistem tarafından ayarlanabileceğini belirten bir geçiş durumları kümesi tanımlar. Bir sırayı devre dışı bırakmak için PowerShell komutu aşağıdaki örnekte gösterilmiştir. Yeniden etkinleştirme komutu eşdeğerdir ve `Status` **etkin**olarak ayarlanıyor.
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -59,7 +59,7 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

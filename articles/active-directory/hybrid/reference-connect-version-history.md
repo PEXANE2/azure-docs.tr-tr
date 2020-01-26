@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422353"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756309"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -27,7 +27,7 @@ Bu makale, yayımlanan sürümleri izlemenize ve değişikliklerin en son sürü
 
 Bu tablo, ilgili konuların listesidir:
 
-Konu |  Ayrıntılar
+Konu başlığı |  Ayrıntılar
 --------- | --------- |
 Azure AD Connect yükseltme adımları | [Önceki bir sürümden en son](how-to-upgrade-previous-version.md) Azure AD Connect sürüme yükseltmek için farklı yöntemler.
 Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md#upgrade).
@@ -84,6 +84,8 @@ Bu sürüm, önceki sürümden 1.4.18.0 'e otomatik olarak yükseltilen bazı su
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 
 Belirli koşullarda, 1.4.18.0 sürümüne otomatik olarak yükseltilen sunucular, yükseltme tamamlandıktan sonra self servis parola sıfırlama ve parola geri yazma özelliğini yeniden etkinleştirmemiştir. Bu otomatik yükseltme sürümü, self servis parola sıfırlama ve parola geri yazma sorununu gidermeye ve yeniden etkinleştirmesine izin veren düzeltmeleri.
+
+Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkıştırma yardımcı programında bir hata düzeltildi.
 
 ## <a name="14180"></a>1.4.18.0
 
@@ -494,18 +496,18 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Ad                          | Erişim               | Uygulama Hedefi
+Tür     | Ad                          | Erişim               | Uygulama hedefi
 ---------|-------------------------------|----------------------|--------------|
-Allow    | SİSTEM                        | Tam denetim         | Bu nesne  |
-Allow    | Enterprise Admins             | Tam denetim         | Bu nesne  |
-Allow    | Etki Alanı Yöneticileri                 | Tam denetim         | Bu nesne  |
+Allow    | SISTEMIN                        | Tam denetim         | Bu nesne  |
+Allow    | Kuruluş yöneticileri             | Tam denetim         | Bu nesne  |
+Allow    | Etki alanı yöneticileri                 | Tam denetim         | Bu nesne  |
 Allow    | Yöneticiler                | Tam denetim         | Bu nesne  |
 Allow    | Kurumsal etki alanı denetleyicileri | Liste Içerikleri        | Bu nesne  |
-Allow    | Kurumsal etki alanı denetleyicileri | Tüm Özellikleri Oku  | Bu nesne  |
+Allow    | Kurumsal etki alanı denetleyicileri | Tüm özellikleri oku  | Bu nesne  |
 Allow    | Kurumsal etki alanı denetleyicileri | Okuma Izinleri     | Bu nesne  |
-Allow    | Kimliği Doğrulanmış Kullanıcılar           | Liste Içerikleri        | Bu nesne  |
-Allow    | Kimliği Doğrulanmış Kullanıcılar           | Tüm Özellikleri Oku  | Bu nesne  |
-Allow    | Kimliği Doğrulanmış Kullanıcılar           | Okuma Izinleri     | Bu nesne  |
+Allow    | Kimliği doğrulanmış kullanıcılar           | Liste Içerikleri        | Bu nesne  |
+Allow    | Kimliği doğrulanmış kullanıcılar           | Tüm özellikleri oku  | Bu nesne  |
+Allow    | Kimliği doğrulanmış kullanıcılar           | Okuma Izinleri     | Bu nesne  |
 
 AD DS hesabının ayarlarını sağlamkılabilmeniz için [Bu PowerShell betiğini](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)çalıştırabilirsiniz. PowerShell betiği yukarıda belirtilen izinleri AD DS hesabına atayacaktır.
 
@@ -936,7 +938,7 @@ Yayımlanma tarihi: Nisan 2017
 ## <a name="114840"></a>1.1.484.0
 Yayımlanma tarihi: Nisan 2017
 
-**Bilinen sorunlar**
+**Bilinen sorunlar:**
 
 * Aşağıdaki koşulların tümü doğruysa Azure AD Connect bu sürümü başarıyla yüklenmez:
    1. DirSync yerinde yükseltme veya Azure AD Connect yeni yüklemesi gerçekleştiriliyor.
@@ -1047,7 +1049,7 @@ Yayımlanma tarihi: Aralık 2016
 ## <a name="113700"></a>1.1.370.0
 Yayımlanma tarihi: Aralık 2016
 
-**Bilinen sorunlar**
+**Bilinen sorunlar:**
 
 * Bu derlemede AD FS ıssuerıd talep kuralı yok. Azure AD ile birden çok etki alanını federasyona eklemek istiyorsanız ıssuerıd talep kuralı gereklidir. Şirket içi AD FS dağıtımınızı yönetmek için Azure AD Connect kullanıyorsanız, bu yapıya yükseltme, mevcut ıssuerıd talep kuralını AD FS yapılandırmadan kaldırır. Yükleme/yükseltme sonrasında ıssuerıd talep kuralını ekleyerek soruna geçici bir çözüm bulabilirsiniz. Issuerıd talep kuralı ekleme hakkında ayrıntılı bilgi için [Azure AD ile federasyona yönelik birden çok etki alanı desteği](how-to-connect-install-multiple-domains.md)makalesine başvurun.
 * Yüklemenin tamamlanabilmesi için bağlantı noktası 9090 ' ın açık olması gerekir.

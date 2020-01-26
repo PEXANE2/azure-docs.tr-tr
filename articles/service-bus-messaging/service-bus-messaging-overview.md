@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
-description: Service Bus mesajlaşmasının açıklaması
+description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus yüksek düzeyde bir genel bakış sunulmaktadır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561593"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759389"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
@@ -47,7 +47,7 @@ Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalan�
 
 İleti göndermek ve almak için *konu başlıklarını* da kullanabilirsiniz. Bir kuyruk genellikle noktadan noktaya iletişim için kullanılır, buna karşın konu başlıkları yayımlama/abone olma senaryolarında yararlıdır.
 
-![Konu](./media/service-bus-messaging-overview/about-service-bus-topic.png)
+![Konu başlığı](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
 Konuların birden fazla ve bağımsız abonesi olabilir. Bir konu başlığının bir abonesi konu başlığına gönderilen her iletinin bir kopyasını alabilir. Abonelikler, varlıklar olarak adlandırılır. Abonelikler devam edebilir, ancak süreleri dolacak veya oto silebilir.
 

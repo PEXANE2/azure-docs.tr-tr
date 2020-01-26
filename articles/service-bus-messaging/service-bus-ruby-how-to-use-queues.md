@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Ruby ile Azure Service Bus kuyruklarını kullanma'
-description: "Hızlı başlangıç: Azure 'da Service Bus kuyruklarını nasıl kullanacağınızı öğrenin. Ruby ile yazılan kod örnekleri."
+title: Ruby ile Azure Service Bus kuyruklarını kullanma
+description: Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için Ruby uygulamaları oluşturmayı öğreneceksiniz.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718763"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760598"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Hızlı başlangıç: Ruby ile Service Bus kuyruklarını kullanma
 
@@ -62,7 +62,7 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>Bir kuyruğa ileti gönderme
-Uygulamanız bir Service Bus kuyruğuna ileti göndermek için **Azure:: ServiceBusService** nesnesinde `send_queue_message()` yöntemini çağırır. Service Bus sıralara gönderilen (ve alınan) iletiler **Azure:: ServiceBus:: BrokeredMessage** nesneleri, ve uygulamaya özgü özel özellikleri tutmak için kullanılan bir dizi standart özellik (`label` ve `time_to_live`) vardır ve rastgele uygulama verileri gövdesi. Bir uygulama, ileti olarak bir dize değeri geçirerek ileti gövdesini ayarlayabilir ve gerekli standart özellikler varsayılan değerlerle doldurulur.
+Uygulamanız bir Service Bus kuyruğuna ileti göndermek için **Azure:: ServiceBusService** nesnesinde `send_queue_message()` yöntemini çağırır. Service Bus sıralara gönderilen (ve alınan) iletiler **Azure:: ServiceBus:: BrokeredMessage** nesneleri ve standart özellikler kümesine sahiptir (`label` ve `time_to_live`gibi), uygulamaya özgü özel özellikleri tutmak için kullanılan bir sözlük ve rastgele uygulama verileri gövdesi vardır. Bir uygulama, ileti olarak bir dize değeri geçirerek ileti gövdesini ayarlayabilir ve gerekli standart özellikler varsayılan değerlerle doldurulur.
 
 Aşağıdaki örnek, `send_queue_message()`kullanarak `test-queue` adlı kuyruğa test iletisinin nasıl gönderileceğini gösterir:
 

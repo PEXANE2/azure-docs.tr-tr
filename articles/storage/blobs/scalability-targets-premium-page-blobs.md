@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749698"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756258"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik ve performans hedefleri
 
@@ -31,7 +31,7 @@ Premium Sayfa Blobu depolama hesaplarının aşağıdaki ölçeklenebilirlik hed
 
 | Toplam hesap kapasitesi                            | Yerel olarak yedekli depolama hesabı için toplam bant genişliği                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Disk kapasitesi: 35 TB <br>Anlık görüntü kapasitesi: 10 TB | Gelen<sup>1</sup> + giden<sup>2</sup> için saniyede 50 Gigabit |
+| Disk kapasitesi: 4 TB (tek disk)/35 TB (tüm disklerin birikmeli toplamı) <br>Anlık görüntü kapasitesi: 10 TB | Gelen<sup>1</sup> + giden<sup>2</sup> için saniyede 50 Gigabit |
 
 <sup>1</sup> bir depolama hesabına gönderilen tüm veriler (istekler)
 

@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422172"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759952"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Öğretici: Kapsayıcılar için Web App uygulamasında çok kapsayıcılı (önizleme) uygulama oluşturma
 
@@ -38,7 +38,7 @@ Bu öğreticiyi tamamlayabilmeniz için [Docker Compose](https://docs.docker.com
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
-Bu öğreticide [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) Compose dosyasını kullanacaksınız ancak bu dosyayı MySQL için Azure Veritabanı, kalıcı depolama ve Redis bileşenlerini içerecek şekilde değiştireceksiniz. Yapılandırma dosyasına [Azure Örnekleri](https://github.com/Azure-Samples/multicontainerwordpress) sayfasından ulaşabilirsiniz. Desteklenen yapılandırma seçenekleri için bkz. [Docker Compose seçenekleri](configure-custom-container.md#docker-compose-options).
+Bu öğreticide, [Docker](https://docs.docker.com/compose/wordpress/#define-the-project)'dan oluşturma dosyasını kullanırsınız, ancak bunu MySQL Için Azure veritabanı, kalıcı depolama ve redin dahil olacak şekilde değiştirirsiniz. Yapılandırma dosyasına [Azure Örnekleri](https://github.com/Azure-Samples/multicontainerwordpress) sayfasından ulaşabilirsiniz. Desteklenen yapılandırma seçenekleri için bkz. [Docker Compose seçenekleri](configure-custom-container.md#docker-compose-options).
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 

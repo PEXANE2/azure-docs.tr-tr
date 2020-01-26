@@ -1,6 +1,6 @@
 ---
-title: İleti aktarımlarını, kilitleri ve kapatmayı Azure Service Bus | Microsoft Docs
-description: Service Bus ileti aktarımlarına ve kapatma işlemlerine genel bakış
+title: İleti aktarımları, kilitler ve kapatma Azure Service Bus
+description: Bu makalede Azure Service Bus ileti aktarımları, kilitler ve kapatma işlemlerine ilişkin bir genel bakış sunulmaktadır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676273"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759287"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>İleti aktarımları, kilitler ve kapatma
 
@@ -34,7 +34,7 @@ Desteklenen Service Bus API istemcilerinden herhangi birini kullanarak, işlemle
 
 İleti Service Bus tarafından reddedilirse, reddetme bir hata göstergesi ve içinde bir "izleme kimliği" olan metin içerir. Reddetme, işlemin başarılı olma beklentisiyle yeniden denenip denenmeyeceğini belirten bilgileri de içerir. İstemcide, bu bilgiler özel bir duruma getirilir ve gönderme işlemi çağıranına yükseltilir. İleti kabul edildiyse, işlem sessizce tamamlanır.
 
-.NET Standard istemcisi ve Java istemcisi için özel protokol olan ve [.NET Framework istemcisi için bir seçenek](service-bus-amqp-dotnet.md)olan AMQP protokolünü kullanırken, ileti aktarımları ve kapatmalar ardışık düzen ve tamamen zaman uyumsuz olur ve zaman uyumsuz programlama modeli API türevlerini kullanmanız önerilir.
+.NET Standard istemcisi ve Java istemcisi için özel protokol olan ve [.NET Framework istemcisi için bir seçenek](service-bus-amqp-dotnet.md)olan AMQP protokolünü kullanırken, ileti aktarımları ve kapatmaları ardışık düzen ve tamamen zaman uyumsuz olur ve zaman uyumsuz programlama modeli API türevlerini kullanmanız önerilir.
 
 Bir gönderici, SBMP protokolünde veya HTTP 1,1 ile büyük bir süre olacağı gibi, her bir iletinin onaylanmasına gerek kalmadan, her iletiyi almak için beklemek zorunda kalmadan, hatta her ileti için bir araya daha fazla ileti yerleştirebilir. İlgili iletiler kabul edildiği ve depolandığı, bölümlenmiş varlıklarda veya farklı varlıklara gönderme işlemi çakıştığında, bu zaman uyumsuz gönderme işlemleri tamamlanır. Tamamlamalar, özgün gönderme siparişinden da oluşabilir.
 
@@ -116,13 +116,13 @@ Alıcı istemci, API düzeyinde [tamamlanma](/dotnet/api/microsoft.servicebus.me
 
 Alıcı istemci bir iletiyi işleyemediğinde ancak iletinin yeniden teslim edilmesini istiyorsa, [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) 'ı çağırarak iletiyi doğrudan serbest bir şekilde ve kilidi açabilir veya herhangi bir şey yapmaz ve kilitleme geçmesini sağlar.
 
-Alıcı istemci bir iletiyi işleyemezse ve iletiyi yeniden teslim etmeyi ve işlemi yeniden denemeyi biliyorsa, iletiyi reddedebilir ve ayrıca, özel olarak ayarlamaya olanak [tanıyan, bir](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)iletiyi geri alıp atılacak mektup kuyruğuna taşıyabilirsiniz. atılacak ileti sırasından iletiyle alınabilecek bir neden kodu dahil özelliği.
+Alıcı istemci bir iletiyi işleyemezse ve iletiyi yeniden teslim etmek ve işlemi yeniden denemek size yardımcı olmazsa iletiyi reddedebilir ve bu ileti, [atılacak mektup sırasından](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)ileti ile alınabilecek bir neden kodu dahil özel bir özellik ayarlamaya olanak tanır ve bu da iletiyi reddedebilir.
 
 Bir kapanış özel durumu ertelenmiştir ve ayrı bir makalede ele alınmıştır.
 
 **Tam** **veya kaldırılmış bir Işlem ve** **yenilenebilir kilit** işlemleri ağ sorunları nedeniyle başarısız olabilir, bu da tutulan kilidin süresi dolmuşsa veya kapatmayı önleyen başka hizmet tarafı koşulları vardır. İkinci durumlardan birinde, hizmet API istemcilerinde özel durum olarak yüzey sağlayan negatif bir bildirim gönderir. Nedeni bozuk bir ağ bağlantııysa, farklı bir bağlantıda var olan AMQP bağlantılarının kurtarılmasını desteklemediği Service Bus kilit bırakılır.
 
-İşlem **tamamlandığında** genellikle ileti işlemenin çok sonunda ve bazı durumlarda çalışan işlemin süresi dolduktan sonra ortaya çıkan uygulama, iş durumunu korur ve teslim edildiğinde aynı iletiyi yoksayar ikinci bir zaman veya tosses, iş sonucunu verip etmediğini ve iletinin yeniden teslim edildiği şekilde yeniden denemeler yapıp denemediğini belirtir.
+Genellikle ileti işlemenin çok sonunda ve bazı durumlarda çalışma işleminin süresi dolduktan sonra meydana gelen **işlem başarısız olursa** , alıcı uygulama işin durumunu korur ve ikinci bir kez teslim edildiğinde aynı iletiyi yok sayar ya da ileti yeniden teslim edildiğinde yeniden denemeler yapıp uygulamamaya karar verebilir.
 
 Yinelenen ileti teslimlerini tanımlamaya yönelik tipik mekanizma ileti kimliğini denetleyerek, büyük olasılıkla kaynak işlemden tanımlayıcı ile hizalanmış bir şekilde, gönderen tarafından benzersiz bir değere ayarlanmalıdır. Bir iş Zamanlayıcı büyük olasılıkla ileti Kimliğini verilen çalışan bir çalışana atamaya çalıştığı işin tanımlayıcısına ayarlayabilir ve bu iş zaten yapıldıysa çalışan, iş atamasının ikinci oluşumunu yoksayar.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: sorgulamak için Python kullanma'
+title: Bir veritabanını sorgulamak için Python kullanma
 description: Bu konu başlığı altında, Python kullanarak Azure SQL veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 services: sql-database
 ms.service: sql-database
@@ -11,50 +11,64 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 42d5b500a48e427aad2372710597e0266b2e80aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9929c483c2e27983254033e2e26b3b753699260b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826989"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758317"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Python kullanarak Azure SQL veritabanı sorgulama
 
- Bu makalede, [Python](https://python.org) kullanarak Azure SQL veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir. Daha fazla SDK ayrıntıları için [başvuru](https://docs.microsoft.com/python/api/overview/azure/sql) belgelerimize, [Pyodbc GitHub deposuna](https://github.com/mkleehammer/pyodbc/wiki/)ve bir [pyodbc örneğine](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)göz atın.
+Bu hızlı başlangıçta Python kullanarak bir Azure SQL veritabanına bağlanır ve T-SQL deyimlerini kullanarak verileri sorgulayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için aşağıdakilere sahip olduğunuzdan emin olun:
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
-
-  || Tek veritabanı | Yönetilen örnek |
-  |:--- |:--- |:---|
-  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
-  |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
-  |||
-
-  > [!IMPORTANT]
-  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
+- [Azure SQL veritabanı](sql-database-single-database-get-started.md)
   
-- İşletim sisteminiz için Python ve ilgili yazılımlar:
-  
-  - **MacOS**: homebrew ve Python 'u yükler, ODBC sürücüsünü ve sqlcmd 'yi yükleyip SQL Server için Python sürücüsünü yükler. [MacOS 'ta SQL Server kullanarak Python uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)1,2, 1,3 ve 2,1 adımlarına bakın. Daha fazla bilgi için bkz. [Linux ve macOS 'Ta MICROSOFT ODBC sürücüsünü yüklemeyi](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+- [Python](https://python.org/downloads) 3 ve ilgili yazılımlar
 
-  - **Ubuntu**: Python ve diğer gerekli paketleri `sudo apt-get install python python-pip gcc g++ build-essential`ile yükler. SQL Server için ODBC sürücüsünü, SQLCMD ve Python sürücüsünü indirip yükleyin. Yönergeler için bkz. [pyodbc Python geliştirmesi için bir geliştirme ortamı yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  - **Windows**: Python, ODBC sürücüsünü ve sqlcmd 'yi ve SQL Server için Python sürücüsünü yükler. Yönergeler için bkz. [pyodbc Python geliştirmesi için bir geliştirme ortamı yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
+  Homebrew ve Python 'u, ODBC sürücüsünü ve SQLCMD 'yi ve SQL Server için Python sürücüsünü yüklemek için [macOS 'ta SQL Server kullanarak Python uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)bölümünde **1,2**, **1,3**ve **2,1** adımlarını kullanın.
+
+  Daha fazla bilgi için bkz. [macOS 'Ta MICROSOFT ODBC sürücüsü](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+
+  Python ve diğer gerekli paketleri yüklemek için `sudo apt-get install python python-pip gcc g++ build-essential`kullanın.
+
+  SQL Server için ODBC sürücüsünü, SQLCMD 'yi ve Python sürücüsünü yüklemek için bkz. [pyodbc Python geliştirmesi için bir ortam yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+
+  Daha fazla bilgi için bkz. [Linux 'Ta MICROSOFT ODBC sürücüsü](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+  Python 'u, ODBC sürücüsünü ve SQLCMD 'yi ve SQL Server için Python sürücüsünü yüklemek için bkz. [pyodbc Python geliştirmesi için bir ortam yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
+
+  Daha fazla bilgi için bkz. [MICROSOFT ODBC sürücüsü](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+
+---
+
+> [!IMPORTANT]
+> Bu makaledeki betikler, **Adventure Works** veritabanını kullanmak için yazılmıştır.
+
+> [!NOTE]
+> İsteğe bağlı olarak bir Azure SQL yönetilen örneği kullanmayı seçebilirsiniz.
+>
+> Oluşturmak ve yapılandırmak için [Azure portalını](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)'i veya [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)'Yi kullanın, sonra [yerinde veya](sql-database-managed-instance-configure-p2s.md) [VM](sql-database-managed-instance-configure-vm.md) bağlantısı kurun.
+>
+> Verileri yüklemek için bkz. [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) dosyası Ile [bacpac ile geri yükleme](sql-database-import.md) veya bkz. [Wide World Importers veritabanını geri yükleme](sql-database-managed-instance-get-started-restore.md).
+
+Python ve Azure SQL veritabanı hakkında daha fazla bilgi için bkz. [Python Için Azure SQL veritabanı kitaplıkları](/python/api/overview/azure/sql), [pyodbc deposu](https://github.com/mkleehammer/pyodbc/wiki/)ve bir [pyodbc örneği](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703006"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758759"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir? 
 
@@ -40,7 +40,20 @@ Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 
-Eylül 2019: URL ayrıştırma kurallarına göre POST semantiğinin ek zorlaması-yinelenen parametreler bir hata tetikleyecektir ve [bom](https://www.w3.org/International/questions/qa-byte-order-mark) yok sayılır.
+Şu anda zamanlanmadı.  Lütfen ' de bulunan veya üretime yönelik olan değişiklikler için aşağıya bakın. 
+
+## <a name="february-2020"></a>Şubat 2020: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Boş parçalar, oturum açma uç noktasındaki her HTTP yeniden yönlendirmesine eklenecektir. 
+
+**Geçerlilik tarihi**: 8 Şubat 2020
+
+**Etkilenen uç noktalar**: v 1.0 ve v 2.0
+
+**Etkilenen protokol**: response_type = Query kullanan OAUTH ve OIDC akışları-bu, bazı durumlarda [yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md) ve [dolaylı akışı](v2-oauth2-implicit-grant-flow.md)ele alır. 
+
+HTTP yeniden yönlendirme aracılığıyla login.microsoftonline.com 'den bir uygulamaya bir kimlik doğrulama yanıtı gönderildiğinde hizmet, yanıt URL 'sine boş bir parça ekler.  Bu, tarayıcının kimlik doğrulama isteğindeki var olan herhangi bir parçayı temizler olarak yeniden yönlendirme saldırılarını önler.  Hiçbir uygulamanın bu davranışa bağımlılığı olmamalıdır. 
+
 
 ## <a name="august-2019"></a>Ağustos 2019
 
@@ -120,7 +133,7 @@ Birden çok kez yinelenen istek veren istemcilere `invalid_grant` hatası gönde
 
 * İstemci Kimliği
 
-* Yeniden yönlendirme URI'si
+* Yeniden yönlendirme URI 'SI
 
 * Yanıt türü ve modu
 

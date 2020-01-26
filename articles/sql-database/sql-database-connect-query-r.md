@@ -1,5 +1,5 @@
 ---
-title: Sorgulamak için Machine Learning Services ile R kullanın
+title: Veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Bu makalede bir Azure SQL veritabanına bağlanmak ve Transact-SQL deyimleriyle sorgulamak için Azure SQL veritabanı ile R betiği kullanma Machine Learning Services gösterilmektedir.
 services: sql-database
@@ -13,64 +13,42 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826982"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758368"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
 
-Bu hızlı başlangıçta, bir Azure SQL veritabanına bağlanmak ve Transact-SQL deyimleriyle veri sorgulamak için Machine Learning Services ile [R](https://www.r-project.org/) 'nin nasıl kullanılacağı gösterilmektedir. Machine Learning Services, veritabanı içi R betiklerini yürütmek için kullanılan Azure SQL veritabanı 'nın bir özelliğidir. Daha fazla bilgi için bkz. [Azure SQL veritabanı Machine Learning Services R (Önizleme)](sql-database-machine-learning-services-overview.md).
+Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak ve T-SQL deyimlerini kullanarak verileri sorgulamak için Machine Learning Services ile R 'yi kullanırsınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için aşağıdakilere sahip olduğunuzdan emin olun:
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- [Azure SQL veritabanı](sql-database-single-database-get-started.md)
+  
+- R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) . [Önizleme Için kaydolun](sql-database-machine-learning-services-overview.md#signup).
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-  || Tek veritabanı |
-  |:--- |:--- |
-  | Oluşturma| [Portal](sql-database-single-database-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md) |
-  | Veri yükleme | Hızlı başlangıç başına yüklenen Adventure Works |
-  |||
+> [!IMPORTANT]
+> Bu makaledeki betikler, **Adventure Works** veritabanını kullanmak için yazılmıştır.
 
-  > [!NOTE]
-  > R ile Azure SQL veritabanı Machine Learning Services önizlemesi sırasında, yönetilen örnek dağıtım seçeneği desteklenmez.
+> [!NOTE]
+> Microsoft, genel önizleme sırasında, mevcut veya yeni veritabanınız için sizi kullanıma sunulacaktır ve makine öğrenimini etkinleştirecektir, ancak yönetilen örnek dağıtım seçeneği şu anda desteklenmemektedir.
 
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
-
-- Machine Learning Services (R ile) etkin. Microsoft, genel önizleme sırasında, mevcut veya yeni veritabanınız için sizi kullanıma sunulacaktır ve makine öğrenimini etkinleştirecektir. [Önizlemeye kaydolma](sql-database-machine-learning-services-overview.md#signup)adımlarını izleyin.
-
-- En son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). R komut dosyalarını diğer veritabanı yönetimini veya sorgu araçlarını kullanarak çalıştırabilirsiniz, ancak bu hızlı başlangıçta SSMS 'yi kullanacaksınız.
+R ile Machine Learning Services, veritabanı içi R betiklerini yürütmek için kullanılan Azure SQL veritabanı 'nın bir özelliğidir. Daha fazla bilgi için bkz. [R Projesi](https://www.r-project.org/).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 

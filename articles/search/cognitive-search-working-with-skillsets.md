@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790889"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760802"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları ve bileşimi
 
@@ -37,15 +37,15 @@ Becerileri, JSON içinde yazılır. [İfade dilini](https://docs.microsoft.com/a
 ### <a name="enrichment-tree"></a>Zenginleştirme ağacı
 
 Bir beceri, belgenizi aşamalı olarak nasıl bir şekilde zenginleştirmesi için, belgenin herhangi bir zenginleştirme öncesinde nasıl göründüğünü görelim. Belge çözme çıkışı, veri kaynağına ve belirli ayrıştırma moduna bağımlıdır. Bu Ayrıca, arama dizinine veri eklenirken [alan eşlemelerinin](search-indexer-field-mappings.md) içerik kaynağı olarak kullandığı belgenin durumudur.
-![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KŞimdi işlem hattı diyagramında depola ")
+![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Ardışık düzen diyagramında bilgi deposu")
 
 Belge, zenginleştirme ardışık düzeninde olduktan sonra bir içerik ağacı ve ilişkili zenginler olarak temsil edilir. Bu ağaç belge çözme çıktısı olarak oluşturulur. Zenginleştirme ağacı biçimi, enzenginleştirme işlem hattının meta verileri hatta ilkel veri türlerine iliştirmesine olanak sağlar, bu geçerli bir JSON nesnesi değildir ancak geçerli bir JSON biçiminde yansıtılmalıdır. Aşağıdaki tabloda, zenginleştirme ardışık düzenine giriş bir belgenin durumu gösterilmektedir:
 
 |Veri kaynağı \ ayrıştırma modu|Varsayılan|JSON, JSON satırları & CSV|
 |---|---|---|
-|Blob Depolama|/Document/Content<br>/Document/normalized_images/*<br>...|/Document/{KEY1}<br>/Document/{key2}<br>...|
-|SQL|/Document/{column1}<br>/Document/{Column2}<br>...|Yok |
-|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>...|Yok|
+|Blob Depolama|/Document/Content<br>/Document/normalized_images/*<br>…|/Document/{KEY1}<br>/Document/{key2}<br>…|
+|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|Yok |
+|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|Yok|
 
  Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
 
@@ -56,7 +56,7 @@ Bu belgenin geri kalanında, [otel İncelemeleri örneği](https://docs.microsof
 Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:
 +   Seçilen düğümlere göre yeteneğin kaç kez yürütüldüğünü. Koleksiyon türü bağlam değerleri için, sonunda ```/*``` eklemek, niteliğin koleksiyondaki her örnek için bir kez çağrılmasına neden olur. 
 +   Enzenginleştirme ağacında, yetenek çıkışları eklenir. Çıktılar, her zaman bağlam düğümünün alt öğeleri olarak ağaca eklenir. 
-+   Girişlerin şekli. Çoklu düzey koleksiyonlar için, bağlamı üst koleksiyon olarak ayarlamak, yeteneğin giriş şeklini etkiler. Örneğin, ülkelerin listesini içeren bir zenginleştirme ağacınızı kullanıyorsanız, her biri bir ZipCodes listesi içeren bir eyalet listesi ile zenginleştirir.
++   Girişlerin şekli. Çoklu düzey koleksiyonlar için, bağlamı üst koleksiyon olarak ayarlamak, Beceri girişinin şeklini etkiler. Örneğin, ülkelerin listesini içeren bir zenginleştirme ağacınızı kullanıyorsanız, her biri bir ZipCodes listesi içeren bir eyalet listesi ile zenginleştirir.
 
 |Bağlam|Girdi|Giriş şekli|Yetenek çağırma|
 |---|---|---|---|
@@ -65,7 +65,7 @@ Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` yalnızca yetenek girişlerinde ve [projeksiyonde](knowledge-store-projection-overview.md)kullanılır. Çok düzeyli, iç içe geçmiş nesneler oluşturmak için kullanılır. Bilgi deposuna bir yeteneğe veya projeye giriş olarak geçirmek için yeni bir oject oluşturmanız gerekebilir. Enzenginleştirme düğümleri, enzenginleştirme ağacında geçerli bir JSON nesnesi olmayabilir ve ağaçtaki bir düğümü yeniden oluşturmak, Beceri girişleri veya projeksiyonları, doğru biçimlendirilmiş bir JSON nesnesi oluşturmanızı gerektiren bir düğümün yalnızca bu durumunu geri döndürmektedir. `sourceContext`, yalnızca bağlamını kullanıyorsanız, birden çok yetenek gerektiren hiyerarşik, anonim bir tür nesnesi oluşturmanız mümkün olur. `sourceContext` kullanmak sonraki bölümde gösterilmiştir. Temel bir tür değil geçerli bir JSON nesnesi olup olmadığını öğrenmek için bir zenginleştirme oluşturan yetenek çıktısına bakın.
+`sourceContext` yalnızca yetenek girişlerinde ve [projeksiyonde](knowledge-store-projection-overview.md)kullanılır. Çok düzeyli, iç içe geçmiş nesneler oluşturmak için kullanılır. Bilgi deposuna bir yeteneğe veya projeye giriş olarak geçirmek için yeni bir nesne oluşturmanız gerekebilir. Enzenginleştirme düğümleri, enzenginleştirme ağacında geçerli bir JSON nesnesi olmayabilir ve ağaçtaki bir düğüme başvurmak, Beceri girişleri veya projeksiyonları, iyi biçimlendirilmiş bir JSON nesnesi oluşturmanızı gerektirir. `sourceContext`, yalnızca bağlamını kullanıyorsanız, birden çok yetenek gerektiren hiyerarşik, anonim bir tür nesnesi oluşturmanız mümkün olur. `sourceContext` kullanmak sonraki bölümde gösterilmiştir. Temel bir tür değil geçerli bir JSON nesnesi olup olmadığını öğrenmek için bir zenginleştirme oluşturan yetenek çıktısına bakın.
 
 ### <a name="projections"></a>Yansıtmalar
 
@@ -100,7 +100,7 @@ Tüm zenginleştirmeleri için kök düğüm `"/document"`. Blob dizinleyicilerl
 
 ### <a name="skill-2-language-detection"></a>Beceri #2 dil algılama
  Dil algılama becerisi, Beceri içinde tanımlanan üçüncü (yetenek #3) beceriye sahip olsa da, sonraki bir yetenek de yürütülür. Herhangi bir giriş gerektirerek engellenmediğinden, bu, önceki beceriyle paralel olarak yürütülür. Önünde bulunan bölünmüş beceri gibi, dil algılama becerisi de her belge için bir kez çağrılır. Zenginleştirme ağacının artık dil için yeni bir düğümü vardır.
- ![beceriye #2 sonra zenginleştirme ağacı](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "EnBeceri #2 yürütüldükten sonra zenginleştirme ağacı ")
+ ![beceriye #2 sonra zenginleştirme ağacı](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Beceri #2 yürütüldükten sonra zenginleştirme ağacı")
  
  ### <a name="skill-3-key-phrases-skill"></a>Yetenek #3: anahtar tümceleri yeteneği 
 
@@ -114,7 +114,7 @@ Yukarıdaki ağaçtaki bağlayıcıların renkleri, zenginleştirmeleri farklı 
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>Bilgi deposuna zenginleştirme kaydetme 
 
-Becerileri Ayrıca, zenginleştirilmiş belgelerin tablo veya nesne olarak yansıtılabileceği bir bilgi deposu da tanımlar. Zenginleştirilmiş verilerinizi bilgi deposuna kaydetmek için zenginleştirilmiş belgenin bir kümesini tanımlarsınız. Bilgi deposu hakkında daha fazla bilgi edinmek için bkz. [bilgi deposuna genel bakış](knowledge-store-concept-intro.md)
+Becerileri Ayrıca, zenginleştirilmiş belgelerin tablo veya nesne olarak yansıtılabileceği bir bilgi deposu da tanımlar. Zenginleştirilmiş verilerinizi bilgi deposuna kaydetmek için zenginleştirilmiş belgeniz için bir dizi projeksiyonu tanımlarsınız. Bilgi deposu hakkında daha fazla bilgi edinmek için bkz. [bilgi deposuna genel bakış](knowledge-store-concept-intro.md)
 
 ### <a name="slicing-projections"></a>Projeksiyonları Dilimleme
 

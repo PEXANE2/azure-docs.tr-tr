@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 45b0c012ec8b8d70c1fad99db40f38fb92daf8a0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 01/24/2020
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770654"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759918"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 >
 > * Ora2pg aracını kullanarak geçiş çabalarını değerlendirin.
 > * Ora2pg aracını kullanarak örnek şemayı geçirin.
-> * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
+> * Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturun.
 > * Azure veritabanı geçiş hizmeti 'ni kullanarak bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 > * Geçişi izleme.
@@ -49,7 +49,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 * [Oracle 11g Release 2 ' yi (Standard Edition, Standard Edition bir veya Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)indirip yükleyin.
 * Örnek **HR** veritabanını [buradan](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)indirin.
-* Ora2pg 'i [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) veya [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf)üzerinde indirin ve yükleyin.
+* [Ora2pg 'ı Windows veya Linux üzerinde](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)indirin ve yükleyin.
 * [PostgreSQL için Azure Veritabanı’nda örnek oluşturma](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Örneğe bağlanın ve bu [belgedeki](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)yönergeyi kullanarak bir veritabanı oluşturun.
 * [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
@@ -198,7 +198,7 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 Azure veritabanı geçiş hizmeti 'nde bir geçiş işlem hattı başlatmadan önce ora2pg kullanarak bunları uyumlu hale getirmek için Oracle tablo şemalarını, saklı yordamları, paketleri ve diğer veritabanı nesnelerini dönüştürmeyi tercih edebilirsiniz. Ora2pg ile çalışma hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın:
 
-* [Ora2pg 'i Windows üzerinde yükler](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [Ora2pg 'i Windows üzerinde yükler](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
 * [Oracle 'dan Azure 'a PostgreSQL geçişi kılavuz kitabı](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
 Azure veritabanı geçiş hizmeti, PostgreSQL tablo şemasını da oluşturabilir. Hizmet, bağlı Oracle kaynağında bulunan tablo şemasına erişir ve PostgreSQL için Azure veritabanı 'nda uyumlu bir tablo şeması oluşturur. Azure veritabanı geçiş hizmeti şemayı oluşturmayı ve verileri taşımayı tamamladıktan sonra PostgreSQL için Azure veritabanı 'nda şema biçimini doğrulayıp denetlediğinizden emin olun.
@@ -253,7 +253,7 @@ Kullanmaya başlamak için:
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
-1. Azure portal'da oturum açın, **Tüm hizmetler** seçeneğini belirleyin ve ardından **Abonelikler**'i seçin.
+1. Azure portal'da oturum açın, **Tüm hizmetler**'i ve ardından **Abonelikler**'i seçin.
 
    ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 

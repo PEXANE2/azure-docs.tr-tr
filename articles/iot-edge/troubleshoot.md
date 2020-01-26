@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514264"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759236"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
@@ -21,7 +21,7 @@ Ortamınızda Azure IoT Edge’i kullanma konusunda sorun yaşarsanız, sorun gi
 
 ## <a name="run-the-iotedge-check-command"></a>İotedge ' Check ' komutunu çalıştırın
 
-Sorun giderme IoT Edge ilk adımınız, yaygın sorunlar için yapılandırma ve bağlantı testlerinin bir koleksiyonunu gerçekleştiren `check` komutunu kullanmaktır. `check` komutu [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) ve üzeri sürümlerde kullanılabilir.
+Sorun giderme IoT Edge ilk adımlarınız, yaygın sorunlar için yapılandırma ve bağlantı testlerinin bir koleksiyonunu çalıştıran `check` komutunu kullanmaktır. `check` komutu [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) ve üzeri sürümlerde kullanılabilir.
 
 `check` komutunu aşağıdaki gibi çalıştırabilir veya seçeneklerin tamamı listesini görmek için `--help` bayrağını ekleyebilirsiniz:
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Kök nedeni**
 
-IOT Edge çalışma zamanı yalnızca ana bilgisayar adları 64 karakterden kısa destekleyebilir. Fiziksel makineler genellikle uzun konak adı yok, ancak bir sanal makineye daha yaygın bir sorundur. Ana bilgisayar adları, Azure'da barındırılan Windows sanal makineleri için otomatik olarak oluşturulan, özellikle uzun olma eğilimindedir. 
+IOT Edge çalışma zamanı yalnızca ana bilgisayar adları 64 karakterden kısa destekleyebilir. Fiziksel makineler genellikle uzun konak adı yok, ancak bir sanal makineye daha yaygın bir sorundur. Ana bilgisayar adları, Azure'da barındırılan Windows sanal makineleri için otomatik olarak oluşturulan, özellikle uzun olma eğilimindedir.
 
 **Çözümleme**
 
@@ -302,7 +302,7 @@ IoT Edge çalışma zamanının parçası olan IoT Edge hub, varsayılan olarak 
 
 **Çözümleme**
 
-IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false**olarak ayarlayın. Bunu yapmanın iki yolu vardır:
+IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false**olarak ayarlayın. Ortam değişkenlerini ayarlamak için iki yol vardır:
 
 Azure portalında:
 
@@ -340,7 +340,7 @@ Kullanırken bir EventLogException alırsanız `Get-WinEvent` Windows üzerinde 
 
 IOT Edge arka plan programı bir kayıt defteri anahtarını ayarlayın. Oluşturma bir **iotedge.reg** dosya aşağıdaki içeriğe ve alma Windows kayıt defterine çift veya kullanarak `reg import iotedge.reg` komutu:
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IOT Edge modülü ileti göndermek için edgeHub 404 hatası ile başarısız olur.
 
-IOT Edge modülü başarısız bir 404 ile edgeHub bir ileti göndermek için özel bir `Module not found` hata. IOT Edge arka plan programı günlüklere şu iletiyi yazdırmaz: 
+IOT Edge modülü başarısız bir 404 ile edgeHub bir ileti göndermek için özel bir `Module not found` hata. IOT Edge arka plan programı günlüklere şu iletiyi yazdırmaz:
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **Kök nedeni**
@@ -391,7 +391,7 @@ Varsayılan olarak, IoT Edge kendi yalıtılmış kapsayıcı ağında modüller
 
 **Seçenek 1: kapsayıcı altyapısı ayarlarındaki DNS sunucusunu ayarlama**
 
-Altyapı tarafından başlatılan tüm kapsayıcı modülleri için uygulanacak kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusu belirtin. Kullanılacak DNS sunucusunu belirten `daemon.json` adlı bir dosya oluşturun. Örneğin:
+Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. Kullanılacak DNS sunucusunu belirten `daemon.json` adlı bir dosya oluşturun. Örneğin:
 
 ```json
 {
@@ -401,7 +401,7 @@ Altyapı tarafından başlatılan tüm kapsayıcı modülleri için uygulanacak 
 
 Yukarıdaki örnek, DNS sunucusunu genel olarak erişilebilen bir DNS hizmetine ayarlar. Sınır cihazı bu IP ortamından erişemezse, erişilebilir olan DNS sunucusu adresi ile değiştirin.
 
-`daemon.json` platformunuzun doğru konumuna yerleştirin: 
+`daemon.json` platformunuzun doğru konumuna yerleştirin:
 
 | Platform | Konum |
 | --------- | -------- |
@@ -410,7 +410,7 @@ Yukarıdaki örnek, DNS sunucusunu genel olarak erişilebilen bir DNS hizmetine 
 
 Konum zaten `daemon.json` dosyası içeriyorsa, **DNS** anahtarını buna ekleyin ve dosyayı kaydedin.
 
-*Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden başlatın*
+Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden başlatın.
 
 | Platform | Komut |
 | --------- | -------- |
@@ -431,7 +431,7 @@ Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayar
 }
 ```
 
-Bunu *Edgeagent* ve *edgehub* modülleri için de ayarladığınızdan emin olun.
+Bu yapılandırmayı *Edgeagent* ve *edgehub* modülleri de ayarladığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus ileti sayısı | Microsoft Docs
-description: Azure Service Bus ileti sayısı alınamıyor.
+title: Azure Service Bus-ileti sayısı
+description: Azure Resource Manager ve Azure Service Bus NamespaceManager API 'Leri kullanarak kuyruklarda ve aboneliklerde tutulan ileti sayısını alın.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: adfd8c5849cfee69805715378a3f56ec9f685b00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403967"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756411"
 ---
 # <a name="message-counters"></a>İleti sayaçları
 
-Azure Resource Manager ve Service Bus kuyrukları ile aboneliklerinden içinde tutulan ileti sayısı alabilirsiniz [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) .NET Framework SDK'sı API'leri.
+.NET Framework SDK 'sında Azure Resource Manager ve Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak kuyruklarda ve aboneliklerde tutulan ileti sayısını alabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell ile sayısı şu şekilde elde edebilirsiniz:
+PowerShell ile, sayımı aşağıdaki gibi edinebilirsiniz:
 
 ```powershell
 (Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
@@ -34,19 +34,19 @@ PowerShell ile sayısı şu şekilde elde edebilirsiniz:
 
 ## <a name="message-count-details"></a>İleti sayısı ayrıntıları
 
-Etkin mesaj sayısı bilmek, bir sıra yukarı ne şu anda dağıtılmış olan daha işlemek için daha fazla kaynak gerektiren bir biriktirme listesi yapıları olup olmadığını belirlemede yararlıdır. Aşağıdaki sayacı ayrıntılarını kullanılabilir [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) sınıfı:
+Etkin ileti sayısını bilmek, bir kuyruğun daha önce dağıtılmış olandan daha fazla kaynağın işlemesini gerektiren bir biriktirme listesi oluşturup oluşturmadığını belirlemek için faydalıdır. [Messagecountdetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) sınıfında aşağıdaki sayaç ayrıntıları mevcuttur:
 
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): Etkin Durum ve teslim için hazır olan iletiler bir kuyrukta veya abonelik.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): Geçerliliğini yitirmiş kuyruk iletileri.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Zamanlanmış durum iletileri.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): Başka bir kuyruk veya konuda aktarımı başarısız oldu ve aktarım sahipsiz sıraya taşınmış iletileri.
--   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Başka bir kuyruk veya konuda aktarımı bekleyen iletileri.
+-   [Activemessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): kuyruktaki veya abonelikteki iletiler etkin durumda ve teslim için hazırlanıyor.
+-   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): teslim edilemeyen ileti sırasındaki iletiler.
+-   [Scheduledmessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): zamanlanan durumdaki iletiler.
+-   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): başka bir kuyruğa veya konuya aktarılamayan ve aktarım atılacak ileti sırasına taşınmış iletiler.
+-   [Transfermessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): başka bir kuyruğa veya konuya Aktarılmayı bekleyen iletiler.
 
-Kaynakları kuyruk uzunluğuna göre ölçeklendirmek bir uygulama isterse, bunu bir ölçülen yapmanız gerektiğini uygun bir hızda. İleti sayaçları alımını ileti Aracısı içinde pahalı bir işlemdir ve sık sık doğrudan ve olumsuz yürütme varlık performansını etkiler.
+Bir uygulama, sıranın uzunluğuna bağlı olarak kaynakları ölçeklendirmek isterse, bunu ölçülen bir hızda yapmanız gerekir. İleti sayaçlarının alımı, ileti aracısının içindeki pahalı bir işlemdir ve genellikle doğrudan yürütülerek varlık performansını olumsuz yönde etkiler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

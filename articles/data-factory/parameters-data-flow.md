@@ -1,5 +1,5 @@
 ---
-title: Eşleme veri akışları parametreleştiriliyor
+title: Eşleme veri akışlarını parametreleştirme
 description: Data Factory işlem hatlarından eşleme veri akışını Parametreleştirme hakkında bilgi edinin
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746155"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760224"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışları parametreleştiriliyor
+# <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
 
 Azure Data Factory veri akışlarını eşleme, parametrelerin kullanımını destekler. Daha sonra deyimlerinizin tamamında kullanabileceğiniz veri akışı tanımınızın içinde parametreler tanımlayabilirsiniz. Parametre değerleri, veri akışını Yürüt etkinliği aracılığıyla çağıran işlem hattı tarafından ayarlanabilir. Veri akışı etkinlik ifadelerindeki değerleri ayarlamak için üç seçeneğiniz vardır:
 
@@ -23,9 +23,6 @@ Azure Data Factory veri akışlarını eşleme, parametrelerin kullanımını de
 * Statik değişmez değer ayarlamak için ifade dilini kullanın
 
 Verilerinizi genel amaçlı, esnek ve yeniden kullanılabilir hale getirmek için bu özelliği kullanın. Veri akışı ayarlarını ve deyimlerini bu parametrelerle parametreleştirebilirsiniz.
-
-> [!NOTE]
-> İşlem hattı denetim akışı ifadelerini kullanmak için, veri akışı parametresi dize türünde olmalıdır.
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Eşleme veri akışında parametre oluşturma
 

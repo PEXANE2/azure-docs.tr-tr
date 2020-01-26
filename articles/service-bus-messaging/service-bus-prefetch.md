@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus önceden getirme iletileri | Microsoft Docs
-description: Azure Service Bus iletileri önceden getiriliyor tarafından performansını.
+title: Önceden getirme iletilerini Azure Service Bus | Microsoft Docs
+description: Azure Service Bus iletilerini önceden getirerek performansı artırabilirsiniz. İletiler, uygulama için istek yapılmadan önce yerel alma için hazır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,52 +11,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125857"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760666"
 ---
-# <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus iletileri önceden getirme
+# <a name="prefetch-azure-service-bus-messages"></a>Önceden getirme Azure Service Bus iletileri
 
-Zaman *önceden getirme* etkin resmi hizmet veri yolu istemcileri hiçbirinde alıcı sessizce daha fazla ileti kadar edinme [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) ne uygulama başlangıçta için sorulan ötesinde sınırı.
+Herhangi bir resmi Service Bus istemcisinin herhangi birinde *önceden getirme* etkinleştirildiğinde, alıcı, uygulamanın ilk olarak sorulduğu kadar, [prefetchcount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) sınırına kadar daha fazla ileti alır.
 
-Tek bir başlangıç [alma](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) veya [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) çağrı, bu nedenle çabuk kullanılabilir olarak döndürülen hemen kullanılmaya bir ileti alır. İstemci daha sonra arka arabellek önceden getirme dolduracak şekilde iletileri alır.
+Tek bir başlangıç [alma](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) veya [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) çağrısı bu nedenle, hemen kullanılabilir olarak döndürülen anında tüketim için bir ileti alır. Daha sonra istemci, önceden getirme arabelleğini dolduracak şekilde arka planda daha fazla ileti alır.
 
 ## <a name="enable-prefetch"></a>Önceden getirmeyi etkinleştir
 
-.NET ile önceden getirme özelliği ayarlayarak etkinleştirmeniz [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) özelliği bir **MessageReceiver**, **QueueClient**, veya **SubscriptionClient**  sıfırdan büyük bir sayı. Önceden getirme sıfır kapatır değeri ayarlanamadı.
+.NET ile, bir **MessageReceiver**, **Queueclient**veya **Subscriptionclient** öğesinin [prefetchcount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) özelliğini sıfırdan büyük bir sayıya ayarlayarak önceden getirme özelliğini etkinleştirirsiniz. Değerin sıfır olarak ayarlanması, önceden getirme özelliğini devre dışı bırakır.
 
-Bu ayar alış tarafı kolayca ekleyebilirsiniz [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) veya [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) bu bağlamlarda etkisini görmek için örnekleri ayarları.
+Bu bağlamlarda etkisini görmek için, bu ayarı [Queuesgettingstarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) veya [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) Samples ' ayarlarının alma tarafına kolayca ekleyebilirsiniz.
 
-İletileri önceden getirme arabelleğinde, herhangi bir sonraki kullanılabilir ancak **alma**/**ReceiveAsync** çağrılar hemen arabellekteki yerine getirildiğini ve arabellek olarak yenilenir arka plan alanı kullanılabilir olduğunda. Teslimat için kullanılabilir hiçbir ileti yoksa alma işlemi arabellek ve ardından bekler ve blokları, beklendiği gibi boşaltır.
+İletiler önceden getirme arabelleğinde kullanılabilir olsa da, sonraki tüm **alma**/**ReceiveAsync** çağrıları arabelleğin hemen yerine getirilir ve alan kullanılabilir hale geldiğinde arabelleğin arka planda replenished olur. Teslim için kullanılabilecek bir ileti yoksa, alma işlemi arabelleği boşaltır ve beklendiği gibi bekler veya engeller.
 
-Önceden getirme ile aynı şekilde de çalışır [Onmessageoptions](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) ve [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API'leri.
+Önceden getirme, [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) ve [onmessageasync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API 'leriyle aynı şekilde de çalışacaktır.
 
-## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Neden daha hızlı ise, önceden getirme varsayılan seçeneği değil mi?
+## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Daha hızlıdır, neden varsayılan seçenek değildir.
 
-Önceden getirme ileti akışı olduğunda ve bir uygulama ister önce yerel alma işlemi için hazır bir ileti sağlayarak hızlandırır. Bu aktarım hızı kazanç uygulama yazarı açıkça yapmalısınız bir denge sonucudur:
+Önceden getirme, uygulamanın bir kullanıcıdan önce ve öncesinde yerel olarak alımı için hazır bir ileti sunarak ileti akışını hızlandırır. Bu aktarım hızı, uygulama yazarının açıkça yapması gereken bir denge sonucudur:
 
-İle [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu Al, önceden getirme arabelleğe alınan tüm iletiler kuyrukta artık kullanılamaz ve uygulamasına alınana kadar yalnızca bellek içi önceden getirme arabelleğinde bulunur aracılığıyla **alma**/**ReceiveAsync** veya **Onmessageoptions**/**OnMessageAsync** API'leri. İletileri uygulamasına alınmadan önce uygulama sona ererse, bu iletileri geri çevrilemez biçimde kaybolur.
+[Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) alma moduyla birlikte, önceden getirme arabelleğine alınan tüm iletiler kuyrukta kullanılamaz ve yalnızca, **Receive**/**receiveasync** veya **OnMessage**/**onmessageasync** API 'leri aracılığıyla uygulamaya alınana kadar bellek içi önceden getirme arabelleğinde bulunur. Uygulama, iletiler uygulamaya alınmadan önce sonlanmışsa, bu iletiler kurtarılamayacak şekilde kaybedilir.
 
-İçinde [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) modu Al, iletileri önceden getirme arabelleğe alınan kilitli bir durumda arabelleğine alınan ve kilit şekilde ilerleyen zaman aşımı saati sahip. Önceden getirme arabellek büyükse ve işleme kadar önceden getirme arabelleğinde veya bile uygulamanın iletiyi işlerken bulunan sırasında kilit süresi sona bu iletiyi alır, uygulamanın işlemek kafa karıştırıcı bazı olaylar olabilir.
+[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) alma modunda, önceden getirme arabelleğine getirilen iletiler, ön belleğe kilitli durumda alınır ve kilit için zaman aşımı saatine sahiptir. Önceden getirme arabelleği büyükse ve işleme, önceden getirme arabelleğinde veya uygulama iletiyi işlerken bile ileti kilitlerinin süresinin dolacağı zaman alıyorsa, uygulamanın işlemesi için bazı kafa karıştırıcı olaylar olabilir.
 
-Uygulama, süresi dolmuş veya imminently sona eren bir kilit içeren bir ileti almanız. Bu durumda, uygulama iletiyi işleyen, ancak sonra bunu bir kilit zaman aşımı nedeniyle tamamlayamıyor bulun. Uygulama denetleyebilirsiniz [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) (saat aracısı ve yerel makine saat arasında eğriltme tabidir) özelliği. İletinin kilit süresi dolmuşsa, uygulamanın ileti yoksayması gereken; herhangi bir API çağrısı, ya da ileti ile yapılmalıdır. İleti süresinin dolmadığını, ancak Süre sonu yaklaşan kilidi yenilenmesi ve başka bir varsayılan kilit nokta çağırarak Genişletilmiş [ileti. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+Uygulama, süresi dolan veya ımınıda süresi dolan bir kilit olan bir ileti alabilir. Bu durumda, uygulama iletiyi işleyebilir, ancak kilit süre sonu nedeniyle tamamlanmayabileceğini bulabilir. Uygulama [Lockeduntilutc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) özelliğini denetleyebilir (aracı ve yerel makine saati arasındaki saat eğmaya tabidir). İleti kilidinin süresi dolmuşsa, uygulamanın iletiyi yoksayması gerekir; ileti üzerinde veya ile API çağrısı yapılmamalıdır. İletinin süresi dolmamışsa ancak süre sonu imminent ise, kilit, ileti çağırarak başka bir varsayılan kilit dönemi tarafından yenilenebilir ve Genişletilebilir [. RenewLock ()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
-Kilit sessizce önceden getirme arabelleğinde dolarsa iletisi bırakılmış olarak kabul edilir ve yeniden kuyruğa alma için kullanılabilir hale getirileceğini. Önceden getirme belleğe getirilmesi için neden olabilir; sonunda yerleştirilir. Önceden getirme arabellek genellikle üzerinden ileti süre çalışması olamaz, bu iletileri (geçerli kilitli) kullanılabilir durumda hiçbir zaman etkili bir şekilde teslim sürekli olarak önceden getirilmiş olması neden olur ve sonunda eski ileti sırası için bir kez taşınır en fazla teslim sayısı aşıldı.
+Kilit, önceden getirme arabelleğinde sessizce dolarsa, ileti terk edildi olarak değerlendirilir ve kuyruktan alma için kullanılabilir hale getirilir. Bu, önceden getirme arabelleğine getirilmemesine neden olabilir; sonuna yerleştirildi. Önceden getirme arabelleği genellikle ileti süre sonu sırasında çalışılamadıysa, iletilerin sürekli olarak önceden alınmasına, ancak artık kullanılabilir (geçerli kilitli) bir durumda teslim edilmesine ve bir süre sonra en fazla teslimat sayısı aşıldı.
 
-İleti işleme için güvenilirliği yüksek derecede gerekir ve işleme önemli bir çalışma ve zaman alan, ölçülü veya hiç önceden getirme özelliğini kullanmanız önerilir.
+İleti işleme için yüksek derecede güvenilirlik almanız gerekiyorsa ve işleme önemli iş ve zaman alırsa, önceden getirme özelliğini veya hiç bir şekilde kullanmanız önerilir.
 
-Önceden getirme, yüksek aktarım hızı gerekir ve ileti işleme genellikle ucuz ise, önemli aktarım hızı avantajları verir.
+Yüksek aktarım hızına ihtiyacınız varsa ve ileti işleme genellikle tek EAP ise, önceden getirme önemli verimlilik avantajları verir.
 
-En fazla hazırlık sayısı ve kuyruk veya abonelik yapılandırılmış kilit süresi kilit zaman aşımı en az bir ileti yanı sıra toplu beklenen ileti önceden getirme arabellek boyutu en fazla bir süredir işleme aşıyor, dengeli gerekir. Aynı zamanda, kilit zaman aşımı, iletileri kendi maksimum aşabilir kadar uzun olmaması gereken [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) yanlışlıkla bırakılır, bu nedenle yeniden teslim önce süresi dolacak şekilde kendi kilit gerek.
+En fazla önceden getirme sayısı ve kuyruk veya abonelik üzerinde yapılandırılan kilit süresi, en az ön hazırlık arabelleğinin en büyük boyutu için bir ileti olan toplam beklenen ileti işleme süresini aşarak dengelenmesi gerekir. Aynı zamanda, kilit zaman aşımı, yanlışlıkla [ayrıldıklarında](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) Iletilerin maksimum zaman aşımına uğramasını aşmasına izin vermez, böylece yeniden teslim edilmeden önce kilidinin süresinin dolabilmesini gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

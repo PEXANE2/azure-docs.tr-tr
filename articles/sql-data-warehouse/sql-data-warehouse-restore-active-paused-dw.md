@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d0bcf9ca6373984989d24efd2af4ffbbb19c5548
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685543"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759695"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Mevcut bir Azure SQL veri ambarını geri yükleme
 
@@ -24,16 +24,16 @@ Bu makalede, Azure portal ve PowerShell aracılığıyla mevcut bir SQL veri amb
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**DTU kapasitenizi doğrulayın.** Her SQL veri ambarı, varsayılan DTU kotasına sahip bir SQL Server (örneğin, myserver.database.windows.net) tarafından barındırılır. SQL Server 'ın geri yüklenmekte olan veritabanının kalan DTU kotasına sahip olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme][Request a DTU quota change].
+**DTU kapasitenizi doğrulayın.** Her SQL veri ambarı, varsayılan DTU kotasına sahip bir SQL Server (örneğin, myserver.database.windows.net) tarafından barındırılır. SQL Server 'ın geri yüklenmekte olan veritabanının kalan DTU kotasına sahip olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-1. [Azure PowerShell yüklediğinizden][Install Azure PowerShell]emin olun.
-2. Geri yüklemek istediğiniz mevcut bir geri yükleme noktasına sahip olabilirsiniz. Yeni bir geri yükleme oluşturmak isterseniz, [Kullanıcı tanımlı yeni bir geri yükleme noktası oluşturmak için öğreticiye][the tutorial to create a new user-defined restore point]bakın.
+1. [Azure PowerShell yüklediğinizden](https://docs.microsoft.com/powershell/azure/overview)emin olun.
+2. Geri yüklemek istediğiniz mevcut bir geri yükleme noktasına sahip olabilirsiniz. Yeni bir geri yükleme oluşturmak isterseniz, [Kullanıcı tanımlı yeni bir geri yükleme noktası oluşturmak için öğreticiye](sql-data-warehouse-restore-points.md)bakın.
 
 ## <a name="restore-an-existing-data-warehouse-through-powershell"></a>Mevcut bir veri ambarını PowerShell aracılığıyla geri yükleme
 
-Mevcut bir veri ambarını geri yükleme noktasından geri yüklemek için [restore-AzSqlDatabase][Restore-AzSqlDatabase] PowerShell cmdlet 'ini kullanın.
+Mevcut bir veri ambarını geri yükleme noktasından geri yüklemek için [restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell cmdlet 'ini kullanın.
 
 1. PowerShell’i açın.
 
@@ -45,13 +45,13 @@ Mevcut bir veri ambarını geri yükleme noktasından geri yüklemek için [rest
 
 5. RestorePointCreationDate kullanarak istenen geri yükleme noktasını seçin.
 
-6. [Restore-AzSqlDatabase][Restore-AzSqlDatabase] PowerShell cmdlet 'ini kullanarak veri ambarını istenen geri yükleme noktasına geri yükleyin.
+6. [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell cmdlet 'ini kullanarak veri ambarını istenen geri yükleme noktasına geri yükleyin.
         1. SQL veri ambarını farklı bir mantıksal sunucuya geri yüklemek için diğer mantıksal sunucu adını belirttiğinizden emin olun.  Bu mantıksal sunucu, farklı bir kaynak grubunda ve bölgede de olabilir.
         2. Farklı bir aboneliğe geri yüklemek için ' Taşı ' düğmesini kullanarak mantıksal sunucuyu başka bir aboneliğe taşıyın.
 
 7. Geri yüklenen veri ambarının çevrimiçi olduğunu doğrulayın.
 
-8. Geri yükleme tamamlandıktan sonra, [kurtarma sonrasında veritabanınızı yapılandırma][Configure your database after recovery]' yı izleyerek kurtarılan veri Ambarınızı yapılandırabilirsiniz.
+8. Geri yükleme tamamlandıktan sonra, [kurtarma sonrasında veritabanınızı yapılandırma](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)' yı izleyerek kurtarılan veri Ambarınızı yapılandırabilirsiniz.
 
 ```Powershell
 
@@ -89,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>Mevcut bir veri ambarını Azure portal aracılığıyla geri yükleme
 
-1. [Azure portalında][Azure portal] oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Geri yüklemek istediğiniz SQL veri ambarı 'na gidin.
 3. Genel Bakış dikey penceresinin en üstünde **geri yükle**' yi seçin.
 
@@ -100,29 +100,7 @@ $RestoredDatabase.status
     ![Otomatik geri yükleme noktaları](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Silinen bir veri ambarını geri yükleme][Restore a deleted data warehouse]
-- [Coğrafi yedekleme veri ambarından geri yükleme][Restore from a geo-backup data warehouse]
+- [Silinen bir veri ambarını geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
+- [Coğrafi yedekleme veri ambarından geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)
+
  
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[the tutorial to create a new user-defined restore point]:../sql-data-warehouse/sql-data-warehouse-restore-points.md
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/

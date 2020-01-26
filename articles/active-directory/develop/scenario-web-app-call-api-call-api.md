@@ -1,6 +1,6 @@
 ---
 title: Web uygulamasından Web API 'si çağırma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (Web API 'SI çağırma)
+description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (korumalı bir Web API 'SI çağırma)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a1857117d80c6725f801652606fc2d73067ea9da
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701629"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758980"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web API 'Lerini çağıran Web uygulaması-bir Web API 'SI çağırma
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Leri çağıran bir Web uygulaması: Web API 'SI çağırma
 
 Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-`HomeController`eyleminin basitleştirilmiş bir kodu aşağıda verilmiştir. Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Bu zaman kodu, Microsoft Graph REST API olarak nasıl çağrılacağını gösterir. Graph API URL 'SI `appsettings.json` dosyasında sağlanır ve `webOptions`adlı bir değişkende okur:
+`HomeController`eylemi için basitleştirilmiş kod aşağıda verilmiştir. Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Microsoft Graph REST API olarak nasıl çağrılacağını göstermek için kod eklenmiştir. Microsoft Graph API URL 'SI appSettings. json dosyasında verilmiştir ve `webOptions`adlı bir değişkende okundu:
 
 ```JSon
 {
@@ -47,10 +47,10 @@ public async Task<IActionResult> Profile()
  string accountIdentifier = claimsPrincipal.GetMsalAccountId();
  string loginHint = claimsPrincipal.GetLoginHint();
 
- // Get the account
+ // Get the account.
  IAccount account = await application.GetAccountAsync(accountIdentifier);
 
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
+ // Special case for guest users, because the guest ID / tenant ID are not surfaced.
  if (account == null)
  {
   var accounts = await application.GetAccountsAsync();
@@ -62,7 +62,7 @@ public async Task<IActionResult> Profile()
                             .ExecuteAsync();
  var accessToken = result.AccessToken;
 
- // Calls the web API (here the graph)
+ // Calls the web API (Microsoft Graph in this case).
  HttpClient httpClient = new HttpClient();
  httpClient.DefaultRequestHeaders.Authorization =
      new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
@@ -84,7 +84,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > Herhangi bir Web API 'sini çağırmak için aynı prensibi kullanabilirsiniz.
 >
-> Azure Web API 'Lerinin çoğu, çağrıyı kolaylaştıran bir SDK sağlar. Bu da Microsoft Graph durumdur. Sonraki makalede, bu özellikleri gösteren bir öğreticiyi bulacağınız hakkında bilgi edineceksiniz.
+> Çoğu Azure Web API 'SI, API 'nin çağrılmasını kolaylaştıran bir SDK sağlar. Bu aynı zamanda Microsoft Graph de geçerlidir. Sonraki makalede, API kullanımını gösteren bir öğreticiyi nerede bulacağınızı öğreneceksiniz.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
@@ -120,7 +120,7 @@ def graphcall():
     token = _get_token_from_cache(app_config.SCOPE)
     if not token:
         return redirect(url_for("login"))
-    graph_data = requests.get(  # Use token to call downstream service
+    graph_data = requests.get(  # Use token to call downstream service.
         app_config.ENDPOINT,
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()

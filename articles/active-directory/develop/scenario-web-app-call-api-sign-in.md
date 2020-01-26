@@ -1,5 +1,5 @@
 ---
-title: Oturum açma sırasında belirteç önbelleğinden hesapları kaldırma-Microsoft Identity platform | Mavisi
+title: Oturum kapatma sırasında belirteç önbelleğinden hesapları kaldırma-Microsoft Identity platform | Mavisi
 description: Oturum kapatma sırasında bir hesabı belirteç önbelleğinden kaldırma hakkında bilgi edinin
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,28 +14,28 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a77bb59afa753fa9d1655e787d4f7a18715ed2ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701595"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758879"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Genel oturum açma sırasında önbellekten hesapları kaldır
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web API 'Lerini çağıran bir Web uygulaması: genel oturum açma sırasında belirteç önbelleğinden hesapları kaldırma
 
-Web uygulamanıza nasıl oturum açma ekleneceğini zaten biliyoruz. Web uygulamasında, [kullanıcıların oturum açması için oturum açma eklemesi](scenario-web-app-sign-user-sign-in.md)gerektiğini öğrenirsiniz.
+Web uygulamasında oturum açma ve oturum kapatma için [Kullanıcı oturumunu açan](scenario-web-app-sign-user-sign-in.md)Web uygulamasına oturum açma eklemeyi öğrendiniz.
 
-Burada, Kullanıcı oturumu kapatmışsa, bu uygulamadan veya herhangi bir uygulamadan, Kullanıcı ile ilişkili belirteçlerin bulunduğu belirteç önbelleğinden kaldırmak istediğiniz zaman farklıdır.
+Oturum kapatma, Web API 'lerini çağıran bir Web uygulaması için farklıdır. Kullanıcı uygulamanızdan veya herhangi bir uygulamadan oturumu kapattığında, bu kullanıcıyla ilişkili belirteçleri belirteç önbelleğinden kaldırmanız gerekir.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Oturum kapatıldıktan sonra geri çağırma işlemini kesintiye uğratan ve çoklu oturum kapatma
+## <a name="intercept-the-callback-after-single-sign-out"></a>Çoklu oturum kapatıldıktan sonra geri çağırma işlemini kesme
 
-Uygulamanız, bir sonraki `logout` olayını ele geçirebilir, örneğin, oturum açan hesapla ilişkili belirteç önbelleğinin girişini temizlemek için. Web uygulaması, Kullanıcı için erişim belirteçlerini önbellekte depolar. `logout` geri çağırma sonrasında, Web uygulamanızın kullanıcı belirtecini belirteç önbelleğinden kaldırmasını sağlar.
+Oturum açan hesapla ilişkili belirteç önbelleği girişini temizlemek için, uygulamanız `logout` sonrasında olayını ele geçirebilir. Web Apps, bir belirteç önbelleğindeki her bir kullanıcı için erişim belirteçlerini depolar. `logout` geri aramadan sonra, Web uygulamanız kullanıcıyı önbellekten kaldırabilir.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Bu mekanizma, [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) `AddMsal()` yönteminde gösterilmiştir
+ASP.NET Core için, ele geçirme mekanizması [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)`AddMsal()` yönteminde gösterilmiştir.
 
-Uygulamanız için kaydettiğiniz **oturum kapatma URL 'si** , çoklu oturum kapatma uygulamanıza olanak sağlar. Microsoft Identity platform `logout` uç noktası, uygulamanıza kayıtlı **oturum kapatma URL** 'sini çağıracaktır. Bu çağrı, oturum kapatma Web uygulamanızdan veya başka bir Web uygulamasından ya da tarayıcıdan başlatılmışsa oluşur. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](v2-protocols-oidc.md#single-sign-out).
+Uygulamanıza önceden kaydolduğunuz oturum kapatma URL 'SI, çoklu oturum kapatma uygulamanıza olanak sağlar. Microsoft Identity platform `logout` uç noktası, oturum kapatma URL 'nizi çağırır. Bu çağrı, Web uygulamanızdan veya başka bir Web uygulamasından ya da tarayıcıdan oturum kapatma işlemi başlatıldığında gerçekleşir. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](v2-protocols-oidc.md#single-sign-out).
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -48,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -61,19 +61,19 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-RemoveAccountAsync kodu, [Microsoft. Identity. Web/Tokenalımı. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288)' den edinilebilir.
+`RemoveAccountAsync` için kod [Microsoft. Identity. Web/Tokenalımı. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288)' den kullanılabilir.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET örneği genel oturum kapatma sırasında önbellekten hesap kaldırmaz
+ASP.NET örneği genel oturum kapatma üzerindeki önbellekten hesapları kaldırmaz.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Java örneği genel oturum kapatma sırasında önbellekten hesap kaldırmaz
+Java örneği, genel oturum kapatma üzerindeki önbellekten hesapları kaldırmaz.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python örneği genel oturum kapatma sırasında önbellekten hesap kaldırmaz
+Python örneği genel oturum kapatma üzerindeki önbellekten hesapları kaldırmaz.
 
 ---
 
@@ -82,21 +82,21 @@ Python örneği genel oturum kapatma sırasında önbellekten hesap kaldırmaz
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Web uygulaması için bir belirteç alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+> [Web uygulaması için belirteç alma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [Web uygulaması için bir belirteç alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+> [Web uygulaması için belirteç alma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Web uygulaması için bir belirteç alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+> [Web uygulaması için belirteç alma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Web uygulaması için bir belirteç alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+> [Web uygulaması için belirteç alma](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
 
 ---
