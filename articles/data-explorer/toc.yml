@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: Kavramlar
   items:
-    - name: Veri almaya genel bakış
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: Veri alımı
+      items:
+        - name: Veri almaya genel bakış
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: Veri görselleştirmeye genel bakış
       href: viz-overview.md
     - name: Güvenliğe genel bakış
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: Akış alımı
           href: ingest-data-streaming.md
+        - name: SDK'ları kullanma
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET Standard SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET Standard SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: Azure Data Factory kullanarak veri kopyalama
-          href: data-factory-load-data.md
+        - name: JSON biçimli veriler
+          href: ingest-json-formats.md
     - name: Verileri sorgulama
       items:
         - name: Sorgu yazma
@@ -204,6 +208,8 @@
           items:
             - name: Data Factory ile tümleştirme
               href: data-factory-integration.md
+            - name: Azure Data Factory kullanarak veri kopyalama
+              href: data-factory-load-data.md
             - name: Azure Data Factory kullanarak toplu veri kopyalama
               href: data-factory-template.md
             - name: Azure Data Factory kullanarak denetim komutlarını çalıştırma

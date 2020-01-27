@@ -2,8 +2,10 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Backup nedir?
+    - name: Azure Backup’a genel bakış
       href: backup-overview.md
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -44,12 +46,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Yedeklenmiş SAP HANA veritabanlarını yönetme - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: Örnekler
-  items:
-    - name: Azure PowerShell
-      href: powershell-backup-samples.md
-    - name: Resource Manager şablonları
-      href: backup-rm-template-samples.md
 - name: Kavramlar
   items:
     - name: Destek matrisleri
@@ -66,16 +62,6 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure İlkesi için desteklenen VM SKU’ları
           href: backup-azure-policy-supported-skus.md
-    - name: Güvenlik
-      items:
-        - name: Rol Tabanlı Access Control
-          href: backup-rbac-rs-vault.md
-        - name: Bulut iş yükleri için güvenlik
-          href: backup-azure-security-feature-cloud.md
-        - name: Karma yedeklemeler için güvenlik
-          href: backup-azure-security-feature.md
-        - name: Yerleşik güvenlik denetimleri
-          href: backup-security-controls.md
     - name: Sık sorulan sorular (SSS)
       items:
         - name: SSS-Kurtarma Hizmetleri kasası
@@ -96,15 +82,113 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Backup mimarisi
       href: backup-architecture.md
-    - name: Çevrimdışı yedeklemeyi yapılandırma
-      href: backup-azure-backup-import-export.md
-    - name: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
-      href: backup-azure-backup-server-import-export-.md
-    - name: Bant kitaplığınızı değiştirme
-      href: backup-azure-backup-cloud-as-tape.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure Backup Sunucusu
+    - name: Kurtarma Hizmetleri kasası
+      items:
+        - name: Genel Bakış
+          href: backup-azure-recovery-services-vault-overview.md
+        - name: Oluştur
+          href: backup-create-rs-vault.md
+        - name: Sil
+          href: backup-azure-delete-vault.md
+        - name: Taşı
+          href: backup-azure-move-recovery-services-vault.md
+        - name: Yönetme
+          href: backup-azure-manage-windows-server.md
+    - name: Azure VM yedeklemesi
+      items:
+        - name: Genel Bakış
+          href: backup-azure-vms-introduction.md
+        - name: Backup
+          items:
+            - name: Azure Backup Anında Geri Yükleme ile Azure VM’lerini yedekleme ve geri yükleme
+              href: backup-instant-restore-capability.md
+            - name: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
+              href: backup-during-vm-creation.md
+            - name: Azure VM’sini VM ayarlarından yedekleme
+              href: backup-azure-vms-first-look-arm.md
+            - name: Azure VM’leri için kasa ayarlama ve yedeklemeyi etkinleştirme
+              href: backup-azure-arm-vms-prepare.md
+            - name: Şifrelenmiş Azure VM'lerini yedekleme
+              href: backup-azure-vms-encryption.md
+            - name: Linux çalıştıran Azure VM’lerinde uygulamayla tutarlı yedeklemeler yapılandırma
+              href: backup-azure-linux-app-consistent.md
+        - name: Geri Yükleme
+          items:
+            - name: Portalda Azure VM’lerini geri yükleme
+              href: backup-azure-arm-restore-vms.md
+            - name: Azure VM yedeklerinden dosya kurtarma
+              href: backup-azure-restore-files-from-vm.md
+            - name: Şifrelenmiş VM’leri geri yükleme
+              href: backup-azure-vms-encryption.md
+            - name: Şifrelenmiş VM’ler için anahtarları ve gizli dizileri geri yükleme
+              href: backup-azure-restore-key-secret.md
+        - name: Yönetme
+          items:
+            - name: Azure VM yedeklemelerini yönetme
+              href: backup-azure-manage-vms.md
+    - name: Azure VM yedeklemesinde SQL Server veritabanı
+      items:
+        - name: Genel Bakış
+          href: backup-azure-sql-database.md
+        - name: Backup
+          href: backup-sql-server-database-azure-vms.md
+        - name: Geri Yükleme
+          href: restore-sql-database-azure-vm.md
+        - name: Yönetme
+          href: manage-monitor-sql-database-backup.md
+    - name: MARS aracısı kullanarak Windows’u yedekleme
+      items:
+        - name: Genel Bakış
+          href: backup-azure-about-mars.md
+        - name: Backup
+          items:
+            - name: Windows Server dosya ve klasörlerini yedekleme
+              href: backup-configure-vault.md
+            - name: Windows Server Sistem Durumunu yedekleme
+              href: backup-azure-system-state.md
+        - name: Geri Yükleme
+          items:
+            - name: Azure’dan Windows Server’a dosya kurtarma
+              href: backup-azure-restore-windows-server.md
+            - name: Windows Server Sistem Durumunu geri yükleme
+              href: backup-azure-restore-system-state.md
+        - name: Yönetme
+          href: backup-azure-manage-mars.md
+    - name: Azure Dosya paylaşımı yedekleme
+      items:
+        - name: Azure portalından
+          items:
+            - name: Backup
+              href: backup-afs.md
+            - name: Geri Yükleme
+              href: restore-afs.md
+            - name: Yönetme
+              href: manage-afs-backup.md
+        - name: Azure CLI ile
+          items:
+            - name: Backup
+              href: backup-afs-cli.md
+            - name: Geri Yükleme
+              href: restore-afs-cli.md
+            - name: Yönetme
+              href: manage-afs-backup-cli.md
+        - name: PowerShell ile
+          items:
+            - name: Backup
+              href: backup-azure-afs-automation.md
+    - name: Azure VM yedeklemesinde SAP HANA veritabanı
+      items:
+        - name: Genel Bakış
+          href: sap-hana-db-about.md
+        - name: Backup
+          href: backup-azure-sap-hana-database.md
+        - name: Geri Yükleme
+          href: sap-hana-db-restore.md
+        - name: Yönetme
+          href: sap-hana-db-manage.md
+    - name: Azure Backup Sunucusu (MABS)
       items:
         - name: Azure Backup Sunucusu koruma matrisi
           href: backup-mabs-protection-matrix.md
@@ -148,79 +232,7 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: SQL Server veritabanını koruma
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure Dosya paylaşımı yedekleme
-      items:
-        - name: Azure portalından
-          items:
-            - name: Azure Dosya paylaşımlarını yedekleme
-              href: backup-afs.md
-            - name: Azure Dosya paylaşımlarını geri yükleme
-              href: restore-afs.md
-            - name: Azure Dosya paylaşımı yedeklemelerini yönetme
-              href: manage-afs-backup.md
-        - name: Azure CLI ile
-          items:
-            - name: CLI ile Azure Dosya paylaşımlarını yedekleme
-              href: backup-afs-cli.md
-            - name: CLI ile Azure Dosya paylaşımlarını geri yükleme
-              href: restore-afs-cli.md
-            - name: CLI ile Azure Dosya paylaşımı yedeklemelerini yönetme
-              href: manage-afs-backup-cli.md
-        - name: PowerShell ile
-          items:
-            - name: PowerShell ile Azure Dosya paylaşımı yedekleme
-              href: backup-azure-afs-automation.md
-    - name: Azure VM'lerini yedekleme
-      items:
-        - name: Azure VM yedeklemesi hakkında
-          href: backup-azure-vms-introduction.md
-        - name: Azure Backup Anında Geri Yükleme ile Azure VM’lerini yedekleme ve geri yükleme
-          href: backup-instant-restore-capability.md
-        - name: Azure VM'lerini yedekleme
-          items:
-            - name: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
-              href: backup-during-vm-creation.md
-            - name: Azure VM’sini VM ayarlarından yedekleme
-              href: backup-azure-vms-first-look-arm.md
-            - name: Azure VM’leri için kasa ayarlama ve yedeklemeyi etkinleştirme
-              href: backup-azure-arm-vms-prepare.md
-            - name: Şifrelenmiş Azure VM'lerini yedekleme
-              href: backup-azure-vms-encryption.md
-            - name: Linux çalıştıran Azure VM’lerinde uygulamayla tutarlı yedeklemeler yapılandırma
-              href: backup-azure-linux-app-consistent.md
-        - name: Azure VM yedeklemelerini yönetme ve izleme
-          items:
-            - name: Azure VM yedeklemelerini yönetme
-              href: backup-azure-manage-vms.md
-        - name: Azure VM'lerini geri yükleme
-          items:
-            - name: Portalda Azure VM’lerini geri yükleme
-              href: backup-azure-arm-restore-vms.md
-            - name: Azure VM yedeklerinden dosya kurtarma
-              href: backup-azure-restore-files-from-vm.md
-            - name: Şifrelenmiş VM’leri geri yükleme
-              href: backup-azure-vms-encryption.md
-            - name: Şifrelenmiş VM’ler için anahtarları ve gizli dizileri geri yükleme
-              href: backup-azure-restore-key-secret.md
-    - name: Azure Backup için yerleşik Azure İlkesi
-      items:
-        - name: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
-          href: backup-azure-auto-enable-backup.md
-    - name: Kurtarma Hizmetleri Kasaları için Tanılama Olayları
-      items:
-        - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
-          href: backup-azure-diagnostic-events.md
-        - name: Kaynağa Özgü Tanılama Olayları için Log Analytics Veri Modeli
-          href: backup-azure-log-analytics-new-data-model.md
-    - name: Azure Backup raporlarını yapılandırma
-      items:
-        - name: Azure Backup raporlarını yapılandırma
-          href: backup-azure-configure-reports.md
-        - name: Azure Backup raporları için veri modeli
-          href: backup-azure-reports-data-model.md
-        - name: Azure Backup için Log Analytics veri modeli
-          href: backup-azure-log-analytics-data-model.md
-    - name: Data Protection Manager
+    - name: Data Protection Manager (DPM)
       items:
         - name: Azure portalında DPM iş yükleri hazırlama
           href: backup-azure-dpm-introduction.md
@@ -232,76 +244,80 @@
           href: backup-azure-backup-sql.md
         - name: SharePoint grubunu yedeklemek için DPM'yi kullanma
           href: backup-azure-backup-sharepoint.md
-    - name: Azure PowerShell kullanma
+        - name: Bant kitaplığınızı değiştirme
+          href: backup-azure-backup-cloud-as-tape.md
+    - name: Çevrimdışı yedekleme
       items:
-        - name: Azure portalındaki Azure VM’leri
-          href: backup-azure-vms-automation.md
-        - name: Azure portalındaki DPM
-          href: backup-dpm-automation.md
-        - name: Azure portalındaki Windows Server
-          href: backup-client-automation.md
-        - name: Azure VM yedeklemelerindeki SQL
-          href: backup-azure-sql-automation.md
-    - name: Azure Backup REST API'sini kullanma
+        - name: Çevrimdışı yedeklemeyi yapılandırma
+          href: backup-azure-backup-import-export.md
+        - name: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
+          href: backup-azure-backup-server-import-export-.md
+    - name: İzleme ve Uyarılar
       items:
-        - name: Kurtarma Hizmetleri kasası oluşturma
-          href: backup-azure-arm-userestapi-createorupdatevault.md
-        - name: Kurtarma Hizmetleri kasası yapılandırmalarını güncelleştirme
-          href: use-restapi-update-vault-properties.md
-        - name: Yedekleme ilkesini oluşturma ve güncelleştirme
-          href: backup-azure-arm-userestapi-createorupdatepolicy.md
-        - name: Azure VM'lerini yedekleme
-          href: backup-azure-arm-userestapi-backupazurevms.md
-        - name: Azure VM'lerini geri yükleme
-          href: backup-azure-arm-userestapi-restoreazurevms.md
-        - name: Azure Backup işlerini yönetme
-          href: backup-azure-arm-userestapi-managejobs.md
-    - name: Azure VM’lerindeki SQL Server veritabanlarını yedekleme
+        - name: Azure portalını kullanma
+          href: backup-azure-monitoring-built-in-monitor.md
+        - name: Azure İzleyici’yi kullanma
+          href: backup-azure-monitoring-use-azuremonitor.md
+    - name: Raporlar
       items:
-        - name: Azure VM'lerindeki SQL Server Backup hakkında
-          href: backup-azure-sql-database.md
-        - name: Azure VM’lerinde SQL Server veritabanlarını yedekleme
-          href: backup-sql-server-database-azure-vms.md
-        - name: Azure VM’lerinde SQL Server veritabanlarını geri yükleme
-          href: restore-sql-database-azure-vm.md
-        - name: Yedeklenmiş SQL Server veritabanlarını yönetme
-          href: manage-monitor-sql-database-backup.md
-    - name: Azure VM’lerindeki SAP HANA veritabanları
+        - name: Azure Backup raporlarını yapılandırma
+          items:
+            - name: Azure Backup raporlarını yapılandırma
+              href: backup-azure-configure-reports.md
+            - name: Azure Backup raporları için veri modeli
+              href: backup-azure-reports-data-model.md
+            - name: Azure Backup için Log Analytics veri modeli
+              href: backup-azure-log-analytics-data-model.md
+        - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını yapılandırma
+          items:
+            - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma
+              href: backup-azure-diagnostic-events.md
+            - name: Kaynağa Özgü Tanılama Olayları için Log Analytics Veri Modeli
+              href: backup-azure-log-analytics-new-data-model.md
+    - name: Otomasyon
       items:
-        - name: Azure VM’lerinde SAP HANA Yedeklemesi hakkında
-          href: sap-hana-db-about.md
-        - name: Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
-          href: backup-azure-sap-hana-database.md
-        - name: Azure VM’lerindeki SAP HANA veritabanlarını geri yükleme
-          href: sap-hana-db-restore.md
-        - name: Yedeklenmiş SAP HANA veritabanlarını yönetme
-          href: sap-hana-db-manage.md
-    - name: Windows Server
+        - name: Azure Backup için yerleşik Azure İlkesi
+          items:
+            - name: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
+              href: backup-azure-auto-enable-backup.md
+        - name: PowerShell
+          items:
+            - name: Azure portalındaki Azure VM’leri
+              href: backup-azure-vms-automation.md
+            - name: Azure portalındaki DPM
+              href: backup-dpm-automation.md
+            - name: Azure portalındaki Windows Server
+              href: backup-client-automation.md
+            - name: Azure VM yedeklemelerindeki SQL
+              href: backup-azure-sql-automation.md
+            - name: Azure PowerShell Örnekleri
+              href: powershell-backup-samples.md
+        - name: Azure Backup REST API'sini kullanma
+          items:
+            - name: Kurtarma Hizmetleri kasası oluşturma
+              href: backup-azure-arm-userestapi-createorupdatevault.md
+            - name: Kurtarma Hizmetleri kasası yapılandırmalarını güncelleştirme
+              href: use-restapi-update-vault-properties.md
+            - name: Yedekleme ilkesini oluşturma ve güncelleştirme
+              href: backup-azure-arm-userestapi-createorupdatepolicy.md
+            - name: Azure VM'lerini yedekleme
+              href: backup-azure-arm-userestapi-backupazurevms.md
+            - name: Azure VM'lerini geri yükleme
+              href: backup-azure-arm-userestapi-restoreazurevms.md
+            - name: Azure Backup işlerini yönetme
+              href: backup-azure-arm-userestapi-managejobs.md
+        - name: Resource Manager şablonları
+          href: backup-rm-template-samples.md
+    - name: Güvenlik
       items:
-        - name: MARS aracısı hakkında
-          href: backup-azure-about-mars.md
-        - name: Windows Server dosya ve klasörlerini yedekleme
-          href: backup-configure-vault.md
-        - name: Windows Server Sistem Durumunu yedekleme
-          href: backup-azure-system-state.md
-        - name: Azure’dan Windows Server’a dosya kurtarma
-          href: backup-azure-restore-windows-server.md
-        - name: Windows Server Sistem Durumunu geri yükleme
-          href: backup-azure-restore-system-state.md
-        - name: Windows Server dosya ve klasörleri yedeklemesini yönetme
-          href: backup-azure-manage-mars.md
-    - name: Kurtarma Hizmetleri kasası
-      items:
-        - name: Kurtarma Hizmetleri kasalarına genel bakış
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Kurtarma Hizmetleri kasası oluşturma
-          href: backup-create-rs-vault.md
-        - name: Kurtarma Hizmetleri kasasını silme
-          href: backup-azure-delete-vault.md
-        - name: Kurtarma Hizmetleri kasasını taşıma
-          href: backup-azure-move-recovery-services-vault.md
-        - name: Kurtarma Hizmetleri kasalarını izleme ve yönetme
-          href: backup-azure-manage-windows-server.md
+        - name: Rol Tabanlı Access Control
+          href: backup-rbac-rs-vault.md
+        - name: Bulut iş yükleri için güvenlik
+          href: backup-azure-security-feature-cloud.md
+        - name: Karma yedeklemeler için güvenlik
+          href: backup-azure-security-feature.md
+        - name: Yerleşik güvenlik denetimleri
+          href: backup-security-controls.md
     - name: Sorun giderme
       items:
         - name: Azure VM
@@ -324,12 +340,6 @@
           href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Sistem Durumu
           href: backup-azure-system-state-troubleshoot.md
-    - name: Azure Backup iş yüklerini izleme
-      items:
-        - name: Azure portalını kullanma
-          href: backup-azure-monitoring-built-in-monitor.md
-        - name: Azure İzleyici’yi kullanma
-          href: backup-azure-monitoring-use-azuremonitor.md
 - name: Başvuru
   items:
     - name: .NET
@@ -350,8 +360,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN forumu
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/backup/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Hizmet güncelleştirmeleri

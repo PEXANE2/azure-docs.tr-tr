@@ -619,18 +619,6 @@
       items:
         - name: Databricks ile verileri çözümleme
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Blobları kod olmadan yönetme
-          items:
-            - name: PowerShell
-              href: storage-quickstart-blobs-powershell.md
-            - name: CLI
-              href: storage-quickstart-blobs-cli.md
-        - name: Bloblarla geliştirme
-          items:
-            - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
-            - name: Python
-              href: storage-quickstart-blobs-python.md
     - name: Öğreticiler
       items:
         - name: 'Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme'
@@ -657,36 +645,12 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: En iyi uygulamalar
           href: data-lake-storage-best-practices.md
-        - name: Erişim katmanları
-          items:
-            - name: Erişim katmanları
-              href: storage-blob-storage-tiers.md
-            - name: Azure Blob Depolama Yaşam Döngüsünü yönetme
-              href: storage-lifecycle-management-concepts.md
-        - name: Güvenlik
-          items:
-            - name: Depolama güvenliğine genel bakış
-              href: ../blobs/security-recommendations.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Erişim denetimi
-              href: data-lake-storage-access-control.md
-        - name: Günlüğe kaydetme
-          items:
-            - name: Depolama analizi
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Depolama analizi günlükleri
-              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Olay işleme
-          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Erişim denetimi (dizinler ve dosyalar)
+          href: data-lake-storage-access-control.md
     - name: Nasıl yapılır
       items:
-        - name: Depolama hesapları oluşturma ve yönetme
-          items:
-            - name: Data Lake’iniz için depolama hesabı oluşturma
-              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Depolama Gezgini ile verileri yönetme
-              href: ../blobs/data-lake-storage-explorer.md
-            - name: Depolama hesabını yükseltme
-              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Data Lake’iniz için depolama hesabı oluşturma
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Dizin, dosya ve ACL’leri yönetme'
           items:
             - name: .NET
@@ -700,43 +664,7 @@
             - name: CLI
               href: data-lake-storage-directory-file-acl-cli.md
             - name: Depolama Gezgini
-              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Veri aktarma
-          items:
-            - name: AzCopy
-              items:
-                - name: başlarken
-                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Data Lake Storage 2. Nesil ile kullanma
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Yapılandırma, iyileştirme, sorun giderme'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Distcp'yi kullanma
-              href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Data Factory'yi kullanma
-              href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Verilerin güvenliğini sağlama
-          items:
-            - name: Güvenlik duvarlarını ve sanal ağları yapılandırma
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Müşteri tarafından yönetilen anahtarları hizmet şifrelemesi için yapılandırma
-              items:
-                - name: Portal
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: RBAC ile erişim haklarını yönetme
-              items:
-                - name: Portal
-                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Dosya ve dizin düzeyinde izinler ayarlama
-              href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+              href: data-lake-storage-explorer.md
         - name: Performansı iyileştirme
           items:
             - name: Genel Bakış
@@ -761,43 +689,16 @@
           href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Başvuru
       items:
-        - name: PowerShell
-          href: /powershell/module/azure.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
         - name: .NET
-          items:
-            - name: Bloblar (sürüm 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: Veri Taşıma
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Depolama Kaynak Sağlayıcısı
-              href: /dotnet/api/overview/azure/storage/management
+          href: /dotnet/api/azure.storage.files.datalake
         - name: Java
-          items:
-            - name: Bloblar (sürüm 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: Bloblar (sürüm 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: Depolama Kaynak Sağlayıcısı
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (sürüm 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (sürümü 12.x)
-          href: /python/api/azure-storage-blob/
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+        - name: Python
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
+        - name: Javascript
+          href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
-          items:
-            - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'
-              href: /rest/api/storageservices
-            - name: Data Lake Storage Gen2
-              href: /rest/api/storageservices/data-lake-storage-gen2
-            - name: Kaynak sağlayıcısı
-              href: /rest/api/storagerp
-            - name: İçeri/Dışarı Aktarma
-              href: /rest/api/storageimportexport
-        - name: Resource Manager şablonu
-          displayName: ARM
-          href: /azure/templates/microsoft.storage/allversions
+          href: /rest/api/storageservices/data-lake-storage-gen2
     - name: Kaynaklar
       items:
         - name: Bilinen sorunlar

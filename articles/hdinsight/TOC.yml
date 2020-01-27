@@ -501,6 +501,8 @@
               href: ./hadoop/apache-ambari-troubleshoot-fivezerotwo-error.md
             - name: Apache Ambari ana bilgisayarları ve hizmetleri yavaşlatıyor
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
+            - name: Apache Ambari eski uyarıları
+              href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
             - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS sorunlarını giderme
@@ -509,6 +511,8 @@
               href: ./hdinsight-troubleshoot-yarn.md
             - name: Data Lake Store dosyalarında sorun giderme
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
+            - name: Apache Ambari dizin uyarıları
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
 - name: Apache Kafka
   items:
     - name: Genel Bakış

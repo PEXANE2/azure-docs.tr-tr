@@ -1,56 +1,118 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: İzleme ve ayarlama
+### YamlMime:Landing
+title: Azure SQL Veritabanı izleme ve performans ayarlama
+summary: Azure SQL Veritabanı, veritabanınızı izlemek ve performansını iyileştirmek üzere ölçüm ve tanılama bilgisi toplamanıza yardımcı olacak araçlar sağlar.
 metadata:
-  title: Azure SQL Veritabanı - Veritabanı performansını izleme ve ayarlama
-  meta.description: Learn how to monitor and tune your Azure SQL database.
-  services: sql-database
-  ms.subservice: performance
-  author: jovanpop-msft
-  manager: craigg
+  title: Azure SQL Veritabanı izleme ve performans ayarlama belgeleri
+  description: Azure SQL Veritabanı, veritabanınızı izlemek ve performansını iyileştirmek üzere ölçüm ve tanılama bilgisi toplamanıza yardımcı olacak araçlar sağlar.
   ms.service: sql-database
-  ms.tgt_pltfrm: na
-  ms.devlang: null
-  ms.topic: overview
-  ms.date: 02/08/2019
-  ms.author: jovanpop
-sections:
-  - items:
-      - type: paragraph
-        text: 'Azure SQL Veritabanı, veritabanı iş yükünüzü kolayca izlemenize ve ayarlamanıza olanak tanır.'
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - title: Sorgu Performansı İçgörüleri
-            href: /azure/sql-database/sql-database-query-performance
-            html: <p>Azure portalındaki yerleşik izleme özelliklerini kullanarak Azure SQL veritabanınızdaki (tek veya havuza alınan veritabanı) kaynak kullanımını kolayca izleyin.</p>
-          - title: Azure SQL Analytics
-            href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json'
-            html: '<p>Azure SQL Analytics izleme, büyük bir veritabanı filosunu, elastik havuzları ve örnekleri tek bir bölmeden izlemenize olanak tanır.</p>'
-          - title: Otomatik ayarlama
-            href: /azure/sql-database/sql-database-automatic-tuning
-            html: '<p>Otomatik ayarlama, performansı geliştirmek amacıyla sorgu planı sorunları için otomatik çözüm önerir ve bu sorunları çözer, dizinleri oluşturur ve bırakır.</p>'
-          - title: Akıllı Performans İçgörüleri
-            href: /azure/sql-database/sql-database-intelligent-insights
-            html: <p>Azure SQL Veritabanı’ndaki yerleşik zeka veritabanlarınızın performansını olumsuz etkileyen aksatıcı olayları algılar ve uygulanması mümkün olduğunda azaltma önerileri sağlar.</p>
-          - title: Performans önerileri
-            href: /azure/sql-database/sql-database-advisor
-            html: '<p>Azure SQL Veritabanı, Azure portalındaki veritabanınızı iyileştirmenize yardımcı olan öneriler sağlar.</p>'
-          - title: Ölçümler ve günlüğe kaydetme
-            href: /azure/sql-database/sql-database-metrics-diag-logging
-            html: '<p>Özel tümleştirmeler için veritabanı tanılama telemetrilerinizi Azure SQL Analytics’e, Azure Event Hubs’a veya Azure Blob depolamaya akışla aktarın.</p>'
-  - title: Diğer kaynaklar
-    items:
-      - type: paragraph
-        text: Veritabanınızın performansını iyileştirmeye yardımcı olabilecek ek özellikler hakkında bilgi edinin.
-      - type: list
-        style: unordered
-        items:
-          - html: Azure SQL Veritabanında <a href="sql-database-monitor-tune-overview.md">izleme ve ayarlama</a> hakkında daha fazla bilgi edinin.
-          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">Akıllı sorgu işleme</a> özelliğinin veritabanınızın performansını nasıl iyileştirebileceğini öğrenin.'
-          - html: Sorgu performansına ilişkin gerçek zamanlı içgörü edinmenize olanak tanıyan temel SQL Server teknolojisi olan <a href="sql-database-operate-query-store.md">Query Store</a>’u ayarlayıp çalıştırın.
-          - html: İş yükünüzün performansını analiz etmek için <a href="sql-database-operate-query-store.md">Dinamik Yönetim Görünümleri</a>’ni kullanmayı öğrenin.
-          - html: <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a> ile veritabanı etkinliklerini izlemeyi öğrenin.
-          - html: <a href="sql-database-performance-guidance.md">Veritabanınızı el ile ayarlamayı</a> öğrenin.
+  ms.subservice: performance
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 01/25/2020
+  ms.openlocfilehash: 9ef3980b61f60deaa929c932cecc093a82025cbd
+  ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/26/2020
+  ms.locfileid: "76756632"
+landingContent:
+- title: İzleme ve performans ayarlama hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: İzleme ve performans ayarlama
+      url: sql-database-monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Microsoft Azure Veritabanı İzleme Playbook
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Ölçümleri ve günlükleri toplama
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ölçümler ve tanılama günlükleri
+      url: sql-database-metrics-diag-logging.md
+    - text: Performans tanılama günlüğünü anlama
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
+- title: Kaynak sınırları
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tek veritabanı sanal çekirdek kaynak sınırları
+      url: sql-database-vcore-resource-limits-single-databases.md
+    - text: Tek veritabanı DTU kaynak sınırları
+      url: sql-database-dtu-resource-limits-single-databases.md
+    - text: Elastik havuz sanal çekirdek kaynak sınırları
+      url: sql-database-vcore-resource-limits-elastic-pools.md
+    - text: Elastik havuz DTU kaynak sınırları
+      url: sql-database-dtu-resource-limits-elastic-pools.md
+    - text: Yönetilen örnek kaynak sınırları
+      url: sql-database-managed-instance-resource-limits.md
+    - text: Yönetilen örnek havuzları kaynak sınırları
+      url: sql-database-instance-pools.md#instance-pools-resource-limitations
+- title: Başlarken - Azure portal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Yapay Zeka kullanarak izleme ve ayarlama
+      url: sql-database-performance.md
+  - linkListType: concept
+    links:
+    - text: SQL Veritabanı Danışmanı performansı ayarlama önerileri
+      url: sql-database-advisor.md
+    - text: Sorgu Performansı İçgörüleri
+      url: sql-database-query-performance.md
+    - text: Azure SQL Analytics
+      url: ../azure-monitor/insights/azure-sql.md
+    - text: Intelligent Insights
+      url: sql-database-intelligent-insights.md
+    - text: Algılanabilir performans desenleri
+      url: sql-database-intelligent-insights-troubleshoot-performance.md
+    - text: Otomatik ayarlama
+      url: sql-database-automatic-tuning.md
+  - linkListType: video
+    links:
+    - text: Intelligent Insights
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+    - text: Otomatik ayarlama
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: El ile performans ayarlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: El ile performans ayarlama kılavuzu
+      url: sql-database-performance-guidance.md
+  - linkListType: concept
+    links:
+    - text: Query Store'u kullanma
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: DMV’leri kullanma
+      url: sql-database-monitoring-with-dmvs.md
+    - text: Genişletilmiş olayları kullanma
+      url: sql-database-xevent-db-diff-from-svr.md
+    - text: Hiper ölçek performans tanılama
+      url: sql-database-hyperscale-performance-diagnostics.md
+    - text: Akıllı sorgu işleme
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
+- title: Kaynak ölçeklendirme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kaynakları dinamik olarak ölçeklendirme
+      url: sql-database-scale-resources.md
+  - linkListType: concept
+    links:
+    - text: Tek veritabanı kaynaklarını ölçeklendirme
+      url: sql-database-single-database-scale.md
+    - text: Elastik havuz kaynaklarını ölçeklendirme
+      url: sql-database-elastic-pool-scale.md
+    - text: Yönetilen örnek kaynaklarını ölçeklendirme
+      url: sql-database-managed-instance.md#managed-instance-management-operations
+    - text: Okuma amaçlı ölçeği genişletme
+      url: sql-database-read-scale-out.md
+  - linkListType: video
+    links:
+    - text: Dinamik ölçeklenebilirlik
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player
