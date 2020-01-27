@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972138"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714643"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -40,13 +40,13 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
     * [Gelişmiş ayarlar](#advanced-settings)
     * [Redsıs Danışmanı için Azure önbelleği](#azure-cache-for-redis-advisor)
     * [Ölçeklendirme](#scale)
-    * [Redsıs kümesi boyutu](#cluster-size)
-    * [Redis veri kalıcılığı](#redis-data-persistence)
+    * [Küme boyutu](#cluster-size)
+    * [Veri kalıcılığı](#redis-data-persistence)
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
     * [Coğrafi çoğaltma](#geo-replication)
     * [Sanal Ağ](#virtual-network)
     * [Güvenlik duvarı](#firewall)
-    * [Özellikler](#properties)
+    * [Özelliklerinin](#properties)
     * [Kaynaktaki](#locks)
     * [Otomasyon betiği](#automation-script)
 * Yönetim
@@ -70,7 +70,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 Önbelleğiniz üzerinde gerçekleştirilen eylemleri görüntülemek için **etkinlik günlüğü** ' ne tıklayın. Bu görünümü diğer kaynakları içerecek şekilde genişletmek için filtrelemeyi de kullanabilirsiniz. Denetim günlükleriyle çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/management/view-activity-logs.md). Redsıs olayları için Azure önbelleğini izleme hakkında daha fazla bilgi için bkz. [işlemler ve uyarılar](cache-how-to-monitor.md#operations-and-alerts).
 
-### <a name="access-control-iam"></a>Erişim denetimi (IAM)
+### <a name="access-control-iam"></a>Erişim denetimi (ıAM)
 
 **Erişim denetimi (IAM)** bölümü Azure Portal rol tabanlı erişim denetımı (RBAC) için destek sağlar. Bu yapılandırma, kuruluşların erişim yönetimi gereksinimlerini yalnızca ve tam olarak karşıladığından yardımcı olur. Daha fazla bilgi için [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/role-assignments-portal.md)bölümüne bakın.
 
@@ -92,13 +92,13 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Gelişmiş ayarlar](#advanced-settings)
 * [Redsıs Danışmanı için Azure önbelleği](#azure-cache-for-redis-advisor)
 * [Ölçeklendirme](#scale)
-* [Redsıs kümesi boyutu](#cluster-size)
-* [Redis veri kalıcılığı](#redis-data-persistence)
+* [Küme boyutu](#cluster-size)
+* [Veri kalıcılığı](#redis-data-persistence)
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
 * [Coğrafi çoğaltma](#geo-replication)
 * [Sanal Ağ](#virtual-network)
 * [Güvenlik duvarı](#firewall)
-* [Özellikler](#properties)
+* [Özelliklerinin](#properties)
 * [Kaynaktaki](#locks)
 * [Otomasyon betiği](#automation-script)
 
@@ -201,14 +201,9 @@ Her fiyatlandırma katmanı, istemci bağlantıları, bellek ve bant genişliği
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Redsıs kümesi boyutu
-Kümeleme etkin olan çalışan bir Premium önbelleğin küme boyutunu değiştirmek için **(Önizleme) Reddir kümesi boyutu** ' na tıklayın.
+Kümeleme etkin olan çalışan bir Premium önbelleğin küme boyutunu değiştirmek için **küme boyutu** ' na tıklayın.
 
-> [!NOTE]
-> Redsıs Premium katmanının Azure önbelleğinin genel kullanıma sunulduğuna karşın, Redsıs küme boyutu özelliği şu anda önizlemededir.
->
->
-
-![Redsıs kümesi boyutu](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Küme boyutu](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 Küme boyutunu değiştirmek için kaydırıcıyı kullanın veya parça **sayısı** metin kutusunda 1 ile 10 arasında bir sayı yazın ve kaydetmek için **Tamam** ' a tıklayın.
 
@@ -219,7 +214,7 @@ Küme boyutunu değiştirmek için kaydırıcıyı kullanın veya parça **sayı
 
 
 ### <a name="redis-data-persistence"></a>Redis veri kalıcılığı
-Premium önbelleğiniz için veri kalıcılığını etkinleştirmek, devre dışı bırakmak veya yapılandırmak üzere **redsıs veri kalıcılığı** ' na tıklayın. Redsıs için Azure önbelleği, [RDB kalıcılığı](cache-how-to-premium-persistence.md#configure-rdb-persistence) veya [AOF kalıcılığı](cache-how-to-premium-persistence.md#configure-aof-persistence)kullanarak redsıs kalıcılığı sağlar.
+Premium önbelleğiniz için veri kalıcılığını etkinleştirmek, devre dışı bırakmak veya yapılandırmak için **veri kalıcılığı** ' ne tıklayın. Redsıs için Azure önbelleği, [RDB kalıcılığı](cache-how-to-premium-persistence.md#configure-rdb-persistence) veya [AOF kalıcılığı](cache-how-to-premium-persistence.md#configure-aof-persistence)kullanarak redsıs kalıcılığı sağlar.
 
 Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
 
@@ -457,9 +452,9 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 > * BGREWRITEAOF
 > * BGSAVE
 > * KURULUMUNUN
-> * HATA AYIKLAMA
+> * H
 > * GEÇIREMEZSINIZ
-> * KAYDET
+> * Kaydet
 > * Event
 > * SLA 'lar
 > * KÜME kümesi yazma komutları devre dışı bırakıldı, ancak salt okunurdur küme komutlarına izin verilir.

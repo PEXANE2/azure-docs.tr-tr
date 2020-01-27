@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819003"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719917"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL veritabanı yönetilen örnek denetimi 'ni kullanmaya başlama
 
@@ -31,7 +31,7 @@ ms.locfileid: "73819003"
 
 Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırması açıklanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 1. Denetim günlüklerinin depolandığı bir Azure depolama **kapsayıcısı** oluşturun.
 
    1. Denetim günlüklerinizi depolamak istediğiniz Azure depolama 'ya gidin.
@@ -130,7 +130,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
      1. Seçim Azure hesabınızda oturum açın:
 
-        ![Azure'da oturum açma](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Azure'da oturum açın](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
      1. Açılır listeden bir abonelik, depolama hesabı ve BLOB kapsayıcısı seçin ya da **Oluştur**' a tıklayarak kendi kapsayıcınızı oluşturun. İşiniz bittiğinde **Tamam**' a tıklayın:
 
@@ -171,7 +171,7 @@ Yönetilen bir örnekten gelen denetim günlükleri, hatta hub 'Lara veya Azure 
 
 5. Denetim olayları için bir hedef seçin-Olay Hub 'ı, Azure Izleyici günlükleri veya her ikisi. Her bir hedef için yapılandırma gereken parametreleri (ör. Log Analytics çalışma alanı).
 
-6. **Kaydet** düğmesine tıklayın.
+6. **Save (Kaydet)** düğmesine tıklayın.
 
     ![Tanılama ayarlarını yapılandırma](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

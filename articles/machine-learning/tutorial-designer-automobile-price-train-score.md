@@ -9,19 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 917ded03892f3a8a5812948bcbfe31f029fc5cf8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314989"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720206"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden tahmine dayalı bir analiz çözümü geliştirmek ve dağıtmak için Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğreneceksiniz. 
-
-Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale sürükleyin ve bir Azure Machine Learning işlem hattı oluşturmak için bunları birbirine bağlayın.
+Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden tahmine dayalı bir analiz çözümü geliştirmek ve dağıtmak için Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğreneceksiniz.
 
 Öğreticinin birinci bölümünde şunları yapmayı öğreneceksiniz:
 
@@ -32,7 +30,7 @@ Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale 
 > * Makine öğrenimi modelini eğitme.
 > * Machine Learning modelini değerlendirin.
 
-Öğreticinin [ikinci bölümünde](tutorial-designer-automobile-price-deploy.md) , size gönderilen teknik belirtimlere göre herhangi bir arabasının fiyatını tahmin etmek için tahmine dayalı modelinizi gerçek zamanlı bir zaman aşımı noktası olarak dağıtmayı öğreneceksiniz. 
+Öğreticinin [ikinci bölümünde](tutorial-designer-automobile-price-deploy.md) , size gönderilen teknik belirtimlere göre herhangi bir arabasının fiyatını tahmin etmek için modelinizi gerçek zamanlı bir zaman aşımı uç noktası olarak dağıtırsınız. 
 
 > [!NOTE]
 >Bu öğreticinin tamamlanmış sürümü örnek bir işlem hattı olarak sunulmaktadır.
@@ -41,7 +39,9 @@ Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale 
 
 ## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
 
-Azure Machine Learning işlem hatları, birden çok, bağımlı makine öğrenimi ve veri işleme adımlarını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza yardımcı olur. Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
+Azure Machine Learning işlem hatları, birden çok makine öğrenimi ve veri işleme adımını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza olanak sağlar.
+
+Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
 
 ### <a name="create-a-new-workspace"></a>Yeni bir çalışma alanı oluşturma
 
@@ -59,7 +59,7 @@ Enterprise sürümü olan bir Azure Machine Learning çalışma alanınız varsa
 
 1. Kullanımı **kolay önceden oluşturulmuş modüller**' i seçin.
 
-1. Tuvalin en üstünde **oluşturulan** varsayılan işlem hattı adı işlem hattını seçin. Bunu anlamlı bir şekilde yeniden adlandırın. Bir örnek, *otomobil fiyat tahminiyle*bir örnektir. Adın benzersiz olması gerekmez.
+1. Tuvalin üst kısmında, varsayılan işlem hattı adı ardışık düzen- **oluşturma**' yı seçin. Bunu, *otomobil fiyat tahmini*olarak yeniden adlandırın. Adın benzersiz olması gerekmez.
 
 ## <a name="import-data"></a>Veri içeri aktarma
 
@@ -109,7 +109,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
-1. Tuvalin sağ tarafındaki Özellikler bölmesinde **parametreler** > **sütunu Düzenle**' yi seçin.
+1. Tuvalin sağındaki Özellikler bölmesinde **tüm sütunlar**' ı seçin.
 
 1. Yeni bir kural eklemek için **+** seçin.
 
@@ -120,12 +120,12 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
 
     ![Sütun dışlama](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
-        
-    Özellikler bölmesi, **normalleştirilmiş kayıplar** sütununun dışlanacağını gösterir.
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin. 
 
-1. Özellikler bölmesinde **parametreler** > **Açıklama** ' yı seçin ve *normalleştirilmiş zararları hariç tut*' u girin.
+1. Özellikler bölmesinde, **Açıklama** metin kutusunu seçin ve *normalleştirilmiş zararları hariç tut*' u girin.
+
+    İşlem hattınızı düzenlemenize yardımcı olması için grafik üzerinde açıklamalar görüntülenecektir.
 
 ### <a name="clean-missing-data"></a>Eksik verileri temizleme
 
@@ -148,31 +148,30 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 ## <a name="train-a-machine-learning-model"></a>Makine öğrenimi modelini eğitme
 
-Artık veriler işlense de, tahmine dayalı bir model eğitebilirsiniz.
-
-### <a name="select-an-algorithm"></a>Algoritmayı seçme
-
-*Sınıflandırma* ve *regresyon*, denetimli makine öğrenimi algoritmasının iki türüdür. Sınıflandırma, kırmızı, mavi veya yeşil gibi bir renk gibi tanımlı kategori kümesinden bir yanıtı tahmin eder. Bir sayıyı tahmin etmek için regresyon kullanılır.
+Artık verileri işlemek için modüller olduğuna göre, eğitim modüllerini ayarlayabilirsiniz.
 
 Bir sayı olan fiyatı tahmin etmek istediğiniz için, regresyon algoritmasını kullanabilirsiniz. Bu örnekte, doğrusal regresyon modeli kullanırsınız.
 
 ### <a name="split-the-data"></a>Verileri bölme
 
-Modeli eğitmek ve test etmek için verilerinizi iki ayrı veri kümesine ayırın.
+Verileri bölmek makine öğreniminde ortak bir görevdir. Verilerinizi iki ayrı veri kümesine bölecektir. Bir veri kümesi modeli eğitecektir ve diğeri de modelin ne kadar iyi gerçekleştirildiğini test eder.
 
-1. **Bölünmüş veri** modülünü bulmak için arama kutusuna **bölünmüş verileri** girin. **Temizleme eksik veri** modülünün sol bağlantı noktasına bağlayın.
+1. **Bölünmüş veri** modülünü bulmak için arama kutusuna **bölünmüş verileri** girin. **Eksik verileri temizleme** modülünün sol bağlantı noktasını **bölünmüş veri** modülüne bağlayın.
+
+    > [!IMPORTANT]
+    > **Eksik verileri temizlemek** için sol çıkış bağlantı noktalarında **verileri ayırmak**üzere bağlandığından emin olun. Sol bağlantı noktası, temizlenen verileri içerir. Sağ bağlantı noktası discarted verilerini içerir.
 
 1. **Bölünmüş veri** modülünü seçin.
 
 1. Özellikler bölmesinde, **ilk çıktı veri kümesindeki satır kesirini** 0,7 olarak ayarlayın.
 
-    Bu seçenek, modeli eğitmek için verilerin yüzde 70 ' unu ve test için yüzde 30 ' unu böler.
+    Bu seçenek, modeli eğitmek için verilerin yüzde 70 ' unu ve test için yüzde 30 ' unu böler. %70 veri kümesine sol çıkış bağlantı noktası üzerinden erişilebilecektir. Kalan veriler doğru çıkış bağlantı noktası üzerinden sunulacaktır.
 
 1. Özellikler bölmesi **Açıklama** kutusunda, *veri kümesini eğitim kümesi (0,7) ve test kümesi (0,3) olarak Böl*yazın.
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
-Fiyatı içeren bir veri kümesi vererek modeli eğitme. Model, verileri tarar ve bir araba oluşturmak için bir otomobil özellikleri ile fiyatı arasında bağıntıları arar.
+Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim verileri tarafından sunulan özellikler ve fiyat arasındaki ilişkiyi açıklayan bir model oluşturur.
 
 1. Öğrenme algoritmasını seçmek için modül paleti arama kutusunu temizleyin.
 
@@ -187,6 +186,9 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Model, verileri tarar v
 1. **Doğrusal regresyon** modülünün çıkışını **eğitme modeli** modülünün sol girişine bağlayın.
 
 1. **Veri ayırma** modülünün eğitim verileri çıkışını (sol bağlantı noktası), **eğitme modeli** modülünün sağ girişine bağlayın.
+    
+    > [!IMPORTANT]
+    > **Bölünmüş verilerin** sol çıkış bağlantı noktalarının **modeli eğmek**için bağlandığından emin olun. Sol bağlantı noktası eğitim kümesini içerir. Sağ bağlantı noktası, test kümesini içerir.
 
     ![Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
@@ -196,19 +198,23 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Model, verileri tarar v
 
 1. **Etiket sütunu** iletişim kutusunda, açılan menüyü genişletin ve **sütun adları**' nı seçin. 
 
-1. Metin kutusuna *Price*yazın. Fiyat, modelinizin tahmin edilecek değerdir.
+1. Metin kutusuna modelinizin tahmin edilecek değeri belirtmek için *Fiyat* girin.
 
     İşlem hatlarınız şöyle görünmelidir:
 
     ![Eğitim modeli modülü eklendikten sonra işlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Machine Learning modelini değerlendirme
+## <a name="score-a-machine-learning-model"></a>Machine Learning modeli puanı
 
 Modelinize verilerin yüzde 70 'ini kullanarak eğdikten sonra, modelinizin ne kadar iyi olduğunu görmek için bu değeri, diğer 30 ' a puan almak üzere kullanabilirsiniz.
 
 1. **Puan modeli** modülünü bulmak için arama kutusuna *puan modeli* girin. Modülü işlem hattı tuvaline sürükleyin. 
 
 1. **Eğitim modeli** modülünün çıkışını, **puan modelinin**sol giriş bağlantı noktasına bağlayın. **Veri ayırma** modülünün test verileri çıkışını (sağ bağlantı noktası), **puan modelinin**sağ giriş bağlantı noktasına bağlayın.
+
+## <a name="evaluate-a-machine-learning-model"></a>Machine Learning modelini değerlendirme
+
+Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek için **modeli değerlendir** modülünü kullanın.
 
 1. **Modeli değerlendir** modülünü bulmak için arama kutusuna *değerlendir* yazın. Modülü işlem hattı tuvaline sürükleyin. 
 
@@ -218,25 +224,29 @@ Modelinize verilerin yüzde 70 'ini kullanarak eğdikten sonra, modelinizin ne k
 
     ![İşlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
+## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
 [!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
 
-### <a name="view-results"></a>Sonuçları görüntüleme
+### <a name="view-scored-labels"></a>Puanlanmış etiketleri görüntüle
 
-Çalıştırma tamamlandıktan sonra, işlem hattı çalıştırmasının sonuçlarını görüntüleyebilirsiniz. 
+Çalıştırma tamamlandıktan sonra, işlem hattı çalıştırmasının sonuçlarını görüntüleyebilirsiniz. İlk olarak, regresyon modeli tarafından oluşturulan tahmine göz atın.
 
 1. Çıktısını görüntülemek için **puan modeli** modülünü seçin.
 
-1. Özellikler bölmesinde, **çıktılar** > **görselleştirin**' ı seçin.
+1. Özellikler bölmesinde **çıktılar** > grafik simgesi ![sonuçları görüntülemek için simge](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) Görselleştir ' i seçin.
 
     Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
     ![Puanlanmış etiket sütununu vurgulayan çıkış görselleştirmesinin ekran görüntüsü](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
+### <a name="evaluate-models"></a>Modelleri değerlendir
+
+Eğitim modelinin test veri kümesinde ne kadar iyi gerçekleştirildiğini görmek için **modeli değerlendir** ' i kullanın.
+
 1. Çıktısını görüntülemek için **modeli değerlendir** modülünü seçin.
 
-1. Özellikler bölmesinde **çıkış** > **Görselleştir**' i seçin.
+1. Özellikler bölmesinde, sonuçları görüntülemek için **> Graph** Icon ![göster ' i seçerek](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) simgesini görselleştirin.
 
 Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 

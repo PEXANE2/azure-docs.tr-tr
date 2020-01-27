@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969670"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715888"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure etkinlik günlüğünü depolamaya veya Azure Event Hubs dışarı aktarma
 
-> [!WARNING]
-> Artık, kaynak günlüklerini topladığınıza benzer bir tanılama ayarı kullanarak, etkinlik günlüğünü bir Log Analytics çalışma alanında toplayabilirsiniz. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](diagnostic-settings-legacy.md).
+> [!IMPORTANT]
+> Azure etkinlik günlüğü 'nü Azure depolama 'ya gönderme yöntemi ve Azure Event Hubs, [Tanılama ayarları](diagnostic-settings.md)olarak değiştirilmiştir. Bu makalede kullanım dışı bırakılmakta olan eski yöntem açıklanmaktadır. Bir karşılaştırma için bkz. [Azure etkinlik günlüğü koleksiyonuna güncelleştirme ve dışarı aktarma](diagnostic-settings-legacy.md) .
+
 
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure aboneliğinizde oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Etkinlik günlüğünü Azure portal görüntülemeye veya Azure Izleyici tarafından toplanan diğer verilerle çözümlenebileceği bir Log Analytics çalışma alanına kopyalamaya ek olarak, etkinlik günlüğü 'nü bir Azure depolama hesabına arşivlemek veya bir  Olay Hub 'ı.
 
@@ -72,9 +73,14 @@ Bekletme ilkeleri ayarlandıysa, ancak günlükleri bir depolama hesabında depo
 
 Azure portal **Olay Hub 'ına ver** seçeneğiyle bir günlük profili oluşturun veya düzenleyin.
 
-1. Azure portal **izleyici** menüsünde, **Olay Hub 'ına aktar**' ı seçin.
+1. Azure portal **Azure izleyici** menüsünde **etkinlik günlüğü**' nü seçin.
+3. **Tanılama ayarları**'na tıklayın.
 
-    ![Portalda dışarı aktar düğmesi](media/activity-log-export/portal-export.png)
+   ![Tanılama ayarları](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Eski deneyimin mor başlığına tıklayın.
+
+    ![Eski deneyim](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. Görüntülenen dikey pencerede şunları belirtin:
    * Dışarı aktarılacak olaylara sahip bölgeler. Etkinlik günlüğü genel (bölgesel olmayan) bir günlük olduğundan ve çoğu olayın bunlarla ilişkili bir bölgesi olmadığından, anahtar olaylarını kaçırmadığınızdan emin olmak için tüm bölgeler ' ı seçmeniz gerekir.
