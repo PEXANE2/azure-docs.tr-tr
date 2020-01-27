@@ -56,8 +56,8 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
-| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
+| Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
+| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
 | &nbsp; | Avustralya Orta | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
@@ -70,9 +70,9 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 | &nbsp; | Kore Güney | HDInsight. Koreagüney |
 | Hindistan | Orta Hindistan | HDInsight. merkezde Hindistan |
 | &nbsp; | Güney Hindistan | HDInsight. Güneydoğu |
-| Japonya | Batı Japonya | HDInsight. JapanWest |
+| Japonya | Japonya Batı | HDInsight. JapanWest |
 | Fransa | Fransa Orta| HDInsight. Francecna al |
-| UK | Birleşik Krallık, Güney | HDInsight. UKGüney |
+| UK | UK Güney | HDInsight. UKGüney |
 | Azure Devlet Kurumları | USDoD orta   | HDInsight. Usdodorta |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD Doğu | HDInsight. USDoDEast |
@@ -98,15 +98,15 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen
 | Birleşik Devletler | Doğu ABD 2 | HDInsight. EastUS2 |
 | &nbsp; | Orta ABD | HDInsight. merkezde ABD |
 | &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
-| &nbsp; | Güney Orta ABD | HDInsight. Güneydoğu ABD |
+| &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
 | &nbsp; | Doğu ABD | HDInsight. EastUS |
 | &nbsp; | Batı ABD | HDInsight. WestUS |
-| Japonya | Doğu Japonya | HDInsight. JapanEast |
+| Japonya | Japonya Doğu | HDInsight. JapanEast |
 | Avrupa | Kuzey Avrupa | HDInsight. NorthEurope |
 | &nbsp; | Batı Avrupa| HDInsight. WestEurope |
 | Asya | Doğu Asya | HDInsight. Eastasıya |
 | &nbsp; | Güneydoğu Asya | HDInsight. Güneydoğu |
-| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
+| Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
 
 #### <a name="group-2"></a>Grup 2
 

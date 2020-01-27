@@ -78,7 +78,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Fransa Orta
 - Batı Avrupa
 - Kuzey Avrupa
-- Güney Brezilya
+- Brezilya Güney
 - Birleşik Krallık Batı
 - Birleşik Krallık Güney
 - Avustralya Doğu

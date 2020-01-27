@@ -69,17 +69,17 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 * Doğu ABD
 * Doğu ABD 2
 * Batı ABD
-* Güney Orta ABD
+* Orta Güney ABD
 * Güneydoğu Asya
 * Doğu Asya
 * Kuzey Avrupa
 * Batı Avrupa
-* Birleşik Krallık, Güney
-* Birleşik Krallık, Batı
+* UK Güney
+* UK, Batı
 * Kanada Orta
 * Kanada Doğu
-* Doğu Avustralya
-* Güneydoğu Avustralya
+* Avustralya Doğu
+* Avustralya Güneydoğu
 
 ## <a name="interoperability"></a>Birlikte çalışabilirlik
 

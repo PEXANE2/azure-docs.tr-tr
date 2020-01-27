@@ -86,7 +86,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Doğu ABD 2     |     S8, S9, S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Güney Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |Batı ABD     |    S8, S9, S8v2, S9v2   |    2  |
@@ -99,7 +99,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
-|Birleşik Krallık, Güney     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|UK Güney     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Batı Avrupa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Batı Avrupa    |   S8, S9, S8v2, S9v2  |  1  |
 
@@ -107,10 +107,10 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
-|Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Doğu Avustralya     |    S8, S9, S8v2, S9v2    |    1     |
-|Güneydoğu Avustralya     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Avustralya Doğu     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Avustralya Doğu     |    S8, S9, S8v2, S9v2    |    1     |
+|Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japonya Doğu     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 

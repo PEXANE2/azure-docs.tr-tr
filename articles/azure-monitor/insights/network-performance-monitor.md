@@ -43,7 +43,7 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 
 * Orta Batı ABD
 * Orta Kuzey ABD
-* Güney Orta ABD
+* Orta Güney ABD
 * Orta ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -52,7 +52,7 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 * Güneydoğu Asya
 * Güney Doğu Avustralya
 * Avustralya Orta
-* Doğu Avustralya
+* Avustralya Doğu
 * Güney UK
 * Doğu Asya
 * Kore Orta

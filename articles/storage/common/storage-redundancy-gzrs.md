@@ -32,8 +32,8 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 - Güneydoğu Asya
 - Kuzey Avrupa
 - Batı Avrupa
-- Doğu Japonya
-- Birleşik Krallık, Güney
+- Japonya Doğu
+- UK Güney
 - ABD Doğu
 - ABD Doğu 2
 - ABD Orta

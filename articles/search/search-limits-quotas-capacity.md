@@ -76,10 +76,10 @@ Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için [REST 
 
 Portal bir belge sınırını gösteriyorsa, hizmetiniz geç 2017 ' den önce oluşturulmuştur ya da Azure Bilişsel Arama Hizmetleri 'ni barındırmak için düşük kapasite kümeleri kullanılarak bir veri merkezinde oluşturulmuştur:
 
-+ Doğu Avustralya
++ Avustralya Doğu
 + Doğu Asya
 + Orta Hindistan
-+ Batı Japonya
++ Japonya Batı
 + Orta Batı ABD
 
 Belge sınırlarına tabi olan hizmetler için aşağıdaki en fazla sınır geçerlidir:

@@ -24,6 +24,6 @@ ms.locfileid: "76158972"
 * Doğu ABD
 * Doğu ABD 2
 * Batı Avrupa
-* Güney Orta ABD
-* Doğu Avustralya
-* Doğu Japonya
+* Orta Güney ABD
+* Avustralya Doğu
+* Japonya Doğu

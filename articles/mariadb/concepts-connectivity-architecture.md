@@ -32,7 +32,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 |:----------------|:-------------|
 | Avustralya Orta| 20.36.105.0     |
 | Avustralya Central2     | 20.36.113.0   |
-| Doğu Avustralya | 13.75.149.87, 40.79.161.1     |
+| Avustralya Doğu | 13.75.149.87, 40.79.161.1     |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |
 | Brezilya Güney | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Kanada Orta |40.85.224.249  |
@@ -49,20 +49,20 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Hindistan Orta | 104.211.96.159     |
 | Hindistan Güney | 104.211.224.146  |
 | Hindistan Batı | 104.211.160.80    |
-| Doğu Japonya | 13.78.61.196, 191.237.240.43  |
-| Batı Japonya | 104.214.148.156, 191.238.68.11    |
+| Japonya Doğu | 13.78.61.196, 191.237.240.43  |
+| Japonya Batı | 104.214.148.156, 191.238.68.11    |
 | Kore Orta | 52.231.32.42   |
 | Kore Güney | 52.231.200.86    |
 | Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Kuzey Avrupa | 40.113.93.91, 191.235.193.75    |
 | Güney Afrika Kuzey  | 102.133.152.0    |
 | Güney Afrika Batı | 102.133.24.0   |
-| Güney Orta ABD |13.66.62.124, 23.98.162.75   |
+| Orta Güney ABD |13.66.62.124, 23.98.162.75   |
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | BAE Orta | 20.37.72.64  |
 | BAE Kuzey | 65.52.248.0    |
-| Birleşik Krallık, Güney | 51.140.184.11   |
-| Birleşik Krallık, Batı | 51.141.8.11  |
+| UK Güney | 51.140.184.11   |
+| UK, Batı | 51.141.8.11  |
 | Orta Batı ABD | 13.78.145.25     |
 | Batı Avrupa | 40.68.37.158, 191.237.232.75     |
 | Batı ABD | 104.42.238.205, 23.99.34.75  |

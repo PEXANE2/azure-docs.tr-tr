@@ -24,7 +24,7 @@ ms.locfileid: "74935799"
     - Güneydoğu Asya
     - Kuzey Avrupa
     - Batı Avrupa
-    - Birleşik Krallık, Güney 
+    - UK Güney 
 - Yalnızca kullanılabilirlik alanları ile kullanılabilir (bölge dışındaki kullanılabilirlik kümeleri ve tek VM dağıtımları, bir ultra disk iliştirebilme özelliğine sahip olmaz)
 - Yalnızca şu VM serisinde desteklenir:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)

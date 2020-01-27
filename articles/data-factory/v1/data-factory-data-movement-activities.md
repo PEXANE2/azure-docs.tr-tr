@@ -98,7 +98,7 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | &nbsp; | Doğu ABD 2 | Doğu ABD 2 |
 | &nbsp; | Orta ABD | Orta ABD |
 | &nbsp; | Orta Kuzey ABD | Orta Kuzey ABD |
-| &nbsp; | Güney Orta ABD | Güney Orta ABD |
+| &nbsp; | Orta Güney ABD | Orta Güney ABD |
 | &nbsp; | Orta Batı ABD | Orta Batı ABD |
 | &nbsp; | Batı ABD | Batı ABD |
 | &nbsp; | Batı ABD 2 | Batı ABD 2 |
@@ -107,17 +107,17 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | Brezilya | Brezilya Güney | Brezilya Güney |
 | Avrupa | Kuzey Avrupa | Kuzey Avrupa |
 | &nbsp; | Batı Avrupa | Batı Avrupa |
-| Birleşik Krallık | Birleşik Krallık, Batı | Birleşik Krallık, Güney |
-| &nbsp; | Birleşik Krallık, Güney | Birleşik Krallık, Güney |
+| Birleşik Krallık | UK, Batı | UK Güney |
+| &nbsp; | UK Güney | UK Güney |
 | Asya Pasifik | Güneydoğu Asya | Güneydoğu Asya |
 | &nbsp; | Doğu Asya | Güneydoğu Asya |
-| Avustralya | Doğu Avustralya | Doğu Avustralya |
-| &nbsp; | Güneydoğu Avustralya | Güneydoğu Avustralya |
+| Avustralya | Avustralya Doğu | Avustralya Doğu |
+| &nbsp; | Avustralya Güneydoğu | Avustralya Güneydoğu |
 | Hindistan | Orta Hindistan | Orta Hindistan |
 | &nbsp; | Batı Hindistan | Orta Hindistan |
 | &nbsp; | Güney Hindistan | Orta Hindistan |
-| Japonya | Doğu Japonya | Doğu Japonya |
-| &nbsp; | Batı Japonya | Doğu Japonya |
+| Japonya | Japonya Doğu | Japonya Doğu |
+| &nbsp; | Japonya Batı | Japonya Doğu |
 | Güney Kore | Kore Orta | Kore Orta |
 | &nbsp; | Kore Güney | Kore Orta |
 

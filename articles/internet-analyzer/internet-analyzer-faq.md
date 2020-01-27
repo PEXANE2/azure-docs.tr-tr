@@ -65,7 +65,7 @@ Internet Çözümleyicisi 'nde oluşturduğunuz her test, uç nokta A ve uç nok
 
 Önizleme sırasında aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir:
 * **Azure bölgeleri**
-    * Güney Brezilya
+    * Brezilya Güney
     * Orta Hindistan
     * Orta ABD
     * Doğu Asya

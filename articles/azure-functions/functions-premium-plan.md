@@ -102,8 +102,8 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 |--| -- | -- |
 |Avustralya Orta| ✔<sup>1</sup> | |
 |Avustralya Orta 2| ✔<sup>1</sup> | |
-|Doğu Avustralya| ✔ | |
-|Güneydoğu Avustralya | ✔ | ✔<sup>1</sup> |
+|Avustralya Doğu| ✔ | |
+|Avustralya Güneydoğu | ✔ | ✔<sup>1</sup> |
 |Brezilya Güney| ✔<sup>2</sup> |  |
 |Kanada Orta| ✔ |  |
 |Orta ABD| ✔ |  |
@@ -111,17 +111,17 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 |Doğu ABD | ✔ | ✔<sup>1</sup> |
 |Doğu ABD 2| ✔ |  |
 |Fransa Orta| ✔ |  |
-|Almanya Batı Orta| ✔ | |
-|Doğu Japonya| ✔ | ✔<sup>1</sup> |
-|Batı Japonya| ✔ | |
+|Almanya Orta Batı| ✔ | |
+|Japonya Doğu| ✔ | ✔<sup>1</sup> |
+|Japonya Batı| ✔ | |
 |Kore Orta| ✔ |  |
 |Orta Kuzey ABD| ✔ |  |
 |Kuzey Avrupa| ✔ | ✔<sup>1</sup> |
-|Güney Orta ABD| ✔ | ✔<sup>1</sup> |
+|Orta Güney ABD| ✔ | ✔<sup>1</sup> |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔<sup>1</sup> |
-|Birleşik Krallık, Güney| ✔ | |
-|Birleşik Krallık, Batı| ✔ |  |
+|UK Güney| ✔ | |
+|UK, Batı| ✔ |  |
 |Batı Avrupa| ✔ | ✔<sup>1</sup> |
 |Batı Hindistan| ✔ |  |
 |Batı ABD| ✔ | ✔<sup>1</sup> |

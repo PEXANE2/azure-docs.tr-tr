@@ -39,21 +39,21 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - Orta Batı ABD
 - Batı ABD
 - Batı ABD 2
-- Güney Orta ABD
+- Orta Güney ABD
 - Doğu ABD
 - Doğu ABD 2
 - Orta ABD
 - Orta Kuzey ABD
 - Kanada Orta
-- Birleşik Krallık, Güney
+- UK Güney
 - Kuzey Avrupa
 - Batı Avrupa
 - Doğu Asya
 - Güneydoğu Asya
 - Orta Hindistan
-- Doğu Japonya
-- Doğu Avustralya
-- Güneydoğu Avustralya
+- Japonya Doğu
+- Avustralya Doğu
+- Avustralya Güneydoğu
 
 >[!NOTE]
 >Azure VM 'Leri herhangi bir bölgeden dağıtabilirsiniz. Bu VM 'Ler Log Analytics çalışma alanı tarafından desteklenen bölgelerle sınırlı değildir.

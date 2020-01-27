@@ -10,7 +10,7 @@ ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
 ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2020
 ms.locfileid: "76514366"
@@ -414,7 +414,7 @@ Fiyatın alana ve bölgeye göre değiştiği hizmetler için geçerli coğrafi 
 | Coğrafi | Veri Aktarım Bölgeleri | CDN Bölgeleri |
 | --- | --- | --- |
 | Bölge 1 | Kuzey Avrupa <br> Batı Avrupa <br> ABD Batı <br> ABD Doğu <br> ABD Orta Kuzey <br> ABD Orta Güney <br> ABD Doğu 2 <br> ABD Orta | Kuzey Amerika <br> Avrupa |
-| Bölge 2 | Asya Pasifik Doğu <br> Asya Pasifik Güneydoğu <br> Doğu Japonya <br> Batı Japonya <br> Doğu Avustralya <br> Güneydoğu Avustralya | Asya Pasifik <br> Japonya <br> Latin Amerika <br> Orta Doğu / Afrika <br> Doğu Avustralya <br> Güneydoğu Avustralya |
+| Bölge 2 | Asya Pasifik Doğu <br> Asya Pasifik Güneydoğu <br> Japonya Doğu <br> Japonya Batı <br> Avustralya Doğu <br> Avustralya Güneydoğu | Asya Pasifik <br> Japonya <br> Latin Amerika <br> Orta Doğu / Afrika <br> Avustralya Doğu <br> Avustralya Güneydoğu |
 | Bölge 3 | Brezilya Güney |   |
 
 **Tablo**  **4**  **– Veri Aktarım Bölgeleri**

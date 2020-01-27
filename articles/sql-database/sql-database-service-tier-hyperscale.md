@@ -166,8 +166,8 @@ Bir Azure SQL veritabanı hiper ölçek veritabanını, bir olağanüstü durum 
 
 Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde kullanılabilir:
 
-- Doğu Avustralya
-- Güneydoğu Avustralya
+- Avustralya Doğu
+- Avustralya Güneydoğu
 - Brezilya Güney
 - Kanada Orta
 - Orta ABD
@@ -177,17 +177,17 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Doğu ABD
 - Doğu ABD 2
 - Fransa Orta
-- Doğu Japonya
-- Batı Japonya
+- Japonya Doğu
+- Japonya Batı
 - Kore Orta
 - Kore Güney
 - Orta Kuzey ABD
 - Kuzey Avrupa
 - Güney Afrika Kuzey
-- Güney Orta ABD
+- Orta Güney ABD
 - Güneydoğu Asya
-- Birleşik Krallık, Güney
-- Birleşik Krallık, Batı
+- UK Güney
+- UK, Batı
 - Batı Avrupa
 - Batı ABD
 - Batı ABD 2

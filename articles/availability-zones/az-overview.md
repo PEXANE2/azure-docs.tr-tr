@@ -38,7 +38,7 @@ Kullanılabilirlik Alanları destekleyen Azure hizmetleri ve bölgelerinin birle
 
 |                                 |Kuzey ve Güney Amerika |              |           |           | Avrupa |              |          |              | Asya Pasifik |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |Orta ABD|Doğu ABD|Doğu ABD 2|Batı ABD 2|Fransa Orta|Kuzey Avrupa|Birleşik Krallık, Güney|Batı Avrupa|Doğu Japonya|Güneydoğu Asya|
+|          |Orta ABD|Doğu ABD|Doğu ABD 2|Batı ABD 2|Fransa Orta|Kuzey Avrupa|UK Güney|Batı Avrupa|Japonya Doğu|Güneydoğu Asya|
 | **İşlem**                         |            |              |           |           |                |              |          |             |            |                |
 | Linux Sanal Makineleri          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Sanal Makineleri        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |

@@ -160,7 +160,7 @@ Evet, Redu için Azure önbelleği, Azure Kamu bulutu, Azure Çin 21Vianet bulut
 | Bulut   | Redsıs için DNS son eki            |
 |---------|---------------------------------|
 | Genel  | *.redis.cache.windows.net       |
-| ABD Devleti  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | Almanya | *.redis.cache.cloudapi.de       |
 | Çin   | *.redis.cache.chinacloudapi.cn  |
 

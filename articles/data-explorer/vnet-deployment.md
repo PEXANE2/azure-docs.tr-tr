@@ -104,8 +104,8 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | --- | --- |
 | Avustralya Orta | 20.37.26.134 |
 | Avustralya Central2 | 20.39.99.177 |
-| Doğu Avustralya | 40.82.217.84 |
-| Güneydoğu Avustralya | 20.40.161.39 |
+| Avustralya Doğu | 40.82.217.84 |
+| Avustralya Güneydoğu | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
 | Kanada Orta | 40.82.188.208 |
 | Kanada Doğu | 40.80.255.12 |
@@ -118,19 +118,19 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Doğu ABD2 EUAP | 52.253.226.110 |
 | Fransa Orta | 40.66.57.91 |
 | Fransa Güney | 40.82.236.24 |
-| Doğu Japonya | 20.43.89.90 |
-| Batı Japonya | 40.81.184.86 |
+| Japonya Doğu | 20.43.89.90 |
+| Japonya Batı | 40.81.184.86 |
 | Kore Orta | 40.82.156.149 |
 | Kore Güney | 40.80.234.9 |
 | Orta Kuzey ABD | 40.81.45.254 |
 | Kuzey Avrupa | 52.142.91.221 |
 | Güney Afrika Kuzey | 102.133.129.138 |
 | Güney Afrika Batı | 102.133.0.97 |
-| Güney Orta ABD | 20.45.3.60 |
+| Orta Güney ABD | 20.45.3.60 |
 | Güneydoğu Asya | 40.119.203.252 |
 | Güney Hindistan | 40.81.72.110 |
-| Birleşik Krallık, Güney | 40.81.154.254 |
-| Birleşik Krallık, Batı | 40.81.122.39 |
+| UK Güney | 40.81.154.254 |
+| UK, Batı | 40.81.122.39 |
 | Orta Batı ABD | 52.159.55.120 |
 | Batı Avrupa | 51.145.176.215 |
 | Batı Hindistan | 40.81.88.112 |
@@ -143,8 +143,8 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | --- | --- |
 | Avustralya Orta | 191.239.64.128 |
 | Avustralya Orta 2 | 191.239.64.128 |
-| Doğu Avustralya | 191.239.64.128 |
-| Güneydoğu Avustralya | 191.239.160.47 |
+| Avustralya Doğu | 191.239.64.128 |
+| Avustralya Güneydoğu | 191.239.160.47 |
 | Brezilya Güney | 23.98.145.105 |
 | Kanada Orta | 168.61.212.201 |
 | Kanada Doğu | 168.61.212.201 |
@@ -157,19 +157,19 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | EUAP Doğu ABD 2 | 137.116.81.189 |
 | Fransa Orta | 23.97.212.5 |
 | Fransa Güney | 23.97.212.5 |
-| Doğu Japonya | 138.91.19.129 |
-| Batı Japonya | 138.91.19.129 |
+| Japonya Doğu | 138.91.19.129 |
+| Japonya Batı | 138.91.19.129 |
 | Kore Orta | 138.91.19.129 |
 | Kore Güney | 138.91.19.129 |
 | Orta Kuzey ABD | 23.96.212.108 |
 | Kuzey Avrupa | 191.235.212.69 
 | Güney Afrika Kuzey | 104.211.224.189 |
 | Güney Afrika Batı | 104.211.224.189 |
-| Güney Orta ABD | 23.98.145.105 |
+| Orta Güney ABD | 23.98.145.105 |
 | Güney Hindistan | 23.99.5.162 |
 | Güneydoğu Asya | 168.63.173.234 |
-| Birleşik Krallık, Güney | 23.97.212.5 |
-| Birleşik Krallık, Batı | 23.97.212.5 |
+| UK Güney | 23.97.212.5 |
+| UK, Batı | 23.97.212.5 |
 | Orta Batı ABD | 168.61.212.201 |
 | Batı Avrupa | 23.97.212.5 |
 | Batı Hindistan | 23.99.5.162 |

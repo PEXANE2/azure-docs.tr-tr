@@ -59,7 +59,7 @@ Bu yapılandırmayı kullanan oluşturulan IoT Hub kaynak, 1,0 ve 1,1 TLS sürü
 TLS 1,2 kullanımını gerektiren IoT Hub 'Ları aşağıdaki bölgelerde oluşturulabilir:
 
 * Doğu ABD
-* Güney Orta ABD
+* Orta Güney ABD
 * Batı ABD 2
 
 > [!NOTE]

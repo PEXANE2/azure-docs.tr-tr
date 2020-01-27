@@ -43,7 +43,7 @@ Hiper ölçek (Citus) sunucu grupları aşağıdaki Azure bölgelerinde kullanı
     * Güneydoğu Asya
 * 'Ya
     * Kuzey Avrupa
-    * Birleşik Krallık, Güney
+    * UK Güney
     * Batı Avrupa
 
 Yıldız işareti (\*) olan bölgeler henüz [yüksek kullanılabilirliği](concepts-hyperscale-high-availability.md)desteklemez.

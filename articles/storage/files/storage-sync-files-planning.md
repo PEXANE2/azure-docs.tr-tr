@@ -251,8 +251,8 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 | Bölge | Veri merkezi konumu |
 |--------|---------------------|
-| Doğu Avustralya | Yeni Güney Galler |
-| Güneydoğu Avustralya | Victoria |
+| Avustralya Doğu | Yeni Güney Galler |
+| Avustralya Güneydoğu | Victoria |
 | Brezilya Güney | Sao Paulo Eyaleti |
 | Kanada Orta | Toronto |
 | Kanada Doğu | Quebec City |
@@ -265,17 +265,17 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Fransa Güney * | Marseille |
 | Kore Orta | Seoul |
 | Kore Güney | Busan |
-| Doğu Japonya | Tokyo, Saitama |
-| Batı Japonya | Osaka |
+| Japonya Doğu | Tokyo, Saitama |
+| Japonya Batı | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
 | Güney Afrika Kuzey | Johannesburg |
 | Güney Afrika Batı * | Cape Town |
-| Güney Orta ABD | Texas |
+| Orta Güney ABD | Texas |
 | Güney Hindistan | Chennai |
 | Güneydoğu Asya | Singapur |
-| Birleşik Krallık, Güney | Londra |
-| Birleşik Krallık, Batı | Cardiff |
+| UK Güney | Londra |
+| UK, Batı | Cardiff |
 | US Gov Arizona | Arizona |
 | US Gov Teksas | Texas |
 | ABD Hükümeti Virginia | Virginia |
@@ -300,9 +300,9 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 
 | Birincil bölge      | Eşleştirilmiş bölge      |
 |---------------------|--------------------|
-| Doğu Avustralya      | Güneydoğu Avustralya|
-| Güneydoğu Avustralya | Doğu Avustralya     |
-| Brezilya Güney        | Güney Orta ABD   |
+| Avustralya Doğu      | Avustralya Güneydoğu|
+| Avustralya Güneydoğu | Avustralya Doğu     |
+| Brezilya Güney        | Orta Güney ABD   |
 | Kanada Orta      | Kanada Doğu        |
 | Kanada Doğu         | Kanada Orta     |
 | Orta Hindistan       | Güney Hindistan        |
@@ -312,19 +312,19 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Doğu ABD 2           | Orta ABD         |
 | Fransa Orta      | Fransa Güney       |
 | Fransa Güney        | Fransa Orta     |
-| Doğu Japonya          | Batı Japonya         |
-| Batı Japonya          | Doğu Japonya         |
+| Japonya Doğu          | Japonya Batı         |
+| Japonya Batı          | Japonya Doğu         |
 | Kore Orta       | Kore Güney        |
 | Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |
-| Orta Kuzey ABD    | Güney Orta ABD   |
+| Orta Kuzey ABD    | Orta Güney ABD   |
 | Güney Afrika Kuzey  | Güney Afrika Batı  |
 | Güney Afrika Batı   | Güney Afrika Kuzey |
-| Güney Orta ABD    | Orta Kuzey ABD   |
+| Orta Güney ABD    | Orta Kuzey ABD   |
 | Güney Hindistan         | Orta Hindistan      |
 | Güneydoğu Asya      | Doğu Asya          |
-| Birleşik Krallık, Güney            | Birleşik Krallık, Batı            |
-| Birleşik Krallık, Batı             | Birleşik Krallık, Güney           |
+| UK Güney            | UK, Batı            |
+| UK, Batı             | UK Güney           |
 | US Gov Arizona      | US Gov Teksas       |
 | US Gov Iowa         | ABD Hükümeti Virginia    |
 | ABD Hükümeti Virginia      | US Gov Teksas       |

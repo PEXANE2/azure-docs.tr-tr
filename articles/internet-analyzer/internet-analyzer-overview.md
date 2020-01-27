@@ -36,7 +36,7 @@ Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmı
 Önizleme sırasında, aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir: 
 
 * **Azure bölgeleri**
-    * Güney Brezilya
+    * Brezilya Güney
     * Orta Hindistan
     * Orta ABD
     * Doğu Asya

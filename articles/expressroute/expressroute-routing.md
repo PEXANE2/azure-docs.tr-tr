@@ -167,7 +167,7 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Orta Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
 | Doğu Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Güney Amerika** | |
-| Güney Brezilya | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
+| Brezilya Güney | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Avrupa** | |
 | Kuzey Avrupa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
 | Batı Avrupa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
@@ -235,10 +235,10 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | **Ulusal Bulutlar Azure Bölgesi**| **BGP topluluk değeri** |
 | --- | --- |
 | **ABD Devleti** |  |
-| ABD Devleti Arizona | 12076:51106 |
+| US Gov Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
 | ABD Devleti Virginia | 12076:51105 |
-| ABD Devleti Texas | 12076:51108 |
+| US Gov Texas | 12076:51108 |
 | US DoD Orta | 12076:51209 |
 | US DoD Doğu | 12076:51205 |
 

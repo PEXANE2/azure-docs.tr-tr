@@ -40,17 +40,17 @@ Konuşma SDK 'Sı, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**i�
 | Doğu ABD 2        | `eastus2`            | https://eastus2.cris.ai        |
 | Orta ABD       | `centralus`          | https://centralus.cris.ai      |
 | Orta Kuzey ABD | `northcentralus`     | https://northcentralus.cris.ai |
-| Güney Orta ABD | `southcentralus`     | https://southcentralus.cris.ai |
+| Orta Güney ABD | `southcentralus`     | https://southcentralus.cris.ai |
 | Orta Hindistan    | `centralindia`       | https://centralindia.cris.ai   |
 | Doğu Asya        | `eastasia`           | https://eastasia.cris.ai       |
 | Güneydoğu Asya   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Doğu Japonya       | `japaneast`          | https://japaneast.cris.ai      |
+| Japonya Doğu       | `japaneast`          | https://japaneast.cris.ai      |
 | Kore Orta    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Doğu Avustralya   | `australiaeast`      | https://australiaeast.cris.ai  |
+| Avustralya Doğu   | `australiaeast`      | https://australiaeast.cris.ai  |
 | Kanada Orta   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Kuzey Avrupa     | `northeurope`        | https://northeurope.cris.ai    |
 | Batı Avrupa      | `westeurope`         | https://westeurope.cris.ai     |
-| Birleşik Krallık, Güney         | `uksouth`            | https://uksouth.cris.ai        |
+| UK Güney         | `uksouth`            | https://uksouth.cris.ai        |
 | Fransa Orta   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Amaç tanıma
@@ -61,12 +61,12 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
-| Avustralya     | Doğu Avustralya   | `australiaeast`      |
+| Avustralya     | Avustralya Doğu   | `australiaeast`      |
 | Avrupa        | Kuzey Avrupa     | `northeurope`        |
 | Avrupa        | Batı Avrupa      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
 | Kuzey Amerika | Doğu ABD 2        | `eastus2`            |
-| Kuzey Amerika | Güney Orta ABD | `southcentralus`     |
+| Kuzey Amerika | Orta Güney ABD | `southcentralus`     |
 | Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |

@@ -37,7 +37,7 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 * Kanada Orta
 * Kuzey Avrupa
 * Batı Avrupa
-* Doğu Avustralya
+* Avustralya Doğu
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>En son Azure CLı AKS önizleme uzantısını yükler
 

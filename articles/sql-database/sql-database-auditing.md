@@ -252,7 +252,7 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
     > [!IMPORTANT]
     > Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
     > - Doğu ABD
-    > - Güney Orta ABD
+    > - Orta Güney ABD
     > - Batı ABD 2
 
 

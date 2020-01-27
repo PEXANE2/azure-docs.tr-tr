@@ -72,7 +72,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 |---------------|--------|----------|
 | Genel | Küresel (Translator Metin Çevirisi & Bing) | `https://api.cognitive.microsoft.com` |
 | | Avustralya Doğu | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Güney Brezilya | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Brezilya Güney | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
 | | Orta ABD | `https://centralus.api.cognitive.microsoft.com` |
 | | Doğu Asya | `https://eastasia.api.cognitive.microsoft.com` |

@@ -77,7 +77,7 @@ Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret
 
 Bu özellik aşağıdaki Azure bölgelerinde kullanılabilir:
 
-- Birleşik Krallık, Güney
+- UK Güney
 
 - Güneydoğu Asya
 

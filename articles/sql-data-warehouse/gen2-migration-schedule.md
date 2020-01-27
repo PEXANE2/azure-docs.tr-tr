@@ -37,7 +37,7 @@ Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve oto
 | Çin Doğu |\* |\* |
 | Çin Kuzey |\* |\* |
 | Almanya Orta |\* |\* |
-| Almanya Batı Orta |Kullanılabilir |1 Mayıs 2020 |
+| Almanya Orta Batı |Kullanılabilir |1 Mayıs 2020 |
 | Hindistan Batı |Kullanılabilir |1 Mayıs 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Otomatik yükseltme işlemi

@@ -50,8 +50,8 @@ Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
     - Batı Avrupa
     - Doğu ABD
     - Güneydoğu Asya
-    - Doğu Japonya
-    - Birleşik Krallık, Güney
+    - Japonya Doğu
+    - UK Güney
     - Orta Hindistan
     - Kanada Orta
     - Batı ABD 2

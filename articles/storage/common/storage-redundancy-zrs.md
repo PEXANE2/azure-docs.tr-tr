@@ -33,9 +33,9 @@ Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma s
 - Kuzey Avrupa
 - Batı Avrupa
 - Fransa Orta
-- Doğu Japonya
+- Japonya Doğu
 - Güney Afrika Kuzey
-- Birleşik Krallık, Güney
+- UK Güney
 - ABD Orta
 - ABD Doğu
 - ABD Doğu 2

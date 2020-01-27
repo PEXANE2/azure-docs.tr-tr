@@ -43,7 +43,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 | Bölge | Uç nokta |
 |--------|----------|
-| Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Avustralya Doğu | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kanada Orta | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -52,13 +52,13 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 | Doğu ABD 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Fransa Orta | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Hindistan Orta | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Doğu Japonya | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japonya Doğu | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kore Orta | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kuzey ABD | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kuzey Avrupa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Güney Orta ABD | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Orta Güney ABD | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Güneydoğu Asya | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Birleşik Krallık, Güney | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| UK Güney | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı Avrupa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
