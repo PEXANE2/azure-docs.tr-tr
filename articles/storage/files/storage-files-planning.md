@@ -207,8 +207,8 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |-------|---------|
 |Avustralya Orta    |LRS     |
 |Avustralya Orta 2    |LRS     |
-|Doğu Avustralya |LRS     |
-|Güneydoğu Avustralya|LRS |
+|Avustralya Doğu |LRS     |
+|Avustralya Güneydoğu|LRS |
 |Brezilya Güney    |LRS     |
 |Kanada Orta  |LRS     |
 |Kanada Doğu     |LRS     |
@@ -219,22 +219,22 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |Doğu ABD 2 *      |LRS, ZRS     |
 |Fransa Orta |LRS, ZRS|
 |Fransa Güney   |LRS     |
-|Doğu Japonya     |LRS     |
-|Batı Japonya     |LRS     |
+|Japonya Doğu     |LRS     |
+|Japonya Batı     |LRS     |
 |Kore Orta  |LRS     |
 |Kore Güney    |LRS     |
 |Orta Kuzey ABD |LRS   |
 |Kuzey Avrupa   |LRS     |
 |Güney Hindistan    |LRS     |
-|Güney Orta ABD |LRS     |
+|Orta Güney ABD |LRS     |
 |Güneydoğu Asya |LRS, ZRS|
 |İsviçre Kuzey    |LRS     |
 |İsviçre Batı    |LRS     |
 |BAE Orta    |LRS     |
 |BAE Kuzey    |LRS     |
 |UK Kuzey   |LRS, ZRS    |
-|Birleşik Krallık, Güney    |LRS     |
-|Birleşik Krallık, Batı    |LRS     |
+|UK Güney    |LRS     |
+|UK, Batı    |LRS     |
 |Orta Batı ABD|LRS     |
 |Batı Avrupa *    |LRS, ZRS|
 |Batı Hindistan   |LRS     |

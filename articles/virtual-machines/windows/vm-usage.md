@@ -92,15 +92,15 @@ Kullanım ayrıntılarında kaynak konumu alanında doldurulmuş bölge adı, Az
 |    Koreagüney            |    KR Güney                              |
 |    northcentralus        |    Orta Kuzey ABD                      |
 |    northeurope           |    Kuzey Avrupa                          |
-|    southcentralus        |    Güney Orta ABD                      |
+|    southcentralus        |    Orta Güney ABD                      |
 |    southeastasia         |    Güneydoğu Asya                        |
 |    Güneydoğu            |    IN Güney                              |
 |    Ukkuzey               |    ABD Kuzey                              |
-|    uksouth               |    Birleşik Krallık, Güney                              |
+|    uksouth               |    UK Güney                              |
 |    UKSouth2              |    UK Güney 2                            |
-|    ukbatı                |    Birleşik Krallık, Batı                               |
+|    ukbatı                |    UK, Batı                               |
 |    Usdodorta          |    US DoD Orta                        |
-|    USDoDEast             |    ABD DoD Doğu                           |
+|    USDoDEast             |    US DoD Doğu                           |
 |    USGovArizona          |    USGov Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
 |    USGovTexas            |    USGov Texas                           |

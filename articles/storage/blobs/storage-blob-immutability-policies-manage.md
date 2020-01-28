@@ -173,7 +173,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 > [!IMPORTANT] 
 >  Zamana bağlı saklama için korumalı ekleme bloblarını yazma ayarı şu anda kullanılabilir ve yalnızca aşağıdaki bölgelerde görülebilir:
 > - Doğu ABD
-> - Güney Orta ABD
+> - Orta Güney ABD
 > - Batı ABD 2
 >
 > Daha fazla bilgi için bkz. [korumalı ekleme Blobları yazmaları Için Izin verme](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).

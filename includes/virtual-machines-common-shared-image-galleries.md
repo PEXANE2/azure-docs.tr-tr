@@ -94,14 +94,14 @@ Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hede
 | Kaynak bölgeler        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Avustralya Orta     | Çin Doğu        | Güney Hindistan        | Batı Avrupa        |
-| Avustralya Orta 2   | Çin Doğu 2      | Güneydoğu Asya     | Birleşik Krallık, Güney           |
-| Doğu Avustralya        | Çin Kuzey       | Doğu Japonya         | Birleşik Krallık, Batı            |
-| Güneydoğu Avustralya   | Çin Kuzey 2     | Batı Japonya         | US DoD Orta     |
-| Brezilya Güney          | Doğu Asya         | Kore Orta      | ABD DoD Doğu        |
+| Avustralya Orta 2   | Çin Doğu 2      | Güneydoğu Asya     | UK Güney           |
+| Avustralya Doğu        | Çin Kuzey       | Japonya Doğu         | UK, Batı            |
+| Avustralya Güneydoğu   | Çin Kuzey 2     | Japonya Batı         | US DoD Orta     |
+| Brezilya Güney          | Doğu Asya         | Kore Orta      | US DoD Doğu        |
 | Kanada Orta        | Doğu ABD           | Kore Güney        | US Gov Arizona     |
 | Kanada Doğu           | Doğu ABD 2         | Orta Kuzey ABD   | US Gov Teksas       |
 | Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | ABD Hükümeti Virginia    |
-| Orta ABD            | Fransa Orta    | Güney Orta ABD   | Batı Hindistan         |
+| Orta ABD            | Fransa Orta    | Orta Güney ABD   | Batı Hindistan         |
 | EUAP Orta ABD       | Fransa Güney      | Orta Batı ABD    | Batı ABD            |
 |                       |                   |                    | Batı ABD 2          |
 

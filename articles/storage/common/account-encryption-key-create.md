@@ -30,7 +30,7 @@ Kuyruk ve tablo depolaması için hesap şifreleme anahtarına dayanan bir depol
 Aşağıdaki bölgelerde kuyruk ve tablo depolaması için hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturabilirsiniz:
 
 - Doğu ABD
-- Güney Orta ABD
+- Orta Güney ABD
 - Batı ABD 2  
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Hesap şifreleme anahtarını kullanmak için kaydolun

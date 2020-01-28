@@ -201,17 +201,17 @@ Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etk
 
 Wrangling veri akışı şu anda şu bölgelerde oluşturulan veri fabrikaları 'nda destekleniyor:
 
-* Doğu Avustralya
+* Avustralya Doğu
 * Kanada Orta
 * Orta Hindistan
 * Orta ABD
 * Doğu ABD
 * Doğu ABD 2
-* Doğu Japonya
+* Japonya Doğu
 * Kuzey Avrupa
 * Güneydoğu Asya
-* Güney Orta ABD
-* Birleşik Krallık, Güney
+* Orta Güney ABD
+* UK Güney
 * Orta Batı ABD
 * Batı Avrupa
 * Batı ABD

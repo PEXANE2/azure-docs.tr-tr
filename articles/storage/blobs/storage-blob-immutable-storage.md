@@ -89,7 +89,7 @@ Yasal saklama ilkeleri `allowProtectedAppendWrites` etkinleştiremez ve yeni blo
 > [!IMPORTANT] 
 > Zamana dayalı saklama altında korumalı ekleme bloblarına izin ver ayarı şu anda şu bölgelerde kullanılabilir:
 > - Doğu ABD
-> - Güney Orta ABD
+> - Orta Güney ABD
 > - Batı ABD 2
 >
 > Şu anda, belirtilen diğer bölgelerde `allowProtectedAppendWrites` etkinleştirmemenizi kesinlikle tavsiye ederiz, çünkü aralıklı hatalara neden olabilir ve ekleme Blobları için uyumluluğu etkiler. Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için bkz. [korumalı ekleme bloblarına izin vermeyi etkinleştirme](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).

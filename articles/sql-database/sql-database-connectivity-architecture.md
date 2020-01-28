@@ -76,7 +76,7 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | --- | --- |
 | Avustralya Orta    | 20.36.105.0 |
 | Avustralya Central2   | 20.36.113.0 |
-| Doğu Avustralya       | 13.75.149.87, 40.79.161.1 |
+| Avustralya Doğu       | 13.75.149.87, 40.79.161.1 |
 | Avustralya Güneydoğu | 191.239.192.109, 13.73.109.251 |
 | Brezilya Güney         | 104.41.11.5, 191.233.200.14 |
 | Kanada Orta       | 40.85.224.249      |
@@ -95,20 +95,20 @@ Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıl
 | Hindistan Orta        | 104.211.96.159     |
 | Hindistan Güney          | 104.211.224.146    |
 | Hindistan Batı           | 104.211.160.80     |
-| Doğu Japonya           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
-| Batı Japonya           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
+| Japonya Doğu           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
+| Japonya Batı           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Kore Orta        | 52.231.32.42       |
 | Kore Güney          | 52.231.200.86      |
 | Orta Kuzey ABD     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Kuzey Avrupa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Güney Afrika Kuzey   | 102.133.152.0      |
 | Güney Afrika Batı    | 102.133.24.0       |
-| Güney Orta ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Güneydoğu Asya      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | BAE Orta          | 20.37.72.64        |
 | BAE Kuzey            | 65.52.248.0        |
-| Birleşik Krallık, Güney             | 51.140.184.11      |
-| Birleşik Krallık, Batı              | 51.141.8.11        |
+| UK Güney             | 51.140.184.11      |
+| UK, Batı              | 51.141.8.11        |
 | Orta Batı ABD      | 13.78.145.25       |
 | Batı Avrupa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Batı ABD              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |

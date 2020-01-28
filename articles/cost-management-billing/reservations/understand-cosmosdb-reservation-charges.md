@@ -11,7 +11,7 @@ ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
 ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/15/2020
 ms.locfileid: "75995565"
@@ -45,8 +45,8 @@ Rezervasyon indirimi Azure Cosmos DB işleme hızı maliyetlerine saat bazında 
 |Azure Cosmos DB - 100 RU/sn/saat - KR Güney|    KR Güney     |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - AV Batı|    AV Batı     |      1   |
 |Azure Cosmos DB - 100 RU/sn/saat - KR Orta|   KR Orta    |       1  |
-|Azure Cosmos DB - 100 RU/sn/saat - Birleşik Krallık Güney|   Birleşik Krallık, Güney      |     1    |
-|Azure Cosmos DB - 100 RU/sn/saat - Birleşik Krallık Batı|   Birleşik Krallık, Batı      |    1     |
+|Azure Cosmos DB - 100 RU/sn/saat - Birleşik Krallık Güney|   UK Güney      |     1    |
+|Azure Cosmos DB - 100 RU/sn/saat - Birleşik Krallık Batı|   UK, Batı      |    1     |
 |Azure Cosmos DB - 100 RU/sn/saat - Birleşik Krallık Kuzey |   UK Kuzey    |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - Birleşik Krallık Güney 2|   UK Güney 2      |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - ABD Doğu 2|  ABD Doğu 2     |     1    |
