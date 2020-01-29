@@ -96,9 +96,9 @@ Kullanım ayrıntılarında kaynak konumu alanında doldurulmuş bölge adı, Az
 |    Güneydoğu         |    Güneydoğu Asya                        |
 |    Güneydoğu            |    IN Güney                              |
 |    Ukkuzey               |    ABD Kuzey                              |
-|    uksouth               |    Birleşik Krallık Güney                              |
-|    UKSouth2              |    Birleşik Krallık Güney 2                            |
-|    ukbatı                |    Birleşik Krallık Batı                               |
+|    uksouth               |    UK Güney                              |
+|    UKSouth2              |    UK Güney 2                            |
+|    ukbatı                |    UK Batı                               |
 |    Usdodorta          |    US DoD Orta                        |
 |    USDoDEast             |    US DoD Doğu                           |
 |    USGovArizona          |    USGov Arizona                         |

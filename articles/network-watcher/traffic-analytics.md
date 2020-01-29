@@ -62,7 +62,7 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
 * Kanada Orta
-* Batı Orta ABD
+* Orta Batı ABD
 * Doğu ABD
 * Doğu ABD 2
 * Orta Kuzey ABD
@@ -74,8 +74,8 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Batı Avrupa
 * Kuzey Avrupa
 * Brezilya Güney
-* Birleşik Krallık Batı
-* Birleşik Krallık Güney
+* UK Batı
+* UK Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
 * Doğu Asya
@@ -85,14 +85,14 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Güney Hindistan
 * Japonya Doğu 
 * Japonya Batı
-* ABD Devleti Virginia
+* US Gov Virginia
 * Çin Doğu 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Kanada Orta
-* Batı Orta ABD
+* Orta Batı ABD
 * Doğu ABD
 * Doğu ABD 2
 * Orta Kuzey ABD
@@ -105,8 +105,8 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Batı Avrupa
 * Kuzey Avrupa
 * Brezilya Güney
-* Birleşik Krallık Batı
-* Birleşik Krallık Güney
+* UK Batı
+* UK Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
 * Doğu Asya
@@ -114,7 +114,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Kore Orta
 * Orta Hindistan
 * Japonya Doğu
-* ABD Devleti Virginia
+* US Gov Virginia
 * Çin Doğu 2
 
 ## <a name="prerequisites"></a>Önkoşullar

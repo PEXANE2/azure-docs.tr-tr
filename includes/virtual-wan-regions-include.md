@@ -21,14 +21,14 @@ Siteden siteye tabanlı VPN bağlantısı ve sanal WAN mimarisi aşağıdaki bö
 
 |Coğrafi bölge | Azure bölgeleri|
 |---|---|
-| Kuzey Amerika | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Batı Orta ABD, Orta Kanada, Doğu Kanada |
+| Kuzey Amerika | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Kanada Orta, Kanada Doğu |
 |Güney Amerika |Brezilya Güney |
 | Avrupa | Fransa Orta, Fransa Güney, Kuzey Avrupa, Batı Avrupa, UK Batı, UK Güney |
 | Asya | Doğu Asya, Güneydoğu Asya |
-| Japonya  | Batı Japonya, Doğu Japonya |
-| Avustralya | Güneydoğu Avustralya, Doğu Avustralya |
+| Japonya  | Japonya Batı, Japonya Doğu |
+| Avustralya | Avustralya Güneydoğu, Avustralya Doğu |
 | Avustralya kamu | Avustralya Orta, Avustralya Orta 2 |
-| Hindistan | Batı Hindistan, Orta Hindistan, Güney Hindistan |
+| Hindistan | Hindistan Batı, Hindistan Orta, Hindistan Güney |
 | Güney Kore | Kore Orta, Kore Güney |
 | Güney Afrika | Güney Afrika Kuzey, Güney Afrika Batı |
 

@@ -100,7 +100,7 @@ Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hede
 | Brezilya Güney          | Doğu Asya         | Kore Orta      | US DoD Doğu        |
 | Kanada Orta        | Doğu ABD           | Kore Güney        | US Gov Arizona     |
 | Kanada Doğu           | Doğu ABD 2         | Orta Kuzey ABD   | US Gov Teksas       |
-| Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | ABD Hükümeti Virginia    |
+| Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | US Gov Virginia    |
 | Orta ABD            | Fransa Orta    | Orta Güney ABD   | Batı Hindistan         |
 | EUAP Orta ABD       | Fransa Güney      | Orta Batı ABD    | Batı ABD            |
 |                       |                   |                    | Batı ABD 2          |

@@ -75,7 +75,7 @@ Internet Çözümleyicisi 'nde oluşturduğunuz her test, uç nokta A ve uç nok
     * Güney Afrika Kuzey
     * Güneydoğu Asya
     * BAE Kuzey
-    * Birleşik Krallık Batı  
+    * UK Batı  
     * Batı Avrupa
     * Batı ABD
     * Batı ABD 2

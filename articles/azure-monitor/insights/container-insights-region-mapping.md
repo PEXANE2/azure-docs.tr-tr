@@ -60,7 +60,7 @@ AKS kümesi kaynakları veya Log Analytics çalışma alanı diğer bölgelerde 
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
 |WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
-|ABD Hükümeti Virginia |ABD Hükümeti Virginia |
+|US Gov Virginia |US Gov Virginia |
 
 <sup>1</sup> kapasite depoları nedeniyle, yeni kaynaklar oluşturulurken bölge kullanılamıyor. Buna bir Log Analytics çalışma alanı dahildir. Ancak, bölgede önceden var olan bağlı kaynakların çalışmaya devam etmesi gerekir.
 

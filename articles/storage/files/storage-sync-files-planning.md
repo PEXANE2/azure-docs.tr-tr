@@ -278,7 +278,7 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | UK, Batı | Cardiff |
 | US Gov Arizona | Arizona |
 | US Gov Teksas | Texas |
-| ABD Hükümeti Virginia | Virginia |
+| US Gov Virginia | Virginia |
 | BAE Kuzey | Dubai |
 | BAE Orta * | Abu Dabi |
 | Batı Avrupa | Hollanda |
@@ -326,8 +326,8 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | UK Güney            | UK, Batı            |
 | UK, Batı             | UK Güney           |
 | US Gov Arizona      | US Gov Teksas       |
-| US Gov Iowa         | ABD Hükümeti Virginia    |
-| ABD Hükümeti Virginia      | US Gov Teksas       |
+| US Gov Iowa         | US Gov Virginia    |
+| US Gov Virginia      | US Gov Teksas       |
 | Batı Avrupa         | Kuzey Avrupa       |
 | Orta Batı ABD     | Batı ABD 2          |
 | Batı ABD             | Doğu ABD            |

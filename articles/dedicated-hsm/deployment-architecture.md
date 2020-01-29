@@ -38,10 +38,10 @@ HSM 'ler, Microsoft 'un veri merkezlerinde dağıtılır ve yüksek oranda kulla
 * Doğu Asya
 * Kuzey Avrupa
 * Batı Avrupa
-* Birleşik Krallık Güney
-* Birleşik Krallık Batı
-* Orta Kanada
-* Doğu Kanada
+* UK Güney
+* UK Batı
+* Kanada Orta
+* Kanada Doğu
 * Avustralya Doğu
 * Avustralya Güneydoğu
 

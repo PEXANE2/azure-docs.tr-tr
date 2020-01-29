@@ -65,7 +65,7 @@ Azure Dosya paylaşımları için yedekleme şu anda Önizleme aşamasındadır 
 - UK Batı (UKW)
 - Batı Avrupa (WE)
 - Batı ABD (WUS)
-- Batı Orta ABD (WCUS)
+- Orta Batı ABD (WCUS)
 - Batı ABD 2 (WUS 2)
 - US Gov Arizona (UGA)
 - US Gov Teksas (UGT)

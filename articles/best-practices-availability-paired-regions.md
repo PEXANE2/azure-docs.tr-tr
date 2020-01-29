@@ -32,7 +32,7 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | Avustralya |Avustralya Doğu |Avustralya Güneydoğu |
 | Avustralya |Avustralya Orta |Avustralya Orta 2 |
 | Brezilya |Brezilya Güney |Orta Güney ABD |
-| Kanada |Kanada Orta |Doğu Kanada |
+| Kanada |Kanada Orta |Kanada Doğu |
 | Çin |Çin Kuzey |Çin Doğu|
 | Çin |Çin Kuzey 2 |Çin Doğu 2|
 | Avrupa |Kuzey Avrupa (İrlanda) |Batı Avrupa (Hollanda) |
@@ -47,12 +47,12 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | Kuzey Amerika |Orta Kuzey ABD |Orta Güney ABD |
 | Kuzey Amerika |Batı ABD 2 |Orta Batı ABD 
 | Güney Afrika | Güney Afrika Kuzey | Güney Afrika Batı
-| UK |Birleşik Krallık Batı |Birleşik Krallık Güney |
+| UK |UK Batı |UK Güney |
 | Birleşik Arap Emirlikleri | BAE Kuzey | BAE Orta
 | ABD Savunma Bakanlığı |US DoD Doğu |US DoD Orta |
 | ABD Devleti |US Gov Arizona |US Gov Texas |
-| ABD Devleti |US Gov Iowa |ABD Devleti Virginia |
-| ABD Devleti |ABD Devleti Virginia |US Gov Texas |
+| ABD Devleti |US Gov Iowa |US Gov Virginia |
+| ABD Devleti |US Gov Virginia |US Gov Texas |
 
 Tablo 1-Azure bölgesel çiftlerinin eşleme
 

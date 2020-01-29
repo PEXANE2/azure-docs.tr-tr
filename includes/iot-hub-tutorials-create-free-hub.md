@@ -41,7 +41,7 @@ Azure portalı kullanarak IoT Hub oluşturmak için:
 
     ![Hub ayarları 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)
 
-1.           **Oluştur**'a tıklayın. Hub’ın oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**'a tıklayın. Hub’ın oluşturulması birkaç dakika sürebilir.
 
     ![Hub ayarları 3](media/iot-hub-tutorials-create-free-hub/hubdefinition-3.png)
 

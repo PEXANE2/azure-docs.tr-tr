@@ -54,7 +54,7 @@ ms.locfileid: "72783613"
 |                     |                         |
 | Brezilya Güney        | 2                       |
 |                     |                         |
-| ABD Hükümeti Virginia     | 2                       |
+| US Gov Virginia     | 2                       |
 | US Gov Teksas        | 2                       |
 | US Gov Arizona      | 2                       |
 | US DoD Orta      | 2                       |

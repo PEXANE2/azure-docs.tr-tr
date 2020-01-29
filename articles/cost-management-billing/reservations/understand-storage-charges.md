@@ -8,7 +8,7 @@ ms.date: 11/05/2019
 ms.author: tamram
 ms.openlocfilehash: 40fba61b173979fb9362de73a87d6192aac9941d
 ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/15/2020
 ms.locfileid: "75995318"
@@ -33,7 +33,7 @@ Bir kaynağı sildiğinizde rezervasyon indirimi, belirtilen kapsamdaki başka b
 
 Aşağıdaki örneklerde, dağıtımlara bağlı olarak Azure Depolama ayrılmış kapasite indiriminin nasıl uygulandığı gösterilmektedir.
 
-1 yıllık bir dönem için Batı ABD 2 bölgesinde 100 TB ayrılmış kapasite satın aldığınızı düşünelim. Rezervasyonunuz, sık erişim katmanındaki yerel olarak yedekli depolamayı (LRS) kapsıyor.
+1 yıllık bir dönem için ABD Batı 2 bölgesinde 100 TB ayrılmış kapasite satın aldığınızı düşünelim. Rezervasyonunuz, sık erişim katmanındaki yerel olarak yedekli depolamayı (LRS) kapsıyor.
 
 Bu örnek rezervasyonun maliyetinin 18.540 ABD doları olduğunu düşünelim. Tutarın tamamını peşin ödeyebilir veya sonraki 12 ay boyunca aylık 1.545 ABD doları taksitler halinde ödeme yapabilirsiniz.
 

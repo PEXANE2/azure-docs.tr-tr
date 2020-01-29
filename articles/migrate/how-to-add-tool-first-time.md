@@ -50,7 +50,7 @@ Azure aboneliğinde yeni bir Azure geçişi projesi ayarlayın ve bir araç ekle
     Japonya  | Japonya Doğu veya Japonya Batı
     Birleşik Krallık | UK Güney veya UK Batı
     Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
-    Kanada | Orta Kanada
+    Kanada | Kanada Orta
     Hindistan  | Hindistan Orta veya Hindistan Güney
     Avustralya | Avustralya Güneydoğu
 

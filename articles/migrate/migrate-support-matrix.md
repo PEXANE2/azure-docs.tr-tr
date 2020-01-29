@@ -77,7 +77,7 @@ Bir dizi coğrafi bölgedeki Azure geçişi projesi oluşturabilirsiniz. Yalnız
 
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
-Azure Devlet Kurumları | ABD Hükümeti Virginia
+Azure Devlet Kurumları | US Gov Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
 Brezilya | Brezilya Güney

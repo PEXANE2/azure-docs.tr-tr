@@ -46,7 +46,7 @@ Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmı
     * Güney Afrika Kuzey
     * Güneydoğu Asya 
     * BAE Kuzey
-    * Birleşik Krallık Batı  
+    * UK Batı  
     * Batı Avrupa
     * Batı ABD 
     * Batı ABD 2

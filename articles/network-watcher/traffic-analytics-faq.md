@@ -15,7 +15,7 @@ ms.date: 03/08/2018
 ms.author: kumud
 ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
 ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/11/2019
 ms.locfileid: "73907104"
@@ -67,7 +67,7 @@ Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişi
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 - Kanada Orta
-- Batı Orta ABD
+- Orta Batı ABD
 - Doğu ABD
 - Doğu ABD 2
 - Orta Kuzey ABD
@@ -79,8 +79,8 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Batı Avrupa
 - Kuzey Avrupa
 - Brezilya Güney
-- Birleşik Krallık Batı
-- Birleşik Krallık Güney
+- UK Batı
+- UK Güney
 - Avustralya Doğu
 - Avustralya Güneydoğu 
 - Doğu Asya
@@ -90,12 +90,12 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Güney Hindistan
 - Japonya Doğu
 - Japonya Batı
-- ABD Devleti Virginia
+- US Gov Virginia
 - Çin Doğu 2
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 - Kanada Orta
-- Batı Orta ABD
+- Orta Batı ABD
 - Doğu ABD
 - Doğu ABD 2
 - Orta Kuzey ABD
@@ -106,8 +106,8 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 - Fransa Orta
 - Batı Avrupa
 - Kuzey Avrupa
-- Birleşik Krallık Batı
-- Birleşik Krallık Güney
+- UK Batı
+- UK Güney
 - Avustralya Doğu
 - Avustralya Güneydoğu
 - Doğu Asya
@@ -115,7 +115,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 - Kore Orta
 - Orta Hindistan
 - Japonya Doğu
-- ABD Devleti Virginia
+- US Gov Virginia
 - Çin Doğu 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>NSG 'ler, akış günlüklerini çalışma alanım 'ın farklı bölgelerinde mi etkinleştirebilirim?

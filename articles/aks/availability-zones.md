@@ -37,7 +37,7 @@ AKS kümeleri Şu anda şu bölgelerde kullanılabilirlik alanları kullanılara
 * Japonya Doğu
 * Kuzey Avrupa
 * Güneydoğu Asya
-* Birleşik Krallık Güney
+* UK Güney
 * Batı Avrupa
 * Batı ABD 2
 

@@ -73,7 +73,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | Genel | Küresel (Translator Metin Çevirisi & Bing) | `https://api.cognitive.microsoft.com` |
 | | Avustralya Doğu | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brezilya Güney | `https://brazilsouth.api.cognitive.microsoft.com` |
-| | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
+| | Kanada Orta | `https://canadacentral.api.cognitive.microsoft.com` |
 | | Orta ABD | `https://centralus.api.cognitive.microsoft.com` |
 | | Doğu Asya | `https://eastasia.api.cognitive.microsoft.com` |
 | | Doğu ABD | `https://eastus.api.cognitive.microsoft.com` |
@@ -87,12 +87,12 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | | Güney Afrika Kuzey | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | Orta Güney ABD | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Güneydoğu Asya | `https://southeastasia.api.cognitive.microsoft.com` |
-| | Birleşik Krallık Güney | `https://uksouth.api.cognitive.microsoft.com` |
-| | Batı Orta ABD | `https://westcentralus.api.cognitive.microsoft.com` |
+| | UK Güney | `https://uksouth.api.cognitive.microsoft.com` |
+| | Orta Batı ABD | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Batı Avrupa | `https://westeurope.api.cognitive.microsoft.com` |
 | | Batı ABD | `https://westus.api.cognitive.microsoft.com` |
 | | Batı ABD 2 | `https://westus2.api.cognitive.microsoft.com` |
-| US Gov | ABD Devleti Virginia | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | US Gov Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Çin | Çin Doğu 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Çin Kuzey | `https://chinanorth.api.cognitive.azure.cn` |
 

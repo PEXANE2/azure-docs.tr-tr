@@ -171,17 +171,17 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 |Azure bölgesi |Bölgesel uç nokta ön eki|
 |---|---|
 | **ABD ve Kanada** | |
-|Batı Orta ABD | https:\//westcentralus.monitoring.azure.com/ |
+|Orta Batı ABD | https:\//westcentralus.monitoring.azure.com/ |
 |Batı ABD 2       | https:\//westus2.monitoring.azure.com/ |
 |Orta Kuzey ABD | https:\//northcentralus.monitoring.azure.com
 |Orta Güney ABD| https:\//southcentralus.monitoring.azure.com/ |
 |Orta ABD      | https:\//centralus.monitoring.azure.com |
-|Orta Kanada | https:\//canadacentral.Monitoring.Azure.Comc
+|Kanada Orta | https:\//canadacentral.Monitoring.Azure.Comc
 |Doğu ABD| https:\//eastus.monitoring.azure.com/ |
 | **Avrupa** | |
 |Kuzey Avrupa    | https:\//northeurope.monitoring.azure.com/ |
 |Batı Avrupa     | https:\//westeurope.monitoring.azure.com/ |
-|Birleşik Krallık Güney | https:\//uksouth.monitoring.azure.com
+|UK Güney | https:\//uksouth.monitoring.azure.com
 |Fransa Orta | https:\//francecentral.monitoring.azure.com |
 | **Doğu** | |
 |Güney Afrika Kuzey | https:\//southafricanorth.monitoring.azure.com
