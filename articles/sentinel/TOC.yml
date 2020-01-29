@@ -110,6 +110,8 @@
           href: connect-azure-stack.md
     - name: Birden çok kiracı (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Müşteri tarafından yönetilen anahtarları (CMK) ayarlama
+      href: customer-managed-keys.md
     - name: Uyarıdan olay oluşturma
       href: create-incidents-from-alerts.md
     - name: Avlanma

@@ -404,6 +404,8 @@
               href: active-directory-optional-claims.md
             - name: Belirteç ömrünü yapılandırma
               href: active-directory-configurable-token-lifetimes.md
+            - name: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Uygulama yapılandırması
           items:
             - name: Yeni Azure portalı uygulama kaydı eğitim kılavuzu

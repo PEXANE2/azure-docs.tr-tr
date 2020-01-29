@@ -503,16 +503,20 @@
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
             - name: Apache Ambari eski uyarıları
               href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
+            - name: Apache Ambari dizin uyarıları
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
             - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS sorunlarını giderme
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Apache Hadoop YARN sorunlarını giderme
               href: ./hdinsight-troubleshoot-yarn.md
+            - name: Yarn günlüğünden geçersiz BCFile hatası
+              href: ./hadoop/troubleshoot-yarn-log-invalid-bcfile.md
             - name: Data Lake Store dosyalarında sorun giderme
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
-            - name: Apache Ambari dizin uyarıları
-              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
+            - name: Hizmetler başlatılırken bağlantı noktası çakışması
+              href: ./hadoop/troubleshoot-port-conflict.md
 - name: Apache Kafka
   items:
     - name: Genel Bakış
@@ -870,5 +874,5 @@
           items:
             - name: ESP Kimlik doğrulaması sorunları
               href: ./domain-joined/domain-joined-authentication-issues.md
-            - name: ESP ile Zeppelin’de oturum açılamıyor
-              href: ./domain-joined/domain-joined-zeppelin-signin.md
+            - name: Küme oluşturma DomainNotFound ile başarısız oluyor
+              href: ./domain-joined/troubleshoot-domainnotfound.md

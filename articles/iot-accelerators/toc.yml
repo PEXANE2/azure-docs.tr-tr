@@ -221,6 +221,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Kaynaklar
   items:
+    - name: Destek ve yardım seçenekleri
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Uzaktan izleme
       items:
         - name: Geliştirici başvuru kılavuzu (.NET)
@@ -252,7 +254,7 @@
     - name: Başvuru Mimarisi
       href: iot-accelerators-architecture-overview.md
       items:
-        - name: İndirme
+        - name: Karşıdan Yükle
           href: 'https://aka.ms/iotrefarchitecture'
         - name: İş ortağı uygulamaları
           items:

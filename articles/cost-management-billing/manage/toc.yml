@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: Ek abonelikler oluşturma
           href: create-subscription.md
+        - name: CSP aboneliklerini aktarma
+          href: transfer-subscriptions-subscribers-csp.md
         - name: Abonelik bilgilerini dışarı aktarma
           href: export-subscriptions.md
     - name: Kurumsal Sözleşme aboneliklerini yönetme
