@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4819f34e16efebcdab734270988382e086c44e36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479708"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840511"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
 
@@ -34,15 +34,15 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| defaultLanguageCode   |  Döndürülecek dili gösteren bir dize. Hizmet, belirtilen bir dilde tanıma sonuçları döndürür. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/><br/>Desteklenen diller şunlardır: <br/>*en* -İngilizce (varsayılan) <br/> *zh* -Basitleştirilmiş Çince|
-|visualFeatures |   Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li><li>*Açıklama* -tam İngilizce cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>    *ImageType* -resmin küçük resim veya çizgi çizimi olduğunu algılar.</li><li>  *Color* -vurgu rengini, baskın rengi ve görüntünün siyah & beyaz olduğunu belirler.</li><li>*yetişkin* -görüntünün doğası halinde pornografik (çıplaklık veya bir sex Yasası gösterir) olduğunu algılar. Cinsel ve kışkırtıcı içerik de algılanır.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır.|
-| Bilgileri   | Hangi alana özgü ayrıntıların dönebileceğini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır: <ul><li>*ünlüler* -görüntüde algılanırsa ünlülikler tanımlar.</li><li>yer *işaretleri* -görüntüde algılanırsa yer işaretlerini tanımlar. </li></ul> |
+| defaultLanguageCode   |  Döndürülecek dili gösteren bir dize. Hizmet, belirtilen bir dilde tanıma sonuçları döndürür. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/><br/>Desteklenen diller şunlardır: <br/>*en* -İngilizce (varsayılan) <br/> *es* -İspanyolca <br/> *ja* -Japonca <br/> *PT* -Portekizce <br/> *zh* -Basitleştirilmiş Çince|
+| visualFeatures |  Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li>*yetişkin* -görüntünün pornografik (çıplaklık veya bir sex Yasası gösterir) ya da Gori (Extreme şiddet veya kan) olup olmadığını algılar. Cinsel, kışkırtıcı içerik (diğer adıyla) de algılanır.</li><li>*markalar* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli markalarını algılar. *Markalar* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li> *Color* -vurgu rengini, baskın rengi ve görüntünün siyah & beyaz olduğunu belirler.</li><li>*Açıklama* -desteklenen dillerde tam bir cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>  *ImageType* -resmin küçük resim veya çizgi çizimi olduğunu algılar.</li><li>  *nesneler* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli nesneleri algılar. *Nesneler* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır.|
+| details   | Hangi alana özgü ayrıntıların dönebileceğini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır: <ul><li>*ünlüler* -görüntüde algılanırsa ünlülikler tanımlar.</li><li>yer *işaretleri* -görüntüde algılanırsa yer işaretlerini tanımlar. </li></ul> |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
 | Giriş adı      | Açıklama                                          |
 |---------------|------------------------------------------------------|
-| image         | Karmaşık tür. Şu anda, ```imageAction``` ```none```dışında bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_ımages" alanı ile birlikte çalışıyor. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
+| image         | Karmaşık tür. Şu anda, ```imageAction``` ```none```dışında bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_images" alanı ile birlikte çalışıyor. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
 
 
 
@@ -353,138 +353,163 @@ Yalnızca yer işaretleri veya ünlüler gibi alt düzey özelliklerle çıkış
 
 ```json
 {
-    "values": [
-        {
-            "recordId": "1",
-            "data": {
-                "categories": [
-                    {
-                        "name": "abstract_",
-                        "score": 0.00390625
-                    },
-                    {
-                        "name": "people_",
-                        "score": 0.83984375,
-                        "detail": {
-                            "celebrities": [
-                                {
-                                    "name": "Satya Nadella",
-                                    "faceBoundingBox": [
-                                        {
-                                            "x": 273,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 431
-                                        },
-                                        {
-                                            "x": 273,
-                                            "y": 431
-                                        }
-                                    ],
-                                    "confidence": 0.999028444
-                                }
-                            ],
-                            "landmarks": [
-                                {
-                                    "name": "Forbidden City",
-                                    "confidence": 0.9978346
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "adult": {
-                    "isAdultContent": false,
-                    "isRacyContent": false,
-                    "adultScore": 0.0934349000453949,
-                    "racyScore": 0.068613491952419281
-                },
-                "tags": [
-                    {
-                        "name": "person",
-                        "confidence": 0.98979085683822632
-                    },
-                    {
-                        "name": "man",
-                        "confidence": 0.94493889808654785
-                    },
-                    {
-                        "name": "outdoor",
-                        "confidence": 0.938492476940155
-                    },
-                    {
-                        "name": "window",
-                        "confidence": 0.89513939619064331
-                    }
-                ],
-                "description": {
-                    "tags": [
-                        "person",
-                        "man",
-                        "outdoor",
-                        "window",
-                        "glasses"
-                    ],
-                    "captions": [
+  "values": [
+    {
+      "recordId": "1",
+      "data": {
+        "categories": [
+          {
+            "name": "abstract_",
+            "score": 0.00390625
+          },
+          {
+            "name": "people_",
+            "score": 0.83984375,
+            "detail": {
+              "celebrities": [
+                {
+                  "name": "Satya Nadella",
+                  "faceBoundingBox": [
                         {
-                            "text": "Satya Nadella sitting on a bench",
-                            "confidence": 0.48293603002174407
+                            "x": 273,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 431
+                        },
+                        {
+                            "x": 273,
+                            "y": 431
                         }
-                    ]
-                },
-                "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
-                "metadata": {
-                    "width": 1500,
-                    "height": 1000,
-                    "format": "Jpeg"
-                },
-                "faces": [
-                    {
-                        "age": 44,
-                        "gender": "Male",
-                        "faceBoundingBox": [
-                            {
-                                "x": 1601,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 447
-                            },
-                            {
-                                "x": 1601,
-                                "y": 447
-                            }
-                        ]
-                    }
-                ],
-                "color": {
-                    "dominantColorForeground": "Brown",
-                    "dominantColorBackground": "Brown",
-                    "dominantColors": [
-                        "Brown",
-                        "Black"
                     ],
-                    "accentColor": "873B59",
-                    "isBwImg": false
-                    },
-                "imageType": {
-                    "clipArtType": 0,
-                    "lineDrawingType": 0
+                  "confidence": 0.999028444
                 }
+              ],
+              "landmarks": [
+                {
+                  "name": "Forbidden City",
+                  "confidence": 0.9978346
+                }
+              ]
             }
-        }
-    ]
+          }
+        ],
+        "adult": {
+          "isAdultContent": false,
+          "isRacyContent": false,
+          "isGoryContent": false,
+          "adultScore": 0.0934349000453949,
+          "racyScore": 0.068613491952419281,
+          "goreScore": 0.08928389008070282
+        },
+        "tags": [
+          {
+            "name": "person",
+            "confidence": 0.98979085683822632
+          },
+          {
+            "name": "man",
+            "confidence": 0.94493889808654785
+          },
+          {
+            "name": "outdoor",
+            "confidence": 0.938492476940155
+          },
+          {
+            "name": "window",
+            "confidence": 0.89513939619064331
+          }
+        ],
+        "description": {
+          "tags": [
+            "person",
+            "man",
+            "outdoor",
+            "window",
+            "glasses"
+          ],
+          "captions": [
+            {
+              "text": "Satya Nadella sitting on a bench",
+              "confidence": 0.48293603002174407
+            }
+          ]
+        },
+        "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
+        "metadata": {
+          "width": 1500,
+          "height": 1000,
+          "format": "Jpeg"
+        },
+        "faces": [
+          {
+            "age": 44,
+            "gender": "Male",
+            "faceBoundingBox": [
+                {
+                    "x": 1601,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 447
+                },
+                {
+                    "x": 1601,
+                    "y": 447
+                }
+            ]
+          }
+        ],
+        "color": {
+          "dominantColorForeground": "Brown",
+          "dominantColorBackground": "Brown",
+          "dominantColors": [
+            "Brown",
+            "Black"
+          ],
+          "accentColor": "873B59",
+          "isBwImg": false
+        },
+        "imageType": {
+          "clipArtType": 0,
+          "lineDrawingType": 0
+        },
+        "objects": [
+          {
+            "rectangle": {
+              "x": 25,
+              "y": 43,
+              "w": 172,
+              "h": 140
+            },
+            "object": "person",
+            "confidence": 0.931
+          }
+        ],
+        "brands":[  
+           {  
+              "name":"Microsoft",
+              "rectangle":{  
+                 "x":20,
+                 "y":97,
+                 "w":62,
+                 "h":52
+              }
+           }
+        ]
+      }
+    }
+  ]
 }
 ```
 
@@ -492,7 +517,7 @@ Yalnızca yer işaretleri veya ünlüler gibi alt düzey özelliklerle çıkış
 ## <a name="error-cases"></a>Hata durumları
 Aşağıdaki hata durumlarında hiçbir öğe ayıklanmaz.
 
-| Hata kodu | Açıklama |
+| Hata Kodu | Açıklama |
 |------------|-------------|
 | NotSupportedLanguage | Belirtilen dil desteklenmiyor. |
 | InvalidImageUrl | Görüntü URL 'SI hatalı biçimlendirildi veya erişilebilir durumda değil.|

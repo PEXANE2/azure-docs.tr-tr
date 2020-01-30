@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895848"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773045"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
@@ -30,7 +30,7 @@ Aşağıdaki bölümler, bu uygulama şablonlarının yeteneklerini anlatmaktad�
 
 ## <a name="connected-logistics"></a>Bağlı lojistik
 
-Küresel lojistik harcamanın 2020 içinde $10.6 TN 'e ulaşması beklenmektedir. Bu harcama ve nakliye sağlayıcılarının çoğunluğu için mal hesaplarının taşınması, yoğun rekabet baskısı ve kısıtlamalarıdır.
+Küresel lojistik harcamanın 2020 ' de $10.600.000.000.000 'e ulaşması beklenir. Bu harcama ve nakliye sağlayıcılarının çoğunluğu için mal hesaplarının taşınması, yoğun rekabet baskısı ve kısıtlamalarıdır.
 
 Sıcaklık, nem, eğim, darbe, ışık ve sevkıyatın bulunduğu konum gibi çevresel koşulları toplamak ve izlemek için IoT sensörlerini kullanabilirsiniz. IoT sensörlerinden ve cihazlarından toplanan Telemetriyi, bulut tabanlı iş zekası sistemlerinde hava durumu ve trafik bilgileri gibi diğer veri kaynaklarıyla birleştirebilirsiniz.
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950876"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840137"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
 
-Kaydolma, oturum açma ve profil düzenlemesi gibi daha yaygın kullanıcı deneyimleri için [Kullanıcı akışlarını](active-directory-b2c-reference-policies.md) Azure Active Directory B2C (Azure AD B2C) kullanabilirsiniz. Bu öğreticideki bilgiler, kendi HTML ve CSS dosyalarınızı kullanarak bu deneyimlerin [Kullanıcı arabirimini (UI) nasıl özelleştireceğinizi](customize-ui-overview.md) öğrenmenize yardımcı olur.
+Kaydolma, oturum açma ve profil düzenlemesi gibi daha yaygın kullanıcı deneyimleri için [Kullanıcı akışlarını](user-flow-overview.md) Azure Active Directory B2C (Azure AD B2C) kullanabilirsiniz. Bu öğreticideki bilgiler, kendi HTML ve CSS dosyalarınızı kullanarak bu deneyimlerin [Kullanıcı arabirimini (UI) nasıl özelleştireceğinizi](customize-ui-overview.md) öğrenmenize yardımcı olur.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 
@@ -71,7 +71,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 
     ![Azure Blob depolama 'daki CORS yapılandırma sayfası Azure portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. **Kaydet** düğmesine tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 
 ### <a name="create-the-customization-files"></a>Özelleştirme dosyalarını oluşturma
 
@@ -166,4 +166,4 @@ Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
 > * Özelleştirilmiş kullanıcı arabirimini test etme
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C dil özelleştirmesi](active-directory-b2c-reference-language-customization.md)
+> [Azure Active Directory B2C dil özelleştirmesi](user-flow-language-customization.md)

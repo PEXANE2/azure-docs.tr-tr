@@ -3,12 +3,12 @@ title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513873"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773245"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -443,7 +443,7 @@ Bir kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 | Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceName veya Resourceıdentifier |Evet |string |Adı veya bir kaynağın benzersiz tanımlayıcısı. Geçerli şablon kaynağında başvuran bir parametre olarak yalnızca kaynak adı belirtin. Daha önce dağıtılan bir kaynağa başvururken kaynak KIMLIĞI sağlayın. |
+| resourceName veya Resourceıdentifier |Evet |string |Adı veya bir kaynağın benzersiz tanımlayıcısı. Geçerli şablon kaynağında başvuran bir parametre olarak yalnızca kaynak adı belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
 | apiVersion |Hayır |string |Belirtilen kaynak API sürümü. Kaynak, aynı şablonu içinde sağlanan değil, bu parametreyi dahil edin. Genellikle, biçiminde **yyyy-aa-gg**. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
 | 'Full' |Hayır |string |Tam kaynak nesnesini döndürülüp döndürülmeyeceğini belirleyen değer. Belirtmezseniz `'Full'`, yalnızca kaynak özellikleri nesne döndürülür. Tam nesne, konum ve kaynak kimliği gibi değerlerini içerir. |
 
@@ -460,11 +460,11 @@ Genellikle, kullandığınız **başvuru** blob uç noktası URI'si veya tam etk
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -476,11 +476,11 @@ Kullanım `'Full'` özellikleri şemanın parçası olmayan kaynak değerleri ge
 {
   "type": "Microsoft.KeyVault/vaults",
   "properties": {
-    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
-        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [
             "all"
@@ -520,10 +520,10 @@ Aynı şablonda dağıtılan bir kaynağa başvururken kaynak KIMLIĞI ' ni beli
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-Hangi kaynağı başvurduğunuz hakkında belirsizliğe engel olmak için tam bir kaynak adı sağlayabilirsiniz.
+Hangi kaynağı başvurduğunuz hakkında belirsizliğe engel olmak için, tam nitelikli kaynak tanımlayıcısı sağlayabilirsiniz.
 
 ```json
-"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
 ```
 
 Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile birleştirme sırası yalnızca iki birleştirme değildir. Bunun yerine, ad alanından sonra en az belirli bir *türe/ad* çiftinden en belirgin bir dizi kullanın:
@@ -534,6 +534,8 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` doğru değil
 
+Herhangi bir kaynak KIMLIĞININ oluşturulmasını basitleştirmek için, `concat()` işlevi yerine bu belgede açıklanan `resourceId()` işlevleri kullanın.
+
 ### <a name="get-managed-identity"></a>Yönetilen kimliği al
 
 [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , bazı kaynaklar için örtük olarak oluşturulan [uzantı kaynak türleridir](../management/extension-resource-types.md) . Yönetilen kimlik şablonda açıkça tanımlanmadığı için, kimliğin uygulandığı kaynağa başvurmanız gerekir. Örtük olarak oluşturulan kimlik dahil olmak üzere tüm özellikleri almak için `Full` kullanın.
@@ -541,7 +543,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>Başvuru örneği

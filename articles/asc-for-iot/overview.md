@@ -1,6 +1,6 @@
 ---
 title: IoT için Azure Güvenlik Merkezi nedir? Microsoft Docs
-description: IoT özellikleri ve hizmeti için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin ve IoT için Azure Güvenlik Merkezi 'nin tüm IoT varlıklarınız genelinde kapsamlı IoT güvenliği nasıl sağladığını anlayın.
+description: IoT özellikleri ve hizmetleri için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin ve IoT için Azure Güvenlik Merkezi 'nin kapsamlı IoT güvenliği nasıl sağladığını anlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1b428af1f1c01a3b1b1429f51d76ebfdeb4c1cc6
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664973"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766515"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi’ne giriş
 

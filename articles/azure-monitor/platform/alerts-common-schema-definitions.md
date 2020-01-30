@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552564"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765670"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
@@ -87,7 +87,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 | resolvedDateTime | Uyarı örneği için izleyici koşulunun UTC olarak **çözümlendi** olarak ayarlandığı tarih ve saat. Şu anda yalnızca ölçüm uyarıları için geçerlidir.|
 | açıklama | Uyarı kuralında tanımlandığı şekilde açıklama. |
 |essentialsVersion| Essentials bölümünün sürüm numarası.|
-|alertContextVersion | @No__t_0 bölümü için sürüm numarası. |
+|alertContextVersion | `alertContext` bölümü için sürüm numarası. |
 
 **Örnek değerler**
 ```json
@@ -151,7 +151,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 ### <a name="log-alerts"></a>Günlük uyarıları
 
 > [!NOTE]
-> Özel bir JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, yük şemasını aşağıdaki gibi açıklanan birine geri döndürür. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bunu, bayrağını `IncludedSearchResults` denetleyerek belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
+> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, e-posta konusu ve/veya yük şemasının aşağıdaki gibi açıklanacak şekilde geri dönmesiyle yapılır. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bunu, bayrağını `IncludedSearchResults`denetleyerek belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

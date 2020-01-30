@@ -1,19 +1,19 @@
 ---
 title: Tablo API'si için Azure Cosmos DB küresel dağıtım öğreticisi
 description: Genel dağıtımın Azure Cosmos DB Tablo API'si hesaplarında nasıl çalıştığını ve tercih edilen bölge listesinin nasıl yapılandırılacağını öğrenin
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e6cd574d1041908e91ad5e6629403c0e40d11c03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 148e17edbb8be566db611216f444fedad514e638
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870369"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770602"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Tablo API’sini kullanarak Azure Cosmos DB genel dağıtımını ayarlama
 

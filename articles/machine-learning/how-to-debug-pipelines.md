@@ -9,21 +9,21 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 991f7ebf51be5f805a8b12fa0af0fefeff0ef582
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309566"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769119"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenimi ardışık düzenleri hata ayıklama ve sorunlarını giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning tasarımcısında](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi](concept-ml-pipelines.md) işlem hatlarında hata ayıklamayı ve sorun gidermeyi öğreneceksiniz.
-
+Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve [Azure Machine Learning Tasarımcısı 'nda (Önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi](concept-ml-pipelines.md) işlem hatlarında hata ayıklamayı ve sorun gidermeyi öğreneceksiniz.
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 'da hata ayıklama ve sorun giderme
-Aşağıdaki bölümler, işlem hatları oluştururken ortak olan genel bakışa genel bakış ve bir işlem hattında çalışan kodunuzda hata ayıklama için farklı stratejiler sağlar. İşlem hattını beklenen şekilde çalıştırmak için bir işlem hattı alırken sorun yaşadığınızda aşağıdaki ipuçlarını kullanın. 
+Aşağıdaki bölümler, işlem hatları oluştururken ortak olan genel bakışa genel bakış ve bir işlem hattında çalışan kodunuzda hata ayıklama için farklı stratejiler sağlar. İşlem hattını beklenen şekilde çalıştırmak için bir işlem hattı alırken sorun yaşadığınızda aşağıdaki ipuçlarını kullanın.
+
 ### <a name="testing-scripts-locally"></a>Betikleri yerel olarak test etme
 
 Bir işlem hattındaki en yaygın hatalardan biri, ekli bir betiğin (veri temizleme betiği, Puanlama betiği, vb.) amaçlanan gibi çalışmadığı veya uzak işlem bağlamında hata ayıklamanın Azure makinesindeki çalışma alanınızda hata ayıklaması zor olan çalışma zamanı hataları içerdiğinde Eğitim Studio. 
@@ -79,7 +79,49 @@ Aşağıdaki tabloda, potansiyel çözümlerle birlikte işlem hattı geliştirm
 | İşlem hattı adımları yeniden kullanma | Adım yeniden kullanım varsayılan olarak etkindir, ancak işlem hattı adımında devre dışı bırakılmadığınızdan emin olun. Yeniden kullanım devre dışıysa, adımdaki `allow_reuse` parametresi `False`olarak ayarlanır. |
 | İşlem hattı gereksiz yere yeniden çalıştırılıyor | Adımların yalnızca temel alınan verileri veya betikleri değiştiğinde yeniden çalıştırılması için dizinlerinizi her bir adımla ayırın. Birden çok adım için aynı kaynak dizinini kullanırsanız, gereksiz yeniden çalıştırma işlemleri yaşayabilirsiniz. İşlem hattı adım nesnesindeki `source_directory` parametresini kullanarak bu adım için yalıtılmış dizininizi işaret edin ve birden çok adım için aynı `source_directory` yolunu kullanmadığınız emin olun. |
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında hata ayıklama ve sorun giderme
+### <a name="logging-options-and-behavior"></a>Günlüğe kaydetme seçenekleri ve davranışı
+
+Aşağıdaki tabloda, işlem hatları için farklı hata ayıklama seçenekleri sağlanmıştır. Burada yalnızca Azure Machine Learning, Python ve OpenCensus seçeneklerinin yanı sıra diğer seçenekler mevcut olduğundan, kapsamlı bir liste değildir.
+
+| Kitaplık                    | Tür   | Örnek                                                          | Hedef                                  | Kaynaklar                                                                                                                                                                                                                                                                                                                    |
+|----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Machine Learning SDK | Ölçüm | `run.log(name, val)`                                             | Azure Machine Learning Portal Kullanıcı arabirimi             | [Denemeleri izleme](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml. Core. Run sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Python yazdırma/günlüğe kaydetme    | Günlük    | `print(val)`<br>`logging.info(message)`                          | Sürücü günlükleri, Azure Machine Learning Tasarımcısı | [Denemeleri izleme](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python günlüğü](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Günlük    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-izlemeler                | [Application Insights hata ayıklama işlem hatları](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure İzleyici Dışarı Aktarıcıları](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python günlüğü tanıtım rehberi](https://docs.python.org/3/howto/logging-cookbook.html) |
+
+#### <a name="logging-options-example"></a>Günlüğe kaydetme seçenekleri örneği
+
+```python
+import logging
+
+from azureml.core.run import Run
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+run = Run.get_context()
+
+# Azure ML Scalar value logging
+run.log("scalar_value", 0.95)
+
+# Python print statement
+print("I am a python print statement, I will be sent to the driver logs.")
+
+# Initialize python logger
+logger = logging.getLogger(__name__)
+logger.setLevel(args.log_level)
+
+# Plain python logging statements
+logger.debug("I am a plain debug statement, I will be sent to the driver logs.")
+logger.info("I am a plain info statement, I will be sent to the driver logs.")
+
+handler = AzureLogHandler(connection_string='<connection string>')
+logger.addHandler(handler)
+
+# Python logging with OpenCensus AzureLogHandler
+logger.warning("I am an OpenCensus warning statement, find me in Application Insights!")
+logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
+``` 
+
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında hata ayıklama ve sorun giderme (Önizleme)
 
 Bu bölümde, tasarımcıda işlem hatlarında sorun giderme hakkında genel bakış sunulmaktadır.
 Tasarımcıda oluşturulan işlem hatları için, yazma sayfasında ya da işlem hattı çalıştırma ayrıntısı sayfasında **günlük dosyalarını** bulabilirsiniz.
@@ -103,6 +145,9 @@ Ayrıca, işlem **hatları** veya **denemeleri** bölümlerindeki işlem hattı 
 1. Önizleme bölmesinde herhangi bir modül seçin.
 1. Özellikler bölmesinde **Günlükler** sekmesine gidin.
 1. Günlük dosyasını seçin `70_driver_log.txt`
+
+## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights hata ayıklama ve sorun giderme
+OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilgi için şu kılavuza bakın: [Application Insights Machine Learning işlem hatlarında hata ayıklama ve sorun giderme](how-to-debug-pipelines-application-insights.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,21 +1,20 @@
 ---
 title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
-description: Service Bus varlıklarını izlemek için Azure Izleyici 'yi kullanma
+description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
-manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d25bdf6ff8e790466f3a28e3b6043e347d74198
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261850"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773542"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
@@ -63,11 +62,11 @@ Veri ve yönetim işlemleri istek sayısını sayar.
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-| Gelen İstekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Başarılı İstekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Sunucu Hataları|Belirli bir süre içinde Service Bus hizmetindeki bir hata nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Kullanıcı hataları (aşağıdaki alt bölüme bakın)|Kullanıcı hataları nedeniyle, belirtilen bir süredeki işlenmedi istek sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Kısıtlanmış Istekler|Kullanım aşıldığı için kısıtlanan isteklerin sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
+| Gelen Istekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Başarılı Istekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Sunucu hataları|Belirli bir süre içinde Service Bus hizmetindeki bir hata nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Kullanıcı hataları (aşağıdaki alt bölüme bakın)|Kullanıcı hataları nedeniyle, belirtilen bir süredeki işlenmedi istek sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Kısıtlanmış Istekler|Kullanım aşıldığı için kısıtlanan isteklerin sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
 
 ### <a name="user-errors"></a>Kullanıcı hataları
 
@@ -81,18 +80,18 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-|Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
-| İletiler| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Boyut EntityName |
-| ActiveMessages| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/> Boyut EntityName |
-| Kullanılmayan iletiler| Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average <br/>Boyut EntityName |
-| Zamanlanmış mesajlar| Bir kuyruktaki/konudaki zamanlanan ileti sayısı. <br/><br/> Birim Count <br/> Toplama türü: Average  <br/> Boyut EntityName |
+|Gelen Iletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|Giden Iletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+| Mesajlar| Kuyruktaki/konudaki iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
+| ActiveMessages| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/> Boyut: EntityName |
+| Kullanılmayan iletiler| Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama <br/>Boyut: EntityName |
+| Zamanlanan mesajlar| Bir kuyruktaki/konudaki zamanlanan ileti sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: Ortalama  <br/> Boyut: EntityName |
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümü
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|ActiveConnection sayısı|Bir varlığın yanı sıra bir ad alanı etkin bağlantı sayısı.<br/><br/> Birim Count <br/> Toplama türü: Toplam <br/> Boyut EntityName|
+|ActiveConnection sayısı|Bir varlığın yanı sıra bir ad alanı etkin bağlantı sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Kaynak kullanım ölçümleri
 
@@ -101,8 +100,8 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 | Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim Percent <br/> Toplama türü: Maksimum <br/> Boyut EntityName|
-|Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim Percent <br/> Toplama türü: Maksimum <br/> Boyut EntityName|
+|Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: EntityName|
+|Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: EntityName|
 
 ## <a name="metrics-dimensions"></a>Ölçümleri boyutları
 
@@ -126,7 +125,7 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
         ![Ad alanı seçin](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. **Ölçüt Ekle**' yi seçin ve **sinyal mantığını Yapılandır** sayfasında aşağıdaki işlemleri yapın:
     1. **Sinyal türü**için **ölçümleri** seçin. 
-    2. Bir sinyal seçin. Örneğin: **Hizmet hataları**. 
+    2. Bir sinyal seçin. Örneğin: **hizmet hataları**. 
 
         ![Sunucu hatalarını seçin](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Condition **değerinden büyük** 'ı seçin.

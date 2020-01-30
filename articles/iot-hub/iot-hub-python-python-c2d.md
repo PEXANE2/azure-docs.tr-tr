@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 4cda59448856630468076ef63c51b8a216a31bd0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 53bff62795e54d88e768b3a22c8b358519b69a91
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001976"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767816"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan cihaza iletileri gönderme
 
@@ -41,7 +41,7 @@ Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -51,7 +51,7 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
 
 1. Bir metin düzenleyicisi kullanarak bir **SimulatedDevice.py** dosyası oluşturun.
 
-2. **SimulatedDevice.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
+2. **SimulatedDevice.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenleri ekleyin:
 
    ```python
     import threading
@@ -85,7 +85,7 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
     ```python
     def iothub_client_sample_run():
         try:
-            client = iothub_client_init()
+            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
             message_listener_thread = threading.Thread(target=message_listener, args=(client,))
             message_listener_thread.daemon = True
@@ -122,7 +122,7 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir P
 
 1. Bir metin düzenleyicisi kullanarak bir **SendCloudToDeviceMessage.py** dosyası oluşturun.
 
-2. **SendCloudToDeviceMessage.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
+2. **SendCloudToDeviceMessage.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenleri ekleyin:
 
     ```python
     import random

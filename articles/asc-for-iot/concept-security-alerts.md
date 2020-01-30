@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: aaf3111270687e3921d542d87981a25868842f93
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac0152d0164c3577ade3d862e9512b920c451518
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554920"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766503"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT güvenlik uyarıları için Azure Güvenlik Merkezi
 
@@ -30,11 +30,11 @@ Bir uyarı olası bir uzlaşmaya ilişkin bir gösterge olarak davranır ve ara�
 
 Bu makalede, IoT Hub ve/veya IoT cihazlarınızda tetiklenebilecek yerleşik uyarıların bir listesini bulacaksınız.
 IoT için Azure Güvenlik Merkezi, yerleşik uyarılara ek olarak beklenen IoT Hub ve/veya cihaz davranışına göre özel uyarılar tanımlamanızı sağlar.
-Daha ayrıntılı bilgi için bkz. [özel uyarılar oluşturma](quickstart-create-custom-alerts.md).
+Daha ayrıntılı bilgi için bkz. [özelleştirilebilir uyarılar](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>IoT cihazları için yerleşik uyarılar
 
-| Adı | Önem Derecesi | Veri kaynağı | Açıklama | Önerilen düzeltme adımları|                  
+| Ad | Önem Derecesi | Veri Kaynağı | Açıklama | Önerilen düzeltme adımları|                  
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Yüksek** önem derecesi|  |  |  |
 |   İkili komut satırı   | Yüksek | Aracı | Komut satırından çağrılan/yürütülen LA Linux ikilisi algılandı. Bu işlem meşru bir etkinlik veya cihazınızın güvenliğinin aşıldığını belirten bir gösterge olabilir.|   Komutunu çalıştıran kullanıcıyla birlikte gözden geçirin ve cihazın cihazda çalıştırılması beklenen bir işlem olup olmadığını denetleyin. Aksi takdirde, uyarıyı bilgi güvenliği ekibinize iletin. |
@@ -85,16 +85,16 @@ Daha ayrıntılı bilgi için bkz. [özel uyarılar oluşturma](quickstart-creat
 
 ## <a name="built-in-alerts-for-iot-hub"></a>IoT Hub için yerleşik uyarılar
 
-| Önem Derecesi | Adı                                                                         | Açıklama | Önerilen düzeltme|
+| Önem Derecesi | Ad                                                                         | Açıklama | Önerilen düzeltme|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |**Orta** önem derecesi|  |  |  |
-|  IoT Hub yeni sertifika eklendi  | Orta                                     |@No__t_0% {DescCertificateName} \' adlı bir sertifika IoT Hub \'% {DescIoTHubName} \' eklendi. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir.| 1. sertifikanın yetkili bir taraf tarafından eklendiğinden emin olun. <br> 2. yetkili bir taraf tarafından eklenmediyse, sertifikayı kaldırın ve uyarıyı kurumsal güvenlik ekibine ilerletin.  |
-|  Sertifika bir IoT Hub silindi  | Orta                             | @No__t_0% {DescCertificateName} \' adlı bir sertifika IoT Hub \'% {DescIoTHubName} \' silindi. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı bir etkinlik gösterebilir.| 1. sertifikanın yetkili bir taraf tarafından kaldırıldığından emin olun. <br> 2. sertifika yetkili bir taraf tarafından kaldırılmazsa, sertifikayı geri ekleyin ve uyarıyı kurumsal güvenlik ekibine ilerletin. |
-| IoT Hub sertifika eklemek için başarısız girişim algılandı   | Orta    | % {DescCertificateName} \' sertifikasını IoT Hub \'% {DescIoTHubName} \' \' ekleme girişimi başarısız oldu. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir.|   Sertifikaları değiştirme izinlerinin yalnızca yetkili taraflara verildiğinden emin olun.  |
-|  IoT Hub bir sertifikayı silme girişimi başarısız oldu | Orta  | % {DescCertificateName} \' IoT Hub \'% {DescIoTHubName} \' \' sertifika silme girişimi başarısız oldu. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir. |Sertifikaları değiştirme izinlerinin yalnızca yetkili bir tarafa verildiğinden emin olun.
+|  IoT Hub yeni sertifika eklendi  | Orta                                     |\'% {DescCertificateName}\' adlı bir sertifika IoT Hub \'% {DescIoTHubName}\'eklendi. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir.| 1. sertifikanın yetkili bir taraf tarafından eklendiğinden emin olun. <br> 2. yetkili bir taraf tarafından eklenmediyse, sertifikayı kaldırın ve uyarıyı kurumsal güvenlik ekibine ilerletin.  |
+|  Sertifika bir IoT Hub silindi  | Orta                             | \'% {DescCertificateName}\' adlı bir sertifika IoT Hub \'% {DescIoTHubName}\'silindi. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı bir etkinlik gösterebilir.| 1. sertifikanın yetkili bir taraf tarafından kaldırıldığından emin olun. <br> 2. sertifika yetkili bir taraf tarafından kaldırılmazsa, sertifikayı geri ekleyin ve uyarıyı kurumsal güvenlik ekibine ilerletin. |
+| IoT Hub sertifika eklemek için başarısız girişim algılandı   | Orta    | % {DescCertificateName}\' sertifikasını IoT Hub \'% {DescIoTHubName}\'\'ekleme girişimi başarısız oldu. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir.|   Sertifikaları değiştirme izinlerinin yalnızca yetkili taraflara verildiğinden emin olun.  |
+|  IoT Hub bir sertifikayı silme girişimi başarısız oldu | Orta  | % {DescCertificateName}\' IoT Hub \'% {DescIoTHubName}\'\'sertifika silme girişimi başarısız oldu. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir. |Sertifikaları değiştirme izinlerinin yalnızca yetkili bir tarafa verildiğinden emin olun.
 |**Düşük** önem derecesi|  |  |  |
 |   Algılanan IoT Hub tanılama ayarını ekleme veya düzenleme girişimi   | Düşük     | IoT Hub tanılama ayarlarını ekleme veya düzenleme girişimi algılandı. Tanılama ayarları, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı etkinlik gösterebilir.  |1. sertifikanın yetkili bir taraf tarafından kaldırıldığından emin olun.<br> 2. sertifika yetkili bir taraf tarafından kaldırılmazsa, sertifikayı geri ekleyin ve uyarıyı bilgi güvenliği ekibinize ilerletin.
-|   Algılanan IoT Hub bir tanılama ayarını silme girişimi        | Düşük      | % {Dedağılmış Temptstatusmessage}, IoT Hub \'% {Descıthubname} \' \'% {DescDiagnosticSettingName} \' tanılama ayarını ekleme veya düzenleme girişimi vardı \'. Tanılama ayarı, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye girerse araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı bir etkinlik gösterebilir. |Tanılama ayarlarını değiştirme izinlerinin yalnızca yetkili bir tarafa verildiğinden emin olun.
+|   Algılanan IoT Hub bir tanılama ayarını silme girişimi        | Düşük      | % {Dedağılmış Temptstatusmessage}, IoT Hub \'% {Descıthubname}\'\'% {DescDiagnosticSettingName}\' tanılama ayarını ekleme veya düzenleme girişimi vardı\'. Tanılama ayarı, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye girerse araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı bir etkinlik gösterebilir. |Tanılama ayarlarını değiştirme izinlerinin yalnızca yetkili bir tarafa verildiğinden emin olun.
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

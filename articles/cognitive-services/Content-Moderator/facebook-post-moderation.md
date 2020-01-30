@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936000"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774280"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
 
@@ -35,9 +35,9 @@ Bu diyagramda bu senaryonun her bileşeni gösterilmektedir:
 ![Facebook 'tan "FBListener" aracılığıyla bilgi alma ve "CMListener" aracılığıyla bilgi gönderme Content Moderator diyagramı](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> 2018 ' de Facebook, Facebook uygulamalarının daha sıkı bir şekilde bir bölümünü uyguladık. Uygulamanız Facebook gözden geçirme ekibi tarafından incelenip onaylanmamışsa, Bu öğreticinin adımlarını tamamlayameyeceksiniz.
+> 2018 ' de Facebook, Facebook uygulamaları için daha sıkı bir ilke uyguladık. Uygulamanız Facebook gözden geçirme ekibi tarafından incelenip onaylanmamışsa, Bu öğreticinin adımlarını tamamlayameyeceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Content Moderator abonelik anahtarı. Content Moderator hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 - [Facebook hesabı](https://www.facebook.com/).
@@ -87,7 +87,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
     1. **Http tetikleyicisini**belirten kutucuğa tıklayın.
     1. **FBListener** adını girin. **Yetkilendirme Düzeyi** alanı **İşlev** olarak ayarlanmalıdır.
-    1. **Oluştur**’a tıklayın.
+    1. **Oluştur**’ tıklayın.
     1. **Run. CSX** Içeriğini **fblistener/Run. CSX** içeriğiyle değiştirin
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

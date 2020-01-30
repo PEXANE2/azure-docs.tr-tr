@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037547"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772658"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Farklı bölgelerde Azure SQL Server sanal makinelerde bir kullanılabilirlik grubu yapılandırma
 
@@ -93,9 +93,26 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
 
 1. [Yeni SQL Server Windows Server yük devretme kümesine ekleyin](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
-1. Kümede bir IP adresi kaynağı oluşturun.
+1. Kümeye bir IP adresi kaynağı ekleyin.
 
-   IP adresi kaynağını Yük Devretme Kümesi Yöneticisi ' de oluşturabilirsiniz. Kullanılabilirlik grubu rolüne sağ tıklayın, **Kaynak Ekle**, **daha fazla kaynak**ve **IP adresi**' ne tıklayın.
+   IP adresi kaynağını Yük Devretme Kümesi Yöneticisi ' de oluşturabilirsiniz. Kümenin adını seçin, ardından küme **çekirdek kaynakları** altında küme adına sağ tıklayın ve **Özellikler**' i seçin: 
+
+   ![Küme özellikleri](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   **Özellikler** iletişim kutusunda, **IP adresi**altında **Ekle** ' yi seçin ve ardından uzak ağ bölgesinden küme adının IP adresini ekleyin. **IP adresi** Iletişim kutusunda **Tamam** ' ı SEÇIN ve ardından yeni IP adresini kaydetmek için **küme özellikleri** iletişim kutusunda yeniden **Tamam** ' ı seçin. 
+
+   ![Küme IP 'si Ekle](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. IP adresini çekirdek küme adı için bir bağımlılık olarak ekleyin.
+
+   Küme özelliklerini daha sonra açın ve **Bağımlılıklar** sekmesini seçin. iki IP adresi IÇIN bir veya bağımlılığı yapılandırın: 
+
+   ![Küme özellikleri](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. Kümedeki kullanılabilirlik grubu rolüne bir IP adresi kaynağı ekleyin. 
+
+   Yük Devretme Kümesi Yöneticisi ' de kullanılabilirlik grubu rolüne sağ tıklayın, **Kaynak Ekle**, **daha fazla kaynak**ve **IP adresi**Seç ' i seçin.
 
    ![IP adresi oluştur](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
 
    - Uzak veri merkezinden ağı kullanın.
    - IP adresini yeni Azure Yük dengeleyicisinden atayın. 
-
-1. SQL Server Yapılandırma Yöneticisi yeni SQL Server, [Always on kullanılabilirlik grupları 'nı etkinleştirin](https://msdn.microsoft.com/library/ff878259.aspx).
-
-1. [Yeni SQL Server güvenlik duvarı bağlantı noktalarını açın](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
-
-   Açmanız gereken bağlantı noktası numaraları ortamınıza bağlıdır. Yansıtma uç noktası ve Azure Yük Dengeleyici Sistem durumu araştırması için bağlantı noktalarını açın.
-
-1. [Yeni SQL Server kullanılabilirlik grubuna bir çoğaltma ekleyin](https://msdn.microsoft.com/library/hh213239.aspx).
-
-   Uzak bir Azure bölgesindeki bir çoğaltma için el ile yük devretme ile zaman uyumsuz çoğaltma için ayarlayın.  
 
 1. IP adresi kaynağını, dinleyici istemci erişim noktası (ağ adı) kümesine yönelik bir bağımlılık olarak ekleyin.
 
@@ -137,6 +144,17 @@ PowerShell betiğini, yeni bölgedeki yük dengeleyicide yapılandırdığınız
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
+
+1. SQL Server Yapılandırma Yöneticisi yeni SQL Server, [Always on kullanılabilirlik grupları 'nı etkinleştirin](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).
+
+1. [Yeni SQL Server güvenlik duvarı bağlantı noktalarını açın](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+
+   Açmanız gereken bağlantı noktası numaraları ortamınıza bağlıdır. Yansıtma uç noktası ve Azure Yük Dengeleyici Sistem durumu araştırması için bağlantı noktalarını açın.
+
+
+1. [Yeni SQL Server kullanılabilirlik grubuna bir çoğaltma ekleyin](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio).
+
+   Uzak bir Azure bölgesindeki bir çoğaltma için el ile yük devretme ile zaman uyumsuz çoğaltma için ayarlayın.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Birden çok alt ağ için bağlantı ayarlama
 
@@ -166,9 +184,9 @@ Bağlantıyı test ettikten sonra birincil çoğaltmayı birincil veri merkezini
 
 | Konum | Sunucu örneği | Rol | Kullanılabilirlik modu | Yük devretme modu
 | ----- | ----- | ----- | ----- | -----
-| Birincil veri merkezi | SQL-1 | Birincil | K | Otomatik
-| Birincil veri merkezi | SQL-2 | İkincil | K | Otomatik
-| İkincil veya uzak veri merkezi | SQL-3 | İkincil | En | El ile
+| Birincil veri merkezi | SQL-1 | Birincil | K | Automatic
+| Birincil veri merkezi | SQL-2 | İkincil | K | Automatic
+| İkincil veya uzak veri merkezi | SQL-3 | İkincil | En | Manual
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Planlı ve zorlamalı el ile yük devretme hakkında daha fazla bilgi

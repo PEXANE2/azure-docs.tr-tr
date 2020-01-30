@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bc00f348e9443384c7799bf227efd7309d6aeac2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702207"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834136"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -399,7 +399,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 ```
 ---
 
-## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
+## <a name="integrated-windows-authentication"></a>Tümleşik Windows kimlik doğrulaması
 
 Bir etki alanında veya Azure AD 'ye katılmış makinede bir etki alanı kullanıcısının oturum açması için tümleşik Windows kimlik doğrulaması (ıWA) kullanın.
 
@@ -413,7 +413,7 @@ Bir etki alanında veya Azure AD 'ye katılmış makinede bir etki alanı kullan
 
 - `PublicClientApplicationBuilder` geçirilen yetkilinin olması gerekir:
   - `https://login.microsoftonline.com/{tenant}/`, `tenant` kiracı KIMLIĞINI veya kiracıyla ilişkili bir etki alanını temsil eden GUID 'dir.
-  - Tüm [iş ve okul hesapları](`https://login.microsoftonline.com/organizations/`)için.
+  - Her türlü iş ve okul hesabı için: `https://login.microsoftonline.com/organizations/`.
   - Microsoft kişisel hesapları desteklenmez. Sık karşılaşılan veya/tüketicilere kiracılar kullanamazsınız.
 
 - Tümleşik Windows kimlik doğrulaması, sessiz bir akışdır:

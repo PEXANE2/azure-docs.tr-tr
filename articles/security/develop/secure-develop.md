@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513992"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834986"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar geliştirin
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -36,7 +36,7 @@ Uygulamanızın kullanılmasını amaçlamadığınız yollarla kullanılacağı
 
 Kodu iade etmeden önce, genel kod kalitesini artırmak ve hata oluşturma riskini azaltmak için [kod İncelemeleri](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) gerçekleştirin. Kod inceleme sürecini yönetmek için [Visual Studio 'yu](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) kullanabilirsiniz.
 
-### <a name="perform-static-code-analysis"></a>Statik kod analizini gerçekleştirme
+### <a name="perform-static-code-analysis"></a>Statik kod analizi gerçekleştir
 
 [Statik kod analizi](https://www.owasp.org/index.php/Static_Code_Analysis) ( *kaynak kodu analizi*olarak da bilinir) genellikle kod incelemesinin bir parçası olarak gerçekleştirilir. Statik kod analizi, ortak olmayan kodda [taınt denetimi](https://en.wikipedia.org/wiki/Taint_checking) ve [veri akışı analizi](https://en.wikipedia.org/wiki/Data-flow_analysis)gibi teknikleri kullanarak olası güvenlik açıklarını bulmak için statik kod çözümleme araçları 'nı çalıştırmayı ifade eder.
 
@@ -89,7 +89,7 @@ Bu, gerçek verilerinize daha az sayıda kişinin erişimi olduğu anlamına gel
 
 Deneme yanılma ve sözlük tabanlı tahminlere karşı savunmak için, kullanıcıların karmaşık bir parola oluşturmasını sağlamak için güçlü bir parola ilkesi uygulamanız gerekir (örneğin, 12 karakter minimum uzunluğu ve alfasayısal ve özel karakterler gerektirir).
 
-Parola ilkeleri oluşturmak ve zorlamak için bir kimlik çerçevesi kullanabilirsiniz. Azure AD B2C, [Yerleşik ilkeler](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [self servis parola sıfırlama](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)ve daha fazlasını sağlayarak parola yönetimine yardımcı olur.
+Parola ilkeleri oluşturmak ve zorlamak için bir kimlik çerçevesi kullanabilirsiniz. Azure AD B2C, [Yerleşik ilkeler](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [self servis parola sıfırlama](../../active-directory-b2c/user-flow-self-service-password-reset.md)ve daha fazlasını sağlayarak parola yönetimine yardımcı olur.
 
 Varsayılan hesapların saldırılarına karşı savunmak için tüm anahtarların ve parolaların değiştirilebilen ve kaynakları yükledikten sonra oluşturulduğunu veya değiştirildiğini doğrulayın.
 

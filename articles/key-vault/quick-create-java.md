@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995873"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769226"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault istemci kitaplığı
 
@@ -22,12 +22,12 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
 - Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
 - Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
-- SSL/TLS sertifikaları için görevleri basitleştirme ve otomatikleştirme.
+- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
 [Kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [apı başvuru belgeleri](https://azure.github.io/azure-sdk-for-java) | [Ürün belgeleri](index.yml) | [örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üstü
@@ -36,7 +36,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 
 Bu hızlı başlangıçta, bir Linux Terminal penceresinde [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Apache Maven](https://maven.apache.org) çalıştırdığınız varsayılmaktadır.
 
-## <a name="setting-up"></a>Kurulum
+## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="create-new-java-console-app"></a>Yeni Java konsol uygulaması oluşturma
 

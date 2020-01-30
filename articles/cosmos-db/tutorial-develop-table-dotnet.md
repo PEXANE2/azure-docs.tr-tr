@@ -1,19 +1,19 @@
 ---
 title: .NET Standard SDK kullanarak Tablo API'si Azure Cosmos DB
 description: Azure Cosmos DB Tablo API'si hesabında yapılandırılmış verileri nasıl depolayacağınızı ve sorguleyeceğinizi öğrenin
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 5206aa6769b8866e93e295a2cefe2a7810aa363a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720648"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770718"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK kullanarak Azure Cosmos DB Tablo API'si ve Azure Tablo depolama ile çalışmaya başlama
 
@@ -25,7 +25,7 @@ Yapılandırılmış NoSQL verilerini bulutta depolamak için Azure Cosmos DB Ta
 
 Bu öğreticide, Azure Cosmos DB Tablo API'si ve Azure Tablo depolama senaryolarıyla [.NET için Microsoft Azure Cosmos db tablo kitaplığının](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) nasıl kullanılacağını gösteren bir örnek açıklanmaktadır. Azure hizmetine özel bağlantıyı kullanmanız gerekir. Bu senaryolar, tablo oluşturmayı C# , veri eklemeyi/güncelleştirmeyi, verileri sorgulamayı ve tabloları silmeyi gösteren örnekler kullanılarak araştırılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği başarıyla tamamlamak için aşağıdakiler gerekir:
 
@@ -49,7 +49,7 @@ Visual Studio 'da yeni bir .NET konsol uygulaması oluşturun. Aşağıdaki adı
 
 1. **Proje adı** alanında, uygulamanız Için **Cosmostablesamples**gibi bir ad girin. (Gerektiğinde farklı bir ad sağlayabilirsiniz.)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 Bu örnekteki tüm kod örnekleri konsol uygulamanızın **program.cs** dosyasının Main () yöntemine eklenebilir.
 

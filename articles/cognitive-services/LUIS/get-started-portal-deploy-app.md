@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448063"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772488"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
@@ -74,6 +74,9 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 1. Uygulamanıza yazma anahtarını eklemek için aynı adımları izleyin.
 
 1. Yeni tahmin kaynağı için tablodaki yeni satırı bulun ve uç nokta URL 'sini kopyalayın. Bir tahmine yönelik olarak LUSıS API uç noktası için `HTTP GET` isteği oluşturmak üzere doğru bir şekilde oluşturulur.
+
+> [!TIP]
+> LUSıS uygulamanızı geliştirmek için etkin öğrenme kullanmak istiyorsanız **sorgu parametrelerini değiştir** ' i seçin ve **günlükleri kaydet**' i seçin. Bu eylem, `log=true` QueryString parametresini ekleyerek örnek URL 'YI değiştirir. Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
 
 ## <a name="train-the-app"></a>Uygulamayı eğitme
 

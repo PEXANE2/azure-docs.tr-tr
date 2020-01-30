@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872069"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767985"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB Dizin oluşturma ilkelerini yönetme
 
-Azure Cosmos DB, veriler her kapsayıcı için tanımlanan [Dizin oluşturma ilkelerinin](index-policy.md) dizinlenmiştir. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi herhangi bir dize veya sayı için Aralık dizinleri uygular. Bu ilke, kendi özel dizin oluşturma ilkenize göre geçersiz kılınabilir.
+Azure Cosmos DB, veriler her kapsayıcı için tanımlanan [Dizin oluşturma ilkelerinin](index-policy.md) dizinlenmiştir. Yeni oluşturulan kapsayıcıların varsayılan dizin oluşturma ilkesi tüm dizeler veya sayılar için aralık dizinlerini zorunlu tutar. Bu ilke kendi özel dizin oluşturma ilkenizle geçersiz kılınabilir.
 
 ## <a name="indexing-policy-examples"></a>Dizin oluşturma ilkesi örnekleri
 
@@ -356,7 +356,7 @@ Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğruda
 
 1. Dizin oluşturma ilkesi JSON belgesini değiştirme ( [aşağıdaki](#indexing-policy-examples)örneklere bakın)
 
-1. İşiniz bittiğinde **Kaydet**’e tıklayın.
+1. İşiniz bittiğinde **Kaydet** ' e tıklayın.
 
 ![Azure portal kullanarak dizin oluşturmayı yönetme](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>Python SDK 'sını kullanma
+## <a name="use-the-python-sdk-v3"></a>Python SDK V3 'i kullanma
 
-[Python SDK 'yı](https://pypi.org/project/azure-cosmos/) kullanırken (kullanımıyla Ilgili [Bu hızlı başlangıç](create-sql-api-python.md) için bkz.) kapsayıcı yapılandırması bir sözlük olarak yönetilir. Bu sözlükten, dizin oluşturma ilkesine ve tüm özniteliklerine erişmek mümkündür.
+[Python SDK V3](https://pypi.org/project/azure-cosmos/) (kullanımıyla Ilgili [Bu hızlı](create-sql-api-python.md) başlangıca bakın) kullanıldığında, kapsayıcı yapılandırması bir sözlük olarak yönetilir. Bu sözlükten, dizin oluşturma ilkesine ve tüm özniteliklerine erişmek mümkündür.
 
 Kapsayıcının ayrıntılarını alma
 
@@ -669,6 +669,72 @@ Kapsayıcıyı değişikliklerle güncelleştirme
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
+```
+
+## <a name="use-the-python-sdk-v4"></a>Python SDK 'Sı v4 'yi kullanma
+
+[Python SDK v4](https://pypi.org/project/azure-cosmos/)kullanılırken, kapsayıcı yapılandırması bir sözlük olarak yönetilir. Bu sözlükten, dizin oluşturma ilkesine ve tüm özniteliklerine erişmek mümkündür.
+
+Kapsayıcının ayrıntılarını alma
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+Dizin oluşturma modunu tutarlı olarak ayarlayın
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+Dahil edilen yol ve uzamsal dizin ile bir dizin oluşturma ilkesi tanımlama
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Dışlanan bir yol ile dizin oluşturma ilkesi tanımlama
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Bileşik dizin ekleme
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+Kapsayıcıyı değişikliklerle güncelleştirme
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

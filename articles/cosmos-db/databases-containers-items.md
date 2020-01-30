@@ -7,47 +7,47 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786954"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767997"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma
 
-Azure aboneliğinizde bir [Azure Cosmos DB hesabı](account-overview.md) oluşturduktan sonra veritabanları, kapsayıcılar ve öğeler oluşturarak hesabınızdaki verileri yönetebilirsiniz. Bu makalede bu varlıkların her biri açıklanmaktadır. 
+Oluşturduktan sonra bir [Azure Cosmos DB hesabı](account-overview.md) Azure aboneliğiniz kapsamındaki verileri hesabınızdaki veritabanları, kapsayıcılar ve öğeleri oluşturarak yönetebilirsiniz. Bu makalede bu varlıkların her biri açıklanır. 
 
 Aşağıdaki görüntüde Azure Cosmos DB hesabındaki farklı varlıkların hiyerarşisi gösterilmektedir:
 
-![Azure Cosmos hesabı varlıkları](./media/databases-containers-items/cosmos-entities.png)
+![Azure Cosmos hesabı varlıklar](./media/databases-containers-items/cosmos-entities.png)
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos veritabanları
 
-Hesabınızda bir veya daha fazla Azure Cosmos veritabanı oluşturabilirsiniz. Bir veritabanı bir ad alanına benzer. Veritabanı, bir dizi Azure Cosmos kapsayıcısı için yönetim birimidir. Aşağıdaki tabloda, bir Azure Cosmos veritabanının, API 'ye özgü çeşitli varlıklarla nasıl eşlendiği gösterilmektedir:
+Hesabınızda bir veya daha fazla Azure Cosmos veritabanı oluşturabilirsiniz. Bir veritabanı bir ad alanına benzer. Veritabanı, bir dizi Azure Cosmos kapsayıcısı için yönetim birimidir. Aşağıdaki tablo, bir Azure Cosmos veritabanı çeşitli API özel varlıklara nasıl eşleştiğini gösterir:
 
 | Azure Cosmos varlığı | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos veritabanı | Database | anahtar alanı | Database | Database | Yok |
+|Azure Cosmos veritabanı | Veritabanı | Keyspace | Veritabanı | Veritabanı | Yok |
 
 > [!NOTE]
 > Tablo API'si hesapları ile ilk tablonuzu oluşturduğunuzda, Azure Cosmos hesabınızda otomatik olarak varsayılan bir veritabanı oluşturulur.
 
-### <a name="operations-on-an-azure-cosmos-database"></a>Azure Cosmos veritabanında işlemler
+### <a name="operations-on-an-azure-cosmos-database"></a>Bir Azure Cosmos veritabanı üzerinde işlemler
 
 Aşağıdaki tabloda açıklandığı gibi Azure Cosmos API 'si ile Azure Cosmos veritabanıyla etkileşime geçebilirsiniz:
 
 | İşlem | Azure CLI | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- |
-|Tüm veritabanlarını listeleme| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | Yok | Yok |
-|Veritabanını oku| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | Yok | Yok |
-|Yeni veritabanı oluştur| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | Yok | Yok |
-|Veritabanını güncelleştir| Yes | Yes | Evet (veritabanı bir keyspace ile eşlendi) | Yes | Yok | Yok |
+|Tüm veritabanları listeleme| Evet | Evet | Evet (veritabanı için bir anahtar alanı eşlendi) | Evet | Yok | Yok |
+|Okuma veritabanı| Evet | Evet | Evet (veritabanı için bir anahtar alanı eşlendi) | Evet | Yok | Yok |
+|Yeni veritabanı oluştur| Evet | Evet | Evet (veritabanı için bir anahtar alanı eşlendi) | Evet | Yok | Yok |
+|Veritabanını Güncelleştir| Evet | Evet | Evet (veritabanı için bir anahtar alanı eşlendi) | Evet | Yok | Yok |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos kapsayıcıları
 
-Azure Cosmos kapsayıcısı, sağlanan aktarım hızı ve depolama için ölçeklenebilirlik birimidir. Bir kapsayıcı yatay olarak bölümlenmiştir ve daha sonra birden çok bölgede çoğaltılır. Kapsayıcıya eklediğiniz öğeler ve üzerinde sağladığınız aktarım hızı, Bölüm anahtarını temel alan bir mantıksal bölümler kümesi üzerinden otomatik olarak dağıtılır. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi için bkz. [bölüm verileri](partition-data.md). 
+Azure Cosmos kapsayıcısı, sağlanan aktarım hızı ve depolama için ölçeklenebilirlik birimidir. Bir kapsayıcı yatay olarak bölümlenir ve ardından birden çok bölgeye çoğaltılır. Kapsayıcıya eklediğiniz öğeler ve üzerinde sağladığınız aktarım hızı, Bölüm anahtarını temel alan bir mantıksal bölümler kümesi üzerinden otomatik olarak dağıtılır. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi için bkz. [bölüm verileri](partition-data.md). 
 
 Bir Azure Cosmos kapsayıcısı oluşturduğunuzda, aşağıdaki modlardan birinde üretilen işi yapılandırın:
 
@@ -60,7 +60,7 @@ Bir Azure Cosmos kapsayıcısı oluşturduğunuzda, aşağıdaki modlardan birin
 
 Bir Azure Cosmos kapsayıcısı, özel veya paylaşılan sağlanmış verimlilik modlarını kullanarak kapsayıcılar oluşturup esnek ölçeklendirebilirler.
 
-Azure Cosmos kapsayıcısı, öğelerin şema belirsiz bir kapsayıcısıdır. Bir kapsayıcıdaki öğelerin rastgele şemaları olabilir. Örneğin, bir kişiyi temsil eden bir öğe ve bir otomobil öğesini temsil eden bir öğe *aynı kapsayıcıya*yerleştirilebilir. Varsayılan olarak, bir kapsayıcıya eklediğiniz tüm öğeler açık dizin veya şema yönetimine gerek kalmadan otomatik olarak dizinlenir. Bir kapsayıcıda [Dizin oluşturma ilkesini](index-overview.md) yapılandırarak dizin oluşturma davranışını özelleştirebilirsiniz. 
+Bir Azure Cosmos kapsayıcı öğeleri şemadan kapsayıcıdır. Bir kapsayıcıdaki öğelerin rastgele şemaları olabilir. Örneğin, bir kişiyi temsil eden bir öğe ve bir otomobil öğesini temsil eden bir öğe *aynı kapsayıcıya*yerleştirilebilir. Varsayılan olarak, bir kapsayıcıya eklediğiniz tüm öğeler açık dizin veya şema yönetimine gerek kalmadan otomatik olarak dizinlenir. Bir kapsayıcıda [Dizin oluşturma ilkesini](index-overview.md) yapılandırarak dizin oluşturma davranışını özelleştirebilirsiniz. 
 
 Bir Azure Cosmos kapsayıcısındaki seçili öğelerde [yaşam süresi (TTL)](time-to-live.md) ayarlayabilir veya tüm kapsayıcının bu öğeleri sistemden düzgün bir şekilde temizlemesini sağlayabilirsiniz. Azure Cosmos DB süreleri dolduğunda öğeleri otomatik olarak siler. Ayrıca, kapsayıcıda gerçekleştirilen bir sorgunun, süresi geçen öğelerin sabit bir bağlı olarak döndürülmeyeceğini güvence altına alır. Daha fazla bilgi için bkz. [KAPSAYıCıDA TTL yapılandırma](how-to-time-to-live.md).
 
@@ -68,41 +68,41 @@ Bir Azure Cosmos kapsayıcısındaki seçili öğelerde [yaşam süresi (TTL)](t
 
 Azure Cosmos Kapsayıcınız için [saklı yordamları, Tetikleyicileri, Kullanıcı tanımlı işlevleri (UDF 'ler)](stored-procedures-triggers-udfs.md)ve [birleştirme yordamlarını](how-to-manage-conflicts.md) kaydedebilirsiniz. 
 
-Azure Cosmos kapsayıcıda [benzersiz bir anahtar kısıtlaması](unique-keys.md) belirtebilirsiniz. Benzersiz bir anahtar ilkesi oluşturarak mantıksal bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Benzersiz anahtar ilkesi kullanarak bir kapsayıcı oluşturursanız, benzersiz anahtar kısıtlaması tarafından belirtilen değerleri yineleyen yeni veya güncelleştirilmiş bir öğe oluşturulabilir. Daha fazla bilgi için bkz. [benzersiz anahtar kısıtlamaları](unique-keys.md).
+Azure Cosmos kapsayıcıda [benzersiz bir anahtar kısıtlaması](unique-keys.md) belirtebilirsiniz. Benzersiz anahtar bir ilke oluşturarak, mantıksal bölüm anahtarı başına bir veya daha fazla değerlerin benzersiz olmasını sağlamak. Benzersiz anahtar ilkesi kullanarak bir kapsayıcı oluşturursanız, benzersiz anahtar kısıtlaması tarafından belirtilen değerleri yineleyen yeni veya güncelleştirilmiş bir öğe oluşturulabilir. Daha fazla bilgi için bkz. [benzersiz anahtar kısıtlamaları](unique-keys.md).
 
 Aşağıdaki tabloda gösterildiği gibi, bir Azure Cosmos kapsayıcısı, API 'ye özgü varlıklar için özelleştirilmiştir:
 
 | Azure Cosmos varlığı | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos kapsayıcısı | Kapsayıcı | Tablo | Koleksiyon | Graph | Tablo |
+|Azure Cosmos kapsayıcı | Kapsayıcı | Tablo | Koleksiyon | Graph | Tablo |
 
-### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısının özellikleri
+### <a name="properties-of-an-azure-cosmos-container"></a>Bir Azure Cosmos kapsayıcı özellikleri
 
 Bir Azure Cosmos kapsayıcısının sistem tarafından tanımlanan özellikler kümesi vardır. Kullandığınız API 'ye bağlı olarak, bazı özellikler doğrudan sunulmayabilir. Aşağıdaki tabloda sistem tarafından tanımlanan özelliklerin listesi açıklanmaktadır:
 
 | Sistem tanımlı özellik | Sistem tarafından oluşturulan veya Kullanıcı tarafından yapılandırılabilen | Amaç | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_RID | Sistem tarafından oluşturulan | Kapsayıcının benzersiz tanımlayıcısı | Yes | Hayır | Hayır | Hayır | Hayır |
-|\_ETag | Sistem tarafından oluşturulan | İyimser eşzamanlılık denetimi için kullanılan varlık etiketi | Yes | Hayır | Hayır | Hayır | Hayır |
-|\_TS | Sistem tarafından oluşturulan | Kapsayıcının son güncelleştirilme zaman damgası | Yes | Hayır | Hayır | Hayır | Hayır |
-|\_kendine | Sistem tarafından oluşturulan | Kapsayıcının adreslenebilir URI 'SI | Yes | Hayır | Hayır | Hayır | Hayır |
-|id | Kullanıcı tarafından yapılandırılabilir | Kapsayıcının Kullanıcı tanımlı benzersiz adı | Yes | Yes | Yes | Yes | Yes |
-|ındexingpolicy | Kullanıcı tarafından yapılandırılabilir | Dizin yolunu, dizin türünü ve Dizin modunu değiştirme olanağı sağlar | Yes | Hayır | Hayır | Hayır | Yes |
-|TimeToLive | Kullanıcı tarafından yapılandırılabilir | Bir zaman aralığı sonrasında bir kapsayıcıdan otomatik olarak öğe silme yeteneği sağlar. Ayrıntılar için bkz. [yaşam süresi](time-to-live.md). | Yes | Hayır | Hayır | Hayır | Yes |
-|changeFeedPolicy | Kullanıcı tarafından yapılandırılabilir | Bir kapsayıcıdaki öğelerde yapılan değişiklikleri okumak için kullanılır. Ayrıntılar için bkz. [akışı değiştirme](change-feed.md). | Yes | Hayır | Hayır | Hayır | Yes |
-|uniqueKeyPolicy | Kullanıcı tarafından yapılandırılabilir | Mantıksal bir bölümdeki bir veya daha fazla değerin benzersizliğini sağlamak için kullanılır. Daha fazla bilgi için bkz. [benzersiz anahtar kısıtlamaları](unique-keys.md). | Yes | Hayır | Hayır | Hayır | Yes |
+|\_RID | Sistem tarafından oluşturulan | Kapsayıcı benzersiz tanıtıcısı | Evet | Hayır | Hayır | Hayır | Hayır |
+|\_ETag | Sistem tarafından oluşturulan | İyimser eşzamanlılık denetimi için kullanılan varlık etiketi | Evet | Hayır | Hayır | Hayır | Hayır |
+|\_TS | Sistem tarafından oluşturulan | Kapsayıcının son güncelleştirilen zaman damgası | Evet | Hayır | Hayır | Hayır | Hayır |
+|\_kendine | Sistem tarafından oluşturulan | Kapsayıcının adreslenebilir URI'si | Evet | Hayır | Hayır | Hayır | Hayır |
+|id | Kullanıcı tarafından yapılandırılabilir | Kullanıcı tanımlı kapsayıcının benzersiz adı | Evet | Evet | Evet | Evet | Evet |
+|indexingPolicy | Kullanıcı tarafından yapılandırılabilir | Dizin yolunu, dizin türünü ve Dizin modunu değiştirme olanağı sağlar | Evet | Hayır | Hayır | Hayır | Evet |
+|TimeToLive | Kullanıcı tarafından yapılandırılabilir | Bir zaman aralığı sonrasında bir kapsayıcıdan otomatik olarak öğe silme yeteneği sağlar. Ayrıntılar için bkz. [yaşam süresi](time-to-live.md). | Evet | Hayır | Hayır | Hayır | Evet |
+|changeFeedPolicy | Kullanıcı tarafından yapılandırılabilir | Bir kapsayıcı içindeki öğelerde yapılan değişiklikleri okumak için kullanılır. Ayrıntılar için bkz. [akışı değiştirme](change-feed.md). | Evet | Hayır | Hayır | Hayır | Evet |
+|uniqueKeyPolicy | Kullanıcı tarafından yapılandırılabilir | Mantıksal bir bölümdeki bir veya daha fazla değerin benzersizliğini sağlamak için kullanılır. Daha fazla bilgi için bkz. [benzersiz anahtar kısıtlamaları](unique-keys.md). | Evet | Hayır | Hayır | Hayır | Evet |
 
-### <a name="operations-on-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısındaki işlemler
+### <a name="operations-on-an-azure-cosmos-container"></a>Bir Azure Cosmos kapsayıcısı üzerinde işlemler
 
 Azure Cosmos kapsayıcısı, Azure Cosmos API 'Lerinden herhangi birini kullandığınızda aşağıdaki işlemleri destekler:
 
 | İşlem | Azure CLI | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- |
-| Bir veritabanındaki kapsayıcıları listeleme | Yes | Yes | Yes | Yes | Yok | Yok |
-| Kapsayıcıyı oku | Yes | Yes | Yes | Yes | Yok | Yok |
-| Yeni kapsayıcı oluştur | Yes | Yes | Yes | Yes | Yok | Yok |
-| Kapsayıcıyı güncelleştirme | Yes | Yes | Yes | Yes | Yok | Yok |
-| Kapsayıcı silme | Yes | Yes | Yes | Yes | Yok | Yok |
+| Bir veritabanı kapsayıcılarda listeleme | Evet | Evet | Evet | Evet | Yok | Yok |
+| Bir kapsayıcı okuyun | Evet | Evet | Evet | Evet | Yok | Yok |
+| Yeni kapsayıcı oluştur | Evet | Evet | Evet | Evet | Yok | Yok |
+| Kapsayıcıyı güncelleştirme | Evet | Evet | Evet | Evet | Yok | Yok |
+| Kapsayıcı silme | Evet | Evet | Evet | Evet | Yok | Yok |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos öğeleri
 
@@ -110,7 +110,7 @@ Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondak
 
 | Cosmos varlığı | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos öğesi | Belge | Sırada | Belge | Düğüm veya kenar | Öğe |
+|Azure Cosmos öğesi | Belge | Satır | Belge | Düğüm veya kenar | Öğe |
 
 ### <a name="properties-of-an-item"></a>Bir öğenin özellikleri
 
@@ -118,23 +118,23 @@ Her Azure Cosmos öğesi, sistem tarafından tanımlanan aşağıdaki özellikle
 
 | Sistem tanımlı özellik | Sistem tarafından oluşturulan veya Kullanıcı tarafından yapılandırılabilen| Amaç | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_kimliği | Sistem tarafından oluşturulan | Öğenin benzersiz tanımlayıcısı | Yes | Hayır | Hayır | Hayır | Hayır |
-|\_ETag | Sistem tarafından oluşturulan | İyimser eşzamanlılık denetimi için kullanılan varlık etiketi | Yes | Hayır | Hayır | Hayır | Hayır |
-|\_TS | Sistem tarafından oluşturulan | Öğenin son güncelleştirme zaman damgası | Yes | Hayır | Hayır | Hayır | Hayır |
-|\_kendine | Sistem tarafından oluşturulan | Öğenin adreslenebilir URI 'SI | Yes | Hayır | Hayır | Hayır | Hayır |
-|id | Kullanabilir | Mantıksal bölümde Kullanıcı tanımlı benzersiz ad. | Yes | Yes | Yes | Yes | Yes |
-|Rastgele Kullanıcı tanımlı özellikler | Kullanıcı tanımlı | API yerel gösteriminde temsil edilen Kullanıcı tanımlı Özellikler (JSON, BSON ve CQL dahil) | Yes | Yes | Yes | Yes | Yes |
+|\_RID | Sistem tarafından oluşturulan | Öğenin benzersiz tanımlayıcısı | Evet | Hayır | Hayır | Hayır | Hayır |
+|\_ETag | Sistem tarafından oluşturulan | İyimser eşzamanlılık denetimi için kullanılan varlık etiketi | Evet | Hayır | Hayır | Hayır | Hayır |
+|\_TS | Sistem tarafından oluşturulan | Öğenin son güncelleştirme zaman damgası | Evet | Hayır | Hayır | Hayır | Hayır |
+|\_kendine | Sistem tarafından oluşturulan | Öğenin adreslenebilir URI'si | Evet | Hayır | Hayır | Hayır | Hayır |
+|id | Ya da | Mantıksal bölümde Kullanıcı tanımlı benzersiz ad. | Evet | Evet | Evet | Evet | Evet |
+|Kullanıcı tanımlı isteğe bağlı özellikler | Kullanıcı tanımlı | API yerel gösteriminde temsil edilen Kullanıcı tanımlı Özellikler (JSON, BSON ve CQL dahil) | Evet | Evet | Evet | Evet | Evet |
 
 > [!NOTE]
 > `id` özelliğinin benzersizliği yalnızca her mantıksal bölüm içinde zorlanır. Birden çok belge, farklı bölüm anahtarı değerleriyle aynı `id` özelliğine sahip olabilir.
 
-### <a name="operations-on-items"></a>Öğeler üzerinde işlemler
+### <a name="operations-on-items"></a>Öğeleri üzerinde işlemler
 
 Azure Cosmos öğeleri aşağıdaki işlemleri destekler. İşlemleri gerçekleştirmek için Azure Cosmos API 'Lerinden herhangi birini kullanabilirsiniz.
 
 | İşlem | Azure CLI | SQL API’si | Cassandra API’si | MongoDB için Azure Cosmos DB API | Gremlin API | Tablo API’si |
 | --- | --- | --- | --- | --- | --- | --- |
-| INSERT, Replace, DELETE, upsert, Read | Hayır | Yes | Yes | Yes | Yes | Yes |
+| Ekleme, değiştirme, silme, Upsert, okuma | Hayır | Evet | Evet | Evet | Evet | Evet |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

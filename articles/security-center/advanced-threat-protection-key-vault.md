@@ -8,21 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2375d8ee92d9c04c287b7fca793fcdc236e1e8f4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720047"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773526"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault için Gelişmiş tehdit koruması ayarlama (Önizleme)
 
 Azure Key Vault için Gelişmiş tehdit koruması, ek bir güvenlik zekası katmanı sağlar. Bu araç Key Vault hesaplara erişmeye veya açıktan yararlanmaya yönelik olabilecek zararlı girişimleri algılar. Azure Güvenlik Merkezi 'nde yerel Gelişmiş tehdit korumasını kullanarak tehditleri güvenlik uzmanı olmadan ve ek güvenlik izleme sistemleri öğrenmeksizin ele alabilirsiniz.
 
 Güvenlik Merkezi anormal etkinlik algıladığında uyarıları görüntüler. Ayrıca, şüpheli etkinliğin ayrıntılarını ve belirlenen tehditleri araştırıp düzeltme önerilerini içeren abonelik yöneticisine e-posta gönderir.
-
-> [!NOTE]
-> Azure Key Vault için Gelişmiş tehdit koruması Şu anda yalnızca Kuzey Amerika bölgelerinde kullanılabilir.
 
 ## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden Gelişmiş tehdit koruması ayarlama
 

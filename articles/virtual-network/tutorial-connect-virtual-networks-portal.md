@@ -4,25 +4,21 @@ description: Bu öğreticide, Azure portalını kullanarak sanal ağ eşlemesi i
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3966615d28630fdd2ab799f478ef7edaa3377e1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499894"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775288"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
@@ -44,9 +40,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-virtual-networks"></a>Sanal ağlar oluşturma
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
 2. **Ağ**’ı ve sonra **Sanal ağ**’ı seçin.
-3. **Temel bilgiler** sayfasında, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin:
+3. **Temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin:
 
     |Ayar|Değer|
     |---|---|
@@ -55,15 +51,17 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |Bölge| **Doğu ABD**’yi seçin.|
     |Ad|myVirtualNetwork1|
 
-4. **IP adresleri** sayfasında **Adres alanı** alanı için 10.0.0.0/16 girin. Aşağıdaki **alt ağ ekle** düğmesine tıklayın ve alt ağ **adı** Için Subnet1 ve IP **adresi aralığı**için 10.0.0.0/24 girin.
+4. **IP adresleri** sekmesinde **Adres alanı** alanı için 10.0.0.0/16 girin. Aşağıdaki **alt ağ ekle** düğmesine tıklayın ve alt ağ **adı** Için *Subnet1* ve IP **adresi aralığı**için 10.0.0.0/24 girin.
+5. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
    
-5. Aşağıdaki değişikliklerle birlikte 1.-3. adımları tekrar tamamlayın:
+5. Aşağıdaki değişikliklerle birlikte 1-5 arası adımları tekrar tamamlayın:
 
     |Ayar|Değer|
     |---|---|
     |Ad|myVirtualNetwork2|
     |Adres alanı|10.1.0.0/16|
     |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
+    |Alt ağ adı | Subnet2|
     |Alt Ağ Adresi aralığı|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>Sanal ağları eşleme
@@ -96,7 +94,7 @@ Sonraki bir adımda aralarında iletişim kurabilmeniz için her sanal ağ üzer
 
 ### <a name="create-the-first-vm"></a>Birinci sanal makineyi oluşturma
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
 2. **İşlem**'i seçin ve sonra da **Windows Server 2016 Datacenter**'ı seçin. Farklı bir işletim sistemi seçebilirsiniz, ancak geri kalan adımlarda, **Windows Server 2016 Datacenter** seçeneğini belirlediğiniz varsayılır. 
 3. **Temel Bilgiler** için aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin:
 
@@ -115,9 +113,6 @@ Sonraki bir adımda aralarında iletişim kurabilmeniz için her sanal ağ üzer
     |---|---|
     |Sanal ağ| myVirtualNetwork1-zaten seçili değilse, **sanal ağ** ' ı seçin ve ardından **myVirtualNetwork1**' yi seçin.|
     |Alt ağ| Subnet1-zaten seçili değilse **alt ağ** ' ı seçin ve ardından **Subnet1**' yi seçin.|
-    
-
-    ![Sanal makine ayarları](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
    
 6. **Ağ**' ı seçin. **Ortak gelen bağlantı noktaları** için **Seçili bağlantı noktalarına izin ver** seçeneğini belirleyin. Bunun altındaki **gelen bağlantı noktaları seçin** seçeneği için **RDP** 'yi seçin. 
 
@@ -137,7 +132,7 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makin
 ## <a name="communicate-between-vms"></a>Sanal makineler arasında iletişim
 
 1. Portalın üst kısmındaki *Arama* kutusuna *myVm1* yazmaya başlayın. Arama sonuçlarında **myVm1** görüntülendiğinde bunu seçin.
-2. Aşağıdaki resimde gösterildiği gibi, *Bağlan*’ı seçerek **myVm1** sanal makinesine uzak masaüstü bağlantısı oluşturun:
+2. Aşağıdaki resimde gösterildiği gibi, **Bağlan**’ı seçerek *myVm1* sanal makinesine uzak masaüstü bağlantısı oluşturun:
 
     ![Sanal makineye bağlanma](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
 
@@ -170,9 +165,9 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makin
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin: 
 
-1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

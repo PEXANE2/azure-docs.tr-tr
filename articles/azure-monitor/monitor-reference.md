@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263430"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765731"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Izleyici ile neler izlenir?
 Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler açıklanır. 
@@ -42,7 +42,7 @@ Temel Öngörüler ve çözümler Azure Izleyici 'nin bir parçası olarak kabul
 |:---|:---|
 | [Aracı sistem durumu](insights/solution-agenthealth.md) | Log Analytics aracılarının sistem durumunu ve yapılandırmasını çözümleyin. |
 | [Uyarı yönetimi](platform/alert-management-solution.md) | System Center Operations Manager, Nagios veya Zabbix ' ten toplanan uyarıları analiz edin. |
-| [Hizmet Eşlemesi](insights/service-map.md) | Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Aynı işlevsellik şu şekilde sunulmaktadır   |
+| [Hizmet Eşlemesi](insights/service-map.md) | Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. |
 
 
 
@@ -63,14 +63,14 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Advisor | Hayır | Hayır | Hayır |  |
 |CnE UE A.com Mktg TM [RESX] | Hayır | Hayır | Hayır |  |
 |Analysis Services | Evet | Evet | Hayır |  |
-|FHIR için API | Hayır | Hayır | Hayır |  |
+|FHıR için API | Hayır | Hayır | Hayır |  |
 |API Management | Evet | Evet | Hayır |  |
 |App Service | Evet | Evet | Hayır |  |
 |AppConfig | Hayır | Hayır | Hayır |  |
 |Application Gateway | Evet | Evet | Hayır |  |
 |Kanıtlama hizmeti | Hayır | Hayır | Hayır |  |
 |Automation | Evet | Evet | Hayır |  |
-|Azure Hizmet Yöneticisi (RDFE) | Hayır | Hayır | Hayır |  |
+|Azure Service Manager (RDFE) | Hayır | Hayır | Hayır |  |
 |Backup | Hayır | Evet | Hayır |  |
 |Bastion | Hayır | Hayır | Hayır |  |
 |Batch | Evet | Evet | Hayır |  |
@@ -91,10 +91,10 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Veri Gezgini | Evet | Evet | Hayır |  |
 |Data Factory | Evet | Evet | Hayır |  |
 |Data Factory v2 | Hayır | Evet | Hayır |  |
-|Veri Paylaşımı | Hayır | Hayır | Hayır |  |
-|MariaDB için Veritabanı | Evet | Evet | Hayır |  |
-|MySQL için Veritabanı | Evet | Evet | Hayır |  |
-|PostgreSQL için Veritabanı | Evet | Evet | Hayır |  |
+|Veri paylaşma | Hayır | Hayır | Hayır |  |
+|MariaDB için veritabanı | Evet | Evet | Hayır |  |
+|MySQL için veritabanı | Evet | Evet | Hayır |  |
+|PostgreSQL için veritabanı | Evet | Evet | Hayır |  |
 |Veritabanı Geçiş Hizmeti | Hayır | Hayır | Hayır |  |
 |Databricks | Hayır | Evet | Hayır |  |
 |DDoS Koruması | Evet | Evet | Hayır |  |
@@ -111,7 +111,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Front Door | Evet | Evet | Hayır |  |
 |İşlevler | Evet | Evet | Hayır |  |
 |HDInsight | Hayır | Evet | Hayır |  |
-|HPC Önbelleği | Hayır | Hayır | Hayır |  |
+|HPC önbelleği | Hayır | Hayır | Hayır |  |
 |Bilgi Koruma | Hayır | Evet | Hayır |  |
 |Intune | Hayır | Evet | Hayır |  |
 |IoT Central | Hayır | Hayır | Hayır |  |
@@ -125,9 +125,9 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Haritalar  | Hayır | Hayır | Hayır |  |
 |Media Services | Evet | Evet | Hayır |  |
 |Microsoft Flow | Hayır | Hayır | Hayır |  |
-|Microsoft Yönetilen Masaüstü | Hayır | Hayır | Hayır |  |
+|Microsoft tarafından yönetilen Masaüstü | Hayır | Hayır | Hayır |  |
 |Microsoft PowerApps | Hayır | Hayır | Hayır |  |
-|Microsoft Social Engagement | Hayır | Hayır | Hayır |  |
+|Microsoft sosyal katılım | Hayır | Hayır | Hayır |  |
 |Microsoft Stream | Evet | Evet | Hayır |  |
 |Geçiş yapın | Hayır | Hayır | Hayır |  |
 |Multi-Factor Authentication | Hayır | Evet | Hayır |  |
@@ -153,7 +153,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |SQL Veri Ambarı | Evet | Evet | Hayır |  |
 |SQL Veritabanı | Evet | Evet | Hayır |  |
 |SQL Server Stretch Database | Evet | Evet | Hayır |  |
-|Toplu İş | Hayır | Hayır | Hayır |  |
+|Yığın | Hayır | Hayır | Hayır |  |
 |Depolama | Evet | Hayır | [Evet](insights/storage-insights-overview.md) |  |
 |Depolama önbelleği | Hayır | Hayır | Hayır |  |
 |Depolama Eşitleme Hizmetleri | Hayır | Hayır | Hayır |  |

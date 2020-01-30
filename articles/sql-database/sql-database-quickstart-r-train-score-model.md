@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 04054d206d5e30d2de3da5ccd9d018027653cdcf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760037"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768457"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model oluşturma ve eğitme
 
@@ -29,11 +29,8 @@ Bu hızlı başlangıçta, R kullanarak tahmine dayalı bir model oluşturup eğ
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - [Sunucu düzeyinde güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md) olan BIR [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-
 - R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) . [Önizleme Için kaydolun](sql-database-machine-learning-services-overview.md#signup).
-
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!NOTE]

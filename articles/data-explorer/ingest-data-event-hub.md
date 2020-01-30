@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779969"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773932"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub 'ından Azure Veri Gezgini veri alma
 
@@ -22,7 +22,7 @@ ms.locfileid: "75779969"
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -118,6 +118,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
     | Olay hub'ı | *test-hub* | Oluşturduğunuz olay hub'ı. |
     | Tüketici grubu | *test-group* | Oluşturduğunuz olay hub'ında tanımlanan tüketici grubu. |
     | Olay sistemi özellikleri | İlgili özellikleri seçin | [Olay Hub 'ı sistem özellikleri](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilk birine eklenir. Sistem Özellikleri eklenirken, tablo şemasını [oluşturun](/azure/kusto/management/tables#create-table) veya [güncelleştirin](/azure/kusto/management/tables#alter-table-and-alter-merge-table) ve seçili özellikleri dahil etmek için [eşleme](/azure/kusto/management/mappings) yapın. |
+    | Sıkıştırma | *Yok* | Olay Hub 'ı ileti yükünün sıkıştırma türü. Desteklenen sıkıştırma türleri: *none, gzip*.|
     | | |
 
     **Hedef tablo:**
@@ -128,15 +129,15 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDatabase** içinde oluşturduğunuz tablo. |
-    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE ve TXT. Desteklenen sıkıştırma seçenekleri: GZip |
-    | Sütun eşleme | *TestMapping* | **TestDatabase**'te oluşturduğunuz ve gelen JSON verilerini **TestTable**'ın sütun adlarıyla ve veri türleriyle eşleyen [eşleme](/azure/kusto/management/mappings) . JSON, çok SATıRLı JSON veya AVRO için gereklidir ve diğer biçimler için isteğe bağlıdır.|
+    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC ve PARQUET. |
+    | Sütun eşleme | *TestMapping* | **TestDatabase**'te oluşturduğunuz ve gelen JSON verilerini **TestTable**'ın sütun adlarıyla ve veri türleriyle eşleyen [eşleme](/azure/kusto/management/mappings) . JSON veya çok SATıRLı JSON için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 
     > [!NOTE]
     > * Verilerim ' i seçin, verilerin [örnek uygulama](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) açıklamalarında görüldüğü gibi gerekli yönlendirme bilgilerini içerdiği dinamik yönlendirmeyi kullanmak için **yönlendirme bilgilerini içerir** . Hem statik hem de dinamik özellikler ayarlandıysa, dinamik özellikler statik olanları geçersiz kılar. 
     > * Yalnızca veri bağlantısını oluşturduktan sonra sıraya alınan olaylar alınır.
-    > * [Azure Portal bir destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)açarak statik yönlendirme için gzip sıkıştırmasını etkinleştirin. [Örnek uygulamada](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)görüldüğü gibi dinamik yönlendirme için gzip sıkıştırmasını etkinleştirin. 
-    > * Avro biçimi ve olay sistemi özellikleri, sıkıştırma yükünde desteklenmez.
+    > * Ayrıca, [örnek uygulamada](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)görüldüğü gibi, sıkıştırma türünü dinamik özellikler aracılığıyla da ayarlayabilirsiniz.
+    > * Avro, ORC ve PARQUET biçimlerinin yanı sıra, olay sistemi özellikleri de GZip sıkıştırma yükünde desteklenmez.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

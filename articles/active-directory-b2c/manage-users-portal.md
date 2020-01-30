@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961994"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840426"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Azure AD B2C ' de tüketici kullanıcıları oluşturmak ve silmek için Azure portal kullanın
 
@@ -37,7 +37,7 @@ Bu makale, Azure portal **Tüketici hesaplarıyla** çalışmaya odaklanır. Iş
 
 ## <a name="create-a-consumer-user"></a>Tüketici kullanıcısı oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
@@ -48,7 +48,7 @@ Bu makale, Azure portal **Tüketici hesaplarıyla** çalışmaya odaklanır. Iş
 1. Seçim Kullanıcının oturum açma yeteneğini geciktirmek istiyorsanız, **oturum açmayı engelleyebilirsiniz** . Daha sonra Azure portal kullanıcının **profilini** düzenleyerek oturum açmayı etkinleştirebilirsiniz.
 1. **Parolayı otomatik oluştur** ' ı veya **parola oluşturmama izin ver**' i seçin.
 1. Kullanıcının **adını** ve **soyadını**belirtin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 **Engelle oturum açma**seçeneğini seçmediyseniz, Kullanıcı artık belirttiğiniz oturum açma yöntemini (e-posta veya Kullanıcı adı) kullanarak oturum açabilir.
 
@@ -61,4 +61,4 @@ Silinmeden önce ilk 30 gün içinde bir kullanıcıyı geri yükleme veya bir k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Otomatik Kullanıcı yönetimi senaryolarında, örneğin başka bir kimlik sağlayıcısından Kullanıcı Azure AD B2C dizininize geçiş yapmak için, bkz. [Azure AD B2C: Kullanıcı geçişi](active-directory-b2c-user-migration.md).
+Otomatik Kullanıcı yönetimi senaryolarında, örneğin başka bir kimlik sağlayıcısından Kullanıcı Azure AD B2C dizininize geçiş yapmak için, bkz. [Azure AD B2C: Kullanıcı geçişi](user-migration.md).

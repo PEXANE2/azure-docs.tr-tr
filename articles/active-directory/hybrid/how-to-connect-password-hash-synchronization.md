@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543928"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833373"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makalede, şirket içi Active Directory örneğinden bulut tabanlı bir Azure Active Directory (Azure AD) örneği, kullanıcı parolalarını eşitlemek için gereken bilgileri sağlar.
@@ -130,9 +130,9 @@ Bir kullanıcıyı ilk oturum açma sırasında, özellikle de yönetici parolas
   
 Geçici parola işlevi, kimlik bilgisinin sahipliğinin bu kimlik bilgisi ile ilgili bilgi sahibi olduğu süreyi en aza indirmek için ilk kullanımda, kimlik bilgisinin sahipliğinin aktarılışında emin olmaya yardımcı olur.
 
-Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üzere, Azure AD Connect sunucunuzda aşağıdaki komutu çalıştırarak *Forcepasswordresetonlogonfeature* özelliğini etkinleştirebilirsiniz:
+Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üzere Azure AD Connect sunucunuzda aşağıdaki komutu çalıştırarak *Forcepasswordchangeonlogon* özelliğini etkinleştirebilirsiniz:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Bir kullanıcının bir sonraki oturum açışında parolasını değiştirmesine zorlamak için aynı anda bir parola değişikliği yapılması gerekir.  AD Connect, parolayı zorla değiştirme bayrağını kendisi seçer; Parola karması eşitleme sırasında oluşan algılanan parola değişikliğine ek olarak belirlenir.

@@ -3,17 +3,15 @@ title: Azure İzleyici günlükleri ile B2B iletilerini izleme
 description: Azure Log Analytics ile tümleştirme hesapları ve Azure Logic Apps için B2B iletişimini izleyin
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792923"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773708"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Azure İzleyici günlükleri ile B2B iletilerini izleme
 
@@ -30,7 +28,7 @@ Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini a
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Tanılama günlük kaydı ile ayarlanan mantıksal uygulama. [Mantıksal uygulama oluşturmayı](quickstart-create-first-logic-app-workflow.md) ve [Bu mantıksal uygulama için günlüğü ayarlamayı](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)öğrenin.
 
@@ -44,7 +42,7 @@ Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini a
 
 Azure Izleyici günlüklerine mantıksal uygulamanız için B2B iletilerini izlemebilmeniz için önce Azure Izleyici günlüklerine **Logic Apps B2B** çözümünü ekleyin. [Azure izleyici günlüklerine çözüm ekleme](../azure-monitor/learn/quick-create-workspace.md)hakkında daha fazla bilgi edinin.
 
-1. [Azure portalda](https://portal.azure.com) **Tüm hizmetler**’i seçin. Arama kutusunda, "Log Analytics" i bulun ve **Log Analytics**' yi seçin.
+1. [Azure portalda](https://portal.azure.com)**Tüm hizmetler**’i seçin. Arama kutusunda, "Log Analytics" i bulun ve **Log Analytics**' yi seçin.
 
    ![Log Analytics seçin](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
@@ -154,7 +152,7 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | Onay | MDN ileti durumu <br>Kabul edilen = pozitif MDN alındı veya gönderildi. <br>Bekliyor = bir MDN alınması veya gönderilmesi bekleniyor. <br>Reddedildi = negatif MDN alındı veya gönderildi. <br>Gerekli değildir = MDN sözleşmede ayarlanmadı. |
 | Yön | AS2 ileti yönü |
 | Bağıntı Kimliği | Bir mantıksal uygulamadaki tüm Tetikleyicileri ve eylemleri karşılıklı yapan KIMLIK |
-| İleti KIMLIĞI | AS2 ileti başlıklarındaki AS2 ileti KIMLIĞI |
+| İleti kimliği | AS2 ileti başlıklarındaki AS2 ileti KIMLIĞI |
 | Zaman damgası | AS2 eyleminin iletiyi işleme zamanı |
 |          |             |
 
@@ -167,7 +165,7 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | Klasör veya dosya | Ad biçimi |
 | :------------- | :---------- |
 | İleti klasörü | [sender]\_[alıcı]\_AS2\_[bağıntı-KIMLIĞI]\_[ileti-KIMLIĞI]\_[zaman damgası] |
-| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_çıkış\_yük. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_çıktılar. txt |
+| Giriş, çıkış ve If ayarlandıysa, bildirim dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_çıkış\_yük. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_AS2\_[BAĞıNTı-kimliği]\_çıktılar. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -200,7 +198,7 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | Klasör veya dosya | Ad biçimi |
 | :------------- | :---------- |
 | İleti klasörü | [sender]\_[alıcı]\_x12\_[Interchange-Control-Number]\_[Genel-Control-Number]\_[işlem-Set-Control-Number]\_[zaman damgası] |
-| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_çıkış\_payload. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_çıktılar. txt |
+| Giriş, çıkış ve If ayarlandıysa, bildirim dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_çıkış\_payload. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_x12\_[Interchange-Control-number]\_çıktılar. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -233,7 +231,7 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 | Klasör veya dosya | Ad biçimi |
 | :------------- | :---------- |
 | İleti klasörü | [sender]\_[alıcı]\_EDIOLGU\_[Interchange-Control-Number]\_[Genel-Control-Number]\_[işlem-Set-Control-Number]\_[zaman damgası] |
-| Giriş, çıkış ve eğer ayarlandıysa, onay dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_çıkış\_payload. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_çıktılar. txt |
+| Giriş, çıkış ve If ayarlandıysa, bildirim dosyaları | **Giriş yükü**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_input_payload. txt </p>**Çıkış yükü**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_çıkış\_payload. txt </p></p>**Girişler**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_girdileri. txt </p></p>**Çıktılar**: [gönderen]\_[alıcı]\_ediolgu\_[Interchange-Control-number]\_çıktılar. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Sonraki adımlar

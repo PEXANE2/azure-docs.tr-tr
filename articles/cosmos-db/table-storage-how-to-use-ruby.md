@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2649db7639338b7b2714181b8caf670306f987
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441152"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770869"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini Ruby ile kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -110,7 +110,7 @@ azure_table_service.update_entity("testtable", entity)
 **update_entity()** ve **merge_entity()** yöntemlerinde, güncelleştirmekte olduğunuz varlık yoksa, güncelleştirme işlemi başarısız olur. Bu nedenle bir varlığı daha önceden mevcut olup olmadığına bakmaksızın depolamak istiyorsanız, **insert_or_replace_entity()** veya **insert_or_merge_entity()** kullanmalısınız.
 
 ## <a name="work-with-groups-of-entities"></a>Varlık gruplarıyla çalışma
-Bazen sunucu tarafından atomik işleme sağlamak için bir toplu işte birden fazla işlemin bir arada gönderilmesi mantıklıdır. Bunun için önce bir **Batch** nesnesi oluşturmalı, sonra **TableService** üzerinde **execute_batch()** yöntemini kullanmalısınız. Aşağıdaki örnekte, iki varlığın RowKey 2 ve 3 ile toplu bir işte gönderilmesi gösterilmektedir. Bunun yalnızca aynı PartitionKey değerine sahip varlıklar için sonuç vereceğini unutmayın.
+Bazen, sunucu tarafından atomik olarak işlenmelerini sağlamak için birden fazla işlemin toplu bir işte bir arada gönderilmesi mantıklıdır. Bunun için önce bir **Batch** nesnesi oluşturmalı, sonra **TableService** üzerinde **execute_batch()** yöntemini kullanmalısınız. Aşağıdaki örnekte, iki varlığın RowKey 2 ve 3 ile toplu bir işte gönderilmesi gösterilmektedir. Bunun yalnızca aynı PartitionKey değerine sahip varlıklar için sonuç vereceğini unutmayın.
 
 ```ruby
 azure_table_service = Azure::TableService.new

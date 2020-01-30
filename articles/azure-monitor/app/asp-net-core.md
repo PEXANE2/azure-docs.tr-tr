@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407501"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765804"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -416,7 +416,7 @@ Hayır. [Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/m
 
 Evet. SDK için özellik desteği, aşağıdaki özel durumlarla birlikte tüm platformlarda aynıdır:
 
-* Performans sayaçları yalnızca Windows 'ta desteklenir.
+* SDK, [performans sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters) yalnızca Windows 'Da desteklendiğinden Linux üzerinde [olay sayaçlarını](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters) toplar. Çoğu ölçüm aynıdır.
 * `ServerTelemetryChannel`, varsayılan olarak etkinleştirilmiş olsa da, uygulama Linux veya MacOS 'ta çalışıyorsa, ağ sorunları varsa Telemetriyi geçici tutmak için kanal otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybedilir. Bu sorunu geçici olarak çözmek için, kanal için yerel bir klasör yapılandırın:
 
 ```csharp

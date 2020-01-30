@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0f3aaa2489b94d254d64d5844e1a2e41d5ecc132
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695713"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834204"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
@@ -176,7 +176,7 @@ Müşteri etkisi, Kullanıcı adı alanını görüntülemeye çalışırken, de
 Alternatif olarak, [B2C özel ilkelerini](https://aka.ms/ief)kullanıyorsanız, uygulamaya ek talepler döndürme özelliği sağladığından `tid` talebini kullanabilirsiniz. [Talep dönüştürmesi](/azure/active-directory-b2c/claims-transformation-technical-profile) hakkında daha fazla bilgi edinmek için
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"Belirteç yanıtında yok" için azaltma
-Bir seçenek, "ad" talebini tercih edilen Kullanıcı adı olarak kullanmaktır. İşlem bu [B2C belgesi](../../active-directory-b2c/active-directory-b2c-reference-policies.md) -> "bölümünde belirtilmiştir" dönüş talebi sütununda, başarılı bir profil düzenlemesi deneyiminden sonra uygulamanıza geri gönderilen yetkilendirme belirteçlerinde döndürülmesini istediğiniz talepleri seçin. Örneğin, görünen ad, posta kodu ' nu seçin.
+Bir seçenek, "ad" talebini tercih edilen Kullanıcı adı olarak kullanmaktır. İşlem bu [B2C belgesi](../../active-directory-b2c/user-flow-overview.md) -> "bölümünde belirtilmiştir" dönüş talebi sütununda, başarılı bir profil düzenlemesi deneyiminden sonra uygulamanıza geri gönderilen yetkilendirme belirteçlerinde döndürülmesini istediğiniz talepleri seçin. Örneğin, görünen ad, posta kodu ' nu seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

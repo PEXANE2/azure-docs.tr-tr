@@ -3,24 +3,24 @@ title: Yakınlaştırma düzeyleri ve kutucuk Kılavuzu | Microsoft Azure harita
 description: Bu makalede, Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edineceksiniz.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910766"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765851"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 
-Azure haritalar Küresel Mercator projeksiyon koordinat sistemi (EPSG: 3857) kullanır. Projeksiyon, küresel dünyayı düz bir haritaya dönüştürmek için kullanılan matematik modelidir. Küresel Mercator projeksiyonu, bir kare eşleme oluşturmak için haritanın sonunda Haritayı uzatır. Bu, eşlemenin ölçeğini ve alanını önemli ölçüde bozar, ancak bu deformasyonu izleyen iki önemli özelliğe sahiptir:
+Azure haritalar Küresel Mercator projeksiyon koordinat sistemi (EPSG: 3857) kullanır. Projeksiyon, küresel dünyayı düz bir haritaya dönüştürmek için kullanılan matematik modelidir. Küresel Mercator projeksiyonu, bir kare eşleme oluşturmak için, bir noktada Haritayı uzatır. Bu projeksiyon, eşlemenin ölçeğini ve alanını önemli ölçüde bozar, ancak bu deformasyonu izleyen iki önemli özelliğe sahiptir:
 
-- Bu, görece küçük nesnelerin şeklini koruyan anlamına gelen bir konresmi projeksiyonu. Bu özellikle, binaları bir şekilde bozmaktan kaçınmak istiyoruz Kare binaları dikdörtgen değil kare görünmelidir.
-- Bu, Kuzey ve Güney 'in her zaman düz ve aşağı olduğu ve Batı ve Doğu 'nın her zaman düz ve sağ olduğu anlamına gelen bir silindir projeksiydir. 
+- Bu, görece küçük nesnelerin şeklini koruyan anlamına gelen bir konresmi projeksiyonu. Küçük nesnelerin şeklini korumak, havadan imay görüntüleme sırasında özellikle önemlidir. Örneğin, binalar şeklinin deforme etmemek istiyoruz. Kare binaları dikdörtgen değil kare görünmelidir.
+- Bu, silindir bir projeksiydir. Kuzey ve Güney her zaman yukarı ve aşağı ve Batı ve Doğu her zaman sol ve sağ. 
 
 Harita alımı ve görüntüleme performansını iyileştirmek için harita kare kutucuklarına bölünür. Azure Haritalar SDK 'sının, yol haritaları için 512 x 512 piksel boyutunda ve uydu Imagery için daha küçük 256 x 256 pikselleriyle kullanım kutucukları. Azure haritalar, 23 yakınlaştırma düzeyleri için 0 ile 22 arasında görüntü ve vektör kutucukları sağlar. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar:
 
@@ -36,7 +36,7 @@ Yakınlaştırma düzeyi 1, dünyayı işlemek için dört kutucuk kullanır: 2 
 
 Her ek yakınlaştırma düzeyi, bir önceki birinin kutucuklarını dörtlü böler ve 2<sup>Yakınlaştırma</sup> x 2<sup>yakınlaştırmasına</sup>ilişkin bir kılavuz oluşturur. Yakınlaştırma düzeyi 22, kılavuz 2<sup>22</sup> x 2<sup>22</sup>veya 4.194.304 x 4.194.304 kutucukları (toplamda 17.592.186.044.416).
 
-Azure Haritalar Web ve Android desteği için etkileşimli harita denetimleri, 0 ile 24 arasında bir sayı olan 25 yakınlaştırma düzeyi oranında yakınlaştırılır. Yol verileri yalnızca kutucuklar kullanılabilir olduğunda yakınlaştırma düzeylerinde kullanılabilir olacaktır.
+Azure, Web ve Android için etkileşimli harita denetimlerini, 0 ile 24 arasında numaralandırılmış 25 yakınlaştırma düzeyi destekler. Yol verileri yalnızca kutucuklar kullanılabilir olduğunda yakınlaştırma düzeylerinde kullanılabilir olacaktır.
 
 Aşağıdaki tabloda, kutucuk boyutunun 512 piksel kare olduğu yakınlaştırma düzeyleri için değerlerin tam listesi verilmiştir:
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, kutucuk boyutunun 512 piksel kare olduğu yakınlaştırma
 
 ## <a name="pixel-coordinates"></a>Piksel koordinatları
 
-Her yakınlaştırma düzeyinde kullanılacak projeksiyonu ve ölçeği seçtiğimiz coğrafi koordinatları piksel koordinatlarına dönüştürebiliriz. Belirli bir yakınlaştırma düzeyi için dünyanın bir harita resminin tam piksel genişliği ve yüksekliği şu şekilde hesaplanabilir:
+Her yakınlaştırma düzeyinde kullanılacak projeksiyonu ve ölçeği seçtiğimiz coğrafi koordinatları piksel koordinatlarına dönüştürebiliriz. Belirli bir yakınlaştırma düzeyi için dünyanın bir harita görüntüsünün tam piksel genişliği ve yüksekliği şu şekilde hesaplanır:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ Harita genişliği ve yüksekliği her yakınlaştırma düzeyinde farklı oldu�
 
 <center>
 
-piksel boyutlarını gösteren harita ![](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Harita piksel boyutlarını gösteriyor](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-Derece cinsinden Enlem ve boylam ve ayrıntı düzeyi olarak XY koordinatları aşağıdaki gibi hesaplanabilir:
+</center>
+
+Derece cinsinden Enlem ve boylam ve ayrıntı düzeyi olarak XY koordinatları aşağıdaki şekilde hesaplanır:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Enlem ve boylam değerlerinin WGS 84 veri üzerinde olduğu varsayılır. Azure haritalar Küresel projeksiyon kullansa da, tüm coğrafi koordinatları ortak bir veri olarak dönüştürmek önemlidir ve WGS 84 bu veri olarak seçilmiştir. Boylam değerinin-180 ile + 180 derece arasında olduğu varsayılır ve enlem değeri-85,05112878-85,05112878 aralığında olacak şekilde kırpılmalıdır. Bu, köklerinin bir singularini önler ve öngörülen haritanın kare olmasına neden olur.
+Enlem ve boylam değerlerinin WGS 84 veri üzerinde olduğu varsayılır. Azure haritalar Küresel projeksiyon kullansa da, tüm coğrafi koordinatları ortak bir veri olarak dönüştürmek önemlidir. WGS 84, seçilen veri. Boylam değerinin-180 derece + 180 derece aralığında olduğu varsayılır ve enlem değeri-85,05112878-85,05112878 aralığında olacak şekilde kırpılmalıdır. Bu değerlere bağlı olmak, kökdeki bir singuların ve tasarlanan haritanın kare şeklinde bir şekil olmasını sağlar.
 
 ## <a name="tile-coordinates"></a>Döşeme koordinatları
 
-Harita alımı ve görüntüleme performansını iyileştirmek için, işlenen harita kutucuklara kesilir. Piksel sayısı her yakınlaştırma düzeyinde farklılık gösterdiğinde, kutucuk sayısı:
+Harita alımı ve görüntüleme performansını iyileştirmek için, işlenen harita kutucuklara kesilir. Piksel sayısı ve kutucuk sayısı her yakınlaştırma düzeyinde farklılık gösterir:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Kutucuklar, yakınlaştırma düzeyi ve bu yakınlaştırma düzeyi için kılavuzun üzerindeki konumuna karşılık gelen x ve y koordinatları tarafından çağrılır.
+Kutucuklar yakınlaştırma düzeyiyle çağrılır. X ve y koordinatları, bu yakınlaştırma düzeyinin kılavuzundaki konumunu döşemeye karşılık gelir.
 
-Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun kutucuğunda sabit bir konumda olduğunu unutmayın. Bu, belirli bir expanl bölgesini göstermek için gereken kutucuk sayısının dünyadaki yakınlaştırma kılavuzunun belirli bir yerleşimine bağlı olduğunu gösterir. Örneğin, 900 ölçüm olarak iki işaret varsa, bu, yalnızca üç *kutucuk alabilir ve* bunlar arasında bir yol görüntüleyebilirsiniz. Ancak, Batı noktası kutucuğunun sağ tarafında ve kutucuğunun sol tarafında yer alıyorsa, bu dört kutucuğa sahip olabilir:
+Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun kutucuğunda sabit bir konumda olduğunu unutmayın. Sonuç olarak, belirli bir expanl bölgesini göstermek için gereken kutucuk sayısı, World eşlemesindeki yakınlaştırma kılavuzunun belirli bir yerleşimine bağımlıdır. Örneğin, 900 ölçüm olarak iki işaret varsa, bu, yalnızca üç *kutucuk alabilir ve* bunlar arasında bir yol görüntüleyebilirsiniz. Ancak, Batı noktası kutucuğunun sağ tarafında ve kutucuğunun sol tarafında yer alıyorsa, bu dört kutucuğa sahip olabilir:
 
 <center>
 

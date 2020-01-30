@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705272"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772546"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
 
-Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmesi için bir gereksinim olabilir. Active Directory Domain Services (AD DS), bu kullanım örneğini sağlayan *Kerberos temsili* adlı bir mekanizmayı destekler. Kerberos *kısıtlı* temsilcisi (KCD), bu mekanizmaya, kullanıcı bağlamında erişilebilen belirli kaynakları tanımlamak için oluşturulur. Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarında daha güvenli bir şekilde kilitlidir, bu nedenle daha güvenli *kaynak tabanlı* bir KCD kullanın.
+Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmesi için bir gereksinim olabilir. Active Directory Domain Services (AD DS), bu kullanım örneğini sağlayan *Kerberos temsili* adlı bir mekanizmayı destekler. Kerberos *kısıtlı* temsilcisi (KCD), bu mekanizmaya, kullanıcı bağlamında erişilebilen belirli kaynakları tanımlamak için oluşturulur. Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarından daha güvenli bir şekilde kilitlidir, bu nedenle daha güvenli *kaynak tabanlı* bir KCD kullanın.
 
 Bu makalede, Azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlanmış temsilcinin nasıl yapılandırılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e6aa53ab5e71cbcc830e31ee1f3650feca7db63b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885526"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772623"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -56,14 +56,14 @@ Azure meta veri hizmeti, sanal makineleri VM içinden erişilebilen bir REST uç
 ### <a name="endpoint-discovery"></a>Uç nokta bulma
 VNET etkin VM 'Ler için, meta veri hizmeti statik olmayan statik bir IP `169.254.169.254`kullanılabilir. Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
 Sanal makine bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler için varsayılan durumlar olarak, kullanılacak IP adresini bulması için ek mantık gerekir. [Konak uç noktasını bulmayı](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)öğrenmek için bu örneğe bakın.
 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
 Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur ve geçerli sürüm `2017-11-01`.
 
-| Sürüm | Yayın Türü | Bölgeler | Sürüm Notları | 
+| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
 | - | - | - | - |
 | 2017-11-01 | Genel Erişilebilirlik | Tümü | <li> Nokta VM çıkarma olay türü ' preempt ' için destek eklendi<br> | 
 | 2017-08-01 | Genel Erişilebilirlik | Tümü | <li> IaaS VM 'lerinin kaynak adlarından eklenmiş alt çizgi kaldırıldı<br><li>Tüm istekler için meta veri üst bilgisi gereksinimi zorlandı | 
@@ -118,7 +118,7 @@ Documentınnation bir ETag ' dir ve olayların yükünün son sorgudan bu yana d
 |Özellik  |  Açıklama |
 | - | - |
 | EventID | Bu olay için genel benzersiz tanımlayıcı. <br><br> Örnek: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Olay türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur. <li>`Reboot`: sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: spot sanal makine siliniyor (kısa ömürlü diskler kaybolur).|
+| Türü | Bu olay nedenlerini etkiler. <br><br> Değerler: <br><ul><li> `Freeze`: sanal makine birkaç saniye duraklamak üzere zamanlandı. CPU ve ağ bağlantısı askıya alınabilir, ancak bellekte veya açık dosyalarda bir etkisi yoktur. <li>`Reboot`: sanal makine yeniden başlatma için zamanlandı (kalıcı olmayan bellek kaybolur). <li>`Redeploy`: sanal makine başka bir düğüme ilerlemek üzere zamanlandı (kısa ömürlü diskler kaybedilir). <li>`Preempt`: spot sanal makine siliniyor (kısa ömürlü diskler kaybolur).|
 | ResourceType | Bu olayın etkilediği kaynak türü. <br><br> Değerler: <ul><li>`VirtualMachine`|
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Bu, en çok bir [güncelleştirme etki alanındaki](manage-availability.md)makineler bulundur, ancak ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Olay durumu | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, `NotBefore` özelliğinde belirtilen süreden sonra başlayacak şekilde zamanlandı.<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmaz; olay tamamlandığında olay artık döndürülmeyecektir.
@@ -127,7 +127,7 @@ Documentınnation bir ETag ' dir ve olayların yükünün son sorgudan bu yana d
 ### <a name="event-scheduling"></a>Olay zamanlaması
 Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, bir olayın `NotBefore` özelliğine yansıtılır. 
 
-|Olay türü  | En düşük bildirim |
+|Türü  | En düşük bildirim |
 | - | - |
 | Amazsınız| 15 dakika |
 | Yeniden başlatma | 15 dakika |

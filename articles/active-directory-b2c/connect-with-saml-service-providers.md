@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043520"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836669"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -41,11 +41,11 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Senaryo | Azure AD B2C rolü | Nasıl yapılır |
 | -------- | ----------------- | ------- |
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
-| Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure AD B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
+* [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * Security Assertion Markup Language (SAML) protokolünü temel olarak anlama.
 * SAML hizmet sağlayıcısı (SP) olarak yapılandırılmış bir Web uygulaması. Bu öğreticide, sağladığımız bir [SAML test uygulaması][samltest] kullanabilirsiniz.
 

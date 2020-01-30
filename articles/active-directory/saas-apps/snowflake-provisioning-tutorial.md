@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için kar ke 'yi yapılandırma | Microsoft Docs"
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için kar tanesi yapılandırma | Microsoft Docs'
 description: "' Nin kar/veya Kullanıcı hesaplarını otomatik olarak sağlaması ve serbest bırakmak üzere Azure Active Directory nasıl yapılandırılacağını öğrenin."
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 04d9ec8cad2404466d2df649df4d5c461768b76f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2aaf1d2b377abc0b10b0b14de03d01c7f6fae5b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693553"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767759"
 ---
-# <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için kar ke 'yi yapılandırma
+# <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kar ke 'yi yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları kar/veya grupları otomatik olarak sağlamak ve serbest bırakmak üzere yapılandırmak için kar ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
 
@@ -31,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları kar/ve
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -56,10 +56,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için kar \ ' ı yapılandırmadan önce, kar için SCıM sağlamasını etkinleştirmeniz gerekecektir.
 
-> [!NOTE]
-> Bu tümleştirme, bugün kar için özel önizlemededir. Bu özelliği kar hesabı 'nda etkinleştirmek istiyorsanız, kar/satış temsilcinizle iletişime geçin.
-
-1. Kar Yönetici Konsolu 'nda oturum açın. Aşağıda gösterilen sorguyu çalışma alanında vurgulanmış şekilde girin ve **Çalıştır**' a tıklayın.
+1. Kar Yönetici Konsolu 'nda oturum açın. Aşağıda gösterilen çalışma sayfasında gösterilen sorguyu girin ve **Çalıştır**' a tıklayın.
 
     ![Kar tanesi Yönetici Konsolu](media/Snowflake-provisioning-tutorial/image00.png)
 
@@ -98,11 +95,11 @@ Azure AD ile otomatik Kullanıcı sağlamaya yönelik kar kümesini yapılandır
 Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak kar grubundaki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca, [kar tanesi çoklu oturum](Snowflake-tutorial.md)açma öğreticisinde sunulan yönergeleri izleyerek kar için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca, [kar tanesi çoklu oturum açma öğreticisinde](Snowflake-tutorial.md)sunulan yönergeleri izleyerek kar için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Azure AD 'de kar için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -118,7 +115,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici kimlik bilgileri bölümünün altında, kiracı `https://<Snowflake Account URL>/scim/v2` URL 'sini girin. Kiracı URL 'sine bir örnek:`https://acme.snowflakecomputing.com/scim/v2`
+5. Yönetici kimlik bilgileri bölümünün altında, kiracı URL 'sindeki `https://<Snowflake Account URL>/scim/v2` girin. Kiracı URL 'SI örneği: `https://acme.snowflakecomputing.com/scim/v2`
 
 6. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin kar alanına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, kar için hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -126,9 +123,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Save (Kaydet)** düğmesine tıklayın.
 
 9. **Eşlemeler** bölümü altında, **kullanıcıları kar alarak Azure Active Directory eşitler**' ı seçin.
 
@@ -152,7 +149,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-15. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek kar için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+15. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek kar için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın. Bu seçenek kullanılamıyorsa, lütfen yönetici kimlik bilgileri altında gerekli alanları yapılandırın, **Kaydet** ' e tıklayın ve sayfayı yenileyin. 
 
     ![Sağlama kapsamı](common/provisioning-scope.png)
 

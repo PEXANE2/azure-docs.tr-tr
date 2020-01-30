@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753961"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765528"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -21,8 +21,12 @@ Bu makalede, öğreneceksiniz nasıl yapılır:
 >
 > * Kasa oluşturma ve yapılandırma
 > * Veritabanlarını bul
-> * Yedekleri yapılandırma
+> * Yedeklemeleri yapılandırma
 > * İsteğe bağlı yedekleme işi çalıştırma
+
+>[!NOTE]
+>Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
+>Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -78,7 +82,7 @@ PowerShell kullanarak bir kural oluşturmak için:
 
 Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
 
-**Seçenek** | **Avantajlar** | **Dezavantajlar**
+**Seçenek** | **Üstünlü** | **Olumsuz**
 --- | --- | ---
 IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
 NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
@@ -132,13 +136,13 @@ Genel önizlemeye aşağıdaki şekilde katılın:
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-sap-hana-database/select-items.png)
 3. **Yedekleme ilkesi** > **yedekleme Ilkesi**' ni seçin ve aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
 
-    ![Yedekleme ilkesi seçme](./media/backup-azure-sap-hana-database/backup-policy.png)
+    ![Yedekleme ilkesi seçin](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. İlkeyi oluşturduktan sonra **yedekleme** menüsünde **yedeklemeyi etkinleştir**' e tıklayın.
 
     ![Yedeklemeyi etkinleştir](./media/backup-azure-sap-hana-database/enable-backup.png)
 5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
-### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
+### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 

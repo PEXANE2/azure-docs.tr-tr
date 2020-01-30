@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: a106699f4e3148eba85acc913e6f97be6ce9be66
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bffba0ce5481250a696cdf4ec0aed6b59620bfe9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515082"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773841"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (.NET)
 
@@ -33,7 +33,7 @@ Hızlı başlangıçta, önceden yazılmış iki .NET uygulaması kullanılır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, C# kullanılarak yazılır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm olması gerekir.
 
@@ -51,7 +51,7 @@ Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize ekle
 az extension add --name azure-cli-iot-ext
 ```
 
-Örnek C# projesini önceden indirmediyseniz https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip adresinden indirip ZIP arşivini ayıklayın.
+Daha önce yapmadıysanız, https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip Azure IoT C# örneklerini INDIRIN ve ZIP arşivini ayıklayın.
 
 ## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
@@ -115,7 +115,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 2. **SimulatedDevice.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
+    `s_connectionString` değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
 
@@ -141,7 +141,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 2. **BackEndApplication.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.cs**' ye yaptığınız değişiklikleri kaydedin.
+    `s_connectionString` değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.cs**' ye yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulaması için gerekli kitaplıkları yükleyin:
 

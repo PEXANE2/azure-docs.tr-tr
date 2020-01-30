@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB Tablo API'si .NET SDK & kaynakları
 description: Tüm yayın tarihleri, sona erme tarihlerini ve her bir sürümü arasında yapılan değişiklikler dahil olmak üzere Azure Cosmos DB tablo API'si hakkında bilgi edinin.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058577"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771624"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tablosu .NET API 'SI: Notları indir ve serbest bırak
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API 'SI: Indirme ve sürüm notları
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -27,8 +27,8 @@ ms.locfileid: "71058577"
 |   |   |
 |---|---|
 |**SDK'sını indirme**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Hızlı Başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si bir uygulama oluşturun](create-table-dotnet.md)|
-|**Öğretici**|[Azure Cosmos DB: .NET ' te Tablo API'si geliştirin](tutorial-develop-table-dotnet.md)|
+|**Hızlı Başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si ile uygulama derleme](create-table-dotnet.md)|
+|**Öğretici**|[Azure Cosmos DB: .NET 'te Tablo API'si geliştirin](tutorial-develop-table-dotnet.md)|
 |**Geçerli desteklenen çerçevesi**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -80,14 +80,14 @@ ms.locfileid: "71058577"
 
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar.
 
-`Microsoft.Azure.CosmosDB.Table` Kitaplık Şu anda yalnızca .NET Framework için kullanılabilir ve bakım modunda ve yakında kullanım dışı bırakılacak. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).NET Standard kitaplığına eklenir, bu nedenle [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)'a yükseltmeniz önerilir.
+`Microsoft.Azure.CosmosDB.Table` kitaplığı şu anda yalnızca .NET Framework için kullanılabilir ve bakım modunda ve yakında kullanım dışı bırakılacak. Yeni özellikler ve işlevler ve iyileştirmeler yalnızca [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).NET Standard kitaplığına eklenir, bu nedenle [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)'a yükseltmeniz önerilir.
 
 [Windowsazure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) Önizleme paketi kullanım dışı bırakıldı. WindowsAzure. Storage-PremiumTable SDK, 15 Kasım 2018 tarihinde kullanımdan kaldırılacaktır, bu da kullanımdan kaldırılan SDK 'ya yönelik isteklere izin verilmez. 
 
 Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler hizmet tarafından reddedilir.
 <br/>
 
-| Version | Yayınlanma Tarihi | Sona erme tarihi |
+| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [2.1.2'yi](#2.1.2) |16 Eylül 2019| |
 | [2.1.0](#2.1.0) |22 Ocak 2019|01 Nisan 2020 |

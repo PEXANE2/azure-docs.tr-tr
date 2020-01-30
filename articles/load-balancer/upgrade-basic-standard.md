@@ -1,0 +1,137 @@
+---
+title: Temel genel 'ten standart Genel Azure Load Balancer yükseltin
+description: Bu makalede, Azure genel Load Balancer temel SKU 'dan standart SKU 'ya nasıl yükselteceğiniz gösterilmektedir
+services: load-balancer
+author: irenehua
+ms.service: load-balancer
+ms.topic: article
+ms.date: 01/23/2020
+ms.author: irenehua
+ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76776670"
+---
+# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>Temel SKU 'dan standart SKU 'ya Azure genel Load Balancer yükseltme
+[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
+
+Bir yükseltmede iki aşama vardır:
+
+1. Yapılandırmayı geçirme
+2. Standart Load Balancer arka uç havuzlarına VM ekleme
+
+Bu makalede yapılandırma geçişi ele alınmaktadır. Arka uç havuzlara sanal makine eklemek, belirli ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey genel öneriler [sağlanır](#add-vms-to-backend-pools-of-standard-load-balancer).
+
+## <a name="upgrade-overview"></a>Yükseltmeye genel bakış
+
+Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
+
+* Kaynak grubunda ve belirttiğiniz konumda bir standart ortak SKU Load Balancer oluşturur.
+* Temel SKU genel Load Balancer yapılandırmalarının yeni oluşturma standart ortak Load Balancer sorunsuz bir şekilde kopyasını oluşturur.
+
+### <a name="caveatslimitations"></a>Caveats\Limitations
+
+* Betik yalnızca ortak Load Balancer yükseltmesini destekler. Iç temel Load Balancer yükseltme için, giden bağlantı istenmiyorsa standart bir Iç Load Balancer oluşturun ve giden bağlantı gerekliyse standart bir Iç Load Balancer ve standart ortak Load Balancer oluşturun.
+* Standart Load Balancer yeni bir ortak adrese sahiptir. Farklı SKU 'Lara sahip olduklarından, var olan temel Load Balancer ilişkili IP adreslerini Standart Load Balancer sorunsuzca taşımak olanaksızdır.
+* Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
+* Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Lütfen boş olmadıklarından emin olun.
+
+## <a name="download-the-script"></a>Betiği indir
+
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)geçiş betiğini indirin.
+## <a name="use-the-script"></a>Betiği kullan
+
+Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
+
+* Azure az modüller yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız en iyi seçenek, komut dosyasını çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
+* Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
+
+Azure az modules yüklü olup olmadığınızı öğrenmek için `Get-InstalledModule -Name az`çalıştırın. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
+
+### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
+
+Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
+  
+Betiği aşağıdaki komutla çalıştırın:
+
+`Install-Script -Name AzurePublicLBUpgrade`
+
+Bu komut ayrıca gerekli az modülleri de yüklüyor.  
+
+### <a name="install-using-the-script-directly"></a>Betiği kullanarak doğrudan yüklemeyi
+
+Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), betik indirme bağlantısındaki **El Ile indir** sekmesini kullanarak betiği el ile indirebilirsiniz. Betik, ham nupkg dosyası olarak indirilir. Betiği bu nupkg dosyasından yüklemek için bkz. [El Ile paket indirme](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+
+Betiği çalıştırmak için:
+
+1. Azure 'a bağlanmak için `Connect-AzAccount` kullanın.
+
+1. Az modülleri içeri aktarmak için `Import-Module Az` kullanın.
+
+1. Gerekli parametreleri incelemek için `Get-Help AzureLBUpgrade.ps1` çalıştırın:
+
+   ```
+   AzurePublicLBUpgrade.ps1
+    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
+    -oldLBName <name of existing Basic Load Balancer>
+    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
+    -newlocation <Name of the location where the new Standard Load Balancer will be created>
+    -newLBName <Name of the Standard Load Balancer to be created>
+   ```
+   Betik için Parametreler:
+   * **Oldrgname: [dize]: gereklidir** – bu, yükseltmek Istediğiniz mevcut temel Load Balancer kaynak grubudur. Bu dize değerini bulmak için Azure Portal ' a gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
+   * **Oldlbname: [dize]: gerekli** – bu, yükseltmek Istediğiniz mevcut temel dengeleyicinizin adıdır. 
+   * **Newrgname: [dize]: gereklidir** – bu, standart Load Balancer oluşturulacağı kaynak grubudur. Yeni bir kaynak grubu veya var olan bir grup olabilir. Var olan bir kaynak grubunu seçerseniz, Load Balancer adının kaynak grubu içinde benzersiz olması gerektiğini unutmayın. 
+   * **newLocation: [dize]: gerekli** – standart Load Balancer oluşturulacağı konumdur. Diğer mevcut kaynaklarla daha iyi ilişki sağlamak için, seçilen temel Load Balancer aynı konumun Standart Load Balancer aynı konuma devralması önerilir.
+   * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
+1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
+
+    **Örnek**
+
+   ```azurepowershell
+   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   ```
+
+### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standart Load Balancer arka uç havuzlarına VM ekleme
+
+İlk olarak, betiğin, temel ortak Load Balancer üzerinden geçirilmiş doğru yapılandırmayla yeni bir standart ortak Load Balancer başarıyla oluşturduğunu kontrol edin. Bunu Azure portal doğrulayabilirsiniz.
+
+El ile test olarak Standart Load Balancer aracılığıyla az miktarda trafik gönderdiğinizden emin olun.
+  
+Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzlarına sanal makineler eklemenin ve her biri için önerdiğimiz bazı senaryolar verilmiştir:
+
+* **Mevcut VM 'leri eski temel genel Load Balancer arka uç havuzlarından yeni oluşturulan standart ortak Load Balancer arka uç havuzlarından taşıma**.
+    1. Bu hızlı başlangıç görevleri yapmak için oturum açın [Azure portalında](https://portal.azure.com).
+ 
+    1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **Yeni oluşturulan standart Load Balancer** seçin.
+   
+    1. **Ayarlar**’ın altında **Arka Uç Havuzları**’nı seçin.
+   
+    1. Temel Load Balancer arka uç havuzuyla eşleşen arka uç havuzunu seçin, aşağıdaki değeri seçin: 
+      - **Sanal makine**: açılır ve temel Load Balancer eşleşen arka uç havuzundan VM 'leri seçin.
+    1. **Kaydet**’i seçin.
+    >[!NOTE]
+    >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
+
+* **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
+    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)bulunabilir.
+
+## <a name="common-questions"></a>Sık sorulan sorular
+
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Yapılandırmayı v1 'den v2 'ye geçirmek için Azure PowerShell betiğiyle ilgili herhangi bir sınırlama var mı?
+
+Evet. Bkz. [Uyarılar/sınırlamalar](#caveatslimitations).
+
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell betiği, temel Load Balancer trafik üzerinde yeni oluşturulan Standart Load Balancer da geçiş yapar mi?
+
+Hayır. Azure PowerShell betiği yalnızca yapılandırmayı geçirir. Gerçek trafik geçişi, sizin ve denetiminizin sorumluluğundadır.
+
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
+  
+slbupgradesupport@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Standart Load Balancer hakkında bilgi edinin](load-balancer-overview.md)

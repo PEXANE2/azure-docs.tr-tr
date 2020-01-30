@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951097"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840358"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde OpenID Connect Teknik profili tanımlama
 
@@ -76,9 +76,9 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
 | Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse Azure AD B2C, belirtecin kimlik sağlayıcısı tarafından döndürülen bir talep içinde olup olmadığını denetler ve belirtilen değere eşittir. |
-| VERIYI | Yes | OpenID Connect bulgu belirtimine göre biçimlendirilmiş bir JSON yapılandırma belgesine işaret eden, iyi bilinen bir OpenID yapılandırma uç noktası olarak da bilinen bir URL. |
+| VERIYI | Evet | OpenID Connect bulgu belirtimine göre biçimlendirilmiş bir JSON yapılandırma belgesine işaret eden, iyi bilinen bir OpenID yapılandırma uç noktası olarak da bilinen bir URL. |
 | Adı | Hayır | Kimlik sağlayıcısının adı. |
 | response_types | Hayır | OpenID Connect Core 1,0 belirtimine göre yanıt türü. Olası değerler: `id_token`, `code`veya `token`. |
 | response_mode | Hayır | Kimlik sağlayıcısının sonucu Azure AD B2C geri göndermek için kullandığı yöntem. Olası değerler: `query`, `form_post` (varsayılan) veya `fragment`. |
@@ -86,7 +86,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 | HttpBinding | Hayır | Erişim belirtecine ve talep belirteci uç noktalarına beklenen HTTP bağlaması. Olası değerler: `GET` veya `POST`.  |
 | Validtokenıssueröneklerini | Hayır | Azure Active Directory gibi çok kiracılı bir kimlik sağlayıcısı kullanırken kiracıların her birinde oturum açmak için kullanılabilen bir anahtar. |
 | Usepolicınredirecturi | Hayır | Yeniden yönlendirme URI 'SI oluşturulurken bir ilke kullanılıp kullanılmayacağını belirtir. Uygulamanızı kimlik sağlayıcısında yapılandırdığınızda, yeniden yönlendirme URI 'sini belirtmeniz gerekir. Yeniden yönlendirme URI 'SI Azure AD B2C `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`gösterir.  `false`belirtirseniz, kullandığınız her ilke için bir yeniden yönlendirme URI 'SI eklemeniz gerekir. Örneğin: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Hayır | Http durum kodu 5xx aralığalıyorsa, bir dış hizmete yönelik isteğin hata olarak işaretlenip işaretlenmeyeceğini gösterir. Varsayılan değer: `false`. |
+| MarkAsFailureOnStatusCode5xx | Hayır | Http durum kodu 5xx aralığalıyorsa, bir dış hizmete yönelik isteğin hata olarak işaretlenip işaretlenmeyeceğini gösterir. Varsayılan: `false`. |
 | Discovermetadatabyıtokenıssuer | Hayır | OıDC meta verilerinin JWT belirtecindeki veren kullanılarak bulunup bulunmadığını gösterir. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
@@ -95,7 +95,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri `code`olarak ayarlandıysa gereklidir. Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler `id_token` olarak ayarlandıysa, şifreleme anahtarını atlayabilirsiniz.  |
+| client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri `code`olarak ayarlandıysa gereklidir. Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler `id_token` olarak ayarlandıysa, şifreleme anahtarını atlayabilirsiniz.  |
 
 ## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'Si
 
@@ -103,6 +103,6 @@ Kimlik sağlayıcınızın yeniden yönlendirme URI 'sini yapılandırdığını
 
 Örnekler:
 
-- [Özel ilkeler kullanarak bir kimlik sağlayıcısı olarak Microsoft hesabı (MSA) ekleme](active-directory-b2c-custom-setup-msa-idp.md)
-- [Azure AD hesaplarını kullanarak oturum açın](active-directory-b2c-setup-aad-custom.md)
-- [Kullanıcıların özel ilkeleri kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısında oturum açmalarına izin ver](active-directory-b2c-setup-commonaad-custom.md)
+- [Özel ilkeler kullanarak bir kimlik sağlayıcısı olarak Microsoft hesabı (MSA) ekleme](identity-provider-microsoft-account-custom.md)
+- [Azure AD hesaplarını kullanarak oturum açın](identity-provider-azure-ad-single-tenant-custom.md)
+- [Kullanıcıların özel ilkeleri kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısında oturum açmalarına izin ver](identity-provider-azure-ad-multi-tenant-custom.md)

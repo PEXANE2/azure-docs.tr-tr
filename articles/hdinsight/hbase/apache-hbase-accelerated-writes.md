@@ -1,19 +1,18 @@
 ---
 title: Apache HBase için Azure HDInsight hızlandırılmış yazma Işlemleri
 description: Apache HBase yazma öncesinde günlüğü performansını geliştirmek için Premium yönetilen diskler kullanan Azure HDInsight hızlandırılmış yazma özelliğine genel bakış sunar.
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/24/2020
+ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156939"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764608"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için Azure HDInsight hızlandırılmış yazma Işlemleri
 
@@ -33,13 +32,13 @@ Bir **Regionserver** , memstore temizlenmeden önce kilitlenirse veya kullanıla
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Apache HBase için Azure HDInsight 'ta hızlandırılmış yazma özelliği
 
-Hızlandırılmış yazma özelliği, bulut depolamadaki ön yazma günlüklerini kullanmanın neden olduğu daha yüksek yazma gecikme süreleriyle ilgili sorunu çözer.  HDInsight Apache HBase kümeleri için hızlandırılmış yazma özelliği, Premium SSD ile yönetilen diskleri her RegionServer 'a (çalışan düğümü) iliştirir. Sonradan yazma günlükleri, bulut depolaması yerine bu Premium yönetilen disklere takılan Hadoop dosya sistemine (SUI) yazılır.  Premium yönetilen diskler, katı hal diskleri (SSD 'Ler) kullanır ve hata toleransı ile mükemmel g/ç performansı sunar.  Yönetilmeyen disklerden farklı olarak, bir depolama birimi kapalıysa, aynı Kullanılabilirlik kümesindeki diğer depolama birimlerini etkilemez.  Sonuç olarak, yönetilen diskler, uygulamalarınız için düşük yazma gecikme süresi ve daha iyi dayanıklılık sağlar. Azure tarafından yönetilen diskler hakkında daha fazla bilgi edinmek için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/windows/managed-disks-overview.md). 
+Hızlandırılmış yazma özelliği, bulut depolamadaki ön yazma günlüklerini kullanmanın neden olduğu daha yüksek yazma gecikme süreleriyle ilgili sorunu çözer.  HDInsight Apache HBase kümeleri için hızlandırılmış yazma özelliği, Premium SSD ile yönetilen diskleri her RegionServer 'a (çalışan düğümü) iliştirir. Sonradan yazma günlükleri, bulut depolaması yerine bu Premium yönetilen disklere takılan Hadoop dosya sistemine (SUI) yazılır.  Premium yönetilen diskler, katı hal diskleri (SSD 'Ler) kullanır ve hata toleransı ile mükemmel g/ç performansı sunar.  Yönetilmeyen disklerden farklı olarak, bir depolama birimi kapalıysa, aynı Kullanılabilirlik kümesindeki diğer depolama birimlerini etkilemez.  Sonuç olarak, yönetilen diskler, uygulamalarınız için düşük yazma gecikme süresi ve daha iyi dayanıklılık sağlar. Azure tarafından yönetilen diskler hakkında daha fazla bilgi edinmek için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight 'ta HBase için hızlandırılmış yazma Işlemleri nasıl etkinleştirilir
 
-Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma**ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları**altında, **hızlandırılmış yazmaları etkinleştir**' in yanındaki onay kutusuna tıklayın. Ardından, küme oluşturma için kalan adımlara devam edin.
+Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma**ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları**altında **HBase hızlandırılmış yazmaları etkinleştir**' in yanındaki onay kutusunu işaretleyin. Ardından, küme oluşturma için kalan adımlara devam edin.
 
-![HDInsight Apache HBase için hızlandırılmış yazma seçeneğini etkinleştirme](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
+![HDInsight Apache HBase için hızlandırılmış yazma seçeneğini etkinleştirme](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>Diğer konular
 
@@ -55,7 +54,7 @@ flush 'mytable'
 disable 'mytable'
 ```
 
-Kümenizin ölçeğini ölçeklendirirken benzer adımları izleyin: tabloları temizleyin ve gelen verileri durdurmak için tablolarınızı devre dışı bırakın. Kümenizin ölçeğini üçten az düğüm olacak şekilde ölçeklendirebilirsiniz.
+Kümenizin ölçeğini ölçeklendirirken benzer adımları izleyin: tabloları temizleyin ve gelen verileri durdurmak için tablolarınızı devre dışı bırakın. Kümenizi üçten az düğüme ölçeklendiremez.
 
 Bu adımları takip etmek, başarılı bir ölçeklendirme işlemi sağlar ve bir süs Yot 'ın, alt veya geçici dosyalar nedeniyle güvenli mod olma olasılığını ortadan önler.
 

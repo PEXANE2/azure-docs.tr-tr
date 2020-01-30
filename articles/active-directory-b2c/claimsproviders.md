@@ -1,6 +1,6 @@
 ---
-title: ClaimsProviders - Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C'de özel bir ilke ClaimsProvider öğesi belirtin.
+title: ClaimsProviders-Azure Active Directory B2C | Microsoft Docs
+description: Azure Active Directory B2C bir özel ilkenin ClaimsProvider öğesini belirtin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a20f40c893c36823906d5cecadd9be21b8a4fd2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511513"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836023"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bir talep sağlayıcı kümesini içeren [teknik profiller](technicalprofiles.md). Her talep sağlayıcısı uç noktaları ve Talep sağlayıcı ile iletişim kurmak için gerekli Protokolü belirleyen bir veya daha fazla teknik profiller olması gerekir. Bir talep sağlayıcısı, birden fazla teknik profili olabilir. Örneğin, talep sağlayıcısı, birden çok protokol, farklı özelliklere sahip çeşitli uç noktalarını destekler veya farklı güvencesi düzeylerinde farklı talepler serbest bırakır çünkü birden fazla teknik profili tanımlanabilir. Bir kullanıcı yolculuğu, ancak başka bir hassas talep serbest bırakmak için kabul edilebilir olabilir.
+Bir talep sağlayıcı bir dizi [Teknik profil](technicalprofiles.md)içerir. Her talep sağlayıcının, uç noktaları ve talep sağlayıcısıyla iletişim kurmak için gereken protokolleri tespit eden bir veya daha fazla teknik profili olmalıdır. Bir talep sağlayıcısının birden çok teknik profili olabilir. Örneğin, talep sağlayıcı birden çok protokolü, farklı yeteneklere sahip çeşitli uç noktaları desteklediğinden veya farklı güvence düzeylerinde farklı talepler yayınlamadığından birden çok teknik profil tanımlanabilir. Gizli talepler tek bir Kullanıcı yolculuğunda serbest bırakılması kabul edilebilir, ancak başka bir Kullanıcı yolculuğunda olabilir.
 
 ```XML
 <ClaimsProviders>
@@ -39,23 +39,23 @@ Bir talep sağlayıcı kümesini içeren [teknik profiller](technicalprofiles.md
 </ClaimsProviders>
 ```
 
-**ClaimsProviders** öğesi aşağıdaki öğeyi içerir:
+**Claimsproviders** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| ClaimsProvider | 1:n | Çeşitli kullanıcı yolculuklarından yararlanılabilir akredite talep sağlayıcısı. |
+| ClaimsProvider | 1: n | Çeşitli Kullanıcı yararlanılabilir olabilecek, acalacaklandırılan bir talep sağlayıcısı. |
 
 ## <a name="claimsprovider"></a>ClaimsProvider
 
-**ClaimsProvider** öğe aşağıdaki alt öğeleri içerir:
+**ClaimsProvider** öğesi aşağıdaki alt öğeleri içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ---------- | ----------- |
-| Etki Alanı | 0:1 | Talep sağlayıcının etki alanı adını içeren bir dize. Örneğin, Facebook teknik profili, Talep sağlayıcı içeriyorsa, etki alanı adı Facebook.com ' dir. Bu etki alanı adı, teknik profili tarafından geçersiz kılınmadığı sürece Talep sağlayıcı tanımlanan tüm teknik profiller için kullanılır. Etki alanı adı da içinde başvurulabilir bir **domain_hint**. Daha fazla bilgi için **sosyal sağlayıcılar için yönlendirme oturum** bölümünü [doğrudan Azure Active Directory B2C kullanarak oturum kümesi](direct-signin.md). |
-| displayName | 0:1 | Kullanıcılara gösterilen Talep sağlayıcı adını içeren bir dize. |
-| [TechnicalProfiles](technicalprofiles.md) | 0:1 | Talep sağlayıcı tarafından desteklenen teknik profiller bir dizi |
+| Domain | 0:1 | Talep sağlayıcısı için etki alanı adını içeren bir dize. Örneğin, talep sağlayıcınız Facebook teknik profilini içeriyorsa, etki alanı adı Facebook.com olur. Bu etki alanı adı, teknik profil tarafından geçersiz kılınmadıkça talep sağlayıcısında tanımlanan tüm teknik profiller için kullanılır. Etki alanı adına bir **domain_hint**de başvurulabilir. Daha fazla bilgi için, [Azure Active Directory B2C kullanarak doğrudan oturum açma ayarlama](direct-signin.md)konusunun **sosyal sağlayıcıya yeniden yönlendirme** bölümüne bakın. |
+| DisplayName | 1:1 | Kullanıcılara görüntülenebilecek talep sağlayıcısının adını içeren bir dize. |
+| [Teknisyen](technicalprofiles.md) | 0:1 | Talep sağlayıcısı tarafından desteklenen bir teknik profiller kümesi |
 
-**ClaimsProvider** teknik profillerinize talep sağlayıcısını nasıl ilişki kuracağını düzenler. Aşağıdaki örnek, Azure Active Directory teknik profilleri ile Azure Active Directory talep sağlayıcısı gösterir:
+**ClaimsProvider** , teknik profillerinizin talep sağlayıcısıyla ilişkisini düzenler. Aşağıdaki örnekte, Azure Active Directory teknik profilleriyle Azure Active Directory talep sağlayıcısı gösterilmektedir:
 
 ```XML
 <ClaimsProvider>
@@ -93,7 +93,7 @@ Bir talep sağlayıcı kümesini içeren [teknik profiller](technicalprofiles.md
 </ClaimsProvider>
 ```
 
-Aşağıdaki örnek, Facebook talep sağlayıcısından gösterir **Facebook OAUTH** teknik profili.
+Aşağıdaki örnekte, Facebook **-OAUTH** teknik profiliyle Facebook talep sağlayıcısı gösterilmektedir.
 
 ```XML
 <ClaimsProvider>

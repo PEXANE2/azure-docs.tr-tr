@@ -3,22 +3,20 @@ title: Azure Trafik Analizi sık sorulan sorular | Microsoft Docs
 description: Trafik Analizi hakkında en sık sorulan sorulardan bazılarına yanıt alın.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
-ms.translationtype: HT
+ms.author: damendo
+ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907104"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840630"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -46,8 +44,8 @@ Trafik analizlerini etkinleştirmek için hesabınızın aşağıdakilerden biri
     - Microsoft. Network/loadBalancers/Read 
     - Microsoft. Network/Localnetworkgateway/Read 
     - Microsoft. Network/NetworkInterfaces/Read 
-    - Microsoft. Network/networkSecurityGroups/Read 
-    - Microsoft. Network/publicIPAddresses/Read
+    - Microsoft.Network/networkSecurityGroups/read 
+    - Microsoft.Network/publicIPAddresses/read
     - Microsoft. Network/routeTables/Read
     - Microsoft. Network/Virtualnetworkgateway/Read 
     - Microsoft. Network/virtualNetworks/Read
@@ -79,7 +77,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Batı Avrupa
 - Kuzey Avrupa
 - Brezilya Güney
-- UK Batı
+- UK, Batı
 - UK Güney
 - Avustralya Doğu
 - Avustralya Güneydoğu 
@@ -106,7 +104,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 - Fransa Orta
 - Batı Avrupa
 - Kuzey Avrupa
-- UK Batı
+- UK, Batı
 - UK Güney
 - Avustralya Doğu
 - Avustralya Güneydoğu
@@ -265,6 +263,62 @@ Trafik Analizi, uyarılar için yerleşik olmayan desteğe sahip değil. Ancak T
 - Sorgularınızı yazmak için [burada belgelenen şemayı](traffic-analytics-schema.md) kullanın 
 - Uyarıyı oluşturmak için "yeni uyarı kuralı" na tıklayın
 - Uyarı oluşturmak için [günlük uyarıları belgelerine](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) başvurun
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Nasıl yaparım? en çok şirket içi trafiği hangi VM 'Lerin aldığını denetleyin
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  IP 'Ler için:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+Zaman biçimi: yyyy-aa-gg 00:00:00 kullanın
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Nasıl yaparım? şirket içi makinelerden gelen VM 'lerim tarafından alınan trafikte standart sapmayı denetle
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+IP 'Ler için:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>NSG kuralları ile IP çiftleri arasında hangi bağlantı noktalarının erişilebilir (veya bosine) Nasıl yaparım? denetleyin
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Coğrafi Harita görünümündeki klavyeyi kullanarak nasıl gezinirim?
 

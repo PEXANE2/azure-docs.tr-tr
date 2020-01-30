@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758368"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768507"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
 
@@ -29,11 +29,8 @@ Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak ve T-SQL deyimleri
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-  
 - R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) . [Önizleme Için kaydolun](sql-database-machine-learning-services-overview.md#signup).
-
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]

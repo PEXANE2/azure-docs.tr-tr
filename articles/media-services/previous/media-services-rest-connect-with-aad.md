@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 66c69552157df957e572a3af092131a3b7e560d5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871700"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774970"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>REST ile Media Services API 'sine erişmek için Azure AD kimlik doğrulamasını kullanma
 
@@ -47,14 +47,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > Şu anda Media Services Azure Access Control Hizmetleri kimlik doğrulama modelini destekler. Ancak, Access Control kimlik doğrulaması kullanım dışı olacaktır 1 Haziran 2018. Azure AD kimlik doğrulaması modeline mümkün olan en kısa sürede geçiş yapmanız önerilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - [Azure Portal kullanarak bir Azure Media Services hesabı oluşturun](media-services-portal-create-account.md).
 - [Azure AD kimlik doğrulamasına genel bakış makalesini Azure Media Services API 'sine](media-services-use-aad-auth-to-access-ams-api.md) göz atın.
 - Bu makalede gösterilen REST API 'Leri yürütmek için [Postman](https://www.getpostman.com/) Rest istemcisini yükleme. 
 
-    Bu öğreticide **Postman** kullanıyoruz, ancak Rest aracı uygun olacak. Diğer alternatifler: REST eklentisi veya **Telerik Fiddler**ile **Visual Studio Code** . 
+    Bu öğreticide **Postman** kullanıyoruz, ancak Rest aracı uygun olacak. Diğer seçenekler şunlardır: REST eklentili **Visual Studio Code** veya **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Azure portal kimlik doğrulama bilgilerini alın
 
@@ -83,7 +83,7 @@ Bilgileri almak için aşağıdaki adımları izleyin:
 5. Mevcut bir **Azure AD uygulaması** seçin veya yeni bir tane oluşturun (aşağıda gösterildiği gibi).
 
     > [!NOTE]
-    > Azure Medya REST isteğinin başarılı olması için, çağıran kullanıcının erişmeye çalıştığı Media Services hesap için **katkıda bulunan** veya **sahip** rolü olmalıdır. "Uzak sunucu bir hata döndürdü: (401) yetkilendirilmemiş, "bkz. [erişim denetimi](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Azure Medya REST isteğinin başarılı olması için, çağıran kullanıcının erişmeye çalıştığı Media Services hesap için **katkıda bulunan** veya **sahip** rolü olmalıdır. "Uzak sunucu bir hata döndürdü: (401) yetkilendirilmemiş" ifadesini içeren bir özel durum alırsanız bkz. [erişim denetimi](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Yeni bir AD uygulaması oluşturmanız gerekiyorsa, şu adımları izleyin:
     
@@ -122,7 +122,7 @@ Kodunuzda daha sonra kullanmak için, Web. config veya App. config dosyanıza AD
 
 ## <a name="get-the-access-token-using-postman"></a>Postman kullanarak erişim belirtecini al
 
-Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir REST API yürütmek için **Postman** 'ın nasıl kullanılacağı gösterilmektedir. Herhangi bir Media Services REST API çağırmak için, çağrılara "Authorization" üst bilgisini eklemeniz ve her çağrıya "taşıyıcı *your_access_token*" değerini eklemeniz gerekir (Bu öğreticinin sonraki bölümünde gösterildiği gibi). 
+Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir REST API yürütmek için **Postman** 'ın nasıl kullanılacağı gösterilmektedir. Herhangi bir Media Services REST API çağırmak için, çağrılara "yetkilendirme" başlığını eklemeniz ve her çağrıya "taşıyıcı *your_access_token*" değerini eklemeniz gerekir (Bu öğreticinin sonraki bölümünde gösterildiği gibi). 
 
 1. **Postman**'yi açın.
 2. **POST**'u seçin.
@@ -180,7 +180,7 @@ Bu bölümde, **Postman**kullanılarak **varlıklar** API 'sine nasıl erişebil
 5. Sağ taraftaki Postman penceresinde **toplu düzenleme** bağlantısı ' na tıklayın.
 6. Aşağıdaki üst bilgileri yapıştırın:
 
-        x-ms-version:2.15
+        x-ms-version:2.19
         Accept:application/json
         Content-Type:application/json
         DataServiceVersion:3.0
@@ -192,5 +192,5 @@ Döndürülen yanıt, hesabınızdaki varlıkları içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Media Services erişim için Azure AD [kimlik doğrulaması 'nda Bu örnek kodu deneyin: Her ikisi de REST API aracılığıyla](https://github.com/willzhan/WAMSRESTSoln)
+* [Azure Media Services erişim Için Azure AD kimlik doğrulaması](https://github.com/willzhan/WAMSRESTSoln) 'nda Bu örnek kodu deneyin: REST API aracılığıyla
 * [.NET ile karşıya dosya yükleme](media-services-dotnet-upload-files.md)

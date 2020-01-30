@@ -5,18 +5,24 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 01/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130687"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766822"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway sistem durumu izlemeye genel bakış
 
-Azure Application Gateway, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve havuzdan sağlıksız olarak kabul edilen kaynakları otomatik olarak kaldırır. Application Gateway, sağlıksız örnekleri izlemeye devam eder ve mevcut olduktan sonra sistem durumu araştırmalarını yanıtladıktan sonra yeniden sağlıklı arka uç havuzuna ekler. Application Gateway, arka uç HTTP ayarlarında tanımlanan aynı bağlantı noktasıyla sistem durumu araştırmalarını gönderir. Bu yapılandırma, araştırmanın, müşterilerin arka uca bağlanmak için kullandığı bağlantı noktasını test edilmesini sağlar.
+Azure Application Gateway, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve havuzdan sağlıksız olarak kabul edilen kaynakları otomatik olarak kaldırır. Application Gateway, sağlıksız örnekleri izlemeye devam eder ve mevcut olduktan sonra sistem durumu araştırmalarını yanıtladıktan sonra yeniden sağlıklı arka uç havuzuna ekler. Application Gateway, arka uç HTTP ayarlarında tanımlanan aynı bağlantı noktasıyla sistem durumu araştırmalarını gönderir. Bu yapılandırma, araştırmanın, müşterilerin arka uca bağlanmak için kullandığı bağlantı noktasını test edilmesini sağlar. 
+
+Sistem durumu araştırmaları için Application Gateway kaynak IP adresi, arka uç havuzuna bağlıdır:
+ 
+- Arka uç havuzu ortak bir uç nokta ise, kaynak adresi Application Gateway ön uç genel IP adresidir.
+- Arka uç havuzu özel bir uç nokta ise, kaynak IP adresi uygulama ağ geçidi alt ağı özel IP adresi alanından olur.
+
 
 ![Application Gateway araştırma örneği][1]
 
@@ -34,7 +40,7 @@ Sunucu A için varsayılan araştırma denetimi başarısız olursa, Application
 
 ### <a name="probe-matching"></a>Araştırma eşleştirme
 
-Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Özel sistem durumu araştırmalarının yanı sıra iki eşleşen ölçüt de desteklenir. Uygun ölçütler, sağlıklı bir yanıtın ne olduğunu belirten varsayılan yorumu isteğe bağlı olarak değiştirmek için kullanılabilir.
+Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Özel sistem durumu araştırmalarının yanı sıra iki eşleşen ölçüt de desteklenir. Eşleştirme ölçütleri, isteğe bağlı olarak yanıt verme durumunun varsayılan yorumunu değiştirmek için kullanılabilir.
 
 Aşağıdakiler eşleşen ölçütlerdir: 
 
@@ -58,7 +64,7 @@ Eşleşme ölçütü belirtildiğinde, PowerShell 'de bir `-Match` parametresi k
 | Araştırma URL 'SI |http://127.0.0.1:\<port\>/ |URL yolu |
 | Interval |30 |Bir sonraki sistem durumu araştırması gönderilmeden önce beklenecek saniye cinsinden süre.|
 | Zaman aşımı |30 |Uygulama ağ geçidinin araştırmayı sağlıksız olarak işaretlemeden önce yoklama yanıtı için bekleyeceği saniye cinsinden süre. Bir araştırma sağlıklı olarak döndürülürse, ilgili arka uç hemen sağlıklı olarak işaretlenir.|
-| Sağlıksız eşik |3 |Düzenli durum araştırmasının başarısız olması durumunda kaç yoklamanın gönderileceğini yönetir. Bu ek durum araştırmaları, arka ucun hızlı bir şekilde durumunun belirlenmesi için hızlı bir şekilde gönderilir ve araştırma aralığını beklemez. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
+| Sağlıksız eşik |3 |Düzenli durum araştırmasının başarısız olması durumunda kaç yoklamanın gönderileceğini yönetir. Bu ek durum araştırmaları, arka ucun hızlı bir şekilde sistem durumunu tespit etmek ve araştırma aralığı beklemeleri için hızlı bir şekilde gönderilir. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
 
 > [!NOTE]
 > Bağlantı noktası, arka uç HTTP ayarlarıyla aynı bağlantı noktasıdır.
@@ -83,10 +89,10 @@ Aşağıdaki tabloda özel bir sistem durumu araştırmasının özelliklerine i
 | --- | --- |
 | Ad |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
-| Host |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca Application Gateway 'de birden çok site yapılandırıldığında uygulanabilir, aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, VM ana bilgisayar adından farklıdır. |
+| Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca Application Gateway 'de birden çok site yapılandırıldığında uygulanabilir, aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. |
 | Interval |Saniye cinsinden yoklama aralığı. Bu değer, iki ardışık yoklamalar arasındaki zaman aralığıdır. |
-| Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmıyorsa, araştırma başarısız olarak işaretlenir.  |
+| Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir.  |
 | Sağlıksız eşik |Araştırma yeniden deneme sayısı. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
 
 > [!IMPORTANT]

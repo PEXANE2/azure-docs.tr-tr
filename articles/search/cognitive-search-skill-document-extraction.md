@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113345"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837740"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Belge ayıklama bilişsel yeteneği
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
 
 **Belge ayıklama** becerisi, zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. Bu, normalde, diğer yetenekler tarafından oluşturulabilecek dosyalarla beceri yürütmeden önce gerçekleşen belge ayıklama adımının avantajlarından yararlanmanızı sağlar.
 
@@ -41,7 +41,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Yapılandırma parametresi   | İzin Verilen Değerler | Açıklama |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Veri kümesindeki gömülü görüntüleri veya resim dosyalarını yoksaymak için `none` olarak ayarlayın. Bu varsayılandır. <br/>Bilişsel [becerileri kullanan görüntü analizi](cognitive-search-concept-image-scenarios.md)için, niteliğin belge çözme kapsamında normalleştirilmiş görüntüler dizisi oluşturmasını sağlamak üzere `generateNormalizedImages` olarak ayarlayın. Bu eylem `parsingMode` `default` olarak ayarlanmasını ve `dataToExtract` `contentAndMetadata`olarak ayarlanmasını gerektirir. Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntü eklediğinizde (örneğin, JFK içinde görüldüğü gibi bir grafik denetimindeki aynı boyutlu fotoğraflar gibi), tutarlı işleme sağlamak için boyutlandırılmış ve döndürülen resmi görüntü çıkışına neden olan diğer işleme başvurur. [ Demo](https://github.com/Microsoft/AzureSearch_JFK_Files)). Bu bilgi, bu seçeneği kullandığınızda her bir görüntü için oluşturulur.  <br/>`generateNormalizedImagePerPage`ayarlarsanız, PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde değerlendirilir, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilirler.  PDF olmayan dosya türleri `generateNormalizedImages` ayarlandıysa aynı kabul edilir.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Veri kümesindeki gömülü görüntüleri veya resim dosyalarını yoksaymak için `none` olarak ayarlayın. Bu varsayılandır. <br/>Bilişsel [becerileri kullanan görüntü analizi](cognitive-search-concept-image-scenarios.md)için, niteliğin belge çözme kapsamında normalleştirilmiş görüntüler dizisi oluşturmasını sağlamak üzere `generateNormalizedImages` olarak ayarlayın. Bu eylem `parsingMode` `default` olarak ayarlanmasını ve `dataToExtract` `contentAndMetadata`olarak ayarlanmasını gerektirir. Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntü eklediğinizde (örneğin, [JFK demo](https://github.com/Microsoft/AzureSearch_JFK_Files)bölümünde görüldüğü gibi bir grafik denetimindeki aynı boyutlu fotoğraflar gibi) tutarlı işleme sağlamak için boyutlandırılmış ve döndürülen Tekdüzen görüntü çıkışına neden olan diğer işleme başvurur. Bu bilgi, bu seçeneği kullandığınızda her bir görüntü için oluşturulur.  <br/>`generateNormalizedImagePerPage`ayarlarsanız, PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde değerlendirilir, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilirler.  PDF olmayan dosya türleri `generateNormalizedImages` ayarlandıysa aynı kabul edilir.
 | `normalizedImageMaxWidth` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000 ' dir. | 
 | `normalizedImageMaxHeight` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük yüksekliği (piksel cinsinden). Varsayılan değer 2000 ' dir. |
 

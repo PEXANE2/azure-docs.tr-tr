@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426049"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840494"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Azure Stream Analytics araçları Visual Studio (Önizleme) kullanarak yerel olarak test canlı verileri
 
@@ -38,7 +38,6 @@ Aşağıdaki yerel test seçenekleri desteklenir:
 2. Canlı verileri test etmek için seçin **kullanım bulut giriş** açılan kutusundan.
 
    ![Azure Stream Analytics Visual Studio Canlı bulut giriş](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. Ayarlama **başlattığınızda** giriş verilerini işlemeye işin ne zaman başlar tanımlamak için. İş giriş verileri doğru sonuçlar emin olmak için önceden okuması gerekebileceğini. Varsayılan süre 30 dakika geçerli vaktinden ayarlanır.
 
@@ -65,6 +64,5 @@ Aşağıdaki yerel test seçenekleri desteklenir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Visual Studio için Azure Stream Analytics araçları kullanarak bir Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Visual Studio için Azure Stream Analytics araçları yükleme](stream-analytics-tools-for-visual-studio-install.md)
 * [Stream Analytics sorguları Visual Studio ile yerel olarak test etme](stream-analytics-vs-tools-local-run.md)
 * [Azure Stream Analytics işleri görüntülemek için Visual Studio](stream-analytics-vs-tools.md)

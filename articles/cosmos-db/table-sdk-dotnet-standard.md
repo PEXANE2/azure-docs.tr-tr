@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB Tablo API'si .NET Standard SDK & kaynakları
 description: Sürüm tarihleri, emeklilik tarihleri ve her sürüm arasında yapılan değişiklikler dahil olmak üzere Azure Cosmos DB Tablo API'si ve .NET Standard SDK hakkında bilgi edinin.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996212"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771583"
 ---
-# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API 'SI: Notları indir ve serbest bırak
+# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API: Indirme ve sürüm notları
 > [!div class="op_single_selector"]
 > 
 > * [.NET](table-sdk-dotnet.md)
@@ -88,12 +88,12 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 Bu platformlar arası .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) , [Microsoft. Azure. cosmosdb. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).NET Framework kitaplığının yerini alır.
 
 ### <a name="200-series"></a>2.0.0 serisi
-| Version | Yayınlanma Tarihi | Sona erme tarihi |
+| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [2.0.0-Önizleme](#2.0.0-preview) |Auguest 22, 2019 |--- |
 
 ### <a name="100-series"></a>1.0.0 serisi
-| Version | Yayınlanma Tarihi | Sona erme tarihi |
+| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |13 Eylül 2019 |--- |
 | [1.0.5-Önizleme](#1.0.5-preview) |Auguest 20, 2019 |--- |

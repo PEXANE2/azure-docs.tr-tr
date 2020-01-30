@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314734"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838556"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -249,7 +249,7 @@ Veri ayarlamış olduğunuz birden çok dil içerdiğini ve bu nedenle [Language
 ```
 
 Bu hata iletisini oluşturabilecek yeteneklerin her biri için şu anda desteklenen dillere yönelik bazı başvurular aşağıda verilmiştir:
-* [Desteklenen metin analizi diller](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ( [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)ve [sentimentbecerisi](cognitive-search-skill-sentiment.md)için)
+* [Desteklenen metin analizi diller](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ( [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md), [sentimentbecerisi](cognitive-search-skill-sentiment.md)ve [PIIDetectionSkill](cognitive-search-skill-pii-detection.md)için)
 * [Translator tarafından desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ( [metin Için translationbeceri](cognitive-search-skill-text-translation.md)için)
 * [Metin bölünmüş beceri](cognitive-search-skill-textsplit.md) Desteklenen Diller: `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ Daha fazla bilgi için bkz. [artımlı ilerleme ve özel sorgular](search-howto-
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>Uyarı: ayıklanan metin X karakter olarak kesildi
-Dizin oluşturucular, herhangi bir belgeden ne kadar metin ayıklanabileceği sayısını sınırlar. Bu sınır, fiyatlandırma katmanına bağlıdır: ücretsiz katman için 32.000 karakter, temel için 64.000 ve standart, Standart S2 ve Standart S3 katmanları için 4.000.000. Kesilen metnin dizini oluşturulmaz. Bu uyarıyı önlemek için, büyük miktarlarda metinle birlikte belgeleri birden çok, daha küçük belgeye bölmek için kullanmayı deneyin. 
+Dizin oluşturucular, herhangi bir belgeden ne kadar metin ayıklanabileceği sayısını sınırlar. Bu sınır, fiyatlandırma katmanına bağlıdır: ücretsiz katman için 32.000 karakter, temel için 64.000, standart için 4.000.000, Standart S2 için 8.000.000 ve Standart S3 için 16.000.000. Kesilen metnin dizini oluşturulmaz. Bu uyarıyı önlemek için, büyük miktarlarda metinle birlikte belgeleri birden çok, daha küçük belgeye bölmek için kullanmayı deneyin. 
 
 Daha fazla bilgi için bkz. [Dizin Oluşturucu sınırları](search-limits-quotas-capacity.md#indexer-limits).
 

@@ -1,5 +1,5 @@
 ---
-title: Taşıma cini uygulaması Web API 'Lerini üretime çağırma-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini üretime çağıran bir Daemon uygulamasını üretime taşıma-Microsoft Identity platform | Mavisi
 description: Web API 'Lerini üretime çağıran bir Daemon uygulamasını nasıl taşıyacağınızı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,23 +15,23 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 990273e84bfceb9f4a19eae8bf5890e8303a5857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702275"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775213"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Daemon uygulaması-üretime taşı
 
 Artık bir hizmetten hizmete çağrı için bir belirteç edinmeyi ve kullanmayı öğrenmiş olduğunuza göre, uygulamanızı üretime taşımayı öğrenin.
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Dağıtım-çok kiracılı Daemon uygulamalarının durumu
+## <a name="deployment---multitenant-daemon-apps"></a>Dağıtım-çok kiracılı Daemon uygulamaları
 
-Birkaç kiracıda çalışabilen bir arka plan programı uygulaması oluşturuyorsanız, kiracı yöneticilerinin şu şekilde olduğundan emin olmanız gerekir:
+Birkaç kiracıda çalışabilen bir arka plan programı uygulaması oluşturuyorsanız, kiracı yöneticisinin şu şekilde olduğundan emin olmanız gerekir:
 
-- Uygulama için bir hizmet sorumlusu sağlar
-- Uygulamaya onay verir
+- Uygulama için bir hizmet sorumlusu sağlar.
+- Uygulamaya onay verir.
 
 Müşterilerinize bu işlemleri gerçekleştirme hakkında açıklayabilmeniz gerekir. Daha fazla bilgi için, bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
@@ -39,24 +39,24 @@ Müşterilerinize bu işlemleri gerçekleştirme hakkında açıklayabilmeniz ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için birkaç bağlantı aşağıda verilmiştir:
+Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda verilmiştir:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-- Henüz yapmadıysanız, Hızlı Başlangıç ' ı [bir belirteç alma ve uygulama kimliğini kullanarak bir konsol uygulamasından MICROSOFT Graph API çağrısı](./quickstart-v2-netcore-daemon.md)yapın.
+- Hızlı başlangıç: [bir belirteç alın ve uygulama kimliğini kullanarak bir konsol uygulamasından Microsoft Graph API 'si çağırın](./quickstart-v2-netcore-daemon.md).
 - İçin başvuru belgeleri:
-  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) örneğini oluşturma
-  - [Acquiretokenforclient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder) çağrılıyor
+  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)örneği oluşturuluyor.
+  - [Acquiretokenforclient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)çağrılıyor.
 - Diğer örnekler/Öğreticiler:
-  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) , Microsoft Graph sorgulayan bir kiracının kullanıcılarını görüntüleyen basit bir .NET Core Daemon konsol uygulamasına sahiptir.
+  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) , bir kiracı Microsoft Graph sorgulayan kullanıcıları görüntüleyen basit bir .NET Core Daemon konsol uygulamasıdır.
 
-    ![topology](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![Örnek Daemon uygulama topolojisi](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Aynı örnek, sertifikalarla çeşitlemeyi de gösterir.
+    Aynı örnek, sertifikalarla bir çeşitlemesi de gösterir:
 
-    ![topology](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![Örnek Daemon uygulama topolojisi-sertifikalar](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) , Microsoft Graph verileri bir kullanıcı adına değil uygulamanın kimliğini kullanarak eşitlediği BIR ASP.NET MVC web uygulamasıdır. Örnek, yönetici onay işlemini de gösterir.
+  - [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) , bir kullanıcı adına değil uygulamanın kimliğini kullanarak Microsoft Graph verileri eşitlenen BIR ASP.NET MVC web uygulamasıdır. Bu örnek, yönetici onay işlemini de gösterir.
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 

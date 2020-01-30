@@ -8,22 +8,26 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766404"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769050"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
-Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kullanarak PostgreSQL için Azure veritabanı ile nasıl çalışılacağı gösterilmektedir. Hızlı başlangıç, veritabanına bağlanmayı ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanmayı gösterir. Makalede, Python hakkında bilgi sahibi olduğunuz ancak PostgreSQL için Azure veritabanı ile çalışmaya yeni başladığınız varsayılır.
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
-## <a name="prerequisites"></a>Önkoşullar
-- PostgreSQL için Azure veritabanı- [hızlı başlangıç: Azure Portal veya hızlı başlangıç: PostgreSQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) - [Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)bir PostgreSQL için Azure veritabanı oluşturma. 
+Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kullanarak PostgreSQL için Azure veritabanı ile çalışırsınız. Hızlı başlangıç, veritabanına bağlanmayı ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanmayı gösterir. Makalede, Python hakkında bilgi sahibi olduğunuz ancak PostgreSQL için Azure veritabanı ile çalışmaya yeni başladığınız varsayılır.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- Hızlı başlangıç: Azure portal veya [hızlı başlangıç: Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)PostgreSQL [için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) .
   
 - [Python](https://www.python.org/downloads/) 2.7.9 + veya 3.4 +.
   
-- `pip install -U pip`kullanılarak yüklenen, [PIP](https://pip.pypa.io/en/stable/installing/) paketi yükleyicisinin en son güncelleştirmesi. 
+- En son [PIP](https://pip.pypa.io/en/stable/installing/) paketi yükleyicisi.
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>PostgreSQL için Python kitaplıklarını yükleme
 [Psycopg2](https://pypi.python.org/pypi/psycopg2/) modülü, bir PostgreSQL veritabanına bağlanma ve sorgulama sağlar ve Linux, MacOS veya Windows [tekerlek](https://pythonwheels.com/) paketi olarak kullanılabilir. Tüm bağımlılıklar dahil olmak üzere modülün ikili sürümünü yükler. `psycopg2` yükleme ve gereksinimler hakkında daha fazla bilgi için bkz. [yükleme](http://initd.org/psycopg/docs/install.html). 

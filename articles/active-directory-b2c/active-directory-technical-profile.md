@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949567"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835802"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -255,13 +255,13 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya `DeleteClaimsPrincipal`. |
+| İşlem | Evet | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Hayır | Kullanıcı nesnesi dizinde yoksa bir hata oluştur. Olası değerler: `true` veya `false`. |
 | UserMessageIfClaimsPrincipalDoesNotExist | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalDoesNotExist Attribute Description), Kullanıcı nesnesi yoksa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Hayır | Kullanıcı nesnesi zaten mevcutsa bir hata oluştur. Olası değerler: `true` veya `false`.|
 | Usermessageifclaimsprincıpalalreadyexists | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
-| Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
-| ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
+| Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md). |
+| ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md) |
 
 
 

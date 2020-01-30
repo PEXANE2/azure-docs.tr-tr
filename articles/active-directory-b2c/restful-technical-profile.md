@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263379"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840290"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -260,7 +260,7 @@ public class ResponseContent
 
 Daha fazla teknik profil kullanma örnekleri için aşağıdaki makalelere bakın:
 
-- [Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](active-directory-b2c-custom-rest-api-netfw.md)
-- [HTTP temel kimlik doğrulaması kullanarak yeniden takip eden hizmetlerinizin güvenliğini sağlama](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [İzlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın](active-directory-b2c-rest-api-validation-custom.md)
+- [Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](rest-api-claims-exchange-dotnet.md)
+- [HTTP temel kimlik doğrulaması kullanarak yeniden takip eden hizmetlerinizin güvenliğini sağlama](secure-rest-api-dotnet-basic-auth.md)
+- [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](secure-rest-api-dotnet-certificate-auth.md)
+- [İzlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın](custom-policy-rest-api-claims-validation.md)

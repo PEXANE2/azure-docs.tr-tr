@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9b07d16ed97a93b5b5b9422673cfc38ada8e8116
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751316"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764358"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için Güvenli Yuva Katmanı (SSL) şifrelemesini ve kimlik doğrulamasını ayarlama
 
@@ -134,105 +134,207 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 
     ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. **Gelişmiş Kafka-env** altında, **Kafka-env Template** özelliğinin sonuna aşağıdaki satırları ekleyin.
+1. Server. Properties dosyasına yeni yapılandırma özellikleri ekleyin.
 
-    ```config
-    # Needed to configure IP address advertising
-    ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
-    ssl.keystore.password=MyServerPassword123
-    ssl.key.password=MyServerPassword123
-    ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
-    ssl.truststore.password=MyServerPassword123
+    ```bash
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
+
+1. Ambarı yapılandırma kullanıcı arabirimine gidin ve **Gelişmiş Kafka-env** ve **Kafka-env Template** özelliği altında yeni özelliklerin göründüğünü doğrulayın.
 
     ![Kafka-env Template özelliğini, ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. Tüm Kafka aracılarını yeniden başlatın.
 1. Üreticileri ve tüketicilerin 9093 numaralı bağlantı noktasında çalıştığını doğrulamak için yönetici istemcisini üretici ve tüketici seçenekleriyle başlatın.
 
+## <a name="client-setup-without-authentication"></a>İstemci kurulumu (kimlik doğrulaması olmadan)
+
+Kimlik doğrulamasına ihtiyacınız yoksa yalnızca SSL şifrelemesini ayarlama adımlarının Özeti şunlardır:
+
+1. CA 'da (etkin baş düğüm) oturum açın.
+1. CA sertifikasını, CA makinesinden istemci makinesine (wn0) kopyalayın.
+1. İstemci makinesinde (hn1) oturum açın ve `~/ssl` klasörüne gidin.
+1. CA sertifikasını truststore 'a aktarın.
+1. CA sertifikasını keystore 'a aktarın.
+
+Bu adımlar aşağıdaki kod parçacıkları içinde ayrıntılıdır.
+
+1. CA düğümünde oturum açın.
+
+    ```bash
+    ssh sshuser@HeadNode0_Name
+    cd ssl
+    ```
+
+1. CA-CERT ' i istemci makinesine kopyalama
+
+    ```bash
+    scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
+    ```
+
+1. İstemci makinesinde (bekleyen baş düğüm) oturum açın.
+
+    ```bash
+    ssh sshuser@HeadNode1_Name
+    cd ssl
+    ```
+
+1. CA sertifikasını truststore 'a aktarın.
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. CA sertifikasını keystore 'a aktarın.
+    
+    ```bash
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. `client-ssl-auth.properties`dosyasını oluşturun. Aşağıdaki satırlara sahip olmalıdır:
+
+    ```config
+    security.protocol=SSL
+    ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
+    ssl.truststore.password=MyClientPassword123
+    ```
+
 ## <a name="client-setup-with-authentication"></a>İstemci kurulumu (kimlik doğrulamasıyla)
 
 > [!Note]
-> Aşağıdaki adımlar yalnızca SSL şifrelemesini **ve** kimlik doğrulamasını ayarlıyorsanız gereklidir. Yalnızca şifrelemeyi ayarlıyorsanız, lütfen [kimlik doğrulaması olmadan istemci kurulumuna](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication) ilerleyin
+> Aşağıdaki adımlar yalnızca SSL şifrelemesini **ve** kimlik doğrulamasını ayarlıyorsanız gereklidir. Yalnızca şifrelemeyi ayarlıyorsanız, [kimlik doğrulaması olmadan istemci kurulumu](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)' na bakın.
 
-İstemci kurulumunu gerçekleştirmek için aşağıdaki adımları izleyin:
+Aşağıdaki dört adım, istemci kurulumunu tamamlaması için gereken görevleri özetler:
 
 1. İstemci makinesinde (bekleyen baş düğüm) oturum açın.
 1. Bir Java anahtar deposu oluşturun ve aracı için imzalı bir sertifika alın. Ardından sertifikayı CA 'nın çalıştığı VM 'ye kopyalayın.
 1. İstemci sertifikasını imzalamak için CA makinesine (etkin baş düğüm) geçin.
 1. İstemci makinesine (bekleyen baş düğüm) gidin ve `~/ssl` klasöre gidin. İmzalı sertifikayı istemci makinesine kopyalayın.
 
-```bash
-cd ssl
+Her adımın ayrıntıları aşağıda verilmiştir.
 
-# Create a java keystore and get a signed certificate for the broker. Then copy the certificate to the VM where the CA is running.
+1. İstemci makinesinde (bekleyen baş düğüm) oturum açın.
 
-keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
+    ```bash
+    ssh sshuser@HeadNode1_Name
+    ```
 
-keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123"
+1. Var olan tüm SSL dizinini kaldırın.
 
-# Copy the cert to the CA
-scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
+    ```bash
+    rm -R ~/ssl
+    mkdir ssl
+    cd ssl
+    ```
 
-# Switch to the CA machine (active head node) to sign the client certificate.
-cd ssl
-openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
+1. Bir Java anahtar deposu oluşturun ve bir sertifika imzalama isteği oluşturun. 
 
-# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
-scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
+    ```bash
+    keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=HEADNODE1_FQDN" -storetype pkcs12
+    
+    keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -storepass "MyClientPassword123" -keypass "MyClientPassword123"
+    ```
 
-# Import CA cert to trust store
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+1. Sertifika imzalama isteğini CA 'ya kopyalama
 
-# Import CA cert to key store
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```bash
+    scp client-cert-sign-request sshuser@HeadNode0_Name:~/ssl/client-cert-sign-request
+    ```
 
-# Import signed client (cert client-cert-signed1) to keystore
-keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
-```
+1. CA makinesine (etkin baş düğüm) geçin ve istemci sertifikasını imzalayın.
 
-Son olarak, dosya `client-ssl-auth.properties` komut `cat client-ssl-auth.properties`ile görüntüleyin. Aşağıdaki satırlara sahip olmalıdır:
+    ```bash
+    ssh sshuser@HeadNode0_Name
+    cd ssl
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in ~/ssl/client-cert-sign-request -out ~/ssl/client-cert-signed -days 365 -CAcreateserial -passin pass:MyClientPassword123
+    ```
 
-```bash
-security.protocol=SSL
-ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=MyClientPassword123
-ssl.keystore.location=/home/sshuser/ssl/kafka.client.keystore.jks
-ssl.keystore.password=MyClientPassword123
-ssl.key.password=MyClientPassword123
-```
+1. İmzalı istemci sertifikasını CA 'dan (etkin baş düğüm) istemci makinesine kopyalayın.
 
-## <a name="client-setup-without-authentication"></a>İstemci kurulumu (kimlik doğrulaması olmadan)
+    ```bash
+    scp client-cert-signed sshuser@HeadNode1_Name:~/ssl/client-signed-cert
+    ```
 
-Kimlik doğrulamasına ihtiyacınız yoksa yalnızca SSL şifrelemesini ayarlama adımları şunlardır:
+1. CA-CERT ' i istemci makinesine kopyalama
 
-1. İstemci makinesinde (hn1) oturum açın ve `~/ssl` klasöre gidin
-1. İmzalı sertifikayı, CA makinesinden (wn0) istemci makinesine kopyalayın.
-1. CA sertifikasını truststore 'a aktarma
-1. CA sertifikasını anahtar deposu 'a aktarma
+    ```bash
+    scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
+    ```
 
-Bu adımlar aşağıdaki kod parçacığında gösterilmiştir.
+1. İmzalı sertifikaya sahip istemci deposu oluşturun ve CA sertifikasını anahtar deposuna ve truststore 'a aktarın:
 
-```bash
-cd ssl
+    ```bash
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ```
 
-# Copy signed cert to client machine
-scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert .
+1. `client-ssl-auth.properties`bir dosya oluşturun. Aşağıdaki satırlara sahip olmalıdır:
 
-# Import CA cert to truststore
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```bash
+    security.protocol=SSL
+    ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
+    ssl.truststore.password=MyClientPassword123
+    ssl.keystore.location=/home/sshuser/ssl/kafka.client.keystore.jks
+    ssl.keystore.password=MyClientPassword123
+    ssl.key.password=MyClientPassword123
+    ```
 
-# Import CA cert to keystore
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
-```
+## <a name="verification"></a>Doğrulama
 
-Son olarak, dosya `client-ssl-auth.properties` komut `cat client-ssl-auth.properties`ile görüntüleyin. Aşağıdaki satırlara sahip olmalıdır:
+> [!Note]
+> HDInsight 4,0 ve Kafka 2,1 yüklüyse, kurulumunuzu doğrulamak için konsol üreticisi/tüketicilerini kullanabilirsiniz. Aksi takdirde, Kafka üreticisi bağlantı noktası 9092 üzerinde çalıştırın ve konuya ileti gönderin ve ardından SSL kullanan 9093 numaralı bağlantı noktasında Kafka tüketicisini kullanın.
 
-```bash
-security.protocol=SSL
-ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=MyClientPassword123
-```
+### <a name="kafka-21-or-above"></a>Kafka 2,1 veya üzeri
+
+1. Zaten mevcut değilse bir konu oluşturun.
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
+    ```
+
+1.  Konsol üreticisi ' ni başlatın ve üretici için bir yapılandırma dosyası olarak `client-ssl-auth.properties` yolunu sağlayın.
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
+    ```
+
+1.  İstemci makinesine başka bir SSH bağlantısı açın ve konsol tüketicisini başlatın ve `client-ssl-auth.properties` yolunu tüketiciye bir yapılandırma dosyası olarak sağlayın.
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
+    ```
+
+### <a name="kafka-11"></a>Kafka 1,1
+
+1. Zaten mevcut değilse bir konu oluşturun.
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
+    ```
+
+1.  Konsol üreticisi ' ni başlatın ve istemci-SSL-Auth. Properties yolunu üretici için bir yapılandırma dosyası olarak sağlayın.
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
+    ```
+
+3.  İstemci makinesine başka bir SSH bağlantısı açın ve konsol tüketicisini başlatın ve `client-ssl-auth.properties` yolunu tüketiciye bir yapılandırma dosyası olarak sağlayın.
+
+    ```bash
+    $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

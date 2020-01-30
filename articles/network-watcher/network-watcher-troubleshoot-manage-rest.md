@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Bu sayfada REST kullanılarak Azure ağ Izleyicisi ile sanal ağ geçitlerinin ve bağlantılarının nasıl giderileceği açıklanmaktadır
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ab9f7fd95d7081b66e05dfd3d6a5ef47eb3c4053
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277790"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840681"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Azure ağ Izleyicisi 'ni kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
 

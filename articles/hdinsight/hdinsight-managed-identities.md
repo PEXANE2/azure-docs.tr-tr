@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327381"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764393"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 'ta Yönetilen kimlikler
 
 Yönetilen kimlik, kimlik bilgileri Azure tarafından yönetilen Azure Active Directory (Azure AD) ' de kayıtlı bir kimliktir. Yönetilen kimliklerle, hizmet sorumlularını Azure AD 'ye kaydetmeniz veya sertifikalar gibi kimlik bilgilerini korumanız gerekmez.
 
-Yönetilen kimlikler, kümelerinizin Azure AD etki alanı hizmetlerine erişmesini, Azure Key Vault erişimini veya Azure Data Lake Storage 2. dosyalara erişmesini sağlamak için Azure HDInsight 'ta kullanılabilir.
+Yönetilen kimlikler Azure AD etki alanı hizmetlerine erişmek veya gerektiğinde Azure Data Lake Storage 2. dosyalara erişmek için Azure HDInsight 'ta kullanılır.
 
 İki tür yönetilen kimlik vardır: Kullanıcı tarafından atanan ve sistem tarafından atanan. Azure HDInsight Kullanıcı tarafından atanan yönetilen kimlikleri kullanır. Kullanıcı tarafından atanan yönetilen kimlik, tek başına bir Azure kaynağı olarak oluşturulur. Bu, daha sonra bir veya daha fazla Azure hizmet örneğine atayabilirsiniz. Buna karşılık, Azure AD 'de sistem tarafından atanan yönetilen bir kimlik oluşturulur ve ardından doğrudan belirli bir Azure Hizmeti örneğinde otomatik olarak etkinleştirilir. Bu durumda, sistem tarafından atanan yönetilen kimliğin yaşam süresi daha sonra etkinleştirilmiş olan hizmet örneği ömrü ile bağlantılıdır.
 
@@ -42,7 +42,7 @@ Yönetilen kimliği yapılandırmaya yönelik kalan adımlar, kullanılacağı s
 
 Yönetilen kimlikler, Azure HDInsight 'ta birden çok senaryoda kullanılır. Ayrıntılı kurulum ve yapılandırma yönergeleri için bkz. ilgili belgeler:
 
-* [Azure Data Lake Storage 2.](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage 2. Nesil](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Kurumsal Güvenlik Paketi](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka Kendi Anahtarını Getir (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
 

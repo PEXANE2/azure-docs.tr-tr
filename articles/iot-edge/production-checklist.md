@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548603"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772298"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IOT Edge çözümünüzü üretim ortamında dağıtmaya hazırlanma
 
@@ -39,7 +39,7 @@ Her IOT Edge Cihazınızı üretim ortamına yüklü bir cihaz sertifika yetkili
 
 Cihaz CA sertifikası rolünü anlamak için bkz: [Azure IOT Edge nasıl kullandığı sertifikalar](iot-edge-certs.md).
 
-Sertifikaları bir IoT Edge cihazına yüklemek ve config. YAML dosyasından başvurmak hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazına üretim sertifikalarını yüklemek](how-to-create-transparent-gateway.md).
+Sertifikaları bir IoT Edge cihazına yüklemek ve config. YAML dosyasından başvurmak hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazına üretim sertifikalarını yüklemek](how-to-install-production-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Bir cihaz yönetimi planı
 

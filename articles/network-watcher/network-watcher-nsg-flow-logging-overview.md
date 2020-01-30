@@ -4,27 +4,24 @@ titleSuffix: Azure Network Watcher
 description: Bu makalede, Azure ağ Izleyicisi 'nin NSG akış günlükleri özelliğinin nasıl kullanılacağı açıklanmaktadır.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.author: damendo
+ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830522"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841004"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
-Ağ güvenlik grubu (NSG) akış günlükleri NSG üzerinden giren ve çıkan IP trafiği hakkındaki bilgileri görüntülemenize olanak tanıyan bir Ağ İzleyicisi özelliğidir. Akış günlükleri JSON biçiminde yazılır ve kural tabanında giden ve gelen akışları, akışın uygulandığı ağ arabirimini (NIC), akış hakkındaki 5 tanımlama grubu (kaynak/hedef IP, kaynak/hedef bağlantı noktası ve protokol) bilgilerini ve trafiği izin verildiği veya trafiğin engellendiği bilgisini, ayrıca 2. Sürüm'de işleme hızı bilgilerini (Bayt ve Paket) gösterir.
+Ağ güvenlik grubu (NSG) akış günlükleri, bir NSG aracılığıyla giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize olanak tanıyan bir ağ Izleyicisi özelliğidir. Akış günlükleri JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir. trafik için ağ arabirimi (NIC), akış (kaynak/hedef IP, kaynak/hedef bağlantı noktası ve protokol) hakkında, akışa izin verildiyse veya reddedildiyse ve sürüm 2 ' de üretilen iş bilgileri (bayt ve paketler) için geçerlidir.
 
 
 ![akış günlüklerine genel bakış](./media/network-watcher-nsg-flow-logging-overview/figure1.png)

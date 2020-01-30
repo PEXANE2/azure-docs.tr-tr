@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769532"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766245"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Işlevleri bağlama ifadesi desenleri
 
 [Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri*. *Function. JSON* dosyasında ve işlev parametreleri ve kodunda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
 
-Çoğu ifade küme ayracı içine alınarak tanımlanır. Örneğin, bir kuyruk tetikleyici işlevinde, `{queueTrigger}` kuyruk ileti metnine çözümlenir. Blob çıkış bağlamasının `path` özelliği `container/{queueTrigger}` ve işlev bir sıra iletisi `HelloWorld`tarafından tetikleniyorsa, `HelloWorld` adlı bir blob oluşturulur.
+Çoğu ifade, küme ayraçları halinde sarmalanarak tanımlanır. Örneğin, bir kuyruk tetikleyici işlevinde, `{queueTrigger}` kuyruk ileti metnine çözümlenir. Blob çıkış bağlamasının `path` özelliği `container/{queueTrigger}` ve işlev bir sıra iletisi `HelloWorld`tarafından tetikleniyorsa, `HelloWorld` adlı bir blob oluşturulur.
 
 Bağlama ifadesi türleri
 
@@ -131,9 +131,21 @@ public static void Run(
 
 ```
 
-Uzantı gibi dosya adının parçaları için de ifadeler oluşturabilirsiniz. Blob yol dizesinde ifadelerin ve desenlerin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Depolama Blobu bağlama başvurusu](functions-bindings-storage-blob.md).
+Ayrıca dosya adının parçaları için ifadeler de oluşturabilirsiniz. Aşağıdaki örnekte, işlev yalnızca bir düzenle eşleşen dosya adlarında tetiklenir: `anyname-anyfile.csv`
 
-## <a name="trigger-metadata"></a>Tetikleyici meta verileri
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+Blob yol dizesinde ifadelerin ve desenlerin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Depolama Blobu bağlama başvurusu](functions-bindings-storage-blob.md).
+
+## <a name="trigger-metadata"></a>Verileri tetikleme
 
 Bir tetikleyici tarafından belirtilen veri yüküne ek olarak (bir işlevi tetikleyen kuyruk iletisinin içeriği gibi), birçok tetikleyici ek meta veri değerleri sağlar. Bu değerler, ve C# F# ' de, JavaScript 'teki `context.bindings` nesnesindeki Özellikler ' de giriş parametresi olarak kullanılabilir. 
 
@@ -141,7 +153,7 @@ Bir tetikleyici tarafından belirtilen veri yüküne ek olarak (bir işlevi teti
 
 * QueueTrigger-geçerli bir dize olursa ileti içeriği tetikleniyor
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * Kimlik
 * Insertiontime
 * NextVisibleTime
@@ -289,7 +301,7 @@ public class BlobName
 }
 ```
 
-## <a name="current-time"></a>Geçerli zaman
+## <a name="current-time"></a>Geçerli saat
 
 Bağlama ifadesi `DateTime` `DateTime.UtcNow`olarak çözümlenir. Bir `function.json` dosyasındaki aşağıdaki blob yolu, *2018-02-16T17-59 -55Z. txt*gibi bir ada sahip bir blob oluşturur.
 

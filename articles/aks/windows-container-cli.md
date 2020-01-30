@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472503"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767449"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme-Azure CLı kullanarak bir Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -126,7 +126,7 @@ Windows Server kapsayıcıları için düğüm havuzlarını destekleyen bir AKS
 > [!NOTE]
 > Kümenizin güvenilir bir şekilde çalışmasını sağlamak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmanız gerekir.
 
-Kendi güvenli *PASSWORD_WIN* sağlayın (Bu makaledeki komutların bir bash kabuğu 'na girildiğini unutmayın):
+Kendi güvenli *PASSWORD_WIN* sağlayın (Bu makaledeki komutların bash kabuğu 'na girildiğini unutmayın):
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -136,7 +136,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.14.6 \
+    --kubernetes-version 1.15.7 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -162,10 +162,10 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.14.6
+    --kubernetes-version 1.15.7
 ```
 
-Yukarıdaki komut, *npwin* adlı yeni bir düğüm havuzu oluşturur ve bunu *Myakscluster*öğesine ekler. Windows Server kapsayıcıları çalıştırmak için bir düğüm havuzu oluştururken, *düğüm-VM-boyutu* için varsayılan değer *Standard_D2s_v3*' dir. *Düğüm-VM-boyut* parametresini ayarlamayı seçerseniz, lütfen [kısıtlı VM boyutlarının][restricted-vm-sizes]listesini kontrol edin. Önerilen en düşük boyut *Standard_D2s_v3*' dir. Yukarıdaki komut, `az aks create`çalıştırılırken oluşturulan varsayılan VNET ' de varsayılan alt ağı kullanır.
+Yukarıdaki komut, *npwin* adlı yeni bir düğüm havuzu oluşturur ve bunu *Myakscluster*öğesine ekler. Windows Server kapsayıcıları çalıştırmak için bir düğüm havuzu oluştururken, *düğüm-VM-boyutu* için varsayılan değer *Standard_D2s_v3*. *Düğüm-VM-boyut* parametresini ayarlamayı seçerseniz, lütfen [kısıtlı VM boyutlarının][restricted-vm-sizes]listesini kontrol edin. Önerilen en düşük boyut *Standard_D2s_v3*. Yukarıdaki komut, `az aks create`çalıştırılırken oluşturulan varsayılan VNET ' de varsayılan alt ağı kullanır.
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
@@ -191,8 +191,8 @@ Aşağıdaki örnek çıktı kümedeki tüm düğümleri gösterir. Tüm düğü
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.6
-aksnpwin987654                      Ready    agent   108s   v1.14.6
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.15.7
+aksnpwin987654                      Ready    agent   108s   v1.15.7
 ```
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma

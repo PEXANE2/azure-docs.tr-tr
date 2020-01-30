@@ -5,25 +5,20 @@ description: Bu öğreticide, Azure portalını kullanarak bir yönlendirme tabl
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350286"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775273"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
@@ -48,19 +43,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-route-table"></a>Yönlendirme tablosu oluşturma
 
-1. Ekranın sol üst tarafında, **kaynak oluştur** > **ağ** > **yol tablosu**' nu seçin.
-
-1. **Yol tablosu oluştur**' da bu bilgileri girin veya seçin:
+1. Azure portal menüsünde **kaynak oluştur**' u seçin.
+2. Arama kutusuna *yol tablosu*girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
+3. **Yol tablosu** sayfasında **Oluştur**' u seçin.
+4. **Yol tablosu oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     | Ad | *Myroutetablepublic*girin. |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*girin ve *Tamam*' ı seçin. |
-    | Konum | Varsayılan **Doğu ABD**bırakın.
+    | Konum | **Doğu ABD**’yi seçin.
     | Sanal ağ geçidi yol yayma | Varsayılanı **etkin**bırakın. |
-
-1. **Oluştur**’u seçin.
+5. **Oluştur**’u seçin.
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
@@ -137,7 +132,7 @@ Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal 
 
 ### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>MyRouteTablePublic 'i genel alt ağınızla ilişkilendirin
 
-1. **Genel**’i seçin.
+1. **Ortak**seçeneğini belirleyin.
 
 1. **Ortak**bölümünde, **yol tablosu** > **Myroutetablepublic** > **Kaydet**' i seçin.
 
@@ -167,7 +162,7 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Genel gelen bağlantı noktası | Varsayılanı **yok**olarak bırakın.
+    | Ortak gelen bağlantı noktaları | **Hiçbiri**' ni seçin.
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
 
@@ -183,7 +178,7 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
     | ------- | ----- |
     | Sanal ağ | Varsayılan **myVirtualNetwork**bırakın. |
     | Alt ağ | **DMZ (10.0.2.0/24)** öğesini seçin. |
-    | Genel IP | **Hiçbiri** seçeneğini belirtin. Genel bir IP adresine ihtiyacınız yoktur. VM, internet üzerinden bağlanmaz.|
+    | Genel IP | **Hiçbiri**' ni seçin. Genel bir IP adresine ihtiyacınız yoktur. VM, internet üzerinden bağlanmaz.|
 
 1. Varsayılan değerleri bırakın ve **İleri: yönetim**' i seçin.
 
@@ -224,7 +219,7 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
 
     ![IP iletmeyi etkinleştirme](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
-## <a name="create-public-and-private-virtual-machines"></a>Genel ve özel sanal makineleri oluşturma
+## <a name="create-public-and-private-virtual-machines"></a>Ortak ve özel sanal makineler oluşturma
 
 Sanal ağda ortak bir VM ve özel bir VM oluşturun. Daha sonra, Azure 'un *genel* alt ağ trafiğini NVA aracılığıyla *özel* alt ağa yönlendirdiğini görmek için bu uygulamaları kullanacaksınız.
 
@@ -233,24 +228,24 @@ Sanal ağda ortak bir VM ve özel bir VM oluşturun. Daha sonra, Azure 'un *gene
 | Ayar | Değer |
 | ------- | ----- |
 | **ORTAK VM** | |
-| TEMEL BİLGİLER |  |
+| TEMEL BILGILERI |  |
 | Sanal makine adı | *MyVmPublic*girin. |
-| AĞ İLETİŞİMİ | |
+| IŞLEMLERI | |
 | Alt ağ | **Public (10.0.0.0/24)** seçeneğini belirleyin. |
 | Genel IP adresi | Varsayılanı kabul edin. |
-| Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+| Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
 | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin. |
-| YÖNETİM | |
+| YÖNETME | |
 | Tanılama depolama hesabı | Varsayılan **mynvastorageaccount**değerini bırakın. |
 | **ÖZEL VM** | |
-| TEMEL BİLGİLER |  |
+| TEMEL BILGILERI |  |
 | Sanal makine adı | *MyVmPrivate*girin. |
-| AĞ İLETİŞİMİ | |
+| IŞLEMLERI | |
 | Alt ağ | **Özel (10.0.1.0/24)** seçeneğini belirleyin. |
 | Genel IP adresi | Varsayılanı kabul edin. |
-| Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+| Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
 | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin. |
-| YÖNETİM | |
+| YÖNETME | |
 | Tanılama depolama hesabı | Varsayılan **mynvastorageaccount**değerini bırakın. |
 
 Azure *myVmPublic* VM’yi oluştururken *myVmPrivate* VM’yi oluşturabilirsiniz. Azure her iki VM oluşturmayı tamamlayana kadar adımların geri kalanına devam etmeyin.

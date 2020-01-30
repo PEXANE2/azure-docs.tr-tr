@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732787"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774133"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -23,7 +23,7 @@ Metin Analizi API'si, yapılandırılmamış metin almanıza ve Web hakkında da
 
 ### <a name="entity-linking"></a>Varlık Bağlama
 
-Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, bir sözcüğün `Mars` bir oluşumunu Planet 'e veya War 'ın gerçekleşen ' ine mi başvurduğunu belirlemek). Bu işlem, tanınan varlıkları metinde bağlamak için uygun bir dilde Bilgi Bankası 'nın bulunmasını gerektirir. 
+Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, bir sözcüğün `Mars` bir oluşumunu Planet 'e veya War 'ın gerçekleşen ' ine mi başvurduğunu belirlemek). Bu işlem, tanınan varlıkları metinde bağlamak için uygun bir dilde Bilgi Bankası 'nın bulunmasını gerektirir. Varlık bağlama, bu Bilgi Bankası olarak [Vikipedi](https://www.wikipedia.org/) kullanır.
 
 
 ### <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
@@ -90,7 +90,7 @@ Adlandırılmış varlık tanıma v2, NER ve varlık bağlama istekleri için te
 Adlandırılmış varlık tanıma v3, birden çok tür genelinde genişletilmiş algılama sağlar. Şu anda NER v3 aşağıdaki varlık kategorilerini algılayabilir:
 
 * Genel
-* Kişisel Bilgiler 
+* Kişisel bilgiler 
 
 Desteklenen varlıkların ve dillerin ayrıntılı bir listesi için, [ner v3 desteklenen varlık türleri](../named-entity-types.md) makalesine bakın.
 

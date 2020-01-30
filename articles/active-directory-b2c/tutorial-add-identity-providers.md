@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950961"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840171"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' de uygulamalarınıza kimlik sağlayıcıları ekleme
 
-Uygulamalarınızda, kullanıcıların farklı kimlik sağlayıcılarıyla oturum açmasını sağlamak isteyebilirsiniz. Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken kimlik bilgilerini oluşturur, korur ve yönetir. Azure portal kullanarak [Kullanıcı akışlarınıza](active-directory-b2c-reference-policies.md) Azure Active Directory B2C (Azure AD B2C) tarafından desteklenen kimlik sağlayıcıları ekleyebilirsiniz.
+Uygulamalarınızda, kullanıcıların farklı kimlik sağlayıcılarıyla oturum açmasını sağlamak isteyebilirsiniz. Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken kimlik bilgilerini oluşturur, korur ve yönetir. Azure portal kullanarak [Kullanıcı akışlarınıza](user-flow-overview.md) Azure Active Directory B2C (Azure AD B2C) tarafından desteklenen kimlik sağlayıcıları ekleyebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -29,11 +29,11 @@ Bu makalede şunları öğreneceksiniz:
 > * Kiracınıza kimlik sağlayıcılarını ekleyin
 > * Kimlik sağlayıcılarını Kullanıcı akışınıza ekleme
 
-Genellikle uygulamalarınızda yalnızca bir kimlik sağlayıcısı kullanırsınız, ancak daha fazla ekleme seçeneğiniz vardır. Bu öğreticide, uygulamanıza bir Azure AD kimlik sağlayıcısı ve Facebook kimlik sağlayıcısı ekleme işlemlerinin nasıl yapılacağı gösterilmektedir. Bu kimlik sağlayıcılarının her ikisini de uygulamanıza eklemek isteğe bağlıdır. Ayrıca, [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [Microsoft](active-directory-b2c-setup-msa-app.md)veya [Twitter](active-directory-b2c-setup-twitter-app.md)gibi diğer kimlik sağlayıcılarını da ekleyebilirsiniz.
+Genellikle uygulamalarınızda yalnızca bir kimlik sağlayıcısı kullanırsınız, ancak daha fazla ekleme seçeneğiniz vardır. Bu öğreticide, uygulamanıza bir Azure AD kimlik sağlayıcısı ve Facebook kimlik sağlayıcısı ekleme işlemlerinin nasıl yapılacağı gösterilmektedir. Bu kimlik sağlayıcılarının her ikisini de uygulamanıza eklemek isteğe bağlıdır. Ayrıca, [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md)veya [Twitter](identity-provider-twitter.md)gibi diğer kimlik sağlayıcılarını da ekleyebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 

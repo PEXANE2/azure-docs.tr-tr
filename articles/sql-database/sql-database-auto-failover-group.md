@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722552"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768670"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -326,8 +326,8 @@ SQL veritabanınıza erişimi kısıtlamak için [sanal ağ hizmet uç noktalar�
 İş sürekliliği planınız, otomatik yük devretme içeren grupları kullanarak yük devretme gerektiriyorsa, geleneksel güvenlik duvarı kurallarını kullanarak SQL veritabanınıza erişimi kısıtlayabilirsiniz. Otomatik yük devretmeyi desteklemek için şu adımları izleyin:
 
 1. [Genel IP oluşturma](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Ortak yük dengeleyici oluşturun](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) ve genel IP 'yi buna atayın.
-3. Ön uç bileşenleriniz için [bir sanal ağ ve sanal makine oluşturma](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers)
+2. [Ortak yük dengeleyici oluşturun](../load-balancer/quickstart-load-balancer-standard-public-portal.md) ve genel IP 'yi buna atayın.
+3. Ön uç bileşenleriniz için [bir sanal ağ ve sanal makine oluşturma](../load-balancer/quickstart-load-balancer-standard-public-portal.md)
 4. [Ağ güvenlik grubu oluşturun](../virtual-network/security-overview.md) ve gelen bağlantıları yapılandırın.
 5. Giden bağlantıların ' SQL ' [hizmet etiketi](../virtual-network/security-overview.md#service-tags)KULLANıLARAK Azure SQL veritabanı 'na açık olduğundan emin olun.
 6. Adım 1 ' de oluşturduğunuz genel IP adresinden gelen trafiğe izin vermek için bir [SQL veritabanı güvenlik duvarı kuralı](sql-database-firewall-configure.md) oluşturun.

@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770229"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768955"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
 Bu makalede, Azure portal 'tan PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz. Okuma çoğaltmaları hakkında daha fazla bilgi edinmek için bkz. [genel bakış](concepts-read-replicas.md).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 [PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-database-portal.md) ana sunucu olması.
 
 ## <a name="prepare-the-master-server"></a>Ana sunucuyu hazırlama
@@ -27,6 +27,9 @@ Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir
 1. Azure portal, ana öğe olarak kullanılacak olan PostgreSQL için Azure veritabanı sunucusunu seçin.
 
 2. Sunucu kenar çubuğunda, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
+
+> [!NOTE] 
+> **Çoğaltma desteğini devre dışı bırak** seçeneğini görürseniz, çoğaltma ayarları varsayılan olarak sunucunuzda zaten ayarlanır. Bir okuma çoğaltması oluşturmak için aşağıdaki adımları atlayabilir ve gidebilirsiniz. 
 
 3. **Çoğaltma desteğini etkinleştir**' i seçin. 
 
@@ -47,7 +50,7 @@ Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir
 Çoğaltma desteğinin etkinleştirilmesi, ana sunucu başına tek seferlik bir işlemdir. Kolaylık olması için **çoğaltma desteğini devre dışı bırak** düğmesi sunulmaktadır. Bu ana sunucuda hiçbir şekilde çoğaltma oluşturmamanız gerekmedikçe, çoğaltma desteğinin devre dışı bırakılmasını önermiyoruz. Ana sunucunuzda çoğaltmalar varsa çoğaltma desteğini devre dışı bırakabilirsiniz.
 
 
-## <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
+## <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
 Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Ana sunucu olarak kullanılacak olan PostgreSQL için Azure veritabanı sunucusunu seçin. 
@@ -106,7 +109,7 @@ Azure portal bir ana sunucu ile okuma çoğaltması arasında çoğaltmayı durd
    ![Çoğaltmayı durdurmayı Onayla](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Ana sunucuyu silme
+## <a name="delete-a-master-server"></a>Bir ana sunucu silme
 Ana Sunucuyu silmek için, bir PostgreSQL sunucusu için tek başına Azure veritabanını silmek üzere aynı adımları kullanın. 
 
 > [!IMPORTANT]

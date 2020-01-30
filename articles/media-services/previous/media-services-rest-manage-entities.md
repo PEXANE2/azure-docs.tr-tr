@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1ecbca99a65d99cc3b8d842a7b61d858398a80ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885713"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773638"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>REST ile Media Services varlıklarını yönetme  
 
@@ -54,7 +54,7 @@ Aşağıdaki örnek, bir AccessPolicy oluşturmayı gösterir.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
     Content-Length: 74
@@ -71,7 +71,7 @@ Aşağıdaki örnek, tüm MediaProcessor varlıklarının bir listesini alır.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -82,7 +82,7 @@ Ayrıca, belirli bir varlığı veya belirli bir varlıkla ilişkili tüm varlı
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -91,7 +91,7 @@ Ayrıca, belirli bir varlığı veya belirli bir varlıkla ilişkili tüm varlı
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -102,7 +102,7 @@ Aşağıdaki örnek yalnızca tüm Işlerin durum özelliğini döndürür.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -113,7 +113,7 @@ Aşağıdaki örnek, "SampleTemplate" adlı tüm JobTemplates ' i döndürür.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -132,7 +132,7 @@ Aşağıdaki örnek, ilk 2000 işi atlamak ve sonraki 1000 işi almak için **Sk
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
 
@@ -146,7 +146,7 @@ Aşağıdaki kod örneği bir varlık varlığındaki ad özelliğinin nasıl g�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
     Content-Length: 21
@@ -164,7 +164,7 @@ Aşağıdaki örnek, blob depolamaya bir dosyayı karşıya yüklemek için kull
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
     Content-Length: 0

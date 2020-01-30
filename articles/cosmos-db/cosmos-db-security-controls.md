@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d06afb3670b1c3af3f1acf0bd690c1e3e266a11c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913087"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771801"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Azure Cosmos DB için güvenlik denetimleri
 
@@ -52,7 +52,7 @@ Bu makalede, Azure Cosmos DB yerleşik olarak bulunan güvenlik denetimleri Belg
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Bkz. [Azure Cosmos DB hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma](how-to-setup-cmk.md)  |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | Yalnızca API Premium tablolarında. Tüm API 'Ler bu özelliği desteklemez. Bkz. [Azure Cosmos DB giriş: tablo API'si](table-introduction.md). |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Tüm Azure Cosmos DB verileri aktarım sırasında şifrelenir. |
-| Şifrelenmiş API çağrıları| Evet | Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB ayrıca TLS 1,2 ' i destekler.<br>En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen [cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com])başvurun. |
+| Şifrelenmiş API çağrıları| Evet | Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB ayrıca TLS 1,2 ' i destekler.<br>En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)başvurun. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 

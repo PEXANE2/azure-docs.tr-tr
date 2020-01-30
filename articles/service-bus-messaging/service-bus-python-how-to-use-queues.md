@@ -1,10 +1,9 @@
 ---
 title: 'Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma'
-description: Python ile Azure Service Bus kuyruklarını kullanmayı öğrenin.
+description: Bu makalede, Azure Service Bus kuyruklarından ileti oluşturmak, göndermek ve almak için Python 'un nasıl kullanılacağı gösterilmektedir.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
@@ -12,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: d0f579fcd82860380f1aaa651a61c0259d075a0d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748535"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773488"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma
 

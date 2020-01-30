@@ -5,21 +5,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 05/21/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 74bd22de81e385a4fbd9129a70616e24b594b0b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441329"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771529"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo depolama tablosu Tasarım Kılavuzu: ölçeklenebilir ve performank tabloları
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Ölçeklenebilir ve performanslı tablolar tasarlamak için, maliyet dahil olmak üzere çeşitli faktörleri göz önünde bulundurmanız gerekir. Daha önce ilişkisel veritabanları için şemaları tasarladıysanız, bu konular size tanıdık gelecektir. Ancak Azure Tablo depolama ile ilişkisel modeller arasında bazı benzerlikler olsa da birçok önemli farklılık vardır. Bu farklılıklar genellikle, ilişkisel veritabanlarına tanıdık bir kişiye sayaç sezgisel veya yanlış görünebilen, ancak tablo depolaması gibi bir NoSQL anahtar/değer deposu için tasarlanırken anlamlı hale gelen farklı tasarımlara yol açabilir.
+Ölçeklenebilir ve performansa yönelik tablolar tasarlamak için maliyet de dahil olmak üzere çeşitli faktörleri göz önünde bulundurmanız gerekir. Daha önce ilişkisel veritabanları için şema tasarladıysanız dikkat edilmesi gereken bu yönler size tanıdık gelir. Azure Tablo depolaması ve ilişkisel modeller arasında bazı benzerlikler olsa da birçok önemli farklılıklar da bulunur. Bu farklılıklar, ilişkisel veritabanlarına aşina olan bir kullanıcıya genelde sezgisel olmayan veya yanlış olarak gözükebilir. Ancak, Tablo depolaması gibi bir NoSQL anahtar/değer deposu için tasarım yapıyorsanız bu anlamlı olur.
 
 Tablo depolaması, verilerin milyarlarca varlık (ilişkisel veritabanı terminolojisinde "satırlar") veya yüksek işlem birimlerini desteklemesi gereken veri kümeleri için içerebilen bulut ölçekli uygulamaları destekleyecek şekilde tasarlanmıştır. Bu nedenle, verilerinizi nasıl depoladığınıza ve tablo depolamanın nasıl çalıştığını nasıl anlayacağınızı düşünün. İyi tasarlanmış bir NoSQL veri deposu, çözümünüzün daha fazla (ve daha düşük bir maliyetle) ilişkisel bir veritabanı kullanan bir çözümden daha fazla ölçeklenebilmesini sağlayabilir. Bu kılavuz, şu konularda yardımcı olur.  
 
@@ -193,7 +193,7 @@ Verileri etkili bir şekilde okumanızı sağlamak için iyi bir başlangıç no
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>`PartitionKey` ve `RowKey` seçiminiz sorgu performansını nasıl etkiler
 Aşağıdaki örneklerde, tablo depolamanın, çalışan varlıklarını aşağıdaki yapıyla depoladığını varsaymaktadır (örneklerin çoğu, açıklık için `Timestamp` özelliğini atlayın):  
 
-| Sütun adı | Veri türü |
+| sütun adı | Veri türü |
 | --- | --- |
 | `PartitionKey` (departman adı) |Dize |
 | `RowKey` (çalışan KIMLIĞI) |Dize |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480196"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840341"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
@@ -30,7 +30,7 @@ Müşterilerinizin, telefonunuza bir kerelik parola kullanarak uygulamalarınız
 
 * [Azure AD B2C kiracı](tutorial-create-tenant.md)
 * Kiracınızda [kayıtlı Web uygulaması](tutorial-register-applications.md)
-* Kiracınıza yüklenen [özel ilkeler](active-directory-b2c-get-started-custom.md)
+* Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Telefon kaydolma & oturum açma başlangıç paketini alın
 
@@ -44,7 +44,7 @@ Aşağıdaki adımlarda [önkoşulları](#prerequisites) tamamladığınız ve [
 
 1. Her dosyada, dize `yourtenant` Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, B2C kiracınızın adı *contosob2c*ise `yourtenant.onmicrosoft.com` tüm örnekleri `contosob2c.onmicrosoft.com`olur.
 
-1. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)konusunun [özel Ilkeye uygulama kimlikleri ekleme](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy) bölümündeki adımları uygulayın. Bu durumda, *IdentityExperienceFramework* ve *ProxyIdentityExperienceFramework*önkoşullarını tamamlarken kaydettiğiniz iki uygulamanın **uygulama (istemci) kimlikleriyle** `/phone-number-passwordless/` **`Phone_Email_Base.xml`** güncelleştirin.
+1. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)konusunun [özel Ilkeye uygulama kimlikleri ekleme](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) bölümündeki adımları uygulayın. Bu durumda, *IdentityExperienceFramework* ve *ProxyIdentityExperienceFramework*önkoşullarını tamamlarken kaydettiğiniz iki uygulamanın **uygulama (istemci) kimlikleriyle** `/phone-number-passwordless/` **`Phone_Email_Base.xml`** güncelleştirin.
 
 ## <a name="upload-the-policy-files"></a>İlke dosyalarını karşıya yükle
 

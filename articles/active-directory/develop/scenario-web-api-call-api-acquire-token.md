@@ -15,18 +15,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1c3d6f8d47152d70bdeaabbbc6d7b81187291857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2721837459af24f39bb15ee17d394345cbb37eb1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701816"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834119"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma
 
 Bir istemci uygulama nesnesi oluşturduktan sonra, bir Web API 'sini çağırmak için kullanabileceğiniz bir belirteç almak için bu uygulamayı kullanın.
 
 ## <a name="code-in-the-controller"></a>Denetleyicideki kod
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. *ToDoList*adlı bir aşağı akış API 'si çağırır.
 
@@ -68,6 +70,33 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
  return null;
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. Aşağı akış API 'sini Microsoft Graph çağırır.
+
+```java
+@RestController
+public class ApiController {
+
+    @Autowired
+    MsalAuthHelper msalAuthHelper;
+
+    @RequestMapping("/graphMeApi")
+    public String graphMeApi() throws MalformedURLException {
+
+        String oboAccessToken = msalAuthHelper.getOboToken("https://graph.microsoft.com/.default");
+
+        return callMicrosoftGraphMeEndpoint(oboAccessToken);
+    }
+
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) YÖNTEMINI çağırarak msal Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir. Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/21/2019
-ms.openlocfilehash: 475b784f4d25e28289536e6c70200fe86dd806f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435591"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764464"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
 
@@ -37,7 +37,7 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 | Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache HBase           | 2.0.2         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
@@ -70,7 +70,7 @@ Aşağıdaki tablolar HDInsight sürümlerini listeler. Destek süresi ve kullan
 
 Aşağıdaki tabloda, Azure portal bulunan HDInsight sürümlerinin yanı sıra PowerShell ve .NET SDK gibi diğer dağıtım yöntemleri listelenmiştir.
 
-| HDInsight sürümü | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
+| HDInsight sürümü | VM IŞLETIM SISTEMI | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 Eylül 2018 | | |Evet |Evet |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 Nisan 2017 | 31 Aralık 2020 |31 Aralık 2020 |Evet |Evet |
@@ -84,7 +84,7 @@ Spark 2,1, 2,2 & Kafka 1,0 desteği 30 Haziran 2020 tarihinde sona erecektir.
 
 Aşağıdaki tabloda, Azure portal mevcut **olmayan** HDInsight sürümleri listelenmektedir.
 
-| HDInsight sürümü | HDP sürümü | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
+| HDInsight sürümü | HDP sürümü | VM IŞLETIM SISTEMI | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Evet |Hayır |
 | HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Evet |Hayır |

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3322a9f2a7e09ee76c0fff94a2747c791ecf4804
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dfe5a9a8b5503bb078cfd633a1f29774613b42b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975389"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769214"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v4)
 
@@ -22,12 +22,12 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
 - Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
 - Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
-- SSL/TLS sertifikaları için görevleri basitleştirme ve otomatikleştirme.
+- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
 [API başvuru belgeleri](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 2,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/2.1).
@@ -35,7 +35,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 
 Bu hızlı başlangıçta, Windows terminalinde `dotnet`, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)ve Windows komutlarının çalıştırdığınız varsayılır ( [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)veya [Azure Cloud Shell](https://shell.azure.com/)gibi).
 
-## <a name="setting-up"></a>Kurulum
+## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="create-new-net-console-app"></a>Yeni .NET konsol uygulaması oluşturma
 

@@ -1,20 +1,20 @@
 ---
-title: Azure tablo depolamaya genel bakış
+title: Azure Tablo depolamaya genel bakış
 description: Bir NoSQL veri deposu olan Azure Table Storage kullanarak bulutta yapılandırılmış veri depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 05/20/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 37249d904343a4eddb0d1e82f451c3b9e95a479d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953507"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770732"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Tablo depolamaya genel bakış
 
@@ -30,7 +30,7 @@ Web uygulamaları için kullanıcı verileri, adres defterleri, cihaz bilgileri 
 
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
 
-* [.NET SDK kullanarak Azure Cosmos DB tablo API'si ve Azure tablo depolama ile çalışmaya başlama](table-storage-how-to-use-dotnet.md)
+* [.NET SDK kullanarak Azure Cosmos DB Tablo API'si ve Azure Tablo depolama ile çalışmaya başlama](table-storage-how-to-use-dotnet.md)
 
 * Kullanılabilir API’ler ile ilgili eksiksiz bilgiler için Tablo hizmeti başvuru belgelerini görüntüleyin:
 

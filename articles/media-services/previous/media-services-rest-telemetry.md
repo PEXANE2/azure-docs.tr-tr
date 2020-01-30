@@ -1,6 +1,6 @@
 ---
-title: REST ile Azure Media Services telemetri yapılandırma | Microsoft Docs
-description: Bu makalede REST API kullanarak Azure Media Services telemetri kullanma gösterilmektedir...
+title: REST ile Azure Media Services telemetrisini yapılandırma | Microsoft Docs
+description: Bu makalede, REST API kullanarak Azure Media Services telemetrinin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761786"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774878"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST ile Azure Media Services telemetri yapılandırma
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST ile Azure Media Services telemetrisini yapılandırma
 
-Bu konu, REST API kullanarak Azure Media Services (AMS) telemetri yapılandırırken sürebilir genel adımları açıklar. 
+Bu konu, REST API kullanarak Azure Media Services (AMS) telemetrisini yapılandırırken gerçekleştirebileceğiniz genel adımları açıklamaktadır. 
 
 >[!NOTE]
->Ayrıntılı bir açıklama ne AMS telemetri ve nasıl tüketicilerimizin kullanmak için bkz. [genel bakış](media-services-telemetry-overview.md) konu.
+>AMS telemetrinin ve nasıl kullanılacağı hakkında ayrıntılı açıklama için [genel bakış](media-services-telemetry-overview.md) konusuna bakın.
 
 Bu konuda açıklanan adımlar şunlardır:
 
-- Bir Media Services hesabıyla ilişkili depolama hesabı alma
+- Media Services hesabıyla ilişkili depolama hesabı alınıyor
 - Bildirim uç noktalarını alma
-- Bildirim uç noktası izleme için oluşturuluyor. 
+- Izleme için bir bildirim uç noktası oluşturuluyor. 
 
-    Bildirim uç noktası oluşturmak için AzureTable (2) ve depolama tablosuna ayarlamak endPontAddress EndPointType ayarlayın (örneğin, https:\//telemetryvalidationstore.table.core.windows.net/).
+    Bir bildirim uç noktası oluşturmak için, EndPointType öğesini AzureTable (2) ve endPontAddress depolama tablosuna ayarlayın (örneğin, https:\//telemetryvalidationstore.table.core.windows.net/).
   
-- İzleme yapılandırmalarını alma
+- İzleme yapılandırmasını al
 
-    Ayarları izlemek istediğiniz hizmetleri için izleme yapılandırmasını oluşturun. En fazla bir izleme yapılandırma ayarlarını izin verilir. 
+    İzlemek istediğiniz hizmetler için bir izleme yapılandırma ayarları oluşturun. Birden fazla izleme yapılandırma ayarı yapılmasına izin verilmez. 
 
-- İzleme Yapılandırması Ekle
+- İzleme yapılandırması ekleme
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Bir Media Services hesabıyla ilişkili depolama hesabı edinin
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Bir Media Services hesabıyla ilişkili depolama hesabını al
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -72,12 +72,12 @@ Bu konuda açıklanan adımlar şunlardır:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Bildirim uç noktalarını alma
+## <a name="get-the-notification-endpoints"></a>Bildirim uç noktalarını al
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -107,10 +107,10 @@ Bu konuda açıklanan adımlar şunlardır:
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>İzleme için bir bildirim uç noktası oluşturma
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -126,7 +126,7 @@ Bu konuda açıklanan adımlar şunlardır:
     }
 
 > [!NOTE]
-> Değiştirmeyi unutmayın "https:\//telemetryvalidationstore.table.core.windows.net" depolama hesabınıza değeri.
+> "Https:\//telemetryvalidationstore.table.core.windows.net" değerini depolama hesabınıza değiştirmeyi unutmayın.
 
 ### <a name="response"></a>Yanıt
 
@@ -147,12 +147,12 @@ Bu konuda açıklanan adımlar şunlardır:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>İzleme yapılandırmalarını alma
+## <a name="get-the-monitoring-configurations"></a>İzleme yapılandırmasını al
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -177,12 +177,12 @@ Bu konuda açıklanan adımlar şunlardır:
     
     {"d":{"results":[]}}
 
-## <a name="add-a-monitoring-configuration"></a>İzleme Yapılandırması Ekle
+## <a name="add-a-monitoring-configuration"></a>İzleme yapılandırması ekleme
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -220,12 +220,12 @@ Bu konuda açıklanan adımlar şunlardır:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.MonitoringConfiguration"},"Id":"nb:mcid:UUID:1a8931ae-799f-45fd-8aeb-9641740295c2","NotificationEndPointId":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Created":"2015-12-02T05:10:43.7680396Z","LastModified":"2015-12-02T05:10:43.7680396Z","Settings":{"__metadata":{"type":"Collection(Microsoft.Cloud.Media.Vod.Rest.Data.Models.ComponentMonitoringSettings)"},"results":[{"Component":"Channel","Level":"Normal"},{"Component":"StreamingEndpoint","Level":"Disabled"}]}}}
 
-## <a name="stop-telemetry"></a>Telemetriyi Durdur
+## <a name="stop-telemetry"></a>Telemetriyi durdur
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -235,12 +235,12 @@ Bu konuda açıklanan adımlar şunlardır:
 
 ## <a name="consuming-telemetry-information"></a>Telemetri bilgilerini kullanma
 
-Alıcı telemetri bilgileri hakkında daha fazla bilgi için bkz. [bu](media-services-telemetry-overview.md) konu.
+Telemetri bilgilerini tüketme hakkında bilgi için [Bu](media-services-telemetry-overview.md) konuya bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

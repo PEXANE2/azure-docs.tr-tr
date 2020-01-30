@@ -3,12 +3,12 @@ title: Bir Service Fabric kümesini içinde veya dışarı ölçeklendirin
 description: Her düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarlayarak, talebe eşleştirmek için bir Service Fabric kümesini içinde veya dışarı ölçeklendirin. Bir Service Fabric küme düğümleri ekleyebilir veya kaldırabilirsiniz
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451954"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774458"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Bir kümenin ölçeğini daraltma veya genişletme
 
@@ -101,7 +101,7 @@ Düğüm durumunu el ile kaldırma adımları yalnızca *bronz* dayanıklılık 
 Küme düğümlerini yükseltme ve hata etki alanlarına eşit olarak dağıtarak eşit bir şekilde kullanılmalarını sağlamak için önce en son oluşturulan düğümün kaldırılması gerekir. Başka bir deyişle düğümler, oluşturma sırasının tersine kaldırılmalıdır. En son oluşturulan düğüm, `virtual machine scale set InstanceId` özelliğinin değeri en yüksek olandır. Aşağıdaki kod örnekleri en son oluşturulan düğümü döndürür.
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
 ```azurecli

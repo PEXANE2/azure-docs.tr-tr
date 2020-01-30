@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 29fef3bec90819b252b43491c08e7a5bc2b3d454
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014894"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774947"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API'si ile Filtreler oluşturma 
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Bu makalede, filtre oluşturmak, güncelleştirmek ve silmek için REST API 'Ler
 > 
 > Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
+## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
 
 AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -65,7 +65,7 @@ Genel bir filtre oluşturmak için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
@@ -118,7 +118,7 @@ Yerel bir AssetFilter oluşturmak için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
@@ -158,7 +158,7 @@ Yerel bir AssetFilter oluşturmak için aşağıdaki HTTP isteklerini kullanın:
     . . . 
 
 ## <a name="list-filters"></a>Liste filtreleri
-### <a name="get-all-global-filters-in-the-ams-account"></a>AMS hesabındakitüm genel filtreleri al
+### <a name="get-all-global-filters-in-the-ams-account"></a>AMS hesabındaki tüm genel **filtreleri**al
 Filtreleri listelemek için aşağıdaki HTTP isteklerini kullanın: 
 
 #### <a name="http-request"></a>HTTP Isteği
@@ -168,7 +168,7 @@ Filtreleri listelemek için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>Bir varlıkla ilişkili **Assetfilter**'ları al
@@ -179,7 +179,7 @@ Filtreleri listelemek için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -191,7 +191,7 @@ Filtreleri listelemek için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000
 
 
@@ -213,7 +213,7 @@ Genel bir filtreyi güncelleştirmek için aşağıdaki HTTP isteklerini kullan�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
@@ -253,7 +253,7 @@ Yerel bir filtreyi güncelleştirmek için aşağıdaki HTTP isteklerini kullan�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -291,7 +291,7 @@ Genel bir filtreyi silmek için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN>  
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 
@@ -305,7 +305,7 @@ Yerel bir AssetFilter 'ı silmek için aşağıdaki HTTP isteklerini kullanın:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Filtreler kullanan akış URL 'Leri oluşturma
@@ -333,7 +333,7 @@ Aşağıdaki örneklerde, akış URL 'Lerine filtrelerin nasıl ekleneceği gös
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

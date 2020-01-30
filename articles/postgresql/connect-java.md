@@ -8,33 +8,34 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 566bf606b275b8e2c1f456600b46b1d7304d2ce7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767900"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769018"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma-tek sunucu
-Bu hızlı başlangıçta, Java uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makaledeki adımlarda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
-- [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
-- [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)
+Bu hızlı başlangıçta, Java uygulaması kullanarak PostgreSQL için Azure veritabanı 'na bağlanırsınız. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makaledeki adımlarda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-Şunları da yapmanız gerekir:
-- Java’nızın ve Java Geliştirme Seti’nizin sürümüyle uyumlu olan [PostgreSQL JDBC Sürücüsünü](https://jdbc.postgresql.org/download.html) indirin.
-- PostgreSQL JDBC jar dosyasını (örneğin, postgresql-42.1.1.jar) uygulama sınıf yolunuza ekleyin. Daha fazla bilgi için bkz. [sınıf yolu ayrıntıları](https://jdbc.postgresql.org/documentation/head/classpath.html).
+## <a name="prerequisites"></a>Ön koşullar
+
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- Hızlı başlangıç: Azure portal veya [hızlı başlangıç: Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)PostgreSQL [için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) .
+
+- [PostgreSQL JDBC sürücüsü](https://jdbc.postgresql.org/download.html) -Java ve Java geliştirme seti sürümünüzü eşleştirin.
+- [Sınıfyolu ayrıntıları](https://jdbc.postgresql.org/documentation/head/classpath.html) -uygulama Sınıfdosyanıza PostgreSQL JDBC jar dosyasını (örneğin, PostgreSQL-42.1.1. jar) dahil edin.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
-2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
-3. Sunucu adını seçin.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
- ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-java/azure-database-postgresql-server-name.png)
+1. [Azure Portal](https://portal.azure.com/), oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın ve seçin.
+
+1. Sunucunun **genel bakış** panelinden **sunucu adı** ve **Yönetici Kullanıcı adı**' nı bir yere göz atın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+
+    ![PostgreSQL için Azure veritabanı bağlantı dizesi](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
 Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri veritabanına yüklemek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, tabloyu bırakmak ve oluşturmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. Parametre değerlerini bağlamak için kullanılan setString() ve setInt() ile birlikte ekleme komutlarını oluşturmak için [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) nesnesi kullanılır. [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemi, her parametre kümesi için komutu çalıştırır. 

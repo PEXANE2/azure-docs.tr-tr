@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974102"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769110"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -117,7 +117,7 @@ Azure Machine Learning Studio 'daki çalışma alanınızda **işlem**' ı seçi
 
 Aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
-* Bir işlem örneği oluşturun. GPU 'Lar dahil olmak üzere adı, Azure VM türünü belirtin, SSH erişimini etkinleştirin/devre dışı bırakın ve sanal ağ ayarlarını isteğe bağlı olarak yapılandırın. Ayrıca, tümleşik not defterlerinden, Azure portal, Kaynak Yöneticisi şablondan veya Azure Machine Learning SDK 'dan doğrudan bir örnek oluşturabilirsiniz. İşlem örneği oluşturma için geçerli olan bölge başına adanmış çekirdekler, Azure Machine Learning işlem kümesi kotasıyla birleştirilmiştir ve paylaşılır.
+* Bir işlem örneği oluşturun. GPU 'Lar dahil olmak üzere Azure VM türünü belirtin (lütfen not VM türü oluşturulduktan sonra değiştirilemez), SSH erişimini etkinleştirin/devre dışı bırakın ve sanal ağ ayarlarını isteğe bağlı olarak yapılandırın. Ayrıca, tümleşik not defterlerinden, Azure portal, Kaynak Yöneticisi şablondan veya Azure Machine Learning SDK 'dan doğrudan bir örnek oluşturabilirsiniz. İşlem örneği oluşturma için geçerli olan bölge başına adanmış çekirdekler, Azure Machine Learning işlem kümesi kotasıyla birleştirilmiştir ve paylaşılır.
 * İşlem örnekleri sekmesini Yenile
 * İşlem örneğini başlatma, durdurma ve yeniden başlatma
 * İşlem örneğini silme
@@ -138,7 +138,7 @@ Ayrıca, bir örnek oluşturabilirsiniz
 
 İşlem örneği oluşturma için geçerli olan bölge başına adanmış çekirdekler, Azure Machine Learning eğitim kümesi kotasıyla birleştirilmiştir ve paylaşılır. 
 
-## <a name="compute-target"></a>İşlem Hedefi
+## <a name="compute-target"></a>İşlem hedefi
 
 İşlem örnekleri, Azure Machine Learning işlem eğitimi kümelerine benzer bir [eğitim işlem hedefi](concept-compute-target.md#train) olarak kullanılabilir. TensorFlow/PyTorch estimators kullanarak dağıtılmış eğitim işlerini çalıştırmak için bir çok GPU VM sağlayın. Ayrıca, bir çalıştırma yapılandırması oluşturup bu yapılandırmayı kullanarak denemenizin işlem örneği üzerinde çalıştırılmasını sağlayabilirsiniz. Test/hata ayıklama senaryoları için, işlem örneğini yerel bir ınırm dağıtım hedefi olarak kullanabilirsiniz.
 

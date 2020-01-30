@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: b28e09b2d304dc392442d98fe39654bab2c8d09c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645064"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772954"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub Cihazı Sağlama Hizmeti doğru IoT hub’a, kullanıcı müdahalesi gerektirmeden tam zamanında sağlama olanağı sunan bir yardımcı hizmettir. Bu sayede müşteriler milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabilir.
@@ -80,7 +80,7 @@ Cihaz Sağlama Hizmeti sahip olduğu birçok özellik sayesinde cihaz sağlama i
 * **Kayıt listesi**: Bir noktada kaydedilebilecek cihazların/cihaz gruplarının tam kaydını içerir. Kayıt listesi, kaydedilen cihazın istenen yapılandırması hakkında bilgi içerir ve istenen zamanda güncelleştirilebilir.
 * Cihaz sağlama hizmeti 'nin senaryolarınızı desteklemeye yönelik Cihazları IoT Hub 'larına nasıl atayacağı için **birden çok ayırma ilkesi** : en düşük gecikme süresi, eşit ağırlıklı dağıtım (varsayılan) ve kayıt listesi aracılığıyla statik yapılandırma. Gecikme süresinin [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)ile aynı yöntemi kullanarak belirlendiğini unutmayın.
 * **İzleme ve tanılama günlüğü**: Her şeyin düzgün çalıştığından emin olmanızı sağlar.
-* **Çoklu hub desteği**: Cihaz Sağlama Hizmeti’nin cihazları birden fazla IoT hub’a atamasını sağlar. Cihaz Sağlama Hizmeti birden fazla Azure aboneliğindeki hub’larla iletişim kurabilir.
+* **Çoklu Hub desteği** , cihaz sağlama hizmeti 'nin çalışma zamanında Cihazları IoT Hub 'a geri bağlamasını sağlar. Cihaz Sağlama Hizmeti birden fazla Azure aboneliğindeki hub’larla iletişim kurabilir.
 * **Bölgeler arası destek**: Cihaz Sağlama Hizmeti’nin cihazları diğer bölgelerdeki IoT hub’lara atamasını sağlar.
 
 [Cihaz kavramları](concepts-device.md), [hizmet kavramları](concepts-service.md) ve [güvenlik kavramları](concepts-security.md) bölümlerinde cihaz sağlamayla ilgili kavramlar ve özellikler hakkında daha fazla bilgi edinebilirsiniz.

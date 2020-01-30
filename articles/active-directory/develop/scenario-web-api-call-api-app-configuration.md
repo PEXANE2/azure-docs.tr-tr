@@ -15,18 +15,20 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: dd38cb58e6e6db9767be9adb8f299107601de580
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701782"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834102"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması
 
 Web API 'nizi kaydettikten sonra, uygulamanın kodunu yapılandırabilirsiniz.
 
 Web API 'nizi, bir Web API 'sini korumak için kullanılan kodun üstüne, akış Web API 'Lerini çağıran şekilde yapılandırmak için kullandığınız kod. Daha fazla bilgi için bkz. [korumalı Web API 'si: uygulama yapılandırması](scenario-protected-web-api-app-configuration.md).
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Ontokendoğrulamalı 'e abone olunan kod
 
@@ -47,7 +49,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.AddTokenAcquisition();
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
-        // When an access token for our own web API is validated, we add it 
+        // When an access token for our own web API is validated, we add it
         // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
@@ -55,7 +57,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
         {
             context.Success();
 
-            // Adds the token to the cache and handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -142,6 +144,82 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Şirket adına (OBO) akışı, aşağı akış Web API 'sini çağırmak için bir belirteç almak üzere kullanılır. Bu akışta, Web API 'niz, istemci uygulamasından Kullanıcı temsilcisi izinleri olan bir taşıyıcı belirteç alır ve ardından bu belirteci başka bir erişim belirteci için aşağı akış Web API 'sini çağırmak üzere değiş tokuş eder.
+
+Aşağıdaki kod, doğrulanan taşıyıcı belirtecini almak için Web API 'sindeki Spring Security Framework `SecurityContextHolder` kullanır. Daha sonra, `OnBehalfOfParameters``acquireToken` çağrısını kullanarak aşağı akış API 'SI için bir belirteç almak üzere MSAL Java kitaplığını kullanır. MSAL, API 'ye yapılan sonraki çağrıların önbelleğe alınmış belirteci almak için `acquireTokenSilently` kullanabilmesi için belirteci önbelleğe alır.
+
+```Java
+@Component
+class MsalAuthHelper {
+
+    @Value("${security.oauth2.client.authority}")
+    private String authority;
+
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String secret;
+
+    @Autowired
+    CacheManager cacheManager;
+
+    private String getAuthToken(){
+        String res = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null){
+            res = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+        }
+        return res;
+    }
+
+    String getOboToken(String scope) throws MalformedURLException {
+        String authToken = getAuthToken();
+
+        ConfidentialClientApplication application =
+                ConfidentialClientApplication.builder(clientId, ClientCredentialFactory.create(secret))
+                        .authority(authority).build();
+
+        String cacheKey = Hashing.sha256()
+                .hashString(authToken, StandardCharsets.UTF_8).toString();
+
+        String cachedTokens = cacheManager.getCache("tokens").get(cacheKey, String.class);
+        if(cachedTokens != null){
+            application.tokenCache().deserialize(cachedTokens);
+        }
+
+        IAuthenticationResult auth;
+        SilentParameters silentParameters =
+                SilentParameters.builder(Collections.singleton(scope))
+                        .build();
+        auth = application.acquireTokenSilently(silentParameters).join();
+
+        if (auth == null){
+            OnBehalfOfParameters parameters =
+                    OnBehalfOfParameters.builder(Collections.singleton(scope),
+                            new UserAssertion(authToken))
+                            .build();
+
+            auth = application.acquireToken(parameters).join();
+        }
+
+        cacheManager.getCache("tokens").put(cacheKey, application.tokenCache().serialize());
+
+        return auth.accessToken();
+    }
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Şirket adına (OBO) akışı, aşağı akış Web API 'sini çağırmak için bir belirteç almak üzere kullanılır. Bu akışta, Web API 'niz, istemci uygulamasından Kullanıcı temsilcisi izinleri olan bir taşıyıcı belirteç alır ve ardından bu belirteci başka bir erişim belirteci için aşağı akış Web API 'sini çağırmak üzere değiş tokuş eder.
+
+Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) YÖNTEMINI çağırarak msal Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir. Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+
+---
 
 Ayrıca, [Node. js ve Azure işlevlerinde](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)OBO akış uygulamasının bir örneğini görebilirsiniz.
 

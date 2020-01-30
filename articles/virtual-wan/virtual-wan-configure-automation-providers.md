@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168488"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775311"
 ---
 # <a name="virtual-wan-partners"></a>Sanal WAN iş ortakları
 
@@ -45,7 +45,7 @@ Beklenen müşteri deneyimini Azure sanal WAN ile birlikte anlayın.
   1. Genellikle, bir sanal WAN kullanıcısı bir sanal WAN kaynağı oluşturarak bu işlemi başlatır.
   2. Kullanıcı, şube bilgilerini Azure sanal WAN 'a yazmak için şirket içi sistem (Şube denetleyiciniz veya VPN cihaz sağlama yazılımınız) için bir hizmet sorumlusu tabanlı kaynak grubu erişimi ayarlar.
   3. Kullanıcı, şu anda Kullanıcı ARABIRIMINDE oturum açıp hizmet sorumlusu kimlik bilgilerini ayarlama kararı verebilir. Bu işlem tamamlandıktan sonra denetleyicinizin, sağlayabileceğiniz Otomasyon ile dal bilgilerini karşıya yükleyebilmeleri gerekir. Azure tarafında bu değerin el ile eşdeğeri ' site oluştur ' ' tur.
-  4. Site (Şube aygıtı) bilgileri Azure 'da kullanılabilir olduğunda, kullanıcı siteyi bir hub 'a bağlayacaktır. Bir sanal hub, Microsoft tarafından yönetilen bir sanal ağ. Hub, şirket içi ağınızdan (vpnsite) bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları içerir. Hub, ağınızın bir bölgedeki çekirdekdir. Bu işlem sırasında, Azure bölgesi başına yalnızca bir hub olabilir ve içindeki VPN uç noktası (vpngateway) oluşturulur. VPN Gateway, bant genişliği ve bağlantı ihtiyaçlarına göre uygun şekilde boyutlardaki ölçeklenebilir bir ağ geçidindir. Sanal hub ve vpngateway oluşturma 'yı dal cihaz denetleyicisi panoınızdan otomatik hale getirmeyi seçebilirsiniz.
+  4. Site (Şube aygıtı) bilgileri Azure 'da kullanılabilir olduğunda, kullanıcı siteyi bir hub 'a bağlayacaktır. Bir sanal hub, Microsoft tarafından yönetilen bir sanal ağ. Hub'da, şirket içi ağınızdan (vpnsite) gelen bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları bulunur. Hub, bir bölgedeki ağınızın merkezidir. Bu işlem sırasında, Azure bölgesi başına yalnızca bir hub olabilir ve içindeki VPN uç noktası (vpngateway) oluşturulur. VPN Gateway, bant genişliği ve bağlantı ihtiyaçlarına göre uygun şekilde boyutlardaki ölçeklenebilir bir ağ geçidindir. Sanal hub ve vpngateway oluşturma 'yı dal cihaz denetleyicisi panoınızdan otomatik hale getirmeyi seçebilirsiniz.
   5. Sanal hub siteyle ilişkilendirildiğinde, kullanıcının el ile indirilmesi için bir yapılandırma dosyası oluşturulur. Bu, otomasyonunun içinde geldiği ve kullanıcının sorunsuz bir şekilde karşılaşmasına neden olur. Şube cihazını el ile indirip yapılandırmak zorunda kalmadan, Otomasyonu ayarlayabilir ve Kullanıcı ARABIRIMINIZDEKI en az tıklama deneyimi sağlayabiliyor, böylece paylaşılan anahtar uyumsuzluğu, IPSec parametresi gibi tipik bağlantı sorunları hafifletmesini uyumsuzluk, yapılandırma dosyası okunabilirlik vb.
   6. Çözümünüzde bu adımın sonunda, kullanıcının şube cihazı ile sanal hub arasında sorunsuz bir siteden siteye bağlantısı olacaktır. Ayrıca, diğer hub 'larda ek bağlantılar da ayarlayabilirsiniz. Her bağlantı etkin-etkin bir tüneldir. Müşteriniz, tünele ilgili bağlantıların her biri için farklı bir ISS kullanmayı tercih edebilir.
   7. CPE yönetim arabiriminde sorun giderme ve izleme özellikleri sağlamayı düşünün. Tipik senaryolar, "bir CPE sorunu nedeniyle Azure kaynaklarına erişemeyebilirsiniz", "CPE tarafında IPSec parametrelerini göster" vb. arasında yer alır.
@@ -58,7 +58,7 @@ Müşteriler, cihaz Kullanıcı arabirimindeki sanal WAN için uygun erişim den
 
 * Şirket içi cihaz denetleyiciniz için bir Azure Active Directory uygulaması oluşturun.
 * Uygulama KIMLIĞINI ve kimlik doğrulama anahtarını al
-* Kiracı KIMLIĞINI al
+* Kiracı kimliğini alma
 * Uygulamayı "katkıda bulunan" rolüne ata
 
 ###  <a name="branch"></a>Şube cihaz bilgilerini karşıya yükle
@@ -76,10 +76,10 @@ Bu adım, Azure yapılandırmasını indirmeyi ve şube cihazından Azure sanal 
 
 ## <a name="devicefile"></a>Cihaz yapılandırma dosyası
 
-Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken kullanılacak ayarları içerir. Bu dosyayı görüntülediğinizde, aşağıdaki bilgilere dikkat edin:
+Cihaz yapılandırma dosyasında şirket içi VPN cihazınızı yapılandırırken kullanacağınız ayarlar bulunur. Bu dosyayı görüntülediğinizde aşağıdaki bilgilere dikkat edin:
 
-* **Vpnsiteconfiguration-** Bu bölüm, sanal WAN 'a bağlanan bir site olarak ayarlanan cihaz ayrıntılarını gösterir. Bu, şube cihazının adını ve genel IP adresini içerir.
-* **Vpnsiteconnections-** Bu bölüm aşağıdakiler hakkında bilgi sağlar:
+* **vpnSiteConfiguration -** Bu bölümde sanal WAN'a bağlanan bir site olarak ayarlanmış cihazın ayrıntıları yer alır. Dal cihazının adını ve genel IP adresini içerir.
+* **vpnSiteConnections -** Bu bölümde aşağıdakilerle ilgili bilgiler yer alır:
 
     * Sanal hub 'lar VNet 'in **Adres alanı** .<br>Örnek:
  
@@ -89,15 +89,15 @@ Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken
     * Hub 'a bağlı sanal ağların **Adres alanı** .<br>Örnek:
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * Sanal hub vpngateway 'in **IP adresleri** . Vpngateway 'in, etkin-etkin yapılandırmada 2 tünelden oluşan her bağlantısı olduğundan, bu dosyada her iki IP adresini de listelenmiş olarak görürsünüz. Bu örnekte, her site için "Örnek0" ve "Instance1" görüntülenir.<br>Örnek:
+    * vpngateway sanal hub'ının **IP adresleri**. vpngateway, etkin-etkin yapılandırmada 2 tünel içeren bağlantılara sahip olduğundan bu dosyada iki taraftaki IP adreslerinin de listelendiğini göreceksiniz. Bu örnekte her site için "Instance0" ve "Instance1" örneklerini göreceksiniz.<br>Örnek:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * BGP, önceden paylaşılan anahtar vb. gibi **Vpngateway bağlantısı yapılandırma ayrıntıları** . PSK, sizin için otomatik olarak oluşturulan önceden paylaşılmış anahtardır. Bağlantıyı, özel bir PSK için genel bakış sayfasında her zaman düzenleyebilirsiniz.
+    * BGP, önceden paylaşılan anahtar vb. gibi **Vpngateway bağlantısı yapılandırma ayrıntıları** . PSK, sizin için otomatik olarak oluşturulan önceden paylaşılmış anahtardır. Dilediğiniz zaman genel bakış sayfasındaki bağlantıyı düzenleyerek özel bir PSK ekleyebilirsiniz.
   
 **Örnek cihaz yapılandırma dosyası**
 
@@ -118,7 +118,7 @@ Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 
@@ -210,9 +210,9 @@ Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken
 
 * IKE şifreleme algoritması
 * IKE bütünlük algoritması
-* DH grubu
-* IPSec şifreleme algoritması
-* IPSec bütünlük algoritması
+* DH Grubu
+* IPsec şifreleme algoritması
+* IPsec bütünlük algoritması
 * PFS Grubu
 
 ### <a name="default"></a>IPSec bağlantısı için varsayılan ilkeler
@@ -227,4 +227,4 @@ Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken
 
 Sanal WAN hakkında daha fazla bilgi için bkz. [Azure sanal WAN](virtual-wan-about.md) ve [Azure sanal WAN hakkında SSS](virtual-wan-faq.md).
 
-Ek bilgi için lütfen <azurevirtualwan@microsoft.com> adresine bir e-posta gönderin. Şirket adınızı konu satırına "[]" içine ekleyin.
+Ek bilgi için lütfen <azurevirtualwan@microsoft.com>adresine bir e-posta gönderin. Şirketinizin adını konu satırına “[ ]” içinde yazın.

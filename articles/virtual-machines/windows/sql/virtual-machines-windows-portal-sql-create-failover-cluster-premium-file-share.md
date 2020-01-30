@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965351"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772589"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
 
@@ -77,13 +77,15 @@ Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
 - Microsoft Azure aboneliği.
 - Azure sanal makinelerinde bir Windows etki alanı.
-- Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
+- Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir etki alanı kullanıcı hesabı.
+- SQL Server hizmetini çalıştırmak için bir etki alanı kullanıcı hesabı ve dosya paylaşımının bağlanırken sanal makinede oturum açabildiğinizden emin olmanız gerekir.  
 - Bu bileşenler için yeterli IP adresi alanına sahip bir Azure sanal ağı ve alt ağı:
    - İki sanal makine.
    - Yük devretme kümesi IP adresi.
    - Her FCı için bir IP adresi.
 - Etki alanı denetleyicilerine işaret eden Azure ağı üzerinde yapılandırılmış DNS.
-- Veri dosyalarınız için veritabanınızın depolama kotasına dayalı bir [Premium dosya paylaşma](../../../storage/files/storage-how-to-create-premium-fileshare.md) .
+- Veri dosyalarınız için veritabanınızın depolama kotasına bağlı olarak, kümelenmiş sürücü olarak kullanılacak bir [Premium dosya paylaşımıdır](../../../storage/files/storage-how-to-create-premium-fileshare.md) .
+- Windows Server 2012 R2 ve daha eski bir sürümü kullanıyorsanız, Cloud tanıkları Windows 2016 ve daha yeni bir sürüm için desteklendiğinden dosya paylaşma tanığı olarak kullanmak için başka bir dosya paylaşımının olması gerekir. Başka bir Azure dosya paylaşımından kullanabilirsiniz veya ayrı bir sanal makinede bir dosya paylaşma kullanabilirsiniz. Başka bir Azure dosya paylaşımından kullanacaksanız, kümelenmiş sürücünüz için kullanılan Premium dosya paylaşımıyla aynı işlem ile bağlayabilirsiniz. 
 
 Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsiniz. İlk adım, sanal makineleri oluşturmaktır.
 
@@ -143,7 +145,7 @@ Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsini
    1. Varsayılan örneği seçin.
    1. **Veritabanı motoru Hizmetleri**altındaki tüm özellikleri kaldırın. **Paylaşılan özellikleri**kaldırmayın. Aşağıdaki ekran görüntüsüne benzer bir şey göreceksiniz:
 
-        ![Özellik Seçin](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Özellik seç](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. **İleri**' yi ve ardından **Kaldır**' ı seçin.
 
@@ -180,7 +182,8 @@ Sanal makineleri oluşturup yapılandırdıktan sonra, Premium dosya paylaşım�
 1. Kümeye katılacak her bir SQL Server VM bu adımları yineleyin.
 
   > [!IMPORTANT]
-  > Bu paylaşımın ıOPS ve alan kapasitesini veri ve günlük dosyaları için kaydetmek üzere yedekleme dosyaları için ayrı bir dosya paylaşma kullanmayı düşünün. Yedekleme dosyaları için Premium veya standart dosya paylaşımından birini kullanabilirsiniz.
+  > - Bu paylaşımın ıOPS ve alan kapasitesini veri ve günlük dosyaları için kaydetmek üzere yedekleme dosyaları için ayrı bir dosya paylaşma kullanmayı düşünün. Yedekleme dosyaları için Premium veya standart dosya paylaşımından birini kullanabilirsiniz.
+  > - Windows 2012 R2 ve daha eski bir sürümle çalışıyorsanız, dosya paylaşma tanığı olarak kullanacağınız dosya paylaşımınızı bağlamak için aynı adımları izleyin. 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>3\. Adım: yük devretme kümesini dosya paylaşımıyla yapılandırma
 
@@ -189,7 +192,7 @@ Bir sonraki adım, yük devretme kümesini yapılandırmaktır. Bu adımda, aşa
 1. Windows Server Yük Devretme Kümelemesi özelliğini ekleyin.
 1. Kümeyi doğrulayın.
 1. Yük devretme kümesini oluşturun.
-1. Bulut tanığını oluşturun.
+1. Bulut tanığını (Windows Server 2016 ve üzeri için) veya dosya paylaşma tanığı (Windows Server 2012 R2 ve üzeri için) oluşturun.
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Windows Server Yük Devretme Kümelemesi Ekle
@@ -239,7 +242,7 @@ PowerShell 'i kullanarak kümeyi doğrulamak için sanal makinelerden birindeki 
 
 Kümeyi doğruladıktan sonra, yük devretme kümesini oluşturun.
 
-### <a name="create-the-failover-cluster"></a>Yük devretme kümesini oluşturma
+### <a name="create-the-failover-cluster"></a>Yük devretme kümesi oluşturma
 
 Yük devretme kümesini oluşturmak için şunlar gerekir:
 - Küme düğümleri olacak sanal makinelerin adları.
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>Bulut tanığı oluşturma
+### <a name="create-a-cloud-witness-win-2016-"></a>Bulut tanığı oluşturma (Win 2016 +)
 
-Bulut tanığı, bir Azure Depolama Blobu içinde depolanan yeni bir küme çekirdeği tanığı türüdür. Bu, bir tanık paylaşma barındıran ayrı bir VM gereksinimini ortadan kaldırır.
+Windows Server 2016 ve üzeri bir sürümü kullanıyorsanız, bir bulut tanığı oluşturmanız gerekecektir. Bulut tanığı, bir Azure Depolama Blobu içinde depolanan yeni bir küme çekirdeği tanığı türüdür. Bu, bir tanık paylaşımının barındırıp veya ayrı bir dosya paylaşımının kullanıldığı ayrı bir VM gereksinimini ortadan kaldırır.
 
 1. [Yük devretme kümesi için bir bulut tanığı oluşturun](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -273,7 +276,11 @@ Bulut tanığı, bir Azure Depolama Blobu içinde depolanan yeni bir küme çeki
 
 1. Erişim anahtarlarını ve kapsayıcı URL 'sini kaydedin.
 
-1. Yük devretme kümesi çekirdek tanığını yapılandırın. Bkz. [Kullanıcı arabiriminde çekirdek tanığını yapılandırma](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+### <a name="configure-quorum"></a>Çekirdeği yapılandırma 
+
+Windows Server 2016 ve üzeri için, kümeyi yeni oluşturduğunuz bulut tanığını kullanacak şekilde yapılandırın. [Kullanıcı arabiriminde çekirdek tanığını yapılandırma](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)adımlarını izleyin.
+
+Windows Server 2012 R2 ve üzeri için, [Kullanıcı arabirimindeki çekirdek tanığını yapılandırma](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) içindeki aynı adımları izleyin, ancak **çekirdek tanığı Seç** sayfasında, **dosya paylaşma tanığını Yapılandır** seçeneğini belirleyin. Ayrı bir sanal makinede yapılandırılıp yapılandırılmadığını veya Azure 'dan bağlı olmasını sağlamak için, dosya paylaşma tanığı olarak ayrılan dosya paylaşımından birini belirtin. 
 
 
 ## <a name="step-4-test-cluster-failover"></a>4\. Adım: test kümesi yük devretmesi
@@ -296,7 +303,7 @@ Yük devretme kümesini yapılandırdıktan sonra, SQL Server FCı 'yi oluştura
 
 1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni**seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
 
-   FCı veri dizinlerinin Premium dosya paylaşımında olması gerekir. Paylaşımın tam yolunu şu biçimde girin: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Veri dizini olarak bir dosya sunucusu belirtmiş olduğunu söyleyen bir uyarı görüntülenir. Bu uyarı beklenmektedir. Dosya paylaşımının devam eden hesabının, SQL Server hizmetin olası hatalardan kaçınmak için kullandığı hesapla aynı olduğundan emin olun.
+   FCı veri dizinlerinin Premium dosya paylaşımında olması gerekir. Paylaşımın tam yolunu şu biçimde girin: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Veri dizini olarak bir dosya sunucusu belirtmiş olduğunu söyleyen bir uyarı görüntülenir. Bu uyarı beklenmektedir. Dosya paylaşımından kalıcı hale geldiğinde RDP ettiğiniz Kullanıcı hesabının sanal makinede bulunan Kullanıcı hesabının, SQL Server hizmetin olası hatalardan kaçınmak için kullandığı hesapla aynı olduğundan emin olun.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Dosya paylaşımının SQL veri dizinleri olarak kullanılması":::
 
@@ -356,7 +363,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Arka uç havuzunu oluşturmak için **Tamam ' ı** seçin.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Yük dengeleyici durum araştırmasını yapılandırma
+### <a name="configure-a-load-balancer-health-probe"></a>Yük dengeleyici durum araştırması yapılandırma
 
 1. Yük dengeleyici dikey penceresinde **sistem durumu araştırmaları**' nı seçin.
 
@@ -430,7 +437,7 @@ Küme araştırmasını ayarladıktan sonra, PowerShell 'de tüm küme parametre
 
 ## <a name="step-8-test-fci-failover"></a>8\. Adım: FCı yük devretmesini test etme
 
-Küme işlevselliğini doğrulamak için FCı yük devretmesini test edin. Aşağıdaki adımları izleyin:
+Küme işlevselliğini doğrulamak için FCı yük devretmesini test edin. Aşağıdaki adımları uygulayın:
 
 1. RDP kullanarak SQL Server FCı kümesi düğümlerinden birine bağlanın.
 

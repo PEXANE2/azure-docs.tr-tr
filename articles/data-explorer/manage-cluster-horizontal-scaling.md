@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942248"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833303"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Değişiklik talebini karşılamak için Azure Veri Gezgini küme yatay ölçeklendirmeyi (genişleme) yönetme
 
@@ -31,7 +31,7 @@ Yatay ölçeklendirmeyi kullanarak, önceden tanımlanmış kurallara ve zamanla
 
 2. **Genişleme** penceresinde istediğiniz otomatik ölçeklendirme yöntemini seçin: **el ile ölçeklendirme**, **iyileştirilmiş otomatik**ölçeklendirme veya **özel otomatik ölçeklendirme**.
 
-### <a name="manual-scale"></a>El ile ölçekleme
+### <a name="manual-scale"></a>El ile ölçeklendirme
 
 El ile ölçeklendirme, küme oluşturma sırasında varsayılan ayardır. Küme otomatik olarak değişmeyen bir statik kapasiteye sahiptir. **Örnek sayısı** çubuğunu kullanarak statik kapasiteyi seçersiniz. Kümenin ölçeklendirilmesi, başka bir değişiklik yapana kadar bu ayarda kalır.
 
@@ -58,9 +58,10 @@ El ile ölçeklendirme, küme oluşturma sırasında varsayılan ayardır. Küme
 Kümeniz kullanım dışı bir duruma yaklaşırsa, en iyi performansı sağlamak için ölçeği ölçeklendirin. Şu durumlarda ölçek genişletme gerçekleşmelidir:
 * Küme örneklerinin sayısı, Kullanıcı tarafından tanımlanan en fazla örnek sayısının altında.
 * Önbellek kullanımı bir saatten uzun bir süre için yüksek.
+* CPU, bir saatten uzun bir süre boyunca yüksek.
 
 > [!NOTE]
-> Ölçek Genişletme mantığı şu anda Alım kullanımını ve CPU ölçümlerini göz önünde bulundurmaz. Kullanım durumu için bu ölçümler önemliyse, [özel otomatik ölçeklendirme](#custom-autoscale)kullanın.
+> Ölçek Genişletme mantığı şu anda alma kullanım ölçümünü göz önünde bulundurmaz. Bu ölçüm kullanım durumu için önemliyse, [özel otomatik ölçeklendirme](#custom-autoscale)kullanın.
 
 **Ölçek ın**
 

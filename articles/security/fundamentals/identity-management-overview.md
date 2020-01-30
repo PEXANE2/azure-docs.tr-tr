@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129372"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840460"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
 
@@ -102,11 +102,11 @@ Tutarsız erişim düzenlerini tanımlayan güvenlik izleme, uyarılar ve makine
 
 Azure portal, raporlar aşağıdaki kategorilere ayrılır:
 
-* **Anomali raporları**: Anormal olduğunu bulduğumuz oturum açma olaylarını içerir. Amacınız, bu etkinlikleri haberdar etmek ve bir olayın şüpheli olup olmadığını belirlemenizi sağlamaktır.
-* **Tümleşik uygulama raporları**: Kuruluşunuzda bulut uygulamalarının nasıl kullanıldığına ilişkin öngörüler sağlayın. Azure AD, binlerce bulut uygulaması ile tümleştirme sunar.
-* **Hata raporları**: Dış uygulamalara hesap sağladığınızda oluşabilecek hataları belirtin.
-* **Kullanıcıya özel raporlar**: Belirli bir kullanıcı için cihaz oturum açma etkinlik verilerini görüntüleyin.
-* **Etkinlik günlükleri**: Son 24 saat, son 7 gün veya son 30 gün içinde denetlenen tüm olayların bir kaydını, Grup etkinlik değişikliklerini ve parola sıfırlama ve kayıt etkinliğini içerir.
+* **Anomali raporları**: anormal olmak üzere bulduğumuz oturum açma olaylarını içerir. Amacınız, bu etkinlikleri haberdar etmek ve bir olayın şüpheli olup olmadığını belirlemenizi sağlamaktır.
+* **Tümleşik uygulama raporları**: bulut uygulamalarının kuruluşunuzda nasıl kullanıldığına ilişkin öngörüler sağlar. Azure AD, binlerce bulut uygulaması ile tümleştirme sunar.
+* **Hata raporları**: dış uygulamalara hesap sağladığınızda oluşabilecek hataları belirtin.
+* **Kullanıcıya özel raporlar**: belirli bir kullanıcı için cihaz oturum açma etkinlik verilerini görüntüler.
+* **Etkinlik günlükleri**: son 24 saat, son 7 gün veya son 30 gün içinde denetlenen tüm olayların bir kaydını içerir ve etkinlik değişikliklerini ve parola sıfırlama ve kayıt etkinliğini gruplandırın.
 
 Daha fazla bilgi edinin:
 
@@ -125,8 +125,8 @@ Azure AD B2C kullandığınızda, Tüketicileriniz mevcut sosyal hesaplarını (
 Daha fazla bilgi edinin:
 
 * [Azure Active Directory B2C nedir?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C önizlemesi: Uygulamalarınızda tüketicilere kaydolun ve oturum açın](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C önizlemesi: Uygulama türleri](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C önizlemesi: uygulamalarınızda tüketicilere kaydolma ve oturum açma](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C önizlemesi: uygulama türleri](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>Cihaz kaydı
 
@@ -165,7 +165,7 @@ Azure AD Kimlik Koruması, risk algılamaları ve kuruluşunuzun kimliklerini et
 Daha fazla bilgi edinin:
 
 * [Azure AD Kimlik Koruması](/azure/active-directory/identity-protection/overview)
-* [Kanal 9: Azure AD ve kimlik göster: Kimlik koruması önizlemesi](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9: Azure AD ve kimlik Show: kimlik koruması önizlemesi](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Karma kimlik yönetimi/Azure AD Connect
 
@@ -174,7 +174,7 @@ Microsoft’un kimlik çözümleri şirket içi ve bulut tabanlı çözümleri b
 * Eşitleme
 * AD FS ve Federasyon tümleştirmesi
 * Doğrudan kimlik doğrulama
-* Sistem Durumu İzleme
+* Durum İzleme
 
 Daha fazla bilgi edinin:
 

@@ -1,10 +1,9 @@
 ---
 title: Azure Service Bus - Event Grid tümleştirmesine genel bakış | Microsoft Docs
-description: Service Bus mesajlaşması ve Event Grid tümleştirmesinin açıklaması
+description: Bu makalede, Azure Service Bus mesajlaşma 'nın Azure Event Grid ile nasıl tümleştirildiğini gösteren bir açıklama sunulmaktadır.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072127"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773474"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus - Event Grid tümleştirmesine Genel Bakış
 
@@ -39,7 +38,7 @@ Service Bus artık bir alıcı mevcut olmadığında ve bir kuyrukta veya abonel
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Katkıda bulunan erişimine sahip olduğunuzu doğrulama
-Service Bus ad alanınıza gidin ve ardından **erişim denetimi (IAM)** seçip **rol atamaları** sekmesi. Ad alanına katkıda bulunan erişimine sahip olduğunuzu doğrulayın. 
+Service Bus ad alanına gidin ve ardından **erişim denetimi (IAM)** seçeneğini belirleyin ve **rol atamaları** sekmesini seçin. ad alanına katkıda bulunan erişimi olduğunu doğrulayın. 
 
 ### <a name="events-and-event-schemas"></a>Olaylar ve olay şemaları
 
@@ -118,7 +117,7 @@ Varsayılan olarak Service Bus, ad alanındaki tüm varlıklar için olaylar gö
 
 Service Bus ad alanları için Event Grid abonelikleri oluşturmanın üç farklı yolu vardır:
 
-* Azure portalında
+* Azure portal
 * [Azure CLI](#azure-cli-instructions)’da
 * [PowerShell](#powershell-instructions)’de
 
@@ -173,7 +172,7 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Buradan diğer kurulum seçeneklerini keşfedin veya olayların akışa alındığını test edin.
+Buradan, diğer kurulum seçeneklerini keşfedebilirsiniz veya olayların akışını test edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

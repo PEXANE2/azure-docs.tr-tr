@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895808"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773668"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış 
 
@@ -45,7 +45,7 @@ REST kullanılırken aşağıdaki noktalar geçerlidir.
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -75,8 +75,8 @@ Aşağıda, isteğe bağlı bir başlık kümesi verilmiştir:
 | Üst bilgi | Tür | Değer |
 | --- | --- | --- |
 | Tarih |RFC 1123 tarihi |İsteğin zaman damgası |
-| Kabul et |İçerik türü |Aşağıdaki gibi yanıt için istenen içerik türü:<p> -Application/JSON; OData = verbose<p> -Application/atom + XML<p> Yanıtlar, blob getirme gibi farklı bir içerik türüne sahip olabilir, burada başarılı bir yanıt yük olarak blob akışını içerir. |
-| accept-encoding |Gzip, söndür |Uygun olduğunda GZIP ve söndür kodlaması. Note: büyük kaynaklar Için Media Services bu üstbilgiyi yoksayabilir ve sıkıştırılmış olmayan verileri döndürebilir. |
+| Ettiğinizde |İçerik türü |Aşağıdaki gibi yanıt için istenen içerik türü:<p> -Application/JSON; OData = verbose<p> -Application/atom + XML<p> Yanıtlar, blob getirme gibi farklı bir içerik türüne sahip olabilir, burada başarılı bir yanıt yük olarak blob akışını içerir. |
+| Kabul etme-kodlama |Gzip, söndür |Uygun olduğunda GZIP ve söndür kodlaması. Note: büyük kaynaklar Için Media Services bu üstbilgiyi yoksayabilir ve sıkıştırılmış olmayan verileri döndürebilir. |
 | Kabul etme-dil |"en", "es" vb. |Yanıt için tercih edilen dili belirtir. |
 | Accept-Charset |"UTF-8" gibi karakter kümesi türü |Varsayılan UTF-8 ' dir. |
 | X-HTTP-yöntemi |HTTP yöntemi |Bu yöntemleri kullanmak için PUT veya DELETE gibi HTTP yöntemlerini desteklemeyen istemcilerin veya güvenlik duvarlarının, bir GET çağrısıyla tünelde kullanılmasına izin verir. |
@@ -104,7 +104,7 @@ Aşağıda HTTP istekleri yapılırken kullanılabilecek HTTP fiillerinin kapsam
 | PUT |Bir nesnenin yerini alır veya bir adlandırılmış nesne (varsa) oluşturur. |
 | DELETE |Bir nesneyi siler. |
 | BIRLEÞTIRMEK |Varolan bir nesneyi adlandırılmış özellik değişiklikleriyle güncelleştirir. |
-| BAŞ |GET yanıtı için bir nesnenin meta verilerini döndürür. |
+| BAŞLı |GET yanıtı için bir nesnenin meta verilerini döndürür. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Media Services varlık modelini bul ve araştır
 Media Services varlıkların daha bulunabilir olmasını sağlamak için $metadata işlemi kullanılabilir. Tüm geçerli varlık türlerini, varlık özelliklerini, ilişkilendirmeleri, işlevleri, eylemleri vb. almanızı sağlar. $Metadata işlemini Media Services REST API uç noktanızın sonuna ekleyerek, bu bulma hizmetine erişebilirsiniz.

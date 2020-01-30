@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33bad4982d54eb18e91be28511fb9137223f4a91
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950978"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840375"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth2 teknik profili tanımlama
 
@@ -79,11 +79,11 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
 | Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse Azure AD B2C, belirtecin kimlik sağlayıcısı tarafından döndürülen bir talep içinde olup olmadığını denetler ve belirtilen değere eşittir. |
-| authorization_endpoint | Yes | RFC 6749 başına yetkilendirme uç noktasının URL 'SI. |
-| AccessTokenEndpoint | Yes | RFC 6749 başına belirteç uç noktasının URL 'SI. |
-| ClaimsEndpoint | Yes | RFC 6749 başına Kullanıcı bilgileri uç noktasının URL 'SI. |
+| authorization_endpoint | Evet | RFC 6749 başına yetkilendirme uç noktasının URL 'SI. |
+| AccessTokenEndpoint | Evet | RFC 6749 başına belirteç uç noktasının URL 'SI. |
+| ClaimsEndpoint | Evet | RFC 6749 başına Kullanıcı bilgileri uç noktasının URL 'SI. |
 | Accesstokenresponsebiçimi | Hayır | Erişim belirteci uç noktası çağrısının biçimi. Örneğin, Facebook bir HTTP GET yöntemi gerektirir, ancak erişim belirteci yanıtı JSON biçimindedir. |
 | AdditionalRequestQueryParameters | Hayır | Ek istek sorgu parametreleri. Örneğin, kimlik sağlayıcınıza ek parametreler göndermek isteyebilirsiniz. Virgül sınırlayıcısı kullanarak birden çok parametre ekleyebilirsiniz. |
 | ClaimsEndpointAccessTokenName | Hayır | Erişim belirteci sorgu dizesi parametresinin adı. Bazı kimlik sağlayıcılarının talep uç noktaları HTTP isteği al 'ı destekler. Bu durumda, taşıyıcı belirteci Yetkilendirme üstbilgisi yerine bir sorgu dizesi parametresi kullanılarak gönderilir. |
@@ -103,9 +103,9 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri `code`olarak ayarlandıysa gereklidir. Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler `id_token`olarak ayarlandıysa, şifreleme anahtarını atlayabilirsiniz. |
+| client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri `code`olarak ayarlandıysa gereklidir. Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler `id_token`olarak ayarlandıysa, şifreleme anahtarını atlayabilirsiniz. |
 
-## <a name="redirect-uri"></a>Yeniden yönlendirme URI'si
+## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'SI
 
 Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`girin. **Kiracınızı** kiracınızın adı (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin tanıtıcısı (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir.
 
@@ -113,7 +113,7 @@ Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığını
 
 Örnekler:
 
-- [Özel ilkeleri kullanarak Google + OAuth2 Identity Provider olarak ekleme](active-directory-b2c-custom-setup-goog-idp.md)
+- [Özel ilkeleri kullanarak Google + OAuth2 Identity Provider olarak ekleme](identity-provider-google-custom.md)
 
 
 

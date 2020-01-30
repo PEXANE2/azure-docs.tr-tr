@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949883"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836057"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
-Azure Active Directory B2C (Azure AD B2C) [özel ilkelerindeki](active-directory-b2c-overview-custom.md) talep çözücüler, ilke adı, Istek bağıntı kimliği, Kullanıcı arabirimi dili ve daha fazlası gibi bir yetkilendirme isteğiyle ilgili bağlam bilgilerini sağlar.
+Azure Active Directory B2C (Azure AD B2C) [özel ilkelerindeki](custom-policy-overview.md) talep çözücüler, ilke adı, Istek bağıntı kimliği, Kullanıcı arabirimi dili ve daha fazlası gibi bir yetkilendirme isteğiyle ilgili bağlam bilgilerini sağlar.
 
 Bir giriş veya çıkış talebinde bir talep çözümleyici kullanmak için, [Claimsschema](claimsschema.md) öğesi altında bir String **ClaimType**tanımlar ve ardından **DefaultValue** değerini giriş veya çıkış talebi öğesinde talep çözümleyici olarak ayarlarsınız. Azure AD B2C, talep Çözümleyicisinin değerini okur ve teknik profildeki değeri kullanır.
 
@@ -51,7 +51,7 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {Culture: LanguageName} | Dil için iki harfli ISO kodu. | en |
 | {Culture: LCıD}   | Dil kodunun LCıD 'SI. | 1033 |
 | {Culture: RegionName} | Bölgenin iki harfli ISO kodu. | US |
-| {Culture: RFC5646} | RFC5646 dil kodu. | en-US |
+| {Culture: RFC5646} | RFC5646 dil kodu. | tr-TR |
 
 ### <a name="policy"></a>İlke
 
@@ -72,7 +72,7 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {OıDC: Loginipucu} |  `login_hint` sorgu dizesi parametresi. | someone@contoso.com |
 | {OıDC: MaxAge} | `max_age`. | Yok |
 | {OıDC: nonce} |`Nonce` sorgu dizesi parametresi. | defaultNonce |
-| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum açma |
+| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum aç |
 | {OıDC: kaynak} |`resource` sorgu dizesi parametresi. | Yok |
 | {OıDC: scope} |`scope` sorgu dizesi parametresi. | OpenID |
 
@@ -137,7 +137,7 @@ Talep çözümleyicilerine göre, oturum açma adını veya Facebook, LinkedIn v
 
 ### <a name="dynamic-ui-customization"></a>Dinamik UI özelleştirmesi
 
-Azure AD B2C, sayfa içeriğini dinamik olarak işleyebilmeniz için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](active-directory-b2c-ui-customization-custom-dynamic.md). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
+Azure AD B2C, sayfa içeriğini dinamik olarak işleyebilmeniz için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](custom-policy-ui-customization-dynamic.md). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
 
 Aşağıdaki örnek, bir değeri `hawaii`, bir `en-US`**dil** kodu ve istemci kimliğini temsil eden bir **uygulama** olan bir **Kampanya NID** adlı bir parametre sorgu dizesinde geçirilir:
 
@@ -159,7 +159,7 @@ Sonuç olarak Azure AD B2C yukarıdaki parametreleri HTML içerik sayfasına gö
 
 ### <a name="application-insights-technical-profile"></a>Application Insights teknik profili
 
-Azure Application Insights ve talep Çözümleyenler sayesinde Kullanıcı davranışında Öngörüler elde edebilirsiniz. Application Insights teknik profilinde, Azure Application Insights kalıcı olan giriş taleplerini gönderirsiniz. Daha fazla bilgi için bkz. [Application Insights kullanarak Azure AD B2C yolculuğa yönelik kullanıcı davranışını izleme](active-directory-b2c-custom-guide-eventlogger-appins.md). Aşağıdaki örnek, ilke KIMLIĞI, bağıntı KIMLIĞI, dil ve istemci KIMLIĞINI Azure Application Insights gönderir.
+Azure Application Insights ve talep Çözümleyenler sayesinde Kullanıcı davranışında Öngörüler elde edebilirsiniz. Application Insights teknik profilinde, Azure Application Insights kalıcı olan giriş taleplerini gönderirsiniz. Daha fazla bilgi için bkz. [Application Insights kullanarak Azure AD B2C yolculuğa yönelik kullanıcı davranışını izleme](analytics-with-application-insights.md). Aşağıdaki örnek, ilke KIMLIĞI, bağıntı KIMLIĞI, dil ve istemci KIMLIĞINI Azure Application Insights gönderir.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

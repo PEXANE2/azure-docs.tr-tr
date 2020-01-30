@@ -6,14 +6,14 @@ ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441199"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771072"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -210,7 +210,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 Başarılı güncelleştirme işlemleri için `result`, güncelleştirilen varlığın **Etag** değerini içerir.
 
 ## <a name="work-with-groups-of-entities"></a>Varlık gruplarıyla çalışma
-Bazen sunucu tarafından atomik işleme sağlamak için bir toplu işte birden fazla işlemin bir arada gönderilmesi mantıklıdır. Bunu yapmak için **TableBatch** sınıfını kullanarak bir toplu iş oluşturun ve sonra toplu işlemleri gerçekleştirmek için **TableService** için **executeBatch** yöntemini kullanın.
+Bazen, sunucu tarafından atomik olarak işlenmelerini sağlamak için birden fazla işlemin toplu bir işte bir arada gönderilmesi mantıklıdır. Bunu yapmak için **TableBatch** sınıfını kullanarak bir toplu iş oluşturun ve sonra toplu işlemleri gerçekleştirmek için **TableService** için **executeBatch** yöntemini kullanın.
 
  Aşağıdaki örnekte, bir toplu işte iki varlığın gönderilmesi gösterilmektedir:
 

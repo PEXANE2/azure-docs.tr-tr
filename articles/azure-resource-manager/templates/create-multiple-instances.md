@@ -3,12 +3,12 @@ title: Birden çok kaynak örneğini dağıtma
 description: Kaynak dağıtımında birden çok kez yinelemek için bir Azure Resource Manager şablonunda kopyalama işlemini ve dizileri kullanın.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121990"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836938"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi
 
@@ -205,6 +205,10 @@ Aşağıdaki örnek, `copy` bir sanal makinede dataDisks özelliğine nasıl uyg
 
 Özellik yinelemesi içinde `copyIndex` kullanırken yinelemenin adını belirtmeniz gerektiğini unutmayın. Kaynak yinelemesi ile kullanıldığında adı sağlamanız gerekmez.
 
+> [!NOTE]
+> Özellik yinelemesi de bir konum bağımsız değişkenini destekler. Konum, Copyındex (' dataDisks ', 1) gibi yinelemenin adından sonra gelmelidir.
+>
+
 Kaynak Yöneticisi, dağıtım sırasında `copy` dizisini genişletir. Dizinin adı, özelliğin adı olur. Giriş değerleri nesne özellikleri olur. Dağıtılan şablon şu şekilde olur:
 
 ```json
@@ -299,6 +303,10 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 ## <a name="variable-iteration"></a>Değişken yineleme
 
 Bir değişkenin birden çok örneğini oluşturmak için, değişkenler bölümündeki `copy` özelliğini kullanın. `input` özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz. `copy` özelliğini bir değişken içinde veya değişkenler bölümünün en üst düzeyinde kullanabilirsiniz. Bir değişken yinelemesi içinde `copyIndex` kullanırken, yinelemenin adını sağlamanız gerekir.
+
+> [!NOTE]
+> Değişken yineleme Ayrıca bir fark bağımsız değişkenini destekler. Konum, Copyındex (' diskNames ', 1) gibi yinelemenin adından sonra gelmelidir.
+>
 
 Dize değerleri dizisi oluşturmaya yönelik basit bir örnek için bkz. [dizi şablonunu kopyalama](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 
@@ -484,7 +492,7 @@ Alt kaynak için bir kopyalama döngüsü kullanamazsınız. Genellikle başka b
 
 Birden fazla veri kümesi oluşturmak için veri fabrikası dışına taşıyın. Veri kümesi Data Factory ile aynı düzeyde olmalıdır, ancak yine de Data Factory 'nin bir alt kaynağıdır. Veri kümesi ve Veri Fabrikası arasındaki ilişkiyi tür ve ad özellikleriyle koruyabilirsiniz. Tür, şablondaki konumundan daha fazla çıkarsanamıyor, tam türü: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`biçiminde sağlamanız gerekir.
 
-Veri fabrikasının bir örneğiyle üst/alt ilişkisi kurmak için, üst kaynak adını içeren veri kümesi için bir ad sağlayın. `{parent-resource-name}/{child-resource-name}` biçimini kullanın.
+Veri fabrikasının bir örneğiyle üst/alt ilişkisi kurmak için, üst kaynak adını içeren veri kümesi için bir ad sağlayın. Şu biçimi kullanın: `{parent-resource-name}/{child-resource-name}`.
 
 Aşağıdaki örnek, uygulamayı göstermektedir:
 

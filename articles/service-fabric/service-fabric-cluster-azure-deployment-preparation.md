@@ -3,12 +3,12 @@ title: Azure Service Fabric küme dağıtımını planlayın
 description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463325"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834459"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
@@ -37,9 +37,59 @@ Her düğüm türü için en az sanal makine boyutu, düğüm türü için seçt
 
 Birincil düğüm türü için en az sanal makine sayısı, seçtiğiniz [güvenilirlik katmanına][reliability] göre belirlenir.
 
-Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)bakın. 
+Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)bakın.
 
 Düğüm sayısının alt sınırı, bu düğüm türünde çalıştırmak istediğiniz uygulama/hizmetlerin çoğaltmaları sayısını temel almalıdır.  [Service Fabric uygulamalar Için kapasite planlaması](service-fabric-capacity-planning.md) , uygulamalarınızı çalıştırmak için ihtiyacınız olan kaynakları tahmin etmenize yardımcı olur. Daha sonra değişen uygulama iş yükünü ayarlamak için kümenin ölçeğini değiştirebilir veya azaltabilirsiniz. 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için kısa ömürlü işletim sistemi diskleri kullanın
+
+*Kısa ömürlü işletim sistemi diskleri* , yerel sanal MAKINEDE (VM) oluşturulmuş ve uzak Azure depolama 'ya kaydedilmemiş depolardır. Geleneksel kalıcı işletim sistemi disklerine kıyasla, kısa ömürlü işletim sistemi disklerine kıyasla tüm Service Fabric düğüm türleri (birincil ve Ikincil) için önerilir:
+
+* İşletim sistemi diskine okuma/yazma gecikmesini azaltma
+* Daha hızlı sıfırlama/yeniden görüntü düğümü yönetim işlemlerini etkinleştirme
+* Genel maliyetleri düşürün (diskler ücretsizdir ve ek depolama maliyeti yoktur)
+
+Kısa ömürlü işletim sistemi diskleri, belirli bir Service Fabric özelliği değildir, ancak Azure *sanal makine ölçek kümelerinin* Service Fabric düğüm türleriyle eşlenmiş bir özelliği değildir. Service Fabric ile birlikte kullanmak, küme Azure Resource Manager şablonunuzda şunları gerektirir:
+
+1. Düğüm türlerinizin, kısa ömürlü işletim sistemi diskleri için [desteklenen Azure VM boyutlarını](../virtual-machines/windows/ephemeral-os-disks.md) BELIRTTIĞINDEN ve VM boyutunun işletim sistemi disk boyutunu desteklemeye yetecek kadar önbellek boyutuna sahip olduğundan emin olun (aşağıdaki *nota* bakın.) Örneğin:
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > Bir sanal makine boyutunu, sanal makinenin işletim sistemi disk boyutundan büyük veya buna eşit bir önbellek boyutu seçtiğinizden emin olun, aksi takdirde Azure dağıtımınız hataya neden olabilir (başlangıçta kabul edilse bile).
+
+2. `2018-06-01` veya üzeri bir sanal makine ölçek kümesi sürümü (`vmssApiVersion`) belirtin:
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. Dağıtım şablonunuzun sanal makine ölçek kümesi bölümünde `diffDiskSettings`için `Local` seçeneği belirtin:
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+Daha fazla bilgi ve diğer yapılandırma seçenekleri için bkz. [Azure VM 'ler Için kısa ömürlü işletim sistemi diskleri](../virtual-machines/windows/ephemeral-os-disks.md) 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Küme için dayanıklılık ve güvenilirlik düzeylerini seçin
 Dayanıklılık katmanı, sistem sanal makinelerinizin temel alınan Azure altyapısıyla sahip olduğu ayrıcalıkları göstermek için kullanılır. Bu ayrıcalık, birincil düğüm türünde, sistem hizmetleri ve durum bilgisi olan hizmetleriniz için çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (VM yeniden başlatma, VM yeniden görüntüsü veya VM geçişi gibi) duraklatmaya olanak Service Fabric tanır. Birincil olmayan düğüm türlerinde, bu ayrıcalık, durum bilgisi olan hizmetlerinizin çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (VM yeniden başlatma, VM yeniden görüntüsü ve VM geçişi gibi) duraklatmaya Service Fabric olanak tanır.  Hangi düzeyin kullanılacağı ve ne zaman kullanılacağı ile ilgili farklı düzeylerin ve önerilerin avantajları için, [kümenin dayanıklılık özelliklerine][durability]bakın.

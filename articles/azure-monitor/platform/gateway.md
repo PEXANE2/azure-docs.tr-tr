@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547311"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773285"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -159,9 +159,9 @@ Aşağıdaki tabloda, kurulum tarafından desteklenen parametrelerin vurgulanmı
 |PORTNUMBER | Dinlenecek ağ geçidi için TCP bağlantı noktası numarası |
 |PROXY | Ara sunucunun IP adresi |
 |INSTALLDIR | Ağ Geçidi yazılım dosyalarının install dizinini belirtmek için tam yol |
-|USERNAME | Proxy sunucusu ile kimlik doğrulaması yapılacak Kullanıcı KIMLIĞI |
-|PAROLA | Proxy ile kimlik doğrulamak için Kullanıcı KIMLIĞININ parolası |
-|LicenseAccepted | Lisans anlaşmasını kabul etmiş olduğunuzu doğrulamak için **1** değerini belirtin |
+|NITELEN | Proxy sunucusu ile kimlik doğrulaması yapılacak Kullanıcı KIMLIĞI |
+|PAROLAYı | Proxy ile kimlik doğrulamak için Kullanıcı KIMLIĞININ parolası |
+|Licensekabul edildi | Lisans anlaşmasını kabul etmiş olduğunuzu doğrulamak için **1** değerini belirtin |
 |HASAUTH | Kullanıcı adı/parola parametreleri belirtildiğinde **1** değerini belirtin |
 |HASPROXY | **Proxy** PARAMETRESI için IP adresi belirtirken **1** değerini belirtin |
 
@@ -204,13 +204,13 @@ Tasarım ve bir Windows Server 2016 Ağ Yükü Dengeleme kümesi dağıtma hakk�
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Bir Azure Load Balancer tasarlamayı ve dağıtmayı öğrenmek için bkz. Azure Load Balancer nedir [?](../../load-balancer/load-balancer-overview.md). Temel yük dengeleyiciyi dağıtmak için, **arka uç sunucuları oluşturma**bölümünde özetlenen adımları dışlayarak bu [hızlı](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) başlangıçta özetlenen adımları izleyin.   
+Bir Azure Load Balancer tasarlamayı ve dağıtmayı öğrenmek için bkz. Azure Load Balancer nedir [?](../../load-balancer/load-balancer-overview.md). Temel yük dengeleyiciyi dağıtmak için, **arka uç sunucuları oluşturma**bölümünde özetlenen adımları dışlayarak bu [hızlı](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) başlangıçta özetlenen adımları izleyin.   
 
 > [!NOTE]
 > **Temel SKU 'yu**kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/windows/manage-availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
 > 
 
-Yük dengeleyici oluşturulduktan sonra, trafiği bir veya daha fazla ağ geçidi sunucusuna dağıtan bir arka uç havuzunun oluşturulması gerekir. Hızlı başlangıç makalesi bölümünde açıklanan adımları izleyerek [Yük Dengeleyici için kaynak oluşturma](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer)bölümüne bakın.  
+Yük dengeleyici oluşturulduktan sonra, trafiği bir veya daha fazla ağ geçidi sunucusuna dağıtan bir arka uç havuzunun oluşturulması gerekir. Hızlı başlangıç makalesi bölümünde açıklanan adımları izleyerek [Yük Dengeleyici için kaynak oluşturma](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)bölümüne bakın.  
 
 >[!NOTE]
 >Sistem durumu araştırmasını yapılandırırken, ağ geçidi sunucusunun TCP bağlantı noktasını kullanacak şekilde yapılandırılmalıdır. Sistem durumu araştırması, ağ geçidi sunucularını, sistem durumu denetimlerine yönelik yanıtlarını temel alarak yük dengeleyici rotasyondan dinamik olarak ekler veya kaldırır. 

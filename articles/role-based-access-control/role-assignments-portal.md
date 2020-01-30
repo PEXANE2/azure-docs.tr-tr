@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 17a325e96e9709b60da2f23d1dc68e3300fde80c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4003e11120c13624379cf7dad9334e896cd3a7a8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707860"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774673"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak rol atamaları ekleme veya kaldırma
 
@@ -27,15 +27,15 @@ ms.locfileid: "74707860"
 
 Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 - `Microsoft.Authorization/roleAssignments/write` ve `Microsoft.Authorization/roleAssignments/delete` izinleri ( [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi)
 
-## <a name="overview-of-access-control-iam"></a>Erişim denetimine genel bakış (ıAM)
+## <a name="access-control-iam"></a>Erişim denetimi (ıAM)
 
-**Erişim denetimi (IAM)** , rolleri atamak için kullandığınız dikey pencere olur. Kimlik ve erişim yönetimi olarak da bilinir ve Azure portal çeşitli konumlarda görüntülenir. Aşağıda bir abonelik için erişim denetimi (ıAM) dikey penceresi örneği gösterilmektedir.
+**Erişim denetimi (IAM)** , Azure kaynaklarına erişim vermek üzere rol atamak için kullandığınız dikey pencere olur. Kimlik ve erişim yönetimi olarak da bilinir ve Azure portal çeşitli konumlarda görüntülenir. Aşağıda bir abonelik için erişim denetimi (ıAM) dikey penceresi örneği gösterilmektedir.
 
 ![Abonelik için erişim denetimi (ıAM) dikey penceresi](./media/role-assignments-portal/access-control-subscription.png)
 
@@ -55,21 +55,25 @@ Erişim denetimi (ıAM) dikey penceresinde en etkili olması için, bir rol atam
 
 ## <a name="add-a-role-assignment"></a>Rol ataması ekleme
 
-Farklı kapsamlardan bir rol atamak için aşağıdaki adımları izleyin.
+Azure RBAC 'de, bir Azure kaynağına erişim izni vermek için bir rol ataması eklersiniz. Rol atamak için aşağıdaki adımları izleyin.
 
-1. Azure portal, **tüm hizmetler** ' e tıklayın ve kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları**veya bir kaynak seçebilirsiniz.
+1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından erişim vermek istediğiniz kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları**veya bir kaynak seçebilirsiniz.
 
-1. Belirli kaynağa tıklayın.
+1. Bu kapsam için özel kaynağa tıklayın.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
+1. Bu kapsamdaki rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
+    ![Erişim denetimi (ıAM) ve rol atamaları sekmesi](./media/role-assignments-portal/role-assignments.png)
+
+1. **Rol ataması eklemek** > **Ekle** ' ye tıklayın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
    ![Menü ekle](./media/role-assignments-portal/add-menu.png)
+
+    Rol ataması Ekle bölmesi açılır.
 
    ![Rol atama bölmesi Ekle](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -81,23 +85,29 @@ Farklı kapsamlardan bir rol atamak için aşağıdaki adımları izleyin.
 
    Birkaç dakika sonra, güvenlik sorumlusu seçili kapsamda role atanır.
 
+    ![Kaydedilmiş rol ataması ekleme](./media/role-assignments-portal/add-role-assignment-save.png)
+
 ## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Bir kullanıcıyı, aboneliğin yöneticisi olarak atama
 
 Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim verme izni dahil olmak üzere abonelikteki tüm kaynaklara tam erişim sağlar. Bu adımlar diğer rol atamasıyla aynıdır.
 
 1. Azure portal, **tüm hizmetler** ve ardından **abonelikler**' e tıklayın.
 
-1. Rol ataması eklemek istediğiniz aboneliğe tıklayın.
+1. Erişim izni vermek istediğiniz aboneliğe tıklayın.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-1. Bu aboneliğin tüm rol atamalarını görüntülemek için **Rol atamaları** sekmesine tıklayın.
+1. Bu aboneliğin rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. **Rol ataması ekle > ** **Ekle** ' ye tıklayın.
+    ![Erişim denetimi (ıAM) ve rol atamaları sekmesi](./media/role-assignments-portal/role-assignments.png)
+
+1. **Rol ataması eklemek** > **Ekle** ' ye tıklayın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
    ![Menü ekle](./media/role-assignments-portal/add-menu.png)
+
+    Rol ataması Ekle bölmesi açılır.
 
    ![Rol atama bölmesi Ekle](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -111,7 +121,7 @@ Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik ka
 
 ## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
 
-RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir. Rol atamasını kaldırmak için aşağıdaki adımları izleyin.
+Azure RBAC 'de, bir Azure kaynağından erişimi kaldırmak için bir rol atamasını kaldırırsınız. Rol atamasını kaldırmak için aşağıdaki adımları izleyin.
 
 1. Erişim **denetimi 'ni (IAM)** , erişimi kaldırmak istediğiniz yönetim grubu, abonelik, kaynak grubu veya kaynak gibi bir kapsamda açın.
 
@@ -127,7 +137,7 @@ RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir. Rol ata
 
 1. Görüntülenen rol atamasını Kaldır iletisinde **Evet**' e tıklayın.
 
-    Devralınmış rol atamaları kaldırılamaz. Devralınmış bir rol atamasını kaldırmanız gerekiyorsa bu işlemi rol atamasının oluşturulduğu kapsamda gerçekleştirmeniz gerekir. **Kapsam** sütununda, **(devralınmış)** seçeneğinin yanında, size bu rolün atandığı kapsama götüren bir bağlantı vardır. Rol atamasını kaldırmak için orada listelenen kapsama gidin.
+    Devralınan rol atamalarının kaldırılamadığını belirten bir ileti görürseniz, bir alt kapsamda rol atamasını kaldırmaya çalışıyorsunuz. Rolün atandığı kapsamdaki erişim denetimini (ıAM) açmanız ve yeniden denemeniz gerekir. Doğru kapsamda erişim denetimini (ıAM) açmak için hızlı bir yol, **kapsam** sütununa bakmanız ve **(devralınmış)** yanındaki bağlantıya tıklamanız.
 
    ![Rol atamasını kaldırma iletisi](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 

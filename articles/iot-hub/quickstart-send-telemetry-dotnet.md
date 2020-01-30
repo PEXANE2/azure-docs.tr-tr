@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub hızlı başlangıç 'a telemetri göndermeC#() | Microsoft Docs
-description: Bu hızlı başlangıçta, bir IoT Hub 'ına C# sanal telemetri göndermek ve bulutta Işlenmek üzere IoT Hub 'ından Telemetriyi okumak için iki örnek uygulama çalıştırırsınız.
+title: Azure IoT Hub’a telemetri gönderme hızlı başlangıcı (C#) | Microsoft Docs
+description: Bu hızlı başlangıçta bir IoT hub’a sanal telemetri göndermek ve bulutta işlemek üzere IoT hub’dan gelen telemetriyi okumak için iki örnek C# uygulaması çalıştırırsınız.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -10,32 +10,32 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 9f9e84570c7e7a4a2049c9f357d001c3316a4106
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33d0e5c40e4c7d404558fe8fa7a5fb8f5967924e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166338"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773794"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub, IoT cihazlarınızdan depolama ya da işleme için buluta kadar yüksek miktarda telemetri almanıza olanak sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT Hub aracılığıyla sanal bir cihaz uygulamasından, işleme için bir arka uç uygulamasına telemetri gönderirsiniz.
+IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, bir simülasyon cihazı uygulamasından bir arka uç uygulamasına işlenmek üzere IoT Hub aracılığıyla telemetri gönderirsiniz.
 
-Hızlı başlangıç, bir tane önceden yazılmış C# iki uygulama kullanır, bunlardan biri Telemetriyi ve bir hub 'dan Telemetriyi okumak üzere bir tane. Bu iki uygulamayı çalıştırmadan önce bir IoT Hub oluşturun ve bir cihazı hub 'a kaydedersiniz.
+Hızlı başlangıçta, biri telemetriyi göndermek için, diğeri de hub’dan telemetriyi okumak için olmak üzere önceden yazılmış iki C# uygulaması kullanılır. Bu iki uygulamayı çalıştırmadan önce bir IoT hub oluşturur ve hub’a bir cihaz kaydedersiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama kullanılarak C#yazılmıştır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürümü gerekir.
+Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, C# kullanılarak yazılır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm olması gerekir.
 
-.NET Core SDK [.net](https://www.microsoft.com/net/download/all)'ten birden çok platform için indirebilirsiniz.
+[.NET](https://www.microsoft.com/net/download/all)’ten birden fazla platform için .NET Core SDK’sını indirebilirsiniz.
 
-Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli sürümünü C# doğrulayabilirsiniz:
+Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü doğrulayabilirsiniz:
 
 ```cmd/sh
 dotnet --version
@@ -47,15 +47,15 @@ Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize ekle
 az extension add --name azure-cli-iot-ext
 ```
 
-Örnek C# projeyi https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ' den INDIRIN ve ZIP arşivini ayıklayın.
+https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip Azure IoT C# örneklerini INDIRIN ve ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>IoT Hub 'ı oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Bir cihazı kaydetme
+## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir. Bu hızlı başlangıçta, sanal cihazı kaydetmek için Azure Cloud Shell kullanırsınız.
+Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu hızlı başlangıçta Azure Cloud Shell kullanarak bir simülasyon cihazı kaydedeceksiniz.
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
@@ -75,13 +75,13 @@ Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
     ```
 
-    Cihaz bağlantı dizesini bir yere göz önünde bir şekilde görünür:
+    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}`
 
     Bu değeri daha sonra hızlı başlangıçta kullanacaksınız.
 
-3. Ayrıca, arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için IoT Hub 'ınızdaki _Event Hubs uyumlu uç nokta_, _Event Hubs uyumlu yol_ve _hizmet birincil anahtarı_ gerekir. Aşağıdaki komutlar IoT Hub 'ınız için bu değerleri alır:
+3. Ayrıca, arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için IoT Hub 'ınızdaki _Event Hubs uyumlu uç nokta_, _Event Hubs uyumlu yol_ve _hizmet birincil anahtarı_ gerekir. Aşağıdaki komutlar, IoT hub’ınız için şu değerleri alır:
 
    **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
@@ -95,39 +95,39 @@ Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir
 
     Bu üç değeri bir yere, daha sonra hızlı başlangıçta kullanacaksınız.
 
-## <a name="send-simulated-telemetry"></a>Sanal telemetri gönder
+## <a name="send-simulated-telemetry"></a>Sanal telemetri gönderme
 
-Sanal cihaz uygulaması, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisini gönderir.
+Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisi gönderir.
 
-1. Yerel bir Terminal penceresinde, örnek C# projenin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\simulated-Device** klasörüne gidin.
+1. Yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\simulated-device** klasörüne gidin.
 
-2. **SimulatedDevice.cs** dosyasını istediğiniz bir metin düzenleyicisinde açın.
+2. **SimulatedDevice.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t-0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
+    `s_connectionString` değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
 
-3. Yerel Terminal penceresinde, sanal cihaz uygulaması için gerekli paketleri yüklemek üzere aşağıdaki komutları çalıştırın:
+3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Yerel Terminal penceresinde, sanal cihaz uygulamasını derlemek ve çalıştırmak için aşağıdaki komutu çalıştırın:
+4. Yerel terminal penceresinde, aşağıdaki komutu çalıştırarak simülasyon cihazı uygulamasını derleyip çalıştırın:
 
     ```cmd/sh
     dotnet run
     ```
 
-    Aşağıdaki ekran görüntüsünde, sanal cihaz uygulamasının IoT Hub 'ınıza telemetri gönderdiği çıkış gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
 
-    ![Sanal cihazı Çalıştır](media/quickstart-send-telemetry-dotnet/SimulatedDevice.png)
+    ![Simülasyon cihazını çalıştırma](media/quickstart-send-telemetry-dotnet/SimulatedDevice.png)
 
-## <a name="read-the-telemetry-from-your-hub"></a>Hub 'ınızdaki Telemetriyi okuyun
+## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 
-Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağlanır. Uygulama, sanal cihazınızdan gönderilen cihazdan buluta iletileri alır. Bir IoT Hub arka uç uygulaması, cihazdan buluta iletileri almak ve işlemek için genellikle bulutta çalışır.
+Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı **Olaylar** uç noktasına bağlanır. Uygulama, simülasyon cihazınızdan gönderilen cihazdan buluta iletileri alır. IoT Hub arka uç uygulaması genellikle cihazdan buluta iletileri alıp işlemek için bulutta çalışır.
 
-1. Başka bir yerel Terminal penceresinde, örnek C# projenin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\read-D2C-messages** klasörüne gidin.
+1. Başka bir yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\read-d2c-messages** klasörüne gidin.
 
-2. **ReadDeviceToCloudMessages.cs** dosyasını istediğiniz bir metin düzenleyicisinde açın. Aşağıdaki değişkenleri güncelleştirin ve değişiklikleri dosyaya kaydedin.
+2. **ReadDeviceToCloudMessages.cs** dosyasını istediğiniz bir metin düzenleyicide açın. Aşağıdaki değişkenleri güncelleştirin ve yaptığınız değişiklikleri dosyaya kaydedin.
 
     | Değişken | Değer |
     | -------- | ----------- |
@@ -135,19 +135,19 @@ Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağla
     | `s_eventHubsCompatiblePath`     | Değişkenin değerini, daha önce bir değişiklik yaptığınız Event Hubs uyumlu yol ile değiştirin. |
     | `s_iotHubSasKey`                | Değişkenin değerini, daha önce bir değişiklik yaptığınız hizmet birincil anahtarıyla değiştirin. |
 
-3. Yerel Terminal penceresinde, arka uç uygulaması için gerekli kitaplıkları yüklemek üzere aşağıdaki komutları çalıştırın:
+3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulaması için gerekli kitaplıkları yükleyin:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Yerel Terminal penceresinde, arka uç uygulamasını derlemek ve çalıştırmak için aşağıdaki komutları çalıştırın:
+4. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulamasını derleyip çalıştırın:
 
     ```cmd/sh
     dotnet run
     ```
 
-    Aşağıdaki ekran görüntüsünde, arka uç uygulamasının hub 'a sanal cihaz tarafından gönderilen Telemetriyi aldığından, çıkış gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, arka uç uygulaması, simülasyon cihazı tarafından hub’a gönderilen telemetriyi aldığında oluşan çıktı gösterilmektedir:
 
     ![Arka uç uygulamasını çalıştırma](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
 
@@ -159,7 +159,7 @@ Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağla
 
 Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz, bir C# uygulamayı kullanarak hub 'a sanal telemetri gönderdiniz ve basit bir arka uç uygulaması kullanarak hub 'ın Telemetriyi okuyaöğreneceksiniz.
 
-Bir arka uç uygulamasından sanal cihazınızı nasıl denetleyeceğinizi öğrenmek için sonraki hızlı başlangıca geçin.
+Bir arka uç uygulamasından simülasyon cihazınızı denetlemeyi öğrenmek için sonraki hızlı başlangıçla devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme](quickstart-control-device-dotnet.md)
+> [Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme](quickstart-control-device-dotnet.md)

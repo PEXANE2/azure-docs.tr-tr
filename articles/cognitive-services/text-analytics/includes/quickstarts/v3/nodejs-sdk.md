@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281213"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774111"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281213"
 
 > [!NOTE]
 > * Bu hızlı başlangıçta, iyileştirilmiş [yaklaşım Analizi](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel bir önizleme içeren Metin Analizi istemci kitaplığının sürüm `3.0-preview` kullanılmaktadır.
+>
 > * Bu makaledeki kod, basitlik nedenlerle güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında performans ve ölçeklenebilirlik için diziler toplu olarak gönderilmesini öneririz. Örneğin, `Sentiment()`yerine `SentimentBatchAsync()` çağrılıyor.
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -36,6 +37,9 @@ ms.locfileid: "76281213"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
+
+> [!NOTE]
+> Metin Analizi istemci kitaplığı 'nın bu sürümünü [tarayıcınızda](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)de çalıştırabilirsiniz.
 
 Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
 
@@ -93,7 +97,7 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 * [Varlık bağlama](#entity-linking)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
 
-## <a name="client-authentication"></a>İstemci Kimlik Doğrulaması
+## <a name="client-authentication"></a>İstemci kimlik doğrulaması
 
 Anahtarınızla ve uç noktanızla parametreler olarak yeni bir `TextAnalyticsClient` nesnesi oluşturun.
 

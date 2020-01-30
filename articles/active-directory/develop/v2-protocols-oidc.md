@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 97f05afadf38063a58e15e16cbf2e2c3d3e781ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700269"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773318"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
 
@@ -75,7 +75,7 @@ Meta veriler basit bir JavaScript Nesne Gösterimi (JSON) belgesidir. Örnek iç
 }
 ```
 
-Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, uygulamanızın imza anahtarı bilgilerine işaret eden bir `jwks_uri` almak IÇIN uygulama kimliğini içeren `appid` bir sorgu parametresi eklemeniz gerekir. Örneğin: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e``jwks_uri` içerir.
+Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, uygulamanızın imza anahtarı bilgilerine işaret eden bir `jwks_uri` almak IÇIN uygulama kimliğini içeren `appid` bir sorgu parametresi eklemeniz gerekir. Örneğin: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e``jwks_uri` içerir.
 
 Genellikle, bu meta veri belgesini bir OpenID Connect kitaplığı veya SDK 'Sı yapılandırmak için kullanacaksınız; Kitaplık, işini yapmak için meta verileri kullanır. Ancak, önceden oluşturulmuş bir OpenID Connect kitaplığı kullanmıyorsanız, Microsoft Identity platform uç noktasını kullanarak bir Web uygulamasında oturum açmak için bu makalenin geri kalanında bulunan adımları izleyebilirsiniz.
 

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452117"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774484"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
 Azure Service Fabric 'ın Küme Kaynak Yöneticisi özelliği, bir kümeyi açıklamak için çeşitli mekanizmalar sağlar:
@@ -133,7 +133,7 @@ Hata ve yükseltme etki alanı başına aldığımız düzen ve toplam çoğaltm
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | Udtoplam |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
-| **UD1** | |R2 | | | |1 |
+| **UD1** | |R2'de | | | |1 |
 | **UD2** | | |R3 | | |1 |
 | **UD3** | | | |R4 | |1 |
 | **UD4** | | | | |R5 |1 |
@@ -147,7 +147,7 @@ Bu düzen, hata etki alanı ve yükseltme etki alanı başına düğüm bakımı
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R5 | | | | |1 |
-| **UD2** | | |R2 | | |1 |
+| **UD2** | | |R2'de | | |1 |
 | **UD3** | | | |R3 | |1 |
 | **UD4** | | | | |R4 |1 |
 | **Toplam FDTotal** |2 |0 |1 |1 |1 |- |
@@ -158,7 +158,7 @@ Bu düzen, hata etki alanı kısıtlamasının "en yüksek fark" garantisi tanı
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
-| **UD2** | | |R2 | | |1 |
+| **UD2** | | |R2'de | | |1 |
 | **UD3** | | | |R3 | |1 |
 | **UD4** | | | | |R4 |1 |
 | **Toplam FDTotal** |1 |1 |1 |1 |1 |- |
@@ -225,7 +225,7 @@ Tüm gerekli koşullar karşılandığından, Küme Kaynak Yöneticisi hizmeti d
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | Udtoplam |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
-| **UD1** |R2 | | | | |1 |
+| **UD1** |R2'de | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
 | **UD4** | | | | |R5 |1 |
@@ -238,7 +238,7 @@ Hizmetinizin **Targetreplicasetsize** değeri dördü (örneğin) olarak düşü
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | Udtoplam |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |Yok |Yok |Yok |Yok |Yok |Yok |
-| **UD1** |R2 | | | | |1 |
+| **UD1** |R2'de | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
 | **UD4** | | | | |R5 |1 |
@@ -472,7 +472,7 @@ Herhangi bir Orchestrator 'ın en önemli işlerinin biri, kümedeki kaynak tük
 
 İkinci olarak, hizmetleri verimli bir şekilde çalıştırmak için önemli olan Dengeleme ve iyileştirme vardır. Düşük maliyetli veya performans duyarlı hizmet teklifleri, bazı düğümlerin diğerleri soğuk olduğu sürece sık kullanılmasına izin vermez. Sık kullanılan düğümler, kaynak çekişmesine ve zayıf performansa yol açabilir. Soğuk düğümler, harcanan kaynakları ve artan maliyetleri temsil eder. 
 
-Service Fabric kaynakları *ölçümler*olarak temsil eder. Ölçümler Service Fabric için açıklama eklemek istediğiniz herhangi bir mantıksal veya fiziksel kaynaktır. Ölçümlere örnek olarak "WorkQueueDepth" veya "Memorınmb" verilebilir. Service Fabric düğümlerde yönetebilecek fiziksel kaynaklar hakkında daha fazla bilgi için bkz. [Resource idare](service-fabric-resource-governance.md). Özel ölçümleri ve kullanımları yapılandırma hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)bakın.
+Service Fabric kaynakları *ölçümler*olarak temsil eder. Ölçümler Service Fabric için açıklama eklemek istediğiniz herhangi bir mantıksal veya fiziksel kaynaktır. Ölçümlere örnek olarak "WorkQueueDepth" veya "Memorınmb" verilebilir. Service Fabric düğümlerde yönetebilecek fiziksel kaynaklar hakkında daha fazla bilgi için bkz. [Resource idare](service-fabric-resource-governance.md). Küme Kaynak Yöneticisi tarafından kullanılan varsayılan ölçümler ve özel ölçümleri yapılandırma hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)bakın.
 
 Ölçümler, yerleştirme kısıtlamalarından ve düğüm özelliklerinden farklıdır. Düğüm özellikleri, düğümlerin kendilerine ait statik tanımlayıcılardır. Ölçümler, düğümlerin sahip olduğu kaynakları ve bir düğüm üzerinde çalıştıklarında Hizmetleri kullanır. Node özelliği **HasSSD** olabilir ve true ya da false olarak ayarlanabilir. Bu SSD 'de kullanılabilir alan miktarı ve hizmetler tarafından tüketilen alanın "DriveSpaceInMb" gibi bir ölçüm olması gerekir. 
 

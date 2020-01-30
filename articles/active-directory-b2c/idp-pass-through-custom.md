@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949849"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76839100"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Uygulamanıza özel bir ilke aracılığıyla bir erişim belirteci geçirin Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) içinde [özel bir ilke](active-directory-b2c-get-started-custom.md) , uygulamanızın kullanıcılarına bir kimlik sağlayıcısına kaydolma veya oturum açma olanağı sağlar. Bu durumda, Azure AD B2C kimlik sağlayıcısından bir [erişim belirteci](active-directory-b2c-reference-tokens.md) alır. Azure AD B2C, kullanıcı hakkındaki bilgileri almak için bu belirteci kullanır. Belirteci, Azure AD B2C kaydedileceği uygulamalara iletmek için özel ilkenize bir talep türü ve çıkış talebi eklersiniz.
+Azure Active Directory B2C (Azure AD B2C) içinde [özel bir ilke](custom-policy-get-started.md) , uygulamanızın kullanıcılarına bir kimlik sağlayıcısına kaydolma veya oturum açma olanağı sağlar. Bu durumda, Azure AD B2C kimlik sağlayıcısından bir [erişim belirteci](tokens-overview.md) alır. Azure AD B2C, kullanıcı hakkındaki bilgileri almak için bu belirteci kullanır. Belirteci, Azure AD B2C kaydedileceği uygulamalara iletmek için özel ilkenize bir talep türü ve çıkış talebi eklersiniz.
 
-Azure AD B2C, [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) ve [OpenID Connect](active-directory-b2c-reference-oidc.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
+Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid-connect.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Özel ilkeniz bir OAuth 2,0 veya OpenID Connect kimlik sağlayıcısı ile yapılandırılır.
 
@@ -105,4 +105,4 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory B2C belirteç başvurusunda](active-directory-b2c-reference-tokens.md)belirteçler hakkında daha fazla bilgi edinin.
+[Azure Active Directory B2C belirteç başvurusunda](tokens-overview.md)belirteçler hakkında daha fazla bilgi edinin.

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231102"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766241"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
 
@@ -62,9 +62,6 @@ Belirli bir bağlama için kullanılan paketin adı, söz konusu bağlamaya ili�
 Bağlama başvurmak için `Install-Package` kullanıyorsanız, [uzantı paketleri](#extension-bundles)kullanmanız gerekmez. Bu yaklaşım, Visual Studio 'da oluşturulan sınıf kitaplıkları için özeldir.
 
 ## <a name="vs-code"></a>C# Visual Studio Code ile sınıf kitaplığı
-
-> [!NOTE]
-> Işlevlerin, uyumlu bir bağlama uzantısı paketleri kümesini otomatik olarak yüklemesini sağlamak için [uzantı paketleri](#extension-bundles) kullanmanızı öneririz. 
 
 **Visual Studio Code**, .NET Core CLI bir sınıf kitaplığı projesi C# için paketleri, bir komut isteminden, [DotNet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) komutunu kullanarak yükler. Aşağıdaki örnek nasıl bağlama ekleneceğini gösterir:
 

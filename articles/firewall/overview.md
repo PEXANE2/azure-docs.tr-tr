@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/15/2020
+ms.date: 01/28/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 1507eb4eba88fbf1ef50645390eaa9f17804359a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b19d8f26795dadb14f00aadd86ba99ae664b1a76
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293241"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764937"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -90,7 +90,7 @@ Bu, aşağıdaki senaryolara izin vermez:
 
 Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar.
 
-## <a name="compliance-certifications"></a>Uyumluluk sertifikaları
+## <a name="compliance-certifications"></a>Uyumluluk sertifikasyonları
 
 Azure Güvenlik Duvarı, ödeme kartı sektör (PCI), hizmet kuruluşu denetimleri (SOC) ve Uluslararası Standardizasyon Teşkilatı (ISO) ile uyumludur. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı uyumluluk sertifikaları](compliance-certifications.md).
 
@@ -113,6 +113,7 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |Gelen bağlantılarda SNAT|DNAT 'nin yanı sıra, güvenlik duvarı genel IP adresi (gelen) ile kurulan bağlantılar, güvenlik duvarı özel IP 'lerinden birine karşı denetlenir. Simetrik yönlendirmeyi sağlamak için bugün bu gereksinim (etkin/etkin NVA 'lar için de).|HTTP/S için özgün kaynağı korumak üzere [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) üst bilgilerini kullanmayı göz önünde bulundurun. Örneğin, [Azure ön kapısı](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) veya [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) gibi bir hizmeti güvenlik duvarının önünde kullanın. Ayrıca, Azure ön kapısının parçası olarak WAF 'yi ve güvenlik duvarını de zincirde ekleyebilirsiniz.
 |SQL FQDN filtrelemesi yalnızca Proxy modunda desteklenir (bağlantı noktası 1433)|Azure SQL veritabanı, Azure SQL veri ambarı ve Azure SQL yönetilen örneği için:<br><br>Önizleme sırasında SQL FQDN filtrelemesi yalnızca Proxy modunda desteklenir (bağlantı noktası 1433).<br><br>Azure SQL IaaS için:<br><br>Standart olmayan bağlantı noktaları kullanıyorsanız, bu bağlantı noktalarını uygulama kurallarında belirtebilirsiniz.|Azure içinden bağlanılıyorsa varsayılan olan yeniden yönlendirme modunda SQL için, Azure Güvenlik Duvarı ağ kurallarının bir parçası olarak SQL hizmeti etiketini kullanarak erişimi filtreleyebilirsiniz.
 |TCP bağlantı noktası 25 ' i giden trafiğe izin verilmez| TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellenir. Bağlantı noktası 25 öncelikle kimliği doğrulanmamış e-posta teslimi için kullanılır. Bu, sanal makineler için varsayılan platform davranışıdır. Daha fazla bilgi için bkz. [Azure 'da gıden SMTP bağlantısı sorunlarını giderme](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Ancak, sanal makinelerden farklı olarak, Azure Güvenlik duvarında bu işlevselliği etkinleştirmek mümkün değildir.|SMTP sorun giderme makalesinde belgelenen şekilde e-posta göndermek için önerilen yöntemi izleyin. Alternatif olarak, giden SMTP erişimine ihtiyacı olan sanal makineyi güvenlik duvarınızdan çıkarın ve bunun yerine doğrudan Internet 'e giden erişimi yapılandırın.
+|Etkin FTP desteklenmiyor|Etkin FTP FTP bağlantı noktası komutu kullanılarak FTP sıçrama saldırılarına karşı korumak için Azure Güvenlik duvarında devre dışı bırakılmıştır.|Bunun yerine Pasif FTP kullanabilirsiniz. Hala güvenlik duvarında 20 ve 21 numaralı TCP bağlantı noktalarını açık bir şekilde açmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

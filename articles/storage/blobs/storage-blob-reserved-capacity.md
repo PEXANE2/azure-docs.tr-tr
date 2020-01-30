@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981823"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768387"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip blob depolaması için maliyetleri iyileştirin
 
@@ -54,7 +54,7 @@ Ayrılmış kapasiteyi satın almak için:
 
 - Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için **sahip** rolünde olmanız gerekir.
 - Kurumsal abonelikler için, **ayrılmış örneklerin EKLENMESI** EA portalında etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
-- Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları Azure Cosmos DB ayrılmış kapasiteyi satın alabilir.
+- Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları Azure Blob Depolama ayrılmış kapasitesi satın alabilir.
 
 ## <a name="determine-required-capacity-before-purchase"></a>Satın almadan önce gerekli kapasiteyi belirleme
 
@@ -85,7 +85,7 @@ Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
    | **Yedeklilik** | Ayırma için artıklık seçeneği. Seçenekler *LRS*, *ZRS*, *GRS*ve *ra-GZRS*' i içerir. Artıklık seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](../common/storage-redundancy.md). |
    | **Faturalandırma sıklığı** | Hesabın rezervasyon için ne sıklıkta faturalandırıldığını gösterir. Seçenekler *ayda* veya *önünde*bulunur. |
    | **Boyut** | Ayırmanın etkin olduğu bölge. |
-   |**Terim**  | Bir yıl veya üç yıl.   |
+   |**Terimli**  | Bir yıl veya üç yıl.   |
 
 1. Rezervasyonunuzun parametrelerini seçtikten sonra Azure portal maliyeti görüntüler. Portal Ayrıca Kullandıkça Öde faturalandırmasına göre indirim yüzdesini gösterir.
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063365"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840188"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,15 +38,15 @@ ms.locfileid: "71063365"
 
 **TrustFrameworkPolicy** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Evet | İlkeyi yürütmek için kullanılacak şema sürümü. Değer şu şekilde olmalıdır`0.3.0.0` |
+| PolicySchemaVersion | Evet | İlkeyi yürütmek için kullanılacak şema sürümü. Değer `0.3.0.0` olmalıdır |
 | Tenantobjectıd | Hayır | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
-| TenantId | Evet | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
+| Değerine | Evet | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
 | `PolicyId` | Evet | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
 | PublicPolicyUri | Evet | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
-| DeploymentMode | Hayır | Olası değerler: `Production`, `Debugging`, veya `Development`. `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](active-directory-b2c-troubleshoot-custom.md). |
-| Kullanıcıbağlantısı Neyırecorderendpoint | Hayır | **DeploymentMode** olarak `Development`ayarlandığında kullanılan uç nokta. Değer olmalıdır `urn:journeyrecorder:applicationinsights`. Daha fazla bilgi için bkz. [günlükleri toplama](active-directory-b2c-troubleshoot-custom.md). |
+| DeploymentMode | Hayır | Olası değerler: `Production`, `Debugging`veya `Development`. `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
+| Kullanıcıbağlantısı Neyırecorderendpoint | Hayır | **DeploymentMode** `Development`olarak ayarlandığında kullanılan uç nokta. Değerin `urn:journeyrecorder:applicationinsights`olması gerekir. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 
 
 Aşağıdaki örnek, **TrustFrameworkPolicy** öğesinin nasıl kullanılacağını gösterir:
@@ -80,7 +80,7 @@ Devralma modeli aşağıdaki gibidir:
 - Herhangi bir düzeydeki alt ilke üst ilkeden devralınabilir ve yeni öğeler ekleyerek genişletebilirler.
 - Düzey sayısı için bir sınır yoktur.
 
-Daha fazla bilgi için bkz. [özel ilkelerle çalışmaya başlama](active-directory-b2c-get-started-custom.md).
+Daha fazla bilgi için bkz. [özel ilkelerle çalışmaya başlama](custom-policy-get-started.md).
 
 ## <a name="base-policy"></a>Temel ilke
 
@@ -88,13 +88,13 @@ Bir ilkeyi başka bir ilkeden devralması için bir **Basepolicy** öğesi, Ilke
 
 **Basepolicy** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşumlar | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | --------|
-| TenantId | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
+| Değerine | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
 | `PolicyId` | 1:1 | Üst ilke tanımlayıcısı. |
 
 
-Aşağıdaki örnek, temel bir ilkenin nasıl ekleneceğini gösterir. Bu **B2C_1A_TrustFrameworkExtensions** ilkesi **B2C_1A_TrustFrameworkBase** ilkesinden türetilir.
+Aşağıdaki örnek, temel bir ilkenin nasıl ekleneceğini gösterir. Bu **B2C_1A_TrustFrameworkExtensions** ilke **B2C_1A_TrustFrameworkBase** ilkesinden türetilir.
 
 ``` XML
 <TrustFrameworkPolicy
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase veya B2C_1A_TrustFrameworkExtensionPolicy:
 
 Kullanıcı yolculuğu, kullanıcının ne kadar ilerreceğini belirleyen iş mantığını tanımlar. Her Kullanıcı yolculuğu, kimlik doğrulaması ve bilgi toplama açısından sırayla bir dizi eylem gerçekleştiren bir düzenleme adımları kümesidir.
 
-[Başlangıç paketindeki](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) **SocialAndLocalAccounts** Ilke dosyası Signuporsignın, profileedit, passwordreset Kullanıcı bir bağlantı içerir. E-posta adresini değiştirme veya sosyal hesabın bağlantısını kaldırma gibi diğer senaryolar için daha fazla kullanıcı bağlantısı ekleyebilirsiniz.
+[Başlangıç paketindeki](custom-policy-get-started.md#custom-policy-starter-pack) **SocialAndLocalAccounts** Ilke dosyası Signuporsignın, profileedit, passwordreset Kullanıcı bir bağlantı içerir. E-posta adresini değiştirme veya sosyal hesabın bağlantısını kaldırma gibi diğer senaryolar için daha fazla kullanıcı bağlantısı ekleyebilirsiniz.
 
 Düzenleme adımları [Teknik bir profil](technicalprofiles.md)çağırabilir. Teknik bir profil, farklı türlerde taraflar ile iletişim kurmak için yerleşik mekanizmaya sahip bir çerçeve sağlar. Örneğin, teknik bir profil, diğerleri arasında bu eylemleri gerçekleştirebilir:
 

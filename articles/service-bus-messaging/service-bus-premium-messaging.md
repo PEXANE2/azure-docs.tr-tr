@@ -1,6 +1,6 @@
 ---
-title: Premium ve standart katmanları Azure Service Bus | Microsoft Docs
-description: Service Bus Premium ve Standart Mesajlaşma katmanları
+title: Azure Service Bus Premium ve Standart katmanlar
+description: Bu makalede, Azure Service Bus standart ve Premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: cc783dc4b2bf49724f4a2c7ab9cd9904ded2c703
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352855"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774558"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
 

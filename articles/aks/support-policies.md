@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707215"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767376"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -42,6 +42,8 @@ Hizmetler, Microsoft 'un ve AKS ekibinin hizmet kullanılabilirliği ve işlevle
 
 > [!NOTE]
 > AKS çalışan düğümleri Azure portal normal Azure IaaS kaynakları olarak görünür. Ancak bu sanal makineler özel bir Azure Kaynak grubuna dağıtılır (MC\\* önekli). AKS çalışan düğümlerini değiştirmek mümkündür. Örneğin, normal sanal makineleri değiştirdiğiniz şekilde AKS çalışan düğümlerini değiştirmek için Secure Shell (SSH) kullanabilirsiniz (ancak, temel işletim sistemi görüntüsünü değiştirebilirsiniz ve değişiklikler bir güncelleştirme veya yeniden başlatma ile devam edebilir) ve diğer Azure kaynaklarını AKS 'e ekleyebilirsiniz çalışan düğümleri. Ancak *, bant yönetimi ve özelleştirme dışında* değişiklikler yaptığınızda aks kümesi, desteklenmeyen tablo haline gelebilir. Microsoft Desteği değişiklik yapmaya yönlendirmedikleri takdirde çalışan düğümlerini değiştirmekten kaçının.
+
+Yukarıda tanımlanan, tüm aracı düğümlerinin bant dışında ayırmayı kaldırma gibi desteklenmeyen işlemler verme, kümeyi desteklenmeyen şekilde işler. AKS, 30 güne eşit ve daha fazla uzatılmış dönemler için destek yönergelerinden daha fazla yapılandırılmış olan denetim düzlemleri Arşivi saklı tutar. AKS, küme etcd meta verilerinin yedeklerini tutar ve kümeyi kolayca yeniden tahsis edebilir. Bu yeniden ayırma, bir yükseltme ya da etkin aracı düğümlerine ölçeklendirilmesi gibi, kümeyi tekrar desteğe getiren herhangi bir PUT işlemi tarafından başlatılabilir.
 
 ## <a name="shared-responsibility"></a>Paylaşılan sorumluluk
 

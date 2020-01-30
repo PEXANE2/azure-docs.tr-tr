@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e099e1c53f83d038caa697d11158fd5939ca7b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700320"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833355"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -168,13 +168,16 @@ Adımları uygulayan bir kod örneğini görmek için [yönetici tarafından kı
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Uygulama kayıt portalında izinleri isteyin
 
-Yönetici onayı bir kapsam parametresi kabul etmez, bu nedenle İstenen izinlerin uygulamanın kaydında statik olarak tanımlanması gerekir. Genel olarak, belirli bir uygulama için statik olarak tanımlanan izinlerin, dinamik/artımlı olarak istediği izinlerin bir üst kümesi olduğundan emin olmak en iyi uygulamadır.
+Uygulamalar, uygulama kayıt portalı 'nda hangi izinleri (hem temsilci olarak hem de uygulama) gerektirdiğini hatırlatamaz.  Bu, `/.default` kapsamının ve Azure portalının "yönetici onayı verme" seçeneğinin kullanımına izin verir.  Genel olarak, belirli bir uygulama için statik olarak tanımlanan izinlerin, dinamik/artımlı olarak istediği izinlerin bir üst kümesi olduğundan emin olmak en iyi uygulamadır.
+
+> [!NOTE]
+Uygulama izinleri yalnızca [`/.default`](#the-default-scope) kullanımı aracılığıyla istenebilir. bu nedenle, uygulamanız uygulama izinlerine ihtiyaç duyuyorsa, bunların uygulama kayıt portalı 'nda listelendiğinden emin olun.  
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Bir uygulama için statik olarak istenen izinlerin listesini yapılandırmak için
 
 1. [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde uygulamanıza gidin veya henüz yapmadıysanız [bir uygulama oluşturun](quickstart-register-app.md) .
 2. **API izinleri** bölümünü bulun ve API izinleri Içinde izin Ekle ' ye tıklayın.
-3. Kullanılabilir API 'Ler listesinden **Microsoft Graph** ' yi seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
+3. Kullanılabilir API 'Ler listesinden tercih ettiğiniz kaynağı (ör. **Microsoft Graph**) seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
 3. Uygulama kaydını **kaydedin** .
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
@@ -205,7 +208,7 @@ Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı M
 | `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `redirect_uri` | Gereklidir |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
-|`scope`        | Gereklidir      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. | 
+|`scope`        | Gereklidir      | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik ( [`/.default`](#the-default-scope)kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. Uygulama izinlerine ihtiyacınız varsa, statik olarak yapılandırılmış izin listesini istemek için `/.default` kullanmanız gerekir.  | 
 
 
 Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) bir değer kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
@@ -264,9 +267,9 @@ OAuth 2,0 protokolü ve erişim belirteçleri alma hakkında daha fazla bilgi i�
 
 ## <a name="the-default-scope"></a>/.Exe varsayılan kapsamı
 
-Uygulamalarınızı v 1.0 uç noktasından Microsoft Identity platform uç noktasına geçirmeye yardımcı olması için `/.default` kapsamını kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesine başvuran her uygulama için yerleşik bir kapsamdır. `scope` bir `https://graph.microsoft.com/.default` değeri, v 1.0 uç noktalarıyla aynı şekilde `resource=https://graph.microsoft.com`; Yani, uygulamanın Azure portal kayıt yaptığı Microsoft Graph kapsamlar ile bir belirteç ister.
+Uygulamalarınızı v 1.0 uç noktasından Microsoft Identity platform uç noktasına geçirmeye yardımcı olması için `/.default` kapsamını kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesine başvuran her uygulama için yerleşik bir kapsamdır. `scope` bir `https://graph.microsoft.com/.default` değeri, v 1.0 uç noktalarıyla aynı şekilde `resource=https://graph.microsoft.com`; Yani, uygulamanın Azure portal kayıt yaptığı Microsoft Graph kapsamlar ile bir belirteç ister.  Kaynak URI + `/.default` kullanılarak oluşturulur (örneğin, kaynak URI 'SI `https://contosoApp.com`, istenen kapsam `https://contosoApp.com/.default`).  Belirteci doğru bir şekilde istemek için ikinci bir eğik çizgi eklemeniz gereken durumlarda, [sonundaki eğik çizgilerin bölümüne](#trailing-slash-and-default) bakın.  
 
-/.Exe varsayılan kapsamı herhangi bir OAuth 2,0 akışında kullanılabilir, ancak [Şirket adına](v2-oauth2-on-behalf-of-flow.md) ve [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)gereklidir.  
+/.Default kapsamı herhangi bir OAuth 2,0 akışında kullanılabilir, ancak uygulama izinleri istemek için v2 yönetici onay uç noktası kullanılırken ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) , [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)gereklidir.  
 
 > [!NOTE]
 > İstemciler statik (`/.default`) ve dinamik onayı tek bir istekte birleştiremez. Bu nedenle `scope=https://graph.microsoft.com/.default+mail.read`, kapsam türlerinin birleşimi nedeniyle hata oluşmasına neden olur.
@@ -281,15 +284,15 @@ Uygulamalarınızı v 1.0 uç noktasından Microsoft Identity platform uç nokta
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>Örnek 1: Kullanıcı veya kiracı yöneticisi izin verdi
 
-Kullanıcı (veya bir kiracı yöneticisi) istemciye `mail.read` ve `user.read`Microsoft Graph izinleri vermiş. İstemci, `scope=https://graph.microsoft.com/.default`için bir istek yapıyorsa, istemci uygulamalarının Microsoft Graph için kaydedilen izinlerinin içeriğinden bağımsız olarak hiçbir onay istemi gösterilmez. `mail.read` ve `user.read`kapsamlar içeren bir belirteç döndürülür.
+Bu örnekte, Kullanıcı (veya bir kiracı yöneticisi) istemciye `mail.read` ve `user.read`Microsoft Graph izinleri vermiş. İstemci, `scope=https://graph.microsoft.com/.default`için bir istek yapıyorsa, istemci uygulamalarının Microsoft Graph için kaydedilen izinlerinin içeriğinden bağımsız olarak hiçbir onay istemi gösterilmez. `mail.read` ve `user.read`kapsamlar içeren bir belirteç döndürülür.
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Örnek 2: kullanıcıya istemci ve kaynak arasında izin verilmemiş
 
-İstemci ve Microsoft Graph arasında Kullanıcı için izin yok. İstemci `user.read` ve `contacts.read` izinlerinin yanı sıra Azure Key Vault kapsam `https://vault.azure.net/user_impersonation`için de kaydoldu. İstemci `scope=https://graph.microsoft.com/.default`için bir belirteç istediğinde, Kullanıcı `user.read`, `contacts.read`ve Key Vault `user_impersonation` kapsamlar için bir onay ekranı görür. Döndürülen belirtecin içinde yalnızca `user.read` ve `contacts.read` kapsamları olacak.
+Bu örnekte, istemci ve Microsoft Graph arasında Kullanıcı için hiçbir onay yok. İstemci `user.read` ve `contacts.read` izinlerinin yanı sıra Azure Key Vault kapsam `https://vault.azure.net/user_impersonation`için de kaydoldu. İstemci `scope=https://graph.microsoft.com/.default`için bir belirteç istediğinde, Kullanıcı `user.read`, `contacts.read`ve Key Vault `user_impersonation` kapsamlar için bir onay ekranı görür. Döndürülen belirtecin içinde yalnızca `user.read` ve `contacts.read` kapsamları olacak ve yalnızca Microsoft Graph karşı kullanılabilir. 
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Örnek 3: Kullanıcı onaylı ve istemci ek kapsamlar istediğinde
 
-Kullanıcı, istemci için `mail.read` zaten onayladı. İstemci, kaydında `contacts.read` kapsamına kaydoldu. İstemci, `scope=https://graph.microsoft.com/.default` kullanarak bir belirteç isteği yaptığında ve `prompt=consent`aracılığıyla izin istediğinde, Kullanıcı yalnızca bir onay ekranı ve uygulama tarafından kaydedilen tüm izinleri görür. `contacts.read` izin ekranında mevcut olacaktır, ancak `mail.read` olmayacaktır. Döndürülen belirteç Microsoft Graph olur ve `mail.read` ve `contacts.read`içerecektir.
+Bu örnekte Kullanıcı, istemci için `mail.read` zaten onay verdi. İstemci, kaydında `contacts.read` kapsamına kaydoldu. İstemci, `scope=https://graph.microsoft.com/.default` kullanarak bir belirteç isteği yaptığında ve `prompt=consent`aracılığıyla izin istediğinde, Kullanıcı, uygulama tarafından kaydedilen izinlerin tümü (ve yalnızca) için bir onay ekranı görür. `contacts.read` izin ekranında mevcut olacaktır, ancak `mail.read` olmayacaktır. Döndürülen belirteç Microsoft Graph olur ve `mail.read` ve `contacts.read`içerecektir.
 
 ### <a name="using-the-default-scope-with-the-client"></a>İstemcisiyle//varsayılan kapsamını kullanma
 
@@ -306,7 +309,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `/.default`açıklamaları temel alınarak geçerliyse), erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler tarafından kullanılmamalıdır.  
+Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve `/.default`açıklamaları temel alınarak geçerliyse), erişim belirteci yerine bir id_token döndürür.  Bu davranış, ADAL 'den MSAL 'e taşınan bazı eski istemciler için ve Microsoft Identity platform uç noktasını hedefleyen yeni istemciler **tarafından kullanılmamalıdır.**  
+
+### <a name="trailing-slash-and-default"></a>Sondaki eğik çizgi ve//varsayılan
+
+Bazı kaynak URI 'Lerinin sonunda eğik çizgi (`https://contoso.com/` `https://contoso.com`aksine) vardır ve bu, belirteç doğrulamasında sorun oluşmasına neden olabilir.  Bu, öncelikle kaynak URI 'sinde bir eğik çizgiye sahip olan ve belirteç istendiğinde mevcut olmasını gerektiren Azure Kaynak Yönetimi (`https://management.azure.com/`) için bir belirteç istenirken meydana gelebilir.  Bu nedenle, `https://management.azure.com/` için bir belirteç isteyerek `/.default`kullanarak `https://management.azure.com//.default` istemeniz gerekir! 
+
+Genel olarak, belirtecin verildiğini ve belirtecin kabul etmesi gereken API tarafından reddedildiği doğrulandıktan sonra, ikinci bir eğik çizgi ekleyip yeniden denemeyi düşünün. Bu durum, oturum açma sunucusunun `scope` parametresindeki URI 'Ler ile eşleşen hedef kitle ile bir belirteç yaydığı ve `/.default` uçtan kaldırıldığına göre yapılır.  Bu, sondaki eğik çizgiyi kaldırırsa, oturum açma sunucusu yine de isteği işler ve kaynak URI 'sine karşı doğrular, ancak bu standart değildir ve uygulamanız tarafından güvenilmemelidir. 
 
 ## <a name="troubleshooting-permissions-and-consent"></a>İzinler ve onay sorunlarını giderme
 

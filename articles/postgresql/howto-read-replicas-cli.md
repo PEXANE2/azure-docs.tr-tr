@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719781"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774798"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
 
@@ -38,8 +38,8 @@ Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir
    ```
 
 > [!NOTE]
-> Azure CLı 'yi replication_support ayarlamaya çalışırken "geçersiz değer verildi" hatasını alırsanız, sunucunuzun varsayılan olarak zaten çoğaltma kümesi vardır. Bir hata bu ayarın, ÇOĞALTMANıN iç varsayılan olduğu yeni sunuculara doğru şekilde yansıtılmasını engellemektedir.
-> Ana işlemleri hazırla adımlarını atlayabilir ve çoğaltmayı oluşturmaya gidebilirsiniz.
+> Azure CLı 'yi replication_support ayarlamaya çalışırken "geçersiz değer verildi" hatasını alırsanız, sunucunuzun varsayılan olarak zaten çoğaltma kümesi vardır. Bir hata bu ayarın, ÇOĞALTMANıN iç varsayılan olduğu yeni sunuculara doğru şekilde yansıtılmasını engellemektedir. <br><br>
+> Ana işlemleri hazırla adımlarını atlayabilir ve çoğaltmayı oluşturmaya gidebilirsiniz. <br><br>
 > Sunucunuzun bu kategoride olduğunu doğrulamak istiyorsanız, Azure portal sunucunun çoğaltma sayfasını ziyaret edin. "Çoğaltmayı devre dışı bırak" ayarı gri kalır ve araç çubuğunda "çoğaltma ekle" etkin olur.
 
 2. Değişikliği uygulamak için sunucuyu yeniden başlatın.

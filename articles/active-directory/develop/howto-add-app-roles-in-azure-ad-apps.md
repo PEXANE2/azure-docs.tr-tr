@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d16ab7acd87fa6cc7907f8fee3400c2e416e6cfe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697430"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834255"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -44,7 +44,7 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 1. `appRoles` ayarını bularak ve tüm uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin.
 
      > [!NOTE]
-     > Bu Bildirimdeki her uygulama rolü tanımının `id` özelliği için farklı bir GUID 'e sahip olması gerekir. 
+     > Bu Bildirimdeki her uygulama rolü tanımı, `id` özelliği için bildirim bağlamı içinde farklı bir GUID içermelidir.    
      > 
      > Her uygulama rolü tanımının `value` özelliği, uygulamadaki kodda kullanılan dizelerle tam olarak eşleşmelidir. `value` özelliği boşluk içeremez. Bunu yaparsanız, bildirimi kaydettiğinizde bir hata alırsınız.
      

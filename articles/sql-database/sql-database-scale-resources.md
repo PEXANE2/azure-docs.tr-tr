@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462619"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835921"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Veritabanı kaynaklarını en az kapalı kalma süresiyle dinamik olarak ölçeklendirin
 
@@ -55,7 +55,8 @@ Azure SQL veritabanı 'nın her üç özelliği de veritabanlarınızı dinamik 
 - [Yönetilen bir örnek](sql-database-managed-instance.md) [vçekirdekler](sql-database-managed-instance.md#vcore-based-purchasing-model) modunu KULLANıR ve en yüksek CPU çekirdeğini ve örneğiniz için ayrılan en fazla depolama alanını tanımlamanıza olanak sağlar. Örnek içindeki tüm veritabanları, örneğe ayrılan kaynakları paylaşacaktır.
 - [Elastik havuzlar](sql-database-elastic-pool-scale.md) , havuzdaki veritabanı grubu başına en fazla kaynak sınırını tanımlamanızı sağlar.
 
-Herhangi bir türde ölçek artırma veya ölçek azaltma eylemini başlatmak, veritabanı motoru işlemini yeniden başlatır ve gerekirse farklı bir sanal makineye taşır. Veritabanı altyapısı işleminin yeni bir sanal makineye taşınması, işlem devam ederken mevcut Azure SQL veritabanı hizmetinizi kullanmaya devam edebileceğiniz **çevrimiçi bir işlemdir** . Hedef veritabanı altyapısı tam olarak başlatıldıktan ve sorguları işlemeye hazırlandıktan sonra, bağlantılar [kaynaktan hedef veritabanı altyapısına geçiş](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)yapılır.
+Herhangi bir türde ölçek artırma veya ölçek azaltma eylemini başlatmak, veritabanı motoru işlemini yeniden başlatır ve gerekirse farklı bir sanal makineye taşır. Veritabanı altyapısı işleminin yeni bir sanal makineye taşınması, işlem devam ederken mevcut Azure SQL veritabanı hizmetinizi kullanmaya devam edebileceğiniz **çevrimiçi bir işlemdir** . Hedef veritabanı altyapısı tam olarak başlatıldıktan ve sorguları işlemeye hazırlandıktan sonra, bağlantılar [kaynaktan hedef veritabanı altyapısına geçiş](sql-database-single-database-scale.md#impact)yapılır. 
+
 
 > [!NOTE]
 > Ölçek Genişletme/ölçek azaltma işlemi tamamlandığında kısa bir bağlantı kesmesi bekleyebilir. [Standart geçici hatalar Için yeniden deneme mantığı](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)uyguladıysanız, yük devretmeyi fark edersiniz.

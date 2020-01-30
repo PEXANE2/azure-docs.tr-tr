@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88ad32a289d499cd385f8f3095113a4b329b80f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701544"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768097"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Kullanıcılara oturum açan Web uygulaması: üretime taşı
 
@@ -29,6 +29,13 @@ Artık, Web API 'Lerini çağırmaya yönelik bir belirteç almayı öğrenmiş 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+### <a name="same-site"></a>Aynı site
+
+Chrome tarayıcısının yeni sürümleriyle ilgili olası sorunları anladığınızdan emin olun
+
+> [!div class="nextstepaction"]
+> [Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>Web API 'Leri çağırma senaryosu
 
 Web uygulamanız kullanıcılara kaydolduktan sonra, oturum açmış kullanıcılar adına Web API 'Leri çağırabilir. Web API 'Lerinden Web API 'Leri çağırmak aşağıdaki senaryonun nesnesidir:
@@ -36,7 +43,7 @@ Web uygulamanız kullanıcılara kaydolduktan sonra, oturum açmış kullanıcı
 > [!div class="nextstepaction"]
 > [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Derin bakış: ASP.NET Core Web uygulaması öğreticisi
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Derin bakış: ASP.NET Core Web uygulaması öğreticisi
 
 Bu ASP.NET Core öğreticisiyle kullanıcıların oturum açma yolları hakkında bilgi edinin: 
 
@@ -51,7 +58,7 @@ Bu aşamalı öğreticide, bir Web uygulaması için, ' deki hesaplara oturum a�
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Ulusal bulutlar
 
-### <a name="sample-code-java-web-app"></a>Örnek kod: Java Web uygulaması
+## <a name="sample-code-java-web-app"></a>Örnek kod: Java Web uygulaması
 
 GitHub 'da bu örnekten Java Web uygulaması hakkında daha fazla bilgi edinin: 
 

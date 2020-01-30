@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469496"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768146"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -185,7 +185,7 @@ namespace helloworld
 
 Artık uygulamanızı oluşturmaya hazır olduğunuzdan konuşma senemizi konuşma hizmetini kullanarak test edebilirsiniz.
 
-1. **Kodu derle** -Visual stuio menü çubuğundan **derleme** > **Build Solution**' ı seçin.
+1. **Kodu derleyin** -Visual Studio menü çubuğundan **derleme** > **Build Solution**' ı seçin.
 2. **Uygulamanızı başlatın** -menü çubuğundan **Hata Ayıkla** > hata **ayıklamayı Başlat** ' ı seçin veya **F5**tuşuna basın.
 3. **Sensıs Başlat** -metniniz konuşmaya dönüştürülür ve belirtilen ses verilerinde kaydedilir.
 

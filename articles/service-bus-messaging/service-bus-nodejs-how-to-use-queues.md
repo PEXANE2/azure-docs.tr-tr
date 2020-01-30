@@ -1,6 +1,6 @@
 ---
 title: Azure-SB paketini kullanarak Node. js ' de Azure Service Bus kuyruklarını kullanma
-description: "Hızlı başlangıç: bir Node. js uygulamasından Azure 'da Service Bus kuyruklarını nasıl kullanacağınızı öğrenin."
+description: Azure-SB paketini kullanarak bir Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Node. js uygulamaları oluşturmayı öğrenin.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462177"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773517"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: node. js ve Azure-SB paketi ile Azure 'da Service Bus kuyruklarını kullanma
 

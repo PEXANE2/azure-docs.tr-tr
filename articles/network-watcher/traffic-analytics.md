@@ -3,23 +3,21 @@ title: Azure Trafik Analizi | Microsoft Docs
 description: Trafik Analizi ile Azure ağ güvenlik grubu akış günlüklerini çözümlemeyi öğrenin.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907148"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840596"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -41,12 +39,12 @@ Güvenliği ihlal edilmemiş güvenlik, uyumluluk ve performans için kendi ağ�
 
 Bulut ağları, ağ arabirimine giren veya çıkış yaparken IP ağ trafiği toplama özelliği sağlayan, Netflow veya eşdeğer protokol özellikli yönlendiriciler ve anahtarlar içeren şirket içi kurumsal ağlardan farklıdır. Trafik akışı verilerini çözümleyerek, ağ trafiği akışı ve birimi analizini oluşturabilirsiniz.
 
-Azure sanal ağları, tek tek ağ arabirimleri, VM 'Ler veya alt ağlar ile ilişkili bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkında bilgi sağlayan NSG akış günlüklerine sahiptir. Ham NSG akış günlüklerini analiz ederek ve güvenlik, topoloji ve Coğrafya bilgilerini ekleyerek, trafik analizi ortamınızda trafik akışı hakkında öngörüler sağlar. Trafik Analizi, en çok iletişim kuran ana bilgisayar, çoğu iletişim uygulama protokolü, en çok kullanılan konak çiftleri, izin verilen/engellenen trafik, gelen/giden trafik, açık internet bağlantı noktaları, en çok engelleme kuralları, trafik gibi bilgiler sağlar Azure veri merkezi, sanal ağ, alt ağ veya standart dışı ağlar başına dağıtım.
+Azure sanal ağları, tek tek ağ arabirimleri, VM 'Ler veya alt ağlar ile ilişkili bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkında bilgi sağlayan NSG akış günlüklerine sahiptir. Ham NSG akış günlüklerini analiz ederek ve güvenlik, topoloji ve Coğrafya bilgilerini ekleyerek, trafik analizi ortamınızda trafik akışı hakkında öngörüler sağlar. Trafik Analizi, en çok iletişim kuran ana bilgisayar, çoğu iletişim uygulama protokolü, en çok kullanılan konak çiftleri, izin verilen/engellenen trafik, gelen/giden trafik, açık internet bağlantı noktaları, en çok engelleme kuralları, Azure veri merkezi başına trafik dağıtımı, sanal ağ, alt ağlar veya standart dışı ağlar gibi bilgiler sağlar.
 
 ## <a name="key-components"></a>Başlıca bileşenler
 
 - **Ağ güvenlik grubu (NSG)** : bir Azure sanal ağına bağlı kaynaklara yönelik ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir. Ağ güvenlik grupları (NSG’ler), alt ağlarla, ayrı ayrı VM’lerle (klasik) veya VM’lere bağlı ağ arabirimleri ile ilişkilendirilebilir (Resource Manager). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Ağ güvenlik grubu (NSG) akış günlükleri**: bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize izin verir. NSG akış günlükleri, JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir, akış için geçerli olan NIC, Flow (kaynak/hedef IP adresi, kaynak/hedef bağlantı noktası ve protokol) ile ilgili beş demet bilgileri ve trafiğe izin veriliyorsa veya reddedildi. NSG akış günlükleri hakkında daha fazla bilgi için bkz. [NSG akış günlükleri](network-watcher-nsg-flow-logging-overview.md).
+- **Ağ güvenlik grubu (NSG) akış günlükleri**: bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize izin verir. NSG akış günlükleri, JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir, akış için geçerli olan NIC, Flow (kaynak/hedef IP adresi, kaynak/hedef bağlantı noktası ve protokol) ve trafiğe izin verildiyse veya reddedildiyse. NSG akış günlükleri hakkında daha fazla bilgi için bkz. [NSG akış günlükleri](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: izleme verilerini toplayan ve verileri merkezi bir depoda depolayan Azure hizmeti. Bu veriler olayları, performans verilerini veya Azure API 'SI aracılığıyla sunulan özel verileri içerebilir. Toplanan veriler uyarı, analiz ve dışarı aktarma için kullanılabilir hale gelir. Ağ Performansı İzleyicisi ve trafik analizi gibi izleme uygulamaları, bir temel olarak Azure Izleyici günlükleri kullanılarak oluşturulmuştur. Daha fazla bilgi için bkz. [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Log Analytics çalışma alanı**: Azure hesabıyla ilgili verilerin depolandığı Azure izleyici günlüklerinin bir örneği. Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Ağ İzleyicisi**: Azure 'da bir ağ senaryosu düzeyinde koşulları izlemenizi ve tanılamanıza olanak tanıyan bölgesel bir hizmettir. Ağ Izleyicisi ile NSG akış günlüklerini açıp kapatabilirsiniz. Daha fazla bilgi için bkz. [Ağ İzleyicisi](network-watcher-monitoring-overview.md).
@@ -74,7 +72,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Batı Avrupa
 * Kuzey Avrupa
 * Brezilya Güney
-* UK Batı
+* UK, Batı
 * UK Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
@@ -105,7 +103,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Batı Avrupa
 * Kuzey Avrupa
 * Brezilya Güney
-* UK Batı
+* UK, Batı
 * UK Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
@@ -117,7 +115,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * US Gov Virginia
 * Çin Doğu 2
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 
@@ -125,7 +123,7 @@ Hesabınız aşağıdaki Azure [yerleşik rollerinin](../role-based-access-contr
 
 |Dağıtım modeli   | Rol                   |
 |---------          |---------               |
-|Resource Manager   | Sahip                  |
+|Kaynak Yöneticisi   | Sahip                  |
 |                   | Katılımcı            |
 |                   | Okuyucu                 |
 |                   | Ağ katılımcısı    |
@@ -294,7 +292,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
 
     ![Büyük/küçük harf trafiği dağıtımını gösteren Pano](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- Coğrafi eşleme, veri merkezleri (dağıtılan/olmayan dağıtım/etkin/devre dışı/Trafik Analizi etkin/Trafik Analizi etkin değil) ve etkin olan ve kötü amaçlı trafiğe katkıda bulunan ülkeler/bölgeler gibi parametrelerin seçimine yönelik üst şeridi gösterir dağıtmak
+- Coğrafi eşleme, veri merkezleri (dağıtılan/olmayan dağıtım/etkin/devre dışı/Trafik Analizi etkin/Trafik Analizi etkin değil) ve etkin dağıtıma katkıda bulunan ve kötü amaçlı trafik sağlayan ülkeler/bölgeler gibi parametrelerin seçimine yönelik üst şeridi gösterir:
 
     ![Coğrafi harita görünümü göster etkin dağıtım](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 

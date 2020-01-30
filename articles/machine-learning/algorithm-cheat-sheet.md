@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771521"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767620"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning tasarlayıcı için Machine Learning algoritması sayfası
 
 **Azure Machine Learning algoritması oluşturma sayfası** , tahmine dayalı bir analiz modeli için doğru algoritmayı seçmenize yardımcı olur.
 
-Azure Machine Learning, ***Sınıflandırma***, ***öneren sistemleri***, ***kümeleme***, ***anomali algılama***, ***gerileme*** ve ***metin analizi*** ailelerine ait büyük bir algoritma kitaplığına sahiptir. Her biri farklı bir makine öğrenimi sorun türünü ele almak üzere tasarlanmıştır.
+Azure Machine Learning, ***Sınıflandırma***, ***öneren sistemleri***, ***kümeleme***, ***anomali algılama***, ***gerileme***ve ***metin analizi*** ailelerine ait büyük bir algoritma kitaplığına sahiptir. Her biri farklı bir makine öğrenimi sorun türünü ele almak üzere tasarlanmıştır.
+
+Ek yönergeler için bkz. [algoritmaları seçme](how-to-select-algorithms.md)
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>İndir: Machine Learning algoritması bir sayfa
 
@@ -32,7 +34,7 @@ Machine Learning algoritması oluşturup, bir algoritma seçme konusunda yardım
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>Machine Learning algoritması oluşturma sayfasını kullanma
 
-Bu algoritma ile sunulan öneriler, yaklaşık kaydırma kurallarından oluşur. Bazıları Bükülü olabilir ve bazıları düzbir şekilde ihlal edilebilir. Bu, başlangıç noktası önermek için tasarlanmıştır. Verilerinize ilişkin çeşitli algoritmalar arasında baş bir yarışma yarışmaya gerek kalmaz. Her algoritmanın ilkelerini ve verilerinizi oluşturan sistemi anlamak için bir alternatif yoktur.
+Bu algoritma ile sunulan öneriler, yaklaşık kaydırma kurallarından oluşur. Bazıları Bükülü olabilir ve bazıları düzbir şekilde ihlal edilebilir. Bu içerik sayfası, başlangıç noktası önermek için tasarlanmıştır. Verilerinize ilişkin çeşitli algoritmalar arasında baş bir yarışma yarışmaya gerek kalmaz. Her algoritmanın ilkelerini ve verilerinizi oluşturan sistemi anlamak için bir alternatif yoktur.
 
 Her makine öğrenimi algoritmasının kendi stili veya endüktif sapması vardır. Belirli bir sorun için, çeşitli algoritmalar uygun olabilir ve bir algoritma diğerlerine göre daha iyi olabilir. Ancak, en uygun olanı daha önce bilmemiz her zaman mümkün değildir. Bunlar gibi durumlarda, birçok algoritma bir araya getirilebilir sayfasında birlikte listelenir. Uygun bir strateji tek bir algoritma denemek ve sonuçlar henüz tatmin edici değilse, diğerlerini deneyin. 
 
@@ -48,17 +50,17 @@ Denetimli öğrenmede her bir veri noktası, bir kategori veya bir ilgi değeri 
 
 ### <a name="unsupervised-learning"></a>Denetimsiz öğrenme
 
-Denetimli öğreniminde, veri noktalarında bunlarla ilişkili etiket yok. Bunun yerine, denetimli bir öğrenme algoritmasının hedefi, verileri bir şekilde veya yapısını betimleyen şekilde düzenmaktır. Bu, K-as gibi kümeler halinde gruplanarak veya karmaşık verilere bakmanın daha basit görünmesi için farklı yollar bulmasına yol açabilir.
+Denetimli öğreniminde, veri noktalarında bunlarla ilişkili etiket yok. Bunun yerine, denetimli bir öğrenme algoritmasının hedefi, verileri bir şekilde veya yapısını betimleyen şekilde düzenmaktır. Denetimsiz öğrenme, verileri kümeler halinde gruplar. böylece, K-anlamına gelir veya daha basit görünmesi için karmaşık verilere bakmanın farklı yollarını bulur.
 
 ### <a name="reinforcement-learning"></a>Pekiştirmeye dayalı öğrenme
 
-Pekiştirmeye dayalı Learning 'de, algoritma her bir veri noktasına cevap olarak bir eylem seçer. Bu, bir noktada bir noktadaki algılayıcı okumaların bir veri noktası olduğu ve algoritmanın, robot 'un bir sonraki eylemini seçmesi gereken, Robotics 'de yaygın bir yaklaşımdır. Ayrıca, Nesnelerin İnterneti uygulamalar için de doğal bir uyum. Öğrenme algoritması, daha sonra kararının ne kadar iyi olduğunu belirten bir ödül sinyali de alır. Bu, algoritmaya bağlı olarak, en yüksek ödül elde edilmesi için stratejisini değiştirir. 
+Pekiştirmeye dayalı Learning 'de, algoritma her bir veri noktasına cevap olarak bir eylem seçer. Bu, bir noktada bir noktadaki algılayıcı okumaların bir veri noktası olduğu ve algoritmanın, robot 'un bir sonraki eylemini seçmesi gereken, Robotics 'de yaygın bir yaklaşımdır. Ayrıca, Nesnelerin İnterneti uygulamalar için de doğal bir uyum. Öğrenme algoritması, daha sonra kararının ne kadar iyi olduğunu belirten bir ödül sinyali de alır. Bu sinyal temelinde, algoritma, en yüksek ödül elde edilmesi için stratejisini değiştirir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Machine Learning ve Azure Portal Studio hakkında bilgi edinin](overview-what-is-azure-ml.md).
+* [Algoritmaları seçme](how-to-select-algorithms.md) hakkında ek kılavuza bakın
 
-* [Algoritma ve modül başvurusundaki](algorithm-module-reference/module-reference.md)algoritmaların ve modüllerin listesini görüntüleyin.
+* [Azure Machine Learning ve Azure Portal Studio hakkında bilgi edinin](overview-what-is-azure-ml.md).
 
 * [Öğretici: Azure Machine Learning tasarımcısında bir tahmin modeli oluşturun](tutorial-designer-automobile-price-train-score.md).
 

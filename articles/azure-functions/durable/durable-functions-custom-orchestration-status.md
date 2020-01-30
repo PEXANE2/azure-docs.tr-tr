@@ -4,12 +4,12 @@ description: Dayanıklı İşlevler için özel düzenleme durumunu yapılandır
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b8b78f58570186a0b17eb47f8445d2ba9aa47e8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261662"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766263"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler özel düzenleme durumu (Azure Işlevleri)
 
@@ -20,7 +20,7 @@ ms.locfileid: "76261662"
 > [!NOTE]
 > Aşağıdaki örnekler, ve JavaScript içinde C# özel durum özelliğinin nasıl kullanılacağını göstermektedir. Örnekler C# , dayanıklı işlevler 2. x için yazılmıştır ve dayanıklı işlevler 1. x ile uyumlu değildir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-### <a name="visualize-progress"></a>İlerlemeyi görselleştirme
+### <a name="visualize-progress"></a>İlerlemeyi görselleştirin
 
 İstemciler, durum bitiş noktasını yoklayabilirler ve geçerli yürütme aşamasını görselleştirtiren bir ilerleme Kullanıcı arabirimi görüntüleyebilir. Aşağıdaki örnek ilerleme paylaşımını gösterir:
 
@@ -133,7 +133,7 @@ module.exports = async function(context, req) {
     context.log(`Started orchestration with ID = '${instanceId}'.`);
 
     let durableOrchestrationStatus = await client.getStatus(instanceId);
-    while (status.customStatus.toString() !== "London") {
+    while (durableOrchestrationStatus.customStatus.toString() !== "London") {
         await new Promise((resolve) => setTimeout(resolve, 200));
         durableOrchestrationStatus = await client.getStatus(instanceId);
     }

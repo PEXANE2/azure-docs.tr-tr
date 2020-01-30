@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e36e3ae9ce2e8ca116921de428b4dcc09b37afb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978586"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773732"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Hızlı başlangıç: node. js için Azure Key Vault istemci kitaplığı (v4)
 
@@ -22,12 +22,12 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
 - Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
 - Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
-- SSL/TLS sertifikaları için görevleri basitleştirme ve otomatikleştirme.
+- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
 [API başvuru belgeleri](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [paketi (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - İşletim sisteminiz için geçerli [Node. js](https://nodejs.org) .
@@ -35,7 +35,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 
 Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'Yi bir Linux Terminal penceresinde çalıştırdığınız varsayılır.
 
-## <a name="setting-up"></a>Kurulum
+## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="install-the-package"></a>Paketi yükler
 

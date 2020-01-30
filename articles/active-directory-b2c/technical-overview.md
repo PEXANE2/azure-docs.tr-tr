@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d45e4c79f46061ca177858fd517153fb5f29c41
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123829"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840222"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
-[Azure Active Directory B2C hakkında](active-directory-b2c-overview.md)bir yardımcı olan bu makalede, hizmete yönelik daha ayrıntılı bir giriş sunulmaktadır. Burada, hizmette, üzerinde çalıştığınız birincil kaynaklar, özellikleri ve bunların uygulamalarınızda müşterileriniz için tam özel kimlik deneyimi sağlamanıza nasıl olanak sağladığı açıklanmıştır.
+[Azure Active Directory B2C hakkında](overview.md)bir yardımcı olan bu makalede, hizmete yönelik daha ayrıntılı bir giriş sunulmaktadır. Burada, hizmette, üzerinde çalıştığınız birincil kaynaklar, özellikleri ve bunların uygulamalarınızda müşterileriniz için tam özel kimlik deneyimi sağlamanıza nasıl olanak sağladığı açıklanmıştır.
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C kiracı
 
@@ -38,7 +38,7 @@ Azure AD B2C kiracısında birlikte çalıştığınız birincil kaynaklar şunl
   * Kullanıcıların bir Kullanıcı adı (veya e-posta adresi veya diğer KIMLIK) ve parola ile kaydolup oturum açmasını sağlayan *Yerel* hesaplar.
 * **Anahtarlar** -belirteçleri imzalamak ve doğrulamak için şifreleme anahtarları ekleyin ve yönetin.
 
-Azure AD B2C kiracı, Azure AD B2C kullanmaya başlamak için oluşturmanız gereken ilk kaynaktır. [Öğreticide nasıl bilgi alabileceğinizi öğrenin: Azure Active Directory B2C kiracı](tutorial-create-tenant.md)oluşturun.
+Azure AD B2C kiracı, Azure AD B2C kullanmaya başlamak için oluşturmanız gereken ilk kaynaktır. [Öğretici: Azure Active Directory B2C kiracı oluşturma](tutorial-create-tenant.md)hakkında bilgi edinin.
 
 ## <a name="accounts-in-azure-ad-b2c"></a>Azure AD B2C hesaplar
 
@@ -48,7 +48,7 @@ Azure AD B2C birkaç kullanıcı hesabı türünü tanımlar. Azure Active Direc
 * **Konuk hesap** -dış kullanıcılar kiracınıza Konuk olarak davet edersiniz. Konuk kullanıcıyı Azure AD B2C kiracınıza davet etmek için tipik bir senaryo, yönetim sorumluluklarını paylaşmalıdır.
 * **Tüketici hesabı** -tüketici hesapları, kullanıcılar kiracınızda kaydettiğiniz bir uygulamada kaydolma Kullanıcı yolculuğunu tamamlamada Azure AD B2C dizininizde oluşturulan hesaplardır.
 
-![Azure portal Azure AD B2C Kullanıcı Yönetimi sayfası](media/technical-overview/portal-01-users.png)<br/>*Rakam Azure portal içindeki bir Azure AD B2C kiracısındaki Kullanıcı dizini*
+Azure portal Azure AD B2C Kullanıcı Yönetimi sayfasını ![](media/technical-overview/portal-01-users.png)<br/>*Şekil: Azure portal Azure AD B2C kiracısı içindeki kullanıcı dizini*
 
 ### <a name="consumer-accounts"></a>Tüketici hesapları
 
@@ -61,7 +61,7 @@ Bir tüketici hesabı şu kimlik türleriyle ilişkilendirilebilir:
 
 Tüketici hesabı olan bir Kullanıcı, örneğin Kullanıcı adı, e-posta, çalışan KIMLIĞI, kamu KIMLIĞI ve diğerleri gibi birden çok kimlikle oturum açabilir. Tek bir hesabın hem yerel hem de sosyal birden çok kimliği olabilir.
 
-![Tüketici hesabı kimlikleri](media/technical-overview/identities.png)<br/>*Rakam Azure AD B2C birden çok kimliği olan tek bir tüketici hesabı*
+Tüketici hesabı kimliklerini ![](media/technical-overview/identities.png)<br/>*Şekil: Azure AD B2C birden çok kimliği olan tek bir tüketici hesabı*
 
 Azure AD B2C, görünen ad, soyadı, verilen ad, şehir ve diğerleri gibi tüketici hesabı profillerinin ortak özniteliklerini yönetmenizi sağlar. Ayrıca, Azure AD şemasını kullanıcılarınız hakkındaki ek bilgileri depolamak için genişletebilirsiniz. Örneğin, ülkelerinin veya bir bültene abone olmak veya Multi-Factor Authentication 'ı etkinleştirmek isteyip istemedikleri gibi, bu kişilerin ülke veya yerleşimi, tercih edilen dili ve tercihleri.
 
@@ -79,7 +79,7 @@ Kaydolma veya oturum açma sayfasında, kullanıcının oturum açma için seçe
 
 ![Sosyal hesap (Facebook) ile mobil oturum açma örneği](media/technical-overview/external-idp.png)
 
-Azure AD B2C kimlik sağlayıcılarının nasıl ekleneceğini öğrenmek için bkz [. Öğretici: Azure Active Directory B2C](tutorial-add-identity-providers.md)' deki uygulamalarınıza kimlik sağlayıcıları ekleyin.
+Azure AD B2C ' de kimlik sağlayıcılarının nasıl ekleneceğini görmek için bkz. [öğretici: Azure Active Directory B2C uygulamalarınızda uygulamalarınıza kimlik sağlayıcıları ekleme](tutorial-add-identity-providers.md).
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Kimlik deneyimleri: Kullanıcı akışları veya özel ilkeler
 
@@ -109,7 +109,7 @@ Uygulamalarınızda kimlik deneyimi davranışlarını denetlemek için aşağı
 
 Mobil, Web ve tek sayfalı uygulamaların çoğunluğu için en yaygın kimlik senaryoları, Kullanıcı akışlarıyla etkili bir şekilde tanımlanabilir ve uygulanabilir. Özel ilkelerin tam esnekliğini gerektiren karmaşık Kullanıcı yolculuğu senaryolarınız yoksa yerleşik Kullanıcı akışlarını kullanmanızı öneririz.
 
-[Azure Active Directory B2C Kullanıcı akışlardaki](active-directory-b2c-reference-policies.md)Kullanıcı akışları hakkında daha fazla bilgi edinin.
+[Azure Active Directory B2C Kullanıcı akışlardaki](user-flow-overview.md)Kullanıcı akışları hakkında daha fazla bilgi edinin.
 
 ### <a name="custom-policy"></a>Özel ilke
 
@@ -130,13 +130,13 @@ Her Kullanıcı yolculuğu bir ilke tarafından tanımlanır ve kuruluşunuz iç
 
 Özel ilkelerin güçlü esnekliği en iyi şekilde karmaşık kimlik senaryoları oluşturmanız gerektiğinde uygundur. Özel ilkeleri yapılandıran geliştiriciler, her bir kimlik sağlayıcısı için gerektiğinde meta veri uç noktalarını, tam talep istekleri Exchange tanımlarını ve parolaları, anahtarları ve sertifikaları yapılandırmak için güvenilir ilişkileri dikkatle tanımlamalıdır.
 
-[Azure Active Directory B2C özel ilkelerindeki](active-directory-b2c-overview-custom.md)özel ilkeler hakkında daha fazla bilgi edinin.
+[Azure Active Directory B2C özel ilkelerindeki](custom-policy-overview.md)özel ilkeler hakkında daha fazla bilgi edinin.
 
 ## <a name="protocols-and-tokens"></a>Protokoller ve belirteçler
 
-Azure AD B2C, Kullanıcı yolculukları için [OpenID Connect ve OAuth 2,0 protokollerini](active-directory-b2c-reference-protocols.md) destekler. OpenID Connect'in Azure AD B2C gerçekleştirmesinde uygulamanız kullanıcı yolculuğunu Azure AD B2C'ye kimlik doğrulama istekleri göndererek başlatır.
+Azure AD B2C, Kullanıcı yolculukları için [OpenID Connect ve OAuth 2,0 protokollerini](protocols-overview.md) destekler. OpenID Connect'in Azure AD B2C gerçekleştirmesinde uygulamanız kullanıcı yolculuğunu Azure AD B2C'ye kimlik doğrulama istekleri göndererek başlatır.
 
-Azure AD B2C bir isteğin sonucu, [kimlik belirteci veya erişim belirteci](active-directory-b2c-reference-tokens.md)gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının kimliğini tanımlar. Belirteçler, `/token` veya `/authorize` uç nokta gibi Azure AD B2C uç noktalarından alınır. Bu belirteçlerle, bir kimliği doğrulamak ve güvenli kaynaklara erişim sağlamak için kullanılabilecek taleplere erişebilirsiniz.
+Azure AD B2C bir isteğin sonucu, [kimlik belirteci veya erişim belirteci](tokens-overview.md)gibi bir güvenlik belirtecidir. Bu güvenlik belirteci, kullanıcının kimliğini tanımlar. Belirteçler `/token` veya `/authorize` uç noktası gibi Azure AD B2C uç noktalarından alınır. Bu belirteçlerle, bir kimliği doğrulamak ve güvenli kaynaklara erişim sağlamak için kullanılabilecek taleplere erişebilirsiniz.
 
 Dış kimlikler için Azure AD B2C, OAuth 1,0, OAuth 2,0, OpenID Connect, SAML ve WS-beslik kimlik sağlayıcısı ile Federasyonu destekler.
 
@@ -148,7 +148,7 @@ Yukarıdaki diyagramda Azure AD B2C aynı kimlik doğrulama akışındaki çeşi
 1. Uygulamanın bir kullanıcısı SAML protokolünü kullanan bir dış kimlik sağlayıcısı kullanarak oturum açmayı seçtiğinde Azure AD B2C, bu kimlik sağlayıcısıyla iletişim kurmak için SAML protokolünü çağırır.
 1. Kullanıcı, dış kimlik sağlayıcısıyla oturum açma işlemini tamamladıktan sonra, Azure AD B2C OpenID Connect kullanarak, bağlı olan taraf uygulamasına belirteci döndürür.
 
-## <a name="application-integration"></a>Uygulama tümleştirme
+## <a name="application-integration"></a>Uygulama entegrasyonu
 
 Bir Kullanıcı uygulamanızda oturum açmak istediğinde bir Web, mobil, masaüstü veya tek sayfalı uygulama (SPA) olduğunda, uygulama bir Kullanıcı akışına veya özel ilkeye göre belirtilen uç noktaya yetkilendirme isteği başlatır. Kullanıcı akışı veya özel ilke, kullanıcının deneyimini tanımlar ve denetler. Bir kullanıcı akışını tamamlarsa (örneğin, *kaydolma veya oturum açma* akışı), Azure AD B2C bir belirteç oluşturur ve kullanıcıyı uygulamanıza geri yönlendirir.
 
@@ -172,7 +172,7 @@ Azure AD B2C dil özelleştirmesi, müşteri gereksinimlerinize uyacak farklı d
 
 ![Farklı dillerde UI metnini gösteren üç kaydolma oturum açma sayfası](media/technical-overview/localization.png)
 
-[Azure Active Directory B2C içinde, yerelleştirme 'Nin dil özelleştirmelerinde](active-directory-b2c-reference-language-customization.md)nasıl çalıştığını görün.
+[Azure Active Directory B2C içinde, yerelleştirme 'Nin dil özelleştirmelerinde](user-flow-language-customization.md)nasıl çalıştığını görün.
 
 ## <a name="add-your-own-business-logic"></a>Kendi iş mantığınızı ekleme
 
@@ -195,7 +195,7 @@ Bağlılık programı programları, REST API 'Leri çağırmak için Azure AD B2
 * Azure AD B2C, dizinde yeni bir hesap oluşturduktan sonra
 * Azure AD B2C önce bir erişim belirteci vermeden önce
 
-Azure AD B2C ' de yeniden yapılan API tümleştirmesi için özel ilkelerin nasıl kullanılacağını görmek için, bkz. [Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme](active-directory-b2c-custom-rest-api-netfw.md).
+Azure AD B2C ' de yeniden yapılan API tümleştirmesi için özel ilkelerin nasıl kullanılacağını görmek için, bkz. [Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme](rest-api-claims-exchange-dotnet.md).
 
 ## <a name="protect-customer-identities"></a>Müşteri kimliklerini koruma
 
@@ -223,7 +223,7 @@ Azure AD B2C yönetim rolü desteği de dahil olmak üzere Azure AD rolleri hakk
 
 Azure AD B2C Multi-Factor Authentication (MFA), kullanıcılarınız için basitlik sağlarken verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi sunarak güçlü kimlik doğrulaması sunar. Kullanıcılarınız, yönetici olarak yapabileceğiniz yapılandırma kararları temelinde MFA 'ya yönelik olarak istenebilir veya olmayabilir.
 
-[Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme](active-directory-b2c-reference-mfa.md)içindeki Kullanıcı akışlarında MFA 'yı Etkinleştirme makalesine bakın.
+[Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme](custom-policy-multi-factor-authentication.md)içindeki Kullanıcı akışlarında MFA 'yı Etkinleştirme makalesine bakın.
 
 ### <a name="smart-account-lockout"></a>Akıllı hesap kilitleme
 
@@ -231,13 +231,13 @@ Deneme yanılma ve parola tahmin girişimlerini engellemek için Azure AD B2C, h
 
 ![Hesap akıllı kilitleme](media/technical-overview/smart-lockout1.png)
 
-Parola koruma ayarlarını yönetme hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C tehditleri kaynakları ve verileri yönetme](active-directory-b2c-reference-threat-management.md).
+Parola koruma ayarlarını yönetme hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C tehditleri kaynakları ve verileri yönetme](threat-management.md).
 
 ### <a name="password-complexity"></a>Parola karmaşıklığı
 
 Kaydolma veya parola sıfırlama sırasında kullanıcılarınızın karmaşıklık kurallarını karşılayan bir parola sağlaması gerekir. Varsayılan olarak, Azure AD B2C güçlü bir parola ilkesi uygular. Azure AD B2C, müşterilerinizin kullanacağı parolaların karmaşıklık gereksinimlerini belirtmek için yapılandırma seçenekleri de sağlar.
 
-Her iki [Kullanıcı akışı](active-directory-b2c-reference-password-complexity.md) ve [özel ilke](active-directory-b2c-reference-password-complexity-custom.md)için parola karmaşıklığı gereksinimlerini yapılandırabilirsiniz.
+Her iki [Kullanıcı akışı](user-flow-password-complexity.md) ve [özel ilke](custom-policy-password-complexity.md)için parola karmaşıklığı gereksinimlerini yapılandırabilirsiniz.
 
 ## <a name="auditing-and-logs"></a>Denetim ve Günlükler
 
@@ -254,13 +254,13 @@ Azure AD B2C kiracınız veya belirli bir kullanıcı için kullanılabilen bir 
 
 ![Azure portal gösterilen bireysel kullanıcı denetim günlüğü](media/technical-overview/audit-log.png)
 
-Denetim günlükleri hakkında daha fazla bilgi için bkz. [Azure AD B2C denetim günlüklerine erişme](active-directory-b2c-reference-audit-logs.md).
+Denetim günlükleri hakkında daha fazla bilgi için bkz. [Azure AD B2C denetim günlüklerine erişme](view-audit-logs.md).
 
 ### <a name="usage-insights"></a>Kullanım öngörüleri
 
 Azure AD B2C, kullanıcıların Web uygulamanızda ne zaman oturum açtıklarında veya oturum açtıklarında, kullanıcılarınızın nerede olduğunu ve kullandıkları tarayıcıları ve işletim sistemlerini keşfedebileceğiniz kişileri bulmanızı sağlar. Azure Application Insights özel ilkeler kullanarak Azure AD B2C tümleştirerek, kişilerin nasıl kaydolabileceğinize ilişkin Öngörüler elde edebilir, oturum açabilir, parolasını sıfırlayabilir veya profillerini düzenleyebilirsiniz. Bu tür bilgilerle, yaklaşan geliştirme döngüleriniz için veri odaklı kararlar verebilirsiniz.
 
-Kullanım Analizi hakkında daha fazla bilgi edinmek için [Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleyin](active-directory-b2c-custom-guide-eventlogger-appins.md).
+Kullanım Analizi hakkında daha fazla bilgi edinmek için [Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleyin](analytics-with-application-insights.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

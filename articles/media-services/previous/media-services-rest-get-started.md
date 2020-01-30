@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014864"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773675"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST kullanarak isteğe bağlı içerik sunmaya başlayın  
 
@@ -36,10 +36,10 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 REST API 'Leri ile Media Services geliştirmeye başlamak için aşağıdaki Önkoşullar gereklidir.
 
-* Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Bir Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * Media Services REST API nasıl geliştirileceği hakkında anlamak. Daha fazla bilgi için bkz. [Media Services REST API genel bakış](media-services-rest-how-to-use.md).
 * Tercih ettiğiniz ve HTTP isteklerini ve yanıtlarını gönderebilen bir uygulama. Bu öğretici [Fiddler](https://www.telerik.com/download/fiddler)kullanır.
@@ -85,15 +85,15 @@ AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik d
 
 ## <a id="upload"></a>Yeni bir varlık oluşturun ve REST API bir video dosyası yükleyin
 
-Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık varlığı video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar varlığa yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
+Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık **varlığı video** , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar varlığa yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
 
 Bir varlık oluştururken sağlamanız gereken değerlerden biri varlık oluşturma seçenekleridir. **Options** özelliği, bir varlığın oluşturulabilen şifreleme seçeneklerini açıklayan bir sabit listesi değeridir. Geçerli bir değer, bu listedeki değerlerin birleşimini değil, aşağıdaki listedeki değerlerden biridir:
 
-* Hiçbiri = **0** -şifreleme kullanılmaz. Bu seçeneği kullandığınızda, içeriğiniz aktarım sırasında veya depolamadaki bekleyen sırada korunmaz.
+* **None** = **0** -şifreleme kullanılmaz. Bu seçeneği kullandığınızda, içeriğiniz aktarım sırasında veya depolamadaki bekleyen sırada korunmaz.
     Aşamalı indirme kullanarak bir MP4 iletmeyi planlıyorsanız bu seçeneği kullanın.
-* Storageencryptıon 1-AES-256 bit şifrelemesini kullanarak açık içeriğinizi yerel olarak şifreler ve sonra da bu dosyayı Rest 'te şifreli olarak depolandığı Azure depolama 'ya yükler.  =  Depolama Şifrelemesi ile korunan varlıklar, kodlamadan önce otomatik olarak şifrelenerek şifrelenmiş bir dosya sistemine yerleştirilir ve yeni bir çıktı varlığı şeklinde geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama Şifrelemesinin birincil kullanım nedeni, yüksek kaliteli girdi medya dosyalarınızın güvenliğini güçlü şifrelemeyle diskte bekleyen konumda sağlamak istediğiniz durumdur.
-* **CommonEncryptionProtected** = **2** -daha önce şifrelenen ve Common Encryption veya PlayReady DRM ile korunan içeriği (örneğin, PlayReady DRM ile korunan kesintisiz akış) karşıya yüklüyorsanız bu seçeneği kullanın.
-* EnvelopeEncryptionProtected = **4** – HLS 'leri AES ile şifreli olarak karşıya yüklüyorsanız bu seçeneği kullanın. Dosyalar, Transform Manager tarafından kodlanmış ve şifrelenmiş olmalıdır.
+* **Storageencryptıon** = **1** -AES-256 bit şifrelemesini kullanarak açık içeriğinizi yerel olarak şifreler ve sonra da bu dosyayı Rest 'Te şifreli olarak depolandığı Azure depolama 'ya yükler. Depolama Şifrelemesi ile korunan varlıklar, kodlamadan önce otomatik olarak şifrelenerek şifrelenmiş bir dosya sistemine yerleştirilir ve yeni bir çıktı varlığı şeklinde geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama Şifrelemesinin birincil kullanım nedeni, yüksek kaliteli girdi medya dosyalarınızın güvenliğini güçlü şifrelemeyle diskte bekleyen konumda sağlamak istediğiniz durumdur.
+* **CommonEncryptionProtected** = **2** -önceden şifrelenmiş ve Common Encryption veya PlayReady DRM ile korunan Içeriği (örneğin, playready DRM ile korunan kesintisiz akış) karşıya yüklüyorsanız bu seçeneği kullanın.
+* **EnvelopeEncryptionProtected** = **4** – bu seçeneği, HLS 'yi AES ile şifreli olarak karşıya yüklüyorsanız kullanın. Dosyalar, Transform Manager tarafından kodlanmış ve şifrelenmiş olmalıdır.
 
 ### <a name="create-an-asset"></a>Varlık oluşturma
 Varlık, video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil olmak üzere Media Services birden çok tür veya nesne kümesi için bir kapsayıcıdır. REST API bir varlık oluşturmak için POST isteğinin Media Services gönderilmesi ve istek gövdesine varlığınızın herhangi bir özellik bilgisini yerleştirilmesi gerekir.
@@ -109,7 +109,7 @@ Aşağıdaki örnek, bir varlığın nasıl oluşturulacağını göstermektedir
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 45
@@ -163,7 +163,7 @@ Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, Assetdos
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 164
 
@@ -225,7 +225,7 @@ Aşağıdaki örnek, bir AccessPolicy nasıl oluşturulacağını gösterir:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 74
 
@@ -270,7 +270,7 @@ SAS URL 'SI aşağıdaki biçime sahiptir:
 Bazı dikkate alınması gereken noktalar vardır:
 
 * Belirli bir varlıkla ilişkilendirilmiş beş taneden fazla benzersiz Konum Belirleyicisi olamaz. 
-* Dosyalarınızı hemen karşıya yüklemeniz gerekiyorsa, StartTime değerini geçerli zamandan beş dakika önce ayarlamanız gerekir. Bunun nedeni, istemci makineniz ve Media Services arasında saat çarpıklığı olabilir. Ayrıca, StartTime değeri aşağıdaki tarih saat biçiminde olmalıdır: YYYY-MM-DDTHH: mm: ssZ (örneğin, "2014-05-23T17:53:50Z").    
+* Dosyalarınızı hemen karşıya yüklemeniz gerekiyorsa, StartTime değerini geçerli zamandan beş dakika önce ayarlamanız gerekir. Bunun nedeni, istemci makineniz ve Media Services arasında saat çarpıklığı olabilir. Ayrıca, StartTime değeri şu tarih saat biçiminde olmalıdır: YYYY-MM-DDTHH: mm: ssZ (örneğin, "2014-05-23T17:53:50Z").    
 * Bir bulucunun kullanım için kullanılabilir olduğu durumlarda, bir bulucu oluşturulduktan sonra 30-40 saniyelik bir gecikme olabilir. Bu sorun hem [SAS URL 'si](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) hem de Kaynak Konum Belirleyicileri için geçerlidir.
 
 Aşağıdaki örnek, bir SAS URL Konumlandırıcısı 'nın, istek gövdesinde (SAS Konumlandırıcı için "1" ve Isteğe bağlı bir kaynak bulucu için "2") tanımlanan tür özelliği tarafından tanımlandığı şekilde nasıl oluşturulacağını gösterir. Döndürülen **Path** özelliği, dosyanızı karşıya yüklemek için kullanmanız gereken URL 'yi içerir.
@@ -284,7 +284,7 @@ Aşağıdaki örnek, bir SAS URL Konumlandırıcısı 'nın, istek gövdesinde (
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 178
 
@@ -332,7 +332,7 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
 AccessPolicy ve Locator kümesine sahip olduğunuzda, gerçek dosya Azure depolama REST API 'Leri kullanılarak bir Azure Blob depolama kapsayıcısına yüklenir. Dosyaları blok Blobları olarak yüklemeniz gerekir. Sayfa Blobları Azure Media Services tarafından desteklenmez.  
 
 > [!NOTE]
-> Karşıya yüklemek istediğiniz dosyanın adını, önceki bölümde alınan Konumlandırıcı **yolu** değerine eklemeniz gerekir. Örneğin: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Karşıya yüklemek istediğiniz dosyanın adını, önceki bölümde alınan Konumlandırıcı **yolu** değerine eklemeniz gerekir. Örneğin, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
@@ -348,7 +348,7 @@ Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilg
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
     {  
@@ -376,7 +376,7 @@ Başarılı olursa aşağıdakiler döndürülür:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -395,7 +395,7 @@ Başarılı olursa aşağıdakiler döndürülür:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 **HTTP yanıtı**
@@ -426,7 +426,7 @@ Aşağıdaki kod, kodlayıcının kimliğini ister.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -459,8 +459,8 @@ Aşağıdaki kod, kodlayıcının kimliğini ister.
        ]
     }
 
-### <a name="create-a-job"></a>İş oluştur
-Her Işin, gerçekleştirmek istediğiniz işleme türüne bağlı olarak bir veya daha fazla görevi olabilir. REST API aracılığıyla Işleri ve ilgili görevlerini iki şekilde oluşturabilirsiniz: Görevler, Iş varlıklarındaki görevler gezintisi özelliği veya OData toplu işleme aracılığıyla satır içi olarak tanımlanabilir. Media Services SDK toplu işlemeyi kullanır. Ancak, bu makaledeki kod örneklerinin okunabilirliğini için görevler satır içi olarak tanımlanmıştır. Toplu işleme hakkında daha fazla bilgi için bkz. [Açık Veri Protokolü (OData) toplu işleme](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+### <a name="create-a-job"></a>Bir iş oluşturma
+Her Işin, gerçekleştirmek istediğiniz işleme türüne bağlı olarak bir veya daha fazla görevi olabilir. REST API aracılığıyla Işleri ve bunlarla ilgili görevleri iki şekilde oluşturabilirsiniz: görevler, Iş varlıklarındaki görevler gezintisi özelliği aracılığıyla veya OData toplu işleme aracılığıyla satır içi olarak tanımlanabilir. Media Services SDK toplu işlemeyi kullanır. Ancak, bu makaledeki kod örneklerinin okunabilirliğini için görevler satır içi olarak tanımlanmıştır. Toplu işleme hakkında daha fazla bilgi için bkz. [Açık Veri Protokolü (OData) toplu işleme](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Aşağıdaki örnek, belirli bir çözünürlükte ve kalitede video kodlamak için bir görev ayarlama ile bir Işi nasıl oluşturup nakledeceğiniz gösterilmektedir. Aşağıdaki belgeler bölümü, Media Encoder Standard işlemcisi tarafından desteklenen tüm [görev önayarlarının](https://msdn.microsoft.com/library/mt269960) listesini içerir.  
 
@@ -473,7 +473,7 @@ Aşağıdaki örnek, belirli bir çözünürlükte ve kalitede video kodlamak i�
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 482
 
@@ -561,19 +561,19 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
 Herhangi bir Iş isteğinde dikkat etmeniz gereken birkaç önemli nokta vardır:
 
 * TaskBody özellikleri, giriş sayısını veya görev tarafından kullanılan çıkış varlıklarını tanımlamak için değişmez XML kullanmalıdır. Görev makalesi XML için XML şema tanımı içerir.
-* TaskBody tanımında, ve `<inputAsset>` `<outputAsset>` için her bir iç değerin jobınputasset (değer) veya Joi putasset (değer) olarak ayarlanması gerekir.
+* TaskBody tanımında, `<inputAsset>` ve `<outputAsset>` için her bir iç değerin Jobınputasset (değer) veya Joi Putasset (değer) olarak ayarlanması gerekir.
 * Bir görevde birden fazla çıkış varlığı olabilir. Bir joi Putasset (x), bir iş içindeki görevin çıktısı olarak yalnızca bir kez kullanılabilir.
 * Jobınputasset veya Joi Putasset değerini bir görevin giriş varlığı olarak belirtebilirsiniz.
 * Görevler bir bisiklet oluşturmamalıdır.
 * Jobınputasset veya Joi Putasset 'e geçirdiğiniz değer parametresi bir varlık için dizin değerini temsil eder. Gerçek varlıklar, Iş varlığı tanımındaki ınputmediavarlıklar ve Outputmediavarlıklarının gezinti özelliklerinde tanımlanmıştır.
 
 > [!NOTE]
-> Media Services OData v3 üzerinde oluşturulduğundan, ınputmediavarlıklarının ve Outputmediavarlıklarının gezinti özelliği koleksiyonlarındaki tek tek varlıklar "__metadata: Uri" ad-değer çifti üzerinden başvuruluyor.
+> Media Services OData v3 üzerinde oluşturulduğundan, ınputmediavarlıklarının ve Outputmediavarlıklarının gezinti özelliği koleksiyonlarındaki tek tek varlıklar "__metadata: URI" ad-değer çifti üzerinden başvuruluyor.
 >
 >
 
 * Inputmediavarlıkların, Media Services oluşturduğunuz bir veya daha fazla varlık ile eşlenir. Outputmediavarlıklar sistem tarafından oluşturulur. Mevcut bir varlığa başvurmazlar.
-* Outputmediavarlıklarının adı assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, outputmediakıymetin adı, `<outputAsset>` öğenin iç metin değerinin, iş adı değeri veya iş kimliği değeri (ad özelliğinin tanımlı olmadığı durumlarda) bir sonekine sahip olduğu her şey olur. Örneğin, assetName için bir değeri "Sample" olarak ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer belirtmediyseniz ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joi Putasset (value) _NewJob" olacaktır.
+* Outputmediavarlıklarının adı assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, Outputmediakıymetin adı `<outputAsset>` öğenin iç metin değeri, Iş adı değeri veya Iş kimliği değeri (ad özelliğinin tanımlanmadığında) bir sonekine sahip olur. Örneğin, assetName için bir değeri "Sample" olarak ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer belirtmediyseniz ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joverputasset (değer) _NewJob" olacaktır.
 
     Aşağıdaki örnekte, assetName özniteliğinin nasıl ayarlanacağı gösterilmektedir:
 
@@ -595,7 +595,7 @@ Aşağıdaki örnekte gösterildiği gibi, durum özelliğini kullanarak Iş dur
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 0
@@ -632,7 +632,7 @@ Aşağıdaki örnek, CancelJob çağrısının nasıl çağrılacağını göste
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.2
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
 
@@ -656,7 +656,7 @@ Aşağıdaki kod, çıkış varlığı kimliğini nasıl isteyeceğini gösterir
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -694,7 +694,7 @@ Aşağıdaki kod, çıkış varlığı kimliğini nasıl isteyeceğini gösterir
 
 ## <a id="publish_get_urls"></a>REST API ile varlığı yayımlayın ve akış ve aşamalı indirme URL 'Lerini alın
 
-Bir varlığı akışla aktarmak veya indirmek için söz konusu varlığı önce bir bulucu oluşturarak “yayımlamak” gerekir. Bulucular varlıkta bulunan dosyalara erişim imkanı sağlar. Media Services iki tür bulucuyu destekler: Medya dosyalarını indirmek için kullanılan, medya akışını (örneğin, MPEG DASH, HLS veya Kesintisiz Akış) ve erişim Imzası (SAS) Konumlandırıcı için kullanılan OnDemandOrigin Konumlandırıcı. 
+Bir varlığı akışla aktarmak veya indirmek için söz konusu varlığı önce bir bulucu oluşturarak “yayımlamak” gerekir. Bulucular varlıkta bulunan dosyalara erişim imkanı sağlar. Media Services, iki tür bulucuyu destekler: Medyayı akışla aktarmak (örneğin MPEG DASH, HLS veya Kesintisiz Akış) için kullanılan OnDemandOrigin bulucuları ve medya dosyalarını indirmek için kullanılan Erişim İmzası (SAS) bulucuları. 
 
 Bulıcıları oluşturduktan sonra, dosyalarınızı akışa almak veya indirmek için kullanılan URL 'Leri oluşturabilirsiniz.
 
@@ -733,7 +733,7 @@ Aşağıdaki örnek, belirli bir varlık için AccessPolicy for Read izinlerinin
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 74
@@ -756,7 +756,7 @@ Aşağıdaki kod, daha önce oluşturulup karşıya yüklenen bir medya dosyası
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 182
@@ -847,7 +847,7 @@ Aşağıdaki kod, akış URL Konumlandırıcısı 'nın nasıl oluşturulacağı
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs
     Content-Length: 182
@@ -918,5 +918,5 @@ Aşamalı indirmeyi test etmek için bir tarayıcıya URL (örneğin, IE, Chrome
 ## <a name="next-steps-media-services-learning-paths"></a>Sonraki Adımlar: Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

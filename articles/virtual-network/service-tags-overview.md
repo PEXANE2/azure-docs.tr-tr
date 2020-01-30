@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715403"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775258"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri 
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **ElasticAFD** | Elastik Azure ön kapısı. | Her ikisi de | Hayır | Hayır |
 | **EventHub** | Azure Event Hubs. | Giden | Evet | Evet |
 | **GatewayManager** | Azure VPN Gateway ve Application Gateway adanmış dağıtımlar için yönetim trafiği. | Gelen | Hayır | Hayır |
-| **GuestAndHybridManagement** | Azure Otomasyonu ve konuk yapılandırması. | Her ikisi de | Hayır | Evet |
+| **GuestAndHybridManagement** | Azure Otomasyonu ve konuk yapılandırması. | Giden | Hayır | Evet |
 | **HDInsight** | Azure HDInsight. | Gelen | Evet | Hayır |
 | **Internet** | Sanal ağın dışında olan ve genel İnternet tarafından erişilebilen IP adresi alanı.<br/><br/>Adres aralığı, [Azure 'a ait genel IP adresi alanını](https://www.microsoft.com/download/details.aspx?id=41653)içerir. | Her ikisi de | Hayır | Hayır |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Giden | Hayır | Hayır |

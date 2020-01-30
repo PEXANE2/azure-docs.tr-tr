@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732595"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771568"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Konum SıNıRı yan tümcesinde hem konum sayısı hem de LIMIT sayısı gereklidir. İsteğe bağlı bir `ORDER BY` yan tümcesi kullanılırsa, sonuç kümesi, sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür. Bu yan tümce artık tek bir bölüm içindeki sorgular ve çapraz bölümleme sorguları için desteklenir.
+  `OFFSET` sayısı ve `LIMIT` sayısı `OFFSET LIMIT` yan tümcesinde gereklidir. İsteğe bağlı bir `ORDER BY` yan tümcesi kullanılırsa, sonuç kümesi, sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür.
+
+  `OFFSET LIMIT` olan bir sorgunun ücreti, kaydırılmakta olan koşulların sayısı arttıkça artacaktır. Birden fazla sonuç sayfasına sahip sorgularda, genellikle devamlılık belirteçlerini kullanmanızı öneririz. Devamlılık belirteçleri, sorgunun daha sonra sürdürülebileceği yerde bir "yer işaretidir". `OFFSET LIMIT`kullanırsanız, "Bookmark" yoktur. Sorgunun sonraki sayfasını döndürmek isterseniz, baştan başlamanız gerekir.
+  
+  Belgeleri tamamen atlamak ve istemci kaynaklarını kaydetmek istediğinizde `OFFSET LIMIT` durumlar için ' i kullanmanız gerekir. Örneğin, 1000th sorgu sonucuna atlamak istiyorsanız `OFFSET LIMIT` kullanmanız gerekir ve sonuçları 1 ile 999 arasında görüntüleme gereksinimi yoktur. Arka uçta, atlanan olanlar da dahil olmak üzere her bir belgeyi hala yükler `OFFSET LIMIT`. Performans avantajı, gerekli olmayan belgeleri işlemeyi önleyerek istemci kaynaklarındaki tasarruf sağlar.
 
 ## <a name="examples"></a>Örnekler
 
@@ -50,7 +54,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     OFFSET 1 LIMIT 1
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [
@@ -69,7 +73,7 @@ Sonuçlar:
     OFFSET 1 LIMIT 1
 ```
 
-Sonuçlar:
+Sonuçlar şunlardır:
 
 ```json
     [

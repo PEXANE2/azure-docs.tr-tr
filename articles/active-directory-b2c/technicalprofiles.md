@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 162597bf3d02cdfe53d321185b326bfbb1f6bd0d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712762"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773446"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -99,7 +99,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | OutputClaimsTransformations | 0:1 | Talep dönüşümlerinden talepler alındıktan sonra yürütülmesi gereken talep dönüştürmelerine yönelik önceden tanımlanmış başvuruların listesi. |
 | Validationcealprofiles | 0: n | Teknik profilin doğrulama amacıyla kullandığı diğer teknik profillerin başvurularını içeren bir liste. Daha fazla bilgi için bkz. [doğrulama teknik profili](validation-technical-profile.md)|
 | Subjectnamingınfo | 0:1 | Konu adının taleplerden ayrı olarak belirtildiği belirteçlerde konu adının üretimini denetler. Örneğin, OAuth veya SAML.  |
-| Includeınsso | 0:1 |  Bu teknik profilin kullanımının oturum için çoklu oturum açma (SSO) davranışını uygulayıp uygulamamalıdır, bunun yerine açık etkileşim gerekir. Olası değerler: `true` (varsayılan) veya `false`. |
+| Includeınsso | 0:1 |  Bu teknik profilin kullanımının oturum için çoklu oturum açma (SSO) davranışını uygulayıp uygulamamalıdır, bunun yerine açık etkileşim gerekir. Bu öğe yalnızca bir doğrulama teknik profili içinde kullanılan Selfasthted profillerinde geçerlidir. Olası değerler: `true` (varsayılan) veya `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Tüm giriş ve çıkış taleplerinin bu teknik profile eklenmesini istediğiniz teknik profilin bir tanımlayıcısı. Başvurulan teknik profil aynı ilke dosyasında tanımlanmalıdır. |
 | Includetekchnicalprofile |0:1 | Bu teknik profile tüm verilerin eklenmesini istediğiniz teknik profilin bir tanımlayıcısı. Başvurulan teknik profil aynı ilke dosyasında bulunmalıdır. |
 | Useteknisyen Alprofileforsessionmanagement | 0:1 | Oturum yönetimi için kullanılacak farklı bir teknik profil. |

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/23/2020
+ms.openlocfilehash: fd6d3e24adfc22d2f6ea17f09b8dea4638a054b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792283"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769035"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -59,8 +59,6 @@ Göz önünde bulundurulması gereken sınırlamalar vardır:
 
 
 ## <a name="create-a-replica"></a>Çoğaltma oluşturma
-Ana sunucuda `azure.replication_support` parametresi **çoğaltma**olarak ayarlanmış olmalıdır. Bu parametre değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir. (`azure.replication_support` parametresi yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş katmanlar için geçerlidir).
-
 Çoğaltma oluşturma iş akışını başlattığınızda, PostgreSQL için boş bir Azure veritabanı sunucusu oluşturulur. Yeni sunucu, ana sunucuda bulunan verilerle doldurulur. Oluşturma süresi, ana bilgisayardaki veri miktarına ve son haftalık tam yedeklemeden bu yana geçen zamana bağlıdır. Süre, birkaç dakika ile birkaç saat arasında değişebilir.
 
 Her çoğaltma, depolama [otomatik büyüme](concepts-pricing-tiers.md#storage-auto-grow)için etkinleştirilir. Otomatik büyüme özelliği, çoğaltmanın kendisine çoğaltılan verilerle kalmasına izin verir ve çoğaltma sırasında depolama hatalarından kaynaklanan bir kesmeyi önler.
@@ -148,7 +146,7 @@ Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük 
 
 Bu bölümde çoğaltma oku özelliği hakkında dikkat edilecek noktalar özetlenmektedir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bir okuma çoğaltması oluşturmadan önce, `azure.replication_support` parametresi ana sunucuda **çoğaltma** olarak ayarlanmalıdır. Bu parametre değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir. `azure.replication_support` parametresi yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş katmanlara uygulanır.
 
 ### <a name="new-replicas"></a>Yeni çoğaltmalar

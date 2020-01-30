@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b76441c8b11032d3713d7679acfc7f350533b76b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527935"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769188"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault istemci kitaplığı
 
@@ -22,7 +22,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
 - Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
 - Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
-- SSL/TLS sertifikaları için görevleri basitleştirme ve otomatikleştirme.
+- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
 [API başvuru belgeleri](/python/api/overview/azure/key-vault?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [paketi (Python paket dizini)](https://pypi.org/project/azure-keyvault/)

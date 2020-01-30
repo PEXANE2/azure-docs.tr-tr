@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950995"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840409"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
 
@@ -29,11 +29,11 @@ Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Ka
 > [!NOTE]
 > Bu makale, şu anda dağıtılmış olan API 'Leri ve `login.microsoftonline.com` başvuruda bulunan ve önerilen `b2clogin.com` uç noktasına geçiş yapmak isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
-* Kiracınızda oluşturulan [Kullanıcı akışları](tutorial-create-user-flows.md) veya [özel ilkeler](active-directory-b2c-get-started-custom.md)
+* Kiracınızda oluşturulan [Kullanıcı akışları](tutorial-create-user-flows.md) veya [özel ilkeler](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>Belirteç Verenin uç noktalarını al
 
@@ -147,7 +147,7 @@ Uç nokta dizeleri Web uygulamasının yürütülmesi sırasında oluşturulduğ
 
 Bu makalede, birden çok veren uç noktasından belirteçleri kabul etmek için Microsoft OWıN ara yazılımı (Katana) uygulayan bir Web API 'SI yapılandırma yöntemi sunulmuştur. Fark edebilirsiniz, ancak bu projeleri kendi kiracınızda derlemek ve çalıştırmak istiyorsanız, değiştirilmesi gereken hem TaskService hem de TaskWebApp projelerinin *Web. config* dosyalarında bulunan birkaç başka dize vardır. Projeleri eylemde görmek istiyorsanız uygun şekilde değiştirmek için hoş geldiniz, ancak bunu yaparak tam bir adım adım bu makalenin kapsamı dışındadır.
 
-Azure AD B2C tarafından yayılan farklı güvenlik belirteçleri türleri hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](active-directory-b2c-reference-tokens.md).
+Azure AD B2C tarafından yayılan farklı güvenlik belirteçleri türleri hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](tokens-overview.md).
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

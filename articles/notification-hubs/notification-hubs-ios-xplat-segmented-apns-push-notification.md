@@ -16,12 +16,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228154"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774879"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında Iletme bildirimleri gönderin
 
@@ -41,7 +41,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Cihazdan bildirim gönder
 > * Uygulamayı çalıştırma ve bildirimler oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri aracılığıyla][get-started]oluşturduğunuz uygulamayı oluşturur. Bu öğreticiye başlamadan önce, [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri][get-started]zaten tamamlanmış olmalıdır.
 
@@ -159,7 +159,7 @@ Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına an�
 9. `AppDelegate.m``didRegisterForRemoteNotificationsWithDeviceToken` yönteminde, yöntem içindeki kodu aşağıdaki kodla değiştirin ve cihaz belirtecini `notifications` sınıfına geçirin. `notifications` sınıfı kategoriler ile bildirimler için kayıt işlemini gerçekleştirir. Kullanıcı kategori seçimlerini değiştirirse, güncelleştirmek için **abone ol** düğmesine yanıt olarak `subscribeWithCategories` yöntemini çağırın.
 
     > [!NOTE]
-    > Apple Anında İletilen Bildirim Servisi (APNS) tarafından atanan cihaz belirteci herhangi bir zamanda şans sağladığından, bildirim hatalarından kaçınmak için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
+    > Apple Anında İletilen Bildirim Servisi (APNS) tarafından atanan cihaz belirteci herhangi bir zamanda değiştirebildiğinden, bildirim hatalarından kaçınmak için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
     ```objc
     self.notifications.deviceToken = deviceToken;

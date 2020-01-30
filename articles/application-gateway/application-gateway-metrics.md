@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704587"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766793"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -22,7 +22,9 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
 ### <a name="timing-metrics"></a>Zamanlama ölçümleri
 
-İstek ve yanıtın zamanlaması ile ilgili aşağıdaki ölçümler kullanılabilir. Belirli bir dinleyici için bu ölçümleri çözümleyerek, WAN, Application Gateway, Application Gateway ile arka uç uygulaması arasındaki ağ veya arka uç uygulama performansı arasındaki uygulamada yavaşlamanın olup olmadığını belirleyebilirsiniz.
+Application Gateway, her türlü istek ve Yanıtla ilgili, milisaniye cinsinden ölçülen çeşitli yerleşik zamanlama ölçümleri sağlar. 
+
+![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -30,28 +32,41 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
 - **Arka uç bağlantı saati**
 
-  Bir arka uç uygulamasıyla bağlantı kurmaya harcanan süre. Bu, yeni bağlantılar kurmak için arka uç sunucusunun TCP yığınının yanı sıra ağ gecikmesini da içerir. SSL söz konusu olduğunda, el sıkışma durumunda harcanan süreyi de içerir. 
+  Arka uç uygulamasıyla bağlantı kurmaya harcanan süre. 
+
+  Bu, yeni bağlantılar kurmak için arka uç sunucusunun TCP yığınının yanı sıra ağ gecikmesini da içerir. SSL söz konusu olduğunda, el sıkışma durumunda harcanan süreyi de içerir. 
 
 - **Arka uç ilk bayt yanıt süresi**
 
-  Arka uç sunucusuna bağlantı kurma ve Yanıt üstbilgisinin ilk baytını alma arasındaki zaman aralığı. Bu, arka uç *bağlantı süresinin* ve arka uç uygulamasının yanıt süresinin (sunucunun içerik oluşturma süresi, büyük olasılıkla veritabanı sorguları getirme ve yanıt Application Gateway 'e geri aktarmaya başlama zamanı) toplamına yaklaştırır
+  Arka uç sunucusuna bağlantı kurma ve Yanıt üstbilgisinin ilk baytını alma arasındaki zaman aralığı. 
+
+  Bu, arka uca *bağlantı süresinin*toplamı, Application Gateway ' den arka uca ulaşmak için geçen süre (sunucunun içerik oluşturmak için geçen süre, büyük olasılıkla veritabanı sorguları) ve arka uçta Application Gateway ulaşmak için yanıtın ilk baytından geçen süre kadar yaklaşık bir süredir.
 
 - **Arka uç son bayt yanıt süresi**
 
-  Arka uç sunucusuna bağlantı kurma ve yanıt gövdesinin son baytını alma arasındaki zaman aralığı. Bu, *arka uç ilk bayt yanıt süresi* ve veri aktarımı süresinin toplamına yaklaştırır (Bu sayı, istenen nesnelerin boyutuna ve sunucu ağının gecikme süresine göre büyük ölçüde farklılık gösterebilir)
+  Arka uç sunucusuna bağlantı kurma ve yanıt gövdesinin son baytını alma arasındaki zaman aralığı. 
+
+  Bu, *arka uç ilk bayt yanıt süresi* ve veri aktarımı süresinin toplamına yaklaştırır (Bu sayı, istenen nesnelerin boyutuna ve sunucu ağının gecikme süresine göre büyük ölçüde farklılık gösterebilir).
 
 - **Application Gateway toplam süre**
 
-  Bir isteğin işlenmesi için geçen ortalama süre ve gönderilecek yanıt. Bu, yanıt gönderme işleminin bittiği zamana yönelik bir HTTP isteğinin ilk baytını Application Gateway zaman aralığının ortalaması olarak hesaplanır. Bu işlem, Application Gateway işleme süresinin ve *arka uç son bayt yanıt süresinin* toplamına yaklaştırır
+  İstek alma, işleme ve gönderme yanıtı için geçen ortalama süre. 
+
+  Bu, Application Gateway HTTP isteğinin ilk baytını istemciye Son Yanıt baytı gönderilirken geçen zaman olan aralıktır. Bu, Application Gateway tarafından alınan işlem süresini, *arka uç son bayt yanıt süresini*, tüm yanıtı ve *istemci RTT*'yi göndermek için Application Gateway tarafından alınan süreyi içerir.
 
 - **İstemci RTT**
 
-  İstemcilerle Application Gateway arasında ortalama gidiş dönüş süresi. Bu ölçüm, bağlantı kurmak ve bildirimleri döndürmek için ne kadar sürdüğünü gösterir. 
-
-Bu ölçümler, gözlemlenen yavaşlama 'nın Application Gateway, ağ ve arka uç sunucusu TCP yığını doygunluğu, arka uç uygulama performansı veya büyük dosya boyutu nedeniyle olup olmadığını anlamak için kullanılabilir.
-Örneğin, arka uç ilk bayt yanıt süresi içinde bir ani artış varsa, ancak arka uç bağlantı saati sabit ise, uygulama ağ geçidinin arka uç gecikmesi ve bağlantı kurmak için geçen zaman ve ani bir süre nedeniyle meydana gelen arka uç uygulamasının yanıt süresi içinde n arttırın. Benzer şekilde, arka uç ilk bayt yanıt süresi içinde ani artış, arka uç bağlantı zamanında karşılık gelen bir ani ile ilişkiliyse, ağ veya sunucu TCP yığınında doygun olduğu anlaşılamıyor. Arka uç son bayt yanıt süresi içinde bir ani artış fark ederseniz, ancak arka uç ilk bayt yanıt süresi sabit ise, büyük olasılıkla ani bir dosya istenmekte olur. Benzer şekilde, uygulama ağ geçidi toplam süre, arka uç son bayt yanıt süresinden çok daha fazla ise, Application Gateway performans sorununa yönelik bir işaret olabilir.
+  İstemcilerle Application Gateway arasında ortalama gidiş dönüş süresi.
 
 
+
+Bu ölçümler, gözlemlenen yavaşlamanın istemci ağı, Application Gateway performans, arka uç ağı ve arka uç sunucusu TCP yığını doygunluğu, arka uç uygulama performansı veya büyük dosya boyutu nedeniyle olup olmadığını belirlemede kullanılabilir.
+
+Örneğin, *arka uç ilk bayt yanıt süresi* eğilimi, ancak *arka uç bağlantı zamanı* eğilimi kararlı ise, uygulama ağ geçidinin arka uç gecikmesi ve bağlantı kurma süresi kararlı olduğunu ve ani bir şekilde arka uç uygulamasının yanıt süresi boyunca bir artış meydana geldiğini çıkarmış olabilir. Öte yandan, arka uç *ilk bayt yanıt süresi* içindeki ani artış, *arka uç bağlantı zamanında*karşılık gelen bir ani ilişkili ise, Application Gateway ile arka uç sunucusu veya arka uç sunucusu TCP yığını arasındaki ağın doymuş olduğu anlaşılamıyor. 
+
+*Arka uç son bayt yanıt* süresi içinde bir ani artış fark ederseniz, ancak *arka uç ilk bayt yanıt süresi* kararlı olduğunda, bu durumda ani bir dosya istenmekte olduğundan emin olabilir.
+
+Benzer şekilde, *uygulama ağ geçidinin toplam süresi* bir ani, ancak *arka uç son bayt yanıt süresi* kararlı ise, Application Gateway bir performans sorunu ya da istemci ile Application Gateway arasında ağ üzerinde tıkanıklık olabilir. Ayrıca, *ISTEMCI RTT* de karşılık gelen bir ani ağa sahipse, bu, istemci ile Application Gateway arasındaki ağ nedeniyle düşüşün olduğunu gösterir.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway ölçümleri
 
@@ -112,11 +127,11 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Sağlıklı konak sayısı**
 
-  Sistem durumu araştırması tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı/sağlıksız Konakları göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
+  Sistem durumu araştırması tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
 - **Sağlıksız konak sayısı**
 
-  Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzunda sağlıklı olmayan Konakları göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
+  Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway v1 SKU 'SU tarafından desteklenen ölçümler
 
@@ -158,11 +173,11 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Sağlıklı konak sayısı**
 
-  Sistem durumu araştırması tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı/sağlıksız Konakları göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
+  Sistem durumu araştırması tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
 - **Sağlıksız konak sayısı**
 
-  Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzunda sağlıklı olmayan Konakları göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
+  Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
 ## <a name="metrics-visualization"></a>Ölçüm görselleştirme
 

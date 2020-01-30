@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951046"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840205"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -38,7 +38,7 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 - [Reişsiz sağlayıcı](restful-technical-profile.md) -Kullanıcı girişini doğrulama, Kullanıcı verilerini zenginleştirme veya iş kolu uygulamalarıyla tümleştirme gibi REST API hizmetleri için çağrı.
 - [SAML2](saml-technical-profile.md) -Federasyon protokol kimlik sağlayıcısıyla Federasyonu.
 - [Kendi kendine onaylanan](self-asserted-technical-profile.md) -kullanıcıyla etkileşime geçin. Örneğin, oturum açmak için kullanıcının kimlik bilgisini toplayın, kaydolma sayfasını veya parola sıfırlamayı izleyin.
-- [Oturum yönetimi](active-directory-b2c-reference-sso-custom.md) -farklı oturum türlerini işleyin.
+- [Oturum yönetimi](custom-policy-reference-sso.md) -farklı oturum türlerini işleyin.
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>Teknik profil akışı
@@ -49,7 +49,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
  
 1. Her giriş [talebi dönüşümünün](claimstransformations.md) giriş talepleri, talep çantasından alınır ve yürütmeden sonra çıkış talepleri talep paketine geri konur. Bir giriş talep dönüşümünün çıkış talepleri, sonraki bir giriş talebi dönüşümünün giriş talepleri olabilir.
 2. **Inputclaim** -talepler, talep çantasından alınır ve teknik profil için kullanılır. Örneğin, [kendinden onaylanan bir teknik profil](self-asserted-technical-profile.md) , kullanıcının sağladığı çıkış taleplerini önceden doldurmak için giriş taleplerini kullanır. REST API teknik bir profil, giriş parametrelerini REST API uç noktasına göndermek için giriş taleplerini kullanır. Azure Active Directory, hesap okumak, güncelleştirmek veya silmek için benzersiz bir tanımlayıcı olarak giriş talebi kullanır.
-3. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örnek:
+3. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örneğin:
     - Oturum açma işleminin tamamlanabilmesi için kullanıcıyı kimlik sağlayıcısına yönlendirin. Başarılı oturum açma işleminden sonra Kullanıcı geri döner ve teknik profil yürütme devam eder.
     - Parametreleri ınputtalepler olarak gönderirken ve Outputclaim olarak geri bilgi alırken bir REST API çağırın.
     - Kullanıcı hesabı oluşturun veya güncelleştirin.
@@ -57,7 +57,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 4. **Validationcealprofiles** - [kendi kendini onaylanan teknik profil](self-asserted-technical-profile.md)için bir giriş [doğrulaması teknik profili](validation-technical-profile.md)çağırabilirsiniz. Doğrulama teknik profili, Kullanıcı tarafından profili oluşturulan verileri doğrular ve çıkış taleplerini içeren veya içermeyen bir hata iletisi veya Tamam döndürür. Örneğin, Azure AD B2C yeni bir hesap oluşturmadan önce, kullanıcının dizin hizmetlerinde zaten var olup olmadığını denetler. Kendi iş mantığınızı eklemek için REST API teknik bir profil çağırabilirsiniz.<p>Doğrulama teknik profilinin çıkış taleplerinin kapsamı, aynı teknik profil altında doğrulama teknik profilini ve diğer doğrulama teknik profillerini çağıran teknik profille sınırlandırılmıştır. Sonraki düzenleme adımında çıkış taleplerini kullanmak istiyorsanız, çıkış taleplerini doğrulama teknik profilini çağıran teknik profile eklemeniz gerekir.
 5. **Outputclaim** -talepler, talep çantasına geri döndürülür. Bu talepleri sonraki düzenlemeler adımında veya çıkış talepleri dönüşümlerine göre kullanabilirsiniz.
 6. Her çıkış [talep dönüşümünün](claimstransformations.md) giriş talepleri, talep çantasından alınır. Önceki adımlardan teknik profilin çıkış talepleri, çıkış talep dönüşümünün giriş talepleri olabilir. Yürütmeden sonra, çıkış talepleri talep çantasına geri konur. Çıkış talep dönüşümünün çıkış talepleri, sonraki bir çıkış talebi dönüşümünün giriş talepleri de olabilir.
-7. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](active-directory-b2c-reference-sso-custom.md) , kullanıcının kimliği doğrulandıktan sonra Kullanıcı ile etkileşimi denetler. Örneğin, yönetici, kimlik sağlayıcılarının seçiminin görüntülenip görüntülenmediğini veya yerel hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir.
+7. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md) , kullanıcının kimliği doğrulandıktan sonra Kullanıcı ile etkileşimi denetler. Örneğin, yönetici, kimlik sağlayıcılarının seçiminin görüntülenip görüntülenmediğini veya yerel hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir.
 
 Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için başka bir teknik profilden devralınabilir.  **Includetekchnicalprofile** öğesi, bir teknik profilin türetildiği temel teknik profile bir başvurudur.
 

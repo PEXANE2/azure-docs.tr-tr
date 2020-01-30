@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444519"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773855"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -129,6 +129,12 @@ CosmosDB havuzları üzerinde üretilen iş ve Batch özelliklerinin ayarlanmas�
 * Toplu iş boyutu: verilerinizin kaba satır boyutunu hesaplayın ve rowSize * toplu iş boyutunun 2.000.000 ' den küçük olduğundan emin olun. Varsa, daha iyi aktarım hızı sağlamak için toplu iş boyutunu artırın
 * Aktarım hızı: belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir verimlilik ayarı ayarlayın. Lütfen yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
 *   Yazma aktarım hızı bütçesi: dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işi ayarlandığında, bu bölümlerde daha fazla dengelemek olur.
+
+## <a name="join-performance"></a>Performansa katılarak
+
+Veri akışınızdaki birleşimlerin performansını yönetmek, veri dönüştürmelerinizin yaşam döngüsü boyunca gerçekleştirdiğiniz çok yaygın bir işlemdir. ADF 'de, bu işlemler Spark 'ta Karma birleşimler olarak gerçekleştirilirken veri akışları verilerin birleşimlerden önce sıralanmasını gerektirmez. Bununla birlikte, "yayın" JOIN iyileştirmesi sayesinde geliştirilmiş performans avantajlarından yararlanabilirsiniz. Bu, JOIN ilişkiniz her iki tarafının içeriğini Spark düğümüne ileterek karışık bir şekilde kaçınacaktır. Bu, başvuru aramaları için kullanılan daha küçük tablolar için iyi bir sonuç verir. Düğümün belleğine sığamayacak olabilecek daha büyük tablolar yayın iyileştirmesi için iyi aday değildir.
+
+Başka bir birleştirme iyileştirmesi, birleşimlerinizi çapraz birleştirmeleri uygulamak için Spark 'un kullanım zamanlarını önleyecağından bu şekilde derlemenize olanak sağlar. Örneğin, JOIN koşullarınıza sabit değer değerleri dahil ettiğinizde Spark, önce tam bir Kartezyen ürün gerçekleştirmeye yönelik bir gereksinim olarak görebilir, sonra da birleştirilmiş değerleri filtreleyebiliriz. Ancak, birleştirme koşullarınızın her iki tarafında da sütun değerlerine sahip olduğunuzdan emin olduğunuzda, bu Spark kaynaklı Kartezyen ürünü kullanmaktan kaçınabilir ve birleşimlerinizin ve veri akışlarınızın performansını geliştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

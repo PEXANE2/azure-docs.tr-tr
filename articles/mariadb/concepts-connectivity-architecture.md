@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58f6e49280925b550deff21ecf04528d91d924d7
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d658a1fb590d117e116321bc854abd2753b5c0f1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760139"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775063"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MariaDB bağlantı mimarisi için Azure veritabanı 'nın yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden MariaDB örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -50,14 +50,14 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Hindistan Güney | 104.211.224.146  |
 | Hindistan Batı | 104.211.160.80    |
 | Japonya Doğu | 13.78.61.196, 191.237.240.43  |
-| Japonya Batı | 104.214.148.156, 191.238.68.11    |
+| Japonya Batı | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Kore Orta | 52.231.32.42   |
 | Kore Güney | 52.231.200.86    |
 | Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Kuzey Avrupa | 40.113.93.91, 191.235.193.75    |
 | Güney Afrika Kuzey  | 102.133.152.0    |
 | Güney Afrika Batı | 102.133.24.0   |
-| Orta Güney ABD |13.66.62.124, 23.98.162.75   |
+| Orta Güney ABD |13.66.62.124, 23.98.162.75, 20.45.120.0, 104.214.16.39   |
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | BAE Orta | 20.37.72.64  |
 | BAE Kuzey | 65.52.248.0    |

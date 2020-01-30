@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veri
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156480"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773126"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -24,6 +24,10 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Kasa oluşturun ve yapılandırın.
 > * Veritabanları bulun ve yedeklemeleri ayarlayın.
 > * Veritabanları için otomatik korumayı ayarlayın.
+
+>[!NOTE]
+>Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
+>Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -87,7 +91,7 @@ PowerShell kullanarak bir kural oluşturmak için:
 
 Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
 
-**Seçenek** | **Avantajlar** | **Dezavantajlar**
+**Seçenek** | **Üstünlü** | **Olumsuz**
 --- | --- | ---
 IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
 NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
@@ -191,7 +195,7 @@ VM üzerinde çalışan veritabanlarını bulma:
 
     ![Bildirim alanı](./media/backup-azure-sql-database/notifications-area.png)
 
-### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
+### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 

@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b6271805b9d14db9f2fdcd85d089962e9874f6ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701153"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833286"
 ---
 # <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
 
@@ -63,7 +63,7 @@ Yukarıdaki örnek senaryoda uygulamaları bu iki role göre sınıflandırabili
 
 İstemcinizin nasıl oluşturulduğuna bağlı olarak, Azure AD tarafından desteklenen kimlik doğrulama akışlarının birini (veya birkaçını) kullanabilir. Bu akışlar çeşitli belirteçler (id_tokens, yenileme belirteçleri, erişim belirteçleri) ve yetkilendirme kodlarını oluşturabilir ve bunların çalışmasını sağlamak için farklı belirteçler gerektirebilir. Bu grafik genel bakış sağlar:
 
-|Akış | Şunları gerektirir | id_token | erişim belirteci | belirteci Yenile | yetkilendirme kodu | 
+|Akış | Gerektirmeyen | id_token | erişim belirteci | belirteci Yenile | yetkilendirme kodu | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Yetkilendirme kodu akışı](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Örtük akış](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |

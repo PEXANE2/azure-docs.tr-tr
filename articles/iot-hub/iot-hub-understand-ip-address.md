@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: f05be2725ef766bb1e5fd7f2624e754a2e21698a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563182"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772158"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresleri
 
@@ -30,9 +30,11 @@ Ortak uç noktaların IoT Hub IP adresi önekleri, düzenli aralıklarla _AzureI
 
 * Cihazlarınızda ızın verme kuralları eklerken, [uygun protokoller tarafından kullanılan belirli bağlantı noktalarını](./iot-hub-devguide-protocols.md#port-numbers)sağlamak en iyisidir.
 
-* IoT Hub 'ının IP adresi önekleri değişebilir. Bu değişiklikler, etkin olmadan önce hizmet etiketleri aracılığıyla düzenli olarak yayımlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için işlem geliştirmeniz önemlidir. Bu işlem, [hizmet etiketleri bulma API 'si](../virtual-network/service-tags-overview.md#service-tags-on-premises)aracılığıyla otomatikleştirilebilir.
+* IoT Hub 'ının IP adresi önekleri değişebilir. Bu değişiklikler, etkin olmadan önce hizmet etiketleri aracılığıyla düzenli olarak yayımlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için işlem geliştirmeniz önemlidir. Bu işlem, [hizmet etiketleri bulma API 'si](../virtual-network/service-tags-overview.md#service-tags-on-premises)aracılığıyla otomatikleştirilebilir. Service Tags bulma API 'sinin hala önizlemede olduğunu ve bazı durumlarda etiketlerin ve IP adreslerinin tam listesini oluşturmadığını unutmayın. Keşif API 'SI genel kullanıma hazır olana kadar, [INDIRILEBILIR JSON biçiminde hizmet etiketlerini](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)kullanmayı göz önünde bulundurun. 
 
 * AzureIoTHub kullanın *. [ bölge adı]* etiketi, belirli bir bölgedeki IoT Hub uç noktaları tarafından kullanılan IP öneklerini belirler. Veri merkezi olağanüstü durum kurtarmaya veya [bölgesel yük devretmeye](iot-hub-ha-dr.md) yönelik hesaba gitmek için IoT Hub coğrafi ÇIFT bölgesinin IP öneklerine yönelik bağlantıların de etkinleştirildiğinden emin olun.
+
+* IoT Hub 'de güvenlik duvarı kuralları ayarlamak, IoT Hub Azure CLı ve PowerShell komutlarını çalıştırmak için gereken bağlantıyı engelleyebilir. Bunu önlemek için, istemcilerin IP adresi öneklerine ızın ver kuralları ekleyerek CLı veya PowerShell istemcilerinin IoT Hub iletişim kurmasını sağlayabilirsiniz.  
 
 
 ## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici çözümler
@@ -43,6 +45,6 @@ Ortak uç noktaların IoT Hub IP adresi önekleri, düzenli aralıklarla _AzureI
 
 * Bir depolama hesabına yönlendirdiğinde, IoT Hub IP adresi öneklerinden gelen trafiğe izin vermek, yalnızca depolama hesabı IoT Hub olarak farklı bir bölgedeyse mümkündür.
 
-## <a name="support-for-ipv6"></a>IPv6 için destek 
+## <a name="support-for-ipv6"></a>IPv6 desteği 
 
 IPv6 Şu anda IoT Hub desteklenmiyor.

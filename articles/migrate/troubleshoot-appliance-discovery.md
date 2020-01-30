@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289535"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772027"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -85,7 +85,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 60030 veya 60031 hatası alırsanız, "bir Azure Key Vault yönetim işlemi başarısız oldu", şunları yapın:
 - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
 - Hesabın hata iletisinde belirtilen anahtar kasasına erişimi olduğundan emin olun ve işlemi yeniden deneyin.
-- Sorun devam ederse, Microsoft destek ile iletişime geçin.
+- Sorun devam ederse, Microsoft desteği 'ne başvurun.
 - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) .
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Hata 60028: bulma başlatılamadı
@@ -131,7 +131,7 @@ Bu işe yaramazsa ve VMware sunucularını keşfederken:
 
 ## <a name="vm-data-not-in-portal"></a>VM verileri portalda yok
 
-Bulunan VM 'Ler portalda görünmezse, birkaç dakika bekleyin. Keşfedilen verilerin portalda görünmesi 30 dakika kadar sürer. 30 dakika sonra veri yoksa yenilemeyi şu şekilde deneyin
+Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç dakika bekleyin. Keşfedilen VM yapılandırma verilerinde yapılan değişikliklerin portalda görünmesi 30 dakika kadar sürer. Uygulama verilerinde değişikliklerin görünmesi birkaç saat sürebilir. Bu süreden sonra veri yoksa yenilemeyi şu şekilde deneyin
 
 1. **Azure sunucu değerlendirmesini geçir** > **sunucularında** **genel bakış**' ı seçin.
 2. **Yönet**altında **Aracı durumu**' yi seçin.
@@ -166,7 +166,8 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 9009: "sunucu yüklü uygulamalar alınamıyor". | Sunucu üzerindeki Windows Kullanıcı hesabı denetimi (UAC) ayarları kısıtlayıcıysa ve yüklü uygulamaların bulunmasını engelliyorsa, bu durum oluşabilir. | Sunucuda ' Kullanıcı hesabı denetimi ' ayarlarını arayın ve sunucudaki UAC ayarını alt iki düzeyden birine yapılandırın.
 9010: "sunucu yüklü uygulamalar alınamıyor". | Bir iç hata olabilir.  | TF sorun, 24 saat içinde kendiliğinden çözümlenmiyor, desteğe başvurun.
 8084: "VMware hatası nedeniyle uygulamalar bulunamıyor: <Exception from VMware>" | Azure geçişi gereci, uygulamaları bulmaya yönelik VMware API 'Lerini kullanır. Bu sorun, uygulamalar bulunmaya çalışılırken vCenter Server tarafından bir özel durum oluşturulursa meydana gelebilir. VMware 'den hata iletisi, portalda gösterilen hata iletisinde görüntülenir. | [VMware belgelerindeki](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)iletiyi arayın ve onarmak için adımları izleyin. Bu hatayı düzeltemedi, Microsoft destek 'e başvurun.
-
+9012: "sunucuda yüklü uygulamalar bulunamadı" | Sorun, bir iç hata nedeniyle oluşabilir.  | Sorun, 24 saat içinde kendiliğinden çözümlenmezse desteğe başvurun.
+9013: "sunucuda yüklü uygulamalar bulunamadı" | Sanal makinede her oturum açtığınızda yeni bir geçici profil oluşturulur.  | Belirtilen Konuk Kullanıcı için geçici bir profilin oluşturulmadığından emin olun.
 
 
 

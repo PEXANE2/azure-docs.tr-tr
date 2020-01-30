@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450697"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765757"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
 
@@ -20,19 +20,28 @@ Bu genel kullanılabilirlik SSS, GA sürümümüzü hazırlarken VM'ler için Az
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için güncelleştirmeler
 
-VM'ler için Azure İzleyici Ocak 2020 ' de yeni bir sürümünü yayınlamak planlıyoruz. Bu sürümden sonra sanal makineler için Azure Izleyicilerini etkinleştiren müşteriler otomatik olarak yeni sürümü alır, ancak VM'ler için Azure İzleyici kullanan mevcut müşterilerin yükseltilmesi istenir. Bu SSS ve Belgelerimiz, birden çok çalışma alanı genelinde büyük dağıtımlarınız varsa, bir yükseltmeyi bir yükseltme gerçekleştirmeye yönelik rehberlik sunar.
+VM'ler için Azure İzleyici yeni bir sürümünü yayımladık. VM 'Ler için Azure Izleyicilerini etkinleştiren müşteriler artık yeni sürümü alacak, ancak zaten VM'ler için Azure İzleyici kullanan mevcut müşterilerin yükseltilmesi istenecektir. Bu SSS ve Belgelerimiz, birden çok çalışma alanı genelinde büyük dağıtımlarınız varsa, bir yükseltmeyi bir yükseltme gerçekleştirmeye yönelik rehberlik sunar.
 
-Bu yükseltme ile VM'ler için Azure İzleyici performans verileri, [kapsayıcılar Için Azure izleyici](container-insights-overview.md)ile aynı `InsightsMetrics` tabloda depolanır ve iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. Performans görünümlerimiz bu yeni tabloyu kullanmaları için güncelleştirilecek.
+Bu yükseltme ile VM'ler için Azure İzleyici performans verileri, [kapsayıcılar Için Azure izleyici](container-insights-overview.md)olarak aynı *ınsightsölçümlerini* tablosunda depolanır ve bu da iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullanılan tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz. 
 
-Bağlantı veri kümelerimiz için yeni veri türlerine geçeceğiz. Bu değişiklik Aralık 2019 ' de gerçekleşmeyecek ve bir Azure Update bloguna duyurulacaktır. Özel günlük tabloları olan `ServiceMapComputer_CL` ve `ServiceMapProcess_CL`depolanan veriler, `VMComputer` ve `VMProcess`adlı adanmış veri türlerine taşınır. Adanmış veri türlerine geçerek, veri alımı için öncelik alırlar ve tablo şeması tüm müşteriler genelinde standartlaştırılmış olacaktır.
+Sonraki hafta veya iki adımda, bu yeni tabloyu kullanmak için performans görünümlerimiz de güncelleştirilecektir.
 
 Var olan müşterilerin yükseltmesini isteyen iş akışının kesintiye uğramasına neden olduğunu fark ettik. bu nedenle, bu işlemi daha sonra daha sonra genel önizleme aşamasında yapmayı tercih ediyoruz.
 
-## <a name="what-is-changing"></a>Değişen nedir?
 
-Şu anda VM'ler için Azure İzleyici için ekleme işlemini tamamladığınızda, izleme verilerinizi depolamak için seçtiğiniz çalışma alanındaki Hizmet Eşlemesi çözümünü etkinleştirir ve ardından sanal makinelerinizden Topladığımız veriler için performans sayaçlarını yapılandırabilirsiniz. Veri toplama için ek yetenekler ve bu verileri Log Analytics çalışma alanınızda depolamak için yeni bir konum içeren **Vminsıghts**adlı yeni bir çözüm yayımlayacağız.
+## <a name="what-is-changing"></a>Ne değişiyor?
 
-Log Analytics çalışma alanınızda performans sayaçlarını kullanmanın geçerli sürecimiz, verileri `Perf` tablosuna gönderir. Bu yeni çözüm, verileri kapsayıcılar için Azure Izleyici tarafından da kullanılan `InsightsMetrics` adlı bir tabloya gönderir. Bu tablo şeması, Performans Tablosu biçimiyle uyumlu olmayan ek ölçümleri ve hizmet veri kümelerini depolamamızı sağlar.
+Veri toplamaya yönelik ek yetenekler ve bu verileri Log Analytics çalışma alanınızda depolamak için yeni bir konum içeren Vminsıghts adlı yeni bir çözüm yayımladık. 
+
+Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve verileri *perf* tablosuna göndermek için Log Analytics çalışma alanınızdaki performans sayaçlarını ayarlayın. Bu yeni çözüm, verileri, kapsayıcılar için Azure Izleyici tarafından da kullanılan *ınsightsölçümlerini* adlı bir tabloya gönderir. Bu tablo şeması, *performans* Tablosu biçimiyle uyumlu olmayan ek ölçümleri ve hizmet veri kümelerini depolamamızı sağlar.
+
+
+## <a name="how-do-i-upgrade"></a>Nasıl yaparım? yükseltmesi yapılsın mı?
+Yükseltme gerektiren her VM, Azure portal VM'ler için Azure İzleyici **başlama** sekmesinde belirlenir. Tek bir VM 'yi yükseltebilir veya birden çok öğesini seçerek yükseltebilirsiniz. PowerShell kullanarak yükseltmek için aşağıdaki komutu kullanın:
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Vminsıghts çözümünü yüklediğimde çalışma alanım 'daki performans sayaçlarından ne yapmam gerekir?
 

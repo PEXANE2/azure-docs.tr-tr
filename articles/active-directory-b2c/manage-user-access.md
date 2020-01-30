@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367119"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840443"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
@@ -56,7 +56,7 @@ Aşağıda, ebeveyn onayını toplamak için bir Kullanıcı akışı örneği v
 
 5. İkincil veya yetişkin iptal edildiğinde, **consentProvidedForMinor** **DEğIşTIRMEk için Azure**ad Graph API kullanılabilir. Alternatif olarak, uygulama, onayı iptal edilmiş bir ikincil silme işlemi de seçebilir. Kullanıcı akışının, kimliği doğrulanmış alt öğe (veya ikincil hesabı kullanan üst) onayı iptal edebilmesi için, bu, isteğe bağlı olarak özelleştirilebilir. Azure AD B2C kayıtları **reddedildi**olarak **consentProvidedForMinor** .
 
-**Ligalagegroupclassification**, **ConsentProvidedForMinor**ve **agegroup**hakkında daha fazla bilgi için bkz. [Kullanıcı kaynak türü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Özel öznitelikler hakkında daha fazla bilgi için bkz. [Tüketicileriniz hakkında bilgi toplamak için özel öznitelikler kullanma](active-directory-b2c-reference-custom-attr.md). Azure AD Graph API kullanarak genişletilmiş öznitelikleri adresleyerek, özniteliğin uzun sürümünü kullanmanız gerekir (örneğin, *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*).
+**Ligalagegroupclassification**, **ConsentProvidedForMinor**ve **agegroup**hakkında daha fazla bilgi için bkz. [Kullanıcı kaynak türü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Özel öznitelikler hakkında daha fazla bilgi için bkz. [Tüketicileriniz hakkında bilgi toplamak için özel öznitelikler kullanma](user-flow-custom-attributes.md). Azure AD Graph API kullanarak genişletilmiş öznitelikleri adresleyerek, özniteliğin uzun sürümünü kullanmanız gerekir (örneğin, *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*).
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Doğum tarihi ve ülke/bölge verileri toplama
 

@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552143"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769503"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örnekler aracılığıyla Data Factory fiyatlandırmasını anlama
 
@@ -156,7 +156,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 \*, 10 TTL ile genel Işlem için 16 çekirdek |
 | İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
-**Toplam senaryo fiyatlandırması: $0,3011**
+**Toplam senaryo fiyatlandırması: $1,4631**
 
 - Data Factory Işlemler = **$0,0001**
   - Okuma/yazma = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]

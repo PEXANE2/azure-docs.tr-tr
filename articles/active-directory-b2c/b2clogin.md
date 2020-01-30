@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75367663"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836351"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
@@ -46,7 +46,7 @@ Uygulamalarınızı *b2clogin.com*'e geçirmek için yapmanız gerekebilecek bir
 
 * Kimlik sağlayıcınızın uygulamalarındaki yeniden yönlendirme URL 'sini *b2clogin.com*başvurusuna değiştirin.
 * Azure AD B2C uygulamalarınızı, Kullanıcı akışında ve belirteç uç noktası başvurularında *b2clogin.com* kullanacak şekilde güncelleştirin.
-* [Kullanıcı arabirimi özelleştirmesi](active-directory-b2c-ui-customization-custom-dynamic.md)için CORS ayarlarında tanımladığınız tüm **izin verilen kaynakları** güncelleştirin.
+* [Kullanıcı arabirimi özelleştirmesi](custom-policy-ui-customization-dynamic.md)için CORS ayarlarında tanımladığınız tüm **izin verilen kaynakları** güncelleştirin.
 
 ## <a name="change-identity-provider-redirect-urls"></a>Kimlik sağlayıcısı yeniden yönlendirme URL 'Lerini Değiştir
 

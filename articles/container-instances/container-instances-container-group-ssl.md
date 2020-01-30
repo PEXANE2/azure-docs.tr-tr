@@ -3,22 +3,22 @@ title: Bir kapsayıcı grubunda SSL 'yi etkinleştirme
 description: Azure Container Instances çalıştıran bir kapsayıcı grubu için SSL veya TLS uç noktası oluşturma
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483479"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773069"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Bir kapsayıcı grubunda SSL uç noktasını etkinleştirme
 
 Bu makalede, bir uygulama kapsayıcısına ve bir SSL sağlayıcısı çalıştıran bir sepet kapsayıcısına sahip bir [kapsayıcı grubu](container-instances-container-groups.md) oluşturma gösterilmektedir. Ayrı bir SSL uç noktasıyla bir kapsayıcı grubu ayarlayarak, uygulama kodunuzu değiştirmeden uygulamanız için SSL bağlantılarını etkinleştirirsiniz.
 
-İki kapsayıcıdan oluşan bir kapsayıcı grubu ayarlarsınız:
+İki kapsayıcıdan oluşan örnek bir kapsayıcı grubu ayarlarsınız:
 * Genel Microsoft [aci-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) görüntüsünü kullanarak basit bir Web uygulaması çalıştıran bir uygulama kapsayıcısı. 
 * SSL kullanmak üzere yapılandırılmış genel [NGINX](https://hub.docker.com/_/nginx) görüntüsünü çalıştıran bir sepet kapsayıcısı. 
 
-Bu örnekte, kapsayıcı grubu yalnızca NGINX için 443 numaralı bağlantı noktasını genel IP adresiyle kullanıma sunar. NGINX, HTTPS isteklerini 80 numaralı bağlantı noktasında dinleme yaptığı yardımcı Web uygulamasına yönlendirir. Diğer bağlantı noktalarını dinleyen kapsayıcı uygulamalarına yönelik örneği uyarlayabilirsiniz.
+Bu örnekte, kapsayıcı grubu yalnızca NGINX için 443 numaralı bağlantı noktasını genel IP adresiyle kullanıma sunar. NGINX, HTTPS isteklerini 80 numaralı bağlantı noktasında dinleme yaptığı yardımcı Web uygulamasına yönlendirir. Diğer bağlantı noktalarını dinleyen kapsayıcı uygulamalarına yönelik örneği uyarlayabilirsiniz. Bir kapsayıcı grubunda SSL 'yi etkinleştirmeye yönelik diğer yaklaşımlara yönelik [sonraki adımlara](#next-steps) bakın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -226,7 +226,7 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 ![Bir Azure kapsayıcı örneğinde çalışan uygulamayı gösteren tarayıcı ekran görüntüsü](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Bu örnek, bir sertifika yetkilisinden değil, otomatik olarak imzalanan bir sertifika kullandığından, tarayıcıda HTTPS üzerinden bağlantı kurulurken bir güvenlik uyarısı görüntülenir. Bu davranış beklenmektedir.
+> Bu örnek, bir sertifika yetkilisinden değil, otomatik olarak imzalanan bir sertifika kullandığından, tarayıcıda HTTPS üzerinden bağlantı kurulurken bir güvenlik uyarısı görüntülenir. Bu beklenen bir davranıştır.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -235,4 +235,10 @@ Bu makalede, kapsayıcı grubunda çalışan bir Web uygulamasına SSL bağlant�
 
 Bu makalede dışarıdan yükleme sırasında NGINX kullanılıyorsa, [Caddy](https://caddyserver.com/)gibi başka bir SSL sağlayıcısı da kullanabilirsiniz.
 
-Bir kapsayıcı grubunda SSL 'yi etkinleştirmeye yönelik başka bir yaklaşım, [Azure Application Gateway](../application-gateway/overview.md)Ile bir [Azure sanal ağında](container-instances-vnet.md) grubu dağıtmaktır. Ağ Geçidi, bir SSL uç noktası olarak ayarlanabilir. Ağ geçidinde SSL sonlandırmasını etkinleştirmek için uyarlayabileceğiniz bir örnek [dağıtım şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) görüntüleyin.
+Kapsayıcı grubunuzu bir [Azure sanal ağında](container-instances-vnet.md)dağıtırsanız, aşağıdakiler de dahil olmak üzere arka uç kapsayıcı ÖRNEĞI için SSL uç noktası etkinleştirmek üzere diğer seçenekleri göz önünde bulundurun:
+
+* [Azure İşlev Proxy'leri](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+Uygulama Ağ Geçidi kullanmak için bkz. örnek [dağıtım şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

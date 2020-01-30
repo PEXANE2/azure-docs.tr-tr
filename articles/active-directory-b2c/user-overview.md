@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620465"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840069"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
 
@@ -76,12 +76,12 @@ Konuk Kullanıcı davet etmek için [MICROSOFT Graph API](https://docs.microsoft
 
 ## <a name="consumer-user"></a>Tüketici kullanıcısı
 
-Tüketici Kullanıcı Azure AD B2C tarafından güvenliği sağlanmış uygulamalarda oturum açabilir, ancak Azure portal gibi Azure kaynaklarına erişemez. Tüketici kullanıcısı, Facebook veya Twitter gibi yerel bir hesabı veya Federasyon hesaplarını kullanabilir. Bir tüketici hesabı bir [kaydolma veya oturum açma Kullanıcı akışı](../active-directory-b2c/active-directory-b2c-reference-policies.md)kullanılarak, Azure AD Graph API kullanılarak veya Azure Portal kullanılarak oluşturulur.
+Tüketici Kullanıcı Azure AD B2C tarafından güvenliği sağlanmış uygulamalarda oturum açabilir, ancak Azure portal gibi Azure kaynaklarına erişemez. Tüketici kullanıcısı, Facebook veya Twitter gibi yerel bir hesabı veya Federasyon hesaplarını kullanabilir. Bir tüketici hesabı bir [kaydolma veya oturum açma Kullanıcı akışı](user-flow-overview.md)kullanılarak, Azure AD Graph API kullanılarak veya Azure Portal kullanılarak oluşturulur.
 
-Özel Kullanıcı özniteliklerini kullanarak bir tüketici Kullanıcı hesabı oluşturulduğunda toplanan verileri belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C özel öznitelikleri tanımlama](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
+Özel Kullanıcı özniteliklerini kullanarak bir tüketici Kullanıcı hesabı oluşturulduğunda toplanan verileri belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C özel öznitelikleri tanımlama](user-flow-custom-attributes.md).
 
-Azure AD B2C bir tüketici hesabı oluşturmak için [Azure AD Graph API kullanma](active-directory-b2c-devquickstarts-graph-dotnet.md) konusunun **Tüketici Kullanıcı hesapları oluştur** bölümündeki bilgileri kullanabilirsiniz. Ayrıca, hesap özelliklerini yönetmek için aynı makalede bulunan **Müşteri Kullanıcı hesaplarını Güncelleştir** bölümündeki bilgileri de kullanabilirsiniz.
+Azure AD B2C bir tüketici hesabı oluşturmak için [Azure AD Graph API kullanma](manage-user-accounts-graph-api.md) konusunun **Tüketici Kullanıcı hesapları oluştur** bölümündeki bilgileri kullanabilirsiniz. Ayrıca, hesap özelliklerini yönetmek için aynı makalede bulunan **Müşteri Kullanıcı hesaplarını Güncelleştir** bölümündeki bilgileri de kullanabilirsiniz.
 
 ### <a name="migrate-consumer-user-accounts"></a>Tüketici Kullanıcı hesaplarını geçirme
 
-Mevcut tüketici Kullanıcı hesaplarını herhangi bir kimlik sağlayıcısından Azure AD B2C geçirmeniz gerekebilir. Daha fazla bilgi için bkz. [Kullanıcı geçişi](active-directory-b2c-user-migration.md) veya [sosyal kimlikleri olan kullanıcıları geçirme](active-directory-b2c-social-migration.md).
+Mevcut tüketici Kullanıcı hesaplarını herhangi bir kimlik sağlayıcısından Azure AD B2C geçirmeniz gerekebilir. Daha fazla bilgi için bkz. [Kullanıcı geçişi](user-migration.md) veya [sosyal kimlikleri olan kullanıcıları geçirme](migrate-social-identities.md).

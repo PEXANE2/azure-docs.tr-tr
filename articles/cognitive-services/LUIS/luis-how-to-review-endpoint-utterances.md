@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: ed0b9450217b06ff145641d9e268ccee28ee49b2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710591"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775106"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta utbotları inceleyerek LUO uygulamasını geliştirme
 
@@ -27,6 +27,22 @@ Doğru tahmine yönelik uç nokta dıklarını gözden geçirme işlemi, [etkin 
 ## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştir
 
 Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe yazmanız gerekir. Bu, `log=true` QueryString parametresi ve değeri ile [Endpoint sorgusu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) çağırarak gerçekleştirilir.
+
+Doğru uç nokta sorgusunu oluşturmak için LUO portalını kullanın.
+
+1. [ÖNIZLEME Luu portalında](https://preview.luis.ai/), uygulamalar listesinden uygulamanızı seçin.
+1. **Yönet** bölümüne gidin ve **Azure kaynakları**' nı seçin.
+1. Atanan tahmin kaynağı için **sorgu parametrelerini değiştir**' i seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![, etkin öğrenme için gerekli olan günlükleri kaydetmek için LUO portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. Kaydet ' i seçerek Kaydet **günlüklerine** geçiş **yapın.**
+
+    > [!div class="mx-imgBorder"]
+    > ![, etkin öğrenme için gerekli olan günlükleri kaydetmek için LUO portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+
+     Bu eylem, `log=true` QueryString parametresini ekleyerek örnek URL 'YI değiştirir. Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Söylemeleri hizalamak için amaç tahminleri doğru
 

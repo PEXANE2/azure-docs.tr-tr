@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981255"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773091"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Öğretici: faturaları çözümlemek için Azure Logic Apps ile form tanıyıcı kullanma
 
-Bu öğreticide, faturalardan verileri ayıklamak için Azure bilişsel hizmetler Suite 'in bir parçası olan form tanıyıcısı 'nı kullanan Azure Logic Apps bir iş akışı oluşturursunuz. Form tanıyıcıyı, örnek veri kümesi kullanarak bir modeli eğitmeniz ve ardından modeli başka bir veri kümesi kullanarak test etmek için kullanırsınız. Bu öğreticide kullanılan örnek veriler Azure Storage blob kapsayıcıları 'nda depolanır.
+Bu öğreticide, faturalardan verileri ayıklamak için Azure bilişsel hizmetler Suite 'in bir parçası olan form tanıyıcısı 'nı kullanan Azure Logic Apps bir iş akışı oluşturursunuz. İlk olarak, örnek veri kümesi kullanarak bir form tanıyıcı modeli eğitmeniz ve sonra modeli başka bir veri kümesinde test etmeniz gerekir.
 
 Bu öğreticinin şu şekilde ele alınmaktadır:
 
@@ -41,12 +41,12 @@ Form tanıyıcı, sınırlı erişim önizlemesinde kullanılabilir. Önizlemeye
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Çözümlenecek faturayı anlayın
 
-Modeli eğitme ve modeli test etmek için kullandığımız örnek veri kümesi [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451)'dan bir. zip dosyası olarak kullanılabilir. . Zip dosyasını indirip ayıklayın ve **/tren** klasörü altında BIR fatura PDF dosyası açın. Fatura numarası, fatura tarihi vb. içeren bir tablo olduğunu fark edin. 
+Modeli eğitmek ve test etmek için kullanacağınız örnek veri kümesi, [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451)'dan bir. zip dosyası olarak kullanılabilir. . Zip dosyasını indirip ayıklayın ve **/tren** klasörü altında BIR fatura PDF dosyası açın. Fatura numarası, fatura tarihi vb. içeren bir tablo olduğuna dikkat edin. 
 
 > [!div class="mx-imgBorder"]
 > ![örnek fatura](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-Bu öğreticide, Azure Logic Apps ve form tanıyıcı kullanılarak oluşturulan bir iş akışını kullanarak bu tablodaki bilgileri JSON biçimine nasıl ayıklayacağınızı öğreneceksiniz.
+Bu öğreticide, bu bilgileri JSON biçimine dönüştürmek için Azure Logic Apps bir iş akışını nasıl kullanacağınızı öğreneceksiniz.
 
 ## <a name="create-an-azure-storage-blob-container"></a>Azure Storage blob kapsayıcısı oluşturma
 
@@ -62,7 +62,7 @@ Bu kapsayıcıyı kullanarak modeli eğitebilmeniz için gereken örnek verileri
 
 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451)'da bulunan örnek verileri indirin. Verileri yerel bir klasöre ayıklayın ve **/tren** klasörünün içeriğini daha önce oluşturduğunuz **formbir kapsayıcıya** yükleyin. Bir kapsayıcıya veri yüklemek için [Blok Blobu yükleme](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) bölümündeki yönergeleri izleyin.
 
-Kapsayıcının URL 'sini kopyalayın. Bu öğreticide daha sonra ihtiyacınız olacaktır. Depolama hesabı ve kapsayıcıyı bu öğreticide listelenen aynı adlarla oluşturduysanız, URL *https:\//formrecostorage.blob.Core.Windows.net/formrecocontainer/* olur.
+Kapsayıcının URL 'sini kopyalayın. Bu URL 'nin öğreticide daha sonra olması gerekir. Depolama hesabı ve kapsayıcıyı bu öğreticide listelenen aynı adlarla oluşturduysanız, URL *https:\//formrecostorage.blob.Core.Windows.net/formrecocontainer/* olur.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -75,7 +75,7 @@ Görevleri ve iş akışlarını otomatikleştirebilmek ve düzenlemek için Azu
 * Azure Blob depolama alanına yüklediğiniz örnek verileri kullanarak bir modeli eğitme amacıyla mantıksal uygulamayı bir form tanıyıcısı **eğitme modeli** işlemi kullanacak şekilde yapılandırın.
 * Mantıksal uygulamayı, zaten eğitilen modeli kullanmak için bir form tanıyıcı **formu analiz etme** işlemini kullanacak şekilde yapılandırın. Bu bileşen, daha önce eğitilen modele göre bu mantıksal uygulamaya sağladığınız faturayı analiz edecektir.
 
-Haydi başlayalım! İş akışınızı ayarlamak için bu adımları izleyin.
+İş akışınızı ayarlamak için bu adımları izleyin.
 
 1. Ana Azure menüsünden **kaynak oluştur** > **tümleştirme** > **mantıksal uygulama**' yı seçin.
 
@@ -83,7 +83,7 @@ Haydi başlayalım! İş akışınızı ayarlamak için bu adımları izleyin.
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](./../../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
    | **Konum** | *Azure-region*> < | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
@@ -99,7 +99,7 @@ Haydi başlayalım! İş akışınızı ayarlamak için bu adımları izleyin.
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>Bir e-posta geldiğinde mantıksal uygulamayı iş akışını tetikleyecek şekilde yapılandırma
 
-Bu öğreticide, ekli fatura ile bir e-posta alındığında iş akışını tetiklersiniz. Bu öğretici için, e-posta hizmeti olarak Office 365 ' i seçeceğiz, ancak kullanmak istediğiniz başka bir e-posta sağlayıcısını kullanabilirsiniz.
+Bu öğreticide, ekli fatura ile bir e-posta alındığında iş akışını tetiklersiniz. Bu öğretici, e-posta hizmeti olarak Office 365 kullanır, ancak kullanmak istediğiniz diğer herhangi bir e-posta sağlayıcısını kullanabilirsiniz.
 
 1. Sekmelerde, tümü ' nü seçin, **Office 365 Outlook**' u seçin ve ardından **Tetikleyiciler**altında **Yeni bir e-posta geldiğinde**öğesini seçin.
 
@@ -109,8 +109,8 @@ Bu öğreticide, ekli fatura ile bir e-posta alındığında iş akışını tet
 
 1. Sonraki iletişim kutusunda aşağıdaki adımları gerçekleştirin.
     1. Yeni e-postalar için izlenecek klasörü seçin.
-    1. **Ekler** için **Evet**' i seçin. Bu, yalnızca ekleri olan e-postaların iş akışını tetiklenmesini sağlar.
-    1. **Ekleme ekleri** için **Evet**' i seçin. Bu, ek içeriğinin aşağı akış işlemede kullanılmasını sağlar.
+    1. **Ekleri olan**için **Evet**' i seçin. Bu, yalnızca ekleri olan e-postaların iş akışını tetiklenmesini sağlar.
+    1. **İçerme ekleri**için **Evet**' i seçin. Bu, ek içeriğinin aşağı akış işlemede kullanılmasını sağlar.
 
         > [!div class="mx-imgBorder"]
         > mantıksal uygulama e-posta tetikleyicisini yapılandırma ![](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
@@ -131,7 +131,7 @@ Faturaları çözümlemek için form tanıyıcı hizmetini kullanabilmeniz için
     > [!div class="mx-imgBorder"]
     > Form tanıyıcı için bağlantı adı ![](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    **Oluştur**'a tıklayın.
+    **Oluştur**’ tıklayın.
 
 1. **Modeli eğitme** iletişim kutusunda, **kaynak**için örnek verileri karşıya yüklediğiniz kapsayıcının URL 'sini girin.
 
@@ -149,14 +149,14 @@ Bu bölümde, iş akışına **formu çözümle** işlemini eklersiniz. Bu işle
     > [!div class="mx-imgBorder"]
     > Form tanıyıcı modelini analiz ![](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. **Formu çözümle** iletişim kutusunda, şunları yapın:
+1. **Formu çözümle** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
     1. **Model kimliği** metin kutusuna tıklayın ve açılan iletişim kutusunda, **dinamik Içerik** sekmesinde **ModelId**' yi seçin. Bunu yaparak, Flow uygulamasına son bölümde eğitilen modelin model KIMLIĞINI sağlarsınız.
 
         > [!div class="mx-imgBorder"]
         > ![form tanıyıcı için ModelId kullanın](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. **Belge** metin kutusuna tıklayın ve açılan iletişim kutusunda, **dinamik Içerik** sekmesinde, **ekler içerik**' i seçin. Bunu yaparak akışı, iş akışını tetiklemek için gönderilen e-postaya eklenen örnek fatura dosyasını kullanacak şekilde yapılandırırsınız.
+    2. **Belge** metin kutusuna tıklayın ve açılan iletişim kutusunda, **dinamik Içerik** sekmesinde, **ekler içerik**' i seçin. Bu, akışı, iş akışını tetikleyen e-postada eklenen örnek fatura dosyasını kullanacak şekilde yapılandırır.
 
         > [!div class="mx-imgBorder"]
         > ![faturaları çözümlemek için e-posta ekini kullanın](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ Bu bölümde, iş akışına **formu çözümle** işlemini eklersiniz. Bu işle
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>Faturadan tablo bilgilerini ayıklayın
 
-Bu bölümde, mantıksal uygulamayı faturalar içindeki tablodaki bilgileri ayıklamak için yapılandıracağız.
+Bu bölümde, mantıksal uygulamayı, faturaların içindeki tablodaki bilgileri Ayıklanacak şekilde yapılandırırsınız.
 
 1. **Eylem Ekle**' yi seçin ve **Eylem Seç**' in altında, **Oluştur** ' u arayın ve kullanılabilir Eylemler altında, yeniden **Oluştur** ' u seçin.
     Fatura](media/tutorial-form-recognizer-with-logic-apps/extract-table.png) tablo bilgilerini ![Ayıkla
@@ -179,7 +179,7 @@ Bu bölümde, mantıksal uygulamayı faturalar içindeki tablodaki bilgileri ay�
 
 ## <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
 
-Mantıksal uygulamayı test etmek için [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451)'dan indirdiğiniz örnek veri kümesinin **/Test** klasöründeki örnek faturaları kullanın. Aşağıdaki adımları uygulayın:
+Mantıksal uygulamayı test etmek için [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451)'dan indirdiğiniz örnek veri kümesinin **/Test** klasöründeki örnek faturaları kullanın. Şu adımları uygulayın:
 
 1. Uygulamanızın Azure Logic Apps tasarımcısında, üstteki araç çubuğundan **Çalıştır** ' ı seçin. İş akışı artık etkin olur ve faturaya eklenmiş bir e-posta almayı bekler.
 1. Mantıksal uygulamayı oluştururken girdiğiniz e-posta adresine eklenmiş örnek bir faturaya sahip bir e-posta gönderin. E-postanın mantıksal uygulamayı yapılandırırken verdiğiniz klasöre teslim edildiğinden emin olun.

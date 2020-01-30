@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d6df9a35191cf9fe9c2803116d5905a74f21e964
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699487"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834436"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -160,7 +160,7 @@ Microsoft kimlikleri, uygulamanız için uygun olabilecek farklı yollarla kimli
 | `rsa` | Kimlik doğrulaması, örneğin [Microsoft Authenticator uygulamasına](https://aka.ms/AA2kvvu)sahıp bir RSA anahtarı kanıtını temel alır. Bu, kimlik doğrulamasının, hizmetin sahip olduğu x509 sertifikası ile kendinden imzalı bir JWT tarafından gerçekleştirilip yapılmadığını içerir. |
 | `otp` | Bir e-posta veya kısa mesaj kullanarak bir kerelik geçiş kodu. |
 | `fed` | Bir Federasyon kimlik doğrulama onayı (JWT veya SAML gibi) kullanıldı. |
-| `wia` | Windows Tümleşik Kimlik Doğrulaması |
+| `wia` | Windows tümleşik kimlik doğrulaması |
 | `mfa` | Multi-Factor Authentication kullanıldı. Bu mevcut olduğunda diğer kimlik doğrulama yöntemleri de dahil edilir. |
 | `ngcmfa` | Belirli Gelişmiş kimlik bilgisi türlerini sağlamak için kullanılan `mfa`eşdeğerdir. |
 | `wiaormfa`| Kullanıcı, kimlik doğrulamak için Windows veya MFA kimlik bilgilerini kullandı. |

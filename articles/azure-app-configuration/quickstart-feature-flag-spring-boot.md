@@ -1,24 +1,17 @@
 ---
-title: Yay önyüklemesi için özellik bayrakları eklemeye yönelik hızlı başlangıç-Azure Uygulama yapılandırması | Microsoft Docs
-description: Spring Boot uygulamalarına özellik bayrakları ekleme ve bunları Azure Uygulama yapılandırması 'nda yönetme için hızlı başlangıç
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure Uygulama yapılandırması ile yay önyüklemesine özellik bayrakları eklemeye yönelik hızlı başlangıç
+description: Spring Boot uygulamalarına özellik bayrakları ekleyin ve Azure Uygulama yapılandırması 'nı kullanarak bunları yönetin
 author: lisaguthrie
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring Boot
-ms.workload: tbd
-ms.date: 1/9/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310076"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766430"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -32,19 +25,20 @@ Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özelli
 - Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
 - [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
 
-## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
+## <a name="create-an-app-configuration-instance"></a>Uygulama yapılandırma örneği oluşturma
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki özellik bayraklarını eklemek için **özellik yöneticisi** >  **+ Oluştur** ' u seçin:
+6. `Beta`adlı özellik bayrağını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin.
 
-    | Anahtar | Eyalet |
-    |---|---|
-    | Beta | Kapalı |
+    > [!div class="mx-imgBorder"]
+    > Beta](media/add-beta-feature-flag.png) adlı özellik bayrağını etkinleştirmek ![
+
+    Şimdilik `label` tanımsız bırakın.
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot uygulaması oluşturma
 
-Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start.spring.io/) 'yi kullanırsınız.
+Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.spring.io/) ' i kullanın.
 
 1. <https://start.spring.io/> adresine gidin.
 
@@ -52,27 +46,27 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
    - **Java**Ile **Maven** projesi oluşturun.
    - 2,0 ' e eşit veya ondan büyük bir **Spring Boot** sürümü belirtin.
-   - Uygulamanız için **Grup** ve **yapıt** adlarını belirtin.
+   - Uygulamanız için **Grup** ve **yapıt** adlarını belirtin.  Bu makalede `com.example` ve `demo`kullanılmaktadır.
    - **Yay Web** bağımlılığını ekleyin.
 
-3. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınızdaki bir yola indirin.
+3. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
 
 ## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
-1. Dosyaları yerel sisteminizde ayıkladıktan sonra, basit Spring Boot uygulamanız düzenlenmek üzere hazırlanın. Uygulamanızın kök dizinindeki *Pok. xml* dosyasını bulun.
+1. Dosyaları yerel sisteminizde ayıkladıktan sonra, Spring Boot uygulamanız düzenlenmek üzere hazırlanın. *Pok. xml* ' i uygulamanızın kök dizininde bulun.
 
-2. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve yay bulutu Azure yapılandırma başlangıç ve özellik yönetimini `<dependencies>`listesine ekleyin:
+1. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve `<dependencies>`listesine aşağıdakini ekleyin.:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,35 +75,48 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
     ```
 
 > [!Note]
-> Spring-Web 'e bağımlılığı olmayan Web dışı bir özellik Yönetim Kitaplığı var. Farklar için ek [belgelere](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) bakın. Ayrıca, uygulama yapılandırması kullanmadığınız durumlarda [Özellik bayrağı bildirimine](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management#feature-flag-declaration)bakın.
+> Spring-Web 'e bağımlılığı olmayan Web dışı bir özellik Yönetim Kitaplığı var. Farklar için GitHub [belgelerine](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) bakın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Uygulamanızın _Resources_ dizininde _Bootstrap. Properties_ ' i açın. _Bootstrap. Properties_ yoksa, oluşturun. Dosyasına aşağıdaki satırı ekleyin.
+1. Uygulamanızın `resources` dizinine gidin ve `bootstrap.properties`açın.  Dosya yoksa, oluşturun. Dosyasına aşağıdaki satırı ekleyin.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Yapılandırma deponuza ait uygulama yapılandırma portalında erişim anahtarlarına gidin. Salt okuma anahtarları sekmesini seçin. Bu sekmede, bağlantı dizelerinden birinin değerini kopyalayın ve `APP_CONFIGURATION_CONNECTION_STRING`değişken adına sahip yeni bir ortam değişkeni olarak ekleyin.
+1. Yapılandırma deponuzu uygulama yapılandırma portalında kenar çubuğundan `Access keys` seçin. Salt okuma anahtarları sekmesini seçin. birincil bağlantı dizesinin değerini kopyalayın.
+
+1. Birincil bağlantı dizesini, `APP_CONFIGURATION_CONNECTION_STRING`değişken adını kullanarak bir ortam değişkeni olarak ekleyin.
 
 1. Ana uygulama Java dosyasını açın ve bu özelliği etkinleştirmek için `@EnableConfigurationProperties` ekleyin.
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.context.properties.ConfigurationProperties;
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
 
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
     public class DemoApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
-
-1. Uygulamanızın paket dizininde *MessageProperties. Java* adlı yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
+1. Uygulamanızın paket dizininde *MessageProperties. Java* adlı yeni bir Java dosyası oluşturun.
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -124,11 +131,22 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
     }
     ```
 
-1. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
+1. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun. 
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.stereotype.Controller;
+    import org.springframework.ui.Model;
+
+    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import org.springframework.web.bind.annotation.GetMapping;
+
+
     @Controller
     @ConfigurationProperties("controller")
+
     public class HelloController {
 
         private FeatureManager featureManager;
@@ -139,13 +157,13 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabled("Beta"));
+            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta"));
             return "welcome";
         }
     }
     ```
 
-1. Uygulamanızın şablonlar dizininde *Welcome. html* adlı yenı bir HTML dosyası oluşturun. Aşağıdaki satırları ekleyin:
+1. Uygulamanızın şablonlar dizininde *Welcome. html* adlı yenı bir HTML dosyası oluşturun.
 
     ```html
     <!DOCTYPE html>
@@ -202,7 +220,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
     ```
 
-1. Statik ve onun içinde *CSS adlı yeni*bir klasör oluşturun. Aşağıdaki satırları ekleyin:
+6. `static` altında CSS adlı yeni bir klasör oluşturun ve bunun içinde *Main. css*adlı yenı bir CSS dosyası oluşturun.
 
     ```css
     html {
@@ -237,24 +255,24 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
 ## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
-1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın, örneğin:
+1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın.
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `https://localhost:8080`' a gidin.
+1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan bir Web uygulamasının varsayılan URL 'sine gidin: `https://localhost:8080`.
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-3. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
+1. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
     | Anahtar | Eyalet |
     |---|---|
     | Beta | Açık |
 
-4. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
+1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 

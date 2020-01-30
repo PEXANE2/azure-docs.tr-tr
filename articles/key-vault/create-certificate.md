@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884153"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769235"
 ---
 # <a name="certificate-creation-methods"></a>Sertifika oluşturma yöntemleri
 
@@ -41,10 +41,10 @@ Aşağıdaki açıklamalar, önceki diyagramdaki yeşil bir şekilde açıklanan
 Aşağıdaki açıklamalar, önceki diyagramdaki yeşil bir şekilde açıklanan adımlara karşılık gelir.
 
 1. Yukarıdaki diyagramda uygulamanız, Anahtar Kasanızda bir anahtar oluşturarak başlayan bir sertifika oluşturuyor.
-2. Key Vault CA 'ya ve SSL sertifika Isteği gönderir.
+2. Key Vault CA 'ya bir TLS/SSL sertifika Isteği gönderir.
 3. Uygulamanız, sertifika tamamlaması için Key Vault bir döngüde ve bekleme sürecinde yoklar. Key Vault, CA 'nın x509 sertifikasıyla yanıtını aldığında sertifika oluşturma işlemi tamamlanır.
-4. CA, bir x509 SSL sertifikasıyla Key Vault SSL sertifikası Isteğine yanıt verir.
-5. Yeni sertifika oluşturma, CA için x509 sertifikasının birleşmesi ile tamamlanır.
+4. CA, TLS/SSL X. 509.440 sertifikasıyla Key Vault TLS/SSL sertifikası Isteğine yanıt verir.
+5. Yeni sertifika oluşturma, CA için TLS/SSL X. 509.440 sertifikasının birleşmesi ile tamamlanır.
 
 ## <a name="asynchronous-process"></a>Zaman uyumsuz işlem
 KV sertifika oluşturma zaman uyumsuz bir işlemdir. Bu işlem bir KV sertifika isteği oluşturur ve 202 (kabul edildi) http durum kodunu döndürür. İsteğin durumu, bu işlem tarafından oluşturulan bekleyen nesne yoklanarak izlenebilir. Bekleyen nesnenin tam URI 'SI konum üst bilgisinde döndürülür.  
@@ -53,7 +53,7 @@ KV sertifikası oluşturma isteği tamamlandığında, bekleyen nesnenin durumu 
 
 ## <a name="first-creation"></a>İlk oluşturma
  Bir KV sertifikası ilk kez oluşturulduğunda, sertifikayla aynı ada sahip bir adreslenebilir anahtar ve gizli dizi da oluşturulur. Ad zaten kullanımda ise, işlem 409 (çakışma) http durum koduyla başarısız olur.
-Adreslenebilir anahtar ve gizli anahtarı, KV sertifika özniteliklerinden özniteliklerini alır. Bu şekilde oluşturulan adreslenebilir anahtar ve gizli dizi, yaşam süresi Key Vault tarafından yönetilen yönetilen anahtarlar ve parolalar olarak işaretlenir. Yönetilen Anahtarlar ve gizlilikler salt okunurdur. Not: Bir KV sertifikasının süresi dolarsa veya devre dışıysa, karşılık gelen anahtar ve gizli dizi çalışmaz hale gelir.  
+Adreslenebilir anahtar ve gizli anahtarı, KV sertifika özniteliklerinden özniteliklerini alır. Bu şekilde oluşturulan adreslenebilir anahtar ve gizli dizi, yaşam süresi Key Vault tarafından yönetilen yönetilen anahtarlar ve parolalar olarak işaretlenir. Yönetilen Anahtarlar ve gizlilikler salt okunurdur. Note: bir KV sertifikasının süresi dolarsa veya devre dışıysa, ilgili anahtar ve gizli dizi çalışamaz hale gelir.  
 
  Bu, bir KV sertifikası oluşturmaya yönelik ilk işlem ise bir ilke gereklidir.  İlke kaynağını değiştirmek için art arda oluşturma işlemlerinde bir ilke de sağlanabilir. Bir ilke sağlanmazsa, hizmet üzerindeki ilke kaynağı KV sertifikasının sonraki bir sürümünü oluşturmak için kullanılır. Bir sonraki sürüm oluşturma isteği, geçerli KV sertifikası ve karşılık gelen adreslenebilir anahtar ve gizli dizi gibi bir işlem devam ederken, değişmeden kaldığını unutmayın.  
 
@@ -88,7 +88,7 @@ Sertifika oluşturma el ile veya "kendi" veren kullanılarak tamamlanabilir. Ayr
 
 Bir sipariş veren sağlayıcıya yerleştirildiğinde, sertifika türüne bağlı olarak x509 sertifika uzantılarını ve sertifika geçerlilik süresini kabul edebilir veya geçersiz kılabilir.  
 
- Yetkisi Sertifika/oluşturma izni gerektirir.
+ Yetkilendirme: sertifikalar/oluşturma izni gerektirir.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
  - [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-and-certificates.md)

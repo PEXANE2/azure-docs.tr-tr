@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064446"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836245"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C yaş ve ömrü etkinleştir
 
@@ -25,32 +25,32 @@ ms.locfileid: "71064446"
 
 Azure Active Directory B2C (Azure AD B2C) yaş aşımları uygulamanızı kullanmak isteyen sömürmeyi amaçlama tanımlamanızı sağlar. Küçük bir uygulamada oturum açmasını engellemeyi tercih edebilirsiniz. Kullanıcılar ayrıca uygulamaya dönerek yaş gruplarını ve bunların ana öğe onay durumunu tanımlayabilir. Azure AD B2C, ebeveyn izni olmadan sömürmeyi amaçlama 'ı engelleyebilir. Azure AD B2C Ayrıca uygulamanın minors ile ne yapacağına karar vermesini sağlamak için de ayarlanabilir.
 
-[Kullanıcı](active-directory-b2c-reference-policies.md)akışınızda yaş ile kullanım süresini etkinleştirdikten sonra, kullanıcılar doğduklarında ve hangi ülke/bölge üzerinde yaşlandıklarında sorulur. Bir Kullanıcı daha önce bilgileri girmeyen bir oturum açarsa, bir sonraki oturum açışlarında bu uygulamayı girmesi gerekir. Kurallar, bir kullanıcının her oturum açışında uygulanır.
+[Kullanıcı](user-flow-overview.md)akışınızda yaş ile kullanım süresini etkinleştirdikten sonra, kullanıcılar doğduklarında ve hangi ülke/bölge üzerinde yaşlandıklarında sorulur. Bir Kullanıcı daha önce bilgileri girmeyen bir oturum açarsa, bir sonraki oturum açışlarında bu uygulamayı girmesi gerekir. Kurallar, bir kullanıcının her oturum açışında uygulanır.
 
-Azure AD B2C, kullanıcının küçük olup olmadığını belirlemek için girdiği bilgileri kullanır. Daha sonra, **Agegroup** alanı hesabında güncellenir. Değer `null` ,`Undefined` ,,`NotAdult`ve olabilir. `Minor` `Adult`  **Agegroup** ve **consentProvidedForMinor** alanları, daha sonra **ligalagegroupclassification**değerini hesaplamak için kullanılır.
+Azure AD B2C, kullanıcının küçük olup olmadığını belirlemek için girdiği bilgileri kullanır. Daha sonra, **Agegroup** alanı hesabında güncellenir. Değer `null`, `Undefined`, `Minor`, `Adult`ve `NotAdult`olabilir.  **Agegroup** ve **consentProvidedForMinor** alanları, daha sonra **ligalagegroupclassification**değerini hesaplamak için kullanılır.
 
 Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değerlendirilmediği yaş ve küçük bir ana izin olması gereken yaş. Aşağıdaki tabloda, düşük ve küçük bir onay gerektiren bir izin tanımlamak için kullanılan yaş kuralları listelenmektedir.
 
 | Ülke/Bölge | Ülke/bölge adı | Küçük onay yaşı | Küçük yaş |
 | -------------- | ------------------- | ----------------- | --------- |
-| Varsayılan | Yok. | Yok. | 18 |
-| AE | Birleşik Arap Emirlikleri | Yok. | 21 |
+| Varsayılan | Hiçbiri | Hiçbiri | 18 |
+| AE | Birleşik Arap Emirlikleri | Hiçbiri | 21 |
 | AT | Avusturya | 14 | 18 |
 | BE | Belçika | 14 | 18 |
 | BG | Bulgaristan | 16 | 18 |
-| BH | Bahreyn | Yok. | 21 |
-| CM | Kamerun | Yok. | 21 |
+| BH | Bahreyn | Hiçbiri | 21 |
+| CM | Kamerun | Hiçbiri | 21 |
 | CY | Kıbrıs | 16 | 18 |
 | CZ | Çek Cumhuriyeti | 16 | 18 |
 | DE | Almanya | 16 | 18 |
 | DK | Danimarka | 16 | 18 |
 | EE | Estonya | 16 | 18 |
-| EG | Mısır | Yok. | 21 |
+| EG | Mısır | Hiçbiri | 21 |
 | ES | İspanya | 13 | 18 |
 | GS | Fransa | 16 | 18 |
 | GB | Birleşik Krallık | 13 | 18 |
 | GR | Yunanistan | 16 | 18 |
-| HR | Hırvatistan | 16 | 18 |
+| İK | Hırvatistan | 16 | 18 |
 | HU | Macaristan | 16 | 18 |
 | IE | İrlanda | 13 | 18 |
 | BT | İtalya | 16 | 18 |
@@ -59,19 +59,19 @@ Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değer
 | LU | Lüksemburg | 16 | 18 |
 | LV | Letonya | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| NA | Namibia | Yok. | 21 |
+| Yok | Namibya | Hiçbiri | 21 |
 | NL | Hollanda | 16 | 18 |
 | PL | Polonya | 13 | 18 |
 | PT | Portekiz | 16 | 18 |
 | RO | Romanya | 16 | 18 |
 | SE | İsveç | 13 | 18 |
-| SG | Singapur | Yok. | 21 |
+| SG | Singapur | Hiçbiri | 21 |
 | SI | Slovenya | 16 | 18 |
 | SK | Slovakya | 16 | 18 |
-| TD | Çad | Yok. | 21 |
-| TH | Tayland | Yok. | 20 |
-| TW | Tayvan | Yok. | 20 |
-| ABD | Amerika Birleşik Devletleri | 13 | 18 |
+| TD | Çad | Hiçbiri | 21 |
+| TH | Tayland | Hiçbiri | 20 |
+| TW | Tayvan | Hiçbiri | 20 |
+| US | Birleşik Devletler | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Yaş aşımları seçenekleri
 
@@ -103,7 +103,7 @@ Kiracınız yaş kullanımını kullanacak şekilde ayarlandıktan sonra bu öze
 1. Yaş geçişi etkin olan bir Kullanıcı akışı oluşturun.
 2. Kullanıcı akışını oluşturduktan sonra menüdeki **Özellikler** ' i seçin.
 3. **Yaş** aşımları bölümünde, **etkin**' i seçin.
-4. Daha sonra, minors olarak tanımlayan kullanıcıları nasıl yönetmek istediğinize karar verirsiniz. **Kaydolma veya oturum açma**için veya `Allow minors to access your application` `Block minors from accessing your application`seçin. Sömürmeyi amaçlama 'yi engellemek seçilmişse veya `Send a JSON back to the application` `Show an error message`seçeneğini belirleyin.
+4. Daha sonra, minors olarak tanımlayan kullanıcıları nasıl yönetmek istediğinize karar verirsiniz. **Kaydolma veya oturum açma**için `Allow minors to access your application` veya `Block minors from accessing your application`seçeneğini belirleyin. Sömürmeyi amaçlama 'i engellemeyi seçerseniz `Send a JSON back to the application` veya `Show an error message`seçeneğini belirleyin.
 
 
 

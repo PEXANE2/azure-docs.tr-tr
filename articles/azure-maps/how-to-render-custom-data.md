@@ -3,18 +3,18 @@ title: Bir raster eşlemesinde özel verileri işleme | Microsoft Azure haritala
 description: Bu makalede, Microsoft Azure Maps statik görüntü hizmetini kullanarak bir raster eşlemesinde özel verileri nasıl işleyebileceğinizi öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/29/2019
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911467"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766010"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
@@ -29,7 +29,7 @@ Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak içi
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
-Bu makaledeki yordamları tamamlayabilmeniz için ilk olarak bir Azure haritalar hesabı oluşturmanız ve hesap anahtarını haritalara almanız gerekir. Hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
+Bu makaledeki yordamları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve haritalar hesap anahtarınızı almanız gerekir. Hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Pushpın 'leri etiketlerle ve özel bir görüntüyle işleme
@@ -43,7 +43,7 @@ Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımla
 
 1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin, önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin ve ardından **Kaydet**' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin ve ardından **Kaydet**' i seçin.
     
     ![Postman 'da istek oluşturma](./media/how-to-render-custom-data/postman-new.png)
 
@@ -142,13 +142,13 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Durum URI 'nizi kopyalayın ve abonelik anahtarı parametresini, verileri karşıya yüklemek için kullandığınız Azure Maps hesabı abonelik anahtarınız olan değere ekleyin. Durum URI biçimi aşağıdaki gibi görünmelidir:
+5. Durum URI 'nizi kopyalayın ve abonelik anahtarı parametresini Azure haritalar hesabı abonelik anahtarınızın değeriyle birlikte ekleyin. Verileri karşıya yüklemek için kullandığınız hesap abonelik anahtarını kullanın. Durum URI biçimi aşağıdaki gibi görünmelidir:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. ' I almak için, Postman uygulamasında yeni bir sekme açın ve Oluşturucu sekmesinde HTTP yöntemi Al ' ı seçin ve durum URI 'sinde bir GET isteği yapın. Karşıya veri yükleme işlemi başarılı olduysa yanıt gövdesinde bir UDID alırsınız. Uıdıd 'i kopyalayın.
+6. UDID 'yi almak için, Postman uygulamasında yeni bir sekme açın ve Oluşturucu sekmesinde HTTP yöntemi Al ' ı seçin ve durum URI 'sinde bir GET isteği yapın. Karşıya veri yükleme işlemi başarılı olduysa yanıt gövdesinde bir UDID alırsınız. Uıdıd 'i kopyalayın.
 
    ```JSON
    {
@@ -156,7 +156,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
    }
    ```
 
-7. Haritadaki özellikleri işlemek için veri yükleme API 'sinden alınan `udId` değerini kullanın. Bunu yapmak için, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al metodunu seçin ve bir GET isteği yapmak için bu URL 'YI girin:
+7. Haritadaki özellikleri işlemek için veri yükleme API 'sinden alınan `udId` değerini kullanın. Bunu yapmak için, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al metodunu seçin, {Subscription-Key} ve {UDID} değerlerini değerlerinizle değiştirin ve bir GET isteği yapmak için bu URL 'YI girin:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
 > Bu bölümdeki yordam, fiyatlandırma katmanı S1 ' te bir Azure Maps hesabı gerektirir.
 
 
-`sc` ölçek stili değiştiricisini kullanarak Pushpin ve etiketlerini daha büyük ya da daha küçük hale getirebilirsiniz. Bu değiştirici sıfırdan büyük bir değer alır. 1 değeri standart ölçeğe sahiptir. 1 ' den büyük değerler, PIN 'leri daha büyük yapar ve 1 ' den küçük değerler bunları daha küçük hale getirir. Stil değiştiriciler hakkında daha fazla bilgi için bkz. [statik görüntü hizmeti yol parametreleri](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+PIN 'lerin görünümünü stil değiştiricileri ekleyerek değiştirebilirsiniz. Örneğin, Pushpin ve etiketlerini daha büyük veya küçük yapmak için, `sc` "ölçek stili" değiştiricisini kullanın. Bu değiştirici sıfırdan büyük bir değer alır. 1 değeri standart ölçeğe sahiptir. 1 ' den büyük değerler, PIN 'leri daha büyük yapar ve 1 ' den küçük değerler bunları daha küçük hale getirir. Stil değiştiriciler hakkında daha fazla bilgi için bkz. [statik görüntü hizmeti yol parametreleri](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Özel etiketlerle bir daire ve Pushpin işlemek için aşağıdaki adımları izleyin:
@@ -206,6 +206,18 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
     İşte yanıt görüntüsü:
 
     ![Özel raptiyeler ile bir daire işleme](./media/how-to-render-custom-data/circle-custom-pins.png)
+
+2. Son adımdaki Pushpin rengini değiştirmek için "Co" stil değiştiricisini değiştirin. `pins=default|la15+50|al0.66|lc003C62|co002D62|`bakın, geçerli renk CSS 'de #002D62 olarak belirtilir. #41d42a için değiştirmek istediğinizi varsayalım. "Ortak" belirticisinden sonra yeni renk değerini yazın; örneğin: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Yeni bir GET isteği oluşturun:
+
+    ```HTTP
+    https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
+    ```
+
+    PIN renklerinin renkleri değiştirildikten sonra yanıt görüntüsü aşağıda verilmiştir:
+
+    ![Güncelleştirilmiş raptiyeler ile bir daire işleme](./media/how-to-render-custom-data/circle-updated-pins.png)
+
+Benzer şekilde, diğer stil değiştiricilerini değiştirebilir, ekleyebilir ve kaldırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

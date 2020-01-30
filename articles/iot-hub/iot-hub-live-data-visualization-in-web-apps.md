@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954642"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767956"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
 
@@ -165,10 +165,10 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git` parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir.
+2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git` parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir. Kullandığınız Node. js çalışma zamanının sürümüne bağlı olarak `--runtime` parametresi için düğüm sürüm 10,6 veya üstünü belirttiğinizden emin olun. Desteklenen çalışma zamanlarının listesini almak için `az webapp list-runtimes` komutunu kullanabilirsiniz.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Şimdi IoT Hub bağlantı dizesini ve Olay Hub 'ı tüketici grubunu belirten ortam değişkenlerine yönelik uygulama ayarlarını ekleyin. Tek tek ayarlar `-settings` parametresinde ayrılmış alandır. IoT Hub 'ınız ve bu öğreticide daha önce oluşturduğunuz tüketici grubu için hizmet bağlantı dizesini kullanın. Değerleri tırnak içine mayın.

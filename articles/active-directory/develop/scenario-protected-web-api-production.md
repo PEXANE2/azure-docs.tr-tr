@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5673465c9ff1afe83c5d9d549a78e1547a59b72f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 229f49255fbc72f74f07b1e7098417d136f35c27
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701969"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775170"
 ---
 # <a name="protected-web-api---move-to-production"></a>Korumalı Web API 'SI-üretime taşı
 
@@ -30,17 +30,15 @@ Artık Web API 'nizi nasıl koruyabileceğinizi öğrenmiş olduğunuza göre, b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağı akış API 'Lerini çağırmayı öğrenin:
+Bir aşağı akış API 'SI çağırma hakkında bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Senaryo-Web API 'SI aşağı akış API 'lerini çağırır](scenario-web-api-call-api-overview.md)
+> [Senaryo-Web API 'SI aşağı akış API 'Lerini çağırır](scenario-web-api-call-api-overview.md)
 
-
-Öğreticiler ve örneklerle daha fazla bilgi edinin:
-
+Öğreticiler ve örneklerle daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Daemon kullanarak korumalı API çağırma](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+> [Bir Daemon kullanarak korumalı API çağırma](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web API 'SI öğreticisi](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)

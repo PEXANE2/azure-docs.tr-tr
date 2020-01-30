@@ -15,49 +15,49 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f857cfabfcacc5bb11e152a53fddee612c63d75b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702445"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775221"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
 Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğrenin.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>Daemon uygulamalarını destekleyen MSAL kitaplıkları
+## <a name="msal-libraries-that-support-daemon-apps"></a>Daemon uygulamalarını destekleyen MSAL kitaplıkları
 
-Daemon uygulamalarını destekleyen Microsoft kitaplıkları şunlardır:
+Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
   MSAL kitaplığı | Açıklama
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Bir Daemon uygulaması derlemek için desteklenen platformlar .NET Framework ve .NET Core platformları (UWP, Xamarin. iOS ve Xamarin. Android değil, ortak istemci uygulamaları oluşturmak için kullanılır)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 'da Daemon uygulamaları için destek
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 'da Daemon uygulamaları için destek.
 
-## <a name="configuration-of-the-authority"></a>Yetkilisinin yapılandırması
+## <a name="configure-the-authority"></a>Yetkilendirmeyi yapılandırma
 
-Daemon uygulamalarının temsilci izinleri kullanmadığında, ancak uygulama izinleri, *Desteklenen hesap türü* *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örneğin, Skype, Xbox, Outlook.com) hesap*olamaz. Aslında, Microsoft kişisel hesapları için Daemon uygulamasına izin vermek üzere kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
+Daemon uygulamaları, temsilci izinleri yerine uygulama izinleri kullanır. Bu nedenle, desteklenen hesap türü herhangi bir kuruluş dizininde veya kişisel Microsoft hesabı (örneğin, Skype, Xbox, Outlook.com) bir hesap olamaz. Bir Microsoft kişisel hesabına yönelik bir Daemon uygulamasına izin vermek için kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
 
-Bu nedenle, uygulama yapılandırmasında belirtilen yetkilinin kiracı ile bağlantılı olması gerekir (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
+Bu nedenle, uygulama yapılandırmasında belirtilen yetki kiralanmalıdır (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
-Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız `organizations`kullanabilirsiniz. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için [bir kiracının tamamına Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) konusuna bakın. MSAL ' de şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
+Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız, `organizations`kullanabilirsiniz. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Ayrıca, MSAL 'de Şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
 
-## <a name="application-configuration-and-instantiation"></a>Uygulama yapılandırma ve örnekleme
+## <a name="configure-and-instantiate-the-application"></a>Uygulamayı yapılandırma ve oluşturma
 
 MSAL kitaplıklarında, istemci kimlik bilgileri (gizli veya sertifika) gizli istemci uygulaması oluşturma parametresi olarak geçirilir.
 
 > [!IMPORTANT]
-> Uygulamanız hizmet olarak çalışan bir konsol uygulaması olsa da, bir Daemon uygulaması ise gizli bir istemci uygulaması olması gerekir.
+> Uygulamanız hizmet olarak çalışan bir konsol uygulaması olsa da, bir Daemon uygulaması ise, bir gizli istemci uygulaması olması gerekir.
 
 ### <a name="configuration-file"></a>Yapılandırma dosyası
 
 Yapılandırma dosyası şunları tanımlar:
 
-- yetkili veya bulut örneği ile Tenantıd
-- Uygulama kaydından aldığınız ClientID
-- bir istemci parolası ya da bir sertifika
+- Yetkili veya bulut örneği ve kiracı KIMLIĞI.
+- Uygulama kaydından aldığınız istemci KIMLIĞI.
+- Bir istemci parolası ya da bir sertifika.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -73,11 +73,11 @@ Yapılandırma dosyası şunları tanımlar:
 }
 ```
 
-Bir clientSecret veya certificateName sağlarsınız. Her iki ayar de dışlamalı.
+Bir `ClientSecret` ya da `CertificateName`sağlarsınız. Bu ayarlar dışlamalı.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-İstemci gizli dizileri ile gizli bir istemci oluştururken, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) yapılandırma dosyası aşağıdaki gibidir.
+İstemci gizli dizileri ile gizli bir istemci oluşturduğunuzda, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) yapılandırma dosyası aşağıdaki gibidir:
 
 ```Json
 {
@@ -89,7 +89,7 @@ Bir clientSecret veya certificateName sağlarsınız. Her iki ayar de dışlamal
 }
 ```
 
-Sertifikalarla gizli bir istemci oluştururken, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) yapılandırma dosyası aşağıdaki gibidir.
+Sertifikalarla gizli bir istemci oluşturduğunuzda, [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) örneğindeki [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) yapılandırma dosyası aşağıdaki gibidir:
 
 ```Json
 {
@@ -104,7 +104,7 @@ Sertifikalarla gizli bir istemci oluştururken, [Python Daemon](https://github.c
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) , msal Java dev örneklerini yapılandırmak için kullanılan sınıftır:
 
 ```Java
 public class TestData {
@@ -118,12 +118,11 @@ public class TestData {
 
 ---
 
-### <a name="instantiation-of-the-msal-application"></a>MSAL uygulamasının örneklemesi
+### <a name="instantiate-the-msal-application"></a>MSAL uygulamasını oluşturma
 
-MSAL uygulamasının örneğini oluşturmak için şunları yapmanız gerekir:
+MSAL uygulamasını oluşturmak için, MSAL paketini (dile bağlı olarak) eklemeniz, başvurmanız veya içeri aktarmanız gerekir.
 
-- MSAL paketini ekleme, başvuru veya içeri aktarma (dile bağlı olarak)
-- Daha sonra, istemci gizli dizileri veya sertifikaları (veya gelişmiş bir senaryo olarak imzalanmış onaylar olarak) kullanıyorsanız, oluşturma işlemi farklı olur
+Oluşturma, istemci gizli dizileri veya sertifikalar (ya da gelişmiş bir senaryo olarak imzalanmış onaylar olarak) kullanıp kullanmayacağınızı bağlı olarak değişir.
 
 #### <a name="reference-the-package"></a>Pakete başvur
 
@@ -133,7 +132,7 @@ Uygulama kodunuzda MSAL paketine başvurun.
 
 Uygulamanıza [Microsoft. ıdentityclient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet paketini ekleyin.
 MSAL.NET ' de, gizli istemci uygulaması `IConfidentialClientApplication` arabirimi tarafından temsil edilir.
-Kaynak kodunda MSAL.NET ad alanını kullan
+Kaynak kodundaki MSAL.NET ad alanını kullanın.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -157,9 +156,9 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-secrets"></a>Gizli istemci uygulamasının istemci gizli dizileri ile örneğini oluşturma
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>Gizli istemci uygulamasını bir istemci gizli anahtarı ile oluşturun
 
-Gizli istemci uygulamasını bir istemci gizli anahtarı ile örneklendirilecek kod aşağıda verilmiştir:
+Gizli istemci uygulamasını bir istemci gizli dizisi ile başlatmak için kod aşağıda verilmiştir:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -175,7 +174,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential=config["secret"],
@@ -197,9 +196,9 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-certificate"></a>İstemci sertifikası Ile gizli istemci uygulaması örneğini oluşturma
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>İstemci sertifikası ile gizli istemci uygulaması örneğini oluşturma
 
-Sertifika ile bir uygulama oluşturmak için kod aşağıda verilmiştir:
+Sertifika ile bir uygulama oluşturmak için aşağıdaki kod aşağıda verilmiştir:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -216,7 +215,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -228,12 +227,12 @@ app = msal.ConfidentialClientApplication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL içinde. Java, sertifikalarla gizli istemci uygulaması örneğini oluşturmak için iki oluşturuculara sahiptir:
+MSAL Java 'da, sertifikalarla gizli istemci uygulaması örneğini oluşturmak için iki oluşturucular vardır:
 
 ```Java
 
-InputStream pkcs12Certificate = ... ; /* containing PCKS12 formatted certificate*/
-string certificatePassword = ... ;    /* contains the password to access the certificate */
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
 ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         TestData.CONFIDENTIAL_CLIENT_ID,
@@ -257,18 +256,18 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="advanced-scenario---instantiate-the-confidential-client-application-with-client-assertions"></a>Gelişmiş senaryo-istemci onaylamaları ile gizli istemci uygulaması örneğini oluşturma
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Gelişmiş senaryo: istemci onaylamaları ile gizli istemci uygulaması örneğini oluşturma
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-Gizli istemci uygulaması, bir istemci parolası veya bir sertifika yerine istemci onayları kullanarak kimliğini kanıtlayabilirler.
+Gizli istemci uygulaması, bir istemci parolası ya da bir sertifika yerine, istemci onayları kullanarak kimliğini kanıtlayabilirler.
 
 MSAL.NET, gizli istemci uygulamasına imzalı onaylar sağlamak için iki yönteme sahiptir:
 
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-`WithClientAssertion`kullandığınızda, imzalı bir JWT sağlamanız gerekir. Bu gelişmiş senaryo [istemci onaylamaları](msal-net-client-assertions.md) hakkında ayrıntılı
+`WithClientAssertion`kullandığınızda, imzalı bir JWT sağlamanız gerekir. Bu gelişmiş senaryo, [istemci onaylamaları](msal-net-client-assertions.md)hakkında ayrıntılıdır.
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -277,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-`WithClientClaims`kullandığınızda, MSAL.NET, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi için işlem görür.
-Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir:
+`WithClientClaims`kullandığınızda MSAL.NET, Azure AD tarafından beklenen talepleri ve ayrıca göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır.
+Bu kod, bunun nasıl yapılacağını gösterir:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -299,7 +298,7 @@ MSAL Python 'da, bu `ConfidentialClientApplication`özel anahtarıyla imzalanaca
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -310,7 +309,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-Ayrıntılar için bkz. MSAL Python 'un başvuru belgeleri [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
+Ayrıntılar için bkz. MSAL Python başvuru belgeleri [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: f7a1ff63f39777c1f7a83190adae2991138a11d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464067"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774438"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Windows güvenliğini kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
 Service Fabric kümesine yetkisiz erişimi engellemek için, kümeyi güvenli hale getirin. Küme üretim iş yüklerini çalıştırdığında güvenlik özellikle önemlidir. Bu makalede, *clusterConfig. JSON* dosyasındaki Windows güvenliği kullanılarak düğümden düğüme ve istemciden düğüme güvenliğin nasıl yapılandırılacağı açıklanır.  İşlem, [Windows üzerinde çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)güvenlik adımını yapılandırma adımına karşılık gelir. Service Fabric Windows güvenliğini nasıl kullandığı hakkında daha fazla bilgi için bkz. [küme güvenliği senaryoları](service-fabric-cluster-security.md).

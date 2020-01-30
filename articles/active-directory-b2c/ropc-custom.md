@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951073"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840273"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -36,9 +36,9 @@ Aşağıdaki akışlar desteklenmez:
 - **Tek sayfalı uygulama** -birincil olarak JavaScript 'te yazılmış bir ön uç uygulamadır. Genellikle, uygulama AngularJS, Ember. js veya Durandal gibi bir çerçeve kullanılarak yazılır.
 - **Gizli istemci akışı** -uygulama istemci kimliği onaylanır, ancak uygulama gizli dizisi değildir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın.
+[Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
 ## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
@@ -264,8 +264,8 @@ Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanı
 | Anahtar | Değer |
 | --- | ----- |
 | kullanıcı adı | `user-account` |
-| password | `password1` |
-| grant_type | password |
+| parola | `password1` |
+| grant_type | parola |
 | scope | OpenID `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | belirteç id_token |
@@ -342,4 +342,4 @@ Azure AD B2C, genel istemci kaynak sahibi parola kimlik bilgileri için OAuth 2,
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory B2C özel ilke başlangıç paketindeki](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)bu senaryonun tam bir örneğine bakın.
-- [Belirteç başvurusunda](active-directory-b2c-reference-tokens.md)Azure Active Directory B2C tarafından kullanılan belirteçler hakkında daha fazla bilgi edinin.
+- [Belirteç başvurusunda](tokens-overview.md)Azure Active Directory B2C tarafından kullanılan belirteçler hakkında daha fazla bilgi edinin.

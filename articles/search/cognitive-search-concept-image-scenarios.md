@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113841"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838267"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI zenginleştirme senaryolarında görüntülerden bilgi işleme ve ayıklama
 
@@ -215,7 +215,7 @@ Yardımcı olarak, normalleştirilmiş koordinatları özgün koordinat alanına
 
 ## <a name="see-also"></a>Ayrıca bkz.
 + [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Görüntü becermesini çözümle](cognitive-search-skill-image-analysis.md)
++ [Görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)
 + [OCR becerisi](cognitive-search-skill-ocr.md)
 + [Metin birleştirme yeteneği](cognitive-search-skill-textmerger.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)

@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ddffd75d960fe981382d880340d4bf61464cce3c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a4551a94c8a6b5ea54366fcc36b720cda1e6300e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702547"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834187"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -69,10 +69,11 @@ Aşağıdaki örneklerde, kullanıcıların oturum açmasını sağlayan Web uyg
 
 Aşağıdaki örneklerde, Microsoft Graph API 'sine veya bir kullanıcı adına kendi Web API 'sine erişen ortak istemci uygulamaları (masaüstü veya mobil uygulamalar) gösterilmektedir. Tüm bu istemci uygulamaları Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır.
 
-| İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | ASP.NET Core 2,0 Web API 'sini çağırır |
+| istemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | ASP.NET Core 2,0 Web API 'sini çağırır |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
 | Masaüstü (WPF)      | ![Bu görüntüde .NET/C# logo gösterilmektedir](media/sample-v2-code/logo_NET.png) | [etkileşimli](msal-authentication-flows.md#interactive)| [DotNet-masaüstü-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
-| Masaüstü (konsol)   | ![Bu görüntüde .NET/C# (Masaüstü) logosu gösterilir](media/sample-v2-code/logo_NET.png) | [Tümleşik Windows Kimlik Doğrulaması](msal-authentication-flows.md#integrated-windows-authentication) | [DotNet-IWA-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| Masaüstü (konsol)   | ![Bu görüntüde .NET/C# (Masaüstü) logosu gösterilir](media/sample-v2-code/logo_NET.png) | [Tümleşik Windows kimlik doğrulaması](msal-authentication-flows.md#integrated-windows-authentication) | [DotNet-IWA-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| Masaüstü (konsol)   | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png) | [Tümleşik Windows kimlik doğrulaması](msal-authentication-flows.md#integrated-windows-authentication) |[MS-Identity-Java-masaüstü](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Masaüstü (konsol)   | ![Bu görüntüde .NET/C# (Masaüstü) logosu gösterilir](media/sample-v2-code/logo_NETcore.png) | [Kullanıcı Adı/Parola](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
 | Masaüstü (konsol)   | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png) | [Kullanıcı Adı/Parola](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Java-masaüstü](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Masaüstü (konsol)   | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png) | [Kullanıcı Adı/Parola](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Python-Masaüstü](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
@@ -86,7 +87,7 @@ Aşağıdaki örneklerde, Microsoft Graph API 'sine veya bir kullanıcı adına 
 
 Aşağıdaki örneklerde, Microsoft Graph API 'sine kendi kimliğiyle (Kullanıcı olmadan) erişen bir uygulama gösterilmektedir.
 
-| İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph |
+| istemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
 | Console | ![Bu görüntüde .NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [İstemci kimlik bilgileri](msal-authentication-flows.md#client-credentials) | [dotnetcore-Daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
 | Web uygulaması | ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [İstemci kimlik bilgileri](msal-authentication-flows.md#client-credentials) | [DotNet-Daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
@@ -97,7 +98,7 @@ Aşağıdaki örneklerde, Microsoft Graph API 'sine kendi kimliğiyle (Kullanıc
 
 Aşağıdaki örnek, bir Web tarayıcısı olmadan cihazda çalışan ortak bir istemci uygulamasını gösterir. Uygulama, bir komut satırı aracı, Linux veya Mac üzerinde çalışan bir uygulama ya da bir IoT uygulaması olabilir. Örnek, başka bir cihazda (cep telefonu gibi) etkileşimli oturum açan bir kullanıcının adında Microsoft Graph API 'sine erişen bir uygulama sunar. Bu istemci uygulaması Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır.
 
-| İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph |
+| istemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph |
 | ------------------ | -------- |  ----------| ---------- |
 | Masaüstü (konsol)   | ![Bu görüntüde .NET/C# (Masaüstü) logosu gösterilir](media/sample-v2-code/logo_NETcore.png) | [Cihaz kod akışı](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
 | Masaüstü (konsol)   | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png) | [Cihaz kod akışı](msal-authentication-flows.md#device-code) |[MS-Identity-Java-devicecodeflow](https://github.com/Azure-Samples/ms-identity-java-devicecodeflow) |

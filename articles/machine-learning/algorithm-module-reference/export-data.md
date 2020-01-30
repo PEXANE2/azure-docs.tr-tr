@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7f8d3bb6452ee3260e5a89feb37c374418fc6943
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c83bfc4a3ec8d1163669f28dfde64c63e7c6ff89
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312168"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775079"
 ---
 # <a name="export-data-module"></a>Veri modülünü dışarı aktarma
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 İşlem hatlarınızdan sonuçları, ara verileri ve çalışma verilerini Azure Machine Learning dışında bulut depolama hedeflerine kaydetmek için bu modülü kullanın. 
 
@@ -29,7 +29,7 @@ Bu modül verilerinizi aşağıdaki bulut veri hizmetlerine aktarmayı destekler
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [verilere erişme](../how-to-access-data.md).
+Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Storage hizmetlerindeki verilere erişme](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Dışarı aktarma verilerini yapılandırma
 
@@ -39,7 +39,7 @@ Verilerinizi dışarı aktarmadan önce önce Azure Machine Learning çalışma 
 
 1. **Özellikler** bölmesini açmak Için **verileri dışarı aktar** ' ı seçin.
 
-1. **Veri deposu**için, açılan listeden var olan bir veri deposunu seçin. Yeni bir veri deposu da oluşturabilirsiniz. [Nasıl yapılır-erişimli verileri](../how-to-access-data.md) ziyaret ederek öğrenin
+1. **Veri deposu**için, açılan listeden var olan bir veri deposunu seçin. Yeni bir veri deposu da oluşturabilirsiniz. [Azure depolama hizmetleri 'Nde erişim verilerini](../how-to-access-data.md)ziyaret ederek nasıl olduğunu denetleyin.
 
 1. Verilerin yazılacağı veri deposundaki yolu tanımlayın. 
 

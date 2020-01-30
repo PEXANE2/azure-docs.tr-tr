@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948820"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838964"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C uygulamasında uygulamanıza bir Kullanıcı akışı aracılığıyla erişim belirteci geçirin
 
-Azure Active Directory B2C (Azure AD B2C) bir [Kullanıcı akışı](active-directory-b2c-reference-policies.md) , uygulamanızın kullanıcılarına bir kimlik sağlayıcısına kaydolma veya oturum açma olanağı sağlar. Yolculuğun başladığı zaman, Azure AD B2C kimlik sağlayıcısından bir [erişim belirteci](active-directory-b2c-reference-tokens.md) alır. Azure AD B2C, kullanıcı hakkındaki bilgileri almak için bu belirteci kullanır. Kullanıcı akışındaki bir talebi, belirteci, Azure AD B2C kaydettiğinizde bulunan uygulamalara geçirmek için etkinleştirirsiniz.
+Azure Active Directory B2C (Azure AD B2C) bir [Kullanıcı akışı](user-flow-overview.md) , uygulamanızın kullanıcılarına bir kimlik sağlayıcısına kaydolma veya oturum açma olanağı sağlar. Yolculuğun başladığı zaman, Azure AD B2C kimlik sağlayıcısından bir [erişim belirteci](tokens-overview.md) alır. Azure AD B2C, kullanıcı hakkındaki bilgileri almak için bu belirteci kullanır. Kullanıcı akışındaki bir talebi, belirteci, Azure AD B2C kaydettiğinizde bulunan uygulamalara geçirmek için etkinleştirirsiniz.
 
-Azure AD B2C Şu anda yalnızca [Facebook](active-directory-b2c-setup-fb-app.md) ve [Google](active-directory-b2c-setup-goog-app.md)içeren [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
+Azure AD B2C Şu anda yalnızca [Facebook](identity-provider-facebook.md) ve [Google](identity-provider-google.md)içeren [OAuth 2,0](authorization-code-flow.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Uygulamanızın [V2 Kullanıcı akışı](user-flow-versions.md)kullanıyor olması gerekir.
 * Kullanıcı akışınız bir OAuth 2,0 kimlik sağlayıcısı ile yapılandırılır.
@@ -56,4 +56,4 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD B2C belirteçlerine genel bakış](active-directory-b2c-reference-tokens.md)hakkında daha fazla bilgi edinin.
+[Azure AD B2C belirteçlerine genel bakış](tokens-overview.md)hakkında daha fazla bilgi edinin.
