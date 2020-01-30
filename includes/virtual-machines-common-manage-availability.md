@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268220"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887907"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> Note: belirli koşullar altında, aynı Kullanılabilirlik alanının 2 VM 'nin bir parçası aynı FaultDomain ' ı paylaşmasından kaynaklanabilir. Bu, kullanılabilirlik kümesine gidip "hata etki alanı" sütununu denetleyerek onaylanır.
-> Bu davranış, VM 'Ler dağıtıldığında aşağıdaki sıra meydana geldiğinde gözlemlenebilir:
+> [!NOTE]
+> Bazı durumlarda, aynı Kullanılabilirlik alanındaki 2 sanal makine aynı FaultDomain öğesini paylaşılabilir. Bu, kullanılabilirlik kümesine gidip **hata etki alanı** sütunu denetleyerek onaylanır.
+> Bu, VM 'Leri dağıtma sırasında aşağıdaki sırayla neden olabilir:
 > - 1\. VM 'yi dağıtma
 > - 1\. VM 'yi durdur/serbest bırak
 > - 2\. VM 'yi bu koşullarda dağıtın, 2. VM 'nin işletim sistemi diski, 1. VM ile aynı hata etki alanında oluşturulabilir ve bu nedenle 2. VM aynı FaultDomain etki alanına da eklenecektir. 
-> Bu sorundan kaçınmak için, dağıtımları arasında VM 'nin durdurulması/serbest olmaması önerilir.
+> Bu sorundan kaçınmak için, dağıtımlar arasında VM 'Lerin durdurulması/serbest olmaması önerilir.
 
 VM 'Leri yönetilmeyen disklerle kullanmayı planlıyorsanız, VM 'lerin sanal sabit disklerinin (VHD) [sayfa Blobları](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)olarak depolandığı depolama hesapları için aşağıdaki en iyi yöntemleri izleyin.
 

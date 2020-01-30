@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Bu öğreticide, Azure Ağ İzleyicisi’nin IP sonraki atlama özelliği kullanılarak sanal makine ağ yönlendirme sorununu tanılama hakkında bilgi edineceksiniz.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276039"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845211"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir sanal ağ yönlendirme sorununu tanılama
 
@@ -49,11 +48,11 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 2. **İşlem**'i seçin ve sonra **Windows Server 2016 Datacenter** veya **Ubuntu Server 17.10 VM** seçeneğini belirleyin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |---|---|
-    |Name|myVm|
+    |Ad|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD**’yi seçin|
@@ -75,7 +74,7 @@ En az bir bölgede etkinleştirilmiş bir ağ izleyiciniz zaten varsa [Sonraki a
 
     ![Ağ İzleyicisini etkinleştirme](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
-3. **Ağ İzleyicisini etkinleştirme**’yi seçin.
+3. **Ağ izleyicisini etkinleştirme**’yi seçin.
 
 ### <a name="use-next-hop"></a>Sonraki atlamayı kullanma
 
@@ -84,7 +83,7 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
 1. Azure portalında, **Ağ İzleyicisi** altındaki **Sonraki atlama**’yı seçin.
 2. Aboneliğinizi seçin, aşağıdaki değerleri girin veya seçin ve sonra aşağıdaki resimde gösterildiği gibi **Sonraki atlama**’yı seçin:
 
-    |Ayar                  |Value                                                   |
+    |Ayar                  |Değer                                                   |
     |---------                |---------                                               |
     | Kaynak grubu          | myResourceGroup öğesini seçin                                 |
     | Sanal makine         | MyVm öğesini seçin                                            |
@@ -113,9 +112,9 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

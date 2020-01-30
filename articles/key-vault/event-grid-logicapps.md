@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74135022"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845832"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Anahtar Kasası gizliliklerin durum değişiklikleriyle ilgili e-posta almak için Logic Apps kullanın
 
@@ -22,7 +22,7 @@ Bu kılavuzda, [Azure Logic Apps](../logic-apps/index.yml)kullanarak [Azure Even
 
 Azure Key Vault/Azure Event Grid tümleştirmesine genel bakış için bkz. [Azure Event Grid Ile izleme Key Vault (Önizleme)](event-grid-overview.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Logic Apps tarafından desteklenen herhangi bir e-posta sağlayıcısından (Office 365 Outlook gibi) bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen Logic App bağlayıcılarının tam listesi için bkz. [Bağlayıcılara genel bakış](/connectors)
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -34,7 +34,6 @@ Azure Key Vault/Azure Event Grid tümleştirmesine genel bakış için bkz. [Azu
 
 Azure Event Grid aboneliği oluşturmak için aşağıdaki adımları izleyin:
 
-1. Aşağıdaki bağlantıyı kullanarak Azure portal açın: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. Azure portal, anahtar kasanıza gidin, **olay > Başlarken** ' i seçin ve **Logic Apps** ' ye tıklayın.
 
     

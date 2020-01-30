@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472579"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773166"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Öğretici: Azure portal dışarıya aktarılmış şablon kullanma
 
@@ -26,7 +26,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
 Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, ancak buna daha fazla kaynak eklemek isteyebilirsiniz. Var olan bir kaynaktan bir şablonu dışarı aktarmak için bu kaynağın JSON 'sini hızlıca alabilirsiniz.
 
@@ -36,7 +36,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 1. Seçin **kaynak Oluştur**.
 1. **Markette ara**' te **App Service planı**girin ve **App Service planı**' nı seçin.  **App Service planı seçme (klasik)**
 1. **Oluştur**’u seçin.
-1. Girin:
+1. Girmesini
 
     - **Abonelik**: Azure aboneliğinizi seçin.
     - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve ardından bir ad belirtin. Bu öğretici serisinde kullandığınızdan farklı bir kaynak grubu adı belirtin.
@@ -76,7 +76,7 @@ Aşağıdaki örnek, şablonlarınızın eklemelerini vurgular. Bu, içe aktarı
 
 Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 

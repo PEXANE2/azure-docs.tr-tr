@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472971"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773200"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza parametreler ekleme
 
@@ -26,7 +26,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 Bu şablonla ilgili bir sorun olduğunu fark etmiş olabilirsiniz. Depolama hesabı adı sabit kodlanmış. Bu şablonu yalnızca aynı depolama hesabını her seferinde dağıtmak için kullanabilirsiniz. Bir depolama hesabını farklı bir adla dağıtmak için, dağıtımlarınızı otomatik hale getirmenin pratik bir yolu olmayan yeni bir şablon oluşturmanız gerekir.
 
@@ -36,7 +36,7 @@ Bu şablonla ilgili bir sorun olduğunu fark etmiş olabilirsiniz. Depolama hesa
 
 Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
@@ -80,7 +80,7 @@ Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıt
 
 Önceki şablon her zaman bir Standard_LRS depolama hesabı dağıttı. Ortama bağlı olarak farklı SKU 'Ları dağıtma esnekliği isteyebilirsiniz. Aşağıdaki örnek, SKU için bir parametre eklemek için yapılan değişiklikleri gösterir. Tüm dosyayı kopyalayın ve şablonunuzun üzerine yapıştırın.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 **Storagesku** parametresinin varsayılan bir değeri vardır. Bu değer, dağıtım sırasında bir değer belirtilmediğinde kullanılır. Ayrıca, izin verilen değerlerin bir listesini içerir. Bu değerler, bir depolama hesabı oluşturmak için gereken değerlerle eşleşir. Şablon kullanıcılarının çalışmayan SKU 'Larda geçmesini istemezsiniz.
 

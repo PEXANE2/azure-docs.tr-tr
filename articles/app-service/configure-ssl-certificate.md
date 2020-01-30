@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768478"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845918"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -61,6 +61,7 @@ App Service yönetilen ücretsiz sertifika, App Service özel DNS adınızı gü
 - Joker sertifikaları desteklemez.
 - Çıplak etki alanlarını desteklemez.
 - Dışarı aktarılabilir değil.
+- DNS A-kayıtlarını desteklemez.
 
 > [!NOTE]
 > Ücretsiz sertifika, DigiCert tarafından verilir. Bazı üst düzey etki alanları için, şu değere sahip bir [CAA etki alanı kaydı](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) oluşturarak bir sertifika veren olarak DigiCert 'e açıkça izin vermelisiniz: `0 issue digicert.com`.
@@ -116,7 +117,7 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 | Abonelik | Sertifikayı içerecek abonelik. |
 | Kaynak grubu | Sertifikayı içerecek kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
 | Sertifika SKU 'SU | Oluşturulacak sertifikanın türünü, standart bir sertifika veya [Joker bir sertifika](https://wikipedia.org/wiki/Wildcard_certificate)olduğunu belirler. |
-| Yasal Koşullar | Yasal koşulları kabul ettiğinizi onaylamak için tıklayın. Sertifikalar GoDaddy adresinden elde edilir. |
+| Yasal koşullar | Yasal koşulları kabul ettiğinizi onaylamak için tıklayın. Sertifikalar GoDaddy adresinden elde edilir. |
 
 ### <a name="store-in-azure-key-vault"></a>Azure Key Vault içinde depola
 
@@ -137,7 +138,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Erişim ilkeleri| , Kasa kaynaklarına yönelik olan uygulamaları ve izin verilen erişimi tanımlar. Daha sonra, [birkaç uygulamaya bir anahtar kasasına erişim verme](../key-vault/key-vault-group-permissions-for-apps.md)adımlarını izleyerek daha sonra yapılandırabilirsiniz. |
-| Sanal Ağ Erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](../key-vault/key-vault-network-security.md) içindeki adımları izleyerek yapılandırabilirsiniz |
+| Sanal ağ erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](../key-vault/key-vault-network-security.md) içindeki adımları izleyerek yapılandırabilirsiniz |
 
 Kasayı seçtikten sonra **Key Vault deposu** sayfasını kapatın. **1. Adım: Store** seçeneğinde başarılı olması için yeşil bir onay işareti gösterilmelidir. Sonraki adımda sayfayı açık tutun.
 
@@ -343,7 +344,7 @@ az keyvault secret download \
 
 İndirilen *appservicecertificate. pfx* dosyası, hem ortak hem de özel sertifikaları içeren BIR ham PKCS12 dosyasıdır. Her sorulduğunda, Import Password ve pek Pass ifadesi için boş bir dize kullanın.
 
-### <a name="delete-certificate"></a>Sertifikayı sil 
+### <a name="delete-certificate"></a>Sertifikayı Sil 
 
 App Service sertifikasını silme işlemi son ve geri alınamaz. Bu sertifikayla App Service olan herhangi bir bağlama geçersiz hale gelir. Yanlışlıkla silinmeye engel olmak için, Azure, sertifikaya bir kilit koyar. Bir App Service sertifikasını silmek için, önce sertifikadaki silme kilidini kaldırmanız gerekir.
 

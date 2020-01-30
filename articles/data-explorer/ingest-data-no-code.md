@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995941"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836568"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme 
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Tüm kaynakları aynı Azure konumunda veya bölgede oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md). Bu öğreticide, veritabanı adı *TestDatabase*' dir.
@@ -330,7 +330,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
 2. [Güncelleştirme ilkesini](/azure/kusto/concepts/updatepolicy) hedef tabloya ekleyin. Bu ilke, sorguyu *Diagnosticrawrecords* ara veri tablosundaki yeni verileri otomatik olarak çalıştırır ve sonuçları *diagnosticölçümler* tablosuna alır:
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[Tanılama günlükleri](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
 2. [Güncelleştirme ilkesini](/azure/kusto/concepts/updatepolicy) hedef tabloya ekleyin. Bu ilke, sorguyu *Diagnosticrawrecords* ara veri tablosundaki yeni verileri otomatik olarak çalıştırır ve sonuçları *diagnosticlogs* tablosuna alır:
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
@@ -376,7 +376,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
 2. [Güncelleştirme ilkesini](/azure/kusto/concepts/updatepolicy) hedef tabloya ekleyin. Bu ilke, sorguyu *Activitylogsrawrecords* ara veri tablosundaki yeni alınan verilerde otomatik olarak çalıştırır ve sonuçları *activitylogs* tablosuna alır:
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -435,12 +435,12 @@ Artık tanılama ölçümlerini ve günlüklerinizi ve etkinlik günlüklerinizi
 
     ![Tanılama ayarları](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. **Tanılama ayarları** bölmesi açılır. Aşağıdaki adımları izleyin:
+1. **Tanılama ayarları** bölmesi açılır. Aşağıdaki adımları uygulayın:
    1. Tanılama günlük verilerinize *Adxexporteddata*adı verin.
    1. **Günlük**altında hem **SucceededIngestion** hem de **failedingestion** onay kutularını seçin.
    1. **Ölçüm**altında **sorgu performansı** onay kutusunu seçin.
    1. **Bir olay hub 'ının akışını** seçin onay kutusu.
-   1. **Yapılandır**’ı seçin.
+   1. **Yapılandır**' ı seçin.
 
       ![Tanılama ayarları bölmesi](media/ingest-data-no-code/diagnostic-settings-window.png)
 
@@ -526,7 +526,7 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
     | **Sütun eşleme** | *Diagnosticrawmisinizmapping* | Gelen JSON verilerini *Diagnosticrawrecords* tablosunun sütun adlarıyla ve veri türleriyle eşleyen *TestDatabase* veritabanında oluşturduğunuz eşleme.|
     | | |
 
-1. **Oluştur**'u seçin.  
+1. **Oluştur**’u seçin.  
 
 # <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 
@@ -553,7 +553,7 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
     | **Sütun eşleme** | *Activitylogsrawmisinizmapping* | Gelen JSON verilerini *Activitylogsrawrecords* tablosunun sütun adlarıyla ve veri türleriyle eşleyen *TestDatabase* veritabanında oluşturduğunuz eşleme.|
     | | |
 
-1. **Oluştur**'u seçin.  
+1. **Oluştur**’u seçin.  
 ---
 
 ## <a name="query-the-new-tables"></a>Yeni tabloları sorgulama

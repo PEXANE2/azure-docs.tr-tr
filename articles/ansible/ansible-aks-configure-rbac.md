@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde RBAC 'yi yapılandırmak 
 keywords: anyalabilen, Azure, DevOps, Bash, cloudshell, PlayBook, aks, Container, aks, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156863"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836975"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Öğretici: Azure Kubernetes Service 'te (AKS) rol tabanlı erişim denetimi (RBAC) rollerini kullanarak yapılandırma
 
@@ -26,7 +26,7 @@ AKS, Kullanıcı kimlik doğrulaması için [Azure Active Directory (ad)](/azure
 > * Azure AD özellikli bir AKS kümesi oluşturma
 > * Kümede RBAC rolü yapılandırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -119,11 +119,11 @@ Aşağıdaki playbook'u `aks-create.yml` olarak kaydedin:
 
 RBAC bağlama oluşturmak için önce Azure AD nesne KIMLIĞINI almanız gerekir. 
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
 1. Sayfanın üst kısmındaki Ara alanında `Azure Active Directory`girin. 
 
-1. Tıklatın `Enter`.
+1. `Enter` öğesine tıklayın.
 
 1. **Yönet** menüsünde **Kullanıcılar**' ı seçin.
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-`&lt;your-aad-account>` yer tutucusunu Azure AD kiracı [nesne kimliğiniz](#get-the-azure-ad-object-id)ile değiştirin.
+`<your-aad-account>` yer tutucusunu Azure AD kiracı [nesne kimliğiniz](#get-the-azure-ad-object-id)ile değiştirin.
 
 Aşağıdaki PlayBook 'u kaydedin-yeni rolünüzü `aks-kube-deploy.yml`olarak dağıtır:
 

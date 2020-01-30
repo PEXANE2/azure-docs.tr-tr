@@ -2,14 +2,14 @@
 title: Azure geçişi ile Azure 'a geçiş için Hyper-V VM 'lerini değerlendirin | Microsoft Docs
 description: Azure geçişi kullanılarak Azure 'a geçiş için şirket içi Hyper-V VM 'lerinin nasıl değerlendirileneceğini açıklar.
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 01/23/2020
 ms.custom: mvc
-ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029017"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845522"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
@@ -128,7 +128,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - Bu klasör **AzureMigrateAppliance_VersionNumber**olarak da adlandırılan bir alt klasör içerir.
     - Bu alt klasör, daha fazla üç alt **görüntü**, **sanal sabit disk**ve **sanal makine**içerir.
 
-2. Hyper-V Yöneticisi'ni açın. **Eylemler**' de **sanal makineyi içeri aktar**' a tıklayın.
+2. Hyper-V Yöneticisi 'Ni açın. **Eylemler**' de **sanal makineyi içeri aktar**' a tıklayın.
 
     ![VHD dağıtma](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
@@ -138,8 +138,8 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 2. **Içeri aktarma türünü seçin**bölümünde **sanal makineyi Kopyala (yenı bir benzersiz kimlik oluştur)** seçeneğine tıklayın. Ardından **İleri**'ye tıklayın.
 3. **Hedef Seç**bölümünde varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 4. **Depolama klasörlerinde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
-5. **Ağ seçin**bölümünde, VM 'nin kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir.
-6. **Özet**bölümünde ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
+5. **Ağ seçin**bölümünde, VM 'nin kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir. Sanal anahtar oluşturma hakkında [bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) .
+6. **Özet**bölümünde ayarları gözden geçirin. Ardından **son**' a tıklayın.
 7. Hyper-V Yöneticisi 'nde **sanal makineler**>, VM 'yi başlatın.
 
 

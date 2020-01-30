@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003310"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845297"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Öğretici: .NET içinde Windows sanal makinesiyle Azure Key Vault kullanma
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Öğretici: .NET 'te Windows sanal makinesiyle Azure Key Vault kullanma
 
 Azure Key Vault, API anahtarları, uygulamalarınıza, hizmetlerinize ve BT kaynaklarınıza erişmeniz gereken veritabanı bağlantı dizeleri gibi gizli dizileri korumanıza yardımcı olur.
 
@@ -37,7 +37,7 @@ Başlamadan önce [temel kavramları Key Vault](basic-concepts.md)okuyun.
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Windows, Mac ve Linux için:
   * [Git](https://git-scm.com/downloads)
@@ -57,7 +57,7 @@ Ardından, bir erişim belirteci almak için, kodunuz Azure kaynağında bulunan
 
 Kodlamaya başlamadan önce bazı kaynaklar oluşturmanız, anahtar kasanıza bir gizli anahtar koymanız ve izinler atamanız gerekir.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 Azure CLı kullanarak Azure 'da oturum açmak için şunu girin:
 
@@ -84,7 +84,7 @@ Aşağıdaki bilgilerle [az keykasa Create](/cli/azure/keyvault?view=azure-cli-l
 
 * Anahtar Kasası adı: yalnızca rakam (0-9), harf (a-z, A-Z) ve kısa çizgi (-) içerebilen 3 ile 24 karakter arasında bir dize
 * Kaynak grubu adı
-* Konumuna **Batı ABD**
+* Konum: **Batı ABD**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -102,7 +102,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Bu gizli anahtar, **MySecret**değerini depolar.
 
-### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 Aşağıdaki yöntemlerden birini kullanarak bir sanal makine oluşturun:
 
 * [Azure CLI](../virtual-machines/windows/quick-create-cli.md)
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Aşağıdaki iki adımlı işlemde kodu içerecek sınıf dosyasını düzenleyin:
+Aşağıdaki üç adımlı işlemde kodu içerecek sınıf dosyasını düzenleyin:
 
 1. VM 'deki yerel MSI uç noktasından bir belirteç getirir. Bunun yapılması Azure AD 'den de bir belirteç getirir.
-1. Belirteci anahtar kasanıza geçirin ve sonra gizli dizinizi getirin. 
+2. Belirteci anahtar kasanıza geçirin ve sonra gizli dizinizi getirin. 
+3. İsteğe kasasının adını ve gizli adını ekleyin.
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ Aşağıdaki iki adımlı işlemde kodu içerecek sınıf dosyasını düzenleyi
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

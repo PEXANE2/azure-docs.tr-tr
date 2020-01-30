@@ -4,15 +4,15 @@ description: Azure DevOps'ta Cosmos DB öykünücüsü derleme görevini kullana
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441047"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846531"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps'ta Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
 
@@ -47,12 +47,17 @@ Artık uzantı yüklendiğine göre Azure DevOps hesabınızda oturum açın ve 
 
    ![Derleme işlem hattı için takım projesini, depoyu ve dalı seçme](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. 
+3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. Artık Azure Cosmos DB öykünücü derleme görevini kullanacak şekilde ayarlayabileceğiniz bir yapı ardışık düzeni vardır. 
 
 > [!NOTE]
 > Yükleme, CI 'nin bir parçası olarak önceki bir görevde el ile yapılmazsa, bu CI için seçilecek aracı havuzunun Docker for Windows yüklü olması gerekir. Aracı havuzlarının seçimi için bkz. [Microsoft barındırılan aracılar](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) makalesi. `Hosted VS2017`başlamanız önerilir.
 
-Artık Azure Cosmos DB öykünücüsü derleme görevini kullanacak şekilde ayarlayabileceğiniz bir derleme işlem hattınız var. 
+Azure Cosmos DB öykünücü Şu anda barındırılan VS2019 Aracısı havuzunu desteklemiyor. Ancak, öykünücü zaten VS2019 yüklendi ve öykünücü, aşağıdaki PowerShell cmdlet 'leri ile başlatılarak bunu kullanıyorsunuz. VS2019 kullanırken herhangi bir sorunla karşılaşırsanız, yardım için [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) ekibine ulaşın:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Görevi derleme işlem hattına ekleme
 

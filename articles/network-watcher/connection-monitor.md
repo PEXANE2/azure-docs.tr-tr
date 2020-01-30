@@ -3,8 +3,7 @@ title: Öğretici-Azure portal kullanarak ağ iletişimini Izleme
 description: Bu öğreticide, Azure ağ Izleyicisi 'nin bağlantı izleyici özelliği ile iki sanal makine arasındaki ağ iletişimini izlemeyi öğrenin.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419703"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834663"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
@@ -35,9 +34,9 @@ Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-vms"></a>VM oluşturma
 
@@ -49,11 +48,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 2. **İşlem** seçeneğini belirleyin ve bir işletim sistemi seçin. Bu öğreticide **Windows Server 2016 Datacenter** kullanılmaktadır.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |---|---|
-    |Name|myVm1|
+    |Ad|myVm1|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD**’yi seçin|
@@ -71,13 +70,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [İlk sanal makineyi oluşturma](#create-the-first-vm) bölümündeki adımları, aşağıdaki değişikliklerle tekrar tamamlayın:
 
-|Adım|Ayar|Value|
+|Adım|Ayar|Değer|
 |---|---|---|
-| 1\. | **Ubuntu Server** sürümü seçin |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 1 | **Ubuntu Server** sürümü seçin |                                                                         |
+| 3 | Ad                                  | myVm2                                                                   |
 | 3 | Kimlik doğrulaması türü                   | SSH genel anahtarınızı yapıştırın veya **Parola**’yı seçin bir parola girin. |
 | 3 | Kaynak grubu                        | **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.                 |
-| 6 | Uzantıları                            | **Linux için ağ Izleyicisi Aracısı**                                             |
+| 6 | Uzantılar                            | **Linux için ağ Izleyicisi Aracısı**                                             |
 
 Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etmeden önce sanal makinenin dağıtımı tamamlamasını bekleyin.
 
@@ -86,20 +85,20 @@ Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etm
 *myVm1*’den *myVm2*’ye 22 numaralı TCP bağlantı noktası üzerinden iletişimi izlemek için bir bağlantı izleyicisi oluşturun.
 
 1. Portalın sol tarafındaki **Tüm hizmetler**’i seçin.
-2. *Filtre* kutusuna **ağ izleyicisi** yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
+2. **Filtre** kutusuna *ağ izleyicisi* yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
 3. **İZLEME** bölümünde **Bağlantı izleyicisi**’ni seçin.
 4. **+ Ekle** öğesini seçin.
 5. İzlemek istediğiniz bağlantı için bilgileri girin veya seçin ve sonra **Ekle**’yi seçin. Aşağıdaki resimde gösterilen örnekte izlenen bağlantı, 22 numaralı bağlantı noktası üzerinden *myVm1* sanal makinesinden *myVm2* sanal makinesine doğrudur:
 
-    | Ayar                  | Value               |
+    | Ayar                  | Değer               |
     | ---------                | ---------           |
-    | Name                     | myVm1-myVm2(22)     |
+    | Ad                     | myVm1-myVm2(22)     |
     | Kaynak                   |                     |
     | Sanal makine          | myVm1               |
     | Hedef              |                     |
     | Sanal makine seçme |                     |
     | Sanal makine          | myVm2               |
-    | Bağlantı Noktası                     | 22                  |
+    | Bağlantı noktası                     | 22                  |
 
     ![Bağlantı İzleyicisi ekleme](./media/connection-monitor/add-connection-monitor.png)
 
@@ -115,7 +114,7 @@ Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etm
 
     Aşağıdaki bilgileri not edin:
 
-    | Öğe                     | Value                      | Ayrıntılar                                                     |
+    | Öğe                     | Değer                      | Ayrıntılar                                                     |
     | ---------                | ---------                  |--------                                                     |
     | Durum                   | Erişilebilir                  | Uç noktanın erişilebilir olup olmadığını bilmenizi sağlar.|
     | AVG. ROUND-TRIP          | Bağlantıyı kurmak için milisaniye cinsinden gidiş dönüş süresini bilmenizi sağlar. Bağlantı izleyicisi 60 saniyede bir bağlantıyı araştırır; böylece zaman içindeki gecikmeyi izleyebilirsiniz.                                         |
@@ -147,12 +146,12 @@ Varsayılan olarak Azure, aynı sanal ağ üzerindeki sanal makineler arasında 
 
 4. Bir sanal ağdaki tüm sanal makineler arasında iletişime izin veren varsayılan kural, **AllowVnetInBound** adlı kuraldır. 22 numaralı bağlantı numarası üzerinden gelen iletişimi reddeden **AllowVnetInBound** kuralından daha yüksek öncelikli (daha küçük sayılı) bir kural oluşturun. Aşağıdaki bilgileri girin veya seçin, kalan varsayılan değerleri kabul edin ve sonra **Ekle**’yi seçin:
 
-    | Ayar                 | Value          |
+    | Ayar                 | Değer          |
     | ---                     | ---            |
     | Hedef bağlantı noktası aralıkları | 22             |
-    | Eylem                  | Reddet           |
+    | Eylem                  | Deny           |
     | Öncelik                | 100            |
-    | Name                    | DenySshInbound |
+    | Ad                    | DenySshInbound |
 
 5. Bağlantı izleyicisi 60’ar saniyelik aralıklarla araştırma yaptığından birkaç dakika bekleyin ve sonra portalın sol tarafında **Ağ İzleyicisi**’ni, ardından **Bağlantı izleyicisi**’ni ve sonra tekrar **myVm1-myVm2(22)** izleyicisini seçin. Aşağıdaki resimde gösterildiği gibi sonuçlar şimdi farklıdır:
 
@@ -168,9 +167,9 @@ Varsayılan olarak Azure, aynı sanal ağ üzerindeki sanal makineler arasında 
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

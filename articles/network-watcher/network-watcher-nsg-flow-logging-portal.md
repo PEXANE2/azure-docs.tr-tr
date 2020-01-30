@@ -1,12 +1,9 @@
 ---
-title: Öğretici-Azure portal kullanarak bir VM 'ye veya sunucudan günlük ağ trafiği akışı
-titleSuffix: Azure Network Watcher
-description: Bu öğreticide ağ Izleyicisi 'nin NSG akış günlükleri özelliğini kullanarak bir VM 'ye ve sanal makineye ağ trafiği akışını nasıl günlükleyeceğinizi öğrenin.
+title: Sanal makineye gelen ve sanal makineden giden ağ trafiği akışını günlüğe kaydetme - öğretici - Azure portalı | Microsoft Docs
+description: Ağ İzleyicisi’nin NSG akış günlükleri özelliğini kullanarak bir sanal makineye gelen ve sanal makineden giden ağ trafiği akışını günlüğe kaydetme hakkında bilgi edinin.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -16,16 +13,23 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280994"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841021"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal makineye gelen ve sanal makineden giden ağ trafiğini günlüğe kaydetme
+
+> [!div class="op_single_selector"]
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 Ağ güvenlik grubu (NSG), bir sanal makineye gelen trafiği ve sanal makineden giden trafiği filtrelemenize olanak sağlar. Ağ İzleyicisinin NSG akış günlüğü özelliği ile NSG aracılığıyla akan trafiği günlüğe kaydedebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -93,7 +97,10 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
     | Konum       | **Doğu ABD**’yi seçin                                           |
     | Kaynak grubu | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
 
-    Depolama hesabının NSG ile aynı bölgede olması gerekir. Depolama hesabının oluşturulması yaklaşık bir dakika sürebilir. Depolama hesabı oluşturulmadan kalan adımlara devam etmeyin.     
+    Depolama hesabının oluşturulması yaklaşık bir dakika sürebilir. Depolama hesabı oluşturulmadan kalan adımlara devam etmeyin. Yenisini oluşturmak yerine mevcut bir depolama hesabını kullanırsanız, depolama hesabı için **AYARLAR** bölümünde **Güvenlik duvarları ve sanal ağlar** için **Tüm ağlar** (varsayılan) seçeneği belirlenmiş bir depolama hesabı seçtiğinizden emin olun. Her durumda, depolama hesabının NSG ile aynı bölgede olması gerekir.
+
+    > [!NOTE]
+    > Microsoft. Insight ve Microsoft. Network sağlayıcıları şu anda Azure depolama için güvenilen Microsoft Hizmetleri olarak desteklenirken, NSG akış günlükleri yine de tamamen eklendi. NSG akış günlüğünü etkinleştirmek için, bu özellik tam eklendi olana kadar **tüm ağların** seçili olması gerekir. 
 4. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
 5. **GÜNLÜKLER** bölümünde, aşağıdaki resimde gösterildiği gibi **NSG akış günlükleri**’ni seçin:
 
@@ -107,8 +114,9 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
 
 9. 3\. adımda oluşturduğunuz depolama hesabını seçin.
    > [!NOTE]
-   > NSG akış günlükleri şu durumlarda bir depolama hesabıyla çalışmaz:
-   > * Depolama hesabının etkin bir [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) vardır.
+   > NSG akış günlükleri şu durumlarda depolama hesaplarıyla çalışmaz:
+   > * Depolama hesaplarında güvenlik duvarı etkinleştirilmiştir.
+   > * Depolama hesaplarında [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) etkindir.
 1. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde onu seçin.
 10. **Bekletme (gün)** değerini 5 olarak ayarlayın ve **Kaydet**’i seçin.
 
@@ -120,7 +128,7 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
    ![Akış günlüklerini indirme](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. [NSG akış günlüğünü etkinleştirme](#enable-nsg-flow-log) bölümünün 2. adımında yapılandırdığınız depolama hesabını seçin.
-4. **BLOB hizmeti**altında **kapsayıcılar**' ı seçin ve ardından **Öngörüler-logs-networksecuritygroupflowevent** kapsayıcısını seçin.
+4. **BLOB hizmeti**altında **Bloblar**' ı seçin ve ardından **Öngörüler-logs-networksecuritygroupflowevent** kapsayıcısını seçin.
 5. Kapsayıcıda, aşağıdaki resimde gösterildiği gibi, bir PT1H. JSON dosyasına ulaşana kadar klasör hiyerarşisine gidin. Günlük dosyaları, aşağıdaki adlandırma kuralını izleyen bir klasör hiyerarşisine yazılır: https://{storageAccountName}. blob. Core. Windows. net/Insights-logs-networksecuritygroupflowevent/RESOURCEID =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/Pt1h.exe JSON
 
    ![Akış günlüğü](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -220,4 +228,4 @@ Aşağıdaki json, verileri günlüğe kaydedilen her akış için PT1H.json dos
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, NSG için NSG akış günlüğünün nasıl etkinleştirildiğini öğrendiniz. Ayrıca bir dosyada günlüğe kaydedilen verilerin nasıl indirileceğini ve görüntüleneceğini de öğrendiniz. Json dosyasındaki işlenmemiş verilerin yorumlanması güç olabilir. Verileri görselleştirmek için, Ağ İzleyicisi [trafik analizini](traffic-analytics.md), Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) ve diğer araçları kullanabilirsiniz.
+Bu öğreticide, NSG için NSG akış günlüğünün nasıl etkinleştirildiğini öğrendiniz. Ayrıca bir dosyada günlüğe kaydedilen verilerin nasıl indirileceğini ve görüntüleneceğini de öğrendiniz. Json dosyasındaki işlenmemiş verilerin yorumlanması güç olabilir. Akış günlüğü verilerini görselleştirmek için [Azure Trafik Analizi](traffic-analytics.md), [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)ve diğer araçları kullanabilirsiniz. [PowerShell](network-watcher-nsg-flow-logging-powershell.md), [Azure CLI](network-watcher-nsg-flow-logging-cli.md), [REST API](network-watcher-nsg-flow-logging-rest.md) ve [ARM şablonları](network-watcher-nsg-flow-logging-azure-resource-manager.md)gibi NSG akış günlüklerinin etkinleştirilmesi için alternatif yöntemler deneyebilirsiniz.

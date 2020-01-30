@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359978"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887887"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -145,28 +145,20 @@ Yönetilen diskler için bunları yeniden adlandıramazsınız. Ancak, şu anda 
 
 Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu üç disk türü için, tüm disk boyutları (boyut olarak 32 TiB 'ye kadar olan diskler dahil) için anlık görüntüler desteklenir. Ultra diskler anlık görüntüleri desteklemez.
 
-### <a name="disk-reservation"></a>Disk ayırma
+**Azure disk rezervasyonları nelerdir?**
+Disk ayırma, toplam maliyetinizi azaltmak için önceden bir yıllık disk depolama alanı satın alma seçeneğidir. Azure disk ayırmaları ile ilgili ayrıntılar için konu hakkındaki makalemize bakın: [rezervasyon Iskontosunun Azure diskine nasıl uygulandığını anlayın](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Azure disk ayırması nedir?**
-Disk ayırma, toplam maliyetinizi azaltmak için önceden bir yıllık disk depolama alanı satın alma seçeneğidir.
+**Azure disk rezervasyonu hangi seçenekleri sunar?** Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca peşin ödeme, ön ödeme veya aylık ödeme seçeneklerinden birini belirleyebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur. 
 
-**Azure disk rezervasyonu hangi seçenekleri sunar?**
-Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca peşin ödeme, ön ödeme veya aylık ödeme seçeneklerinden birini belirleyebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur.
+Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske bölemez. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
 
-Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske Divvy. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
+**Azure disk ayırması nasıl uygulanır?**  
+Diskler ayırması, ayrılmış sanal makine (VM) örneklerine benzer bir model izler. Bir sanal makine örneği, bir disk rezervasyonunun farklı SKU 'Lara uygulanamadığından farklılık gösteren fark. VM örnekleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örnekleri ile maliyetleri kaydetme](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) .    
 
-**Azure disk ayırması için nasıl faturalandırılırım?**
-- Kurumsal Anlaşma (EA) müşterileri için Azure parasal taahhüt, ilk olarak Azure disk ayırmalarını satın almak için kullanılacaktır. EA müşterilerinin tüm parasal taahhüdünü kullanmış olduğu senaryolarda, disk rezervasyonları yine de satın alınabilir ve bu satın alma işlemleri bir sonraki fazla kullanım faturanızda tek, ön ödeme için faturalandırılır.
+**Birden çok bölgede Azure diskleri ayırması aracılığıyla satın alınan veri depolama alanını kullanabilir miyim?**     
+Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gibi) için satın alınır ve bu nedenle bu yapılar dışında kullanılamaz. Diğer bölgelerde veya SKU 'Larda disk depolama gereksinimleriniz için her zaman ek bir Azure diskleri ayırması satın alabilirsiniz. 
 
-- Azure.com aracılığıyla satın alan müşteriler için satın alma sırasında dosyadaki kredi kartı, Azure diskleri rezervasyonuna ait tam ödeme (veya aylık sabit ödemeler) için ücretlendirilir.
-
-**Azure disk ayırması nasıl uygulanır?**
-Diskler ayırması, ayrılmış sanal makine (VM) örneklerine benzer bir model izler. Bir sanal makine örneği, bir disk rezervasyonunun farklı SKU 'Lara uygulanamadığından farklılık gösteren fark. VM örnekleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örnekleri ile maliyetleri kaydetme](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) . 
-
-**Birden çok bölgede Azure diskleri ayırması aracılığıyla satın alınan veri depolama alanını kullanabilir miyim?**
-Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gibi) için satın alınır ve bu nedenle bu yapılar dışında kullanılamaz. Diğer bölgelerde veya SKU 'Larda disk depolama gereksinimleriniz için her zaman ek bir Azure diskleri ayırması satın alabilirsiniz.
-
-**Azure disklerimin ayırması sona erdiğinde ne olur?**
+**Azure disklerimin ayırması sona erdiğinde ne olur?**    
 Süresi dolmadan 30 gün önce ve sona erme tarihinde bir süre sonra bir e-posta bildirimi alacaksınız. Ayırma süresi dolduktan sonra, dağıtılan diskler çalışmaya devam eder ve en son [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır.
 
 ## <a name="ultra-disks"></a>Ultra diskler
