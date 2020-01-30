@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715888"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845473"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure etkinlik günlüğünü depolamaya veya Azure Event Hubs dışarı aktarma
 
@@ -36,9 +36,10 @@ Denetim, statik analiz veya yedekleme için günlük verilerinizi 90 günden dah
 ### <a name="storage-account"></a>Depolama hesabı
 Etkinlik günlüğliğinizi arşivlerken, yoksa [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir. İzleme verilerine erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Ayrıca günlükleri ve ölçümleri de bir depolama hesabına arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.
 
-Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğu sürece, depolama hesabının, abonelik yaymasıyla aynı abonelikte olması gerekmez.
-> [!NOTE]
->  Şu anda, verileri güvenli bir sanal ağın arkasındaki bir depolama hesabına arşivleme işlemi yapılamaz.
+Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğu sürece, depolama hesabının, abonelik yaymasıyla aynı abonelikte olması gerekmez. 
+
+> [!TIP]
+> Güvenli bir sanal ağın arkasındaki bir depolama hesabına erişim sağlamak için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
 
 ### <a name="event-hubs"></a>Event Hubs
 Etkinlik Günlüğliğinizi bir olay hub 'ına gönderiyorsanız, henüz yoksa [bir olay hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md) gerekir. Daha önce bu Event Hubs ad alanına etkinlik günlüğü olayları akıdıysanız, bu olay hub 'ı yeniden kullanılacaktır.

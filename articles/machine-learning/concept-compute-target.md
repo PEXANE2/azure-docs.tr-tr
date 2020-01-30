@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 58df0fe6a598d97e0a9d985052cf3a8c198eb4cc
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541341"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844101"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -50,7 +50,7 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 
 İçinde Azure Machine Learning işlem örnekleri (Önizleme) veya işlem kümeleri oluşturabilirsiniz:
 
-| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager şablonu | CLI |
+| | Azure Machine Learning Studio | Azure portalında | SDK | Resource Manager şablonu | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | İşlem örneği | evet | evet | evet | evet |  |
 | İşlem kümesi | evet | evet | evet | evet | evet |
@@ -58,7 +58,7 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
 
 > [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
 
 ### <a name="compute-clusters"></a>İşlem kümeleri

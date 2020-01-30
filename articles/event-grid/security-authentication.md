@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169572"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846300"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid güvenliğini ve kimlik doğrulaması 
 
@@ -87,7 +87,7 @@ Uç nokta sahipliği kanıtlamak için geri validationResponse özelliğinde do�
 
 Bir HTTP 200 Tamam yanıt durum kodu döndürmelidir. Kabul edilen HTTP 202, geçerli bir Event Grid Abonelik doğrulama yanıtı olarak tanınmıyor. Http isteğinin 30 saniye içinde tamamlaması gerekir. İşlem 30 saniye içinde tamamlanmazsa, işlem iptal edilir ve 5 saniye sonra yeniden denenecektir. Tüm denemeler başarısız olursa, doğrulama el sıkışma hatası olarak kabul edilir.
 
-Veya doğrulama URL'si için bir GET isteği göndererek abonelik el ile doğrulayabilirsiniz. Olay aboneliği, onaylanana kadar bekleyen bir durumda kalır. Doğrulama URL 'Si 553 numaralı bağlantı noktasını kullanır. Güvenlik Duvarı kurallarınız bağlantı noktası 553 ' i engellerseniz, başarılı el ile el sıkışma için kuralların güncellenmesi gerekebilir.
+Veya doğrulama URL'si için bir GET isteği göndererek abonelik el ile doğrulayabilirsiniz. Olay aboneliği doğrulandı kadar bir bekleme durumunda kalır. Doğrulama URL 'Si 553 numaralı bağlantı noktasını kullanır. Güvenlik Duvarı kurallarınız bağlantı noktası 553 ' i engellerseniz, başarılı el ile el sıkışma için kuralların güncellenmesi gerekebilir.
 
 Abonelik doğrulama anlaşma işleme ilişkin bir örnek için bkz. bir [ C# örnek](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
@@ -95,7 +95,7 @@ Abonelik doğrulama anlaşma işleme ilişkin bir örnek için bkz. bir [ C# ör
 
 Olay aboneliği oluşturma sırasında, "belirtilen uç nokta https 'yi doğrulama denemesi:\//Your-Endpoint-Here hatasıyla birlikte bir hata mesajı görüyorsanız. Daha fazla ayrıntı için https:\//aka.ms/esvalidation "adresini ziyaret edin. Bu, doğrulama el sıkışmasının bir hata olduğunu gösterir. Bu hatayı gidermek için aşağıdaki durumlara doğrulayın:
 
-* Hedef uç noktasında denetim uygulama kodu var mı? Örneğin, Azure işlevi bir HTTP tetikleyici tabanlı yazıyorsanız, değişiklik yapmak için uygulama koduna erişmeniz gerekiyor?
+* Hedef uç noktada çalışan uygulama kodunu kontrol ediyor musunuz? Örneğin, Azure işlevi bir HTTP tetikleyici tabanlı yazıyorsanız, değişiklik yapmak için uygulama koduna erişmeniz gerekiyor?
 * Uygulama koduna erişiminiz varsa, yukarıdaki örnekte gösterildiği gibi temel ValidationCode el sıkışması mekanizması uygulayın.
 
 * Uygulama kodu (örneğin, Web kancalarını destekleyen üçüncü taraf bir hizmet kullanıyorsanız) erişimi yoksa, el ile anlaşma mekanizması kullanabilirsiniz. Doğrulama olay validationUrl almak için 2018-05-01-Önizleme API sürümü veya üzeri (yükleme Event Grid Azure CLI uzantısı) kullandığınızdan emin olun. El ile doğrulama anlaşma tamamlanması değerini almak `validationUrl` özelliği web tarayıcınızda bu URL'yi ziyaret edin. Doğrulama başarılı olursa, doğrulama başarılı olduğunu, web tarayıcınızda bir ileti görürsünüz. Olay aboneliğinin provisioningState "başarılı olduğunu" görürsünüz. 
@@ -348,6 +348,10 @@ Farklı eylemlerde bulunmak kullanıcıların örnek Event Grid rol tanımları 
 ```
 
 Özel rollerle oluşturabilirsiniz [PowerShell](../role-based-access-control/custom-roles-powershell.md), [Azure CLI](../role-based-access-control/custom-roles-cli.md), ve [REST](../role-based-access-control/custom-roles-rest.md).
+
+## <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
+
+Event Grid hizmeti tarafından diske yazılan tüm olaylar veya veriler, bekleyen bir şekilde şifrelendiğinden emin olmak için Microsoft tarafından yönetilen bir anahtarla şifrelenir. Ayrıca, olayların veya verilerin saklanacağı en uzun süre, [Event Grid yeniden deneme ilkesi](delivery-and-retry.md)ile birlikte 24 saattir. Event Grid, 24 saat sonra tüm olayları veya verileri otomatik olarak siler veya olayın yaşam süresi (hangisi daha az) olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

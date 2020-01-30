@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547260"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845543"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve geri yükleme
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve sil
 Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı kaynağı ve verileri kurtarılamaz – verileri kalıcı olarak silinmek üzere kuyruğa alınır ve 30 gün içinde tamamen temizlenir. Çalışma alanı adı ' yayımlandı ' ve bunu yeni bir çalışma alanı oluşturmak için kullanabilirsiniz.
 
 > [!NOTE]
-> Geçici silme davranışı kapatılamaz. Silme işleminde bir ' zorla ' etiketi kullanılırken geçici silme işlemini geçersiz kılmak için kısa bir seçenek ekleyeceğiz.
+> Geçici silme davranışını geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek istiyorsanız, [kalıcı çalışma alanı silme](#Permanent workspace delete)bölümündeki adımları izleyin.
 
 Hizmet işleminizi olumsuz yönde etkileyebilecek önemli veriler ve yapılandırma olabileceğinden, bir çalışma alanını sildiğinizde dikkatli olmak istersiniz. Şu gibi Log Analytics verilerini depolayan aracıları, çözümleri ve diğer Azure hizmetlerini ve kaynakları inceleyin:
 

@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 485c6d4a92539a2ba67aece319c68d31649e8045
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992268"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844624"
 ---
 # <a name="persist-state-in-windows"></a>Windows 'da durumu kalıcı yap
 
-Event Grid modülünde oluşturulan konular ve abonelikler, varsayılan olarak kapsayıcı dosya sisteminde saklanır. Kalıcı olmadan, modül yeniden dağıtılırsa oluşturulan tüm meta veriler kaybedilir. Dağıtımlar genelinde verileri korumak için verileri kapsayıcı dosya sisteminin dışında kalıcı hale getirmeniz gerekecektir. Şu anda yalnızca meta veriler kalıcıdır. Olaylar bellek içinde depolanır. Event Grid modülü yeniden dağıtılırsa veya yeniden başlatılırsa, teslim edilmemiş tüm olaylar kaybedilir.
+Event Grid modülünde oluşturulan konular ve abonelikler varsayılan olarak kapsayıcı dosya sisteminde saklanır. Kalıcı olmadan, modül yeniden dağıtılırsa oluşturulan tüm meta veriler kaybedilir. Dağıtımlar ve yeniden başlatmalar genelinde verileri korumak için verileri kapsayıcı dosya sisteminin dışında kalıcı hale getirmeniz gerekir. 
+
+Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar, daha iyi performans için bellekte depolanır. Olay kalıcılığını da sağlamak için kalıcı olaylar bölümünü izleyin.
 
 Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülünü dağıtmak için gereken adımlar sağlanmaktadır.
 
@@ -27,7 +29,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
 
 ## <a name="persistence-via-volume-mount"></a>Birim bağlama aracılığıyla Kalıcılık
 
-[Docker birimleri](https://docs.docker.com/storage/volumes/) , dağıtımları genelinde verileri korumak için kullanılır. Bir birimi bağlamak için Docker komutlarını kullanarak oluşturmanız gerekir, kapsayıcının bu komutları okuyabilmesi, yazabilmesi ve sonra modülün dağıtılması için izin vermeniz gerekir. Windows üzerinde gerekli izinlere sahip bir birimi otomatik olarak oluşturmak için bir sağlama yoktur. Dağıtılmadan önce oluşturulması gerekir.
+[Docker birimleri](https://docs.docker.com/storage/volumes/) , dağıtımları genelinde verileri korumak için kullanılır. Bir birimi bağlamak için Docker komutlarını kullanarak oluşturmanız gerekir, kapsayıcının bu komutları okuyabilmesi, yazabilmesi ve sonra modülün dağıtılması için izin vermeniz gerekir.
 
 1. Aşağıdaki komutu çalıştırarak bir birim oluşturun:
 
@@ -82,17 +84,17 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     ```json
         {
               "Env": [
-                "inbound:serverAuth:tlsPolicy=strict",
-                "inbound:serverAuth:serverCert:source=IoTEdge",
-                "inbound:clientAuth:sasKeys:enabled=false",
-                "inbound:clientAuth:clientCert:enabled=true",
-                "inbound:clientAuth:clientCert:source=IoTEdge",
-                "inbound:clientAuth:clientCert:allowUnknownCA=true",
-                "outbound:clientAuth:clientCert:enabled=true",
-                "outbound:clientAuth:clientCert:source=IoTEdge",
-                "outbound:webhook:httpsOnly=true",
-                "outbound:webhook:skipServerCertValidation=false",
-                "outbound:webhook:allowUnknownCA=true"
+                "inbound__serverAuth__tlsPolicy=strict",
+                "inbound__serverAuth__serverCert__source=IoTEdge",
+                "inbound__clientAuth__sasKeys__enabled=false",
+                "inbound__clientAuth__clientCert__enabled=true",
+                "inbound__clientAuth__clientCert__source=IoTEdge",
+                "inbound__clientAuth__clientCert__allowUnknownCA=true",
+                "outbound__clientAuth__clientCert__enabled=true",
+                "outbound__clientAuth__clientCert__source=IoTEdge",
+                "outbound__webhook__httpsOnly=true",
+                "outbound__webhook__skipServerCertValidation=false",
+                "outbound__webhook__allowUnknownCA=true"
               ],
               "HostConfig": {
                 "Binds": [
@@ -118,21 +120,22 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "myeventgridvol:C:\\app\\metadataDb"
+                "myeventgridvol:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -147,7 +150,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
 
 ## <a name="persistence-via-host-directory-mount"></a>Konak Dizin bağlama aracılığıyla Kalıcılık
 
-Alternatif olarak, konak sisteminde bir dizin oluşturmayı ve bu dizini bağlamaya da seçim yapabilirsiniz.
+Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir ve bu dizini bağlayabilirsiniz.
 
 1. Aşağıdaki komutu çalıştırarak konak dosya sisteminde bir dizin oluşturun.
 
@@ -180,21 +183,22 @@ Alternatif olarak, konak sisteminde bir dizin oluşturmayı ve bu dizini bağlam
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "C:\\myhostdir:C:\\app\\metadataDb"
+                "C:\\myhostdir:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -206,3 +210,30 @@ Alternatif olarak, konak sisteminde bir dizin oluşturmayı ve bu dizini bağlam
          }
     }
     ```
+## <a name="persist-events"></a>Etkinlikleri kalıcı yap
+
+Olay kalıcılığını etkinleştirmek için, önce yukarıdaki bölümleri kullanarak birim bağlama veya ana bilgisayar Dizin bağlama aracılığıyla meta veri kalıcılığını etkinleştirmeniz gerekir.
+
+Kalıcı olaylar hakkında dikkat etmeniz gereken önemli noktalar:
+
+* Kalıcı olaylar, olay başına abonelik temelinde etkinleştirilir ve bir birim veya dizin bağlandıktan sonra kabul edilir.
+* Olay kalıcılığı, oluşturma zamanında bir olay aboneliğinde yapılandırılır ve olay aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını değiştirmek için olay aboneliğini silip yeniden oluşturmanız gerekir.
+* Kalıcı olaylar, bellek işlemlerinden neredeyse her zaman daha yavaştır, ancak hız farkı, sürücünün özelliklerine oldukça bağlıdır. Hız ve güvenilirlik arasındaki zorunluluğunu getirir tüm mesajlaşma sistemlerine sahiptir ancak büyük ölçekte yalnızca bir noticible olur.
+
+Olay aboneliği üzerinde olay kalıcılığını etkinleştirmek için `persistencePolicy` `true`olarak ayarlayın:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

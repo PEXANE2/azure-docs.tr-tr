@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241985"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845283"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
-Bu makalede, ilke ifadeleri sözdizimi 7 C# ' dir. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
+Bu makalede, 7 ' deki C# ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
 
 Daha fazla bilgi için:
 

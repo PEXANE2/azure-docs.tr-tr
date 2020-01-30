@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771828"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845192"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama
 
 Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde uzaktan Visual Studio Code ayarlamayı öğrenirsiniz, böylece VS Code **kodunuzda kodunuzun hatalarını etkileşimli olarak ayıklayabilirsiniz** . 
 
 > [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
 
 + [Azure Machine Learning Işlem örneği](concept-compute-instance.md) , veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar. 
 

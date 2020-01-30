@@ -3,12 +3,12 @@ title: Öğretici-Azure Kubernetes hizmetinde bir Application Gateway ingcontrol
 description: Azure Kubernetes hizmeti ile bir Kubernetes kümesinin giriş denetleyicisi olarak Application Gateway ile nasıl oluşturulacağını gösteren öğretici
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867395"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772864"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Öğretici: Azure Kubernetes hizmetinde bir Application Gateway ingcontroller oluşturma
 
@@ -51,7 +51,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
     cd clouddrive
     ```
 
-1. `terraform-aks-k8s` adlı bir dizin oluşturun.
+1. `terraform-aks-appgw-ingress` adlı bir dizin oluşturun.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ Bu bölümdeki kod, [Heln](/azure/aks/kubernetes-helm) -Kubernetes paket yöneti
     - `armAuth.secretJSON`: yalnızca hizmet sorumlusu gizli türü seçildiğinde gereklidir (`armAuth.type` `servicePrincipal`olarak ayarlandığında).
 
     Önemli notlar:
-    - `identityResourceID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_client_id)"`.
-    - `identityClientID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_resource_id)"`.
+    - `identityResourceID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_resource_id)"`.
+    - `identityClientID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_client_id)"`.
     - `<resource-group>` değeri, uygulama ağ geçidinizin kaynak grubudur.
     - `<identity-name>` değeri oluşturulan kimliğin adıdır.
     - Belirli bir aboneliğin tüm kimlikleri: `az identity list`kullanılarak listelenebilir.

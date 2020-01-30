@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760632"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845325"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
@@ -72,7 +72,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `ta-IN` | Tamilce (Hindistan) | Evet | Dil modeli
 `te-IN` | Telugu dili (Hindistan) | Evet | Hayır
 `th-TH` | Tayca (Tayland) | Evet | Hayır
-`tr-TR` | Türkiye | Evet | Hayır
+`tr-TR` | Türkçe (Türkiye) | Evet | Hayır
 `zh-CN` | Çince (Basitleştirilmiş Mandarin) | Evet | Akustik model<br>Dil modeli
 `zh-HK` | Çince (Cantoneo, geleneksel) | Evet | Dil modeli
 `zh-TW` | Çince (Tayvan Mandarin) | Evet | Dil modeli
@@ -111,7 +111,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 -------|----------|---------|----------|----------
-<sup>**1**</sup>`ar-EG` | Arapça (Mısır) | Kadın | "Microsoft sunucu konuşma Sesli konuşmayı metne (ar-Örneğin, Hoda)" | "ar-EG-Hoda"
+<sup>1</sup>`ar-EG` | Arapça (Mısır) | Kadın | "Microsoft sunucu konuşma Sesli konuşmayı metne (ar-Örneğin, Hoda)" | "ar-EG-Hoda"
 `ar-SA` | Arapça (Suudi Arabistan) | Erkek | "Microsoft Server Konuşma metin konuşma ses (ar-SA, Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bulgarca | Erkek | "Microsoft Server Konuşma metin okuma ses (bg-BG, çalışan Ivan)" | "BG-BG-Ivan"
 `ca-ES` | Katalanca (İspanya) | Kadın | "Microsoft Server Konuşma metin okuma ses (ca-ES, HerenaRUS)" | "CA-ES-HerenaRUS"
@@ -181,7 +181,7 @@ Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ad
 `ta-IN` | Tamilce (Hindistan) | Erkek | "Microsoft Server Konuşma metin konuşma ses (veri-ın, Valluvar)" | "ta-Valluvar"
 `te-IN` | Telugu dili (Hindistan) | Kadın | "Microsoft Server Konuşma metin konuşma ses (metin-IN, Chitra)" | "te-Chitra"
 `th-TH` | Tay Dili | Erkek | "Microsoft Server Konuşma metin okuma ses (th-TH, Pattara)" | "TH-Pattara"
-`tr-TR` | Türkçe | Kadın | "Microsoft Server Konuşma metin okuma ses (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
+`tr-TR` | Türkçe (Türkiye) | Kadın | "Microsoft Server Konuşma metin okuma ses (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
 `vi-VN` | Vietnam dili | Erkek | "Microsoft Server Konuşma metin okuma ses (vi-VN bir)" | "VI-VN-a"
 `zh-CN` | Çince (ana kara) | Kadın | "Microsoft Server Konuşma metin konuşma ses (zh-CN, HuihuiRUS)" | "zh-CN-Huihuırus"
 | | | Kadın | "Microsoft Server Konuşma metin konuşma ses (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"

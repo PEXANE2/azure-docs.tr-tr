@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472376"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773161"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
@@ -26,7 +26,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Şablonunuzda dağıtım sırasında sağlayabilmeniz için birçok parametre vardır. Önceki öğreticinin sonunda şablonunuz şöyle aranır:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 Bu şablon iyi sonuç verir, ancak artık şablon için geçirdiğiniz parametreleri kolayca yönetmek istiyorsunuz.
 
@@ -36,13 +36,13 @@ Parametre dosyaları, şablonunuza benzer bir yapıya sahip JSON dosyalarıdır.
 
 VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. dev. JSON**adıyla kaydedin.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için Standard_LRS kullandığına, kaynakları **dev** ön ekine göre isimettiğini ve **ortam** etiketini **dev**olarak ayarladığına dikkat edin.
 
 Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy. Parameters. prod. JSON**adıyla kaydedin.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için Standard_GRS kullandığına, kaynakları **contoso** ön ekine göre isimettiğini ve **ortam** etiketini **Üretim**olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
 

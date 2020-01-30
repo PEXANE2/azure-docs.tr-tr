@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 1/28/2020
+ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553027"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845266"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -80,7 +80,7 @@ Aşağıdaki kod parçacığı, akış verilerinin serisini kaldırma işlemi ol
 
 ## <a name="deserializer-examples"></a>Seri hale getirici örnekleri
 
-Bu bölümde, Protoda ve CSV için özel seri hale getiricilerin nasıl yazılacağı gösterilmektedir. Daha fazla örnek için [GitHub 'da Azure Stream Analytics](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)ziyaret edin.
+Bu bölümde, Protoda ve CSV için özel seri hale getiricilerin nasıl yazılacağı gösterilmektedir. Event hub yakalama için AVRO biçimi gibi ek örnekler için [GitHub 'da Azure Stream Analytics](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)ziyaret edin.
 
 ### <a name="protocol-buffer-protobuf-format"></a>Protokol arabelleği (Protoarabelleği) biçimi
 

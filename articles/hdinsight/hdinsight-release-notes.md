@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/24/2020
+ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027765"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844692"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -23,7 +23,7 @@ Bu makalede **en son** Azure HDInsight sürüm güncelleştirmeleri hakkında bi
 
 Azure HDInsight, Azure üzerinde açık kaynaklı analizler için kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
 
-## <a name="release-date-01092019"></a>Yayın tarihi: 01/09/2019
+## <a name="release-date-01092020"></a>Yayın tarihi: 01/09/2020
 
 Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, lütfen bölgenizde bir kaç gün içinde etkin olmasını bekleyin.
 
@@ -65,3 +65,34 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini burada bulabilirsiniz.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+24 Ocak 2020 itibariyle, bir Jupyter Not defteri kullanmaya çalışırken bir hata alabileceğiniz etkin bir sorun vardır. Sorunu onarmak için aşağıdaki adımları kullanın. Ayrıca, bu [MSDN gönderisini](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) veya güncel bilgiler Için bu [StackOverflow gönderisini](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) veya ek soru sorabilirsiniz. Bu sayfa, sorun düzeltildiğinde güncelleştirilecektir.
+
+**Hatası**
+
+* ValueError: Bu sürüm mevcut olmadığından Not defteri v5 'e dönüştürülemiyor
+* Not defteri yüklenirken hata oluştu bu not defteri yüklenirken bilinmeyen bir hata oluştu. Bu sürüm, v4 veya daha önceki bir not defteri biçimlerini yükleyebilir
+
+**Neden** 
+
+Kümedeki _version. Kopyala dosyası, 4.4. x yerine 5. x. x olarak güncelleştirildi. # #.
+
+**Çözüm**
+
+Yeni bir Jupyter Not defteri oluşturup yukarıda listelenen hatalardan birini alırsanız, sorunu onarmak için aşağıdaki adımları gerçekleştirin.
+
+1. https://CLUSTERNAME.azurehdinsight.net ' a giderek bir Web tarayıcısında ambarı açın, burada CLUSTERNAME kümenizin adıdır.
+1. Ambarı ' nda, sol taraftaki menüden **Jupo**' a ve ardından **hizmet eylemleri**' ne tıklayın, **Durdur**' a tıklayın.
+1. Jupyıter hizmetinin çalıştığı küme yayın düğümüne SSH.
+1. Sudo modunda, aşağıdaki/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. Kopyala dosyasını açın.
+1. Mevcut giriş aşağıdaki koda benzer bir şey göstermelidir: 
+
+    version_info = (5, 0, 3)
+
+    Girişi şu şekilde değiştirin: 
+    
+    version_info = (4, 4, 0)
+1. Dosyayı kaydedin.
+1. Ambarı 'na geri dönün ve **hizmet eylemlerinde** **Tümünü Yeniden Başlat**' a tıklayın.

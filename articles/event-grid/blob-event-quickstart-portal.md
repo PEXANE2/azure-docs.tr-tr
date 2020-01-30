@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982173"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844794"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portalı ile web uç noktasına rota Blob Depolama olaylarına
 
@@ -41,6 +41,9 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
 1. Olaylara abone olmak için, genel amaçlı v2 depolama hesabı veya bir Blob depolama hesabı oluşturun. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
    ![Başlangıç adımları](./media/blob-event-quickstart-portal/provide-blob-values.png)
+
+>[!NOTE]
+> Yalnızca **StorageV2 (genel amaçlı v2)** ve **blobstorage** türünde depolama hesapları olay tümleştirmesini destekler. **Depolama (genral amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
 

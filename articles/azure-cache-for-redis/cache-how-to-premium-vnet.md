@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f449dc08dede30a7dec977bb66e0a2c0b509a1f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433482"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846395"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.
@@ -37,7 +37,7 @@ VNet 'i yeni önbelleğiniz için yapılandırmak için, **yeni Azure önbelleğ
 
 ![Sanal ağ][redis-cache-vnet]
 
-**Alt ağ** açılan listesinden istediğiniz alt ağı seçin ve Istenen **statik IP adresini**belirtin. Klasik VNet kullanıyorsanız **STATIK IP adresi** alanı isteğe bağlıdır ve hiçbiri belirtilmemişse seçili alt ağdan bir tane seçilir.
+**Alt ağ** açılan listesinden istediğiniz alt ağı seçin.  İsterseniz, bir **STATIK IP adresi**belirtin. **STATIK IP adresi** alanı isteğe bağlıdır ve hiçbiri belirtilmemişse seçili alt ağdan bir tane seçilir.
 
 > [!IMPORTANT]
 > Redsıs için Azure önbelleğinin bir Kaynak Yöneticisi VNet 'e dağıtılmasında, önbelleğin Redsıs örnekleri için Azure önbelleği dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olması gerekir. Redsıs için Azure önbelleğini diğer kaynakları içeren bir alt ağa bir Kaynak Yöneticisi VNet 'e dağıtmak için bir girişimde bulunuldu, dağıtım başarısız olur.
@@ -76,7 +76,7 @@ VNet kullanırken Redsıs örneği için Azure önbelleğinize bağlanmak için 
 Aşağıdaki liste, Redsıs ölçeklendirmesi için Azure önbelleği hakkında sık sorulan soruların yanıtlarını içerir.
 
 * Redsıs ve VNET 'ler için Azure önbelleğindeki bazı yaygın yanlış yapılandırma sorunları nelerdir?
-* [Önbelleğim VNET 'te çalıştığını nasıl doğrulayabilirim?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [Önbelleğimin sanal ağ üzerinde çalıştığını nasıl doğrulayabilirim?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * Bir VNET 'te Redsıs için Azure Önbelleğim 'e bağlanmaya çalışırken, neden uzak sertifika geçersiz olduğunu belirten bir hata alıyorum?
 * [Standart veya temel önbellek ile sanal ağları kullanabilir miyim?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Bazı alt ağlardaki Reda için Azure önbelleği neden başarısız oluyor, ancak başkaları tarafından kullanılamaz mi?

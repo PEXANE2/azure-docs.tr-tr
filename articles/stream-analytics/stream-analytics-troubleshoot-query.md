@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980271"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844437"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics sorgularının sorunlarını giderme
 
@@ -21,21 +21,24 @@ Bu makalede, Stream Analytics sorguları geliştirmeyle ilgili yaygın sorunlar 
 
 ## <a name="query-is-not-producing-expected-output"></a>Sorgu beklenen çıktıyı üretmiyor
 1.  Yerel olarak test ederek hataları inceleyin:
-    - **Sorgu** sekmesinde **Test**' i seçin. [Sorguyu test](stream-analytics-test-query.md)etmek için indirilen örnek verileri kullanın. Tüm hataları inceleyin ve bunları düzeltmeye çalışın.   
-    - Ayrıca, Visual Studio için Stream Analytics araçları 'nı kullanarak [sorgunuzu doğrudan canlı girişte test](stream-analytics-live-data-local-testing.md) edebilirsiniz.
+    - Azure portal, **sorgu** sekmesinde **Test**' i seçin. [Sorguyu test](stream-analytics-test-query.md)etmek için indirilen örnek verileri kullanın. Tüm hataları inceleyin ve bunları düzeltmeye çalışın.   
+    - Ayrıca, Visual Studio veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)için Azure Stream Analytics araçları kullanarak [sorgunuzu yerel olarak test](stream-analytics-live-data-local-testing.md) edebilirsiniz. 
 
-2.  [**Zaman damgası**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)kullanıyorsanız, olayların zaman damgalarının [iş başlangıç zamanından](stream-analytics-out-of-order-and-late-events.md)daha büyük olduğunu doğrulayın.
+2.  Visual Studio için Azure Stream Analytics Araçları ' nda [iş diyagramını kullanarak yerel olarak adım adım hata ayıklayın](debug-locally-using-job-diagram.md) . İş diyagramı, verilerin giriş kaynaklarından (Olay Hub 'ı, IoT Hub, vb.) birden çok sorgu adımı ve son olarak havuza çıktı aracılığıyla nasıl akacağını gösterir. Her sorgu adımı, WıTH ifadesiyle kullanılarak betikte tanımlanan geçici bir sonuç kümesiyle eşlenir. Sorunun kaynağını bulmak için her bir ara sonuç kümesindeki her bir sorgu adımındaki verileri ve ölçümleri de görüntüleyebilirsiniz.
+    ![Iş diyagramı önizleme sonucu](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  Genel sınırları ortadan kaldırın, örneğin:
+3.  [**Zaman damgası**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)kullanıyorsanız, olayların zaman damgalarının [iş başlangıç zamanından](stream-analytics-out-of-order-and-late-events.md)daha büyük olduğunu doğrulayın.
+
+4.  Genel sınırları ortadan kaldırın, örneğin:
     - Sorgudaki [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) yan tümcesi tüm olayları filtreleyerek tüm çıktının oluşturulmasını önler.
     - [**Atama**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) işlevi başarısız olur ve işin başarısız olmasına neden olur. Tür dönüştürme hatalarından kaçınmak için, bunun yerine [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) kullanın.
     - Pencere işlevleri kullandığınızda, tüm pencere süresinin sorgudaki bir çıktıyı görmesini bekleyin.
     - Olaylar için zaman damgası iş başlangıç zamanından önce gelir ve bu nedenle olaylar bırakılıyor.
 
-4.  Olay sıralama ilkelerinin beklenen şekilde yapılandırıldığından emin olun. **Ayarlar** ' a gidin ve [**olay sıralaması**](stream-analytics-out-of-order-and-late-events.md)' nı seçin. Sorguyu test etmek için **Test** düğmesini kullandığınızda *ilke uygulanmaz.* Bu sonuç, test sırasında çalıştırılan iş ve üretimde iş arasında bir farklılık olduğunu fark ediyor.
+5.  Olay sıralama ilkelerinin beklenen şekilde yapılandırıldığından emin olun. **Ayarlar** ' a gidin ve [**olay sıralaması**](stream-analytics-out-of-order-and-late-events.md)' nı seçin. Sorguyu test etmek için **Test** düğmesini kullandığınızda *ilke uygulanmaz.* Bu sonuç, test sırasında çalıştırılan iş ve üretimde iş arasında bir farklılık olduğunu fark ediyor. 
 
-5. Denetim ve tanılama günlüklerini kullanarak hata ayıklayın:
-    - [Denetim günlüklerini](../azure-resource-manager/management/view-activity-logs.md)kullanın ve hataları tanımlamak ve hatalarını ayıklamak için filtre uygulayın.
+6. Denetim ve tanılama günlüklerini kullanarak hata ayıklayın:
+    - [Denetim günlüklerini](../azure-resource-manager/resource-group-audit.md)kullanın ve hataları tanımlamak ve hatalarını ayıklamak için filtre uygulayın.
     - Hataları tanımlamak ve hatalarını ayıklamak için [iş tanılama günlüklerini](stream-analytics-job-diagnostic-logs.md) kullanın.
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>İş çok fazla akış birimi kullanıyor

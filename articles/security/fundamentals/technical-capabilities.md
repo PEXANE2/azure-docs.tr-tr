@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970663"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845350"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -57,7 +57,7 @@ Microsoft kimlik ve erişim yönetimi çözümleri, çok faktörlü kimlik doğr
 
 Azure Active Directory (Azure AD) güvenlik avantajları şunlardır:
 
-- Karma kuruluşunuzdaki her kullanıcı için tek bir kimlik oluşturup yönetebilir ve kullanıcıları, grupları ve cihazları eşitleyebilirsiniz.
+- Karma kuruluşunuzda her bir kullanıcı için tek bir kimlik oluşturup yönetin, kullanıcıları, grupları ve cihazları eşitlenmiş halde tutun.
 
 - Önceden tümleştirilmiş binlerce SaaS uygulaması da dahil olmak üzere uygulamalarınıza çoklu oturum açma erişimi sağlayın.
 
@@ -119,7 +119,7 @@ Azure portal veya [Azure Active Directory portalında](https://aad.portal.azure.
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , yüz milyonlarca kimliği ölçeklendirirken tüketiciye yönelik uygulamalar için yüksek düzeyde kullanılabilir, küresel bir kimlik yönetimi hizmetidir. Bu hizmet mobil platformlar ve web platformlarıyla tümleştirilebilir. Tüketicileriniz, ister mevcut sosyal hesaplarını kullanarak ister yeni kimlik bilgileri oluşturarak özelleştirilebilir bir deneyimle uygulamalarınızda oturum açabilir.
 
-Geçmişte, uygulamalarına [kaydolmasını ve oturum açmasını](../../active-directory-b2c/active-directory-b2c-overview.md) isteyen uygulama geliştiricileri kendi kodlarını yazmıştı. Ayrıca, kullanıcı adları ile parolaları depolamak için şirket içi veritabanlarını veya sistemleri kullanırlardı. Azure Active Directory B2C, kuruluşunuzda, güvenli, standartlara dayalı bir platformun ve büyük bir Genişletilebilir ilke kümesinin yardımıyla tüketici kimlik yönetimini uygulamalarla tümleştirmenin daha iyi bir yolunu sunar.
+Geçmişte, uygulamalarına [kaydolmasını ve oturum açmasını](../../active-directory-b2c/overview.md) isteyen uygulama geliştiricileri kendi kodlarını yazmıştı. Ayrıca, kullanıcı adları ile parolaları depolamak için şirket içi veritabanlarını veya sistemleri kullanırlardı. Azure Active Directory B2C, kuruluşunuzda, güvenli, standartlara dayalı bir platformun ve büyük bir Genişletilebilir ilke kümesinin yardımıyla tüketici kimlik yönetimini uygulamalarla tümleştirmenin daha iyi bir yolunu sunar.
 
 Azure Active Directory B2C kullandığınızda, Tüketicileriniz mevcut sosyal hesaplarını (Facebook, Google, Amazon, LinkedIn) kullanarak veya yeni kimlik bilgileri (e-posta adresi ve parola veya Kullanıcı adı ve parola) oluşturarak uygulamalarınıza kaydolabilir.
 
@@ -256,7 +256,7 @@ Daha büyük veri kümeleri, [ExpressRoute](https://azure.microsoft.com/services
 
 Azure portalını kullanarak Azure depolama ile etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) de kullanılabilir.
 
-Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](https://technet.microsoft.com/library/gg195821.aspx), [gizlice dinleme](https://technet.microsoft.com/library/gg195641.aspx)ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar gizli verilere erişim kazanmanın ilk adımı olabilir.
+Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](https://technet.microsoft.com/library/gg195821.aspx), [gizlice dinleme](https://technet.microsoft.com/library/gg195641.aspx)ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar, gizli verilere erişim kazanmanız için ilk adım olabilir.
 
 [VPN Gateway Için planlama ve tasarım](../../vpn-gateway/vpn-gateway-about-vpngateways.md)makalesini okuyarak Azure VPN seçeneği hakkında daha fazla bilgi edinebilirsiniz.
 

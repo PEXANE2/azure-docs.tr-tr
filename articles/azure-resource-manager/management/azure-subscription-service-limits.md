@@ -3,13 +3,13 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: ebfa1139ba0649280634bc0fd18627ba74f0c3cc
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/28/2020
+ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294125"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845978"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 
@@ -59,7 +59,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Azure Haritalar](#azure-maps-limits)
 * [Azure İzleyici](#azure-monitor-limits)
 * [Azure İlkesi](#azure-policy-limits)
-* [Azure SignalR Hizmeti](#azure-signalr-service-limits)
+* [Azure SignalR hizmeti](#azure-signalr-service-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)

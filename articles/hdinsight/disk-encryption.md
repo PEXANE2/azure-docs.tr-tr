@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982503"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846085"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi
 
@@ -79,7 +79,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     b. **Asıl seçin**altında oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği seçin.
 
-    ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. **Anahtar ve** **sarmalama**anahtarını **almak**için **anahtar izinleri** ayarlayın.
 
@@ -100,6 +100,8 @@ Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. Müşteri tarafın
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam anahtar URL 'sini sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir.
+
+![Yeni küme oluşturma](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 

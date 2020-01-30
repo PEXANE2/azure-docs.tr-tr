@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719832"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844981"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -26,6 +26,10 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin genişletilmiş (henüz isteğe bağlı) kullanımını yansıtmak için artık **Azure bilişsel arama** olarak yeniden adlandırıldı. API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. Yeni ve mevcut arama çözümleri, hizmet adı değişikliğinden etkilenmez.
 
 ## <a name="feature-announcements"></a>Özellik Duyuruları
+
+### <a name="february-2020"></a>Şubat 2020
+
++ [PII algılama](cognitive-search-skill-pii-detection.md) , bir giriş metninin kişisel olarak tanımlanabilir bilgilerini çıkaran ve bu metinden çeşitli yollarla maske sağlayan bir seçenek sunan, dizin oluşturma sırasında kullanılan bilişsel bir yeteneğe sahiptir.
 
 ### <a name="january-2020"></a>Ocak 2020
 
@@ -52,7 +56,7 @@ Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin geni
 
 + [Belge ayıklama (Önizleme)](cognitive-search-skill-document-extraction.md) , dizin oluşturma sırasında kullanılan bilişsel bir beceriye sahiptir ve bir dosyanın içeriğini bir beceri içinden ayıklamanızı sağlar. Daha önce belge çözme yalnızca beceri yürütmeden önce oluşmuştur. Bu beceriye ek olarak, bu işlemi beceri yürütme içinde de gerçekleştirebilirsiniz.
 
-+ [Metin çevirisi (Önizleme)](cognitive-search-skill-text-translation.md) , dizinleme sırasında metin değerlendiren ve her kayıt için belirtilen hedef dile çevrilen metni döndüren bilişsel bir yetenküldür.
++ [Metin çevirisi](cognitive-search-skill-text-translation.md) , dizinleme sırasında metni değerlendiren ve her kayıt için belirtilen hedef dile çevrilen metni döndüren bilişsel bir yetenküldür.
 
 + [Power BI şablonlar](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) , görselleştirmelerinizi ve Power BI masaüstündeki bir bilgi deposunda zenginleştirme içeriği analizini başlatabilir. Bu şablon, [veri Içeri aktarma Sihirbazı](knowledge-store-create-portal.md)aracılığıyla oluşturulan Azure Tablo projeksiyonlarını için tasarlanmıştır.
 

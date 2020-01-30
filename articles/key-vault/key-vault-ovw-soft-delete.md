@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883140"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845803"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici genel bakış
 
@@ -36,13 +36,21 @@ Azure Anahtar kasaları, Azure Resource Manager tarafından yönetilen, izlenen 
 
 Bu özellik ile, bir Anahtar Kasası veya Anahtar Kasası nesnesindeki SILME işlemi, belirli bir bekletme dönemi (90 gün) için kaynakları etkin bir şekilde tutan, nesnenin silindiği görünümü vererek geçici silme işlemidir. Bu hizmet daha sonra silme işlemini geri almak için silinen nesneyi kurtarmaya yönelik bir mekanizma sağlar. 
 
-Geçici silme, isteğe bağlı bir Key Vault davranıştır ve bu sürümde **Varsayılan olarak etkinleştirilmemiştir** . [CLI](key-vault-soft-delete-cli.md) veya [PowerShell](key-vault-soft-delete-powershell.md)aracılığıyla etkinleştirilebilir.
+Geçici silme işlemi artık yeni oluşturulan anahtar kasaları için varsayılan olarak açık durumdadır. [Azure CLI](key-vault-soft-delete-cli.md) veya [Azure PowerShell](key-vault-soft-delete-powershell.md)aracılığıyla devre dışı bırakılabilir.
+
+Varsayılan saklama süresi 90 gündür, ancak bekletme ilkesi aralığını Azure portal ile 90 7 güne kadar bir değere ayarlamak mümkündür. Temizleme koruması bekletme ilkesi aynı aralığı kullanır. 
+
+Bir anahtar kasasında geçici silme yapıldıktan sonra devre dışı bırakılamaz ve bekletme ilkesi aralığı değiştirilemez. 
+
+Saklama süresi geçene kadar geçici olarak silinen bir anahtar kasasının adını yeniden kullanamazsınız. 
 
 ### <a name="purge-protection"></a>Korumayı temizle 
 
-Temizleme koruması açık olduğunda, 90 gün boyunca bekletme süresi geçene kadar bir kasa veya silinmiş durumdaki bir nesne temizlenemiyor. Bu kasalar ve nesneler yine de kurtarılabilir, bu da bekletme ilkesi takip edilecek. 
-
 Temizleme koruması isteğe bağlı bir Key Vault davranıştır ve **Varsayılan olarak etkin değildir**. [CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) veya [PowerShell](key-vault-soft-delete-powershell.md#enabling-purge-protection)aracılığıyla etkinleştirilebilir.
+
+Temizleme koruması açık olduğunda, saklama süresi geçene kadar bir kasa veya silinen durumdaki bir nesne temizlenemiyor. Geçici olarak silinen kasalar ve nesneler kurtarılabilir ve bu da bekletme ilkesinin izlenmeyeceğinden emin olur. 
+
+Varsayılan saklama süresi 90 gündür, ancak bekletme ilkesi aralığını Azure portal ile 90 7 güne kadar bir değere ayarlamak mümkündür. Bekletme ilkesi aralığı ayarlandıktan ve kaydedildikten sonra bu kasa için değiştirilemez. 
 
 ### <a name="permitted-purge"></a>İzin verilen temizleme
 

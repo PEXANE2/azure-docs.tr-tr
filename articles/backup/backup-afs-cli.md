@@ -3,12 +3,12 @@ title: Azure CLı ile Azure dosya paylaşımlarını yedekleme
 description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki Azure dosya paylaşımlarını nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294493"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844050"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>CLı ile Azure dosya paylaşımlarını yedekleme
 
@@ -104,7 +104,7 @@ Yedekleme ilkesinin işi zamanlanan saatte çalıştırmasını beklemek yerine 
 
 İsteğe bağlı yedeklemeyi tetiklemek için aşağıdaki parametreleri tanımlamanız gerekir:
 
-* **--Container-Name** , dosya paylaşımının barındırıldığı depolama hesabının adıdır. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list) komutunu kullanın.
+* **--Container-Name** , dosya paylaşımının barındırıldığı depolama hesabının adıdır. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) komutunu kullanın.
 * **--öğe-adı** , isteğe bağlı yedeklemeyi tetiklemek istediğiniz dosya paylaşımının adıdır. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) komutunu kullanın.
 * **--sakla-Until** , kurtarma noktasını bekletene kadar olan tarihi belirtir. Değer UTC saat biçiminde ayarlanmalıdır (gg-aa-yyyy).
 

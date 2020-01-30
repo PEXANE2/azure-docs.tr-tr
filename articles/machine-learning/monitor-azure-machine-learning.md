@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894864"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845733"
 ---
 # <a name="monitoring-azure-machine-learning"></a>İzleme Azure Machine Learning
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Machine Learning tarafından oluşturulan izleme verileri aç
 
 Azure 'da tam yığın izleme hizmeti olan Azure Izleyici 'yi kullanarak verileri izleme Azure Machine Learning günlüğe kaydeder. Azure Izleyici, Azure kaynaklarınızı izlemeye yönelik kapsamlı bir özellik kümesi sağlar. Ayrıca, diğer bulutlardaki ve Şirket içindeki kaynakları da izleyebilir.
 
-İzleme özelliklerine genel bir bakış sağlayan [Azure izleyici genel bakış](/azure/azure-monitor/overview)makalesini başlatın. Aşağıdaki bölümlerde, Azure Machine Learning ile Azure Izleyici 'yi kullanarak bu bilgileri, Azure Izleyici 'yi kullanarak oluşturma hakkında bilgi sağlanır.
+İzleme özelliklerine genel bir bakış sağlayan [Azure izleyici genel bakış](/azure/azure-monitor/overview)makalesini başlatın. Aşağıdaki bölümlerde, Azure Machine Learning ile Azure Izleyici kullanma hakkında daha fazla bilgi sunarak bu bilgiler yer alır.
 
 Azure Izleyici ile ilişkili maliyetleri anlamak için bkz. [kullanım ve tahmini maliyetler](/azure/azure-monitor/platform/usage-estimated-costs). Verilerinizin Azure Izleyici 'de görünmesi için geçen süreyi anlamak için bkz. [günlük verisi alma süresi](/azure/azure-monitor/platform/data-ingestion-time).
 

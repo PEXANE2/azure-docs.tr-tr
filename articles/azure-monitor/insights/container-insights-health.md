@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu izleme 
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile AKS ve AKS olmayan kümelerinizin sistem durumunu nasıl görüntüleyebileceğiniz ve çözümleyebileceğinizi anlatmaktadır.
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405094"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843999"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile Kubernetes kümesi sistem durumunu anlama
 
@@ -23,7 +23,7 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirme hakkında daha fazla bilg
 >[!NOTE]
 >AKS motoru kümelerini desteklemek için, aşağıdakileri karşıladığını doğrulayın:
 >- Bu, [Held istemcisinin](https://helm.sh/docs/using_helm/)en son sürümünü kullanıyor.
->- Kapsayıcılı aracı sürümü *Microsoft/OMS: ciprod11012019*. Aracıyı yükseltmek için bkz. [Kubernetes kümesinde aracıyı yükseltme](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>- Kapsayıcılı aracı sürümü *Microsoft/OMS: ciprod11012019*. Aracıyı yükseltmek için bkz. [Kubernetes kümesinde aracıyı yükseltme](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
 >
 
 ## <a name="overview"></a>Genel Bakış
@@ -48,13 +48,13 @@ Tüm izleyiciler sistem durumu hiyerarşisi bölmesindeki hiyerarşik düzende g
 * Düğüm ve kapsayıcıdan bellek kullanımını değerlendirin.
 * Kubernetes tarafından bildirilen hazır durumunun hesaplanmasına göre pods ve düğümlerin durumu.
 
-Durumu göstermek için kullanılan simgeler şunlardır:
+Durumu göstermek için kullanılan simgeler aşağıdaki gibidir:
 
 |Simge|Anlamı|  
 |--------|-----------|  
-|![Yeşil onay simgesi sağlam durumunu gösterir](./media/container-insights-health/healthyicon.png)|Başarılı, sistem durumu hazır (yeşil)|  
-|![Sarı üçgen ve ünlem işareti uyarı simgesidir](./media/container-insights-health/warningicon.png)|Uyarı (sarı)|  
-|![Üzerinde beyaz X bulunan kırmızı düğme kritik durumu gösterir](./media/container-insights-health/criticalicon.png)|Kritik (kırmızı)|  
+|![Yeşil onay simgesi sağlıklı olduğunu belirtir](./media/container-insights-health/healthyicon.png)|Başarılı, sistem durumu Tamam (yeşil)|  
+|![Sarı üçgen ve ünlem işareti uyarı](./media/container-insights-health/warningicon.png)|Uyarı (sarı)|  
+|![Beyaz X bulunan kırmızı düğme kritik durumu gösterir](./media/container-insights-health/criticalicon.png)|Kritik (kırmızı)|  
 |![Gri simgesi](./media/container-insights-health/grayicon.png)|Bilinmiyor (gri)|  
 
 ## <a name="monitor-configuration"></a>İzleyici yapılandırması

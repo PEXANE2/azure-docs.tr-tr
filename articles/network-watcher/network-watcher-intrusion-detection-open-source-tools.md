@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Bu makalede, Azure ağ Izleyicisi 'ni ve açık kaynak araçları 'nı kullanarak ağ izinsiz giriş algılama işlemini gerçekleştirme açıklanmaktadır
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -14,19 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 8a0b4ff4fc985355d8dc76f2f3fd7fb35da55ec0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275926"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845032"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Ağ Izleyicisi ve açık kaynak araçları ile ağ üzerinden izinsiz bir algılama gerçekleştirme
 
 Paket yakalamaları, ağ izinsiz giriş algılama sistemleri (KIMLIKLER) uygulamak ve ağ güvenliği Izleme (NSM) gerçekleştirmek için önemli bir bileşendir. Paket yakalamalarını işleyen ve olası ağ yetkisiz ve kötü amaçlı etkinliklerin imzalarını gösteren çeşitli açık kaynak KIMLIĞI araçları vardır. Ağ Izleyicisi tarafından sunulan paket yakalamalarını kullanarak ağınızı herhangi bir zararlı yetkisiz kullanım veya güvenlik açığına karşı çözümleyebilirsiniz.
 
-Bu tür açık kaynaklı bir araç, ağ trafiğini izlemek için RuleSets kullanan ve şüpheli olaylar gerçekleştiğinde uyarıları tetikleyen bir KIMLIK altyapısı olan Suricata ' dır. Suricata, çok iş parçacıklı bir altyapı sunar, yani ağ trafiği analizini daha yüksek hız ve verimlilik ile gerçekleştirebiliyor. Suricata ve özellikleri hakkında daha fazla ayrıntı için https://suricata-ids.org/adresindeki Web sitesini ziyaret edin.
+Bu tür açık kaynaklı bir araç, ağ trafiğini izlemek için RuleSets kullanan ve şüpheli olaylar gerçekleştiğinde uyarıları tetikleyen bir KIMLIK altyapısı olan Suricata ' dır. Suricata, çok iş parçacıklı bir altyapı sunar, yani ağ trafiği analizini daha yüksek hız ve verimlilik ile gerçekleştirebiliyor. Suricata ve özellikleri hakkında daha fazla ayrıntı için https://suricata-ids.org/ adresindeki Web sitesini ziyaret edin.
 
 ## <a name="scenario"></a>Senaryo
 

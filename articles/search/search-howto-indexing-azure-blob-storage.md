@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 793258b572fdcf2487d4b20fa07fb4ef5524b149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113016"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846258"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
 
@@ -134,7 +134,7 @@ Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için 
 * Belgenin metinsel içeriği, `content`adlı bir dize alanına ayıklanır.
 
 > [!NOTE]
-> Azure Bilişsel Arama, fiyatlandırma katmanına bağlı olarak ne kadar metin ayıklar: ücretsiz katman için 32.000 karakter, temel için 64.000 ve standart, Standart S2 ve Standart S3 katmanları için 4.000.000. Kesilen belgeler için Dizin Oluşturucu durum yanıtında bir uyarı bulunur.  
+> Azure Bilişsel Arama, fiyatlandırma katmanına bağlı olarak ne kadar metin ayıklar: ücretsiz katman için 32.000 karakter, temel için 64.000, standart için 4.000.000, Standart S2 için 8.000.000 ve Standart S3 için 16.000.000. Kesilen belgeler için Dizin Oluşturucu durum yanıtında bir uyarı bulunur.  
 
 * Blob üzerinde bulunan Kullanıcı tarafından belirtilen meta veri özellikleri, varsa, tam olarak ayıklanır.
 * Standart blob meta veri özellikleri aşağıdaki alanlara ayıklanır:

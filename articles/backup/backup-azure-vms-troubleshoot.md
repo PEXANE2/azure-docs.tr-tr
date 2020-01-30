@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6baf878a1afac011997800b78f059e254e3f2a06
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513805"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845540"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -278,6 +278,6 @@ VM yedeklemesi, temel depolama alanına anlık görüntü komutları vermeyi kul
 IaaS VM yedeklemesinin çalışması için, DHCP 'nin Konuk içinde etkin olması gerekir. Statik bir özel IP gerekiyorsa, Azure portal veya PowerShell aracılığıyla yapılandırın. VM içindeki DHCP seçeneğinin etkinleştirildiğinden emin olun.
 PowerShell aracılığıyla statik IP ayarlama hakkında daha fazla bilgi alın:
 
-* [Var olan bir VM 'ye statik bir iç IP ekleme](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Var olan bir VM 'ye statik bir iç IP ekleme](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
 * [Bir ağ arabirimine atanan özel IP adresi için ayırma yöntemini değiştirme](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 

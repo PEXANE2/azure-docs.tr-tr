@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Bu makalede, Azure ağ Izleyicisi kaynak sorunlarını giderme ile VPN ağ geçidi aracılığıyla şirket içi bağlantının nasıl tanılanacağı açıklanır.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: damendo
+ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454304"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845059"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
@@ -82,14 +80,14 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 
 ### <a name="gateway"></a>Ağ Geçidi
 
-| Hata Türü | Neden | Günlük|
+| Hata türü | Neden | Günlük|
 |---|---|---|
-| NoFault | Hata saptanmadı. |Evet|
+| Nofatoult | Hata saptanmadı. |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
-| PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |Hayır|
+| PlannedMaintenance |  Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
+| Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
+| PlatformInActive | Platformda bir sorun var. | Hayır|
 | ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
 | NoConnectionsFoundForGateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
 | ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Evet|
@@ -97,13 +95,13 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 
 ### <a name="connection"></a>Bağlantı
 
-| Hata Türü | Neden | Günlük|
+| Hata türü | Neden | Günlük|
 |---|---|---|
-| NoFault | Hata saptanmadı. |Evet|
+| Nofatoult | Hata saptanmadı. |Evet|
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
-| PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |Hayır|
+| PlannedMaintenance | Ağ Geçidi örneği bakım aşamasındadır.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
+| Canlı yanıt verme | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
 | ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |

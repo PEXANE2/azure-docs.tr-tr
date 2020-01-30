@@ -4,18 +4,23 @@ description: Bir sanal makineyi stok toplama ile yönetme
 services: automation
 ms.subservice: change-inventory-management
 keywords: stok, otomasyon, değişiklik, izleme
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419823"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844828"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Bir Azure sanal makinesini stok toplama ile yönetme
 
-Bir Azure sanal makinesinin kaynak sayfasından sanal makine için stok izlemeyi etkinleştirebilirsiniz. Yazılımlar, dosyalar, Linux daemon'ları, Windows hizmetleri ve Windows kayıt defteri anahtarlarıyla ilgili stok durumunu sorgulayabilir ve görüntüleyebilirsiniz. Bu yöntem, stok toplamayı ayarlama ve yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
+Bir Azure sanal makinesinin kaynak sayfasından sanal makine için stok izlemeyi etkinleştirebilirsiniz. Bilgisayarlarınızda aşağıdaki envanter bilgilerini toplayabilir ve görüntüleyebilirsiniz:
+
+- Windows yazılımı (Windows Uygulamaları ve Windows güncelleştirmeleri), hizmetler, dosyalar ve kayıt defteri anahtarları
+- Linux yazılımı (paket) Daemon 'ları ve dosyalar
+
+Bu yöntem, stok toplamayı ayarlama ve yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -101,7 +106,7 @@ Listeden bir makine grubu seçildiğinde makine grupları sayfası açılır. Bu
 
 Makine grubunu kopyalamak için **+ Kopyala** düğmesine tıklayın. Burada gruba grup için yeni bir ad ve diğer ad vermeniz gerekir. Tanım şu anda değiştirilebilir. Sorguyu değiştirdikten sonra seçilecek makineleri önizlemek için **sorguyu doğrula** 'ya basın. Gruptan memnun olduğunuzda makine grubunu oluşturmak için **Oluştur** ' a tıklayın
 
-Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur**' u seçin. Bu düğme, yeni grubunuzu tanımlayabileceğiniz **makine grubu oluşturma sayfasını** açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
+Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur**' u seçin. Bu düğme, yeni grubunuzu tanımlayabileceğiniz **makine grubu oluşturma sayfasını** açar. Grubu oluşturmak için **Oluştur** ' a tıklayın.
 
 ![Yeni makine grubu oluştur](./media/automation-vm-inventory/create-new-group.png)
 

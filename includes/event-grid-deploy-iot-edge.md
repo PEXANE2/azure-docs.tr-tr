@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098660"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844606"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modülünü dağıt
 
@@ -33,15 +33,17 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
 1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümde bulunan adımlarla devam edersiniz.
 
-### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
+### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modül eklemek**, **yolları belirtin**, ve **gözden geçirin, dağıtım**.
 
 ### <a name="add-modules"></a>Modül Ekle
 
 1. **Dağıtım modülleri** bölümünde **Ekle** ' yi seçin.
 1. Açılan listedeki modül türlerinden **IoT Edge modül** ' ı seçin.
 1. Kapsayıcının adını, görüntüsünü, kapsayıcı oluşturma seçeneklerini belirtin:
+
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Ad**: eventgridmodule
    * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
@@ -50,8 +52,8 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -76,10 +78,10 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
 
  Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
 
-### <a name="review-deployment"></a>Dağıtımı gözden geçir
+### <a name="review-deployment"></a>Dağıtım gözden geçirin
 
-1. İnceleme Bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. Listedeki iki modülü gördüistediğinizi onaylayın: **$edgeAgent** ve **$edgeHub**. Bu iki modül IoT Edge çalışma zamanını yapar ve her dağıtımda gerekli varsayılanlar olur.
-1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
+1. Oluşturulan gözden geçirme bölümü gösterir, JSON dağıtım bildirimi önceki iki bölümlerde seçimlerinize göre. Listedeki iki modülü gördüistediğinizi onaylayın: **$edgeAgent** ve **$edgeHub**. Bu iki modül IoT Edge çalışma zamanını yapar ve her dağıtımda gerekli varsayılanlar olur.
+1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**.
 
 ### <a name="verify-your-deployment"></a>Dağıtımınızı doğrulama
 

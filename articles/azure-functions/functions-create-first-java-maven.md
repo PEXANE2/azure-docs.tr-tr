@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562043"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845453"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven kullanma
 
@@ -29,9 +29,8 @@ Java kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması 
 - [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
-- Azure aboneliği.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ayrıca etkin bir Azure aboneliğine de ihtiyacınız vardır. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 > [!IMPORTANT]
@@ -72,7 +71,7 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 | ----- | ----------- |
 | **ID** | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) takip eden tüm projelerde projenizi benzersiz bir şekilde tanımlayan bir değer. Bu hızlı başlangıçtaki örneklerde `com.fabrikam.functions`kullanılır. |
 | **ArtifactId** | Bir sürüm numarası olmadan jar adı olan bir değer. Bu hızlı başlangıçtaki örneklerde `fabrikam-functions`kullanılır. |
-| **version** | `1.0-SNAPSHOT`varsayılan değerini seçin. |
+| **Sürüm** | `1.0-SNAPSHOT`varsayılan değerini seçin. |
 | **leyebilir** | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. Bu hızlı başlangıçtaki örneklerde `com.fabrikam.functions`kullanılır. |
 | **appName** | Azure 'da yeni işlev uygulamanızı tanımlayan genel olarak benzersiz ad. _ArtifactId_ , rastgele bir sayı ile eklenmiş olan varsayılanı kullanın. Bu değeri, daha sonra ihtiyacınız olacağını unutmayın. |
 | **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan: `westus`. Tüm bölgelerin bir listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |

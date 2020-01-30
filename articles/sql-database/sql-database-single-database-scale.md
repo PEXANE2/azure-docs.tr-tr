@@ -11,18 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 8d4917bb8956185e0cb557368fbb0c64343c0ac6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422548"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845849"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
 
 Bu makalede, sağlanan işlem katmanında bir Azure SQL veritabanı için kullanılabilir işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır. Alternatif olarak, [sunucusuz bilgi işlem katmanı](sql-database-serverless.md) , kullanılan işlem için saniye başına işlem otomatik ölçeklendirme ve fatura sağlar.
-
-## <a name="change-compute-size-vcores-or-dtus"></a>İşlem boyutunu değiştirme (sanal çekirdekler veya DTU 'Lar)
 
 Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanarak gerçek deneyime göre tek bir veritabanını dinamik olarak yukarı veya aşağı ölçeklendirdirebilirsiniz.
 
@@ -31,9 +29,9 @@ Aşağıdaki videoda, tek bir veritabanı için kullanılabilir DTU 'ları artı
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirmenin veya işlem boyutunun yeniden boyutlandırmasından etkileri
+## <a name="impact"></a>Etki
 
 Genellikle hizmet katmanını veya işlem boyutunu değiştirmek hizmeti aşağıdaki adımları gerçekleştirmeyle ilgilidir:
 
@@ -48,7 +46,7 @@ Genellikle hizmet katmanını veya işlem boyutunu değiştirmek hizmeti aşağ�
 > [!IMPORTANT]
 > İş akışındaki herhangi bir adım sırasında hiçbir veri kaybolmaz. Hizmet katmanı değiştirildiğinde Azure SQL veritabanı 'nı kullanan uygulamalar ve bileşenlerde bazı [yeniden deneme mantığı](sql-database-connectivity-issues.md) uyguladığınızdan emin olun.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirme veya işlem boyutunu boyutlandırma gecikmesi
+## <a name="latency"></a>Gecikme süresi 
 
 Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzun işlem boyutunu yeniden boyutlandırma için beklenen gecikme süresi şu şekilde parametrelenir:
 
@@ -59,13 +57,13 @@ Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzu
 |**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
 
 > [!TIP]
-> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Hizmet katmanı değişiklikleri veya işlem temizleme işlemleri iptal ediliyor
+## <a name="cancelling-changes"></a>Değişiklikler iptal ediliyor
 
 Bir hizmet katmanı değişikliği veya işlem yeniden oluşturma işlemi iptal edilebilir.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalında
 
 Veritabanına genel bakış dikey penceresinde **Bildirimler** ' e gidin ve devam eden bir işlem olduğunu belirten kutucuğa tıklayın:
 
@@ -90,7 +88,7 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirirken veya işlem boyutunu yeniden oluştururken dikkat edilecek ek noktalar
+## <a name="additional-considerations"></a>Diğer konular
 
 - Daha yüksek bir hizmet katmanına veya işlem boyutuna yükseltiyorsanız, açıkça daha büyük bir boyut (MaxSize) belirtmediğiniz müddetçe veritabanının en büyük boyutu artmaz.
 - Bir veritabanının indirgenmesini sağlamak için, kullanılan veritabanı hedef hizmet katmanının izin verilen en büyük boyuttan ve işlem boyutundan daha küçük olmalıdır.
@@ -100,7 +98,7 @@ else {
 - Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürürseniz, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](sql-database-automated-backups.md).
 - Veritabanının yeni özellikleri, değişiklikler tamamlanana kadar uygulanmaz.
 
-### <a name="billing-during-compute-rescaling"></a>İşlem yeniden oluşturma sırasında faturalandırma
+## <a name="billing"></a>Faturalandırma 
 
 Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından bağımsız olarak, bu saat boyunca uygulanan en yüksek hizmet katmanı + işlem boyutunu kullanarak bir veritabanının mevcut olduğu her saat için faturalandırılırsınız. Örneğin, tek bir veritabanı oluşturup beş dakika sonra silerseniz faturanız bir veritabanı saati için bir ücret yansıtır.
 
@@ -114,7 +112,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 - Tek bir veritabanı için depolama fiyatı, veri depolama ve günlük depolama tutarlarının toplamı hizmet katmanının depolama birimi fiyatıyla çarpılır. TempDB 'nin maliyeti, sanal çekirdek fiyatına dahildir. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
@@ -123,7 +121,11 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 - Tek bir veritabanı için ek depolama alanı fiyatı, hizmet katmanının ek depolama birimi fiyatı ile çarpılmış olan ek depolama miktarıdır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+
+### <a name="geo-replicated-database"></a>Coğrafi olarak çoğaltılan veritabanı
+
+Çoğaltılan bir ikincil veritabanının veritabanı boyutunu değiştirmek için, birincil veritabanının boyutunu değiştirin. Bu değişiklik daha sonra çoğaltılır ve ikincil veritabanına uygulanır. 
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>En büyük boyut 1 TB 'den büyük olduğunda P11 ve P15 kısıtlamaları
 

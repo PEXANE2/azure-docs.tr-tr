@@ -9,20 +9,20 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100318"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844607"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Öğretici: bulutta olaylara abone olma
 
-Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abone olmak için gereken tüm adımlar açıklanmaktadır.
+Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abone olmak için gereken tüm adımlar açıklanmaktadır. Bu öğretici, olay Işleyicisi olarak ve Azure Işlevini kullanır. Ek hedef türleri için bkz. [olay işleyicileri](event-handlers.md).
 
 Devam etmeden önce bir olay Kılavuzu konusunun ve aboneliğinin ne olduğunu anlamak için bkz. [Event Grid kavramları](concepts.md) .
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -107,6 +107,8 @@ Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir
 ## <a name="create-an-event-subscription"></a>Olay aboneliği oluşturma
 
 Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, abonelerin ilgilendiğiniz konu başlığında bir olay Kılavuzu aboneliği oluşturması gerekir.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Aşağıdaki içeriğe sahip subscription2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
@@ -203,3 +205,4 @@ Bu öğreticide, bir olay Kılavuzu konusu, abonelik ve yayımlanan olaylar olu�
 * [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını ayarlama
 * İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin
 * Bu [öğreticiyi](forward-events-event-grid-cloud.md) izleyerek olayları buluta Azure Event Grid iletin
+* [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)

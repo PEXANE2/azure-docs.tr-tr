@@ -7,18 +7,18 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bd1487d7922d8ea81c4b09773eed978e64cd9e8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457247"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772269"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
 
 Birçok IoT çözümü, IoT cihazlarından buluta ulaşan veriler hakkında bilgi edinmek için analiz hizmetlerini kullanır. Azure IoT Edge ile [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) mantığını alıp cihazın kendisine aktarabilirsiniz. Telemetri akışlarını uç cihazlarda işleyerek yüklenen veri miktarını ve eyleme dönüştürülebilir içgörülere tepki verme süresini azaltabilirsiniz.
 
-Azure IoT Edge ve Azure Stream Analytics tümleşik olduğundan Azure portalında bir Azure Stream Analytics işi oluşturup ek kod yazmadan IoT Edge modülü olarak dağıtabilirsiniz.  
+Azure IoT Edge ve Azure Stream Analytics, iş yükü geliştirmeyi basitleştirmek için tümleşiktir. Azure portal bir Azure Stream Analytics işi oluşturabilir ve sonra ek kod olmadan bir IoT Edge modülü olarak dağıtabilirsiniz.  
 
 Azure Stream Analytics, veri analizi için hem bulutta hem de IoT Edge cihazlarda zengin yapılandırılmış bir sorgu söz dizimi sağlar. Daha fazla bilgi için bkz. [Azure Stream Analytics belgeleri](../stream-analytics/stream-analytics-edge.md).
 
@@ -33,8 +33,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 <center>
 
-![diyagram-öğretici mimarisi, aşama ve dağıtım işi](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
-</center>
+![diyagram-öğretici mimarisi: ASA iş](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+hazırlama ve dağıtma </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,7 +46,7 @@ Bir Azure IoT Edge cihazı:
 
 Bulut kaynakları:
 
-* Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md). 
+* Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi oluşturma
 
@@ -54,20 +54,20 @@ Bu bölümde, aşağıdaki adımları sağlayacak bir Azure Stream Analytics iş
 
 * IoT Edge cihazınızdan veri alın.
 * Bir küme aralığı dışındaki değerler için telemetri verilerini sorgulayın.
-* Sorgu sonuçlarına göre IoT Edge cihazda işlem yapın. 
+* Sorgu sonuçlarına göre IoT Edge cihazda işlem yapın.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analytics işinin cihazdan çağrılabilecek bir şekilde depolanması gerekir. Mevcut bir Azure depolama hesabını kullanabilir veya yeni bir hesap oluşturabilirsiniz. 
+IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analytics işinin cihazdan çağrılabilecek bir şekilde depolanması gerekir. Mevcut bir Azure Depolama hesabını kullanabilir veya şimdi yeni bir tane oluşturabilirsiniz.
 
-1. Azure portal **kaynak oluşturma** > **depolama** > **depolama hesabı**' na gidin. 
+1. Azure portal **kaynak oluşturma** > **depolama** > **depolama hesabı**' na gidin.
 
 1. Depolama hesabınızı oluşturmak için aşağıdaki değerleri girin:
 
    | Alan | Değer |
    | ----- | ----- |
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin. |
-   | Kaynak grubu | IoT Edge hızlı başlangıçlarında ve öğreticilerinde oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
+   | Kaynak grubu | Hızlı başlangıç ve öğreticiler IoT Edge için tüm test kaynaklarınız için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
    | Ad | Depolama hesabınıza benzersiz bir ad verin. |
    | Konum | Size yakın bir konum seçin. |
 
@@ -88,7 +88,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | Kaynak grubu | IoT Edge hızlı başlangıçlarında ve öğreticilerinde oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
    | Konum | Size yakın bir konum seçin. |
    | Barındırma ortamı | **Kenar**'ı seçin. |
- 
+
 1. **Oluştur**’u seçin.
 
 ### <a name="configure-your-job"></a>İşinizi yapılandırma
@@ -105,7 +105,7 @@ Bu bölümde giriş, çıkış ve sorgu öğelerini kullanarak IoT Edge cihazın
 
 1. Açılan listeden **Edge Hub**'ını seçin.
 
-1. **Yeni giriş** bölmesinde giriş diğer adı olarak **temperature** yazın. 
+1. **Yeni giriş** bölmesinde giriş diğer adı olarak **temperature** yazın.
 
 1. Diğer alanlar için varsayılan değerleri kullanın ve **Kaydet**'i seçin.
 
@@ -152,7 +152,7 @@ IoT Edge cihazınıza dağıtılacak Stream Analytics işinizi hazırlamak için
 
 ## <a name="deploy-the-job"></a>İşi dağıtma
 
-Artık Azure Stream Analytics işinizi IoT Edge cihazınıza dağıtmaya hazırsınız. 
+Artık Azure Stream Analytics işinizi IoT Edge cihazınıza dağıtmaya hazırsınız.
 
 Bu bölümde Azure portaldaki **Modülleri Ayarlama** sihirbazını kullanarak bir *dağıtım bildirimi* oluşturacaksınız. Dağıtım bildirimi bir cihaza dağıtılacak tüm modülleri, modül görüntülerinin depolandığı kapsayıcı kayıt defterlerini, modüllerin yönetilme şeklini ve modüllerin birbirleriyle iletişim kurma şeklini belirten bir JSON dosyasıdır. IoT Edge cihazınız, dağıtım bildirimini IoT Hub'dan aldıktan sonra içindeki bilgileri kullanarak tüm atanmış modülleri dağıtır ve yapılandırır.
 

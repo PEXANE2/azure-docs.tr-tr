@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432479"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846124"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python uygulamanız için Azure Izleyicisini ayarlama (Önizleme)
 
@@ -136,7 +136,7 @@ OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendi
 
 4. Artık Python betiğini çalıştırdığınızda, yine de değer girmeniz istenir, ancak yalnızca değeri kabukta yazdırılıyor. Oluşturulan `SpanData` Azure Izleyici 'ye gönderilir. `dependencies`' ın altında, yayılan yayılmış verileri bulabilirsiniz.
 
-5. OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örneklemeye](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python)göz atın.
+5. OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örneklemeye](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)göz atın.
 
 6. İzleme verilerinizde telemetri bağıntısı hakkında ayrıntılı bilgi edinmek için, OpenCensus [telemetri bağıntısını](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)göz atın.
 

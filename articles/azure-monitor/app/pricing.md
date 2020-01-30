@@ -8,14 +8,14 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406544"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845629"
 ---
-# <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
+# <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
 > [!NOTE]
 > Bu makalede, Application Insights maliyetlerinizi nasıl anlayacağınızı ve denetleyebileceğinizi açıklamaktadır.  [Kullanımı ve tahmini maliyetleri izleyen](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) ilgili bir makale, farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanım ve tahmini maliyetlerin nasıl görüntüleneceğini açıklar.
@@ -38,9 +38,9 @@ Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen
 
 ### <a name="data-collection-when-using-sampling"></a>Örnekleme kullanılırken veri toplama
 
-ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede beş olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
+ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](sampling.md#adaptive-sampling)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede beş olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
 
-Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak üzere [ASP.net, ASP.NET Core ve Java Web siteleri için](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) , tutulacak verilerin yüzdesine göre Application Insights tarafından alındığı zaman örnekleri veren alma [örnekleme](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)kullanabilirsiniz
+Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak üzere [ASP.net, ASP.NET Core ve Java Web siteleri için](sampling.md#fixed-rate-sampling) , tutulacak verilerin yüzdesine göre Application Insights tarafından alındığı zaman örnekleri veren alma [örnekleme](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)kullanabilirsiniz
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
@@ -269,7 +269,7 @@ Bu katman yalnızca Operations Management Suite aboneliği olan müşterilere uy
   * Uygulamanız **Roleınstance** 'ı özel bir değere ayarlamak için SDK kullanıyorsa, varsayılan olarak, düğüm sayısını belirlemede aynı değer kullanılır. 
   * İstemci makinelerinden veya mobil cihazlardan çalışan bir uygulamayla yeni bir SDK sürümü kullanıyorsanız, düğüm sayısı büyük bir sayı döndürebilir (çok sayıda istemci makinesi veya mobil cihaz nedeniyle). 
 
-## <a name="automation"></a>Otomasyon
+## <a name="automation"></a>Automation
 
 Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için bir komut dosyası yazabilirsiniz. [Nasıl olduğunu öğrenin](powershell.md#price).
 

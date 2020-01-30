@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e56722831ef05364b8ee4d342553158fba19ffaa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760734"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844862"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -95,7 +95,7 @@ Varsayılan ileti ayarları, App Service'te bir parçasıdır.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Neden SharePoint bağlantımı ayıklanan değil mi?
 
-Bkz: [veri kaynağı konumları](./Concepts/data-sources-supported.md#data-source-locations) daha fazla bilgi için.
+Bkz: [veri kaynağı konumları](./Concepts/knowledge-base.md#data-source-locations) daha fazla bilgi için.
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>My Bilgi Bankası'na yaptığım güncelleştirmeler bankamda. Neden?
 

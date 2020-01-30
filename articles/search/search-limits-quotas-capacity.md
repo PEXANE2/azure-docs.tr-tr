@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462501"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846276"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama hizmet limitleri
 
@@ -117,7 +117,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 | Maksimum çalışma süresi <sup>5</sup> | 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
 | Bilişsel arama becerileri için maksimum çalışma süresi veya görüntü analizi ile blob dizin oluşturma <sup>5</sup> | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
 | Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32,000 |64,000 |4&nbsp;milyon |4&nbsp;milyon |4&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32,000 |64,000 |4&nbsp;milyon |8&nbsp;milyon |16&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -151,7 +151,7 @@ Depolama için Iyileştirilmiş katmanlar için, standart katmanlardan daha dü�
 
 ## <a name="data-limits-ai-enrichment"></a>Veri limitleri (AI zenginleştirme)
 
-[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [Analizi](cognitive-search-skill-sentiment.md)ve [dil algılama](cognitive-search-skill-language-detection.md) için bir metin analizi kaynağına çağrılar yapan bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
+[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [Analizi](cognitive-search-skill-sentiment.md), [dil algılama](cognitive-search-skill-language-detection.md)ve [PII algılama](cognitive-search-skill-pii-detection.md) için bir metin analizi kaynağına çağrılar yapan bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
 
 ## <a name="throttling-limits"></a>Azaltma sınırları
 

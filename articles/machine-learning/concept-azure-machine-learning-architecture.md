@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546070"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845626"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -57,8 +57,8 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#activities">Etkinlik</a>
 + <a href="#compute-targets">İşlem hedefleri</a>
 + <a href="#datasets-and-datastores">Veri kümesi & veri depoları</a>
-+ <a href="#endpoints">Uç Noktalar</a>
-+ <a href="#environments">Ortamlar</a>
++ <a href="#endpoints">Noktalarının</a>
++ <a href="#environments">Lý</a>
 + [Tahmini](#estimators)
 + <a href="#experiments">Denemeler</a>
 + <a href="#github-tracking-and-integration">Git izleme</a>
@@ -68,7 +68,7 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#models">Modelde</a>
 + <a href="#runs">Çalıştırma</a>
 + <a href="#run-configurations">Yapılandırmayı Çalıştır</a>
-+ <a href="#snapshots">Anlık Görüntü</a>
++ <a href="#snapshots">Görüntüye</a>
 + <a href="#training-scripts">Eğitim betiği</a>
 + <a href="#web-service-endpoint">Web Hizmetleri</a>
 + <a href="#workspaces">Alanında</a>
@@ -85,7 +85,7 @@ Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya W
 ### <a name="compute-instance"></a>İşlem örneği (Önizleme)
 
 > [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
 
 Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), makine öğrenimi için yüklenmiş birden çok araç ve ortamı içeren tam olarak yönetilen bir bulut tabanlı iş istasyonudur. İşlem örnekleri, eğitim ve ınişsiz işler için işlem hedefi olarak kullanılabilir. Büyük görevler için, çok düğümlü ölçekleme özelliklerine sahip [işlem kümeleri Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.

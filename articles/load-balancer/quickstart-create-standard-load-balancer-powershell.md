@@ -1,29 +1,29 @@
 ---
-title: 'Hızlı başlangıç: Standart Load Balancer oluşturma-Azure PowerShell'
+title: 'Hızlı başlangıç: Load Balancer oluşturma-Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: Bu hızlı başlangıçta Azure PowerShell kullanarak Standart Load Balancer oluşturma gösterilmektedir
+description: Bu hızlı başlangıçta Azure PowerShell kullanarak Load Balancer oluşturma gösterilmektedir
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045674"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846523"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Standart Load Balancer oluşturma
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Load Balancer oluşturma
 
 Bu hızlı başlangıçta, Azure PowerShell kullanarak bir Standart Load Balancer’ın nasıl oluşturulacağı gösterilmektedir. Yük dengeleyiciyi test etmek için, Windows Server çalıştıran üç sanal makine (VM) ve VM 'Ler arasında bir Web uygulamasının yükünü dengeleyebilirsiniz. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer nedir](load-balancer-standard-overview.md).
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-Uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)ile genel bir IP adresi oluşturun. Aşağıdaki örnek, *Myresourcegroupslb* kaynak grubundaki *Mypublicıp* adlı bir genel IP adresi oluşturur:
+Uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)ile genel bir IP adresi oluşturun. Aşağıdaki örnek, *Myresourcegroupslb* kaynak grubunda *Mypublicıp* adlı BIR bölge yedekli genel IP adresi oluşturur:
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Standart Load Balancer oluşturma
+Bölge 1 ' de genel bir IP adresi oluşturmak için aşağıdakileri kullanın:
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+Temel genel IP oluşturmak için ```-SKU Basic``` kullanın. Microsoft, üretim iş yükleri için standart kullanılmasını önerir.
+
+## <a name="create-load-balancer"></a>Yük Dengeleyici oluşturma
 
 Bu bölümde, ön uç IP 'sini ve yük dengeleyici için arka uç adres havuzunu yapılandırıp Standart Load Balancer oluşturursunuz.
 
-### <a name="create-front-end-ip"></a>Ön uç IP oluşturma
+### <a name="create-frontend-ip"></a>Ön uç IP oluşturma
 
 [New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig)ile bir ön uç IP 'si oluşturun. Aşağıdaki örnek *Myön uç* adlı bir ön uç IP yapılandırması oluşturur ve *Mypublicıp* adresini ekler:
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+Temel bir Load Balancer oluşturmak için ```-SKU Basic``` kullanın. Microsoft, üretim iş yükleri için standart kullanılmasını önerir.
+
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 Bazı VM’leri dağıtabilmeniz ve yük dengeleyicinizi test edebilmeniz için destekleyici ağ kaynakları (sanal ağ ve sanal NIC’ler) oluşturmanız gerekir. 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Temel genel IP 'Ler oluşturmak için ```-SKU Basic``` kullanın. Microsoft, üretim iş yükleri için standart kullanılmasını önerir.
+
 ### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
 Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu oluşturun.
 
@@ -331,7 +350,7 @@ IIS 'yi her iki arka uç VM 'de aşağıdaki gibi özel bir Web sayfasıyla birl
 5. *MyVM1*, *myVM2*ve *myVM3*ile RDP bağlantılarını kapatın.
 
 
-## <a name="test-load-balancer"></a>Yük dengeleyiciyi sınama
+## <a name="test-load-balancer"></a>Yük dengeleyiciyi test etme
 [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)ile yük dengeleyicinizin genel IP adresini alın. Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
 
 ```azurepowershell
@@ -342,9 +361,9 @@ Get-AzPublicIPAddress `
 
 Sonra da genel IP adresini bir web tarayıcısına girebilirsiniz. Aşağıdaki örnekteki gibi yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adının dahil olduğu web sitesi görüntülenir:
 
-![Yük dengeleyiciyi sınama](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
+![Yük dengeleyiciyi test etme](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıtma işlemini görmek için web tarayıcınızı yenilemeye zorlayabilirsiniz. 
+Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıtmasını görmek için web tarayıcınızı yenilemeye zorlayabilirsiniz. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Standart Yük Dengeleyici oluşturdunuz, buna sanal makineler eklediniz, yük dengeleyici trafik kuralını ve durum araştırmasını yapılandırdınız ve yük dengeleyiciyi test ettiniz. Azure Load Balancer hakkında daha fazla bilgi almak için Azure Load Balancer öğreticilerine geçin.
+Bu hızlı başlangıçta, bir Standart Load Balancer oluşturdunuz, bu sanal makineye bağlı VM 'Ler Load Balancer trafik kuralını ve sistem durumu araştırmasını yapılandırdınız ve ardından Load Balancer test edilmiştir. Azure Load Balancer hakkında daha fazla bilgi edinmek için [öğreticilere Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)devam edin.
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer öğreticileri](tutorial-load-balancer-basic-internal-portal.md)
+[Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.

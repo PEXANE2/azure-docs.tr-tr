@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d960af01eed9fae0fec2566772799e4972053d7b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687492"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767093"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Öğretici: özel bir görüntü oluşturma ve özel bir kayıt defterinden App Service çalıştırma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -122,7 +122,7 @@ az acr credential show --name <azure-container-registry-name>
 Çıktı, Kullanıcı adıyla birlikte iki parola ortaya koyar.
 
 ```json
-<
+{
   "passwords": [
     {
       "name": "password",
@@ -147,7 +147,7 @@ Oturum açmanın başarılı olduğunu doğrulayın.
 
 ### <a name="push-image-to-azure-container-registry"></a>Azure Container Registry’ye görüntü gönderme
 
-Azure Container Registry için yerel görüntünüzü etiketleyin. Örnek:
+Azure Container Registry için yerel görüntünüzü etiketleyin. Örneğin:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```

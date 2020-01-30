@@ -3,19 +3,29 @@ title: Azure Otomasyonu ile değişiklikleri izleme
 description: Değişiklik İzleme çözümü, ortamınızda gerçekleşen yazılım ve Windows hizmeti değişikliklerini belirlemenize yardımcı olur.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418741"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844811"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin
 
-Bu makale, ortamınızdaki değişiklikleri kolayca belirlemek için Değişiklik İzleme çözümünü kullanmanıza yardımcı olur. Çözüm Windows ve Linux yazılım, Windows ve Linux dosyaları, Windows kayıt defteri anahtarları, Windows Hizmetleri ve Linux Daemon 'ları üzerindeki değişiklikleri izler. Yapılandırma değişikliklerinin belirlenmesi, işlemsel sorunları belirlemenize yardımcı olabilir.
+Bu makale, ortamınızdaki değişiklikleri kolayca belirlemek için Değişiklik İzleme çözümünü kullanmanıza yardımcı olur. Çözüm, işlemsel sorunları belirlemenize yardımcı olması için aşağıdaki yapılandırma değişikliklerini izler:
+
+- Windows yazılımı
+- Linux yazılımı (paket)
+
+    >[!NOTE]
+    >Değişiklik İzleme yalnızca dağıtımın paket yöneticisiyle yönetilen yazılımları izler.
+
+- Windows ve Linux dosyaları
+- Windows kayıt defteri anahtarları
+- Windows hizmetleri
+- Linux Daemon 'ları
 
 İzlenen sunuculardaki yüklü yazılım, Windows Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları üzerinde yapılan değişiklikler, işlenmek üzere buluttaki Azure Izleyici hizmetine gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder. Değişiklik İzleme panosundaki bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
 
@@ -159,6 +169,8 @@ Değişiklik İzleme çözümü Şu anda aşağıdaki öğeleri desteklemez:
 
 * Windows kayıt defteri izleme için özyineleme
 * Ağ dosya sistemleri
+* Farklı yükleme yöntemleri izlenmiyor
+* *. exe dosyaları Windows için izlenmiyor
 
 Diğer sınırlamalar:
 
@@ -241,7 +253,7 @@ Kayıt defteri anahtarlarındaki değişiklikleri izlemenin amacı, üçüncü t
 
 Aşağıdaki adresler Değişiklik İzleme için özel olarak gereklidir. Bu adreslerle iletişim bağlantı noktası 443 üzerinden yapılır.
 
-|Azure Genel  |Azure Devlet Kurumları  |
+|Azure genel  |Azure Devlet Kurumları  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |

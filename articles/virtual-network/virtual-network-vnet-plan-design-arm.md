@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646498"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845577"
 ---
 # <a name="plan-virtual-networks"></a>Sanal ağları planlama
 
@@ -39,9 +39,9 @@ Tüm Azure kaynakları bir Azure bölgesinde ve aboneliğinde oluşturulur. Kayn
 
 ## <a name="subscriptions"></a>Abonelikler
 
-Her abonelik için gereken sayıda sanal ağı en fazla [sınıra](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar dağıtabilirsiniz. Bazı kuruluşların, örneğin farklı departmanlar için farklı abonelikleri vardır. Abonelikler hakkında daha fazla bilgi ve ilgili konular için bkz. [abonelik](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)İdaresi.
+Her abonelik için gereken sayıda sanal ağı en fazla [sınıra](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar dağıtabilirsiniz. Bazı kuruluşların, örneğin farklı departmanlar için farklı abonelikleri vardır. Abonelikler hakkında daha fazla bilgi ve ilgili konular için bkz. [abonelik](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy)İdaresi.
 
-## <a name="segmentation"></a>Kesimleme
+## <a name="segmentation"></a>Ayrılmasını
 
 Her bir abonelik ve bölge başına birden çok sanal ağ oluşturabilirsiniz. Her bir sanal ağ içinde birden çok alt ağ oluşturabilirsiniz. Aşağıdaki önemli noktalar, kaç sanal ağın ve alt ağın gerekli olduğunu belirlemenize yardımcı olur:
 

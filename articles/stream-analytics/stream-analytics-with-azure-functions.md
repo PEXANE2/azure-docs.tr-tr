@@ -2,18 +2,17 @@
 title: Öğretici-Azure Stream Analytics işlerinde Azure Işlevleri çalıştırma
 description: Bu öğreticide, Stream Analytics işlerine bir çıktı havuzu olarak Azure İşlevlerini yapılandırma hakkında bilgi edineceksiniz.
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369329"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772885"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
 
@@ -51,7 +50,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Azure Işlevlerinde Redsıs için Azure önbelleğine veri yazabilmesi için bir işlev oluşturma
 
-1. İşlevler belgesinin [İşlev uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) bölümüne bakın. Bu bölümde CSharp dili kullanılarak bir işlev uygulaması ve [Azure İşlevleri’nde HTTP ile tetiklenen işlev](../azure-functions/functions-create-first-azure-function.md#create-function) oluşturma adımları gösterilir.  
+1. İşlevler belgesinin [İşlev uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) bölümüne bakın. Bu bölümde, CSharp dilini kullanarak Azure Işlevlerinde bir işlev uygulaması ve [http ile tetiklenen bir işlev](../azure-functions/functions-create-first-azure-function.md#create-function)oluşturma işlemi adım adım açıklanmaktadır.  
 
 2. **run.csx** işlevine göz atın. Aşağıdaki kodla güncelleştirin. {1 & gt; **redsıs bağlantı dizesi Için Azure önbelleğiniz** , önceki bölümde aldığınız redsıs birincil bağlantı dizesi Için Azure önbelleğiyle birlikte "\<\>" yerine geçer. 
 
@@ -149,7 +148,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
    |İçeri aktarma seçeneği| Geçerli abonelikteki işlevi kullanabilir veya işlev başka bir abonelikte bulunuyorsa ayarları el ile sağlayabilirsiniz. |
    |İşlev Uygulaması| İşlevler uygulamanızın adı. |
    |İşlev| İşlevler uygulamanızdaki işlevin adı (run.csx işlevinizin adı).|
-   |En Büyük Toplu İş Boyutu|İşleviniz için bayt cinsinden gönderilen her çıkış toplu işi için en büyük boyutu ayarlar. Varsayılan olarak, bu değer 262.144 bayta ayarlanır (256 KB).|
+   |En Büyük Toplu İş Boyutu|İşleviniz için bayt cinsinden gönderilen her çıkış toplu işinin maksimum boyutunu ayarlar. Varsayılan olarak, bu değer 262.144 bayta ayarlanır (256 KB).|
    |En Büyük Toplu İş Sayısı|İşleve gönderilen her toplu işteki en büyük olay sayısını belirtir. Varsayılan değer 100’dür. Bu özellik isteğe bağlıdır.|
    |Anahtar|Başka bir abonelikteki işlevi kullanmanıza olanak sağlar. İşlevinize erişmek için anahtar değerini sağlayın. Bu özellik isteğe bağlıdır.|
 
@@ -187,13 +186,10 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
    Bu komut, belirtilen anahtarın değerini yazdırmalıdır:
 
    ![Redsıs çıkışı için Azure önbelleğinin ekran görüntüsü](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>Hata işleme ve yeniden deneme
-Azure İşlevleri'ne olay gönderme sırasında hatayla karşılaşılması halinde Stream Analytics işlemi başarıyla tamamlamayı dener. Ancak aşağıda belirtilen hatalarda yeniden deneme girişiminde bulunulmaz:
 
- 1. HttpRequestExceptions
- 2. İstek Varlığı Çok Büyük (Http hata kodu 413)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>Hata işleme ve yeniden deneme
+
+Olayları Azure Işlevlerine gönderirken bir hata oluşursa, en fazla işlem Stream Analytics. Http hatası 413 (varlık çok büyük) dışında tüm http özel durumları başarılı olana kadar yeniden denenir. Bir varlık çok büyük hatası, [yeniden deneme veya bırakma ilkesine](stream-analytics-output-error-policy.md)tabi veri hatası olarak değerlendirilir.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -210,7 +206,7 @@ Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure İşlevi çalıştıran basit bir Stream Analytics işi oluşturdunuz. Stream Analytics işleri hakkında daha fazla bilgi almak için sonraki öğreticiye geçin:
+Bu öğreticide, bir Azure Işlevi çalıştıran bir basit Stream Analytics işi oluşturdunuz. Stream Analytics işleri hakkında daha fazla bilgi edinmek için sonraki öğreticiye geçin:
 
 > [!div class="nextstepaction"]
 > [Stream Analytics işlerinde JavaScript kullanıcı tanımlı işlevleri çalıştırma](stream-analytics-javascript-user-defined-functions.md)

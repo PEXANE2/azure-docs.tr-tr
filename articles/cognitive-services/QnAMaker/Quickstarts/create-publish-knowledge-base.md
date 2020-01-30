@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447611"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844271"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -120,7 +120,7 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
 1. Azure bot hizmetinin oluşturma sayfası ile Azure portal için yeni bir tarayıcı sekmesi açılır. Azure bot hizmetini yapılandırın. Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, bot 'ın **uygulama adının** soru-cevap oluşturma hizmeti için uygulama adından farklı olması anlamına gelir.
 
-    * **Yapın**
+    * **Gösterme**
         * Bot tanıtıcısını Değiştir-benzersiz değilse.
         * SDK dilini seçin. Bot oluşturulduktan sonra, kodu yerel geliştirme ortamınıza indirebilir ve geliştirme sürecine devam edebilirsiniz.
     * **Yapma**
@@ -155,9 +155,8 @@ Azure portal Soru-Cevap Oluşturma ve bot Framework kaynaklarını temizleyin.
 
 Daha fazla bilgi için:
 
-* [Yanıt olarak markaşağı biçimi](../concepts/data-sources-supported.md)
-* [Marka testinizi test etme](../concepts/data-sources-supported.md#testing-your-markdown)
-* [Veri kaynaklarını](../Concepts/data-sources-supported.md)soru-cevap oluşturma.
+* [Yanıt olarak markaşağı biçimi](../reference-markdown-format.md)
+* [Veri kaynaklarını](../concepts/knowledge-base.md)soru-cevap oluşturma.
 * [Bot kaynak yapılandırma ayarları](../tutorials/create-qna-bot.md).
 
 > [!div class="nextstepaction"]

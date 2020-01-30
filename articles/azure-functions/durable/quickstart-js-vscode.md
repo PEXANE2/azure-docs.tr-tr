@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231307"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845714"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript 'te ilk dayanıklı işlevinizi oluşturma
 
@@ -38,7 +38,31 @@ Bu öğreticiyi tamamlamak için:
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma 
+
+Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. 
+
+1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde `Azure Functions: Create new project...`arayıp seçin.
+
+1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç**' i seçin.
+
+    > [!NOTE]
+    > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu örnekte, bir çalışma alanının parçası olan bir proje klasörünü seçmeyin.
+
+1. İstemlerinizi izleyerek, istediğiniz dil için aşağıdaki bilgileri sağlayın:
+
+    | İstem | Değer | Açıklama |
+    | ------ | ----- | ----------- |
+    | İşlev uygulaması projeniz için bir dil seçin | JavaScript | Yerel Node. js Işlevleri projesi oluşturun. |
+    | Sürüm seçin | Azure Işlevleri v2 | Bu seçeneği yalnızca temel araçlar yüklü değilse görürsünüz. Bu durumda, uygulamayı ilk kez çalıştırdığınızda çekirdek araçlar yüklenir. |
+    | Projenizin ilk işlevi için bir şablon seçin | HTTP tetikleyicisi | Yeni işlev uygulamasında HTTP ile tetiklenen bir işlev oluşturun. |
+    | Bir işlev adı girin | HttpTrigger | Varsayılan adı kullanmak için ENTER tuşuna basın. |
+    | Yetkilendirme düzeyi | İşlev | `function` Yetkilendirme düzeyi, işlevinizin HTTP uç noktasını çağırırken bir erişim anahtarı vermenizi gerektirir. Bu, güvenli olmayan bir uç noktaya erişmeyi daha zorlaştırır. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Projenizi nasıl açmak istediğinizi seçin | Çalışma alanına Ekle | Geçerli çalışma alanında işlev uygulaması oluşturur. |
+
+Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca yeni bir çalışma alanında işlev uygulaması projesi oluşturur. Bu proje [Host. JSON](../functions-host-json.md) ve [Local. Settings. JSON](../functions-run-local.md#local-settings-file) yapılandırma dosyalarını içerir. Ayrıca, işlev kodunu içeren bir Node. js dosyası olan [function. JSON tanım dosyasını](../functions-reference-node.md#folder-structure) ve [index. js dosyasını](../functions-reference-node.md#exporting-a-function)içeren bir httpexample klasörü oluşturur.
+
+Kök klasörde bir Package. JSON dosyası da oluşturulur.
 
 ## <a name="install-the-durable-functions-npm-package"></a>Dayanıklı İşlevler NPM paketini yükler
 
@@ -60,7 +84,7 @@ Artık Dayanıklı İşlevler kullanmaya başlamak için ihtiyacınız olan üç
 
     ![HTTP başlangıç şablonunu seçin](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Varsayılan adı `DurableFunctionsHttpStart` olarak bırakın ve * * * * ENTER * * tuşlarına basın ve ardından **anonim** kimlik doğrulaması ' nı seçin.
+3. Olarak varsayılan adı bırakın `DurableFunctionsHttpStart` basın ** **Enter** ardından **anonim** kimlik doğrulaması.
 
     ![Anonim kimlik doğrulamasını seçin](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

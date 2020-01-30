@@ -4,12 +4,12 @@ description: Yeni veya mevcut bir Azure sanal ağına kapsayıcı grupları dağ
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887965"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845181"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Azure sanal ağına kapsayıcı örnekleri dağıtma
 
@@ -33,6 +33,7 @@ Bir sanal ağa kapsayıcı grupları dağıttığınızda bazı sınırlamalar g
 
 * Alt ağa kapsayıcı grupları dağıtmak için, alt ağ başka bir kaynak türü içeremez. Mevcut bir alt ağdan kapsayıcı grupları dağıtmadan önce mevcut olan tüm kaynakları kaldırın veya yeni bir alt ağ oluşturun.
 * Bir sanal ağa dağıtılan bir kapsayıcı grubunda [yönetilen bir kimlik](container-instances-managed-identity.md) kullanamazsınız.
+* Bir sanal ağa dağıtılan bir kapsayıcı grubunda, bir veya daha fazla [araştırma](container-instances-liveness-probe.md) veya [hazırlık araştırması](container-instances-readiness-probe.md) etkinleştiremezsiniz.
 * Dahil edilen ek ağ kaynakları nedeniyle, bir kapsayıcı grubunun bir sanal ağa dağıtımı genellikle standart bir kapsayıcı örneği dağıtmaktan daha yavaştır.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -84,7 +85,7 @@ Kapsayıcı gruplarını yeni bir sanal ağa dağıtmak ve Azure 'un sizin için
 
 Yeni bir sanal ağa dağıtmak ve Azure 'un ağ kaynaklarını sizin için otomatik olarak oluşturmasını sağlamak için [az Container Create][az-container-create]çalıştırdığınızda şunları belirtin:
 
-* Sanal ağın adı
+* Sanal ağ adı
 * CıDR biçimindeki sanal ağ adresi ön eki
 * Alt ağ adı
 * CıDR biçimindeki alt ağ adresi öneki
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Ağ profilini kaldırmaya çalışırken bir hata alırsanız, platformun sorunu otomatik olarak hafifletmek ve silmeyi yeniden denemesi için 2-3 güne izin verin. Ağ profilini kaldırma konusunda hala sorun yaşıyorsanız [bir destek isteği açın](https://azure.microsoft.com/support/create-ticket/).
+> Ağ profilini kaldırmaya çalışırken bir hata alırsanız, platformun sorunu otomatik olarak hafifletmek ve silmeyi yeniden denemesi için 3-4 güne izin verin. Bir ağ profilini hemen silmeniz gerekiyorsa Azure Container Instances hizmetine başvuran [bir destek isteği açın](https://azure.microsoft.com/support/create-ticket/) .
 
 Bu özellik şu anda daha önce oluşturduğunuz ağ kaynaklarını silmek için birkaç ek komut gerektirir. Sanal ağınızı ve alt ağınızı oluşturmak için bu makalenin önceki bölümlerinde örnek komutları kullandıysanız, bu ağ kaynaklarını silmek için aşağıdaki betiği kullanabilirsiniz.
 

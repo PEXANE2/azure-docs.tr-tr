@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561941"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846462"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -91,7 +91,7 @@ Sanal ağ tümleştirmesinin desteklemediği bazı şeyler vardır, örneğin:
 
 * Sürücü takma
 * Active Directory tümleştirmesi
-* NetBIOS
+* Tanımlaya
 
 Azure Işlevlerinde sanal ağ tümleştirmesi App Service Web Apps ile paylaşılan altyapıyı kullanır. İki tür sanal ağ tümleştirmesi hakkında daha fazla bilgi edinmek için bkz.:
 
@@ -136,12 +136,12 @@ Premium bir planda çalışırken, HTTP olmayan tetikleyici işlevlerini bir san
 Sanal ağ tetikleyicilerini şu Azure CLı komutunu kullanarak da etkinleştirebilirsiniz:
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
 Sanal ağ Tetikleyicileri, Işlevler çalışma zamanının 2. x ve üzerinde desteklenir. Aşağıdaki HTTP olmayan tetikleyici türleri desteklenir.
 
-| Uzantı | En Düşük Sürüm |
+| Uzantı | En düşük sürüm |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 veya üzeri |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 veya üzeri|

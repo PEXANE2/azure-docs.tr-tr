@@ -3,9 +3,7 @@ title: Azure ağ Izleyicisi örneği oluşturma | Microsoft Docs
 description: Bir Azure bölgesinde Ağ İzleyicisini etkinleştirmeyi öğrenin.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: damendo
+ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693484"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845131"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure ağ Izleyicisi örneği oluşturma
 
@@ -51,11 +49,11 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Portalda ağ Izleyicisi oluşturma
 
-Ağ izleyicisine  >  **tüm hizmetler** ** >  ağ** **İzleyicisi**' ne gidin. Ağ İzleyicisini etkinleştirmek istediğiniz tüm abonelikleri seçebilirsiniz. Bu eylem, kullanılabilir her bölgede bir ağ Izleyicisi oluşturur.
+Ağ izleyicisine > **tüm hizmetler** ** > ağ** **İzleyicisi**' ne gidin. Ağ İzleyicisini etkinleştirmek istediğiniz tüm abonelikleri seçebilirsiniz. Bu eylem, kullanılabilir her bölgede bir ağ Izleyicisi oluşturur.
 
 ![Ağ İzleyicisi oluşturma](./media/network-watcher-create/figure1.png)
 
-Portalı kullanarak Ağ İzleyicisini etkinleştirdiğinizde, ağ Izleyicisi örneğinin adı otomatik olarak *NetworkWatcher_region_name* olarak ayarlanır; burada *region_name* , örneğin etkin olduğu Azure bölgesine karşılık gelir. Örneğin, Orta Batı ABD bölgesinde etkinleştirilmiş bir ağ Izleyicisi *NetworkWatcher_westcentralus*olarak adlandırılır.
+Portal 'ı kullanarak Ağ İzleyicisini etkinleştirdiğinizde, ağ Izleyicisi örneğinin adı otomatik olarak *NetworkWatcher_region_name* olarak ayarlanır ve *region_name* , örneğin etkin olduğu Azure bölgesine karşılık gelir. Örneğin, Orta Batı ABD bölgesinde etkinleştirilmiş bir ağ Izleyicisi *NetworkWatcher_westcentralus*olarak adlandırılır.
 
 Ağ Izleyicisi örneği, *NetworkWatcherRG*adlı bir kaynak grubunda otomatik olarak oluşturulur. Kaynak grubu zaten yoksa oluşturulur.
 
@@ -105,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Portalda bir ağ izleyicisini silme
 
-Ağ izleyicisine  >  **tüm hizmetler** ** >  ağ** **İzleyicisi**' ne gidin.
+Ağ izleyicisine > **tüm hizmetler** ** > ağ** **İzleyicisi**' ne gidin.
 
 Henüz orada değilseniz genel bakış sekmesini seçin. ' De Ağ İzleyicisini devre dışı bırakmak istediğiniz aboneliği seçmek için açılan menüyü kullanın.
 Ok simgesine tıklayarak seçtiğiniz abonelik için bölgelerin listesini genişletin. Verilen her türlü için, bağlam menüsüne erişmek için sağdaki 3 noktayı kullanın.

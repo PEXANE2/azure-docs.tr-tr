@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548059"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844743"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması kullanma
 
@@ -73,7 +73,6 @@ CloudEvents şemasında olay girişi ve çıktısı için Event Grid kullanabili
 |--------------------|---------------------
 | CloudEvents biçimi | CloudEvents biçimi
 | Event Grid biçimi  | CloudEvents biçimi
-| CloudEvents biçimi | Event Grid biçimi
 | Event Grid biçimi  | Event Grid biçimi
 
 Tüm olay şemaları için Event Grid, bir olay kılavuzu konusuna yayımlarken ve olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için [Event Grid güvenliğini ve kimlik doğrulaması](security-authentication.md).
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-CloudEvents 'in geçerli sürümü olayların toplu işlemeyi desteklemez. CloudEvent şeması ile olayları bir konuya yayımlamak için, her olayı ayrı ayrı yayımlayın.
 
 ### <a name="output-schema"></a>Çıktı şeması
 

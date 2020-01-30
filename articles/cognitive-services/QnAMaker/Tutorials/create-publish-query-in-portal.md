@@ -1,28 +1,20 @@
 ---
 title: 'Öğretici: Soru-Cevap Oluşturma oluşturun, yayımlayın ve yanıtlayın'
-titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, genel bir Web tabanlı sık sorulan sorular ve yanıtlar ile yeni bir Bilgi Bankası oluşturulması gösterilmektedir. Bilgi Bankası 'nı kaydedin, eğitme ve yayımlayın. Bilgi Bankası yayımlandıktan sonra bir soru gönderin ve bir kıvrımlı komutla yanıt alın. Ardından bir bot oluşturun ve aynı soru ile bot 'ı test edin.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/28/2020
+ms.openlocfilehash: 07a92b0f24aa95fc4a5188f54c7194fd342409fb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447397"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844220"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Öğretici: Soru-Cevap Oluşturma portalından bir Bilgi Bankası oluşturun
 
-Genel bir Web tabanlı SSS ile ilgili sorular ve yanıtlarla yeni bir Bilgi Bankası oluşturun. Bilgi Bankası 'nı kaydedin, eğitme ve yayımlayın. Bilgi Bankası yayımlandıktan sonra bir soru gönderin ve bir kıvrımlı komutla yanıt alın. Ardından bir bot oluşturun ve aynı soru ile bot 'ı test edin. 
+Genel bir Web tabanlı SSS ile ilgili sorular ve yanıtlarla yeni bir Bilgi Bankası oluşturun. Bilgi Bankası 'nı kaydedin, eğitme ve yayımlayın. Bilgi Bankası yayımlandıktan sonra bir soru gönderin ve bir kıvrımlı komutla yanıt alın. Ardından bir bot oluşturun ve aynı soru ile bot 'ı test edin.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz: 
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Soru-Cevap Oluşturma portalında bir Bilgi Bankası oluşturun.
@@ -30,60 +22,69 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bilgi Bankası 'nı yayımlayın.
 > * Bilgi Bankası 'nı sorgulamak için kıvrımlı kullanın.
 > * Bir bot oluşturun.
- 
+
 
 > [!NOTE]
 > Bu öğreticinin programlı sürümü, [ **Azure-Samples/bilişsel hizmetler-qnamaker-CSharp** GitHub deposundan](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)tam bir çözüm ile kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici için var olan bir [Soru-Cevap Oluşturma hizmetini](../How-To/set-up-qnamaker-service-azure.md) kullanmanız gerekir. 
+Bu öğretici için var olan bir [Soru-Cevap Oluşturma hizmetini](../How-To/set-up-qnamaker-service-azure.md) kullanmanız gerekir.
 
-## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturun 
+## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturun
 
-1. [Soru-Cevap Oluşturma](https://www.qnamaker.ai) portalında oturum açın. 
+1. [Soru-Cevap Oluşturma](https://www.qnamaker.ai) portalında oturum açın.
 
 1. Üstteki menüden **Create a knowledge base** (Bilgi bankası oluştur) öğesini seçin.
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
+    > [!div class="mx-imgBorder"]
+    > Soru-Cevap Oluşturma portalının ekran görüntüsünü ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
 
-1. Mevcut Soru-Cevap Oluşturma hizmetinizi kullanacağınız için ilk adımı atlayın. 
+1. Mevcut Soru-Cevap Oluşturma hizmetinizi kullanacağınız için ilk adımı atlayın.
 
-1. Var olan ayarlarınızı seçin:  
+1. Var olan ayarlarınızı seçin:
 
     |Ayar|Amaç|
     |--|--|
     |Microsoft Azure Directory KIMLIĞI|Bu KIMLIK, Azure portal ve Soru-Cevap Oluşturma portalında oturum açmak için kullandığınız hesapla ilişkilidir. |
     |Azure Aboneliği adı|Soru-Cevap Oluşturma kaynağını oluşturduğunuz faturalandırma hesabı.|
     |Azure Soru-Cevap Oluşturma Hizmeti|Var olan Soru-Cevap Oluşturma kaynağınızdır.|
+    |Dil|Hizmette tüm Bilgi Bankası temelleri için kullanılan dil. Tek bir kaynakta dilleri karıştırmayın. Bu, yanıt kalitesine zarar verecek.|
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
+    > [!div class="mx-imgBorder"]
+    > Soru-Cevap Oluşturma portalının ekran görüntüsünü ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
 1. Bilgi Bankası adınızı girin, `My Tutorial kb`.
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
+    > [!div class="mx-imgBorder"]
+    > Soru-Cevap Oluşturma portalının ekran görüntüsünü ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
 
-1. Bilgi tabanınızı aşağıdaki ayarlarla doldurun:  
+1. Bilgi tabanınızı aşağıdaki ayarlarla doldurun:
 
     |Ayar adı|Ayar değeri|Amaç|
     |--|--|--|
+    |Çoklu açma ayıklamayı etkinleştir|Onay işaretli|İzleme istemlerine izin verir.|
+    |Varsayılan yanıt metni|`No good answer was found.`|Soruda eşleşme olmadığında döndürülür.|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |URL'deki SSS içeriği, soru-cevap şeklinde biçimlendirilir. Soru-Cevap Oluşturma hizmeti bu biçimi yorumlayarak soruları ve cevaplarını ayıklayabilir.|
     |Dosya |_bu öğreticide kullanılmayacaktır_|Bu işlem sorular ve cevaplar için gerekli dosyaları karşıya yükler. |
     |Chit-chat personality (Konuşma kişiliği)|Uygun|Bu, yaygın soruların ve yanıtların kolay ve rastgele bir [kişiliğine](../Concepts/best-practices.md#chit-chat) sahip olmanızı sağlar. Bu soruları ve cevapları daha sonra düzenleyebilirsiniz. |
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
+    > [!div class="mx-imgBorder"]
+    > Soru-Cevap Oluşturma portalının ekran görüntüsünü ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
 1. Oluşturma işlemini tamamlamak için **Create your KB** (Bilgi bankanızı oluşturun) öğesini seçin.
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
+    > [!div class="mx-imgBorder"]
+    > Soru-Cevap Oluşturma portalının ekran görüntüsünü ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
 
 ## <a name="review-save-and-train-the-knowledge-base"></a>Bilgi bankasını gözden geçirme, kaydetme ve eğitme
 
-1. Soruları ve cevapları gözden geçirin. İlk sayfada, URL'den alınan sorular ve cevapları bulunur. 
+1. Soruları ve cevapları gözden geçirin. İlk sayfada, URL'den alınan sorular ve cevapları bulunur.
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
+    > [!div class="mx-imgBorder"]
+    > Soru-Cevap Oluşturma portalının ekran görüntüsünü ![](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
 
-1. Tablonun en altından son soru-cevap sayfasını seçin. Bu sayfada Chit-chat personality (Konuşma kişiliği) ayarı ile birlikte gelen sorular ve cevapları bulunur. 
+1. Tablonun en altından son soru-cevap sayfasını seçin. Bu sayfada Chit-chat personality (Konuşma kişiliği) ayarı ile birlikte gelen sorular ve cevapları bulunur.
 
 1. Soru-cevap listesinin üzerindeki araç çubuğundan **Görünüm seçenekleri** simgesini seçin ve ardından **meta verileri göster**' i seçin. Bu, her soru ve yanıt için meta veri etiketlerini gösterir. Tek yönlü sohbet sorularının **düzenleme: CHIT-chat** meta verileri zaten ayarlanmış. Bu meta veriler, seçili yanıtla birlikte istemci uygulamasına döndürülür. Bir sohbet bot gibi istemci uygulaması, bu filtrelenmiş meta verileri kullanarak ek işleme veya Kullanıcı etkileşimi sağlayabilir.
 
@@ -101,19 +102,19 @@ Bilgi Bankası yayımlandıktan sonra, uç nokta görüntülenir.
 
 ![Uç nokta ayarlarının ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-Bu **Yayımla** sayfasını kapatmayın. Bir bot oluşturmak için öğreticide daha sonra ihtiyacınız vardır. 
+Bu **Yayımla** sayfasını kapatmayın. Bir bot oluşturmak için öğreticide daha sonra ihtiyacınız vardır.
 
 ## <a name="use-curl-to-query-for-an-faq-answer"></a>Bir SSS yanıtı sorgulamak için kıvrımlı kullanın
 
-1. **Curl** sekmesini seçin. 
+1. **Curl** sekmesini seçin.
 
     ![Kıvrımlı sekmesinin ekran görüntüsü](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
 1. **Kıvrımlı** sekmesinin metnini kopyalayın ve kıvrımlı özellikli bir terminalde veya komut satırında çalıştırın. Yetkilendirme üst bilgisi değeri, sonunda boşluk ve sonra anahtar `Endpoint`metin içerir.
 
-1. `<Your question>` yerine `How large can my KB be?` yazın. Bu ifade `How large a knowledge base can I create?` sorusuna yakındır ancak tam olarak aynısı değildir. Soru-Cevap Oluşturma, doğal dil işleme süreçlerini kullanarak iki sorunun aynı olduğunu belirler.     
+1. `<Your question>` yerine `How large can my KB be?` yazın. Bu ifade `How large a knowledge base can I create?` sorusuna yakındır ancak tam olarak aynısı değildir. Soru-Cevap Oluşturma, doğal dil işleme süreçlerini kullanarak iki sorunun aynı olduğunu belirler.
 
-1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın. 
+1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın.
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -132,16 +133,16 @@ Bu **Yayımla** sayfasını kapatmayın. Bir bot oluşturmak için öğreticide 
         }
       ]
     }
-    
+
     ```
 
-    Soru-Cevap Oluşturma, %42,81 puanla cevaptan emin sayılır.  
+    Soru-Cevap Oluşturma, %42,81 puanla cevaptan emin sayılır.
 
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Bir GIT-chat yanıtı sorgulamak için kıvrımlı kullanın
 
-1. Kıvrımlı özellikli terminalde `How large can my KB be?`, kullanıcının `Thank you`gibi bir bot konuşma bitiş bildirimiyle değiştirin.   
+1. Kıvrımlı özellikli terminalde `How large can my KB be?`, kullanıcının `Thank you`gibi bir bot konuşma bitiş bildirimiyle değiştirin.
 
-1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın. 
+1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın.
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -172,18 +173,18 @@ Bu **Yayımla** sayfasını kapatmayın. Bir bot oluşturmak için öğreticide 
         }
       ]
     }
-   
+
     ```
 
-    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. Soru-Cevap Oluşturma Ayrıca, tüm ilgili soruların yanı sıra CHIT-chat meta veri etiketi bilgilerini içeren meta veri özelliği de döndürülür.  
+    `Thank you` sorusu bir genel konuşma sorusuyla tam olarak eşleştiği için Soru-Cevap Oluşturma tam olarak emindir ve 100 puan döndürür. Soru-Cevap Oluşturma Ayrıca, tüm ilgili soruların yanı sıra CHIT-chat meta veri etiketi bilgilerini içeren meta veri özelliği de döndürülür.
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>Varsayılan yanıtı sorgulamak için kıvrımlı kullanın
 
-Soru-Cevap Oluşturma herhangi bir soru, varsayılan yanıtı alır. Bu cevap Azure portalda yapılandırılır. 
+Soru-Cevap Oluşturma herhangi bir soru, varsayılan yanıtı alır. Bu cevap Azure portalda yapılandırılır.
 
-1. Kıvrımlı özellikli terminalde `Thank you` `x`ile değiştirin. 
+1. Kıvrımlı özellikli terminalde `Thank you` `x`ile değiştirin.
 
-1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın. 
+1. Kıvrımlı komutunu çalıştırın ve puan ve yanıt dahil olmak üzere JSON yanıtını alın.
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -200,8 +201,8 @@ Soru-Cevap Oluşturma herhangi bir soru, varsayılan yanıtı alır. Bu cevap Az
       ]
     }
     ```
-    
-    Soru-Cevap Oluşturma bir `0`puanı döndürdü, bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür. 
+
+    Soru-Cevap Oluşturma bir `0`puanı döndürdü, bu, güven anlamına gelir. Ayrıca varsayılan yanıtı da döndürür.
 
 ## <a name="create-a-knowledge-base-bot"></a>Bilgi Bankası bot oluştur
 
@@ -211,15 +212,15 @@ Daha fazla bilgi için [Bu Bilgi Bankası ile sohbet bot oluşturma](create-qna-
 
 Bilgi Bankası bot ile işiniz bittiğinde, bot işleminde oluşturulan tüm Azure kaynaklarını kaldırmak için `my-tutorial-rg`kaynak grubunu kaldırın.
 
-Bilgi Bankası ile işiniz bittiğinde, Soru-Cevap Oluşturma portalında, **bilgi tabanlarım**' ı seçin. Ardından Bilgi Bankası 'nı, **Öğreticimin BB**'yi seçin ve bu satırın en sağdaki Sil simgesini seçin.  
+Bilgi Bankası ile işiniz bittiğinde, Soru-Cevap Oluşturma portalında, **bilgi tabanlarım**' ı seçin. Ardından Bilgi Bankası 'nı, **Öğreticimin BB**'yi seçin ve bu satırın en sağdaki Sil simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Desteklenen dosya biçimleri hakkında daha fazla bilgi için bkz. [Desteklenen veri kaynakları](../Concepts/data-sources-supported.md). 
+Desteklenen dosya biçimleri hakkında daha fazla bilgi için bkz. [Desteklenen veri kaynakları](../Concepts/content-types.md).
 
 Genel konuşma [kişilikleri](../Concepts/best-practices.md#chit-chat) hakkında daha fazla bilgi edinin.
 
-Varsayılan cevap hakkında daha fazla bilgi için bkz. [Eşleşme bulunamadı](../Concepts/confidence-score.md#no-match-found). 
+Varsayılan cevap hakkında daha fazla bilgi için bkz. [Eşleşme bulunamadı](../Concepts/confidence-score.md#no-match-found).
 
 > [!div class="nextstepaction"]
 > [Bu Bilgi Bankası ile bir sohbet bot oluşturun](create-qna-bot.md)

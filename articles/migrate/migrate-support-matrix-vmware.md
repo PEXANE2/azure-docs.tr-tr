@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi 'nde VMware değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154695"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846185"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -52,11 +52,11 @@ Azure geçişi: Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra mak
 --- | ---
 **vCenter Server** | Bulmak ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5 veya 6,7 tarafından yönetilmelidir.
 **İzinler (değerlendirme)** | salt vCenter Server hesabı.
-**İzinler (App-Discovery)** | salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
+**İzinler (App-Discovery)** | salt okuma erişimi olan ve **Konuk işlemleri > sanal makineler**için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
 **İzinler (bağımlılık görselleştirme)** | Salt okuma erişimine sahip merkezi sunucu hesabı ve **sanal makineler** için etkinleştirilen ayrıcalıklar > **Konuk işlemleri**.
 
 
-## <a name="azure-migrate-appliance-requirements"></a>Azure geçiş gereç gereksinimleri
+## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri
 
 Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance.md) gereci kullanır. VMware için gereç, vCenter Server içeri aktarılan bir OVA şablonu kullanılarak dağıtılır. 
 
@@ -67,8 +67,9 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 
 **cihaz** | **bağlantı**
 --- | ---
-Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
+Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS), 5671 ve 5672 (AMQP) numaralı bağlantı noktası üzerinden giden bağlantılar.
 vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
+ESXi Konakları | **Yalnızca [uygulama bulma](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#application-discovery) ve [aracısız bağımlılık görselleştirmesi](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-dependency-visualization) için gereklidir** <br/><br/> Gereç, uygulamalar bulmaya ve konaklarda çalışan VM 'lerde aracısız bağımlılık görselleştirmesini çalıştırmaya yönelik TCP bağlantı noktası 443 üzerindeki ESXi konaklarına bağlanır.
 
 ## <a name="agent-based-dependency-visualization"></a>Aracı tabanlı bağımlılık görselleştirmesi
 
@@ -80,7 +81,7 @@ vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin
 **Dağıtım** | Bağımlılık görselleştirmesini dağıtmadan önce, Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesine sahip olmanız gerekir. Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.<br/><br/> Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
 **Hizmet Eşlemesi** | Aracı tabanlı bağımlılık görselleştirmesi [Azure izleyici günlüklerinde](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) [hizmet eşlemesi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) çözümünü kullanır.<br/><br/> Dağıtımı yapmak için, yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirirsiniz.
 **Log Analytics çalışma alanı** | Çalışma alanı, Azure geçişi projesiyle aynı abonelikte olmalıdır.<br/><br/> Azure geçişi Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde bulunan çalışma alanlarını destekler.<br/><br/>  Çalışma alanının [hizmet eşlemesi desteklendiği](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)bir bölgede olması gerekir.<br/><br/> Bir Azure geçişi projesi çalışma alanı eklendikten sonra değiştirilemez.
-**Charges** | Hizmet Eşlemesi çözümü, ilk 180 gün boyunca ücret almaz (Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirmenizin bulunduğu günden).<br/><br/> 180 gün sonra standart Log Analytics ücretleri uygulanır.<br/><br/> İlişkili Log Analytics çalışma alanında Hizmet Eşlemesi dışında herhangi bir çözümün kullanılması standart Log Analytics ücretlendirmeye tabi olacaktır.<br/><br/> Azure geçişi projesini silerseniz, çalışma alanı onunla silinmez. Projeyi sildikten sonra Hizmet Eşlemesi ücretsizdir ve her düğüm, Log Analytics çalışma alanının ücretli katmanına göre ücretlendirilir.
+**Ücretleriyle** | Hizmet Eşlemesi çözümü, ilk 180 gün boyunca ücret almaz (Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirmenizin bulunduğu günden).<br/><br/> 180 gün sonra standart Log Analytics ücretleri uygulanır.<br/><br/> İlişkili Log Analytics çalışma alanında Hizmet Eşlemesi dışında herhangi bir çözümün kullanılması standart Log Analytics ücretlendirmeye tabi olacaktır.<br/><br/> Azure geçişi projesini silerseniz, çalışma alanı onunla silinmez. Projeyi sildikten sonra Hizmet Eşlemesi ücretsizdir ve her düğüm, Log Analytics çalışma alanının ücretli katmanına göre ücretlendirilir.
 **Aracısını** | Aracı tabanlı bağımlılık görselleştirmesi, çözümlemek istediğiniz her makineye iki aracı yüklenmesini gerektirir.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [bağımlılık Aracısı](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
 **İnternet bağlantısı** | Makineler Internet 'e bağlı değilse, bunlara Log Analytics ağ geçidini yüklemeniz gerekir.
 
@@ -93,7 +94,7 @@ Bu seçenek şu anda önizleme aşamasındadır. [Daha fazla bilgi edinin](how-t
 --- | ---
 **Dağıtım** | Bağımlılık görselleştirmesini dağıtmadan önce, Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesine sahip olmanız gerekir. Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.
 **VM desteği** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
-**Windows VM’leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit)
+**Windows VM’leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)
 **Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
 **Windows hesabı** |  Görselleştirmenin konuk erişimi olan bir kullanıcı hesabı olması gerekir.
 **Linux hesabı** | Görselleştirmenin kök ayrıcalığına sahip bir kullanıcı hesabı olması gerekir.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.

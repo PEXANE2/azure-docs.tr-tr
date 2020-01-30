@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100328"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844641"
 ---
 # <a name="persist-state-in-linux"></a>Linux 'ta durumu kalıcı yap
 
-Event Grid modülünde oluşturulan konular ve abonelikler, varsayılan olarak kapsayıcı dosya sisteminde saklanır. Kalıcı olmadan, modül yeniden dağıtılırsa oluşturulan tüm meta veriler kaybedilir. Şu anda yalnızca meta veriler kalıcıdır. Olaylar bellek içinde depolanır. Event Grid modülü yeniden dağıtılırsa veya yeniden başlatılırsa, teslim edilmemiş tüm olaylar kaybedilir.
+Event Grid modülünde oluşturulan konular ve abonelikler varsayılan olarak kapsayıcı dosya sisteminde saklanır. Kalıcı olmadan, modül yeniden dağıtılırsa oluşturulan tüm meta veriler kaybedilir. Dağıtımlar ve yeniden başlatmalar genelinde verileri korumak için verileri kapsayıcı dosya sisteminin dışında kalıcı hale getirmeniz gerekir.
+
+Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar, daha iyi performans için bellekte depolanır. Olay kalıcılığını da sağlamak için kalıcı olaylar bölümünü izleyin.
 
 Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getirme adımları sağlanmaktadır.
 
@@ -61,7 +63,8 @@ Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getir
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getir
 }
 ```
 
-Alternatif olarak, Docker istemci komutlarını kullanarak bir Docker birimi de oluşturabilirsiniz. 
+Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir ve bu dizini bağlayabilirsiniz.
 
 ## <a name="persistence-via-host-directory-mount"></a>Konak Dizin bağlama aracılığıyla Kalıcılık
 
@@ -138,7 +141,8 @@ Bir Docker birimi yerine, bir ana bilgisayar klasörü bağlama seçeneğiniz de
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ Bir Docker birimi yerine, bir ana bilgisayar klasörü bağlama seçeneğiniz de
 
     >[!IMPORTANT]
     >Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/Metadata**olmalıdır.
+
+
+## <a name="persist-events"></a>Etkinlikleri kalıcı yap
+
+Olay kalıcılığını etkinleştirmek için, önce yukarıdaki bölümleri kullanarak birim bağlama veya ana bilgisayar Dizin bağlama aracılığıyla meta veri kalıcılığını etkinleştirmeniz gerekir.
+
+Kalıcı olaylar hakkında dikkat etmeniz gereken önemli noktalar:
+
+* Kalıcı olaylar, olay başına abonelik temelinde etkinleştirilir ve bir birim veya dizin bağlandıktan sonra kabul edilir.
+* Olay kalıcılığı, oluşturma zamanında bir olay aboneliğinde yapılandırılır ve olay aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını değiştirmek için olay aboneliğini silip yeniden oluşturmanız gerekir.
+* Kalıcı olaylar, bellek işlemlerinden neredeyse her zaman daha yavaştır, ancak hız farkı, sürücünün özelliklerine oldukça bağlıdır. Hız ve güvenilirlik arasındaki zorunluluğunu getirir tüm mesajlaşma sistemlerine sahiptir ancak genellikle büyük ölçekte bir noticible olur.
+
+Olay aboneliği üzerinde olay kalıcılığını etkinleştirmek için `persistencePolicy` `true`olarak ayarlayın:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

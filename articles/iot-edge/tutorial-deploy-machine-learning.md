@@ -9,34 +9,33 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 420db19a5ddcddfe37fa1a922e792fc0c8bc5b66
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5bfbf4a432f720b683ded4c85530135d86b24eba
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912308"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772996"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Öğretici: Azure Machine Learning'i bir IoT Edge modülü olarak dağıtma (önizleme)
 
-Machine Learning modülünü geliştirmek ve Azure IoT Edge çalıştıran bir Linux cihazına dağıtmak için Azure Notebooks kullanın. 
-
+Machine Learning modülünü geliştirmek ve Azure IoT Edge çalıştıran bir Linux cihazına dağıtmak için Azure Notebooks kullanın.
 İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide simülasyon makinesi sıcaklık verilerini temel alarak bir cihazın arızalanacağı zamanı tahmin eden bir Azure Machine Learning modülünü dağıtma adımları açıklanmaktadır. IoT Edge Azure Machine Learning hakkında daha fazla bilgi için bkz. [Azure Machine Learning belgeleri](../machine-learning/how-to-deploy-and-where.md).
+
+>[!NOTE]
+>Azure IoT Edge üzerindeki Azure Machine Learning modülleri genel önizleme sürümündedir.
 
 Bu öğreticide oluşturduğunuz Azure Machine Learning modülü, cihazınızın ürettiği ortam verilerini okur ve iletileri normal veya anormal olarak etiketler.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Bir Azure Machine Learning modülü oluşturma
 > * Azure kapsayıcı kayıt defterine bir modülü kapsayıcısı gönderme
 > * IoT Edge cihazınıza bir Azure Machine Learning modülü dağıtma
 > * Oluşturulan verileri görüntüleme
 
->[!NOTE]
->Azure IoT Edge üzerindeki Azure Machine Learning modülleri genel önizleme sürümündedir.
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -50,21 +49,19 @@ Bulut kaynakları:
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * Azure Machine Learning çalışma alanı. Bir tane oluşturmak için Azure Machine Learning kullanmaya başlamak ve nasıl kullanılacağını öğrenmek için [Azure Portal kullanma](../machine-learning/tutorial-1st-experiment-sdk-setup.md) bölümündeki yönergeleri izleyin.
-   * Çalışma alanı adı, kaynak grubu ve abonelik KIMLIĞI ' ni bir yere getirin. Bu değerler, Azure portal çalışma alanına genel bakış üzerinden kullanılabilir. Bu değerleri öğreticide daha sonra çalışma alanı kaynaklarınıza bir Azure Not defteri bağlamak için kullanacaksınız. 
-
+  * Çalışma alanı adı, kaynak grubu ve abonelik KIMLIĞI ' ni bir yere getirin. Bu değerler, Azure portal çalışma alanına genel bakış üzerinden kullanılabilir. Bu değerleri öğreticide daha sonra çalışma alanı kaynaklarınıza bir Azure Not defteri bağlamak için kullanacaksınız.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning modülünü oluşturun ve dağıtın
 
 Bu bölümde, eğitilen makine öğrenme modeli dosyalarını ve bir Azure Machine Learning kapsayıcısına dönüştürürsünüz. Docker görüntüsü için gerekli tüm bileşenler [Azure IoT Edge için AI Toolkit deposunda](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial) mevcuttur. Kapsayıcıyı oluşturmak ve Azure Container Registry göndermek için bu depoyu Microsoft Azure Notebooks 'e yüklemek için bu adımları izleyin.
 
-
 1. Azure Notebooks projelerinize gidin. [Azure portal](https://portal.azure.com) Azure Machine Learning çalışma alanınızdan veya Azure hesabınızla [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) oturum açarak buradan edinebilirsiniz.
 
 2. **GitHub deposunu karşıya yükle**' yi seçin.
 
-3. Şu GitHub deposu adını sağlayın: `Azure/ai-toolkit-iot-edge`. Projenizin özel kalmasını istiyorsanız **ortak** kutunun işaretini kaldırın. **Al**'ı seçin. 
+3. Şu GitHub deposu adını sağlayın: `Azure/ai-toolkit-iot-edge`. Projenizin özel kalmasını istiyorsanız **ortak** kutunun işaretini kaldırın. **Içeri aktar**' ı seçin.
 
-4. İçeri aktarma işlemi tamamlandıktan sonra, yeni **AI-araç seti-IoT-Edge** projesine gidin ve **IoT Edge anomali algılama öğreticisi** klasörünü açın. 
+4. İçeri aktarma işlemi tamamlandıktan sonra, yeni **AI-araç seti-IoT-Edge** projesine gidin ve **IoT Edge anomali algılama öğreticisi** klasörünü açın.
 
 5. Projenizin çalıştığını doğrulayın. Aksi takdirde, **ücretsiz işlem üzerinde Çalıştır**' ı seçin.
 
@@ -72,7 +69,7 @@ Bu bölümde, eğitilen makine öğrenme modeli dosyalarını ve bir Azure Machi
 
 6. **Aml_config/config.exe JSON** dosyasını açın.
 
-7. Yapılandırma dosyasını, Azure abonelik KIMLIĞINIZ, aboneliğinizdeki bir kaynak grubu ve Azure Machine Learning çalışma alanı adı değerlerini içerecek şekilde düzenleyin. Azure 'daki çalışma alanınızın **genel bakış** bölümünden tüm bu değerleri alabilirsiniz. 
+7. Yapılandırma dosyasını, Azure abonelik KIMLIĞINIZ, aboneliğinizdeki bir kaynak grubu ve Azure Machine Learning çalışma alanı adı değerlerini içerecek şekilde düzenleyin. Azure 'daki çalışma alanınızın **genel bakış** bölümünden tüm bu değerleri alabilirsiniz.
 
 8. Yapılandırma dosyasını kaydedin.
 
@@ -85,31 +82,31 @@ Bu bölümde, eğitilen makine öğrenme modeli dosyalarını ve bir Azure Machi
 12. Not defterindeki hücreleri seçerek ve **Çalıştır** ' a tıklayarak veya `Shift + Enter`' ya basarak, öğeleri çalıştırın.
 
     >[!TIP]
-    >Anomali algılama öğreticisi not defterindeki hücrelerden bazıları, bazı kullanıcıların henüz bir IoT Hub gibi bir veya daha fazla sahip olmadığı kaynaklar oluşturduğundan, isteğe bağlıdır. Mevcut kaynak bilgilerinizi ilk hücreye yerleştirirseniz, Azure yinelenen kaynaklar oluşturmadığından yeni kaynak oluşturan hücreleri çalıştırırsanız hata alırsınız. Bu sorun iyidir; hataları yoksayabilirsiniz veya bu isteğe bağlı bölümleri tamamen atlayabilirsiniz. 
+    >Anomali algılama öğreticisi not defterindeki hücrelerden bazıları, bazı kullanıcıların henüz bir IoT Hub gibi bir veya daha fazla sahip olmadığı kaynaklar oluşturduğundan, isteğe bağlıdır. Mevcut kaynak bilgilerinizi ilk hücreye yerleştirirseniz, Azure yinelenen kaynaklar oluşturmadığından yeni kaynak oluşturan hücreleri çalıştırırsanız hata alırsınız. Bu sorun iyidir; hataları yoksayabilirsiniz veya bu isteğe bağlı bölümleri tamamen atlayabilirsiniz.
 
-Not defterindeki tüm adımları tamamlayarak, bir anomali algılama modeli eğitilmiş ve onu Docker kapsayıcı görüntüsü olarak derlediniz ve bu görüntüyü Azure Container Registry gönderdiniz. Ardından, modeli test edersiniz ve son olarak IoT Edge cihazınıza dağıttınız. 
+Not defterindeki tüm adımları tamamlayarak, bir anomali algılama modeli eğitilmiş ve onu Docker kapsayıcı görüntüsü olarak derlediniz ve bu görüntüyü Azure Container Registry gönderdiniz. Ardından, modeli test edersiniz ve son olarak IoT Edge cihazınıza dağıttınız.
 
 ## <a name="view-container-repository"></a>Kapsayıcı deposunu görüntüle
 
-Kapsayıcı resminizin, makine öğrenimi ortamınızla ilişkili Azure Container Registry 'de başarıyla oluşturulup depolanmadığını denetleyin. Önceki bölümde kullandığınız Not defteri, kapsayıcı görüntüsünü ve kayıt defteri kimlik bilgilerini IoT Edge cihazınıza otomatik olarak sağladı, ancak bilgileri daha sonra bulabilmeniz için nerede depolandığını bilmeniz gerekir. 
+Kapsayıcı resminizin, makine öğrenimi ortamınızla ilişkili Azure Container Registry 'de başarıyla oluşturulup depolanmadığını denetleyin. Önceki bölümde kullandığınız Not defteri, kapsayıcı görüntüsünü ve kayıt defteri kimlik bilgilerini IoT Edge cihazınıza otomatik olarak sağladı, ancak bilgileri daha sonra bulabilmeniz için nerede depolandığını bilmeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com), Machine Learning hizmeti çalışma alanınıza gidin. 
+1. [Azure Portal](https://portal.azure.com), Machine Learning hizmeti çalışma alanınıza gidin.
 
-2. **Genel bakış** bölümü, çalışma alanı ayrıntılarının yanı sıra ilişkili kaynakları listeler. Çalışma alanınızın adı ve ardından rastgele sayılar olması gereken **kayıt defteri** değerini seçin. 
+2. **Genel bakış** bölümü, çalışma alanı ayrıntılarının yanı sıra ilişkili kaynakları listeler. Çalışma alanınızın adı ve ardından rastgele sayılar olması gereken **kayıt defteri** değerini seçin.
 
-3. Kapsayıcı kayıt defterinde **depolar**' ı seçin. Önceki bölümde çalıştırdığınız Not defteri tarafından oluşturulan **tempanoydetection** adlı bir depo görmeniz gerekir. 
+3. Kapsayıcı kayıt defterinde **depolar**' ı seçin. Önceki bölümde çalıştırdığınız Not defteri tarafından oluşturulan **tempanoydetection** adlı bir depo görmeniz gerekir.
 
-4. **Tempanoi algılama**' yı seçin. Deponun bir etiket olduğunu görmeniz gerekir: **1**. 
+4. **Tempanoi algılama**' yı seçin. Deponun bir etiket olduğunu görmeniz gerekir: **1**.
 
-   Artık kayıt defteri adını, depo adını ve etiketini öğrendikmiş olduğunuza göre, kapsayıcının tam görüntü yolunu bilirsiniz. Görüntü yolları **\<registry_name\>. azurecr.io/tempanomalydetection:1**gibi görünür. Bu görüntü yolunu kullanarak bu kapsayıcıyı IoT Edge cihazlarına dağıtabilirsiniz. 
+   Artık kayıt defteri adını, depo adını ve etiketini öğrendikmiş olduğunuza göre, kapsayıcının tam görüntü yolunu bilirsiniz. Görüntü yolları **\<registry_name\>. azurecr.io/tempanomalydetection:1**gibi görünür. Bu kapsayıcıyı IoT Edge cihazlara dağıtmak için görüntü yolunu kullanabilirsiniz.
 
 5. Kapsayıcı kayıt defterinde **erişim tuşları**' nı seçin. **Oturum açma sunucusu** ve **Kullanıcı adı**da dahil olmak üzere bir dizi erişim kimlik bilgisi ve Yönetici Kullanıcı **parolası** görmeniz gerekir.
 
-   Bu kimlik bilgilerini dağıtım bildirimine dahil ederek IoT Edge cihazınızın kayıt defterindeki kapsayıcı görüntülerini çekmesini sağlayabilirsiniz. 
+   Bu kimlik bilgileri, IoT Edge cihazınızı kayıt defterinden çekme kapsayıcı görüntülerine erişim sağlamak için dağıtım bildirimine dahil edilebilir.
 
-Artık Machine Learning kapsayıcı resminin nerede depolandığını bilirsiniz. Sonraki bölümde, IoT Edge cihazınızda modül olarak çalışan kapsayıcıyı görüntüleme adımları gösterilmektedir. 
+Artık Machine Learning kapsayıcı resminin nerede depolandığını bilirsiniz. Sonraki bölümde, IoT Edge cihazınızda modül olarak çalışan kapsayıcıyı görüntüleme adımları gösterilmektedir.
 
-## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
+## <a name="view-the-generated-data"></a>Oluşturulan verileri görüntüleme
 
 Her bir IoT Edge modülü tarafından oluşturulan ve IoT hub'ınıza gönderilen iletileri görüntüleyebilirsiniz.
 
@@ -147,7 +144,7 @@ Aşağıdaki adımlar, IoT hub'ınıza ulaşan cihazdan buluta iletileri izlemek
 
 4. Yeniden seçin **.** .. sonra **, yerleşik olay uç noktasını izlemeyi Başlat '** ı seçin.
 
-5. tempSensor her beş saniyede bir gelen iletileri gözlemleyin. İleti gövdesinde, machinelearningmodule'un true veya false değeri verdiği **anomaly** adlı bir özellik bulunur. Model başarıyla çalıştıysa, **AzureMLResponse** özelliği "OK" değerini içerir.
+5. tempSensor her beş saniyede bir gelen iletileri gözlemleyin. İleti gövdesi, machinelearningmodule 'un doğru veya yanlış bir değer ile sağladığı **anomali**adlı bir özellik içerir. Model başarıyla çalıştıysa, **AzureMLResponse** özelliği "OK" değerini içerir.
 
    ![İleti gövdesinde yanıt Azure Machine Learning](./media/tutorial-deploy-machine-learning/ml-output.png)
 

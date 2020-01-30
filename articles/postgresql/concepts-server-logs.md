@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721328"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844947"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 PostgreSQL için Azure veritabanı, Postgres 'nin standart günlüklerine yapılandırma ve erişme olanağı sağlar. Günlükler, yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performans performansını düzeltmek için kullanılabilir. Yapılandırabileceğiniz ve erişebileceğiniz günlüğe kaydetme bilgileri hatalar, sorgu bilgileri, oto vakum kayıtları, bağlantılar ve kontrol noktaları içerir. (İşlem günlüklerine erişim kullanılamaz).
@@ -69,7 +69,7 @@ Tanılama günlüklerini PowerShell, CLı veya REST API kullanarak etkinleştirm
 
 ### <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için şema, [günlük depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesinde açıklanmaktadır. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+Günlüklere erişmenin yolu, seçtiğiniz uç noktaya bağlıdır. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
 
 Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
 
@@ -78,7 +78,7 @@ Kullanmaya başlamak için kullanabileceğiniz sorgular aşağıda verilmiştir.
 Son gün içinde belirli bir sunucu için tüm Postgres günlüklerini arayın
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 

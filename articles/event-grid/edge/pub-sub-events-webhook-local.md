@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098632"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844571"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: yayımlama, olaylara yerel olarak abone olma
 
@@ -23,7 +23,7 @@ Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abo
 > [!NOTE]
 > Azure Event Grid konuları ve abonelikleri hakkında bilgi edinmek için bkz. [Event Grid kavramlar](concepts.md).
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -45,9 +45,9 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
 1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümde bulunan adımlarla devam edersiniz.
 
-### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
+### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modül eklemek**, **yolları belirtin**, ve **gözden geçirin, dağıtım**.
 
 ### <a name="add-modules"></a>Modül Ekle
 
@@ -59,11 +59,13 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
    * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Kapsayıcı oluşturma seçenekleri**:
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -127,7 +129,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
 ### <a name="submit-the-deployment-request"></a>Dağıtım isteğini gönder
 
 1. İnceleme Bölümü, önceki bölümde yaptığınız seçimlere göre oluşturulan JSON dağıtım bildirimini gösterir. Her iki modülü de gördüistediğinizi onaylayın: **eventgridmodule** ve **abone** JSON içinde listelenmiştir. 
-1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin. Dağıtımı gönderdikten sonra **cihaz** sayfasına dönersiniz.
+1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**. Dağıtımı gönderdikten sonra **cihaz** sayfasına dönersiniz.
 1. **Modüller bölümünde**, hem **eventgrid** hem de **abone** modüllerinin listelendiğini doğrulayın. Ve, **dağıtım sırasında belirtilen** ve **cihaz sütunlarının rapor** sütunları **Evet**olarak ayarlandığını doğrulayın.
 
     Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
@@ -178,6 +180,8 @@ Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir
 ## <a name="create-an-event-subscription"></a>Olay aboneliği oluşturma
 
 Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, ilgilendiğiniz konu başlığı için bir Event Grid aboneliği oluşturmanız gerekir.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Aşağıdaki içerikle Subscription. JSON oluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
 
@@ -307,4 +311,5 @@ Bu öğreticide, bir olay Kılavuzu konusu, abonelik ve yayımlanan olaylar olu�
 - İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin
 - Bu [öğreticiyi](pub-sub-events-webhook-cloud.md) izleyerek etkinlikleri Bulutta Azure işlevlerine iletin
 - [IoT Edge BLOB depolama olaylarına tepki verme](react-blob-storage-events-locally.md)
+- [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)
 

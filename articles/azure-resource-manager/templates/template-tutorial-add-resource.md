@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472964"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765580"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza kaynak ekleme
 
@@ -28,7 +28,7 @@ Mevcut şablona bir depolama hesabı tanımı eklemek için, vurgulanan JSON ' a
 
 **{Sağlamasını-Unique-Name}** değerini benzersiz bir depolama hesabı adıyla değiştirin. Depolama hesabı adının Azure’da benzersiz olması gerekir. Ad yalnızca küçük harf veya rakam içermelidir. Bu, 24 karakterden uzun olamaz. Ön ek olarak **store1** kullanma ve sonra adınızın baş harflerini ve bugünün tarihini ekleme gibi bir adlandırma modelini deneyebilirsiniz. Örneğin, kullandığınız ad **store1abc09092019**gibi görünebilir.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 Depolama hesabı için benzersiz bir ad tahmin etmek kolay değildir ve büyük dağıtımları otomatikleştirmede iyi çalışmaz. Bu öğretici serisinde daha sonra, benzersiz bir ad oluşturmayı kolaylaştıran şablon özelliklerini kullanacaksınız.
 

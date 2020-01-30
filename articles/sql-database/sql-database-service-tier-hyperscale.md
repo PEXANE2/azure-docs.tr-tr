@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759508"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845896"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -72,7 +72,7 @@ Hiper ölçek hizmeti katmanı yalnızca [Vcore modelinde](sql-database-service-
 
 - **Depolama alanı**:
 
-  Hiper ölçekli bir veritabanını yapılandırırken en büyük veri boyutunu belirtmeniz gerekmez. Hiper ölçeklendirme katmanında, gerçek ayırmaya dayalı olarak veritabanınızın depolama alanı için ücret ödersiniz. Depolama, 40 10 GB ve 100 TB 40 arasında dinamik olarak ayarlanan artışlarla otomatik olarak ayrılır. Bir hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur ve 40 GB boyutuna ulaşana kadar 10 dakikada bir artmaya başlar.
+  Hiper ölçekli bir veritabanını yapılandırırken en büyük veri boyutunu belirtmeniz gerekmez. Hiper ölçeklendirme katmanında, gerçek ayırmaya dayalı olarak veritabanınızın depolama alanı için ücret ödersiniz. Depolama alanı, 10 GB 'lik 10 GB 'lik artışlarla 40 GB ile 100 TB arasında otomatik olarak ayrılır. Gerekirse, birden çok veri dosyası aynı anda büyüyebilir. Bir hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur ve 40 GB boyutuna ulaşana kadar 10 dakikada bir artmaya başlar.
 
 Hiperscale fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -117,8 +117,8 @@ Ek salt okuma işlem düğümlerini hızlı bir şekilde artırma/azaltma özell
 Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. `CREATE DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) bakın.
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 Bu, 4 çekirdek içeren 5. nesil donanımında bir hiper ölçek veritabanı oluşturur.
@@ -130,8 +130,8 @@ Mevcut Azure SQL veritabanlarınızı [Azure Portal](https://portal.azure.com), 
 Aşağıdaki T-SQL komutu bir veritabanını hiper ölçek hizmeti katmanına taşıdır. `ALTER DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir.
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
@@ -160,7 +160,7 @@ Bir Azure SQL veritabanı hiper ölçek veritabanını, bir olağanüstü durum 
 2. Azure SQL veritabanlarını otomatik yedeklemelerden geri yükleme sayfasındaki [coğrafi geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) konusundaki yönergeleri izleyin.
 
 > [!NOTE]
-> Kaynak ve hedef ayrı bölgelerde olduğundan, veritabanı coğrafi olarak son derece hızlı bir şekilde tamamlanan, coğrafi olmayan geri yüklemeler halinde kaynak veritabanıyla birlikte anlık görüntü depolamayı paylaşamaz.  Hiper ölçekli bir veritabanının coğrafi geri yüklemesi söz konusu olduğunda, hedef coğrafi olarak çoğaltılan depolamanın eşleştirilmiş bölgesinde olsa bile, veri boyutu bir işlem olur.  Bu, coğrafi geri yükleme yapmanın, geri yüklenmekte olan veritabanının boyutuyla orantılı bir zaman alabileceği anlamına gelir.  Hedef eşleştirilmiş bölgedeyse, kopya bir veri merkezinde yer alacak ve bu, internet üzerinden uzun mesafe kopyasından önemli ölçüde daha hızlı olacaktır, ancak yine de tüm bitleri kopyalayacaktır.
+> Kaynak ve hedef ayrı bölgelerde olduğundan, veritabanı coğrafi olarak son derece hızlı bir şekilde tamamlanan, coğrafi olmayan geri yüklemeler halinde kaynak veritabanıyla birlikte anlık görüntü depolamayı paylaşamaz. Hiper ölçekli bir veritabanının coğrafi geri yüklemesi söz konusu olduğunda, hedef coğrafi olarak çoğaltılan depolamanın eşleştirilmiş bölgesinde olsa bile, veri boyutu bir işlem olur.  Bu, coğrafi geri yükleme yapmanın, geri yüklenmekte olan veritabanının boyutuyla orantılı bir zaman alabileceği anlamına gelir.  Hedef eşleştirilmiş bölgedeyse, kopya bir bölge içinde olacaktır, bu da bir çapraz bölge kopyasından önemli ölçüde daha hızlıdır, ancak veri boyutu bir işlem olmaya devam eder.
 
 ## <a name=regions></a>Kullanılabilir bölgeler
 

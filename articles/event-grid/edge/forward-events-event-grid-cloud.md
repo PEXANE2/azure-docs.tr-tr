@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100647"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844726"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Öğretici: olayları Event Grid buluta Iletme
 
@@ -23,9 +23,9 @@ Bu makalede, Edge olaylarını Azure bulutundaki Event Grid iletmek için gereke
 * Bulutta Edge olaylarına tepki verin.
 * Olayları bulutta Event Grid iletmek ve Azure Event Hubs ya da Azure depolama kuyruklarını kullanarak olayları bulutta işlemeden önce arabelleğe almak için kullanın.
 
-Bu öğreticiyi tamamlayabilmeniz için [Edge](concepts.md) ve [Azure](../concepts.md)'da Event Grid kavramlarının anlaşılmasına ihtiyacınız vardır.
+ Bu öğreticiyi tamamlayabilmeniz için [Edge](concepts.md) ve [Azure](../concepts.md)'da Event Grid kavramlarının anlaşılmasına ihtiyacınız vardır. Ek hedef türleri için bkz. [olay işleyicileri](event-handlers.md). 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -83,6 +83,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Kenarda Event Grid abonelik oluşturma
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Aşağıdaki içeriğe sahip subscription3. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
@@ -201,3 +202,4 @@ Bu öğreticide, kenarda bir olay yayımladınız ve Azure bulutu 'nda Event Gri
 * IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
 * Bu [öğreticiyi](forward-events-iothub.md) Izleyerek olayları ıothub 'e iletin
 * Bu [öğreticiyi](pub-sub-events-webhook-cloud.md) izleyerek etkinlikleri bulutta Web kancasına iletin
+* [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)

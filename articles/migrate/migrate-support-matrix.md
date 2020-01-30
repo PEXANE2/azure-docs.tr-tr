@@ -1,31 +1,19 @@
 ---
 title: Azure geçişi destek matrisi
 description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669145"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846552"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
 Makineleri değerlendirmek ve Microsoft Azure buluta geçirmek için [Azure geçişi hizmetini](migrate-overview.md) kullanabilirsiniz. Bu makalede, Azure geçişi senaryoları ve dağıtımları için genel destek ayarları ve sınırlamaları özetlenmektedir.
-
-
-## <a name="azure-migrate-versions"></a>Azure geçişi sürümleri
-
-Azure geçişi hizmetinin iki sürümü vardır:
-
-- **Geçerli sürüm**: bu sürümü kullanarak yeni Azure geçişi projeleri oluşturabilir, şirket içi değerlendirir bulabilir ve değerlendirmeleri ve geçişleri yönetebilirsiniz. [Daha fazla bilgi edinin](whats-new.md#release-version-july-2019).
-- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanan müşteri için (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Önceki sürümde, yeni Azure geçişi projesi oluşturamaz veya yeni bulmalar gerçekleştiremezsiniz.
 
 ## <a name="supported-assessmentmigration-scenarios"></a>Desteklenen değerlendirme/geçiş senaryoları
 
@@ -71,6 +59,16 @@ Hyper-V Sanal Makineleri | Tek bir projede 35.000 adede kadar Hyper-V VM 'yi de�
 
 Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
 
+## <a name="azure-permissions"></a>Azure izinleri
+
+Azure geçişi 'nin Azure ile çalışması için, makineleri değerlendirmeye ve geçirmeye başlamadan önce bu izinlere ihtiyacınız vardır.
+
+**Görev** | **İzinler** | **Ayrıntılar**
+--- | --- | ---
+Azure geçişi projesi oluşturma | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-create-project)için ayarlayın.
+Azure geçişi gereci kaydetme | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile VMware VM 'lerini değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir [Azure geçiş](migrate-appliance.md) gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/> Kayıt sırasında Azure geçişi, gereci benzersiz bir şekilde tanımlayan ve bu uygulamaları oluşturmak için gereken izinlere sahip iki Azure Active Directory (Azure AD) uygulaması oluşturur.<br/><br/> -İlk uygulama Azure geçişi hizmet uç noktaları ile iletişim kurar.<br/><br/> -İkinci uygulama, Azure AD uygulama bilgileri ve gereç yapılandırma ayarlarını depolamak için kayıt sırasında oluşturulan bir Azure Key Vault erişir. | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)için ayarlayın.
+VMware aracısız geçişi için bir Anahtar Kasası oluşturma | Azure geçişi, VMware VM 'lerini aracısız Azure geçişi sunucu geçişi ile geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek üzere bir Key Vault oluşturur. Kasayı oluşturmak için Azure geçişi projesinin bulunduğu kaynak grubunda izinleri (sahip veya katkıda bulunan ve Kullanıcı erişimi Yöneticisi) ayarlamanız gerekir. | İzinleri [ayarlayın](tutorial-prepare-vmware.md#assign-role-assignment-permissions) .
+
 ## <a name="supported-geographies"></a>Desteklenen coğrafi lıklar
 
 Bir dizi coğrafi bölgedeki Azure geçişi projesi oluşturabilirsiniz. Yalnızca bu coğrafi bölgelerde proje oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
@@ -104,6 +102,14 @@ VMware VM 'Leri için Azure geçişi sunucu değerlendirmesi ve sunucu geçiş d
 
 Hyper-V VM 'Leri için Azure geçişi sunucu değerlendirmesi ve sunucu geçiş desteği matrisini [gözden geçirin](migrate-support-matrix-hyper-v.md) .
 
+
+
+## <a name="azure-migrate-versions"></a>Azure geçişi sürümleri
+
+Azure geçişi hizmetinin iki sürümü vardır:
+
+- **Geçerli sürüm**: bu sürümü kullanarak yeni Azure geçişi projeleri oluşturabilir, şirket içi değerlendirir bulabilir ve değerlendirmeleri ve geçişleri yönetebilirsiniz. [Daha fazla bilgi edinin](whats-new.md#release-version-july-2019).
+- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullanan müşteri için (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Önceki sürümde, yeni Azure geçişi projesi oluşturamaz veya yeni bulmalar gerçekleştiremezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

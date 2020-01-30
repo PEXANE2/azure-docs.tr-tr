@@ -3,12 +3,13 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885475"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846019"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -27,7 +28,7 @@ Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığı
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC ile farkları nelerdir?
 
-Azure Ilkesi ve rol tabanlı erişim denetimi (RBAC) arasında bazı önemli farklılıklar vardır. RBAC farklı kapsamlardaki kullanıcı eylemlerine odaklanır. Bir kaynak grubu için katkıda bulunan rolüne kaynak grubunda değişiklik yapmanıza olanak sağlayan eklenmiş olabilir. Azure Ilkesi, dağıtım sırasında ve zaten var olan kaynaklar için kaynak özelliklerine odaklanır. Azure İlkesi kaynakların türü veya konumu gibi özellikleri denetler. RBAC 'den farklı olarak Azure Ilkesi, varsayılan bir izin verme ve açık reddetme sistemidir.
+Azure Ilkesi ve rol tabanlı erişim denetimi (RBAC) arasında bazı önemli farklılıklar vardır. RBAC farklı kapsamlardaki kullanıcı eylemlerine odaklanır. Bir kaynak grubu için katkıda bulunan rolüne kaynak grubunda değişiklik yapmanıza olanak sağlayan eklenmiş olabilir. Azure Ilkesi, dağıtım sırasında ve zaten var olan kaynaklar için kaynak özelliklerine odaklanır. Azure Ilkesi, kaynakların türleri veya konumları gibi özellikleri denetler. RBAC 'den farklı olarak Azure Ilkesi, varsayılan bir izin verme ve açık reddetme sistemidir.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure İlkesi'ndeki RBAC İzinleri
 
@@ -44,7 +45,7 @@ Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-base
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, ilkelerin uygulandığı koşullar vardır. Ve bu Koşullar karşılanıyorsa, gerçekleşir, tanımlı bir etkisi.
 
-Azure İlkesi'nde, varsayılan olarak kullanılabilen çeşitli yerleşik ilkeler sunuyoruz. Örnek:
+Azure İlkesi'nde, varsayılan olarak kullanılabilen çeşitli yerleşik ilkeler sunuyoruz. Örneğin:
 
 - **İzin verilen depolama hesabı SKU'ları**: dağıtılan bir depolama hesabı SKU boyutları bir dizi içinde olup olmadığını belirler. Etkisini tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesapları engellemektir.
 - **İzin verilen kaynak türüyle**: dağıtabileceğiniz kaynak türlerini tanımlar. Bu tanımlı listenin bir parçası olmayan tüm kaynakları reddetmektir kendi etkisidir.
@@ -62,7 +63,7 @@ Bu ilke tanımları (yerleşik ve özel tanımları) uygulamak için onları ata
 
 ## <a name="policy-assignment"></a>İlke ataması
 
-İlke ataması, belirli bir kapsamda gerçekleşmesi için atanmış bir ilke tanımıdır. Bu kapsamın dahilinde [yönetim gruplarından](../management-groups/overview.md) kaynak gruplarına kadar birçok grup bulunabilir. *Kapsam*, ilke tanımının atandığı tüm kaynak gruplarını, abonelikleri veya yönetim gruplarını ifade eder. İlke atamaları, tüm alt kaynaklar tarafından devralınır. Bu tasarım, kaynak grubundaki kaynaklar için bir kaynak grubuna uygulanan bir ilke de geçerli anlamına gelir. Ancak, dilerseniz bir alt kapsamı ilke atamasından dışlayabilirsiniz.
+İlke ataması, belirli bir kapsamda gerçekleşmesi için atanmış bir ilke tanımıdır. Bu kapsam bir [Yönetim grubundan](../management-groups/overview.md) tek bir kaynağa kadar değişebilir. *Kapsam* terimi, ilke tanımının atandığı tüm kaynakları, kaynak grupları, abonelikleri veya Yönetim gruplarını ifade eder. İlke atamaları, tüm alt kaynaklar tarafından devralınır. Bu tasarım, kaynak grubundaki kaynaklar için bir kaynak grubuna uygulanan bir ilke de geçerli anlamına gelir. Ancak, dilerseniz bir alt kapsamı ilke atamasından dışlayabilirsiniz.
 
 Örneğin abonelik kapsamında, ağ kaynaklarının oluşturulmasını önleyen bir ilke atayabilirsiniz. Bu abonelikte ağ alt yapısı için hedeflenen bir kaynak grubu hariç. Ağ kaynaklarını oluşturma konusunda güvendiğiniz kullanıcılara bu ağ kaynak grubuna erişim verin.
 
@@ -93,7 +94,7 @@ Bu girişimin altında sahip olabileceğiniz ilke tanımlarından bazıları şu
 
 ## <a name="initiative-assignment"></a>Girişim ataması
 
-İlke ataması gibi, girişim ataması da belirli bir kapsama atanmış olan girişim tanımıdır. Girişim atamaları, her kapsam için birkaç girişim tanımları yapma ihtiyacını azaltır. Bu kapsamın dahilinde de yönetim gruplarından kaynak gruplarına kadar birçok grup bulunabilir.
+İlke ataması gibi, girişim ataması da belirli bir kapsama atanmış olan girişim tanımıdır. Girişim atamaları, her kapsam için birkaç girişim tanımları yapma ihtiyacını azaltır. Bu kapsam Ayrıca bir yönetim grubundan ayrı bir kaynağa da değişebilir.
 
 Her girişim farklı kapsamlara atanabilir. Her ikisi için de bir girişim atanabilir **subscriptionA** ve **subscriptionB**.
 
@@ -136,7 +137,7 @@ Bir girişim tanımındaki değer seçenekleri oluştururken, listenin bir parç
 - Girişim ataması değerlendirildiğinde, girişim dahilindeki tüm ilkeleri ayrıca değerlendirilir.
   Ayrı ayrı bir ilke değerlendirmeniz gerekiyorsa, içinde bir girişim içermeyecek şekilde daha iyidir.
 
-## <a name="video-overview"></a>Genel bakış videosu
+## <a name="video-overview"></a>Videoya genel bakış
 
 Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kaydedilmiştir. Slayt veya video indirme için ziyaret [Azure İlkesi aracılığıyla Azure ortamınızı yöneten](https://channel9.msdn.com/events/Build/2018/THR2030) Channel 9.
 

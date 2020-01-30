@@ -4,12 +4,12 @@ description: Azure Işlevleri 'ni kullanarak sunucusuz Python kodunu oluşturun 
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 01c586c9077fd8cf244d7e26fe55252cc455c6fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710946"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845499"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Hızlı başlangıç: Azure 'da HTTP tarafından tetiklenen bir Python işlevi oluşturma
 
@@ -207,7 +207,7 @@ Hazırsanız, işlevler ana bilgisayarını durdurmak için **Ctrl**+**C** ' yi 
 
 Bu öğeleri oluşturmak için Azure CLı komutlarını kullanırsınız. Her komut, tamamlandıktan sonra JSON çıktısı sağlar.
 
-1. Şimdiye kadar yapmadıysanız, [az Login](/cli/azure/group#az-login) komutuyla Azure 'da oturum açın:
+1. Şimdiye kadar yapmadıysanız, [az Login](/cli/azure/reference-index#az-login) komutuyla Azure 'da oturum açın:
 
     ```azurecli
     az login

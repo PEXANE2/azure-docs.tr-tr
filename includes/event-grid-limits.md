@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887854"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845983"
 ---
 Aşağıdaki sınırlar, olay etki alanları *değil* Azure Event Grid sistem konuları ve özel konular için geçerlidir.
 
@@ -23,7 +23,7 @@ Aşağıdaki sınırlar, olay etki alanları *değil* Azure Event Grid sistem ko
 | Konu başına olay abonelikleri | 500 |
 | Özel konu (giriş) için yayımlama oranı | Konu başına saniyede 5.000 olay |
 | İstekleri Yayımla | saniyede 250 |
-| Olay boyutu | Genel kullanılabilirlik (GA) için 64 KB desteği. 1 MB desteği şu anda önizleme aşamasındadır. |
+| Olay boyutu | 1 MB (birden çok 64 KB olay olarak ücretlendirilir) |
 
 Aşağıdaki sınırlar yalnızca olay etki alanları için geçerlidir.
 

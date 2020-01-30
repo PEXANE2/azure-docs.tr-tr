@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167898"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845911"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Azure 'da ilk PowerShell işlevinizi oluşturma
 
@@ -67,36 +67,7 @@ Visual Studio Code'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev 
 
 Visual Studio Code, yeni bir çalışma alanında PowerShell işlevi uygulama projesi oluşturur. Bu proje, projedeki tüm işleve uygulanan [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](functions-run-local.md#local-settings-file) yapılandırma dosyalarını içerir. Bu [PowerShell projesi](functions-reference-powershell.md#folder-structure) , Azure 'da çalışan bir işlev uygulamasıyla aynıdır.
 
-## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
-
-Azure Functions Core Tools, bir Azure Işlevleri projesinde yerel olarak çalıştırmanıza ve hata ayıklamanıza olanak sağlamak için Visual Studio Code tümleştirilir.  
-
-1. İşlevinizde hata ayıklamak için, hata ayıklayıcıyı iliştirmek istediğiniz işlev kodundaki [`Wait-Debugger`] cmdlet 'ine bir çağrı ekleyin ve ardından F5 tuşuna basarak işlev uygulaması projesini başlatın ve hata ayıklayıcıyı ekleyin. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir.
-
-1. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
-
-    ![Azure yerel çıktısı](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. `?name=<yourname>` sorgu dizesini bu URL 'ye ekleyin ve ardından `Invoke-RestMethod` kullanarak isteği yürütün:
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    GET isteğini bir tarayıcıdan da yürütebilirsiniz.
-
-    Sorgu parametresi veya gövdede bir `name` parametresi geçirmeden HttpTrigger uç noktasını çağırdığınızda, işlev bir [HttpStatusCode]:: BadRequest hatası döndürür. Run. ps1 içinde kodu gözden geçirdikten sonra, bu hatanın tasarım tarafından oluştuğunu görürsünüz.
-
-1. Hata ayıklamayı durdurmak için Shift + F5 tuşuna basın.
-
-İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi Azure'da yayımlamanın zamanı gelmiştir.
-
-> [!NOTE]
-> İşlevlerinizi Azure 'da yayımlamadan önce `Wait-Debugger` yapılan çağrıları kaldırmayı unutmayın. 
->
-> Azure 'da bir işlev uygulaması oluşturmak yalnızca işlev uygulamanızın adını ister. Diğer değerler sizin için tanımlanır.
-> `azureFunctions.advancedCreation` diğer tüm değerler için sorulması için `true` olarak ayarlayın.
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
@@ -135,4 +106,4 @@ Basit HTTP ile tetiklenen bir işlevle PowerShell işlevi uygulaması oluşturma
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
 [Visual Studio Code için Azure İşlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-[' Wait-Debugger ']: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6
+[`Wait-Debugger`]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

@@ -1,11 +1,9 @@
 ---
-title: Azure Ağ İzleyicisi sonraki atlama giriş | Microsoft Docs
-description: Bu makalede, sonraki atlama özelliği Ağ İzleyicisi'ne genel bakış sağlar.
+title: Azure ağ Izleyicisi 'nde sonraki atlamaya giriş | Microsoft Docs
+description: Bu makalede, ağ Izleyicisi sonraki atlama özelliğine bir genel bakış sunulmaktadır.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: febf7bca-e0b7-41d5-838f-a5a40ebc5aac
 ms.service: network-watcher
 ms.devlang: na
@@ -13,21 +11,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: eb613455ccd6b6630d0d75b5a8458f812bb36846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730216"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844067"
 ---
-# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Sanal makine yönlendirme sorunları tanılamak için sonraki atlama kullanın
+# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Sanal makine yönlendirme sorunlarını tanılamak için sonraki atlamayı kullanın
 
-Trafiği bir sanal makineden (VM) bir ağ arabirimi (NIC) ile ilişkili geçerli rotalar dayalı bir hedefe gönderilir. Sonraki atlama IP adresi için bir paket ve sonraki atlama türü belirli bir sanal makine ve NIC alır Sonraki atlama bilerek istenen hedefe yönlendirilen trafik veya trafiği hiçbir yerde gönderilen olup olmadığını belirlemenize yardımcı olur. Burada bir şirket içi konum veya bir sanal gereç trafik yönlendirilir, yolların hatalı bir yapılandırma bağlantı sorunlarına yol açabilir. Sonraki atlama, ayrıca sonraki atlama ile ilişkili yol tablosuna döndürür. Bu yol, yol, kullanıcı tanımlı bir yol tanımlanırsa, döndürülür. Aksi halde, sonraki atlama döndürür **sistem yolu**.
+Bir sanal makineden (VM) gelen trafik, bir ağ arabirimi (NIC) ile ilişkili etkin yollara göre bir hedefe gönderilir. Sonraki atlama, belirli bir VM ve NIC 'den bir paketin sonraki atlama türünü ve IP adresini alır. Sonraki atlamanın bilinmesi, trafiğin hedeflenen hedefe yönlendirilip yönlendirilmediğini veya trafiğin ne yerde gönderilip gönderilmediğini belirlemenize yardımcı olur. Trafiğin şirket içi bir konuma veya sanal bir gereci yönlendirildiği, bağlantı sorunlarına yol açabilecek yolların yanlış yapılandırılması. Sonraki atlama Ayrıca sonraki atlama ile ilişkili yol tablosunu da döndürür. Yol, Kullanıcı tanımlı bir yol olarak tanımlanmışsa, bu yol döndürülür. Aksi halde, sonraki atlama **sistem yolu**döndürür.
 
-![sonraki atlama genel bakış](./media/network-watcher-next-hop-overview/figure1.png)
+![sonraki atlamaya genel bakış](./media/network-watcher-next-hop-overview/figure1.png)
 
-Sonraki atlama özelliği tarafından döndürülen sonraki atlamalarla aşağıdaki gibidir:
+Sonraki atlama özelliği tarafından döndürülebilecek sonraki atlamalar aşağıdaki gibidir:
 
 * Internet
 * VirtualAppliance
@@ -36,10 +34,10 @@ Sonraki atlama özelliği tarafından döndürülen sonraki atlamalarla aşağı
 * VirtualNetworkPeering
 * VirtualNetworkServiceEndpoint 
 * MicrosoftEdge
-* None
+* Hiçbiri
 
-Her bir sonraki atlama türü hakkında daha fazla bilgi için bkz: [yönlendirmeye genel bakış](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Sonraki atlama türleri hakkında daha fazla bilgi edinmek için bkz. [yönlendirmeye genel bakış](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM ağ yönlendirme sorunlarını tanılamak için sonraki atlama kullanmayı öğrenmek için ağ yönlendirme sorunları kullanarak VM tanılama Bkz [Azure portalında](diagnose-vm-network-routing-problem.md), [PowerShell](diagnose-vm-network-routing-problem-powershell.md), veya [Azure CLI](diagnose-vm-network-routing-problem-cli.md).
+VM ağı yönlendirme sorunlarını tanılamak için sonraki atlamayı nasıl kullanacağınızı öğrenmek için bkz. [Azure Portal](diagnose-vm-network-routing-problem.md), [POWERSHELL](diagnose-vm-network-routing-problem-powershell.md)veya [Azure CLI](diagnose-vm-network-routing-problem-cli.md)kullanarak VM ağı yönlendirme sorunlarını tanılama.

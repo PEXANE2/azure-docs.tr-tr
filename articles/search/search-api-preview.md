@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 940ada83aeabf4bf8746ad5f90592e0917f7b403
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922471"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844454"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Bilişsel Arama Service REST API-sürüm 2019-05-06-Önizleme
 
@@ -30,10 +30,6 @@ Bu makalede, arama hizmeti REST API 'ın `api-version=2019-05-06-Preview` sürü
 + [Cosmos DB Dizin Oluşturucu](search-howto-index-cosmosdb.md) MongoDB API 'si (Önizleme), Gremlin API (Önizleme) ve Cassandra API (Önizleme) destekler.
 
 + [Azure Data Lake Storage 2. Dizin Oluşturucu (Önizleme)](search-howto-index-azure-data-lake-storage.md) , Data Lake Storage 2. içerik ve meta verileri dizinleyebilir.
-
-+ [Belge ayıklama (Önizleme)](cognitive-search-skill-document-extraction.md) , dizin oluşturma sırasında kullanılan bilişsel bir beceriye sahiptir ve bir dosyanın içeriğini bir beceri içinden ayıklamanızı sağlar. Daha önce belge çözme yalnızca beceri yürütmeden önce oluşmuştur. Bu beceriye ek olarak, bu işlemi beceri yürütme içinde de gerçekleştirebilirsiniz.
-
-+ [Metin çevirisi (Önizleme)](cognitive-search-skill-text-translation.md) , dizinleme sırasında metin değerlendiren ve her kayıt için belirtilen hedef dile çevrilen metni döndüren bilişsel bir yetenküldür.
 
 + [Bilgi deposu](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Fiziksel veri yapısı Azure Blob depolama ve Azure Tablo depolamada bulunur ve ekli bilişsel beceri sahip bir Dizin Oluşturucu çalıştırdığınızda oluşturulur ve doldurulur. Bilgi deposunun kendisi tanımı bir beceri tanımı içinde belirtilir. Bilgi deposu tanımı içinde, verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını ve birden çok görünüm olup olmadığını belirten *projeksiyon* öğeleri aracılığıyla verilerinizin fiziksel yapılarını kontrol edersiniz.
 

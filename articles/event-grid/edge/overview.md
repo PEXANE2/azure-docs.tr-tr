@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991949"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844674"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Azure IoT Edge Azure Event Grid nedir?
-IoT Edge Event Grid, tüm yayın/alt ve olay odaklı senaryolar için Azure Event Grid güç ve esneklik sunar. Aynı cihazda, diğer uç cihazlarda veya buluttaki hizmetlerde modüller olup olmadığı konusunda konular oluşturun, olayları yayımlayın ve birden çok hedefe abone olun.
+IoT Edge Event Grid, Azure Event Grid gücünü ve esnekliğini kenara taşır. Aynı cihazda, diğer uç cihazlarda veya buluttaki hizmetlerde modüller olup olmadığı konusunda konular oluşturun, olayları yayımlayın ve birden çok hedefe abone olun.
 
-Bulutta olduğu gibi IoT Edge modülündeki Event Grid, olayların bir şekilde yönlendirilmesini, filtrelenmesini ve güvenilir teslimini işler. Yalnızca ilgili olayların gelişmiş dize, sayısal ve Boole filtreleri kullanılarak farklı olay işleyicilerine gönderilmesini sağlamak için olayları filtreleyin. Yeniden deneme mantığı, etkinliğin yayımlama sırasında mevcut olmasa bile hedef modüle, uç cihaza veya bulut hizmetine ulaşmasını sağlar. IoT Edge Event Grid güçlü bir depolama ve iletme mekanizması olarak kullanmanıza olanak tanır.
+Bulutta olduğu gibi IoT Edge modülündeki Event Grid, olayların bir şekilde yönlendirilmesini, filtrelenmesini ve güvenilir teslimini işler. Yalnızca ilgili olayların gelişmiş dize, sayısal ve Boole filtreleri kullanılarak farklı olay işleyicilerine gönderilmesini sağlamak için olayları filtreleyin. Yeniden deneme mantığı, yayımlama sırasında mevcut olmasa bile olayın hedef hedefe ulaşmasını sağlar. IoT Edge Event Grid güçlü bir depolama ve iletme mekanizması olarak kullanmanıza olanak tanır.
 
-IoT Edge Event Grid hem CloudEvents v 1.0 hem de özel olay şemalarını destekler. Ayrıca, Azure ve üçüncü taraflarla kolayca birlikte çalışabilirlik için bulutta Event Grid aynı yayımlama ve abone olma semantiğini de destekler.
+IoT Edge Event Grid hem CloudEvents v 1.0 hem de özel olay şemalarını destekler. Ayrıca, daha kolay birlikte çalışabilirlik için bulutta Event Grid aynı yayın/alt semantiğini de destekler.
 
 Bu makalede IoT Edge Azure Event Grid bir genel bakış sunulmaktadır. Bu modülü Edge üzerinde kullanmaya yönelik adım adım yönergeler için bkz. [Yayımlama, olaylara yerel olarak abone olma](pub-sub-events-webhook-local.md). 
 
@@ -29,7 +29,7 @@ Bu görüntüde IoT Edge Event Grid kullanabileceğiniz bazı yollar gösterilme
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>IoT Edge Event Grid ne zaman kullanılır?
 
-IoT Edge Event Grid, kenar ve bulut arasında olay odaklı mimariler oluşturmak için Tekdüzen, kullanımı kolay ve güvenilir bir olay modeli sağlamak üzere oluşturulmuştur.
+IoT Edge Event Grid, kenar ve bulut arasında kullanımı kolay, güvenilir bir olay modeli sağlar.
 
 IoT Edge Event Grid, Azure bulut hizmetinde bir simetrik çalışma zamanı yüzeyi alanı ile oluşturulmuştur, bu sayede ihtiyacınız olan her yerde aynı olayları ve API çağrılarını kullanabilirsiniz. Bulutta yayın/alt, uçta veya iki IoT Edge Event Grid arasında, artık tek bir go çözümü olabilir.
 
@@ -55,8 +55,12 @@ IoT Edge Event Grid, olayları istediğiniz yere göndermek için oluşturulmuş
 
 * IoT Hub, işlevler ve özel modüller dahil diğer modüller
 * Diğer Edge cihazları
-* Bulutta barındırılan ve Azure Event Grid ve Azure Işlevleri dahil hizmetler
-* Web kancaları
+* WebHooks
+* Azure Event Grid bulut hizmeti
+* Event Hubs
+* Hizmet Veri Yolu Sıraları
+* Hizmet Veri Yolu Konuları
+* Depolama kuyrukları
 
 ## <a name="supported-environments"></a>Desteklenen ortamlar
 Şu anda, Windows 64-bit, Linux 64-bit ve ARM 32 bit ortamları desteklenir.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: e0c58c5c3fef41a472fe791f66292c9280531493
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/28/2020
+ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514689"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844964"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -37,7 +37,7 @@ Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek 
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan olarak 10 saniyedir.
+- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
 - **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
 - **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
 - **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
@@ -51,9 +51,6 @@ Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [y
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 MySQL için Azure veritabanı, Azure Izleyici tanılama günlükleriyle tümleşiktir. MySQL sunucunuzda yavaş sorgu günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure depolama 'ya yayılmasını seçebilirsiniz. Tanılama günlüklerinin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [tanılama günlükleri belgelerinin](../azure-monitor/platform/platform-logs-overview.md)nasıl yapılır bölümüne bakın.
-
-> [!IMPORTANT]
-> Sunucu günlükleri için bu tanılama özelliği yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş [fiyatlandırma katmanlarında](concepts-pricing-tiers.md)kullanılabilir.
 
 Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
 
@@ -82,7 +79,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `insert_id_s` | KIMLIĞI Ekle |
 | `sql_text_s` | Tam sorgu |
 | `server_id_s` | Sunucunun KIMLIĞI |
-| `thread_id_s` | İş Parçacığı Kimliği |
+| `thread_id_s` | İş parçacığı KIMLIĞI |
 | `\_ResourceId` | Kaynak URI 'SI |
 
 > [!Note]

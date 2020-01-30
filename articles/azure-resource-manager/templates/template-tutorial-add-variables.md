@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472859"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765498"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza değişkenler ekleme
 
@@ -26,7 +26,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 Benzersiz bir ad sağlamanız gerektiğinden, depolama hesabı adı için parametre kullanımı zor. Bu serideki önceki öğreticileri tamamladıysanız, büyük olasılıkla benzersiz bir ad tahmin etmeniz çok yorsunuzdur. Depolama hesabı için benzersiz bir ad oluşturan bir değişken ekleyerek bu sorunu çözebilirsiniz.
 
@@ -34,7 +34,7 @@ Benzersiz bir ad sağlamanız gerektiğinden, depolama hesabı adı için parame
 
 Aşağıdaki örnek, şablonunuza benzersiz bir depolama hesabı adı oluşturan bir değişken ekleme değişikliklerini vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 **Unisorgtoraygename**adlı bir değişken içerdiğine dikkat edin. Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
 

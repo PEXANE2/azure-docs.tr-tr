@@ -9,27 +9,27 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7b723b4a5ef35b17514181b622f68d00c1f3ecee
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 71b22bf9bf040abcdf513a4f8baa916930c8972e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560951"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772215"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Node. js IoT Edge modülü geliştirme ve dağıtma
 
-Node. js kodu geliştirmek ve Azure IoT Edge çalıştıran bir Linux cihazına dağıtmak için Visual Studio Code kullanın. 
+Node. js kodu geliştirmek ve Azure IoT Edge çalıştıran bir Linux cihazına dağıtmak için Visual Studio Code kullanın.
 
-İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Hızlı başlangıçlarda oluşturduğunuz sanal Azure IoT Edge cihazını kullanacaksınız. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:    
+İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Hızlı başlangıçlarda oluşturduğunuz sanal Azure IoT Edge cihazını kullanacaksınız. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Visual Studio Code kullanarak IoT Edge Node.js modülü oluşturma
-> * Visual Studio Code ve Docker kullanarak bir Docker görüntüsü oluşturma ve bunu kayıt defterinizde yayımlama 
+> * Visual Studio Code ve Docker kullanarak bir docker görüntüsü oluşturma ve kayıt defterinize yayımlama
 > * Modüle IoT Edge cihazınıza dağıtma
 > * Oluşturulan verileri görüntüleme
 
-
-Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından oluşturulan sıcaklık verilerini filtreler. İletileri yalnızca sıcaklık belirtilen bir eşiğin üzerindeyse yukarı yönde gönderir. Bu tür bir analiz, buluta iletilen ve bulutta depolanan veri miktarını azaltmak için yararlıdır. 
+Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından oluşturulan sıcaklık verilerini filtreler. İletileri yalnızca sıcaklık belirtilen bir eşiğin üzerindeyse yukarı yönde gönderir. Edge’deki bu tür bir analiz, bulutta iletilen ve depolanan veri miktarını azaltmak için yararlıdır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,16 +37,16 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 Bu öğreticide, **Visual Studio Code**kullanarak **Node. js** ' de bir modülün nasıl geliştirilmesi ve bir **Linux cihazına**nasıl dağıtılacağı gösterilmektedir. IoT Edge, Windows cihazları için Node. js modüllerini desteklemez.
 
-Node. js modüllerini geliştirmeye ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın: 
+Node. js modüllerini geliştirmeye ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın:
 
-| Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
+| Node.js | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Linux AMD64 üzerinde Node. js modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 'de Node. js modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir: 
+Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * [Azure IoT Edge çalıştıran bir Linux cihazı](quickstart-linux.md)
@@ -54,61 +54,61 @@ Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için gelişt
 * [Azure IoT araçlarıyla](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)yapılandırılmış [Visual Studio Code](https://code.visualstudio.com/) .
 * Linux kapsayıcılarını çalıştırmak için yapılandırılmış [Docker CE](https://docs.docker.com/install/) .
 
-Node. js ' de bir IoT Edge modülü geliştirmek için, aşağıdaki ek önkoşulları geliştirme makinenize yüklersiniz: 
+Node. js ' de bir IoT Edge modülü geliştirmek için, aşağıdaki ek önkoşulları geliştirme makinenize yüklersiniz:
 
 * [Node.js ve npm](https://nodejs.org). npm paketi, Node.js ile birlikte dağıtılır. Başka bir deyişle Node.js'yi indirdiğinizde npm de bilgisayarınıza otomatik olarak yüklenir.
 
 ## <a name="create-a-module-project"></a>Modül projesi oluşturma
+
 Aşağıdaki adımlarda, Visual Studio Code ve Azure IoT araçlarını kullanarak IoT Edge Node. js modülünün nasıl oluşturulacağı gösterilmektedir.
 
 ### <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
-Temel olarak kullanabileceğiniz bir Node.js çözüm şablonu oluşturmak için **npm** kullanın. 
+Temel olarak kullanabileceğiniz bir Node.js çözüm şablonu oluşturmak için **npm** kullanın.
 
-1. Visual Studio Code'da, VS Code ile tümleşik terminali açmak için **Görünüm** > **Tümleşik Terminal**'i seçin.
+1. Visual Studio Code’da, VS Code tümleşik terminalini açmak için **Görünüm** > **Tümleşik Terminal**’i seçin.
 
-2. Tümleşik terminalde **yeoman** ve Node.js Azure IoT Edge modülü oluşturucuyu yüklemek için aşağıdaki komutu girin: 
+2. Tümleşik terminalde **yeoman** ve Node.js Azure IoT Edge modülü oluşturucuyu yüklemek için aşağıdaki komutu girin:
 
     ```cmd/sh
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. VS Code komut paletini açmak için **View (Görünüm)**  > **Command Palette (Komut Paleti)** öğesini seçin. 
+3. VS Code komut paletini açmak için **View (Görünüm)**  > **Command Palette (Komut Paleti)** öğesini seçin.
 
-3. Komut paletinde **Azure: Sign in** komutunu yazıp çalıştırdıktan sonra yönergeleri izleyerek Azure hesabınızda oturum açın. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
+4. Komut paletinde **Azure: Sign in** komutunu yazıp çalıştırdıktan sonra yönergeleri izleyerek Azure hesabınızda oturum açın. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
 
-4. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu yazıp çalıştırın. Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
+5. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu yazıp çalıştırın. Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
 
    | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
-   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
-   | Modül şablonunu seçin | **Node. js modülünü**seçin. |
+   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan değerleri kabul **EdgeSolution**. |
+   | Modül şablonunu seçin | Seçin **Node.js modülünü**. |
    | Modül adı sağlayın | Modülünüze **NodeModule** adını verin. |
    | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu, \<kayıt defteri adı\>. azurecr.io/nodemodule gibi görünüyor. |
- 
-   ![Docker görüntü deposunu sağlama](./media/tutorial-node-module/repository.png)
 
+   ![Docker görüntü deposunu sağlama](./media/tutorial-node-module/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>Kayıt defteri kimlik bilgilerinizi ekleme
 
-Ortam dosyası, kapsayıcı deponuzun kimlik bilgilerini depolar ve bu bilgileri IoT Edge çalışma zamanı ile paylaşır. Çalışma zamanı, özel görüntülerinizi IoT Edge cihazına çekmek için bu kimlik bilgilerine ihtiyaç duyar. 
+Ortam dosyası, kapsayıcı deponuzun kimlik bilgilerini depolar ve bu bilgileri IoT Edge çalışma zamanı ile paylaşır. Çalışma zamanı, özel görüntülerinizi IoT Edge cihazına çekmek için bu kimlik bilgilerine ihtiyaç duyar.
 
-1. VS Code gezgininde **.env** dosyasını açın. 
-2. Alanları Azure kapsayıcı kayıt defterinizden kopyaladığınız **kullanıcı adı** ve **parola** değerleriyle güncelleştirin. 
-3. Bu dosyayı kaydedin. 
+1. VS Code gezgininde **.env** dosyasını açın.
+2. Alanları Azure kapsayıcı kayıt defterinizden kopyaladığınız **kullanıcı adı** ve **parola** değerleriyle güncelleştirin.
+3. Bu dosyayı kaydedin.
 
 ### <a name="select-your-target-architecture"></a>Hedef mimarinizi seçin
 
-Şu anda Visual Studio Code, Linux AMD64 ve Linux ARM32v7 cihazları için Node. js modülleri geliştirebilir. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır. 
+Şu anda Visual Studio Code, Linux AMD64 ve Linux ARM32v7 cihazları için Node. js modülleri geliştirebilir. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır.
 
-1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla**veya pencerenin altındaki yan çubukta kısayol simgesini seçin. 
+1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla**veya pencerenin altındaki yan çubukta kısayol simgesini seçin.
 
 2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64**'yi tutacağız.
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
-Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı verileri alan ve IoT Hub yönlendiren örnek kod içerir. Bu bölümde NodeModule modülünün verileri göndermeden önce analiz etmesi için gerekli kodu ekleyin. 
+Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı verileri alan ve IoT Hub yönlendiren örnek kod içerir. Bu bölümde NodeModule modülünün verileri göndermeden önce analiz etmesi için gerekli kodu ekleyin.
 
 1. VS Code gezgininde **modules** > **NodeModule** > **app.js** girişini açın.
 
@@ -119,7 +119,7 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
     ```
 
 3. `PipeMessage` işlevinin tamamını `FilterMessage` işleviyle değiştirin.
-    
+
     ```javascript
     // This function filters out messages that report temperatures below the temperature threshold.
     // It also adds the MessageType property to the message with the value set to Alert.
@@ -167,7 +167,7 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 
 7. VS Code gezgininde IoT Edge çözüm çalışma alanınızdaki **deployment.template.json** dosyasını açın.
 
-8. Dağıtım bildirimine NodeModule modül ikizini ekleyin. Aşağıdaki JSON içeriğini `moduleContent` bölümünün en altına, `$edgeHub` modül ikizinin arkasına ekleyin: 
+8. Dağıtım bildirimine NodeModule modül ikizini ekleyin. Aşağıdaki JSON içeriğini `moduleContent` bölümünün en altına, `$edgeHub` modül ikizinin arkasına ekleyin:
 
    ```json
      "NodeModule": {
@@ -177,10 +177,9 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
      }
    ```
 
-   ![Dağıtım şablonuna modül ikizi Ekle](./media/tutorial-node-module/module-twin.png)
+   ![Modül ikizi için dağıtım şablonu Ekle](./media/tutorial-node-module/module-twin.png)
 
 9. Deployment. Template. json dosyasını kaydedin.
-
 
 ## <a name="build-and-push-your-module"></a>Modülünüzü derleyin ve gönderin
 
@@ -189,14 +188,14 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 1. **Görünüm** > **Terminal**'i seçerek VS Code tümleşik terminalini açın.
 
 1. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
-     
+
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
    `--password-stdin`kullanımını öneren bir güvenlik uyarısı alabilirsiniz. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-2. VS Code gezgininde **deployment.template.json** dosyasına sağ tıklayıp **Build and Push IoT Edge solution** (IoT Edge Çözümü Oluştur ve Gönder) öğesini seçin.
+1. VS Code gezgininde **deployment.template.json** dosyasına sağ tıklayıp **Build and Push IoT Edge solution** (IoT Edge Çözümü Oluştur ve Gönder) öğesini seçin.
 
    Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkinci olarak, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için `docker build` çalıştırır. Sonra, görüntü deposunu kapsayıcı Kayıt defterinize göndermek için `docker push` çalıştırır.
 
@@ -214,7 +213,7 @@ IoT Edge cihazınızın çalışır ve çalışıyor olduğundan emin olun.
 
 4. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub**birlikte çalışan yeni **nodemodule** görmeniz gerekir.
 
-## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
+## <a name="view-the-generated-data"></a>Oluşturulan verileri görüntüleme
 
 Dağıtım bildirimini IoT Edge cihazınıza uyguladıktan sonra cihazdaki IoT Edge çalışma zamanı yeni dağıtım bilgilerini toplar ve yürütmeye başlar. Cihazda çalışan ve dağıtım bildiriminde bulunmayan modüller durdurulur. Cihazda eksik olan modüller başlatılır.
 
@@ -222,40 +221,40 @@ IoT Edge cihazınızın durumunu görüntülemek için Visual Studio Code gezgin
 
 1. Visual Studio Code Gezgini ' nde, IoT Edge cihazınızın adına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
 
-2. IoT Hub gelen iletileri görüntüleyin. IoT Edge cihazın yeni dağıtımını alması ve tüm modülleri başlatması gerektiğinden, iletilerin gelmesi biraz zaman alabilir. Ardından, NodeModule kodunda yaptığımız değişiklikler, makine sıcaklığının İleti göndermeden önce 25 dereceye ulaşmasını bekleyin. Ayrıca, bu sıcaklık eşiğine ulaşan iletilere ileti türü **uyarısını** ekler. 
+2. IoT Hub gelen iletileri görüntüleyin. İletilerin gelmesi biraz zaman alabilir. IoT Edge cihazın yeni dağıtımını alması ve tüm modülleri başlatması vardır. Ardından, NodeModule kodunda yaptığımız değişiklikler, makine sıcaklığının İleti göndermeden önce 25 dereceye ulaşmasını bekleyin. Ayrıca, bu sıcaklık eşiğine ulaşan iletilere ileti türü **uyarısını** ekler.
 
 ## <a name="edit-the-module-twin"></a>İkizi modülünü düzenleme
 
 Sıcaklık eşiğini 25 derece ayarlamak için dağıtım bildiriminde ikizi NodeModule modülünü kullandık. Modül kodunu güncelleştirmek zorunda kalmadan işlevselliği değiştirmek için ikizi modülünü kullanabilirsiniz.
 
-1. Visual Studio Code, çalışan modülleri görmek için IoT Edge cihazınızın altındaki ayrıntıları genişletin. 
+1. Visual Studio Code, çalışan modülleri görmek için IoT Edge cihazınızın altındaki ayrıntıları genişletin.
 
-2. **Nodemodule** öğesine sağ tıklayın ve **Modül ikizi Düzenle**' yi seçin. 
+2. **Nodemodule** öğesine sağ tıklayın ve **Modül ikizi Düzenle**' yi seçin.
 
-3. İstenen özelliklerde **TemperatureThreshold** bulun. Değerini, en son bildirilen sıcakdan daha yüksek olan yeni bir sıcaklık 5 derece ile 10 derece arasında değiştirin. 
+3. İstenen özelliklerde **TemperatureThreshold** bulun. Değerini, en son bildirilen sıcakdan daha yüksek olan yeni bir sıcaklık 5 derece ile 10 derece arasında değiştirin.
 
 4. Module ikizi dosyasını kaydedin.
 
-5. Modül ikizi Düzenle bölmesinde herhangi bir yere sağ tıklayın ve **Modül Ikizi Güncelleştir**' i seçin. 
+5. Modül ikizi Düzenle bölmesinde herhangi bir yere sağ tıklayın ve **Modül Ikizi Güncelleştir**' i seçin.
 
-6. Gelen cihazdan buluta iletileri izleyin. Yeni sıcaklık eşiğine ulaşılana kadar iletilerin durulabileceğini görmeniz gerekir. 
+6. Gelen cihazdan buluta iletileri izleyin. Yeni sıcaklık eşiğine ulaşılana kadar iletilerin durulabileceğini görmeniz gerekir.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki önerilen makaleye geçmeyi planlıyorsanız, oluşturduğunuz kaynaklarla yapılandırmaları tutabilir ve yeniden kullanabilirsiniz. Aynı IoT Edge cihazını test cihazı olarak kullanmaya devam edebilirsiniz. 
+Bir sonraki önerilen makaleye geçmeyi planlıyorsanız, oluşturduğunuz kaynaklarla yapılandırmaları tutabilir ve yeniden kullanabilirsiniz. Aynı IoT Edge cihazını test cihazı olarak kullanmaya devam edebilirsiniz.
 
-Geçmeyecekseniz ücret kesilmesini önlemek için yerel yapılandırmalarınızı ve bu makalede oluşturulan Azure kaynaklarını silebilirsiniz. 
+Geçmeyecekseniz ücret kesilmesini önlemek için yerel yapılandırmalarınızı ve bu makalede oluşturulan Azure kaynaklarını silebilirsiniz.
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Sanal sıcaklık modülü de dahil olmak üzere IoT Edge modülleriyle ilgili örnekler için, bkz. [IoT Edge modül örnekleri](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Sanal sıcaklık modülü de dahil olmak üzere IoT Edge modülleriyle ilgili örnekler için, bkz. [IoT Edge modül örnekleri](https://github.com/Azure/iotedge/tree/master/edge-modules).
 
 Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [İşlevler](tutorial-deploy-function.md)
+> [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
-> [özel görüntü işleme hizmeti](tutorial-deploy-custom-vision.md)
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)

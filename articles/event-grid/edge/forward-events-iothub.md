@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098670"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844709"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Öğretici: olayları ıothub 'e Ilet
 
@@ -28,7 +28,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kavramları anlamanız gere
 - [Event Grid kavramlar](concepts.md)
 - [IoT Edge hub 'ı](../../iot-edge/module-composition.md) 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -81,6 +81,8 @@ Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir
 ## <a name="create-event-subscription"></a>Olay aboneliği oluştur
 
 Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, ilgilenilen bir konu başlığında bir olay Kılavuzu aboneliği oluşturulması gerekir.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Aşağıdaki içeriğe sahip subscription4. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
@@ -212,3 +214,4 @@ Bu öğreticide, bir olay Kılavuzu konusu, Edge hub aboneliği ve yayımlanan o
 * [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını ayarlama
 * İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin
 * Bu [öğreticiyi](forward-events-event-grid-cloud.md) izleyerek olayları buluta Azure Event Grid iletin
+* [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)

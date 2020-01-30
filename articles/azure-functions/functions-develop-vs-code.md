@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547430"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845418"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -65,11 +65,13 @@ Işlevler uzantısı, ilk işlevinizle birlikte bir işlev uygulaması projesi o
 
 1. İşlev uygulaması projeniz için klasörü seçin ve ardından **işlev projeniz için bir dil seçin**.
 
+1. Temel araçları henüz yüklemediyseniz, yüklemek için temel araçların **bir sürümünü seçmeniz** istenir. Sürüm 2. x veya sonraki bir sürümünü seçin. 
+
 1. **Http tetikleyici** işlev şablonunu seçin veya artık işlev olmadan bir proje oluşturmak için **Atla** seçeneğini belirleyebilirsiniz. Projenize daha sonra dilediğiniz zaman [bir işlev ekleyebilirsiniz](#add-a-function-to-your-project) .
 
     ![HTTP tetikleyicisi şablonunu seçin](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. İşlev adı için **Httptrigger** yazın ve ENTER ' ı seçin ve ardından **işlev** yetkilendirmesi ' ni seçin. Bu yetkilendirme düzeyi, işlev uç noktasını çağırdığınızda bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) sağlamanızı gerektirir.
+1. İşlev adı olarak **Httpexample** yazın ve ENTER ' ı seçin ve ardından **işlev** yetkilendirmesi ' ni seçin. Bu yetkilendirme düzeyi, işlev uç noktasını çağırdığınızda bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) sağlamanızı gerektirir.
 
     ![Işlev yetkilendirmesi seçin](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ Daha fazla bilgi edinmek için [kuyruk depolama çıkışı bağlama](functions-
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>Azure’da Yayımlama
 
@@ -404,11 +408,11 @@ Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim k
 | **Azure Functions Core Tools yüklemeyi veya güncelleştirmeyi** | İşlevleri yerel olarak çalıştırmak için kullanılan [Azure Functions Core Tools]yüklenir veya güncelleştirir. |
 | **Neden**  | Bağlı bir git deposundan proje dosyalarını Azure 'daki belirli bir dağıtıma yeniden dağıtmanıza olanak tanır. Visual Studio Code yerel güncelleştirmeleri yeniden yayımlamak için [projenizi yeniden yayımlayın](#republish-project-files). |
 | **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut yerel. Settings. JSON dosyanızdaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
-| **Yeniden başlat** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
+| **Uygulamasını** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
 | **AzureWebJobsStorage ayarla**| `AzureWebJobsStorage` uygulama ayarının değerini ayarlar. Bu ayar, Azure Işlevleri için gereklidir. Azure 'da bir işlev uygulaması oluşturulduğunda ayarlanır. |
 | **Start** | Azure 'da durdurulmuş bir işlev uygulaması başlatır. |
 | **Akış günlüklerini başlatma** | Azure 'da işlev uygulaması için akış günlüklerini başlatır. Günlük bilgilerini neredeyse gerçek zamanlı olarak görmeniz gerekiyorsa Azure 'da uzaktan sorun giderme sırasında akış günlüklerini kullanın. Daha fazla bilgi için bkz. [akış günlükleri](#streaming-logs). |
-| **Stop** | Azure 'da çalışan bir işlev uygulamasını sonlandırır. |
+| **Durdurulması** | Azure 'da çalışan bir işlev uygulamasını sonlandırır. |
 | **Akış günlüklerini durdur** | Azure 'da işlev uygulaması için akış günlüklerini sonlandırır. |
 | **Yuva ayarı olarak değiştirme** | Etkinleştirildiğinde, belirli bir dağıtım yuvası için bir uygulama ayarının devam ettiğinden emin olur. |
 | **Azure Functions Core Tools kaldır** | Uzantısının gerektirdiği Azure Functions Core Tools kaldırır. |

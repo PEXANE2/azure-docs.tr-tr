@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660622"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845385"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -136,7 +136,7 @@ Günlük dizinine yazmak için yerel depolama kotasını tüketmiş olursunuz.�
 * Günlük dosyalarını günlük dizininden el ile kaldırın.
 * Yerel kaynaklar için kota sınırını artırın.
 
-Daha fazla bilgi için, aşağıdaki belgelere bakın:
+Daha fazla bilgi için aşağıdaki belgelere bakın:
 * [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS günlükleri, bulut hizmeti 'nde yazmayı durdurur](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
@@ -174,11 +174,11 @@ Daha fazla bilgi için bkz. [Yeni: yapılandırılabilir boşta zaman aşımı A
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Nasıl yaparım? statik bir IP adresini bulut hizmetim ile ilişkilendirsin mi?
 Statik bir IP adresi ayarlamak için ayrılmış bir IP oluşturmanız gerekir. Bu ayrılmış IP, yeni bir bulut hizmeti veya var olan bir dağıtım ile ilişkilendirilebilir. Ayrıntılar için aşağıdaki belgelere bakın:
-* [Ayrılmış IP adresi oluşturma](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Mevcut bir bulut hizmetinin IP adresini ayır](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Ayrılmış IP 'yi yeni bir bulut hizmeti ile ilişkilendir](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Ayrılmış bir IP 'yi çalışan bir dağıtım ile ilişkilendir](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Ayrılmış IP adresi oluşturma](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
+* [Mevcut bir bulut hizmetinin IP adresini ayır](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Ayrılmış IP 'yi yeni bir bulut hizmeti ile ilişkilendir](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Ayrılmış bir IP 'yi çalışan bir dağıtım ile ilişkilendir](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
+* [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure temel IP/KIMLIKLERININ ve DDOS 'nin sağladığı özellikler ve yetenekler nelerdir?
 Azure, tehditlere karşı savunmak için veri merkezi fiziksel sunucularındaki IP 'leri/KIMLIKLERI vardır. Ayrıca, müşteriler web uygulaması güvenlik duvarları, ağ güvenlik duvarları, kötü amaçlı yazılım, yetkisiz giriş algılama, önleme sistemleri (KIMLIKLER/IP 'ler) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini dağıtabilir. Daha fazla bilgi için bkz. [verilerinizi ve varlıklarınızı koruma ve genel güvenlik standartları ile uyumlu](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
@@ -219,7 +219,7 @@ Cloud Services, Azure Resource Manager tabanlı bir hizmet olmadığı için rol
 
 Bkz. [Azure 'daki farklı rolleri anlayın](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Uzak masaüstü
+## <a name="remote-desktop"></a>Uzak Masaüstü
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Microsoft tarafından bulut hizmeti örneklerine izin verilmeden Microsoft iç mühendisleri uzak masaüstü olabilir mi?
 Microsoft, sahip veya kendi designee 'den, yazılı izin (e-posta veya başka yazılı iletişim) olmadan bulut hizmetinize iç mühendislere izin vermeyecek katı bir işlem izler.

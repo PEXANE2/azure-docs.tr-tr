@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514315"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846218"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -99,6 +99,6 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
 * [Pekiştirmeye dayalı Learning nedir?](concepts-reinforcement-learning.md)
 * [Sıralama isteğine yönelik özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
 * [Reward isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
-* [Hızlı başlangıçlar]()
-* [Öğretici]()
+* [Hızlı başlangıçlar](sdk-learning-loop.md)
+* [Öğretici](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)
