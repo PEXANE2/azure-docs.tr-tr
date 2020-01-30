@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822651"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842673"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma
 
-Etkin coğrafi çoğaltma, aynı veya farklı veri merkezinde (bölge) bir SQL veritabanı sunucusunda tek tek veritabanlarının okunabilir ikincil veritabanlarını oluşturmanıza olanak sağlayan Azure SQL veritabanı özelliğidir.
+Etkin coğrafi çoğaltma, aynı veya farklı veri merkezinde (bölge) bir SQL veritabanı sunucusunda tek tek veritabanlarının okunabilir ikincil veritabanlarını oluşturmanıza olanak sağlayan bir Azure SQL veritabanı özelliğidir.
 
 > [!NOTE]
 > Etkin coğrafi çoğaltma, yönetilen örnek tarafından desteklenmiyor. Yönetilen örneklerin coğrafi yük devretmesi için [otomatik yük devretme grupları](sql-database-auto-failover-group.md)kullanın.
@@ -124,6 +124,79 @@ Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması ger
 
 SQL veritabanı işlem boyutları hakkında daha fazla bilgi için bkz. [SQL veritabanı hizmet katmanları](sql-database-purchase-models.md)nelerdir.
 
+## <a name="cross-subscription-geo-replication"></a>Çapraz abonelik coğrafi çoğaltma
+
+Farklı aboneliklerde (aynı kiracı altında olsun) iki veritabanı arasında etkin Coğrafi çoğaltmayı ayarlamak için, bu bölümde açıklanan özel yordamı izlemeniz gerekir.  Yordam, SQL komutlarına dayalıdır ve şunları gerektirir: 
+
+- Her iki sunucuda da ayrıcalıklı bir oturum oluşturma
+- IP adresini her iki sunucuda da değişikliği yapan istemcinin izin verilenler listesine ekleme (SQL Server Management Studio çalıştıran konağın IP adresi gibi). 
+
+Değişiklikleri gerçekleştiren istemcinin birincil sunucuya ağ erişimi olması gerekir. İstemcinin aynı IP adresi ikincil sunucuda izin verilenler listesine eklenmelidir, ancak ikincil sunucuya ağ bağlantısı kesinlikle gerekli değildir. 
+
+### <a name="on-the-master-of-the-primary-server"></a>Birincil sunucunun ana sayfasında
+
+1. IP adresini, değişiklikleri gerçekleştiren istemcinin izin verilenler listesine ekleyin (daha fazla bilgi için bkz. [güvenlik duvarı yapılandırma](sql-database-firewall-configure.md)). 
+1. Etkin coğrafi çoğaltma kurulumu için ayrılmış bir oturum açma oluşturun (ve kimlik bilgilerini gerektiği şekilde ayarlayın):
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. Karşılık gelen bir kullanıcı oluşturun ve bunu DBManager rolüne atayın: 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. Bu sorguyu kullanarak yeni oturum açma SID 'sine göz atın: 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>Birincil sunucudaki kaynak veritabanında
+
+1. Aynı oturum açma için bir kullanıcı oluşturun:
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. Kullanıcıyı db_owner rolüne ekleyin:
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>İkincil sunucunun ana sayfasında 
+
+1. Değişiklikleri gerçekleştiren istemcinin izin verilenler listesine IP adresini ekleyin. Birincil sunucunun tam IP adresi olmalıdır. 
+1. Aynı Kullanıcı adı parolasını ve SID 'yi kullanarak birincil sunucuda aynı oturum açma bilgilerini oluşturun: 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. Karşılık gelen bir kullanıcı oluşturun ve bunu DBManager rolüne atayın:
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>Birincil sunucunun ana sayfasında
+
+1. Yeni oturum açma bilgilerini kullanarak birincil sunucunun ana sunucusunda oturum açın. 
+1. İkincil sunucuda kaynak veritabanının ikincil bir çoğaltmasını oluşturun (veritabanı adını ve ServerName 'yi gerektiği şekilde ayarlayın):
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+İlk kurulumdan sonra, oluşturulan kullanıcılar, oturumlar ve güvenlik duvarı kuralları kaldırılabilir. 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Kimlik bilgilerini ve güvenlik duvarı kurallarını eşitlenmiş tutma
 
 Coğrafi olarak çoğaltılan veritabanları için [veritabanı DÜZEYINDE IP güvenlik duvarı kuralları](sql-database-firewall-configure.md) kullanmanızı öneririz. böylece, tüm ikincil veritabanlarının birincil Ile aynı IP güvenlik duvarı kurallarına sahip olduğundan emin olmak için bu kuralların veritabanıyla çoğaltılabilmesini sağlayabilirsiniz. Bu yaklaşım, müşterilerin hem birincil hem de ikincil veritabanlarını barındıran sunucularda güvenlik duvarı kurallarını el ile yapılandırma ve bakımını yapma gereksinimini ortadan kaldırır. Benzer şekilde, veri erişimi için [Kapsanan Veritabanı kullanıcılarının](sql-database-manage-logins.md) kullanılması, hem birincil hem de ikincil veritabanlarının, yük devretme sırasında her zaman aynı kullanıcı kimlik bilgilerine sahip olmasını sağlar, oturum açma işlemleri ve parolalarla uyuşmazlıklar nedeniyle kesintiler olmaz. [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)eklenmesi, müşteriler hem birincil hem de ikincil veritabanlarına Kullanıcı erişimini yönetebilir ve veritabanlarında kimlik bilgilerini yönetme ihtiyacını tamamen ortadan kaldırır.
@@ -174,7 +247,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |SQL veritabanı ve belirtilen ikincil veritabanı arasında bir veri çoğaltmasını sonlandırmak için sunucuda IKINCILI kaldır 'ı kullanın. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Azure SQL veritabanı sunucusundaki her bir veritabanı için varolan tüm çoğaltma bağlantılarıyla ilgili bilgileri döndürür. |
 | [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Belirli bir SQL veritabanının çoğaltma bağlantısı ile ilgili son çoğaltma zamanını, son çoğaltma gecikmesini ve diğer bilgileri alır. |
-| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |uygulamanın tüm kaydedilmiş işlemler etkin ikincil veritabanı tarafından çoğaltılıncaya ve onaylanana kadar bekleyip beklememesine neden olur. |
 |  | |
 
@@ -198,7 +271,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: tek ve havuza alınmış veritabanlarının yük devretmesini yönetme
 
-| API | Açıklama |
+| eklentisi | Açıklama |
 | --- | --- |
 | [Veritabanı oluştur veya güncelleştir (createMode = restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Birincil veya ikincil bir veritabanını oluşturur, güncelleştirir veya geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Oluşturma işlemi sırasında durumu döndürür. |

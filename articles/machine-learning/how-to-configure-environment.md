@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156888"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842929"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için
 Azure Machine Learning [işlem örneği (Önizleme)](concept-compute-instance.md) , bir Jupyter Not defteri sunucusu, JupyterLab ve tamamen HAZıRLANMıŞ bir ml ortamı ile veri bilimcileri sağlayan, güvenli, bulut tabanlı bir Azure iş istasyonudur.
 
 > [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.
 
 Bir işlem örneği için yüklenecek veya yapılandırılacak bir şey yok.  Azure Machine Learning çalışma alanınızın içinden dilediğiniz zaman oluşturun. Yalnızca bir ad girin ve Azure VM türünü belirtin. Şu öğreticiyle şimdi deneyin [: Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
@@ -300,7 +300,7 @@ Azure Databricks Azure Machine Learning ile nasıl kullanılır:
 | Python sürümü |Her| 3 |
 | Çalışanlarınız |Her| 2 veya üzeri |
 | Çalışan düğümü VM türleri <br>(en fazla eşzamanlı yineleme sayısını belirler) |Otomatik ML<br>yalnızca| Bellek için iyileştirilmiş VM tercih edilen |
-| Otomatik Ölçeklendirmeyi Etkinleştirme |Otomatik ML<br>yalnızca| Uncheck |
+| Otomatik Ölçeklendirmeyi Etkinleştirme |Otomatik ML<br>yalnızca| Kutunun |
 
 Devam etmeden önce küme çalışmaya kadar bekleyin.
 

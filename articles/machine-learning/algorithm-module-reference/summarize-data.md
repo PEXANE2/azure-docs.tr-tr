@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546495"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841276"
 ---
 # <a name="summarize-data"></a>Verileri Özetleme
 
@@ -46,7 +46,7 @@ Modül her bir sütunun önemli puanlarını hesaplar ve giriş olarak girilen h
 
 Modülden rapor aşağıdaki istatistikleri içerebilir. 
 
-|Sütun adı|Açıklama|
+|sütun adı|Açıklama|
 |------|------|  
 |**Özellik**|Sütunun adı|
 |**Biriktirme**|Tüm satırların sayısı|
@@ -59,7 +59,7 @@ Modülden rapor aşağıdaki istatistikleri içerebilir.
 |**1. DÖRTTEBİRLİK**|İlk dörttebir değer|
 |**ORTANCA**|Ortanca sütun değeri|
 |**3. DÖRTTEBİRLİK**|Üçüncü dörttebir değer|
-|**Mode**|Sütun değerlerinin modu|
+|**Modundaysa**|Sütun değerlerinin modu|
 |**Aralık**|Maksimum ve minimum değerler arasındaki değer sayısını temsil eden tamsayı|
 |**Örnek varyans**|Sütun varyansı; bkz. nota|
 |**Örnek standart sapması**|Sütun için standart sapma; bkz. nota|
@@ -70,6 +70,20 @@ Modülden rapor aşağıdaki istatistikleri içerebilir.
 |**P5**|5% yüzdebirlik|
 |**P95**|%95 yüzdebirlik|
 |**P 99,5**|% 99,5 yüzdebirlik |
+
+## <a name="technical-notes"></a>Teknik notlar
+
+- Sayısal olmayan sütunlar için yalnızca Count, Unique Value Count ve Missing değer Count değerleri hesaplanır. Diğer İstatistikler için null değeri döndürülür.
+
+- Boole değerleri içeren sütunlar şu kurallar kullanılarak işlenir:
+
+    - Min hesaplanırken, mantıksal bir ve uygulanır.
+    
+    - Max hesaplanırken, bir mantıksal OR uygulandı
+    
+    - İşlem aralığı hesaplanırken, modül ilk olarak sütundaki benzersiz değer sayısının 2 ' ye eşit olup olmadığını denetler.
+    
+    - Kayan nokta hesaplamaları gerektiren herhangi bir istatistiği hesaplarken, true değeri 1,0 olarak değerlendirilir ve false değerleri 0,0 olarak değerlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

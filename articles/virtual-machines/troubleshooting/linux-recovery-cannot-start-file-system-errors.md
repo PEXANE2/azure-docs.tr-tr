@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432299"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842410"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Dosya sistemi hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
@@ -94,7 +94,7 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
 
 4. Acil durum modunda oturum açmak için kök hesabınızın parolasını girin.
 
-5. Dosya sistemindeki hataları algılamak için xfs_repair ile-n seçeneğini kullanın. Aşağıdaki örnekte, sistem bölümünün/dev/sda1. olduğunu varsaytık VM 'niz için uygun değer ile değiştirin:
+5. Dosya sistemindeki hataları algılamak için-n seçeneğiyle birlikte xfs_repair kullanın. Aşağıdaki örnekte, sistem bölümünün/dev/sda1. olduğunu varsaytık VM 'niz için uygun değer ile değiştirin:
 
    ```
    xfs_repair -n /dev/sda1
@@ -110,20 +110,20 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
-8. Disk takılamazsa,-L seçeneğiyle xfs_repair komutunu çalıştırın (günlük sıfırlama işlemi zorla):
+8. Disk takılamazsa-L seçeneğiyle xfs_repair komutunu çalıştırın (günlük sıfırlaması zorla):
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. Sonra, dosya sistemini bağlamaya çalışın. Disk başarıyla bağlanmışsa, şu çıktıyı alırsınız:
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. VM 'yi yeniden başlatın ve sorunun çözümlenip çözümlenmediğini denetleyin.
@@ -132,13 +132,13 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
+## <a name="repair-the-vm-offline"></a>VM'yi çevrimdışı onarın
 
 1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
 
 2. Eklediğiniz sistem diskinin sürücü etiketini bulun. Bu durumda, eklediğiniz sistem diskinin etiketinin/dev/sdc1olduğunu varsaytık. VM 'niz için uygun değer ile değiştirin.
 
-3. Dosya sistemindeki hataları algılamak için xfs_repair ile-n seçeneğini kullanın.
+3. Dosya sistemindeki hataları algılamak için-n seçeneğiyle birlikte xfs_repair kullanın.
 
    ```
    xfs_repair -n /dev/sdc1
@@ -158,7 +158,7 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
    mount /dev/sdc1 /temp
    ```
 
-   Disk takılamazsa,-L seçeneğiyle xfs_repair komutunu çalıştırın (günlük sıfırlama işlemi zorla):
+   Disk takılamazsa-L seçeneğiyle xfs_repair komutunu çalıştırın (günlük sıfırlaması zorla):
 
    ```
    xfs_repair /dev/sdc1 -L

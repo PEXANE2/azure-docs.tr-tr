@@ -3,12 +3,12 @@ title: SAP HANA Backup destek matrisi
 description: Bu makalede, Azure VM 'lerde SAP HANA veritabanlarını yedeklemek için Azure yedekleme 'yi kullandığınızda desteklenen senaryolar ve sınırlamalar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82d844385290ab0dc2953537c1f9a3387dd7b2b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705658"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842640"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM’leri üzerinde SAP HANA veritabanlarının yedeklerine yönelik destek matrisi
 
@@ -33,7 +33,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Senaryo**               | **Desteklenen konfigürasyonlar**                                | **Desteklenmeyen yapılandırmalar**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topoloji**               | Yalnızca Azure Linux VM 'lerinde çalışan SAP HANA                    | HANA büyük örnekler (HLI)                                   |
-| **Coğrafyalar**                   | **GA**<br />**Avrupa** – Batı Avrupa, Kuzey Avrupa, Fransa Orta, Fransa Güney, UK Güney, UK Batı, Almanya Kuzey, Almanya Orta Batı, İsviçre Kuzey, İsviçre Batı<br />**Asya Pasifik** – Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney<br /><br>**Önizleme:**<br />**Kuzey** – Orta ABD, Doğu ABD 2, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Orta Batı ABD, Batı ABD, Kanada Orta, Kanada Doğu, Brezilya Güney<br />**Asya Pasifik** – Doğu Asya, güneydoğu asya, Orta Hindistan Güney Hindistan | Çin Doğu, Çin Kuzey, Çin Doğu2, Çin Kuzey 2, Batı Hindistan, Merkezi İsviçre Kuzey, Güney Afrika Kuzey, Güney Afrika Batı, BAE Kuzey, BAE Orta, Azure Kamu bölgeleri |
+| **Coğrafyalar**                   | **GA**<br />**Avrupa** – Batı Avrupa, Kuzey Avrupa, Fransa Orta, UK Güney, UK Batı, Almanya Kuzey, Almanya Orta Batı, İsviçre Kuzey, İsviçre Batı<br />**Asya Pasifik** – Avustralya Orta, Avustralya Orta 2, Avustralya Doğu, Avustralya Güneydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney<br /><br>**Önizleme:**<br />**Kuzey** – Orta ABD, Doğu ABD 2, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Orta Batı ABD, Batı ABD, Kanada Orta, Kanada Doğu <br />**Asya Pasifik** – Doğu Asya, güneydoğu asya, Orta Hindistan Güney Hindistan | Çin Doğu, Çin Kuzey, Çin Doğu2, Çin Kuzey 2, Batı Hindistan, Merkezi İsviçre Kuzey, Güney Afrika Kuzey, Güney Afrika Batı, BAE Kuzey, BAE Orta, Azure Kamu bölgeleri, Fransa Güney Brezilya Güney |
 | **İşletim sistemi sürümleri**            | SLES 12 with SP2, SP3 veya SP4                                | SLES 15, RHEL                                                |
 | **HANA sürümleri**          | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 44            | -                                                            |
 | **HANA dağıtımları**       | Tek bir Azure VM üzerinde SAP HANA-yalnızca ölçeği büyütme               | Ölçeklendirme                                                    |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949415"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841242"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
 
@@ -28,15 +28,15 @@ Uygulamanın kullanıcı ARABIRIMINI özelleştirmek için kullanabileceğiniz �
 
 ### <a name="user-flows"></a>Kullanıcı akışları
 
-[Kullanıcı akışları](active-directory-b2c-reference-policies.md)kullanıyorsanız, yerleşik *sayfa düzeni şablonlarını*kullanarak veya kendi HTML ve CSS 'nizi kullanarak Kullanıcı akış sayfalarınızın görünümünü değiştirebilirsiniz. Her iki yöntem de bu makalenin ilerleyen kısımlarında ele alınmıştır.
+[Kullanıcı akışları](user-flow-overview.md)kullanıyorsanız, yerleşik *sayfa düzeni şablonlarını*kullanarak veya kendi HTML ve CSS 'nizi kullanarak Kullanıcı akış sayfalarınızın görünümünü değiştirebilirsiniz. Her iki yöntem de bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 Kullanıcı akışları için UI özelleştirmesini yapılandırmak üzere [Azure Portal](tutorial-customize-ui.md) kullanırsınız.
 
 ### <a name="custom-policies"></a>Özel ilkeler
 
-Uygulamanızda kaydolma veya oturum açma, parola sıfırlama veya profil düzenlemesi sağlamak için [özel ilkeler](active-directory-b2c-overview-custom.md) kullanıyorsanız, [Kullanıcı arabirimini özelleştirmek için ilke dosyalarını](active-directory-b2c-ui-customization-custom.md)kullanın.
+Uygulamanızda kaydolma veya oturum açma, parola sıfırlama veya profil düzenlemesi sağlamak için [özel ilkeler](custom-policy-overview.md) kullanıyorsanız, [Kullanıcı arabirimini özelleştirmek için ilke dosyalarını](custom-policy-ui-customization.md)kullanın.
 
-Bir müşterinin kararına göre dinamik içerik sağlamanız gerekiyorsa, bir sorgu dizesinde gönderilen parametreye bağlı olarak [sayfa içeriğini dinamik olarak değiştirecek](active-directory-b2c-ui-customization-custom-dynamic.md) özel ilkeler kullanın. Örneğin, Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü, Web veya mobil uygulamanızdan geçirdiğiniz bir parametreye göre değiştirebilirsiniz.
+Bir müşterinin kararına göre dinamik içerik sağlamanız gerekiyorsa, bir sorgu dizesinde gönderilen parametreye bağlı olarak [sayfa içeriğini dinamik olarak değiştirecek](custom-policy-ui-customization-dynamic.md) özel ilkeler kullanın. Örneğin, Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü, Web veya mobil uygulamanızdan geçirdiğiniz bir parametreye göre değiştirebilirsiniz.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ Sonra, listeden bir şablon seçin. Her şablon için oturum açma sayfalarını
 Bir şablon seçtiğinizde, seçilen düzen Kullanıcı akışındaki tüm sayfalara uygulanır ve her sayfanın URI 'SI **özel sayfa URI 'si** alanında görünür.
 
 ## <a name="custom-html-and-css"></a>Özel HTML ve CSS
+
+Özelleştirilmiş HTML ve CSS 'niz ile kendi ilke düzeninizi tasarlamak isterseniz, ilkenizde bulunan her Düzen adı için "özel sayfa içeriğini kullan" seçeneğini değiştirerek bunu yapabilirsiniz. Lütfen özel düzen yapılandırmalarına ilişkin aşağıdaki yönergeleri izleyin:
 
 Azure AD B2C, [çıkış noktaları arası kaynak paylaşımı (CORS)](https://www.w3.org/TR/cors/)adlı bir yaklaşım kullanarak müşterinizin tarayıcısında kodu çalıştırır.
 
@@ -150,7 +152,7 @@ Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` �
 
 ## <a name="localize-content"></a>İçeriği yerelleştirin
 
-Azure AD B2C kiracınızda [dil özelleştirmesini](active-directory-b2c-reference-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C OpenID Connect parametre `ui-locales` uç noktanıza iletmesini sağlar. İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
+Azure AD B2C kiracınızda [dil özelleştirmesini](user-flow-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C OpenID Connect parametre `ui-locales` uç noktanıza iletmesini sağlar. İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
 
 İçerik, kullanılan yerel ayara bağlı olarak farklı yerlerden çekeklenebilir. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlarsınız. `{Culture:RFC5646}`joker karakter değerini kullanırsanız, doğru olanı çağıracaksınız.
 
@@ -179,4 +181,4 @@ GitHub 'da [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b
     [Azure Active Directory B2C ' de uygulamalarınızın Kullanıcı arabirimini özelleştirin](tutorial-customize-ui.md).
 - **Özel ilkeler**kullanıyorsanız, şu makaleyle Kullanıcı arabirimini özelleştirmeye başlayabilirsiniz:
 
-    [Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin](active-directory-b2c-ui-customization-custom.md).
+    [Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin](custom-policy-ui-customization.md).

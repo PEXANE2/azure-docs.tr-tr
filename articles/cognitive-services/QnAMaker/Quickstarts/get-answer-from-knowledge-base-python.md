@@ -1,25 +1,20 @@
 ---
 title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt alın-REST, Python-Soru-Cevap Oluşturma"
-titleSuffix: Azure Cognitive Services
 description: Bu Python REST tabanlı hızlı başlangıç, Bilgi Bankası 'ndan programlama yoluyla yanıt alma konusunda size kılavuzluk eder.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 58cdf5dc8a5bb952f24318dfce020ca052c48863
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/28/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCHANGE-20200128
+ms.openlocfilehash: f439a492e2e63e3f99f80004b387d9cfc415e4b0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447455"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842963"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Hızlı başlangıç: Python ile Bilgi Bankası 'ndan bir soruya yanıt alın
 
-Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/data-sources-supported.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir.
+Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/knowledge-base.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir.
 
 [Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 

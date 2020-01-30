@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706031"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841600"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -76,7 +76,7 @@ Aşağıdaki tablodaki değerleri daha fazla kullanın. `SQLSERVERNAME DATABASEN
 |Özellik | Değer |
 |---|---|
 |Betik türü|-Özel|
-|Adı|Hive yükseltmesi|
+|Ad|Hive yükseltmesi|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Düğüm türleri|Baş|
 |Parametreler|SQLSERVERNAME DATABASENAME KULLANıCı ADı PAROLASı|
@@ -118,7 +118,7 @@ HDInsight 3,6 ve HDInsight 4,0 ACID tabloları ACID değişimleri 'ı farklı ş
 
 Meta veri geçişini ve düzenleme adımlarını tamamladıktan sonra, gerçek ambarı geçirebilirsiniz. Hive ambarı geçişini tamamladıktan sonra, HDInsight 4,0 ambarı aşağıdaki özelliklere sahip olur:
 
-|3,6 |4,0 |
+|3.6 |4.0 |
 |---|---|
 |Dış tablolar|Dış tablolar|
 |İşlem dışı yönetilen tablolar|Dış tablolar|
@@ -179,11 +179,13 @@ HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hiv
 |Özellik | Değer |
 |---|---|
 |Betik türü|-Özel|
-|Adı|LARı|
+|Ad|LARı|
 |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Düğüm türleri|Baş|
 
-5 ila 10 dakika bekleyin, sonra şu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+10 ila 15 dakika bekleyin, sonra şu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+
+DAS 'e erişmeden önce, bir ambarı Kullanıcı arabirimi ve/veya tüm ambarı bileşenlerinin yeniden başlatılması gerekebilir.
 
 DAS yüklendikten sonra, sorgular görüntüleyicisinde çalıştırdığınız sorguları görmüyorsanız, aşağıdaki adımları uygulayın:
 

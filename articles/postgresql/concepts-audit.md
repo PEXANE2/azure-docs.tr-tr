@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747346"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842478"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
 
@@ -65,10 +65,8 @@ pgAudit oturum veya nesne denetim günlüğünü yapılandırmanızı sağlar. [
 [PgAudit](#installing-pgaudit)' i yükledikten sonra, parametrelerini günlüğe kaydetmeyi başlatacak şekilde yapılandırabilirsiniz. [Pgaudit belgeleri](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) her parametrenin tanımını sağlar. Önce parametreleri test edin ve beklenen davranışı aldığınızı onaylayın.
 
 > [!NOTE]
-> `pgaudit.log_client` ' ın ON olarak ayarlanması, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır.
-
-> [!NOTE]
-> `pgaudit.log_level` yalnızca `pgaudit.log_client` açık olduğunda etkinleştirilir. Ayrıca, Azure portal Şu anda `pgaudit.log_level`bir hata vardır: Birleşik giriş kutusu, birden çok düzeyin seçilebilecek şekilde görünür. Ama tek bir düzey seçilmelidir. 
+> `pgaudit.log_client` ' ın ON olarak ayarlanması, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
+> `pgaudit.log_level` yalnızca `pgaudit.log_client` açık olduğunda etkinleştirilir.
 
 > [!NOTE]
 > PostgreSQL için Azure veritabanı 'nda, `pgaudit.log` pgAudit belgelerinde açıklandığı şekilde `-` (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
@@ -87,6 +85,22 @@ t=%m u=%u db=%d pid=[%p]:
 ### <a name="getting-started"></a>Başlangıç
 Hızlıca kullanmaya başlamak için `pgaudit.log` `WRITE`ayarlayın ve çıktıyı gözden geçirmek için günlüklerinizi açın. 
 
+## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme
+. Log dosyalarını kullanıyorsanız, denetim günlüklerinizin PostgreSQL hata günlüklerinizin bulunduğu dosyaya dahil edilir. Günlük dosyalarını Azure [portalından](howto-configure-server-logs-in-portal.md) veya [CLI](howto-configure-server-logs-using-cli.md)'dan indirebilirsiniz. 
+
+Azure tanılama günlüğü 'nü kullanıyorsanız, günlüklere erişme yönteminiz seçtiğiniz uç noktaya göre değişir. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+
+Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
+
+Başlamak için bu sorguyu kullanabilirsiniz. Sorgular temelinde uyarıları yapılandırabilirsiniz.
+
+Son gün içinde belirli bir sunucu için tüm Postgres günlüklerini arayın
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [PostgreSQL için Azure veritabanı 'nda günlüğe kaydetme hakkında bilgi edinin](concepts-server-logs.md)

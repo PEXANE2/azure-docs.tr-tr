@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6ad3e91b6826680eb8bcc9da4fc9d1cee37564c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2c2f0abeab31fc64fceb10bf17ef90924efefa22
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711620"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841225"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -67,7 +67,7 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 |Çalışan|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|
 | Faks TelephoneNumber |PhoneNumber [türü eq "faks"] .value |
 | givenName |name.givenName |
-| İş Unvanı |title |
+| İş Unvanı |başlık |
 | posta |e-postaları [türü eq "İş"] .value |
 | mailNickname |externalId |
 | yönetici |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager |
@@ -78,7 +78,7 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 | streetAddress |adresler [türü eq "İş"] .streetAddress |
 | Soyadı |name.familyName |
 | telefon numarası |PhoneNumber [türü eq "İş"] .value |
-| Kullanıcı PrincipalName |userName adı |
+| Kullanıcı PrincipalName |Kullanıcı adı |
 
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tablo 2: Varsayılan grup öznitelik eşlemesi
@@ -1375,6 +1375,8 @@ SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü d
 *  Belirteç Exchange URL 'SI: bir erişim belirtecine, genellikle istemci kimlik doğrulamasıyla bir yetkilendirme izni vermek için istemcinin URL 'SI.
 *  İstemci KIMLIĞI: yetkilendirme sunucusu, kayıtlı istemciye, istemci tarafından sunulan kayıt bilgilerini temsil eden benzersiz bir dize olan istemci tanımlayıcısını verir.  İstemci tanımlayıcısı gizli değil; Kaynak sahibine gösterilir ve yalnızca istemci kimlik doğrulaması **için kullanılmamalıdır.**  
 *  Gizli anahtar: istemci parolası, yetkilendirme sunucusu tarafından oluşturulan bir gizli dizi. Bu, yalnızca yetkilendirme sunucusu için bilinen benzersiz bir değer olmalıdır. 
+
+İstemci parolasının pozlaması nedeniyle OAuth v1 'nin desteklenmediğini unutmayın. OAuth v2 desteklenir.  
 
 En iyi uygulamalar (önerilir ancak gerekli değildir):
 * Birden çok yeniden yönlendirme URL 'sini destekler. Yöneticiler, "portal.azure.com" ve "aad.portal.azure.com" ile sağlamayı yapılandırabilir. Birden çok yeniden yönlendirme URL 'Leri desteklemek, kullanıcıların her iki portaldan da erişim yetkisi alabilmek için

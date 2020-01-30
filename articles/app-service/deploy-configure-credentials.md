@@ -5,19 +5,19 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 15b556781f8ba620ab61c502b6f55e55e98df83c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430522"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843795"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
 
 * **Kullanıcı düzeyi kimlik bilgileri**: tüm Azure hesabı için bir kimlik bilgileri kümesi. Azure hesabının erişim iznine sahip olduğu herhangi bir abonelikte her türlü uygulama için App Service dağıtmak üzere kullanılabilir. Bu, Portal GUI 'de (uygulamanın [kaynak sayfasının](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) **genel bakış** ve **özellikleri** gibi) ortaya çıkacak olan varsayılan bir kümesidir. Bir kullanıcıya rol tabanlı Access Control (RBAC) veya coadmin (izinleri aracılığıyla uygulama erişimi verildiğinde, bu kullanıcı, erişim iptal edilene kadar kendi Kullanıcı düzeyi kimlik bilgilerini kullanabilir. Bu kimlik bilgilerini diğer Azure kullanıcılarıyla paylaşmayın.
 
-* **Uygulama düzeyi kimlik bilgileri**: her bir uygulama için bir kimlik bilgileri kümesi. Yalnızca bu uygulamaya dağıtmak için kullanılabilir. Her uygulama için kimlik bilgileri, uygulama oluşturma sırasında otomatik olarak oluşturulur. Bunlar el ile yapılandırılamaz, ancak her zaman sıfırlanabilir. Bir kullanıcının uygulama düzeyi kimlik bilgilerine (RBAC) aracılığıyla erişim izni verilmesi için, bu kullanıcının uygulamada katkıda bulunması veya daha yüksek olması gerekir. Okuyucuların bu kimlik bilgilerine yayımlamasına ve bu kimlik bilgilerine erişemediğine izin verilmez.
+* **Uygulama düzeyi kimlik bilgileri**: her bir uygulama için bir kimlik bilgileri kümesi. Yalnızca bu uygulamaya dağıtmak için kullanılabilir. Her uygulama için kimlik bilgileri, uygulama oluşturma sırasında otomatik olarak oluşturulur. Bunlar el ile yapılandırılamaz, ancak her zaman sıfırlanabilir. Bir kullanıcıya (RBAC) aracılığıyla uygulama düzeyi kimlik bilgilerine erişim izni verilmesi için, bu kullanıcının uygulamada katkıda bulunması veya daha yüksek olması gerekir (Web sitesi katılımcısı yerleşik rolü dahil). Okuyucuların bu kimlik bilgilerine yayımlamasına ve bu kimlik bilgilerine erişemediğine izin verilmez.
 
 ## <a name="userscope"></a>Kullanıcı düzeyi kimlik bilgilerini yapılandırma
 

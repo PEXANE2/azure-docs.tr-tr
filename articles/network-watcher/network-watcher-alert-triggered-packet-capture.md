@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Bu makalede, Azure ağ Izleyicisi ile bir uyarı tetiklenen paket yakalama oluşturma açıklanmaktadır
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276128"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842946"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uyarılar ve Azure Işlevleri ile öngörülü ağ izleme için paket yakalamayı kullanma
 
@@ -37,7 +35,7 @@ Azure ekosistemi içinden ağ Izleyicisi, uyarı ve işlevleri kullanarak ağın
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure PowerShell](/powershell/azure/install-Az-ps)en son sürümü.
 * Var olan bir ağ Izleyicisi örneği. Henüz bir tane yoksa, [Ağ İzleyicisi 'nin bir örneğini oluşturun](network-watcher-create.md).
@@ -346,7 +344,7 @@ Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yap
 
   |**Ayar** | **Değer** | **Ayrıntılar** |
   |---|---|---|
-  |**Adı**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
+  |**Ad**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
   |**Açıklama**|Gönderilen TCP kesimleri eşiği aştı|Uyarı kuralının açıklaması.|
   |**Ölçüm**|Gönderilen TCP kesimleri| Uyarıyı tetiklemek için kullanılacak ölçüm. |
   |**Koşul**|Şu değerden fazla:| Ölçüm değerlendirilirken kullanılacak koşul.|

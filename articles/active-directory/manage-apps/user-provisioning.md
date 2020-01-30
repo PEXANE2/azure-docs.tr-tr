@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711481"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841208"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalara Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme
 
@@ -67,7 +67,7 @@ Azure AD, birçok popüler SaaS uygulaması ve insan kaynakları sistemi için �
 
 * **SCıM 2,0 ' i destekleyen uygulamalar**. SCıM 2,0 tabanlı kullanıcı yönetimi API 'Leri uygulayan uygulamaları genel olarak bağlama hakkında daha fazla bilgi için bkz. [SCIM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](use-scim-to-provision-users-and-groups.md).
 
-## <a name="what-is-scim"></a>SCıM nedir?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Etki alanları arası kimlik yönetimi (SCıM) sistemi nedir?
 
 Uygulamalar, sağlama ve sağlamayı kaldırma işlemlerini otomatik hale getirmeye yardımcı olmak için özel kullanıcı ve Grup API 'Leri sunar. Ancak, birden fazla uygulamadaki kullanıcıları yönetmeye çalışmış olan herkes, her uygulamanın kullanıcı oluşturma veya güncelleştirme, gruplara kullanıcı ekleme veya kullanıcıları sağlamayı kaldırma gibi aynı basit eylemleri gerçekleştirmeye çalıştığını söyler. Henüz, tüm bu basit eylemler, farklı uç nokta yolları, Kullanıcı bilgilerini belirtmek için farklı yöntemler ve her bilgi öğesini temsil eden farklı bir şema kullanılarak yalnızca biraz farklı bir şekilde uygulanır.
 

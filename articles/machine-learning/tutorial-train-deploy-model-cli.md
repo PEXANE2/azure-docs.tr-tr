@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867665"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841123"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 > [!IMPORTANT]
 > `id` girdinin değerini, sonraki bölümde kullanıldığı şekilde kopyalayın.
 
-Bir veri kümesini tanımlayan JSON dosyası için daha kapsamlı bir şablon kullanıma almak için aşağıdaki komutu kullanın:
+Bir veri kümesine yönelik daha kapsamlı bir şablon görmek için aşağıdaki komutu kullanın:
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 `id` girdinin değerini, veri kümesini kaydettiğinizde döndürülen değerle eşleşecek şekilde değiştirin. Bu değer, eğitim sırasında verileri işlem hedefine yüklemek için kullanılır.
 
-Bu YAML şunları yapar:
+Bu YAML, eğitim sırasında aşağıdaki eylemlere neden olur:
 
 * Veri kümesini (veri kümesinin KIMLIĞINE göre) eğitim ortamında takar ve `mnist` ortam değişkeninde bağlama noktasının yolunu depolar.
 * Eğitim ortamının içindeki verinin konumunu (bağlama noktası) `--data-folder` bağımsız değişkenini kullanarak betiğe geçirir.
@@ -298,7 +298,7 @@ Runconfig dosyası aynı zamanda eğitim çalıştırması tarafından kullanıl
 > [!TIP]
 > El ile bir runconfig dosyası oluşturulması mümkün olsa da, bu örnekteki dosya depoya dahil `generate-runconfig.py` dosyası kullanılarak oluşturulmuştur. Bu dosya kayıtlı veri kümesine bir başvuru alır, bir Run config program aracılığıyla oluşturur ve sonra dosyayı devam ettirir.
 
-Yapılandırma dosyalarını Çalıştır hakkında daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama ve kullanma](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)veya bir runconfig 'in tam şemasını görmek Için bu [JSON dosyasına](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) başvuru.
+Yapılandırma dosyalarını Çalıştır hakkında daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama ve kullanma](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Tüm JSON başvurusu için bkz. [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Eğitim çalıştırmasını gönder
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Bu komut, daha önce kaydettiğiniz modelin 1. sürümünü kullanarak `myservice`adlı yeni bir hizmet dağıtır.
 
-`inferenceConfig.yml` dosyası, giriş betiği (`score.py`) ve yazılım bağımlılıkları gibi çıkarım gerçekleştirme hakkında bilgi sağlar. Bu dosyanın yapısı hakkında daha fazla bilgi için, bkz. [çıkarım yapılandırma şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema). Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md#prepare-to-deploy).
+`inferenceConfig.yml` dosyası, çıkarım için model kullanma hakkında bilgi sağlar. Örneğin, giriş betiğine (`score.py`) ve yazılım bağımlılıklarına başvurur. 
+
+Bu dosyanın yapısı hakkında daha fazla bilgi için, bkz. [çıkarım yapılandırma şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema). Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md#prepare-to-deploy).
 
 `aciDeploymentConfig.yml`, hizmeti barındırmak için kullanılan dağıtım ortamını açıklar. Dağıtım yapılandırması, dağıtım için kullandığınız işlem türüne özeldir. Bu durumda, bir Azure Kapsayıcı örneği kullanılır. Daha fazla bilgi için bkz. [dağıtım yapılandırma şeması](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

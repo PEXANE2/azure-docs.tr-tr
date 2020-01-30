@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978177"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843948"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Senaryolar ve Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
 
@@ -33,11 +33,11 @@ Bu konuda, içeriğinizi [canlı](#live_scenarios) veya isteğe bağlı olarak s
 
 ## <a name="overview"></a>Genel Bakış
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure Media Services’i kullanmaya başlamak için aşağıdakilerin bulunması gerekir:
 
-* Bir Azure hesabı. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com).
+* Bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılar için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com).
 * Bir Azure Media Services hesabı. Daha fazla bilgi için bkz. [Hesap Oluşturma](media-services-portal-create-account.md).
 * İçerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumunda olması gerekir.
 
@@ -177,7 +177,7 @@ Media Services müşterileri **Standart** akış uç noktası veya **Premium** a
 
 #### <a name="availability"></a>Erişilebilirlik
 
-|Adı|Durum|Veri merkezleri
+|Ad|Durum|Veri merkezleri
 |---|---|---|
 |Standart|Genel Kullanım|Tümü|
 |Premium|Genel Kullanım|Tümü|
@@ -211,9 +211,8 @@ Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştü
 |Azure Media Indexer|Genel Kullanım|Tümü|
 |Azure Media Motion Detector|Önizleme|Tümü|
 |Azure Media OCR|Önizleme|Tümü|
-|Azure Media Redactor|Önizleme|Tümü|
+|Azure Media Redactor|Genel Kullanım|Tümü|
 |Azure Media Video Thumbnails|Önizleme|Tümü|
-|Azure Media Indexer 2|Önizleme|Çin ve Federal Devlet bölgesi dışında tümü|
 
 ### <a name="protection"></a>Koruma
 

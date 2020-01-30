@@ -3,7 +3,7 @@ title: 2\. nesil VM 'Ler için Azure desteği
 description: 2\. nesil sanal makineler için Azure desteğine genel bakış
 services: virtual-machines-linux
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: 766ac4f67c0d448f3988eb66c84dddbf44076ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791740"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841157"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -30,7 +30,7 @@ ms.locfileid: "74791740"
 
 ## <a name="generation-2-vm-sizes"></a>2\. nesil VM boyutları
 
-1\. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir. Azure şimdi aşağıdaki seçili VM serileri için 2. nesil destek sunuyor:
+1\. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir (Mv2 serisi VM 'Ler hariç). Azure şimdi aşağıdaki seçili VM serileri için 2. nesil destek sunuyor:
 
 * [B serisi](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
@@ -100,7 +100,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portalında
 
 Windows ve SLES için 2. nesil görüntüler, Gen1 görüntülerle aynı sunucu teklifine dahildir. Flow perspektifinden bu şekilde, VM 'niz için portaldan teklif ve SKU 'YU seçersiniz. SKU hem 1. kuşak hem de 2. nesil görüntüleri destekliyorsa, VM oluşturma akışındaki *Gelişmiş* sekmesinden 2. nesıl bir VM oluşturmayı seçebilirsiniz.
 
@@ -123,6 +123,12 @@ Ayrıca, 1. nesil veya 2. nesil SKU 'ya doğrudan başvurarak bir VM oluşturmak
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 İşletim sistemi olarak Windows Server 2012 ile bir VM oluşturuyorsanız, şunun gibi bir 1. nesil (BIOS) veya 2. nesil (UEFı) VM SKU 'SU seçersiniz:

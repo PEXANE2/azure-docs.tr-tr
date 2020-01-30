@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026224"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842742"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET için batch dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'ya kalıcı hale getirme
 
@@ -46,7 +46,7 @@ Senaryolarınız yukarıda listelenenlerden farklıysa, farklı bir yaklaşım d
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Toplu Iş dosyası kuralları standart nedir?
 
-[Toplu Iş dosyası kuralları standardı](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) , çıkış dosyalarınızın yazıldığı hedef kapsayıcılar ve BLOB yolları için bir adlandırma şeması sağlar. Dosya kuralları standardına bağlı olan Azure depolama 'da kalıcı olan dosyalar, Azure portal görüntülenmek üzere otomatik olarak kullanılabilir. Portal, adlandırma kuralını biliyor ve bu nedenle kendisine bağlı dosyaları görüntüleyebilir.
+[Toplu Iş dosyası kuralları standardı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files) , çıkış dosyalarınızın yazıldığı hedef kapsayıcılar ve BLOB yolları için bir adlandırma şeması sağlar. Dosya kuralları standardına bağlı olan Azure depolama 'da kalıcı olan dosyalar, Azure portal görüntülenmek üzere otomatik olarak kullanılabilir. Portal, adlandırma kuralını biliyor ve bu nedenle kendisine bağlı dosyaları görüntüleyebilir.
 
 .NET için dosya kuralları kitaplığı, depolama Kapsayıcılarınızı ve Görev çıkış dosyalarınızı dosya kuralları standardına göre otomatik olarak adlandırır. Dosya kuralları kitaplığı ayrıca iş KIMLIĞI, görev KIMLIĞI veya amaca göre Azure Storage 'daki çıktı dosyalarını sorgulamak için yöntemler sağlar.
 
@@ -228,15 +228,15 @@ Dosya kuralları Kitaplığı [kaynak kodu][github_file_conventions] , .NET içi
 - Çıktı verilerini kalıcı hale getirmek için Batch hizmeti API 'sini nasıl kullanacağınızı öğrenmek için bkz. [Batch hizmeti API 'si Ile Azure depolama 'da görev verilerini kalıcı hale](batch-task-output-files.md) getirme.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
-[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files
+[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage._cloud_storage_account
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
 [net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
 [net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx

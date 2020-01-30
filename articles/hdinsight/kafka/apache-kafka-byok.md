@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4a6ef4a8559276ea1f74e133055a613ddcbcab4
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/27/2020
+ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495147"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841701"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
 
@@ -39,13 +39,13 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları inceleyec
 
 Key Vault kimlik doğrulaması yapmak için, [Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)veya [Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)kullanarak Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](../hdinsight-managed-identities.md). Yönetilen kimlikler için Azure Active Directory gerekir ve Kafka için BYOK, Kurumsal Güvenlik Paketi (ESP) bir gereksinim değildir. Key Vault erişim ilkesine eklediğinizde yönetilen kimlik kaynak KIMLIĞINI kaydettiğinizden emin olun.
 
-![Azure portal içinde Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/apache-kafka-byok/user-managed-identity-portal.png)
+![Azure portal içinde Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/apache-kafka-byok/azure-portal-create-managed-identity.png)
 
 ## <a name="set-up-the-key-vault-and-keys"></a>Key Vault ve anahtarları ayarlama
 
 HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseniz, anahtarlarınızı Azure Key Vault içine aktarabilirsiniz. Anahtarların "geçici silme" olması gerektiğini unutmayın. "Geçici silme" özelliği REST, .NET/C#, PowerShell ve Azure CLI arabirimleri aracılığıyla kullanılabilir.
 
-1. Yeni bir Anahtar Kasası oluşturmak için [Azure Key Vault](../../key-vault/key-vault-overview.md) hızlı başlangıcı ' nı izleyin. Mevcut anahtarları içeri aktarma hakkında daha fazla bilgi için [anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md)bölümünü ziyaret edin.
+1. Yeni bir Anahtar Kasası oluşturmak için [Azure Key Vault](../../key-vault/quick-create-cli.md) hızlı başlangıcı ' nı izleyin. Mevcut anahtarları içeri aktarma hakkında daha fazla bilgi için [anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md)bölümünü ziyaret edin.
 
 1. [Az keykasa Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI komutunu kullanarak anahtar kasasında "geçici silme" özelliğini etkinleştirin.
 
@@ -79,7 +79,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     b. **Asıl seçin**altında oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği seçin.
 
-    ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+    ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
     c. **Anahtar ve** **sarmalama**anahtarını **almak**için **anahtar izinleri** ayarlayın.
 
@@ -97,9 +97,9 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. BYOK, yalnızca küme oluşturma sırasında yeni kümelere uygulanabilir. Şifreleme BYOK kümelerinden kaldırılamaz ve var olan kümelere BYOK eklenemez.
 
-![Azure portal Kafka disk şifrelemesi](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
+![Azure portal Kafka disk şifrelemesi](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
 
-Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam anahtar URL 'sini sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir.
+Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam anahtar URL 'sini sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir. Tüm küme oluşturma ayrıntıları için bkz [. Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](./apache-kafka-get-started.md)
 
 ## <a name="rotating-the-encryption-key"></a>Şifreleme anahtarını döndürme
 

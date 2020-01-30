@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d754964ac6c16c87e6f0825b4f1a955d38fa3530
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756237"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841259"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -209,6 +209,7 @@ Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [he
 
 ## <a name="common-issues"></a>Genel sorunlar
 * Bir bağlantı kurmak için kullanılan hesap GSuite 'te yönetici için olmadığında yetkilendirme sorunları oluşabilir. Erişim yetkisi vermek için kullanılan hesabın, kullanıcıların birlikte sağlanması gereken **tüm etki alanları** üzerinde yönetici izinlerine sahip olduğundan emin olun. 
+* Azure AD, GSuite kullanıcılarının uygulamaya erişebilmeleri için devre dışı bırakılmasını destekler, ancak GSuite 'te kullanıcıları silmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

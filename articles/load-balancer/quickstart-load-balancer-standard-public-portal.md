@@ -1,12 +1,12 @@
 ---
-title: 'Hızlı başlangıç: Standart Load Balancer oluşturma-Azure portal'
+title: 'Hızlı başlangıç: ortak Load Balancer oluşturma-Azure portal'
 titleSuffix: Azure Load Balancer
-description: Bu hızlı başlangıçta, Azure portal kullanılarak Standart Load Balancer oluşturma gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure portal kullanılarak Load Balancer oluşturma gösterilmektedir.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771470"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843880"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak sanal makinelerde yük dengelemesi için Standart Yük Dengeleyici oluşturma
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için Load Balancer oluşturma
 
-Yük dengeleme, gelen istekleri birden fazla sanal makineye yayarak daha yüksek bir kullanılabilirlik ve ölçek düzeyi sağlar. Sanal makinelerin (VM) yük dengelemesini yapmak amacıyla yük dengeleyici oluşturmak için Azure portalını kullanabilirsiniz. Bu hızlı başlangıçta Standart Yük Dengeleyici kullanılarak sanal makinelerde yük dengelemesi yapacağınız gösterilir.
+Yük dengeleme, gelen istekleri birden fazla sanal makineye yayarak daha yüksek bir kullanılabilirlik ve ölçek düzeyi sağlar. Sanal makinelerin (VM) yük dengelemesini yapmak amacıyla yük dengeleyici oluşturmak için Azure portalını kullanabilirsiniz. Bu hızlı başlangıçta, ortak bir Load Balancer kullanarak VM 'Lerin yükünü dengelemek gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
@@ -32,9 +32,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="create-a-standard-load-balancer"></a>Standart Yük Dengeleyici oluşturma
+## <a name="create-a-load-balancer"></a>Yük Dengeleyici oluşturma
 
-Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Standart Load Balancer oluşturursunuz. Ortak bir Standart Load Balancer veya iç Standart Load Balancer oluşturabilirsiniz. Standart Load Balancer yalnızca standart bir genel IP adresini destekler, temel genel IP adresleri desteklenmez. Ortak bir Standart Load Balancer oluşturduğunuzda ve ayrıca, Standart Load Balancer için ön uç olarak yapılandırılmış yeni bir standart genel IP adresi (varsayılan olarak *Loadbalancerön uç* olarak adlandırılır) oluşturmanız gerekir. 
+Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Load Balancer oluşturursunuz. Ortak bir Load Balancer veya iç Load Balancer oluşturabilirsiniz. Ortak bir Load Balancer oluşturduğunuzda ve Load Balancer için ön uç olarak yapılandırılmış yeni bir genel IP adresi (varsayılan olarak *Loadbalancerön uç* olarak adlandırılır) oluşturmanız gerekir.
 
 1. Ekranın sol üst kısmında, **ağ** > **Load Balancer** > **kaynak oluştur** ' u seçin.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
@@ -45,11 +45,12 @@ Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Standart Lo
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupslb* yazın.|
     | Ad                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Tür          | **Genel**’i seçin.                                        |
-    | SKU           | **Standart**' ı seçin.                          |
-    | Genel IP adresi | **Yeni oluştur**’u seçin. |
+    | Tür          | **Ortak**seçeneğini belirleyin.                                        |
+    | SKU           | **Standart** veya **temel**seçeneğini belirleyin. Microsoft, üretim iş yükleri için standart önerir.  |
+    | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz var olan bir genel IP varsa, **var olanı kullan** ' ı seçin. |
     | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   |
-    |Kullanılabilirlik alanı| **Bölge yedekli**seçeneğini belirleyin.    |
+    | Kullanılabilirlik alanı | Esnek bir Load Balancer oluşturmak için *bölge yedekli* yazın. Bir bölgesel Load Balancer oluşturmak için, 1, 2 veya 3 ' ten belirli bir bölge seçin |
+
 3. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.   
 
     ![Standart Yük Dengeleyici oluşturma](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -58,7 +59,7 @@ Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Standart Lo
 
 Bu bölümde, bir arka uç adres havuzu ve bir sistem durumu araştırması için Load Balancer ayarlarını yapılandırır ve bir dengeleyici kuralı belirlersiniz.
 
-### <a name="create-a-backend-address-pool"></a>Arka uç adres havuzu oluşturma
+### <a name="create-a-backend-pool"></a>Arka uç havuzu oluşturma
 
 Trafiği VM 'lere dağıtmak için bir arka uç adres havuzu, Load Balancer bağlı sanal (NIC) IP adreslerini içerir. Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere *Mybackendpool* arka uç adres havuzunu oluşturun.
 
@@ -79,7 +80,7 @@ Load Balancer uygulamanızın durumunu izlemesine izin vermek için, bir sistem 
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | *80*girin.|
     | Interval | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için *15* girin. |
-    | İyi durumda olmayan eşik | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
+    | Sağlıksız eşik | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
     | | |
 4. **Tamam**’ı seçin.
 
@@ -93,7 +94,7 @@ Trafiğin sanal makinelere dağıtımını tanımlamak için bir Yük Dengeleyic
     | Ayar | Değer |
     | ------- | ----- |
     | Ad | *Myhttprule*girin. |
-    | Protokol | **TCP**’yi seçin. |
+    | Protokol | **TCP**' yi seçin. |
     | Bağlantı noktası | *80*girin.|
     | Arka uç bağlantı noktası | *80*girin. |
     | Arka uç havuzu | *Mybackendpool*öğesini seçin.|
@@ -122,7 +123,7 @@ Bu bölümde, bir sanal ağ oluşturur, Load Balancer arka uç havuzu için üç
 1. Varsayılan değerleri bırakın ve **Oluştur**' u seçin.
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
-Standart Load Balancer, yalnızca arka uç havuzunda standart IP adreslerine sahip VM 'Leri destekler. Bu bölümde, daha sonra daha önce oluşturulmuş Standart Load Balancer arka uç havuzuna eklenen üç farklı bölgede (*bölge 1*, *bölge 2*ve *Bölge 3*) standart bir genel IP adresi ile üç VM (*myVM1*, *myVM2* ve *myVM3*) oluşturacaksınız.
+Genel IP SKU 'Ları ve Load Balancer SKU 'Ları eşleşmelidir. Standart Load Balancer için, arka uç havuzundaki standart IP adresleriyle VM 'Leri kullanın. Bu bölümde, daha sonra daha önce oluşturulmuş Load Balancer arka uç havuzuna eklenen üç farklı bölgede (*bölge 1*, *bölge 2*ve *Bölge 3*) standart bir genel IP adresi ile üç VM (*myVM1*, *myVM2* ve *myVM3*) oluşturacaksınız. Temel ' yı seçtiyseniz, temel IP adresleriyle VM 'Leri kullanın.
 
 1. Portalın sol üst kısmında **Windows Server 2019 Datacenter** > **Işlem** > **kaynak oluştur** ' u seçin. 
    
@@ -138,7 +139,7 @@ Standart Load Balancer, yalnızca arka uç havuzunda standart IP adreslerine sah
 1. **Ağ** sekmesinde aşağıdakilerin seçili olduğundan emin olun:
    - **Sanal ağ**: *myvnet*
    - **Alt ağ**: *mybackendsubnet*
-   - **Genel ıp** > **Yeni oluştur**' u seçin ve **genel IP adresi oluştur** penceresinde, **SKU**için **Standart**' ı seçin ve **kullanılabilirlik bölgesi**için, bölgesel olarak **yedekli**' i seçin ve ardından **Tamam**' ı seçin.
+   - **Genel ıp** > **Yeni oluştur**' u seçin ve **genel IP adresi oluştur** penceresinde, **SKU**için **Standart**' ı seçin ve **kullanılabilirlik bölgesi**için, bölgesel olarak **yedekli**' i seçin ve ardından **Tamam**' ı seçin. Temel bir Load Balancer oluşturduysanız temel ' yı seçin. Microsoft, üretim iş yükleri için standart SKU kullanmayı önerir.
    - Yeni bir ağ güvenlik grubu (NSG), güvenlik duvarı, türü altında oluşturulacak **ağ güvenlik grubu**seçin **Gelişmiş**. 
        1. İçinde **yapılandırma ağ güvenlik grubu** alanın, Seç **Yeni Oluştur**. 
        1. *Mynetworksecuritygroup*yazın ve **Tamam**' ı seçin.
@@ -167,15 +168,20 @@ Bu bölümde, HTTP kullanarak gelen bağlantılara izin veren bir ağ güvenlik 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myresourcegroupslb** kaynak grubunda bulunan **mynetworksecuritygroup** ' u seçin.
 2. **Ayarlar** bölümünde **Gelen güvenlik kuralları**’nı ve sonra **Ekle**’yi seçin.
 3. 80 numaralı bağlantı noktasını kullanarak gelen HTTP bağlantılarına izin vermek için *myHTTPRule* adlı gelen güvenlik kuralı için şu değerleri girin:
-    - **Kaynak** için *Hizmet Etiketi*.
-    - **Kaynak hizmet etiketi** için *İnternet*
-    - **Hedef bağlantı noktası aralıkları** için *80*
-    - **Protokol** için *TCP*
-    - **Eylem** için *İzin Ver*
-    - **Öncelik** için *100*
-    - Ad için *myHTTPRule*
-    - Açıklama için *HTTP’ye İzin Ver*
+    - **Kaynak**: *hizmet etiketi*
+    -  **Kaynak hizmet etiketi**: *Internet*
+    - **Hedef bağlantı noktası aralıkları**: *80*
+    - **Protokol**: *TCP*
+    - **Eylem**: *izin ver*
+    - **Öncelik**: *100*
+    - **Ad**: *myhttprule* 
+    - **Açıklama**: "*http 'ye izin ver* 
 4. **Add (Ekle)** seçeneğini belirleyin.
+5. Gerekirse, gelen RDP kuralı için aşağıdaki farklı değerlerle adımları yineleyin:
+   - **Hedef bağlantı noktası aralıkları**: türü *3389*.
+   - **Öncelik**: türü *200*. 
+   - **Adı**: türü *MyRDPRule*. 
+   - **Açıklama**: türü *RDP'ye izin ver*. 
  
 ### <a name="install-iis"></a>IIS yükleme
 
@@ -214,7 +220,6 @@ Artık gerekli değilse, kaynak grubunu, Load Balancer ve tüm ilgili kaynaklar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Standart Load Balancer oluşturdunuz, bu sanal makineye bağlı VM 'Ler Load Balancer trafik kuralını ve sistem durumu araştırmasını yapılandırdınız ve ardından Load Balancer test edilmiştir. Azure Load Balancer hakkında daha fazla bilgi almak için Azure Load Balancer öğreticilerine geçin.
+Bu hızlı başlangıçta, bir Standart Load Balancer oluşturdunuz, bu sanal makineye bağlı VM 'Ler Load Balancer trafik kuralını ve sistem durumu araştırmasını yapılandırdınız ve ardından Load Balancer test edilmiştir. Azure Load Balancer hakkında daha fazla bilgi edinmek için [öğreticilere Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)devam edin.
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer öğreticileri](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+[Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.

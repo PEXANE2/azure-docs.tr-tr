@@ -1,14 +1,14 @@
 ---
 title: ACR görevinin dış kimlik doğrulaması
-description: Görevin bir Azure Anahtar Kasası 'nda depolanan Docker Hub kimlik bilgilerini okumasına izin vermek için bir Azure Container Registry (ACR) görevinde Azure kaynakları için yönetilen bir kimliği etkinleştirin.
+description: Azure kaynakları için yönetilen bir kimlik kullanarak bir Azure Anahtar Kasası 'nda depolanan Docker Hub kimlik bilgilerini okumak üzere bir Azure Container Registry görevi (ACR görevi) yapılandırın.
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456228"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842529"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanarak bir ACR görevinde dış kimlik doğrulama 
 
@@ -20,13 +20,13 @@ Azure kaynaklarını oluşturmak için bu makale, Azure CLı sürüm 2.0.68 veya
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-Örnek görev, bir Azure Anahtar Kasası 'nda depolanan Docker Hub kimlik bilgilerini okur. Kimlik bilgileri, Docker Hub 'daki özel bir depoya yazma (gönderme) izinlerine sahip bir Docker Hub hesabı içindir. Kimlik bilgilerini okumak için, görevi yönetilen bir kimlikle yapılandırın ve ilgili izinleri buna atayın. Kimlik ile ilişkili görev bir görüntü oluşturur ve resmi özel depoya göndermek için Docker Hub 'da oturum açar. 
+Örnek görev, bir Azure Anahtar Kasası 'nda depolanan Docker Hub kimlik bilgilerini okur. Kimlik bilgileri, özel bir Docker Hub deposuna yazma (gönderme) izinlerine sahip bir Docker Hub hesabı içindir. Kimlik bilgilerini okumak için, görevi yönetilen bir kimlikle yapılandırın ve ilgili izinleri buna atayın. Kimlik ile ilişkili görev bir görüntü oluşturur ve resmi özel depoya göndermek için Docker Hub 'da oturum açar. 
 
 Bu örnek, Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen kimlik kullanarak adımları gösterir. Kimlik seçiminiz, kuruluşunuzun ihtiyaçlarına bağlıdır.
 
 Gerçek dünyada bir senaryoda, bir şirket, bir yapı işleminin parçası olarak Docker Hub 'daki özel bir depoya görüntü yayımlayabilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Görevi çalıştırdığınız bir Azure Container Registry 'ye ihtiyacınız vardır. Bu makalede, bu kayıt defteri *myregistry*olarak adlandırılmıştır. Sonraki adımlarda kendi kayıt defteriniz adıyla değiştirin.
 
@@ -71,7 +71,7 @@ Gerçek dünyada bir senaryoda, gizli dizi büyük olasılıkla ayrı bir işlem
 Bu örnek görevin adımları bir [YAML dosyasında](container-registry-tasks-reference-yaml.md)tanımlanmıştır. Yerel çalışma dizininde `dockerhubtask.yaml` adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Dosyadaki Anahtar Kasası adını anahtar kasanızın adıyla değiştirdiğinizden emin olun.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -80,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 Görev adımları şunları yapın:
@@ -94,6 +94,7 @@ Görev adımları şunları yapın:
 * Gizli dizileri `docker login` komutuna geçirerek Docker Hub ile kimlik doğrulaması yapın.
 * [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) deposunda örnek bir Dockerfile kullanarak bir görüntü oluşturun.
 * Görüntüyü özel Docker Hub deposuna gönderin.
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Seçenek 1: Kullanıcı tarafından atanan kimlikle görev oluşturma
 
@@ -140,7 +141,10 @@ az acr task create \
 Anahtar kasasında bir erişim ilkesi ayarlamak için aşağıdaki [az keykasası Set-Policy][az-keyvault-set-policy] komutunu çalıştırın. Aşağıdaki örnek, kimliğin anahtar kasasından gizli dizileri okumasına izin verir. 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>Görevi el ile çalıştırın
@@ -148,7 +152,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 Yönetilen bir kimliği etkinleştirdiğiniz görevin başarıyla çalıştığını doğrulamak için, görevi [az ACR Task Run][az-acr-task-run] komutuyla el ile tetikleyin. `--set` parametresi, özel depo adını göreve geçirmek için kullanılır. Bu örnekte, yer tutucu Depo adı *hubuser/hubdepodır*.
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 Görev başarıyla çalıştırıldığında, çıkış Docker Hub 'a başarılı kimlik doğrulaması gösterir ve görüntü başarıyla oluşturulup özel depoya gönderilir:

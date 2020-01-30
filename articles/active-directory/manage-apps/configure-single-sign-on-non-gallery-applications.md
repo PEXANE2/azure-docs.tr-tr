@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c99c38c9a1972bc434c7fa61d6745dac0d79d7b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711958"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841974"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Galeri olmayan uygulamalarda SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -26,7 +26,7 @@ Azure AD kurumsal uygulamalarınıza [Galeri uygulaması](add-gallery-app.md) ve
 > [!NOTE]
 > Galeri uygulaması mı ekliyorsunuz? [SaaS uygulama öğreticileri listesinde](../saas-apps/tutorial-list.md) adım adım kurulum yönergelerini bulun
 
-SAML dışı bir uygulama için kod yazmadan çoklu oturum açmayı yapılandırmak için bir aboneliğiniz veya Azure AD Premium olması gerekir ve uygulamanın SAML 2,0 ' i desteklemesi gerekir. Azure AD sürümleri hakkında daha fazla bilgi için [Azure AD fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/)ziyaret edin.
+SAML dışı bir uygulama için kod yazmadan çoklu oturum açmayı yapılandırmak için, bir Azure AD Premium lisansıyla birlikte aboneliğiniz olması gerekir ve uygulama SAML 2,0 ' i desteklemelidir. Azure AD sürümleri hakkında daha fazla bilgi için [Azure AD fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/)ziyaret edin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

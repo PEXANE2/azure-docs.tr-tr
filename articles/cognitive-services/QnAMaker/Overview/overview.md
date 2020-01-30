@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 944ddb7f83a4d10861e5a16dbc69b8f9e4dabfe0
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422675"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843065"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Soru-Cevap Oluşturma Hizmeti nedir?
 
@@ -25,10 +25,10 @@ Soru-Cevap Oluşturma istemci uygulaması, bir soruyu yanıtlamak için doğal d
 
 ## <a name="when-to-use-qna-maker"></a>Ne zaman kullanılacağı Soru-Cevap Oluşturma
 
-* **Statik bilgileriniz varsa** -bilgi yanıtlarınızın bilgi bankasında statik bilgileriniz varsa soru-cevap oluşturma kullanın. Bu Bilgi Bankası, [PDF 'ler ve URL 'ler](../concepts/data-sources-supported.md)gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
-* **Bir istek, soru veya komuta aynı yanıtı sağlamak istediğinizde** , farklı kullanıcılar aynı soruyu gönderdiğinde aynı yanıt döndürülür. 
+* **Statik bilgileriniz varsa** -bilgi yanıtlarınızın bilgi bankasında statik bilgileriniz varsa soru-cevap oluşturma kullanın. Bu Bilgi Bankası, [PDF 'ler ve URL 'ler](../concepts/content-types.md)gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
+* **Bir istek, soru veya komuta aynı yanıtı sağlamak istediğinizde** , farklı kullanıcılar aynı soruyu gönderdiğinde aynı yanıt döndürülür.
 * **Meta bilgilere göre statik bilgileri filtrelemek istediğinizde,** istemci uygulamanızın kullanıcılarına ve bilgilerine uygun ek filtreleme seçenekleri sağlamak için [meta veri](../how-to/metadata-generateanswer-usage.md) etiketleri ekleyin. Ortak meta veri bilgileri, [CHIT-chat](../how-to/chit-chat-knowledge-base.md), içerik türü veya biçimi, içerik amacı ve içerik yeniliği içerir.
-* **Statik bilgiler içeren bir bot iletişimini yönetmek istediğinizde,** bilgi tabanınız bir kullanıcının konuşma metin veya komutunu alır ve yanıt verir. Yanıt, bilgi bankasında [Çoklu oturum açma](../how-to/multiturn-conversation.md)ile temsil edilen önceden belirlenmiş bir konuşma akışının parçasıysa, bu akışı kolayca sağlayabilir.  
+* **Statik bilgiler içeren bir bot iletişimini yönetmek istediğinizde,** bilgi tabanınız bir kullanıcının konuşma metin veya komutunu alır ve yanıt verir. Yanıt, bilgi bankasında [Çoklu oturum açma](../how-to/multiturn-conversation.md)ile temsil edilen önceden belirlenmiş bir konuşma akışının parçasıysa, bu akışı kolayca sağlayabilir.
 
 ## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>Sohbet bot 'ta Soru-Cevap Oluşturma Bilgi Bankası 'nı kullanma
 
@@ -38,14 +38,14 @@ Bir Soru-Cevap Oluşturma Bilgi Bankası yayımlandığında, istemci uygulamas�
 
 |Adım|Eylem|
 |:--|:--|
-|1\.|İstemci uygulaması, kullanıcının _sorusunu_ (metni kendi kelimelerimi) gönderir, "nasıl yaparım? program aracılığıyla bilgi bankamı Güncelleştir" Bilgi Bankası uç noktanıza.|
+|1|İstemci uygulaması, kullanıcının _sorusunu_ (metni kendi kelimelerimi) gönderir, "nasıl yaparım? program aracılığıyla bilgi bankamı Güncelleştir" Bilgi Bankası uç noktanıza.|
 |2|Soru-Cevap Oluşturma, doğru yanıtı ve en iyi yanıtı aramayı iyileştirmek için kullanılabilecek herhangi bir izleme istemini sağlamak için eğitilen Bilgi Bankası 'nı kullanır. Soru-Cevap Oluşturma JSON biçimli bir yanıt döndürür.|
 |3|İstemci uygulaması, konuşmayı sürdürmek üzere kararlar almak için JSON yanıtını kullanır. Bu kararlar en iyi yanıtı göstermek ve en iyi yanıtı aramayı iyileştirmek için daha fazla seçenek sunmak içerebilir. |
 |||
 
-## <a name="what-is-a-knowledge-base"></a>Bilgi Bankası nedir? 
+## <a name="what-is-a-knowledge-base"></a>Bilgi Bankası nedir?
 
-Soru-Cevap Oluşturma [içeriğinizi](../concepts/data-sources-supported.md) soru-cevap kümelerinin bilgi tabanına aktarır. İçeri aktarma işlemi, soru ve yanıt kümeleri arasındaki ilişkileri belirleyen, yapılandırılmış ve yarı yapılandırılmış içeriğinizin parçaları arasındaki ilişki hakkındaki bilgileri ayıklar. Bu soru ve cevap kümelerini düzenleyebilir veya yeni kümeler ekleyebilirsiniz.  
+Soru-Cevap Oluşturma [içeriğinizi](../concepts/knowledge-base.md) soru-cevap kümelerinin bilgi tabanına aktarır. İçeri aktarma işlemi, soru ve yanıt kümeleri arasındaki ilişkileri belirleyen, yapılandırılmış ve yarı yapılandırılmış içeriğinizin parçaları arasındaki ilişki hakkındaki bilgileri ayıklar. Bu soru ve cevap kümelerini düzenleyebilir veya yeni kümeler ekleyebilirsiniz.
 
 Soru ve yanıt kümesi içeriği şunları içerir:
 * Sorunun tüm alternatif formları
@@ -54,13 +54,13 @@ Soru ve yanıt kümesi içeriği şunları içerir:
 
 ![Meta veriler ile örnek soru ve yanıt](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
-Bilgi tabanınızı yayımladıktan sonra bir istemci uygulaması, bir kullanıcının sorusunu uç noktanıza gönderir. Soru-Cevap Oluşturma hizmetiniz soruyu işler ve en iyi Yanıtla yanıt verir. 
+Bilgi tabanınızı yayımladıktan sonra bir istemci uygulaması, bir kullanıcının sorusunu uç noktanıza gönderir. Soru-Cevap Oluşturma hizmetiniz soruyu işler ve en iyi Yanıtla yanıt verir.
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Kod olmadan bir bot oluşturun, yönetin ve yayımlayın
 
-Soru-Cevap Oluşturma Portal, tüm Bilgi Bankası yazma deneyimini sağlar. Belge bilgilerini geçerli biçiminde bilgi tabanınızı içeri aktarabilirsiniz. Bu belgeler (SSS, ürün el kitabı, elektronik tablo veya Web sayfası gibi), soru ve yanıt kümelerine dönüştürülür. Her küme, izleme istemleri için çözümlenir ve diğer kümelere bağlanır. Son _markaşağı_ biçimi, görüntüler ve bağlantılar dahil zengin sunumu destekler. 
+Soru-Cevap Oluşturma Portal, tüm Bilgi Bankası yazma deneyimini sağlar. Belge bilgilerini geçerli biçiminde bilgi tabanınızı içeri aktarabilirsiniz. Bu belgeler (SSS, ürün el kitabı, elektronik tablo veya Web sayfası gibi), soru ve yanıt kümelerine dönüştürülür. Her küme, izleme istemleri için çözümlenir ve diğer kümelere bağlanır. Son _markaşağı_ biçimi, görüntüler ve bağlantılar dahil zengin sunumu destekler.
 
-Bilgi tabanınız düzenlendikten sonra, Bilgi Bankası 'nı herhangi bir kod yazmadan çalışan bir [Azure Web uygulaması bot](https://azure.microsoft.com/services/bot-service/) 'a yayımlayın. [Azure Portal](https://portal.azure.com) , botunuzu test edin veya geliştirmeye devam edin. 
+Bilgi tabanınız düzenlendikten sonra, Bilgi Bankası 'nı herhangi bir kod yazmadan çalışan bir [Azure Web uygulaması bot](https://azure.microsoft.com/services/bot-service/) 'a yayımlayın. [Azure Portal](https://portal.azure.com) , botunuzu test edin veya geliştirmeye devam edin.
 
 ## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>Arama kalitesi ve derecelendirmesi olası en iyi yanıtı sağlar
 
@@ -68,28 +68,28 @@ Soru-Cevap Oluşturma sistemi katmanlı bir derecelendirme yaklaşımıdır. Ver
 
 ## <a name="qna-maker-improves-the-conversation-process"></a>Soru-Cevap Oluşturma konuşma sürecini geliştirir
 
-Soru-Cevap Oluşturma, basit soru ve yanıt kümelerinizi iyileştirmenize yardımcı olmak için çok yönlü istemler ve etkin öğrenme sağlar. 
+Soru-Cevap Oluşturma, basit soru ve yanıt kümelerinizi iyileştirmenize yardımcı olmak için çok yönlü istemler ve etkin öğrenme sağlar.
 
-**Çoklu açma istemleri** , soru ve yanıt çiftlerini bağlama fırsatı sağlar. Bu bağlantı, istemci uygulamasının en iyi yanıtı sağlamasına ve nihai yanıt aramasını iyileştirmek için daha fazla soru sunmasına olanak tanır. 
+**Çoklu açma istemleri** , soru ve yanıt çiftlerini bağlama fırsatı sağlar. Bu bağlantı, istemci uygulamasının en iyi yanıtı sağlamasına ve nihai yanıt aramasını iyileştirmek için daha fazla soru sunmasına olanak tanır.
 
-Bilgi Bankası, yayımlanan bitiş noktasındaki kullanıcılardan gelen soruları aldıktan sonra Soru-Cevap Oluşturma, bu gerçek dünyadaki sorulara, kaliteyi artırmak için bilgi bankasında değişiklik önermek üzere **etkin öğrenme** uygular. 
+Bilgi Bankası, yayımlanan bitiş noktasındaki kullanıcılardan gelen soruları aldıktan sonra Soru-Cevap Oluşturma, bu gerçek dünyadaki sorulara, kaliteyi artırmak için bilgi bankasında değişiklik önermek üzere **etkin öğrenme** uygular.
 
 ## <a name="development-lifecycle"></a>Geliştirme yaşam döngüsü
 
-Soru-Cevap Oluşturma, tam geliştirme yaşam döngüsü ile tümleştirme için birlikte çalışma izinleriyle birlikte yazma, eğitim ve yayımlama olanağı sağlar. 
+Soru-Cevap Oluşturma, tam geliştirme yaşam döngüsü ile tümleştirme için birlikte çalışma izinleriyle birlikte yazma, eğitim ve yayımlama olanağı sağlar.
 
 ## <a name="how-do-i-start"></a>Kullanmaya nasıl başlayabilirim?
 
-**1. adım**: [Azure Portal](https://portal.azure.com)soru-cevap oluşturma kaynak oluşturma. 
+**1. adım**: [Azure Portal](https://portal.azure.com)soru-cevap oluşturma kaynak oluşturma.
 
-**2. adım**: [soru-cevap oluşturma](https://www.qnamaker.ai) portalında Bilgi Bankası oluşturma. Bilgi Bankası oluşturmak için [dosya ve URL 'ler](../concepts/data-sources-supported.md) ekleyin.  
+**2. adım**: [soru-cevap oluşturma](https://www.qnamaker.ai) portalında Bilgi Bankası oluşturma. Bilgi Bankası oluşturmak için [dosya ve URL 'ler](../concepts/content-types.md) ekleyin.
 
-**Adım 3**: [kıvrımlı veya Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)kullanarak özel uç noktanıza bilgi bankasını ve testinizi yayımlayın. 
+**Adım 3**: [kıvrımlı veya Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)kullanarak özel uç noktanıza bilgi bankasını ve testinizi yayımlayın.
 
-**4. adım**: istemci uygulamanızdan, program aracılığıyla bilgi tabanınızın uç noktasını çağırın. İstemci uygulaması, kullanıcıya en iyi yanıtı göstermek için JSON yanıtını işler.  
+**4. adım**: istemci uygulamanızdan, program aracılığıyla bilgi tabanınızın uç noktasını çağırın. İstemci uygulaması, kullanıcıya en iyi yanıtı göstermek için JSON yanıtını işler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Soru-Cevap Oluşturma, özel bilgi tabanınızı oluşturmak, yönetmek ve dağıtmak için ihtiyacınız olan her şeyi sağlar. 
+Soru-Cevap Oluşturma, özel bilgi tabanınızı oluşturmak, yönetmek ve dağıtmak için ihtiyacınız olan her şeyi sağlar.
 
 > [!div class="nextstepaction"]
 > [En son değişiklikleri gözden geçirin](../whats-new.md)

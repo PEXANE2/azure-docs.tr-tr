@@ -1,29 +1,29 @@
 ---
 title: Güvenirlik puanı-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Güvenilirlik puanı güvenle yanıt verilen kullanıcı sorgusu için doğru eşleşme olduğunu gösterir.
+description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e2f7136ea7b973386eeb746a74ad09fadb490e83
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229113"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843461"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Soru-cevap Oluşturucu Bilgi Bankası güvenilirlik puanı
-Kullanıcı sorgusu karşı Bilgi Bankası eşleştiğinde, soru-cevap Oluşturucu bir güven puanı yanı sıra ilgili yanıt verir. Bu puanı güvenle yanıt verilen kullanıcı sorgusu için doğru eşleşme olduğunu gösterir. 
+# <a name="the-confidence-score-of-an-answer"></a>Bir yanıtın Güvenirlik puanı
+Kullanıcı sorgusu karşı Bilgi Bankası eşleştiğinde, soru-cevap Oluşturucu bir güven puanı yanı sıra ilgili yanıt verir. Bu puanı güvenle yanıt verilen kullanıcı sorgusu için doğru eşleşme olduğunu gösterir.
 
 Güvenilirlik puanı, 0 ile 100 arasında bir sayıdır. Bir puan 100 olasılıkla eşleşen hiç yanıt bulunamadı 0 anlamına gelir, bir puan sırasında tam bir eşleşme var. Yüksek puan - yanıtında kendilerinden daha emin. Belirli bir sorgu için birden çok yanıt döndürdü olabilir. Bu durumda, yanıtları güvenilirlik puanı azalan sırayla döndürülür.
 
-Aşağıdaki örnekte, 2 sorularla bir soru-cevap varlık görebilirsiniz. 
+Aşağıdaki örnekte, 2 sorularla bir soru-cevap varlık görebilirsiniz.
 
 
 ![Soru-cevap çifti örneği](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
@@ -50,16 +50,16 @@ Yukarıdaki tabloda, çoğu KB'leri üzerinde beklenen puanları gösterilmekted
 
 Eşiğine seçerken, doğruluk ve kapsamı arasındaki dengeyi göz önünde bulundurun ve gereksinimlerinize göre eşiğine ince ayar.
 
-- Eğer senaryonuz için **doğruluk** (veya duyarlık) daha önemliyse, daha sonra eşiği artırın. Bu şekilde bir yanıt döndürür her zaman büyük/küçük harf ve yanıt kullanıcılar aradığınız olması olası çok daha fazlasını bir kişiye olacaktır. Bu durumda, daha fazla yanıtlanmamış soruları bırakarak yukarı bitiş. *Örneğin:* **70**eşiğini yaparsanız, "Kaydet ve eğitme nedir?" gibi bazı belirsiz örnekleri kaçırırdınız.
+- Varsa **doğruluğu** (veya duyarlık) senaryonuz için daha önemlidir ve ardından, eşiğini yükseltin. Bu şekilde bir yanıt döndürür her zaman büyük/küçük harf ve yanıt kullanıcılar aradığınız olması olası çok daha fazlasını bir kişiye olacaktır. Bu durumda, daha fazla yanıtlanmamış soruları bırakarak yukarı bitiş. *Örneğin:* eşiği yaparsanız **70**, "nedir kaydedin ve eğitme?" bazı belirsiz örnekler beğenilerin kaçırabilirsiniz.
 
-- **Kapsam** (veya geri çekme) daha önemliyse ve kullanıcının sorusuna yalnızca kısmi bir ilişki olsa bıle eşiği düşürmek için mümkün olduğunca fazla soru yanıtlamak istiyorsanız. Bu gösterir, burada yanıt kullanıcının gerçek sorgu yanıt vermezse, ancak bazı diğer biraz ilgili yanıt verir daha fazla durumda olabilir. *Örneğin:* **30**EŞIĞINI yaparsanız, "KB 'umu düzenleyebilirim?" gibi sorgular için yanıt verebilirsiniz.
+- Varsa **kapsamı** (veya geri çağırma) daha önemli olduğu ve yalnızca kısmi bir ilişkisi için kullanıcının soru - olsa bile kadar fazla soruyu mümkün olduğunca ardından alt olarak eşiği yanıt istiyorsanız. Bu gösterir, burada yanıt kullanıcının gerçek sorgu yanıt vermezse, ancak bazı diğer biraz ilgili yanıt verir daha fazla durumda olabilir. *Örneğin:* **30**EŞIĞINI yaparsanız, "KB 'umu düzenleyebilirim?" gibi sorgular için yanıt verebilirsiniz.
 
 > [!NOTE]
-> Soru-cevap Oluşturucu daha yeni sürümlerini Puanlama mantığı için geliştirmeler içerir ve eşiğine etkileyebilir. İstediğiniz zaman hizmet güncelleştirmesi, test edin ve gerekiyorsa eşik ince emin olun. [Burada](https://www.qnamaker.ai/UserSettings)QNA hizmeti sürümünüzü denetleyebilir ve en son güncelleştirmeleri [buradan](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)nasıl alacağınız hakkında bilgi edinebilirsiniz.
+> Soru-cevap Oluşturucu daha yeni sürümlerini Puanlama mantığı için geliştirmeler içerir ve eşiğine etkileyebilir. İstediğiniz zaman hizmet güncelleştirmesi, test edin ve gerekiyorsa eşik ince emin olun. Soru-cevap hizmet sürümü denetleyebilirsiniz [burada](https://www.qnamaker.ai/UserSettings)ve son gelişmeleri öğrenin [burada](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
-## <a name="set-threshold"></a>Eşiği ayarla 
+## <a name="set-threshold"></a>Eşiği ayarla
 
-Eşik Puanını [Generateanswer API JSON gövdesinin](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)bir özelliği olarak ayarlayın. Bu, her GenerateAnswer çağrısı için ayarladığınız anlamına gelir. 
+Eşik Puanını [Generateanswer API JSON gövdesinin](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)bir özelliği olarak ayarlayın. Bu, her GenerateAnswer çağrısı için ayarladığınız anlamına gelir.
 
 Bot çerçevesinden, veya [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)ile Options nesnesinin bir parçası olarak puanı ayarlayın.
 
@@ -72,40 +72,23 @@ Birden çok yanıtı benzer bir güvenilirlik puanı varsa, sorgu çok geneldir 
 
 
 ## <a name="confidence-score-differences-between-test-and-production"></a>Test ve üretim arasındaki güven puanı farkları
-İçeriği aynı olsa bile bir yanıt güvenilirlik puanı negligibly test ve Bilgi Bankası yayımlanmış sürümü arasında değişebilir. Bunun nedeni, test ve yayımlanan bilgi tabanı içeriğinin farklı Azure Bilişsel Arama dizinlerinde konumlandırıldı. 
+İçeriği aynı olsa bile bir yanıt güvenilirlik puanı negligibly test ve Bilgi Bankası yayımlanmış sürümü arasında değişebilir. Bunun nedeni, test ve yayımlanan bilgi tabanı içeriğinin farklı Azure Bilişsel Arama dizinlerinde konumlandırıldı.
 
 Test dizini, bilgi tabanlarınızın tüm QnA çiftlerini barındırır. Test dizini sorgulanırken, sorgu tüm dizine uygulanır, bundan sonra sonuçlar ilgili Bilgi Bankası için bölüm ile kısıtlanır. Test sorgu sonuçları, bilgi bankasını doğrulama yeteneğinizi olumsuz şekilde etkiledikleri takdirde şunları yapabilirsiniz:
 * bilgi Bankalarınızı aşağıdakilerden birini kullanarak düzenleyin:
-    * 1 KB ile kısıtlanan kaynak: tek bir QnA kaynağını (ve elde edilen Azure Bilişsel Arama test dizinini) tek bir Bilgi Bankası ile sınırlandırın. 
+    * 1 KB ile kısıtlanan kaynak: tek bir QnA kaynağını (ve elde edilen Azure Bilişsel Arama test dizinini) tek bir Bilgi Bankası ile sınırlandırın.
     * 2 kaynak-test için 1, üretim için 1: bir test için (kendi test ve üretim dizinleriyle) bir tane olmak üzere bir diğeri de bir ürüne (kendi test ve üretim dizinlerine sahip olması) yönelik iki Soru-Cevap Oluşturma kaynağı vardır
 * hem test hem de üretim bilgi tabanınızı sorgularken **[üst](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** gibi her zaman aynı parametreleri kullanın
 
 Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın sorusu ve yanıt içerikleri, test dizininden Azure Search 'teki bir üretim dizinine gider. [Yayımla](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) işleminin nasıl çalıştığını görün.
 
-Farklı bölgelerde bilgi tabanınız varsa, her bölge kendi Azure Bilişsel Arama dizinini kullanır. Farklı dizinler kullanıldığından, puanlar tam olarak aynı olmayacaktır. 
+Farklı bölgelerde bilgi tabanınız varsa, her bölge kendi Azure Bilişsel Arama dizinini kullanır. Farklı dizinler kullanıldığından, puanlar tam olarak aynı olmayacaktır.
 
 
 ## <a name="no-match-found"></a>Eşleşme bulunamadı
-Derecelendiricisini tarafından iyi bir eşleşme bulunduğunda 0.0 ya da "None" güven puanı döndürülür ve "iyi eşleşme KB bulunamadı" varsayılan yanıttır. Uç noktayı çağıran bot veya Application kodundaki bu [varsayılan yanıtı](#change-default-answer) geçersiz kılabilirsiniz. Alternatif olarak, geçersiz kılma yanıt Azure'da ayarlayabilirsiniz ve bu belirli bir soru-cevap Oluşturucu hizmeti dağıtılan tüm bilgi bankaları için varsayılan değiştirir.
-
-## <a name="change-default-answer"></a>Varsayılan yanıt değiştirme
-
-1. [Azure Portal](https://portal.azure.com) gidin ve oluşturduğunuz soru-cevap oluşturma hizmeti temsil eden kaynak grubuna gidin.
-
-2. **App Service**açmak için tıklayın.
-
-    ![Azure portalında App service için soru-cevap Oluşturucu erişim](../media/qnamaker-concepts-confidencescore/set-default-response.png)
-
-3. **Uygulama ayarları** ' na tıklayın ve **Defaultanswer** alanını istenen varsayılan yanıta göre düzenleyin. **Save (Kaydet)** düğmesine tıklayın.
-
-    ![Uygulama ayarlarını seçin ve ardından DefaultAnswer için soru-cevap Oluşturucu düzenleyin](../media/qnamaker-concepts-confidencescore/change-response.png)
-
-4. App service'ı yeniden başlatın
-
-    ![Soru-cevap Oluşturucu appservice DefaultAnswer değiştirdikten sonra yeniden başlatın](../media/qnamaker-faq/qnamaker-appservice-restart.png)
-
+Derecelendiricisini tarafından iyi bir eşleşme bulunduğunda 0.0 ya da "None" güven puanı döndürülür ve "iyi eşleşme KB bulunamadı" varsayılan yanıttır. Uç noktayı çağıran bot veya Application kodundaki bu [varsayılan yanıtı](../How-To/metadata-generateanswer-usage.md) geçersiz kılabilirsiniz. Alternatif olarak, geçersiz kılma yanıt Azure'da ayarlayabilirsiniz ve bu belirli bir soru-cevap Oluşturucu hizmeti dağıtılan tüm bilgi bankaları için varsayılan değiştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Desteklenen veri kaynakları](./data-sources-supported.md)
+> [En iyi uygulamalar](./best-practices.md)
 

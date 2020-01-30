@@ -1,10 +1,9 @@
 ---
-title: Azure ağ güvenlik grubu akış günlüklerini - Graylog çözümleme | Microsoft Docs
-description: Yönetme ve Ağ İzleyicisi ile Graylog kullanarak azure'da ağ güvenliği grubu akış günlüklerini analiz etme hakkında bilgi edinin.
+title: Azure ağ güvenlik grubu akış günlüklerini çözümleme-gri günlük | Microsoft Docs
+description: Ağ Izleyicisi ve gri günlük kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme hakkında bilgi edinin.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
+author: damendo
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,68 +13,68 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
-ms.author: mareat
-ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: damendo
+ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60625280"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842912"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Ağ İzleyicisi ile Graylog kullanarak azure'da ağ güvenlik grubu akış günlüklerini analiz etme ve yönetme
+# <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Ağ Izleyicisi ve gri günlük kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
 
-[Ağ güvenlik grubu akış günlüklerini](network-watcher-nsg-flow-logging-overview.md) Azure ağ arabirimleri için giriş ve çıkış IP trafiğini anlamak için kullanabileceğiniz bilgileri sağlar. Akış günlüklerini göster giden ve gelen akışlar bir ağ güvenlik grubu kuralı temelinde hesaplamaz ağ arabirimini akışı, akış 5 demet bilgi (kaynak/hedef IP, kaynak/hedef bağlantı noktası, protokol) uygular ve trafiğin izin verilen veya reddedilen .
+[Ağ güvenlik grubu akış günlükleri](network-watcher-nsg-flow-logging-overview.md) , Azure ağ arabirimleri için giriş ve çıkış IP trafiğini anlamak için kullanabileceğiniz bilgiler sağlar. Akış günlükleri her bir ağ güvenlik grubu kuralı temelinde giden ve gelen akışları gösterir, akışın ağ arabirimi (Flow), 5 demet bilgileri (kaynak/hedef IP, kaynak/hedef bağlantı noktası, protokol) Flow hakkında ve trafiğe izin verildiyse veya reddedildiyse.
 
-Birçok ağ güvenlik grubu akış günlüğe kaydetme etkin ağınızdaki olabilir. Akış günlüğe kaydetme etkin birden fazla ağ güvenlik gruplarıyla ayrıştırılamadı ve günlüklerinizi verilerden Öngörüler elde etmeye hantal yapabilirsiniz. Bu makalede Graylog, bir açık kaynak günlük yönetimi ve analiz aracı ve Logstash, bir açık kaynak sunucu tarafı veri işleme ardışık düzeni'ni kullanarak bu ağ güvenlik grubu akış günlüklerini merkezi olarak yönetmek için bir çözüm sağlar.
+Ağınızda akış günlüğü etkin olan birçok ağ güvenlik grubu olabilir. Akış günlüğü etkin olan birkaç ağ güvenlik grubu, verilerinizden ayrıştırmaya ve günlüklerinizden öngörülere sahip olmasını sağlayabilir. Bu makalede, bir açık kaynak sunucu tarafı veri işleme işlem hattı olan bir açık kaynak günlük yönetimi ve Analiz Aracı ve Logstash kullanarak bu ağ güvenlik grubu akış günlüklerini merkezi olarak yönetmek için bir çözüm sunulmaktadır.
 
 > [!Warning]
-> Aşağıdaki adımlar akış günlükleri sürüm 1 ile çalışır. Ayrıntılar için bkz [için ağ güvenlik grubu akış günlüğe kaydetme giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapmadan günlük dosyalarının sürüm 2 ile çalışmaz.
+> Aşağıdaki adımlar akış günlükleri sürüm 1 ile birlikte çalışır. Ayrıntılar için bkz. [ağ güvenlik grupları için akış günlüğüne giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapılmadan günlük dosyalarının 2. sürümüyle birlikte çalışmayacaktır.
 
 ## <a name="scenario"></a>Senaryo
 
-Ağ İzleyicisi'ni kullanarak ağ güvenlik grubu akış günlüklerini etkinleştirilir. Azure blob depolama alanına akış günlükleri akış içinde. Logstash eklentisi, bağlanma ve blob depolama alanından akış günlüklerini işlemek ve bunları Graylog için göndermek için kullanılır. Akış günlüklerini içinde Graylog depolandıktan sonra edilebilmeleri analiz ve özelleştirilmiş panolar görselleştirilir.
+Ağ güvenlik grubu akış günlükleri, ağ Izleyicisi kullanılarak etkinleştirilir. Akış günlükleri Azure Blob depolama alanına akar. Bir Logstash eklentisi, blob depolamadan akış günlüklerini bağlamak ve işlemek ve bunları griye göndermek için kullanılır. Akış günlükleri, grileştirilmiş günlükte depolandıktan sonra analiz edilebilir ve özelleştirilmiş panolar halinde görselleştirilebilir.
 
-![Graylog iş akışı](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
+![Gri günlük iş akışı](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
 
 ## <a name="installation-steps"></a>Yükleme Adımları
 
-### <a name="enable-network-security-group-flow-logging"></a>Ağ güvenlik grubu akış günlüğe kaydetme etkinleştir
+### <a name="enable-network-security-group-flow-logging"></a>Ağ güvenlik grubu akış günlüğünü etkinleştir
 
-Bu senaryo için en az bir ağ güvenlik grubu, hesabınızdaki etkin ağ güvenlik grubu akış günlüğe kaydetme olması gerekir. Güvenlik grubu akış günlüklerini etkinleştirme hakkında yönergeler ağ için aşağıdaki makaleye başvurun [için ağ güvenlik grubu akış günlüğe kaydetme giriş](network-watcher-nsg-flow-logging-overview.md).
+Bu senaryoda, hesabınızdaki en az bir ağ güvenlik grubunda ağ güvenlik grubu akış günlüğü 'nün etkin olması gerekir. Ağ güvenlik grubu akış günlüklerini etkinleştirme hakkında yönergeler için, [ağ güvenlik grupları için akış günlüğüne giriş konusuna giriş](network-watcher-nsg-flow-logging-overview.md)olarak aşağıdaki makaleye bakın.
 
-### <a name="setting-up-graylog"></a>Graylog ayarlama
+### <a name="setting-up-graylog"></a>Gri günlük ayarlama
 
-Bu örnekte, Graylog hem Logstash, Azure'da dağıtılan bir Ubuntu 14.04 sunucusunda yapılandırılır.
+Bu örnekte, Azure 'da dağıtılan bir Ubuntu 14,04 sunucusunda her iki gri günlük ve Logstash yapılandırılır.
 
-- Başvurmak [belgeleri](https://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) Graylog adım adım yönergeler için yükleme Ubuntu.
-- İzleyerek Graylog web arabirimini de yapılandırdığınızdan emin olun [belgeleri](https://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif).
+- Ubuntu 'da nasıl yükleneceğine ilişkin adım adım yönergeler için, griden günlük [belgelere](https://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) bakın.
+- [Belgeler](https://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif)' i izleyerek Ayrıca, bir gri günlük Web arabirimini de yapılandırmadığınızdan emin olun.
 
-Bu örnek, minimum Graylog Kurulum (yani kullanır. tek bir örneği bir Graylog), ancak Graylog desteklemesi için sistem ve üretim bağlı olarak kaynakları arasında ihtiyaçları ölçeklendirmek için. Graylog'ın mimari konuları veya derin Mimari Kılavuzu hakkında daha fazla bilgi için bkz. [belgeleri](https://docs.graylog.org/en/2.2/pages/architecture.html) ve [Mimari Kılavuzu](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
+Bu örnek, minimum gri günlük kurulumunu kullanır (ör. bir gri tonlamalı günlüğün tek bir örneği), ancak gri, sistem ve üretim gereksinimlerinize bağlı olarak kaynaklar genelinde ölçeklenebilen şekilde etkinleştirilebilir. Mimari konuları veya derinlemesine mimari kılavuz hakkında daha fazla bilgi için bkz. gri günlük [belgeleri](https://docs.graylog.org/en/2.2/pages/architecture.html) ve [mimari Kılavuzu](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
 
-Graylog, platform ve tercihlerine bağlı olarak birçok yolla yüklenebilir. Graylog'ın resmi olası yükleme yöntemlerinin tam listesi için bkz [belgeleri](https://docs.graylog.org/en/2.2/pages/installation.html). Graylog sunucu uygulaması, Linux dağıtımlarında çalıştırır ve aşağıdaki önkoşullara sahiptir:
+Gri, platformunuza ve tercihlerinize bağlı olarak birçok şekilde gri bir şekilde yüklenebilir. Olası yükleme yöntemlerinin tam listesi için, gri tonlamalı günlüğün resmi [belgelerine](https://docs.graylog.org/en/2.2/pages/installation.html)bakın. Gri günlük sunucu uygulaması, Linux dağıtımları üzerinde çalışır ve aşağıdaki önkoşullara sahiptir:
 
--  Java SE 8 veya üzeri – [Azul Azure JDK belgeleri](https://aka.ms/azure-jdks)
--  Esnek 2.x arama (2.1.0 veya üzeri)- [Elasticsearch yükleme belgeleri](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
--  MongoDB 2.4 veya sonraki bir sürümü – [MongoDB yükleme belgeleri](https://docs.mongodb.com/manual/administration/install-on-linux/)
+-  Java s 8 veya üzeri – [Azul Azure JDK belgeleri](https://aka.ms/azure-jdks)
+-  Elastik arama 2. x (2.1.0 veya üzeri)- [Elaksearch yükleme belgeleri](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
+-  MongoDB 2,4 veya üzeri – [MongoDB Yükleme belgeleri](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
-### <a name="install-logstash"></a>Logstash'i yükleyin
+### <a name="install-logstash"></a>Logstash 'i yükler
 
-Logstash bir akış tanımlama grubu düzeyinde JSON biçimli akış günlüklerini düzleştirmek için kullanılır. Akış günlüklerini düzleştirme günlükleri düzenlemek ve Graylog içinde arama yapmak daha kolay getirir.
+Logstash, JSON biçimli akış günlüklerini bir akış grubu düzeyine düzleştirmek için kullanılır. Akış günlüklerinin düzleştirilmesi, günlüklerin daha kolay bir şekilde okunmasını ve bu günlükte aranmasını kolaylaştırır.
 
-1. Logstash yüklemek için aşağıdaki komutları çalıştırın:
+1. Logstash 'i yüklemek için aşağıdaki komutları çalıştırın:
 
    ```bash
    curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
    sudo dpkg -i logstash-5.2.0.deb
    ```
 
-2. Akış günlüklerini ayrıştırmanıza ve bunları için Graylog göndermek için Logstash'i yapılandırma. Logstash.conf dosyası oluşturun:
+2. Günlük günlüklerini ayrıştırmak ve bunları griye göndermek için Logstash 'i yapılandırın. Logstash. conf dosyası oluşturma:
 
    ```bash
    sudo touch /etc/logstash/conf.d/logstash.conf
    ```
 
-3. Aşağıdaki içeriği dosyaya ekleyin. Depolama hesabınızın ayrıntıları yansıtmak üzere vurgulanan değerleri değiştirin:
+3. Aşağıdaki içeriği dosyaya ekleyin. Vurgulanan değerleri, depolama hesabı ayrıntılarınızı yansıtacak şekilde değiştirin:
 
    ```
     input {
@@ -150,101 +149,101 @@ Logstash bir akış tanımlama grubu düzeyinde JSON biçimli akış günlükler
         }
     }
     ```
-   Sağlanan Logstash yapılandırma dosyası, üç bölümden oluşur: Giriş, filtre ve çıktı. Giriş bölümü Logstash işlem günlükleri giriş kaynağını belirler: Bu durumda, ağ güvenlik grubu akış erişmesine olanak sağlayan (sonraki adımlarda) bir Azure blogu giriş eklentisinin yüklü kullanacaksanız günlük JSON dosyaları blob depolama alanında depolanır.
+   Girilen Logstash yapılandırma dosyası üç bölümden oluşur: giriş, filtre ve çıkış. Giriş bölümü, Logstash 'in işlem yapacağı günlüklerin giriş kaynağını belirler. Bu durumda, blob depolamada depolanan ağ güvenlik grubu akış günlüğü JSON dosyalarına erişebilmemizi sağlayan bir Azure blog giriş eklentisi (sonraki adımlarda yüklenir) kullanacaksınız.
 
-Ayrı bir Logstash olay her tek tek akış tanımlama grubu ve ilişkili özellikleri haline gelebilmesi filtre bölümünde her akış günlük dosyası ardından düzleştirir.
+Filtre bölümü, her akış kayıt düzeninin ve ilişkili özelliklerinin ayrı bir Logstash olayı haline gelmesi için her akış günlük dosyasını düzleştirir.
 
-Son olarak, çıkış bölümüne her Logstash olay Graylog sunucusuna iletir. Kendi belirli gereksinimlerine uyacak şekilde, Logstash yapılandırma dosyası, gerektiği gibi değiştirin.
+Son olarak, çıkış bölümü her Logstash olayını gri günlük sunucusuna iletir. Özel gereksinimlerinize uyacak şekilde, Logstash yapılandırma dosyasını gerektiği şekilde değiştirin.
 
    > [!NOTE]
-   > Önceki yapılandırma dosyası Graylog sunucunun yerel konak geri döngü IP adresinde 127.0.0.1 yapılandırıldığını varsayar. Aksi durumda, çıkış bölümünde konak parametresi için doğru IP adresi değiştirdiğinizden emin olun.
+   > Önceki yapılandırma dosyası, yerel ana bilgisayar geri döngü IP adresi 127.0.0.1 üzerinde bir gri günlük sunucusunun yapılandırıldığını varsayar. Aksi takdirde, çıkış bölümünde ana bilgisayar parametresini doğru IP adresi ile değiştirdiğinizden emin olun.
 
-Logstash Logstash yükleme hakkında daha fazla yönerge için bkz. [belgeleri](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+Logstash 'i yükleme hakkında daha fazla yönerge için bkz. Logstash [belgeleri](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
 
-### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>Azure blob depolama için eklenti Logstash giriş yükleyin
+### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>Azure Blob depolama için Logstash giriş eklentisini yükler
 
-Logstash eklentisini akış günlüklerini kullanıcıların belirtilen blob depolama hesabından doğrudan erişmesini sağlar. Eklentinin varsayılan Logstash yükleme dizini (büyük/küçük harf bu /usr/share/logstash/bin) yüklemek için aşağıdaki komutu çalıştırın:
+Logstash eklentisi, akış günlüklerine belirlenen BLOB depolama hesabından doğrudan erişmenizi sağlar. Eklentiyi yüklemek için, varsayılan Logstash yükleme dizininden (Bu durumda/usr/share/logstash/bin), aşağıdaki komutu çalıştırın:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-Bu Tak hakkında daha fazla bilgi için bkz: [belgeleri](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Bu eklenti hakkında daha fazla bilgi için [belgelerine](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)bakın.
 
-### <a name="set-up-connection-from-logstash-to-graylog"></a>Bağlantı kurmak için Graylog Logstash'ten elasticsearch'e ayarlayın
+### <a name="set-up-connection-from-logstash-to-graylog"></a>Logstash 'ten gri günlüğe bağlantı kurma
 
-Logstash kullanarak akış günlüklerini bağlantı ve Graylog sunucu ayarlama göre Graylog gelen günlük dosyalarını kabul edecek şekilde yapılandırmanız gerekir.
+Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir gri günlük sunucusunu ayarlamaya göre, gelen günlük dosyalarını kabul etmek için, bir gri günlük yapılandırmanız gerekir.
 
-1. İçin yapılandırılan URL kullanan, Graylog sunucu web arabirimine gidin. Tarayıcınıza yönlendirerek arabirimi erişebilirsiniz. `http://<graylog-server-ip>:9000/`
+1. Sizin için yapılandırdığınız URL 'YI kullanarak, gri günlük sunucunuzun Web arabirimine gidin. Tarayıcınızı `http://<graylog-server-ip>:9000/` uygulamasına yönlendirerek arabirime erişebilirsiniz
 
-2. Yapılandırma sayfasına gitmek için **sistem** açılır menüde, üst gezinti çubuğunda sağ ve ardından **girişleri**.
-   Alternatif olarak, gidin `http://<graylog-server-ip>:9000/system/inputs`
+2. Yapılandırma sayfasına gitmek için sağ üst gezinti çubuğundan **sistem** açılan menüsünü seçin ve ardından **girişler**' e tıklayın.
+   Alternatif olarak, `http://<graylog-server-ip>:9000/system/inputs` git
 
-   ![Başlarken](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
+   ![Başlangıç](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. Yeni giriş başlatmak için *GELF UDP* içinde **seçin giriş** açılır menüsünü ve ardından formu doldurun. GELF Graylog Genişletilmiş günlük biçimini anlamına gelir. GELF biçimi Graylog tarafından geliştirilmiştir. Graylog kendine göre avantajları hakkında daha fazla bilgi için bkz [belgeleri](https://docs.graylog.org/en/2.2/pages/gelf.html).
+3. Yeni girişi başlatmak için **Giriş Seç** açılan kutusunda *gelf UDP* ' yi seçin ve ardından formu doldurun. GELF, gri günlük Genişletilmiş günlük biçimini temsil eder. GELF biçimi, Grig günlüğü tarafından geliştirilmiştir. Avantajları hakkında daha fazla bilgi edinmek için bkz. gri günlük [belgeleri](https://docs.graylog.org/en/2.2/pages/gelf.html).
 
-   Graylog sunucunuz üzerinde yapılandırılmış IP girişi bağlamak emin olun. IP adresi eşleşmelidir **konak** Logstash yapılandırma dosyasının UDP çıkış alanı. Varsayılan bağlantı noktası olmalıdır *12201*. Eşleşen bağlantı sağlamak **bağlantı noktası** UDP alanında çıkış Logstash yapılandırma dosyasında belirtilen.
+   Girişi, gri tonlamalı günlük sunucunuzu yapılandırdığınız IP 'ye bağladığınızdan emin olun. IP adresi, Logstash yapılandırma dosyasının UDP çıktısının **ana bilgisayar** alanıyla eşleşmelidir. Varsayılan bağlantı noktası *12201*olmalıdır. Bağlantı noktasının Logstash yapılandırma dosyasında belirlenen UDP çıkışındaki **bağlantı noktası** alanıyla eşleştiğinden emin olun.
 
    ![Girişler](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-   Giriş başlatma sonra altında görünmesini görmeniz gerekir **yerel girişleri** aşağıdaki resimde gösterildiği gibi bölüm:
+   Girişi başlattıktan sonra, aşağıdaki resimde gösterildiği gibi **Yerel girişler** bölümünün altında göründüğünü görmeniz gerekir:
 
    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
-   Graylog ileti girişleri hakkında daha fazla bilgi için bkz [belgeleri](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
+   Gri günlük ileti girişleri hakkında daha fazla bilgi edinmek için [belgelerine](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)bakın.
 
-4. Bu yapılandırmaları yaptıktan sonra Logstash'i aşağıdaki komutla akış günlüklerini okuma başlamak için başlatabilirsiniz: `sudo systemctl start logstash.service`.
+4. Bu yapılandırma yapıldıktan sonra, aşağıdaki komutla akış günlüklerinde okumaya başlamak için Logstash 'i başlatabilirsiniz: `sudo systemctl start logstash.service`.
 
-### <a name="search-through-graylog-messages"></a>Graylog iletiler arasında arama
+### <a name="search-through-graylog-messages"></a>Gri günlük iletilerinde arama
 
-İletileri toplanacak Graylog sunucunuz için bir süre sonra izin, iletiler arasında arama yapabilir. Graylog sunucunuza gönderilmekte olan iletileri kontrol etmek için **girişleri** yapılandırma sayfasını tıklatın "**Show alınan iletileri**" düğmesini GELF UDP oluşturduğunuz giriş. Aşağıdaki resme benzer bir ekran yönlendirilirsiniz: 
+Bir süredir, bir gri günlük sunucunuzun iletileri toplaması için bir süre geçtikten sonra iletilerde arama yapabilirsiniz. Gri günlük sunucunuza gönderilen iletileri denetlemek için, **giriş** yapılandırma sayfasından oluşturduğunuz GELF UDP girişinin "**alınan iletileri göster**" düğmesine tıklayın. Aşağıdaki resme benzer bir ekrana yönlendirilirsiniz: 
 
 ![Çubuk grafik](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
-Mavi "% {Message}" bağlantısına tıklayarak her ileti her akış demet parametreleri göstermek için aşağıdaki resimde gösterilen şekilde genişletir:
+Mavi "% {Message}" bağlantısına tıklanması her bir iletiyi aşağıdaki resimde gösterildiği gibi her bir akış tanımlama alanının parametrelerini gösterecek şekilde genişletir:
 
-![İletiler](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![Mesajlar](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
-Aramak için bir özel ileti alan seçmezseniz, varsayılan olarak, tüm ileti alanlar aramaya eklenir. (Yani belirli iletileri arama yapmak istiyorsanız – belirli bir gelen akış diziler kaynak IP) Graylog arama sorgu dili olarak kullanabileceğiniz [belgelenen](https://docs.graylog.org/en/2.2/pages/queries.html)
+Arama yapmak için belirli bir ileti alanı seçmezseniz, varsayılan olarak tüm ileti alanları aramaya dahil edilir. Belirli iletileri aramak istiyorsanız (ör. – belirli bir kaynak IP 'den akış başlıkları) [belgelendiği](https://docs.graylog.org/en/2.2/pages/queries.html) gibi, gri günlük arama sorgu dilini kullanabilirsiniz
 
-## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Graylog kullanarak ağ güvenlik grubu akış günlüklerini analiz edin
+## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Gri günlük kullanarak ağ güvenlik grubu akış günlüklerini çözümleme
 
-Graylog çalıştıran ayarlamanız, akış günlük verilerinizi daha iyi anlamak için bazı işlevlerini kullanabilirsiniz. Verilerinizin belirli görünümler oluşturmak için panoları kullanarak bu yollardan biridir.
+Bu durumda, daha sonra gri günlük verilerinizi daha iyi anlamak için bazı işlevlerinden yararlanabilirsiniz. Bu tür bir yol, verilerinizin belirli görünümlerini oluşturmak için panoları kullanmaktır.
 
-### <a name="create-a-dashboard"></a>Bir pano oluşturma
+### <a name="create-a-dashboard"></a>Pano oluşturma
 
-1. Üst gezinti çubuğunda **panolar** veya gidin `http://<graylog-server-ip>:9000/dashboards/`
+1. Üst gezinti çubuğunda **panolar** ' ı veya `http://<graylog-server-ip>:9000/dashboards/` git ' i seçin.
 
-2. Burada, yeşil tıklayın **Oluştur Pano** düğmesine tıklayın ve başlık ve açıklama panonuzun ile kısa formunu doldurun. İsabet **Kaydet** düğmesini yeni bir pano oluşturun. Aşağıdaki resme benzer bir Pano görürsünüz:
+2. Buradan yeşil **Pano Oluştur** düğmesine tıklayın ve kısa formu, panonuzun başlığı ve açıklamasıyla doldurun. Yeni panoyu oluşturmak için **Kaydet** düğmesine basın. Aşağıdaki resme benzer bir pano görürsünüz:
 
     ![Panolar](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
-### <a name="add-widgets"></a>Pencere öğesi ekleme
+### <a name="add-widgets"></a>Pencere öğeleri ekle
 
-Başlığı görmek, ancak herhangi bir pencere öğeleri ekledik henüz bu yana, boş, şu anda panonun tıklayabilirsiniz. Panoya eklemek için bir kolay ve kullanışlıdır türü pencere öğesi olan **hızlı değerleri** grafikleri, seçili alanı ve bunların dağıtım değerlerin bir listesini görüntüler.
+Herhangi bir pencere öğesi eklemediğimiz için panonun başlığına tıklayabilirsiniz, ancak artık boştur. Panoya eklemek için kolay ve kullanışlı bir tür pencere öğesi, seçilen alanın bir değer listesini ve bunların dağılımını görüntüleyen **hızlı değerler** grafiklerdir.
 
-1. Arama sonuçlarını seçerek akış günlüklerini alma UDP giriş geri gidin **arama** üst gezinti çubuğundan.
+1. Üst gezinti çubuğundan **Ara** ' yı seçerek akış GÜNLÜKLERINI alan UDP girişinin arama sonuçlarına geri gidin.
 
-2. Altında **arama sonucu** panel için ekranın sol tarafında, Bul **alanları** sekmesini her gelen akış demet ileti çeşitli alanlarını listeler.
+2. Ekranın sol tarafındaki **Arama sonucu** panelinde, her bir gelen akış grubu iletisinin çeşitli alanlarını listeleyen **alanlar** sekmesini bulun.
 
-3. Burada görselleştirmek istenen herhangi bir parametre seçin (Bu örnekte, IP kaynak seçilir). Olası pencere öğeleri listesinde gösterilecek mavi alanın solundaki aşağı açılan oka tıklayın ve ardından **hızlı değerleri** pencere öğesi oluşturmak için. Aşağıdaki resme benzer bir şey görmeniz gerekir:
+3. Görselleştirilecek istediğiniz parametreyi seçin (Bu örnekte, IP kaynağı seçilidir). Olası pencere öğelerinin listesini göstermek için alanın solundaki mavi aşağı açılan oka tıklayın ve sonra pencere öğesini oluşturmak için **hızlı değerler** ' i seçin. Aşağıdaki resme benzer bir şey görmeniz gerekir:
 
    ![Kaynak IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4. Burada, seçtiğiniz **panoya ekleme** pencere sağ üst köşesine düğmesini tıklatın ve eklemek için ilgili panoyu seçin.
+4. Buradan, pencere öğesinin sağ üst köşesindeki **panoya Ekle** düğmesini seçebilir ve eklenecek panoyu seçebilirsiniz.
 
-5. Yeni eklediğiniz pencere öğesi görmek için panosuna geri gidin.
+5. Yeni eklediğiniz pencere öğesini görmek için panoya geri gidin.
 
-   Diğer pencere öğeleri gibi çubuk grafikler ve sayıları çeşitli ilişkin örnek panoyu aşağıdaki resimde gösterildiği gibi önemli ölçümleri izlemek için panonuza ekleyebilirsiniz:
+   Aşağıdaki resimde gösterilen örnek pano gibi önemli ölçümleri izlemek için panonuza histogram ve sayımlar gibi çeşitli diğer pencere öğeleri ekleyebilirsiniz:
 
-   ![Flowlogs Panosu](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
+   ![Flowlogs panosu](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
 
-    Graylog için ın panolar ve pencere öğeleri diğer türleri hakkında daha fazla açıklama için başvuru [belgeleri](https://docs.graylog.org/en/2.2/pages/dashboards.html).
+    Panolar ve diğer pencere öğesi türleri hakkında daha fazla bilgi için, gri günlük [belgelerine](https://docs.graylog.org/en/2.2/pages/dashboards.html)bakın.
 
-Ağ İzleyicisi Graylog ile tümleştirerek, artık yönetmek ve ağ güvenlik grubu akış günlüklerini görselleştirme için kullanışlı ve merkezi bir yolu var. Graylog akışları ve daha fazla akış günlüklerini yönetmek ve ağ trafiğinizi daha iyi anlamak için de kullanılabilir uyarılar gibi diğer güçlü özelliklere sahiptir. Graylog olduğuna göre ayarlama ve Azure'a bağlı, sunduğu diğer işlevleri keşfetmeye devam çekinmeyin.
+Ağ İzleyicisini, gri tonlamalı günlük ile tümleştirerek ağ güvenlik grubu akış günlüklerini yönetmek ve görselleştirmek için kullanışlı ve merkezi bir yoldur. Gri, akış günlüklerini daha fazla yönetmek ve ağ trafiğinizi daha iyi anlamak için kullanılabilen akışlar ve uyarılar gibi çeşitli güçlü özelliklere sahiptir. Artık gri ve Azure 'a bağlı olduğunuza göre, sunduğu diğer işlevleri keşfetmeye devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ziyaret ederek, ağ güvenlik grubu akış günlüklerini Power BI ile görselleştirmeyi öğrenmek [Görselleştir ağ güvenlik grubu akış günlüklerini Power BI ile](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+ [Power BI ile ağ güvenlik grubu akış günlüklerini görselleştirme](network-watcher-visualize-nsg-flow-logs-power-bi.md)' i ziyaret ederek ağ güvenlik grubu akış günlüklerinizi Power BI ile görselleştirmeyi öğrenin.

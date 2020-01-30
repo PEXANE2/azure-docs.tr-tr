@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100703"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841721"
 ---
 # <a name="delivery-and-retry"></a>Teslim ve yeniden deneme
 
@@ -27,7 +27,7 @@ Event Grid dayanıklı teslim sağlar. Her iletiyi her bir eşleşen abonelik i�
 
 Event Grid bir ileti teslim edildikten sonra yanıt için 60 saniyeye kadar bekler. Abonenin uç noktası yanıta onay vermezse, sonraki yeniden denemeler için geri dönüş kuyruklarımızdan birinde ileti sıraya alınır.
 
-Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki geri dönüş kuyruğu vardır. Bunlar:-
+Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki geri dönüş kuyruğu vardır. Bunlar:
 
 | Zamanlama | Açıklama |
 | ---------| ------------ |
@@ -43,7 +43,7 @@ Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki g
 
 ## <a name="retry-policy-limits"></a>İlke sınırlarını yeniden dene
 
-Yeniden deneme ilkesini tespit eden iki yapılandırma vardır. Bunlar:-
+Yeniden deneme ilkesini tespit eden iki yapılandırma vardır. Bunlar:
 
 * En fazla deneme sayısı
 * Etkinlik yaşam süresi (TTL)
@@ -52,12 +52,12 @@ Yeniden deneme ilkesinin limitlerinin herhangi birine ulaşıldığında bir ola
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Tüm aboneler için Varsayılanları Yapılandırma
 
-Event Grid dağıtımının bir parçası olarak yapılandırılabilecek iki özellik vardır: `brokers:defaultMaxDeliveryAttempts` ve `broker:defaultEventTimeToLiveInSeconds` tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
+Event Grid dağıtımının bir parçası olarak yapılandırılabilecek iki özellik vardır: `brokers__defaultMaxDeliveryAttempts` ve `broker__defaultEventTimeToLiveInSeconds` tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
 
 | Özellik adı | Açıklama |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Bir olayı teslim etmeye yönelik deneme sayısı üst sınırı. Varsayılan değer: 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Bir olayın teslim edilmeden önce bırakılması gereken saniye cinsinden olay TTL 'SI. Varsayılan değer: **7200** saniye
+| `broker__defaultMaxDeliveryAttempts` | Bir olayı teslim etmeye yönelik deneme sayısı üst sınırı. Varsayılan değer: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Bir olayın teslim edilmeden önce bırakılması gereken saniye cinsinden olay TTL 'SI. Varsayılan değer: **7200** saniye
 
 ## <a name="configuring-defaults-per-subscriber"></a>Abone başına Varsayılanları Yapılandırma
 
@@ -71,8 +71,8 @@ Aşağıdaki örnek, Event Grid modülünde Maxnumberofdenemeler = 3 ve olay TTL
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

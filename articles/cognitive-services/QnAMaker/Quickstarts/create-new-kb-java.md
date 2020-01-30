@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd2e12660894f51ae4606ce3b2766f6cff821f41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84b70dac0c9a0edb7a634e0f6307444dcb4f6c45
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447653"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843031"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı başlangıç: Java kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
 
-Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma adımları gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/data-sources-supported.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
+Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma adımları gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/knowledge-base.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
 
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [KB Oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
@@ -53,7 +53,7 @@ Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine e
 
 Aşağıdaki değerleri ayarlayın:
 
-* `<your-qna-maker-subscription-key>`, **anahtar** bir 32 karakter dizesidir ve Azure portal, soru-cevap oluşturma kaynağında hızlı başlangıç sayfasında bulunur. Bu, tahmin uç noktası anahtarıyla aynı değildir.
+* `<your-qna-maker-subscription-key>`, **anahtar** bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
 * `<your-resource-name>`- **kaynak adınız** , yazma için yazma uç noktası URL 'sini `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`biçiminde oluşturmak için kullanılır. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
 Sınıfı bitirmek için küme ayracı eklemeniz gerekmez; bu, hızlı başlangıcın sonundaki en son kod parçacığındadır.

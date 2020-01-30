@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978066"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842444"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure için SAP LaMa bağlayıcısı
 
@@ -87,7 +87,7 @@ Azure Bağlayıcısı Microsoft Azure bir hizmet sorumlusu kullanarak yetkilendi
 1. Yeni kayda tıklayın
 1. Bir ad girin ve Kaydet ' e tıklayın
 1. Yeni uygulamayı seçin ve Ayarlar sekmesinde sertifikalar & gizli dizileri ' ne tıklayın.
-1. Yeni bir istemci parolası oluşturun, yeni bir anahtar için bir açıklama girin, gizli dizi ne zaman ayıklanmalı ve Kaydet ' e tıklayın.
+1. Yeni bir istemci parolası oluşturun, yeni bir anahtar için bir açıklama girin, parolanın ne zaman dolacağını seçin ve Kaydet ' e tıklayın
 1. Değeri yazın. Hizmet sorumlusu için parola olarak kullanılır
 1. Uygulama Kimliği yazma Hizmet sorumlusunun Kullanıcı adı olarak kullanılır
 
@@ -155,7 +155,7 @@ SAP 'yi kullanarak yönetmek istediğiniz tüm sanal makineler için ayrı bir a
 
 Kullanıcı \<hanasıd > adm, \<sapsıd > adm ve grup sapsys 'nin aynı KIMLIĞE ve GID 'ye sahip hedef makinede bulunduğundan emin olun veya LDAP kullanın. SAP NetWeaver (A) SCS 'yi çalıştırmak için kullanılması gereken sanal makinelerde NFS Sunucusunu etkinleştirin ve başlatın.
 
-### <a name="manual-deployment"></a>El ile dağıtma
+### <a name="manual-deployment"></a>El ile dağıtım
 
 SAP, SAP ana bilgisayar Aracısı kullanılarak sanal makine ile iletişim kurar. Sanal makineleri el ile dağıtır veya hızlı başlangıç deposundan Azure Resource Manager şablonunu kullanmıyorsanız, en son SAP konak aracısını ve SAP Uyarlamalı uzantılarını yüklediğinizden emin olun. Azure için gereken düzeltme eki düzeyleri hakkında daha fazla bilgi için bkz. SAP Note [2343511].
 
@@ -294,7 +294,7 @@ ANF, Azure için NFS sağlar. SAP 'nin bu bağlamda, ABAP Merkezi Hizmetleri (AS
 
 Avustralya Doğu, Orta ABD, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Batı Avrupa ve Batı ABD 2.
 
-#### <a name="network-requirements"></a>Ağ Gereksinimleri
+#### <a name="network-requirements"></a>Ağ gereksinimleri
 
 ANF, SAP sunucularıyla aynı VNET 'in bir parçası olması gereken Temsilcili bir alt ağ gerektirir. Bu tür bir yapılandırma için örnek verilmiştir.
 Bu ekranda VNET 'in ve ilk alt ağın oluşturulması gösterilmektedir:
@@ -438,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı*için *AS1-ascs* kullanın.
 
-#### <a name="install-sql-server"></a>SQL Server’ı yükleme
+#### <a name="install-sql-server"></a>SQL Server yüklensin
 
 Veritabanının sanal ana bilgisayar adının IP adresini bir ağ arabirimine eklemeniz gerekir. Önerilen yol, sapacext kullanmaktır. IP adresini sapacext kullanarak bağlarsanız, yeniden başlatmadan sonra IP adresini kaldırdığınızdan emin olun.
 

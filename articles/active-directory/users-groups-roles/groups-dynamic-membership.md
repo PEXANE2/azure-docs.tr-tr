@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940986"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841038"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -144,7 +144,7 @@ Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunlar�
 | İçermez |-notContains |
 | Contains |-içerir |
 | Eşleşmiyor |-notMatch |
-| Eşle |-Match |
+| Eşleşebilir |-Match |
 | İçinde | -ın |
 | Not ın | -Notın |
 
@@ -370,7 +370,7 @@ Ayrıca, bir gruptaki üyelik için cihaz nesneleri seçen bir kural oluşturabi
 > [!NOTE]
 > systemlabels, Intune ile ayarlanamaz salt okunurdur.
 >
-> Windows 10 için, deviceOSVersion özniteliğinin doğru biçimi şu şekildedir: (Device. deviceOSVersion-EQ "10,0 (17763)"). Biçimlendirme, Get-MsolDevice PowerShell cmdlet 'i ile doğrulanabilir.
+> Windows 10 için, deviceOSVersion özniteliğinin doğru biçimi şu şekildedir: (Device. deviceOSVersion-EQ "10.0.17763"). Biçimlendirme, Get-MsolDevice PowerShell cmdlet 'i ile doğrulanabilir.
 
 Aşağıdaki cihaz öznitelikleri kullanılabilir.
 
@@ -378,7 +378,7 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  ----- | ----- | ----------------
  accountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
  displayName | herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
- deviceOSType | herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
+ Cihazostürü | herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | geçerli bir cihaz kategorisi adı | (Device. deviceCategory-EQ "BYOD")
  deviceManufacturer | herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")

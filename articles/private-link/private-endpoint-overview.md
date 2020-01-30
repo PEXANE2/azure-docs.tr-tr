@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867683"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842461"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -56,7 +56,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure SQL Veritabanı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
 |**Azure SQL Veri Ambarı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
 |**Azure depolama alanı**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (kuyruk, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
-|**Azure Data Lake Storage 2. Nesil**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
+|**Azure Data Lake Storage 2. Nesil**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake dosya sistemi Gen2 (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. Azu, Smosdb/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tablo|
 |**PostgreSQL için Azure veritabanı-tek sunucu** | Microsoft. DBforPostgreSQL/sunucuları   | Postgressqlserver |
 |**MySQL için Azure Veritabanı** | Microsoft. Dbformyısql/sunucuları    | Te yapılandırılmış MySQLServer |

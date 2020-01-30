@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872307"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843269"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
@@ -65,7 +65,7 @@ Bu seçeneği belirlediğinizde Soru-Cevap Oluşturma belge yapısında mevcut h
 
 * Hiyerarşiyi göstermek için başlıklar ve alt başlıklar kullanın. Örneğin, komut istemi olarak alınması gereken QnA 'yi göstermek için üst QnA ve H2 'yi belirtmek üzere H1 'yi belirtebilirsiniz. Sonraki hiyerarşiyi göstermek için küçük başlık boyutunu kullanın. Belgenizde yapıyı daha fazla yapmak için stil, renk veya başka bir mekanizma kullanmayın, Soru-Cevap Oluşturma çoklu açma istemlerini ayıklamaz.
 
-* Başlığın ilk karakteri büyük harfle yazılmalıdır. 
+* Başlığın ilk karakteri büyük harfle yazılmalıdır.
 
 * Bir başlığı soru işaretiyle sonlandırmayın, `?`.
 
@@ -368,7 +368,7 @@ JSON yanıtında döndürülen [görüntüleme metni ve görüntüleme sırası]
 
 ## <a name="export-knowledge-base-for-version-control"></a>Sürüm denetimi için Bilgi Bankası dışarı aktarma
 
-Soru-Cevap Oluşturma, Soru-Cevap Oluşturma portalındaki [Sürüm denetimini destekler](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) ve bu, dışarıya açılan dosyadaki çok yönlü konuşma adımlarını dahil edin.
+Soru-Cevap Oluşturma, dışarıya açılan dosyadaki çok yönlü konuşma adımlarını ekleyerek sürüm denetimini destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

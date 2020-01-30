@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704553"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842725"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -1084,7 +1084,35 @@ Dosyalar Azure dosyalarını katmanlamaz:
        - Yükseltilmiş bir komut isteminde `fltmc`çalıştırın. Storagessync. sys ve StorageSyncGuard. sys dosya sistemi filtre sürücülerinin listelendiğini doğrulayın.
 
 > [!NOTE]
-> Bir dosya katmanı (hata kodu başına bir olay günlüğe kaydedilir) başarısız olursa, telemetri olay günlüğünde bir saat sonra bir olay KIMLIĞI 9003 kaydedilir. Bir sorunu tanılamak için ek bilgiler gerekliyse, Işletimsel ve Tanılama olay günlükleri kullanılmalıdır.
+> Bir dosya katmanı (hata kodu başına bir olay günlüğe kaydedilir) başarısız olursa, telemetri olay günlüğünde bir saat sonra bir olay KIMLIĞI 9003 kaydedilir. Hata kodu için düzeltme adımlarının listelenip listelenmediğini görmek için [katmanlama hatalarını ve düzeltme](#tiering-errors-and-remediation) bölümünü denetleyin.
+
+### <a name="tiering-errors-and-remediation"></a>Hataları ve düzeltmeyi katmanlama
+
+| HRESULT | HRESULT (ondalık) | Hata dizesi | Sorun | Düzeltme |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Dosya kullanımda olduğundan katmanı açamadı. | Eylem gerekmiyor. Dosya artık kullanımda olmadığında katmanlı olur. |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Dosya, eşitleme tarafından dışlandığından katmana gönderilemedi. | Eylem gerekmiyor. Eşitleme dışlama listesindeki dosyalar katmanlanamaz. |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Sunucuda bulunamadığı için dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, dosyanın sunucuda mevcut olup olmadığını denetleyin. |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Azure dosya paylaşımında silindiği için dosya katmanı başarısız oldu. | Eylem gerekmiyor. Sonraki indirme eşitleme oturumu çalıştırıldığında, dosyanın sunucuda silinmesi gerekir. |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80072EE7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Erişim reddedildi hatası nedeniyle dosya katmanı başarısız oldu. Bu hata, dosya bir DFS-R salt okuma çoğaltma klasöründe bulunuyorsa oluşabilir. | Azure Dosya Eşitleme DFS-R salt okunur çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Dosya boyutu desteklenen boyuttan daha az olduğu için dosya katmana kopyalanamadı. | Aracı sürümü 9,0 'den küçükse, desteklenen minimum dosya boyutu 64 KB 'dir. Aracı sürümü 9,0 ve daha yeniyse, desteklenen minimum dosya boyutu dosya sistemi kümesi boyutunu (çift dosya sistemi kümesi boyutu) temel alır. Örneğin, dosya sistemi kümesi boyutu 4kb ise, en küçük dosya boyutu 8kb 'tır. |
+| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Azure depolama sorunu nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse bir destek isteği açın. |
+| 0x800703E3 | -2147023901 | ERROR_OPERATION_ABORTED | Dosya, aynı anda geri çekilmiş olduğundan katmana gönderilemedi. | Eylem gerekmiyor. Geri çağırma tamamlandığında ve dosya artık kullanımda olmadığında dosya katmanlanacaktır. |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Bulut katmanlama filtresi sürücüsü (storagessync. sys) çalışmadığından dosya katmanı başarısız oldu. | Bu sorunu çözmek için, yükseltilmiş bir komut istemi açın ve şu komutu çalıştırın: fltMC Load storagessync <br>FltMC komutu çalıştırılırken storagessync filtre sürücüsü yüklenemezse, Azure Dosya Eşitleme aracısını kaldırın, sunucuyu yeniden başlatın ve Azure Dosya Eşitleme aracısını yeniden yükleyin. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Sunucu uç noktasının bulunduğu birimde yetersiz disk alanı nedeniyle dosya katmana gönderilemedi. | Bu sorunu çözmek için sunucu uç noktasının bulunduğu birimde en az 100 MB disk alanı boşaltın. |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Dosya, desteklenmeyen bir yeniden ayrıştırma noktası olduğundan katmana gönderilemedi. | Dosya yinelenen verileri kaldırma yeniden ayrıştırma noktanız ise, yinelenen verileri kaldırma desteğini etkinleştirmek için [planlama kılavuzundaki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) adımları izleyin. Yinelenen verileri kaldırma dışında yeniden ayrıştırma noktaları olan dosyalar desteklenmez ve katmanlanmaz.  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Dosya değiştirildiğinden katman başarısız oldu. | Eylem gerekmiyor. Dosya, değiştirilen dosya Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
+| 0x80072EE2 | -2147012894 | WININET_E_TIMEOUT | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Dosya değiştirildiğinden katman başarısız oldu. | Eylem gerekmiyor. Dosya, değiştirilen dosya Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yetersiz sistem kaynakları nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse, sistem kaynaklarını hangi uygulamanın veya çekirdek modu sürücüsünün tüketdiünü araştırın. |
+
+
 
 ### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Geri çağırılabilmesi gereken dosyalar nasıl giderilir?  
 Dosyalar geri çekilemez:
@@ -1109,7 +1137,7 @@ Dosyalar geri çekilemez:
 | 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Azure dosya paylaşımında erişilebilir olmadığından dosya geri çekemedi. | Bu sorunu çözmek için dosyanın Azure dosya paylaşımında bulunduğunu doğrulayın. Dosya Azure dosya paylaşımında varsa, en son Azure Dosya Eşitleme [aracı sürümüne](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)yükseltin. |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Depolama hesabına yönelik yetkilendirme hatası nedeniyle dosya geri çekemedi. | Bu sorunu çözmek için [Azure dosya eşitleme depolama hesabına erişiminin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)olduğunu doğrulayın. |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Azure dosya paylaşımının erişimi olmadığından dosya geri çekemedi. | Dosya paylaşımının var olduğunu ve erişilebilir olduğunu doğrulayın. Dosya paylaşma silinmişse ve yeniden oluşturulduysa, eşitleme grubunu silip yeniden oluşturmak için [Azure dosya paylaşımının silindiği ve](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) yeniden oluşturulduğu bir bölüm olduğundan eşitleme sırasında belgelenen adımları gerçekleştirin. |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yalıtılmış sistem kaynakları nedeniyle dosya geri çekemedi. | Hata devam ederse, sistem kaynaklarını hangi uygulamanın veya çekirdek modu sürücüsünün tüketdiünü araştırın. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yetersiz sistem kaynakları nedeniyle dosya geri çekemedi. | Hata devam ederse, sistem kaynaklarını hangi uygulamanın veya çekirdek modu sürücüsünün tüketdiünü araştırın. |
 | 0x8007000E | -2147024882 | ERROR_OUTOFMEMORY | Yalıtılmış bellek nedeniyle dosya geri çekemedi. | Hata devam ederse, düşük bellek koşuluna hangi uygulamanın veya çekirdek modu sürücüsünün neden olduğunu araştırın. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Yetersiz disk alanı nedeniyle dosya geri çekemedi. | Bu sorunu çözmek için, dosyaları farklı bir birime taşıyarak birimde yer açın, birimin boyutunu artırın veya Invoke-Storagesynccloudtımpl cmdlet 'ini kullanarak dosyaları katmana zorlayın. |
 
@@ -1228,7 +1256,7 @@ Sorun çözümlenmezse AFSDiag aracını çalıştırın:
 
 3. Azure Dosya Eşitleme çekirdek modu izleme düzeyi için **1** girin (aksi belirtilmedikçe, daha ayrıntılı izlemeler oluşturmak için) ve ardından ENTER tuşuna basın.
 4. Kullanıcı modu izleme düzeyi Azure Dosya Eşitleme için **1** girin (aksi belirtilmedikçe, daha ayrıntılı izlemeler oluşturmak için) ve ardından ENTER tuşuna basın.
-5. Sorunu yeniden oluşturun. İşiniz bittiğinde **D**girin.
+5. Sorunu yeniden üretin. İşiniz bittiğinde **D**girin.
 6. Günlükleri ve izleme dosyalarını içeren bir. zip dosyası belirttiğiniz çıkış dizinine kaydedilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.

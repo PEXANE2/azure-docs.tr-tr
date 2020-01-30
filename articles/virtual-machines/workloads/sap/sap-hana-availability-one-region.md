@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c5b4904419af1fe86e43dc2f781ef43ce8dd762
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078780"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842691"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Tek bir Azure bölgesinde kullanılabilirliği SAP HANA
 Bu makalede, bir Azure bölgesindeki çeşitli kullanılabilirlik senaryoları açıklanmaktadır. Azure, dünyanın tamamında yayılan birçok bölgeye sahiptir. Azure bölgelerinin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/). Tek bir Azure bölgesindeki sanal makinelere SAP HANA dağıtmak için, Microsoft, bir HANA örneğiyle tek bir sanal makinenin dağıtımını sunmaktadır. Daha yüksek kullanılabilirlik için, kullanılabilirlik için HANA sistem çoğaltması kullanan bir [Azure kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) IÇINDE iki Hana örneğiyle iki VM dağıtabilirsiniz. 
@@ -31,7 +31,7 @@ Kullanılabilirlik Alanları sunulan Azure bölgelerinin birden çok veri merkez
  
 Azure kullanılabilirlik kümesi, kullanılabilirlik kümesi içinde yerleştirdiğiniz VM kaynaklarının, bir Azure veri merkezinde dağıtıldığında birbirinden hata yalıtımlı olmasını sağlamaya yardımcı olan bir mantıksal gruplandırma özelliğidir. Azure, bir Kullanılabilirlik Kümesi içine yerleştirdiğiniz sanal makinelerin birden fazla fiziksel sunucuda, bilgi işlem rafında, depolama biriminde ve ağ anahtarında çalışmasını sağlar. Bazı Azure belgelerinde, bu yapılandırma farklı [güncelleştirme ve hata etki alanlarında](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)placeas olarak adlandırılır. Bu Place, genellikle bir Azure veri merkezinde yer alan. Güç kaynağı ve ağ sorunlarının dağıttığınız veri merkezini etkileyeceğini varsayarsak, bir Azure bölgesindeki tüm kapasiteniz etkilenir.
 
-Azure Kullanılabilirlik Alanları temsil eden veri merkezlerinin yerleşimi, farklı bölgelerde dağıtılan hizmetler arasında kabul edilebilir ağ gecikme süresi ve veri merkezleri arasında bir mesafe arasında bir uzlaşdır. Doğal catastrophes ideal olarak bu bölgedeki tüm Kullanılabilirlik Alanları için güç, ağ kaynağı ve altyapıyı etkilemez. Ancak, Monumental doğal catastrophes gösterildiği gibi, Kullanılabilirlik Alanları her zaman bir bölgede istediğiniz kullanılabilirliği sağlayamayabilir. 20 Eylül 2017 ' de Porto Riko 'nun Adası ile başlayan Acericane Maria hakkında düşünün. Acericane, temelde 90-Wide Adası üzerinde yaklaşık% 100 bir kararya neden oldu.
+Azure Kullanılabilirlik Alanları temsil eden veri merkezlerinin yerleşimi, farklı bölgelerde dağıtılan hizmetler arasında kabul edilebilir ağ gecikme süresi ve veri merkezleri arasında bir mesafe arasında bir uzlaşdır. Doğal catastrophes ideal olarak bu bölgedeki tüm Kullanılabilirlik Alanları için güç, ağ kaynağı ve altyapıyı etkilemez. Ancak, Monumental doğal catastrophes gösterildiği gibi, Kullanılabilirlik Alanları her zaman bir bölgede istediğiniz kullanılabilirliği sağlayamayabilir. 20 Eylül 2017 ' de Porto Riko 'nun Adası ile başlayan Acericane Maria hakkında düşünün. Acericane, temelde 90-Wide Adası üzerinde yaklaşık %100 bir kararya neden oldu.
 
 ## <a name="single-vm-scenario"></a>Tek VM senaryosu
 
@@ -54,7 +54,7 @@ Bir sistem durumu denetimi işlevselliği, bir Azure Server konağında barınd�
 Azure tarafından sunulan konak ve VM izleme ile, ana bilgisayar sorunları yaşayan Azure VM 'Leri sağlıklı bir Azure ana bilgisayarında otomatik olarak yeniden başlatılır. 
 
 >[!IMPORTANT]
->Azure hizmeti düzeltme, Konuk işletim sisteminin bir çekirdek panik durumunda olduğu Linux VM 'lerini yeniden başlatmaz. Yaygın olarak kullanılan Linux yayınlarının varsayılan ayarları, Linux çekirdeğinin panik durumunda olduğu VM 'leri veya sunucuyu otomatik olarak yeniden başlatmamalıdır. Bunun yerine, varsayılan olarak, çözümlemek üzere bir çekirdek hata ayıklayıcısı iliştirebilmek için sistemi çekirdek panik durumunda tutmaya yönelik olarak görür. Azure, Konuk işletim sistemi olan bir VM 'yi böyle bir durumda otomatik olarak yeniden başlatmayana bu davranışı garanti ediyor. Varsayım, bu oluşumların son derece nadir bir durumdur. VM 'nin yeniden başlatılmasını sağlamak için varsayılan davranışın üzerine yazabilirsiniz. Varsayılan davranışı değiştirmek için,/etc/sysctl.exe içindeki ' Kernel. Panic ' parametresini etkinleştirin. Bu parametre için ayarladığınız zaman Saniyeler içinde. Bu parametre aracılığıyla yeniden başlatmayı tetiklemeden önce, sık önerilen değerler 20-30 saniye beklemeniz önerilir. Ayrıca <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>bkz.
+>Azure hizmeti düzeltme, Konuk işletim sisteminin bir çekirdek panik durumunda olduğu Linux VM 'lerini yeniden başlatmaz. Yaygın olarak kullanılan Linux yayınlarının varsayılan ayarları, Linux çekirdeğinin panik durumunda olduğu VM 'leri veya sunucuyu otomatik olarak yeniden başlatmamalıdır. Bunun yerine, varsayılan olarak, çözümlemek üzere bir çekirdek hata ayıklayıcısı iliştirebilmek için sistemi çekirdek panik durumunda tutmaya yönelik olarak görür. Azure, Konuk işletim sistemi olan bir VM 'yi böyle bir durumda otomatik olarak yeniden başlatmayana bu davranışı garanti ediyor. Varsayım, bu oluşumların son derece nadir bir durumdur. VM 'nin yeniden başlatılmasını sağlamak için varsayılan davranışın üzerine yazabilirsiniz. Varsayılan davranışı değiştirmek için,/etc/sysctl.exe içindeki ' Kernel. Panic ' parametresini etkinleştirin. Bu parametre için ayarladığınız zaman Saniyeler içinde. Bu parametre aracılığıyla yeniden başlatmayı tetiklemeden önce, sık önerilen değerler 20-30 saniye beklemeniz önerilir. Ayrıca bkz. <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
 
 Bu senaryoda kullandığınız ikinci özellik, yeniden başlatılan bir VM 'de çalışan HANA hizmetinin VM yeniden başlatıldıktan sonra otomatik olarak başlayacağını bulmasıdır. Farklı HANA hizmetlerinin izleme hizmetleri aracılığıyla [Hana hizmetini otomatik yeniden başlatmayı](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) ayarlayabilirsiniz.
 
@@ -108,7 +108,7 @@ Bu senaryoda, ikinci VM 'de HANA örneğine çoğaltılan veriler önceden yükl
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Otomatik yük devretme ile sistem çoğaltmasını SAP HANA
 
-Tek bir Azure bölgesindeki standart ve en yaygın kullanılabilirlik yapılandırmasında, SLES Linux çalıştıran iki Azure VM 'nin tanımlanmış bir yük devretme kümesi vardır. SLES Linux kümesi, bir [Stonith](http://linux-ha.org/wiki/STONITH) aygıtıyla birlikte [pacemaker](http://www.linux-ha.org/wiki/Pacemaker) çerçevesini temel alır. 
+Tek bir Azure bölgesindeki standart ve en yaygın kullanılabilirlik yapılandırmasında, SLES Linux çalıştıran iki Azure VM 'nin tanımlanmış bir yük devretme kümesi vardır. SLES Linux kümesi, bir [Stonith](http://www.linux-ha.org/wiki/STONITH) aygıtıyla birlikte [pacemaker](http://www.linux-ha.org/wiki/Pacemaker) çerçevesini temel alır. 
 
 SAP HANA perspektifinden, kullanılan çoğaltma modu eşitlenir ve otomatik yük devretme yapılandırılır. İkinci VM 'de SAP HANA örnek, etkin bir bekleme düğümü işlevi görür. Bekleme düğümü, birincil SAP HANA örneğinden gelen değişiklik kayıtlarının zaman uyumlu bir akışını alır. İşlemler, HANA birincil düğümündeki uygulama tarafından işlendiği için, birincil HANA düğümü, ikincil SAP HANA düğümü, işleme kaydını aldığını onaylaana kadar uygulamaya yapılan yürütmeyi onaylamasını bekler. SAP HANA iki zaman uyumlu çoğaltma modu sunar. Ayrıntılar ve bu iki zaman uyumlu çoğaltma modu arasındaki farkların açıklaması için, [SAP HANA sistem çoğaltması IÇIN SAP makalesi çoğaltma modları](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)bölümüne bakın.
 

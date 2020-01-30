@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bfb2d5a5a8918cbfc446c35b39f3e8e9954b7761
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763530"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843540"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning işlem örneklerine model dağıtma
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> İşlem örnekleri (Önizleme) yalnızca bir **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri (Önizleme) yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.  Bu makaledeki adımları kullanarak bir modeli, bir işlem örneğine veya bir not defteri VM 'sine dağıtabilirsiniz.
 
 Azure Machine Learning kullanarak bir modeli Azure Machine Learning işlem örneğiniz üzerinde Web hizmeti olarak dağıtma hakkında bilgi edinin. Aşağıdaki koşullardan biri doğru ise, işlem örnekleri kullanın:

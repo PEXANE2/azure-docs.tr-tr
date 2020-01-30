@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41661277d89c45baf2350282c6e4b500fae63662
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949832"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841991"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde JWT belirteci veren için teknik profil tanımlama
 
@@ -47,14 +47,14 @@ Aşağıdaki örnek, `JwtIssuer`için bir teknik profil gösterir:
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| issuer_refresh_token_user_identity_claim_type | Yes | OAuth2 yetkilendirme kodları ve yenileme belirteçleri içinde Kullanıcı kimlik talebi olarak kullanılması gereken talep. Varsayılan olarak, farklı bir Subjectnamingınfo talep türü belirtmediğiniz müddetçe, bunu `objectId`ayarlamanız gerekir. |
+| issuer_refresh_token_user_identity_claim_type | Evet | OAuth2 yetkilendirme kodları ve yenileme belirteçleri içinde Kullanıcı kimlik talebi olarak kullanılması gereken talep. Varsayılan olarak, farklı bir Subjectnamingınfo talep türü belirtmediğiniz müddetçe, bunu `objectId`ayarlamanız gerekir. |
 | SendTokenResponseBodyWithJsonNumbers | Hayır | Her zaman `true`olarak ayarlayın. Sayısal değerlerin JSON numaraları yerine dizeler olarak verildiği eski biçim için `false`olarak ayarlayın. Bu öznitelik, bu tür özellikleri dizeler olarak döndüren önceki bir uygulamaya bağımlılığı almış olan istemciler için gereklidir. |
 | token_lifetime_secs | Hayır | Belirteç ömürleri erişim. Korunan bir kaynağa erişim kazanmak için kullanılan OAuth 2,0 taşıyıcı belirtecinin kullanım süresi. Varsayılan değer 3.600 saniyedir (1 saat). En düşük (kapsamlı) 300 saniyedir (5 dakika). En yüksek (kapsamlı) 86.400 saniyedir (24 saat). |
 | id_token_lifetime_secs | Hayır | KIMLIK belirteci yaşam süreleri. Varsayılan değer 3.600 saniyedir (1 saat). En düşük (kapsamlı) 300 saniyedir (5 dakika). Maksimum (dahil) saniyeler 86.400 (24 saat). |
 | refresh_token_lifetime_secs | Hayır | Belirteç ömrünü yenileyin. Uygulamanıza offline_access kapsamı verildiyse, yenileme belirtecinin yeni bir erişim belirteci almak için kullanılabileceği en uzun süre. Varsayılan değer 120, 9600 saniyedir (14 gün). En düşük (kapsamlı) 86.400 saniyedir (24 saat). En yüksek (kapsamlı) 7.776.000 saniyedir (90 gün). |
 | rolling_refresh_token_lifetime_secs | Hayır | Belirteç kayan pencere ömrünü Yenile. Bu süre dolduktan sonra, uygulama tarafından alınan en son yenileme belirtecinin geçerlilik süresinden bağımsız olarak Kullanıcı yeniden kimlik doğrulaması zorlanır. Bir kayan pencere ömrü zorlamak istemiyorsanız, allow_infinite_rolling_refresh_token değerini `true`olarak ayarlayın. Varsayılan değer 7.776.000 saniyedir (90 gün). En düşük (kapsamlı) 86.400 saniyedir (24 saat). En yüksek (kapsamlı) 31.536.000 saniyedir (365 gün). |
 | allow_infinite_rolling_refresh_token | Hayır | `true`olarak ayarlanırsa, yenileme belirteci kayan pencere ömrü hiçbir zaman dolmaz. |
-| Issuanceclaımpattern | Yes | Veren (İSS) talebini denetler. Değerlerden biri:<ul><li>AuthorityAndTenantGuid-ISS talebi, `login.microsoftonline` veya `tenant-name.b2clogin.com`gibi etki alanı adınızı ve kiracı tanımınızı https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp-ISS talebi, `login.microsoftonline` veya `tenant-name.b2clogin.com`, kiracı tanımınız ve bağlı olan taraf ilkesi adı gibi etki alanı adınızı içerir. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> |
+| Issuanceclaımpattern | Hayır | Veren (İSS) talebini denetler. Değerlerden biri:<ul><li>AuthorityAndTenantGuid-ISS talebi, `login.microsoftonline` veya `tenant-name.b2clogin.com`gibi etki alanı adınızı ve kiracı tanımınızı https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp-ISS talebi, `login.microsoftonline` veya `tenant-name.b2clogin.com`, kiracı tanımınız ve bağlı olan taraf ilkesi adı gibi etki alanı adınızı içerir. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Varsayılan değer: AuthorityAndTenantGuid |
 | Authenticationcontextreferenceclaımpattern | Hayır | `acr` talep değerini denetler.<ul><li>Hiçbiri-Azure AD B2C ACR talebini yayınmıyor</li><li>PolicyId-`acr` talebi, ilke adını içerir</li></ul>Bu değeri ayarlama seçenekleri TFP (güven çerçevesi ilkesi) ve ACR (kimlik doğrulama bağlamı başvurusu) ' dir. Bu değerin TFP olarak ayarlanması önerilir, değeri ayarlamak için `Key="AuthenticationContextReferenceClaimPattern"` `<Item>` olduğundan ve değerin `None`olduğundan emin olun. Bağlı olan taraf ilkenizde `<OutputClaims>` öğesi ekleyin, bu öğeyi `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`ekleyin. Ayrıca ilkenizin türünü içerdiğinden da emin olun `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
@@ -63,8 +63,8 @@ CryptographicKeys öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| issuer_secret | Yes | JWT belirtecini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu, [özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümünde bulunan `B2C_1A_TokenSigningKeyContainer` anahtarıdır. |
-| issuer_refresh_token_key | Yes | Yenileme belirtecini şifrelemek için kullanılacak x509 sertifikası (RSA anahtar kümesi). `B2C_1A_TokenEncryptionKeyContainer` anahtarını [özel ilkelerle çalışmaya başlama](active-directory-b2c-get-started-custom.md) bölümünde yapılandırdınız |
+| issuer_secret | Evet | JWT belirtecini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu, [özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümünde bulunan `B2C_1A_TokenSigningKeyContainer` anahtarıdır. |
+| issuer_refresh_token_key | Evet | Yenileme belirtecini şifrelemek için kullanılacak x509 sertifikası (RSA anahtar kümesi). `B2C_1A_TokenEncryptionKeyContainer` anahtarını [özel ilkelerle çalışmaya başlama](custom-policy-get-started.md) bölümünde yapılandırdınız |
 
 
 

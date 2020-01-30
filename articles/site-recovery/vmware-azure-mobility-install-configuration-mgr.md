@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514840"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842708"
 ---
 # <a name="automate-mobility-service-installation"></a>Mobility hizmeti yüklemesini otomatikleştirin
 
@@ -19,7 +19,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)' de Mobility hizme
 Şirket içi VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için Site Recovery dağıtırken, çoğaltmak istediğiniz her makineye Mobility hizmet aracısını yüklersiniz. Mobility hizmeti makinede veri yazmaları yakalar ve bunları çoğaltma için Site Recovery işlem sunucusuna iletir. Mobility hizmetini birkaç yolla dağıtabilirsiniz:
 
 - **Anında yükleme**: Azure Portal bir makine için çoğaltmayı etkinleştirdiğinizde Mobility hizmet aracısını Site Recovery yüklemesine izin verin.
-- **El ile yükleme**: Mobility hizmetini her makineye el ile yükleme. Gönderim ve el ile yükleme hakkında [daha fazla bilgi edinin](/vmware-physical-mobility-service-overview.md) .
+- **El ile yükleme**: Mobility hizmetini her makineye el ile yükleme. Gönderim ve el ile yükleme hakkında [daha fazla bilgi edinin](vmware-physical-mobility-service-overview.md) .
 - **Otomatik dağıtım**: Microsoft uç noktası Configuration Manager veya ıntigua jetpatch gibi üçüncü taraf araçları gibi yazılım dağıtım araçlarıyla yüklemeyi otomatikleştirin.
 
 Otomatik yükleme ve güncelleştirme, şu durumlarda bir çözüm sağlar:
@@ -44,7 +44,7 @@ Otomatik yükleme için şunlar gerekir:
 
 Aşağıdaki tabloda, Mobility hizmeti dağıtımını otomatikleştirmek için araçlar ve süreçler özetlenmektedir.
 
-**Araç** | **Ayrıntılar** | **Yönergeler**
+**Araç** | **Ayrıntılar** | **Yönergelerin**
 --- | --- | ---
 **Configuration Manager** | 1. yukarıda belirtilen [önkoşulların](#prerequisites) bulunduğundan emin olun. <br/><br/>2. Site Recovery yapılandırma sunucusunu OVF şablonu kullanarak bir VMware VM 'si olarak dağıtmak üzere bir OVA dosyası indirmek üzere, kaynak ortamı ayarlayarak olağanüstü durum kurtarma dağıtın.<br/><br/> 2. yapılandırma sunucusunu Site Recovery hizmetine kaydeder, hedef Azure ortamını ayarlar ve bir çoğaltma ilkesi yapılandırırsınız.<br/><br/> 3. otomatik Mobility hizmeti dağıtımı için yapılandırma sunucusu parolasını ve Mobility hizmeti yükleme dosyalarını içeren bir ağ paylaşma oluşturursunuz.<br/><br/> 4. yükleme veya güncelleştirme içeren bir Configuration Manager paketi oluşturun ve Mobility hizmeti dağıtımına hazırlanın.<br/><br/> 5. daha sonra Mobility hizmetinin yüklü olduğu makineler için Azure 'a çoğaltmayı etkinleştirebilirsiniz. | [Configuration Manager otomatikleştirin](#automate-with-configuration-manager).
 **JetPatch** | 1. yukarıda belirtilen [önkoşulların](#prerequisites) bulunduğundan emin olun. <br/><br/> 2. bir OVF şablonu kullanarak Site Recovery ortamınızda Azure Site Recovery için JetPatch Aracısı yöneticisini indirmek ve dağıtmak da dahil olmak üzere, kaynak ortamı ayarlayarak olağanüstü durum kurtarma dağıtın.<br/><br/> 2. yapılandırma sunucusunu Site Recovery kaydeder, hedef Azure ortamını ayarlar ve bir çoğaltma ilkesi yapılandırırsınız.<br/><br/> 3. otomatik dağıtım için JetPatch Aracısı Yöneticisi yapılandırmasını başlatın ve doldurun.<br/><br/> 4. JetPatch 'te Mobility hizmeti aracısının dağıtımını ve yükseltmesini otomatikleştirmek için bir Site Recovery ilkesi oluşturabilirsiniz. <br/><br/> 5. daha sonra Mobility hizmetinin yüklü olduğu makineler için Azure 'a çoğaltmayı etkinleştirebilirsiniz. | [JetPatch Aracısı Yöneticisi Ile otomatikleştirin](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/).<br/><br/> JetPatch 'de [Aracı yüklemesinde sorun giderin](https://kc.jetpatch.com/hc/articles/360035981812) .
@@ -358,7 +358,7 @@ cd /tmp
     --- | --- | ---
     **Ad** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
     **Komut satırı** | . bat dosyasını install | ./install_linux. sh
-    **Program çalışabilir** | Kullanıcı oturumu açsın ya da açmasın | Kullanıcı oturumu açsın ya da açmasın
+    **Program çalışabilir** | Kullanıcının oturum açmış olup olmadığı | Kullanıcının oturum açmış olup olmadığı
     **Diğer parametreler** | Varsayılan ayarı kullan | Varsayılan ayarı kullan
 
    ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -368,7 +368,7 @@ cd /tmp
     - Windows makineleri için, **Bu program yalnızca belirtilen platformlarda çalıştırılabilir**' i seçin. Ardından [desteklenen Windows işletim sistemlerini](vmware-physical-azure-support-matrix.md#replicated-machines)seçin. Ardından **İleri**'ye tıklayın.
     - Linux makineleri için, **Bu program herhangi bir platformda çalışabilir**' i seçin. Ardından **İleri**'ye tıklayın.
    
-10. Sihirbazı tamamlayın.
+10. Sihirbazı sona erdirin.
 
 
 

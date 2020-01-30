@@ -1,28 +1,28 @@
 ---
-title: 'Hızlı başlangıç: Standart yük dengeleyici oluşturma-Azure şablonu'
+title: 'Hızlı başlangıç: Load Balancer oluşturma-Azure şablonu'
 titleSuffix: Azure Load Balancer
-description: Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanılarak standart yük dengeleyicinin nasıl oluşturulacağı gösterilmektedir.
+description: Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanılarak yük dengeleyici oluşturma gösterilmektedir.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970626"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843863"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak VM 'Lerin yükünü dengelemek için standart yük dengeleyici oluşturma
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak VM 'Lerin yükünü dengelemek için Load Balancer oluşturma
 
 Yük dengeleme, gelen istekleri birden fazla sanal makineye (VM) yayarak daha yüksek bir kullanılabilirlik ve ölçek düzeyi sağlar. Bu hızlı başlangıçta, VM 'Lerin yük dengelemesi için standart yük dengeleyici oluşturan bir Azure Resource Manager şablonunun nasıl dağıtılacağı gösterilir. Kaynak Yöneticisi şablonu kullanmak diğer dağıtım yöntemleriyle karşılaştırıldığında daha az adım sürer.
 
@@ -30,9 +30,9 @@ Yük dengeleme, gelen istekleri birden fazla sanal makineye (VM) yayarak daha y�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyici oluşturma
+## <a name="create-a-load-balancer"></a>Yük Dengeleyici oluşturma
 
-Standart Load Balancer yalnızca standart bir genel IP adresini destekler. Standart yük dengeleyici oluşturduğunuzda, standart yük dengeleyici için ön uç olarak yapılandırılmış yeni bir standart genel IP adresi de oluşturmanız gerekir.
+Load Balancer ve genel IP SKU 'Larının eşleşmesi gerekir. Bir Standart Load Balancer oluşturduğunuzda, standart yük dengeleyici için ön uç olarak yapılandırılmış yeni bir standart genel IP adresi de oluşturmanız gerekir. Temel bir Load Balancer oluşturmak istiyorsanız [Bu şablonu](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)kullanın. Microsoft, üretim iş yükleri için standart SKU kullanmayı önerir.
 
 Bu hızlı başlangıçta kullanılan şablon bir [hızlı başlangıç şablonudur](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
 

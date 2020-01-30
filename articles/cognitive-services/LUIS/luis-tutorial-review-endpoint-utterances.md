@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447812"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843982"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: uç nokta dıklarını inceleyerek, hariç tahminleri çözme
 Bu öğreticide, LUSıS HTTPS uç noktası aracılığıyla alınan ve bu LUSıS 'in eksik olduğu noktaları doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Zamanlanan LUSıS bakımın düzenli bir parçası olarak uç nokta utslerini incelemeniz gerekir.
@@ -29,7 +29,7 @@ Bu gözden geçirme işlemi, LUSıS 'in uygulama etki alanınızı öğrenmeye o
 
 Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğrular veya düzeltirsiniz.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -46,7 +46,7 @@ Bir uygulamayı içeri aktarmak için aşağıdaki adımları kullanın.
 
 1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) indirip kaydedin.
 
-1. [ÖNIZLEME Luu portalında](https://preview.luis-ai),. json dosyasını yeni bir uygulamaya aktarın.
+1. [ÖNIZLEME Luu portalında](https://preview.luis.ai),. json dosyasını yeni bir uygulamaya aktarın.
 
 1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `review` olarak adlandırın.
 

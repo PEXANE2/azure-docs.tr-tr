@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659534"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841940"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'yi kullanmak için JavaScript örnekleri
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Kendi JavaScript istemci tarafı kodunuzu Azure Active Directory B2C (Azure AD B2C) uygulamalarınıza ekleyebilirsiniz. Uygulamalarınız için JavaScript 'i etkinleştirmek üzere [özel ilkenize](active-directory-b2c-overview-custom.md)bir öğe eklemeniz, bir [sayfa düzeni](page-layout.md)seçmeniz ve isteklerinizin [b2clogin.com](b2clogin.md) kullanmanız gerekir. Bu makalede, betik yürütmeyi etkinleştirmek için özel ilkenizi nasıl değiştirebileceğiniz açıklanır.
+Kendi JavaScript istemci tarafı kodunuzu Azure Active Directory B2C (Azure AD B2C) uygulamalarınıza ekleyebilirsiniz. Uygulamalarınız için JavaScript 'i etkinleştirmek üzere [özel ilkenize](custom-policy-overview.md)bir öğe eklemeniz, bir [sayfa düzeni](page-layout.md)seçmeniz ve isteklerinizin [b2clogin.com](b2clogin.md) kullanmanız gerekir. Bu makalede, betik yürütmeyi etkinleştirmek için özel ilkenizi nasıl değiştirebileceğiniz açıklanır.
 
 > [!NOTE]
 > Kullanıcı akışları için JavaScript 'ı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory B2C JavaScript ve sayfa düzeni sürümleri](user-flow-javascript-overview.md).
@@ -151,4 +151,4 @@ Kod içinde `termsOfUseUrl` kullanım anlaşma koşullarınıza bağlantı. Dizi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcı arabirimi, uygulamalarınızın nasıl özelleştirebileceğiniz hakkında daha fazla bilgi [özel bir ilke kullanarak Azure Active Directory B2C'de, uygulamanızın kullanıcı arabirimini özelleştirme](active-directory-b2c-ui-customization-custom.md).
+Kullanıcı arabirimi, uygulamalarınızın nasıl özelleştirebileceğiniz hakkında daha fazla bilgi [özel bir ilke kullanarak Azure Active Directory B2C'de, uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md).

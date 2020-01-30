@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 02/28/2020
 ms.author: ellacroi
-ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 54ad3049789a737ffb29519b6546973acda9b4ae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822947"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843846"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -36,10 +36,10 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Barbados                            | BB        | USD          |
 | Belarus                             | BY        | USD          |
 | Belçika                             | BE        | EUR          |
-| Beliz                              | BZ        | USD          |
+| Belize                              | BZ        | USD          |
 | Bermuda                             | BM        | USD          |
 | Bolivya                             | BO        | USD          |
-| Bosna Hersek              | BA        | USD          |
+| Bosna - Hersek              | BA        | USD          |
 | Botsvana                            | BW        | USD          |
 | Brezilya                              | BR        | BRL\*        |
 | Barış                              | BN        | USD          |
@@ -47,12 +47,13 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
 | Cabo Verde                          | CV        | USD          |
-| Kayman Adaları                      | KY        | USD          |
+| Cayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
+| Çin\**                            | CN        | Yok          |
 | Kolombiya                            | CO        | USD          |
 | Kosta Rika                          | CR        | USD          |
 | Fildişi Sahili (Côte d’Ivoire)                       | CI        | USD          |
-| Hırvatistan                             | HR        | EUR          |
+| Hırvatistan                             | İK        | EUR          |
 | Curaçao                             | FIILI        | USD          |
 | Kıbrıs                              | CY        | EUR          |
 | Çek Cumhuriyeti                      | CZ        | EUR          |
@@ -73,7 +74,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Yunanistan                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hong Kong ÖİB                       | HK        | USD          |
+| Hong Kong SAR                       | HK        | USD          |
 | Macaristan                             | HU        | EUR          |
 | İzlanda                             | IS        | EUR          |
 | Hindistan                               | IN        | INR          |
@@ -93,7 +94,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Letonya                              | LV        | EUR          |
 | Lübnan                             | LB        | USD          |
 | Libya                               | LY        | USD          |
-| Lihtenştayn                       | LI        | EUR          |
+| Liechtenstein                       | LI        | EUR          |
 | Litvanya                           | LT        | EUR          |
 | Lüksemburg                          | LU        | EUR          |
 | Makao ÖİB                           | MO        | USD          |
@@ -107,7 +108,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Moğolistan                            | MN        | USD          |
 | Karadağ                          | YAPA        | USD          |
 | Fas                             | MA        | USD          |
-| Namibya                             | NA        | USD          |
+| Namibya                             | Yok        | USD          |
 | Nepal                               | NP        | USD          |
 | Hollanda                         | NL        | EUR          |
 | Nikaragua                           | NI        | USD          |
@@ -127,7 +128,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Katar                               | QA        | USD          |
 | Romanya                             | RO        | EUR          |
 | Rusya                              | RU        | RUB          |
-| Rwanda                              | RW        | USD          |
+| Ruanda                              | RW        | USD          |
 | Saint Kitts ve Nevis               | KN        | USD          |
 | Suudi Arabistan                        | SA        | USD          |
 | Senegal                             | SN        | USD          |
@@ -154,7 +155,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Ukrayna                             | UA        | USD          |
 | Birleşik Arap Emirlikleri                | AE        | USD          |
 | Birleşik Krallık                      | GB        | GBP          |
-| Amerika Birleşik Devletleri                       | ABD        | USD          |
+| Birleşik Devletler                       | US        | USD          |
 | Uruguay                             | UY        | USD          |
 | Özbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
@@ -165,3 +166,5 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 |   |   |   |
 
 \*, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
+
+yalnızca ücretsiz ve KLG VM görüntülerini \*.

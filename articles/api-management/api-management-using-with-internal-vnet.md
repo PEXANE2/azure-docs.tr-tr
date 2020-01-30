@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430603"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841872"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management hizmetini iç sanal ağla kullanma
 Azure API Management, Azure sanal ağları ile internet 'te erişilemeyen API 'Leri yönetebilir. Bağlantıyı yapmak için bir dizi VPN teknolojisi mevcuttur. API Management, bir sanal ağ içindeki iki ana modda dağıtılabilir:
@@ -126,7 +126,7 @@ Bir sanal ağda özel bir DNS sunucusu kullanıyorsanız, DNS kayıtları oluşt
 
 * Alt ağ aralığından yük dengeli bir *özel* sanal IP adresi ayrılır ve sanal ağ içinden API Management hizmet uç noktalarına erişmek için kullanılır. Bu *özel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. Bu adresin, sanal ağ tarafından kullanılan DNS sunucularına kayıtlı olması gerekir.
 * 3443 numaralı bağlantı noktası üzerinden yönetim hizmeti uç noktasına erişim sağlamak için yük dengeli bir *genel* IP adresı (VIP) de ayrılmış olur. Bu *genel* IP adresi, Azure Portal hizmetin genel bakış dikey penceresinde bulunabilir. *Genel* IP adresi yalnızca bağlantı noktası 3443 üzerinden `management` uç noktasına yönelik denetim düzlemi trafiği için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
-* Alt ağ IP aralığından (DIP) IP adresleri, hizmette her bir VM 'ye atanır ve sanal ağ içindeki kaynaklara erişmek için kullanılır. Sanal ağ dışındaki kaynaklara erişmek için genel bir IP adresi (VIP) kullanılacaktır. Sanal ağ içindeki kaynakları güvenli hale getirmek için IP kısıtlama listeleri kullanılırsa, API Management hizmetinin dağıtıldığı alt ağ için tüm aralığın, hizmete erişim vermek veya erişimi kısıtlamak için belirtilmesi gerekir.
+* Alt ağ IP aralığından (DIP) IP adresleri, hizmette her bir VM 'ye atanır ve sanal ağ içindeki kaynaklara erişmek için kullanılır. Sanal ağ dışındaki kaynaklara erişmek için genel bir IP adresi (VIP) kullanılacaktır. Sanal ağ içindeki kaynakları güvenli hale getirmek için IP kısıtlama listeleri kullanılıyorsa, hizmete erişim vermek veya erişimi kısıtlamak için API Management hizmetinin dağıtıldığı alt ağ için tüm aralığın belirtilmesi gerekir.
 * Yük dengeli ortak ve özel IP adresleri Azure portal genel bakış dikey penceresinde bulunabilir.
 * Ortak ve özel erişim için atanan IP adresleri, hizmet konumundan kaldırılıp sonra sanal ağa geri eklendiyse değişebilir. Bu durumda, sanal ağ içindeki DNS kayıtları, yönlendirme kuralları ve IP kısıtlama listelerinin güncelleştirilmesi gerekebilir.
 

@@ -2,25 +2,23 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 11/27/2018
+ms.date: 01/13/2020
 ms.author: glenga
-ms.openlocfilehash: 031a460862cf12efa02c139074e5a7066f0526c6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c6579b8b091f9053e1e64be3793d17953e464a16
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188169"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842226"
 ---
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-Uygulamanızı yayımlamadan önce Azure’da oturum açmanız gerekir.
+Uygulamanızı yayımlamadan önce Azure’da oturum açmanız gerekir. Zaten oturum açtıysanız sonraki bölüme gidin.
 
-1. İçinde **Azure: İşlevleri** alanında seçin **Azure'da oturum aç...** . Henüz bir hesabınız yoksa **Ücretsiz bir Azure hesabı oluşturabilirsiniz**.
+1. Etkinlik çubuğunda Azure simgesini seçin, sonra **Azure: işlevler** alanında **Azure 'da oturum aç ' ı seçin...** Henüz bir **hesabınız yoksa ücretsiz bir Azure hesabı oluşturabilirsiniz**.
 
     ![Tarayıcıdaki işlev localhost yanıtı](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 
-1. İstendiğinde **Kopyala ve Aç**’ı seçin veya görüntülenen kodu kopyalayın ve tarayıcınızda <https://aka.ms/devicelogin> öğesini açın.
+1. Tarayıcıda istendiğinde, Azure hesabınızı seçin ve Azure hesabı kimlik bilgilerinizi kullanarak oturum açın. 
 
-1. Kopyalanmış kodu yapıştırın **cihaz oturum açma** sayfa, oturum açma, Visual Studio Code için doğrulayın ve ardından seçin **devam**.  
-
-1. Azure hesabı kimlik bilgilerinizi kullanarak oturum açma tamamlayın. Başarılı bir şekilde oturum açtıktan sonra tarayıcıyı kapatabilirsiniz.
+1. Başarıyla oturum açtıktan sonra yeni tarayıcı penceresini kapatabilirsiniz. Azure hesabınıza ait abonelikler yan çubukta görüntülenir.

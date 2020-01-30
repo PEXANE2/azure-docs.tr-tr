@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 16748d9948518964d47ee9543765e3cb59ae2ec4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74902000"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841089"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir arama uygulaması oluşturma (Azure Bilişsel Arama)
 
@@ -21,7 +21,9 @@ Tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulaması 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
+
+[En son Microsoft Edge sürümüne](https://www.microsoft.com/edge) yükseltmek veya bu hızlı başlangıç için Google 'ın Chrome tarayıcısını kullanmak isteyeceksiniz.
 
 Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
@@ -94,7 +96,7 @@ Temel alınan dizin, belgeler arasında çoğaltılan kurgusal, oluşturulan ver
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

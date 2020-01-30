@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864992"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841106"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Bir sanal ağa katılması için bir Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma zamanı (IR) yapılandırma
 
@@ -44,7 +44,7 @@ Adımlar şunlardır:
     
         Azure-SSIS IR, sanal ağ ile aynı kaynak grubunda belirli ağ kaynaklarını oluşturması gerekir. Bu kaynaklar şunları içerir:
         - *\<guıd >-azurebatch-cloudserviceloaddengeleyici* adlı bir Azure yük dengeleyici
-        - *\<GUID >-azurebatch-cloudservicenetworksecuritygroup adlı bir ağ iş güvenlik grubu
+        - *\<GUID >-azurebatch-cloudservicenetworksecuritygroup adlı bir ağ güvenlik grubu
         - -Azurebatch-cloudservicepublicıp adlı bir Azure genel IP adresi
     
         Azure-SSIS IR, bu kaynaklar oluşturulur. Azure-SSIS IR durdurulduğunda bunlar silinir. Azure-SSIS IR durdurmadan engellemeden kaçınmak için, diğer kaynaklarınızda bu ağ kaynaklarını yeniden kullanmayın.
@@ -64,9 +64,9 @@ Adımlar şunlardır:
     
     Daha fazla bilgi için [sanal ağ yapılandırmasını](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)denetleyin.
 
-## <a name="configure-a-virtual-network"></a>Sanal ağı yapılandırma
+## <a name="configure-a-virtual-network"></a>Sanal ağ yapılandırma
 
-Bir Azure-SSIS IR katılmayı denemeden önce sanal bir ağa Azure portal kullanın.
+Bir Azure-SSIS IR katılmayı denemeden önce bir sanal ağı yapılandırmak için Azure portal kullanın.
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler.
 

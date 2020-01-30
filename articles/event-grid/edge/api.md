@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992541"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841838"
 ---
 # <a name="rest-api"></a>REST API
 Bu makalede IoT Edge Azure Event Grid REST API 'Leri açıklanmaktadır
@@ -41,7 +41,7 @@ Tüm API isteklerinin **Içerik türünde**olması gerekir.
 
 ```Content-Type: application/json; charset=utf-8```
 
-Yapılandırılmış modda **CloudEventSchemaV1_0** olması durumunda, Content-Type değeri aşağıdaki değerlerden biri olabilir:
+Yapılandırılmış modda **CloudEventSchemaV1_0** olması durumunda, içerik türü değeri aşağıdaki değerlerden biri olabilir:
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,7 +51,7 @@ Yapılandırılmış modda **CloudEventSchemaV1_0** olması durumunda, Content-T
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-İkili modda **CloudEventSchemaV1_0** durumunda Ayrıntılar için [belgelere](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) bakın.
+İkili modda **CloudEventSchemaV1_0** olması durumunda Ayrıntılar için [belgelere](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md) bakın.
 
 ### <a name="error-response"></a>Hata yanıtı
 Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
@@ -183,6 +183,7 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -527,7 +528,7 @@ Bu bölümdeki örneklerde `EndpointType=Webhook;`kullanın. `EndpointType=EdgeH
 
 **Yük alanı açıklamaları**
 - ```Id``` zorunludur. Bu, çağıran tarafından doldurulan herhangi bir dize değeri olabilir. Event Grid, hiçbir yinelenen algılama yapmaz veya bu alanda hiçbir semantiğe zorlanır.
-- ```Topic``` isteğe bağlıdır, ancak belirtilmişse istek URL 'sinden topic_name ile eşleşmelidir
+- ```Topic``` isteğe bağlıdır, ancak belirtilirse, istek URL 'sinden topic_name eşleşmesi gerekir
 - ```Subject``` zorunludur, herhangi bir dize değeri olabilir
 - ```EventType``` zorunludur, herhangi bir dize değeri olabilir
 - ```EventTime``` zorunludur, bu doğrulanmaz ve uygun bir DateTime olmalıdır.
@@ -619,8 +620,8 @@ Başka bir modüle (bir HTTP uç noktası barındıran) veya ağ/internet üzeri
 `endpointUrl` özniteliğinde kısıtlamalar:
 - Null olmayan bir değer olmalıdır.
 - Mutlak bir URL olmalıdır.
-- Outbound__webhook__httpsOnly, EventGridModule ayarlarında true olarak ayarlandıysa, yalnızca HTTPS olmalıdır.
-- Outbound__webhook__httpsOnly yanlış olarak ayarlanırsa, HTTP veya HTTPS olabilir.
+- Outbound__webhook__httpsOnly EventGridModule ayarlarında true olarak ayarlandıysa, yalnızca HTTPS olmalıdır.
+- Outbound__webhook__httpsOnly false olarak ayarlandıysa, HTTP veya HTTPS olabilir.
 
 `eventDeliverySchema` özelliğindeki kısıtlamalar:
 - Abone olan konunun giriş şemasıyla eşleşmesi gerekir.
@@ -673,9 +674,9 @@ EndpointUrl
 - Mutlak bir URL olmalıdır.
 - Yol `/api/events`, istek URL 'SI yolunda tanımlanmalıdır.
 - Sorgu dizesinde `api-version=2018-01-01` olması gerekir.
-- Outbound__eventgrid__httpsOnly, EventGridModule ayarlarında true olarak ayarlandıysa (varsayılan olarak true), yalnızca HTTPS olmalıdır.
-- Outbound__eventgrid__httpsOnly yanlış olarak ayarlanırsa, HTTP veya HTTPS olabilir.
-- Outbound__eventgrid__allowInvalidHostnames, false olarak ayarlandıysa (varsayılan olarak false), aşağıdaki uç noktalardan birini hedeflemelidir:
+- Outbound__eventgrid__httpsOnly EventGridModule ayarlarında true olarak ayarlanırsa (varsayılan olarak true), yalnızca HTTPS olmalıdır.
+- Outbound__eventgrid__httpsOnly false olarak ayarlanırsa, HTTP veya HTTPS olabilir.
+- Outbound__eventgrid__allowInvalidHostnames false olarak ayarlandıysa (varsayılan olarak false), aşağıdaki uç noktalardan birini hedeflemelidir:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
@@ -686,3 +687,93 @@ SasKey:
 TopicName:
 - Abonelik. EventDeliverySchema, EventGridSchema olarak ayarlandıysa, bu alandaki değer, bulutta Event Grid iletilmeden önce her olayın konu alanına konur.
 - Abonelik. EventDeliverySchema, CustomEventSchema olarak ayarlandıysa, bu özellik yok sayılır ve özel olay yükü aynen alındığı gibi iletilir.
+
+## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs hedef olarak ayarlama
+
+Bir olay hub 'ına yayımlamak için `endpointType` `eventHub` ayarlayın ve şunları sağlayın:
+
+* connectionString: hedeflediğiniz belirli olay hub 'ı için, paylaşılan erişim Ilkesi aracılığıyla oluşturulmuş bağlantı dizesi.
+
+    >[!NOTE]
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayınlamak istediğiniz belirli olay hub 'ına giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, varlığa özel bağlantı dizesi oluşturarak yeni bir varlığa özgü bağlama dizesi oluşturabilirsiniz.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus kuyruklarını hedef olarak ayarlama
+
+Service Bus kuyruğuna yayımlamak için `endpointType` `serviceBusQueue` olarak ayarlayın ve şunları sağlayın:
+
+* connectionString: hedeflediğiniz belirli Service Bus kuyruğu için bağlantı dizesi, paylaşılan erişim Ilkesi aracılığıyla üretildi.
+
+    >[!NOTE]
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayımlamak istediğiniz belirli Service Bus kuyruğuna giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, yeni varlığa özel bağlantı dizesi oluşturmak için varlığa özgü bir bağlantı dizesi oluşturun.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus konuları hedef olarak ayarlama
+
+Service Bus bir konuya yayımlamak için `endpointType` `serviceBusTopic` olarak ayarlayın ve şunları sağlayın:
+
+* connectionString: bir paylaşılan erişim Ilkesi aracılığıyla hedeflediğiniz özel Service Bus konusu için bağlantı dizesi.
+
+    >[!NOTE]
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayımlamak istediğiniz belirli Service Bus konusuna giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, yeni varlığa özel bir bağlantı dizesi oluşturmak için varlığa özel bağlantı dizesi oluşturun.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>Depolama kuyruklarını hedef olarak ayarlama
+
+Bir depolama kuyruğuna yayımlamak için `endpointType` `storageQueue` ayarlayın ve şunları sağlayın:
+
+* SıraAdı: yayımlamakta olduğunuz depolama kuyruğunun adı.
+* connectionString: depolama sırasının bulunduğu depolama hesabı için bağlantı dizesi.
+
+    >[!NOTE]
+    > Satır Event Hubs, Service Bus kuyrukları ve Service Bus konuları, depolama kuyrukları için kullanılan bağlantı dizesi varlığa özgü değildir. Bunun yerine, depolama hesabı için bağlantı dizesi gerekir.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981170"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843557"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -604,7 +604,7 @@ Mantıksal uygulamanızdan çağrı veya istek alan uç noktaları güvenli hale
 
 HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. Giden çağrıları veya bu uç noktalara erişen istekleri yapmak için kullandığınız tetikleyici veya eyleme bağlı olarak, farklı kimlik doğrulama türü aralıkları arasından seçim yapabilirsiniz. Mantıksal uygulamanızın işleyeceği gizli bilgileri koruduğunuzdan emin olmak için, güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın. Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [parametre girdilerine erişim](#secure-action-parameters).
 
-| Kimlik doğrulaması türü | tarafından desteklenir |
+| Kimlik doğrulaması türü | Desteklediği |
 |---------------------|--------------|
 | [Temel](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Web kancası |
 | [İstemci sertifikası](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Web kancası |
@@ -620,7 +620,7 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 
 ### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
-[Temel](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) seçenek varsa, bu özellik değerlerini belirtin:
+[Temel](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) seçenek varsa, bu özellik değerlerini belirtin:
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
@@ -682,7 +682,7 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 * [Azure API Management istemci sertifikası kimlik doğrulaması kullanarak API 'Leri güvenli hale getirme](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [Azure API Management istemci sertifikası kimlik doğrulamasını kullanarak arka uç hizmetleri güvenli hale getirme](../api-management/api-management-howto-mutual-certificates.md)
-* [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [Uygulama kimlik doğrulaması için sertifika kimlik bilgileri](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Uygulama kodunuzda bir SSL sertifikası kullanın Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -748,7 +748,7 @@ Ham kimlik doğrulamasını destekleyen tetikleyici veya eylemde, bu özellik de
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | Ham | Kullanılacak kimlik doğrulaması türü |
+| **Kimlik doğrulaması** | `type` | Evet | Madde | Kullanılacak kimlik doğrulaması türü |
 | **Değer** | `value` | Evet | <*yetkilendirmesi-üst bilgi-değer*> | Kimlik doğrulaması için kullanılacak yetkilendirme üst bilgisi değeri |
 ||||||
 

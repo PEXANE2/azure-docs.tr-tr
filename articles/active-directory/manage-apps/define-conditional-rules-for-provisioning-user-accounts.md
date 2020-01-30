@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3401ed08a9332d4bb2735e536df33c201b28ca0e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711690"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841957"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -94,7 +94,12 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
    g. **Regex eşleşiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9] [0-9]), 10 ile 99 arasında herhangi bir sayıyla eşleşir.
 
    h. **Regex eşleşmiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşmezse, yan tümce "true" döndürür.
- 
+   
+   i. **Greater_Than.** Değerlendirilen öznitelik değerden büyükse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
+   
+   j. **Greater_Than_OR_EQUALS.** Değerlendirilen öznitelik değerden büyük veya bu değere eşitse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
+
+
 >[!IMPORTANT] 
 > Içerme ve IsMemberOf filtreleri desteklenmez. Yakında kullanıcı arabiriminden kaldırılacaktır.
 

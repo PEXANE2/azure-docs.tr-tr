@@ -3,12 +3,12 @@ title: İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 description: Service Fabric kümeler için istemcilerin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614698"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843829"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>İstemci kimlik doğrulaması için Azure Active Directory ayarlama
 
@@ -104,9 +104,19 @@ Service Fabric Explorer ' de Azure AD 'de oturum açmaya çalıştığınızda, 
 Service Fabric Explorer temsil eden küme (Web) uygulaması Azure AD 'de kimlik doğrulaması yapmayı dener ve isteğin bir parçası olarak yeniden yönlendirme dönüş URL 'si sağlar. Ancak URL, Azure AD uygulama **yanıt URL 'si** listesinde listelenmez.
 
 #### <a name="solution"></a>Çözüm
-AAD sayfasında "Uygulama kayıtları" seçeneğini belirleyin, küme uygulamanızı seçin ve ardından **yanıt URL 'leri** düğmesini seçin. "Yanıt URL 'Leri" sayfasında, Service Fabric Explorer URL 'sini listeye ekleyin veya listedeki öğelerden birini değiştirin. İşiniz bittiğinde, değişiklerinizi kaydedin.
+Azure AD sayfasında **uygulama kayıtları**' yi seçin, küme uygulamanızı seçin ve ardından **yanıt URL 'leri**' ni seçin. **Yanıt URL 'leri** BÖLMESINDE Service Fabric Explorer URL 'sini listeye ekleyin veya listedeki öğelerden birini değiştirin. Değişiklerinizi kaydedin.
 
-![Web uygulaması yanıt URL 'si][web-application-reply-url]
+![Web uygulaması yanıt URL 'SI][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>PowerShell aracılığıyla Azure AD kimlik doğrulaması kullanarak kümeye bağlanma, oturum açtığınızda bir hata veriyor: "AADSTS50011"
+#### <a name="problem"></a>Sorun
+PowerShell aracılığıyla Azure AD kullanarak bir Service Fabric kümesine bağlanmaya çalıştığınızda, oturum açma sayfası bir hata döndürür: "AADSTS50011: istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: &lt;GUID&gt;."
+
+#### <a name="reason"></a>Neden
+Yukarıdaki soruna benzer şekilde, PowerShell, Azure AD uygulama **yanıt URL 'leri** listesinde listelenmeyen bir yeniden yönlendirme URL 'Si sağlayan Azure AD 'de kimlik doğrulamaya çalışır.  
+
+#### <a name="solution"></a>Çözüm
+Önceki sorunla aynı süreci kullanın, ancak URL 'nin komut satırı kimlik doğrulaması için özel bir yeniden yönlendirme olan `urn:ietf:wg:oauth:2.0:oob`olarak ayarlanması gerekir.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>PowerShell aracılığıyla Azure AD kimlik doğrulaması kullanarak kümeyi bağlama
 Service Fabric kümesine bağlanmak için aşağıdaki PowerShell komut örneğini kullanın:

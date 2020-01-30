@@ -9,16 +9,16 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b5456130e89bf77e2c2ba41880323e38f6b27f4c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992515"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841800"
 ---
 # <a name="configure-client-authentication-of-incoming-calls"></a>Gelen çağrıların istemci kimlik doğrulamasını yapılandırma
 
-Bu kılavuzda, Event Grid modülü için olası istemci kimlik doğrulama yapılandırmalarının örnekleri verilmiştir. Event Grid modülü iki tür istemci kimlik doğrulamasını destekler:-
+Bu kılavuzda, Event Grid modülü için olası istemci kimlik doğrulama yapılandırmalarının örnekleri verilmiştir. Event Grid modülü iki tür istemci kimlik doğrulamasını destekler:
 
 * Paylaşılan erişim imzası (SAS) anahtar tabanlı
 * Sertifika tabanlı
@@ -30,10 +30,10 @@ Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuz
 ```json
  {
   "Env": [
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=false"
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=false"
   ]
 }
  ```
@@ -43,28 +43,28 @@ Tüm olası yapılandırmalara yönelik [güvenlik ve kimlik doğrulama Kılavuz
 ```json
  {
   "Env": [
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true"
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true"
   ]
 }
 ```
 
 >[!NOTE]
->Genellikle otomatik olarak imzalanan sertifikalar kullanıyorsanız, **gelen: clientAuth: clientCert: allowUnknownCA** özelliğini yalnızca test ortamlarında **true** değerine ayarlayın. Üretim iş yükleri için, bu özelliği **yanlış** ve bir sertifika YETKILISINDEN (CA) sertifikalar olarak ayarlamanızı öneririz.
+>**İnbound__clientAuth__clientCert__allowUnknownCA** özelliği, genellikle otomatik olarak imzalanan sertifikaları kullanırken, yalnızca test ortamlarında **true** olarak ayarlayın. Üretim iş yükleri için, bu özelliği **yanlış** ve bir sertifika YETKILISINDEN (CA) sertifikalar olarak ayarlamanızı öneririz.
 
 ## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Sertifika tabanlı ve SAS anahtar tabanlı istemci kimlik doğrulamasını etkinleştir
 
 ```json
  {
   "Env": [
-    "inbound:clientAuth:sasKeys:enabled=true",
-    "inbound:clientAuth:sasKeys:key1=<some-secret1-here>",
-    "inbound:clientAuth:sasKeys:key2=<some-secret2-here>",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true"
+    "inbound__clientAuth__sasKeys__enabled=true",
+    "inbound__clientAuth__sasKeys__key1=<some-secret1-here>",
+    "inbound__clientAuth__sasKeys__key2=<some-secret2-here>",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true"
   ]
 }
  ```
