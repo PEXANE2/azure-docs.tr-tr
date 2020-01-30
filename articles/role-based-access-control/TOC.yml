@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: Rol tanımlarını listeleme
           href: role-definitions-list.md
-        - name: Yerleşik roller
-          href: built-in-roles.md
     - name: Rol atamalarını listeleme
       items:
         - name: Portal
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: Başvuru
   items:
+    - name: Yerleşik roller
+      href: built-in-roles.md
     - name: Kaynak sağlayıcısı işlemleri
       href: resource-provider-operations.md
     - name: RBAC sınırları

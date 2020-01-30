@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Soru-Cevap Oluşturma Belgeleri
   description: Soru-Cevap Oluşturma, verilerinizi temel alan bir sohbet ve soru-cevap katmanı oluşturan bulut tabanlı bir API hizmetidir. Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar. Soru-Cevap Oluşturma hizmeti, kullanıcılarınızın doğal dil sorularını Bilgi Bankanızda bulunan en iyi cevapla eşleştirerek cevap verir.
-  ms.openlocfilehash: 03518a1d7156d57424b28980d05bb03bfef56503
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
+  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945597"
+  ms.lasthandoff: 01/29/2020
+  ms.locfileid: "76844118"
 landingContent:
 - title: Soru-Cevap Oluşturma hakkında
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
     - text: Geliştirme yaşam döngüsü
       url: concepts/development-lifecycle-knowledge-base.md
     - text: Veri kaynakları
-      url: concepts/data-sources-supported.md
+      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: Dakikalar içinde bot oluşturma

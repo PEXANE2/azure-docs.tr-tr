@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447687"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843048"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
@@ -86,7 +86,7 @@ Bu yordamda, ek sorular ekleyin.
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Yanıtları filtrelemek için meta veriler ekleyin
 
-Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrelenmiş yanıtlar istemesine izin verir. Bu filtre, [ilk ve ikinci ranranlar](../concepts/knowledge-base.md#ranker-process) uygulanmadan önce uygulanır.
+Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrelenmiş yanıtlar istemesine izin verir. Bu filtre, [ilk ve ikinci ranranlar](../concepts/query-knowledge-base.md#ranker-process) uygulanmadan önce uygulanır.
 
 1. İkinci soruyu ve yanıt kümesini meta veriler olmadan, [Bu hızlı başlangıçtaki ilk tablodan](#qna-table)ekleyin ve ardından aşağıdaki adımlarla devam edin.
 
