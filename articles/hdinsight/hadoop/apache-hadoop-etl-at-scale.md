@@ -53,7 +53,7 @@ Azure Data Factory hakkında daha fazla bilgi için [belgelerine](../../data-fac
 
 Kaynak veri dosyaları genellikle Azure Storage veya Azure Data Lake Storage bir konuma yüklenir. Dosyalar herhangi bir biçimde olabilir, ancak genellikle CSV 'ler gibi düz dosyalardır.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 [Azure depolama](https://azure.microsoft.com/services/storage/blobs/) 'nın belirli ölçeklenebilirlik hedefleri vardır. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md). Birçok analitik düğüm için Azure depolama, çok daha küçük dosyalarla ilgilenirken en iyi şekilde ölçeklendirilir.  Azure depolama, kaç dosya olduğunu ya da dosyaların ne kadar büyük olduğunu (sınırlarınız dahilinde olduğu sürece) değil, aynı performansı garanti eder.  Diğer bir deyişle, verilerin bir alt kümesini ya da tüm verileri kullanıp kullanmayacağınızı, terabaytlarca veri depolayabilirsiniz ve yine de tutarlı performans sağlayabilirsiniz.
 
@@ -67,7 +67,7 @@ Veriler genellikle PowerShell, Azure Storage SDK veya AZCopy kullanılarak Azure
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Storage (ADLS), bir analiz verileri için, "  ADLS,, bir tasarım paradigması ile benzer ve toplam kapasite ve tek dosyaların boyutu bakımından sınırsız ölçeklenebilirlik sunar. Büyük bir dosya birden çok düğümde depolanabildiği için, ADLS, büyük dosyalarla çalışırken çok iyidir.  ADLS içindeki bölümlendirme verileri arka planda yapılır.  Yüzlerce terabayt boyutunda veriyi verimli bir şekilde okuyan ve yazan eşzamanlı binlerce yürütücü sayesinde, analiz işlerini çok yüksek aktarım hızlarıyla çalıştırabilirsiniz.
+Azure Data Lake Storage (ADLS), bir analiz verileri için, "  ADLS,, bir tasarım paradigması ile benzer ve toplam kapasite ve tek dosyaların boyutu bakımından sınırsız ölçeklenebilirlik sunar. Büyük bir dosya birden çok düğümde depolanabildiği için, ADLS, büyük dosyalarla çalışırken çok iyidir.  ADLS içindeki bölümlendirme verileri arka planda yapılır.  Yüzlerce terabaytlarca veriyi verimli bir şekilde okuyan ve yazan binlerce eşzamanlı yürütme sayesinde analitik işleri çalıştırmak için büyük ölçüde üretilen iş kazanın.
 
 Veriler genellikle Azure Data Factory, ADLS SDK 'Ları, AdlCopy hizmeti, Apache DistCp veya Apache Sqoop kullanılarak ADLS 'ye alınır.  Bu hizmetlerden hangisinin büyük ölçüde kullanılacağı, verilerin nerede olduğuna bağlıdır.  Veriler şu anda mevcut bir Hadoop kümenizle birlikte Apache DistCp, AdlCopy hizmeti veya Azure Data Factory kullanabilirsiniz.  Azure Blob depolamadaki Azure Data Lake Storage .NET SDK, Azure PowerShell veya Azure Data Factory kullanabilirsiniz.
 
@@ -77,7 +77,7 @@ ADLS, Azure Olay Hub 'ı veya Apache Storm kullanılarak olay alımı için de i
 
 Veri kümelerini terabayt aralığında karşıya yüklemek için, özellikle de veriler şirket içi bir konumdan geliyorsa, ağ gecikmesi önemli bir sorun olabilir.  Böyle durumlarda, aşağıdaki seçenekleri kullanabilirsiniz:
 
-* Azure ExpressRoute: Azure ExpressRoute, Azure veri merkezleri ile şirket içi altyapınız arasında özel bağlantılar oluşturmanızı sağlar. Bu bağlantılar, büyük miktarlarda veri aktarmaya yönelik güvenilir bir seçenek sağlar. Daha fazla bilgi için bkz. [Azure ExpressRoute belgeleri](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute:  Azure ExpressRoute, Azure veri merkezleri ile şirket içi altyapınız arasında özel bağlantılar oluşturmanızı sağlar. Bu bağlantılar, büyük miktarlarda veri aktarmaya yönelik güvenilir bir seçenek sağlar. Daha fazla bilgi için bkz. [Azure ExpressRoute belgeleri](../../expressroute/expressroute-introduction.md).
 
 * Verilerin "çevrimdışı" yüklenmesi. Azure [içeri/dışarı aktarma hizmeti](../../storage/common/storage-import-export-service.md) 'ni kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Storage Bloblarına yüklenir. Daha sonra, Azure depolama Bloblarındaki verileri Data Lake Storage kopyalamak için [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) veya [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) aracını kullanabilirsiniz.
 
@@ -129,7 +129,7 @@ Apache flome, büyük miktarlarda günlük verilerini verimli bir şekilde topla
 
 Apache akışkan, Azure HDInsight ile kullanılamaz.  Şirket içi Hadoop yüklemesi, verileri Azure depolama Bloblarına veya Azure Data Lake Storage göndermek için akıcı bir şekilde kullanabilir.  Daha fazla bilgi için bkz. [HDInsight Ile Apache Flobana kullanımı](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Dönüşüm
+## <a name="transform"></a>Dönüştürme
 
 Seçilen konumda veriler varsa, bunu temizlemeniz, birleştirmeniz veya belirli bir kullanım deseninin hazırlanması gerekir.  Hive, Pig ve Spark SQL, bu tür bir çalışma için iyi seçimlerdir.  Bunlar HDInsight 'ta desteklenirler.
 
