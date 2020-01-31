@@ -459,6 +459,8 @@
           href: speech-sdk.md
         - name: Senaryo kullanılabilirliği
           href: scenario-availability.md
+        - name: Uygulama teslim etme
+          href: ship-application.md
     - name: Hızlı Başlangıçlar
       items:
         - name: Proje oluşturma

@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: Belge Ayıklama
           href: cognitive-search-skill-document-extraction.md
+        - name: PII Algılama
+          href: cognitive-search-skill-pii-detection.md
     - name: Özel beceriler
       items:
         - name: Özel Web API'si

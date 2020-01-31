@@ -13,26 +13,25 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: 'İşlev oluşturma - C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: İşlev oluşturma - Java
-      href: functions-create-first-java-maven.md
-    - name: İşlev oluşturma - JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: İşlev oluşturma - PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: İşlev oluşturma - Python
-      href: functions-create-first-function-python.md
-    - name: Hizmetlere bağlanma
+    - name: İşlev oluşturma
+      expanded: true
       items:
-        - name: 'Depolama - C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: Depolama - Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: Depolama - JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: Komut satırı
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: Depolamaya bağlanma
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Depolama - Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: Öğreticiler
   items:
     - name: Logic Apps ile İşlevler
@@ -160,7 +159,7 @@
                 - name: Azure portal
                   href: functions-create-first-azure-function.md
                 - name: Komut satırı
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code

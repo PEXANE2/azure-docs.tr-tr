@@ -5,7 +5,6 @@
     - name: Sanal Ağ hakkında
       href: virtual-networks-overview.md
 - name: Hızlı Başlangıçlar
-  expanded: true
   items:
     - name: Sanal ağ oluşturma - Portal
       href: quick-create-portal.md
@@ -13,6 +12,7 @@
       href: quick-create-powershell.md
     - name: Sanal ağ oluşturma - Azure CLI
       href: quick-create-cli.md
+  expanded: true
 - name: Öğreticiler
   items:
     - name: Ağ trafiğini filtreleme
@@ -83,12 +83,6 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Ağlar arası bağlantı
       href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Klasik
-      items:
-        - name: IP adresi
-          href: virtual-network-ip-addresses-overview-classic.md
-        - name: Erişim denetimi listeleri
-          href: virtual-networks-acl.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Planlama
@@ -258,6 +252,8 @@
               href: virtual-network-manage-peering.md
             - name: DDoS koruması
               href: manage-ddos-protection.md
+            - name: DDos Koruması Standart’a iş ortağı ekleme
+              href: ddos-protection-partner-onboarding.md
         - name: Ağ güvenlik grupları
           href: manage-network-security-group.md
           items:
@@ -321,74 +317,6 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Azure VM bağlantısıyla ilgili sorunları giderme
           href: troubleshoot-vm-connectivity.md
-    - name: Klasik
-      items:
-        - name: Sanal ağı oluşturma ve yönetme
-          items:
-            - name: Sanal ağ oluşturma
-              href: create-virtual-network-classic.md
-              items:
-                - name: Azure portal
-                  href: virtual-networks-create-vnet-classic-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
-                - name: Azure CLI
-                  href: virtual-networks-create-vnet-classic-cli.md
-            - name: Bir sanal ağ yapılandırma dosyasında DNS ayarlarını belirtme
-              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
-            - name: Bir hizmet yapılandırma dosyasında DNS ayarlarını belirleme
-              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
-            - name: Yönetme
-              items:
-                - name: Ağ yapılandırması dosyası
-                  href: virtual-networks-using-network-configuration-file.md
-                - name: Bir benzeşim grubundan bölgeye geçiş
-                  href: virtual-networks-migrate-to-regional-vnet.md
-        - name: Ağ güvenlik grubu oluşturma
-          items:
-            - name: Azure PowerShell
-              href: virtual-networks-create-nsg-classic-ps.md
-            - name: Azure klasik CLI
-              href: virtual-networks-create-nsg-classic-cli.md
-        - name: Yönlendirme tablosu oluşturma
-          items:
-            - name: Azure PowerShell
-              href: virtual-network-create-udr-classic-ps.md
-            - name: Azure CLI
-              href: virtual-network-create-udr-classic-cli.md
-        - name: Sanal makine ağı
-          items:
-            - name: VM Oluşturma- Birden çok ağ arabirimi
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-multinic-classic-ps.md
-                - name: Azure CLI
-                  href: virtual-network-deploy-multinic-classic-cli.md
-            - name: VM Oluşturma - Statik özel IP adresi
-              href: virtual-networks-reserved-public-ip.md
-            - name: Yönetme
-              items:
-                - name: Statik IP adresleri
-                  items:
-                    - name: Azure PowerShell
-                      href: virtual-networks-reserved-private-ip.md
-                    - name: Azure CLI
-                      href: virtual-networks-static-private-ip-classic-cli.md
-                - name: Örnek düzeyinde ortak IP adresi
-                  href: virtual-networks-instance-level-public-ip.md
-                - name: Erişim denetimi listeleri
-                  items:
-                    - name: Azure portal
-                      href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                    - name: Azure PowerShell
-                      href: virtual-networks-acl-powershell.md
-                - name: VM’yi farklı bir alt ağa taşıma
-                  href: virtual-networks-move-vm-role-to-subnet.md
-        - name: Bulut hizmeti ve ağ güvenliği
-          href: 'https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter'
-          items:
-            - name: Örnek uygulama
-              href: virtual-networks-sample-app.md
 - name: Başvuru
   items:
     - name: Azure CLI

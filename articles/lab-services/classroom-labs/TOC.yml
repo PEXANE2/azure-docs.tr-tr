@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: Python ve Jupyter Notebook’ları
           href: class-type-jupyter-notebook.md
+        - name: Android Studio ile mobil uygulama geliştirme
+          href: class-type-mobile-dev-android-studio.md
     - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)
       items:
         - name: Laboratuvar hesabı oluşturma ve yönetme

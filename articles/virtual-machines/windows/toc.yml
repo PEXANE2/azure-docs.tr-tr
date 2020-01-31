@@ -232,6 +232,8 @@
           href: disks-types.md
         - name: Şifreleme
           href: disk-encryption.md
+        - name: Disk Depolama rezervasyonları
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Yüksek performansa uygun tasarım yapma
           href: premium-storage-performance.md
         - name: Disk genişletme
@@ -551,6 +553,8 @@
           href: disks-use-storage-explorer-managed-disks.md
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
+        - name: Disk Depolama rezervasyonu yapma
+          href: disks-reserved-capacity.md
         - name: Artımlı anlık görüntü oluşturma
           href: disks-incremental-snapshots.md
         - name: Yönetilmeyen diskleri yedekleme

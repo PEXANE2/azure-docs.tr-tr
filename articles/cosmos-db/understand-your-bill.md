@@ -125,7 +125,7 @@ Batı ABD içinde bir Azure Cosmos kapsayıcısı oluşturduğunuzu varsayalım.
 
 Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız olan aşağıdaki örneği ele alalım (çok yöneticili yapılandırma). Basitlik sağlamak için, depolama boyutunun sabit kalır ve bu örneği daha basit tutmak için burada değişmez ve yok sayacağız. Ay boyunca sağlanan aktarım hızı aşağıdaki gibi farklılık gösterir (30 gün veya 720 saat varsayılır): 
 
-[0-100 saat]:  
+[0-100 saat]\:  
 
 * Tüm bölgelerin yazılabilir olduğu üç bölge Azure Cosmos hesabı (Batı ABD, Doğu ABD, Kuzey Avrupa) oluşturduk 
 
@@ -135,7 +135,7 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 * Adanmış aktarım hızı 20 K RU/sn ile bir kapsayıcı (C1) oluşturduk 
 
-[101-200 saat]:  
+[101-200 saat]\:  
 
 * Veritabanını (D1) 50 K RU/sn 'ye ölçeklendirdik 
 
@@ -143,11 +143,11 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 * Kapsayıcıyı sildik (C1)  
 
-[201-300 saat]:  
+[201-300 saat]\:  
 
 * Özel işleme 20 K RU/sn ile kapsayıcı (C1) oluşturdunuz 
 
-[301-400 saat]:  
+[301-400 saat]\:  
 
 * Azure Cosmos hesabından bölgelerden birini kaldırdık (yazılabilir bölge sayısı artık 2 ' dir) 
 
@@ -157,13 +157,13 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 * Kapsayıcıyı (C1) yeniden sildiniz 
 
-[401-500 saat]:  
+[401-500 saat]\:  
 
 * Veritabanını (D2) 10.000 RU/sn 'ye ölçeklendirdik  
 
 * Özel işleme 20 K RU/sn ile kapsayıcı (C1) oluşturdunuz 
 
-[501-700 saat]:  
+[501-700 saat]\:  
 
 * Veritabanını (D1) 20 K RU/sn 'ye ölçeklendirdik  
 
@@ -171,7 +171,7 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 * Kapsayıcıyı (C1) yeniden sildiniz  
 
-[701-720 saat]:  
+[701-720 saat]\:  
 
 * Veritabanı (D2) ile 50 K RU/sn arasında ölçeklendirildi  
 
@@ -240,7 +240,7 @@ Toplam faturanız (ayrılmış kapasite olmadan) olacaktır (30 gün veya 720 sa
 |**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
-|Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |
+|Japonya Doğu|$0,009 |50 K| $4,50 |$3.240 |
 |Toplam|||$8,50|$6.120 |
 
 Bunun yerine ayrılmış kapasite satın aldığınızı göz önünde bulundurun. 100-K RU/sn için ayrılan kapasiteyi bir yıl (%20 indirimli) veya saat başına $6,40 olan $56.064 oranında satın alabilirsiniz. Bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cosmos-db/)ayrılmış kapasite fiyatlandırması.  
@@ -254,7 +254,7 @@ Kullanım dışı olarak satın almış olduğunuz miktar, $8 KB/sn 100 için sa
 |**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
-|Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |
+|Japonya Doğu|$0,009 |50 K| $4,50 |$3.240 |
 |||Kullandıkça öde|$8,50|$6120|
 |Satın Alınan Ayrılmış Kapasite|$0,0064 (%20 indirim) |100 RU/sn veya $8 kapasite önceden satın alındı |-$8|-$5.760 |
 |Net Fatura|||$0,50 |$360 |

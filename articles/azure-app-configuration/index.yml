@@ -4,9 +4,9 @@ title: Azure Uygulama Yapılandırması Önizlemesi belgeleri
 metadata:
   title: 'Azure Uygulama Yapılandırması belgeleri - Öğreticiler, API başvurusu'
   description: 'Azure Uygulama Yapılandırması, geliştiricilerin uygulama ve özellik ayarlarını basit ve güvenli bir biçimde merkezileştirmesine yardımcı olan, yönetilen bir hizmettir.'
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019
