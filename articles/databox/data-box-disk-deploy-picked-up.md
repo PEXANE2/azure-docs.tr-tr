@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514128"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845475"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
    Herhangi bir sorunla karşılaşırsanız, adbo@microsoft.com üzerinden Data Box İşlemleri Asya’ya ulaşın. Konu başlığında iş adını ve karşılaşılan sorunu sağlayın.
 
-3. Paketi kuryeye teslim edin. 
+3. Paketi kuryeye teslim edin.
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[Kullanıcı Yönetimli Gönderimlerde](#tab/in-selfmanaged)
+
+Japonya, Singapur, Kore ve Batı Avrupa’da Data Box Disk kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin. 
+
+1. Azure portalında siparişinizin **Genel Bakış** dikey penceresine gidin. **Teslim almayı zamanla** seçeneğini belirlediğinizde gösterilen yönergeleri izleyin. Siparişi teslim etme sırasında kullanılacak Yetkilendirme kodunu görmeniz gerekir.
+
+2. Cihazı iade etmeye hazırsanız aşağıdaki şablonu kullanarak Azure Data Box Operasyon ekibine bir e-posta gönderin.
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Azure Data Box Operasyon ekibi Azure Veri Merkezi’ne teslim etme planlaması yapmak üzere sizinle çalışacaktır.
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
