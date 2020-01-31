@@ -28,12 +28,6 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Load Balancer’da bağlantı noktası iletmeyi yapılandırma
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Örnekler
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Kavramlar
   items:
     - name: Bileşenler ve sınırlamalar
@@ -50,8 +44,6 @@
           href: load-balancer-query-metrics-rest-api.md
     - name: Yüksek Kullanılabilirlik bağlantı noktaları
       href: load-balancer-ha-ports-overview.md
-    - name: IPv6 desteği
-      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Birden çok ön uç
       href: load-balancer-multivip-overview.md
     - name: Giden bağlantılar
@@ -68,10 +60,6 @@
   items:
     - name: Temel Genel Load Balancer’ı Standart Genel Load Balancer’a yükseltme
       href: upgrade-basic-standard.md
-    - name: Farklı kullanılabilirlik bölgelerindeki VM’lerin yükünü dengeleme (CLI)
-      href: load-balancer-standard-public-zone-redundant-cli.md
-    - name: Bir bölge içerisindeki VM’lerin yükünü dengeleme (CLI)
-      href: load-balancer-standard-public-zonal-cli.md
     - name: Giden kuralları yapılandırma
       items:
         - name: Azure CLI
@@ -121,6 +109,12 @@
       items:
         - name: Azure Load Balancer sorunlarını giderme
           href: load-balancer-troubleshoot.md
+- name: Örnekler
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Başvuru
   items:
     - name: Kod örnekleri
