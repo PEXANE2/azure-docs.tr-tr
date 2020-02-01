@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843193"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901727"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -97,7 +97,8 @@ Uç nokta anahtarları alanından yönetilebilir [soru-cevap Oluşturucu portal�
 
 2. Anahtarlarınızı görüntüleyin veya sıfırlayın:
 
-    ![Uç nokta anahtar Yöneticisi](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > [!div class="mx-imgBorder"]
+    > [Hizmet ayarlarında uç nokta anahtarını göstermek, kopyalamak veya ayarlamak ![](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
 
     >[!NOTE]
     >Tehlikede olduğunu düşünüyorsanız, anahtarlarınızı yenileyin. Bu, istemci uygulamanızda veya bot kodunuzda ilgili değişiklikleri gerektirebilir.
@@ -136,7 +137,7 @@ Soru-Cevap Oluşturma **App Service** kaynağı bilişsel arama kaynağını kul
 1. **Ayarlar**' ı ve ardından **yapılandırma**' yı seçin. Bu, Soru-Cevap Oluşturma App Service tüm mevcut ayarlarını görüntüler.
 
     > [!div class="mx-imgBorder"]
-    > App Service yapılandırma ayarlarını gösteren Azure portal ekran görüntüsünü ![](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > [App Service yapılandırma ayarlarını gösteren Azure portal ekran görüntüsünü ![](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
 
 1. Aşağıdaki anahtarlar için değerleri değiştirin:
 
@@ -146,7 +147,7 @@ Soru-Cevap Oluşturma **App Service** kaynağı bilişsel arama kaynağını kul
 1. Yeni ayarları kullanmak için App Service 'i yeniden başlatmanız gerekir. **Genel bakış**' ı ve ardından **Yeniden Başlat**' ı seçin
 
     > [!div class="mx-imgBorder"]
-    > yapılandırma ayarları değişikliğinden sonra Azure portal yeniden başlatma App Service ekran görüntüsünü ![](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > [yapılandırma ayarları değişikliğinden sonra Azure portal yeniden başlatma App Service ekran görüntüsünü ![](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Azure Resource Manager şablonları aracılığıyla bir QnA hizmeti oluşturursanız, tüm kaynakları oluşturabilir ve App Service oluşturmayı, var olan bir arama hizmetini kullanacak şekilde denetleyebilirsiniz.
 

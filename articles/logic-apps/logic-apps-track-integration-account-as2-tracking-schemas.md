@@ -1,38 +1,38 @@
 ---
 title: B2B iletileri için AS2 izleme şemaları
-description: Enterprise Integration Pack Azure Logic Apps için tümleştirme hesaplarında B2B iletilerini izleyen AS2 izleme şemaları oluşturma
+description: Azure Logic Apps 'de AS2 iletilerini izlemek için izleme şemaları oluşturma
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 515d7cfc985ee9929f70de2c862170ff79ae4d60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792815"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906965"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps tümleştirme hesaplarında AS2 iletileri ve MDNs 'leri izlemek için şemalar oluşturun
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme AS2 iletileri için şemalar oluşturma
 
 İşletmeden işletmeye (B2B) işlemleri için başarı, hata ve ileti özelliklerini izlemenize yardımcı olması için, tümleştirme hesabınızda bu AS2 izleme şemalarını kullanabilirsiniz:
 
 * AS2 ileti izleme şeması
-* AS2 MDN izleme şeması
+* AS2 Ileti değerlendirmesi bildirimi (MDN) izleme şeması
 
 ## <a name="as2-message-tracking-schema"></a>AS2 ileti izleme şeması
 
 ```json
 {
-   "agreementProperties": {  
-      "senderPartnerName": "",  
-      "receiverPartnerName": "",  
-      "as2To": "",  
-      "as2From": "",  
-      "agreementName": ""  
-   },  
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": ""
+   },
    "messageProperties": {
       "direction": "",
       "messageId": "",
@@ -43,10 +43,8 @@ ms.locfileid: "74792815"
       "isMessageEncrypted": "",
       "isMessageCompressed": "",
       "correlationMessageId": "",
-      "incomingHeaders": {
-       },
-      "outgoingHeaders": {
-       },
+      "incomingHeaders": {},
+      "outgoingHeaders": {},
       "isNrrEnabled": "",
       "isMdnExpected": "",
       "mdnType": ""
@@ -54,28 +52,28 @@ ms.locfileid: "74792815"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | AS2 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | AS2 ileti alıcısının iş ortağı adı. Seçim |
-| as2To | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti alıcısının adı. Girilmesi |
-| as2From | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti gönderici adı. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı. Seçim |
-| yön | Dize | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| Ileti | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti KIMLIĞI (Isteğe bağlı) |
-| dispositionType |Dize | İleti değerlendirmesi bildirimi (MDN) değerlendirme türü değeri. Seçim |
-| fileName | Dize | Dosya adı, AS2 iletisinin üst bilgisinden. Seçim |
-| ımessagefailed |Boole | AS2 iletisinin başarısız olup olmadığı. Girilmesi |
-| ısmessagesigned | Boole | AS2 iletisinin imzalı olup olmadığı. Girilmesi |
-| ımessageşifrelendi | Boole | AS2 iletisinin şifrelenip şifrelenmediği. Girilmesi |
-| ımessagecompressed |Boole | AS2 iletisinin sıkıştırılıp sıkıştırılmayacağı. Girilmesi |
-| Correlationmessageıd | Dize | AS2 ileti KIMLIĞI, iletileri MDNs ile ilişkilendirmek için. Seçim |
-| ıncomingheaders |JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları. Seçim |
-| outgoingHeaders |JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları. Seçim |
-| isNrrEnabled | Boole | Değer bilinmiyorsa varsayılan değeri kullanın. Girilmesi |
-| ımdnexted | Boole | Değer bilinmiyorsa varsayılan değeri kullanın. Girilmesi |
-| mdnType | Sabit Listesi | İzin verilen değerler **notconfigured**, **Sync**ve **Async**. Girilmesi |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
+| as2To | Evet | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti alıcısının adı |
+| as2From | Evet | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti gönderenin adı |
+| agreementName | Hayır | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı |
+| yön | Evet | Dize | İleti akışının yönü, yani `receive` ya da `send` |
+| Ileti | Hayır | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti KIMLIĞI |
+| dispositionType | Hayır | Dize | İleti değerlendirmesi bildirimi (MDN) değerlendirme türü değeri |
+| fileName | Hayır | Dize | AS2 iletisinin üstbilgisindeki dosya adı |
+| ımessagefailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
+| ısmessagesigned | Evet | Boole | AS2 iletisinin imzalı olup olmadığı |
+| ımessageşifrelendi | Evet | Boole | AS2 iletisinin şifreli olup olmadığı |
+| ımessagecompressed | Evet | Boole | AS2 iletisinin sıkıştırılmış olup olmadığı |
+| correlationMessageId | Hayır | Dize | AS2 ileti KIMLIĞI, iletileri MDNs ile ilişkilendirmek için |
+| ıncomingheaders | Hayır | JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | Hayır | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
+| isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| ımdnexted | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| mdnType | Evet | Sabit Listesi | İzin verilen değerler: `NotConfigured`, `Sync`ve `Async` |
+|||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN izleme şeması
 
@@ -86,7 +84,7 @@ ms.locfileid: "74792815"
       "receiverPartnerName": "",
       "as2To": "",
       "as2From": "",
-      "agreementName": "g"
+      "agreementName": ""
    },
    "messageProperties": {
       "direction": "",
@@ -107,26 +105,26 @@ ms.locfileid: "74792815"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | AS2 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | AS2 ileti alıcısının iş ortağı adı. Seçim |
-| as2To | Dize | AS2 iletisini alan iş ortağı adı. Girilmesi |
-| as2From | Dize | AS2 iletisini gönderen iş ortağı adı. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı. Seçim |
-| yön |Dize | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| Ileti | Dize | AS2 ileti KIMLIĞI. Seçim |
-| Originalmessageıd |Dize | AS2 özgün ileti KIMLIĞI. Seçim |
-| dispositionType | Dize | MDN değerlendirme türü değeri. Seçim |
-| ımessagefailed |Boole | AS2 iletisinin başarısız olup olmadığı. Girilmesi |
-| ısmessagesigned |Boole | AS2 iletisinin imzalı olup olmadığı. Girilmesi |
-| isNrrEnabled | Boole | Değer bilinmiyorsa varsayılan değeri kullanın. Girilmesi |
-| Durum | Sabit Listesi | İzin verilen değerler **kabul**edilir, **reddedilir**ve **acceptedwitherrors**. Girilmesi |
-| Micdoğrulamaları Icationstatus | Sabit Listesi | İzin verilen değerler **notapplıcable**, **başarılı**ve **başarısız**. Girilmesi |
-| Correlationmessageıd | Dize | Bağıntı KIMLIĞI. Özgün ileti oluşturma KIMLIĞI (MDN 'nin yapılandırıldığı iletinin ileti KIMLIĞI). Seçim |
-| ıncomingheaders | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntılarını gösterir. Seçim |
-| outgoingHeaders |JToken sözlüğü | Giden ileti üst bilgisi ayrıntılarını gösterir. Seçim |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
+| as2To | Evet | Dize | AS2 iletisini alan iş ortağı adı |
+| as2From | Evet | Dize | AS2 iletisini gönderen iş ortağı adı |
+| agreementName | Hayır | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı |
+| yön | Evet | Dize | İleti akışının yönü, yani `receive` ya da `send` |
+| Ileti | Hayır | Dize | AS2 ileti KIMLIĞI |
+| originalMessageId | Hayır | Dize | AS2 özgün ileti KIMLIĞI |
+| dispositionType | Hayır | Dize | MDN değerlendirme türü değeri |
+| ımessagefailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
+| ısmessagesigned | Evet | Boole | AS2 iletisinin imzalı olup olmadığı |
+| isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| Durum | Evet | Sabit Listesi | İzin verilen değerler: `Accepted`, `Rejected`ve `AcceptedWithErrors` |
+| Micdoğrulamaları Icationstatus | Evet | Sabit Listesi | İzin verilen değerler:`NotApplicable`, `Succeeded`ve `Failed` |
+| correlationMessageId | Hayır | Dize | MDN yapılandırılmış özgün iletinin KIMLIĞI olan bağıntı KIMLIĞI |
+| ıncomingheaders | Hayır | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | Hayır | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokol izleme şemaları
 
@@ -137,5 +135,4 @@ B2B protokol izleme şemaları hakkında daha fazla bilgi için bkz.:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [B2B iletilerini izleme](logic-apps-monitor-b2b-message.md) hakkında bilgi edinin
-* [Azure izleyici GÜNLÜKLERINDE B2B iletilerini izleme](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) hakkında bilgi edinin
+* [Azure Izleyici günlükleri ile B2B iletilerini izleme](../logic-apps/monitor-b2b-messages-log-analytics.md)

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/29/2020
+ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844692"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905239"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -68,7 +68,7 @@ Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsigh
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-24 Ocak 2020 itibariyle, bir Jupyter Not defteri kullanmaya çalışırken bir hata alabileceğiniz etkin bir sorun vardır. Sorunu onarmak için aşağıdaki adımları kullanın. Ayrıca, bu [MSDN gönderisini](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) veya güncel bilgiler Için bu [StackOverflow gönderisini](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) veya ek soru sorabilirsiniz. Bu sayfa, sorun düzeltildiğinde güncelleştirilecektir.
+29 Ocak 2020 itibariyle, bir Jupyter Not defteri kullanmaya çalışırken bir hata alabileceğiniz etkin bir sorun vardır. Sorunu onarmak için aşağıdaki adımları kullanın. Ayrıca, bu [MSDN gönderisini](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) veya güncel bilgiler Için bu [StackOverflow gönderisini](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) veya ek soru sorabilirsiniz. Bu sayfa, sorun düzeltildiğinde güncelleştirilecektir.
 
 **Hatası**
 
@@ -77,22 +77,26 @@ Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsigh
 
 **Neden** 
 
-Kümedeki _version. Kopyala dosyası, 4.4. x yerine 5. x. x olarak güncelleştirildi. # #.
+Kümedeki _version. Kopyala dosyası, 4.4. x. # # yerine 5. x. x olarak güncelleştirildi veya ambarı yeniden başlatılmalıdır.
 
 **Çözüm**
 
 Yeni bir Jupyter Not defteri oluşturup yukarıda listelenen hatalardan birini alırsanız, sorunu onarmak için aşağıdaki adımları gerçekleştirin.
 
-1. https://CLUSTERNAME.azurehdinsight.net ' a giderek bir Web tarayıcısında ambarı açın, burada CLUSTERNAME kümenizin adıdır.
+1. `https://CLUSTERNAME.azurehdinsight.net`' a giderek bir Web tarayıcısında ambarı açın, burada CLUSTERNAME kümenizin adıdır.
 1. Ambarı ' nda, sol taraftaki menüden **Jupo**' a ve ardından **hizmet eylemleri**' ne tıklayın, **Durdur**' a tıklayın.
 1. Jupyıter hizmetinin çalıştığı küme yayın düğümüne SSH.
 1. Sudo modunda, aşağıdaki/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. Kopyala dosyasını açın.
-1. Mevcut giriş aşağıdaki koda benzer bir şey göstermelidir: 
+1. Version_info değerini denetleyin.
+1. Version_info değeri şu şekilde ayarlanmışsa: 
 
     version_info = (5, 0, 3)
 
-    Girişi şu şekilde değiştirin: 
+    Ardından girişi şu şekilde değiştirin: 
     
     version_info = (4, 4, 0)
-1. Dosyayı kaydedin.
+
+    Ve dosyayı kaydedin. 
+
+    Version_info zaten (4, 4, 0) olarak ayarlandıysa, daha sonra yalnızca ambarı yeniden başlatılması gerektiğinden sonraki adımla devam edin, ek değişiklik yapmanız gerekmez.
 1. Ambarı 'na geri dönün ve **hizmet eylemlerinde** **Tümünü Yeniden Başlat**' a tıklayın.

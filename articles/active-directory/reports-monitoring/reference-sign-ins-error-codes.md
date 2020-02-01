@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294108"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898897"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -143,6 +143,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |53002|Kullanılan uygulama, koşullu erişim için onaylanan bir uygulama değil. Kullanıcının erişim elde etmesi için kullanılacak onaylı uygulamalar listesinden bir uygulama seçmesi gerekir.|
 |53003|Koşullu erişim ilkeleri nedeniyle erişim engellendi.|
 |53004|Kullanıcının bu içeriğe erişmeden önce çok faktörlü kimlik doğrulaması işlemini tamamlaması gerekiyor. Kullanıcının çok faktörlü kimlik doğrulamasına kaydolması gerekir.|
+|53032|Hesap Azure AD Kimlik Koruması ilke nedeniyle engellendi.|
 |65001|X uygulamasının Y uygulamasına erişim izni yok veya erişim izni iptal edildi. Veya Kullanıcı ya da yönetici X kimliğiyle uygulamanın kullanılmasını onaylamadı. Bu kullanıcı veya kaynak için etkileşimli yetkilendirme isteği gönderin. Veya Kullanıcı ya da yönetici X kimliğiyle uygulamanın kullanılmasını onaylamadı. Kaynak: Z için Uygulama: Y adına işlem yapmak üzere kiracı yöneticinize bir yetkilendirme isteği gönderin.|
 |65004|Kullanıcı, uygulamaya erişmeyi reddetti. Kullanıcıdan oturum açmayı yeniden denemesini ve uygulamaya izin vermesini isteyin|
 |65005|Uygulamaya gereken kaynak erişim listesi, kaynak tarafından bulunabilen uygulamaları içermiyor veya İstemci uygulaması kendi gerekli kaynak erişim listesinde belirtilmemiş bir kaynağa erişim isteğinde bulundu veya Graph hizmeti hatalı istek döndürdü veya kaynak bulunamadı. Uygulama SAML desteği içeriyorsa, yanlış Tanımlayıcı (Varlık) ile uygulamayı yapılandırmış olabilirsiniz. Aşağıdaki bağlantıyı kullanarak SAML için listelenen çözümü deneyin: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
@@ -184,7 +185,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |90010|İstek çeşitli nedenlerle desteklenmez. Örneğin, istek desteklenmeyen bir istek yöntemi kullanılarak yapılır (yalnızca POST yöntemi desteklenir) veya istenen belirteç imzalama algoritması desteklenmez. Uygulama geliştiricisine başvurun.|
 |90014| Protokol iletisi için gerekli bir alan eksikti, uygulama sahibine başvurun. Uygulama sahibiyseniz, oturum açma isteği için gerekli tüm parametrelere sahip olduğunuzdan emin olun. |
 |90051| Geçersiz temsili belirteci. Geçersiz National Cloud ID ({Cloudıd}) belirtildi.|
-|90072| Hesabın önce kiracıda bir dış kullanıcı olarak eklenmesi gerekiyor. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
+|90072| Hesabın, önce kiracıya bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
 |90094| Uygulama, oturum açmış kullanıcının izin verilmeyen ve Kullanıcı engellediği izinleri istedi. |
 |90095| Uygulama, oturum açmış kullanıcının izin verilmeyen izinleri istedi ve Kullanıcı [yönetici izin isteği](../manage-apps/configure-admin-consent-workflow.md) formunu gösterildi. |
 |500011| <site address> adlı kaynak sorumlusu <tenant ID>adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulaması isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|

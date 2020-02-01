@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718876"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905698"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
@@ -40,9 +40,11 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Yükleme işlemi sırasında şu iş yüklerini de yüklediğinizden emin olun: .NET masaüstü geliştirme, Azure geliştirme, ASP.NET ve web geliştirme, Node.js geliştirme ve Python geliştirme
-- [Git örneğini](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) indirin. Örnek çözümde şu bileşenler yer almaktadır:
+- [Git örneğini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) indirin örnek çözüm aşağıdaki bileşenleri içerir:
     - *WindTurbineDataGenerator* - Capture özelliğinin etkin olduğu bir olay hub'ına örnek rüzgar türbini verisi gönderen basit bir yayımcı
     - *FunctionDWDumper* - Azure Depolama blobunda bir Avro dosyası yakalandığında Event Grid bildirimi alan Azure İşlevi. Blobun URI yolunu alır, içeriğini okur ve bu verileri bir SQL Veri Ambarı'na gönderir.
+
+    Bu örnek, en son Azure. Messaging. EventHubs paketini kullanır. [Burada](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)Microsoft. Azure. EventHubs paketini kullanan eski örneği bulabilirsiniz. 
 
 ### <a name="deploy-the-infrastructure"></a>Altyapıyı dağıtma
 Bu [Azure Resource Manager şablonunu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) kullanarak söz konusu öğretici için gerekli altyapıyı dağıtmak üzere Azure PowerShell veya Azure CLI'yi kullanın. Bu şablon aşağıdaki kaynakları oluşturur:
@@ -63,7 +65,7 @@ Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılması
 - Azure SQL sunucusu
 - SQL kullanıcısı (ve parolası)
 - Azure SQL veritabanı
-- Azure Storage 
+- Azure Depolama 
 - Azure İşlevleri Uygulaması
 
 Bu betiklerin tüm Azure yapıtlarını oluşturması biraz zaman alır. Betik tamamlanana kadar başka işlem yapmayın. Dağıtım bir nedenle başarısız olursa kaynak grubunu silin, bildirilen sorunu çözün ve komutu yeniden çalıştırın. 
@@ -91,7 +93,7 @@ New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri ht
 
 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Veri Ambarında tablo oluşturma 
-[Visual Studio](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql), [SQL Server Management Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md) veya portaldaki Sorgu Düzenleyicisi ile [CreateDataWarehouseTable.sql](../sql-data-warehouse/sql-data-warehouse-query-ssms.md) betiğini çalıştırarak SQL veri ambarınızda bir tablo oluşturun. 
+[Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../sql-data-warehouse/sql-data-warehouse-query-ssms.md) veya portaldaki Sorgu Düzenleyicisi ile [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) betiğini çalıştırarak SQL veri ambarınızda bir tablo oluşturun. 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -129,7 +131,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>İşlevler uygulamasında bir Event Grid aboneliği oluşturma
  
-1. [Azure Portal](https://portal.azure.com/) gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
+1. [Azure portalına](https://portal.azure.com/) gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
 
    ![İşlev uygulamasını görüntüleme](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -141,7 +143,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Abonelik ekleme](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**'u seçin.
+1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**’u seçin.
 
    ![Abonelik oluşturma](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 

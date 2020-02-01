@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 58ee74f7b01738e67f9fddd39eb4eee59cdb65b6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e4bba00d6506684a3baf345806bdaa340f6970ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774211"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909206"
 ---
 Node. js için Language Understanding (LUSıS) yazma istemci kitaplığını kullanarak şunları yapın:
 
@@ -189,7 +189,7 @@ Eğitim tüm modeller zaman alır. Eğitim durumunu denetlemek için operationRe
 
 ## <a name="delete-a-language-understanding-app"></a>Language Understanding uygulamasını silme
 
-[App. deleteMethod](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-) metodunu kullanarak lusıs uygulamasını yayımlayın. Bu, geçerli uygulamayı siler.
+[App. deleteMethod](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-) metodunu kullanarak Luo uygulamasını silin. Bu, geçerli uygulamayı siler.
 
 [!code-javascript[Publish LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringDeleteApp&highlight=2)]
 

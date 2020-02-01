@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034071"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905291"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
 
@@ -101,6 +101,8 @@ Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken sertifika-
 
 |Seçenek|Açıklama|
 |--|--|
+|--aad-uç nokta|Kullanılacak Azure Active Directory uç noktası. Varsayılan değer (https://login.microsoftonline.com), genel Azure bulutu için doğrudur. Ulusal bir bulutta kimlik doğrulanırken bu parametreyi ayarlayın. Bkz. [Azure AD kimlik doğrulaması uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+Yönetilen Hizmet Kimliği için bu bayrak gerekli değildir.|
 |--Uygulama kimliği dizesi|Kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI. Hizmet sorumlusu kimlik doğrulaması için gereklidir.|
 |--Sertifika-yol dizesi|SPN kimlik doğrulaması için sertifika yolu. Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için gereklidir.|
 |-h,--yardım|Oturum açma komutu için yardım içeriğini göster.|

@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 01/14/2020
 tags: connectors
-ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030151"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900270"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak gelen HTTPS çağrılarını alma ve yanıtlama
 
@@ -23,7 +23,9 @@ ms.locfileid: "76030151"
 * Başka bir mantıksal uygulamadan bir HTTPS çağrısını alın ve yanıtlayın.
 
 > [!NOTE]
-> Istek tetikleyicisi, gelen çağrılar için *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. Giden çağrılar TLS 1,0, 1,1 ve 1,2 desteğini desteklemeye devam eder. SSL el sıkışma hataları görürseniz, TLS 1,2 kullandığınızdan emin olun. Gelen çağrılar için desteklenen şifre paketleri şunlardır:
+> Istek tetikleyicisi, gelen çağrılar için *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. Giden çağrılar TLS 1,0, 1,1 ve 1,2 desteğini desteklemeye devam eder. Daha fazla bilgi için bkz. [TLS 1,0 sorununu çözme](https://docs.microsoft.com/security/solving-tls1-problem).
+>
+> SSL el sıkışma hataları görürseniz, TLS 1,2 kullandığınızdan emin olun. Gelen çağrılar için desteklenen şifre paketleri şunlardır:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

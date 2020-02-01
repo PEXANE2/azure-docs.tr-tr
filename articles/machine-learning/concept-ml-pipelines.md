@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772610"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905721"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -48,12 +48,12 @@ Azure bulutu, her biri farklı bir amaca sahip birkaç farklı işlem hattı sa�
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML işlem hatları ne yapabilir?
 
-Azure Machine Learning işlem hattı, bir makine öğrenimi görevinin bağımsız bir yürütülebilir iş akışıdır. Alt görevler, işlem hattının içindeki bir dizi adım olarak kapsüllenir. Bir Azure Machine Learning işlem hattı, Python betiği çağıran bir basit olabilir, bu nedenle yalnızca herhangi bir şey _olabilir_ . İşlem hatları, şu gibi makine öğrenimi görevlerine _odaklanmalıdır_ :
+Azure Machine Learning işlem hattı, bir makine öğrenimi görevinin bağımsız bir yürütülebilir iş akışıdır. Alt görevler işlem hattı içinde bir dizi adım olarak kapsüllenir. Bir Azure Machine Learning işlem hattı, Python betiği çağıran bir basit olabilir, bu nedenle yalnızca herhangi bir şey _olabilir_ . İşlem hatları, şu gibi makine öğrenimi görevlerine _odaklanmalıdır_ :
 
-+ İçeri aktarma, doğrulama ve Temizleme, temizleme ve dönüştürme, normalleştirme ve hazırlama dahil veri hazırlığı
-+ Belirteç bağımsız değişkenlerini, filePaths ve günlük/raporlama yapılandırmalarını içeren eğitim yapılandırması
++ İçeri aktarma, doğrulama ve temizleme, ham verileri kullanışlı hale getirme ve dönüştürme, normalleştirme ve hazırlamayı içeren veri hazırlığı
++ Bağımsız değişkenleri, dosya yollarını ve günlük / raporlama yapılandırmalarını parametreleştirmeyi içeren eğitim yapılandırması
 + Belirli veri alt kümelerini, farklı donanım işlem kaynaklarını, dağıtılmış işlemeyi ve ilerleme izlemeyi kapsayan, etkili ve sürekli olarak eğitim ve doğrulama
-+ Sürüm oluşturma, ölçeklendirme, sağlama ve erişim denetimi de dahil olmak üzere dağıtım 
++ Sürüm oluşturma, ölçeklendirme, sağlama ve erişim denetimini içeren dağıtım 
 
 Bağımsız adımlar, birden fazla veri bilimcilerinin aynı işlem hattı üzerinde, yoğun işlem kaynakları olmadan aynı anda çalışmasına izin verir. Ayrı adımlar, her adım için farklı işlem türleri/boyutları kullanmayı da kolaylaştırır.
 
@@ -202,7 +202,21 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 |**Yeniden kullanılırlığı**|Yeniden eğitme ve Batch Puanlama gibi belirli senaryolar için ardışık düzen şablonları oluşturun. Dış sistemlerden yayınlanan işlem hatlarını basit REST çağrıları aracılığıyla tetikleyin.|
 |**İzleme ve sürüm oluşturma**|Yineleme sırasında verileri ve sonuç yollarını el ile izlemek yerine, veri kaynaklarınızı, girdilerlerinizi ve çıkışları açıkça adlandırmak ve sürümüne eklemek için işlem hatları SDK 'sını kullanın. Ayrıca, daha fazla üretkenlik için betikleri ve verileri ayrı olarak yönetebilirsiniz.|
 | **Modülerlik** | Kaygıları ve değişiklikleri yalıtma alanlarının ayrılması, yazılımın daha yüksek kalitede daha hızlı gelişmeye olanak tanır. | 
-|**İş birliği**|İşlem hatları, veri bilimcilerinin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken işlem hattı adımlarında eşzamanlı olarak çalışabiliyor.|
+|**İş**|İşlem hatları, veri bilimcilerinin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken işlem hattı adımlarında eşzamanlı olarak çalışabiliyor.|
+
+## <a name="modules"></a>Modüller
+
+Ardışık düzen adımları önceki çalıştırmanın sonuçlarının yeniden kullanılmasına izin verirken, çoğu durumda adımın oluşturulması, betiklerin ve bağımlı dosyaların gerekli olduğu varsayılır. Bir veri bilimconu mevcut kodların üzerine derlemek istiyorsa, betikler ve bağımlılıkların genellikle ayrı bir depodan klonlanmış olması gerekir.
+
+Modüller, ardışık düzen adımları için kullanımlarda benzerdir, ancak çalışma alanı aracılığıyla kolaylaştırırken, birlikte çalışma ve ölçek açısından yeniden kullanılabilirlik sağlar. Modüller birden çok işlem hattına yeniden kullanılmak üzere tasarlanmıştır ve belirli bir hesaplamayı farklı kullanım durumlarına uyarlamak için gelişebilirler. Kullanıcılar, dış depoları kullanmadan, çalışma alanı aracılığıyla aşağıdaki görevleri gerçekleştirebilir:
+
+* Yeni modüller oluşturma ve var olan modüllerin yeni sürümlerini yayımlama
+* Mevcut sürümleri kullanımdan kaldırma
+* Tüketicilerin bu sürümü kullanmasını engellemek için sürümleri devre dışı olarak işaretleyin
+* Varsayılan sürümleri belirleme
+* Takımların aynı kodu kullandığından emin olmak için, çalışma alanından modülleri sürüme göre al
+
+Azure Machine Learning işlem hatları 'nda modül oluşturma, bağlanma ve kullanma hakkında kod örnekleri için [Not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771624"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906275"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -201,49 +201,14 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 ### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bunlar 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
+100 TiB kapasite sınırına sahip standart dosya paylaşımları, genel olarak tüm Azure bölgelerinde kullanılabilir.
 
-|Bölge |Desteklenen artıklık |
-|-------|---------|
-|Avustralya Orta    |LRS     |
-|Avustralya Orta 2    |LRS     |
-|Avustralya Doğu |LRS     |
-|Avustralya Güneydoğu|LRS |
-|Brezilya Güney    |LRS     |
-|Kanada Orta  |LRS     |
-|Kanada Doğu     |LRS     |
-|Orta Hindistan  |LRS     |
-|Orta ABD *   |LRS, ZRS    |
-|Doğu Asya      |LRS     |
-|Doğu ABD *        |LRS, ZRS|
-|Doğu ABD 2 *      |LRS, ZRS     |
-|Fransa Orta |LRS, ZRS|
-|Fransa Güney   |LRS     |
-|Japonya Doğu     |LRS     |
-|Japonya Batı     |LRS     |
-|Kore Orta  |LRS     |
-|Kore Güney    |LRS     |
-|Orta Kuzey ABD |LRS   |
-|Kuzey Avrupa   |LRS     |
-|Güney Hindistan    |LRS     |
-|Orta Güney ABD |LRS     |
-|Güneydoğu Asya |LRS, ZRS|
-|İsviçre Kuzey    |LRS     |
-|İsviçre Batı    |LRS     |
-|BAE Orta    |LRS     |
-|BAE Kuzey    |LRS     |
-|UK Kuzey   |LRS, ZRS    |
-|UK Güney    |LRS     |
-|UK, Batı    |LRS     |
-|Orta Batı ABD|LRS     |
-|Batı Avrupa *    |LRS, ZRS|
-|Batı Hindistan   |LRS     |
-|Batı ABD        |LRS     |
-|Batı ABD 2      |LRS, ZRS|
+- LRS: Güney Afrika Kuzey ve Güney Afrika Batı hariç tüm bölgeler.
+   - Ulusal bulutlar (kamu, Almanya, Çin) PowerShell ve Azure komut satırı arabirimi (CLı) aracılığıyla desteklenir. Portal desteği yok. 
+   - Doğu ABD, Doğu ABD2, Batı Avrupa: tüm yeni hesaplar desteklenir. Az sayıda mevcut hesap yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
 
-Yeni hesaplar için desteklenen \*, tüm mevcut hesaplar yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
-
-Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.
+- ZRS: Japonya Doğu, Kuzey Avrupa, Güney Afrika Kuzey dışındaki tüm bölgeler.
+- GRS/GZRS: desteklenmiyor.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Daha büyük dosya paylaşımları etkinleştirin ve oluşturun
 

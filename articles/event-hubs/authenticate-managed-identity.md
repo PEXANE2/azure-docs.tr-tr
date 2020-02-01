@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: cbd7de7d526e1954aaad60f7d71e5cdf202f6a29
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0c5d3eca4a01488f521f9a85fa129eb0ac72c363
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992841"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904558"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 Azure Event Hubs, [Azure kaynakları için yönetilen kimliklerle](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için Yönetilen kimlikler, Azure sanal makinelerinde (VM), Işlev uygulamalarında, sanal makine ölçek kümelerinde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak Event Hubs kaynaklarına erişim yetkisi verebilir. Azure AD kimlik doğrulamasıyla birlikte Azure kaynakları için Yönetilen kimlikler kullanarak, kimlik bilgilerini bulutta çalışan uygulamalarınızla depolamaktan kaçınabilirsiniz.
@@ -24,7 +24,7 @@ Bu makalede bir Azure VM 'den yönetilen kimlik kullanarak bir olay hub 'ına er
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 'de yönetilen kimlikleri etkinleştirme
 VM 'nizden Event Hubs kaynaklarını yetkilendirmek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için önce VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştireceğinizi öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -43,7 +43,7 @@ Burada [Azure App Service](https://azure.microsoft.com/services/app-service/)' d
 Uygulama oluşturulduktan sonra aşağıdaki adımları izleyin: 
 
 1. **Ayarlar** ' a gidin ve **kimlik**' i seçin. 
-1. Görüntülenecek **durumu** seçin. 
+1. Görüntülenecek **durumu** **seçin.** 
 1. Ayarları kaydetmek için **Kaydet**’i seçin. 
 
     ![Bir Web uygulaması için yönetilen kimlik](./media/authenticate-managed-identity/identity-web-app.png)
@@ -72,6 +72,62 @@ Event Hubs kaynaklara bir rol atamak için Azure portal bu kaynağa gidin. Kayna
 Rolü atadıktan sonra, Web uygulamasının tanımlı kapsamda Event Hubs kaynaklara erişimi olur. 
 
 ### <a name="test-the-web-application"></a>Web uygulamasını test etme
+1. Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun. 
+2. Web uygulamasını Azure 'a dağıtın. GitHub 'da Web uygulaması bağlantıları için aşağıdaki sekmeli bölüme bakın. 
+3. SendReceive. aspx ' in Web uygulaması için varsayılan belge olarak ayarlandığından emin olun. 
+3. Web uygulaması için **kimliği** etkinleştirin. 
+4. Bu kimliği ad alanı düzeyinde veya Olay Hub 'ı düzeyinde **Event Hubs veri sahibi** rolüne atayın. 
+5. Web uygulamasını çalıştırın, ad alanı adını ve Olay Hub 'ı adını, bir iletiyi girin ve **Gönder**' i seçin. Olayı almak için **Al**' ı seçin. 
+
+#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messaging. EventHubs (en son)](#tab/latest)
+Artık Web uygulamasını başlatabilir ve tarayıcınıza örnek aspx sayfasına işaret edebilirsiniz. [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)deposunda Event Hubs kaynaklarından veri gönderen ve alan örnek Web uygulamasını bulabilirsiniz.
+
+[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)'ten en son paketi yükler ve **EventHubProducerClient** kullanarak ve **eventhubconsumerclient**kullanarak olayları alarak Event Hubs olay göndermeye başlayın.  
+
+```csharp
+protected async void btnSend_Click(object sender, EventArgs e)
+{
+    await using (EventHubProducerClient producerClient = new EventHubProducerClient(txtNamespace.Text, txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        // create a batch
+        using (EventDataBatch eventBatch = await producerClient.CreateBatchAsync())
+        {
+
+            // add events to the batch. only one in this case. 
+            eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(txtData.Text)));
+
+            // send the batch to the event hub
+            await producerClient.SendAsync(eventBatch);
+        }
+
+        txtOutput.Text = $"{DateTime.Now} - SENT{Environment.NewLine}{txtOutput.Text}";
+    }
+}
+protected async void btnReceive_Click(object sender, EventArgs e)
+{
+    await using (var consumerClient = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, $"{txtNamespace.Text}.servicebus.windows.net", txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        int eventsRead = 0;
+        try
+        {
+            using CancellationTokenSource cancellationSource = new CancellationTokenSource();
+            cancellationSource.CancelAfter(TimeSpan.FromSeconds(5));
+
+            await foreach (PartitionEvent partitionEvent in consumerClient.ReadEventsAsync(cancellationSource.Token))
+            {
+                txtOutput.Text = $"Event Read: { Encoding.UTF8.GetString(partitionEvent.Data.Body.ToArray()) }{ Environment.NewLine}" + txtOutput.Text;
+                eventsRead++;
+            }
+        }
+        catch (TaskCanceledException ex)
+        {
+            txtOutput.Text = $"Number of events read: {eventsRead}{ Environment.NewLine}" + txtOutput.Text;
+        }
+    }
+}
+```
+
+#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft. Azure. EventHubs (eski)](#tab/old)
 Artık Web uygulamasını başlatabilir ve tarayıcınıza örnek aspx sayfasına işaret edebilirsiniz. [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)deposunda Event Hubs kaynaklarından veri gönderen ve alan örnek Web uygulamasını bulabilirsiniz.
 
 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)'den en son paketi yükler ve aşağıdaki kodda gösterildiği gibi EventHubClient kullanarak Olay Hub 'larına veri göndermeye ve bu verileri almaya başlayın: 
@@ -79,10 +135,10 @@ Artık Web uygulamasını başlatabilir ve tarayıcınıza örnek aspx sayfasın
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
 ```
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp) GitHub 'dan indirin.
-- Azure kaynakları için Yönetilen kimlikler hakkında bilgi edinmek için aşağıdaki makaleye bakın: [Azure kaynakları için yönetilen kimlikler nedir?](../active-directory/managed-identities-azure-resources/overview.md)
+- Azure kaynakları için Yönetilen kimlikler hakkında bilgi edinmek için şu makaleye bakın: [Azure kaynakları için Yönetilen kimlikler nedir?](../active-directory/managed-identities-azure-resources/overview.md)
 - Aşağıdaki ilgili makalelere bakın:
     - [Azure Active Directory kullanarak bir uygulamadan Azure Event Hubs istek kimliklerini doğrulama](authenticate-application.md)
     - [Paylaşılan erişim Imzalarını kullanarak Azure Event Hubs istek kimliklerini doğrulama](authenticate-shared-access-signature.md)

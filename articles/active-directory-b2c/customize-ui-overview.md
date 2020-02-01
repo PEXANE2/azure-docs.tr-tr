@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841242"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908963"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
 
@@ -31,6 +31,9 @@ Uygulamanın kullanıcı ARABIRIMINI özelleştirmek için kullanabileceğiniz �
 [Kullanıcı akışları](user-flow-overview.md)kullanıyorsanız, yerleşik *sayfa düzeni şablonlarını*kullanarak veya kendi HTML ve CSS 'nizi kullanarak Kullanıcı akış sayfalarınızın görünümünü değiştirebilirsiniz. Her iki yöntem de bu makalenin ilerleyen kısımlarında ele alınmıştır.
 
 Kullanıcı akışları için UI özelleştirmesini yapılandırmak üzere [Azure Portal](tutorial-customize-ui.md) kullanırsınız.
+
+> [!TIP]
+> Kullanıcı akış sayfalarınızın yalnızca başlık logosunu, arka plan resmini ve arka plan rengini değiştirmek istiyorsanız, bu makalenin ilerleyen kısımlarında açıklanan [Şirket markası (Önizleme)](#company-branding-preview) özelliğini deneyebilirsiniz.
 
 ### <a name="custom-policies"></a>Özel ilkeler
 
@@ -149,6 +152,60 @@ Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` �
 | Birleşik kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilecek müşterilerin hem kaydolma hem de oturum açma sürümlerini işler. |
 | Çok faktörlü kimlik doğrulama | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
 | Hata | Müşteriye hata bilgilerini sağlar. |
+
+## <a name="company-branding-preview"></a>Şirket markası (Önizleme)
+
+Kullanıcı akış sayfalarınızı, Azure Active Directory [Şirket markalaması](../active-directory/fundamentals/customize-branding.md)kullanarak bir başlık logosu, arka plan resmi ve arka plan rengi ile özelleştirebilirsiniz.
+
+Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Directory ' de şirket markasını yapılandırıp, ardından Kullanıcı akışlarınızın sayfa düzenleri Azure AD B2C ' nde etkinleştirin.
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>Şirket markası yapılandırma
+
+**Şirket markalaması**içinde başlık logosunu, arka plan görüntüsünü ve arka plan rengini ayarlayarak başlayın.
+
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. **Yönet**altında **Şirket markalaması**' nı seçin.
+1. [Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleme](../active-directory/fundamentals/customize-branding.md)bölümündeki adımları izleyin.
+
+Şirket markasını Azure AD B2C ' de yapılandırırken şunları göz önünde bulundurun:
+
+* Azure AD B2C Şirket markası şu anda **arka plan resmi**, **Başlık logosu**ve **arka plan rengi** özelleştirmesi ile sınırlıdır. Şirket markası bölmesindeki diğer özellikler, örneğin **Gelişmiş ayarlarda** *desteklenmez*.
+* Kullanıcı akış sayfalarınızda arka plan rengi, arka plan görüntüsü yüklenmeden önce gösterilir. Daha yumuşak bir yükleme deneyimi için arka plan görüntinizdeki renklerle yakından eşleşen bir arka plan rengi seçmenizi öneririz.
+* Ana Başlık logosu, bir kaydolma Kullanıcı akışı başlattıklarında kullanıcılarınıza gönderilen doğrulama e-postalarında görüntülenir.
+
+### <a name="enable-branding-in-user-flow-pages"></a>Kullanıcı akış sayfalarında markalamayı etkinleştir
+
+Şirket markasını yapılandırdıktan sonra, Kullanıcı akışlarınızda etkinleştirin.
+
+1. Azure portal sol menüsünde **Azure AD B2C**' i seçin.
+1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
+1. Şirket markasını etkinleştirmek istediğiniz kullanıcı akışını seçin. Şirket markası, *oturum açma v1* ve *profil düzenlemesi v1* Kullanıcı akış türleri için **desteklenmez** .
+1. **Özelleştir**altında **sayfa düzenleri**' ni seçin ve ardından marka yapmak istediğiniz düzeni seçin. Örneğin **Birleşik kaydolma veya oturum açma sayfası**' nı seçin.
+1. **Sayfa düzeni sürümü (Önizleme)** için sürüm **1.2.0** veya üzerini seçin.
+1. **Kaydet**’i seçin.
+
+Kullanıcı akışındaki tüm sayfaları markalaştırmak isterseniz, Kullanıcı akışındaki her sayfa düzeni için sayfa düzeni sürümünü ayarlayın.
+
+![Azure portal Azure AD B2C sayfa düzeni seçimi](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+Bu açıklamalı örnek, okyanus şablonu kullanan bir *kaydolma ve oturum açma* Kullanıcı akışı sayfasında özel bir başlık logosu ve arka plan görüntüsü gösterir:
+
+![Azure AD B2C tarafından sunulan markalı kaydolma/oturum açma sayfası](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>Özel HTML 'de Şirket marka varlıklarını kullanma
+
+Şirket marka varlıklarınızı özel HTML 'de kullanmak için, `<div id="api">` etiketinin dışına aşağıdaki etiketleri ekleyin:
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+Görüntü kaynağı arka plan resminin ve başlık logosunun yerine konur. [Özel HTML ve CSS ile çalışmaya başlama](#get-started-with-custom-html-and-css) bölümünde açıklandığı gıbı, CSS sınıflarını stil için kullanarak ve varlıkları sayfada konumlandırın.
 
 ## <a name="localize-content"></a>İçeriği yerelleştirin
 

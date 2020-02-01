@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl hizmeti
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Hizmetleri, hizmet türlerini ve hizmet paketlerini yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639080"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906227"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
@@ -35,7 +35,7 @@ Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
 | paket-sistem durumu | Bir Service Fabric düğümü ve uygulaması için dağıtılan belirli bir uygulama için bir hizmet paketinin sistem durumu hakkındaki bilgileri alır. |
 | paket-bilgi | Belirtilen adı tam olarak eşleşen bir Service Fabric düğümünde dağıtılan hizmet paketlerinin listesini alır. |
 | paket listesi | Bir Service Fabric düğümünde dağıtılan hizmet paketlerinin listesini alır. |
-| kurtarma | Service Fabric kümesine, şu anda yetersayı kaybından takılmış olan hizmeti kurtarmaya çalışmak zorunda olduğunu gösterir. |
+| kurtarılamıyor | Service Fabric kümesine, şu anda yetersayı kaybından takılmış olan hizmeti kurtarmaya çalışmak zorunda olduğunu gösterir. |
 | report-health | Service Fabric hizmetine bir sistem durumu raporu gönderir. |
 | çözmek | Service Fabric bölümünü çözün. |
 | type-list | Service Fabric kümesinde sağlanan uygulama türü tarafından desteklenen hizmet türleriyle ilgili bilgileri içeren listeyi alır. |
@@ -110,7 +110,7 @@ Belirtilen Service Fabric hizmetini oluşturur.
 | --int-Scheme-düşük | Tekdüzen tamsayı bölüm düzeni kullanılıyorsa, anahtar tamsayı aralığının başlangıcı. |
 | --Yük-ölçümler | Düğümler genelinde Hizmetleri yük dengeleme sırasında kullanılan, JSON kodlamalı ölçüm listesi. |
 | --Min-Replication-set-size | Sayı olarak en küçük çoğaltma kümesi boyutu. Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
-| --taşıma-maliyet | Hizmetin taşıma maliyetini belirtir. Olası değerler şunlardır\: ' sıfır ', ' Low ', ' Medium ', ' High '. |
+| --taşıma-maliyet | Hizmetin taşıma maliyetini belirtir. Olası değerler şunlardır\: ' sıfır ', ' Low ', ' Medium ', ' High ', ' VeryHigh '. |
 | --adlandırılmış düzen | Hizmetin birden fazla adlandırılmış bölüme sahip olması gerektiğini belirtir. |
 | --adlandırılmış-düzen-liste | Adlandırılmış bölüm şeması kullanılıyorsa, hizmetin üzerinde bölümlenmesi için JSON kodlu adların listesi. |
 | --kalıcı olmayan-durum | True ise bu, hizmetin yerel diskte depolanan kalıcı bir durum olmadığını veya yalnızca durumu bellekte depoladığını gösterir. |
@@ -118,6 +118,7 @@ Belirtilen Service Fabric hizmetini oluşturur.
 | --çekirdek kaybı-bekleme | Bir bölümün çekirdek kaybı durumunda olmasına izin verilen en uzun süre (saniye cinsinden). Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --çoğaltma-yeniden Başlat-bekle | Bir çoğaltmanın ne zaman ve yeni bir çoğaltma oluşturulduğu zaman arasındaki saniye cinsinden süre. Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --ölçekleme-ilkeler | Bu hizmet için ölçeklendirme ilkelerinin JSON kodlu listesi. |
+| --hizmet-yerleştirme zamanı | Çoğaltmanın takılmış olduğunu raporlamadan önce çoğaltmaların ınbuıld olarak kalabileceği süre. Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --tek düzen | Hizmetin tek bir bölüme sahip olması veya bölümlenmemiş bir hizmet olması gerektiğini belirtir. |
 | --tek çoğaltma-sakla | Kaldırılma çoğaltmaları kaldırılmadan önce tutulabileceği en uzun süre (saniye cinsinden). Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --durum bilgisi olan | Hizmetin durum bilgisi olan bir hizmet olduğunu gösterir. |
@@ -562,11 +563,12 @@ Verilen güncelleştirme açıklamasını kullanarak belirtilen hizmeti güncell
 | --örnek-sayısı | Örnek sayısı. Bu yalnızca durum bilgisi olmayan hizmetler için geçerlidir. |
 | --Yük-ölçümler | Düğümler arasında yük dengelemesi yaparken kullanılan ölçüm JSON kodlu listesi. |
 | --Min-Replication-set-size | Sayı olarak en küçük çoğaltma kümesi boyutu. Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
-| --taşıma-maliyet | Hizmetin taşıma maliyetini belirtir. Olası değerler şunlardır\: ' sıfır ', ' Low ', ' Medium ', ' High '. |
+| --taşıma-maliyet | Hizmetin taşıma maliyetini belirtir. Olası değerler şunlardır\: ' sıfır ', ' Low ', ' Medium ', ' High ', ' VeryHigh '. |
 | --yerleştirme-ilke-liste | Hizmet için yerleştirme ilkelerinin JSON kodlu listesi ve ilişkili tüm etki alanı adları. İlkeler bir veya daha fazla\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain``RequireDomainDistribution`olabilir. |
 | --çekirdek kaybı-bekleme | Bir bölümün çekirdek kaybı durumunda olmasına izin verilen en uzun süre (saniye cinsinden). Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --çoğaltma-yeniden Başlat-bekle | Bir çoğaltmanın ne zaman ve yeni bir çoğaltma oluşturulduğu zaman arasındaki saniye cinsinden süre. Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --ölçekleme-ilkeler | Bu hizmet için ölçeklendirme ilkelerinin JSON kodlu listesi. |
+| --hizmet-yerleştirme zamanı | Çoğaltmanın takılmış olduğunu raporlamadan önce çoğaltmaların ınbuıld olarak kalabileceği süre. Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --tek çoğaltma-sakla | Kaldırılma çoğaltmaları kaldırılmadan önce tutulabileceği en uzun süre (saniye cinsinden). Bu yalnızca durum bilgisi olan hizmetler için geçerlidir. |
 | --durum bilgisi olan | Hedef hizmetin durum bilgisi olan bir hizmet olduğunu gösterir. |
 | --durum bilgisiz | Hedef hizmetin durum bilgisiz olmayan bir hizmet olduğunu gösterir. |

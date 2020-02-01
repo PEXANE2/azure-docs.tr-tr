@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl bölümü
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Bir hizmet için bölümleri yönetmeye yönelik komutların listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646067"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905843"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Tüm hizmet için bölümleri sorgulayın ve yönetin.
@@ -28,7 +28,7 @@ Tüm hizmet için bölümleri sorgulayın ve yönetin.
 | Yükleme-sıfırlama | Service Fabric bölümün geçerli yükünü sıfırlar. |
 | çekirdek kaybı | Belirli bir durum bilgisi olan hizmet bölümü için çekirdek kaybına yol açar. |
 | çekirdek kaybı-durum | Startquorumkaybetme API 'SI kullanılarak başlatılan bir bölümdeki çekirdek kaybı işleminin ilerlemesini alır. |
-| kurtarma | Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan belirli bir bölümü kurtarmaya çalışılması gerektiğini gösterir. |
+| kurtarılamıyor | Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan belirli bir bölümü kurtarmaya çalışılması gerektiğini gösterir. |
 | tümünü kurtar | Service Fabric kümesine, şu anda çekirdek kaybına takılmış olan Hizmetleri (sistem hizmetleri dahil) kurtarmaya çalışılması gerektiğini gösterir. |
 | report-health | Service Fabric bölümünde bir sistem durumu raporu gönderir. |
 | restart | Bu API, belirtilen bölümün bazı veya tüm çoğaltmalarını veya örneklerini yeniden başlatacak. |
@@ -38,10 +38,13 @@ Tüm hizmet için bölümleri sorgulayın ve yönetin.
 ## <a name="sfctl-partition-data-loss"></a>sfctl bölüm verileri-kayıp
 Bu API, belirtilen bölüm için veri kaybına yol açar.
 
-Bölümün OnDataLossAsync API 'sine bir çağrı tetikler.  Bu API, belirtilen bölüm için veri kaybına yol açar. Bölümün OnDataLoss API 'sine bir çağrı tetikler. Gerçek veri kaybı, belirtilen DataLossMode 'a bağlı olacaktır.  <br> -PartialDataLoss-yalnızca bir çoğaltma çekirdeği kaldırılır ve bölüm için OnDataLoss tetiklenir, ancak gerçek veri kaybı, uçuş için çoğaltma varlığına bağlıdır.  <br> -FullDataLoss-tüm çoğaltmalar kaldırılır, bu nedenle tüm veriler kaybedilir ve OnDataLoss tetiklenir. Bu API, hedef olarak yalnızca durum bilgisi olan bir hizmet ile çağrılmalıdır. Hedef olarak bu API 'YI bir sistem hizmetiyle çağırmak önerilmez.
+Bölümün OnDataLossAsync API 'sine bir çağrı tetikler.  Bu API, belirtilen bölüm için veri kaybına yol açar. Bölümün OnDataLoss API 'sine bir çağrı tetikler. Gerçek veri kaybı, belirtilen DataLossMode 'a bağlı olacaktır.
+- PartialDataLoss: Bölüm için yalnızca bir çekirdekte ve OnDataLoss tetiklenir; ancak gerçek veri kaybı, uçuş dışı çoğaltmanın varlığına bağlıdır.  
+- FullDataLoss: tüm çoğaltmalar kaldırılır, bu nedenle tüm veriler kaybedilir ve OnDataLoss tetiklenir. Bu API, hedef olarak yalnızca durum bilgisi olan bir hizmet ile çağrılmalıdır. Hedef olarak bu API 'YI bir sistem hizmetiyle çağırmak önerilmez.
 
 > [!NOTE]   
 > Bu API çağrıldıktan sonra geri alınamaz. CancelOperation çağrısı yalnızca yürütmeyi durdurur ve iç sistem durumunu temizler. Komutun veri kaybına neden olmak için yeterince ilerlemedi varsa verileri geri yükleme işlemi olmayacaktır. Bu API ile başlatılan işlem hakkında bilgi döndürmek için aynı operationId ile GetDataLossProgress API 'sini çağırın.
+
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|

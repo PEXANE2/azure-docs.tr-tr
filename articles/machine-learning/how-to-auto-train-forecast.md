@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 78654dfd5a11219d39d53b4042157333656f9aa3
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834764"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905710"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,7 +124,7 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 
 Daha fazla bilgi için [başvuru belgelerine](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) bakın.
 
-Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Veri kümesindeki `day_datetime` alanına `time_column_name` ayarlayın. Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `grain_column_names` parametresini tanımlayın; biri mağaza A ve B. son olarak, tüm test kümesinin tahmin edilmesi için `max_horizon` 50 olarak ayarlayın. `target_rolling_window_size`ile bir tahmin penceresi belirleyin ve `target_lags` parametresiyle birlikte iki dönem için hedef değerlerde tek bir gecikme süresi belirleyin. Bu değerleri sizin için otomatik olarak algılayacak `max_horizon`, `target_rolling_window_size` ve `target_lags` "Auto" olarak ayarlamanız önerilir. Aşağıdaki örnekte, bu paramacılar için "Auto" ayarları kullanılmıştır. 
+Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Veri kümesindeki `day_datetime` alanına `time_column_name` ayarlayın. Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `grain_column_names` parametresini tanımlayın; biri mağaza A ve B. son olarak, tüm test kümesinin tahmin edilmesi için `max_horizon` 50 olarak ayarlayın. `target_rolling_window_size`ile bir tahmin penceresi belirleyin ve `target_lags` parametresiyle birlikte iki dönem için hedef değerlerde tek bir gecikme süresi belirleyin. Bu değerleri sizin için otomatik olarak algılayacak `max_horizon`, `target_rolling_window_size` ve `target_lags` "Auto" olarak ayarlamanız önerilir. Aşağıdaki örnekte, bu parametreler için "Auto" ayarları kullanılmıştır. 
 
 ```python
 time_series_settings = {
@@ -226,7 +226,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
+rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/29/2020
 ms.author: diberry
-ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844271"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901681"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -39,7 +39,7 @@ Bilgilerinizi kullanıcılarınız hakkında daha ilgi çekici hale getirmek iç
 1. **Oluştur** sayfasında, **QNA hizmeti oluştur**' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz.
 
 1. Azure portal, kaynağı oluşturun. Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
-1. Soru-Cevap Oluşturma portalına geri dönüp, bilgi bankanızı oluşturmaya devam etmek için portalda Web sayfasını yenileyin.
+1. Soru-Cevap Oluşturma portalına geri dönüp, bilgi bankanızı oluşturmaya devam etmek için portalda Web sayfasını yenileyin. Mevcut bir kiracı, abonelik ve yeni kaynak seçin. Dili seçin. Bu, bu Soru-Cevap Oluşturma hizmetindeki tüm bilgi tabanları için kullanılan dildir.
 
    ![Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 

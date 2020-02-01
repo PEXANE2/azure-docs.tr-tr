@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712528"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908862"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication tümleştirin
 
@@ -192,6 +192,23 @@ Yük Dengeleme için ayarlamak istediğiniz tüm ek NPS sunucuları üzerinde bu
 
 > [!NOTE]
 > PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN =\<Tenantıd\>, OU = MICROSOFT NPS uzantısı**olmalıdır. 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Kamu ek adımlar
+
+Azure Kamu Bulutu kullanan müşteriler için, her NPS sunucusunda aşağıdaki ek yapılandırma adımları gereklidir:
+
+1. NPS sunucusunda **kayıt defteri Düzenleyicisi** 'ni açın.
+1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` sayfasına gidin. Aşağıdaki anahtar değerlerini ayarlayın:
+
+    | Kayıt defteri anahtarı       | Değer |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Her NPS sunucusu için kayıt defteri anahtarı değerlerini ayarlamak için önceki iki adımı tekrarlayın.
+1. NPS hizmetini her NPS sunucusu için yeniden başlatın.
+
+    En az etki için, her NPS sunucusunu tek seferde bir tane tek tek götürün ve tüm bağlantıların boşlanmasını bekleyin.
 
 ### <a name="certificate-rollover"></a>Sertifika geçişi
 

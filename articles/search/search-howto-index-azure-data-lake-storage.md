@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112292"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905650"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. belgeleri dizine ekleme
 
@@ -47,3 +47,10 @@ Data Lake Storage 2. içerik dizini oluşturma, Azure Blob depolamada dizin olu�
 Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir [erişim denetimi modeli](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) uygular. Data Lake Storage 2. içerik dizinlenirken, Azure Bilişsel Arama, içerikten RBAC ve ACL bilgilerini ayıklamaz. Sonuç olarak, bu bilgiler Azure Bilişsel Arama dizinine dahil edilmez.
 
 Dizindeki her belge üzerinde erişim denetimini korumak önemli ise, [güvenlik kırpması](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)uygulamak için uygulama geliştiricisinin üzerine gelir.
+
+## <a name="change-detection"></a>Değişiklik algılama
+
+Data Lake Storage 2. Indexer değişiklik algılamayı destekler. Bu, dizin oluşturucunun yalnızca blob 'un `LastModified` zaman damgasıyla belirlendiği şekilde değiştirilen Blobları yeniden dizinleyen anlamına gelir.
+
+> [!NOTE] 
+> Data Lake Storage 2. dizinlerin yeniden adlandırılmasına izin verir. Bir dizin yeniden adlandırıldığında, bu dizindeki Blobların zaman damgaları güncellenmez. Sonuç olarak, Dizin Oluşturucu bu Blobları yeniden kullanmaz. Artık yeni URL 'Leri olduğundan dizin yeniden adlandırıldıktan sonra bir dizin içindeki Blobların yeniden dizinlenmesini istiyorsanız, dizin oluşturucunun, gelecekteki bir çalıştırma sırasında yeniden dizin haline gelebilmesi için dizindeki tüm Blobların `LastModified` zaman damgasını güncelleştirmeniz gerekir.

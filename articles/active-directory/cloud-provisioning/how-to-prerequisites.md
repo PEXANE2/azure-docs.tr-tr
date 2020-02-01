@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549355"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909049"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -29,6 +29,9 @@ Bulut sağlamasını Azure AD Connect kullanmak için aşağıdakiler gerekir:
 - Azure AD kiracınız için genel yönetici hesabı.
 - Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.
 - Şirket içi güvenlik duvarı konfigürasyonları.
+
+>[!NOTE]
+>Sağlama Aracısı Şu anda yalnızca Ingilizce dil sunucularına yüklenebilir. İngilizce olmayan bir sunucuya Ingilizce dil paketi yüklemek geçerli bir geçici çözüm değildir ve aracının yüklenememesi ile sonuçlanır. 
 
 Belgenin geri kalanı, bu Önkoşullar için adım adım yönergeler sağlar.
 

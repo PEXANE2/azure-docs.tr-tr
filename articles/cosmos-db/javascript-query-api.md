@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 'de JavaScript tümleşik sorgu API 'SI ile çalışma
+title: Azure Cosmos DB saklı yordamlar ve Tetikleyiciler 'de JavaScript tümleşik sorgu API 'SI ile çalışma
 description: Bu makalede, Azure Cosmos DB ' de saklı yordamlar ve Tetikleyiciler oluşturmak için JavaScript dil ile tümleşik sorgu API 'SI kavramları tanıtılmaktadır.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445325"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901827"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
 
-Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB sunucu tarafı SDK 'sı](https://azure.github.io/azure-cosmosdb-js-server/) , JavaScript arabirimini kullanarak iyileştirilmiş sorgular gerçekleştirmenize olanak tanır. Bu JavaScript arabirimini kullanmak için SQL dilini bilmeniz gerekmez. JavaScript sorgu API 'SI, koşul işlevlerini, ECMAScript5's dizisi yerleşik ve Lodash gibi popüler JavaScript kitaplıklarını bilen bir sözdizimi ile program aracılığıyla sorgu oluşturmanızı sağlar. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB dizinleri kullanılarak verimli bir şekilde yürütülür.
+Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB sunucu tarafı SDK 'sı](https://azure.github.io/azure-cosmosdb-js-server/) Cosmos DB saklı yordamlar ve tetikleyicilerinde iyileştirilmiş sorgular gerçekleştirmeye yönelik bir JavaScript arabirimi sağlar. Bu JavaScript arabirimini kullanmak için SQL dilini bilmeniz gerekmez. JavaScript sorgu API 'SI, koşul işlevlerini, ECMAScript5's dizisi yerleşik ve Lodash gibi popüler JavaScript kitaplıklarını bilen bir sözdizimi ile program aracılığıyla sorgu oluşturmanızı sağlar. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB dizinleri kullanılarak verimli bir şekilde yürütülür.
 
 ## <a name="supported-javascript-functions"></a>Desteklenen JavaScript işlevleri
 
-| **İşlev** | **Açıklama** |
+| **Çalışmayacaktır** | **Açıklama** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Value()) ile bitirilmelidir zincirleme bir arama başlatır.|
 |`filter(predicateFunction [, options] [, callback])`|Sonuç kümesine girdi belgelerini içeri/dışarı filtrelemek için true/false döndüren bir koşul işlevini kullanarak giriş filtreler. Bu işlev bir WHERE yan tümcesinde SQL benzer şekilde davranır.|

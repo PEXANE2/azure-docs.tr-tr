@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,23 +16,23 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562323"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897044"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Sürüm Yayınlama Geçmişi
 Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect Health düzenli olarak güncelleştirir. Bu makalede, yayımlanan sürümleri ve özellikler listelenir.  
 
 > [!NOTE]
-> Yeni sürüm yayınlandığında Connect Health Agents otomatik olarak güncelleştirilir. Lütfen otomatik yükseltme ayarlarının Azure portal etkinleştirildiğinden emin olun. 
+> Yeni sürüm yayınlandığında Connect Health Agents otomatik olarak güncelleştirilir. Lütfen otomatik yükseltme ayarlarının Azure portal etkinleştirildiğinden emin olun.
 >
 
 Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşiktir. Özellik geri bildirimi [Azure AD Connect yayın geçmişi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) hakkında daha fazla bilgi edinin, [Connect Health Kullanıcı ses kanalı](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) ' nı oylayın
 
-## <a name="july-2019"></a>2019 Temmuz
+## <a name="july-2019"></a>Temmuz 2019
 **Aracı güncelleştirmesi**
 * AD FS için Azure AD Connect Health Aracısı (sürüm 3.1.59.0) 
    1. TestWindowsTransport 'da metin değişikliği
@@ -53,7 +54,7 @@ Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşi
    1. Aynı istemci-istek kimliğini paylaşan birden çok oturum açma arasında ayrım yapmak için hata düzeltildi.
    2. Dil yerelleştirilmiş sunuculardaki Hatalı Kullanıcı adı/parola hatalarını ayrıştırmak için hata düzeltildi.   
 
-## <a name="april-2019"></a>2019 Nisan
+## <a name="april-2019"></a>Nisan 2019
 **Aracı güncelleştirmesi:** 
 * AD FS için Azure AD Connect Health Aracısı (sürüm 3.1.46.0) 
    1. Çözüm, ADFS için yinelenen SPN uyarı işlemini denetleyin
@@ -72,7 +73,7 @@ Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşi
    4. Birden çok Izleme Aracısı örneğinin oluşturulmasını önlemek için hata düzeltildi
 
 
-## <a name="november-2018"></a>2018 Kasım
+## <a name="november-2018"></a>Kasım 2018
 **Yeni GA özellikleri:** 
 * Sync için Azure AD Connect Health-portaldan yinelenen öznitelik eşitleme hatalarını tanılayın ve düzeltin
 

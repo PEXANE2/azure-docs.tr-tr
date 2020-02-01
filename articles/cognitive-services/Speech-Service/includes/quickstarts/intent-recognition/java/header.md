@@ -1,20 +1,15 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, Java-konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-ms.openlocfilehash: b6b742c9f92a4b1ed7c3dae2c72ced785b701005
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.author: dapine
+ms.openlocfilehash: d020f69df9c65d96cd04ea2d0a5130d456b209f4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466994"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900469"
 ---
 Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'da tüm <a href="https://aka.ms/speech/github-java">konuşma SDK 'Sı Java örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.

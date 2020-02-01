@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174665"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897621"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ve onay ayarları
 
@@ -42,6 +42,9 @@ Bir ilke ile bir erişim paketi talep edebilen kim tarafından belirtilme yönte
 | Dizinimde bulunan kullanıcılara ve ayrıca dizinimin dışındaki kullanıcıların erişim paketi istemesine izin vermek istiyorum | Birden çok |
 | Bazı kullanıcılar için farklı onay ayarları belirtmek istiyorum | Birden çok |
 | Diğer kullanıcıların erişimini genişletecek bazı kullanıcıların paket atamalarına erişmesini istiyorum | Birden çok |
+
+Birden çok ilke uyguladığınızda kullanılan öncelik mantığı hakkında daha fazla bilgi için bkz. [birden çok ilke](entitlement-management-troubleshoot.md#multiple-policies
+).
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>İstek ve onay ayarlarının mevcut bir ilkesini açın
 

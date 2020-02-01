@@ -1,28 +1,24 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, Python-konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772921"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900392"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
-* İlk Python projeniz bu ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">boş bir örnek proje oluşturmak</a>için bu kılavuzu kullanın.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükler</a>.
+* İlk Python projeniz bu ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">boş bir örnek <span class="docon docon-navigate-external x-hidden-focus"> </span>proje oluşturmak </a>için bu kılavuzu kullanın.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Geliştirme ortamınız <span class="docon docon-navigate-external x-hidden-focus"> </span>için konuşma SDK 'sını yükler </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 
@@ -65,7 +61,7 @@ Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapıl�
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel ve amaçlar ekleyin
 
-Bir `LanguageUnderstandingModel`, amaç tanıyıcı ile ilişkilendirmeniz ve tanınan hedefleri eklemeniz gerekir. Ana otomasyon için önceden oluşturulmuş etki alanındaki amaçları kullanacağız. 
+Bir `LanguageUnderstandingModel`, amaç tanıyıcı ile ilişkilendirmeniz ve tanınan hedefleri eklemeniz gerekir. Ana otomasyon için önceden oluşturulmuş etki alanındaki amaçları kullanacağız.
 
 Bu kodu `IntentRecognizer`altına ekleyin. `"YourLanguageUnderstandingAppId"`, LUSıS uygulama KIMLIĞINIZ ile değiştirdiğinizden emin olun. 
 
@@ -90,7 +86,7 @@ Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgil
 
 ## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuzun şöyle görünmesi gerekir:  
+Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 > [!NOTE]
 > Bu sürüme bazı açıklamalar ekledik.

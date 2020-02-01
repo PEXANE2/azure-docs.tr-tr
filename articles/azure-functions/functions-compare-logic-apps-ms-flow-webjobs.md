@@ -4,13 +4,17 @@ description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut h
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2c498b55e7c7cc84a047343d084e1f54569dd2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409832"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898924"
 ---
+> [!NOTE]
+> Microsoft Flow artık güç otomatikleştirin. Daha fazla bilgi için bu [bloga](https://aka.ms/flow-now-pa) bakın.
+> 
+> Bu içerik, önümüzdeki günlerde marka değişikliğini yansıtacak şekilde güncelleştirilecektir.
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure 'da doğru tümleştirme ve otomasyon hizmetlerini seçme
 
 Bu makalede aşağıdaki Microsoft bulut hizmetleri karşılaştırılır:

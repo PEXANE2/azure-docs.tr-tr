@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLı-sfctl deposu
-description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. , Küme görüntü deposunda dosya düzeyi işlemleri gerçekleştirmeye yönelik komutların bir listesini içerir.
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Küme görüntü deposunda dosya düzeyi işlemleri gerçekleştirmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 64a8ea963afa9e20dfafb71db69b2baf66959369
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645268"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905617"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Küme görüntü deposunda temel dosya düzeyi işlemleri gerçekleştirin.

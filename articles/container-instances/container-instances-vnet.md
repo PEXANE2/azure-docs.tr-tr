@@ -4,12 +4,12 @@ description: Yeni veya mevcut bir Azure sanal ağına kapsayıcı grupları dağ
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845181"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901872"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Azure sanal ağına kapsayıcı örnekleri dağıtma
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Ağ kaynaklarını silme
-
-
-> [!NOTE]
-> Ağ profilini kaldırmaya çalışırken bir hata alırsanız, platformun sorunu otomatik olarak hafifletmek ve silmeyi yeniden denemesi için 3-4 güne izin verin. Bir ağ profilini hemen silmeniz gerekiyorsa Azure Container Instances hizmetine başvuran [bir destek isteği açın](https://azure.microsoft.com/support/create-ticket/) .
 
 Bu özellik şu anda daha önce oluşturduğunuz ağ kaynaklarını silmek için birkaç ek komut gerektirir. Sanal ağınızı ve alt ağınızı oluşturmak için bu makalenin önceki bölümlerinde örnek komutları kullandıysanız, bu ağ kaynaklarını silmek için aşağıdaki betiği kullanabilirsiniz.
 

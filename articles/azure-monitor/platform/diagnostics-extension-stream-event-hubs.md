@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770178"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901225"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Tanılama Event Hubs kullanarak etkin yoldaki verileri akışa alma
 Azure Tanılama, bulut Hizmetleri sanal makinelerinden (VM 'Ler) ölçümleri ve günlükleri toplamanın yanı sıra sonuçları Azure Storage 'a aktarmaya yönelik esnek yollar sunar. Mart 2016 (SDK 2,9) zaman çerçevesinde, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)kullanarak özel veri kaynaklarına tanılama gönderebilir ve dinamik yol verilerini Saniyeler içinde aktarabilirsiniz.
@@ -201,7 +201,7 @@ Bu örnekte, havuz günlüklere uygulanır ve yalnızca hata düzeyi izleme ile 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services uygulama ve tanılama yapılandırmasını dağıtma ve güncelleştirme
 Visual Studio, uygulama ve Event Hubs havuz yapılandırmasını dağıtmak için en kolay yolu sağlar. Dosyayı görüntülemek ve düzenlemek için, Visual Studio 'da *. wadcfgx* dosyasını açın, düzenleyin ve kaydedin. Yol, **bulut hizmeti projesi** ** >  > ** **(roleName)**  > **Diagnostic. wadcfgx**' dir.  
 
-Bu noktada, Visual Studio, Visual Studio Team System ve MSBuild 'i temel alan tüm dağıtım ve dağıtım güncelleştirme eylemleri ve **/t: Publish** hedefini kullanan tüm komutlar veya betikler Paketleme sürecinde *. wadcfgx* içerir. Ayrıca, dağıtımlar ve güncelleştirmeler, sanal makinelerinizdeki uygun Azure Tanılama Aracısı uzantısını kullanarak dosyayı Azure 'a dağıtır.
+Bu noktada, Visual Studio 'daki tüm dağıtım ve dağıtım güncelleştirme eylemleri, Visual Studio Team System, MSBuild 'i temel alan ve `/t:publish` hedefini kullanan tüm komut veya komut dosyaları, Paketleme sürecinde *. wadcfgx* ' i içerir. Ayrıca, dağıtımlar ve güncelleştirmeler, sanal makinelerinizdeki uygun Azure Tanılama Aracısı uzantısını kullanarak dosyayı Azure 'a dağıtır.
 
 Uygulamayı ve Azure Tanılama yapılandırmayı dağıttıktan sonra etkinlik, Olay Hub 'ının panosunda hemen görüntülenir. Bu, seçtiğiniz dinleyici istemcisi veya çözümleme aracında etkin yol verilerini görüntülemeye devam etmek için hazırsınız demektir.  
 
@@ -215,13 +215,72 @@ Aşağıdaki şekilde Event Hubs panosu, 11 PM sonrasında bir süre sonra tanı
 >
 
 ## <a name="view-hot-path-data"></a>Etkin yol verilerini görüntüleme
-Daha önce anlatıldığı gibi Event Hubs verileri dinlemek ve işlemek için birçok kullanım durumu vardır.
+Daha önce anlatıldığı gibi Event Hubs verileri dinlemek ve işlemek için birçok kullanım durumu vardır. Basit bir yaklaşım, Olay Hub 'ını dinlemek ve çıkış akışını yazdırmak için küçük bir test konsolu uygulaması oluşturmaktır. 
 
-Basit bir yaklaşım, Olay Hub 'ını dinlemek ve çıkış akışını yazdırmak için küçük bir test konsolu uygulaması oluşturmaktır. Konsol uygulamasındaki [Event Hubs kullanmaya başlama](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)bölümünde daha ayrıntılı olarak açıklanan aşağıdaki kodu yerleştirebilirsiniz.  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[.NET SDK en son (5.0.0 veya üzeri)](#tab/latest)
+Konsol uygulamasındaki [Event Hubs kullanmaya başlama](../../event-hubs/get-started-dotnet-standard-send-v2.md)bölümünde daha ayrıntılı olarak açıklanan aşağıdaki kodu yerleştirebilirsiniz.
 
-Konsol uygulamasının [olay Işlemcisi Konağı NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)içermesi gerektiğini unutmayın.  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-**Main** işlevindeki açılı parantez içindeki değerleri kaynaklarınızın değerleriyle değiştirmeyi unutmayın.   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[.NET SDK eski (4.1.0 veya önceki sürümler)](#tab/legacy)
+
+Konsol uygulamasındaki [Event Hubs kullanmaya başlama](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)bölümünde daha ayrıntılı olarak açıklanan aşağıdaki kodu yerleştirebilirsiniz. Konsol uygulamasının [olay Işlemcisi Konağı NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)içermesi gerektiğini unutmayın. **Main** işlevindeki açılı parantez içindeki değerleri kaynaklarınızın değerleriyle değiştirmeyi unutmayın.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs havuzları sorunlarını giderme
 * Olay Hub 'ı, gelen veya giden olay etkinliğini beklenen şekilde göstermiyor.

@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245360"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897215"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect eşitlemesini Azure AD Connect Health ile izleme
 Aşağıdaki belgeler Azure AD Connect Health ile Azure AD Connect’in (Eşitleme) izlenmesine özgüdür.  Azure Connect Health ile AD FS'yi izleme hakkında bilgi almak için bkz. [Azure AD Connect Health'i AD FS ile kullanma](how-to-connect-health-adfs.md). Ek olarak, Active Directory Etki Alanı Hizmetleri’ni Azure AD Connect Health ile izleme hakkında bilgi için bkz. [AD DS ile Azure AD Connect Health Kullanma](how-to-connect-health-adds.md).
@@ -69,13 +70,13 @@ Bu özellik, kimlik verileri Azure AD Connect kullanılarak Windows Server AD il
 * Rapor, eşitleme istemcisi tarafından kaydedilen hataları kapsar (Azure AD Connect 1.1.281.0 veya üzeri)
 * Eşitleme altyapısındaki son eşitleme işlemi sırasında oluşan hataları içerir. (Azure AD Bağlayıcısı üzerinde “dışarı aktarma”.)
 * Raporun en son verileri içermesi için eşitlemeye yönelik Azure AD Connect Health aracısının gerekli uç noktalara giden bağlantısının olması gerekir.
-* Rapor, eşitleme için Azure AD Connect Health aracısı tarafından yüklenen verileri kullanarak **30 dakikada bir güncelleştirilir**. Aşağıdaki temel özellikleri sağlar
+* Rapor, eşitleme için Azure AD Connect Health Aracısı tarafından karşıya yüklenen veriler kullanılarak **her 30 dakikada bir güncelleştirilir** . Aşağıdaki temel özellikleri sağlar
 
   * Hataların kategorilere ayrılması
   * Kategoriye göre hatalı nesnelerin listesi
   * Hatalarla ilgili tüm veriler tek bir yerde bulunur
   * Çakışma nedeniyle hata oluşan Nesnelerin yan yana karşılaştırılması
-  * Hata raporu CVS olarak indirme
+  * Hata raporunu CVS olarak indirin
 
 ### <a name="categorization-of-errors"></a>Hataların Kategorilere Ayrılması
 Rapor, mevcut eşitleme hatalarını aşağıdaki kategorilere ayırır:

@@ -1,21 +1,16 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, Python-konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: Daha sonra belirlenecek
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-ms.openlocfilehash: e522d3303a1383aa66d54d7176ed4ce4921c10c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.author: dapine
+ms.openlocfilehash: 8a6e822b6235b4193ccc5efc5f7712658efebf8e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469318"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900533"
 ---
 > [!div class="nextstepaction"]
 > [GitHub 'da Python örneklerini keşfet](https://aka.ms/speech/github-python)

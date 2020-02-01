@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Connect Health SSS - Azure | Microsoft Docs
-description: Bu SSS, Azure AD Connect Health hakkında sorular yanıtlanmaktadır. Bu SSS; faturalama modeli, özellikler, sınırlamalar ve destek dahil olmak üzere hizmetin kullanımı hakkındaki soruları kapsar.
+title: Azure Active Directory Connect Health SSS-Azure | Microsoft Docs
+description: Bu SSS Azure AD Connect Health hakkındaki soruları yanıtlar. Bu SSS; faturalama modeli, özellikler, sınırlamalar ve destek dahil olmak üzere hizmetin kullanımı hakkındaki soruları kapsar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,154 +16,154 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e6c490ee9d8b6f7f07f52e70ceb8c7c49d699b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096136"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897013"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health hakkında sık sorulan sorular
-Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan sorular (SSS) yanıtlarını içerir. Bu SSS, özellik, sınırlamalar ve Destek faturalandırma modeli içeren hizmetin nasıl kullanılacağını hakkında sorular kapsar.
+Bu makale, Azure Active Directory (Azure AD) Connect Health hakkında sık sorulan soruların (SSS) yanıtlarını içerir. Bu SSS, faturalandırma modeli, yetenekler, sınırlamalar ve destek dahil olmak üzere hizmetin nasıl kullanılacağına ilişkin soruları kapsar.
 
 ## <a name="general-questions"></a>Genel sorular
-**S: Birden çok Azure AD dizini yönetebilirim. Azure Active Directory Premium içeren bir nasıl geçiş yapabilirim?**
+**S: birden çok Azure AD dizinini yönetiyorum. Nasıl yaparım? Azure Active Directory Premium birine geçiş yapılsın mı?**
 
-Farklı arasında geçiş yapmak için Azure AD kiracılarıyla seçin şu anda oturum açmış **kullanıcı adı** üzerinde sağ üst köşe ve ardından uygun hesabı seçin. Hesap burada listelenmemişse seçin **oturumunuzu**ve ardından Azure Active Directory Premium oturum açmak için etkin olan dizini genel yönetici kimlik bilgilerini kullanın.
+Farklı Azure AD kiracılar arasında geçiş yapmak için sağ üst köşedeki şu anda oturum açmış olan **Kullanıcı adını** seçin ve ardından uygun hesabı seçin. Hesap burada listelenmiyorsa **oturumu**Kapat ' ı seçin ve ardından oturum açmak için Azure Active Directory Premium etkinleştirilmiş olan dizinin genel yönetici kimlik bilgilerini kullanın.
 
-**S: Azure AD Connect Health tarafından kimlik rolleri hangi sürümü desteklenir?**
+**S: Azure AD Connect Health tarafından desteklenen kimlik rollerinin sürümü nedir?**
 
-Aşağıdaki tabloda rolleri listeler ve işletim sistemi sürümlerinde desteklenir.
+Aşağıdaki tabloda roller ve desteklenen işletim sistemi sürümleri listelenmiştir.
 
-|Rol| İşletim sistemi / sürüm|
+|Rol| İşletim sistemi/sürüm|
 |--|--|
-|Active Directory Federasyon Hizmetleri (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 1\.0.9125 sürümü veya üzeri|
-|Active Directory etki alanı Hizmetleri (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Federasyon Hizmetleri (AD FS) (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Azure AD Connect | Sürüm 1.0.9125 veya üzeri|
+|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
-Hizmet tarafından sağlanan özellikleri rol ile işletim sistemine göre değişebileceğini unutmayın. Diğer bir deyişle, tüm özellikler tüm işletim sistemi sürümleri için kullanılabilir olmayabilir. Ayrıntılar için özellik açıklamaları bakın.
+Hizmet tarafından sunulan özelliklerin role ve işletim sistemine göre farklılık gösterebileceğini unutmayın. Diğer bir deyişle, tüm özellikler tüm işletim sistemi sürümleri için kullanılamayabilir. Ayrıntılar için bkz. Özellik açıklamaları.
 
-**S: Altyapımı izlemek kaç tane lisansın gerekiyor?**
+**S: altyapımı izlemek için kaç lisansa ihtiyacım var?**
 
-* İlk Connect Health aracısını en az bir Azure AD Premium lisansı gerektirir.
-* Her bir ek kayıtlı aracı 25 ek Azure AD Premium lisansı gerektirir.
-* Aracı sayısı, tüm izlenen rolleri arasında (AD FS, Azure AD Connect ve AD DS) kayıtlı aracı toplam sayısını eşdeğerdir.
-* AAD Connect Health lisans için belirli kullanıcılara lisans atamanız gerekmez. Yalnızca geçerli lisans önkoşul sahip olması gerekir.
+* İlk Connect Health Aracısı için en az bir Azure AD Premium lisansı gerekir.
+* Her ek kayıtlı aracı 25 ek Azure AD Premium lisansı gerektirir.
+* Aracı sayısı, tüm izlenen roller (AD FS, Azure AD Connect ve/veya AD DS) içinde kayıtlı olan aracıların toplam sayısına eşdeğerdir.
+* AAD Connect Health lisanslama, lisansı belirli kullanıcılara atamanız gerekmez. Yalnızca gerekli sayıda lisansa sahip olmanız gerekir.
 
-Lisans bilgilerini üzerinde bulunan ayrıca [Azure AD fiyatlandırma sayfası](https://aka.ms/aadpricing).
+Lisanslama bilgileri de [Azure AD fiyatlandırma sayfasında](https://aka.ms/aadpricing)bulunur.
 
 Örnek:
 
-| Kayıtlı aracı | Gerekli lisansları | Örnek izleme yapılandırması |
+| Kayıtlı aracılar | Gerekli lisanslar | Örnek izleme yapılandırması |
 | ------ | --------------- | --- |
-| 1 | 1 | 1 azure AD Connect sunucusu |
-| 2 | 26| 1 azure AD Connect sunucusu ve 1 etki alanı denetleyicisi |
-| 3 | 51 | 1 active Directory Federasyon Hizmetleri (ADFS) sunucusu, 1 AD FS proxy ve 1 etki alanı denetleyicisi |
-| 4 | 76 | 1 AD FS sunucusu, 1 AD FS proxy ve 2 etki alanı denetleyicileri |
-| 5 | 101 | 1 azure AD Connect sunucusu, 1 AD FS sunucusu, 1 AD FS proxy ve 2 etki alanı denetleyicileri |
+| 1 | 1 | 1 Azure AD Connect sunucusu |
+| 2 | 26| 1 Azure AD Connect Server ve 1 etki alanı denetleyicisi |
+| 3 | 51 | 1 Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sunucu, 1 AD FS proxy ve 1 etki alanı denetleyicisi |
+| 4 | 76 | 1 AD FS Server, 1 AD FS proxy ve 2 etki alanı denetleyicisi |
+| 5 | 101 | 1 Azure AD Connect sunucu, 1 AD FS sunucu, 1 AD FS proxy ve 2 etki alanı denetleyicisi |
 
-**S: Azure AD Connect Health, Azure Almanya Bulutu destekliyor mu?**
+**S: Azure AD Connect Health Azure Almanya bulutunu destekliyor mu?**
 
-Azure AD Connect Health, Almanya bulutunda dışında desteklenmiyor [eşitleme hata raporu özelliği](how-to-connect-health-sync.md#object-level-synchronization-error-report).
+[Eşitleme hataları raporu özelliği](how-to-connect-health-sync.md#object-level-synchronization-error-report)dışında Almanya bulutu 'nda Azure AD Connect Health desteklenmez.
 
-| Roller | Özellikler | Alman bulutunda desteklenir |
+| Roller | Özellikler | Almanya bulutu 'nda destekleniyor |
 | ------ | --------------- | --- |
-| Eşitleme için connect Health | İzleme / Insight / uyarıları / analizi | Hayır |
+| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | Hayır |
 |  | Eşitleme hata raporu | Evet |
-| AD FS için connect Health | İzleme / Insight / uyarıları / analizi | Hayır |
-| EKLER için connect Health | İzleme / Insight / uyarıları / analizi | Hayır |
+| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
+| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
 
-Eşitleme için Connect Health Aracısı bağlantısı sağlamak için lütfen yapılandırma [yükleme gereksinimini](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) uygun şekilde.
+Eşitleme için bağlantı durumunun aracı bağlantısının olduğundan emin olmak için lütfen [yükleme gereksinimini](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) uygun şekilde yapılandırın.
 
 ## <a name="installation-questions"></a>Yükleme soruları
 
-**S: Tek başına sunucularda Azure AD Connect Health Aracısı yükleme etkisi nedir?**
+**S: Azure AD Connect Health aracısını ayrı sunuculara yüklemenin etkisi nedir?**
 
-Yükleme Microsoft Azure AD Connect Health Aracısı, AD FS, web uygulaması Ara sunucuları, Azure AD Connect (eşitleme) sunucuları, etki alanı denetleyicileri etkisidir CPU, bellek kullanımı, ağ bant genişliği ve depolama göre en az.
+Microsoft Azure AD Connect Health aracısını yükleme, AD FS, Web uygulaması ara sunucusu, Azure AD Connect (eşitleme) sunucuları, etki alanı denetleyicileri CPU, bellek tüketimi, ağ bant genişliği ve depolama açısından en düşük düzeydedir.
 
-Aşağıdaki numaralarını yaklaşık şunlardır:
+Aşağıdaki sayılar bir yaklaşık olarak verilmiştir:
 
-* CPU tüketimi: yaklaşık 1-%5 artırın.
-* Bellek tüketimi: Toplam sistem belleği en fazla % 10.
+* CPU tüketimi:% 1-5 artış.
+* Bellek tüketimi: toplam sistem belleğinin %10 ' a kadar.
 
 > [!NOTE]
-> Aracısı, Azure ile iletişim kuramıyor, aracıyı yerel olarak tanımlanan bir üst sınırı için verileri depolar. Aracı "az yakın bir zamanda hizmet" olarak "önbelleğe alınan" verilerin üzerine yazar.
+> Aracı Azure ile iletişim kuramıyorsa, aracı verileri tanımlanan bir maksimum sınır için yerel olarak depolar. Aracı "önbelleğe alınmış" verilerin üzerine "en az son bakım" temelinde yazar.
 >
 >
 
-* Azure AD Connect Health aracıları için yerel arabellek depolama alanı: yaklaşık 20 MB.
-* AD FS sunucuları için 1024 MB (1 GB) disk alanının sağlamak için Azure AD Connect Health, yazılmadan önce tüm denetim verilerini işlemek aracıları için AD FS denetim kanalı öneririz.
+* Azure AD Connect Health aracıları için yerel arabellek depolaması: ~ 20 MB.
+* AD FS sunucular için, Azure AD Connect Health aracıların üzerine yazılmadan önce tüm denetim verilerini işlemesi için AD FS denetim kanalı için 1.024 MB (1 GB) disk alanı sağlamanızı öneririz.
 
-**S: Azure AD Connect Health aracılarını yükleme sırasında Sunucularım yeniden başlatma gerekecek mi?**
+**S: Azure AD Connect Health aracılarının yüklenmesi sırasında sunucularımı yeniden başlatmalıyım mıyım?**
 
-Hayır. Aracıların yüklemesi, sunucunun yeniden başlatılmasını gerektirmez. Ancak, bazı önkoşul adımlarını yüklenmesi sunucunun yeniden başlatılmasını gerektirebilir.
+Hayır. Aracıların yüklenmesi, sunucuyu yeniden başlatmanızı gerektirmez. Ancak, bazı önkoşul adımları yüklenirken sunucunun yeniden başlatılması gerekebilir.
 
-Örneğin, Windows Server 2008 R2'de .NET 4.5 Framework'ün yüklemesini bir sunucu yeniden başlatma gerekiyor.
+Örneğin, Windows Server 2008 R2 'de, .NET 4,5 Framework 'ün yüklenmesi için sunucu yeniden başlatması gerekir.
 
-**S: Azure AD Connect Health, doğrudan bir HTTP proxy üzerinden çalışır mı?**
+**S: Azure AD Connect Health bir geçişli HTTP proxy 'si üzerinden çalışıyor mu?**
 
-Evet. Devam eden işlemler için giden HTTP isteklerini iletmek için bir HTTP proxy kullanmak için Sistem Durumu Aracısı'nı yapılandırabilirsiniz.
-Daha fazla bilgi edinin [Health aracılarını HTTP Proxy Yapılandırma](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
+Evet. Devam eden işlemler için, durum aracısını giden HTTP isteklerini iletmek üzere bir HTTP proxy 'si kullanacak şekilde yapılandırabilirsiniz.
+[Sistem durumu aracıları IÇIN http proxy 'yi yapılandırma](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)hakkında daha fazla bilgi edinin.
 
-Aracı kaydı sırasında bir proxy yapılandırmanız gerekiyorsa, Internet Explorer Proxy ayarlarınızı önceden değiştirmek gerekebilir.
+Aracı kaydı sırasında bir proxy yapılandırmanız gerekiyorsa, Internet Explorer proxy ayarlarınızı önceden değiştirmeniz gerekebilir.
 
-1. Internet Explorer'ı açın > **ayarları** > **Internet Seçenekleri** > **bağlantıları** > **LAN Ayarları** .
-2. Seçin **AĞINIZ için bir Proxy sunucusu kullan**.
-3. Seçin **Gelişmiş** farklı proxy bağlantı noktası için HTTP ve HTTPS/güvenli varsa.
+1. Internet Explorer > **ayarları** > **Internet seçenekleri** > **Bağlantılar** > **LAN ayarları**' nı açın.
+2. **LAN için bir proxy sunucusu kullan**' ı seçin.
+3. HTTP ve HTTPS/Secure için farklı proxy bağlantı noktalarına sahipseniz **Gelişmiş** ' i seçin.
 
-**S: Azure AD Connect Health için HTTP Proxy'si bağlanırken, temel kimlik doğrulamasını destekliyor mu?**
+**S: Azure AD Connect Health, HTTP proxy 'lerine bağlanırken temel kimlik doğrulamasını destekliyor mu?**
 
-Hayır. Bir rastgele kullanıcı adı ve temel kimlik doğrulaması için parola belirtmek için bir mekanizma şu anda desteklenmiyor.
+Hayır. Temel kimlik doğrulaması için rastgele bir Kullanıcı adı ve parola belirtme mekanizması şu anda desteklenmiyor.
 
-**S: Azure AD Connect Health çalışmaya aracısı için açmak hangi güvenlik duvarı bağlantı noktaları gerekir?**
+**S: Azure AD Connect Health aracısının çalışması için hangi güvenlik duvarı bağlantı noktalarını açmanız gerekir?**
 
-Bkz: [gereksinimler bölümüne](how-to-connect-health-agent-install.md#requirements) güvenlik duvarı bağlantı noktaları ve diğer bağlantı gereksinimleri listesi için.
+Güvenlik Duvarı bağlantı noktaları ve diğer bağlantı gereksinimlerinin listesi için [gereksinimler bölümüne](how-to-connect-health-agent-install.md#requirements) bakın.
 
-**S: Azure AD Connect Health Portalı'nda aynı ada sahip iki sunucu neden görüyorum?**
+**S: neden Azure AD Connect Health portalında aynı ada sahip iki sunucu görüyorum?**
 
-Bir sunucudan bir aracıyı kaldırdığınızda, sunucunun Azure AD Connect Health Portalı'ndan otomatik olarak kaldırılmaz. El ile bir sunucudan bir aracı kaldırma veya sunucunun kendisini kaldırırsanız, sunucu giriş Azure AD Connect Health portalından el ile silmeniz gerekir.
+Bir aracıyı sunucudan kaldırdığınızda, sunucu Azure AD Connect Health portalından otomatik olarak kaldırılmaz. Bir aracıyı sunucudan el ile kaldırırsanız veya sunucunun kendisini kaldırırsanız, Azure AD Connect Health portalından sunucu girişini el ile silmeniz gerekir.
 
-Bir sunucu görüntüsünü yeniden ya da aynı ayrıntılarını (örneğin, makine adı) ile yeni bir sunucu oluşturun. Azure AD Connect Health Portalı'ndan zaten kayıtlı sunucu kaldırmadı ve aracıyı yeni sunucuda yüklü ise, aynı ada sahip iki girişe görebilirsiniz.
+Bir sunucuyu yeniden yansıedebilir veya aynı ayrıntılarla (makine adı gibi) yeni bir sunucu oluşturabilirsiniz. Azure AD Connect Health portalından zaten kayıtlı olan sunucuyu kaldırmadıysanız ve aracıyı yeni sunucuya yüklediyseniz, aynı ada sahip iki giriş görebilirsiniz.
 
-Bu durumda, daha eski bir sunucuya ait Giriş el ile silin. Bu sunucu için verilerin güncel olması gerekir.
+Bu durumda, eski sunucuya ait girişi el ile silin. Bu sunucunun verileri güncel değil.
 
-## <a name="health-agent-registration-and-data-freshness"></a>Sistem Durumu Aracısı kaydı ve veri yenilik
+## <a name="health-agent-registration-and-data-freshness"></a>Sistem Durumu Aracısı kaydı ve veri yeniliği
 
-**S: Sistem Durumu Aracısı kayıt hatalarının sık karşılaşılan nedenleri nelerdir ve sorunları nasıl giderebilirim?**
+**S: sistem durumu aracısı kayıt hatalarının genel nedenleri nelerdir ve sorunları nasıl giderebilirim?**
 
-Durum Aracısı, olası nedeni şunlar kaydetmek başarısız olabilir:
+Sistem Durumu Aracısı, aşağıdaki olası nedenlerden dolayı kayıt gerçekleştiremeyebilir:
 
-* Trafiği bir güvenlik duvarı tarafından engellendiği için Aracısı gerekli uç noktaları ile iletişim kuramıyor. Bu, özellikle web uygulaması Ara sunucularında yaygındır. Gerekli uç noktaları ve bağlantı noktalarına giden iletişime izin emin olun. Bkz: [gereksinimler bölümüne](how-to-connect-health-agent-install.md#requirements) Ayrıntılar için.
-* Giden iletişimin ağ katmanı tarafından SSL incelemeden bağımlıdır. Bu İnceleme sunucu/varlık tarafından değiştirilmesini aracıyı kullanan sertifika neden olur ve aracı kaydını tamamlamak için gereken adımları başarısız.
-* Kullanıcı aracı kaydını gerçekleştirme erişimine sahip değil. Genel Yöneticiler, varsayılan olarak erişimi vardır. Kullanabileceğiniz [rol tabanlı erişim denetimi](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) diğer kullanıcılara erişim vermek.
+* Bir güvenlik duvarı trafiği engellediği için aracı gerekli uç noktalarla iletişim kuramıyor. Bu özellikle Web uygulaması ara sunucuları üzerinde ortaktır. Gerekli uç noktalara ve bağlantı noktalarına giden iletişimin izin verildiğinden emin olun. Ayrıntılar için [gereksinimler bölümüne](how-to-connect-health-agent-install.md#requirements) bakın.
+* Giden iletişim, Ağ katmanında bir SSL denetimine tabi. Bu, aracının kullandığı sertifikanın İnceleme sunucusu/varlıkla değiştirilmesini ve aracı kaydını tamamlamaya yönelik adımların başarısız olmasına neden olur.
+* Kullanıcının aracının kaydını gerçekleştirme erişimi yok. Genel yöneticilerin varsayılan olarak erişimi vardır. [Rol tabanlı Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) , diğer kullanıcılara erişim vermek için kullanabilirsiniz.
 
-**S: Ben "sistem sağlığı hizmeti verileri güncel değil," uyarı Bu sorunu nasıl giderebilirim?**
+**S: "Sistem Sağlığı Hizmeti veri güncel değil." olarak uyarı alıyorum. Nasıl yaparım? sorun gidermi?**
 
-Azure AD Connect Health, tüm veri noktalarına sunucudan son iki saat içinde almazsa bir uyarı oluşturur. [Daha fazla bilgi edinin](how-to-connect-health-data-freshness.md).
+Azure AD Connect Health, son iki saat içinde sunucudan tüm veri noktalarını almadığında uyarıyı oluşturur. [Daha fazla bilgi edinin](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>İşlem soruları
-**S: Web uygulaması Ara sunucularında denetimi etkinleştirme gerekiyor mu?**
+**S: Web uygulaması ara sunucusu sunucularında denetimi etkinleştirmem gerekir mi?**
 
-Hayır, denetim web uygulaması Ara sunucularında etkinleştirilmesi gerekmez.
+Hayır, denetimin Web uygulaması ara sunucusu 'nda etkinleştirilmesi gerekmez.
 
-**S: Azure AD Connect Health uyarıları nasıl çözümleneceğini?**
+**S: Azure AD Connect Health Uyarıları nasıl çözümlenir?**
 
-Azure AD Connect Health uyarıları bir başarı koşulu temel çözülebilir. Azure AD Connect Health aracılarını algılamak ve başarılı koşullar hizmete düzenli aralıklarla bildirin. Birkaç uyarı gizleme zamana bağlı. Diğer bir deyişle, aynı hata durumu, uyarı oluşturma 72 saat içinde uyulmuyor, uyarı otomatik olarak çözülür.
+Başarılı bir koşulda Azure AD Connect Health uyarılar çözüldü. Azure AD Connect Health aracıları hizmet için başarı koşullarını düzenli aralıklarla algılar ve bildirir. Birkaç uyarı için gizleme zaman tabanlıdır. Diğer bir deyişle, aynı hata durumu uyarı oluşturma işleminden 72 saat içinde gözlemlenmiyorsa, uyarı otomatik olarak çözümlenir.
 
-**S: Ben "Test kimlik doğrulama isteği (yapay işlem) bir belirteç almak başarısız olduğunu." uyarı Bu sorunu nasıl giderebilirim?**
+**S: "test kimlik doğrulama Isteğinin (yapay Işlem) bir belirteci alamaması gerektiğini belirten bir uyarı alıyorum." Nasıl yaparım? sorun gidermi?**
 
-Azure AD Connect Health AD FS için sistem durumu aracısı tarafından başlatılan bir yapay işlem bir parçası olarak bir belirteç almak bir AD FS sunucusunda yüklü Sistem Durumu Aracısı başarısız olduğunda bu uyarı oluşturur. Sistem Durumu Aracısı yerel sistem bağlamı kullanır ve kendi kendine bağlı olan taraf için bir belirteç almaya çalışır. AD FS belirteçleri verme durumunda olduğundan emin olmak için bir genel test budur.
+AD FS için Azure AD Connect Health, bir AD FS sunucuya yüklenen sistem durumu Aracısı, sistem durumu Aracısı tarafından başlatılan yapay bir işlemin parçası olarak bir belirteci edinemediğinde bu uyarıyı oluşturur. Sistem Durumu Aracısı yerel sistem bağlamını kullanır ve kendi kendine bağlı olan taraf için bir belirteç almaya çalışır. Bu, AD FS, bir yakalama belirteçleri durumunda olduğundan emin olmak için bir catch-all sınamadır.
 
-Genellikle AD FS grubu adını çözümlemek sistem durumu aracısı silemiyor çünkü bu test başarısız olur. AD FS sunucuları ağ yük dengeleyicilerini istek (aksine, önündeki yük dengeleyici olan normal bir istemci) yük dengeleyicinin arkasındaki olan düğümün başlatıldığı kullanıyorsanız bu durum ortaya çıkabilir. Bu, "AD FS sunucusunun IP adresini veya AD FS grubu adı (örneğin, sts.contoso.com) için bir geri döngü IP adresi (127.0.0.1) içerecek şekilde C:\Windows\System32\drivers\etc" altında bulunan "ana bilgisayarlar" dosyasını güncelleştirerek düzeltilebilir. Ana bilgisayar dosyası ekleme, böylece belirteci almak sistem durumu aracısı izin vererek ağ çağrısı, kısa devre oluşturur.
+Çoğu zaman bu test başarısız olur çünkü sistem durumu Aracısı AD FS grubu adını çözemiyor. Bu durum, AD FS sunucuları bir ağ yükü dengeleyicileri arkasındaysa ve istek yük dengeleyicinin arkasındaki bir düğümden başlatıldığında (yük dengeleyicinin önünde olan normal bir istemcinin aksine) gerçekleşebilir. Bu, "C:\Windows\System32\drivers\etc" altında bulunan "konaklar" dosyası AD FS sunucusunun IP adresini veya AD FS grubu adı (sts.contoso.com gibi) için bir geri döngü IP adresi (127.0.0.1) içerecek şekilde güncelleştirilerek düzeltilebilir. Ana bilgisayar dosyasının eklenmesi, ağ çağrısını kısa devre dışı kalacak ve bu sayede sistem durumu aracısının belirteci almasını sağlar.
 
-**S: İçin son fidye yazılımı saldırılarında makinelerime yama değil belirten bir e-posta aldım. Bu e-postayı neden aldınız mı?**
+**S: makinelerimin son fidye yazılımı saldırıları için düzeltme eki UYGULAMADıĞıNı belirten bir e-posta aldım. Bu e-postayı neden aldım?**
 
-Azure AD Connect Health hizmeti tüm gerekli düzeltme eklerini emin olmak için izler makinelere yüklenen taranır. En az bir makine kritik düzeltme ekleri yoksa Kiracı yöneticilerine e-posta gönderildi. Aşağıdaki mantık, bunun belirlenmesi için kullanıldı.
-1. Makinede yüklü tüm düzeltmeler bulun.
-2. Düzeltmeleri tanımlı listeden en az biri mevcut olup olmadığını denetleyin.
-3. Yanıt Evet ise, makine korunuyor. Aksi durumda, saldırı risk makinedir.
+Azure AD Connect Health hizmeti, gereken düzeltme eklerinin yüklendiğinden emin olmak için izlediği tüm makineleri taradı. En az bir makine kritik düzeltme eklerine sahip değilse, e-posta Kiracı yöneticilerine gönderilmiştir. Bu belirlenmesi için aşağıdaki mantık kullanılmıştır.
+1. Makinede yüklü olan tüm düzeltmeleri bulun.
+2. Tanımlı listedeki düzeltmelerin en az birinin mevcut olup olmadığını denetleyin.
+3. Yanıt Evet ise, makine korunur. Aksi takdirde, makine saldırıya karşı risk altında olur.
 
-El ile bu denetimi gerçekleştirmek için aşağıdaki PowerShell betiğini kullanabilirsiniz. Yukarıdaki mantığını uygular.
+Bu denetimi el ile gerçekleştirmek için aşağıdaki PowerShell betiğini kullanabilirsiniz. Yukarıdaki mantığı uygular.
 
 ```powershell
 Function CheckForMS17-010 ()
@@ -185,16 +186,16 @@ CheckForMS17-010
 
 ```
 
-**S: PowerShell cmdlet neden mu <i>Get-MsolDirSyncProvisioningError</i> sonuçta daha az eşitleme hatalarını göster?**
+**S: <i>Get-MsolDirSyncProvisioningError</i> PowerShell cmdlet 'i neden sonuçta daha az eşitleme hatası gösteriyor?**
 
-<i>Get-MsolDirSyncProvisioningError</i> yalnızca DirSync hazırlama hataları döndürür. Yanı sıra, Connect Health portalı ayrıca diğer eşitleme dışarı aktarma hataları gibi hata türlerini gösterir. Bu, Azure AD Connect delta sonucu ile tutarlıdır. Daha fazla bilgi edinin [Azure AD Connect Eşitleme hataları](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+<i>Get-MsolDirSyncProvisioningError</i> , yalnızca DirSync sağlama hataları döndürür. Bunun yanı sıra, Connect Health portalı dışarı aktarma hataları gibi diğer eşitleme hata türlerini de gösterir. Bu, Azure AD Connect Delta sonucuyla tutarlıdır. [Azure AD Connect Eşitleme hataları](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)hakkında daha fazla bilgi edinin.
 
-**S: My ADFS neden olduğunu değil oluşturulmasını denetler?**
+**S: ADFS denetimlerim neden üretilmiyor?**
 
-Lütfen PowerShell cmdlet'ini kullanın <i>Get-AdfsProperties - AuditLevel</i> denetim günlüklerini değil de emin olmak için durumu devre dışı. Daha fazla bilgi edinin [AD FS denetim günlüklerini](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). AD FS sunucusuna gönderilen denetim ayarları var. Gelişmiş, auditpol.exe ile herhangi bir değişiklik (uygulama üretilen yapılandırılmamışsa üzerine olay) olacaktır dikkat edin. Bu durumda, lütfen üretilen uygulama hatalarını ve başarı günlüğe kaydetmek için yerel güvenlik ilkesi ayarlayın.
+Denetim günlüklerinin devre dışı durumda olmadığından emin olmak için lütfen <i>Get-AdfsProperties-AuditLevel</i> PowerShell cmdlet 'ini kullanın. [ADFS denetim günlükleri](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)hakkında daha fazla bilgi edinin. ADFS sunucusuna Gelişmiş denetim ayarları itilmesi durumunda, auditpol. exe ile yapılan tüm değişikliklerin üzerine yazılır (Eğer uygulama oluşturulmadıkça olay). Bu durumda, uygulama tarafından üretilen hataların ve başarısını günlüğe kaydetmek için lütfen yerel güvenlik ilkesini ayarlayın.
 
-**S: Aracı sertifikası, otomatik yenilenen önce sona erme ne zaman sunulacaktır?**
-Aracı sertifika otomatik olarak yenilenmesi **6 ay** , sona erme tarihinden önce. Lütfen yenilenmezse, kararlı Aracısı'nın ağ bağlantısı olduğundan emin olun. Aracı hizmetleri yeniden başlatın veya en son sürüme güncelleştirme de sorunu çözebilir.
+**S: Aracı sertifikası, süresi dolmadan önce otomatik olarak yenilenir mi?**
+Aracı sertifikası, sona erme tarihinden itibaren otomatik olarak **6 ay** yenilenir. Yenilenmezse, lütfen aracının ağ bağlantısının kararlı olduğundan emin olun. Aracı hizmetlerini yeniden başlatın veya en son sürüme güncelleştirme de sorunu çözebilir.
 
 
 ## <a name="related-links"></a>İlgili bağlantılar

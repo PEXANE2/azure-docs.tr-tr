@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl çoğaltması
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Çoğaltmaları yönetmek için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f6ad0b4c08ac8d710340fe654a068d0a3804e58f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646050"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905815"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Hizmet bölümlerine ait çoğaltmaları yönetin.
@@ -24,7 +24,7 @@ Hizmet bölümlerine ait çoğaltmaları yönetin.
 | sağlık | Service Fabric durum bilgisi olan bir hizmet çoğaltmasının veya durum bilgisi olmayan hizmet örneğinin sistem durumunu alır. |
 | info | Service Fabric bölümün bir yinelemesi hakkındaki bilgileri alır. |
 | list | Service Fabric hizmet bölümünün çoğaltmaları hakkındaki bilgileri alır. |
-| kaldırma | Düğüm üzerinde çalışan bir hizmet çoğaltmasını kaldırır. |
+| temizlenmesine | Düğüm üzerinde çalışan bir hizmet çoğaltmasını kaldırır. |
 | report-health | Service Fabric çoğaltmasında bir sistem durumu raporu gönderir. |
 | restart | Bir düğümde çalışan kalıcı bir hizmetin hizmet çoğaltmasını yeniden başlatır. |
 

@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl düğümü
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Küme düğümlerini yönetmek için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645302"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905886"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Bir küme oluşturan düğümleri yönetin.
@@ -19,17 +19,44 @@ Bir küme oluşturan düğümleri yönetin.
 
 |Komut|Açıklama|
 | --- | --- |
-| veya etkinleşir | Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. |
-| seçin | Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin. |
+| Add-Configuration-Parameter-geçersiz kılmalar | Belirtilen düğümdeki yapılandırma geçersiz kılma listesini ekler. |
+| dıı | Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın. |
+| etkinleştirebilir | Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin. |
+| Get-Configuration-geçersiz kılmalar | Belirtilen düğümdeki yapılandırma geçersiz kılmalarının listesini alır. |
 | sağlık | Service Fabric düğümünün sistem durumunu alır. |
 | info | Service Fabric kümesindeki belirli bir düğüm hakkındaki bilgileri alır. |
 | list | Service Fabric kümesindeki düğümlerin listesini alır. |
 | yükleme | Service Fabric düğümünün yükleme bilgilerini alır. |
+| Remove-Configuration-geçersiz kılmalar | Belirtilen düğümdeki yapılandırma geçersiz kılmalarını kaldırır. |
 | durumu Kaldır | Bir düğümdeki kalıcı durumun kalıcı olarak kaldırıldığını veya kaybediltiğini Service Fabric bildirir. |
 | report-health | Service Fabric düğümünde bir sistem durumu raporu gönderir. |
 | restart | Service Fabric küme düğümünü yeniden başlatır. |
 | geçiş | Bir küme düğümünü başlatır veya sonlandırır. |
 | geçiş-durum | StartNodeTransition kullanılarak başlatılan bir işlemin ilerleme durumunu alır. |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl düğüm ekleme-yapılandırma-parametresi-geçersiz kılmalar
+Belirtilen düğümdeki yapılandırma geçersiz kılma listesini ekler.
+
+Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının eklenmesine izin verir.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --config-Parameter-override-List [gerekli] | Yapılandırma geçersiz kılma listesi ekleme açıklaması. |
+| --Node-Name [gerekli] | Düğümün adı. |
+| --zorla | Belirtilen düğümlerde yapılandırma geçersiz kılmalarını eklemeyi zorla. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-node-disable"></a>sfctl düğümü devre dışı
 Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına göre devre dışı bırakın.
@@ -58,6 +85,28 @@ Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına g�
 Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirin.
 
 Şu anda devre dışı bırakılmış bir Service Fabric küme düğümünü etkinleştirir. Etkinleştirildikten sonra, düğüm yeni çoğaltmaları yerleştirmek için uygun bir hedef olur ve düğümde kalan devre dışı bırakılmış çoğaltmalar yeniden etkinleştirilir.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Node-Name [gerekli] | Düğümün adı. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl düğümü Get-Configuration-geçersiz kılmalar
+Belirtilen düğümdeki yapılandırma geçersiz kılmalarının listesini alır.
+
+Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının alınmasını sağlar.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
@@ -167,10 +216,32 @@ Yük veya kapasite tanımlı tüm ölçümler için bir Service Fabric düğüm�
 | --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl düğüm kaldırma-yapılandırma-geçersiz kılmalar
+Belirtilen düğümdeki yapılandırma geçersiz kılmalarını kaldırır.
+
+Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmalarının kaldırılmasına izin verir.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Node-Name [gerekli] | Düğümün adı. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
 ## <a name="sfctl-node-remove-state"></a>sfctl düğüm kaldırma-durum
 Bir düğümdeki kalıcı durumun kalıcı olarak kaldırıldığını veya kaybediltiğini Service Fabric bildirir.
 
-Bu, düğümün kalıcı durumunu kurtarmanın mümkün olmadığı anlamına gelir. Bu genellikle bir sabit diskin temizlenmesi veya bir sabit diskin kilitlenmesi durumunda meydana gelir. Bu işlemin başarılı olması için düğüm aşağı doğru olmalıdır. Bu işlem, bu düğümdeki çoğaltmaların artık mevcut olmadığını ve bu çoğaltmaların geri dönmesi için Service Fabric durması gerektiğini Service Fabric sağlar. Düğümdeki durum kaldırılmadığı ve düğüm durumu bozulmadan geri dönebileceği takdirde bu cmdlet 'i çalıştırmayın. Service Fabric 6,5 ' den başlayarak çekirdek düğümleri için bu API 'yi kullanmak üzere, çekirdek düğümleri normal (çekirdek olmayan) düğümlere değiştirip düğüm durumunu kaldırmak için bu API 'yi çağırın. Küme Azure 'da çalışıyorsa, çekirdek düğüm kapatıldıktan sonra, Service Fabric otomatik olarak çekirdek olmayan bir düğümle değiştirmeye çalışacaktır. Bunu yapmak için, birincil düğüm türündeki çekirdek olmayan düğümlerin sayısının aşağı çekirdek düğümlerin sayısından küçük olmadığından emin olun. Gerekirse, bunu elde etmek için birincil düğüm türüne daha fazla düğüm ekleyin. Tek başına kümede, aşağı çekirdek düğümünün durumunun bozulmadan geri gelmesi beklenmiyorsa, lütfen düğümü kümeden kaldırın, bkz. https\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+Bu, düğümün kalıcı durumunu kurtarmanın mümkün olmadığı anlamına gelir. Bu genellikle bir sabit diskin temizlenmesi veya bir sabit diskin kilitlenmesi durumunda meydana gelir. Bu işlemin başarılı olması için düğüm aşağı doğru olmalıdır. Bu işlem, bu düğümdeki çoğaltmaların artık mevcut olmadığını ve bu çoğaltmaların geri dönmesi için Service Fabric durması gerektiğini Service Fabric sağlar. Düğümdeki durum kaldırılmadığı ve düğüm durumu bozulmadan geri dönebileceği takdirde bu cmdlet 'i çalıştırmayın. Service Fabric 6,5 ' den başlayarak çekirdek düğümleri için bu API 'yi kullanmak üzere, çekirdek düğümleri normal (çekirdek olmayan) düğümlere değiştirip düğüm durumunu kaldırmak için bu API 'yi çağırın. Küme Azure 'da çalışıyorsa, çekirdek düğüm kapatıldıktan sonra, Service Fabric otomatik olarak çekirdek olmayan bir düğümle değiştirmeye çalışacaktır. Bunu yapmak için, birincil düğüm türündeki çekirdek olmayan düğümlerin sayısının aşağı çekirdek düğümlerin sayısından küçük olmadığından emin olun. Gerekirse, bunu elde etmek için birincil düğüm türüne daha fazla düğüm ekleyin. Tek başına kümede, aşağı çekirdek düğümünün durumunun bozulmadan geri gelmesi beklenmiyorsa, lütfen düğümü kümeden kaldırın, bkz. https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
@@ -207,7 +278,7 @@ Belirtilen Service Fabric düğümünün sistem durumunu raporlar. Rapor, sistem
 | ----süre sonu | Raporun süresi dolmuşsa sistem durumu deposundan kaldırılıp kaldırılmadığını belirten değer. <br><br> True olarak ayarlanırsa, rapor süresi dolduktan sonra sistem durumu deposundan kaldırılır. False olarak ayarlanırsa rapor, süre dolduğunda hata olarak değerlendirilir. Bu özelliğin değeri varsayılan olarak false 'tur. İstemciler düzenli olarak rapor edildiğinde Removewhenererererfalse (varsayılan) olarak ayarlanmalıdır. Bu şekilde, Raporlayıcı sorunları (örn. kilitlenme) ve raporleyemiyorum, sistem durumu raporunun süresi dolarsa varlık hata olarak değerlendirilir. Bu, varlığı hata sağlık durumunda olduğu şekilde işaretler. |
 | --sıra-sayısı | Bu sistem durumu raporunun sayısal bir dize olarak sıra numarası. <br><br> Rapor sıra numarası, eski raporları algılamak için sistem durumu deposu tarafından kullanılır. Belirtilmemişse, bir rapor eklendiğinde sistem durumu istemcisi tarafından otomatik olarak bir sıra numarası oluşturulur. |
 | --timeout-t | Varsayılan\: 60. |
-| --TTL | Bu sistem durumu raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ıSO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak raporladığında, en yüksek sıklıkta raporlar göndermelidir. İstemciler geçişe rapor alıyorsa, zaman sonsuz ' a kadar canlı bir süre ayarlayabilir. Yaşam süresi dolduğunda, sistem durumu bilgilerini içeren sistem durumu olayı sistem durumu deposundan kaldırılır, Removewhenexpires true ise ya da Removewhenexpires false olduğunda hata durumunda değerlendirilir. Belirtilmemişse, yaşam süresi varsayılan olarak sonsuz değer olur. |
+| --TTL | Bu sistem durumu raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ıSO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak raporladığında, en yüksek sıklıkta raporlar göndermelidir. İstemciler geçişe rapor alıyorsa, süresi sonsuz olarak ayarlayabilir. Yaşam süresi dolduğunda, sistem durumu bilgilerini içeren sistem durumu olayı sistem durumu deposundan kaldırılır, Removewhenexpires true ise ya da Removewhenexpires false olduğunda hata durumunda değerlendirilir. Belirtilmemişse, yaşam süresi varsayılan olarak sonsuz değer olur. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 

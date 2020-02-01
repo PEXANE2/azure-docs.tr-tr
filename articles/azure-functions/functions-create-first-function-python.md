@@ -4,18 +4,18 @@ description: Azure Işlevleri 'ni kullanarak sunucusuz Python kodunu oluşturun 
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845499"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898571"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Hızlı başlangıç: Azure 'da HTTP tarafından tetiklenen bir Python işlevi oluşturma
 
 Bu makalede, HTTP isteklerine yanıt veren bir Python işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
-Bu makalenin [Visual Studio Code tabanlı bir sürümü](/azure/python/tutorial-vs-code-serverless-python-01) de vardır.
+Bu makalenin [Visual Studio Code tabanlı bir sürümü](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) de vardır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

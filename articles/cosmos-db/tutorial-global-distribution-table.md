@@ -6,14 +6,14 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 148e17edbb8be566db611216f444fedad514e638
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76770602"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900188"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Tablo API’sini kullanarak Azure Cosmos DB genel dağıtımını ayarlama
 
@@ -28,19 +28,17 @@ Bu makale aşağıdaki görevleri kapsar:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Tablo API’sini kullanarak tercih edilen bir bölgeye bağlanma
 
-[Genel dağıtımdan](distribute-data-globally.md) yararlanmak için istemci uygulamaları, belge işlemlerini gerçekleştirmek için kullanılacak bölgelerin tercihe göre sıralanmış listesini belirtebilir. [TableConnectionPolicy.PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet) özelliği ayarlanarak bu yapılabilir. Azure Cosmos DB Tablo API’si SDK’sı, hesap yapılandırmasına, geçerli bölgesel kullanılabilirliğe ve sağlanan tercih listesine göre iletişim kurmak için en iyi uç noktayı seçer.
+[Genel dağıtımın](distribute-data-globally.md)avantajlarından yararlanabilmek için, istemci uygulamaları uygulamasının çalıştığı geçerli konumu belirtmelidir. Bu, `CosmosExecutorConfiguration.CurrentRegion` özelliği ayarlanarak yapılır. `CurrentRegion` özelliği tek bir konum içermelidir. Her istemci örneği, düşük gecikmeli okumalar için kendi bölgelerini belirtebilir. Bölgenin, "Batı ABD" gibi [görünen adları](https://msdn.microsoft.com/library/azure/gg441293.aspx) kullanılarak adlandırılması gerekir. 
 
-PreferredLocations, okuma için tercih edilen (çok girişli) konumların virgülle ayrılmış listesini içermelidir. Her istemci düşük gecikme okumaları için tercih edilen sırayla bu bölgelerin bir alt kümesini belirtebilir. Bölgeler [görünen adları](https://msdn.microsoft.com/library/azure/gg441293.aspx) kullanılarak adlandırılmalıdır, örneğin `West US`.
+Azure Cosmos DB Tablo API'si SDK 'Sı, hesap yapılandırmasına ve geçerli bölgesel kullanılabilirliğe göre iletişim kurmak için en iyi uç noktayı otomatik olarak seçer. İstemcilere daha iyi gecikme sağlamak için en yakın bölgeyi önceliklendirir. Geçerli `CurrentRegion` özelliğini ayarladıktan sonra, okuma ve yazma istekleri aşağıdaki gibi yönlendirilir:
 
-Tüm okuma işlemleri, PreferredLocations listesindeki ilk kullanılabilir bölgeye gönderilir. İstek başarısız olursa, istemci listedeki sonraki bölgeyi dener ve bu şekilde devam eder.
+* **Okuma istekleri:** Tüm okuma istekleri yapılandırılan `CurrentRegion`gönderilir. Yakınlık temelinde, SDK otomatik olarak yüksek kullanılabilirlik için bir geri dönüş coğrafi çoğaltılan bölge seçer.
 
-SDK, PreferredLocations listesinde belirtilen bölgelerden okuma işlemi yapmaya çalışır. Bu nedenle, örneğin, Veritabanı Hesabı dört bölgede kullanılabiliyorsa ancak istemci, PreferredLocations için yalnızca iki yazma bölgesi belirtiyorsa, yük devretme durumunda bile yazma bölgesinden okuma işlemi yapılmaz.
+* **Yazma istekleri:** SDK, tüm yazma isteklerini otomatik olarak geçerli yazma bölgesine gönderir. Birden çok ana hesapta, geçerli bölge yazma isteklerini de görecektir. Yakınlık temelinde, SDK otomatik olarak yüksek kullanılabilirlik için bir geri dönüş coğrafi çoğaltılan bölge seçer.
 
-SDK, tüm yazma işlemlerini otomatik olarak geçerli yazma bölgesine gönderir.
+`CurrentRegion` özelliğini belirtmezseniz, SDK tüm işlemler için geçerli yazma bölgesini kullanır.
 
-PreferredLocations özelliği ayarlanmazsa, tüm istekler geçerli yazma bölgesinden işlenir.
-
-Hepsi bu kadar. Böylece bu öğretici tamamlanmış olur. [Azure Cosmos DB’deki tutarlılık düzeyleri](consistency-levels.md) bölümünü okuyarak genel olarak çoğaltılan hesabınızın tutarlılığının nasıl yönetileceğini öğrenebilirsiniz. Ayrıca genel veritabanı çoğaltmasının Azure Cosmos DB’de nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Cosmos DB ile verileri genel olarak dağıtma](distribute-data-globally.md).
+Örneğin, bir Azure Cosmos hesabı "Batı ABD" ve "Doğu ABD" bölgelerinde yer alıyorsa. "Batı ABD" yazma bölgesidir ve uygulama "Doğu ABD" içinde mevcutsa. CurrentRegion özelliği yapılandırılmamışsa, tüm okuma ve yazma istekleri her zaman "Batı ABD" bölgesine yönlendirilir. CurrentRegion özelliği yapılandırılmışsa, tüm okuma istekleri "Doğu ABD" bölgesinden sunulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771572"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902692"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Logic Apps için özel durum işleme ve hata günlüğü
 
@@ -122,7 +122,7 @@ Hasta kaydının kaynağını (istek) Dynamics CRM Online portalından günlüğ
 
 Aşağıdaki mantıksal uygulama kodu örneği, günlüğün nasıl işleneceğini gösterir.
 
-#### <a name="log-entry"></a>Günlük girişi
+#### <a name="log-entry"></a>günlük girdisi
 
 Günlük girdisi eklemek için mantıksal uygulama kaynak kodu aşağıda verilmiştir.
 
@@ -481,5 +481,5 @@ Logic Apps özel durum yönetim API 'SI uygulamasının kaynak kodu bu [GitHub d
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Daha fazla Logic App örneği ve senaryosu görüntüleyin](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Mantıksal uygulamaları izleme hakkında bilgi edinin](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Mantıksal Uygulamaları izleme](../logic-apps/monitor-logic-apps.md)
 * [Mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

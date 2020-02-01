@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973424"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909130"
 ---
 ### <a name="portal"></a>Portal
 
@@ -77,6 +77,7 @@ Disk şifreleme kümeleri oluşturup yapılandırmak için şu bağlantıyı kul
 Anahtar Kasanızı ve disk şifreleme kümesini oluşturup ayarladığınıza göre, şifrelemeyi kullanarak bir VM dağıtabilirsiniz.
 VM dağıtım işlemi standart dağıtım işlemine benzer, tek fark, VM 'yi diğer kaynaklarınızla aynı bölgeye dağıtmanız ve müşteri tarafından yönetilen anahtar kullanmayı tercih etmeniz gerekir.
 
+1. [Disk şifreleme kümeleri bağlantısını](https://aka.ms/diskencryptionsets)açın.
 1. **Sanal makineleri** arayın ve **+ Ekle** ' yi seçerek bir VM oluşturun.
 1. **Temel** sekmede, disk şifreleme kümesi ve Azure Key Vault aynı bölgeyi seçin.
 1. **Temel** sekmedeki diğer değerleri istediğiniz şekilde girin.
@@ -96,6 +97,7 @@ Mevcut disklerinizde disk şifrelemesini yönetmek ve yapılandırmak için şu 
 > [!CAUTION]
 > Bir VM 'ye bağlı herhangi bir diskte disk şifrelemeyi etkinleştirmek, VM 'yi durdurmanız gerekir.
 
+1. [Disk şifreleme kümeleri bağlantısını](https://aka.ms/diskencryptionsets)açın.
 1. Disk şifreleme kümelerinizin biriyle aynı bölgedeki bir VM 'ye gidin.
 1. VM 'yi açın ve **Durdur**' u seçin.
 

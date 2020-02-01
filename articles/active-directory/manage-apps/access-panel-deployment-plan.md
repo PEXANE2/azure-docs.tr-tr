@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512860"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897066"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory Access panel dağıtımı planlayın
 
@@ -37,7 +37,7 @@ Azure AD erişim panelini kullanarak şunları yapabilirsiniz:
 Ayrıca yöneticilerin yönetmesine izin verir:
 
 * Hizmet koşulları
-* Kuruluşlar
+* Ları
 * Erişim incelemeleri
 
 
@@ -89,10 +89,10 @@ Aşağıdaki tabloda, bir erişim paneli dağıtımı için anahtar kullanım du
 | İdare| Azure AD bağlantılı uygulamalar ve gruplar için Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | Güvenlik| Kaynaklara erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. Yalnızca yetkili kullanıcılar, kaynak erişimini yönetebilir. |
 | Performans| Erişim atama yayma zaman çizelgeleri belgelenmiştir ve izlenir. |
-| Kullanıcı Deneyimi| Kullanıcılar, erişim paneli özelliklerini ve bunların nasıl kullanılacağını algılar.|
-| Kullanıcı Deneyimi| Kullanıcılar, uygulamalarına ve gruplarına erişimleri yönetebilir.|
-| Kullanıcı Deneyimi| Kullanıcılar hesaplarını yönetebilir. |
-| Kullanıcı Deneyimi| Kullanıcılar tarayıcı uyumluluğuna duyarlı. |
+| Kullanıcı deneyimi| Kullanıcılar, erişim paneli özelliklerini ve bunların nasıl kullanılacağını algılar.|
+| Kullanıcı deneyimi| Kullanıcılar, uygulamalarına ve gruplarına erişimleri yönetebilir.|
+| Kullanıcı deneyimi| Kullanıcılar hesaplarını yönetebilir. |
+| Kullanıcı deneyimi| Kullanıcılar tarayıcı uyumluluğuna duyarlı. |
 | Destek| Kullanıcılar, erişim paneli sorunları için destek bulabilir. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Azure AD erişim paneli 'Ni dağıtmaya yönelik en iyi uygulamalar
@@ -149,7 +149,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory bir uygulamaya son kullanıc
 
 Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bunu yapılır. Bu sınırları önlemek için, doğru proje katılımcıları ile ilgileniyorsanız ve projedeki paydaş rollerinin iyi anlaşıldığından [emin olun](../fundamentals/active-directory-deployment-plans.md) .
 
-### <a name="plan-communications"></a>İletişimi planlama
+### <a name="plan-communications"></a>İletişimleri planlayın
 
 İletişim, her yeni hizmetin başarısı için önemlidir. Kullanıcılarınıza deneyiminizin nasıl ve ne zaman değiştirileceğini ve gerektiğinde nasıl destek kazanabileceğini önceden bilgilendirirsiniz.
 
@@ -227,9 +227,9 @@ Uygulamalarım başlatıcısı için uygulama ekleyeceğinize ilişkin sırayı 
 
 Tüm Azure AD SSO özellikli uygulamaları My Apps Launcher öğesine eklenebilir. Diğer uygulamalar, bağlantılı SSO seçeneği kullanılarak eklenir. Mevcut Web uygulamanızın URL 'sine bağlanan bir uygulama kutucuğu yapılandırabilirsiniz. Bağlantılı SSO, tüm uygulamaları Azure AD SSO 'ya geçirmeden kullanıcıları uygulama portalına yönlendirmeye başlayabilmeniz için izin verir. Kullanıcıların deneyimini kesintiye uğratmadan, Azure AD SSO ile yapılandırılmış uygulamalara giderek geçebilirsiniz.
 
-#### <a name="use-my-apps-workspaces-preview"></a>Uygulamalarım çalışma alanlarını kullanın (Önizleme)
+#### <a name="use-my-apps-collections"></a>Uygulama koleksiyonlarımı kullan
 
-Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak, ilgili uygulamaları gruplamak ve bunları ayrı bir sekmede sunmak, daha kolay bulunmalarını sağlamak için çalışma alanlarını kullanabilirsiniz. Örneğin, belirli iş rolleri, görevler, projeler vb. için mantıksal uygulama gruplandırmaları oluşturmak üzere çalışma alanlarını kullanabilirsiniz. Bilgi için bkz. [Kullanıcı erişimi panellerini (Önizleme) özelleştirmek Için uygulamalarımı kullanma çalışma alanları](access-panel-workspaces.md). 
+Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak, koleksiyonları kullanarak ilgili uygulamaları gruplandırabilir ve bunları ayrı bir sekmede sunabilir, daha kolay bulunmalarını sağlayabilirsiniz. Örneğin, koleksiyonları, belirli iş rolleri, görevler, projeler vb. için mantıksal uygulama gruplandırmaları oluşturmak üzere kullanabilirsiniz. Bilgi için bkz. [Kullanıcı erişimi panellerini özelleştirmek Için uygulama koleksiyonlarımı kullanma](access-panel-collections.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Uygulamalarımı mı yoksa mevcut bir portalı mı kullanacağınızı planlayın
 
@@ -264,7 +264,7 @@ Azure AD, [Teknik ve iş öngörüleri sunan raporlar](https://azure.microsoft.c
 |   | Riski yönetin| Üretkenliği artırın| İdare ve uyum |
 |  - |- | - | - |
 | Rapor türleri|  Uygulama izinleri ve kullanımı| Hesap sağlama etkinliği| Uygulamalara kimlerin eriştiğini gözden geçirme |
-| Olası eylemler| Denetim erişimi; izinleri iptal et| Sağlama hatalarını düzelt| seçeneğine tıklayın, |
+| Olası eylemler| Denetim erişimi; izinleri iptal et| Sağlama hatalarını düzelt| Erişimi iptal et |
 
 Azure AD, en çok denetim verilerini 30 gün boyunca tutar. Veriler, çözümleme sistemlerinize indirmeniz için Azure yönetim portalı veya API aracılığıyla kullanılabilir.
 
@@ -340,7 +340,7 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 | - | -| -|
 | Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
+| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
 | İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 

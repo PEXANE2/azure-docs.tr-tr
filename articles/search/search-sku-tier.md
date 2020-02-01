@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427027"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899835"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -21,15 +21,20 @@ Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, hizmet ömrü boyunca düz
 
 Çoğu müşteri, hizmeti değerlendirebilmeleri için ücretsiz katmanla başlar. Değerlendirme sonrası, geliştirme ve üretim dağıtımları için daha yüksek katmanlardan birinde ikinci bir hizmet oluşturmak yaygındır.
 
-Ücretsiz katmanı da dahil olmak üzere tüm katmanların, genellikle özellik eşliği sunan, daha büyük iş yükleri daha yüksek katmanlar gereksinimini ortadan yabilse de. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
+## <a name="feature-availability-by-tier"></a>Katmana göre özellik kullanılabilirliği
 
-> [!NOTE] 
-> Özellik eşliği için özel durum, S3 HD 'de kullanılamayan [Dizin oluşturuculardır](search-indexer-overview.md).
->
+Neredeyse her özellik ücretsiz dahil olmak üzere her katmanda kullanılabilir, ancak yeterli kapasiteye sahip değilseniz kaynak kullanımı yoğun bir özellik veya iş akışı iyi çalışmayabilir. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
 
-## <a name="available-tiers"></a>Kullanılabilir katmanlar
+Aşağıdaki tabloda katman ile ilgili özellik kısıtlamaları açıklanmaktadır.
 
-Katmanlar, hizmeti barındıran donanımın özelliklerini yansıtır (özellikler yerine) ve farklılaştırılabilir:
+| Özellik | Sınırlamalar |
+|---------|-------------|
+| [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz. |
+| [Müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) | Ücretsiz katmanda kullanılamaz. |
+
+## <a name="tiers-skus"></a>Katmanlar (SKU 'Lar)
+
+Katmanlar şu şekilde farklılaştırılabilir:
 
 + Oluşturabileceğiniz dizin ve dizin oluşturucularının miktarı
 + Bölümlerin boyutu ve hızı (fiziksel depolama)
@@ -80,7 +85,7 @@ Hizmetler farklı bölgelerde olduğunda, giden veriler için ücretler uygulan�
 |-----------|----------------|
 | Belge çözme, metin ayıklama | Ücretsiz |
 | Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|
-| [Yerleşik bilişsel yetenekler](cognitive-search-predefined-skills.md) | Bilişsel hizmetler 'i doğrudan kullanarak görevi gerçekleştirdiyseniz aynı hızda faturalandırılır. |
+| [Yerleşik bilişsel beceriler](cognitive-search-predefined-skills.md) | Bilişsel hizmetler 'i doğrudan kullanarak görevi gerçekleştirdiyseniz aynı hızda faturalandırılır. |
 | Özel beceriler | Özel bir beceri sağladığınız işlevsellikdir. Özel bir beceri kullanmanın maliyeti, tamamen özel kodun diğer ölçülen Hizmetleri çağırarak çağrılmayacağı konusunda farklılık gösterir. |
 
 <a name="search-units"></a>
@@ -97,9 +102,9 @@ Fatura ücreti SU başına saatlik olarak belirlenir. Her katmanda aşamalı ola
 
 Çoğu müşteri, kalanı ayrılmış olarak tutarak toplam kapasitenin yalnızca bir kısmını çevrimiçi duruma getirir. Faturalandırma için, çevrimiçi duruma getirdiğiniz bölüm ve çoğaltmaların sayısı, SU formülü tarafından hesaplandığınız, saatlik olarak ne ödediklerinizi belirler.
 
-## <a name="how-to-manage-and-reduce-costs"></a>Maliyetleri yönetme ve azaltma
+## <a name="how-to-manage-costs"></a>Maliyetleri yönetme
 
-Aşağıdaki önerilere ek olarak [faturalandırma ve maliyet yönetimi](https://docs.microsoft.com/azure/billing/billing-getting-started)' ni ziyaret edin.
+Aşağıdaki öneriler, maliyetleri en düşük düzeyde tutmanıza yardımcı olabilir:
 
 - Bant genişliği ücretlerini en aza indirmek veya ortadan kaldırmak için, aynı bölgedeki veya mümkün olduğunca az sayıda bölgede tüm kaynakları oluşturun.
 
@@ -109,7 +114,11 @@ Aşağıdaki önerilere ek olarak [faturalandırma ve maliyet yönetimi](https:/
 
 - Dizin oluşturma gibi yoğun kaynak gerektiren işlemlere göre ölçeklendirin ve normal sorgu iş yükleri için hemen aşağı doğru. Azure Bilişsel Arama için en düşük yapılandırma (bir bölümden ve bir çoğaltmayla bir SU) ile başlayın ve ardından daha fazla kapasiteye ihtiyacı olan kullanım düzenlerini belirlemek için Kullanıcı etkinliğini izleyin. Tahmin edilebilir bir model varsa, ölçeklendirmeyi etkinlikle eşitlenebilir (Bunu otomatikleştirmek için kod yazmanız gerekir).
 
-Faturanızı azaltmak için bir arama hizmetini kapatamaz. Adanmış kaynaklar her zaman çalışır ve hizmetinizin kullanım ömrü boyunca özel kullanım için ayrılır. Hizmetin kendisi açısından, faturanızı düşürmenin tek yolu, çoğaltmaları ve bölümleri, kabul edilebilir performans ve [SLA uyumluluğu](https://azure.microsoft.com/support/legal/sla/search/v1_0/)sağlayan bir düzeye düşürmeniz veya daha düşük bir katmanda bir hizmet oluşturmanız (S1 saatlik fiyatlar S2 veya S3 oranlarından daha düşüktür). Hizmetinizi yük projeksiyonlarınızın alt ucunda sağladığınızda, hizmeti büyüyerek ikinci bir daha büyük katmanlı hizmet oluşturabilir, dizinlerinizi ikinci hizmette yeniden oluşturabilir ve sonra birincisini silebilirsiniz.
+Ayrıca, harcama ile ilgili yerleşik araçlar ve özellikler için [faturalandırma ve maliyet yönetimi](https://docs.microsoft.com/azure/billing/billing-getting-started) ' ni ziyaret edin.
+
+Arama hizmetini geçici olarak kapatmak mümkün değildir. Adanmış kaynaklar her zaman çalışır ve hizmetinizin kullanım ömrü boyunca özel kullanım için ayrılır. Bir hizmetin silinmesi kalıcıdır ve ayrıca ilişkili verileri de silinir.
+
+Hizmetin kendisi açısından, faturanızı düşürmenin tek yolu, çoğaltmaları ve bölümleri, kabul edilebilir performans ve [SLA uyumluluğu](https://azure.microsoft.com/support/legal/sla/search/v1_0/)sağlayan bir düzeye düşürmeniz veya daha düşük bir katmanda bir hizmet oluşturmanız (S1 saatlik fiyatlar S2 veya S3 oranlarından daha düşüktür). Hizmetinizi yük projeksiyonlarınızın alt ucunda sağladığınızda, hizmeti büyüyerek ikinci bir daha büyük katmanlı hizmet oluşturabilir, dizinlerinizi ikinci hizmette yeniden oluşturabilir ve sonra birincisini silebilirsiniz.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>Kapasite gereksinimlerini değerlendirme
 

@@ -1,21 +1,21 @@
 ---
-title: Azure portal ayarlarını dışarı veya silme | Microsoft Docs
+title: Azure portal ayarlarını dışarı veya silme
 description: Azure portal Kullanıcı ayarlarınızı, Özel panoları ve özel ayarları nasıl dışarı aktarıp silebileceğinizi öğrenin.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.date: 04/08/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640185"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900772"
 ---
 # <a name="export-or-delete-user-settings"></a>Kullanıcı ayarlarını dışarı aktarma veya silme
 
@@ -32,28 +32,26 @@ Ayarlarınızı silmeden önce dışa ve gözden geçirmek iyi bir fikirdir. Pan
 ## <a name="export-or-delete-your-portal-settings"></a>Portal ayarlarınızı dışarı veya silme
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Portalın üst bilgisinde **Ayarlar**' ı seçin.
 
-    ![Portal ayarlarını dişli olarak gösteren ekran görüntüsü](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+1. Portalın üst bilgisinde ![ayarlar simgesi](media/azure-portal-export-delete-settings/settings-icon.png) **Ayarlar**' ı seçin.
 
-3. **Tüm ayarları dışarı aktar** veya **tüm ayarları ve özel panoları Sil '** i seçin.
+1. **Tüm ayarları dışarı aktar** veya **tüm ayarları ve özel panoları Sil '** i seçin.
 
-    ![Portalın dışarı ve silme ayarlarını gösteren ekran görüntüsü](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Azure portal ayarları ve ayarları seçenekleri](media/azure-portal-export-delete-settings/azure-portal-settings-with-export-delete.png)
 
       Aşağıdaki tabloda bu eylemler açıklanmaktadır.
 
       | Eylem | Açıklama |
       | --- | --- |
-      | **Tüm ayarları dışarı aktar** | Renk teması, Sık Kullanılanlar ve özel panolarınız gibi kullanıcı ayarlarınızı içeren bir. JSON dosyası oluşturur.|
+      | **Tüm ayarları dışarı aktar** | Renk teması, Sık Kullanılanlar ve özel panolarınız gibi kullanıcı ayarlarınızı içeren bir *. JSON* dosyası oluşturur.|
       | **Tüm ayarları ve özel panoları silme** | Özel panolar ve portalda yaptığınız diğer özel ayarlar için tüm bağlantıları siler. |
 
 > [!NOTE]
-> Kullanıcı ayarlarının dinamik doğası ve veri bozulması riski nedeniyle,. json dosyasından ayarları içeri aktaramazsınız.
+> Kullanıcı ayarlarının dinamik doğası ve veri bozulması riski nedeniyle, *. JSON* dosyasından ayarları içeri aktaramazsınız.
 >
 >
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure panoları oluşturma ve paylaşma](azure-portal-dashboard-share-access.md)
-* [Sık kullanılanları ekleme, kaldırma ve sıralama](azure-portal-add-remove-sort-favorites.md)
+* [Rol tabanlı Access Control kullanarak Azure panoları paylaşma](azure-portal-dashboard-share-access.md)
+* [Sık kullanılanları ekleme, kaldırma ve yeniden düzenleme](azure-portal-add-remove-sort-favorites.md)

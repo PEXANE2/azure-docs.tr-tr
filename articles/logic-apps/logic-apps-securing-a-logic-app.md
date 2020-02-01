@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843557"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898438"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -324,7 +324,7 @@ Bu verileri güvenli hale getirmek için bu ayarları kullandığınızda [göz 
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>Girişleri ve çıkışları gizleme konuları
 
-* Bir tetikleyici veya eylemde girişlerin veya çıkışların güvenliğini uyguladığınızda Logic Apps, güvenli verileri Azure Log Analytics 'a göndermez. Ayrıca, izleme için bu tetikleyiciye veya eyleme [izlenen Özellikler](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) ekleyemezsiniz.
+* Bir tetikleyici veya eylemde girişlerin veya çıkışların güvenliğini uyguladığınızda Logic Apps, güvenli verileri Azure Log Analytics 'a göndermez. Ayrıca, izleme için bu tetikleyiciye veya eyleme [izlenen Özellikler](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) ekleyemezsiniz.
 
 * [İş akışı geçmişini işlemek için Logic Apps API 'si](https://docs.microsoft.com/rest/api/logic/) güvenli çıktılar döndürmez.
 
@@ -806,7 +806,7 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Logic Apps için dağıtımı otomatikleştirin](logic-apps-azure-resource-manager-templates-overview.md)  
-* [Mantıksal uygulamalarınızı izleyin](logic-apps-monitor-your-logic-apps.md)  
-* [Mantıksal uygulama başarısızlıklarını ve sorunlarını tanılama](logic-apps-diagnosing-failures.md)  
-* [Mantıksal uygulama dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [Mantıksal Uygulamaları izleme](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [Mantıksal uygulama başarısızlıklarını ve sorunlarını tanılama](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [Mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

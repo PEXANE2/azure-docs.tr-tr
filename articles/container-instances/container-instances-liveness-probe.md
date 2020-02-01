@@ -3,12 +3,12 @@ title: Kapsayıcı örneği üzerinde lizleştirme araştırması ayarlama
 description: Azure Container Instances ' de uygun olmayan kapsayıcıları yeniden başlatmak için Lida araştırmaların nasıl yapılandırılacağını öğrenin
 ms.topic: article
 ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481680"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901900"
 ---
 # <a name="configure-liveness-probes"></a>Canlılık yoklaması yapılandırma
 
@@ -17,6 +17,9 @@ Kapsayıcılı uygulamalar uzun süre çalışabilir, bu da kapsayıcıyı yenid
 Bu makalede, sanal sağlıksız bir kapsayıcının otomatik olarak yeniden başlatılmasını gösteren, limize Me araştırması içeren bir kapsayıcı grubunun nasıl dağıtılacağı açıklanır.
 
 Azure Container Instances Ayrıca, trafiğin yalnızca kendisine hazır olduğu zaman bir kapsayıcıya ulaşmasını sağlamak için yapılandırabileceğiniz [hazırlık araştırmalarını](container-instances-readiness-probe.md)destekler.
+
+> [!NOTE]
+> Şu anda bir sanal ağa dağıtılan bir kapsayıcı grubunda bir lizleştirme araştırması kullanamazsınız.
 
 ## <a name="yaml-deployment"></a>YAML dağıtımı
 

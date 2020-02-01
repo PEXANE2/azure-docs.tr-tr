@@ -4,16 +4,16 @@ description: AzCopy 'i yapılandırın, iyileştirin ve sorun giderin.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371403"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905265"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -21,7 +21,7 @@ AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceği
 
 > [!NOTE]
 > AzCopy kullanmaya başlamanıza yardımcı olacak içerik arıyorsanız, aşağıdaki makalelerden birine bakın:
-> - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
+> - [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
 > - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 > - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 > - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
@@ -41,6 +41,14 @@ AzCopy proxy ayarlarını yapılandırmak için `https_proxy` ortam değişkenin
 ## <a name="optimize-performance"></a>Performansı iyileştirme
 
 Performans ve kaynak tüketimine ilişkin en iyi zorunluluğunu getirir bulmak için, performansı ve ardından komut ve ortam değişkenlerini kullanabilirsiniz.
+
+Bu bölüm, bu iyileştirme görevlerini gerçekleştirmenize yardımcı olur:
+
+> [!div class="checklist"]
+> * Kıyaslama testlerini Çalıştır
+> * Aktarım hızını iyileştirme
+> * Bellek kullanımını iyileştirme 
+> * Dosya eşitlemesini iyileştirme
 
 ### <a name="run-benchmark-tests"></a>Kıyaslama testlerini Çalıştır
 
@@ -97,6 +105,14 @@ Bu değeri gigabayt (GB) cinsinden ifade edin.
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>Dosya eşitlemesini iyileştirme
+
+[Eşitleme](storage-ref-azcopy-sync.md) komutu hedefteki tüm dosyaları tanımlar ve ardından eşitleme işlemine başlamadan önce dosya adlarını ve son değiştirilme zaman damgalarını karşılaştırır. Çok sayıda dosya varsa, bu ön işlemden yararlanarak performansı artırabilirsiniz. 
+
+Bunu gerçekleştirmek için, bunun yerine [AzCopy Copy](storage-ref-azcopy-copy.md) komutunu kullanın ve `--overwrite` bayrağını `ifSourceNewer`olarak ayarlayın. AzCopy, dosyaları, ön tarama ve karşılaştırmalar yapılmadan kopyalandıkları gibi karşılaştıracaktır. Bu, Karşılaştırılacak çok sayıda dosya olduğu durumlarda bir performans kenarı sağlar.
+
+[AzCopy Copy](storage-ref-azcopy-copy.md) komutu, hedefteki dosyaları silmez, bu nedenle hedefteki dosyaları artık mevcut olmadığında silmek istiyorsanız, `--delete-destination` bayrağı `true` veya `prompt`değerine ayarlanmış şekilde [AzCopy Sync](storage-ref-azcopy-sync.md) komutunu kullanın. 
 
 ## <a name="troubleshoot-issues"></a>Sorunları giderme
 

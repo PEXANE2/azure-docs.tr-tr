@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/24/2019
-ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/29/2020
+ms.openlocfilehash: d43b580f60f5ae8d2782cf9762b02aa1360e5a40
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513635"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901210"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics aracısıyla günlük verilerini toplama
 
@@ -89,9 +89,9 @@ Aşağıdaki tabloda, aracının yükleneceği desteklenen Linux destekleri içi
 |-----------------|------------|----------------|
 |GLIBC |    GNU C Kitaplığı | 2.5-12 
 |Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |
-|Curl | Web istemcisini kıvır | 7.15.5 |
+|Kıvr | Web istemcisini kıvır | 7.15.5 |
 |Python-ctypes | | 
-|PAM | Eklenebilir Kimlik Doğrulaması Modülleri | | 
+|KULLANıCıSı | Takılabilir kimlik doğrulama modülleri | | 
 
 >[!NOTE]
 >Syslog iletilerini toplamak için rsyslog veya Syslog-ng gerekir. Red Hat Enterprise Linux, CentOS ve Oracle Linux sürümü (sysklog) 5 sürümünde varsayılan syslog daemon'u syslog olay toplaması için desteklenmiyor. Bu dağıtımların bu sürümünden Syslog verileri toplamak için rsyslog arka plan programı yüklenmeli ve sysklog ' ı değiştirecek şekilde yapılandırılmalıdır.
@@ -106,6 +106,7 @@ Aşağıdaki bilgiler, Linux ve Windows aracısının Azure Izleyici günlükler
 
 |Aracı Kaynağı|Bağlantı Noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
+|OMS *. Azure. com |Bağlantı noktası 443 |Giden |Evet |
 |*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
 |*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
 |*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |  

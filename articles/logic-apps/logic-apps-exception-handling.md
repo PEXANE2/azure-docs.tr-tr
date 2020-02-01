@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965947"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906689"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps hataları ve özel durumları işleme
 
@@ -76,7 +76,7 @@ Ya da yeniden deneme ilkelerini destekleyen bir eylem veya tetikleyici için `in
 | <*retry-attempts*> | Tamsayı | 1 ile 90 arasında olması gereken yeniden deneme girişimi sayısı |
 ||||
 
-*İsteğe bağlı*
+*Seçim*
 
 | Değer | Tür | Açıklama |
 |-------|------|-------------|
@@ -360,9 +360,9 @@ Başvuru için, bir önceki örnekte ayrıştırılmış `name`, `body`ve `clien
 
 Farklı özel durum işleme desenleri gerçekleştirmek için, bu makalede daha önce açıklanan ifadeleri kullanabilirsiniz. Filtrelenmiş tüm hata dizisini kabul eden kapsam dışında tek bir özel durum işleme eylemini çalıştırmayı ve `For_each` eylemini kaldırmayı tercih edebilirsiniz. Daha önce açıklandığı gibi `\@result()` yanıtından diğer yararlı özellikleri de ekleyebilirsiniz.
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure Tanılama ve ölçümler
+## <a name="set-up-azure-monitor-logs"></a>Azure Izleyici günlüklerini ayarlama
 
-Önceki desenler, bir çalıştırma içindeki hataları ve özel durumları işlemek için harika bir yoldur, ancak aynı zamanda çalıştırmanın kendisinden bağımsız olarak hataları tanımlayabilir ve bunlara yanıt verebilirsiniz. [Azure tanılama](../logic-apps/logic-apps-monitor-your-logic-apps.md) , tüm çalıştırma ve eylem durumları dahil olmak üzere tüm iş akışı olaylarını bir Azure depolama hesabına veya [Azure Event Hubs](../event-hubs/event-hubs-about.md)oluşturulmuş bir olay hub 'ına göndermek için basit bir yol sağlar.
+Önceki desenler, bir çalıştırma içindeki hataları ve özel durumları işlemek için harika bir yoldur, ancak aynı zamanda çalıştırmanın kendisinden bağımsız olarak hataları tanımlayabilir ve bunlara yanıt verebilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , tüm çalıştırma ve eylem durumları dahil olmak üzere tüm iş akışı olaylarını bir [Log Analytics çalışma alanına](../azure-monitor/platform/data-platform-logs.md), [azure depolama hesabına](../storage/blobs/storage-blobs-overview.md)veya [Azure Event Hubs](../event-hubs/event-hubs-about.md)göndermek için basit bir yol sağlar.
 
 Çalıştırma durumlarını değerlendirmek için günlükleri ve ölçümleri izleyebilir ya da istediğiniz izleme aracında yayımlayabilirsiniz. Olası bir seçenek, tüm olayların [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)Event Hubs aracılığıyla akışını sağlar. Stream Analytics, tanılama günlüklerinden tüm bozukluklar, ortalamalar veya hatalara göre canlı sorgular yazabilirsiniz. Stream Analytics, kuyruklar, konular, SQL, Azure Cosmos DB veya Power BI gibi diğer veri kaynaklarına bilgi göndermek için kullanabilirsiniz.
 

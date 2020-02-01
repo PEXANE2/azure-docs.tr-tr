@@ -4,16 +4,16 @@ description: Otomatik dağıtımlar, paylaşılan etiketlere göre cihaz gruplar
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/12/2019
+ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406830add1891a058e9b43fccb8435aa4d339ed0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548688"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895972"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>IOT Edge otomatik dağıtımlar tek tek cihazlarda veya uygun ölçekte anlama
 
@@ -61,7 +61,7 @@ Hedef koşul, dağıtımın kullanım ömrü boyunca sürekli olarak değerlendi
 
 Örneğin, hedef koşul etiketleriyle bir dağıtımınız vardır. ortam = ' prod '. Dağıtımı devre dışı yaslanıp, 10 üretim cihaz bulunur. Modüller, bu 10 cihazları başarıyla yüklenir. IoT Edge Aracısı durumu 10 toplam cihaz, 10 başarılı yanıt, 0 hata yanıtı ve 0 bekleyen yanıt gösterir. Şimdi tags.environment ile beş daha fazla cihaz Ekle 'prod' =. Hizmet değişikliği algılar ve IoT Edge Aracı durumu 15 toplam cihaz, 10 başarılı yanıt, 0 hata yanıtı ve beş yeni cihaza dağıtırken 5 bekleyen yanıt olur.
 
-Herhangi bir Boolean koşul, hedef cihazları seçmek için cihaz ikizlerini etiketleri veya DeviceID kullanın. Etiketleri koşul kullanmak istiyorsanız, "tags" eklemeniz gerekir:{} cihaz ikizi özelliklerini aynı düzeyde altında bölümünde. [Cihaz ikizindeki etiket hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
+Hedef cihazları seçmek için Device ikizi etiketlerindeki herhangi bir Boole koşulunu, Device ikizi bildirilen özellikleri veya DeviceID 'yi kullanın. Etiketleri koşul kullanmak istiyorsanız, "tags" eklemeniz gerekir:{} cihaz ikizi özelliklerini aynı düzeyde altında bölümünde. [Cihaz ikizindeki etiket hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Hedef koşulları örnekleri:
 
@@ -70,10 +70,11 @@ Hedef koşulları örnekleri:
 * Tags.Environment = 'prod' AND tags.location = 'westus'
 * Tags.Environment = 'prod' veya tags.location = 'westus'
 * Tags.operator 'John' = ve tags.environment = 'prod' değil DeviceID = 'linuxprod1'
+* Properties. bildirilen. devicemodel = ' 4000x '
 
-Hedef koşul oluştururken bazı kısıtlar şunlardır:
+Bir hedef koşul oluştururken bu kısıtlamaları göz önünde bulundurun:
 
-* Cihaz ikizinde etiketleri veya DeviceID kullanarak bir hedef koşulu yalnızca oluşturabilirsiniz.
+* Device ikizi 'da, yalnızca etiketleri, bildirilen özellikleri veya DeviceID 'yi kullanarak bir hedef koşul oluşturabilirsiniz.
 * Çift tırnak işareti, herhangi bir bölümünü hedef koşulu izin verilmez. Tek tırnak işareti kullanın.
 * Tek tırnak, hedef koşulu değerlerini temsil eder. Bu nedenle, cihaz adı bir parçası ise tek tırnak işareti ile başka bir tek tırnak işareti kaçış gerekir. Örneğin, bir cihazı hedeflemeniz adlı `operator'sDevice`, yazma `deviceId='operator''sDevice'`.
 * Sayı, harf ve şu karakterleri hedef koşulu değerlerde izin verilir: `-:.+%_#*?!(),=@;$`.
@@ -92,8 +93,8 @@ Varsayılan olarak, tüm dağıtımlar dört ölçüm üzerinde rapor alır:
 
 * **Hedeflenen** , dağıtım hedefleme durumuyla eşleşen IoT Edge cihazları gösterir.
 * **Uygulanan** , daha yüksek öncelikli bir dağıtım tarafından hedeflenilmemiş hedeflenen IoT Edge cihazları gösterir.
-* **Raporlama başarısı** , yeniden hizmet olarak bildirilen ve modüllerin başarıyla dağıtıldığını bildiren IoT Edge cihazları gösterir.
-* **Raporlama hatası** , bir veya daha fazla modülün başarıyla dağıtılmadığını hizmete geri rapor veren IoT Edge cihazları gösterir. Daha fazla hata araştırmak, bu cihazlar için uzaktan bağlanma ve günlük dosyalarını görüntülemek için.
+* **Raporlama başarısı** , modüllerin başarıyla dağıtıldığını bildiren IoT Edge cihazları gösterir.
+* **Raporlama hatası** , bir veya daha fazla modülün başarıyla dağıtılmadığını bildiren IoT Edge cihazları gösterir. Daha fazla hata araştırmak, bu cihazlar için uzaktan bağlanma ve günlük dosyalarını görüntülemek için.
 
 Ayrıca, dağıtımı izlemeye ve yönetmeye yardımcı olması için kendi özel ölçümlerinizi de tanımlayabilirsiniz.
 
@@ -112,7 +113,7 @@ Katmanlı dağıtımlar, oluşturulması gereken benzersiz dağıtım sayısın�
 
 Katmanlı dağıtımlar, herhangi bir otomatik dağıtımla aynı temel bileşenlere sahiptir. Cihazları, cihaz ikklerindeki etiketlere göre hedefleyin ve Etiketler, ölçümler ve durum raporlama etrafında aynı işlevleri sağlar. Katmanlı dağıtımlar da bunlara atanmış öncelikler vardır, ancak bir cihaza hangi dağıtımın uygulanacağını belirleyen önceliği kullanmak yerine, bir cihaza birden çok dağıtımın nasıl derecelendirilir olduğunu belirler. Örneğin, iki katmanlı dağıtımda aynı ada sahip bir modül veya bir yol varsa, düşük önceliğin üzerine yazıldığında, yüksek önceliğe sahip katmanlı dağıtım uygulanır.
 
-Sistem çalışma zamanı modülleri, edgeAgent ve edgeHub, katmanlı dağıtımın bir parçası olarak yapılandırılmamıştır. Katmanlı bir dağıtım tarafından hedeflenen tüm IoT Edge cihazlara, önce katmanlı dağıtımların eklenebileceği temeli sağlamak üzere standart bir Otomatik dağıtıma uygulanmış olması gerekir.
+Sistem çalışma zamanı modülleri, edgeAgent ve edgeHub, katmanlı dağıtımın bir parçası olarak yapılandırılmamıştır. Katmanlı bir dağıtım tarafından hedeflenen tüm IoT Edge cihazlara, önce standart bir Otomatik dağıtıma uygulanmış olması gerekir. Otomatik dağıtım, katmanlı dağıtımların eklenebileceği temeli sağlar.
 
 IoT Edge bir cihaz yalnızca bir standart otomatik dağıtım uygulayabilir, ancak birden çok katmanlı otomatik dağıtımlar uygulayabilir. Bir cihazın hedeflediği katmanlı dağıtımlar, bu cihaz için otomatik dağıtımdan daha yüksek önceliğe sahip olmalıdır.
 
@@ -141,7 +142,7 @@ Dağıtım bildiriminde Module ikizi istenen özellikleri ekleyebilirsiniz. Stan
 }
 ```
 
-Aynı cihazları veya aynı cihazların bir alt kümesini hedefleyen katmanlı bir dağıtımda, sanal algılayıcının 1000 ileti göndermesini ve sonra durdurmasını belirten ek bir özellik eklemek isteyebilirsiniz. Var olan özelliklerin üzerine yazmak istemezsiniz, bu nedenle, istenen özellikler içinde yeni özelliği içeren `layeredProperties`adlı yeni bir bölüm oluşturursunuz:
+Aynı cihazların bazılarını veya tümünü hedefleyen katmanlı bir dağıtımda, sanal algılayıcının 1000 ileti göndermesini ve sonra durdurmasını söyleyen bir özellik ekleyebilirsiniz. Var olan özelliklerin üzerine yazmak istemezsiniz, bu nedenle, istenen özellikler içinde yeni özelliği içeren `layeredProperties`adlı yeni bir bölüm oluşturursunuz:
 
 ```json
 "SimulatedTemperatureSensor": {

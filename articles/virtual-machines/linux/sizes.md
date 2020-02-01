@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 5e10c0905237f3cc28dd0ac113dfaf844e781bac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c16ff8fed19340811578ccb39cbac7242b7c5861
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646668"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905750"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için Boyutlar
 Bu makalede, Linux uygulamalarınızı ve iş yüklerinizi çalıştırmak için kullanabileceğiniz Azure sanal makineleri için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Bu makale [Windows sanal makineleri](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için de kullanılabilir.
@@ -67,7 +67,7 @@ Kullanılabilir farklı VM boyutları hakkında daha fazla bilgi edinin:
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
-- Standart, Dv1 (D1-4 ve D11-14 v1) ve A8-A11 serisi için [önceki nesil](sizes-previous-gen.md) sayfayı denetleyin
+- Temel ve standart, yüksek performanslı A8-A11, D/DSv1 (D1-4 ve D11-14 v1), F/Fsv1, G/GS, Lsv1 ve NVv2 serisi için [önceki nesil](sizes-previous-gen.md) sayfayı kontrol edin.
 
 
 

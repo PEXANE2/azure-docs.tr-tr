@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026153"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900286"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -152,3 +152,15 @@ Nadir olarak bir görev, işlem düğümündeki hatalar nedeniyle, görev çalı
 ### <a name="security-isolation"></a>Güvenlik yalıtımı
 
 Yalıtım amaçları doğrultusunda, senaryonuzun işlerin yalıtılması gerekiyorsa, bu işleri ayrı havuzlarda bulundurarak yalıtabilirsiniz. Havuz, toplu Işteki güvenlik yalıtımı sınırıdır ve varsayılan olarak, iki havuz görünür değildir veya birbirleriyle iletişim kuramaz. Yalıtım yöntemi olarak ayrı Batch hesapları kullanmaktan kaçının.
+
+## <a name="moving"></a>Taşınacağı
+
+### <a name="move-batch-account-across-regions"></a>Batch hesabını bölgeler arasında taşıma 
+
+Mevcut Batch hesabınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, olağanüstü durum kurtarma planlamasının bir parçası olarak başka bir bölgeye geçmek isteyebilirsiniz.
+
+Azure Batch hesaplar bir bölgeden diğerine taşınamaz. Ancak, Batch hesabınızın mevcut yapılandırmasını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, Batch hesabını bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz. Şablonu yeni bölgeye yükledikten sonra sertifikaların, iş zamanlamalarının ve uygulama paketlerinin yeniden oluşturulması gerekir. Değişiklikleri uygulamak ve Batch hesabını taşımayı tamamlamak için, özgün Batch hesabını veya kaynak grubunu silmeyi unutmayın.  
+
+Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+
+

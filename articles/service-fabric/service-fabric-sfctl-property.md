@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLı-sfctl özelliği
-description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. , Storying ve sorgulama özelliklerine yönelik komutların bir listesini içerir.
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Özellikleri depolamak ve sorgulamak için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639114"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905821"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric adları altında mağaza ve sorgu özellikleri.
@@ -22,7 +22,7 @@ Service Fabric adları altında mağaza ve sorgu özellikleri.
 | delete | Belirtilen Service Fabric özelliğini siler. |
 | Al | Belirtilen Service Fabric özelliğini alır. |
 | list | Verilen bir ad altındaki tüm Service Fabric özellikleriyle ilgili bilgileri alır. |
-| put | Service Fabric özelliği oluşturur veya güncelleştirir. |
+| konur | Service Fabric özelliği oluşturur veya güncelleştirir. |
 
 ## <a name="sfctl-property-delete"></a>sfctl özelliği silme
 Belirtilen Service Fabric özelliğini siler.
@@ -105,7 +105,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini oluşturur veya g
 | --- | --- |
 | --ad-kimliği [gerekli] | ' Fabric\:' URI düzeni olmadan Service Fabric adı. |
 | --Özellik-adı [gerekli] | Service Fabric özelliğinin adı. |
-| --değer [gerekli] | Service Fabric özellik değerini açıklar. Bu bir JSON dizesidir. <br><br> JSON dizesinde iki alan, verilerin ' Kind ' ve verilerin ' Value ' değeri bulunur. ' Kind ' değeri, JSON dizesinde görüntülenecek ilk öğe olmalıdır ve ' binary ', ' Int64 ', ' Double ', ' String ' veya ' Guid ' değerleri olabilir. Değer, verilen türlere serileştirilmelidir. Hem ' Kind ' hem de ' Data ' değerleri dize olarak sağlanmalıdır. |
+| --değer [gerekli] | Service Fabric özellik değerini açıklar. Bu bir JSON dizesidir. <br><br> JSON dizesinde iki alan, verilerin ' Kind ' değeri ve değerin ' Data ' olarak girilen değeri. ' Kind ' değeri, JSON dizesinde görüntülenecek ilk öğe olmalıdır ve ' binary ', ' Int64 ', ' Double ', ' String ' veya ' Guid ' değerleri olabilir. Değer, verilen türlere serileştirilmelidir. Hem ' Kind ' hem de ' Data ' değerleri dize olarak sağlanmalıdır. |
 | --Özel kimliği-tür | Özelliğin özel tür KIMLIĞI. Bu özelliği kullanarak, Kullanıcı özelliğin değerinin türünü etiketleyebilir. |
 | --timeout-t | Varsayılan\: 60. |
 

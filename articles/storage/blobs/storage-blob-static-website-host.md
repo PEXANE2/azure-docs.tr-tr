@@ -1,107 +1,107 @@
 ---
-title: 'Öğretici: blob depolamada statik bir Web sitesi barındırma-Azure depolama'
-description: Statik Web sitesi barındırma için bir depolama hesabı yapılandırmayı ve Azure depolama 'ya statik bir Web sitesi dağıtmayı öğrenin.
+title: 'Öğretici: Blob storage - Azure depolama üzerinde statik Web sitesi barındırma'
+description: Statik Web sitesi barındırmak için bir depolama hesabı yapılandırma hakkında bilgi edinin ve Azure depolama için statik bir Web sitesi dağıtın.
 author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757563"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906621"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Öğretici: blob depolamada statik bir Web sitesi barındırma
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Öğretici: Blob Depolama üzerinde statik Web sitesi barındırma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu makalede, Azure depolama 'ya statik bir Web sitesi oluşturma ve dağıtma hakkında bilgi edineceksiniz. İşiniz bittiğinde, kullanıcıların herkese açık bir şekilde erişebileceği statik bir Web siteniz olur. 
+Bu öğreticide, Azure depolama 'ya statik bir Web sitesi derleyip dağıtmayı öğreneceksiniz. İşlemi tamamladığınızda, kullanıcıların herkese açık şekilde erişebileceği statik bir Web sitesi olacaktır. 
 
-Serinin birinci bölümünde şunları öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Statik Web sitesi barındırmayı yapılandırma
-> * Merhaba Dünya web sitesi dağıtma
+> * Statik Web sitesi barındırma yapılandırın
+> * Hello World Web sitesi dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
 > Genel amaçlı v2 depolama hesabı oluşturduğunuzdan emin olun. Statik Web siteleri diğer depolama hesabı türleri için kullanılamaz.
 
-Bu öğretici, bir programcılar için ücretsiz bir araç olan [Visual Studio Code](https://code.visualstudio.com/download)kullanır ve statik Web sitesini oluşturup bir Azure depolama hesabına dağıtabilir.
+Bu öğreticide [Visual Studio Code](https://code.visualstudio.com/download), statik Web sitesi oluşturma ve bir Azure depolama hesabına dağıtma programcıları için ücretsiz bir araç.
 
-Visual Studio Code yükledikten sonra Azure depolama önizleme uzantısını yükleyebilirsiniz. Bu uzantı, Visual Studio Code ile Azure depolama yönetim işlevlerini tümleştirir. Bu uzantıyı kullanarak, statik Web sitenizi Azure depolama 'ya dağıtabilirsiniz. Uzantıyı yüklemek için:
+Visual Studio Code'u yükledikten sonra Azure depolama Önizleme uzantıyı yükleyin. Bu uzantı Visual Studio Code ile Azure depolama yönetim işlevini tümleştirir. Uzantı, Azure Depolama'ya statik Web sitenizi dağıtmak için kullanır. Uzantıyı yüklemek için:
 
 1. Visual Studio Code'u başlatın.
-2. Araç çubuğunda **Uzantılar**' a tıklayın. *Azure Storage*' ı arayın ve listeden **Azure Storage** uzantısı ' nı seçin. Ardından, uzantıyı yüklemek için **Install** düğmesine tıklayın.
+2. Araç çubuğunda **uzantıları**. Arama *Azure depolama*seçip **Azure depolama** listeden uzantısı. Ardından **yükleme** uzantıyı yüklemek için düğme.
 
-    ![Azure Storage uzantısını VS Code ' de yüklemesi](media/storage-blob-static-website-host/install-extension-vs-code.png)
+    ![VS Code'da Azure depolama uzantıyı yükleme](media/storage-blob-static-website-host/install-extension-vs-code.png)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-Başlamak için [Azure Portal](https://portal.azure.com/) oturum açın.
+Oturum [Azure portalında](https://portal.azure.com/) kullanmaya başlamak için.
 
-## <a name="configure-static-website-hosting"></a>Statik Web sitesi barındırmayı yapılandırma
+## <a name="configure-static-website-hosting"></a>Statik Web sitesi barındırma yapılandırın
 
-İlk adım, depolama hesabınızı Azure portal statik bir Web sitesi barındıracak şekilde yapılandırmaktır. Hesabınızı statik Web sitesi barındırma için yapılandırdığınızda, Azure Storage otomatik olarak *$Web*adlı bir kapsayıcı oluşturur. *$Web* kapsayıcı, statik Web siteniz için dosyaları içerecektir. 
+İlk adım, Azure portalında statik bir Web sitesi barındırmak için depolama hesabınızın yapılandırmaktır. Azure depolama hesabınızı statik Web site barındırması için yapılandırdığınızda, otomatik olarak adlı bir kapsayıcı oluşturur. *$web*. *$Web* kapsayıcı statik Web siteniz için dosyaları içerir. 
 
-1. [Azure Portal](https://portal.azure.com/) Web tarayıcınızda açın. 
-1. Depolama hesabınızı bulun ve hesaba genel bakış ' ı görüntüleyin.
-1. Statik Web siteleri için yapılandırma sayfasını göstermek üzere **statik Web sitesi** ' ni seçin.
-1. Depolama hesabı için statik Web sitesi barındırmayı etkinleştirmek üzere **etkin** ' i seçin.
-1. **Dizin belgesi adı** alanında *index. html*' nin varsayılan dizin sayfasını belirtin. Varsayılan dizin sayfası, bir Kullanıcı statik Web sitenizin köküne gittiğinde görüntülenir.  
-1. **Hata belgesi yolu** alanında, *404. html*' nin varsayılan hata sayfasını belirtin. Varsayılan hata sayfası, bir Kullanıcı statik Web sitenizde mevcut olmayan bir sayfaya gitmeye çalıştığında görüntülenir.
-1. **Kaydet** düğmesine tıklayın. Azure portal artık statik Web sitesi uç noktanızı görüntülüyor. 
+1. Açık [Azure portalında](https://portal.azure.com/) web tarayıcınızda. 
+1. Depolama hesabınızı bulun ve hesabına genel bakış görüntüler.
+1. Seçin **statik Web sitesi** statik Web siteleri için yapılandırma sayfasını görüntüleyin.
+1. Seçin **etkin** depolama hesabı için statik Web sitesi barındırma olanağı.
+1. İçinde **dizin belgesi adı** alan, bir varsayılan dizin sayfasını belirtmek *index.html*. Bir kullanıcı, statik Web sitesi köküne gittiğinde varsayılan dizin sayfası görüntülenir.  
+1. İçinde **hata belgesi yolu** alanında, varsayılan hata sayfasının belirtin *404. html*. Statik Web sitenize var olmayan bir sayfaya gitmek bir kullanıcı çalıştığında varsayılan hata sayfası görüntülenir.
+1. **Save (Kaydet)** düğmesine tıklayın. Azure portalında statik Web sitesi uç noktanızı artık görüntüler. 
 
-    ![Depolama hesabı için statik Web sitesi barındırmayı etkinleştirme](media/storage-blob-static-website-host/enable-static-website-hosting.png)
+    ![Bir depolama hesabı için statik Web sitesi barındırma etkinleştir](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-## <a name="deploy-a-hello-world-website"></a>Merhaba Dünya web sitesi dağıtma
+## <a name="deploy-a-hello-world-website"></a>Hello World Web sitesi dağıtma
 
-Sonra, Visual Studio Code sahip bir Merhaba Dünya Web sayfası oluşturun ve Azure depolama hesabınızda barındırılan statik Web sitesine dağıtın.
+Ardından, Visual Studio Code ile bir Hello World web sayfası oluşturabilir ve barındırılan Azure depolama hesabınızdaki statik Web sitesi dağıtın.
 
-1. Yerel dosya sisteminizde *mywebsite* adlı boş bir klasör oluşturun. 
-1. Visual Studio Code başlatın ve **Gezgin** panelinden yeni oluşturduğunuz klasörü açın.
+1. Adlı bir boş klasör oluşturun *numaralı* yerel dosya sisteminize. 
+1. Visual Studio Code'u başlatın ve yeni oluşturduğunuz gelen klasörü açın **Gezgini** paneli.
 
-    ![Klasörü Visual Studio Code açın](media/storage-blob-static-website-host/open-folder-vs-code.png)
+    ![Visual Studio code'da klasörü aç](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
-1. *Mywebsite* klasöründe varsayılan dizin dosyasını oluşturun ve *index. html*olarak adlandırın.
+1. Varsayılan dizin dosyasını içinde oluşturmak *numaralı* klasörünü adlandırın *index.html*.
 
-    ![Visual Studio Code varsayılan dizin dosyasını oluşturun](media/storage-blob-static-website-host/create-index-file-vs-code.png)
+    ![Visual Studio Code'da varsayılan dizin dosyası oluşturma](media/storage-blob-static-website-host/create-index-file-vs-code.png)
 
-1. Düzenleyicide *index. html* dosyasını açın, dosyaya aşağıdaki metni yapıştırın ve kaydedin:
+1. Açık *index.html* düzenleyicisinde, aşağıdaki metni dosyaya yapıştırın ve kaydedin:
 
     ```
     <h1>Hello World!</h1>
     ```
 
-1. Varsayılan hata dosyasını oluşturun ve *404. html*olarak adlandırın.
+1. Varsayılan hata dosyasını oluşturun ve adlandırın *404. html*.
 1. Düzenleyicide *404. html* dosyasını açın, aşağıdaki metni dosyaya yapıştırın ve kaydedin:
 
     ```
     <h1>404</h1>
     ```
 
-1. **Gezgin** panelinde *mywebsite* klasörü altına sağ tıklayın ve Web sitenizi dağıtmak Için **statik Web sitesine dağıt...** seçeneğini belirleyin. Aboneliklerin listesini almak için Azure 'da oturum açmanız istenir.
+1. Altındaki sağ *numaralı* klasöründe **Gezgini** paneli ve seçin **statik Web sitesi Dağıt...**  Web sitenizi dağıtın. Aboneliklerin listesini almak için Azure'da oturum açarken istenir.
 
-1. Statik Web sitesi barındırmayı etkinleştirdiğiniz depolama hesabını içeren aboneliği seçin. Sonra, istendiğinde depolama hesabını seçin.
+1. Statik Web sitesi barındırma etkinleştirdiğiniz depolama hesabını içeren aboneliği seçin. Ardından, istendiğinde depolama hesabını seçin.
 
-Visual Studio Code artık dosyalarınızı Web uç noktanıza yükleyecek ve başarı durum çubuğunu gösterecektir. Azure 'da görüntülemek için Web sitesini başlatın.
+Visual Studio Code şimdi web uç noktanıza dosyalarınızı karşıya yükleyin ve başarı durum çubuğunu göster. Azure'da görüntülemek için Web sitesini başlatın.
 
-![Azure 'da statik Web sitesi dağıtımını görüntüleme](media/storage-blob-static-website-host/view-static-website-endpoint.png)
+![Azure'da statik Web sitesi dağıtımı görüntüle](media/storage-blob-static-website-host/view-static-website-endpoint.png)
 
-Eğitmeni başarıyla tamamladınız ve Azure 'a bir statik Web sitesi dağıttınız.
+Başarıyla öğreticisini tamamladığınıza ve statik bir Web sitesi Azure'a dağıtılan.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticinin bir parçası olarak, Azure depolama hesabınızı statik Web sitesi barındırma için nasıl yapılandıracağınızı ve statik bir Web sitesini bir Azure uç noktasına nasıl oluşturup dağıtacağınızı öğrendiniz.
+Bu öğreticide, statik Web sitesi barındırma için Azure depolama hesabınızı yapılandırmayı ve bir Azure uç noktasına statik bir Web sitesi oluşturmayı ve dağıtmayı öğrendiniz.
 
-Bundan sonra, Azure CDN ile statik Web siteniz için SSL ile özel bir etki alanı yapılandırdığınız ikinci bölüm ile ilerletin.
+Ardından, statik Web siteniz ile özel bir etki alanı yapılandırmayı öğrenin.
 
 > [!div class="nextstepaction"]
-> [Statik bir Web sitesi için SSL ile özel etki alanını etkinleştirmek üzere Azure CDN kullanma](storage-blob-static-website-custom-domain.md)
+> [Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)

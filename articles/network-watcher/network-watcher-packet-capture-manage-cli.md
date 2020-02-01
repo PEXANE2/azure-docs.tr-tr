@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f83fb2377f2db1deaed453131a61e26677b3d87d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840870"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896391"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
@@ -52,7 +52,7 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 
 ### <a name="step-1"></a>Adım 1
 
-Paket yakalama aracısını Konuk sanal makinesine yüklemek için `az vm extension set` cmdlet 'ini çalıştırın.
+Paket yakalama aracısını Konuk sanal makinesine yüklemek için `az vm extension set` komutunu çalıştırın.
 
 Windows sanal makineleri için:
 
@@ -63,15 +63,21 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 Linux sanal makineleri için:
 
 ```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>Adım 2
 
-Aracının yüklü olduğundan emin olmak için `vm extension show` cmdlet 'ini çalıştırın ve kaynak grubuna ve sanal makine adına geçirin. Aracının yüklü olduğundan emin olmak için sonuç listesini denetleyin.
+Aracının yüklü olduğundan emin olmak için, `vm extension show` komutunu çalıştırın ve kaynak grubuna ve sanal makine adına geçirin. Aracının yüklü olduğundan emin olmak için sonuç listesini denetleyin.
 
+Windows sanal makineleri için:
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+```
+
+Linux sanal makineleri için:
+```azurecli
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
 Aşağıdaki örnek, `az vm extension show` çalıştırmanın yanıt örneğidir
@@ -100,31 +106,24 @@ Aşağıdaki örnek, `az vm extension show` çalıştırmanın yanıt örneğidi
 
 Yukarıdaki adımlar tamamlandıktan sonra, paket yakalama Aracısı sanal makineye yüklenir.
 
+
 ### <a name="step-1"></a>Adım 1
-
-Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. Ağ izleyicisinin adı 4. adımdaki `az network watcher show` cmdlet 'ine geçirilir.
-
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
-```
-
-### <a name="step-2"></a>Adım 2
 
 Bir depolama hesabı alın. Bu depolama hesabı, paket yakalama dosyasını depolamak için kullanılır.
 
 ```azurecli
-azure storage account list
+az storage account list
 ```
 
-### <a name="step-3"></a>Adım 3
+### <a name="step-2"></a>Adım 2
 
-Filtreler, paket yakalama tarafından depolanan verileri sınırlamak için kullanılabilir. Aşağıdaki örnek, birkaç filtreye sahip bir paket yakalama ayarlar.  İlk üç filtre, giden TCP trafiğini yalnızca yerel IP 10.0.0.3 'ten 20, 80 ve 443 hedef bağlantı noktalarına toplar.  Son filtre yalnızca UDP trafiğini toplar.
+Bu noktada, bir paket yakalama oluşturmaya hazırlarsınız.  İlk olarak, yapılandırmak isteyebileceğiniz parametreleri inceleyelim. Filtreler, paket yakalama tarafından depolanan verileri sınırlandırmak için kullanılabilecek bir parametredir. Aşağıdaki örnek, birkaç filtreye sahip bir paket yakalama ayarlar.  İlk üç filtre, giden TCP trafiğini yalnızca yerel IP 10.0.0.3 'ten 20, 80 ve 443 hedef bağlantı noktalarına toplar.  Son filtre yalnızca UDP trafiğini toplar.
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Aşağıdaki örnek, `az network watcher packet-capture create` cmdlet 'ini çalıştırmanın beklenen çıktıdır.
+Aşağıdaki örnek, `az network watcher packet-capture create` komutunu çalıştırmanın beklenen çıktıdır.
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Paket yakalaması alma
 
-`az network watcher packet-capture show-status` cmdlet 'ini çalıştırmak, çalışmakta olan veya tamamlanmış bir paket yakalamanın durumunu alır.
+`az network watcher packet-capture show-status` komutunu çalıştırmak, çalışmakta olan veya tamamlanmış bir paket yakalamanın durumunu alır.
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Aşağıdaki örnek, `az network watcher packet-capture show-status` cmdlet 'inin çıktıdır. Aşağıdaki örnek, yakalamanın durdurulma nedeni ile zaman aşımı ile durdurulduğunda oluşur. 
+Aşağıdaki örnek, `az network watcher packet-capture show-status` komutunun çıktıdır. Aşağıdaki örnek, yakalamanın durdurulma nedeni ile zaman aşımı ile durdurulduğunda oluşur. 
 
 ```
 {
@@ -204,14 +203,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>Paket yakalamayı durdur
 
-`az network watcher packet-capture stop` cmdlet 'ini çalıştırarak bir yakalama oturumu devam ediyorsa durdurulur.
+`az network watcher packet-capture stop` komutunu çalıştırarak bir yakalama oturumu devam ediyorsa durdurulur.
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> Cmdlet Şu anda çalışan bir yakalama oturumunda veya zaten durmuş olan mevcut bir oturumda çalıştırıldığında yanıt vermez.
+> Komut şu anda çalışan bir yakalama oturumunda veya zaten durmuş olan mevcut bir oturumda çalıştırıldığında yanıt vermez.
 
 ## <a name="delete-a-packet-capture"></a>Paket yakalamayı silme
 

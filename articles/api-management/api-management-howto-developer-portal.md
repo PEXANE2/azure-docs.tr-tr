@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045587"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898837"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -213,6 +213,18 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna başvurun.
 
 Çağrı hatasına Ayrıca özel bir etki alanına atanan ve tarayıcı tarafından güvenilmeyen bir SSL sertifikası neden olabilir. Risk azaltma olarak, yönetim uç noktası özel etki alanını kaldırabilirsiniz. API Management, güvenilen bir sertifika ile varsayılan uç noktaya geri döner.
+
+### <a name="whats-the-browser-support-for-the-portal"></a>Portal için tarayıcı desteği nedir?
+
+| Tarayıcı                     | Desteklenen       |
+|-----------------------------|-----------------|
+| Apple Safari                | Evet<sup>1</sup> |
+| Google Chrome               | Evet<sup>1</sup> |
+| Microsoft Edge              | Evet<sup>1</sup> |
+| Microsoft Internet Explorer | Hayır              |
+| Mozilla Firefox             | Evet<sup>1</sup> |
+
+ <small><sup>1</sup> en son iki üretim sürümünde desteklenir.</small>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

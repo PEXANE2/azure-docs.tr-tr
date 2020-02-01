@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 şema örnek denetimleri
 description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneğinin Azure ilkesi ve RBAC 'ye eşlenmesini denetleme.
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 38db59a7f0b93e2c87b3c7acdfbcc2b8cbd11489
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546563"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905639"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
@@ -30,7 +30,7 @@ Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen [Azure ilke]
 
 Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullanımını zorlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak, ilkenizi cryptograph denetimleri ile zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler SQL veritabanlarında saydam veri şifrelemesi gerektirir; depolama hesaplarında eksik şifrelemeyi denetleyin ve Otomasyon hesabı değişkenleri. Ayrıca, depolama hesaplarına, Işlev uygulamalarına, WebApp, API Apps ve Redis Cache güvenli olmayan bağlantıları denetlemeye yönelik ilkeler de vardır ve şifrelenmemiş Service Fabric iletişimini denetleyebilir.
 
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir

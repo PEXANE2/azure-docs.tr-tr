@@ -1,17 +1,17 @@
 ---
 title: Azure uygulama yapılandırma özelliği yönetimi
 description: Azure uygulama yapılandırmasının, isteğe bağlı uygulama özelliklerini açmak ve kapatmak için nasıl kullanılabileceği hakkında genel bakış.
-author: yegu-ms
-ms.author: yegu
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 48aebfe1ba6af348e98e5600075f3a9e9dce1a8e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 85228854f6c106c68cedc3eeea81e15fd662774a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495763"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898740"
 ---
 # <a name="feature-management-overview"></a>Özellik yönetimine genel bakış
 

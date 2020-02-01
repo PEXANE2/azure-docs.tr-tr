@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330f3100858d517666ac14fa8c206b4c06998c4f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274215"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896910"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalar için son kullanıcı deneyimleri
 
@@ -36,7 +36,7 @@ https://myapps.microsoft.com erişim paneli, Azure Active Directory bir kuruluş
 
 ![Ekran görüntüsü Azure AD erişim paneli portalını gösterir](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
-Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak, ilgili uygulamaları gruplamak ve bunları ayrı bir sekmede sunmak, daha kolay bulunmalarını sağlamak için çalışma alanlarını kullanabilirsiniz. Örneğin, belirli iş rolleri, görevler, projeler vb. için mantıksal uygulama gruplandırmaları oluşturmak üzere çalışma alanlarını kullanabilirsiniz. Bilgi için bkz. [Kullanıcı erişimi panellerini (Önizleme) özelleştirmek Için uygulamalarımı kullanma çalışma alanları](access-panel-workspaces.md). 
+Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak, koleksiyonları kullanarak ilgili uygulamaları gruplandırabilir ve bunları ayrı bir sekmede sunabilir, daha kolay bulunmalarını sağlayabilirsiniz. Örneğin, koleksiyonları, belirli iş rolleri, görevler, projeler vb. için mantıksal uygulama gruplandırmaları oluşturmak üzere kullanabilirsiniz. Bilgi için bkz. [Kullanıcı erişimi panellerini özelleştirmek Için uygulama koleksiyonlarımı kullanma](access-panel-collections.md). 
 
 Erişim paneli Azure portal ayrıdır ve kullanıcıların bir Azure aboneliğine veya Office 365 aboneliğine sahip olmasını gerektirmez.
 

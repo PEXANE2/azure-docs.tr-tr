@@ -1,28 +1,24 @@
 ---
-title: 'Hızlı başlangıç: konuşmayı, amaçları ve varlıkları tanıma, C++ -konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a7245d97c4043a5e4b4e1555e899d3301fc36f3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761409"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900559"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
-* Bu ilk C++ projeniz ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">boş bir örnek proje oluşturmak</a>için bu kılavuzu kullanın.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükler</a>.
+* Bu ilk C++ projeniz ise, <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">boş bir örnek proje <span class="docon docon-navigate-external x-hidden-focus"> </span>oluşturmak </a>için bu kılavuzu kullanın.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">Geliştirme ortamınız <span class="docon docon-navigate-external x-hidden-focus"> </span>için konuşma SDK 'sını yükler </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 
@@ -97,7 +93,7 @@ Aşağıdaki kodu `auto result = recognizer->RecognizeOnceAsync().get();`ekleyin
 
 ## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuzun şöyle görünmesi gerekir:  
+Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 > [!NOTE]
 > Bu sürüme bazı açıklamalar ekledik.
@@ -109,7 +105,7 @@ Bu noktada, kodunuzun şöyle görünmesi gerekir:
 Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
 
 1. **Kodu derleyin** -Visual Studio menü çubuğundan **derleme** > **Build Solution**' ı seçin.
-2. **Uygulamanızı başlatın** -menü çubuğundan **Hata Ayıkla** > hata **ayıklamayı Başlat** ' ı seçin veya **F5**tuşuna basın.
+2. **Uygulamanızı başlatın** -menü çubuğundan **Hata Ayıkla** > hata **ayıklamayı Başlat** ' ı seçin veya <kbd>F5</kbd>tuşuna basın.
 3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl rpm
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Onarım Yöneticisi hizmeti için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639097"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904950"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Komutları onarma Yöneticisi hizmetine sorgula ve gönder.
@@ -77,7 +77,7 @@ Bu API Service Fabric platformunu destekler; doğrudan kodunuzdan kullanılması
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Yürütücü-filtre | İstenen görevler listede yer almalıdır onarım yürütücüsü adı. |
-| --durum-filtre | Sonuç listesine hangi görev durumlarının ekleneceğini belirten, aşağıdaki değerlerden oluşan bit düzeyinde OR. <br> 1-oluşturuldu <br>2-talep edilen  <br>4-hazırlama  <br>8-onaylanan  <br>16-yürütülüyor  <br>32-geri yükleme  <br>64-tamamlandı |
+| --durum-filtre | Sonuç listesine hangi görev durumlarının ekleneceğini belirten, aşağıdaki değerlerden oluşan bit düzeyinde OR. <ul><li>1-oluşturuldu</li><li>2-talep edilen</li><li>4-hazırlama</li><li>8-onaylanan</li><li>16-yürütülüyor</li><li>32-geri yükleme</li><li>64-tamamlandı</li></ul>
 | --görev kimliği-filtre | Eşleştirilecek onarım görev KIMLIĞI ön eki. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
@@ -93,4 +93,4 @@ Bu API Service Fabric platformunu destekler; doğrudan kodunuzdan kullanılması
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- Learn how to use the Service Fabric CLI using the [sample scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

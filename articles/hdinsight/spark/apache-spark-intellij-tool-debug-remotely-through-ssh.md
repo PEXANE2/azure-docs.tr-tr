@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 36e665f889ece48661a859e1a9a44f23aec08c37
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 6e3cf8fa70d6abe8005fe2d2de059c0a3944ff81
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75548895"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905322"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Bir HDInsight kümesindeki Apache Spark uygulamalarda SSH aracılığıyla Azure Toolkit for IntelliJ hata ayıklama
 
@@ -25,7 +25,7 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 
 * Windows kullanıcıları için: yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)bölümünde açıklandığı gibi bir özel durum alabilirsiniz. Windows 'da WinUtils. exe eksik olduğu için özel durum oluşur.
 
-    Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) **C:\Win, \ bin**gibi bir konuma indirin. Ardından **HADOOP_HOME**ortam değişkenini ekleyin ve değişkenin değerini **c:\winutils**olarak ayarlayın.
+    Bu hatayı çözmek için `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` **C:\Win, \ bin**gibi bir konuma indirin. Ardından **HADOOP_HOME**ortam değişkenini ekleyin ve değişkenin değerini **c:\winutils**olarak ayarlayın.
 
 * [IntelliJ fikir](https://www.jetbrains.com/idea/download/#section=windows) (Community sürümü ücretsizdir.).
 

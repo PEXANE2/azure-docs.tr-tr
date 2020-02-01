@@ -1,17 +1,17 @@
 ---
 title: Azure uygulama yapılandırma eşitleme ile GitHub eylemlerini kullanma
 description: GitHub deposunda tanımlı eylemler gerçekleştirildiğinde uygulama yapılandırma örneğiniz için bir güncelleştirme tetiklemek üzere GitHub eylemlerini kullanın
-author: jpconnock
-ms.author: jeconnoc
+author: lisaguthrie
+ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310637"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899616"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub eylemlerini kullanarak uygulama yapılandırma örneğinizi eşitleme
 Azure Uygulama yapılandırması, GitHub deposunda gerçekleştirilen bir eylem tarafından tetiklendiğinde bir uygulama yapılandırma örneğini güncelleştirmek için GitHub eylemlerini kullanır. Uygulama yapılandırmasını güncelleştirmek için GitHub iş akışlarından yararlanabilirsiniz ve uygulama yapılandırma güncelleştirmelerinin uygulama kodunu güncelleştirmek için kullanılan iş akışıyla tümleştirilmesini sağlayabilirsiniz.

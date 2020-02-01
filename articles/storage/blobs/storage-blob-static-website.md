@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708171"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906600"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure depolama 'da statik Web sitesi barındırma
 
@@ -81,22 +81,16 @@ Birincil statik Web sitesi uç noktası etkilenmediğinden, genel erişim düzey
 
 Ancak, birincil blob hizmeti uç noktası `https://contosoblobaccount.blob.core.windows.net/$web/index.html` genel erişimi Private ' dan Public ' e değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Content Delivery Network (CDN) ve Güvenli Yuva Katmanı (SSL) desteği
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Özel bir etki alanını statik bir Web sitesi URL 'siyle eşleme
 
-Statik Web sitesi dosyalarınızı özel etki alanınız ve HTTPS üzerinden kullanılabilir hale getirmek için, [https üzerinden özel etki alanlarıyla bloblara erişmek üzere Azure CDN kullanma](storage-https-custom-domain-cdn.md)konusuna bakın. Bu işlemin bir parçası olarak, birincil *BLOB hizmeti* uç noktası yerine CDN 'nizi birincil *statik Web sitesi* uç noktasına getirmeniz gerekir. CDN yapılandırması hemen yürütülmediğinden, içeriğiniz görünür olması için birkaç dakika beklemeniz gerekebilir.
+Statik Web sitenizi özel bir etki alanı aracılığıyla kullanılabilir hale getirebilirsiniz. 
 
-Statik Web sitenizi güncelleştirdiğinizde, CDN uç noktası ' nı temizleyerek CDN uç sunucularında önbelleğe alınmış içeriği temizlemeyi unutmayın. Daha fazla bilgi için bkz. [Azure CDN uç noktasını temizleme](../../cdn/cdn-purge-endpoint.md).
+Azure Storage tarafından yerel olarak desteklendiğinden, özel etki alanınız için HTTP erişimini etkinleştirmek daha kolay olur. HTTPS 'yi etkinleştirmek için, Azure Storage özel etki alanları ile HTTPS 'yi henüz yerel olarak desteklemediğinden Azure CDN kullanmanız gerekir. adım adım yönergeler için bkz. [özel bir etki alanını Azure Blob depolama uç noktasına eşleme](storage-custom-domain-name.md) .
 
-> [!NOTE]
-> HTTPS, hesap Web uç noktası aracılığıyla yerel olarak desteklenir, bu nedenle web uç noktasına hem HTTP hem de HTTPS aracılığıyla erişilebilir. Ancak, depolama hesabı HTTPS üzerinden güvenli aktarım gerektirecek şekilde yapılandırıldıysa, kullanıcıların HTTPS uç noktasını kullanması gerekir. Daha fazla bilgi için bkz. [Azure Storage 'da güvenli aktarım gerektir](../common/storage-require-secure-transfer.md).
->
-> HTTPS üzerinden özel etki alanlarının kullanılması için şu anda Azure CDN kullanılması gerekir.
+Depolama hesabı HTTPS üzerinden [Güvenli aktarım gerektirecek](../common/storage-require-secure-transfer.md) şekilde yapılandırıldıysa, kullanıcıların HTTPS uç noktasını kullanması gerekir. 
 
-## <a name="custom-domain-names"></a>Özel etki alanı adları
-
-Statik Web sitenizi özel bir etki alanı aracılığıyla kullanılabilir hale getirebilirsiniz. Daha fazla bilgi için bkz. [Azure depolama hesabınız için özel etki alanı adı yapılandırma](storage-custom-domain-name.md).
-
-Etki alanınızı Azure 'da barındırmada derinlemesine bir bakış için bkz. [Azure DNS etki alanınızı](../../dns/dns-delegate-domain-azure-dns.md)barındırma.
+> [!TIP]
+> Etki alanınızı Azure 'da barındırmayı düşünün. Daha fazla bilgi için bkz. [Azure DNS etki alanınızı barındırma](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -111,8 +105,7 @@ Statik Web sitesi sayfalarınızda ölçümleri etkinleştirmek için bkz. [stat
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure depolama 'da statik bir Web sitesi barındırma](storage-blob-static-website-how-to.md)
-* [HTTPS üzerinden özel etki alanlarıyla bloblara erişmek için Azure CDN kullanma](storage-https-custom-domain-cdn.md)
-* [Blob veya Web uç noktanız için özel bir etki alanı adı yapılandırma](storage-custom-domain-name.md)
+* [Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)
 * [Azure İşlevleri](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [İlk sunucusuz Web uygulamanızı oluşturma](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

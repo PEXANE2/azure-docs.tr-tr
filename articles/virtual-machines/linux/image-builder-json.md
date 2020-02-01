@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760020"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905752"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -317,6 +317,8 @@ Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatm
 - **restartCheckCommand** – yeniden başlatmanın başarılı olup olmadığını denetlemek için komut (isteğe bağlı). 
 - **restartTimeout** -yeniden başlatma zaman aşımı, bir büyüklük ve birim dizesi olarak belirtildi. Örneğin, `5m` (5 dakika) veya `2h` (2 saat). Varsayılan değer: ' 5dk '
 
+### <a name="linux-restart"></a>Linux yeniden başlatma  
+Linux yeniden başlatma Özelleştirici yoktur, ancak sürücüleri veya yeniden başlatma gerektiren bileşenleri yüklüyorsanız, yükleyebilir ve kabuk Özelleştirici kullanarak bir yeniden başlatma başlatabilirsiniz, derleme VM 'sine yönelik 20 dakikalık bir SSH zaman aşımı vardır.
 
 ### <a name="powershell-customizer"></a>PowerShell Özelleştirici 
 Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırmayı destekler, ıB 'nin bunlara erişebilmesi için betiklerin herkese açık bir şekilde erişilebilir olması gerekir.

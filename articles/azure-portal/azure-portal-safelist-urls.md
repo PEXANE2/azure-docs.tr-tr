@@ -1,30 +1,33 @@
 ---
-title: Azure portal URL 'Lerini güvenli listeleyin | Microsoft Docs
+title: Güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure portal URL 'Lerini listeleyin
 description: Azure portal ve hizmetleriyle iletişim kurmak için bu URL 'Leri ara sunucu geçişine ekleyin
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310586"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900663"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure portal URL 'Lerini listeleyin
 
-Yerel veya geniş alan ağınız ile Azure bulutu arasında iyi performans ve bağlantı sağlamak için şirket içi güvenlik cihazlarını, Azure portal URL 'Lerinin güvenlik kısıtlamalarını atlayacak şekilde yapılandırın. Ağ yöneticileri, kullanıcıların İnternet 'e nasıl erişebileceği konusunda güvenli hale getirmek ve denetim sağlamak için genellikle proxy sunucuları, güvenlik duvarları veya diğer cihazları dağıtır. Ancak, kullanıcıları korumak için tasarlanan kurallar, siz ve Azure arasındaki iletişimler de dahil olmak üzere, işletmeyle ilgili yasal internet trafiğini engelleyebilir veya yavaşlatır. Ağınızla Azure portal ve hizmetleri arasındaki bağlantıyı iyileştirmek için, SafeList verilerinize Azure portal URL eklemenizi öneririz.
+Şirket içi güvenlik cihazlarını, Azure portal URL 'Lerinin güvenlik kısıtlamalarını atlayacak şekilde yapılandırabilirsiniz. Bu yapılandırma, yerel veya geniş alan ağınız ile Azure bulutu arasındaki performansı ve bağlantıyı iyileştirebilir.
+
+Ağ yöneticileri genellikle proxy sunucuları, güvenlik duvarları veya diğer cihazları dağıtır. Bu cihazlar güvenli hale getirmeye yardımcı olur ve kullanıcıların İnternet 'e nasıl erişkullanılacağına yönelik denetim sağlar. Kullanıcıları korumak için tasarlanan kurallar, işle ilgili yasal internet trafiğini bazen engelleyebilir veya yavaşlatır. Bu trafik, siz ve Azure arasındaki iletişimleri içerir. Ağınızla Azure portal ve hizmetleri arasındaki bağlantıyı iyileştirmek için, SafeList verilerinize Azure portal URL eklemenizi öneririz.
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Proxy atlama için Azure portal URL 'Leri
 
-Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür. Bulutunuzu seçin, sonra bu uç noktalara yönelik ağ trafiğinin kısıtlamaları atlamasına izin vermek için proxy sunucunuza veya güvenlik duvarına URL listesini ekleyin.
+Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür. Bu uç noktalara yönelik ağ trafiğine kısıtlama atlama izni vermek için bulutunuzu seçin. Ardından, proxy sunucunuza veya güvenlik duvarına URL listesi ekleyin.
 
 #### <a name="public-cloudtabpublic-cloud"></a>[Genel bulut](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -48,6 +51,7 @@ Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun 
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[ABD kamu bulutu](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -60,6 +64,7 @@ Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun 
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[Çin Devlet bulutu](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

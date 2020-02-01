@@ -8,19 +8,19 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906393"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
 Azure Event Hubs ile Azure Stream Analytics'i kullanarak gelen verileri denetleyebilir, anomalileri ayırabilir ve Power BI'da görselleştirebilirsiniz. Bir olay hub'ına sürekli olarak gerçek zamanlı veriler göndererek saniyede milyonlarca olay ekleyen binlerce cihaza sahip olduğunuzu düşünelim. Bu kadar fazla verideki anomalileri veya hataları nasıl denetleyebilirsiniz? Örneğin, cihazlar kredi kartı işlemleri gönderiyor ve 5 saniyelik bir zaman aralığı içinde birden çok ülkede/bölgede birden çok işlem olması gereken her yerde yakalamanız gerekiyorsa ne yapmalı? Bu durum birisi kredi kartı bilgilerini çalıp dünyanın farklı yerlerinden aynı anda alışveriş yapmak için kullandığında ortaya çıkabilir. 
 
-Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından Azure Stream Analytics ile veri akışını gerçek zamanlı olarak okuyacak, burada geçerli işlemlerle geçersiz işlemleri ayıracak ve Power BI'ı kullanarak geçersiz olarak etiketlenmiş olan işlemlerin görsel olarak tanımlanmasını sağlayacaksınız.
+Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından, geçerli işlemleri geçersiz işlemlere ayıran Azure Stream Analytics veri akışını gerçek zamanlı olarak okur ve sonra geçersiz olarak etiketlenen işlemleri görsel olarak tanımlamak için Power BI kullanırsınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Test amaçlı olay verilerini üretmek için uygulamayı çalıştırma
 
-[GitHub üzerindeki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) arasında test verilerini üretecek bir [anomali algılama uygulaması](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector) bulunur. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
+[GitHub 'daki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) , sizin için test verileri üreten bir anomali algılayıcı uygulaması içerir. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
 
 1. GitHub'dan [Azure Event Hubs örneklerini](https://github.com/Azure/azure-event-hubs/archive/master.zip) indirin ve dosyaları ayıklayın.
+2. Folder **\azure-event-hubs-master\samples\DotNet\\** klasörüne gidin. 
+3. **Azure. Messaging. Eventhubs\anoyıalgılayıcı\\** klasörüne geçin ve Visual Studio 'da çözümü açmak için **anoialgılayıcısı. sln** ' ye çift tıklayın. 
 
-2. \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ klasörüne gidin ve AnomalyDetector.sln dosyasına çift tıklayarak çözümü Visual Studio'da açın. 
-
+    Eski Microsoft. Azure. EventHubs paketini kullanan örneğin eski sürümünü kullanmak için **Microsoft. Azure. Eventhubs\anoyıalgılayıcı** klasöründen çözümü açın. 
 3. Program.cs dosyasını açın ve **Event Hubs connection string** yerine betiği çalıştırırken kaydettiğiniz bağlantı dizesini yazın. 
-
 4. **Event Hub name** yerine olay hub'ınızın adını yazın. Uygulamayı çalıştırmak için F5'e basın. Olay hub'ınıza olay göndermeye başlar ve 1000 olaya ulaşana kadar göndermeye devam eder. Veri almak için uygulamanın çalışır durumda olmasını gerektiren birkaç durum vardır. Bu durumlar gerekli noktalarda aşağıdaki yönergelerde belirtilmiştir.
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics'i ayarlama
@@ -186,7 +186,7 @@ Artık olay hub'ınıza veri akışını başlatabilirsiniz. Bu verileri bir Pow
 
    ![Yeni bir Azure Stream Analytics işi oluşturma işleminin gösterildiği ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**'a tıklayın. 
+    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**’ tıklayın. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -306,7 +306,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    ![Pano adı belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Pano sayfasında **Kutucuk ekle**'ye tıklayın, **GERÇEK ZAMANLI VERİ** bölümünden **Özel Akış Verileri**'ni seçin ve **İleri**'ye tıklayın.
+7. Pano sayfasında, **kutucuk Ekle**' ye tıklayın, **gerçek zamanlı veriler** bölümünde **özel akış verileri** ' ni seçin ve ardından **İleri**' ye tıklayın.
 
    ![Kutucuk için kaynak belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 

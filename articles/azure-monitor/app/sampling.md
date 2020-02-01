@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281079"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899084"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -41,7 +41,7 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 | Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
 | Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Diğerlerinin tümü | Hayır | Hayır | [Evet](#ingestion-sampling) |
+| Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
 > Bu sayfanın büyük bir yanındaki bilgiler Application Insights SDK 'ların güncel sürümleri için geçerlidir. SDK 'ların eski sürümleri hakkında bilgi için [aşağıdaki bölüme bakın](#older-sdk-versions).
@@ -531,7 +531,7 @@ Yaklaşık büyük ölçüde doğruluk, yapılandırılan örnekleme yüzdesine 
 
 *Her zaman görmek istediğim bazı nadir olaylar vardır. Örnekleme modülünü nasıl geçmiş bir şekilde alabilirim?*
 
-* Bunu başarmanın en iyi yolu, aşağıda gösterildiği gibi, `SamplingPercentage`, korunması istediğiniz telemetri öğesinde 100 olarak ayarlayan özel bir [telemetryınitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)yazmaktır. Başlatıcılar telemetri işlemcilerinin (örnekleme dahil) önce çalıştırılmasının garanti edilir. Bu, tüm örnekleme tekniklerinin bu öğeyi herhangi bir örnekleme ile yoksaymasını sağlar.
+* Bunu başarmanın en iyi yolu, aşağıda gösterildiği gibi, `SamplingPercentage`, korunması istediğiniz telemetri öğesinde 100 olarak ayarlayan özel bir [telemetryınitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)yazmaktır. Başlatıcılar telemetri işlemcilerinin (örnekleme dahil) önce çalıştırılmasının garanti edilir. Bu, tüm örnekleme tekniklerinin bu öğeyi herhangi bir örnekleme ile yoksaymasını sağlar. Özel telemetri başlatıcıları, ASP.NET SDK, ASP.NET Core SDK, JavaScript SDK ve Java SDK ' da kullanılabilir. Örneğin, ASP.NET SDK kullanarak bir telemetri başlatıcısı yapılandırabilirsiniz:
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

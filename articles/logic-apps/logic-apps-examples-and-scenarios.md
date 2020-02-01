@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792131"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906677"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
 
@@ -75,15 +75,15 @@ Logic Apps, koşullar, anahtarlar, döngüler ve kapsamlar gibi gelişmiş denet
 * [İşlemleri kapsamlar ile birlikte gruplandırma](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Bir iş akışında yazma hatası ve özel durum işleme](../logic-apps/logic-apps-exception-handling.md)
 * [Kullanım örneği: bir sağlık şirketi HL7 FHıR iş akışları için mantıksal uygulama özel durum işlemeyi nasıl kullanır?](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Mantıksal uygulamalar oluştururken izleme ve tanılama günlüğünü açma](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/monitor-logic-apps.md)
+* [Mantıksal uygulamalar oluştururken izleme ve tanılama günlüğünü açma](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>Logic Apps dağıtma ve yönetme
 
 Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilmiş derleme araçlarıyla mantıksal uygulamaları tamamen geliştirebilir ve dağıtabilirsiniz. Bir kaynak şablonundaki iş akışları ve bağımlı bağlantılar için dağıtımı desteklemek amacıyla Logic Apps, Azure kaynak dağıtım şablonlarını kullanır. Visual Studio Araçları otomatik olarak bu şablonları oluşturur. Bu şablonlar, sürüm oluşturma için kaynak denetimine iade edebilirsiniz.
 
 * [Visual Studio ile mantıksal uygulamalar oluşturma ve dağıtma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/monitor-logic-apps.md)
 * [Mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Örnek: Azure DevOps 'da Azure Logic Apps Azure Service Bus kuyruklara bağlanma ve Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps 'den Azure Storage hesaplarına bağlanma ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

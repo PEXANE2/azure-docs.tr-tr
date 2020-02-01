@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl sa-küme
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Tek başına kümelerin yönetilmesi için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646033"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904931"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Tek başına Service Fabric kümelerini yönetin.
@@ -19,7 +19,7 @@ Tek başına Service Fabric kümelerini yönetin.
 
 |Komut|Açıklama|
 | --- | --- |
-| config | Tek başına Service Fabric küme yapılandırmasını alın. |
+| kurulumunun | Tek başına Service Fabric küme yapılandırmasını alın. |
 | yapılandırma-yükseltme | Tek başına Service Fabric küme yapılandırmasını yükseltmeye başlayın. |
 | upgrade-status | Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumunu alın. |
 
@@ -80,9 +80,9 @@ Sağlanan yapılandırma yükseltme parametrelerini doğrulayın ve parametreler
 ### <a name="examples"></a>Örnekler
 
 Bir küme yapılandırma güncelleştirmesi Başlat
-``` 
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-küme yükseltme-durum

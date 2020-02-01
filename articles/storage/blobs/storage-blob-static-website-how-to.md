@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489096"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906610"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
 
@@ -221,10 +221,5 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Depolama'da statik web sitesi barındırma](storage-blob-static-website.md)
-* [HTTPS üzerinden özel etki alanlarıyla bloblara erişmek için Azure CDN kullanma](storage-https-custom-domain-cdn.md)
-* [Blob veya Web uç noktanız için özel bir etki alanı adı yapılandırma](storage-custom-domain-name.md)
-* [Azure İşlevleri](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [İlk sunucusuz Web uygulamanızı oluşturma](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Öğretici: etki alanınızı Azure DNS barındırın](../../dns/dns-delegate-domain-azure-dns.md)
+* Statik Web siteniz ile özel bir etki alanı yapılandırmayı öğrenin. Bkz. [özel bir etki alanını Azure Blob depolama uç noktası Ile eşleme](storage-custom-domain-name.md).
+

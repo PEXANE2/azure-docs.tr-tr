@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric genel senaryoları tanılayın
 description: Azure Service Fabric uygulamalarında yaygın izleme ve tanılama senaryolarıyla ilgili sorun giderme hakkında bilgi edinin.
-author: srrengar
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645795"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906955"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric ile yaygın senaryoları tanılayın
 
@@ -134,6 +132,7 @@ Güvenilir [Hizmetler](service-fabric-reliable-serviceremoting-diagnostics.md) v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Ortak kod paketi etkinleştirme hatalarını ara](./service-fabric-diagnostics-code-package-errors.md)
 * Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/app/alerts.md)
 * [Application Insights akıllı algılama](../azure-monitor/app/proactive-diagnostics.md) , olası performans sorunları konusunda sizi uyarmak üzere AI 'ye gönderilen telemetrinin proaktif analizini yapar
 * Algılama ve tanılama konusunda yardımcı olması için Azure Izleyici günlükleri [uyarısı](../log-analytics/log-analytics-alerts.md) hakkında daha fazla bilgi edinin.

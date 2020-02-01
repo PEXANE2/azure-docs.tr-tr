@@ -7,21 +7,21 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
 ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bc4b518cd2400cf3826b31a590d499c1ad031e7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429917"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896523"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için istekleri onaylama veya reddetme
 
@@ -40,7 +40,7 @@ Azure AD rolleri için istekleri onaylamak veya reddetmek için bu makaledeki ad
 
 # <a name="previous-versiontabprevious"></a>[Önceki sürüm](#tab/previous)
 
-## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüleme
+## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüle
 
 Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri Privileged Identity Management görüntüleyebilirsiniz.
 
@@ -66,7 +66,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği
 
     ![Seçili istekler bölmesini onay nedeni ile Onayla](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. **Onayla**'ya tıklayın.
+1. **Onayla**' ya tıklayın.
 
     Durum simgesi onayınız ile güncelleştirilir.
 
@@ -88,7 +88,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği
 
 # <a name="new-versiontabnew"></a>[Yeni sürüm](#tab/new)
 
-## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüleme
+## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüle
 
 Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri Privileged Identity Management görüntüleyebilirsiniz.
 

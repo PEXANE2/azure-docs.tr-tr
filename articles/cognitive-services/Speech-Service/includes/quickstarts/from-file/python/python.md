@@ -2,19 +2,19 @@
 title: 'Hızlı başlangıç: bir ses dosyasındaki konuşmayı tanıma, Python-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: chlandsi
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
-ms.author: chlandsi
-ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/30/2020
+ms.author: dapine
+ms.openlocfilehash: bcf0679d83becfb3c4ae900769c0a42dc1359e5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037640"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909122"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -23,8 +23,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > [!div class="checklist"]
 > * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
 > * [Bir LUSıS uygulaması oluşturma ve bir uç nokta anahtarı edinme](../../../../quickstarts/create-luis.md)
-> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md)
-> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md)
+> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

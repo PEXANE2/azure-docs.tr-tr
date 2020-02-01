@@ -1,25 +1,23 @@
 ---
 title: B2B iletileri için özel izleme şemaları
-description: Enterprise Integration Pack Azure Logic Apps için tümleştirme hesaplarında B2B iletilerini izleyen özel izleme şemaları oluşturun
+description: Azure Logic Apps B2B iletilerini izlemek için özel izleme şemaları oluşturma
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 7d7c5ef9e9a86c8b061a56fe41c0c8bbfc5ddbb3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792786"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903059"
 ---
-# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps içinde uçtan uca iş akışlarını izleyen özel izleme şemaları oluşturma
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Azure Logic A 'da uçtan uca iş akışlarını izleyen özel izleme şemaları oluşturma
 
-AS2 veya x12 iletilerini izleme gibi işletmeden işletmeye iş akışınızın farklı bölümlerinde etkinleştirebileceğiniz yerleşik izleme vardır. Bir mantıksal uygulama, BizTalk Server, SQL Server veya başka bir katman içeren iş akışları oluşturduğunuzda, olayları iş akışınızın başından sonuna kadar günlüğe kaydeden özel izlemeyi etkinleştirebilirsiniz. 
-
-Bu makale, mantıksal uygulamanızın dışındaki katmanlarda kullanabileceğiniz özel kod sağlar. 
+Azure Logic Apps, iş akışınızın parçaları için etkinleştirebilmeniz için yerleşik izlemeye sahiptir. Ancak, bir mantıksal uygulama, BizTalk Server, SQL Server ya da başka bir katman içeren iş akışları gibi, olayları başlangıçtan başlayarak iş akışlarının sonuna kadar günlüğe kaydeden özel izleme ayarlayabilirsiniz. Bu makale, mantıksal uygulamanızın dışındaki katmanlarda kullanabileceğiniz özel kod sağlar.
 
 ## <a name="custom-tracking-schema"></a>Özel izleme şeması
 
@@ -36,7 +34,7 @@ Bu makale, mantıksal uygulamanızın dışındaki katmanlarda kullanabileceğin
       "operation": {
          "operationName": "",
          "repeatItemScopeName": "",
-         "repeatItemIndex": "",
+         "repeatItemIndex": ,
          "trackingId": "",
          "correlationId": "",
          "clientRequestId": ""
@@ -47,39 +45,37 @@ Bu makale, mantıksal uygulamanızın dışındaki katmanlarda kullanabileceğin
          "eventLevel": "",
          "eventTime": "",
          "recordType": "",
-         "record": {                
-         }
+         "record": {}
       }
    ]
 }
 ```
 
 | Özellik | Gereklidir | Tür | Açıklama |
-| --- | --- | --- | --- |
-| sourceType | Yes |   | Çalışma kaynağının türü. İzin verilen değerler **Microsoft. Logic/iş akışları** ve **özel**. |
-| source | Yes |   | Kaynak türü **Microsoft. Logic/iş akışlarıyla**, kaynak bilgilerinin bu şemayı izlemesi gerekir. Kaynak türü **özel**ise, şema bir jtoken olur. |
-| SystemId | Yes | Dize | Mantıksal uygulama sistemi KIMLIĞI. |
-| RunId | Yes | Dize | Mantıksal uygulama çalıştırma KIMLIĞI. |
-| operationName | Yes | Dize | İşlemin adı (örneğin, eylem veya tetikleyici). |
-| repeatItemScopeName | Yes | Dize | Eylem `foreach`/`until` döngüsünün içindeyse öğe adını tekrarlayın. |
-| repeatItemIndex | Yes | Tamsayı | Eylemin `foreach`/`until` döngüsünün içinde olup olmadığı. Yinelenen öğe dizinini gösterir. |
-| Trackingıd | Hayır | Dize | İletileri ilişkilendirmek için izleme KIMLIĞI. |
-| correlationId | Hayır | Dize | İlişki KIMLIĞI, iletilerin ilişkilendirilmesi. |
-| Clientrequestıd 'ye sahip | Hayır | Dize | İstemci, iletileri ilişkilendirmek için onu doldurabilir. |
-| eventLevel | Yes |   | Etkinliğin düzeyi. |
-| eventTime | Yes |   | Etkinliğin saati, UTC biçiminde YYYY-MM-DDTHH: MM: SS. 00000Z. |
-| RecordType | Yes |   | İzleme kaydının türü. İzin verilen değer **özel**. |
-| kayıtlar | Yes |   | Özel kayıt türü. İzin verilen biçim JToken. |
-||||
+|----------|----------|------|-------------|
+| sourceType | Evet | Dize | Şu izin verilen değerlere sahip çalışma kaynağının türü: `Microsoft.Logic/workflows`, `custom` |
+| source | Evet | String veya JToken | Kaynak türü `Microsoft.Logic/workflows`ise, kaynak bilgilerinin bu şemayı izlemesi gerekir. Kaynak türü `custom`ise, şema bir JToken olur. |
+| SystemId | Evet | Dize | Mantıksal uygulama sistem KIMLIĞI |
+| RunId | Evet | Dize | Mantıksal uygulama çalıştırma KIMLIĞI |
+| operationName | Evet | Dize | İşlemin adı, örneğin eylem veya tetikleyici |
+| repeatItemScopeName | Evet | Dize | Eylem bir `foreach`veya `until` döngüsü içindeyse öğe adını Yinele |
+| repeatItemIndex | Evet | Tamsayı | Eylemin bir `foreach` veya `until` döngüsünün içinde olduğunu ve yinelenen öğe dizin numarası olduğunu gösterir. |
+| trackingId | Hayır | Dize | İletileri ilişkilendirmek için izleme KIMLIĞI |
+| correlationId | Hayır | Dize | İletilerle bağıntılı bağıntı KIMLIĞI |
+| Clientrequestıd 'ye sahip | Hayır | Dize | İstemci bu özelliği bağıntılı iletilerle doldurabilir |
+| eventLevel | Evet | Dize | Etkinliğin düzeyi |
+| eventTime | Evet | Tarih Saat | Olayın UTC biçiminde saati: *yyyy-MM-DDTHH: mm: ss. 00000Z* |
+| recordType | Evet | Dize | Yalnızca bu izin verilen değere sahip parça kaydının türü: `custom` |
+| record | Evet | JToken | Yalnızca JToken biçimindeki özel kayıt türü |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokol izleme şemaları
 
 B2B protokol izleme şemaları hakkında daha fazla bilgi için bkz.:
 
-* [AS2 izleme şemaları](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [AS2 izleme şemaları](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 izleme şemaları](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [B2B iletilerini izleme](logic-apps-monitor-b2b-message.md) hakkında daha fazla bilgi edinin
-* [Azure izleyici GÜNLÜKLERINDE B2B iletilerini izleme](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) hakkında bilgi edinin
+* [Azure izleyici günlükleri Ile B2B iletilerini izleme](../logic-apps/monitor-b2b-messages-log-analytics.md) hakkında daha fazla bilgi edinin

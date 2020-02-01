@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749498"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905590"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -51,7 +51,7 @@ Bu sınırlar için [Azure depolama hesabı ölçek hedefleri](#azure-storage-ac
 ### <a name="file-share-and-file-scale-targets"></a>Dosya paylaşma ve dosya ölçeği hedefleri
 
 > [!NOTE]
-> 5 TiB 'den büyük standart dosya paylaşımlarında bazı sınırlamalar ve bölgesel kısıtlamalar vardır.
+> 5 TiB 'den büyük standart dosya paylaşımlarının belirli sınırlamaları vardır.
 > Sınırlamalar, bölgesel bilgiler ve bu büyük dosya paylaşımı boyutlarını etkinleştirmeye yönelik yönergelerin listesi için, planlama kılavuzunun [daha büyük dosya paylaşımlarına](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) ekleme bölümüne bakın.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]

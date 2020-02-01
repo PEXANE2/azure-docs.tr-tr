@@ -1,10 +1,9 @@
 ---
-title: .NET Core-Azure Event Hubs kullanarak olay gönderme ve alma | Microsoft Docs
-description: Bu makalede, Azure Event Hubs olayları gönderen bir .NET Core uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
+title: .NET kullanarak Azure Event Hubs olay gönderme ve alma (eski)
+description: Bu makalede, Azure Event Hubs eski Microsoft. Azure. EventHubs paketini kullanarak/hizmetinden olay gönderen/alan .NET Core uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -12,32 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 1d3f6357faa8626d48e2aac0efe86e22222c9ba6
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a58c344f644f91634fba267ff157bd56a18f40d3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846665"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900121"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>.NET Core kullanarak Azure Event Hubs olaylar gönderme veya olayları alma
-Event Hubs bağlı cihaz ve uygulamalardan büyük miktarlarda olay verileri (telemetri) işleyen bir hizmettir. Verileri Event Hubs’a topladıktan sonra bir depolama kümesi kullanarak depolayabilir veya gerçek zamanlı bir analiz sağlayıcısı kullanarak dönüştürebilirsiniz. Bu büyük ölçekli olay toplama ve işleme özelliği, Nesnelerin İnterneti (IoT) gibi modern uygulama mimarilerinin temel bir bileşenidir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core (Microsoft. Azure. EventHubs) kullanarak Azure Event Hubs olay gönderme veya olayları alma
+Event Hubs bağlı cihaz ve uygulamalardan büyük miktarlarda olay verileri (telemetri) işleyen bir hizmettir. Verileri Event Hubs’a topladıktan sonra bir depolama kümesi kullanarak depolayabilir veya gerçek zamanlı bir analiz sağlayıcısı kullanarak dönüştürebilirsiniz. Bu büyük ölçekli olay toplama ve işleme özelliği, Nesnelerin İnterneti (IoT) gibi modern uygulama mimarilerinin temel bir bileşenidir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
 
 Bu öğreticide, Olay Hub 'ından olay göndermek veya C# olayları almak için ' de .NET Core uygulamalarının nasıl oluşturulacağı gösterilmektedir. 
 
-> [!NOTE]
-> Bu hızlı başlangıcı [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)’dan örnek olarak indirebilir, `EventHubConnectionString` ve `EventHubName` dizelerini olay hub’ınızdaki değerlerle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
+> [!WARNING]
+> Bu hızlı başlangıç, eski **Microsoft. Azure. EventHubs** paketini kullanır. En son [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) paketini kullanmak için kodunuzu [geçirmeniz](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md) önerilir.  
+
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com).
 - [.NET Core Visual Studio 2015 veya 2017 araçları](https://www.microsoft.com/net/core). 
-- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makaledeki yönergeleri izleyerek **Olay Hub 'ı ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra bağlantı dizesi kullanılır.
+- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve olay hub'ı oluşturmak için verilen yordamı izleyin [bu makalede](event-hubs-create.md). Ardından, makaledeki yönergeleri izleyerek **Olay Hub 'ı ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra'de bağlantı dizesini kullanın.
 
 ## <a name="send-events"></a>Olayları gönderme 
 Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. 
+
+> [!NOTE]
+> Bu hızlı başlangıcı [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)’dan örnek olarak indirebilir, `EventHubConnectionString` ve `EventHubName` dizelerini olay hub’ınızdaki değerlerle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
+
 
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
@@ -47,7 +50,7 @@ Visual Studio’yu çalıştırın. **Dosya** menüsünde **Yeni**'ye ve ardınd
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet paketini ekleme
 
-Aşağıdaki adımları izleyerek [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Core Library NuGet paketini projenize ekleyin: 
+Ekleme [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Core kitaplığı NuGet paketini projenize aşağıdaki adımları izleyerek: 
 
 1. Yeni oluşturulan projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
 2. **Gözat** sekmesine tıklayın, "Microsoft.Azure.EventHubs" için arama yapın ve **Microsoft.Azure.EventHubs** paketini seçin. Yüklemeyi tamamlamak için **Yükle**'ye tıklayın, ardından bu iletişim kutusunu kapatın.
@@ -70,7 +73,7 @@ Aşağıdaki adımları izleyerek [`Microsoft.Azure.EventHubs`](https://www.nuge
     private const string EventHubName = "{Event Hub path/name}";
     ```
 
-3. `MainAsync` sınıfına aşağıda gösterildiği gibi `Program` adlı yeni bir yöntem ekleyin:
+3. `Program` sınıfına aşağıda gösterildiği gibi `MainAsync` adlı yeni bir yöntem ekleyin:
 
     ```csharp
     private static async Task MainAsync(string[] args)
@@ -94,7 +97,7 @@ Aşağıdaki adımları izleyerek [`Microsoft.Azure.EventHubs`](https://www.nuge
     }
     ```
 
-4. `SendMessagesToEventHub` sınıfına aşağıda gösterildiği gibi `Program` adlı yeni bir yöntem ekleyin:
+4. `Program` sınıfına aşağıda gösterildiği gibi `SendMessagesToEventHub` adlı yeni bir yöntem ekleyin:
 
     ```csharp
     // Uses the event hub client to send 100 messages to the event hub.
@@ -120,7 +123,7 @@ Aşağıdaki adımları izleyerek [`Microsoft.Azure.EventHubs`](https://www.nuge
     }
     ```
 
-5. Aşağıdaki kodu `Main` sınıfındaki `Program` yöntemine ekleyin:
+5. Aşağıdaki kodu `Program` sınıfındaki `Main` yöntemine ekleyin:
 
     ```csharp
     MainAsync(args).GetAwaiter().GetResult();
@@ -285,7 +288,7 @@ Aşağıdaki adımları izleyerek [**Microsoft.Azure.EventHubs**](https://www.nu
     private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
     ```   
 
-3. `MainAsync` sınıfına aşağıda gösterildiği gibi `Program` adlı yeni bir yöntem ekleyin:
+3. `Program` sınıfına aşağıda gösterildiği gibi `MainAsync` adlı yeni bir yöntem ekleyin:
 
     ```csharp
     private static async Task MainAsync(string[] args)

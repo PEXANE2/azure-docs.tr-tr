@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514247"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905254"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
 
@@ -29,7 +29,7 @@ Son güncelleme tarihi: 2019-08-22
 
 "", "" Gerekli değildir "," gerekli "," Bu "," Bu "," zorunlu değil "," durum "ve" Isteğe bağlı "anahtar sözcükleri, RFC 2119 ' de açıklandığı gibi yorumlanmalıdır.
 
-## <a name="1-introduction"></a>1. Giriş 
+## <a name="1-introduction"></a>1. giriş 
 
 Bir istemci oynatıcısının reklamları veya özel meta veri olaylarını eklemeye işaret etmek için, yayımcılar genellikle videoda yerleşik olarak bulunan zaman aşımına uğramış meta verileri kullanır. Bu senaryoları etkinleştirmek için Media Services, canlı akış kanalının alma noktasındaki zaman aşımına uğramış meta verilerin istemci uygulamasına taşınması için destek sağlar.
 Bu belirtim, canlı akış sinyalleri içindeki zaman aşımına uğramış meta veriler için Media Services tarafından desteklenen çeşitli modları özetler.
@@ -249,7 +249,7 @@ Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildiri
  
 #### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Adobe RTMP basit modu kullanılırken örnek MPEG DASH bildirim çıkışı
 
-[Adobe Simple modunu kullanarak MPEG Dash. mpd EventStream için bkz. örnek 3.3.2.1](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+Bkz [. Adobe Simple modunu kullanarak örnek 3.3.2.1 MPEG Dash. mpd EventStream](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
 Bkz. [tek dönem ve Adobe Simple modundaki örnek 3.3.3.1 Dash bildirimi](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
@@ -280,7 +280,7 @@ Bu senaryoda, **"Onadcue"** [AMF0] ileti türü kullanılarak şirket içi kodla
 Bkz. [SCTE-35 ile örnek çizgi bildirimi bölümü 3.3.3.2](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>SCTE-35 mod sinyaliyle örnek HLS manifest. M3U8
-Bkz. [SCTE-35 ile örnek 3.3.1.1 örnek HLS bildirimi](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+Bkz. [SCTE-35 Ile Bölüm 3.2.1.1 örnek HLS bildirimi](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>On Live için 2.1.5 RTMP ad sinyali "onCuePoint" ile
 
@@ -421,7 +421,7 @@ Seyrek izleme, canlı sunucu bildirim kutusunda **\<TextStream\>** girdisiyle bi
 | parentTrackName    | Dize         | Gereklidir      | Seyrek izleme zaman kodlarının zaman ölçeği hizalı olduğu üst izlemenin **adı olmalıdır.** Üst izleme seyrek bir izleme olamaz.                                                                             |
 | Bildirimli Estoutput     | Boole        | Gereklidir      | Seyrek izlemenin sorunsuz istemci bildiriminde gömüleceğini göstermek için "true **" olmalıdır.**                                                                                                                        |
 | Alt tür            | Dize         | Gereklidir      | "DATA" dört karakter kodu **olmalıdır** .                                                                                                                                                                                  |
-| Düzen             | Dize         | Gereklidir      | İleti düzenini tanımlayan bir URN veya URL **olmalıdır** . [SCTE-35] iletileri için, iletilerin HLS 'ye gönderilmesi, sorunsuz ve Dash istemcilerine [SCTE-35] ile uyum sağlamak için bu "urn: scte: scte35:2013: bin" olması **gerekir** . |
+| Şemadaki             | Dize         | Gereklidir      | İleti düzenini tanımlayan bir URN veya URL **olmalıdır** . [SCTE-35] iletileri için, iletilerin HLS 'ye gönderilmesi, sorunsuz ve Dash istemcilerine [SCTE-35] ile uyum sağlamak için bu "urn: scte: scte35:2013: bin" olması **gerekir** . |
 | trackName          | Dize         | Gereklidir      | Seyrek izlemenin adı **olmalıdır** . TrackName birden çok olay akışını aynı şemayla ayırt etmek için kullanılabilir. Her benzersiz olay akışı benzersiz bir izleme adına sahip **olmalıdır** .                                |
 | timescale          | Sayı         | İsteğe Bağlı      | Üst izlemenin zaman ölçeği olması **gerekir** .                                                                                                                                                                               |
 
@@ -767,7 +767,7 @@ Ayrıca, [Adobe-Primetime] "SCTE-35 modu" içinde tanımlanan şekilde EXT-X-CUE
 | 'YU                | alıntılanmış dize                 | Gereklidir                                  | [RFC4648] bölümünde açıklandığı gibi Base64 kodlamalı dize olarak kodlanmış ileti. [SCTE-35] iletileri için bu, Base64 kodlamalı splice_info_section ().                                                                                                                                      |
 | TÜR               | alıntılanmış dize                 | Gereklidir                                  | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletileri için, tür "scte35" özel değerini alır.                                                                                                                                                                          |
 | Kimlik                 | alıntılanmış dize                 | Gereklidir                                  | Olay için benzersiz bir tanımlayıcı. İleti yapıldığında KIMLIK belirtilmezse Azure Media Services benzersiz bir kimlik oluşturulur.                                                                                                                                              |
-| SÜRE           | ondalık kayan nokta sayısı | Gereklidir                                  | Etkinliğin süresi. Bilinmiyorsa **, değer 0 olmalıdır.** Birimler, saniyeler içinde yapılır.                                                                                                                                                                                           |
+| SÜRENIN           | ondalık kayan nokta sayısı | Gereklidir                                  | Etkinliğin süresi. Bilinmiyorsa **, değer 0 olmalıdır.** Birimler, saniyeler içinde yapılır.                                                                                                                                                                                           |
 | GEÇECEK            | ondalık kayan nokta sayısı | İsteğe bağlı, ancak kayan pencere için gerekli | Bir kayan sunu penceresini desteklemek için sinyal tekrarlandığında, bu alan, olayın başlamasından bu yana geçen sunum süresinin miktarı **olmalıdır** . Birimler kesirli saniyedir. Bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler. |
 | TIME               | ondalık kayan nokta sayısı | Gereklidir                                  | Etkinliğin sunum süresi. Birimler kesirli saniyedir.                                                                                                                                                                                                                        |
 
@@ -1170,7 +1170,7 @@ Uygulamanızı Azure Media Services platformu ile sınarken, bir kodlama LiveEve
 
 ---
 
-## <a name="change-history"></a>Değişiklik Geçmişi
+## <a name="change-history"></a>Değişiklik geçmişi
 
 | Tarih     | Değişiklikler                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |

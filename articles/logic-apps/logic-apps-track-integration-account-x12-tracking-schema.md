@@ -1,30 +1,30 @@
 ---
 title: B2B iletileri için x12 izleme şemaları
-description: Enterprise Integration Pack Azure Logic Apps için tümleştirme hesaplarında B2B iletilerini izleyen x12 izleme şemaları oluşturma
+description: Azure Logic Apps için x12 iletilerini izlemek üzere izleme şemaları oluşturma
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 6f2356600f5b6a637da731c650b26d968092e2f6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: 5b2df194761ebc167e67498a985960a4fce35f19
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791718"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905294"
 ---
-# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps tümleştirme hesaplarında x12 iletilerini izlemek için şemalar oluşturun
+# <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme x12 iletileri için şemalar oluşturma
 
 İşletmeden işletmeye (B2B) işlemleri için başarı, hata ve ileti özelliklerini izlemenize yardımcı olması için, tümleştirme hesabınızda bu x12 izleme şemalarını kullanabilirsiniz:
 
 * X12 işlem kümesi izleme şeması
-* X12 işlem kümesi onay izleme şeması
+* X12 işlem kümesi bildirim izleme şeması
 * X12 değişim izleme şeması
-* X12 değişim onayı izleme şeması
+* X12 değişim bildirimi izleme şeması
 * X12 işlevsel grup izleme şeması
-* X12 işlevsel grup onayı izleme şeması
+* X12 işlevsel Grup onay izleme şeması
 
 ## <a name="x12-transaction-set-tracking-schema"></a>X12 işlem kümesi izleme şeması
 
@@ -49,35 +49,35 @@ ms.locfileid: "74791718"
       "isMessageFailed": "",
       "isTechnicalAcknowledgmentExpected": "",
       "isFunctionalAcknowledgmentExpected": "",
-      "needAk2LoopForValidMessages":  "",
+      "needAk2LoopForValidMessages": "",
       "segmentsCount": ""
    }
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | X12 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | X12 ileti alıcısının iş ortağı adı. Seçim |
-| senderQualifier | Dize | İş ortağı niteleyicisi gönderin. Girilmesi |
-| Senderıdentifier | Dize | İş ortağı tanımlayıcısı gönderin. Girilmesi |
-| receiverQualifier | Dize | İş ortağı niteleyicisi alma. Girilmesi |
-| Receiverıdentifier | Dize | İş ortağı tanımlayıcısını al. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme x12 sözleşmesinin adı. Seçim |
-| yön | Sabit Listesi | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| interchangeControlNumber | Dize | Değişim denetim numarası. Seçim |
-| functionalGroupControlNumber | Dize | İşlevsel denetim numarası. Seçim |
-| transactionSetControlNumber | Dize | İşlem kümesi denetim numarası. Seçim |
-| Correlationmessageıd | Dize | Bağıntı ileti KIMLIĞI. {AgreementName} {*Groupcontrolnumber*} {Transactionsetcontrolnumber} birleşimi. Seçim |
-| messageType | Dize | İşlem kümesi veya belge türü. Seçim |
-| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı. Girilmesi |
-| isTechnicalAcknowledgmentExpected | Boole | Teknik bildirimle x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir. Girilmesi |
-| isFunctionalAcknowledgmentExpected | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir. Girilmesi |
-| needAk2LoopForValidMessages | Boole | Geçerli bir ileti için AK2 döngüsünün gerekli olup olmadığı. Girilmesi |
-| segmentsCount | Tamsayı | X12 işlem kümesindeki parçaların sayısı. Seçim |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
+| agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
+| yön | Evet | Sabit Listesi | İleti akışının yönü, yani `receive` ya da `send` |
+| interchangeControlNumber | Hayır | Dize | Değişim denetim numarası |
+| functionalGroupControlNumber | Hayır | Dize | İşlevsel denetim numarası |
+| transactionSetControlNumber | Hayır | Dize | İşlem kümesi denetim numarası |
+| Correlationmessageıd | Hayır | Dize | {AgreementName} {*Groupcontrolnumber*} {Transactionsetcontrolnumber} birleşimi olan BAĞıNTı ileti kimliği |
+| messageType | Hayır | Dize | İşlem kümesi veya belge türü |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| isTechnicalAcknowledgmentExpected | Evet | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
+| isFunctionalAcknowledgmentExpected | Evet | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
+| needAk2LoopForValidMessages | Evet | Boole | AK2 döngüsünün geçerli bir ileti için gerekli olup olmadığı |
+| segmentsCount | Hayır | Tamsayı | X12 işlem kümesindeki parçaların sayısı |
+|||||
 
-## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 işlem kümesi onay izleme şeması
+## <a name="x12-transaction-set-acknowledgment-tracking-schema"></a>X12 işlem kümesi bildirim izleme şeması
 
 ```json
 {
@@ -111,33 +111,33 @@ ms.locfileid: "74791718"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | X12 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | X12 ileti alıcısının iş ortağı adı. Seçim |
-| senderQualifier | Dize | İş ortağı niteleyicisi gönderin. Girilmesi |
-| Senderıdentifier | Dize | İş ortağı tanımlayıcısı gönderin. Girilmesi |
-| receiverQualifier | Dize | İş ortağı niteleyicisi alma. Girilmesi |
-| Receiverıdentifier | Dize | İş ortağı tanımlayıcısını al. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme x12 sözleşmesinin adı. Seçim |
-| yön | Sabit Listesi | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| interchangeControlNumber | Dize | İşlevsel bildirimle değişim denetimi numarası. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay alındığı gönderme tarafı için doldurulur. Seçim |
-| functionalGroupControlNumber | Dize | İşlevsel onay için işlevsel Grup denetim numarası. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay alındığı gönderme tarafı için doldurulur. Seçim |
-| ısasegment | Dize | İletinin ISA kesimi. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay alındığı gönderme tarafı için doldurulur. Seçim |
-| gsSegment | Dize | İleti kesimini ekler. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay alındığı gönderme tarafı için doldurulur. Seçim |
-| respondingfunctionalGroupControlNumber | Dize | Değişim denetim numarası yanıt veriyor. Seçim |
-| respondingFunctionalGroupId | Dize | Onay içinde AK101 ile eşlenen işlevsel Grup KIMLIĞI yanıt veriyor. Seçim |
-| respondingtransactionSetControlNumber | Dize | İşlem kümesi denetim numarası yanıt veriyor. Seçim |
-| respondingTransactionSetId | Dize | Onay içinde AK201 ile eşlenen işlem kümesi KIMLIĞI yanıt veriyor. Seçim |
-| Durum | Boole | İşlem kümesi onayı durum kodu. Girilmesi |
-| segmentsCount | Sabit Listesi | Onay durum kodu. İzin verilen değerler **kabul**edilir, **reddedilir**ve **acceptedwitherrors**. Girilmesi |
-| processingStatus | Sabit Listesi | Bildirim işleme durumu. İzin verilen değerler **alınır**, **oluşturulur**ve **gönderilir**. Girilmesi |
-| Correlationmessageıd | Dize | Bağıntı ileti KIMLIĞI. {AgreementName} {*Groupcontrolnumber*} {Transactionsetcontrolnumber} birleşimi. Seçim |
-| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı. Girilmesi |
-| ak2Segment | Dize | Alınan işlev grubu içindeki bir işlem kümesi için onay alındı. Seçim |
-| ak3Segment | Dize | Bir veri kesimindeki hataları bildirir. Seçim |
-| ak5Segment | Dize | AK2 segmentinde tanımlanan işlem kümesinin kabul edildiğini veya reddedildiğini ve neden olduğunu bildirir. Seçim |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
+| agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
+| yön | Evet | Sabit Listesi | İleti akışının yönü, yani `receive` ya da `send` |
+| interchangeControlNumber | Hayır | Dize | İşlevsel bildirim değişim denetimi numarası. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel bildirim alınan gönderme tarafında doldurulur. |
+| functionalGroupControlNumber | Hayır | Dize | İşlevsel onay için işlevsel Grup denetim numarası. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay değerinin alındığı gönderme tarafı için doldurulur |
+| ısasegment | Hayır | Dize | İletinin ISA kesimi. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay değerinin alındığı gönderme tarafı için doldurulur |
+| gsSegment | Hayır | Dize | İleti kesimini ekler. Değer yalnızca, iş ortağına gönderilen iletiler için işlevsel onay değerinin alındığı gönderme tarafı için doldurulur |
+| respondingfunctionalGroupControlNumber | Hayır | Dize | Yanıt veren değişim denetim numarası |
+| respondingFunctionalGroupId | Hayır | Dize | Bildirim içinde AK101 ile eşlenen, yanıt veren işlevsel Grup KIMLIĞI |
+| respondingtransactionSetControlNumber | Hayır | Dize | Yanıt veren işlem kümesi denetim numarası |
+| respondingTransactionSetId | Hayır | Dize | Bildirim içinde AK201 ile eşlenen yanıt veren işlem kümesi KIMLIĞI |
+| Durum | Evet | Boole | İşlem kümesi bildirimi durum kodu |
+| segmentsCount | Evet | Sabit Listesi | İzin verilen bu değerlere sahip bildirim durum kodu: `Accepted`, `Rejected`ve `AcceptedWithErrors` |
+| processingStatus | Evet | Sabit Listesi | Bu izin verilen değerlerle bildirim işleme durumu: `Received`, `Generated`ve `Sent` |
+| Correlationmessageıd | Hayır | Dize | {AgreementName} {*Groupcontrolnumber*} {Transactionsetcontrolnumber} birleşimi olan BAĞıNTı ileti kimliği |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| ak2Segment | Hayır | Dize | Alınan işlevsel grup içindeki bir işlem kümesi için bildirim |
+| ak3Segment | Hayır | Dize | Bir veri kesimindeki hataları raporlar |
+| ak5Segment | Hayır | Dize | AK2 segmentinde tanımlanan işlem kümesinin kabul edildiğini veya reddedildiğini ve neden olduğunu bildirir |
+|||||
 
 ## <a name="x12-interchange-tracking-schema"></a>X12 değişim izleme şeması
 
@@ -169,30 +169,30 @@ ms.locfileid: "74791718"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | X12 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | X12 ileti alıcısının iş ortağı adı. Seçim |
-| senderQualifier | Dize | İş ortağı niteleyicisi gönderin. Girilmesi |
-| Senderıdentifier | Dize | İş ortağı tanımlayıcısı gönderin. Girilmesi |
-| receiverQualifier | Dize | İş ortağı niteleyicisi alma. Girilmesi |
-| Receiverıdentifier | Dize | İş ortağı tanımlayıcısını al. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme x12 sözleşmesinin adı. Seçim |
-| yön | Sabit Listesi | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| interchangeControlNumber | Dize | Değişim denetim numarası. Seçim |
-| ısasegment | Dize | İleti ISA segmenti. Seçim |
-| isTechnicalAcknowledgmentExpected | Boole | Teknik bildirimle x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir. Girilmesi |
-| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı. Girilmesi |
-| isa09 | Dize | X12 belge değişim tarihi. Seçim |
-| isa10 | Dize | X12 belge değişim süresi. Seçim |
-| ısa11 | Dize | X12 Interchange denetim standartları tanımlayıcısı. Seçim |
-| ISA12 | Dize | X12 Interchange Control sürüm numarası. Seçim |
-| isa14 | Dize | X12 onayı istendi. Seçim |
-| isa15 | Dize | Test veya üretim için gösterge. Seçim |
-| isa16 | Dize | Öğe ayırıcısı. Seçim |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
+| agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
+| yön | Evet | Sabit Listesi | İleti akışının yönü, yani `receive` ya da `send` |
+| interchangeControlNumber | Hayır | Dize | Değişim denetim numarası |
+| ısasegment | Hayır | Dize | İleti ISA segmenti |
+| isTechnicalAcknowledgmentExpected | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir  |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| isa09 | Hayır | Dize | X12 belge değişim tarihi |
+| isa10 | Hayır | Dize | X12 belge değişim saati |
+| ısa11 | Hayır | Dize | X12 Interchange denetim standartları tanımlayıcısı |
+| ISA12 | Hayır | Dize | X12 Interchange Control sürüm numarası |
+| isa14 | Hayır | Dize | X12 onay istendi |
+| isa15 | Hayır | Dize | Test veya üretim için gösterge |
+| isa16 | Hayır | Dize | Öğe ayırıcısı |
+|||||
 
-## <a name="x12-interchange-acknowledgement-tracking-schema"></a>X12 değişim onayı izleme şeması
+## <a name="x12-interchange-acknowledgment-tracking-schema"></a>X12 değişim bildirimi izleme şeması
 
 ```json
 {
@@ -220,26 +220,26 @@ ms.locfileid: "74791718"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | X12 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | X12 ileti alıcısının iş ortağı adı. Seçim |
-| senderQualifier | Dize | İş ortağı niteleyicisi gönderin. Girilmesi |
-| Senderıdentifier | Dize | İş ortağı tanımlayıcısı gönderin. Girilmesi |
-| receiverQualifier | Dize | İş ortağı niteleyicisi alma. Girilmesi |
-| Receiverıdentifier | Dize | İş ortağı tanımlayıcısını al. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme x12 sözleşmesinin adı. Seçim |
-| yön | Sabit Listesi | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| interchangeControlNumber | Dize | İş ortaklarından alınan teknik bildirimle ilgili değişim denetimi numarası. Seçim |
-| ısasegment | Dize | İş ortaklarından alınan teknik onay için ISA segmenti. Seçim |
-| respondingInterchangeControlNumber |Dize | İş ortaklarından alınan teknik bildirimle ilgili değişim denetim numarası. Seçim |
-| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı. Girilmesi |
-| Durum | Sabit Listesi | Değişim onayı durum kodu. İzin verilen değerler **kabul**edilir, **reddedilir**ve **acceptedwitherrors**. Girilmesi |
-| processingStatus | Sabit Listesi | Onay durumu. İzin verilen değerler **alınır**, **oluşturulur**ve **gönderilir**. Girilmesi |
-| ta102 | Dize | Değişim tarihi. Seçim |
-| ta103 | Dize | Değiş tokuş süresi. Seçim |
-| ta105 | Dize | Değişim notunun kodu. Seçim |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
+| agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
+| yön | Evet | Sabit Listesi | İleti akışının yönü, yani `receive` ya da `send` |
+| interchangeControlNumber | Hayır | Dize | İş ortaklarından alınan teknik bildirim değişim denetimi numarası |
+| ısasegment | Hayır | Dize | İş ortaklarından alınan teknik bildirim için ISA segmenti |
+| respondingInterchangeControlNumber | Hayır | Dize | İş ortaklarından alınan teknik bildirim için değişim denetim numarası |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| Durum | Evet | Sabit Listesi | Şu izin verilen değerlere sahip değişim bildirimi durum kodu: `Accepted`, `Rejected`ve `AcceptedWithErrors` |
+| processingStatus | Evet | Sabit Listesi | İzin verilen değerlere sahip bildirim durumu: `Received`, `Generated`ve `Sent` |
+| ta102 | Hayır | Dize | Değişim tarihi |
+| ta103 | Hayır | Dize | Değişim saati |
+| ta105 | Hayır | Dize | Değişim notunun kodu |
+|||||
 
 ## <a name="x12-functional-group-tracking-schema"></a>X12 işlevsel grup izleme şeması
 
@@ -273,32 +273,32 @@ ms.locfileid: "74791718"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | X12 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | X12 ileti alıcısının iş ortağı adı. Seçim |
-| senderQualifier | Dize | İş ortağı niteleyicisi gönderin. Girilmesi |
-| Senderıdentifier | Dize | İş ortağı tanımlayıcısı gönderin. Girilmesi |
-| receiverQualifier | Dize | İş ortağı niteleyicisi alma. Girilmesi |
-| Receiverıdentifier | Dize | İş ortağı tanımlayıcısını al. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme x12 sözleşmesinin adı. Seçim |
-| yön | Sabit Listesi | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| interchangeControlNumber | Dize | Değişim denetim numarası. Seçim |
-| functionalGroupControlNumber | Dize | İşlevsel denetim numarası. Seçim |
-| gsSegment | Dize | İleti GS segmenti. Seçim |
-| isTechnicalAcknowledgmentExpected | Boole | Teknik bildirimle x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir. Girilmesi |
-| isFunctionalAcknowledgmentExpected | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir. Girilmesi |
-| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı. Girilmesi|
-| gs01 | Dize | İşlevsel tanımlayıcı kodu. Seçim |
-| gs02 | Dize | Uygulama göndericisinin kodu. Seçim |
-| gs03 | Dize | Uygulama alıcısının kodu. Seçim |
-| gs04 | Dize | İşlevsel grup tarihi. Seçim |
-| gs05 | Dize | İşlevsel grup zamanı. Seçim |
-| gs07 | Dize | Sorumlu acentekodu. Seçim |
-| gs08 | Dize | Sürüm/sürüm/sektör tanımlayıcı kodu. Seçim |
-||||
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
+| agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
+| yön | Evet | Sabit Listesi | İleti akışının yönü, al veya Gönder |
+| interchangeControlNumber | Hayır | Dize | Değişim denetim numarası |
+| functionalGroupControlNumber | Hayır | Dize | İşlevsel denetim numarası |
+| gsSegment | Hayır | Dize | İleti GS segmenti |
+| isTechnicalAcknowledgmentExpected | Evet | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
+| isFunctionalAcknowledgmentExpected | Evet | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
+| ımessagefailed | Evet | Boole | X12 iletisinin başarısız olup olmadığı |
+| gs01 | Hayır | Dize | İşlevsel tanımlayıcı kodu |
+| gs02 | Hayır | Dize | Uygulama göndericisinin kodu |
+| gs03 | Hayır | Dize | Uygulama alıcısının kodu |
+| gs04 | Hayır | Dize | İşlevsel grup tarihi |
+| gs05 | Hayır | Dize | İşlevsel grup süresi |
+| gs07 | Hayır | Dize | Sorumlu Kurumu kodu |
+| gs08 | Hayır | Dize | Sürüm, sürüm veya sektör için tanımlayıcı kodu |
+|||||
 
-## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12 işlevsel grup onayı izleme şeması
+## <a name="x12-functional-group-acknowledgment-tracking-schema"></a>X12 işlevsel Grup onay izleme şeması
 
 ```json
 {
@@ -329,38 +329,37 @@ ms.locfileid: "74791718"
 }
 ```
 
-| Özellik | Tür | Açıklama |
-| --- | --- | --- |
-| senderPartnerName | Dize | X12 ileti göndericisinin iş ortağı adı. Seçim |
-| receiverPartnerName | Dize | X12 ileti alıcısının iş ortağı adı. Seçim |
-| senderQualifier | Dize | İş ortağı niteleyicisi gönderin. Girilmesi |
-| Senderıdentifier | Dize | İş ortağı tanımlayıcısı gönderin. Girilmesi |
-| receiverQualifier | Dize | İş ortağı niteleyicisi alma. Girilmesi |
-| Receiverıdentifier | Dize | İş ortağı tanımlayıcısını al. Girilmesi |
-| agreementName | Dize | İletilerin çözümlenme x12 sözleşmesinin adı. Seçim |
-| yön | Sabit Listesi | İleti akışının yönü, alma veya gönderme. Girilmesi |
-| interchangeControlNumber | Dize | İş ortaklarından teknik bir onay alındığında gönderme tarafına yönelik olan değişim denetim numarası. Seçim |
-| functionalGroupControlNumber | Dize | İş ortaklarından teknik onay alındığında gönderme tarafına yönelik olan teknik bildirimle ilgili işlevsel Grup denetimi numarası. Seçim |
-| ısasegment | Dize | Interchange Control numarasıyla aynıdır, ancak yalnızca belirli durumlarda doldurulur. Seçim |
-| gsSegment | Dize | İşlevsel Grup denetim numarasıyla aynıdır, ancak yalnızca belirli durumlarda doldurulur. Seçim |
-| respondingfunctionalGroupControlNumber | Dize | Özgün işlevsel grubun denetim numarası. Seçim |
-| respondingFunctionalGroupId | Dize | Onay işlev grubu KIMLIĞINDEKI AK101 ile eşlenir. Seçim |
-| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı. Girilmesi |
-| Durum | Sabit Listesi | Onay durum kodu. İzin verilen değerler **kabul**edilir, **reddedilir**ve **acceptedwitherrors**. Girilmesi |
-| processingStatus | Sabit Listesi | Bildirim işleme durumu. İzin verilen değerler **alınır**, **oluşturulur**ve **gönderilir**. Girilmesi |
-| ak903 | Dize | Alınan işlem kümesi sayısı. Seçim |
-| ak904 | Dize | Tanımlanan işlevsel grupta kabul edilen işlem kümesi sayısı. Seçim |
-| ak9Segment | Dize | AK1 segmentinde tanımlanan işlevsel grubun kabul edilip edilmediğini ve neden olduğunu. Seçim |
-|||| 
+| Özellik | Gereklidir | Tür | Açıklama |
+|----------|----------|------|-------------|
+| senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
+| senderQualifier | Evet | Dize | İş ortağı niteleyicisi gönder |
+| senderıdentifier | Evet | Dize | İş ortağı tanımlayıcısı gönder |
+| receiverQualifier | Evet | Dize | Alma ortağı niteleyicisi |
+| receiverıdentifier | Evet | Dize | İş ortağı tanımlayıcısını al |
+| agreementName | Hayır | Dize | İletilerin çözümlenme x12 sözleşmesinin adı |
+| yön | Evet | Sabit Listesi | İleti akışının yönü, yani `receive` ya da `send` |
+| interchangeControlNumber | Hayır | Dize | İş ortaklarından teknik bir bildirim alındığında gönderme tarafı için de olan değişim denetim numarası |
+| functionalGroupControlNumber | Hayır | Dize | İş ortaklarından teknik bir bildirim alındığında gönderme tarafına yönelik olan teknik bildirim 'nin işlevsel Grup denetim numarası |
+| ısasegment | Hayır | Dize | Interchange Control numarasıyla aynıdır, ancak yalnızca belirli durumlarda doldurulur |
+| gsSegment | Hayır | Dize | İşlevsel Grup denetim numarasıyla aynı ancak yalnızca belirli durumlarda doldurulmuş |
+| respondingfunctionalGroupControlNumber | Hayır | Dize | Özgün işlevsel grubun denetim numarası |
+| respondingFunctionalGroupId | Hayır | Dize | Bildirim işlev grubu KIMLIĞINDE AK101 eşlenir |
+| ımessagefailed | Boole | X12 iletisinin başarısız olup olmadığı |
+| Durum | Evet | Sabit Listesi | İzin verilen bu değerlere sahip bildirim durum kodu: `Accepted`, `Rejected`ve `AcceptedWithErrors` |
+| processingStatus | Evet | Sabit Listesi | Bu izin verilen değerlerle bildirim işleme durumu: `Received`, `Generated`ve `Sent` |
+| ak903 | Hayır | Dize | Alınan işlem kümesi sayısı |
+| ak904 | Hayır | Dize | Tanımlanan işlevsel grupta kabul edilen işlem kümesi sayısı |
+| ak9Segment | Hayır | Dize | AK1 segmentinde tanımlanan işlevsel grubun kabul edilip edilmediğini ve neden |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokol izleme şemaları
 
 B2B protokol izleme şemaları hakkında daha fazla bilgi için bkz.:
 
-* [AS2 izleme şemaları](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [AS2 izleme şemaları](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [B2B özel izleme şemaları](logic-apps-track-integration-account-custom-tracking-schema.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [B2B iletilerini izleme](logic-apps-monitor-b2b-message.md)hakkında daha fazla bilgi edinin.
-* [Azure izleyici GÜNLÜKLERINDE B2B iletilerini izleme](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)hakkında bilgi edinin.
+* [Azure Izleyici günlükleri ile B2B iletilerini izleme](../logic-apps/monitor-b2b-messages-log-analytics.md)

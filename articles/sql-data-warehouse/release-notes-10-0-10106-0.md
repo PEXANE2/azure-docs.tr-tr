@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122466"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896377"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL veri ambarı sürüm notları
 
@@ -38,6 +38,7 @@ Azure SQL DW 'nize hangi yayının uygulandığını onaylamak için tanımlanan
 | --- | --- |
 |**İş yükü Yönetim Portalı ölçümleri (Önizleme)**|Bu sürümden Itibaren önizleme için [Iş yükü yalıtımı](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) sürümü sayesinde kullanıcılar, sistem kaynaklarını verimli bir şekilde yönetmek için kendi [iş yükü gruplarını](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) oluşturabilir ve iş SLA 'larını karşılamalarını sağlayabilirsiniz.  Azure SYNAPSE Analytics için genel [iş yükü yönetimi](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) geliştirmelerinin bir parçası olarak, yeni [iş yükü yönetimi izleme ölçümleri](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) artık kullanılabilir.</br> </br> İş yükünüzü izlemek aşağıdaki ölçümler hakkında daha fazla öngörülere sahiptir: </br> -Etkin uç kaynak yüzdesi  </br> -Geçerli en düşük kaynak yüzdesi </br> -İş yükü grubu etkin sorguları </br> -İş yükü grubu ayırması en fazla kaynak yüzdesi </br> -Sistem iş yükü grubuna göre ayırma yüzdesi </br> -İş yükü grubu sorgu zaman aşımları </br> -İş yükü grubu sıraya alınmış sorgular </br></br> Bu ölçümleri, daha [az kullanılan iş yükü yalıtımı](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)ile yapılandırılan iş yükü [grubu sorunlarını](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) veya iş yükü gruplarını belirlemek için kullanın.  Bu ölçümler, Azure portalında iş yükü grubuna göre bölünme izin veren bir şekilde kullanılabilir.  En sevdiğiniz grafiklerinizi filtreleyin ve öngörülere hızlı erişim sağlamak için bir panoya sabitleyin.|
 |**Portal Izleme ölçümleri**| Genel sorgu etkinliğini izlemek için portala aşağıdaki ölçümler eklenmiştir: </br> -Etkin sorgular </br> -Sıraya alınmış sorgular </br> </br>Bu ölçümler, [izleme kaynak kullanımı ve sorgu etkinliği belgelerindeki](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)mevcut ölçümler ile birlikte açıklanmıştır.|
+|**Ürün adı**|Haziran 2020 ' e kadar, SELECT @@VERSION tarafından döndürülen ürün adı Microsoft Azure SQL Veri Ambarı Azure SYNAPSE Analytics 'e değişecektir. Yayın Notlarımızda zamanlamayı yayımlayacağız. Bu değişiklik, uygulama kodlarından @@VERSION seçme sonucundan ürün adını ayrıştırlayan müşteriler için uygundur. Ürün remarkalaması nedeniyle uygulama kodu değişikliklerinden kaçınmak için lütfen bu komutları kullanarak veritabanı ürün adı ve sürümünün SERVERPROPERTY 'sini sorgulayın. </br> DW sürüm numarası XX döndürmek için. X. XXXXX. X (ürün adı olmadan) şu komutu kullanın: SERVERPROPERTY (' ProductVersion ') öğesini SEÇIN </br> Motor sürümünü döndürmek için, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için 6 döndüren bu komutu kullanın: SERVERPROPERTY (' EngineEdition ') öğesini SEÇIN|
 
 ## <a name="october-2019"></a>Ekim 2019
 

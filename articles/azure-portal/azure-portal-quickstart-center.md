@@ -1,20 +1,20 @@
 ---
-title: Azure portalına genel bakış | Microsoft Docs
-description: Azure 'ı kullanmaya başlamak için Azure hızlı başlangıç merkezi Kılavuzlu deneyimini kullanın. Kurulum, geçirme ve yenilik yapın hakkında bilgi edinin.
+title: Azure hızlı başlangıç merkezi 'Ni kullanmaya başlama
+description: Azure 'ı kullanmaya başlamak için Azure hızlı başlangıç merkezi Kılavuzlu deneyimini kullanın. Ayarlamayı, geçirmeyi ve yenilik yapın ayarlamayı öğrenin.
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 624be4cca4fd274fdc5d2b2c374b87b3e0974888
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310551"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900698"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Azure hızlı başlangıç merkezi 'Ni kullanmaya başlama
 
@@ -33,8 +33,10 @@ Azure hızlı başlangıç merkezi 'nin başlangıç için üç seçeneği vard�
 ## <a name="how-to-use-azure-quickstart-center"></a>Azure hızlı başlangıç merkezi 'ni kullanma
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Kenar çubuğunun üst kısmından **tüm hizmetler** ' i seçin.
-1. **Genel** > **hızlı başlangıç merkezi 'ni**seçin. **Sık kullanılanlarınıza**kaydetmek için yıldız simgesini seçin.
+
+1. Azure portal menüsünde **tüm hizmetler** ' i seçin.
+
+1. **Genel** > **hızlı başlangıç merkezi 'ni**seçin.
 
 Azure hızlı başlangıç merkezi 'nin sizin için neler yapabileceğini derinlemesine bir bakış için, bu videoya göz atın:
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

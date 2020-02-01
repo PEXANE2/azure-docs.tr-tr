@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719345"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901921"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB ile bir Azure Resource Manager şablonu kullanarak Azure App Service Web Apps'e dağıtın
 Bu öğretici bir Azure Resource Manager şablonu dağıtma ve tümleştirme için nasıl kullanılacağını gösterir [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)e [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web uygulaması ve bir örnek web uygulaması.
@@ -69,7 +69,7 @@ Artık ilk şablonunuzu dağıtalım.
    ![Şablon dağıtımı kullanıcı Arabirimi ekran görüntüsü](./media/create-website/TemplateDeployment6.png)
 7. Dağıtım tamamlandığında kaynak grubu bölmesi açılır.
    ![Kaynak grubu bölmesinin ekran görüntüsü](./media/create-website/TemplateDeployment7.png)  
-8. Uygulamayı kullanmak için web uygulaması URL'sine gidin. (yukarıdaki örnekte, URL şu şekilde olacaktır http://mydemodocdbwebapp.azurewebsites.net).  Aşağıdaki web uygulaması görürsünüz:
+8. Uygulamayı kullanmak için Web uygulaması URL 'sine gidin (Yukarıdaki örnekte URL `http://mydemodocdbwebapp.azurewebsites.net`).  Aşağıdaki web uygulaması görürsünüz:
    
    ![Örnek TODO uygulaması](./media/create-website/image2.png)
 9. Devam edin ve birkaç görev web uygulaması oluşturun ve ardından Azure portalında kaynak grubu bölmesine dönün. Azure Cosmos DB hesap kaynağında kaynaklar listesine tıklayın ve ardından **Veri Gezgini**.

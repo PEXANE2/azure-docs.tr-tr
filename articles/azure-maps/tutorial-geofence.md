@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153165"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899221"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bölge bölge ayarlama
 
@@ -174,7 +174,7 @@ Postman uygulaması yüklendikten sonra, Azure Maps, veri yükleme API 'sini kul
 
 Bu bölümde, bildirimleri alan bir olay işleyicisi oluşturacağız. Bu olay işleyicisi, her donatımın giriş ve çıkış olayları hakkında Operations Manager bilgilendirmelidir.
 
-Olayları işlemek, girmek ve çıkış yapmak için iki [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) hizmeti sunuyoruz. Logic Apps tetikdeki olaylar, sırayla daha fazla etkinlik tetikler. Fikir, bu e-postalarda uyarı göndermek Operations Manager. Aşağıdaki şekilde, bölge sınırı Enter olayı için bir mantıksal uygulama oluşturma gösterilmektedir. Benzer şekilde, çıkış olayı için başka bir tane de oluşturabilirsiniz. Daha fazla bilgi için [desteklenen tüm olay işleyicilerini](https://docs.microsoft.com/azure/event-grid/event-handlers) görebilirsiniz.
+Giriş ve çıkış olaylarını işlemek için iki [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) hizmeti sunuyoruz. Logic Apps tetikdeki olaylar, sırayla daha fazla etkinlik tetikler. Fikir, bu e-postalarda uyarı göndermek Operations Manager. Aşağıdaki şekilde, bölge sınırı Enter olayı için bir mantıksal uygulama oluşturma gösterilmektedir. Benzer şekilde, çıkış olayı için başka bir tane de oluşturabilirsiniz. Daha fazla bilgi için [desteklenen tüm olay işleyicilerini](https://docs.microsoft.com/azure/event-grid/event-handlers) görebilirsiniz.
 
 1. Azure portal bir mantıksal uygulama oluşturma
 
@@ -194,7 +194,7 @@ Olayları işlemek, girmek ve çıkış yapmak için iki [Logic Apps](https://do
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure haritalar olayları aboneliği oluşturma
 
-Azure haritalar üç olay türünü destekler. Azure haritalar 'ın desteklenen olay türlerine [buradan] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps bakabilirsiniz. Biri, giriş olayı ve diğeri çıkış olayları için olmak üzere iki farklı olay aboneliğine ihtiyacımız var.
+Azure haritalar üç olay türünü destekler. Azure haritalar desteklenen olay türlerine [buradan](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)göz atabilirsiniz. Biri, giriş olayı ve diğeri çıkış olayları için olmak üzere iki farklı olay aboneliğine ihtiyacımız var.
 
 Bölge giriş olayları için bir olay aboneliği oluşturmak üzere aşağıdaki adımları izleyin. Bölge sınırı çıkış olaylarına benzer bir şekilde abone olabilirsiniz.
 

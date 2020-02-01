@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447356"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901667"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Öğretici: Azure bot hizmeti v4 ile QnA bot oluşturma
 
 Mevcut bir Bilgi Bankası için **Yayımla** sayfasından bir QNA chat bot oluşturun. Bu bot, bot Framework SDK v4 kullanır. Bot oluşturmak için herhangi bir kod yazmanız gerekmez, tüm kod sizin için sağlanır.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -41,11 +41,11 @@ Bilgi Bankası için istemci uygulaması olarak bir bot oluşturun.
 
 1. Soru-Cevap Oluşturma portalında **Yayımla** sayfasına gidin ve bilgi tabanınızı yayımlayın. **Bot oluştur**' u seçin.
 
-    ![Soru-Cevap Oluşturma portalında Yayımla sayfasına gidin ve bilgi tabanınızı yayımlayın. Bot Oluştur'u seçin.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [Soru-Cevap Oluşturma portalında ![Yayımla sayfasına gidin ve bilgi tabanınızı yayımlayın. Bot oluştur ' u seçin.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
-    Azure portalı bot oluşturma yapılandırmasıyla açılır.
+    Azure portal, bot oluşturma yapılandırması ile açılır.
 
-1.  Bot oluşturmak için ayarları girin:
+1.  Bot 'ı oluşturmak için ayarları girin:
 
     |Ayar|Değer|Amaç|
     |--|--|--|
@@ -57,7 +57,7 @@ Bilgi Bankası için istemci uygulaması olarak bir bot oluşturun.
     |Uygulama adı|`qna-maker-central-us-bot-app`|Bu, yalnızca bot uygulamanızı destekleyecek bir Web uygulamasıdır. Soru-Cevap Oluşturma hizmetiniz zaten kullandığı için bu uygulama adı aynı olmamalıdır. Soru-Cevap Oluşturma Web uygulamasını başka bir kaynakla paylaşma desteklenmez.|
     |SDK Dili|C#|Bu, bot Framework SDK 'Sı tarafından kullanılan temel programlama dilidir. Seçenekleriniz veya [C#](https://github.com/Microsoft/botbuilder-dotnet) [Node. js](https://github.com/Microsoft/botbuilder-js)' dir.|
     |QnA auth anahtarı|**Değiştirme**|Bu değer sizin için doldurulur.|
-    |App Service planı/Konumu|**Değiştirme**|Bu öğreticide, konum önemli değildir.|
+    |Uygulama hizmeti planı/konumu|**Değiştirme**|Bu öğreticide, konum önemli değildir.|
     |Application Insights|**Değiştirme**|Günlüğe kaydetme Application Insights gönderilir.|
     |Microsoft uygulama KIMLIĞI|**Değiştirme**|Active Directory kullanıcısı ve parolası gereklidir.|
 
@@ -70,9 +70,9 @@ Bilgi Bankası için istemci uygulaması olarak bir bot oluşturun.
 
 ## <a name="chat-with-the-bot"></a>Bot ile sohbet edin
 
-1. Azure portalında, bildirimden yeni bot kaynağını açın.
+1. Azure portal, bildirimdeki yeni bot kaynağını açın.
 
-    ![Azure portalında, bildirimden yeni bot kaynağını açın.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
+    ![Azure portal, bildirimdeki yeni bot kaynağını açın.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
 1. **Bot Management**'Tan **Web sohbeti ' nda test** ' i seçin ve şunu girin: `How large can my KB be?`. Bot şu şekilde yanıt verir:
 
@@ -101,8 +101,6 @@ Yeni bir kaynak grubu oluşturmadıysanız, bot ile ilişkili kaynakları bulman
 
 ## <a name="related-to-qna-maker-bots"></a>Soru-Cevap Oluşturma botları ile ilgili
 
-* Soru-Cevap Oluşturma portalında kullanılan Soru-Cevap Oluşturma yardım bot, bir [bot örneği](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)olarak sunulmaktadır.
-    ![Soru-Cevap Oluşturma yardım bot simgesi kırmızı robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [Sağlık botları](https://docs.microsoft.com/HealthBot/qna_model_howto) [dil modellerinden](https://docs.microsoft.com/HealthBot/qna_model_howto)biri olarak soru-cevap oluşturma kullanır.
 
 

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666831"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905120"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Önceden oluşturulmuş şablonlardan mantıksal uygulama iş akışları oluşturma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
 ## <a name="create-logic-apps-from-templates"></a>Şablonlardan Logic Apps oluşturma
 
-1. Henüz yapmadıysanız [Azure Portal](https://portal.azure.com "Azure Portal")oturum açın.
+1. Henüz yapmadıysanız [Azure Portal](https://portal.azure.com "Azure portalında")oturum açın.
 
 2. Azure ana menüsünden **Kaynak oluştur** > **Kurumsal Tümleştirme** > **Mantıksal Uygulama**'yı seçin.
 
@@ -46,11 +46,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
-   | **Adı** | *mantıksal-uygulamanızın-adı* | Mantıksal uygulama için benzersiz bir ad girin. | 
+   | **Ad** | *mantıksal-uygulamanızın-adı* | Mantıksal uygulama için benzersiz bir ad girin. | 
    | **Abonelik** | *Azure-aboneliğinizin-adı* | Kullanmak istediğiniz Azure aboneliğini seçin. | 
    | **Kaynak grubu** | *Azure-kaynak-grubunuzun-adı* | Bu mantıksal uygulama için bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun veya seçin ve bu uygulamayla ilişkili tüm kaynakları düzenleyin. | 
    | **Konum** | *Azure-veri-merkezi-bölgeniz* | Batı ABD gibi mantıksal uygulamanızın dağıtılacağı veri merkezi bölgesini seçin. | 
-   | **Log Analytics** | **Kapalı** (varsayılan) veya **Açık** | [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md)aracılığıyla mantıksal uygulamanız için [Tanılama günlüğünü](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) açın. Zaten bir Log Analytics çalışma alanına sahip olmanızı gerektirir. | 
+   | **Log Analytics** | **Kapalı** (varsayılan) veya **Açık** | [Azure izleyici günlüklerini](../log-analytics/log-analytics-overview.md)kullanarak mantıksal uygulamanız için [tanılama günlüğü](../logic-apps/monitor-logic-apps-log-analytics.md) ayarlayın. Zaten bir Log Analytics çalışma alanına sahip olmanızı gerektirir. | 
    |||| 
 
 4. Hazır olduğunuzda **Panoya sabitle**'yi seçin. Bu şekilde mantıksal uygulamanız otomatik olarak Azure panonuzda görüntülenir ve dağıtımdan sonra açılır. **Oluştur**’u seçin.
@@ -85,7 +85,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
    Örneğin:
 
-   ![Bağlantı oluşturma](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
+   ![Bağlantı oluştur](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
    İşiniz bittiğinde mantıksal uygulamanız açılır ve Logic Apps tasarımcısında görünür.
 
@@ -99,7 +99,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
 ## <a name="update-logic-apps-with-templates"></a>Mantıksal uygulamaları şablonlarla güncelleştirme
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal"), mantıksal uygulama Tasarımcısı ' nda mantıksal uygulamanızı bulun ve açın.
+1. [Azure Portal](https://portal.azure.com "Azure portalında"), mantıksal uygulama Tasarımcısı ' nda mantıksal uygulamanızı bulun ve açın.
 
 2. Tasarımcı araç çubuğunda **Şablonlar**' ı seçin. Bu eylem kaydedilmemiş değişiklikleri atar, bu nedenle devam etmek istediğinizi doğrulayabilmeniz için bir uyarı iletisi görüntülenir. Onaylamak için **Tamam**' ı seçin. Örneğin:
 
@@ -124,7 +124,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için k
 
    * Bu bağlantıları zaten ayarladıysanız **devam**' ı seçin.
 
-   ![Bağlantı oluşturma](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
+   ![Bağlantı oluştur](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
    Mantıksal uygulamanız artık açılır ve Logic Apps tasarımcısında görünür.
 

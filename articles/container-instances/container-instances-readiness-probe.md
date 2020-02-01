@@ -3,12 +3,12 @@ title: Kapsayıcı örneği üzerinde hazırlık araştırması ayarlama
 description: Azure Container Instances içindeki kapsayıcıların istekleri yalnızca hazırlandıklarında almasını sağlamak için bir araştırma yapılandırmayı öğrenin
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533555"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901841"
 ---
 # <a name="configure-readiness-probes"></a>Hazır olma yoklamalarını yapılandırma
 
@@ -17,6 +17,9 @@ Trafiğe sunan Kapsayıcılı uygulamalar için, kapsayıcının gelen istekleri
 Bu makalede, bir hazırlık araştırması içeren bir kapsayıcı grubunun nasıl dağıtılacağı açıklanır. bu sayede bir kapsayıcının yalnızca araştırma başarılı olduğunda trafik almasını sağlar.
 
 Azure Container Instances Ayrıca, sağlıksız bir kapsayıcının otomatik olarak yeniden başlatılmasına neden olacak şekilde yapılandırabileceğiniz [lizleştirme yoklamalarını](container-instances-liveness-probe.md)da destekler.
+
+> [!NOTE]
+> Şu anda bir sanal ağa dağıtılan bir kapsayıcı grubunda hazırlık araştırması kullanamazsınız.
 
 ## <a name="yaml-configuration"></a>YAML yapılandırması
 

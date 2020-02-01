@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945727"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899940"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak Azure Bilişsel Arama içeriğin geri kalanında şifreleme
 
@@ -26,13 +26,13 @@ Müşteri tarafından yönetilen anahtarlarla şifreleme, bu nesneler oluşturul
 Anahtarların tümünün aynı Key Vault olması gerekmez. Tek bir arama hizmeti, her biri farklı anahtar kasalarında depolanan kendi müşteri tarafından yönetilen şifreleme anahtarlarıyla şifrelenmiş birden çok şifrelenmiş dizini veya eş anlamlı eşlemeleri barındırabilir.  Ayrıca, aynı hizmette, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmemiş dizinler ve eş anlamlı haritalar da olabilir. 
 
 > [!IMPORTANT] 
-> Bu özellik [REST API sürüm 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) ve [.net SDK sürümü 8,0-Preview](search-dotnet-sdk-migration-version-9.md)' da kullanılabilir. Şu anda Azure portal müşterinin yönettiği şifreleme anahtarlarını yapılandırma desteği yoktur.
+> Bu özellik [REST API sürüm 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) ve [.net SDK sürümü 8,0-Preview](search-dotnet-sdk-migration-version-9.md)' da kullanılabilir. Şu anda Azure portal müşterinin yönettiği şifreleme anahtarlarını yapılandırma desteği yoktur. Arama hizmeti 2019 Ocak 'tan sonra oluşturulmalıdır ve ücretsiz (paylaşılan) bir hizmet olamaz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki hizmetler bu örnekte kullanılır. 
 
-+ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Arama hizmeti 2019 Ocak 'tan sonra oluşturulmalıdır ve ücretsiz (paylaşılan) bir hizmet olamaz.
++ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . 
 
 + Aboneliğiniz altında [bir Azure Key Vault kaynağı oluşturun](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) veya mevcut bir kasayı bulun.
 

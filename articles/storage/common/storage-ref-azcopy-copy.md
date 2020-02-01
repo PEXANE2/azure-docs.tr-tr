@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029992"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905512"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -147,25 +147,25 @@ Bir SAS belirteci kullanarak tüm blob kapsayıcılarını, dizinleri ve bloblar
 
 Bir erişim anahtarı ve SAS belirteci kullanarak Amazon Web Services (AWS) S3 ' den blob depolamaya tek bir nesne kopyalama. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
   
-- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- AzCopy CP "https://s3.amazonaws.com/ [Bucket]/[nesne]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak AWS S3 'ten bir dizinin tamamını blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/[Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/ [Bucket]/[klasör]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/Directory]? [SAS] "--özyinelemeli = true
 
 [Folder] yer tutucusunu daha iyi anlamak için lütfen https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html başvurun.
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak tüm demetleri Amazon Web Services (AWS) ' den blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak, tüm demetleri bir Amazon Web Services (AWS) bölgesinden blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3-[Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3- [Bölge]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt kümesini kopyalayın. Önceki örneklerde olduğu gibi, bir erişim anahtarına ve SAS belirtecine ihtiyacınız olacaktır. AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarladığınızdan emin olun.
 
-- AzCopy CP "https://s3.amazonaws.com/[Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/ [Bucket * ad]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 ## <a name="options"></a>Seçenekler
 
@@ -217,7 +217,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--No-tahmin-MIME türü**                   AzCopy 'in, dosyanın uzantısına veya içeriğine göre içerik türünü algılamasını önler.
 
-**--** bu bayrak true olarak ayarlandıysa, dizenin üzerine yazma, hedefteki çakışan dosya ve Blobların üzerine yazar. Olası değerler ' true ', ' false ' ve ' Prompt ' değerleridir. (varsayılan "true")
+**--** bu bayrak true olarak ayarlandıysa, dizenin üzerine yazma, hedefteki çakışan dosya ve Blobların üzerine yazar. Olası değerler ' true ', ' false ', ' ifSourceNewer ' ve ' Prompt ' değerleridir. (varsayılan "true")
 
 **--Page-blob katmanı** dizesi bu blob katmanını kullanarak sayfa blobunu Azure depolama 'ya yükler. (varsayılan "none")
 

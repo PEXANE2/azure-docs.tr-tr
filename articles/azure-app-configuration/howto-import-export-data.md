@@ -3,21 +3,21 @@ title: Azure Uygulama yapılandırması ile verileri içeri aktarma veya dışar
 description: Azure Uygulama yapılandırmasına/içeri veya dışarı veri aktarmayı öğrenin
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: balans
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 9780dc34aa6b146fe62b11586cbab46825e60535
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 64fcc8396fc1b771d0095ee595fd177d7fe99b58
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185166"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899521"
 ---
 # <a name="import-or-export-configuration-data"></a>Yapılandırma verilerini içeri veya dışarı aktarma
 
@@ -49,7 +49,7 @@ Bu makale, uygulama yapılandırmasıyla veri içeri ve dışarı aktarmaya yön
 
     ![Dosya içeri aktarma tamamlandı](./media/import-file-complete.png)
 
-## <a name="export-data"></a>Verileri dışarı aktarma
+## <a name="export-data"></a>Verileri dışarı aktar
 
 Uygulama yapılandırmasında depolanan yazma yapılandırması verilerini başka bir hedefe dışarı aktarın. Uygulama yapılandırma deposundaki verileri dağıtım sırasında uygulama kodunuzla birlikte gömülü bir dosyaya kaydetmek için dışarı aktarma işlevini kullanın.
 

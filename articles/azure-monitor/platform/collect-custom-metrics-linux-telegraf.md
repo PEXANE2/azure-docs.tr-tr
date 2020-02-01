@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926739"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901328"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -21,7 +21,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 
 ## <a name="influxdata-telegraf-agent"></a>Etkileyen XData telegraf Aracısı 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) , 150 farklı kaynaklardan ölçüm toplamayı sağlayan bir eklenti temelli aracıdır. SANAL makinenizde çalışan iş yüklerine bağlı olarak, bir aracıyı, ölçümleri toplamak için özel giriş eklentilerinden faydalanmak üzere yapılandırabilirsiniz. MySQL, NGıNX ve Apache örnekleri aşağıda verilmiştir. Çıkış eklentilerini kullanarak, aracı seçtiğiniz hedeflere yazabilir. Telegraf Aracısı, Azure Izleyici özel ölçümleriyle REST API doğrudan tümleştirilmiştir. Azure Izleyici çıkış eklentisini destekler. Bu eklentiyi kullanarak, aracı Linux sanal makinenizde iş yüküne özgü ölçümler toplayabilir ve bunları Azure Izleyici 'ye özel ölçümler olarak gönderebilir. 
+[Telegraf](https://docs.influxdata.com/telegraf/) , 150 farklı kaynaklardan ölçüm toplamayı sağlayan bir eklenti temelli aracıdır. SANAL makinenizde çalışan iş yüklerine bağlı olarak, bir aracıyı, ölçümleri toplamak için özel giriş eklentilerinden faydalanmak üzere yapılandırabilirsiniz. MySQL, NGıNX ve Apache örnekleri aşağıda verilmiştir. Çıkış eklentilerini kullanarak, aracı seçtiğiniz hedeflere yazabilir. Telegraf Aracısı, Azure Izleyici özel ölçümleriyle REST API doğrudan tümleştirilmiştir. Azure Izleyici çıkış eklentisini destekler. Bu eklentiyi kullanarak, aracı Linux sanal makinenizde iş yüküne özgü ölçümler toplayabilir ve bunları Azure Izleyici 'ye özel ölçümler olarak gönderebilir. 
 
  ![Telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
