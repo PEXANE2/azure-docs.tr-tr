@@ -1,33 +1,30 @@
 ---
-title: 'Hızlı başlangıç: node. js kullanarak olay gönderme ve alma-Azure Event Hubs'
-description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönderen bir Node. js uygulaması oluşturmak için bir yol sağlar.'
+title: Node. js kullanarak Azure Event Hubs olay gönderme veya alma (eski)
+description: Bu makalede, Azure Event Hubs eski Azure/Olay-Hub 'ları sürüm 2 paketini kullanarak/hizmetinden olay gönderen/alan bir Node. js uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940721"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899902"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Azure Event Hubs olay gönderme veya olayları alma
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>Hızlı başlangıç: node. js kullanarak Azure Event Hubs olay gönderme veya olayları alma (@azure/event-hubs sürüm 2)
 
 Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
 
 Bu öğreticide, Olay Hub 'ından olayları gönderme veya olayları alma için Node. js uygulamalarının nasıl oluşturulacağı açıklanmaktadır.
 
-> [!IMPORTANT]
-> Bu hızlı başlangıçta Azure Event Hubs Java betik SDK 'sının 2. sürümü kullanılmaktadır. Azure Event Hubs 'de yeni bir sürüm kullanıyorsanız, Java betik SDK 'sının 5. sürümünü kullanın. Java betik SDK 'sının 5 sürümünü kullanan bir hızlı başlangıç için, [Bu makaleye](get-started-node-send-v2.md)bakın. Mevcut kodu sürüm 2 ' den sürüm 5 ' e geçirmeniz gerekiyorsa, [geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)bakın.
+> [!WARNING]
+> Bu hızlı başlangıç, Azure Event Hubs Java betik SDK 'Sı sürüm 2 ' dir. Kodunuzu [Java betik SDK 'sının 5. sürümüne](get-started-node-send-v2.md) [geçirmeniz](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md) önerilir. 
 
-> [!NOTE]
-> Bu hızlı başlangıcı [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client)’dan örnek olarak indirebilir, `EventHubConnectionString` ve `EventHubName` dizelerini olay hub’ınızdaki değerlerle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
+
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -55,6 +52,9 @@ npm install @azure/event-processor-host
 ## <a name="send-events"></a>Olayları gönderme
 
 Bu bölümde, Olay Hub 'ına olayları gönderen bir Node. js uygulamasının nasıl oluşturulacağı gösterilmektedir. 
+
+> [!NOTE]
+> Bu hızlı başlangıcı [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client)’dan örnek olarak indirebilir, `EventHubConnectionString` ve `EventHubName` dizelerini olay hub’ınızdaki değerlerle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com)gibi en sevdiğiniz düzenleyiciyi açın. 
 2. `send.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın. Makaledeki yönergeleri izleyerek olay hub'ı ad alanı için bağlantı dizesini alın: [bağlantı dizesi alma](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 

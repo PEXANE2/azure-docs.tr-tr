@@ -13,31 +13,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 62455b395e6cad3ccf7650534d92d94a6a0a2417
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1f799c8f2e2b209e9939845047c61d50bc1a244d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977487"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898539"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>Hızlı başlangıç: Python kullanarak Azure Data Factory ve işlem hattı oluşturma
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-python.md)
 
-Bu hızlı başlangıç, Python kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasındaki işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre kopyalar.
+Bu hızlı başlangıçta Python kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre kopyalar.
 
-Azure Data Factory, bulutta veri hareketi ve veri dönüştürmeyi düzenleyip otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory’yi kullanarak, farklı veri depolarından veri alabilen, Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işleyebilen/dönüştürebilen ve çıktı verilerini iş zekası (BI) uygulamaları tarafından kullanılabilmesi için Azure SQL Veri Ambarı gibi veri depolarında yayımlayabilen veri odaklı iş akışları (işlem hatları olarak adlandırılır) oluşturup zamanlayabilirsiniz.
+Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak, işlem hatları olarak adlandırılan veri odaklı iş akışları oluşturabilir ve zamanlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+İşlem hatları, farklı veri depolarından veri alabilir. İşlem hatları Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işler veya dönüştürür. İşlem hatları, çıktı verilerini iş zekası (BI) uygulamaları için Azure SQL veri ambarı gibi veri depolarında yayımlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure Depolama hesabı**. Blob depolama alanını **kaynak** ve **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
-* **Azure Active Directory’de**[bu yönergeyi](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) izleyerek bir uygulama oluşturun. Sonraki adımlarda kullandığınız şu değerleri not edin: **uygulama kimliği**, **kimlik doğrulama anahtarı** ve **kiracı kimliği**. Aynı makalede bulunan yönergeleri izleyerek uygulamayı "**Katkıda bulunan**" rolüne atayın.
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-### <a name="create-and-upload-an-input-file"></a>Giriş dosyası oluşturma ve yükleme
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Bir Azure depolama hesabı](../storage/common/storage-account-create.md).
+
+* [Azure Depolama Gezgini](https://storageexplorer.com/) (isteğe bağlı).
+
+* [Azure Active Directory bir uygulama](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Sonraki adımlarda kullanmak için aşağıdaki değerleri unutmayın: **uygulama kimliği**, **kimlik doğrulama anahtarı**ve **Kiracı kimliği**. Aynı makaledeki yönergeleri uygulayarak uygulamayı **katkıda bulunan** rolüne atayın.
+
+## <a name="create-and-upload-an-input-file"></a>Giriş dosyası oluşturma ve yükleme
 
 1. Not Defteri'ni başlatın. Aşağıdaki metni kopyalayıp diskinizde **input.txt** dosyası olarak kaydedin.
 

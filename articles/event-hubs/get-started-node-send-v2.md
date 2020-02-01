@@ -1,47 +1,53 @@
 ---
-title: Node. js-Azure Event Hubs kullanarak olay gönderme ve alma
-description: Bu makalede, Azure Event Hubs'dan olayları gönderen bir Node.js uygulaması oluşturmak için bir kılavuz sağlar.
+title: Node. js kullanarak Azure Event Hubs olay gönderme veya alma (en son)
+description: Bu makalede, Azure Event Hubs en son Azure/Olay-Hub sürümü 5 paketini kullanarak olayları gönderen/alan bir Node. js uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 01/09/2020
+ms.topic: quickstart
+ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: d4810c325acc42d5aa665002654cb01154cdc6bb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b523e4a7b463564cbfeb407c91b7bb05317f8166
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981626"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906377"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Node. js kullanarak Azure Event Hubs olayları gönderme veya olayları alma
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-nodejs--azureevent-hubs-version-5"></a>Node. js kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure/Olay-Hub sürüm 5)
 
-Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
+Azure Event Hubs, saniyede milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Olay Hub 'ları dağıtılmış yazılım ve cihazlar tarafından üretilen olayları, verileri veya Telemetriyi işleyebilir ve saklayabilir. Bir olay hub 'ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işlem/depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Daha fazla bilgi için bkz. [Event Hubs genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
 
-Bu öğreticide, Olay Hub 'ından olayları gönderme veya olayları alma için Node. js uygulamalarının nasıl oluşturulacağı açıklanmaktadır.
+Bu hızlı başlangıç, bir olay hub 'ından olay gönderebilen veya olayları alabilen Node. js uygulamalarının nasıl oluşturulacağını açıklar.
 
 > [!IMPORTANT]
-> Bu hızlı başlangıçta Azure Event Hubs Java betik SDK 'sının 5. sürümü kullanılmaktadır. Java betik SDK 'sının eski sürüm 2 ' yi kullanan hızlı bir başlangıç için, [Bu makaleye](event-hubs-node-get-started-send.md)bakın. SDK sürüm 2 ' yi kullanıyorsanız, kodunuzu en son sürüme geçirmeniz önerilir. Ayrıntılar için bkz. [Geçiş Kılavuzu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
+> Bu hızlı başlangıçta Azure Event Hubs JavaScript SDK 'sının 5. sürümü kullanılmaktadır. JavaScript SDK 'sının 2. sürümünü kullanan hızlı bir başlangıç için, [Bu makaleye](event-hubs-node-get-started-send.md)bakın. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
+Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
-- Etkin bir Azure hesabı. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-- Node.js sürümü 8.x ve daha yüksek. En son LTS sürümü [ https://nodejs.org ](https://nodejs.org).
-- Visual Studio Code (önerilir) veya diğer herhangi bir IDE
-- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin, ardından bu öğreticide aşağıdaki adımlarla devam edin. Ardından, makaledeki yönergeleri izleyerek Olay Hub 'ı ad alanı için bağlantı dizesini alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra'de bağlantı dizesini kullanın.
+- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).  
+- Node. js sürüm 8. x veya üzeri. En son [uzun süreli destek (LTS) sürümünü](https://nodejs.org)indirin.  
+- Visual Studio Code (önerilir) veya diğer bir tümleşik geliştirme ortamı (IDE).  
+- Etkin bir Event Hubs ad alanı ve Olay Hub 'ı. Bunları oluşturmak için aşağıdaki adımları uygulayın: 
 
+   1. [Azure Portal](https://portal.azure.com), *Event Hubs*türünde bir ad alanı oluşturun ve ardından uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. 
+   1. Ad alanı ve Olay Hub 'ı oluşturmak için [hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturma](event-hubs-create.md)' daki yönergeleri izleyin.
+   1. Bu hızlı başlangıçtaki yönergeleri izleyerek devam edin. 
+   1. Olay Hub 'ı ad alanınız için bağlantı dizesini almak için [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)' daki yönergeleri izleyin. Daha sonra bu hızlı başlangıçta kullanılacak bağlantı dizesini kaydedin.
 
-### <a name="install-npm-packages"></a>NPM paketlerini yükler
-[Event Hubs için NPM paketini](https://www.npmjs.com/package/@azure/event-hubs)yüklemek için, yolunda `npm` olan bir komut istemi açın, dizini örneklerinizin olmasını istediğiniz klasörle değiştirin ve ardından bu komutu çalıştırın
+### <a name="install-the-npm-package"></a>NPM paketini yükler
+[Event Hubs Için düğüm paketi Yöneticisi (NPM) paketini](https://www.npmjs.com/package/@azure/event-hubs)yüklemek için, yolunda *NPM* olan bir komut istemi açın, dizini, örneklerinizi tutmak istediğiniz klasörle değiştirin ve ardından şu komutu çalıştırın:
 
 ```shell
 npm install @azure/event-hubs
 ```
 
-Alma tarafı için, iki paketi de yüklemeniz gerekir. Bu hızlı başlangıçta, programın zaten okuduğunuzu belirten olayları okuyamaması için Azure Blob depolama 'yı kalıcı denetim noktaları için kullanacaksınız. Alınan iletilerde meta verileri bir Blobun düzenli aralıklarla kontrol ediyor. Bu yaklaşım, daha sonraki bir zamanda kaldığı yerden gelen iletileri almaya devam etmek kolaylaştırır.
+Alma tarafı için, iki paketi de yüklemeniz gerekir. Bu hızlı başlangıçta, programın zaten okuduğunuzdan olayları okuyamaması için kontrol noktalarını kalıcı hale getirmek üzere Azure Blob depolama alanını kullanırsınız. Alınan iletilerde meta veri denetim noktalarını bir Blobun düzenli aralıklarla gerçekleştirir. Bu yaklaşım, daha sonra kaldığınız yerden ileti almaya devam etmeyi kolaylaştırır.
+
+Aşağıdaki komutları çalıştırın:
 
 ```shell
 npm install @azure/storage-blob
@@ -53,10 +59,10 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>Olayları gönderme
 
-Bu bölümde, Olay Hub 'ına olayları gönderen bir Node. js uygulamasının nasıl oluşturulacağı gösterilmektedir.
+Bu bölümde, Olay Hub 'ına olayları gönderen bir Node. js uygulaması oluşturacaksınız.
 
 1. [Visual Studio Code](https://code.visualstudio.com)gibi en sevdiğiniz düzenleyiciyi açın.
-2. `send.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın.
+1. *Send. js*adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın:
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
@@ -66,19 +72,19 @@ Bu bölümde, Olay Hub 'ına olayları gönderen bir Node. js uygulamasının na
 
     async function main() {
 
-      // create a producer client to send messages to the event hub
+      // Create a producer client to send messages to the event hub.
       const producer = new EventHubProducerClient(connectionString, eventHubName);
 
-      // prepare a batch of three events
+      // Prepare a batch of three events.
       const batch = await producer.createBatch();
       batch.tryAdd({ body: "First event" });
       batch.tryAdd({ body: "Second event" });
       batch.tryAdd({ body: "Third event" });    
 
-      // send the batch to the event hub
+      // Send the batch to the event hub.
       await producer.sendBatch(batch);
 
-      // close the producer client
+      // Close the producer client.
       await producer.close();
 
       console.log("A batch of three events have been sent to the event hub");
@@ -88,34 +94,37 @@ Bu bölümde, Olay Hub 'ına olayları gönderen bir Node. js uygulamasının na
       console.log("Error occurred: ", err);
     });
     ```
-3. Koddaki **bağlantı dizesini** ve **Olay Hub 'ı ad** değerlerini değiştirmeyi unutmayın.
-5. Bu dosyayı yürütmek için `node send.js` komutunu çalıştırın. Bu, Olay Hub 'ınıza üç olay toplu işi gönderir
-6. Azure portal, Olay Hub 'ının iletileri aldığını doğrulayabilirsiniz. **Ölçümler** bölümünde **iletiler** görünümüne geçin. Grafiği güncelleştirmek için sayfayı yenileyin. İletilerin alındığını göstermesi birkaç saniye sürebilir.
+1. Kodda, aşağıdakileri değiştirmek için gerçek değerleri kullanın:
+    * `EVENT HUBS NAMESPACE CONNECTION STRING` 
+    * `EVENT HUB NAME`
+1. Bu dosyayı yürütmek için `node send.js` çalıştırın. Bu komut, Olay Hub 'ınıza üç olay toplu işi gönderir.
+1. Azure portal, Olay Hub 'ının iletileri aldığını doğrulayın. **Ölçümler** bölümünde **iletiler** görünümü ' ne geçin. Grafiği güncelleştirmek için sayfayı yenileyin. İletilerin alındığını göstermesi birkaç saniye sürebilir.
 
     [![Olay Hub 'ının iletileri aldığını doğrulama](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js) bakın
+    > Ek bilgilendirme açıklamaları dahil olmak üzere, tüm kaynak kodu için [GitHub sendEvents. js sayfasına](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js)gidin.
 
 Tebrikler! Olayları artık bir olay hub 'ına gönderdiniz.
 
 
 ## <a name="receive-events"></a>Olayları alma
-Bu bölümde, bir Node. js uygulamasında bir Azure Blob kontrol noktası deposu kullanarak bir olay hub 'ından nasıl olay alınacağı gösterilmektedir. Bu kontrol noktaları meta verileri Azure depolama blobu, düzenli aralıklarla alınan iletiler. Bu yaklaşım, daha sonraki bir zamanda kaldığı yerden gelen iletileri almaya devam etmek kolaylaştırır.
+Bu bölümde, bir Node. js uygulamasında bir Azure Blob depolama denetim noktası deposu kullanarak bir olay hub 'ından olay alırsınız. Bir Azure depolama blobunda düzenli aralıklarla alınan iletilerde meta veri denetim noktaları gerçekleştirir. Bu yaklaşım, daha sonra kaldığınız yerden ileti almaya devam etmeyi kolaylaştırır.
 
-### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure depolama ve BLOB kapsayıcısı oluşturma
-Bir Azure Depolama hesabını bir blob kapsayıcısı oluşturmak için bu adımları izleyin.
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure depolama hesabı ve BLOB kapsayıcısı oluşturma
+Bir Azure depolama hesabı ve içinde bir blob kapsayıcısı oluşturmak için aşağıdaki işlemleri yapın:
 
-1. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)
-2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+1. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)  
+2. [Depolama hesabında bir blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Bağlantı dizesi ve kapsayıcı adı ' nı aklınızda edin. Bunları alma kodunda kullanacaksınız.
+Alma kodunda daha sonra kullanmak için bağlantı dizesini ve kapsayıcı adını kaydettiğinizden emin olun.
 
 ### <a name="write-code-to-receive-events"></a>Olayları almak için kod yazma
 
 1. [Visual Studio Code](https://code.visualstudio.com)gibi en sevdiğiniz düzenleyiciyi açın.
-2. `receive.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın. Ayrıntılar için bkz. kod açıklamaları.
+1. *Receive. js*adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın:
+
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");
     const { ContainerClient } = require("@azure/storage-blob");    
@@ -128,20 +137,20 @@ Bir Azure Depolama hesabını bir blob kapsayıcısı oluşturmak için bu adım
     const containerName = "BLOB CONTAINER NAME";
 
     async function main() {
-      // create a blob container client and a blob checkpoint store using the client
+      // Create a blob container client and a blob checkpoint store using the client.
       const containerClient = new ContainerClient(storageConnectionString, containerName);
       const checkpointStore = new BlobCheckpointStore(containerClient);
 
-      // create a consumer client for the event hub by specifying the checkpoint store
+      // Create a consumer client for the event hub by specifying the checkpoint store.
       const consumerClient = new EventHubConsumerClient(consumerGroup, connectionString, eventHubName, checkpointStore);
 
-      // subscribe for the events and specify handlers for processing the events and errors.
+      // Subscribe to the events, and specify handlers for processing the events and errors.
       const subscription = consumerClient.subscribe({
           processEvents: async (events, context) => {
             for (const event of events) {
               console.log(`Received event: '${event.body}' from partition: '${context.partitionId}' and consumer group: '${context.consumerGroup}'`);
             }
-            // update the checkpoint
+            // Update the checkpoint.
             await context.updateCheckpoint(events[events.length - 1]);
           },
 
@@ -151,7 +160,7 @@ Bir Azure Depolama hesabını bir blob kapsayıcısı oluşturmak için bu adım
         }
       );
 
-      // after 30 seconds, stop processing
+      // After 30 seconds, stop processing.
       await new Promise((resolve) => {
         setTimeout(async () => {
           await subscription.close();
@@ -165,17 +174,17 @@ Bir Azure Depolama hesabını bir blob kapsayıcısı oluşturmak için bu adım
       console.log("Error occurred: ", err);
     });    
     ```
-3. Kodda **aşağıdaki değerleri** belirtmeyi unutmayın:
-    - Event Hubs ad alanına bağlantı dizesi
-    - Olay Hub 'ının adı
-    - Azure depolama hesabına bağlantı dizesi
-    - Blob kapsayıcısının adı
-5. Sonra bu dosyayı yürütmek için komut isteminde komut `node receive.js` çalıştırın. Alınan olaylar hakkındaki iletileri pencerede görmeniz gerekir.
+1. Kodda, aşağıdaki değerleri değiştirmek için gerçek değerleri kullanın:
+    - `EVENT HUBS NAMESPACE CONNECTION STRING`
+    - `EVENT HUB NAME`
+    - `AZURE STORAGE CONNECTION STRING`
+    - `BLOB CONTAINER NAME`
+1. Bu dosyayı yürütmek için bir komut isteminde `node receive.js` çalıştırın. Pencerede alınan olaylar hakkında iletiler görüntülenmelidir.
 
     > [!NOTE]
-    > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)bakın.
+    > Ek bilgilendirme açıklamaları dahil olmak üzere, tüm kaynak kodu için [GitHub receiveEventsUsingCheckpointStore. js sayfasına](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)gidin.
 
-Tebrikler! Olay Hub 'ından olayları aldınız. Alıcı programı, Olay Hub 'ınızdaki varsayılan tüketici grubunun tüm bölümlerinden olayları alacaktır
+Tebrikler! Artık olay hub 'ınızdan olayları aldınız. Alıcı programı, Olay Hub 'ında varsayılan tüketici grubunun tüm bölümlerinden olayları alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 GitHub 'da bu örneklere göz atın:

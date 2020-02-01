@@ -3,24 +3,26 @@ title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitap
 description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node. js ' de blob ve kapsayıcılar oluşturma, karşıya yükleme ve silme
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862858"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906480"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı ile v10 arasındaki
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: node. js ' de JavaScript ile v10 arasındaki SDK ile Blobları yönetme
 
-Bu hızlı başlangıçta blob yükleme, indirme, listeleme ve silme ile kapsayıcıları yönetme amacıyla Node.js'de [JavaScript için Azure Storage v10 SDK'sını](https://github.com/Azure/azure-sdk-for-js) kullanmayı öğreneceksiniz.
+Bu hızlı başlangıçta, Node. js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir, listeler ve siler ve kapsayıcıları yönetirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Depolama hesabı. [Depolama hesabı oluşturma](../common/storage-account-create.md).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
@@ -133,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-API tarafından yapılan istekler belirli bir sürenin sonunda zaman aşımına uğrayacak şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
+API tarafından yapılan istekler, belirli bir aralıktan sonra zaman aşımına getirilebilir şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -203,7 +205,7 @@ Kapsayıcıda olduğu gibi blok blobu da henüz mevcut değildir. *blockBlobURL*
 
 ### <a name="using-the-aborter-class"></a>Aborter sınıfını kullanma
 
-API tarafından yapılan istekler belirli bir sürenin sonunda zaman aşımına uğrayacak şekilde ayarlanabilir. *Aborter* sınıfı, isteklerin zaman aşımına uğradığını yönetmekten sorumludur. Aşağıdaki kod, bir istek kümesinin yürütülmesi için 30 dakika verildiği bir bağlam oluşturur.
+API tarafından yapılan istekler, belirli bir aralıktan sonra zaman aşımına getirilebilir şekilde ayarlanabilir. *Aborter* sınıfı, isteklerin zaman aşımına uğradığını yönetmekten sorumludur. Aşağıdaki kod, bir istek kümesinin yürütülmesi için 30 dakika verildiği bir bağlam oluşturur.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

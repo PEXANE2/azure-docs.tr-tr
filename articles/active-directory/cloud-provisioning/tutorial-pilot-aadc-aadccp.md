@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75425091"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
@@ -182,7 +182,7 @@ Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Kullanıcıların bulut sağlaması tarafından sağlandığını doğrulayın
 Artık şirket içi dizinimizde bulunan kullanıcıların eşitlenmiş olduğunu ve artık Azure AD kiracısında bulunduğunu doğrulayacaksınız.  Bu işlem işleminin tamamlanması birkaç saat sürebilir.  Kullanıcıların bulut sağlamaya göre sağlamasını doğrulamak için şu adımları izleyin:
 
-1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
+1. [Azure Portal](https://portal.azure.com) gidin ve Azure aboneliğine sahip bir hesapla oturum açın.
 2. Sol tarafta **Azure Active Directory** ' yi seçin.
 3. **Azure AD Connect** tıklayın
 4. **Sağlamayı yönetme (Önizleme)** seçeneğine tıklayın

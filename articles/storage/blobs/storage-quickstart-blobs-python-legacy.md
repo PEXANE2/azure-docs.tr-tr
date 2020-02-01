@@ -3,33 +3,30 @@ title: 'Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplı�
 description: Bu hızlı başlangıçta, nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturursunuz. Daha sonra, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Python için depolama istemcisi kitaplığı v 2.1 kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122687"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906446"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplığı v 2.1
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme
 
-Bu makalede, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u kullanırsınız. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil olmak üzere büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Azure depolama 'daki Bloblar dosya paylaşımlarından, şema-daha seyrek tablolardan ve ileti kuyruklarından farklıdır.  Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+Bu hızlı başlangıçta, Python kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Depolama hesabı. [Depolama hesabı oluşturma](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/).
+- [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-sdk-for-python).
 
-Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
-
-* [Python](https://www.python.org/downloads/)
-
-* [Python için Azure depolama SDK 'Sı](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
@@ -141,7 +138,7 @@ Bulut Blobu kapsayıcınız olduktan sonra, ilgilendiğiniz bloba işaret eden *
 
 ### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
-Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Bir dosyaya yazmak ve daha sonra daha fazla bilgi eklemeye devam etmek istediğinizde, günlüğe kaydetme için ekleme bloblarını kullanabilirsiniz. Sayfa Blobları birincil olarak hizmet sanal makineleri (IaaS VM 'Ler) olan sanal sabit disk (VHD) dosyaları için kullanılır. Blok blobları, en sık kullanılan bloblardır. Bu hızlı başlangıç blok bloblarını kullanır.
+Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok bloblarının boyutu 4,7 TB'yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Bir dosyaya yazmak ve daha sonra daha fazla bilgi eklemeye devam etmek istediğinizde, günlüğe kaydetme için ekleme bloblarını kullanabilirsiniz. Sayfa Blobları birincil olarak hizmet sanal makineleri (IaaS VM 'Ler) olan sanal sabit disk (VHD) dosyaları için kullanılır. Blok blobları, en sık kullanılan bloblardır. Bu hızlı başlangıç blok bloblarını kullanır.
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 

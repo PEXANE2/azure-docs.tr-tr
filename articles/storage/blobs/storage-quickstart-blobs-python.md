@@ -3,41 +3,33 @@ title: 'Hızlı başlangıç: Azure Blob depolama kitaplığı V12-Python'
 description: Bu hızlı başlangıçta, blob (nesne) deposunda bir kapsayıcı ve BLOB oluşturmak için Python için Azure Blob depolama istemci kitaplığı sürüm 12 ' yi nasıl kullanacağınızı öğreneceksiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443749"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906422"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure Blob depolama istemci kitaplığı V12
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Hızlı başlangıç: Python V12 SDK ile Blobları yönetme
 
-Python için Azure Blob depolama istemci kitaplığı V12 ile çalışmaya başlayın. Azure Blob depolama, Microsoft’un buluta yönelik nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
-
-> [!NOTE]
-> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: Python Için Azure Blob depolama istemci kitaplığı](storage-quickstart-blobs-python-legacy.md).
-
-Azure Blob depolama istemci kitaplığını kullanarak şunları yapın:
-
-* Bir kapsayıcı oluşturma
-* Azure depolama 'ya blob yükleme
-* Bir kapsayıcıdaki tüm Blobları listeleme
-* Blobu yerel bilgisayarınıza indirme
-* Kapsayıcı silme
+Bu hızlı başlangıçta, Python kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
 [API başvuru belgeleri](/python/api/azure-storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [paketi (Python paket dizini)](https://pypi.org/project/azure-storage-blob/) | [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Depolama hesabı. [Depolama hesabı oluşturma](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/) 2,7, 3,5 veya üzeri.
+
+> [!NOTE]
+> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme](storage-quickstart-blobs-python-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -81,7 +73,7 @@ Proje dizininden:
 
 1. Kod Düzenleyicinizde yeni bir metin dosyası açın
 1. `import` deyimleri Ekle
-1. Çok temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
+1. Temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
 
     Kod aşağıdaki gibidir:
 
@@ -103,7 +95,7 @@ Proje dizininden:
 
 ## <a name="object-model"></a>Nesne modeli
 
-Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanıma bağlı olmayan verilerdir. BLOB depolama üç tür kaynak sunar:
+Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanımına bağlı olmayan bir veri. BLOB depolama üç tür kaynak sunar:
 
 * Depolama hesabı
 * Depolama hesabındaki bir kapsayıcı
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 Aşağıdaki kod, [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, isterseniz yerel dosyaları silebilirsiniz.
 
-Uygulama, blob, kapsayıcı ve yerel dosyaları silmeden önce `input()` çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce gerçekten doğru şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
+Uygulama, blob, kapsayıcı ve yerel dosyaları silmeden önce `input()` çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce doğru bir şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 
 `try` bloğunun sonuna bu kodu ekleyin:
 
@@ -298,4 +290,4 @@ BLOB depolama örnek uygulamalarını görmek için devam edin:
 > [Azure Blob Storage SDK V12 Python örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 * Daha fazla bilgi için bkz. [Python Için Azure SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md).
-* Öğreticiler, örnekler, hızlı ve diğer belgelerde, [Python geliştiricileri Için Azure](/azure/python/)' u ziyaret edin.
+* Öğreticiler, örnekler, hızlı başlangıçler ve diğer belgelerde, [Python geliştiricileri Için Azure](/azure/python/)' u ziyaret edin.

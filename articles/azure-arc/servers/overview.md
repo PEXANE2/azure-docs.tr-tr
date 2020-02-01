@@ -1,62 +1,78 @@
 ---
-title: Sunucular için Azure Arc genel bakış
-description: Altyapı ve uygulamaların yaşam döngüsünü otomatikleştirmek için sunucular için Azure Arc 'ı nasıl kullanacağınızı öğrenin.
+title: Sunucular için Azure Arc (Önizleme) genel bakış
+description: Azure 'un dışında barındırılan makineleri Azure kaynağı olarak yönetmek üzere sunucular için Azure Arc 'ı nasıl kullanacağınızı öğrenin.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 11/04/2019
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659631"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899189"
 ---
-# <a name="what-is-azure-arc-for-servers"></a>Sunucular için Azure Arc nedir?
+# <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
 
-Sunucular için Azure Arc, Azure dışındaki makineleri yönetmenizi sağlar.
-Azure olmayan bir makine Azure 'a bağlıyken **bağlı bir makine** olur ve Azure 'da kaynak olarak kabul edilir. Her **bağlı makinenin** BIR kaynak kimliği vardır, bir aboneliğin Içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure ilkesi ve etiketleme gibi standart Azure yapılarından faydalanır.
+Sunucular için Azure Arc (Önizleme), yerel Azure sanal makinelerini yönetme sürecinize benzer şekilde, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir aboneliğin içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır.
 
-Her makineye Azure 'a bağlanmak için bir aracı paketinin yüklü olması gerekir. Bu belgenin geri kalanında işlem daha ayrıntılı olarak açıklanmaktadır.
+Bu deneyimi Azure dışında barındırılan karma makinelerinizle birlikte sunmak için Azure 'a bağlanmayı planladığınız her makinede Azure bağlı makine aracısının yüklü olması gerekir. Bu aracı başka bir işlevsellik sunmaz ve Azure [Log Analytics aracısının](../../azure-monitor/platform/log-analytics-agent.md)yerini almaz. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
 
-Makineler, son zamanlarda aracının ne zaman iade edilme durumuna göre **bağlı** veya **bağlantısı kesilmiş** olur. Her iade etme işlemi sinyal olarak adlandırılır. Bir makine son 5 dakika içinde iade edilmedi ise, bağlantı geri yüklenene kadar çevrimdışı olarak görünür.  <!-- For more information on troubleshooting agent connectivity, see [Troubleshooting Azure Arc for servers](troubleshoot/arc-for-servers.md). -->
+>[!NOTE]
+>Bu önizleme sürümü değerlendirme amaçlarına yöneliktir ve kritik üretim makinelerini yönetmemenizi öneririz.
+>
 
-![Bağlı sunucular](./media/overview/arc-for-servers-onboarded-servers.png)
+## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-## <a name="clients"></a>İstemciler
+Sunucular için Azure Arc (Önizleme) bağlı makinelerle aşağıdaki senaryoları destekler:
 
-### <a name="supported-operating-systems"></a>Desteklenen İşletim Sistemleri
+- Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure ilke Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) atayın.
+- Log Analytics Aracısı tarafından toplanan ve Log Analytics çalışma alanında depolanan ve makine, [kaynak bağlamı](../../azure-monitor/platform/design-logs-deployment.md#access-mode) günlük erişimini desteklemek Için KULLANıLABILECEK kaynak kimliği gibi, makineye özgü özellikler içeriyor.
 
-Genel önizlemede şunları destekliyoruz:
+## <a name="supported-regions"></a>Desteklenen bölgeler
+
+Sunucular için Azure Arc (Önizleme) ile yalnızca belirli bölgeler desteklenir:
+
+- WestUS2
+- WestEurope
+- Westasıya
+
+## <a name="prerequisites"></a>Ön koşullar
+
+### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+
+Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure bağlı makine Aracısı için desteklenir: 
 
 - Windows Server 2012 R2 ve üzeri
 - Ubuntu 16,04 ve 18,04
 
-Genel önizleme sürümü, değerlendirme amacıyla tasarlanmıştır ve kritik üretim kaynaklarını yönetmek için kullanılmamalıdır.
+>[!NOTE]
+>Windows için bağlı makine aracısının bu önizleme sürümü yalnızca Ingilizce dilini kullanmak üzere yapılandırılmış Windows Server 'ı destekler.
+>
 
-## <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
+### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
-Lütfen Azure Resource Manager sınırlarını okuduğunuzdan emin olun ve [abonelik](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)için listelenen yönergelere ve [kaynak gruplarına](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)göre bağlanacak makinelerin sayısını planlayın. Özellikle, varsayılan olarak, kaynak grubu başına 800 sunucu sınırı vardır.
+Makinelerinizi sunucular için Azure Arc (Önizleme) ile yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirmeniz gerekir.
 
-## <a name="networking-configuration"></a>Ağ yapılandırması
+### <a name="networking-configuration"></a>Ağ yapılandırması
 
-Yükleme ve çalışma zamanı sırasında, aracı **Azure Arc hizmet uç noktalarına**bağlantı gerektirir. Giden bağlantı güvenlik duvarları tarafından engellenirse, aşağıdaki URL 'Lerin varsayılan olarak engellenmediğinden emin olun. Tüm bağlantılar aracıdan Azure 'a giden ve **SSL**ile güvenli hale getirilir. Tüm trafik bir **https** proxy 'si aracılığıyla yönlendirilebilir. Sunucularının bağlanmasına izin verilen IP aralıklarına veya etki alanı adlarına izin verirseniz, aşağıdaki hizmet etiketlerine ve DNS adlarına bağlantı noktası 443 erişimine izin vermeniz gerekir.
+Linux ve Windows için bağlı makine Aracısı, TCP bağlantı noktası 443 üzerinden Azure Arc ile güvenli bir şekilde iletişim kurar. Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırma gereksinimlerini anlamak için aşağıdaki gereksinimleri gözden geçirin.
+
+Giden bağlantı, güvenlik duvarınız veya ara sunucunuz tarafından kısıtlanıyorsa, aşağıda listelenen URL 'Lerin engellenmediğinden emin olun. Aracının hizmetle iletişim kurması için gereken IP aralıklarına veya etki alanı adlarına izin verirseniz, aşağıdaki hizmet etiketlerine ve URL 'Lere erişime de izin vermeniz gerekir.
 
 Hizmet Etiketleri:
 
-* AzureActiveDirectory
-* AzureTrafficManager
+- AzureActiveDirectory
+- AzureTrafficManager
 
-Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla ayrıntı için bkz. [hizmet etiketleri](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Adresleri
 
-Hizmetlerin çoğunluğu Şu anda bir hizmet etiketi kaydına sahip olmadığından ve bu nedenle IP 'Ler değişikliğe tabi olduğundan, bu DNS adları hizmet etiketi IP aralığı bilgilerine ek olarak sağlanır. Güvenlik Duvarı yapılandırmanız için IP aralıkları gerekliyse, tüm Azure hizmetlerine erişime izin vermek için **Azurecyüksek** hizmet etiketinin kullanılması gerekir. Bu URL 'Lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, ancak diğer internet trafiğinden yaptığınız gibi bunlara izin verin.
-
-| Etki Alanı Ortamı | Gerekli Azure hizmet uç noktaları |
+| Aracı kaynağı | Açıklama |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -65,116 +81,58 @@ Hizmetlerin çoğunluğu Şu anda bir hizmet etiketi kaydına sahip olmadığın
 |*-agentservice-prod-1.azure-automation.net|Konuk Yapılandırması|
 |*. his.hybridcompute.azure-automation.net|Karma kimlik hizmeti|
 
-### <a name="installation-network-requirements"></a>Yükleme ağı gereksinimleri
+Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)gözden geçirin.
 
-[Azure bağlı makine Aracısı paketini](https://aka.ms/AzureConnectedMachineAgent) resmi dağıtım sunucularımızdan indirin aşağıdaki sitelerin ortamınızdan erişilebilir olması gerekir. Paketi bir dosya paylaşımında indirmeyi ve aracının oradan yüklenmesini seçebilirsiniz. Bu durumda, Azure portal oluşturulan ekleme betiğinin değiştirilmesi gerekebilir.
+Hizmetlerin çoğu şu anda bir hizmet etiketi kaydına sahip olmadığından, önceki tablodaki URL 'Ler hizmet etiketi IP adresi aralığı bilgilerine ek olarak gereklidir. Bu nedenle, IP adresleri değişikliğe tabidir. Güvenlik Duvarı yapılandırmanız için IP adresi aralıkları gerekliyse, tüm Azure hizmetlerine erişime izin vermek için **Azurecyüksek** hizmet etiketinin kullanılması gerekir. Bu URL 'Lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, diğer Internet trafiğinden yaptığınız gibi bunlara izin verin.
 
-Windows:
+### <a name="register-azure-resource-providers"></a>Azure Kaynak sağlayıcılarını kaydetme
 
-* `aka.ms`
-* `download.microsoft.com`
+Sunucular için Azure Arc (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 
-Linux:
+- **Microsoft. HybridCompute**
+- **Microsoft. GuestConfiguration**
 
-* `aka.ms`
-* `packages.microsoft.com`
-
-Aracıyı proxy 'nizi kullanacak şekilde yapılandırma hakkında bilgi için, bkz. [proxy sunucu yapılandırması](quickstart-onboard-powershell.md#proxy-server-configuration).
-
-## <a name="register-the-required-resource-providers"></a>Gerekli kaynak sağlayıcılarını Kaydet
-
-Sunucular için Azure Arc kullanabilmek için gerekli kaynak sağlayıcılarını kaydetmeniz gerekir.
-
-* **Microsoft. HybridCompute**
-* **Microsoft. GuestConfiguration**
-
-Aşağıdaki komutlarla kaynak sağlayıcılarını kaydedebilirsiniz:
+Bunlar kayıtlı değilse, aşağıdaki komutları kullanarak bunları kaydedebilirsiniz:
 
 Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure CLI:
+Azure CLı:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Ayrıca, [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)altındaki adımları izleyerek Portal 'ı kullanarak kaynak sağlayıcılarını kaydedebilirsiniz.
+Ayrıca, [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)altındaki adımları izleyerek Azure Portal kaynak sağlayıcılarını kaydedebilirsiniz.
 
-## <a name="machine-changes-after-installing-the-agent"></a>Aracıyı yükledikten sonra makine değişiklikleri
+## <a name="connected-machine-agent"></a>Bağlı makine Aracısı
 
-Ortamınızda dağıtılan bir değişiklik izleme çözümü varsa, **Azure bağlı makine Aracısı (AzCMAgent)** yükleme paketi tarafından yapılan değişiklikleri izlemek, tanımlamak ve bunlara izin vermek için aşağıdaki listeyi kullanabilirsiniz.
+Windows ve Linux için Azure bağlı makine Aracısı paketini aşağıda listelenen konumlardan indirebilirsiniz.
 
-Aracıyı yükledikten sonra, sunucularınızda yapılan aşağıdaki değişiklikleri görürsünüz.
+- Microsoft Indirme merkezi 'nden [Windows agent Windows Installer paketi](https://aka.ms/AzureConnectedMachineAgent) .
+- Linux aracı paketi, dağıtım için tercih edilen paket biçimi kullanılarak Microsoft 'un [paket deposundan](https://packages.microsoft.com/) dağıtılır (. RPM veya. DEB).
 
-### <a name="windows"></a>Windows
+>[!NOTE]
+>Bu önizleme sırasında, Ubuntu 16,04 veya 18,04 için uygun olan yalnızca bir paket yayımlanmıştır.
 
-Yüklü hizmetler:
+## <a name="install-and-configure-agent"></a>Aracıyı yükle ve yapılandır
 
-* `Himds`- **Azure bağlı makine Aracısı** hizmeti.
-* `Dscservice` veya `gcd`- **Konuk yapılandırma** hizmeti.
+Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tabloda, kuruluşunuz için en uygun olanı belirleyen her bir yöntem vurgulanmaktadır.
 
-Sunucuya eklenen dosyalar:
+| Yöntem | Açıklama |
+|--------|-------------|
+| Biriyle | [Azure Portal makinelerinden gelen bağlantı](quickstart-onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
+| Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](quickstart-onboard-powershell.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|
 
-* `%ProgramFiles%\AzureConnectedMachineAgent\*.*`- **Azure bağlı makine Aracısı** dosyalarının konumu.
-* **Konuk yapılandırma** günlüklerini  - `%ProgramData%\GuestConfig\*.*`.
 
-Kayıt defteri anahtarı konumları:
+## <a name="next-steps"></a>Sonraki adımlar
 
-* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent`- **Azure bağlı makine Aracısı**Için kayıt defteri anahtarları.
-
-### <a name="linux"></a>Linux
-
-Yüklü hizmetler:
-
-* `Himdsd`- **Azure bağlı makine Aracısı** hizmeti.
-* `dscd` veya `gcd`- **Konuk yapılandırma** hizmeti.
-
-Sunucuya eklenen dosyalar:
-
-* `/var/opt/azcmagent/**`- **Azure bağlı makine Aracısı** dosyalarının konumu.
-* **Konuk yapılandırma** günlüklerini  - `/var/lib/GuestConfig/**`.
-
-## <a name="supported-scenarios"></a>Desteklenen Senaryolar
-
-Bir düğümü kaydettikten sonra, diğer Azure hizmetlerini kullanarak düğümlerinizi yönetmeye başlayabilirsiniz.
-
-Genel önizlemede, **bağlı makinelerde**aşağıdaki senaryolar desteklenir.
-
-## <a name="guest-configuration"></a>Konuk Yapılandırması
-
-Makineyi Azure 'a bağladıktan sonra, Azure sanal makinelerine ilke atamayla aynı deneyimi kullanarak **bağlı makinelere** Azure ilkeleri atayabilirsiniz.
-
-Daha fazla bilgi için bkz. [Azure Ilkesinin Konuk yapılandırmasını anlama](../../governance/policy/concepts/guest-configuration.md).
-
-**Bağlı bir makineye** yönelik Konuk yapılandırma Aracısı günlükleri aşağıdaki konumlarda bulunur:
-
-* Windows - `%ProgramFiles%\AzureConnectedMachineAgent\logs\dsc.log`
-* Linux:-`/opt/logs/dsc.log`
-
-## <a name="log-analytics"></a>Log Analytics
-
-[Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) tarafından toplanan ve Log Analytics çalışma alanında depolanan günlük verileri artık, kaynak merkezli günlük erişimi Için kullanılabilecek **RESOURCEID**gibi makineye özgü özellikler içerir.
-
-- Zaten MMA aracısının yüklü olduğu makinelerde, güncelleştirilmiş yönetim paketleri aracılığıyla **Azure Arc** işlevselliği etkinleştirilir.
-- Sunucu tümleştirmesi için Azure Arc için [MMA Aracısı sürüm 10.20.18011 veya üzeri](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version) gereklidir.
-- [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)'de günlük verileri sorgulanırken, döndürülen veri şeması `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`formundaki karma **RESOURCEID** 'yi içerir.
-
-Daha fazla bilgi için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
-
-<!-- MMA agent version 10.20.18011 and later -->
-
-## <a name="next-steps"></a>Sonraki Adımlar
-
-Sunucular için Azure Arc kullanarak makineleri bağlamak için iki yöntem vardır.
-
-* **Etkileşimli** -portalda bir betik oluşturup makinede yürütmek Için [Portal Hızlı](quickstart-onboard-portal.md) başlangıcını izleyin. Tek seferde bir makine bağlıyorsanız, bu en iyi seçenektir.
-* **Ölçekte** , makineleri etkileşimli olmayan bir şekilde bağlamaya yönelik bir hizmet sorumlusu oluşturmak Için [PowerShell hızlı](quickstart-onboard-powershell.md) başlangıcını izleyin.
+- Sunucular için Azure Arc 'ı değerlendirmeye başlamak üzere (Önizleme), [Azure Portal Azure 'a karma makineler bağlama](quickstart-onboard-portal.md)makalesini izleyin. 

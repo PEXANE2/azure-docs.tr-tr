@@ -6,39 +6,29 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 01/28/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771760"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906649"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme
+# <a name="quickstart-analyze-data-with-databricks"></a>Hızlı başlangıç: Databricks ile verileri analiz etme
 
-Bu hızlı başlangıçta, Azure Data Lake Storage 2. etkin olan bir depolama hesabında depolanan verileri analiz etmek için Azure Databricks kullanarak Apache Spark işi çalıştırma işlemi gösterilmektedir.
-
-Spark işinin bir parçası olarak, demografik tabanlı ücretsiz/ücretli kullanıma yönelik Öngörüler elde etmek için bir radyo kanalı abonelik verilerini çözümleyebilirsiniz.
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Bu hızlı başlangıçta, bir depolama hesabında depolanan veriler üzerinde analiz gerçekleştirmek için Azure Databricks kullanarak bir Apache Spark işi çalıştırırsınız. Spark işinin bir parçası olarak, demografik tabanlı ücretsiz/ücretli kullanıma yönelik Öngörüler elde etmek için bir radyo kanalı abonelik verilerini çözümleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Data Lake Gen2 depolama hesabı oluşturun. Bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  Depolama hesabının adını bir metin dosyasına yapıştırın. Yakında ihtiyacınız olacak.
+* Azure Data Lake Gen2 depolama hesabınızın adı. [Azure Data Lake Storage 2. depolama hesabı oluşturun](data-lake-storage-quickstart-create-account.md).
 
-* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-  Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
-
-  : heavy_check_mark: makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+* Bir Azure hizmet sorumlusunun kiracı KIMLIĞI, uygulama KIMLIĞI ve parolası, atanan bir **Depolama Blobu veri katılımcısı**rolüne sahiptir. [Hizmet sorumlusu oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
-  > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
-
-  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
+  > Rolü Data Lake Storage 2. depolama hesabının kapsamına atayın. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 

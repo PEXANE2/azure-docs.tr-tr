@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940753"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904495"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python (Azure-eventhub sürüm 1)
 
 Yakalama, Azure Event Hubs'ın bir özelliğidir. Olay Hub 'ınızdaki akış verilerini seçtiğiniz bir Azure Blob depolama hesabına otomatik olarak teslim etmek için yakalama ' yı kullanabilirsiniz. Bu özellik, gerçek zamanlı akış verilerinde toplu işleme yapmayı kolaylaştırır. Bu makalede, Python ile Event Hubs yakalama özelliğini kullanmayı açıklar. Event Hubs yakalama hakkında daha fazla bilgi için bkz. [Azure Event Hubs aracılığıyla olayları yakalama][Overview of Event Hubs Capture].
 
 Bu izlenecek yol, yakalama özelliğini göstermek için [Azure Python SDK 'sını](https://azure.microsoft.com/develop/python/) kullanır. *Sender.py* programı, sanal ortam TELEMETRISINI JSON biçiminde Event Hubs gönderir. Olay Hub 'ı, bu verileri toplu halde blob depolamaya yazmak için yakala özelliğini kullanır. *Capturereader.py* uygulaması bu Blobları okur, cihazlarınızın her biri için bir ekleme dosyası oluşturur ve verileri her bir cihaza *. csv* dosyalarına yazar.
 
-> [!IMPORTANT]
-> Bu hızlı başlangıçta Azure Event Hubs Python SDK 'sının 1. sürümü kullanılmaktadır. Azure Event Hubs 'yi yeni kullanıyorsanız, Python SDK 'sının 5. sürümünü kullanın. Python SDK 'sının 5 sürümünü kullanan bir hızlı başlangıç için, [Bu makaleye](get-started-capture-python-v2.md)bakın. Mevcut kodu sürüm 1 ' den sürüm 5 ' e geçirmeniz gerekiyorsa, [geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)bakın.
+> [!WARNING]
+> Bu hızlı başlangıç, Azure Event Hubs Python SDK 'sının 1. sürümü içindir. Kodunuzu [Python SDK 'sının 5. sürümüne](get-started-capture-python-v2.md) [geçirmeniz](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md) önerilir.
 
 Bu izlenecek yolda şunları yapabilirsiniz: 
 
