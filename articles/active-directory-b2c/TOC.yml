@@ -382,6 +382,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Tanımlama bilgisi tanımları
       href: cookie-definitions.md
+      displayName: 'cookies, SameSite'
     - name: Hata kodları
       href: error-codes.md
     - name: Bölge kullanılabilirliği ve veri yerleşikliği

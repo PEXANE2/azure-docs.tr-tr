@@ -6,16 +6,14 @@
       href: load-balancer-overview.md
 - name: Hızlı Başlangıç
   items:
-    - name: Azure Load Balancer oluşturma
-      items:
-        - name: Portal
-          href: quickstart-load-balancer-standard-public-portal.md
-        - name: Azure CLI
-          href: quickstart-load-balancer-standard-public-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-standard-load-balancer-powershell.md
-        - name: Şablon
-          href: quickstart-load-balancer-standard-public-template.md
+    - name: Portal
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+    - name: Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
+    - name: Şablon
+      href: quickstart-load-balancer-standard-public-template.md
 - name: Öğreticiler
   items:
     - name: Sanal makinelerin internet trafiğinde yük dengeleme
@@ -28,6 +26,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Load Balancer’da bağlantı noktası iletmeyi yapılandırma
       href: tutorial-load-balancer-port-forwarding-portal.md
+- name: Örnekler
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Kavramlar
   items:
     - name: Bileşenler ve sınırlamalar
@@ -109,12 +113,6 @@
       items:
         - name: Azure Load Balancer sorunlarını giderme
           href: load-balancer-troubleshoot.md
-- name: Örnekler
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Başvuru
   items:
     - name: Kod örnekleri
