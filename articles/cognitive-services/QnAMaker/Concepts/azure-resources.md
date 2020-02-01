@@ -3,12 +3,12 @@ title: Azure kaynakları-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, her biri farklı amaçla çeşitli Azure kaynakları kullanır. Bunların nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlayıp seçmenizi veya fiyatlandırma katmanınızı ne zaman değiştireceğimizi görmenizi sağlar. Bunların birleşimde nasıl kullanıldığını anlamak, sorunları ortaya çıktığında bulmanıza ve düzeltmenize izin verir.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843522"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902072"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Soru-Cevap Oluşturma için Azure kaynakları
 
@@ -111,6 +111,10 @@ Soru-Cevap Oluşturma kaynağında oluşturulan ilk bilgi tabanı, Bilişsel Ara
 Soru-Cevap Oluşturma kaynak, çalışma zamanında QnA kümelerinin yazma ve yayımlama API 'Lerinin yanı sıra doğal dil işleme (NLP) tabanlı ikinci derecelendirme katmanını (Ranker #2) erişim sağlar.
 
 İkinci derecelendirme, meta veri ve izleme istemlerini içerebilen akıllı filtreler uygular.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>Soru-Cevap Oluşturma kaynak yapılandırma ayarları
+
+[Soru-cevap oluşturma portalında](https://qnamaker.ai)yeni bir Bilgi Bankası oluşturduğunuzda, **dil** ayarı kaynak düzeyinde uygulanan tek ayardır. Kaynak için ilk Bilgi Bankası 'nı oluştururken dili seçersiniz. 
 
 ### <a name="app-service-and-app-service-plan"></a>App Service ve App Service planı
 

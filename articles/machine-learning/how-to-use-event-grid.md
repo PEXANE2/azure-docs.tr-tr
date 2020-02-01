@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538429"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904272"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Olay odaklı makine öğrenimi iş akışları oluşturma (Önizleme)
 
@@ -32,21 +32,6 @@ Gibi yaygın senaryoları etkinleştirmek için Event Grid kullanın:
 
 * İçin olaylar oluşturacağınız Azure Machine Learning çalışma alanına katkıda bulunan veya sahip erişimi.
 * Web kancası veya Olay Hub 'ı gibi bir olay işleyici uç noktası seçin. Daha fazla bilgi için bkz. [olay işleyicileri](https://docs.microsoft.com/azure/event-grid/event-handlers). 
-
-## <a name="register-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
-
-1 2019 Kasım 'Dan önce Azure Event Grid veya Machine Learning kullandıysanız, bu belgedeki adımları izlemeden önce kaynak sağlayıcılarını yeniden kaydetmeniz gerekebilir. Sağlayıcıları yeniden kaydetmek için aşağıdaki adımları kullanın:
-
-1. Azure portal gidin ve __abonelikler__' i seçin. Birlikte çalışmak istediğiniz aboneliği seçin.
-1. __Kaynak sağlayıcıları__' nı seçin ve ardından __eventgrid__' i arayın.
-1. __Microsoft. EventGrid__ girişini seçin ve sonra __yeniden kaydet__' i seçin.
-
-    ![yeniden kaydet-kaynak-sağlayıcı](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. __Machinelearningservices__araması yapın, girişi seçin ve sonra __yeniden kaydet__' i seçin.
-
-> [!TIP]
-> Bu adımları tamamlamaya yönelik izinleriniz yoksa, abonelik yöneticinizden bunları gerçekleştirmesini isteyin.
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Azure portal kullanarak makine öğrenimi olaylarını yapılandırma
 

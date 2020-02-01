@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl uygulaması
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Uygulamaları yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645421"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906203"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
@@ -530,9 +530,12 @@ Service Fabric uygulama paketini görüntü deposuna kopyalayın.
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --yol [gerekli] | Yerel uygulama paketinin yolu. |
+| --Sıkıştır | Yalnızca Service Fabric uygulama paketleri için geçerlidir. Varsayılan konuma veya sıkıştırılmış konum parametresiyle belirtilen konuma sıkıştırılmış uygulama paketini içeren yeni bir klasör oluşturun ve ardından yeni oluşturulan klasörü karşıya yükleyin. <br><br> Sfctl tarafından oluşturulan sıkıştırılmış bir dosya zaten varsa, bu bayrak ayarlandıysa üzerine yazılır. Dizin bir uygulama paketi değilse bir hata döndürülür. Zaten sıkıştırılmış bir uygulama paketi ise, klasör olduğu gibi olarak kopyalanır. Varsayılan olarak, yeni oluşturulan sıkıştırılmış uygulama paketi başarıyla karşıya yüklendikten sonra silinir. Karşıya yükleme başarılı olmazsa lütfen sıkıştırılmış paketi gerektiği şekilde el ile temizleyin. Silme, sıkıştırılmış konum parametresi mevcut olmayan dizinlere başvuruyorsa, oluşturulmuş olabilecek boş dizin kaldırmaz. |
+| --sıkıştırılmış-konum | Sıkıştırılmış uygulama paketini yerleştireceğiniz konum. <br><br> Hiçbir konum sağlanmazsa, sıkıştırılan paket, yol bağımsız değişkeninde belirtilen üst dizin altında sfctl_compressed_temp adlı yeni oluşturulan bir klasöre yerleştirilir. Örneğin, yol bağımsız değişkeninin C\:/FolderA/AppPkg değeri varsa, sıkıştırılan paket C\:/FolderA/sfctl_compressed_temp/AppPkg. ' e eklenecektir |
 | --imagesdeposu-dize | Uygulama paketini yüklemek için hedef görüntü deposu.  Varsayılan\: yapı\:Imate. <br><br> Bir dosya konumuna yüklemek için bu parametreyi ' dosya\:' ile başlatın. Aksi takdirde değer, varsayılan değer gibi görüntü deposu bağlantı dizesi olmalıdır. |
+| --sıkıştırılmış tut | Oluşturulan sıkıştırılmış paketin başarıyla karşıya yükleme tamamlandıktan sonra tutulup tutulmayacağını belirtir. <br><br> Ayarlanmamışsa, başarıyla tamamlandığında, sıkıştırılmış uygulama paketleri silinir. Karşıya yükleme başarılı olmazsa, yeniden yüklemek için uygulama paketi her zaman çıkış dizininde tutulur. |
 | --ilerlemeyi göster | Büyük paketler için karşıya dosya yükleme ilerlemesini göster. |
-| --timeout-t | Saniye cinsinden toplam zaman aşımı. Karşıya yükleme başarısız olur ve karşıya yükleme zaman aşımı süresi geçtikten sonra hata döndürür. Bu zaman aşımı tüm uygulama paketi için geçerlidir ve tek dosya zaman aşımları kalan zaman aşımı süresine eşit olur.  Varsayılan\: 300. |
+| --timeout-t | Saniye cinsinden toplam zaman aşımı. Karşıya yükleme başarısız olur ve karşıya yükleme zaman aşımı süresi geçtikten sonra hata döndürür. Bu zaman aşımı tüm uygulama paketi için geçerlidir ve tek dosya zaman aşımları kalan zaman aşımı süresine eşit olur. Zaman aşımı, uygulama paketini sıkıştırmak için gereken süreyi içermez.  Varsayılan\: 300. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 

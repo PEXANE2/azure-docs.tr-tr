@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 934dc94da9bbdfc38cc12e78eaa5b67fa9f786ca
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083302"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901571"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -172,9 +172,15 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Kuzey Avrupa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
 | Batı Avrupa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
 | UK Güney | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
-| UK Batı | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| UK, Batı | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Fransa Orta | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Fransa Güney | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
+| İsviçre Kuzey | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
+| İsviçre Batı | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
+| Almanya Kuzey | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
+| Almanya Orta Batı | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
+| Norveç Doğu | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
+| Norveç Batı | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
 | **Asya Pasifik** | |
 | Doğu Asya | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Güneydoğu Asya | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
@@ -238,7 +244,7 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | US Gov Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
 | US Gov Virginia | 12076:51105 |
-| US Gov Texas | 12076:51108 |
+| US Gov Teksas | 12076:51108 |
 | US DoD Orta | 12076:51209 |
 | US DoD Doğu | 12076:51205 |
 

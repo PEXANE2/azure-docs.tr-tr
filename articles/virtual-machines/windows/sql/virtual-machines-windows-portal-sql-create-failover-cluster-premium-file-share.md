@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772589"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906789"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
 
@@ -185,7 +185,7 @@ Sanal makineleri oluşturup yapılandırdıktan sonra, Premium dosya paylaşım�
   > - Bu paylaşımın ıOPS ve alan kapasitesini veri ve günlük dosyaları için kaydetmek üzere yedekleme dosyaları için ayrı bir dosya paylaşma kullanmayı düşünün. Yedekleme dosyaları için Premium veya standart dosya paylaşımından birini kullanabilirsiniz.
   > - Windows 2012 R2 ve daha eski bir sürümle çalışıyorsanız, dosya paylaşma tanığı olarak kullanacağınız dosya paylaşımınızı bağlamak için aynı adımları izleyin. 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>3\. Adım: yük devretme kümesini dosya paylaşımıyla yapılandırma
+## <a name="step-3-configure-the-failover-cluster"></a>3\. Adım: yük devretme kümesini yapılandırma
 
 Bir sonraki adım, yük devretme kümesini yapılandırmaktır. Bu adımda, aşağıdaki alt adımları tamamlayacaksınız:
 

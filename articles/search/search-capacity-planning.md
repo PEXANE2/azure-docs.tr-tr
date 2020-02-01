@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 349587063c528fef1cbdb09d84e61e82443d45d1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112135"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906722"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgu ve Dizin iş yükleri için kapasite eklemek üzere bölümleri ve çoğaltmaları ölçeklendirin
 
@@ -24,7 +24,7 @@ Kaynak Yapılandırması, [Temel katmanda](https://aka.ms/azuresearchbasic) bir 
 Daha az sayıda SUs sonucu, orantılı bir şekilde daha düşüktür. Hizmet ayarlandığı sürece faturalandırma yürürlüğe girer. Geçici olarak bir hizmet kullanmıyorsanız, faturalandırma yapmanın tek yolu hizmeti silip daha sonra gerektiğinde yeniden oluşturmaktır.
 
 > [!Note]
-> Bir hizmetin silinmesi, üzerindeki her şeyi siler. Kalıcı arama verilerini yedeklemek ve geri yüklemek için Azure Bilişsel Arama 'da hiçbir tesis yoktur. Mevcut bir dizini yeni bir hizmette yeniden dağıtmak için, ilk olarak oluşturmak ve yüklemek üzere kullanılan programı çalıştırmanız gerekir. 
+> Hizmet silindiğinde üzerindeki her şey de silinir. Azure Bilişsel Arama hizmetinde kalıcı arama verilerini yedekleme veya geri yükleme olanağı yoktur. Mevcut bir dizini yeni bir hizmette yeniden dağıtmak için, ilk olarak oluşturmak ve yüklemek üzere kullanılan programı çalıştırmanız gerekir. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminoloji: çoğaltmalar ve bölümler
 Çoğaltmalar ve bölümler, bir arama hizmetini geri yükleyen birincil kaynaklardır.
@@ -123,7 +123,7 @@ Azure Bilişsel Arama için yüksek kullanılabilirlik, bir dizini yeniden oluş
 > [!NOTE]
 > Dizini yeniden oluşturmadan Azure Bilişsel Arama dizinine yeni alanlar ekleyebilirsiniz. Yeni alanın değeri, dizinde bulunan tüm belgeler için null olacaktır.
 
-Yeniden oluşturma sırasında dizin kullanılabilirliğini sürdürmek için, aynı hizmette farklı bir ada sahip bir dizinin kopyasına veya farklı bir hizmette aynı ada sahip bir dizinin kopyasına sahip olmanız ve ardından kodunuzda yeniden yönlendirme veya yük devretme mantığı sağlamanız gerekir.
+Dizinin yeniden oluşturulması sırasında, verilerin yeni dizine eklendiği bir süre olacaktır. Bu süre içinde eski dizininizi kullanılabilir hale getirmek istiyorsanız, aynı hizmette farklı bir ada sahip eski dizinin bir kopyasına veya farklı bir hizmette aynı ada sahip bir dizinin kopyasına sahip olmanız gerekir ve sonra kodunuzda yeniden yönlendirme veya yük devretme mantığı sağlar.
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
 Şu anda olağanüstü durum kurtarma için yerleşik bir mekanizma yoktur. Bölüm veya çoğaltmaları eklemek, olağanüstü durum kurtarma hedeflerini karşılamak için yanlış stratejidir. En yaygın yaklaşım, başka bir bölgede ikinci bir arama hizmeti ayarlayarak hizmet düzeyinde artıklık eklemektir. Dizin yeniden oluşturma sırasında kullanılabilirliğinde olduğu gibi, yeniden yönlendirme veya yük devretme mantığı koddan gelmelidir.

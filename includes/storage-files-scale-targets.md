@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72822048"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901414"
 ---
 | Kaynak | Standart dosya paylaşımları | Premium dosya paylaşımları |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72822048"
 | En fazla nesne (Dizin ve dosya) adı uzunluğu | 2\.048 karakter | 2\.048 karakter |
 | En fazla yol adı bileşeni (\A\B\C\D yolunda her bir bir bileşendir) | 255 karakter | 255 karakter |
 
-\* tüm bölgelerde kullanılamaz, kullanılabilir bölgelerin listesi için [Bölgesel kullanılabilirlik](../articles/storage/files/storage-files-planning.md#regional-availability) bölümüne bakın.
+Birçok bölgede kullanılabilir \*, kullanılabilir bölgelerin ayrıntıları için [Bölgesel kullanılabilirlik](../articles/storage/files/storage-files-planning.md#regional-availability) bölümüne bakın.

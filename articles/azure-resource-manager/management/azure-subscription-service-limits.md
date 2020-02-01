@@ -3,19 +3,21 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845978"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901401"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
 
 Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiyatlandırması genel bakış](https://azure.microsoft.com/pricing/). Burada, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)' nı kullanarak maliyetlerinizi tahmin edebilirsiniz. Ayrıca, belirli bir hizmet için (örneğin, [Windows VM 'ler](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Fiyatlandırma ayrıntıları sayfasına gidebilirsiniz. Maliyetlerinizi yönetmeye yardımcı olacak ipuçları için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../billing/billing-getting-started.md).
+
+Kaynak adları sınırları için bkz. [Azure kaynakları Için adlandırma kuralları ve kısıtlamalar](resource-name-rules.md).
 
 > [!NOTE]
 > Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, [ücretsiz bir çevrimiçi müşteri destek isteği açın](../templates/error-resource-quota.md). Sınırlar, aşağıdaki tablolarda gösterilen en büyük sınır değerinin üzerinde olamaz. En fazla limit sütunu yoksa, kaynak, ayarlanabilir sınırlara sahip değildir.
@@ -25,7 +27,7 @@ Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiy
 
 ## <a name="limits-and-azure-resource-manager"></a>Sınırlar ve Azure Resource Manager
 
-Artık birden çok Azure kaynağını tek bir Azure Kaynak grubunda birleştirmek mümkündür. Kaynak gruplarını kullandığınızda, bir kez genel olan sınırlar, Azure Resource Manager ile bölgesel düzeyde yönetilmeye gelir. Azure Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](overview.md).
+Birden çok Azure kaynağını tek bir Azure Kaynak grubunda birleştirebilirsiniz. Kaynak gruplarını kullandığınızda, bir kez genel olan sınırlar, Azure Resource Manager ile bölgesel düzeyde yönetilmeye gelir. Azure Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](overview.md).
 
 Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullandığınızda limitlerde yapılan farkları yansıtır. Örneğin, bir **abonelik limitleri** tablosu ve **abonelik limitleri Azure Resource Manager** tablo vardır. Her iki senaryo için de bir sınır geçerliyse, bu yalnızca ilk tabloda gösterilir. Aksi belirtilmedikçe, sınırlar tüm bölgelerde geneldir.
 
@@ -484,3 +486,4 @@ SQL veri ambarı sınırları için bkz. [SQL veri ambarı kaynak sınırları](
 * [Azure sınırlarını ve artışları anlayın](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure için sanal makine ve bulut hizmeti boyutları](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Cloud Services için Boyutlar](../../cloud-services/cloud-services-sizes-specs.md)
+* [Azure kaynakları için adlandırma kuralları ve kısıtlamaları](resource-name-rules.md)

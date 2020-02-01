@@ -4,7 +4,6 @@ description: Maksimum sayıda kullanılabilirlik ve tutarlılık bölümler kull
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
 ms.service: event-hubs
@@ -12,15 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 01/29/2020
 ms.author: shvija
-ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273677"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904489"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Kullanılabilirlik ve tutarlılık olay hub'ları
 
@@ -37,7 +35,7 @@ Brewer'ın Teoremi tutarlılık ve kullanılabilirlik gibi tanımlar:
 ## <a name="partition-tolerance"></a>Bölüm dayanıklılık
 Olay hub'ları bölümlenmiş verileri bir model temelinde oluşturulmuştur. Kurulum sırasında olay hub'ında bölüm sayısı yapılandırabilirsiniz, ancak bu değer daha sonra değiştiremezsiniz. Bölümler Event Hubs ile kullanmayı olduğundan, kullanılabilirlik ve tutarlılık için uygulamanızın hakkında bir karar vermeniz gerekir.
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 Event Hubs ile çalışmaya başlama en basit yolu, varsayılan davranışını kullanmaktır. Yeni bir oluşturursanız **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** kullanın ve nesne **[Gönder](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** yöntemi, olaylarınızı otomatik olarak dağıtılan arasında Olay hub'ınızdaki bölümler. Bu davranış, büyük miktarda zaman verir.
 
 En fazla çalışma zamanını iste için kullanım örnekleri, bu model tercih edilir.
@@ -49,16 +47,53 @@ Bu yapılandırma ile göndermekte olduğunuz belirli bölüm kullanılamıyorsa
 
 Sıralama, çalışma zamanı, aynı zamanda en üst düzeye çıkarırken emin olmak için olası bir çözüm için olayları, olay işleme uygulaması bir parçası olarak olacaktır. Bunu yapmanın en kolay yolu, bir özel sıra numarası özelliğiyle etkinliğiniz damga sağlamaktır. Aşağıdaki kodda bir örnek gösterilir:
 
+#### <a name="azuremessagingeventhubs-500-or-latertablatest"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
+
 ```csharp
-// Get the latest sequence number from your application
+// create a producer client that you can use to send events to an event hub
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    // get the latest sequence number from your application
+    var sequenceNumber = GetNextSequenceNumber();
+
+    // create a batch of events 
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
+
+    // create a new EventData object by encoding a string as a byte array
+    var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
+    // set a custom sequence number property
+    data.Properties.Add("SequenceNumber", sequenceNumber);
+
+    // add events to the batch. An event is a represented by a collection of bytes and metadata. 
+    eventBatch.TryAdd(data);
+
+    // use the producer client to send the batch of events to the event hub
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earliertabold"></a>[Microsoft. Azure. EventHubs (4.1.0 veya önceki sürümler)](#tab/old)
+```csharp
+// Create an Event Hubs client
+var client = new EventHubClient(connectionString, eventHubName);
+
+//Create a producer to produce events
+EventHubProducer producer = client.CreateProducer();
+
+// Get the latest sequence number from your application 
 var sequenceNumber = GetNextSequenceNumber();
+
 // Create a new EventData object by encoding a string as a byte array
 var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
 // Set a custom sequence number property
 data.Properties.Add("SequenceNumber", sequenceNumber);
+
 // Send single message async
-await eventHubClient.SendAsync(data);
+await producer.SendAsync(data);
 ```
+---
 
 Bu örnekte, olay hub'ınızdaki kullanılabilir bölümlerinden olay gönderir ve karşılık gelen bir sıra numarası uygulamanızdan ayarlar. Bu çözüm, işleme uygulamanız tarafından tutulması durumuna gerektirir, ancak, Gönderenler kullanılabilir olması büyük olasılıkla bir uç nokta sağlar.
 

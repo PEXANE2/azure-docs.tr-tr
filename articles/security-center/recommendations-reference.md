@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288991"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904119"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -32,9 +32,10 @@ Güvenli puanınız, kaç Güvenlik Merkezi önerisi azaldığından temel alır
 |Öneri|Açıklama & ilgili ilke|Önem Derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Kaynak türü|
 |----|----|----|----|----|
 |**Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır**|Tam zamanında (JıT) sanal makine (VM) erişim denetimi uygulayarak seçili bağlantı noktalarına erişimi kalıcı olarak kilitler ve yetkili kullanıcıların bunları JıT aracılığıyla yalnızca sınırlı bir süre için açmasını sağlayın.<br>(İlgili ilke: tam zamanında ağ erişim denetimi sanal makinelere uygulanmalıdır)|Yüksek|N|Sanal makine|
-|**Alt ağ düzeyindeki ağ güvenlik grupları etkinleştirilmelidir**|Alt ağlarınızda dağıtılan kaynakların ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.<br>(İlgili ilke: alt ağların bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir)|Yüksek/orta|N|Alt ağ|
-|**Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir**|Sanal makinelerinizin ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.<br>(İlgili ilke: sanal makinelerin bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir)|Yüksek/orta|N|Sanal makine|
-|**Internet 'e yönelik VM 'lerle izin veren ağ güvenlik grupları için erişim kısıtlanması gerekir**|Mevcut izin verme kurallarınızın erişimini kısıtlayarak Internet 'e yönelik sanal makinelerinizin ağ güvenlik gruplarını sağlamlaştırın.<br>(İlgili ilke: Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır)|Yüksek|N|Sanal makine|
+|**Alt ağ düzeyindeki ağ güvenlik grupları etkinleştirilmelidir**|Alt ağlarınızda dağıtılan kaynakların ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.<br>(İlgili ilke: alt ağların bir ağ güvenlik grubuyla ilişkilendirilmesi gerekir.<br>Bu ilke varsayılan olarak devre dışıdır)|Yüksek/orta|N|Alt ağ|
+|**Internet 'e yönelik sanal makineler ağ güvenlik gruplarıyla korunmalıdır**|Sanal makinelerinizin ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.<br>(İlgili ilke: Internet 'e yönelik sanal makineler ağ güvenlik gruplarıyla korunmalıdır)|Yüksek/orta|N|Sanal makine|
+|**Tüm ağ bağlantı noktaları, VM 'niz ile ilişkili NSG 'de sınırlandırılmalıdır**|Mevcut izin verme kurallarınızın erişimini kısıtlayarak Internet 'e yönelik sanal makinelerinizin ağ güvenlik gruplarını sağlamlaştırın.<br>*Tüm* kaynaklara herhangi bir bağlantı noktası açıldığında (22, 3389, 5985, 5986, 80 ve 1443), bu öneri tetiklenir.<br>(İlgili ilke: internet 'e yönelik uç nokta üzerinden erişim kısıtlı olmalıdır)|Yüksek|N|Sanal makine|
+|**Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır**|Standart fiyatlandırma katmanındaki müşteriler, uyarlamalı ağ sağlamlaştırma özelliği aşırı izin veren bir NSG kuralı bulduğunda bu öneriyi görür.<br>(İlgili ilke: Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır)|Yüksek|N|Sanal makine|
 |**IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır**|Web uygulamaları çalıştıran sanal makinelerinizin ağ güvenlik grubu (NSG), Web uygulaması bağlantı noktalarıyla ilgili aşırı izin veren NSG kuralları ile Harden.<br>(İlgili ilke: IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır)|Yüksek|N|Sanal makine|
 |**Uygulama Hizmetleri 'ne erişim kısıtlı olmalıdır**|Ağ yapılandırmasını değiştirerek, çok geniş aralıklardan gelen trafiği reddedecek şekilde uygulama hizmetlerinize erişimi kısıtlayın.<br>(İlgili ilke: [Önizleme]: uygulama hizmetlerine erişim kısıtlı olmalıdır)|Yüksek|N|App Service|
 |**Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır**|Yönetim bağlantı noktalarına erişimi kısıtlamak için sanal makinelerinizin ağ güvenlik grubunu sağlamlaştırın.<br>(İlgili ilke: yönetim bağlantı noktalarının sanal makinelerinizde kapatılması gerekir)|Yüksek|N|Sanal makine|

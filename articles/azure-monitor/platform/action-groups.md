@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659840"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901477"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -72,12 +72,12 @@ Bir eylem grubu oluşturduktan sonra, **izleyici** bölmesinin **eylem grupları
 > [!NOTE]
 > Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) bakın.  
 
-### <a name="automation-runbook"></a>Otomasyon Runbook'u
+### <a name="automation-runbook"></a>Otomasyon Runbook 'U
 Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın.
 
 Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir. 
 
-### <a name="azure-app-push-notifications"></a>Azure Uygulama Anında İletme Bildirimleri
+### <a name="azure-app-push-notifications"></a>Azure Uygulama anında Iletme bildirimleri
 Bir eylem grubunda sınırlı sayıda Azure uygulama eylemi olabilir.
 
 ### <a name="email"></a>E-posta
@@ -94,7 +94,7 @@ Abonelik rolü üyelerine e-posta gönderin.
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
 
 ### <a name="function"></a>İşlev
-Eylem olarak yapılandırılan Işlev uygulamalarının işlev anahtarları, "AzureWebJobsSecretStorageType" uygulama ayarını "dosyalar" olarak yapılandırmak için şu anda v2 işlev uygulamaları gerektiren Işlevler API 'SI aracılığıyla okunurdur. Daha fazla bilgi için bkz. [Işlevler v2 'de anahtar yönetimi değişiklikleri]( https://aka.ms/funcsecrets).
+[Azure işlevlerinde](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)var olan bir http tetikleyici uç noktasını çağırır.
 
 Bir eylem grubunda sınırlı sayıda Işlev eylemine sahip olabilirsiniz.
 

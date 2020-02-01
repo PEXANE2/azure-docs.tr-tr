@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl Chaos zamanlaması
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Chaos zamanlaması için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639182"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906176"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Chaos zamanlamasını alın ve ayarlayın.
@@ -71,9 +71,10 @@ Chaos, Chaos zamanlaması temelinde otomatik olarak çalıştırmalar zamanlar. 
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki komut, bir zamanlamayı (geçerli zamanlamanın 0 ' dır), 2016-01-01 tarihinde başlayan ve gün 24 saat, haftanın 7 günü çalışan 2038-01-01 tarihinde sona erecek şekilde ayarlar. Chaos bu süre için kümede zamanlanır.
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+Aşağıdaki komut, bir zamanlamayı (geçerli zamanlamanın 0 ' dır), 2016-01-01 tarihinde başlayan ve gün 24 saat, haftanın 7 günü çalışan 2038-01-01 tarihinde sona erecek şekilde ayarlar.
+Chaos bu süre için kümede zamanlanır.
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Aşağıdaki komut, bir zamanlamayı (geçerli zamanlamanın 0 ' dır), 2016-01-
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

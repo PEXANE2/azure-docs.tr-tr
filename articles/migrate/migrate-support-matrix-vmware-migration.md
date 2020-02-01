@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware geçişi desteği
 description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030230"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901550"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -123,7 +123,15 @@ Azure geçişi hub 'ında belirtilen OVA şablonunu kullanarak çoğaltma gereci
 
 - VMware için [çoğaltma gereç gereksinimleri](migrate-replication-appliance.md#appliance-requirements) hakkında bilgi edinin.
 - MySQL 'in gereç üzerinde yüklü olması gerekir. [Yükleme seçenekleri](migrate-replication-appliance.md#mysql-installation)hakkında bilgi edinin.
-- Çoğaltma gerecinin erişmesi gereken [URL 'ler](migrate-replication-appliance.md#url-access) hakkında bilgi edinin.
+- Çoğaltma gerecinin erişmesi gereken [URL 'ler](migrate-replication-appliance.md#url-access) ve [bağlantı noktaları]() hakkında bilgi edinin.
+
+## <a name="agent-based-ports"></a>Aracı tabanlı bağlantı noktaları
+
+**cihaz** | **bağlantı**
+--- | ---
+Sanal Makineler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
+Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
+İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.<br/> Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde çalışır.
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 

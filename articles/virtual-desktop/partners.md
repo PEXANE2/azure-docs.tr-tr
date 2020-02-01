@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841072"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906877"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -38,6 +38,14 @@ Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları M
 
 - [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+## <a name="10zig"></a>10ZiG
+
+![10ZiG logosu](./media/partners/10zig.png)
+
+Microsoft ve adanmış bir Microsoft Azure ve Windows sanal masaüstü ortağıyla, son teknoloji ile Ince ve sıfır Istemci donanımı ve yazılımıyla 10ZiG teknolojisi. 10ZiG Windows 10 IoT tabanlı Ince Istemciler, tüm Windows sanal masaüstü çoklu kullanıcıları için güçlü, güvenilir ve ekonomik uç noktalardır. 10ZiG Manager yazılımı, hiçbir ek ücret ödemeden Lisans sınırlamaları olmadan olağanüstü yönetim ve dağıtım sağlar. 10ZiG Tech ekibi, öncelikli garanti programı ve sorun olmayan tanıtımlar, bulutta tek bir Windows sanal masaüstü çoklu oturum desteği çözümüdür.
+
+10ZiG's World-sanal masaüstleri için Ince ve sıfır Istemci uç noktası cihazlarının ve yönetim yazılımlarının müşterileri için nasıl çalıştıkları Ölçülü Istemci donanımı, müşterilerin gereksinimlerine göre doğru Istemci cihazları aldığından emin olmak için tasarlanan, düşünceli bir şekilde oluşturulmuş avantaj özellikleri ve seçenekleri sunar. 10ZiG, sanal masaüstlerinde hem bulut içinde hem de dışında en iyi performansı sağlayan Windows tabanlı ve Linux tabanlı Istemcilerle müşteri ortamlarına uyum sağlamak için cihazlarını özelleştirir.
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -133,6 +141,14 @@ Liquidware Essentials, Kullanıcı profillerini etkin bir şekilde ayırarak ve 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [İş ortağı Web sitesine gidin](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="liquit"></a>Liquit
+
+![Liquit logosu](./media/partners/liquit.png)
+
+Uygulamalar ve hizmet sağlayıcılarının tüm çalışma alanı arka uçları (Citrix, VMWare, Windows sanal masaüstü, RDP ve eski) ile bağlanmasını ve bunları birlikte kullanmasını sağlar ve özelleştirilmiş ve tutarlı bir müşteri sunun müşterinin uygulamalarının bulunduğu yere bakılmaksızın deneyim. Bir müşteri akıllı simgesini yayımladığında, Liquit müşterinin konumuna, cihazına ve profil haklarına göre uygulamanın nereden başlayacağına karar verir.
+
+Sertifikalı tümleştirme ortağı olarak, Liquit, RIP ve değiştirme gecikmesi olmadan buluta geçişi hızlandırmaya yardımcı olur. Windows sanal masaüstü, var olan bir ortama kolayca bağlanabilir, çalışma alanı oluşturabilir ve masaüstünü sunabilir. Daha sonra zamandan eski platformlardan geçiş yapabilir ve kullanıcılarınız yaşıyorsanız olmadan arka uçta değişiklikler yapabilirsiniz. Tutarlı bir son kullanıcı deneyimi, esnek altyapı elde edin ve nerede olurlarsa olsun uygulamalarınızın denetimini koruyun.
+
 ## <a name="login-vsi"></a>Oturum açma VSI
 
 ![Oturum açma VSI logosu](./media/partners/loginvsi.png)
@@ -202,6 +218,16 @@ RDPSoft, güçlü ve pahalı izleme, yönetim ve raporlama çözümleri sağlaya
 RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yönetimi 'ni geliştirir. Premium yönetim özellikleri, uzaktan yardım, Kullanıcı oturumu ve işlem yönetimi sağlayarak masaüstü personelini desteklemek için Windows sanal masaüstü yönetim görevlerinin temsilciliğini basitleştirir. Aynı zamanda, uzak masaüstü Commander Suite, Kullanıcı başına performans ve yükleme, Kullanıcı etkinlikleri ve denetim, Windows sanal masaüstü bağlantısı kalitesi (gecikme süresi ve bant genişliği), lisanslama ve güvenlik ile merkezi bir Azure SQL arasında zengin ölçümler toplar İnceleme için veritabanı örneği. RDPSoft ile, zengin geçmişe yönelik raporlama ve kapsamlı panolar yalnızca bir tıklama.
 
 - [İş ortağı Web sitesine gidin](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![sepago logosu](./media/partners/sepago.png)
+
+sepago, Cologne 'da dört arkadaşa göre 2002 ' de kurulmuştur. Bugün sepago, artmasıyla artan sayıda sepagists ile birlikte, Cologne, Münih ve Hamburg içindeki Almanya 'daki konumlara sahip bir BT yönetimi geliştiriciliğe. sepago, otomatik uygulama sağlama, sanallaştırma, bulut çözümleri ve BT güvenliği ile ilgili uzmanlardır. sepago, dijital dönüştürmeye göre orta ölçekli ve büyük şirketleri destekler ve kullanıcıların güvenli ve verimli bir şekilde çalışmasına olanak sağlar.
+
+sepago 'nın yenilik ve geliştirme Laboratuvarı, büyük veri ve AI teknolojilerini kullanarak akıllı çözümler oluşturur. Bu çözümler, Windows sanal masaüstü gibi iş ortağı ürünlerin iş, Kullanıcı deneyimi ve yönetimlerini geliştirmeye odaklanmaktadır.
+
+- [İş ortağı Web sitesine gidin](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 

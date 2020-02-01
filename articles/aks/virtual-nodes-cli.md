@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 423f0866494054702330c8e51fb1ef45e74a0650
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2133d1aefe3363a2fb2af73c004e22ba0a0239ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845712"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901514"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -318,10 +318,6 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 ```
 
 Şimdi, sanal ağ kaynaklarını ve kaynak grubunu kaldırın:
-
-
-> [!NOTE]
-> Ağ profilini kaldırmaya çalışırken bir hata alırsanız, platformun sorunu otomatik olarak hafifletmek ve silmeyi yeniden denemesi için 3-4 güne izin verin. Bir ağ profilini hemen silmeniz gerekiyorsa Azure Container Instances hizmetine başvuran [bir destek isteği açın](https://azure.microsoft.com/support/create-ticket/) .
 
 ```azurecli-interactive
 # Change the name of your resource group, cluster and network resources as needed

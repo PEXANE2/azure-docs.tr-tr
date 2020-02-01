@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 02e2c0472a6ba7449229a5de5c6d8948be064644
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c4124f46e1b900e240858e4dcd332f13ba0950ec
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845793"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901615"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -205,7 +205,7 @@ Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı
 | **Cape Town** | Teraco | MTN |
 | **Chicago** | Equinix| Crown kalele, SPI Enterprise, WINI akışı |
 | **Dallas** | Equinix, Megaport | AXTEL, C3ntro Teley, Cox Iş, Crown, veri bulunan |
-| **Frankfurt** | Interxion | BICS, Cinia, Nianet, QSC AG, Telekod Deutschland GmbH |
+| **Frankfurt** | Interxion | BICS, Cinia, Equinx, Nianet, QSC AG, Telekod Deutschland GmbH |
 | **Hamburg** | Equinix | Cinia |
 | **Hong Kong ÖİB** | Equinix | Başkan, makro görünümü telekomünikasyon |
 | **Johannesburg** | Teraco | MTN |

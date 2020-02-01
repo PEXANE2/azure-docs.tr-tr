@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl kümesi
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Kümeleri yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639165"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906143"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric kümelerini seçin, yönetin ve çalıştırın.
@@ -28,7 +28,7 @@ Service Fabric kümelerini seçin, yönetin ve çalıştırın.
 | provision | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlayın. |
 | kurtarma-sistem | Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hizmetlerini kurtarmaya çalışılması gerektiğini gösterir. |
 | report-health | Service Fabric kümesinde bir sistem durumu raporu gönderir. |
-| {1&gt;seçin&lt;1} | Service Fabric küme uç noktasına bağlanır. |
+| seçin | Service Fabric küme uç noktasına bağlanır. |
 | bağlantıyı göster | Bu sfctl örneğinin hangi Service Fabric kümesini bağlandığını gösterin. |
 | unprovision | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlamayı kaldırma. |
 | upgrade | Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın. |
@@ -235,7 +235,7 @@ Service Fabric kümesinde bir sistem durumu raporu gönderir. Rapor, sistem duru
 | ----süre sonu | Raporun süresi dolmuşsa sistem durumu deposundan kaldırılıp kaldırılmadığını belirten değer. <br><br> True olarak ayarlanırsa, rapor süresi dolduktan sonra sistem durumu deposundan kaldırılır. False olarak ayarlanırsa rapor, süre dolduğunda hata olarak değerlendirilir. Bu özelliğin değeri varsayılan olarak false 'tur. İstemciler düzenli olarak rapor edildiğinde Removewhenererererfalse (varsayılan) olarak ayarlanmalıdır. Bu şekilde, Raporlayıcı sorunları (örn. kilitlenme) ve raporleyemiyorum, sistem durumu raporunun süresi dolarsa varlık hata olarak değerlendirilir. Bu, varlığı hata sağlık durumunda olduğu şekilde işaretler. |
 | --sıra-sayısı | Bu sistem durumu raporunun sayısal bir dize olarak sıra numarası. <br><br> Rapor sıra numarası, eski raporları algılamak için sistem durumu deposu tarafından kullanılır. Belirtilmemişse, bir rapor eklendiğinde sistem durumu istemcisi tarafından otomatik olarak bir sıra numarası oluşturulur. |
 | --timeout-t | Varsayılan\: 60. |
-| --TTL | Bu sistem durumu raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ıSO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak raporladığında, en yüksek sıklıkta raporlar göndermelidir. İstemciler geçişe rapor alıyorsa, zaman sonsuz ' a kadar canlı bir süre ayarlayabilir. Yaşam süresi dolduğunda, sistem durumu bilgilerini içeren sistem durumu olayı sistem durumu deposundan kaldırılır, Removewhenexpires true ise ya da Removewhenexpires false olduğunda hata durumunda değerlendirilir. Belirtilmemişse, yaşam süresi varsayılan olarak sonsuz değer olur. |
+| --TTL | Bu sistem durumu raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ıSO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak raporladığında, en yüksek sıklıkta raporlar göndermelidir. İstemciler geçişe rapor alıyorsa, süresi sonsuz olarak ayarlayabilir. Yaşam süresi dolduğunda, sistem durumu bilgilerini içeren sistem durumu olayı sistem durumu deposundan kaldırılır, Removewhenexpires true ise ya da Removewhenexpires false olduğunda hata durumunda değerlendirilir. Belirtilmemişse, yaşam süresi varsayılan olarak sonsuz değer olur. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -250,7 +250,7 @@ Service Fabric kümesinde bir sistem durumu raporu gönderir. Rapor, sistem duru
 ## <a name="sfctl-cluster-select"></a>sfctl kümesi seçme
 Service Fabric küme uç noktasına bağlanır.
 
-Güvenli kümeye bağlanıyorsanız, bir sertifika (. CRT) ve anahtar dosyası (. Key) için mutlak bir yol veya hem (. ped) ile tek bir dosya belirtin. Her ikisini de belirtmeyin. İsteğe bağlı olarak, güvenli bir kümeye bağlanıyorsanız, CA paket dosyası veya güvenilir CA sertifikaları dizini için mutlak bir yol da belirtin.  Localhost bağlantısı da dahil olmak üzere, önce bu komutu çalıştırmadan bir kümeye bağlantı yoktur. Ancak, yerel bir kümeye bağlanmak için açık uç nokta gerekmez.
+Güvenli kümeye bağlanıyorsanız, bir sertifika (. CRT) ve anahtar dosyası (. Key) için mutlak bir yol veya hem (. ped) ile tek bir dosya belirtin. Her ikisini de belirtmeyin. İsteğe bağlı olarak, güvenli bir kümeye bağlanıyorsanız, CA paket dosyası veya güvenilir CA sertifikaları dizini için mutlak bir yol da belirtin.  Localhost bağlantısı da dahil olmak üzere, önce bu komutu çalıştırmadan bir kümeye bağlantı yoktur. Ancak, yerel bir kümeye bağlanmak için açık uç nokta gerekmez.  Otomatik olarak imzalanan bir sertifika veya iyi bilinen bir CA tarafından imzalanmamış diğer bir sertifika kullanılıyorsa, doğrulamanın başarılı olmasını sağlamak için--CA parametresini geçirin. Bir üretim kümesinde yoksa, istemci tarafı doğrulamayı atlamak için (kendinden imzalı veya iyi bilinen CA imzalı için yararlıdır),--No-Verify seçeneğini kullanın. Mümkün olsa da, üretim kümeleri için önerilmez. Sertifika doğrulama hatası, aksi takdirde oluşabilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 

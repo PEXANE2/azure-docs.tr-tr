@@ -1,14 +1,14 @@
 ---
 title: Azure tarafından atanan temsilcinin kaynak yönetimi
 description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-ms.date: 01/17/2020
+ms.date: 01/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263923"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904309"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
@@ -44,7 +44,7 @@ Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalışt�
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure tarafından yetkilendirilen kaynak yönetimi desteği
 
-Azure Temsilcili kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa Azure portal bir destek isteği açabilirsiniz. **Sorun türü**için **Teknik**' i seçin. Bir abonelik seçin ve ardından **temsilci kaynak yönetimi** ( **izleme & yönetimi**altında) seçeneğini belirleyin.
+Azure Temsilcili kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa Azure portal bir destek isteği açabilirsiniz. **Sorun türü**için **Teknik**' i seçin. Bir **abonelik seçin ve ardından açık (** **& yönetimi**altında) seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

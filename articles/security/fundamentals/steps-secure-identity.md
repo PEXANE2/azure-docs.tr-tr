@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973922"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903581"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -28,8 +28,8 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 * Kimlik bilgilerinizi güçlendirin.
 * Saldırı yüzeyi alanınızı küçültün.
 * Tehdit yanıtını otomatikleştirin.
-* Denetim ve izleme hakkında farkınızı artırın.
-* Kendi kendine yardım ile daha öngörülebilir ve son kullanıcı güvenliğini sağlayın.
+* Bulut zekası kullanın.
+* Son Kullanıcı self servis hizmetini etkinleştirin.
 
 Bu denetim listesini okurken hangi özellik ve adımların tamamlandığını izlemediğinizden emin olun.
 
@@ -116,7 +116,7 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 Çeşitli [Azure AD uygulama onayı deneyimlerini](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [izin ve onay türlerini](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)ve kuruluşunuzun güvenlik duruşunuzun etkilerini anlamak önemlidir. Varsayılan olarak, Azure AD 'deki tüm kullanıcılar kuruluşunuzun verilerine erişmek için Microsoft Identity platformundan yararlanan uygulamalara izin verebilir. Kullanıcıların kendilerine izin vermesini sağlarken, kullanıcıların Microsoft 365, Azure ve diğer hizmetlerle tümleştirilen yararlı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir.
 
-Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için [gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) öneriyor. Son Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Bu işlevi devre dışı bırakmadan önce, kullanıcıların hangi uygulamalara yönelik olduğunu anlamak ve değişikliği buna göre planlamak için denetim günlüğüyü gözden geçirmeniz önerilir. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 'i kullanarak uygulamalara Kullanıcı erişimini kısıtlayın.
+Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için [gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) öneriyor. Son Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Son Kullanıcı onayını devre dışı bırakmadan önce, bu değişikliği kuruluşunuzda planlamak için [önerilerimizi](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) kullanın. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 'i kullanarak uygulamalara Kullanıcı erişimini kısıtlayın.
 
 Kullanıcıların, Kullanıcı uyumsuzluklıkları azaltmak, destek birimini en aza indirmek ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmasını engellemek için yeni uygulamalar için yönetici onayı isteğinde bulunduğundan emin olun. Onay işlemlerinizi belirledikten sonra Yöneticiler, uygulamayı ve onaylı izinleri düzenli aralıklarla denetlemelidir.
 
@@ -134,7 +134,7 @@ Kullanıcıların, Kullanıcı uyumsuzluklıkları azaltmak, destek birimini en 
 
 Azure AD PıM 'yi etkinleştirin, ardından Yönetici rolleri atanmış kullanıcıları görüntüleyin ve bu rollerdeki gereksiz hesapları kaldırın. Kalan ayrıcalıklı kullanıcılar için bunları kalıcı 'dan uygun hale taşıyın. Son olarak, bu ayrıcalıklı rollere erişim kazanmak istediklerinde, gerekli değişiklik denetimiyle bu şekilde güvenli bir şekilde yapabilecekleri konusunda emin olmak için uygun ilkeler oluşturun.
 
-Ayrıcalıklı hesap işleminizi dağıtmanın bir parçası olarak, kendinizi kilitlerseniz Azure AD 'ye erişiminizin olduğundan emin olmak için [en iyi iki acil durum hesabı oluşturmak için en iyi](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) uygulamayı izleyin.
+Ayrıcalıklı hesap işleminizi dağıtmanın bir parçası olarak, kendinizi kilitlerseniz Azure AD 'ye erişiminizin devam ettiğinden emin olmak için [en iyi iki acil durum hesabı oluşturmak için en iyi](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) uygulamayı izleyin.
 
 ## <a name="step-3---automate-threat-response"></a>3\. adım-tehdit yanıtını otomatikleştirin
 
@@ -152,7 +152,7 @@ Oturum açma riski, hesap sahibi dışında birisinin kimliği kullanarak oturum
 
 ![Anonim IP 'lerden oturum açma](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
-## <a name="step-4---increase-your-awareness"></a>4\. adım-tanımayı artırma
+## <a name="step-4---utilize-cloud-intelligence"></a>4\. adım-bulut zekası kullanma
 
 Güvenlikle ilgili olayları ve ilgili uyarıları denetleme ve günlüğe kaydetme, etkili bir koruma stratejisinin önemli bileşenleridir. Güvenlik günlükleri ve raporları, size bir elektronik şüpheli etkinlik kaydı sağlar ve ağın denendiği veya başarılı bir şekilde dışarıdan sızma ve iç saldırılar olduğunu gösterebilen desenleri tespit etmenize yardımcı olur. Kullanıcı etkinliğini izlemek, mevzuat uyumluluğu, analiz yapmak ve daha fazlasını yapmak için denetimi kullanabilirsiniz. Uyarılar güvenlik olaylarının bildirimleri sağlar.
 
@@ -180,7 +180,7 @@ Azure AD Kimlik Koruması, günlük izlemeniz gereken iki önemli rapor sağlar:
 
 Kullanıcılar, e-postaları gibi profil bilgilerine ve kullanıcı verilerine erişim kazanabilmek için güvenliği aşılmış bir Web sitesine veya uygulamalarına gidiliyor olabilir. Kötü amaçlı bir aktör, posta kutusu içeriğini şifrelemek için aldığı onaylı izinleri kullanabilir ve posta kutusu verilerinizi yeniden kazanmak için bir ransoh talep edebilir. Yöneticiler, kullanıcılar tarafından verilen izinleri [gözden geçirmeli ve denetlemelidir](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) ya da kullanıcıların varsayılan olarak onay verme yeteneğini devre dışı bırakır.
 
-Kullanıcılar tarafından verilen izinleri denetlemeye ek olarak, Premium ortamlarda kullanılabilen bir işlevsellik olan [riskli veya Istenmeyen OAuth uygulamalarını](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)denemeye ve özellikle bulmaya yardımcı olabilir.
+Kullanıcılar tarafından verilen izinleri denetlemeye ek olarak Premium ortamlarda [riskli veya Istenmeyen OAuth uygulamalarını bulabilirsiniz](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth) .
 
 ## <a name="step-5---enable-end-user-self-service"></a>5\. adım-Son Kullanıcı self servis hizmetini etkinleştirme
 
@@ -192,11 +192,11 @@ Azure AD 'nin [self servis parola sıfırlama (SSPR)](../../active-directory/aut
 
 ### <a name="implement-self-service-group-and-application-access"></a>Self Servis grubunu ve uygulama erişimini Uygula
 
-Azure AD, yönetici olmayan güvenlik gruplarını, Office 365 gruplarını, uygulama rollerini ve erişim paketi kataloglarını kullanarak kaynaklara erişimi yönetme yeteneği sağlar.  [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Office 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılara, kendilerine ait oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için kendi erişim paketlerini yapılandırma olanağı, örneğin, çalışanın, erişimi onaylaması gereken özel ilkelerle onaylayan olarak Yöneticiler ve iş ortağı sponsorları.
+Azure AD, yönetici olmayan güvenlik gruplarını, Office 365 gruplarını, uygulama rollerini ve erişim paketi kataloglarını kullanarak kaynaklara erişimi yönetme olanağı sağlar.  [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Office 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılara, kendilerine ait oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için kendi erişim paketlerini yapılandırma olanağı, örneğin, çalışanın, erişimi onaylaması gereken özel ilkelerle onaylayan olarak Yöneticiler ve iş ortağı sponsorları.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri uygulama
 
-[Azure AD erişim gözden geçirmeleriyle](../../active-directory/governance/access-reviews-overview.md), bir güvenlik standardı bulundurduğunuzdan emin olmak için erişim paketi ve grup üyeliklerini yönetebilir, kurumsal uygulamalara ve ayrıcalıklı rol atamalarına erişebilirsiniz.  Kullanıcıların kendileri tarafından düzenli olarak ortaya çıkarması, kaynak sahipleri ve diğer gözden geçirenler, kullanıcıların artık ihtiyaç duymuyorsa uzun süre boyunca erişimi korumalarına de dikkat edin.
+[Azure AD erişim gözden geçirmeleriyle](../../active-directory/governance/access-reviews-overview.md), bir güvenlik standardı bulundurduğunuzdan emin olmak için erişim paketi ve grup üyeliklerini yönetebilir, kurumsal uygulamalara ve ayrıcalıklı rol atamalarına erişebilirsiniz.  Kullanıcılar, kaynak sahipleri ve diğer gözden geçirenler tarafından düzenli olarak gözetim, kullanıcıların artık ihtiyaç duymuyorsa uzun süre boyunca erişimi korumalarına de dikkat edin.
 
 ## <a name="summary"></a>Özet
 
@@ -205,7 +205,7 @@ Güvenli bir kimlik altyapısının birçok yönü vardır, ancak bu beş adıml
 * Kimlik bilgilerinizi güçlendirin.
 * Saldırı yüzeyi alanınızı küçültün.
 * Tehdit yanıtını otomatikleştirin.
-* Denetim ve izleme hakkında farkınızı artırın.
+* Bulut zekası kullanın.
 * Kendi kendine yardım ile daha öngörülebilir ve son kullanıcı güvenliğini sağlayın.
 
 Kimlik güvenliğini ne kadar ciddi hale getirmek istediğinizi biliyoruz ve bu belgede kuruluşunuz için daha güvenli bir zaman Kılavuzu olması önerilir.
@@ -214,4 +214,4 @@ Kimlik güvenliğini ne kadar ciddi hale getirmek istediğinizi biliyoruz ve bu 
 
 Önerileri planlamak ve dağıtmak için yardıma ihtiyacınız varsa yardım için [Azure AD proje dağıtım planlarına](https://aka.ms/deploymentplans) bakın.
 
-Tüm bu adımlar tamamlandıysa, Microsoft 'un [kimlik güvenli puanı](../../active-directory/fundamentals/identity-secure-score.md)'nı kullanın. Bu, [en son en iyi uygulamalar](identity-management-best-practices.md) ve güvenlik tehditleri ile güncel tutmaya devam edecektir.
+Tüm bu adımlar tamamlandıysa, Microsoft 'un [kimlik güvenli puanı](../../active-directory/fundamentals/identity-secure-score.md)'nı kullanın. Bu, [en son en iyi uygulamalar](identity-management-best-practices.md) ve güvenlik tehditleri ile ilgili güncel tutmaya devam edecektir.

@@ -3,14 +3,14 @@ title: Azure Service Fabric CLı-sfctl kafes dağıtımı
 description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Service Fabric kafes kaynakları oluşturmak için komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6512cce075906fc8708a39fa0747ec27be33e961
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645370"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906032"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Service Fabric kafes kaynakları oluşturun.
@@ -28,8 +28,8 @@ Service Fabric kafes kaynakları dağıtımı oluşturur.
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Input-YAML-Files [gerekli] | Tüm YAML dosyalarının virgülle ayrılmış göreli/mutlak dosya yolları veya YAML dosyaları içeren dizinin (özyinelemeli) göreli/mutlak yolu. |
-| --Parametreler | YAML dosyasına yönelik göreli/mutlak yol veya geçersiz kılınabilmesi gereken parametreleri içeren bir JSON nesnesi. |
+| --Input-YAML-Files [gerekli] | Tüm YAML dosyalarının virgülle ayrılmış göreli veya mutlak dosya yolları veya YAML dosyalarını içeren dizinin (özyinelemeli) göreli ya da mutlak yolu. |
+| --Parametreler | YAML dosyasının veya geçersiz kılınabilmesi gereken parametreleri içeren bir JSON nesnesinin göreli veya mutlak yolu. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 

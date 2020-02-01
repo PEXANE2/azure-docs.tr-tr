@@ -1,6 +1,6 @@
 ---
-title: HC serisi VM genel bakış - Azure sanal makineler | Microsoft Docs
-description: Azure'da HC serisi VM boyutu için Önizleme desteği hakkında daha fazla bilgi edinin.
+title: HC Serisi VM 'ye genel bakış-Azure sanal makineleri | Microsoft Docs
+description: Azure 'da HC Serisi VM boyutu için Önizleme desteği hakkında bilgi edinin.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,57 +12,57 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797543"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906753"
 ---
-# <a name="hc-series-virtual-machine-overview"></a>HC serisi sanal makineye genel bakış
+# <a name="hc-series-virtual-machine-overview"></a>HC Serisi sanal makineye genel bakış
 
-Intel Xeon ölçeklenebilir işlemcilerde HPC uygulama performansını en üst düzeye, bu yeni mimariyi yerleştirme işlem için özenli bir yaklaşım gerektirir. Burada, bunu kararlılığımızın HPC uygulamaları için Azure HC serisi vm'lerde özetler. Bir fiziksel NUMA etki alanı ve sanal NUMA'yı etki alanına başvurmak için "vNUMA" başvurmak için "pNUMA" terimini kullanacağız. Benzer şekilde, fiziksel CPU çekirdekleri için başvurmak için "pCore" terimini kullanacağız ve CPU çekirdeği başvurmak için "sanal çekirdek" sanallaştırılmış.
+Intel Xeon ölçeklenebilir Işlemcilerde HPC uygulama performansını en üst düzeye çıkarmak, bu yeni mimaride yerleştirmeyi işlemek için düşünceli bir yaklaşım gerektirir. Burada, HPC uygulamaları için Azure HC Serisi VM 'lerde uygulama uygulamamız ana hatlarıyla açıklanmıştır. "PNUMA" terimini bir fiziksel NUMA etki alanına ve "vNUMA" adlı bir sanallaştırılmış NUMA etki alanına başvuracak şekilde kullanacağız. Benzer şekilde, fiziksel CPU çekirdekleri için "pCore" terimini ve sanallaştırılmış CPU çekirdeklerini belirtmek için "vCore" terimini kullanacağız.
 
-Fiziksel bir HC sunucusu 2 olan * 24 çekirdekli Intel Xeon Platinum 8168 CPU toplam 48 fiziksel çekirdek. Her CPU tek pNUMA etki alanı ve altı kanalının bir DRAM erişimi birleşik. Büyük L2 önbelleği x 4'te de karşılaştırma için önceki Intel CPU'yu L3 Önbellek azaltırken önceki nesil (1 MB/çekirdek 256 KB/çekirdek->), bir Intel Xeon Platinum CPU özelliği (2,5 MB/core 1.375 MB/çekirdek->).
+Fiziksel olarak, bir HC sunucusu toplam 48 fiziksel çekirdek için 2 * 24 çekirdekli Intel Xeon Platinum 8168 CPU olur. Her CPU tek bir pNUMA etki alanıdır ve altı adet DRAM kanalına Birleşik erişim sağlar. Intel Xeon Platinum CPU 'Ları, önceki nesle kıyasla (256 KB/çekirdek-> 1 MB/çekirdek) daha büyük bir L2 önbellek özelliğine sahiptir ve ayrıca, önceki Intel CPU 'Lara kıyasla L3 önbelleğini de azaltır (2,5 MB/Core-> 1,375 MB/çekirdek).
 
-Yukarıdaki topolojisi HC serisi hiper yönetici yapılandırması için de yaşamanız sağlanır. Azure hiper yönetici VM ile engellemeden çalışılacak yer sağlamak için pCores 0-1 ve 24-25 (diğer bir deyişle, her yuva ilk 2 pCores) tutarız. Biz ardından pNUMA etki alanları tüm kalan çekirdek VM'ye atayın. Bu nedenle, VM görürsünüz:
+Yukarıdaki topoloji, HC Serisi hiper yönetici yapılandırmasını da taşır. Azure Hiper Yöneticisi 'nin VM ile kesintiye uğramadan çalışması için yer sağlamak üzere Pçekirdeklerini 0-1 ve 24-25 (yani her bir yuvada ilk 2 Pcore) ayırdık. Daha sonra, tüm kalan çekirdekler için sanal makineye pNUMA etki alanları atarsınız. Bu nedenle, VM şunları görür:
 
-`(2 vNUMA domains) * (22 cores/vNUMA) = 44` VM başına çekirdek
+VM başına `(2 vNUMA domains) * (22 cores/vNUMA) = 44` çekirdekler
 
-Sanal makine pCores 0-1 ve 25 24 verilen olmayan, bilgi içeriyor. Bu nedenle, bunu yerel olarak 22 çekirdek varmış gibi her vNUMA kullanıma sunar.
+VM 'de Pçekirdeklerin 0-1 ve 24-25 'e verilmeyen bir bilgi bulunmamaktadır. Bu nedenle, her vNUMA 'yı yerel olarak 22 çekirdeğe sahip gibi kullanıma sunar.
 
-Sıra Intel Xeon Platinum, altın ve Gümüş CPU bir-zar 2B kafes ağ içinde iletişim kurmak ve dış CPU yuvaya uygular. İşlemi en iyi performans ve tutarlılık için sabitleme kesinlikle öneririz. İşlem sabitleme çalışır HC serisi VM'ler üzerinde temel alınan Silikon olarak açığa çıkarıldığı-Konuk VM. Daha fazla bilgi için bkz. [Intel Xeon SP mimarisi](https://bit.ly/2RCYkiE).
+Intel Xeon Platinum, altın ve gümüş CPU, Ayrıca, CPU yuvası içinde ve dışında iletişim için bir on-zar 2B ağ ağı sunar. En iyi performans ve tutarlılık için işlem sabitlenmesini önemle öneririz. Temeldeki Silicon, Konuk VM 'ye olduğu için, işlem sabitleme, HC Serisi VM 'lerde çalışacaktır. Daha fazla bilgi için bkz. [Intel Xeon SP mimarisi](https://bit.ly/2RCYkiE).
 
-Aşağıdaki diyagramda çekirdek ayrımı ayrılmış Azure hiper Yöneticisi ve HC serisi VM için gösterilmektedir.
+Aşağıdaki diyagramda, Azure Hiper Yöneticisi ve HC Serisi VM için ayrılan çekirdekler gösterilmektedir.
 
-![Azure hiper Yöneticisi ve HC serisi VM için ayrılan çekirdek ayrımı](./media/hc-series-overview/segregation-cores.png)
+![Azure Hiper Yöneticisi ve HC Serisi VM için ayrılan çekirdekler](./media/hc-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Donanım belirtimleri
 
-| Donanım belirtimleri          | HC serisi VM                     |
+| Donanım belirtimleri          | HC Serisi VM                     |
 |----------------------------------|----------------------------------|
-| Çekirdek                            | 40 (HT devre dışı)                 |
+| Çekirdek                            | 44 (HT Disabled)                 |
 | CPU                              | Intel Xeon Platinum 8168 *        |
-| CPU frekansını (AVX olmayan)          | 3.7 GHz (tek çekirdek) 2.7 3.4 GHz (tüm çekirdek) |
-| Bellek                           | 8 GB/çekirdek (toplam 352)            |
+| CPU sıklığı (AVX olmayan)          | 3,7 GHz (tek çekirdek), 2.7-3.4 GHz (tüm çekirdekler) |
+| Hafıza                           | 8 GB/çekirdek (352 toplam)            |
 | Yerel Disk                       | 700 GB NVMe                      |
-| Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 ** |
-| Ağ                          | 50 Gb Ethernet (40 Gb kullanılabilir) Azure ikinci nesil SmartNIC *** |
+| InfiniBand                       | 100 GB EDR Mellanox ConnectX-5 * * |
+| Ağ                          | 50 GB Ethernet (40 GB kullanılabilir) Azure ikinci gen Smartnıc * * * |
 
-## <a name="software-specifications"></a>Yazılım özellikleri
+## <a name="software-specifications"></a>Yazılım belirtimleri
 
-| Yazılım özellikleri     | HC serisi VM          |
+| Yazılım belirtimleri     | HC Serisi VM          |
 |-----------------------------|-----------------------|
-| En fazla MPI iş boyutu            | 4400 çekirdek (100 sanal makine ölçek kümeleri), 8800 çekirdekler (200 sanal makine ölçek kümeleri) |
-| MPI desteği                 | MVAPICH2, OpenMPI MPICH, Platform MPI, Intel MPI  |
-| Ek çerçeveler       | Birleşik iletişim X, libfabric, PGAS |
-| Azure depolama desteği       | Standart ve Premium (en fazla 4 disk) |
-| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+ |
+| Maksimum MPı Işi boyutu            | 13200 çekirdek (tek bir VMSS 'de Tekplacementgroup = true ile 300 VM) |
+| MPı desteği                 | MVAPICH2, OpenMPI, MPICH, platform MPı, Intel MPı  |
+| Ek çerçeveler       | Birleşik Iletişim X, libfabric, PGAS |
+| Azure depolama desteği       | STD + Premium (en fazla 4 disk) |
+| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 + |
 | Azure CycleCloud desteği    | Evet                         |
 | Azure Batch desteği         | Evet                         |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* HPC VM boyutları hakkında daha fazla bilgi [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) azure'da.
+* Azure 'da [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) ve [WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) için HPC VM boyutları hakkında daha fazla bilgi edinin.
 
-* Daha fazla bilgi edinin [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) azure'da.
+* Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
