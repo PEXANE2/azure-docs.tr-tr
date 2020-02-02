@@ -2,17 +2,17 @@
 title: Hızlı başlangıç-Azure PowerShell kullanarak bir Azure özel DNS bölgesi oluşturma
 description: Bu makalede, Azure DNS özel bir DNS bölgesi ve kaydı oluşturup test edersiniz. Bu kılavuzda, Azure PowerShell kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturup yönetmeniz için adım adım talimatlar sunulmaktadır.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 5532eb9897de2f746b194fb6bd496548e989b994
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210814"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939383"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure özel DNS bölgesi oluşturma
 
@@ -208,4 +208,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure DNS Özel Bölgeleri senaryoları](private-dns-scenarios.md)
+> [Azure DNS Özel Bölgeleri senaryolar](private-dns-scenarios.md)

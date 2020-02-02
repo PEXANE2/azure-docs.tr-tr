@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261874"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939124"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel nedir?
 
@@ -37,17 +37,17 @@ Azure Sentinel, daha fazla gelişmiş saldırı elde etmek, uyarı hacimlerini a
 
 - Ortak görevlerin yerleşik düzenlemesi ve otomasyonu ile **olaylara hızla yanıt verin** .
 
-
 ![Azure Sentinel temel özellikleri](./media/overview/core-capabilities.png)
 
 Azure Sentinel, mevcut Azure hizmetlerinin tam aralığında oluşturma, Log Analytics ve Logic Apps gibi kanıtlanmış temelleri yerel olarak içerir. Azure Sentinel, araştırma ve algılamalarınızı AI ile zenginleştirir ve Microsoft 'un tehdit bilgileri akışını sağlar ve kendi tehdit zekaızın bilgilerini almanıza olanak sağlar. 
 
- 
 ## <a name="connect-to-all-your-data"></a>Tüm verilerinize bağlanın
 
 Azure Sentinel 'de, ilk olarak [güvenlik kaynaklarınıza bağlanmanız](connect-data-sources.md)gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft tehdit koruması çözümleri dahil gerçek zamanlı tümleştirme ve Office 365, Azure AD, Azure ATP ve dahil olmak üzere Microsoft 365 kaynakları sağlar. Microsoft Cloud App Security ve daha fazlası. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Ayrıca, veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API de kullanabilirsiniz.  
 
 ![Veri toplayıcılar](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>Çalışma Kitapları
 
@@ -92,5 +92,5 @@ Azure Sentinel topluluğu, tehdit algılama ve otomasyonu için güçlü bir kay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Sentinel ile çalışmaya başlamak için Microsoft Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
+- Azure Sentinel ile çalışmaya başlamak için Microsoft Azure aboneliğine sahip olmanız gerekir. Bir aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 - [Verilerinizi Azure Sentinel 'e](quickstart-onboard.md) [ekleme ve verilerinize ilişkin görünürlük alma ve olası tehditler](quickstart-get-visibility.md)hakkında bilgi edinin.

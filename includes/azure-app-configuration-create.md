@@ -3,13 +3,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 12/03/2019
-ms.openlocfilehash: 21811041a25c63bb7542b101812222a9430c20fe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 1/31/2020
+ms.openlocfilehash: 017833403beca6fb8689bd6f90cc8f460d56c65e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887607"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961420"
 ---
 1. Yeni bir uygulama yapılandırma deposu oluşturmak için [Azure Portal](https://portal.azure.com)oturum açın. Giriş sayfasının sol üst köşesinde **kaynak oluştur**' u seçin. Market 'te **Ara** kutusuna **uygulama yapılandırması** ' nı girin ve ENTER ' u seçin.
 
@@ -30,6 +30,6 @@ ms.locfileid: "76887607"
 
     ![Uygulama yapılandırma deposu kaynağı oluşturma](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
-1. **Oluştur**’u seçin. Dağıtım birkaç dakika sürebilir.
+1. **Oluştur**'u seçin. Dağıtım birkaç dakika sürebilir.
 
 1. Dağıtım bittikten sonra, **erişim anahtarlarına** > **Ayarlar** ' ı seçin. Birincil salt okunurdur anahtar bağlantı dizesini bir yere unutmayın. Uygulamanızı oluşturduğunuz uygulama yapılandırma deposuyla iletişim kuracak şekilde yapılandırmak için bu bağlantı dizesini daha sonra kullanacaksınız.

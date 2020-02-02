@@ -3,17 +3,17 @@ title: 'Hızlı başlangıç: DNS bölgesi ve kaydı oluşturma-Azure portal'
 titleSuffix: Azure DNS
 description: Azure portal kullanarak Azure DNS bölgesi ve kaydı oluşturma hakkında bilgi edinmek için bu adım adım hızlı başlangıç kılavuzunu kullanın.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082919"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937125"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure DNS bir bölge ve kayıt oluşturma
 
@@ -45,7 +45,7 @@ Bir DNS bölgesi, bir etki alanı için DNS girdilerini içerir. Etki alanınız
    - **Ad**: Bu hızlı başlangıç örneği için *contoso. xyz* yazın. DNS bölgesi adı, Azure DNS sunucularında önceden yapılandırılmamış herhangi bir değer olabilir. Gerçek dünyada etki alanı adı kayıt kuruluşunuzdan satın aldığınız etki alanını kullanmanız gerekir.
    - **Kaynak grubu**: **Yeni oluştur**' u seçin, *myresourcegroup*girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır. 
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    ![DNS bölgesi](./media/dns-getstarted-portal/openzone650.png)
 
@@ -108,4 +108,4 @@ Bu hızlı başlangıçta oluşturduğunuz kaynaklara artık ihtiyacınız kalma
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)
+> [Özel etki alanında bir web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

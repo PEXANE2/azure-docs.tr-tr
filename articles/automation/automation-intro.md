@@ -7,12 +7,12 @@ keywords: azure otomasyonu, DSC, powershell, istenen durum yapılandırması, g�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421940"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930391"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
 
@@ -75,6 +75,8 @@ Azure Otomasyonu altyapınızın ve uygulamalarınızın yaşam döngüsü boyun
 * **İzleme**: Makinelerdeki sorun yaratan değişiklikleri tanımlayın ve düzeltin veya yönetim sistemine iletin.
 * **Koruma**: Güvenlik uyarısı durumunda VM'yi karantinaya alın. Konuk içi gereksinimleri ayarlayın.
 * **Yönetim**: Ekipler için rol tabanlı erişim denetimini ayarlayın. Kullanılmayan kaynakları kurtarın.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>Otomasyon fiyatlandırması
 

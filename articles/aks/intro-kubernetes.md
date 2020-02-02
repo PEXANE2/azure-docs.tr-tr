@@ -1,5 +1,5 @@
 ---
-title: Azure Kubernetes Hizmeti Tanıtımı
+title: Azure Kubernetes Service'a Giriş
 description: Azure’da kapsayıcı tabanlı uygulamaları dağıtmak ve yönetmek için Azure Kubernetes Hizmetinin özelliklerini ve avantajlarını öğrenin.
 services: container-service
 author: mlearned
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c98e67d174c3c8b7fc426e1dd2c5ebafd6760969
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615156"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932601"
 ---
-# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
+# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS), Azure'a yönetilen bir Kubernetes kümesi dağıtmayı kolaylaştırır. AKS, sorumluluğun çoğunu Azure'a devrederek Kubernetes yönetiminin karmaşıklığını ve işlemsel yükünü azaltır. Barındırılan bir Kubernetes hizmeti olarak, Azure sistem durumu izleme ve bakım gibi kritik görevleri sizin için gerçekleştirir. Kubernetes ana düğümler Azure tarafından yönetilir. Siz yalnızca aracı düğümlerini yönetir ve sürdürürsünüz. AKS, yönetilen bir Kubernetes servisi olarak ücretsizdir; ana düğümler için değil, yalnızca kümelerinizdeki aracı düğümleri için ücret ödersiniz.
 
@@ -24,6 +24,8 @@ Azure portalda, Azure CLI ile veya Resource Manager şablonları ve Terraform gi
 Kubernetes temelleri hakkında daha fazla bilgi için bkz. [AKS Için Kubernetes temel kavramları][concepts-clusters-workloads].
 
 Başlamak için [Azure Portal][aks-portal] veya [Azure CLI ile][aks-cli]aks hızlı başlangıcını doldurun.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>Erişim, güvenlik ve izleme
 

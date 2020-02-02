@@ -2,17 +2,17 @@
 title: Hızlı başlangıç-Azure portal kullanarak bir Azure özel DNS bölgesi oluşturma
 description: Bu hızlı başlangıçta, Azure DNS bir özel DNS bölgesi ve kaydı oluşturup test edersiniz. Bu, Azure portal kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturup yönetmek için adım adım kılavuzudur.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
-ms.author: allensu
-ms.openlocfilehash: 48c5684dd491a91b6da212f78c535433ac2aecf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210763"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939379"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure özel DNS bölgesi oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Özel bir DNS bölgesi oluşturma
-> * Sanal ağ oluşturma
+> * Sanal ağ oluşturun
 > * Sanal ağı bağlama
 > * Test amaçlı sanal makineleri oluşturma
 > * Ek bir DNS kaydı oluşturma
@@ -58,7 +58,7 @@ Bir DNS bölgesi, bir etki alanı için DNS girdilerini içerir. Etki alanınız
 
 Bölgenin oluşturulması birkaç dakika sürebilir.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
 1. Portal sayfası sol üst sayfasında, **kaynak oluştur**' u ve ardından **ağ**' ı seçin ve **sanal ağ**' ı seçin.
 2. **Ad**Için **Myazurevnet**yazın.
@@ -181,5 +181,5 @@ Artık gerekli değilse, bu hızlı başlangıçta oluşturulan kaynakları silm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure DNS Özel Bölgeleri senaryoları](private-dns-scenarios.md)
+> [Azure DNS Özel Bölgeleri senaryolar](private-dns-scenarios.md)
 

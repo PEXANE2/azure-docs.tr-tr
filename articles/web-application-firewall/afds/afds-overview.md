@@ -5,20 +5,22 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 11/23/2019
+ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406220"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934718"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure ön kapıda Azure Web uygulaması güvenlik duvarı
 
-Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF), Azure ön kapısı kullanılarak küresel olarak sunulan Web uygulamalarınız için merkezi koruma sağlar. Bu çözüm, web hizmetlerinizi yaygın açıklardan yararlanma yazılımlarına ve güvenlik açıklarına karşı koruyup hizmetinizi kullanıcılarınız için yüksek oranda kullanılabilir tutmanın yanı sıra uyumluluk gereksinimlerini karşılamanıza yardımcı olmak üzere tasarlanmıştır ve bu amaçlara uygun şekilde işletilmektedir.
+Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınız için merkezi koruma sağlar. WAF, Web hizmetlerinizi yaygın güvenlik açıklarından ve güvenlik açıklarına karşı Savunlar. Kullanıcılarınız için hizmetinizi yüksek oranda kullanılabilir tutar ve uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
 
-Ön kapıda WAF genel ve merkezi bir çözümdür. Bu, dünyanın her yerindeki Azure ağ Edge konumlarına ve ön kapıya göre dağıtılan bir WAF özellikli Web uygulamasına yönelik her gelen isteğe bağlı olarak ağ ucunda denetlenir. Bu, WAF 'nin, Sanal ağınızı girmeden önce, saldırı kaynaklarına yakın kötü amaçlı saldırıları engellemesine ve performanstan ödün vermeden genel koruma sağlamasına olanak tanır. Bir WAF ilkesi, aboneliğinizdeki herhangi bir ön kapı profiline kolayca bağlanabilir ve yeni kurallar dakikalar içinde dağıtılabilir ve bu da, tehdit desenlerine hızla yanıt vermenize olanak tanır.
+Ön kapıda WAF genel ve merkezi bir çözümdür. Dünyanın dört bir yanındaki Azure ağ Edge konumlarında dağıtılır. WAF etkin Web uygulamaları, ön kapıda ağ ucunda sunulan tüm gelen istekleri inceleyin. 
+
+WAF, Sanal ağınızı girmeden önce saldırı kaynaklarına yakın kötü amaçlı saldırıları önler. Performans performansınızı etkilemeden genel koruma kazanın. Bir WAF ilkesi, aboneliğinizdeki herhangi bir ön kapılı profile kolayca bağlanır. Yeni kurallar dakikalar içinde dağıtılabilir ve bu sayede tehdit desenlerini değiştirmek için hızlıca yanıt verebilirsiniz.
 
 ![Azure Web uygulaması güvenlik duvarı](../media/overview/wafoverview.png)
 
@@ -32,17 +34,17 @@ Bir WAF ilkesi yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla 
 
 Her ikisi de varsa, yönetilen bir kural kümesindeki kuralları işlemeden önce özel kurallar işlenir. Bir kural eşleştirme koşulu, öncelik ve bir eylemden oluşur. Desteklenen eylem türleri şunlardır: ızın ver, engelle, LOG ve REDIRECT. Yönetilen ve özel kuralları birleştirerek, belirli uygulama koruma gereksinimlerinizi karşılayan tam olarak özelleştirilmiş bir ilke oluşturabilirsiniz.
 
-Bir ilke içindeki kurallar, önceliğinin, işlenen kuralların sırasını tanımlayan benzersiz bir tamsayı olduğu öncelikli bir sırada işlenir. Daha küçük tamsayı değeri daha yüksek bir öncelik gösterir ve bunlar daha yüksek bir tamsayı değerine sahip kurallardan önce değerlendirilir. Bir kural eşleştiğinde, kuralda tanımlanan ilgili eylem isteğe uygulanır. Bu tür bir eşleşme işlendiğinde, daha düşük öncelikler olan kurallar daha fazla işlenmez.
+İlke içindeki kurallar öncelik sırasına göre işlenir. Öncelik, işlenecek kuralların sırasını tanımlayan benzersiz bir tamsayıdır. Daha küçük tamsayı değeri daha yüksek bir öncelik gösterir ve bu kurallar daha yüksek bir tamsayı değerine sahip kurallardan önce değerlendirilir. Bir kural eşleştiğinde, kuralda tanımlanan ilgili eylem isteğe uygulanır. Bu tür bir eşleşme işlendiğinde, daha düşük öncelikler olan kurallar daha fazla işlenmez.
 
-Ön kapıya göre sunulan bir Web uygulamasının aynı anda kendisiyle ilişkili yalnızca bir WAF ilkesi olabilir. Ancak, kendisiyle ilişkilendirilmiş bir WAF ilkesi olmadan bir ön kapı yapılandırmasına sahip olabilirsiniz. Bir WAF ilkesi varsa, dünyanın dört bir yanındaki güvenlik ilkelerinde tutarlılık sağlamak için tüm kenar konumlarımızla çoğaltılır.
+Ön kapıya göre sunulan bir Web uygulamasının aynı anda kendisiyle ilişkili yalnızca bir WAF ilkesi olabilir. Ancak, kendisiyle ilişkilendirilmiş bir WAF ilkesi olmadan bir ön kapı yapılandırmasına sahip olabilirsiniz. Bir WAF ilkesi varsa, dünyanın tamamında tutarlı güvenlik ilkeleri sağlamak için tüm kenar konumlarımızla çoğaltılır.
 
 ## <a name="waf-modes"></a>WAF modları
 
 WAF ilkesi aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
 
-- **Algılama modu:** Algılama modunda çalıştırıldığında WAF, izleyicileri dışında başka bir eylem almaz ve isteği ve eşleşen WAF kuralını WAF günlüklerine kaydeder. Ön kapı için günlük tanılamayı açabilirsiniz (portal kullanırken, bu, Azure portal) **Tanılama** bölümüne giderek elde edilebilir.
+- **Algılama modu:** Algılama modunda çalıştırıldığında WAF, izleyicileri dışında başka bir eylem almaz ve isteği ve eşleşen WAF kuralını WAF günlüklerine kaydeder. Ön kapı için günlüğü tanılamayı açabilirsiniz. Portalı kullandığınızda **Tanılama** bölümüne gidin.
 
-- **Önleme modu:** Önleme modunda çalışacak şekilde yapılandırıldığında, bir istek bir kuralla eşleşiyorsa ve bir eşleşme bulunursa, daha düşük önceliğe sahip başka hiçbir kural hesaplanmazsa, WAF belirtilen eylemi alır. Tüm eşleşen istekler de WAF günlüklerine kaydedilir.
+- **Önleme modu:** Önleme modunda, bir istek bir kuralla eşleşiyorsa WAF belirtilen eylemi alır. Bir eşleşme bulunursa, daha düşük önceliğe sahip başka kurallar değerlendirilmez. Tüm eşleşen istekler de WAF günlüklerine kaydedilir.
 
 ## <a name="waf-actions"></a>WAF eylemleri
 
@@ -61,17 +63,17 @@ Bir WAF ilkesi, müşteri tarafından yazılan ve yönetilen RuleSets, Azure tar
 
 WAF özel kurallarını aşağıdaki gibi yapılandırabilirsiniz:
 
-- **IP izin verilenler listesi ve Engellenenler listesi:** İstemci IP adresleri veya IP adresi aralıkları listesine göre Web uygulamalarınıza erişimi denetlemek için özel kurallar yapılandırabilirsiniz. Hem IPv4 hem de IPv6 adres türleri desteklenir. Bu liste, kaynak IP 'nin listedeki bir IP ile eşleştiği istekleri engelleyecek ya da bu isteklere izin verecek şekilde yapılandırılabilir.
+- **IP izin verilenler listesi ve Engellenenler listesi:** Web uygulamalarınıza erişimi, istemci IP adresleri veya IP adresi aralıkları listesine göre denetleyebilirsiniz. Hem IPv4 hem de IPv6 adres türleri desteklenir. Bu liste, kaynak IP 'nin listedeki bir IP ile eşleştiği istekleri engelleyecek ya da bu isteklere izin verecek şekilde yapılandırılabilir.
 
-- **Coğrafi tabanlı erişim denetimi:** Web uygulamalarınıza erişimi, bir istemcinin IP adresiyle ilişkili ülke koduna göre denetlemek için özel kurallar yapılandırabilirsiniz.
+- **Coğrafi tabanlı erişim denetimi:** Web uygulamalarınıza erişimi, bir istemcinin IP adresiyle ilişkili olan ülke koduna göre denetleyebilirsiniz.
 
-- **Http parametreleri tabanlı erişim denetimi:** Sorgu dizeleri, POST args, Istek URI 'SI, istek üstbilgisi ve Istek gövdesi gibi HTTP/HTTPS istek parametreleri ile eşleşen dize tabanlı özel kurallar yapılandırabilirsiniz.
+- **Http parametreleri tabanlı erişim denetimi:** HTTP/HTTPS istek parametrelerinde dize eşleştirmelerle ilgili kuralları temel alabilirsiniz.  Örneğin, sorgu dizeleri, POST bağımsız değişkenleri, Istek URI 'SI, istek üst bilgisi ve Istek gövdesi.
 
-- **Yöntem tabanlı erişim denetimi iste:** İstek al, koy veya HEAD gibi HTTP isteği yöntemine göre özel kurallar yapılandırabilirsiniz.
+- **Yöntem tabanlı erişim denetimi iste:** İsteğe bağlı kurallar, isteğin HTTP isteği yöntemine göre yapılır. Örneğin, GET, PUT veya HEAD.
 
-- **Boyut kısıtlaması:** Sorgu dizesi, URI veya istek gövdesi gibi bir isteğin belirli bölümlerinin uzunluklarına göre özel kurallar yapılandırabilirsiniz.
+- **Boyut kısıtlaması:** Sorgu dizesi, URI veya istek gövdesi gibi bir isteğin belirli bölümlerinin uzunluklarına göre kurallar temel alabilirsiniz.
 
-- **Hız sınırlandırma kuralları:** Bir hız denetim kuralı, anormal yüksek trafiği herhangi bir istemci IP 'sinden sınırlayabilmektir. Bir dakikalık süre boyunca istemci IP 'sinden izin verilen Web isteği sayısında bir eşik yapılandırabilirsiniz. Bu, tümüne izin veren veya bir istemci IP 'sinden tüm istekleri engelleyen bir IP listesi tabanlı izin verme/engelleme özel kuralından farklıdır. Hız sınırlaması, ayrıntılı hız denetimi için HTTP (S) parametreleri ile eşleşen ek eşleşme koşullarıyla birleştirilebilir.
+- **Hız sınırlandırma kuralları:** Bir hız denetim kuralı, anormal yüksek trafiği herhangi bir istemci IP 'sinden sınırlayabilmektir. Bir dakikalık süre boyunca istemci IP 'sinden izin verilen Web isteği sayısında bir eşik yapılandırabilirsiniz. Bu kural, bir istemci IP 'sinden tüm istekleri engellemeye izin veren veya engelleyen bir IP listesi tabanlı izin verme/engelleme özel kuralından farklıdır. Hız sınırları, ayrıntılı hız denetimi için HTTP (S) parametre eşleşmeleri gibi ek eşleşme koşullarıyla birleştirilebilir.
 
 ### <a name="azure-managed-rule-sets"></a>Azure tarafından yönetilen kural kümeleri
 
@@ -87,14 +89,24 @@ Azure tarafından yönetilen kural kümeleri, yaygın bir güvenlik tehditleri k
 - SQL ekleme koruması
 - Protokol saldırganlar
 
-Kural kümesine yeni saldırı imzaları eklendiğinde varsayılan kural kümesinin sürüm numarası artacaktır.
-Varsayılan kural kümesi, WAF ilkelerinizin algılama modunda varsayılan olarak etkindir. Varsayılan kural kümesindeki kuralları uygulama gereksinimlerinizi karşılayacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz. Kural başına belirli eylemleri (ızın verme/engelleme/yeniden yönlendirme/günlük) da ayarlayabilirsiniz. Varsayılan eylem ENGELLENECEK. Ayrıca, varsayılan kural kümesindeki önceden yapılandırılmış kuralların herhangi birini atlamak istiyorsanız, özel kurallar aynı WAF ilkesinde yapılandırılabilir.
-Varsayılan kural kümesindeki kuralların değerlendirilmesinden önce özel kurallar her zaman uygulanır. Bir istek özel bir kuralla eşleşiyorsa, buna karşılık gelen kural eylemi uygulanır ve daha fazla özel kural veya varsayılan kural kümesindeki kuralların çağrılması gerekmeden istek engellenir veya arka uca geçirilir. Ayrıca, WAF ilkelerinizin varsayılan kural kümesini kaldırma seçeneğiniz de vardır.
+Kural kümesine yeni saldırı imzaları eklendiğinde varsayılan kural kümesinin sürüm numarası artar.
+Varsayılan kural kümesi, WAF ilkelerinizin algılama modunda varsayılan olarak etkindir. Varsayılan kural kümesindeki kuralları uygulama gereksinimlerinizi karşılayacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz. Kural başına belirli eylemleri (ızın verme/engelleme/yeniden yönlendirme/günlük) da ayarlayabilirsiniz.
 
+Varsayılan eylem ENGELLENECEK. Ayrıca, varsayılan kural kümesindeki önceden yapılandırılmış kuralların herhangi birini atlamak istiyorsanız, özel kurallar aynı WAF ilkesinde yapılandırılabilir.
+
+Varsayılan kural kümesindeki kuralların değerlendirilmesinden önce özel kurallar her zaman uygulanır. Bir istek özel bir kuralla eşleşiyorsa, buna karşılık gelen kural eylemi uygulanır. İstek engellendi ya da arka uca geçirildi. Başka özel kurallar veya varsayılan kural kümesindeki kurallar işlenmez. Ayrıca, WAF ilkelerinizin varsayılan kural kümesini de kaldırabilirsiniz.
 
 ### <a name="bot-protection-rule-set-preview"></a>Bot koruma kuralı kümesi (Önizleme)
 
-WAF 'nizin bilinen bot kategorilerinin istekleri üzerinde özel eylemler kazanması için yönetilen bir bot koruma kuralı kümesi etkinleştirilebilir. Desteklenen üç bot kategorisi vardır: kötü botlar, botlar ve bilinmeyen botlar. Bot imzaları, WAF platformu tarafından yönetilir ve dinamik olarak güncelleştirilir. Bozuk botlar için kötü amaçlı IP adresleri, Microsoft Threat Intelligence akışından kaynaklıdır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır. İyi botlar, doğrulanan arama altyapılarını içerir. Bilinmeyen Kategoriler ek bot gruplarını içerir. Farklı botların türlerini engellemek, izin vermek, günlüğe kaydetmek veya yeniden yönlendirmek için özel eylemler ayarlayabilirsiniz.
+Yönetilen bir bot koruma kuralı kümesini, bilinen bot kategorilerinin istekleri üzerinde özel eylemler alacak şekilde etkinleştirebilirsiniz. 
+
+Desteklenen üç bot kategorisi vardır: Hatalı, Iyi ve bilinmiyor. Bot imzaları, WAF platformu tarafından yönetilir ve dinamik olarak güncelleştirilir.
+
+Kötü amaçlı olan botlar, kimliklerini hatalı yapan kötü amaçlı IP adreslerinden ve botları içerir. Kötü amaçlı IP adresleri, Microsoft Threat Intelligence akışından kaynaklıdır ve her saat güncelleştirilir. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.
+
+İyi botlar, doğrulanan arama altyapılarını içerir. Bilinmeyen Kategoriler, kendisini botları olarak tanımlamış ek bot gruplarını içerir. Örneğin, Pazar çözümleyici, akış fetchers ve veri toplama aracıları. 
+
+Bilinmeyen botlar, ek doğrulama yapılmadan yayımlanmış Kullanıcı aracıları aracılığıyla sınıflandırılır. Farklı botların türlerini engellemek, izin vermek, günlüğe kaydetmek veya yeniden yönlendirmek için özel eylemler ayarlayabilirsiniz.
 
 ![Bot koruma kuralı kümesi](../media/afds-overview/botprotect2.png)
 
@@ -105,7 +117,7 @@ Bot koruması etkinleştirilirse, bot kurallarıyla eşleşen gelen istekler Fro
 
 ## <a name="configuration"></a>Yapılandırma
 
-Tüm WAF kural türlerini yapılandırmak ve dağıtmak Azure portal, REST API 'Leri, Azure Resource Manager şablonları ve Azure PowerShell kullanarak tam olarak desteklenmektedir.
+Azure portal, REST API 'Leri, Azure Resource Manager şablonları ve Azure PowerShell kullanarak tüm WAF kural türlerini yapılandırabilir ve dağıtabilirsiniz.
 
 ## <a name="monitoring"></a>İzleme
 

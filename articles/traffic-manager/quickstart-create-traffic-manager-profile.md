@@ -2,7 +2,7 @@
 title: 'Hızlı başlangıç: uygulamalar için bir profil oluşturma-Azure portal-Azure Traffic Manager'
 description: Bu hızlı başlangıç makalesinde yüksek oranda kullanılabilir web uygulaması oluşturmak için bir Traffic Manager profili oluşturma adımlarını anlatılmaktadır.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: allensu
-ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483663"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934778"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Traffic Manager profili oluşturma
 
@@ -27,11 +27,11 @@ Bu hızlı başlangıçta, bir Web uygulamasının iki örneği hakkında bilgi 
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Doğu ABD* ve *Batı Avrupa*) dağıtılan bir Web uygulamasının iki örneğine ihtiyacınız olacaktır. Her biri, Traffic Manager için birincil ve yük devretme uç noktaları olarak görev yapar.
 
@@ -63,9 +63,9 @@ Uç nokta önceliğine göre Kullanıcı trafiğini yönlendiren bir Traffic Man
 1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **Traffic Manager profil**' i seçin.
 2. **Oluşturma Traffic Manager profilinde**, bu ayarları girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | --------| ----- |
-    | Name | Traffic Manager profiliniz için benzersiz bir ad girin.|
+    | Ad | Traffic Manager profiliniz için benzersiz bir ad girin.|
     | Yönlendirme yöntemi | **Öncelik**' i seçin.|
     | Abonelik | Traffic Manager profilinin uygulanmasını istediğiniz aboneliği seçin. |
     | Kaynak grubu | *MyResourceGroupTM1*öğesini seçin.|
@@ -82,10 +82,10 @@ Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu
 3. **Traffic Manager profili**' nde, **Ayarlar** bölümünde **uç noktalar**' ı seçin ve ardından **Ekle**' yi seçin.
 4. Bu ayarları girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ------|
-    | Type | **Azure uç noktası**' nı seçin. |
-    | Name | *Myprimaryendpoint*girin. |
+    | Tür | **Azure uç noktası**' nı seçin. |
+    | Ad | *Myprimaryendpoint*girin. |
     | Hedef kaynak türü | **App Service**seçin. |
     | Hedef kaynak |  > **bir App Service** seçin **Doğu ABD**seçin. |
     | Öncelik | **1**'i seçin. Tüm trafik sağlıklı olduğunda bu uç noktaya gider. |
@@ -95,10 +95,10 @@ Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu
 5. **Tamam**’ı seçin.
 6. İkinci Azure bölgenize yönelik bir yük devretme uç noktası oluşturmak için bu ayarlarla 3 ve 4 numaralı adımları yineleyin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ------|
-    | Type | **Azure uç noktası**' nı seçin. |
-    | Name | *Myfailoverendpoint*girin. |
+    | Tür | **Azure uç noktası**' nı seçin. |
+    | Ad | *Myfailoverendpoint*girin. |
     | Hedef kaynak türü | **App Service**seçin. |
     | Hedef kaynak |  > **bir App Service** seçin **Batı Avrupa**seçin. |
     | Öncelik | **2**öğesini seçin. Birincil uç nokta sağlıksız ise tüm trafik bu yük devretme uç noktasına gider. |

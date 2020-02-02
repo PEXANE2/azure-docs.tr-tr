@@ -2,17 +2,17 @@
 title: Azure Özel DNS nedir?
 description: Bu makalede, Microsoft Azure üzerinde özel DNS barındırma hizmetine genel bir bakış ile çalışmaya başlayın.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
-ms.author: allensu
-ms.openlocfilehash: 2e457dcccfd89d2dcf94a0cc3728cfee9bb1a611
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210642"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939280"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure Özel DNS nedir?
 
@@ -55,7 +55,7 @@ Azure DNS aşağıdaki özellikleri sağlar:
 
 * **Ters DNS araması, sanal ağ kapsamı içinde desteklenir**. Özel bir bölgeye atanan sanal ağ içindeki özel bir IP için ters DNS araması, ana bilgisayar/kayıt adını ve sonek olarak bölge adını içeren FQDN 'yi döndürür.
 
-## <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+## <a name="other-considerations"></a>Diğer konular
 
 Azure DNS aşağıdaki sınırlamalara sahiptir:
 

@@ -8,29 +8,33 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 12/02/2019
-ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18a61c215f6c10bb399beaa83ec53ad2ebc62970
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770756"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938979"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma
 
-Bu hızlı başlangıçta, Java uygulaması ve JDBC sürücü [MariaDB bağlayıcısını/J](https://mariadb.com/kb/en/library/mariadb-connector-j/)kullanarak MySQL Için Azure veritabanı 'na nasıl bağlanulacağı gösterilmektedir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makalede, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
+Bu hızlı başlangıçta, Java uygulaması ve JDBC sürücü MariaDB bağlayıcısını/J kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
 
-## <a name="prerequisites"></a>Önkoşullar
-1. Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
-   - [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [Azure CLI kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-cli.md)
+Bu konuda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
 
-2. MySQL için Azure Veritabanı bağlantı güvenliğinizin, uygulamanız başarıyla bağlanacak şekilde açık bir güvenlik duvarı ve SSL ayarları ile yapılandırıldığından emin olma.
+## <a name="prerequisites"></a>Ön koşullar
 
-3. Aşağıdaki yaklaşımlardan birini kullanarak MariaDB bağlayıcısını/J bağlayıcısını edinin:
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
+- MySQL için Azure veritabanı bağlantı güvenliği, uygulamanız için yapılandırılmış güvenlik duvarı ve SSL bağlantısı ayarları ile yapılandırılır.
+
+## <a name="obtain-the-mariadb-connector"></a>MariaDB bağlayıcısını edinme
+
+Aşağıdaki yaklaşımlardan birini kullanarak [MariaDB bağlayıcısını/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) bağlayıcısını edinin:
    - Projenizin POM dosyasına [MariaDB-Java-Client bağımlılığını](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) dahil etmek Için Maven Package [MariaDB-Java-Client](https://search.maven.org/search?q=a:mariadb-java-client) ' y i kullanın.
-   - JDBC sürücü [MariaDB bağlayıcısını/J](https://downloads.mariadb.org/connector-java/) 'yi indirin ve uygulama sınıfınıza JDBC jar dosyasını (örneğin, MariaDB-Java-Client-2.4.3. jar) ekleyin. Sınıf yolları konusunda sorun yaşıyorsanız, lütfen ortamınızın [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) veya [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) gibi sınıf yolu ayrıntıları hakkındaki belgelerine bakın
+   - JDBC sürücü [MariaDB bağlayıcısını/J](https://downloads.mariadb.org/connector-java/) 'yi INDIRIN ve JDBC jar dosyasını (örneğin, MariaDB-Java-Client-2.4.3. jar) uygulama sınıfı yolunuza ekleyin. [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) veya [Java](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) CE gibi sınıf yolu özellikleri için ortamınızın belgelerine başvurun
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
+
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
@@ -40,7 +44,8 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
  ![MySQL için Azure Veritabanı sunucu adı](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
-Aşağıdaki kodu kullanarak bağlanın ve **INSERT** SQL deyimiyle işlevi kullanarak verileri yükleyin. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) ve execute() yöntemleri tabloyu bırakmak ve oluşturmak için kullanılır. Parametre değerlerini bağlamak için kullanılan setString() ve setInt() ile birlikte ekleme komutlarını oluşturmak için prepareStatement nesnesi kullanılır. executeUpdate() yöntemi, değerleri eklemek üzere her parametre kümesi için komutu çalıştırır. 
+
+Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri yüklemek için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) ve execute() yöntemleri tabloyu bırakmak ve oluşturmak için kullanılır. Parametre değerlerini bağlamak için kullanılan setString() ve setInt() ile birlikte ekleme komutlarını oluşturmak için prepareStatement nesnesi kullanılır. executeUpdate() yöntemi, değerleri eklemek üzere her parametre kümesi için komutu çalıştırır. 
 
 Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
@@ -142,6 +147,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Verileri okuma
+
 **SELECT** SQL deyimiyle verileri okumak için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. SELECT ifadesini bağlamak ve çalıştırmak için [Createdeyimin ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) ve ExecuteQuery () yöntemleri kullanılır. Sonuçlar, bir sonuç kümesi nesnesi kullanılarak işlenir. 
 
 Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
@@ -229,6 +235,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Verileri güncelleştirme
+
 **UPDATE** SQL deyimiyle verileri değiştirmek için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır. UPDATE deyimini hazırlamak ve çalıştırmak için [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) ve executeUpdate() yöntemleri kullanılır. 
 
 Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
@@ -311,6 +318,7 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>Verileri silme
+
 **DELETE** SQL deyimiyle verileri kaldırmak için aşağıdaki kodu kullanın. [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) yöntemi MySQL'e bağlanmak için kullanılır.  Hazırlama yöntemi [()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) ve ExecuteUpdate () hazırlığı, DELETE ifadesini hazırlamak ve çalıştırmak için kullanılır. 
 
 Ana bilgisayar, veritabanı, kullanıcı ve parola parametrelerini, sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.

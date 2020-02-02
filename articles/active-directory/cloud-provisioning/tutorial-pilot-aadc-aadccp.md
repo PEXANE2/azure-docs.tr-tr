@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75425091"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931397"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -67,8 +67,9 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
  3. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
     **Ad:** Kurala anlamlı bir ad verin<br>
-    **Açıklama:** Anlamlı bir açıklama ekleyin<br>**bağlı sistem  
-    :** için özel eşitleme KURALı yazarken ad bağlayıcısını seçin<br>
+    **Açıklama:** Anlamlı bir açıklama ekleyin<br> 
+    
+    **Bağlı sistem:** Özel eşitleme kuralı yazarken AD bağlayıcısını seçin<br>
     **Bağlı sistem nesne türü:** Kullanıcısını<br>
     **Meta veri deposu nesne türü:** Kişiler<br>
     **Bağlantı türü:** Ayrılma<br>
