@@ -130,6 +130,9 @@
     - name: Performansla ilgili önemli noktalar
       href: functions-best-practices.md
       displayName: best practice
+    - name: Depolama hakkında dikkat edilmesi gerekenler
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: İşlevler Proxy’leri
       href: functions-proxies.md
     - name: Ağ seçenekleri
