@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713333"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932587"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma (Önizleme)
 
@@ -131,7 +131,7 @@ API sunucusu uç noktasının genel IP adresi yok. Sonuç olarak, bir sanal ağd
 * Özel bir DNS sunucusu kullanmak için, bu IP 168.63.129.16 iletmek üzere DNS ile bir AD sunucusu dağıtın
 
 ## <a name="limitations"></a>Sınırlamalar 
-* Kullanılabilirlik Alanları Şu anda desteklenmiyor
+* Kullanılabilirlik Alanları Şu anda yalnızca Doğu ABD 2 ve Batı ABD 2 bölgeleri için destekleniyor
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] , özel kümeler, Azure özel uç noktaları ve sanal ağ hizmeti uç noktaları için geçerlidir; bu, şu anda aynı sanal ağda desteklenmemektedir.
 * Özel bir kümede özel bir Azure sanal ağında özel Azure Container Instances (ACI) döndürme için sanal düğümler desteklenmez
 * Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteği yok

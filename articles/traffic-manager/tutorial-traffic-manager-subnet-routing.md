@@ -3,20 +3,20 @@ title: Öğretici-Azure Traffic Manager alt ağ trafiği yönlendirmeyi yapılan
 description: Bu öğreticide, trafiği Kullanıcı alt ağlarından belirli uç noktalara yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: allensu
-ms.openlocfilehash: 00bc453ebb0e467f48bd886fc7c6b6c422693864
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: b00bc1c95e2f593523c584c4abfe9381e5697f79
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420267"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939469"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak Kullanıcı alt ağına dayalı belirli uç noktalara trafik yönlendirin
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide Traffic Manager'ın çalışmasını uygulamalı olarak görmek için şu sistemleri dağıtmanız gerekir:
 
@@ -45,7 +45,7 @@ Bu öğreticide Traffic Manager'ın çalışmasını uygulamalı olarak görmek 
 
 Test amaçlı VM'ler Traffic Manager'ın kullanıcı sorgusunun geldiği alt ağa göre kullanıcı trafiğini iç web sitesine veya üretim web sitesine nasıl yönlendirdiğini göstermek için kullanılır.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -61,7 +61,7 @@ Bu bölümde Traffic Manager profili için iki farklı Azure bölgesinde iki hiz
 Bu bölümde, **Doğu ABD** ve Azure bölgelerine **Batı Avrupa** Iki VM *myIISVMEastUS* ve *myIISVMWestEurope* oluşturulur.
 
 1. Azure portal sol üst köşesinde, **Windows Server 2019 Datacenter** > **Işlem** > **kaynak oluştur** ' u seçin.
-2. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
+2. İçinde **sanal makine oluşturma**yazın veya aşağıdaki değerleri seçin **Temelleri** sekmesinde:
 
    - **Abonelik** > **kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1**yazın.
    - **Örnek ayrıntıları** > **sanal makine adı**: tür *myIISVMEastUS*.
@@ -71,7 +71,7 @@ Bu bölümde, **Doğu ABD** ve Azure bölgelerine **Batı Avrupa** Iki VM *myIIS
    - **Gelen bağlantı noktası kuralları** > **ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin
    - **Gelen bağlantı noktası kuralları** > **gelen bağlantı noktalarını seçin**: aşağı açılan kutuda **RDP** ve **http** ' yi seçin.
 
-3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
+3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. Altında **izleme**ayarlayın **önyükleme tanılaması** için **kapalı**.
 4. **İncele ve oluştur**’u seçin.
 5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  
 6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myIISVMEastUS*ile aynı olan *myIISVMWestEurope*adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
@@ -129,7 +129,7 @@ Traffic Manager, kullanıcı trafiğini hizmet uç noktalarının DNS adına gö
 Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**) bir VM (*myVMEastUS* ve *myVMWestEurope*) oluşturursunuz. Bu VM 'Leri, kullanıcının sorgusunun alt ağına göre Kullanıcı trafiğini yönlendirme Traffic Manager test etmek için kullanacaksınız.
 
 1. Azure portal sol üst köşesinde, **Windows Server 2019 Datacenter** > **Işlem** > **kaynak oluştur** ' u seçin.
-2. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
+2. İçinde **sanal makine oluşturma**yazın veya aşağıdaki değerleri seçin **Temelleri** sekmesinde:
 
    - **Abonelik** > **kaynak grubu**: **myResourceGroupTM1**öğesini seçin.
    - **Örnek ayrıntıları** > **sanal makine adı**: tür *myVMEastUS*.
@@ -139,7 +139,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**) bir 
    - **Gelen bağlantı noktası kuralları** > **ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin
    - **Gelen bağlantı noktası kuralları** > **gelen bağlantı noktalarını seçin**: açılan kutuda **RDP** 'yi seçin.
 
-3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
+3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. Altında **izleme**ayarlayın **önyükleme tanılaması** için **kapalı**.
 4. **İncele ve oluştur**’u seçin.
 5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  
 6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myVMEastUS*ile aynı olan *myVMWestEurope*adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
@@ -152,9 +152,9 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**) bir 
 1. Ekranın sol üst tarafından **Kaynak oluştur** > **Ağ** > **Traffic Manager profili** > **Oluştur**'u seçin.
 2. **Traffic Manager profili oluştur** ekranında aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**'u seçin:
 
-    | Ayar                 | Value                                              |
+    | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Name                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
+    | Ad                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
     | Yönlendirme yöntemi          | **Alt ağ** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
     | Kaynak grubu          | **Var olan**’ı seçin ve sonra *myResourceGroupTM1* yazın. |
@@ -171,10 +171,10 @@ Kullanıcı trafiğini Kullanıcı sorgusunun alt ağına göre yönlendirmek i�
 2. **Traffic Manager profili** sayfasının **Ayarlar** bölümünde **Uç noktalar**'a ve ardından **Ekle**'ye tıklayın.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
-    | Ayar                 | Value                                              |
+    | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure uç noktası                                   |
-    | Name           | myInternalWebSiteEndpoint                                        |
+    | Tür                    | Azure uç noktası                                   |
+    | Ad           | myInternalWebSiteEndpoint                                        |
     | Hedef kaynak türü           | Genel IP Adresi                          |
     | Hedef kaynak          | Genel IP adresine sahip kaynakların aynı abonelik altında listelenmesi için **Genel IP adresi seçin**. **Kaynak** bölümünde *myIISVMEastUS-ip* adlı genel IP adresini seçin. Bu, Doğu ABD bölgesindeki IIS sunucusu VM'sinin IP adresidir.|
     |  Alt ağ yönlendirme ayarları    |   *MyVMEastUS* test VM 'sinin IP adresini ekleyin. Bu VM 'den kaynaklanan herhangi bir Kullanıcı sorgusu *Myınternalwebsiteendpoint*'e yönlendirilir.    |

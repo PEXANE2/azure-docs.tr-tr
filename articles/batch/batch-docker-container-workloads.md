@@ -1,6 +1,6 @@
 ---
-title: Kapsayıcı iş yükleri-Azure Batch | Microsoft Docs
-description: Azure Batch üzerindeki kapsayıcı görüntülerden uygulamaları çalıştırmayı öğrenin.
+title: Kapsayıcı iş yükleri-Azure Batch
+description: Azure Batch üzerindeki kapsayıcı görüntülerden uygulamaları çalıştırmayı ve ölçeklendirmeyi öğrenin. Kapsayıcı görevlerinin çalıştırılmasını destekleyen bir işlem düğümleri havuzu oluşturun.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 493c9b30f6c7f735d69e113f3f1efe26ca6c1576
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029715"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935058"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
 

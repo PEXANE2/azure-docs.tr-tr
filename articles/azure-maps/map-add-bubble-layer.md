@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911276"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933658"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Haritaya kabarcık katmanı ekleme
 
-Bu makalede, bir veri kaynağındaki nokta verilerini haritada kabarcık katmanı olarak nasıl işleyebilmeniz gösterilmektedir. Kabarcık katmanları, sabit piksel yarıçapı ile haritada daire olarak işleme noktaları. 
+Bu makalede, bir veri kaynağındaki nokta verilerinin haritada kabarcık katmanı olarak nasıl oluşturulduğu gösterilir. Kabarcık katmanları, sabit piksel yarıçapı ile haritada daire olarak işleme noktaları. 
 
 > [!TIP]
 > Kabarcık katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin oluşturduğu şekilde sınırlamak için katmanın `filter` özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` de MultiPoint özellikleri eklemek istiyorsanız ayarlayın.
 
 ## <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
 
-Aşağıdaki kod bir veri kaynağına bir işaret dizisi yükler ve bunu bir [kabarcık katmanına](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)bağlar. Kabarcık katmanına, her kabarcığun yarıçapını beş piksel, bir beyaz dolgulu renk, mavi renkli bir kontur rengi ve altı pikselin kontur genişliği olarak işlemek için seçenekler verilmiştir. 
+Aşağıdaki kod, bir dizi noktayı bir veri kaynağına yükler. Ardından, veri noktaları bir [kabarcık katmanına](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)bağlanır. Kabarcık katmanı, her kabarcığun yarıçapını beş piksel, beyaz renkli bir renk, mavi renkli bir kontur rengi ve altı piksellik bir kontur genişliği olarak işler. 
 
 ```javascript
 //Add point locations.

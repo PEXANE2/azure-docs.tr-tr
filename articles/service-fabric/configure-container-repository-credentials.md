@@ -1,20 +1,19 @@
 ---
 title: Azure Service Fabric-kapsayıcı deposu kimlik bilgilerini yapılandırma
 description: Kapsayıcı kayıt defterinden görüntü indirmek için depo kimlik bilgilerini yapılandırma
-author: arya
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: arya
-ms.openlocfilehash: 25fe3c69b19d397137d1e1802e941e0433a1b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351666"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934987"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Kapsayıcı görüntülerini indirmek için uygulamanızın depo kimlik bilgilerini yapılandırma
 
-ApplicationManifest.xml dosyasının `ContainerHostPolicies` öğesine bir `RepositoryCredentials` öğesi ekleyerek kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırın. Hizmetin depodan kapsayıcı görüntüsünü indirmesini sağlayan myregistry.azurecr.io kapsayıcı kayıt defterine hesap ve parola ekleyin.
+Uygulama bildiriminizde `ContainerHostPolicies` bölümüne `RepositoryCredentials` ekleyerek kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırın. Kapsayıcının kayıt defteri için hesap ve parolayı (aşağıdaki örnekte*myregistry.azurecr.io* ) ekleyerek hizmetin kapsayıcı görüntüsünü depodan indirmesini sağlar.
 
 ```xml
 <ServiceManifestImport>
@@ -55,7 +54,7 @@ Service Fabric, `Hosting` bölümü altındaki ClusterManifest içinde belirtibi
 * DefaultContainerRepositoryAccountName (dize)
 * Defaultcontainerdepotorpassword (dize)
 * Idefaultcontainerdepotorypasswordencrypted (bool)
-* 6,4 çalışma zamanından itibaren desteklenen Defaultcontainerdepotorypasswordtype (dize)---
+* Defaultcontainerdepotorypasswordtype (dize)
 
 ClusterManifestTemplate. JSON dosyasındaki `Hosting` bölümünde nelerin eklenebileceklerini bir örnek aşağıda bulabilirsiniz. `Hosting` bölümü, bir yapılandırma yükseltmesinde küme oluşturmaya veya daha sonra eklenebilir. Daha fazla bilgi için bkz. [azure Service Fabric küme ayarlarını değiştirme](service-fabric-cluster-fabric-settings.md) ve [Azure Service Fabric uygulama gizli dizilerini yönetme](service-fabric-application-secret-management.md)
 
@@ -90,19 +89,19 @@ ClusterManifestTemplate. JSON dosyasındaki `Hosting` bölümünde nelerin eklen
 ]
 ```
 
-## <a name="leveraging-the-managed-identity-of-the-virtual-machine-scale-set-by-using-managed-identity-service-msi"></a>Yönetilen kimlik hizmeti (MSI) kullanılarak sanal makine ölçek kümesinin yönetilen kimliğini kullanma
+## <a name="use-tokens-as-registry-credentials"></a>Belirteçleri kayıt defteri kimlik bilgileri olarak kullan
 
-Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirteçlerin kimlik bilgileri olarak kullanılmasını destekler.  Bu özellik, kayıt defterine kimlik doğrulaması yapmak ve Kullanıcı kimlik bilgilerini yönetme gereksinimini ortadan kaldırmak için temel alınan sanal makine ölçek kümesinin yönetilen kimliğini kullanır.  [Yönetilen hizmet kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) için bkz. MSI hakkında daha fazla bilgi.  Bu özelliğin kullanılması aşağıdaki adımları gerektirir:
+Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirteçlerin kimlik bilgileri olarak kullanılmasını destekler.  Bu özellik, kayıt defterine kimlik doğrulaması yapmak ve Kullanıcı kimlik bilgilerini yönetme gereksinimini ortadan kaldırmak için temel alınan sanal makine ölçek kümesinin *yönetilen kimliğini* kullanır.  Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) .  Bu özelliğin kullanılması aşağıdaki adımları gerektirir:
 
-1.  VM için sistem tarafından atanan yönetilen kimliğin etkinleştirildiğinden emin olun (aşağıdaki ekran görüntüsüne bakın)
+1. VM için *sistem tarafından atanan yönetilen kimliğin* etkinleştirildiğinden emin olun.
 
-    ![Sanal makine ölçek kümesi kimliği oluştur](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Azure portal: sanal makine ölçek kümesi kimliği oluşturma seçeneği](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2.  Bundan sonra, kayıt defterinden görüntüleri çekmek/okumak için VM 'ye (SS) izin verin.  Azure dikey penceresinde ACR 'nizin Access Control (ıAM) bölümüne gidin ve VM 'nize (SS) aşağıda görüldüğü gibi doğru izinleri verin:
+2. Kayıt defterinden görüntüleri çekmek/okumak için sanal makine ölçek kümesine izin verin. Azure portal Azure Container Registry Access Control (ıAM) dikey penceresinde, sanal makineniz için bir *rol ataması* ekleyin:
 
     ![ACR 'ye VM sorumlusu ekleme](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3.  Yukarıdaki adımlar tamamlandıktan sonra ApplicationManifest. XML dosyanızı değiştirin.  "ContainerHostPolicies" etiketli etiketi bulun ve `‘UseTokenAuthenticationCredentials=”true”`özniteliği ekleyin.
+3. Sonra, uygulama bildiriminizde değişiklik yapın. `ContainerHostPolicies` bölümünde, `‘UseTokenAuthenticationCredentials=”true”`özniteliğini ekleyin.
 
     ```xml
       <ServiceManifestImport>
@@ -121,4 +120,4 @@ Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirte�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kapsayıcı kayıt defteri kimlik doğrulaması](/azure/container-registry/container-registry-authentication)hakkında daha fazla bilgi.
+* [Kapsayıcı kayıt defteri kimlik doğrulaması](../container-registry/container-registry-authentication.md)hakkında daha fazla bilgi.

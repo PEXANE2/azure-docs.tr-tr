@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: fafb40c8505b7178782ab15c14184c5bec052a1b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760869"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937852"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,7 @@ Bir sanal ağda Azure Machine Learning işlem örneği veya işlem kümesi kulla
 > * İşlem örneği veya küme için belirtilen alt ağda, hedeflenen sanal makine sayısına uyum sağlamak için yeterli sayıda atanmamış IP adresi olmalıdır. Alt ağda yeterli sayıda atanmamış IP adresi yoksa, bir işlem kümesi kısmen tahsis edilir.
 > * Sanal ağın aboneliğine veya kaynak grubuna yönelik güvenlik ilkelerinizin veya kilitlerinizin sanal ağı yönetmek için izinleri kısıtlayıp kısıtlamamadığını denetleyin. Trafiği kısıtlayarak sanal ağın güvenliğini sağlamayı planlıyorsanız, bazı bağlantı noktalarını işlem hizmeti için açık bırakın. Daha fazla bilgi için, [gerekli bağlantı noktaları](#mlcports) bölümüne bakın.
 > * Bir sanal ağa birden çok işlem örneği veya kümesi koyacaksanız bir veya daha fazla kaynağınız için bir kota artışı istemeniz gerekebilir.
-> * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Machine Learning işlem örneğiyle veya kümeyle aynı sanal ağda olmaları gerekir. Aynı sanal ağda bir işlem örneği oluşturuyorsanız, depolama hesaplarını sanal ağdan ayırmanız, sanal ağ içinde işlem örneğini oluşturmanız ve ardından depolama hesaplarını sanal ağa geri bağlamanız gerekir...
+> * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Machine Learning işlem örneğiyle veya kümeyle aynı sanal ağda olmaları gerekir. 
 
 Machine Learning işlem örneği veya kümesi, sanal ağı içeren kaynak grubunda ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya kümesi için hizmet aşağıdaki kaynakları ayırır:
 

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703687"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931291"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -93,6 +93,9 @@ Azure AD DS örneği oluşturmak için Azure portal *temel bilgiler* penceresind
 
     Azure AD DS bölgeler arasında dağıtılacak şekilde yapılandırmanız için bir şey yoktur. Azure platformu, kaynakların bölge dağılımını otomatik olarak işler. Daha fazla bilgi edinmek ve bölge kullanılabilirliğini görmek için bkz. [Azure 'da kullanılabilirlik alanları nedir?][availability-zones]
 
+1. **SKU** , oluşturabileceğiniz bir performans, yedekleme sıklığı ve en fazla orman güveni sayısını belirler. İş talepleriniz veya gereksinimleriniz değiştikçe, yönetilen etki alanı oluşturulduktan sonra SKU 'YU değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure AD DS SKU kavramları][concepts-sku].
+
+    Bu öğretici için *Standart* SKU 'yu seçin.
 1. *Orman* bir veya daha fazla etki alanını gruplamak için Active Directory Domain Services tarafından kullanılan mantıksal bir yapıdır. Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. *Kaynak* ormanı yalnızca doğrudan Azure AD 'de oluşturulan kullanıcıları ve grupları eşitler. Kaynak ormanları Şu anda önizleme aşamasındadır. *Kaynak* ormanları hakkında daha fazla bilgi için, bir tane kullanabilirsiniz ve şirket içi AD DS etki alanlarıyla orman güvenleri oluşturma hakkında daha fazla bilgi için bkz. [Azure AD DS kaynak ormanları genel bakış][resource-forests].
 
     Bu öğreticide, bir *Kullanıcı* ormanı oluşturmayı seçin.
@@ -105,7 +108,7 @@ Azure AD DS yönetilen bir etki alanını hızlıca oluşturmak için, ek varsay
 * *10.0.1.0/24*IP adresi aralığını kullanarak *aeklemesine-subnet* adlı bir alt ağ oluşturur.
 * Azure AD 'deki *Tüm* kullanıcıları Azure AD DS yönetilen etki alanına eşitler.
 
-1. Bu varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** ' u seçin.
+Bu varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** ' u seçin.
 
 ## <a name="deploy-the-managed-domain"></a>Yönetilen etki alanını dağıtma
 
@@ -167,7 +170,7 @@ Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, 
 
 1. **Profil** sayfasında, **Parolayı Değiştir**' i seçin.
 1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolanızı girip yeni bir parola girin ve onaylayın.
-1. **Gönder**' i seçin.
+1. Seçin **gönderme**.
 
 Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına katılmış bilgisayarlarda başarıyla oturum açması için parolanızı değiştirdikten birkaç dakika sürer.
 
@@ -200,6 +203,7 @@ VM 'Leri etki alanına katmadan ve Azure AD DS yönetilen etki alanını kullana
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

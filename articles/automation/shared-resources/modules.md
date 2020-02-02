@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786478"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930432"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu 'nda modülleri yönetme
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
 Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. **+ Modül Ekle**' ye tıklayın. Modülünüzü içeren bir **. zip** dosyası seçin ve işlemi içeri aktarmaya başlamak için **Tamam** ' a tıklayın.
 
@@ -62,9 +62,9 @@ Ayrıca, PowerShell Galerisi modülleri doğrudan Otomasyon hesabınızdan de i�
 
 Modülle ilgili sorunlarınız varsa veya bir modülün önceki bir sürümüne geri dönmeniz gerekirse, Otomasyon hesabınızdan silebilirsiniz. Bir Otomasyon hesabı oluşturduğunuzda içeri aktarılan [varsayılan modüllerin](#default-modules) orijinal sürümünü silemezsiniz. Silmek istediğiniz modül yüklü [varsayılan modüllerden](#default-modules) birinin daha yeni bir sürümü Ise, Otomasyon hesabınızla yüklenen sürüme geri gönderilir. Aksi takdirde, Otomasyon hesabınızdan sildiğiniz herhangi bir modül kaldırılır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. Kaldırmak istediğiniz modülü seçin. **Modül** sayfasında, clcick **Delete**. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda mevcut olan sürüme geri alınacaktır.
+Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. Kaldırmak istediğiniz modülü seçin. **Modül** sayfasında **Sil**' i seçin. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda mevcut olan sürüme geri alınacaktır.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,13 +79,13 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 Aşağıda, her Otomasyon hesabına aktarılan iç `Orchestrator.AssetManagement.Cmdlets` modülündeki cmdlet 'lerin bir listesi verilmiştir. Bu cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmalarında erişilebilir ve otomasyon hesabınızda varlıklarınızla etkileşime geçmesini sağlar. Ayrıca, iç cmdlet 'ler, şifrelenmiş **değişken** değerleri, **kimlik bilgileri**ve şifrelenmiş **bağlantı** alanlarından gizli dizileri almanızı sağlar. Azure PowerShell cmdlet 'leri bu gizli dizileri alamıyor. Bu cmdlet 'ler, Azure 'da kimlik doğrulaması yapmak için bir farklı çalıştır hesabı kullanma gibi, bunları kullanırken Azure 'a örtülü olarak bağlanmanızı gerektirmez.
 
 >[!NOTE]
->Bu iç cmdlet 'ler karma Runbook Worker üzerinde kullanılamaz, yalnızca Azure 'da çalışan runbook 'lardan erişilebilir. Doğrudan bilgisayarda veya ortamınızdaki kaynaklarda çalışan runbook 'lar için karşılık gelen [Azurerd. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) veya [az modules](../az-modules.md) kullanın. 
+>Bu iç cmdlet 'ler bir Windows karma Runbook Worker üzerinde bulunur, Linux karma Runbook Worker üzerinde kullanılamaz. Doğrudan bilgisayarda veya ortamınızdaki kaynaklarda çalışan runbook 'lar için karşılık gelen [Azurerd. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) veya [az modules](../az-modules.md) kullanın. 
 >
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
-|-AutomationCertificate 'ı al|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
-|-AutomationConnection 'ı al|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
+|Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
+|Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
 |Get-AutomationPSCredential|`Get-AutomationPSCredential [-Name] <string> [<CommonParameters>]` |
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
@@ -258,13 +258,13 @@ Aşağıdaki tabloda, bir Automation hesabı oluşturulduğunda varsayılan olar
 | Azure | 1.0.3 |
 | Azure Depolama | 1.0.3 |
 | AzureRM.Automation | 1.0.3 |
-| AzureRM.Compute | 1.2.1'i |
+| AzureRM.Compute | 1.2.1 |
 | AzureRM.Profile | 1.0.3 |
 | AzureRM.Resources | 1.0.3 |
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
+| GPRegistryPolicyParser | 0.2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |

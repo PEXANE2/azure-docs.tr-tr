@@ -1,6 +1,6 @@
 ---
-title: Azure Batch hizmeti çözümlerinin kimlik doğrulaması için Azure Active Directory kullanma | Microsoft Docs
-description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi destekler.
+title: Azure Active Directory ile Azure Batch hizmetlerinin kimliğini doğrulama
+description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi destekler. İki şekilde kimlik doğrulaması yapmayı öğrenin.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c855293a64ed63fdcb8a5ce797497dec428ab5ae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842546"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935284"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 

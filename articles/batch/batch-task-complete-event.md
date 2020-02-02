@@ -1,6 +1,6 @@
 ---
-title: Azure Batch görevi tamamlanma olayı | Microsoft Docs
-description: Batch görevi tamamlanma olayı başvurusu.
+title: Azure Batch görev tamamlanma olayı
+description: Batch görevi tamamlanma olayı başvurusu. Bu olay, çıkış kodundan bağımsız olarak bir görev tamamlandıktan sonra yayınlanır.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: 0a325060097f11b38e3b35d032c572b9dfbe0cc7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2f591330df4a3757ba1f5c6be1a34955c4cc2fa6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026121"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937746"
 ---
 # <a name="task-complete-event"></a>Görev tamamlama olayı
 
@@ -57,10 +57,10 @@ ms.locfileid: "76026121"
 |`id`|Dize|Görevin KIMLIĞI.|
 |`taskType`|Dize|Görevin türü. Bu, bir iş Yöneticisi görevi olduğunu ya da bir iş Yöneticisi görevi olmadığını belirten ' user ' olduğunu belirten ' JobManager ' olabilir. Bu olay iş hazırlama görevleri, iş bırakma görevleri veya başlangıç görevleri için yayınlanmaz.|
 |`systemTaskVersion`|Int32|Bu, bir görevde iç yeniden deneme sayacıdır. Toplu olarak Batch hizmeti, geçici sorunlar için bir görevi hesaba yeniden deneyebilir. Bu sorunlar, iç zamanlama hataları içerebilir veya işlem düğümlerinden hatalı bir durumda kurtarmaya çalışır.|
-|[`nodeInfo`](#nodeInfo)|Karmaşık Tür|Görevin çalıştırıldığı işlem düğümüyle ilgili bilgiler içerir.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  Ayrıntılar için [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) bakın.|
-|[`constraints`](#constraints)|Karmaşık Tür|Bu görev için uygulanan yürütme kısıtlamaları.|
-|[`executionInfo`](#executionInfo)|Karmaşık Tür|Görevin yürütülmesi hakkındaki bilgileri içerir.|
+|[`nodeInfo`](#nodeInfo)|Karmaşık tür|Görevin çalıştırıldığı işlem düğümüyle ilgili bilgiler içerir.|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  Ayrıntılar için [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) bakın.|
+|[`constraints`](#constraints)|Karmaşık tür|Bu görev için uygulanan yürütme kısıtlamaları.|
+|[`executionInfo`](#executionInfo)|Karmaşık tür|Görevin yürütülmesi hakkındaki bilgileri içerir.|
 
 ###  <a name="nodeInfo"></a>NodeInfo
 

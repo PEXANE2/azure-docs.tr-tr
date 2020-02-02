@@ -3,7 +3,7 @@ title: Coğrafi yönlendirme-Azure Traffic Manager tarafından kullanılan ülke
 description: Bu makalede Azure Traffic Manager coğrafi yönlendirme türü tarafından kullanılan ülke/bölge hiyerarşisi listelenmiştir
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: allensu
-ms.openlocfilehash: 13f4101c17d78a59e8cde724863d237ba888e6a4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037199"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938642"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure Traffic Manager coğrafi trafik yönlendirme yöntemi için kullanılan ülke/bölge hiyerarşisi
 
@@ -156,7 +156,7 @@ Bu makalede, Azure Traffic Manager **coğrafi** trafik yönlendirme yöntemi tar
 
         - OM (Umman)
 
-        - PS (Filistin Yönetimi)
+        - PS (Filistin Devleti)
 
         - QA (Qtor)
 
@@ -436,7 +436,7 @@ Bu makalede, Azure Traffic Manager **coğrafi** trafik yönlendirme yöntemi tar
 
         - MN (Moğolistan)
 
-        - MO (Makao ÖİB)
+        - MO (Makao ÖIB)
 
         - MV (Maldivler)
 

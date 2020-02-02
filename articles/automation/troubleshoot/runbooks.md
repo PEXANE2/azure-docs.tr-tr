@@ -8,16 +8,16 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 10152087b45a4048f30f382b237017efbbb63787
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 71344f954990952856f031829f13273e062b62c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769889"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933162"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 'larda hatalarda sorun giderme
 
-Azure Otomasyonu 'nda runbook yürütmekte olan hatalar olduğunda, sorunu tanılamanıza yardımcı olması için aşağıdaki adımları kullanabilirsiniz.
+Azure Otomasyonu 'nda runbook yürütmekte olan hatalar olduğunda, sorunların tanılanmasına yardımcı olması için aşağıdaki adımları kullanabilirsiniz.
 
 1. **Runbook betiğinizin yerel makinenizde başarıyla yürütüldüğünden emin olun:**  Dil başvurusu ve öğrenme modülleri için [PowerShell belgeleri](/powershell/scripting/overview) veya [Python belgeleri](https://docs.python.org/3/) bölümüne bakın.
 
@@ -29,7 +29,7 @@ Azure Otomasyonu 'nda runbook yürütmekte olan hatalar olduğunda, sorunu tanı
 
 2. Belirli iletiler için **runbook** [hata akışlarını](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) araştırın ve bunları aşağıdaki hatalarla karşılaştırın.
 
-3. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun:** Runbook 'ünüz herhangi bir modülü içeri aktardığında, [Içeri aktarma modülleri](../shared-resources/modules.md#import-modules)' nde listelenen adımları kullanarak Otomasyon hesabınızda kullanılabilir olduklarından emin olun. [Azure Otomasyonu 'Nda Azure modüllerini güncelleştirme](..//automation-update-azure-modules.md)bölümündeki yönergeleri izleyerek modüllerinizi en son sürüme güncelleştirin. Daha fazla sorun giderme bilgisi için bkz. [Modül sorunlarını giderme](shared-resources.md#modules).
+3. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun:** Runbook 'ünüz herhangi bir modülü içeri aktardığında, [Içeri aktarma modülleri](../shared-resources/modules.md#import-modules)' nde listelenen adımları kullanarak Otomasyon hesabınızda kullanılabilir olduklarından emin olun. [Azure Otomasyonu 'Nda Azure modüllerini güncelleştir bölümündeki](..//automation-update-azure-modules.md)yönergeleri izleyerek modüllerinizi en son sürüme güncelleştirin. Daha fazla sorun giderme bilgisi için bkz. [Modül sorunlarını giderme](shared-resources.md#modules).
 
 Runbook 'U askıya alındı veya beklenmedik şekilde başarısız olduysa:
 
@@ -49,7 +49,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata RunAs hesabı kullanmadığınızda veya RunAs hesabının süresi dolduğunda oluşabilir. Bkz. [Azure Otomasyonu runas hesaplarını yönetme](https://docs.microsoft.com/azure/automation/manage-runas-account).
+Bu hata, farklı çalıştır hesabı kullanmadığınız veya farklı çalıştır hesabının süresi dolduğunda oluşabilir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](https://docs.microsoft.com/azure/automation/manage-runas-account).
 
 Bu hatanın iki birincil nedeni vardır:
 
@@ -62,7 +62,7 @@ Bir Azurere modülünü güncelleştirdikten sonra bu hatayı alırsanız, tüm 
 
 Başka bir abonelikteki kaynaklara erişmeye çalışıyorsanız, izinleri yapılandırmak için aşağıdaki adımları izleyebilirsiniz.
 
-1. Otomasyon hesabının farklı Çalıştır hesabına gidin ve uygulama KIMLIĞINI ve parmak izini kopyalayın.
+1. Otomasyon Farklı Çalıştır hesabına gidin ve uygulama KIMLIĞINI ve parmak izini kopyalayın.
   ![kopya uygulama KIMLIĞI ve Parmak Izi](../media/troubleshoot-runbooks/collect-app-id.png)
 1. Otomasyon hesabının barındırılmadığını ve yeni bir rol ataması eklemek için abonelik Access Control gidin.
   ![Erişim denetimi](../media/troubleshoot-runbooks/access-control.png)
@@ -142,7 +142,7 @@ Azure hesabınızda Multi-Factor Authentication varsa, Azure 'da kimlik doğrula
 
 ### <a name="resolution"></a>Çözünürlük
 
-Azure klasik dağıtım modeli cmdlet 'leriyle bir sertifika kullanmak için [Azure hizmetlerini yönetmek üzere bir sertifika oluşturma ve ekleme](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) bölümüne bakın. Azure Resource Manager cmdlet 'leriyle hizmet sorumlusu kullanmak için, [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) ve [Azure Resource Manager ile hizmet sorumlusu kimlik doğrulama](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) konusuna bakın.
+Azure klasik dağıtım modeli cmdlet 'leriyle bir sertifika kullanmak için [Azure hizmetlerini yönetmek üzere bir sertifika oluşturma ve ekleme](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)bölümüne bakın. Azure Resource Manager cmdlet 'leriyle hizmet sorumlusu kullanmak için, [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) ve [Azure Resource Manager ile hizmet sorumlusu kimlik doğrulama](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)konusuna bakın.
 
 ## <a name="get-serializationsettings"></a>Senaryo: iş akışlarında get_SerializationSettings yöntemiyle ilgili bir hata görürsünüz
 
@@ -168,7 +168,7 @@ Bu hata, bir runbook 'ta hem Azurerd hem de az cmdlet 'ler kullanılarak oluşur
 
 ### <a name="resolution"></a>Çözünürlük
 
-Az ve Azurerd cmdlet 'leri aynı runbook 'ta içeri aktarılamaz ve kullanılamaz. Azure Otomasyonu 'nda az destek hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda az Module support](../az-modules.md).
+Az ve Azurerd cmdlet 'leri aynı runbook 'ta içeri aktarılamaz ve kullanılamaz. Azure Otomasyonu 'nda az cmdlet 'ler hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda az Module support](../az-modules.md).
 
 ## <a name="task-was-cancelled"></a>Senaryo: runbook hata vererek başarısız oldu: bir görev iptal edildi
 
@@ -208,7 +208,7 @@ Birden çok abonelikle çalışırken, runbook 'lar çağrılırken abonelik iç
 # Ensures that any credentials apply only to the execution of this runbook
 Disable-AzureRmContextAutosave –Scope Process
 
-# Connect to Azure with RunAs account
+# Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
 Add-AzureRmAccount `
@@ -243,10 +243,10 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, aşağıdaki nedenlerden biri temel alınarak oluşabilir:
+Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
-* Cmdlet 'ini içeren modül Otomasyon hesabına içeri aktarılmaz
-* Cmdlet 'i içeren modül içeri aktarıldı, ancak güncel değil
+* Cmdlet 'ini içeren modül Otomasyon hesabına içeri aktarılmaz.
+* Cmdlet 'i içeren modül içeri aktarıldı, ancak güncel değil.
 
 ### <a name="resolution"></a>Çözünürlük
 
@@ -260,7 +260,7 @@ Ayrı bir modüldür, Bu modülün Otomasyon hesabınızda içeri aktarıldığ�
 
 ### <a name="issue"></a>Sorun
 
-Runbook 'larınız şu hata ile başarısız oluyor:
+Runbook 'larınız aşağıdaki hatayla başarısız olur.
 
 ```error
 The job was tried three times but it failed
@@ -268,33 +268,31 @@ The job was tried three times but it failed
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, aşağıdaki sorunlardan biri nedeniyle oluşur:
+Bu hata, aşağıdaki sorunlardan biri nedeniyle oluşur.
 
-* Bellek sınırı. Bir korumalı alana ne kadar bellek ayrılacağını gösteren belgelenen sınırlar, [Otomasyon Hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)' nde bulunur. Bir iş, 400 MB 'tan fazla bellek kullanıyorsa bu işlem başarısız olabilir.
+* Bellek sınırı. Bir iş 400 MB 'tan fazla bellek kullanıyorsa başarısız olabilir. Bir korumalı alana ayrılan bellek üzerinde belgelenen sınırlar [Automation hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)' nde bulunur. 
 
-* Ağ yuvaları. Azure korumalı alanlar, [Otomasyon Hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)bölümünde açıklandığı şekilde 1000 eşzamanlı ağ yuvası ile sınırlıdır.
+* Ağ yuvaları. Azure korumalı alanlar 1000 eşzamanlı ağ yuvası ile sınırlıdır. [Otomasyon Hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)bakın.
 
-* Modül uyumsuz. Bu hata, modül bağımlılıkları doğru değilse ve yoksa, runbook 'unuz genellikle bir "komut bulunamadı" veya "parametre bağlanamaz" iletisi döndürür.
+* Modül uyumsuz. Modül bağımlılıkları doğru olmayabilir. Bu durumda, runbook genellikle bir "komut bulunamadı" veya "parametre bağlanamaz" iletisi döndürür.
 
-* Runbook 'iniz, bir Azure korumalı alanında çalışan bir runbook 'ta bir çalıştırılabilir veya alt işlem çağırmaya çalıştı. Bu senaryo, Azure korumalı alanında desteklenmez.
+* Korumalı alan için Active Directory kimlik doğrulaması yok. Runbook 'iniz, bir Azure korumalı alanında çalışan bir yürütülebilir dosyayı veya alt işlemi çağırmayı denedi. Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) kullanarak Azure AD ile kimlik doğrulaması yapmak için Runbook 'ların yapılandırılması desteklenmez.
 
-* Runbook, çıkış akışına çok fazla özel durum verisi yazmayı denedi.
+* Çok fazla özel durum verisi. Runbook, çıkış akışına çok fazla özel durum verisi yazmayı denedi.
 
 ### <a name="resolution"></a>Çözünürlük
 
-Aşağıdaki çözümlerden herhangi biri sorunu çözer:
+* Bellek sınırı, ağ yuvaları. Bellek sınırları içinde çalışma için önerilen yollar, iş yükünü birden çok runbook arasında bölmek, bellekte daha az veri işlemek, runbook 'lerinizden gereksiz çıkış yazmaktan kaçınmak ve PowerShell iş akışınıza kaç denetim noktası yazılacağını göz önünde bulundurmaktır 'ları. Değişkenleri temizlemek için `$myVar.clear`gibi Clear yöntemini kullanın ve çöp toplamayı hemen çalıştırmak için `[GC]::Collect` kullanın. Bu eylemler çalışma zamanı sırasında runbook 'larınızın bellek parmak izini azaltır.
 
-* Bellek sınırı içinde çalışmak için önerilen yöntemler, iş yükünü birden çok runbook arasında bölmek, runbook 'ınızdan gereksiz çıkış yazmak değil veya PowerShell Iş akışınıza kaç denetim noktası yazılacağını göz önünde bulundurmaya yönelik bir işlemdir. 'ları. Değişkeni temizlemek için `$myVar.clear()` gibi Clear metodunu kullanabilirsiniz ve çöp toplamayı hemen çalıştırmak için `[GC]::Collect()` kullanabilirsiniz. Bu eylemler çalışma zamanı sırasında runbook 'larınızın bellek parmak izini azaltır.
+* Modül uyumsuz. Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)bölümündeki adımları izleyerek Azure modüllerinizi güncelleştirin.
 
-* Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)adımlarını izleyerek Azure modüllerinizi güncelleştirin.
+* Korumalı alan için ADAL ile kimlik doğrulaması yok. Azure AD 'de bir runbook ile kimlik doğrulanırken, Azure AD modülünün Otomasyon hesabınızda kullanılabilir olduğundan emin olun. Farklı Çalıştır hesabına runbook 'un otomatikleştiren görevleri gerçekleştirmek için gerekli izinleri verdiğinizden emin olun.
 
-* Başka bir çözüm de runbook 'u [karma Runbook Worker](../automation-hrw-run-runbooks.md)üzerinde çalıştıralım. Karma çalışanlar, Azure sanal ağınızın bulunduğu bellek ve ağ sınırları ile sınırlı değildir.
+  Runbook 'iniz bir Azure korumalı alanında çalışan bir yürütülebilir dosyayı veya alt işlemi çağıramıyorum, bir [karma runbook çalışanında](../automation-hrw-run-runbooks.md)runbook 'u kullanın. Hibrit çalışanlar, Azure sanal ağı 'nın sahip olduğu bellek ve ağ limitleriyle sınırlı değildir.
 
-* Bir runbook 'ta bir işlemi (örneğin,. exe veya alt işlem. Call) çağırmanız gerekiyorsa, runbook 'u [karma Runbook Worker](../automation-hrw-run-runbooks.md)üzerinde çalıştırmanız gerekir.
+* Çok fazla özel durum verisi. İş çıktı akışında bir 1 MB sınırı vardır. Runbook 'larınızın bir try/catch bloğunda çalıştırılabilir veya bir alt işleme çağrıları içine aldığından emin olun. İşlemler bir özel durum oluştura, kodun özel durumdan bir Otomasyon değişkenine ileti yazmasını sağlayabilirsiniz. Bu teknik, iletinin iş çıkış akışına yazılmasını engeller.
 
-* İş çıktı akışında bir 1 MB sınırı vardır. Bir try/catch bloğunda bir çalıştırılabilir veya alt işleme çağrıları aldığınızdan emin olun. Özel durum oluşturduklarında, bu özel durumdan bir Otomasyon değişkenine iletiyi yazın. Bu, iş çıkış akışına yazılmasını engeller.
-
-## <a name="sign-in-failed"></a>Senaryo: Azure hesabında oturum açılamadı
+## <a name="sign-in-failed"></a>Senaryo: Azure hesabında oturum açma başarısız oldu
 
 ### <a name="issue"></a>Sorun
 
@@ -353,7 +351,7 @@ Neyin yanlış olduğunu belirlemek için aşağıdaki adımları uygulayın:
    }
    ```
 
-## <a name="child-runbook-object"></a>Nesne başvurusu bir nesne örneğine ayarlanmadı
+## <a name="child-runbook-object"></a>Senaryo: nesne başvurusu bir nesnenin örneğine ayarlanmadı
 
 ### <a name="issue"></a>Sorun
 
@@ -365,11 +363,11 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Nedeni
 
-[Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) 'un, nesneler içeriyorsa çıkış akışını doğru bir şekilde işlemediği bilinen bir sorun vardır.
+Start-AzureRmAutomationRunbook 'un, nesneler içeriyorsa çıkış akışını doğru bir şekilde işlemediği bilinen bir sorun vardır.
 
 ### <a name="resolution"></a>Çözünürlük
 
-Bu sorunu çözmek için, bunun yerine bir yoklama mantığı uygulamanız ve çıktıyı almak için [Get-Azurermautomationjoi put](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) cmdlet 'ini kullanmanız önerilir. Bu mantığın bir örneği aşağıdaki örnekte tanımlanmıştır.
+Bu sorunu çözmek için, bir yoklama mantığı uygulamanız ve çıktıyı almak için [Get-Azurermautomationjoi put](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) cmdlet 'ini kullanmanız önerilir. Bu mantığın bir örneği aşağıdaki örnekte tanımlanmıştır.
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -435,9 +433,9 @@ Bu hata, iş yürütmesi hesabınız için 500 dakikalık boş kotayı aştığ�
 
 Ayda 500 dakikadan daha fazla işlem kullanmak istiyorsanız, aboneliğinizi ücretsiz katmandan temel katmana değiştirmeniz gerekir. Aşağıdaki adımları uygulayarak temel katmana yükseltebilirsiniz:
 
-1. Azure aboneliğinizde oturum açın
-2. Yükseltmek istediğiniz Otomasyon hesabını seçin
-3. **Ayarlar** > **fiyatlandırma**' ya tıklayın.
+1. Azure aboneliğinizde oturum açın.
+2. Yükseltilecek Otomasyon hesabını seçin.
+3. **Ayarlar**' a ve ardından **fiyatlandırma**' ya tıklayın.
 4. Hesabınızı **temel** katmana yükseltmek için sayfada en altta **Etkinleştir** ' e tıklayın.
 
 ## <a name="cmdlet-not-recognized"></a>Senaryo: bir runbook çalıştırılırken cmdlet tanınmıyor
@@ -477,13 +475,13 @@ Bu davranış, Azure Otomasyonu 'ndaki işlemlerin "dengeli paylaştığı" izle
 
 ### <a name="cause"></a>Nedeni
 
-Runbook, bir Azure korumalı alanında dengeli bir paylaşıma izin verilen 3 saatlik sınırın üzerinde çalışır.
+Runbook, bir Azure korumalı alanında dengeli bir paylaşımın izin verdiği 3 saatlik sınırın üzerinde çalışır.
 
 ### <a name="resolution"></a>Çözünürlük
 
 Önerilen bir çözüm, runbook 'u [karma Runbook Worker](../automation-hrw-run-runbooks.md)üzerinde çalıştıralım.
 
-Hibrit çalışanlar, Azure korumalı 2 ' nin bulunduğu [haksız Share](../automation-runbook-execution.md#fair-share) 3 saat runbook sınırı ile sınırlı değildir. Karma runbook çalışanları üzerinde çalıştırılan runbook 'lar, beklenmeyen yerel altyapı sorunları varsa yeniden başlatma davranışlarını destekleyecek şekilde geliştirilmiştir.
+Hibrit çalışanlar, Azure korumalı alan tarafından sahip olduğu [Ortapaylaşma](../automation-runbook-execution.md#fair-share) 3 saatlik runbook sınırı ile sınırlı değildir. Karma runbook çalışanları üzerinde çalışan runbook 'lar, beklenmeyen yerel altyapı sorunları varsa yeniden başlatma davranışlarını destekleyecek şekilde geliştirilmiştir.
 
 Diğer bir seçenek de runbook 'u [alt runbook 'lar](../automation-child-runbooks.md)oluşturarak iyileştirmenize olanak sağlar. Runbook 'iniz birkaç veritabanında bir veritabanı işlemi gibi birkaç kaynak üzerinde aynı işlevle döngüye geçtiğinde, bu işlevi bir alt runbook 'a taşıyabilirsiniz. Bu alt runbook 'ların her biri ayrı işlemlerde paralel olarak yürütülür. Bu davranış, üst runbook 'un tamamlanacağı toplam süreyi düşürür.
 
@@ -511,7 +509,7 @@ Bir Azure Otomasyonu runbook 'u için bir Web kancası çağırmayı denediğini
 
 Web kancası devre dışıysa, Azure portal aracılığıyla Web kancasını yeniden etkinleştirebilirsiniz. Web kancası dolduğunda, Web kancasının silinip yeniden oluşturulması gerekir. [Web kancasını](../automation-webhooks.md#renew-webhook) yalnızca henüz dolmamışsa yenileyebilirsiniz.
 
-## <a name="429"></a>Senaryo: 429: istek oranı şu anda çok büyük. Lütfen tekrar deneyin
+## <a name="429"></a>Senaryo: 429: istek oranı şu anda çok büyük...
 
 ### <a name="issue"></a>Sorun
 
@@ -544,7 +542,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, Azure 'da çalıştırılan bir runbook 'ta bir PowerShell işi başlattığınızda ortaya çıkabilir. Bu davranış, bir Azure korumalı alanında çalıştırılan runbook 'ların [tam dil modunda](/powershell/module/microsoft.powershell.core/about/about_language_modes)çalıştırılmadığı için oluşabilir.
+Bu hata, Azure 'da çalışan bir runbook 'ta bir PowerShell işi başlattığınızda ortaya çıkabilir. Bu davranış, bir Azure korumalı alanında çalıştırılan runbook 'ların [tam dil modunda](/powershell/module/microsoft.powershell.core/about/about_language_modes)çalıştırılmadığı için oluşabilir.
 
 ### <a name="resolution"></a>Çözünürlük
 
@@ -565,12 +563,12 @@ Azure Otomasyonu yerine karma çalışanı kullanarak iş çalıştırıyorsanı
 
 ## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook "İzin yok" hatasıyla veya benzer bir hatayla başarısız oldu
 
-RunAs hesapları, Azure kaynakları üzerinde geçerli hesabınızla aynı izinlere sahip olmayabilir. RunAs hesabınızın betiğinizde kullanılan [tüm kaynaklara erişmek için izinleri](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) olduğundan emin olun.
+Farklı Çalıştır hesapları, geçerli hesabınız olarak Azure kaynaklarında aynı izinlere sahip olmayabilir. Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek için izinlere](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) sahip olduğundan emin olun.
 
 ## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook'lar çalışıyordu ama aniden durduruldu
 
-* Runbook 'lar daha önce yürütülerek durdurulmuş olsa da, [runas hesabının süresi dolmadığından emin olun](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
-* Runbook'ları çalıştırmak için web kancaları kullanıyorsanız [web kancasının süresinin dolmadığından emin olun](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+* Runbook 'lar daha önce yürütülerek durdurulmuş olsa da, [farklı çalıştır hesabının](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal) süresi dolmadığından emin olun.
+* Runbook 'ları başlatmak için Web kancaları kullanıyorsanız, [Web kancasının](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) süresi dolmadığından emin olun.
 
 ## <a name="issues-passing-parameters-into-webhooks"></a>Web kancalarına parametre geçirme sorunları
 
@@ -578,19 +576,19 @@ Web kancalarına parametre geçirme konusunda yardım için bkz. [Web kancasınd
 
 ## <a name="issues-using-az-modules"></a>Az modüller kullanan sorunlar
 
-Aynı Otomasyon Hesabında hem Az modüllerinin hem de AzureRM modüllerinin kullanılması desteklenmez. Daha fazla ayrıntı için lütfen [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules) bölümüne bakın.
+Aynı Otomasyon Hesabında hem Az modüllerinin hem de AzureRM modüllerinin kullanılması desteklenmez. Daha fazla bilgi için daha fazla ayrıntı için bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules) .
 
 ## <a name="inconsistent-behavior-in-runbooks"></a>Runbook'larda tutarsız davranış
 
-Eşzamanlı işler, kaynakların birden fazla kez oluşturulması veya runbook'lardaki diğer zamanla ilgili mantıklarda sorun oluşmasını önlemek için [Runbook Yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) sayfasını inceleyin.
+Eşzamanlı işlerle ilgili sorunları, birden çok kez oluşturulmuş kaynakları veya Runbook 'larda diğer zamanlamaya duyarlı mantığı önlemek için [runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) içindeki yönergeleri izleyin.
 
-## <a name="runbook-fails-with-the-errors-no-permission-forbidden-403-or-some-variation"></a>Runbook hata vererek başarısız oluyor: izin, yasak, 403 veya bazı varyasyon
+## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook, izin yok, yasak (403) veya bazı çeşitlerle başarısız oluyor
 
-RunAs hesapları, Azure kaynakları üzerinde geçerli hesabınızla aynı izinlere sahip olmayabilir. RunAs hesabınızın betikte kullanılan [kaynaklara erişim izni](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) olduğundan emin olun.
+Farklı Çalıştır hesapları, geçerli hesabınız olarak Azure kaynaklarında aynı izinlere sahip olmayabilir. Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek için izinlere](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) sahip olduğundan emin olun.
 
 ## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook'lar çalışıyordu ama aniden durduruldu
 
-* Runbook 'lar daha önce yürütülerek durdurulmuş olsa da, RunAs hesabının [süresi dolmadığından](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)emin olun.
+* Runbook 'lar daha önce yürütülerek durdurulmuş olsa da, farklı çalıştır hesabının süresi dolmadığından emin olun. Bkz. [sertifika yenileme](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
 * Runbook 'ları başlatmak için Web kancaları kullanıyorsanız, Web kancasının [süresi dolmadığından](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)emin olun.
 
 ## <a name="passing-parameters-into-webhooks"></a>Web kancalarına parametre geçirme
@@ -599,16 +597,16 @@ Web kancalarına parametre geçirme konusunda yardım için bkz. [Web kancasınd
 
 ## <a name="using-az-modules"></a>Az modüllerini kullanma
 
-Aynı Otomasyon Hesabında hem Az modüllerinin hem de AzureRM modüllerinin kullanılması desteklenmez. Daha fazla ayrıntı için lütfen [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules) bölümüne bakın.
+Aynı Otomasyon Hesabında hem Az modüllerinin hem de AzureRM modüllerinin kullanılması desteklenmez. Bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules).
 
-## <a name="using-self-signed-certificates"></a>Otomatik Olarak İmzalanan Sertifikaları Kullanma
+## <a name="using-self-signed-certificates"></a>Otomatik olarak imzalanan sertifikaları kullanma
 
-Otomatik olarak Imzalanan sertifikaları kullanmak için [Yeni bir sertifika oluşturma](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)Kılavuzu ' nu izlemeniz gerekir.
+Otomatik olarak Imzalanan sertifikaları kullanmak için bkz. [Yeni sertifika oluşturma](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
 
 ## <a name="recommended-documents"></a>Önerilen Belgeler
 
-* [Azure Otomasyonu'nda Runbook Başlatma](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
-* [Azure Otomasyonu’nda Runbook Yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
+* [Azure Otomasyonu 'nda runbook başlatma](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Azure Otomasyonu 'nda runbook yürütmesi](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

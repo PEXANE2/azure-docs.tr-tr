@@ -3,7 +3,7 @@ title: Alt ağ trafiği yönlendirmeyi Yapılandırma-Azure Traffic Manager
 description: Bu makalede, belirli alt ağlardan gelen trafiği yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014602"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938745"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager'ı kullanarak trafiği kullanıcı alt ağına göre belirli uç noktalara yönlendirme
 
@@ -27,14 +27,14 @@ Bu makalede açıklanan senaryoda, Kullanıcı sorgusunun IP adresine bağlı ol
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide Traffic Manager'ın çalışmasını uygulamalı olarak görmek için şu sistemleri dağıtmanız gerekir:
 - farklı Azure bölgelerinde çalışan iki basit web sitesi: **Doğu ABD** (iç web sitesi olarak görev yapar) ve **Batı Avrupa** (üretim web sitesi olarak görev yapar).
 - Traffic Manager'ı test etmek için iki test amaçlı VM: bir VM **Doğu ABD** bölgesinde, ikinci VM ise **Batı Avrupa** bölgesinde olmalıdır.
 
 Test amaçlı VM'ler Traffic Manager'ın kullanıcı sorgusunun geldiği alt ağa göre kullanıcı trafiğini iç web sitesine veya üretim web sitesine nasıl yönlendirdiğini göstermek için kullanılır.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 

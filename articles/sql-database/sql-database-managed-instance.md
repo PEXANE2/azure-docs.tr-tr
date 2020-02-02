@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514564"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935198"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -45,7 +45,7 @@ Yönetilen örnek, hem Azure SQL veritabanı hem de SQL Server veritabanı altya
 | **PaaS avantajları** | **İş sürekliliği** |
 | --- | --- |
 |Donanım satın alma ve yönetimi yok <br>Temel altyapıyı yönetmeye yönelik yönetim yükü yok <br>Hızlı sağlama ve hizmet ölçeklendirme <br>Otomatik düzeltme eki uygulama ve sürüm yükseltme <br>Diğer PaaS veri hizmetleriyle tümleştirme |% 99,99 çalışma süresi SLA 'Sı  <br>[Yüksek kullanılabilirlik](sql-database-high-availability.md) için yerleşik <br>[Otomatik yedeklemelerle](sql-database-automated-backups.md) korunan veriler <br>Müşteri yapılandırılabilir yedekleme Bekletme dönemi <br>Kullanıcı tarafından başlatılan [yedeklemeler](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Zaman noktası veritabanı geri yükleme](sql-database-recovery-using-backups.md#point-in-time-restore) özelliği |
-|**Güvenlik ve uyumluluk** | **Yönetim**|
+|**Güvenlik ve uyumluluk** | **Yönetme**|
 |Yalıtılmış ortam ([VNET tümleştirmesi](sql-database-managed-instance-connectivity-architecture.md), tek kiracılı hizmet, adanmış işlem ve depolama) <br>[Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD kimlik doğrulaması](sql-database-aad-authentication.md), çoklu oturum açma desteği <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD Server sorumluları (oturum açmalar)</a>  <br>Azure SQL veritabanı ile aynı uyumluluk standartlarına uyar <br>[SQL denetimi](sql-database-managed-instance-auditing.md) <br>[Gelişmiş Tehdit Koruması](sql-database-managed-instance-threat-detection.md) |Hizmet sağlamayı ve ölçeklendirmeyi otomatikleştirmek için API Azure Resource Manager <br>El ile hizmet sağlama ve ölçeklendirme için Azure portal işlevselliği <br>Veri geçiş hizmeti
 
 > [!IMPORTANT]
@@ -303,7 +303,7 @@ Aşağıdaki diyagramda, yönetilen örnekteki Surface alanı uyumluluğu özetl
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Şirket içinde ve yönetilen bir örnekte SQL Server arasındaki temel farklılıklar
 
-Yönetilen örnek dağıtım seçeneği, bulutta her zaman güncel olmasını sağlar, yani şirket içi SQL Server bazı özellikler kullanımdan kalkmış, kullanımdan kaldırılmakta veya alternatiflere sahip olabilir. Araçların belirli bir özelliğin biraz farklı bir şekilde çalıştığını tanıması gerektiğinde veya bu hizmet tam olarak denetlediğiniz bir ortamda çalışmadığı zaman belirli durumlar vardır:
+Yönetilen örnek dağıtım seçeneği, bulutta her zaman güncel olmasını sağlar, yani şirket içi SQL Server bazı özellikler kullanımdan kalkmış, kullanımdan kaldırılmakta veya alternatiflere sahip olabilir. Araçların belirli bir özelliğin biraz farklı bir şekilde çalıştığını veya hizmetin tam olarak denetlediğiniz bir ortamda çalıştığını tanıması gerektiğinde belirli durumlar vardır:
 
 - Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik gruplarıyla](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)benzer bir teknoloji kullanılarak yerleşiktir ve önceden yapılandırılmıştır.
 - Otomatik yedeklemeler ve zaman içinde geri yükleme. Müşteri, otomatik yedekleme zinciriyle kesintiye uğramayan `copy-only` yedeklemeler başlatabilir.

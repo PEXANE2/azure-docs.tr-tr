@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481015"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931577"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
 
@@ -34,7 +34,7 @@ Kullanıcı hesapları, Azure AD DS 'de birden çok şekilde oluşturulabilir. �
 * Kullanıcı hesabı Azure AD 'den eşitlenebilir. Bu, doğrudan Azure AD 'de oluşturulan bulut Kullanıcı hesaplarını ve Azure AD Connect kullanarak şirket içi AD DS ortamından eşitlenen karma Kullanıcı hesaplarını içerir.
     * Azure AD DS 'daki Kullanıcı hesaplarının çoğu Azure AD 'den eşitleme işlemi aracılığıyla oluşturulur.
 * Kullanıcı hesabı Azure AD DS yönetilen bir etki alanında el ile oluşturulabilir ve Azure AD 'de mevcut değildir.
-    * Yalnızca Azure AD DS çalışan uygulamalar için hizmet hesapları oluşturmanız gerekiyorsa, bunları yönetilen etki alanında el ile oluşturabilirsiniz. Eşitleme, Azure AD 'den tek yönlü olduğundan Azure AD DS 'de oluşturulan kullanıcı hesapları Azure AD 'ye geri aktarılmaz.
+    * Yalnızca Azure AD DS çalışan uygulamalar için hizmet hesapları oluşturmanız gerekiyorsa, bunları yönetilen etki alanında el ile oluşturabilirsiniz. Eşitleme Azure AD 'den bir yol olduğu için Azure AD DS 'da oluşturulan kullanıcı hesapları Azure AD 'ye geri aktarılmaz.
 
 ## <a name="password-policy"></a>Parola ilkesi
 
@@ -74,6 +74,36 @@ Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü b
 
 Azure AD DS orman türleri hakkında daha fazla bilgi için bkz. [kaynak ormanları nelerdir?][concepts-forest] ve [orman güvenleri Azure AD DS nasıl çalışır?][concepts-trust]
 
+## <a name="azure-ad-ds-skus"></a>Azure AD DS SKU 'Ları
+
+Azure AD DS 'de, kullanılabilir performans ve Özellikler SKU 'YU temel alır. Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe SKU 'Ları değiştirebilirsiniz. Aşağıdaki tabloda kullanılabilir SKU 'Lar ve aralarındaki farklar özetlenmektedir:
+
+| SKU adı   | En fazla nesne sayısı | Yedekleme sıklığı | En fazla giden orman güveni sayısı |
+|------------|----------------------|------------------|----|
+| Standart   | İş çalışma zamanında            | Her 7 günde bir     | 0  |
+| Kurumsal | İş çalışma zamanında            | 3 günde bir     | 5  |
+| Premium    | İş çalışma zamanında            | Günlük            | 10 |
+
+Bu Azure AD DS SKU 'larından önce, Azure AD DS yönetilen etki alanındaki nesne sayısına (Kullanıcı ve bilgisayar hesapları) göre bir faturalandırma modeli kullanılmıştır. Yönetilen etki alanındaki nesne sayısına bağlı olarak artık değişken fiyatlandırma yoktur.
+
+Daha fazla bilgi için bkz. [Azure AD DS fiyatlandırma sayfası][pricing].
+
+### <a name="managed-domain-performance"></a>Yönetilen etki alanı performansı
+
+Etki alanı performansı, bir uygulama için kimlik doğrulamanın nasıl uygulandığına göre farklılık gösterir. Ek işlem kaynakları sorgu yanıt süresinin artırılmasına ve eşitleme işlemlerinde harcanan süreyi azaltmanıza yardımcı olabilir. SKU düzeyi arttıkça, yönetilen etki alanı için kullanılabilir işlem kaynakları artar. Uygulamalarınızın performansını izleyin ve gerekli kaynakları planlayın.
+
+İşiniz veya uygulamanız için değişiklik yaptıysanız ve Azure AD DS yönetilen etki alanınız için ek işlem gücü gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
+
+### <a name="backup-frequency"></a>Yedekleme sıklığı
+
+Yedekleme sıklığı, yönetilen etki alanının bir anlık görüntüsünün ne sıklıkta alınacağını belirler. Yedeklemeler, Azure platformu tarafından yönetilen otomatikleştirilmiş bir işlemdir. Yönetilen etki alanı ile ilgili bir sorun olması durumunda Azure desteği, yedekten geri yükleme konusunda size yardımcı olabilir. Eşitleme yalnızca Azure AD *'den* tek yönlü olduğundan, Azure AD DS yönetilen bir etki alanındaki tüm sorunlar Azure AD 'yi veya şirket içi AD DS ortamları ve işlevleri etkilemez.
+
+SKU düzeyi arttıkça, bu yedekleme anlık görüntülerinin sıklığı artar. Yönetilen etki alanınız için gereken yedekleme sıklığını öğrenmek üzere iş gereksinimlerinizi ve kurtarma noktası hedefini (RPO) gözden geçirin. İşiniz veya uygulama gereksinimleriniz değiştikçe ve daha sık yedeklemeler gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
+
+### <a name="outbound-forests"></a>Giden ormanlar
+
+Önceki bölümde, tek yönlü giden bir orman Azure AD DS yönetilen bir etki alanından şirket içi AD DS ortamına (Şu anda önizlemede) güvenir. SKU, Azure AD DS yönetilen bir etki alanı için oluşturabileceğiniz en fazla orman güveni sayısını belirler. İhtiyacınız olan güvenin sayısını öğrenmek için iş ve uygulama gereksinimlerinizi gözden geçirin ve uygun Azure AD DS SKU 'sunu seçin. Yine, iş gereksinimleriniz değiştiğinde ve ek orman güvenleri oluşturmanız gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Başlamak için [Azure AD DS yönetilen bir etki alanı oluşturun][create-instance].
@@ -87,3 +117,6 @@ Başlamak için [Azure AD DS yönetilen bir etki alanı oluşturun][create-insta
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

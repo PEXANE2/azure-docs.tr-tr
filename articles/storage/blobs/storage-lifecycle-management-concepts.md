@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260962"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939231"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -287,7 +287,7 @@ Aşağıdaki örnek kural, `container1` içinde bulunan nesneler üzerinde eylem
 
 Filtre, kural eylemlerini depolama hesabındaki Blobların bir alt kümesiyle sınırlar. Birden çok filtre tanımlanmışsa, bir mantıksal `AND` tüm filtreler üzerinde çalışır.
 
-Filtreler aşağıdakileri içerir:
+Filtreler şunları içerir:
 
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
@@ -348,7 +348,7 @@ Bu örnek, `container1/foo` veya `container2/bar`ön önekli blok bloblarının 
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Alma sırasında verileri arşivleme
+### <a name="archive-data-after-ingest"></a>Aldıktan sonra verileri Arşivle
 
 Bazı veriler bulutta boş kalır ve şimdiye kadar, kaydedildikten sonra erişiliyorsa nadiren olur. Aşağıdaki yaşam döngüsü ilkesi, verileri alındıktan sonra arşivlemek üzere yapılandırılmıştır. Bu örnek, kapsayıcı içindeki depolama hesabındaki blok bloblarını bir arşiv katmanına `archivecontainer` geçirir. Geçiş, son değiştirilme zamanından sonra blob 0 gün sonra işlem yaparak gerçekleştirilir:
 

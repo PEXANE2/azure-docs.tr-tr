@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677452"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933060"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetri bağlamı: Application Insights veri modeli
 
@@ -96,7 +96,7 @@ En fazla uzunluk: 1024
 
 ## <a name="account-id"></a>Hesap kimliği
 
-Çok kiracılı uygulamalarda bu, kullanıcının işlem gördüğü hesap KIMLIĞI veya addır. Örnek, Azure portal veya blog adı blog platformu için abonelik KIMLIĞI olabilir.
+Çok kiracılı uygulamalarda bu, kullanıcının işlem gördüğü hesap KIMLIĞI veya addır. Örnek olarak bir blog platformu için Azure portal veya blog adı için abonelik KIMLIĞI olabilir.
 
 En fazla uzunluk: 1024
 

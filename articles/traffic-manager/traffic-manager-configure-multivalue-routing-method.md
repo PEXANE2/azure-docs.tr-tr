@@ -3,7 +3,7 @@ title: Çoklu değer trafik yönlendirmeyi Yapılandırma-Azure Traffic Manager
 description: Bu makalede, trafiği bir/AAAA uç noktalarına yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040363"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938772"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
 
@@ -26,7 +26,7 @@ Bu makalede, çok değerli trafik yönlendirme yönteminin nasıl yapılandırı
 >[!NOTE]
 > Şu anda, IPv4 veya IPv6 adreslerini kullanarak uç noktaları eklemek yalnızca **dış** türündeki uç noktalar için desteklenir ve bu nedenle çok değerli yönlendirme yalnızca söz konusu uç noktalar için desteklenir.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın 
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d2260e5c9e4125be1c4b0fa5e9d7c39a8e03d43f
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911205"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933208"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Haritaya görüntü katmanı ekleme
 
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 <iframe height='500' scrolling='no' title='Basit görüntü katmanı' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile Ilgili kalem <a href='https://codepen.io/azuremaps/pen/eQodRo/'>basit görüntü katmanı</a> ' na bakın.
 </iframe>
 
-## <a name="import-a-kml-ground-overlay"></a>KML zemin kaplamasını içeri aktarma
+## <a name="import-a-kml-file-as-ground-overlay"></a>KML dosyasını arka plan kaplaması olarak içeri aktarma
 
 Bu sonraki örnek, KML zemin kaplama bilgilerinin haritada bir görüntü katmanı olarak nasıl ekleneceğini gösterir. KML sol yer paylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve bir sayaç saat yönünde döndürme sağlar, ancak görüntü katmanı görüntünün her bir köşesinde koordinatları bekler. Bu örnekteki KML zemin kaplaması Chartres Cathedral ' dir ve [Wikımedıa](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'dan kaynaklıdır.
 

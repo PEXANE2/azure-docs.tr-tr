@@ -1,5 +1,5 @@
 ---
-title: REST API sürüm 2019-05-06-Önizleme
+title: REST API Önizleme özellikleri
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama Service REST API sürüm 2019-05-06-önizleme, bilgi deposu ve artımlı zenginleştirme için Dizin Oluşturucu önbelleği gibi deneysel özellikleri içerir.
 manager: nitinme
@@ -7,26 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: 71c6879f467823ab01f4c60ac4d9f26cffcd4eea
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 9985e7ac70c5851699839a95d1e23af4dcca35e7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896127"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935110"
 ---
-# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Bilişsel Arama Service REST API-sürüm 2019-05-06-Önizleme
+# <a name="preview-features-in-azure-cognitive-search"></a>Azure Bilişsel Arama Önizleme özellikleri
 
-Bu makalede, arama hizmeti REST API 'ın `api-version=2019-05-06-Preview` sürümü açıklanmakta ve henüz genel kullanıma sunulmayan Deneysel özellikler sunulmaktadır.
+Bu makalede, şu anda önizleme aşamasında olan özellikler listelenmiştir. Önizlemeden genel kullanılabilirliğe geçiş yapan özellikler bu listeden kaldırılır. [Hizmet güncelleştirmelerini](https://azure.microsoft.com/updates/?product=search) veya genel kullanıma yönelik duyurulara [yönelik yenilikler '](whats-new.md) i kontrol edebilirsiniz.
 
-> [!NOTE]
-> Önizleme özellikleri, test ve deneme ile geri bildirim toplama amacını ve değişikliğe tabi bir şekilde kullanılabilir. Üretim uygulamalarında önizleme API 'Lerini kullanmayı önemle tavsiye ederiz.
+Portalda ve .NET SDK 'sında bazı Önizleme özellikleri kullanılabilir olsa da REST API her zaman önizleme özelliklerine sahiptir. Geçerli önizleme API sürümü `2019-05-06-Preview`.
 
-## <a name="features-in-2019-05-06-preview"></a>2019-05-06 sürümündeki özellikler-önizleme
+> [!IMPORTANT]
+> Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu bölümde önizleme durumu olan özellikler listelenmiştir. Çoğu geçerli 2019-05-06-Preview API 'sine eklenmiştir, ancak `moreLikeThis` benzer bir şekilde en son önizleme API 'sine eklenen önceki önizleme sürümlerinden bazılarıdır. 
+## <a name="features-in-public-preview"></a>Genel önizlemede Özellikler
 
-Önizleme özelliği genel kullanıma sunulduğunda, bu listeden kaldırılır. [Hizmet güncelleştirmelerini](https://azure.microsoft.com/updates/?product=search) veya genel kullanıma yönelik duyurulara [yönelik yenilikler '](whats-new.md) i kontrol edebilirsiniz.
++ [Özel varlık arama (Önizleme)](cognitive-search-skill-custom-entity-lookup.md ) , özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. 
+
++ [PII algılama (Önizleme)](cognitive-search-skill-pii-detection.md) , bir giriş metninin kişisel olarak tanımlanabilir bilgilerini çıkaran ve bu metinden çeşitli yollarla maske sağlayan bir seçenek sunan, dizin oluşturma sırasında kullanılan bilişsel bir yetenördir.
 
 + [Artımlı zenginleştirme (Önizleme)](cognitive-search-incremental-indexing-conceptual.md) bir zenginleştirme işlem hattına önbelleğe alma özelliği ekler ve bir beceri veya başka bir nesne için bir güncelleştirme gibi hedeflenen bir değişiklik, içeriği değiştirmezse mevcut çıktıyı yeniden kullanmanıza olanak tanır. Önbelleğe alma yalnızca bir beceri tarafından üretilen zenginleştirilmiş belgeler için geçerlidir.
 
@@ -34,9 +36,9 @@ Bu bölümde önizleme durumu olan özellikler listelenmiştir. Çoğu geçerli 
 
 + [Azure Data Lake Storage 2. Dizin Oluşturucu (Önizleme)](search-howto-index-azure-data-lake-storage.md) , Data Lake Storage 2. içerik ve meta verileri dizinleyebilir.
 
-+ [Bilgi deposu](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Fiziksel veri yapısı Azure Blob depolama ve Azure Tablo depolamada bulunur ve ekli bilişsel beceri sahip bir Dizin Oluşturucu çalıştırdığınızda oluşturulur ve doldurulur. Bilgi deposunun kendisi tanımı bir beceri tanımı içinde belirtilir. Bilgi deposu tanımı içinde, verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını ve birden çok görünüm olup olmadığını belirten *projeksiyon* öğeleri aracılığıyla verilerinizin fiziksel yapılarını kontrol edersiniz.
++ [Bilgi deposu (Önizleme)](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Fiziksel veri yapısı Azure Blob depolama ve Azure Tablo depolamada bulunur ve ekli bilişsel beceri sahip bir Dizin Oluşturucu çalıştırdığınızda oluşturulur ve doldurulur. Bilgi deposunun kendisi tanımı bir beceri tanımı içinde belirtilir. Bilgi deposu tanımı içinde, verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını ve birden çok görünüm olup olmadığını belirten *projeksiyon* öğeleri aracılığıyla verilerinizin fiziksel yapılarını kontrol edersiniz.
 
-+ [Morelikethis sorgu parametresi](search-more-like-this.md) , belirli bir belgeyle ilgili belgeleri bulur. Bu özellik daha önceki önizlemelerde yer aldı. 
++ [Morelikethis sorgu parametresi (Önizleme)](search-more-like-this.md) belirli bir belgeyle ilgili belgeleri bulur. Bu özellik daha önceki önizlemelerde yer aldı. 
 
 ## <a name="earlier-preview-features"></a>Önceki Önizleme özellikleri
 

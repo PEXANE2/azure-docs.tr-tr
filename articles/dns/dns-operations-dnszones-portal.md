@@ -3,7 +3,7 @@ title: Azure DNS Azure portal DNS bölgelerini yönetme | Microsoft Docs
 description: Azure portal kullanarak DNS bölgelerini yönetebilirsiniz. Bu makalede, Azure DNS üzerinde DNS bölgelerini güncelleştirme, silme ve oluşturma işlemlerinin nasıl yapılacağı açıklanmaktadır
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
-ms.author: allensu
-ms.openlocfilehash: 4e6b5dc200f49b34d8f808e5587b173197b9da8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: rohink
+ms.openlocfilehash: 002f210048c18c6dd99dfb5981bacce8666ee563
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437323"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936774"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure portal DNS Bölgeleri Yönetme
 
@@ -41,7 +41,7 @@ Bu makalede, Azure portal kullanarak DNS bölgelerinizi nasıl yöneteceğiniz g
 
    | **Ayar** | **Değer** | **Ayrıntılar** |
    |---|---|---|
-   |**Adı**|contoso.com|DNS bölgesinin adı|
+   |**Ad**|contoso.com|DNS bölgesinin adı|
    |**Abonelik**|[Aboneliğiniz]|DNS bölgesini oluşturmak için bir abonelik seçin.|
    |**Kaynak grubu**|**Yeni oluştur:** contosoDNSRG|Bir kaynak grubu oluşturun. Kaynak grubu adı, seçili abonelik içinde benzersiz olmalıdır. Kaynak grupları hakkında daha fazla bilgi için, [Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups)’a genel bakış makalesini okuyun.|
    |**Konum**|Batı ABD||

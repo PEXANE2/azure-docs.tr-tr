@@ -1,7 +1,7 @@
 ---
 title: Güvenli bir Azure AD Web uygulaması geliştirme | Microsoft Docs
 description: Bu basit örnek uygulama, Azure 'da geliştirme yaparken uygulamanızı ve kuruluşunuzun güvenlik duruşunu geliştiren en iyi güvenlik uygulamalarını uygular.
-keywords: yok
+keywords: yana
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771283"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937972"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD uygulaması için güvenli uygulama geliştirme
 ## <a name="overview"></a>Genel Bakış
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 
@@ -334,7 +335,7 @@ Sanal ağ tümleştirmesini etkinleştirmiş olduğunuza göre, uygulamamıza a�
 
 5. NSG alt ağları dikey penceresinde **ilişkilendir**' i seçin, dağıtımda oluşturulan sanal ağı seçin ve **GW-subnet**adlı ağ geçidi alt ağını seçin. NSG alt ağa uygulanır.
 
-6. App Service örneği için bu kez, önceki adımda olduğu gibi başka bir NSG oluşturun. Buna bir ad verin. Application Gateway NSG için yaptığınız gibi 443 numaralı bağlantı noktası için gelen kuralını ekleyin.
+6. App Service örneği için bu kez, önceki adımda olduğu gibi başka bir NSG oluşturun. Bir ad verin. Application Gateway NSG için yaptığınız gibi 443 numaralı bağlantı noktası için gelen kuralını ekleyin.
 
    Bu uygulama için durum bilgisi olmayan bir App Service Ortamı örneği üzerinde dağıtılan bir App Service örneğiniz varsa, App Service NSG 'nizin gelen güvenlik gruplarında 454-455 bağlantı noktalarını açarak Azure hizmet durumu araştırmalarını sağlamak için gelen kuralları ekleyebilirsiniz. Yapılandırma şu şekildedir:
 
@@ -373,7 +374,7 @@ Aşağıdaki teknolojiler, Azure ortamındaki cardş verilerine erişimi yönetm
    - Key Vault için tanılama günlükleri, en az 365 günlük bir bekletme dönemi ile etkinleştirilir.
    - Anahtarlar için izin verilen şifreleme işlemleri, gerekli olanlarla kısıtlıdır.
 ### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
-Azure Güvenlik Merkezi ile, müşteriler iş yükleri genelinde güvenlik ilkelerini merkezi olarak uygulayabilir ve yönetebilir, tehditlere maruz kalma olasılığını sınırlayabilir, saldırıları algılayıp yanıtlayabilir. Ayrıca, 
+Azure Güvenlik Merkezi ile, müşteriler iş yükleri genelinde güvenlik ilkelerini merkezi olarak uygulayabilir ve yönetebilir, tehditlere maruz kalma olasılığını sınırlayabilir, saldırıları algılayıp yanıtlayabilir. Ayrıca 
    - Azure Güvenlik Merkezi, güvenlik duruşunu artırmaya ve verileri korumaya yardımcı olmak üzere yapılandırma ve hizmet önerileri sağlamak için mevcut Azure hizmetleri yapılandırmalarına erişir.
    - Azure Güvenlik Merkezi, ortamlarını hedefleyen olası saldırılardan müşterileri uyarmak için çeşitli algılama özellikleri kullanır. Bu uyarılar uyarıyı neyin tetiklediği, hedeflenen kaynaklar ve saldırının kaynağı hakkındaki değerli bilgileri içerir. Azure Güvenlik Merkezi, bir tehdit ya da şüpheli etkinlik gerçekleştiğinde tetiklenen bir dizi önceden tanımlanmış güvenlik uyarısı içerir. Azure Güvenlik Merkezi 'ndeki özel uyarı kuralları, müşterilerin ortamlarından zaten toplanmış olan verileri temel alarak yeni güvenlik uyarıları tanımlamasına olanak tanır.
    - Azure Güvenlik Merkezi, öncelik veren güvenlik uyarıları ve olayları sunarak müşterilerin olası güvenlik sorunlarını bulmasını ve adreslerini daha kolay hale getirmesini sağlar. Algılanan her tehdit için tehdit zekası raporu, tehditleri İnceleme ve düzeltme konusunda olay yanıtı ekiplerine yardımcı olacak şekilde oluşturulmuştur.
@@ -412,7 +413,7 @@ Azure Hizmetleri, sistem durumunun yanı sıra sistem durumu ve Kullanıcı etki
    - Veri depolama erişim anahtarı
    - Bağlantı dizesi
    - Veri tablosu adı
-   - Kullanıcı Kimlik Bilgileri
+   - Kullanıcı kimlik bilgileri
    - Gelişmiş erişim ilkeleri bir gereksinim temelinde yapılandırılır
    - Key Vault erişim ilkeleri anahtarlar ve gizlilikler için gereken en düşük izinlerle tanımlanır
    - Key Vault tüm anahtarlar ve gizli dizileri sona erme tarihlerine sahiptir
@@ -465,7 +466,7 @@ Yönetici oturum açma işlemleri için MFA 'yı etkinleştirmek için
    1. Azure portal **Azure Active Directory** sekmesine gidin
    2. Güvenlik kategorisi altında koşullu erişim ' i seçin. Bu ekranı görürsünüz
 
-       ![Koşullu Erişim - İlkeler](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Koşullu erişim-Ilkeler](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Yeni bir ilke oluşturamıyoruz
 
@@ -518,7 +519,7 @@ Bu çalışma alanını oluşturmak için
 
    3. **Azure Sentinel**aramak için arama kutusunu kullanın.
 
-   ![Azure Sentinel'i arama](./media/secure-aad-app/sentinel-add.png)
+   ![Azure Sentinel 'i arayın](./media/secure-aad-app/sentinel-add.png)
 
    *Azure Sentinel 'i arayın*
 
@@ -558,6 +559,6 @@ Bu çalışma alanını oluşturmak için
 ## <a name="next-steps"></a>Sonraki adımlar
    Aşağıdaki makaleler güvenli uygulamalar tasarlamanıza, geliştirmenize ve dağıtmanıza yardımcı olabilir.
 
-- [Tasarım](secure-design.md)
+- [Tasarıma](secure-design.md)
 - [Geliştirme](secure-develop.md)
 - [Dağıtma](secure-deploy.md)

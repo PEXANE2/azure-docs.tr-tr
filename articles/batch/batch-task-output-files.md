@@ -1,6 +1,6 @@
 ---
-title: Batch hizmeti API 'SI ile Azure depolama 'ya iş ve görev çıkışını kalıcı hale getirme-Azure Batch | Microsoft Docs
-description: Batch görevi ve iş çıktısını Azure depolama 'ya kalıcı hale getirmek için Batch hizmeti API 'sini nasıl kullanacağınızı öğrenin.
+title: Batch hizmeti API 'SI ile Azure depolama 'ya çıkış verilerini kalıcı hale getirme Azure Batch
+description: Batch görevi ve iş çıktısı verilerini Azure depolama 'ya kalıcı hale getirmek için Batch hizmeti API 'sini nasıl kullanacağınızı öğrenin.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -12,12 +12,12 @@ ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a7ac927ccc27af10999310fde9a5dede7b4539e0
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029641"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939091"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
 

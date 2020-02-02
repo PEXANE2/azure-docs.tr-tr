@@ -1,6 +1,6 @@
 ---
-title: .NET için dosya kuralları kitaplığı ile Azure depolama 'da iş ve görev çıkışını kalıcı hale getirme-Azure Batch | Microsoft Docs
-description: Batch görevi ve iş çıktısını Azure depolama 'ya kalıcı hale getirmek için Azure Batch dosya kuralları kitaplığı 'nı kullanmayı ve Azure portal kalıcı çıktıyı görüntülemeyi öğrenin.
+title: .NET dosya kuralları kitaplığıyla çıkış verilerini Azure depolama 'da kalıcı hale getirme-Azure Batch
+description: Batch görevinin & iş çıktısını Azure depolama 'ya kalıcı hale getirmek ve bu çıktıyı Azure portal görüntülemek için .NET için Azure Batch dosya kuralları kitaplığı 'nı nasıl kullanacağınızı öğrenin.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8b57ab7168b331734d7811e04284db56bc782f3f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842742"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935277"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET için batch dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'ya kalıcı hale getirme
 

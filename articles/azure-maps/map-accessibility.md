@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 739322feb8e844a197f2943f4ff050cacc0f2274
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911307"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933312"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 
@@ -80,11 +80,11 @@ Haritada, eşlemenin kullanımını kolaylaştıran yerleşik bir dizi klavye k�
 | `Shift` + aşağı ok | Eşleme aralığını 10 derece azalt |
 | `Shift` + sağ ok | Haritayı saat yönünde 15 derece döndürün |
 | `Shift` + sol ok | Haritayı saatin tersi yönde 15 derece döndürün |
-| Artı işareti (`+`) veya <sup>*</sup>eşittir işareti (`=`) | Büyütme |
-| Eksi işareti, kısa çizgi (`-`) veya <sup>*</sup>alt çizgi (`_`) | Uzaklaştırma | 
+| Artı işareti (`+`) veya <sup>*</sup>eşittir işareti (`=`) | Yakınlaştır |
+| Eksi işareti, kısa çizgi (`-`) veya <sup>*</sup>alt çizgi (`_`) | Uzaklaştır | 
 | çizim alanına haritada `Shift` + fare sürükle | Alana Yakınlaştır |
 
-<sup>*</sup> Bu anahtar kısayollar genellikle klavyede aynı anahtarı paylaşır. Bunlar, kullanıcının bu kısayollar için değil, Shift tuşunu kullanıp kullanmadığını önemli değildir gibi kullanıcı deneyimini geliştirmek için eklenmiştir.
+<sup>*</sup> Bu anahtar kısayollar genellikle klavyede aynı anahtarı paylaşır. Bu kısayollar, Kullanıcı deneyimini geliştirmek için eklenmiştir. Ayrıca, kullanıcının bu kısayollar için değil, Shift tuşunu kullanıp kullanmadığını önemli değildir.
 
 ## <a name="screen-reader-support"></a>Ekran okuyucu desteği
 
@@ -94,9 +94,9 @@ Temel haritaya yerleştirilmiş ek bilgiler, ekran okuyucu kullanıcıları içi
 
 ## <a name="make-popups-keyboard-accessible"></a>Açılır klavyeden erişilebilir yap
 
-Bir işaretleyici veya sembol genellikle haritadaki bir konumu temsil etmek için kullanılır. Bu konum hakkında ek bilgiler genellikle Kullanıcı işaretleyiciyle etkileşime geçtiğinde bir açılan pencerede görüntülenir. Çoğu uygulamada açılan pencere, bir Kullanıcı bir işaretçiye tıkladığında veya dokunduğunda görüntülenir, ancak bu, kullanıcının fare veya dokunmatik ekran kullanmasını gerektirir. Klavye kullanırken açılır pencerelere erişilebilir hale getirmek iyi bir uygulamadır. Bu, her bir veri noktası için bir açılan pencere oluşturup haritaya ekleyerek elde edilebilir. 
+Bir işaretleyici veya sembol genellikle haritadaki bir konumu temsil etmek için kullanılır. Bu konum hakkında ek bilgiler genellikle Kullanıcı işaretleyiciyle etkileşime geçtiğinde bir açılan pencerede görüntülenir. Çoğu uygulamada açılan pencere, bir Kullanıcı bir işaretçiye tıkladığında veya dokunduğunda görünür, ancak bu olay kullanıcının fare veya dokunmatik ekran kullanmasını gerektirir. Klavye kullanırken açılır pencerelere erişilebilir hale getirmek iyi bir uygulamadır. Bu işlevsellik, her bir veri noktası için bir açılan pencere oluşturup haritaya eklenerek elde edilebilir. 
 
-Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici noktaları yükler ve her bir ilgi noktası için haritaya bir açılan pencere ekler. Her bir açılan pencerede bir başvuru, her bir veri noktasının özelliklerinde depolanır, böylece bir işaretleyici için de bir işaretleyici için de alınabilir. Haritada odaklandığında Tab tuşuna basmak, kullanıcının haritadaki her açılan pencerede ilerlemenize izin verir.
+Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici noktaları yükler ve her bir ilgi noktası için haritaya bir açılan pencere ekler. Her bir açılan pencerede bir başvuru, her bir veri noktasının özelliklerinde saklanır. Ayrıca, bir işaretleyicinin ne zaman tıklandığı gibi bir işaretleyici için de alınabilir. Haritada odaklandığında Tab tuşuna basmak, kullanıcının haritadaki her açılan pencerede ilerlemenize izin verir.
 
 <br/>
 
@@ -108,21 +108,21 @@ Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici nok
 
 Web eşleme uygulamanızı daha erişilebilir hale getirmek için bazı ek ipuçları aşağıda verilmiştir.
 
-- Haritada çok sayıda etkileşimli nokta verisi görüntülüyorsanız, dağınıklığı azaltmayı ve kümeleme kullanmayı göz önünde bulundurun. 
+- Haritada birçok etkileşimli nokta verisi görüntülüyorsanız, dağınıklığı azaltmayı ve kümeleme kullanmayı göz önünde bulundurun. 
 - Metin/semboller ve arka plan renkleri arasındaki renk karşıtlığı oranının 4.5:1 veya daha fazla olduğundan emin olun.
 - Ekran okuyucunuzu (ARıA, alt ve başlık öznitelikleri), kısa, açıklayıcı ve anlamlı bir şekilde saklayın. Gereksiz öğretmek ve kısaltmalardan kaçının.
-- Kullanıcının özetlemenin kolay olduğu kısa anlamlı bilgiler sağlamak için ekran okuyucusuna gönderilen iletileri iyileştirmeye çalışın. Örneğin, harita hareket ettirilmesi gibi yüksek bir sıklıkta ekran okuyucuyu güncelleştirmek istiyorsanız, aşağıdakileri yapmayı göz önünde bulundurun:
+- Kullanıcının özetlemenin kolay olduğu kısa anlamlı bilgiler sağlamak için ekran okuyucusuna gönderilen iletileri iyileştirmeye çalışın. Örneğin, harita hareketli olduğu gibi yüksek bir sıklıkta ekran okuyucuyu güncelleştirmek istiyorsanız aşağıdaki noktaları yapmayı göz önünde bulundurun:
     - Ekran okuyucuyu güncelleştirmek için haritanın taşınmasını bitirene kadar bekleyin.
     - Güncelleştirmeleri birkaç saniyede bir kez daha kısıtlama. 
     - İletileri bir mantıksal şekilde birleştirin. 
-- Bilgi iletmenin tek yolu olarak renk kullanmaktan kaçının. Rengi tamamlamak veya değiştirmek için metin, simgeler veya desenler kullanın. Bazı hususlar:
+- Yalnızca, bilgi ilettiği şekilde renk kullanmaktan kaçının. Rengi tamamlamak veya değiştirmek için metin, simgeler veya desenler kullanın. Bazı hususlar:
     - Veri noktaları arasındaki göreli değeri göstermek için bir kabarcık katmanı kullanıyorsanız, bunlara ek olarak veya renklendirme için alternatif olarak her kabarcığun yarıçapını ölçeklendirin. 
     - Üçgenler, yıldızlar ve kareler gibi farklı ölçüm kategorileri için farklı simgelere sahip bir sembol katmanı kullanmayı düşünün. Sembol katmanı Ayrıca simgenin boyutunu ölçeklendirmeyi destekler. Metin etiketi de görüntülenebilir.
     - Çizgi verileri görüntülenmiyorsa, genişlik veya boyutu temsil etmek için Genişlik kullanılabilir. Çizgi dizisi düzeni, farklı satır kategorilerini temsil etmek için kullanılabilir. Bir sembol katmanı, çizgi üzerinde simgelerin yer aldığı bir satırla birlikte kullanılabilir. Bir ok simgesi kullanmak çizginin akışını veya yönünü göstermek için yararlıdır.
     - Çokgen verileri görüntülenmiyorsa, renk için bir alternatif olarak şerit gibi bir kalıp kullanılabilir. 
 - Heatmaps, döşeme katmanları ve görüntü katmanları gibi bazı görselleştirmeler, görme engelli kullanıcılar için erişilebilir değildir. Bazı hususlar:
     - Ekran okuyucunun, haritaya eklendiğinde katmanın ne şekilde görüntülediğine ilişkin açıklamayı görüntülemesini sağlayabilirsiniz. Örneğin, bir hava durumu radar kutucuk katmanı görüntüleniyorsa ekran okuyucuyu "haritadaki Hava durumu radar verileri" gibi bir şekilde söyleyin.
-- Fare üzerine gelme gerektiren işlev miktarını sınırlayın. Bunlar, uygulamanızla etkileşimde bulunmak için klavye veya dokunmatik cihaz kullanan kullanıcılar tarafından erişilemez. Bu durumda, tıklatılabilir simgeler, bağlantılar ve düğmeler gibi etkileşimli içerik için bir vurgulama stili olması hala iyi bir uygulamadır.
+- Fare üzerine gelme gerektiren işlev miktarını sınırlayın. Bu işlevlere, uygulamanızla etkileşimde bulunmak için klavye veya dokunmatik cihaz kullanan kullanıcılar erişemez. Bu durumda, tıklatılabilir simgeler, bağlantılar ve düğmeler gibi etkileşimli içerik için bir vurgulama stili olması iyi bir uygulamadır.
 - Klavyeyi kullanarak uygulamanıza gezinmenize çalışın. Sekme sıralamanın mantıklı olduğundan emin olun.
 - Klavye kısayolları oluşturuyorsanız, iki anahtar veya daha kısa bir süre sonra sınırlamayı deneyin. 
 

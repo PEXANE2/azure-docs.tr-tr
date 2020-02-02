@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36586f93425c6583dd3be497da9f7a018ebd4c9d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 73624df3cb7b04c3c442a6654f1388017482b2ba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526745"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935450"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -51,9 +51,12 @@ Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler i
 
 Ayrıca, bu sürüm diğer yeni özellikler, hata düzeltmeleri ve desteklenebilirlik, güvenilirlik ve performans iyileştirmeleri içerir. Değişikliklerin tam listesi için lütfen [sürüm notlarına](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)bakın.
 
+### <a name="service-fabric-70-releases"></a>Service Fabric 7,0 yayınları
+
 | Sürüm tarihi | Yayınlayın | Daha fazla bilgi |
 |---|---|---|
 | 18 Kasım 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+| 30 Ocak 2020 | [Azure Service Fabric 7,0 yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
 
 
 ### <a name="service-fabric-65"></a>Service Fabric 6,5

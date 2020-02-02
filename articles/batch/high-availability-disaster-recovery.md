@@ -1,6 +1,6 @@
 ---
-title: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma-Azure Batch | Microsoft Docs
-description: Toplu uygulamanızı bölgesel bir kesinti için nasıl tasarlayacağınızı öğrenin
+title: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma-Azure Batch
+description: Toplu uygulamanızı bölgesel bir kesinti için nasıl tasarlayacağınızı öğrenin. İş yükleri başka bir bölgeye yük devretmeli veya iki veya daha fazla bölge arasında bölünmelidir.
 services: batch
 documentationcenter: ''
 author: ju-shim
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: jushiman
-ms.openlocfilehash: f30d2d8e7d08277a5782c3fc39c10fcdff9463f2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 11546a6a664e6fb185a32d8e6cd593a850803fe8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029545"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930114"
 ---
 # <a name="design-your-application-for-high-availability"></a>Uygulamanızı yüksek kullanılabilirlik için tasarlama
 

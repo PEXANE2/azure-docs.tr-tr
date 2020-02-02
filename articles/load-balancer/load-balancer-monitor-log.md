@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965931"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935326"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Genel temel Load Balancer Azure Izleyici günlükleri
 
@@ -51,16 +51,16 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
    * **Bir olay hub 'ına akış**
    * **Log Analytics gönder**
 
-    ### <a name="archive-to-a-storage-account"></a>Bir depolama hesabına arşivle
+    ### <a name="archive-to-a-storage-account"></a>Bir depolama hesabına Arşivle
     Bu işlem için zaten oluşturulmuş bir depolama hesabınız olması gerekir.  Depolama hesabı oluşturmak için bkz. [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
 
     1. **Depolama hesabında Arşivle**seçeneğinin yanındaki onay kutusunu işaretleyin.
     2. **Depolama hesabı seç** bölmesini açmak için **Yapılandır** ' ı seçin.
     3. Aşağı açılan kutuda depolama hesabınızın oluşturulduğu **aboneliği** seçin.
     4. Açılır kutuda depolama **hesabı** altında depolama hesabınızın adını seçin.
-    5. Tamam'ı seçin.
+    5. Tamam ' ı seçin.
 
-    ### <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
+    ### <a name="stream-to-an-event-hub"></a>Bir olay hub 'ına akış
     Bu işlem için önceden oluşturulmuş bir olay hub 'ı gerekir.  Bir olay hub 'ı oluşturmak için bkz [. hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturma](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
     1. **Olay Hub 'ına akış** ' nın yanındaki onay kutusunu seçin
@@ -68,7 +68,7 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
     3. Aşağı açılan kutuda Olay Hub 'ınızın oluşturulduğu **aboneliği** seçin.
     4. Açılır kutuda **Olay Hub 'ı ad alanını seçin** .
     5. Açılır kutuda **Olay Hub 'ı ilke adı** ' nı seçin.
-    6. Tamam'ı seçin.
+    6. Tamam ' ı seçin.
 
     ### <a name="send-to-log-analytics"></a>Log Analytics’e gönderme
     Bu işlem için oluşturulmuş ve yapılandırılmış bir Log Analytics çalışma alanınız olması gerekir.  Log Analytics çalışma alanı oluşturmak için, bkz [. Azure portal Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
@@ -156,11 +156,11 @@ Bu günlük yalnızca, yukarıda ayrıntılandırılan yük dengeleyici temelind
 
 JSON çıktısı, araştırma sistem durumu için temel bilgileri Özellikler alanında gösterir. *Dıaltdowncount* özelliği, başarısız araştırma yanıtları nedeniyle ağ trafiği almıyor arka uçtaki toplam örnek sayısını gösterir.
 
-### <a name="view-and-analyze-the-audit-log"></a>Denetim günlüğünü görüntüleyin ve çözümleyin
+### <a name="view-and-analyze-the-activity-log"></a>Etkinlik günlüğünü görüntüleme ve analiz etme
 
-Aşağıdaki yöntemlerden herhangi birini kullanarak denetim günlüğü verilerini görüntüleyebilir ve çözümleyebilirsiniz:
+Aşağıdaki yöntemlerden herhangi birini kullanarak, etkinlik günlüğü verilerini görüntüleyebilir ve çözümleyebilirsiniz:
 
-* **Azure Araçları:** Azure PowerShell, Azure komut satırı arabirimi (CLı), Azure REST API veya Azure portal aracılığıyla denetim günlüklerinden bilgi alın. Her yöntemin adım adım yönergeleri [Kaynak Yöneticisi makalesinde denetim işlemlerinde](../azure-resource-manager/management/view-activity-logs.md) ayrıntılı olarak açıklanmıştır.
+* **Azure Araçları:** Azure PowerShell, Azure komut satırı arabirimi (CLı), Azure REST API veya Azure portal aracılığıyla etkinlik günlüğünden bilgi alın. Her yöntemin adım adım yönergeleri [Kaynak Yöneticisi makalesinde denetim işlemlerinde](../azure-resource-manager/management/view-activity-logs.md) ayrıntılı olarak açıklanmıştır.
 * **Power BI:** Zaten bir [Power BI](https:// .microsoft.com/pricing) hesabınız yoksa ücretsiz olarak deneyebilirsiniz. [Power BI Için Azure denetim günlükleri içerik paketini](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)kullanarak verilerinizi önceden yapılandırılmış panolar ile çözümleyebilir veya görünümleri gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Sistem durumu araştırmasını ve olay günlüğünü görüntüleyin ve çözümleyin
@@ -170,7 +170,7 @@ Depolama hesabınıza bağlanın ve olay ve durum araştırma günlükleri için
 > [!TIP]
 > Visual Studio ve C# ile sabit ve değişken değerlerini değiştirme konusunda temel kavramlara hakimseniz GitHub'daki [günlük dönüştürücü araçlarını](https://github.com/Azure-Samples/networking-dotnet-log-converter) kullanabilirsiniz.
 
-## <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
+## <a name="stream-to-an-event-hub"></a>Bir olay hub 'ına akış
 Tanılama bilgileri bir olay hub 'ına akış yapıldığında, Azure Izleyici tümleştirmesiyle üçüncü taraf SıEM aracında Merkezi günlük analizi için kullanılabilir. Daha fazla bilgi için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>Log Analytics’e gönderme

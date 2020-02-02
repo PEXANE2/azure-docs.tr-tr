@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703641"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931592"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -40,9 +40,9 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, ilk öğretici [bir Azure Active Directory Domain Services örneği oluşturur ve yapılandırır][create-azure-ad-ds-instance].
+    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için ilk öğreticiye bakın.
 * Azure AD DS yönetilen etki alanına katılmış bir Windows Server VM 'si.
-    * Gerekirse, önceki öğretici [bir Windows Server VM 'si oluşturur ve bunu yönetilen bir etki alanına birleştirir][create-join-windows-vm].
+    * Gerekirse, [bir Windows Server VM 'si oluşturmak ve bunu yönetilen bir etki alanına katmak][create-join-windows-vm]için önceki öğreticiye bakın.
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın

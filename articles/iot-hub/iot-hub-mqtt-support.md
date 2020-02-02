@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890454"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937756"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -44,11 +44,29 @@ Aşağıdaki tablo desteklenen her dil için kod örneklerine bağlantılar içe
 
 | Dil | Protokol parametresi |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |Azure-IoT-cihaz-MQTT |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType. MQTT |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Her zaman varsayılan olarak MQTT 'yi destekler |
+
+### <a name="default-keep-alive-timeout"></a>Varsayılan etkin tutma zaman aşımı 
+
+İstemci/IoT Hub bağlantısının etkin kalmasını sağlamak için, hem hizmet hem de istemci birbirlerine *sürekli olarak canlı* bir ping gönderin. IoT SDK kullanan istemci, aşağıdaki tabloda tanımlanan aralıkta etkin tutma gönderir:
+
+|Dil  |Varsayılan etkin tut aralığı  |Yapılandırılabilir  |
+|---------|---------|---------|
+|Node.js     |   180 saniye      |     Hayır    |
+|Java     |    230 saniye     |     Hayır    |
+|C     | 240 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 300 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|Python (v2)   | 60 saniye |  Hayır   |
+
+Aşağıdaki [MQTT belirtiminin](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)IoT Hub, etkin tutma zaman aşımı süresi, istemci canlı tutma değerinin 1,5 katından fazla. Ancak, tüm Azure hizmetleri Azure yük dengeleyici TCP boşta kalma zaman aşımı süresi olan 29,45 (1767 saniye) ile birlikte IoT Hub en fazla sunucu tarafı zaman aşımını 29,45 dakikaya (saniye) sınırlar. 
+
+Örneğin, Java SDK 'sını kullanan bir cihaz, etkin tut ping komutunu gönderir ve ardından ağ bağlantısını kaybeder. 230 saniye sonra, cihaz çevrimdışı olduğu için etkin tut ping komutunu yok. Ancak IoT Hub bağlantıyı hemen kapatmaz; cihazın bağlantısını kesmeden önce bir `(230 * 1.5) - 230 = 115` saniye bekler ve [404104 Deviceconnectioncloseduzaktan](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)hatası. 
+
+Ayarlayabileceğiniz maksimum istemci etkin tutma değeri `1767 / 1.5 = 1177` saniyedir. Tüm trafik etkin tut ' a sıfırlanır. Örneğin, başarılı bir SAS belirteci yenilemesi canlı tutmayı sıfırlar.
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Bir cihaz uygulamasını AMQP 'den MQTT 'ye geçirme
 
@@ -153,7 +171,7 @@ Mosquitto_subscribe: bir Azure IoT Hub 'ında gerçekleşen olayları görmek i�
 
 Modül kimliğini kullanarak MQTT üzerinden IoT Hub bağlantı, cihaza benzerdir ( [yukarıda](#using-the-mqtt-protocol-directly-as-a-device)açıklanmıştır) ancak aşağıdakileri kullanmanız gerekir:
 
-* İstemci kimliğini `{device_id}/{module_id}`olarak ayarlayın.
+* İstemci KIMLIĞINI `{device_id}/{module_id}`olarak ayarlayın.
 
 * Kullanıcı adı ve parolayla kimlik doğrulaması yapıyorsa, Kullanıcı adını `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` olarak ayarlayın ve parola olarak modül kimliğiyle ilişkili SAS belirtecini kullanın.
 
@@ -229,10 +247,6 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
-
-Önkoşullar için yükleme yönergeleri aşağıda verilmiştir.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 Bir cihaz sertifikası kullanarak kimlik doğrulaması yapmak için yukarıdaki kod parçacığını aşağıdaki değişikliklerle güncelleştirin (bkz. sertifika tabanlı kimlik doğrulamasına hazırlanma hakkında [bir X. 509.952 CA sertifikası alma](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) ):
 
@@ -313,13 +327,13 @@ Olası durum kodları şunlardır:
 | ----- | ----------- |
 | 204 | Başarılı (hiçbir içerik döndürülmez) |
 | 429 | [IoT Hub azaltma](iot-hub-devguide-quotas-throttling.md) başına çok fazla istek (daraltılmış) |
-| 5 * * | Sunucu hataları |
+| 5** | Sunucu hataları |
 
 Daha fazla bilgi için bkz. [cihaz TWINS Geliştirici Kılavuzu](iot-hub-devguide-device-twins.md).
 
 ## <a name="update-device-twins-reported-properties"></a>Cihaz ikizi bildirilen özelliklerini güncelleştir
 
-Bildirilen özellikleri güncelleştirmek için cihaz, belirlenen bir MQTT konusunun yayını üzerinden IoT Hub bir istek yayınlar. İstek işlendikten sonra, IoT Hub güncelleştirme işleminin başarı veya başarısızlık durumunu başka bir konuya yayınlar. Bu konu, ikizi Güncelleştirme isteğinin sonucu hakkında bilgilendirmek üzere cihaza abone olabilir. MQTT 'de bu tür bir istek/yanıt etkileşimini uygulamak için, güncelleştirme isteğinde başlangıçta cihaz tarafından belirtilen istek kimliği (`$rid`) kavramından faydalanır. Bu istek kimliği, cihazın yanıtı belirli bir önceki isteğiyle ilişkilendirme izni vermek için IoT Hub yanıtı da dahil edilir.
+Bildirilen özellikleri güncelleştirmek için cihaz, belirlenen bir MQTT konusunun yayını üzerinden IoT Hub bir istek yayınlar. İstek işlendikten sonra, IoT Hub güncelleştirme işleminin başarı veya başarısızlık durumunu başka bir konuya yayınlar. Bu konu, ikizi Güncelleştirme isteğinin sonucu hakkında bilgilendirmek üzere cihaza abone olabilir. MQTT 'de bu tür bir istek/yanıt etkileşimini uygulamak için, güncelleştirme isteğinde başlangıçta cihaz tarafından belirtilen istek KIMLIĞI (`$rid`) kavramından faydalanır. Bu istek KIMLIĞI, cihazın yanıtı belirli bir önceki isteğiyle ilişkilendirme izni vermek için IoT Hub yanıtı da dahil edilir.
 
 Aşağıdaki sıra, bir cihazın IoT Hub cihaz ikizi bildirilen özelliklerini nasıl güncelleştirçalıştığını açıklar:
 
@@ -345,7 +359,7 @@ Olası durum kodları şunlardır:
 | 200 | Başarılı |
 | 400 | Hatalı Istek. Hatalı biçimlendirilmiş JSON |
 | 429 | [IoT Hub azaltma](iot-hub-devguide-quotas-throttling.md) başına çok fazla istek (daraltılmış) |
-| 5 * * | Sunucu hataları |
+| 5** | Sunucu hataları |
 
 Aşağıdaki Python kod parçacığı, MQTT üzerinden ikizi raporlanan Özellikler güncelleştirme işlemini gösterir (PAHO MQTT Client kullanılarak):
 

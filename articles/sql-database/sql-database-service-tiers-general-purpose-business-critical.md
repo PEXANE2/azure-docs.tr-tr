@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715094"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937850"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL veritabanı hizmet katmanları
 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda, en son nesil (5. nesil) için hizmet katmanları arasında
 |**Bellek içi OLTP** | | Yok | Yok | Kullanılabilir |
 |**Salt okuma çoğaltmaları**| | 0 yerleşik <br> [Coğrafi çoğaltmayı](sql-database-active-geo-replication.md) kullanarak 0-4 | 0-4 yerleşik | 1 yerleşik, fiyata dahildir <br> [Coğrafi çoğaltmayı](sql-database-active-geo-replication.md) kullanarak 0-4 |
 |**Fiyatlandırma/faturalandırma** | Tek veritabanı | [sanal çekirdek, ayrılmış depolama ve yedekleme depolaması](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS ücretlendirilmez. | [her çoğaltma Için sanal çekirdek ve kullanılan depolama alanı](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS henüz ücretlendirilmedi. | [sanal çekirdek, ayrılmış depolama ve yedekleme depolaması](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS ücretlendirilmez. |
-|| Yönetilen Örnek | [sanal çekirdek ve ayrılmış depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) ücretlendirilir. <br/>IOPS ücretlendirilmez.<br/>Yedekleme depolaması henüz ücretlendirilmez. | Yok | [sanal çekirdek ve ayrılmış depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) ücretlendirilir. <br/>IOPS ücretlendirilmez.<br/>Yedekleme depolaması henüz ücretlendirilmez. | 
+|| Yönetilen Örnek | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirimedi| Yok | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirilmez.| 
 |**İndirim modelleri**| | [Ayrılmış örnekler](sql-database-reserved-capacity.md)<br/>[Azure hibrit avantajı](sql-database-azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Azure hibrit avantajı](sql-database-azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Ayrılmış örnekler](sql-database-reserved-capacity.md)<br/>[Azure hibrit avantajı](sql-database-azure-hybrid-benefit.md) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri|
 
 Daha fazla bilgi için [tek veritabanındaki hizmet katmanları (sanal çekirdek)](sql-database-vcore-resource-limits-single-databases.md), [tek veritabanı havuzları (sanal çekirdek)](sql-database-dtu-resource-limits-single-databases.md), [tek veritabanı (DTU)](sql-database-dtu-resource-limits-single-databases.md), [tek veritabanı havuzları (DTU)](sql-database-dtu-resource-limits-single-databases.md)ve [yönetilen örnek](sql-database-managed-instance-resource-limits.md) sayfaları arasındaki ayrıntılı farklılıklar bölümüne bakın.

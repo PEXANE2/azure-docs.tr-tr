@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435478"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929876"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
 > [!Important]
-> Ağ güvenlik grupları için [hizmet etiketi](hdinsight-service-tags.md) özelliğini kullanın. Yeni bölgeler yalnızca hizmet etiketleri için eklenecektir ve statik IP adresleri sonunda kullanım dışı bırakılır.
+> Çoğu durumda, artık IP adreslerini el ile eklemek yerine ağ güvenlik grupları için [hizmet etiketi](hdinsight-service-tags.md) özelliğini kullanabilirsiniz. Yeni bölgeler yalnızca hizmet etiketleri için eklenecektir ve statik IP adresleri sonunda kullanım dışı bırakılır.
 
 HDInsight kümenize gelen trafiği denetlemek için ağ güvenlik grupları (NSG 'ler) veya Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, kümenizin kritik Azure sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olmanız gerekir.  Bu hizmetlere ait IP adreslerinden bazıları bölgeye özeldir ve bazıları tüm Azure bölgeleri için geçerlidir. Özel DNS kullanmıyorsanız Azure DNS hizmetinden gelen trafiğe de izin vermeniz gerekebilir.
 

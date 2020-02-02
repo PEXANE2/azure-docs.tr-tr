@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 03f01e4c69e92f62774c9b128c960ec2190c9937
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722161"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937886"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,7 +172,7 @@ Bazı örnekler:
         n_cross_validations=5)
     ```
 
-Üç farklı `task` parametre değeri (üçüncü görev türü `forecasting`ve benzer bir algoritma havuzunu `regression` görevler), uygulanacak modellerin listesini belirleme. Dahil edilecek veya hariç tutulacak mevcut modellerle yinelemeleri daha fazla değiştirmek için `whitelist` veya `blacklist` parametrelerini kullanın. Desteklenen modellerin listesi [Supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)bulunabilir.
+Üç farklı `task` parametre değeri (üçüncü görev türü `forecasting`ve benzer bir algoritma havuzunu `regression` görevler), uygulanacak modellerin listesini belirleme. Dahil edilecek veya hariç tutulacak mevcut modellerle yinelemeleri daha fazla değiştirmek için `whitelist` veya `blacklist` parametrelerini kullanın. Desteklenen modellerin listesi [Classification] (https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification) , [tahmin] (https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting) ve [regresyon] (https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression) için [Supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) bulunabilir.
 
 ### <a name="primary-metric"></a>Birincil Metrik
 Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.

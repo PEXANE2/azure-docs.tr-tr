@@ -1,6 +1,6 @@
 ---
-title: Batch yönetimi çözümlerini doğrulamak için Azure Active Directory kullanma | Microsoft Docs
-description: Azure Resource Manager ile oluşturulan uygulamalar ve Batch kaynak sağlayıcısı, Azure AD ile kimlik doğrular.
+title: Batch yönetimi çözümlerini doğrulamak için Azure Active Directory kullanma
+description: Batch yönetimi .NET kitaplığını kullanan uygulamalardan kimlik doğrulaması yapmak için Azure Active Directory kullanarak araştırma yapın.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: jushiman
-ms.openlocfilehash: 19aac0e25f9a036ce52d72a51e1ab7270eaaf3e5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1dce5118040e6164a468b0d5470d28e5cd06d8c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029839"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938271"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Active Directory ile Batch yönetimi çözümlerini kimlik doğrulama
 
@@ -47,7 +47,7 @@ Kayıt işlemini tamamladıktan sonra uygulamanız için listelenen uygulama KIM
 
 Daha sonra, Azure Resource Manager API 'sine uygulamanıza erişim yetkisi almanız gerekir. Kaynak Yöneticisi API 'SI için Azure AD tanımlayıcısı, **Microsoft azure hizmet yönetim API'si**.
 
-Azure portalında şu adımları izleyin:
+Azure portal şu adımları uygulayın:
 
 1. Azure portal sol taraftaki Gezinti bölmesinde **tüm hizmetler**' i seçin, **uygulama kayıtları**' nı ve **Ekle**' yi tıklatın.
 2. Uygulama kayıtları listesinde uygulamanızın adını arayın:

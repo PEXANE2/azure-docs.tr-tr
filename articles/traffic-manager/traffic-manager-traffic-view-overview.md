@@ -3,21 +3,21 @@ title: Azure Traffic Manager Trafik Görünümü
 description: Bu giriş bölümünde Traffic Manager trafik görünümünün nasıl çalıştığı hakkında bilgi edinin.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: allensu
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023256"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938350"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Trafik Görünümü
 
@@ -66,7 +66,7 @@ Uç noktaların bulunduğu Azure bölgeleri, haritada mavi noktalar olarak göst
 
 Trafik Görünümü verilerini Azure portal tablo biçiminde görüntüleyebilirsiniz. DNS Çözümleyicisinin IP adresini, uç noktanın bulunduğu Azure bölgesinin adı ve coğrafi konumunu (varsa), bu DNS çözümleyici ile ilişkili isteklerin hacmini ve ilgili DNS ile ilgili temsilci gecikmesini (varsa) kullanan her DNS çözümleyici IP/uç noktası çifti için bir giriş vardır. Trafik Görünümü verilerini, tercih ettiğiniz analiz iş akışının bir parçası olarak kullanılabilecek bir CSV dosyası olarak da indirebilirsiniz.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Trafik Görünümü kullandığınızda, sunulan öngörüleri oluşturmak için kullanılan veri noktası sayısına göre faturalandırılırsınız. Şu anda kullanılan tek veri noktası türü Traffic Manager profilinize göre alınan sorgulardır. Fiyatlandırma hakkında daha fazla bilgi için [Traffic Manager fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/traffic-manager/)ziyaret edin.
 

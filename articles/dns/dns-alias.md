@@ -2,17 +2,17 @@
 title: Diğer ad kayıtlarına genel bakış-Azure DNS
 description: Bu makalede, Microsoft Azure DNS 'de diğer ad kayıtları için destek hakkında bilgi edinin.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: allensu
-ms.openlocfilehash: da396d3e3db4acd1a9843977b8b3e3d51c33f021
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 085e5fc20a6b5356e012eb2f674fafc00cef828f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212334"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937334"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS diğer ad kayıtlarına genel bakış
 
@@ -27,7 +27,7 @@ Bir Azure DNS bölgesindeki aşağıdaki kayıt türleri için bir diğer ad kay
 > [!NOTE]
 > Bir [Azure Traffic Manager profilini](../traffic-manager/quickstart-create-traffic-manager-profile.md) işaret etmek için A veya aaaa kayıt türleri için bir diğer ad kaydı kullanmayı düşünüyorsanız, Traffic Manager profilinin yalnızca [dış uç noktalara](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)sahip olduğundan emin olmanız gerekir. Traffic Manager dış uç noktalar için IPv4 veya IPv6 adresi sağlamanız gerekir. Uç noktalarda tam etki alanı adlarını (FQDN) kullanamazsınız. İdeal olarak, statik IP adresleri kullanın.
 
-## <a name="capabilities"></a>Özellikler
+## <a name="capabilities"></a>Yetenekler
 
 - **DNS A/AAAA kayıt kümesinden ortak bir IP kaynağını işaret edin.** A/AAAA kayıt kümesi oluşturabilir ve bunu bir genel IP kaynağını işaret etmek üzere bir diğer ad kaydı kümesi (Standart veya temel) yapabilirsiniz. Genel IP adresi değişirse veya silinirse DNS kayıt kümesi otomatik olarak değişir. Hatalı IP adreslerine işaret eden, salyaze DNS kayıtları kaçınılmaz.
 

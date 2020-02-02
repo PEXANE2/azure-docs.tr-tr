@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 831a867d1084f7396db0f8aa4c2e2e665eb98732
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1852ba059d13a8886b739cac439798b4d031a531
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898827"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932631"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
-Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri disklerinin şifrelenmesi için kullanılan [müşteri tarafından yönetilen anahtarlar][customer-managed-keys] sağlayabilirsiniz.
+Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri diskleri için bekleyen şifreleme için kullanılmak üzere [müşteri tarafından yönetilen anahtarlar][customer-managed-keys] sağlayabilirsiniz.
 
 > [!NOTE]
 > BYOK Linux ve Windows tabanlı AKS kümeleri, Azure yönetilen disklerin sunucu tarafı şifrelemesini destekleyen [Azure bölgelerinde][supported-regions] kullanılabilir.

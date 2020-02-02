@@ -3,17 +3,17 @@ title: Eski Azure DNS Özel Bölgeleri yeni kaynak modeline geçiriliyor
 titleSuffix: Azure DNS
 description: Bu kılavuz, eski özel DNS bölgelerini en son kaynak modeline geçirme hakkında adım adım yönergeler sağlar
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: allensu
-ms.openlocfilehash: 3beac014ee69120df518e0358a5fdbef5818f7cf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076724"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939360"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Eski Azure DNS özel bölgelerini yeni kaynak modeline geçirme
 
@@ -25,7 +25,7 @@ az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
 ```
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure PowerShell 'ın en son sürümünü yüklediğinizden emin olun. Azure PowerShell (az) ve nasıl yükleneceğine ilişkin daha fazla bilgi için, bkz. https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 

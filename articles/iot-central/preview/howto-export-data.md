@@ -4,16 +4,16 @@ description: Azure IoT Central uygulamanızdan Azure Event Hubs, Azure Service B
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/06/2019
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 612db9963b02e905c3a48d61a4f7a7ed6f832fba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974470"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939009"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Azure IoT Central verilerinizi dışarı aktarma (Önizleme özellikleri)
 
@@ -29,15 +29,15 @@ Bu makalede verilerinizi **azure Event Hubs**, **Azure Service Bus**veya **Azure
 > [!Note]
 > Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-IoT Central uygulamanızda yönetici olmanız gerekir
+IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
 
 ## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
 Sürekli veri dışa aktarmayı yapılandırmadan önce dışa aktarma hedefinin mevcut olması gerekir.
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
+### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluştur
 
 Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa, aşağıdaki adımları izleyin:
 
@@ -47,7 +47,7 @@ Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa
 
 3. Event Hubs ad alanında bir olay hub 'ı oluşturun. Ad alanına gidin ve bir olay hub 'ı örneği oluşturmak için en üstteki **+ Olay Hub 'ını** seçin.
 
-### <a name="create-service-bus-namespace"></a>Hizmet Veri Yolu ad alanı oluşturma
+### <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluştur
 
 Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoksa, aşağıdaki adımları izleyin:
 
@@ -78,7 +78,7 @@ Verilerin dışarı aktarılacağı bir hedef olduğuna göre, sürekli veri dı
 2. Sol bölmede **veri dışa aktar**' ı seçin.
 
     > [!Note]
-    > Sol bölmede veri dışa aktarma görmüyorsanız, uygulamanızda yönetici değilsiniz demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
+    > Sol bölmede veri dışa aktarma 'yı görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
 3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **azure Event Hubs**, **Azure Service Bus**veya **Azure Blob depolamadan** birini seçin. Uygulama başına en fazla dışarı aktarma sayısı beştir.
 
@@ -104,7 +104,7 @@ Verilerin dışarı aktarılacağı bir hedef olduğuna göre, sürekli veri dı
 
 7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak veri türlerini seçin.
 
-8. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarma** geçişi 'nin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
+8. Sürekli veri dışa aktarmayı açmak için **etkin** geçiş özelliğinin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
 
 9. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
 
@@ -189,15 +189,16 @@ Bu, blob depolamaya aktarılmış bir örnek kaydıdır:
 
 ## <a name="devices"></a>Cihazlar
 
-Anlık görüntüdeki her ileti veya kayıt, en son dışarıya alınan iletiden bu yana bir cihazdaki bir veya daha fazla değişikliği ve özelliklerini temsil eder. Buna aşağıdakiler dahildir:
+Anlık görüntüdeki her ileti veya kayıt, bir cihazdaki bir veya daha fazla değişikliği, son dışarıya alınan iletiden bu yana cihaz ve bulut özelliklerini temsil eder. Buna aşağıdakiler dahildir:
 
-- IoT Central cihaz `@id`
-- Cihazın `name`
-- [cihaz sağlama hizmeti](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) 'nden `deviceId`
-- Cihaz şablonu bilgileri
+- IoT Central cihaz `id`
+- Cihazın `displayName`
+- `instanceOf` cihaz şablonu kimliği
+- `simulated` bayrak, cihaz sanal bir cihaz ise doğru
+- `provisioned` bayrak, cihaz sağlandıysa doğru
+- `approved` bayrak, cihaz veri göndermek üzere onaylanmışsa doğru
 - Özellik değerleri
-
-Her cihazın ait olduğu cihaz şablonu `instanceOf`temsil edilir. Cihaz şablonuyla ilgili adı ve ek bilgileri almak için, cihaz şablonu verilerini de dışarı aktardığınızdan emin olun.
+- Cihaz ve bulut özellikleri değerlerini dahil `properties`
 
 Silinen cihazlar aktarılmaz. Şu anda, silinen cihazlar için, aktarılmış iletilerde hiçbir gösterge yok.
 
@@ -210,46 +211,41 @@ Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz ve özellik v
 ```json
 {
   "body":{
-    "@id":"<id>",
-    "@type":"Device",
-    "displayName":"Airbox - 266d30aedn5",
-    "data":{
-      "$cloudProperties":{
-        "Color":"blue"
-      },
-      "EnvironmentalSensor":{
-        "thsensormodel":{
-          "reported":{
-            "value":"A1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "pm25sensormodel":{
-          "reported":{
-            "value":"P1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
+    "id": "<device Id>",
+    "etag": "<etag>",
+    "displayName": "Sensor 1",
+    "instanceOf": "<device template Id>",
+    "simulated": false,
+    "provisioned": true,
+    "approved": true,
+    "properties": {
+        "sensorComponent": {
+            "setTemp": "30",
+            "fwVersion": "2.0.1",
+            "status": { "first": "first", "second": "second" },
+            "$metadata": {
+                "setTemp": {
+                    "desiredValue": "30",
+                    "desiredVersion": 3,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 3
+                },
+                "fwVersion": { "ackVersion": 3 },
+                "status": {
+                    "desiredValue": {
+                        "first": "first",
+                        "second": "second"
+                    },
+                    "desiredVersion": 2,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 2
+                }
+            },
+            
         }
-      },
-      "urn_azureiot_DeviceManagement_DeviceInformation":{
-        "totalStorage":{
-          "reported":{
-            "value":3088.1959855710156,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "totalMemory":{
-          "reported":{
-            "value":16005.703586477555,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        }
-      }
     },
-    "instanceOf":"<templateId>",
-    "deviceId":"<deviceId>",
-    "simulated":true
-  },
+    "installDate": { "installDate": "2020-02-01" }
+},
   "annotations":{
     "iotcentral-message-source":"devices",
     "x-opt-partition-key":"<partitionKey>",
@@ -259,13 +255,324 @@ Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz ve özellik v
   },
   "partitionKey":"<partitionKey>",
   "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2019-10-02T18:14:49.3820326Z",
+  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
   "offset":"<offset>"
 }
 ```
 
 Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık görüntüdür. İçe aktarılmış dosyalar kayıt başına tek bir satır içerir.
 
+```json
+{
+  "id": "<device Id>",
+  "etag": "<etag>",
+  "displayName": "Sensor 1",
+  "instanceOf": "<device template Id>",
+  "simulated": false,
+  "provisioned": true,
+  "approved": true,
+  "properties": {
+      "sensorComponent": {
+          "setTemp": "30",
+          "fwVersion": "2.0.1",
+          "status": { "first": "first", "second": "second" },
+          "$metadata": {
+              "setTemp": {
+                  "desiredValue": "30",
+                  "desiredVersion": 3,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 3
+              },
+              "fwVersion": { "ackVersion": 3 },
+              "status": {
+                  "desiredValue": {
+                      "first": "first",
+                      "second": "second"
+                  },
+                  "desiredVersion": 2,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 2
+              }
+          },
+          
+      }
+  },
+  "installDate": { "installDate": "2020-02-01" }
+}
+```
+
+## <a name="device-templates"></a>Cihaz şablonları
+
+Her ileti veya anlık görüntü kaydı, yayımlanan bir cihaz şablonunda yapılan son dışarıya alınan iletiden itibaren bir veya daha fazla değişikliği temsil eder. Her ileti veya kayıtta gönderilen bilgiler şunları içerir:
+
+- Yukarıdaki cihazlar akışının `instanceOf` eşleşen cihaz şablonu `id`
+- cihaz şablonunun `displayName`
+- Cihaz, `interfaces`ve telemetri, Özellikler ve komut tanımlarını dahil `capabilityModel`.
+- `cloudProperties` tanımları
+- `capabilityModel` satır içi olarak geçersiz kılmalar ve başlangıç değerleri
+
+Silinen cihaz şablonları aktarılmaz. Şu anda, Silinen cihaz şablonları için, aktarılmış iletilerde hiçbir gösterge yok.
+
+Event Hubs ve Service Bus için, cihaz şablonu verilerini içeren iletiler, IoT Central ' de göründüğü gibi, neredeyse gerçek zamanlı olarak olay hub 'ınıza veya Service Bus kuyruğuna veya konusuna gönderilir. 
+
+BLOB depolama için, en son yazılan son bir dakikada bir kez aktarıldığından, tüm değişiklikleri içeren yeni bir anlık görüntü
+
+Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablonları verileri hakkında örnek bir iletidir:
+
+```json
+{
+  "body":{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "sensorComponent",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorConfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  },
+    "annotations":{
+      "iotcentral-message-source":"deviceTemplates",
+      "x-opt-partition-key":"<partitionKey>",
+      "x-opt-sequence-number":25315,
+      "x-opt-offset":"<offset>",
+      "x-opt-enqueued-time":1539274985085
+    },
+    "partitionKey":"<partitionKey>",
+    "sequenceNumber":25315,
+    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
+    "offset":"<offset>"
+  }
+}
+```
+
+Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık görüntüdür. İçe aktarılmış dosyalar kayıt başına tek bir satır içerir.
+
+```json
+{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "Sensor component",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorconfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  }
+```
+## <a name="data-format-change-notice"></a>Veri biçimi değişiklik bildirimi
+
+> [!Note]
+> Telemetri akış veri biçimi bu değişiklikten etkilenmez. Yalnızca cihazlar ve cihaz şablonu veri akışları etkilenir.
+
+Önizleme uygulamanızda *cihazlar* ve *cihaz şablonları* akışları açık olan bir veri dışa aktarma Işlemi varsa, **30 Haziran 2020 tarihine**kadar dışarı aktarmayı güncelleştirmeniz gerekir. Bu, Azure Blob depolama, Azure Event Hubs ve Azure Service Bus dışarı aktarmalar için geçerlidir.
+
+1 Şubat 2020 ' den başlayarak, cihazlar ve cihaz şablonları etkin olan uygulamalardaki tüm yeni dışarı aktarımlar yukarıda açıklanan veri biçimine sahip olacaktır. Bundan önce oluşturulan tüm dışarı aktarımlar, 30 Haziran 2020 ' e kadar eski veri biçiminde kalır, bu dışarı aktarmalar bu dışarı aktarma işleminden sonra otomatik olarak yeni veri biçimine geçirilir. Yeni veri biçimi, IoT Central ortak API 'sindeki [cihaz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [cihaz özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [cihaz bulutu özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) ve [cihaz şablonu](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) nesneleriyle eşleşir. 
+ 
+**Cihazlar**için eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
+- cihaz için `@id` kaldırılır, `deviceId` `id` olarak yeniden adlandırılır 
+- Cihazın sağlama durumunu anlatmak için `provisioned` bayrağı eklendi
+- Cihazın onay durumunu anlatmak için `approved` bayrağı eklendi
+- Cihaz ve bulut özellikleri dahil `properties`, ortak API 'deki varlıklarla eşleşir
+
+**Cihaz şablonlarında**, eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
+
+- cihaz şablonu için `@id` `id` olarak yeniden adlandırıldı
+- cihaz şablonu için `@type` `types`olarak yeniden adlandırılır ve artık bir dizidir
+
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Cihazlar (biçim 3 Şubat 2020 itibariyle kullanım dışı)
 ```json
 {
   "@id":"<id-value>",
@@ -310,172 +617,7 @@ Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık 
 }
 ```
 
-## <a name="device-templates"></a>Cihaz şablonları
-
-Her ileti veya anlık görüntü kaydı, son içe aktarma iletisinden bu yana cihaz şablonunda yapılan bir veya daha fazla değişikliği temsil eder. Her ileti veya kayıtta gönderilen bilgiler şunları içerir:
-
-- Yukarıdaki cihazlar akışının `instanceOf` eşleşen cihaz şablonu `@id`
-- cihaz şablonunun `name`
-- cihaz şablonunun `version`
-- Cihaz, `interfaces`ve telemetri, Özellikler ve komut tanımlarını dahil `capabilityModel`.
-- `cloudProperties` tanımları
-- `capabilityModel` satır içi olarak geçersiz kılmalar ve başlangıç değerleri
-
-Silinen cihaz şablonları aktarılmaz. Şu anda, Silinen cihaz şablonları için, aktarılmış iletilerde hiçbir gösterge yok.
-
-Event Hubs ve Service Bus için, cihaz şablonu verilerini içeren iletiler, IoT Central ' de göründüğü gibi, neredeyse gerçek zamanlı olarak olay hub 'ınıza veya Service Bus kuyruğuna veya konusuna gönderilir. 
-
-BLOB depolama için, en son yazılan son bir dakikada bir kez aktarıldığından, tüm değişiklikleri içeren yeni bir anlık görüntü
-
-Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablonları verileri hakkında örnek bir iletidir:
-
-```json
-{
-  "body":{
-    "@id":"<template-id>",
-    "@type":"DeviceModelDefinition",
-    "displayName":"Airbox",
-    "capabilityModel":{
-      "@id":"<id>",
-      "@type":"CapabilityModel",
-      "implements":[
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"EnvironmentalSensor",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "comment":"Requires temperature and humidity sensors.",
-            "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-            "displayName":"Environmental Sensor",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current temperature on the device",
-                "displayName":"Temperature",
-                "name":"temp",
-                "schema":"double",
-                "unit":"Units/Temperature/celsius",
-                "valueDetail":{
-                  "@id":"<id>",
-                  "@type":"ValueDetail/NumberValueDetail",
-                  "minValue":{
-                    "@value":"50"
-                  }
-                },
-                "visualizationDetail":{
-                  "@id":"<id>",
-                  "@type":"VisualizationDetail"
-                }
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current humidity on the device",
-                "displayName":"Humidity",
-                "name":"humid",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current PM2.5 on the device",
-                "displayName":"PM2.5",
-                "name":"pm25",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"T&H Sensor Model Name",
-                "displayName":"T&H Sensor Model",
-                "name":"thsensormodel",
-                "schema":"string"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"PM2.5 Sensor Model Name",
-                "displayName":"PM2.5 Sensor Model",
-                "name":"pm25sensormodel",
-                "schema":"string"
-              }
-            ]
-          }
-        },
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "displayName":"Device information",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-                "displayName":"Total storage",
-                "name":"totalStorage",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-                "displayName":"Total memory",
-                "name":"totalMemory",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              }
-            ]
-          }
-        }
-      ],
-      "displayName":"AAEONAirbox52"
-    },
-    "solutionModel":{
-      "@id":"<id>",
-      "@type":"SolutionModel",
-      "cloudProperties":[
-        {
-          "@id":"<id>",
-          "@type":"CloudProperty",
-          "displayName":"Color",
-          "name":"Color",
-          "schema":"string",
-          "valueDetail":{
-            "@id":"<id>",
-            "@type":"ValueDetail/StringValueDetail"
-          },
-          "visualizationDetail":{
-            "@id":"<id>",
-            "@type":"VisualizationDetail"
-          }
-        }
-      ]
-    },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık görüntüdür. İçe aktarılmış dosyalar kayıt başına tek bir satır içerir.
-
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Cihaz şablonları (biçim 3 Şubat 2020 itibariyle kullanım dışı)
 ```json
 {
   "@id":"<template-id>",
@@ -607,7 +749,6 @@ Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık 
   }
 }
 ```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık verilerinizi Azure Event Hubs, Azure Service Bus ve Azure Blob depolama 'ya aktarmayı öğrenmiş olduğunuza göre, sonraki adıma geçin:

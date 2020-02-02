@@ -3,20 +3,20 @@ title: Azure 'da Traffic Manager yönetmek için PowerShell kullanma
 description: Bu öğrenme yoluyla, Traffic Manager için Azure PowerShell kullanmaya başlayın.
 services: traffic-manager
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038116"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938505"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager yönetmek için PowerShell kullanma
 
@@ -115,7 +115,7 @@ Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 
 Azure 'da barındırılan Azure uç noktaları başvuru hizmetleri. İki tür Azure uç noktası desteklenir:
 
-1. Azure uygulama hizmeti
+1. Azure App Service
 2. Azure Publicıpaddress kaynakları (bir yük dengeleyiciye veya bir sanal makine NIC 'sine iliştirilebilecek). Publicıpaddress, Traffic Manager kullanılmak üzere atanmış bir DNS adına sahip olmalıdır.
 
 Her durumda:

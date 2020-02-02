@@ -3,7 +3,7 @@ title: Azure PowerShell kullanarak Azure DNS DNS kayıtlarını yönetme | Micro
 description: Etki alanınızı Azure DNS barındırırken Azure DNS DNS kayıt kümelerini ve kayıtlarını yönetme. Kayıt kümeleri ve kayıtları üzerinde işlemler için tüm PowerShell komutları.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: allensu
-ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211682"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932539"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure DNS Azure PowerShell kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme
 
 > [!div class="op_single_selector"]
-> * [Azure Portalı](dns-operations-recordsets-portal.md)
+> * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Azure klasik CLI](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
@@ -35,7 +35,7 @@ Bu makaledeki örneklerde [, zaten Azure PowerShell, oturum açmış ve BIR DNS 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Azure DNS’de DNS kayıtlarını oluşturmadan önce Azure DNS’nin DNS kayıtlarını DNS kayıt kümeleri şeklinde nasıl düzenlediğini kavramanız gerekir.
 
@@ -388,7 +388,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 `$ConfirmPreference` PowerShell tercih değişkeninin `Medium` veya daha düşük bir değere sahip olması durumunda her cmdlet onay ister. `$ConfirmPreference` için varsayılan değer `High`olduğundan, varsayılan PowerShell ayarları kullanılırken bu istemler verilmez.
 
-`$ConfirmPreference` parametresini kullanarak geçerli `-Confirm` ayarını geçersiz kılabilirsiniz. `-Confirm` veya `-Confirm:$True` belirtirseniz cmdlet, çalıştırılmadan önce size onay istemi görüntüler. `-Confirm:$False` belirtirseniz cmdlet size onay istemi görüntülemez. 
+`-Confirm` parametresini kullanarak geçerli `$ConfirmPreference` ayarını geçersiz kılabilirsiniz. `-Confirm` veya `-Confirm:$True` belirtirseniz cmdlet, çalıştırılmadan önce size onay istemi görüntüler. `-Confirm:$False` belirtirseniz cmdlet size onay istemi görüntülemez. 
 
 `-Confirm` ve `$ConfirmPreference` hakkında daha fazla bilgi için bkz. [Tercih Değişkenleri Hakkında](/powershell/module/microsoft.powershell.core/about/about_preference_variables).
 

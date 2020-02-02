@@ -1,6 +1,6 @@
 ---
-title: Şablonları kullanarak işleri uçtan uca Çalıştır-Azure Batch | Microsoft Docs
-description: Şablon dosyaları ve Azure CLı ile Batch havuzları, işler ve Görevler oluşturun.
+title: Şablonları kullanarak işleri uçtan uca Çalıştır-Azure Batch
+description: Yalnızca CLı komutlarıyla, bir havuz oluşturabilir, giriş verilerini karşıya yükleyebilir, işler ve ilişkili görevler oluşturabilir ve elde edilen çıkış verilerini indirebilirsiniz.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 89a354320ed474ce3e5f9049a75e06313c5860e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029743"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935071"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
 

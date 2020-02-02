@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844981"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934862"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -29,13 +29,15 @@ Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin geni
 
 ### <a name="february-2020"></a>Şubat 2020
 
-+ [PII algılama](cognitive-search-skill-pii-detection.md) , bir giriş metninin kişisel olarak tanımlanabilir bilgilerini çıkaran ve bu metinden çeşitli yollarla maske sağlayan bir seçenek sunan, dizin oluşturma sırasında kullanılan bilişsel bir yeteneğe sahiptir.
++ [PII algılama (Önizleme)](cognitive-search-skill-pii-detection.md) , bir giriş metninin kişisel olarak tanımlanabilir bilgilerini çıkaran ve bu metinden çeşitli yollarla maske sağlayan bir seçenek sunan, dizin oluşturma sırasında kullanılan bilişsel bir yetenördir.
+
++ [Özel varlık arama (Önizleme)](cognitive-search-skill-custom-entity-lookup.md ) , özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. 
 
 ### <a name="january-2020"></a>Ocak 2020
 
 + [Müşterinin yönettiği şifreleme anahtarları](search-security-manage-encryption-keys.md) artık genel kullanıma sunulmuştur. REST kullanıyorsanız, `api-version=2019-05-06`kullanarak özelliğe erişebilirsiniz. Yönetilen kod için, özellik Önizleme dışında olsa bile, doğru paket yine de [.NET SDK sürüm 8,0-Önizleme](search-dotnet-sdk-migration-version-9.md) ' dir. 
 
-+ Bir arama hizmetine özel erişim, iki mekanizma aracılığıyla kullanılabilir:
++ Bir arama hizmetine özel erişim, şu anda önizleme aşamasında olan iki mekanizma aracılığıyla sunulmaktadır:
 
   + Hizmeti oluşturmak için yönetim REST API `api-version=2019-10-01-Preview` kullanarak belirli IP adreslerine erişimi kısıtlayabilirsiniz. Preview API 'sinin [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)'de yeni **ıprule** ve **networkruleset** özellikleri vardır. Bu önizleme özelliği seçili bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [yönetim REST API nasıl kullanılır](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 

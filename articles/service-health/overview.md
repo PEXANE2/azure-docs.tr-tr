@@ -3,12 +3,12 @@ title: Azure hizmet durumu nedir?
 description: Azure uygulamalarınızın geçerli ve gelecekteki Azure hizmet sorunlarından ve bakımda nasıl etkilendiğine ilişkin kişiselleştirilmiş bilgiler.
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: 4d9d9dcb4db483b524cb7be8e006ba12edcc8442
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 039583d9243f8ce76b33afcee098e71a670b5285
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463962"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939209"
 ---
 # <a name="what-is-azure-service-health"></a>Azure hizmet durumu nedir?
 
@@ -27,3 +27,5 @@ Bu deneyimler bir araya gelerek Azure sistem durumunun size en uygun ayrıntı d
 **Azure durum sayfasına, Azure hizmet sistem durumuna ve Azure Kaynak Durumu genel bir bakış izleyin**
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]

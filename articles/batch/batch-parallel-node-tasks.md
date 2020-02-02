@@ -1,5 +1,5 @@
 ---
-title: İşlem kaynaklarını verimli bir şekilde kullanmak için görevleri paralel olarak çalıştırın-Azure Batch | Microsoft Docs
+title: İşlem kaynaklarını iyileştirmek için görevleri paralel olarak çalıştırın-Azure Batch
 description: Daha az işlem düğümü kullanarak ve bir Azure Batch havuzundaki her düğümde eşzamanlı görevleri çalıştırarak verimliliği ve daha düşük maliyetleri artırın
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/17/2019
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a47cbbf11117197d6d00d532fb0321d284c56b7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1ee0db85818349938fcf5248e10e5eaac546bae5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026817"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930448"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Toplu işlem düğümlerinin kullanımını en üst düzeye çıkarmak için görevleri eşzamanlı olarak çalıştırın 
 

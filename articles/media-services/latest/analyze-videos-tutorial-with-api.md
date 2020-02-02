@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/30/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f803bcafb1966e32e894b4caeaa8fafb5f73e8e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7497e226589689497ce572193017dc7fc31042b1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186276"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934518"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Öğretici: Media Services v3 ile videoları analiz etme
 
@@ -38,10 +38,14 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="compliance-privacy-and-security"></a>Uyumluluk, gizlilik ve güvenlik
+ 
+Önemli bir anımsatıcı olarak, Video Indexer ortamınızda geçerli olan tüm yasalara uymak zorundasınız ve Video Indexer ya da başka bir Azure hizmetini diğerlerinin haklarını ihlal eden veya başkalarına zararlı olabilecek bir biçimde kullanamazsınız. Biyometrik veriler de dahil olmak üzere herhangi bir videoyu, işleme ve depolama için Video Indexer hizmetine yüklemeden önce, videodaki her türden uygun tüm haklara sahip olmanız gerekir. Microsoft bilişsel [Hizmetler koşulları](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)video Indexer, uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için. Microsoft 'un gizlilik yükümlülüklerini ve verilerinizi işleme için lütfen Microsoft 'un [Gizlilik bildirimini](https://privacy.microsoft.com/PrivacyStatement), [çevrimiçi hizmetler KOŞULLARıNı ("OST")](https://www.microsoft.com/licensing/product-licensing/products) ve [veri Işleme eki](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 'ni ("DPA") gözden geçirin. Veri saklama, silme/yok etme dahil olmak üzere ek gizlilik bilgileri, OST ve [burada](../video-indexer/faq.md)bulunabilir. Video Indexer kullanarak bilişsel hizmetler koşulları, OST, DPA ve gizlilik bildirimiyle bağlanmayı kabul etmiş olursunuz.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 - Visual Studio yüklü değilse, [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)' i alın.
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
+- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
 - [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
 
 ## <a name="download-and-configure-the-sample"></a>Örneği indirin ve yapılandırın
@@ -58,7 +62,7 @@ Aşağıdaki komutu kullanarak, .NET örneğini içeren bir GitHub havuzunu maki
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Belirtilen videoyu analiz eden kodu inceleme
 
-Bu bölümde, [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) projesinin *Program.cs* dosyasında tanımlı işlevler incelenmektedir.
+Bu bölümde, *AnalyzeVideos* projesinin [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) dosyasında tanımlı işlevler incelenmektedir.
 
 Örnek aşağıdaki eylemleri tamamlar:
 
@@ -74,7 +78,7 @@ Bu bölümde, [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK ile Media Services API’sini kullanmaya başlama
 
-.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız kodda, **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alarak ServiceClientCredentials nesnesi oluşturur. 
+.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Makalenin başlangıcında kopyaladığınız koddaki **GetCredentialsAsync** işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alan ServiceClientCredentials nesnesini oluşturur. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
@@ -102,7 +106,7 @@ Aşağıdaki işlev bu eylemleri tamamlar:
 
 Media Services içeriği kodlarken veya işlerken, kodlama ayarlarını tarif olarak ayarlamak için ortak bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni Işler göndererek, bu tarifi kitaplığınızdaki tüm videolara uygulayacağız. Media Services bir tarif, **dönüşüm**olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve işler](transform-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, belirtilen videoyu analiz eden bir tarifi tanımlar.
 
-#### <a name="transform"></a>Dönüştürme
+#### <a name="transform"></a>Dönüşüm
 
 Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. **Transformoutput** gerekli bir parametredir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu örnekte, **Videoanaliz Zerönayar ön ayarı** kullanılır ve dili ("en-US") oluşturucuya (`new VideoAnalyzerPreset("en-US")`) geçirilir. Bu ön ayar, bir videodan birden fazla ses ve video içgörüsü elde etmenizi sağlar. Bir videodan birden fazla ses içgörüsü elde etmeniz gerekiyorsa **AudioAnalyzerPreset** ön ayarını kullanın.
 

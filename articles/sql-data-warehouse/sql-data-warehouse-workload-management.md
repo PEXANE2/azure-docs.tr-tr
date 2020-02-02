@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940591"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935406"
 ---
 # <a name="what-is-workload-management"></a>İş yükü yönetimi nedir?
 
@@ -31,7 +31,7 @@ Veri ambarı iş yükü, transpire 'in bir veri ambarı ile ilişkili tüm işle
 - Veri ambarından verileri dışarı aktarma
 
 Veri ambarının performans kapasitesi, [veri ambarı birimlerine](what-is-a-data-warehouse-unit-dwu-cdwu.md)göre belirlenir.
-- Tüm performans profillerine ayrılan kaynakları görüntülemek için bkz. [bellek ve eşzamanlılık sınırları] bellek-eşzamanlılık-limits.md).
+- Tüm performans profillerine ayrılan kaynakları görüntülemek için bkz. [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).
 - Kapasiteyi ayarlamak için [ölçeği değiştirebilir veya](quickstart-scale-compute-portal.md)azaltabilirsiniz.
 
 

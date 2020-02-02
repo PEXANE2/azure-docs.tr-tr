@@ -9,20 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772836"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935119"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Kullanarak bir Azure Time Series Insights ortamı için GA başvuru verilerini yönetmeC#
 
 Bu makalede, Azure Time Series Insights GA C# [Reference veri yönetimi API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)'sine programlı API istekleri yapmak için nasıl birleştirileceğini, [msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="summary"></a>Özet
+
+Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
+
+* [Msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **publicclientapplication**kullanarak bir erişim belirteci alınıyor.
+* GA [başvuru veri yönetimi API 'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
+* [Ortak hata kodları](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)dahil ortak yanıt kodları.
+    
+    Başvuru Veri Yönetimi API 'SI her öğeyi ayrı ayrı işler ve bir öğe ile bir hata, diğerlerinin başarıyla tamamlanmasını engellemez. Örneğin, isteğiniz 100 öğe içeriyorsa ve bir öğede hata varsa, 99 öğe yazılır ve bir öğe reddedilir.
+
+## <a name="prerequisites-and-setup"></a>Önkoşullar ve kurulum
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>Özet
-
-Yukarıdaki örnek kod aşağıdaki özellikleri göstermektedir:
-
-* [Msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **publicclientapplication**kullanarak bir erişim belirteci alınıyor.
-* GA [başvuru veri yönetimi API 'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
-* [Ortak hata kodları](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)dahil ortak yanıt kodları.
-    
-    Başvuru Veri Yönetimi API 'SI her öğeyi ayrı ayrı işler ve bir öğe ile bir hata, diğerlerinin başarıyla tamamlanmasını engellemez. Örneğin, isteğiniz 100 öğe içeriyorsa ve bir öğede hata varsa, 99 öğe yazılır ve bir öğe reddedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

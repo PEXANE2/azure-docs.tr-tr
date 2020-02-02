@@ -2,17 +2,17 @@
 title: Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
 description: Tepesinde bölgesinde yük dengeli Web uygulamaları barındırmak için bir Azure DNS diğer ad kaydı kullanın
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212362"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937358"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
 
@@ -55,7 +55,7 @@ Her bir App Service planında bir tane olmak üzere iki Web uygulaması oluştur
 1. Azure portal sayfanın sol üst köşesinde **kaynak oluştur**' u seçin.
 2. Arama çubuğuna **Web uygulaması** yazın ve ENTER tuşuna basın.
 3. **Web uygulaması**' nı seçin.
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 5. Varsayılan değerleri kabul edin ve iki Web uygulaması yapılandırmak için aşağıdaki tabloyu kullanın:
 
    |Ad<br>(. azurewebsites.net içinde benzersiz olmalıdır)|Kaynak Grubu |Çalışma zamanı yığını|Bölge|Plan/konum App Service
@@ -87,7 +87,7 @@ Artık iki Web uygulaması için uç noktalar oluşturabilirsiniz.
 3. **Add (Ekle)** seçeneğini belirleyin.
 4. Uç noktaları yapılandırmak için aşağıdaki tabloyu kullanın:
 
-   |Tür  |Ad  |Hedef  |Konum  |Özel üstbilgi ayarları|
+   |Tür  |Ad  |Hedefleyin  |Konum  |Özel üstbilgi ayarları|
    |---------|---------|---------|---------|---------|
    |Dış uç nokta     |Son-01|Uygulama için kaydettiğiniz IP adresi-01|Doğu ABD|Konak: App-01 için kaydettiğiniz URL 'YI\<\><br>Örnek: **Host: App-01.azurewebsites.net**|
    |Dış uç nokta     |End-02|App-02 için kaydettiğiniz IP adresi|Orta ABD|Konak: App-02 için kaydettiğiniz URL 'YI\<\><br>Örnek: **Host: App-02.azurewebsites.net**
@@ -134,7 +134,7 @@ Her iki Web uygulaması için özel bir etki alanı ekleyin.
 
    |Ad  |Tür  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
    |---------|---------|---------|---------|-----|
-   |@     |A|Yes|Azure kaynağı|Traffic Manager-profiliniz|
+   |@     |A|Evet|Azure kaynağı|Traffic Manager-profiliniz|
 
 
 ## <a name="test-your-web-apps"></a>Web uygulamalarınızı test etme

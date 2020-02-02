@@ -1,16 +1,16 @@
 ---
 title: Azure Dev Spaces hakkında sık sorulan sorular
 services: azure-dev-spaces
-ms.date: 09/25/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: d5ab56edfe4799d51fb7f08642aad9e2ee01db05
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044975"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934174"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
@@ -20,17 +20,34 @@ Bu, Azure Dev Spaces hakkında sıkça sorulan soruları ele alınmaktadır.
 
 Kullanılabilir bölgelerin tüm listesi için bkz. [Desteklenen bölgeler][supported-regions] .
 
+## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Azure Dev Spaces, mevcut Dockerfiles veya Helm grafikleriyle kullanabilir miyim?
+
+Evet, projenizde zaten bir Dockerfile veya Held grafiği varsa, bu dosyaları Azure Dev Spaces kullanabilirsiniz. `azds prep`çalıştırdığınızda `--chart` parametresini kullanın ve grafiğin konumunu belirtin. Azure Dev Spaces, *azds. YAML* ve *dockerfile. geliþme* dosyası oluşturmaya devam eder, ancak mevcut bir Dockerfile veya Helu grafiğini değiştirmez ya da değiştirmeyecektir. *Azds. YAML* ve *dockerfile.* `azds up`çalıştırırken, her şeyin mevcut uygulamanızla doğru şekilde çalışması için dosya geliştirin.
+
+Kendi Dockerfile veya Held grafiğinizi kullanırken aşağıdaki sınırlamalar vardır:
+* Yalnızca bir Dockerfile kullanılıyorsa, dil SDK 'Sı gibi yalnızca çalışma zamanı değil, geliştirme senaryolarını etkinleştirmek için ihtiyaç duyduğunuz her şeyi içermesi gerekir. Azure Dev Spaces için bir Dockerfile. geliştirme gibi ayrı bir Dockerfile kullanılıyorsa, geliştirme senaryolarını etkinleştirmek için ihtiyacınız olan her şey, bu Dockerfile 'a eklenmelidir.
+* Held grafiğiniz, tüm görüntü etiketinin bir kısmını veya tamamını *values. YAML*değeri olarak geçirmeyi desteklemelidir.
+* Giriş ile herhangi bir şeyi değiştiriyorsanız, Azure Dev Spaces tarafından sunulan giriş çözümünü kullanmak için Helm grafiğinizi da güncelleştirebilirsiniz.
+* [Azure dev Spaces tarafından sunulan yönlendirme yeteneklerini][dev-spaces-routing]kullanmak istiyorsanız, tek bir proje için tüm hizmetlerin tek bir Kubernetes ad alanı içine sığması ve basit adlandırma ile dağıtılması gerekir. Örneğin, *hizmet-a*. Standart HELI grafiklerinde, bu adlandırma güncelleştirmesi *Fullnameoverride* özelliği için bir değer belirtilerek yapılabilir.
+
+Kendi Dockerfile veya hele grafiğinizi Azure Dev Spaces ile birlikte kullanılan mevcut bir sürümle karşılaştırmak için [hızlı][quickstart-cli]başlangıçta oluşturulan dosyaları gözden geçirin.
+
+
+## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces tarafından oluşturulan dosyaları değiştirebilir miyim?
+
+Evet, [projenizi hazırlarken Azure dev Spaces tarafından oluşturulan][dev-spaces-prep] *azds. YAML* dosyasını, Dockerfile ve Held grafiğini değiştirebilirsiniz. Bu dosyalar değiştirildiğinde projenin nasıl oluşturulduğu ve çalıştırıldığı değişir.
+
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Genel IP adresi olmadan Azure Dev Spaces kullanabilir miyim?
 
 Hayır, genel IP olmadan AKS kümesinde Azure Dev Spaces sağlayamazsınız. [Yönlendirme için Azure dev Spaces][dev-spaces-routing]genel bir IP gerekir.
 
 ## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Azure Dev Spaces ile kendi giriş sayfamı kullanabilir miyim?
 
-Evet, bir Azure Dev Spaces oluşturduğu bir yandan kendi giriş hesabınızı yapılandırabilirsiniz. Örneğin, [traefik][ingress-traefik]kullanabilirsiniz.
+Evet, giriş Azure Dev Spaces oluştururken kendi giriş bilgilerinizi yapılandırabilirsiniz. Örneğin, [traefik][ingress-traefik] veya [NGINX][ingress-nginx]kullanabilirsiniz.
 
 ## <a name="can-i-use-https-with-azure-dev-spaces"></a>Azure Dev Spaces ile HTTPS kullanabilir miyim?
 
-Evet, [traefik][ingress-https-traefik]kullanarak kendi GIRIŞ hesabınızı https ile yapılandırabilirsiniz.
+Evet, [traefik][ingress-https-traefik] veya [NGINX][ingress-https-nginx]kullanarak kendi giriş hesabınızı https ile yapılandırabilirsiniz.
 
 ## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Azure Dev Spaces, kubenet yerine CNı kullanan bir kümede kullanabilir miyim? 
 
@@ -44,7 +61,7 @@ Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsi
 
 Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkinleştirilmiş bir AKS kümesi ile ilgili daha fazla bilgi için, ile etkinleştirilen IP adresi aralıklarını [burada](configure-networking.md#using-api-server-authorized-ip-ranges)bulabilirsiniz.
 
-### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
 Evet, doğru FQDN 'Lere izin verildiğinde, [küme düğümleri için kısıtlanmış çıkış trafiği][aks-restrict-egress-traffic] olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkin küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerini kullanma hakkında daha fazla [bilgi edinebilirsiniz.](configure-networking.md#ingress-and-egress-network-traffic-requirements)
 
@@ -53,8 +70,12 @@ Evet, doğru FQDN 'Lere izin verildiğinde, [küme düğümleri için kısıtlan
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
+[ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
+[ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
+[quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

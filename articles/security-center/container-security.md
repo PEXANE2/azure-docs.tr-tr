@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 9886f41b25e7c1b34f9805a2c16b716c642ae90e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552670"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936300"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -32,7 +32,7 @@ Bu makalede, kapsayıcılarınızın ve uygulamalarının güvenliğini nasıl i
 [Azure Güvenlik Merkezi 'nin kapsayıcı Güvenlik sekmesini ![](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama (Önizleme)
-Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
+ARM tabanlı Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
 
 Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin önerilerin ayrıntıları için bkz. [önerilerin başvuru listesi](recommendations-reference.md).
 

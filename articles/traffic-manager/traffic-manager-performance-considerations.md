@@ -1,78 +1,78 @@
 ---
-title: Performansla ilgili önemli noktalar için Azure Traffic Manager | Microsoft Docs
-description: Traffic Manager ve Traffic Manager kullanırken sitenizin performansını test etme performansını anlama
+title: Azure Traffic Manager için performans konuları | Microsoft Docs
+description: Traffic Manager performansını anlayın ve Traffic Manager kullanırken Web sitenizin performansını test edin
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071048"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938535"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager için performans konuları
 
-Bu sayfa, Traffic Manager'ı kullanarak performans konuları açıklanmaktadır. Aşağıdaki senaryoyu göz önünde bulundurun:
+Bu sayfada, Traffic Manager ile ilgili performans konuları açıklanmaktadır. Şu senaryoyu göz önünde bulundurun:
 
-WestUS ve ping'in ekran bölgelerinde sitenizin örnekleri var. Örneklerden birini traffic manager araştırması için sistem durumu denetimi başarısız oluyor. Uygulama trafiği sağlıklı bölgeye yönlendirilir. Bu yük devretme bekleniyordu, ancak performans şimdi uzak bir bölgeye seyahat trafiğinin gecikme süresini dayalı bir sorun olabilir.
+WestUS ve Eastasıya bölgelerinde Web sitenizin örneklerine sahipsiniz. Örneklerden biri Traffic Manager araştırması için sistem durumu denetiminde başarısız oluyor. Uygulama trafiği sağlıklı bölgeye yönlendirilir. Bu yük devretme beklenmektedir, ancak artık uzak bir bölgeye seyahat eden trafiğin gecikmesi temelinde performans sorunu olabilir.
 
 ## <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager için performans konuları
 
-Traffic Manager sitenizde sahip olabilecek tek performans ilk DNS araması etkisidir. Traffic Manager profilinizin adı için bir DNS istek trafficmanager.net bölgeyi barındıran Microsoft DNS kök sunucu tarafından işlenir. Traffic Manager, doldurur ve düzenli olarak güncelleştirmeleri, Microsoft'un DNS kök sunucuları Traffic Manager ilkesini ve araştırma sonuçları göre. Çağrılarda bile ilk DNS araması sırasında Traffic Manager DNS sorgu gönderilir.
+Traffic Manager yalnızca, Web sitenizde bulunan performans etkisi ilk DNS aradır. Traffic Manager profilinizin adı için bir DNS isteği, trafficmanager.net bölgesini barındıran Microsoft DNS kök sunucusu tarafından işlenir. Traffic Manager, Microsoft 'un DNS kök sunucularını Traffic Manager ilkesi ve araştırma sonuçlarına göre doldurur ve düzenli olarak güncelleştirir. Bu nedenle, ilk DNS araması sırasında bile Traffic Manager 'e hiçbir DNS sorgusu gönderilmez.
 
-Traffic Manager çeşitli bileşenlerden oluşur: DNS sunucuları, bir API hizmeti, depolama katmanı ve bir uç nokta izleme hizmeti adı. Traffic Manager hizmeti bileşeni başarısız olursa, Traffic Manager profili ile ilişkili DNS adı üzerinde hiçbir etkisi yoktur. Microsoft DNS sunucuları kayıtlara değişmeden kalır. Ancak, uç nokta izleme ve DNS güncelleştirme durum değil. Bu nedenle, Traffic Manager DNS birincil arızalandığında yük devretme sitenize işaret edecek şekilde güncelleştirmek mümkün değil.
+Traffic Manager birkaç bileşenden oluşur: DNS ad sunucuları, bir API hizmeti, depolama katmanı ve bir uç nokta izleme hizmeti. Bir Traffic Manager hizmeti bileşeni başarısız olursa, Traffic Manager profilinizle ilişkili DNS adı üzerinde hiçbir etkisi olmaz. Microsoft DNS sunucularındaki kayıtlar değişmeden kalır. Ancak, uç nokta izleme ve DNS güncelleştirmesi gerçekleşmez. Bu nedenle, Traffic Manager birincil siteniz çalışırken yük devretme sitenize işaret eden DNS 'i güncelleştiremeyebilir.
 
-DNS ad çözümlemesi hızlı çalışır ve sonuçları önbelleğe alınır. İstemcinin ad çözümlemesi için kullandığı DNS sunucularını ilk DNS araması hızına bağlıdır. Genellikle, bir istemci bir DNS araması yaklaşık 50 ms içinde tamamlayabilirsiniz. Arama sonuçlarının DNS için-yaşam süresi (TTL) boyunca önbelleğe alınır. Varsayılan TTL Traffic Manager için 300 saniyedir.
+DNS ad çözümlemesi hızlıdır ve sonuçlar önbelleğe alınır. İlk DNS aramasının hızı istemcinin ad çözümlemesi için kullandığı DNS sunucularına bağlıdır. Genellikle, bir istemci ~ 50 ms içinde bir DNS aramasını tamamlayabilir. Aramanın sonuçları, DNS yaşam süresi (TTL) süresince önbelleğe alınır. Traffic Manager için varsayılan TTL 300 saniyedir.
 
-Trafik Traffic Manager üzerinden geçmez. DNS arama işlemi tamamlandıktan sonra istemci, web sitenizin bir örneği için bir IP adresi vardır. İstemci o adrese doğrudan bağlanır ve Traffic Manager üzerinden geçmez. Seçtiğiniz Traffic Manager ilkesini DNS performans üzerindeki etkisi yoktur. Ancak, bir performans yönlendirme yöntemi uygulama deneyimi olumsuz yönde etkileyebilir. Örneğin, ilkeniz Asya'da barındırılan örneği Kuzey Amerika giden trafiği yönlendirir, bu oturumlar için ağ gecikme süresi bir performans sorunu olabilir.
+Trafik Traffic Manager üzerinden akış yapmaz. DNS araması tamamlandıktan sonra, istemci, Web sitenizin bir örneği için bir IP adresine sahiptir. İstemci doğrudan bu adrese bağlanır ve Traffic Manager geçiş yapmaz. Seçtiğiniz Traffic Manager ilkesi DNS performansını etkilemez. Ancak, bir performans yönlendirme yöntemi uygulama deneyimini olumsuz etkileyebilir. Örneğin, ilkeniz trafiği Kuzey Amerika trafiği Asya 'da barındırılan bir örneğe yeniden yönlendirirse, bu oturumlara yönelik ağ gecikmesi bir performans sorunu olabilir.
 
 ## <a name="measuring-traffic-manager-performance"></a>Traffic Manager performansını ölçme
 
-Performans ve Traffic Manager profili davranışını anlamak için kullanabileceğiniz birkaç Web sitesini vardır. Çoğu bu sitelerden ücretsizdir ancak kısıtlamaları olabilir. Bazı siteler Gelişmiş izleme ve raporlama bir ücret karşılığında sunar.
+Bir Traffic Manager profilinin performansını ve davranışını anlamak için kullanabileceğiniz çeşitli web siteleri vardır. Bu sitelerin birçoğu ücretsizdir, ancak kısıtlamaları olabilir. Bazı sitelerde, bir ücret için Gelişmiş izleme ve raporlama olanağı sunulur.
 
-Bu siteler ölçü DNS gecikme süreleri ve görüntüleme araçları, istemci konumlarının dünyanın dört bir yanındaki çözümlenen IP adresleri. Bu araçların çoğu, DNS sonuçları önbelleğe alma işlemi. Bu nedenle, araçları, tam DNS araması bir test her çalıştığında gösterir. Kendi istemciden test ettiğinizde, yalnızca bir kez TTL süresi sırasında tam DNS Arama performansını karşılaşırsınız.
+Bu sitelerdeki araçlar DNS gecikmeleri ölçer ve dünyanın dört bir yanındaki istemci konumları için çözümlenen IP adreslerini görüntüler. Bu araçların çoğu DNS sonuçlarını önbelleğe vermez. Bu nedenle, Araçlar her bir test çalıştırıldığında tam DNS aramasını gösterir. Kendi istemcinizden test ettiğinizde, yalnızca TTL süresi boyunca tam DNS arama performansını bir kez deneyolursunuz.
 
-## <a name="sample-tools-to-measure-dns-performance"></a>DNS performansını ölçmek için örnek araçları
+## <a name="sample-tools-to-measure-dns-performance"></a>DNS performansını ölçmeye yönelik örnek Araçlar
 
 * [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
-    SolveDNS birçok performans araçları sunar. DNS karşılaştırma aracı, DNS adını çözümlemek için ne kadar sürer ve nasıl, diğer DNS hizmeti sağlayıcıları için karşılaştırır gösterebilirsiniz.
+    SolveDNS birçok performans aracı sunar. DNS karşılaştırma aracı, DNS adınızı ne kadar süreyle çözdüğüne ve bunun diğer DNS hizmeti sağlayıcılarıyla nasıl Karşılaştırıldığı hakkında sizi gösterebilir.
 
 * [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
-    En basit Araçlar WebSitePulse biridir. DNS çözümleme süresi, ilk baytı, son bayt ve diğer performans istatistikleri görmek için URL'yi girin. Üç farklı test konumundan seçebilirsiniz. Bu örnekte, ilk yürütme DNS araması 0.204 sn aldığını gösterir bakın.
+    En basit araçlardan biri WebSitePulse. DNS çözümleme süresi, Ilk bayt, son bayt ve diğer performans istatistiklerini görmek için URL 'YI girin. Üç farklı test konumu arasından seçim yapabilirsiniz. Bu örnekte, ilk yürütmenin DNS aramasının 0,204 sn aldığını gösterdiğini görürsünüz.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Sonuçları önbelleğe alındığı için ikinci test aynı Traffic Manager uç noktası için DNS araması 0.002 saniye sürer.
+    Sonuçlar önbelleğe alındığından, DNS aramasında aynı Traffic Manager uç noktası için ikinci test 0,002 sn alır.
 
     ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
-* [CA uygulama Sentetik izleme](https://asm.ca.com/en/checkit.php)
+* [CA uygulaması yapay Izleyici](https://asm.ca.com/en/checkit.php)
 
-    Daha önce izleme fare onay Web sitesi aracı olarak bilinen, bu site Göster, DNS çözümleme süresi birden fazla coğrafi bölgeyi aynı anda. DNS çözümleme süresi, bağlantı süresi ve farklı coğrafi konumlardan hızından görmek için URL'yi girin. Bu test, dünyanın dört bir yanındaki farklı konumlar için hangi barındırılan hizmet döndürülen görmek için kullanın.
+    Daha önce Izle-fare denetimi Web sitesi aracı olarak bilindiğinde, bu site birden çok coğrafi bölgeden aynı anda DNS çözümleme süresi gösterir. DNS çözümleme süresini, bağlantı süresini ve birkaç coğrafi konumdan hızı görmek için URL 'YI girin. Dünyanın dört bir yanındaki farklı konumlar için hangi barındırılan hizmetin döndürüleceğini görmek için bu testi kullanın.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
 * [Pingdom](https://tools.pingdom.com/)
 
-    Bu araç, bir web sayfasının her öğe için performans istatistiklerini sağlar. Analiz sayfası sekmesi DNS Arama harcadığı zaman yüzdesini gösterir.
+    Bu araç, bir Web sayfasının her öğesi için performans istatistikleri sağlar. Sayfa analizi sekmesi, DNS aramasında harcanan sürenin yüzdesini gösterir.
 
-* [My DNS nedir?](https://www.whatsmydns.net/)
+* [DNS nedir?](https://www.whatsmydns.net/)
 
-    Bu site, 20 farklı konumlardan DNS arama yapar ve sonuçları bir haritada görüntüler.
+    Bu site, 20 farklı konumdan bir DNS araması yapar ve sonuçları bir haritada görüntüler.
 
-* [Web arabirimi inin](https://www.digwebinterface.com)
+* [Dig Web arabirimi](https://www.digwebinterface.com)
 
-    Bu site, daha ayrıntılı CNAME ve A kayıtları dahil olmak üzere DNS bilgi gösterir. 'Renklendir'i output' ve 'İstatistikler' seçenekleri altında denetleyin ve 'All' altında bir ad seçin emin olun.
+    Bu site, CNAMEs ve A kayıtları gibi daha ayrıntılı DNS bilgileri gösterir. Seçenekler bölümünde ' colorize çıkış ' ve ' stats ' seçeneklerini denetlediğinizden emin olun ve nameservers altında ' All ' seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
@@ -82,5 +82,5 @@ Bu siteler ölçü DNS gecikme süreleri ve görüntüleme araçları, istemci k
 
 [Traffic Manager üzerindeki işlemler (REST API Başvurusu)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager cmdlet'leri](https://docs.microsoft.com/powershell/module/az.trafficmanager)
+[Azure Traffic Manager cmdlet 'Leri](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

@@ -3,20 +3,20 @@ title: Azure Traffic Manager'da uç noktaları yönetme | Microsoft Belgeleri
 description: Bu makale, Azure Traffic Manager'da uç noktalar ekleme, kaldırma, etkinleştirme ve devre dışı bırakma konularında size yardımcı olacaktır.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071077"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939131"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Uç noktaları ekleme, devre dışı bırakma, etkinleştirme veya silme
 
@@ -71,7 +71,7 @@ Aynı zamanda bir Traffic Manager profilinin parçası olan tekil uç noktaları
 2. Portalın arama çubuğunda, değiştirmek istediğiniz **Traffic Manager profili** adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
 3. **Ayarlar** bölümündeki **Traffic Manager profili** dikey penceresinde **Uç noktalar** öğesine tıklayın. 
 4. Silmek istediğiniz uç noktaya tıklayın.
-5. İçinde **uç nokta** dikey penceresinde tıklayın **Sil**
+5. **Uç nokta** dikey penceresinde **Sil** ' e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

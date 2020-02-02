@@ -3,34 +3,36 @@ title: Güvenilir koleksiyonlardaki işlemler ve kilit modları
 description: Azure Service Fabric güvenilir durum Yöneticisi ve güvenilir koleksiyonlar Işlemleri ve kilitleme.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: f27381aa0979b37c759f66d0e873126edc006d6d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.custom: sfrev
+ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614188"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938920"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric güvenilir koleksiyonlardaki işlemler ve kilit modları
 
 ## <a name="transaction"></a>İşlem
-İşlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlemlerin sırasıdır.
-Bir işlem aşağıdaki ACID özelliklerini göstermelidir. (bkz. https://technet.microsoft.com/library/ms190612)
+
+İşlem, tek bir mantıksal iş birimi olarak gerçekleştirilen işlemlerin sırasıdır. Veritabanı işlemlerinin ortak [ACID](https://en.wikipedia.org/wiki/ACID) (*kararlılık*, *tutarlılık*, *yalıtım*, *dayanıklılık*) özelliklerini sergiler:
+
 * **Atomicity**: bir işlem atomik iş birimi olmalıdır. Diğer bir deyişle, tüm veri değişiklikleri gerçekleştirilir veya hiçbir şey yapılmaz.
 * **Tutarlılık**: tamamlandığında, bir işlem tüm verileri tutarlı bir durumda bırakmalıdır. Tüm iç veri yapıları işlemin sonunda doğru olmalıdır.
-* **Yalıtım**: eşzamanlı işlemler tarafından yapılan değişiklikler, diğer eş zamanlı işlemler tarafından yapılan değişikliklerden yalıtılmalıdır. Bir ITransaction içindeki bir işlem için kullanılan yalıtım düzeyi, işlemi gerçekleştiren ıreliablestate tarafından belirlenir.
+* **Yalıtım**: eşzamanlı işlemler tarafından yapılan değişiklikler, diğer eş zamanlı işlemler tarafından yapılan değişikliklerden yalıtılmalıdır. Bir [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) içindeki bir işlem için kullanılan yalıtım düzeyi, Işlemi gerçekleştiren [ıreliablestate](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) tarafından belirlenir.
 * **Dayanıklılık**: bir işlem tamamlandıktan sonra, etkileri sistemde kalıcı olarak gerçekleştirilir. Değişiklikler, sistem hatası durumunda bile devam ediyor.
 
 ### <a name="isolation-levels"></a>Yalıtım düzeyleri
+
 Yalıtım düzeyi, işlemin diğer işlemler tarafından yapılan değişikliklerden yalıtılması gereken dereceyi tanımlar.
 Güvenilir koleksiyonlarda desteklenen iki yalıtım düzeyi vardır:
 
-* **Yinelenebilir okuma**: Bu deyimlerin, başka işlemler tarafından değiştirilmiş ancak henüz onaylanmamış verileri okuyamadığından ve geçerli işlem bitene kadar geçerli işlem tarafından okunan verileri değiştiremediğini belirtir. Daha ayrıntılı bilgi için bkz. [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Yinelenebilir okuma**: Bu deyimlerin, başka işlemler tarafından değiştirilmiş ancak henüz onaylanmamış verileri okuyamadığından ve geçerli işlem bitene kadar geçerli işlem tarafından okunan verileri değiştiremediğini belirtir.
 * **Anlık görüntü**: bir işlemdeki tüm deyimden okunan verilerin, işlemin başlangıcında varolan verilerin işlemsel olarak tutarlı bir sürümüdür olduğunu belirtir.
   İşlem yalnızca işlemin başlangıcından önce kaydedilmiş olan veri değişikliklerini tanıyabilir.
   Geçerli işlemin başlangıcından sonra gerçekleştirilen diğer işlemler tarafından yapılan veri değişiklikleri, geçerli işlemde yürütülen deyimlere görünür değildir.
   Efekt, bir işlemdeki deyimler işlemin başlangıcında olduğu gibi yürütülen verilerin anlık görüntüsünü alır.
   Anlık görüntüler, güvenilir koleksiyonlar arasında tutarlıdır.
-  Daha ayrıntılı bilgi için bkz. [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
 
 Güvenilir koleksiyonlar, işleme ve işlemin oluşturulduğu sırada çoğaltmanın rolüne bağlı olarak belirli bir okuma işlemi için kullanılacak yalıtım düzeyini otomatik olarak seçer.
 Aşağıda, güvenilir sözlük ve kuyruk işlemleri için yalıtım düzeyi varsayılan değerleri gösteren tablo verilmiştir.
@@ -44,22 +46,24 @@ Aşağıda, güvenilir sözlük ve kuyruk işlemleri için yalıtım düzeyi var
 > Tek varlık Işlemlerine yönelik yaygın örnekler `IReliableDictionary.TryGetValueAsync`, `IReliableQueue.TryPeekAsync`.
 > 
 
-Hem güvenilir sözlük hem de güvenilir sıra, yazma bilgilerinizi okumayı destekler.
+Hem güvenilir sözlük hem de güvenilir sıra, *yazma bilgilerinizi okumayı*destekler.
 Diğer bir deyişle, bir işlem içindeki herhangi bir yazma işlemi, aynı işleme ait olan aşağıdaki okuma için görünür olacaktır.
 
 ## <a name="locks"></a>Kilitler
+
 Güvenilir koleksiyonlar bölümünde tüm işlemler, her türlü katı iki aşamalı kilitleme uygular: bir işlem, işlem iptal veya işleme ile sonlanana kadar elde ettiği kilitleri serbest bırakmaz.
 
 Güvenilir sözlük tüm tek varlık işlemleri için satır düzeyinde kilitleme kullanır.
 Güvenilir sıra, katı işlem FıFO özelliği için eşzamanlılık kapatır.
-Güvenilir sıra, bir işleme `TryPeekAsync` ve/veya `TryDequeueAsync` ve bir işlem `EnqueueAsync` aynı anda bir işlem sağlayan işlem düzeyi kilitleri kullanır.
+Güvenilir sıra, `TryPeekAsync` ve/veya `TryDequeueAsync` sahip bir işleme ve aynı anda `EnqueueAsync` sahip bir işleme izin veren işlem düzeyinde kilitleri kullanır.
 `TryPeekAsync` veya `TryDequeueAsync`, güvenilir sıranın boş olduğunu gördüğüne sonra da `EnqueueAsync`kilitleytiğine ilişkin FıFO 'yu korumak için unutmayın.
 
 Yazma işlemleri her zaman özel kilitler alır.
-Okuma işlemleri için kilitleme, birkaç faktöre bağlıdır.
-Anlık görüntü yalıtımı kullanılarak gerçekleştirilen tüm okuma işlemleri boş bir kilit değildir.
-Varsayılan olarak herhangi bir yinelenebilir okuma işlemi, paylaşılan kilitleri alır.
-Ancak, yinelenebilir okumayı destekleyen tüm okuma işlemleri için, Kullanıcı paylaşılan kilit yerine bir güncelleştirme kilidi isteyebilir.
+Okuma işlemleri için, kilitleme birkaç etkene bağlıdır:
+
+- Anlık görüntü yalıtımı kullanılarak gerçekleştirilen tüm okuma işlemleri kilitleme ücretsizdir.
+- Varsayılan olarak herhangi bir yinelenebilir okuma işlemi, paylaşılan kilitleri alır.
+- Ancak, yinelenebilir okumayı destekleyen tüm okuma işlemleri için, Kullanıcı paylaşılan kilit yerine bir güncelleştirme kilidi isteyebilir.
 Güncelleştirme kilidi, birden çok işlem, olası güncelleştirmeler için kaynakları daha sonra kilitleyen yaygın bir kilitlenme biçimini engellemek için kullanılan asimetrik bir kilitdir.
 
 Kilit uyumluluğu matrisi aşağıdaki tabloda bulunabilir:
@@ -73,14 +77,12 @@ Kilit uyumluluğu matrisi aşağıdaki tabloda bulunabilir:
 Güvenilir koleksiyonlar API 'Lerinde zaman aşımı bağımsız değişkeni, kilitlenme algılama için kullanılır.
 Örneğin, iki işlem (T1 ve T2) K1 okumayı ve güncelleştirmeyi deniyor.
 Her ikisi de paylaşılan kilide bulunduğundan kilitlenmeleri mümkündür.
-Bu durumda, işlemlerden biri veya her ikisi zaman aşımına uğrar.
-
-Bu kilitlenme senaryosu, güncelleştirme kilidinin kilitlenmeleri nasıl engelleyebileceğini gösteren harika bir örnektir.
+Bu durumda, işlemlerden biri veya her ikisi zaman aşımına uğrar. Bu senaryo, bir güncelleştirme kilidi böyle bir kilitlenmeyi önleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Güvenilir Koleksiyonlar ile çalışma](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services bildirimleri](service-fabric-reliable-services-notifications.md)
 * [Reliable Services yedekleme ve geri yükleme (olağanüstü durum kurtarma)](service-fabric-reliable-services-backup-restore.md)
 * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
 * [Güvenilir koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-

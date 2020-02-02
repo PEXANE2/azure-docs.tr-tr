@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 553dffd14182c93a52ed076e742830c68130551b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4c89765a3bc59a37a182a2dfabf0727f95b575b8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911227"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933220"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Haritaya bir çizim araçları araç çubuğu ekleme
 
@@ -68,7 +68,7 @@ Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 
 ## <a name="change-drawing-rendering-style"></a>Çizim işleme stilini değiştir
 
-Aşağıdaki kod, çizim yöneticisinden işleme katmanlarını alır ve çizim için işleme stilini değiştirecek seçeneklerini değiştirir. Bu durumda, işaret mavi bir işaret simgesiyle işlenir, çizgiler kırmızı ve dört piksel genişliğinde olur, çokgenler yeşil renkli bir renkli ve turuncu bir anahatlara sahip olur.
+Aşağıdaki kod, çizim yöneticisinden işleme katmanlarını alır ve çizim için işleme stilini değiştirecek seçeneklerini değiştirir. Bu durumda, işaret mavi bir işaret simgesiyle işlenir. Satırlar kırmızı ve dört piksel genişliğinde olur. Çokgenler yeşil bir Fill rengine ve turuncu bir anahatta sahip olur.
 
 ```Javascript
 var layers = drawingManager.getLayers();

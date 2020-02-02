@@ -2,13 +2,13 @@
 title: Kapsayıcı örneği üzerinde hazırlık araştırması ayarlama
 description: Azure Container Instances içindeki kapsayıcıların istekleri yalnızca hazırlandıklarında almasını sağlamak için bir araştırma yapılandırmayı öğrenin
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901841"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935689"
 ---
 # <a name="configure-readiness-probes"></a>Hazır olma yoklamalarını yapılandırma
 
@@ -23,7 +23,7 @@ Azure Container Instances Ayrıca, sağlıksız bir kapsayıcının otomatik ola
 
 ## <a name="yaml-configuration"></a>YAML yapılandırması
 
-Örnek olarak, bir hazırlık araştırması içeren aşağıdaki kod parçacığına sahip `readiness-probe.yaml` bir dosya oluşturun. Bu dosya, küçük bir Web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüsünden dağıtılır. Bu kapsayıcı uygulaması [, Azure CLI kullanarak Azure 'da bir kapsayıcı örneği dağıtma](container-instances-quickstart.md)gibi hızlı başlangıçlarda da gösterilmiştir.
+Örnek olarak, bir hazırlık araştırması içeren aşağıdaki kod parçacığına sahip `readiness-probe.yaml` bir dosya oluşturun. Bu dosya, küçük bir Web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüsünden dağıtılır. Bu Kapsayıcılı uygulama, Azure CLı ve diğer hızlı başlangıçlarla [Azure 'da bir kapsayıcı örneği dağıtma](container-instances-quickstart.md) bölümünde de gösterilmiştir.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Başlat komutu
 
-YAML dosyası, kapsayıcı başladığında çalıştırılacak bir başlangıç komutu içerir, bir dize dizisini kabul eden `command` özelliği tarafından tanımlanır. Bu komut, Web uygulamasının çalıştığı ancak kapsayıcının hazırlanmadığında bir zaman benzetimini yapar. İlk olarak, bir kabuk oturumu başlatır ve Web uygulamasını başlatmak için bir `node` komutu çalıştırır. Ayrıca, 240 saniye boyunca uyku moduna geçmek için bir komut başlatır, sonrasında `/tmp` dizininde `ready` adlı bir dosya oluşturulur:
+Dağıtım, kapsayıcının ilk kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir `command` özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, Web uygulamasının çalıştığı ancak kapsayıcının hazırlanmadığında bir zaman benzetimini yapar. 
+
+İlk olarak, bir kabuk oturumu başlatır ve Web uygulamasını başlatmak için bir `node` komutu çalıştırır. Ayrıca, 240 saniye boyunca uyku moduna geçmek için bir komut başlatır, sonrasında `/tmp` dizininde `ready` adlı bir dosya oluşturulur:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

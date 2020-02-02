@@ -3,17 +3,17 @@ title: 'Öğretici: etki alanı tepesinde adlarını desteklemek için bir diğe
 titleSuffix: Azure DNS
 description: Bu öğreticide Traffic Manager ile etki alanı tepe adının kullanılmasını desteklemek için Azure DNS diğer ad kaydı yapılandırma adımları gösterilmektedir.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082262"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937935"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Öğretici: Traffic Manager ile tepe etki alanı adlarını desteklemek için diğer ad kaydı yapılandırma 
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
 Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc74e72c6c2fe3e2b8817e6ffb418928ede08193
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773351"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931476"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -47,7 +47,7 @@ Uygulama çağrıldığında üst bilgide ayarlanan taşıyıcı belirteç, uygu
 Aşağıda, .NET C# Için Microsoft kimlik doğrulama kitaplığı ile belirteç aldıktan sonra API 'yi çağıran bir istemciyi gösteren bir kod örneği (msal.net):
 
 ```csharp
-var scopes = new[] {$"api://.../access_as_user}";
+var scopes = new[] {$"api://.../access_as_user"};
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
 

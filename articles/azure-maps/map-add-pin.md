@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911157"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933136"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Haritaya sembol katmanı ekleme
 
-Bir simge, bir veri kaynağına bağlanabilir ve belirli bir noktada bir simge ve/veya metin işlemek için kullanılabilir. Sembol katmanları WebGL kullanılarak işlenir ve haritadaki büyük noktaların koleksiyonunu işlemek için kullanılabilir. Bu katman, haritada çok daha fazla nokta verisini (ulaşılabilir, HTML işaretçileri kullanılarak) iyi bir performansla işleyebilir. Ancak, sembol katmanı stil için geleneksel CSS ve HTML öğelerini desteklemez.  
+Bir veri kaynağına bağlı bir sembol ve bir simge ve/veya metni belirli bir noktada işlemek için kullanılır. Sembol katmanları WebGL kullanılarak işlenir ve haritada büyük miktarda noktaları işlemek için kullanılır. HTML işaretleyicisine kıyasla, sembol katmanı haritada çok sayıda nokta verisi işler ve daha iyi performans sağlar. Ancak, sembol katmanı stil için geleneksel CSS ve HTML öğelerini desteklemez.  
 
 > [!TIP]
-> Sembol katmanları varsayılan olarak, bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin oluşturduğu şekilde sınırlamak için katmanın `filter` özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` de MultiPoint özellikleri eklemek istiyorsanız ayarlayın.
+> Sembol katmanları varsayılan olarak, bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin `filter`, katmanın özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` ayarlamak istiyorsanız, MultiPoint özelliklerini de dahil edebilirsiniz.
 
-Sembol katmanı tarafından kullanılan özel görüntüleri yüklemek için kullanılan haritalar görüntü Sprite Manager aşağıdaki görüntü biçimlerini destekler:
+Haritalar görüntü Sprite Manager, sembol katmanı tarafından kullanılan özel görüntüleri yükler. Aşağıdaki görüntü biçimlerini destekler:
 
 - JPEG
 - PNG
@@ -33,7 +33,7 @@ Sembol katmanı tarafından kullanılan özel görüntüleri yüklemek için kul
 
 ## <a name="add-a-symbol-layer"></a>Sembol katmanı ekleme
 
-Haritaya bir sembol katmanı eklemek ve verileri işlemek için önce bir veri kaynağının oluşturulması ve haritanın eklenmesi gerekir. Daha sonra bir sembol katmanı, verileri almak için veri kaynağında oluşturulup geçirilebilir. Son olarak, işlenecek bir şey olması için verilerin veri kaynağına eklenmesi gerekir. Aşağıdaki kod, bir sembol katmanı kullanarak haritada tek bir noktayı işlemek için yüklendikten sonra haritaya eklenmesi gereken kodu gösterir. 
+Haritaya bir sembol katmanı ekleyebilmeniz için önce birkaç adım yapmanız gerekir. İlk olarak, bir veri kaynağı oluşturup haritaya ekleyin. Daha sonra veri kaynağından veri almak için bir sembol katmanı oluşturulup veri kaynağında geçirilebilir. Son olarak, işlenecek bir şey olması için verilerin veri kaynağına eklenmesi gerekir. Aşağıdaki kod, yüklendikten sonra haritaya eklenmesi gereken kodu gösterir. Kod, bir sembol katmanını kullanarak haritada tek bir nokta işler. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -50,14 +50,14 @@ map.layers.add(layer);
 dataSource.add(new atlas.data.Point([0, 0]));
 ```
 
-Haritaya eklenebilecek dört farklı türde nokta verisi vardır:
+Haritaya eklenebilecek dört farklı tür Point verisi vardır:
 
 - GeoJSON nokta geometrisi-bu nesne yalnızca bir noktanın koordinatını içerir ve başka hiçbir şey yapmaz. `atlas.data.Point` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
-- GeoJSON MultiPoint geometrisi-bu nesne birden çok noktanın koordinatlarını içerir ancak başka hiçbir şey yapmaz. `atlas.data.MultiPoint` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
+- GeoJSON MultiPoint geometrisi-bu nesne birden çok noktanın koordinatlarını içerir ve başka hiçbir şey yapmaz. `atlas.data.MultiPoint` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
 - GeoJSON özelliği-bu nesne, tüm GeoJSON geometrisinden ve geometri ile ilişkili meta verileri içeren bir özellik kümesinden oluşur. `atlas.data.Feature` yardımcı sınıfı bu nesneleri kolayca oluşturmak için kullanılabilir.
-- `atlas.Shape` sınıfı, GeoJSON geometrisini ve geometri ile ilişkili meta verileri içeren bir dizi özelliği içerir. Bir veri kaynağına GeoJSON nesnesi eklenirse, bir katmanda kolayca işlenebilir. ancak, bu GeoJSON nesnesinin koordinatlar özelliği güncelleştirilirse, JSON nesnesinde bir güncelleştirmeyi tetiklemek için bir mekanizma olmadığından veri kaynağı ve eşleme değişmez. Şekil sınıfı, içerdiği verileri güncelleştirmek için işlevler sağlar ve bir değişiklik yapıldığında veri kaynağı ve eşleme otomatik olarak bilgilendirilir ve güncelleştirilir. 
+- `atlas.Shape` sınıfı, GeoJSON özelliğine benzer. Her ikisi de GeoJSON geometrisini ve geometri ile ilişkili meta verileri içeren bir özellikler kümesini içerir. Bir coğrafi JSON nesnesi bir veri kaynağına eklenirse, bir katmanda kolayca oluşturulabilir. Ancak, bu GeoJSON nesnesinin koordinatlar özelliği güncelleştirilirse, veri kaynağı ve eşleme değişmez. Bunun nedeni, bir güncelleştirmeyi tetiklemenin JSON nesnesinde hiçbir mekanizma olmaması olabilir. Şekil sınıfı, içerdiği verileri güncelleştirmek için işlevler sağlar. Bir değişiklik yapıldığında veri kaynağı ve eşleme otomatik olarak bilgilendirilir ve güncelleştirilir. 
 
-Aşağıdaki kod örneği, bir GeoJSON noktası geometrisi oluşturur ve güncelleştirmeyi kolaylaştırmak için `atlas.Shape` sınıfına geçirir. Haritanın merkezi başlangıçta bir sembolü işlemek için kullanılır. Haritada bir tıklama olayı, ne zaman tetiklendiğinde, haritada simgenin konumunu güncelleştiren şekil `setCoordinates` işleviyle birlikte kullanıldığında, bu haritaya bir tıklama olayı eklenir.
+Aşağıdaki kod örneği, bir GeoJSON noktası geometrisi oluşturur ve güncelleştirmeyi kolaylaştırmak için `atlas.Shape` sınıfına geçirir. Haritanın merkezi başlangıçta bir sembolü işlemek için kullanılır. Haritada bir tıklama olayı, ne zaman tetiklendiğinde, fare koordinatları şekil `setCoordinates` işleviyle birlikte kullanılır. Fare koordinatları tıklama olayı sırasında kaydedilir. Sonra `setCoordinates`, haritada simgenin konumunu günceller.
 
 <br/>
 
@@ -65,11 +65,11 @@ Aşağıdaki kod örneği, bir GeoJSON noktası geometrisi oluşturur ve güncel
 </iframe>
 
 > [!TIP]
-> Varsayılan olarak, performans için sembol katmanları örtüşen sembolleri gizleyerek sembolleri işlemeyi iyileştirir. Gizli sembolleri yakınlaştırdığınızda görünür hale gelir. Bu özelliği devre dışı bırakmak ve tüm sembolleri her zaman işlemek için `iconOptions` seçeneklerinin `allowOverlap` özelliğini `true`olarak ayarlayın.
+> Varsayılan olarak, sembol katmanları örtüşen sembolleri gizleyerek sembol işlemesini iyileştirir. Yakınlaştırma sırasında gizli simgeler görünür hale gelir. Bu özelliği devre dışı bırakmak ve tüm sembolleri her zaman işlemek için `iconOptions` seçeneklerinin `allowOverlap` özelliğini `true`olarak ayarlayın.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Sembol katmanına özel simge ekleme
 
-Sembol katmanları WebGL kullanılarak işlenir. Bu nedenle, simge görüntüleri gibi tüm kaynakların WebGL bağlamına yüklenmesi gerekir. Bu örnek, harita kaynaklarına özel bir simgenin nasıl ekleneceğini ve ardından Haritada özel bir sembol ile nokta verisi işlemek için nasıl kullanılacağını gösterir. Sembol katmanının `textField` özelliği bir ifadenin belirtilmesini gerektirir. Bu durumda, sıcaklık özelliğini işlemek istiyoruz, ancak bir sayı olduğundan, bir dizeye dönüştürülmesi gerekir. Ayrıca buna "°F" eklemek istiyoruz. Bunu yapmak için bir ifade kullanılabilir; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+Sembol katmanları WebGL kullanılarak işlenir. Bu nedenle, simge görüntüleri gibi tüm kaynakların WebGL bağlamına yüklenmesi gerekir. Bu örnek, harita kaynaklarına nasıl özel bir simge ekleneceğini gösterir. Bu simge daha sonra haritada özel bir sembol ile nokta verilerini işlemek için kullanılır. Sembol katmanının `textField` özelliği bir ifadenin belirtilmesini gerektirir. Bu durumda, sıcaklık özelliğini işlemek istiyoruz. Sıcaklık bir sayı olduğundan, bir dizeye dönüştürülmesi gerekir. Ayrıca buna "°F" eklemek istiyoruz. Bu birleştirme yapmak için bir ifade kullanılabilir; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -89,7 +89,7 @@ Sembol katmanında birçok stil seçeneği mevcuttur. Bu çeşitli stil seçenek
 </iframe>
 
 > [!TIP]
-> Yalnızca bir sembol katmanıyla metin işlemek istediğinizde, simge seçeneklerinin `image` özelliğini `'none'`olarak ayarlayarak simgeyi gizleyebilirsiniz.
+> Yalnızca bir sembol katmanıyla birlikte metin işlemek istediğinizde, simge seçeneklerinin `image` özelliğini `'none'`olarak ayarlayarak simgeyi gizleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

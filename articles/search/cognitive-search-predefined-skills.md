@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f0975aceeb55c8f184ebe4e6a44d819b4a8bf38
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837869"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933379"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Dizin oluşturma sırasında metin ve görüntü işleme için yerleşik bilişsel yetenekler (Azure Bilişsel Arama)
 
@@ -31,6 +31,7 @@ Birçok beceri, tüketildikleri veya ürettikleri şekilde esnektir. Genellikle,
 
 | İmde | Açıklama |
 |-------|-------------|
+|[Microsoft. yetenekler. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar.|
 | [Microsoft. yetenekler. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Bu beceri, terim yerleştirme, dil kuralları, diğer koşullara yakınlık ve dönem kaynak veride ne kadar olağandışı olduğunu temel alan önemli tümcecikleri algılamak için önceden eğitilen bir model kullanır. |
 | [Microsoft. yetenekler. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Bu beceri, hangi dilin kullanıldığını (belge başına bir dil KIMLIĞI) algılamak için önceden eğitilen bir model kullanır. Aynı metin kesimlerinde birden çok dil kullanıldığında çıktı, ağırlıklı kullanılan dilin LCıD 'si olur.|
 | [Microsoft. yetenekler. Text. Mergeskıll](cognitive-search-skill-textmerger.md) | Bir alan koleksiyonundan metni tek bir alanda birleştirir.  |

@@ -2,13 +2,13 @@
 title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896041"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934934"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -36,6 +36,18 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 ## <a name="updates-january-2020"></a>Güncelleştirmeler (Ocak 2020)
 
+### <a name="update-rollup-44"></a>Güncelleştirme paketi 44
+[Güncelleştirme paketi 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sorun düzeltmeleri/geliştirmeler** | Site Recovery aracılardan ve sağlayıcılardan bir dizi güncelleştirme (toplamada ayrıntılı olarak).
+
+### <a name="azure-vmware-disaster-recovery"></a>Azure VMware olağanüstü durum kurtarma
+
+Azure sanal makineleri artık, müşteri tarafından yönetilen anahtarlarla bekleyen şifreleme için VM 'Leri etkinleştirir. [Daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-cmk-disks.md).
+
+
 ### <a name="update-rollup-43"></a>Güncelleştirme paketi 43
 
 [Güncelleştirme paketi 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
@@ -58,7 +70,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
+### <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
 
 Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
 

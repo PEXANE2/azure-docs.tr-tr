@@ -3,7 +3,7 @@ title: Azure Traffic Manager nasıl çalışacaktır? | Microsoft Docs
 description: Bu makale, Web uygulamalarınızın yüksek performans ve kullanılabilirlik trafiğini Traffic Manager nasıl yönlendirdiğini anlamanıza yardımcı olur
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: rohink
+ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312140"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938631"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager nasıl kullanılır?
 
@@ -34,7 +34,7 @@ Bir istemci bir hizmete bağlanmaya çalıştığında, önce hizmetin DNS adın
 
 ## <a name="traffic-manager-example"></a>Traffic Manager örneği
 
-Contoso Corp yeni bir iş ortağı portalı geliştirmiş. Bu portalın https://partners.contoso.com/login.aspx URL 'si. Uygulama, Azure 'un üç bölgesinde barındırılır. Kullanılabilirliği artırmak ve genel performansı en üst düzeye çıkarmak için, istemci trafiğini kullanılabilir en yakın uç noktaya dağıtmak üzere Traffic Manager kullanırlar.
+Contoso Corp yeni bir iş ortağı portalı geliştirmiş. Bu portalın URL 'SI https://partners.contoso.com/login.aspx. Uygulama, Azure 'un üç bölgesinde barındırılır. Kullanılabilirliği artırmak ve genel performansı en üst düzeye çıkarmak için, istemci trafiğini kullanılabilir en yakın uç noktaya dağıtmak üzere Traffic Manager kullanırlar.
 
 Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
 
@@ -49,7 +49,7 @@ Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>İstemciler Traffic Manager kullanarak nasıl bağlanır
 
-Önceki örnekte devam edildiğinde, istemci sayfayı https://partners.contoso.com/login.aspx istediğinde, istemci, DNS adını çözümlemek ve bir bağlantı kurmak için aşağıdaki adımları gerçekleştirir:
+Önceki örnekte devam edildiğinde, istemci sayfayı https://partners.contoso.com/login.aspx istediğinde istemci, DNS adını çözümlemek ve bir bağlantı kurmak için aşağıdaki adımları gerçekleştirir:
 
 ![Traffic Manager kullanarak bağlantı kurma][2]
 
@@ -67,7 +67,7 @@ Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
 7. Özyinelemeli DNS hizmeti, sonuçları birleştirir ve istemciye tek bir DNS yanıtı döndürür.
 8. İstemci DNS sonuçlarını alır ve verilen IP adresine bağlanır. İstemci, Traffic Manager aracılığıyla değil, doğrudan uygulama hizmeti uç noktasına bağlanır. Bir HTTPS uç noktası olduğundan, istemci gerekli SSL/TLS el sıkışma işlemini gerçekleştirir ve ardından '/Login.aspx ' sayfası için bir HTTP GET isteği oluşturur.
 
-Özyinelemeli DNS hizmeti, aldığı DNS yanıtlarını önbelleğe alır. İstemci cihazdaki DNS Çözümleyicisi de sonucu önbelleğe alır. Önbelleğe alma, sonraki DNS sorgularının diğer ad sunucularını sorgulamak yerine önbellekteki verileri kullanarak daha hızlı yanıtlanmasını sağlar. Önbelleğin süresi, her DNS kaydının ' yaşam süresi ' (TTL) özelliği tarafından belirlenir. Daha kısa değerler, daha hızlı önbellek süre sonu ve bu nedenle Traffic Manager ad sunucularına daha fazla gidiş dönüş elde ediyor. Daha uzun değerler, trafiğin başarısız bir uç noktadan uzaklaşmak için daha uzun sürebileceği anlamına gelir. Traffic Manager, Traffic Manager DNS yanıtlarında kullanılan TTL 'yi 0 saniye ve en fazla 2.147.483.647 saniye ( [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)ile uyumlu en yüksek Aralık) olarak yapılandırmak ve bu sayede, gereksinimlerini en iyi şekilde dengeleyen değeri seçmenizi sağlar. uygulamanız.
+Özyinelemeli DNS hizmeti, aldığı DNS yanıtlarını önbelleğe alır. İstemci cihazdaki DNS Çözümleyicisi de sonucu önbelleğe alır. Önbelleğe alma, sonraki DNS sorgularının diğer ad sunucularını sorgulamak yerine önbellekteki verileri kullanarak daha hızlı yanıtlanmasını sağlar. Önbelleğin süresi, her DNS kaydının ' yaşam süresi ' (TTL) özelliği tarafından belirlenir. Daha kısa değerler, daha hızlı önbellek süre sonu ve bu nedenle Traffic Manager ad sunucularına daha fazla gidiş dönüş elde ediyor. Daha uzun değerler, trafiğin başarısız bir uç noktadan uzaklaşmak için daha uzun sürebileceği anlamına gelir. Traffic Manager, Traffic Manager DNS yanıtlarında kullanılan TTL 'yi 0 saniye ve en fazla 2.147.483.647 saniye ( [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)ile uyumlu maksimum Aralık) olarak, uygulamanızın ihtiyaçlarını en iyi şekilde dengeleyen değeri seçmenizi sağlayan şekilde yapılandırmanıza olanak tanır.
 
 ## <a name="faqs"></a>SSS
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911241"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933604"
 ---
 # <a name="add-html-markers-to-the-map"></a>Haritaya HTML işaretçileri ekleyin
 
@@ -24,7 +24,7 @@ Bu makalede, bir HTML Işaretçisi olarak haritaya bir görüntü dosyası gibi 
 > HTML Işaretçileri veri kaynaklarına bağlanamaz. Bunun yerine, konum bilgisi doğrudan işaretçiye eklenir ve işaret, bir [Htmlmarkermanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)olan Maps `markers` özelliğine eklenir.
 
 > [!IMPORTANT]
-> Azure Haritalar Web denetimindeki birçok katmanın farklı olarak, işlemek için WebGL kullanan çoğu katmanın aksine, HTML Işaretçileri işleme için geleneksel DOM öğeleri kullanır. Bu nedenle, daha fazla HTML işaretleyicisi bir sayfa eklendikçe, daha fazla DOM öğesi vardır. Birkaç yüz HTML işaretleyicisi eklendikten sonra performans düşebilir. Daha büyük veri kümeleri için verilerinizi kümelendirmeyi veya sembol ya da kabarcık katmanı kullanmayı düşünün.
+> Azure Haritalar Web denetimindeki birçok katmanın farklı olarak, işlemek için WebGL kullanan çoğu katmanın aksine, HTML Işaretçileri işleme için geleneksel DOM öğeleri kullanır. Bu nedenle, bir sayfaya daha fazla HTML işaretleyicisi eklendiğinde, daha fazla DOM öğesi vardır. Birkaç yüz HTML işaretleyicisi eklendikten sonra performans düşebilir. Daha büyük veri kümeleri için verilerinizi kümelendirmeyi veya sembol ya da kabarcık katmanı kullanmayı düşünün.
 
 ## <a name="add-an-html-marker"></a>HTML işaretleyicisi ekleme
 
@@ -33,7 +33,7 @@ Bu makalede, bir HTML Işaretçisi olarak haritaya bir görüntü dosyası gibi 
 Aşağıdaki kod bir HTML işaretleyicisi oluşturur ve Color özelliğini "DodgerBlue" olarak ve metin özelliğini "10" olarak ayarlar. Bir açılan pencere, İşaretleyiciye iliştirilir ve açılan pencerenin görünürlüğünü değiştirmek için `click` olayı kullanılır.
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

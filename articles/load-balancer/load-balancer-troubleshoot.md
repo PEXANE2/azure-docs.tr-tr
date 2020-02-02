@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843931"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935473"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
-Bu sayfa, yaygın Azure Load Balancer sorularıyla ilgili sorun giderme bilgileri sağlar. Load Balancer bağlantısı kullanılamadığında en yaygın belirtiler aşağıdaki gibidir: 
+Bu sayfa temel ve standart ortak Azure Load Balancer soruları için sorun giderme bilgileri sağlar. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+
+Load Balancer bağlantısı kullanılamadığında en yaygın belirtiler aşağıdaki gibidir: 
+
 - Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor 
 - Load Balancer arkasındaki VM 'Ler yapılandırılmış bağlantı noktasındaki trafiğe yanıt vermiyor
 
@@ -124,6 +127,10 @@ Bir Load Balancer arka uç VM 'sinde barındırılan uygulamanız aynı ağ arab
 Bir sanal ağ içinde bir iç Load Balancer yapılandırıldıysa ve katılımcı arka uç VM 'lerinden biri iç Load Balancer ön uca erişmeye çalışıyorsa, akış kaynak VM 'ye eşlendiğinde sorunlar oluşabilir. Bu senaryo desteklenmez. Ayrıntılı bir tartışma için [sınırlamaları](concepts-limitations.md#limitations) gözden geçirin.
 
 **Çözüm** Bu senaryonun engelini kaldırmak için proxy kullanma gibi çeşitli yollar vardır. Application Gateway veya diğer üçüncü taraf proxy 'leri değerlendirin (örneğin, NGINX veya HAProxy). Application Gateway hakkında daha fazla bilgi için bkz. [Application Gateway genel bakış](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Belirti: arka uç havuzunda sanal makine ölçek kümesi dağıtılan bir yük dengeleyicinin mevcut LB kuralı için arka uç bağlantı noktası değiştirilemez. 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Neden: VM Ölçek kümesi tarafından başvurulan yük dengeleyici için bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemiyor.
+**Çözüm** Bağlantı noktasını değiştirmek için, VM Ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz.
 
 ## <a name="additional-network-captures"></a>Ek ağ yakalamaları
 Bir destek durumu açmaya karar verirseniz daha hızlı bir çözüm için aşağıdaki bilgileri toplayın. Aşağıdaki testleri gerçekleştirmek için tek bir arka uç VM seçin:

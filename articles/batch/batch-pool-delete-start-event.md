@@ -1,6 +1,6 @@
 ---
-title: Azure Batch havuzu silme başlangıç olayı | Microsoft Docs
-description: Batch havuzu silme başlangıç olayı başvurusu.
+title: Azure Batch havuzu silme başlangıç olayı
+description: Batch havuzu silme başlangıç olayı başvurusu. Bu olay, bir havuz silme işlemi başladığında yayınlanır.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: d582e2b04d203484632a1781d1819f612de41fe7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5246bb800973cf4ad6d11b88ebdc6c015ac7b463
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026736"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929841"
 ---
 # <a name="pool-delete-start-event"></a>Havuz silme başlangıç olayı
 

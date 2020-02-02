@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768036"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936398"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -78,7 +78,7 @@ Yapılandırma parametreleri JSON olarak sağlanır:
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -94,7 +94,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 | `AddWordLevelTimestamps` | Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını ve `false` (varsayılan değer) devre dışı bırakmak için `true`. |
 | `AddSentiment` | Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) tarafından devre dışı bırakılacak `true`. |
 | `AddDiarization` | İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) sağlar. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.|
-|`TranscriptionResultsContainerUrl`|Azure 'da yazılabilir bir kapsayıcıya isteğe bağlı SAS belirteci. Sonuç bu kapsayıcıda depolanacak.
+|`TranscriptionResultsContainerUrl`|Azure 'da yazılabilir bir kapsayıcıya [HIZMET SAS](../../storage/common/storage-sas-overview.md) ile Isteğe bağlı URL. Sonuç bu kapsayıcıda depolanacak.
 
 ### <a name="storage"></a>Depolama
 

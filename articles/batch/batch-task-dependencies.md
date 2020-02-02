@@ -1,5 +1,5 @@
 ---
-title: Görevleri diğer görevlerin tamamlanmasına göre çalıştırmak için görev bağımlılıklarını kullanın-Azure Batch | Microsoft Docs
+title: Görevleri çalıştırmak için görev bağımlılıkları oluşturma-Azure Batch
 description: Azure Batch, MapReduce stilini ve benzer büyük veri iş yüklerini işlemeye yönelik diğer görevlerin tamamlanmasına bağlı görevler oluşturun.
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 733c6e0fb178ed246ac77e0783225ddd642a5fed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026239"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937782"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturma
 
@@ -85,7 +85,7 @@ Azure Batch kullanabileceğiniz üç temel görev bağımlılığı senaryosu va
 > 
 > Bu bölümdeki örneklerde, bağımlı bir görev yalnızca üst görevler başarıyla tamamlandıktan sonra çalışır. Bu davranış, bağımlı bir görev için varsayılan davranıştır. Bir üst görev başarısız olduktan sonra, varsayılan davranışı geçersiz kılmak için bir bağımlılık eylemi belirterek, bağımlı bir görevi çalıştırabilirsiniz. Ayrıntılar için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 
-### <a name="one-to-one"></a>Bir-bir
+### <a name="one-to-one"></a>Bire bir
 Bire bir ilişkide, bir görev bir üst görevin başarıyla tamamlanmasına bağlıdır. Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]'e tek BIR görev kimliği sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıd][net_onid] static yöntemi.
 
 ```csharp

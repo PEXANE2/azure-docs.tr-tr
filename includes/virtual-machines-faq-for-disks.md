@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887887"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961424"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -429,7 +429,7 @@ Evet.
 
 **Azure Backup ve Azure Site Recovery hizmeti tarafından desteklenen en büyük disk boyutları nelerdir?**
 
-Azure Backup ve Azure Site Recovery hizmeti tarafından desteklenen en büyük disk boyutu 4 TiB 'dir. 32 TiB 'ye kadar daha büyük diskler için destek henüz kullanılamamaktadır.
+Azure Backup tarafından desteklenen en büyük disk boyutu 32 TiB 'dir (şifrelenmiş diskler için 4 TiB). Azure Site Recovery tarafından desteklenen en büyük disk boyutu 8 TiB 'dir. 32 TiB 'ye kadar daha büyük diskler için destek, Azure Site Recovery ' de henüz kullanılamamaktadır.
 
 **İyileştirilmiş disk ıOPS ve bant genişliğine ulaşmak için Standart SSD ve Standart HDD diskler için daha büyük disk boyutları (> 4 TiB) için önerilen VM boyutları nelerdir?**
 

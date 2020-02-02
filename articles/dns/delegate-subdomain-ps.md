@@ -2,17 +2,17 @@
 title: Bir alt etki alanı temsilcisi-Azure PowerShell Azure DNS
 description: Bu öğrenme yoluyla, Azure PowerShell kullanarak bir Azure DNS alt etki alanı için temsilci seçmeye başlayın.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: allensu
-ms.openlocfilehash: b6023adb65469dedeeba664a51917306e634146f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212497"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937700"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure DNS alt etki alanı temsilcisi seçme
 

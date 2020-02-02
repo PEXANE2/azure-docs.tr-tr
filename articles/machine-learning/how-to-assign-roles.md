@@ -11,15 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43e04e0ef347ec46a8aad12aac380f68106fc2f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541614"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935368"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
-[!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku.md)]
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğreneceksiniz. [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview) , Azure kaynaklarına erişimi yönetmek için kullanılır. Azure Active Directory kullanıcılara, kaynaklara erişim izni veren belirli roller atanır. Azure, yerleşik roller ve özel roller oluşturma yeteneği sağlar.
 

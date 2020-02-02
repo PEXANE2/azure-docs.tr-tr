@@ -3,7 +3,7 @@ title: Diğer Azure hizmetleriyle Azure DNS kullanma
 description: Bu öğrenme yolunda, diğer Azure hizmetleri için adları çözümlemek üzere Azure DNS nasıl kullanacağınızı kullanmaya başlayın
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: kumudD
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: allensu
-ms.openlocfilehash: 142157273bd24912311383785d08177abfd04398
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211891"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937247"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS diğer Azure hizmetleriyle nasıl kullanılır
 

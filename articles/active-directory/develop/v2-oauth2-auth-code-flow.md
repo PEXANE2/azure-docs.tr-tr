@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 367f6253f228e963edb7b178f8b25da259a5e2c7
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 031890b389e78c4ca01e6d6ae52430db865ede2f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700575"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931052"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -45,7 +45,7 @@ Yüksek düzeyde, yerel/mobil uygulama için tüm kimlik doğrulama akışı şu
 
 ## <a name="request-an-authorization-code"></a>Yetkilendirme kodu iste
 
-Yetkilendirme kodu akışı, kullanıcıyı `/authorize` uç noktasına yönlendiren istemciyle başlar. Bu istekte istemci, kullanıcıdan almaları gereken izinleri gösterir:
+Yetkilendirme kodu akışı, kullanıcıyı `/authorize` uç noktasına yönlendiren istemciyle başlar. Bu istekte istemci, kullanıcıdan `openid`, `offline_access`ve `https://graph.microsoft.com/mail.read `izinlerini ister.  Bazı izinler yönetici tarafından kısıtlanıyor, örneğin `Directory.ReadWrite.All`kullanarak bir kuruluşun dizinine veri yazma. Uygulamanız bir kuruluş kullanıcısının bu izinlerinden birine erişim isterse, kullanıcı uygulamanızın izinlerini kabul etmek için yetkilendirilmediğini bildiren bir hata iletisi alır. Yönetici kısıtlı kapsamlara erişim istemek için, bunları doğrudan bir şirket yöneticisinden istemeniz gerekir.  Daha fazla bilgi için [Yönetici kısıtlı izinleri](v2-permissions-and-consent.md#admin-restricted-permissions)okuyun.
 
 ```
 // Line breaks for legibility only
@@ -55,28 +55,28 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &state=12345
 ```
 
 > [!TIP]
 > Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın! Oturum açtıktan sonra tarayıcınızın, adres çubuğunda bir `code` `https://localhost/myapp/` yeniden yönlendirilmesi gerekir.
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Parametre    | Gerekli/isteğe bağlı | Açıklama |
 |--------------|-------------|--------------|
-| `tenant`    | {1&gt;gerekli&lt;1}    | İsteğin yolundaki `{tenant}` değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler `common`, `organizations`, `consumers`ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
-| `client_id`   | {1&gt;gerekli&lt;1}    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** .  |
-| `response_type` | {1&gt;gerekli&lt;1}    | , Yetkilendirme kodu akışı için `code` içermelidir.       |
-| `redirect_uri`  | {1&gt;gerekli&lt;1} | Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Yerel & Mobile Apps için `https://login.microsoftonline.com/common/oauth2/nativeclient`varsayılan değerini kullanmanız gerekir.   |
-| `scope`  | {1&gt;gerekli&lt;1}    | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  İsteğin `/authorize` baması için, bu birden fazla kaynağı kapsayabilir ve uygulamanızın çağırmak istediğiniz birden çok Web API 'si için onay almasını sağlar. |
-| `response_mode`   | önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak kodu sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde `query` kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız `query`, `fragment`veya `form_post`kullanabilirsiniz. `form_post` yeniden yönlendirme URI 'nize kodu içeren bir GÖNDERI yürütür. Daha fazla bilgi için bkz. [OpenID Connect Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
-| `state`                 | önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Bu değer Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, kimlik doğrulama isteği gerçekleştirilmeden önce (örneğin, bulunan sayfa veya Görünüm) kodlayabilir. |
-| `prompt`  | isteğe bağlı    | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login`, `none`ve `consent`.<br/><br/>- `prompt=login`, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve tek oturum açma 'yı yok eder.<br/>- `prompt=none` bunun tersidir; kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir `interaction_required` hatası döndürür.<br/>- `prompt=consent`, Kullanıcı oturum açtıktan sonra kullanıcıdan uygulamaya izin vermesini isteyen OAuth onay iletişim kutusunu tetikleyecektir. |
-| `login_hint`  | isteğe bağlı    | Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve `preferred_username` talebini kullanarak önceki bir oturum açma işleminden zaten Kullanıcı adını ayıklamış olur.   |
-| `domain_hint`  | isteğe bağlı    | `consumers` veya `organizations`biri olabilir.<br/><br/>Dahil edilse, kullanıcının oturum açma sayfasında, daha kolay bir kullanıcı deneyimi için önde gelen e-posta tabanlı bulma işlemini atlar. Genellikle uygulamalar, önceki bir oturum açma işleminden `tid` çıkararak bu parametreyi yeniden kimlik doğrulama sırasında kullanacaktır. `tid` talep değeri `9188040d-6c67-4c5b-b112-36a304b66dad`, `domain_hint=consumers`kullanmanız gerekir. Aksi takdirde `domain_hint=organizations`kullanın.  |
-| `code_challenge_method` | isteğe bağlı    | `code_challenge` parametresi için `code_verifier` kodlamak için kullanılan yöntem. Aşağıdaki değerlerden biri olabilir:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Dışlanmazsa, `code_challenge` dahil edildikçe `code_challenge` düz metin olarak kabul edilir. Microsoft Identity platform hem `plain` hem de `S256`destekler. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
-| `code_challenge`  | isteğe bağlı | Yerel bir istemciden kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. `code_challenge_method` varsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
+| `tenant`    | Gerekli    | İsteğin yolundaki `{tenant}` değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler `common`, `organizations`, `consumers`ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
+| `client_id`   | Gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** .  |
+| `response_type` | Gerekli    | , Yetkilendirme kodu akışı için `code` içermelidir.       |
+| `redirect_uri`  | Gerekli | Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Yerel & Mobile Apps için `https://login.microsoftonline.com/common/oauth2/nativeclient`varsayılan değerini kullanmanız gerekir.   |
+| `scope`  | Gerekli    | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  İsteğin `/authorize` baması için, bu birden fazla kaynağı kapsayabilir ve uygulamanızın çağırmak istediğiniz birden çok Web API 'si için onay almasını sağlar. |
+| `response_mode`   | Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak kodu sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde `query` kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız `query`, `fragment`veya `form_post`kullanabilirsiniz. `form_post` yeniden yönlendirme URI 'nize kodu içeren bir GÖNDERI yürütür. Daha fazla bilgi için bkz. [OpenID Connect Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
+| `state`                 | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Bu değer Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, kimlik doğrulama isteği gerçekleştirilmeden önce (örneğin, bulunan sayfa veya Görünüm) kodlayabilir. |
+| `prompt`  | seçim    | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login`, `none`ve `consent`.<br/><br/>- `prompt=login`, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve tek oturum açma 'yı yok eder.<br/>- `prompt=none` bunun tersidir; kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir `interaction_required` hatası döndürür.<br/>- `prompt=consent`, Kullanıcı oturum açtıktan sonra kullanıcıdan uygulamaya izin vermesini isteyen OAuth onay iletişim kutusunu tetikleyecektir. |
+| `login_hint`  | seçim    | Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve `preferred_username` talebini kullanarak önceki bir oturum açma işleminden zaten Kullanıcı adını ayıklamış olur.   |
+| `domain_hint`  | seçim    | `consumers` veya `organizations`biri olabilir.<br/><br/>Dahil edilse, kullanıcının oturum açma sayfasında, daha kolay bir kullanıcı deneyimi için önde gelen e-posta tabanlı bulma işlemini atlar. Genellikle uygulamalar, önceki bir oturum açma işleminden `tid` çıkararak bu parametreyi yeniden kimlik doğrulama sırasında kullanacaktır. `tid` talep değeri `9188040d-6c67-4c5b-b112-36a304b66dad`, `domain_hint=consumers`kullanmanız gerekir. Aksi takdirde `domain_hint=organizations`kullanın.  |
+| `code_challenge_method` | seçim    | `code_challenge` parametresi için `code_verifier` kodlamak için kullanılan yöntem. Aşağıdaki değerlerden biri olabilir:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Dışlanmazsa, `code_challenge` dahil edildikçe `code_challenge` düz metin olarak kabul edilir. Microsoft Identity platform hem `plain` hem de `S256`destekler. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge`  | seçim | Yerel bir istemciden kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. `code_challenge_method` varsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
 Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası ayrıca kullanıcının `scope` sorgu parametresinde belirtilen izinlere onay aldığından emin olur. Kullanıcı bu izinlerden herhangi birine onay vermediyseniz, kullanıcıdan gerekli izinleri onaylaması istenir. [İzinlerin, izin ve çok kiracılı uygulamaların ayrıntıları burada verilmiştir](v2-permissions-and-consent.md).
 
@@ -140,7 +140,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
@@ -152,14 +152,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametre  | Gerekli/isteğe bağlı | Açıklama     |
 |------------|-------------------|----------------|
-| `tenant`   | {1&gt;gerekli&lt;1}   | İsteğin yolundaki `{tenant}` değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler `common`, `organizations`, `consumers`ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
-| `client_id` | {1&gt;gerekli&lt;1}  | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atandığı uygulama (ISTEMCI) kimliği. |
-| `grant_type` | {1&gt;gerekli&lt;1}   | Yetkilendirme kodu akışı için `authorization_code` olmalıdır.   |
-| `scope`      | {1&gt;gerekli&lt;1}   | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, ilk Bata istenen kapsamların alt kümesiyle veya buna eşit olmalıdır. Kapsamların hepsi, OıDC kapsamlarıyla birlikte (`profile`, `openid`, `email`) tek bir kaynaktan olmalıdır. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
-| `code`          | {1&gt;gerekli&lt;1}  | Akışın ilk Bata elde ettiğiniz authorization_code. |
-| `redirect_uri`  | {1&gt;gerekli&lt;1}  | Authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
+| `tenant`   | Gerekli   | İsteğin yolundaki `{tenant}` değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler `common`, `organizations`, `consumers`ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
+| `client_id` | Gerekli  | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atandığı uygulama (ISTEMCI) kimliği. |
+| `grant_type` | Gerekli   | Yetkilendirme kodu akışı için `authorization_code` olmalıdır.   |
+| `scope`      | Gerekli   | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, ilk Bata istenen kapsamların alt kümesiyle veya buna eşit olmalıdır. Kapsamların hepsi, OıDC kapsamlarıyla birlikte (`profile`, `openid`, `email`) tek bir kaynaktan olmalıdır. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
+| `code`          | Gerekli  | Akışın ilk Bata elde ettiğiniz authorization_code. |
+| `redirect_uri`  | Gerekli  | Authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
 | `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda güvenilir bir şekilde depolanamadığı için, yerel bir uygulamada uygulama gizli anahtarını kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır.  |
-| `code_verifier` | isteğe bağlı  | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
+| `code_verifier` | seçim  | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
@@ -170,7 +170,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
@@ -253,7 +253,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
@@ -265,11 +265,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametre     |                | Açıklama        |
 |---------------|----------------|--------------------|
-| `tenant`        | {1&gt;gerekli&lt;1}     | İsteğin yolundaki `{tenant}` değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler `common`, `organizations`, `consumers`ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).   |
-| `client_id`     | {1&gt;gerekli&lt;1}    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `grant_type`    | {1&gt;gerekli&lt;1}    | Yetkilendirme kodu akışının bu bacağı için `refresh_token` olmalıdır. |
-| `scope`         | {1&gt;gerekli&lt;1}    | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, özgün authorization_code isteği balarında istenen kapsamların bir alt kümesiyle eşit olmalıdır. Bu istekte belirtilen kapsamlar birden çok kaynak sunucusuna yayılsa, Microsoft Identity platform uç noktası ilk kapsamda belirtilen kaynak için bir belirteç döndürür. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
-| `refresh_token` | {1&gt;gerekli&lt;1}    | Akışın ikinci Bada elde ettiğiniz refresh_token. |
+| `tenant`        | Gerekli     | İsteğin yolundaki `{tenant}` değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler `common`, `organizations`, `consumers`ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).   |
+| `client_id`     | Gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `grant_type`    | Gerekli    | Yetkilendirme kodu akışının bu bacağı için `refresh_token` olmalıdır. |
+| `scope`         | Gerekli    | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, özgün authorization_code isteği balarında istenen kapsamların bir alt kümesiyle eşit olmalıdır. Bu istekte belirtilen kapsamlar birden çok kaynak sunucusuna yayılsa, Microsoft Identity platform uç noktası ilk kapsamda belirtilen kaynak için bir belirteç döndürür. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
+| `refresh_token` | Gerekli    | Akışın ikinci Bada elde ettiğiniz refresh_token. |
 | `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets, cihazlarda güvenilir bir şekilde depolanamadığı için yerel bir uygulamada kullanılmamalıdır. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir. |
 
 #### <a name="successful-response"></a>Başarılı yanıt
@@ -281,7 +281,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }

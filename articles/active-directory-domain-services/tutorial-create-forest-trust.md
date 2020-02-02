@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425429"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931225"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services (Önizleme) içinde şirket içi etki alanına giden bir orman güveni oluşturma
 
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > *Kaynak* ormanı kullanarak Azure AD DS yönetilen bir etki alanı oluşturduğunuzdan emin olun. Varsayılan seçenek bir *Kullanıcı* ormanı oluşturur. Şirket içi AD DS ortamlarında yalnızca kaynak ormanları için güvenler oluşturulabilir.
+    > *Kaynak* ormanı kullanarak Azure AD DS yönetilen bir etki alanı oluşturduğunuzdan emin olun. Varsayılan seçenek bir *Kullanıcı* ormanı oluşturur. Şirket içi AD DS ortamlarında yalnızca kaynak ormanları için güvenler oluşturulabilir. Ayrıca, yönetilen etki alanınız için en az *Kurumsal* SKU kullanmanız gerekir. Gerekirse, [Azure AD DS yönetilen bir etki alanı için SKU 'yu değiştirin][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -188,7 +188,7 @@ Azure AD DS kaynak ormanına katılmış Windows Server VM 'sini kullanarak, kul
 1. **Gruplar veya Kullanıcı adları** listesinden *fileserveraccess* ' i seçin. **FileServerAccess izinleri** listesinde, **değiştirme** ve **yazma** izinleri için *Izin ver* ' i seçin ve ardından **Tamam**' ı seçin.
 1. **Paylaşım** sekmesini seçin ve **Gelişmiş paylaşım...** seçeneğini belirleyin.
 1. **Bu klasörü paylaşma**' yı seçin, sonra da *çapraz Forestshare*gibi **Share adında** dosya paylaşımının hatırlayabileceğiniz bir adını girin.
-1. **İzinler**’i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
+1. **İzinler**' i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
 1. **Tamam** ' ı iki kez seçin ve ardından **kapatın**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ormanlar arası kimlik doğrulamasını bir kaynağa doğrulama
@@ -220,3 +220,4 @@ Azure AD DS orman türleri hakkında daha fazla kavramsal bilgi için bkz. [kayn
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

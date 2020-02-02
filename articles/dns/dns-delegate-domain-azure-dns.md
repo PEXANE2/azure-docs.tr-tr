@@ -2,17 +2,17 @@
 title: 'Öğretici: etki alanınızı ve alt etki alanınızı barındırma-Azure DNS'
 description: Bu makalede, DNS Bölgelerinizi barındırmak için Azure DNS yapılandırmayı öğrenin.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212220"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937310"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Öğretici: Azure DNS’te etki alanınızı barındırma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
@@ -49,7 +49,7 @@ Bu öğretici için kullanılan örnek etki alanı contoso.net ' dir, ancak kend
 
    | **Ayar** | **Değer** | **Ayrıntılar** |
    |---|---|---|
-   |**Adı**|[etki alanı adınız] |Satın aldığınız etki alanı adı. Bu öğreticide örnek olarak contoso.net kullanılmıştır.|
+   |**Ad**|[etki alanı adınız] |Satın aldığınız etki alanı adı. Bu öğreticide örnek olarak contoso.net kullanılmıştır.|
    |**Abonelik**|[Aboneliğiniz]|Bölgenin oluşturulacağı bir abonelik seçin.|
    |**Kaynak grubu**|**Yeni oluştur:** contosoRG|Bir kaynak grubu oluşturun. Kaynak grubu adı, seçtiğiniz abonelik içinde benzersiz olmalıdır.<br>Kaynak grubunun konumunu ifade eder ve DNS bölgesini etkilemez. DNS bölgesi konumu her zaman "geneldir" olur ve gösterilmez.|
    |**Konum**|Doğu ABD||
@@ -118,4 +118,4 @@ Bir sonraki öğreticiye geçmeyi düşünüyorsanız **contosoRG** kaynak grubu
 Bu öğreticide, etki alanınız için bir DNS bölgesi oluşturdunuz ve Azure DNS için temsilciniz. Azure DNS ve web uygulamaları hakkında daha fazla bilgi için web uygulaması öğreticileriyle devam edebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)
+> [Özel etki alanında bir web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

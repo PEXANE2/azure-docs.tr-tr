@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890490"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934627"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu sözdizimi
 
@@ -163,7 +163,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>Cihaz ikizi tabanlı ileti yönlendirme sorgusu 
 
-İleti yönlendirme, JSON nesneleri olan [cihaz ikizi](iot-hub-devguide-device-twins.md) etiketleri ve özellikleri üzerinde sorgulama yapmanızı sağlar. İkizi Module üzerinde sorgulama desteklenmiyor. Bir cihaz Ikizi etiketleri ve özellikleri aşağıda gösterilmiştir.
+İleti yönlendirme, JSON nesneleri olan [cihaz ikizi](iot-hub-devguide-device-twins.md) etiketleri ve özellikleri üzerinde sorgulama yapmanızı sağlar. Modül ikizi üzerinde sorgulama de desteklenir. Bir cihaz Ikizi etiketleri ve özellikleri aşağıda gösterilmiştir.
 
 ```JSON
 {
@@ -196,7 +196,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti gövdesinde bir sorgunun önüne `$twin`ön eki eklenmiş olması gerekir. Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Ayrıca, özellik adları olarak `twin`, `$twin`, `body`veya `$body`kullanmaktan kaçının. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
+İleti gövdesinde bir sorgunun önüne `$twin`ön eki eklenmiş olması gerekir. Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Bu hem cihaz ikis, hem de modül TWINS için geçerlidir. Ayrıca, özellik adları olarak `twin`, `$twin`, `body`veya `$body`kullanmaktan kaçının. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

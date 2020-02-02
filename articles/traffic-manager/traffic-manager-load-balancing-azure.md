@@ -3,7 +3,7 @@ title: Azure 'da Yük Dengeleme hizmetlerini kullanma | Microsoft Docs
 description: 'Bu öğreticide, Azure Yük Dengeleme portföyünü kullanarak nasıl senaryo oluşturacağınız gösterilmektedir: Traffic Manager, Application Gateway ve Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: allensu
-ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227786"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939218"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Microsoft Azure, ağ trafiğinin nasıl dağıtıldığını ve yük dengeli şekilde yönetilmesine yönelik birden çok hizmet sağlar. Gereksinimlerinize bağlı olarak, en iyi çözümü oluşturmak için bu hizmetleri ayrı ayrı kullanabilir veya yöntemlerini birleştirebilirsiniz.
 
@@ -88,10 +88,10 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
    * **Örnek sayısı**: 2 ile 10 arasında bir değer olan örnek sayısı.
    * **Kaynak grubu**: Application Gateway 'i tutan kaynak grubu. Mevcut bir kaynak grubu veya yeni bir kaynak olabilir.
    * **Konum**: kaynak grubuyla aynı konum olan uygulama ağ geçidinin bölgesi. Sanal ağ ve genel IP ağ geçidiyle aynı konumda olması gerektiğinden konum önemlidir.
-3. **OK (Tamam)** düğmesine tıklayın.
+3. **Tamam**’a tıklayın.
 4. Uygulama ağ geçidi için sanal ağ, alt ağ, ön uç IP ve dinleyici yapılandırmasını tanımlayın. Bu senaryoda, ön uç IP adresi **genel**hale gelir ve bu, daha sonra Traffic Manager profiline bir uç nokta olarak eklenmesine izin verir.
 5. Dinleyiciyi aşağıdaki seçeneklerden biriyle yapılandırın:
-    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **OK (Tamam)** düğmesine tıklayın.
+    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam**’a tıklayın.
     * HTTPS kullanıyorsanız, daha fazla yapılandırma gerekir. Adım 9 ' dan başlayarak [uygulama ağ geçidi oluşturma](../application-gateway/application-gateway-create-gateway-portal.md)bölümüne bakın. Yapılandırmayı tamamladığınızda **Tamam**' a tıklayın.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Uygulama ağ geçitleri için URL yönlendirmeyi yapılandırma

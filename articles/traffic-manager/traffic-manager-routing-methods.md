@@ -2,20 +2,20 @@
 title: Azure Traffic Manager trafik yönlendirme yöntemleri
 description: Bu makaleler Traffic Manager tarafından kullanılan farklı trafik yönlendirme yöntemlerini anlamanıza yardımcı olur
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: 824fabf6e694b7148486d6593cf17f741d9e5c9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483796"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938462"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager yönlendirme yöntemleri
 

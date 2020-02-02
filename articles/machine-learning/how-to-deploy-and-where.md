@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543571"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932389"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Machine Learning modelinizi bir Web hizmeti olarak Azure bulutu 'nda veya Azure 
 İş akışı modelinize [nereden dağıttığınız](#target) her ne kadar benzerdir:
 
 1. Modeli kaydedin.
-1. Dağıtım için hazırlayın. (Varlıkları, kullanımı, işlem hedefini belirtin.)
+1. Dağıtmaya hazırlanın. (Varlıkları, kullanımı, işlem hedefini belirtin.)
 1. Modeli işlem hedefine dağıtın.
 1. Web hizmeti olarak da bilinen dağıtılan modeli test edin.
 
@@ -40,7 +40,7 @@ Dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için b
 
 - [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
-## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanma
+## <a name="connect-to-your-workspace"></a>Çalışma alanınıza bağlanın
 
 Aşağıdaki kod, yerel geliştirme ortamında önbelleğe alınan bilgileri kullanarak bir Azure Machine Learning çalışma alanına bağlanmayı gösterir:
 
@@ -174,12 +174,12 @@ Tek kapsayıcılı bir uç noktanın arkasında birden çok modelin nasıl kulla
 
 ## <a name="prepare-to-deploy"></a>Dağıtmaya hazırlanma
 
-Modeli dağıtmak için aşağıdaki öğelere ihtiyacınız olacaktır:
+Modeli dağıtmak için aşağıdaki öğeler gereklidir:
 
-* **Giriş betiği**. Bu betik istekleri kabul eder, modeli kullanarak istekleri puan eder ve sonuçları döndürür.
+* **Bir giriş betiği**. Bu betik istekleri kabul eder, modeli kullanarak istekleri puan eder ve sonuçları döndürür.
 
     > [!IMPORTANT]
-    > * Giriş betiği, modelinize göre değişir. Gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
+    > * Giriş betiği modelinize özeldir. Gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
     >
     >   İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, yanıtı istemciye döndürmeden önce dönüştürebilir.
     >
@@ -187,21 +187,21 @@ Modeli dağıtmak için aşağıdaki öğelere ihtiyacınız olacaktır:
     >
     >   Senaryonuz için işe yönelik bir alternatif, Puanlama sırasında veri depolarına erişim sağlayan [toplu tahmindir](how-to-use-parallel-run-step.md).
 
-* Giriş betiğini veya modeli çalıştırmak için gerekli olan yardımcı betikler veya Python/Conda paketleri gibi **bağımlılıklar**.
+* Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**.
 
-* Dağıtılan modeli barındıran işlem hedefi **dağıtım yapılandırması**. Bu yapılandırma, modeli çalıştırmak için gerekli olan bellek ve CPU gereksinimleri gibi değerleri tanımlar.
+* Dağıtılan modeli barındıran işlem hedefi için **dağıtım yapılandırması** . Bu yapılandırma, modeli çalıştırmak için gereken bellek ve CPU gereksinimleri gibi şeyleri açıklar.
 
-Bu öğeler *çıkarım yapılandırması* ve *dağıtım yapılandırması* olarak kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur. Dağıtımı SDK kullanarak gerçekleştirdiğinizde bu yapılandırmaları program aracılığıyla tanımlarsınız. CLI kullandığınızda ise bunları JSON dosyalarında tanımlarsınız.
+Bu öğeler bir *çıkarım yapılandırmasına* ve bir *dağıtım yapılandırmasına*kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur. Dağıtımı gerçekleştirmek için SDK 'Yı kullandığınızda bu konfigürasyonları programlama yoluyla tanımlarsınız. CLı kullandığınızda bunları JSON dosyalarında tanımlarsınız.
 
 ### <a id="script"></a>1. giriş betiğinizi ve bağımlılıklarınızı tanımlayın
 
-Giriş betiği, dağıtılan bir web hizmetine gönderilen verileri alır ve modele geçirir. Ardından model tarafından döndürülen yanıtı alır ve bunu istemciye döndürür. *Betik, modelinize özeldir*. Modelin beklediği ve döndürdüğü verileri anlaması gerekir.
+Giriş betiği dağıtılan bir Web hizmetine gönderilen verileri alır ve modele geçirir. Ardından model tarafından döndürülen yanıtı alır ve istemciye döndürür. *Betik, modelinize özeldir*. Modelin beklediği ve döndürdüğü verileri anlaması gerekir.
 
 Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
 
 * `init()`: Bu işlev genellikle modeli genel bir nesneye yükler. Bu işlev, Web hizmetiniz için Docker kapsayıcısı başlatıldığında yalnızca bir kez çalıştırılır.
 
-* `run(input_data)`: Bu işlev, giriş verileri temel alan bir değer tahmin modelini kullanır. Çalıştırmanın girişleri ve çıkışlarında serileştirme ve seriden çıkarma için normal olarak JSON kullanılır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden veya istemciye döndürmeden önce dönüştürebilirsiniz.
+* `run(input_data)`: Bu işlev, giriş verileri temel alan bir değer tahmin modelini kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Giriş betiğinizdeki model dosyalarını bulun
 
@@ -220,17 +220,23 @@ Aşağıdaki tabloda, dağıtılan modellerin sayısına bağlı olarak AZUREML_
 | Tek model | Modeli içeren klasörün yolu. |
 | Birden çok model | Tüm modelleri içeren klasörün yolu. Modeller bu klasördeki ad ve sürüm ile bulunur (`$MODEL_NAME/$VERSION`) |
 
-Bir modeldeki bir dosyanın yolunu almak için, ortam değişkenini aradığınız dosya adıyla birleştirin.
-Model dosyalarının dosya adları kayıt ve dağıtım sırasında korunur. 
+Model kaydı ve dağıtımı sırasında modeller AZUREML_MODEL_DIR yoluna yerleştirilir ve özgün dosya adları korunur.
+
+Giriş betiğinizdeki bir model dosyasının yolunu almak için, ortam değişkenini aradığınız dosya yoluyla birleştirin.
 
 **Tek model örneği**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **Birden çok model örneği**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path

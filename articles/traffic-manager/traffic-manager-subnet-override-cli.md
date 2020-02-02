@@ -3,18 +3,18 @@ title: Azure CLı kullanarak Azure Traffic Manager alt ağı geçersiz kılma | 
 description: Bu makale, uç nokta eşlemelerine önceden tanımlanmış IP aralığı aracılığıyla Son Kullanıcı IP adresini temel alarak trafiği bir uç noktaya yönlendirmek üzere bir Traffic Manager profilinin yönlendirme yöntemini geçersiz kılmak için Traffic Manager alt ağ geçersiz kılmanın nasıl kullanılabileceğini anlamanıza yardımcı olur.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: d285db22ef92128e025a677ea7f86d623dfe130c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351170"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938463"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLı kullanarak alt ağ geçersiz kılma Traffic Manager
 

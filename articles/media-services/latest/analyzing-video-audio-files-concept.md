@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/21/2019
+ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 91a09df83c8ba474d3124c3322f4e3dd5eb7367c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186273"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934680"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video ve ses dosyalarını Azure Media Services Çözümleme
 
@@ -28,11 +28,15 @@ Media Services v3 ön ayarlarını kullanarak içeriğinizi analiz etmek için b
 > [!NOTE]
 > Video veya Ses Çözümleyicisi önayarlarını kullanırken, hesabınızı 10 S3 Medya Ayrılmış Birimine sahip olacak şekilde ayarlamak için Azure portalı kullanın. Daha fazla bilgi için bkz. [Medya işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
 
+## <a name="compliance-privacy-and-security"></a>Uyumluluk, gizlilik ve güvenlik
+
+Önemli bir anımsatıcı olarak, Video Indexer ortamınızda geçerli olan tüm yasalara uymak zorundasınız ve Video Indexer ya da başka bir Azure hizmetini diğerlerinin haklarını ihlal eden veya başkalarına zararlı olabilecek bir biçimde kullanamazsınız. Biyometrik veriler de dahil olmak üzere herhangi bir videoyu, işleme ve depolama için Video Indexer hizmetine yüklemeden önce, videodaki her türden uygun tüm haklara sahip olmanız gerekir. Microsoft bilişsel [Hizmetler koşulları](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)video Indexer, uyumluluk, gizlilik ve güvenlik hakkında bilgi edinmek için. Microsoft 'un gizlilik yükümlülüklerini ve verilerinizi işleme için lütfen Microsoft 'un [Gizlilik bildirimini](https://privacy.microsoft.com/PrivacyStatement), [çevrimiçi hizmetler KOŞULLARıNı ("OST")](https://www.microsoft.com/licensing/product-licensing/products) ve [veri Işleme eki](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 'ni ("DPA") gözden geçirin. Veri saklama, silme/yok etme dahil olmak üzere ek gizlilik bilgileri, OST ve [burada](../video-indexer/faq.md)bulunabilir. Video Indexer kullanarak bilişsel hizmetler koşulları, OST, DPA ve gizlilik bildirimiyle bağlanmayı kabul etmiş olursunuz.
+
 ## <a name="built-in-presets"></a>Yerleşik hazır
 
 Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını desteklemektedir:  
 
-|**Önceden ayarlanmış ad**|**Senaryo**|**Ayrıntılar**|
+|**Önceden tanımlı ayar adı**|**Senaryo**|**Ayrıntılar**|
 |---|---|---|
 |[Audioanaliz Zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Ses çözümleme|Önayar, konuşma dökümü dahil olmak üzere, önceden tanımlanmış bir AI tabanlı analiz işlemleri kümesi uygular. Şu anda önayar, tek bir dilde konuşmayı içeren tek bir ses izlemeli içeriği işlemeyi destekler. Girişte ses yükünün dilini ' Language Tag-Region ' BCP-47 biçimini kullanarak belirtebilirsiniz. Desteklenen diller Ingilizce (' en-US ' ve ' en-GB '), Ispanyolca (' es-ES ' ve ' es-MX '), Fransızca (' fr-FR '), Italyanca (' It-IT '), Japonca (' ja-JP '), Portekizce (' PT-BR '), Çince (' zh-CN '), Almanca (' de-DE '), Arapça (' ar-EG ' ve ' ar-SY '), Rusça (' ru-RU '), Hintçe (' Hi-IN ') ve Korece (' ko-KR ').<br/><br/> Dil belirtilmezse veya null olarak ayarlanırsa, otomatik dil algılama algılanan ilk dili seçer ve dosya süresince seçili dile devam eder. Otomatik dil algılama özelliği şu anda Ingilizce, Çince, Fransızca, Almanca, Italyanca, Japonca, Ispanyolca, Rusça ve Portekizce desteklemektedir. İlk dil algılandıktan sonra diller arasında dinamik geçiş yapmayı desteklemez. Otomatik dil algılama özelliği, açık bir konuşma sayesinde ses kayıtları ile en iyi şekilde işe yarar. Otomatik dil algılama dili bulamazsa, geri bulma işlemi Ingilizce 'ye döner.|
 |[Videoanaliz Zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Ses ve video çözümleme|Hem ses hem de videodan Öngörüler (zengin meta veriler) ayıklar ve bir JSON biçim dosyası verir. Video dosyasını işlerken yalnızca ses öngörülerini ayıklamak isteyip istemediğinizi belirtebilirsiniz. Daha fazla bilgi için bkz. [video çözümleme](analyze-videos-tutorial-with-api.md).|
@@ -154,7 +158,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |Knownpersonıd|İç KIMLIK (bilinen bir kişiyse).|
 |Referenceıd|Bing KIMLIĞI (bir Bing ünlüğise).|
 |referenceType|Şu anda yalnızca Bing.|
-|title|Başlık (örneğin, "Microsoft 'un CEO 'SU").|
+|başlık|Başlık (örneğin, "Microsoft 'un CEO 'SU").|
 |ImageUrl|Bir ünlüğlık ise resim URL 'SI.|
 |örnekler|Yüzün verilen zaman aralığında göründüğü örnekler. Her örneğin bir thumbnailsId de vardır. |
 

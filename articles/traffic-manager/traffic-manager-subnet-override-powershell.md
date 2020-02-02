@@ -3,18 +3,18 @@ title: Azure PowerShell kullanarak Azure Traffic Manager alt ağı geçersiz kı
 description: Bu makale, Azure kullanarak uç nokta eşlemelerine önceden tanımlı IP aralığı ile trafiği bir uç noktaya yönlendirmek üzere bir Traffic Manager profilinin yönlendirme yöntemini geçersiz kılmak için Traffic Manager alt ağ geçersiz kılmanın nasıl kullanıldığını anlamanıza yardımcı olur. PowerShell.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348882"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938414"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure PowerShell kullanarak alt ağ geçersiz kılma Traffic Manager
 
@@ -39,7 +39,7 @@ Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure PowerShell 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, 1.0.0 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` ' i çalıştırabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure 'da oturum açmak için `Login-AzAccount` ' ı çalıştırmanız gerekir.
+[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, 1.0.0 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` çalıştırabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure 'da oturum açmak için de `Login-AzAccount` çalıştırmanız gerekir.
 
 
 1. **Traffic Manager uç noktasını alın:**

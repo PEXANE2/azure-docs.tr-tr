@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645098"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935007"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı v2 için özel kurallar
 
@@ -22,7 +22,7 @@ Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, birçok fa
 
 Örneğin, 192.168.5.4/24 aralığındaki bir IP adresinden gelen tüm istekleri engelleyebilirsiniz. Bu kuralda, işleç *Ipmatch*Ise, MATCHVALUES değeri IP adres aralığıdır (192.168.5.4/24) ve işlem trafiği engeller. Kuralın adını ve önceliğini de ayarlarsınız.
 
-Özel kurallar, güvenlik gereksinimlerinizi karşılayan daha gelişmiş kurallar oluşturmak için bileşik mantık kullanımını destekler. Örneğin, (koşul 1 **ve** koşul 2) **veya** koşul 3).  Bu örnekte, koşul 1 **ve** koşul 2 karşılanırsa **veya** koşul 3 karşılanırsa, WAF 'nin özel kuralda belirtilen eylemi yapması gerekir.
+Özel kurallar, güvenlik gereksinimlerinizi karşılayan daha gelişmiş kurallar oluşturmak için bileşik mantık kullanımını destekler. Örneğin, (koşul 1 **ve** koşul 2) **veya** koşul 3). Bu, koşul 1 **ve** koşul 2 karşılanırsa **veya** koşul 3 karşılanıyorsa, WAF 'nin özel kuralda belirtilen eylemi yapması gerektiği anlamına gelir.
 
 Aynı kural içindeki farklı eşleşen koşullar, **ve**kullanarak her zaman bileşik bir şekilde yapılır. Örneğin, belirli bir IP adresinden gelen trafiği ve yalnızca belirli bir tarayıcıyı kullanıyorsa engelleyin.
 
@@ -31,7 +31,7 @@ Aynı kural içindeki farklı eşleşen koşullar, **ve**kullanarak her zaman bi
 > [!NOTE]
 > WAF özel kural sayısı üst sınırı 100 ' dir. Application Gateway limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
-Normal ifadeler Ayrıca, benzer RuleSets gibi özel kurallarda de desteklenir. Bunlara örnekler için bkz. örnek 3 ve 5 [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md).
+Normal ifadeler Ayrıca, benzer RuleSets gibi özel kurallarda de desteklenir. Örnekler için bkz. örnek 3 ve 5 [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md).
 
 ## <a name="allowing-vs-blocking"></a>Vs. engellemeye izin verme
 
@@ -92,7 +92,7 @@ Bu özel kural bir ad, öncelik, bir eylem ve eylemin gerçekleşmesi için kar�
 
 ### <a name="name-optional"></a>Ad [isteğe bağlı]
 
-Kuralın adıdır. Bu ad günlüklerde görüntülenir.
+Kuralın adı.  Günlüklerde görüntülenir.
 
 ### <a name="priority-required"></a>Öncelik [gerekli]
 
@@ -133,7 +133,7 @@ Aşağıdaki işleçlerden biri olmalıdır:
 - GreaterThanOrEqual
 - Ile başlıyor
 - EndsWith
-- Düzenli ifadesi
+- Regex
 - Coğrafi eşleşme (Önizleme)
 
 ### <a name="negate-condition-optional"></a>Negate koşulu [isteğe bağlı]
@@ -145,7 +145,7 @@ Geçerli koşulu geçersiz kılar.
 Eşleşmesinden önce yapılacak dönüşümlerdeki adlara sahip dizelerin listesi. Bunlar aşağıdaki dönüşümler olabilir:
 
 - Küçük harf
-- Trim
+- kırpma
 - URL kod çözme
 - UrlEncode 
 - RemoveNulls
@@ -157,198 +157,13 @@ Eşleştirilecek değerler listesi, *veya*' Ed olarak düşünülebilir. Örneğ
 
 ### <a name="action-required"></a>Eylem [gerekli]
 
-- Allow: işlemi, sonraki tüm kuralları atlayarak bir şekilde yetkilendirir. Bu, belirtilen isteğin izin verilenler listesine eklendiği ve eşleştirildiği anlamına gelir, istek daha fazla değerlendirmeyi durduruyor ve arka uç havuzuna gönderilir. İzin verilenler listesindeki kurallar, başka özel kurallar veya yönetilen kurallar için değerlendirilmez.
-- Block: *Secdefaultaction* (algılama/önleme modu) temelinde işlemi engeller. Izin verme eyleminde olduğu gibi, istek değerlendirildikten ve blok listesine eklendikten sonra, değerlendirme durdurulur ve istek engellenir. Aynı koşulları karşıladıktan sonra herhangi bir istek değerlendirilmeyecektir ve yalnızca engellenir. 
-- GNLK – kuralın günlüğe yazmasına Izin verir, ancak kuralların geri kalanının değerlendirme için çalışmasına izin verir. Sonraki özel kurallar öncelik sırasına göre değerlendirilir ve ardından yönetilen kuralları izler.
+- Allow: işlemi, diğer tüm kuralları atlayarak verir. Belirtilen istek izin verilenler listesine eklenir ve eşleştirdikten sonra, istek daha fazla değerlendirmeyi durduruyor ve arka uç havuzuna gönderilir. İzin verilenler listesindeki kurallar, başka özel kurallar veya yönetilen kurallar için değerlendirilmez.
+- Block: *Secdefaultaction* (algılama/önleme modu) temelinde işlemi engeller. Izin verme eyleminde olduğu gibi, istek değerlendirildikten ve blok listesine eklendikten sonra, değerlendirme durdurulur ve istek engellenir. Aynı koşulları karşıladıktan sonra herhangi bir istek değerlendirilmeyecek ve yalnızca engellenmeyecektir. 
+- GNLK – kuralın günlüğe yazmasına Izin verir, ancak kuralların geri kalanının değerlendirme için çalışmasına izin verir. Diğer özel kurallar öncelik sırasına göre değerlendirilir ve ardından yönetilen kurallar gelir.
 
 ## <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (Önizleme)
 
-Özel kurallar, uygulamanızın tam ihtiyaçlarına ve Güvenlik ilkelerinize uyacak şekilde uyarlanmış kuralların oluşturulmasına olanak sağlar. Artık, Web uygulamalarınıza erişimi, genel önizlemede bulunan ülkeye/bölgeye göre kısıtlayabileceksiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın ihtiyaçlarını karşılamak için diğer kurallarla birlikte iade edilebilir. 
-
-   > [!NOTE]
-   > Geomatch özel kuralları Orta Güney ABD ve Kuzey Avrupa kullanılabilir. Portalda bunlara erişmek için lütfen herkes için etkin olana kadar [Bu bağlantıyı](https://aka.ms/AppGWWAFGeoMatch) kullanın. 
-
-Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından herhangi biri olabilir. 
-
-|Ülke kodu | Ülke adı |
-| ----- | ----- |
-| AD | Andorra |
-| AE | Birleşik Arap Emirlikleri|
-| AF | Afganistan|
-| AG | Antigua ve Barbuda|
-| AL | Arnavutluk|
-| AM | Ermenistan|
-| AO | Angola|
-| AR | Arjantin|
-| AS | Amerikan Samoası|
-| AT | Avusturya|
-| AU | Avustralya|
-| AZ | Azerbaycan|
-| BA | Bosna - Hersek|
-| BB | Barbados|
-| BD | Bangladeş|
-| BE | Belçika|
-| BF | Burkina Faso|
-| BG | Bulgaristan|
-| BH | Bahreyn|
-| BI | Burundi|
-| BJ | Benin|
-| BL | Saint Barthélimy|
-| BN | Barış Yurdu Brunei Devleti|
-| BO | Bolivya|
-| BR | Brezilya|
-| BS | Bahamalar|
-| BT | Butan|
-| BW | Botsvana|
-| BY | Belarus|
-| BZ | Belize|
-| CA | Kanada|
-| CD | Kongo Demokratik Cumhuriyeti|
-| CF | Orta Afrika Cumhuriyeti|
-| CH | İsviçre|
-| CI | Fildişi Kıyısı|
-| CL | Şili|
-| CM | Kamerun|
-| CN | Çin|
-| CO | Kolombiya|
-| CR | Kosta Rika|
-| CU | Küba|
-| CV | Cabo Verde|
-| CY | Kıbrıs|
-| CZ | Çek Cumhuriyeti|
-| DE | Almanya|
-| DK | Danimarka|
-| DO | Dominik Cumhuriyeti|
-| DZ | Cezayir|
-| EC | Ekvador|
-| EE | Estonya|
-| EG | Mısır|
-| ES | İspanya|
-| ET | Etiyopya|
-| FI | Finlandiya|
-| FJ | Fiji|
-| FM | Mikronezya Federe Devletleri|
-| GS | Fransa|
-| GB | Birleşik Krallık|
-| GE | Gürcistan|
-| GF | Fransız Ginesi|
-| GH | Gana|
-| GN | Gine|
-| GP | Guadalupe|
-| GR | Yunanistan|
-| GT | Guatemala|
-| GY | Guyana|
-| HK | Hong Kong SAR|
-| HN | Honduras|
-| İK | Hırvatistan|
-| HT | Haiti|
-| HU | Macaristan|
-| Kimlik | Endonezya|
-| IE | İrlanda|
-| IL | İsrail|
-| IN | Hindistan|
-| IQ | Irak|
-| IR | İran İslam Cumhuriyeti|
-| IS | İzlanda|
-| BT | İtalya|
-| JM | Jamaika|
-| JO | Ürdün|
-| JP | Japonya|
-| KE | Kenya|
-| KG | Kırgızistan|
-| KH | Kamboçya|
-| KI | Kiribati|
-| KN | Saint Kitts ve Nevis|
-| KP | Kore Demokratik Halk Cumhuriyeti|
-| KR | Kore Cumhuriyeti|
-| KW | Kuveyt|
-| KY | Cayman Adaları|
-| KZ | Kazakistan|
-| LA | Laos Demokratik Halk Cumhuriyeti|
-| LB | Lübnan|
-| LI | Liechtenstein|
-| LK | Sri Lanka|
-| LR | Liberya|
-| LS | Lesoto|
-| LT | Litvanya|
-| LU | Lüksemburg|
-| LV | Letonya|
-| LY | Libya |
-| MA | Fas|
-| MD | Moldova Cumhuriyeti|
-| MG | Madagaskar|
-| MK | Kuzey Makedonya|
-| ML | Mali|
-| MM | Myanmar|
-| MN | Moğolistan|
-| MO | Makao ÖİB|
-| MQ | Martinik|
-| MR | Moritanya|
-| MT | Malta|
-| MV | Maldivler|
-| MW | Malavi|
-| MX | Meksika|
-| MY | Malezya|
-| MZ | Mozambik|
-| Yok | Namibya|
-| NE | Nijer|
-| NG | Nijerya|
-| NI | Nikaragua|
-| NL | Hollanda|
-| NO | Norveç|
-| NP | Nepal|
-| NR | Nauru|
-| NZ | Yeni Zelanda|
-| OM | Umman|
-| PA | Panama|
-| PE | Peru|
-| PH | Filipinler|
-| PK | Pakistan|
-| PL | Polonya|
-| PR | Porto Riko|
-| PT | Portekiz|
-| PW | Palau|
-| PY | Paraguay|
-| QA | Katar|
-| RE | Reunion|
-| RO | Romanya|
-| RS | Sırbistan|
-| RU | Rusya Federasyonu|
-| RW | Ruanda|
-| SA | Suudi Arabistan|
-| SD | Sudan|
-| SE | İsveç|
-| SG | Singapur|
-| SI | Slovenya|
-| SK | Slovakya|
-| SN | Senegal|
-| SO | Somali|
-| SR | Surinam|
-| SS | Güney Sedan|
-| SV | El Salvador|
-| SY | Suriye Arap Cumhuriyeti|
-| SZ | Svaziland|
-| TC | Turks ve Caicos Adaları|
-| TG | Togo|
-| TH | Tayland|
-| TN | Tunus|
-| TR | Türkiye|
-| TT | Trinidad ve Tobago|
-| TW | Tayvan|
-| TZ | Tanzanya Birleşik Cumhuriyeti|
-| UA | Ukrayna|
-| UG | Uganda|
-| US | Birleşik Devletler|
-| UY | Uruguay|
-| UZ | Özbekistan|
-| VC | Saint Vincent ve Grenadinler|
-| VE | Venezuela|
-| VG | Virgin Adaları, İngiliz|
-| VI | Virgin Adaları, ABD|
-| VN | Vietnam|
-| ZA | Güney Afrika|
-| ZM | Zambiya|
-| ZW | Zimbabve|
+Özel kurallar, uygulamalarınızın ve Güvenlik ilkelerinizin tam ihtiyaçlarını karşılamak için özel kurallar oluşturmanıza olanak sağlar. Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [Geomatch özel kuralları (Önizleme)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

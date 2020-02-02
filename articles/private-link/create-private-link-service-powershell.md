@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453121"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932074"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma
 Bu makalede, Azure 'da Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -109,7 +109,7 @@ $privateLinkService = New-AzPrivateLinkService `
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik almaya hazırdır. Yukarıdaki örneğin yalnızca PowerShell kullanarak özel bağlantı hizmeti oluşturmayı gösterdiğine unutmayın.  Trafiği dinlemek için yük dengeleyici arka uç havuzlarını veya arka uç havuzlarındaki herhangi bir uygulamayı yapılandırmadınız. Uçtan uca trafik akışlarını görmek istiyorsanız uygulamanızı standart yük dengeleyicinizin arkasında yapılandırmanız önemle önerilir. 
+Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik almaya hazırdır. Yukarıdaki örneğin yalnızca PowerShell kullanarak özel bağlantı hizmeti oluşturmayı gösterdiğine unutmayın.  Trafiği dinlemek için yük dengeleyici arka uç havuzlarını veya arka uç havuzlarındaki herhangi bir uygulamayı yapılandırmadınız. Uçtan uca trafik akışlarını görmek istiyorsanız uygulamanızı standart yük dengeleyicinizin arkasında yapılandırmanız önemle tavsiye edilir. 
 
 Ardından, PowerShell kullanarak bu hizmeti farklı VNet 'teki özel bir uç noktaya nasıl eşleneceğini göstereceğiz. Bu örnek, Özel uç nokta oluşturma ve yukarıda oluşturulan özel bağlantı hizmetine bağlanma ile sınırlıdır. Senaryonuzu oluşturmak için özel uç noktaya trafik göndermek/almak için sanal ağda sanal makineler oluşturabilirsiniz. 
 

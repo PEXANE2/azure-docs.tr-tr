@@ -3,12 +3,12 @@ title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840774"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938871"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -56,9 +56,9 @@ Kod yürütüldüğü sırada bir kapsayıcı görüntüsü oluşturma veya çok
 
 ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşağıdaki Tetikleyicileri destekler:
 
-| Tetikleyici | Varsayılan olarak etkindir |
+| Tetikleyici | Varsayılan olarak etkin |
 | ------- | ------------------ |
-| İşleme | Yes |
+| İşleme | Evet |
 | Çekme isteği | Hayır |
 
 Bir kaynak kodu güncelleştirme tetikleyicisi yapılandırmak için, genel veya özel GitHub veya Azure DevOps deposunda Web kancasını ayarlamak üzere bir kişisel erişim belirteci (PAT) görevi sağlamanız gerekir.
@@ -122,6 +122,7 @@ Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yöne
 | GitHub ana dalı | Ortak veya özel bir GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub dalı | Ortak veya özel GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub alt klasörü | Ortak veya özel bir GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub yürütmesi | Genel veya özel bir GitHub deposunda belirli bir işleme. Örnek, bir COMMIT Hash (SHA) ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps alt klasörü | Ortak veya özel bir Azure deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, dal ve alt klasör belirtiminin birleşimini gösterir. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
 
@@ -134,8 +135,8 @@ Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi içi
 
 | İşletim Sistemi | Mimari|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>arm64<br/>386 |
-| Windows | amd64 |
+| Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
+| Windows | 'tür |
 
 ## <a name="view-task-logs"></a>Görev günlüklerini görüntüle
 

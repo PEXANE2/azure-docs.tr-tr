@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911181"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933473"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Haritaya bir çizgi katmanı ekleyin
 
-Bir çizgi katmanı, haritada yol veya yol olarak `LineString` ve `MultiLineString` özellikleri işlemek için kullanılabilir. Çizgi katmanı, `Polygon` ve `MultiPolygon` özelliklerinin ana hattını işlemek için de kullanılabilir. Veri kaynağı, işlemek için veri sağlamak üzere bir çizgi katmanına bağlanır. 
+Bir çizgi katmanı, haritada yol veya yol olarak `LineString` ve `MultiLineString` özellikleri işlemek için kullanılabilir. Çizgi katmanı, `Polygon` ve `MultiPolygon` özelliklerinin ana hattını işlemek için de kullanılabilir. Veri kaynağı, işlenecek verileri sağlamak için bir çizgi katmanına bağlanır. 
 
 > [!TIP]
 > Çizgi katmanları, varsayılan olarak çokgenler koordinatlarını ve bir veri kaynağındaki satırları de işler. Katmanı yalnızca LineString özelliklerinin yalnızca satır dizesi özelliklerini, `filter` özelliğini `['==', ['geometry-type'], 'LineString']` ya da çok LineString özelliklerini dahil etmek istiyorsanız `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` olarak ayarlamak için.
 
-Aşağıdaki kod, bir çizgi oluşturma, bir veri kaynağına ekleme ve [linelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) sınıfını kullanarak bir çizgi katmanı ile işleme işlemlerinin nasıl yapılacağını gösterir.
+Aşağıdaki kod, bir satırın nasıl oluşturulacağını gösterir. Satırı bir veri kaynağına ekleyin ve ardından [linelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) sınıfını kullanarak bir çizgi katmanı ile işleme koyun.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="add-symbols-along-a-line"></a>Çizgi üzerinde semboller ekleme
 
-Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini gösterir. Sembol katmanını kullanırken, "yerleştirme" seçeneğini "satır" olarak ayarlayın, bu, simgeleri satır üzerinde işler ve simgeleri döndürür (0 derece = sağ).
+Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini gösterir. Sembol katmanını kullanırken, "yerleştirme" seçeneğini "Line" olarak ayarlayın. Bu seçenek, simgeleri satır üzerinde işler ve simgeleri döndürür (0 derece = sağ).
 
 <br/>
 
@@ -66,7 +66,7 @@ Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini g�
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Çizgiye vuruş gradyanı ekleme
 
-Bir çizgiye tek bir kontur rengi uygulayabilmenin yanı sıra, bir çizgi segmentinden diğerine geçişi göstermek için bir renk degradesi olan bir satırı da doldurabilirsiniz. Örneğin, çizgi degradeleri zaman ve mesafe üzerinde yapılan değişiklikleri veya bağlı bir nesne satırındaki farklı sıcaklıkları temsil etmek için kullanılabilir. Bu özelliği bir satıra uygulamak için veri kaynağında `lineMetrics` seçeneğinin true olarak ayarlanması gerekir ve ardından satırdaki `strokeColor` seçeneğine bir renk gradyanı ifadesi geçirilebilir. Kontur gradyanı ifadesi, hesaplanmış satır ölçümlerini ifade eden `['line-progress']` veri ifadesine başvurmalıdır.
+Bir çizgiye tek bir kontur rengi uygulayabilirsiniz. Ayrıca, bir çizgi segmentinden sonraki satır segmentine geçişi göstermek için bir renkler degradeyle bir çizgi doldurabilirsiniz. Örneğin, çizgi degradeleri zaman ve mesafe üzerinde yapılan değişiklikleri veya bağlı bir nesne satırındaki farklı sıcaklıkları temsil etmek için kullanılabilir. Bu özelliği bir satıra uygulamak için veri kaynağında `lineMetrics` seçeneğinin true olarak ayarlanması gerekir ve ardından satırdaki `strokeColor` seçeneğine bir renk gradyanı ifadesi geçirilebilir. Kontur gradyanı ifadesi, hesaplanmış satır ölçümlerini ifade eden `['line-progress']` veri ifadesine başvurmalıdır.
 
 <br/>
 
@@ -76,7 +76,7 @@ Bir çizgiye tek bir kontur rengi uygulayabilmenin yanı sıra, bir çizgi segme
 
 ## <a name="customize-a-line-layer"></a>Çizgi katmanını özelleştirme
 
-Çizgi katmanı çeşitli stil oluşturma seçenekleri. İşte deneyebileceğiniz bir araç.
+Çizgi katmanının çeşitli stil seçenekleri vardır. İşte deneyebileceğiniz bir araç.
 
 <br/>
 

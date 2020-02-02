@@ -2,17 +2,17 @@
 title: Özel bölgelere yönelik senaryolar-Azure DNS
 description: Bu makalede Azure DNS Özel Bölgeleri kullanmaya yönelik yaygın senaryolar hakkında bilgi edinin.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 2eb7e9e4df5bdf0f8eb047cc8594bd862245770d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210468"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939333"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS özel bölgeler senaryoları
 

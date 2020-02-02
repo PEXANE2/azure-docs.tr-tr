@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225292"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934563"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -237,7 +237,7 @@ Bir sonraki daha büyük arka uç havuzu boyut katmanına ölçeklendirirseniz, 
 
 ### <a name="idletimeout"></a>Giden boşta kalma zaman aşımını sıfırlamak için keepcanlı tutmayı kullanın
 
-Giden bağlantılarda 4 dakikalık bir boşta kalma zaman aşımı vardır. Bu zaman aşımı ayarlanamaz. Bununla birlikte, boş bir akışı yenilemek ve gerekirse bu boşta kalma zaman aşımını sıfırlamak için taşıma (örneğin, TCP keepcanlı tutma) veya uygulama katmanı keepcanlı tutma kullanabilirsiniz.  
+Giden bağlantılarda 4 dakikalık bir boşta kalma zaman aşımı vardır. Bu zaman aşımı, [giden kuralları](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)aracılığıyla ayarlanabilir. Ayrıca, boş bir akışı yenilemek ve gerekirse bu boşta kalma zaman aşımını sıfırlamak için taşıma (örneğin, TCP keepcanlı tutma) veya uygulama katmanı keepcanlı tutma özelliğini de kullanabilirsiniz.  
 
 TCP keepcanlı hale geldiğinde, bağlantının tek tarafında etkinleştirilmesi yeterlidir. Örneğin, bunları sunucu tarafında etkinleştirmek yeterlidir ve akışın boşta kalma zamanlayıcısını sıfırlayın ve her iki taraf da her iki tarafın da TCP keepcanlı hale getirilir olması gerekmez.  Veritabanı istemci-sunucu yapılandırmalarına dahil olmak üzere uygulama katmanı için benzer kavramlar vardır.  Uygulamaya özgü keepcanlı tutma için hangi seçeneklerin mevcut olduğunu kontrol edin.
 

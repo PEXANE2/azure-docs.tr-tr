@@ -1,28 +1,30 @@
 ---
-title: Azure Service Fabric-yönetilen kimlik desteğini etkinleştirmek için mevcut bir Azure Service Fabric kümesini yapılandırın
-description: Bu makalede, Yönetilen kimlikler için desteği etkinleştirmek üzere mevcut bir Azure Service Fabric kümesini nasıl yapılandırabileceğiniz gösterilmektedir
+title: Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapılandırma
+description: Mevcut bir Azure Service Fabric kümesinde Yönetilen kimlikler desteğini etkinleştirme
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351601"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934958"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Yönetilen kimlik desteğini etkinleştirmek için mevcut bir Azure Service Fabric kümesi yapılandırma (Önizleme)
-Azure Service Fabric uygulamaları için yönetilen kimlik özelliğine erişebilmek için öncelikle kümede **yönetilen kimlik belirteci hizmetini** etkinleştirmeniz gerekir. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, **doku:/System/Managedıdentitytokenservice**adı altında çalışan Service Fabric Explorer görebilirsiniz.
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapılandırma (Önizleme)
+
+Service Fabric uygulamalarınızda [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanmak üzere önce kümede *yönetilen kimlik belirteci hizmetini* etkinleştirin. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, **doku:/System/Managedıdentitytokenservice**adı altında çalışan Service Fabric Explorer görebilirsiniz.
 
 > [!NOTE]
 > **Yönetilen kimlik belirteci hizmetini**etkinleştirmek için Service Fabric Runtime sürümü 6.5.658.9590 veya üzeri gereklidir.  
-> 
+>
 > Küme kaynağını açıp **temel** bileşenler bölümündeki **Service Fabric sürümü** özelliğini denetleyerek Azure Portal bir kümenin Service Fabric sürümünü bulabilirsiniz.
-> 
+>
 > Küme **el ile** yükseltme modundaysa, önce bunu 6.5.658.9590 veya sonraki bir sürüme yükseltmeniz gerekir.
 
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Mevcut kümede *yönetilen kimlik belirteci hizmetini* etkinleştir
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirin
-Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirmek için iki değişiklik belirten bir küme yükseltmesi başlatmanız gerekir: yönetilen kimlik belirteci hizmetini etkinleştirme ve her bir düğümün yeniden başlatılmasını isteme. Bunu yapmak için, Azure Resource Manager şablonuna aşağıdaki iki parçacığı ekleyin:
+Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirmek için iki değişiklik belirten bir küme yükseltmesi başlatmanız gerekir: (1) yönetilen kimlik belirteci hizmetini etkinleştirme ve (2) her düğümün yeniden başlatılmasını isteme. İlk olarak, aşağıdaki kod parçacığını kümeniz Azure Resource Manager şablonu ekleyin:
 
 ```json
 "fabricSettings": [

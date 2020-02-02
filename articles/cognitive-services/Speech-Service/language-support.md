@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/31/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845325"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935335"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
@@ -240,8 +240,10 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Hmong Daw      | `mww`          |
 | Macarca      | `hu`          |
 | Endonezya dili      | `id`          |
+| İrlanda dili      | `ga`          |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
+| Kannada dili      | `kn`          |
 | Svahili dili      | `sw`          |
 | Klingon      | `tlh`          |
 | Klingon (plqaD)      | `tlh-Qaak`          |
@@ -250,11 +252,14 @@ Ses özelleştirmesi `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR`, `it-I
 | Litvanca      | `lt`          |
 | Malgaşça      | `mg`          |
 | Malay dili      | `ms`          |
+| Malayalam dili      | `ml`          |
 | Malta dili      | `mt`          |
 | Norveççe      | `nb`          |
 | Farsça      | `fa`          |
 | Lehçe      | `pl`          |
-| Portekizce      | `pt`          |
+| Portekizce (Brezilya)      | `pt-br`          |
+| Portekizce (Portekiz)      | `pt-pt`          |
+| Pencap dili      | `pa`          |
 | Queretaro Otomi      | `otq`          |
 | Rumence      | `ro`          |
 | Rusça      | `ru`          |

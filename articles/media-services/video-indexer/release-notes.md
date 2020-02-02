@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832303"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933852"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -29,6 +29,24 @@ ms.locfileid: "75832303"
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlev
+
+## <a name="january-2020"></a>Ocak 2020
+ 
+### <a name="custom-language-support-for-additional-languages"></a>Ek diller için özel dil desteği
+
+Video Indexer artık `ar-SY`, `en-UK`ve `en-AU` için özel dil modellerini desteklemektedir (yalnızca API).
+ 
+### <a name="delete-account-timeframe-action-update"></a>Hesap zaman çerçevesi eylem güncelleştirmesini Sil
+
+Hesap silme eylemi artık hesabı 48 saat yerine 90 gün içinde siler.
+ 
+### <a name="new-video-indexer-github-repository"></a>Yeni Video Indexer GitHub deposu
+
+Farklı projelere sahip yeni bir GitHub Video Indexer, Başlarken kılavuzlarını ve kod örneklerini artık bulabilirsiniz: https://github.com/Azure-Samples/media-services-video-indexer
+ 
+### <a name="swagger-update"></a>Swagger güncelleştirmesi
+
+Tek bir [video Indexer Openapı belirtiminde (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)birleştirilmiş **kimlik doğrulamaları** ve **işlemler** video Indexer. Develpers, [video Indexer Geliştirici Portalında](https://api-portal.videoindexer.ai/)API 'leri bulabilir.
 
 ## <a name="december-2019"></a>Aralık 2019
 

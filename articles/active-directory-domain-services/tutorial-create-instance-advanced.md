@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703669"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931628"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle bir Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -94,6 +94,9 @@ Azure AD DS örneği oluşturmak için Azure portal *temel bilgiler* penceresind
 
     Azure AD DS bölgeler arasında dağıtılacak şekilde yapılandırmanız için bir şey yoktur. Azure platformu, kaynakların bölge dağılımını otomatik olarak işler. Daha fazla bilgi edinmek ve bölge kullanılabilirliğini görmek için bkz. [Azure 'da kullanılabilirlik alanları nedir?][availability-zones]
 
+1. **SKU** , oluşturabileceğiniz bir performans, yedekleme sıklığı ve en fazla orman güveni sayısını belirler. İş talepleriniz veya gereksinimleriniz değiştikçe, yönetilen etki alanı oluşturulduktan sonra SKU 'YU değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure AD DS SKU kavramları][concepts-sku].
+
+    Bu öğretici için *Standart* SKU 'yu seçin.
 1. *Orman* bir veya daha fazla etki alanını gruplamak için Active Directory Domain Services tarafından kullanılan mantıksal bir yapıdır. Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. *Kaynak* ormanı yalnızca doğrudan Azure AD 'de oluşturulan kullanıcıları ve grupları eşitler. Kaynak ormanları Şu anda önizleme aşamasındadır. *Kaynak* ormanları hakkında daha fazla bilgi için, bir tane kullanabilirsiniz ve şirket içi AD DS etki alanlarıyla orman güvenleri oluşturma hakkında daha fazla bilgi için bkz. [Azure AD DS kaynak ormanları genel bakış][resource-forests].
 
     Bu öğreticide, bir *Kullanıcı* ormanı oluşturmayı seçin.
@@ -102,9 +105,9 @@ Azure AD DS örneği oluşturmak için Azure portal *temel bilgiler* penceresind
 
 1. Ek seçenekleri el ile yapılandırmak için **İleri-ağ**' ı seçin. Aksi takdirde, varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** ' u seçin ve ardından [yönetilen etki alanınızı dağıtmak](#deploy-the-managed-domain)için bölümüne atlayın. Bu oluşturma seçeneğini belirlediğinizde aşağıdaki varsayılanlar yapılandırılır:
 
-* *10.0.1.0/24*IP adresi aralığını kullanan *aeklemeleri-VNET* adlı bir sanal ağ oluşturur.
-* *10.0.1.0/24*IP adresi aralığını kullanarak *aeklemesine-subnet* adlı bir alt ağ oluşturur.
-* Azure AD 'deki *Tüm* kullanıcıları Azure AD DS yönetilen etki alanına eşitler.
+    * *10.0.1.0/24*IP adresi aralığını kullanan *aeklemeleri-VNET* adlı bir sanal ağ oluşturur.
+    * *10.0.1.0/24*IP adresi aralığını kullanarak *aeklemesine-subnet* adlı bir alt ağ oluşturur.
+    * Azure AD 'deki *Tüm* kullanıcıları Azure AD DS yönetilen etki alanına eşitler.
 
 ## <a name="create-and-configure-the-virtual-network"></a>Sanal ağ oluşturma ve yapılandırma
 
@@ -125,7 +128,7 @@ Sanal ağın nasıl planlanacağı ve yapılandırılacağı hakkında daha fazl
     1. Bir sanal ağ oluşturmayı seçerseniz, sanal ağ için *Myvnet*gibi bir ad girin ve ardından *10.0.1.0/24*gibi bir adres aralığı belirtin.
     1. *DomainServices*gibi açık bir ada sahip ayrılmış bir alt ağ oluşturun. *10.0.1.0/24*gibi bir adres aralığı belirtin.
 
-    ![Azure AD Domain Services ile kullanmak için bir sanal ağ ve alt ağ oluşturun](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Özel IP adresi aralığınızı içinde olan bir adres aralığı seçtiğinizden emin olun. Ortak adres alanındaki sahip olmadığınız IP adresi aralıkları, Azure AD DS içinde hatalara neden olur.
 
@@ -217,7 +220,7 @@ Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, 
 
 1. **Profil** sayfasında, **Parolayı Değiştir**' i seçin.
 1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolanızı girip yeni bir parola girin ve onaylayın.
-1. **Gönder**' i seçin.
+1. Seçin **gönderme**.
 
 Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına katılmış bilgisayarlarda başarıyla oturum açması için parolanızı değiştirdikten birkaç dakika sürer.
 
@@ -248,5 +251,6 @@ Bu yönetilen etki alanını işlem içinde görmek için bir sanal makineyi olu
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

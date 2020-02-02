@@ -1,5 +1,5 @@
 ---
-title: İşlem düğümlerinde işleri hazırlamak ve işleri gerçekleştirmek için görevler oluşturma-Azure Batch | Microsoft Docs
+title: İşlem düğümlerinde & tamamlanmış işleri hazırlamak için Görevler oluşturun-Azure Batch
 description: İşlem düğümlerine Azure Batch veri aktarımını en aza indirmek ve iş tamamlandığında düğüm Temizleme için görevleri serbest bırakmak için iş düzeyinde hazırlık görevlerini kullanın.
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ed3b96ff7f1117b1185159cfa4e4b03aa80d6b02
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027124"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935044"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
 

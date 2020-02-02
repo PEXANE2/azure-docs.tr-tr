@@ -1,18 +1,18 @@
 ---
 title: Uygulamaları işleme-Azure Batch
-description: Önceden yüklenmiş toplu işleme uygulamaları
+description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 services: batch
 ms.service: batch
 author: ju-shim
 ms.author: jushiman
 ms.date: 09/19/2019
 ms.topic: conceptual
-ms.openlocfilehash: 367f7655c32c30f11b37c86c098d76e146fec69c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e47d05594142de87fabd2d61faeb40d25fdc1873
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026577"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934584"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>VM görüntülerini işlemeye önceden yüklenmiş uygulamalar
 

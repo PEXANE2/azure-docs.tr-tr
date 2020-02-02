@@ -2,17 +2,17 @@
 title: 'Öğretici: Azure genel IP adresine başvurmak için Azure DNS diğer ad kaydı oluşturma'
 description: Bu öğreticide Azure genel IP adresine başvurmak için bir Azure DNS diğer ad kaydını yapılandırma işlemi gösterilmektedir.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072122"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939270"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Öğretici: Azure genel IP adresine başvurmak için diğer ad kaydı yapılandırma 
 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
 Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).
@@ -94,4 +94,4 @@ Bu öğreticide oluşturulan kaynaklara ihtiyacınız kalmadığında **RG-DNS-A
 Bu öğreticide Azure genel IP adresine başvurmak için bir diğer ad kaydı oluşturdunuz. Azure DNS ve web uygulamaları hakkında daha fazla bilgi için web uygulaması öğreticileriyle devam edebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)
+> [Özel etki alanında bir web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

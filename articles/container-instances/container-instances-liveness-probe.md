@@ -2,13 +2,13 @@
 title: Kapsayıcı örneği üzerinde lizleştirme araştırması ayarlama
 description: Azure Container Instances ' de uygun olmayan kapsayıcıları yeniden başlatmak için Lida araştırmaların nasıl yapılandırılacağını öğrenin
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901900"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934157"
 ---
 # <a name="configure-liveness-probes"></a>Canlılık yoklaması yapılandırma
 
@@ -63,33 +63,33 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Başlat komutu
 
-Dağıtım, kapsayıcı ilk kez çalışmaya başladığında çalıştırılacak başlangıç komutunu tanımlar, bu, bir dizi dizeyi kabul eden `command` özelliği tarafından tanımlanır. Bu örnekte, bir bash oturumu başlatacak ve bu komutu geçirerek `/tmp` dizininde `healthy` adlı bir dosya oluşturacaktır:
+Dağıtım, kapsayıcının ilk kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir `command` özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, uygun olmayan bir durum girerek kapsayıcının benzetimini yapar.
+
+İlk olarak, bir bash oturumu başlatır ve `/tmp` dizin içinde `healthy` adlı bir dosya oluşturur. Daha sonra dosyayı silmeden önce 30 saniye boyunca uykuya geçer ve 10 dakikalık bir uyku moduna girer:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Daha sonra dosyayı silmeden önce 30 saniye sürer ve ardından 10 dakikalık bir uyku moduna girer.
-
 ### <a name="liveness-command"></a>Lida komutu
 
-Bu dağıtım, lietler denetimi görevi gören bir `exec` lietler komutunu destekleyen bir `livenessProbe` tanımlar. Bu komut sıfır olmayan bir değerle çıkış alıyorsa, kapsayıcı sonlandırılır ve yeniden başlatılır, `healthy` dosyası bulunamadı. Bu komut, çıkış kodu 0 ile başarılı bir şekilde çıkılırken hiçbir işlem yapılmaz.
+Bu dağıtım, lietler denetimi görevi gören bir `exec` lietler komutunu destekleyen bir `livenessProbe` tanımlar. Bu komut sıfır olmayan bir değerle kapalıyorsa, kapsayıcı sonlandırılır ve yeniden başlatılır, `healthy` dosyası bulunamadı. Bu komut, çıkış kodu 0 ile başarılı bir şekilde çıkılırken hiçbir işlem yapılmaz.
 
 `periodSeconds` özelliği, uygun komutu her 5 saniyede bir yürütebilmelidir.
 
 ## <a name="verify-liveness-output"></a>Libir çıktıyı doğrula
 
-İlk 30 saniye içinde, start komutu tarafından oluşturulan `healthy` dosya vardır. Liki komutu `healthy` dosyanın varlığını denetlediğinde, durum kodu sıfır döndürür ve başarılı olarak sinyal verir, böylece yeniden başlatma gerçekleşmez.
+İlk 30 saniye içinde, start komutu tarafından oluşturulan `healthy` dosya vardır. Liki komutu `healthy` dosyanın varlığını denetlediğinde, durum kodu 0 döndürür, başarılı olarak sinyal verir ve yeniden başlatma gerçekleşmez.
 
-30 saniye sonra, `cat /tmp/healthy` başarısız olur, sağlıksız ve olayları sonlandırma olayları oluşmasına neden olur.
+30 saniye sonra, `cat /tmp/healthy` komutu başarısız olur, sağlıksız ve olayları sonlandırma olayları oluşmasına neden olur.
 
 Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir.
 
 ![Portalın sağlıksız olayı][portal-unhealthy]
 
-Azure portal olayları görüntüleyerek, `Unhealthy` türündeki olaylar, uygun olmayan komut başarısız olduğunda tetiklenecektir. Sonraki olay `Killing`türünde olacaktır ve bir yeniden başlatmanın başlaması için bir kapsayıcı silmeyi belirtir. Bu olay gerçekleştiğinde kapsayıcının yeniden başlatma sayısı artar.
+Azure portal olayları görüntüleyerek, `Unhealthy` türündeki olaylar, hatalı komut başarısız olduğunda tetiklenir. Sonraki olay `Killing`türüdür ve yeniden başlatmanın başlaması için kapsayıcı silmeyi belirtir. Bu olay gerçekleştiğinde kapsayıcının yeniden başlatma sayısı artar.
 
-Yeniden başlatmalar, genel IP adresleri ve düğüme özgü içerikler gibi kaynakların korunabilmesi için yerinde tamamlanır.
+Yeniden başlatmalar, genel IP adresleri ve düğüme özgü içerikler gibi kaynakların korunması için yerinde tamamlanır.
 
 ![Portal yeniden başlatma sayacı][portal-restart]
 
@@ -97,7 +97,7 @@ Destekleneme araştırması sürekli olarak başarısız olur ve çok fazla yeni
 
 ## <a name="liveness-probes-and-restart-policies"></a>Lizleştirme araştırmaları ve yeniden başlatma ilkeleri
 
-Yeniden başlatma ilkeleri, lilezleştirme araştırmaları tarafından tetiklenen yeniden başlatma davranışının yerini alır Örneğin, bir `restartPolicy = Never` *ve* bir lizleştirme araştırması ayarlarsanız, başarısız bir denetim nedeniyle kapsayıcı grubu yeniden başlatmaz. Kapsayıcı grubu bunun yerine kapsayıcı grubunun `Never`yeniden başlatma ilkesine bağlı olacaktır.
+Yeniden başlatma ilkeleri, lilezleştirme araştırmaları tarafından tetiklenen yeniden başlatma davranışının yerini alır Örneğin, bir `restartPolicy = Never` *ve* bir lizleştirme araştırması ayarlarsanız, başarısız bir denetim nedeniyle kapsayıcı grubu yeniden başlatmaz. Bunun yerine kapsayıcı grubu, kapsayıcı grubunun `Never`yeniden başlatma ilkesine uyar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

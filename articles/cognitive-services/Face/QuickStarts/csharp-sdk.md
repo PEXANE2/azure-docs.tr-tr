@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165879"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930140"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Hızlı başlangıç: .NET için yüz istemci kitaplığı
 
@@ -22,7 +22,6 @@ ms.locfileid: "76165879"
 
 .NET için yüz istemci kitaplığı 'nı kullanarak şunları yapın:
 
-* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Görüntüdeki yüzeyleri algılama](#detect-faces-in-an-image)
 * [Benzer yüzeyleri bulun](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
@@ -122,7 +121,7 @@ Aşağıdaki kod parçacıkları, .NET için yüz istemci kitaplığı ile aşa�
 > [!NOTE]
 > Bu hızlı başlangıç, `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı yüz anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar.
 
-Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Yeni bir yöntemde, uç nokta ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** nesnesi oluşturun ve bir **[faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -140,19 +139,19 @@ Sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu URL bir ö
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Son algılama işlemi bir [Faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) nesnesi, bir görüntü URL 'si ve bir tanıma modeli alır.
+Son algılama işlemi bir **[Faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi, bir görüntü URL 'si ve bir tanıma modeli alır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Algılanan yüz nesneleri Al
 
-Sonraki kod bloğunda, `DetectFaceExtract` Yöntemi verilen URL 'nin üç görüntüde bulunan yüzeyleri algılar ve program belleğindeki [algılayıcısı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) olan nesnelerin bir listesini oluşturur. [Faceattributetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
+Sonraki kod bloğunda, `DetectFaceExtract` Yöntemi verilen URL 'nin üç görüntüde bulunan yüzeyleri algılar ve program belleğindeki **[algılayıcısı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** olan nesnelerin bir listesini oluşturur. **[Faceattributetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** değerlerinin listesi hangi özelliklerin ayıklanacağını belirtir. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Algılanan yüz verileri görüntüle
 
-`DetectFaceExtract` yönteminin geri kalanı algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( [Faceattributetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
+`DetectFaceExtract` yönteminin geri kalanı algılanan her bir yüzey için öznitelik verilerini ayrıştırır ve yazdırır. Her öznitelik, özgün yüz algılama API çağrısında ( **[Faceattributetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç tane kullanmanız gerekir.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

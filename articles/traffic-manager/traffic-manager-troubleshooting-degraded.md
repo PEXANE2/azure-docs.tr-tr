@@ -3,7 +3,7 @@ title: Azure Traffic Manager 'da azaltılmış durum sorunlarını giderme
 description: Düşürülmüş durum olarak görüntülendiğinde Traffic Manager profillerinin sorunlarını giderme.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: allensu
-ms.openlocfilehash: 8b8fbdf55e408874f6a6e83d6333583238865b5c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227711"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938375"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager 'da azaltılmış durum sorunlarını giderme
 
@@ -85,7 +85,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Traffic Manager nedir?](traffic-manager-overview.md)
 
-[Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Bulut hizmetleri](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 

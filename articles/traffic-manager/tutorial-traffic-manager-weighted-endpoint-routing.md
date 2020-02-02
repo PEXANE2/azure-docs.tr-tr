@@ -2,18 +2,18 @@
 title: 'Öğretici: trafiği ağırlıklı uç noktalara yönlendirme-Azure Traffic Manager'
 description: Bu öğretici makalede, Traffic Manager'ı kullanarak trafiği ağırlıklı uç noktalara yönlendirme açıklanmaktadır.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037927"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939474"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Öğretici: Traffic Manager'ı kullanarak ağırlıklı uç noktalar ile trafiği denetleme
 
@@ -31,16 +31,16 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Traffic Manager'ın nasıl çalıştığını görmek için bu öğretici kapsamında aşağıdaki kaynakları dağıtın:
 
 - Farklı Azure bölgelerinde (Doğu ABD ve Batı Avrupa) çalışan iki temel web sitesi örneği.
 - Traffic Manager'ı test etmek için iki test amaçlı VM: bir VM Doğu ABD bölgesinde, diğeri ise Batı Avrupa bölgesinde olmalıdır. Traffic Manager’ın kullanıcı trafiğini uç noktasına daha yüksek bir ağırlık atanan bir web sitesine nasıl yönlendirdiğini göstermek için test VM’leri kullanılır.
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ### <a name="create-websites"></a>Web sitelerini oluşturma
 

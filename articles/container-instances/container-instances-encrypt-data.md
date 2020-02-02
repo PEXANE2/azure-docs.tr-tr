@@ -1,17 +1,18 @@
 ---
-title: Dağıtım verilerini şifreleyin
+title: Dağıtım verilerini şifreleme
 description: Kapsayıcı örnek kaynaklarınız için kalıcı verilerin şifrelenmesi ve müşterinin yönettiği bir anahtarla verilerin şifrelenmesi hakkında bilgi edinin
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904217"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934312"
 ---
-# <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleyin
+# <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleme
 
 Bulutta Azure Container Instances (ACI) kaynaklarını çalıştırırken ACI hizmeti, kapsayıcılarınızla ilgili verileri toplar ve devam ettirir. Bu verileri bulutta kalıcı olduğunda acı otomatik olarak şifreler. Bu şifreleme, kuruluşunuzun güvenlik ve uyumluluk taahhütlerini karşılamasına yardımcı olmak için verilerinizi korur. ACı Ayrıca, bu verileri kendi anahtarınızla şifreleme seçeneği sunarak acı dağıtımlarınızla ilgili veriler üzerinde daha fazla denetim sağlar.
 
@@ -87,15 +88,18 @@ Erişim ilkesinin artık anahtar kasasının erişim ilkelerinde gösterilmesi g
 > [!IMPORTANT]
 > Dağıtım verilerinin, müşteri tarafından yönetilen bir anahtarla şifrelenmesi, şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin. Bu sorunla karşılaşırsanız lütfen Azure desteğine ulaşın.
 
-Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki özelliği acı dağıtım şablonunuza ekleyin. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinebilirsiniz [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtma](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki özellikleri acı dağıtım şablonunuza ekleyin. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* `resources`altında `apiVersion` `2012-12-01`olarak ayarlayın.
+* Dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde aşağıdaki değerleri içeren bir `encryptionProperties`ekleyin:
+  * `vaultBaseUrl`: anahtar kasanızın DNS adı, portalda Anahtar Kasası kaynağının genel bakış dikey penceresinde bulunabilir
+  * `keyName`: daha önce oluşturulan anahtarın adı
+  * `keyVersion`: anahtarın geçerli sürümü. Bu, anahtarın kendine tıklanarak bulunabilir (Anahtar Kasası kaynağınızın ayarlar bölümünde "anahtarlar" altında)
+* Kapsayıcı grubu özellikleri altında, değer `Standard`sahip bir `sku` özelliği ekleyin. `sku` özelliği API sürümü 2019-12-01 ' de gereklidir.
 
-Özellikle, dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde, aşağıdaki değerleri içeren bir "encryptionProperties" ekleyin:
-* vaultBaseUrl: anahtar kasaınızın DNS adı, portalda Anahtar Kasası kaynağının genel bakış dikey penceresinde bulunabilir
-* keyName: daha önce oluşturulan anahtarın adı
-* keyVersion: anahtarın geçerli sürümü. Bu, anahtarın kendine tıklanarak bulunabilir (Anahtar Kasası kaynağınızın ayarlar bölümünde "anahtarlar" altında)
-
+Aşağıdaki şablon kod parçacığında dağıtım verilerini şifrelemek için bu ek özellikler gösterilmektedir:
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki öze
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+Aşağıda, öğreticideki şablondan uyarlanan tam bir şablon verilmiştir [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>Kaynaklarınızı dağıtın

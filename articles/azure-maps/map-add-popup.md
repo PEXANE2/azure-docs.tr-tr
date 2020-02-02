@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911140"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933346"
 ---
 # <a name="add-a-popup-to-the-map"></a>Haritaya bir açılan pencere ekleyin
 
@@ -22,7 +22,7 @@ Bu makalede, haritada bir noktaya açılan pencerenin nasıl ekleneceği göster
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Aşağıdaki kod, bir sembol katmanını kullanarak eşlemeye `name` ve `description` özelliklerine sahip bir nokta özelliği ekler. [Açılan sınıfın](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) bir örneği oluşturulur, ancak gösterilmez. Fare olayları simge katmanına eklendiğinde, fare simge işaretinin üzerine geldiğinde ve devre dışı bırakıldığında açılan pencerenin açılmasını ve kapatılmasını tetikler. İşaret simgesi üzerine gelindiğinde, açılan pencerenin `position` özelliği işaretin konumuyla güncellenir ve `content` seçeneği, nokta özelliğinin `name` ve `description` özelliklerini sarmalayan bazı HTML ile güncelleştirilir. Açılır pencere daha sonra `open` işlevi kullanılarak haritada görüntülenir.
+Aşağıdaki kod, bir sembol katmanını kullanarak eşlemeye `name` ve `description` özelliklerine sahip bir nokta özelliği ekler. [Açılan sınıfın](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) bir örneği oluşturulur, ancak gösterilmez. Fare olayları, açılan menüyü açmak ve kapatmak için sembol katmanına eklenir. İşaret simgesi üzerine gelindiğinde, açılan pencerenin `position` özelliği işaretin konumuyla güncellenir ve `content` seçeneği, nokta özelliğinin `name` ve `description` özelliklerini sarmalayan bazı HTML ile güncelleştirilir. Açılır pencere daha sonra `open` işlevi kullanılarak haritada görüntülenir.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Birden çok noktayla açılan pencereyi yeniden kullanma
 
-Çok sayıda noktanız olduğunda ve tek seferde bir açılan pencere göstermek istiyorsanız, en iyi yaklaşım bir açılan pencere oluşturup her bir nokta özelliği için bir açılan pencere oluşturmak yerine onu yeniden kullanmaktır. Açılan pencereyi yeniden kullanmaya göre, uygulama tarafından oluşturulan DOM öğelerinin sayısı büyük ölçüde azalır ve bu da daha iyi performans sağlayabilir. Aşağıdaki örnekte 3 puntoluk Özellikler oluşturulur. Bunlardan birine tıklarsanız, bu nokta özelliği için içerik ile bir açılan pencere görüntülenir.
+Çok sayıda noktanız olduğunda ve tek seferde yalnızca bir açılan pencere göstermek istiyorsanız, en iyi yaklaşım bir açılan pencere oluşturmak ve yeniden kullanmaktır. Açılan pencereyi yeniden kullanmaya göre, uygulama tarafından oluşturulan DOM öğelerinin sayısı büyük ölçüde azalır ve bu da daha iyi performans sağlayabilir. Aşağıdaki örnekte 3 puntoluk Özellikler oluşturulur. Bunlardan birine tıklarsanız, bu nokta özelliği için içerik ile bir açılan pencere görüntülenir.
 
 <br/>
 
@@ -94,7 +94,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="customizing-a-popup"></a>Açılan pencereyi özelleştirme
 
-Varsayılan olarak, açılan pencerede beyaz bir arka plan, altta bir işaretçi ok ve sağ üst köşedeki bir Kapat düğmesi bulunur. Aşağıdaki örnek, açılan pencerenin `fillColor` seçeneğini kullanarak arka plan rengini siyaha dönüştürür. Kapat düğmesi, `shoCloseButton` seçeneğinin false olarak ayarlanarak kaldırılır. Açılan menünün HTML içeriği, açılan pencerenin kenarlarından doldurulmuş 10 piksel kullanır ve metin siyah arka planda beyaz bir şekilde görünür.  
+Varsayılan olarak, açılan pencerede beyaz bir arka plan, altta bir işaretçi ok ve sağ üst köşedeki bir Kapat düğmesi bulunur. Aşağıdaki örnek, açılan pencerenin `fillColor` seçeneğini kullanarak arka plan rengini siyaha dönüştürür. Kapat düğmesi, `CloseButton` seçeneğinin false olarak ayarlanarak kaldırılır. Açılan menünün HTML içeriği, açılan pencerenin kenarlarından 10 piksel doldurulmuş kullanır. Metin beyaz yapılır, bu nedenle siyah arka planda düzgün şekilde görünür.  
 
 <br/>
 
@@ -104,7 +104,7 @@ Varsayılan olarak, açılan pencerede beyaz bir arka plan, altta bir işaretçi
 
 ## <a name="popup-events"></a>Açılan olaylar
 
-Açılanlar açılabilir, kapatılabilir ve sürüklenip kapatılabilir. Açılan sınıf, yardım geliştiricilerin bu eylemlere tepki vermesini sağlayan olayları sağlar. Aşağıdaki örnek, açılan pencereyi açtığınızda, kapatırken veya sürüklediğinizde hangi olayların tetikleyeceğinizi vurgulamaktadır. 
+Açılanlar açılabilir, kapatılabilir ve sürüklenip kapatılabilir. Açılan sınıf, geliştiricilerin bu olaylara tepki vermesini sağlamak için olaylar sağlar. Aşağıdaki örnek, Kullanıcı açılan pencereyi açtığında, kapattığında veya sürüklediğinde hangi olayların tetiklediği vurgulanmıştır. 
 
 <br/>
 
@@ -117,7 +117,7 @@ Açılanlar açılabilir, kapatılabilir ve sürüklenip kapatılabilir. Açıla
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Kutu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
