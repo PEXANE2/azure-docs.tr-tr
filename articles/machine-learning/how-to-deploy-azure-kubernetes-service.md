@@ -37,7 +37,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 > [!IMPORTANT]
 > Oluşturma veya ekleme işlemi bir kerelik görevdir. Bir AKS kümesi çalışma alanına bağlandıktan sonra dağıtım için kullanabilirsiniz. Artık gerekmiyorsa AKS kümesini ayırabilirsiniz veya silebilirsiniz. Ayrıldıktan veya silindikten sonra artık kümeye dağıtım yapamayacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -57,7 +57,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
 ## <a name="create-a-new-aks-cluster"></a>Yeni bir AKS kümesi oluşturma
 
-**Tahmini Süre**: yaklaşık 20 dakika.
+**Tahmini süre**: yaklaşık 20 dakika.
 
 AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeye birden çok dağıtımlar için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
 
@@ -92,7 +92,7 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)için, `agent_count` ve `vm_size`için özel değerler seçerseniz ve `cluster_purpose` `DEV_TEST`değilse, `agent_count` çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir. Örneğin, 4 sanal CPU içeren bir `vm_size` "Standard_D3_v2" kullanırsanız, 3 veya daha büyük bir `agent_count` seçmeniz gerekir.
+> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)için, `agent_count` ve `vm_size`için özel değerler seçerseniz ve `cluster_purpose` `DEV_TEST`değilse, `agent_count` çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir.`vm_size` Örneğin, 4 sanal CPU içeren bir `vm_size` "Standard_D3_v2" kullanırsanız, 3 veya daha büyük bir `agent_count` seçmeniz gerekir.
 >
 > Azure Machine Learning SDK, bir AKS kümesini ölçeklendirmeye yönelik destek sağlamaz. Kümedeki düğümleri ölçeklendirmek için Azure Machine Learning Studio 'daki AKS kümeniz için Kullanıcı arabirimini kullanın. Kümenin VM boyutunu değil, yalnızca düğüm sayısını değiştirebilirsiniz.
 
@@ -348,7 +348,7 @@ print(token)
 * [Bir sanal ağda güvenli deneme ve çıkarım](how-to-enable-virtual-network.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
-* [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)
+* [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
+* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

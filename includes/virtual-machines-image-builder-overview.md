@@ -60,7 +60,7 @@ AıB, için bir kaynak olarak RHEL ISO 'yu destekleyecektir:
 
 RHEL 7,6 ISOs desteklenmez, ancak test ediliyor.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 
 ![Azure Image Builder kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)

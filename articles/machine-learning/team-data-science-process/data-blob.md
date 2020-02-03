@@ -18,7 +18,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721107"
 ---
-# <a name="heading"></a>Azure blob verilerini Gelişmiş analiz ile işleme
+# <a name="heading"></a>Gelişmiş analiz ile Azure blob verilerini işleme
 Bu belge, veri keşfetmek ve Azure Blob Depolama alanında depolanan verilerden oluşturma özellikleri kapsar. 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Verileri bir Pandas veri çerçevesine yükleyin
@@ -48,7 +48,7 @@ Bir veri kümesini araştırmak ve işlemek için, blob kaynağından bir Pandas
 
 Verileri keşfetme ve bu veri kümesi özellikleri oluşturmak hazırsınız.
 
-## <a name="blob-dataexploration"></a>Veri keşfi
+## <a name="blob-dataexploration"></a>Veri araştırması
 Panda kullanarak verileri araştırmak için gösteren bazı örnekleri şunlardır:
 
 1. Satır ve sütun sayısını denetleme 
@@ -116,7 +116,7 @@ Kategorik özellikleri şu şekilde oluşturulabilir:
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>Gruplama özellik oluşturma
+### <a name="blob-binningfeature"></a>Özellik oluşturmayı atma
 Binned özellikler oluşturmak için size aşağıdaki gibi ilerleyin:
 
 1. Bir dizi sayısal bir sütun depo için sütunları Ekle
@@ -130,7 +130,7 @@ Binned özellikler oluşturmak için size aşağıdaki gibi ilerleyin:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Verileri Azure blob için geri yazma ve Azure Machine Learning'de kullanma
+## <a name="sql-featuregen"></a>Verileri Azure Blob 'a geri yazma ve Azure Machine Learning kullanma
 Verileri araştırdıktan ve gerekli özellikleri oluşturduktan sonra, verileri (örneklendirilmiş veya daha fazla) bir Azure blobuna yükleyebilir ve aşağıdaki adımları kullanarak Azure Machine Learning kullanabilirsiniz: ek özellikler Azure Machine Learning oluşturulabilir Studio (klasik) de. 
 
 1. Veri çerçevesinin yerel bir dosyaya yazma

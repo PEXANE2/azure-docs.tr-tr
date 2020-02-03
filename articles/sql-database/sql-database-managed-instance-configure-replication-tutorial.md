@@ -19,7 +19,7 @@ ms.locfileid: "76719900"
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Öğretici: iki yönetilen örnek ve SQL Server arasında işlem çoğaltması yapılandırma
 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > - Yönetilen bir örneği Çoğaltma yayımcısı olarak yapılandırın. 
@@ -34,7 +34,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı yönetilen örneğine
 
 Yönetilen bir örnek yayımcısı ve yönetilen örnek abonesi arasında çoğaltmayı yapılandırmak için, bkz. [iki yönetilen örnek arasında işlemsel çoğaltmayı yapılandırma](replication-with-sql-database-managed-instance.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -135,7 +135,7 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 Özel bir DNS bölgesi, yönetilen örnekler ve SQL Server arasında DNS yönlendirmeye izin verir. 
 
 ### <a name="create-private-dns-zone"></a>Özel DNS bölgesi oluştur
-1. [Azure portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Yeni bir Azure kaynağı oluşturmak için **kaynak oluştur** ' u seçin. 
 1. Azure Marketi 'nde `private dns zone` arayın. 
 1. Microsoft tarafından yayımlanan **özel DNS bölge** kaynağını seçin ve ardından **Oluştur** ' u seçerek DNS bölgesini oluşturun. 

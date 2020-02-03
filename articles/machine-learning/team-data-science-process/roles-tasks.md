@@ -129,7 +129,7 @@ Verimli proje yürütme ve işbirliğini desteklemek için Microsoft TDSP ekibin
 
 Team Data Science Process tarafından tanımlanan görevleri ve rolleri daha detaylı açıklamalar'ı keşfedin:
 
-- [Bir veri bilimi takım için Grup yöneticisi görevleri](group-manager-tasks.md)
-- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
-- [Proje için bir veri bilimi ekibi müşteri adayı görevleri](project-lead-tasks.md)
+- [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
 - [Bir veri bilimi ekibi için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md)

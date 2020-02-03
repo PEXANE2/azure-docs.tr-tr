@@ -21,12 +21,12 @@ ms.locfileid: "76716674"
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process’te (TDSP) özellik seçimi
 Bu makalede, özellik seçimi amaçları açıklanır ve machine Learning veri geliştirme sürecinde rolü örnekleri sağlar. Bu örnekler, Azure Machine Learning Studio'dan çizilir.
 
-Özellik Seçimi ve mühendislik bir parçası olan Team Data Science işlem (makalesinde özetlenen TDSP) olduğu [Team Data Science Process nedir?](overview.md). Özellik Mühendisliği ve seçimi olan bölümleri **geliştirme özellikleri** TDSP. adımı.
+Özelliklerin mühendislik ve seçimi, ekip veri bilimi işleminin (TDSP) [Team Data Science süreci nedir?](overview.md)makalesinde özetlenen bir parçasıdır. Özellik Mühendisliği ve seçimi, TDSP 'nin **Özellikler geliştirme** adımının parçalarından oluşur.
 
-* **özellik Mühendisliği**: Bu işlem verilerinde mevcut ham özelliklerinden ilgili ek özellikler oluşturma ve Tahmine dayalı öğrenme algoritmasını güç artırmak için çalışır.
-* **Özellik Seçimi**: Bu işlem özgün veri özellikleri anahtar kısmını eğitim sorunun işlenemez azaltmak girişimi seçer.
+* **özellik Mühendisliği**: Bu işlem, verilerdeki mevcut ham özelliklerden ek ilgili özellikler oluşturmaya çalışır ve öğrenme algoritmasına tahmine dayalı güç düzeyini artırır.
+* **Özellik seçimi**: Bu işlem, eğitim sorununun boyutlılık düzeyini azaltmak için bir denemede orijinal veri özelliklerinin anahtar alt kümesini seçer.
 
-Normalde **özellik Mühendisliği** ek özellikler oluşturmak için öncelikle uygulanır ve ardından **özellik seçimi** adım, ilgisiz, yedekli ya da son derece bağıntılı özellikleri ortadan kaldırmak için gerçekleştirilir.
+Normalde **özellik Mühendisliği** , ek özellikler oluşturmak için önce uygulanır ve ardından **Özellik seçimi** adımı, ilgisiz, yedekli veya çok bağıntılı özellikleri ortadan kaldırmak için gerçekleştirilir.
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>Filtre özellikleri verilerinizi - özellik seçimi
 Özellik seçimi, sınıflandırma veya regresyon görevleri için kullanılabilir. Hedef veri varyans en uzun süreyi temsil etmek için en az bir özellik kümesi kullanarak boyutlar azaltılmasına özgün veri kümesinden alınan özelliklerinin bir alt kümesi seçmektir. Bu alt özellikler kümesini modeli eğitmek için kullanılır. Özellik Seçimi iki ana amaca hizmet eder.

@@ -21,7 +21,7 @@ ms.locfileid: "76716882"
 
 Dil algılama kapsayıcısını dağıtmayı öğrenin. Bu yordam, yerel Docker Kapsayıcıları oluşturma, kapsayıcıları kendi özel kapsayıcı Kayıt defterinize gönderme, kapsayıcıyı bir Kubernetes kümesinde çalıştırma ve bir Web tarayıcısında test etme işlemlerini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir. Azure Cloud Shell kullanmayın.
 

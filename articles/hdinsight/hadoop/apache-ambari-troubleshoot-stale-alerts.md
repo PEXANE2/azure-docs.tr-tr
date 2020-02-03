@@ -34,7 +34,7 @@ Ambarı aracıları birçok kaynağın sistem durumunu izlemek için sürekli ol
 
 * Kümedeki birkaç konak birçok bileşeni barındırabilir ve bu nedenle birçok uyarıyı çalıştırmak gerekecektir. Bileşen sayısı büyükse, uyarı işlerinin zamanlanan aralıklarını kaçırabileceği olasıdır
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
 ### <a name="increase-alert-interval-time"></a>Uyarı aralığı süresini artır
 

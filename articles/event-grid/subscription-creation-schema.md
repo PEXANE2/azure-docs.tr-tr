@@ -22,7 +22,7 @@ Event Grid aboneliği oluşturmak için oluşturma olay Abonelik işlem için bi
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Örneğin, adlı bir depolama hesabı için bir olay aboneliği oluşturmak için `examplestorage` adlı bir kaynak grubu içinde `examplegroup`, aşağıdaki biçimi kullanın:
+Örneğin, `examplegroup`adlı bir kaynak grubunda `examplestorage` adlı bir depolama hesabı için bir olay aboneliği oluşturmak için aşağıdaki biçimi kullanın:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -34,7 +34,7 @@ Olay aboneliği adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| destination | object | Uç nokta tanımlayan nesne. |
+| Hedef | object | Uç nokta tanımlayan nesne. |
 | filter | object | Olay türlerini filtreleme için isteğe bağlı alan. |
 
 ### <a name="destination-object"></a>hedef nesne
@@ -77,4 +77,4 @@ Olay aboneliği adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Event grid'e giriş için bkz [Event Grid nedir?](overview.md)
+* Event Grid giriş için bkz. [Event Grid nedir?](overview.md)

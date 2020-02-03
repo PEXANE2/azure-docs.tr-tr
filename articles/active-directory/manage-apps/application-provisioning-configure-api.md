@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
 - [Eşitleme Microsoft Graph belgelerini gözden geçirin](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Özel bir SCıM uygulamasını Azure AD ile tümleştirme](use-scim-to-provision-users-and-groups.md)

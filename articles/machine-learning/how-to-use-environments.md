@@ -33,7 +33,7 @@ Bu makaledeki örneklerde nasıl yapılacağı gösterilmektedir:
 
 Ortamların Azure Machine Learning nasıl çalıştığı hakkında üst düzey bir genel bakış için bkz. [ml ortamları nedir?](concept-environments.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -170,7 +170,7 @@ conda_dep.add_pip_package(whl_url)
 myenv.python.conda_dependencies=conda_dep
 ```
 
-## <a name="manage-environments"></a>Ortamları yönetin
+## <a name="manage-environments"></a>Ortamları yönetme
 
 Ortamları, işlem hedefleri genelinde ve çalışma alanının diğer kullanıcılarıyla güncelleştirmek, izlemek ve yeniden kullanmak için yönetin.
 

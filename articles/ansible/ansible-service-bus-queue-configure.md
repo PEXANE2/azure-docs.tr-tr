@@ -21,13 +21,13 @@ ms.locfileid: "76713227"
 
 > [!div class="checklist"]
 >
-> * Kuyruk oluşturma
+> * Bir kuyruk oluşturma
 > * SAS plicy oluşturma
 > * Ad alanı bilgilerini al
 > * Kuyruk bilgilerini al
 > * Kuyruk SAS ilkesini iptal etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

@@ -22,7 +22,7 @@ ms.locfileid: "76722586"
 
 Mac OS X kullanarak Linux kümelerinde çalışacak Service Fabric uygulamaları derleyebilirsiniz. Bu belgede Mac’inizi geliştirme için nasıl ayarlayacağınız ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Service Fabric, OS X üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM.
@@ -78,7 +78,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     >[!TIP]
     > Varsayılan olarak bu, görüntüyü Service Fabric’in en son sürümüyle çeker. Belirli düzeltmeler için lütfen [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) sayfasını ziyaret edin
 
-3. `Dockerfile` içinden yeniden kullanılabilir görüntünüzü derlemek için bir terminal açın ve doğrudan `Dockerfile` öğesini tutarak `cd` uygulayıp sonra şunu çalıştırın:
+3. `Dockerfile` içinden yeniden kullanılabilir görüntünüzü derlemek için bir terminal açın ve doğrudan `cd` öğesini tutarak `Dockerfile` uygulayıp sonra şunu çalıştırın:
 
     ```bash 
     docker build -t mysfcluster .
@@ -123,7 +123,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac'inizde Service Fabric CLI'sını (sfctl) ayarlama
 
-Service Fabric CLI'sını (`sfctl`) Mac'inize yüklemek için [Service Fabric CLI'sı](service-fabric-cli.md#cli-mac) talimatlarını izleyin.
+Service Fabric CLI'sını ([) Mac'inize yüklemek için ](service-fabric-cli.md#cli-mac)Service Fabric CLI'sı`sfctl` talimatlarını izleyin.
 CLI kümeler, uygulamalar ve hizmetler de dahil olmak üzere Service Fabric varlıklarıyla etkileşimi destekleyen komutlar içerir.
 
 1. Uygulamaları dağıtmadan önce kümeye bağlanmak için aşağıdaki komutu çalıştırın. 
@@ -188,13 +188,13 @@ Service Fabric uygulamanızı oluşturup derledikten sonra [Service Fabric CLI](
 
 ## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 ile geliştirmeyi ayarlama
 
-[C# Service Fabric uygulamaları oluşturmaya](service-fabric-create-your-first-linux-application-with-csharp.md) başlamak amacıyla [Mac için .NET Core 2.0 SDK'sını](https://www.microsoft.com/net/core#macos) yükleyin. .NET Core 2.0 Service Fabric uygulamaları paketleri NuGet.org üzerinde barındırılmaktadır ve şu anda önizleme sürümündedir.
+[C# Service Fabric uygulamaları oluşturmaya](https://www.microsoft.com/net/core#macos) başlamak amacıyla [Mac için .NET Core 2.0 SDK'sını](service-fabric-create-your-first-linux-application-with-csharp.md) yükleyin. .NET Core 2.0 Service Fabric uygulamaları paketleri NuGet.org üzerinde barındırılmaktadır ve şu anda önizleme sürümündedir.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Mac’inizde Eclipse için Service Fabric eklentisini yükleme
 
 Azure Service Fabric, Java IDE için Eclipse Neon’a (veya sonrası) yönelik bir eklenti sağlar. Eklenti, Java hizmetleri oluşturma, derleme ve dağıtma işlemlerini basitleştirir. Eclipse içi Service Fabric eklentisinin son sürümünü yüklemek veya son sürümüne güncelleştirmek için [şu adımları](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse) izleyin. [Eclipse için Service Fabric belgeleri](service-fabric-get-started-eclipse.md)ndeki adımlar da geçerlidir: bir uygulama derleme, uygulamaya bir hizmet ekleme, bir uygulamayı kaldırma ve benzeri.
 
-Son adım ise, ana bilgisayarınızla paylaşılan bir yolu olan kapsayıcı örneği oluşturmak olacaktır. Eklentinin Mac’inizdeki Docker kapsayıcısı ile çalışması için bu tür örnek oluşturma gerekir. Örneğin:
+Son adım ise, ana bilgisayarınızla paylaşılan bir yolu olan kapsayıcı örneği oluşturmak olacaktır. Eklentinin Mac’inizdeki Docker kapsayıcısı ile çalışması için bu tür örnek oluşturma gerekir. Örnek:
 
 ```bash
 docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox

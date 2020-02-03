@@ -296,7 +296,7 @@ Etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yöne
 
 Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) 'ye göz atın.
 
-## <a name="need-help"></a>Yardım mı gerekiyor?
+## <a name="need-help"></a>Yardıma mı ihtiyacınız var?
 
 [Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)giderek bir destek bileti açabilirsiniz.
 

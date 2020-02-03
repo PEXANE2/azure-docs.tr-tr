@@ -52,7 +52,7 @@ Kullanıcının ilk oturum açması Kullanıcı tarafından sağlanmadan önce u
 
 * Özel olarak geliştirilmiş sağlama çözümlerini barındırma ve sürdürme maliyetlerini azaltın.
 
-## <a name="choose-a-provisioning-method"></a>Bir sağlama yöntemi seçin
+## <a name="choose-a-provisioning-method"></a>Sağlama yöntemini seçin
 
 Azure AD, uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirmek üzere çeşitli Tümleştirme yolları sağlar.
 

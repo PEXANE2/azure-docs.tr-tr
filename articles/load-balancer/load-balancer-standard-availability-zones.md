@@ -37,7 +37,7 @@ Kullanılabilirlik alanları bağlamında, bir Load Balancer kuralın davranış
 
 Hem genel hem de dahili Load Balancer, bölgesel olarak yedekli ve zGenel senaryoları destekler ve her ikisi de gerektiğinde trafiği bölgelere (*çapraz bölge yük dengelemesi*) yönlendirebilir. 
 
-### <a name="frontend"></a>Uçta
+### <a name="frontend"></a>Ön uç
 
 Load Balancer ön ucu, bir genel IP adresi kaynağına veya bir sanal ağ kaynağının alt ağı içindeki özel bir IP adresine başvuran bir ön uç IP yapılandırması.  Hizmetinizin açığa çıkarılabileceği yük dengeli uç noktayı oluşturur.
 

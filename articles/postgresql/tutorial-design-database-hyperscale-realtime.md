@@ -28,7 +28,7 @@ Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQ
 > * Ham ve toplanmış verileri sorgulama
 > * Süre sonu verisi
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -196,7 +196,7 @@ $$ LANGUAGE plpgsql;
 SELECT rollup_http_request();
 ```
 
-Önceden toplanmış bir formdaki verilerimizde, daha önce de aynı raporu almak için toplama tablosunu sorgulayabiliriz. Aşağıdaki sorguyu çalıştırın:
+Önceden toplanmış bir formdaki verilerimizde, daha önce de aynı raporu almak için toplama tablosunu sorgulayabiliriz. Şu sorguyu çalıştırın:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,

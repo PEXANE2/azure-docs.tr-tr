@@ -23,34 +23,34 @@ ms.locfileid: "76718523"
 Bu paketi konuları veri alımı, özellik Mühendisliği, modelleme ve model değerlendirme gibi genel veri bilimi görevlerini tamamlamak için HDInsight Spark kullanmayı gösterir. Kullanılan veri kümesinin 2013 NYC taksi seyahat ve taksi bir örnektir. Mantıksal ve doğrusal regresyon, rastgele ormanları ve gradyan artırmalı ağaçları modellerinin içerir. Konular, Azure blob depolama (WASB) şu modelleri depolamak ve puan ve Tahmine dayalı performanslarını değerlendirmek de gösterir. Daha gelişmiş konular ele modelleri nasıl olabileceğini çapraz doğrulama ve hiper parametreli Süpürme kullanarak eğitilir. Bu genel bakış konusu, ayrıca sağlanan izlenecek adımları tamamlamak için gereken bir Spark kümesi oluşturma nasıl açıklayan konulara başvuruyor.
 
 ## <a name="spark-and-mllib"></a>Spark ve MLlib
-[Spark](https://spark.apache.org/) büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi destekleyen açık kaynaklı bir paralel işleme altyapısıdır işleme olduğu. Spark işleme altyapısı hız, kullanım kolaylığı ve Gelişmiş analiz için oluşturulmuştur. Spark'ın dağıtılmış bellek içi hesaplama özellikleri onu kullanılan makine öğrenimi ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim haline getirir. [MLlib](https://spark.apache.org/mllib/) algoritmik getiren Spark'ın ölçeklenebilir makine öğrenimi kitaplığı modelleme dağıtılmış bu ortam özellikleri.
+[Spark](https://spark.apache.org/) , büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Spark işleme altyapısı hız, kullanım kolaylığı ve Gelişmiş analiz için oluşturulmuştur. Spark'ın dağıtılmış bellek içi hesaplama özellikleri onu kullanılan makine öğrenimi ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim haline getirir. [Mllib](https://spark.apache.org/mllib/) , algoritmik modelleme yeteneklerini bu dağıtılmış ortama getiren, Spark 'ın ölçeklenebilir makine öğrenimi kitaplığıdır.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) Azure barındırılan açık kaynaklı Spark'ın bir tekliftir. İçin destek de içerir **Jupyter PySpark not defterleri** Spark kümesinde dönüştürme, filtreleme ve Azure BLOB'ları (WASB) içinde depolanan verileri görselleştiren Spark SQL etkileşimli sorguları çalıştırabilirsiniz. PySpark Spark için Python API'dir. Çözümler ve burada yüklü üzerinde Spark kümeleri Jupyter not defterlerini çalıştırmak verileri görselleştirmek için ilgili çizimleri Göster kod parçacıkları. Bu konu başlıklarındaki modelleme adımları eğitmek, değerlendirmek, kaydetme ve her bir türü modelin kullanma işlemi gösterilmektedir kodunu içerir.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) , Azure 'da barındırılan ve açık kaynaklı Spark sunumudur. Ayrıca Spark kümesinde bulunan **jupi pyspark Not defterleri** için destek Içerir ve Azure Bloblarında depolanan verileri dönüştürmek, filtrelemek ve görselleştirmek IÇIN Spark SQL etkileşimli sorgularını çalıştırabilir (edb). PySpark Spark için Python API'dir. Çözümler ve burada yüklü üzerinde Spark kümeleri Jupyter not defterlerini çalıştırmak verileri görselleştirmek için ilgili çizimleri Göster kod parçacıkları. Bu konu başlıklarındaki modelleme adımları eğitmek, değerlendirmek, kaydetme ve her bir türü modelin kullanma işlemi gösterilmektedir kodunu içerir.
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Kurulum: Spark kümelerine ve Jupyter Not Defterleri
-Bu izlenecek yolda, kurulum adımları ve kod kullanarak bir HDInsight Spark 1.6 için sağlanır. Ancak Jupyter not defterleri, kümeler, HDInsight Spark 1.6 hem de Spark 2.0 için sağlanır. Not defterlerini ve bağlantıları onlara bir açıklamasını sağlanan [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) bunları içeren GitHub deposu. Ayrıca, kodu buraya bağlı not defterlerinde geneldir ve herhangi bir Spark kümesi üzerinde çalışması gerekir. HDInsight Spark kullanmıyorsanız, küme kurulum ve yönetim adımları ne burada gösterilenden biraz farklı olabilir. Kolaylık olması için, Spark 1,6 için Jupyter Notebook (Jupyter Notebook sunucusunun pySpark çekirdeğindedir) ve Spark 2,0 (Jupyter Notebook sunucusunun pySpark3 çekirdeğinde çalıştırılacak şekilde) bağlantıları aşağıda verilmiştir:
+Bu izlenecek yolda, kurulum adımları ve kod kullanarak bir HDInsight Spark 1.6 için sağlanır. Ancak Jupyter not defterleri, kümeler, HDInsight Spark 1.6 hem de Spark 2.0 için sağlanır. Not defterlerinin ve bunlara bağlantıların açıklaması, bunları içeren GitHub deposu için [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) içinde verilmiştir. Ayrıca, kodu buraya bağlı not defterlerinde geneldir ve herhangi bir Spark kümesi üzerinde çalışması gerekir. HDInsight Spark kullanmıyorsanız, küme kurulum ve yönetim adımları ne burada gösterilenden biraz farklı olabilir. Kolaylık olması için, Spark 1,6 için Jupyter Notebook (Jupyter Notebook sunucusunun pySpark çekirdeğindedir) ve Spark 2,0 (Jupyter Notebook sunucusunun pySpark3 çekirdeğinde çalıştırılacak şekilde) bağlantıları aşağıda verilmiştir:
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 Not Defterleri
 Bu not defterlerini Jupyter notebook sunucusu pySpark Çekirdeği'nde çalıştırılması üzeresiniz.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Provides information on how to perform data exploration, modeling, and scoring with several different algorithms.
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Includes topics in notebook #1, and model development using hyperparameter tuning and cross-validation.
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): Shows how to operationalize a saved model using Python on HDInsight clusters.
+- [Pyspark-Machine-Learning-Data-Science-Spark-Data-araştırmayla-Modellendirme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): birçok farklı algoritmayla veri keşif, modelleme ve Puanlama gerçekleştirme hakkında bilgi sağlar.
+- [Pyspark-Machine-Learning-Data-Science-Spark-gelişmiş-veri-araştırma-modelleme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): not defteri #1 konuları ve hiper parametre ayarlama ve çapraz doğrulama kullanarak model geliştirmeyi içerir.
+- [Pyspark-Machine-Learning-Data-Science-Spark-model-tüketim. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): HDInsight kümelerinde Python kullanarak kaydedilmiş bir modeli nasıl kullanıma sunmayı gösterir.
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 Not Defterleri
 Bu not defterlerini Jupyter notebook sunucusu pySpark3 Çekirdeği'nde çalıştırılması üzeresiniz.
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bu dosya, veri keşfi, modelleme, gerçekleştirme konusunda bilgi sağlar ve Spark 2.0 Puanlama NYC taksi seyahat kullanarak kümelerini ve taksi verileri-set açıklanan [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Bu not defteri hızla Spark 2.0 için sağladık Kodu Keşfetme için iyi bir başlangıç noktası olabilir. Daha ayrıntılı bir not defteri NYC taksi verileri analiz eder, bu listedeki sonraki not bakın. Bu not defterlerini karşılaştıran bu listenin altındaki notlara bakın.
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Bu dosya denetimi veri (işlem), Spark SQL ve veri çerçevesi model ve puanlama NYC taksi seyahat ve açıklanan taksi verileri kümesi kullanarak keşif gerçekleştirmeyi gösterir [burada ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Bu dosya, denetimi veri (işlem), Spark SQL ve veri keşfi, modelleme ve iyi bilinen Havayolu zamanında kalkış kullanarak Puanlama yapma işlemi açıklanır veri kümesi 2011 ve 2012. Hava yolu veri kümesini modellemeye başlamadan önce Havaalanı hava durumu verileriyle tümleştirdik (örneğin, wınvs hızı, sıcaklık, yükseklik vb.), bu hava durumu özellikleri modele dahil edilebilir.
+- [Spark 2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-araştırması-Modellendirme. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bu dosya, Spark 2,0 kümelerinde, [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)açıklanan NYC Taxi seyahat ve tarifeli havayolu veri kümesini kullanarak veri keşif, modelleme ve Puanlama gerçekleştirme hakkında bilgi sağlar. Bu not defteri hızla Spark 2.0 için sağladık Kodu Keşfetme için iyi bir başlangıç noktası olabilir. Daha ayrıntılı bir not defteri NYC taksi verileri analiz eder, bu listedeki sonraki not bakın. Bu not defterlerini karşılaştıran bu listenin altındaki notlara bakın.
+- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Bu dosya, [burada](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)açıklanan NYC TAXI seyahat ve tarifeli havayolu veri kümesini kullanarak veri denetimi (Spark SQL ve dataframe işlemleri), araştırma, modelleme ve Puanlama gerçekleştirme işlemini gösterir.
+- [Spark 2.0-pySpark3_Airline_Departure_Delay_Classification. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Bu dosya, 2011 ve 2012 ' den iyi bilinen Airline ile veri kümesini kullanarak veri denetimi (Spark SQL ve dataframe işlemleri), araştırma, modelleme ve Puanlama gerçekleştirme işlemini gösterir. Hava yolu veri kümesini modellemeye başlamadan önce Havaalanı hava durumu verileriyle tümleştirdik (örneğin, wınvs hızı, sıcaklık, yükseklik vb.), bu hava durumu özellikleri modele dahil edilebilir.
 
 <!-- -->
 
 > [!NOTE]
 > Havayolu veri kümesini sınıflandırma algoritmalarının kullanımını daha iyi anlamak için Spark 2.0 not defterleri için eklendi. Aşağıdaki bağlantıları kalkış veri kümesi ve hava durumu dataset zamanında Havayolu hakkında bilgi için bkz.
 > 
-> - Havayolu zamanında kalkış verileri: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Airline açık zamanlı ayrılma verileri: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
 > - Havaalanı hava durumu verileri: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
@@ -63,22 +63,22 @@ Bu not defterlerini Jupyter notebook sunucusu pySpark3 Çekirdeği'nde çalışt
 
 <!-- -->
 
-Spark 2.0 model ve puanlama için tüketim modeli kullanıma hazır hale getirme konusunda kılavuz bilgiler için bkz. [Spark 1.6 belge tüketimi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) gerekli adımları anahat oluşturma örneği. Bu örneği Spark 2,0 ' de kullanmak için Python kod dosyasını [Bu dosyayla](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)değiştirin.
+Bir Spark 2,0 modelinin ve Puanlama için model tüketiminin kullanıma hazır hale getirme hakkında rehberlik için, gerekli adımları bir örnek olarak göstermek üzere [Tüketim üzerinde Spark 1,6 belgesine](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) bakın. Bu örneği Spark 2,0 ' de kullanmak için Python kod dosyasını [Bu dosyayla](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)değiştirin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Spark 1.6 için aşağıdaki yordamları ilgilidir. Spark 2.0 sürümüne için açıklanan ve için daha önce bağlı not defterlerini kullanma.
 
-1. Bir Azure aboneliğiniz olmalıdır. Zaten bir yoksa, bkz. [alma Azure ücretsiz deneme sürümü](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+1. Bir Azure aboneliğiniz olmalıdır. Henüz bir tane yoksa, bkz. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-2. Bu izlenecek yolu tamamlamak için bir Spark 1,6 kümesine ihtiyacınız vardır. Bölümündeki yönergeleri oluşturmak için bkz [Başlarken: Azure HDInsight üzerinde Apache Spark oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Küme türü ve sürümü gelen belirtildiğinden **küme türü seçin** menüsü.
+2. Bu izlenecek yolu tamamlamak için bir Spark 1,6 kümesine ihtiyacınız vardır. Bir tane oluşturmak için bkz. [Başlarken: Azure HDInsight üzerinde Apache Spark oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Küme türü ve sürümü, **küme türü seç** menüsünden belirtilmiştir.
 
 ![Küme yapılandırma](./media/spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
 > [!NOTE]
-> Python yerine Scala uçtan uca veri bilimi işlemi için görevleri tamamlamak için nasıl kullanılacağını gösteren bir konu için bkz. [azure'da Spark Scala kullanarak veri bilimi](scala-walkthrough.md).
+> Uçtan uca bir veri bilimi işleminin görevlerini tamamlaması için Python yerine Scala 'nın nasıl kullanılacağını gösteren bir konu için bkz. [Azure 'Da Spark Ile Scala kullanarak veri bilimi](scala-walkthrough.md).
 >
 >
 
@@ -108,7 +108,7 @@ NYC taksi seyahat verilerini yaklaşık 20 GB sıkıştırılmış virgülle ayr
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Biz bu dosyaların bir %0,1 örneği ve seyahat katılmış\_veri ve seyahat\_masrafları CVS dosyaları halinde bu kılavuz için giriş veri kümesi olarak kullanmak için tek bir veri kümesi. Seyahat katılmak için benzersiz anahtar\_veri ve seyahat\_taksi alanlarını oluşur: medallion hack\_lisans ve alma\_datetime. Her kayıt veri kümesinin bir NYC taksi seyahatini temsil eden aşağıdaki öznitelikleri içerir:
+Bu dosyaların% 0,1 bir örneğini aldık ve seyahat\_verileri ve seyahat\_tarifeli havayolu CVS dosyalarını Bu izlenecek yol için giriş veri kümesi olarak kullanılacak tek bir veri kümesine katıldık. Seyahat\_veri ve seyahat\_tarifeli havayolu katılacak benzersiz anahtar, şu alanlardan oluşur: medtalon, Hack\_lisans ve toplama\_tarih saat. Her kayıt veri kümesinin bir NYC taksi seyahatini temsil eden aşağıdaki öznitelikleri içerir:
 
 | Alan | Kısa açıklama |
 | --- | --- |
@@ -145,15 +145,15 @@ Jupyter not defterine Azure portalından başlatabilirsiniz. Spark kümenizde pa
 
 ![Küme panoları](./media/spark-overview/spark-jupyter-on-portal.png)
 
-De göz atabilirsiniz ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** Jupyter not defterlerini erişmek için. CLUSTERNAME bu URL'nin bir parçası, kendi kümenizin adıyla değiştirin. Not defterlerini erişmek, yönetici hesabı için parola gerekir.
+Ayrıca, jupi not defterlerine erişmek için ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** de gidebilirsiniz. CLUSTERNAME bu URL'nin bir parçası, kendi kümenizin adıyla değiştirin. Not defterlerini erişmek, yönetici hesabı için parola gerekir.
 
 ![Jupyter not defterleri Gözat](./media/spark-overview/spark-jupyter-notebook.png)
 
 PySpark API kullanan önceden paketlenmiş not defterlerine birkaç örnek içeren bir dizini görmek için PySpark ' ı seçin. Bu Spark konusunun kod örneklerini içeren Not defterleri [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 'da kullanılabilir
 
-Doğrudan not defterlerini karşıya yüklediğiniz [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) Spark kümeniz üzerindeki Jupyter notebook sunucusu için. Giriş sayfasında, Jupyter, tıklayın **karşıya** ekranın sağ tarafında düğmesi. Dosya Gezgini'ni açar. Not Defteri ve tıklayın (ham içeriği) GitHub URL'sini buraya yapıştırın **açık**.
+Not defterlerini doğrudan [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 'dan Spark kümenizdeki Jupyter Not defteri sunucusuna yükleyebilirsiniz. Jupi 'nizin giriş sayfasında, ekranın sağ tarafındaki **karşıya yükle** düğmesine tıklayın. Dosya Gezgini'ni açar. Burada, Not defterinin GitHub (ham içerik) URL 'sini yapıştırabilir ve **Aç**' a tıklayabilirsiniz.
 
-Dosya adı ile Jupyter dosya listenizdeki gördüğünüz bir **karşıya** düğmesini tekrar. Burayı tıklatın **karşıya** düğmesi. Şimdi bir not defteri aldınız. Bu izlenecek yolda diğer defterlerinden karşıya yüklemek için bu adımları yineleyin.
+Dosya adını Jupyıter dosya listenizde bir kez **karşıya yükle** düğmesine yeniden görürsünüz. Bu **karşıya yükle** düğmesine tıklayın. Şimdi bir not defteri aldınız. Bu izlenecek yolda diğer defterlerinden karşıya yüklemek için bu adımları yineleyin.
 
 > [!TIP]
 > Tarayıcınızdaki bağlantıları sağ tıklatıp GitHub ham içerik URL 'sini almak için **Bağlantıyı Kopyala** ' yı seçebilirsiniz. Bu URL'yi Jupyter karşıya dosya Gezgini iletişim kutusuna yapıştırabilirsiniz.
@@ -163,12 +163,12 @@ Dosya adı ile Jupyter dosya listenizdeki gördüğünüz bir **karşıya** dü�
 Artık şunları yapabilirsiniz:
 
 * Not defterini tıklayarak koduna bakın.
-* Her hücre tuşlarına basarak yürütme **SHIFT girin**.
-* Tıklayarak tüm not defterlerini çalıştırmak **hücre** -> **çalıştırma**.
+* Her hücreyi **SHIFT-enter**tuşlarına basarak yürütün.
+*  -> **Çalıştır**' a tıklayarak tüm Not defterini çalıştırın.
 * Sorgu otomatik görselleştirme kullanın.
 
 > [!TIP]
-> PySpark Çekirdeği (HiveQL) SQL sorguları çıktısını otomatik olarak görselleştirir. Kullanılarak birkaç farklı türde (tablo, pasta, çizgi, alan veya çubuk) görselleştirmeler arasında tercih yapma seçeneğine verilir **türü** düğmeleri Not:
+> PySpark Çekirdeği (HiveQL) SQL sorguları çıktısını otomatik olarak görselleştirir. Not defterindeki **tür** menü düğmelerini kullanarak birkaç farklı görselleştirme türü (tablo, pasta, çizgi, alan veya çubuk) arasından seçim yapabilirsiniz:
 >
 >
 
@@ -177,9 +177,9 @@ Artık şunları yapabilirsiniz:
 ## <a name="whats-next"></a>Sırada ne var?
 Bir HDInsight Spark kümesi ile ayarlanır ve Jupyter not defterlerini karşıya yüklediğiniz göre bu üç PySpark not defterleri için karşılık gelen konuları ile çalışmaya hazır olursunuz. Bunlar, nasıl oluşturarak verilerinizi araştırmanıza ve nasıl oluşturulup tüketim modelleri görüntüleyin. Gelişmiş Veri keşfi ve modelleme Not Defteri, çapraz doğrulama, hyper-Süpürme saldırısı yapılabilir, parametre eklemek ve değerlendirme modeli gösterilmektedir.
 
-**Spark ile veri keşfi ve modelleme:** veri kümesini araştırmak ve oluşturma, Puanlama ve makine öğrenimi modellerini aracılığıyla değerlendirmek [ikili sınıflandırma ve regresyon modellerini verileri için Spark MLlib ile oluşturma Araç Seti](spark-data-exploration-modeling.md) konu.
+**Spark Ile veri araştırması ve modelleme:** [Spark MLlib araç seti ile veri için ikili sınıflandırma ve regresyon modelleri oluşturma](spark-data-exploration-modeling.md) konusunun veri kümesini İnceleme ve makine öğrenimi modelleri oluşturma, Puanlama ve değerlendirme.
 
-**Model tüketimi:** Bu konu başlığında oluşturduğunuz sınıflandırma ve regresyon modellerini puanlamanıza öğrenmek için bkz. [puanı ve Spark'a yerleşik machine learning modellerini değerlendirme](spark-model-consumption.md).
+**Model tüketimi:** Bu konuda oluşturulan sınıflandırma ve regresyon modellerinin nasıl puan alabileceğinizi öğrenmek için bkz. [Spark ile oluşturulmuş makine öğrenimi modellerini Puanlama ve değerlendirme](spark-model-consumption.md).
 
-**Çapraz doğrulama ve hiper parametre Süpürme**: bkz [Gelişmiş Veri keşfi ve modelleme Spark ile](spark-advanced-data-exploration-modeling.md) modelleri nasıl olabileceğini üzerinde çapraz doğrulama ve hiper parametreli Süpürme kullanarak eğitim
+**Çapraz doğrulama ve hiper parametre**kullanımı: modellerin çapraz doğrulama ve hiper parametre tatkiyle nasıl eğitilmesine ilişkin [Spark ile gelişmiş veri araştırması ve modellemeye](spark-advanced-data-exploration-modeling.md) bakın
 

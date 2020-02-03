@@ -21,21 +21,21 @@ ms.locfileid: "76721141"
 # <a name="feature-engineering-in-data-science"></a>Veri bilimi, özellik Mühendisliği
 Bu makalede, özellik Mühendisliği amaçları açıklanır ve machine Learning veri geliştirme sürecinde rolü örnekleri sağlar. Bu işlemi canlandırmak adına kullanılan örnekleri, Azure Machine Learning Studio'dan çizilir. 
 
-Bu görev bir adımdır [Team Data Science işlem (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Bu görev, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
 
-Learning işlemini kolaylaştırmaya yardımcı olması ham verilerden özellikler oluşturarak öğrenimi algoritmaları, Tahmine dayalı power artırmak için mühendislik denemeleri özellik. Özellik Seçimi ve mühendislik özetlenen TDSP bir parçası olan [Team Data Science Process yaşam döngüsü nedir?](overview.md) Özellik Mühendisliği ve seçimi olan bölümleri **geliştirme özellikleri** TDSP. adımı. 
+Learning işlemini kolaylaştırmaya yardımcı olması ham verilerden özellikler oluşturarak öğrenimi algoritmaları, Tahmine dayalı power artırmak için mühendislik denemeleri özellik. Özelliklerin Mühendisliği ve seçimi, [Team Data Science işlem yaşam döngüsü nedir?](overview.md) bölümünde özetlenen TDSP 'nin bir parçasıdır mi? Özellik Mühendisliği ve seçimi, TDSP 'nin **Özellikler geliştirme** adımının parçalarından oluşur. 
 
-* **özellik Mühendisliği**: Bu işlem verilerinde mevcut ham özelliklerinden ilgili ek özellikler oluşturma ve Tahmine dayalı öğrenme algoritmasını gücünü artırmak için çalışır.
-* **Özellik Seçimi**: Bu işlem özgün veri özellikleri anahtar kısmını eğitim sorunun işlenemez azaltmak girişimi seçer.
+* **özellik Mühendisliği**: Bu işlem, verilerdeki mevcut ham özelliklerden ek ilgili özellikler oluşturmaya çalışır ve öğrenme algoritmasının tahmine dayalı gücünü artırır.
+* **Özellik seçimi**: Bu işlem, eğitim sorununun boyutlılık düzeyini azaltmak için bir denemede orijinal veri özelliklerinin anahtar alt kümesini seçer.
 
-Normalde **özellik Mühendisliği** ek özellikler oluşturmak için öncelikle uygulanır ve ardından **özellik seçimi** adım, ilgisiz, yedekli ya da son derece bağıntılı özellikleri ortadan kaldırmak için gerçekleştirilir.
+Normalde **özellik Mühendisliği** , ek özellikler oluşturmak için önce uygulanır ve ardından **Özellik seçimi** adımı, ilgisiz, yedekli veya çok bağıntılı özellikleri ortadan kaldırmak için gerçekleştirilir.
 
 Machine learning'de kullanılan eğitim verileri, genellikle toplanan ham verileri ayıklama özellikleri tarafından geliştirilebilir. Bir bit ham bit dağıtım verilerden oluşturulmuş yoğunluk Haritası oluşturulmasını görüntüleri el yazısı karakterleri sınıflandırmak öğrenme bağlamında mühendislik uygulanan bir özellik örneğidir. Bu harita, kenarlarını karakterleri yalnızca ham dağıtım doğrudan kullanımına kıyasla daha verimli bir şekilde belirlemeye yardımcı olabilir.
 
 Belirli ortamlarda verilerin özelliklerini oluşturma için aşağıdaki makalelere bakın:
 
-* [SQL Server'daki verilerin özelliklerini oluşturma](create-features-sql-server.md)
-* [Bir Hadoop kümesinde Hive sorgularını kullanarak verilerin özelliklerini oluşturma](create-features-hive.md)
+* [SQL Server veri için özellikler oluşturma](create-features-sql-server.md)
+* [Hive sorguları kullanarak Hadoop kümesindeki veriler için özellikler oluşturma](create-features-hive.md)
 
 ## <a name="create-features-from-your-data---feature-engineering"></a>Verilerinizden - özelliklerini oluşturma özellik Mühendisliği
 Eğitim verileri, her biri özellikleriyle (değişkenleri veya sütunlarda depolanan alanları) sahip örnekleri (kayıtları veya gözlemleri satırlarda depolanan) oluşan bir matris oluşur. Deneysel tasarımında belirtilen özellikleri, veri desenlerinde niteleyen beklenir. Ham veri alanlarının çoğunu doğrudan bir modeli eğitmek için kullanılan seçili özellik kümesine eklenebilir olsa da, genellikle ek (tasarlanan) özellikleri bir Gelişmiş bir eğitim veri kümesi oluşturmak için ham verilerdeki özelliklerinden oluşturulması gerektiğini durum geçerlidir.
@@ -44,8 +44,8 @@ Veri kümesi bir modeli eğitimindeki geliştirmek için ne tür bir özellikler
 
 Azure Machine Learning'i kullanmaya Başlarken concretely Studio'da sağlanan örnekleri kullanarak bu işlemi kavramak kolaydır. Burada sunulan iki örnek:
 
-* Regresyon örnek [bisiklet kiralama sayısını tahmin](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) hedef değerleri bilinir burada denetimli bir denemede
-* Bir metin araştırma sınıflandırma örneği kullanarak [özellik karma](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+* Hedef değerlerin bilindiği, denetimli bir deneyde [Bisiklet örnek sayısının](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) gerileme örneği tahmini
+* [Özellik karmalama](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) kullanan bir metin araştırma sınıflandırması örneği
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Örnek 1: bir regresyon modeli için zamana bağlı özellikleri ekleyin
 Bir gerileme görevi için özelliklere nasıl mühendislik yapılacağını göstermek üzere Azure Machine Learning Studio (klasik) içinde "Bisiklet tahmini Bisiklet" denemesini kullanalım. Bu deneyde amaç, diğer bir deyişle, bir özel ay/gün/saat içinde bisiklet kiralama sayısını bisiklet talebini tahmin etmektir. Veri kümesi "bisiklet kiralama UCI veri kümesi" ham girdi verisi olarak kullanılır. Bu veri kümesi bir Amerika Birleşik Devletleri'nde, Washington DC bisiklet kiralama ağında tutan büyük Bikeshare şirketin gerçek verileri temel alır. Veri kümesi, 2011 ve yılı 2012 yıllarda günün belirli bir saat içinde bisiklet kiralama sayısını temsil eder ve 17379 satırları ve 17 sütunları içerir. Hava koşulları (sıcaklık/nem/Rüzgar hızı) ve günlük (tatil/haftanın günü) türü ham özellik kümesini içerir. Tahmin edilecek alan, belirli bir saat içinde bisiklet ve 1 ile 977 arasında değişen Bisiklet alanlarını temsil eden ' sayisi ' sayıdır.
@@ -59,7 +59,7 @@ Eğitim verileri, dört regresyon modellerini aynı algoritmayı kullanılarak o
 
 Özgün ham verileri kullanarak zaten özellik kümesi A yanı sıra, işlem mühendislik özelliği aracılığıyla diğer üç özellik kümesi oluşturulur. B özellik kümesi, Bisikletler için son talebi yakalar. Özelliği, belirli bir saatte bisiklet talebini C yakalamaları ayarlayın. Özelliği, belirli bir saat ve haftanın belirli gün bisiklet D yakalamaları talep ayarlayın. Dört eğitim veri kümeleri her özellik kümesi A, A + B, A + B + C ve A + B + C + D, sırasıyla içerir.
 
-Azure Machine Learning denemesi bu dört eğitim veri kümeleri aracılığıyla dört dallardan önceden işlenmiş giriş veri kümesi oluşturulur. En soldaki dal dışında her biri bu dallar içeren bir [R betiği yürütme](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modül içinde (özellik kümesi B ve C D) türetilen özellikleri sırasıyla oluşturulur ve içeri aktarılan veri kümesine eklenir. Aşağıdaki şekilde ikinci sol dalda B özellik kümesi oluşturmak için kullanılan bir R betiği gösterir.
+Azure Machine Learning denemesi bu dört eğitim veri kümeleri aracılığıyla dört dallardan önceden işlenmiş giriş veri kümesi oluşturulur. En soldaki dal haricinde, bu dalların her biri, türetilmiş özelliklerin (özellik kümesi B, C ve D) oluşturulduğu ve içeri aktarılan veri kümesine eklendiği bir [yürütme R betiği](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modülü içerir. Aşağıdaki şekilde ikinci sol dalda B özellik kümesi oluşturmak için kullanılan bir R betiği gösterir.
 
 ![Özellikleri oluşturma](./media/create-features/addFeature-Rscripts.png)
 
@@ -69,12 +69,12 @@ Performans sonuçlarını olan dört model oluşturduğunuz bir karşılaştırm
 
 En iyi sonuçları A + B + C özellikleri tarafından gösterilir. Eğitim verilerine ek özellik kümesi eklendiğinde hata oranı azalır. Bu özellik kümesi B, C regresyon görev ilgili ek bilgileri sağlayın presumption doğrular. Ancak, ek hata oranının kısalma sağlamak için D özellik ekleme görünmüyor.
 
-## <a name="example2"></a> Örnek 2: özellikleri içinde metin araştırma oluşturma
+## <a name="example2"></a>Örnek 2: metin madenciliği özellikler oluşturma
 Özellik Mühendisliği, metin madenciliği, belge sınıflandırma ve yaklaşım analizi gibi ilgili görevleri yaygın olarak uygulanır. Belgeler, çeşitli kategorilerde sınıflandırmak istediğiniz zaman, örneğin, bir tipik bir belge kategorisindeki word/tümcecikleri başka bir belge kategorisinde oluşma olasılığı daha varsayılır. Diğer bir deyişle, sözcük/tümcecikleri dağıtım sıklığını farklı Belge kategorileri niteleyen kuramıyor. Metin içeriği tek tek parça genellikle girdi verisi olarak gördükleri için metin araştırma uygulamalarda, sözcüğün/tümceciğin frekansları ilgili özellikler oluşturmak için işlem mühendislik özelliği gereklidir.
 
-Bu görevi gerçekleştirmek için bir yöntem olarak adlandırılan **özellik karma** verimli bir şekilde dizinler rastgele metin özellikleri etkinleştirmek için uygulanır. Her metin özelliği (sözcük/tümcecikleri) belirli bir dizinden bir karma işlevi özellikleri için uygulama ve dizinlerin karma değerlerini kullanarak, doğrudan bu yöntemi işlevleri ilişkilendirilmek yerine.
+Bu görevi gerçekleştirmek için, **özellik** karması adlı bir teknik, rastgele metin özelliklerini etkin bir şekilde dizinler halinde dönüştürmek üzere uygulanır. Her metin özelliği (sözcük/tümcecikleri) belirli bir dizinden bir karma işlevi özellikleri için uygulama ve dizinlerin karma değerlerini kullanarak, doğrudan bu yöntemi işlevleri ilişkilendirilmek yerine.
 
-Azure Machine Learning ' de, kolayca Word/tümcecik özellikleri oluşturan bir [özellik karma](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modülü vardır. Aşağıdaki şekilde bu modülü kullanarak bir örnek gösterilmektedir. İki sütun giriş veri kümesi içerir: 1'den 5'e kadar kitap derecelendirme ve gerçek gözden geçirme içeriği. Bu [özellik karma](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modülüdür özellikleri karşılık gelen sözcükleri yinelenme sıklığını gösteren yeni bir sürü almak için / içinde belirli bir kitap phrase(s) gözden geçirin. Bu modülü kullanmak için aşağıdaki adımları tamamlayın:
+Azure Machine Learning ' de, kolayca Word/tümcecik özellikleri oluşturan bir [özellik karma](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modülü vardır. Aşağıdaki şekilde bu modülü kullanarak bir örnek gösterilmektedir. İki sütun giriş veri kümesi içerir: 1'den 5'e kadar kitap derecelendirme ve gerçek gözden geçirme içeriği. Bu [özellik karma](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modülünün amacı, belirli bir kitap incelemesinin içindeki karşılık gelen sözcük (ler) in oluşma sıklığını gösteren bir dizi yeni özelliği almak için kullanılır. Bu modülü kullanmak için aşağıdaki adımları tamamlayın:
 
 * İlk olarak, giriş metni içeren sütunu seçin (Bu örnekte "Sütun2").
 * İkinci olarak, 8'e ayarlayın 2 anlamına gelir "Hashing bitsize" ^ 8 = 256 özellikleri oluşturulacak. Tüm metni word/aşamasında 256 İndekslere karma. "Hashing bitsize" parametresini 1 ile 31 arasında. Sözcükler / phrase(s) aynı dizine daha büyük bir sayı olarak ayarlıyorsanız sağlaması olasılığı.

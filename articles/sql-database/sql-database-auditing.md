@@ -16,7 +16,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719815"
 ---
-# <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
+# <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimi 'ni kullanmaya başlama
 
 Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. Ayrıca Denetim:
 
@@ -73,7 +73,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 1. [Azure portalına](https://portal.azure.com) gidin.
 2. SQL veritabanı/sunucu bölmeniz içindeki güvenlik başlığı altında bulunan **Denetim** ' e gidin.
 
-    <a id="auditing-screenshot"></a>![Gezinti Bölmesi][1]
+    <a id="auditing-screenshot"></a>![gezinti bölmesi][1]
 
 3. Sunucu denetim ilkesi ayarlamayı tercih ediyorsanız, veritabanı denetimi sayfasında **sunucu ayarlarını görüntüle** bağlantısını seçebilirsiniz. Daha sonra sunucu denetimi ayarlarını görüntüleyebilir veya değiştirebilirsiniz. Sunucu denetim ilkeleri, bu sunucudaki tüm mevcut ve yeni oluşturulan veritabanları için geçerlidir.
 
@@ -111,7 +111,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 
     ![Olay hub'ı](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. **Save (Kaydet)** düğmesine tıklayın.
+9. **Kaydet** düğmesine tıklayın.
 10. Denetlenen olayları özelleştirmek istiyorsanız bunu [PowerShell cmdlet 'leri](#subheading-7) veya [REST API](#subheading-9)aracılığıyla yapabilirsiniz.
 11. Denetim ayarlarınızı yapılandırdıktan sonra, yeni tehdit algılama özelliğini açıp e-postaları güvenlik uyarılarını alacak şekilde yapılandırabilirsiniz. Tehdit algılama 'yı kullandığınızda, olası güvenlik tehditlerini gösterebilen anormal veritabanı etkinliklerinde proaktif uyarılar alırsınız. Daha fazla bilgi için bkz. [tehdit algılamayı kullanmaya başlama](sql-database-threat-detection-get-started.md).
 

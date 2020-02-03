@@ -22,7 +22,7 @@ ms.locfileid: "76721056"
 Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 
 ## <a name="connecting"></a>Bağlanmada
-| Sorun                                                        | Çözünürlük                                                   |
+| Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 18456) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
 | Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 916) | Bu hata bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak asıl veritabanında kullanıcı olmadığında meydana gelir.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL Veri Ambarı’nı belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
@@ -31,14 +31,14 @@ Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 | Araçla veya sürücüyle bağlantı yapılamaz                           | SQL veri ambarı, [SMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)'Yi, [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)'yi veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve SQL veri ambarı 'na bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için sürücüler](sql-data-warehouse-connection-strings.md) ve [Azure SQL veri ambarı makalelerine bağlanma](sql-data-warehouse-connect-overview.md) . |
 
 ## <a name="tools"></a>Araçlar
-| Sorun                                                        | Çözünürlük                                                   |
+| Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio Nesne Gezgini 'nde AAD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici bir çözüm olarak, [sys. database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)içindeki kullanıcıları görüntüleyin.  SQL veri ambarı ile Azure Active Directory kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veri ambarı 'Nda kimlik doğrulama](sql-data-warehouse-authentication.md) . |
 | El ile betik oluşturma, betik Sihirbazı 'nı kullanma veya SSMS aracılığıyla bağlanma yavaş, yanıt vermiyor veya hata üretmiyor | Ana veritabanında kullanıcıların oluşturulduğundan emin olun. Komut dosyası seçeneklerinde Ayrıca, Engine sürümünün "Microsoft Azure SQL Veri Ambarı Edition" olarak ayarlandığından ve altyapı türünün "Microsoft Azure SQL Veritabanı" olduğundan emin olun. |
 | SSMS 'de betik oluşturma başarısız oluyor                               | "Bağımlı nesneler için betik oluştur" seçeneği "true" olarak ayarlandıysa SQL veri ambarı için betik oluşturma işlemi başarısız olur. Geçici bir çözüm olarak, kullanıcıların **Araçlar-> Seçenekler-> SQL Server Nesne Gezgini-> bağımlı seçenekler için betik oluştur ve yanlış olarak ayarla** seçeneğine el ile gitmesi gerekir |
 
 ## <a name="performance"></a>Performans
-| Sorun                                                        | Çözünürlük                                                   |
+| Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Sorgu performansı sorunlarını giderme                            | Belirli bir sorgu sorunlarını gidermeye çalışıyorsanız, [sorgularınızı nasıl izleyebileceğiniz hakkında bilgi edinmeye](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution)başlayın. |
 | TempDB alanı sorunları | [Tempdb](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-tempdb) alan kullanımını izleyin.  TempDB alanını çalıştırmanın yaygın nedenleri şunlardır:<br>-Sorguya ayrılan yeterli kaynak yok, verilerin TempDB 'ye taşımasına neden olur.  Bkz. [Iş yükü yönetimi](resource-classes-for-workload-management.md) <br>-Çok fazla veri hareketine neden olan istatistikler eksik veya güncel değil.  İstatistik oluşturma hakkında ayrıntılı bilgi için bkz. [tablo Istatistiklerini koruma](sql-data-warehouse-tables-statistics.md)<br>-TempDB alanı hizmet düzeyi başına ayrılır.  [SQL veri Ambarınızı](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md#scaling-compute) daha yüksek bir DWU ayarına ölçeklendirirken daha fazla tempdb alanı ayırır.|
@@ -49,7 +49,7 @@ Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 | Yetersiz Dizin kalitesinin sonucu olarak sorgu performansı yetersiz     | Bazı süreler sorguları, [düşük columnstore dizin kalitesi](../sql-data-warehouse/sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)nedeniyle yavaşlayabilir.  Daha fazla bilgi ve [bölüm kalitesini artırmak için dizinleri yeniden oluşturma](../sql-data-warehouse/sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)hakkında daha fazla bilgi için bu makaleye bakın. |
 
 ## <a name="system-management"></a>Sistem Yönetimi
-| Sorun                                                        | Çözünürlük                                                   |
+| Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: sunucu, izin verilen veritabanı Işlem birimi kotasını (45000) aşacağından işlem gerçekleştirilemedi. | Oluşturmaya çalıştığınız veritabanının [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) değerini azaltın ya da [bir kota artışı isteyin](sql-data-warehouse-get-started-create-support-ticket.md). |
 | Alan kullanımını araştırma                              | Sisteminizin alan kullanımını anlamak için bkz. [Tablo boyutları]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) . |
@@ -58,7 +58,7 @@ Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 
 
 ## <a name="differences-from-sql-database"></a>SQL veritabanı farklılıkları
-| Sorun                                 | Çözünürlük                                                   |
+| Sorun                                 | Çözüm                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Desteklenmeyen SQL veritabanı özellikleri     | [Desteklenmeyen tablo özelliklerine](../sql-data-warehouse/sql-data-warehouse-tables-overview.md#unsupported-table-features)bakın. |
 | Desteklenmeyen SQL veritabanı veri türleri   | [Desteklenmeyen veri türlerine](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)bakın.        |

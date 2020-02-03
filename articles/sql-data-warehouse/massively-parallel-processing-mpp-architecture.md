@@ -19,7 +19,7 @@ ms.locfileid: "76720325"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi 
 
-Azure Synapse, kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Dilediğiniz ölçekteki sunucusuz, isteğe bağlı veya sağlanmış kaynakları kullanarak verileri istediğiniz gibi sorgulama özgürlüğü sağlar. Azure Synapse, anlık iş zekası ve makine öğrenmesi ihtiyaçları için veri alma, hazırlama, yönetme ve sunmaya yönelik birleştirilmiş deneyim ile bu iki dünyayı bir araya getirir.
+Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar.
 
  Azure SYNAPSE dört bileşene sahiptir:
 - SQL Analytics: tam T-SQL tabanlı analiz 
@@ -48,7 +48,7 @@ Ayrılmış depolama ve işlem ile SQL Analytics 'in kullanımı şunları yapab
 * İşlem kapasitesini, verileri bozulmadan bırakarak yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 SQL Analytics, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 

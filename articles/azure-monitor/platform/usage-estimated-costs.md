@@ -25,7 +25,7 @@ ms.locfileid: "76715777"
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Izleyici fiyatlandırma modeli
 
-Temel Azure Izleyici faturalandırma modeli, bulut kullanımı kolay, tüketim tabanlı bir fiyatlandırmadır ("Kullandıkça öde"). Yalnızca kullandığınız kadar ödersiniz. Fiyatlandırma ayrıntıları, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) ve [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)için kullanılabilir. 
+Temel Azure Izleyici faturalandırma modeli, bulut kullanımı kolay, tüketim tabanlı bir fiyatlandırmadır ("Kullandıkça öde"). Sadece kullandığınız kadar ödersiniz. Fiyatlandırma ayrıntıları, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) ve [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)için kullanılabilir. 
 
 Günlük verileri için Kullandıkça Öde modeline ek olarak, Log Analytics, Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf etmeniz için kapasite rezervasyonları vardır. Kapasite ayırma fiyatlandırması, 100 GB/gün üzerinden başlayan bir rezervasyon satın almanıza olanak sağlar. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Kapasite ayırma fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) .
 
@@ -87,7 +87,7 @@ Son 31 gün dönem boyunca kullanım eğilimlerini gösteren bir grafiği'ni aç
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Operations Management Suite abonelik yetkilendirmeleri
 
-Microsoft Operations Management Suite E1 ve E2 satın alan müşteriler için düğüm başına veri alımı yetkilendirmeler için uygun [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) ve [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Belirli bir abonelikte Bu destek haklarını Log Analytics çalışma alanları veya Application Insights kaynakları almak için: 
+Microsoft Operations Management Suite E1 ve E2 satın alan müşteriler, [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) ve [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)için düğüm başına veri alma yetkilendirmelerinde uygun değildir. Belirli bir abonelikte Bu destek haklarını Log Analytics çalışma alanları veya Application Insights kaynakları almak için: 
 
 - Log Analytics çalışma alanları "fiyatlandırma katmanında düğüm başına (OMS)" kullanmanız gerekir.
 - Application Insights kaynaklar "Kurumsal" fiyatlandırma katmanını kullanmalıdır.

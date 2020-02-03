@@ -19,7 +19,7 @@ ms.locfileid: "76722110"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Veri bilimi projeleri, Çevik Geliştirme
 
-Bu belgede, nasıl geliştiricilerin veri bilimi proje bir sistematik olarak, sürüm denetimli ve işbirliğine dayalı bir şekilde bir proje ekibi içinde kullanarak yürütebilirsiniz açıklanmaktadır [Team Data Science Process](overview.md) (TDSP). TDSP, bulut tabanlı, tahmine dayalı analiz çözümlerini verimli bir şekilde yürütmek için yapılandırılmış bir etkinlik dizisi sağlayan Microsoft tarafından geliştirilen bir çerçevedir. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen rol ve görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md). 
+Bu belgede, geliştiricilerin bir veri bilimi projesini, [ekip veri bilimi işlemini](overview.md) (TDSP) kullanarak bir proje ekibi içinde bir sistematik, sürüm denetimli ve işbirliğine dayalı bir şekilde nasıl yürütebileceği açıklanmaktadır. TDSP, bulut tabanlı, tahmine dayalı analiz çözümlerini verimli bir şekilde yürütmek için yapılandırılmış bir etkinlik dizisi sağlayan Microsoft tarafından geliştirilen bir çerçevedir. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen rol ve görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md). 
 
 Bu makale için yönergeler içerir: 
 
@@ -158,9 +158,9 @@ Veri bilimcileri, özellikleri, kullanıcı hikayelerini ve Işleri TDSP yaşam 
    
 1. **Özellikleri** *TDSP aşamalarına*yeniden adlandırmak için aynı adımları izleyin ve aşağıdaki yeni iş öğesi türlerini ekleyin:
    
-   - *İşin gereksinimlerini anlama*
+   - *İş anlama*
    - *Veri alımı*
-   - *Modelleme*
+   - *Oluşturmanın*
    - *Dağıtım*
    
 1. **Gereksinim biriktirme listesi**altında, **hikayeleri** *TDSP alt aşamalarına*yeniden adlandırın, yeni Iş öğesi türü *TDSP alt aşamasını*ekleyin ve varsayılan iş öğesi türünü **TDSP alt aşamasına**ayarlayın.

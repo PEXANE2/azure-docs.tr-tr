@@ -22,7 +22,7 @@ Bu işlev, yönetilmeyen diskler için desteklenmez. Ancak, disk türleri arası
 
  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Dönüştürme, sanal makinenin (VM) yeniden başlatılmasını gerektirdiğinden, önceden var olan bir bakım penceresi sırasında disk depolama alanınızı geçirmeyi zamanlamanız gerekir.
 * Diskiniz yönetilmiyorsa, depolama seçenekleri arasında geçiş yapabilmeniz [için önce onu bir yönetilen diske dönüştürün](convert-unmanaged-to-managed-disks.md) .
@@ -111,7 +111,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Portaldaki **sanal makineler** listesinden VM 'yi seçin.
 3. VM durdurulmamışsa, VM **'ye genel bakış** bölmesinin üst kısmında **Durdur** ' u seçin ve VM 'nin durdurulmasını bekleyin.
 3. VM 'nin bölmesinde, menüden **diskler** ' i seçin.

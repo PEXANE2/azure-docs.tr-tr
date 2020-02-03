@@ -23,7 +23,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Azure Dev Spaces takım geliştirme](media/azure-dev-spaces/collaborate-graphic.gif)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).

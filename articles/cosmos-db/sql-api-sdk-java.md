@@ -30,16 +30,16 @@ ms.locfileid: "76718182"
 > * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
-SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği kullanan [SQL API Async Java SDK'sı](sql-api-sdk-async-java.md). 
+SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz destek için, [SQL API zaman uyumsuz Java SDK 'sını](sql-api-sdk-async-java.md)kullanın. 
 
 | |  |
 |---|---|
-|**SDK'sını indirme**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**SDK Indirmesi**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API belgeleri**|[Java API başvuru belgeleri](/java/api/com.microsoft.azure.documentdb)|
-|**SDK'sı için katkıda bulunan**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Kullanmaya Başlama**|[Java SDK'sı ile çalışmaya başlama](sql-api-java-get-started.md)|
-|**Web uygulaması Öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-java-application.md)|
-|**En düşük desteklenen çalışma zamanı**|[Java Geliştirme Seti (JDK) 7 +](https://aka.ms/azure-jdks)|
+|**SDK 'ya katkıda bulunma**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Başlarken**|[Java SDK 'sını kullanmaya başlama](sql-api-java-get-started.md)|
+|**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-java-application.md)|
+|**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Sürüm notları
 
@@ -77,7 +77,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 * Karma v2 için PartitionKey içindeki hata düzeltildi.
 
-### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2'yi
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2 'yi
 * Bileşik dizinler için destek eklendi.
 * Yenilemeyi zorlamak için genel uç nokta yöneticisinde hata düzeltildi.
 * Doğrudan modda ön koşullara sahip olan uptts için hata düzeltildi.
@@ -127,7 +127,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * Json seri hale getirme performansı İyileştirildi.
-* Bu SDK sürüm Merkezi'nden Azure Cosmos DB Emulator kullanılabilir en son sürümünü gerektirir. https://aka.ms/cosmosdb-emulator.
+* Bu SDK sürümü, Azure Cosmos DB öykünücüsü 'nin https://aka.ms/cosmosdb-emulator'den indirileceği en son sürümünü gerektirir.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * İç değişiklik Microsoft arkadaş kitaplıkları.
@@ -154,7 +154,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 * Koleksiyon oluşturulduktan hemen sonra istekleri için bir "sahibi kaynak bulunamadı" özel neden olabilecek oturumu kapsayıcıdaki bazı hatalar düzeltildi.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Toplama sorguları (sayısı, MIN, MAX, toplam ve ortalama) için destek eklendi. Bkz: [toplama Destek](sql-query-aggregates.md).
+* Toplama sorguları (sayısı, MIN, MAX, toplam ve ortalama) için destek eklendi. Bkz. [toplama desteği](sql-query-aggregates.md).
 * Değişiklik akışı desteği eklendi.
 * RequestOptions.setPopulateQuotaInfo aracılığıyla kota bilgilerin toplanması için destek eklendi.
 * Saklı yordam betik günlüğü RequestOptions.setScriptLoggingEnabled desteği eklendi.
@@ -212,7 +212,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 * Belgeler için eklenen zaman canlı (TTL) desteği.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Uygulanan [bölümlenmiş koleksiyonları](partition-data.md) ve [kullanıcı tanımlı performans düzeyleri](performance-levels.md).
+* [Bölümlenmiş koleksiyonlar](partition-data.md) ve [Kullanıcı tanımlı performans düzeyleri](performance-levels.md)uygulandı.
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
 * Diğer SDK'ları ile tutarlı olmasını endian karma değerleri oluşturmak için HashPartitionResolver içinde bir hata düzeltildi.
@@ -229,7 +229,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Jeo-uzamsal dizin destekler
-* Tüm kaynaklar için ID özelliğini doğrular. Kaynaklar için kimlikleri içeremez?, /, #, \, karakterler veya boşluk ile bitmelidir.
+* Tüm kaynaklar için ID özelliğini doğrular. Kaynak kimlikleri,?,/, # \, karakter içeremez veya boşlukla bitemez.
 * Yeni üst bilgi "dizin dönüştürme ilerleme durumu" için ResourceResponse ekler.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -239,7 +239,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 * GA SDK'SI
 
 ## <a name="release-and-retirement-dates"></a>Yayın ve sona erme tarihleri
-Sağlar; Microsoft bildirim en az **12 ay** yeni/desteklenen bir sürüme geçiş hafifletmek için bir SDK'yı devre dışı bırakmadan önce.
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
 
 Geçerli SDK'sı yalnızca eklenen yeni özellikler ve işlevsellik ve en iyi duruma getirme, olduğundan bu nedenle önerilir, her zaman en son SDK sürümüne erken mümkün olduğunca yükseltmeniz.
 
@@ -251,7 +251,7 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 >
 
 > [!WARNING]
-> Java için SQL SDK'sının sürümden önceki tüm sürümler **1.0.0** kullanımdan kaldırılmıştır **29 Şubat 2016**.
+> Sürüm **1.0.0** öncesinde Java IÇIN SQL SDK 'nın tüm sürümleri **, 29 Şubat 2016**tarihinde devre dışı bırakıldı.
 > 
 > 
 
@@ -260,7 +260,7 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 | Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |13 Mar, 2018 |--- |
-| [2.1.2'yi](#2.1.2) |09 Mar, 2018 |--- |
+| [2.1.2 'yi](#2.1.2) |09 Mar, 2018 |--- |
 | [2.1.1](#2.1.1) |13. ara, 2018 |--- |
 | [2.1.0](#2.1.0) |20 Kasım 2018 |--- |
 | [2.0.0](#2.0.0) |21 Eylül 2018 |--- |
@@ -306,5 +306,5 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Cosmos DB hakkında daha fazla bilgi için bkz: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfası.
+Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.
 

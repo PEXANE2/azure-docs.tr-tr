@@ -25,7 +25,7 @@ Azure DevTest Labs, Azure portal kullanarak hızlı bir şekilde self servis gel
 Bir laboratuvara Kullanıcı eklemek için, kullanıcıyı laboratuvar için **DevTest Labs Kullanıcı** rolüne eklersiniz. Bu makalede, aşağıdaki yollarla bir kullanıcıyı laboratuvara ekleme işlemini nasıl otomatikleştirebileceğiniz gösterilmektedir:
 
 - Azure Resource Manager şablonları
-- Azure PowerShell cmdlet'leri 
+- Azure PowerShell cmdlet’leri 
 - Azure CLı.
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
@@ -176,7 +176,7 @@ Laboratuvar için DevTest Labs kullanıcı rolüne birkaç Active Directory nesn
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
-## <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 Giriş bölümünde anlatıldığı gibi, laboratuvar için **DevTest Labs Kullanıcı** rolüne bir kullanıcı eklemek için yeni bir Azure rol ataması oluşturursunuz. PowerShell 'de, [New-Azurermroleatama](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet 'ini kullanarak bunu yapabilirsiniz. Bu cmdlet 'in esneklik için izin verilen birçok isteğe bağlı parametresi vardır. `ObjectId`, `SigninName`veya `ServicePrincipalName`, izin verilen nesne olarak belirlenebilir.  
 
 Aşağıda, belirtilen laboratuvardaki DevTest Labs kullanıcı rolüne bir Kullanıcı ekleyen örnek bir Azure PowerShell komutu verilmiştir.

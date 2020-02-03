@@ -14,7 +14,7 @@ ms.locfileid: "76715375"
 
 Bu makalede, bir Azure depolama kuyruğunu, [http tarafından tetiklenen bir Python Işlevi oluşturma](functions-create-first-function-python.md)bölümünde oluşturduğunuz işlev ve depolama hesabıyla tümleştirmeniz gerekir. Bu tümleştirmeyi, HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *Çıkış bağlaması* kullanarak elde edersiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç için birkaç USD 'nin ötesinde ek maliyet yoktur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Hızlı başlangıcı doldurun, [http tarafından tetiklenen bir Python Işlevi oluşturun](functions-create-first-function-python.md). Bu makalenin sonunda kaynakları zaten temizlediğinizde, Işlevler uygulamasını Azure 'da yeniden oluşturmak için adımları tekrar deneyin, ancak kaynakları yerinde bırakın.
 

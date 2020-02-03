@@ -21,7 +21,7 @@ ms.locfileid: "76713418"
 
 ![Azure App Service 'de Python Docgo Web uygulaması](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * PostgreSQL için Azure veritabanı veritabanı oluşturma ve bir Web uygulamasını buna bağlama
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makaledeki adımları macOS, Linux veya Windows ' da izleyebilirsiniz. Adımlar çoğu durumda benzerdir, ancak farklar bu öğreticide ayrıntılı değildir. Aşağıdaki örneklerin çoğu Linux üzerinde `bash` Terminal penceresi kullanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -50,7 +50,7 @@ Yerel bir Terminal penceresinde, yerleşik `postgres` Kullanıcı olarak yerel P
 sudo su - postgres
 psql
 ```
-veya
+or
 ```PowerShell
 psql -U postgres
 ```
@@ -91,7 +91,7 @@ Uygulamanızı çalıştırmak için bir Python sanal ortamı oluşturun ve etki
 python3 -m venv venv
 source venv/bin/activate
 ```
-veya
+or
 ```PowerShell
 py -3 -m venv venv
 venv\scripts\activate
@@ -102,7 +102,7 @@ venv\scripts\activate
 ```bash
 source ./env.sh
 ```
-veya
+or
 ```PowerShell
 .\env.ps1
 ```
@@ -247,7 +247,7 @@ export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
 ```
-veya
+or
 ```powershell
 $Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
 $Env:DBUSER = "manager@<postgresql-name>"
@@ -259,7 +259,7 @@ Yerel Terminal pencerenizde `venv` ortamda, düzenlenen *env.sh* veya *env. ps1*
 ```bash
 source ./env.sh
 ```
-veya
+or
 ```PowerShell
 .\env.ps1
 ```
@@ -347,7 +347,7 @@ git commit -am "configure for App Service"
 
 ### <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Öğreticinin önceki bölümlerinde, PostgreSQL veritabanınıza bağlanmak üzere ortam değişkenleri tanımladınız.
+Öğreticide daha önce PostgreSQL veritabanınıza bağlanmak için ortam değişkenleri tanımladınız.
 
 Azure App Service, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak ortam değişkenlerini *uygulama ayarları*olarak ayarlarsınız.
 

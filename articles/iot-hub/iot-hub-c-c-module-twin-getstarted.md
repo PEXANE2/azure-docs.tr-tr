@@ -31,13 +31,13 @@ Bu öğreticinin sonunda iki C uygulamanız vardır:
 > [!NOTE]
 > Cihazlarda çalıştırılacak uygulamaları ve çözüm arka ucunuzu oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir Azure hesabı](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
 * En son [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

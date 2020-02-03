@@ -16,7 +16,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76748815"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -27,7 +27,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **helloworld.cpp** kaynak dosyasını açın.
 
@@ -35,9 +35,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
    
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-file/helloworld/helloworld.cpp#code)]
 
-1. Aynı dosyada `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 1. Dize `whatstheweatherlike.wav` kendi dosya adıyla değiştirin.
 

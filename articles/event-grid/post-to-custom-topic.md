@@ -21,7 +21,7 @@ Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>Uç nokta
+## <a name="endpoint"></a>Uç Nokta
 
 HTTP GÖNDERISINI özel bir konuya gönderirken, URI biçimini kullanın: `https://<topic-endpoint>?api-version=2018-01-01`.
 
@@ -106,7 +106,7 @@ Konu uç noktasına gönderdikten sonra bir yanıt alırsınız. Yanıt standart
 |Başarılı  | 200 TAMAM  |
 |Olay verileri hatalı biçime sahip | 400 Hatalı Istek |
 |Geçersiz erişim anahtarı | 401 Yetkisiz |
-|Geçersiz uç nokta | 404 Bulunamadı |
+|Geçersiz uç nokta | 404 bulunamadı |
 |Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |
 
 Hatalar için ileti gövdesi aşağıdaki biçimdedir:

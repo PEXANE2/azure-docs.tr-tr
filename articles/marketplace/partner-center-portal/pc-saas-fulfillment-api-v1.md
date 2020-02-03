@@ -26,7 +26,7 @@ Bu makalede API 'lerle bir SaaS teklifinin nasıl oluşturulacağı açıklanmak
 SaaS hizmetinizi Azure ile tümleştirmenize yardımcı olmak için aşağıdaki API 'Ler verilmiştir:
 
 -   Çözümleme
--   Abone olun
+-   Abone
 -   Dönüştür
 -   aboneliği iptal et
 
@@ -67,9 +67,9 @@ Bir Kullanıcı bir ISV Web sitesine yeniden yönlendirildiğinde, URL sorgu par
 |--------------------|--------------|-----------------------------------------------------------|
 | x-MS-RequestId     | Hayır           | İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.  |
 | x-MS-bağıntıkimliği | Hayır           | İstemcideki işlem için benzersiz bir dize değeri. Bu alan, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
-| İçerik türü       | Evet          | `application/json`                                        |
-| authorization      | Evet          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
-| x-MS-Market-belirteç| Evet| Kullanıcı, SaaS ISV 'nin Azure Web sitesine yönlendirildiğinde, URL 'deki belirteç sorgu parametresi. **Note:** Bu belirteç yalnızca 1 saat için geçerlidir. Ayrıca, URL 'YI kullanmadan önce tarayıcıdan belirteç değeri kodunu çözer.|
+| İçerik türü       | Yes          | `application/json`                                        |
+| authorization      | Yes          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
+| x-MS-Market-belirteç| Yes| Kullanıcı, SaaS ISV 'nin Azure Web sitesine yönlendirildiğinde, URL 'deki belirteç sorgu parametresi. **Note:** Bu belirteç yalnızca 1 saat için geçerlidir. Ayrıca, URL 'YI kullanmadan önce tarayıcıdan belirteç değeri kodunu çözer.|
 |  |  |  |
   
 
@@ -109,20 +109,20 @@ Bir Kullanıcı bir ISV Web sitesine yeniden yönlendirildiğinde, URL sorgu par
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | Bağıntı KIMLIĞI istemci tarafından geçirilmemişse, bu değer sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu KIMLIK, herhangi bir mutabakatları için kullanılır. |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | Bağıntı KIMLIĞI istemci tarafından geçirilmemişse, bu değer sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu KIMLIK, herhangi bir mutabakatları için kullanılır. |
 | Yeniden deneme-sonrası        | Hayır           | Bu değer yalnızca 429 yanıtı için ayarlanır.                                                                   |
 |  |  |  |
 
 
-### <a name="subscribe"></a>Abone olun
+### <a name="subscribe"></a>Abone
 
 Abone uç noktası, kullanıcıların belirli bir plan için bir SaaS hizmetine abonelik başlatmasını ve ticaret sisteminde faturalandırmayı etkinleştirmesini sağlar.
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{Subscriptionıd}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionID}* ? api-Version = 2017-04-15**
 
 | **Parametre adı**  | **Açıklama**                                       |
 |---------------------|-------------------------------------------------------|
@@ -137,8 +137,8 @@ Abone uç noktası, kullanıcıların belirli bir plan için bir SaaS hizmetine 
 | x-MS-RequestId         |   Hayır         | İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | x-MS-bağıntıkimliği     |   Hayır         | İstemcideki işlem için benzersiz bir dize değeri. Bu değer, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylar ile ilişkilendirmek içindir. Bu sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | IF-Match/If-None-Match |   Hayır         |   Güçlü Doğrulayıcı ETag değeri.                                                          |
-| İçerik türü           |   Evet        |    `application/json`                                                                   |
-|  authorization         |   Evet        |    JSON Web belirteci (JWT) taşıyıcı belirteci.                                               |
+| İçerik türü           |   Yes        |    `application/json`                                                                   |
+|  authorization         |   Yes        |    JSON Web belirteci (JWT) taşıyıcı belirteci.                                               |
 | x-MS-Market-oturum modu| Hayır | SaaS teklifine abone olurken kuru çalıştırma modunu etkinleştirmek için bayrak. Ayarlanırsa, abonelik ücretlendirilmeyecektir. Bu, ISV test senaryoları için kullanışlıdır. Lütfen **' dryırun '** olarak ayarlayın|
 |  |  |  |
 
@@ -174,11 +174,11 @@ Abone uç noktası, kullanıcıların belirli bir plan için bir SaaS hizmetine 
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | Bağıntı KIMLIĞI istemci tarafından geçirilmemişse, bu değer sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu değer, herhangi bir mutabakatları için kullanılır. |
-| Yeniden deneme-sonrası        | Evet          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
-| İşlem-konum | Evet          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | Bağıntı KIMLIĞI istemci tarafından geçirilmemişse, bu değer sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu değer, herhangi bir mutabakatları için kullanılır. |
+| Yeniden deneme-sonrası        | Yes          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
+| İşlem-konum | Yes          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
 |  |  |  |
 
 ### <a name="change-plan-endpoint"></a>Plan uç noktasını Değiştir
@@ -187,7 +187,7 @@ Değişiklik uç noktası, kullanıcının şu anda abone olunan planını yeni 
 
 **DÜZELTMESI**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{Subscriptionıd}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionID}* ? api-Version = 2017-04-15**
 
 | **Parametre adı**  | **Açıklama**                                       |
 |---------------------|-------------------------------------------------------|
@@ -202,8 +202,8 @@ Değişiklik uç noktası, kullanıcının şu anda abone olunan planını yeni 
 | x-MS-RequestId          | Hayır           | İstemciden gelen isteği izlemek için benzersiz bir dize değeri. Bir GUID önerilir. Bu sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.   |
 | x-MS-bağıntıkimliği      | Hayır           | İstemcideki işlem için benzersiz bir dize değeri. Bu değer, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylar ile ilişkilendirmek içindir. Bu sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | IF-Match/If-None-Match | Hayır           | Güçlü Doğrulayıcı ETag değeri.                              |
-| İçerik türü            | Evet          | `application/json`                                        |
-| authorization           | Evet          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
+| İçerik türü            | Yes          | `application/json`                                        |
+| authorization           | Yes          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
 |  |  |  |
 
 *Gövde*
@@ -236,11 +236,11 @@ Değişiklik uç noktası, kullanıcının şu anda abone olunan planını yeni 
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | Bağıntı KIMLIĞI istemci tarafından geçirilmemişse, bu değer sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu değer, herhangi bir mutabakatları için kullanılır. |
-| Yeniden deneme-sonrası        | Evet          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
-| İşlem-konum | Evet          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | Bağıntı KIMLIĞI istemci tarafından geçirilmemişse, bu değer sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu değer, herhangi bir mutabakatları için kullanılır. |
+| Yeniden deneme-sonrası        | Yes          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
+| İşlem-konum | Yes          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Aboneliği silme
@@ -251,7 +251,7 @@ Abone uç noktasındaki silme eylemi, kullanıcının belirtilen KIMLIĞE sahip 
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{Subscriptionıd}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionID}* ? api-Version = 2017-04-15**
 
 | **Parametre adı**  | **Açıklama**                                       |
 |---------------------|-------------------------------------------------------|
@@ -265,7 +265,7 @@ Abone uç noktasındaki silme eylemi, kullanıcının belirtilen KIMLIĞE sahip 
 |--------------------|--------------| ----------------------------------------------------------|
 | x-MS-RequestId     | Hayır           | İstemciden gelen isteği izlemek için benzersiz bir dize değeri. Bir GUID önerilir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.                                                           |
 | x-MS-bağıntıkimliği | Hayır           | İstemcideki işlem için benzersiz bir dize değeri. Bu değer, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylar ile ilişkilendirmek içindir. Bu sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
-| authorization      | Evet          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
+| authorization      | Yes          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
 |  |  |  |
 
 *Yanıt kodları*
@@ -286,11 +286,11 @@ Abone uç noktasındaki silme eylemi, kullanıcının belirtilen KIMLIĞE sahip 
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
-| Yeniden deneme-sonrası        | Evet          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
-| İşlem-konum | Evet          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
+| Yeniden deneme-sonrası        | Yes          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
+| İşlem-konum | Yes          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
 |   |  |  |
 
 ### <a name="get-operation-status"></a>İşlem durumunu Al
@@ -301,7 +301,7 @@ Bu uç nokta, kullanıcının tetiklenen bir zaman uyumsuz işlemin durumunu izl
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{Operationıd}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? api-Version = 2017-04-15**
 
 | **Parametre adı**  | **Açıklama**                                       |
 |---------------------|-------------------------------------------------------|
@@ -315,7 +315,7 @@ Bu uç nokta, kullanıcının tetiklenen bir zaman uyumsuz işlemin durumunu izl
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-MS-RequestId     | Hayır           | İstemciden gelen isteği izlemek için benzersiz bir dize değeri. Bir GUID önerilir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.   |
 | x-MS-bağıntıkimliği | Hayır           | İstemcideki işlem için benzersiz bir dize değeri. Bu değer, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylar ile ilişkilendirmek içindir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.  |
-| authorization      | Evet          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
+| authorization      | Yes          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
 |  |  |  | 
 
 *Yanıt gövdesi*
@@ -335,8 +335,8 @@ Bu uç nokta, kullanıcının tetiklenen bir zaman uyumsuz işlemin durumunu izl
 | id                 | Dize        | İşlemin KIMLIĞI.                                                                      |
 | status             | Sabit Listesi          | İşlem durumu, aşağıdakilerden biri: `In Progress`, `Succeeded`veya `Failed`.          |
 | resourceLocation   | Dize        | Oluşturulan veya değiştirilen aboneliğin bağlantısı. Bu, istemcinin güncelleştirilmiş durum post işlemini almasını sağlar. Bu değer `Unsubscribe` işlemler için ayarlanmadı. |
-| yaratıl            | Tarih Saat      | UTC olarak işlem oluşturma süresi.                                                           |
-| lastModified       | Tarih Saat      | UTC olarak işlemdeki son güncelleştirme.                                                      |
+| yaratıl            | DateTime      | UTC olarak işlem oluşturma süresi.                                                           |
+| lastModified       | DateTime      | UTC olarak işlemdeki son güncelleştirme.                                                      |
 |  |  |  |
 
 *Yanıt kodları*
@@ -355,10 +355,10 @@ Bu uç nokta, kullanıcının tetiklenen bir zaman uyumsuz işlemin durumunu izl
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
-| Yeniden deneme-sonrası        | Evet          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
+| Yeniden deneme-sonrası        | Yes          | İstemcinin durumu kontrol edebilir aralığı.                                                       |
 |  |  |  |
 
 ### <a name="get-subscription"></a>Abonelik al
@@ -369,7 +369,7 @@ Abone ol uç noktasındaki alma eylemi, kullanıcının belirli bir kaynak tanı
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{Subscriptionıd}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionID}* ? api-Version = 2017-04-15**
 
 | **Parametre adı**  | **Açıklama**                                       |
 |---------------------|-------------------------------------------------------|
@@ -383,7 +383,7 @@ Abone ol uç noktasındaki alma eylemi, kullanıcının belirli bir kaynak tanı
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | x-MS-RequestId     | Hayır           | İstemciden gelen isteği izlemeye yönelik benzersiz bir dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.                                                           |
 | x-MS-bağıntıkimliği | Hayır           | İstemcideki işlem için benzersiz bir dize değeri. Bu değer, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylar ile ilişkilendirmek içindir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
-| authorization      | Evet          | JSON Web belirteci (JWT) taşıyıcı belirteci.                                                                    |
+| authorization      | Yes          | JSON Web belirteci (JWT) taşıyıcı belirteci.                                                                    |
 |  |  |  |
 
 *Yanıt gövdesi*
@@ -407,8 +407,8 @@ Abone ol uç noktasındaki alma eylemi, kullanıcının belirli bir kaynak tanı
 | PlanID                 | Dize        | Kullanıcının abone olduğu plan KIMLIĞI.          |
 | saasSubscriptionName   | Dize        | SaaS aboneliğinin adı.                |
 | saasSubscriptionStatus | Sabit Listesi          | İşlem durumu.  Aşağıdakilerden biri:  <br/> - `Subscribed`: Abonelik etkin.  <br/> - `Pending`: Kullanıcı kaynağı oluşturma, ancak ISV tarafından etkinleştirilmemiş.   <br/> - `Unsubscribed`: kullanıcının aboneliği kaldırılmış.   <br/> - `Suspended`: Kullanıcı aboneliği askıya aldı.   <br/> - `Deactivated`: Azure aboneliği askıya alındı.  |
-| yaratıl                | Tarih Saat      | UTC 'de abonelik oluşturma zaman damgası değeri. |
-| lastModified           | Tarih Saat      | Abonelik UTC 'de zaman damgası değeri değiştirdi. |
+| yaratıl                | DateTime      | UTC 'de abonelik oluşturma zaman damgası değeri. |
+| lastModified           | DateTime      | Abonelik UTC 'de zaman damgası değeri değiştirdi. |
 |  |  |  |
 
 *Yanıt kodları*
@@ -427,11 +427,11 @@ Abone ol uç noktasındaki alma eylemi, kullanıcının belirli bir kaynak tanı
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
 | Yeniden deneme-sonrası        | Hayır           | İstemcinin durumu kontrol edebilir aralığı.                                                       |
-| Özelliği               | Evet          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
+| Özelliği               | Yes          | İşlem durumunu almak için bir kaynağa bağlayın.                                                        |
 |  |  |  |
 
 ### <a name="get-subscriptions"></a>Abonelikleri al
@@ -455,7 +455,7 @@ Abonelikler üzerinde eylem al uç noktası, bir kullanıcının ISV 'den Tüm t
 |--------------------|--------------|-----------------------------------------------------------|
 | x-MS-RequestId     | Hayır           | İstemciden gelen isteği izlemek için benzersiz bir dize değeri. Bir GUID önerilir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır.             |
 | x-MS-bağıntıkimliği | Hayır           | İstemcideki işlem için benzersiz bir dize değeri. Bu değer, istemci işlemindeki tüm olayları sunucu tarafında bulunan olaylar ile ilişkilendirmek içindir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
-| authorization      | Evet          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
+| authorization      | Yes          | JSON Web belirteci (JWT) taşıyıcı belirteci.                    |
 |  |  |  |
 
 *Yanıt gövdesi*
@@ -479,8 +479,8 @@ Abonelikler üzerinde eylem al uç noktası, bir kullanıcının ISV 'den Tüm t
 | PlanID                 | Dize        | Kullanıcının abone olduğu plan KIMLIĞI          |
 | saasSubscriptionName   | Dize        | SaaS aboneliğinin adı                |
 | saasSubscriptionStatus | Sabit Listesi          | İşlem durumu.  Aşağıdakilerden biri:  <br/> - `Subscribed`: Abonelik etkin.  <br/> - `Pending`: Kullanıcı kaynağı oluşturma, ancak ISV tarafından etkinleştirilmemiş.   <br/> - `Unsubscribed`: kullanıcının aboneliği kaldırılmış.   <br/> - `Suspended`: Kullanıcı aboneliği askıya aldı.   <br/> - `Deactivated`: Azure aboneliği askıya alındı.  |
-| yaratıl                | Tarih Saat      | UTC 'de abonelik oluşturma zaman damgası değeri |
-| lastModified           | Tarih Saat      | UTC 'de abonelik değiştirme zaman damgası değeri |
+| yaratıl                | DateTime      | UTC 'de abonelik oluşturma zaman damgası değeri |
+| lastModified           | DateTime      | UTC 'de abonelik değiştirme zaman damgası değeri |
 |  |  |  |
 
 *Yanıt kodları*
@@ -499,9 +499,9 @@ Abonelikler üzerinde eylem al uç noktası, bir kullanıcının ISV 'den Tüm t
 
 | **Üst bilgi anahtarı**     | **Gerekli** | **Açıklama**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Evet          | İstemciden alınan istek KIMLIĞI.                                                                   |
-| x-MS-bağıntıkimliği | Evet          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
-| x-MS-ActivityId    | Evet          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
+| x-MS-RequestId     | Yes          | İstemciden alınan istek KIMLIĞI.                                                                   |
+| x-MS-bağıntıkimliği | Yes          | İlişki KIMLIĞI, istemci tarafından geçirilmemişse, bu, sunucu bağıntı KIMLIĞIDIR.                   |
+| x-MS-ActivityId    | Yes          | Hizmetten gelen isteği izlemek için benzersiz bir dize değeri. Bu, herhangi bir mutabakatları için kullanılır. |
 | Yeniden deneme-sonrası        | Hayır           | İstemcinin durumu kontrol edebilir aralığı.                                                       |
 |  |  |  |
 

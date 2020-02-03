@@ -19,7 +19,7 @@ Bu makalede, bir Azure dosya tabanlı birimin Service Fabric bir kafes uygulamas
 
 Bir hizmete bir birimi bağlamak için, Service Fabric kafes uygulamanızda bir birim kaynağı oluşturun ve sonra bu birime hizmetinize başvurun.  Birim kaynağını bildirmek ve hizmet kaynağında buna başvurmak, [YAML tabanlı kaynak dosyalarında](#declare-a-volume-resource-and-update-the-service-resource-yaml) ya da [JSON tabanlı dağıtım şablonunda](#declare-a-volume-resource-and-update-the-service-resource-json)yapılabilir. Birimi bağlamadan önce Azure dosyalarında bir Azure depolama hesabı ve bir [dosya paylaşma](/azure/storage/files/storage-how-to-create-file-share)oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!NOTE]
 > **WINDOWS RS5 geliştirme makinesinde dağıtım ile Ilgili bilinen sorun:** Azurefile birimlerinin bağlanmasını engelleyen RS5 Windows makinelerde New-SmbGlobalMapping PowerShell cmdlet 'i ile açık hata var. AzureFile tabanlı birim yerel geliştirme makinesine bağlandığında karşılaşılan örnek hata aşağıda verilmiştir.
 ```

@@ -17,7 +17,7 @@ ms.locfileid: "76748905"
 ---
 Depolama için iyileştirilmiş VM boyutları, yüksek disk verimlilik ve GÇ sağlar ve büyük veri, SQL, NoSQL veritabanları, veri depolama ve büyük işlem veritabanları için idealdir.  Cassandra, MongoDB, Cloudera ve Redo örnekleri sayılabilir. Bu makalede, her iyileştirilmiş boyut için sanal CPU 'lar, veri diskleri ve NIC 'lerin yanı sıra yerel depolama alanı işleme ve ağ bant genişliği hakkında bilgi sağlanır.
 
-Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC &trade; 7551 işlemcisi](https://www.amd.com/en/products/epyc-7000-series) üzerinde çalışan, tüm çekirdek artışı 2.55 GHz ve en fazla 3,0 GHz olan yerel NVMe depolama özelliklerine sahiptir. Lsv2 serisi VM’ler, eş zamanlı bir çoklu iş parçacığı yapılandırmasında 8 ile 80 vCPU arasında değişen boyutlarda sunulur.  vCPU başına 8 GiB bellek ve 8 vCPU başına 1,92 TB NVMe SSD M.2 cihazı sunulurken, L80s v2 adlı en üst model 19,2 TB (10x1,92 TB) depolama içerir.
+Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC &trade; 7551 işlemcisi](https://www.amd.com/en/products/epyc-7000-series) üzerinde çalışan, tüm çekirdek artışı 2.55 GHz ve en fazla 3,0 GHz olan yerel NVMe depolama özelliklerine sahiptir. Lsv2 serisi VM 'Ler, eşzamanlı bir çoklu iş parçacığı yapılandırmasında 8 ile 80 vCPU boyutunda olacak şekilde gelir.  Her vCPU için 8 GiB bellek ve 8 vCPU başına, L80s v2 'de bulunan 19.2 TB 'a kadar (10 x 1.92 TB) bir 1.92 TB NVMe SSD M. 2 cihaz vardır.
 
 > [!NOTE]
 > Lsv2 serisi VM 'Ler, dayanıklı veri disklerini kullanmak yerine doğrudan VM 'ye eklenen düğümdeki yerel diski kullanacak şekilde iyileştirilmiştir. Bu, iş yükleriniz için daha fazla IOPS/aktarım hızı sağlar. Lsv2 ve LS Serisi, dayanıklı veri disklerine yönelik IOPS ulaşılabilir arttırmak için yerel bir önbellek oluşturulmasını desteklemez.
@@ -35,7 +35,7 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenmiyor
 
-| Boyut          | vCPU | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış maksimum veri diski verimlilik (IOPS/MBps)<sup>4</sup> | En fazla veri diski | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut          | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış maksimum veri diski verimlilik (IOPS/MBps)<sup>4</sup> | En fazla veri diski | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200  |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400  |

@@ -26,7 +26,7 @@ ms.locfileid: "76714382"
 
 Bu öğreticinin amacı, Salesforce ve Azure AD 'de, Kullanıcı hesaplarını Salesforce 'a otomatik olarak sağlamak ve devre dışı bırakmak için gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
@@ -82,15 +82,15 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 6. Salesforce güvenlik belirtecinizi almak için yeni bir sekme açın ve aynı Salesforce yönetici hesabında oturum açın. Sayfanın sağ üst köşesinde, ad ' a tıklayın ve ardından **Ayarlar**' a tıklayın.
 
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Otomatik kullanıcı sağlamayı etkinleştirin")
 
 7. Sol gezinti bölmesinde, **Kişisel bilgilerim** ' a tıklayarak ilgili bölümü genişletin ve ardından **güvenlik belirtecimi Sıfırla**' ya tıklayın.
   
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Otomatik kullanıcı sağlamayı etkinleştirin")
 
 8. **Güvenlik belirtecini Sıfırla** sayfasında **güvenlik belirtecini Sıfırla** düğmesine tıklayın.
 
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Otomatik kullanıcı sağlamayı etkinleştirin")
 
 9. Bu yönetici hesabıyla ilişkili e-posta gelen kutusunu kontrol edin. Yeni güvenlik belirtecini içeren Salesforce.com adresinden bir e-posta arayın.
 
@@ -117,7 +117,7 @@ Bu bölümün amacı, Salesforce 'a Active Directory Kullanıcı hesaplarının 
 
 Bu, kullanıcılar ve Gruplar bölümünde Salesforce 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine gerçekleştirilmesini daha uzun sürdüğüne unutmayın. İlerleme durumunu izlemek ve Salesforce uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Genel sorunlar
 * Salesforce 'a erişimi yetkilendirmek için sorun yaşıyorsanız aşağıdakileri doğrulayın:

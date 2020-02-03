@@ -19,9 +19,9 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721804"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Havacılıkta Tahmine dayalı bakım için Cortana Intelligence çözüm şablonu mimarisi
-Aşağıdaki diyagramda mimari genel bakış sağlar [Tahmine dayalı bakım için Cortana Intelligence çözüm şablonları](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
+Aşağıdaki diyagramda, tahmine [dayalı bakım için Cortana Intelligence çözüm şablonuna yönelik](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)mimari bir genel bakış sunulmaktadır.
 
-Diyagramı buradan tam boyutlu bir sürümünü indirebilirsiniz: [mimari diyagramı: Tahmine dayalı bakım için çözüm şablonu](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+Diyagramın tam boyutlu bir sürümünü buradan indirebilirsiniz: [mimari diyagramı: tahmine dayalı bakım Için çözüm şablonu](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
 ![Tahmine dayalı bakım çözüm şablonu mimarisi diyagramı][image]
 

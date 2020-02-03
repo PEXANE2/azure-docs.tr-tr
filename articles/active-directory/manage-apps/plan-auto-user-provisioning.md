@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) otomatik Kullanıcı sağlama, iş kuralların
 
 İşlevselliği daha iyi anlamak için, bkz. [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemlerini otomatik hale getirme Azure Active Directory](user-provisioning.md) .
 
-## <a name="learn"></a>Öğrenme
+## <a name="learn"></a>Öğrenin
 
 Kullanıcı hazırlama, sürekli kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
@@ -76,7 +76,7 @@ Bu makale aşağıdaki terimleri kullanır:
 | Öğreticiler| [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticilerin listesine](../saas-apps/tutorial-list.md)bakın. |
 | SSS| Otomatik Kullanıcı sağlama hakkında [sık sorulan sorular](user-provisioning.md) |
 
-### <a name="solution-architectures"></a>Çözüm mimarileri
+### <a name="solution-architectures"></a>Çözüm Mimarileri
 
 Azure AD sağlama hizmeti, her bir uygulama satıcısı tarafından sağlanan kullanıcı yönetimi API uç noktalarına bağlanarak kullanıcıları ve diğer sistemleri SaaS uygulamaları sağlar. Bu Kullanıcı yönetimi API uç noktaları, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir.
 

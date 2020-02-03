@@ -35,7 +35,7 @@ Sağlama bağlayıcıları, desteklenen uygulama için [belirtilen belgeleri](..
 * **Azure Portal** -Bu makalede öncelikle, bir sağlama Özeti raporu ve belirli bir uygulama için ayrıntılı sağlama denetim günlükleri sağlayan [Azure Portal](https://portal.azure.com)rapor bilgilerinin alınması açıklanmaktadır.
 * **Denetim API 'si** -Azure Active Directory ayrıntılı sağlama denetim günlüklerinin programlı bir şekilde alınmasına izin veren bir denetim API 'si de sağlar. Bu API 'yi kullanmaya özgü belgeler için bkz. [Azure Active Directory Denetim API 'si başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Bu makale, API 'yi nasıl kullanacağınızı özellikle kapsamadığından, denetim günlüğüne kaydedilen sağlama olaylarının türlerini ayrıntılandırır.
 
-### <a name="definitions"></a>Açıklamalar
+### <a name="definitions"></a>Tanımlar
 
 Bu makale aşağıda tanımlanan aşağıdaki terimleri kullanır:
 

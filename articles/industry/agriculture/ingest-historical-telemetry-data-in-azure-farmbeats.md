@@ -86,16 +86,16 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |          Üretici            |         Üreticinin adı    |
 |  ProductCode                    |  Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800.  |
 |            Bağlantı Noktaları          |     Bağlantı noktası adı ve türü, dijital veya analog.
-|     Ad                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+|     Adı                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
       Açıklama     | Modelin anlamlı bir açıklamasını sağlayın.
 |    Özellikler          |    Üreticiden ek özellikler.   |
-|    **cihaz**             |                      |
+|    **Aygıtların**             |                      |
 |   Devicemodelıd     |     İlişkili cihaz modelinin KIMLIĞI.  |
 |  Donanım kimliği          | Cihazın MAC adresi gibi benzersiz KIMLIĞI.
 |  Reportingınterval        |   Saniye cinsinden raporlama aralığı.
 |  Konum            |  Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).   
 |Parentdeviceıd       |    Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır.  |
-|    Ad            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
+|    Adı            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
 |     Açıklama       |      Anlamlı bir açıklama sağlayın. |
 |     Özellikler    |  Üreticiden ek özellikler.
 |     **SensorModel**        |          |
@@ -107,7 +107,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 |    Sensorölçüleri > türü    |Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler şunlardır AmbientTemperature, CO2, Depth, Elektriicalttivity, Leafwetity, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salınity, SoilMoisture, Soilsıcaklık, SolarRadiation, durum, TimeDuration, UVRadiation, Uıvindex, hacim, WIN Direction, WIN Run, Wıngıı, Evapotranspiration, PAR. Daha fazla eklemek için/ExtendedType API 'sine bakın.|
 |        Sensorölçüleri > birimi              | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIO, PSI, milimetre, santimetre, metre, Inç, fit, mil, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın.|
 |    Sensorölçüleri > AggregationType    |  Değerler None, Average, Maximum, minimum veya Standardsapması olabilir.  |
-|          Ad            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
+|          Adı            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
 |    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın.  |
 |   Özellikler       |  Üreticiden ek özellikler.  |
 |    **Algılayıcısı**      |          |
@@ -116,7 +116,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 | Konum          |  Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).|
 |   Bağlantı noktası > adı        |  Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir. |
 |    DeviceID  |    Algılayıcıın bağlı olduğu cihazın KIMLIĞI.     |
-| Ad            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
+| Adı            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
 |    Açıklama      | Anlamlı bir açıklama sağlayın. |
 |    Özellikler        |Üreticiden ek özellikler. |
 

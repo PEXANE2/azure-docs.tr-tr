@@ -30,7 +30,7 @@ Hata açıklaması "konak adı çözümlemesi başarısız oldu" öğesini içer
 
 Bu hata, özel DNS yapılandırmasıyla ilgili bir sorunu işaret eder. Bir sanal ağ içindeki DNS sunucuları DNS sorgularını, bu sanal ağdaki konak adlarını çözümlemek için Azure 'un özyinelemeli çözümleyicilerine iletebilir (Ayrıntılar için bkz. [sanal ağlardaki ad çözümlemesi](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ). Azure 'un özyinelemeli çözümleyicilerine erişimi, sanal IP 168.63.129.16 aracılığıyla sağlanır. Bu IP 'ye yalnızca Azure VM 'lerinden erişilebilir. Bu nedenle, bir Onpred DNS sunucusu kullanıyorsanız veya DNS sunucunuz, kümenin sanal ağının bir parçası olmayan bir Azure VM 'si ise çalışmaz.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Kümenin parçası olan VM 'ye SSH ve `hostname -f`komutunu çalıştırın. Bu, konağın tam etki alanı adını (aşağıdaki yönergelerde `<host_fqdn>` olarak adlandırılır) döndürür.
 
@@ -56,7 +56,7 @@ Hata açıklaması "Azure depolama hesabına bağlanılamadı" veya "Azure SQL '
 
 Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişime izin vermek için tüm IP 'Lere giden bağlantılara izin vermemiz gerekiyor. Tam çözümleme adımları, bir ağ güvenlik grubu (NSG) veya Kullanıcı tanımlı kurallar (UDR) ayarlamanıza bağlı olarak değişir. Bu yapılandırmalara ilişkin ayrıntılar için [ağ güvenlik grupları ve Kullanıcı tanımlı rotalar Ile HDInsight ile ağ trafiğini denetleme](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) bölümüne bakın.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 * Kümeniz bir [ağ güvenlik grubu (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)kullanıyorsa.
 
@@ -85,7 +85,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 Özel DNS kurulumuyla ilgili bir sorun olabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 168.63.129.16 'in özel DNS zincirinde olduğunu doğrulayın. Bir sanal ağ içindeki DNS sunucuları DNS sorgularını, bu sanal ağdaki konak adlarını çözümlemek için Azure 'un özyinelemeli çözümleyicilerine iletebilir. Daha fazla bilgi için bkz. [sanal ağlarda ad çözümleme](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Azure 'un özyinelemeli çözümleyicilerine erişimi, sanal IP 168.63.129.16 aracılığıyla sağlanır.
 
@@ -101,7 +101,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    Şuna benzer bir şey görmeniz gerekir:
+    Şunun gibi bir görüntüyle karşılaşacaksınız:
 
     ```output
     nameserver 168.63.129.16

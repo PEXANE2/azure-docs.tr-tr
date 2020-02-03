@@ -27,16 +27,16 @@ Azure Lab Services’te, bir laboratuvar hesabı, kuruluşunuzdaki laboratuvarla
 Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 > [!div class="checklist"]
-> * Laboratuvar hesabı oluşturun
+> * Laboratuvar hesabı oluşturma
 > * Laboratuvar Oluşturan rolüne kullanıcı ekleme
 > * Laboratuvar sahiplerine sunulan Market görüntülerini belirtme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturun
+## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturma
 Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nasıl bir laboratuvar hesabı oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. **Laboratuvar Hizmetleri**' nin yanında yıldız (`*`) seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm Hizmetler-> Laboratuvar Hizmetleri](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)

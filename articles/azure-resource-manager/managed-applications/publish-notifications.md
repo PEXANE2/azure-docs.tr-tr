@@ -16,7 +16,7 @@ ms.locfileid: "76715678"
 
 Azure yönetilen uygulama bildirimleri, yayımcıların yönetilen uygulama örneklerinin yaşam döngüsü olaylarına göre eylemleri otomatikleştirmesine olanak tanır. Yayımcılar, yeni ve mevcut yönetilen uygulama örnekleri hakkında olay bildirimleri almak için özel bildirim Web kancası uç noktaları belirtebilir. Yayımcılar, uygulama sağlama, güncelleştirme ve silme sırasında özel iş akışlarını ayarlayabilir.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 Yönetilen uygulamaları almaya başlamak için genel bir HTTPS uç noktası başlatın ve hizmet kataloğu uygulama tanımı veya Azure Market Teklifini yayımladığınızda bunu belirtin.
 
 Hızlıca kullanmaya başlamak için önerilen adımlar aşağıda verilmiştir:
@@ -28,7 +28,7 @@ Hızlıca kullanmaya başlamak için önerilen adımlar aşağıda verilmiştir:
 6. Bildirim isteklerini ayrıştırmak ve bildirime göre iş mantığınızı uygulamak için bu makalenin **bildirim şeması** bölümündeki yönergeleri izleyin.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Hizmet kataloğu uygulama tanımı bildirimleri ekleme
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portalı
 Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](./publish-portal.md).
 
 ![Azure portal Hizmet kataloğu uygulama tanımı bildirimleri](./media/publish-notifications/service-catalog-notifications.png)
@@ -74,7 +74,7 @@ PUT | Başarılı oldu | Yönetilen uygulamanın tam olarak sağlanması, bir KO
 PUT | Başarısız | Herhangi bir noktada uygulama örneği sağlamayı YERLEŞTIRME hatası.
 DÜZELTMESI | Başarılı oldu | Etiketler, JıT erişim ilkesi veya yönetilen kimlik güncelleştirmek için yönetilen uygulama örneğindeki başarılı bir düzeltme ekiyle sonra.
 DELETE | Siliniyor | Kullanıcı, yönetilen uygulama örneğinin bir SILME işlemini başlatır.
-DELETE | Silinen | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
+DELETE | Silme | Yönetilen uygulamanın tam ve başarılı bir şekilde silinmesinden sonra.
 DELETE | Başarısız | Silme işlemini engelleyen kaldırma işlemi sırasında herhangi bir hatadan sonra.
 ## <a name="notification-schema"></a>Bildirim şeması
 Bildirimleri işlemek için Web kancası uç noktanızı başlattığınızda, daha sonra bildirim üzerine işlem yapmak için önemli özellikleri almak üzere yükü ayrıştırmalıdır. Hizmet kataloğu ve Azure Marketi yönetilen uygulama bildirimleri, aynı özelliklerin çoğunu sağlar. İki küçük fark, örnekleri takip eden tabloda özetlenmiştir.

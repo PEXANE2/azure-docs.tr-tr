@@ -20,15 +20,15 @@ ms.locfileid: "76722195"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Panda ile Azure blob depolamadaki verileri keşfedin
 
-Bu makalede, Azure blob kapsayıcısı kullanarak içinde depolanan verileri araştırmak nasıl ele alınmaktadır [pandas](https://pandas.pydata.org/) Python paket.
+Bu makalede, Azure Blob kapsayıcısında [Pandas](https://pandas.pydata.org/) Python paketi kullanılarak depolanan verilerin nasıl araştırabileceği ele alınmaktadır.
 
-Bu görev bir adımdır [Team Data Science Process](overview.md).
+Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, olduğunu varsayar:
 
-* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz [bir Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
-* Verilerinizi bir Azure blob depolama hesabında depolanır. Yönergelere ihtiyacınız varsa bkz [için ve Azure Depolama'dan veri taşıma](../../storage/common/storage-moving-data.md)
+* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
+* Verilerinizi bir Azure blob depolama hesabında depolanır. Yönergelere ihtiyacınız varsa bkz. [Azure depolama 'ya ve Azure Storage 'a veri taşıma](../../storage/common/storage-moving-data.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Pandas DataFrame verileri yükleme
 Keşfedin veya bir veri kümesini değiştirmek için önce blob kaynağından bir pandas DataFrame yüklenebilir yerel bir dosyaya indirilmelidir. Bu yordam için izlenmesi gereken adımlar şunlardır:
@@ -62,16 +62,16 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 Verileri keşfetme ve bu veri kümesi özellikleri oluşturmak hazırsınız.
 
-## <a name="blob-dataexploration"></a>Veri keşfi pandas kullanma örnekleri
+## <a name="blob-dataexploration"></a>Pandas kullanarak veri araştırma örnekleri
 Panda kullanarak verileri araştırmak için gösteren bazı örnekleri şunlardır:
 
-1. İnceleme **satır ve sütun sayısı**
+1. **Satır ve sütun sayısını** İnceleme
 
 ```python
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-1. **İnceleme** ilk veya son birkaç **satırları** aşağıdaki kümesindeki:
+1. Aşağıdaki veri kümesindeki ilk veya son birkaç **satırı** **inceleyin** :
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,14 +79,14 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-1. Denetleme **veri türü** her sütun, aşağıdaki örnek kodu kullanarak olarak içeri aktarıldı
+1. Aşağıdaki örnek kodu kullanarak her bir sütunun içeri aktarıldığı **veri türünü** denetleyin
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-1. Denetleme **temel istatistikleri** sütunların veri şu şekilde ayarlayın
+1. Veri kümesindeki sütunların **temel istatistiklerini** aşağıda gösterildiği gibi denetleyin
 
 ```python
 dataframe_blobdata.describe()
@@ -98,14 +98,14 @@ dataframe_blobdata.describe()
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-1. **Eksik değerleri saymak** girdileri aşağıdaki örnek kodu kullanarak her sütunda gerçek sayısı
+1. Aşağıdaki örnek kodu kullanarak **eksik değerleri** ve her bir sütundaki gerçek girdi sayısını say
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-1. Varsa **eksik değerleri** için belirli bir sütuna veri, bunları aşağıdaki gibi silebilirsiniz:
+1. Verilerdeki belirli bir sütun için **eksik değerler** varsa, bunları aşağıdaki gibi bırakabilirsiniz:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
@@ -119,7 +119,7 @@ dataframe_blobdata_mode = dataframe_blobdata.fillna(
     {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-1. Oluşturma bir **histogram** bir değişkenin dağıtım çizmek için değişken sayıda depo kullanarak Çiz
+1. Bir değişkenin dağılımını çizmek için değişken sayıda depo gözü kullanarak bir **histogram** çizimi oluşturma
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -127,7 +127,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-1. Bakmak **bağıntılar** arasında bir dağılım grafiği veya yerleşik bağıntı işlevi kullanarak değişkenleri
+1. Bir dağınık terçiz kullanarak veya yerleşik bağıntı işlevini kullanarak değişkenler arasında **bağıntılar** 'e bakın
 
 ```python
 # relationship between column_a and column_b using scatter plot

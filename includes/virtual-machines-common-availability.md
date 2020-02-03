@@ -54,7 +54,7 @@ Sanal Makine Ölçek Kümeleri, düzenleme modunu belirtmenize olanak tanır.  S
 
 |   | "orchestrationMode": "VM" (VirtualMachine)| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |----|----|----|
-| VM yapılandırma modeli| Hiçbiri. VirtualMachineProfile, ölçek kümesi modelinde tanımsızdır. | Gereklidir. VirtualMachineProfile, ölçek kümesi modelinde doldurulur. |
+| VM yapılandırma modeli| Yok. VirtualMachineProfile, ölçek kümesi modelinde tanımsızdır. | Gereklidir. VirtualMachineProfile, ölçek kümesi modelinde doldurulur. |
 | Ölçek kümesine yeni VM ekleniyor| VM oluşturulduğunda, sanal makineler ölçek kümesine açıkça eklenir. | VM 'Ler örtük olarak oluşturulur ve VM yapılandırma modeli, örnek sayısı ve otomatik ölçeklendirme kuralları temelinde ölçek kümesine eklenir. |
 | Kullanılabilirlik Alanları| Tek bir kullanılabilirlik bölgesindeki bölgesel dağıtımı veya VM 'Leri destekler| Bölgesel dağıtımı veya birden çok Kullanılabilirlik Alanları destekler; Bölge Dengeleme stratejisini tanımlayabilir |
 | Hata etki alanları| , Hata etki alanı sayısını tanımlayabilir. 2 veya 3 kullanılabilirlik alanı için bölgesel destek ve 5 ' i temel alır. Atanan VM hata etki alanı, serbest bırakma ve yeniden başlatma dahil olmak üzere VM yaşam döngüsüyle kalır. | , ZGen olmayan dağıtımlar için 1, 2 veya 3 hata etki alanı tanımlayabilir ve kullanılabilirlik alanı dağıtımları için 5 ' i kullanabilirsiniz. Atanan VM hata etki alanı VM yaşam döngüsüyle kalıcı olmadığından, sanal makinelere ayırma sırasında bir hata etki alanı atanır. |

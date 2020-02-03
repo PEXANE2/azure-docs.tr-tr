@@ -96,7 +96,7 @@ public class OutgoingEmail
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir.
 
-Veri bağlama işte *function.json* dosyası:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json 
 {
@@ -120,7 +120,7 @@ Veri bağlama işte *function.json* dosyası:
 }
 ```
 
-[Yapılandırma](#configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -155,7 +155,7 @@ public class Message
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
-Veri bağlama işte *function.json* dosyası:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json 
 {
@@ -173,7 +173,7 @@ Veri bağlama işte *function.json* dosyası:
 }
 ```
 
-[Yapılandırma](#configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -310,7 +310,7 @@ public class HttpTriggerSendGrid {
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) özniteliğini kullanın.
 
-Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). İşte bir `SendGrid` özniteliği örnek bir yöntem imzası:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). Yöntem imzasında bir `SendGrid` özniteliği örneği aşağıda verilmiştir:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -346,16 +346,16 @@ Tüm örnek için bkz [ C# . örnek](#example).
 
 Aşağıdaki tabloda, *function. JSON* dosyasında bulunan bağlama yapılandırma özellikleri ve `SendGrid` özniteliği/ek açıklaması listelenmektedir.
 
-| *function. JSON* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe Bağlı |
+| *function. JSON* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe bağlı |
 |--------------------------|-------------------------------|-------------|----------|
-| type |Yok| Ayarlanmalıdır `sendGrid`.| Hayır |
-| yön |Yok| Ayarlanmalıdır `out`.| Hayır |
-| ad |Yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Yalnızca bir dönüş değeri olduğunda bu değer `$return`. | Hayır |
+| type |yok| `sendGrid`olarak ayarlanmalıdır.| Hayır |
+| yön |yok| `out`olarak ayarlanmalıdır.| Hayır |
+| ad |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Yalnızca bir dönüş değeri olduğunda bu değer `$return`. | Hayır |
 | apiKey | apiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
-| -| Bitiş | Alıcının e-posta adresi. | Evet |
-| başlangıç| Başlangıç fiyatı | Gönderenin e-posta adresi. |  Evet |
-| subject| Konu | E-postanın konusu. | Evet |
-| metin| Metin | E-posta içeriği. | Evet |
+| -| Alıcı | Alıcının e-posta adresi. | Yes |
+| from| Başlangıç | Gönderenin e-posta adresi. |  Yes |
+| subject| Özne | E-postanın konusu. | Yes |
+| metin| Metin | E-posta içeriği. | Yes |
 
 İsteğe bağlı özellikler, bağlamada tanımlanmış ve program aracılığıyla eklenmiş ya da geçersiz kılınan varsayılan değerlere sahip olabilir.
 
@@ -368,7 +368,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında bulunan bağlama yapılandır
 Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
 
 > [!NOTE]
-> İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -383,7 +383,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|başlangıç|Yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
+|from|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -27,16 +27,16 @@ ms.locfileid: "76719509"
 
 Bu hızlı başlangıçta, Azure Cosmos DB 'de [SQL API](sql-api-introduction.md) hesabına bağlanmak için Node. js uygulamasının nasıl kullanılacağı gösterilmektedir. Daha sonra verileri sorgulamak ve yönetmek için SQL sorguları Azure Cosmos DB kullanabilirsiniz. Bu makalede oluşturduğunuz Node. js uygulaması [SQL JavaScript SDK 'sını](sql-api-sdk-node.md)kullanır. Bu hızlı başlangıçta [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 2.0 sürümü kullanılmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Ek olarak:
+* Buna ek olarak:
     * [Node.js](https://nodejs.org/en/) sürüm v6.0.0 veya üzeri
     * [Git](https://git-scm.com/)
 
-## <a name="create-a-database"></a>Veritabanı oluşturun 
+## <a name="create-a-database"></a>Veritabanı oluşturma 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -76,7 +76,7 @@ Bu hızlı başlangıçta, Azure Cosmos DB 'de [SQL API](sql-api-introduction.md
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmeye ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmeye ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
 JavaScript SDK'sının eski sürümlerini kullandıysanız 'koleksiyon' ve 'belge' terimlerine aşina olabilirsiniz. Azure Cosmos DB [birden fazla API modelini](https://docs.microsoft.com/azure/cosmos-db/introduction) desteklediğinden JavaScript SDK'sının 2.0 ve üzeri sürümlerinde kapsayıcının içeriğini tanımlamak için koleksiyon, grafik veya tablo olabilen 'kapsayıcı' ile 'öğe' terimleri kullanılmaktadır.
 
@@ -144,7 +144,7 @@ Aşağıdaki kod parçacıklarının tamamı, **app.js** dosyasından alınmış
 
     `config.endpoint = "<Your Azure Cosmos account URI>"`
 
-4. Ardından portaldaki BİRİNCİL ANAHTAR değerinizi kopyalayıp `config.js` dosyasına `config.key` değeri olarak yapıştırın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
+4. Ardından portaldaki BİRİNCİL ANAHTAR değerinizi kopyalayıp `config.key` dosyasına `config.js` değeri olarak yapıştırın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
 
     `config.key = "<Your Azure Cosmos account key>"`
     

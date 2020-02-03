@@ -26,7 +26,7 @@ ms.locfileid: "76722246"
 Çeşitli yaklaşımlar ve modelleri üretime koymak için Platform vardır. Bazı seçenekler şunlardır:
 
 - [Modelleri Azure Machine Learning ile dağıtma](../how-to-deploy-and-where.md)
-- [Bir modeli SQL Server dağıtımı](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [SQL Server 'da bir modelin dağıtılması](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
@@ -34,13 +34,13 @@ ms.locfileid: "76722246"
 >
 
 >[!NOTE]
->Azure Machine Learning Studio'yu kullanarak bir dağıtım için bkz [bir Azure Machine Learning web hizmetini dağıtma](../studio/deploy-a-machine-learning-web-service.md).
+>Azure Machine Learning Studio kullanarak dağıtım için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md).
 >
 
-## <a name="ab-testing"></a>A/B testi
+## <a name="ab-testing"></a>A / B testi
 
 Üretimde birden çok model olduğunda, model performansını karşılaştırmak için [A/B testi](https://en.wikipedia.org/wiki/A/B_testing) kullanılabilir. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlem için tüm adımları gösteren talimatlara **belirli senaryoları** de sağlanır. Listelenen ve küçük resim açıklamasında ile bağlantılı [örnek izlenecek yollar](walkthroughs.md) makalesi. Bunlar, bulut, şirket içi araçları ve Hizmetleri, bir iş akışı veya akıllı bir uygulama oluşturmak için işlem hattı birleştirme işlemini göstermektedir. 
+**Belirli senaryolar** için işlemdeki adımların tümünü gösteren yönergeler de sağlanır. Bunlar, [örnek yönergeler](walkthroughs.md) makalesinde listelenmiş ve küçük resim açıklamalarıyla bağlantılandırılır. Bunlar, bulut, şirket içi araçları ve Hizmetleri, bir iş akışı veya akıllı bir uygulama oluşturmak için işlem hattı birleştirme işlemini göstermektedir. 

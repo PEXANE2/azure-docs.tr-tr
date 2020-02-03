@@ -19,7 +19,7 @@ ms.locfileid: "76717219"
 > * Bu hızlı başlangıçta, iyileştirilmiş [yaklaşım Analizi](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel bir önizleme içeren Metin Analizi istemci kitaplığının sürüm `3.0-preview` kullanılmaktadır.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Örneğin, `azure.ai.textanalytics.aio` ad alanından istemciyi içeri aktarma ve `azure.ai.textanalytics` ad alanından `analyze_sentiment()` yerine `analyze_sentiment()`çağırma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
@@ -69,7 +69,7 @@ Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşa
 * [Varlık bağlama](#entity-linking)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
 
-## <a name="sentiment-analysis"></a>Duygu analizi
+## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
 > [!NOTE]
 > Aşağıdaki kod, genel önizlemede olan yaklaşım Analizi v3 içindir.
@@ -305,7 +305,7 @@ Linked Entities:
         Score: 0.281    Offset:  89     Length: 5
 ```
 
-## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
+## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
 Uç nokta ve anahtarı bağımsız değişken olarak alan `key_phrase_extraction_example()` adlı yeni bir işlev oluşturun ve sonra `single_extract_key_phrases()` işlevini çağırır. Sonuç, başarılı olursa `key_phrases` algılanan anahtar tümceciklerin listesini ve değilse bir `error` içerir. Algılanan tüm anahtar tümceleri yazdır.
 

@@ -529,33 +529,33 @@ Bir dizeyi Regex temelinde bir sınırlayıcı temelinde böler ve
 ___
 ### <code>replace</code>* ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``bir dize dizisi döndürür 
 <code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/>
-Bir alt dizenin tüm tekrarlamalarını verilen dizedeki başka bir alt dize ile değiştirin. If the last parameter is omitted, it is default to empty string * ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``
+Bir alt dizenin tüm tekrarlamalarını verilen dizedeki başka bir alt dize ile değiştirin. Son parametre atlanırsa, 
 * ``replace('doggie dog', 'dog', '') -> 'gie '``
 * ``replace('doggie dog', 'dog') -> 'gie '``
 ___
-### <code>reverse</code>
+### <code>reverse</code>* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``dize boş değer olarak ayarlanır 
 <code><b>reverse(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Reverses a string * ``reverse('gunchus') -> 'suhcnug'``
+Bir dizeyi * ``reverse('gunchus') -> 'suhcnug'``
 ___
-### <code>right</code>
+### <code>right</code>tersine çevirir 
 <code><b>right(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
-Extracts a substring with number of characters from the right. Same as SUBSTRING(str, LENGTH(str) - n, n) * ``right('bojjus', 2) -> 'us'``
+Sağdan karakter sayısıyla bir alt dize ayıklar. Alt DIZE (Str, LENGTH (str)-n, n) * ``right('bojjus', 2) -> 'us'``
 * ``right('bojjus', 20) -> 'bojjus'``
 ___
-### <code>rlike</code>
+### <code>rlike</code>ile aynı 
 <code><b>rlike(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-Checks if the string matches the given regex pattern * ``rlike('200.50', `(\d+).(\d+)`) -> true``
+Dizenin * ``rlike('200.50', `(\d+).(\d+)`) -> true``
 * ``rlike('bogus', `M[0-9]+.*`) -> false``
 ___
-### <code>round</code>
+### <code>round</code>belirtilen Regex düzeniyle eşleşip eşleşmediğini denetler 
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Rounds a number given an optional scale and an optional rounding mode. If the scale is omitted, it is defaulted to 0.  If the mode is omitted, it is defaulted to ROUND_HALF_UP(5). The values for rounding include 1 - ROUND_UP 2 - ROUND_DOWN 3 - ROUND_CEILING 4 - ROUND_FLOOR 5 - ROUND_HALF_UP 6 - ROUND_HALF_DOWN 7 - ROUND_HALF_EVEN 8 - ROUND_UNNECESSARY * ``round(100.123) -> 100.0``
+Bir sayıyı isteğe bağlı bir ölçek ve isteğe bağlı bir yuvarlama modu olarak yuvarlar. Ölçek atlanırsa, varsayılan olarak 0 olur.  Mod atlanırsa, varsayılan olarak ROUND_HALF_UP (5) olarak ayarlanır. Yuvarlama değerleri şunlardır 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY * ``round(100.123) -> 100.0``
 * ``round(2.5, 0) -> 3.0``
 * ``round(5.3999999999999995, 2, 7) -> 5.40``
 ___
 ### <code>rpad</code>
 <code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-Right pads the string by the supplied padding until it is of a certain length. Dize uzunluğuna eşit veya daha büyük ise, 
+Dizeyi, belirli bir uzunluğa ulaşana kadar sağlanan doldurmaya göre sağ Altlar. Dize uzunluğuna eşit veya daha büyük ise, 
 * ``rpad('dumbo', 4, '-') -> 'dumb'``
 * ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``
 ___

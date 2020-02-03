@@ -46,7 +46,7 @@ Azure PowerShell yüklendikten veya güncelleştirildikten sonra, varlıkları y
 Install-Module AzTable
 ```
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 `Add-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 

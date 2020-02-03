@@ -35,7 +35,7 @@ Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasa
 
 Bu eğitim yöntemlerinin her biri, eğitim için farklı türlerde işlem kaynakları kullanabilir. Toplu olarak, bu kaynaklara [__işlem hedefleri__](concept-azure-machine-learning-architecture.md#compute-targets)denir. İşlem hedefi bir yerel makine veya Azure Machine Learning Işlem, Azure HDInsight veya uzak bir sanal makine gibi bir bulut kaynağı olabilir.
 
-## <a name="python-sdk"></a>Python SDK
+## <a name="python-sdk"></a>Python SDK'sı
 
 Python için Azure Machine Learning SDK, Azure Machine Learning ile makine öğrenimi iş akışları oluşturmanıza ve çalıştırmanıza olanak tanır. Etkileşimli bir Python oturumundan, Jupyıter not defterlerinden, Visual Studio Code veya başka bir IDE 'den hizmetle etkileşime geçebilirsiniz.
 

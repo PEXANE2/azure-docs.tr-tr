@@ -333,7 +333,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Tam bir örnek için bkz. [tetikleyici - C# örneği](#trigger).
+Tam bir örnek için bkz. [tetikleyici- C# örnek](#trigger).
 
 # <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
@@ -355,18 +355,18 @@ Java [işlevleri çalışma zamanı kitaplığından](https://docs.microsoft.com
 
 ## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `EventHubTrigger` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventHubTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Ayarlanmalıdır `eventHubTrigger`. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction** | Yok | Ayarlanmalıdır `in`. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | Yok | İşlev kodundaki olay öğesini temsil eden değişkenin adı. |
-|**Yolu** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
+|**type** | yok | `eventHubTrigger`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | yok | `in`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki olay öğesini temsil eden değişkenin adı. |
+|**Yolun** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**eventHubName** |**EventHubName** | İşlevler 2. x ve üzeri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. % EventHubName% uygulama ayarları aracılığıyla başvurulabilirler |
 |**consumerGroup** |**ConsumerGroup** | Hub 'daki olaylara abone olmak için kullanılan [Tüketici grubunu](../articles/event-hubs/event-hubs-features.md#event-consumers) ayarlayan isteğe bağlı bir özellik. Atlanırsa, `$Default` Tüketici grubu kullanılır. |
-|**ite** | Yok | JavaScript için. Toplu işleme ' i etkinleştirmek için `many` olarak ayarlayın.  Atlanırsa veya `one`olarak ayarlandıysa, işleve tek bir ileti geçirilir. |
-|**bağlantı** |**bağlantı** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, [ad alanı](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin tetikleyiciyi etkinleştirmek için en azından okuma izinlerine sahip olması gerekir.|
+|**ite** | yok | JavaScript için. Toplu işleme ' i etkinleştirmek için `many` olarak ayarlayın.  Atlanırsa veya `one`olarak ayarlandıysa, işleve tek bir ileti geçirilir. |
+|**bağlanma** |**Bağlanma** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, [ad alanı](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin tetikleyiciyi etkinleştirmek için en azından okuma izinlerine sahip olması gerekir.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -384,7 +384,7 @@ Event Hubs tetikleyicisi çeşitli [meta veri özellikleri](../articles/azure-fu
 |`SequenceNumber`|`Int64`|Etkinliğin mantıksal sıra numarası.|
 |`SystemProperties`|`IDictionary<String,Object>`|Olay verileri de dahil olmak üzere sistem özellikleri.|
 
-Bkz: [kod örnekleri](#trigger) bu makalenin önceki bölümlerinde bu özellikleri kullanın.
+Bu makalenin önceki kısımlarında bu özellikleri kullanan [kod örneklerine](#trigger) bakın.
 
 ## <a name="trigger---hostjson-properties"></a>Tetikleyici - host.json özellikleri
 
@@ -600,7 +600,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Tam bir örnek için bkz. [çıkış - C# örneği](#output).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output).
 
 # <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
 
@@ -622,16 +622,16 @@ Tam bir örnek için bkz. [çıkış - C# örneği](#output).
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `EventHub` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `EventHub` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | "EventHub" olarak ayarlanmalıdır. |
-|**direction** | Yok | "Out" ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | Yok | Olayı temsil eden işlev kodunda kullanılan değişken adı. |
-|**Yolu** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
+|**type** | yok | "EventHub" olarak ayarlanmalıdır. |
+|**direction** | yok | "Out" ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | Olayı temsil eden işlev kodunda kullanılan değişken adı. |
+|**Yolun** |**EventHubName** | Yalnızca 1. x işlevleri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
 |**eventHubName** |**EventHubName** | İşlevler 2. x ve üzeri. Olay Hub 'ının adı. Aynı zamanda, Olay Hub 'ı adı bağlantı dizesinde de mevcutsa, bu değer çalışma zamanında bu özelliği geçersiz kılar. |
-|**bağlantı** |**bağlantı** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, *ad alanı*Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin iletiyi olay akışına göndermek için gönderme izinleri olmalıdır.|
+|**bağlanma** |**Bağlanma** | Olay Hub 'ının ad alanına bağlantı dizesini içeren bir uygulama ayarının adı. Bu bağlantı dizesini, Olay Hub 'ının değil, *ad alanı*Için **bağlantı bilgileri** düğmesine tıklayarak kopyalayın. Bu bağlantı dizesinin iletiyi olay akışına göndermek için gönderme izinleri olmalıdır.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -680,7 +680,7 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](../articles/azure-functions/functions-host-json.md).
 
 > [!NOTE]
-> İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](../articles/azure-functions/functions-host-json-v1.md).
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](../articles/azure-functions/functions-host-json-v1.md).
 
 ```json
 {

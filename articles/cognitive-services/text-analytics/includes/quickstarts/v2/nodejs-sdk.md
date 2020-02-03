@@ -15,7 +15,7 @@ ms.locfileid: "76748932"
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Node. js](https://nodejs.org/)' nin geçerli sürümü.
@@ -74,7 +74,7 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 ## <a name="code-examples"></a>Kod örnekleri
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım analizi](#sentiment-analysis)
+* [Yaklaşım Analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Varlık tanıma](#entity-recognition)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
@@ -87,7 +87,7 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 
-## <a name="sentiment-analysis"></a>Duygu analizi
+## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
 Çözümlemek istediğiniz belgeleri içeren sözlük nesnelerinin bir listesini oluşturun. İstemcinin [Sentiment ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) yöntemini çağırın ve döndürülen [Sentimentbatchresult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult)'ı alın. Sonuçlar listesinde yineleme yapın ve her belgenin KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
@@ -158,7 +158,7 @@ Document ID: 2
     Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
+## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
 Belgelerinizi içeren bir nesne listesi oluşturun. İstemcinin [keyPhrases ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) yöntemini çağırın ve döndürülen [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) nesnesini alın. Sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan anahtar tümceleri yazdırın.
 

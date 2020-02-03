@@ -136,7 +136,7 @@ En iyi sorgu performansı için bölümleri ve dizinleri Time Series Insights g�
 > [!IMPORTANT]
 > Önizleme sırasında, veriler kullanılabilir hale gelmeden önce 60 saniyeye kadar bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 Bu bölümde Azure Time Series Insights önizlemesiyle ilgili Azure depolama ayrıntıları açıklanmaktadır.
 

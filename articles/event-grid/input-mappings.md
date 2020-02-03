@@ -17,7 +17,7 @@ ms.locfileid: "76721668"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Özel alanları Event Grid şemasına eşleme
 
-Olay verilerinizi beklenen eşleşmiyorsa [Event Grid şema](event-schema.md), rota olay aboneler için Event Grid kullanmaya devam edebilirsiniz. Bu makalede, şemanızı Event Grid şemaya eşleme açıklar.
+Olay verileriniz beklenen [Event Grid şemasıyla](event-schema.md)eşleşmiyorsa, etkinliği abonelere yönlendirmek için Event Grid kullanmaya devam edebilirsiniz. Bu makalede, şemanızı Event Grid şemaya eşleme açıklar.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -45,11 +45,11 @@ Bu biçim gerekli şema eşleşmiyor olsa da, Event Grid, alanları şemaya eşl
 
 Bir özel konu oluşturma sırasında özgün olay alanlarından event grid şemaya eşleme belirtin. Eşleme özelleştirmek için kullandığınız üç değer vardır:
 
-* **Giriş şemasını** şema türü bir değer belirtir. Mevcut seçenekler CloudEvents şeması, özel olay Şeması veya Event Grid şema'dir. Event Grid şema varsayılan değerdir. Özel eşleme şemanızı ve event grid şema arasında oluştururken, özel olay şeması kullanın. Olayları CloudEvents şeması içinde olduğunda Cloudevents şeması kullanma.
+* **Giriş şeması** değeri şemanın türünü belirtir. Mevcut seçenekler CloudEvents şeması, özel olay Şeması veya Event Grid şema'dir. Event Grid şema varsayılan değerdir. Özel eşleme şemanızı ve event grid şema arasında oluştururken, özel olay şeması kullanın. Olayları CloudEvents şeması içinde olduğunda Cloudevents şeması kullanma.
 
-* **Varsayılan değerleri eşleme** özelliği, Event Grid şemada alanlar için varsayılan değerler belirtir. Varsayılan değerleri ayarlayabileceğiniz `subject`, `eventtype`, ve `dataversion`. Genellikle, bu üç alan birine karşılık gelen bir alan özel şemanızı içermediğinde bu parametreyi kullanın. Örneğin, bu veri sürümü her zaman ayarlanır belirtebilirsiniz **1.0**.
+* **Mapping default Values** özelliği Event Grid şemasındaki alanlar için varsayılan değerleri belirtir. `subject`, `eventtype`ve `dataversion`için varsayılan değerleri ayarlayabilirsiniz. Genellikle, bu üç alan birine karşılık gelen bir alan özel şemanızı içermediğinde bu parametreyi kullanın. Örneğin, veri sürümünün her zaman **1,0**olarak ayarlandığını belirtebilirsiniz.
 
-* **Alanlarını eşleme** şemanızı alanları için event grid şema değeri eşler. Değerler boşlukla ayrılmış bir anahtar/değer çiftlerini belirtin. Anahtar adı için event grid alanı adını kullanın. Değeri, alan adı kullanın. Anahtar adları için kullanabileceğiniz `id`, `topic`, `eventtime`, `subject`, `eventtype`, ve `dataversion`.
+* **Mapping Fields** değeri, şemadaki alanları Event Grid şemasına eşler. Değerler boşlukla ayrılmış bir anahtar/değer çiftlerini belirtin. Anahtar adı için event grid alanı adını kullanın. Değeri, alan adı kullanın. `id`, `topic`, `eventtime`, `subject`, `eventtype`ve `dataversion`için anahtar adlarını kullanabilirsiniz.
 
 Azure CLI ile özel bir konu oluşturmak için kullanın:
 
@@ -135,7 +135,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-event-to-topic"></a>Konuya olayı Yayımla
 
-Özel konuya bir olay göndermek ve eşlemenin sonucunu görmek artık hazırsınız. Bir olay göndermek için aşağıdaki betiği [örnek şema](#original-event-schema):
+Özel konuya bir olay göndermek ve eşlemenin sonucunu görmek artık hazırsınız. [Örnek şemasında](#original-event-schema)bir olay göndermek için aşağıdaki komut dosyası:
 
 Azure CLI için şunu kullanın:
 
@@ -189,7 +189,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }
 ```
 
-Bu alanlar özel konu başlığından eşlemeleri içerir. **myEventTypeField** eşlenmiş **EventType**. İçin varsayılan değerler **DataVersion** ve **konu** kullanılır. **Veri** nesne özgün olay şema alanları içerir.
+Bu alanlar özel konu başlığından eşlemeleri içerir. **Myeventtypefield** , **EventType**ile eşlendi. **Dataversion** ve **Subject** için varsayılan değerler kullanılır. **Veri** nesnesi, özgün olay şeması alanlarını içerir.
 
 İkinci abonelik giriş olay şeması kullanılır. Teslim edilen olay biçimdir:
 
@@ -207,6 +207,6 @@ Bu alanlar özel konu başlığından eşlemeleri içerir. **myEventTypeField** 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimi ve yeniden deneme hakkında bilgi için [Event Grid iletiyi teslim ve yeniden deneme](delivery-and-retry.md).
+* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

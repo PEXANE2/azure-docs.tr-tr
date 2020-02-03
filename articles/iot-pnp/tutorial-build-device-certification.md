@@ -28,7 +28,7 @@ Sertifika sınamaları şunları denetler:
 - Cihaz kodunuz cihaz bilgileri arabirimini uygular.
 - Yetenek modeli ve cihaz kodu IoT Central birlikte çalışır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 

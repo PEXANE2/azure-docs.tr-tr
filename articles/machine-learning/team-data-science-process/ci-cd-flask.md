@@ -62,7 +62,7 @@ Aşağıdaki diyagram ve adımlar, CI/CD ardışık düzen mimarisini anlatmakta
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Ekip veri bilimi Işlemi (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes hizmeti (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Hizmetleri (AKS)](/azure/aks/intro-kubernetes)

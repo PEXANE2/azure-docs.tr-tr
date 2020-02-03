@@ -21,7 +21,7 @@ ms.locfileid: "76717008"
 
 Aşağıdaki adımlarla, Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)Ile Bulutta Azure bilişsel hizmetler uygulamalarını kolayca ölçeklendirin. Kapsayıcılama, altyapıyı yönetmek yerine uygulamalarınızı oluşturmaya odaklanmanıza yardımcı olur. Kapsayıcıları kullanma hakkında daha fazla bilgi için bkz. [Özellikler ve avantajlar](../cognitive-services-container-support.md#features-and-benefits).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tarif, tüm bilişsel hizmetler kapsayıcısıyla birlikte çalışarak. Bilişsel hizmet kaynağının, tarif kullanılmadan önce Azure portal oluşturulması gerekir. Kapsayıcıları destekleyen her bilişsel hizmet hizmeti, bir kapsayıcı için hizmeti yüklemek ve yapılandırmak üzere özellikle bir "yükleme" belgesine sahiptir. Bazı hizmetler, kapsayıcı için girdi olarak bir dosya veya dosya kümesi gerektirir, bu çözümü kullanmadan önce kapsayıcıyı anlamanız ve başarıyla kullanmış olmanız önemlidir.
 

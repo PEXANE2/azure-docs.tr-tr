@@ -30,7 +30,7 @@ Key Vault VM Uzantısı şu Linux dağıtımlarını destekler:
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı korumalı ayarlar gerektirmez. tüm ayarları güvenlik etkisi olmadan bilgi olarak kabul edilir. Uzantı, izlenen gizli dizi, yoklama sıklığı ve hedef sertifika depolama alanı için bir liste gerektirir. Bu avantajlar şunlardır:  
+Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı korumalı ayarlar gerektirmez. tüm ayarları güvenlik etkisi olmadan bilgi olarak kabul edilir. Uzantı, izlenen gizli dizi, yoklama sıklığı ve hedef sertifika depolama alanı için bir liste gerektirir. Daha ayrıntılı şekilde belirtmek gerekirse:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -67,7 +67,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü |
+| Adı | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft. Azure. Keykasası | string |
@@ -75,9 +75,9 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 | typeHandlerVersion | 1.0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
 | CertificateStoreName | MY | string |
-| Linkonyenilemeye | yanlış | boole |
+| Linkonyenilemeye | false | boole |
 | CertificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | doğru | boole |
+| requiredInitialSync | true | boole |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
 
 
@@ -209,4 +209,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/forums/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

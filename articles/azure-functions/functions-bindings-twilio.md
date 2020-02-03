@@ -21,13 +21,13 @@ Bu makalede, Azure Işlevlerinde [Twilio](https://www.twilio.com/) bağlamaları
 
 ## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 1. x içinde sağlanır. Paket için kaynak kodu konusu [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub deposu.
+Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 1. x içinde sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub deposundadır.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
-Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 3. x içinde sağlanır. Paket için kaynak kodu konusu [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub deposu.
+Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 3. x içinde sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub deposundadır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -291,7 +291,7 @@ public class TwilioOutput {
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) özniteliğini kullanın.
 
-Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). İşte bir `TwilioSms` özniteliği örnek bir yöntem imzası:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). Yöntem imzasında bir `TwilioSms` özniteliği örneği aşağıda verilmiştir:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -325,18 +325,18 @@ Tüm örnek için bkz [ C# . örnek](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `TwilioSms` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `TwilioSms` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 | V1 function. JSON özelliği | v2 function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|---------|----------------------|
 |**type**|**type**| `twilioSms`olarak ayarlanmalıdır.|
 |**direction**|**direction**| `out`olarak ayarlanmalıdır.|
-|**Adı**|**Adı**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
+|**ada**|**ada**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
 |**accountSid**|**Accountsıdsetting**| **Accountsıdsetting**| Bu değer, Twilio hesabı SID 'nizi (`TwilioAccountSid`) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi (`TwilioAccountAuthToken`) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
-|**to**| Yok-kodda belirt | **Alıcı**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
-|**from**|**from** | **From**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
-|**body**|**body** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  
+|**Hedef**| Yok-kodda belirt | **Alıcı**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
+|**Kaynak**|**Kaynak** | **Kaynak**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
+|**bölümü**|**bölümü** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

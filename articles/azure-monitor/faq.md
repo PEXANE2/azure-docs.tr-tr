@@ -240,7 +240,7 @@ Kurumsal plan her bir gün için her bir Web sunucusu düğümünün telemetri g
 
 [Fiyatlandırma planını okuyun](https://azure.microsoft.com/pricing/details/application-insights/).
 
-### <a name="how-much-does-it-cost"></a>Ücreti ne kadardır?
+### <a name="how-much-does-it-cost"></a>Ne kadar ücret maliyetlidir?
 
 * Bir Application Insights kaynağındaki **kullanım ve tahmini maliyetler sayfasını** açın. Son kullanılan kullanım grafiği. İsterseniz bir veri hacmi üst sınırı belirleyebilirsiniz.
 * Tüm kaynaklarda [faturanızı görmek Için Azure faturalama dikey penceresini](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) açın.
@@ -376,7 +376,7 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 | Özel durumların yığın izlemelerini al |[Kodunuzda TrackException çağrıları ekleyin](app/asp-net-exceptions.md) (ancak bazıları otomatik olarak bildirilir) |Özel durumları Algıla ve Tanıla |
 | Arama günlüğü izlemeleri |[Günlüğe kaydetme bağdaştırıcısı ekleme](app/asp-net-trace-logs.md) |Özel durumları ve performans sorunlarını tanılayın |
 | İstemci kullanımı temelleri: sayfa görünümleri, oturumlar,... |[Web sayfalarındaki JavaScript başlatıcısı](app/javascript.md) |Kullanım analizi |
-| İstemci özel ölçümleri |[Web sayfalarındaki çağrıları izleme](app/api-custom-events-metrics.md) |Kullanıcı deneyimini geliştirme |
+| İstemci özel ölçümleri |[Web sayfalarındaki çağrıları izleme](app/api-custom-events-metrics.md) |Kullanıcı deneyimini geliştirin |
 | Sunucu özel ölçümleri |[Sunucudaki aramalar izleniyor](app/api-custom-events-metrics.md) |İş zekası |
 
 ### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Arama ve ölçüm grafiklerindeki sayımlar neden eşit değildir?
@@ -390,7 +390,7 @@ Aktarılan her öğe, öğenin kaç tane özgün olay temsil ettiğini gösteren
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Otomasyon
 
 #### <a name="configuring-application-insights"></a>Application Insights yapılandırma
 
@@ -515,7 +515,7 @@ Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sor
 
 Aracı sürümü ciprod12042019 ve üzeri için, varsayılan olarak bu iki özellik her günlük satırı için doldurulmaz ve toplanan günlük verilerinde maliyeti en aza indirir. Bu özellikleri içeren tabloyu, değerlerini sorgulamak için iki seçenek vardır:
 
-#### <a name="option-1"></a>Seçenek 1 
+#### <a name="option-1"></a>seçenek 1 
 
 Sonuçlara bu özellik değerlerini dahil etmek için diğer tabloları birleştirin.
 
@@ -673,7 +673,7 @@ Bir sistem durumu ölçüt örneğinin herhangi bir ayarını değiştirirseniz,
 Hayır, tek tek işlemci ve mantıksal işlemci düzeyi durum ölçütleri bir Windows için dahil değildir, Azure VM 'nin kullanabildiği toplam mantıksal CPU sayısına göre CPU basıncını etkin bir şekilde değerlendirmek için varsayılan olarak yalnızca toplam CPU kullanımı izlenir. 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>Tüm durum ölçütleri eşikleri yapılandırılabilir mi?  
-Sistem durumlarına ayarlanır çünkü hedef bir Windows VM durumu ölçütlerini eşikleri değiştirilebilir, olmayan *çalıştıran* veya *kullanılabilir*. Sistem sağlığı durumunu sorgulanırken [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), görüntülediği *comparisonOperator* değerini **LessThan** veya **GreaterThan** ile bir *eşiği* değerini **4** hizmet veya varlık varsa:
+Windows VM 'yi hedefleyen sistem durumu ölçütlerine yönelik eşikler, sistem durumları *çalışıyor* veya *kullanılabilir*olarak ayarlandığı için değiştirilebilir değildir. [Iş yükü IZLEYICISI API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)'sinden sistem durumunu sorgulayıp, şu durumlarda hizmet veya varlık için **4** *eşik* değeriyle **LessThan** veya **GreaterThan** *değerini görüntüler* :
    - DNS istemcisi hizmet durumu-hizmet çalışmıyor. 
    - DHCP istemci hizmeti sistem durumu-hizmet çalışmıyor. 
    - RPC hizmet durumu-hizmet çalışmıyor. 
@@ -683,13 +683,13 @@ Sistem durumlarına ayarlanır çünkü hedef bir Windows VM durumu ölçütleri
    - Windows Uzaktan Yönetimi hizmetinin sistem durumu – hizmet çalışmıyor. 
    - Mantıksal Disk, dosya sistemi hatası veya bozulma – kullanılamıyor.
 
-Sistem durumu zaten ayarlandığından aşağıdaki Linux durumu ölçütlerini eşikleri değiştirilebilir, olmayan *true*. Sistem durumunu görüntüler *comparisonOperator* bir değerle **LessThan** ve *eşiği* değerini **1** gelen sorgulandığında İş yükü izleme API bağlama bağlı olarak varlığı için:
+Aşağıdaki Linux durum ölçütlerine yönelik eşikler, sistem durumu zaten *true*olarak ayarlandığından değiştirilebilir değildir. Sistem durumu, içeriğine bağlı olarak varlık için Iş yükü Izleme API 'sinden sorgulandığında, değeri **LessThan** ve *eşik* değeri **1** olan *ComparisonOperator* ' i görüntüler.
    - Mantıksal Disk durumu – mantıksal disk değil çevrimiçi / kullanılabilir
    - Disk durumu – Disk değil çevrimiçi / kullanılabilir
    - Ağ bağdaştırıcısı durumu - ağ bağdaştırıcısı devre dışı bırakıldı
 
 ### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Sistem durumu özelliğine dahil olan uyarıları değiştirmek Nasıl yaparım??
-Her sistem durumu ölçütü için tanımlanan uyarı kuralları, Azure portalında görüntülenmez. Etkinleştirebilir veya sistem durumu uyarısı devre dışı yalnızca kural [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, bir VM'ye karşı Eylem grupları atayabilirsiniz böylece tüm *sistem durumu uyarılarını* aynı Eylem grupları karşı VM tetikleyici tetiklendi. Geleneksel Azure uyarıları ayrı bir eylem grubu her sistem durumu uyarı kuralının kavramı yoktur. Ayrıca, sistem durumu uyarı tetiklendiğinde e-posta veya SMS bildirimleri sağlamak için yapılandırılmış olan eylem grupları desteklenir. 
+Her sistem durumu ölçütü için tanımlanan uyarı kuralları, Azure portalında görüntülenmez. Bir sistem durumu uyarı kuralını yalnızca [Iş yükü IZLEYICISI API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)'sinde etkinleştirebilir veya devre dışı bırakabilirsiniz. Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, VM 'ye karşı gerçekleştirilen tüm *sistem durumu uyarılarının* aynı eylem gruplarını tetiklenmesi IÇIN bir VM 'ye karşı eylem grupları atayabilirsiniz. Geleneksel Azure uyarıları ayrı bir eylem grubu her sistem durumu uyarı kuralının kavramı yoktur. Ayrıca, sistem durumu uyarı tetiklendiğinde e-posta veya SMS bildirimleri sağlamak için yapılandırılmış olan eylem grupları desteklenir. 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Sanal Makinem için performans grafikleri bazı veya tüm veriler göremiyorum
 Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)çalıştırın.

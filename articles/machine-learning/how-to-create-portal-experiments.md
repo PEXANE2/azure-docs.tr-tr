@@ -25,13 +25,13 @@ ms.locfileid: "76720410"
 
  Daha fazla kod tabanlı bir deneyim tercih ediyorsanız, [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile Python 'da da yapılandırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * **Enterprise Edition**türünde bir Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).  Mevcut bir çalışma alanını Enterprise Edition 'a yükseltmek için bkz. [Enterprise Edition 'A yükseltme](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 
 1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın. 
 
@@ -140,7 +140,7 @@ Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizele
 Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
 Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örn. Boolean) sahip olmayan özellikler için görünür.
-Maks.| Sütunun en büyük değeri. 
+Maks| Sütunun en büyük değeri. 
 Sayı| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
 Quantiles| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
@@ -183,11 +183,11 @@ Aşağıdaki tabloda, şu anda desteklenen veri guardı ve kullanıcıların den
 
 Guarddemiryolu|Durum|&nbsp;tetikleyicisi için koşul&nbsp;
 ---|---|---
-Eksik&nbsp;değerleri&nbsp;imputation |**Geçirilen** <br> <br> **Düzenle**|    Giriş&nbsp;sütunlarında eksik değer yok <br> <br> Bazı sütunlarda eksik değerler var
+Eksik&nbsp;değerleri&nbsp;imputation |**Geçiril** <br> <br> **Düzenle**|    Giriş&nbsp;sütunlarında eksik değer yok <br> <br> Bazı sütunlarda eksik değerler var
 Çapraz doğrulama|**Yapıldığını**|Açık bir doğrulama kümesi sağlanmazsa
-Yüksek&nbsp;kardinalite&nbsp;Özellik&nbsp;algılama|  **Geçirilen** <br> <br>**Yapıldığını**|   Yüksek kardinalite özellikleri algılanmadı <br><br> Yüksek kardinalite girdi sütunları algılandı
-Sınıf dengesi algılama |**Geçirilen** <br><br><br>**Uyarı** |Sınıflar eğitim verilerinde dağıtılır; Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir <br> <br> Eğitim verilerinde sınıflar imlenebilir
-Zaman serisi veri tutarlılığı|**Geçirilen** <br><br><br><br> **Düzenle** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. <br> <br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya kayan pencere kapatılmış.
+Yüksek&nbsp;kardinalite&nbsp;Özellik&nbsp;algılama|  **Geçiril** <br> <br>**Yapıldığını**|   Yüksek kardinalite özellikleri algılanmadı <br><br> Yüksek kardinalite girdi sütunları algılandı
+Sınıf dengesi algılama |**Geçiril** <br><br><br>**Uyarı** |Sınıflar eğitim verilerinde dağıtılır; Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir <br> <br> Eğitim verilerinde sınıflar imlenebilir
+Zaman serisi veri tutarlılığı|**Geçiril** <br><br><br><br> **Düzenle** |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. <br> <br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya kayan pencere kapatılmış.
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 
@@ -226,11 +226,11 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 
     Alan| Değer
     ----|----
-    Ad| Dağıtımınız için benzersiz bir ad girin.
+    Adı| Dağıtımınız için benzersiz bir ad girin.
     Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)* .
-    Ad| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
-    Kimlik doğrulamayı etkinleştirme | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.
+    Adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
+    Kimlik doğrulamasını etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.
     Özel dağıtım varlıklarını kullanma| Kendi Puanlama betiğinizi ve ortam dosyanızı karşıya yüklemek istiyorsanız bu özelliği etkinleştirin. [Puanlama betikleri hakkında daha fazla bilgi edinin](how-to-deploy-and-where.md#script).
 
     >[!Important]

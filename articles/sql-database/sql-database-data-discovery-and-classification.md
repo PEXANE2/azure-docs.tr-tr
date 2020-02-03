@@ -88,7 +88,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 4. Excel biçiminde bir rapor indirmek için pencerenin üst menüsünde **dışarı aktar** seçeneğine tıklayın.
 
-   ![Excel 'e aktar](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Excel'e Dışarı Aktarma](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Verilerinizi sınıflandırmayla başlamak için pencerenin üst kısmındaki **Sınıflandırma sekmesine** tıklayın.
 

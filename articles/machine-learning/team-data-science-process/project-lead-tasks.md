@@ -36,7 +36,7 @@ Bu öğreticide 1. Adım: proje deposu oluşturma ve adım 2: çekirdek proje de
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin uygulanması nedeniyle bir TDSP projesi kurmak için Azure Repos kullanılmıştır. Ekibiniz başka bir kod barındırma platformu kullanıyorsa, proje sağlama görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, [Grup Yöneticisi](group-manager-tasks.md) ve [ekip lideri](team-lead-tasks.md) aşağıdaki kaynakları ve izinleri ayarladığını varsayar:
 
@@ -48,7 +48,7 @@ Bu öğreticide, [Grup Yöneticisi](group-manager-tasks.md) ve [ekip lideri](tea
 Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM) içeriğini değiştirmek ya da Azure dosya depolama alanını ayarlayıp DSVM 'nize bağlamak için şu denetim listesini göz önünde bulundurmanız gerekir:
 
 - Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -95,6 +95,6 @@ Projenizin özel ihtiyaçlarını karşılamak için proje deponuzun içeriğini
 
 Team Data Science Işlemi tarafından tanımlanan diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Bir veri bilimi takım için Grup yöneticisi görevleri](group-manager-tasks.md)
-- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
 - [Bir veri bilimi ekibi için bireysel katkıda bulunan görevler](project-ic-tasks.md)

@@ -10,12 +10,12 @@ ms.date: 10/18/2019
 ms.author: diberry
 ms.openlocfilehash: a262db04e51015edb760a8b04952dfa24b2ad63a
 ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76748782"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Başlangıç anahtarı.
 * Bilişsel hizmetler-dil düzeyi GitHub deposundan [Travelagent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) uygulamasını içeri aktarın.

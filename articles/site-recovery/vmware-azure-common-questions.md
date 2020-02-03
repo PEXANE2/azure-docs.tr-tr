@@ -103,7 +103,7 @@ Yükleyiciler yapılandırma sunucusundaki%ProgramData%\asr\home\svsystems\push�
 - Kullanıcı arabiriminden veya PowerShell 'ten [el ile yükleme](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
 - [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) gibi bir dağıtım aracı kullanarak dağıtım
 
-## <a name="managed-disks"></a>Yönetilen Diskler
+## <a name="managed-disks"></a>Yönetilen diskler
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Site Recovery verileri nerede çoğaltır?
 

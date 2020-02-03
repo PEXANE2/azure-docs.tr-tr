@@ -21,7 +21,7 @@ Bu makalede, olay teslimlerin durumunu görmek için Portal 'ın nasıl kullanı
 
 Event Grid dayanıklı teslim sağlar. Her bir abonelik için her iletiyi en az bir kez sunar. Olaylar, her aboneliğin kayıtlı Web kancasına hemen gönderilir. Web kancası ilk teslim girişiminin 60 saniye içinde bir olayın alındığını kabul etmezse, olayın yeniden denenmesini Event Grid.
 
-Olay teslimi ve yeniden deneme hakkında bilgi için [Event Grid iletiyi teslim ve yeniden deneme](delivery-and-retry.md).
+Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
 
 ## <a name="delivery-metrics"></a>Teslim ölçümleri
 
@@ -76,7 +76,7 @@ Bu kaynakla ilgili abonelikler için ölçümleri görürsünüz.
 
 ![Olay ölçümlerini görüntüle](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="set-alerts"></a>Uyarılar ayarlama
+## <a name="set-alerts"></a>Uyarı ayarlama
 
 Özel konular ve olay etki alanları için konu başlığı ve etki alanı düzeyi ölçümlerinde uyarılar ayarlayabilirsiniz. İçin genel bakış dikey penceresinde, uyarı kurallarını görüntülemek, yönetmek ve oluşturmak için sol taraftaki kaynak menüsünde **Uyarılar** ' ı seçin. [Azure Izleyici uyarıları hakkında daha fazla bilgi edinin](../azure-monitor/platform/alerts-overview.md)
 
@@ -84,6 +84,6 @@ Bu kaynakla ilgili abonelikler için ölçümleri görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimi ve yeniden deneme hakkında bilgi için [Event Grid iletiyi teslim ve yeniden deneme](delivery-and-retry.md).
+* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

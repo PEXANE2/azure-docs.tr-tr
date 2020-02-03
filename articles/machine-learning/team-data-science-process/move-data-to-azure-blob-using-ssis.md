@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720881"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>İçin veya SSIS bağlayıcıları kullanarak Azure Blob Depolama veri taşıma
-[Azure için SQL Server Integration Services özellik paketi](https://msdn.microsoft.com/library/mt146770.aspx) Azure'a bağlanmak için Azure ve şirket içi veri kaynakları ve Azure'da depolanan işlem verileri arasında veri aktarımı bileşenleri sağlar.
+[Azure için SQL Server Integration Services Feature Pack](https://msdn.microsoft.com/library/mt146770.aspx) , Azure 'a bağlanmak, Azure ile şirket içi veri kaynakları arasında veri aktarımı yapmak ve Azure 'da depolanan verileri işlemek için bileşenler sağlar.
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -27,38 +27,38 @@ Müşteriler şirket içi verileri buluta taşındıktan sonra Azure teknolojile
 
 Bu Azure kaynaklarını kullanmanın örnekleri [SQL](sql-walkthrough.md) ve [HDInsight](hive-walkthrough.md) izlenecek yollardır.
 
-Hibrit veri tümleştirme senaryolarında, yaygın işletme ihtiyaçlarını gerçekleştirmek için SSIS kullanan kurallı senaryoları için bkz [Bunu yapmak için Azure SQL Server Integration Services özellik paketi ile çok daha fazlasını](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blogu.
+Karma veri tümleştirme senaryolarında sık kullanılan iş ihtiyaçlarını başarmak için SSIS kullanan kurallı senaryolar hakkında daha fazla bilgi için bkz. [Azure blogu için SQL Server Integration Services Feature Pack ile daha fazla](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) çalışma.
 
 > [!NOTE]
-> Azure blob depolama için bir tam giriş için başvurmak [Azure Blob Temelleri](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) ve [Azure Blob hizmeti](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Azure Blob depolamaya yönelik kapsamlı bir giriş için [Azure Blob temelleri](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) ve [Azure Blob hizmeti](https://msdn.microsoft.com/library/azure/dd179376.aspx)' ne bakın.
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede açıklanan görevleri gerçekleştirmek için bir Azure aboneliğiniz ve ayarlanmış bir Azure depolama hesabınızın olması gerekir. Verileri karşıya yüklemek veya indirmek için Azure depolama hesabı adı ve hesap anahtarı gerekir.
 
-* Ayarlamak için bir **Azure aboneliği**, bkz: [ücretsiz bir aylık deneme](https://azure.microsoft.com/pricing/free-trial/).
+* Bir **Azure aboneliği**ayarlamak için bkz. [ücretsiz bir aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * **Depolama hesabı** oluşturma ve hesap ve anahtar bilgilerini alma hakkında yönergeler için bkz. [Azure Storage hesapları hakkında](../../storage/common/storage-create-storage-account.md).
 
-Kullanılacak **SSIS bağlayıcıları**, yüklemeniz gerekir:
+**SSIS bağlayıcılarını**kullanmak için şunu indirmeniz gerekir:
 
-* **SQL Server 2014 veya 2016 standart (veya üstü)** : Install SQL Server Integration Services içerir.
+* **SQL Server 2014 veya 2016 Standard (veya üzeri)** : ınstall, SQL Server Integration Services içerir.
 * **Azure için Microsoft SQL Server 2014 veya 2016 Integration Services özellik paketi**: Bu bağlayıcılar sırasıyla, [SQL Server 2014 tümleştirme hizmetleri](https://www.microsoft.com/download/details.aspx?id=47366) ve [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) sayfalarından indirilebilir.
 
 > [!NOTE]
-> SSIS SQL Server ile birlikte yüklenir, ancak Express sürümünde bulunmamaktadır. Hangi uygulamaların çeşitli SQL Server sürümlerinde yer hakkında daha fazla bilgi için bkz: [SQL Server sürümleri](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
+> SSIS SQL Server ile birlikte yüklenir, ancak Express sürümünde bulunmamaktadır. SQL Server çeşitli sürümlerinde hangi uygulamaların dahil olduğu hakkında bilgi için, bkz. [SQL Server sürümleri](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
 > 
 > 
 
-SSIS'ndeki eğitim materyallerine için bkz: [SSIS üzerinde uygulamalı eğitim](https://www.microsoft.com/sql-server/training-certification)
+SSIS 'deki eğitim malzemeleri için bkz. [SSIS Için uygulamalı eğitim](https://www.microsoft.com/sql-server/training-certification)
 
-Yukarı süreli alma hakkında daha fazla bilgi için kullanılacak SISS basit ayıklama, dönüştürme ve yükleme (ETL) paketleri için bkz: derleme [SSIS öğretici: basit bir ETL paket oluşturma](https://msdn.microsoft.com/library/ms169917.aspx).
+Basit ayıklama, dönüştürme ve yükleme (ETL) paketleri oluşturmak için SISS kullanarak nasıl çalışmaya başlacağınız hakkında bilgi için bkz. [SSIS öğreticisi: Basit BIR etl paketi oluşturma](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>NYC taksi veri kümesini indirin
-Açıklanan örnek burada kullanmak genel kullanıma açık bir veri kümesi-- [NYC taksi Gelişlerin](https://www.andresmh.com/nyctaxitrips/) veri kümesi. Veri kümesi hakkında 173 milyon taksi sürmeye NYC içinde 2013 yılında oluşur. İki tür veri vardır: seyahat veri ve taksi verilerini ayrıntıları. Her ay bir dosya olduğu için, her biri 2 GB sıkıştırılmamış olan 24 dosya vardır.
+Burada açıklanan örnek, genel kullanıma açık bir veri kümesi ( [NYC TAXI gidiş](https://www.andresmh.com/nyctaxitrips/) veri kümesi) kullanır. Veri kümesi hakkında 173 milyon taksi sürmeye NYC içinde 2013 yılında oluşur. İki tür veri vardır: seyahat veri ve taksi verilerini ayrıntıları. Her ay bir dosya olduğu için, her biri 2 GB sıkıştırılmamış olan 24 dosya vardır.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure blob depolama alanına veri yükleme
-Örneği kullandığımız SSIS kullanarak verileri şirket içi bir paketi Azure blob depolama alanına özellik taşımak için [ **Azure Blob karşıya yükleme görevi**](https://msdn.microsoft.com/library/mt146776.aspx), burada gösterilen:
+SSIS özellik paketini Şirket içinden Azure Blob depolama 'ya kullanarak verileri taşımak için, burada gösterildiği gibi [**Azure Blob karşıya yükleme görevinin**](https://msdn.microsoft.com/library/mt146776.aspx)bir örneğini kullanırız:
 
 ![Yapılandırma-data-bilimi-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
@@ -66,24 +66,24 @@ Görev kullandığı Parametreler aşağıda açıklanmıştır:
 
 | Alan | Açıklama |
 | --- | --- |
-| **AzureStorageConnection** |Mevcut bir Azure depolama bağlantı yöneticisini belirtir veya blob dosyalarının barındırıldığı yeri işaret eden bir Azure depolama hesabına başvuran yeni bir tane oluşturur. |
+| **Azurestorampaconnection** |Mevcut bir Azure depolama bağlantı yöneticisini belirtir veya blob dosyalarının barındırıldığı yeri işaret eden bir Azure depolama hesabına başvuran yeni bir tane oluşturur. |
 | **BlobContainer** |Karşıya yüklenen dosyaları blob olarak tutan blob kapsayıcısının adını belirtir. |
 | **BlobDirectory** |Karşıya yüklenen dosya blok blobu olarak depolandığı blob dizini belirtir. Blob, hiyerarşik bir yapısı sanal dizindir. Blob zaten varsa, BT IA değiştirildi. |
-| **LocalDirectory** |Karşıya yüklenecek dosyaları içeren yerel dizini belirtir. |
-| **Dosya adı** |Belirtilen ada düzendeki dosyaları seçmek için bir ad filtresi belirtir. Örneğin, MySheet\*.xls\* MySheet001.xls ve MySheetABC.xlsx gibi dosyalarını içerir |
-| **TimeRangeFrom/TimeRangeTo** |Zaman aralığı filtresi belirtir. Sonra değiştirilen dosyaları *TimeRangeFrom* ve önce *TimeRangeTo* dahil edilir. |
+| **Yerel Dizin** |Karşıya yüklenecek dosyaları içeren yerel dizini belirtir. |
+| **Kısaltın** |Belirtilen ada düzendeki dosyaları seçmek için bir ad filtresi belirtir. Örneğin, MySheet\*. xls\* MySheet001. xls ve MySheetABC. xlsx gibi dosyaları içerir |
+| **TimeRangeFrom/TimeRangeTo** |Zaman aralığı filtresi belirtir. *Timerangefrom* ve Before *timerangeto* 'dan sonra değiştirilen dosyalar. |
 
 > [!NOTE]
-> **AzureStorageConnection** kimlik bilgilerinin doğru olması gerekir ve **BlobContainer** aktarımı denenmeden önce mevcut olması gerekir.
+> **Azurestorampaconnection** kimlik bilgilerinin doğru olması gerekir ve aktarım denendiğinde **blobcontainer** değeri bulunmalıdır.
 > 
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>Verileri Azure blob Depolama'dan indirme
-SSIS ile şirket içi depolama için Azure blob depolama alanından verileri indirmek için örneği kullanın. [Azure Blob indirme görev](https://msdn.microsoft.com/library/mt146779.aspx).
+SSIS ile şirket içi depolamaya Azure Blob depolamadan veri indirmek için [Azure Blob Indirme görevinin](https://msdn.microsoft.com/library/mt146779.aspx)bir örneğini kullanın.
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Daha gelişmiş Azure SSIS senaryoları
 SSIS özellik paketi için daha karmaşık akışlar birlikte paketleme görevleri tarafından işlenecek sağlar. Örneğin, blob verilerini doğrudan bir HDInsight kümesinde, bir blob dönün ve ardından şirket içi depolama çıktısı karşıdan yüklenemedi akışı. SSIS ek SSIS bağlayıcıları kullanarak bir HDInsight kümesinde Hive ve Pig işleri çalıştırabilirsiniz:
 
-* SSIS ile bir Azure HDInsight kümesinde bir Hive betiği çalıştırmak için kullanın [Azure HDInsight Hive görev](https://msdn.microsoft.com/library/mt146771.aspx).
-* SSIS ile bir Azure HDInsight kümesinde bir Pig betiği çalıştırmak için kullanın [Azure HDInsight Pig görev](https://msdn.microsoft.com/library/mt146781.aspx).
+* SSIS ile bir Azure HDInsight kümesinde Hive betiğini çalıştırmak için [Azure HDInsight Hive görevini](https://msdn.microsoft.com/library/mt146771.aspx)kullanın.
+* SSIS ile bir Azure HDInsight kümesinde Pig betiği çalıştırmak için [Azure HDInsight Pig görevini](https://msdn.microsoft.com/library/mt146781.aspx)kullanın.
 

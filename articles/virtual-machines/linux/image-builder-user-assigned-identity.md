@@ -185,7 +185,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Oluşturma işleminin tamamlanmasını bekleyin. Bu, yaklaşık 15 dakika sürebilir.
+Yapının tamamlanmasını bekleyin. Bu, yaklaşık 15 dakika sürebilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 

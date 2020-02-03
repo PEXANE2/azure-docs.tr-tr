@@ -17,12 +17,12 @@ ms.locfileid: "76719696"
 
 Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan Özellik güncelleştirmelerinin bir listesi ile gösterilir. Ayrıca, indirme ve kullanma öykünücünün en son sürümünü de listeler.
 
-## <a name="download"></a>İndirin
+## <a name="download"></a>İndirme
 
 | | |
 |---------|---------|
 |**MSI indirme**|[Microsoft İndirme Merkezi](https://aka.ms/cosmosdb-emulator)|
-|**Kullanmaya Başlama**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
+|**Başlarken**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
 

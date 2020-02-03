@@ -33,7 +33,7 @@ Bu öğreticide, AcquireIO 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -100,12 +100,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 

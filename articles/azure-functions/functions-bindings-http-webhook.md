@@ -72,7 +72,7 @@ public static async Task<IActionResult> Run(
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi sorgu dizesinde veya HTTP isteğinin gövdesinde `name` bir parametre arar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -97,7 +97,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlama
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 `HttpRequest`bağlanan C# betik kodu aşağıda verilmiştir:
 
@@ -148,7 +148,7 @@ public class Person {
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi sorgu dizesinde veya HTTP isteğinin gövdesinde `name` bir parametre arar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -169,7 +169,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlama
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -197,7 +197,7 @@ module.exports = function(context, req) {
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi sorgu dizesinde veya HTTP isteğinin gövdesinde `name` bir parametre arar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -219,7 +219,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlama
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 Python kodu aşağıda verilmiştir:
 
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Aşağıdaki örneklerde, bir *function. JSON* dosyasındaki http tetikleyicisi bağlamayı ve bağlamayı kullanan ilgili [Java işlevleri](functions-reference-java.md) gösterilmektedir. 
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -513,17 +513,17 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#trigger---example).
 
 ## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `HttpTrigger` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `HttpTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type** | Yok| Gerekli-`httpTrigger`olarak ayarlanmalıdır. |
-| **direction** | Yok| Gerekli-`in`olarak ayarlanmalıdır. |
-| **Adı** | Yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
+| **type** | yok| Gerekli-`httpTrigger`olarak ayarlanmalıdır. |
+| **direction** | yok| Gerekli-`in`olarak ayarlanmalıdır. |
+| **ada** | yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |, Varsa, işlevi çağırmak için istekte hangi anahtarların mevcut olması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekli değildir.</li><li>işleve özgü bir API anahtarı &mdash;<code>function</code>gereklidir. Hiçbiri sağlanmazsa varsayılan değer budur.</li><li>Ana anahtar gerekli &mdash;<code>admin</code>.</li></ul> Daha fazla bilgi için [Yetkilendirme anahtarları](#authorization-keys)hakkında bölümüne bakın. |
-| **methods** |**Methods** | İşlevin yanıt verdiği HTTP yöntemlerinin dizisi. Belirtilmemişse, işlev tüm HTTP yöntemlerine yanıt verir. Bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
-| **route** | **Yolu** | İşlevinizin hangi istek URL 'Lerine yanıt vereceğini denetleyen yol şablonunu tanımlar. Hiçbiri sağlanmadıysa varsayılan değer `<functionname>`. Daha fazla bilgi için bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
-| **webHookType** | **Web kancası türü** | _Yalnızca sürüm 1. x çalışma zamanı için desteklenir._<br/><br/>HTTP tetikleyicisini, belirtilen sağlayıcı için bir [Web kancası](https://en.wikipedia.org/wiki/Webhook) alıcısı olarak davranacak şekilde yapılandırır. Bu özelliği ayarlarsanız `methods` özelliğini ayarlama. Web kancası türü aşağıdaki değerlerden biri olabilir:<ul><li><code>genericJson</code>, belirli bir sağlayıcı için mantık olmadan genel amaçlı bir Web kancası uç noktası &mdash;. Bu ayar, istekleri yalnızca HTTP POST kullanarak ve `application/json` içerik türüyle kısıtlar.</li><li>işlevin [GitHub Web kancalarına](https://developer.github.com/webhooks/)yanıt verdiği <code>github</code>&mdash;. _AUTHLEVEL_ özelliğini GitHub Web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan GitHub Web kancaları bölümüne bakın.</li><li>işlevin [bolluk web kancalarına](https://api.slack.com/outgoing-webhooks)yanıt verdiği <code>slack</code>&mdash;. _AUTHLEVEL_ özelliğini bolluk web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak bolluk web kancaları bölümüne bakın.</li></ul>|
+| **Yöntem** |**Yöntem** | İşlevin yanıt verdiği HTTP yöntemlerinin dizisi. Belirtilmemişse, işlev tüm HTTP yöntemlerine yanıt verir. Bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
+| **yolu** | **Yolu** | İşlevinizin hangi istek URL 'Lerine yanıt vereceğini denetleyen yol şablonunu tanımlar. Hiçbiri sağlanmadıysa varsayılan değer `<functionname>`. Daha fazla bilgi için bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
+| **Web kancası türü** | **Web kancası türü** | _Yalnızca sürüm 1. x çalışma zamanı için desteklenir._<br/><br/>HTTP tetikleyicisini, belirtilen sağlayıcı için bir [Web kancası](https://en.wikipedia.org/wiki/Webhook) alıcısı olarak davranacak şekilde yapılandırır. Bu özelliği ayarlarsanız `methods` özelliğini ayarlama. Web kancası türü aşağıdaki değerlerden biri olabilir:<ul><li><code>genericJson</code>, belirli bir sağlayıcı için mantık olmadan genel amaçlı bir Web kancası uç noktası &mdash;. Bu ayar, istekleri yalnızca HTTP POST kullanarak ve `application/json` içerik türüyle kısıtlar.</li><li>işlevin [GitHub Web kancalarına](https://developer.github.com/webhooks/)yanıt verdiği <code>github</code>&mdash;. _AUTHLEVEL_ özelliğini GitHub Web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan GitHub Web kancaları bölümüne bakın.</li><li>işlevin [bolluk web kancalarına](https://api.slack.com/outgoing-webhooks)yanıt verdiği <code>slack</code>&mdash;. _AUTHLEVEL_ özelliğini bolluk web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak bolluk web kancaları bölümüne bakın.</li></ul>|
 
 ## <a name="trigger---usage"></a>Tetikleyici - kullanım
 
@@ -880,9 +880,9 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ayarladığınız bağlama ya
 
 |Özellik  |Açıklama  |
 |---------|---------|
-| **type** |Ayarlanmalıdır `http`. |
-| **direction** | Ayarlanmalıdır `out`. |
-| **Adı** | Yanıt için işlev kodunda kullanılan değişken adı veya dönüş değerini kullanmak için `$return`. |
+| **type** |`http`olarak ayarlanmalıdır. |
+| **direction** | `out`olarak ayarlanmalıdır. |
+| **ada** | Yanıt için işlev kodunda kullanılan değişken adı veya dönüş değerini kullanmak için `$return`. |
 
 ## <a name="output---usage"></a>Çıkış - kullanım
 
@@ -895,7 +895,7 @@ HTTP yanıtı göndermek için, dil standardı yanıt düzenlerini kullanın. Ve
 Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
 
 > [!NOTE]
-> İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md#http).
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md#http).
 
 ```json
 {

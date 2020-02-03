@@ -20,7 +20,7 @@ ms.locfileid: "76722263"
 
 Bu makalede, Azure 'da çalışması için programlı olarak bir işlem hattı zamanlamayı öğreneceksiniz. Geçen süreye veya dosya sistemi değişikliklerine göre bir zamanlama oluşturmayı tercih edebilirsiniz. Zaman tabanlı zamanlamalar, veri kayması için izleme gibi rutin görevlerden yararlanmak için kullanılabilir. Değişiklik tabanlı zamanlamalar, karşıya yüklenen yeni veriler veya düzenlenmekte olan eski veriler gibi düzensiz veya öngörülemeyen değişikliklere tepki vermek için kullanılabilir. Zamanlama oluşturmayı öğrendikten sonra, bunların nasıl alınacağını ve devre dışı bırakılacağı hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 

@@ -20,7 +20,7 @@ ms.locfileid: "76713180"
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>En son istemci kitaplıklarını indir (Windows Installer)  
 
-|İndirin  |Ürün sürümü  | 
+|İndirme  |Ürün sürümü  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |

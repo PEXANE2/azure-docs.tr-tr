@@ -31,7 +31,7 @@ Apache ambarı 'ndan şuna benzer hatalar alıyorsunuz:
 
 Etkilenen çalışan düğümlerde belirtilen ambarı uyarısından belirtilen dizinler yok.
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
 Etkilenen çalışan düğümleri üzerinde eksik dizinleri el ile oluşturun.
 

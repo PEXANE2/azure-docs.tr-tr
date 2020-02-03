@@ -22,7 +22,7 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 Ölçeklendirmeniz gerekip gerekmediğini belirlemenize yardımcı olması için aşağıdaki ölçümleri izleyebilirsiniz.
 
 * Redsıs sunucu yükü
-* Bellek kullanımı
+* Bellek Kullanımı
 * Ağ bant genişliği
 * CPU kullanımı
 
@@ -31,7 +31,7 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 ## <a name="scale-a-cache"></a>Bir önbelleği ölçeklendirme
 Önbelleğinizi ölçeklendirmek için [Azure Portal](https://portal.azure.com) [önbelleğe](cache-configure.md#configure-azure-cache-for-redis-settings) gidin ve **Kaynak menüsünden** **Ölçekle** ' ye tıklayın.
 
-![Ölçeklendirme](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Ölçek](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 **Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç**' e tıklayın.
 

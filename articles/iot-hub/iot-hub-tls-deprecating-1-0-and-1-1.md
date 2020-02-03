@@ -35,4 +35,4 @@ TLS el sıkışması sırasında yalnızca aşağıdaki şifrelemeleri kullanıl
 
 ## <a name="customer-feedback"></a>Müşteri geri bildirimi
 
-TLS 1.2 uygulaması, sektör genelinde en iyi sınıf şifreleme seçimi olarak planlanan şekilde etkinleştirilse de, müşterilerin kendi dağıtımlarıyla ilgili zorlukları ve TLS 1.2’yi benimseme zorluklarını öğrenmek istiyoruz. Bu amaçla, yorumlarınızı [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com)gönderebilirsiniz.
+TLS 1,2 zorlaması, sektör genelinde en iyi sınıf şifreleme seçiminden ve planlanan şekilde etkinleştirilebilse de, müşterilerin belirli dağıtımlarıyla ilgili ve TLS 1,2 benimseme zorluklarını öğrenmek istiyoruz. Bu amaçla, yorumlarınızı [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com)gönderebilirsiniz.

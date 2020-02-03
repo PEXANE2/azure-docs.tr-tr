@@ -80,11 +80,11 @@ IoT Hub istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapılandır
 
 | Dil | TLS 1,2 destekleniyor | Belgeler |
 |----------|-------------------|---------------|
-| C        | Evet               | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Evet               | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Evet               | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Evet               | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Evet               | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Yes               | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Yes               | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Yes               | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Yes               | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Yes               | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge kurulumunda TLS 1,2 kullanma

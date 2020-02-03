@@ -22,7 +22,7 @@ Bu öğreticide cihaz geliştiricisi olarak, _cihaz yeteneği modeli_oluşturmak
 
 Bu öğreticide, oluşturulan iskelet kodunun nasıl oluşturulacağını açıklayan bölüm, Windows kullandığınızı varsayar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Cihaz yetenek modeli oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Oluşturulan koddaki saplamaları uygulayın
 > * Bir IoT Hub ile etkileşimleri test etmek için kodu çalıştırın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide cihaz yetenek modeliyle çalışmak için şunlar gerekir:
 

@@ -30,7 +30,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 **Kaynak menüsünü**kullanarak aşağıdaki ayarları görüntüleyebilir ve yapılandırabilirsiniz.
 
-* [Genel bakış](#overview)
+* [Genel Bakış](#overview)
 * [Etkinlik Günlüğü](#activity-log)
 * [Erişim denetimi (ıAM)](#access-control-iam)
 * [Etiketler](#tags)
@@ -193,7 +193,7 @@ Her fiyatlandırma katmanı, istemci bağlantıları, bellek ve bant genişliği
 Önbelleğinizi yükseltmek için, fiyatlandırma katmanını değiştirmek ve önbelleğinizi [ölçeklendirmek](#scale) üzere **Şimdi Yükselt** ' e tıklayın. Fiyatlandırma Katmanı seçme hakkında daha fazla bilgi için bkz. [redne Için Azure önbelleğinin ve boyutun ne kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Ölçeklendirme
+### <a name="scale"></a>Ölçek
 Önbelleğiniz için fiyatlandırma katmanını görüntülemek veya değiştirmek için **Ölçeklendir** ' e tıklayın. Ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs Için Azure önbelleğini ölçeklendirme](cache-how-to-scale.md).
 
 ![Redsıs fiyatlandırma katmanı için Azure önbelleği](./media/cache-configure/pricing-tier.png)
@@ -213,7 +213,7 @@ Küme boyutunu değiştirmek için kaydırıcıyı kullanın veya parça **sayı
 >
 
 
-### <a name="redis-data-persistence"></a>Redis veri kalıcılığı
+### <a name="redis-data-persistence"></a>Redsıs veri kalıcılığı
 Premium önbelleğiniz için veri kalıcılığını etkinleştirmek, devre dışı bırakmak veya yapılandırmak için **veri kalıcılığı** ' ne tıklayın. Redsıs için Azure önbelleği, [RDB kalıcılığı](cache-how-to-premium-persistence.md#configure-rdb-persistence) veya [AOF kalıcılığı](cache-how-to-premium-persistence.md#configure-aof-persistence)kullanarak redsıs kalıcılığı sağlar.
 
 Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
@@ -258,13 +258,13 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 >
 >
 
-### <a name="firewall"></a>Güvenlik Duvarı
+### <a name="firewall"></a>Güvenlik duvarı
 
 Güvenlik duvarı kuralları yapılandırması, Redsıs katmanlarında tüm Azure önbelleği için kullanılabilir.
 
 Önbellek güvenlik duvarı kurallarını görüntülemek ve yapılandırmak için **güvenlik duvarı** ' na tıklayın.
 
-![Güvenlik Duvarı](./media/cache-configure/redis-firewall-rules.png)
+![Güvenlik duvarı](./media/cache-configure/redis-firewall-rules.png)
 
 Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları belirtebilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Bir güvenlik duvarı kuralı kaydedildiğinde, kural yürürlüğe girmeden önce kısa bir gecikme olur. Bu gecikme genellikle bir dakikadan azdır.
 

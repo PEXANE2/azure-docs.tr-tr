@@ -22,9 +22,9 @@ ms.locfileid: "76720495"
 
 Bu makalede, hedeflerinizi, görevleri ve teslim edilebilirler ile Team Data Science işlem (TDSP) dağıtımı ilişkili özetlenmektedir. Bu işlem, veri bilimi projelerinizi yapısı için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
 
-   1. **İşin gereksinimlerini anlama**
-   2. **Veri edinme ve anlama**
-   3. **Modelleme**
+   1. **İş anlama**
+   2. **Veri alma ve anlama**
+   3. **Oluşturmanın**
    4. **Dağıtım**
    5. **Müşteri kabulü**
 
@@ -39,7 +39,7 @@ Bir üretim ya da üretim ortamına benzer son kullanıcı onay için bir işlem
 ## <a name="how-to-do-it"></a>Nasıl yapılır
 Bu aşamada ele ana görev:
 
-**Modeli hazır hale getirmek**: üretim ya da üretim ortamına benzer uygulama tüketim için model ve işlem hattı dağıtın.
+**Modeli**çalıştırın: model ve işlem hattını, uygulama tüketimi için bir üretime veya üretime benzer bir ortama dağıtın.
 
 ### <a name="operationalize-a-model"></a>Bir modeli kullanıma hazır hale getirme
 Bir dizi iyi gerçekleştirilip modelleri oluşturduktan sonra bunları kullanmak, diğer uygulamalar için çalışır hale getirebilirsiniz. İş gereksinimlerine bağlı olarak, Öngörüler, gerçek zamanlı olarak veya toplu olarak yapılır. Modelleri dağıtmak için bunları açık bir API arabirimi ile kullanıma gerekir. Arabirim modelinin çeşitli uygulamalardan gibi kolayca kullanılabilmesini sağlar:
@@ -50,9 +50,9 @@ Bir dizi iyi gerçekleştirilip modelleri oluşturduktan sonra bunları kullanma
    * Satır iş kolu uygulamaları 
    * Arka uç uygulamaları 
 
-Modeli kullanıma hazır hale getirme ile bir Azure Machine Learning web hizmeti örnekleri için bkz: [bir Azure Machine Learning web hizmetini dağıtma](../studio/deploy-a-machine-learning-web-service.md). Telemetri ve üretim modeli ve dağıttığınız veri işlem hattını izleme oluşturmak için en iyi bir uygulamadır. Bu yöntem, raporlama ve sorun giderme sonraki sistem durumu ile yardımcı olur.  
+Azure Machine Learning Web hizmeti ile model işlemleştirme örnekleri için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md). Telemetri ve üretim modeli ve dağıttığınız veri işlem hattını izleme oluşturmak için en iyi bir uygulamadır. Bu yöntem, raporlama ve sorun giderme sonraki sistem durumu ile yardımcı olur.  
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>Yapıtlar
 
 * Sistem durumunu ve anahtar ölçümlerin gösteren bir durum Panosu
 * Dağıtım ayrıntıları son modelleme raporla
@@ -63,12 +63,12 @@ Modeli kullanıma hazır hale getirme ile bir Azure Machine Learning web hizmeti
 
 TDSP yaşam döngüsü içinde her adım için bağlantılar şunlardır:
 
-   1. [İşin gereksinimlerini anlama](lifecycle-business-understanding.md)
-   2. [Veri edinme ve anlama](lifecycle-data.md)
-   3. [Modelleme](lifecycle-modeling.md)
+   1. [İş anlama](lifecycle-business-understanding.md)
+   2. [Veri alma ve anlama](lifecycle-data.md)
+   3. [Oluşturmanın](lifecycle-modeling.md)
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek izlenecek yollar](walkthroughs.md) makale bağlantıları ve küçük resim açıklamaları senaryolarıyla bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
 
-Adımlar Azure Machine Learning Studio'nun TDSPs yürütmek nasıl bir örnekleri için bkz: [Azure Machine Learning ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

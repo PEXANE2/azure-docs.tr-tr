@@ -267,10 +267,10 @@ Akış işlev günlüklerine varsayılan izleme düzeyinde yazmanızı sağlar. 
 
 | Yöntem                 | Açıklama                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Hata düzeyi günlüğe kaydetme veya alçaltmak için yazar.   |
-| **warn(_message_)**    | Uyarı düzeyinde günlüğe kaydetmeye veya daha düşük bir şekilde yazar. |
-| **info(_message_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
-| **verbose(_message_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
+| **hata (_ileti_)**   | Hata düzeyi günlüğe kaydetme veya alçaltmak için yazar.   |
+| **uyar (_ileti_)**    | Uyarı düzeyinde günlüğe kaydetmeye veya daha düşük bir şekilde yazar. |
+| **bilgi (_ileti_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
+| **ayrıntılı (_ileti_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
 
 Aşağıdaki örnek, uyarı izleme düzeyinde bir günlük Yazar:
 
@@ -344,12 +344,12 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 | Özellik      | Açıklama                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | İsteğin gövdesini içeren bir nesne.               |
-| _headers_     | İstek üst bilgilerini içeren bir nesne.                   |
-| _method_      | İsteğin HTTP yöntemi.                                |
+| _bölümü_        | İsteğin gövdesini içeren bir nesne.               |
+| _bilgisinde_     | İstek üst bilgilerini içeren bir nesne.                   |
+| _yöntemidir_      | İsteğin HTTP yöntemi.                                |
 | _originalUrl 'Si_ | İsteğin URL'si.                                        |
 | _parametrelerin_      | İsteğin yönlendirme parametrelerini içeren nesne. |
-| _query_       | Sorgu parametrelerini içeren bir nesne.                  |
+| _sorgulayamadı_       | Sorgu parametrelerini içeren bir nesne.                  |
 | _rawBody_     | İleti gövdesi dize olarak.                           |
 
 
@@ -359,10 +359,10 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 | Özellik  | Açıklama                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Yanıtın gövdesini içeren bir nesne.         |
-| _headers_ | Yanıt üst bilgilerini içeren bir nesne.             |
+| _bölümü_    | Yanıtın gövdesini içeren bir nesne.         |
+| _bilgisinde_ | Yanıt üst bilgilerini içeren bir nesne.             |
 | _isRaw_   | Yanıt için biçimlendirmenin atlandığını gösterir.    |
-| _status_  | Yanıtın HTTP durum kodu.                     |
+| _durumlarına_  | Yanıtın HTTP durum kodu.                     |
 
 ### <a name="accessing-the-request-and-response"></a>İstek ve yanıta erişme 
 

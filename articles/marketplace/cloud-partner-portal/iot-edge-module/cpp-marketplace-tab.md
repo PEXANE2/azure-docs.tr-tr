@@ -34,7 +34,7 @@ Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerek
 | **Özet\***               | Teklifin kısa özeti. En fazla 100 karakter uzunluğunda. <!--ADD PICTURE IN ACTION-->|
 | **Uzun Özet\***          | Teklifin daha uzun Özeti (ancak **Özet**ile aynı olabilir).  En fazla 256 karakter uzunluğunda. <!--ADD PICTURE IN ACTION-->|
 | **Açıklama\***           | Teklifin açıklaması.  En fazla 3000 karakter uzunluğunda basit HTML biçimlendirmesini destekler.<br/> En *düşük donanım gereksinimleri* paragrafı en alta içermelidir. Örneğin: <br/> <p><u>En düşük donanım gereksinimleri:</u> Linux x64 ve ARM32 OS, 1 GB RAM, 500 MB depolama alanı</p>
-| **Pazarlama tanımlayıcısı\***  | Bu teklifle ilişkilendirilecek benzersiz bir URL, genellikle kuruluşunuzun ve çözüm adı, maksimum uzunluk 50 karakter içerir.  Örneğin: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Pazarlama tanımlayıcısı\***  | Bu teklifle ilişkilendirilecek benzersiz bir URL, genellikle kuruluşunuzun ve çözüm adı, maksimum uzunluk 50 karakter içerir.  Örnek: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Abonelik kimliklerini Önizle** | Ön görüntüleyicilerin 100 abonelik tanımlayıcılarına bir tane ekleyin. Bu beyaz listeye alınan abonelikler, yayımlandıktan sonra, yayımlanmaya başladıktan sonra teklif erişimine sahip olur. |
 | **Faydalı bağlantılar**          | Teklifi olan çok seçimli iş ve teknik Kategoriler, ile en iyi şekilde ilişkilendirilebilir.  En fazla 10 izin verilir. Belgelerinize en az bir bağlantı ve [Azure IoT cihaz kataloğundan](https://catalog.azureiotsolutions.com/)uyumlu IoT Edge cihazlara bir bağlantı eklediğinizden emin olun. |
 | **Önerilen Kategoriler\*** | En fazla beş kategori seçin. Bunlar ürün ayrıntıları sayfasında gösterilir. Tarayıcı sayfalarında, tüm IoT Edge modülleri *Nesnelerin İnterneti \> IoT Edge modül* kategorisi altında gösterilir.|
@@ -159,7 +159,7 @@ Teklifinizi başarıyla yayımladıktan sonra, müşteri adayı bağlantısı do
 4. amp.com the tile -->
 
 
-## <a name="legal"></a>Yasal Bilgiler
+## <a name="legal"></a>Yasal
 
 Bu bölüm, her teklif için gereken iki yasal belgeyi sağlamanıza olanak sağlar: Gizlilik Ilkesi ve kullanım koşulları.
 

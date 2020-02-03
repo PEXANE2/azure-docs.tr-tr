@@ -25,7 +25,7 @@ Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağı
 
 Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede, Metin Tanıma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir:
 
@@ -172,13 +172,13 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>Metin Tanıma kapsayıcısını test etme
 
-Konak makinede bir tarayıcı açın ve http://localhost:5021/swagger/index.html gibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Metin Tanıma uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
+Konak makinede bir tarayıcı açın ve http://localhost:5021/swagger/index.htmlgibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Metin Tanıma uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
 
 ![Metin Tanıma kapsayıcı](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>Form tanıyıcı kapsayıcısını test etme
 
-Konak makinede bir tarayıcı açın ve http://localhost:5010/swagger/index.html gibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Form tanıyıcı uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
+Konak makinede bir tarayıcı açın ve http://localhost:5010/swagger/index.htmlgibi Docker-Compose. YAML dosyasından belirtilen bağlantı noktasını kullanarak **localhost** 'a gidin. Form tanıyıcı uç noktasını test etmek için API 'de "dene" özelliğini kullanabilirsiniz.
 
 ![Form tanıyıcı kapsayıcısı](media/form-recognizer-swagger-page.png)
 

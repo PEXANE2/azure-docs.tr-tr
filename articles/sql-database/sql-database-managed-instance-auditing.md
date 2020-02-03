@@ -130,7 +130,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
      1. Seçim Azure hesabınızda oturum açın:
 
-        ![Azure'da oturum açın](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Azure'da oturum açma](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
      1. Açılır listeden bir abonelik, depolama hesabı ve BLOB kapsayıcısı seçin ya da **Oluştur**' a tıklayarak kendi kapsayıcınızı oluşturun. İşiniz bittiğinde **Tamam**' a tıklayın:
 
@@ -171,7 +171,7 @@ Yönetilen bir örnekten gelen denetim günlükleri, hatta hub 'Lara veya Azure 
 
 5. Denetim olayları için bir hedef seçin-Olay Hub 'ı, Azure Izleyici günlükleri veya her ikisi. Her bir hedef için yapılandırma gereken parametreleri (ör. Log Analytics çalışma alanı).
 
-6. **Save (Kaydet)** düğmesine tıklayın.
+6. **Kaydet** düğmesine tıklayın.
 
     ![Tanılama ayarlarını yapılandırma](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

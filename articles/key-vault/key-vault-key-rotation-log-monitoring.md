@@ -18,7 +18,7 @@ ms.locfileid: "76720121"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Anahtar döndürme ve denetimle Azure Key Vault ayarlama
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Anahtar kasasından sonra anahtarları ve gizli dizileri depolamak için kullanmaya başlayabilirsiniz. Uygulamalarınızın artık anahtarlarınızı veya gizli dizileri kalıcı hale getirmek zorunda kalmaz, ancak gerektiğinde bunları kasadan talep edebilir. Anahtar Kasası, uygulamanızın davranışını etkilemeden anahtarları ve gizli dizileri güncelleştirmenize olanak tanır. Bu, anahtar ve gizli yönetibilmeniz için bir dizi olasılıktan oluşur.
 
@@ -36,7 +36,7 @@ Bu makalede izlenecek yol:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="set-up-key-vault"></a>Key Vault ayarlama
+## <a name="set-up-key-vault"></a>Anahtar Kasası ayarlama
 
 Bir uygulamanın Key Vault bir gizli dizi almasına izin vermek için, öncelikle gizli anahtarı oluşturmanız ve bunu kasanıza yüklemeniz gerekir.
 

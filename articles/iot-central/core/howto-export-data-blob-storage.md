@@ -27,7 +27,7 @@ Bu makalede, Azure **BLOB depolama hesabınıza** veya **Azure Data Lake Storage
 > Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - IoT Central uygulamanızda yönetici olmanız gerekir
 

@@ -345,7 +345,7 @@ Komutu sanal ağ dışından veya eşlenmiş olmayan bir sanal ağdan çağırı
 > [!NOTE]
 > Kıvrımlı bir parola ister. Küme oturum açma Kullanıcı adı için geçerli bir parola girmeniz gerekir.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>HDInsight kümesini dağıtma maliyeti ne kadar sürer?
 

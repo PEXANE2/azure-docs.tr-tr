@@ -118,7 +118,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz varsa, Özel Betik uzantısı başarısız olur ve doğrudan sistem diski aracılığıyla çalışarak ÇEVRIMDıŞı modda çalışmanız gerekir. Bunu yapmak için şu adımları uygulayın:
 
-1.  [Bir kurtarma VM'si sistem diski](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Sistem diskini bir kurtarma VM 'Sine bağlayın](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın.
 
@@ -160,6 +160,6 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [VM yeniden oluşturma ve sistem diskini](troubleshoot-recovery-disks-portal-windows.md).
+10. [Sistem diskini ayırın ve VM 'yi yeniden oluşturun](troubleshoot-recovery-disks-portal-windows.md).
 
 11. Sorunun çözülüp çözülmediğini denetleyin.

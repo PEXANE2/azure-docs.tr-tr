@@ -22,23 +22,23 @@ ms.locfileid: "76722178"
 
 Bu makalede bir HDInsight Hadoop kümesindeki Hive tablolarındaki verileri araştırmak için kullanılan örnek Hive betiklerini sağlar.
 
-Bu görev bir adımdır [Team Data Science Process](overview.md).
+Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, olduğunu varsayar:
 
-* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz [bir Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
-* HDInsight hizmeti ile özelleştirilmiş bir Hadoop kümesi hazırlandı. Yönergelere ihtiyacınız varsa bkz [Gelişmiş analiz için Azure HDInsight Hadoop kümelerini özelleştirin](customize-hadoop-cluster.md).
-* Azure HDInsight Hadoop kümeleri Hive tablolarında için verileri karşıya yüklendi. Sahip değil,'ndaki yönergeleri izleyin. [Hive tabloları oluşturma ve yük verileri](move-hive-tables.md) Hive tablolarına veri önce yüklenecek.
-* Kümeye uzaktan erişim etkin. Yönergelere ihtiyacınız varsa bkz [Hadoop küme baş düğümüne erişmek](customize-hadoop-cluster.md).
-* Hive sorguları göndermek yönergeler gerekiyorsa bkz [nasıl Hive sorguları göndermek için](move-hive-tables.md#submit)
+* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
+* HDInsight hizmeti ile özelleştirilmiş bir Hadoop kümesi hazırlandı. Yönergelere ihtiyacınız varsa bkz. [Gelişmiş analiz için Azure HDInsight Hadoop kümelerini özelleştirme](customize-hadoop-cluster.md).
+* Azure HDInsight Hadoop kümeleri Hive tablolarında için verileri karşıya yüklendi. Bu yoksa, önce verileri Hive tablolarına yüklemek üzere [Hive tablolarına veri oluşturma ve yükleme](move-hive-tables.md) konusundaki yönergeleri izleyin.
+* Kümeye uzaktan erişim etkin. Yönergelere ihtiyacınız varsa bkz. [Hadoop kümesinin baş düğümüne erişme](customize-hadoop-cluster.md).
+* Hive sorgularının nasıl gönderileceği hakkında yönergeler gerekiyorsa bkz. [Hive sorguları gönderme](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Veri keşfi için örnek Hive sorgu betikleri
-1. Bölüm başına gözlemler sayısını alın  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Gün başına gözlemler sayısını alın  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Bölüm başına gözlemlerin sayısını Al `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Gün başına gözlemlerin sayısını Al `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. Kategorik bir sütundaki düzeylerini Al  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Kategorik iki sütunu birlikte düzey sayısını Al  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. İki kategorik sütunun birleşimi içindeki düzeylerin sayısını Al `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. Sayısal sütunlara dağıtımı Al  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. İki tablo katılmasını kayıtları Ayıkla
@@ -69,5 +69,5 @@ Bu makalede, olduğunu varsayar:
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Taksi seyahat veri senaryoları için ek sorgu betikleri
-Özel sorgular örnekleri [NYC taksi seyahat verilerini](https://chriswhong.com/open-data/foil_nyc_taxi/) senaryoları burada da sunulmaktadır [GitHub deposu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Bu sorgular zaten belirtilen veri şemasına sahip ve çalıştırmak için gönderilmeye hazır.
+[NYC TAXI seyahat veri](https://chriswhong.com/open-data/foil_nyc_taxi/) senaryolarına özgü sorgu örnekleri de [GitHub deposunda](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)sunulmaktadır. Bu sorgular zaten belirtilen veri şemasına sahip ve çalıştırmak için gönderilmeye hazır.
 

@@ -28,10 +28,10 @@ Bu makalede TDSP ve ana bileşenlerini genel bir bakış sağlar. Burada, farkl�
 
 TDSP anahtar aşağıdaki bileşenlerden oluşur:
 
-- A **veri bilimi yaşam döngüsünü** tanımı
-- A **standartlaştırılmış Proje yapısı**
-- **Altyapı ve kaynakları** için veri bilimi projeleri
-- **Araçlar ve yardımcı programlar** proje yürütme
+- **Veri bilimi yaşam döngüsü** tanımı
+- **Standartlaştırılmış bir proje yapısı**
+- Veri bilimi projeleri için **altyapı ve kaynaklar**
+- Proje yürütmesi için **Araçlar ve yardımcı programlar**
 
 
 ## <a name="data-science-lifecycle"></a>Veri bilimi yaşam döngüsü
@@ -44,21 +44,21 @@ Bu yaşam döngüsünü, akıllı uygulamalar bir parçası olarak gönderilen v
 
 Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
 
-* **İşin gereksinimlerini anlama**
-* **Veri edinme ve anlama**
-* **Modelleme**
+* **İş anlama**
+* **Veri alma ve anlama**
+* **Oluşturmanın**
 * **Dağıtım**
 * **Müşteri kabulü**
 
-Görsel bir temsilini işte **Team Data Science Process yaşam döngüsü**. 
+**Team Data Science işlem yaşam döngüsünün**görsel bir gösterimi aşağıda verilmiştir. 
 
 ![TDSP Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
 
-Hedefleri, görevleri ve belgeleri yapıtlar TDSP çevriminin her aşaması için açıklanan [Team Data Science Process yaşam döngüsü](lifecycle.md) konu. Bu görevler ve yapıtları proje rolleri ile ilişkilendirilmiş:
+TDSP yaşam döngüsünün her aşamasına yönelik hedefler, görevler ve belge yapıtları, [Team Data Science işlem yaşam döngüsü](lifecycle.md) konusunda açıklanmaktadır. Bu görevler ve yapıtları proje rolleri ile ilişkilendirilmiş:
 
 - Çözüm Mimarı
 - Proje Yöneticisi
-- Veri uzmanı
+- Veri bilimcisi
 - Proje lideri 
 
 Aşağıdaki diyagramda görevlerinde (mavi) ve bu rolleri (dikey eksende) için yaşam döngüsü (yatay eksende) her aşaması ilişkili yapıları (yeşil içinde) bir kılavuz görünümünü sağlar. 
@@ -69,7 +69,7 @@ Aşağıdaki diyagramda görevlerinde (mavi) ve bu rolleri (dikey eksende) için
 
 Bir dizin yapısına paylaşın ve proje belgelerini şablonlarını kullanma tüm projeleri sahip, onların projeleri hakkında bilgi, takım üyeleri için kolaylaştırır. Tüm kod ve belgelere işbirliğini etkinleştirmek için Git, TFS veya Subversion gibi bir sürüm denetim sistemi (VC) depolanır. İzleme görevleri ve izleme sistemi Jıra, yarışı ve Azure DevOps gibi bir Çevik proje özelliklerinde, tek tek özellikler için kodun yakın izleme sağlar. Bu tür izleme de daha iyi maliyet tahminlerini almak takımların imkan tanır. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC'ler her proje için ayrı bir depo oluşturmanızı önerir. Tüm projeler için standartlaştırılmış yapısı kuruluş genelinde kurumsal bilgi yapı yardımcı olur.
 
-Klasör yapısını ve standart olmayan konumlara gerekli belgeleri için şablonlar sağlar. Veri keşfi ve özellik ayıklama kodunu içeren ve bu modeli yinelemeler kayıt dosyaları bu klasör yapısını düzenler. Bu şablonlar, başkaları tarafından yapılan iş anlamak ve takıma yeni üyeler eklemek için takım üyeleri için kolaylaştırır. Belge şablonları markdown biçiminde görebilecek ve kolay bir işlemdir. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneğin:
+Klasör yapısını ve standart olmayan konumlara gerekli belgeleri için şablonlar sağlar. Veri keşfi ve özellik ayıklama kodunu içeren ve bu modeli yinelemeler kayıt dosyaları bu klasör yapısını düzenler. Bu şablonlar, başkaları tarafından yapılan iş anlamak ve takıma yeni üyeler eklemek için takım üyeleri için kolaylaştırır. Belge şablonları markdown biçiminde görebilecek ve kolay bir işlemdir. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneklere şunlar dahildir:
 
 - projenin kapsamını ve iş sorununu belge için bir proje kurucu
 - Belge yapısı ve istatistikleri ham verilerin veri raporlarını
@@ -104,4 +104,4 @@ Birden fazla proje üzerinde çalışma ve çeşitli bulut analiz altyapısı bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Team Data Science Process: Roller ve görevler](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) anahtar personel rolleri ve ilişkilendirilen görevlerinin standartlaştırır bu işlemde bir veri bilimi takım için özetler. 
+[Ekip veri bilimi işlemi: roller ve görevler](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Bu işlemi standartlaştırın bir veri bilimi ekibi için anahtar personeli rollerini ve bunlarla ilişkili görevleri özetler. 

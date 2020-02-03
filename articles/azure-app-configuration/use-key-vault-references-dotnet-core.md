@@ -35,13 +35,13 @@ Bu öğretici kodunuzda Key Vault başvuruların nasıl uygulanacağını göste
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. Örneğin, [Visual Studio Code](https://code.visualstudio.com/) Windows, MacOS ve Linux işletim sistemleri için kullanılabilen platformlar arası bir kod düzenleyicisidir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun.
 > * Bu anahtarın değerine bir ASP.NET Core Web uygulamasından erişin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce [.NET Core SDK](https://dotnet.microsoft.com/download)yükleyebilirsiniz.
 
@@ -82,7 +82,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin.
 

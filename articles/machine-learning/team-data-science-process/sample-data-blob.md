@@ -18,14 +18,14 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720291"
 ---
-# <a name="heading"></a>Örnek verileri Azure blob depolama
+# <a name="heading"></a>Azure Blob depolamada örnek veriler
 
 Bu makale, örnekleme verileri program aracılığıyla indiriliyor ve Python'da yazılan yordamları kullanarak örnekleme tarafından Azure blob depolamada depolanan kapsar.
 
-**Neden verilerinizi örnek?**
+**Verileriniz neden örnekleyebilirsiniz?**
 Veri kümesini analiz etmek için planlama büyükse, genellikle aşağı örnek veriler için daha küçük ancak temsilcisi ve daha kolay yönetilebilir bir boyutunu azaltmak için iyi bir fikir olduğunu. Örnekleme, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırır. Kendi Cortana Analytics süreci rolünde hızlı prototip oluşturma veri işleme işlevleri ve makine öğrenimi modellerini etkinleştirmektir.
 
-Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
 
 ## <a name="download-and-down-sample-data"></a>İndirme ve aşağı örnek veriler
 1. Aşağıdaki örnek Python kodundan blob hizmetini kullanarak Azure Blob depolama 'dan verileri indirin: 
@@ -53,7 +53,7 @@ Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://do
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Aşağı örnek verileri kullanarak `numpy`'s `random.choice` gibi:
+3. Aşağıdaki gibi `numpy``random.choice` kullanarak verileri aşağı doğru örnekleyin:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -63,7 +63,7 @@ Bir adımda bu örnekleme görevdir [Team Data Science işlem (TDSP)](https://do
 
 Artık, daha fazla keşif ve özellik oluşturma için yukarıdaki veri çerçevesiyle birlikte bir yüzde örneği ile çalışabilirsiniz.
 
-## <a name="heading"></a>Karşıya yüklemek ve Azure Machine Learning içine okuyun
+## <a name="heading"></a>Verileri karşıya yükleme ve Azure Machine Learning okuma
 Aşağıdaki örnek kod, aşağı örnek veriler ve doğrudan Azure Machine Learning'de kullanmak üzere kullanabilirsiniz:
 
 1. Veri çerçevesinin yerel bir dosyaya yazma
@@ -92,7 +92,7 @@ Aşağıdaki örnek kod, aşağı örnek veriler ve doğrudan Azure Machine Lear
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. Azure Machine Learning kullanarak Azure blobundan verileri okumak [verileri içeri aktarma](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) aşağıdaki resimde gösterildiği gibi:
+3. Aşağıdaki görüntüde gösterildiği gibi [verileri içeri](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) Azure Machine Learning kullanarak Azure Blob 'dan verileri okuyun:
 
 ![Okuyucu blob](./media/sample-data-blob/reader_blob.png)
 

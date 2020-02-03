@@ -203,11 +203,11 @@ Aşağıdaki tablo, bir iş için olası farklı durumlarını tanımlar. PowerS
 | Başarısız |[Grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md)için Runbook derlenemedi. [PowerShell betiği runbook 'ları](automation-runbook-types.md)için Runbook başlatılamadı veya iş bir özel duruma sahipti. |
 | Başarısız, kaynak bekleniyor |İş başarısız oldu çünkü bu, [dengeli](#fair-share) bir şekilde, her seferinde ve aynı denetim noktasından ya da runbook 'un başlangıcından her seferinde başlatılmış |
 | Kuyruğa alındı |İş, başlatılabilmek için Otomasyon çalışanındaki kaynakları bekliyor. |
-| Başlangıç |İş bir çalışana atandı ve sistem tarafından başlatılıyor. |
+| Başlatılıyor |İş bir çalışana atandı ve sistem tarafından başlatılıyor. |
 | Sürdürülüyor |Sistem askıya alındıktan sonra işi sürdürüyor. |
 | Çalışıyor |İş çalışıyor. |
 | Çalışıyor, kaynakları bekliyor |İş, [dengeli bir paylaşımın](#fair-share) sınırına ulaştığından kaldırıldı. Kısa süre içinde son denetim noktasından devam eder. |
-| Durdurulan |İş tamamlanmadan kullanıcı tarafından durduruldu. |
+| Durduruldu |İş tamamlanmadan kullanıcı tarafından durduruldu. |
 | Durduruluyor |Sistem işi durduruyor. |
 | Askıya alındı |İş; kullanıcı, sistem veya runbook'taki bir komut tarafından askıya alındı. Bir runbook 'ta bir denetim noktası yoksa, runbook 'un başından başlatılır. Bir denetim noktası varsa, yeniden başlayabilir ve son denetim noktasından sürdürebilirsiniz. Runbook yalnızca bir özel durum oluştuğunda sistem tarafından askıya alınır. Varsayılan olarak, ErrorActionPreference devam olarak ayarlanır, yani iş bir hata üzerinde çalışmaya devam **eder**. Bu tercih değişkeni **Durdur**olarak ayarlandıysa, iş bir hata üzerinde askıya alınır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |
 | Askıya alınıyor |Sistem, kullanıcının isteği sırasında işi askıya almaya çalışıyor. Runbook, askıya alınmadan önce bir sonraki denetim noktasına ulaşmalıdır. Son denetim noktasını zaten geçirtiyse, askıya alınmadan önce tamamlanır. Yalnızca [grafik ve PowerShell Iş akışı runbook 'ları](automation-runbook-types.md) için geçerlidir. |

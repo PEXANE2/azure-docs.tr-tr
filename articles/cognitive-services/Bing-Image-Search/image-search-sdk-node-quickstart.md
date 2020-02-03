@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: resim arama-Node. js için Bing Resim Arama SDK'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Görüntü Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit Node.js uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
+description: Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit Node.js uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -20,11 +20,11 @@ ms.locfileid: "76716196"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Hızlı Başlangıç: Node.js için Bing Görüntü Arama SDK'sı ile görüntü arama
 
-Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Görüntü Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit JavaScript uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
+Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit JavaScript uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
 
 Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js)'da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js için Bilişsel Hizmetler Görüntü Arama SDK'sı](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
     * `npm install @azure/cognitiveservices-imagesearch` kullanarak yükleme
@@ -43,7 +43,7 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     ```
 
-2. Projenizin main yönteminde geçerli abonelik anahtarınız, Bing tarafından döndürülecek görüntü sonuçları ve bir arama terimi için değişkenler oluşturun. Ardından anahtarı kullanarak görüntü arama istemcisinin örneğini oluşturun.
+2. Projenizin main yönteminde geçerli abonelik anahtarınız, Bing tarafından döndürülecek görüntü sonuçları ve bir arama terimi için değişkenler oluşturun. Ardından anahtarı kullanılarak görüntü arama istemcisinin bir örneğini oluşturun.
 
     ```javascript
     //replace this value with your valid subscription key.

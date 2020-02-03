@@ -18,7 +18,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718489"
 ---
-# <a name="heading"></a>Azure'da SQL Server sanal makinesi verilerini işleme
+# <a name="heading"></a>Azure 'da SQL Server sanal makinesindeki verileri işleme
 Bu belge verileri araştırmak ve bir SQL Server VM'si, azure'da depolanan verilerin özelliklerini oluşturma konusunu kapsar. Bu hedef, SQL kullanılarak veya Python gibi bir programlama dili kullanılarak veri denetimi tarafından tamamlanabilir.
 
 > [!NOTE]
@@ -29,14 +29,14 @@ Bu belge verileri araştırmak ve bir SQL Server VM'si, azure'da depolanan veril
 ## <a name="SQL"></a>SQL kullanma
 Biz, SQL kullanarak bu bölümdeki aşağıdaki veri wrangling görevler açıklanmıştır:
 
-1. [Veri keşfi](#sql-dataexploration)
+1. [Veri araştırması](#sql-dataexploration)
 2. [Özellik oluşturma](#sql-featuregen)
 
-### <a name="sql-dataexploration"></a>Veri keşfi
+### <a name="sql-dataexploration"></a>Veri araştırması
 SQL Server veri depolarında keşfetmek için kullanılan SQL betiklerini birkaç örnek aşağıda verilmiştir.
 
 > [!NOTE]
-> Pratik bir örnek için kullandığınız [NYC taksi dataset](https://www.andresmh.com/nyctaxitrips/) ve başlıklı IPNB [Ipython Notebook ve SQL Server'ı kullanarak NYC veri denetimi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) uçtan uca bir kılavuz için.
+> Pratik bir örnek için, [NYC TAXI veri kümesini](https://www.andresmh.com/nyctaxitrips/) kullanabilir ve [IPython Not defteri 'ni kullanarak ıpnb başlıklı NYC veri denetimi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) öğesine başvurabilirsiniz ve bir uçtan uca izlenecek yol SQL Server.
 > 
 > 
 
@@ -56,16 +56,16 @@ SQL Server veri depolarında keşfetmek için kullanılan SQL betiklerini birka�
 ### <a name="sql-featuregen"></a>Özellik oluşturma
 Bu bölümde, biz özellikleri SQL kullanarak oluşturma yolları açıklanmaktadır:  
 
-1. [Özellik nesil sayısı tabanlı](#sql-countfeature)
-2. [Gruplama özellik oluşturma](#sql-binningfeature)
-3. [Tek bir sütundan özellikleri alınıyor](#sql-featurerollout)
+1. [Sayı tabanlı özellik oluşturma](#sql-countfeature)
+2. [Özellik oluşturmayı atma](#sql-binningfeature)
+3. [Tek bir sütundan özellikler kullanıma alınıyor](#sql-featurerollout)
 
 > [!NOTE]
 > Ek özellikler oluşturduktan sonra bunları mevcut tabloya sütun olarak ekleyin veya özgün tabloyla birleştirilen birincil anahtar ve ek özellikler ile yeni bir tablo oluşturabilirsiniz. 
 > 
 > 
 
-### <a name="sql-countfeature"></a>Özellik nesil sayısı tabanlı
+### <a name="sql-countfeature"></a>Sayı tabanlı özellik oluşturma
 Aşağıdaki örnekler sayısı özellikleri oluşturmanın iki yolu gösterir. İlk yöntem koşullu toplamı ve ikinci yöntem 'where' yan tümcesi kullanır. Bu sonuçlar, özgün verilerle birlikte Count özelliklerinin olması için özgün tabloyla (birincil anahtar sütunları kullanılarak) eklenebilir.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -73,16 +73,16 @@ Aşağıdaki örnekler sayısı özellikleri oluşturmanın iki yolu gösterir. 
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>Gruplama özellik oluşturma
+### <a name="sql-binningfeature"></a>Özellik oluşturmayı atma
 Aşağıdaki örnek, bunun yerine bir özelliği olarak kullanılabilir bir sayısal sütun göre gruplama (beş depo kullanarak) binned özellikleri oluşturma adımları anlatılmaktadır:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Tek bir sütundan özellikleri alınıyor
+### <a name="sql-featurerollout"></a>Tek bir sütundan özellikler kullanıma alınıyor
 Bu bölümde ek özellikler oluşturmak için bir tablodaki tek bir sütun kullanıma sunma gösterilmektedir. Örnek özellikleri oluşturmak çalıştığınız tablosunda bir enlem veya boylam sütunu olduğunu varsayar.
 
-Enlem/boylam konumu veri kısa öncü İşte (stackoverflow kaynak var [enlem ve boylam doğruluğunu ölçmek nasıl?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Bu kılavuz, konumu bir veya daha fazla özellik olarak dahil etmeden önce anlaşılması yararlı olur:
+Latitude/Boylam konum verilerine ilişkin kısa bir açıklama aşağıda verilmiştir. StackOverflow, [Latitude ve Boylam 'in doğruluğunu nasıl ölçecek?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Bu kılavuz, konumu bir veya daha fazla özellik olarak dahil etmeden önce anlaşılması yararlı olur:
 
 * Oturum bize biz Kuzey olup veya Güney, Doğu veya Batı dünyayı gösterir.
 * Sıfır olmayan bir yüz basamağın yuvarlanacağını belirtir bize boylam, enlem değil kullandığımız!
@@ -111,17 +111,17 @@ Konum bilgileri özellikleri tespit gibi bölge, konum ve Şehir bilgilerini ayr
 Bu konum tabanlı özellikleri, daha fazla ek sayısı özellikleri daha önce açıklandığı gibi oluşturmak için kullanılabilir. 
 
 > [!TIP]
-> İstediğiniz dilde kullanarak kayıtları program aracılığıyla ekleyebilirsiniz. Veri yazma verimliliğini artırmak için öbekler halinde eklemek gerekebilir (pyodbc kullanarak bunu ilişkin bir örnek için bkz: [SQLServer python ile erişmek için bir HelloWorld örnek](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Veritabanını kullanarak veri eklemek için başka bir alternatiftir [BCP yardımcı programının](https://msdn.microsoft.com/library/ms162802.aspx).
+> İstediğiniz dilde kullanarak kayıtları program aracılığıyla ekleyebilirsiniz. Yazma verimliliğini artırmak için verileri parçalara eklemeniz gerekebilir (pyodbc kullanarak bunun nasıl yapılacağı hakkında bir örnek için bkz. [Python Ile SqlServer 'e erişmek Için HelloWorld örneği](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Diğer bir seçenek de [bcp yardımcı programını](https://msdn.microsoft.com/library/ms162802.aspx)kullanarak veritabanına veri eklemedir.
 > 
 > 
 
-### <a name="sql-aml"></a>Azure Machine Learning ile bağlanma
+### <a name="sql-aml"></a>Azure Machine Learning bağlanılıyor
 Yeni oluşturulan özellik bir sütun olarak var olan bir tabloya eklenebilir veya yeni bir tablo içinde saklanan ve machine learning için özgün tablo ile birleştirilmiş. Aşağıda gösterildiği gibi, Azure Machine Learning [veri Içeri aktarma][import-data] modülü kullanılarak önceden oluşturulmuş veya erişilebilir olan özellikler kullanılabilir:
 
 ![azureml okuyucular][1] 
 
 ## <a name="python"></a>Python gibi bir programlama dilini kullanma
-Verileri araştırmak ve verileri SQL Server olduğunda özellikler oluşturmak için Python'ı kullanarak benzer açıklandığı gibi Python kullanarak Azure blob veri işlemeye [işlem Azure Blob veri, veri bilimi ortamınızdaki](data-blob.md). Daha fazla işleme için veritabanından verileri bir Pandas veri çerçevesine yükleyin. Biz veritabanına bağlanma ve bu bölümde veri çerçevesi veri yükleme işleminin belgeleyin.
+Veri [bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)bölümünde belgelendiği gibi verileri araştırmak SQL Server ve verileri Incelemek için Python 'u kullanma, Python kullanarak Azure Blob 'daki verileri işlemeye benzer. Daha fazla işleme için veritabanından verileri bir Pandas veri çerçevesine yükleyin. Biz veritabanına bağlanma ve bu bölümde veri çerçevesi veri yükleme işleminin belgeleyin.
 
 Aşağıdaki bağlantı dizesi biçimi python'dan pyodbc (Değiştir servername, dbname, kullanıcı adı ve parola, belirli değerleri içeren) kullanarak bir SQL Server veritabanına bağlanmak için kullanılabilir:
 
@@ -129,15 +129,15 @@ Aşağıdaki bağlantı dizesi biçimi python'dan pyodbc (Değiştir servername,
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas Kitaplığı](https://pandas.pydata.org/) Python'da Python programlama için veri işleme için zengin bir veri yapıları ve verileri analiz araçları sağlar. Aşağıdaki kod, sonuçları bir SQL Server veritabanından bir Pandas veri çerçevesine döndürülen okur:
+Python 'daki [Pandas kitaplığı](https://pandas.pydata.org/) , Python programlamasına yönelik veri işleme için zengin veri yapıları ve veri çözümleme araçları sağlar. Aşağıdaki kod, sonuçları bir SQL Server veritabanından bir Pandas veri çerçevesine döndürülen okur:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Makalede de anlatılan Pandas veri çerçevesi ile çalışabilir artık [işlem Azure Blob veri, veri bilimi ortamınızdaki](data-blob.md).
+Artık, [veri bilimi ortamınızda Azure blob verilerini işleme](data-blob.md)makalesinde bahsedilen Pandas veri çerçevesiyle birlikte çalışabilirsiniz.
 
 ## <a name="azure-data-science-in-action-example"></a>Eylem örnekte Azure veri bilimi
-Azure Data Science Process genel bir veri kümesini kullanarak uçtan uca kılavuz örneği için bkz: [Azure veri bilimi işlemi yapılıyor](sql-walkthrough.md).
+Genel bir veri kümesi kullanan Azure veri bilimi Işleminin uçtan uca bir anlatım örneği için bkz. [Azure Data Science Process ın Action](sql-walkthrough.md).
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

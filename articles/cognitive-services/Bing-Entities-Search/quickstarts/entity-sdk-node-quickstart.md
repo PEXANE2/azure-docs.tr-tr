@@ -21,9 +21,9 @@ ms.locfileid: "76716383"
 
 Node. js için Bing Varlık Arama SDK ile varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)' da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Node.js](https://nodejs.org/en/download/)’in en son sürümü.
+* [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 
 * [Node. js için Bing varlık arama SDK 'sı](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 

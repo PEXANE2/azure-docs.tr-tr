@@ -79,7 +79,7 @@ Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytic
 | session_id | session_id_d | Olayın gerçekleştiği oturumun KIMLIĞI | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Oturum için sunucu sorumlusu | döndürmeli | string |
 | Ekstre | statement_s | Yürütülen T-SQL deyimleri (varsa) | nvarchar (4000) | string |
-| baarı | succeeded_s | Olayı tetikleyen eylemin başarılı olup olmadığını gösterir. Login ve Batch dışındaki olaylar için, bu yalnızca izin denetiminin başarılı veya başarısız olduğunu bildirir, işlem değildir. 1 = başarılı, 0 = başarısız | bit | string |
+| başarılı | succeeded_s | Olayı tetikleyen eylemin başarılı olup olmadığını gösterir. Login ve Batch dışındaki olaylar için, bu yalnızca izin denetiminin başarılı veya başarısız olduğunu bildirir, işlem değildir. 1 = başarılı, 0 = başarısız | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Veritabanı sorumlusu verme/reddetme/Iptal etme işlemi üzerinde gerçekleştirilir. geçerli değilse 0 | int | int |
 | target_database_principal_name | target_database_principal_name_s | İşlemin kullanıcısını hedefleyin. Geçerli değilse NULL | string | string |
 | target_server_principal_id | target_server_principal_id_d | VERME/reddetme/Iptal etme işleminin gerçekleştirildiği sunucu sorumlusu. Uygulanabilir değilse 0 döndürür | int | int |

@@ -50,13 +50,13 @@ Azure AD 'den uygulama meta verilerini veya sertifikasını indirmek için şu a
 
 2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3. Yazın **"Azure Active Directory**" filtre arama kutusunu seçip **Azure Active Directory** öğesi.
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
 4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5. tıklayın **tüm uygulamaları** tüm uygulamaların bir listesini görüntülemek için.
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-   * Burada show istediğiniz uygulamayı göremiyorsanız kullanın **filtre** üst kısmındaki denetim **tüm uygulamalar listesini** ayarlayıp **Göster** seçeneğini **tüm Uygulamalar.**
+   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
 6. Çoklu oturum açma yapılandırdığınız uygulamayı seçin.
 

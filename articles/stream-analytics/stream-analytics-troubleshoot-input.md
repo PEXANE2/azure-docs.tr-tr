@@ -20,11 +20,11 @@ ms.locfileid: "76720308"
 Bu sayfa, giriş bağlantıları ve bunları nasıl giderebileceğinizden ile ilgili yaygın sorunları açıklar.
 
 ## <a name="input-events-not-received-by-job"></a>İş tarafından alınmayan giriş olayları 
-1.  Bağlantınızı test edin. Kullanarak giriş ve çıkış bağlantısını doğrulayın **Test Bağlantısı** her giriş ve çıkış düğmesi.
+1.  Bağlantınızı test edin. Her giriş ve çıkış için **Bağlantıyı Sına** düğmesini kullanarak giriş ve çıkışlarla bağlantıyı doğrulayın.
 
 2.  Girişinizi inceleyin.
 
-    1. Giriş verileri olay Hub'ına geçiyor doğrulamak için [hizmet veri yolu Gezgini](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) (olay hub'ı girişi kullanılıyorsa), Azure olay Hub'ına bağlanmak için.
+    1. Giriş verilerinin Olay Hub 'ına akmasını doğrulamak için, Azure Olay Hub 'ına bağlanmak üzere [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) kullanın (Olay Hub 'ı girişi kullanılıyorsa).
         
     1. Her giriş için [**örnek veri**](stream-analytics-sample-data-input.md) düğmesini kullanın. Giriş örnek verilerini indirin.
         
@@ -35,7 +35,7 @@ Bu sayfa, giriş bağlantıları ve bunları nasıl giderebileceğinizden ile il
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Yanlış biçimlendirilmiş giriş olayları seri durumundan çıkarma hatalarına neden oluyor 
 Stream Analytics işinizin Giriş akışı yanlış biçimlendirilmiş iletiler içerdiğinde seri durumundan çıkarma sorunları nedeniyle oluşur. Örneğin, hatalı bir ileti parantezin eksik olması veya bir JSON nesnesinde bir küme ayracı veya hatalı zaman damgası biçimi zaman alanı kaynaklanabilir. 
  
-Bir Stream Analytics işi girdi hatalı bir ileti aldığında, iletiyi bırakır ve bir uyarı ile bildirir. Bir uyarı sembolü gösterilir **girişleri** Stream Analytics işinizin kutucuk. İşi çalışır durumda olduğu sürece, bu uyarı işareti vardır:
+Bir Stream Analytics işi girdi hatalı bir ileti aldığında, iletiyi bırakır ve bir uyarı ile bildirir. Stream Analytics işinizin **giriş** kutucuğunda bir uyarı simgesi gösterilir. İşi çalışır durumda olduğu sürece, bu uyarı işareti vardır:
 
 ![Azure Stream Analytics girişler kutucuğunda](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
@@ -53,11 +53,11 @@ Giriş olayları seri durumdan çıkarma hataya açık anlamak için ayrıntıl�
 
    ![Uzaklığa sahip Stream Analytics uyarı iletisi](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
-3. Hatalı biçimdeki JSON verilerini bulmak için kullanılabilir CheckMalformedEvents.cs kod çalıştırma [GitHub örnekleri depomuzdan](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Bu kod okuma bölüm kimliği, uzaklığı ve bu uzaklık içinde bulunan veri yazdırır. 
+3. Hatalı biçimli JSON verilerini bulmak için [GitHub örnekleri deposunda](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)bulunan CheckMalformedEvents.cs kodunu çalıştırın. Bu kod okuma bölüm kimliği, uzaklığı ve bu uzaklık içinde bulunan veri yazdırır. 
 
 4. Verileri okuduktan sonra, serileştirme biçimini analiz edebilir ve düzeltebilirsiniz.
 
-5. Ayrıca [olayları bir Service Bus Explorer ile IOT Hub'ından okumak](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
+5. Ayrıca [, Service Bus Gezgini ile IoT Hub olayları okuyabilirsiniz](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
 
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>En fazla olay hub'ı alıcıları iş aşıyor
 Event Hubs'ı kullanmaya yönelik en iyi yöntem, işi ölçeklenebilirlik sağlamak için birden fazla tüketici grupları kullanmaktır. Belirli bir giriş için Stream Analytics işinde okuyucu sayısını tek bir tüketici grubundaki okuyucu sayısını etkiler. Alıcılar kesin sayısını iç uygulama ayrıntıları genişleme topolojisi mantığı temel alır ve harici olarak gösterilmez. Bir iş başlatıldığında veya iş yükseltmeleri sırasında okuyucu sayısını değiştirebilirsiniz.
@@ -74,13 +74,13 @@ Event Hubs Örneğinizde yeni bir tüketici grubu eklemek için aşağıdaki ad�
 
 2. Event hubs'ı bulun.
 
-3. Seçin **Event Hubs** altında **varlıkları** başlığı.
+3. **Varlıklar** başlığı altında **Event Hubs** ' yi seçin.
 
 4. Ada göre olay hub'ı seçin.
 
-5. Üzerinde **olay hub'ı örneği** sayfasındaki **varlıkları** başlığı seçin **tüketici grupları**. Ada sahip bir tüketici grubu **$Default** listelenir.
+5. **Event Hubs örneği** sayfasında, **varlıklar** başlığı altında **tüketici grupları**' nı seçin. **$Default** adlı bir tüketici grubu listelenir.
 
-6. Seçin **+ tüketici grubu** yeni bir tüketici grubu eklemek için. 
+6. Yeni bir tüketici grubu eklemek için **+ Tüketici grubu** ' nu seçin. 
 
    ![Event hubs'ı tüketici grubu Ekle](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
@@ -93,9 +93,9 @@ Akış sorgu sözdiziminizin birden çok kez aynı giriş olay hub'ı kaynağa b
 
 Bölüm başına okuyucu sayısıyla beş Event Hubs sınırını aşıyor senaryolar aşağıdakileri içerir:
 
-* Birden çok SELECT deyimine: başvuran birden çok SELECT deyimine kullanırsanız **aynı** olay hub'ı giriş, her SELECT deyiminin oluşturulacak yeni bir alıcı neden olur.
-* BİRLEŞİM: bir birleşim kullandığınızda, başvuruda bulunan birden çok giriş mümkündür **aynı** olay hub'ı ve tüketici grubu.
-* Kendi KENDİNE birleşme: bir SELF JOIN işlemi kullandığınızda başvurmak mümkündür **aynı** olay hub'ı birden çok kez.
+* Çoklu SELECT deyimleri: **aynı** Olay Hub 'ına başvuran bırden çok select deyimi kullanıyorsanız, her SELECT deyimi yeni bir alıcının oluşturulmasına neden olur.
+* BIRLEŞIM: bir BIRLEŞIM kullandığınızda, **aynı** Olay Hub 'ına ve tüketici grubuna başvuran birden çok giriş olması mümkündür.
+* Kendi kendine JOIN: bir kendi kendine JOIN işlemi kullandığınızda, **aynı** Olay Hub 'ına birden çok kez başvurmak mümkündür.
 
 Aşağıdaki en iyi, bölüm başına okuyucu sayısıyla beş Event Hubs sınırını aşıyor senaryoları azaltılmasına yardımcı olur.
 
@@ -139,11 +139,11 @@ Aynı Event hubs'ı tüketici grubu için üç veya daha fazla giriş bağlı so
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

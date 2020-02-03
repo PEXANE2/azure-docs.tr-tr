@@ -79,7 +79,7 @@ Daha fazla bilgi için bkz. Şirket [ıçı SQL Server 'dan Azure Data Factory S
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Verilerin ne kadarını Azure 'a taşınacak?
 
-Büyük veri kümeleri belirli ortamların depolama kapasitesini aşabilir. Bir örnek için, sonraki bölümde Machine Learning Studio (klasik) için boyut sınırları tartışmalarına bakın. Bu gibi durumlarda, analiz sırasında verilerin bir örneğini kullanabilirsiniz. Aşağı-örnek bir veri kümesi çeşitli Azure ortamlarında konusunda ayrıntılar için bkz [örnek veriler Team Data Science Process içinde](sample-data.md).
+Büyük veri kümeleri belirli ortamların depolama kapasitesini aşabilir. Bir örnek için, sonraki bölümde Machine Learning Studio (klasik) için boyut sınırları tartışmalarına bakın. Bu gibi durumlarda, analiz sırasında verilerin bir örneğini kullanabilirsiniz. Çeşitli Azure ortamlarında bir veri kümesinin nasıl azaltılabilen hakkında daha fazla bilgi için, bkz. [takım veri bilimi Işlemindeki örnek veriler](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Veri özellikleri soruları: türü, biçimi ve boyutu
 
@@ -90,7 +90,7 @@ Bu sorular, depolama ve işleme ortamlarınızı planlamaya yönelik bir anahtar
 * Sayısal
 * Kategorik
 * Dizeler
-* Binary
+* İkili
 
 ### <a name="how-is-your-data-formatted"></a>Verileriniz nasıl biçimlendirilir?
 
@@ -108,8 +108,8 @@ Bu sorular, depolama ve işleme ortamlarınızı planlamaya yönelik bir anahtar
 
 Örnek olarak Azure Machine Learning Studio (klasik) ortamı alın:
 
-* Veri biçimleri ve Azure Machine Learning Studio tarafından desteklenen türleri listesi için bkz. [veri biçimlerini ve desteklenen veri türleri](../studio/import-data.md#supported-data-formats-and-data-types) bölümü.
-* Analytics işleminde kullanılan diğer Azure Hizmetleri sınırlamaları hakkında daha fazla bilgi için bkz: [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Azure Machine Learning Studio tarafından desteklenen veri biçimlerinin ve türlerinin bir listesi için bkz. [veri biçimleri ve veri türleri destekleniyor](../studio/import-data.md#supported-data-formats-and-data-types) bölümü.
+* Analiz işleminde kullanılan diğer Azure hizmetlerinin sınırlamaları hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Veri Kalitesi soruları: inceleme ve ön işleme
 
@@ -127,11 +127,11 @@ Bu adım size yardımcı olmak için önemlidir:
 * En uygun özellikleri veya analiz türünü öneren hipotezleri formül oluştur
 * Ek veri toplama için planları formül oluştur
 
-Veri incelemesi için faydalı teknikler, açıklayıcı istatistik hesaplama ve görselleştirme çizimleri içerir. Çeşitli Azure ortamlarında bir veri kümesini araştırmak nasıl ayrıntıları için bkz: [Team Data Science Process verileri araştırın](explore-data.md).
+Veri incelemesi için faydalı teknikler, açıklayıcı istatistik hesaplama ve görselleştirme çizimleri içerir. Çeşitli Azure ortamlarında veri kümesini keşfetmeye ilişkin ayrıntılar için bkz. [Team Data Science işleminde verileri araştırma](explore-data.md).
 
 ### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Veriler ön işleme veya temizleme gerektiriyor mu?
 
-Makine öğrenimi için veri kümesini etkin bir şekilde kullanabilmeniz için önce verilerinizi önceden işleyin ve temizlemeniz gerekebilir. Ham veriler genellikle gürültülü ve güvenilmez olur. Eksik değerler olabilir. Modelleme için bu verileri kullanarak, yanıltıcı sonuçlara neden olabilir. Bir açıklama için bkz. [için Gelişmiş veri hazırlama görevleri makine öğrenimi](prepare-data.md).
+Makine öğrenimi için veri kümesini etkin bir şekilde kullanabilmeniz için önce verilerinizi önceden işleyin ve temizlemeniz gerekebilir. Ham veriler genellikle gürültülü ve güvenilmez olur. Eksik değerler olabilir. Modelleme için bu verileri kullanarak, yanıltıcı sonuçlara neden olabilir. Bir açıklama için bkz. [Gelişmiş makine öğrenimi için veri hazırlama görevleri](prepare-data.md).
 
 ## <a name="tools-and-languages-questions"></a>Araçları ve dilleri ile ilgili sorular
 
@@ -147,7 +147,7 @@ Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. Gerek
 
 * [Microsoft Azure PowerShell](/powershell/azure/overview) -Azure kaynaklarınızı bir betik dilinde yönetmek için kullanılan bir betik dili
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-* [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
+* [Devrimanalytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Visual Studio için Python Araçları](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
@@ -156,7 +156,7 @@ Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. Gerek
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>Gelişmiş analiz senaryonuzu tanımlama
 
-Önceki bölümde verilen soruları yanıtladıktan sonra, hangi senaryonun büyük/küçük harflere en uygun olduğunu tespit etmeye hazırsınızdır. Örnek senaryolar özetlenen [Azure Machine learning'de Gelişmiş analiz senaryoları](plan-sample-scenarios.md).
+Önceki bölümde verilen soruları yanıtladıktan sonra, hangi senaryonun büyük/küçük harflere en uygun olduğunu tespit etmeye hazırsınızdır. Örnek senaryolar Azure Machine Learning gelişmiş analizler [Için senaryolar](plan-sample-scenarios.md)bölümünde özetlenmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

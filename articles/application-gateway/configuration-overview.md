@@ -25,7 +25,7 @@ Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk iki
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure sanal ağı ve adanmış alt ağ
 

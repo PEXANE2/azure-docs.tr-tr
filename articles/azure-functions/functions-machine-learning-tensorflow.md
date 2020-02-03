@@ -23,7 +23,7 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için Python,
 > * Bir köpek veya kedi içeren bir görüntüyü sınıflandırmak için sunucusuz bir HTTP API 'SI oluşturun.
 > * API 'YI bir Web uygulamasından tüketme.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/). (Python 3.7.4 ve Python 3.6. x, Azure Işlevleri ile doğrulanır; Python 3,8 ve sonraki sürümler henüz desteklenmiyor.)

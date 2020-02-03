@@ -17,13 +17,13 @@ AKS kümenizi izleme etkinleştirdikten sonra artık bunu izlemek istediğiniz k
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Kullanım [az aks devre dışı bırak-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) kapsayıcılar için Azure İzleyici devre dışı bırakma komutu. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
+Kapsayıcılar için Azure Izleyicisini devre dışı bırakmak için [az aks Disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) komutunu kullanın. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Kümeniz için izleme yeniden etkinleştirmek için bkz: [Azure CLI kullanarak izlemeyi etkinleştirin](container-insights-enable-new-cluster.md#enable-using-azure-cli).
+Kümeniz için izlemeyi yeniden etkinleştirmek üzere bkz. [Azure CLI kullanarak Izlemeyi etkinleştirme](container-insights-enable-new-cluster.md#enable-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
@@ -31,13 +31,13 @@ Sağlanan olan iki çözüm kaynakları tutarlı ve sürekli kaynak grubunuzda k
 
 Bir şablon kullanarak kaynakları dağıtma kavramıyla bilmiyorsanız, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
 >Şablonun, kümenin aynı kaynak grubunda dağıtılması gerekir. Bu şablonu kullanırken başka özellikleri veya eklentileri atlarsanız, kümeden kaldırılmasına neden olabilir. Örneğin, kümenizde uygulanan RBAC ilkeleri için *Enablertzya* ya da aks kümesi için Etiketler belirtilmişse, *Aksresourcetagvalues* .  
 >
 
-Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Şablon oluşturma
 
@@ -89,7 +89,7 @@ Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanm
     }
     ```
 
-2. Bu dosyayı farklı Kaydet **OptOutTemplate.json** yerel bir klasöre.
+2. Bu dosyayı bir yerel klasöre **Optouttemplate. JSON** olarak kaydedin.
 
 3. Aşağıdaki JSON söz dizimi dosyanıza yapıştırın:
 
@@ -115,15 +115,15 @@ Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanm
     }
     ```
 
-4. Değerlerini düzenleyin **aksResourceId** ve **aksResourceLocation** bulabileceğiniz AKS kümesinin değerleri kullanarak **özellikleri** seçili kümenin sayfası .
+4. **Aksresourceıd** ve **Aksresourcelocation** değerlerini, seçilen kümenin **Özellikler** sayfasında bulabileceğiniz aks kümesinin değerlerini kullanarak düzenleyin.
 
     ![Kapsayıcı Özellikleri Sayfası](media/container-insights-optout/container-properties-page.png)
 
-    Üzerinde çalışırken **özellikleri** sayfasında, ayrıca kopyalayın **çalışma alanı kaynak kimliği**. Daha sonra Log Analytics çalışma alanını silmek istediğinize karar verirseniz, bu değer gereklidir. Log Analytics çalışma alanı siliniyor, bu işlemin bir parçası olarak yapılmaz.
+    **Özellikler** sayfasında, **çalışma alanı kaynak kimliğini**de kopyalayın. Daha sonra Log Analytics çalışma alanını silmek istediğinize karar verirseniz, bu değer gereklidir. Log Analytics çalışma alanı siliniyor, bu işlemin bir parçası olarak yapılmaz.
 
     **Aksresourcetagvalues** değerlerini, aks kümesi için belirtilen varolan etiket değerleriyle eşleşecek şekilde düzenleyin.
 
-5. Bu dosyayı farklı Kaydet **OptOutParam.json** yerel bir klasöre.
+5. Bu dosyayı bir yerel klasöre **Optoutparam. JSON** olarak kaydedin.
 
 6. Bu şablonu dağıtmaya hazırsınız.
 
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yalnızca küme İzleme'yi desteklemek için çalışma alanı oluşturuldu ve artık gerekli olmadığında, el ile silmeniz gerekir. Bir çalışma alanını silme konusunda bilgi sahibi değilseniz bkz [Azure portalı ile bir Azure Log Analytics çalışma alanını silme](../../log-analytics/log-analytics-manage-del-workspace.md). 4\. adımda daha önce kopyalanmış **çalışma alanı kaynak kimliği** hakkında unutmayın, bunun için gerekli olacaktır.
+Yalnızca küme İzleme'yi desteklemek için çalışma alanı oluşturuldu ve artık gerekli olmadığında, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz, bkz. [Azure Portal bir Azure Log Analytics çalışma alanını silme](../../log-analytics/log-analytics-manage-del-workspace.md). 4\. adımda daha önce kopyalanmış **çalışma alanı kaynak kimliği** hakkında unutmayın, bunun için gerekli olacaktır.

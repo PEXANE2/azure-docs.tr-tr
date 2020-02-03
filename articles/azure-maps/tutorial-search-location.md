@@ -18,7 +18,7 @@ ms.locfileid: "76716192"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
-Bu öğreticide, Azure Haritalar hesabı ayarlama ve sonra Haritalar API’lerini kullanarak ilgi çekici bir noktayı arama işlemleri gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide, Azure Haritalar hesabı ayarlama ve sonra Haritalar API’lerini kullanarak ilgi çekici bir noktayı arama işlemleri gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure Haritalar hesabı oluşturma
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 <a id="createaccount"></a>
 
@@ -116,7 +116,7 @@ Harita Denetimi API 'SI uygun bir istemci kitaplığı. Bu API, haritaları Web 
     </html>
     ```
 
-   HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `GetMap` işlevini çağıracak olan `onload` olayına dikkat edin. `GetMap` işlevi, Azure Maps API 'Lerine erişmek için satır içi JavaScript kodunu içerecektir.
+   HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `onload` işlevini çağıracak olan `GetMap` olayına dikkat edin. `GetMap` işlevi, Azure Maps API 'Lerine erişmek için satır içi JavaScript kodunu içerecektir.
 
 3. HTML dosyasının `GetMap` işlevine aşağıdaki JavaScript kodunu ekleyin. Dize `<Your Azure Maps Key>`, haritalar hesabınızdan kopyaladığınız birincil anahtarla değiştirin.
 

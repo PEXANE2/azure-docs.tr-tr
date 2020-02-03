@@ -81,7 +81,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Kategori
 - Etkinlik
 - Durum
-- Hedefleyin
+- Hedef
 - Başlatan (Aktör)
 - Tarih aralığı
 

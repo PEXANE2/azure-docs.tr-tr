@@ -74,13 +74,13 @@ Aşağıdaki tabloda, yaygın sağlama senaryolarının eşitleme süreleri öze
 | Kapsam yapılandırması | Kapsam içindeki kullanıcılar, gruplar ve Üyeler | İlk zaman çevrimi süresi | Artımlı zaman çevrimi süresi |
 | -------- | -------- | -------- | -------- |
 | Yalnızca atanan kullanıcıları ve grupları Eşitle |  < 1.000 |  < 30 dakika | < 30 dakika |
-| Yalnızca atanan kullanıcıları ve grupları Eşitle |  1\.000 - 10.000 | 142-708 dakika | < 30 dakika |
+| Yalnızca atanan kullanıcıları ve grupları Eşitle |  1\.000-10.000 | 142-708 dakika | < 30 dakika |
 | Yalnızca atanan kullanıcıları ve grupları Eşitle |   10.000-100.000 | 1\.170-2.340 dakika | < 30 dakika |
 | Azure AD 'de tüm kullanıcıları ve grupları eşitleme |  < 1.000 | < 30 dakika  | < 30 dakika |
-| Azure AD 'de tüm kullanıcıları ve grupları eşitleme |  1\.000 - 10.000 | < 30-120 dakika | < 30 dakika |
+| Azure AD 'de tüm kullanıcıları ve grupları eşitleme |  1\.000-10.000 | < 30-120 dakika | < 30 dakika |
 | Azure AD 'de tüm kullanıcıları ve grupları eşitleme |  10.000-100.000  | 713-1.425 dakika | < 30 dakika |
 | Azure AD 'de tüm kullanıcıları eşitleme|  < 1.000  | < 30 dakika | < 30 dakika |
-| Azure AD 'de tüm kullanıcıları eşitleme | 1\.000 - 10.000  | 43-86 dakika | < 30 dakika |
+| Azure AD 'de tüm kullanıcıları eşitleme | 1\.000-10.000  | 43-86 dakika | < 30 dakika |
 
 
 **Yalnızca yapılandırma eşitlemesi atanan kullanıcı ve gruplar**için aşağıdaki formülleri kullanarak yaklaşık en düşük ve en fazla beklenen **ilk zaman döngüsünü** belirleyebilirsiniz:

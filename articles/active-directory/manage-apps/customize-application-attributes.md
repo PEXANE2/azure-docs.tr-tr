@@ -203,7 +203,7 @@ Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımla
   - **Dikkate alınması gereken noktalar**
     - Bir kullanıcıya birden çok rolün atanmadığından emin olun. Hangi rolün sağlanacağı garanti edilemez.
     
-  - **Örnek çıktı** 
+  - **Örnek çıkış** 
 
    ```json
     {
@@ -240,7 +240,7 @@ Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımla
     - Tüm roller birincil = yanlış olarak sağlanacak.
     - GÖNDERI, rol türünü içerir. Düzeltme Eki isteği türü içermiyor. Hem POST hem de PATCH isteklerinde türü göndermek için çalışıyoruz.
     
-  - **Örnek çıktı** 
+  - **Örnek çıkış** 
   
    ```json
    {
@@ -318,8 +318,8 @@ Bu seçeneğin belirlenmesi, sağlama hizmeti çalışırken tüm kullanıcılar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kullanıcı sağlama/sağlamayı kaldırma SaaS uygulamaları için otomatik hale getirin](user-provisioning.md)
+- [SaaS uygulamalarına Kullanıcı sağlamasını/sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md)
 - [Öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md)
-- [Kullanıcı sağlama için kapsam oluşturma filtresi](define-conditional-rules-for-provisioning-user-accounts.md)
+- [Kullanıcı hazırlama için kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Kullanıcıların ve grupların Azure Active Directory'den uygulamalara otomatik olarak hazırlanmasını etkinleştirmek için SCIM'yi kullanma](use-scim-to-provision-users-and-groups.md)
-- [SaaS uygulamalarını tümleştirme hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
+- [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)

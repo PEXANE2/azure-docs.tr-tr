@@ -25,12 +25,12 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 
 * İstek ücretleri, yanıt süreleri ve hata oranları
 * Bağımlılık oranları, yanıt süreleri ve hata oranları
-* Özel durumlar
+* Özel Durumlar
 
 [Azure Application Insights hakkında daha fazla bilgi edinin](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 
@@ -52,7 +52,7 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 1. **Dağıtımlar** sekmesinde, Azure Application Insights etkinleştirmek istediğiniz hizmeti seçin
 
-   [![Dağıtımları sekmesinde hizmetlerin listesi](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [Dağıtımlar sekmesindeki hizmetlerin listesini ![](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. **Düzenle** 'yi seçin
 
@@ -60,20 +60,20 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 4. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu seçin.
 
-   [![Seçili onay kutusu için tanılamayı etkinleştirme](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [Tanılamayı etkinleştirmek için seçili ![onay kutusu](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin
 
-### <a name="disable"></a>Devre dışı bırakma
+### <a name="disable"></a>Devre Dışı Bırak
 
 1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın
 1. **Dağıtımlar**' ı seçin, hizmeti seçin ve ardından **Düzenle** ' yi seçin.
 
-   [![Düzenle düğmesini kullanın](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Düzenle düğmesini kullanma](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin.
 
-   [![Temizlenmiş onay kutusu için tanılamayı etkinleştirme](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [Tanılamayı etkinleştirmek için ![temizlenmiş onay kutusu](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin
  
@@ -95,7 +95,7 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 ### <a name="log-custom-traces-in-your-service"></a>Özel günlük izlemelerini hizmetinizde
 
-Günlük izlemeleri özel istiyorsanız, AKS veya ACI için standart dağıtım işlemini izleyin [nasıl dağıtılacağı ve nerede](how-to-deploy-and-where.md) belge. Ardından aşağıdaki adımları kullanın:
+Özel izlemeleri günlüğe kaydetmek istiyorsanız, AKS için standart dağıtım sürecini [ve nasıl dağıtılacağı ve nerede](how-to-deploy-and-where.md) belgede bir aci 'yi izleyin. Ardından aşağıdaki adımları kullanın:
 
 1. Yazdırma deyimleri ekleyerek Puanlama dosyasını güncelleştirme
     
@@ -126,11 +126,11 @@ Bunu görüntülemek için:
 
 1. [Azure Machine Learning Studio](https://ml.azure.com) 'daki Azure Machine Learning çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Appınsi, Sloc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
 1. Hizmetinizin temel ölçüm kümesini görmek için **genel bakış** sekmesini seçin
 
-   [![Genel bakış](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+   [![genel bakış](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Web hizmeti istek meta verileri ve yanıtınıza bakmak için **Günlükler (Analiz)** bölümündeki **istekler** tablosunu seçin ve istekleri görüntülemek için **Çalıştır** ' ı seçin
 
@@ -138,9 +138,9 @@ Bunu görüntülemek için:
 
 
 3. Özel izlemelerinizi görmek için **analiz** ' i seçin
-4. Şema bölümünde **izlemeleri**. Ardından **çalıştırma** sorgunuzu çalıştırılacak. Veriler bir tablo biçiminde görünmelidir ve Puanlama dosyanızdaki özel çağrılarınız ile eşleşmelidir
+4. Şema bölümünde **izlemeler**' ı seçin. Sonra sorgunuzu çalıştırmak için **Çalıştır** ' ı seçin. Veriler bir tablo biçiminde görünmelidir ve Puanlama dosyanızdaki özel çağrılarınız ile eşleşmelidir
 
-   [![Özel izlemeler](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [Özel izlemeler ![](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
 
 Azure Application Insights kullanma hakkında daha fazla bilgi edinmek için bkz. [Application Insights nedir?](../azure-monitor/app/app-insights-overview.md).
 

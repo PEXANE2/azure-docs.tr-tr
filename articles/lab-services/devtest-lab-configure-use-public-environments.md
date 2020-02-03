@@ -36,7 +36,7 @@ Laboratuvarınız için genel ortamları etkinleştirebilir/devre dışı bırak
 
 1. Laboratuvarınız için **yapılandırma ve ilkeler '** i seçin. 
 2. **Sanal makıne tabanları** bölümünde **ortak ortamlar**' ı seçin.
-3. Laboratuvar için ortak ortamları etkinleştirmek üzere **Evet**' i seçin. Aksi takdirde seçin **Hayır**. 
+3. Laboratuvar için ortak ortamları etkinleştirmek üzere **Evet**' i seçin. Aksi takdirde **Hayır**' ı seçin. 
 4. Ortak ortamları etkinleştirdiyseniz, depodaki tüm ortamlar varsayılanlar tarafından etkinleştirilir. Laboratuvar kullanıcılarınız için kullanılamaz hale getirmek üzere bir ortamı devre dışı bırakabilirsiniz. 
 
 ![Ortak ortamlar sayfası](media/devtest-lab-configure-use-public-environments/public-environments-page.png)

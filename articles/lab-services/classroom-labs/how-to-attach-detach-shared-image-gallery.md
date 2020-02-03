@@ -42,7 +42,7 @@ Laboratuvar hesabı oluşturulduktan sonra, aşağıdaki görevleri gerçekleşt
 - Laboratuvar hesabından paylaşılan görüntü galerisini ayır
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Paylaşılan görüntü galerisi oluşturma ve iliştirme
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. **Laboratuvar Hizmetleri**' nin yanında yıldız (`*`) seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm Hizmetler-> Laboratuvar Hizmetleri](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)

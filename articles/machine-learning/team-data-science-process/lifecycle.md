@@ -20,7 +20,7 @@ ms.locfileid: "76720461"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process yaşam döngüsü
 
-Team Data Science işlem (TDSP), veri bilimi projelerinizi yapısı için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği adımların tamamını özetler. Çapraz sektör standart işlem için veri madenciliği gibi başka bir veri bilimi yaşam kullanırsanız [(NET-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), bilgi bulma veritabanlarındaki [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), veya kuruluşun kendi özel işleminizi , görev tabanlı TDSP kullanmaya devam edebilirsiniz. 
+Team Data Science işlem (TDSP), veri bilimi projelerinizi yapısı için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği adımların tamamını özetler. Veri madenciliği için platformlar arası standart Işlem [(net DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), veritabanlarında bilgi bulma [(kdd)](https://wikipedia.org/wiki/Data_mining#Process)veya kuruluşunuzun kendi özel süreci gibi başka bir veri bilimi yaşam döngüsü kullanıyorsanız, görev tabanlı TDSP 'yi kullanmaya devam edebilirsiniz. 
 
 Bu yaşam döngüsünü, akıllı uygulamalar bir parçası olarak göndermeye yönelik veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, Tahmine dayalı analiz için makine öğrenme veya yapay zeka modelleri dağıtın. Araştırmacı veri bilimi projeleri ve improvised Analytics projeleri, bu işlemin kullanımıyla de faydalanabilir. Ancak bu projeleri için burada açıklanan adımlardan bazıları gerekli. 
 
@@ -28,9 +28,9 @@ Bu yaşam döngüsünü, akıllı uygulamalar bir parçası olarak göndermeye y
 
 TDSP yaşam döngüsü, yinelemeli olarak yürütülen beş temel aşamadan oluşur. Bu aşamalar şunları içerir:
 
-   1. [İşin gereksinimlerini anlama](lifecycle-business-understanding.md)
-   2. [Veri edinme ve anlama](lifecycle-data.md)
-   3. [Modelleme](lifecycle-modeling.md)
+   1. [İş anlama](lifecycle-business-understanding.md)
+   2. [Veri alma ve anlama](lifecycle-data.md)
+   3. [Oluşturmanın](lifecycle-modeling.md)
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
@@ -43,12 +43,12 @@ TDSP yaşam döngüsü, Tahmine dayalı modelleri kullanmak için gerekli görev
 
 Her aşaması için aşağıdaki bilgileri sağlıyoruz:
 
-   * **Hedefleri**: belirli hedefler.
-   * **Nasıl yapılacağını**: anahat belirli görevleri ve bunları tamamlamak hakkında yönergeler.
-   * **Yapıtları**: teslim edilebilirleri ve bunları oluşturmak için destek.
+   * **Hedefler**: belirli amaçlar.
+   * **Nasıl yapılır**: belirli görevlerin bir özeti ve bunların nasıl tamamlanacağı hakkında rehberlik.
+   * **Yapıtlar**: teslim edilebilirler ve bunları oluşturmak için destek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlemin belirli senaryolar için tüm adımları gösteren uçtan uca tam talimatlara sunuyoruz. [Örnek izlenecek yollar](walkthroughs.md) makale bağlantıları ve küçük resim açıklamaları senaryolarıyla bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
+İşlemin belirli senaryolar için tüm adımları gösteren uçtan uca tam talimatlara sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut, şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir. 
 
-Adımlar Azure Machine Learning Studio'nun TDSPs yürütmek nasıl bir örnekleri için bkz: [Azure Machine Learning ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

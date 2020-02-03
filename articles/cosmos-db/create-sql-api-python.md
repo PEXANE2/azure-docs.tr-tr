@@ -37,7 +37,7 @@ Bu hızlı başlangıçta [Python SDK 'sının](https://pypi.org/project/azure-c
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * `PATH``python` çalıştırılabilir dosyası ile [Python 3.6 +](https://www.python.org/downloads/).
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -61,7 +61,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
-    |**Veritabanı Kimliği**|Görevler|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adı 1 ila 255 karakter içermeli ve içeremezler `/, \\, #, ?`, veya bir boşluk. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
+    |**Veritabanı Kimliği**|Görevler|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?`veya sonunda boşluk içermemelidir. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
     |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
     |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimlikleri, veritabanı adlarıyla aynı karakter gereksinimlerine sahiptir.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|

@@ -84,7 +84,7 @@ Azure DevOps projenizin ana sayfasından, sol gezinti bölmesinde **çekme istek
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>Gözden geçirme ve birleştirme
+## <a name='ReviewandMerge-4'></a>İnceleme ve birleştirme
 
 Çekme isteğini oluşturduktan sonra, gözden geçirenler çekme isteğini gözden geçirmek için bir e-posta bildirimi alır. Gözden geçirenler değişikliklerin çalışıp çalışmadığını test edin ve mümkünse değişiklikleri istek sahibine göre kontrol edin. Gözden geçirenler yorum yapabilir, değişiklikler yapabilir ve değerlendirmesi temelinde çekme isteğini onaylayabilir veya reddedebilir. 
 

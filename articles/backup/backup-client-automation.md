@@ -14,7 +14,7 @@ ms.locfileid: "76710869"
 
 Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="install-azure-powershell"></a>Azure PowerShell’i yükleme
+## <a name="install-azure-powershell"></a>Azure PowerShell'i yükleme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -122,7 +122,7 @@ Mevcut seçenekler şunlardır:
 | /pH |Proxy ana bilgisayar adresi |- |
 | /Po |Proxy ana bilgisayar bağlantı noktası numarası |- |
 | /pu |Proxy konak Kullanıcı adı |- |
-| /PW |Proxy parolası |- |
+| /PW |Proxy Parola |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Windows Server veya Windows istemci makinesini bir kurtarma hizmetleri kasasına kaydetme
 
@@ -411,7 +411,7 @@ Bu bölüm, MABS aracısında sistem durumunu ayarlamak için PowerShell komutun
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>Saklama
+### <a name="retention"></a>Bekletme
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -689,7 +689,7 @@ Aracıdan aracı ikililerini kaldırmak göz önünde bulundurmanız gereken baz
 
 Ancak, Azure 'da depolanan veriler kalır ve sizin tarafınızdan bekletme ilkesi kurulumuna göre saklanır. Eski noktaları otomatik olarak yaşlanır.
 
-## <a name="remote-management"></a>Uzaktan yönetim
+## <a name="remote-management"></a>Uzaktan Yönetim
 
 Azure Backup Aracısı, ilkeler ve veri kaynakları etrafındaki tüm yönetim, PowerShell aracılığıyla uzaktan gerçekleştirilebilir. Uzaktan yönetilecek makinenin doğru hazırlanması gerekir.
 

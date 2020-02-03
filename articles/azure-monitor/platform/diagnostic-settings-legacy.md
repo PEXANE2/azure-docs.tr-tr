@@ -45,7 +45,7 @@ Aşağıdaki sütunlar kaldırılmıştır. Bu sütunların yerini değiştirmek
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | Etkinlik alt durumu | ActivitySubstatusValue |
-| ThrottledRequests     | OperationNameValue     |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 
 Aşağıdaki sütun eklendi:

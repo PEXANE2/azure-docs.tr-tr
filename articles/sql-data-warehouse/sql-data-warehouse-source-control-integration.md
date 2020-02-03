@@ -37,7 +37,7 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
    ![Bağlantıları Yönet](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönet")
 
-   ![Bağlanma](media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlayın")
+   ![Bağlanma](media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlan")
 
 3. Azure depoyu deponuzu projenizden yerel makinenize kopyalayın
 

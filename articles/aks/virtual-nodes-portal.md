@@ -71,7 +71,7 @@ Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekild
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğüme Pod dağıtmayacak
 * [Windows Server düğümleri (Şu anda AKS 'de önizlemededir)](windows-container-cli.md) sanal düğümlerde desteklenmez. Sanal düğümleri, bir AKS kümesinde Windows Server düğümlerine gerek kalmadan Windows Server kapsayıcıları zamanlamak için kullanabilirsiniz.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -197,7 +197,7 @@ kubectl run -it --rm virtual-node-test --image=debian
 apt-get update && apt-get install -y curl
 ```
 
-Artık, *http://10.241.0.4* gibi `curl` kullanarak Pod 'nizin adresine erişin. Önceki `kubectl get pods` komutunda gösterilen kendi iç IP adresini sağlayın:
+Artık, *http://10.241.0.4* gibi `curl`kullanarak Pod 'nizin adresine erişin. Önceki `kubectl get pods` komutunda gösterilen kendi iç IP adresini sağlayın:
 
 ```azurecli-interactive
 curl -L http://10.241.0.4
