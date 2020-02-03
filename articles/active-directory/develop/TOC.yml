@@ -740,18 +740,18 @@
   items:
     - name: Sözlük
       href: developer-glossary.md
-    - name: Azure yol haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Videolar
+      href: identity-videos.md
     - name: Azure AD blogu
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Microsoft kimlik platformu geliştirici blogu
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure yol haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Microsoft’ta oturum açma özelliğini deneyin
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Azure kaynakları için yönetilen kimlikler
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: Yardım alma
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Azure kaynakları için yönetilen kimlikler
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: Microsoft kimlik platformu videoları
-      href: identity-videos.md
