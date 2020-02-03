@@ -42,7 +42,7 @@ Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği iç
 [el ile tetikleyici eşitlemesi](#trigger-syncing)gerektiren <sup>1</sup> dağıtım teknolojisi.  
 <sup>2</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik http ve Zamanlayıcı Tetikleyicileri için etkindir.
 
-## <a name="key-concepts"></a>Temel kavramlar
+## <a name="key-concepts"></a>Önemli kavramlar
 
 Bazı temel kavramlar, dağıtımların Azure Işlevlerinde nasıl çalıştığını anlamak için önemlidir.
 

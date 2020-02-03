@@ -166,7 +166,7 @@ Depo içeriğini özelleştirmek için:
 Yerel makinenizi veya DSVM 'yi kullanarak değişiklik yapmak ve değişiklikleri grup depolarına iletmek istiyorsanız git ve DSVMs ile çalışmaya yönelik önkoşullara sahip olduğunuzdan emin olun:
 
 - DSVM oluşturmak istiyorsanız, bir Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -258,6 +258,6 @@ Gruba üye eklemek için:
 
 Team Data Science Işlemindeki diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
-- [Proje için bir veri bilimi ekibi müşteri adayı görevleri](project-lead-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
 - [Bir veri bilimi ekibi için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md)

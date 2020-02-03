@@ -207,7 +207,7 @@ Eski ADAL sürümleri, MSAL önbellek biçimini yerel olarak desteklemez. Ancak,
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Örneğin:
+Örnek:
 
 Amaç-C:
 

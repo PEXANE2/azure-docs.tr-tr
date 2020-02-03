@@ -109,7 +109,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 
 
-## <a name="faceted-navigation"></a>Çok yönlü navigasyon
+## <a name="faceted-navigation"></a>Çok yönlü gezinme
 
 Arama gezinmesi, genellikle bir sayfanın yanında veya üstünde bulunan bir sonuçlar sayfasında ortaktır. Azure Bilişsel Arama 'de, çok yönlü gezinme, önceden tanımlanmış filtreleri temel alan otomatik olarak yönlendirilmiş arama sağlar. Ayrıntılar için bkz. [Azure 'da çok yönlü gezinme bilişsel arama](search-faceted-navigation.md) .
 

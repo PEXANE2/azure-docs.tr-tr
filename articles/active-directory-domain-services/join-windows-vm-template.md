@@ -24,7 +24,7 @@ Azure sanal makinelerinin (VM 'Ler) dağıtımını ve yapılandırmasını otom
 
 Bu makalede, bir Windows Server VM 'sini Kaynak Yöneticisi şablonları kullanarak Azure AD DS yönetilen bir etki alanına nasıl oluşturacağınız ve katılalacağı gösterilmektedir. Ayrıca, mevcut bir Windows Server VM 'sini Azure AD DS etki alanına nasıl katılacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 

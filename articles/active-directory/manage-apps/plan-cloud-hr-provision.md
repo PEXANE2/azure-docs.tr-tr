@@ -53,7 +53,7 @@ Azure AD Kullanıcı sağlama ile bulut HR uygulaması tümleştirmesi ideal ola
 - Yalnızca bulut HR uygulamasında algılanan değişiklik bilgilerini temel alan bir veya daha fazla Active Directory ormanlara, etki alanına ve OU 'Lara katılmayı zorunlu kılın.
 - E-posta için Office 365 kullanın.
 
-## <a name="learn"></a>Öğrenme
+## <a name="learn"></a>Öğrenin
 
 Kullanıcı hazırlama devam eden kimlik yönetimi için bir temel oluşturur. Yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
@@ -80,7 +80,7 @@ Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yap
 
 Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Connect sağlama aracısını yapılandırmak için Azure AD Genel Yöneticisi erişimi.
 - Bulut HR uygulamasının test ve üretim örneği.
@@ -257,7 +257,7 @@ Varsayılan olarak, sağlama bağlayıcı uygulaması, Kullanıcı hesabının e
 
 Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| Süreç | Gereksinimler |
+| İşleme | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Kimlik yaşam döngüsü perspektifinden, yeniden oluşturma işlemlerinin nasıl yapılacağını nasıl işleyeceğinizi? Eski çalışan kimliklerini saklayın mi? |
 | | Gelecekteki ilerletlerinizi mi işletin, yoksa Active Directory hesapları mı oluşturdunuz? Bu hesaplar etkin veya devre dışı durumda mı oluşturulmuş? |
@@ -276,7 +276,7 @@ Her bir bulut HR uygulaması, eşlemeleri Active Directory için varsayılan bul
 
 Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
-| Süreç | Gereksinimler |
+| İşleme | Gereksinimler |
 | - | - |
 | **Birleştiriciler** | Active Directory hesabı oluşturma işlemi el ile, otomatikleştirilmiş veya kısmen otomatikleştirilebilir mi? |
 | | Bulut HR uygulamasından Active Directory 'e özel öznitelikler yaymaya planlansın mı? |

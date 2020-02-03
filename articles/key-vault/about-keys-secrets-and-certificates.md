@@ -69,7 +69,7 @@ Bir nesne tanımlayıcısı aşağıdaki genel biçime sahiptir:
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-Nerede:  
+Konumlar:  
 
 |||  
 |-|-|  
@@ -372,7 +372,7 @@ Aşağıdaki tablo, x509 anahtar kullanımı ilkesinin Key Vault sertifikası ol
 |Kabullenme|imzala, Doğrula| Yok |
 |crlsign|imzala, Doğrula| Yok |
 
-### <a name="certificate-issuer"></a>Sertifikayı veren
+### <a name="certificate-issuer"></a>Sertifikayı Veren
 
 Key Vault bir sertifika nesnesi, x509 sertifikalarını sıralamak için seçilen bir sertifika veren sağlayıcısıyla iletişim kurmak için kullanılan bir yapılandırma barındırır.  
 

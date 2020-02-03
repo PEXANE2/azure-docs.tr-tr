@@ -34,7 +34,7 @@ Bu öğretici Azure SQL Data Warehouse’a depolanmış verilere göre tahmine d
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide ilerleyebilmeniz için şunlar gereklidir:
 
 * AdventureWorksDW örnek verileri önceden yüklenmiş bir SQL Data Warehouse. Bunu sağlamak için [SQL Data Warehouse Oluşturma](create-data-warehouse-portal.md) bölümüne bakın ve örnek verileri yüklemeyi seçin. Bir veri ambarınız olmasına karşın örnek verileriniz yoksa [örnek verileri elle yükleyebilirsiniz](sql-data-warehouse-load-sample-databases.md).

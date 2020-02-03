@@ -61,7 +61,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
 
     ![İçeri aktarma ilerleme durumu](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
-## <a name="export"></a>Dışarı Aktar
+## <a name="export"></a>Dışarı Aktarma
 Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs uyumlu RDB dosyaları 'na dışarı aktarıp verbırakmanıza olanak tanır. Bu özelliği, Redsıs örneği için bir Azure önbelleğinden diğerine veya başka bir Redsıs sunucusuna veri taşımak için kullanabilirsiniz. Dışarı aktarma işlemi sırasında, Redsıs sunucu örneği için Azure önbelleğini barındıran VM 'de geçici bir dosya oluşturulur ve dosya belirtilen depolama hesabına yüklenir. Dışarı aktarma işlemi başarı veya başarısızlık durumu ile tamamlandığında geçici dosya silinir.
 
 1. Önbelleğin geçerli içeriğini depolama alanına aktarmak için Azure portal [önbelleğinize gidin](cache-configure.md#configure-azure-cache-for-redis-settings) ve **Kaynak menüsünden** **verileri dışarı aktar** ' a tıklayın.
@@ -79,7 +79,7 @@ Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs u
     ![Depolama kapsayıcısını seçin](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Dışarı aktarma işlemini başlatmak için bir **BLOB adı ön eki** yazın ve **dışarı aktar** ' a tıklayın. Blob adı ön eki, bu dışarı aktarma işlemi tarafından oluşturulan dosyaların adlarına önek atamak için kullanılır.
 
-    ![Dışarı Aktar](./media/cache-how-to-import-export-data/cache-export-data.png)
+    ![Dışarı Aktarma](./media/cache-how-to-import-export-data/cache-export-data.png)
 
     Azure portal bildirimleri izleyerek veya [Denetim günlüğündeki](../azure-resource-manager/management/view-activity-logs.md)olayları görüntüleyerek dışa aktarma işleminin ilerlemesini izleyebilirsiniz.
 

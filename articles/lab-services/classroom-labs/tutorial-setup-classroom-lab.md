@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Laboratuvar için zamanlamayı ayarla
 > * Öğrenciye davetiye e-postası gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Laboratuvar hesabında bir derslik Laboratuvarı ayarlamak için laboratuvar hesabındaki şu rollerden birine üye olmanız gerekir: sahip, laboratuvar Oluşturucusu veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir.
 
 Laboratuvar sahibi, başka kullanıcıları **Laboratuvar Oluşturucu** rolüne ekleyebilir. Örneğin, bir laboratuar sahibi, laboratuvar Oluşturucu rolüne meslektedir ekler. Daha sonra, mesleler, sınıfları için VM 'Ler ile laboratuvarları oluşturur. Öğrenciler, mesleler tarafından laboratuvara kaydolmak için aldıkları kayıt bağlantısını kullanır. Kaydolduktan sonra, iş ve ev işlerini yapmak için laboratuvarlarda VM 'Leri kullanabilirler. Laboratuvar Oluşturucu rolüne kullanıcı ekleme hakkında ayrıntılı adımlar için bkz. [Laboratuvar Oluşturucu rolüne kullanıcı ekleme](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).

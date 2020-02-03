@@ -32,7 +32,7 @@ Azure Market 'te teklifler satmanız durumunda, **ödeme özetinde başarılı �
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>Ödeme raporuna erişim için roller ve izinler
 
-| Raporlar/sayfalar    | Hesap sahibi    | Yöneticisi  | Geliştirici | İş Katılımcısı |  Finans Katılımcısı | Pazarlamacısıdır |
+| Raporlar/sayfalar    | Hesap sahibi    | Manager  | Geliştirici | İş Katılımcısı |  Finans Katılımcısı | Pazarlamacısıdır |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Alım raporu (neredeyse gerçek zaman verileri dahil) | Görüntüleyebilir | Görüntüleyebilir | Erişim yok | Erişim yok | Görüntüleyebilir | Erişim yok |
 | Geri bildirim raporu/yanıtları | Geri bildirim görüntüleyebilir ve gönderebilir | Geri bildirim görüntüleyebilir ve gönderebilir | Geri bildirim görüntüleyebilir ve gönderebilir | Erişim yok | Erişim yok | Geri bildirim görüntüleyebilir ve gönderebilir |
@@ -47,7 +47,7 @@ Azure Market 'te teklifler satmanız durumunda, **ödeme özetinde başarılı �
 | | Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
 |---------|---------|---------|
 | Bağlantılar | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) ve [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| Gezinme | Öngörüler ödeme için sunulan ödeme raporlaması | Iş Ortağı Merkezi – ödeme simgesinde sunulan ödeme raporlaması |
+| Gezinti | Öngörüler ödeme için sunulan ödeme raporlaması | Iş Ortağı Merkezi – ödeme simgesinde sunulan ödeme raporlaması |
 | Kapsam | <ul> <li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olarak </li> <li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir. </li> </ul> | <ul> <li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li> <li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li> <li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.  </li> </ul>  |
 | İşlem ödeme için hazır değil | Faturalama devam ediyor | Sonraki tahmini ödeme: ödeme durumu işlenmemiş durumundadır.  |
 | Ödeme durumu |  | İşlenmemiş <br> Kazanç ödeme için uygun. Bu durum, bir soğutma dönemi için, ister program kılavuzunda, ister program kılavuzumuza göre tanımlanan bu durumda kalır. <br> <br> İlerideki <br> Ödeme siparişi tarafından oluşturulan, ödeme işlenmeden önce bekleyen dahili incelemeler. <br> <br> Gönderilip <br> Ödeme, bankanızla gönderilmiştir. |
@@ -87,7 +87,7 @@ Müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu d
 |Sipariş dönemi | 15 Ağu, 2019-30 Ağu, 2019 | **Bağıntı öznitelikleri siparişleri** <br> <ul> <li>Sipariş</li> <li>Ister</li> </ul> <br> **Kullanım raporu** <br> <ul> <li>Ister </li> <li>Müşteri adı</li> <li>(UsageReference) PurchaseRecordId/Lineıtemıd</li> <li> Tahmini genişletilmiş ücret <br> Tahmini ödeme (PC) </li> </ul> | |
 |Dönem sonu (çeyrek) | 30 Eylül 2019 | | |
 |Faturalama tarihi | 15 Ekim 2019 | | |
-|Emanet dönemi (yalnızca kredi kartları, 30 gün) | Yok | | |
+|Emanet dönemi (yalnızca kredi kartları, 30 gün) | yok | | |
 |Toplama dönemi başlangıcı | 15 Ekim 2019 | | |
 |Yalnızca kredi kartları, 30 gün | 1 Kasım 2019-kas 30, 2019 | | |
 |Toplama dönemi sonu (maksimum, 90 gün) | 15 Ocak 2020 | | |

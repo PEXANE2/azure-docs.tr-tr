@@ -1,5 +1,5 @@
 ---
-title: Azure AD ile kimlik sağlama nedir? | Microsoft Belgeleri
+title: Azure AD ile kimlik sağlama nedir? | Microsoft Docs
 description: Kimlik sağlamaya genel bakış açıklanmaktadır.
 services: active-directory
 author: billmath

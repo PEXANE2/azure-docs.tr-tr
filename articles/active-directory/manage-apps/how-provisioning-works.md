@@ -62,12 +62,12 @@ Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştireb
 
 Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz için öznitelik eşlemelerini türdeki bir ifade eşleme biridir. Bu eşlemeler için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenizi sağlayan bir betik benzeri ifade yazmalısınız. Ayrıntılar için bkz. [öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md).
 
-## <a name="scoping"></a>Kapsamlar 
+## <a name="scoping"></a>Kapsam 
 ### <a name="assignment-based-scoping"></a>Atama tabanlı kapsam
 
 Azure AD 'den bir SaaS uygulamasına giden sağlama için, [Kullanıcı veya grup atamalarına](assign-user-or-group-access-portal.md) güvenmek, hangi kullanıcıların sağlama kapsamında olduğunu belirlemenin en yaygın yoludur. Kullanıcı atamaları çoklu oturum açmayı etkinleştirmek için de kullanıldığından, aynı yöntem hem erişim hem de sağlamayı yönetmek için kullanılabilir. Atama tabanlı kapsam, Workday ve başarılı etmenler gibi gelen sağlama senaryolarına uygulanmaz.
 
-* **Gruplar.** Bir Azure AD Premium lisans planıyla, bir SaaS uygulamasına erişim atamak için grupları kullanabilirsiniz. Ardından, sağlama kapsamı **yalnızca atanmış kullanıcıları ve grupları Eşitle**olarak AYARLANDıĞıNDA Azure AD sağlama hizmeti, uygulamaya atanan bir grubun üyesi olup olmadıkları temel alınarak kullanıcıları sağlar veya serbest bırakılır. Uygulama, Grup nesnelerini desteklemediği takdirde grup nesnesinin kendisi tarafından sağlanmamıştır.
+* **Gruplandıran.** Bir Azure AD Premium lisans planıyla, bir SaaS uygulamasına erişim atamak için grupları kullanabilirsiniz. Ardından, sağlama kapsamı **yalnızca atanmış kullanıcıları ve grupları Eşitle**olarak AYARLANDıĞıNDA Azure AD sağlama hizmeti, uygulamaya atanan bir grubun üyesi olup olmadıkları temel alınarak kullanıcıları sağlar veya serbest bırakılır. Uygulama, Grup nesnelerini desteklemediği takdirde grup nesnesinin kendisi tarafından sağlanmamıştır.
 
 * **Dinamik Gruplar.** Azure AD Kullanıcı sağlama hizmeti, [dinamik gruplardaki](../users-groups-roles/groups-create-rule.md)kullanıcıları okuyabilir ve sağlayabilir. Bu uyarıları ve önerileri göz önünde bulundurun:
 
@@ -154,7 +154,7 @@ Hedef sistemdeki bir hata, hedef sistemde tek bir kullanıcının eklenmesini, g
 
 Kaynak sistemdeki etkilenen kullanıcının öznitelik değerlerini ayarlayarak veya öznitelik eşlemelerini çakışmalara neden olmayan şekilde ayarlayarak bu sorunları çözün.
 
-### <a name="quarantine"></a>Ada
+### <a name="quarantine"></a>Karantina
 
 Hedef sisteme karşı gerçekleştirilen çağrıların çoğu veya hepsi bir hata nedeniyle (örneğin, geçersiz yönetici kimlik bilgileri) başarısız olursa, sağlama işi "Karantina" durumuna geçer. Bu durum, [sağlama Özeti raporunda](check-status-user-account-provisioning.md) ve Azure Portal e-posta bildirimleri yapılandırılmışsa e-postayla belirtilir.
 

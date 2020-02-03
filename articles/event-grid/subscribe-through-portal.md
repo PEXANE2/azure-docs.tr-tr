@@ -66,6 +66,6 @@ Portal size bu kaynakla ilgili bir olay aboneliği oluşturma seçeneklerini sun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimi ve yeniden deneme hakkında bilgi için [Event Grid iletiyi teslim ve yeniden deneme](delivery-and-retry.md).
+* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

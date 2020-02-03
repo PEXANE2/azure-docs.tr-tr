@@ -32,7 +32,7 @@ Aşağıdaki diyagramda, takım ortamlarını ayarlamak için projenin bireysel 
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin nasıl uygulanacağı için bir TDSP ortamı ayarlamak üzere Azure Repos ve bir Veri Bilimi Sanal Makinesi (DSVM) kullanılmaktadır. Takımınız diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, bireysel katkıda bulunan görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](group-manager-tasks.md), [ekip lideri](team-lead-tasks.md)ve [Proje lideri](project-lead-tasks.md)tarafından ayarlandığı varsayılır:
 
@@ -45,7 +45,7 @@ Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](grou
 Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değiştirmek veya Azure dosya depolama alanını DSVM 'nize bağlamak için şu denetim listesini göz önünde bulundurmanız gerekir:
 
 - Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -100,7 +100,7 @@ Takımınız veya projeniz Azure dosya depolama alanında paylaşılan varlıkla
 
 Team Data Science Işlemi tarafından tanımlanan diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Bir veri bilimi takım için Grup yöneticisi görevleri](group-manager-tasks.md)
-- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
-- [Proje için bir veri bilimi ekibi müşteri adayı görevleri](project-lead-tasks.md)
+- [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
 

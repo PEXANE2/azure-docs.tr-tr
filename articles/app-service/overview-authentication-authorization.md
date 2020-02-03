@@ -13,7 +13,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715115"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure Uygulama Hizmeti’nde kimlik doğrulaması ve yetkilendirme
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service kimlik doğrulaması ve yetkilendirme
 
 > [!NOTE]
 > Şu anda, AAD v2 (MSAL dahil) Azure uygulama hizmetleri ve Azure Işlevleri için desteklenmez. Lütfen güncelleştirmeler için yeniden denetleyin.
@@ -31,7 +31,7 @@ Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web b
 
 Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](../app-service-mobile/app-service-mobile-auth.md).
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Kimlik doğrulama ve yetkilendirme modülü, uygulama kodunuzla aynı korumalı alanda çalışır. Etkin olduğunda, her gelen HTTP isteği, uygulama kodunuz tarafından işlenemeden önce üzerinden geçirilir.
 
@@ -132,7 +132,7 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 > [!CAUTION]
 > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi genel kullanıma açık bir giriş sayfası gerektiren uygulamalar için istenmeyebilir.
 
-## <a name="more-resources"></a>Daha fazla kaynak
+## <a name="more-resources"></a>Diğer kaynaklar
 
 [Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](app-service-web-tutorial-auth-aad.md)  
 [Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](containers/tutorial-auth-aad.md)  

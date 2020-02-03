@@ -53,7 +53,7 @@ Atıcı 'yi barındırmak için kullanılan alt ağın boyutu Ao dağıtıldıkt
 
 ASE 'nin çalışması için, ASE 'nin şu bağlantı noktalarının açık olması gerekir:
 
-| Kullanım | Başlangıç fiyatı | Bitiş |
+| Kullanım | Başlangıç | Alıcı |
 |-----|------|----|
 | Yönetim | Yönetim adreslerini App Service | Ao alt ağı: 454, 455 |
 |  ATıCı iç iletişimi | Ao alt ağı: tüm bağlantı noktaları | Ao alt ağı: tüm bağlantı noktaları
@@ -84,7 +84,7 @@ Giden erişim için bir ATıCı birden çok dış sisteme bağlıdır. Bu sistem
 
 ATıCı, aşağıdaki bağlantı noktalarında internet 'e erişilebilen adreslere iletişim kurar:
 
-| Kullanımlar | Bağlantı Noktaları |
+| Kullanma | Bağlantı Noktaları |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
@@ -113,8 +113,8 @@ Ao işlevsel bağımlılıklara ek olarak, Portal deneyimiyle ilgili birkaç ek 
 -   Günlük akışı
 -   Kudu
 -   Uzantılar
--   İşlem Gezgini
--   Console
+-   Process Explorer
+-   Konsol
 
 ILB ASE kullandığınızda, SCM sitesinin VNet dışından erişilebilir olmaması gerekir. Bazı yetenekler, uygulamanın SCM sitesine erişmesi gerektiğinden uygulama portalından çalışmayacaktır. Portalı kullanmak yerine doğrudan SCM sitesine bağlanabilirsiniz. 
 
@@ -210,7 +210,7 @@ Aynı rotaları el ile oluşturmak için aşağıdaki adımları izleyin:
 
     ![NSG 'ler ve rotalar][7]
 
-## <a name="service-endpoints"></a>Hizmet Uç Noktaları ##
+## <a name="service-endpoints"></a>Hizmet uç noktaları ##
 
 Hizmet Uç Noktaları, çok kiracılı hizmetlere erişimi bir dizi Azure sanal ağı ve alt ağı ile kısıtlamanızı sağlar. [Sanal ağ hizmeti uç noktaları][serviceendpoints] belgelerindeki hizmet uç noktaları hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -218,7 +218,7 @@ Bir kaynakta Hizmet Uç Noktalarını etkinleştirdiğinizde, diğer tüm yönle
 
 Azure SQL örneği içeren bir alt ağda Hizmet Uç Noktaları etkinleştirilirse, o alt ağa veya alt ağdan bağlanan tüm Azure SQL örnekleri için Hizmet Uç Noktaları etkinleştirilmiş olmalıdır. Aynı alt ağdan birden fazla Azure SQL örneğine erişmek istiyorsanız, tek bir Azure SQL örneğinde Hizmet Uç Noktalarını etkinleştirebilir, başka bir örnekte etkinleştiremezsiniz. Hizmet uç noktalarına yönelik olarak Azure SQL gibi başka hiçbir Azure hizmeti söz konusu değildir. Azure Depolama ile Hizmet Uç Noktalarını etkinleştirdiğinizde, alt ağınızdan o kaynağa erişimi kilitlersiniz, ancak Hizmet Uç Noktaları etkinleştirilmiş olmasa da diğer Azure Depolama hesaplarından erişmeye devam edebilirsiniz.  
 
-![Hizmet Uç Noktaları][8]
+![Hizmet uç noktaları][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png

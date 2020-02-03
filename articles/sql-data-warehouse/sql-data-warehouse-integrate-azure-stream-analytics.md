@@ -23,7 +23,7 @@ Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, y�
 
 Bu makalede, veri ambarı veritabanınızı Stream Analytics işleriniz için çıkış havuzu olarak kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 İlk olarak, Azure Stream Analytics öğreticisini [kullanmaya başlarken](../stream-analytics/stream-analytics-real-time-fraud-detection.md) ' de aşağıdaki adımları gerçekleştirin.  
 
 1. Olay Hub 'ı girişi oluşturma
@@ -34,13 +34,13 @@ Bu makalede, veri ambarı veritabanınızı Stream Analytics işleriniz için ç
 Ardından, bir Azure SQL veri ambarı veritabanı oluşturun
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>İş çıkışını belirtin: Azure SQL veri ambarı veritabanı
-### <a name="step-1"></a>Adım 1
+### <a name="step-1"></a>1\. Adım
 Stream Analytics işiniz sayfanın üst kısmından **Çıkış** ' a tıklayın ve ardından **Ekle**' ye tıklayın.
 
-### <a name="step-2"></a>Adım 2
+### <a name="step-2"></a>2\. Adım
 SQL veritabanı ' nı seçin.
 
-### <a name="step-3"></a>Adım 3
+### <a name="step-3"></a>3\. Adım
 Sonraki sayfada aşağıdaki değerleri girin:
 
 * *Çıkış diğer adı*: Bu iş çıktısı için kolay bir ad girin.

@@ -38,5 +38,5 @@ Kapsayıcıya erişim istemek için öncelikle [anomali algılayıcı kapsayıc�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kapsayıcı görüntüsünü çekmek ve kapsayıcıyı çalıştırmak için [kapsayıcıları yüklemeyi ve çalıştırmayı](../anomaly-detector-container-configuration.md) gözden geçirin
-* Gözden geçirme [kapsayıcıları yapılandırma](../anomaly-detector-container-configuration.md) yapılandırma ayarları
+* Yapılandırma ayarları için [kapsayıcıları](../anomaly-detector-container-configuration.md) yapılandırmayı gözden geçir
 * [Anomali algılayıcı API hizmeti hakkında daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

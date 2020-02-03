@@ -19,29 +19,29 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76716770"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Azure üzerinde Scala ve Spark kullanan Veri Bilimi
-Bu makalede, Scala Spark ölçeklenebilir MLlib ve Spark ML paketleri ile bir Azure HDInsight Spark kümesi üzerinde denetimli makine öğrenimi görevlerini kullanmak nasıl gösterir. Oluşturan görevlerinde size yol gösterir [veri bilimi işlemi](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): veri alımı ve keşfi, görselleştirme, özellik Mühendisliği, modelleme ve model tüketim. Makaleyi modellerinde Lojistik ve doğrusal regresyon, rastgele ormanları ve gradyan boosted ağaçları (GBTs) ek olarak iki ortak denetimli makine öğrenimi görevlerini içerir:
+Bu makalede, Scala Spark ölçeklenebilir MLlib ve Spark ML paketleri ile bir Azure HDInsight Spark kümesi üzerinde denetimli makine öğrenimi görevlerini kullanmak nasıl gösterir. [Veri bilimi işlemini](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)ve araştırma, görselleştirme, özellik Mühendisliği, modelleme ve model tüketimini oluşturan görevlerde size kılavuzluk eder. Makaleyi modellerinde Lojistik ve doğrusal regresyon, rastgele ormanları ve gradyan boosted ağaçları (GBTs) ek olarak iki ortak denetimli makine öğrenimi görevlerini içerir:
 
 * Regresyon problemi: tahminini taksi seyahat ipucunu tutarındaki ($)
 * İkili sınıflandırma: tahmin ipucu ya da taksi dönüş ipucu yok (1/0)
 
 Modelleme işlemi, eğitim ve değerlendirme sınama veri kümesi ve ilgili doğruluğu ölçümleri gerektirir. Bu makalede, bu modeller Azure Blob Depolama alanında depolayın ve puan ve Tahmine dayalı performanslarını değerlendirmek bilgi edinebilirsiniz. Bu makalede, çapraz doğrulama ve hiper parametreli Süpürme'ı kullanarak modelleri iyileştirmek nasıl daha gelişmiş konular da kapsar. Kullanılan veri kümesinin 2013 NYC taksi seyahat ve taksi verileri Github'da bulunan bir örnektir.
 
-[Scala](https://www.scala-lang.org/), Java sanal makineye dayalı bir dili, nesne yönelimli ve işlevsel dil kavramları tümleştirir. Bu, bulutta dağıtılan işleme için uygundur ve Azure Spark kümelerinde çalıştırılır ölçeklenebilir bir dildir.
+Java sanal makinesini temel alan bir dil olan [Scala](https://www.scala-lang.org/), nesne yönelimli ve işlevsel dil kavramlarını tümleştirir. Bu, bulutta dağıtılan işleme için uygundur ve Azure Spark kümelerinde çalıştırılır ölçeklenebilir bir dildir.
 
-[Spark](https://spark.apache.org/) olduğundan büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı paralel işleme altyapısıdır. Spark işleme altyapısı hız, kullanım kolaylığı ve Gelişmiş analiz için oluşturulmuştur. Spark'ın dağıtılmış bellek içi hesaplama özellikleri makine öğrenimi ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim yapın. [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) paket Tekdüzen bir yardımcı olabilecek bir çerçeve oluşturun ve pratik machine learning işlem hatlarını ayarlama veri üzerinde oluşturulan üst düzey API kümesi sağlar. [MLlib](https://spark.apache.org/mllib/) Spark'ın ölçeklenebilir makine öğrenimi kitaplığı dağıtılmış bu ortama modelleme özellikleri sunar.
+[Spark](https://spark.apache.org/) , büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Spark işleme altyapısı hız, kullanım kolaylığı ve Gelişmiş analiz için oluşturulmuştur. Spark'ın dağıtılmış bellek içi hesaplama özellikleri makine öğrenimi ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim yapın. [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) paketi, pratik makine öğrenimi işlem hatlarını oluşturmanıza ve ayarlamanıza yardımcı olabilecek veri çerçevelerinin üzerine inşa edilen tek düzeyli bir üst düzey API kümesi sağlar. [Mllib](https://spark.apache.org/mllib/) , bu dağıtılmış ortama modelleme özellikleri getiren Spark 'ın ölçeklenebilir makine öğrenme kitaplığıdır.
 
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) açık kaynaklı Spark'ın Azure'da barındırılan teklifidir. Ayrıca Spark kümesinde Jupyter Scala not defterleri için destek içerir ve dönüştürme, filtreleme ve Azure Blob depolamada depolanan verileri görselleştirmek için Spark SQL etkileşimli sorguları çalıştırabilirsiniz. Jupyter not defterlerini Spark kümelerinde yüklü çözümler sağlayın ve verileri görselleştirmek için ilgili çizimleri Göster Scala kod parçacıkları bu makaledeki çalıştırın. Bu konu başlıklarındaki modelleme adımları, eğitme, değerlendirmek, kaydetme ve her bir türü modelin kullanma işlemi gösterilmektedir koda sahip.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) , açık kaynaklı Spark 'ın Azure tarafından barındırılan sunumudur. Ayrıca Spark kümesinde Jupyter Scala not defterleri için destek içerir ve dönüştürme, filtreleme ve Azure Blob depolamada depolanan verileri görselleştirmek için Spark SQL etkileşimli sorguları çalıştırabilirsiniz. Jupyter not defterlerini Spark kümelerinde yüklü çözümler sağlayın ve verileri görselleştirmek için ilgili çizimleri Göster Scala kod parçacıkları bu makaledeki çalıştırın. Bu konu başlıklarındaki modelleme adımları, eğitme, değerlendirmek, kaydetme ve her bir türü modelin kullanma işlemi gösterilmektedir koda sahip.
 
-Kurulum adımları ve kod bu makalede Azure HDInsight 3.4 Spark 1.6 için var. Ancak, bu makalede hem de kodu [Scala Jupyter not defteri](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) geneldir ve tüm Spark kümesinde çalışması gerekir. Küme Kurulum ve yönetim adımları HDInsight Spark kullanmıyorsanız ne bu makalede gösterilenden biraz farklı olabilir.
+Kurulum adımları ve kod bu makalede Azure HDInsight 3.4 Spark 1.6 için var. Ancak, bu makaledeki ve [Scala Jupyter Notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) kod geneldir ve tüm Spark kümeleri üzerinde çalışmalıdır. Küme Kurulum ve yönetim adımları HDInsight Spark kullanmıyorsanız ne bu makalede gösterilenden biraz farklı olabilir.
 
 > [!NOTE]
-> Scala yerine Python uçtan uca veri bilimi işlemi için görevleri tamamlamak için nasıl kullanılacağını gösteren bir konu için bkz: [Azure HDInsight üzerinde Spark'ı kullanarak veri bilimi](spark-overview.md).
+> Uçtan uca bir veri bilimi işleminin görevlerini gerçekleştirmek için Scala yerine Python 'u nasıl kullanacağınızı gösteren bir konu için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimi](spark-overview.md).
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
-* Bir Azure aboneliğiniz olmalıdır. Zaten bir tamamlamadıysanız [Azure ücretsiz deneme sürümü edinin](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Aşağıdaki yordamları tamamlamak için bir Azure HDInsight 3.4 Spark 1.6 kümesine ihtiyacınız vardır. Bir küme oluşturmak için deki yönergelere bakın [Başlarken: Azure HDInsight üzerinde Apache Spark'ı oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Küme türü ve sürümü ayarlamak **küme türü seçin** menüsü.
+## <a name="prerequisites"></a>Önkoşullar
+* Bir Azure aboneliğiniz olmalıdır. Henüz bir tane yoksa [Azure Ücretsiz deneme sürümü alın](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Aşağıdaki yordamları tamamlamak için bir Azure HDInsight 3.4 Spark 1.6 kümesine ihtiyacınız vardır. Bir küme oluşturmak için bkz. [Başlarken: Azure HDInsight üzerinde Apache Spark oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Küme türünü **seçin** menüsünde küme türünü ve sürümünü ayarlayın.
 
 ![HDInsight küme türü yapılandırması](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -49,22 +49,22 @@ Kurulum adımları ve kod bu makalede Azure HDInsight 3.4 Spark 1.6 için var. A
 > 
 > 
 
-Spark kümesinde Jupyter not defteri gelen kodu çalıştırmak yönergeler ve NYC taksi seyahat veri açıklaması için ilgili bölümlere bakın [genel bakış, verilerin Azure HDInsight üzerinde Spark'ı kullanarak bilimi](spark-overview.md).  
+NYC TAXI seyahat verilerinin açıklaması ve Spark kümesindeki bir Jupyter Not defterinden kod yürütme yönergeleri için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md)konusundaki ilgili bölümler.  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark kümesinde Jupyter not defteri gelen Scala kod yürütün
-Jupyter not defteri Azure portalından başlatabilirsiniz. Panonuzda Spark kümesini bulun ve kümeniz için Yönetim sayfasında girmek için tıklatın. Ardından, **küme panoları**ve ardından **Jupyter not defteri** Spark kümesiyle ilişkili not defterini açın.
+Jupyter not defteri Azure portalından başlatabilirsiniz. Panonuzda Spark kümesini bulun ve kümeniz için Yönetim sayfasında girmek için tıklatın. Ardından, **küme panoları**' na tıklayın ve ardından **Jupyter Notebook** ' a tıklayarak Spark kümesiyle ilişkili Not defterini açın.
 
 ![Küme panosu ve Jupyter Not Defterleri](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-Jupyter not defterleri https:// sırasında da erişebilirsiniz&lt;clustername&gt;.azurehdinsight.net/jupyter. Değiştirin *clustername* değerini kümenizin adıyla. Jupyter not defterlerini erişmek, yönetici hesabı için parola gerekir.
+Ayrıca, https://&lt;clustername&gt;. azurehdinsight.net/jupyter adresinden jupi not defterlerine erişebilirsiniz. *Clustername* değerini kümenizin adıyla değiştirin. Jupyter not defterlerini erişmek, yönetici hesabı için parola gerekir.
 
 ![Jupyter not defterleri için küme adını kullanarak Git](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-Seçin **Scala** PySpark API kullanan önceden paketlenmiş not defterlerini birkaç örnek sahip bir dizini görmek için. Araştırma model ve puanlama kodu içeren Scala.ipynb Not Defteri kullanarak Spark konular bu paketi üzerinde kullanılabilir örnekleri [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala).
+PySpark API kullanan önceden paketlenmiş not defterlerine örnek bir dizin görmek için **Scala** ' yı seçin. Bu Spark konuları paketine yönelik kod örneklerini içeren Scala. ipynb Not defterini kullanan keşif modelleme ve Puanlama, [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)' da kullanılabilir.
 
-Jupyter not defteri sunucusuna doğrudan github'dan bir Not Defteri kullanarak Spark kümenizde karşıya yükleyebilirsiniz. Jupyter giriş sayfanızda tıklayın **karşıya** düğmesi. Dosya Gezgini'nde, Scala not defterinin GitHub (ham içeriği) URL'yi yapıştırın ve ardından **açık**. Scala not defterine aşağıdaki URL'de kullanılabilir:
+Jupyter not defteri sunucusuna doğrudan github'dan bir Not Defteri kullanarak Spark kümenizde karşıya yükleyebilirsiniz. Jupyıter giriş sayfanızda **karşıya yükle** düğmesine tıklayın. Dosya Gezgini 'nde, Scala Not defterinin GitHub (ham içerik) URL 'sini yapıştırın ve **Aç**' a tıklayın. Scala not defterine aşağıdaki URL'de kullanılabilir:
 
-[Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
+[Araştırma-modelleme ve Puanlama-kullanma-Scala. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
 ## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Kurulum: Hazır Spark ve Hive bağlamları, Spark işlevlerini ve Spark kitaplıkları
 ### <a name="preset-spark-and-hive-contexts"></a>Önceden oluşturulmuş Spark ve Hive bağlamları
@@ -75,16 +75,16 @@ Jupyter not defteri sunucusuna doğrudan github'dan bir Not Defteri kullanarak S
 
 Jupyter not defterleri ile sağlanan Spark çekirdekler bağlamları önceden. Uygulama ile çalışmaya başlamadan önce Hive bağlamları geliştirme ya da açıkça Spark ayarlamanız gerekmez. Önceden ayarlanmış Bağlamlar şunlardır:
 
-* `sc` zamanda sparkcontext öğesini için
-* `sqlContext` HiveContext için
+* Mini bağlam için `sc`
+* HiveContext için `sqlContext`
 
 ### <a name="spark-magics"></a>Spark işlevlerini
-Bazı önceden tanımlanmış "işlevlerini" ile çağırabileceğiniz özel komutlar olduğu Spark çekirdek sağlar `%%`. Bu komutların ikisi, aşağıdaki kod örnekleri kullanılır.
+Spark çekirdeği, `%%`ile çağırabilmeniz için özel komutlar olan bazı önceden tanımlanmış "mıknatıcs" sağlar. Bu komutların ikisi, aşağıdaki kod örnekleri kullanılır.
 
-* `%%local` sonraki satırların kodu yerel olarak yürütülecek belirtir. Kod, geçerli Scala kodu olmalıdır.
-* `%%sql -o <variable name>` bir Hive sorgusu yürütür `sqlContext`. Varsa `-o` parametresi geçirilir, sorgu sonucu kalıcı hale getirilir `%%local` Scala bağlamı bir Spark veri çerçevesine olarak.
+* `%%local` sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod, geçerli Scala kodu olmalıdır.
+* `%%sql -o <variable name>`, `sqlContext`karşı bir Hive sorgusu yürütür. `-o` parametresi geçirilirse sorgunun sonucu, Spark veri çerçevesi olarak `%%local` Scala bağlamında kalıcı hale getirilir.
 
-İle çağrı, Jupyter not defterleri ve kendi önceden tanımlanmış çekirdekler hakkında daha fazla bilgi "magics için" `%%` (örneğin, `%%local`), bkz: [için Jupyter not defterlerinde kullanılabilen çekirdekler HDInsight Spark Linux kümeleri üzerinde HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Jupyter Not defterleri ve `%%local``%%` ile çağrlan önceden tanımlanmış "mıknatık" hakkında daha fazla bilgi için bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri ile Jupyter Notebook için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ### <a name="import-libraries"></a>Kitaplıkları içeri aktarma
 Spark MLlib ve aşağıdaki kodu kullanarak ihtiyacınız olan diğer kitaplıklarla içeri aktarın.
@@ -136,7 +136,7 @@ Veri bilimi işlemi ilk adımı, analiz etmek istediğiniz veri alma sağlamakt�
 ### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Azure Blob Depolama alanında depolama konumları için dizin yolları ayarlayın
 Spark okuyup Azure Blob depolamaya yazabilir. Tüm mevcut verilerinizi işlemek için Spark'ı kullanın ve sonra sonuçları Blob storage'da depolamak.
 
-Modelleri veya dosyaları Blob depolama alanına kaydetmek için doğru yolunu belirtmeniz gerekir. İle başlayan bir yol kullanarak Spark kümesine eklenen varsayılan kapsayıcı başvuru `wasb:///`. Diğer yerlerden başvuruda `wasb://`.
+Modelleri veya dosyaları Blob depolama alanına kaydetmek için doğru yolunu belirtmeniz gerekir. `wasb:///`ile başlayan bir yol kullanarak Spark kümesine eklenen varsayılan kapsayıcıya başvurun. `wasb://`kullanarak diğer konumlara başvurun.
 
 Aşağıdaki kod örneği, girdi verilerini okumak için ve yolun Spark kümesine eklenmiş olan Blob depolama alanına model kaydedileceği konumu belirtir.
 
@@ -224,7 +224,7 @@ Aşağıdaki kod örneği, girdi verilerini okumak için ve yolun Spark kümesin
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 8 saniye.
 
@@ -245,22 +245,22 @@ Ardından, taksi, yolcular ve ipucu verileri için bir tabloyu sorgulamak; bozuk
     # SHOW ONLY THE TOP THREE ROWS
     sqlResultsDF.show(3)
 
-**Çıkış:**
+**Çıktıların**
 
 | fare_amount | passenger_count | tip_amount | Eğimli |
 | --- | --- | --- | --- |
 |        13.5 |1.0 |2.9 |1.0 |
-|        16.0 |2.0 |3.4 |1.0 |
-|        10.5 |2.0 |1.0 |1.0 |
+|        16.0 |2,0 |3.4 |1.0 |
+|        10.5 |2,0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Veri keşfi ve görselleştirme
 Spark'a verileri getirdikten sonra veri bilimi işlemi sonraki adımda, veri keşfi ve görselleştirme üzerinde daha derin bir anlayış kazanmak sağlamaktır. Bu bölümde, taksi verileri SQL sorgularını kullanarak inceleyin. Ardından, otomatik görselleştirme jupi özelliğini kullanarak hedef değişkenleri ve görsel inceleme için olası özellikleri çizmek üzere sonuçları bir veri çerçevesine aktarın.
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>Veri çizimi için yerel ve SQL Sihri kullanın
-Varsayılan olarak, bir Jupyter not defteri çalıştırmak herhangi bir kod parçacığı çıkışı çalışan düğümlerine kalıcı oturum bağlamında kullanılabilir. Her hesaplama için çalışan düğümüne bir seyahat kaydetmek istiyorsanız ve, hesaplama için ihtiyacınız olan tüm verileri (aynı baş düğüm) yerel olarak Jupyter sunucu düğümünde mevcut ise, kullanabileceğiniz `%%local` magic üzerinde Jupyter kod parçacığını çalıştırın Sunucu.
+Varsayılan olarak, bir Jupyter not defteri çalıştırmak herhangi bir kod parçacığı çıkışı çalışan düğümlerine kalıcı oturum bağlamında kullanılabilir. Her bir hesaplama için çalışan düğümlerine bir seyahat kaydetmek istiyorsanız ve hesaplayıcınız için ihtiyaç duyduğunuz tüm veriler jupi sunucu düğümünde (baş düğümüdür) yerel olarak kullanılabiliyorsa, `%%local` Magic kullanarak jupi sunucusu üzerinde kod parçacığını çalıştırabilirsiniz.
 
-* **SQL Sihri** (`%%sql`). HDInsight Spark çekirdek kolay satır içi HiveQL SQLContext sorguları destekler. (`-o VARIABLE_NAME`) Bağımsız değişken Jupyter sunucuda Pandas bir veri çerçevesi olarak SQL sorgusunun çıktısını sürdürür. Bu ayar, çıktının yerel modda kullanılabilir olacağı anlamına gelir.
-* `%%local` **Magic**. `%%local` Magic çalışan kodu yerel olarak HDInsight kümesinin baş düğüm Jupyter sunucusu üzerinde. Genellikle, kullandığınız `%%local` birlikte Sihirli `%%sql` ile Sihirli `-o` parametresi. `-o` Parametresi yerel olarak SQL sorgusunun çıktısını kalıcı ve ardından `%%local` Sihirli yerel olarak karşı ve yerel olarak kalıcı çıkış SQL sorguları çalıştırmak için kod parçacığı bir sonraki kümesini tetikleme.
+* **SQL Magic** (`%%sql`). HDInsight Spark çekirdek kolay satır içi HiveQL SQLContext sorguları destekler. (`-o VARIABLE_NAME`) bağımsız değişkeni, SQL sorgusunun çıkışını jupi sunucusunda bir Pandas veri çerçevesi olarak devam ettirir. Bu ayar, çıktının yerel modda kullanılabilir olacağı anlamına gelir.
+* `%%local` **Magic**. `%%local` Magic, kodu HDInsight kümesinin baş düğümü olan Jupyıter sunucusunda yerel olarak çalıştırır. Genellikle, `-o` parametresiyle `%%sql` Magic ile birlikte `%%local` Magic kullanırsınız. `-o` parametresi, SQL sorgusunun çıkışını yerel olarak kalıcı hale getirecağından, `%%local` Magic, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalışmak için bir sonraki kod parçacığı kümesini tetikler.
 
 ### <a name="query-the-data-by-using-sql"></a>SQL kullanarak verileri Sorgulama
 Bu sorgu, taksi gelişlerin taksi tutar, yolcular sayısı ve ipucu miktarını alır.
@@ -269,7 +269,7 @@ Bu sorgu, taksi gelişlerin taksi tutar, yolcular sayısı ve ipucu miktarını 
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped FROM taxi_train WHERE passenger_count > 0 AND passenger_count < 7 AND fare_amount > 0 AND fare_amount < 200 AND payment_type in ('CSH', 'CRD') AND tip_amount > 0 AND tip_amount < 25
 
-Aşağıdaki kodda, `%%local` Sihirli bir yerel veri çerçevesi sqlResults oluşturur. SqlResults matplotlib kullanarak çizmek için kullanabilirsiniz.
+Aşağıdaki kodda `%%local` Magic, sqlResults yerel veri çerçevesini oluşturur. SqlResults matplotlib kullanarak çizmek için kullanabilirsiniz.
 
 > [!TIP]
 > Yerel Sihirli bu makalede birden çok kez kullanıldı. Veri kümeniz büyükse, yerel belleğe sığması bir veri çerçevesi oluşturmak için lütfen örnek.
@@ -327,7 +327,7 @@ Veri çizimi için kod aşağıdaki gibidir:
     plt.show()
 
 
-**Çıkış:**
+**Çıktıların**
 
 ![İpucu tutarı çubuk grafik](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
@@ -338,11 +338,11 @@ Veri çizimi için kod aşağıdaki gibidir:
 ## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>Özellikleri oluşturup özellikleri dönüştürmek ve ardından veri modelleme işlevleri içine girişi için hazırlama
 Spark ML ve MLlib ağaç tabanlı modelleme işlevleri için çeşitli gruplama, dizin oluşturma, sık erişimli bir kodlama ve vektörleştirme gibi teknikler kullanılarak, hedef ve Özellikler hazırlamanız gerekir. Bu bölümde izlemek için yordamlar şunlardır:
 
-1. Yeni bir özellik tarafından oluşturma **gruplama** trafiği saatlerine zaman demetleri.
-2. Uygulama **dizin oluşturma ve sık erişimli bir kodlama** kategorik özellikleri.
-3. **Örnek ve veri kümesi bölme** içine eğitim ve test faturalandırılmayacak.
-4. **Eğitim değişkeni ve Özellikler belirtmek**, ardından eğitim kodlanmış dizinli veya bir seyrek oluşturmak ve test etiketli giriş noktası dayanıklı Dağıtılmış veri kümeleri (Rdd) veya veri çerçevelerini.
-5. Otomatik olarak **kategorilere ayırmak ve özellikler ve hedefler vektör hale getirmeye** girdi olarak makine öğrenimi modelleri için kullanılacak.
+1. Saat demetlerini, trafik zaman demetlerine **ekleyerek yeni** bir özellik oluşturun.
+2. Kategorik özelliklerine **Dizin oluşturma ve tek yönlü kodlama** uygulayın.
+3. Veri kümesini eğitim ve test kesirleri olarak **örnekle ve böler** .
+4. **Eğitim değişkeni ve özelliklerini belirtin**, ardından dizinlenmiş veya tek yönlü kodlanmış eğitim ve işaret eden dayanıklı Dağıtılmış veri kümeleri (rdds) veya veri çerçeveleri etiketli test girişi oluşturun.
+5. Makine öğrenimi modelleriyle ilgili giriş olarak kullanılacak **özellikleri ve hedefleri otomatik olarak kategorilere ayırın ve vektörleştirme** .
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine oluşturun.
 Bu kod, yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine oluşturma ve sonuçta elde edilen veri çerçevesi bellekte önbelleğe alınacağını gösterir. Rdd ve veri çerçevelerini tekrar tekrar kullanıldığı geliştirilmiş yürütme sürelerini müşteri adaylarını önbelleğe alma. Buna, Rdd ve veri çerçevelerini aşağıdaki yordamları çeşitli aşamalarında önbelleğe alınır.
@@ -368,11 +368,11 @@ Bu kod, yeni bir özellik olarak gruplama saat trafiği zaman demetlerin içine 
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Dizin oluşturma ve sık erişimli bir kategorik özelliklerinin kodlama
 Modelleme ve tahmin MLlib işlevlerini dizine veya kullanılmadan önce kodlanmış için kategorik girdi verilerini özelliklerle gerektirir. Bu bölümde dizin veya kodlama giriş modelleme işlevleri için kategorik özellikleri gösterilmektedir.
 
-Dizin veya modeline bağlı olarak, farklı şekillerde Modellerinizi kodlamanız gerekir. Örneğin, mantıksal ve doğrusal regresyon modellerini bir seyrek kodlama gerektirir. Örneğin, üç kategoriye sahip bir özellik, üç özellik sütunlara genişletilebilir. Her sütun, 0 veya 1 gözlemi kategorisine bağlı olarak içerecektir. MLlib sağlar [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) sık erişimli bir kodlama için işlevi. Bu Kodlayıcı etiket dizinleri içeren bir sütun ikili vektörleri en fazla bir değerle tek bir-bir sütunu eşlenir. Bu kodlama ile Lojistik regresyon gibi sayısal değerli özellikler beklediğiniz algoritmaları kategorik özelliklerine uygulanabilir.
+Dizin veya modeline bağlı olarak, farklı şekillerde Modellerinizi kodlamanız gerekir. Örneğin, mantıksal ve doğrusal regresyon modellerini bir seyrek kodlama gerektirir. Örneğin, üç kategoriye sahip bir özellik, üç özellik sütunlara genişletilebilir. Her sütun, 0 veya 1 gözlemi kategorisine bağlı olarak içerecektir. MLlib, tek başına kodlama için [Onehotencoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) işlevini sağlar. Bu Kodlayıcı etiket dizinleri içeren bir sütun ikili vektörleri en fazla bir değerle tek bir-bir sütunu eşlenir. Bu kodlama ile Lojistik regresyon gibi sayısal değerli özellikler beklediğiniz algoritmaları kategorik özelliklerine uygulanabilir.
 
 Burada, karakter dizeleri olan örnekler göstermek için yalnızca dört değişken dönüştürün. Ayrıca, kategorik değişkenleri olarak sayısal değerler tarafından temsil edilen diğer gibi değişkenleri haftanın günü, dizine ekleyebilir.
 
-Dizin oluşturma için kullanmak `StringIndexer()`ve sık erişimli bir kodlama için `OneHotEncoder()` MLlib işlevleri. Dizin ve kategorik özellikleri kodlamak için kod aşağıdaki gibidir:
+Dizin oluşturma için `StringIndexer()`kullanın ve tek yönlü kodlama için MLlib 'teki `OneHotEncoder()` işlevleri kullanın. Dizin ve kategorik özellikleri kodlamak için kod aşağıdaki gibidir:
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -409,7 +409,7 @@ Dizin oluşturma için kullanmak `StringIndexer()`ve sık erişimli bir kodlama 
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 4 saniye.
 
@@ -448,12 +448,12 @@ Rastgele bir sayı (0 ve 1 arasında) çapraz doğrulama hatları eğitim sıras
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 2 saniye.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Eğitim değişkeni ve özellikleri belirtin ve ardından eğitim ve giriş noktası Rdd ya da veri çerçevelerini etiketli testi kodlanmış dizinli veya bir seyrek oluşturun
-Bu bölüm, kategorik metin veri noktası etiketli veri türü olarak dizin ve eğitme ve test MLlib Lojistik regresyon ve diğer sınıflandırma modellerini üzere kullanabilmeniz için kodlamak gösteren kod içerir. Etiketli noktası, girdi verisi olarak makine öğrenimi algoritması MLlib içinde çoğu için gerekli olan bir şekilde biçimlendirilmiş Rdd nesneleridir. A [noktası etiketli](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) yerel bir vektör, yoğun ya da seyrek, etiket/yanıt ile ilişkilidir.
+Bu bölüm, kategorik metin veri noktası etiketli veri türü olarak dizin ve eğitme ve test MLlib Lojistik regresyon ve diğer sınıflandırma modellerini üzere kullanabilmeniz için kodlamak gösteren kod içerir. Etiketli noktası, girdi verisi olarak makine öğrenimi algoritması MLlib içinde çoğu için gerekli olan bir şekilde biçimlendirilmiş Rdd nesneleridir. [Etiketli nokta](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) , bir etiket/Yanıtla ilişkili olan, yoğun veya seyrek olan yerel bir vektörüdür.
 
 Bu kodda, hedef (bağımlı) değişkeni ve modelleri eğitmek için kullanmak için özellikleri belirtin. Ardından, eğitim ve giriş noktası Rdd ya da veri çerçevelerini etiketli testi kodlanmış dizinli veya bir seyrek oluşturun.
 
@@ -491,7 +491,7 @@ Bu kodda, hedef (bağımlı) değişkeni ve modelleri eğitmek için kullanmak i
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 4 saniye.
 
@@ -535,18 +535,18 @@ Burada, bu iki görevleri için kodu verilmiştir.
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>İkili sınıflandırma modelinde: bir ipucu Ücretli olup olmadığını tahmin edin
 Bu bölümde, üç türleri ipucu Ücretli olup olmadığını tahmin etmek için ikili sınıflandırma modellerini oluşturun:
 
-* A **Lojistik regresyon modelini** Spark ML kullanarak `LogisticRegression()` işlevi
-* A **rastgele orman sınıflandırma modeli** Spark ML kullanarak `RandomForestClassifier()` işlevi
-* A **gradyan artırırken ağacı sınıflandırma modeli** MLlib kullanarak `GradientBoostedTrees()` işlevi
+* Spark ML `LogisticRegression()` işlevini kullanarak bir **lojistik regresyon modeli**
+* Spark ML `RandomForestClassifier()` işlevini kullanarak **rastgele bir orman sınıflandırma modeli**
+* MLlib `GradientBoostedTrees()` işlevi kullanılarak **gradyan arttırma ağacı sınıflandırma modeli**
 
 ### <a name="create-a-logistic-regression-model"></a>Bir Lojistik regresyon modeli oluşturun
-Ardından, Spark ML kullanarak bir Lojistik regresyon modeli oluşturun `LogisticRegression()` işlevi. Bir dizi adım kod oluşturma modeli oluşturun:
+Ardından, Spark ML `LogisticRegression()` işlevini kullanarak bir lojistik regresyon modeli oluşturun. Bir dizi adım kod oluşturma modeli oluşturun:
 
-1. **Modeli eğitme** bir parametre kümesi ile verileri.
-2. **Modeli değerlendirme** ölçümlerle test veri kümesinde.
-3. **Modeli kaydedin** gelecekteki kullanım için Blob Depolama.
-4. **Modeli Puanlama** karşı test verilerinin.
-5. **Sonuçları çizim** alıcı çalıştırma özellikleri (ROC) eğrileri ile.
+1. Model verilerini bir parametre kümesiyle **eğitme** .
+2. Ölçümle bir test veri kümesindeki **modeli değerlendirin** .
+3. Daha sonraki tüketim için modeli BLOB depolama alanına **kaydedin** .
+4. Test verileriyle **modeli puan** edin.
+5. **Sonuçları** alıcı işletim ÖZELLIĞI (ROC) eğrilerle çizdirme.
 
 Bu yordamlar için kod aşağıdaki gibidir:
 
@@ -594,7 +594,7 @@ Yük, Puanlama ve sonuçları kaydedin.
     println("ROC on test data = " + ROC)
 
 
-**Çıkış:**
+**Çıktıların**
 
 Test veri çubuğunda ROC 0.9827381497557599 =
 
@@ -632,12 +632,12 @@ Python yerel Pandas veri karelerden ROC eğrisi çizmek için kullanın.
     plt.show()
 
 
-**Çıkış:**
+**Çıktıların**
 
 ![İpucu veya ipucu ROC eğrisi çizimleri yok](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
 ### <a name="create-a-random-forest-classification-model"></a>Bir rastgele orman sınıflandırma modeli oluşturma
-Ardından, Spark ML kullanarak rastgele orman sınıflandırma modeli oluşturma `RandomForestClassifier()` çalışması ve test veri modelinde değerlendirebilirsiniz.
+Ardından, Spark ML `RandomForestClassifier()` işlevini kullanarak rastgele bir orman sınıflandırma modeli oluşturun ve ardından test verilerinde modeli değerlendirin.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -665,12 +665,12 @@ Ardından, Spark ML kullanarak rastgele orman sınıflandırma modeli oluşturma
     println("ROC on test data = " + ROC)
 
 
-**Çıkış:**
+**Çıktıların**
 
 Test veri çubuğunda ROC 0.9847103571552683 =
 
 ### <a name="create-a-gbt-classification-model"></a>GBT sınıflandırma modeli oluşturma
-Ardından, MLlib'ın kullanarak GBT sınıflandırma modeli oluşturma `GradientBoostedTrees()` çalışması ve test veri modelinde değerlendirebilirsiniz.
+Ardından, MLlib 'in `GradientBoostedTrees()` işlevini kullanarak bir GBT sınıflandırma modeli oluşturun ve ardından test verilerinde modeli değerlendirin.
 
     # TRAIN A GBT CLASSIFICATION MODEL BY USING MLLIB AND A LABELED POINT
 
@@ -721,15 +721,15 @@ Ardından, MLlib'ın kullanarak GBT sınıflandırma modeli oluşturma `Gradient
     println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 
-**Çıkış:**
+**Çıktıların**
 
 ROC eğrisi alanında: 0.9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>Regresyon modeli: ipucu miktarını tahmin edin
 Bu bölümde, iki türleri ipucu miktarı tahmin etmek için regresyon modeli oluşturun:
 
-* A **regularized doğrusal regresyon modeli** Spark ML kullanarak `LinearRegression()` işlevi. Modeli kaydedin ve modeli test veri çubuğunda değerlendirme.
-* A **gradyan yükseltmeli ağaç regresyon modeli** Spark ML kullanarak `GBTRegressor()` işlevi.
+* Spark ML `LinearRegression()` işlevini kullanarak **regularized doğrusal regresyon modeli** . Modeli kaydedin ve modeli test veri çubuğunda değerlendirme.
+* Spark ML `GBTRegressor()` işlevini kullanarak **gradyan arttırma ağacı regresyon modeli** .
 
 ### <a name="create-a-regularized-linear-regression-model"></a>Bir regularized doğrusal regresyon modeli oluşturun
     # RECORD THE START TIME
@@ -773,7 +773,7 @@ Bu bölümde, iki türleri ipucu miktarı tahmin etmek için regresyon modeli ol
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 13 saniye.
 
@@ -804,7 +804,7 @@ Hücre çalıştırma süresi: 13 saniye.
     println("R-sqr on test data = " + r2)
 
 
-**Çıkış:**
+**Çıktıların**
 
 Test verileri üzerindeki R sqr 0.5960320470835743 =
 
@@ -821,7 +821,7 @@ Ardından, bir veri çerçevesi test sonuçlarını sorgulama ve bunları görse
     # CLICK THE TYPE OF PLOT TO GENERATE (LINE, AREA, BAR, AND SO ON)
     sqlResults
 
-Kod bir yerel veri çerçevesine sorgu çıkışı oluşturur ve verileri çizer. `%%local` Sihirli bir yerel veri çerçevesine oluşturur `sqlResults`, hangi ile matplotlib çizmek için kullanabilirsiniz.
+Kod bir yerel veri çerçevesine sorgu çıkışı oluşturur ve verileri çizer. `%%local` Magic, Matplotlib ile çizmek için kullanabileceğiniz bir yerel veri çerçevesini (`sqlResults`) oluşturur.
 
 > [!NOTE]
 > Bu Spark Sihirli bu makalede birden çok kez kullanıldı. Veri miktarı büyükse, yerel belleğe sığması bir veri çerçevesi oluşturmak için örnek.
@@ -846,12 +846,12 @@ Kod bir yerel veri çerçevesine sorgu çıkışı oluşturur ve verileri çizer
     plt.axis([-1, 15, -1, 8])
     plt.show(ax)
 
-**Çıkış:**
+**Çıktıların**
 
 ![Miktar İpucu: Gerçek ve Öngörülen](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>GBT regresyon modeli oluşturun
-Spark ML kullanarak bir GBT regresyon modeli oluşturun `GBTRegressor()` çalışması ve test veri modelinde değerlendirebilirsiniz.
+Spark ML `GBTRegressor()` işlevini kullanarak bir GBT regresyon modeli oluşturun ve ardından test verilerinde modeli değerlendirin.
 
 [Gradyan-artırılmış ağaçlar](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS), karar ağaçları Kümelemeler. GB bir kayıp işlevini en aza indirmek için GBTS hatlarınızın karar ağaçları. Gerileme ve sınıflandırma için GB 'LAR kullanabilirsiniz. Bunlar kategorik özellikleri işleyebilir, özellik ölçeklendirme gerektirmez ve nonlinearities ve özellik etkileşimleri yakalayabilirsiniz. Ayrıca bunları bir sınıflandırma veya çoklu sınıflar ayarında kullanabilirsiniz.
 
@@ -879,7 +879,7 @@ Spark ML kullanarak bir GBT regresyon modeli oluşturun `GBTRegressor()` çalı�
     println("Test R-sqr is: " + Test_R2);
 
 
-**Çıkış:**
+**Çıktıların**
 
 Test R-sqr olduğu: 0.7655383534596654
 
@@ -890,11 +890,11 @@ Bu bölümde, geliştiricilerin model iyileştirme için sık kullandığınız 
 * Çapraz doğrulama ve hyper-Spark ML'ın CrossValidator işlevi (ikili sınıflandırma) kullanarak üst düzey parametre kullanarak model en iyi duruma getirme
 * Herhangi bir makine öğrenme işlevi ve parametre kümesi (doğrusal regresyon) kullanmak için özel çapraz doğrulama ve parametre Süpürme kodu kullanarak model en iyi duruma getirme
 
-**Çapraz doğrulama** ne kadar iyi bilinen bir veri kümesini eğitilmiş bir modeli veri kümeleri üzerinde bu eğitilmedi özelliklerinin tahmin etmek için generalize değerlendirir bir tekniktir. Bu tekniğin arkasındaki genel fikir, bir model, bilinen verileri bir veri kümesinde çalıştırılır ve ardından kendi tahmin doğruluğunu bağımsız bir veri kümesi karşı test edilmiştir ' dir. Bir veri kümesine bölmek için ortak bir uygulama olan *k*-katlayan ve ardından ettirirsiniz hatları biri dışındaki tüm modelde eğitin.
+**Çapraz doğrulama** , bilinen bir veri kümesi üzerinde eğitilen bir modelin, eğitilen veri kümelerinin özelliklerini tahmin etmek için genelleştirdiğini değerlendirir bir tekniktir. Bu tekniğin arkasındaki genel fikir, bir model, bilinen verileri bir veri kümesinde çalıştırılır ve ardından kendi tahmin doğruluğunu bağımsız bir veri kümesi karşı test edilmiştir ' dir. Yaygın bir uygulama, bir veri kümesini *k*katlara bölmek ve sonra da katların biri olan her türlü bir yandan modeli hepsini bir kez deneme halinde eğmektir.
 
-**Hyper-parametre iyileştirme** hyper-parametreleriyle bir öğrenme algoritması için bir dizi genellikle bir ölçü bağımsız bir veri kümesi üzerinde algoritması'nın performansını en iyi duruma getirme amacıyla seçme sorunudur. Parametre hyper dışında modeli eğitimi yordamı belirtmeniz gereken bir değerdir. Hiper parametre değerleri ile ilgili varsayım, esneklik ve model doğruluğunu etkileyebilir. Karar ağaçları leaves ağacında sayısı ve istenen derinliği gibi hyper-parametreleriyle, örneğin, sahip. Misclassification cezası terimi destekli vektör makinesi (SVM) için ayarlamanız gerekir.
+**Hyper-parametre iyileştirmesi** , genellikle bir öğrenme algoritması için bir dizi Hyper-parametresi seçerken, bir bağımsız veri kümesindeki algoritmanın performansının bir ölçüsünü en iyi duruma getirme amacını içeren bir sorundur. Parametre hyper dışında modeli eğitimi yordamı belirtmeniz gereken bir değerdir. Hiper parametre değerleri ile ilgili varsayım, esneklik ve model doğruluğunu etkileyebilir. Karar ağaçları leaves ağacında sayısı ve istenen derinliği gibi hyper-parametreleriyle, örneğin, sahip. Misclassification cezası terimi destekli vektör makinesi (SVM) için ayarlamanız gerekir.
 
-Hiper parametreli iyileştirme gerçekleştirmek için yaygın bir yolu olarak da adlandırılan bir kılavuz arama kullanmaktır bir **parametre tarama**. Bir kılavuz aramada dizinin ayrıntılı aramasını değerleri belirtilen bir alt kümesine bir öğrenme algoritması için hiper parametreli alanı aracılığıyla gerçekleştirilir. Çapraz doğrulama, en iyi sonuçlar kılavuz arama algoritma tarafından üretilen çıkış sıralamak için bir performans ölçümü sağlayabilirsiniz. Çapraz doğrulama hiper parametreli Süpürme kullanırsanız, bir eğitim veri modeline overfitting gibi sınırı sorunları yardımcı olabilir. Bu şekilde, modeli genel içinden eğitim verileri ayıklandı veri kümesine uygulanacak kapasite korur.
+Hyper-parametre iyileştirmesinin gerçekleştirilemesinin yaygın bir yolu da, **parametre tarama**adı verilen bir kılavuz araması kullanmaktır. Bir kılavuz aramada dizinin ayrıntılı aramasını değerleri belirtilen bir alt kümesine bir öğrenme algoritması için hiper parametreli alanı aracılığıyla gerçekleştirilir. Çapraz doğrulama, en iyi sonuçlar kılavuz arama algoritma tarafından üretilen çıkış sıralamak için bir performans ölçümü sağlayabilirsiniz. Çapraz doğrulama hiper parametreli Süpürme kullanırsanız, bir eğitim veri modeline overfitting gibi sınırı sorunları yardımcı olabilir. Bu şekilde, modeli genel içinden eğitim verileri ayıklandı veri kümesine uygulanacak kapasite korur.
 
 ### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>Bir doğrusal regresyon modeli hiper parametreli Süpürme ile en iyi duruma getirme
 Ardından, veri eğitme ve doğrulama kümeleri, kullanım hyper-model iyileştirin ve doğrulama kümesinde (doğrusal regresyon) değerlendirmek için Eğitim kümesi üzerinde Süpürme parametresi bölün.
@@ -936,12 +936,12 @@ Ardından, veri eğitme ve doğrulama kümeleri, kullanım hyper-model iyileşti
     println("Test R-sqr is: " + Test_R2);
 
 
-**Çıkış:**
+**Çıktıların**
 
 Test R-sqr olduğu: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Çapraz doğrulama ve hiper parametreli Süpürme kullanarak ikili sınıflandırma modelinde en iyi duruma getirme
-Bu bölümde, çapraz doğrulama ve hiper parametreli Süpürme kullanarak ikili sınıflandırma modelinde en iyi duruma getirme gösterir. Bu, Spark ML kullanır `CrossValidator` işlevi.
+Bu bölümde, çapraz doğrulama ve hiper parametreli Süpürme kullanarak ikili sınıflandırma modelinde en iyi duruma getirme gösterir. Bu, Spark ML `CrossValidator` işlevini kullanır.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -980,7 +980,7 @@ Bu bölümde, çapraz doğrulama ve hiper parametreli Süpürme kullanarak ikili
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 33 saniye.
 
@@ -1095,14 +1095,14 @@ Ardından, özel kod kullanarak model iyileştirin ve en yüksek doğruluğa öl
     val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 
-**Çıkış:**
+**Çıktıların**
 
 Hücre çalıştırma süresi: 61 saniye.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Spark'a yerleşik machine learning modellerini Scala ile otomatik olarak kullanma
-Azure veri bilimi işlemi oluşturan görevler rehberlik konuları genel bakış için bkz. [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure 'daki veri bilimi sürecini oluşturan görevlerde size kılavuzluk eden konulara genel bakış için bkz. [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-[Team Data Science Process Kılavuzu](walkthroughs.md) Team Data Science Process belirli senaryolar için adımları gösteren diğer uçtan uca izlenecek yolları açıklanmaktadır. İzlenecek yollar, ayrıca bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut ve şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir.
+[Ekip veri bilimi işlem talimatları](walkthroughs.md) , belirli senaryolar Için ekip veri bilimi işlemindeki adımları gösteren diğer uçtan uca izlenecek yolları açıklar. İzlenecek yollar, ayrıca bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut ve şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir.
 
-[Spark'a yerleşik makine öğrenimi modellerini puanlamanıza](spark-model-consumption.md) Scala kod otomatik olarak yükleyin ve yeni veri kümeleri ile Spark, oluşturulan ve Azure Blob Depolama'ya machine learning modellerini Puanlama için nasıl kullanılacağını gösterir. Burada sağlanan yönergeleri izleyin ve yalnızca Scala kod otomatik tüketim için bu makalede Python kodunu değiştirin.
+[Spark tarafından oluşturulan makine öğrenimi modelleri](spark-model-consumption.md) , Spark ve Azure Blob depolama alanına kaydedilmiş makine öğrenimi modelleriyle yeni veri kümelerini otomatik olarak yüklemek ve Puanlama yapmak Için Scala kodunu nasıl kullanacağınızı gösterir. Burada sağlanan yönergeleri izleyin ve yalnızca Scala kod otomatik tüketim için bu makalede Python kodunu değiştirin.
 
