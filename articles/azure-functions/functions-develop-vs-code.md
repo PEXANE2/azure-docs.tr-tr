@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845418"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964031"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -79,6 +79,8 @@ Işlevler uzantısı, ilk işlevinizle birlikte bir işlev uygulaması projesi o
 
     ![Visual Studio Code 'de HTTP ile tetiklenen işlev şablonu](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>Oluşturulan proje dosyaları
+
 Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılıkları kurar. Her dil için, yeni proje bu dosyalara sahiptir:
 
 * **Host. JSON**: işlevler konağını yapılandırmanızı sağlar. Bu ayarlar, işlevleri yerel olarak çalıştırırken ve bunları Azure 'da çalıştırırken geçerlidir. Daha fazla bilgi için bkz. [Host. JSON başvurusu](functions-host-json.md).
@@ -87,6 +89,30 @@ Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılık
 
     >[!IMPORTANT]
     >Local. Settings. JSON dosyası gizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden çıkarmanız gerekir.
+
+Dilinize bağlı olarak, bu diğer dosyalar oluşturulur:
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* İşlevi uygulayan [HttpExample.cs sınıf kitaplığı dosyası](functions-dotnet-class-library.md#functions-class-library-project) .
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* Kök klasörde bir Package. JSON dosyası.
+
+* İşlev kodunu içeren bir Node. js dosyası olan [function. JSON tanım dosyasını](functions-reference-node.md#folder-structure) ve [index. js dosyasını](functions-reference-node.md#exporting-a-function)içeren bir httpexample klasörü.
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 Bu noktada, [function. json dosyasını değiştirerek](#add-a-function-to-your-project) veya [bir C# sınıf kitaplığı işlevine parametre ekleyerek](#add-a-function-to-your-project)işlevlerinize giriş ve çıkış bağlamaları ekleyebilirsiniz.
 

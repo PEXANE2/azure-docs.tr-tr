@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: Kullanıcıyı uygulamaya atama
               href: assign-user-or-group-access-portal.md
-            - name: Uygulamalarım üzerinde çalışma alanları oluşturma (önizleme)
-              href: access-panel-workspaces.md
+            - name: Uygulamalarım üzerinde koleksiyonlar oluşturma
+              href: access-panel-collections.md
             - name: Self servis uygulama erişimini kullanma
               href: access-panel-manage-self-service-access.md
             - name: Bir kullanıcının uygulamaya erişimini kaldırma yöntemleri

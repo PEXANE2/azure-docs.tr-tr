@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: f1fd776f903b4f5b4f315147f460143c7843fdc9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 02/03/2020
+ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
+ms.sourcegitcommit: 85d52b799621d35d7df32c2cb1e339071c619bb3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689070"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966104"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -125,8 +125,8 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
-| [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
+| [eşittir](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [ilerisi](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
 | [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
@@ -161,7 +161,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [decodeURIComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Kaçış karakterlerinin kodunu çözülmüş sürümlerle değiştiren bir dize döndürür. |
 | [encodeURIComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | URL-güvenli olmayan karakterlerin yerine kaçış karakterleri içeren bir dize döndürür. |
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Giriş değeri için bir kayan nokta numarası döndürür. |
-| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Bir dize için tamsayı sürümünü döndürün. |
+| ['tir](../logic-apps/workflow-definition-language-functions-reference.md#int) | Bir dize için tamsayı sürümünü döndürün. |
 | [nesnesinde](../logic-apps/workflow-definition-language-functions-reference.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
 | [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
 | [URIComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, bir giriş değeri için URI kodlu sürümü döndürün. |
@@ -172,20 +172,20 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 
 <a name="math-functions"></a>
 
-## <a name="math-functions"></a>Matematik İşlevleri
+## <a name="math-functions"></a>Matematik işlevleri
 
 Tamsayılar ve float ile çalışmak için, bu matematik işlevlerini kullanabilirsiniz.
 Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
 | Math işlevi | Görev |
 | ------------- | ---- |
-| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı eklemenin sonucunu döndürür. |
+| [ekleyemiyorum](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı eklemenin sonucunu döndürür. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | İki sayının bölünme sonucunu döndürür. |
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Sayı veya dizi kümesinden en yüksek değeri döndürün. |
 | [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
 | [alma](../logic-apps/workflow-definition-language-functions-reference.md#mod) | İki sayıdan ayırarak kalanı döndürün. |
 | [MUL](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Ürünü iki sayıdan çarpmadan döndürün. |
-| [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirtilen aralıktan rastgele bir tamsayı döndürür. |
+| [ran](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirtilen aralıktan rastgele bir tamsayı döndürür. |
 | [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | Belirtilen tamsayıdan başlayan bir tamsayı dizisi döndürür. |
 | [alt](../logic-apps/workflow-definition-language-functions-reference.md#sub) | İkinci sayının ilk sayıdan çıkarılmadan elde edilen sonucu döndürür. |
 |||
@@ -234,7 +234,7 @@ Bu iş akışı işlevleri şunları yapmanıza yardımcı olabilir:
 Örneğin, bir eylemden çıkışlara başvurabilir ve bu verileri sonraki bir eylemde kullanabilirsiniz.
 Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| İş akışı işlevi | Görev |
+| Workflow işlevi | Görev |
 | ----------------- | ---- |
 | [ön](../logic-apps/workflow-definition-language-functions-reference.md#action) | Çalışma zamanında geçerli eylemin çıkışını veya diğer JSON ad ve değer çiftleriyle değerleri döndürün. Ayrıca bkz. [Eylemler](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Çalışma zamanında bir eylemin `body` çıkışını döndürün. Ayrıca bkz. [gövde](../logic-apps/workflow-definition-language-functions-reference.md#body). |
@@ -441,7 +441,7 @@ Ve şu sonucu döndürür:
 
 <a name="actions"></a>
 
-### <a name="actions"></a>eylemler
+### <a name="actions"></a>eylem
 
 Çalışma zamanında bir eylemin çıktısını veya diğer JSON ad ve değer çiftlerinde bulunan değerleri bir ifadeye atayabilirsiniz. Varsayılan olarak, işlev tüm eylem nesnesine başvurur, ancak isteğe bağlı olarak değerini istediğiniz bir özelliği belirtebilirsiniz.
 Toplu sürümler için bkz. [Actionbody ()](#actionBody), [actionçıktılar ()](#actionOutputs)ve [body ()](#body).
@@ -904,7 +904,7 @@ Ve şu sonucu döndürür: `["hello"]`
 
 <a name="base64"></a>
 
-### <a name="base64"></a>base64
+### <a name="base64"></a>biçiminde
 
 Bir dize için Base64 kodlamalı sürüm döndürün.
 
@@ -1148,7 +1148,7 @@ Ve şu sonuçları döndürür:
 
 <a name="concat"></a>
 
-### <a name="concat"></a>concat
+### <a name="concat"></a>Concat
 
 İki veya daha fazla dizeyi birleştirin ve Birleşik dizeyi döndürün.
 
@@ -1182,7 +1182,7 @@ Ve şu sonucu döndürür: `"HelloWorld"`
 
 Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin.
 Öğe bulunduğunda true, bulunamazsa false döndürün.
-Bu işlev büyük/küçük harfe duyarlıdır.
+Bu işlev, büyük/küçük harfe duyarlıdır.
 
 ```
 contains('<collection>', '<value>')
@@ -1668,7 +1668,7 @@ Ve şu sonucu döndürür: `"https://contoso.com"`
 
 <a name="div"></a>
 
-### <a name="div"></a>div
+### <a name="div"></a>DIV
 
 İki sayıdan ayırarak tamsayı sonucunu döndürür.
 Kalan sonucu almak için bkz. [mod ()](#mod).
@@ -1769,7 +1769,7 @@ Ve şu sonuçları döndürür:
 
 <a name="endswith"></a>
 
-### <a name="endswith"></a>endsWith
+### <a name="endswith"></a>EndsWith
 
 Bir dizenin belirli bir alt dizeyle bitip bitmediğini denetleyin.
 Alt dize bulunduğunda true, bulunamazsa false döndürün.
@@ -2032,7 +2032,7 @@ formatNumber(<number>, <format>, <locale>?)
 `1234567890`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, bu sayıyı "1.234.567.890,00" dizesi olarak biçimlendirir.
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "en-us")
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
 \* Örnek 2 "
@@ -2040,7 +2040,7 @@ formatNumber(1234567890, "{0:0,0.00}", "en-us")
 `1234567890`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "1.234.567.890, 00" dizesiyle biçimlendirir.
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "is-is")
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 ```
 
 *Örnek 3*
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, "{0:0,0.00}", "is-is")
 `17.35`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "$17,35" dizesiyle biçimlendirir.
 
 ```
-formatNumber(17.36, "{0:C2}")
+formatNumber(17.36, 'C2')
 ```
 
 *Örnek 4*
@@ -2056,7 +2056,7 @@ formatNumber(17.36, "{0:C2}")
 `17.35`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "17, 35 KR" dizesiyle biçimlendirir.
 
 ```
-formatNumber(17.36, "{0:C2}", "is-is")
+formatNumber(17.36, 'C2', 'is-is')
 ```
 
 <a name="getFutureTime"></a>
@@ -2149,7 +2149,7 @@ Ve şu sonucu döndürür: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>ilerisi
 
 İlk değerin ikinci değerden büyük olup olmadığını kontrol edin.
 İlk değer daha fazla olduğunda true, küçükse false döndürün.
@@ -2353,7 +2353,7 @@ Ve şu sonucu döndürür: `10`
 
 <a name="item"></a>
 
-### <a name="item"></a>öğe
+### <a name="item"></a>maddesinin
 
 Bir dizi üzerinde yinelenen bir eylem içinde kullanıldığında, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün.
 Ayrıca, bu öğenin özelliklerindeki değerleri de alabilirsiniz.
@@ -2496,7 +2496,7 @@ Bu örnek, bir sayaç değişkeni oluşturur ve sayaç değeri beş olana kadar 
 
 <a name="json"></a>
 
-### <a name="json"></a>json
+### <a name="json"></a>nesnesinde
 
 Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün.
 
@@ -2629,7 +2629,7 @@ Ve şu sonucu döndürür: `"a.b.c"`
 
 <a name="last"></a>
 
-### <a name="last"></a>Son
+### <a name="last"></a>soyadına
 
 Bir koleksiyondaki son öğeyi döndürür.
 
@@ -2765,7 +2765,7 @@ Ve şu sonuçları döndürür:
 
 <a name="lessOrEquals"></a>
 
-### <a name="lessorequals"></a>lessOrEquals
+### <a name="lessorequals"></a>Lessotalals
 
 İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin.
 İlk değer küçüktür veya eşitse true, ilk değer ise false değerini döndürür.
@@ -2824,7 +2824,7 @@ Bu örnekte, bu işlevin döndürebileceğini örnek bir geri çağırma URL 'SI
 
 <a name="max"></a>
 
-### <a name="max"></a>en büyük
+### <a name="max"></a>Biçimlendir
 
 Bir liste veya diziden en yüksek değeri, her iki uçta da dahil olmak üzere sayı ile döndürün.
 
@@ -2978,7 +2978,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-### <a name="not"></a>değil
+### <a name="not"></a>başlatılmadı
 
 İfadenin yanlış olup olmadığını denetleyin.
 İfade false olduğunda true, true olduğunda false döndürün.
@@ -3177,7 +3177,7 @@ Ve şu sonucu döndürür: `"Sophia Owen"`
 
 <a name="rand"></a>
 
-### <a name="rand"></a>rand
+### <a name="rand"></a>ran
 
 Yalnızca başlangıç ucunda olan belirtilen aralıktan rastgele bir tamsayı döndürür.
 
@@ -3208,7 +3208,7 @@ Ve sonuç olarak şu numaralardan birini döndürür: `1`, `2`, `3`veya `4`
 
 <a name="range"></a>
 
-### <a name="range"></a>aralık
+### <a name="range"></a>aralığı
 
 Belirtilen tamsayıdan başlayan bir tamsayı dizisi döndürür.
 
@@ -3239,9 +3239,9 @@ Ve şu sonucu döndürür: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-### <a name="replace"></a>replace
+### <a name="replace"></a>değiştirin
 
-Bir alt dizeyi belirtilen dizeyle değiştirin ve sonuç dizesini döndürün. Bu işlev büyük/küçük harfe duyarlıdır.
+Bir alt dizeyi belirtilen dizeyle değiştirin ve sonuç dizesini döndürün. Bu işlev, büyük/küçük harfe duyarlıdır.
 
 ```
 replace('<text>', '<oldText>', '<newText>')
@@ -3581,7 +3581,7 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 <a name="skip"></a>
 
-### <a name="skip"></a>Atla
+### <a name="skip"></a>Şimdilik
 
 Öğeleri bir koleksiyonun önünden kaldırın ve *diğer tüm* öğeleri döndürün.
 
@@ -4520,7 +4520,7 @@ Ve şu sonucu döndürür: `"http"`
 
 <a name="utcNow"></a>
 
-### <a name="utcnow"></a>UtcNow
+### <a name="utcnow"></a>utcNow
 
 Geçerli zaman damgasını döndürür.
 
@@ -4565,7 +4565,7 @@ Ve şu sonucu döndürür: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-### <a name="variables"></a>değişkenler
+### <a name="variables"></a>değişkenlerinin
 
 Belirtilen değişken için değeri döndürün.
 

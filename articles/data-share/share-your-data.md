@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438731"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964439"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Öğretici: Azure veri paylaşma kullanarak veri paylaşma  
 
@@ -22,7 +22,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Veri Paylaşımı oluşturun.
 > * Veri Paylaşımınıza veri kümelerini ekleyin.
-> * Veri Paylaşımınız için eşitleme zamanlamasını etkinleştirin. 
+> * Veri paylaşımınız için bir anlık görüntü zamanlaması etkinleştirin. 
 > * Veri Paylaşımınıza alıcıları ekleyin. 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -33,25 +33,36 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ### <a name="share-from-a-storage-account"></a>Bir depolama hesabından paylaşma:
 
 * Azure depolama hesabı: henüz yoksa bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) oluşturabilirsiniz
-* *Microsoft. Authorization/role atamalar/Write* izninde bulunan depolama hesabına rol ataması ekleme izni. Bu izin sahip rolünde bulunur. 
+* *Microsoft. Storage/storageAccounts/Write*içinde bulunan depolama hesabına yazma izni. Bu izin, katkıda bulunan rolünde bulunur.
+* *Microsoft. Authorization/role atamalar/Write*' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin sahip rolünde bulunur. 
+
 
 ### <a name="share-from-a-sql-based-source"></a>SQL tabanlı bir kaynaktan paylaşma:
 
-* Paylaşmak istediğiniz tablolar ve görünümler içeren bir Azure SQL veritabanı veya Azure SQL veri ambarı.
+* Paylaşmak istediğiniz tablolar ve görünümler içeren bir Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı).
+* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin, katkıda bulunan rolünde bulunur.
 * Veri ambarına erişmek için veri paylaşımının izni. Bu, aşağıdaki adımlarla yapılabilir: 
-    1. Kendi kendinize sunucu için Azure Active Directory yöneticisi olarak ayarlayın.
+    1. Kendinizi SQL Server için Azure Active Directory yöneticisi olarak ayarlayın.
     1. Azure Active Directory kullanarak Azure SQL veritabanı/veri ambarına bağlanın.
-    1. Veri paylaşımının MSI 'sini db_owner olarak eklemek için aşağıdaki betiği yürütmek üzere sorgu Düzenleyicisi 'ni (Önizleme) kullanın. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
+    1. Veri paylaşımının kaynak yönetilen kimliğini bir db_datareader olarak eklemek için aşağıdaki betiği yürütmek üzere sorgu Düzenleyicisi 'ni (Önizleme) kullanın. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-*< Share_acc_name >* veri paylaşma hesabınızın adı olduğunu unutmayın. Henüz bir veri paylaşma hesabı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       *< Share_acc_name >* veri paylaşma kaynağınızın adı olduğunu unutmayın. Henüz bir veri paylaşma kaynağı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.  
 
-* [`db_owner` erişimi olan bir Azure SQL veritabanı kullanıcısı](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) , paylaşmak istediğiniz tabloları ve/veya görünümleri gezinmek ve seçmek için. 
+* ' Db_datareader ' erişimine sahip bir Azure SQL veritabanı kullanıcısı, paylaşmak istediğiniz tablolar ve/veya görünümler üzerinde gezinmek ve bunları seçmek için. 
 
-* İstemci IP SQL Server güvenlik duvarı erişimi: Bu, şu adımlarla yapılabilir: 1. *Güvenlik duvarları ve sanal ağlar 1 '* e gidin. Azure hizmetlerine erişime izin vermek **için Aç düğmesine** tıklayın. 
+* İstemci IP SQL Server güvenlik duvarı erişimi. Bu, aşağıdaki adımlarla yapılabilir: 
+    1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
+    1. Azure hizmetlerine erişime izin vermek **için Aç düğmesine** tıklayın.
+    1. **+ ISTEMCI IP Ekle** ' ye tıklayın ve **Kaydet**' e tıklayın. İstemci IP adresi değişebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz. 
+
+### <a name="share-from-azure-data-explorer"></a>Azure Veri Gezgini paylaşma
+* Paylaşmak istediğiniz veritabanlarına sahip bir Azure Veri Gezgini kümesi.
+* *Microsoft. kusto/kümeler/Write*Içinde bulunan Azure Veri Gezgini kümesine yazma izni. Bu izin, katkıda bulunan rolünde bulunur.
+* *Microsoft. Authorization/role atamalar/Write*' de bulunan Azure Veri Gezgini kümesine rol ataması ekleme izni. Bu izin sahip rolünde bulunur.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -89,9 +100,9 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. **Verilerinizi paylaşmayı Başlat**' ı seçin.
 
-1. **Oluştur**’u seçin.   
+1. **Oluştur**'u seçin.   
 
-1. Veri paylaşımınızın ayrıntılarını doldurun. Bir ad, içerik paylaşma açıklaması ve kullanım koşulları (isteğe bağlı) belirtin. 
+1. Veri paylaşımınızın ayrıntılarını doldurun. Bir ad, paylaşma türü, içerik paylaşma açıklaması ve kullanım koşulları (isteğe bağlı) belirtin. 
 
     ![EnterShareDetails](./media/enter-share-details.png "Paylaşma ayrıntılarını girin") 
 
@@ -101,7 +112,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![Veri kümeleri](./media/datasets.png "Veri kümeleri")
 
-1. Eklemek istediğiniz veri kümesi türünü seçin. Bir Azure SQL veritabanı veya Azure SQL veri ambarı 'ndan paylaşıyorsanız bazı SQL kimlik bilgileri istenir. Önkoşulların bir parçası olarak oluşturduğunuz kullanıcıyı kullanarak kimlik doğrulaması yapın.
+1. Eklemek istediğiniz veri kümesi türünü seçin. Önceki adımda seçtiğiniz paylaşma türüne (anlık görüntü veya yerinde) bağlı olarak farklı bir veri kümesi türleri listesi görürsünüz. Bir Azure SQL veritabanı veya Azure SQL veri ambarı 'ndan paylaşıyorsanız bazı SQL kimlik bilgileri istenir. Önkoşulların bir parçası olarak oluşturduğunuz kullanıcıyı kullanarak kimlik doğrulaması yapın.
 
     ![Adddataset 'ler](./media/add-datasets.png "Veri kümesi Ekle")    
 
@@ -115,7 +126,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. **Devam et** 'i seçin
 
-1. Veri tüketicinizin verilerinizin artımlı güncelleştirmelerini almasını istiyorsanız, anlık görüntü zamanlamasını etkinleştirin. 
+1. Anlık görüntü paylaşma türü ' nu seçtiyseniz, veri tüketicisine verilerinizin güncelleştirmelerini sağlamak için anlık görüntü zamanlamasını yapılandırabilirsiniz. 
 
     ![EnableSnapshots](./media/enable-snapshots.png "Anlık görüntüleri etkinleştir") 
 

@@ -64,15 +64,15 @@
 - name: Örnekler
   items:
     - name: 'C# örnekleri'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Java örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
     - name: JavaScript örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
     - name: Python örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
 - name: Eğitim
   items:
     - name: Giriş (Microsoft Learn)
@@ -131,6 +131,8 @@
       items:
         - name: API sürümleri
           href: search-api-versions.md
+        - name: Önizleme özelliği listesi
+          href: search-api-preview.md
         - name: .NET’te geliştirme
           href: search-howto-dotnet-sdk.md
         - name: SDK’yı yükseltme
@@ -149,7 +151,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API’yi yükseltme
           href: search-api-migration.md
-    - name: Dizinler oluşturuluyor
+    - name: Dizin oluşturma
       items:
         - name: Temel bir dizin oluşturma
           href: search-what-is-an-index.md
@@ -181,7 +183,7 @@
           href: search-howto-complex-data-types.md
         - name: İlişkisel verileri modelleme
           href: index-sql-relational-data.md
-    - name: İçeri aktarma (dizin oluşturma)
+    - name: Dizin oluşturma (içeri aktarma)
       items:
         - name: Verileri içeri aktarmaya genel bakış
           href: search-what-is-data-import.md
@@ -193,43 +195,45 @@
           href: search-howto-large-index.md
         - name: Eş zamanlı güncelleştirmeleri tanımlama
           href: search-howto-concurrency.md
-    - name: Azure Blob verilerini dizinleme
+    - name: Dizin oluşturucu kullanma
       items:
-        - name: Blob verileriyle AI kullanma
-          href: search-blob-ai-integration.md
-        - name: Tam metin araması ekleme
-          href: search-blob-storage-integration.md
-        - name: Blob dizin oluşturucu ayarlama
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Azure Data Lake Storage 2. Nesil dizin oluşturucuyu ayarlama
-          href: search-howto-index-azure-data-lake-storage.md
-        - name: Bire çok blobları dizinleme
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV bloblarını dizine ekleme
-          href: search-howto-index-csv-blobs.md
-        - name: JSON bloblarını dizine ekleme
-          href: search-howto-index-json-blobs.md
-    - name: '"Dizin oluşturucular" ile dizinleme'
-      items:
-        - name: Dizin oluşturuculara genel bakış
+        - name: Dizin oluşturucuları yapılandırma
           href: search-indexer-overview.md
-        - name: Azure Tablo Depolama dizin oluşturucu
-          href: search-howto-indexing-azure-tables.md
-        - name: Azure SQL DB dizin oluşturucu
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure Cosmos DB dizinleyici
-          href: search-howto-index-cosmosdb.md
-        - name: Zamanlama dizin oluşturucuları
-          href: search-howto-schedule-indexers.md
         - name: Alanları eşleme
           href: search-indexer-field-mappings.md
-        - name: SQL Yönetilen Örneğine bağlanma
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: SQL Server VM’lerine bağlanma
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Dizin oluşturucuları izleme
           href: search-howto-monitor-indexers.md
-    - name: AI ile zenginleştirme
+        - name: Zamanlama dizin oluşturucuları
+          href: search-howto-schedule-indexers.md
+        - name: Veri kaynakları
+          items:
+            - name: Azure Blobları
+              items:
+                - name: Bloblarda arama
+                  href: search-blob-storage-integration.md
+                - name: AI ile blobları anlama
+                  href: search-blob-ai-integration.md
+                - name: Blob dizin oluşturucu yapılandırma
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: Bire çok blobları dizinleme
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: CSV bloblarını dizine ekleme
+                  href: search-howto-index-csv-blobs.md
+                - name: JSON bloblarını dizine ekleme
+                  href: search-howto-index-json-blobs.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: Azure Data Lake Storage Gen2
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: Azure SQL Veritabanı
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure Table Storage
+              href: search-howto-indexing-azure-tables.md
+            - name: SQL Yönetilen Örnekleri
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: SQL Server VM’leri
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: Yapay zeka zenginleştirme
       items:
         - name: Bilişsel Hizmetler kaynağı iliştirme
           href: cognitive-search-attach-cognitive-services.md
@@ -326,27 +330,31 @@
 - name: Başvuru
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET (Yönetim)
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python (Yönetim)
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: REST (Yönetim)
-      href: /rest/api/searchmanagement
-    - name: REST (Önizleme)
-      items:
-        - name: API sürümü 2019-05-06-Preview
-          href: search-api-preview.md
-        - name: Yetenekleri Sıfırlama API’si
-          href: preview-api-resetskills.md
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.search/searchservices
+    - name: .NET
+      items:
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: Arama 2019-05-06
+          href: /rest/api/searchservice
+        - name: Becerileri Sıfırlama (api-version=2019-05-06-Preview)
+          href: preview-api-resetskills.md
+        - name: Yönetim 2015-08-15
+          href: /rest/api/searchmanagement
+        - name: Yönetim 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: Yönetim API'si
+          href: /python/api/overview/azure/search?view=azure-python
     - name: OData dil başvurusu
       items:
         - name: Genel Bakış
@@ -373,44 +381,47 @@
           href: search-query-odata-search-score-function.md
         - name: OData Dil Bilgisi
           href: search-query-odata-syntax-reference.md
-    - name: Bilişsel yetenekler başvurusu
-      href: cognitive-search-predefined-skills.md
+    - name: Beceriler başvurusu
       items:
-        - name: Anahtar İfade Ayıklama
-          href: cognitive-search-skill-keyphrases.md
-        - name: Dil Algılama
-          href: cognitive-search-skill-language-detection.md
-        - name: Varlık Tanıma
-          href: cognitive-search-skill-entity-recognition.md
-        - name: Metin Birleştirme
-          href: cognitive-search-skill-textmerger.md
-        - name: Metin Bölme
-          href: cognitive-search-skill-textsplit.md
-        - name: Yaklaşım
-          href: cognitive-search-skill-sentiment.md
-        - name: Metin Çevirisi
-          href: cognitive-search-skill-text-translation.md
-        - name: Görüntü Analizi
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: Biçimlendirici
-          href: cognitive-search-skill-shaper.md
-        - name: Koşullu
-          href: cognitive-search-skill-conditional.md
-        - name: Belge Ayıklama
-          href: cognitive-search-skill-document-extraction.md
-        - name: PII Algılama
-          href: cognitive-search-skill-pii-detection.md
-    - name: Özel beceriler
-      items:
-        - name: Özel Web API'si
-          href: cognitive-search-custom-skill-web-api.md
-    - name: Kullanım Dışı Bırakılmış Beceriler
-      href: cognitive-search-skill-deprecated.md
-      items:
-        - name: Adlandırılmış Varlık Tanıma
-          href: cognitive-search-skill-named-entity-recognition.md
+        - name: Yerleşik yetenekler
+          items:
+            - name: Genel Bakış
+              href: cognitive-search-predefined-skills.md
+            - name: Koşullu
+              href: cognitive-search-skill-conditional.md
+            - name: Belge Ayıklama
+              href: cognitive-search-skill-document-extraction.md
+            - name: Varlık Tanıma
+              href: cognitive-search-skill-entity-recognition.md
+            - name: Görüntü Analizi
+              href: cognitive-search-skill-image-analysis.md
+            - name: Anahtar İfade Ayıklama
+              href: cognitive-search-skill-keyphrases.md
+            - name: Dil Algılama
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: PII Algılama
+              href: cognitive-search-skill-pii-detection.md
+            - name: Yaklaşım
+              href: cognitive-search-skill-sentiment.md
+            - name: Biçimlendirici
+              href: cognitive-search-skill-shaper.md
+            - name: Metin Birleştirme
+              href: cognitive-search-skill-textmerger.md
+            - name: Metin Bölme
+              href: cognitive-search-skill-textsplit.md
+            - name: Metin Çevirisi
+              href: cognitive-search-skill-text-translation.md
+        - name: Özel beceriler
+          items:
+            - name: Özel Web API'si
+              href: cognitive-search-custom-skill-web-api.md
+        - name: Kullanım dışı bırakılmış beceriler
+          href: cognitive-search-skill-deprecated.md
+          items:
+            - name: Adlandırılmış Varlık Tanıma
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: Kaynaklar
   items:
     - name: Azure Topluluk Desteği

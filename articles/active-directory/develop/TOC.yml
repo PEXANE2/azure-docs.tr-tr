@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Azure kaynakları için yönetilen kimlikler
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Microsoft kimlik platformu videoları
+      href: identity-videos.md

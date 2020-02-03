@@ -4,33 +4,18 @@ description: Bu makalede, REST API kullanarak yedekleme ilkeleri (zamanlama ve b
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554899"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963861"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API kullanarak Azure Kurtarma Hizmetleri yedekleme ilkeleri oluşturma
 
 Azure kurtarma hizmetleri Kasası için yedekleme ilkesi oluşturma adımları, [ilke REST API belgesinde](/rest/api/backup/protectionpolicies/createorupdate)özetlenmiştir. Bu belgeyi, Azure VM yedeklemesi için bir ilke oluşturmak üzere bir başvuru olarak kullanmamıza izin verin.
 
-## <a name="backup-policy-essentials"></a>Yedekleme ilkesi temelleri
-
-- Her kasa için bir yedekleme ilkesi oluşturulur.
-- Aşağıdaki iş yüklerinin yedeklenmesi için bir yedekleme ilkesi oluşturulabilir
-  - Azure VM
-  - Azure VM 'de SQL
-  - Azure Dosya Paylaşımı
-- Bir ilke, birçok kaynağa atanabilir. Azure VM yedekleme ilkesi, birçok Azure VM 'yi korumak için kullanılabilir.
-- Bir ilke iki bileşenden oluşur
-  - Zamanlama: yedeklemenin ne zaman ele
-  - Bekletme: her yedeklemenin ne kadar süreyle saklanması gerekir.
-- Zamanlama, belirli bir zaman noktasıyla "günlük" veya "haftalık" olarak tanımlanabilir.
-- Bekletme "günlük", "haftalık", "aylık", "yıllık" yedekleme noktaları için tanımlanabilir.
-- "haftalık" haftanın belirli bir gününde bir yedekleme anlamına gelir, "aylık" bir yedekleme, ayın belirli bir gününde, "yıllık" ise yılın belirli bir gününde bir yedeği ifade eder.
-- "Aylık", "yıllık" yedekleme noktaları için bekletme "Longtermbekletme" olarak adlandırılır.
-- Bir kasa oluşturulduğunda, Azure VM yedeklemeleri için "DefaultPolicy" adlı bir ilke de oluşturulur ve Azure VM 'Leri yedeklemek için kullanılabilir.
+## <a name="create-or-update-a-policy"></a>İlke oluşturma veya güncelleştirme
 
 Azure Backup ilkesi oluşturmak veya güncelleştirmek için aşağıdaki *PUT* işlemini kullanın
 
@@ -44,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Örneğin, Azure VM yedeklemesi için bir ilke oluşturmak üzere, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Adı  |Gereklidir  |Tür  |Açıklama  |
+|Ad  |Gereklidir  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |properties     |   Doğru      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource özellikleri        |
 |etiketler     |         | Nesne        |  Kaynak etiketleri       |
@@ -152,7 +137,7 @@ Yedekleme ilkesi oluşturma/güncelleştirme [zaman uyumsuz bir işlemdir](https
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve ardından bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |    [Koruma PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  TAMAM       |
 |202 kabul edildi     |         |     Eden    |

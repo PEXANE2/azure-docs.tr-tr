@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045896"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964660"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -104,9 +104,9 @@ Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir
 
 eklentisi | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | json | metin
-/scheduledevents | json | yok
-/attested | json | yok
+/Instance | nesnesinde | metin
+/scheduledevents | nesnesinde | yok
+/attested | nesnesinde | yok
 
 Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
 
@@ -126,9 +126,9 @@ Ayrıca, gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmam
 
 Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
 
-HTTP Durum Kodu | Neden
+HTTP durum kodu | Neden
 ----------------|-------
-200 OK |
+200 TAMAM |
 400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
 404 Bulunamadı | İstenen öğe yok
 405 yöntemine Izin verilmiyor | Yalnızca `GET` istekleri destekleniyor
@@ -474,12 +474,12 @@ placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../vi
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
-sağlayıcısı | VM sağlayıcısı | 2018-10-01
+sağlayıcısını | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM görüntüsünün yayımcısı | 2017-04-02
 resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
-sku | VM görüntüsü için belirli SKU | 2017-04-02
+isteyin | VM görüntüsü için belirli SKU | 2017-04-02
 storageProfile | [Depolama profilini](#storage-profile) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
 etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
@@ -542,7 +542,7 @@ Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UT
 
 Örnek meta verileri, Windows 'da PowerShell yardımcı programı aracılığıyla alınabilir `curl`:
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -826,7 +826,7 @@ zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu UTC zaman damga
 zaman damgası/expiresOn | İmzalanan belgenin süresi dolan UTC zaman damgası
 vmId |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | `2019-04-30` tanıtılan Sanal makine için Azure aboneliği
-sku | `2019-11-01` tanıtılan VM görüntüsü için belirli SKU
+isteyin | `2019-11-01` tanıtılan VM görüntüsü için belirli SKU
 
 #### <a name="verifying-the-signature"></a>İmza doğrulanıyor
 
@@ -916,14 +916,14 @@ Veriler    | Açıklama
 id      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
 publisher | Görüntü yayımcısı
-sku     | Görüntü SKU 'su
+isteyin     | Görüntü SKU 'su
 version | Platform veya Market görüntüsünün sürümü
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
 Veriler    | Açıklama
 --------|-----------------
-önbelleğe alma | Önbelleğe alma gereksinimleri
+önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
 diffDiskSettings | Kısa ömürlü disk ayarları
 diskSizeGB | Diskin GB cinsinden boyutu
@@ -938,7 +938,7 @@ Veri diskleri dizisi, VM 'ye bağlı veri disklerinin bir listesini içerir. Her
 
 Veriler    | Açıklama
 --------|-----------------
-önbelleğe alma | Önbelleğe alma gereksinimleri
+önbelleği | Önbelleğe alma gereksinimleri
 createOption | VM 'nin nasıl oluşturulduğu hakkında bilgi
 diffDiskSettings | Kısa ömürlü disk ayarları
 diskSizeGB | Diskin GB cinsinden boyutu
@@ -1055,7 +1055,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. Nasıl yaparım? hizmet için destek almak mı istiyorsunuz?
    * Hizmete yönelik destek almak için, uzun süreden sonra meta veri yanıtını geçirebileceğiniz VM için Azure portal bir destek sorunu oluşturun.
 9. Hizmete yönelik çağrımın isteği zaman aşımına uğradı mı?
-   * Meta veri çağrılarının, sanal makinenin ağ kartına atanan birincil IP adresinden olması gerekir. yönlendirlerinizi değiştirmenize ek olarak, ağ kartınızdan 169.254.0.0/16 adresi için bir yol olması gerekir.
+   * Meta veri çağrılarının, sanal makinenin birincil ağ kartına atanan birincil IP adresinden olması gerekir. yönlendirlerinizi değiştirmenize ek olarak, ağ kartınızdan 169.254.0.0/16 adresi için bir yol olması gerekir.
 10. Sanal makine ölçek kümesinde etiketlerimi güncelleştirdim, ancak VM 'lerden farklı olarak örneklerde gözükmez mi?
     * Şu anda ScaleSets etiketleri için yalnızca bir yeniden başlatma/yeniden görüntü/veya örneğe bir disk değişikliği olan sanal makineye gösterilir.
 

@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 15fa6b9c7b9c84cd17b67c53dd65acd54ea63910
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699232"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962127"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
@@ -130,6 +130,6 @@ Ayrıca uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız 
 ## <a name="code-sample"></a>Kod örneği
 
 > [!NOTE]
-> X5T üst bilgisini sertifikanın karmasını kullanarak hesaplamanız ve bunu bir Base64 dizesine dönüştürmeniz gerekir. İçinde C# şuna benzer bir şey şöyle görünür: `System.Convert.ToBase64String(cert.GetCertHash());`
+> Sertifikanın karmasını kullanarak X5T üstbilgisini bir temel 64 dizesine dönüştürerek hesaplamanız gerekir. Bunu C# gerçekleştirmek için kod: `System.Convert.ToBase64String(cert.GetCertHash());`
 
 [Sertifikalarla birlikte Daemon uygulamalarında Microsoft Identity platformunda kimlik](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) doğrulamaya yönelik kod örneği, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca, `New-SelfSignedCertificate` PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) de gösterilmektedir. Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) da kullanabilirsiniz.

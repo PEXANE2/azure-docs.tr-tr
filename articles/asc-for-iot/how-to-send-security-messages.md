@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937125"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963827"
 ---
 # <a name="send-security-messages-sdk"></a>Güvenlik iletileri SDK 'Sı gönder
 
 Bu nasıl yapılır kılavuzunda, IoT Aracısı için Azure Güvenlik Merkezi 'ni kullanmadan cihaz güvenlik iletilerinizi toplayıp göndermenizi ve bunun nasıl yapılacağını anlatan IoT hizmeti özelliklerine yönelik Azure Güvenlik Merkezi açıklanır.  
 
-Bu kılavuzda şunları yapmayı öğreneceksiniz: 
+Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz: 
 > [!div class="checklist"]
 > * Azure IoT C SDK 'sını kullanarak güvenlik iletileri gönderme
 > * Azure IoT C# SDK kullanarak güvenlik iletileri gönderme
@@ -91,7 +91,7 @@ Bir güvenlik iletisi olarak ayarladıktan ve gönderildikten sonra, bu ileti Io
 
 ## <a name="send-security-messages"></a>Güvenlik iletilerini gönder 
 
-[Azure IoT C cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [Azure IoT C# cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node)'Sı, [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)veya Azure IoT Java SDK 'sını kullanarak IoT Aracısı için Azure Güvenlik Merkezi *'ni kullanmadan güvenlik iletileri gönderin* [ ](https://github.com/Azure/azure-iot-sdk-java).
+[Azure IoT C cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [ C# Azure IoT cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node)'Sı, [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)veya [Azure IoT Java SDK 'sını](https://github.com/Azure/azure-iot-sdk-java)kullanarak IoT Aracısı için Azure Güvenlik Merkezi *'ni kullanmadan güvenlik iletileri gönderin* .
 
 IoT için Azure Güvenlik Merkezi 'Nde cihazlarınızdan cihaz verilerini işlenmek üzere göndermek için aşağıdaki API 'lerden birini kullanarak IoT işleme işlem hattı için Azure Güvenlik Merkezi 'ne doğru yönlendirme iletileri işaretleyin. 
 
@@ -145,7 +145,7 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
     }
 }
 ```
-#### <a name="c-api"></a>C#'SINDEKI
+#### <a name="c-api"></a>C# API’si
 
 ```cs
 
@@ -190,20 +190,27 @@ function SendSecurityMessage(messageContent)
 }
 ```
 
-#### <a name="python-api"></a>Python API 'SI
+#### <a name="python-api"></a>Python API
+
+Python API 'sini kullanmak için, [Azure-IoT-Device](https://pypi.org/project/azure-iot-device/)paketini yüklemeniz gerekir.
+
+Python API 'sini kullanırken, güvenlik iletisini modül aracılığıyla veya benzersiz cihaz ya da modül bağlantı dizesini kullanarak cihaz aracılığıyla gönderebilirsiniz. Aşağıdaki Python betik örneğini kullanırken, bir cihazla, **Iothubdeviceclient**' i kullanın ve bir modülle **Iothubmoduleclient**' ı kullanın. 
 
 ```python
+from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
+from azure.iot.device import Message
+
 async def send_security_message_async(message_content):
     conn_str = os.getenv("<connection_string>")
     device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
     await device_client.connect()
     security_message = Message(message_content)
     security_message.set_as_security_message()
-    await device_client.send_d2c_message(security_message)
+    await device_client.send_message(security_message)
     await device_client.disconnect()
 ```
 
-#### <a name="java-api"></a>Java API 'SI
+#### <a name="java-api"></a>Java API’si
 
 ```java
 public void SendSecurityMessage(string message)

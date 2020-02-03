@@ -3,12 +3,12 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890312"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963997"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
@@ -47,7 +47,7 @@ Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin y�
 
 | İlgili maliyet | Açıklama |
 | ------------ | ----------- |
-| **Depolama hesabı** | Her işlev uygulaması, [ayrı olarak faturalandırılan](https://azure.microsoft.com/pricing/details/storage/)ilişkili bir genel amaçlı [Azure depolama hesabına](../storage/common/storage-introduction.md#types-of-storage-accounts)sahip olmanızı gerektirir. Bu hesap, Işlevler çalışma zamanı tarafından dahili olarak kullanılır, ancak bunu depolama Tetikleyicileri ve bağlamaları için de kullanabilirsiniz. Depolama hesabınız yoksa, işlev uygulaması oluşturulduğunda sizin için bir tane oluşturulur. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](functions-scale.md#storage-account-requirements).|
+| **Depolama hesabı** | Her işlev uygulaması, [ayrı olarak faturalandırılan](https://azure.microsoft.com/pricing/details/storage/)ilişkili bir genel amaçlı [Azure depolama hesabına](../storage/common/storage-introduction.md#types-of-storage-accounts)sahip olmanızı gerektirir. Bu hesap, Işlevler çalışma zamanı tarafından dahili olarak kullanılır, ancak bunu depolama Tetikleyicileri ve bağlamaları için de kullanabilirsiniz. Depolama hesabınız yoksa, işlev uygulaması oluşturulduğunda sizin için bir tane oluşturulur. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | İşlevler, işlev uygulamalarınız için yüksek performanslı bir izleme deneyimi sağlamak üzere [Application Insights](../azure-monitor/app/app-insights-overview.md) bağımlıdır. Gerekli olmasa da [Application Insights tümleştirmeyi etkinleştirmelisiniz](functions-monitoring.md#enable-application-insights-integration). Her ay Telemetri verilerinin ücretsiz olarak verilmesi dahildir. Daha fazla bilgi edinmek için bkz. [Azure Monitor fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/). |
 | **Ağ bant genişliği** | Aynı bölgedeki Azure hizmetleri arasında veri aktarımı için ödeme yapmazsınız. Ancak, giden veri aktarımları için başka bir bölgeye veya Azure dışında maliyetlerine tabi olabilirsiniz. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
@@ -208,12 +208,12 @@ Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
 | zaman damgası \[UTC\]          | ad          | değer       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 | Özel Baytlar | 209.932.288 |
-| 9/12/2019, 1:06:14\.994 | Özel Baytlar | 212.189.184 |
-| 9/12/2019, 1:06:30\.010 | Özel Baytlar | 231.714.816 |
-| 9/12/2019, 1:07:15\.040 | Özel Baytlar | 210.591.744 |
-| 9/12/2019, 1:12:16\.285 | Özel Baytlar | 216.285.184 |
-| 9/12/2019, 1:12:31\.376 | Özel Baytlar | 235.806.720 |
+| 9/12/2019, 1:05:14\.947 | Özel baytlar | 209.932.288 |
+| 9/12/2019, 1:06:14\.994 | Özel baytlar | 212.189.184 |
+| 9/12/2019, 1:06:30\.010 | Özel baytlar | 231.714.816 |
+| 9/12/2019, 1:07:15\.040 | Özel baytlar | 210.591.744 |
+| 9/12/2019, 1:12:16\.285 | Özel baytlar | 216.285.184 |
+| 9/12/2019, 1:12:31\.376 | Özel baytlar | 235.806.720 |
 
 ## <a name="function-level-metrics"></a>İşlev düzeyi ölçümleri
 

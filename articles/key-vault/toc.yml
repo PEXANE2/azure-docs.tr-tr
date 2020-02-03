@@ -118,6 +118,8 @@
       href: event-grid-logicapps.md
     - name: Azure İlkesi ile tümleştirme
       href: azure-policy.md
+    - name: Azure Özel Bağlantı Hizmeti ile tümleştirme (Önizleme)
+      href: private-link-service.md
     - name: Azure Key Vault günlüğü
       href: key-vault-logging.md
     - name: Güvenlik duvarı arkasına erişme

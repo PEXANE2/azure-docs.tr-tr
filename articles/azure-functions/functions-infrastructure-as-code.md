@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292952"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963963"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -41,7 +41,7 @@ Azure Işlevleri dağıtımı genellikle şu kaynaklardan oluşur:
 <a name="storage"></a>
 ### <a name="storage-account"></a>Depolama hesabı
 
-İşlev uygulaması için bir Azure depolama hesabı gereklidir. Blob 'ları, tabloları, kuyrukları ve dosyaları destekleyen genel amaçlı bir hesabınız olması gerekir. Daha fazla bilgi için bkz. [Azure işlevleri depolama hesabı gereksinimleri](functions-create-function-app-portal.md#storage-account-requirements).
+İşlev uygulaması için bir Azure depolama hesabı gereklidir. Blob 'ları, tabloları, kuyrukları ve dosyaları destekleyen genel amaçlı bir hesabınız olması gerekir. Daha fazla bilgi için bkz. [Azure işlevleri depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).
 
 ```json
 {
@@ -464,7 +464,7 @@ App Service planındaki bir işlev uygulaması, daha önce oluşturulan planın 
 
 Linux uygulamaları, `siteConfig`altına bir `linuxFxVersion` özelliği de içermelidir. Yalnızca kod dağıtıyorsanız, bunun değeri istenen çalışma zamanı yığınınıza göre belirlenir:
 
-| Toplu İş            | Örnek değer                                         |
+| Yığın            | Örnek değer                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

@@ -1,14 +1,14 @@
 ---
-title: Mimariye Genel Bakış
+title: Mimariye genel bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450192"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963946"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -101,6 +101,23 @@ Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>Yedekleme ilkesi temelleri
+
+- Her kasa için bir yedekleme ilkesi oluşturulur.
+- Aşağıdaki iş yüklerinin yedeklenmesi için bir yedekleme ilkesi oluşturulabilir
+  - Azure VM
+  - Azure VM 'de SQL
+  - Azure Dosya Paylaşımı
+- Bir ilke, birçok kaynağa atanabilir. Azure VM yedekleme ilkesi, birçok Azure VM 'yi korumak için kullanılabilir.
+- Bir ilke iki bileşenden oluşur
+  - Zamanlama: yedeklemenin ne zaman ele
+  - Bekletme: her yedeklemenin ne kadar süreyle saklanması gerekir.
+- Zamanlama, belirli bir zaman noktasıyla "günlük" veya "haftalık" olarak tanımlanabilir.
+- Bekletme "günlük", "haftalık", "aylık", "yıllık" yedekleme noktaları için tanımlanabilir.
+- "haftalık" haftanın belirli bir gününde bir yedekleme anlamına gelir, "aylık" bir yedekleme, ayın belirli bir gününde, "yıllık" ise yılın belirli bir gününde bir yedeği ifade eder.
+- "Aylık", "yıllık" yedekleme noktaları için bekletme "Longtermbekletme" olarak adlandırılır.
+- Bir kasa oluşturulduğunda, Azure VM yedeklemeleri için "DefaultPolicy" adlı bir ilke de oluşturulur ve Azure VM 'Leri yedeklemek için kullanılabilir.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Mimari: yerleşik Azure VM yedeklemesi
 

@@ -34,6 +34,8 @@
           href: how-to-install.md
         - name: Bulut sağlama yapılandırması
           href: how-to-configure.md
+        - name: Çoklu Oturum Açma Kullanma
+          href: how-to-sso.md
     - name: Planlama ve tasarım
       items:
         - name: Azure AD Connect bulut sağlama için topolojiler ve senaryolar

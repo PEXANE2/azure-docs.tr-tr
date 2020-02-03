@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 7e1d9021abbbe507f3bf287291d5638c77f6e0cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 86e966cc3bf98e63edbe90d7649242dcb1ccdf42
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667361"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964388"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Python kullanarak Azure Veri Gezgini için IoT Hub veri bağlantısı oluşturma (Önizleme)
 
@@ -24,12 +24,12 @@ ms.locfileid: "74667361"
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede, Python kullanarak Azure Veri Gezgini için IoT Hub bir veri bağlantısı oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Küme ve veritabanı](create-cluster-database-csharp.md) oluşturma
-* [Tablo ve sütun eşlemesi](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) oluştur
-* [Veritabanı ve tablo ilkelerini](database-table-policies-csharp.md) ayarlama (isteğe bağlı)
+* [Küme ve veritabanı](create-cluster-database-python.md) oluşturma
+* [Tablo ve sütun eşlemesi](python-ingest-data.md#create-a-table-on-your-cluster) oluştur
+* [Veritabanı ve tablo ilkelerini](database-table-policies-python.md) ayarlama (isteğe bağlı)
 * [Yapılandırılmış bir paylaşılan erişim ilkesiyle IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub)oluşturun.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
@@ -59,20 +59,20 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, subscription_id)
 
-resource_group_name = "testrg";
+resource_group_name = "testrg"
 #The cluster and database that are created as part of the Prerequisites
-cluster_name = "mykustocluster";
-database_name = "mykustodatabase";
-data_connection_name = "myeventhubconnect";
+cluster_name = "mykustocluster"
+database_name = "mykustodatabase"
+data_connection_name = "myeventhubconnect"
 #The IoT hub that is created as part of the Prerequisites
 iot_hub_resource_id = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Devices/IotHubs/xxxxxx";
-shared_access_policy_name = "iothubforread";
-consumer_group = "$Default";
-location = "Central US";
+shared_access_policy_name = "iothubforread"
+consumer_group = "$Default"
+location = "Central US"
 #The table and column mapping that are created as part of the Prerequisites
-table_name = "StormEvents";
-mapping_rule_name = "StormEvents_CSV_Mapping";
-data_format = "csv";
+table_name = "StormEvents"
+mapping_rule_name = "StormEvents_CSV_Mapping"
+data_format = "csv"
 
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,

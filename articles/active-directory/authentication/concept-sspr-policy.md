@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425335"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962501"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory’deki parola ilkeleri ve kısıtlamaları
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve kısıtlamaları
 
 Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesaplarıyla ilişkili parola ilkeleri ve karmaşıklık gereksinimleri açıklanmaktadır.
 
@@ -32,24 +32,24 @@ Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesap
 
 * Aşağıdaki Azure Yönetici rollerinin tümü etkilenir:
   * Yardım Masası Yöneticisi
-  * Hizmet desteği yöneticisi
+  * Hizmet desteği Yöneticisi
   * Faturalama yöneticisi
   * Partner Tier1 Desteği
   * Partner Tier2 Desteği
-  * Exchange yöneticisi
-  * Skype Kurumsal yöneticisi
+  * Exchange Yöneticisi
+  * Skype Kurumsal Yöneticisi
   * Kullanıcı Yöneticisi
   * Dizin yazarları
   * Genel yönetici veya Şirket Yöneticisi
   * SharePoint yöneticisi
   * Uyumluluk Yöneticisi
-  * Uygulama yöneticisi
+  * Uygulama Yöneticisi
   * Güvenlik yöneticisi
   * Ayrıcalıklı rol yöneticisi
-  * Intune yöneticisi
+  * Intune Yöneticisi
   * Uygulama Proxy Hizmeti Yöneticisi
   * Dynamics 365 Yöneticisi
-  * Power BI hizmet yöneticisi
+  * Power BI hizmeti Yöneticisi
   * Kimlik doğrulama Yöneticisi
   * Ayrıcalıklı kimlik doğrulama Yöneticisi
 
@@ -85,8 +85,8 @@ Aşağıdaki tabloda, Azure AD 'de oluşturulup yönetilen Kullanıcı hesaplar�
 | Karakterlere izin verilmiyor | Unicode karakterler. |
 | Parola kısıtlamaları |<ul><li>En az 8 karakter ve en fazla 256 karakter.</li><li>Aşağıdakilerden üç tanesi olmalıdır:<ul><li>Küçük harfli karakterler.</li><li>Büyük harfli karakterler.</li><li>Sayılar (0-9).</li><li>Semboller (önceki parola kısıtlamalarına bakın).</li></ul></li></ul> |
 | Parola süre sonu süresi (en fazla parola yaşı) |<ul><li>Varsayılan değer: **90** gün.</li><li>Değer, Windows PowerShell için Azure Active Directory modülünden `Set-MsolPasswordPolicy` cmdlet 'i kullanılarak yapılandırılabilir.</li></ul> |
-| Parola süre sonu bildirimi (kullanıcıların parola süre sonu hakkında bilgilendirmesi durumunda) |<ul><li>Varsayılan değer: **14** gün (parolanın süresi dolmadan önce).</li><li>Değer `Set-MsolPasswordPolicy` cmdlet 'i kullanılarak yapılandırılabilir.</li></ul> |
-| Parola süre sonu (parolaların süresi doluyor) |<ul><li>Varsayılan değer: **false** gün (parola süre sonu etkin olduğunu gösterir).</li><li>Değer, `Set-MsolUser` cmdlet 'i kullanılarak bireysel kullanıcı hesapları için yapılandırılabilir.</li></ul> |
+| Parola süre sonu bildirimi (kullanıcılara parola süre sonu bildirildiğinde) |<ul><li>Varsayılan değer: **14** gün (parolanın süresi dolmadan önce).</li><li>Değer `Set-MsolPasswordPolicy` cmdlet 'i kullanılarak yapılandırılabilir.</li></ul> |
+| Parola süre sonu (parolanın süresi dolmasın) |<ul><li>Varsayılan değer: **false** (parolanın bir sona erme tarihi olduğunu gösterir).</li><li>Değer, `Set-MsolUser` cmdlet 'i kullanılarak bireysel kullanıcı hesapları için yapılandırılabilir.</li></ul> |
 | Parola değiştirme geçmişi | Kullanıcı bir parolayı değiştirdiğinde *son parola yeniden kullanılamaz.* |
 | Parola sıfırlama geçmişi | Son parola, Kullanıcı unutulan bir parolayı sıfırladığında *yeniden kullanılabilir.* |
 | Hesap kilitleme | 10 başarısız oturum açma denemesi yanlış parola ile çalıştıktan sonra, Kullanıcı bir dakika boyunca kilitlenir. Daha fazla hatalı oturum açma denemesi, Kullanıcı süresini artırmak için kullanıcıyı kilitler. [Akıllı kilitleme](howto-password-smart-lockout.md) , aynı parolanın kilitleme sayacını arttırmaktan kaçınmak için son üç hatalı parola karmalarını izler. Birisi aynı hatalı parolayı birden çok kez girerse, bu davranış hesabın kilitlenmesine neden olmaz. |

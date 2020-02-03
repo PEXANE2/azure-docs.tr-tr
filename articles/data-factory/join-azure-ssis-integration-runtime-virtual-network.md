@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/23/2019
+ms.date: 02/01/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: fec34c54971878178b2a5ea4548ad20d3b51b104
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119950"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964370"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa katma
 
@@ -226,7 +226,7 @@ Azure-SSIS IR giden trafiği inceleme yeteneğine ihtiyacınız yoksa, tüm traf
 -   Bir Azure ExpressRoute senaryosunda, Azure-SSIS IR barındıran alt ağda **Internet** olarak bir sonraki atlama türü ile bir 0.0.0.0/0 yolu uygulayabilirsiniz. 
 -   Bir NVA senaryosunda, sonraki atlama türünden Azure-SSIS IR barındıran alt ağda geçerli olan 0.0.0.0/0 yolunu, **Internet**'e **Sanal Gereç** olarak değiştirebilirsiniz.
 
-![Yol ekleme](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
+![Rota Ekle](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
 
 > [!NOTE]
 > Sonraki atlama türü **İnternet** ile rota belirtme tüm trafiğin internet üzerinden gidebileceği anlamına gelmez. Hedef adres Azure hizmetlerinden birine ait olduğu sürece Azure, trafiği Internet 'e yönlendirmek yerine doğrudan Azure omurga ağı üzerinden hizmete yönlendirir.
@@ -428,7 +428,21 @@ Azure Resource Manager Sanal ağınızı veya klasik Sanal ağınızı yapıland
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="configure-a-virtual-network"></a>Sanal ağı yapılandırma
+### <a name="define-the-variables"></a>Değişkenleri tanımlama
+
+```powershell
+$ResourceGroupName = "[your Azure resource group name]"
+$DataFactoryName = "[your data factory name]"
+$AzureSSISName = "[your Azure-SSIS IR name]"
+# Virtual network info: Classic or Azure Resource Manager
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use an Azure SQL Database server with IP firewall rules/virtual network service endpoints or a managed instance with private endpoint to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend an Azure Resource Manager virtual network, because classic virtual networks will be deprecated soon.
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for your Azure SQL Database server with virtual network service endpoints, or a different subnet from the one used for your managed instance with a private endpoint
+# Public IP address info: OPTIONAL to provide two standard static public IP addresses with DNS name under the same subscription and in the same region as your virtual network
+$FirstPublicIP = "[your first public IP address resource ID or leave it empty]"
+$SecondPublicIP = "[your second public IP address resource ID or leave it empty]"
+```
+
+### <a name="configure-a-virtual-network"></a>Sanal ağ yapılandırma
 
 Azure-SSIS IR bir sanal ağa katılabilmeniz için önce sanal ağı yapılandırmanız gerekir. Sanal ağa katılması Azure-SSIS IR için sanal ağ izinlerini ve ayarlarını otomatik olarak yapılandırmak için aşağıdaki betiği ekleyin:
 
@@ -463,26 +477,15 @@ Bir Azure-SSIS IR oluşturabilir ve aynı anda bir sanal ağa katabilirsiniz. T�
 1. Azure-SSIS IR sanal ağa katılacak şekilde yapılandırın. 
 1. Azure-SSIS IR başlatın. 
 
-### <a name="define-the-variables"></a>Değişkenleri tanımlama
-
-```powershell
-$ResourceGroupName = "<your Azure resource group name>"
-$DataFactoryName = "<your Data Factory name>" 
-$AzureSSISName = "<your Azure-SSIS IR name>"
-# Specify the information about your classic or Azure Resource Manager virtual network.
-$VnetId = "<your Azure virtual network resource ID>"
-$SubnetName = "<the name of subnet in your virtual network>"
-```
-
 ### <a name="stop-the-azure-ssis-ir"></a>Azure-SSIS IR durdur
 
 Bir sanal ağa katılabilmeniz için önce Azure-SSIS IR durdurmanız gerekir. Bu komut tüm düğümlerini serbest bırakır ve faturalandırmayı durduruyor:
 
 ```powershell
 Stop-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
-                                            -DataFactoryName $DataFactoryName `
-                                            -Name $AzureSSISName `
-                                            -Force 
+    -DataFactoryName $DataFactoryName `
+    -Name $AzureSSISName `
+    -Force 
 ```
 
 ### <a name="configure-virtual-network-settings-for-the-azure-ssis-ir-to-join"></a>Azure-SSIS IR katılacak sanal ağ ayarlarını yapılandırın
@@ -515,11 +518,20 @@ Azure-SSIS IR bir sanal ağa katmak için `Set-AzDataFactoryV2IntegrationRuntime
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
-                                           -DataFactoryName $DataFactoryName `
-                                           -Name $AzureSSISName `
-                                           -Type Managed `
-                                           -VnetId $VnetId `
-                                           -Subnet $SubnetName
+    -DataFactoryName $DataFactoryName `
+    -Name $AzureSSISName `
+    -VnetId $VnetId `
+    -Subnet $SubnetName
+
+# Add public IP address parameters if you bring your own static public IP addresses
+if(![string]::IsNullOrEmpty($FirstPublicIP) -and ![string]::IsNullOrEmpty($SecondPublicIP))
+{
+    $publicIPs = @($FirstPublicIP, $SecondPublicIP)
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+        -DataFactoryName $DataFactoryName `
+        -Name $AzureSSISName `
+        -PublicIPs $publicIPs
+}
 ```
 
 ### <a name="start-the-azure-ssis-ir"></a>Azure-SSIS IR başlatın
@@ -528,10 +540,9 @@ Azure-SSIS IR başlatmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
-                                             -DataFactoryName $DataFactoryName `
-                                             -Name $AzureSSISName `
-                                             -Force
-
+    -DataFactoryName $DataFactoryName `
+    -Name $AzureSSISName `
+    -Force
 ```
 
 Bu komutun tamamlanabilmesi için 20 ila 30 dakika sürer.

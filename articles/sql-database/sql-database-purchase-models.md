@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973535"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964779"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 
@@ -47,9 +47,9 @@ Aşağıdaki tablo ve grafik, sanal çekirdek tabanlı ve DTU tabanlı satın al
 
 Sağlanan işlem katmanında, işlem maliyeti, uygulama için sağlanan toplam işlem kapasitesini yansıtır.
 
-İş açısından kritik hizmet katmanında, otomatik olarak en az 3 çoğaltma ayırdık. Bu ek işlem kaynakları ayırmasını yansıtmak için, sanal çekirdek tabanlı satın alma modelindeki Fiyat, iş açısından kritik hizmet katmanında yaklaşık 2.7 x ' i genel amaçlı hizmet katmanından daha yüksektir. Benzer şekilde, iş açısından kritik hizmet katmanındaki GB başına depolama fiyatı, SSD depolamanın yüksek g/ç ve düşük gecikme süresini yansıtır.
+İş Açısından Kritik hizmet katmanında, otomatik olarak en az 3 çoğaltma ayırdık. Bu ek işlem kaynakları ayırmasını yansıtmak için, sanal çekirdek tabanlı satın alma modelindeki fiyat İş Açısından Kritik hizmet katmanında yaklaşık 2.7 x Genel Amaçlı hizmet katmanında olduğundan daha yüksektir. Benzer şekilde, İş Açısından Kritik hizmet katmanındaki GB başına daha yüksek depolama fiyatı, SSD depolamanın daha yüksek GÇ sınırlarını ve düşük gecikme süresini yansıtır.
 
-Her iki katman da standart depolama kullandığından, yedekleme depolama alanı, iş açısından kritik hizmet katmanı ve genel amaçlı hizmet katmanı için aynıdır.
+Her iki katman de yedeklemeler için standart depolama kullandığından, yedekleme depolama alanı İş Açısından Kritik hizmet katmanı ve Genel Amaçlı hizmet katmanı için aynıdır.
 
 ### <a name="serverless-compute-costs"></a>Sunucusuz işlem maliyetleri
 
@@ -83,8 +83,8 @@ Tek veritabanınız veya elastik havuzunuz 300 ' den fazla DTU kullanıyorsa, sa
 
 DTU tabanlı satın alma modelinden sanal çekirdek tabanlı satın alma modeline dönüştürmek için aşağıdaki Thumb kurallarını kullanarak işlem boyutunu seçin:
 
-- Standart katmandaki her 100 DTU, genel amaçlı hizmet katmanında en az 1 sanal çekirdek gerektirir.
-- Premium katmandaki her 125 DTU, iş açısından kritik hizmet katmanında en az 1 sanal çekirdek gerektirir.
+- Standart katmandaki her 100 DTU, Genel Amaçlı hizmet katmanında en az 1 sanal çekirdek gerektirir.
+- Premium katmandaki her 125 DTU, İş Açısından Kritik hizmet katmanında en az 1 sanal çekirdek gerektirir.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
@@ -102,7 +102,7 @@ Bu kaynaklar arasındaki oran başlangıçta gerçek dünya OLTP iş yüklerinde
 
 ![sınırlayıcı kutusu](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örnek:
+DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örneğin:
 
 - Bir veritabanının işlem boyutunu artırarak, bu veritabanı için kullanılabilir kaynak kümesini ikiye katlayarak DTU 'ları katlama.
 - 1750 DTU içeren bir Premium hizmet katmanı P11 veritabanı, 5 DTU ile temel bir hizmet katmanı veritabanından 350x daha fazla DTU işlem gücü sağlar.  
@@ -125,7 +125,19 @@ Mevcut bir havuza, veritabanı kapalı kalma süresi olmadan ve havuzdaki verita
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Bir iş yükü için gereken DTU sayısını belirleme
 
-Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL veritabanı 'na geçirmek istiyorsanız, gereken DTU sayısını yaklaşık olarak tahmin etmek için [DTU hesaplayıcısını](https://dtucalculator.azurewebsites.net/) kullanın. Mevcut bir Azure SQL veritabanı iş yükü için, veritabanı kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](sql-database-query-performance.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
+Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL veritabanı 'na geçirmek istiyorsanız, gereken DTU sayısını yaklaşık olarak tahmin etmek için [DTU hesaplayıcısını](https://dtucalculator.azurewebsites.net/) kullanın. Mevcut bir Azure SQL veritabanı iş yükü için, veritabanı kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](sql-database-query-performance.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
+
+### <a name="determine-dtu-utilization"></a>DTU kullanımını belirleme
+
+Bir veritabanının veya elastik havuzun DTU/eDTU sınırına göre DTU/eDTU kullanımının ortalama yüzdesini öğrenmek için aşağıdaki formülü kullanın:
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+Bu formülün giriş değerleri [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs 'den elde edilebilir. Diğer bir deyişle, bir veritabanının veya elastik havuzun DTU/eDTU sınırına yönelik DTU/eDTU kullanımının yüzdesini öğrenmek için aşağıdakilerden en büyük yüzde değerini seçin: `avg_cpu_percent`, `avg_data_io_percent`ve `avg_log_write_percent` belirli bir zaman noktasında.
+
+> [!NOTE]
+> Bir veritabanının DTU sınırı, CPU, okuma, yazma ve veritabanı tarafından kullanılabilir bellek tarafından belirlenir. Ancak, SQL Server veritabanı altyapısı, performansı artırmak için genellikle veri önbelleği için kullanılabilir tüm belleği kullandığından, `avg_memory_usage_percent` değeri genellikle geçerli veritabanı yüküne bakılmaksızın %100 ' e yakın olur. Bu nedenle, bellek, DTU sınırını dolaylı olarak etkilese de, DTU kullanım formülünde kullanılmaz.
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Elastik bir kaynak havuzundan faydalanabilir iş yükleri
 

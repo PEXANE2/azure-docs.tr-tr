@@ -71,6 +71,8 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: Gizli dizileri yönetme
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: Bir uygulamayı başka bir Azure bölgesine taşıma
+      href: move-across-regions.md
     - name: Örnekleri bulma
       href: service-fabric-mesh-howto-find-samples.md
 - name: Başvuru

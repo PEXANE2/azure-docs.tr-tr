@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907005"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962518"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -748,7 +748,7 @@ Department:IT;Environment:Test;Role:WebRole
 **İstek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
 ```
 
 **Yanıt**
@@ -1054,7 +1054,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. Nasıl yaparım? hizmet için destek almak mı istiyorsunuz?
    * Hizmete yönelik destek almak için, uzun süreden sonra meta veri yanıtını geçirebileceğiniz VM için Azure portal bir destek sorunu oluşturun.
 9. Hizmete yönelik çağrımın isteği zaman aşımına uğradı mı?
-   * Meta veri çağrılarının, sanal makinenin ağ kartına atanan birincil IP adresinden olması gerekir. yönlendirlerinizi değiştirmenize ek olarak, ağ kartınızdan 169.254.0.0/16 adresi için bir yol olması gerekir.
+   * Meta veri çağrılarının, sanal makinenin birincil ağ kartına atanan birincil IP adresinden olması gerekir. yönlendirlerinizi değiştirmenize ek olarak, ağ kartınızdan 169.254.0.0/16 adresi için bir yol olması gerekir.
 10. Sanal makine ölçek kümesinde etiketlerimi güncelleştirdim, ancak VM 'lerden farklı olarak örneklerde gözükmez mi?
     * Şu anda ScaleSets etiketleri için yalnızca bir yeniden başlatma/yeniden görüntü/veya örneğe bir disk değişikliği olan sanal makineye gösterilir.
 

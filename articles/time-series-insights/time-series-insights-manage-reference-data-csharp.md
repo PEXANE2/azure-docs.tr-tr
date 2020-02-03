@@ -11,16 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935119"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962008"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Kullanarak bir Azure Time Series Insights ortamı için GA başvuru verilerini yönetmeC#
 
 Bu makalede, Azure Time Series Insights GA C# [Reference veri yönetimi API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)'sine programlı API istekleri yapmak için nasıl birleştirileceğini, [msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory gösterilmektedir.
+
+> [!TIP]
+> https://github.com/Azure-Samples/Azure-Time-Series-Insights için C# GA kod örneklerini [ ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)görüntüleyin.
 
 ## <a name="summary"></a>Özet
 
@@ -52,9 +55,6 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 1. Her **#PLACEHOLDER #** öğesini uygun ortam tanımlayıcısı ile değiştirerek aşağıdaki örnek kodu düzenleyin.
 
 1. `dotnet run`, projenizin kök dizini içinde çalıştırın. İstendiğinde, Azure 'da oturum açmak için Kullanıcı profilinizi kullanın. 
-
-> [!TIP]
-> * https://github.com/Azure-Samples/Azure-Time-Series-Insights diğer GA C# kod örneklerini görüntüleyin [ ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 

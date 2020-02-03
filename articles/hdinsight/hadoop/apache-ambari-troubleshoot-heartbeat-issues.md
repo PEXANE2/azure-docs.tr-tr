@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895378"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964626"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı sinyal sorunları
 
@@ -82,6 +82,21 @@ Uyarılar, ambarı aracısının çalışmadığı kaynaklardır.
     ```
 
     Yük devretme denetleyicisi Hizmetleri çalışmıyorsa, büyük olasılıkla bir sorundan dolayı HDInsight-Agent ' ın yük devretme denetleyicisi 'ni başlatmasını engelliyor olabilir. `/var/log/hdinsight-agent/hdinsight-agent.out` dosyasından HDInsight-Agent günlüğünü denetleyin.
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>Senaryo: ambarı için Sinyal kayboldu
+
+### <a name="issue"></a>Sorun
+
+Ambarı sinyal Aracısı kayboldu.
+
+### <a name="cause"></a>Nedeni
+
+OMS günlükleri yüksek CPU kullanımına neden oluyor.
+
+### <a name="resolution"></a>Çözünürlük
+
+* [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) PowerShell modülünü kullanarak OMS günlüğünü devre dışı bırakın. 
+* `mdsd.warn` günlük dosyasını silme
 
 ---
 

@@ -3,12 +3,12 @@ title: Azure işlevleri için uygulama ayarları başvurusu
 description: Azure işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921109"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963708"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure işlevleri için uygulama ayarları başvurusu
 
@@ -32,14 +32,14 @@ Application Insights kullanıyorsanız, Application Insights izleme anahtarı. B
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Günlükleri depolamak ve bunları görüntülemek için isteğe bağlı bir depolama hesabı bağlantı dizesi **İzleyici** portalında sekmesi. Bloblar, kuyruklar ve tablolar destekleyen genel amaçlı bir depolama hesabı olmalıdır. Bkz: [depolama hesabı](functions-infrastructure-as-code.md#storage-account) ve [depolama hesabı gereksinimleri](functions-create-function-app-portal.md#storage-account-requirements).
+Günlükleri depolamak ve bunları görüntülemek için isteğe bağlı bir depolama hesabı bağlantı dizesi **İzleyici** portalında sekmesi. Bu ayar yalnızca Azure Işlevleri çalışma zamanının 1. x sürümünü hedefleyen uygulamalar için geçerlidir. Bloblar, kuyruklar ve tablolar destekleyen genel amaçlı bir depolama hesabı olmalıdır. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).
 
 |Anahtar|Örnek değer|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [anahtar]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName =<name>; AccountKey =<key>|
 
-> [!TIP]
-> Performans ve deneyimi için yerine AzureWebJobsDashboard izleme için appınsıghts_ınstrumentatıonkey ve App Insights'ı kullanmak için önerilir
+> [!NOTE]
+> Daha iyi performans ve deneyim için, çalışma zamanı sürüm 2. x ve sonraki sürümleri, `AzureWebJobsDashboard`yerine izleme için APPINSIGHTS_INSTRUMENTATIONKEY ve uygulama öngörülerini kullanır.
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ Depo veya için anahtar depolama sağlayıcı belirtir. Şu anda desteklenen dep
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure işlevleri çalışma zamanı HTTP tetiklemeli işlevleri hariç tüm işlevler için bu depolama hesabı bağlantı dizesi kullanır. Bloblar, kuyruklar ve tablolar destekleyen genel amaçlı bir depolama hesabı olmalıdır. Bkz: [depolama hesabı](functions-infrastructure-as-code.md#storage-account) ve [depolama hesabı gereksinimleri](functions-create-function-app-portal.md#storage-account-requirements).
+Azure işlevleri çalışma zamanı HTTP tetiklemeli işlevleri hariç tüm işlevler için bu depolama hesabı bağlantı dizesi kullanır. Bloblar, kuyruklar ve tablolar destekleyen genel amaçlı bir depolama hesabı olmalıdır. Bkz: [depolama hesabı](functions-infrastructure-as-code.md#storage-account) ve [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).
 
 |Anahtar|Örnek değer|
 |---|------------|

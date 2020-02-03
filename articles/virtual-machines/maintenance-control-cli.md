@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895895"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964881"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Önizleme: bakım denetimi ve Azure CLı ile güncelleştirmeleri denetleme
 
@@ -31,13 +31,13 @@ Bakım denetimi ile şunları yapabilirsiniz:
 > [!IMPORTANT]
 > Bakım denetimi şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
+>
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - VM 'Lerin [ayrılmış bir konakta](./linux/dedicated-hosts.md)olması veya [yalıtılmış bir VM boyutu](./linux/isolation.md)kullanılarak oluşturulması gerekir.
 - 35 gün sonra, bir güncelleştirme otomatik olarak uygulanır.
-- Kullanıcının **kaynak sahibi** erişimi olmalıdır.
+- Kullanıcının, **kaynak katılımcısı** erişimi olmalıdır.
 
 
 ## <a name="install-the-maintenance-extension"></a>Bakım uzantısını yükler
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 Bekleyen güncelleştirmeler olup olmadığını görmek için `az maintenance update list` kullanın. Güncelleştirme--VM 'yi içeren aboneliğin KIMLIĞI olacak abonelik.
 
+Güncelleştirme yoksa, komut, şu metni içeren bir hata iletisi döndürür: `Resource not found...StatusCode: 404`.
+
+Güncelleştirmeler varsa, bekleyen birden çok güncelleştirme olsa bile yalnızca bir tane döndürülür. Bu güncelleştirmenin verileri bir nesnesinde döndürülür:
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
 Yalıtılmış bir VM için bekleyen güncelleştirmeleri denetleyin. Bu örnekte, çıkış okunabilirlik için bir tablo olarak biçimlendirilir.
@@ -166,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Adanmış bir ana bilgisayar için bekleyen güncelleştirmeleri denetlemek için. Bu örnekte, çıkış okunabilirlik için bir tablo olarak biçimlendirilir. Kaynakların değerlerini kendi değerlerinizle değiştirin.
+Ayrılmış bir ana bilgisayar için bekleyen güncelleştirmeleri denetlemek için (ADH). Bu örnekte, çıkış okunabilirlik için bir tablo olarak biçimlendirilir. Kaynakların değerlerini kendi değerlerinizle değiştirin.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Güncelleştirme uygulama
 
-Bekleyen güncelleştirmeleri uygulamak için `az maintenance apply update` kullanın.
+Bekleyen güncelleştirmeleri uygulamak için `az maintenance apply update` kullanın. Başarı durumunda bu komut, güncelleştirmenin ayrıntılarını içeren JSON döndürür.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
@@ -191,7 +208,7 @@ Yalıtılmış bir VM 'ye güncelleştirme uygulamak için bir istek oluşturun.
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ Güncelleştirmeleri adanmış bir konağa uygulayın.
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 `az maintenance applyupdate get`kullanarak güncelleştirmelerin ilerlemesini kontrol edebilirsiniz. 
 
-### <a name="isolated-vm"></a>Yalıtılmış VM
+Son güncelleştirmenin sonuçlarını görmek için `default` güncelleştirme adı olarak kullanabilir veya `myUpdateName` `az maintenance applyupdate create`çalıştırdığınızda döndürülen güncelleştirmenin adıyla değiştirebilirsiniz.
 
-`myUpdateName`, `az maintenance applyupdate create`çalıştırdığınızda döndürülen güncelleştirmenin adıyla değiştirin.
+### <a name="isolated-vm"></a>Yalıtılmış VM
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```

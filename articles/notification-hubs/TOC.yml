@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: Kavramlar
   items:
+    - name: Aktarım Katmanı Güvenliği (TLS)
+      href: notification-hubs-tls12.md
     - name: Kurumsal gönderme mimari kılavuzu
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Cihaz kayıtları

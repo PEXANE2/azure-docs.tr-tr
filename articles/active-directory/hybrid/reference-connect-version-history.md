@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756309"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963215"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -39,7 +39,7 @@ Bu işlemden sonra, yayının sürüm numarası, "1.3. X. 0" içinde olduğu gib
 Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir hale getirilmeyecektir. Sürüm durumu, bir yayının otomatik yükseltme veya yalnızca indirme için kullanılabilir duruma getirilmeyeceğini gösterir. Azure AD Connect sunucunuzda otomatik yükseltme etkinleştirildiyse, bu sunucu otomatik olarak yükseltme için yayınlanan en son Azure AD Connect sürümüne yükseltilir. Azure AD Connect yapılandırmalarının tümünün otomatik yükseltme için uygun olmadığına unutmayın. [Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) hakkında daha fazla bilgi için lütfen bu bağlantıyı izleyin
 
 >[!IMPORTANT]
-> 1 Kasım 2020 tarihinden itibaren, 18 aydan daha önce yayınlanan Azure AD Connect sürümlerinin kullanım dışı bırakıldığı bir kullanımdan kaldırma işlemi uygulamaya başlayacağız. Bu sırada, sürüm 1.1.751.0 (4/12/2018 ' de yayımlanmıştır) ve daha eski sürümleri içeren tüm Azure AD Connect sürümlerini kullanımdan kaldırarak bu işleme başlayacağız ve yeni bir sürüm yayımlandığında Azure AD Connect eski sürümlerinin kullanımdan kalkmayı değerlendirmeye devam edeceğiz.
+> 1 Kasım 2020 tarihinden itibaren, 18 aydan daha önce yayınlanan Azure AD Connect sürümlerinin kullanım dışı bırakıldığı bir kullanımdan kaldırma işlemi uygulamaya başlayacağız. Bu sırada, sürüm 1.3.20.0 (4/24/2019 ' de yayımlanmıştır) ve daha eski sürümleri içeren tüm Azure AD Connect sürümlerini kullanımdan kaldırarak bu işleme başlayacağız ve yeni bir sürüm yayımlandığında Azure AD Connect eski sürümlerinin kullanımdan kalkmayı değerlendirmeye devam edeceğiz.
 >
 > En iyi destek deneyimini almak için Azure AD Connect yeni bir sürümünü çalıştırdığınızdan emin olmanız gerekir. 
 >

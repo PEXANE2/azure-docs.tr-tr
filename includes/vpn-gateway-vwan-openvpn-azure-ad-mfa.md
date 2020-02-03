@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/16/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4cef4e09038288e4609f37c4e33f225bd79113be
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 93f645c41780d5ad5a342a04fc909d5c253fdaf3
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166642"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964758"
 ---
 ## <a name="mfa"></a>MFA sayfasını açın
 
@@ -29,10 +29,3 @@ ms.locfileid: "76166642"
 2. **Etkinleştir**’i seçin.
 
    ![Seçin](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Kimlik doğrulamasını etkinleştir
-
-1. **Azure Active Directory > kurumsal uygulamalar-tüm uygulamalar >** ' ne gidin.
-2. **Kurumsal uygulamalar-tüm uygulamalar** SAYFASıNDA **Azure VPN**' yi seçin.
-
-   ![Dizin KIMLIĞI](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/user1.jpg)

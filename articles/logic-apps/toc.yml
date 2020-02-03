@@ -330,16 +330,13 @@
     - name: İzleme
       items:
         - name: Mantıksal uygulamaları izleme
-          href: logic-apps-monitor-your-logic-apps.md
+          href: monitor-logic-apps.md
         - name: Azure İzleyici günlükleri ile mantıksal uygulamaları izleme
-          href: logic-apps-monitor-your-logic-apps-oms.md
+          href: monitor-logic-apps-log-analytics.md
         - name: Azure İzleyici günlükleri ile B2B iletilerini izleme
-          href: logic-apps-monitor-b2b-message.md
-          items:
-            - name: Azure İzleyici günlükleri ile B2B iletilerini izleme
-              href: logic-apps-track-b2b-messages-omsportal.md
-            - name: Azure İzleyici günlükleri ile B2B iletileri için sorgu oluşturma
-              href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
+          href: monitor-b2b-messages-log-analytics.md
+        - name: İzleyici ve izleme sorguları oluşturma
+          href: create-monitoring-tracking-queries.md
     - name: 'Örnekler, senaryolar ve kılavuzlar'
       href: logic-apps-examples-and-scenarios.md
       items:

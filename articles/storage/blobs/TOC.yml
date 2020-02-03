@@ -82,11 +82,7 @@
             - name: 4 - Aktarım hızı ve gecikme süresi ölçümlerini doğrulama
               href: storage-blob-scalable-app-verify-metrics.md
         - name: Statik web sitesi barındırma
-          items:
-            - name: 1 - Statik web sitesi oluşturma
-              href: storage-blob-static-website-host.md
-            - name: 2 - SSL ile özel etki alanını etkinleştirme
-              href: storage-blob-static-website-custom-domain.md
+          href: storage-blob-static-website-host.md
         - name: Uygulamaları yüksek kullanılabilirlik için tasarlama
           items:
             - name: 1 - Uygulamanızı yüksek oranda kullanılabilir hale getirme
@@ -383,10 +379,12 @@
             - name: Azure Depolama öykünücüsü kullanma
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Statik web sitesi barındırma
-          href: storage-blob-static-website-how-to.md
-        - name: HTTPS üzerinden erişim için Azure CDN’yi bir özel etki alanına eşleme
-          href: storage-https-custom-domain-cdn.md
-        - name: Özel etki alanı yapılandırma
+          items:
+            - name: Statik web sitesi barındırma
+              href: storage-blob-static-website-how-to.md
+            - name: Azure CDN ile tümleştirme
+              href: static-website-content-delivery-network.md
+        - name: Özel etki alanı kullanma
           href: storage-custom-domain-name.md
         - name: Olayları özel bir uç noktaya yönlendirme
           href: storage-blob-event-quickstart.md

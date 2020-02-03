@@ -888,13 +888,19 @@
             - name: İzlemeye dışarıdan erişme
               href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
+        - name: MLflow Search API’si ile panolar oluşturma
+          href: /azure/databricks/applications/mlflow/build-dashboards
+          maintainContext: true
         - name: 'Modelleri kaydetme, yükleme ve dağıtma'
           items:
             - name: 'Kaydetme, yükleme ve dağıtmaya genel bakış'
               href: /azure/databricks/applications/mlflow/models
               maintainContext: true
-            - name: MLflow modeli örnekleri
-              href: /azure/databricks/applications/mlflow/  model-examples
+            - name: MLflow modeli örneği
+              href: /azure/databricks/applications/mlflow/model-example
+              maintainContext: true
+            - name: Azure’da scikit learn modelinin dağıtımı
+              href: /azure/databricks/applications/mlflow/scikit-learn-model-deployment-on-azure-ml
               maintainContext: true
         - name: MLflow projeleriyle çalıştırmaları yeniden oluşturma
           href: /azure/databricks/applications/mlflow/projects
@@ -1411,7 +1417,7 @@
               maintainContext: true
         - name: Python
           items:
-            - name: Anaconda ile küme oluşturma
+            - name: Conda ile küme oluşturma
               href: /azure/databricks/kb/python/anaconda-environment
               maintainContext: true
             - name: Cython'u yükleme ve derleme
@@ -1465,6 +1471,9 @@
           items:
             - name: Scala'da C++ kodu çalıştırma
               href: /azure/databricks/kb/scala/running-c-plus-plus-code-scala
+              maintainContext: true
+            - name: Eşzamanlı Spark JAR işleri başarısız oluyor
+              href: /azure/databricks/kb/scala/spark-jar-job-error
               maintainContext: true
         - name: SQL
           items:

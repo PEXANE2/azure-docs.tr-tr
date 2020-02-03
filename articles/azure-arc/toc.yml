@@ -5,12 +5,12 @@
   items:
     - name: Sunucular için Azure Arc nedir?
       href: ./servers/overview.md
-- name: Hızlı Başlangıçlar
+- name: Azure Arc’a bağlanma
   expanded: true
   items:
-    - name: Sunucular için Azure Arc'ı kullanarak makineleri Azure'a bağlama - Portal
+    - name: Makineleri Azure portalından Azure Arc’a bağlama
       href: ./servers/quickstart-onboard-portal.md
-    - name: Sunucular için Azure Arc’ı kullanarak makineleri uygun ölçekte bağlama - PowerShell
+    - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
       href: ./servers/quickstart-onboard-powershell.md
 - name: Başvuru
   items:

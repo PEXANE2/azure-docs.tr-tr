@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490619"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964252"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Azure veri paylaşımında alınan bir paylaşıma yönelik veri kümesi eşlemesi yapılandırma
 
-Bu makalede, Azure veri paylaşımının kullanıldığı bir alınan paylaşımda veri kümesi eşlemesinin nasıl yapılandırılacağı açıklanır. Bir veri paylaşma davetini kabul ettiyseniz ancak "daha sonra kabul et ve Yapılandır" seçeneğini tercih ettiyseniz bunu yapmak isteyeceksiniz. Sizinle paylaşılan verilerin hedefini değiştirmeniz veya bir SQL Server veri almak istiyorsanız, bir veri kümesi eşlemesi yapılandırmak isteyebilirsiniz. 
+Bu makalede, Azure veri paylaşımının kullanıldığı bir alınan paylaşımda veri kümesi eşlemesinin nasıl yapılandırılacağı açıklanır. Bir veri paylaşım davetini kabul ettiyseniz ancak "daha sonra kabul et ve Yapılandır" ya da veriler yerinde paylaşılmışsa bunu yapmak isteyeceksiniz. Sizinle paylaşılan verilerin hedefini değiştirmeniz veya bir SQL Server veri almak istiyorsanız, bir veri kümesi eşlemesi yapılandırmak isteyebilirsiniz. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Alınan bir veri paylaşımında gezin
 
@@ -27,9 +27,9 @@ Hedef atamak istediğiniz veri kümesinin yanındaki kutuyu işaretleyin. Mevcut
 
 ![Hedefle eşle](./media/dataset-map-target.png "Hedefle eşle") 
 
-## <a name="select-a-new-destination-store"></a>Yeni bir hedef depo seçin
+## <a name="select-a-new-target-store"></a>Yeni bir hedef depo seçin
 
-Verilerin içinde olmasını istediğiniz bir hedef veri türü seçin. Önceden eşlenmiş depolama hesaplarında bulunan tüm verilerin otomatik olarak yeni hedefe taşınacağını unutmayın.
+Verilerin içinde olmasını istediğiniz bir hedef veri türü seçin. Anlık görüntü tabanlı paylaşım için, önceden eşlenmiş herhangi bir depolama hesabında zaten bulunan tüm veriler yeni hedef depoya otomatik olarak taşınmaz. Yerinde paylaşım için, belirtilen konumda bir veri deposu seçin. Konum, veri sağlayıcısının kaynak veri deposunun bulunduğu Azure veri merkezindedir.
 
 ![Hedef depolama hesabı](./media/dataset-map-target-sql.png "Hedef depolama") 
 
