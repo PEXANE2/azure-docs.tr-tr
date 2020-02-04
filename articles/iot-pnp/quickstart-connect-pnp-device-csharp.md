@@ -1,19 +1,19 @@
 ---
 title: IoT Tak ve Kullan Preview örnek cihaz kodunu IoT Hub 'ye bağlayın | Microsoft Docs
 description: ( C# .Net) kullanarak IoT Hub 'ına bağlanan IoT Tak ve kullan önizlemesi örnek cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b32fc103b4ed4d7058c8af42ffa126ee5527f45a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550877"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964847"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan Preview cihaz uygulamasını IoT Hub (C#) ile bağlama
 
