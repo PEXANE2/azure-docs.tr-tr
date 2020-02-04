@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760581"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939154"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -419,23 +419,7 @@ Veri Gezgini’ni açmak için tarayıcınızda aşağıdaki URL’ye gidin. Yuk
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-Linux Docker kapsayıcısında çalışan bir .NET istemci uygulamanız varsa ve bir konak makinesinde Azure Cosmos öykünücüsü çalıştırıyorsanız, bu durumda öykünücünden Azure Cosmos hesabına bağlanamazsınız. Uygulama konak makinede çalışmadığından, öykünücü uç noktasıyla eşleşen Linux kapsayıcısına kayıtlı sertifika eklenemiyor. 
-
-Geçici bir çözüm olarak, aşağıdaki .NET kod örneğinde gösterildiği gibi bir `HttpClientHandler` örneğini geçirerek, sunucunun SSL sertifika doğrulamasını istemci uygulamanızdan devre dışı bırakabilirsiniz. Bu geçici çözüm yalnızca `Microsoft.Azure.DocumentDB` NuGet paketini kullanıyorsanız geçerlidir; bu, `Microsoft.Azure.Cosmos` NuGet paketiyle desteklenmez:
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-SSL sertifika doğrulamasını devre dışı bırakmanın yanı sıra, öykünücüyü `/allownetworkaccess` seçeneğiyle başlatmanız ve öykünücü uç noktasına `host.docker.internal` DNS yerine ana bilgisayar IP adresinden erişilebilir olması önemlidir.
+Linux Docker kapsayıcısında çalışan bir .NET istemci uygulamanız varsa ve bir konak makinesinde Azure Cosmos öykünücüsü çalıştırıyorsanız, sertifikayı Linux Docker kapsayıcısına aktarmak için lütfen Linux için aşağıdaki bölümü izleyin.
 
 ## Mac veya Linux üzerinde çalışıyor<a id="mac"></a>
 
@@ -447,47 +431,59 @@ Windows VM içinde aşağıdaki komutu çalıştırın ve IPv4 adresini unutmay�
 ipconfig.exe
 ```
 
-Uygulamanızın içinde, DocumentClient nesnesinin URI 'sini `ipconfig.exe`tarafından döndürülen IPv4 adresini kullanacak şekilde değiştirmeniz gerekir. Sonraki adım, DocumentClient nesnesini oluştururken CA doğrulamasının etrafında çalışmadır. Bunun için, The DocumentClient oluşturucusuna bir HttpClientHandler sağlamanız gerekir ve bu, ServerCertificateCustomValidationCallback için kendi uygulamasına sahip olur.
+Uygulamanızın içinde, `localhost`yerine `ipconfig.exe` tarafından döndürülen IPv4 adresini kullanmak için uç nokta olarak kullanılan URI 'yi değiştirmeniz gerekir.
 
-Aşağıda kodun nasıl görüneceğine ilişkin bir örnek verilmiştir.
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-Son olarak, Windows VM 'nin içinden aşağıdaki seçenekleri kullanarak Cosmos öykünücüsünü komut satırından başlatın.
+Sonraki adımda, Windows VM 'nin içinden aşağıdaki seçenekleri kullanarak Cosmos öykünücüsünü komut satırından başlatın.
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+Son olarak, öykünücü CA sertifikasını Linux veya Mac ortamına aktarmanız gerekir.
+
+### <a name="linux"></a>Linux
+
+Linux üzerinde çalışıyorsanız, doğrulama yapmak için OpenSSL üzerinde .NET geçişleri:
+
+1. [SERTIFIKAYı PFX biçiminde dışarı aktarın](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (özel anahtarı dışarı aktarmaya seçerken PFX kullanılabilir). 
+
+1. Bu PFX dosyasını Linux ortamınıza kopyalayın.
+
+1. PFX dosyasını CRT dosyasına Dönüştür
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. CRT dosyasını Linux dağılısdaki özel sertifikaları içeren klasöre kopyalayın. Genellikle, yaygın olarak kullanılan dağıtımlar `/usr/local/share/ca-certificates/`bulunur.
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. `/etc/ssl/certs/` klasörünü güncelleştirecek CA sertifikalarını güncelleştirin.
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+Mac üzerinde çalışıyorsanız aşağıdaki adımları kullanın:
+
+1. [SERTIFIKAYı PFX biçiminde dışarı aktarın](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (özel anahtarı dışarı aktarmaya seçerken PFX kullanılabilir).
+
+1. Bu PFX dosyasını Mac ortamınıza kopyalayın.
+
+1. *Anahtarlık erişimi* uygulamasını açın ve pfx dosyasını içeri aktarın.
+
+1. Sertifika listesini açın ve ad `localhost`adı ile kimliğinizi yapın.
+
+1. Bu belirli öğe için bağlam menüsünü açın, *öğeyi al* ' ı seçin ve *güven* altında > , *Bu sertifika seçeneğini kullandığınızda* *her zaman güven*' i seçin. 
+
+   ![Söz konusu öğe için bağlam menüsünü açın, öğeyi Al ' ı seçin ve güven altında, bu sertifikayı kullanırken her zaman güven ' i seçin.](./media/local-emulator/mac-trust-certificate.png)
+
+Bu adımları tamamladıktan sonra, ortamınız `/AllowNetworkAccess`tarafından ortaya çıkaran IP adresine bağlanırken öykünücü tarafından kullanılan sertifikaya güvenecek.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
