@@ -25,7 +25,7 @@ Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölç
 
 Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz Aşağıdaki seçenekleri göz önünde bulundurun:
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ
 <a id="direct-connection"></a>
 
 1. **Bağlantı ilkesi: doğrudan bağlantı modunu kullan**
@@ -46,8 +46,8 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
      |Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
      |---------|---------|---------|---------|
-     |Ağ Geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-     |Doğrudan    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
+     |Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+     |Direct    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
 
      Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifrelemek için SSL kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
 
@@ -165,7 +165,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
    > [!NOTE] 
    > Maxıtemcount özelliği yalnızca sayfalandırma amacıyla kullanılmamalıdır. Tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmak için bu asıl kullanım önemlidir.  
 
-   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
+   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -204,7 +204,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md).
 
-## <a name="throughput"></a>İşleme
+## <a name="throughput"></a>Aktarım hızı
 <a id="measure-rus"></a>
 
 1. **Düşük istek birimleri/ikinci kullanım için ölçme ve ayarlama**

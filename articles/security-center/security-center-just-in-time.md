@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 69a5452134e290f2072a9316ce1f067296ed2320
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156769"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939407"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Tam zamanında sanal makine erişimini yönetme
 
-Tam zamanında (JIT) sanal makine (VM) erişimi, gelen trafiği Azure VM’lerinize kilitlemek için kullanılabilir. Böylece, saldırılara maruz kalma riski azaltılırken VM’lere gerektiğinde bağlanılabilmesi için kolay erişim sağlar.
+Tam zamanında (JıT) sanal makine (VM) erişimi, Azure VM 'lerinize gelen trafiği kilitlemek ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalma olasılığını azaltmak için kullanılabilir.
 
 > [!NOTE]
 > Tam zamanında özelliği, güvenlik merkezi 'nin standart katmanında bulunur. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md).
@@ -48,7 +48,7 @@ Bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcın�
 
 | Bir kullanıcıyı şu şekilde etkinleştirmek için: | Ayarlanacak izinler|
 | --- | --- |
-| VM için bir JıT ilkesi yapılandırma veya düzenleme | *Bu eylemleri role atayın:*  <ul><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Bir aboneliğin veya kaynak grubunun veya VM 'nin kapsamında: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+| VM için bir JıT ilkesi yapılandırma veya düzenleme | *Bu eylemleri role atayın:*  <ul><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Bir abonelik veya VM kaynak grubu kapsamında: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |Bir VM 'ye JıT erişimi isteme | *Bu eylemleri kullanıcıya ata:*  <ul><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>VM ile ilişkili bir abonelik veya kaynak grubu kapsamında:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Bir aboneliğin veya kaynak grubunun veya VM 'nin kapsamında:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Bir aboneliğin veya kaynak grubunun veya VM 'nin kapsamında:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 

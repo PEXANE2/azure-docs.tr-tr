@@ -47,8 +47,9 @@
     - name: Kullanıcı VPN’i için çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma (Önizleme)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Otomasyon yapılandırma (Sanal WAN iş ortakları)
-    - name: Genel ve merkez tabanlı VPN profillerini indirme
       href: virtual-wan-configure-automation-providers.md
+    - name: Genel ve merkez tabanlı VPN profillerini indirme
+      href: global-hub-profile.md
     - name: Yönlendirmeyi yapılandırma
       items:
         - name: Sanal hub'dan NVA'ya trafik yönlendirme

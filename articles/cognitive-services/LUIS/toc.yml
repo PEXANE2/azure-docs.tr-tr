@@ -67,21 +67,11 @@
     - name: Bot ile kullanma
       items:
         - name: 'C# ile'
-          items:
-            - name: 1. Temel bot oluşturma
-              href: luis-csharp-tutorial-bf-v4.md
-              displayName: 'bot framework, framework, sdk, abs'
-            - name: 2. Application Insights’a telemetri ekleme
-              href: luis-tutorial-bot-csharp-appinsights.md
-              displayName: 'Application insight, kusto'
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
         - name: Node.js ile
-          items:
-            - name: 1. Temel bot oluşturma
-              displayName: 'bot framework, framework, sdk, abs'
-              href: luis-nodejs-tutorial-bf-v4.md
-            - name: 2. Application Insights’a telemetri ekleme
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: Kavramlar
   items:
     - name: Geliştirme yaşam döngüsü

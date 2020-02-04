@@ -64,18 +64,26 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: Azure İzleyici
       items:
-        - name: Linux
-          href: oms-linux.md
-        - name: Windows
-          href: oms-windows.md
-    - name: VM'ler için Azure İzleyici
-      items:
-        - name: Linux Bağımlılık aracısı
-          href: agent-dependency-linux.md
-        - name: Windows Bağımlılık aracısı
-          href: agent-dependency-windows.md
+        - name: Tanılama uzantısı
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: VM'ler için Azure İzleyici
+          items:
+            - name: Linux Bağımlılık aracısı
+              href: agent-dependency-linux.md
+            - name: Windows Bağımlılık aracısı
+              href: agent-dependency-windows.md
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
@@ -89,14 +97,6 @@
           href: dsc-template.md
     - name: Sanal makine erişimi
       href: vmaccess.md
-    - name: Sanal makine tanılama
-      items:
-        - name: Linux
-          href: diagnostics-linux.md
-        - name: Windows
-          href: diagnostics-windows.md
-        - name: Şablon kullanma
-          href: diagnostics-template.md
     - name: Üçüncü taraf uzantıları
       items:
         - name: Chef
