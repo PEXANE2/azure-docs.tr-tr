@@ -1,5 +1,5 @@
 ---
-title: Microsoft Müşteri Sözleşmesi fiyat sayfanızdaki koşullar-Azure
+title: Microsoft Müşteri Sözleşmesi fiyat listenizdeki koşullar - Azure
 description: Microsoft Müşteri Sözleşmesinin kullanımını ve faturasını okuma ve anlama hakkında bilgi edinin.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
 ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994486"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft Müşteri Sözleşmesi fiyat listenizdeki koşullar
@@ -48,19 +48,19 @@ Aşağıdaki bölümde, Microsoft Müşteri Sözleşmesi fiyat listenizde göste
 | meterSubCategory  | Ölçüm alt sınıflandırma kategorisinin adı.  |
 | meterType  |  Ölçüm türünün adı. |
 | meterRegion  | Hizmet ölçümünün kullanılabilir olduğu bölgenin adı. Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir.    |
-| Ürün  | Ücretlerin tahakkuk eden ürün adı. Ex: temel SQL DB vs standart SQL DB  |
+| Ürün  | Ücret tahakkuk eden ürünün adı. Ör: Temel SQL DB ve Standart SQL DB  |
 | productId  | Ölçümü kullanılan ürünün benzersiz tanımlayıcısı. |
 | productOrderName  | Satın alınan ürün planının adı. |
-| serviceFamily  | Azure hizmeti türü. Ex: Işlem, analiz, güvenlik |
+| serviceFamily  | Azure hizmetinin türü. Ör: İşlem, Analiz, Güvenlik |
 | tierMinimumUnits  | Fiyatları tanımlanan katman aralığının alt sınırını tanımlar. Örneğin, aralık 0 ila 100 arasıysa tierMinimumUnits 0 olur.  |
 | unitOfMeasure  | Hizmet faturalaması için ölçü birimlerini tanımlar. Örneğin, işlem hizmetleri saat bazında faturalandırılır. |
-| unitPrice  | Bir ölçüme ve ürün siparişi adına özgü olarak faturalama sırasındaki birim başına fiyat (geçerli karma fiyat değildir).  Not: birim fiyatı, katmanlar arasında fark fiyatları bulunan hizmetler söz konusu olduğunda, kullanım ayrıntıları indirmelerinde geçerli fiyat ile aynı değildir.  Çok katmanlı fiyatlandırması bulunan hizmetler olması durumunda geçerli fiyat, katmanlar genelindeki karma bir fiyattır ve katmana özgü birim fiyatı göstermez. Karma fiyat veya geçerli fiyat, birden çok katman genelinde yayılan (her bir katmanın belirli bir birim fiyatının olduğu), kullanılan miktarın net fiyatıdır. |
+| unitPrice  | Bir ölçüme ve ürün siparişi adına özgü olarak faturalama sırasındaki birim başına fiyat (geçerli karma fiyat değildir).  Not: Birim fiyat, katmanlar arasında farklı fiyatları bulunan hizmetler olması durumunda kullanım ayrıntıları indirmelerindeki geçerli fiyatla aynı değildir.  Çok katmanlı fiyatlandırması bulunan hizmetler olması durumunda geçerli fiyat, katmanlar genelindeki karma bir fiyattır ve katmana özgü birim fiyatı göstermez. Karma fiyat veya geçerli fiyat, birden çok katman genelinde yayılan (her bir katmanın belirli bir birim fiyatının olduğu), kullanılan miktarın net fiyatıdır. |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

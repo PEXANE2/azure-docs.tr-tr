@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990001"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure ödeme sorunlarını giderme
@@ -50,7 +50,7 @@ Bu sorunu gidermek için bkz. [Azure portalı veya Azure hesap merkezi için Abo
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Abonelik için ödeme yapılamıyor
 
-Şu hata iletisini alırsanız: *ödemenin süresi geçti. Ödeme yönteminiz ile ilgili bir sorun var* veya *Üzgünüz, bilgiler kaydedilemedi. Tarayıcıyı kapatın ve yeniden deneyin.* daha sonra kartın finans kurumunuz tarafından reddedildiği için kartın bekleyen bir ödemesi vardır.
+Hata iletisini alırsanız: *Ödemenin süresi geçti. Ödeme yönteminiz ile ilgili bir sorun var* veya *Ne yazık ki bilgiler kaydedilemiyor. Tarayıcıyı kapatıp yeniden deneyin.* Bu durumda kart ilgili finans kurumu tarafından reddedildiğinden kartta bekleyen bir ödeme vardır.
 
 Kredi kartının ödeme yapmak için yeterli bakiyesi olduğunu doğrulayın. Yoksa ödeme yapmak için başka bir kart kullanın veya sorunu çözmek için finans kurumunuza ulaşın.
 

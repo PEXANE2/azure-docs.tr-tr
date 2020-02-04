@@ -1,5 +1,5 @@
 ---
-title: Azure App Service için rezervasyon iskontoları
+title: Azure App Service için rezervasyon indirimleri
 description: Azure App Service Yalıtılmış Damga Pulları için rezervasyon indirimlerinin nasıl uygulandığını öğrenin.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995799"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Azure App Service Yalıtılmış Damga Pulları için rezervasyon indirimlerinin uygulanması
@@ -39,17 +39,17 @@ Yalnızca damga pulunda _sırf_ Linux çalışanları olmasını planladığın�
 
 Aşağıdaki örneklerde, dağıtıma bağlı olarak Yalıtılmış Damga Pulu Ücreti ayrılmış örneğinin nasıl uygulandığı gösterilmektedir.
 
-- **Örnek 1**: App Service yalıtılmış damgaları olmayan bir bölgede yalıtılmış bir ayrılmış damga kapasitesinin bir örneğini satın alabilirsiniz. Bölgede yeni bir damga dağıtır ve bu damga için ayrılmış ücretler ödersiniz.
-- **Örnek 2**: zaten bir App Service yalıtılmış damgası dağıtılan bir bölgede yalıtılmış bir ayrılmış damga kapasitesinin bir örneğini satın alabilirsiniz. Dağıtılan damga pulu için ayrılmış ücret almaya başlarsınız.
-- **Örnek 3**: zaten dağıtılmış bir App Service yalıtılmış damgası olan bir bölgede yalıtılmış bir ayrılmış damga kapasitesinin bir örneğini satın alabilirsiniz. Dağıtılan damga pulu için ayrılmış ücret almaya başlarsınız. Daha sonra damga pulunu silip yeni birini dağıtırsınız. Yeni damga pulu için ayrılmış ücret alırsınız. Dağıtılan damga pulları olmayan süreler için indirimler devredilmez.
-- **Örnek 4**: bir bölgede yalıtılmış Linux ayrılmış damga kapasitesinin bir örneğini satın alıp bölgeye yeni bir damga dağıtırsınız. Damga pulu başlangıçta çalışanlar olmadan dağıtıldığında, Windows damga pulu ölçümünü gösterir. Bir indirim alınmaz. Damga puluna ilk Linux çalışanı dağıtıldığında, Linux Damga Pulu ölçümünü gösterir ve rezervasyon indirimi uygulanır. Daha sonra damga puluna bir Windows çalışanı dağıtılırsa, damga pulu ölçümü Windows’a geri döndürülür. Yalıtılmış Linux Ayrılmış Damga Pulu rezervasyonu için artık indirim almazsınız.
+- **Örnek 1**: App Service Yalıtılmış damga pulları olmayan bir bölgede tek bir Yalıtılmış Ayrılmış Damga Pulu kapasitesi örneği satın alırsınız. Bölgede yeni bir damga dağıtır ve bu damga için ayrılmış ücretler ödersiniz.
+- **Örnek 2**: App Service Yalıtılmış damga pulu önceden dağıtılmış olan bir bölgede tek bir Yalıtılmış Ayrılmış Damga Pulu kapasitesi örneği satın alırsınız. Dağıtılan damga pulu için ayrılmış ücret almaya başlarsınız.
+- **Örnek 3**: App Service Yalıtılmış damga pulu önceden dağıtılmış olan bir bölgede tek bir Yalıtılmış Ayrılmış Damga Pulu kapasitesi örneği satın alırsınız. Dağıtılan damga pulu için ayrılmış ücret almaya başlarsınız. Daha sonra damga pulunu silip yeni birini dağıtırsınız. Yeni damga pulu için ayrılmış ücret alırsınız. Dağıtılan damga pulları olmayan süreler için indirimler devredilmez.
+- **Örnek 4**: Bir bölgede tek bir Yalıtılmış Linux Ayrılmış Damga Pulu kapasitesi satın alır ve sonra bu bölgeye yeni bir damga pulu dağıtırsınız. Damga pulu başlangıçta çalışanlar olmadan dağıtıldığında, Windows damga pulu ölçümünü gösterir. Bir indirim alınmaz. Damga puluna ilk Linux çalışanı dağıtıldığında, Linux Damga Pulu ölçümünü gösterir ve rezervasyon indirimi uygulanır. Daha sonra damga puluna bir Windows çalışanı dağıtılırsa, damga pulu ölçümü Windows’a geri döndürülür. Yalıtılmış Linux Ayrılmış Damga Pulu rezervasyonu için artık indirim almazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](manage-reserved-vm-instance.md).
 - Para tasarrufu için önceden App Service Yalıtılmış Damga Pulu ayrılmış kapasitesi satın alma hakkında daha fazla bilgi edinmek için bkz. [Ayrılmış kapasiteli Azure App Service Yalıtılmış Damga Pulu Ücreti için önceden ödeme yapma](prepay-app-service-isolated-stamp.md).
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
   - [Azure’da Rezervasyonları Yönetme](manage-reserved-vm-instance.md)
   - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
   - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)

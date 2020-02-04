@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994057"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
@@ -28,7 +28,7 @@ Azure Ayrılmış Sanal Makine Örnekleri satın aldıysanız rezervasyon için 
 
 ## <a name="reservation-order-and-reservation"></a>Rezervasyon Siparişi ve Rezervasyon
 
-Bir ayırmayı satın aldığınızda iki nesne oluşturulur: **rezervasyon siparişi** ve **rezervasyonu**.
+Rezervasyon satın aldığınızda iki nesne oluşturulur: **Rezervasyon Siparişi** ve **Rezervasyon**.
 
 Satın alma sırasında Rezervasyon Siparişinin altında tek bir Rezervasyon vardır. Bölme, birleştirme, kısmi para iadesi veya değiştirme gibi eylemler **Rezervasyon Siparişi**'nin altında yeni rezervasyonlar oluşturur.
 
@@ -44,7 +44,7 @@ Rezervasyonlar kendi rezervasyon siparişlerinin izinlerini devralır.
 
 Rezervasyon kapsamını güncelleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. Rezervasyonu seçin.
 4. **Ayarlar** > **Yapılandırma**'yı seçin.
@@ -65,7 +65,7 @@ Değiştirme veya para iadesi yapmak için kullanıcının rezervasyon siparişi
 
 Rezervasyona yönetim erişimi temsilcisi atamak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm Hizmetler** > **Rezervasyon**'u seçerek erişim sahibi olduğunuz rezervasyonları listeleyin.
 3. Diğer kullanıcılara erişim vermek istediğiniz rezervasyonu seçin.
 4. **Erişim denetimi (IAM)** öğesini seçin.
@@ -120,7 +120,7 @@ Kapsamın tek olduğu rezervasyonlarda, VM örnek boyutu esnekliği yerine rezer
 
 Rezervasyonun iyileştirme ayarını güncelleştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm Hizmetler** > **Rezervasyonlar**'ı seçin.
 3. Rezervasyonu seçin.
 4. **Ayarlar** > **Yapılandırma**'yı seçin.
@@ -134,7 +134,7 @@ Azure rezervasyon tasarrufları ancak sürekli kaynak kullanımında elde edilir
 
 Rezervasyon kullanımını görüntülemenin bir yolu bunu Azure portalında yapmaktır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** > [**Rezervasyonlar**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)'ı seçin ve rezervasyonu **Kullanım (%)** değerini not alın.  
   ![Rezervasyon listesini gösteren resim](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Bir rezervasyon seçin.
@@ -157,7 +157,7 @@ Kuruluşunuzun rezervasyonlarının gerektiği şekilde kullanılmadığını be
 - Kullanılmayan miktarı değiştokuş etmeyi göz önünde bulundurun. Daha fazla bilgi için bkz. [İptaller ve değişimler](#cancel-exchange-or-refund-reservations).
 
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

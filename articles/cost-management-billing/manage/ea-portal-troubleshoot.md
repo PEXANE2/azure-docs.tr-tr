@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992133"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA portalı erişim sorunlarını giderme
@@ -41,7 +41,7 @@ Kimlik Doğrulaması Düzeyini güncelleştirmek için:
 3. **Kayıt** sekmesine tıklayın.
 4. **Kayıt Ayrıntıları**’ndan **Kimlik Doğrulaması Düzeyi**’ni seçin.
 5. Kalem simgesine tıklayın.
-6. **Save (Kaydet)** düğmesine tıklayın.
+6. **Kaydet**’e tıklayın.
 
 ![Kimlik doğrulaması düzeylerini gösteren örnek ](./media/ea-portal-troubleshoot/create-ea-authentication-level-types.png)
 
@@ -146,9 +146,9 @@ Yukarıdaki sorun giderme adımları başarısız olduysa lütfen [https://aka.m
 
 ### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>İş veya okul hesabı ile Microsoft hesabı arasındaki fark nedir?
 
-**Microsoft hesabı:** [https://signup.live.com](https://signup.live.com)ÜZERINDE Live ID ile ilişkili hesaplar.
+**Microsoft hesabı:** [https://signup.live.com](https://signup.live.com) adresindeki Live ID ile ilişkilendirilmiş hesaplardır.
 
-**İş/okul hesabı:** Yalnızca bulut için Federasyon ve tüm hesaplar tek bir kiracıda olan Active Directory 'yi çalıştıran şirketler için kullanılabilir. Şirketin iç Active Directory hizmeti ile bulut arasında federasyon varsa kullanıcılar iş veya okul kimlik doğrulamasıyla eklenebilir.
+**İş veya okul hesabı:** Yalnızca Buluta Federasyon ile Active Directory ayarlamış olan ve tüm hesapları tek bir kiracıda bulunan şirketler tarafından kullanılabilir. Şirketin iç Active Directory hizmeti ile bulut arasında federasyon varsa kullanıcılar iş veya okul kimlik doğrulamasıyla eklenebilir.
 
   Microsoft, Eylül 2016'dan itibaren iş veya okul e-posta adreslerinin Microsoft hesabı olarak kaydedilmesine izin vermemektedir. Daha fazla ayrıntı için şu belgelere başvurun: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
 

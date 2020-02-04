@@ -13,10 +13,10 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 111b95ddcff3667fa3f1e7df694af1d38887710f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990027"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Öğrenciler için Microsoft Azure aboneliğim neden devre dışı bırakıldı ve nasıl yeniden etkinleştirebilirim?
@@ -40,9 +40,9 @@ Tüm kredinizi kullandığınız, kredinizin süresi dolduğu veya aboneliğiniz
 
 Tablo aşağıdaki sütunları içerir:
 
-* **Hizmet adı:** Azure kredinizi kullanan hizmet.
-* **Hizmet kaynağı:** Tüketilmekte olan hizmet için ölçü birimi.
-* **Harcama:** Hizmette harcanan ABD Doları ($) cinsinden kredi miktarı.
+* **Hizmet Adı:** Azure kredinizi kullanan hizmet.
+* **Hizmet Kaynağı:** Kullanılmakta olan hizmet için ölçü birimi.
+* **Harcama:** Hizmette harcanan ABD Doları cinsinden kredi tutarı.
 
 ## <a name="your-credit-has-expired"></a>Kredinizin süresi doldu
 
@@ -52,6 +52,6 @@ Tablo aşağıdaki sütunları içerir:
 
 Öğrenciler için Microsoft Azure aboneliğinizi yanlışlıkla iptal ettiyseniz, [Azure desteğine](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) başvurarak yeniden etkinleştirebilirsiniz. Yeniden etkinleştirdikten sonra, kayıt tarihinizden itibaren 12 ay boyunca kalan kredilere ve ücretsiz hizmetlere erişiminiz devam eder.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

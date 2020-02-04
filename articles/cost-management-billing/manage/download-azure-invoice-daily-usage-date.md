@@ -16,15 +16,15 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992562"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme
 
-Aboneliklerin çoğunda faturanızı [Azure portalından ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)indirebilir veya e-postayla gönderilmesini sağlayabilirsiniz. Kurumsal Anlaşmalı bir Azure müşterisiyseniz (EA müşterisi), kuruluşunuzun faturalarını indiremezsiniz. Faturalar, kayıt için faturaları alacak kişi olarak ayarlanan kişiye gönderilir.
+Aboneliklerin çoğunda faturanızı [Azure portalından](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) indirebilir veya e-postayla gönderilmesini sağlayabilirsiniz. Kurumsal Anlaşmalı bir Azure müşterisiyseniz (EA müşterisi), kuruluşunuzun faturalarını indiremezsiniz. Faturalar, kayıt için faturaları alacak kişi olarak ayarlanan kişiye gönderilir.
 
 Kurumsal Anlaşma müşterisiyseniz veya [Microsoft Müşteri Sözleşmeniz](#check-access-to-a-microsoft-customer-agreement) varsa, [Azure portalından](https://portal.azure.com/) kullanım bilgilerini indirebilirsiniz.
 
@@ -112,14 +112,14 @@ Microsoft Müşteri Sözleşmeniz varsa faturanızı e-postayla almayı kabul ed
 
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 1. Faturalama profilini seçin.
-1. **Ayarlar** bölümünde **Özellikler**'i seçin.
+1. **Ayarlar** bölümünde **Özellikler**’i seçin.
 1. **Faturayı e-posta ile gönder**’in altında **E-posta fatura tercihini güncelleştir**’i seçin.
 1. **Kabul et**’i seçin.
 1. **Güncelleştir**’e tıklayın.
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Faturalama profili faturalarınızı e-postayla almayı geri çevirme
 
-Yukarıdaki adımları izleyerek ve geri çevir ' e tıklayarak faturanızı e-posta ile **almayı tercih edebilirsiniz**. Tüm sahipler, katkıda bulunanlar, okuyucular ve fatura yöneticileri, faturayı e-posta ile almak için de devre dışı bırakılır. Okuyucuysanız e-postayla fatura alma tercihini değiştiremezsiniz.
+Yukarıdaki adımları izleyip **Geri çevir** seçeneğine tıklayarak faturanızı e-postayla almayı geri çevirebilirsiniz. Tüm Sahipler, Katkıda Bulunanlar, Okuyucular ve Fatura yöneticileri de faturalarını e-postayla almayı geri çevirmiş olur. Okuyucuysanız e-postayla fatura alma tercihini değiştiremezsiniz.
 
 ## <a name="download-usage-in-azure-portal"></a>Azure portalında kullanımı indirme
 
@@ -139,7 +139,7 @@ Yukarıdaki adımları izleyerek ve geri çevir ' e tıklayarak faturanızı e-p
 
 Kurumsal Anlaşma müşterisi olarak kullanım verilerinizi görüntülemek veya indirmek için Kuruluş Yöneticisi, Hesap Sahibi veya ücretleri görüntüleme ilkesi etkinleştirilmiş Bölüm Yöneticisi olmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
 
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
@@ -171,7 +171,7 @@ Ayrıca, geçerli faturalama dönemi için ay başından bugüne kadarki kullan�
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

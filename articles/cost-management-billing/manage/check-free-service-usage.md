@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992835"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Ücretsiz Azure hesabınıza dahil olan ücretsiz hizmetlerin kullanımını denetleme
@@ -24,7 +24,7 @@ Hizmetlerin limitlerini aşmadığınız sürece, ücretsiz Azure hesabınıza �
 
 ## <a name="check-usage-in-the-azure-portal"></a>Azure portalında kullanım bilgilerini denetleme
 
-1.  [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1.  [Azure Portal](https://portal.azure.com) oturum açın.
 
 2.  **Abonelikler** araması yapın.
 
@@ -38,19 +38,19 @@ Hizmetlerin limitlerini aşmadığınız sürece, ücretsiz Azure hesabınıza �
 
     Tabloda aşağıdaki sütunlar bulunur:
 
-* **Ölçüm:** Tüketilmekte olan hizmet için ölçü birimini tanımlar.
-* **Kullanım/sınır:** Geçerli ayın kullanımı ve ölçümü için sınır.
+* **Ölçüm:** Kullanılmakta olan hizmet için ölçüm birimini belirtir.
+* **Kullanım/Limit:** Geçerli aya ait ölçüm kullanımı ve limiti.
 * **Durum:** Hizmetin kullanım durumu. Kullanımınıza göre aşağıdaki durumlardan birine sahip olabilirsiniz:
-  * **Kullanımda değil:** Ölçümü kullanmadınız veya ölçüm için kullanım faturalandırma sistemine ulaşmadı.
-  * **\<tarihi > aşıldı:** \<Tarih > ölçüm sınırını aştınız.
-  * Büyük **olasılıkla aşılamaz:** Ölçüm sınırını aşmamak çok düşüktür.
-  * **\<tarihi > aşıyor:** Büyük olasılıkla \<Tarih > ölçüm sınırını aşabilirsiniz.
+  * **Kullanılmıyor:** Ölçümü kullanmadınız veya ölçümün kullanımı, faturalama sistemine ulaşmadı.
+  * **\<Date> tarihinde aşıldı:** \<Date> tarihinde ölçüm limitini aştınız.
+  * **Aşma Olasılığı Düşük:** Ölçüm sınırını aşma olasılığınız düşüktür.
+  * **\<Date> tarihinde aşıyor:** \<Date> tarihinde ölçüm limiti aşma olasılığınız yüksektir.
 
 > [!IMPORTANT]
 >
 > Ücretsiz hizmetler yalnızca ücretsiz Azure hesabına kaydolurken oluşturulan abonelik için kullanılabilir. Aboneliğe genel bakış sayfasında ücretsiz hizmetler tablosunu göremiyorsanız, abonelik için kullanılabilir değildir.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

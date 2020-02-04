@@ -1,5 +1,5 @@
 ---
-title: Microsoft Müşteri Sözleşmesi Azure kullanımı ve ücretlendirme dosyası koşulları
+title: Microsoft Müşteri Sözleşmesi Azure kullanım bilgilerini ve ücretlerini içeren dosya koşulları
 description: Faturalama profiliniz için Azure kullanım bilgilerini ve ücretlerini içeren CSV dosyasının bölümlerinin nasıl okunup anlaşılacağını öğrenin.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990911"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için Azure kullanımı ve ücretleri dosyasındaki terimler
@@ -58,14 +58,14 @@ Kurumsal Anlaşma müşterisiyseniz, Azure faturalama profili kullanım bilgiler
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
-| ResourceGroup | resourceGroup |
+| adlı yönetilen örnek, | resourceGroup |
 | ChargesBilledSeparately | isAzureCreditEligible |
 
 ## <a name="detailed-terms-and-descriptions"></a>Ayrıntılı terimler ve açıklamaları
 
 Azure kullanım bilgilerini ve ücretlerini içeren dosyada aşağıdaki terimler gösterilmektedir.
 
-Sözleşme Dönemi | Açıklama
+Süre | Açıklama
 --- | ---
 invoiceId | Fatura PDF dosyasında listelenen benzersiz belge kimliği
 previousInvoiceId | Bu kalemin para iadesi olması durumunda asıl faturanın başvurusu
@@ -107,8 +107,8 @@ resourceLocation | Kaynağın çalıştığı veri merkezinin konumunu belirtir.
 location | Aynı bölgeler için farklı kaynak konumları yapılandırılmışsa kaynağın normalleştirilmiş konumu
 miktar | Satın alınan veya kullanılan birim sayısı
 unitOfMeasure | Hizmet faturalamasının ölçü birimi. Örneğin, işlem hizmetleri saat bazında faturalandırılır.
-chargeType | Ücret türü. Değerler: <ul><li>Ücretli kullanım: bir Azure hizmeti kullanımı temelinde tahakkuk eden ücretler. Ayrılmış örnekler nedeniyle ücretlendirilmemiş olan sanal makinelere karşı kullanım buna dahildir.</li><li>Asücretlendirildiği-PurchaseMarketplace: market satın alımlarından biri tek seferlik veya sabit Yinelenen ücretler</li><li>Ücretli-Usagemarket: tüketim birimlerine göre ücretlendirilen Market Hizmetleri için ücretler</li></ul>
-isAzureCreditEligible | Hizmetin ücretlendirmesinin Azure kredileri kullanılarak ödenmeye uygun olup olmadığını gösteren bayrak (değerler: true, false)
+chargeType | Ücret türü. Değerler: <ul><li>AsCharged-Usage: Bir Azure hizmetinin kullanımına göre tahakkuk eden ücretler. Ayrılmış örnekler nedeniyle ücretlendirilmemiş olan sanal makinelere karşı kullanım buna dahildir.</li><li>AsCharged-PurchaseMarketplace: Market satın alımlarındaki bir kerelik veya sabit yinelenen ücretler</li><li>AsCharged-UsageMarketplace: Tüketim birimlerine göre ücretlendirilen Market hizmetleri için ücretler</li></ul>
+isAzureCreditEligible | Hizmet ücretinin, Azure kredileri kullanılarak ödenmeye uygun olup olmadığını belirten işaret (Değerler: True, False)
 serviceInfo1 | Hizmete özgü meta veriler
 serviceInfo2 | Hizmete özgü isteğe bağlı meta verileri yakalayan eski alan
 additionalInfo | Hizmete özgü ek meta veriler.
@@ -121,7 +121,7 @@ Ayrıntılı kullanım dosyanızdaki ücretlerin doğru olduğundan emin olmak i
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

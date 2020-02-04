@@ -1,5 +1,5 @@
 ---
-title: Azure ayrılmış kapasitesi ile SQL veri ambarı ücretlerine kaydetme
+title: Azure ayrılmış kapasitesi ile SQL Veri Ambarı ücretlerinden tasarruf etme
 description: Para tasarrufu sağlamak için ayrılmış kapasite ile SQL Veri Ambarı ücretleri için nasıl maliyet tasarrufu yapacağınızı öğrenin.
 services: billing
 author: yashesvi
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995851"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Ayrılmış kapasite ile SQL Veri Ambarı ücretlerinden maliyet tasarrufu sağlama
 
-Bir ile üç yıl arasındaki cDWU kullanımınız için bir rezervasyon taahhüdü vererek Azure SQL Veri Ambarı’nda tasarruf elde edebilirsiniz. SQL Veri Ambarı ayrılmış kapasitesi satın almak için, Azure bölgesini ve dönemi seçmeniz gerekir. Sonra SQL Veri Ambarı SKU'sunu sepetinize ekleyin ve satın almak istediğiniz cDWU birimi miktarını seçin.
+Bir ile üç yıl arasındaki cDWU kullanımınız için bir rezervasyon taahhüdü vererek Azure SQL Veri Ambarı’nda tasarruf elde edebilirsiniz. SQL Veri Ambarı ayrılmış kapasitesi satın almak için, Azure bölgesini ve dönemi seçmeniz gerekir. Sonra SQL Veri Ambarı SKU’sunu sepetinize ekleyin ve satın almak istediğiniz cDWU birimi miktarını seçin.
 
 Rezervasyon satın aldığınızda, rezervasyonun öznitelikleriyle eşleşen SQL Veri Ambarı kullanımı artık kullandıkça öde fiyatlarıyla ücretlendirilmez.
 
-SQL Veri Ambarı'nın kullanımıyla ilişkili depolama ve ağ ücretleri rezervasyonun kapsamında değildir.
+SQL Veri Ambarı’nın kullanımıyla ilişkili depolama ve ağ ücretleri rezervasyonun kapsamında değildir.
 
-Ayrılmış kapasitenin süresi dolduğunda SQL Veri Ambarı örnekleri çalışmaya devam eder ama kullandıkça öde fiyatlarıyla faturalanır. Rezervasyonlar otomatik olarak yenilenmez.
+Ayrılmış kapasitenin süresi dolduğunda SQL Veri Ambarı örnekleri çalışmaya devam eder, ancak kullandıkça öde fiyatlarıyla faturalanır. Rezervasyonlar otomatik olarak yenilenmez.
 
 Fiyatlandırma bilgileri için bkz [SQL Veri Ambarı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
 
@@ -43,9 +43,9 @@ SQL Veri Ambarı rezervasyon boyutu, kullandığınız toplam işlem veri ambar�
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>SQL Veri Ambarı ayrılmış kapasitesi satın alma
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
-3. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla Abonelik listesini kullanın. Ayrılmış kapasite maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) olmalıdır.
+3. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla Abonelik listesini kullanın. Ayrılmış kapasite maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numarası: MS-AZR-0017P veya MS-AZR-0148P) ya da Kullandıkça Öde (teklif numarası: MS-AZR-0003P veya MS-AZR-0023P).
    - Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir.
    - Kullandıkça Öde aboneliğinde ücretler, aboneliğin kredi kartı veya fatura ödeme yöntemi ile faturalandırılır.
 4. Bir kapsam seçin. Kapsam listesini kullanarak bir abonelik kapsamı seçin.
@@ -67,7 +67,7 @@ Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya 
 
 SQL Veri Ambarı ayrılmış kapasite kapsamı ve bölgesi ile eşleşen SQL Veri Ambarı örneklerine otomatik olarak bir rezervasyon indirimi uygulanır. [Azure portalı](https://portal.azure.com/), PowerShell, CLI ile veya API aracılığıyla SQL Veri Ambarı ayrılmış kapasitesinin kapsamını güncelleştirebilirsiniz.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/).
 
@@ -76,7 +76,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 - Azure SQL Veri Ambarı’na rezervasyon indirimlerinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veri Ambarı için rezervasyon indirimleri nasıl uygulanır?](prepay-sql-data-warehouse-charges.md).
 
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
   - [Azure Ayırmalarını yönetme](manage-reserved-vm-instance.md)
   - [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](understand-reservation-charges.md)
   - [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)

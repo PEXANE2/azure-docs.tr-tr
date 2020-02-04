@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992367"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
@@ -25,7 +25,7 @@ Azure müşterilerine yönelik tüm düzeltmelerin iş ortaklarından veya Micro
 
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
-Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. [https://www.explore.ms](https://www.explore.ms ) adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
+Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. https://www.explore.ms adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
 
 ## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Özel fiyatlandırma ve Azure taahhüt indirimi düzeltmeleri
 
@@ -72,16 +72,16 @@ Microsoft, iş ortağı tarafından açıkça yetki verilen durumların haricind
 
 ### <a name="how-the-calculation-works"></a>Hesaplama nasıl yapılır?
 
-LSP, EA portalında tek bir yüzde değeri belirtir.  Portaldaki tüm ticari bilgiler uplifted tarafından belirtilen yüzdeye göre olacaktır. Örnek:
+LSP, EA portalında tek bir yüzde değeri belirtir.  Portaldaki tüm ticari bilgiler, LSP tarafından belirtilen yüzdeye göre artırılır. Örnek:
 
 - Müşteri, 100.000 ABD doları tutarında parasal taahhüdü kapsayan bir EA imzalar.
 - A Hizmetinin ölçüm ücreti saatte 10 ABD dolarıdır.
 - LSP, EA Portal'da kar payı yüzdesini %10 olarak ayarlar.
 - Aşağıdaki örnekte müşterinin ticari bilgileri nasıl göreceği gösterilmiştir:
-    - Parasal Bakiye: USD 110.000.
-    - Hizmet A için ölçüm oranı: 11 ABD Doları/saat.
-    - 100 saat boyunca kullanıldığında A hizmeti için kullanım/barındırma bilgileri: USD 1.100.
-    - Müşteri hizmet gönderme kesintisine yönelik parasal bakiye kullanılabilir bir tüketim: USD 108.900.
+    - Parasal Bakiye: 110.000 ABD doları.
+    - A Hizmeti için ölçüm ücreti: Saatlik 11 ABD doları.
+    - A Hizmeti 100 saat kullanıldığında kullanım/barındırma bilgileri: 1.100 ABD doları.
+    - A Hizmetinin kullanımı düşüldükten sonra müşterinin kullanılabilir Parasal Bakiyesi: 108.900 ABD doları.
 
 ### <a name="when-to-use-a-markup"></a>Kar payı ne zaman kullanılır?
 
@@ -101,14 +101,14 @@ Kar payı uygulanmış fiyatları son müşteriyle paylaşmadan önce parasal ba
 
 ### <a name="how-to-add-a-price-markup"></a>Fiyatlara kar payı uygulama
 
-**Birinci adım: fiyat biçimlendirmesi ekleme**
+**Birinci Adım: Fiyat kar payı ekleme**
 
 1. Enterprise Portal'da sol taraftaki gezinti menüsünden **Raporlar**'a tıklayın.
 1. _Kullanım Özeti_'nin altında mavi renkli **Kar payı** ifadesine tıklayın.
 1. Kar payı yüzdesini (-100 ile 100 arasında) girin ve **Önizleme**'ye tıklayın.
 
 
-**Ikinci adım: Inceleme ve doğrulama**
+**İkinci Adım: Gözden geçirme ve doğrulama**
 
 Müşteri görünümünde taahhüt dönemine ait _Kullanım Özeti_ içinde kar payı fiyatını gözden geçirin. İş ortağı görünümünde Microsoft fiyatı görünüyor olacaktır. Görünümler arasında geçiş yapmak için sağ üstteki iş ortağı kar payı "kişiler" seçeneğini kullanabilirsiniz.
 
@@ -116,7 +116,7 @@ Müşteri görünümünde taahhüt dönemine ait _Kullanım Özeti_ içinde kar 
 1. _Kullanım Özetini Görüntüle > Müşteri Görünümü_ sekmesinde **Düzenle**'yi seçerek yayımlamadan önce değişiklik yapabilirsiniz.  
   Hem hizmet ücretlerine hem de taahhüt bakiyelerine aynı yüzde değerinde kar payı eklenecektir. Parasal bakiye ve ölçüm ücretleri için farklı yüzde değerleri kullanıyorsanız veya hizmetlere ait yüzde değerleriniz birbirinden farklıysa lütfen bu özelliği kullanmayın.
 
-**Üçüncü adım: yayımlama**
+**Üçüncü Adım: Yayımlama**
 
 Fiyatlandırmayı gözden geçirip doğruladıktan sonra **Yayımla**'ya tıklayın.
   
@@ -124,7 +124,7 @@ Yayımla'yı seçtiğinizde kar payı uygulanmış fiyatlar kuruluş yöneticile
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Kar payı hangi kayıtlar için etkindir?
 
-Bir kayıtta yayımlanmış bir işaretleme olup olmadığını denetlemek için sol gezinti bölmesinde **Yönet** ' e tıklayın ve **kayıt** sekmesine tıklayın. denetlenecek kayıt kutusunu seçin ve _kayıt ayrıntısı_altındaki biçimlendirme durumunu görüntüleyin. İlgili EA'nın mevcut kar payı özelliği Devre Dışı, Önizleme veya Yayımlandı olarak görüntülenir.
+Bir kayıtta yayımlanmış kar payı olup olmadığını denetlemek için sol taraftaki gezinti menüsünden **Yönet**'e ve ardından **Kayıt** sekmesine tıklayın. Denetlemek istediğiniz kaydın kutusunu seçtikten sonra kar payını _Kayıt Ayrıntıları_ bölümünde görüntüleyebilirsiniz. İlgili EA'nın mevcut kar payı özelliği Devre Dışı, Önizleme veya Yayımlandı olarak görüntülenir.
 
 ### <a name="how-can-the-customer-download-usage-estimates"></a>Müşteriler kullanım tahminlerini nasıl indirebilir?
 
@@ -141,11 +141,11 @@ Bir kayıtta yayımlanmış bir işaretleme olup olmadığını denetlemek için
 | **Kaynak** | **Varsayılan Kota** | **Açıklamalar** |
 | --- | --- | --- |
 | Microsoft Azure İşlem Örnekleri | 20 eşzamanlı küçük işlem örneği veya diğer işlem örneği boyutlarındaki eşdeğeri. | Aşağıdaki tabloda küçük örneğe eşdeğer sayının nasıl hesaplanacağı gösterilmiştir:<ul><li> Çok Küçük: 1 eşdeğer küçük örnek </li><li> Küçük: 1 eşdeğer küçük örnek </li><li> Orta: 2 eşdeğer küçük örnek </li><li> Büyük: 4 eşdeğer küçük örnek </li><li> Çok Büyük: 8 eşdeğer küçük örnek </li> </ul>|
-| Microsoft Azure İşlem Örnekleri v2 VM'leri | EA: 350 çekirdek | GA IaaS v2 VM'leri:<ul><li> A0\_A7 ailesi - 350 çekirdek </li><li> B\_A0\_A4 ailesi - 350 çekirdek </li><li> A8\_A9 ailesi - 350 çekirdek </li><li> DF ailesi - 350 çekirdek</li><li> GF - 350 çekirdek </li></ul>|
+| Microsoft Azure İşlem Örnekleri v2 VM'leri | EA: 350 Çekirdek | GA IaaS v2 VM'leri:<ul><li> A0\_A7 ailesi - 350 çekirdek </li><li> B\_A0\_A4 ailesi - 350 çekirdek </li><li> A8\_A9 ailesi - 350 çekirdek </li><li> DF ailesi - 350 çekirdek</li><li> GF - 350 çekirdek </li></ul>|
 | Microsoft Azure'da Barındırılan Hizmetler | 6 barındırılan hizmet | Bir abonelik için geçerli olan bu altı barındırılan hizmet sınırı artırılamaz. Ek barındırılan hizmete ihtiyacınız varsa lütfen abonelik ekleyin. |
 | Microsoft Azure Depolama | Her biri en fazla 100 TB olan 5 depolama hesabı. | Depolama hesabı sayısını abonelik başına 20'ye kadar çıkarabilirsiniz. Ek depolama hesabına ihtiyacınız varsa lütfen abonelik ekleyin. |
 | SQL Azure | İki türden birine ait 149 veritabanı (Web Edition veya Business Edition). |   |
-| Access Control | Hesap başına 50 Ad Alanı. Ayda 100 milyon Erişim Denetimi işlemi |   |
+| Erişim Denetimi | Hesap başına 50 Ad Alanı. Ayda 100 milyon Erişim Denetimi işlemi |   |
 | Service Bus | Hesap başına 50 Ad Alanı. 40 Service Bus bağlantısı | Bağlantı paketi aracılığıyla Service Bus bağlantısı satın alan müşterilere satın aldıkları bağlantı paketi ile bir sonraki en yüksek bağlantı paketi tutarı arasındaki orta noktaya eşit bir kota uygulanacaktır. 500'lük Paketi seçen kullanıcıların kotası 750 olacaktır. |
 
 ## <a name="resource-commitment"></a>Kaynak taahhüdü
@@ -228,7 +228,7 @@ Kuruluş Yöneticileri aşağıdaki adımları izleyerek yeni hesap sahibi ekley
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Yeni abonelik oluşturmak için mevcut/yeni hesap sahipleri
 
-**Birinci adım: hesapta oturum açın**
+**Birinci Adım: Hesapta oturum açın**
 1. Azure EA Portal'da **Yönet** sekmesini seçin ve üstteki menüden **Abonelik** sayfasına gidin.
 1. Bu hesabın sahibi olarak oturum açtığınızı doğrulayın.
 1. **+Abonelik Ekle**'ye tıklayın.
@@ -238,7 +238,7 @@ Bir hesaba ilk kez abonelik eklediğinizde iletişim bilgilerinizi sağlamanız 
 
 Hesabınıza ilk kez bir abonelik eklediğinizde, MOSA sözleşmesini ve bir Ücret Planını kabul etmeniz istenir. Bu bölümler Kurumsal Anlaşma Müşterileri için geçerli DEĞİLDİR ancak aboneliğinizi sağlamak için şu an tamamlamanız gerekmektedir. Microsoft Azure Kurumsal Anlaşma Kaydı Değişikliği, yukarıdaki öğelerin yerini alır ve sözleşme ilişkiniz değişmez. Lütfen koşulları kabul ettiğinizi belirten kutuyu işaretleyin.
 
-**Ikinci adım: güncelleştirme aboneliği adı**
+**İkinci Adım: Abonelik adını güncelleştirme**
 
 Tüm yeni abonelikler "Microsoft Azure Kurumsal" varsayılan abonelik adıyla eklenir. Enterprise Kaydınızdaki diğer aboneliklerden ayırmak ve kuruluş düzeyindeki raporlarda ayırt edilebilmesini sağlamak için abonelik adını değiştirmeniz önemlidir.
 
@@ -259,11 +259,11 @@ Kayda ilk kez eklenen yeni Hesap Sahiplerinin (AO) durumu her zaman "beklemede" 
 
 Bu senaryo, müşterinin hizmetleri yanlış kayıt numarasında dağıtması veya yanlış hizmetleri seçmesi durumunda ortaya çıkabilir.
 
-Doğru kayıt altında dağıtım yapıldığını doğrulamak için fiyat listesini kullanarak dahil edilen birim sayısını denetleyebilirsiniz. Lütfen bir kuruluş yöneticisi olarak oturum açın ve sol gezinti bölmesinde **raporlar** ' a tıklayın ve **Fiyat listesi** sekmesini seçin. sağ üst köşedeki indir simgesine tıklayın ve "dahil edilen miktar" sütununda filtreye sahıp karşılık gelen plan SKU parça numaralarını bulun ve "0" değerinden büyük değerleri seçin.
+Doğru kayıt altında dağıtım yapıldığını doğrulamak için fiyat listesini kullanarak dahil edilen birim sayısını denetleyebilirsiniz. Lütfen Kuruluş Yöneticisi olarak oturum açtıktan sonra soldaki gezinti bölmesinden **Raporlar**'a tıklayıp **Fiyat Listesi** sekmesini seçin. Sağ üst köşedeki İndir simgesine tıklayın ve "Dahil Edilen Miktar" sütununu filtreleyip "0" üzerindeki değerleri seçerek karşılık gelen Plan SKU parça numaralarını bulun.
 
 Fiyat listesinin dahil edilen birimler sütununda OMS planınızın listelendiğinden emin olun. Kaydınıza dahil edilmiş OMS planı birimi yoksa OMS planınız başka bir kaydın altında olabilir. Lütfen [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) üzerinden Azure Enterprise Portal Desteği ile iletişime geçin.
 
-Fiyat tablosundaki hizmetler için dahil edilen birimler, dağıttığınız şekilde eşleşmezse, ör. operasyonel içgörüler standart verileri analiz edilen operasyonel içgörüler, bu, planın kapsamında olmayan hizmetleri dağıttığınız anlamına gelir. lütfen daha fazla yardımcı olabilmemiz için lütfen [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) Azure Enterprise Portal desteğine başvurun.
+Fiyat listesindeki hizmetlere dahil edilen birimlerle dağıttıklarınız eşleşmiyorsa, ör. Operasyonel İçgörüler ile Analiz Edilen Premium Veriler vb. Operasyonel İçgörüler ile Analiz Edilen Standart Veriler, plan kapsamında olmayan hizmetleri dağıtmış olabileceğiniz anlamına gelir. Size daha ayrıntılı bir şekilde yardımcı olabilmemiz için lütfen şuradan Azure Enterprise Portal Desteğine başvurun: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)
 
 **Plan SKU hizmetleri yanlış kayda sağlanmış**
 

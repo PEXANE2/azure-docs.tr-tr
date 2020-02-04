@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995630"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Rezervasyon indiriminin Azure Veri Gezgini'ne nasıl uygulandığını anlama
@@ -36,7 +36,7 @@ Rezervasyon indirimi Azure Veri Gezgini kar payı tüketimine saat bazında uygu
 ## <a name="examples"></a>Örnekler
 
 Aşağıdaki örneklerde, satın aldığınız kar payı birimi sayısına ve çalıştırılma zamanına bağlı olarak Azure Veri Gezgini ayrılmış kapasite indiriminin nasıl uygulandığı gösterilmektedir.
-Örneğin, altyapı kümesi boyutu için: **2 D11_v2 VM 'ler**için, toplam isteğe bağlı ücretleriniz, saat başına dört adet Azure Veri Gezgini işaretleme ölçümü için kullanılır. 
+Örneğin, şu altyapı kümesi boyutunu ele alalım: **2 D11_v2 VM** için toplam isteğe bağlı ücretleriniz, saatlik olarak hesaplanan dört Azure Veri Gezgini kar payı ölçümü birimi olur. 
 
 **Senaryo 1** 
 
@@ -58,7 +58,7 @@ Saat 13:00 ile 13:45 arasında 16 çekirdekli bir Azure Veri Gezgini altyapı k�
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

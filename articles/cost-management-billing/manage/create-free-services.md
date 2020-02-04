@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 99ceebe0825c868e40f6a68f44ca55eee91f087c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992783"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ücretsiz Azure hesabına dahil hizmetler oluşturma
@@ -34,7 +34,7 @@ Bölgeye göre Azure hizmeti kullanılabilirliği hakkında bilgi edinmek için 
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>İzin verilen limitler dahilinde birden çok hizmet örneği oluşturma
 Kullanım toplamı, kullanım limiti dahilinde olduğu sürece birden çok hizmet örneğini ücretsiz oluşturabilirsiniz. Örneğin, ücretsiz Azure hesabınızla her ay ücretsiz 750 saat B1S Windows sanal makine elde edersiniz. 750 saati istediğiniz birleşimde kullanabilirsiniz. Örneğin, 5 adet B1S Windows sanal makinesi oluşturabilir her birini 150’şer saat boyunca kullanabilirsiniz.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

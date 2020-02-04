@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990066"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Ücretsiz Azure hesabınızla ücretlerden kaçının
@@ -41,7 +41,7 @@ Hesabınızı yükselttikten sonra, ücretsiz Azure hesabınıza ücretsiz olara
 
 Ücretsiz hizmetlerinizin ve miktarlarınızın süresi 12 ayın sonunda sona erer. Azure portalında ücretsiz hizmetlerinizin ne zaman süresinin dolduğunu öğrenebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Sol gezinti alanında **Tüm hizmetler**’i seçin.
 
@@ -56,7 +56,7 @@ Hesabınızı yükselttikten sonra, ücretsiz Azure hesabınıza ücretsiz olara
 
 Ücretsiz hizmetlerinizin ve miktarlarınızın süresi dolduktan sonra kullandığınız hizmetler için kullandıkça öde fiyatları yansıtılır. Kullanmadığınız hizmetlere ilişkin kaynakları silmek için Azure portalını kullanabilirsiniz. Herhangi bir Azure hizmetini kullanmayı planlamıyorsanız [aboneliğinizi iptal edebilirsiniz](cancel-azure-subscription.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

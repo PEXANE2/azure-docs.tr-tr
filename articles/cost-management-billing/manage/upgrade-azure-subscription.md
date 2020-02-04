@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989780"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Ücretsiz Azure hesabını veya Öğrenciler için Microsoft Azure Başlangıç Paketi hesabını yükseltme
@@ -30,7 +30,7 @@ ms.locfileid: "75989780"
 
 ## <a name="upgrade-your-azure-free-account"></a>Ücretsiz Azure hesabınızı yükseltme
 
-Ücretsiz Azure hesabınızı yükselttiğinizde, kaydolduktan sonraki 30 gün boyunca kalan kredilerinizi koruyabilirsiniz. Örneğin: 5 Kasım 'da 1 Kasım ve yükseltme yaptıysanız, kullanılmayan krediler 30 Kasım 'a kadar kullanılabilir. Ayrıca 12 ay boyunca ücretsiz hizmetlere erişmeye devam edebilirsiniz.
+Ücretsiz Azure hesabınızı yükselttiğinizde, kaydolduktan sonraki 30 gün boyunca kalan kredilerinizi koruyabilirsiniz. Örneğin: 1 Kasım’da kaydolup 5 Kasım'da yükseltme yaptıysanız, kullanılmayan krediler 30 Kasım'a kadar kullanılabilir olacaktır. Ayrıca 12 ay boyunca ücretsiz hizmetlere erişmeye devam edebilirsiniz.
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
 1. **Abonelikler** araması yapın.

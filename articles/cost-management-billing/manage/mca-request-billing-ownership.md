@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: f7d6c6cbe5b99cb429b5399df7ba9765c1553901
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991119"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Diğer hesaplardan Azure aboneliklerinin fatura sahipliğini alma
@@ -35,29 +35,29 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 
     ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Faturalama kapsamları sayfasında, aboneliklerin kullanımı için ödeme yapmak üzere kullanılacak faturalandırma hesabını seçin. Faturalandırma hesabı **Microsoft Müşteri Sözleşmesi**türünde olmalıdır.
+3. Faturalama kapsamları sayfasında, aboneliklerin kullanıma ilişkin ücretleri ödemek için kullanılacak ödeme hesabını seçin. Ödeme hesabının **Microsoft Müşteri Sözleşmesi** türünde olması gerekir.
 
     ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-request-billing-ownership/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure portal, eriştiğiniz son faturalandırma kapsamını anımsar ve maliyet yönetimi + faturalandırma sayfasına bir dahaki sefer daha sonra kapsamı görüntüler. Maliyet yönetimi + faturalandırma daha önce ziyaret ediyorsanız faturalandırma kapsamları sayfasını görmezsiniz. Bu durumda, [doğru kapsamda](#check-for-access)olduğunu kontrol edin. Aksi takdirde, bir Microsoft Müşteri Sözleşmesi için faturalandırma hesabını seçmek üzere [kapsamı değiştirin](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) .
+    > Azure portalı, en son eriştiğiniz faturalama kapsamını anımsar ve Maliyet Yönetimi ve Faturalama sayfasına sonraki gelişinizde bunu görüntüler. Daha önce Maliyet Yönetimi ve Faturalama sayfasını ziyaret ettiyseniz faturalama kapsamı sayfasını görmezsiniz. Bu durumda, [doğru kapsamda](#check-for-access) olup olmadığınızı denetleyin. Aksi takdirde, bir Microsoft Müşteri Sözleşmesi’ne yönelik ödeme hesabını seçmek için [kapsamı değiştirin](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-4. Sol taraftaki **faturalandırma profilleri** ' ni seçin.
+4. Soldaki **Faturalama profilleri** seçeneğini belirleyin.
 
-    ![Faturalandırma profillerinin seçildiğinin gösterildiği ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![Faturalama profili seçmeyi gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
     > [!Note]
     >
-    > Faturalandırma profillerini görmüyorsanız doğru faturalandırma kapsamında değilsiniz demektir. Bir Microsoft Müşteri Sözleşmesi için bir faturalandırma hesabı seçmeniz ve ardından Faturalandırma profilleri ' ni seçmeniz gerekir. Kapsamları değiştirme hakkında bilgi edinmek için bkz. [Azure Portal faturalandırma kapsamlarını](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)değiştirme.
+    > Doğru faturalama kapsamında değilseniz Faturalama profilleri göremezsiniz. Microsoft Müşteri Sözleşmesi’nden ödeme hesabı seçip Faturalama profili belirlemeniz gerekir. Kapsam değiştirmeyi öğrenmek için bkz. [Azure portalında faturalama kapsamı değiştirme](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Listeden bir **Faturalama profili** seçin. Aboneliklerin sahipliğinin devralındıktan sonra, kullanımları bu faturalandırma profiline faturalandırılır.
+5. Listeden bir **Faturalama profili** seçin. Aboneliklerin sahipliğini üstlendiğinizde bu aboneliklere ilişkin kullanımlar bu faturalama profiline faturalanır.
 
 6. Sol taraftan **Fatura bölümleri**’ni seçin.
 
     ![Fatura bölümlerinin seçilmesini gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. Listeden bir fatura bölümü seçin. Aboneliklerin sahipliğini tamamladıktan sonra, kullanımları Faturalandırma profili faturasının bu bölümüne atanır.
+7. Listeden bir fatura bölümü seçin. Aboneliklerin sahipliğini üstlendiğinizde bu aboneliklere ilişkin kullanımlar faturalama profilinin faturasının bu bölümüne atanır.
 
 8. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Yeni istek ekle**’yi seçin.
 
@@ -77,19 +77,19 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 
 ## <a name="check-the-transfer-request-status"></a>Aktarım isteğinin durumunu denetleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
     ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Faturalama kapsamları sayfasında, aktarım isteğinin gönderildiği faturalandırma hesabını seçin.
+3. Faturalama kapsamları sayfasında, aktarım isteğinin gönderildiği ödeme hesabını seçin.
 
-4. Sol taraftaki **faturalandırma profilleri** ' ni seçin.
+4. Soldaki **Faturalama profilleri** seçeneğini belirleyin.
 
-    ![Faturalandırma profillerinin seçildiğinin gösterildiği ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![Faturalama profili seçmeyi gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
-5. Aktarım isteğinin gönderildiği **faturalandırma profilini** seçin.
+5. Aktarım isteğinin gönderildiği **Faturalama profilini** seçin.
 
 6. Sol taraftan **Fatura bölümleri**’ni seçin.
 
@@ -160,7 +160,7 @@ Aşağıda listelenen abonelik türlerinin fatura sahipliğini isteyebilirsiniz.
 \*\* Yalnızca Azure web sitesine kaydolurken oluşturulan hesaplardaki abonelikler için desteklenir.
 
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 Aşağıdaki bölümde, abonelik aktarma hakkında ek bilgiler sağlanır.
 
@@ -207,7 +207,7 @@ SaaS ürünleri aboneliklerle birlikte aktarılmaz. SaaS ürünlerinin fatura sa
 ## <a name="check-for-access"></a>Erişim denetimi
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

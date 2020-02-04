@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992081"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM ayrılmış örnekleri
@@ -54,7 +54,7 @@ EA kaydına ayrılmış örnek ekleme seçeneği etkinleştirildikten sonra EA k
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Ayrılmış örnek satın alma ayrıntılarını görüntüleme
 
-Ayrılmış örnek satın alma ayrıntılarınızı [Azure portalının](https://aka.ms/reservations) sol tarafındaki _Rezervasyonlar_ menüsünden veya [Azure EA Portal](https://ea.azure.com/)'dan görüntüleyebilirsiniz. Sol taraftaki menüden **raporlar** ' ı seçin ve _Kullanım Özeti_ sekmesindeki hizmetler 'e _göre ücretler_ bölümüne gidin. bölümün en altına gidin ve ayrılmış örnek satın alımlarınız ve kullanımınız, hizmet adının yanında bulunan ' 1 yıl ' veya ' 3 yıl ' belirtimi ile belirtilen şekilde sonda listelenir. Örneğin: Standard_DS1_v2 eastus 1 yıl veya Standard_D2s_v3 eastus2 3 yıl.
+Ayrılmış örnek satın alma ayrıntılarınızı [Azure portalının](https://aka.ms/reservations) sol tarafındaki _Rezervasyonlar_ menüsünden veya [Azure EA Portal](https://ea.azure.com/)'dan görüntüleyebilirsiniz. Sol taraftaki menüden **Raporlar**'ı seçin ve _Kullanım Özeti_ sekmesinde _Hizmetlere Göre Ücretler_ bölümüne inin. Bölümün en altına indiğinizde satın alınan ayrılmış örneklerinizin hizmetin yanında "1 yıl" veya "3 yıl" ifadesi ile birlikte listelendiğini göreceksiniz, örneğin: Standard_DS1_v2 eastus 1 yıl veya Standard_D2s_v3 eastus2 3 yıl.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Ayrılmış örnek ile ilişkilendirilmiş olan aboneliği nasıl değiştirebilirim veya ayrılmış örnek avantajlarımı aynı hesap altındaki başka bir aboneliğe nasıl aktarabilirim?
 
@@ -65,7 +65,7 @@ Ayrılmış örnek avantajlarından aynı anda yalnızca bir hesap faydalanabili
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Ayrılmış örnek kullanım ayrıntılarını görüntüleme
 
-Ayrılmış örneklerinizin kullanım ayrıntılarını [Azure portalından](https://aka.ms/reservations) veya [Azure EA Portal](https://ea.azure.com/)'da (faturalama bilgilerini görüntüleme erişimine sahip olan EA müşterileri için) _Raporlar_ > _Kullanım Özeti_ > _Hizmetlere Göre Ücretler_ sayfasında görüntüleyebilirsiniz. Ayrılmış örneklerinizin adı ' Reservation ' olan hizmet adları olarak tanımlanabilir; örneğin: Ayırma-Temel VM veya sanal makineler ayırması-Windows SVR (1 çekirdek).
+Ayrılmış örneklerinizin kullanım ayrıntılarını [Azure portalından](https://aka.ms/reservations) veya [Azure EA Portal](https://ea.azure.com/)'da (faturalama bilgilerini görüntüleme erişimine sahip olan EA müşterileri için) _Raporlar_ > _Kullanım Özeti_ > _Hizmetlere Göre Ücretler_ sayfasında görüntüleyebilirsiniz. Adlarındaki "Reservation" ifadesinden ayrılmış örneklerinizi kolayca ayırt edebilirsiniz, örneğin: Ayırma-Temel VM veya Sanal Makineler Ayırma-Windows Svr (1 Çekirdek).
 
 Kullanım ayrıntılarınızda ve CSV biçiminde indirebileceğiniz gelişmiş raporda ayrılmış örnek kullanımıyla ilgili ek bilgiler yer alır. _Ek Bilgi_ alanı, ayrılmış örnek kullanımını belirlemenize yardımcı olur.
 

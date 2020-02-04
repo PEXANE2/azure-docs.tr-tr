@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993602"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure hesabınızla Office 365 aboneliğine kaydolma
@@ -54,7 +54,7 @@ Kuruluşunuz için Office 365 aboneliği oluşturduysanız, Azure AD kullanıcı
 Kaydolmanızın ardından Office 365 aboneliği, Azure aboneliğinizin ait olduğu aynı Azure Active Directory örneğine eklenir. Daha fazla bilgi için bkz. [Azure ve Office 365 abonelikleri hakkında daha fazla bilgi](office-365-account-for-azure-subscription.md#more-about-subs) ve [Azure aboneliklerinin Azure Active Directory ile ilişkisi](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a id="RoleInAzureAD"></a>Azure AD’de hesap izinlerimi denetleme
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler**’e tıklayın ve sonra **Active Directory** araması yapın.
 
     ![Azure portalında Active Directory ekran görüntüsü](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)
@@ -70,6 +70,6 @@ Kaydolmanızın ardından Office 365 aboneliği, Azure aboneliğinizin ait oldu�
 
     ![Faturalama Yöneticisi Azure portalı dizin rolünü gösteren ekran görüntüsü](./media/azure-account-for-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

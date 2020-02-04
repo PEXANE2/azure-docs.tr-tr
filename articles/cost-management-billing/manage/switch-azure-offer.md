@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 8e083391a04188345143f8fdf9a5a945abcd9eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994291"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure aboneliğinizi farklı bir teklife geçirme
@@ -111,7 +111,7 @@ Geçiş yaptığınız gün, kalan tüm ücretler için bir fatura oluşturulur.
 * Kaynakları doğrudan yeni aboneliğe geçirebilirsiniz; bkz [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 * Bir Azure aboneliğinin sahipliğini ve abonelikteki her şeyi başka birisine aktarmak için bkz. [Bir Azure aboneliğinin sahipliğini aktarma](billing-subscription-transfer.md)
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

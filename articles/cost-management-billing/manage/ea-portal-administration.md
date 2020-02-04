@@ -8,12 +8,12 @@ ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547583"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769663"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -21,7 +21,7 @@ Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel gö
 
 ## <a name="add-a-new-enterprise-administrator"></a>Yeni bir kuruluş yöneticisi ekleme
 
-Kuruluş yöneticileri bir Azure EA kaydını yönetirken en fazla ayrıcalığa sahip olan kullanıcılardır. İlk Azure EA yöneticisi, EA sözleşmesi ayarlanırken oluşturulmuştur. Ancak, dilediğiniz zaman yeni yöneticiler ekleyebilir veya kaldırabilirsiniz. Yeni yöneticiler yalnızca var olan yöneticiler tarafından eklenir. Ek kuruluş yöneticileri ekleme hakkında daha fazla bilgi için bkz. [başka bir kuruluş Yöneticisi oluşturma](ea-portal-get-started.md#create-another-enterprise-admin). Faturalandırma profili rolleri ve görevleri hakkında daha fazla bilgi için bkz. [Faturalandırma profili rolleri ve görevleri](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Kuruluş yöneticileri bir Azure EA kaydını yönetirken en fazla ayrıcalığa sahip olan kullanıcılardır. İlk Azure EA yöneticisi, EA sözleşmesi ayarlanırken oluşturulmuştur. Ancak, dilediğiniz zaman yeni yöneticiler ekleyebilir veya kaldırabilirsiniz. Yeni yöneticiler yalnızca var olan yöneticiler tarafından eklenir. Ek kuruluş yöneticileri ekleme hakkında daha fazla bilgi için bkz. [Başka bir kuruluş yöneticisi oluşturma](ea-portal-get-started.md#create-another-enterprise-administrator). Faturalama profili rolleri ve görevleri hakkında daha fazla bilgi için bkz. [Faturalama profili rolleri ve görevleri](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="update-user-state-from-pending-to-active"></a>Beklemede olan kullanıcı durumunu etkin olarak güncelleştirme
 
@@ -31,7 +31,7 @@ Bir Azure EA kaydına ilk kez yeni Hesap Sahipleri (AO) eklendiğinde durumları
 
 Azure EA yöneticisi bir departman oluşturduktan sonra, Azure Kuruluş yöneticisi departman yöneticileri ekleyebilir ve her birini bir departmanla ilişkilendirebilir. Bir departman yöneticisi yeni hesaplar oluşturabilir. Azure EA aboneliklerinin oluşturulabilmesi için yeni hesaplar gereklidir.
 
-Departman yöneticisi ekleme hakkında daha fazla bilgi için bkz. [Azure EA departman yöneticisi oluşturma](ea-portal-get-started.md#add-a-department-admin).
+Departman yöneticisi ekleme hakkında daha fazla bilgi için bkz. [Azure EA departman yöneticisi oluşturma](ea-portal-get-started.md#add-a-department-administrator).
 
 ## <a name="associate-an-account-to-a-department"></a>Bir hesabı bir departmanla ilişkilendirme
 
@@ -44,7 +44,7 @@ Kuruluş Yöneticileri, mevcut hesapları kayıt kapsamındaki Bölümlerle ili�
 1. **Bölüm**'e tıklayın.
 1. Seçmek istediğiniz hesabın olduğu satıra gelin ve sağ tarafındaki kalem simgesine tıklayın.
 1. Açılan menüden istediğiniz Bölümü seçin.
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ## <a name="department-spending-quotas"></a>Departman harcama kotaları
 
@@ -63,7 +63,7 @@ Bölüm yöneticisi, harcama kotasını görüntüleyebilir ancak kota miktarı 
     - Bu adımda Bölüm Adı ve Maliyet Merkezi bilgilerini de düzenleyebilirsiniz.
  1. **Kaydet**'e tıklayın.
 
-Departman harcama kotası artık departman sekmesi altında departman listesi görünümünde görünür olacaktır. Geçerli taahhüdünün sonunda Azure EA Portalı, sonraki taahhüt dönemi için harcama kotalarını koruyacaktır.
+Bölüm harcama kotası, Bölüm sekmesindeki Bölüm Listesi görünümünde görünür duruma gelir. Azure EA Portal, geçerli taahhüt döneminin sonunda harcama kotalarını bir sonraki taahhüt dönemine aktarır.
 
 Bölüm kotası tutarı, mevcut parasal taahhütten bağımsızdır ve kota miktarı ile uyarılar yalnızca birinci taraf kullanımı için geçerlidir. Bölüm harcama kotası yalnızca bilgilendirme amaçlıdır ve harcama limiti uygulamaz.
 
@@ -208,7 +208,7 @@ Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelik
 
 Alıcının Azure kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.
 3. Kaynağı seçin.
 4. Kaynak sayfasında, mevcut gizli dizileri görüntülemek ve güncelleştirmek için **Ayarlar**’a tıklayın.
@@ -250,7 +250,7 @@ Kişi eklemek için:
 
 1. **+Kişi Ekle**’ye tıklayın.
 2. E-posta adresini girin ve sonra onaylayın.
-3. **Save (Kaydet)** düğmesine tıklayın.
+3. **Kaydet**’e tıklayın.
 
 Yeni bildirim kişisi **Bildirim Kişisi** bölümünde gösterilir. Bildirim sıklığını değiştirmek için, bildirim kişisini seçin ve seçili satırın sağ tarafındaki kalem simgesine tıklayın. Sıklığı **günlük**, **haftalık**, **aylık** veya **hiçbiri** olarak ayarlayın.
 
@@ -293,7 +293,7 @@ Bir kullanıcı tarafından bildirim alınmadıysa, kullanıcının bildirim aya
 4. Bildirim tercihlerini düzenlemek için uygun yöneticinin üzerine gelin ve kurşun kalem simgesine tıklayın.
 5. Gerektiğinde bildirim sıklığını ve yaşam döngüsü bildirimlerini güncelleştirin.
 6. Gerekirse bir kişi ekleyin ve **Ekle**'ye tıklayın.
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet**’e tıklayın.
 
 ![Kişi Ekle kutusunu gösteren örnek ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
 

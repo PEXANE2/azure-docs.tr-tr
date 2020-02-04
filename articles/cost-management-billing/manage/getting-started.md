@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991483"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure faturasında beklenmeyen ücretlendirmeleri önleme ve maliyet yönetimi
@@ -34,7 +34,7 @@ Azure'a kaydolduğunuzda, harcamalarınız hakkında daha iyi bir fikir sahibi o
 Bir Azure hizmetini kullanmanın maliyetini tahmin etmek için aşağıdaki araçlardan birini kullanın:
 - Azure fiyatlandırma hesaplayıcısı
 - Azure fiyat listesi
-- Azure Portal
+- Azure portal
 
 Aşağıdaki bölümlerde yer alan görüntüler, örnek fiyatlandırmayı ABD Doları cinsinden göstermektedir.
 
@@ -82,7 +82,7 @@ Azure hizmetlerinizi çalışır duruma getirdikten sonra Azure harcamanızı iz
 
 4. Etiketler, kaynak türü ve zaman aralığı gibi çeşitli özelliklere göre filtre uygulayabilirsiniz. Bir özellik için filtre eklemek üzere **Filtre ekle**’ye tıklayın ve filtrelenecek değerleri seçin. Görünümü bir virgülle ayrılmış değerler (.csv) dosyasına aktarmak için **Dışarı Aktar**’ı seçin.
 
-5. Ayrıca, bu etiketin günlük harcama geçmişini görmek için grafiğin etiketlerine tıklayabilirsiniz. For Ex: aşağıdaki ekran görüntüsünde, sanal makinelere tıklanması, VM 'lerinizi çalıştırmanın günlük maliyetini gösterir.
+5. Ayrıca, bu etiketin günlük harcama geçmişini görmek için grafiğin etiketlerine tıklayabilirsiniz. Örneğin: Aşağıdaki ekran görüntüsünde, sanal makinelere tıklandığında VM'lerinizi çalıştırmanın günlük maliyeti gösterilir.
 
     ![Azure portalında harcama geçmişi görünümünün ekran görüntüsü](./media/getting-started/costhistory.png)
 
@@ -128,7 +128,7 @@ Fatura ve maliyet verilerini program aracılığıyla almak için Azure [fatura]
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA, CSP ve Sponsorluk müşterileri
 Başlamak için hesap yöneticiniz veya Azure iş ortağınızla konuşun.
 
-| Teklif | Kaynaklar |
+| Sunduğu | Kaynaklar |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Kurumsal Anlaşma (EA) | [EA portalı](https://ea.azure.com/), [yardım belgeleri](https://ea.azure.com/helpdocs) ve [Power BI raporu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Bulut Çözümü Sağlayıcısı (CSP) | Sağlayıcınızla konuşun |
@@ -162,11 +162,11 @@ Azure'a bir Microsoft Müşteri Sözleşmesi (MCA) ödeme hesabı üzerinden eri
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Bir hizmet olayı için Hizmet Düzeyi Sözleşmesi kredisi isteme
 
-Servis Düzeyi Sözleşmeleri (SLA), Microsoft’un çalışma süresi ve bağlantı hakkındaki taahhütlerini açıklar. Azure hizmetleri, genellikle *kesinti*olarak adlandırılan, çalışma süresini veya bağlantıyı etkileyen bir sorunla karşılaştığında bir hizmet olayı bildirilir. SLA'da açıklandığı gibi her bir hizmetin Hizmet Düzeylerini sağlayıp sürdürmezsek, aylık hizmet ücretlerinizin bir kısmını kredi olarak kullanmaya uygun olabilirsiniz.
+Hizmet Düzeyi Sözleşmeleri (SLA), Microsoft’un çalışma süresi ve bağlantı hakkındaki taahhütlerini açıklar. Azure hizmetleri, genellikle *kesinti*olarak adlandırılan, çalışma süresini veya bağlantıyı etkileyen bir sorunla karşılaştığında bir hizmet olayı bildirilir. SLA'da açıklandığı gibi her bir hizmetin Hizmet Düzeylerini sağlayıp sürdürmezsek, aylık hizmet ücretlerinizin bir kısmını kredi olarak kullanmaya uygun olabilirsiniz.
 
 Kredi istemek için:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın. Birden çok hesabınız varsa, Azure’un kapalı kaldığı süreden etkilenen bir hesabı kullandığınızdan emin olun.
+1. [Azure Portal](https://portal.azure.com/) oturum açın. Birden çok hesabınız varsa, Azure’un kapalı kaldığı süreden etkilenen bir hesabı kullandığınızdan emin olun.
 2. Yeni bir destek isteği oluşturun.
 3. **Sorun türü** altında **Faturalandırma**’yı seçin.
 4. **Sorun türü** altında **Para İadesi İsteği**’ni seçin.
@@ -179,7 +179,7 @@ Bazı hizmetlerde SLA'nın uygulanması önkoşullara bağlıdır. Örneğin, sa
 
 Daha fazla bilgi için [Hizmet Düzeyi Sözleşmeleri](https://azure.microsoft.com/support/legal/sla/) ve [Azure hizmetleri için SLA özeti](https://azure.microsoft.com/support/legal/sla/summary/) belgelerine bakın.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

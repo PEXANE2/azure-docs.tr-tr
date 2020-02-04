@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
 ms.openlocfilehash: 33fa553e9148a1ac838e6bf53fc83cf7eadd7499
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992588"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Ek Azure aboneliği oluşturma
@@ -40,7 +40,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portalında abonelik oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Abonelikler** araması yapın.
 
    ![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/create-subscription/billing-search-subscription-portal.png)
@@ -57,8 +57,8 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 |Alan  |Tanım  |
 |---------|---------|
-|Ad     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
-|Teklif     | Geliştirme veya test iş yükleri için bu aboneliği kullanmayı planlıyorsanız EA Geliştirme ve Test, diğer durumlarda Microsoft Azure Kurumsal’ı seçin. EA Geliştirme ve Test abonelikleri oluşturmak için kayıt hesabınızda DevTest teklifinin etkinleştirilmesi gerekir.|
+|Adı     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
+|Sunduğu     | Geliştirme veya test iş yükleri için bu aboneliği kullanmayı planlıyorsanız EA Geliştirme ve Test, diğer durumlarda Microsoft Azure Kurumsal’ı seçin. EA Geliştirme ve Test abonelikleri oluşturmak için kayıt hesabınızda DevTest teklifinin etkinleştirilmesi gerekir.|
 
 **Microsoft Müşteri Sözleşmesi**
 
@@ -66,8 +66,8 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 |---------|---------|
 |Faturalama profili     | Aboneliğinizin ücretleri, seçtiğiniz faturalama profiline faturalanır. Yalnızca bir faturalama profiline erişiminiz varsa seçim gri olur.     |
 |Fatura bölümü     | Aboneliğinizin ücretleri, faturalama profilinin faturasının bu bölümünde görünür. Yalnızca bir fatura bölümüne erişiminiz varsa seçim gri olur.  |
-|Plan     | Geliştirme veya test iş yükleri için bu aboneliği kullanmayı planlıyorsanız DevTest için Microsoft Azure Planı’nı seçin; aksi takdirde Microsoft Azure Planı‘nı kullanın. Faturalama profili için etkinleştirilmiş yalnızca bir plan varsa seçim gri olur.  |
-|Ad     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
+|Planlama     | Geliştirme veya test iş yükleri için bu aboneliği kullanmayı planlıyorsanız DevTest için Microsoft Azure Planı’nı seçin; aksi takdirde Microsoft Azure Planı‘nı kullanın. Faturalama profili için etkinleştirilmiş yalnızca bir plan varsa seçim gri olur.  |
+|Adı     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
 
 **Microsoft İş Ortağı Sözleşmesi**
 
@@ -75,7 +75,7 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 |---------|---------|
 |Müşteri    | Abonelik, seçtiğiniz müşteri için oluşturulur. Yalnızca bir müşteriniz varsa seçim gri olur.  |
 |Kurumsal bayi    | Müşteriye hizmet sağlayan kurumsal bayi. Burası isteğe bağlı bir alandır ve yalnızca CSP iki katmanlı modelindeki Dolaylı sağlayıcılar için geçerlidir. |
-|Ad     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
+|Adı     | Azure portalında aboneliği kolayca belirlemenize yardımcı olan görünen ad.  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Program aracılığıyla ek Azure aboneliği oluşturma
 
@@ -88,6 +88,6 @@ Ayrıca program aracılığıyla ek abonelikler de oluşturabilirsiniz. Daha faz
 - [Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma](../../governance/management-groups/create.md)
 - [Azure için aboneliğinizi iptal etme](cancel-azure-subscription.md)
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

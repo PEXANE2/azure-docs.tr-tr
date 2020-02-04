@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989299"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Azure kaydı ile ilgili sorunları giderme
@@ -32,7 +32,7 @@ Microsoft Azure portalında veya Azure hesap merkezinde yeni bir hesaba kaydolma
 
 Hataları çözmek için, Azure’a kaydolmaya çalışırken karşılaştığınız sorunu seçin.
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Hata: *hesabınızla ilgili bir sorun nedeniyle kayıt işlemine devam edemedik. Lütfen Faturalandırma desteğiyle görüşün.*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Hata: *Hesabınızla ilgili bir sorun nedeniyle kayıt işlemine devam edilemiyor. Lütfen faturalama desteğine başvurun.*
 
 Sorunu çözmek için şu adımları izleyin:
 
@@ -117,7 +117,7 @@ Bu sorunu çözmek için, aşağıdaki öğelerin doğru olup olmadığını iki
 - Kredi kartı bilgilerinin doğru olduğunu.
 - Önceden aynı bilgileri kullanan bir Microsoft hesabınız olmadığını.
 
-### <a name="error-your-current-account-type-is-not-supported"></a>Hata: *geçerli hesap türü desteklenmiyor*
+### <a name="error-your-current-account-type-is-not-supported"></a>Hata: *Geçerli hesap türünüz desteklenmiyor*
 
 Hesap bir [yönetilmeyen Azure AD dizininde](../../active-directory/users-groups-roles/directory-self-service-signup.md) kayıtlıysa ve kuruluşunuzun Azure AD dizininde değilse bu sorun oluşabilir.
 

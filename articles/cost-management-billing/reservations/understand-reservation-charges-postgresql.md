@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.openlocfilehash: 2f1843690861a463c634f523e82facffc72b6743
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995513"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure Veritabanı Tek sunucuya rezervasyon indiriminin uygulanması
@@ -32,17 +32,17 @@ PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasite indirimi, Pos
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
-* **Örnek 1**: bir PostgreSQL Için Azure veritabanı için bir 8 sanal çekirdek için tek sunucu ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsanız PostgreSQL Tek sunucu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek PostgreSQL Tek sunucu işlem kullanımı için bir saatlik indirimden faydalanırsınız.</br>
+* **Örnek 1**: 8 sanal çekirdek için PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsanız PostgreSQL Tek sunucu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek PostgreSQL Tek sunucu işlem kullanımı için bir saatlik indirimden faydalanırsınız.</br>
 
 Bu örneklerin geri kalan kısmında satın aldığınız PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasitesinin 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu için olduğunu ve diğer rezervasyon özniteliklerinin çalışan PostgreSQL Tek sunucuları ile eşleştiğini kabul edelim.
 
-* **Örnek 2**: her bir saatte 8 sanal çekirdekli tek bir PostgreSQL Için Azure veritabanı çalıştırırsınız. 8 çekirdekli iki PostgreSQL için Azure Veritabanı Tek sunucunun işlem kullanımına 16 sanal çekirdek rezervasyon indirimi uygulanır.
+* **Örnek 2**: Bir saat boyunca her biri 8 sanal çekirdeğe sahip olan iki PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. 8 çekirdekli iki PostgreSQL için Azure Veritabanı Tek sunucunun işlem kullanımına 16 sanal çekirdek rezervasyon indirimi uygulanır.
 
-* **Örnek 3**: PostgreSQL Için 1 16 sanal çekirdek Azure veritabanı 'nı, 1 ile 1:30 PM arası tek bir sunucu çalıştırırsınız. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. Her ikisi de rezervasyon indirimi kapsamındadır.
+* **Örnek 3**: Saat 13:00 ile 13:30 arasında 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. Her ikisi de rezervasyon indirimi kapsamındadır.
 
-* **Örnek 4**: PostgreSQL Için 1 16 sanal çekirdek Azure veritabanı 'nı, 1 ile 1:45 PM arası tek bir sunucu çalıştırırsınız. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
+* **Örnek 4**: Saat 13:00 ile 13:45 arasında 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli PostgreSQL için Azure Veritabanı Tek sunucu çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

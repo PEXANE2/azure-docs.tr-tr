@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988142"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure aboneliği oturum açma sorunlarını giderme
@@ -32,7 +32,7 @@ Bu kılavuz, Azure portalında veya Azure hesap merkezinde oturum açamama sorun
 
 - Sayfayı yenileyin.
 - Farklı bir İnternet tarayıcısı kullanın.
-- Tarayıcınızda özel gözatma modunu kullanın. Internet Explorer için: **araçlar** > **güvenlik** > **InPrivate Gözatma**' ya tıklayın ve ardından [Azure Portal](https://portal.azure.com/) ya da [Azure Hesap Merkezi](https://account.azure.com/Subscriptions)' ne gidin ve oturum açın.
+- Tarayıcınızda özel gözatma modunu kullanın. Internet Explorer için: **Araçlar** > **Güvenlik** > **InPrivate Gözatma**’ya tıklayın ve sonra [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip oturum açın.
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Otomatik şekilde farklı kullanıcı olarak oturum açtınız
 
@@ -42,20 +42,20 @@ Sorunu çözmek için aşağıdaki yöntemlerden birini deneyin:
 
 - Önbelleği temizleyin ve İnternet tanımlama bilgilerini silin. Internet Explorer’da **Araçlar** > **Internet Seçenekleri** > **Sil**’e tıklayın. Geçici dosyalar, tanımlama bilgileri, parola ve gözatma geçmişi onay kutularının seçildiğinden emin olun ve Sil’e tıklayın.
 - Yaptığınız tüm kişisel ayarları geri almak için Internet Explorer ayarlarını sıfırlayın. **Araçlar** > **Internet Seçenekleri** > **Gelişmiş**’e tıklayın > **Kişisel ayarları sil** kutusu > **Sıfırla**’yı seçin.
-- Tarayıcınızda özel gözatma modunu kullanın. Internet Explorer için: **araçlar** > **güvenlik** > **InPrivate Gözatma**' ya tıklayın ve ardından [Azure Portal](https://portal.azure.com/) ya da [Azure Hesap Merkezi](https://account.azure.com/Subscriptions)' ne gidin ve oturum açın.
+- Tarayıcınızda özel gözatma modunu kullanın. Internet Explorer için:  **Araçlar** > **Güvenlik** > **InPrivate Gözatma**’ya tıklayın ve sonra [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip oturum açın.
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Oturum açabiliyorum, ancak *Abonelik bulunamadı* iletisini görüyorum
 
 Yanlış dizinde seçim yaptıysanız veya hesabınız yeterli izinlere sahip değilse bu sorun oluşur.
 
-**Senaryo 1:** [Azure Portal](https://portal.azure.com/) hata iletisi alındı
+**Senaryo 1:** [Azure portalında](https://portal.azure.com/) hata iletisi alınır
 
 Bu sorunu düzeltmek için:
 
 - Sağ üst kısımda hesabınıza tıklayarak doğru Azure dizininin seçildiğinden emin olun.
 - Doğru Azure dizini seçili olduğu halde hata iletisini almaya devam ediyorsanız hesabınızın [Sahip olarak eklenmesini](add-change-subscription-administrator.md) sağlayın.
 
-**Senaryo 2:** [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions) hata iletisi alındı
+**Senaryo 2:** [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde hata iletisi alınır
 
 Kullandığınız hesabın Hesap Yöneticisi olup olmadığını denetleyin. Hesap Yöneticisinin kim olduğunu doğrulamak için şu adımları izleyin:
 

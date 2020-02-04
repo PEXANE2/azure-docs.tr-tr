@@ -12,64 +12,64 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991340"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft Müşteri Sözleşmesi Azure kredi bakiyesini izleme
 
-Azure portal veya REST API 'Leri aracılığıyla bir Microsoft Müşteri Sözleşmesi için faturalandırma hesabınıza yönelik Azure kredi bakiyesini kontrol edebilirsiniz.
+Azure portalında veya REST API’leri aracılığıyla Microsoft Müşteri Sözleşmesi için ödeme hesabınızın Azure kredi bakiyesini denetleyebilirsiniz.
 
-Bir Microsoft Müşteri Sözleşmesi ödeme hesabında, krediler bir faturalama profiline atanır. Her faturalandırma profilinin, faturasında ücretlerine otomatik olarak uygulanan kendi kredileri vardır. Bir faturalama profilinin Azure kredisi bakiyesini görüntülemek için faturalama profilinde sahip, katkıda bulunan, okuyucu veya fatura yöneticisi rolüne ya da ödeme hesabında sahip, katkıda bulunan veya okuyucu rolüne sahip olmanız gerekir. Roller hakkında daha fazla bilgi almak için bkz. [Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama](understand-mca-roles.md).
+Bir Microsoft Müşteri Sözleşmesi ödeme hesabında, krediler bir faturalama profiline atanır. Her faturalama profilinin, faturasındaki ücretlere otomatik olarak uygulanan kendine özel kredileri bulunur. Bir faturalama profilinin Azure kredisi bakiyesini görüntülemek için faturalama profilinde sahip, katkıda bulunan, okuyucu veya fatura yöneticisi rolüne ya da ödeme hesabında sahip, katkıda bulunan veya okuyucu rolüne sahip olmanız gerekir. Roller hakkında daha fazla bilgi almak için bkz. [Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama](understand-mca-roles.md).
 
 Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Kredi bakiyenizi denetleme
 
-### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portaltabportal"></a>[Azure portalındaki](#tab/portal)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
     ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Faturalama kapsamları sayfasında, kredi bakiyesini izlemek istediğiniz faturalandırma hesabını seçin. Faturalandırma hesabı **Microsoft Müşteri Sözleşmesi**türünde olmalıdır.
+3. Faturalama kapsamları sayfasında kredi bakiyesini izlemek istediğiniz ödeme hesabını seçin. Ödeme hesabının **Microsoft Müşteri Sözleşmesi** türünde olması gerekir.
 
     ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure portal, eriştiğiniz son faturalandırma kapsamını anımsar ve maliyet yönetimi + faturalandırma sayfasına bir dahaki sefer daha sonra kapsamı görüntüler. Maliyet yönetimi + faturalandırma daha önce ziyaret ediyorsanız faturalandırma kapsamları sayfasını görmezsiniz. Bu durumda, [doğru kapsamda](#check-access-to-a-microsoft-customer-agreement)olduğunu kontrol edin. Aksi takdirde, bir Microsoft Müşteri Sözleşmesi için faturalandırma hesabını seçmek üzere [kapsamı değiştirin](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) .
+    > Azure portalı, en son eriştiğiniz faturalama kapsamını anımsar ve Maliyet Yönetimi ve Faturalama sayfasına sonraki gelişinizde bunu görüntüler. Daha önce Maliyet Yönetimi ve Faturalama sayfasını ziyaret ettiyseniz faturalama kapsamı sayfasını görmezsiniz. Bu durumda, [doğru kapsamda](#check-access-to-a-microsoft-customer-agreement) olup olmadığınızı denetleyin. Aksi takdirde, bir Microsoft Müşteri Sözleşmesi’ne yönelik ödeme hesabını seçmek için [kapsamı değiştirin](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-3. Sol taraftaki **ödeme yöntemleri** ' ni seçin ve ardından **Azure kredileri**' yi seçin.
+3. Sol taraftaki **Ödeme yöntemleri**’ni seçip **Azure kredileri** seçeneğini belirleyin.
 
-   ![Bir faturalandırma profili için kredi bakiyesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Faturalama profili için kredi bakiyesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
-4. Azure kredileri sayfası aşağıdaki bölümlere sahiptir:
+4. Azure kredileri sayfasında aşağıdaki bölümler bulunur:
 
    #### <a name="balance"></a>Bakiye
 
-   Bakiye bölümünde, Azure kredi bakiyeniz özeti görüntülenir.
+   Bakiye bölümünde, Azure kredisi bakiyenizin özeti görüntülenir.
 
-   ![Bir faturalandırma profili için kredi bakiyesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
+   ![Faturalama profili için kredi bakiyesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
 
-   | Sözleşme Dönemi               | Tanım                           |
+   | Süre               | Tanım                           |
    |--------------------|--------------------------------------------------------|
    | Tahmini bakiye  | Tüm faturalanan ve beklemedeki işlemler dikkate alındıktan sonra sahip olduğunuz tahmini kredi tutarı |
    | Geçerli bakiye    | Son faturanızdan itibaren kredi tutarı. Beklemedeki işlemleri içermez |
 
    Tahmini bakiyeniz 0’a indiğinde, kredilere uygun olan ürünler de dahil olmak üzere tüm kullanımınız için ücret yansıtılır.
 
-   #### <a name="credits-list"></a>Jenerik listesi
+   #### <a name="credits-list"></a>Kredi listesi
 
-   Krediler listesi bölümü, Azure kredilerinin listesini görüntüler.
+   Kredi listesi bölümü Azure kredilerinin listesini görüntüler.
 
    ![Faturalama profili için kredi listelerinin ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | Sözleşme Dönemi | Tanım |
+   | Süre | Tanım |
    |---|---|
    | Kaynak | Kredinin alım kaynağı |
    | Başlangıç tarihi | Krediyi aldığınız tarih |
@@ -80,24 +80,24 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
    #### <a name="transactions"></a>İşlemler
 
-   İşlemler bölümünde kredileriniz bakiyenizi etkileyen tüm işlemler görüntülenir.
+   İşlemler bölümünde, kredi bakiyenizi etkileyen tüm işlemler görüntülenir.
 
-   ![Bir faturalandırma profili için kredi işlemlerinin ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
+   ![Bir faturalama profili için kredi işlemleri ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
 
-   | Sözleşme Dönemi | Tanım |
+   | Süre | Tanım |
    |---|---|
    | İşlem tarihi | İşlemin gerçekleştiği tarih |
-   | Açıklama | İşlemin açıklaması |
+   | Açıklama | İşlem açıklaması |
    | Miktar| İşlem miktarı |
-   | Bakiye | İşlemden sonraki bakiye |
+   | Bakiye | İşlemden sonra kalan bakiye |
 
     > [!NOTE]
     >
-    > Ödeme yöntemleri sayfasında Azure kredilerini görmüyorsanız krediniz yok ya da doğru kapsamı seçmediniz. Kredilerin veya fatura profillerinin birine sahip olan faturalandırma hesabını seçin. Kapsamları değiştirme hakkında bilgi edinmek için bkz. [Azure Portal faturalandırma kapsamlarını](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)değiştirme.
+    > Ödeme yöntemleri sayfasında Azure kredilerini görmüyorsanız Azure krediniz olmayabilir veya doğru kapsamı seçmemiş olabilirsiniz. Kredileri veya fatura profillerinin biri olan ödeme hesabını seçin. Kapsam değiştirmeyi öğrenmek için bkz. [Azure portalında faturalama kapsamı değiştirme](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Azure kredilerini faturalandırma hesabı kapsamında görüntülüyorsanız ve faturalama hesabında birden fazla faturalandırma profili varsa, Azure kredileri sayfasında her faturalandırma profili için Azure kredilerinin özetini içeren bir tablo gösterilir. Listeden bir faturalama profili seçin, ödeme yöntemleri ' ni ve ardından Azure kredileri ' yi seçerek bir faturalandırma profili ayrıntılarını görüntüleyin.
+5. Ödeme hesabı kapsamında Azure kredilerini görüntülüyorsanız ve ödeme hesabında birden fazla ödeme profili varsa, Azure kredileri sayfasında her faturalama profiline yönelik Azure kredileri özetini içeren bir tablo gösterilir. Bir faturalama profiline yönelik ayrıntıları görüntülemek için listeden bir faturalama profili seçin, ödeme yöntemlerini seçin ve ardından Azure kredileri seçeneğini belirleyin.
 
-    ![Faturalandırma hesabı için kredi listesinin ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
+    ![Bir faturalama hesabı için kredi listesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
 ### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
 
@@ -154,11 +154,11 @@ API yanıtı, ödeme hesapları ile faturalama profillerinin bir listesini dönd
 }
 ```
 
-Kredi bakiyesini denetlemek istediğiniz faturalandırma profilini belirlemek için faturalandırma profilinin `displayName` özelliğini kullanın. Faturalama profilinin `id` değerini kopyalayın. Örneğin, **Geliştirme** faturalama profilinin kredi bakiyesini denetlemek istiyorsanız ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx``` değerini kopyalayın. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
+Kredi bakiyesini denetlemek istediğiniz faturalama profilini belirlemek için faturalama profilinin `displayName` özelliğini kullanın. Faturalama profilinin `id` değerini kopyalayın. Örneğin, **Geliştirme** faturalama profilinin kredi bakiyesini denetlemek istiyorsanız ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx``` değerini kopyalayın. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
 
 ### <a name="get-azure-credit-balance"></a>Azure kredi bakiyesini alma
 
-`<billingProfileId>`, ilk adımda kopyaladığınız `id` ile değiştirerek aşağıdaki isteği yapın (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```).
+`<billingProfileId>` değerini, ilk adımda (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```) kopyaladığınız `id` ile değiştirerek aşağıdaki istekte bulunun.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
@@ -209,7 +209,7 @@ API yanıtı, faturalama profili için tahmini ve geçerli bakiyeyi döndürür.
 
 ### <a name="get-list-of-credits"></a>Kredi listesini alma
 
-`<billingProfileId>`, ilk adımda kopyaladığınız `id` ile değiştirerek aşağıdaki isteği yapın (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```).
+`<billingProfileId>` değerini, ilk adımda (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```) kopyaladığınız `id` ile değiştirerek aşağıdaki istekte bulunun.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
@@ -273,7 +273,7 @@ API yanıtı, bir faturalama profiline ait Azure kredilerinin listesini döndür
 
 ### <a name="get-transactions-that-affected-credit-balance"></a>Kredi bakiyenizi etkileyen işlemleri alma
 
-`<billingProfileId>`, ilk adımda kopyaladığınız `id` ile değiştirerek aşağıdaki isteği yapın (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). İstediğiniz döneme ait işlemleri almak için bir **startDate** ve bir **endDate** geçirmeniz gerekir.
+`<billingProfileId>` değerini, ilk adımda (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```) kopyaladığınız `id` ile değiştirerek aşağıdaki istekte bulunun. İstediğiniz döneme ait işlemleri almak için bir **startDate** ve bir **endDate** geçirmeniz gerekir.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
@@ -390,7 +390,7 @@ Edindiğiniz kredileri bir faturalama profiline atarsınız. Faturalama profili 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 
 Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

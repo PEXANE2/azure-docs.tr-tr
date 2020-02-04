@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993056"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Azure hesabınız için profil bilgilerini değiştirme
@@ -76,7 +76,7 @@ Aşağıdaki yöntemlerden birini kullanarak iletişim e-posta adresinizi deği�
 
 * Azure portalında [İletişim bilgileri](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) alanına gidin ve bir e-posta adresi girin. Sağladığınız adrese hizmet ve pazarlama iletişimleri gönderilir. Azure Hesap Merkezi Profilindeki e-posta adresi, otomatik olarak eşleşecek şekilde güncelleştirilir. Profilinizdeki e-posta adresi güncelleştirildiğinde, oturum açarken kullandığınız e-posta adresiniz güncelleştirilmez.
 
-* [Azure portalında](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), adınızın baş harflerini veya resminizi içeren simgeyi seçin. Ardından, bağlam menüsünü ( **...** ) seçin. Sonra, menüden **iletişim** bilgilerimi seçin ve bir e-posta adresi girin. Sağladığınız adrese hizmet ve pazarlama iletişimleri gönderilir. Azure Hesap Merkezi Profilinizdeki e-posta adresi, otomatik olarak eşleşecek şekilde güncelleştirilir. Profilinizdeki e-posta adresi güncelleştirildiğinde, oturum açarken kullandığınız e-posta adresiniz güncelleştirilmez.
+* [Azure portalında](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), adınızın baş harflerini veya resminizi içeren simgeyi seçin. Ardından açılır menüyü ( **...** ) seçin. Sonra menüden **İletişim Bilgilerim**‘i seçin ve bir e-posta adresi girin. Sağladığınız adrese hizmet ve pazarlama iletişimleri gönderilir. Azure Hesap Merkezi Profilinizdeki e-posta adresi, otomatik olarak eşleşecek şekilde güncelleştirilir. Profilinizdeki e-posta adresi güncelleştirildiğinde, oturum açarken kullandığınız e-posta adresiniz güncelleştirilmez.
 
 ![Azure’da e-posta adresini güncelleştirme örneği](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -98,7 +98,7 @@ Pazarlama iletişimlerini geri çevirdiğinizde, hesabınıza göre hizmet bildi
     ![Azure aboneliğini yeniden adlandırma örneği](./media/change-azure-account-profile/rename-sub.png)
 1. Adı değiştirdikten sonra **Kaydet**‘i seçin.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

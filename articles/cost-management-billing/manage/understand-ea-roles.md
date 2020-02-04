@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: ae33d320213cc526710845e78c23a83143a73771
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989910"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure'daki Azure Kurumsal Anlaşma yönetici rollerini anlama
@@ -38,10 +38,10 @@ Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açık
 
 |Rol| Kullanıcı sınırı|
 |---|---|
-|Kuruluş Yöneticisi|İş çalışma zamanında|
-|Kuruluş Yöneticisi (salt okunur)|İş çalışma zamanında|
-|Bölüm Yöneticisi|İş çalışma zamanında|
-|Bölüm Yöneticisi (salt okunur)|İş çalışma zamanında|
+|Kuruluş Yöneticisi|Sınırsız|
+|Kuruluş Yöneticisi (salt okunur)|Sınırsız|
+|Bölüm Yöneticisi|Sınırsız|
+|Bölüm Yöneticisi (salt okunur)|Sınırsız|
 |Hesap Sahibi|Hesap başına 1<sup>1</sup>|
 
 <sup>1</sup> Her hesap için benzersiz bir Microsoft hesabı veya iş ya da okul hesabı gerekir.
@@ -97,7 +97,7 @@ Aşağıdaki tabloda, Azure portalında gördüğünüz fiyatlandırma, Azure po
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✘ Devre dışı|Sahip|Perakende fiyatlandırması|
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✔ Etkin |yok|Fiyatlandırma yok|
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✘ Devre dışı |yok|Fiyatlandırma yok|
-|Hiçbiri|Geçerli değil |Sahip|Perakende fiyatlandırması|
+|Hiçbiri|Uygulanamaz |Sahip|Perakende fiyatlandırması|
 
 Kuruluş yöneticisi rolünü ve ücretleri görüntüleme ilkelerini Enterprise portal’da ayarlarsınız. RBAC rolü, Azure portalında güncelleştirilebilir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
 

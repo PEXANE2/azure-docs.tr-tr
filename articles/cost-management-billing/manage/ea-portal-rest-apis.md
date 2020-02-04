@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992146"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Kurumsal REST API'leri
@@ -83,8 +83,8 @@ Bir API kullanırken yanıt durum kodları gösterilir. Aşağıdaki tabloda bun
 
 | Yanıt durum kodu | İleti | Açıklama |
 | --- | --- | --- |
-| 200 | TAMAM | Hata yok |
-| 401 | Yetkilendirilmemiş | API Anahtarı bulunamadı, Geçersiz, Süresi Doldu vb. |
+| 200 | Tamam | Hata yok |
+| 401 | Yetkisiz | API Anahtarı bulunamadı, Geçersiz, Süresi Doldu vb. |
 | 404 | Kullanılamaz | Rapor uç noktası bulunamadı |
 | 400 | Hatalı İstek | Geçersiz parametreler – Tarih aralıkları, Kurumsal Anlaşma numaraları vb. |
 | 500 | Sunucu Hatası | İstek işlenirken beklenmeyen hata oluştu |
@@ -118,7 +118,7 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | Hesap Adı | AccountName | AccountName |   |
 | HizmetYöneticisiKimliği | ServiceAdministratorLiveId | ServiceAdministratorLiveId |   |
-| SubscriptionId | SubscriptionId | SubscriptionId |   |
+| kaynak grubundaki | kaynak grubundaki | kaynak grubundaki |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Abonelik Adı | SubscriptionName | SubscriptionName |   |
 | Tarih | Tarih | Tarih | Hizmet kataloğu raporunun çalıştırıldığı tarihi gösterir. Biçimi, zaman damgası içermeyen bir tarih dizesidir. |
@@ -138,14 +138,14 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | Kullanılan Hizmet | ServiceInfo | ConsumedService |   |
 | Örnek Kimliği | Bileşen | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
-| HizmetBilgisi2 | HizmetBilgisi2 | HizmetBilgisi2 |   |
+| ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | Etiketler | Etiketler | Etiketler |   |
 | DepolamaHizmetiTanımlayıcısı   | OrderNumber | StoreServiceIdentifier   |   |
 | Bölüm Adı | DepartmentName | DepartmentName |   |
 | Maliyet Merkezi | CostCenter | CostCenter |   |
-| Ölçü Birimi | UnitOfMeasure | UnitOfMeasure | Örnek değerler: saatler, GB, olaylar, gönderim, birim, Birim Saatleri, MB, günlük birimler |
-| ResourceGroup | ResourceGroup | ResourceGroup |   |
+| Ölçü Birimi | UnitOfMeasure | UnitOfMeasure | Örnek değerler: Saatler, GB, Olaylar, Gönderimler, Birim, Birim Saatleri, MB, Günlük Birimler |
+| adlı yönetilen örnek, | adlı yönetilen örnek, | adlı yönetilen örnek, |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Market raporu
 
@@ -153,7 +153,7 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | --- | --- | --- |
 | AccountOwnerId | AccountOwnerId | AccountOwnerId |
 | Hesap Adı | AccountName | AccountName |
-| SubscriptionId | SubscriptionId | SubscriptionId |
+| kaynak grubundaki | kaynak grubundaki | kaynak grubundaki |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Abonelik Adı | SubscriptionName |  SubscriptionName |
 | Tarih | BillingCycle |  Date (Yalnızca Tarih Dizesi. Zaman damgası yok)
@@ -174,7 +174,7 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | Sipariş Numarası | OrderNumber | OrderNumber |
 | Bölüm Adı | DepartmentNames | DepartmentName |
 | Maliyet Merkezi | CostCenters |  CostCenter |
-| Kaynak Grubu | ResourceGroup |  ResourceGroup |
+| Kaynak Grubu | adlı yönetilen örnek, |  adlı yönetilen örnek, |
 
 #### <a name="price-sheet"></a>Fiyat listesi
 

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 553cc7fd27571ebc925e33f824060c023664a369
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991782"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>En üst düzey Abonelik bilgilerinizi dışarı aktarma ve görüntüleme
@@ -28,9 +28,9 @@ Kullanıcı kimlik bilgilerinizle ilişkili abonelik kimliklerini görüntüleme
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 İndirilen .json dosyası şu bilgileri sağlar:
-- E-posta: hesabınızla ilişkili e-posta adresi.
-- PUID: Faturalandırma hesabınızla ilişkili benzersiz tanımlayıcı.
-- Subscriptionıds: hesabınıza ait olan ve abonelik KIMLIĞI tarafından numaralandırılan aboneliklerin listesi.
+- E-posta: Hesabınızla ilişkili e-posta adresi.
+- Puid: Faturalama hesabınızla ilişkili benzersiz tanımlayıcı.
+- Abonelik Kimlikleri: Hesabınıza ait olan ve abonelik kimliğine göre numaralandırılan aboneliklerin listesi.
 
 ### <a name="subscriptionsjson-sample"></a>subscriptions.json örneği
 

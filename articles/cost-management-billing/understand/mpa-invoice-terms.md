@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989754"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft İş Ortağı Sözleşmesi faturanızdaki koşullar
@@ -26,7 +26,7 @@ Faturanızda ücretlerinizin özeti ve ödeme yönergeleri yer alır. [Azure por
 
 Aşağıdaki bölümlerde, faturanızda gördüğünüz önemli terimler ve her bir terimin açıklaması listelenmektedir.
 
-## <a name="billing-period"></a>Fatura dönemi
+## <a name="billing-period"></a>Faturalama dönemi
 
 Aylık olarak faturalandırılırsınız. Faturalama döneminin sonu ile fatura tarihi arasında gerçekleşen ücretler, sonraki faturalama döneminde yer aldığından sonraki ayın faturasına dahil edilir. Her bir fatura için faturalama dönemi başlangıç ve bitiş tarihleri, faturanın PDF dosyasında **Faturalama Özeti** bölümünün yukarısında listelenir.
 
@@ -36,7 +36,7 @@ Aylık olarak faturalandırılırsınız. Faturalama döneminin sonu ile fatura 
 
 <!-- add screenshot -->
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Kime Satıldı |Ödeme hesabı özelliklerinde bulunan tüzel kişiliğinizin adresi|
 | Fatura adresi |Faturalama profili özelliklerinde bulunan, faturayı alan faturalama profilinin fatura adresi|
@@ -52,7 +52,7 @@ Aylık olarak faturalandırılırsınız. Faturalama döneminin sonu ile fatura 
 
 <!-- add screenshot -->
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Ücretler|Son faturalama döneminden bu yana bu faturalama profili için oluşan toplam Microsoft ücreti sayısı |
 | Krediler |İadelerden aldığınız krediler |
@@ -77,7 +77,7 @@ Faturanızda üçüncü taraf hizmetleriniz varsa, her yayımcının adı ve adr
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft İş Ortağı Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

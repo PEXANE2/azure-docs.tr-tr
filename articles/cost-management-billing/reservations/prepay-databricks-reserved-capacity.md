@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995877"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Önceden satın alma ile Azure Databricks maliyetlerini iyileştirme
@@ -31,7 +31,7 @@ Databricks önceden satın alımı, tüm Databricks iş yükleri ve katmanları 
 | --- | --- | --- |
 | Veri Analizi | 0,4 | 0,55 |
 | Veri Mühendisliği | 0,15 | 0,30 |
-| Veri Mühendisliği Hafif Düzey | 0,07 | 0,22 |
+| Veri Mühendisliği Hafif | 0,07 | 0,22 |
 
 Örneğin, bir Veri Analizi - Standart Katman miktarı kullanıldığında, önceden satın alınan Databricks işleme birimleri, 0,4 birim düşülür.
 
@@ -41,13 +41,13 @@ Satın almadan önce, farklı iş yükleri ve katmanlar için kullanılan toplam
 
 [Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) Databricks planları satın alabilirsiniz. Ayrılmış kapasite satın almak için, en az bir kurumsal abonelik için sahip rolüne sahip olmanız gerekir.
 
-- En az bir Kurumsal Anlaşma sahip rolünde (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) için bir sahip rolünde olmanız gerekir.
-- EA abonelikleri için, ayrılmış örnekler ekle seçeneğinin EA portalında etkinleştirilmiş olması gerekir. Ya da, bu ayar devre dışı bırakılırsa, abonelik için bir EA yöneticisi olmanız gerekir.
+- Şunlar için Sahip rolünde olmanız gerekir: en az bir Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P or MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da kullandıkça öde fiyatlarıyla sunulan bireysel abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P).
+- EA abonelikleri için, EA Portal’da Ayrılmış Örnek Ekle seçeneğinin etkinleştirilmesi gerekir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Veya bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
 
 **Satın almak için:**
 
-1. [Azure portalına](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) gidin.
+1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) gidin.
 1. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla **Abonelik** listesini kullanın. Ayrılmış kapasiteye ilişkin peşin maliyetler, aboneliğin ödeme yöntemiyle ücretlendirilir. Ücretler, kaydın parasal taahhüt bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir.
 1. Bir kapsam seçin. **Kapsam** listesini kullanarak bir abonelik kapsamı seçin:
     - **Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.
@@ -71,13 +71,13 @@ Databricks işleme birimi önceden satın alımını bölemez veya birleştireme
 
 Databricks önceden satın alma planları için iptal ve değişim desteklenmez. Tüm satın alma işlemleri nihaidir.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
   - [Azure Databricks önceden satın alma DBCU indiriminin nasıl uygulandığını anlama](reservation-discount-databricks.md)
   - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)

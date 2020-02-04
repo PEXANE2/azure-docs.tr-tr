@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 793caae31841c0ea744a80a811c86aa4af63f60a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990976"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft Müşteri Sözleşmesi faturanızdaki koşullar
@@ -24,7 +24,7 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin Azure ödeme hesabı i
 
 Faturanızda ücretlerinizin özeti ve ödeme yönergeleri yer alır. [Azure portalından](https://portal.azure.com/) Taşınabilir Belge Biçiminde (.pdf) indirilebilir veya e-postayla gönderilebilir. Daha fazla bilgi için bkz. [Microsoft Azure faturanızı görüntüleme ve indirme](download-azure-invoice.md).
 
-## <a name="billing-period"></a>Fatura dönemi
+## <a name="billing-period"></a>Faturalama dönemi
 
 Aylık olarak faturalandırılırsınız. [Azure portalında](https://portal.azure.com/) faturalama profili özellikleri bölümünde *fatura tarihi* bilgisini kontrol ederek faturaları ayın hangi günü alacağınızı öğrenebilirsiniz. Faturalama döneminin sonu ile fatura tarihi arasında gerçekleşen ücretler, sonraki faturalama döneminde yer aldığından sonraki ayın faturasına dahil edilir. Her bir fatura için faturalama dönemi başlangıç ve bitiş tarihleri, faturanın PDF dosyasında **Faturalama Özeti** bölümünün yukarısında listelenir.
 
@@ -38,7 +38,7 @@ Aşağıdaki bölümlerde, faturanızda gördüğünüz önemli terimler ve her 
 
 ![Fatura özeti bölümü](./media/mca-understand-your-invoice/invoicesummary.png)
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Kime Satıldı |Ödeme hesabı özelliklerinde bulunan tüzel kişiliğinizin adresi|
 | Fatura adresi |Faturalama profili özelliklerinde bulunan, faturayı alan faturalama profilinin fatura adresi|
@@ -54,7 +54,7 @@ Aşağıdaki bölümlerde, faturanızda gördüğünüz önemli terimler ve her 
 
 ![Faturalama özeti bölümü](./media/mca-understand-your-invoice/billingsummary.png)
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Ücretler|Son faturalama döneminden bu yana bu faturalama profili için oluşan toplam Microsoft ücreti sayısı |
 | Krediler |İadelerden aldığınız krediler |
@@ -78,10 +78,10 @@ Her bir hizmet için ödenmesi gereken toplam tutar, *Krediler/ücretler* tutar�
 
 ![Faturaya göre ayrıntılar bölümü](./media/mca-understand-your-invoice/invoicesectiondetails.png)
 
-| Sözleşme Dönemi |Açıklama |
+| Süre |Açıklama |
 | --- | --- |
 | Birim fiyat | Kullanımı fiyatlandırmak için kullanılan hizmetin geçerli birim fiyatı (fiyatlandırma para birimi cinsinden). Ürün, hizmet ailesi, ölçüm ve teklif için bu benzersizdir. |
-| Adet | Faturalama döneminde satın alınan veya kullanılan miktar |
+| Miktar | Faturalama döneminde satın alınan veya kullanılan miktar |
 | Ücretler/Krediler | Krediler/para iadeleri uygulandıktan sonraki net ücret tutarı |
 | Azure Kredisi | Ücretlere/Kredilere uygulanan Azure kredileri tutarı|
 | Vergi oranı | Ülke/bölgeye göre vergi oranları |
@@ -99,7 +99,7 @@ Faturanızda üçüncü taraf hizmetleriniz varsa, her yayımcının adı ve adr
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

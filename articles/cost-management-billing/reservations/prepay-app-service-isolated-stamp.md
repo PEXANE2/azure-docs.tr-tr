@@ -1,5 +1,5 @@
 ---
-title: Ayrılmış kapasiteye sahip Azure App Service için Kaydet
+title: Ayrılmış kapasite ile Azure App Service’te maliyetlerden tasarruf etme
 description: Ayrılmış kapasite ile Azure App Service Yalıtılmış Damga Pulu Ücreti maliyetlerinden nasıl tasarruf edebileceğinizi öğrenin.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: 8161b169e8801fae4a9aa81290cf29ec28abf858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995890"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Ayrılmış kapasite ile Azure App Service Yalıtılmış Damga Pulu Ücreti maliyetlerinden tasarruf etme
@@ -47,7 +47,7 @@ Damga pulu üzerinde bir veya daha fazla Windows çalışanınız varsa Windows 
 **Satın almak için:**
 
 1. [Azure portalına](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) gidin.
-1. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla **Abonelik** listesini kullanın. Ayrılmış kapasite maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) veya CSP aboneliği olmalıdır.
+1. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla **Abonelik** listesini kullanın. Ayrılmış kapasite maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numarası: MS-AZR-0017P veya MS-AZR-0148P) ya da Kullandıkça Öde (teklif numarası: MS-AZR-0003P veya MS-AZR-0023P) ya da CSP aboneliği.
     - Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir.
     - Kullandıkça Öde aboneliğinde ücretler, aboneliğin kredi kartı veya fatura ödeme yöntemi ile faturalandırılır.
 1. Bir **Kapsam** seçerek bir abonelik kapsamı seçin.
@@ -57,7 +57,7 @@ Damga pulu üzerinde bir veya daha fazla Windows çalışanınız varsa Windows 
 1. Ayrılmış kapasite kapsamındaki bir Azure bölgesi seçmek için bir **Bölge** seçin ve rezervasyonu sepete ekleyin.
 1. Bir Yalıtılmış Plan türü seçin ve **Seç**’e tıklayın.  
     ![Örnek ](./media/prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. Ayrılacak App Service Yalıtılmış damga pulu miktarını girin. Örneğin, üç miktarı, size bir bölge için üç ayrılmış damga pulu sunar. Ileri ' ye tıklayın **: gözden geçir + satın al**.
+1. Ayrılacak App Service Yalıtılmış damga pulu miktarını girin. Örneğin, üç miktarı, size bir bölge için üç ayrılmış damga pulu sunar. **İleri: Gözden Geçirme + Satın Alma** seçeneğine tıklayın.
 1. Gözden geçirin ve **Şimdi satın al** seçeneğine tıklayın.
 
 Satın aldıktan sonra, satın alma durumunu görüntülemek ve istediğiniz zaman izlemek için [Rezervasyonlar](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)’a gidin.
@@ -75,6 +75,6 @@ Kullanım verilerinde rezervasyon indiriminin nasıl gösterileceği hakkında d
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
   - [Azure App Service Yalıtılmış Damga Pulu rezervasyon indiriminin nasıl uygulandığını anlama](reservation-discount-app-service-isolated-stamp.md)
   - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)

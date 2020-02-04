@@ -9,10 +9,10 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 02d446d1b70b64092501804e793b400e983a4d80
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995136"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme
@@ -23,7 +23,7 @@ Microsoft Müşteri Sözleşmeniz (MCA) varsa, Azure kullanımınızı ve ücret
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Azure portalından kullanımı indirin (.csv)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
 
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/download-azure-daily-usage/portal-cm-billing-search.png)
@@ -31,14 +31,14 @@ Microsoft Müşteri Sözleşmeniz (MCA) varsa, Azure kullanımınızı ve ücret
 1. Erişiminize bağlı olarak, bir Ödeme hesabı veya Faturalama profili seçmeniz gerekebilir.
 1. Soldaki menüde **Faturalama** altındaki **Faturalar**’ı seçin.
 1. Fatura kılavuzunda, indirmek istediğiniz kullanıma karşılık gelen faturalama döneminin satırını bulun.
-1. Sağ tarafta **İndir simgesini** veya üç noktayı (`...`) seçin.
-1. Karşıdan yükleme bölmesi sağ tarafta açılır. **Kullanım ayrıntıları** bölümünden **İndir** ' i seçin.
+1. Sağ taraftaki **indir simgesini** veya üç noktayı (`...`) seçin.
+1. İndirme bölmesi sağ tarafta açılır. **Kullanım Ayrıntıları** bölümünde **İndir** seçeneğini belirleyin.
 
 ## <a name="download-usage-for-ea-customers"></a>Kurumsal Anlaşma müşterileri için kullanımı indirme
 
 Kurumsal Anlaşma müşterisi olarak kullanım verilerinizi görüntülemek veya indirmek için Kuruluş Yöneticisi, Hesap Sahibi veya ücretleri görüntüleme ilkesi etkinleştirilmiş Bölüm Yöneticisi olmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
 
     ![Azure portalı aramasını gösteren ekran görüntüsü](./media/download-azure-daily-usage/portal-cm-billing-search.png)
@@ -50,7 +50,7 @@ Kurumsal Anlaşma müşterisi olarak kullanım verilerinizi görüntülemek veya
 
 Microsoft Müşteri Sözleşmeniz varsa, geçerli faturalama dönemi için ay içindeki kullanımı indirebilirsiniz. Henüz faturalanmamış kullanım ücretleri.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. *Maliyet Yönetimi + Faturalama* araması yapın.
 3. Faturalama profilini seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
 4. **Genel Bakış** alanında, ay başından bugüne kadarki ücretlerin altında indirme bağlantılarını bulun.
@@ -61,7 +61,7 @@ Microsoft Müşteri Sözleşmeniz varsa, geçerli faturalama dönemi için ay i�
 ## <a name="check-your-billing-account-type"></a>Ödeme hesabınızın türünü denetleme
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

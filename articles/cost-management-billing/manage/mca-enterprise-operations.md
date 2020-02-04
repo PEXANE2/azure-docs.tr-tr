@@ -1,5 +1,5 @@
 ---
-title: Microsoft Müşteri anlaşmasındaki EA görevleri-Azure
+title: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri - Azure
 description: Yeni ödeme hesabınızda Kurumsal Anlaşma görevlerini tamamlamayı öğrenin.
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991249"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızda Kurumsal Anlaşma görevlerini tamamlama
@@ -29,7 +29,7 @@ Aşağıdaki diyagramda yeni ödeme hesabınızda faturalamanın nasıl düzenle
 
 ![ea-mca-post-transition-hierarchy resmi](./media/mca-enterprise-operations/mca-post-transition-hierarchy.png)
 
-| Kurumsal Sözleşme   | Microsoft Müşteri Sözleşmesi    |
+| Kurumsal Anlaşma   | Microsoft Müşteri Sözleşmesi    |
 |------------------------|--------------------------------------------------------|
 | Kayıt            | Kuruluşunuzda faturalamayı yönetmek için Kurumsal Anlaşma kaydınıza benzer bir faturalama profili kullanırsınız. Kuruluş yöneticileri faturalama profilinin sahibi olur. Faturalama profilleri hakkında daha fazla bilgi edinmek için bkz. [Faturalama profillerini anlama](../understand/mca-overview.md#billing-profiles).
 | Bölüm            | Maliyetlerinizi düzenlemek için Kurumsal Anlaşma kaydınızdaki bölümlere benzer bir fatura bölümü kullanırsınız. Bölümler fatura bölümlerine ve bölüm yöneticileri de ilgili fatura bölümlerinin sahiplerine dönüşür. Fatura bölümleri hakkında daha fazla bilgi edinmek için bkz. [Fatura bölümlerini anlama](../understand/mca-overview.md#invoice-sections). |
@@ -88,7 +88,7 @@ Faturalama profilinize erişim sağlamayı öğrenmek için bkz. [Azure portalı
 
 Gereksinimleriniz temelinde maliyetlerinizi düzenlemek için Kurumsal Anlaşma kaydınızdaki bölümlere benzer bir fatura bölümü oluşturun. Yeni fatura bölümünü Azure portalında oluşturabilirsiniz. Daha fazla bilgi edinmek için bkz. [Maliyetlerinizi düzenlemek için faturanızda bölümler oluşturma](mca-section-invoice.md).
 
-### <a name="create-a-new-account"></a>Yeni hesap oluşturun
+### <a name="create-a-new-account"></a>Yeni hesap oluşturma
 
 Kurumsal Anlaşma kaydında oluşturulan hesaplar gibi, kullanıcılara Azure aboneliği oluşturma izni vermek için fatura bölümleri üzerinde Azure aboneliği oluşturma rolü atayın. Rol atama hakkında daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
@@ -132,7 +132,7 @@ Ek Azure abonelikleri oluşturmak için yeni ödeme hesabında size aşağıdaki
 
 **Azure aboneliği oluşturucusu** - Kurumsal Anlaşmada bölümünüz için oluşturulan fatura bölümü üzerinde size Azure aboneliği oluşturucusu rolü atanır. Hesabınız bir bölüme ait değilse Varsayılan fatura bölümü olarak adlandırılan bölüm üzerinde Azure aboneliği oluşturucusu rolü alırsınız. Bu rol fatura bölümü için Azure abonelikleri oluşturmanızı sağlar.
 
-### <a name="create-an-azure-subscription"></a>Bir Azure aboneliği oluşturun
+### <a name="create-an-azure-subscription"></a>Azure aboneliği oluşturma
 
 Azure portalında fatura bölümünüz için Azure abonelikleri oluşturabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ek Azure aboneliği oluşturma](create-subscription.md)
 
@@ -144,7 +144,7 @@ Hesaba ait aboneliklerin ücretlerini görüntülemek için Azure portalında [a
 
 Aboneliğin ücretlerini [abonelikler sayfasında](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) veya Azure maliyet analizinde görüntüleyebilirsiniz. Azure maliyet analiziyle ilgili daha fazla bilgi için [Maliyet analiziyle maliyetleri keşfetme ve analiz etme](../costs/quick-acm-cost-analysis.md) konusuna bakın.
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

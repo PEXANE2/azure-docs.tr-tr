@@ -1,5 +1,5 @@
 ---
-title: Tek bir abonelik için Azure ayırma kullanımı
+title: Bireysel abonelik için Azure rezervasyon kullanımı
 description: Kullandıkça öde fiyatlarına tabi bireysel aboneliğiniz için Azure rezervasyonunun nasıl uygulandığını anlamak için kullanım bilgilerinizi okuma hakkında bilgi edinin.
 author: bandersmsft
 manager: yashr
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1404f8626086124aa2c6affcf2d173cef0be7df3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995370"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Kullandıkça öde fiyatlarına tabi bireysel aboneliğiniz için Azure rezervasyon kullanımını anlama
@@ -55,7 +55,7 @@ CSV dosyanızın bu bölümünde, rezervasyonunuzun toplam kullanımı gösteril
 
 1. **Ek Bilgiler** alanındaki **RezervasyonKimliği**, sanal makineye uygulanan rezervasyondur.
 2. **ConsumptionMeter**, sanal makinenin ölçüm kimliğidir.
-3. **Ayırma-temel VM** **Meter alt kategori** satırı, $0. bildiri bölümünü temsil eder. Bu sanal makineyi çalıştırmanın maliyeti zaten rezervasyon tarafından ödenmiştir.
+3. **Ayırma - Temel VM** **Ölçüm Alt Kategorisi** satırı, bildirim bölümünde 0 ABD doları maliyeti temsil eder. Bu sanal makineyi çalıştırmanın maliyeti zaten rezervasyon tarafından ödenmiştir.
 4. **Ölçüm Kimliği**, rezervasyonun ölçüm kimliğidir. Bu ölçümün maliyeti 0 ABD dolarıdır. Bu ölçüm kimliği, rezervasyon indirimi için uygun nitelikte olan tüm sanal makineler için görüntülenir.
 5. Standard_DS1_v2 bir vCPU sanal makinesidir ve sanal makine, Azure Hibrit Avantajı olmadan dağıtılır. Bu nedenle bu ölçüm, Windows yazılımının ek ücretini kapsar. D serisi 1 çekirdekli sanal makineye karşılık gelen ölçümü bulmak için bkz. [Azure Ayrılmış Sanal Makine Örnekleri Windows yazılım maliyetleri](reserved-instance-windows-software-costs.md). Azure Hibrit Avantajı’na sahipseniz bu ek ücret uygulanmaz.
 
@@ -90,7 +90,7 @@ Doğu ABD bölgesinde bir SQL Veritabanı 4. Nesil çalıştırdığınızı ve 
 2. **ConsumptionMeter**, SQL Veritabanı kaynağının ölçüm kimliğidir.
 3. **Ölçüm Kimliği**, rezervasyon ölçümüdür. Bu ölçümün maliyeti 0 ABD dolarıdır. Rezervasyon indirimi için uygun nitelikte olan SQL Veritabanı kaynakları, CSV dosyasında bu ölçüm kimliğini gösterir.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -98,7 +98,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
 - [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../sql-database/sql-database-reserved-capacity.md)
 - [Azure Ayırmalarını yönetme](manage-reserved-vm-instance.md)

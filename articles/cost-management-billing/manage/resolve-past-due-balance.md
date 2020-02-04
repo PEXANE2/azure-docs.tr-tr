@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
 ms.openlocfilehash: 7216af00413b1f8022957ac134f67a5c27b6cc78
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987908"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Azure aboneliğiniz için süresi geçmiş bakiye sorununu çözme
@@ -59,6 +59,6 @@ Hizmet iptal edilir ve kaynaklarınız artık kullanılamaz. Hizmet sonlandırı
 Ödemenizin işlendiğini bildiğiniz halde aboneliğiniz halen devre dışı bırakılmışsa [Azure Desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)’ne başvurun.
 
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

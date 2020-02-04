@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 06/30/2019
 ms.author: banders
 ms.openlocfilehash: af0769ae4e242c86a56ff63d5f7c9ecbe9382b48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995422"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alma
@@ -33,7 +33,7 @@ Market ücretleri kullanım verileriyle birleştirilir. İlk parti kullanım, ma
 
 ## <a name="reservation-charges-in-azure-usage-data"></a>Azure kullanım verilerinde rezervasyon ücretleri
 
-Veriler iki ayrı veri kümesine ayrılmıştır: _gerçek maliyet_ ve _itfası maliyeti_. Bu iki veri kümesi arasındaki farklar şunlardır:
+Veriler iki ayrı veri kümesine bölünür: _Gerçek Maliyet_ ve _Amorti Edilmiş Maliyet_. Bu iki veri kümesi arasındaki farklar şunlardır:
 
 **Gerçek Maliyet** - Aylık faturanızda mutabık kalmak için gereken verileri sağlar. Bu verilerde rezervasyon satın alma maliyetleri ve rezervasyon uygulama ayrıntıları vardır. Bu verilerle, belirli bir günde rezervasyon indirimini hangi aboneliğin, kaynak grubunun veya kaynağın aldığını bilebilirsiniz. Rezervasyon indirimini alan kullanım için EffectivePrice değeri sıfırdır.
 
@@ -65,9 +65,9 @@ Verileri API'yi kullanarak alabilir veya Azure portalından indirebilirsiniz.
 
 Yeni verileri almak için [Kullanım Ayrıntıları API’sini](/rest/api/consumption/usagedetails/list) çağırırsınız. Terminolojiyle ilgili ayrıntılar için bkz. [Kullanım terimleri](../understand/understand-usage.md). Çağrıyı yapan kurumsal anlaşmanın Kuruluş Yöneticisi olmalı ve [EA portalını](https://ea.azure.com) kullanmalıdır. Salt okuma erişimli Kuruluş Yöneticileri de verileri alabilir.
 
-Bu verilerin [Kurumsal müşteriler Için Raporlama API 'lerinde](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)kullanıma sunulmadığını lütfen unutmayın kullanım ayrıntıları.
+Bu verilerin [Kurumsal müşteriler için Raporlama API’leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)’nda sağlanmadığını unutmayın.
 
-Kullanım ayrıntıları API 'sine örnek bir çağrı aşağıda verilmiştir:
+Aşağıda örnek bir Kullanım Ayrıntıları API’si çağrısı verilmiştir:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ Aşağıdaki tabloda verilen ölçüm ve filtre bilgileri yaygın rezervasyon so
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Yeni verileri içeren kullanım CSV dosyasını indirme
 
-EA yöneticisiyseniz yeni kullanım verilerini içeren CSV dosyasını Azure portalından indirebilirsiniz. Bu veriler EA portalından (ea.azure.com) edinilemez, yeni verileri görmek için Azure portal (portal.azure.com) adresinden kullanım dosyasını indirmeniz gerekir.
+EA yöneticisiyseniz yeni kullanım verilerini içeren CSV dosyasını Azure portalından indirebilirsiniz. Bu verilere EA portalından erişilemez (ea.azure.com). Yeni verileri görmek için Azure portalından (portal.azure.com) kullanım dosyasını indirmeniz gerekir.
 
 Azure portalında [Maliyet yönetimi + faturalama](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)'ya gidin.
 
@@ -111,7 +111,7 @@ Rezervasyon satın alma maliyetleri Gerçek Maliyet verilerinde sağlanır. _Cha
 
 ### <a name="get-underutilized-reservation-quantity-and-costs"></a>Kapasitesinin altında kullanılan rezervasyon miktarını ve maliyetlerini alma
 
-_Chargetype_ _= UnusedReservation_için itfası maliyet verileri ve filtresi alın. Günlük kullanılmayan rezervasyon miktarını ve maliyeti alırsınız. Rezervasyon ve rezervasyon siparişi için verileri sırasıyla _ReservationId_ ve _ProductOrderId_ alanlarını kullanarak filtreleyebilirsiniz. Rezervasyon %100 kullanıldıysa kaydın miktarı 0 olur.
+Amorti Edilmiş Maliyet verilerini alın ve _ChargeType_ _= UnusedReservation_ filtresini uygulayın. Günlük kullanılmayan rezervasyon miktarını ve maliyeti alırsınız. Rezervasyon ve rezervasyon siparişi için verileri sırasıyla _ReservationId_ ve _ProductOrderId_ alanlarını kullanarak filtreleyebilirsiniz. Rezervasyon %100 kullanıldıysa kaydın miktarı 0 olur.
 
 ### <a name="amortize-reservation-costs"></a>Rezervasyon maliyetlerini amorti etme
 
@@ -148,9 +148,9 @@ Rezervasyon maliyetleri, [maliyet analizinde](https://aka.ms/costanalysis) kulla
 
 ![Maliyet analizinde amorti edilmiş maliyetin nerede seçileceğini gösteren örnek](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Kullanımın, satın almaların ve para iadelerinin dökümünü görmek için ücret türüne göre gruplandırın; rezervasyon ve isteğe bağlı maliyetlerin dökümü için rezervasyona göre gruplandırın. Gerçek maliyette satın alma işlemleri yaparken göreceğiniz yalnızca bir rezervasyon maliyetlerini hatırlayın, ancak maliyet, en düşük maliyetli bir ücret elde edilirken avantajı kullanan tek tek kaynaklara tahsis edilir. Amorti edilmiş maliyete baktığınızda bir de yeni **UnusedReservation** ücret türünü görürsünüz.
+Kullanımın, satın almaların ve para iadelerinin dökümünü görmek için ücret türüne göre gruplandırın; rezervasyon ve isteğe bağlı maliyetlerin dökümü için rezervasyona göre gruplandırın. Gerçek maliyete baktığınızda göreceğiniz tek rezervasyon maliyetinin satın almalar olduğunu unutmayın. Ayrıca, amorti edilmiş maliyete baktığınızda maliyetler avantajı kullanan ayrı kaynaklara ayrılmış olacaktır. Amorti edilmiş maliyete baktığınızda bir de yeni **UnusedReservation** ücret türünü görürsünüz.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -158,7 +158,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
 - [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../sql-database/sql-database-reserved-capacity.md)
 - [Azure Ayırmalarını yönetme](manage-reserved-vm-instance.md)

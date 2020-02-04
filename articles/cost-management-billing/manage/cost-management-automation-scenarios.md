@@ -14,10 +14,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c9de7d5f7661e4083d3a2f5b53368616d0e6655a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992822"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Faturalama ve maliyet yönetimi için otomasyon senaryoları
@@ -28,21 +28,21 @@ Bu makalede Azure faturalama ve maliyet yönetimi için yaygın senaryolar liste
 
 Maliyetle ilgili ve kullanımla ilgili soru ları yanıtlamak için faturalama ve maliyet yönetimi API'lerini çeşitli senaryolarda kullanabilirsiniz. Yaygın senaryolar genel hatlarıyla şöyledir:
 
-- **Fatura mutabakatı**: Microsoft doğru miktarı mi ücretlendirdim?  Faturam ne kadardır ve bunu kendim hesaplayabilir miyim?
+- **Fatura mutabakatı**: Microsoft beni doğru miktarda mı ücretlendirdi?  Faturam ne kadardır ve bunu kendim hesaplayabilir miyim?
 
-- **Çapraz ücretler**: artık ne kadar ücretlendirildiğimize göre, Kuruluşumun ne kadar ücret ödediğine biliyorum mi?
+- **Çapraz ücretler**: Artık ne kadar ücretlendirildiğimi biliyorum, kuruluşumda kimin ödemesi gerekiyor?
 
-- **Maliyet iyileştirmesi**: ne kadar ücretlendirildiğimizi biliyorum. Azure'a yaptığım harcamadan nasıl daha iyi yararlanabilirim?
+- **Maliyet iyileştirmesi**: Ne kadar ücretlendirildiğimi biliyorum. Azure'a yaptığım harcamadan nasıl daha iyi yararlanabilirim?
 
-- **Maliyet izleme**: zaman içinde Azure 'u ne kadar harcadığımı ve kullandığınızı görmek istiyorum. Eğilimler nelerdir? Daha iyisini nasıl yapabilirim?
+- **Maliyet izleme**: Zaman içinde Azure'a ne kadar harcama yaptığımı ve Azure'ı ne kadar kullandığımı görmek istiyorum. Eğilimler nelerdir? Daha iyisini nasıl yapabilirim?
 
-- **Aylık Azure harcama**: geçerli aydan ne kadar harcama tarihine kadar? Azure harcamamda ve/veya kullanımında herhangi bir değişiklik yapmak gerekiyor mu? Ay boyunca ne zaman Azure tüketimim en yüksek düzeye çıkıyor?
+- **Ay boyunca Azure harcaması**: Geçerli ay içinde bugüne kadar ne kadar harcama yaptım? Azure harcamamda ve/veya kullanımında herhangi bir değişiklik yapmak gerekiyor mu? Ay boyunca ne zaman Azure tüketimim en yüksek düzeye çıkıyor?
 
-- **Uyarılar**: kaynak tabanlı tüketimi veya parasal tabanlı uyarıları nasıl ayarlayabilirim?
+- **Uyarılar**: Kaynak tabanlı tüketimi veya para tabanlı uyarıları nasıl ayarlayabilirim?
 
 ## <a name="scenario-to-api-mapping"></a>Senaryo-API eşlemesi
 
-|         eklentisi        | Fatura mutabakatı    | Çapraz ücretler    | Maliyet iyileştirmesi    | Maliyet izleme    | Ay ortası harcaması    | Uyarılar    |
+|         API        | Fatura mutabakatı    | Çapraz ücretler    | Maliyet iyileştirmesi    | Maliyet izleme    | Ay ortası harcaması    | Uyarılar    |
 |:---------------------------:|:-------------------------:|:----------------:|:--------------------:|:----------------:|:------------------:|:---------:|
 | Bütçeler                     |                           |                  |           X          |                  |                    |     X     |
 | Market Ücretleri                |             X             |         X        |           X          |         X        |          X         |     X     |
@@ -64,43 +64,43 @@ Maliyetle ilgili ve kullanımla ilgili soru ları yanıtlamak için faturalama v
 ### <a name="consumption"></a>Tüketim
 Web Direct ve Enterprise müşterileri tersi belirtilmediği sürece aşağıdaki API'lerin tümünü kullanabilir:
 
--   [Bütçe API 'si](https://docs.microsoft.com/rest/api/consumption/budgets) (*yalnızca kurumsal müşteriler*): kaynaklar, kaynak grupları veya faturalandırma ölçümleri için maliyet veya kullanım bütçeleri oluşturun. Bütçeleri oluştururken, tanımlı bütçe eşiklerini aştığınızda size bildirilmesi için uyarıları yapılandırabilirsiniz. Ayrıca bütçe tutarlarına ulaştığınızda bazı eylemlerin gerçekleştirilmesini de yapılandırabilirsiniz.
+-   [Bütçe API'si](https://docs.microsoft.com/rest/api/consumption/budgets) (*Yalnızca Enterprise müşterileri*): Kaynaklar, kaynak grupları veya faturalama ölçümleri için maliyet veya kullanım bütçeleri oluşturun. Bütçeleri oluştururken, tanımlı bütçe eşiklerini aştığınızda size bildirilmesi için uyarıları yapılandırabilirsiniz. Ayrıca bütçe tutarlarına ulaştığınızda bazı eylemlerin gerçekleştirilmesini de yapılandırabilirsiniz.
 
--   [Market ücretleri API 'si](https://docs.microsoft.com/rest/api/consumption/marketplaces): tüm Azure Marketi kaynaklarında (Azure iş ortağı teklifleri) ücret ve kullanım verilerini alın. Bu verileri kullanarak tüm Market kaynaklarının maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
+-   [Market Ücretleri API'si](https://docs.microsoft.com/rest/api/consumption/marketplaces): Tüm Azure Market kaynakları (Azure iş ortağı teklifleri) ile ilgili ücret ve kullanım verileri alın. Bu verileri kullanarak tüm Market kaynaklarının maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
 
--   [Fiyat listesi API 'si](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*yalnızca kurumsal müşteriler*): tüm ölçümler için özel fiyatlandırma alın. Kuruluşlar bu verileri kullanım ayrıntılarıyla ve market kullanım bilgileriyle birlikte kullanarak, kullanım ve market verileri aracılığıyla maliyetleri hesaplayabilir.
+-   [Fiyat Listesi API'si](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Yalnızca Enterprise müşterileri*): Tüm ölçümler için özel fiyatlandırmayı alın. Kuruluşlar bu verileri kullanım ayrıntılarıyla ve market kullanım bilgileriyle birlikte kullanarak, kullanım ve market verileri aracılığıyla maliyetleri hesaplayabilir.
 
--   [Ayırma önerileri API 'si](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): ayrılmış VM örnekleri satın alma önerilerini alın. Öneriler beklenen maliyet tasarruflarını ve satın alma tutarlarını analiz etmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
+-   [Rezervasyon Önerileri API'si](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): Ayrılmış VM Örnekleri satın alma önerileri alın. Öneriler beklenen maliyet tasarruflarını ve satın alma tutarlarını analiz etmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
 
--   [Ayırma ayrıntıları API 'si](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): daha önce satın alınan VM rezervasyonları hakkında, ne kadar tüketim ayrılacağını ve ne kadar kullanıldığını öğrenin. Verileri VM ayrıntı düzeyinde görebilirsiniz. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
+-   [Rezervasyon Ayrıntıları API'si](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): Daha önce satın alınmış VM rezervasyonları hakkında, ne kadar tüketimin ayrıldığı ve ne kadarının kullanıldığı gibi bilgileri görün. Verileri VM ayrıntı düzeyinde görebilirsiniz. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
 
--   [Ayırma özetleri API 'si](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): toplama için ne kadar tüketim ayrılacağını ve ne kadar harcandığını belirten, kuruluşunuzun satın aldığı VM ayırmaları hakkında toplanmış bilgilere bakın. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
+-   [Rezervasyon Özetleri API'si](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): Kuruluşunuzun satın aldığı VM rezervasyonları hakkında, ne kadar tüketimin ayrıldığı ve toplamda ne kadarının kullanıldığı gibi toplama bilgilerini görün. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
 
--   [Kullanım ayrıntıları API 'si](https://docs.microsoft.com/rest/api/consumption/usagedetails): Microsoft 'un tüm Azure kaynakları hakkında ücret ve kullanım bilgileri alın. Bilgiler şu anda ölçüm başına günde bir kez gösterilen kullanım ayrıntısı kayıtları biçimindedir. Bilgileri kullanarak tüm kaynakların maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
+-   [Kullanım Ayrıntıları API'si](https://docs.microsoft.com/rest/api/consumption/usagedetails): Microsoft'un sağladığı tüm Azure kaynaklarıyla ilgili ücret ve kullanım bilgilerini alın. Bilgiler şu anda ölçüm başına günde bir kez gösterilen kullanım ayrıntısı kayıtları biçimindedir. Bilgileri kullanarak tüm kaynakların maliyetlerini toplayabilir veya belirli kaynakların maliyet/kullanım durumunu araştırabilirsiniz.
 
--   [Ratecard API 'si](/previous-versions/azure/reference/mt219005(v=azure.100)): Web doğrudan müşterisiyseniz ölçüm ücretleri alın. Ardından döndürülen bilgileri kaynak kullanım bilgilerinizle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
+-   [RateCard API'si](/previous-versions/azure/reference/mt219005(v=azure.100)): Web Direct müşterisiyseniz ölçüm ücretlerini alın. Ardından döndürülen bilgileri kaynak kullanım bilgilerinizle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
 
--   [Derecelendirilmemiş kullanım API 'si](/previous-versions/azure/reference/mt219003(v=azure.100)): Azure 'dan önce herhangi bir ölçüm/ücretlendirme yapmadan önce ham kullanım bilgilerini alın.
+-   [Derecelendirilmemiş Kullanım API'si](/previous-versions/azure/reference/mt219003(v=azure.100)): Azure herhangi bir ölçüm/ücretlendirme yapmadan önce ham kullanım bilgilerini alın.
 
 ### <a name="billing"></a>Faturalandırma
--   [Faturalandırma dönemleri API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Bu döneme ait fatura kimlikleriyle birlikte analiz edilecek bir fatura dönemi belirlenir. Fatura kimliklerini Faturalar API'siyle kullanabilirsiniz.
+-   [Fatura Dönemleri API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Analiz edilecek faturalama dönemini ve bu döneme ait fatura kimliklerini belirleyin. Fatura kimliklerini Faturalar API'siyle kullanabilirsiniz.
 
--   [Faturalar API 'si](/rest/api/billing/2019-10-01-preview/invoices): fatura dönemı için PDF biçimindeki indirme URL 'sini alın.
+-   [Faturalar API'si](/rest/api/billing/2019-10-01-preview/invoices): Faturalama dönemine ait PDF biçiminde bir fatura için indirme URL'sini alın.
 
 ### <a name="enterprise-consumption"></a>Kuruluş tüketimi
 Aşağıdaki API'ler yalnızca Kuruluş içindir:
 
--   [Bakiye Özeti API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): bakiyeleri, yeni satın alımları, Azure Marketi hizmeti ücretleri, ayarlamaları ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini alın. Bu bilgileri geçerli faturalama dönemi veya geçmişe ait bir dönem için alabilirsiniz. Kuruluşlar el ile hesaplanan özet ücretleriyle karşılaştırmak için bu verileri kullanabilir. Bu API kaynağa özgü bilgiler veya maliyetlerin toplam görünümünü sağlamaz.
+-   [Bakiye Özeti API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Bakiyeler, yeni satın almalar, Azure Market hizmeti ücretleri, düzeltmeler ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini alın. Bu bilgileri geçerli faturalama dönemi veya geçmişe ait bir dönem için alabilirsiniz. Kuruluşlar el ile hesaplanan özet ücretleriyle karşılaştırmak için bu verileri kullanabilir. Bu API kaynağa özgü bilgiler veya maliyetlerin toplam görünümünü sağlamaz.
 
--   [Kullanım ayrıntıları API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): geçerli ay, belirli bir fatura dönemi veya özel bir tarih dönemi için Azure kullanımı (Microsoft tekliflerinden) hakkında bilgi alın. Kuruluşlar bu verileri kullanarak fiyat ve tüketim temelinde aylık faturaları el ile hesaplayabilir. Kuruluşlar, organizasyonlar genelindeki maliyetlere atıfta bulunmak için bölüm/kuruluş bilgilerini de kullanabilir. Veriler kaynağa özgü kullanım/maliyet görünümü sağlar.
+-   [Kullanım Ayrıntıları API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Geçerli ay, belirli bir faturalama dönemi veya özel bir tarih aralığı için Azure kullanımı (Microsoft tekliflerinin kullanımı) hakkındaki bilgileri alabilirsiniz. Kuruluşlar bu verileri kullanarak fiyat ve tüketim temelinde aylık faturaları el ile hesaplayabilir. Kuruluşlar, organizasyonlar genelindeki maliyetlere atıfta bulunmak için bölüm/kuruluş bilgilerini de kullanabilir. Veriler kaynağa özgü kullanım/maliyet görünümü sağlar.
 
--   [Market mağaza ücreti API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): geçerli ay, belirli bir fatura dönemi veya özel bir tarih dönemi için Azure kullanımı (iş ortağı teklifleri) hakkında bilgi alın. Kuruluşlar bu verileri kullanarak fiyat ve tüketim temelinde aylık faturaları el ile hesaplayabilir. Kuruluşlar, organizasyonlar genelindeki maliyetlere atıfta bulunmak için bölüm/kuruluş bilgilerini de kullanabilir. API kaynağa özgü kullanım/maliyet görünümü sağlar.
+-   [Market Mağazası Ücreti API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Geçerli ay, belirli bir faturalama dönemi veya özel bir tarih aralığı için Azure kullanımı (iş ortağı tekliflerinin kullanımı) hakkındaki bilgileri alabilirsiniz. Kuruluşlar bu verileri kullanarak fiyat ve tüketim temelinde aylık faturaları el ile hesaplayabilir. Kuruluşlar, organizasyonlar genelindeki maliyetlere atıfta bulunmak için bölüm/kuruluş bilgilerini de kullanabilir. API kaynağa özgü kullanım/maliyet görünümü sağlar.
 
--   [Fiyat listesi API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): belirtilen kayıt ve fatura dönemi için her bir ölçüm için uygun ücreti alın. Bu fiyat bilgilerini kullanım ayrıntıları ve market kullanım bilgileriyle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
+-   [Fiyat Listesi API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): Belirtilen kayıt ve faturalama dönemi için her ölçümün geçerli fiyatını alın. Bu fiyat bilgilerini kullanım ayrıntıları ve market kullanım bilgileriyle birlikte kullanarak beklenen faturayı el ile hesaplayabilirsiniz.
 
--   [Faturalandırma dönemleri API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Faturalandırma dönemlerinin bir listesini alın. API Ayrıca, faturalandırma dönemine ait olan dört kurumsal API verisi kümesi için API yolunu işaret eden bir özellik sağlar: BalanceSummary, UsageDetails, Market charges ve fiyat listesi.
+-   [Fatura Dönemleri API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Faturalama dönemlerinin listesini alın. API size faturalama dönemine ait dört Kurumsal API veri kümesi için API yoluna işaret eden bir de özellik verir: BalanceSummary, UsageDetails, Marketplace Charges ve PriceSheet.
 
--   [Ayrılmış örnek önerileri API 'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): 7 güne, 30 güne veya 60 güne sahip sanal makine kullanımına bakın ve tek ve paylaşılan satın alma önerileri alın. Bu API'yi kullanarak beklenen maliyet tasarruflarını ve önerilen satın alma tutarlarını analiz edebilirsiniz. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
+-   [Ayrılmış Örnek Önerileri API'si](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): 7 günlük, 30 günlük veya 60 günlük sanal makine kullanımına bakın ve Tek veya Paylaşılan Satın Alma önerileri alın. Bu API'yi kullanarak beklenen maliyet tasarruflarını ve önerilen satın alma tutarlarını analiz edebilirsiniz. Daha fazla bilgi için bkz. [Azure rezervasyon otomasyonu API’leri](../reservations/reservation-apis.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

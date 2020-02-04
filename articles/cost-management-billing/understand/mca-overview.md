@@ -1,5 +1,5 @@
 ---
-title: Microsoft Müşteri Sözleşmesi faturalandırma-Azure ile çalışmaya başlama
+title: Microsoft Müşteri Sözleşmesi faturalamasını kullanmaya başlama
 description: Microsoft Müşteri Sözleşmesi ödeme hesabınızı anlama
 author: bandersmsft
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995123"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft Müşteri Sözleşmesi ödeme hesabınızı kullanmaya başlama
@@ -65,7 +65,7 @@ Faturalama profili kullanarak Azure Market ve Rezervasyon satın almalarını de
 
 Azure planları, Azure abonelikleri için fiyatlandırmayı ve hizmet düzeyi sözleşmelerini belirler. Faturalama profili oluşturduğunuzda bunlar otomatik olarak etkinleştirilir. Faturalama profiliyle ilişkili tüm fatura bölümleri bu planları kullanabilir. Fatura bölümüne erişimi olan kullanıcılar, Azure abonelikleri oluşturmak için planları kullanır. Aşağıdaki Azure planları, Microsoft Müşteri Sözleşmesi için ödeme hesaplarında desteklenir:
 
-| Plan             | Tanım  |
+| Planlama             | Tanım  |
 |------------------|-------------|
 |Microsoft Azure Planı   | Kullanıcıların herhangi bir iş yükünü çalıştırabilen abonelikler oluşturmasına olanak sağlar.  |
 |Geliştirme ve Test için Microsoft Azure Planı | Visual Studio abonelerinin, geliştirme veya test iş yükleri için kısıtlanmış abonelikler oluşturmasına olanak sağlar. Bu abonelikler, daha düşük fiyatlar ve Azure portalındaki özel sanal makine görüntülerine erişim gibi avantajlar elde eder. |
@@ -81,7 +81,7 @@ Fatura bölümündeki roller, kimlerin Azure abonelikleri oluşturduğunu denetl
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 
 Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

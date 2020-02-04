@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995734"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks önceden satın alma indiriminin uygulanması
@@ -31,7 +31,7 @@ Databricks önceden satın alımı, tüm Databricks iş yükleri ve katmanları 
 | --- | --- | --- |
 | Veri Analizi | 0,4 | 0,55 |
 | Veri Mühendisliği | 0,15 | 0,30 |
-| Veri Mühendisliği Hafif Düzey | 0,07 | 0,22 |
+| Veri Mühendisliği Hafif | 0,07 | 0,22 |
 
 Örneğin, bir Veri Analizi - Standart katman miktarı kullanıldığında, önceden satın alınan Databricks işleme birimleri, 0,4 birim düşülür. Bir Veri Mühendisliği Hafif - Standart katman miktarı kullanıldığında, önceden satın alınan Databricks işleme birimleri, 0,07 birim düşülür
 
@@ -43,7 +43,7 @@ Kullanılacak DBCU planınızı belirlemek için Azure portalı > **Rezervasyonl
 
 Databricks kullanımınıza önceden satın alma indirimi uygulandığında, iste bağlı ücretler kullanım verilerinde sıfır olarak görüntülenir. Rezervasyon maliyetleri ve kullanımı hakkında daha fazla bilgi için bkz. [Kurumsal Anlaşma rezervasyon maliyetleri ve kullanım bilgilerini alma](understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -52,7 +52,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 - Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](manage-reserved-vm-instance.md).
 - Para tasarrufu sağlamak için Azure Databricks’i önceden satın alma hakkında daha fazla bilgi edinmek için bkz. [Önceden satın alma ile Azure Databricks maliyetlerini iyileştirme](prepay-databricks-reserved-capacity.md).
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
   - [Azure’da Rezervasyonları Yönetme](manage-reserved-vm-instance.md)
   - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
   - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)

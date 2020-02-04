@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: e6858d51eec1bbcb100f71418337d74d19d6db5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994733"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure faturanızdaki terimleri anlayın
@@ -44,7 +44,7 @@ Faturanın hesap bilgileri bölümü, ilk sayfanın en üstünde bulunur ve prof
 
 ![Faturanın hesap bilgileri bölümü](./media/understand-invoice/account-information-section.png)
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Müşteri Satınalma Siparişi No. |İzleme için atadığınız isteğe bağlı bir satınalma siparişi numarası |
 | Fatura No. |İzleme amacıyla kullanılan, Microsoft tarafından oluşturulan benzersiz bir fatura numarası |
@@ -65,16 +65,16 @@ Abonelik adı (“Üretim Depolama Alanı”), bu fatura için aboneliğin adıd
 #### <a name="understand-the-previous-charges"></a>Önceki ücretleri anlama
 Faturanın önceki bakiye, ödemeler ve kalan bakiye bölümünde son faturalama döneminizden bu yana yapılan işlemler özetlenir.
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Önceki bakiye |Son faturalama döneminizden kalan ödenmemiş toplam tutar |
 | Ödemeler |Son faturalama döneminize uygulanan toplam ödemeler ve krediler |
-| Borç-alacak bakiyeleri (önceki fatura döngüsünden) |Son faturalama döneminizden bu yana hesabınızdaki krediler veya kalan bakiye |
+| Borç-alacak bakiyesi (önceki fatura döngüsünden) |Son faturalama döneminizden bu yana hesabınızdaki krediler veya kalan bakiye |
 
 #### <a name="understand-the-current-charges"></a>Geçerli ücretleri anlama
 Faturanın Geçerli Ücretler bölümünde, geçerli faturalama dönemi için aylık ücretlerinizle ilgili ayrıntılar gösterilir.
 
-| Sözleşme Dönemi | Açıklama |
+| Süre | Açıklama |
 | --- | --- |
 | Kullanım ücretleri |Kullanım ücretleri, geçerli faturalama dönemi için bir abonelikteki toplam aylık ücretlerdir|
 | İndirimler |Geçerli faturalama döneminize uygulanan hizmet indirimleri|
@@ -84,7 +84,7 @@ Faturanın Geçerli Ücretler bölümünde, geçerli faturalama dönemi için ay
 
 Aşağıdaki tabloda, faturanızın ikinci sayfasında gösterilen alıcı ve ödeme yönergeleri açıklanmaktadır.
 
-| Sözleşme Dönemi |Açıklama |
+| Süre |Açıklama |
 | --- | --- |
 | Kime Satıldı |Hesapta bulunan profil adresi. <br/><br/>Adresi değiştirmeniz gerekirse bkz. [İletişim e-postası, adres ve telefon numarası gibi Azure hesabınızın profil bilgilerini değiştirme](../manage/change-azure-account-profile.md).|
 | Ödeme yönergeleri |Ödeme yöntemine (örneğin, kredi kartı veya fatura ile) bağlı olarak ödeme yapma yönergeleri. |
@@ -97,16 +97,16 @@ Faturanın Kullanım ücretleri bölümünde, ücretlerinizin ölçüm düzeyi b
 
 Aşağıdaki tabloda, faturanızda gösterilen kullanım ücretleri sütun üst bilgileri açıklanmaktadır.
 
-| Sözleşme Dönemi |Açıklama |
+| Süre |Açıklama |
 | --- | --- |
-| Ad |Kullanım için en üst düzey hizmeti belirtir |
+| Adı |Kullanım için en üst düzey hizmeti belirtir |
 | Tür |Fiyatı etkileyebilecek Azure hizmet türünü tanımlar |
 | Kaynak |Kullanılmakta olan ölçüm için ölçü birimini belirtir |
 | Bölge |Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir |
-| Tüketilen |Faturalama dönemi boyunca kullanılan ölçüm miktarı |
-| Var |Geçerli faturalama döneminize ücretsiz olarak dahil edilen ölçüm miktarı |
+| Kullanılan |Faturalama dönemi boyunca kullanılan ölçüm miktarı |
+| Dahil |Geçerli faturalama döneminize ücretsiz olarak dahil edilen ölçüm miktarı |
 | Faturalanabilir |Kullanılan Miktar ve Dahil Edilen Miktar arasındaki farkı gösterir. Bu miktar için faturalandırılırsınız. Teklife hiçbir miktarın dahil olmadığı Kullandıkça Öde teklifleri için bu toplam, Kullanılan miktarla aynıdır |
-| Kur |Faturalanabilen birim başına ücretlendirildiğiniz fiyat |
+| Fiyat |Faturalanabilen birim başına ücretlendirildiğiniz fiyat |
 | Değer |Fazla Kullanım Miktarı sütununun Fiyat sütunuyla çarpılmasıyla elde edilen sonucu gösterir. Kullanılan Miktar, Dahil Edilen Miktarı aşmazsa bu sütunda bir ücret yoktur. |
 | Ara Toplam |Bu faturalama dönemi için tüm vergi öncesi ücretlerinizin toplamı |
 | Genel Toplam |Bu faturalama dönemi için tüm vergi sonrası ücretlerinizin toplamı |
@@ -114,6 +114,6 @@ Aşağıdaki tabloda, faturanızda gösterilen kullanım ücretleri sütun üst 
 ## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Faturamdaki ücretlerin doğru olduğundan nasıl emin olabilirim?
 Faturanızda daha fazla ayrıntısına ulaşmak istediğiniz bir ücret varsa bkz. [Microsoft Azure için faturanızı anlama](review-individual-bill.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995565"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Rezervasyon indiriminin Azure Cosmos DB’ye nasıl uygulandığını anlama
@@ -46,7 +46,7 @@ Rezervasyon indirimi Azure Cosmos DB işleme hızı maliyetlerine saat bazında 
 |Azure Cosmos DB - 100 RU/sn/saat - AV Batı|    AV Batı     |      1   |
 |Azure Cosmos DB - 100 RU/sn/saat - KR Orta|   KR Orta    |       1  |
 |Azure Cosmos DB - 100 RU/sn/saat - UK Güney|   UK Güney      |     1    |
-|Azure Cosmos DB - 100 RU/sn/saat - UK Batı|   UK, Batı      |    1     |
+|Azure Cosmos DB - 100 RU/sn/saat - UK Batı|   UK Batı      |    1     |
 |Azure Cosmos DB - 100 RU/sn/saat - UK Kuzey |   UK Kuzey    |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - UK Güney 2|   UK Güney 2      |     1    |
 |Azure Cosmos DB - 100 RU/sn/saat - ABD Doğu 2|  ABD Doğu 2     |     1    |
@@ -76,7 +76,7 @@ Rezervasyon indirimi Azure Cosmos DB işleme hızı maliyetlerine saat bazında 
 
 Rezervasyon için aşağıdaki gereksinimleri göz önünde bulundurun:
 
-* Gerekli aktarım hızı: 50.000 RU/s  
+* Gerekli işleme hızı: 50.000 RU/sn  
 * Kullanılan bölgeler: 2
 
 Bu durumda bu iki bölgede isteğe bağlı ücretlerinizin toplamı 100 RU/sn ölçümü için 500 miktarında olur. Toplam RU/sn tüketimi saat başı 100.000’dir.
@@ -85,7 +85,7 @@ Bu durumda bu iki bölgede isteğe bağlı ücretlerinizin toplamı 100 RU/sn ö
 
 Örneğin, ABD Orta Kuzey ve ABD Batı bölgelerine Azure Cosmos DB dağıtmanız gerektiğini varsayalım. Her bölgenin işleme hızı tüketimi 50.000 RU/sn'dir. 100.000 RU/sn’lik bir rezervasyon alımı, isteğe bağlı ücretlerinizi tamamen dengeleyecektir.
 
-Rezervasyonun kapsadığı indirim şu şekilde hesaplanır: işleme hızı tüketimi * bölgenin_rezervasyon_indirimi_oranı. ABD Orta Kuzey ve ABD Batı bölgelerinin rezervasyon indirimi oranı 1’dir. Bu nedenle indirimli toplam RU/sn 100.000 olur. Bu değer şu şekilde hesaplanır: 50.000 * 1 + 50.000 * 1 = 100.000 RU/s. Normal kullandıkça öde fiyatlarıyla ek ücret ödemeniz gerekmez.
+Rezervasyonun kapsadığı indirim şu şekilde hesaplanır: işleme hızı tüketimi * bölgenin_rezervasyon_indirimi_oranı. ABD Orta Kuzey ve ABD Batı bölgelerinin rezervasyon indirimi oranı 1’dir. Bu nedenle indirimli toplam RU/sn 100.000 olur. Bu değer şu şekilde hesaplanır: 50.000 * 1 + 50.000 * 1 = 100.000 RU/sn. Normal kullandıkça öde fiyatlarıyla ek ücret ödemeniz gerekmez.
 
 |Ölçüm açıklaması | Bölge |İşleme hızı tüketimi (RU/sn) |RU/sn’ye uygulanan rezervasyon indirimi |
 |---------|---------|---------|---------|
@@ -101,15 +101,15 @@ Rezervasyonun kapsadığı indirim şu şekilde hesaplanır: işleme hızı tük
 |Azure Cosmos DB - 100 RU/sn/saat - AU Orta 2  |  AU Orta 2   |  50.000  |  50.000   |
 |Azure Cosmos DB - 100 RU/sn/saat - FR Güney  |  FR Güney   |  50.000 |  15.384  |
 
-AU Orta 2 bölgesindeki 50.000 birim kullanımı, faturalandırılabilir (veya normalleştirilmiş) 75.000 RU/sn’lik kullanıma karşılık gelir. Bu değer şu şekilde hesaplanır: işleme hızı tüketimi * o_bölgenin_rezervasyon_indirimi. Hesaplama, 75.000 RU/sn’lik faturalandırılabilir veya normalleştirilmiş kullanıma eşittir. Bu değer şu şekilde hesaplanır: 50.000 * 1,5 = 75.000 RU/s.
+AU Orta 2 bölgesindeki 50.000 birim kullanımı, faturalandırılabilir (veya normalleştirilmiş) 75.000 RU/sn’lik kullanıma karşılık gelir. Bu değer şu şekilde hesaplanır: işleme hızı tüketimi * o_bölgenin_rezervasyon_indirimi. Hesaplama, 75.000 RU/sn’lik faturalandırılabilir veya normalleştirilmiş kullanıma eşittir. Bu değer şu şekilde hesaplanır: 50.000 * 1,5 = 75.000 RU/sn.
 
-100.000 RU/sn’lik rezervasyon alımı, AU Orta 2’de 75.000 RU/sn’yi dengeler. FR Güney bölgesine 25.000 RU/sn bırakır. Geri kalan 25.000 RU/sn’nin 15.384 RU/sn’si FR Güney bölgesine rezervasyon indirimi olarak uygulanır. İndirim değeri şu şekilde hesaplanır: 25.000/1,625 = 15.384 RU/s. FR Güney bölgesindeki geri kalan 34.616 RU/sn normal kullandıkça öde fiyatlarına göre ücretlendirilir.
+100.000 RU/sn’lik rezervasyon alımı, AU Orta 2’de 75.000 RU/sn’yi dengeler. FR Güney bölgesine 25.000 RU/sn bırakır. Geri kalan 25.000 RU/sn’nin 15.384 RU/sn’si FR Güney bölgesine rezervasyon indirimi olarak uygulanır. İndirim değeri şu şekilde hesaplanır: 25.000 / 1,625 = 15.384 RU/sn. FR Güney bölgesindeki geri kalan 34.616 RU/sn normal kullandıkça öde fiyatlarına göre ücretlendirilir.
 
 Azure faturama sistemi, rezervasyon faturalama avantajını işlenen ve rezervasyon yapılandırmasıyla eşleşen ilk örneğe atayacaktır. Örneğin, bu durumda AU Orta 2 bölgesine atanır.
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulanmasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

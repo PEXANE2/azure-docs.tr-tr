@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991925"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
@@ -28,11 +28,11 @@ Microsoft iş ortakları, müşterilerin Microsoft ürünlerini kullanarak iş v
 
 Siz iş ortağı kimliğinizi bağlamadan önce müşteriniz aşağıdaki seçeneklerden birini kullanarak Azure kaynaklarına erişmenizi sağlamalıdır:
 
-- **Konuk Kullanıcı**: müşteriniz sizi Konuk Kullanıcı olarak ekleyebilir ve rol tabanlı erişim denetımı (RBAC) rollerini atayabilir. Daha fazla bilgi için bkz. [Başka bir dizinden konuk kullanıcılar ekleme](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Konuk kullanıcı**: Müşteriniz, sizi konuk kullanıcı olarak ekleyip rol tabanlı erişim denetimi (RBAC) rolleri atayabilir. Daha fazla bilgi için bkz. [Başka bir dizinden konuk kullanıcılar ekleme](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Dizin hesabı**: müşteriniz sizin için kendi dizininizde bir kullanıcı hesabı oluşturabilir ve HERHANGI bir RBAC rolü atayabilir.
+- **Dizin hesabı**: Müşteriniz, kendi dizininde sizin için bir kullanıcı hesabı oluşturabilir ve RBAC rolü atayabilir.
 
-- **Hizmet sorumlusu**: müşteriniz, kuruluşunuzda kendi dizinine bir uygulama veya betik ekleyebilir ve HERHANGI bir RBAC rolü atayabilir. Uygulamanın veya betiğin kimliği, hizmet sorumlusu olarak bilinir.
+- **Hizmet sorumlusu**: Müşteriniz, kendi dizininde kuruluşunuzdan bir uygulama veya betik ekleyebilir ve RBAC rolü atayabilir. Uygulamanın veya betiğin kimliği, hizmet sorumlusu olarak bilinir.
 
 ## <a name="link-to-a-partner-id"></a>İş ortağı kimliğine bağlantı
 
