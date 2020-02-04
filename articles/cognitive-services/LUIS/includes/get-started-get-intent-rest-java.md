@@ -6,24 +6,37 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a967fdb4b9c742a0ac7f372e5cd7eeb99171a906
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414504"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966704"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
 * [Visual Studio Code](https://code.visualstudio.com/) veya en sevdiğiniz IDE
 * Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS anahtarını alma
+## <a name="create-luis-runtime-key-for-predictions"></a>Tahminler için LUSıS çalışma zamanı anahtarı oluşturma
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
+1. Çalışma zamanı anahtarı için tüm gerekli ayarları girin:
+
+    |Ayar|Değer|
+    |--|--|
+    |Ad|İstenen ad (2-64 karakter)|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
+
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Yapılandırılmış `endpoint` ve bir `key`toplayın.
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
@@ -47,70 +60,72 @@ ms.locfileid: "74414504"
     import org.apache.http.client.utils.URIBuilder;
     import org.apache.http.impl.client.HttpClients;
     import org.apache.http.util.EntityUtils;
-    
+
     public class Predict {
-    
-        public static void main(String[] args) 
+
+        public static void main(String[] args)
         {
             HttpClient httpclient = HttpClients.createDefault();
-    
+
             try
             {
-    
+
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
-                
-                // Add your endpoint key 
+
+                // Add your endpoint key
                 String Key = "YOUR-KEY";
-    
-                // Add your endpoint, example is westus.api.cognitive.microsoft.com
+
+                // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
                 String Endpoint = "YOUR-ENDPOINT";
-    
+
                 String Utterance = "turn on all lights";
-    
+
                 // Begin endpoint URL string building
                 URIBuilder endpointURLbuilder = new URIBuilder("https://" + Endpoint + "/luis/prediction/v3.0/apps/" + AppId + "/slots/production/predict?");
-    
+
                 // query string params
                 endpointURLbuilder.setParameter("query", Utterance);
                 endpointURLbuilder.setParameter("subscription-key", Key);
                 endpointURLbuilder.setParameter("show-all-intents", "true");
                 endpointURLbuilder.setParameter("verbose", "true");
-    
+
                 // create URL from string
                 URI endpointURL = endpointURLbuilder.build();
-    
+
                 // create HTTP object from URL
                 HttpGet request = new HttpGet(endpointURL);
-    
+
                 // access LUIS endpoint - analyze text
                 HttpResponse response = httpclient.execute(request);
-    
+
                 // get response
                 HttpEntity entity = response.getEntity();
-    
-    
-                if (entity != null) 
+
+
+                if (entity != null)
                 {
                     System.out.println(EntityUtils.toString(entity));
                 }
             }
-    
+
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
             }
-        }   
-    }    
+        }
+    }
     ```
 
-1. Aşağıdaki değerleri değiştirin:
+1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin anahtarınızla ve uç noktanızla değiştirin.
 
-    * başlangıç anahtarınızla `YOUR-KEY`
-    * uç noktanızla `YOUR-ENDPOINT`. Örneğin, `westus2.api.cognitive.microsoft.com`.
+    |Bilgi|Amaç|
+    |--|--|
+    |`YOUR-KEY`|32 karakter tahmini anahtarınız.|
+    |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Komut satırından Java programını derleyin: 
+1. Komut satırından Java programını derleyin:
 
     ```console
     javac -cp ":lib/*" Predict.java
@@ -128,7 +143,7 @@ ms.locfileid: "74414504"
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Okunabilirlik için biçimlendirilen JSON yanıtı: 
+    Okunabilirlik için biçimlendirilen JSON yanıtı:
 
     ```JSON
     {
@@ -171,13 +186,9 @@ ms.locfileid: "74414504"
     }
     ```
 
-## <a name="luis-keys"></a>LUIS anahtarları
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

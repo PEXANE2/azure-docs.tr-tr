@@ -6,24 +6,37 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 37249cc560d4493c34dd4be6139de03f9c152a08
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 35bcf822b97d5e4028ec99c417ec1f54952350a4
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414605"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966703"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.6](https://www.python.org/downloads/) veya üzeri.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS anahtarını alma
+## <a name="create-luis-runtime-key-for-predictions"></a>Tahminler için LUSıS çalışma zamanı anahtarı oluşturma
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
+1. Çalışma zamanı anahtarı için tüm gerekli ayarları girin:
+
+    |Ayar|Değer|
+    |--|--|
+    |Ad|İstenen ad (2-64 karakter)|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
+
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Yapılandırılmış `endpoint` ve bir `key`toplayın.
 
 ## <a name="get-intent-from-the-prediction-endpoint"></a>Tahmin uç noktasından amaç al
 
@@ -34,17 +47,17 @@ ms.locfileid: "74414605"
     ```python
     ########### Python 3.6 #############
     import requests
-    
+
     try:
-    
+
         key = 'YOUR-KEY'
-        endpoint = 'YOUR-ENDPOINT' # such as 'westus2.api.cognitive.microsoft.com' 
+        endpoint = 'YOUR-ENDPOINT' # such as 'your-resource-name.api.cognitive.microsoft.com'
         appId = 'df67dcdb-c37d-46af-88e1-8b97951ca1c2'
         utterance = 'turn on all lights'
-    
+
         headers = {
         }
-    
+
         params ={
             'query': utterance,
             'timezoneOffset': '0',
@@ -54,18 +67,20 @@ ms.locfileid: "74414605"
             'staging': 'false',
             'subscription-key': key
         }
-    
+
         r = requests.get(f'https://{endpoint}/luis/prediction/v3.0/apps/{appId}/slots/production/predict',headers=headers, params=params)
         print(r.json())
-    
+
     except Exception as e:
         print(f'{e}')
     ```
 
-1. Aşağıdaki değerleri değiştirin:
+1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin anahtarınızla ve uç noktanızla değiştirin.
 
-    * başlangıç anahtarınızla `YOUR-KEY`.
-    * uç noktanızla `YOUR-ENDPOINT`. Örneğin, `westus2.api.cognitive.microsoft.com`.
+    |Bilgi|Amaç|
+    |--|--|
+    |`YOUR-KEY`|32 karakter tahmini anahtarınız.|
+    |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. `requests` bağımlılığını yükler. Bu, HTTP isteklerini yapmak için kullanılır:
 
@@ -77,7 +92,7 @@ ms.locfileid: "74414605"
 
     ```console
     python predict.py
-    ``` 
+    ```
 
 1. JSON olarak döndürülen tahmin yanıtını gözden geçirin:
 
@@ -85,7 +100,7 @@ ms.locfileid: "74414605"
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Okunabilirlik için biçimlendirilen JSON yanıtı aşağıda verilmiştir: 
+    Okunabilirlik için biçimlendirilen JSON yanıtı aşağıda verilmiştir:
 
     ```JSON
     {
@@ -128,13 +143,9 @@ ms.locfileid: "74414605"
     }
     ```
 
-## <a name="luis-keys"></a>LUIS anahtarları
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Linux üzerinde Azure portal bir işlev uygulaması oluşturma
 description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İşlevinizi oluşturma hakkında bilgi edinin.
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: 7689b24a4f9bf17d495917bbf4078d6e5fe4fcff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971456"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963844"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service planında Linux üzerinde bir işlev uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında otu
 
 Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, işlev kodunuzun yürütülmesine yönelik bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanızı sağlar. Bu makalede, işlev uygulamanızı oluştururken bir App Service planı oluşturacaksınız.
 
-1. Azure portalın sol üst köşesinde bulunan **Kaynak oluştur** düğmesini seçip **İşlem** > **İşlev Uygulaması**’nı seçin.
+1. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem** > **işlev uygulaması**' yı seçin.
 
     ![Azure portalında işlev uygulaması oluşturma](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -42,9 +42,9 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
     | **OS** | Linux | İşlev uygulaması Linux üzerinde çalışır. |
     | **Yayımla** | Kodlayın | **Çalışma zamanı yığınınızın** varsayılan Linux kapsayıcısı kullanılır. İhtiyacınız olan tek şey, işlev uygulaması proje kodsundır. Başka bir seçenek de özel bir [Docker görüntüsü](functions-create-function-linux-custom-image.md)yayımlamaktır. |
     | **[Barındırma planı](functions-scale.md)** | App Service planı | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. App Service bir planda çalıştırdığınızda, [işlev uygulamanızın ölçeklendirmesini](functions-scale.md)kontrol edebilirsiniz.  |
-    | **App Service planı/Konum** | Plan oluştur | **Yeni oluştur** ' a tıklayın ve bir **App Service plan** adı sağlayın. Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir **konum** seçin. İstediğiniz **[fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/app-service/linux/)** seçin. <br/>Aynı App Service planında hem Linux hem de Windows işlev uygulamalarını çalıştıramazsınız. |
+    | **Plan/konum App Service** | Plan oluştur | **Yeni oluştur** ' a tıklayın ve bir **App Service plan** adı sağlayın. Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir **konum** seçin. İstediğiniz **[fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/app-service/linux/)** seçin. <br/>Aynı App Service planında hem Linux hem de Windows işlev uygulamalarını çalıştıramazsınız. |
     | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
-    | **[Depolama](../storage/common/storage-account-create.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Dilerseniz [depolama hesabı gereksinimlerini](functions-scale.md#storage-account-requirements) karşılayan mevcut bir hesap da kullanabilirsiniz. |
+    | **[Depolama](../storage/common/storage-account-create.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Dilerseniz [depolama hesabı gereksinimlerini](storage-considerations.md#storage-account-requirements) karşılayan mevcut bir hesap da kullanabilirsiniz. |
     | **[Application Insights](functions-monitoring.md)** | Etkin | Application Insights varsayılan olarak devre dışıdır. Application Insights tümleştirmesinin etkinleştirilmesini ve App Service planı konumunuz yakınında bir barındırma konumu seçmenize önerilir. Bunu daha sonra yapmak istiyorsanız bkz. [Azure Işlevlerini izleme](functions-monitoring.md).  |
 
 3. İşlev uygulamasını sağlamak ve dağıtmak için **Oluştur**'u seçin.

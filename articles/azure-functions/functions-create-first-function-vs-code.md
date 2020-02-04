@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 0540c7b01d693975f34515c7d13f0477ac74d4a1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 26313c68305f4d7e6411d31fa12366442ce4bd38
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842265"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964176"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak bir Azure Işlevleri projesi oluşturma
 
@@ -18,31 +18,39 @@ Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için Visual S
 
 Bu makalenin [CLI tabanlı bir sürümü](functions-create-first-azure-function-azure-cli.md) de vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="configure-your-environment"></a>Ortamınızı yapılandırma
 
-+ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) . 
-::: zone pivot="programming-language-csharp"
-+ Visual Studio Code [ C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) .
-::: zone-end
-::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ [Node. js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
-::: zone-end
+Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
+
++ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
++ [Node. js](https://nodejs.org/), NPM için Windows tarafından gereklidir. Yalnızca [ETKIN LTS ve bakım LTS sürümleri ](https://nodejs.org/about/releases/). Sürümünüzü denetlemek için `npm --version` komutunu kullanın.
+    MacOS ve Linux 'ta yerel geliştirme için gerekli değildir.   
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
++ [Node. js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). Sürümünüzü denetlemek için `npm --version` komutunu kullanın.
+::: zone-end 
 ::: zone pivot="programming-language-python"
 + Azure Işlevleri tarafından desteklenen [python 3,7](https://www.python.org/downloads/release/python-375/) veya [Python 3,6](https://www.python.org/downloads/release/python-368/). Python 3,8 henüz desteklenmiyor. 
-
-+ Visual Studio Code için [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) .
-::: zone-end
+::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
-
-+ [Visual Studio Code Için PowerShell uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
-::: zone-end
++ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)  
+::: zone-end  
++ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .  
+::: zone pivot="programming-language-csharp"  
++ Visual Studio Code [ C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) .  
+::: zone-end  
+::: zone pivot="programming-language-python"
++ Visual Studio Code için [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) .  
+::: zone-end  
+::: zone pivot="programming-language-powershell"
++ [Visual Studio Code Için PowerShell uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
+::: zone-end  
 
 + Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) . 
-
-+ Etkin aboneliği olan bir [Azure hesabı](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) . Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 ## <a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma 
 
@@ -60,111 +68,36 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
     ::: zone pivot="programming-language-csharp"
-
-    | İstem | Değer | 
-    | ------ | ----- | 
-    | İşlev projeniz için bir dil seçin | C# |
-    | Sürüm seçin | Azure Işlevleri v2 | 
-    | Projenizin ilk işlevi için bir şablon seçin | HTTP tetikleyicisi | 
-    | Bir işlev adı girin | HttpExample | 
-    | Ad alanı belirtin | My. Functions | 
-    | Yetkilendirme düzeyi | Anonim | 
-    | Projenizi nasıl açmak istediğinizi seçin | Çalışma alanına Ekle |
-
+    + **İşlev projeniz için bir dil seçin**: `C#`seçin.
     ::: zone-end
-
     ::: zone pivot="programming-language-javascript"
-
-    | İstem | Değer | 
-    | ------ | ----- | 
-    | İşlev projeniz için bir dil seçin | JavaScript | 
-    | Sürüm seçin | Azure Işlevleri v2 | 
-    | Projenizin ilk işlevi için bir şablon seçin | HTTP tetikleyicisi | 
-    | Bir işlev adı girin | HttpExample | 
-    | Yetkilendirme düzeyi | Anonim | 
-    | Projenizi nasıl açmak istediğinizi seçin | Çalışma alanına Ekle |
-
+    + **İşlev projeniz için bir dil seçin**: `JavaScript`seçin.
     ::: zone-end
-
     ::: zone pivot="programming-language-typescript"
-
-    | İstem | Değer | 
-    | ------ | ----- | 
-    | İşlev projeniz için bir dil seçin | TypeScript | 
-    | Sürüm seçin | Azure Işlevleri v2 | 
-    | Projenizin ilk işlevi için bir şablon seçin | HTTP tetikleyicisi | 
-    | Bir işlev adı girin | HttpExample | 
-    | Yetkilendirme düzeyi | Anonim | 
-    | Projenizi nasıl açmak istediğinizi seçin | Çalışma alanına Ekle |
-
+    + **İşlev projeniz için bir dil seçin**: `TypeScript`seçin.
     ::: zone-end
-
     ::: zone pivot="programming-language-powershell"
-
-    | İstem | Değer | 
-    | ------ | ----- | 
-    | İşlev projeniz için bir dil seçin | PowerShell | 
-    | Sürüm seçin | Azure Işlevleri v2 | 
-    | Projenizin ilk işlevi için bir şablon seçin | HTTP tetikleyicisi | 
-    | Bir işlev adı girin | HttpExample | 
-    | Yetkilendirme düzeyi | Anonim | 
-    | Projenizi nasıl açmak istediğinizi seçin | Çalışma alanına Ekle |
-
+    + **İşlev projeniz için bir dil seçin**: `PowerShell`seçin.
     ::: zone-end
-
     ::: zone pivot="programming-language-python"
+    + **İşlev projeniz için bir dil seçin**: `Python`seçin.
 
-    | İstem | Değer | 
-    | ------ | ----- | 
-    | İşlev projeniz için bir dil seçin | Python | 
-    | Sürüm seçin | Azure Işlevleri v2 | 
-    | Sanal ortam oluşturmak için bir Python diğer adı seçin | Python diğer adı | 
-    | Projenizin ilk işlevi için bir şablon seçin | HTTP tetikleyicisi | 
-    | Bir işlev adı girin | HttpExample | 
-    | Yetkilendirme düzeyi | Anonim | 
-    | Projenizi nasıl açmak istediğinizi seçin | Çalışma alanına Ekle | 
-
+    + **Sanal ortam oluşturmak için bir Python diğer adı seçin**: Python yorumlayıcının konumunu seçin. Konum gösterilmemişse, Python ikilisinin tam yolunu yazın.  
     ::: zone-end
 
-1. Şunları Visual Studio Code:
-
-    + [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](functions-run-local.md#local-settings-file) yapılandırma dosyalarını içeren yeni bir çalışma alanında Azure işlevleri projesi oluşturur. 
-
+    + **Projenizin ilk işlevi için bir şablon seçin**: `HTTP trigger`seçin.
+    
+    + **Bir işlev adı girin**: tür `HttpExample`.
+    
     ::: zone pivot="programming-language-csharp"
+    + **Ad alanı girin**: tür `My.Functions`. 
+    ::: zone-end
 
-    + İşlevi uygulayan bir [HttpExample.cs sınıf kitaplığı dosyası](functions-dotnet-class-library.md#functions-class-library-project) oluşturur.
+    + **Yetkilendirme düzeyi**: herkesin işlev uç noktanızı çağırmasını sağlayan `Anonymous`seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook.md#authorization-keys).
 
-    ::: zone-end
-        
-    ::: zone pivot="programming-language-javascript"
-    
-    + Kök klasörde bir Package. JSON dosyası oluşturur.
+    + **Projenizi nasıl açmak Istediğinizi seçin**: `Add to workspace`seçin.
 
-    + İşlev kodunu içeren bir Node. js dosyası olan [function. JSON tanım dosyasını](functions-reference-node.md#folder-structure) ve [index. js dosyasını](functions-reference-node.md#exporting-a-function)içeren bir httpexample klasörü oluşturur.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-typescript"
-    
-    + Kök klasörde bir Package. JSON dosyası ve tsconfig. JSON dosyası oluşturur.
-
-    + İşlev kodunu içeren bir TypeScript dosyası olan [function. JSON tanım dosyasını](functions-reference-node.md#folder-structure) ve [index. TS dosyasını](functions-reference-node.md#typescript)içeren bir httpexample klasörü oluşturur.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-powershell"
-    
-    + Function [. JSON tanım dosyasını](functions-reference-python.md#programming-model) ve işlev kodunu içeren Run. ps1 dosyasını Içeren bir httpexample klasörü oluşturur.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-python"
-    
-    + Işlevleri için gereken paketleri listeleyen proje düzeyi requirements. txt dosyası oluşturur.
-    
-    + Function [. JSON tanım dosyasını](functions-reference-python.md#programming-model) ve işlev kodunu içeren \_\_init\_\_. Kopyala dosyasını Içeren bir httpexample klasörü oluşturur.
-    
-    ::: zone-end
+1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files). 
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -186,13 +119,15 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
 
 ## <a name="run-the-function-in-azure"></a>İşlevi Azure 'da çalıştırma
 
-1. **Çıktı** panelinden HTTP tetikleyicisinin URL’sini kopyalayın. Yeniden, bu URL 'nin sonuna `?name=<yourname>` `name` sorgu dizesini ekleyin ve isteği yürütün.
+1. Yan çubuktaki **Azure: Functions** bölümüne geri döndüğünüzde, aboneliğinizin altındaki yeni işlev uygulamasını genişletin. **İşlevler**' i genişletin, **httpexample**üzerinde sağ tıklayın (Windows) veya CTRL + tıklama (MacOS) seçeneğini belirleyin ve ardından **işlev URL 'sini Kopyala**' yı seçin.
 
-    HTTP tarafından tetiklenen işlevinizi çağıran URL aşağıdaki biçimde olmalıdır:
+    ![Yeni HTTP tetikleyicisinin işlev URL 'sini kopyalayın](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
-        http://<functionappname>.azurewebsites.net/api/httpexample?name=<yourname> 
+1. HTTP isteğinin bu URL 'sini tarayıcınızın adres çubuğuna yapıştırın, `name` sorgu dizesini bu URL 'nin sonuna `?name=Functions` olarak ekleyin ve sonra isteği yürütün. HTTP tarafından tetiklenen işlevinizi çağıran URL aşağıdaki biçimde olmalıdır:
 
-1. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. Aşağıdaki örnek, bu işlev tarafından döndürülen uzak GET isteğine tarayıcıda yapılan yanıtı gösterir: 
+        http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
+        
+    Aşağıdaki örnek, bu işlev tarafından döndürülen uzak GET isteğine tarayıcıda yapılan yanıtı gösterir: 
 
     ![Tarayıcıdaki işlev yanıtı](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842186"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964164"
 ---
 ## <a name="publish-the-project-to-azure"></a>Projeyi Azure'da yayımlama
 
@@ -21,29 +21,24 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
-    ::: zone pivot="programming-language-csharp,programming-language-powershell"
+    + **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    | İstem | Değer | Açıklama |
-    | ------ | ----- | ----- |
-    | Abonelik seçme | Aboneliğiniz | Birden çok aboneliğiniz olduğunda gösterilir. |
-    | Azure 'da İşlev Uygulaması seçin | + Yeni İşlev Uygulaması Oluştur | Varolan bir işlev uygulamasına yayımladığınızda Azure’daki uygulamanın içeriğinin üzerine yazılır. |
-    | İşlev uygulaması için genel olarak benzersiz bir ad girin | Benzersiz ad | İşlev uygulaması adına ilişkin geçerli karakterler `a-z`, `0-9` ve `-` işaretidir. |
-    | Yeni kaynaklar için bir konum seçin | Bölge | Size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. | 
-
+    + **Azure 'da işlev uygulaması seçin**: `+ Create new Function App` (`Advanced`değil) seçeneğini belirleyin. Bu makale, [Gelişmiş yayımlama akışını](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)desteklemez. 
+    
+    >[!IMPORTANT]
+    > Varolan bir işlev uygulamasına yayımladığınızda Azure’daki uygulamanın içeriğinin üzerine yazılır. 
+    
+    + **İşlev uygulaması için genel olarak benzersiz bir ad girin**: URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır. 
+    
+    ::: zone pivot="programming-language-python"
+    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Python sürümünü seçin. Sürümünüzü denetlemek için `python --version` komutunu kullanabilirsiniz.
     ::: zone-end
 
-    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
-
-    | İstem | Değer | Açıklama |
-    | ------ | ----- | ----- |
-    | Abonelik seçme | Aboneliğiniz | Birden çok aboneliğiniz olduğunda gösterilir. |
-    | Azure 'da İşlev Uygulaması seçin | + Yeni İşlev Uygulaması Oluştur | Varolan bir işlev uygulamasına yayımladığınızda Azure’daki uygulamanın içeriğinin üzerine yazılır. |
-    | İşlev uygulaması için genel olarak benzersiz bir ad girin | Benzersiz ad | İşlev uygulaması adına ilişkin geçerli karakterler `a-z`, `0-9` ve `-` işaretidir. |
-    | Çalışma zamanı seçin | Sürümünüz | Yerel olarak çalıştırdığınız dil sürümünü seçin. |
-    | Yeni kaynaklar için bir konum seçin | Bölge | Size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. | 
-
+    ::: zone pivot="programming-language-javascript,programming-language-typescript"
+    + **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Node. js sürümünü seçin. Sürümünüzü denetlemek için `node --version` komutunu kullanabilirsiniz.
     ::: zone-end
 
+    + **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. 
     
 1.  Tamamlandığında, aboneliğinizde aşağıdaki Azure kaynakları oluşturulur:
 
@@ -55,10 +50,6 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
     İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. 
     
-1. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin.
+1. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin. Bildirimi kaçırırsanız, sağ alt köşedeki zil simgesini seçerek tekrar görüntüleyin.
 
     ![Tüm bildirimi oluştur](media/functions-publish-project-vscode/function-create-notifications.png)
-
-1. Yan çubuktaki **Azure: Functions** bölümüne geri döndüğünüzde, aboneliğinizin altındaki yeni işlev uygulamasını genişletin. **İşlevler**' i genişletin, **httpexample**üzerinde sağ tıklayın (Windows) veya CTRL + tıklama (MacOS) seçeneğini belirleyin ve ardından **işlev URL 'sini Kopyala**' yı seçin.
-
-    ![Yeni HTTP tetikleyicisinin işlev URL 'sini kopyalayın](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

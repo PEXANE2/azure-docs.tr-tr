@@ -6,34 +6,47 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2dd74f13f9342e45e38dafed2de8338876c8ae36
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414547"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966938"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Go](https://golang.org/) programlama dili  
+* [Go](https://golang.org/) programlama dili
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Ortak uygulama KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS anahtarını alma
+## <a name="create-luis-runtime-key-for-predictions"></a>Tahminler için LUSıS çalışma zamanı anahtarı oluşturma
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
+1. Çalışma zamanı anahtarı için tüm gerekli ayarları girin:
+
+    |Ayar|Değer|
+    |--|--|
+    |Ad|İstenen ad (2-64 karakter)|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
+
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Yapılandırılmış `endpoint` ve bir `key`toplayın.
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
 [Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için Go kullanın.
 
 1. `predict.go` adlı yeni bir dosya oluşturun. Aşağıdaki kodu ekleyin:
-    
+
     ```go
     package main
-    
+
     /* Do dependencies */
     import (
         "fmt"
@@ -43,65 +56,67 @@ ms.locfileid: "74414547"
         "log"
     )
     func main() {
-        
+
         // public app
         var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
-        
+
         // utterance for public app
         var utterance = "turn on all lights"
-        
-        // YOUR-KEY - your starter or prediction key
+
+        // YOUR-KEY - your  key
         var endpointKey = "YOUR-KEY"
-        
-        // YOUR-ENDPOINT - example is westus2.api.cognitive.microsoft.com
+
+        // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
         var endpoint = "YOUR-ENDPOINT"
-    
+
         endpointPrediction(appID, endpointKey, endpoint, utterance)
     }
     func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
-    
+
         var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
-        
+
         response, err := http.Get(endpointUrl)
-    
+
         if err!=nil {
             // handle error
             fmt.Println("error from Get")
             log.Fatal(err)
         }
-        
+
         response2, err2 := ioutil.ReadAll(response.Body)
-    
+
         if err2!=nil {
             // handle error
             fmt.Println("error from ReadAll")
             log.Fatal(err2)
         }
-    
+
         fmt.Println("response")
         fmt.Println(string(response2))
     }
     ```
 
-1. Aşağıdaki değerleri değiştirin:
+1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin anahtarınızla ve uç noktanızla değiştirin.
 
-    * başlangıç anahtarınızla `YOUR-KEY`.
-    * uç noktanızla `YOUR-ENDPOINT`. Örneğin, `westus2.api.cognitive.microsoft.com`.
+    |Bilgi|Amaç|
+    |--|--|
+    |`YOUR-KEY`|32 karakter tahmini anahtarınız.|
+    |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Dosyayı oluşturduğunuz dizindeki aynı dizinde bir komut istemiyle birlikte, go dosyasını derlemek için aşağıdaki komutu girin:
 
     ```console
     go build predict.go
-    ```  
+    ```
 
-1. Aşağıdaki metni komut istemine girerek komut satırından Go uygulamasını çalıştırın: 
+1. Aşağıdaki metni komut istemine girerek komut satırından Go uygulamasını çalıştırın:
 
     ```console
     go run predict.go
     ```
-    
-    Komut istemi yanıtı şöyle görünür: 
-    
+
+    Komut istemi yanıtı şöyle görünür:
+
     ```console
     appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
     endpointKey has value a7b206911f714e71a1ddae36928a61cc
@@ -155,13 +170,9 @@ ms.locfileid: "74414547"
     ```
 
 
-## <a name="luis-keys"></a>LUIS anahtarları
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
