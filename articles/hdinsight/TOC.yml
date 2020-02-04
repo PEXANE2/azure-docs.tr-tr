@@ -517,6 +517,8 @@
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
             - name: Hizmetler başlatılırken bağlantı noktası çakışması
               href: ./hadoop/troubleshoot-port-conflict.md
+            - name: Key Vault erişiminin kaybolması
+              href: ./hadoop/troubleshoot-lost-key-vault-access.md
 - name: Apache Kafka
   items:
     - name: Genel Bakış

@@ -79,6 +79,8 @@
           href: delete-aadds.md
         - name: Klasik dağıtımdan geçiş yapma (önizleme)
           href: migrate-from-classic-vnet.md
+        - name: SKU’yu değiştirme
+          href: change-sku.md
     - name: Azure AD DS'nin güvenliğini sağlama
       items:
         - name: Yönetilen etki alanınızın güvenliğini sağlama

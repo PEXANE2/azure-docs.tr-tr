@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Azure CLI kullanma
           href: how-to-manage-workspace-cli.md
+        - name: REST kullanma
+          href: how-to-manage-rest.md
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: Etiketlerle veri kümeleri oluşturma
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Veri alımı için DevOps
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: Modelleri eğitme
       items:
         - name: Tasarımcıyı kullanma

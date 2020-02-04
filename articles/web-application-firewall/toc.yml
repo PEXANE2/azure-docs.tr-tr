@@ -38,8 +38,12 @@
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: Özel kurallara genel bakış
           href: ./ag/custom-waf-rules-overview.md
+        - name: Coğrafi eşleştirme özel kuralları
+          href: ./ag/geomatch-custom-rules.md
         - name: İstek boyutu sınırları ve dışlama listeleri
           href: ./ag/application-gateway-waf-configuration.md
+        - name: WAF İlkesine genel bakış
+          href: ./ag/policy-overview.md
     - name: Front Door
       items:
         - name: Özel kurallar

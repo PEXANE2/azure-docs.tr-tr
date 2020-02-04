@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: Koşullu
               href: cognitive-search-skill-conditional.md
+            - name: Özel Varlık Arama
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: Belge Ayıklama
               href: cognitive-search-skill-document-extraction.md
             - name: Varlık Tanıma

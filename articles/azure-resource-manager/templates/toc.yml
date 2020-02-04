@@ -64,8 +64,6 @@
         - name: Azure Pipelines ile sürekli tümleştirme
           displayName: DevOps
           href: template-tutorial-use-azure-pipelines.md
-        - name: VS dağıtım betiğini Az PowerShell kullanacak şekilde güncelleştirme
-          href: update-visual-studio-deployment-script.md
         - name: Güvenli dağıtım uygulamalarını kullanma
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -145,6 +143,8 @@
           href: use-vs-code-to-create-template.md
         - name: Visual Studio
           href: create-visual-studio-deployment-project.md
+        - name: VS dağıtım betiğini Az modülünü kullanacak şekilde güncelleştirme
+          href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
     - name: Şablon dağıtma

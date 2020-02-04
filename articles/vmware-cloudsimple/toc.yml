@@ -136,6 +136,8 @@
               href: on-premises-dns-setup.md
             - name: Yüksek kullanılabilirliğe sahip siteler arası VPN bağlantılarını yapılandırma
               href: high-availability-vpn-connection.md
+            - name: Şirket içine yönelik özel Bulut DNS yapılandırması
+              href: private-cloud-dns-forwarding.md
         - name: VMware platformu
           items:
             - name: Özel Bulut izin modelini öğrenme

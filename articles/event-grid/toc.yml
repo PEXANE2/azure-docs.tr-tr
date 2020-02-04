@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: Sorun giderme hataları
       href: troubleshoot-errors.md
+    - name: Belirli bir konuya yönelik tanılama günlüklerini etkinleştirme
+      href: enable-diagnostic-logs-topic.md
 - name: Başvuru
   items:
     - name: Azure CLI
