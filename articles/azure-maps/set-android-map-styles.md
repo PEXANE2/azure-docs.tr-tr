@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar 'ı kullanarak bir harita stili ayarlayın Android SDK | Microsoft Azure haritaları
-description: Bu makalede, Android SDK için Microsoft Azure haritaları stili ilgili işlevleri hakkında bilgi edineceksiniz.
+description: Bu makalede, Android SDK için stille ilgili işlevleri Microsoft Azure eşler hakkında bilgi edineceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fe0aa662234166249433634ccb45d1931d176319
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4adb38148acc0c18ac73709efbe7628ca9497897
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910479"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988966"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak harita stili ayarlama Android SDK
 
@@ -59,7 +59,7 @@ Yukarıdaki `mapcontrol_style` özniteliği harita stilini **grayscale_dark**ola
 
 ## <a name="set-map-style-in-the-activity-class"></a>Etkinlik sınıfında harita stilini ayarla
 
-Eşleme stili etkinlik sınıfında ayarlanabilir. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** yöntemine kopyalayın. Bu işlem harita stilini **satellite_road_labels**olarak ayarlar.
+Eşleme stili etkinlik sınıfında ayarlanabilir. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** yöntemine kopyalayın. Bu kod, eşleme stilini **satellite_road_labels**olarak ayarlar.
 
 ```Java
 mapControl.onReady(map -> {

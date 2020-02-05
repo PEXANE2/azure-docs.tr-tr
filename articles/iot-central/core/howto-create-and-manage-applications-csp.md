@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453965"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987689"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>CSP portalından Azure IoT Central uygulaması oluşturma ve yönetme
 
@@ -39,9 +39,11 @@ Azure IoT Central uygulaması oluşturmak için soldaki menüden **Oluştur** ' 
 
 ![CSP 'Ler için uygulama sayfası oluştur](media/howto-create-application-csp/image4-1.png)
 
-## <a name="payment-plan"></a>Ödeme planı
+![CSP faturalandırma bilgileri için uygulama sayfası oluşturma](media/howto-create-application-csp/image4-2.png)
 
-Yalnızca bir CSP olarak ücretli Kullandıkça Öde uygulamaları oluşturabilirsiniz. Müşterinizin Azure IoT Central göstermek için ayrı bir deneme uygulaması oluşturabilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)deneme ve kullandıkça öde uygulamaları hakkında daha fazla bilgi edinin.
+## <a name="pricing-plan"></a>Fiyatlandırma planı
+
+Yalnızca bir CSP olarak standart fiyatlandırma planı kullanan uygulamalar oluşturabilirsiniz. Müşterinizin Azure IoT Central göstermek için, ücretsiz fiyatlandırma planını ayrı olarak kullanan bir uygulama oluşturabilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin.
 
 ## <a name="application-name"></a>Uygulama Adı
 
@@ -63,7 +65,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/
 
 ## <a name="azure-subscription"></a>Azure aboneliği
 
-Azure aboneliği, Azure hizmetlerinin örneklerini oluşturmanıza olanak sağlar. Azure IoT Central, erişiminiz olan müşterinin tüm Azure aboneliklerini otomatik olarak bulur ve bunları **uygulama oluştur** sayfasında bir açılan pencerede görüntüler. Yeni bir Azure IoT Central uygulaması oluşturmak için bir Azure aboneliği seçin.
+Azure aboneliği, Azure Hizmetleri örnekleri oluşturmanıza olanak sağlar. Azure IoT Central, erişiminiz olan müşterinin tüm Azure aboneliklerini otomatik olarak bulur ve bunları **uygulama oluştur** sayfasında bir açılan pencerede görüntüler. Yeni bir Azure IoT Central uygulaması oluşturmak için bir Azure aboneliği seçin.
 
 Azure aboneliğiniz yoksa, Microsoft Iş Ortağı Merkezi ' nde bir tane oluşturabilirsiniz. Azure aboneliğini oluşturduktan sonra, **Uygulama Oluştur** sayfasına geri gidin. Yeni aboneliğiniz **Azure Aboneliği** açılan listesinde gösterilir.
 

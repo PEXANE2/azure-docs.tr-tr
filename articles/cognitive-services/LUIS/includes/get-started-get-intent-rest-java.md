@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: a967fdb4b9c742a0ac7f372e5cd7eeb99171a906
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966704"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987823"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966704"
 
 1. [Azure Portal](https://portal.azure.com) oturum açın
 1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
-1. Çalışma zamanı anahtarı için tüm gerekli ayarları girin:
+1. **Çalışma zamanı** anahtarı için tüm gerekli ayarları girin:
 
     |Ayar|Değer|
     |--|--|
@@ -73,7 +73,7 @@ ms.locfileid: "76966704"
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
 
-                // Add your endpoint key
+                // Add your prediction Runtime key
                 String Key = "YOUR-KEY";
 
                 // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
@@ -117,11 +117,11 @@ ms.locfileid: "76966704"
     }
     ```
 
-1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin anahtarınızla ve uç noktanızla değiştirin.
+1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin **çalışma zamanı** anahtarınızla ve uç noktanızla değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter tahmini anahtarınız.|
+    |`YOUR-KEY`|32 karakter tahmini **çalışma zamanı** anahtarınız.|
     |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 

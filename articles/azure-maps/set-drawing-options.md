@@ -3,21 +3,21 @@ title: Çizim araçları modülü | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak çizim seçenekleri verilerini ayarlamayı öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 09/04/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6c64820cdfa03e833bfd2fbad3ba7489170b14e5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910577"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988932"
 ---
 # <a name="use-the-drawing-tools-module"></a>Çizim araçları modülünü kullanma
 
-Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül, dokunma ekranımız fare gibi bir giriş cihazını kullanarak haritada şekil çizmeyi ve düzenlemenizi kolaylaştırır. Bu modülün çekirdek sınıfı, [Çizim yöneticisidir](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) ve haritada şekil çizmek ve düzenlemek için gereken tüm özellikleri sağlar. Çizim Yöneticisi doğrudan veya özel bir araç çubuğu kullanıcı arabirimi ile tümleştirilebilir veya yerleşik [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) sınıfını kullanabilirsiniz. 
+Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül, fare veya dokunmatik ekran gibi bir giriş cihazını kullanarak haritada şekil çizmeyi ve düzenlemenizi kolaylaştırır. Bu modülün çekirdek sınıfı, [Çizim yöneticisidir](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Çizim Yöneticisi, haritada şekil çizmek ve düzenlemek için gereken tüm özellikleri sağlar. Doğrudan kullanılabilir ve özel bir araç çubuğu kullanıcı arabirimiyle tümleşiktir. Yerleşik [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) sınıfını da kullanabilirsiniz. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Bir Web sayfasında çizim araçları modülünü yükleme
 
@@ -30,7 +30,7 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
         ```
 
-    - Alternatif olarak, Azure Haritalar Web SDK 'Sı kaynak kodu için çizim araçları modülünü [Azure-Maps-çizim-araçlar](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
+    - Ya da Azure Haritalar Web SDK 'Sı kaynak kodu için çizim araçları modülünü [Azure-Maps-Drawing-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM paketini kullanarak yerel olarak yükleyebilir ve sonra uygulamanızla birlikte barındırabilirsiniz. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
     
         > **NPM yüklemesi Azure-Maps-çizim-Araçlar**
     
@@ -43,7 +43,7 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
 
 ## <a name="use-the-drawing-manager-directly"></a>Çizim yöneticisini doğrudan kullanma
 
-Çizim araçları modülü uygulamanıza yüklendikten sonra, harita içinde çizim ve düzenlenme özelliklerini etkinleştirmek için [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) 'ni kullanabilirsiniz. Çizim Yöneticisi seçeneklerini örneklarken veya alternatif olarak `drawingManager.setOptions()` işlevini kullanarak belirtebilirsiniz.
+Çizim araçları modülü uygulamanıza yüklendikten sonra, çizim [Yöneticisi 'ni](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)kullanarak çizim ve Düzenle özelliklerini etkinleştirebilirsiniz. Çizim Yöneticisi seçeneklerini örneklarken veya alternatif olarak `drawingManager.setOptions()` işlevini kullanarak belirtebilirsiniz.
 
 ### <a name="set-the-drawing-mode"></a>Çizim modunu ayarlama
 
@@ -83,7 +83,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-Aşağıda, haritada bir çokgen çizmenizi sağlayan, sol fare düğmesini basılı tutarak ve sürükleyerek, bu işlevselliği uygulayan kod örneği verilmiştir. 
+ Bu kod örneği, haritada çokgen çizme işlevlerini uygular. Sol fare düğmesini basılı tutup, dilediğiniz gibi sürükleyerek, ücretsiz olarak sürüklemeniz yeterlidir.
 
 <br/>
 

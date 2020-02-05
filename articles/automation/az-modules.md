@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418835"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986113"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure Otomasyonu 'nda az Module desteği
 
@@ -18,7 +18,7 @@ Azure Otomasyonu, runbook 'larınızda [Azure PowerShell az modülünü](/powers
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Azure Otomasyonu 'nda az Module kullanırken dikkate alınması gereken pek çok şey vardır. Runbook 'lar ve modüller, Otomasyon hesabınızdaki daha üst düzey çözümler tarafından kullanılabilir. Runbook 'ları veya modülleri yükseltmek, runbook 'larınızla ilgili sorunlara neden olabilir. Yeni `Az` modüllerini içeri aktarmadan önce, tüm runbook 'ları ve çözümleri ayrı bir Otomasyon hesabında dikkatle sınamanız gerekir. Modüllerle ilgili değişiklikler, [Başlat/Durdur](automation-solution-vm-management.md) çözümünü olumsuz yönde alabilir. Herhangi bir çözüm içeren Otomasyon hesaplarında modüller ve Runbook 'ların değiştirmemeleri önerilir. Bu davranış az modüllere özgü değildir. Otomasyon hesabınızda herhangi bir değişikliğe giriş yaparken bu davranış göz önünde bulundurulmalıdır.
+Azure Otomasyonu 'nda az Module kullanırken dikkate alınması gereken pek çok şey vardır. Runbook 'lar ve modüller, Otomasyon hesabınızdaki daha üst düzey çözümler tarafından kullanılabilir. Runbook 'ları veya modülleri yükseltmek, runbook 'larınızla ilgili sorunlara neden olabilir. Yeni `Az` modüllerini içeri aktarmadan önce, tüm runbook 'ları ve çözümleri ayrı bir Otomasyon hesabında dikkatle sınamanız gerekir. Modüllerle ilgili değişiklikler, [Başlat/Durdur](automation-solution-vm-management.md) çözümünü olumsuz etkileyebilir. Herhangi bir çözümü içeren Otomasyon hesaplarında modül ve Runbook 'ların değiştirilmesini önermiyoruz. Bu davranış az modüllere özgü değildir. Otomasyon hesabınızda herhangi bir değişikliğe giriş yaparken bu davranış göz önünde bulundurulmalıdır.
 
 Otomasyon hesabınızda bir `Az` modülünü içeri aktarmak runbook 'ların kullandığı PowerShell oturumunda modülü otomatik olarak içeri aktarmaz. Modüller aşağıdaki durumlarda PowerShell oturumuna aktarılır:
 

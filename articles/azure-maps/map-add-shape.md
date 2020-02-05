@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bae47e2f5cd473893d97678977030643cc9949fe
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911127"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988626"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Haritaya çokgen katmanı Ekle
 
-Bu makalede, bir çokgen katmanı kullanarak haritada `Polygon` ve `MultiPolygon` Özellik geometrileri nasıl işleyebilmeniz gösterilmektedir. Azure Haritalar Web SDK 'Sı Ayrıca, [genişletilmiş GeoJSON şemasında](extend-geojson.md#circle)tanımlandığı şekilde daire geometrileri oluşturulmasını destekler. Bu daireler haritada işlendiğinde çokgenler halinde dönüştürülür. Tüm özellik geometrileri, Atlas ile sarmalandıktan sonra da kolayca güncelleştirilebilen olabilir [. Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı.
+Bu makalede, bir çokgen katmanı kullanarak haritada `Polygon` ve `MultiPolygon` Özellik geometrileri nasıl işleyebilmeniz gösterilmektedir. Azure Haritalar Web SDK 'Sı Ayrıca, [genişletilmiş GeoJSON şemasında](extend-geojson.md#circle)tanımlandığı şekilde daire geometrileri oluşturulmasını destekler. Bu daireler haritada işlendiğinde çokgenler halinde dönüştürülür. Tüm özellik geometrileri, Atlas ile sarmalandıktan sonra kolayca güncelleştirilebilen olabilir [. Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı.
 
 ## <a name="use-a-polygon-layer"></a>Çokgen katmanı kullanma 
 
-Bir çokgen katmanı bir veri kaynağına bağlıyken ve haritada yüklendiğinde, bir `Polygon` ve `MultiPolygon` özelliklerinin alanını işler. Aşağıdaki kod, bir çokgen oluşturma, bir veri kaynağına ekleme ve [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) sınıfını kullanarak bir Çokgen katman ile işleme işlemlerinin nasıl yapılacağını gösterir.
+Bir çokgen katmanı bir veri kaynağına bağlıyken ve haritada yüklendiğinde, alanı `Polygon` ve `MultiPolygon` özellikleriyle işler. Bir çokgen oluşturmak için bir veri kaynağına ekleyin ve [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) sınıfını kullanarak Çokgen bir katman ile oluşturun.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -47,7 +47,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 }));
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Yukarıdaki kodun tamamen ve çalışan örneği aşağıda verilmiştir.
 
 <br/>
 
@@ -56,14 +56,14 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>Bir çokgen ve çizgi katmanını birlikte kullanma
 
-Çokgenler ana hattını işlemek için bir çizgi katmanı kullanılabilir. Aşağıdaki kod örneği, önceki örnekte olduğu gibi bir çokgen oluşturur, ancak şimdi veri kaynağına bağlı ikinci bir katman olarak bir çizgi katmanı ekler.  
+Çokgenler ana hattını işlemek için çizgi katmanı kullanılır. Aşağıdaki kod örneği, önceki örnekte olduğu gibi bir çokgen oluşturur, ancak şimdi bir çizgi katmanı ekler. Bu çizgi katmanı, veri kaynağına bağlı ikinci bir katmandır.  
 
 <iframe height='500' scrolling='no' title='Çokgen eklenecek Çokgen ve çizgi katmanı' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Çokgen eklemek için kalem poligonu ve çizgi katmanını</a> inceleyin.
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>Çokgeni bir desenli doldur
 
-Bir çokgen bir renkle doldurulmasına ek olarak, bir resim deseninin de kullanılabilir olması. Haritalar görüntüsü Sprite kaynaklarına bir resim kalıbı yükleyin ve ardından bu görüntüye Çokgen katmanının `fillPattern` özelliği ile başvurun.
+Çokgeni bir renkle doldurmanın yanı sıra, çokgeni doldurmak için de bir resim kalıbı kullanabilirsiniz. Haritalar görüntüsü Sprite kaynaklarına bir resim kalıbı yükleyin ve ardından bu görüntüye Çokgen katmanının `fillPattern` özelliği ile başvurun.
 
 <br/>
 
@@ -88,7 +88,7 @@ Bir çokgen bir renkle doldurulmasına ek olarak, bir resim deseninin de kullan�
 
 ## <a name="add-a-circle-to-the-map"></a>Haritaya daire ekleme
 
-Azure Maps, coğrafi [olarak gösterildiği gibi](extend-geojson.md#circle)daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Bir daire, bir `"Circle"` değeri olan bir `subType` özelliğine sahip bir `Point` özelliği ve ölçü cinsinden yarıçapı temsil eden bir sayı olan bir `radius` özelliği oluşturarak haritada işlenebilir. Örneğin:
+Azure haritalar, [burada](extend-geojson.md#circle)belirtildiği gibi, daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Bir daire, `Point` özelliği oluşturularak haritada işlenir. Bu `Point`, `"Circle"` değerine sahip bir `subType` özelliğine ve ölçü cinsinden yarıçapı temsil eden bir sayı olan bir `radius` özelliğine sahiptir. 
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Azure Maps, coğrafi [olarak gösterildiği gibi](extend-geojson.md#circle)daire
 }  
 ```
 
-Azure Haritalar Web SDK 'Sı, bu `Point` özelliklerini kapamalar altında `Polygon` özelliklere dönüştürür ve aşağıdaki kod örneğinde gösterildiği gibi Çokgen ve çizgi katmanları kullanılarak haritada oluşturulabilir.
+Azure Haritalar Web SDK 'Sı bu `Point` özelliklerini `Polygon` özelliklerine dönüştürür. Daha sonra, bu özellikler, aşağıdaki kod örneğinde gösterildiği gibi Çokgen ve çizgi katmanları kullanılarak haritada işlenir.
 
 <br/>
 
@@ -113,7 +113,7 @@ Azure Haritalar Web SDK 'Sı, bu `Point` özelliklerini kapamalar altında `Poly
 
 ## <a name="make-a-geometry-easy-to-update"></a>Bir geometriyi güncellemenin kolay olmasını sağlama
 
-Bir `Shape` sınıfı bir [geometriyi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) veya [özelliği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) sarmalayan ve bunların güncelleştirilmesini ve bakımını kolaylaştırır. Bir şekil, bir geometri ve bir özellikler kümesi geçirerek ya da aşağıdaki kodda gösterildiği gibi bir özelliğe geçirerek oluşturulabilir.
+`Shape` sınıfı bir [geometriyi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) veya [özelliği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) sarmalayan ve bu özellikleri güncelleştirmeyi ve bakımını kolaylaştırır. Şekil değişkeni oluşturmak için, şekil oluşturucusuna bir geometri veya bir özellikler kümesi geçirin.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -123,7 +123,7 @@ var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
 var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
 ```
 
-Aşağıdaki kod örneği, bir daire GeoJSON nesnesinin bir şekil sınıfıyla nasıl kaydırılacağını ve bir kaydırıcı kullanarak RADIUS özelliğinin kolayca güncelleştirilmesini gösterir. Şekildeki yarıçap değeri değiştikçe, dairenin işlenmesi haritada otomatik olarak güncelleştirilir.
+Aşağıdaki kod örneği, bir daire GeoJSON nesnesinin şekil sınıfıyla nasıl sarılacağını gösterir. Şekildeki yarıçap değeri değiştikçe, daire otomatik olarak haritada işlenir.
 
 <br/>
 

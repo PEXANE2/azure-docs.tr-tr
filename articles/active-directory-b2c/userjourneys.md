@@ -1,110 +1,110 @@
 ---
-title: UserJourneys | Microsoft Docs
-description: Azure Active Directory B2C'de özel bir ilke UserJourneys öğesi belirtin.
+title: Kullanıcı neys | Microsoft Docs
+description: Azure Active Directory B2C bir özel ilkenin User, neys öğesini belirtin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d2e6ad9aa9692efa4ea5633dff78b262bb1917be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ec2d24c399e44bf973fc1ee78466dbee26f0394
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512021"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983189"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Kullanıcı yolculuklarından bir ilke bir kullanıcı için istenen talep elde etmek bir bağlı taraf uygulaması olanak tanıyan açık yollarını belirtin. Kullanıcının bağlı olan taraf için sunulacak olan talepleri almak için bu yollar alınır. Diğer bir deyişle, bir son kullanıcı Azure AD B2C kimlik deneyimi çerçevesi işlemleri isteği geçer, iş mantığı kullanıcı yolculuklarından tanımlayın.
+Kullanıcı yolculukları, bir ilkenin bir kullanıcı için istenen talepleri elde etmesine izin veren bir ilke aracılığıyla açık yollar belirtmektir. Kullanıcı, bağlı olan tarafa sunulacak talepleri almak için bu yollar üzerinden alınır. Diğer bir deyişle, Kullanıcı yolculukları, Azure AD B2C kimlik deneyimi çerçevesi, isteği işleyen bir son kullanıcının iş mantığını tanımlar.
 
-Bu kullanıcı yolculuklarından ilgi topluluğuna çeşitli bağlı olan tarafların çekirdek gereksinimini karşılamak kullanılabilir şablonları kabul edilebilir. Kullanıcı yolculuklardan, bağlı olan taraf parçası olan bir ilke tanımı kolaylaştırır. Bir ilke birden çok kullanıcı yolculuklarından tanımlayabilirsiniz. Her kullanıcı yolculuğunda düzenleme adımlarının dizisidir.
+Bu Kullanıcı ilgisi, ilgili topluluğun çeşitli bağlı tarafları için temel gereksinimi karşılamak üzere kullanılabilir şablonlar olarak düşünülebilir. Kullanıcı, bir ilkenin bağlı olan taraf bölümünün tanımını kolaylaştırır. Bir ilke, birden çok kullanıcı bağlantısı tanımlayabilir. Her Kullanıcı yolculuğu bir düzenleme adımları dizisidir.
 
-İlke tarafından desteklenen kullanıcı yolculuklarından tanımlamak için bir **UserJourneys** öğesi ilkesi dosyasının üst düzey öğesi altında eklenir. 
+İlke tarafından desteklenen kullanıcıyı tanımlamak için, ilke dosyasının en üst düzey öğesinin altına bir **userbir neys** öğesi eklenir. 
 
-**UserJourneys** öğesi aşağıdaki öğeyi içerir:
+**Userınewys** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| UserJourney | 1:n | Kullanıcı yolculuğu tüm yapıları için tam kullanıcı Akış gerekli tanımlar. | 
+| Kullanıcı yolculuğu | 1: n | Tüm Kullanıcı akışı için gereken tüm yapıları tanımlayan bir Kullanıcı yolculuğu. | 
 
-**UserJourney** öğesi aşağıdaki öznitelik içeriyor:
+**Useryolculuney** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | İlkesinde diğer öğelerden başvuru için kullanılan bir kullanıcı yolculuğu tanımlayıcısı. **DefaultUserJourney** öğesinin [bağlı olan taraf İlkesi](relyingparty.md) bu özniteliğe işaret eder. |
+| Kimlik | Evet | İlkedeki diğer öğelerden başvurmak için kullanılabilen bir Kullanıcı yolculuğunun tanımlayıcısı. [Bağlı olan taraf Ilkesinin](relyingparty.md) **Defaultuseryolculuney** öğesi bu özniteliğe işaret eder. |
 
-**UserJourney** öğesi aşağıdaki öğeleri içerir:
+**Useryolculuney** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| OrchestrationSteps | 1:n | Başarılı bir işlem gelmelidir düzenleme dizisi. Her kullanıcı yolculuğu sırayla yürütülen düzenleme adımlarının sıralanmış bir listesini içerir. Herhangi bir adım başarısız olursa, işlem başarısız olur. |
+| OrchestrationSteps | 1: n | Başarılı bir işlem için izlenmesi gereken bir düzenleme sırası. Her Kullanıcı yolculuğu, sırayla yürütülen bir düzenleme adımları sıralı listesinden oluşur. Herhangi bir adım başarısız olursa, işlem başarısız olur. |
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
-Kullanıcı yolculuğu için başarılı bir işlem gelmelidir düzenleme dizisi olarak temsil edilir. Herhangi bir adım başarısız olursa, işlem başarısız olur. Yapı taşlarını düzenleme adımları başvurabilir ve ilke dosyasında talep sağlayıcıları izin. Göstermek veya bir kullanıcı deneyimi oluşturmak için sorumludur herhangi bir düzenleme adımı, ayrıca ilgili içerik tanımı tanımlayıcısı bir başvuru içeriyor.
+Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Herhangi bir adım başarısız olursa, işlem başarısız olur. Bu düzenleme adımlarında, ilke dosyasında izin verilen yapı taşları ve talep sağlayıcılarının her ikisi de başvuru yapılır. Bir kullanıcı deneyimini gösterme veya işleme sorumlu olan herhangi bir düzenleme adımının karşılık gelen içerik tanımı tanımlayıcısına de bir başvurusu vardır.
 
-Düzenleme adımlarının düzenleme adımı öğesinde tanımlanan önkoşullara göre koşullu olarak yürütülebilir. Örneğin, yalnızca belirli bir talep varsa veya bir talebi eşitse veya belirtilen değer için bir düzenleme adımı gerçekleştirmek için kontrol edebilirsiniz. 
+Orchestration adımları, Orchestration Step öğesinde tanımlanan önkoşullara göre koşullu olarak çalıştırılabilir. Örneğin, yalnızca belirli talepler varsa veya bir talep belirtilen değere eşitse ya da buna eşit değilse, bir düzenleme adımı gerçekleştirmeyi seçebilirsiniz. 
 
-Düzenleme adımlarının sıralanmış listesini belirtmek için bir **OrchestrationSteps** öğesi ilkesinin bir parçası eklenir. Bu öğe gereklidir.
+Düzenleme adımlarının sıralı listesini belirtmek için, ilkenin bir parçası olarak bir **Orchestrationsteps** öğesi eklenir. Bu öğe gereklidir.
 
-**OrchestrationSteps** öğesi aşağıdaki öğeyi içerir:
+**Orchestrationsteps** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| OrchestrationStep | 1:n | Bir sıralı düzenleme adımı. | 
+| OrchestrationStep | 1: n | Sıralı düzenleme adımı. | 
 
-**OrchestrationStep** öğesi aşağıdaki öznitelikler içerir:
+**Orchestrationstep** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | `Order` | Evet | Düzenleme adımlarının sırası. | 
-| `Type` | Evet | Düzenleme adımı türü. Olası değerler: <ul><li>**ClaimsProviderSelection** -düzenleme adımı birini seçmek için kullanıcıya çeşitli talep sağlayıcıları sunan gösterir.</li><li>**CombinedSignInAndSignUp** -düzenleme adımı oturum açma ve yerel hesap kaydolma sayfası birleşik sosyal sağlayıcılar sunar gösterir.</li><li>**ClaimsExchange** -düzenleme adımı talepler bir talep sağlayıcı ile değiştirir gösterir.</li><li>**SendClaims** -düzenleme adımı, bir talep veren tarafından verilmiş bir belirteç ile bağlı olan tarafa talep gönderdiğini belirtir.</li></ul> | 
-| ContentDefinitionReferenceId | Hayır | Tanımlayıcısını [içerik tanımı](contentdefinitions.md) bu düzenleme adımı ile ilişkili. Çoğunlukla içerik tanım başvurusu tanımlayıcısını otomatik olarak onaylanan teknik profili içinde tanımlanır. Ancak, teknik bir profili olmayan bir şey görüntülemek Azure AD B2C ihtiyacı olduğunda bazı durumlar vardır. İki örnekleri vardır - düzenleme adımı türü aşağıdakilerden biri ise: `ClaimsProviderSelection` veya `CombinedSignInAndSignUp`, Azure AD B2C kimlik sağlayıcısı seçim teknik profil zorunda kalmadan görüntülemek gerekiyor. | 
-| CpimIssuerTechnicalProfileReferenceId | Hayır | Düzenleme adımı türü `SendClaims`. Bu özellik, bağlı olan taraf için belirteç veren talep sağlayıcısı teknik profil tanımlayıcısını tanımlar.  Yoksa, bağlı olan taraf belirteci olmadan oluşturulduysa. |
+| `Type` | Evet | Düzenleme adımının türü. Olası değerler: <ul><li>**Claimsproviderselection** -Orchestration adımının, kullanıcıya bir tane seçmek üzere çeşitli talep sağlayıcıları sunmadığını gösterir.</li><li>**CombinedSignInAndSignUp** -düzenleme adımının birleştirilmiş bir sosyal sağlayıcı oturum açma ve yerel hesap kaydolma sayfası sunmadığını gösterir.</li><li>**Claimsexchange** -Orchestration adımının bir talep sağlayıcısıyla talepler olduğunu gösterir.</li><li>**Sendclaim** -düzenleme adımının talepleri, talep veren tarafından verilen bir belirteç ile bağlı olan tarafa göndereceğini gösterir.</li></ul> | 
+| Contentdefinitionreferenceıd | Hayır | Bu düzenleme adımı ile ilişkili [içerik tanımının](contentdefinitions.md) tanımlayıcısı. Genellikle içerik tanımı başvuru tanımlayıcısı, kendi kendine onaylanan teknik profilde tanımlanmıştır. Ancak, Azure AD B2C teknik bir profil olmadan bir şeyi görüntülemesi gerektiğinde bazı durumlar vardır. İki örnek vardır: düzenleme adımının türü aşağıdakilerden biri ise `ClaimsProviderSelection` veya `CombinedSignInAndSignUp`, Azure AD B2C bir teknik profile sahip olmadan kimlik sağlayıcısı seçimini görüntülemesi gerekir. | 
+| CpimIssuerTechnicalProfileReferenceId | Hayır | Düzenleme adımının türü `SendClaims`. Bu özellik, bağlı olan taraf için belirteci veren talep sağlayıcısının teknik profil tanımlayıcısını tanımlar.  Yoksa, bağlı olan taraf belirteci oluşturulmaz. |
 
 
-**OrchestrationStep** öğesi, aşağıdaki öğeleri içerebilir:
+**Orchestrationstep** öğesi aşağıdaki öğeleri içerebilir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- | 
-| Önkoşulları | 0: n | Düzenleme adımı yürütmek karşılanması gereken önkoşulları listesi. | 
-| ClaimsProviderSelections | 0: n | Düzenleme adımı için talep sağlayıcısı seçim listesi. | 
-| ClaimsExchanges | 0: n | Düzenleme adımı için talep değişimleri listesi. | 
+| Üstbilgisinde | 0: n | Düzenleme adımının yürütülmesi için karşılanması gereken önkoşulların bir listesi. | 
+| Claimsproviderseçimleri | 0: n | Düzenleme adımı için bir talep sağlayıcı seçimleri listesi. | 
+| ClaimsExchanges | 0: n | Düzenleme adımı için talep değişimlerinin listesi. | 
 
-### <a name="preconditions"></a>Önkoşulları
+### <a name="preconditions"></a>Üstbilgisinde
 
-**Önkoşulları** öğesi aşağıdaki öğeyi içerir:
+Ön **koşullar** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- | 
-| Önkoşulu | 0: n | Kullanılan teknik profil bağlı olarak ya da yönlendiren istemci talep değişimi için bir sunucu çağrısı yapar ve Talep sağlayıcı seçimi göre. | 
+| Koşul | 1: n | Kullanılan teknik profile bağlı olarak, istemciyi talep sağlayıcısı seçimine göre yeniden yönlendirir veya Exchange taleplerini bir sunucu çağrısı yapar. | 
 
 
-#### <a name="precondition"></a>Önkoşulu
+#### <a name="precondition"></a>Koşul
 
-**Önkoşulu** öğesi aşağıdaki öznitelikler içerir:
+**Önkoşul** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| `Type` | Evet | Onay veya bu önkoşulu için gerçekleştirmek için sorgu türü. Değer olabilir **ClaimsExist**, kullanıcının geçerli talep kümesinde belirtilen talep varsa eylemlerin gerçekleştirilmesi gereken belirtir veya **ClaimEquals**, hangi belirtir eylemleri Belirtilen talep varsa ve değeri belirtilen değere eşittir gerçekleştirilmelidir. |
-| `ExecuteActionsIf` | Evet | True veya false test önkoşuluna eylemleri gerçekleştirilen karar vermek için kullanın. | 
+| `Type` | Evet | Bu ön koşul için gerçekleştirilecek denetim veya sorgu türü. Bu değer, belirtilen talepler varsa ve bu değerin belirtilen değere eşit olması halinde, eylemlerin gerçekleştirilmesi gerektiğini belirten, eylemlerin, kullanıcının geçerli talep kümesinde bulunması veya **Claımequals**olması gerektiğini belirten **claimsexist**olabilir. |
+| `ExecuteActionsIf` | Evet | Önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğine karar vermek için doğru veya yanlış test kullanın. | 
 
-**Önkoşulu** öğeleri aşağıdaki öğeleri içerir:
+**Önkoşul** öğeleri aşağıdaki öğeleri içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Değer | 1:n | İçin Sorgulanacak ClaimTypeReferenceId. Başka bir değeri öğenin denetlenecek değer içeriyor.</li></ul>|
-| Eylem | 1:1 | Önkoşul denetimi içinde bir düzenleme adımı doğru olması durumunda gerçekleştirilmesi gereken eylem. Varsa değerini `Action` ayarlanır `SkipThisOrchestrationStep`, ilişkili `OrchestrationStep` değil yürütülmelidir. | 
+| Değer | 1: n | İçin sorgulanacak bir ClaimTypeReferenceId. Başka bir değer öğesi, denetlenecek değeri içerir.</li></ul>|
+| Eylem | 1:1 | Bir düzenleme adımı içinde önkoşul denetimi doğru ise gerçekleştirilmesi gereken eylem. `Action` değeri `SkipThisOrchestrationStep`olarak ayarlanırsa, ilişkili `OrchestrationStep` yürütülmemelidir. | 
 
-#### <a name="preconditions-examples"></a>Önkoşulları örnekleri
+#### <a name="preconditions-examples"></a>Ön koşullar örnekleri
 
-Aşağıdaki önkoşullara kullanıcının objectID var olup olmadığını denetler. Kullanıcı yolculuğunda kullanıcının yerel hesabı kullanarak oturum açmanız seçildi. ObjectID varsa, bu düzenleme adımı atlayın.
+Aşağıdaki Önkoşullar, kullanıcının ObjectID 'nin var olup olmadığını denetler. Kullanıcı yolculuğunda Kullanıcı, yerel hesabı kullanarak oturum açmayı seçti. ObjectID varsa, bu düzenleme adımını atlayın.
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -121,7 +121,7 @@ Aşağıdaki önkoşullara kullanıcının objectID var olup olmadığını dene
 </OrchestrationStep>
 ```
 
-Aşağıdaki önkoşullara kullanıcı sosyal hesabınızla oturum olup olmadığını denetler. Dizindeki kullanıcı hesabı bulunacak girişiminde yapılır. Kullanıcı oturum açtığında veya bir yerel hesabıyla kaydolursa, bu düzenleme adımı atlayın.
+Aşağıdaki ön koşullar kullanıcının bir sosyal hesapla oturum açmış olup olmadığını denetler. Dizinde Kullanıcı hesabını bulmak için bir girişimde bulunuldu. Kullanıcı oturum açtığında veya yerel bir hesapla kaydolduğunda, bu düzenleme adımını atlayın.
 
 ```XML
 <OrchestrationStep Order="3" Type="ClaimsExchange">
@@ -138,7 +138,7 @@ Aşağıdaki önkoşullara kullanıcı sosyal hesabınızla oturum olup olmadı�
 </OrchestrationStep>
 ```
 
-Önkoşulları birden çok önkoşulları kontrol edebilirsiniz. Aşağıdaki örnek, 'objectID' veya 'e-posta' var olup olmadığını denetler. İlk koşul true ise, Yolculuğunuzun sonraki düzenleme adımı için atlar.
+Ön koşullar birden çok önkoşulları denetleyebilir. Aşağıdaki örnek ' ObjectID ' veya ' email ' olup olmadığını denetler. İlk koşul doğru ise, yolculuğa bir sonraki düzenleme adımına atlar.
 
 ```XML
 <OrchestrationStep Order="4" Type="ClaimsExchange">
@@ -160,24 +160,30 @@ Aşağıdaki önkoşullara kullanıcı sosyal hesabınızla oturum olup olmadı�
 
 ## <a name="claimsproviderselection"></a>ClaimsProviderSelection
 
-Bir düzenleme adımı türü `ClaimsProviderSelection` veya `CombinedSignInAndSignUp` bir kullanıcı ile oturum talep sağlayıcıları listesini içerebilir. Öğelerin sırasını `ClaimsProviderSelections` öğeleri kullanıcıya sunulan kimlik sağlayıcıları sırasını denetler.
+`ClaimsProviderSelection` veya `CombinedSignInAndSignUp` türünde bir düzenleme adımı, bir kullanıcının oturum açabildiği talep sağlayıcılarının bir listesini içerebilir. `ClaimsProviderSelections` öğeleri içindeki öğelerin sırası, kullanıcıya sunulan kimlik sağlayıcılarının sırasını denetler.
 
-**ClaimsProviderSelection** öğesi aşağıdaki öğeyi içerir:
+**Claimsproviderseçimlere** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| ClaimsProviderSelection | 0: n | Seçilebilir talep sağlayıcıları listesini sağlar.|
+| ClaimsProviderSelection | 1: n | Seçilebilirler talep sağlayıcılarının listesini sağlar.|
 
-**ClaimsProviderSelection** öğesi aşağıdaki öznitelikler içerir: 
+**Claimsproviderseçimlere** öğesi aşağıdaki öznitelikleri içerir: 
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Hayır | Talep sağlayıcı seçiminin sonraki düzenleme adımı içinde yürütülen talep değişimi tanımlayıcısı. Bu öznitelik veya ValidationClaimsExchangeId öznitelik belirtilen, ancak ikisi birden değil olmalıdır. | 
-| ValidationClaimsExchangeId | Hayır | Talep sağlayıcı seçimi doğrulamak için geçerli düzenleme adımı yürütülür talep değişimi tanımlayıcısı. Bu öznitelik veya TargetClaimsExchangeId öznitelik belirtilen, ancak ikisi birden değil olmalıdır. |
+| DisplayOption| Hayır | Tek bir talep sağlayıcı seçiminin kullanılabildiği bir durumun davranışını denetler. Olası değerler: `DoNotShowSingleProvider` (varsayılan), kullanıcı federe kimlik sağlayıcısına anında yönlendirilir. Ya da `ShowSingleProvider` Azure AD B2C tek kimlik sağlayıcı seçimiyle oturum açma sayfasını gösterir. Bu özniteliği kullanmak için, [İçerik tanımı sürümünün](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` ve üzeri olması gerekir.| 
+
+**Claimsproviderselection** öğesi aşağıdaki öznitelikleri içerir: 
+
+| Öznitelik | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| Targetclaimsexchangeıd | Hayır | Talep sağlayıcısı seçiminin sonraki düzenleme adımında yürütülen talep değişim tanıtıcısı. Bu öznitelik veya Validationclaimsexchangeıd özniteliği belirtilmelidir, ancak her ikisi birden belirtilmemelidir. | 
+| Validationclaimsexchangeıd | Hayır | Talep sağlayıcı seçimini doğrulamak için geçerli düzenleme adımında yürütülen talep alışverişi tanıtıcısı. Bu öznitelik veya Targetclaimsexchangeıd özniteliği belirtilmelidir, ancak her ikisi birden belirtilmemelidir. |
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection örneği
 
-Aşağıdaki düzenleme adımı, Facebook, LinkedIn, Twitter, Google veya yerel bir hesap ile oturum açmanız kullanıcı seçebilir. Kullanıcı sosyal kimlik sağlayıcıları seçerse, belirtilen seçili talep değişimi ile ikinci düzenleme adımı yürütür `TargetClaimsExchangeId` özniteliği. İkinci düzenleme adımı kullanıcıyı oturum açma işlemini tamamlamak için sosyal kimlik sağlayıcısı yönlendirir. Kullanıcının yerel hesabı ile oturum açmayı seçerse, Azure AD B2C aynı düzenleme adımı (aynı kaydolma sayfası veya oturum açma sayfası) kalır ve ikinci düzenleme adımı atlar.
+Aşağıdaki düzenleme adımında, Kullanıcı Facebook, LinkedIn, Twitter, Google veya yerel bir hesap ile oturum açmayı tercih edebilir. Kullanıcı sosyal kimlik sağlayıcılarından birini seçerse ikinci düzenleme adımı `TargetClaimsExchangeId` özniteliğinde belirtilen seçili talep değiş tokuşu ile yürütülür. İkinci düzenleme adımı, oturum açma işlemini gerçekleştirmek için kullanıcıyı sosyal kimlik sağlayıcısına yönlendirir. Kullanıcı yerel hesapla oturum açmayı seçerse Azure AD B2C aynı düzenleme adımında kalır (aynı kayıt sayfası veya oturum açma sayfası) ve ikinci düzenleme adımını atlar.
 
 ```XML
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
@@ -214,15 +220,15 @@ Aşağıdaki düzenleme adımı, Facebook, LinkedIn, Twitter, Google veya yerel 
 
 ## <a name="claimsexchanges"></a>ClaimsExchanges
 
-**ClaimsExchanges** öğesi aşağıdaki öğeyi içerir:
+**Claimsexchanges** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Örnekleri | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 0: n | Kullanılan teknik profil bağlı olarak ya da yönlendiren istemci göre seçilen ClaimsProviderSelection veya talep değişimi için bir sunucu çağrısı yapar. | 
+| ClaimsExchange | 1: n | Kullanılan teknik profile bağlı olarak, istemciyi seçili olan ClaimsProviderSelection öğesine göre yeniden yönlendirir veya Exchange taleplerini bir sunucu çağrısı yapar. | 
 
-**ClaimsExchange** öğesi aşağıdaki öznitelikler içerir:
+**Claimsexchange** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Talep değişimi adım tanımlayıcısı. Tanımlayıcı, Talep sağlayıcı seçimden talep değişimi adım ilkede başvurmak için kullanılır. | 
-| TechnicalProfileReferenceId | Evet | Yürütülecek teknik profili tanımlayıcısı. |
+| Kimlik | Evet | Talep değişimi adımının tanıtıcısı. Tanımlayıcı, ilkedeki bir talep sağlayıcı seçimi adımından talep değişimine başvurmak için kullanılır. | 
+| TechnicalProfileReferenceId | Evet | Yürütülecek teknik profilin tanımlayıcısı. |

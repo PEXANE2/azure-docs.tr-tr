@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770093"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986011"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -68,7 +68,9 @@ Uç nokta olarak genel bir IP adresi kullanıyorsanız, IP ve DNS bilgilerini ge
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Etkin tutma zaman aşımı ve TCP boşta kalma zaman aşımı ayarları nelerdir?
 
- Application Gateway v1 SKU 'sunda, etkin tut zaman aşımı süresi 120 saniyedir. V2 SKU 'SU için canlı tutma zaman aşımı 75 saniyedir. TCP boşta kalma zaman aşımı, Application Gateway ön uç sanal IP 'sinde (VIP) 4 dakikalık bir varsayılandır.
+*Canlı tutma zaman aşımı* , Application Gateway bir istemcinin yeniden kullanmadan veya kapatmadan önce kalıcı bir bağlantıda başka bir http isteği göndermesini ne kadar bekleyeceğini yönetir. *TCP boşta kalma zaman aşımı* , bir TCP bağlantısının bir etkinlik olmaması durumunda açık tutulacağı süreyi yönetir. 
+
+Application Gateway v1 SKU 'sunda *canlı tut zaman aşımı süresi* 120 saniyedir ve v2 sku 'sunda 75 saniyedir. *TCP boşta kalma zaman aşımı* , Application Gateway hem v1 hem de v2 SKU 'SU sanal IP 'SINDE (VIP) 4 dakikalık bir varsayılandır. 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Uygulama ağ geçidinin ömrü boyunca IP veya DNS adı değişsin mi?
 

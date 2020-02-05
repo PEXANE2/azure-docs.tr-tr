@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533191"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989102"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
@@ -83,7 +83,8 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
 5. Sonraki adımda makinenize yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanını kaydetmek için anahtarların birini (çift tırnak işaretlerini atın) kopyalayın.  
 
-## <a name="install-the-integration-runtime"></a>Tümleştirme çalışma zamanını yükleme
+## <a name="install-the-integration-runtime-tool"></a>Integration Runtime aracını yükler
+
 1. Makinenizde zaten Integration Runtime varsa, **Program Ekle veya Kaldır** seçeneğini kullanarak programı kaldırın. 
 
 2. Şirket içinde barındırılan tümleştirme çalışma zamanını yerel Windows makinesine [indirin](https://www.microsoft.com/download/details.aspx?id=39717). Yüklemeyi çalıştırın.
@@ -135,5 +136,4 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
     h. Tümleştirme çalışma zamanının SQL Server’a bağlanabildiğini onaylamak için **Test**’i seçin. Bağlantı başarılı olursa yeşil bir onay işareti görürsünüz. Bağlantı başarılı olmazsa bir hata iletisi görürsünüz. Sorunları giderin ve tümleştirme çalışma zamanının SQL Server’a bağlanabildiğinden emin olun.    
 
     > [!NOTE]
-    > Kimlik doğrulama türü, sunucu, veritabanı, kullanıcı ve parola değerlerini not edin. Daha sonra bu öğreticide kullanacaksınız. 
-    
+    > Kimlik doğrulama türü, sunucu, veritabanı, kullanıcı ve parola değerlerini not edin. Daha sonra bu öğreticide kullanacaksınız.

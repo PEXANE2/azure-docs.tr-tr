@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c50edb03fe849c70596c0bfb3cdc2dafa15f136f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480209"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982798"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -77,6 +77,7 @@ Kod oluşturmayı ve bakımını yapılandırmak için aşağıdaki ayarlar kull
 | Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
 | CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
 | NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
+| İşlem | Evet | Gerçekleştirilecek işlem. Olası değerler: `GenerateCode`veya `VerifyCode`. |
 | ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="returning-error-message"></a>Hata iletisi döndürülüyor
@@ -108,7 +109,7 @@ Aşağıdaki örnek `TechnicalProfile` bir kod oluşturmak için kullanılır:
 </TechnicalProfile>
 ```
 
-## <a name="verify-code"></a>Kodu doğrulayın
+## <a name="verify-code"></a>Kodu doğrula
 
 Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir.
 

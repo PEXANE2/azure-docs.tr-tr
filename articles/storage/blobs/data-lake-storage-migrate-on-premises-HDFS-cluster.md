@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327595"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990972"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Şirket içi bir işlem mağazasından Azure Data Box ile Azure depolama 'ya geçiş
 
@@ -282,7 +282,7 @@ Verilerinizi Data Box bir cihaza taşımadan önce bazı yardımcı betikleri in
    sudo apt-get install jq
    ```
 
-3. [İstekler](http://docs.python-requests.org/en/master/) Python paketini yükler.
+3. [İstekler](https://2.python-requests.org/en/master/) Python paketini yükler.
 
    ```bash
    
