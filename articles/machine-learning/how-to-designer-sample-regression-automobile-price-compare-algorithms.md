@@ -5,25 +5,25 @@ description: Azure Machine Learning Designer ile teknik özelliklere göre bir o
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311062"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963352"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile otomobil fiyatlarını tahmin etmek için birden çok gerileme modelini karşılaştırın & eğitme
 
-**Tasarımcı örneği 2**
+**Tasarımcı (Önizleme) örnek 2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcıyı kullanarak tek bir kod satırı yazmadan makine öğrenimi ardışık düzeni oluşturmayı öğrenin. Bu örnek, bir arabasının teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini karşılaştırır. Kendi makine öğrenimi sorunlarınızı ortadan kaldırmak için bu işlem hattında yapılan seçenekler için ktionale sağlayacağız.
+Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi ardışık düzeni oluşturmayı öğrenin. Bu örnek, bir arabasının teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini karşılaştırır. Kendi makine öğrenimi sorunlarınızı ortadan kaldırmak için bu işlem hattında yapılan seçenekler için ktionale sağlayacağız.
 
 Machine Learning 'i kullanmaya yeni başladıysanız, bu işlem hattının [temel sürümüne](how-to-designer-sample-regression-automobile-price-basic.md) göz atın.
 
@@ -31,7 +31,7 @@ Bu işlem hattı için tamamlanan grafik aşağıda verilmiştir:
 
 [işlem hattının ![grafiği](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png)](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 

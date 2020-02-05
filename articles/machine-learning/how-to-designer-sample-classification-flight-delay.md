@@ -5,21 +5,21 @@ description: Azure Machine Learning Designer ile uçuş gecikmelerini tahmin etm
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 778673d724fd6774365c4f2427e2483856ec83a2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d459350572d68cc5dcbbfd56933483404b94f918
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311144"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963298"
 ---
 # <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile uçuş gecikmelerini tahmin etmek için R & bir sınıflandırıcı oluşturma
 
-**Tasarımcı örneği 6**
+**Tasarımcı (Önizleme) örnek 6**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
@@ -29,7 +29,7 @@ Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
 [işlem hattının ![grafiği](media/how-to-designer-sample-classification-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-flight-delay/pipeline-graph.png#lightbox)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -111,7 +111,7 @@ işlem hattı işlem hattını çalıştırdıktan sonra, çıkış bağlantı n
 
 Son olarak, sonuçların kalitesini test etmek için, **modeli değerlendir** modülünü işlem hattı tuvaline ekleyin ve sol giriş bağlantı noktasını puan modeli modülünün çıktısına bağlayın. İşlem hattını çalıştırın ve çıkış bağlantı noktasına tıklayıp **Görselleştir**' i seçerek **modeli değerlendir** modülünün çıkışını görüntüleyin.
 
-## <a name="evaluate"></a>Değerlendirin
+## <a name="evaluate"></a>Değerlendir
 Lojistik regresyon modelinde test kümesinde AUC 0,631 vardır.
 
  ![değerlendir](media/how-to-designer-sample-classification-flight-delay/sample6-evaluate-1225.png)

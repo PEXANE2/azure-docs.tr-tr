@@ -5,25 +5,25 @@ description: Azure Machine Learning Designer ile gelir tahmin etmek için kod i�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: bfae0d8eed80a88475c447a141097022fed9adff
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311147"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963385"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısıyla gelir tahmin etmek için özellik seçimini kullanmak & bir sınıflandırıcı oluşturma
 
-**Tasarımcı örneği 3**
+**Tasarımcı (Önizleme) örnek 3**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcıyı kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin. Bu örnek, Yetişkin görselleştirmenizdeki geliri (> = 50K veya < = 50K) tahmin etmek için iki sınıf bir öngörme **kararı ağacı** sağlar.
+Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin. Bu örnek, Yetişkin görselleştirmenizdeki geliri (> = 50K veya < = 50K) tahmin etmek için iki sınıf bir öngörme **kararı ağacı** sağlar.
 
 Soru yanıt veriyor mu? " Bu, sınıflandırma sorunu olarak adlandırılır. Bununla birlikte, herhangi bir makine öğrenimi sorunu (gerileme, sınıflandırma, kümeleme vb.) eklemek için aynı temel süreci uygulayabilirsiniz.
 
@@ -31,7 +31,7 @@ Bu örnek için nihai işlem hattı grafiği aşağıda verilmiştir:
 
 ![İşlem hattının grafiği](./media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -65,7 +65,7 @@ Veri kümesi 14 özellik ve bir etiket sütunu içerir. Sayısal ve kategorik da
 
 ## <a name="results"></a>Sonuçlar
 
-![Sonuçları değerlendirme](media/how-to-designer-sample-classification-predict-income/sample3-evaluate-1225.png)
+![Sonuçları değerlendirin](media/how-to-designer-sample-classification-predict-income/sample3-evaluate-1225.png)
 
 Değerlendirme sonuçlarında, ROC, duyarlık-geri çekme ve karışıklık ölçümleri gibi eğrilerin olduğunu görebilirsiniz. 
 

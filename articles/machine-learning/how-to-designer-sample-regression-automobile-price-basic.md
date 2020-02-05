@@ -5,25 +5,25 @@ description: Azure Machine Learning Designer ile tek bir kod satırı yazmadan b
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 18a9f9d49dce96b037f10a95a458e52d020fe6c7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311079"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963306"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı ile otomobil fiyatlarını tahmin etmek için gerileme kullanma
 
-**Tasarımcı örneği 1**
+**Tasarımcı (Önizleme) örnek 1**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tasarımcıyı kullanarak tek bir kod satırı yazmadan Machine Learning regresyon modeli oluşturmayı öğrenin.
+Tasarımcı (Önizleme) kullanarak tek bir kod satırı yazmadan Machine Learning regresyon modeli oluşturmayı öğrenin.
 
 Bu işlem hattı, marka, model, horseüs ve boyut gibi teknik özelliklere bağlı olarak bir otomobil fiyatını tahmin etmek için **Doğrusal bir gerileme** yapar. "Ne kadar?" sorusunu yanıtlamaya çalıştığınız için Bu, regresyon sorunu olarak adlandırılır. Bununla birlikte, regresyon, sınıflandırma, kümeleme gibi her türlü makine öğrenimi sorununu çözmek için bu örnekteki temel adımları uygulayabilirsiniz.
 
@@ -38,7 +38,7 @@ Ardışık düzenin son, tamamlanan grafiği aşağıda verilmiştir. Bu makaled
 
 ![İşlem hattının grafiği](./media/how-to-designer-sample-regression-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
