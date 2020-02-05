@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: API sürümünü v5’ten v7’ye yükseltme
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: Visual Studio ile çalışma
-      items:
-        - name: Bing Haber Arama Bağlı Hizmetini kullanma
-          href: vs-bing-news-search-connected-service.md
 - name: Kavramlar
   items:
     - name: Arama sorguları gönderme

@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715851"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016264"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Azure etkinlik günlüğü koleksiyonuna ve dışarı aktarmaya Güncelleştir
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform günlüğliğidir](platform-logs-overview.md) . Etkinlik günlüğü girdilerini [bir olay hub 'ına veya depolama hesabına](activity-log-export.md) veya bir [Log Analytics çalışma alanına](activity-log-collect.md) gönderme yöntemi, [tanılama ayarlarını](diagnostic-settings.md)kullanacak şekilde değiştirilmiştir. Bu makalede, Yöntemler ve tanılama ayarlarına geçiş hazırlığı sırasında eski ayarların nasıl temizleneceğini gösteren farklar açıklanmaktadır.
@@ -45,7 +45,7 @@ Aşağıdaki sütunlar kaldırılmıştır. Bu sütunların yerini değiştirmek
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | Etkinlik alt durumu | ActivitySubstatusValue |
-| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir     | OperationNameValue     |
+| ThrottledRequests     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 
 Aşağıdaki sütun eklendi:
@@ -53,6 +53,9 @@ Aşağıdaki sütun eklendi:
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> Bazı durumlarda, bu sütunlardaki değerler tüm büyük harfle olabilir. Bu sütunları içeren bir sorgunuz varsa, büyük/küçük harfe duyarsız bir karşılaştırma yapmak için [= ~ işlecini](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) kullanmanız gerekir.
 
 ## <a name="work-with-legacy-settings"></a>Eski ayarlarla çalışma
 Etkinlik günlüğünü toplamaya yönelik eski ayarlar, bir tanılama ayarıyla değiştirmeyi tercih ederseniz çalışmaya devam edecektir. Bir aboneliğin günlük profilini yönetmek için aşağıdaki yöntemi kullanın.

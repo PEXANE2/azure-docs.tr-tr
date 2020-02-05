@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845385"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019426"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -174,11 +174,11 @@ Daha fazla bilgi için bkz. [Yeni: yapılandırılabilir boşta zaman aşımı A
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Nasıl yaparım? statik bir IP adresini bulut hizmetim ile ilişkilendirsin mi?
 Statik bir IP adresi ayarlamak için ayrılmış bir IP oluşturmanız gerekir. Bu ayrılmış IP, yeni bir bulut hizmeti veya var olan bir dağıtım ile ilişkilendirilebilir. Ayrıntılar için aşağıdaki belgelere bakın:
-* [Ayrılmış IP adresi oluşturma](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Mevcut bir bulut hizmetinin IP adresini ayır](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Ayrılmış IP 'yi yeni bir bulut hizmeti ile ilişkilendir](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Ayrılmış bir IP 'yi çalışan bir dağıtım ile ilişkilendir](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Ayrılmış IP adresi oluşturma](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [Mevcut bir bulut hizmetinin IP adresini ayır](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Ayrılmış IP 'yi yeni bir bulut hizmeti ile ilişkilendir](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Ayrılmış bir IP 'yi çalışan bir dağıtım ile ilişkilendir](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure temel IP/KIMLIKLERININ ve DDOS 'nin sağladığı özellikler ve yetenekler nelerdir?
 Azure, tehditlere karşı savunmak için veri merkezi fiziksel sunucularındaki IP 'leri/KIMLIKLERI vardır. Ayrıca, müşteriler web uygulaması güvenlik duvarları, ağ güvenlik duvarları, kötü amaçlı yazılım, yetkisiz giriş algılama, önleme sistemleri (KIMLIKLER/IP 'ler) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini dağıtabilir. Daha fazla bilgi için bkz. [verilerinizi ve varlıklarınızı koruma ve genel güvenlik standartları ile uyumlu](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).

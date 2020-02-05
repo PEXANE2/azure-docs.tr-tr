@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect veritabanını SQL Server Express'ten SQL Server'a taşıma. | Microsoft Docs
+title: Azure AD Connect veritabanını SQL Server Express'ten SQL Server'a taşıma. | Microsoft Belgeleri
 description: Bu belge, Azure AD Connect veritabanını yerel SQL Server Express'ten uzaktaki bir SQL Server'a nasıl taşıyacağınızı açıklar.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918846"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019290"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect veritabanını SQL Server Express'ten SQL Server'a taşıma 
 
@@ -31,18 +31,18 @@ Aşağıda bu senaryo hakkında bazı kısa bilgilere yer verilmiştir.  Bu sena
 Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki adımları takip edin.
 
 1. Azure AD Connect sunucusunda **Hizmetler**'e gidin ve **Microsoft Azure AD Eşitleme** hizmetini durdurun.
-2. Bulun **% Program Files%\Microsoft Azure AD eşitleme/Data/** klasörü ve kopyalama **ADSync.mdf** ve **ADSync_log.ldf** dosyaları uzak SQL Server için.
+2. **%ProgramFiles%\Microsoft Azure AD Sync\Data** klasörünü bulun ve **ADSync. mdf** ve **ADSync_log. ldf** dosyalarını uzak SQL Server kopyalayın.
 3. Azure AD Connect sunucusundaki **Microsoft Azure AD Eşitleme** hizmetini yeniden başlatın.
 4. Denetim Masası - - Programlar - Programlar ve Özellikler sayfasından Azure AD Connect'i kaldırın.  Microsoft Azure AD Connect'e ve ardından üst taraftaki Kaldır düğmesine tıklayın.
 5. Uzak SQL sunucusunda SQL Server Management Studio'yu açın.
 6. Veritabanları bölümüne sağ tıklayıp Ekle'yi seçin.
-7. **Veritabanı Ekle** ekranında **Ekle**'ye tıklayıp ADSync.mdf dosyasını gösterin.  **Tamam**'ı tıklatın.
-   ![Veritabanı ekleme](media/how-to-connect-install-move-db/move2.png)
+7. **Veritabanı Ekle** ekranında **Ekle**'ye tıklayıp ADSync.mdf dosyasını gösterin.  **Tamam**’a tıklayın.
+   veritabanı eklemek ![](media/how-to-connect-install-move-db/move2.png)
 
 8. Veritabanı eklendikten sonra Azure AD Connect sunucusuna gidip Azure AD Connect'i yükleyin.
 9. MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db1.png)
-10. Yeni bir komut istemi veya PowerShell oturumu başlatın. Klasörüne gidin \<sürücüsü > \Program Azure AD Connect. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
+10. Yeni bir komut istemi veya PowerShell oturumu başlatın. \Program files\Microsoft Azure AD Connect > klasör \<sürücü ' ne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db3.png)

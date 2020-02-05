@@ -1,7 +1,7 @@
 ---
-title: Özel bulut ayrıcalıklarını ilerletin
-titleSuffix: Azure VMware Solution by CloudSimple
-description: VCenter 'daki yönetim işlevleri için özel bulutunuzda ayrıcalıkların nasıl ilerletiloluşturulacağını açıklar
+title: AVS özel bulut ayrıcalıklarını ilerletin-AVS 'ye göre Azure VMware çözümü
+description: VCenter 'daki yönetim işlevleri için AVS özel bulutunuzda ayrıcalıkların nasıl ilerletiloluşturulacağını açıklar
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 211960af359e19f93afef58162c5b09ae1d9b23f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544455"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025325"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin
+# <a name="escalate-avs-private-cloud-vcenter-privileges-from-the-avs-portal"></a>AVS portalından AVS özel bulut vCenter ayrıcalıklarını ilerlet
 
-Özel bulut vCenter 'nize yönetici erişimi için, CloudSimple ayrıcalıklarınızı geçici olarak ilerletebilirsiniz.  Yükseltilmiş ayrıcalıkları kullanarak, VMware çözümlerini yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
+AVS özel bulut vCenter 'nize yönetici erişimi için, AVS ayrıcalıklarınızı geçici olarak ilerletebilirsiniz. Yükseltilmiş ayrıcalıkları kullanarak, VMware çözümlerini yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
 
-Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter erişimi verilebilir.  Yeni kullanıcılar oluştururken, vCenter 'a erişim için onları CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için bkz. [Cloudsimple özel bulut izin modeli VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter erişimi verilebilir. Yeni kullanıcılar oluşturduğunuzda, vCenter 'a erişim için onları AVS yerleşik gruplarına ekleyin. Daha fazla bilgi için bkz. [AVS özel bulut izin modeli VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
 
 > [!CAUTION]
 > Yönetim bileşenleri için herhangi bir yapılandırma değişikliği yapmayın. İlerletilen ayrıcalıklı durum sırasında gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir veya sisteminizin kullanılamaz hale gelmesine neden olabilir.
@@ -31,15 +31,15 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
 ## <a name="escalate-privileges"></a>Ayrıcalıkları yükseltme
 
-1. [Cloudsimple portalına](access-cloudsimple-portal.md)erişin.
+1. [AVS portalına](access-cloudsimple-portal.md)erişin.
 
-2. **Kaynaklar** sayfasını açın, ayrıcalıklarına Iletmek Istediğiniz özel bulutu seçin.
+2. **Kaynaklar** sayfasını açın, ayrıcalıklarına ILETMEK Istediğiniz AVS özel bulutunu seçin.
 
 3. Özet sayfasının alt kısmındaki **vSphere ayrıcalıklarını Değiştir**altında, **Yükselt**' e tıklayın.
 
     ![VSphere ayrıcalığını değiştirme](media/escalate-private-cloud-privilege.png)
 
-4. VSphere Kullanıcı türünü seçin.  Yalnızca yerel kullanıcı `CloudOwner@cloudsimple.local` ilerletilenebilir.
+4. VSphere Kullanıcı türünü seçin. Yalnızca yerel kullanıcı `CloudOwner@cloudsimple.local` ilerletilenebilir.
 
 5. Açılan listeden ilerleme zaman aralığını seçin. Görevi tamamlamanıza olanak sağlayacak en kısa süreyi seçin.
 
@@ -51,19 +51,19 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
 8. Yükseltme işlemi birkaç dakika sürebilir. İşlem tamamlandığında **Tamam**’a tıklayın.
 
-Ayrıcalık yükseltme başlar ve seçilen aralığın sonuna kadar sürer.  Yönetim görevlerini yapmak için özel bulut vCenter 'unuzda oturum açabilirsiniz.
+Ayrıcalık yükseltme başlar ve seçilen aralığın sonuna kadar sürer. Yönetim görevlerini yapmak için AVS özel bulutu vCenter oturumunuzu açabilirsiniz.
 
 > [!IMPORTANT]
-> Yalnızca bir Kullanıcı ilerletilen ayrıcalıklara sahip olabilir.  Başka bir kullanıcının ayrıcalıklarından daha fazla kullanıcı için kullanıcı ayrıcalıklarını geçersiz bir şekilde ilerletebilirsiniz.
+> Yalnızca bir Kullanıcı ilerletilen ayrıcalıklara sahip olabilir. Başka bir kullanıcının ayrıcalıklarından daha fazla kullanıcı için kullanıcı ayrıcalıklarını geçersiz bir şekilde ilerletebilirsiniz.
 
 > [!CAUTION]
 > Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir ve hizmet hesapları vSphere Web Kullanıcı arabiriminde oturum açmak için kullanılmamalıdır.
 
 ## <a name="extend-privilege-escalation"></a>Ayrıcalık yükseltmeyi uzat
 
-Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme dönemini genişletebilirsiniz.  Yönetim görevlerini tamamlamanıza izin veren ek ilerleme zaman aralığını seçin.
+Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme dönemini genişletebilirsiniz. Yönetim görevlerini tamamlamanıza izin veren ek ilerleme zaman aralığını seçin.
 
-1. CloudSimple portalındaki **özel bulutları** > **kaynaklarda** , ayrıcalık yükseltme 'Yi genişletmek istediğiniz özel bulutu seçin.
+1. AVS portalındaki **AVS özel bulutları** > **kaynaklarda** , ayrıcalık yükseltme 'Yi genişletmek Istediğiniz AVS özel bulutunu seçin.
 
 2. Özet sekmesinin altındaki **ayrıcalık yükseltmeyi Genişlet**' e tıklayın.
 
@@ -75,9 +75,9 @@ Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme d�
 
 ## <a name="de-escalate-privileges"></a>Ön yükseltme ayrıcalıkları
 
-Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz bir şekilde ilerletin.  
+Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz bir şekilde ilerletin. 
 
-1. CloudSimple portalındaki **özel bulutları** > **kaynaklarda** , ayrıcalıklarını yükseltmek istediğiniz özel bulutu seçin.
+1. AVS portalındaki **AVS özel bulutlarını** > **kaynaklarda** , ayrıcalıklarını yükseltmek Istediğiniz AVS özel bulutunu seçin.
 
 2. **Ön yükseltme**' ye tıklayın.
 

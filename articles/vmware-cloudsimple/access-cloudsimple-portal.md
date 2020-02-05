@@ -1,6 +1,6 @@
 ---
-title: CloudSimple-Portal tarafından Azure VMware çözümüne erişin
-description: Azure portal 'ten CloudSimple portalı tarafından VMware çözümüne nasıl erişebileceğinizi açıklar
+title: Azure VMware çözümlerine erişme (AVS)-Portal
+description: Azure portal Azure VMware çözümlerine (AVS) nasıl erişebileceğinizi açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/04/2019
@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: c0b0601b9d2cf505aa5b25e10875338352cab771
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563229"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77015959"
 ---
-# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal CloudSimple Portal tarafından kullanılan VMware çözümüne erişin
+# <a name="access-azure-vmware-solutions-avs-from-the-azure-portal"></a>Azure portal Azure VMware çözümlerine (AVS) erişin
 
-Çoklu oturum açma, CloudSimple portalına erişim için desteklenir. Azure portal oturum açtıktan sonra CloudSimple portalına yeniden oturum açmadan erişebilirsiniz. CloudSimple portalına ilk kez eriştiğinizde [Cloudsimple hizmet Yetkilendirme](#consent-to-cloudsimple-service-authorization-application) uygulamasını yetkilendirmeniz istenir.  Yetkilendirme, tek seferlik bir işlemdir.
+Çoklu oturum açma, AVS portalına erişim için desteklenir. Azure portal oturum açtıktan sonra, AVS portalına yeniden oturum açmadan erişebilirsiniz. AVS portalına ilk kez eriştiğinizde, [AVS hizmet Yetkilendirme](#consent-to-avs-service-authorization-application) uygulamasını yetkilendirmeniz istenir. Yetkilendirme, tek seferlik bir işlemdir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rollerin, CloudSimple hizmeti 'nin dağıtıldığı kaynak grubunda yapılandırılması gerekir.  Roller, CloudSimple hizmeti nesnesinde de yapılandırılabilir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi. Yalnızca yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rolün abonelikte yapılandırılması gerekir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi.
+Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar AVS portalına erişebilir. Rollerin, AVS hizmetinin dağıtıldığı kaynak grubunda yapılandırılması gerekir. Roller, AVS hizmet nesnesi üzerinde de yapılandırılabilir. Rolünüzü denetleme hakkında daha fazla bilgi için [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesine bakın. Yalnızca yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar AVS portalına erişebilir. Rolün abonelikte yapılandırılması gerekir. Rolünüzü denetleme hakkında daha fazla bilgi için [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesine bakın.
 
-Özel roller kullanıyorsanız, rol altında ```Actions```aşağıdaki işlemlerden herhangi birine sahip olmalıdır.  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  İşlemlerden herhangi biri bir parçasıysa ```NotActions```, Kullanıcı cloudsimple portalına erişemez.
+Özel roller kullanıyorsanız, rol ```Actions```altında aşağıdaki işlemlerden herhangi birine sahip olmalıdır.  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). İşlemlerden herhangi biri ```NotActions```bir parçasıysa, Kullanıcı AVS portalına erişemez. 
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -32,42 +32,42 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
 Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 ```
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
+## <a name="access-the-avs-portal"></a>AVS portalına erişme
 
 1. **Tüm Hizmetler**’i seçin.
 
-2. **Cloudsimple Hizmetleri**için arama yapın.
+2. **AVS Hizmetleri**için arama yapın.
 
-3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
+3. Özel bulutunuzu oluşturmak istediğiniz AVS hizmetini seçin.
 
-4. **Genel bakış** sayfasında **Cloudsimple portalına git ' e**tıklayın.  CloudSimple portalına ilk kez Azure portal erişiyorsanız, [Cloudsimple hizmet Yetkilendirme](#consent-to-cloudsimple-service-authorization-application) uygulamasına yetki vermeniz istenir. 
+4. **Genel bakış** SAYFASıNDA, **AVS portalına git ' e**tıklayın. AVS portalına ilk kez Azure portal erişiyorsanız, [AVS hizmet Yetkilendirme](#consent-to-avs-service-authorization-application) uygulamasına yetki vermeniz istenir. 
 
-    ![CloudSimple portalını Başlat](media/launch-cloudsimple-portal.png)
+    ![AVS portalını Başlat](media/launch-cloudsimple-portal.png)
 
 > [!NOTE]
-> Doğrudan Azure portal özel bir bulut işlemi seçerseniz (özel bir bulut oluşturma veya genişletme gibi), CloudSimple portalı belirtilen sayfada açılır.
+> Doğrudan Azure portal özel bir bulut işlemi (özel bir bulut oluşturmak veya genişletmek gibi) seçerseniz, AVS portalı belirtilen sayfada açılır.
 
-CloudSimple portalında yan menüden **giriş** ' i seçerek özel bulutlarınız hakkında özet bilgiler görüntüleyin. Özel bulutlarınızın kaynakları ve kapasitesi, dikkat gerektiren uyarılarla ve görevlerle birlikte gösterilir. Ortak görevler için sayfanın üst kısmındaki adlandırılmış simgeler ' e tıklayın.
+AVS portalında, AVS özel bulutunuz hakkındaki özet bilgileri göstermek için yan menüden **giriş** ' i seçin. AVS özel bulutunuzun kaynakları ve kapasitesi, dikkat gerektiren uyarılarla ve görevlerle birlikte gösterilir. Ortak görevler için sayfanın üst kısmındaki adlandırılmış simgeler ' e tıklayın.
 
 ![Giriş sayfası](media/cloudsimple-portal-home.png)
 
-## <a name="consent-to-cloudsimple-service-authorization-application"></a>CloudSimple hizmet Yetkilendirme uygulamasına izin verme
+## <a name="consent-to-avs-service-authorization-application"></a>AVS Hizmeti yetkilendirme uygulamasına izin verme
 
-CloudSimple portalının ilk kez Azure portal başlatılması, CloudSimple hizmet Yetkilendirme uygulaması için izin vermenizi gerektirir.  İstenen izinleri vermek ve CloudSimple portalına erişmek için **kabul et** ' i seçin.
+Azure portal AVS portalını ilk kez başlatmak, AVS hizmet Yetkilendirme uygulaması için izin vermenizi gerektirir. İstenen izinleri vermek ve AVS portalına erişmek için **kabul et** ' i seçin.
 
-![CloudSimple hizmet yetkilendirmesi-Yöneticiler için onay](media/cloudsimple-azure-consent.png)
+![AVS hizmet yetkilendirmesi-Yöneticiler için onay](media/cloudsimple-azure-consent.png)
 
-Genel yönetici ayrıcalıklarınız varsa, kuruluşunuza izin verebilirsiniz.  **Kuruluşunuz adına izin '** yı seçin.
+Genel yönetici ayrıcalıklarınız varsa, kuruluşunuza izin verebilirsiniz. **Kuruluşunuz adına izin '** yı seçin.
 
-![CloudSimple hizmet yetkilendirmesi onayı-genel yönetici](media/cloudsimple-azure-consent-global-admin.png)
+![AVS hizmet yetkilendirmesi-genel yönetici](media/cloudsimple-azure-consent-global-admin.png)
 
-İzinleriniz CloudSimple portalına erişime izin vermezse, gerekli izinleri vermek için kiracınızın genel yöneticisine başvurun.  Genel yönetici, kuruluşunuzun adına izin verebilir.
+İzinleriniz AVS portalına erişime izin vermezse, gerekli izinleri vermek için kiracınızın genel yöneticisine başvurun. Genel yönetici, kuruluşunuzun adına izin verebilir.
 
-![CloudSimple hizmet yetkilendirmesi onayı-Yöneticiler gerektirir](media/cloudsimple-azure-consent-requires-administrator.png)
+![AVS hizmet yetkilendirmesi onayı-Yöneticiler gerektirir](media/cloudsimple-azure-consent-requires-administrator.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

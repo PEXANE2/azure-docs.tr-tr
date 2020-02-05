@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767612"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024050"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama nedir?
 Azure AD Connect bulut sağlama, kullanıcıların, grupların ve kişilerin Azure AD 'ye eşitlenmesi için karma kimlik hedeflerinizi karşılamak ve gerçekleştirmek üzere tasarlanan yeni bir Microsoft aracısıdır.  Azure AD Connect eşitleme ' de birlikte kullanılabilir ve aşağıdaki avantajları sağlar:
@@ -46,6 +46,8 @@ Aşağıdaki tabloda Azure AD Connect ve Azure AD Connect bulut sağlama arasın
 | İletişim nesneleri için destek |● |● |
 | Cihaz nesneleri için destek |● | |
 | Öznitelik akışları için temel özelleştirmeye izin ver |● |● |
+| Exchange Online özniteliklerini eşitleme |● |● |
+| Uzantı özniteliklerini eşitler 1-15 |● |● |
 | Müşteri tanımlı AD özniteliklerini (Dizin uzantıları) eşitler |● | |
 | Parola karması eşitleme desteği |●|●|
 | Geçişli kimlik doğrulaması desteği |●||
@@ -60,7 +62,7 @@ Aşağıdaki tabloda Azure AD Connect ve Azure AD Connect bulut sağlama arasın
 | Öznitelik akışları için gelişmiş özelleştirmeye izin ver |● | |
 | Geri yazma desteği (parolalar, cihazlar, gruplar) |● | |
 | Azure AD Domain Services desteği|● | |
-| Exchange karma yapılandırması |● | |
+| [Exchange karma geri yazma](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | AD etki alanı başına 50.000 taneden fazla nesne desteği |● | |
 
 ## <a name="next-steps"></a>Sonraki adımlar 

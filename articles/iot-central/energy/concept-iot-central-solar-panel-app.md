@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: b2b0fff225eee52f8ffe308317f06793728e5d1f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 44171a08e69cfa058e0a9e75e3220fb996b7789d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585336"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018015"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central-Solar paneli uygulama mimarisi
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 Bu makalede, güneş paneli izleme uygulama şablonu mimarisine genel bir bakış sunulmaktadır. Aşağıdaki diyagramda, Azure 'da IoT Central platformu kullanarak bir Solar Panel uygulaması için yaygın olarak kullanılan bir mimari gösterilmektedir.
@@ -29,7 +29,7 @@ Bu mimari aşağıdaki bileşenlerden oluşur. Bazı uygulamalara burada listele
 
 ## <a name="solar-panels-and-connectivity"></a>Güneş bölmeleri ve bağlantısı 
 
-Güneş bölmeleri, yenilenebilir enerji açısından önemli kaynaklardan biridir. Solar paneli türüne ve ayarına bağlı olarak, ağ geçitleri veya diğer ara cihazlar ve özel sistemler aracılığıyla bağlanabilir. Cihazları bağlamak için doğrudan bağlanamamış IoT Central cihaz Köprüsü oluşturmanız gerekebilir. IoT Central cihaz Köprüsü açık kaynaklı bir çözümdür ve tüm ayrıntıları [burada](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)bulabilirsiniz. 
+Güneş bölmeleri, yenilenebilir enerji açısından önemli kaynaklardan biridir. Solar paneli türüne ve ayarına bağlı olarak, ağ geçitlerini veya diğer ara cihazları ve özel sistemleri kullanarak da bağlanabilirsiniz. Cihazları bağlamak için doğrudan bağlanamamış IoT Central cihaz Köprüsü oluşturmanız gerekebilir. IoT Central cihaz Köprüsü açık kaynaklı bir çözümdür ve tüm ayrıntıları [burada](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)bulabilirsiniz. 
 
 
 

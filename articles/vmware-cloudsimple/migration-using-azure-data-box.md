@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552899"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019766"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Azure Data Box kullanarak verileri Azure VMware çözümüne geçirme
 
 Microsoft Azure Data Box bulut çözümü, Azure 'da terabaytlık (TBs) verileri hızlı, ucuz ve güvenilir bir şekilde göndermenize olanak tanır. Site özel bir Data Box depolama cihazı gönderilerek güvenli veri aktarımı hızlandırılır. Her depolama cihazının maksimum kullanılabilir depolama kapasitesi 80 TB 'tır ve bölgesel bir taşıyıcı tarafından veri merkezinize aktarılmıştır. Cihazda, aktarım sırasında verilerinizi korumak ve güvenliğini sağlamak için bir Rugged büyük/küçük harfe sahip olabilirsiniz.
 
-Data Box kullanarak, VMware verilerinizi özel bulutunuzda toplu olarak geçirebilirsiniz. Şirket içi VMware vSphere ortamınızdan veriler ağ dosya sistemi (NFS) protokolü üzerinden Data Box kopyalanır. Toplu veri geçişi, sanal makinelerin, yapılandırmanın ve ilişkili verilerin bir zaman içindeki bir kopyasının Data Box ve Azure 'a el ile teslim edilmesi gerekir.
+Data Box kullanarak, VMware verilerinizi AVS özel bulutuna toplu olarak geçirebilirsiniz. Şirket içi VMware vSphere ortamınızdan veriler ağ dosya sistemi (NFS) protokolü üzerinden Data Box kopyalanır. Toplu veri geçişi, sanal makinelerin, yapılandırmanın ve ilişkili verilerin bir zaman içindeki bir kopyasının Data Box ve Azure 'a el ile teslim edilmesi gerekir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -27,7 +27,7 @@ Bu makalede şunları öğreneceksiniz:
 * Şirket içi VMware ortamından Data Box, NFS aracılığıyla veri kopyalama.
 * Data Box dönüşü için hazırlanıyor.
 * Blob verileri Azure VMware çözümüne kopyalanmaya için hazırlanıyor.
-* Verileri Azure 'dan özel buluta kopyalama.
+* Verileri Azure 'dan AVS özel bulutuna kopyalama.
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -44,11 +44,11 @@ Toplu veri geçişi için aşağıdaki senaryolarda Data Box kullanın:
 
 * Azure VMware çözümünüzün sağlandığı bölgede bir sanal ağ ve depolama hesabı oluşturun.
 
-* [ExpressRoute kullanarak Azure sanal ağını CloudSimple 'A bağlama](virtual-network-connection.md)bölümündeki adımları izleyerek, özel bulutınızdan depolama hesabının oluşturulduğu sanal ağa bir [Azure sanal ağ bağlantısı](cloudsimple-azure-network-connection.md) oluşturun.
+* [ExpressRoute kullanarak Azure sanal AĞıNı AVS 'ye bağlama](virtual-network-connection.md)bölümündeki adımları IZLEYEREK, AVS özel bulutunuzda depolama hesabının oluşturulduğu sanal ağa bir [Azure sanal ağ bağlantısı](cloudsimple-azure-network-connection.md) oluşturun.
 
 ## <a name="set-up-data-box-for-nfs"></a>NFS Data Box ayarlama
 
-Öğretici: kablo ' nin "cihazınıza bağlanma" bölümündeki adımları izleyerek Data Box yerel Web Kullanıcı arabirimine bağlanın [ve Azure Data Box bağlayın](../databox/data-box-deploy-set-up.md).  NFS istemcilerine erişime izin vermek için Data Box yapılandırın:
+Öğretici: kablo ' nin "cihazınıza bağlanma" bölümündeki adımları izleyerek Data Box yerel Web Kullanıcı arabirimine bağlanın [ve Azure Data Box bağlayın](../databox/data-box-deploy-set-up.md). NFS istemcilerine erişime izin vermek için Data Box yapılandırın:
 
 1. Yerel Web Kullanıcı arabiriminde **Bağlan ve Kopyala** sayfasına gidin. **NFS ayarları**altında **NFS istemci erişimi**' ni seçin. 
 
@@ -95,7 +95,7 @@ Data Box NFS paylaşımının, verileri NFS veri deposuna kopyalamak için şirk
 
    ![Yeni veri deposu ekleme-NFS yapılandırması](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. Sihirbazın Adım 4 ' te, veri deposunun bağlanmasını istediğiniz ESXi konaklarınızı seçin ve ardından **İleri**' yi seçin.  Bir kümede, sanal makinelerin geçişini sağlamak için tüm Konaklar ' ı seçin.
+6. Sihirbazın Adım 4 ' te, veri deposunun bağlanmasını istediğiniz ESXi konaklarınızı seçin ve ardından **İleri**' yi seçin. Bir kümede, sanal makinelerin geçişini sağlamak için tüm Konaklar ' ı seçin.
 
    ![Yeni veri deposu Ekle-Konakları seçin](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -103,7 +103,7 @@ Data Box NFS paylaşımının, verileri NFS veri deposuna kopyalamak için şirk
 
 ## <a name="copy-data-to-the-data-box-nfs-datastore"></a>Data Box NFS veri deposuna veri kopyalama
 
-Sanal makineler, yeni veri deposuna geçirilebilir veya kopyalanabilir.  Geçirmek istediğiniz kullanılmayan sanal makineler, **Depolama vMotion** seçeneği KULLANıLARAK Data Box NFS veri deposuna geçirilebilirler. Etkin sanal makineler Data Box NFS veri deposuna kopyalanabilir.
+Sanal makineler, yeni veri deposuna geçirilebilir veya kopyalanabilir. Geçirmek istediğiniz kullanılmayan sanal makineler, **Depolama vMotion** seçeneği KULLANıLARAK Data Box NFS veri deposuna geçirilebilirler. Etkin sanal makineler Data Box NFS veri deposuna kopyalanabilir.
 
 * **Taşınabilecek**sanal makineleri belirleyip listeleyin.
 * **Kopyalanabilmesi**gereken sanal makineleri belirleyip listeleyin.
@@ -133,7 +133,7 @@ Sanal makine, Data Box NFS veri deposuna geçirilir. Tüm sanal makineler geçir
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Bir sanal makineyi veya sanal makine şablonunu Data Box veri deposuna kopyalama
 
-1. Kopyalamak istediğiniz bir sanal makineye veya sanal makine şablonuna sağ tıklayın. **Sanal makineye** **kopya  >  Kopyala** ' yı seçin.
+1. Kopyalamak istediğiniz bir sanal makineye veya sanal makine şablonuna sağ tıklayın. **Sanal makineye** **kopya > Kopyala** ' yı seçin.
 
     ![Sanal makine kopyası](media/databox-migration-vm-clone.png)
 
@@ -157,7 +157,7 @@ Sanal makineler Data Box ' den NFS veri deposuna kopyalanır ve depolanır. Sana
 
 ### <a name="copy-iso-files-to-the-data-box-datastore"></a>ISO dosyalarını Data Box veri deposuna kopyalama
 
-1. Şirket içi vCenter Web Kullanıcı arabiriminizden **depolama**sayfasına gidin.  **Veri kutusu-veri deposu** ' nu ve ardından **dosyalar**' ı seçin. ISO dosyalarını depolamak için yeni bir klasör oluşturun.
+1. Şirket içi vCenter Web Kullanıcı arabiriminizden **depolama**sayfasına gidin. **Veri kutusu-veri deposu** ' nu ve ardından **dosyalar**' ı seçin. ISO dosyalarını depolamak için yeni bir klasör oluşturun.
 
     ![ISO Kopyala-yeni klasör oluştur](media/databox-migration-create-folder.png)
 
@@ -213,41 +213,41 @@ Data Box döndürmek için Azure Data Box geri dönüş makalesinde anlatılan a
 
 ## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>Azure depolama 'dan Azure VMware çözümüne veri kopyalama
 
-Data Box cihazınıza kopyalanmış veriler, Data Box sipariş durumu tamamlandı olarak gösterildikten sonra Azure depolama hesabınızda kullanılabilir olacaktır. Veriler artık Azure VMware çözümünüze kopyalanabilir. Depolama hesabındaki verilerin, NFS protokolü kullanılarak özel bulutunuzun vSAN veri deposuna kopyalanması gerekir. 
+Data Box cihazınıza kopyalanmış veriler, Data Box sipariş durumu tamamlandı olarak gösterildikten sonra Azure depolama hesabınızda kullanılabilir olacaktır. Veriler artık Azure VMware çözümünüze kopyalanabilir. Depolama hesabındaki verilerin, NFS protokolünü kullanarak AVS özel bulutunuzun vSAN veri deposuna kopyalanması gerekir. 
 
-İlk olarak, **AzCopy**kullanarak Azure 'Daki bir Linux sanal makinesinde bulunan bir Linux sanal makinesindeki bir yönetilen diske BLOB depolama verilerini kopyalayın. Yönetilen diski NFS aracılığıyla kullanılabilir hale getirin, NFS paylaşımından özel bulutunuzda bir veri deposu olarak bağlayın ve verileri kopyalayın. Bu yöntem, özel bulutunuzda verilerin daha hızlı bir şekilde kopyalanmasını sağlar.
+İlk olarak, **AzCopy**kullanarak Azure 'Daki bir Linux sanal makinesinde bulunan bir Linux sanal makinesindeki bir yönetilen diske BLOB depolama verilerini kopyalayın. Yönetilen diski NFS aracılığıyla kullanılabilir hale getirin, NFS paylaşımından AVS özel bulutunuzda bir veri deposu olarak bağlayın ve verileri kopyalayın. Bu yöntem, AVS özel bulutunuzda verilerin daha hızlı bir şekilde kopyalanmasını sağlar.
 
-### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Bir Linux sanal makinesi ve yönetilen diskler kullanarak özel bulutunuzda verileri kopyalayın ve ardından NFS paylaşma olarak dışarı aktarın
+### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Linux sanal makinesi ve yönetilen diskler kullanarak AVS özel bulutunuzda verileri kopyalayın ve ardından NFS paylaşma olarak dışarı aktarın
 
-1. Azure 'da depolama hesabınızın oluşturulduğu bölgedeki bir [Linux sanal makinesi](../virtual-machines/linux/quick-create-portal.md) oluşturun ve özel bulutunuz Için bir Azure sanal ağ bağlantısı vardır.
+1. Azure 'da depolama hesabınızın oluşturulduğu bölgede ve AVS özel bulutunuz için bir Azure sanal ağ bağlantısı olan bir [Linux sanal makinesi](../virtual-machines/linux/quick-create-portal.md) oluşturun.
 
-2. Depolama kapasitesi blob verilerinden daha büyük olan yönetilen bir disk oluşturun ve [Linux sanal makinenize ekleyin](../virtual-machines/linux/attach-disk-portal.md).  Blob verileri miktarı kullanılabilir en büyük yönetilen diskin kapasitesinden büyükse, verilerin birden çok adımda kopyalanması veya birden çok yönetilen disk kullanılması gerekir.
+2. Depolama kapasitesi blob verilerinden daha büyük olan yönetilen bir disk oluşturun ve [Linux sanal makinenize ekleyin](../virtual-machines/linux/attach-disk-portal.md). Blob verileri miktarı kullanılabilir en büyük yönetilen diskin kapasitesinden büyükse, verilerin birden çok adımda kopyalanması veya birden çok yönetilen disk kullanılması gerekir.
 
 3. Linux sanal makinesine bağlanın ve yönetilen diski bağlayın.
 
 4. [Linux sanal makinenize AzCopy 'i](../storage/common/storage-use-azcopy-v10.md)yükler.
 
-5. AzCopy kullanarak Azure Blob depolamaınızdan verileri yönetilen diske indirin.  Komut sözdizimi: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  @No__t_0, Azure depolama hesabınızın adı ile `<container-name>` Data Box üzerinden kopyalanmış verileri tutan kapsayıcınle değiştirin.
+5. AzCopy kullanarak Azure Blob depolamaınızdan verileri yönetilen diske indirin. Komut sözdizimi: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`. `<storage-account-name>`, Azure depolama hesabınızın adı ile `<container-name>` Data Box üzerinden kopyalanmış verileri tutan kapsayıcınle değiştirin.
 
 6. Linux sanal makinenize NFS sunucusunu yükler:
 
     - Ubuntu/debir dağıtım üzerinde: `sudo apt install nfs-kernel-server`.
     - Enterprise Linux dağıtımında: `sudo yum install nfs-utils`.
 
-7. Yönetilen diskinizde, Azure Blob depolama alanındaki verilerin kopyalandığı klasörün iznini değiştirin.  NFS paylaşma olarak dışarı aktarmak istediğiniz tüm klasörler için izinleri değiştirin.
+7. Yönetilen diskinizde, Azure Blob depolama alanındaki verilerin kopyalandığı klasörün iznini değiştirin. NFS paylaşma olarak dışarı aktarmak istediğiniz tüm klasörler için izinleri değiştirin.
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. @No__t_0 dosyasını düzenleyerek, istemci IP adreslerinin NFS paylaşımıyla erişmesini sağlamak için izinler atayın.
+8. `/etc/exports` dosyasını düzenleyerek, istemci IP adreslerinin NFS paylaşımıyla erişmesini sağlamak için izinler atayın.
 
     ```bash
     sudo vi /etc/exports
     ```
     
-    Özel bulutunuzun her ESXi ana bilgisayar IP 'si için dosyada aşağıdaki satırları girin.  Birden çok klasör için paylaşımlar oluşturuyorsanız, tüm klasörleri ekleyin.
+    AVS özel bulutunuzun her ESXi ana bilgisayar IP 'si için dosyada aşağıdaki satırları girin. Birden çok klasör için paylaşımlar oluşturuyorsanız, tüm klasörleri ekleyin.
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -256,16 +256,16 @@ Data Box cihazınıza kopyalanmış veriler, Data Box sipariş durumu tamamland�
     .
     ```
 
-9. @No__t_0 komutunu kullanarak NFS paylaşımlarını dışarı aktarın.
+9. `sudo exportfs -a` komutunu kullanarak NFS paylaşımlarını dışarı aktarın.
 
-10. @No__t_0 komutunu kullanarak NFS çekirdek sunucusunu yeniden başlatın.
+10. `sudo systemctl restart nfs-kernel-server` komutunu kullanarak NFS çekirdek sunucusunu yeniden başlatın.
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Linux sanal makinesi NFS paylaşımından bir özel bulut vCenter kümesine veri deposu olarak bağlama ve sonra verileri kopyalama
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>Linux sanal makinesi NFS paylaşımından bir AVS özel bulutu vCenter kümesine veri deposu olarak bağlama ve sonra verileri kopyalama
 
-Linux sanal makinenizden NFS paylaşımının, özel bulut vCenter kümenize bir veri deposu olarak bağlanması gerekir. Bağlandıktan sonra, veriler NFS veri deposundan özel bulut vSAN veri deposuna kopyalanabilir.
+Linux sanal makinenizden NFS paylaşımının, AVS özel bulut vCenter kümenize bir veri deposu olarak bağlanması gerekir. Bağlandıktan sonra, veriler NFS veri deposundan AVS özel bulut vSAN veri deposuna kopyalanabilir.
 
-1. Özel bulut vCenter sunucunuzda oturum açın.
+1. AVS özel bulut vCenter sunucunuzda oturum açın.
 
 2. **Veri merkezi**' ne sağ tıklayın, **depolama**' yı seçin, **Yeni veri deposu**' nu seçin ve ardından **İleri**
 
@@ -279,11 +279,11 @@ Linux sanal makinenizden NFS paylaşımının, özel bulut vCenter kümenize bir
 
    ![Yeni veri deposu ekleme-NFS sürümü](media/databox-migration-add-datastore-nfs-version.png)
 
-5. Sihirbazın Adım 3 ' te, veri deposu, yol ve sunucu için adı belirtin.  Sunucu için Linux sanal makinenizin IP adresini kullanabilirsiniz.  Klasör yolu `/<folder>/<subfolder>/` biçiminde olacaktır.
+5. Sihirbazın Adım 3 ' te, veri deposu, yol ve sunucu için adı belirtin. Sunucu için Linux sanal makinenizin IP adresini kullanabilirsiniz. Klasör yolu `/<folder>/<subfolder>/` biçiminde olacaktır.
 
    ![Yeni veri deposu ekleme-NFS yapılandırması](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. Sihirbazın Adım 4 ' te, veri deposunun bağlanmasını istediğiniz ESXi konaklarınızı seçin ve ardından **İleri**' yi seçin.  Bir kümede, sanal makinelerin geçişini sağlamak için tüm Konaklar ' ı seçin.
+6. Sihirbazın Adım 4 ' te, veri deposunun bağlanmasını istediğiniz ESXi konaklarınızı seçin ve ardından **İleri**' yi seçin. Bir kümede, sanal makinelerin geçişini sağlamak için tüm Konaklar ' ı seçin.
 
    ![Yeni veri deposu Ekle-Konakları seçin](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -291,13 +291,13 @@ Linux sanal makinenizden NFS paylaşımının, özel bulut vCenter kümenize bir
 
 ### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>Bir NFS veri deposundan stoğa sanal makineler ve sanal makine şablonları ekleyin
 
-1. Özel bulut vCenter Web Kullanıcı arabiriminizden **depolama**sayfasına gidin.  Bir Linux sanal makinesi NFS veri deposu seçin ve ardından **dosyalar**' ı seçin.
+1. AVS özel bulut vCenter Web Kullanıcı arabiriminizden **depolama**' ya gidin. Bir Linux sanal makinesi NFS veri deposu seçin ve ardından **dosyalar**' ı seçin.
 
     ![NFS veri deposundaki dosyaları seçme](media/databox-migration-datastore-select-files.png)
 
-2. Bir sanal makine veya sanal makine şablonu içeren bir klasör seçin.  Ayrıntılar bölmesinde, bir sanal makine için bir. vmx dosyası veya bir sanal makine şablonu için. vmtx dosyası seçin.
+2. Bir sanal makine veya sanal makine şablonu içeren bir klasör seçin. Ayrıntılar bölmesinde, bir sanal makine için bir. vmx dosyası veya bir sanal makine şablonu için. vmtx dosyası seçin.
 
-3. Sanal makineyi özel bulut vCenter 'unuzda kaydettirmek için **VM 'Yi kaydet** ' i seçin.
+3. Sanal makineyi AVS özel bulut vCenter 'unuzda kaydettirmek için **VM 'Yi kaydet** ' i seçin.
 
     ![Sanal makineyi Kaydet](media/databox-migration-datastore-register-vm.png)
 
@@ -305,29 +305,29 @@ Linux sanal makinenizden NFS paylaşımının, özel bulut vCenter kümenize bir
 
 4. Tüm sanal makineler ve sanal makine şablonları için 3 ve 4 numaralı adımları tekrarlayın.
 
-5. ISO dosyalarını içeren klasöre gidin.  Dosyaları vSAN veri deposundaki bir klasöre kopyalamak için ISO dosyalarını seçin ve ardından **Kopyala** ' yı seçin.
+5. ISO dosyalarını içeren klasöre gidin. Dosyaları vSAN veri deposundaki bir klasöre kopyalamak için ISO dosyalarını seçin ve ardından **Kopyala** ' yı seçin.
 
-Sanal makineler ve sanal makine şablonları artık özel bulut vCenter 'unuzda kullanılabilir. Bu sanal makinelerin, oturum açmadan önce NFS veri deposundan vSAN veri deposuna taşınması gerekir. **Depolama vMotion** seçeneğini kullanabilir ve sanal makinelerin hedefi olarak vSAN veri deposunu seçebilirsiniz.
+Sanal makineler ve sanal makine şablonları artık AVS özel bulut vCenter 'unuzda kullanılabilir. Bu sanal makinelerin, oturum açmadan önce NFS veri deposundan vSAN veri deposuna taşınması gerekir. **Depolama vMotion** seçeneğini kullanabilir ve sanal makinelerin hedefi olarak vSAN veri deposunu seçebilirsiniz.
 
 Sanal makine şablonları, Linux sanal makine NFS veri deposundan vSAN veri deposuna kopyalanmalıdır.
 
 ### <a name="clean-up-your-linux-virtual-machine"></a>Linux sanal makinenizi Temizleme
 
-Tüm veriler özel buluta kopyalandıktan sonra, özel bulutunuzda NFS veri deposunu kaldırabilirsiniz:
+Tüm veriler AVS özel bulutuna kopyalandıktan sonra, AVS özel bulutunuzda NFS veri deposunu kaldırabilirsiniz:
 
 1. Tüm sanal makinelerin ve şablonların vSAN veri deposuna taşındığından ve kopyalandığından emin olun.
 
 2. NFS veri deposundaki tüm sanal makine şablonlarından stoktan kaldır.
 
-3. Linux sanal makine veri deposunu özel bulut vCenter 'ınızdan çıkarın.
+3. Linux sanal makine veri deposunu, AVS özel bulut vCenter 'ınızdan çıkarın.
 
 4. Sanal makineyi ve yönetilen diski Azure 'dan silin.
 
-5. Depolama hesabınızda Data Box tarafından aktarılan verileri tutmak istemiyorsanız, Azure Depolama hesabını silin.  
+5. Depolama hesabınızda Data Box tarafından aktarılan verileri tutmak istemiyorsanız, Azure Depolama hesabını silin. 
     
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Data Box](../databox/data-box-overview.md)hakkında daha fazla bilgi edinin.
-* [Özel bulutunuzda iş yüklerini geçirmeye](migrate-workloads.md)yönelik farklı seçenekler hakkında daha fazla bilgi edinin.
+* [İş YÜKLERINI AVS özel bulutuna geçirmeye](migrate-workloads.md)yönelik farklı seçenekler hakkında daha fazla bilgi edinin.

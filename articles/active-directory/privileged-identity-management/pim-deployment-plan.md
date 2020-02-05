@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021862"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026005"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -85,7 +85,7 @@ Daha fazla bilgi için [Azure AD Privileged Identity Management nedir?](pim-conf
 
 Daha fazla bilgi için, [Privileged Identity Management içinde yönetiyoruz roller](pim-roles.md)konusuna bakın.
 
-## <a name="plan-your-deployment"></a>Dağıtımınızı planlama
+## <a name="plan-your-deployment"></a>Dağıtımınızı planlayın
 
 Bu bölümde, kuruluşunuzda Privileged Identity Management dağıtılmadan önce yapmanız gerekenler ele alınmaktadır. Bu bölümde, kuruluşunuzun ayrıcalıklı kimlikleri için uygun olan en iyi planı oluşturmak için size kılavuzluk edecek şekilde yönergeler izlemeniz ve bu bölümdeki kavramların anlaşılması önemlidir.
 
@@ -120,7 +120,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 Planlama işleminin bir parçası olarak, [Privileged Identity Management](pim-getting-started.md) makalemizi izleyerek Privileged Identity Management ilk olarak kabul etmeniz ve etkinleştirmeniz gerekir. Privileged Identity Management etkinleştirilmesi, dağıtımınıza yardımcı olmak üzere özel olarak tasarlanan bazı özelliklere erişmenizi sağlar.
 
-Amacınız Azure kaynakları için Privileged Identity Management dağıtmaktır, [Privileged Identity Management makalesinde yönetmek için bulma Azure kaynaklarını](pim-resource-roles-discover-resources.md) izlemeniz gerekir. Yalnızca her bir kaynağın, kaynak grubunun ve aboneliğin sahipleri Privileged Identity Management içinde keşfedebilecektir. Azure kaynaklarınız için Privileged Identity Management dağıtmaya çalışan bir genel yöneticisiyseniz, [tüm Azure aboneliklerini yönetmek için erişimi](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , dizinde bulunan tüm Azure kaynaklarına erişim sağlamak üzere yükseltebilir. Ancak, Privileged Identity Management ile kaynaklarını yönetmeden önce, abonelik sahiplerinizin her birinden onay almanızı tavsiye ederiz.
+Amacınız Azure kaynakları için Privileged Identity Management dağıtmaktır, [Privileged Identity Management makalesinde yönetmek için bulma Azure kaynaklarını](pim-resource-roles-discover-resources.md) izlemeniz gerekir. Yalnızca aboneliklerin ve yönetim gruplarının sahipleri bu kaynakları bulabilir ve Privileged Identity Management üzerine ekleyebilir. Eklendi olduktan sonra, PıM işlevselliği yönetim grubu, abonelik, kaynak grubu ve kaynak dahil tüm düzeylerde sahipler için kullanılabilir. Azure kaynaklarınız için Privileged Identity Management dağıtmaya çalışan bir genel yöneticisiyseniz, [tüm Azure aboneliklerini yönetmek için erişimi](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , dizinde bulunan tüm Azure kaynaklarına erişim sağlamak üzere yükseltebilir. Ancak, Privileged Identity Management ile kaynaklarını yönetmeden önce, abonelik sahiplerinizin her birinden onay almanızı tavsiye ederiz.
 
 ### <a name="enforce-principle-of-least-privilege"></a>En az ayrıcalık ilkesini zorla
 
@@ -198,7 +198,7 @@ Konuk kullanıcıların atandığı roller varsa, bunlar özellikle saldırılar
 > [!TIP]
 > : heavy_check_mark: **Microsoft** , güvenliği aşılmış Konuk Kullanıcı hesaplarıyla ilişkili riski azaltmak için Privileged Identity Management kullanarak Konuk kullanıcılarla tüm rolleri yönetmenizi önerir.
 
-Dizin okuyucu, Ileti merkezi okuyucu ve güvenlik okuyucusu gibi okuyucu rolleri, bazen yazma iznine sahip olmadıkları sürece diğer rollere kıyasla daha az önem taşımaktadır. Ancak, bu hesaplara erişim elde etmiş saldırganlar, kişisel bilgiler (PII) gibi hassas verileri okuyabildiğinden, bazı müşterileri bu rolleri de koruduk. Kuruluşunuzdaki okuyucu rollerinin Privileged Identity Management kullanılarak yönetilmesi gerekip gerekmediğini saptarken bunu dikkate almanız gerekir.
+Dizin okuyucu, Ileti merkezi okuyucu ve güvenlik okuyucusu gibi okuyucu rolleri, bazen yazma iznine sahip olmadıkları sürece diğer rollere kıyasla daha az önem taşımaktadır. Ancak, bu hesaplara erişim elde etmiş saldırganlar kişisel veriler gibi hassas verileri okuyabildiğinden, bazı müşterileri bu rolleri de koruduk. Kuruluşunuzdaki okuyucu rollerinin Privileged Identity Management kullanılarak yönetilmesi gerekip gerekmediğini saptarken bunu dikkate almanız gerekir.
 
 #### <a name="azure-resource-roles"></a>Azure kaynağı rolleri
 
@@ -243,16 +243,16 @@ Privileged Identity Management çözümünüzü uygulamadan önce, kuruluşunuzu
 | Rol | MFA gerektirme | Bildirim | Olay bileti | Onay gerektir | Kişi | Etkinleştirme süresi | Kalıcı yönetici |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Genel Yönetici | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Diğer genel Yöneticiler | 1 Saat | Acil durum erişim hesapları |
-| Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | None | 2 saat | None |
-| Yardım Masası Yöneticisi | sayı | sayı | :heavy_check_mark: | sayı | None | 8 saat | None |
+| Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | Hiçbiri | 2 saat | Hiçbiri |
+| Yardım Masası Yöneticisi | sayı | sayı | :heavy_check_mark: | sayı | Hiçbiri | 8 saat | Hiçbiri |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Azure Kaynak rolleri için Privileged Identity Management ayarları
 
 | Rol | MFA gerektirme | Bildirim | Onay gerektir | Kişi | Etkinleştirme süresi | Etkin yönetici | Etkin süre sonu | Uygun süre sonu |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | None | yok | 3 ay |
-| Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | None | 1 Saat | None | yok | 3 ay |
-| Sanal makine Katılımcısı | sayı | :heavy_check_mark: | sayı | None | 3 saat | None | yok | 6 ay |
+| Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | Hiçbiri | Yok | 3 ay |
+| Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | Hiçbiri | 1 Saat | Hiçbiri | Yok | 3 ay |
+| Sanal makine Katılımcısı | sayı | :heavy_check_mark: | sayı | Hiçbiri | 3 saat | Hiçbiri | Yok | 6 ay |
 
 Aşağıdaki tabloda ayarların her biri açıklanmaktadır.
 
@@ -350,7 +350,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 #### <a name="azure-ad-roles"></a>Azure AD rolleri
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. **Azure AD Privileged Identity Management**açın.
 1. **Azure AD rolleri** ' ne tıklayın ve ardından **Roller**' e tıklayın.
 1. Yapılandırdığınız her bir rol için uygun atamaya sahip tüm kullanıcılar için üç nokta ( **...** ) simgesine tıklayın.
@@ -358,7 +358,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 #### <a name="azure-resource-roles"></a>Azure kaynağı rolleri
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. **Azure AD Privileged Identity Management**açın.
 1. **Azure kaynakları** ' na tıklayın ve ardından geri almak istediğiniz bir aboneliğe veya kaynağa tıklayın.
 1. **Roller**' e tıklayın.
@@ -373,7 +373,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 Kiracınızı daha iyi korumak için Privileged Identity Management yerleşik uyarı işlevini kullanmanız gerekir. Daha fazla bilgi için bkz. [güvenlik uyarıları](pim-how-to-configure-security-alerts.md#security-alerts). Bu uyarılar şunları içerir: Yöneticiler ayrıcalıklı roller kullanmıyor, roller Privileged Identity Management dışında atanıyor, roller çok sık ve daha fazla etkinleştiriliyor. Kuruluşunuzu tam olarak korumak için, uyarı listenizde düzenli olarak gidip sorunları düzelmelisiniz. Uyarılarınızı aşağıdaki şekilde görüntüleyebilir ve çözebilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. **Azure AD Privileged Identity Management**açın.
 1. **Azure AD rolleri** ' ne tıklayın ve ardından **Uyarılar**' a tıklayın.
 

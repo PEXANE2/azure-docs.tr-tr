@@ -2,18 +2,18 @@
 title: Özel havuz oluşturmak için paylaşılan görüntü galerisini kullanın-Azure Batch | Microsoft Docs
 description: Uygulamanız için ihtiyaç duyduğunuz yazılımı ve verileri içeren işlem düğümlerine özel görüntüler sağlamak için paylaşılan görüntü Galerisi ile bir Batch havuzu oluşturun. Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: jushiman
-ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029658"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022945"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
 

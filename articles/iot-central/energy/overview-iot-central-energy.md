@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581496"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016571"
 ---
-# <a name="build-energy-solutions-with-iot-central"></a>IoT Central ile enerji çözümleri oluşturun 
+# <a name="build-energy-solutions-with-iot-central"></a>IoT Central ile enerji sektörü çözümleri oluşturma 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 Akıllı ölçümler ve Solar bölmeleri enerji sektörü dönüştürmesinin önemli bir rolünü yürütüyor. Akıllı ölçümler, enerji tüketimlerini hakkında daha fazla denetim ve gerçek zamanlı içgörüler sunar. Akıllı ölçer ve güneş paneli izleme uygulamaları, çeşitli özellikleri göstermek için örnek şablonlardır. İş ortakları, belirli ihtiyaçları için IoT Central enerji çözümleri oluşturmak üzere bu şablonlardan yararlanabilir. Yeni kodlama yoktur ve bu uygulamaları dağıtmak ve kullanmak için ek maliyet gerekmez. Enerji uygulama şablonları ve özellikleri hakkında daha fazla bilgi edinin.

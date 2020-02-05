@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 50e17fae88f16d7579997b3b356638777ec3163a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119661"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014292"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -146,11 +146,11 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 | **api.error** | [Exception. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** -bir özel durum veya hata ile karşılaşıldığında hata sayfası görüntüler. |
 | **api. ıdpseçimlerin** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcısı seçim sayfası** -kullanıcıların oturum açma sırasında seçebileceği kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |
 | **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kaydolma Için kimlik sağlayıcısı seçimi** -kullanıcıların kaydolma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |
-| **api.localaccountpasswordreset** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Parola unuttum sayfası** -parola sıfırlama işlemini başlatmak için kullanıcıların tamamlaması gereken bir form görüntüler. |
-| **api.localaccountsignin** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap oturum açma sayfası** -e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. Form bir metin girişi kutusu ve parola giriş kutusu içerebilir. |
-| **api.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap kaydolma sayfası** -e-posta adresini veya Kullanıcı adını temel alan bir yerel hesaba kaydolmak için bir form görüntüler. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. |
+| **api.localaccountpasswordreset** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Parola unuttum sayfası** -parola sıfırlama işlemini başlatmak için kullanıcıların tamamlaması gereken bir form görüntüler. |
+| **api.localaccountsignin** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap oturum açma sayfası** -e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. Form bir metin girişi kutusu ve parola giriş kutusu içerebilir. |
+| **api.localaccountsignup** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap kaydolma sayfası** -e-posta adresini veya Kullanıcı adını temel alan bir yerel hesaba kaydolmak için bir form görüntüler. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. |
 | **api. phonefactor** | [çok faktörlü-1.0.0. cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication sayfası** -kaydolma veya oturum açma sırasında telefon numaralarını metin veya ses kullanarak doğrular. |
-| **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Sosyal hesap kaydolma sayfası** -kullanıcıların, sosyal kimlik sağlayıcısından mevcut bir hesabı kullanarak kaydolduklarında tamamlaması gereken bir form görüntüler. Bu sayfa, parola girişi alanları hariç, önceki sosyal hesap kaydolma sayfasına benzer. |
-| **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil güncelleştirme sayfası** -kullanıcıların, profillerini güncelleştirmek için erişebileceği bir form görüntüler. Bu sayfa, parola girişi alanları hariç sosyal hesap kaydolma sayfasına benzerdir. |
-| **api.signuporsignin** | [Birleşik. html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Birleşik kaydolma veya oturum açma sayfası** -Kullanıcı kayıt ve oturum açma sürecini işler. Kullanıcılar, kurumsal kimlik sağlayıcılarını, Facebook veya Google + gibi sosyal kimlik sağlayıcılarını veya yerel hesapları kullanabilir. |
+| **api.selfasserted** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Sosyal hesap kaydolma sayfası** -kullanıcıların, sosyal kimlik sağlayıcısından mevcut bir hesabı kullanarak kaydolduklarında tamamlaması gereken bir form görüntüler. Bu sayfa, parola girişi alanları hariç, önceki sosyal hesap kaydolma sayfasına benzer. |
+| **api.selfasserted.profileupdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil güncelleştirme sayfası** -kullanıcıların, profillerini güncelleştirmek için erişebileceği bir form görüntüler. Bu sayfa, parola girişi alanları hariç sosyal hesap kaydolma sayfasına benzerdir. |
+| **api.signuporsignin** | [Birleşik. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Birleşik kaydolma veya oturum açma sayfası** -Kullanıcı kayıt ve oturum açma sürecini işler. Kullanıcılar, kurumsal kimlik sağlayıcılarını, Facebook veya Google + gibi sosyal kimlik sağlayıcılarını veya yerel hesapları kullanabilir. |
 

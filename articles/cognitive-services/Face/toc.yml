@@ -79,8 +79,6 @@
           href: face-resource-container-config.md
         - name: Kapsayıcı örnekleri kullanma
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Yüz Tanıma Bağlı Hizmetini kullanma
-      href: vs-face-connected-service.md
 - name: Başvuru
   items:
     - name: Yüz Tanıma API'si

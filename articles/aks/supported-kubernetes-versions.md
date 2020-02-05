@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996757"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026124"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde desteklenen Kubernetes sürümleri
 
@@ -96,7 +96,7 @@ New Supported Version List
 * Kubernetes 'in yeni **İkincil** sürümleri için
   * Tüm kullanıcılar, yeni sürümden ve hangi sürümün kaldırılabileceği herkese açık bir şekilde bildirilir.
   * Yeni bir yama sürümü yayınlandığında, en eski düzeltme eki sürümü aynı anda kaldırılır.
-  * Müşterilerin, desteklenen bir alt sürüm sürümüne yükseltmek için genel bildirim tarihinden itibaren **60 gün** vardır.
+  * Müşterilerin desteklenen bir alt sürüm sürümüne yükseltilmesi için genel bildirim tarihinden itibaren **30 gün** daha vardır.
 * Kubernetes 'in yeni **Düzeltme Eki** sürümleri için
   * Tüm kullanıcılara, yayımlanmakta olan yeni yama sürümü bildirilir ve en son düzeltme eki sürümüne yükseltilir.
   * Kullanıcıların daha yeni, desteklenen bir yama sürümüne yükseltilmesi **30 gün** daha vardır. Kullanıcıların, en eski kaldırılmadan önce desteklenen bir yama sürümüne yükseltilmesi **30 gün** daha vardır.
@@ -139,7 +139,7 @@ az aks get-versions --location eastus --output table
 
 **Bir müşteri bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örnek:
+*N-3* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örneğin:
 
 - Desteklenen en eski AKS sürümü *1.13. a* ve *1.12. b* veya daha eski bir sürümse, destek dışında olursunuz.
 - *1.12. b* 'den *1.13* 'e yükseltme işlemi başarılı olursa, destek ilkilerimizin içinden geri dönebilirsiniz.

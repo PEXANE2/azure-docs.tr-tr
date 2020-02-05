@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845358"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019409"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: sık sorulan sorular (SSS)
 
@@ -101,8 +101,8 @@ Bu konak üst bilgi bağlaması, csdef dosyası aracılığıyla zorlandığınd
 
 Bulut hizmetinizin genel kullanıma açık IP adresinin (VIP olarak da bilinir) hiçbir şekilde değişmeyeceğinden emin olmak için, bazı belirli istemciler tarafından geleneksel beyaz listeye alınabilmesi için, onunla ilişkili ayrılmış bir IP 'niz olması önerilir. Aksi takdirde, dağıtımı sildiğinizde Azure tarafından sunulan sanal IP aboneliğinizden serbest bırakılır. Başarılı VIP değiştirme işlemi için, hem üretim hem de hazırlama yuvaları için ayrı ayrı ayrılmış IP 'Ler gerekir. Bu işlemler olmadan değiştirme işlemi başarısız olur. Bir IP adresi ayırmak ve bulut hizmetinize ilişkilendirmek için şu makalelere bakın:
 
-- [Mevcut bir bulut hizmetinin IP adresini ayır](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [Mevcut bir bulut hizmetinin IP adresini ayır](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 Rolleriniz için birden fazla örneğiniz varsa, RIP 'yi bulut hizmetinize ilişkilendirerek kapalı kalma süresi olmaz. Alternatif olarak, Azure veri merkezinizin IP aralığını izin verilenler listesine ekleyebilirsiniz. Tüm Azure IP aralıklarını [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=41653)' nde bulabilirsiniz.
 

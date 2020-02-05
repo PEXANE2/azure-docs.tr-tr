@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: c4124f46e1b900e240858e4dcd332f13ba0950ec
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 511a8bb9d19caeb3e49105d7f94e75ddfe836f78
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901615"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019239"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -44,7 +44,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Australia Government** | Avustralya Orta, Avustralya Orta 2 |Kanberra, Kanberra2 |
 | **Avrupa** | Fransa Orta, Fransa Güney, Almanya Kuzey, Almanya Orta Batı, Kuzey Avrupa, Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Batı, UK Güney, Batı Avrupa |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Geneva, Londra, London2, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich, Münih |
 | **Kuzey Amerika** | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Kanada Orta, Kanada Doğu |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miamı, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, toron |
-| **Asya** | Doğu Asya, Güneydoğu Asya |Hong Kong ÖIB, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
+| **Asya** | Doğu Asya, Güneydoğu Asya | Bangkok, Hong Kong, Hong Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Hindistan** | Hindistan Batı, Hindistan Orta, Hindistan Güney |Madras, Madras2, Bombay, Bombay2 |
 | **Japonya** | Japonya Batı, Japonya Doğu |Osaka, Tokyo |
 | **Okyanusya** | Avustralya Güneydoğu, Avustralya Doğu |Auckland, Melbourne, Perth, Sidney, Sydney2 | 
@@ -81,6 +81,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Amsterdam2** | [Interxiyon AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | Batı Avrupa | 10G, 100G | CenturyLink Cloud Connect, Colt, DE-CIX, Eunetçalışmalar, ınterxiyon, turuncu, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | Yok | Yok | Equinix, Megaport |
 | **Auckland** | [Vocus grubu NZ Albümno](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | Yok | 'Yi | Devoli, Kordia, Megaport, Spark NZ, Vocus Group NZ |
+| **Bangkok** | [AıS](http://business.ais.co.th/solution/microsoft-azure.html?category=cloud) | 2 | Yok | 'Yi | AıS |
 | **Busan** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | Kore Güney | Yok | LG CNS |
 | **Kanberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Avustralya Orta | 10G, 100G | CDC |
 | **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Avustralya Orta 2| 10G, 100G | CDC |
@@ -96,7 +97,8 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | Colt, DE-CIX, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
-| **Hong Kong ÖİB** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | Yok | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
+| **Hong Kong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | Yok | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
+| **Hong Kong2** | [MEGA-ı](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Yok | 'Yi | |
 | **Cakarta** | Telkoa Endonezya | 4 | Yok | 'Yi | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Güney Afrika Kuzey | 'Yi | İngiliz Telekoı, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, turuncu, Teraco |
 | **Kuala Lumpur** | [ZAMAN dotCom Menara AIMS](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | Yok | Yok | TIME dotCom |

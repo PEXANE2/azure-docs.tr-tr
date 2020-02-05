@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442699"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017608"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Application Gateway ile iç VNET 'te API Management tümleştirme
 
@@ -186,6 +186,9 @@ Yukarıdaki komut başarılı olduktan sonra, bu [hizmete erişmek için Iç VNE
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>API Management bir özel etki alanı adı ayarlama
 
+> [!IMPORTANT]
+> [Yeni geliştirici portalı](api-management-howto-developer-portal.md) , aşağıdaki adımlara ek olarak API Management yönetim uç noktasına bağlantıyı etkinleştirmenizi de gerektirir.
+
 ### <a name="step-1"></a>Adım 1
 
 Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte `api.contoso.net` ve `portal.contoso.net`kullanacağız.  
@@ -313,7 +316,7 @@ Yukarıda oluşturulan API Management hizmetinin iç sanal IP adresiyle **apıma
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
 ```
 
-### <a name="step-10"></a>10. Adım
+### <a name="step-10"></a>10. adım
 
 Temel yönlendirmeyi kullanmak için Application Gateway kurallar oluşturun.
 

@@ -2,22 +2,22 @@
 title: "Hızlı başlangıç: Azure Batch işi çalıştırma-Python API 'SI"
 description: Batch Python istemci kitaplığını kullanarak Azure Batch bir örnek işi ve görevleri hızlıca çalıştırın. Batch hizmetinin temel kavramlarını öğrenin.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 3e87649e82bba295d8baaf06a71ace222ceeb0be
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029388"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017114"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı başlangıç: Python API’si ile ilk Batch işinizi çalıştırma
 

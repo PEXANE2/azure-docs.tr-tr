@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732646"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024543"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Metin Analizi API'si için dil ve bölge desteği
 
@@ -33,7 +33,7 @@ Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa
 
 Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanıma için, desteklenen dillerin listesi, çözümleyiciler ek dillerin dil kurallarına uyum sağlayacak şekilde iyileştirilmişse daha seçmeli olur. Adlandırılmış varlık tanıma v2 'de, [varlık türlerinin](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) tam kümesi için destek şu anda aşağıdaki dillerle sınırlıdır: 
 * Türkçe
-* Basitleştirilmiş Çince
+* Çince-Basitleştirilmiş
 * Fransızca
 * Almanca
 * İspanyolca
@@ -51,8 +51,8 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arapça                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Çekçe                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Basitleştirilmiş Çince    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
-| Geleneksel Çince   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| Çince-Basitleştirilmiş    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Çince-Geleneksel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Danca                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Felemenkçe                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Türkçe               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
@@ -63,7 +63,7 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 | Macarca             |     `hu`      |           |             |           ✔ \*           |                |                    |
 | İtalyanca               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japonca              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Korece                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| Korece                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
 | Norveççe (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Lehçe                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Portekizce (Portekiz) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` de kabul edildi |

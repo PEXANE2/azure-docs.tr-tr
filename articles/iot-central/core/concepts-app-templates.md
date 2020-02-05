@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867451"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019052"
 ---
 # <a name="what-are-application-templates"></a>Uygulama şablonları nedir?
 
@@ -26,44 +26,27 @@ Uygulama şablonları şunlardan oluşur:
 - Önceden yapılandırılmış kurallar ve işler
 - Öğreticiler ve nasıl yapılır-TOS dahil zengin belgeler
 
-## <a name="preview-templates"></a>Önizleme şablonları
+Uygulamanızı oluştururken uygulama şablonunu seçersiniz. Uygulama oluşturulduktan sonra şablonu değiştiremezsiniz.
 
-Uygulama şablonu seçiminiz, uygulamanızın cihazlar için Tak ve Kullan gibi Önizleme özelliklerini IoT Central kullanıp kullanmadığını belirler.
+## <a name="custom-templates"></a>Özel şablonlar
 
-Şu anda, _genel olarak kullanılabilen_ özellikleri kullanan uygulama şablonu:
+Uygulamanızı sıfırdan oluşturmak istiyorsanız, iki özel uygulama şablonundan birini seçin:
 
-- Özel uygulama > eski uygulama
+- Özel uygulama
+- Özel uygulama (eski)
 
-
-Şu anda _genel önizleme_ özelliklerini kullanan uygulama şablonları şunlardır:
-
-- Özel uygulama > Önizleme uygulaması
-- Perakende > bağlı lojistik
-- Perakende > Dijital dağıtım merkezi
-- Mağaza Içi analiz-koşul izleme > perakende
-- Mağaza Içi > Retail Analytics – kullanıma alma
-- Perakende > Mikro Karşılama Merkezi
-- Perakende > Akıllı envanter yönetimi
-- Enerji > Akıllı ölçüm izleme
-- Enerji > güneş paneli izleme
-- Kamu > bağlı çöp yönetimi
-- Kamu > su kullanımı izleme
-- Kamu > su kalitesi izleme
-- Sağlık > sürekli hasta izleme
-
-> [!NOTE]
-> **Eski uygulama** şablonları şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında mevcuttur, ancak diğer şablonlar şu anda yalnızca **Avrupa** ve **ABD** konumlarında kullanılabilir.
+Eski şablonu kullanmak için belirli bir nedeniniz yoksa, **özel uygulama** şablonunu seçin.
 
 ## <a name="industry-focused-templates"></a>Sektör odaklı Şablonlar
 
 Azure IoT Central, sektörde bağımsız bir uygulama platformudur. Uygulama şablonları, bu sektörlerde daha fazla sunulacak sektörde bulunan sektör odaklı örneklerdir:
 
-- [Perakende](../retail/overview-iot-central-retail-pnp.md)
+- [Maliyeti](../retail/overview-iot-central-retail-pnp.md)
   - Bağlı lojistik
   - Dijital dağıtım merkezi
   - Mağaza içi analiz-koşul izleme
   - Mağaza içi analiz-kullanıma alma
-  - Akıllı envanter yönetimi
+  - Akıllı Envanter Yönetimi
 - [Enerji](../energy/overview-iot-central-energy.md)
   - Akıllı sayaç izleme
   - Güneş paneli izleme

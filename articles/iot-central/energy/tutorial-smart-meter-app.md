@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7b04251211e716ef8e5f8c77aa3a2e74f6e9ef77
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982524"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016009"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı ölçüm izleme uygulaması oluşturma sürecinde size rehberlik eder. Bu öğreticide şunları öğreneceksiniz:
 
@@ -50,10 +50,11 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
     * **URL**: bir IoT Central URL 'si seçin, platform benzersiz olduğunu doğrular.
     * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
     * **Faturalandırma bilgisi**: uygulamanın kendisi ücretsizdir. Uygulamanıza yönelik kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
-    * Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın, uygulamanız bir dakika içinde oluşturulur.     
-         Yeni ![uygulama formu](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın, uygulamanız bir dakika içinde oluşturulur.
 
-         ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
+        ![Yeni uygulama formu](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve sanal verileri doğrulama

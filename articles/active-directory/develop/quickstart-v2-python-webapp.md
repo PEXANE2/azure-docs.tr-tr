@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 8a6e8dad7549b3656d4387cfad1d0c3a44b13975
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b219b507ac14b2a66b23f93d9fb1035f56cb8164
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965985"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018695"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -28,12 +28,12 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) veya [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pythonhosted.org/Flask-Session/), [istekler](https://requests.kennethreitz.org//en/master/)
+- [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pythonhosted.org/Flask-Session/), [istekler](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]

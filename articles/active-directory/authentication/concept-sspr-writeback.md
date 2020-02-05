@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544030"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023132"
 ---
 # <a name="what-is-password-writeback"></a>Parola geri yazma nedir?
 
@@ -164,7 +164,7 @@ Parolalar aşağıdaki durumlardan herhangi birine *geri yazılmaz:*
    * [Microsoft 365 Yönetim merkezinden](https://admin.microsoft.com) yönetici tarafından başlatılan son kullanıcı parolası sıfırlama
 
 > [!WARNING]
-> Şirket içi Active Directory Active Directory Kullanıcıları ve bilgisayarları gibi yönetim araçları veya Active Directory Yönetim Merkezi Azure AD Connect önizleme özelliği olarak desteklenmek üzere "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" onay kutusunun kullanılması. Daha fazla bilgi için [Azure AD Connect eşitleme ile parola karması eşitlemeyi uygulama](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)başlıklı makaleye bakın.
+> Şirket içi Active Directory Active Directory Kullanıcıları ve bilgisayarları gibi yönetim araçları veya Active Directory Yönetim Merkezi Azure AD Connect önizleme özelliği olarak desteklenmek üzere "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" onay kutusunun kullanılması. Daha fazla bilgi için [Azure AD Connect eşitleme ile parola karması eşitlemeyi uygulama](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)başlıklı makaleye bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

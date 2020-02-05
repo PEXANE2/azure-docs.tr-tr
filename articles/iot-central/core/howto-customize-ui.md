@@ -3,23 +3,23 @@ title: Azure IoT Central kullanıcı arabirimini özelleştirme | Microsoft Docs
 description: Azure IoT Central uygulamanız için temayı özelleştirme ve yardım bağlantıları
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953596"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018440"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central kullanıcı arabirimini özelleştirme
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+Bu makalede, bir yönetici olarak, özel temalar uygulayarak ve kendi özel yardım kaynaklarınıza işaret etmek üzere yardım bağlantılarını değiştirerek uygulamanızın kullanıcı arabirimini nasıl özelleştirebileceğinizi açıklar. 
 
-Bu makalede, bir yönetici olarak, özel temalar uygulayarak ve kendi özel yardım kaynaklarınıza işaret etmek üzere yardım bağlantılarını değiştirerek uygulamanızın kullanıcı arabirimini nasıl özelleştirebileceğinizi açıklar.
+
 
 Aşağıdaki ekran görüntüsünde, standart temanın kullanıldığı bir sayfa gösterilmektedir:
 
@@ -41,7 +41,7 @@ Bu sayfada, uygulamanızın aşağıdaki yönlerini özelleştirebilirsiniz:
 
 Saydam bir arka planla 1 MB 'den büyük olmayan bir PNG görüntüsü. Bu logo, IoT Central uygulaması başlık çubuğunda sol tarafta görüntülenir.
 
-Logo resminiz uygulamanızın adını içeriyorsa, uygulama adı metnini gizleyebilirsiniz. Daha fazla bilgi için bkz. [uygulamanızı yönetme](./howto-administer.md#change-application-name-and-url).
+Logo resminiz uygulamanızın adını içeriyorsa, uygulama adı metnini gizleyebilirsiniz. Daha fazla bilgi için bkz. [uygulamanızı yönetme](howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Tarayıcı simgesi (öncelik simgesi)
 
@@ -78,4 +78,4 @@ Ayrıca, Yardım menüsüne yeni girişler ekleyebilir ve varsayılan girişleri
 IoT Central uygulamanızda Kullanıcı arabirimini özelleştirmeyi öğrendiğinize göre, aşağıda önerilen bazı adımlar verilmiştir:
 
 - [Uygulamanızı yönetme](./howto-administer.md)
-- [Panonuza kutucuk ekleme](./howto-add-tiles-to-your-dashboard.md)
+- [Panonuza kutucuk ekleme](howto-add-tiles-to-your-dashboard.md)

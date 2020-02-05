@@ -64,8 +64,6 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes hizmetini kullanma (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-    - name: Metin Analizi Bağlı Hizmetini kullanma
-      href: vs-text-connected-service.md
 - name: Başvuru
   items:
     - name: CLI başvurusu

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: f7d31966241e352583ee4338faff8aae7e1a09c6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990258"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019035"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLı 'dan IoT Central yönetme
 
@@ -48,30 +48,24 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-Bu komutlar öncelikle uygulamanın Doğu ABD konumunda bir kaynak grubu oluşturur. Aşağıdaki tabloda **az iotcentral App Create** komutuyla kullanılan parametreler açıklanmaktadır:
+Bu komutlar öncelikle uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur. Aşağıdaki tabloda **az iotcentral App Create** komutuyla kullanılan parametreler açıklanmaktadır:
 
 | Parametre         | Açıklama |
 | ----------------- | ----------- |
 | resource-group    | Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
-| location          | Varsayılan olarak, bu komut kaynak grubundaki konumu kullanır. Şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında IoT Central bir uygulama oluşturabilirsiniz. |
+| location          | Varsayılan olarak, bu komut kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerinde veya **Avustralya** ya da **Asya Pasifik** coğrafi bölgelerde IoT Central bir uygulama oluşturabilirsiniz. |
 | ad              | Azure portal uygulamanın adı. |
 | alanınızın         | Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
 | isteyin               | Şu anda, **ST1** ya da **ST2**kullanabilirsiniz. Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
 | şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın: |
 | görünen ad      | Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
 
-**Genel olarak kullanılabilen özelliklerle uygulama şablonu**
+**Uygulama şablonları**
 
 | Şablon adı            | Açıklama |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur.
-
-
-**Genel Önizleme özelliklerine sahip uygulama şablonları**
-
-| Şablon adı            | Açıklama |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Kendi cihaz şablonlarınızla ve cihazlarınızla doldurmanız için boş bir Tak ve kullan önizleme uygulaması oluşturur. |
+| iotc-pnp-preview@1.0.0   | Kendi cihaz şablonlarınızla ve cihazlarınızla doldurmanız için boş bir Tak ve Kullan (Önizleme) uygulaması oluşturur. |
 | iotc-condition@1.0.0     | Store Analytics – Condition izleme şablonuyla bir uygulama oluşturur. Mağaza ortamına bağlanmak ve bunları izlemek için bu şablonu kullanın. |
 | iotc-consumption@1.0.0   | Su tüketim izleme şablonuyla bir uygulama oluşturur. Su akışını izlemek ve denetlemek için bu şablonu kullanın. |
 | iotc-distribution@1.0.0  | Dijital dağıtım şablonu olan bir uygulama oluşturur. Ana varlıkları ve eylemleri artırarak ambar çıkış verimliliğini artırmak için bu şablonu kullanın. |
@@ -83,9 +77,6 @@ Bu komutlar öncelikle uygulamanın Doğu ABD konumunda bir kaynak grubu oluştu
 | iotc-quality@1.0.0       | Su kalitesi izleme şablonuyla bir uygulama oluşturur. Su kalitesini dijital olarak izlemek için bu şablonu kullanın.|
 | iotc-store@1.0.0         | Mağaza Analizi – kullanıma alma şablonu olan bir uygulama oluşturur. Mağazalarınızın içindeki kullanıma alma akışını izlemek ve yönetmek için bu şablonu kullanın. |
 | iotc-waste@1.0.0         | Bağlı bir çöp yönetimi şablonuna sahip bir uygulama oluşturur. Atık bölmeleri ve dağıtım alanı işleçlerini izlemek için bu şablonu kullanın. |
-
-> [!NOTE]
-> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
 
 ## <a name="view-your-applications"></a>Uygulamalarınızı görüntüleyin
 

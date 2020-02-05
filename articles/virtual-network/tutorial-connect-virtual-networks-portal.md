@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a3966615d28630fdd2ab799f478ef7edaa3377e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775288"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016060"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
@@ -171,6 +171,6 @@ Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları sili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, sanal ağ eşlemesi ile aynı Azure bölgesindeki iki ağın nasıl bağlanacağını öğrendiniz. Farklı [desteklenen bölgelerde](virtual-network-manage-peering.md#cross-region) ve [farklı Azure aboneliklerinde](create-peering-different-subscriptions.md#portal) sanal ağları eşleyebilir ve eşleme ile [hub ve bağlı bileşen ağ tasarımları](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) oluşturabilirsiniz. Sanal ağ eşlemesi hakkında daha fazla bilgi için bkz. [Sanal ağ eşlemesine genel bakış](virtual-network-peering-overview.md) ve [Sanal ağ eşlemelerini yönetme](virtual-network-manage-peering.md).
+Bu öğreticide, sanal ağ eşlemesi ile aynı Azure bölgesindeki iki ağın nasıl bağlanacağını öğrendiniz. Farklı [desteklenen bölgelerde](virtual-network-manage-peering.md#cross-region) ve [farklı Azure aboneliklerinde](create-peering-different-subscriptions.md#portal) sanal ağları eşleyebilir ve eşleme ile [hub ve bağlı bileşen ağ tasarımları](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) oluşturabilirsiniz. Sanal ağ eşlemesi hakkında daha fazla bilgi için bkz. [Sanal ağ eşlemesine genel bakış](virtual-network-peering-overview.md) ve [Sanal ağ eşlemelerini yönetme](virtual-network-manage-peering.md).
 
 Kendi bilgisayarınızı VPN üzerinden bir sanal ağa bağlamak ve bir sanal ağdaki veya eşlenmiş sanal ağlardaki kaynaklarla etkileşim kurmak için bkz. [Bilgisayarınızı sanal ağa bağlama](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
