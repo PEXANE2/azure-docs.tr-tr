@@ -1,260 +1,107 @@
 ---
 title: DevKit cihazını Azure IoT Central uygulamanıza bağlama | Microsoft Docs
-description: Bir cihaz geliştiricisi olarak, bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlamayı öğrenin.
-author: dominicbetts
-ms.author: dobett
-ms.date: 03/22/2019
+description: Bir cihaz geliştiricisi olarak, IoT Tak ve Kullan (Önizleme) kullanarak bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlamayı öğrenin.
+author: liydu
+ms.author: liydu
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+manager: jeffya
+ms.openlocfilehash: 929651264cc900e38ca24d4a2ea703a3c586aedd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435056"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024577"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+Bu makalede bir Mxyonga IoT DevKit (DevKit) cihazının bir Azure IoT Central uygulamasına nasıl bağlanacağı gösterilmektedir. Cihaz, IoT Central bağlantısını yapılandırmak için DevKit cihazı için sertifikalı IoT Tak ve Kullan (Önizleme) modelini kullanır.
 
-Bu makalede bir cihaz geliştiricisi olarak, bir Mxyonga IoT DevKit (DevKit) cihazını Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi açıklamaktadır.
+Bu nasıl yapılır makalesinde şunları yapabilirsiniz:
 
-## <a name="before-you-begin"></a>Başlamadan önce
+- IoT Central uygulamanızdan bağlantı ayrıntılarını alın.
+- Cihazı hazırlayın ve IoT Central uygulamanıza bağlayın.
+- IoT Central cihaz telemetri ve özelliklerini görüntüleyin.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-1. **Eski uygulama** uygulaması şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-1. Bir DevKit cihazı. Bir DevKit cihazı satın almak için, [Mxyongaıot DevKit](https://microsoft.github.io/azure-iot-developer-kit/)' i ziyaret edin.
+- Bir [devkit cihazı](https://aka.ms/iot-devkit-purchase).
+- Bir IoT Central uygulaması. [IoT Central uygulama oluşturma](./quick-deploy-iot-central.md)bölümündeki adımları izleyebilirsiniz.
 
-## <a name="add-a-device-template"></a>Cihaz şablonu ekleme
+## <a name="get-device-connection-details"></a>Cihaz bağlantısı ayrıntılarını al
 
-Azure IoT Central uygulamanızda, aşağıdaki cihaz özelliklerini tanımlayan yeni bir **Mxyonga** cihaz şablonu ekleyin:
+1. Azure IoT Central uygulamanızda **cihaz şablonları** sekmesini seçin ve **+ Yeni**' yi seçin. **Önceden yapılandırılmış bir cihaz şablonu kullan**bölümünde **Mxyongaıot devkit**' i seçin.
 
-- **Nem**, **sıcaklık**, **basınç**, **manyetik tometre** (x, y, z ekseni ve x, y, z ekseni) ve **cayroscope** **(x** , y, z ekseni ile ölçülür) için telemetri ölçümleri.
-- **Cihaz durumu**için durum ölçümü.
-- **Düğme B düğmesine basıldığında**olay ölçümü.
-- **Voltaj**, **geçerli**, **fan hızı**ve **IR** geçişi için ayarlar.
-- Cihaz özellikleri, bir konum özelliği olan **zar numarası** ve **Cihaz konumu**.
-- **Içinde üretilen**bulut özelliği.
-- Komut **echo** ve **geri sayım**. Gerçek bir cihaz bir **echo** komutu aldığında, cihazın görüntüsüne gönderilen değeri gösterir. Gerçek bir cihaz bir **geri sayım** komutu aldığında, geçişli bir düzende döngü yapar ve cihaz geri sayım değerlerini IoT Central geri gönderir.
+    ![Mxyongaıot DevKit için cihaz şablonu](media/howto-connect-devkit/device-template.png)
 
-1. Cihaz şablonu ![cihaz şablonlarından **+ Yeni** ' yi seçin](media/howto-connect-devkit/adddevicetemplate.png)
-   
+1. Ileri 'yi seçin **: Özelleştir** ve sonra **Oluştur**.
 
-2. Bir cihaz şablonu eklemek ![**mxyongaseçin** ve mxyonga cihaz şablonunu oluşturun](media/howto-connect-devkit/newtemplate.png)
+1. **Cihazlar** sekmesini seçin. Cihazlar listesinde, **Mxyongaıot DevKit** ' i seçin ve şablondan yeni bir cihaz oluşturmak Için **+ Yeni** ' yi seçin.
 
-Yapılandırma hakkında tam Ayrıntılar için bkz. [Mxyonga cihaz şablonu ayrıntıları](#mxchip-device-template-details)
+    ![Yeni cihaz](media/howto-connect-devkit/new-device.png)
 
-## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
+1. Açılır pencerede, `MXChip IoT DevKit - Sample`olarak **CIHAZ kimliğini** `SampleDevKit` ve **Cihaz adı** olarak girin. **Benzetimli** seçeneğinin kapalı olduğundan emin olun. Ardından **Oluştur**’u seçin.
 
-### <a name="get-your-device-connection-details"></a>Cihaz bağlantınızın ayrıntılarını alın
+    ![Cihaz KIMLIĞI ve adı](media/howto-connect-devkit/device-id-name.png)
 
-Azure IoT Central uygulamanızda, **Mxyonga** cihaz şablonundan gerçek bir cihaz ekleyin ve cihaz bağlantısı ayrıntılarını şu şekilde bir yere unutmayın: **Kapsam KIMLIĞI, cihaz kimliği ve birincil anahtar**:
+1. Oluşturduğunuz cihazı seçin ve ardından **Bağlan**' ı seçin. **Kimlik kapsamını**, **cihaz kimliğini**ve **birincil anahtarı**bir yere unutmayın. Bu değerleri daha sonra bu nasıl yapılır makalesinde yapmanız gerekir.
 
-1. Cihazlardan **gerçek bir cihaz** ekleyin, gerçek bir cihaz eklemek Için **+ Yeni > Real** ' i seçin.
+    ![Cihaz bağlantı bilgileri](media/howto-connect-devkit/device-connection-info.png)
 
-    * Küçük bir **CIHAZ kimliği**girin veya ÖNERILEN **cihaz kimliğini**kullanın.
-    * Bir **Cihaz adı**girin veya önerilen adı kullanın
+## <a name="prepare-the-device"></a>Cihazı hazırlama
 
-    ![Cihaz Ekleme](media/howto-connect-devkit/add-device.png)
+1. GitHub 'dan DevKit cihazı için [önceden oluşturulmuş en son Azure IoT Central Tak ve kullan (Önizleme) bellenimini](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) indirin.
 
-1. Cihaz bağlantısı ayrıntılarını, **kapsam kimliğini**, **cihaz kimliğini**ve **birincil anahtarı**almak için cihaz sayfasında **Bağlan** ' ı seçin.
-
-    ![Bağlantı ayrıntıları](media/howto-connect-devkit/device-connect.png)
-
-1. Bağlantı ayrıntılarını bir yere getirin. Bir sonraki adımda DevKit cihazınızı hazırlarken internet bağlantısı geçici olarak kesilir.
-
-### <a name="prepare-the-devkit-device"></a>DevKit cihazını hazırlama
-
-Daha önce cihazı kullandıysanız ve farklı bir WiFi ağı, bağlantı dizesi veya telemetri ölçümü kullanmak üzere yeniden yapılandırmak istiyorsanız, aynı anda hem **a** hem de **B** düğmelerine basın. İşe yaramazsa, **Sıfırla** düğmesine basın ve yeniden deneyin.
-
-#### <a name="to-prepare-the-devkit-device"></a>DevKit cihazını hazırlamak için
-
-1. GitHub 'daki [yayınlar](https://aka.ms/iotcentral-docs-MXChip-releases) sayfasından mxyonga için en son önceden oluşturulmuş Azure IoT Central bellenimini indirin.
 1. DevKit cihazını bir USB kablosu kullanarak geliştirme makinenize bağlayın. Windows 'da, DevKit cihazında depolama ile eşleştirilmiş bir sürücüde dosya Gezgini penceresi açılır. Örneğin, sürücü **AZ3166 (D:)** olarak adlandırılabilir.
-1. **Iotcentral. bin** dosyasını sürücü penceresine sürükleyin. Kopyalama tamamlandığında, cihaz yeni üretici yazılımıyla yeniden başlatılır.
 
-1. DevKit cihazı yeniden başlatıldığında aşağıdaki ekran görüntülenir:
-
-    ```
-    Connect HotSpot:
-    AZ3166_??????
-    go-> 192.168.0.1
-    PIN CODE xxxxx
-    ```
+1. **İotc_devkit. bin** dosyasını sürücü penceresine sürükleyin. Kopyalama tamamlandığında, cihaz yeni üretici yazılımıyla yeniden başlatılır.
 
     > [!NOTE]
-    > Ekranda başka bir şey görüntüleniyorsa, cihazı yeniden başlatmak için cihazı sıfırlayın ve cihazdaki **A** ve **B** düğmelerine basın.
+    > Ekranda **Wi-Fi**gibi hatalar görürseniz, bunun nedeni devkit 'In henüz WiFi 'ye bağlı olmaması olabilir.
 
-1. Cihaz artık erişim noktası (AP) modunda. Bu WiFi erişim noktasına bilgisayarınızdan veya mobil cihazdan bağlanabilirsiniz.
+1. DevKit üzerinde, **düğme b**tuşunu basılı tutarak **sıfırlama** düğmesini gönderin ve serbest bırakın ve sonra **B düğmesini**bırakın. Cihaz artık erişim noktası modunda. Onaylamak için, ekranda "IoT DevKit-AP" ve yapılandırma portalının IP adresi görüntülenir.
 
-1. Bilgisayarınızda, telefonunuzda veya tabletinizde, cihazın ekranında gösterilen WiFi ağ adına bağlanın. Bu ağa bağlandığınızda Internet erişiminiz yok demektir. Bu durum beklenir ve bu ağa yalnızca cihazı yapılandırırken kısa bir süre için bağlanırsınız.
+1. Bilgisayarınızda veya tabletinizde, cihazın ekranında gösterilen WiFi ağ adına bağlanın. WiFi ağı **az** ve ardından MAC adresi ile başlar. Bu ağa bağlandığınızda Internet erişiminiz yok demektir. Bu durum beklenir ve bu ağa yalnızca cihazı yapılandırırken kısa bir süre boyunca bağlanırsınız.
 
-1. Web tarayıcınızı açın ve [http://192.168.0.1/start](http://192.168.0.1/start)gidin. Aşağıdaki Web sayfası görüntülenir:
+1. Web tarayıcınızı açın ve [http://192.168.0.1/](http://192.168.0.1/)gidin. Aşağıdaki Web sayfası görüntülenir:
 
-    ![Cihaz yapılandırma sayfası](media/howto-connect-devkit/configpage.png)
+    ![Yapılandırma Kullanıcı arabirimi](media/howto-connect-devkit/config-ui.png)
 
     Web sayfasında, şunu girin:
-    - WiFi ağınızın adı
-    - WiFi ağ parolanız
-    - Cihazın görüntüsünde gösterilen PIN kodu
-    - Bağlantı ayrıntıları **kapsam kimliği**, **cihaz kimliği**ve cihazınızın **birincil anahtarı** (Bu adımları daha önce kaydetmiş olmanız gerekir)
-    - Tüm kullanılabilir telemetri ölçülerini seçin
 
-1. **Cihazı Yapılandır**' ı seçtikten sonra şu sayfayı görürsünüz:
+    - WiFi ağınızın adı (SSID).
+    - WiFi ağı parolanız.
+    - Bağlantı ayrıntıları: daha önce bir nota yaptığınız **CIHAZ kimliği**, **kimlik kapsamı**ve **SAS birincil anahtarını** girin.
 
-    ![Cihaz yapılandırıldı](media/howto-connect-devkit/deviceconfigured.png)
+    > [!NOTE]
+    > Şu anda IoT DevKit yalnızca 2,4 GHz Wi-Fi ' a bağlanabilir, donanım kısıtlamaları nedeniyle 5 GHz desteklenmez.
 
-1. Cihazınızdaki **Sıfırla** düğmesine basın.
+1. **Cihazı Yapılandır**' ı seçin, devkit cihazı yeniden başlatılır ve uygulamayı çalıştırır:
+
+    ![Yeniden başlatma Kullanıcı arabirimi](media/howto-connect-devkit/reboot-ui.png)
+
+    DevKit ekranında uygulamanın çalıştığı bir onay görüntülenir:
+
+    ![DevKit çalışıyor](media/howto-connect-devkit/devkit-running.png)
+
+DevKit öncelikle IoT Central uygulamasına yeni bir cihaz kaydeder ve sonra veri göndermeye başlar.
 
 ## <a name="view-the-telemetry"></a>Telemetriyi görüntüleme
 
-DevKit cihazı yeniden başlatıldığında, cihazdaki ekran şu şekilde görünür:
+Bu adımda, Azure IoT Central uygulamanızda Telemetriyi görüntüleyebilirsiniz.
 
-* Gönderilen telemetri iletilerinin sayısı.
-* Başarısızlık sayısı.
-* Alınan istenen özellik sayısı ve gönderilen bildirilen özellik sayısı.
+IoT Central uygulamanızda, **cihazlar** sekmesini seçin, eklediğiniz cihazı seçin. **Genel bakış** sekmesinde, devkit cihazdan Telemetriyi görebilirsiniz:
 
-> [!NOTE]
-> Bağlantı bağlanmayı denediğinde cihaz döngüye alıyorsa, cihazın IoT Central **engellenip engellenmediğini** kontrol edin ve uygulamanın uygulamaya bağlanabilmesi Için **engelini kaldırın** .
-
-Bildirilen bir özelliği göndermek için cihazı sallayın. Cihaz, **zar numarası** cihaz özelliği olarak rastgele bir sayı gönderir.
-
-Telemetri ölçümlerini ve bildirilen özellik değerlerini görüntüleyebilir ve Azure IoT Central ayarları yapılandırabilirsiniz:
-
-1. Eklediğiniz gerçek Mxyonga cihazının **ölçümler** sayfasına gitmek için **cihazları** kullanın:
-
-    ![Gerçek cihaza git](media/howto-connect-devkit/realdevicenew.png)
-
-1. **Ölçümler** sayfasında, mxyonga cihazından gelen Telemetriyi görebilirsiniz:
-
-    ![Gerçek cihazdan telemetri görüntüleme](media/howto-connect-devkit/devicetelemetrynew.png)
-
-1. **Özellikler** sayfasında, son zar numarasını ve cihaz tarafından bildirilen cihaz konumunu görüntüleyebilirsiniz:
-
-    ![Cihaz özelliklerini görüntüle](media/howto-connect-devkit/devicepropertynew.png)
-
-1. **Ayarlar** sayfasında, mxyonga cihazında ayarları güncelleştirebilirsiniz:
-
-    ![Cihaz ayarlarını görüntüleme](media/howto-connect-devkit/devicesettingsnew.png)
-
-1. **Komutlar** sayfasında, **echo** ve **geri sayım** komutlarını çağırabilirsiniz:
-
-    ![Çağrı komutları](media/howto-connect-devkit/devicecommands.png)
-
-1. **Pano** sayfasında, konum haritasını görebilirsiniz
-
-    ![Cihaz panosunu görüntüle](media/howto-connect-devkit/devicedashboardnew.png)
-
-## <a name="download-the-source-code"></a>Kaynak kodunu indirin
-
-Cihaz kodunu incelemek ve değiştirmek istiyorsanız, GitHub 'dan indirebilirsiniz. Kodu değiştirmeyi planlıyorsanız, masaüstü işletim sisteminiz için [geliştirme ortamını hazırlamak](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) üzere bu yönergeleri izlemelisiniz.
-
-Kaynak kodunu indirmek için masaüstü makinenizde aşağıdaki komutu çalıştırın:
-
-```cmd/sh
-git clone https://github.com/Azure/iot-central-firmware
-```
-
-Önceki komut, kaynak kodu `iot-central-firmware`adlı bir klasöre indirir.
-
-> [!NOTE]
-> **Git** , geliştirme ortamınızda yüklü değilse, [https://git-scm.com/download](https://git-scm.com/download)adresinden indirebilirsiniz.
+![IoT Central cihaza genel bakış](media/howto-connect-devkit/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-`iot-central-firmware` klasöründeki `MXCHIP/mxchip_advanced` klasörünü açmak için Visual Studio Code kullanın:
-
-![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
-
-Telemetriyi Azure IoT Central uygulamasına nasıl gönderildiğini görmek için, `src` klasöründeki **telemetri. cpp** dosyasını açın:
-
-- İşlev `TelemetryController::buildTelemetryPayload`, cihazdaki sensörlerden alınan verileri kullanarak JSON telemetri yükünü oluşturur.
-
-- İşlevi `TelemetryController::sendTelemetryPayload` JSON yükünü Azure IoT Central uygulamanızın kullandığı IoT Hub göndermek için **AzureIOTClient. cpp** `sendTelemetry` çağırır.
-
-Özellik değerlerinin Azure IoT Central uygulamasına nasıl raporlanacağı görmek için, `src` klasöründe **telemetri. cpp** dosyasını açın:
-
-- İşlevi `TelemetryController::loop` bildirilen **konum** özelliğini yaklaşık 30 saniyede gönderir. **AzureIOTClient. cpp** kaynak dosyasındaki `sendReportedProperty` işlevini kullanır.
-
-- `TelemetryController::loop` işlevi, cihaz hızlandırma, bir çift dokunma algıladığında, **Dienumber** bildirilen özelliğini gönderir. **AzureIOTClient. cpp** kaynak dosyasındaki `sendReportedProperty` işlevini kullanır.
-
-Cihazın IoT Central uygulamasından çağrılan komutlara nasıl yanıt verdiğini görmek için `src` klasöründeki **registeredMethodHandlers. cpp** dosyasını açın:
-
-- **Dmecho** işlevi, **echo** komutunun işleyicisidir. Cihazın ekranındaki yükte dosyalanan **Displayedvalue değerini** gösterir.
-
-- **Dmıngeri sayım** işlevi, **geri sayım** komutunun işleyicisidir. Cihazın LED rengini değiştirir ve geri sayım değerini IoT Central uygulamasına geri göndermek için bildirilen bir özellik kullanır. Bildirilen özellik, komutuyla aynı ada sahip. İşlevi, **AzureIOTClient. cpp** kaynak dosyasındaki `sendReportedProperty` işlevini kullanır.
-
-**AzureIOTClient. cpp** kaynak dosyasındaki kod, IoT Hub etkileşimde bulunmak Için [Microsoft Azure IoT SDK 'ları ve kütüphanelerinin](https://github.com/Azure/azure-iot-sdk-c) işlevlerini kullanır.
-
-Örnek kodu cihazınıza değiştirme, derleme ve yükleme hakkında daha fazla bilgi için `MXCHIP/mxchip_advanced` klasöründeki **README.MD** dosyasına bakın.
-
-## <a name="mxchip-device-template-details"></a>Mxyonga cihaz şablonu ayrıntıları
-
-Örnek Devkits uygulama şablonundan oluşturulan bir uygulama, aşağıdaki özelliklere sahip bir Mxyonga cihaz şablonu içerir:
-
-### <a name="measurements"></a>Ölçümler
-
-#### <a name="telemetry"></a>Telemetri
-
-| Alan adı     | Birimler  | Minimum | Maksimum | Ondalık basamak sayısı |
-| -------------- | ------ | ------- | ------- | -------------- |
-| Nem oranı       | %      | 0       | 100     | 0              |
-| kopyalar           | 20     | -40     | 120     | 0              |
-| basınç       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| Ivometerx | mg     | -2000   | 2000    | 0              |
-| Iventery | mg     | -2000   | 2000    | 0              |
-| Ivometerz | mg     | -2000   | 2000    | 0              |
-| Jroscopex     | MDPS   | -2000   | 2000    | 0              |
-| Jroscopey     | MDPS   | -2000   | 2000    | 0              |
-| Jroscopez     | MDPS   | -2000   | 2000    | 0              |
-
-#### <a name="states"></a>Durumlar 
-| Ad          | Görünen ad   | NORMAL | DIKKATLI | OLMA TEHLIKESI | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Cihaz Durumu   | Yeşil  | Orange  | Kırmızı    | 
-
-#### <a name="events"></a>Etkinlikler 
-| Ad             | Görünen ad      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | Düğme B tuşuna basıldı  | 
-
-### <a name="settings"></a>Ayarlar
-
-Sayısal ayarlar
-
-| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlangıç |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Geril      | Setvoltaj | Çalışmıyorken | 0              | 0       | 240     | 0       |
-| Geçerli      | setCurrent | AMPS  | 0              | 0       | 100     | 0       |
-| Fan hızı    | Fanın hızı   | RPM   | 0              | 0       | 1000    | 0       |
-
-Ayarları aç
-
-| Görünen ad | Alan adı | Metinde | Kapalı metin | Başlangıç |
-| ------------ | ---------- | ------- | -------- | ------- |
-| IR           | Activateır | AÇIK      | KAPALI      | Kapalı     |
-
-### <a name="properties"></a>Özellikler
-
-| Tür            | Görünen ad | Alan adı | Veri türü |
-| --------------- | ------------ | ---------- | --------- |
-| Cihaz özelliği | Zar numarası   | dieNumber  | number    |
-| Cihaz özelliği | Aygıt Konumu   | location  | location    |
-| Metin            | Üretilmiş     | Üreten Turedın   | Yok       |
-
-### <a name="commands"></a>Komutlar
-
-| Görünen ad | Alan adı | Dönüş türü | Giriş alanı görünen adı | Giriş alanı adı | Giriş alanı türü |
-| ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Girdilerinizi         | echo       | metin        | görüntülenecek değer         | displayedValue   | metin             |
-| Sayıma    | sayıma  | number      | Sayım               | Sayaçdan        | number           |
+Kodu gözden geçirmek veya değiştirmek ve derlemek için [kod örneklerine](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir Mxyonga IoT DevKit 'i Azure IoT Central uygulamanıza bağlamayı öğrendiğinize göre, önerilen sonraki adım, kendi IoT cihazınız için [özel bir cihaz şablonu ayarlamayı](howto-set-up-template.md) öğrenirsiniz.
+Artık bir DevKit cihazını Azure IoT Central uygulamanıza bağlamayı öğrendiğinize göre, önerilen sonraki adım, kendi IoT cihazınız için [özel cihaz şablonu ayarlamayı](./howto-set-up-template.md) öğrenirsiniz.

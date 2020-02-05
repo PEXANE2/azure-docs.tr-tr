@@ -1,27 +1,27 @@
 ---
-title: Azure IoT Central uygulamanızı yönetme | Microsoft Docs
-description: Yönetici olarak, uygulama adını, URL 'yi değiştirerek, görüntüyü karşıya yükleme, kopyalama ve uygulamayı silme ile Azure IoT Central uygulamanızı yönetme
+title: Azure IoT Central uygulama ayarlarını değiştirme | Microsoft Docs
+description: Yönetici olarak, uygulama adını, URL 'yi değiştirerek, görüntüyü karşıya yükleyerek ve bir uygulamayı silerek Azure IoT Central uygulamanızı yönetme
 author: viv-liu
 ms.author: viviali
-ms.date: 08/26/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ae0b4c1675228bfa2083b37a0460ff85c2714f50
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990802"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025801"
 ---
-# <a name="manage-your-iot-central-application"></a>IoT Central uygulamanızı yönetme
+# <a name="change-iot-central-application-settings"></a>IoT Central uygulama ayarlarını değiştir
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Bu makalede, yönetici olarak uygulama adı ve URL 'yi değiştirerek uygulamayı nasıl yönetebileceğinizi, görüntüyü karşıya yüklemeyi ve ayrıca Azure IoT Central uygulamanızda bir uygulamayı kopyalamayı ve silmeyi öğreneceksiniz.
 
-**Yönetim** bölümüne erişmek ve bunları kullanmak için, bir Azure IoT Central uygulaması için **yönetici** rolünde olmanız gerekir. Azure IoT Central uygulaması oluşturursanız, bu uygulama için otomatik olarak **yönetici** rolüne atanırsınız. 
+Bu makalede, yönetici olarak uygulama adı ve URL 'yi değiştirerek, görüntüyü karşıya yükleyerek ve Azure IoT Central uygulamanızda bir uygulamayı silerek uygulamayı nasıl yönetebileceğinizi açıklanmaktadır.
+
+**Yönetim** bölümüne erişmek ve bunları kullanmak için, bir Azure IoT Central uygulaması için **yönetici** rolünde olmanız gerekir. Azure IoT Central uygulaması oluşturursanız, bu uygulama için otomatik olarak **yönetici** rolüne atanırsınız.
 
 ## <a name="change-application-name-and-url"></a>Uygulama adını ve URL 'YI değiştirme
 
@@ -29,31 +29,10 @@ Bu makalede, yönetici olarak uygulama adı ve URL 'yi değiştirerek uygulamay�
 
 ![Uygulama ayarları sayfası](media/howto-administer/image0-a.png)
 
-Yöneticiniz uygulamanız için özel bir tema oluşturursa, Bu sayfa Kullanıcı arabirimindeki **uygulama adını** gizlemek için bir seçenek içerir. Bu, özel temadaki uygulama logosu uygulama adını içeriyorsa yararlıdır. Daha fazla bilgi için bkz. [Azure IoT Central kullanıcı arabirimini özelleştirme](./howto-customize-ui.md).
+Yöneticiniz uygulamanız için özel bir tema oluşturursa, Bu sayfa Kullanıcı arabirimindeki **uygulama adını** gizlemek için bir seçenek içerir. Özel temadaki uygulama logosu uygulama adını içeriyorsa bu seçenek faydalıdır. Daha fazla bilgi için bkz. [Azure IoT Central kullanıcı arabirimini özelleştirme](./howto-customize-ui.md).
 
 > [!Note]
 > URL 'nizi değiştirirseniz, eski URL 'niz başka bir Azure IoT Central müşterisi tarafından alınabilir. Bu durumda, artık kullanılamaz. URL 'nizi değiştirdiğinizde eski URL artık çalışmaz ve kullanıcılarınıza kullanılacak yeni URL 'YI bilgilendirmesini isteyebilirsiniz.
-
-## <a name="prepare-and-upload-image"></a>Görüntüleri hazırlama ve karşıya yükleme
-
-Uygulama görüntüsünü değiştirmek için bkz. [Azure IoT Central uygulamanıza görüntü hazırlama ve yükleme](howto-prepare-images.md).
-
-## <a name="copy-an-application"></a>Bir uygulamayı kopyalama
-
-Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, cihaz veri geçmişini ve Kullanıcı verilerini oluşturabilirsiniz. Kopya, için faturalandırılacağımız standart bir fiyatlandırma planı kullanır. Ücretsiz fiyatlandırma planını bu şekilde kullanan bir uygulama oluşturamazsınız.
-
-**Kopyala**' yı seçin. İletişim kutusunda, yeni uygulamanın ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. [Uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı ' nda bu formdaki alanlar hakkında daha fazla bilgi edinin.
-
-![Uygulama ayarları sayfası](media/howto-administer/appcopy2.png)
-
-Uygulama kopyalama işlemi başarılı olduktan sonra, bağlantısını kullanarak yeni uygulamaya gidebilirsiniz.
-
-![Uygulama ayarları sayfası](media/howto-administer/appcopy3a.png)
-
-Bir uygulamayı kopyalamak kuralların ve e-posta eyleminin tanımını da kopyalar. Flow, Logic Apps vb. gibi bazı eylemler kural KIMLIĞI aracılığıyla belirli kurallara bağlıdır. Bir kural farklı bir uygulamaya kopyalandığında kendi kural KIMLIĞINI alır. Bu durumda, kullanıcıların yeni bir eylem oluşturması ve yeni kuralı onunla ilişkilendirilmesi gerekir. Genel olarak, yeni uygulamada güncel olduklarından emin olmak için kuralları ve eylemleri denetlemeniz iyi bir fikirdir.
-
-> [!WARNING]
-> Bir pano belirli cihazlarla ilgili bilgileri görüntüleyen kutucuklar içeriyorsa, bu kutucuklar **istenen kaynağı** yeni uygulamada bulamadı. Yeni uygulamanızdaki cihazlarla ilgili bilgileri göstermek için bu kutucukları yeniden yapılandırmanız gerekir.
 
 ## <a name="delete-an-application"></a>Bir uygulamayı silme
 
@@ -62,8 +41,7 @@ IoT Central uygulamanızı kalıcı olarak silmek için **Sil** düğmesini kull
 > [!Note]
 > Bir uygulamayı silmek için, uygulamayı oluştururken seçtiğiniz Azure aboneliğindeki kaynakları silme izinlerine de sahip olmanız gerekir. Daha fazla bilgi edinmek için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol tabanlı erişim denetimi kullanma](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-
-## <a name="manage-programatically"></a>Program aracılığıyla yönetme
+## <a name="manage-programmatically"></a>Programlama yoluyla yönetme
 
 IoT Central Azure Resource Manager SDK paketleri Node, Python, C#, Ruby, Java ve go için kullanılabilir. Bu paketleri IoT Central uygulamalar oluşturmak, listelemek, güncelleştirmek veya silmek için kullanabilirsiniz. Paketler, kimlik doğrulama ve hata işlemeyi yönetmek için yardımcıları içerir.
 
@@ -81,5 +59,5 @@ Daha fazla bilgi edinmek için aşağıdaki GitHub depoları ve paketlerine bak�
 | Go | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>Sonraki adımlar
- 
+
 Azure IoT Central uygulamanızı yönetme hakkında bilgi edindiğinize göre, önerilen sonraki adım Azure IoT Central [kullanıcıları ve rolleri yönetme](howto-manage-users-roles.md) hakkında bilgi almanız gerekir.

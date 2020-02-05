@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware çözümü-özel bulut için vSAN şifrelemesini yapılandırma
-description: CloudSimple özel bulutunuzun Azure sanal ağınızda çalışan bir anahtar yönetim sunucusu ile çalışabilmesi için vSAN yazılım şifreleme özelliğinin nasıl yapılandırılacağını açıklar.
+title: Azure VMware çözümleri (AVS)-AVS özel bulutu için vSAN şifrelemesini yapılandırma
+description: AVS özel bulutunuzun Azure sanal ağınızda çalışan bir anahtar yönetim sunucusu ile çalışabilmesi için vSAN yazılım şifreleme özelliğinin nasıl yapılandırılacağını açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 056c05701a3915610fb17a7e8c04feb743e38286
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972324"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020650"
 ---
-# <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>CloudSimple özel bulutu için vSAN şifrelemesini yapılandırma
+# <a name="configure-vsan-encryption-for-avs-private-cloud"></a>AVS özel bulutu için vSAN şifrelemesini yapılandırma
 
-VSAN yazılım şifreleme özelliğini, CloudSimple özel bulutunuzun Azure sanal ağınızda çalışan bir anahtar yönetim sunucusu ile çalışabilmesi için yapılandırabilirsiniz.
+VSAN yazılım şifreleme özelliğini, AVS özel bulutunuzun Azure sanal ağınızda çalışan bir anahtar yönetim sunucusu ile çalışabilmesi için yapılandırabilirsiniz.
 
 VMware, vSAN şifrelemesi kullanılırken bir dış KMıP 1,1 uyumlu üçüncü taraf anahtar yönetim sunucusu (KMS) aracının kullanılmasını gerektirir. VMware tarafından sertifikalı ve Azure için kullanılabilir olan tüm desteklenen KMS 'den yararlanabilirsiniz.
 
@@ -27,11 +27,11 @@ Bu KMS çözümü şunları yapmanızı gerektirir:
 
 * Azure sanal ağınızda bir VMware sertifikalı üçüncü taraf KMS aracını yükleyip yönetin.
 * KMS aracı için kendi lisanslarınızı belirtin.
-* Azure sanal ağınızda çalışan üçüncü taraf KMS aracını kullanarak özel bulutunuzda vSAN şifrelemesini yapılandırın ve yönetin.
+* Azure sanal ağınızda çalışan üçüncü taraf KMS aracını kullanarak AVS özel bulutunuzda vSAN şifrelemesini yapılandırın ve yönetin.
 
 ## <a name="kms-deployment-scenario"></a>KMS dağıtım senaryosu
 
-KMS sunucusu kümesi, Azure sanal ağınızda çalışır ve yapılandırılmış Azure ExpressRoute bağlantısı üzerinden özel bulut vCenter 'dan IP 'ye erişilebilir.
+KMS sunucusu kümesi, Azure sanal ağınızda çalışır ve yapılandırılmış Azure ExpressRoute bağlantısı üzerinden AVS özel bulut vCenter 'dan IP 'ye erişilebilir.
 
 ![.. Azure sanal ağ 'da/media/KMS kümesi](media/vsan-kms-cluster.png)
 
@@ -40,9 +40,9 @@ KMS sunucusu kümesi, Azure sanal ağınızda çalışır ve yapılandırılmı�
 Dağıtım işlemi aşağıdaki adımlara sahiptir:
 
 1. [Önkoşulların karşılandığından emin olun](#verify-prerequisites-are-met)
-2. [CloudSimple Portalı: ExpressRoute eşleme bilgilerini alın](#cloudsimple-portal-obtain-expressroute-peering-information)
-3. [Azure portalı: Sanal ağınızı özel buluta bağlayın](#azure-portal-connect-your-virtual-network-to-your-private-cloud)
-4. [Azure portalı: Sanal ağınıza bir HyTrust KeyControl kümesi dağıtma](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
+2. [AVS Portalı: ExpressRoute eşleme bilgilerini alma](#avs-portal-obtain-expressroute-peering-information)
+3. [Azure portal: Sanal ağınızı AVS özel bulutuna bağlama](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
+4. [Azure portal: sanal ağınıza bir HyTrust KeyControl kümesi dağıtın](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
 5. [HyTrust WebUI: KMıP sunucusunu yapılandırma](#hytrust-webui-configure-the-kmip-server)
 6. [vCenter Kullanıcı arabirimi: Azure sanal ağınızda KMS kümesi kullanmak için vSAN şifrelemesini yapılandırma](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
 
@@ -54,32 +54,32 @@ Dağıtımdan önce aşağıdakileri doğrulayın:
 * Seçilen satıcı, bir aracın Azure 'da çalışması için bir sürümünü destekler.
 * KMS aracının Azure sürümü, KMıP 1,1 uyumludur.
 * Bir Azure Resource Manager ve sanal ağ zaten oluşturulmuş.
-* CloudSimple özel bulutu zaten oluşturulmuş.
+* Bir AVS özel bulutu zaten oluşturulmuş.
 
-### <a name="cloudsimple-portal-obtain-expressroute-peering-information"></a>CloudSimple Portalı: ExpressRoute eşleme bilgilerini alın
+### <a name="avs-portal-obtain-expressroute-peering-information"></a>AVS Portalı: ExpressRoute eşleme bilgilerini alma
 
-Kuruluma devam etmek için, ExpressRoute için yetkilendirme anahtarı ve eşdüzey devre URI 'sine ve Azure aboneliğinize erişim elde etmeniz gerekir. Bu bilgiler, CloudSimple portalındaki sanal ağ bağlantısı sayfasında bulunur. Yönergeler için bkz. [özel buluta sanal ağ bağlantısı kurma](virtual-network-connection.md). Bilgileri elde etmek için bir sorun yaşıyorsanız, bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açın.
+Kuruluma devam etmek için, ExpressRoute için yetkilendirme anahtarı ve eşdüzey devre URI 'sine ve Azure aboneliğinize erişim elde etmeniz gerekir. Bu bilgiler, AVS portalındaki sanal ağ bağlantısı sayfasında bulunur. Yönergeler için bkz. [AVS özel bulutuna sanal ağ bağlantısı kurma](virtual-network-connection.md). Bilgileri elde etmek için bir sorun yaşıyorsanız, bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açın.
 
-### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure portal: Sanal ağınızı özel buluta bağlayın
+### <a name="azure-portal-connect-your-virtual-network-to-the-avs-private-cloud"></a>Azure portal: Sanal ağınızı AVS özel bulutuna bağlama
 
 1. [Azure Portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)bölümündeki yönergeleri izleyerek sanal ağınız için sanal ağ geçidi oluşturun.
-2. [Portalı kullanarak sanal ağı ExpressRoute devresine bağlama](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)bölümündeki yönergeleri izleyerek sanal ağınızı Cloudsimple ExpressRoute bağlantı hattına bağlayın.
-3. Sanal ağınızı Azure 'daki CloudSimple ExpressRoute devresine bağlamak için CloudSimple 'dan hoş geldiniz e-postalarınız içindeki CloudSimple ExpressRoute bağlantı hattı bilgilerini kullanın.
+2. [Portalı kullanarak sanal ağı ExpressRoute devresine bağlama](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)bölümündeki yönergeleri izleyerek sanal ağınızı AVS ExpressRoute bağlantı hattına bağlayın.
+3. Sanal ağınızı Azure 'daki AVS ExpressRoute devresine bağlamak için AVS 'den hoş geldiniz e-postalarınız içindeki AVS ExpressRoute bağlantı hattı bilgilerini kullanın.
 4. Yetkilendirme anahtarını ve eş bağlantı devresini girin, bağlantıya bir ad verin ve **Tamam**' a tıklayın.
 
 ![Sanal ağ oluştururken CS eş devre URI 'SI sağlayın](media/vsan-azureportal01.png) 
 
-### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure portal: Sanal ağınızdaki Azure Resource Manager bir HyTrust KeyControl kümesi dağıtma
+### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure portal: sanal ağınızdaki Azure Resource Manager bir HyTrust KeyControl kümesi dağıtın
 
 Sanal ağınızdaki Azure Resource Manager bir HyTrust KeyControl kümesi dağıtmak için aşağıdaki görevleri gerçekleştirin. Ayrıntılar için [Hytrust belgelerine](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0) bakın.
 
 1. HyTrust belgelerindeki yönergeleri izleyerek, belirtilen gelen kurallarla bir Azure ağ güvenlik grubu (NSG-hytrust) oluşturun.
 2. Azure 'da bir SSH anahtar çifti oluşturun.
-3. Azure Marketi 'ndeki görüntüden ilk KeyControl düğümünü dağıtın.  Oluşturulan anahtar çiftinin ortak anahtarını kullanın ve KeyControl düğümü için ağ güvenlik grubu olarak **NSG-hytrust** ' ı seçin.
+3. Azure Marketi 'ndeki görüntüden ilk KeyControl düğümünü dağıtın. Oluşturulan anahtar çiftinin ortak anahtarını kullanın ve KeyControl düğümü için ağ güvenlik grubu olarak **NSG-hytrust** ' ı seçin.
 4. KeyControl özel IP adresini bir statik IP adresine dönüştürür.
 5. Genel IP adresini ve daha önce bahsedilen anahtar çiftinin özel anahtarını kullanarak KeyControl sanal makinesine SSH.
-6. SSH kabuğu 'nda sorulduğunda, düğümü ilk keycontrol düğümü olarak ayarlamayı seçin `No` .
-7. Bu yordamın 3-5. adımlarını yineleyerek ve var olan bir kümeye ekleme sorulduğunda `Yes` öğesini seçerek ek keycontrol düğümleri ekleyin.
+6. SSH kabuğu 'nda sorulduğunda, düğümü ilk KeyControl düğümü olarak ayarlamak için `No` ' yi seçin.
+7. Bu yordamın 3-5. adımlarını yineleyerek ve var olan bir kümeye ekleme sorulduğunda `Yes` seçerek ek KeyControl düğümleri ekleyin.
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: KMıP sunucusunu yapılandırma
 
@@ -98,7 +98,7 @@ VCenter 'da, **küme > Yapılandır** ' a gidin ve vSAN için **genel** seçene�
 
 ![VSAN şifrelemesini etkinleştirme ve KMS kümesini vCenter 'da yapılandırma](media/vsan-config02.png)
 
-## <a name="references"></a>Referanslar
+## <a name="references"></a>Başvurular
 
 ### <a name="azure"></a>Azure
 

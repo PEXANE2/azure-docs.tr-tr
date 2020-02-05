@@ -6,33 +6,26 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir Java uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Java, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: a814516eb002eadb19100182d1917fd4aaa0cec6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293581"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025206"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Hızlı başlangıç: Visual Studio Code ve Java-Azure Dev Spaces ile Kubernetes 'te hata ayıklama ve yineleme
 
-Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
-
-- Azure'da yönetilen bir Kubernetes ile Azure Dev Spaces'ı ayarlayın.
-- Visual Studio Code kullanarak kapsayıcılardaki kodu tekrarlayarak geliştirin.
-- Visual Studio Code geliştirici alanınızdaki kodda hata ayıklayın.
-
-Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemenize de olanak tanır:
-- [Node. js ve Visual Studio Code](quickstart-nodejs.md)
-- [.NET Core ve Visual Studio Code](quickstart-netcore.md)
-- [.NET Core ve Visual Studio](quickstart-netcore-visualstudio.md)
+Bu hızlı başlangıçta, yönetilen bir Kubernetes kümesiyle Azure Dev Spaces ayarlarsınız ve kapsayıcılarda kodu tekrarlayarak geliştirmek ve hata ayıklamak için Visual Studio Code bir Java uygulaması kullanırsınız. Azure Dev Spaces, Azure Kubernetes hizmeti (AKS) içindeki uygulamanızın tüm bileşenlerini en düşük geliştirme makinesi kurulumuna göre hata ayıklamanıza ve test etmenize olanak tanır. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
-- [Visual Studio Code yüklendi](https://code.visualstudio.com/download).
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- [Java Development Kit (JDK) 1.8.0 +](https://aka.ms/azure-jdks).
+- [Maven 3.5.0 +](https://maven.apache.org/download.cgi).
+- [Visual Studio Code](https://code.visualstudio.com/download).
 - Visual Studio Code için Azure Dev Spaces uzantıları için [Azure dev SPACES](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) ve [Java hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) .
-- [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [Maven yüklendi ve yapılandırıldı](https://maven.apache.org).
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
@@ -45,13 +38,14 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
+AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *Myaks* kümesinde dev alanları sunar ve *varsayılan* bir dev alanı oluşturur.
 
 > [!NOTE]
 > `use-dev-spaces` komutu, zaten yüklenmemişse Azure Dev Spaces CLı 'yi de yükler. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+
 
 'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
 
@@ -80,11 +74,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Örnek uygulamayı Visual Studio Code hazırlama
 
-Visual Studio Code açın, *Dosya* ' yı açın *..* . ' a tıklayın, *dev-Spaces/Samples/Java/alma işlemi/webön uç* dizinine gidin ve *Aç*' a tıklayın.
+Visual Studio Code açın, **Dosya** sonra **Aç**' ı seçin, *dev-Spaces/Samples/Java/alma işlemi/webön uç* dizinine gidin ve **Aç**' ı seçin.
 
 Artık Visual Studio Code *Web ön uç* projesi açılır. Uygulamayı geliştirme alanınızda çalıştırmak için, komut paletindeki Azure Dev Spaces uzantısını kullanarak Docker ve hele grafik varlıklarını oluşturun.
 
-Visual Studio Code içinde komut paletini açmak için, *görüntüle* ve ardından *komut paleti*' ne tıklayın. `Azure Dev Spaces` yazmaya başlayın ve `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`' a tıklayın.
+Komut paletini Visual Studio Code açmak için, **görüntüle** ve sonra **komut paleti**' ni seçin. `Azure Dev Spaces` yazmaya başlayın ve **Azure dev Spaces: yapılandırma dosyalarını Azure dev Spaces hazırla**' yı seçin.
 
 ![Yapılandırma dosyalarını Azure Dev Spaces hazırlama](./media/common/command-palette.png)
 
@@ -99,28 +93,28 @@ Visual Studio Code Ayrıca temel görüntülerinizi yapılandırmanıza, bağlan
 Bu komut, bir Dockerfile ve Held grafiği oluşturarak projenizi Azure Dev Spaces çalıştırmayı hazırlar. Ayrıca, projenizin kökünde hata ayıklama yapılandırmasıyla bir *. vscode* dizini oluşturur.
 
 > [!TIP]
-> Projeniz için [Dockerfile ve HELI grafiği](how-dev-spaces-works.md#prepare-your-code) , kodunuzu derlemek ve çalıştırmak için Azure dev Spaces tarafından kullanılır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
+> Projeniz için [Dockerfile ve HELI grafiği](how-dev-spaces-works.md#prepare-your-code) , kodunuzu derlemek ve çalıştırmak için Azure dev Spaces tarafından kullanılır, ancak projenin nasıl oluşturulduğunu ve çalıştırılacağını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Visual Studio 'dan Kubernetes 'te kod oluşturma ve çalıştırma
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Visual Studio Code 'den Kubernetes 'te kod oluşturma ve çalıştırma
 
-Sol taraftaki *hata ayıklama* simgesine tıklayın ve en üstteki *Java programını (AZD) Başlat* seçeneğine tıklayın.
+Sol taraftaki **hata ayıklama** simgesini seçin ve en üstteki **Java programını (AZD) Başlat** ' ı seçin.
 
 ![Java programını Başlat](media/get-started-java/debug-configuration.png)
 
-Bu komut Azure Dev Spaces ' de hizmetinizi oluşturur ve çalıştırır. En alttaki *Terminal* penceresi, Azure dev Spaces çalıştıran hizmetinizin derleme çıkışını ve URL 'lerini gösterir. *Hata ayıklama konsolu* günlük çıktısını gösterir.
+Bu komut Azure Dev Spaces ' de hizmetinizi oluşturur ve çalıştırır. En alttaki **Terminal** penceresi, Azure dev Spaces çalıştıran hizmetinizin derleme çıkışını ve URL 'lerini gösterir. **Hata ayıklama konsolu** günlük çıktısını gösterir.
 
 > [!Note]
-> *Komut paletinde*herhangi bir Azure dev Spaces komutu görmüyorsanız [Azure dev Spaces için Visual Studio Code uzantısını](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)yüklediğinizden emin olun. Ayrıca, Visual Studio Code ' de *dev-Spaces/Samples/Java/alma-başlatma/webön uç* dizinini açtığınızdan emin olun.
+> **Komut paletinde**herhangi bir Azure dev Spaces komutu görmüyorsanız [Azure dev Spaces için Visual Studio Code uzantısını](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)yüklediğinizden emin olun. Ayrıca, Visual Studio Code ' de *dev-Spaces/Samples/Java/alma-başlatma/webön uç* dizinini açtığınızdan emin olun.
 
 Ortak URL 'YI açarak hizmetin çalıştığını görebilirsiniz.
 
-Hata ayıklayıcıyı durdurmak için hata *Ayıkla* ve hata *ayıklamayı Durdur* ' a tıklayın.
+Hata ayıklamayı durdurmak için hata **Ayıkla** ve hata **ayıklamayı Durdur** ' u seçin.
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve *Java programını Başlat ' ı (AZD)* yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve **Java programını Başlat ' ı (AZD)** yeniden çalıştırabilirsiniz. Örneğin:
 
-1. Uygulamanız hala çalışıyorsa, *Hata Ayıkla* ' ya tıklayın, ardından *hata ayıklamayı* durdurun.
+1. Uygulamanız hala çalışıyorsa, **Hata Ayıkla** ' yı seçin ve durdurmak Için **hata ayıklamayı durdurun** .
 1. [`src/main/java/com/ms/sample/webfrontend/Application.java`satır 19 ' da](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) şu şekilde güncelleştirin:
     
     ```java
@@ -128,30 +122,30 @@ Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdek
     ```
 
 1. Yaptığınız değişiklikleri kaydedin.
-1. *Başlat Java programı 'nı (AZD)* yeniden çalıştırın.
+1. **Başlat Java programı 'nı (AZD)** yeniden çalıştırın.
 1. Çalışan hizmetinize gidin ve değişikliklerinizi gözlemleyin.
-1. Uygulamanızı durdurmak için *Hata Ayıkla* ve *hata ayıklamayı Durdur* ' a tıklayın.
+1. Uygulamanızı durdurmak için **Hata Ayıkla** ve **hata ayıklamayı Durdur** ' u seçin.
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlama ve kullanma
 
-Başlat *Java programı 'nı (AZD)* kullanarak hizmetinizi başlatın. Bu ayrıca hizmetinizi hata ayıklama modunda çalıştırır.
+Başlat **Java programı 'nı (AZD)** kullanarak hizmetinizi başlatın. Bu ayrıca hizmetinizi hata ayıklama modunda çalıştırır.
 
-*Görünüm* *' e*tıklayarak *Gezgin görünümüne geri* gidin. `src/main/java/com/ms/sample/webfrontend/Application.java` açın ve imlecinizi buraya yerleştirmek için 19. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin*
+**Görünüm** ardından **Gezgin**' i seçerek **Gezgin** görünümüne geri gidin. *Src/Main/Java/com/MS/Sample/webön uç/Application. Java* ' yı açın ve imlecinizi buraya yerleştirmek için 19. satırda herhangi bir yere tıklayın. Bir kesme noktası ayarlamak için **F9** tuşuna basın veya **Hata Ayıkla** **' yı seçin**
 
-Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio Code dön ve 19 satırı gözlemle vurgulanır. Ayarladığınız kesme noktası 19. satırdaki hizmeti duraklattı. Hizmeti sürdürmek için *F5* 'e basın veya *Hata Ayıkla* 'Ya tıkladıktan sonra *devam edin*. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
+Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio Code dön ve 19 satırı gözlemle vurgulanır. Ayarladığınız kesme noktası 19. satırdaki hizmeti duraklattı. Hizmeti sürdürmek için **F5** tuşuna basın veya **Hata Ayıkla** ' yı seçin ve sonra **devam edin**. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
 
 Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştırırken, çağrı yığını, yerel değişkenler ve özel durum bilgileri gibi bilgileri hata ayıklamaya yönelik tam erişime sahip olursunuz.
 
-İmleci `src/main/java/com/ms/sample/webfrontend/Application.java` 19. satıra koyarak ve *F9*tuşuna basarak kesme noktasını kaldırın.
+İmlecinizi *src/Main/Java/com/MS/Sample/webön uç/uygulama. Java* 'daki 19. satıra yerleştirerek kesme noktasını kaldırın ve **F9**tuşuna basın.
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code kodu güncelleştirme
 
-Hizmet hata ayıklama modunda çalışırken, `src/main/java/com/ms/sample/webfrontend/Application.java`satır 19 ' u güncelleştirin. Örneğin:
+Hizmet hata ayıklama modunda çalışırken, *src/Main/Java/com/MS/Sample/webön uç/uygulama. Java*'da 19. satırı güncelleştirin. Örneğin:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-Dosyayı kaydedin. Hata *Ayıkla* ' ya tıklayın ve *hata ayıklamayı yeniden başlatın* veya *Hata Ayıkla araç çubuğunda* *hata ayıklamayı yeniden Başlat* düğmesine tıklayın
+Dosyayı kaydedin. Hata **Ayıkla** ve hata **ayıklamayı yeniden Başlat** ' ı seçin veya **hata ayıklama araç çubuğunda** **hata ayıklamayı yeniden Başlat** düğmesini seçin
 
 ![Hata ayıklamayı Yenile](media/common/debug-action-refresh.png)
 

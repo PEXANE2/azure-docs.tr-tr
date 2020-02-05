@@ -101,8 +101,6 @@
           href: ea-portal-vm-reservations.md
         - name: Azure EA portalı erişim sorunlarını giderme
           href: ea-portal-troubleshoot.md
-        - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
-          href: mca-enterprise-operations.md
 - name: Sorun giderme
   items:
     - name: Abonelik bulunamadı

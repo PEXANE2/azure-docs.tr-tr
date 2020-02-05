@@ -4,12 +4,12 @@ description: MARS aracısının yedekleme senaryolarını nasıl desteklediğini
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902856"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023965"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı hakkında
 
@@ -58,8 +58,7 @@ MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 ### <a name="additional-scenarios"></a>İlave senaryolar
 -   **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
 
--   **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [DPM Için çevrimdışı yedekleme iş akışı ve Azure Backup sunucusu](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
-
+-   **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [MARS Aracısı destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)

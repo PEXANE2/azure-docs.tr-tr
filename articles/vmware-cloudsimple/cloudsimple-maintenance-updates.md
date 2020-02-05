@@ -1,7 +1,7 @@
 ---
-title: CloudSimple bakım ve güncelleştirmeleri
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Zamanlanmış bakım ve güncelleştirmeler için CloudSimple hizmeti işlemini açıklar
+title: Azure VMware çözümleri (AVS)-AVS bakım ve güncelleştirmeleri
+description: Zamanlanmış bakım ve güncelleştirmeler için AVS hizmet sürecini açıklar
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bf5937183fc20579ecd21aca8543a0a78d4b9ff3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372832"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025036"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple bakım ve güncelleştirmeleri
+# <a name="avs-maintenance-and-updates"></a>AVS bakım ve güncelleştirmeleri
 
-Özel bulut ortamı, tek hata noktası olmayacak şekilde tasarlanmıştır.
+AVS özel bulut ortamı, tek başarısızlık noktası olmayacak şekilde tasarlanmıştır.
 
 * ESXi kümeleri, vSphere yüksek kullanılabilirlik (HA) ile yapılandırılır. Kümeler dayanıklılık için en az bir yedek düğüme sahip olacak şekilde boyutlandırılır.
 * Gereksiz birincil depolama, tek bir hataya karşı koruma sağlamak için en az üç düğüm gerektiren vSAN tarafından sağlanır. vSAN, daha büyük kümeler için daha yüksek dayanıklılık sağlamak üzere yapılandırılabilir.
@@ -26,36 +26,36 @@ ms.locfileid: "75372832"
 * ESXi konaklarının gereksiz fanları ve NIC 'Leri vardır.
 * TOR ve sırt geçişleri, dayanıklılık sağlamak için HA çiftlerine göre yapılandırılmıştır.
 
-CloudSimple, çalışma süresi ve kullanılabilirlik için aşağıdaki VM 'Leri sürekli izler ve kullanılabilirlik SLA 'Ları sağlar:
+AVS, çalışma süresi ve kullanılabilirlik için aşağıdaki VM 'Leri sürekli izler ve kullanılabilirlik SLA 'larını sağlar:
 
 * ESXi Konakları
 * vCenter
 * PSC
 * NSX Yöneticisi
 
-CloudSimple Ayrıca hatalara karşı sürekli olarak aşağıdaki işlemleri izler:
+AVS Ayrıca hatalara karşı sürekli olarak aşağıdaki işlemleri izler:
 
 * Sabit diskler
 * Fiziksel NIC bağlantı noktaları
 * Sunucular
-* Fanlar
+* Larına
 * Güç
-* Geçişler
+* Anahtarlar
 * Bağlantı noktalarını Değiştir
 
 Bir disk veya düğüm başarısız olursa, etkilenen VMware kümesine hemen sistem durumuna geri getirmek için yeni bir düğüm otomatik olarak eklenir.
 
-CloudSimple yedekler, bu VMware öğelerini özel bulutlarda tutar ve güncelleştirir:
+AVS, AVS özel bulutlarında bu VMware öğelerini yedekler, korur ve güncelleştirir:
 
 * ESXi
 * vCenter platform hizmetleri
-* Denetleyici
+* Kumandasını
 * vSAN
 * NSX
 
 ## <a name="back-up-and-restore"></a>Yedekleme ve geri yükleme
 
-CloudSimple yedeklemesi şunları içerir:
+AVS yedeklemesi şunları içerir:
 
 * VCenter, PSC ve DVS kurallarının gece artımlı yedeklemeleri.
 * uygulama katmanında bileşenleri yedeklemek için vCenter yerel API 'Leri.
@@ -66,15 +66,15 @@ Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 ## <a name="maintenance"></a>Bakım
 
-CloudSimple, çeşitli planlı bakım türlerini yapar.
+AVS, çeşitli planlı bakım türlerini yapar.
 
 ### <a name="backendinternal-maintenance"></a>Arka uç/iç bakım
 
-Bu bakım genellikle fiziksel varlıkları yeniden yapılandırma veya yazılım düzeltme eklerini yükleme içerir. Hizmet verilen varlıkların normal tüketimini etkilemez. Her fiziksel rafa giden yedekli NIC 'lerle, normal ağ trafiği ve özel bulut işlemleri etkilenmez. Yalnızca kuruluşunuz, bakım aralığı sırasında tam yedekli bant genişliğini kullanmayı bekliyorsa, bir performans etkisi fark edebilirsiniz.
+Bu bakım genellikle fiziksel varlıkları yeniden yapılandırma veya yazılım düzeltme eklerini yükleme içerir. Hizmet verilen varlıkların normal tüketimini etkilemez. Her fiziksel rafa giden yedekli NIC 'lerle, normal ağ trafiği ve AVS özel bulut işlemleri etkilenmez. Yalnızca kuruluşunuz, bakım aralığı sırasında tam yedekli bant genişliğini kullanmayı bekliyorsa, bir performans etkisi fark edebilirsiniz.
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple Portal Bakımı
+### <a name="avs-portal-maintenance"></a>AVS Portal Bakımı
 
-CloudSimple denetim düzlemi veya altyapısı güncelleniyorsa, bazı sınırlı hizmet kapalı kalma süresi gereklidir. Şu anda, bakım aralıkları ayda bir kez daha sık olabilir. Zamanın zaman içinde reddedilecek sıklık beklenmektedir. CloudSimple, Portal bakımı için bildirim sağlar ve aralığı mümkün olduğunca kısa tutar. Bir portal bakım aralığı sırasında, aşağıdaki hizmetler herhangi bir etki olmadan çalışmaya devam eder:
+AVS denetim düzlemi veya altyapısı güncelleniyorsa bazı sınırlı hizmet kapalı kalma süresi gereklidir. Şu anda, bakım aralıkları ayda bir kez daha sık olabilir. Zamanın zaman içinde reddedilecek sıklık beklenmektedir. AVS, Portal bakımı için bildirim sağlar ve aralığı mümkün olduğunca kısa tutar. Bir portal bakım aralığı sırasında, aşağıdaki hizmetler herhangi bir etki olmadan çalışmaya devam eder:
 
 * VMware yönetim düzlemi ve uygulamaları
 * vCenter erişimi
@@ -83,7 +83,7 @@ CloudSimple denetim düzlemi veya altyapısı güncelleniyorsa, bazı sınırlı
 
 ### <a name="vmware-infrastructure-maintenance"></a>VMware altyapı Bakımı
 
-Bazen VMware altyapısının yapılandırmasında değişiklik yapmak gerekir.  Şu anda bu aralıklar her 1-2 ayda bir gerçekleşebilir, ancak zamanın zaman içinde reddetmesi beklenir. Bu tür bir bakım genellikle CloudSimple hizmetlerinin normal tüketimi kesintiye uğramadan yapılabilir. Bir VMware bakım aralığı sırasında, aşağıdaki hizmetler herhangi bir etki olmadan çalışmaya devam eder:
+Bazen VMware altyapısının yapılandırmasında değişiklik yapmak gerekir. Şu anda bu aralıklar her 1-2 ayda bir gerçekleşebilir, ancak zamanın zaman içinde reddetmesi beklenir. Bu tür bir bakım, genellikle AVS hizmetlerinin normal tüketimini kesintiye uğramadan yapılabilir. Bir VMware bakım aralığı sırasında, aşağıdaki hizmetler herhangi bir etki olmadan çalışmaya devam eder:
 
 * VMware yönetim düzlemi ve uygulamaları
 * vCenter erişimi
@@ -92,7 +92,7 @@ Bazen VMware altyapısının yapılandırmasında değişiklik yapmak gerekir.  
 
 ## <a name="updates-and-upgrades"></a>Güncelleştirmeler ve yükseltmeler
 
-CloudSimple, özel bulutta VMware yazılımının (ESXi, vCenter, PSC ve NSX) yaşam döngüsü yönetiminden sorumludur.
+AVS, AVS özel bulutu 'ndaki VMware yazılımının (ESXi, vCenter, PSC ve NSX) yaşam döngüsü yönetiminden sorumludur.
 
 Yazılım güncelleştirmeleri şunları içerir:
 
@@ -100,9 +100,9 @@ Yazılım güncelleştirmeleri şunları içerir:
 * **Güncelleştirmeler**. VMware Stack bileşeninin küçük sürüm değişikliği.
 * **Yükseltmeleri**. VMware Stack bileşeninin ana sürüm değişikliği.
 
-CloudSimple, VMware 'den kullanılabilir hale geldiğinde kritik bir güvenlik düzeltme ekini test eder. SLA 'Sı başına, CloudSimple, güvenlik düzeltme ekini bir hafta içinde özel bulut ortamlarına kaydeder.
+AVS, VMware 'den kullanılabilir hale geldiğinde kritik bir güvenlik düzeltme ekini sınar. SLA başına, AVS bir haftada bir hafta içinde özel bulut ortamlarına güvenlik düzeltme ekini kaydeder.
 
-CloudSimple, VMware yazılım bileşenlerine üç aylık bakım güncelleştirmeleri sağlar. VMware yazılımının yeni bir ana sürümü kullanılabilir olduğunda, CloudSimple, yükseltme için uygun bir bakım penceresini koordine etmek üzere müşterilerle birlikte çalışmaktadır.
+AVS, VMware yazılım bileşenlerine üç aylık bakım güncelleştirmeleri sağlar. VMware yazılımının yeni bir ana sürümü kullanılabilir olduğunda, AVS, yükseltme için uygun bir bakım penceresini koordine etmek üzere müşterilerle birlikte çalışarak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

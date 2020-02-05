@@ -3,8 +3,8 @@ title: Sanal makine işlem düğümlerinde Linux çalıştırma-Azure Batch | Mi
 description: Azure Batch içindeki Linux sanal makinelerinin havuzlarında paralel işlem iş yüklerinizi nasıl işleyeceğini öğrenin.
 services: batch
 documentationcenter: python
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 080310d5884ca82a3ff02ff0474777ea3a71997e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3691790b2e47ef43c6742fa912aff8d7777900f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547617"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023710"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -217,8 +217,8 @@ Aşağıdaki tabloda, bu makale son kez güncelleştirildiği sırada kullanıla
 
 | **Yayımcı** | **Teklif** | **Görüntü SKU 'SU** | **Sürüm** | **Düğüm Aracısı SKU KIMLIĞI** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| batch | işleme-centos73 | işleme | latest | Batch. Node. CentOS 7 |
-| batch | işleme-windows2016 | işleme | latest | Batch. Node. Windows AMD64 |
+| batch | işleme-centos73 | çizmeye | latest | Batch. Node. CentOS 7 |
+| batch | işleme-windows2016 | çizmeye | latest | Batch. Node. Windows AMD64 |
 | Canonical | UbuntuServer | 16.04-LTS | latest | Batch. Node. Ubuntu 16,04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | latest | Batch. Node. Ubuntu 14,04 |
 | credativ | Debian | 9 | latest | Batch. Node. de, 9 |

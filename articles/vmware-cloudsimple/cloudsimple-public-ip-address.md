@@ -1,6 +1,6 @@
 ---
-title: CloudSimple-genel IP adresi tarafından Azure VMware çözümü
-description: CloudSimple tarafından Azure VMware çözümünde genel IP adresleri ve bunların avantajları hakkında bilgi edinin
+title: Azure VMware çözümleri (AVS)-genel IP adresi
+description: Azure VMware çözümlerinde (AVS) genel IP adresleri ve bunların avantajları hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2cb9d0e33da4447760ae0be216c1dd9868c498bd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877678"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024985"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple genel IP adresine genel bakış
+# <a name="avs-public-ip-address-overview"></a>AVS genel IP adresine genel bakış
 
-Genel bir IP adresi, internet kaynaklarının özel bir IP adresindeki özel bulut kaynaklarıyla iletişim kurmasına olanak tanır. Özel IP adresi, özel bulut vCenter 'unuzda bir sanal makine veya yazılım yük dengeleyicidir. Genel IP adresi, özel bulutunuzda çalışan hizmetleri Internet 'e sunmanıza olanak tanır.
+Genel bir IP adresi, internet kaynaklarının özel bir IP adresinde gelen AVS özel bulut kaynaklarıyla iletişim kurmasına olanak tanır. Özel IP adresi, AVS özel bulut vCenter 'unuzda bir sanal makine veya yazılım yük dengeleyicidir. Genel IP adresi, AVS özel bulutunuzda çalışan hizmetleri Internet 'e sunmanıza olanak tanır.
 
 Genel IP adresi, atamasını kaldırana kadar özel IP adresine ayrılmıştır. Genel IP adresi yalnızca bir özel IP adresine atanabilir.
 

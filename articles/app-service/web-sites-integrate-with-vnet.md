@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688299"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016978"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 Bu belgede Azure App Service sanal ağ tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanmaktadır. [Azure sanal ağları][VNETOverview] (VNet), internet 'ten yönlendirilebilir olmayan bir ağa Azure kaynaklarınızın çoğunu yerleştirme izni verir.  
@@ -56,7 +56,7 @@ VNet tümleştirmesinin şunları dahil desteklemediği bazı şeyler vardır:
 * AD tümleştirmesi 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>bölgesel VNet tümleştirmesi 
+## <a name="regional-vnet-integration"></a>Bölgesel VNet tümleştirmesi 
 
 > [!NOTE]
 > Eşleme, Linux tabanlı App Service için henüz kullanılabilir değil.
@@ -74,7 +74,7 @@ Bu özellik önizleme aşamasındadır ancak Windows uygulama üretim iş yükle
 * Yalnızca RFC 1918 aralığındaki adreslere ulaşabilirsiniz. Bunlar 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 adres bloklarından adreslerdir.
 * Genel eşleme bağlantıları genelindeki kaynaklara ulaşılamıyor
 * Uygulamanızdan sanal ağınıza gelen trafik üzerinde yollar ayarlayamazsınız
-* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni App Service ölçek birimlerinden kullanılabilir.
+* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni App Service ölçek birimlerinden kullanılabilir. Bunun, uygulamanızın bir PremiumV2 SKU 'sunda çalışması gerektiğini, yalnızca PremiumV2 seçeneğinin kullanılabildiği bir App Service planında çalışması gerektiğini (Bu, bu VNet tümleştirme özelliğinin de kullanılabilir olduğu daha yeni bir ölçek birimi olduğunu gösterir) unutmayın.
 * Tümleştirme alt ağı yalnızca bir App Service planı tarafından kullanılabilir
 * Özellik, App Service Ortamı yalıtılmış plan uygulamaları tarafından kullanılamaz
 * Özellik, Kaynak Yöneticisi VNet 'iniz için 32 adresi veya daha büyük bir/27 olan kullanılmayan bir alt ağ gerektiriyor

@@ -348,6 +348,9 @@
           displayName: 'migrate, b2clogin, owin'
     - name: Otomasyon
       items:
+        - name: Azure İzleyici
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events'
         - name: Kullanım raporunu dışarı aktarma
           href: view-usage-reports.md
         - name: Hesap yönetimi

@@ -1,144 +1,192 @@
 ---
 title: Azure IoT Central Kullanıcı Arabirimi turuna katılın | Microsoft Docs
-description: Oluşturucu olarak, bir IoT çözümü oluşturmak için kullanabileceğiniz Azure IoT Central kullanıcı arabiriminin temel alanlarını tanıyın.
-author: dominicbetts
-ms.author: dobett
-ms.date: 06/09/2019
+description: IoT çözümünüzü oluşturmak, yönetmek ve kullanmak için kullandığınız Azure IoT Central Kullanıcı arabiriminin temel alanlarıyla ilgili bilgi sahibi olun.
+author: lmasieri
+ms.author: lmasieri
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 1f71476e398d5fd4466fd861e35ecc3f5b3666b9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+manager: corywink
+ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987620"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024169"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Azure IoT Central Kullanıcı Arabirimi turuna katılın
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+
 
 Bu makalede, Microsoft Azure IoT Central kullanıcı arabirimi tanıtılmaktadır. Kullanıcı arabirimini kullanarak bir Azure IoT Central çözümü ile bağlı cihazlarını oluşturabilir, yönetebilir ve kullanabilirsiniz.
 
-_Oluşturucu_ olarak, Azure IoT Central kullanıcı arabirimini kullanarak Azure IoT Central çözümünüzü tanımlayabilirsiniz. Kullanıcı arabirimini kullanarak şunları yapabilirsiniz:
+Bir _çözüm Oluşturucusu_olarak Azure IoT Central kullanıcı arabirimini kullanarak Azure IoT Central çözümünüzü tanımlayabilirsiniz. Kullanıcı arabirimini kullanarak şunları yapabilirsiniz:
 
-- Çözümünüze bağlanan cihaz türlerini tanımlama.
-- Cihazlarınız için kurallar ve eylemler yapılandırma.
-- Kullanıcı arabirimini, çözümünüzü kullanan bir _operatör_ için özelleştirme.
+* Çözümünüze bağlanan cihaz türlerini tanımlama.
+* Cihazlarınız için kurallar ve eylemler yapılandırma. 
+* Kullanıcı arabirimini, çözümünüzü kullanan bir _operatör_ için özelleştirme.
 
 _Operatör_ olarak, Azure IoT Central kullanıcı arabirimini kullanarak Azure IoT Central çözümünüzü yönetebilirsiniz. Kullanıcı arabirimini kullanarak şunları yapabilirsiniz:
 
-- Cihazlarınızı izleme.
-- Cihazlarınızı yapılandırma.
-- Cihazlarınızla ilgili sorunları giderme ve düzeltme.
-- Yeni cihazları hazırlama.
+* Cihazlarınızı izleme.
+* Cihazlarınızı yapılandırma.
+* Cihazlarınızla ilgili sorunları giderme ve düzeltme.
+* Yeni cihazları hazırlama.
 
-## <a name="use-the-left-pane"></a>Sol bölmeyi kullanın
+## <a name="iot-central-homepage"></a>IoT Central giriş sayfası
 
-Uygulamanın farklı bölümlerine erişmek için sol bölmeyi kullanın. Gezinti çubuğunu genişleterek veya daraltarak **<** veya **>** seçeneğini belirleyebilirsiniz:
+[IoT Central giriş](https://aka.ms/iotcentral-get-started) sayfası sayfası, IoT Central sunulan en son haberler ve özellikler hakkında daha fazla bilgi edinebilirsiniz, yeni uygulamalar oluşturabilir ve var olan uygulamanızı görebilir ve başlatabilir.
+
+> [!div class="mx-imgBorder"]
+> ![IoT Central giriş sayfası](media/overview-iot-central-tour/iot-central-homepage-pnp.png)
+
+### <a name="create-an-application"></a>Uygulama oluşturma
+
+Yapı bölümünde, sektörle ilgili IoT Central şablonlarının listesine giderek hızlı bir şekilde başlamanıza veya özel bir uygulama şablonu kullanarak sıfırdan başlamanıza yardımcı olabilirsiniz.  
+> [!div class="mx-imgBorder"]
+> ![IoT Central derleme sayfası](media/overview-iot-central-tour/iot-central-build-pnp.png)
+
+Daha fazla bilgi edinmek için bkz. [Azure IoT Central uygulaması oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı.
+
+### <a name="launch-your-application"></a>Uygulamanızı başlatın
+
+Uygulama oluşturma sırasında sizin veya çözüm oluşturucunun seçim yaptığı URL 'ye giderek IoT Central uygulamanızı başlatabilirsiniz. Ayrıca, [IoT Central App Manager](https://aka.ms/iotcentral-apps)'da erişiminiz olan tüm uygulamaların listesini de görebilirsiniz.
+
+> [!div class="mx-imgBorder"]
+> ![IoT Central App Manager](media/overview-iot-central-tour/app-manager-pnp.png)
+
+## <a name="navigate-your-application"></a>Uygulamanızda gezinin
+
+IoT uygulamanızın içindeyken, farklı alanlara erişmek için sol bölmeyi kullanın. Gezinti çubuğunun üstündeki üç çizgili simgeyi seçerek gezinti çubuğunu genişletebilir veya daraltabilirsiniz:
+
+> [!NOTE]
+> Gezinti çubuğunda gördüğünüz öğeler, Kullanıcı rolünüze göre değişir. [Kullanıcıları ve rolleri yönetme](howto-manage-users-roles.md)hakkında daha fazla bilgi edinin. 
 
 :::row:::
   :::column span="":::
-      ![sol bölme](media/overview-iot-central-tour/navigationbar.png)
+      > [!div class="mx-imgBorder"]
+      > ![sol bölme](media/overview-iot-central-tour/navigationbar-pnp.png)
   :::column-end:::
   :::column span="2":::
-     **Pano** , uygulama panonuzu görüntüler. Bir Oluşturucu olarak, operatörlerinizi panosunu özelleştirebilirsiniz. Kullanıcılar kendi panoları da oluşturabilir.
-    
-     **Device Explorer** uygulamadaki her bir cihaz şablonuyla ilişkili olan sanal ve gerçek cihazları listeler. Operatör olarak, **Device Explorer**’ı kullanarak bağlı cihazlarınızı yönetebilirsiniz.
-    
-     **Cihaz kümeleri** , cihaz kümelerini görüntülemenize ve oluşturmanıza olanak sağlar. Operatör olarak, bir sorgu tarafından belirtilen cihazların mantıksal bir koleksiyonu olarak cihaz kümeleri oluşturabilirsiniz.
-    
-     **Analytics** , cihazlar ve cihaz kümeleri için cihaz telemetrisinden türetilmiş analizi gösterir. Operatör olarak, uygulamanızdan içgörüler türetmek için cihaz verileri üzerinde özel görünümler oluşturabilirsiniz.
-    
-     **İşler** , güncelleştirmeleri ölçekli bir şekilde gerçekleştirmek için işler oluşturup çalıştırdığınızda toplu cihaz yönetimine olanak sağlar.
-    
-     **Cihaz şablonları** , bir oluşturucunun cihaz şablonları oluşturmak ve yönetmek için kullandığı araçları gösterir.
-    
-     **Sürekli veri dışa aktarma** , yöneticinin depolama ve kuyruklar gibi diğer Azure hizmetlerine sürekli bir dışarı aktarma yapılandırmasına olanak sağlar.
-    
-     **Yönetim** , bir yöneticinin uygulama ayarlarını, kullanıcıları ve rolleri yönetebildiği uygulama yönetimi sayfalarını gösterir.
+     **Pano** , uygulama panonuzu görüntüler. Bir *çözüm Oluşturucusu*olarak, işleçlerinizin genel panosunu özelleştirebilirsiniz. Kullanıcı rollerine bağlı olarak, işleçler kendi kişisel panolarını de oluşturabilir.
+     
+     **Cihazlar** , bağlı cihazlarınızı ve gerçek ve benzetimli cihazları yönetmenizi sağlar.
+
+     **Cihaz grupları** , bir sorgu tarafından belirtilen cihazların mantıksal koleksiyonlarını görüntülemenizi ve oluşturmanızı sağlar. Toplu işlemleri gerçekleştirmek için bu sorguyu kaydedebilir ve uygulama aracılığıyla cihaz gruplarını kullanabilirsiniz.
+
+     **Kurallar** , cihazlarınızı izlemek için kurallar oluşturmanızı ve düzenlemenizi sağlar. Kurallar cihaz telemetri temelinde değerlendirilir ve özelleştirilebilir eylemleri tetikler.
+
+     **Analytics** , uygulamanızdan Öngörüler elde etmek için cihaz verilerinin üzerine özel görünümler oluşturmanızı sağlar.
+
+     **İşler** , toplu işlemleri çalıştırarak cihazlarınızı ölçekli olarak yönetmenizi sağlar.
+
+     **Cihaz şablonları** , uygulamanıza bağlanan cihazların özelliklerini oluşturduğunuz ve yönettiğiniz yerdir.
+
+     **Veri dışa aktarma** , depolama ve kuyruklar gibi dış hizmetlere sürekli bir dışarı aktarma yapılandırmanıza olanak sağlar.
+
+     **Yönetim** , uygulamanızın ayarlarını, özelleştirmesini, faturalandırmasını, kullanıcılarını ve rollerini yönetebileceğiniz yerdir.
+
+     **IoT Central** , *yöneticilerin* IoT Central App Manager 'a geri atlamasını sağlar.
+     
    :::column-end:::
 :::row-end:::
 
-## <a name="search-help-and-support"></a>Arama, yardım ve destek
+### <a name="search-help-theme-and-support"></a>Arama, yardım, tema ve destek
 
 Üstteki menü her sayfada görünür:
 
-![Araç Çubuğu](media/overview-iot-central-tour/toolbar.png)
+> [!div class="mx-imgBorder"]
+> ![Araç Çubuğu](media/overview-iot-central-tour/toolbar-pnp.png)
 
-- Cihaz şablonlarını ve cihazlarını aramak için bir **arama** değeri girin.
-- Kullanıcı arabirimi dilini veya temasını değiştirmek için **Ayarlar** simgesini seçin.
-- Uygulamanın oturumunu kapatmak için **Hesap** simgesini seçin.
-- Yardım ve destek almak için, kaynak listesinden **Yardım** açılır listesini seçin. Ücretsiz fiyatlandırma planındaki bir uygulamada, destek kaynakları [canlı sohbete](howto-show-hide-chat.md)erişim içerir.
+* Cihaz şablonlarını ve cihazlarını aramak için bir **arama** değeri girin.
+* Kullanıcı arabirimi dilini veya temasını değiştirmek için **Ayarlar** simgesini seçin. [Uygulama tercihlerinizi yönetme](howto-manage-preferences.md) hakkında daha fazla bilgi edinin
+* Uygulamanın oturumunu kapatmak için **Hesap** simgesini seçin.
+* Yardım ve destek almak için, kaynak listesinden **Yardım** açılır listesini seçin. Ücretsiz fiyatlandırma planındaki bir uygulamada, destek kaynakları [canlı sohbete](howto-show-hide-chat.md)erişim içerir.
 
 Kullanıcı arabirimi için açık renkli tema veya koyu renkli temayı seçebilirsiniz:
-
-![Kullanıcı arabirimi için tema seçme](media/overview-iot-central-tour/themes.png)
 
 > [!NOTE]
 > Yönetici, uygulama için özel bir tema yapılandırmışsa açık ve koyu temalar arasında seçim yapmak için kullanılabilir değildir.
 
-## <a name="dashboard"></a>Pano
+> [!div class="mx-imgBorder"]
+> ![Kullanıcı arabirimi için bir tema seçin](media/overview-iot-central-tour/themes-pnp.png)
 
-![Pano](media/overview-iot-central-tour/homepage.png)
+### <a name="dashboard"></a>Pano
+> [!div class="mx-imgBorder"]
+> ![Pano](media/overview-iot-central-tour/dashboard-pnp.png)
 
-* Pano, Azure IoT Central uygulamanızda oturum açtığınızda gördüğünüz ilk sayfasıdır. Bir Oluşturucu olarak, kutucuk ekleyerek uygulama panosunu diğer kullanıcılar için özelleştirebilirsiniz. Daha fazla bilgi almak için [Azure IoT Central operatör görünümünü özelleştirme](tutorial-customize-operator.md) öğreticisine bakın.
+* Pano, Azure IoT Central uygulamanızda oturum açtığınızda gördüğünüz ilk sayfasıdır. Bir *çözüm Oluşturucusu*olarak, diğer kullanıcılar için birden çok genel uygulama panosu oluşturabilir ve bunları özelleştirebilirsiniz. [Panonuza kutucuk ekleme](howto-add-tiles-to-your-dashboard.md) hakkında daha fazla bilgi edinin
 
-* Bir operatör olarak, kişiselleştirilmiş panolar oluşturabilir ve bunlar arasında ve varsayılan pano arasında geçiş yapabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Central kişisel panolar](howto-create-personal-dashboards.md) nasıl yapılır makalesi oluşturma.
+* Bir *operatör*olarak, kullanıcı rolünüzün izin veriyorsa, ilgilendiğiniz şeyi izlemek için kişisel panolar oluşturabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Central kişisel panolar](howto-create-personal-dashboards.md) nasıl yapılır makalesi oluşturma.
 
-## <a name="device-explorer"></a>Device explorer
+### <a name="devices"></a>Cihazlar
 
-![Gezgin sayfası](media/overview-iot-central-tour/explorer.png)
+> [!div class="mx-imgBorder"]
+> ![cihazlar sayfası](media/overview-iot-central-tour/devices-pnp.png)
 
-Gezgin sayfası, Azure IoT Central uygulamanızda _cihaz şablonuna_göre gruplanmış _cihazları_ gösterir.
+Gezgin sayfası, Azure IoT Central uygulamanızda _cihaz şablonuna_göre gruplanmış _cihazları_ gösterir. 
 
-* Cihaz şablonu, uygulamanıza bağlanabilen bir cihaz türünü tanımlar. Daha fazla bilgi almak için bkz. [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](tutorial-define-device-type.md).
-* Cihaz, uygulamanızdaki gerçek veya sanal bir cihazı temsil eder. Daha fazla bilgi almak için bkz. [Azure IoT Central uygulamanıza yeni bir cihaz ekleme](tutorial-add-device.md).
+* Cihaz şablonu, uygulamanıza bağlanabilen bir cihaz türünü tanımlar.
+* Cihaz, uygulamanızdaki gerçek veya sanal bir cihazı temsil eder.
 
-## <a name="device-sets"></a>Cihaz kümeleri
+Daha fazla bilgi edinmek için bkz. [cihazlarınızı izleme](./quick-monitor-devices.md) hızlı başlangıç. 
 
-![Cihaz Kümeleri sayfası](media/overview-iot-central-tour/devicesets.png)
+### <a name="device-groups"></a>Cihaz grupları
 
-_Cihaz kümeleri_ sayfası, oluşturucu tarafından oluşturulan cihaz kümelerini gösterir. Cihaz kümesi, ilişkili cihazların bir koleksiyonudur. Oluşturucu, bir cihaz kümesine eklenen cihazları belirlemek üzere bir sorgu tanımlar. Uygulamanızdaki analizleri özelleştirirken cihaz kümelerini kullanırsınız. Daha fazla bilgi almak için [Azure IoT Central uygulamanızda cihaz kümelerini kullanma](howto-use-device-sets.md) makalesine bakın.
+> [!div class="mx-imgBorder"]
+> ![cihaz grupları sayfası](media/overview-iot-central-tour/device-groups-pnp.png)
 
-## <a name="analytics"></a>Analiz
+Cihaz grubu, ilişkili cihazların bir koleksiyonudur. *Çözüm Oluşturucu* bir cihaz grubuna dahil olan cihazları tanımlamak için bir sorgu tanımlar. Uygulamanızda toplu işlemler gerçekleştirmek için cihaz gruplarını kullanırsınız. Daha fazla bilgi edinmek için [Azure IoT Central uygulama makalesindeki cihaz gruplarını kullanma](tutorial-use-device-groups.md) makalesine bakın.
 
-![Analiz sayfası](media/overview-iot-central-tour/analytics.png)
+### <a name="rules"></a>Kurallar
+> [!div class="mx-imgBorder"]
+> ![kuralları sayfası](media/overview-iot-central-tour/rules-pnp.png)
 
-Analiz sayfasında, uygulamanıza bağlı cihazların nasıl davrandığını anlamanıza yardımcı olan grafikler gösterilir. Operatör bu sayfayı kullanarak bağlı cihazlarla ilgili sorunları izler ve araştırır. Oluşturucu, bu sayfada gösterilen grafikleri tanımlayabilir. Daha fazla bilgi almak için [Azure IoT Central uygulamanız için özel analizler oluşturma](howto-use-device-sets.md) makalesine bakın.
+Kurallar sayfası, cihazların telemetri, durum veya olaylarını temel alan kurallar tanımlamanızı sağlar. Bir kural tetiklendiğinde, bir e-posta gönderme, Web kancası uyarıları aracılığıyla bir dış sisteme bildirme vb. gibi bir veya daha fazla eylemi tetikleyebilirler. Bilgi edinmek için bkz. [kuralları yapılandırma](tutorial-create-telemetry-rules.md) öğreticisi. 
 
-## <a name="jobs"></a>İş
+### <a name="analytics"></a>Analiz
 
-![İşler sayfası](media/overview-iot-central-tour/jobs.png)
+> [!div class="mx-imgBorder"]
+> ![Analytics sayfası](media/overview-iot-central-tour/analytics-pnp.png)
 
-İşler sayfası cihazlarınızda toplu cihaz yönetimi işlemlerini çalıştırmanızı sağlar. Oluşturucu, cihaz özelliklerini, ayarları ve komutları güncelleştirmek için bu sayfayı kullanır. Daha fazla bilgi edinmek için [İş çalıştırma](howto-run-a-job.md) makalesine bakın.
+Analiz, uygulamanızdan Öngörüler elde etmek için cihaz verilerinin üzerine özel görünümler oluşturmanızı sağlar. Daha fazla bilgi için bkz. [Azure IoT Central için analiz oluşturma uygulamanız](howto-create-analytics.md) makalesi.
 
-## <a name="device-templates"></a>Cihaz şablonları
+### <a name="jobs"></a>İş
 
-![Cihaz şablonları sayfası](media/overview-iot-central-tour/templates.png)
+> [!div class="mx-imgBorder"]
+> ![Işleri sayfası](media/overview-iot-central-tour/jobs-pnp.png)
 
-Cihaz şablonları sayfası, bir oluşturucunun uygulamadaki cihaz şablonlarını oluşturduğu ve yönettiği yerdir. Cihaz şablonu, şöyle bir cihaz özelliği belirtir:
+İşler sayfası cihazlarınızda toplu cihaz yönetimi işlemlerini çalıştırmanızı sağlar. Cihaz özelliklerini, ayarlarını güncelleştirebilir ve komutları cihaz gruplarıyla karşı çalıştırabilirsiniz. Daha fazla bilgi edinmek için [İş çalıştırma](howto-run-a-job.md) makalesine bakın.
 
-- Telemetri, durum ve olay ölçümleri.
-- Ayarlar ve Özellikler.
-- Komut.
-- Olayları veya telemetri değerlerini temel alan kurallar.
+### <a name="device-templates"></a>Cihaz şablonları
 
-Daha fazla bilgi almak için [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) öğreticisine bakın.
+> [!div class="mx-imgBorder"]
+> ![cihaz şablonları sayfası](media/overview-iot-central-tour/templates-pnp.png)
 
-## <a name="continuous-data-export"></a>Verileri sürekli dışarı aktarma
+Cihaz şablonları sayfası, bir oluşturucunun uygulamadaki cihaz şablonlarını oluşturduğu ve yönettiği yerdir. Cihaz şablonu, şu gibi cihaz özelliklerini belirtir:
 
-![Sürekli veri dışa aktarma sayfası](media/overview-iot-central-tour/export.png)
+* Telemetri, durum ve olay ölçümleri
+* Özellikler
+* Komutlar
+* Görünümler
 
-Sürekli veri dışa aktarma sayfası, bir yöneticinin uygulama aracılığıyla telemetri gibi verilerin nasıl akışının tanımlanabileceğini tanımlar. Diğer hizmetler, dışarıya aktarılmış verileri saklayabilir veya analiz için kullanabilir. Daha fazla bilgi edinmek için bkz. [Azure 'da verilerinizi dışarı aktarma IoT Central](howto-export-data-blob-storage.md) makalesi.
+*Çözüm Oluşturucu* Ayrıca, cihazları yönetmek için kullanılacak operatörler için formlar ve panolar oluşturabilir.
 
-## <a name="administration"></a>Yönetim
+Daha fazla bilgi almak için [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](howto-set-up-template.md) öğreticisine bakın. 
 
-![Yönetim sayfası](media/overview-iot-central-tour/administration.png)
+### <a name="data-export"></a>Veri dışarı aktarma
+> [!div class="mx-imgBorder"]
+> ![veri dışa aktarma sayfası](media/overview-iot-central-tour/export-pnp.png)
 
-Yönetim sayfası, yönetici tarafından uygulamadaki kullanıcıları ve rolleri tanımlama ve Kullanıcı arabirimini özelleştirme gibi kullanılan araçların bağlantılarını içerir. Daha fazla bilgi almak için [Azure IoT Central uygulamanızı yönetme](howto-administer.md) makalesine bakın.
+Veri dışa aktarma, uygulama telemetri gibi veri akışlarını uygulamadan Harici sistemlere ayarlamanıza olanak sağlar. Daha fazla bilgi edinmek için bkz. [Azure 'da verilerinizi dışarı aktarma IoT Central](./howto-export-data.md) makalesi.
+
+### <a name="administration"></a>Yönetim
+> [!div class="mx-imgBorder"]
+> ![yönetim sayfası](media/overview-iot-central-tour/administration-pnp.png)
+
+Yönetim sayfası IoT Central uygulamanızı yapılandırmanıza ve özelleştirmenize olanak sağlar. Burada, uygulamanızın adını, URL 'sini, temalarını değiştirebilir, kullanıcıları ve rolleri yönetebilir, API belirteçleri oluşturabilir ve uygulamanızı dışarı aktarabilirsiniz. Daha fazla bilgi almak için [Azure IoT Central uygulamanızı yönetme](howto-administer.md) makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

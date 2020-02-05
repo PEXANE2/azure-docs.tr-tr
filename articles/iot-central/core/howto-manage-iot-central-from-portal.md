@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990186"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018984"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
@@ -41,14 +41,9 @@ Arama sonuçlarındaki **uygulama satırı IoT Central** öğesini seçin.
 
 Formdaki tüm alanları doldurur. Bu form, [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde uygulama oluşturmak için doldurduğunuz forma benzer. Daha fazla bilgi için [IoT Central uygulaması oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı bölümüne bakın.
 
-Uygulama şablonu olarak **eski uygulama** ' yı seçerek genel kullanıma sunulan özelliklerle IoT Central uygulama oluşturabilirsiniz, diğer tüm uygulama şablonları genel önizleme özelliklerini kullanır.
-
 ![IoT Central form oluştur](media/howto-manage-iot-central-from-portal/image6a.png)
 
 **Konum** , uygulamanızı oluşturmak istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) ' dır. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Azure IoT Central Şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa**'da sunulmaktadır.  Bir konum seçtikten sonra, uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
-
-> [!NOTE]
-> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
 
 
 Tüm alanları doldurduktan sonra **Oluştur**' u seçin.

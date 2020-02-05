@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045056"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025716"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.74 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][install-azure-cli].
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.81 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>Yük dengeleyiciniz için giden kuralı gösterme
+## <a name="configure-outbound-ports-and-idle-timeout"></a>Giden bağlantı noktalarını ve boşta kalma zaman aşımını yapılandırma
 
-Yük dengeleyicide oluşturulan giden kuralı göstermek için [az Network lb Outbound-Rule listesini][az-network-lb-outbound-rule-list] kullanın ve aks kümenizin düğüm kaynak grubunu belirtin:
+> [!WARNING]
+> Aşağıdaki bölüm, daha büyük ölçekli ağın gelişmiş senaryolarına veya varsayılan yapılandırmalara karşı SNAT tükenmesi sorunlarını gidermeye yöneliktir. Sağlıklı kümeleri sürdürmek için *AllocatedOutboundPorts* veya *IdleTimeout ınminutes* değerlerini varsayılan değerinden değiştirmeden önce, VM 'ler ve IP adresleri için uygun olan kotanın doğru envanterine sahip olmanız gerekir.
+> 
+> *AllocatedOutboundPorts* ve *IdleTimeout ınminutes* değerlerinin değiştirilmesi, yük dengeleyiciniz için giden kuralın davranışını önemli ölçüde değiştirebilir. Değişikliklerinizin etkisini tam olarak anlamak üzere bu değerleri güncelleştirmeden önce, Azure 'daki giden kuralları, [yük dengeleyici giden kurallarını][azure-lb-outbound-rules]ve [giden bağlantıları][azure-lb-outbound-connections] [Load Balancer][azure-lb-outbound-rules-overview]gözden geçirin.
+
+Giden ayrılmış bağlantı noktaları ve bunların boşta kalma zaman aşımları [SNAT][azure-lb-outbound-connections]için kullanılır. Varsayılan olarak, *Standart* SKU 'su yük dengeleyici, arka uç havuz boyutunu ve her bağlantı noktası için 30 dakikalık boşta kalma zaman aşımını [temel alan giden bağlantı noktası sayısı için otomatik atamayı][azure-lb-outbound-preallocatedports] kullanır. Bu değerleri görmek için [az Network lb giden kuralı listesini][az-network-lb-outbound-rule-list] kullanarak yük dengeleyicinin giden kuralını görüntüleyin:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-Örnek çıktıda *AllocatedOutboundPorts* 0 ' dır. *AllocatedOutboundPorts* DEĞERI, SNAT bağlantı noktası ayırmanın arka uç havuz boyutuna göre otomatik atamaya geri dönmesi anlamına gelir. Daha fazla bilgi için bkz. Azure 'da [giden kuralları][azure-lb-outbound-rules] ve [giden bağlantıları][azure-lb-outbound-connections] Load Balancer.
+Örnek çıktıda *AllocatedOutboundPorts* ve *IdleTimeout ınminutes*için varsayılan değer gösterilmektedir. *AllocatedOutboundPorts* için 0 değeri, arka uç havuz boyutunu temel alan giden bağlantı noktalarının sayısı için otomatik atamayı kullanan giden bağlantı noktası sayısını ayarlar. Örneğin, kümede 50 veya daha az düğüm varsa, her düğüm için 1024 bağlantı noktaları ayrılır.
+
+Yukarıdaki varsayılan yapılandırmaya göre 1 yüz SNAT tükenmesi beklemeniz durumunda *allocatedOutboundPorts* veya *IdleTimeout ınminutes* ayarını değiştirmeyi göz önünde bulundurun. Her ek IP adresi, ayırma için 64.000 ek bağlantı noktası sunar, ancak Azure Standart Load Balancer, daha fazla IP adresi eklendiğinde düğüm başına bağlantı noktalarını otomatik olarak artırmaz. *Yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini ayarlayarak bu değerleri değiştirebilirsiniz. Örneğin:
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> Bağlantı veya ölçeklendirme sorunlarından kaçınmak için *allocatedOutboundPorts* 'i özelleştirmeden önce [gerekli kotayı hesaplamanız][calculate-required-quota] gerekir. *AllocatedOutboundPorts* için belirttiğiniz değer ayrıca 8 ' in katı olmalıdır.
+
+Ayrıca, bir küme oluştururken *yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini de kullanabilirsiniz, ancak Ayrıca *yük dengeleyici-yönetilen-giden-IP-sayısı*, *yük dengeleyici-giden-* IP veya *yük dengeleyici-giden-IP-öneklerini* de belirtmeniz gerekir.  Örneğin:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+*Yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini varsayılan olarak değiştirme sırasında, tüm kümeyi etkileyen yük dengeleyici profilinin davranışını etkiler.
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>AllocatedOutboundPorts özelleştirmek için gereken kota
+Düğüm sanal makinelerinizin sayısına ve istenen ayrılmış giden bağlantı noktalarına bağlı olarak yeterli giden IP kapasitesine sahip olmanız gerekir. Yeterli sayıda çıkış IP kapasitesi olduğunu doğrulamak için aşağıdaki formülü kullanın: 
+ 
+*Outboundips* \* 64.000 \> *nodevms* \* *desiredAllocatedOutboundPorts*.
+ 
+Örneğin, 3 *Nodevms*ve 50.000 *desiredAllocatedOutboundPorts*varsa, en az 3 *outboundıps*gerekir. İhtiyaç duyduğunuz süreden daha fazla giden IP kapasitesi eklemeniz önerilir. Ayrıca, giden IP kapasitesini hesaplarken küme otomatik Scaler ve düğüm havuzu yükseltmeleri olasılığa yönelik hesaba sahip olmanız gerekir. Küme otomatik yüklemesi için geçerli düğüm sayısını ve en fazla düğüm sayısını gözden geçirin ve daha yüksek değeri kullanın. Yükseltme için, yükseltmeye izin veren her düğüm havuzu için ek bir düğüm VM 'si hesabı.
+ 
+*Idletimeoutınminutes* değerini varsayılan değer olan 30 dakikadan farklı bir değere ayarlarken, iş yüklerinizin giden bir bağlantıya ne kadar süreyle ihtiyacı olacağını düşünün. Ayrıca, AKS dışında kullanılan *Standart* SKU yük dengeleyici için varsayılan zaman aşımı değerini 4 dakikadır. Belirli AKS iş yükünüzü daha doğru bir şekilde yansıtan bir *ıdletimeoutınminutes* değeri, artık kullanılmayan bağlantıların AYıKLANMASıNDAN kaynaklanan SNAT tükenmesi azalmasına yardımcı olabilir.
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>Belirli IP aralıklarına erişimi kısıtla
 
@@ -239,9 +283,12 @@ Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri h
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

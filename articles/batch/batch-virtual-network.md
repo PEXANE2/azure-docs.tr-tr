@@ -2,19 +2,19 @@
 title: Sanal ağda havuz Sağlama-Azure Batch | Microsoft Docs
 description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu gibi ağdaki diğer VM 'lerle güvenli bir şekilde iletişim kurabilmesi için bir Batch havuzu oluşturma.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 06b861f306718068366653685ebe4daf8d5dcfa6
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: bbe38a9dc7be749b8e138ff3ca9ec4f06255b389
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026275"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022775"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 

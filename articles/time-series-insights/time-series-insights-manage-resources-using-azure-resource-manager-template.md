@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973219"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024407"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
 
@@ -27,9 +27,9 @@ Time Series Insights aşağıdaki kaynakları destekler:
    | Kaynak | Açıklama |
    | --- | --- |
    | Ortam | Time Series Insights ortamı, olay aracılarından okunan, depolanan ve sorgu için kullanılabilir hale getirilen olayların mantıksal gruplandırmasıdır. Daha fazla bilgi için [Azure Time Series Insights ortamınızın planını](time-series-insights-environment-planning.md) okuyun |
-   | Olay Kaynağı | Olay kaynağı, Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
+   | Olay kaynağı | Olay kaynağı, Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
    | Başvuru veri kümesi | Başvuru veri kümeleri, ortamdaki olaylar hakkında meta veriler sağlar. Başvuru verileri kümelerindeki meta veriler, giriş sırasında olaylarla birleştirilir. Başvuru veri kümeleri, olay anahtarı özelliklerine göre kaynak olarak tanımlanır. Başvuru veri kümesini oluşturan gerçek meta veriler, veri düzlemi API 'Leri aracılığıyla karşıya yüklenir veya değiştirilir. |
-   | Erişim İlkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md) konusunu okuyun |
+   | Erişim Ilkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md) konusunu okuyun |
 
 Kaynak Yöneticisi şablonu, bir kaynak grubundaki kaynakların altyapısını ve yapılandırmasını tanımlayan bir JSON dosyasıdır. Aşağıdaki belgeler şablon dosyalarını daha ayrıntılı bir şekilde anlatmaktadır:
 
@@ -57,7 +57,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
     <div id="required-parameters"></div>
 
-   * Gerekli Parametreler
+   * Gerekli parametreler
 
      | Parametre | Açıklama |
      | --- | --- |
@@ -69,7 +69,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
     <div id="optional-parameters"></div>
 
-   * İsteğe Bağlı Parametreler
+   * İsteğe bağlı parametreler
 
      | Parametre | Açıklama |
      | --- | --- |

@@ -4,24 +4,22 @@ description: Tek bir IoT Central kuralından birden çok eylem çalıştırın v
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 1992b8925d5d9ba59c36452187f5b6eb510e72dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7c60728ab501d03e9c40928e730225575e76efbc
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990819"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023829"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Birden çok eylemi bir veya daha fazla kuralla çalışacak şekilde gruplandırma
 
 *Bu makale, oluşturucular ve yöneticiler için geçerlidir.*
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
-
-Azure IoT Central, bir koşul karşılandığında eylemleri çalıştırmak için kurallar oluşturursunuz. Kurallar cihaz telemetrisini veya olaylarını temel alır. Örneğin, bir cihazdaki sıcaklık bir eşiği aştığında bir işlece bildirimde bulunabilir. Bu makalede, bir IoT Central kuralına birden çok eylem eklemek için [Azure izleyici](../../azure-monitor/overview.md) *eylem gruplarının* nasıl kullanılacağı açıklanır. Birden çok kurala bir eylem grubu ekleyebilirsiniz. Bir [eylem grubu](../../azure-monitor/platform/action-groups.md) , bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur.
+Azure IoT Central, bir koşul karşılandığında eylemleri çalıştırmak için kurallar oluşturursunuz. Kurallar cihaz telemetrisini veya olaylarını temel alır. Örneğin, bir cihazın sıcaklığı bir eşiği aştığında bir işlece bildirimde bulunabilir. Bu makalede, bir IoT Central kuralına birden çok eylem eklemek için [Azure izleyici](../../azure-monitor/overview.md) *eylem gruplarının* nasıl kullanılacağı açıklanır. Birden çok kurala bir eylem grubu ekleyebilirsiniz. Bir [eylem grubu](../../azure-monitor/platform/action-groups.md) , bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -45,7 +43,7 @@ Bir IoT Central kuralında bir eylem grubunu kullanmak için, eylem grubunun IoT
 
 ## <a name="use-an-action-group"></a>Bir eylem grubu kullanma
 
-IoT Central uygulamanızda bir eylem grubu kullanmak için önce bir telemetri veya olay kuralı oluşturun. Kurala bir eylem eklediğinizde **Azure Izleyici eylem grupları**' nı seçin:
+IoT Central uygulamanızda bir eylem grubu kullanmak için önce bir kural oluşturun. Kurala bir eylem eklediğinizde **Azure Izleyici eylem grupları**' nı seçin:
 
 ![Eylem seçin](media/howto-use-action-groups/chooseaction.png)
 
@@ -64,52 +62,11 @@ Aşağıdaki tabloda, desteklenen eylem türlerine gönderilen bilgiler özetlen
 | E-posta       | Standart IoT Central e-posta şablonu |
 | SMS         | Azure IoT Central uyarısı: $ {applicationName}-"$ {ruleName}", $ {triggerDate} $ {triggerTime} konumunda "$ {aygıtadı}" üzerinde tetiklendi |
 | Ses       | Azure ı. O. T orta uyarı: "$ {ruleName}" kuralı $ {triggerDate} $ {triggerTime} konumunda "$ {aygıtadı}" cihazında tetiklendi; uygulama $ {applicationName} |
-| Web Kancası     | {"SchemaId": "AzureIoTCentralRuleWebhook", "Data": {[Regular Web kancası yükü](#payload)}} |
+| Web Kancası     | {"SchemaId": "AzureIoTCentralRuleWebhook", "Data": {[Regular Web kancası yükü](howto-create-webhooks.md#payload)}} |
 
 Aşağıdaki metin bir eylem grubundan örnek bir SMS iletisidir:
 
-`iotcentral: Azure IoT Central alert: Sample Contoso 22xu4spxjve - "Low pressure alert" triggered on "Refrigerator 2" at March 20, 2019 10:12 UTC`
-
-<a id="payload"></a>Aşağıdaki JSON örnek bir Web kancası eylem yükünü göstermektedir:
-
-```json
-{
-  "schemaId":"AzureIoTCentralRuleWebhook",
-  "data":{
-    "id":"97ae27c4-17c5-4e13-9248-65c7a2c57a1b",
-    "timestamp":"2019-03-20T10:53:17.059Z",
-    "rule":{
-      "id":"031b660e-528d-47bb-b33d-f1158d7e31bf",
-      "name":"Low pressure alert",
-      "enabled":true,
-      "deviceTemplate":{
-        "id":"c318d580-39fc-4aca-b995-843719821049",
-        "version":"1.0.0"
-      }
-    },
-    "device":{
-      "id":"2383d8ba-c98c-403a-b4d5-8963859643bb",
-      "name":"Refrigerator 2",
-      "simulated":true,
-      "deviceId":"2383d8ba-c98c-403a-b4d5-8963859643bb",
-      "deviceTemplate":{
-        "id":"c318d580-39fc-4aca-b995-843719821049",
-        "version":"1.0.0"
-      },
-      "measurements":{
-        "telemetry":{
-           "pressure":343.269190673549
-        }
-      }
-    },
-    "application":{
-      "id":"8e70742b-0d5c-4a1d-84f1-4dfd42e61c7b",
-      "name":"Sample Contoso",
-      "subdomain":"sample-contoso"
-    }
-  }
-}
-```
+`iotcentral: Azure IoT Central alert: Contoso - "Low pressure alert" triggered on "Motion sensor 2" at March 20, 2019 10:12 UTC`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

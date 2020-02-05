@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cffa571028dac192e8b8806ee9ec932cf89eb1fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c4b13c56a68205195bd5ad4b696d9e01786a8dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498781"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016553"
 ---
-# <a name="water-quality-monitoring-reference-architecture"></a>Su kalitesi izleme başvuru mimarisi 
+# <a name="water-quality-monitoring-reference-architecture"></a>Su kalitesi izleme referans mimarisi 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Su kalitesinde izleme çözümleri, **Azure IoT Central uygulama şablonuyla** birlikte bir başlangıç IoT uygulaması olarak oluşturulabilir. Bu makale uçtan uca çözüm oluşturma konusunda üst düzey bir başvuru mimarisi kılavuzu sağlar. 
 
@@ -35,7 +35,7 @@ Genellikle su kalite izleme çözümünde bir bölümü oynatacak anahtar bileş
 ## <a name="devices-and-connectivity"></a>Cihazlar ve bağlantı 
 Bu bölümde, genellikle akıllı su cihazları olarak su kalitesinde izleme veya su tüketim izleme 'de kullanılan cihazlara başvuracağız. Akıllı su cihazları Flow ölçümleri, su kalitesi izleyicileri, akıllı vanalar, sızıntı algılayıcıları vb. olabilir.
 
-Akıllı su çözümlerinde kullanılan cihazlar genellikle düşük güç Wide alan ağları (LPWAN) aracılığıyla bir üçüncü taraf ağ operatörü aracılığıyla bağlanır. Bu tür cihazlarda, cihaz verilerinizi Azure IoT Central IoT uygulamanıza göndermek için [azure IoT Central cihaz köprüsünden](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) yararlanabilirsiniz. Alternatif olarak, IP özellikli cihaz ağ geçitleriniz olabilir ve IoT Central doğrudan bağlanabilir.
+Akıllı su çözümlerinde kullanılan cihazlar genellikle düşük güç Wide alan ağları (LPWAN) üzerinden bir üçüncü taraf ağ operatörü aracılığıyla bağlanır. Bu tür cihazlarda, cihaz verilerinizi Azure IoT Central IoT uygulamanıza göndermek için [azure IoT Central cihaz köprüsünden](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) yararlanabilirsiniz. Alternatif olarak, IP özellikli cihaz ağ geçitleriniz olabilir ve IoT Central doğrudan bağlanabilir.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central, IoT çözümünüzde hızla çalışmaya başlamanızı sağlayan bir IoT uygulama platformudur. Çözümünüzü, üçüncü taraf hizmetlerle markalayabilmeniz, özelleştirebilir ve tümleştirebilirsiniz.
@@ -44,7 +44,7 @@ Akıllı su cihazlarınızı IoT Central 'e bağladığınızda, cihaz komutu ve
 ## <a name="extensibility-and-integrations"></a>Genişletilebilirlik ve tümleştirmeler 
 IoT uygulamanızı IoT Central ve isteğe bağlı olarak genişletebilirsiniz:
 * IoT Central uygulamadan sürekli veri dışarı aktarma aracılığıyla eğitim makinesi öğrenimi modelleri gibi gelişmiş analizler için IoT verilerinizi dönüştürün ve tümleştirin
-* IoT Central uygulamadan Microsoft Flow veya Web kancaları aracılığıyla eylemleri tetikleyerek diğer sistemlerdeki iş akışlarını otomatikleştirin
+* IoT Central uygulamadan Microsoft Flow veya Web kancalarını kullanarak eylemleri tetikleyerek diğer sistemlerdeki iş akışlarını otomatikleştirin
 * Program aracılığıyla API 'Leri aracılığıyla IoT Central IoT uygulamanıza erişin IoT Central
 
 ## <a name="business-applications"></a>İş uygulamaları 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910426"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025444"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
 
@@ -52,7 +52,7 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | FI-FI      | Fince                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Fransızca                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Fransızca (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| gl-ES      | Galiçya dili               |       |    ✓   |         |         |                   |                |
+| GL-ES      | Galiçya dili               |       |    ✓   |         |         |                   |                |
 | de-DE      | Almanca                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Yunanca                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | Gu-ın      | Gucerat dili                |       |       |         |     ✓    |                   |                |
@@ -69,9 +69,9 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | es-419     | Latin Amerika Ispanyolca |       |    ✓   |         |         |                   |                |
 | lv-LV      | Letonca                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litvanca             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| MK-MK      | Makedonca             |       |       |         |     ✓    |                   |                |
+| MK-MK      | CA             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Malay dili (Latin)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| Mr-ın      | Marathi dili                 |       |       |         |     ✓    |                   |                |
+| Mr-ın      | Marathi                 |       |       |         |     ✓    |                   |                |
 | NB-yok      | Norveççe Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Yerel betiklerdeki tüm bölgeler için nötr on-resmi diller varsa |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | Nötr zemin.-Latin exonbiri. Varsa Latin betiği kullanılacaktır |   ✓     |        |         |         |                |        ✓         |
@@ -81,7 +81,7 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 | PA-ın      | Pencap dili                 |       |       |         |     ✓    |                   |                |
 | Ro-RO      | Rumence               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Rusça                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| sr-Cyrl-RS | Sırpça (Kiril)     |       |   SR-RS  |         |    SR-RS     |                   |                |
+| SR-Cyrl-RS | Sırpça (Kiril)     |       |   SR-RS  |         |    SR-RS     |                   |                |
 | sr-Latn-RS | Sırpça (Latin)        |       |       |         |     sr-Latn    |                   |                |
 | SK-SK      | Slovakça             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | SL-SL      | Slovence              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
@@ -101,13 +101,15 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 ## <a name="azure-maps-supported-views"></a>Azure haritalar desteklenen görünümler
 
 > [!Note]
-> Azure haritalar, 1 Ağustos 2019 ' de aşağıdaki ülkelerde/bölgelerde yayımlanmıştır:
+> Azure Maps, 1 Ağustos 2019 tarihinde aşağıdaki ülkelerde/bölgelerde yayımlanmıştır:
 >  * Arjantin
 >  * Hindistan
 >  * Fas
 >  * Pakistan
 >
-> 1 Ağustos 2019 ' den sonra, **görüntüleme** parametresi ayarı yukarıda listelenen yeni bölgeler/ülkeler için döndürülen harita içeriğini tanımlar. Görüntüleme parametresini, hizmetlerinizin kullandığı REST API 'Ler ve SDK 'Lar için gereken şekilde ayarlamış olduğunuzdan emin olmanızı öneririz.
+> 1 Ağustos 2019 ' den sonra, **Görünüm** parametresi yukarıda listelenen yeni bölgeler/ülkeler için döndürülen harita içeriğini tanımlar. Azure Maps **Görünüm** parametresi ("Kullanıcı bölgesi parametresi" olarak da bilinir), haritada görüntülenen Kenarlıklar ve Etiketler dahil olmak üzere Azure haritalar Hizmetleri aracılığıyla hangi coğrafi bölge/bölge için doğru haritaları gösterecek olan ıkı harfli ıso-3166 ülke kodudur. 
+
+Hizmetlerinizin kullandığı REST API 'Ler ve SDK 'Lar için **Görünüm** parametresini gerektiği şekilde ayarlamış olduğunuzdan emin olun.
 >  
 >
 >  **REST API 'Leri:**
@@ -135,15 +137,12 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 >    
 >  **SDK**
 >
->  Görünüm parametresini gereken şekilde ayarlamış olduğunuzdan ve Web SDK 'sının en son sürümüne sahip olduğunuzdan emin olun ve Android SDK. Etkilenen SDK 'lar:
+>  **Görünüm** parametresini gereken şekilde ayarlamış olduğunuzdan ve Web SDK 'sının en son sürümüne sahip olduğunuzdan emin olun ve Android SDK. Etkilenen SDK 'lar:
 >
 >    * Azure Haritalar Web SDK 'Sı
 >    * Azure Haritalar Android SDK
 
-
-Azure Maps **Görünüm** parametresi ("Kullanıcı bölgesi parametresi" olarak da bilinir), haritada görüntülenen Kenarlıklar ve Etiketler dahil olmak üzere Azure haritalar Hizmetleri aracılığıyla hangi coğrafi bölge/bölge için doğru haritaları gösterecek olan ıkı harfli ıso-3166 ülke kodudur. 
-
-Varsayılan olarak görünüm parametresi, istekte tanımlanmasanız bile **birleştirilmiş**olarak ayarlanır. Kullanıcılarınızın konumunu tespit etmek ve sonra bu konum için görünüm parametresini doğru olarak ayarlamak sizin sorumluluğunuzdadır. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek ' View = Auto ' ayarlama seçeneğiniz vardır.  Azure haritalar 'daki görünüm parametresi, Haritalar, görüntüler ve diğer verilerin yanı sıra Azure haritalar aracılığıyla erişmeye yetkili olan üçüncü taraf içeriklerin kullanılabilir hale getirilmesiyle ilgili olarak, geçerli yasaları ile uyumlu olmalıdır.
+Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu belirleyin ve sonra bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin yanı sıra Azure Maps aracılığıyla erişmeye yetkili olan üçüncü taraf içeriklerin kullanılabilir hale getirilmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
 
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.

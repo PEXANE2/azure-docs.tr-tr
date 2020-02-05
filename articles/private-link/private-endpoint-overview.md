@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989034"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018610"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -61,6 +61,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**PostgreSQL için Azure veritabanı-tek sunucu** | Microsoft. DBforPostgreSQL/sunucuları   | Postgressqlserver |
 |**MySQL için Azure Veritabanı** | Microsoft. Dbformyısql/sunucuları    | Te yapılandırılmış MySQLServer |
 |**MariaDB için Azure Veritabanı** | Microsoft. Dbformarıdb/sunucular    | mariadbServer |
+|**Azure Anahtar Kasası.** | Microsoft.KeyVault/vaults    | kasa |
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktaların ağ güvenliği 
 Azure hizmetleri için özel uç noktalar kullanılırken, trafik belirli bir özel bağlantı kaynağıyla güvenli hale getirilir. Platform yalnızca belirtilen özel bağlantı kaynağına ulaşan ağ bağlantılarını doğrulamak için bir erişim denetimi gerçekleştirir. Aynı Azure hizmeti içindeki ek kaynaklara erişmek için ek özel uç noktalar gereklidir. 
@@ -118,6 +119,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 |PostgreSQL için Azure veritabanı-tek sunucu (Microsoft. DBforPostgreSQL/Servers)|Postgressqlserver|privatelink.postgres.database.azure.com|
 |MySQL için Azure veritabanı (Microsoft. Dbformyısql/sunucular)|Te yapılandırılmış MySQLServer|privatelink.mysql.database.azure.com|
 |MariaDB için Azure veritabanı (Microsoft. Dbformarıdb/sunucular)|mariadbServer|privatelink.mariadb.database.azure.com|
+|Azure Key Vault (Microsoft. Keykasası/Kaults)|kasa|privatelink.vaultcore.azure.net|
  
 Azure, çözümü önerilen etki alanı adlarına yönlendirmek için ortak DNS üzerinde kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabileceksiniz. 
  

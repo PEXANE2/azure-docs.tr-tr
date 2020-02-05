@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765409"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023319"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
 
@@ -33,45 +33,15 @@ Yerel test ortamınızı hazırlamak için [Postman](https://www.getpostman.com/
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>OAuth 2,0 örtük izin akışını kullanmak için Azure Active Directory yapılandırma
 
-Azure Active Directory uygulamanızı OAuth 2,0 örtük izin akışını kullanacak şekilde yapılandırın.
-
-1. Uygulama kaydınız için **API izinleri** bölmesini açın. **Izin Ekle** düğmesini seçin. **API Izinleri iste** bölmesinde **Kuruluşumun kullandığı API 'leri** seçin ve ardından şunu arayın:
-    
-    1. `Azure Digital Twins`. **Azure dijital TWINS** API 'sini seçin.
-
-        [![arama API 'SI veya Azure dijital TWINS](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. Alternatif olarak, `Azure Smart Spaces Service`için arama yapın. **Azure akıllı boşluklar hizmeti** API 'sini seçin.
-
-        [Azure akıllı alanları için Search API ![](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > Görüntülenecek Azure AD API adı ve KIMLIĞI, kiracınıza bağlı olarak değişir:
-    > * Test kiracının ve müşteri hesaplarının `Azure Digital Twins`araması gerekir.
-    > * Diğer Microsoft hesaplarının `Azure Smart Spaces Service`araması gerekir.
-
-1. Seçilen API, aynı **istek API 'si izinleri** bölmesinde **Azure dijital TWINS** olarak gösterilir. **Oku (1)** açılır öğesini seçin ve ardından **oku. yazma** onay kutusunu seçin. **Izin Ekle** düğmesini seçin.
-
-    [Azure dijital TWINS için API izinleri ekleme ![](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. Kuruluşunuzun ayarlarına bağlı olarak, bu API 'ye yönetici erişimi sağlamak için ek adımlar gerçekleştirmeniz gerekebilir. Daha fazla bilgi için yöneticinize başvurun. Yönetici erişimi onaylandıktan sonra **API izinleri** BÖLMESINDEKI **yönetici onayı gerekli** sütunu, API 'leriniz için aşağıdakine benzer şekilde görünür:
-
-    [Yönetici onay onayını yapılandırma ![](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. İkinci bir **yeniden yönlendirme URI 'sini** `https://www.getpostman.com/oauth2/callback`için yapılandırın.
+1. Azure Active Directory uygulaması oluşturmak ve yapılandırmak için [hızlı](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) başlangıçtaki adımları izleyin. Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
 
     [Yeni Postman yeniden yönlendirme URI 'sini ![yapılandırma](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. [Uygulamanın bir **ortak istemci**olarak kaydedildiğinden](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)emin olmak için, uygulama kaydlarınızın **kimlik doğrulama** bölmesini açın ve bu bölmeyi aşağı kaydırın. **Varsayılan istemci türü** bölümünde, **uygulamayı ortak istemci olarak değerlendir**' **i seçin ve** **Kaydet**' i tıklayın.
+1. Şimdi `https://www.getpostman.com/oauth2/callback`için bir **yeniden yönlendirme URI 'si** ekleyin.
 
-    Manifest. JSON 'inizdeki **oauth2AllowImplicitFlow** ayarını etkinleştirmek için **erişim belirteçlerini** denetleyin.
+1. OAuth 2,0 örtük verme akışının kullanılmasına izin vermek için **örtük** > **erişim belirteçleri** ver onay kutusunu seçin. **Yapılandır**' ı ve ardından **Kaydet**' i seçin.
 
-    [![ortak istemci yapılandırma ayarı](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. Azure Active Directory uygulamanızın **uygulama kimliğini** kopyalayın ve saklayın. Bu, izleyen adımlarda kullanılır.
-
-   [![Azure Active Directory uygulama KIMLIĞI](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. Azure Active Directory uygulamanızın **ISTEMCI kimliğini** kopyalayın.
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2,0 belirteci edinme
 
@@ -91,15 +61,13 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
 
 1. Uygulamayı indirmek için [www.getpostman.com](https://www.getpostman.com/) adresine gidin.
 
-1. Postman uygulamasını açın ve yeni ' ye tıklayın | Yeni oluştur ve Istek seç. Bir Istek adı girin. Kaydetmek için bir koleksiyon veya klasör seçin ve Kaydet ' e tıklayın. 
-
 1. İstek almak istiyoruz. **Yetkilendirme** sekmesini seçin, OAuth 2,0 ' i seçin ve ardından **Yeni erişim belirteci al**' ı seçin.
 
     | Alan  | Değer |
     |---------|---------|
     | Verme türü | `Implicit` |
     | Geri çağırma URL 'SI | `https://www.getpostman.com/oauth2/callback` |
-    | Kimlik doğrulama URL 'SI | **2. adımdaki** **yetkilendirme URL 'sini** kullanın |
+    | Kimlik doğrulama URL 'SI | **1. adımdaki** **yetkilendirme URL 'sini** kullanın |
     | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
     | Kapsam | Boş bırakın |
     | Eyalet | Boş bırakın |

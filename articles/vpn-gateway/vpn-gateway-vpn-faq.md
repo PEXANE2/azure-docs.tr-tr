@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895971"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016757"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
 
@@ -34,7 +34,7 @@ Windows PowerShell ve Azure REST API'lerini kullanarak birden çok siteye bağla
 
 Hayır. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Şirket içi ve dışı bağlantı seçeneklerim nelerdir?
+### <a name="what-are-my-cross-premises-connection-options"></a>Şirket içi ve dışı karışık bağlantı seçeneklerim nelerdir?
 
 Aşağıdaki şirket içi ve dışı bağlantılar desteklenmektedir:
 
@@ -68,14 +68,15 @@ VPN ağ geçidi bir sanal ağ geçidi türüdür. VPN ağ geçidi, şifrelenmiş
 
 Rota tabanlı ağ geçitleri yol tabanlı VPN'leri uygular. Rota temelli VPN'ler, paketleri kendi ilgili arabirimlerine yönlendirmek için IP iletme veya yönlendirme tablosunda "yolları" seçeneğini kullanır. Bundan sonra tünel arabirimleri, paketleri tünellerin içinde veya dışında şifreler veya şifrelerini çözer. Rota temelli VPN’lerle ilgili ilke veya trafik seçici herhangi birinden herhangi birine (veya joker karakterler) olarak yapılandırılır.
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>İlke temelli VPN ağ geçidimi Rota temelli olarak güncelleştirebilir miyim?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>İlke tabanlı VPN ağ Geçidimi rota temelinde güncelleştirebilir miyim?
+
 Hayır. Azure VNET ağ geçidi türü, ilke tabanlı olarak yol tabanlı veya başka bir şekilde değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
 1. Silinecek ağ geçidiyle ilişkilendirilmiş bağlantıları silin.
 1. Ağ geçidini silin:
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure Powershell - klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [İstenen türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu tamamlayın](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell-klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. İstediğiniz [türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu doldurun](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' gerekli mi?
 
@@ -89,11 +90,15 @@ Hayır.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Oluşturmadan önce VPN ağ geçidi IP adresimi alabilir miyim?
 
-Hayır. IP adresini almak için önce ağ geçidi oluşturmanız gerekir. VPN ağ geçidinizi silip yeniden oluşturursanız IP adresi değişir.
+Bölgesel olarak yedekli ve zikzak ağ geçitleri (adı _az_ olan ağ geçidi SKU 'ları), her Ikisi de _Standart SKU_ Azure genel IP kaynağını kullanır. Azure Standart SKU genel IP kaynakları bir statik ayırma yöntemi kullanmalıdır. Bu nedenle, sizin için kullanmayı düşündüğünüz standart SKU genel IP kaynağını oluşturduktan hemen sonra VPN ağ geçidinizin genel IP adresine sahip olursunuz.
+
+Bölgesel olmayan ve olmayan ağ geçitleri (adında _az_ _olmayan ağ_ geçidi SKU 'ları) IÇIN, OLUŞTURULMADAN önce VPN Gateway IP adresini alamaz. IP adresi yalnızca VPN ağ geçidinizi silip yeniden oluşturursanız değişir.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>VPN ağ geçidim için bir Statik Genel IP adresi isteğinde bulunabilir miyim?
 
-Hayır. Yalnızca Dinamik IP adresi ataması desteklenir. Ancak, bu durum IP adresinin VPN ağ geçidinize atandıktan sonra değiştiği anlamına gelmez. VPN ağ geçidi IP adresi, yalnızca ağ geçidi silinip yeniden oluşturulduğunda değişir. VPN ağ geçidi genel IP adresi, VPN ağ geçidiniz üzerinde gerçekleştirilen yeniden boyutlandırma, sıfırlama veya diğer iç bakım/yükseltme işlemleri sırasında değişmez. 
+Yukarıda belirtildiği gibi, bölgesel olarak yedekli ve zikzak ağ geçitleri (adında _az_ olan ağ geçidi SKU 'ları), her Ikisi de _Standart SKU_ Azure genel IP kaynağını kullanır. Azure Standart SKU genel IP kaynakları bir statik ayırma yöntemi kullanmalıdır.
+
+Bölgesel olmayan ve olmayan ağ geçitleri (adında _az_ _olmayan ağ_ geçidi SKU 'ları) için yalnızca dinamik IP adresi ataması desteklenir. Ancak bu, IP adresinin VPN ağ geçidinize atandıktan sonra değiştiği anlamına gelmez. VPN ağ geçidi IP adresi, ağ geçidinin silindiği ve yeniden oluşturulduğu zamana göre değişir. VPN Gateway 'in diğer iç bakımını ve yükseltmelerini yeniden boyutlandırdığınızda, sıfırladığınızda veya tamamladıktan sonra VPN Gateway genel IP adresi değişmez.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN tünelimin kimliği nasıl doğrulanır?
 

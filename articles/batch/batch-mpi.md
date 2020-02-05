@@ -3,22 +3,22 @@ title: MPı uygulamalarını çalıştırmak için çok örnekli görevleri kull
 description: Ileti geçirme arabirimi (MPı) uygulamalarını Azure Batch ' deki çok örnekli görev türünü kullanarak yürütmeyi öğrenin.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd58a18b4926d911df8493670ccd7da97708e075
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1896fea3c401299b4f77235ab3c02d85708b7041
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029671"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023676"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 
@@ -194,7 +194,7 @@ Bunlarla ilgili tüm ayrıntılar ve bunların içerikleri ve görünürlüğü 
 >
 >
 
-## <a name="resource-files"></a>Kaynak dosyalar
+## <a name="resource-files"></a>Kaynak dosyaları
 Çok örnekli görevler için göz önünde bulundurmanız gereken iki kaynak dosyası kümesi vardır: *Tüm* görevlerin indirdiği **ortak kaynak dosyaları** (birincil ve alt görevler) ve *yalnızca birincil* görevin indirileceği çok örnekli görevin kendisi için belirtilen **kaynak dosyaları** .
 
 Bir görev için çoklu örnek ayarlarında bir veya daha fazla **ortak kaynak dosyası** belirtebilirsiniz. Bu ortak kaynak dosyaları, [Azure depolama](../storage/common/storage-introduction.md) 'dan her bir düğümün **görev paylaşılan dizinine** birincil ve tüm alt görevler tarafından indirilir. Görev paylaşılan dizinine uygulama ve düzenleme komut satırlarından `AZ_BATCH_TASK_SHARED_DIR` ortam değişkenini kullanarak erişebilirsiniz. `AZ_BATCH_TASK_SHARED_DIR` yolu, çok örnekli göreve ayrılan her düğümde aynıdır, bu sayede birincil ve tüm alt görevler arasında tek bir düzenleme komutu paylaşabilirsiniz. Batch, dizini bir uzaktan erişim açısından "paylaşmaz", ancak ortam değişkenlerinde ipucu içinde daha önce bahsedildiği gibi bir bağlama veya paylaşma noktası olarak kullanabilirsiniz.

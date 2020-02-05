@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu kullanarak SQL Server yedekleme
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak SQL Server veritabanlarının yedeklenmesi için yapılandırma adımlarını öğrenin.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d5e0c49e2cad77e42960fafec9311b31d4cf2601
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 461faa2c88b8db9c1e3b2f9af19783b7d6b7fa07
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172673"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024016"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu Ile Azure 'a yedekleme SQL Server
 
@@ -90,7 +90,7 @@ Başlamadan önce [Azure Backup sunucusu yüklediğinizden ve hazırlandığın�
 
 13. Bekletme ilkesi zamanlaması ' nı seçin. Bekletme ilkesinin nasıl çalıştığı hakkındaki ayrıntılar, [bant altyapısı makalenizi değiştirmek için Azure Backup kullanılıyor](backup-azure-backup-cloud-as-tape.md)olarak sunulmaktadır.
 
-    ![Bekletme İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Saklama İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Bu örnekte:
 
@@ -101,7 +101,7 @@ Başlamadan önce [Azure Backup sunucusu yüklediğinizden ve hazırlandığın�
 14. **İleri** ' ye tıklayın ve ilk yedekleme kopyasının Azure 'a aktarılması için uygun seçeneği belirleyin. Ağ veya **çevrimdışı yedekleme** **üzerinde otomatik olarak** seçim yapabilirsiniz.
 
     * **Ağ üzerinden otomatik olarak,** yedekleme için seçilen zamanlamaya göre yedekleme verilerini Azure 'a aktarır.
-    * **Çevrimdışı yedekleme** 'nin çalışma [iş akışında Azure Backup bölümünde](backup-azure-backup-import-export.md)açıklanacaktır.
+    * Çevrimdışı **yedeklemenin** nasıl çalıştığı, [çevrimdışı yedeklemeye genel bakış](offline-backup-overview.md)konusunda açıklanmaktadır.
 
     İlk yedekleme kopyasını Azure 'a göndermek için ilgili Aktarım mekanizmasını seçin ve **İleri**' ye tıklayın.
 15. **Özet** ekranında ilke ayrıntılarını gözden geçirdikten sonra, iş akışını gerçekleştirmek Için **Grup Oluştur** düğmesine tıklayın. **Kapat** düğmesine tıklayıp izleme çalışma alanında işin ilerlemesini izleyebilirsiniz.

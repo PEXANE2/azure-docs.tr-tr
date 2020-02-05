@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704162"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023166"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı başlangıç: kiracı ayarlama
 
@@ -57,7 +57,7 @@ Hesabınızla ilişkilendirilmiş bir kiracınız yoksa, hesap adınızın altı
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Yeni Azure AD kiracısı oluşturma
 
-Henüz bir Azure AD kiracınız yoksa veya geliştirme için yeni kiracı oluşturmak istiyorsanız, [dizin oluşturma deneyimi](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) yönergelerini izleyin. Yeni kiracı oluşturmak için aşağıdaki bilgileri sağlamanız gerekecektir:
+Zaten bir Azure AD kiracınız yoksa veya geliştirme için yeni bir tane oluşturmak istiyorsanız [hızlı başlangıç](../fundamentals/active-directory-access-create-new-tenant.md) bölümüne bakın veya yalnızca [Dizin oluşturma deneyimini](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)izleyin. Yeni kiracı oluşturmak için aşağıdaki bilgileri sağlamanız gerekecektir:
 
 - **Kuruluş adı**
 - **İlk etki alanı** - Bu, *.onmicrosoft.com'un bir parçası olacaktır. Etki alanını daha sonra özelleştirebilirsiniz.

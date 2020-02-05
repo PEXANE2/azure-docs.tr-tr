@@ -1,25 +1,49 @@
 ---
-title: Azure IoT Central uygulama şablonlarını kullanma | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanızda cihaz kümelerini kullanma.
+title: Azure IoT Central uygulamasını dışarı aktarma | Microsoft Docs
+description: Bir çözüm Yöneticisi olarak, bir uygulama şablonunu yeniden kullanabilmek için dışarı aktarmak istiyorum.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/30/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3cc6f82676f426240fba4cc4910246073aa9a556
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b5c8f7fd1c87ce279a8edd39aacb332b8aef28be
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982469"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023455"
 ---
-# <a name="use-application-templates"></a>Uygulama şablonlarını kullanma
+# <a name="export-your-application"></a>Uygulamanızı dışarı aktarma
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Bu makalede, bir çözüm Yöneticisi olarak uygulama şablonlarının nasıl oluşturulacağı ve kullanılacağı açıklanmaktadır.
+
+Bu makalede, bir IoT Central uygulamasının yeniden kullanabilmek için bir çözüm Yöneticisi olarak nasıl dışarı aktarılacağı açıklanmaktadır.
+
+İki seçeneğiniz vardır:
+
+- Yalnızca uygulamanızın yinelenen bir kopyasını oluşturmanız gerekiyorsa uygulamanızın bir kopyasını oluşturabilirsiniz.
+- Birden çok kopya oluşturmayı planlıyorsanız uygulamanızdan bir uygulama şablonu oluşturabilirsiniz.
+
+## <a name="copy-your-application"></a>Uygulamanızı kopyalayın
+
+Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, cihaz veri geçmişini ve Kullanıcı verilerini oluşturabilirsiniz. Kopya, için faturalandırılacağımız standart bir fiyatlandırma planı kullanır. Bir uygulamayı kopyalayarak ücretsiz fiyatlandırma planı kullanan bir uygulama oluşturamazsınız.
+
+**Kopyala**' yı seçin. İletişim kutusunda, yeni uygulamanın ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. Formdaki alanlar hakkında daha fazla bilgi edinmek için bkz. [uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı.
+
+![Uygulama ayarları sayfası](media/howto-use-app-templates/appcopy2.png)
+
+Uygulama kopyalama işlemi başarılı olduktan sonra, bağlantısını kullanarak yeni uygulamaya gidebilirsiniz.
+
+![Uygulama ayarları sayfası](media/howto-use-app-templates/appcopy3a.png)
+
+Bir uygulamayı kopyalamak kuralların ve e-posta eyleminin tanımını da kopyalar. Flow ve Logic Apps gibi bazı eylemler kural KIMLIĞI aracılığıyla belirli kurallara bağlıdır. Bir kural farklı bir uygulamaya kopyalandığında kendi kural KIMLIĞINI alır. Bu durumda, kullanıcıların yeni bir eylem oluşturması ve yeni kuralı onunla ilişkilendirilmesi gerekir. Genel olarak, yeni uygulamada güncel olduklarından emin olmak için kuralları ve eylemleri denetlemeniz iyi bir fikirdir.
+
+> [!WARNING]
+> Bir pano belirli cihazlarla ilgili bilgileri görüntüleyen kutucuklar içeriyorsa, bu kutucuklar **istenen kaynağı** yeni uygulamada bulamadı. Yeni uygulamanızdaki cihazlarla ilgili bilgileri göstermek için bu kutucukları yeniden yapılandırmanız gerekir.
+
+## <a name="create-an-application-template"></a>Uygulama şablonu oluşturma
 
 Bir Azure IoT Central uygulaması oluşturduğunuzda, yerleşik bir örnek şablonlar seçiminiz vardır. Ayrıca, mevcut IoT Central uygulamalarından kendi uygulama şablonlarınızı da oluşturabilirsiniz. Ardından, yeni uygulamalar oluştururken kendi uygulama şablonlarınızı kullanabilirsiniz.
 
@@ -42,8 +66,6 @@ Bir uygulama şablonu oluşturduğunuzda, bu, aşağıdaki öğeleri içermez:
 
 Bu öğeleri bir uygulama şablonundan oluşturulan tüm uygulamalara el ile ekleyin.
 
-## <a name="create-an-application-template"></a>Uygulama şablonu oluşturma
-
 Mevcut bir IoT Central uygulamasından uygulama şablonu oluşturmak için:
 
 1. Uygulamanızdaki **Yönetim** bölümüne gidin.
@@ -53,7 +75,7 @@ Mevcut bir IoT Central uygulamasından uygulama şablonu oluşturmak için:
 
 ![Uygulama şablonu oluşturma](media/howto-use-app-templates/create-template.png)
 
-## <a name="use-an-application-template"></a>Uygulama şablonu kullanma
+### <a name="use-an-application-template"></a>Uygulama şablonu kullanma
 
 Yeni bir IoT Central uygulaması oluşturmak üzere bir uygulama şablonu kullanmak için önceden oluşturulmuş **paylaşılabilir bir bağlantıya**ihtiyacınız vardır. **Paylaşılabilir bağlantıyı** tarayıcınızın adres çubuğuna yapıştırın. **Uygulama oluştur** sayfası, özel uygulama şablonunuz seçili olarak görüntülenir:
 
@@ -61,7 +83,7 @@ Yeni bir IoT Central uygulaması oluşturmak üzere bir uygulama şablonu kullan
 
 Fiyatlandırma planınızı seçin ve formdaki diğer alanları doldurun. Sonra uygulama şablonundan yeni bir IoT Central uygulaması oluşturmak için **Oluştur** ' u seçin.
 
-## <a name="manage-application-templates"></a>Uygulama şablonlarını yönetme
+### <a name="manage-application-templates"></a>Uygulama şablonlarını yönetme
 
 **Uygulama şablonu dışarı aktarma** sayfasında, uygulama şablonunu silebilir veya güncelleştirebilirsiniz.
 

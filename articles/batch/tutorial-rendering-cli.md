@@ -2,19 +2,19 @@
 title: Bulutta bir sahneyi işleme - Azure Batch
 description: Öğretici - Batch Renderin Hizmetini ve Azure Komut Satırı Arabirimini kullanarak Autodesk 3ds Max sahnesini Arnold ile işleme
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: e63bd26ec226cfeba1c11570b085fd88570fbb2d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 12205fd04b015ac3cfe32765779808b636f53946
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029202"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023081"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme 
 

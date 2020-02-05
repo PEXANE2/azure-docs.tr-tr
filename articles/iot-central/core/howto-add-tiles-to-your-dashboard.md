@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435121"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023234"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
@@ -22,7 +22,7 @@ ms.locfileid: "75435121"
 > [!NOTE]
 > Kullanıcılar, varsayılan uygulama panosuna ek olarak [birden çok Pano oluşturabilir](howto-create-personal-dashboards.md) . Bu panolar yalnızca Kullanıcı tarafından kişisel olabilir veya uygulamanın tüm kullanıcıları arasında paylaşılabilir. 
 
-## <a name="add-tiles"></a>Kutucuk ekle
+## <a name="add-tiles"></a>Kutucuk Ekle
 
 Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşturulan bir uygulamada gösterilmektedir. Uygulamanıza ilişkin varsayılan panoyu özelleştirmek için sayfanın sol üst kısmında **Düzenle** ' yi seçin.
 
@@ -48,7 +48,6 @@ Artık bir operatör varsayılan uygulama panosunu görüntülediğinde, cihaz i
 > [!div class="mx-imgBorder"]
 > "Pano" sekmesini, kutucuk için](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png) ve özellikleriyle ![.
 
-
 ## <a name="edit-tiles"></a>Kutucukları Düzenle
 
 Panodaki bir kutucuğu düzenlemek için, önce sayfanın sol üst kısmında **Düzenle** ' ye tıklayın, bu, pano ve tüm kutucukları için düzenleme modunu açar. 
@@ -70,21 +69,21 @@ Ayrıca, kutucukta **cetvel** simgesine tıklayarak grafik görselleştirmeyi de
 
 Aşağıdaki tabloda Azure IoT Central kutucukların kullanımı özetlenmektedir:
  
-| Döşe | Pano | Açıklama
+| Kaldır | Pano | Açıklama
 | ----------- | ------- | ------- |
 | İçerik | Uygulama ve cihaz kümesi panoları |Markın desteklenen kutucuklar başlık ve açıklama metnini görüntüleyen tıklatılabilir kutucuklardır. Ayrıca, bir kullanıcının uygulamanızla ilgili bir URL 'ye gitmesini sağlamak için bu kutucuğu bağlantı kutucuğu olarak da kullanabilirsiniz.|
 | Resim | Uygulama ve cihaz kümesi panoları |Görüntü kutucukları özel bir görüntü görüntüler ve tıklatılabilir olabilir. Panoya grafik eklemek ve isteğe bağlı olarak bir kullanıcının uygulamanızla ilgili bir URL 'ye gitmesini sağlamak için bir görüntü kutucuğu kullanın.|
 | Etiket | Uygulama panoları |Etiket kutucukları, bir panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. İlgili bilgileri panoya, iletişim ayrıntılarına veya yardım 'a eklemek için bir etiket kutucuğu kullanın.|
 | Eşleme | Uygulama ve cihaz kümesi panoları |Harita kutucukları bir haritadaki bir cihazın konumunu ve durumunu görüntüler. Örneğin, bir cihazın nerede olduğunu ve fanı 'nin geçiş yapıp yapmadığını görüntüleyebilirsiniz.|
-| Çizgi Grafik | Uygulama ve cihaz panoları |Çizgi grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümünün bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çizgi grafik görüntüleyebilirsiniz.|
-| Çubuk Grafiği | Uygulama ve cihaz panoları |Çubuk grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çubuk grafiği görüntüleyebilirsiniz.|
-| Pasta Grafik | Uygulama ve cihaz kümesi panoları |Pasta grafik kutucukları, bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler.|
+| Çizgi grafik | Uygulama ve cihaz panoları |Çizgi grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümünün bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çizgi grafik görüntüleyebilirsiniz.|
+| Çubuk grafik | Uygulama ve cihaz panoları |Çubuk grafik kutucukları bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler. Örneğin, son saat için bir cihazın ortalama sıcaklığını ve basıncını gösteren bir çubuk grafiği görüntüleyebilirsiniz.|
+| Pasta grafik | Uygulama ve cihaz kümesi panoları |Pasta grafik kutucukları, bir zaman dönemi için bir cihazın toplam ölçümlerinin bir grafiğini görüntüler.|
 | Isı Haritası | Uygulama ve cihaz kümesi panoları |Isı haritası kutucukları, renk olarak temsil edilen cihaz kümesi hakkındaki bilgileri görüntüler.|
-| Olay Geçmişi | Uygulama ve cihaz panoları |Olay geçmişi kutucukları bir zaman dönemi içinde bir cihaz için olayları görüntüler. Örneğin, son bir saat içinde bir cihaz için tüm sıcaklık değişikliklerini göstermek üzere onu kullanabilirsiniz.|
-| Durum Geçmişi | Uygulama ve cihaz panoları |Durum geçmişi kutucukları bir zaman döneminin ölçüm değerlerini görüntüler. Örneğin, son bir saat içinde bir cihaz için sıcaklık değerlerini göstermek üzere onu kullanabilirsiniz.|
+| Olay geçmişi | Uygulama ve cihaz panoları |Olay geçmişi kutucukları bir zaman dönemi içinde bir cihaz için olayları görüntüler. Örneğin, son bir saat içinde bir cihaz için tüm sıcaklık değişikliklerini göstermek üzere onu kullanabilirsiniz.|
+| Durum geçmişi | Uygulama ve cihaz panoları |Durum geçmişi kutucukları bir zaman döneminin ölçüm değerlerini görüntüler. Örneğin, son bir saat içinde bir cihaz için sıcaklık değerlerini göstermek üzere onu kullanabilirsiniz.|
 | KPI | Uygulama ve cihaz panoları | KPI kutucukları bir dönem için bir toplama telemetrisi veya olay ölçümü görüntüler. Örneğin, son bir saat içinde bir cihaz için ulaşılan en fazla sıcaklık sayısını göstermek için bunu kullanabilirsiniz.|
-| Son Bilinen Değeri | Uygulama ve cihaz panoları |Son bilinen değer kutucukları, bir telemetri veya durum ölçümü için en son değeri görüntüler. Örneğin, bu kutucuğu, bir cihaz için en son sıcaklık, basınç ve nem ölçümlerini göstermek için kullanabilirsiniz.|
+| Bilinen son değer | Uygulama ve cihaz panoları |Son bilinen değer kutucukları, bir telemetri veya durum ölçümü için en son değeri görüntüler. Örneğin, bu kutucuğu, bir cihaz için en son sıcaklık, basınç ve nem ölçümlerini göstermek için kullanabilirsiniz.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central varsayılan uygulama panonuzun nasıl yapılandırılacağını öğrendiğinize göre, [görüntüleri hazırlama ve karşıya yükleme hakkında bilgi](howto-prepare-images.md)edinebilirsiniz.
+Azure IoT Central varsayılan uygulama panonuzun nasıl yapılandırılacağını öğrendiğinize göre, [Kişisel Pano oluşturmayı öğrenin](howto-create-personal-dashboards.md).

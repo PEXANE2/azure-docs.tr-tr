@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921907"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024662"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -44,9 +44,9 @@ Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırm
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
-Tüketim planını kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır. Bu sunucusuz plan otomatik olarak ölçeklenir ve yalnızca işlevleriniz çalıştırıldığında işlem kaynakları için ücretlendirilirsiniz. Tüketim planında, yapılandırılabilir bir sürenin sonunda işlev yürütme zaman aşımına uğrar.
+Tüketim planını kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır. Bu sunucusuz plan otomatik olarak ölçeklendirilir ve yalnızca işlevleriniz çalışırken işlem kaynakları için ücretlendirilirsiniz. Tüketim planında, yapılandırılabilir bir süre sonra bir işlev yürütme zaman aşımına uğrar.
 
-Fatura oluşturulurken yürütme sayısı, yürütme süresi ve kullanılan bellek temel alınır. Faturada, işlev uygulamasındaki tüm işlevler toplanır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
+Faturalandırma, yürütme süresi ve kullanılan bellek sayısını temel alır. Faturalandırma, bir işlev uygulaması içindeki tüm işlevler arasında toplanır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
 
 Tüketim planı varsayılan barındırma plandır ve aşağıdaki avantajları sunar:
 
@@ -152,7 +152,7 @@ Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulamas
 
 Ölçeklendirme, bir dizi etkene göre farklılık gösterebilir ve seçilen tetikleyici ve dile göre farklı şekilde ölçeklendirebilir. ' Nin farkında olması için ölçeklendirmenin bazı çok karmaşık özellikleri vardır:
 
-* Tek bir işlev uygulaması en fazla 200 örneğe ölçeklendirilebilir. Tek bir örnek aynı anda birden fazla ileti veya isteği işleyebilir, bu nedenle eşzamanlı yürütmeler sayısında bir küme sınırı yoktur.
+* Tek bir işlev uygulaması yalnızca en fazla 200 örneğe ölçeklendirir. Tek bir örnek aynı anda birden fazla ileti veya isteği işleyebilir, bu nedenle eşzamanlı yürütmeler sayısında bir küme sınırı yoktur.
 * HTTP Tetikleyicileri için, yeni örnekler yalnızca her 1 saniyede bir en çok olacak şekilde ayrılacaktır.
 * HTTP olmayan Tetikleyiciler için, yeni örnekler her 30 saniyede bir en fazla olacak şekilde ayrılacaktır.
 

@@ -1,6 +1,6 @@
 ---
 title: İşleme kapsamı | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları olan bölgeler hakkında, işlenmiş ayrıntıların düzeyiyle birlikte bilgi edineceksiniz.
+description: Bu makalede, işleme kapsamına sahip bölgeler hakkında bilgi edinmek için, işlenen ayrıntıların düzeyiyle birlikte Microsoft Azure.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910664"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025461"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure haritalar işleme kapsamı
 
-Azure haritalar haritalar oluşturmak için hem raster kutucukları hem de vektör kutucukları kullanır. En düşük çözünürlükte dünyanın tamamı tek bir kutucuğa sığar. En yüksek çözünürlükte, tek bir kutucuk 38 kare metreyi temsil eder. Haritada yakınlaştırdığınızda, bu nedenle kıtalar, bölgeler, şehirler ve bireysel Streets hakkında daha fazla ayrıntı görebilirsiniz. Daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
+Azure haritalar haritalar oluşturmak için hem raster kutucukları hem de vektör kutucukları kullanır. En düşük çözünürlükte, dünyanın tamamı tek bir kutucuğa sığar. En yüksek çözünürlükte, tek bir kutucuk 38 kare metreyi temsil eder. ' Yi yakınlaştırdığınızda, kıtalar, bölgeler, şehirler ve bireysel Streets hakkında daha fazla ayrıntı görürsünüz. Kutucuklar hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
 
-Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablolarda, her bir bölgeden beklediğiniz işlenen ayrıntı düzeyi hakkında bilgi sağlanır.
+Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablolar her bölge için işleyebilmeniz için bilgi düzeyini ayrıntılandırır.
 
-## <a name="legend"></a>Gösterge
+## <a name="legend"></a>Deki
 
 | Sembol | Anlamı |
 |--------|---------|
@@ -44,7 +44,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Kamerun                         | ✓ | ✓ |
 | Orta Afrika Cumhuriyeti         | ✓ | Ø |
 | Çad                             | ✓ | Ø |
-| Komorlar                          | ✓ | Ø |
+| Komorolar                          | ✓ | Ø |
 | Kongo Demokratik Cumhuriyeti | ✓ | ✓ |
 | Fildişi Sahili (Côte d’Ivoire)                    | ✓ | Ø |
 | Cibuti                         | ✓ | Ø |
@@ -56,7 +56,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Gambiya                           | ✓ | Ø |
 | Gana                            | ✓ | ✓ |
 | Gine                           | ✓ | Ø |
-| Gine-Bissau                    | ✓ | Ø |
+| Gine Bissau                    | ✓ | Ø |
 | Kenya                            | ✓ | ✓ |
 | Lesoto                          | ✓ | ✓ |
 | Liberya                          | ✓ | Ø |
@@ -77,7 +77,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Saint Helena, Ascension ve Tristan da Cunha | ✓ | Ø |
 | Sao Tome ve Principe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
-| Sierra Leone                     | ✓ | ✓ |
+| Sierra Taone                     | ✓ | ✓ |
 | Somali                          | ✓ | ✓ |
 | Güney Afrika                     | ✓ | ✓ |
 | Güney Sudan                      | ✓ | ✓ |
@@ -161,7 +161,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Bangladeş                |   | Ø |
 | Butan                    |   | Ø |
 | Britanya Hint Okyanusu Toprakları |   | Ø |
-| Brunei                    | ✓ | ✓ |
+| Barış                    | ✓ | ✓ |
 | Kamboçya                  |   | Ø |
 | Çin                     |   | Ø |
 | Cocos (Keeling) Adaları   |   | Ø |
@@ -227,7 +227,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Palau                     |   | Ø |
 | Papua Yeni Gine          |   | Ø |
 | Pitcairn                  |   | Ø |
-| Samoa                     |   | Ø |
+| Devleti                     |   | Ø |
 | Solomon Adaları           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |

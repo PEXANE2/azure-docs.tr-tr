@@ -3,18 +3,18 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173257"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025410"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
 Bu makale, Azure Backup kullanarak SQL Server veritabanlarının yedeklenmesi için yapılandırma adımlarında size yol gösterir.
 
-SQL Server veritabanlarını Azure 'a yedeklemek için bir Azure hesabınızın olması gerekir. Hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için bkz. [Azure Ücretsiz Deneme](https://azure.microsoft.com/pricing/free-trial/).
+SQL Server veritabanlarını Azure 'a yedeklemek için bir Azure hesabınızın olması gerekir. Hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
 Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma işlemleri üç adımdan oluşur:
 
@@ -92,7 +92,7 @@ Başlamadan önce, iş yüklerini korumak için Microsoft Azure Backup kullanmay
 
 13. Bekletme ilkesi zamanlaması ' nı seçin. Bekletme ilkesinin nasıl çalıştığı hakkındaki ayrıntılar, [bant altyapısı makalenizi değiştirmek için Azure Backup kullanılıyor](backup-azure-backup-cloud-as-tape.md)olarak sunulmaktadır.
 
-    ![Bekletme İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Saklama İlkesi](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Bu örnekte:
 
@@ -103,7 +103,7 @@ Başlamadan önce, iş yüklerini korumak için Microsoft Azure Backup kullanmay
 14. **İleri** ' ye tıklayın ve ilk yedekleme kopyasının Azure 'a aktarılması için uygun seçeneği belirleyin. Ağ veya **çevrimdışı yedekleme** **üzerinde otomatik olarak** seçim yapabilirsiniz.
 
     * **Ağ üzerinden otomatik olarak,** yedekleme için seçilen zamanlamaya göre yedekleme verilerini Azure 'a aktarır.
-    * **Çevrimdışı yedekleme** 'nin çalışma [iş akışında Azure Backup bölümünde](backup-azure-backup-import-export.md)açıklanacaktır.
+    * Çevrimdışı **yedeklemenin** nasıl çalıştığı, [çevrimdışı yedeklemeye genel bakış](offline-backup-overview.md)konusunda açıklanmaktadır.
 
     İlk yedekleme kopyasını Azure 'a göndermek için ilgili Aktarım mekanizmasını seçin ve **İleri**' ye tıklayın.
 15. **Özet** ekranında ilke ayrıntılarını gözden geçirdikten sonra, iş akışını gerçekleştirmek Için **Grup Oluştur** düğmesine tıklayın. **Kapat** düğmesine tıklayıp izleme çalışma alanında işin ilerlemesini izleyebilirsiniz.
