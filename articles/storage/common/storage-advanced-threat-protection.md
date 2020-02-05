@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457401"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022401"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Azure depolama için Gelişmiş tehdit koruması yapılandırma
 
@@ -29,7 +29,7 @@ Azure depolama için Gelişmiş tehdit koruması, tehdit algılama için blob de
 
 ## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit koruması ayarlama
 
-Gelişmiş tehdit koruması, depolama hesabınız için varsayılan olarak etkinleştirilmiştir. Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli yollarla yapılandırabilirsiniz.
+Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli yollarla yapılandırabilirsiniz.
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 

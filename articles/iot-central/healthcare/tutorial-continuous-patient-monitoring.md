@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986451"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021296"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Bu öğreticide, bir çözüm Oluşturucu olarak IoT Central bir sürekli hasta izleme uygulama şablonu dağıtarak nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve daha sonra ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
+
+Bu öğreticide, bir çözüm Oluşturucu olarak IoT Central bir sürekli hasta izleme uygulama şablonu dağıtarak nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve bundan sonra neler yapabileceğinizi öğreneceksiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 >[!div class="mx-imgBorder"] 
 >![App Manager sağlık](media/app-manager-health.png)
 
-Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesine tıklayın ve ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Bunu yaptığınızda **Yeni uygulama** sayfasına gidersiniz.
+Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesine tıklayın ve ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Bu işlem sizi **Yeni uygulama** sayfasına götürür.
 
 ![Uygulama sağlık hizmetleri oluşturma](media/app-manager-health-create.png)
 
@@ -52,7 +52,7 @@ Uygulamanızı oluşturmak için:
 
 ### <a name="dashboards"></a>Panolar
 
-Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**gidecaksınız. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hosstana için bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir komut, iş ve eylem kümesiyle birlikte görürsünüz. Panodan şunları yapabilirsiniz:
+Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**gideceksiniz. Lamna sağlık, iki hastaneler: Woodgrove Hospstanve Burkville hospstani içeren kurgusal bir barındırma sistemidir. Woodgrove Hosstana için bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir komut, iş ve eylem kümesiyle birlikte görürsünüz. Panodan şunları yapabilirsiniz:
 
 * Cihazınızın **pil düzeyi** veya **bağlantı** durumu gibi cihaz telemetrisi ve özellikleri konusuna bakın.
 
@@ -72,13 +72,13 @@ Ayrıca, Burkville hastanı için kullanılan ikinci operatör panosunu görmek 
 >[!div class="mx-imgBorder"] 
 >![Lamna uzak](media/lamna-remote.png)
 
-Her iki panoda, her zaman bu belgeye geri bağlanabilirsiniz.
+Her iki panoda da bu belgeye her zaman geri bağlanabilirsiniz.
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
 **Cihaz şablonları** sekmesine tıklarsanız, şablonun bir parçası olan iki farklı cihaz türü olduğunu görürsünüz:
 
-* **Akıllı Vinals düzeltme eki**: Bu cihaz, hotesi 'nin içinde ve dışında hastaları izlemek için kullanılabilecek çeşitli Vinals işaretlerini ölçen bir düzeltme ekini temsil eder. Şablona tıkladığınızda, pil düzeyi ve cihaz sıcaklığı gibi cihaz verilerini göndermenin yanı sıra, düzeltme ekinin de hastam oranı ve kan basıncı gibi hasta sistem durumu verileri göndermesi gerektiğini görürsünüz.
+* **Akıllı Vinals düzeltme eki**: Bu cihaz, farklı türlerde vitals işaretlerini ölçen bir düzeltme ekini temsil eder. Bu, hastaların içinde ve dışında hastaları izlemek için kullanılabilir. Şablona tıkladığınızda, pil düzeyi ve cihaz sıcaklığı gibi cihaz verilerini göndermenin yanı sıra, düzeltme ekinin de hastam oranı ve kan basıncı gibi hasta sistem durumu verileri göndermesi gerektiğini görürsünüz.
 
 * **Akıllı Knee ayracı**: Bu cihaz, bir Knee değiştirme Sury 'den kurtarma yaparken hastaların kullanabileceği bir Knee ayracı temsil eder. Bu şablona tıkladığınızda, cihaz verilerine ek olarak hareket ve hızlandırma aralığı gibi yetenekler görürsünüz.
 
@@ -102,7 +102,7 @@ Kurallar sekmesine atladıktan sonra, uygulama şablonunda var olan üç kural g
 
 ### <a name="devices"></a>Cihazlar
 
-**Cihazlar** sekmesine tıklayın ve ardından **akıllı Knee ayracın**bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri keşfedebileceğiniz üç görünüm olduğunu göreceksiniz. Bu görünümler, cihazınızın cihaz şablonu oluşturulurken oluşturulup yayımlanır. Bu, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlı olacağı anlamına gelir.
+**Cihazlar** sekmesine tıklayın ve ardından **akıllı Knee ayracın**bir örneğini seçin. Seçtiğiniz belirli bir cihazla ilgili bilgileri araştırmak için üç görünüm olduğunu göreceksiniz. Bu görünümler, cihazınızın cihaz şablonu oluşturulurken oluşturulur ve yayımlanır, bu, bağlandığınız veya benzetim yaptığınız tüm cihazlarda tutarlı olabilecekleri anlamına gelir.
 
 **Pano** görünümü, operatör odaklı cihazdan gelen telemetri ve özelliklere genel bir bakış sağlar.
 

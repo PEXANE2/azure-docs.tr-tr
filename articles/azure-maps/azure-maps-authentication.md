@@ -1,24 +1,24 @@
 ---
 title: Kimlik doğrulama yöntemleri | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritalar hizmetlerini kullanmak için Azure Active Directory (Azure AD) veya paylaşılan anahtar kimlik doğrulaması hakkında bilgi edineceksiniz. Azure Maps abonelik anahtarını almayı öğrenin.
+description: Bu makalede Azure Active Directory (Azure AD) ve paylaşılan anahtar kimlik doğrulaması hakkında bilgi edineceksiniz. Her ikisi de Microsoft Azure haritaları Hizmetleri için kullanılır. Azure Maps abonelik anahtarını almayı öğrenin.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/30/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911818"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025631"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
-Azure haritalar isteklerin kimliğini doğrulamak için iki yolu destekler: paylaşılan anahtar ve Azure Active Directory (Azure AD). Bu makalede, uygulamanıza kılavuzluk eden bu kimlik doğrulama yöntemleri açıklanmaktadır.
+Azure haritalar isteklerin kimliğini doğrulamak için iki yolu destekler: paylaşılan anahtar kimlik doğrulaması ve Azure Active Directory kimlik doğrulaması. Bu makalede, uygulamanıza kılavuzluk eden bu kimlik doğrulama yöntemleri açıklanmaktadır.
 
 ## <a name="shared-key-authentication"></a>Paylaşılan anahtar kimlik doğrulaması
 
@@ -27,27 +27,26 @@ Paylaşılan anahtar kimlik doğrulaması, her Azure Maps isteğiyle bir Azure M
 Azure portal anahtarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [kimlik doğrulamasını yönetme](https://aka.ms/amauthdetails).
 
 > [!Tip]
-> Anahtarlarınızın düzenli olarak yeniden oluşturulması önerilir. Diğerini yeniden oluştururken bir anahtarla bağlantıları koruyabilmeniz için iki anahtarla birlikte sağlanmış olursunuz. Anahtarlarınızı yeniden oluşturduğunuzda, yeni anahtarları kullanmak için hesaba erişen tüm uygulamaları güncelleştirmeniz gerekir.
+> Anahtarlarınızın düzenli olarak yeniden oluşturulması önerilir. İki anahtarla sunulmaktadır, böylece diğer bir anahtarla bağlantıları sürdürebilmeniz için, diğerini yeniden oluşturma. Anahtarlarınızı yeniden oluşturduğunuzda, yeni anahtarlarla hesabınıza erişen tüm uygulamaları güncelleştirmeniz gerekir.
 
 
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile kimlik doğrulaması
 
-Azure haritalar artık Azure haritalar hizmetleri isteklerinin kimlik doğrulaması için [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) tümleştirmesi sunmaktadır. Azure AD, [rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)dahil olmak üzere kimlik tabanlı kimlik doğrulaması sağlar. bu sayede, Azure Maps kaynaklarına Kullanıcı düzeyi, grup düzeyi ve uygulama düzeyinde erişim izni verilir. Aşağıdaki bölümler Azure AD ile Azure Maps tümleştirmesinin kavramlarını ve bileşenlerini anlamanıza yardımcı olabilir.
-
+Azure haritalar artık [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)kullanarak Azure haritalar Hizmetleri için istek kimlik doğrulaması sunmaktadır. Azure AD, [rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)dahil olmak üzere kimlik tabanlı kimlik doğrulaması sağlar. RBAC, Azure Maps kaynaklarına Kullanıcı düzeyi, grup düzeyi veya uygulama düzeyinde erişim sağlamak için kullanılır. Sonraki bölümlerde Azure AD ile Azure Maps tümleştirmesinin kavramlarını ve bileşenlerini anlamanıza yardımcı olabilir.
 ## <a name="authentication-with-oauth-access-tokens"></a>OAuth erişim belirteçleriyle kimlik doğrulama
 
 Azure Maps, Azure Maps hesabı içeren bir Azure aboneliğiyle ilişkili Azure AD kiracılar için **OAuth 2,0** erişim belirteçleri kabul eder. Azure haritalar şu belirteçleri kabul eder:
 
-* Azure AD kullanıcıları. 
-* Kullanıcılar tarafından temsilci atanmış izinleri kullanan iş ortağı uygulamaları.
-* Azure kaynakları için Yönetilen kimlikler.
+* Azure AD kullanıcıları
+* Kullanıcılar tarafından yetkilendirilen izinleri kullanan iş ortağı uygulamaları
+* Azure kaynakları için yönetilen kimlikler
 
-Azure Maps, her Azure Maps hesabı için *benzersiz bir tanımlayıcı (ISTEMCI kimliği)* oluşturur. Bu istemci KIMLIĞINI ek parametrelerle birleştirdiğinizde, Azure ortamınıza bağlı olarak aşağıdaki tabloda yer alan değerleri belirterek Azure AD 'den belirteç isteğinde bulunabilir.
+Azure Maps, her Azure Maps hesabı için *benzersiz bir tanımlayıcı (ISTEMCI kimliği)* oluşturur. Bu istemci KIMLIĞINI ek parametrelerle birleştirdiğinizde Azure AD 'den belirteç isteğinde bulunabilir. Belirteç istemek için, Azure ortamınıza göre aşağıdaki tabloda yer alan değerleri belirtmeniz gerekir.
 
 | Azure ortamı   | Azure AD belirteç uç noktası |
 | --------------------|-------------------------|
-| Azure Genel        | https://login.microsoftonline.com |
+| Azure genel        | https://login.microsoftonline.com |
 | Azure Devlet Kurumları    | https://login.microsoftonline.us |
 
 
@@ -57,7 +56,7 @@ Azure AD 'den belirteç isteme hakkında genel bilgi için bkz. [kimlik doğrula
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>OAuth belirteçleri ile Azure harita kaynakları isteme
 
-Azure AD 'den bir belirteç alındıktan sonra, aşağıdaki iki zorunlu istek üst bilgisi kümesiyle bir istek Azure Maps 'a gönderilebilir:
+Azure AD 'den bir belirteç alındıktan sonra, Azure Maps 'e aşağıdaki gerekli istek üst bilgileri kümesiyle bir istek gönderilir:
 
 | İstek üst bilgisi    |    Değer    |
 |:------------------|:------------|
@@ -80,9 +79,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="control-access-with-rbac"></a>RBAC ile erişimi denetleme
 
-Azure AD, RBAC kullanarak güvenli kaynaklara erişimi denetlemenize olanak tanır. Azure haritalar hesabınızı oluşturduktan ve Azure AD kiracınızda Azure Maps Azure AD uygulamanızı kaydettikten sonra, Azure Maps hesap portalı sayfasında bir Kullanıcı, Grup, uygulama veya Azure kaynağı için RBAC ayarlayabilirsiniz.
-
-Azure haritalar, Azure kaynakları için Yönetilen kimlikler aracılığıyla tek tek Azure AD kullanıcıları, grupları, uygulamaları ve Azure hizmetleri için okuma erişim denetimini destekler.
+Azure AD 'de, güvenli kaynaklara erişimi denetlemek için RBAC kullanın. Azure haritalar hesabınızı ayarlayın ve Azure haritalar Azure AD KIRACıNıZı kaydedin. Azure haritalar, Azure kaynakları için Yönetilen kimlikler aracılığıyla tek tek Azure AD kullanıcıları, grupları, uygulamaları, Azure kaynakları ve Azure hizmetleri için okuma erişim denetimini destekler. Azure haritalar portalı sayfasında, istediğiniz rolleriniz için RBAC 'yi ayarlayabilirsiniz.
 
 ![Azure haritalar veri okuyucu (Önizleme)](./media/azure-maps-authentication/concept.png)
 
@@ -90,7 +87,7 @@ RBAC ayarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [Azure
 
 ## <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure kaynakları ve Azure Maps için Yönetilen kimlikler
 
-Azure [kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , Azure Maps hizmetlerine erişim yetkisine sahip olabilecek otomatik olarak yönetilen bir kimlikle Azure hizmetleri (Azure App Service, Azure Işlevleri, Azure sanal makineleri vb.) sağlar.  
+Azure [kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , Azure Maps hizmetlerine erişme yetkisine sahip olan, otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Yönetilen kimliklere örnek olarak şunlar verilebilir: Azure App Service, Azure Işlevleri ve Azure sanal makineleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,7 +3,7 @@ title: Öğretici - Node.js için Azure Batch istemci kitaplığını kullanma |
 description: Temel Azure Batch kavramlarını öğrenin ve Node.js kullanarak basit bir çözüm derleyin.
 services: batch
 author: shwetams
-manager: gwallace
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
-ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323394"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023659"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js için Batch SDK'sını kullanmaya başlama
 
 [Azure Batch Node.js SDK'sını](/javascript/api/overview/azure/batch) kullanarak Node.js’de Batch istemcisi oluşturma hakkında temel bilgileri öğrenin. Batch uygulaması için bir senaryoyu anlayıp ardından bir Node.js istemcisi kullanarak bu senaryoyu ayarlama adımlarından oluşan bir yaklaşım uyguluyoruz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, Node.js hakkında bilgi sahibi olduğunuz ve Linux kullanmaya alışkın olduğunuz varsayılmaktadır. Ayrıca, Batch ve Depolama hizmetleri oluşturmak için erişim haklarına sahip bir Azure hesabınız olduğu varsayılmıştır.
 
 Bu makaledeki adımlara geçmeden önce [Azure Batch Teknik Genel Bakış](batch-technical-overview.md) makalesini okumanızı öneririz.
@@ -52,7 +52,7 @@ Node.js istemcisi, toplu işi bir hazırlama göreviyle (daha sonra ayrıntılı
 
 Şimdi, Node.js istemcisini oluşturmamızı sağlayacak süreci adım adım izleyelim:
 
-### <a name="step-1-install-azure-batch-sdk"></a>1\. adım: Azure Batch SDK 'Yı yükler
+### <a name="step-1-install-azure-batch-sdk"></a>1\. Adım: Azure Batch SDK’sını yükleme
 
 npm install komutunu kullanarak Node.js için Azure Batch SDK'sını yükleyebilirsiniz.
 
@@ -65,9 +65,9 @@ Bu komut azure batch node SDK’sının en son sürümünü yükler.
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>2\. adım: Azure Batch hesabı oluşturma
+### <a name="step-2-create-an-azure-batch-account"></a>2\. Adım: Azure Batch hesabı oluşturma
 
-Azure Batch hesabını [Azure Portal](batch-account-create-portal.md)’dan veya komut satırından ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure cli](/cli/azure)) oluşturabilirsiniz.
+[Azure Portal](batch-account-create-portal.md) veya komut satırından ([POWERSHELL](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) oluşturabilirsiniz.
 
 Azure CLI aracılığıyla oluşturmak için kullanılacak komutlar aşağıdadır.
 
@@ -85,7 +85,7 @@ Her Batch hesabının ilgili erişim anahtarları vardır. Bu anahtarlar Azure B
 
 Sonraki adımlarda kullanılacak anahtarı kopyalayın ve saklayın.
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>3\. adım: Azure Batch hizmet istemcisi oluşturma
+### <a name="step-3-create-an-azure-batch-service-client"></a>3\. Adım: Azure Batch hizmet istemcisi oluşturma
 Aşağıdaki kod parçacığı ilk olarak azure-batch Node.js modülünü içe aktarır ve ardından bir Batch Hizmeti istemcisi oluşturur. İlk olarak, önceki adımda kopyaladığınız Batch hesabınızın anahtarıyla bir SharedKeyCredentials nesnesi oluşturmanız gerekir.
 
 ```nodejs
@@ -279,14 +279,14 @@ Betiği Azure Depolama Hesabına yüklemeyebilir ve betiğe erişmek için bir S
 
 Hazırlık görevi, Azure Batch işi gönderildiği sırada belirtilir. Hazırlık görevi yapılandırma parametreleri şunlardır:
 
-* **KİMLİĞİ**: Hazırlama görevi için benzersiz bir tanımlayıcı
-* **komut satırı**: Görev yürütülebilir dosyasını yürütmek için komut satırı
-* **ResourceFiles**: Bu görevin çalışması için indirilmesi gereken dosyaların ayrıntılarını sağlayan nesne dizisi.  Seçenekleri aşağıda verilmiştir.
-    - BlobSource Dosyanın SAS URI 'SI
-    - Null Dosyayı indirmek ve kaydetmek için yerel yol
-    - FileMode Yalnızca Linux düğümleri için geçerlidir, fileMode varsayılan değer olan 0770 olan sekizlik biçimdedir
-* **Waitforsuccess**: True olarak ayarlanırsa görev, hazırlık görevi hatalarıyla çalışmaz
-* **Runyükseltici**: Görevi çalıştırmak için yükseltilmiş ayrıcalıklar gerekliyse, bunu true olarak ayarlayın.
+* **ID**: Hazırlık görevi için benzersiz bir tanımlayıcıdır.
+* **commandLine**: Görevin yürütülebilir dosyasını çalıştıran komut satırıdır.
+* **resourceFiles**: Bu görevin çalışması için indirilmesi gereken dosyaların ayrıntılarını sağlayan nesneler dizisidir.  Seçenekleri aşağıda verilmiştir.
+    - blobSource: Dosyanın SAS URI'sıdır.
+    - filePath: Dosyanın indirileceği ve kaydedileceği için yerel yoldur.
+    - fileMode: Yalnızca Linux düğümlerinde kullanılan fileMode, sekizli biçimdedir ve varsayılan değeri 0770’tir.
+* **waitForSuccess**: True olarak ayarlandığında hazırlık görevi hatalarında görev çalışmaz.
+* **runElevated**: Görevi çalıştırmak için yükseltilmiş ayrıcalıklar gerekiyorsa true olarak ayarlayın.
 
 Aşağıdaki kod parçacığında, hazırlama görevi betik yapılandırma örneği gösterilmektedir:
 
@@ -311,14 +311,14 @@ Görevleri çalıştırmak yüklenecek herhangi bir önkoşul yoksa hazırlama g
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5\. Adım: İş için Azure Batch görevleri gönder
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5\. Adım: Bir iş için Azure Batch görevlerini gönderme
 
 İşlem csv işimiz oluşturulduğuna göre bu iş için görevleri oluşturabiliriz. Dört kapsayıcımız olduğunu varsayarsak, her kapsayıcı için bir tane olmak üzere dört görev oluşturmamız gerekir.
 
 [Python betiğine](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) baktığımızda iki parametre kabul ettiğini görüyoruz:
 
-* kapsayıcı adı: Dosyaların indirileceği depolama kapsayıcısı
-* kalıp Dosya adı deseninin isteğe bağlı parametresi
+* kapsayıcı adı: Dosyaların indirileceği Depolama kapsayıcısı
+* desen: Dosya adı için isteğe bağlı bir desen parametresi
 
 "con1", "con2", "con3" ve "con4" olmak üzere dört kapsayıcımız olduğunu varsayarsak, aşağıdaki kod daha önce oluşturduğumuz "process csv" Azure batch işine görev göndermeyi gösterir.
 

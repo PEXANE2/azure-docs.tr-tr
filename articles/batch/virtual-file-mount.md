@@ -3,20 +3,20 @@ title: Bir havuza sanal dosya sistemi bağlama-Azure Batch | Microsoft Docs
 description: Bir Batch havuzunda sanal dosya sistemi bağlama hakkında bilgi edinin.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: jushiman
-ms.openlocfilehash: eab8e509e4978de50968bc1d960ee34d46bc73b0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: a22117505dff35f9b92e3dd3c91dc8540557b218
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029148"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023047"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
 
@@ -172,7 +172,7 @@ Hata ayıklama için günlük dosyalarını almak için [OutputFiles](batch-task
 
 | Yayımcı | Teklif | SKU | Azure dosya paylaşma | Blobsigortası | NFS bağlama | CIFS bağlama |
 |---|---|---|---|---|---|---|
-| batch | işleme-centos73 | işleme | :heavy_check_mark: <br>Note: CentOS 7,7 ile uyumlu</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| batch | işleme-centos73 | çizmeye | :heavy_check_mark: <br>Note: CentOS 7,7 ile uyumlu</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04-LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | credativ | Debian | 8, 9 | :heavy_check_mark: | sayı | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Note: CentOS 7,4 ile uyumludur. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

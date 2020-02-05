@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961549"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024288"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell & kısıtlamaları sorunlarını giderme
 
@@ -36,8 +36,8 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Kilitli ağ ortamında Cloud Shell devre dışı bırakma
 
-- **Ayrıntılar**: Yöneticiler, kullanıcıları için Cloud Shell erişimini devre dışı bırakmak isteyebilir. Cloud Shell, portal.azure.com, shell.azure.com, Visual Studio Code Azure Hesap uzantısı ve docs.microsoft.com gibi Cloud Shell entryPoints erişimini durdurabilen `ux.console.azure.com` etki alanına erişimi kullanır.
-- **Çözüm**: ağ ayarları aracılığıyla ortamınıza `ux.console.azure.com` erişimi kısıtlayın. Cloud Shell simgesi portal.azure.com içinde olmaya devam eder, ancak hizmete başarıyla bağlanmayacak.
+- **Ayrıntılar**: Yöneticiler, kullanıcıları için Cloud Shell erişimini devre dışı bırakmak isteyebilir. Cloud Shell, portal.azure.com, shell.azure.com, Visual Studio Code Azure Hesap uzantısı ve docs.microsoft.com gibi Cloud Shell entryPoints erişimini durdurabilen `ux.console.azure.com` etki alanına erişimi kullanır. ABD kamu bulutunda giriş noktası `ux.console.azure.us`; karşılık gelen bir shell.azure.us yok.
+- **Çözüm**: ağ ayarları aracılığıyla ortamınıza `ux.console.azure.com` veya `ux.console.azure.us` erişimi kısıtlayın. Cloud Shell simgesi yine Azure portal var, ancak hizmete başarıyla bağlanmayacak.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Depolama Iletişim kutusu-hata: 403 RequestDisallowedByPolicy
 
@@ -163,7 +163,7 @@ Kişisel verilerinizi önemli ölçüde Azure Cloud Shell, Azure Cloud Shell hiz
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Dışarı Aktarma
+### <a name="export"></a>Dışarı Aktar
 Kullanıcı ayarlarını **dışarı aktarmak** için, tercih edilen kabuk, yazı tipi boyutu ve yazı tipi türü gibi Cloud Shell kaydeder ve aşağıdaki komutları çalıştırın.
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)

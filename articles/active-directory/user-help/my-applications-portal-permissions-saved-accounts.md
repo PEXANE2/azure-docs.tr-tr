@@ -1,27 +1,27 @@
 ---
-title: Uygulamalarım (Önizleme) portalından uygulama izinlerini yönetme-Azure Active Directory | Microsoft Docs
-description: Uygulamalarım (Önizleme) portalından kuruluşunuzun bulut tabanlı uygulamalar için uygulama izinlerini yönetmeyi öğrenin.
+title: Uygulama izinlerini uygulamalarım portalından yönetme-Azure Active Directory | Microsoft Docs
+description: Uygulamalarım portalından kuruluşunuzun bulut tabanlı uygulamalar için uygulama izinlerini yönetmeyi öğrenin.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705063"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022418"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Uygulamalarım (Önizleme) portalındaki uygulama izinlerini düzenleme veya iptal etme
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Uygulamalarım portalındaki uygulama izinlerini düzenleme veya iptal etme
 
-Uygulamalarım (Önizleme) portalındaki kurumsal uygulamaları kullandığınızda, genellikle izinler verirsiniz ve hesap bilgilerini kaydedersiniz. Verilerinizin güvenliğini sağlamak için izinleri gözden geçirmek ve iptal etmek ya da kayıtlı hesap kimlik bilgilerini temizlemek isteyebilirsiniz. İzinlerin veya hesapların kaldırılması bazı uygulama işlevlerini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
+Uygulamalarım portalındaki kurumsal uygulamaları kullandığınızda, genellikle izinler verirsiniz ve hesap bilgilerini kaydedersiniz. Verilerinizin güvenliğini sağlamak için izinleri gözden geçirmek ve iptal etmek ya da kayıtlı hesap kimlik bilgilerini temizlemek isteyebilirsiniz. İzinlerin veya hesapların kaldırılması bazı uygulama işlevlerini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ Siz veya yöneticiniz tarafından onaylanan izinleri görüntülemek için **.**
 
 Uygulama izinlerini ve kaydedilmiş hesapları **uygulamalarım** portalında yönettiğinizde şunları yapabilirsiniz:
 
-- Uygulamalarınızı, kuruluşunuz tarafından oluşturulan ve sunulan çeşitli kategorilerde düzenleyin. Daha fazla bilgi için bkz. [My Apps (Önizleme) portalındaki çalışma alanlarını erişme ve kullanma](my-applications-portal-workspaces.md).
+- Uygulamalarınızı, kuruluşunuz tarafından oluşturulan ve sunulan çeşitli kategorilerde düzenleyin. Daha fazla bilgi için bkz. [My Apps Portalındaki koleksiyonlara erişin ve bunları kullanın](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>İlgili makaleler
 
-- [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profilim** (Önizleme) portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
+- [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profil** portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
 
 - [Kuruluşları yönetin](my-account-portal-organizations-page.md). Kuruluşunuzda ilgili bilgilerinizin, **profil** portalının **kuruluşlar** sayfasında nasıl görüntüleneceği ve yönetileceği ile ilgili yönergeler.
 

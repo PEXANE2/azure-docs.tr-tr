@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987689"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023812"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>CSP portalından Azure IoT Central uygulaması oluşturma ve yönetme
 
@@ -23,29 +23,31 @@ Bir CSP olarak, [Microsoft Iş Ortağı Merkezi](https://partnercenter.microsoft
 
 Başlamak için Microsoft Iş ortağı portalı 'nda hesabınızda oturum açın ve Azure IoT Central uygulaması oluşturmak istediğiniz müşteriyi seçin. Sol gezinti çubuğunda müşteri için hizmet yönetimi ' ne gidin.
 
-![Microsoft Iş Ortağı Merkezi, müşteri görünümü](media/howto-create-application-csp/image1.png)
+![Microsoft Iş Ortağı Merkezi, müşteri görünümü](media/howto-create-and-manage-applications-csp/image1.png)
 
 Azure IoT Central, yönetmek için kullanılabilen bir hizmet olarak listelenir. Yeni uygulamalar oluşturmak veya bu müşteri için mevcut uygulamaları yönetmek üzere sayfadaki Azure IoT Central bağlantısını seçin.
 
-![Azure IoT Central yönetilecek kullanılabilir](media/howto-create-application-csp/image2.png)
+![Azure IoT Central yönetilecek kullanılabilir](media/howto-create-and-manage-applications-csp/image2.png)
 
 Azure IoT Central uygulama Yöneticisi sayfasını kullanabilirsiniz. Azure IoT Central, Microsoft Iş Ortağı Merkezi 'nden gelen ve söz konusu müşteriyi yönetmek için aldığınız bağlamı korur. Bu bildirim, uygulama Yöneticisi sayfasının üstbilgisinde görüntülenir. Buradan, bu müşteri için daha önce oluşturduğunuz mevcut bir uygulamaya gidebilir veya müşteri için yeni bir uygulama oluşturabilirsiniz.
 
-![CSP 'Ler için yönetici oluşturma](media/howto-create-application-csp/image3.png)
+![CSP 'Ler için yönetici oluşturma](media/howto-create-and-manage-applications-csp/image3.png)
 
 Azure IoT Central uygulaması oluşturmak için soldaki menüden **Oluştur** ' u seçin. Sektör şablonlarından birini seçin veya sıfırdan bir uygulama oluşturmak için **eski uygulama** ' yı seçin. Bu işlem, uygulama oluşturma sayfasını yükler. Bu sayfadaki tüm alanları tamamlayıp **Oluştur**' u seçmeniz gerekir. Aşağıdaki alanların her biri hakkında daha fazla bilgi bulabilirsiniz.
 
-![CSP 'Ler için uygulama sayfası oluştur](media/howto-create-application-csp/image4.png)
+![CSP 'Ler için uygulama sayfası oluştur](media/howto-create-and-manage-applications-csp/image4.png)
 
-![CSP 'Ler için uygulama sayfası oluştur](media/howto-create-application-csp/image4-1.png)
+![CSP 'Ler için uygulama sayfası oluştur](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![CSP faturalandırma bilgileri için uygulama sayfası oluşturma](media/howto-create-application-csp/image4-2.png)
+![CSP faturalandırma bilgileri için uygulama sayfası oluşturma](media/howto-create-and-manage-applications-csp/image4-2.png)
 
 ## <a name="pricing-plan"></a>Fiyatlandırma planı
 
 Yalnızca bir CSP olarak standart fiyatlandırma planı kullanan uygulamalar oluşturabilirsiniz. Müşterinizin Azure IoT Central göstermek için, ücretsiz fiyatlandırma planını ayrı olarak kullanan bir uygulama oluşturabilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin.
 
-## <a name="application-name"></a>Uygulama Adı
+Yalnızca bir CSP olarak standart fiyatlandırma planı kullanan uygulamalar oluşturabilirsiniz. Müşterinizin Azure IoT Central göstermek için, ücretsiz fiyatlandırma planını ayrı olarak kullanan bir uygulama oluşturabilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin.
+
+## <a name="application-name"></a>Uygulama adı
 
 Uygulamanızın adı, **Uygulama Yöneticisi** sayfasında ve her bir Azure IoT Central uygulaması içinde görüntülenir. Azure IoT Central uygulamanız için herhangi bir ad seçebilirsiniz. Sizin ve kuruluşunuzdaki diğer diğerlerine anlamlı bir ad seçin.
 
@@ -75,9 +77,6 @@ Daha fazla bilgi için bkz. [Azure abonelikleri](https://docs.microsoft.com/azur
 
 Azure IoT Central uygulamanızı oluşturmak istediğiniz bölge veya [coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/) bölgeyi seçin. Genellikle en iyi performansı elde etmek için cihazlarınıza en yakın fiziksel bölgeyi seçmeniz gerekir.
 
-> [!NOTE]
-> Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
-
 Daha fazla bilgi edinmek için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/) ve [Azure coğrafi lıkları](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 Azure IoT Central 'ın [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) sayfasında kullanılabildiği bölgeleri görebilirsiniz.
@@ -87,11 +86,7 @@ Azure IoT Central 'ın [bölgeye göre kullanılabilir ürünler](https://azure.
 
 ## <a name="application-template"></a>Uygulama şablonu
 
-Yeni Azure IoT Central uygulamanız için aşağıdaki uygulama şablonunu seçebilirsiniz.
-
-| Uygulama şablonu | Açıklama |
-| -------------------- | ----------- |
-| Eski uygulama   | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
+Uygulamanız için kullanmak istediğiniz uygulama şablonunu seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

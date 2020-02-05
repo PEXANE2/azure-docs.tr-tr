@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978897"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024594"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -49,7 +49,7 @@ Multi-Factor Authentication kaydı tamamlandıktan sonra, her oturum açtıklar�
 
 - Genel yönetici
 - SharePoint yöneticisi
-- Exchange yöneticisi
+- Exchange Yöneticisi
 - Koşullu Erişim Yöneticisi
 - Güvenlik yöneticisi
 - Yardım Masası yönetici veya parola Yöneticisi
@@ -83,7 +83,7 @@ Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir pr
 
 Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure Portal 
+- Azure portalında 
 - Azure PowerShell 
 - Azure CLI
 
@@ -94,6 +94,8 @@ Azure Resource Manager erişmek ve yapılandırmaya güncelleştirmek isteyen ku
 Kiracınızda güvenlik varsayılanlarını etkinleştirdikten sonra, Azure portal, Azure PowerShell veya Azure CLı 'ye erişen tüm kullanıcıların ek kimlik doğrulamasını tamamlaması gerekir. Bu ilke, yönetici veya Kullanıcı olup olmadıkları gibi Azure Resource Manager erişen tüm kullanıcılar için geçerlidir. 
 
 Kullanıcı Multi-Factor Authentication için kayıtlı değilse, kullanıcının devam edebilmesi için Microsoft Authenticator uygulamasını kullanarak kaydetmesi gerekecektir. 14 günlük Multi-Factor Authentication kayıt süresi sağlanmaz.
+
+2017 öncesi Exchange Online kiracılarında modern kimlik doğrulaması varsayılan olarak devre dışıdır. Bu kiracılar aracılığıyla kimlik doğrulaması yaparken bir oturum açma döngüsü olasılığını önlemek için [modern kimlik doğrulamayı etkinleştirmeniz](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)gerekir.
 
 > [!NOTE]
 > Azure AD Connect eşitleme hesabı güvenlik varsayılanlarını dışarıda bırakılır ve Multi-Factor Authentication 'ı kaydetmesi veya gerçekleştirmesi istenmez. Kuruluşlar bu hesabı başka amaçlar için kullanmamalıdır.

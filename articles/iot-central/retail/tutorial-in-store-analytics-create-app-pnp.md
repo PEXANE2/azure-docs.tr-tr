@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990666"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022112"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Öğreticide, bir Azure IoT Central mağaza 'da analiz uygulaması oluşturma çözümü üreticileri gösterilmektedir. Örnek uygulama, perakende mağaza içindir. Bu, yaygın iş ihtiyacı olan bir çözümdür ve bu da, doluluk ve çevre koşullarını izleyip uyarlayabilir.
 
@@ -64,7 +64,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
 1. **Perakende**' ı seçin.  Perakende sayfasında çeşitli perakende uygulama şablonları görüntülenir.
 
-Önizleme özelliklerini kullanan yeni bir mağaza içi analiz kullanıma alma uygulaması oluşturmak için:  
+Yeni bir mağaza Analytics kullanıma alma uygulaması oluşturmak için:  
 
 1. **Mağaza içi analiz-kullanıma alma** uygulama şablonunu seçin. Bu şablon, RuuviTag algılayıcı haricinde öğreticide kullanılan tüm cihazların cihaz şablonlarını içerir. Şablon Ayrıca, kullanıma alma ve çevre koşullarını ve cihaz durumunu izlemek için bir operatör panosu sağlar. 
 
@@ -75,7 +75,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
 1. Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../preview/quick-deploy-iot-central.md).
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central.md).
 
 1. **Oluştur**'u seçin.
 
@@ -84,6 +84,7 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
     ![Azure IoT Central uygulama faturalandırma bilgileri oluşturma](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Uygulama ayarlarını özelleştirme
+
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz. Bu bölümde, önceden tanımlanmış bir uygulama teması seçersiniz. İsteğe bağlı olarak, özel bir tema oluşturmayı ve uygulama görüntüsünü güncelleştirmeyi öğreneceksiniz. Özel bir tema uygulama tarayıcısı renklerini, tarayıcı simgesini ve künyesi içinde görüntülenen uygulama logosunu ayarlamanıza olanak sağlar.
 
 Önceden tanımlanmış bir uygulama teması seçmek için:
@@ -162,7 +163,7 @@ Uygulamanızdaki cihaz şablonlarını üç şekilde özelleştirebilirsiniz. İ
 
 Üçüncü olarak, özel görünümler oluşturarak cihaz şablonlarını özelleştirin. Görünümler, operatörlerin cihaz ölçümleri ve sistem durumu gibi telemetri ve meta verileri görselleştirmesine yönelik bir yol sağlar.
 
-Burada, RuuviTag sensörlerinizin cihaz şablonunu özelleştirmek için ilk iki yöntemi kullanın. Sensörleriniz için görünüm oluşturma hakkında daha fazla bilgi için, IoT Central uygulamanızın hızlı başlangıç başlığına [sanal cihaz ekleme](../preview/quick-create-pnp-device.md) hızlı başlangıç bölümüne bakın.
+Burada, RuuviTag sensörlerinizin cihaz şablonunu özelleştirmek için ilk iki yöntemi kullanın. Sensörleriniz için görünüm oluşturma hakkında daha fazla bilgi için, IoT Central uygulamanızın hızlı başlangıç başlığına [sanal cihaz ekleme](../core/quick-create-pnp-device.md) hızlı başlangıç bölümüne bakın.
 
 RuuviTag cihaz şablonunun yerleşik arabirimlerini özelleştirmek için:
 
@@ -202,7 +203,7 @@ Her bir cihazın konumunu depolamak üzere özel bir özellik oluşturmak için 
 
 1. **Görünen ad**Için değer *konumunu* girin. Bu değer, özellik için kolay bir ad olan **ad** alanına otomatik olarak kopyalanır. Kopyalanmış değeri kullanabilir veya değiştirebilirsiniz.
 
-1. **Şema** açılan menüsünde *dize* ' yi seçin. Bir dize türü, bir konum adı dizesini şablona dayalı herhangi bir cihazla ilişkilendirmenizi sağlar. Örneğin, bir depodaki bir alanı her cihazla ilişkilendirebilirsiniz. İsteğe bağlı olarak, özelliğin **anlam türünü** *konum*olarak ayarlayabilirsiniz ve bu, **Şemayı** otomatik olarak *geopoint*olarak ayarlar. Bu, GPS koordinatlarını bir cihazla ilişkilendirmenizi sağlar. 
+1. **Şema** açılan menüsünde *dize* ' yi seçin. Bir dize türü, bir konum adı dizesini şablona dayalı herhangi bir cihazla ilişkilendirmenizi sağlar. Örneğin, bir depodaki bir alanı her cihazla ilişkilendirebilirsiniz. İsteğe bağlı olarak, özelliğin **anlam türünü** *konum*olarak ayarlayabilirsiniz ve bu, **Şemayı** otomatik olarak *geopoint*olarak ayarlar. GPS koordinatlarını bir cihazla ilişkilendirmenize olanak sağlar. 
 
 1. **Minimum uzunluğu** *2*olarak ayarlayın. 
 
@@ -229,8 +230,8 @@ Bu öğreticide, uygulamayı derlemek için aşağıdaki gerçek ve sanal cihaz 
 
 Gerçek bir Rigado ağ geçidini ve RuuviTag sensörleriyle bağlantı kurmak için aşağıdaki iki makalede bulunan adımları izleyin. İşiniz bittiğinde Bu öğreticiye geri dönün. Bu öğreticide zaten cihaz şablonları oluşturmuş olduğunuzdan, bunları aşağıdaki yönergeler kümesinde yeniden oluşturmanız gerekmez.
 
-- Bir Rigado ağ geçidini bağlamak için bkz. [Azure IoT Central uygulamanıza bir Rigado basamakla 500 bağlama](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- RuuviTag sensörlerinden bağlantı kurmak için bkz. [Azure IoT Central uygulamanıza bir ruuvitag algılayıcısı bağlama](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Gerekirse iki sanal algılayıcı oluşturmak için bu yönergeleri de kullanabilirsiniz.
+- Bir Rigado ağ geçidini bağlamak için bkz. [Azure IoT Central uygulamanıza bir Rigado basamakla 500 bağlama](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- RuuviTag sensörlerinden bağlantı kurmak için bkz. [Azure IoT Central uygulamanıza bir ruuvitag algılayıcısı bağlama](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Gerekirse iki sanal algılayıcı oluşturmak için bu yönergeleri de kullanabilirsiniz.
 
 ## <a name="add-rules-and-actions"></a>Kural ve eylem ekleme
 Koşulları izlemek için Azure IoT Central uygulamanızda sensörler kullanmanın bir parçası olarak, belirli koşullar karşılandığında eylemleri çalıştırmak için kurallar oluşturabilirsiniz. Bir kural bir cihaz şablonuyla ve bir veya daha fazla cihazla ilişkilendirilir ve cihaz telemetri veya olaylarına göre karşılanması gereken koşulları içerir. Bir kuralda bir veya daha fazla ilişkili eylem de vardır. Eylemler e-posta bildirimleri göndermeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemi tetiklemesini içerebilir. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, uygulamadaki cihazlar için önceden tanımlanmış bazı kurallar içerir.

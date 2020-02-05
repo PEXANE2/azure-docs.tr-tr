@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes hizmeti & GitHub eylemleri
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771130"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026107"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -58,7 +58,6 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 Sonraki bir adımda kullanıldığından JSON çıkışını kaydedin.
 
-
 AKS kümenizin *kimliğini* görüntülemek için [az aks Show][az-aks-show] kullanın:
 
 ```cmd
@@ -93,7 +92,6 @@ Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundak
 1. *CLUSTER_NAME*: Bu örnekte *MYAKS*olan aks Kümenizin adı.
 1. *CONTAINER_REGISTRY*: ACR Için *loginserver* .
 1. *Ana bilgisayar*: *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX*> olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
-1. *HOST_SUFFIX*: geliştirme alanınız için konak soneki, bu örnekte *fedcab0987.EUS.azds.io*.
 1. *IMAGE_PULL_SECRET*: kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli*.
 1. *MASTER_SPACE*: Bu örnekte *dev*olan üst geliştirme alanının adı.
 1. *REGISTRY_USERNAME*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
@@ -101,6 +99,8 @@ Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundak
 
 > [!NOTE]
 > Tüm bu gizlilikler GitHub eylemi tarafından kullanılır ve [. GitHub/iş akışları/bisiklet. yıml][github-action-yaml]içinde yapılandırılır.
+
+İsteğe bağlı olarak, çekme isteği birleştirildikten sonra ana alanı güncelleştirmek istiyorsanız, bu örnekte *dev.gateway.fedcab0987.eus.azds.io* *MASTER_SPACE >. GATEWAY. < HOST_SUFFIX > <* formunu alan *GATEWAY_HOST* gizli anahtarını ekleyin. Değişikliklerinizi çatalınızdaki ana dalda birleştirdiğinizde, tüm uygulamanızı yeniden oluşturup ana geliştirme alanında çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, ana alan *dev*olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Kod değişiklikleri için yeni dal oluştur
 

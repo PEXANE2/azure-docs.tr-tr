@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701391"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022639"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
 
@@ -71,7 +71,9 @@ Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olma
 
 Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
 
-APP1 Redirect URI: `msauth.com.contoso.mytestapp1://auth` app2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth` App3 yeniden yönlendirme URI 'si: `msauth.com.contoso.mytestapp3://auth`
+APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`  
+App2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth`  
+App3 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Yeniden yönlendirme URI 'lerinin biçimi, [msal yeniden yönlendirme URI 'si biçim gereksinimleri](redirect-uris-ios.md#msal-redirect-uri-format-requirements)bölümünde belgelenen msal desteği biçimiyle uyumlu olmalıdır.
@@ -96,9 +98,21 @@ Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde bu örneğ
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>Yeni bir anahtarlık grubu Ekle
+
+Proje **olanaklarınız**için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu şu olmalıdır:
+* iOS üzerinde `com.microsoft.adalcache` 
+* macOS üzerinde `com.microsoft.identity.universalstorage`.
+
+![Anahtarlık örneği](media/single-sign-on-macos-ios/keychain-example.png)
+
+Daha fazla bilgi için bkz. [Anahtarlık grupları](howto-v2-keychain-objc.md).
+
+## <a name="configure-the-application-object"></a>Uygulama nesnesini yapılandırma
+
 Her bir uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra, SSO kullanmaya hazırsanız, aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun `MSALPublicClientApplication` yapılandırın:
 
-Objective-C:
+Amaç-C:
 
 ```objc
 NSError *error = nil;
@@ -108,21 +122,19 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > Uygulamalarınız genelinde bir anahtarlık paylaştığınızda, herhangi bir uygulama kullanıcı veya hatta uygulamanızın tamamında tüm belirteçleri silebilir.
@@ -133,11 +145,11 @@ do {
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>İOS üzerinde kimlik doğrulama Aracısı aracılığıyla SSO
 
-MSAL provides support for brokered authentication with Microsoft Authenticator. Microsoft Authenticator provides SSO for AAD registered devices, and also helps your application follow Conditional Access policies.
+MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. Microsoft Authenticator, AAD kayıtlı cihazlar için SSO sağlar ve uygulamanızın koşullu erişim ilkelerini izlemesine de yardımcı olur.
 
-The following steps are how you enable SSO using an authentication broker for your app:
+Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
 
-1. Register a broker compatible Redirect URI format for the application in your app's Info.plist. The broker compatible Redirect URI format is `msauth.<app.bundle.id>://auth`. Replace `<app.bundle.id>`` with your application's bundle ID. Örneğin:
+1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örneğin:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -146,7 +158,7 @@ The following steps are how you enable SSO using an authentication broker for yo
     </array>
     ```
 
-1. Add following schemes to your app's Info.plist under `LSApplicationQueriesSchemes`:
+1. `LSApplicationQueriesSchemes`altındaki uygulamanızın Info. plist ' e aşağıdaki şemaları ekleyin:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -156,9 +168,9 @@ The following steps are how you enable SSO using an authentication broker for yo
     </array>
     ```
 
-1. Add the following to your `AppDelegate.m` file to handle callbacks:
+1. Geri çağırmaları işlemek için `AppDelegate.m` dosyanıza aşağıdakileri ekleyin:
 
-    Objective-C:
+    Amaç-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
@@ -167,7 +179,7 @@ The following steps are how you enable SSO using an authentication broker for yo
     }
     ```
     
-    Swift:
+    SWIFT
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -175,10 +187,10 @@ The following steps are how you enable SSO using an authentication broker for yo
     }
     ```
     
-**If you are using Xcode 11**, you should place MSAL callback into the `SceneDelegate` file instead.
-If you support both UISceneDelegate and UIApplicationDelegate for compatibility with older iOS, MSAL callback would need to be placed into both files.
+**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate` dosyasına yerleştirmeniz gerekir.
+Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
 
-Objective-C:
+Amaç-C:
 
 ```objc
  - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts
@@ -191,7 +203,7 @@ Objective-C:
  }
 ```
 
-Swift:
+SWIFT
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Learn more about [Authentication flows and application scenarios](authentication-flows-app-scenarios.md)
+[Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin

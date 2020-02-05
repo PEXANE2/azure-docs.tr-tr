@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893135"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025818"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) Azure Data Factory kullanarak verileri kopyalama ve dönüştürme
 
@@ -24,7 +24,7 @@ ms.locfileid: "75893135"
 > * [Sürüm 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Geçerli sürüm](connector-azure-cosmos-db.md)
 
-Bu makalede, verileri Azure Cosmos DB (SQL API) ' den kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir ve verileri Azure Cosmos DB (SQL API) dönüştürmek için veri akışını kullanabilirsiniz. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
+Bu makalede Azure Cosmos DB’den (SQL API) ve Azure Cosmos DB'ye veri kopyalamak için Azure Data Factory’nin Kopya Etkinliğini kullanma ve Azure Cosmos DB’deki (SQL API) verileri dönüştürmek için Veri Akışı’nı kullanma işlemleri açıklanır. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
 
 >[!NOTE]
 >Bu bağlayıcı yalnızca SQL API 'sini Cosmos DB destekler. MongoDB API 'SI için, [MongoDB için Azure Cosmos DB API 'sine yönelik bağlayıcıya](connector-azure-cosmos-db-mongodb-api.md)başvurun. Diğer API türleri şu anda desteklenmiyor.
@@ -268,6 +268,18 @@ Azure Cosmos DB özgü ayarlar, kaynak dönüşümünün **kaynak seçenekleri**
 **Aktarım hızı:** Bu veri akışının her yürütmesi için, okuma işlemi sırasında CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
 
 **Tercih edilen bölgeler:** Bu işlem için tercih edilen okuma bölgelerini seçin.
+
+#### <a name="json-settings"></a>JSON ayarları
+
+**Tek belge:** ADF dosyanın tamamını tek bir JSON belgesi olarak değerlendirmek istiyorsanız bu seçeneği belirleyin.
+
+**Tırnak Işaretleri olmayan sütun adları:** JSON 'daki sütun adları tırnak içine alınmadığı takdirde bu seçeneği belirleyin.
+
+**Açıklamalar içeriyor:** JSON belgelerinizin verilerde açıklama varsa bu seçimi kullanın.
+
+**Tek tırnak:** Belgenizdeki sütunlar ve değerler tek tırnak ile alıntılandıysanız bu seçilmelidir.
+
+**Ters eğik çizgi kaçışı:** JSON 'inizdeki karakterleri kaçış için ters eğik çizgi kullanıyorsanız bu seçeneği belirleyin.
 
 ### <a name="sink-transformation"></a>Havuz dönüştürme
 

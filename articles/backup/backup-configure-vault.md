@@ -3,12 +3,12 @@ title: MARS Aracısı ile Windows makinelerini yedekleme
 description: Windows makinelerini yedeklemek için Azure Backup Microsoft Kurtarma Hizmetleri (MARS) aracısını kullanın.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290878"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025546"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısı ile Windows makinelerini yedekleme
 
@@ -49,7 +49,7 @@ Yedekleyebileceğiniz, aracının yüklü olduğu yere bağlıdır.
 
 Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu URL 'Lere ve IP adreslerine izin verildiğinden emin olun:
 
-#### <a name="urls"></a>URL'ler
+#### <a name="urls"></a>Adresleri
 
 * www\.msftncsi.com
 * *.Microsoft.com
@@ -68,7 +68,7 @@ Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443
 
 Bir kurtarma hizmetleri Kasası, zaman içinde oluşturduğunuz tüm yedeklemeleri ve kurtarma noktalarını depolar ve yedeklenen makinelere uygulanan yedekleme ilkesini içerir. Aşağıdaki gibi bir kasa oluşturun:
 
-1. Azure aboneliğinizi kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+1. Azure aboneliğinizi kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. **Kurtarma Hizmetleri kasalarını**arayın ve seçin.
 
@@ -165,7 +165,7 @@ Yedeklemek istediğiniz makinelere yükleme için MARS aracısını indirin.
 
 8. **Finish (Son)** düğmesine tıklayın. Aracı artık yüklenmiş ve makineniz kasaya kaydedilmiştir. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
 
-## <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
+## <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
 
 Yedekleme ilkesi, kurtarma noktaları oluşturmak için verilerin ne zaman anlık görüntülerinin alınacağını ve kurtarma noktalarının ne kadar süreyle saklanacağını belirtir.
 
@@ -215,10 +215,10 @@ Aşağıdaki şekilde bir ilke oluşturun:
         -   Gece yarısı ve 6:00 PM 'deki ayın son haftasında Cumartesi tarihinde gerçekleştirilen yedeklemeler 12 ay boyunca tutulur.
         -   Mart 'ın son haftasında Cumartesi günü alınan yedeklemeler 10 yıl boyunca tutulur.
 
-    ![Bekletme örneği](./media/backup-configure-vault/retention-example.png)
+        ![Bekletme örneği](./media/backup-configure-vault/retention-example.png)
 
 
-11. İlk yedekleme **türünü seçin** bölümünde, ağ üzerinden ilk yedeklemeyi almak mi yoksa çevrimdışı yedekleme mi kullanmak istediğinize karar verin (çevrimdışı yedekleme hakkında daha fazla bilgi için bu [makaleye](backup-azure-backup-import-export.md)bakın). İlk yedeklemeyi ağ üzerinden almak için, **ağ üzerinden otomatik olarak** ' ı seçin ve **İleri**' ye tıklayın.
+11. İlk yedekleme **türünü seçin** bölümünde, ağ üzerinden ilk yedeklemeyi almak mi yoksa çevrimdışı yedekleme mi kullanmak istediğinize karar verin (çevrimdışı yedekleme hakkında daha fazla bilgi için bu [makaleye](offline-backup-azure-data-box.md)bakın). İlk yedeklemeyi ağ üzerinden almak için, **ağ üzerinden otomatik olarak** ' ı seçin ve **İleri**' ye tıklayın.
 
     ![ilk yedekleme türü](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Bir ilk yedeklemeyi otomatik olarak ağ üzerinden veya çevrimdışı çalışt
 5. Veri merkezinde, disk verileri bir Azure depolama hesabına kopyalanır.
 6. Azure Backup, verileri depolama hesabından kasaya kopyalar ve artımlı yedeklemeler zamanlanır.
 
-Çevrimdışı dengeli dağıtım hakkında [daha fazla bilgi edinin](backup-azure-backup-import-export.md) .
+Çevrimdışı dengeli dağıtım hakkında [daha fazla bilgi edinin](offline-backup-azure-data-box.md) .
 
 ### <a name="enable-network-throttling"></a>Ağ azaltmayı etkinleştir
 
@@ -259,7 +259,7 @@ Ağ azaltmayı şu şekilde etkinleştirin:
 1. MARS aracısında **Özellikleri Değiştir**' e tıklayın.
 2. **Daraltma** sekmesinde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i işaretleyin.
 
-    ![Ağ kapasitesi azaltma](./media/backup-configure-vault/throttling-dialog.png)
+    ![Ağ azaltma](./media/backup-configure-vault/throttling-dialog.png)
 3. İş sırasında ve çalışma saatleri dışında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 MBps 'e kadar gider. Daha sonra, **Tamam**'a tıklayın.
 
 ## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma

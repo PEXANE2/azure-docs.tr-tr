@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225367"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023540"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer için dağıtım modunu yapılandırma
 
@@ -59,7 +59,7 @@ Başka bir kullanım örneği senaryosu medya karşıya yükleme ' dir. UDP kar�
 
 ## <a name="configure-source-ip-affinity-settings"></a>Kaynak IP benzeşimi ayarlarını yapılandırma
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
 Portalda Yük Dengeleme kuralını değiştirerek dağıtım modunun yapılandırmasını değiştirebilirsiniz.
 
@@ -154,7 +154,7 @@ Aşağıdaki örnek, bir dağıtımda, belirtilen bir yük dengeli küme için y
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Dağıtılmış yük dengeli küme için dağıtım modunu değiştirme
 
-Azure Klasik dağıtım modeli, var olan bir dağıtım yapılandırmasını değiştirmek için kullanın. `x-ms-version` başlığını ekleyin ve değeri sürüm 2014-09-01 veya üzeri olarak ayarlayın.
+Azure Klasik dağıtım modeli, var olan bir dağıtım yapılandırmasını değiştirmek için kullanın. Ekleme `x-ms-version` başlığı ve sürümü 2014-09-01 değeri ayarlayın veya üzeri.
 
 #### <a name="request"></a>İste
 
@@ -193,6 +193,6 @@ Daha önce açıklandığı gibi, `LoadBalancerDistribution` öğesini iki demet
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Iç Load Balancer genel bakış](load-balancer-internal-overview.md)
-* [İnternet 'e yönelik yük dengeleyici yapılandırma ile çalışmaya başlama](load-balancer-get-started-internet-arm-ps.md)
+* [Azure iç yük dengeleyiciye genel bakış](load-balancer-internal-overview.md)
+* [İnternet'e yönelik Yük Dengeleyici yapılandırmaya başlayın](quickstart-create-standard-load-balancer-powershell.md)
 * [Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)

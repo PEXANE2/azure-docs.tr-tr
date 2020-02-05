@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615393"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022129"
 ---
 # <a name="in-store-analytics-architecture"></a>Mağaza içi analiz mimarisi
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Mağaza içi analiz çözümleri, perakende mağaza ortamındaki çeşitli koşulları izlemenizi sağlar. Bu çözümler IoT Central içindeki uygulama şablonlarından biri ve kılavuz olarak aşağıdaki mimariden yararlanarak oluşturulabilir.
+
+Mağaza içi analiz çözümleri, perakende mağaza ortamındaki çeşitli koşulları izlemenizi sağlar. Bu çözümler IoT Central içindeki uygulama şablonlarından biri ve kılavuz olarak aşağıdaki mimaride kullanılarak oluşturulabilir.
 
 
 ![Azure IoT Central Mağazası Analizi](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ Genellikle mağaza Analizi çözümünde bir bölümü oynatacak anahtar bileşe
 
 ## <a name="condition-monitoring-sensors"></a>Koşul izleme algılayıcılar
 
-IoT çözümü, perakende mağaza ortamının içinden anlamlı sinyalleri yakalayan bir algılayıcı kümesiyle başlar. Yukarıdaki mimari diyagramının en solundaki çeşitli sensörlerle yansıtılır.
+IoT çözümü, perakende mağaza ortamının içinden anlamlı sinyalleri yakalayan bir algılayıcı kümesiyle başlar. Yukarıdaki mimari diyagramının en solundaki farklı algılayıcı türleri tarafından yansıtılır.
 
 ## <a name="gateway-devices"></a>Ağ geçidi cihazları
 
@@ -43,7 +43,7 @@ Birçok IoT algılayıcı, ham sinyalleri doğrudan buluta veya neredeyse buluna
 
 ## <a name="iot-central-application"></a>IoT Central uygulaması
 
-Azure IoT Central uygulaması, çeşitli IoT sensörlerinden ve perakende mağaza ortamındaki ağ geçidi cihazlarından verileri alır ve anlamlı Öngörüler kümesi oluşturur.
+Azure IoT Central uygulaması, perakende mağaza ortamındaki farklı IoT algılayıcılarının yanı sıra ağ geçidi cihazlarından verileri alır ve anlamlı Öngörüler kümesi oluşturur.
 
 Azure IoT Central Ayrıca, altyapı cihazlarını uzaktan izleyip yönetebilmesini sağlayan mağaza işlecine özel bir deneyim sağlar.
 
@@ -51,7 +51,7 @@ Azure IoT Central Ayrıca, altyapı cihazlarını uzaktan izleyip yönetebilmesi
 Bir çözüm içindeki Azure IoT Central uygulaması, ham veya toplu öngörüleri veri işleme gerçekleştirebilen ve bu öngörüleri bir işletmeye göre daha zengin bir şekilde zenginleştiren Azure PaaS (hizmet olarak platform) Hizmetleri kümesine dışarı aktarmak üzere yapılandırılabilir Uygulamanızı. 
 
 ## <a name="business-application"></a>İş uygulaması
-IoT verileri, perakende ortamında dağıtılan çeşitli iş uygulamalarını desteklemek için kullanılabilir. Bir perakende mağaza yöneticisi veya personel üyesi, iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı eylemler gerçekleştirmek için bu uygulamaları kullanabilir. Perakende ekibiniz için gerçek zamanlı Power BI panosu oluşturmayı öğrenmek için lütfen [öğreticiyi](./tutorial-in-store-analytics-create-app-pnp.md)izleyin.
+IoT verileri, perakende ortamında dağıtılan farklı türlerde iş uygulamalarının gücünü desteklemek için kullanılabilir. Bir perakende mağaza yöneticisi veya personel üyesi, bu uygulamaları iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı işlemler yapmak için kullanabilir. Perakende ekibiniz için gerçek zamanlı Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app-pnp.md)izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Mağaza Içi analiz kullanıma alma](https://aka.ms/checkouttemplate) ve [Mağaza Içi analiz koşulu izleme](https://aka.ms/conditiontemplate) uygulama şablonlarını kullanmaya başlayın. 

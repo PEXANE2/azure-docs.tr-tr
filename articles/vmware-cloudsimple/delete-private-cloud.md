@@ -1,6 +1,6 @@
 ---
-title: CloudSimple özel bulutuna sahip bir Azure VMware çözümünü silme
-description: CloudSimple özel bulutun nasıl silineceğini açıklar.
+title: Azure VMware Solutions (AVS) özel bulutunu silme
+description: Bir AVS özel bulutunun nasıl silineceğini açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,53 +8,53 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 77cbfb19c3861bac517142f7491e6b1a5fb4ca27
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972800"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024764"
 ---
-# <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutunu silme
+# <a name="delete-an-avs-private-cloud"></a>AVS özel bulutunu silme
 
-CloudSimple, özel bir bulutu silme esnekliği sağlar.  Bir özel bulut, bir veya daha fazla vSphere kümesinden oluşur. Her küme 3 ile 16 arasında düğüme sahip olabilir. Özel bir bulutu sildiğinizde, tüm kümeler silinir.
+AVS, bir AVS özel bulutunu silme esnekliği sağlar. Bir AVS özel bulutu bir veya daha fazla vSphere kümelerinden oluşur. Her küme 3 ile 16 arasında düğüme sahip olabilir. Bir AVS özel bulutu sildiğinizde, tüm kümeler silinir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Özel bulutun silinmesi, tüm özel bulutun silinmesine neden olacak.  Özel bulutun tüm bileşenleri silinecek.  Verilerin herhangi birini tutmak istiyorsanız, verileri şirket içi depolamaya veya Azure Storage 'a yedeklemiş olduğunuzdan emin olun.
+Bir AVS özel bulutu silindiğinde, tüm AVS özel bulutu silinir. AVS özel bulutunun tüm bileşenleri silinecek. Verilerin herhangi birini tutmak istiyorsanız, verileri şirket içi depolamaya veya Azure Storage 'a yedeklemiş olduğunuzdan emin olun.
 
-Özel bulutun bileşenleri şunlardır:
+Bir AVS özel bulutunun bileşenleri şunlardır:
 
-* CloudSimple düğümleri
+* AVS düğümleri
 * Sanal makineler
 * VLAN 'Lar/alt ağlar
-* Özel bulutta depolanan tüm Kullanıcı verileri
+* AVS özel bulutu 'nda depolanan tüm Kullanıcı verileri
 * Bir VLAN/subnet 'e yönelik tüm güvenlik duvarı kuralı ekleri
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="delete-a-private-cloud"></a>Özel bulutu silme
+## <a name="delete-an-avs-private-cloud"></a>AVS özel bulutunu silme
 
-1. [CloudSimple portalına erişin](access-cloudsimple-portal.md).
+1. [AVS portalına erişin](access-cloudsimple-portal.md).
 
 2. **Kaynaklar** sayfasını açın.
 
-3. Silmek istediğiniz özel buluta tıklayın
+3. Silmek istediğiniz AVS özel bulutuna tıklayın
 
 4. Özet sayfasında **Sil**' e tıklayın.
 
-    ![Özel bulutu Sil](media/delete-private-cloud.png)
+    ![AVS özel bulutunu silme](media/delete-private-cloud.png)
 
-5. Onay sayfasında, özel bulutun adını girin ve **Sil**' e tıklayın. 
+5. Onay sayfasında, AVS özel bulutunun adını girin ve **Sil**' e tıklayın. 
 
-    ![Özel bulutu Sil-Onayla](media/delete-private-cloud-confirm.png)
+    ![AVS özel bulutunu silme-Onayla](media/delete-private-cloud-confirm.png)
 
-Özel bulut silinmek üzere işaretlendi.  Silme işlemi üç saat sonra başlar ve özel bulutu siler.
+AVS özel bulutu silinmek üzere işaretlendi. Silme işlemi üç saat sonra başlar ve AVS özel bulutunu siler.
 
 > [!CAUTION]
-> Özel bulutun silinmesinden sonra düğümlerin silinmesi gerekir.  Düğüm ölçümü, düğümlerin aboneliğinizden silindiği zamana kadar devam edecektir.
+> AVS özel bulutunun silinmesinden sonra düğümlerin silinmesi gerekir. Düğümler aboneliğinizden silinene kadar düğümlerin ölçümü devam edecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

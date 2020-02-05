@@ -3,12 +3,12 @@ title: Sistem durumu ve tam kurtarma koruması
 description: Sistem durumunu yedeklemek ve tam kurtarma (BMR) koruması sağlamak için Azure Backup Sunucusu kullanın.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172258"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025512"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sistem durumunu yedekleme ve Azure Backup Sunucusu ile çıplak sisteme geri yükleme
 
@@ -140,7 +140,7 @@ Koruma [gruplarını dağıtma](https://docs.microsoft.com/system-center/dpm/cre
 
 12. **Çevrimiçi saklama Ilkesini belirtin** sayfasında, günlük, haftalık, aylık ve yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunduğunu seçin.
 
-13. **Çevrimiçi çoğaltma Seç** sayfasında, verilerin ilk tam çoğaltmasının nasıl gerçekleşeceğini seçin. Ağ üzerinden çoğaltma yapabilir veya çevrimdışı yedekleme yapabilirsiniz (çevrimdışı dengeli dağıtım). Çevrimdışı yedekleme, Azure Içeri aktarma özelliğini kullanır. Daha fazla bilgi için bkz. [Azure Backup çevrimdışı yedekleme iş akışı](backup-azure-backup-import-export.md).
+13. **Çevrimiçi çoğaltma Seç** sayfasında, verilerin ilk tam çoğaltmasının nasıl gerçekleşeceğini seçin. Ağ üzerinden çoğaltma yapabilir veya çevrimdışı yedekleme yapabilirsiniz (çevrimdışı dengeli dağıtım). Çevrimdışı yedekleme, Azure Içeri aktarma özelliğini kullanır. Daha fazla bilgi için bkz. [Azure Backup çevrimdışı yedekleme iş akışı](offline-backup-azure-data-box.md).
 
 14. **Özet** sayfasında, ayarlarınızı gözden geçirin. **Grup Oluştur**' u seçtikten sonra, verilerin ilk çoğaltması oluşur. Veri çoğaltma tamamlandığında, **durum** sayfasında, koruma grubu durumu **Tamam**' dır. Yedekleme, koruma grubu ayarlarına göre gerçekleşir.
 

@@ -11,18 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702698"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022180"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Öğretici: işletmen panosunu özelleştirme ve Azure IoT Central cihazları yönetme
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Bu öğreticide, bir Oluşturucu olarak Azure IoT Central mağaza içi analiz uygulamanızda operatör panosunu nasıl özelleştireceğiniz gösterilmektedir. Uygulama işleçleri, uygulamayı çalıştırmak ve ekli cihazları yönetmek için özelleştirilmiş panoyu kullanabilir.
+Bu öğreticide, bir Oluşturucu olarak Azure IoT Central mağaza içi analiz uygulamanızda operatör panosunu özelleştirmeyi öğrenin. Uygulama işleçleri, uygulamayı çalıştırmak ve ekli cihazları yönetmek için özelleştirilmiş panoyu kullanabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -33,14 +32,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz ayrıntılarını göstermek için özellik kutucukları ekleyin
 > * Çalıştır komutlarına komut kutucukları ekleyin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiye başlamadan önce, Oluşturucu Azure IoT Central mağaza 'da analiz uygulaması oluşturmak ve cihaz eklemek için ilk öğreticiyi tamamlaması gerekir:
+Oluşturucunun Azure IoT Central mağaza içi analiz uygulaması oluşturmak ve cihaz eklemesi için öğreticiyi tamamlaması gerekir:
 
 * [Azure IoT Central 'da bir mağaza Analytics uygulaması oluşturma](./tutorial-in-store-analytics-create-app-pnp.md) (gerekli)
 
 ## <a name="change-the-dashboard-name"></a>Pano adını değiştirme
-Operatör panosunu özelleştirmek için, uygulamanızda Varsayılan panoyu düzenlersiniz. İsteğe bağlı olarak, ek yeni panolar oluşturabilirsiniz. Uygulamanızda panoyu özelleştirmenin ilk adımı, adı değiştirbir addır.
+Operatör panosunu özelleştirmek için, uygulamanızda Varsayılan panoyu düzenlemeniz gerekir. Ayrıca, ek yeni panolar da oluşturabilirsiniz. Uygulamanızda panoyu özelleştirmenin ilk adımı, adı değiştirbir addır.
 
 1. [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesine gidin.
 
@@ -54,7 +53,7 @@ Operatör panosunu özelleştirmek için, uygulamanızda Varsayılan panoyu düz
 
 1. Pano adı bölümünde panonuz için kolay bir ad girin **.** Bu öğretici contoso adlı kurgusal bir şirket kullanır ve örnek Pano adı *contoso panodur*. 
 
-1. **Kaydet**’i seçin. Bu, yaptığınız değişiklikleri panoya kaydeder ve düzenleme modunu devre dışı bırakır.
+1. **Kaydet**’i seçin. Değişiklikleriniz panoya kaydedildi ve düzenleme modu devre dışı bırakıldı.
 
     ![Azure IoT Central Pano adını değiştir](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -141,7 +140,7 @@ Kalan kutucukları yeniden düzenlemek için:
     ![Azure IoT Central üretici yazılımı pil kutucukları](./media/tutorial-in-store-analytics-customize-dashboard-pnp/firmware-battery-tiles.png)
 
 ## <a name="add-telemetry-tiles-to-display-conditions"></a>Görüntüleme koşullarına telemetri kutucukları ekleme
-Pano mizanpajını özelleştirdikten sonra, telemetrisini göstermek için kutucuk eklemeye hazırız. Bir telemetri kutucuğu oluşturmak için bir cihaz şablonu ve cihaz örneği seçin, sonra kutucukta görüntülenecek cihaza özgü telemetri ' i seçin. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, panoda çeşitli telemetri kutucukları içerir. İki kullanıma alma bölgesindeki dört kutucuk, sanal doluluk sensörlerine ait Telemetriyi görüntüler. **Kişiler trafik** kutucuğu, iki kullanıma alma bölgesindeki sayıları gösterir. 
+Pano mizanpajını özelleştirdikten sonra, telemetri göstermek için kutucuk eklemeye hazırsınız demektir. Bir telemetri kutucuğu oluşturmak için bir cihaz şablonu ve cihaz örneği seçin, sonra kutucukta görüntülenecek cihaza özgü telemetri ' i seçin. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, panoda çeşitli telemetri kutucukları içerir. İki kullanıma alma bölgesindeki dört kutucuk, sanal doluluk sensörlerine ait Telemetriyi görüntüler. **Kişiler trafik** kutucuğu, iki kullanıma alma bölgesindeki sayıları gösterir. 
 
 Bu bölümde, [IoT Central Azure 'da yerleşik bir Analytics uygulaması oluşturma](./tutorial-in-store-analytics-create-app-pnp.md) öğreticisinde eklediğiniz RuuviTag sensörlerinden çevresel telemetri göstermek için iki daha fazla telemetri kutucuğu eklersiniz. 
 
@@ -185,7 +184,7 @@ Yalnızca iki kullanıma alma bölgesi için telemetri göstermek üzere **kişi
 
 1. **Telemetri** ' te **sayı 1**, **Sayı 2**ve **Sayı 3**' ü seçin. 
 
-1. **Güncelleştirme yapılandırması**' nı seçin. Bu, kutucukta varolan yapılandırmayı temizler. 
+1. **Güncelleştirme yapılandırması**' nı seçin. Kutucukta varolan yapılandırmayı temizler. 
 
 1. **Kişiler trafik** kutucuğunda yeniden **Yapılandır** ' ı seçin.
 

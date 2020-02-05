@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 4c73a1e314888d99f4a5beea997265d28077e847
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898627"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024084"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -147,7 +147,7 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturun v
 
     ![Databricks içindeki bir not defterinin ayrıntılarını sağlama](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks içindeki bir not defterinin ayrıntılarını sağlama")
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. Aşağıdaki kod bloğu, Spark oturumunda erişilen herhangi bir ADLS Gen 2 hesabı için varsayılan hizmet sorumlusu kimlik bilgilerini ayarlar. İkinci kod bloğu, belirli bir ADLS Gen 2 hesabı için kimlik bilgilerini belirtmek üzere hesap adını ayara ekler.  Kod bloğunu kopyalayıp Azure Databricks not defterinizin ilk hücresine yapıştırın.
 
@@ -216,7 +216,7 @@ Hücrede, kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 1. Örnek json dosyasını artık Azure Databricks bir veri çerçevesi olarak yükleyebilirsiniz. Aşağıdaki kodu yeni bir hücreye yapıştırın. Köşeli ayraçlar içinde gösterilen yer tutucuları değerlerinizle değiştirin.
 
    ```scala
-   val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
+   val df = spark.read.json("abfss://" + fileSystemName + "@" + storageAccountName + ".dfs.core.windows.net/small_radio_json.json")
    ```
 2. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845849"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023149"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
 
@@ -93,8 +93,8 @@ else {
 - Daha yüksek bir hizmet katmanına veya işlem boyutuna yükseltiyorsanız, açıkça daha büyük bir boyut (MaxSize) belirtmediğiniz müddetçe veritabanının en büyük boyutu artmaz.
 - Bir veritabanının indirgenmesini sağlamak için, kullanılan veritabanı hedef hizmet katmanının izin verilen en büyük boyuttan ve işlem boyutundan daha küçük olmalıdır.
 - **Premium** 'dan **Standart** katmana düşürme yaparken, her ikisi de (1) veritabanının en büyük boyutu hedef işlem boyutunda destekleniyorsa ve (2) en büyük boyut, hedef işlem boyutunun dahil edilen depolama miktarını aşarsa, ek bir depolama maliyeti geçerlidir. Örneğin, boyut üst sınırı 500 GB olan bir P1 veritabanı S3 olarak boyutlandırıldıysa, S3 en büyük 1 TB boyutunu desteklediğinden ve dahil edilen depolama miktarı yalnızca 250 GB olduğundan, ek bir depolama maliyeti uygulanır. Bu nedenle, ek depolama miktarı 500 GB – 250 GB = 250 GB olur. Ek Depolama fiyatlandırması için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan gerçek alan miktarı, dahil edilen depolama miktarından daha azsa, veritabanının maksimum boyutu dahil edilen tutara azaltılarak bu ek maliyetin önlenebilir olmasını sağlayabilirsiniz.
-- [Coğrafi çoğaltma](sql-database-geo-replication-portal.md) etkinken bir veritabanını yükseltirken, birincil veritabanını yükseltmeden önce ikincil veritabanlarını istenen hizmet katmanına ve işlem boyutuna yükseltin (en iyi performans için genel kılavuz). Farklı bir sürümüne yükseltirken, önce ikincil veritabanının yükseltilmesi gerekir.
-- [Coğrafi çoğaltma](sql-database-geo-replication-portal.md) etkinken bir veritabanını indirgemeden, ikincil veritabanını eski sürüme indirgemeden önce, birincil veritabanlarının istenen hizmet katmanına ve işlem boyutuna indirgenmesini sağlar (en iyi performans için genel kılavuz). Farklı bir sürüme düşürme yaparken öncelikle birincil veritabanını eski sürüme düşürüyordu.
+- [Coğrafi çoğaltma](sql-database-geo-replication-portal.md) etkinken bir veritabanını yükseltirken, birincil veritabanını yükseltmeden önce ikincil veritabanlarını istenen hizmet katmanına ve işlem boyutuna yükseltin (en iyi performans için genel kılavuz). Farklı bir sürüme yükseltirken, önce ikincil veritabanının yükseltilmesi gereksinimidir.
+- [Coğrafi çoğaltma](sql-database-geo-replication-portal.md) etkinken bir veritabanını indirgemeden, ikincil veritabanını eski sürüme indirgemeden önce, birincil veritabanlarının istenen hizmet katmanına ve işlem boyutuna indirgenmesini sağlar (en iyi performans için genel kılavuz). Farklı bir sürüme düşürme yaparken, öncelikle birincil veritabanının indirgenmesi gereksinimidir.
 - Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürürseniz, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](sql-database-automated-backups.md).
 - Veritabanının yeni özellikleri, değişiklikler tamamlanana kadar uygulanmaz.
 

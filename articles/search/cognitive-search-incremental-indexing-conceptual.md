@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988660"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024152"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma konusuna giriş
 
@@ -26,7 +26,7 @@ Artımlı zenginleştirme, bir zenginleştirme işlem hattına önbelleğe alma 
 
 Artımlı zenginleştirme, enzenginleştirme ardışık düzenine bir önbellek ekler. Dizin Oluşturucu sonuçları belge çözme işleminden ve her belge için her bir yeteneğin çıktılarından önbelleğe alır. Bir beceri güncelleştirilirken, yalnızca değiştirilen veya aşağı akış becerileri yeniden çalıştırılır. Güncelleştirilmiş sonuçlar önbelleğe yazılır ve belge arama dizininde veya bilgi deposunda güncelleştirilir.
 
-Fiziksel olarak, önbellek, Azure Depolama hesabınızdaki bir blob kapsayıcısında depolanır. Bir arama hizmeti içindeki tüm dizinler, Dizin Oluşturucu önbelleğinin aynı depolama hesabını paylaşabilir. Her dizin oluşturucuya, kullandığı kapsayıcıya benzersiz ve sabit bir önbellek tanımlayıcısı atanır.
+Fiziksel olarak, önbellek, Azure Depolama hesabınızdaki bir blob kapsayıcısında depolanır. Önbellek Ayrıca, işleme güncelleştirmelerinin dahili bir kaydı için tablo depolamayı kullanır. Bir arama hizmeti içindeki tüm dizinler, Dizin Oluşturucu önbelleğinin aynı depolama hesabını paylaşabilir. Her dizin oluşturucuya, kullandığı kapsayıcıya benzersiz ve sabit bir önbellek tanımlayıcısı atanır.
 
 ## <a name="cache-configuration"></a>Önbellek yapılandırması
 

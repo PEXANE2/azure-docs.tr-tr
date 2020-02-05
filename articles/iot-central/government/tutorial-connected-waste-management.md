@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990053"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016502"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azure IoT Central bağlı bir çöp yönetimi uygulaması oluşturmanıza kılavuzluk eder. 
 
-Öğretici şunları yapmayı öğrenirsiniz: 
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz: 
 
 > [!div class="checklist"]
+
 > * Bağlı çöp yönetimi uygulamanızı oluşturmak için Azure IoT Central **bağlı çöp yönetimi** şablonunu kullanın
 > * Operatör panosunu keşfet ve özelleştirme 
 > * Bağlı çöp kutusu cihaz şablonunu keşfet
@@ -33,12 +34,12 @@ Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azu
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
+Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 -  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>IoT Central bağlı çöp yönetimi uygulaması oluşturma
 
-Bu bölümde, bağlı çöp yönetimi uygulamanızı IoT Central oluşturmak için Azure IoT Central **bağlı çöp yönetimi şablonunu** kullanacağız.
+Bu bölümde, bağlı çöp yönetimi uygulamanızı IoT Central oluşturmak için Azure IoT Central **bağlı çöp yönetimi şablonunu** kullanırsınız.
 
 Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için:  
 
@@ -59,7 +60,7 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
     * **URL** : isteğe bağlı olarak, istediğiniz URL 'yi seçebilirsiniz. URL 'YI daha sonra değiştirebilirsiniz. 
     * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../preview/quick-deploy-iot-central.md).
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central.md).
 
 5. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
 
@@ -132,9 +133,9 @@ Cihaz şablonunu görüntülemek için:
 
     ![Cihaz şablonu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-2. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu görürsünüz. Ada tıklayarak açın.
+2. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu göreceksiniz. Ada tıklayarak açın.
 
-3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bunun için, *Fill düzeyi*, *oçi ölçümü*, *Ağırlık*, *konum* vb. gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
+3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bu konuda, *Fill level*, *oçi ölçümü*, *Ağırlık*, *konum*ve diğerleri gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
 
    ![Cihaz şablonu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -152,7 +153,7 @@ Aşağıdakileri özelleştirmeyi deneyin:
 ### <a name="add-a-cloud-property"></a>Bulut özelliği Ekle 
 
 1. Cihaz şablonu menüsünden **Cloud özelliğine** gidin
-2. **+ Bulut özelliği Ekle**' ye tıklayarak yeni bir bulut özelliği ekleyin. IoT Central, cihazla ilgili olan ancak cihaz tarafından gönderilmesi beklenmediği bir özelliği ekleyebilirsiniz. Örnek olarak, bir bulut özelliği yükleme alanına, varlık bilgilerine veya bakım bilgilerine özgü bir uyarı eşiğine sahip olabilir. 
+2. **+ Bulut özelliği Ekle**' ye tıklayarak yeni bir bulut özelliği ekleyin. IoT Central, cihazla ilgili olan ancak cihaz tarafından gönderilmesi beklenmediği bir özelliği ekleyebilirsiniz. Örnek olarak, bir bulut özelliği, yükleme alanına, varlık bilgilerine veya bakım bilgilerine ve diğer bilgilere özgü bir uyarı eşiğine sahip olabilir. 
 3. Değişiklikleri **Kaydet** 
  
 ### <a name="views"></a>Görünümler 

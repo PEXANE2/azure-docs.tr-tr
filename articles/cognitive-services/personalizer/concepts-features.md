@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760836"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026158"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -132,6 +132,8 @@ Aşağıdaki bölümler, Kişiselleştiriciye gönderilen özellikleri iyileşti
 Özellik kümelerinizi daha büyük ve daha fazla veya daha az yoğun hale getirmek üzere düzenleyerek geliştirmek mümkündür.
 
 Örneğin, ikincisine doğru bir zaman damgası çok seyrek bir özelliktir. Süreleri "sabah", "Orta gün", "öğleden sonra" vb. sınıflandırarak daha yoğun (etkili) hale getirilebilir.
+
+Ayrıca, konum bilgileri genellikle daha geniş sınıflandırmalar oluşturmaktan faydalanır. Örneğin, Lat: 47,67402 ° N, Long: 122,12154 ° W gibi bir enlem boylam koordinatı çok kesindir ve modeli ayrı boyutlar olarak Enlem ve Boylam öğrenmeye zorlar. Konum bilgilerini temel alarak kişiselleştirmeye çalıştığınızda, konum bilgilerinin daha büyük kesimlerde gruplandırılmaya yardımcı olur. Bunu yapmanın kolay bir yolu, Lat-Long numaraları için uygun bir Yuvarlama Duyarlığı seçmek ve enlem ve Boylam 'yi tek bir dize haline getirerek "bölgeler" halinde birleştirmenize olanak sağlar. Örneğin, 47,67402 ° N, uzun: 122,12154 ° W 'ı göstermek için iyi bir yol, "konum": "34.3, 12,1" olacaktır.
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Extrapotildi Information ile özellik kümelerini Genişlet

@@ -4,7 +4,7 @@ description: Büyük ölçekli paralel ve HPC iş yükleri için Azure Batch hiz
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: gwallace
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094333"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022809"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
 
@@ -63,7 +63,7 @@ Azure Batch için daha yüksek düzeyli, iş yüküne özel özellikler de kulla
 [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) gibi araçlarla yönetilen Batch işlerini, veri dönüştürmeye yönelik daha büyük bir Azure iş akışının parçası olarak da kullanabilirsiniz.
 
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 Batch için yaygın bir senaryo, işlem düğümlerinin havuzunda 3B görüntülerin işlenmesi gibi paralel işi aslında ölçeklendirmeyi kapsar. Bu işlem düğümleri havuzu, işleme işinize onlarca, yüzlerce, hatta binlerce çekirdek sağlayan size ait bir "işleme çiftliği" olabilir.
 
 Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükünü çalıştıracak Batch’i kullanan barındırma hizmetiyle birlikte yaygın bir Batch iş akışının adımları gösterilmektedir.
@@ -73,12 +73,12 @@ Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükün
 
 |Adım  |Açıklama  |
 |---------|---------|
-|1.  **Giriş dosyalarını** ve Azure Depolama hesabınıza bu dosyaları işleyecek **uygulamaları** indirin.     |Giriş dosyaları uygulamanızın işleyeceği herhangi bir veri olabilir; örneğin, finansal modelleme verileri veya dönüştürülecek video dosyaları. Uygulama dosyaları, medya kod dönüştürücüsü gibi veri işleyen betik ya da uygulamaları içerebilir.|
-|2.  Batch hesabınızda bir Batch işlem düğümleri **havuzu**, havuzda iş yükünü çalıştırmak için bir **iş** ve iş içinde **görevler** oluşturun.     | Havuz düğümleri, görevlerinizi yürüten VM'lerdir. Düğümlerin sayısı ve boyutu gibi özellikleri, bir Windows veya Linux VM görüntüsünü ve sonra düğümler havuza katıldığında yüklenecek uygulamayı belirtin. [Düşük öncelikli VM’ler](batch-low-pri-vms.md) kullanarak veya iş yükü değiştikçe düğüm sayısını [otomatik ölçeklendirerek](batch-automatic-scaling.md) havuz maliyetini ve boyutunu yönetin. <br/><br/>Bir işe görev eklediğinizde, Batch hizmeti havuzundaki işlem düğümlerinde yürütülmesi için görevleri otomatik olarak zamanlar. Her görev, girdi dosyalarını işlemek için yüklediğiniz uygulamayı kullanır. |
-|3.  **Giriş dosyalarını** ve **uygulamaları** Batch’e indirme     |Bir görev yürütülmeden önce, atandığı işlem düğümünde işlenmesi için giriş verilerini indirebilir. Uygulama henüz havuz düğümlerine yüklenmediyse, burada da indirilebilir. Azure Depolama’dan indirme işlemleri tamamlandığında, görev atanan düğüm üzerinde yürütülür.|
-|4.  **Görev yürütmeyi** izleme     |Görevler çalışırken, işin ve ona ait görevlerin ilerleyişini izlemek için Batch’i sorgulayın. İstemci uygulamanız veya hizmetiniz, Batch hizmetiyle HTTPS üzerinden iletişim kurabilir. Binlerce işlem düğümünde çalışan binlerce görevi izliyor olabileceğinizden [Batch hizmetini verimli şekilde sorguladığınızdan](batch-efficient-list-queries.md) emin olun.|
-|5.  **Görev çıkışını** karşıya yükleme     |Görevler tamamlanınca sonuç verilerini Azure Storage’a yükleyebilirler. Dosyaları doğrudan bir işlem düğümündeki dosya sisteminden de alabilirsiniz.|
-|6.  **Çıkış dosyalarını** indirme     |İzleme işleminiz işinizdeki görevlerin tamamlandığını algıladığında, istemci uygulamanız veya hizmetiniz daha fazla işleme için çıktı verilerini indirebilir.|
+|1. bu dosyaları Azure depolama hesabınıza işlemek için **giriş dosyalarını** ve **uygulamaları** karşıya yükleyin.     |Giriş dosyaları uygulamanızın işleyeceği herhangi bir veri olabilir; örneğin, finansal modelleme verileri veya dönüştürülecek video dosyaları. Uygulama dosyaları, medya kod dönüştürücüsü gibi veri işleyen betik ya da uygulamaları içerebilir.|
+|2. Batch hesabınızda işlem düğümleri için bir Batch **havuzu** , havuzda iş yükünü çalıştırmak için bir **iş** ve işteki **Görevler** oluşturun.     | Havuz düğümleri, görevlerinizi yürüten VM'lerdir. Düğümlerin sayısı ve boyutu gibi özellikleri, bir Windows veya Linux VM görüntüsünü ve sonra düğümler havuza katıldığında yüklenecek uygulamayı belirtin. [Düşük öncelikli VM’ler](batch-low-pri-vms.md) kullanarak veya iş yükü değiştikçe düğüm sayısını [otomatik ölçeklendirerek](batch-automatic-scaling.md) havuz maliyetini ve boyutunu yönetin. <br/><br/>Bir işe görev eklediğinizde, Batch hizmeti havuzundaki işlem düğümlerinde yürütülmesi için görevleri otomatik olarak zamanlar. Her görev, girdi dosyalarını işlemek için yüklediğiniz uygulamayı kullanır. |
+|3. **giriş dosyalarını** ve **uygulamaları** toplu işe indirin     |Bir görev yürütülmeden önce, atandığı işlem düğümünde işlenmesi için giriş verilerini indirebilir. Uygulama henüz havuz düğümlerine yüklenmediyse, burada da indirilebilir. Azure Depolama’dan indirme işlemleri tamamlandığında, görev atanan düğüm üzerinde yürütülür.|
+|4. **görev yürütmeyi** izleme     |Görevler çalışırken, işin ve ona ait görevlerin ilerleyişini izlemek için Batch’i sorgulayın. İstemci uygulamanız veya hizmetiniz, Batch hizmetiyle HTTPS üzerinden iletişim kurabilir. Binlerce işlem düğümünde çalışan binlerce görevi izliyor olabileceğinizden [Batch hizmetini verimli şekilde sorguladığınızdan](batch-efficient-list-queries.md) emin olun.|
+|5. **görev çıkışını** karşıya yükleyin     |Görevler tamamlanınca sonuç verilerini Azure Storage’a yükleyebilirler. Dosyaları doğrudan bir işlem düğümündeki dosya sisteminden de alabilirsiniz.|
+|6. **çıktı dosyalarını** indirin     |İzleme işleminiz işinizdeki görevlerin tamamlandığını algıladığında, istemci uygulamanız veya hizmetiniz daha fazla işleme için çıktı verilerini indirebilir.|
 
 
 

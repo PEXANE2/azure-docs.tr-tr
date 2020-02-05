@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934607"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023302"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure dijital TWINS Swagger başvuru belgeleri
 
@@ -93,11 +93,11 @@ Listelenen her uç nokta, geliştirme ve testlerinizi doğrulamak için yanıt g
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2,0 yetkilendirmesi
 
 > [!NOTE]
-> * Azure dijital TWINS kaynağını oluşturan kullanıcı sorumlusunun bir alan Yöneticisi rol ataması olacak ve diğer kullanıcılar için ek rol atamaları oluşturabileceksiniz. Bu tür kullanıcılar ve rollerinin API 'Leri çağırma yetkisi bulunabilir.
+> * Azure dijital TWINS kaynağını oluşturan kullanıcı sorumlusunun bir alan Yöneticisi rol ataması olacak ve diğer kullanıcılar için ek rol atamaları oluşturabileceksiniz. Bu kullanıcılar ve rollerinin API 'Leri çağırma yetkisi bulunabilir.
 
-1. Bir Azure AD uygulaması oluşturmak ve yapılandırmak için [Bu hızlı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) başlangıçta bulunan adımları izleyin. Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
+1. Azure Active Directory uygulaması oluşturmak ve yapılandırmak için [hızlı](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) başlangıçtaki adımları izleyin. Alternatif olarak, var olan bir uygulama kaydını yeniden kullanabilirsiniz.
 
-1. Aşağıdaki **yeniden yönlendirme URL 'Sini** Azure AD uygulama kaydınız 'ne ekleyin:
+1. Aşağıdaki **yeniden YÖNLENDIRME URI** 'sini Azure Active Directory Uygulama kaydına ekleyin:
 
     [AAD içinde Swagger yeniden yönlendirme URL 'sini ![Kaydet](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Listelenen her uç nokta, geliştirme ve testlerinizi doğrulamak için yanıt g
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Portalda yönetim REST API belge URL 'SI bulundu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Azure AD uygulamanızın **ISTEMCI kimliğini** kopyalayın.
+1. OAuth 2,0 örtük verme akışının kullanılmasına izin vermek için **örtük** > **erişim belirteçleri** ver onay kutusunu seçin. **Yapılandır**' ı ve ardından **Kaydet**' i seçin.
+
+1. Azure Active Directory uygulamanızın **ISTEMCI kimliğini** kopyalayın.
 
 Azure Active Directory kaydını tamamladıktan sonra:
 

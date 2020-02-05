@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d3a76b06c08d670cfb3ab0757e8c46dac0988c5f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833373"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025189"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makalede, şirket içi Active Directory örneğinden bulut tabanlı bir Azure Active Directory (Azure AD) örneği, kullanıcı parolalarını eşitlemek için gereken bilgileri sağlar.
@@ -124,7 +124,7 @@ Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip ol
 > [!NOTE]
 > Bu özellik şu anda genel önizlemede.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>Geçici parolaların eşitlenmesinin genel önizlemesi ve "bir sonraki oturumda parola sıfırlamayı zorla"
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Geçici parolaların eşitlenmesinin genel önizlemesi ve "bir sonraki oturumda parola değişikliğini zorla"
 
 Bir kullanıcıyı ilk oturum açma sırasında, özellikle de yönetici parolası sıfırlama oluştuktan sonra parolalarını değiştirmeye zorlamak normaldir.  Genellikle "geçici" bir parola ayarı olarak bilinir ve Active Directory (AD) içindeki bir kullanıcı nesnesi üzerinde "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" bayrağıyla tamamlanır.
   

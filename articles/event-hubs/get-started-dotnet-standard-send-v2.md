@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: fc9ffc62e765f3b8c8fa418f3189f84686987821
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907120"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023251"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Azure Event Hubs-.NET Core 'a (Azure. Messaging. EventHubs) olay gönderme veya olayları alma 
 Event Hubs bağlı cihaz ve uygulamalardan büyük miktarlarda olay verileri (telemetri) işleyen bir hizmettir. Event Hubs verileri topladıktan sonra, depolama kümesi veya işlem olaylarını kullanarak verileri saklayabilirsiniz. Örneğin, gerçek zamanlı bir analiz sağlayıcısı kullanarak olay verilerini dönüştürebilirsiniz. Bu büyük ölçekli olay toplama ve işleme özelliği, Nesnelerin İnterneti (IoT) dahil modern uygulama mimarilerinin temel bir bileşenidir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
@@ -118,9 +118,9 @@ Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure depolama ve BLOB kapsayıcısı oluşturma
 Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kullanacaksınız. Azure depolama hesabı oluşturmak için bu adımları izleyin. 
 
-1. [Azure depolama hesabı oluşturma](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
-2. [Blob kapsayıcısı oluşturma](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [Bağlantı dizesini depolama hesabına al](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+1. [Azure depolama hesabı oluşturma](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     Bağlantı dizesini ve kapsayıcı adını aklınızda edin. Bunları alma kodunda kullanacaksınız. 
 

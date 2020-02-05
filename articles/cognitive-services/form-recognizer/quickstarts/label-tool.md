@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770297"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025920"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -26,7 +26,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - Form tanıyıcı sınırlı erişim önizlemesine erişim. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği formunu](https://aka.ms/FormRecognizerRequestAccess)doldurun ve gönderebilirsiniz. Form tanıyıcı kaynağı oluşturmak için bağlantı içeren bir e-posta alacaksınız.
-- Form tanıyıcı örnek etiketleme aracına erişin. Erişim sağlamak için, [form tanıyıcı etiketi araç istek formunu](https://aka.ms/LabelToolRequestAccess)doldurun ve gönderebilirsiniz. Kimlik bilgilerinizi alma ve özel kapsayıcı kayıt defterine erişme yönergelerini içeren bir e-posta alacaksınız. 
 - Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
@@ -38,18 +37,13 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
     |:--|:--|:--|
     |Örnek etiketleme aracı|2 çekirdek, 4 GB bellek|4 çekirdek, 8 GB bellek|
     
-1. Ardından, [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir. Henüz yapmadıysanız makinenize yükleyebilirsiniz.
-1. Sonra bir komut istemine aşağıdaki komutu girin. `<username>` ve `<password>` değerleri, bu tür bir tanıyıcı e-postasına hoş geldiniz.
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. Örnek etiketleme araç kapsayıcısını `docker pull` komutuyla alın.
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. Artık kapsayıcıyı `docker run`ile çalıştırmaya hazır olursunuz.
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    Bu komut, örnek etiketleme aracını bir Web tarayıcısı üzerinden kullanılabilir hale getirir. [http://localhost:3000](http://localhost:3000) kısmına gidin.

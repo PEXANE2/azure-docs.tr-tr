@@ -2,31 +2,38 @@
 title: Profil & hesap bilgilerini uygulamalarım portalından güncelleştirme-Azure AD
 description: Parolanızı değiştirme, parola sıfırlamayı açma, güvenlik doğrulama yöntemlerinizi güncelleştirme, kuruluşunuzun kullanım koşullarını görüntüleme ve oturumunu kapatma dahil olmak üzere profilinizi ve iş veya okul hesabı bilgilerinizi güncelleştirmeyi öğrenin. iş veya okul hesabınızı kullanarak oturum açtığınız her yerde.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704876"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022288"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profilinizi ve iş veya okul hesabı bilgilerini güncelleştirme
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profilinizi ve hesap bilgilerinizi güncelleştirme
 
-İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve uygulamalarınız ve gruplarınız için **erişim gözden geçirmeleri** gerçekleştirebilirsiniz. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
+Web tabanlı **uygulamalarım** portalından iş veya okul hesabınızı kullanarak şunları yapabilirsiniz 
+
+- Kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyin ve başlatın
+- Profilinizin ve hesap bilgilerinizin bazılarını güncelleştirin
+- **Grup** bilgilerinizi görüntüleyin
+- Uygulamalarınız ve gruplarınız için **erişim gözden geçirmeleri** gerçekleştirin. 
+
+**Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
+> [!Important]
+> Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="view-your-organization-related-profile-information"></a>Kurumla ilgili profil bilgilerinizi görüntüleyin
 

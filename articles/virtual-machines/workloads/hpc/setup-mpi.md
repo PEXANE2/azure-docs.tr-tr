@@ -1,6 +1,6 @@
 ---
-title: İleti geçirme arabirimi oluşturan HPC - Azure sanal makineleri ayarlama | Microsoft Docs
-description: Azure'da HPC için MPI ayarlama konusunda bilgi edinin.
+title: HPC-Azure sanal makineleri için Ileti geçirme arabirimini ayarlama | Microsoft Docs
+description: Azure 'da HPC için MPı ayarlamayı öğrenin.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,22 +12,22 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797506"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023999"
 ---
-# <a name="set-up-message-passing-interface-for-hpc"></a>İleti geçirme arabirimi oluşturan için HPC Kümesi
+# <a name="set-up-message-passing-interface-for-hpc"></a>HPC için Ileti geçirme arabirimini ayarlama
 
-İleti geçirme arabirimi (MPI) iş yükleri, geleneksel HPC iş yüklerinin önemli bir parçasıdır. SR-IOV etkin VM boyutları, Azure üzerinde neredeyse izin herhangi kullanılacak MPI flavor. 
+İleti geçirme arabirimi (MPı) iş yükleri geleneksel HPC iş yüklerinin önemli bir parçasıdır. Azure 'daki SR-ıOV özellikli VM boyutları, neredeyse her türlü MPı kullanılmasına izin verir. 
 
-MPI işlerini VM'ler üzerinde çalışan bir kiracıda bölüm anahtarları (p-anahtarlar) ayarlama gerektirir. Bağlantısındaki [bölüm anahtarlarını bulmak](#discover-partition-keys) p-anahtar değer belirleme hakkında ayrıntılar için bölüm.
+VM 'lerde MPı işlerinin çalıştırılması, kiracı genelinde bölüm anahtarlarının (p-anahtarları) ayarlanmasını gerektirir. P anahtar değerlerini belirlemeye ilişkin ayrıntılar için [bölüm anahtarlarını bul](#discover-partition-keys) bölümündeki adımları izleyin.
 
 ## <a name="ucx"></a>UCX
 
-[UCX](https://github.com/openucx/ucx) IB ve MPICH ve OpenMPI çalışır en iyi performansı sunar.
+[UCX](https://github.com/openucx/ucx) , IB üzerinde en iyi performansı sunar ve Mpich ve OpenMPI ile birlikte çalışabilir.
 
 ```bash
 wget https://github.com/openucx/ucx/releases/download/v1.4.0/ucx-1.4.0.tar.gz
@@ -39,7 +39,7 @@ make -j 8 && make install
 
 ## <a name="openmpi"></a>OpenMPI
 
-Daha önce açıklandığı gibi UCX yükleyin.
+Daha önce açıklanan UCX 'i yükler.
 
 ```bash
 sudo yum install –y openmpi
@@ -55,17 +55,17 @@ cd openmpi-4.0.0
 make -j 8 && make install
 ```
 
-Run OpenMPI.
+OpenMPI 'yi çalıştırın.
 
 ```bash
 <ompi-install-path>/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
 ```
 
-Yukarıda da belirtildiği gibi bölüm anahtarı denetleyin.
+Yukarıdaki bölümde belirtilen bölüm anahtarınızı denetleyin.
 
 ## <a name="mpich"></a>MPICH
 
-Daha önce açıklandığı gibi UCX yükleyin.
+Daha önce açıklanan UCX 'i yükler.
 
 MPICH oluşturun.
 
@@ -77,17 +77,17 @@ cd mpich-3.3
 make -j 8 && make install
 ```
 
-MPICH çalışıyor.
+MPICH çalıştırma.
 
 ```bash
 <mpich-install-path>/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 -bind-to hwthread ./osu_latency
 ```
 
-Yukarıda da belirtildiği gibi bölüm anahtarı denetleyin.
+Yukarıdaki bölümde belirtilen bölüm anahtarınızı denetleyin.
 
 ## <a name="mvapich2"></a>MVAPICH2
 
-MVAPICH2 oluşturun.
+Derleme MVAPICH2.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
@@ -97,15 +97,15 @@ cd mvapich2-2.3
 make -j 8 && make install
 ```
 
-MVAPICH2 çalışıyor.
+MVAPICH2 çalıştırılıyor.
 
 ```bash
 <mvapich2-install-path>/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
 ```
 
-## <a name="platform-mpi-community-edition"></a>Platform MPI Community sürümü
+## <a name="platform-mpi-community-edition"></a>Platform MPı Community sürümü
 
-Platform MPI için gerekli paketleri yükleyin.
+Platform MPı için gerekli paketleri yükler.
 
 ```bash
 sudo yum install libstdc++.i686
@@ -114,19 +114,19 @@ Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/ind
 sudo ./platform_mpi-09.01.04.03r-ce.bin
 ```
 
-Yükleme işlemini uygulayın.
+Yükleme işlemini izleyin.
 
-## <a name="intel-mpi"></a>Intel MPI
+## <a name="intel-mpi"></a>Intel MPı
 
-[Intel MPI indirme](https://software.intel.com/mpi-library/choose-download).
+[Intel MPI 'Yi indirin](https://software.intel.com/mpi-library/choose-download).
 
-I_MPI_FABRICS ortam değişkenini sürümüne bağlı olarak değiştirin. Intel MPI 2018 için kullanmak `I_MPI_FABRICS=shm:ofa` ve 2019 için `I_MPI_FABRICS=shm:ofi`.
+Sürüme bağlı olarak I_MPI_FABRICS ortam değişkenini değiştirin. Intel MPı 2018 için `I_MPI_FABRICS=shm:ofa` kullanın ve 2019 için `I_MPI_FABRICS=shm:ofi`kullanın.
 
-Sabitleme işlemi düzgün şekilde 15, 30 ve 60 PPN için varsayılan olarak çalışır.
+İşlem sabitleme, varsayılan olarak 15, 30 ve 60 PPN için doğru şekilde çalışmaktadır.
 
-## <a name="osu-mpi-benchmarks"></a>OSU MPI Kıyaslama
+## <a name="osu-mpi-benchmarks"></a>OSU MPı değerlendirmeleri
 
-[OSU MPI Kıyaslama indirme](http://mvapich.cse.ohio-state.edu/benchmarks/) ve untar.
+[OSU MPı değerlendirmeleri](http://mvapich.cse.ohio-state.edu/benchmarks/) ve UNIK 'yi indirin.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -134,26 +134,26 @@ tar –xvf osu-micro-benchmarks-5.5.tar.gz
 cd osu-micro-benchmarks-5.5
 ```
 
-Belirli bir MPI kitaplığı kullanarak Kıyaslama derleme:
+Belirli bir MPı kitaplığı kullanarak kıyaslamalar oluşturun:
 
 ```bash
 CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure 
 make
 ```
 
-MPI Kıyaslama altındadır `mpi/` klasör.
+MPı değerlendirmeleri `mpi/` klasörü altındadır.
 
 
-## <a name="discover-partition-keys"></a>Bölüm anahtarları keşfedin
+## <a name="discover-partition-keys"></a>Bölüm anahtarlarını bul
 
-Diğer Vm'lerle aynı kiracıda (kullanılabilirlik kümesi veya VM ölçek kümesi) ile iletişim kurmak için bölüm anahtarları (p-keys) keşfedin.
+Aynı kiracı içindeki diğer VM 'lerle iletişim için bölüm anahtarlarını (p-Keys) bulun (kullanılabilirlik kümesi veya VM Ölçek kümesi).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 ```
 
-İki MPI ile kullanılması gereken Kiracı anahtarınızı büyüktür. Örnek: Aşağıdaki p-keys varsa 0x800b MPI ile kullanılmalıdır.
+İkinin büyük olması MPı ile kullanılması gereken kiracı anahtarıdır. Örnek: aşağıda p anahtarları kullanılıyorsa, 0x800b MPı ile kullanılmalıdır.
 
 ```bash
 cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -162,14 +162,14 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 0x7fff
 ```
 
-Varsayılan (0x7fff) bölüm anahtarı dışında bir bölümü kullanın. Temizlenecek p-anahtarın Tamamlama UCX gerektirir. Örneğin, UCX_IB_PKEY 0x000b 0x800b için olarak ayarlayın.
+Varsayılan bölümü (0x7FFF) bölüm anahtarını kullanın. UCX, p-anahtarının işaretsiz olmasını gerektirir. Örneğin, 0x800b için 0x000b olarak UCX_IB_PKEY ayarlayın.
 
-Ayrıca, Kiracı (AVSet veya VMSS) mevcut olduğu sürece, PKEYs aynı kalmasını unutmayın. Düğümleri eklenen ve Silinen olsa bile bu geçerlidir. Yeni kiracılar farklı PKEYs alın.
+Ayrıca, kiracı (AVSet veya VMSS) olduğu sürece PKEYs 'in de aynı kaldığı unutulmamalıdır. Bu, düğümler eklendiğinde/silindiğinde bile geçerlidir. Yeni kiracılar farklı PKEYs 'ler alır.
 
 
-## <a name="set-up-user-limits-for-mpi"></a>Kullanıcı sınırları ' için MPI Kümesi
+## <a name="set-up-user-limits-for-mpi"></a>MPı için Kullanıcı sınırlarını ayarla
 
-Kullanıcı sınırları ' için MPI ayarlayın.
+MPı için Kullanıcı sınırlarını ayarlayın.
 
 ```bash
 cat << EOF | sudo tee -a /etc/security/limits.conf
@@ -181,9 +181,9 @@ EOF
 ```
 
 
-## <a name="set-up-ssh-keys-for-mpi"></a>SSH anahtarları yedeklemek için MPI Kümesi
+## <a name="set-up-ssh-keys-for-mpi"></a>MPı için SSH anahtarlarını ayarlama
 
-SSH anahtarları gerektiren MPI türleri için ayarlayın.
+Gerekli MPı türleri için SSH anahtarlarını ayarlayın.
 
 ```bash
 ssh-keygen -f /home/$USER/.ssh/id_rsa -t rsa -N ''
@@ -192,11 +192,12 @@ Host *
     StrictHostKeyChecking no
 EOF
 cat /home/$USER/.ssh/id_rsa.pub >> /home/$USER/.ssh/authorized_keys
+chmod 600 /home/$USER/.ssh/authorized_keys
 chmod 644 /home/$USER/.ssh/config
 ```
 
-Yukarıdaki sözdizimi bir paylaşılan giriş dizini varsayar, her düğüme başka .ssh dizine kopyalanmalıdır.
+Yukarıdaki sözdizimi paylaşılan bir giriş dizinini varsayar, başka bir deyişle, her bir düğüme tek bir SSH dizini kopyalanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) azure'da.
+Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

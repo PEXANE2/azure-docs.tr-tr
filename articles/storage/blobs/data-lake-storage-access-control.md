@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037236"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026141"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişim denetimi
 
@@ -58,10 +58,15 @@ Rol ataması tarafından verilen düzeyinden daha düşük bir erişim düzeyi s
 
 Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden birine bakın:
 
-|Bu aracı kullanmak istiyorsanız:    |Şu makaleye bakın:    |
+|||
 |--------|-----------|
-|Azure Storage Gezgini    |[Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST API    |[Yol-Güncelleştir](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure Storage Gezgini |[Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için Azure Depolama Gezgini kullanın](data-lake-storage-explorer.md#managing-access)|
+|.NET |[Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için .NET kullanın](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Java kullanın](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-cli.md)|
+|REST API |[Yol-Güncelleştir](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Güvenlik sorumlusu bir *hizmet* sorumlusu ise, ilgili uygulama KAYDıNıN nesne kimliğini değil, hizmet sorumlusunun nesne kimliğini kullanmak önemlidir. Hizmet sorumlusunun nesne KIMLIĞINI almak için Azure CLı 'yı açın ve ardından şu komutu kullanın: `az ad sp show --id <Your App ID> --query objectId`. `<Your App ID>` yer tutucusunu, uygulama kaydlarınızın uygulama KIMLIĞIYLE değiştirdiğinizden emin olun.

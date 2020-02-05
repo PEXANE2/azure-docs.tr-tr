@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440292"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020055"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -47,11 +47,17 @@ Havuz ekledikten sonra, **Havuz** sekmesi aracılığıyla yapılandırın. Bura
 
 **Şemayı doğrula:** Şemayı doğrula seçilirse, veri akışının tanımlı şemasında herhangi bir sütun bulunamazsa veri akışı başarısız olur.
 
-## <a name="field-mapping"></a>Alan eşlemesi
+## <a name="field-mapping"></a>Alan eşleme
 
 Bir seçim dönüşümüne benzer şekilde, havuzun **eşleme** sekmesinde, hangi gelen sütunların yazılacağını seçebilirsiniz. Varsayılan olarak, düzeltebilecekler sütunları dahil olmak üzere tüm giriş sütunları eşlenir. Bu, **otomatik eşleme**olarak bilinir.
 
 Otomatik eşlemeyi devre dışı bırakırsanız, sabit sütun tabanlı eşlemeler ya da kural tabanlı eşlemeler ekleme seçeneğine sahip olacaksınız. Kural tabanlı eşlemeler, sabit eşleme mantıksal ve fiziksel sütun adlarını eşleyebileceğiniz sırada eşleşen ifadeler yazmanıza izin verir. Kural tabanlı eşleme hakkında daha fazla bilgi için bkz. [eşleme veri akışındaki sütun desenleri](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+
+## <a name="custom-sink-ordering"></a>Özel havuz sıralaması
+
+Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza yazılır. Dönüştürme mantığı tamamlandığından ve havuz sıralaması her bir çalıştırmayı farklı olabileceğinden, yürütme altyapısı verileri paralel olarak yazar. Havuz sıralamasını belirtmek ve tam olarak belirtmek için, veri akışının Genel sekmesinde **özel havuz sıralamasını** etkinleştirin. Etkinleştirildiğinde, havuzlar artan sırada sırayla yazılır.
+
+![Özel havuz sıralaması](media/data-flow/custom-sink-ordering.png "Özel havuz sıralaması")
 
 ## <a name="data-preview-in-sink"></a>Havuzda veri önizleme
 

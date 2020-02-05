@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423094"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024611"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory'de yeni bir kiracı oluşturma
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
@@ -31,7 +31,7 @@ Azure portalda oturum açtıktan sonra kuruluşunuz için yeni bir kiracı oluş
 
 ### <a name="to-create-a-new-tenant"></a>Yeni kiracı oluşturmak için
 
-1. Genel yönetici hesabını kullanarak kuruluşunuzun [Azure portalda](https://portal.azure.com/) oturum açın.
+1. Kuruluşunuzun [Azure Portal](https://portal.azure.com/)oturum açın.
 
 1. Azure portal menüsünde **kaynak oluştur**' u seçin.  
 
@@ -51,13 +51,14 @@ Azure portalda oturum açtıktan sonra kuruluşunuz için yeni bir kiracı oluş
 
     - **Ülke veya bölge** kutusunda _Amerika Birleşik Devletleri_ seçeneğini değiştirmeden bırakın.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 contoso.onmicrosoft.com etki alanıyla yeni kiracınız oluşturulur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bu uygulamayı kullanmaya devam etmeyecekseniz aşağıdaki adımları kullanarak kiracıyı silebilirsiniz:
 
+- Azure portalında **Dizin + abonelik** filtresi aracılığıyla silmek istediğiniz dizinde oturum açtığınızdan ve gerekirse hedef dizine geçiş yapıldığından emin olun.
 - **Azure Active Directory** seçeneğini belirleyin ve sonra **Contoso - Genel Bakış** sayfasında **Dizini sil**’i seçin.
 
     Kiracı ve ilişkili bilgileri silinir.

@@ -1,6 +1,6 @@
 ---
-title: CloudSimple-Nodes 'a göre Azure VMware çözümü genel bakış
-description: CloudSimple düğümleri ve kavramları hakkında bilgi edinin.
+title: Azure VMware çözümleri (AVS)-düğümlere genel bakış
+description: AVS düğümleri ve kavramları hakkında bilgi edinin.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 08d8fc3e6f1f2f83cf3c4fee3fdafb0bd07e336c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899026"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024934"
 ---
-# <a name="cloudsimple-nodes-overview"></a>CloudSimple düğümlerine genel bakış
+# <a name="avs-nodes-overview"></a>AVS düğümlerine genel bakış
 
-Düğümler, özel bulutun yapı taşlarıdır. Düğüm:
+Düğümler, bir AVS özel bulutunun yapı taşlarıdır. Düğüm:
 
 * VMware ESXi hiper yöneticinin yüklü olduğu adanmış çıplak işlem Konağı  
-* Özel bulutlar oluşturmak için sağlayabileceğiniz veya ayırabileceğiniz bir bilgi işlem birimi
-* CloudSimple hizmetinin kullanılabildiği bir bölgede sağlama veya ayırma için kullanılabilir
+* AVS özel bulutları oluşturmak için satın alabileceğiniz veya ayırabilmeniz için bir bilgi işlem birimi
+* AVS hizmetinin kullanılabildiği bir bölgede satın alınabilir veya rezerve edilir
 
-Sağlanan düğümlerden özel bir bulut oluşturabilirsiniz. Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gerekir. Özel bir bulutu genişletmek için ek düğümler ekleyin.  Mevcut bir kümeye düğüm ekleyebilir veya Azure portal düğümleri sağlayıp CloudSimple hizmetiyle ilişkilendirerek yeni bir küme oluşturabilirsiniz.  Sağlanan tüm düğümler CloudSimple hizmeti altında görünür.  
+Satın alınan düğümlerden bir AVS özel bulutu oluşturursunuz. Bir AVS özel bulutu oluşturmak için aynı SKU 'ya ait en az üç düğüm gerekir. Bir AVS özel bulutu genişletmek için ek düğümler ekleyin. Mevcut bir kümeye düğüm ekleyebilir veya Azure portal düğümleri satın alarak ve bunları AVS hizmetiyle ilişkilendirerek yeni bir küme oluşturabilirsiniz. Satın alınan tüm düğümler, AVS hizmeti altında görünür. 
 
 ## <a name="provisioned-nodes"></a>Sağlanan düğümler
 
@@ -32,7 +32,7 @@ Sağlanan düğümler, Kullandıkça Öde kapasitesi sağlar. Sağlama düğüml
 * Azure aboneliğiniz için kredi kartı ile ödeme yaparsanız, kart hemen faturalandırılır.
 * Faturaya göre faturalandırıldıysanız ücretler bir sonraki faturanızda görünür.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>CloudSimple düğümleri SKU 'SU tarafından VMware çözümü
+## <a name="vmware-solution-by-avs-nodes-sku"></a>AVS düğümlerine göre VMware çözümü SKU 'SU
 
 Aşağıdaki düğüm türleri, sağlama veya ayırma için kullanılabilir.
 
@@ -47,16 +47,18 @@ Aşağıdaki düğüm türleri, sağlama veya ayırma için kullanılabilir.
 
 ## <a name="limits"></a>Sınırlar
 
-Aşağıdaki düğüm limitleri özel bulutlar için geçerlidir.
+Aşağıdaki düğüm limitleri, AVS özel bulutları için geçerlidir.
 
 | Kaynak | Sınır |
 |----------|-------|
-| Özel bir bulut oluşturmak için düğüm sayısı alt sınırı | 3 |
-| Özel buluttaki bir kümede bulunan en fazla düğüm sayısı | 16 |
-| Özel buluttaki en fazla düğüm sayısı | 64 |
+| Bir AVS özel bulutu oluşturmak için gereken en az düğüm sayısı | 3 |
+| Bir AVS özel bulutu 'ndaki kümede bulunan en fazla düğüm sayısı | 16 |
+| Bir AVS özel bulutundaki en fazla düğüm sayısı | 64 |
 | Yeni kümedeki düğüm sayısı alt sınırı | 3 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Düğümleri satın almayı](create-nodes.md) öğrenin
+* [AVS özel bulutları](cloudsimple-private-cloud.md) hakkında bilgi edinin
 * [Düğüm sağlamayı](create-nodes.md) öğrenin
 * [Özel bulutlar](cloudsimple-private-cloud.md) hakkında bilgi edinin

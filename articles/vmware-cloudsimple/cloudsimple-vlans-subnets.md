@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware çözümünde VLAN ve alt ağlar
-description: CloudSimple özel bulutu 'nda VLAN 'Lar ve alt ağlar hakkında bilgi edinin
+title: Azure VMware çözümlerinde VLAN 'Lar ve alt ağlar (AVS)
+description: AVS özel bulutu 'nda VLAN 'Lar ve alt ağlar hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0ce15c782ae70e16f55a28ec8c4b70f3b080f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372746"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024900"
 ---
 # <a name="vlans-and-subnets-overview"></a>VLAN 'Lara ve alt ağlara genel bakış
 
-CloudSimple, CloudSimple hizmetinizin dağıtıldığı bölge başına bir ağ sağlar.  Ağ, yönlendirme özelliği varsayılan olarak etkin olan tek bir TCP katman 3 adres alanıdır.  Bu bölgede oluşturulan tüm özel bulutlar ve alt ağlar, ek bir yapılandırma olmadan birbirleriyle iletişim kurabilir.  VLAN 'Lar kullanarak vCenter üzerinde dağıtılmış bağlantı noktası grupları oluşturabilirsiniz.
+AVS, AVS hizmetinizin dağıtıldığı bölge başına bir ağ sağlar. Ağ, yönlendirme özelliği varsayılan olarak etkin olan tek bir TCP katman 3 adres alanıdır. Bu bölgede oluşturulan tüm AVS özel bulutları ve alt ağları ek bir yapılandırma olmadan birbirleriyle iletişim kurabilir. VLAN 'Lar kullanarak vCenter üzerinde dağıtılmış bağlantı noktası grupları oluşturabilirsiniz.
 
-![CloudSimple ağ topolojisi](media/cloudsimple-network-topology.png)
+![AVS ağ topolojisi](media/cloudsimple-network-topology.png)
 
-## <a name="vlans"></a>VLAN'lar
+## <a name="vlans"></a>VLAN
 
-Her özel bulut için bir VLAN (katman 2 ağ) oluşturulur.  Katman 2 trafiği özel bulutun sınırında kalır ve özel buluttaki yerel trafiği yalıtmanızı sağlar.  Özel bulutta oluşturulan bir VLAN, yalnızca o özel bulutta dağıtılmış bağlantı noktası grupları oluşturmak için kullanılabilir.  Özel bir bulutta oluşturulan bir VLAN, özel bulutun konaklarına bağlı tüm anahtarlarda otomatik olarak yapılandırılır.
+Her bir AVS özel bulutu için bir VLAN (katman 2 ağ) oluşturulur. Katman 2 trafiği, AVS özel bulutunun sınırları içinde kalır ve bu da AVS özel bulutundaki yerel trafiği yalıtmanıza olanak sağlar. AVS özel bulutu üzerinde oluşturulan bir VLAN, yalnızca o AVS özel bulutunda dağıtılmış bağlantı noktası grupları oluşturmak için kullanılabilir. AVS özel bulutu üzerinde oluşturulan bir VLAN, bir AVS özel bulutunun konaklarına bağlı tüm anahtarlarda otomatik olarak yapılandırılır.
 
 ## <a name="subnets"></a>Alt ağlar
 
 Alt ağın adres alanını tanımlayarak bir VLAN oluşturduğunuzda bir alt ağ oluşturabilirsiniz. Adres alanından bir IP adresi, alt ağ geçidi olarak atanır. Her müşteri ve bölge için tek bir özel katman 3 adres alanı atanır. Ağ bölgenizde, şirket içi ağınız veya Azure sanal ağınız ile herhangi bir RFC 1918 çakışmayan adres alanı yapılandırabilirsiniz.
 
-Tüm alt ağlar varsayılan olarak birbirleriyle iletişim kurabilir ve özel bulutlar arasında yönlendirme için yapılandırma yükünü azaltır. Aynı bölgedeki bilgisayarlar arasında Doğu Batı verileri aynı katman 3 ağında kalır ve bölge içindeki yerel ağ altyapısına aktarır. Bir bölgedeki özel bulutlar arasındaki iletişim için çıkış gerekmez. Bu yaklaşım farklı özel bulutlarda farklı iş yüklerini dağıtmanın tüm WAN/çıkış performans cezalarını ortadan kaldırır.
+Tüm alt ağlar varsayılan olarak birbirleriyle iletişim kurabilir ve AVS özel bulutları arasında yönlendirme için yapılandırma yükünü azaltır. Aynı bölgedeki bilgisayarlar arasında Doğu Batı verileri aynı katman 3 ağında kalır ve bölge içindeki yerel ağ altyapısına aktarır. Bir bölgedeki AVS özel bulutları arasındaki iletişim için çıkış gerekmez. Bu yaklaşım, farklı AVS özel bulutlarında farklı iş yüklerini dağıtmanın tüm WAN/çıkış performans cezalarını ortadan kaldırır.
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN alt ağları CıDR aralığı
 
-Özel bulut, bir vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware yığını (ESXi Konakları, vCenter, vSAN ve NSX) ortamı olarak oluşturulur.  Yönetim bileşenleri, vSphere/vSAN alt ağları CıDR için seçilen ağda dağıtılır.  Ağ CıDR aralığı, dağıtım sırasında farklı alt ağlara bölünmüştür.
+Bir AVS özel bulutu, bir vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware Stack (ESXi Konakları, vCenter, vSAN ve NSX) ortamı olarak oluşturulur. Yönetim bileşenleri, vSphere/vSAN alt ağları CıDR için seçilen ağda dağıtılır. Ağ CıDR aralığı, dağıtım sırasında farklı alt ağlara bölünmüştür.
 
 * Minimum vSphere/vSAN alt ağları CıDR aralığı ön eki: **/24**
 * Maksimum vSphere/vSAN alt ağları CıDR aralığı ön eki: **/21**
 
-> [!CAUTION]
-> VSphere/vSAN CıDR aralığındaki IP adresleri özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
+> [!IMPORTANT]
+> VSphere/vSAN CıDR aralığındaki IP adresleri, AVS özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır. Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN alt ağları CıDR Aralık sınırları
 
-VSphere/vSAN alt ağlarının CıDR Aralık boyutunun seçilmesi, özel bulutunuzun boyutunu etkiler.  Aşağıdaki tabloda, vSphere/vSAN alt ağlarının CıDR boyutunu temel alan en fazla düğüm sayısı gösterilmektedir.
+VSphere/vSAN alt ağlarının CıDR Aralık boyutunun seçilmesi, AVS özel bulutunuzun boyutunu etkiler. Aşağıdaki tabloda, vSphere/vSAN alt ağlarının CıDR boyutunu temel alan en fazla düğüm sayısı gösterilmektedir.
 
 | Belirtilen vSphere/vSAN alt ağları CıDR ön eki uzunluğu | En fazla düğüm sayısı |
 |---------------------------------------------------|-------------------------|
@@ -52,9 +52,9 @@ VSphere/vSAN alt ağlarının CıDR Aralık boyutunun seçilmesi, özel bulutunu
 | /22 | 118 |
 | /21 | 220 |
 
-### <a name="management-subnets-created-on-a-private-cloud"></a>Özel bir bulutta oluşturulan yönetim alt ağları
+### <a name="management-subnets-created-on-an-avs-private-cloud"></a>Bir AVS özel bulutu 'nda oluşturulan yönetim alt ağları
 
-Özel bir bulut oluşturduğunuzda aşağıdaki yönetim alt ağları oluşturulur.
+Aşağıdaki yönetim alt ağları, bir AVS özel bulutu oluşturduğunuzda oluşturulur.
 
 * **Sistem yönetimi**. ESXi ' Management Network, DNS Server, vCenter Server konakları için VLAN ve subnet.
 * **VMotion**. ESXi konakları için VLAN ve subnet, ' vMotion Network.
@@ -66,7 +66,7 @@ VSphere/vSAN alt ağlarının CıDR Aralık boyutunun seçilmesi, özel bulutunu
 
 ### <a name="management-network-cidr-range-breakdown"></a>Yönetim ağı CıDR aralığı dökümü
 
-Belirtilen vSphere/vSAN alt ağları CıDR aralığı birden çok alt ağa bölünmüştür.  Aşağıdaki tabloda, izin verilen ön ekler için döküm örneği gösterilmektedir.  Örnek, CıDR aralığı olarak 192.168.0.0 kullanır.
+Belirtilen vSphere/vSAN alt ağları CıDR aralığı birden çok alt ağa bölünmüştür. Aşağıdaki tabloda, izin verilen ön ekler için döküm örneği gösterilmektedir. Örnek, CıDR aralığı olarak 192.168.0.0 kullanır.
 
 Örnek:
 

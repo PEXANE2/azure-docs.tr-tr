@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293462"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016043"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -239,9 +239,9 @@ VM 'nin Azure AD JOIN işlemini tamamlaması için AADLoginForWindows uzantısı
 
    | Çalıştırılacak komut | Beklenen çıkış |
    | --- | --- |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Azure VM ile ilgili doğru bilgiler |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Azure aboneliğiyle ilişkili geçerli kiracı KIMLIĞI |
-   | kıvrık-H meta verileri: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | Azure VM ile ilgili doğru bilgiler |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | Azure aboneliğiyle ilişkili geçerli kiracı KIMLIĞI |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Bu VM 'ye atanmış yönetilen kimlik için Azure Active Directory tarafından verilen geçerli erişim belirteci |
 
    > [!NOTE]
    > Erişim belirtecinin kodu, [http://calebb.net/](http://calebb.net/)gibi bir araç kullanılarak çözülebilir. Erişim belirtecindeki "AppID" nin VM 'ye atanan yönetilen kimlikle eşleştiğini doğrulayın.

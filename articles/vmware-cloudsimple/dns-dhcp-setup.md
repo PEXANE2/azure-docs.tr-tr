@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware çözümü-özel bulut için iş yükünü ayarlama DNS ve DHCP
-description: CloudSimple özel bulut ortamınızda çalışan uygulamalar ve iş yükleri için DNS ve DHCP ayarlamayı açıklar
+title: Azure VMware çözümleri (AVS)-AVS özel bulutu için iş yükünü ayarlama DNS ve DHCP
+description: AVS özel bulut ortamınızda çalışan uygulamalar ve iş yükleri için DNS ve DHCP ayarlamayı açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f2a5cae868f2d8f3689f05dd9d466715ab2008a3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121871"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024696"
 ---
-# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuzda DNS ve DHCP uygulamalarını ve iş yüklerini ayarlama
+# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-avs-private-cloud"></a>AVS özel bulutunuzda DNS ve DHCP uygulamalarını ve iş yüklerini ayarlama
 
-Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir.  Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir.  Bu hizmetleri özel bulut ortamınızda sağlamak için bir sanal makine yapılandırabilirsiniz.  
+Bir AVS özel bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Bu hizmetleri AVS özel bulut ortamınızda sağlamak için bir sanal makine yapılandırabilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -27,7 +27,7 @@ ms.locfileid: "76121871"
 
 ## <a name="linux-based-dns-server-setup"></a>Linux tabanlı DNS sunucusu kurulumu
 
-Linux, DNS sunucularını ayarlamak için çeşitli paketler sunar.  Aşağıda, bir açık kaynak bağlama DNS sunucusu ayarlamaya yönelik yönergelerden oluşan [Digitalocea 'dan örnek bir kurulum](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) verilmiştir.
+Linux, DNS sunucularını ayarlamak için çeşitli paketler sunar. Aşağıda, bir açık kaynak bağlama DNS sunucusu ayarlamaya yönelik yönergelerden oluşan [Digitalocea 'dan örnek bir kurulum](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) verilmiştir.
 
 ## <a name="windows-based-setup"></a>Windows tabanlı kurulum
 

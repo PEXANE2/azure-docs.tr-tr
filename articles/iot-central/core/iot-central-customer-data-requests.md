@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 27cd2e58eabcd96414391cac1a517ea242a65c21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809803"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023761"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri istek özelliklerinin Özeti
+# <a name="summary-of-customer-data-request-features"></a>Müşteri verilerini talep özelliklerin özeti
 
 Azure IoT Central, IoT varlıklarınızı ölçeklendirerek kolayca bağlamayı, izlemenizi ve yönetmenizi, IoT verilerinizden ayrıntılı Öngörüler oluşturmayı ve bilinçli bir işlem yapmayı kolaylaştıran, tam olarak Nesnelerin İnterneti yönetilen bir hizmet olarak yazılım çözümüdür.
 
@@ -31,15 +31,13 @@ Microsoft, cihazlarla ilgili bilgi içermez ve cihazın Kullanıcı bağıntıs�
 
 Microsoft Enterprise Services kullandığınızda, Microsoft, sistem tarafından oluşturulan Günlükler olarak bilinen bazı bilgiler üretir. Bu Günlükler, hizmet içinde yürütülen ve tek tek cihazlarla ilgili tanılama verileri ve Kullanıcı etkinliğiyle ilgili olmayan işlemleri oluşturur. Azure IoT Central sistem tarafından oluşturulan günlüklere, uygulama yöneticileri tarafından erişilebilir veya dışarı aktarılabilir.
 
-## <a name="deleting-customer-data"></a>Müşteri verilerini silme
+## <a name="deleting-customer-data"></a>Müşteri verileri silme
 
 Kullanıcı verilerini silme özelliği yalnızca IoT Central yönetim sayfası aracılığıyla sağlanır. Uygulama yöneticileri silinecek kullanıcıyı seçebilir ve kaydı silmek için uygulamanın sağ üst köşesindeki **Sil** ' i seçin. Uygulama yöneticileri, artık söz konusu uygulamayla ilişkili olmayan bireysel hesapları da kaldırabilir.
 
 Bir Kullanıcı silindikten sonra, bunlara başka bir uyarı e-posta ile gönderilmeyecektir. Ancak, e-posta adresleri, yapılandırılan uyarılardan ayrı ayrı kaldırılmalıdır.
 
-Daha fazla bilgi için bkz. [cihazınız için kuralları ve eylemleri yapılandırma](tutorial-configure-rules.md).
-
-## <a name="exporting-customer-data"></a>Müşteri verilerini dışa aktarma
+## <a name="exporting-customer-data"></a>Müşteri verilerini dışarı aktarma
 
 Verileri dışarı aktarma özelliği yalnızca IoT Central yönetim sayfası aracılığıyla sağlanır. Atanan roller de dahil olmak üzere müşteri verileri, bir uygulama Yöneticisi tarafından seçilebilir, kopyalanabilir ve yapıştırılabilir.
 

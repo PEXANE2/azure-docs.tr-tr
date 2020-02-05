@@ -7,22 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890669"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025495"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Öğretici: dijital bir dağıtım merkezi uygulama şablonunu dağıtma ve gözden geçir
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Bu öğreticide, bir IoT Central **Digital Distribution Center** uygulama şablonu dağıtmaya nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve daha sonra ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
 
 Bu öğreticide, 
 * Dijital dağıtım merkezi uygulaması oluştur 
-* uygulamayı gözden geçir 
+* Uygulamayı gözden geçir 
 
 ## <a name="prerequisites"></a>Ön koşullar
 * Bu uygulamayı dağıtmak için belirli bir ön koşul gerekmez
@@ -34,19 +34,22 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
 
 1. Azure IoT Central uygulama Yöneticisi Web sitesine gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesine tıklayın.
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
-2. **Perakende** sekmesini seçin ve * * dijital dağıtım merkezi uygulaması bölümünde **uygulama oluştur** ' u seçin.
+2. **Perakende** sekmesini seçin ve **dijital dağıtım merkezi uygulaması** altında **uygulama oluştur** ' u seçin.
 
 3. **Uygulama oluştur** yeni uygulama formunu açar ve istenen ayrıntıları aşağıda göster olarak doldurur.
    **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
-   **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz, HATıRLAYABILECEĞINIZ URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Bundan sonra yedi günlük ücretsiz denemeye başlayabilir ve ücretsiz izleme süre sonundan önce istediğiniz zaman Kullandıkça Öde 'yi dönüştürmeyi seçebilirsiniz.
+   **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz bir URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. 7 günlük ücretsiz deneme fiyatlandırma planıyla başlayabilir ve ücretsiz izleme süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına dönüştürmeyi tercih edebilirsiniz.
    **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
    **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![dijital dağıtım faturalandırma bilgileri](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Uygulama panosu üzerinden ilerleme 
 
@@ -95,7 +98,7 @@ Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekme
 > [!div class="mx-imgBorder"]
 > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
-## <a name="jobs"></a>İşler
+## <a name="jobs"></a>İş
 Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek için işler sekmesini seçin: çözüm genelinde işlemler gerçekleştirmek için işler özelliğinden yararlanabilirsiniz. Burada dijital dağıtım merkezi işleri, gibi görevleri gerçekleştirmek için ikizi özelliğini & cihaz komutlarını kullanıyor.
    * paket algılamayı başlatmadan önce kamerayı ayarlama 
    * Kamera bellenimini düzenli olarak güncelleştirme
@@ -113,4 +116,4 @@ Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim** > **uygulama ayarla
 ## <a name="next-steps"></a>Sonraki adımlar
 * Dijital dağıtım merkezi çözüm mimarisi [dijital dağıtım merkezi kavramı](./architecture-digital-distribution-center-pnp.md) hakkında daha fazla bilgi edinin
 * Diğer [IoT Central perakende şablonları](./overview-iot-central-retail-pnp.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../preview/overview-iot-central.md)
+* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central.md)

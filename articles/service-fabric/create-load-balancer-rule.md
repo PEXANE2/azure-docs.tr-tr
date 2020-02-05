@@ -3,12 +3,12 @@ title: Küme için Azure Load Balancer kuralı oluşturma
 description: Azure Service Fabric kümeniz için bağlantı noktaları açmak üzere bir Azure Load Balancer yapılandırın.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351475"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025393"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric kümesi için bağlantı noktalarını açma
 
@@ -60,7 +60,7 @@ Azure CLı komutu, aşağıdaki tabloda açıklanan birkaç parametreye sahiptir
 
 
 >[!NOTE]
->Azure CLı ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+>Azure CLı ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 `New-AzLoadBalancerRuleConfig` komutuyla ilgili olarak, `-FrontendPort`, yük dengeleyicinin dış bağlantılar için sunduğu bağlantı noktasını temsil eder ve `-BackendPort` Service Fabric uygulamasının dinlediği bağlantı noktasını temsil eder.
 
 >[!NOTE]
->PowerShell ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [PowerShell ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+>PowerShell ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [PowerShell ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

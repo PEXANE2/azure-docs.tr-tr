@@ -135,8 +135,6 @@
         - name: Kapsayıcı örnekleri kullanma
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: Görüntü İşleme Bağlı Hizmetini kullanma
-      href: vs-computer-vision-connected-service.md
     - name: Videoları gerçek zamanlı olarak analiz etme
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Başvuru

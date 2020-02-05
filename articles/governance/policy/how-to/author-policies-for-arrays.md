@@ -3,12 +3,12 @@ title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873106"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023200"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -140,7 +140,8 @@ Beklenen koşul **türü** `equals` _dizedir_. **Allowedlocations** **türü** _
 
 ### <a name="evaluating-the--alias"></a>[*] Diğer adı değerlendiriliyor
 
-Adına eklenen **\[\*\]** olan diğer adlar **türün** bir _dizi_olduğunu gösterir. Tüm dizinin değerini değerlendirmek yerine, **\[\*\]** dizinin her bir öğesini değerlendirmek mümkün hale getirir. Her öğe değerlendirmesi için bu üç standart senaryo vardır: None, any ve ALL. Karmaşık senaryolar için [Count](../concepts/definition-structure.md#count)kullanın.
+Adına eklenen **\[\*\]** olan diğer adlar **türün** bir _dizi_olduğunu gösterir. **\[\*\]** tüm dizinin değerini değerlendirmek yerine, dizideki her ÖĞEYI mantıksal ve aralarında tek tek değerlendirmek mümkün hale getirir. Her öğe değerlendirmesi için bu üç standart senaryo vardır: _none_, _Any_veya _All_ öğeleri eşleşir.
+Karmaşık senaryolar için [Count](../concepts/definition-structure.md#count)kullanın.
 
 İlke altyapısı **, yalnızca** **IF** kuralı doğru olarak değerlendirildiğinde **etkisini** tetikler.
 Bu olgu, **\[\*\]** dizideki her öğeyi değerlendiren şekilde anlamak için önemlidir.
@@ -183,16 +184,16 @@ Aşağıdaki her bir koşul örneği için `<field>` `"field": "Microsoft.Storag
 
 Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerden oluşan örnek ilke kuralının sonucudur:
 
-|Koşul |Sonuç |Açıklama |
-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Hiçbir şey |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
-|`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Hiçbir şey |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
-|`{<field>,"Equals":"127.0.0.1"}` |Hiçbir şey |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
-|`{<field>,"Equals":"10.0.4.1"}` |Hiçbir şey |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|Koşul |Sonuç | Senaryo |Açıklama |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Yapma |Hiçbiri eşleşmiyor |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Hiçbiri eşleşmiyor |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Bir veya daha fazla eşleşme |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Yapma |Bir veya daha fazla eşleşme |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Tüm eşleşme değil |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Tüm eşleşme değil |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
+|`{<field>,"Equals":"127.0.0.1"}` |Yapma |Tüm eşleşme |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"Equals":"10.0.4.1"}` |Yapma |Tüm eşleşme |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 
 ## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
 

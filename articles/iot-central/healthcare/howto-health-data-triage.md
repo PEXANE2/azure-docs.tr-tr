@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132271"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021653"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Öğretici: Power BI sağlayıcı panosu oluşturma
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Sürekli hasta izleme Çözümünüzü oluştururken, hasta verilerini görselleştirmek için bir hastane ekibine yönelik bir pano oluşturmak isteyebilirsiniz. Bu öğretici, IoT Central sürekli hasta izleme uygulama şablonınızdan gerçek zamanlı bir akış panosu Power BI oluşturma adımlarında size yol gösterecektir.
+
+Sürekli hasta izleme Çözümünüzü oluştururken, hasta verilerini görselleştirmek için bir hastane ekibine yönelik bir pano da oluşturabilirsiniz. Bu öğreticide, IoT Central sürekli hasta izleme uygulaması şablonundan gerçek zamanlı Power BI bir akış panosu oluşturmayı öğreneceksiniz.
 
 >[!div class="mx-imgBorder"]
 >![Pano GIF](media/dashboard-gif-3.gif)
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Mantıksal uygulamanızdan Power BI veri akışı
 > * Hasta için gerçek zamanlı bir pano oluşturun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -51,7 +51,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 * Power BI hizmeti hesabı. Henüz bir tane yoksa, [Power BI hizmeti için ücretsiz bir deneme hesabı oluşturabilirsiniz](https://app.powerbi.com/). Daha önce Power BI kullanmadıysanız, [Power BI kullanmaya başlama konusunda](https://docs.microsoft.com/power-bi/service-get-started)yararlı olabilir.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs sürekli veri dışarı aktarma ayarlama
-İlk olarak Azure IoT Central uygulama şablonınızdan, aboneliğinizdeki Azure Olay Hub 'ına sürekli bir veri dışarı aktarma ayarlamanız gerekir. Bu işlemi, [Event Hubs dışarı aktarmak](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data)Için bu Azure IoT Central öğreticisindeki adımları izleyerek yapabilirsiniz. Bu öğreticinin amaçları doğrultusunda yalnızca Telemetriyi dışa aktarmanız gerekir.
+İlk olarak Azure IoT Central uygulama şablonınızdan, aboneliğinizdeki Azure Olay Hub 'ına sürekli bir veri dışarı aktarma ayarlamanız gerekir. Bu işlemi, [Event Hubs dışarı aktarmak](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)Için bu Azure IoT Central öğreticisindeki adımları izleyerek yapabilirsiniz. Bu öğreticinin amaçları doğrultusunda yalnızca Telemetriyi dışa aktarmanız gerekir.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI akış veri kümesi oluşturma
 
@@ -86,12 +86,12 @@ Mantıksal uygulamanızı Azure Event Hubs bağlamak için, [azure Event Hubs ve
 Bu adımın sonunda, mantıksal uygulama Tasarlayıcıınızın şöyle görünmesi gerekir:
 
 >[!div class="mx-imgBorder"] 
->![Logic Apps Event Hubs Connect](media/eh-logic-app.png)
+>![Logic Apps Event Hubs bağlanır](media/eh-logic-app.png)
 
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Mantıksal uygulamanızdan Power BI veri akışı
 Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power BI veri kümelerine akışa almak için ayrıştıracaktır.
 
-1. Bunu yapabilmeniz için önce, cihazınızdan Olay Hub 'ına gönderilen JSON yükünü anlamanız gerekir. Bu [örnek şemaya](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry) bakarak ve iletileri incelemek için [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer) 'ni kullanarak bunu yapabilirsiniz. Sürekli hasta izleme uygulamaları kullanıyorsanız, iletileriniz şöyle görünür:
+1. Bunu yapabilmeniz için önce, cihazınızdan Olay Hub 'ına gönderilen JSON yükünü anlamanız gerekir. Bu [örnek şemaya](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) bakarak ve iletileri incelemek için [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer) 'ni kullanarak bunu yapabilirsiniz. Sürekli hasta izleme uygulamaları kullanıyorsanız, iletileriniz şöyle görünür:
 
 **Akıllı vitals düzeltme eki telemetrisi**
 

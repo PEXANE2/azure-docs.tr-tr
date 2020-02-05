@@ -3,20 +3,22 @@ title: Azure IoT Central özel kurallar ve bildirimler ile genişletin | Microso
 description: Çözüm geliştiricisi olarak, bir cihaz telemetri göndermeyi durdurduğu zaman e-posta bildirimleri göndermek için bir IoT Central uygulaması yapılandırın. Bu çözüm Azure Stream Analytics, Azure Işlevleri ve SendGrid kullanır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987603"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022452"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central Stream Analytics, Azure Işlevleri ve SendGrid kullanarak özel kurallarla genişletme
+
+
 
 Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızı özel kurallarla ve bildirimlerle genişletmenin nasıl genişletileceği gösterilmektedir. Örnek, bir cihaz telemetri göndermeyi durdurduğu zaman bir işlece bildirim göndermeyi gösterir. Çözüm, bir cihazın telemetri göndermeyi durdurduğunu algılamak için bir [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) sorgusu kullanır. Stream Analytics işi, [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)kullanarak bildirim e-postaları göndermek Için [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) 'ni kullanır.
 
@@ -41,14 +43,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 | Ayar | Değer |
 | ------- | ----- |
 | Fiyatlandırma planı | Standart |
-| Uygulama şablonu | Eski uygulama |
+| Uygulama şablonu | Mağaza içi analiz – koşul izleme |
 | Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
 | URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
 | Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
-| Bölge | Birleşik Devletler |
+| Bölge | En yakın bölgeniz |
 
 Bu makaledeki örnekler ve ekran görüntüleri **Birleşik Devletler** bölgesini kullanır. Size yakın bir konum seçin ve tüm kaynaklarınızı aynı bölgede oluşturduğunuzdan emin olun.
+
+Bu uygulama şablonu telemetri gönderen iki sanal termostat cihaz içerir.
 
 ### <a name="resource-group"></a>Kaynak grubu
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurduğunu algılamak için bir Stream Analytics sorgusu kullanır. Sorgu, giriş olarak olay hub 'ından Telemetriyi kullanır. İş, sorgu sonuçlarını işlev uygulamasına gönderir. Bu bölümde Stream Analytics işini yapılandırırsınız:
 
-1. Azure portal, Stream Analytics işiniz ' nde, **işler topolojisi** ' ndeki **giriş**' i seçin, **+ akış girişi Ekle**' yi seçin ve ardından **Olay Hub**'ı ' nı seçin.
+1. Azure portal, Stream Analytics işiniz ' ne gidin, **işler topolojisi** altında **girdileri**seçin, **+ akış girişi Ekle**' yi seçin ve **Olay Hub**'ı ' nı seçin.
 1. Daha önce oluşturduğunuz Olay Hub 'ını kullanarak girişi yapılandırmak için aşağıdaki tablodaki bilgileri kullanın ve ardından **Kaydet**' i seçin:
 
     | Ayar | Değer |
@@ -307,7 +311,7 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, contoso şablonundan oluşturduğunuz IoT Central uygulamasına gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
-1. **Sürekli veri dışa aktarma** sayfasına gidin ve **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
+1. **Veri dışa aktarma** sayfasına gidin, **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
 1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin:
 
     | Ayar | Değer |
@@ -328,15 +332,15 @@ Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin
 
 Çözümü test etmek için, IoT Central 'den sanal olarak durdurulan cihazlara sürekli veri vermeyi devre dışı bırakabilirsiniz:
 
-1. IoT Central uygulamanızda, **sürekli veri dışa aktarma** sayfasına gidin ve dışarı aktar **Event Hubs** dışarı aktarma yapılandırması ' nı seçin.
+1. IoT Central uygulamanızda, **veri dışa aktarma** sayfasına gidin ve dışarı **Aktar Event Hubs** dışarı aktarma yapılandırması ' nı seçin.
 1. **Etkin** **olarak ayarlayın** ve **Kaydet**' i seçin.
 1. En az iki dakika sonra, e **-posta adresi** aşağıdaki örnek içerik gibi görünen bir veya daha fazla e-posta alır:
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>Tidy yukarı

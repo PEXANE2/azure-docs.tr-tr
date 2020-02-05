@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440213"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023523"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Eşleme veri akışında kaynak dönüştürme 
 
@@ -44,6 +44,8 @@ Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandır�
 
 ![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
 
+**Bağlantıyı Sına:** Veri akışının Spark hizmetinin kaynak veri kümenizde kullanılan bağlantılı hizmete başarıyla bağlanıp bağlanamamadığını test edin. Bu özelliğin etkinleştirilmesi için hata ayıklama modunun açık olması gerekir.
+
 **Şema DRFT:** [şema drını](concepts-data-flow-schema-drift.md) , veri akışlarınızda, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan, esnek şemaları yerel olarak işleyebilme yeteneğidir.
 
 * Kaynak sütunlar sıklıkla **değişeyorsa şema Drçıkmasına Izin ver** kutusunu işaretleyin. Bu ayar tüm gelen kaynak alanlarının, iç dönüşümlerdeki dönüşümlere akmasını sağlar.
@@ -69,13 +71,17 @@ Veri kümelerinde bulunan şemalar gibi, bir kaynaktaki projeksiyon, kaynak veri
 
 ![Projeksiyon sekmesindeki ayarlar](media/data-flow/source3.png "Yansıtma")
 
-Metin dosyanızda tanımlı bir şema yoksa, Data Factory veri türlerini ve çıkarması için veri **türünü Algıla** ' yı seçin. Varsayılan veri biçimlerini otomatik algıla için **varsayılan biçimi tanımla** ' yı seçin. 
+Metin dosyanızda tanımlı bir şema yoksa, Data Factory veri türlerini ve çıkarması için veri **türünü Algıla** ' yı seçin. Varsayılan veri biçimlerini otomatik algıla için **varsayılan biçimi tanımla** ' yı seçin.
+
+**Şemayı Sıfırla** , yansıtmayı başvurulan veri kümesinde tanımlananla sıfırlar.
 
 Sütun veri türlerini bir aşağı akış türetilmiş sütunlu dönüşümde değiştirebilirsiniz. Sütun adlarını değiştirmek için bir seçme dönüşümü kullanın.
 
 ### <a name="import-schema"></a>Şemayı içeri aktar
 
-Karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümeleri, şema tanımlarının veri kümesinde mevcut olmasını gerektirmez. Bu nedenle, bu tür kaynaklar için **İzdüşüm** sekmesindeki **şemayı içeri aktar** düğmesine tıklayabilirsiniz.
+**Yansıtma** sekmesindeki **şemayı içeri aktar** düğmesi, bir şema projeksiyonu oluşturmak için etkin bir hata ayıklama kümesi kullanmanıza olanak sağlar. Her kaynak türünde kullanılabilir, burada şemanın içeri aktarılması, veri kümesinde tanımlanan yansıtmayı geçersiz kılacaktır. DataSet nesnesi değiştirilmeyecektir.
+
+Bu, karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümelerinde kullanışlıdır. veri kümesinde şema tanımlarının mevcut olmasını gerektirmez.
 
 ## <a name="optimize-the-source-transformation"></a>Kaynak dönüşümünü iyileştirme
 

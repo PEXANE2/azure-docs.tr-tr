@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906718"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018899"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma
 
@@ -38,7 +38,9 @@ Bu bölümde bir işi oluşturma ve çalıştırma işlemi gösterilmektedir. Bu
 
     ![İşi yapılandırma](./media/howto-run-a-job/configurejob.png)
 
-6. Cihazlarınızı seçtikten sonra **Çalıştır** veya **Kaydet**' i seçin. İş artık ana **işler** sayfanızda görüntülenir. Bu görünümde, çalışmakta olan işinizi ve daha önce çalıştırılan işlerin geçmişini görebilirsiniz. Çalışan işiniz her zaman listenin en üstünde görünür. Kaydetme veya çalışmaya devam etmek için kaydettiğiniz iş dilediğiniz zaman yeniden açılabilir.
+6. Sağ tarafta, işi çalıştırmak istediğiniz cihazları seçin. Üstteki onay kutusunu seçerek tüm cihaz kümesi tüm cihazlar seçilir. **Ad**' ın yanındaki onay kutusunu seçerek, geçerli sayfadaki tüm cihazlar seçilir.
+
+7. Cihazlarınızı seçtikten sonra **Çalıştır** veya **Kaydet**' i seçin. İş artık ana **işler** sayfanızda görüntülenir. Bu görünümde, çalışmakta olan işinizi ve daha önce çalıştırılan işlerin geçmişini görebilirsiniz. Çalışan işiniz her zaman listenin en üstünde görünür. Kaydetme veya çalışmaya devam etmek için kaydettiğiniz iş dilediğiniz zaman yeniden açılabilir.
 
     ![İşi görüntüle](./media/howto-run-a-job/viewjob.png)
 
@@ -103,6 +105,5 @@ Durum iletisinin ardından, işteki cihazlara bir genel bakış gönderilir. Aş
 
 Azure IoT Central uygulamanızda nasıl iş oluşturulacağını öğrendiğinize göre, bazı sonraki adımlar aşağıda verilmiştir:
 
-- [Cihaz kümelerini kullanma](howto-use-device-sets.md)
 - [Cihazlarınızı yönetme](howto-manage-devices.md)
 - [Cihaz şablonunuzun sürümü](howto-version-device-template.md)

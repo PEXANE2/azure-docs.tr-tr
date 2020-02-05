@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773045"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022146"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Azure IoT Central, kurumsal düzeyde IoT çözümlerini geliştirme, yönetme ve sürdürme ile ilişkili yükü ve maliyeti azaltan bir IoT uygulama platformudur. Azure IoT Central ile oluşturmayı seçtiğinizde, yalnızca karmaşık ve sürekli gelişen bir IoT altyapısını korumak ve güncelleştirmek yerine, işletmenizin IoT verileriyle dönüştürülmesi için zaman, para ve enerji tasarrufu sağlayabilirsiniz.
 
@@ -78,7 +78,7 @@ Daha fazla bilgi edinmek için bkz. [bir Digital Distribution Center uygulama ş
 
 Birçok perakende için, mağazaların içindeki çevresel koşullar rakiplerinden önemli bir farklımalardır. Perakendeciler, müşterilerinin avantajlarından yararlanmak için mağazalarındaki parçalar dahilinde bakım koşullarını sürdürmek ister.  
 
-Bir çözüm Oluşturucusu olarak, uçtan uca bir çözüm oluşturmak için mağaza içi Analytics Condition izleme uygulaması şablonunu IoT Central kullanabilirsiniz. Uygulama şablonu, çeşitli algılayıcı cihazları kullanarak bir perakende mağaza ortamına dijital olarak bağlanmanızı ve bunları izlemenizi sağlar. Bu algılayıcı cihazları, iş maliyetlerini azaltmaya ve müşterileri için harika bir deneyim oluşturmanıza yardımcı olan iş öngörülerine dönüştürebileceğiniz telemetri oluşturur.
+Bir çözüm Oluşturucusu olarak, uçtan uca bir çözüm oluşturmak için mağaza içi Analytics Condition izleme uygulaması şablonunu IoT Central kullanabilirsiniz. Uygulama şablonu, farklı türlerde algılayıcı cihazlarından yararlanarak bir perakende mağaza ortamına dijital olarak bağlanmanızı ve bunları izlemenizi sağlar. Bu algılayıcı cihazları, iş maliyetlerini azaltmaya ve müşterileri için harika bir deneyim oluşturmanıza yardımcı olan iş öngörülerine dönüştürebileceğiniz telemetri oluşturur.
 
 Uygulama şablonunu kullanarak şunları yapın:
 
@@ -149,8 +149,8 @@ IoT Central mikro Karşılama Merkezi uygulama şablonu, çözüm oluşturucular
 
 Uygulama şablonu şunları yapmanızı sağlar: 
 
-- IoT Central bir uygulama örneğine robots veya Condition izleme algılayıcıları gibi çeşitli IoT sensörlerinden sorunsuz bir şekilde bağlanın.
-- , Algılayıcı ağının sistem durumunu ve ortamdaki tüm ağ geçidi cihazlarını izleyin ve yönetin.
+- IoT Central bir uygulama örneğine robots veya koşul izleme algılayıcıları gibi farklı IoT sensörleri türlerini sorunsuzca bağlayın.
+- Algılayıcı ağının sistem durumunu ve ortamdaki tüm ağ geçidi cihazlarını izleyin ve yönetin.
 - Uygun uyarıları tetiklemek için bir karşılama Merkezi içindeki çevresel koşulların etrafında özel kurallar oluşturun.
 - Karşılama merkezinizdeki çevresel koşulları, perakende ambar ekibi tarafından yararlanılabilir olabilecek öngörülere dönüştürün.
 - Toplu öngörüleri, perakende personeli üyelerinin avantajı için mevcut veya yeni iş uygulamalarına dışarı aktarın.

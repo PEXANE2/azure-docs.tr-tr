@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310008"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020769"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -31,6 +31,10 @@ Bulut sağlama, her 2 dakikada bir çalışacak şekilde zamanlanır. Her 2 daki
 **S: ilk çalıştırmada Parola karması eşitleme başarısızlıklarını görme. Kaydol?**
 
 Bu beklenen bir durumdur. Hataların nedeni, Kullanıcı nesnesi tarafından Azure AD 'de yok. Kullanıcı Azure AD 'ye sağlandıktan sonra, parola karmalarının sonraki çalıştırmada sağlanması gerekir. Birkaç çalıştırma bekleyin ve parola karması eşitleme 'nin artık hatalara sahip olmadığını onaylayın.
+
+**S: Active Directory örneği, bulut provizoning tarafından desteklenmeyen özniteliklere sahipse ne olur (örneğin, Dizin uzantıları)?**
+
+Bulut sağlama işlemi çalışır ve desteklenen öznitelikleri hazırlar. Desteklenmeyen öznitelikler Azure AD 'ye Hazırlanmayacak. Active Directory dizin uzantılarını inceleyin ve Azure AD 'ye Flow için bu özniteliğe ihtiyacınız olmadığından emin olun. Bir veya daha fazla öznitelik gerekliyse, Azure AD Connect eşitleme ' yi kullanmayı veya gerekli bilgileri desteklenen özniteliklerden birine taşımayı düşünün (örneğin, uzantı öznitelikleri 1-15).
 
 **S: Azure AD Connect eşitleme ve bulut sağlama arasındaki fark nedir?**
 

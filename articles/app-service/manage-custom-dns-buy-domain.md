@@ -5,18 +5,18 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967292"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023421"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için özel etki alanı adı satın alma
 
 App Service etki alanları doğrudan Azure 'da yönetilen en üst düzey etki alanlardır. [Azure App Service](overview.md)için özel etki alanlarını yönetmeyi kolaylaştırır. Bu öğreticide, bir App Service etki alanı satın alma ve Azure App Service DNS adlarını atama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Azure VM veya Azure depolama için bkz. [Azure VM veya Azure Storage 'a App Service etki alanı atama](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Azure VM veya Azure depolama için bkz. [Azure VM veya Azure Storage 'a App Service etki alanı atama](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -69,7 +69,7 @@ Aşağıdaki bildirimi gördüğünüzde, ölçeklendirme işlemi tamamlanmışt
 
 ## <a name="buy-the-domain"></a>Etki alanını satın al
 
-### <a name="pricing-information"></a>Fiyatlandırma Bilgileri
+### <a name="pricing-information"></a>Fiyatlandırma bilgileri
 Azure App Service etki alanları hakkında fiyatlandırma bilgileri için [App Service fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/app-service/windows/) ziyaret edin ve aşağı kaydırın App Service etki alanı.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açın
@@ -108,7 +108,7 @@ Ardından, etki alanınız için istenen seçenekleri seçin. Açıklamalar içi
 
 | Ayar | Önerilen Değer | Açıklama |
 |-|-|-|
-|Gizlilik koruması | Etkinleştirme | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
+|Gizlilik Koruması | Etkinleştirme | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
 | Varsayılan konak adlarını ata | **www** ve **\@** | İsterseniz istenen konak adı bağlamalarını seçin. Etki alanı satın alma işlemi tamamlandığında, uygulamanıza seçili ana bilgisayar adları üzerinden erişilebilir. Uygulama [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)arkasındaysa, Traffic Manager bir kaydı desteklemediği için kök etki alanını (@) atama seçeneğini görmezsiniz. Etki alanı satın alma işlemi tamamlandıktan sonra ana bilgisayar adı atamaları üzerinde değişiklik yapabilirsiniz. |
 
 ### <a name="accept-terms-and-purchase"></a>Koşulları kabul edin ve satın alın

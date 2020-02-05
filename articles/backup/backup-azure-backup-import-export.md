@@ -4,12 +4,12 @@ description: Azure Backup Azure Içeri/dışarı aktarma hizmetini kullanarak a�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997369"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022622"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup’ta çevrimdışı yedekleme iş akışı
 
@@ -42,7 +42,7 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri çevrimdışı yedeklem
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
   > [!NOTE]
   > Aşağıdaki Önkoşullar ve iş akışı yalnızca [en son Mars aracısını](https://aka.ms/azurebackup_agent)kullanarak dosya ve klasörlerin çevrimdışı yedeklemesi için geçerlidir. System Center DPM veya Azure Backup Sunucusu kullanarak iş yükleri için çevrimdışı yedeklemeler gerçekleştirmek için, [Bu makaleye](backup-azure-backup-server-import-export-.md)bakın.
@@ -75,6 +75,15 @@ Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure 
 
     ![İçeri aktarma ekranı](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. **Kendi disklerimi kullanarak Aktarım**seçeneğini belirleyin.
+
+    >[!NOTE]
+    >İlk yedekleme verilerini çevrimdışı aktarmak için Azure Data Box seçeneğini kullanmanızı öneririz. Bu seçenek, yedekleme verilerinin MARS Aracısı tarafından doğrudan yazılabileceği Microsoft 'a özel, güvenli ve onaysız Azure veri kutusu cihazları sunarak, kendi Azure uyumlu disklerinizi temin etmek için gereken çabayı kaydeder.
+
+3. **İleri** ' ye tıklayın ve girişleri dikkatle girin:
+
+    ![Disk ayrıntılarınızı girin](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    Girişlerin açıklaması aşağıdaki gibidir:
 
     * **Hazırlama konumu**: ilk yedekleme kopyasının yazıldığı geçici depolama konumu. Hazırlama konumu bir ağ paylaşımında veya yerel bir bilgisayarda olabilir. Kopya bilgisayar ve kaynak bilgisayar farklıysa, hazırlama konumunun tam ağ yolunu belirtmenizi öneririz.
@@ -85,21 +94,21 @@ Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure 
   
    Ekrandaki girişleri girip **İleri**' ye tıklayın. Belirtilen *hazırlama konumunu* ve *Azure Içeri aktarma işi adını*kaydederek diskleri hazırlamak için bu bilgiler gereklidir.
 
-2. İstendiğinde, Azure aboneliğinizde oturum açın. Azure Backup Azure Active Directory uygulamayı oluşturabilmesi ve Azure Içeri aktarma hizmetine erişmek için gerekli izinleri sağlayabilmeniz için oturum açmalısınız.
+4. İstendiğinde, Azure aboneliğinizde oturum açın. Azure Backup Azure Active Directory uygulamayı oluşturabilmesi ve Azure Içeri aktarma hizmetine erişmek için gerekli izinleri sağlayabilmeniz için oturum açmalısınız.
 
-    ![Şimdi yedekle](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![Şimdi Yedekle](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. İş akışını tamamlayıp Azure Backup aracı konsolunda **Şimdi Yedekle**' ye tıklayın.
+5. İş akışını tamamlayıp Azure Backup aracı konsolunda **Şimdi Yedekle**' ye tıklayın.
 
-    ![Şimdi yedekle](./media/backup-azure-backup-import-export/backupnow.png)
+    ![Şimdi Yedekle](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. Sihirbazın onay sayfasında **Yedekle**' ye tıklayın. İlk yedekleme, kurulumun bir parçası olarak hazırlama alanına yazılır.
+6. Sihirbazın onay sayfasında **Yedekle**' ye tıklayın. İlk yedekleme, kurulumun bir parçası olarak hazırlama alanına yazılır.
 
    ![Şimdi yedeklemeye hazır olduğunuzu onaylayın](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
     İşlem bittikten sonra, hazırlama konumu, disk hazırlığı için kullanılabilir hale gelir.
 
-   ![Şimdi yedekle](./media/backup-azure-backup-import-export/opbackupnow.png)
+   ![Şimdi Yedekle](./media/backup-azure-backup-import-export/opbackupnow.png)
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>SATA sürücüleri hazırlayın ve Azure 'a gönderin
 
@@ -199,11 +208,10 @@ Bir Azure içeri aktarma işinin işlenmesi için gereken süre, Sevkiyat zaman�
 
 Bir sonraki zamanlanmış yedekleme sırasında, Azure Backup artımlı yedekleme gerçekleştirir.
 
-### <a name="cleaning-up-resources"></a>Kaynakları temizleme
+### <a name="cleaning-up-resources"></a>Kaynakları Temizleme
 
 İlk yedekleme tamamlandıktan sonra Azure depolama kapsayıcısına ve hazırlama konumundaki yedekleme verilerine aktarılan verileri güvenle silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Içeri/dışarı aktarma iş akışı hakkında herhangi bir soru için, [BLOB depolamaya veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md)konusuna bakın.
-
