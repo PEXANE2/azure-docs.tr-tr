@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003853"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988388"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Öğretici: Python 'da Windows sanal makinesiyle Azure Key Vault kullanma
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Öğretici: Python 'da Windows sanal makinesi ile Azure Key Vault kullanma
 
 Azure Key Vault, API anahtarları, uygulamalarınıza, hizmetlerinize ve BT kaynaklarınıza erişmeniz gereken veritabanı bağlantı dizeleri gibi gizli dizileri korumanıza yardımcı olur.
 
@@ -36,7 +36,7 @@ Başlamadan önce [temel kavramları Key Vault](basic-concepts.md)okuyun.
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Windows, Mac ve Linux için:
   * [Git](https://git-scm.com/downloads)
@@ -81,7 +81,7 @@ Bu öğreticide yeni oluşturulan kaynak grubunuzu kullanırsınız.
 
 * Anahtar Kasası adı: yalnızca rakam (0-9), harf (a-z, A-Z) ve kısa çizgi (-) içerebilen 3 ile 24 karakter arasında bir dize
 * Kaynak grubu adı
-* Konumuna **Batı ABD**
+* Konum: **Batı ABD**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Bu gizli anahtar, **MySecret**değerini depolar.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 Aşağıdaki yöntemlerden birini kullanarak bir sanal makine oluşturabilirsiniz:
 
 * [Azure CLI](../virtual-machines/windows/quick-create-cli.md)
@@ -136,7 +136,7 @@ Sanal makinede oturum açmak için Bağlan bölümündeki yönergeleri izleyin [
 
 ## <a name="create-and-run-a-sample-python-app"></a>Örnek bir Python uygulaması oluşturma ve çalıştırma
 
-Sonraki bölümde, *Sample.py*adlı örnek bir dosyadır. HTTP GET çağrısı yapmak için bir [istekler](http://docs.python-requests.org/en/master/) kitaplığı kullanır.
+Sonraki bölümde, *Sample.py*adlı örnek bir dosyadır. HTTP GET çağrısı yapmak için bir [istekler](https://2.python-requests.org/en/master/) kitaplığı kullanır.
 
 ## <a name="edit-samplepy"></a>Sample.py Düzenle
 

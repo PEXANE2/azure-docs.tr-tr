@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840307"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982849"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -126,6 +126,8 @@ Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty**
 | --------- | -------- | ----------- |
 | Kapsam | Evet | Çoklu oturum açma davranışının kapsamı. Olası değerler: `Suppressed`, `Tenant`, `Application`veya `Policy`. `Suppressed` değeri, davranışın bastırıldığını gösterir. Örneğin, çoklu oturum açma oturumunda Kullanıcı için oturum korunmaz ve kullanıcıdan her zaman bir kimlik sağlayıcısı seçimi istenir. `TrustFramework` değeri, güven çerçevesindeki tüm ilkeler için davranışın uygulanacağını gösterir. Örneğin, bir güven çerçevesinin iki ilkesiyle ilgili olarak gezindikleri bir Kullanıcı, bir kimlik sağlayıcı seçimi istenmez. `Tenant` değeri, davranışın Kiracıdaki tüm ilkelere uygulanacağını gösterir. Örneğin, bir kiracı için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Application` değeri, davranışın istek yapan uygulamanın tüm ilkelerine uygulanacağını gösterir. Örneğin, bir uygulama için iki ilke ile gezinmekte olan bir kullanıcıya bir kimlik sağlayıcısı seçimi istenmez. `Policy` değeri, davranışın yalnızca bir ilke için geçerli olduğunu gösterir. Örneğin, bir güven çerçevesi için iki ilke ile gezinerek bir Kullanıcı, ilkeler arasında geçiş yaparken bir kimlik sağlayıcısı seçimine sorulur. |
 | Keepaliveındays | Evet | Kullanıcının ne kadar süreyle oturum açdığına ilişkin denetim. Değerin 0 olarak ayarlanması, KMSI işlevini devre dışı bırakır. Daha fazla bilgi için bkz. Oturumumu [açık tut](custom-policy-keep-me-signed-in.md). |
+|Enforceıdtokenhintonlogout| Hayır|  Daha önce verilen bir KIMLIK belirtecini, son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirmeye zorlayın. Olası değerler: `false` (varsayılan) veya `true`. Daha fazla bilgi için bkz. [OpenID Connect Ile web oturumu açma](openid-connect.md).  |
+
 
 ## <a name="journeyinsights"></a>Bağlantı, Neyelik
 
@@ -176,12 +178,12 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Kullanıcılara görüntülenen teknik profilin adını içeren dize. |
-| Açıklama | 0:1 | Kullanıcılara görüntülenen teknik profilin açıklamasını içeren dize. |
+| DisplayName | 1:1 | Teknik profilin adını içeren dize. |
+| Açıklama | 0:1 | Teknik profilin açıklamasını içeren dize. |
 | Protokol | 1:1 | Federasyon için kullanılan protokol. |
 | Meta Veriler | 0:1 | Bağlı olan taraf ve diğer topluluk katılımcıları arasında etkileşimi yapılandırmak üzere bir işlem sırasında uç noktayla iletişim için kullanılan anahtar/değer çiftlerinin *öğe* koleksiyonu. |
-| Outputclaim | 0:1 | Teknik profilde çıkış olarak gerçekleştirilen talep türlerinin listesi. Bu öğelerin her biri, **Claimsschema** bölümünde veya bu ilke dosyasının devraldığı bir ilkede zaten tanımlanmış olan bir **ClaimType** başvurusu içerir. |
-| Subjectnamingınfo | 0:1 | Belirteçlerde kullanılan konu adı. |
+| Outputclaim | 1:1 | Teknik profilde çıkış olarak gerçekleştirilen talep türlerinin listesi. Bu öğelerin her biri, **Claimsschema** bölümünde veya bu ilke dosyasının devraldığı bir ilkede zaten tanımlanmış olan bir **ClaimType** başvurusu içerir. |
+| Subjectnamingınfo | 1:1 | Belirteçlerde kullanılan konu adı. |
 
 **Protokol** öğesi aşağıdaki özniteliği içerir:
 

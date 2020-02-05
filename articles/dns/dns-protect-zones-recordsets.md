@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: rohink
-ms.openlocfilehash: 64c71047c60482ff198dbba833d4d0a35c80c60d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 549090f04f4969b00dc1c8ee8d5cc70a50523ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932425"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983835"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS bölgelerini ve kayıtlarını koruma
 
@@ -205,7 +205,7 @@ Aşağıdaki PowerShell komutu, belirtilen bölgenin SOA kaydında bir CanNotDel
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType "Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 Yanlışlıkla bölge silmeyi önlemenin bir diğer yolu da, bölgelerinizi yönetmek için kullanılan operatör ve hizmet hesaplarının bölge silme izinlerine sahip olmamasını sağlamak için özel bir rol kullanmaktır. Bir bölgeyi silmeniz gerektiğinde, bir iki adımlı silme işlemini uygulayabilir, önce bölge silme izinleri (bölge kapsamında, yanlış bölgeyi silmeyi önler) ve bölgeyi silmek için ikinci adımı zorunlu kılabilirsiniz.

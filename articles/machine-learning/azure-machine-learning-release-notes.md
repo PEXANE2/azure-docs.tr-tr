@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 963572e19be71bf572357aadeee443696210a262
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546359"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984974"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -363,7 +363,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
 + Azure Machine Learning görsel arabirimi (Önizleme), [Azure Machine Learning işlem hatları](concept-ml-pipelines.md)üzerinde çalışacak şekilde kaldırıldı. Görsel arabirimde yazılan işlem hatları (daha önce denemeleri olarak bilinir) artık çekirdek Azure Machine Learning deneyimiyle tamamen tümleşiktir.
   + SDK varlıklarıyla Birleşik yönetim deneyimi
   + Görsel arabirim modelleri, işlem hatları ve uç noktalar için sürüm oluşturma ve izleme
-  + Yeniden tasarlanan kullanıcı Arabirimi
+  + Yeniden tasarlanan kullanıcı arabirimi
   + Toplu çıkarım dağıtımı eklendi
   + Çıkarım işlem hedefleri için Azure Kubernetes hizmeti (AKS) desteği eklendi
   + Yeni Python-adım işlem hattı yazma iş akışı
@@ -622,7 +622,7 @@ Bu yeni Azure Machine Learning arabirimini kullanarak şu anda şunları yapabil
 
 Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, Safari ve Microsoft Edge Preview.
 
-**Bilinen sorunlar**
+**Bilinen sorunlar:**
 
 1. "Bir sorun oluştu!" hata görürseniz tarayıcınızı yenileyin. Dağıtım devam ederken öbek dosyaları yüklenirken hata oluştu.
 
@@ -1187,7 +1187,7 @@ Machine Learning denemeleri 'i programtabileceğiniz, modelleri Web uç noktalar
   + Kapsayıcıyı bir [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) sunucusu cihazına dağıtma
   + Bu [örnekle](https://github.com/Azure-Samples/aml-hardware-accelerated-models) GRPC uç noktasıyla verilerinizi puan edin
 
-### <a name="automated-machine-learning"></a>Otomatik Makine Öğrenmesi
+### <a name="automated-machine-learning"></a>Otomatik Machine Learning
 
 + Performansı en iyi duruma getirmek için :::no-loc text="featurizers"::: dinamik olarak eklemeye olanak sağlayan özellik iyileştirmesi. Yeni :::no-loc text="featurizers":::: iş katıştırıtları, kanıt ağırlığı, hedef kodlamalar, metin hedefi kodlama, küme uzaklığı
 + Otomatik ML içinde tren/geçerli bölmeler işlemek için akıllı CV
@@ -1236,7 +1236,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure Machine Learning Data Prep SDK v 1.1.2
 
-Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir. Bkz. [güncelleştirilmiş yükleme yönergeleri](https://aka.ms/aml-data-prep-installation).
+Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir. Bkz. [güncelleştirilmiş yükleme yönergeleri](https://github.com/Microsoft/AMLDataPrepDocs).
 
 + **Yeni Özellikler**
   + Artık Pivot dönüşümünü kullanabilirsiniz.
@@ -1417,11 +1417,11 @@ Note: Data Prep Python SDK artık `numpy` ve `pandas` paketlerini yüklemecektir
 + Raporlar için yeni sürükleme ve bırakma grafik deneyimi. Kullanıcılar bir sütunu ya da özniteliği, sistemin veri türüne göre otomatik olarak uygun bir grafik türü seçlebileceği grafik alanına sürükleyebilirsiniz. Kullanıcılar grafik türünü diğer geçerli türler olarak değiştirebilir veya ek öznitelikler ekleyebilir.
 
     Desteklenen grafik türleri:
-    - Çizgi Grafik
+    - Çizgi grafik
     - Çubuk grafik
-    - Yığılmış Çubuk Grafik
+    - Yığılmış çubuk grafik
     - Kutu çizimi
-    - Dağılım
+    - Dağılım çizimi
     - Kabarcık çizimi
 + Portal artık denemeleri için raporları dinamik olarak oluşturur. Bir Kullanıcı bir denemeye bir çalıştırma gönderdiğinde, farklı çalışma genelinde karşılaştırmaya izin vermek için günlüğe kaydedilen ölçümler ve grafiklerle birlikte otomatik olarak bir rapor oluşturulur.
 

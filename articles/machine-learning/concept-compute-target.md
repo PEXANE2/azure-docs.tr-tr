@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844101"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984821"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -58,7 +58,7 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
 
 > [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bir bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
 
 ### <a name="compute-clusters"></a>İşlem kümeleri

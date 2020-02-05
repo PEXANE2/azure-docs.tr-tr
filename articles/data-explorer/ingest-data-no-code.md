@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: bir kod satırı olmadan Azure Veri Gezgini izleme verilerini alma'
+title: 'Öğretici: kod olmadan izleme verilerini alma-Azure Veri Gezgini'
 description: Bu öğreticide, verileri tek bir kod satırı olmadan Azure Veri Gezgini izlemeyi ve verileri sorgulamayı öğreneceksiniz.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836568"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986215"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme 
 
@@ -526,7 +526,7 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
     | **Sütun eşleme** | *Diagnosticrawmisinizmapping* | Gelen JSON verilerini *Diagnosticrawrecords* tablosunun sütun adlarıyla ve veri türleriyle eşleyen *TestDatabase* veritabanında oluşturduğunuz eşleme.|
     | | |
 
-1. **Oluştur**’u seçin.  
+1. **Oluştur**'u seçin.  
 
 # <a name="activity-logstabactivity-logs"></a>[Etkinlik günlükleri](#tab/activity-logs)
 
@@ -553,7 +553,7 @@ Artık tanılama ölçümleri ve günlükleriniz ve etkinlik günlükleriniz iç
     | **Sütun eşleme** | *Activitylogsrawmisinizmapping* | Gelen JSON verilerini *Activitylogsrawrecords* tablosunun sütun adlarıyla ve veri türleriyle eşleyen *TestDatabase* veritabanında oluşturduğunuz eşleme.|
     | | |
 
-1. **Oluştur**’u seçin.  
+1. **Oluştur**'u seçin.  
 ---
 
 ## <a name="query-the-new-tables"></a>Yeni tabloları sorgulama

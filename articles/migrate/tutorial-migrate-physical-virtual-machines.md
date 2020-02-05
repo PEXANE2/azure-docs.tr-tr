@@ -1,27 +1,23 @@
 ---
-title: Azure sunucu geçişi geçişi ile şirket içi fiziksel makineleri veya sanallaştırılmış makineleri Azure 'a geçirme | Microsoft Docs
-description: Bu makalede, Azure geçişi sunucu geçişi ile şirket içi fiziksel makinelerin veya sanallaştırılmış makinelerin Azure 'a nasıl geçirileceği açıklanır.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure geçişi ile makineleri fiziksel sunucu olarak Azure 'a geçirin.
+description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nasıl geçirileceği açıklanır.
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028811"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989765"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fiziksel veya sanallaştırılmış sunucuları Azure 'a geçirme 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
-Bu makalede fiziksel veya sanallaştırılmış sunucuların Azure 'a nasıl geçirileceği gösterilmektedir. Azure geçişi sunucu geçişi Aracı, fiziksel ve sanallaştırılmış sunucuların, aracı tabanlı çoğaltma kullanılarak geçirilmesini sağlar. Bu aracı kullanarak, çok çeşitli makineleri Azure 'a geçirebilirsiniz:
+Bu makalede, Azure geçişi: sunucu geçiş aracını kullanarak makineleri fiziksel sunucu olarak Azure 'a nasıl geçirebileceğiniz gösterilmektedir. Makineleri fiziksel sunucu olarak düşünerek, bir dizi senaryoda yararlı olacak şekilde geçirme:
 
 - Şirket içi fiziksel sunucuları geçirin.
 - Xen, KVM gibi platformlar tarafından sanallaştırılan VM 'Leri geçirin.
-- Hyper-V veya VMware VM 'lerini geçirin. Bu, bir nedenden dolayı, Azure 'un [Hyper-V](tutorial-migrate-hyper-v.md), [VMware aracısız](tutorial-migrate-vmware.md) geçişi veya [VMware Aracısı tabanlı](tutorial-migrate-vmware-agent.md) geçiş için sunucu geçiş tekliflerini geçirebileceğiniz standart geçiş akışını kullanmanızın bazı nedenlerle yararlı olur.
+- Hyper-V veya VMware VM 'lerini geçirin, bazı nedenlerle [Hyper-v](tutorial-migrate-hyper-v.md)veya [VMware](server-migrate-overview.md) geçişi için standart geçiş işlemini kullanamazsınız.
 - Özel bulutlarda çalışan VM 'Leri geçirin.
 - Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Leri geçirin.
 
@@ -175,7 +171,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Gereç için yü
 
 ### <a name="download-the-replication-appliance-installer"></a>Çoğaltma gereç yükleyicisini indirin
 
-1. Azure geçişi Proje > **sunucularında**, ***Azure geçişi: sunucu geçişi**' nde **bul**' a tıklayın.
+1. Azure geçişi Proje > **sunucularında** **Azure geçişi: sunucu geçişi**' nde **bul**' a tıklayın.
 
     ![VM'leri bulma](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
@@ -205,7 +201,7 @@ Kayıt tamamlandıktan sonra, bulunan makineler Azure geçişi sunucu geçişi '
 
 ## <a name="install-the-mobility-service"></a>Mobility hizmetini yükleme
 
-Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz gerekir. Aracı yükleyicileri, çoğaltma aracısında kullanılabilir. Doğru yükleyiciyi bulur ve geçirmek istediğiniz her makineye aracıyı yüklersiniz. Bunu şu şekilde yapabilirsiniz:
+Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz gerekir. Aracı yükleyicileri, çoğaltma aracısında kullanılabilir. Doğru yükleyiciyi bulur ve geçirmek istediğiniz her makineye aracıyı yüklersiniz. Bunu aşağıdaki gibi yapın:
 
 1. Çoğaltma gereci 'nda oturum açın.
 2. **%ProgramData%\asr\home\svsystems\pushınstallsvc\repository dizinine**gidin.
@@ -266,8 +262,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 
 2. > **Kaynak ayarları** > , **makineleriniz sanallaştırılmış mı?** , **sanallaştırılmamış/diğer** **' i**seçin.
 3. **Şirket içi gereç**bölümünde, ayarladığınız Azure geçiş gerecinin adını seçin.
-4. **VCenter Server**'Da, VM 'Leri yöneten vCenter sunucusunun adını veya VM 'Lerin barındırıldığı vSphere sunucusunu belirtin.
-5. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin.
+4. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin.
 6. **Konuk kimlik bilgileri**' nde, Mobility hizmetinin göndererek yüklenmesi için kullanılacak bir VM yönetici hesabı belirtirsiniz. Bu öğreticide Mobility hizmetini el ile yüklüyorsunuz, böylece herhangi bir kukla hesap ekleyebilirsiniz. Ileri ' ye tıklayın **: sanal makineler**.
 
     ![Sanal makineleri çoğaltma](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
@@ -275,7 +270,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 7. **Sanal makinelerde** **geçiş ayarlarını bir değerlendirmede içeri aktar**bölümünde, varsayılan ayar Hayır olarak kalsın **, geçiş ayarlarını el ile belirteceğiz**.
 8. Geçirmek istediğiniz her VM 'yi denetleyin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
-    ![VM’leri seçin](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
+    ![VM 'Leri seçin](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 
 9. **Hedef ayarları**’nda aboneliği ve geçiş yapacağınız hedef bölgeyi seçin. Daha sonra Azure VM’lerinin geçişten sonra bulunacağı kaynak grubunu belirtin.

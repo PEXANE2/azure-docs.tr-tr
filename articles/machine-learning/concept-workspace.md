@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844084"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984770"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -79,7 +79,7 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 | Not defteri VM 'si oluşturma |   | **&check;** | |     |
 
 > [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD**, * * Doğu ABD 2 * *, **Kuzey Avrupa** veya **UK Güney**olan çalışma alanları için kullanılabilir.
+> İşlem örnekleri yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bir bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.
 
 ## <a name='create-workspace'></a>Çalışma alanı oluşturma
@@ -92,6 +92,9 @@ Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](over
 * Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
 * Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
 * Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](tutorial-setup-vscode-extension.md)kullanın.
+
+> [!NOTE]
+> Çalışma alanı adı büyük/küçük harfe duyarlıdır.
 
 ## <a name="upgrade"></a>Enterprise Edition 'a yükseltme
 

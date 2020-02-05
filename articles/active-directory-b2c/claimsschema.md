@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713079"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983053"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,16 +42,16 @@ ms.locfileid: "76713079"
 
 **ClaimType** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
+| Kimlik | Evet | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
 
 **ClaimType** öğesi aşağıdaki öğeleri içerir:
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Çeşitli ekranlarda kullanıcılara görüntülenen başlık. Değer [yerelleştirilmiş](localization.md)olabilir. |
-| DataType | 0:1 | Talebin türü. Boolean, Date, dateTime, int, Long, String, stringCollection, Alternativesecurityıdcollection veri türleri kullanılabilir. |
+| DisplayName | 1:1 | Çeşitli ekranlarda kullanıcılara görüntülenen başlık. Değer [yerelleştirilmiş](localization.md)olabilir. |
+| DataType | 1:1 | Talebin türü. Boolean, Date, dateTime, int, Long, String, stringCollection veri türleri kullanılabilir. İlkel veri türü, C# değişken veri türünün eşdeğerini temsil eder. stringCollection bir dize koleksiyonunu temsil eder. Daha fazla bilgi için bkz [ C# . türler ve değişkenler](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Tarih, ISO 8601 kuralını izler. |
 | DefaultPartnerClaimTypes | 0:1 | Belirtilen bir protokol için kullanılacak iş ortağı varsayılan talep türleri. Değerin **ınputclaim** veya **outputclaim** öğelerinde belirtilen **partnerclaimtype** 'da üzerine yazılabilir. Bir protokol için varsayılan adı belirtmek üzere bu öğeyi kullanın.  |
 | Maskesi | 0:1 | Talep görüntülenirken uygulanabilecek bir maske karakterleri için isteğe bağlı bir dize. Örneğin, 324-232-4343 telefon numarası XXX-XXX-4343 olarak maskelenebilir. |
 | UserHelpText | 0:1 | Kullanıcıların amacını anlaması için yararlı olabilecek talep türünün açıklaması. Değer [yerelleştirilmiş](localization.md)olabilir. |
@@ -65,14 +65,14 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Protokol | 0: n | Varsayılan iş ortağı talep türü adı olan protokollerin listesi. |
+| Protokol | 1: n | Varsayılan iş ortağı talep türü adı olan protokollerin listesi. |
 
 **Protokol** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Adı | Yes | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
-| PartnerClaimType | Yes | Kullanılacak talep türü adı. |
+| Ad | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
+| PartnerClaimType | Evet | Kullanılacak talep türü adı. |
 
 Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla etkileşime geçtiğinde, **Soyadı** talebi `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`ile eşleştirilir, Openıdconnect ve OAuth2, talep `family_name`eşlenir.
 
@@ -104,9 +104,9 @@ Sonuç olarak, Azure AD B2C tarafından verilen JWT belirteci, ClaimType adını
 
 **Mask** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Talep maskesinin türü. Olası değerler: `Simple` veya `Regex`. `Simple` değeri, bir dize talebinin önde gelen kısmına bir basit metin maskesinin uygulanacağını gösterir. `Regex` değeri, normal bir ifadenin dize talebine tam olarak uygulandığını belirtir.  `Regex` değeri belirtilmişse, isteğe bağlı bir özniteliğin kullanılacak normal ifadeyle de tanımlanması gerekir. |
+| `Type` | Evet | Talep maskesinin türü. Olası değerler: `Simple` veya `Regex`. `Simple` değeri, bir dize talebinin önde gelen kısmına bir basit metin maskesinin uygulanacağını gösterir. `Regex` değeri, normal bir ifadenin dize talebine tam olarak uygulandığını belirtir.  `Regex` değeri belirtilmişse, isteğe bağlı bir özniteliğin kullanılacak normal ifadeyle de tanımlanması gerekir. |
 | `Regex` | Hayır | **`Type`** `Regex`olarak ayarlanırsa, kullanılacak normal ifadeyi belirtin.
 
 Aşağıdaki örnek, `Simple` maskeyle bir **PhoneNumber** talebi yapılandırır:
@@ -144,7 +144,7 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 
 **Kısıtlama** öğesi aşağıdaki özniteliği içerebilir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bir ClaimType ile numaralandırma değerlerini birleştirmek için kullanılan yöntem. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append`, `Prepend`veya `ReplaceAll`. `Append` değeri, üst ilkede belirtilen koleksiyonun sonuna eklenmesi gereken verilerin bir koleksiyonudur. `Prepend` değeri, üst ilkede belirtilen koleksiyondan önce eklenmesi gereken verilerin bir koleksiyonudur. `ReplaceAll` değeri, üst ilkede yoksayılması gereken verilerin bir koleksiyonudur. |
 
@@ -152,17 +152,17 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Numaralandırma | 1: n | Kullanıcının bir talep için seçmesini sağlamak üzere Kullanıcı arabirimindeki kullanılabilir seçenekler (örneğin, açılan menüdeki bir değer). |
+| Listelenen | 1: n | Kullanıcının bir talep için seçmesini sağlamak üzere Kullanıcı arabirimindeki kullanılabilir seçenekler (örneğin, açılan menüdeki bir değer). |
 | Desen | 1:1 | Kullanılacak normal ifade. |
 
-### <a name="enumeration"></a>Numaralandırma
+### <a name="enumeration"></a>Listelenen
 
 **Enumeration** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Metin | Yes | Bu seçenek için Kullanıcı arabirimindeki kullanıcıya gösterilen görüntüleme dizesi. |
-|Değer | Yes | Bu seçeneği belirleyerek ilişkili talep değeri. |
+| Metin | Evet | Bu seçenek için Kullanıcı arabirimindeki kullanıcıya gösterilen görüntüleme dizesi. |
+|Değer | Evet | Bu seçeneği belirleyerek ilişkili talep değeri. |
 | SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
 Aşağıdaki örnek, `New York`olarak ayarlanmış bir **şehir** açılan listesi talebini varsayılan değer olarak yapılandırır:
@@ -188,9 +188,9 @@ Yeni York olarak ayarlanan varsayılan değere sahip aşağı açılan şehir li
 
 **Model** öğesi aşağıdaki öznitelikleri içerebilir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Cevap içerisinde RegularExpression | Yes | Bu tür taleplerin geçerli olması için aynı olması gereken normal ifade. |
+| Cevap içerisinde RegularExpression | Evet | Bu tür taleplerin geçerli olması için aynı olması gereken normal ifade. |
 | HelpText | Hayır | Bu talep için model veya normal ifade. |
 
 Aşağıdaki örnek, normal ifade giriş doğrulaması ve yardım metni ile bir **e-posta** talebi yapılandırır:
@@ -354,7 +354,7 @@ Kullanıcı **giriş türü, kullanıcının** bir seçenek seçmesini sağlayan
 ```
 
 
-### <a name="paragraph"></a>Paragraf
+### <a name="paragraph"></a>Ina
 
 **Paragraf** Kullanıcı giriş türü, yalnızca bir paragraf etiketinde metin gösteren bir alan sağlamak için kullanılır. Örneğin, &lt;p&gt;Text&lt;/p&gt;.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1f04bc18405c5a5a9612c0de6dd76f22450c7f04
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112514"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990409"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonunu oluşturun ve ilerleyin 
 
@@ -30,8 +30,8 @@ Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar pane
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Önkoşullar
-- None
+## <a name="prerequisites"></a>Ön koşullar
+- Hiçbiri
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 
@@ -52,8 +52,9 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
     * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
     * **Faturalandırma bilgisi**: uygulamanın kendisi ücretsizdir. Uygulamanıza yönelik kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
     * Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın, uygulamanız bir dakika içinde oluşturulur.
-        > [!div class="mx-imgBorder"]
-        > Yeni ![uygulama formu](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        Yeni ![uygulama formu](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        
+        ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve sanal verileri doğrulama

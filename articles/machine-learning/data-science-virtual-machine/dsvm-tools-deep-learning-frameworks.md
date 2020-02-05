@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 65bc11282726d9e66dbed8fa1fbb75fc1b89c1d1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615508"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984719"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
@@ -115,7 +115,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 
 |    |           |
 | ------------- | ------------- |
-| Desteklenen sürüm (ler) | 1.2.0 |
+| Desteklenen sürüm (ler) | 1.2.0 (Ubuntu 16,04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18,04) |
 | Desteklenen DSVM sürümleri      | Linux |
 | Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | [Python 3,5](dsvm-tools-languages.md#python-linux-edition)' de yüklü. Örnek Jupkiter Not defterleri dahil edilmiştir ve örnekler/dsvm/Samples/pytorch. |
 | Nasıl çalıştırılır?      | Terminal: doğru ortamı etkinleştirin ve sonra Python 'u çalıştırın.<br/>* [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Connect, ve sonra örnekler Için PyTorch dizinini açın.  |
@@ -124,7 +124,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 
 |    |           |
 | ------------- | ------------- |
-| Desteklenen sürüm (ler) | 1.13 |
+| Desteklenen sürüm (ler) | 1,13 |
 | Desteklenen DSVM sürümleri      | Windows, Linux |
 | Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) üzerinde [Linux](dsvm-tools-languages.md#python-linux-edition) ve Python 3,6 ' de Python 3,5 ' ye yüklendi |
 | Nasıl çalıştırılır?      | Terminal: doğru ortamı etkinleştirin ve sonra Python 'u çalıştırın. <br/> * Jupyter: [Jupyter](provision-vm.md) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve örnekler için TensorFlow dizinini açın.   |
@@ -133,7 +133,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 
 |    |           |
 | ------------- | ------------- |
-| Desteklenen sürüm (ler) | 1.12 |
+| Desteklenen sürüm (ler) | 1,12 |
 | Desteklenen DSVM sürümleri      | Linux |
 | Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | tensorflow_model_server terminalde mevcuttur. |
 | Nasıl çalıştırılır?      |  Örnekler mevcuttur [çevrimiçi](https://www.tensorflow.org/serving/).   |

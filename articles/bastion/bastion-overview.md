@@ -7,22 +7,22 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 96f5ecc0fb675835f129f40d83c592f42d222ce4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938329"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989509"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
 
 Azure savunma hizmeti, sanal ağınızın içinde sağladığınız yeni, platform tarafından yönetilen yeni bir PaaS hizmetidir. SSL üzerinden Azure portal doğrudan sanal makinelerinize yönelik güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion ile bağlandığınızda sanal makineleriniz için genel IP adresi gerekmez.
 
- Savunma, sağlandığı sanal ağdaki tüm VM 'lere güvenli RDP ve SSH bağlantısı sağlar. Azure savunma 'nın kullanılması, sanal makinelerinizin, RDP/SSH kullanarak güvenli erişim sağlamaya devam ederken, dış dünyaya RDP/SSH bağlantı noktaları sunulmasını önler. Azure savunma sayesinde, sanal makineye doğrudan Azure portal bağlanırsınız. Ek bir istemci, aracı veya yazılım parçası gerekmez.
+Savunma, sağlandığı sanal ağdaki tüm VM 'lere güvenli RDP ve SSH bağlantısı sağlar. Azure savunma 'nın kullanılması, sanal makinelerinizin, RDP/SSH bağlantı noktalarını dış dünyaya sunulmasını sağlarken RDP/SSH kullanarak güvenli erişim sağlamaya devam eder. Azure savunma sayesinde, sanal makineye doğrudan Azure portal bağlanırsınız. Ek bir istemci, aracı veya yazılım parçası gerekmez.
 
 ## <a name="architecture"></a>Mimari
 
-Azure savunma, sanal ağınızda dağıtılır ve dağıtıldıktan sonra, sanal ağınızdaki tüm sanal makineler için güvenli RDP/SSH deneyimi sağlar. Sanal ağınızda bir Azure savunma hizmeti sağladığınızda, RDP/SSH deneyimi aynı sanal ağdaki tüm VM 'leriniz için kullanılabilir. Dağıtım, abonelik/hesap veya sanal makine başına değil, sanal ağ başına yapılır.
+Azure savunma dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başına değildir. Sanal ağınızda bir Azure savunma hizmeti sağladığınızda, RDP/SSH deneyimi aynı sanal ağdaki tüm VM 'leriniz için kullanılabilir.
 
 RDP ve SSH, Azure 'da çalışan iş yüklerinize bağlanmak için kullanabileceğiniz temel yollardan biridir. RDP/SSH bağlantı noktalarının Internet üzerinden kullanıma sunulması istenmez ve önemli bir tehdit yüzeyi olarak görülür. Bunun nedeni genellikle protokol güvenlik açıklarına göre yapılır. Bu tehdit yüzeyini içermesi için, çevre ağınızın genel tarafında savunma Konakları (doğrudan geçiş sunucuları olarak da bilinir) dağıtabilirsiniz. Savunma ana bilgisayar sunucuları tasarlanmakta ve bağımsız saldırılara yönelik olarak yapılandırılmıştır. Savunma sunucuları Ayrıca, savunma ve ağ içinde oturmuş iş yükleri için RDP ve SSH bağlantısı sağlar.
 
@@ -45,7 +45,7 @@ Aşağıdaki özellikler mevcuttur:
 * **Azure VM 'de genel IP gerekmez:** Azure savunma, sanal makinelinizdeki özel IP kullanarak Azure sanal makinenize yönelik RDP/SSH bağlantısını açar. Sanal makinenizde genel IP 'niz olması gerekmez.
 * **NSG 'leri yönetmenin bir sorun yoktur:** Azure savunma, Azure 'dan gelen ve RDP/SSH bağlantısı sağlayan güvenli bir platform PaaS hizmetidir. Azure savunma alt ağında herhangi bir NSG uygulamanız gerekmez. Azure savunma, sanal makinelerinize özel IP üzerinden bağlandığından, NSG 'lerinizi yalnızca Azure 'dan gelen RDP/SSH 'ye izin verecek şekilde yapılandırabilirsiniz. Bu, sanal makinelerinize güvenli bir şekilde bağlanmak için gereken her seferinde NSG 'leri yönetmenin ne kadar olduğunu ortadan kaldırır.
 * **Bağlantı noktası taramaya karşı koruma:** Sanal makinelerinizi ortak Internet 'e sunmak zorunda olmadığınızdan, VM 'niz, sanal ağınızın dışında bulunan standart dışı ve kötü amaçlı kullanıcılar tarafından bağlantı noktası taramaya karşı korunur.
-* **Sıfır günlük saldırılara karşı koruma. Yalnızca bir yerde sağlamlaştırma:** Azure savunma, tam platform tarafından yönetilen bir PaaS hizmetidir. Sanal ağınızın çevre tarafında bulunduğundan, sanal ağınızdaki sanal makinelerin her birini sağlamlaştırma konusunda endişelenmeniz gerekmez. Azure platformu, sizin için Azure savunma ve sürekli güncel kalmasını sağlayarak sıfır günlük güvenlik açıklarından yararlanmaya karşı koruma sağlar.
+* **Sıfır günlük saldırılara karşı koruma. Yalnızca bir yerde sağlamlaştırma:** Azure savunma, tam platform tarafından yönetilen bir PaaS hizmetidir. Sanal ağınızın çevre tarafında bulunduğundan, sanal ağınızdaki sanal makinelerin her birini sağlamlaştırma konusunda endişelenmeniz gerekmez. Azure platformu, sizin için Azure savunma ve sürekli güncel tutarak, sıfır günlük güvenlik açıklarından yararlanmaya karşı koruma sağlar.
 
 ## <a name="faq"></a>SSS
 

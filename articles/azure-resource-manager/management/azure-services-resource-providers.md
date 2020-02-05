@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: cdf56c5c84f8837538c2f59b34c3bcf4265d78cb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644316"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984379"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -32,7 +32,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | çekirdek |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft.Billing | [Faturalandırma](/azure/billing/) |
+| Microsoft.Billing | [Maliyet yönetimi ve faturalandırma](/azure/billing/) |
 | Microsoft.BingMaps | [Bing Haritalar](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. Blockzinciri | [Azure blok zinciri hizmeti](/azure/blockchain/workbench/) |
 | Microsoft. Blueprint | [Azure şemaları](/azure/governance/blueprints/) |
@@ -135,7 +135,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. Servicefabrickafesi | [Service Fabric ağı](../../service-fabric-mesh/index.yml) |
-| Microsoft. SignalRService | [Azure SignalR Hizmeti](../../azure-signalr/index.yml) |
+| Microsoft. SignalRService | [Azure SignalR hizmeti](../../azure-signalr/index.yml) |
 | Microsoft.SiteRecovery | [Site Recovery](../../site-recovery/index.yml) |
 | Microsoft. Solutions | [Azure yönetilen uygulamalar](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Veritabanı](../../sql-database/index.yml)<br />[SQL Veri Ambarı](/azure/sql-data-warehouse/) |

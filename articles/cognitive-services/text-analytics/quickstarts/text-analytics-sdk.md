@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Metin Analizi istemci kitaplığı v3 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Azure bilişsel hizmetler 'deki Metin Analizi API'si kullanarak dili algılayın.
+description: Uygulamalarınızı Azure bilişsel hizmetler 'den Metin Analizi API'si bağlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,46 +10,79 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+zone_pivot_groups: programming-languages-text-analytics
+ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774121"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987944"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığı v3 kullanın
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
 Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
-Şunları yapmak için Metin Analizi istemci kitaplığı sürümünü `3.0-preview` kullanın:
+Şunları yapmak için Metin Analizi istemci kitaplığını kullanın:
 
-* Yaklaşım Analizi (Genel Önizleme)
+* Duygu analizi
 * Dil algılama
-* Adlandırılmış varlık tanıma (Genel Önizleme)
+* Varlık tanıma
 * Anahtar tümcecik ayıklama
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+> [!IMPORTANT]
+> * Metin Analizi API'si en son önizleme sürümü, Gelişmiş [yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel önizleme içeren `3.0-preview`. En son kararlı sürüm `2.1`.
+>    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
+> * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
+
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+> [!IMPORTANT]
+> * Metin Analizi API'si en son önizleme sürümü, Gelişmiş [yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel önizleme içeren `3.0-preview`. En son kararlı sürüm `2.1`.
+>    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
+> * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+> [!IMPORTANT]
+> * Bu hızlı başlangıç yalnızca, Gelişmiş [yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel önizleme içeren Metin Analizi istemci kitaplığının sürüm `3.0-preview` içindir.
+>    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
+> * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+> [!IMPORTANT]
+> * Metin Analizi API'si en son önizleme sürümü, Gelişmiş [yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) ve [adlandırılmış VARLıK tanıma (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)için genel önizleme içeren `3.0-preview`. En son kararlı sürüm `2.1`.
+>    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
+> * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
+
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-other"
+
+## <a name="additional-language-support"></a>Ek dil desteği
+
+Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dilinde bir hızlı başlangıç görmezsiniz. Endişelenmeyin, kullanılabilir ek hızlı başlangıçlara ihtiyacımız var. Programlama dilinizin doğru örneğini bulmak için tabloyu kullanın.
+
+| Dil | Kullanılabilir sürüm | 
+|----------|------------------------|
+| Ruby     | [Sürüm 2,1](ruby-sdk.md)          | 
+| Go       | [Sürüm 2,1](go-sdk.md)          | 
 
 ::: zone-end
 

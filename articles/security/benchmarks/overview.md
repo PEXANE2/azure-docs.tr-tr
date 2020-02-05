@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2d12fa85fbc134ba2578795619db89f4a5058b26
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de6bbb81b04b93cce8ab7ddaf1d983cb7e4a700d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934754"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990598"
 ---
-# <a name="overview-of-azure-security-controls"></a>Azure güvenlik denetimlerine genel bakış
+# <a name="overview-of-azure-security-controls"></a>Azure Güvenlik Denetimleri’ne genel bakış
 
 Azure Güvenlik kıyaslaması, Azure 'daki uygulamalarınızın ve verilerinizin güvenliğini artırmanıza yardımcı olan öneriler içerir.
 
@@ -26,10 +26,10 @@ Aşağıdaki denetimler Azure Güvenlik kıyaslaması 'nda kullanılır:
 - [Ağ güvenliği](security-control-network-security.md)
 - [Günlüğe kaydetme ve Izleme](security-control-logging-monitoring.md)
 - [Kimlik ve Access Control](security-control-identity-access-control.md)
-- [Veri Koruma](security-control-data-protection.md)
+- [Veri koruma](security-control-data-protection.md)
 - [Güvenlik açığı yönetimi](security-control-vulnerability-management.md)
 - [Envanter ve varlık yönetimi](security-control-inventory-asset-management.md)
-- [Güvenlik Yapılandırması](security-control-secure-configuration.md)
+- [Güvenli yapılandırma](security-control-secure-configuration.md)
 - [Kötü amaçlı yazılımdan koruma](security-control-malware-defense.md)
 - [Veri kurtarma](security-control-data-recovery.md)
 - [Olay yanıtı](security-control-incident-response.md)
@@ -51,4 +51,5 @@ Ayrıntılı geri bildiriminiz ve etkin katılım ile Azure Güvenlik kıyaslama
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - Bkz. ilk güvenlik denetimi: [ağ güvenliği](security-control-network-security.md)
+- [Azure Güvenlik kıyaslaması tanıtım](introduction.md) bilgilerini okuyun
 - [Azure Güvenlik kıyaslama v1 Excel elektronik tablosunu](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets) indirin

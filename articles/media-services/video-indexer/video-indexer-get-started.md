@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 01/13/2020
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941549"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989816"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
@@ -49,15 +49,17 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 
     Video Indexer analizi tamamladıktan sonra videonuzun bağlantısını ve videonuzda neler bulunduğunun kısa bir açıklamasını içeren bir bildirim alırsınız. Örnek: kişiler, konular, OCR’ler.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 Daha fazla ayrıntı için bkz. [videoları karşıya yükleme ve Dizin](upload-index-videos.md) .
 
 Bir videoyu karşıya yükleyip dizinledikten sonra, videonun öngörülerini görmek için [video Indexer](video-indexer-view-edit.md) Web sitesini veya [video Indexer geliştirici portalını](video-indexer-use-apis.md) kullanmaya başlayabilirsiniz. 
 
-## <a name="see-also"></a>Ayrıca bkz.
+[API 'Leri kullanmaya başlama](video-indexer-use-apis.md)
 
-[Video Indexer’a genel bakış](video-indexer-overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-[API’leri kullanmaya başlama](video-indexer-use-apis.md).
+Ayrıntılı giriş için lütfen [giriş laboratuvarımızı](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)ziyaret edin. 
+
+Atölyenin sonunda, video ve ses içeriğinden ayıklanabilen bilgi türünü iyi bir şekilde anlayacaksınız. içerik zekası ile ilgili fırsatları belirlemek, Azure 'da video AI ve gösterimi hakkında daha fazla hazırlıklı olmanız gerekir Video Indexer senaryolar.
 

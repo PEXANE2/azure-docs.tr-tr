@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981602"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988473"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Azure Event Grid ile Anahtar Kasası bildirimlerini alma ve yanıtlama (Önizleme)
 
@@ -120,8 +120,6 @@ Yeni oluşturduğunuz runbook 'u tetiklemek için bir Web kancası oluşturun.
 
 [Azure Portal](https://portal.azure.com)üzerinden Event Grid bir abonelik oluşturun.
 
-1.  [Azure portalı](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true) açın.
-
 1.  Anahtar kasanıza gidin ve **Olaylar** sekmesini seçin. Bunu göremiyorsanız [portalın önizleme sürümünü](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)kullandığınızdan emin olun.
 
     ![Azure portal olaylar sekmesi](media/image7.png)
@@ -142,7 +140,7 @@ Yeni oluşturduğunuz runbook 'u tetiklemek için bir Web kancası oluşturun.
 
 1.  Bağlam bölmesinde **Seçimi Onayla** ' yı seçin.
 
-1.  **Oluştur**’u seçin.
+1.  **Oluştur**'u seçin.
 
     ![Olay aboneliği oluştur](media/image8.png)
 

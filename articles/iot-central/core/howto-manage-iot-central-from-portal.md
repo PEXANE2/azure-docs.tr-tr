@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 60c1109d0f540c8301cc536c2079537dca5115f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435020"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990186"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
@@ -50,7 +50,6 @@ Uygulama şablonu olarak **eski uygulama** ' yı seçerek genel kullanıma sunul
 > [!NOTE]
 > Önizleme uygulaması şablonları Şu anda yalnızca **Avrupa** ve **Birleşik Devletler** konumlarda kullanılabilir.
 
-![Yönetim Portalı: IoT Central kaynak oluşturma](media/howto-manage-iot-central-from-portal/image1a.png)  
 
 Tüm alanları doldurduktan sonra **Oluştur**' u seçin.
 
@@ -59,7 +58,7 @@ Tüm alanları doldurduktan sonra **Oluştur**' u seçin.
 Zaten bir Azure IoT Central uygulamanız varsa, bunu silebilir veya Azure portal farklı bir aboneliğe veya kaynak grubuna taşıyabilirsiniz.
 
 > [!NOTE]
-> Azure portal deneme uygulamalarını, aboneliğinizle ilişkili olmadıklarından göremezsiniz.
+> Aboneliğiniz ile ilişkilendirilmediğinden, Azure portal ücretsiz fiyatlandırma planında oluşturulan uygulamaları göremezsiniz.
 
 Başlamak için sol taraftaki ana bölmedeki **tüm kaynaklar** ' ı seçin. Kaynak listenizde bulmak için uygulamanızın adını yazmak üzere arama kutusunu kullanın. Ardından, yönetmek istediğiniz IoT Central uygulamayı seçin.
 

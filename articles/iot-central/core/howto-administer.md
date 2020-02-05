@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954597"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990802"
 ---
 # <a name="manage-your-iot-central-application"></a>IoT Central uygulamanızı yönetme
 
@@ -40,9 +40,9 @@ Uygulama görüntüsünü değiştirmek için bkz. [Azure IoT Central uygulaman�
 
 ## <a name="copy-an-application"></a>Bir uygulamayı kopyalama
 
-Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, cihaz veri geçmişini ve Kullanıcı verilerini oluşturabilirsiniz. Kopya, ücretlendirilebilecek Kullandıkça Öde uygulamasıdır. Bu şekilde bir deneme uygulaması oluşturamazsınız.
+Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, cihaz veri geçmişini ve Kullanıcı verilerini oluşturabilirsiniz. Kopya, için faturalandırılacağımız standart bir fiyatlandırma planı kullanır. Ücretsiz fiyatlandırma planını bu şekilde kullanan bir uygulama oluşturamazsınız.
 
-**Kopyala**' yı seçin. İletişim kutusunda yeni Kullandıkça Öde uygulamasının ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. [Uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı ' nda bu formdaki alanlar hakkında daha fazla bilgi edinin.
+**Kopyala**' yı seçin. İletişim kutusunda, yeni uygulamanın ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. [Uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı ' nda bu formdaki alanlar hakkında daha fazla bilgi edinin.
 
 ![Uygulama ayarları sayfası](media/howto-administer/appcopy2.png)
 
@@ -71,7 +71,7 @@ IoT Central Azure Resource Manager SDK paketleri Node, Python, C#, Ruby, Java ve
 
 Daha fazla bilgi edinmek için aşağıdaki GitHub depoları ve paketlerine bakın:
 
-| Dil | Depo | Paket |
+| Dil | Havuz | Paket |
 | ---------| ---------- | ------- |
 | Düğüm | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

@@ -1,18 +1,15 @@
 ---
 title: Azure geçişi ile VMware VM 'lerini değerlendirme/geçiş için hazırlama
 description: Azure geçişi ile VMware VM 'lerinin değerlendirmesi/geçirilmesi için hazırlanma hakkında bilgi edinin.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028897"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989143"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM 'lerini değerlendirme ve Azure 'a geçiş için hazırlama
 
@@ -41,8 +38,12 @@ Bu izinlere ihtiyacınız vardır.
 **Görev** | **İzinler**
 --- | ---
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir.
-**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile VMware VM 'lerini değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Kayıt sırasında Azure geçişi, gereci benzersiz bir şekilde tanımlayan ve bu uygulamaları oluşturmak için gereken izinlere sahip iki Azure Active Directory (Azure AD) uygulaması oluşturur.<br/> -İlk uygulama Azure geçişi hizmet uç noktaları ile iletişim kurar.<br/> -İkinci uygulama, Azure AD uygulama bilgileri ve gereç yapılandırma ayarlarını depolamak için kayıt sırasında oluşturulan bir Azure Key Vault erişir.
+**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile VMware VM 'lerini değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kayıt sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak iki Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> -İlk uygulama, Gereç üzerinde çalışan aracılar ile Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.<br/> -İkinci uygulama, kullanıcının aracısız geçiş için Kullanıcı aboneliğinde oluşturulan anahtar kasasına erişmek için özel olarak kullanılır. Bu, gereçden bulma başlatıldığında Azure Key Vault (müşterinin kiracısında oluşturulan) bir RBAC erişimi ile sağlanır.
 **Key Vault oluşturma** | Azure geçişi, VMware VM 'lerini Azure geçişi sunucu geçişi ile geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek üzere bir Key Vault oluşturur. Kasayı oluşturmak için Azure geçişi projesinin bulunduğu kaynak grubunda rol atama izinlerine sahip olmanız gerekir.
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
@@ -80,9 +81,9 @@ Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir
 
 Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-### <a name="assign-role-assignment-permissions"></a>Rol atama izinleri atama
+### <a name="assign-permissions-to-create-a-key-vault"></a>Key Vault oluşturmak için izin atama
 
-Key Vault oluşturmak için Azure geçişi 'ni etkinleştirmek üzere rol atama izinlerini aşağıdaki gibi atayın:
+Key Vault oluşturmak için Azure geçişi 'ni etkinleştirmek üzere izinleri aşağıdaki gibi atayın:
 
 1. Azure portal içindeki kaynak grubunda, **erişim denetimi (IAM)** seçeneğini belirleyin.
 2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın.

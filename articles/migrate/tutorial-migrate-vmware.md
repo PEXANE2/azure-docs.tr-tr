@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028700"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989374"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -97,7 +97,7 @@ Azure geçişi, VM 'Lerin Azure 'a geçirilmesini sağlamak için bazı VM deği
 
 ### <a name="prepare-windows-server-vms"></a>Windows Server VM 'lerini hazırlama
 
-**Eylem** | **Ayrıntılar** | **Yönergeler**
+**Eylem** | **Ayrıntılar** | **Yönergelerin**
 --- | --- | ---
 Azure VM 'deki Windows birimlerinin, şirket içi VM ile aynı sürücü harfi atamalarını kullandığından emin olun. | SAN ilkesini çevrimiçi olarak yapılandırın. | 1. VM 'de bir yönetici hesabıyla oturum açın ve bir komut penceresi açın.<br/> 2. DiskPart yardımcı programını çalıştırmak için **DiskPart** yazın.<br/> 3. **San ilkesi = OnlineAll** yazın<br/> 4. DiskPart 'Tan çıkmak için exit yazın ve komut istemi 'ni kapatın.
 Azure VM için Azure seri erişim konsolunu etkinleştirme | Bu sorun gidermeye yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir ve bu, yeni VM için bir yeniden başlatmaya eşdeğerdir. | ' İ etkinleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) izleyin.
@@ -148,7 +148,7 @@ Bulma işlemi tamamlandığında VMware VM’lerini Azure’a çoğaltabilirsini
 
 5. VM’leri **Sanal makineler** bölümünde gerektiği şekilde arayın ve geçirmek istediğiniz her bir VM’yi seçin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
-    ![VM’leri seçin](./media/tutorial-migrate-vmware/select-vms.png)
+    ![VM 'Leri seçin](./media/tutorial-migrate-vmware/select-vms.png)
 
 6. **Hedef ayarları**’nda aboneliği ve geçiş yapacağınız hedef bölgeyi seçin. Daha sonra Azure VM’lerinin geçişten sonra bulunacağı kaynak grubunu belirtin. **Sanal Ağ**’da Azure VM’lerinin geçişten sonra katılacağı Azure sanal ağını/alt ağını seçin.
 7. **Azure Hibrit Avantajı**’nda:
@@ -184,7 +184,7 @@ Azure geçişi projesinde çoğaltmakta olduğunuz ilk sanal makine ise, Azure g
 - **Service Bus**: Azure geçişi sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus 'ı kullanır.
 - **Ağ geçidi depolama hesabı**: sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
 - **Günlük depolama hesabı**: Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
-- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hazırlandığınızda, anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. [Bu Izinleri gözden geçirin](tutorial-prepare-vmware.md#assign-role-assignment-permissions).   
+- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hazırlandığınızda, anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. [Bu Izinleri gözden geçirin](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault).   
 
 
 ## <a name="track-and-monitor"></a>İzleme ve izleme

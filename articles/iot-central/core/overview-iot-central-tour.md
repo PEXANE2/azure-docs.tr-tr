@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6e375e809308da8be0723fb2fcbdf718e9fb5479
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f71476e398d5fd4466fd861e35ecc3f5b3666b9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957772"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987620"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Azure IoT Central Kullanıcı Arabirimi turuna katılın
 
@@ -71,7 +71,7 @@ Uygulamanın farklı bölümlerine erişmek için sol bölmeyi kullanın. Gezint
 - Cihaz şablonlarını ve cihazlarını aramak için bir **arama** değeri girin.
 - Kullanıcı arabirimi dilini veya temasını değiştirmek için **Ayarlar** simgesini seçin.
 - Uygulamanın oturumunu kapatmak için **Hesap** simgesini seçin.
-- Yardım ve destek almak için, kaynak listesinden **Yardım** açılır listesini seçin. Deneme uygulamasında, destek kaynakları [canlı sohbete](howto-show-hide-chat.md)erişim içerir.
+- Yardım ve destek almak için, kaynak listesinden **Yardım** açılır listesini seçin. Ücretsiz fiyatlandırma planındaki bir uygulamada, destek kaynakları [canlı sohbete](howto-show-hide-chat.md)erişim içerir.
 
 Kullanıcı arabirimi için açık renkli tema veya koyu renkli temayı seçebilirsiniz:
 
@@ -88,7 +88,7 @@ Kullanıcı arabirimi için açık renkli tema veya koyu renkli temayı seçebil
 
 * Bir operatör olarak, kişiselleştirilmiş panolar oluşturabilir ve bunlar arasında ve varsayılan pano arasında geçiş yapabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure IoT Central kişisel panolar](howto-create-personal-dashboards.md) nasıl yapılır makalesi oluşturma.
 
-## <a name="device-explorer"></a>Device Explorer
+## <a name="device-explorer"></a>Device explorer
 
 ![Gezgin sayfası](media/overview-iot-central-tour/explorer.png)
 

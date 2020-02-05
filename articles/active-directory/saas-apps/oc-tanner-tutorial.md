@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: O.C. ile Azure Active Directory Tümleştirme Etikan - AppreciateHub | Microsoft Docs'
-description: Azure Active Directory ve O.C. arasında çoklu oturum açmayı yapılandırma hakkında bilgi edinin Tanner - AppreciateHub.
+title: 'Öğretici: O.C. ile tümleştirme Azure Active Directory Tanner-takdir Atehub | Microsoft Docs'
+description: Azure Active Directory ve O.C. arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin Tanner-takdir Atehub.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,123 +11,84 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 8814dc9ba94ca7fa56a2225c71895520467bf05f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 768756e013a4301ea11f5f9478178bdad46f9d67
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095830"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984056"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Öğretici: O.C. ile Azure Active Directory Tümleştirme Tanner - AppreciateHub
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>Öğretici: O.C. ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Tanner - AppreciateHub
 
-Bu öğreticide, O.C. tümleştirmeyi öğrenin Etikan - AppreciateHub ile Azure Active Directory (Azure AD).
-O.C. tümleştirme Azure AD ile AppreciateHub Etikan - ile aşağıdaki avantajları sağlar:
+Bu öğreticide, O.C. nasıl tümleştirileceğini öğreneceksiniz. Tanner-Azure Active Directory (Azure AD) ile bir takdir Atehub. O.C. tümleştirdiğinizde Tanner-Azure AD ile bir adım adım, şunları yapabilirsiniz:
 
-* O.C. erişimi, Azure AD'de denetleyebilirsiniz Tanner - AppreciateHub.
-* Otomatik olarak O.C. için oturum açmış, kullanıcıların etkinleştirebilirsiniz. Etikan - Azure AD hesaplarıyla AppreciateHub (çoklu oturum açma).
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD 'de O.C. 'e erişimi olan denetim Tanner-takdir Atehub.
+* Kullanıcılarınızın O.C. otomatik olarak oturum açabilmesi için Tanner-Onatehub, Azure AD hesaplarıyla birlikte.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile O.C. yapılandırmak için Etikan - AppreciateHub, aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* O.C. Etikan - aboneliği etkin AppreciateHub çoklu oturum açma
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* O.C. Tanner-Onatehub çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* O.C. AppreciateHub Etikan - destekleyen **IDP** tarafından başlatılan
+* O.C. Tanner-takdir Atehub, **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>O.C. ekleme Etikan - AppreciateHub Galerisi
+* O.C. yapılandırdığınızda Tanner-onatehub, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimleri uygulayabilir. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-O.C. tümleştirmesini yapılandırmak için Etikan - AppreciateHub Azure AD'ye ihtiyacınız O.C. eklemek Etikan - galerisinden AppreciateHub listenizi yönetilen SaaS uygulamaları için.
+## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>O.C. ekleme Tanner-Galeriden Mediatehub
 
-**O.C. eklemek için Etikan - AppreciateHub galerisinden, aşağıdaki adımları gerçekleştirin:**
+O.C. tümleştirmesini yapılandırmak için Tanner-Onatehub Azure AD 'ye O.C. eklemeniz gerekir Tanner-Galeri 'den yönetilen SaaS uygulamaları listenize yönelik bir takdir Atehub.
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **O.C. Tanner-onatehub** yazın.
+1. Sonuçlar panelinden **O.C. Tanner-Onatehub** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>O.C. için Azure AD çoklu oturum açmayı yapılandırma ve test etme Tanner - AppreciateHub
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+Azure AD SSO 'yu O.C. ile yapılandırma ve test etme Tanner- **B. Simon**adlı bir test kullanıcısını kullanarak bir test kullanıcısı kullanın. SSO 'nun çalışması için, O.C. içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir Tanner-takdir Atehub.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu O.C. ile yapılandırmak ve test etmek için Tanner-takdir Atehub, aşağıdaki yapı taşlarını doldurun:
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[O.C. Tanner-Onatehub SSO 'Yu yapılandırın](#configure-oc-tanner---appreciatehub-sso)** .
+    * **[O.C. Tanner-Onatehub test kullanıcısı oluşturma](#create-oc-tanner---appreciatehub-test-user)** -O.C. 'de B. Simon 'ya karşılık gelen Tanner-kullanıcının Azure AD gösterimine bağlı olan bir Onatehub.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-4. Arama kutusuna **O.C. Etikan - AppreciateHub**seçin **O.C. Etikan - AppreciateHub** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![O.C. Etikan - AppreciateHub sonuç listesinde](common/search-new-app.png)
+1. [Azure Portal](https://portal.azure.com/), **O.C. Tanner-onatehub** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma O.C. ile test etme Etikan - AppreciateHub adlı bir test kullanıcı tabanlı **Britta Simon**.
-Tek iş için oturum açma, bir Azure AD kullanıcısının O.C. ilgili kullanıcı arasında bir bağlantı ilişkisi Etikan - AppreciateHub kurulması gerekir.
+1. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
 
-Yapılandırma ve Azure AD çoklu oturum açma O.C. ile test etmek için Etikan - AppreciateHub, aşağıdaki yapı taşlarını tamamlamanız gereken:
-
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[O.C. yapılandırın -AppreciateHub çoklu oturum açma Etikan](#configure-oc-tanner---appreciatehub-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[O.C. oluşturma Etikan - AppreciateHub test kullanıcısı](#create-oc-tanner---appreciatehub-test-user)**  - O.C. içinde bir karşılığı Britta simon'un sağlamak için Etikan - kullanıcı Azure AD gösterimini bağlı AppreciateHub.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
-
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
-
-Azure AD çoklu oturum açma ile O.C. yapılandırmak için Etikan - AppreciateHub, aşağıdaki adımları gerçekleştirin:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), **O.C. Etikan - AppreciateHub** uygulama tümleştirme sayfasında **çoklu oturum açma**.
-
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
-
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
-
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. Üzerinde **temel SAML yapılandırma** varsa, bölüm **hizmet sağlayıcısı meta veri dosyası**, aşağıdaki adımları gerçekleştirin:
-
-    >[!NOTE]
-    >İndirebileceğiniz **hizmet sağlayıcısı meta veri dosyası** gelen [burada](https://fed.appreciatehub.com/fed/sp/metadata)
-
-    a. Tıklayın **meta veri dosyasını karşıya yükleme**.
-
-    ![Meta veri dosyasını karşıya yükleyin](common/upload-metadata.png)
-
-    b. Tıklayarak **klasör logosu** meta veri dosyası seçin ve **karşıya**.
-
-    ![meta veri dosyası seçin](common/browse-upload-metadata.png)
-
-    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** ve **yanıt URL'si** değerlerini alma otomatik temel SAML yapılandırma bölümünde doldurulur.
-
-     ![O.C. Etikan - AppreciateHub etki alanı ve URL'ler tek bilgi'oturum açma](common/idp-intiated.png)
-
-    > [!Note]
-    > Varsa **tanımlayıcı** ve **yanıt URL'si** değerlerin değil otomatik polulated alın ve ardından Lütfen değerlerin ihtiyacınıza göre el ile doldurun. İlgili kişi [O.C. Etikan - AppreciateHub istemci Destek ekibine](mailto:sso@octanner.com) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
-
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. Üzerinde **O.C. ayarlayın Etikan - AppreciateHub** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. **Set up O.C. Tanner-Onatehub** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL'si:
 
@@ -135,78 +96,64 @@ Azure AD çoklu oturum açma ile O.C. yapılandırmak için Etikan - AppreciateH
 
     c. Oturum Kapatma URL'si
 
-### <a name="configure-oc-tanner---appreciatehub-single-sign-on"></a>O.C. yapılandırın Etikan - AppreciateHub çoklu oturum açma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Çoklu oturum açmayı yapılandırma **O.C. Etikan - AppreciateHub** tarafı, indirilen göndermek için ihtiyacınız **Federasyon meta verileri XML** ve uygun Azure portalına kopyalanan URL'lerden [O.C. Etikan - AppreciateHub Destek ekibine](mailto:sso@octanner.com). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
-
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üstünde.
-
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. İçinde **adı** alana **BrittaSimon**.
-  
-    b. İçinde **kullanıcı adı** alan türü kullanıcı gibi BrittaSimon@contoso.com.
-
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için O.C. erişim vererek Britta Simon etkinleştir Tanner - AppreciateHub.
+Bu bölümde, O.C. erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz. Tanner-takdir Atehub.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **O.C. Etikan - AppreciateHub**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **O.C. Tanner-Onatehub**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **O.C. Etikan - AppreciateHub**.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![O.C. Etikan - uygulamalar listesinde AppreciateHub bağlantı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-oc-tanner---appreciatehub-sso"></a>O.C. yapılandırma Tanner-takdir Atehub SSO
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+**O.C. Tanner-onatehub** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal ' den [O.C. Tanner-onatehub destek ekibine](mailto:sso@octanner.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+### <a name="create-oc-tanner---appreciatehub-test-user"></a>O.C. oluştur Tanner-takdir Atehub test kullanıcısı
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+Bu bölümün amacı, O.C. 'de Britta Simon adlı bir Kullanıcı oluşturmaktır Tanner-takdir Atehub.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+**O.C. Tanner-Onatehub 'da Britta Simon adlı bir kullanıcı oluşturmak için aşağıdaki adımları uygulayın:**
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+[O.C. Tanner-Datehub destek takımınızdan](mailto:sso@octanner.com) , NameID özniteliği olan bir kullanıcı oluşturmak IÇIN Azure AD 'de Britta Simon Kullanıcı adı ile aynı değeri öğrenin.
 
-### <a name="create-oc-tanner---appreciatehub-test-user"></a>O.C. oluşturma Etikan - AppreciateHub test kullanıcısı
-
-Bu bölümün amacı O.C. Britta Simon adlı bir kullanıcı oluşturmaktır. Tanner - AppreciateHub.
-
-**Britta Simon O.C. içinde adlı bir kullanıcı oluşturmak için Etikan - AppreciateHub, aşağıdaki adımları gerçekleştirin:**
-
-Sorun, [O.C. Etikan - AppreciateHub Destek ekibine](mailto:sso@octanner.com) Nameıd özniteliği olarak, Azure AD'de Britta simon'un kullanıcı adı ile aynı değere sahip bir kullanıcı oluşturun.
-
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-O.C. tıkladığınızda Etikan - AppreciateHub kutucuk erişim Paneli'nde, otomatik olarak için O.C. açmış olmanız Etikan - AppreciateHub SSO'yu ayarlama. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+O.C. tıkladığınızda Tanner-takdir Atehub kutucuğu erişim panelinde otomatik olarak O.C. oturum açmış olmanız gerekir. Tanner-SSO 'yu ayarladığınız takdir Atehub. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile O.C. Tanner-Onatehub 'ı deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Gelişmiş görünürlük ve denetimlerle O.C. Tanner-Onatehub 'ı koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

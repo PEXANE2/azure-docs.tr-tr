@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933598"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986249"
 ---
 # <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
@@ -49,7 +49,7 @@ map.sources.add(datasource);
 //Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
-//Create a heatmap and add it to the map.
+//Create a heat map and add it to the map.
 map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   radius: 10,
   opacity: 0.8
@@ -108,13 +108,11 @@ Her yakınlaştırma düzeyiyle çift olacak şekilde yarıçap ölçekleme, tü
 
 > [!TIP]
 > Veri kaynağında kümelendirmeyi etkinleştirdiğinizde, birbirine yakın olan noktaları kümelenmiş bir nokta olarak birlikte gruplandırılır. Her kümenin nokta sayısını, ısı haritası için ağırlık ifadesi olarak kullanabilirsiniz. Bu, işlenecek noktaların sayısını önemli ölçüde azaltabilir. Bir kümenin nokta sayısı, nokta özelliğinin `point_count` özelliğinde depolanır: 
-
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-
 > Kümeleme yarıçapı yalnızca birkaç pikselden azsa, işlemede küçük bir görsel fark olur. Daha büyük bir yarıçap, her kümeye daha fazla işaret sağlar ve heatmap 'in performansını geliştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

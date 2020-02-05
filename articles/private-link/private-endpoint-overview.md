@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842461"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989034"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -130,9 +130,7 @@ Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaları
 
 |Sınırlama |Açıklama |Risk azaltma  |
 |---------|---------|---------|
-|Ağ güvenlik grubu (NSG) kuralları ve Kullanıcı tanımlı yollar özel uç nokta için uygulanmıyor    |NSG özel uç noktalar üzerinde desteklenmez. Özel uç noktayı içeren alt ağlarda NSG ile ilişkili olabilir, kurallar özel uç nokta tarafından işlenen trafikte geçerli olmayacaktır. Bir alt ağda özel uç noktalar dağıtmak için [ağ ilkeleri zorlamasının devre dışı](disable-private-endpoint-network-policy.md) olması gerekir. NSG aynı alt ağda barındırılan diğer iş yükleri üzerinde de zorlanır. Herhangi bir istemci alt ağındaki rotalar bir/32 öneki kullanacaktır, varsayılan yönlendirme davranışının değiştirilmesi benzer bir UDR gerektirir  | Kaynak istemcilerde giden trafik için NSG kurallarını kullanarak trafiği denetleyin. Özel uç nokta yollarını geçersiz kılmak için/32 ön ekiyle tek tek yolları dağıtın        |
-|  Yalnızca özel uç noktalar içeren eşlenmiş sanal ağ desteklenmiyor   |   Başka iş yükü olmadan eşlenmiş bir sanal ağdaki özel uç noktalara bağlanırken bu desteklenmez       | Bağlantıyı etkinleştirmek için eşlenen sanal ağda tek bir VM dağıtın |
-|Özelleştirilmiş iş yükleri özel uç noktalara erişemez    |   Sanal ağınıza dağıtılan aşağıdaki hizmetler özel uç noktaları kullanarak herhangi bir özel bağlantı kaynağına erişemez:<br>App Service Planı</br>Azure Container Örneği</br>Azure NetApp Files</br>Azure Ayrılmış HSM<br>       |   Önizleme süresince risk azaltma.       |
+|Ağ güvenlik grubu (NSG) kuralları ve Kullanıcı tanımlı yollar özel uç nokta için uygulanmıyor    |NSG özel uç noktalar üzerinde desteklenmez. Özel uç noktayı içeren alt ağlarda NSG ile ilişkili olabilir, kurallar özel uç nokta tarafından işlenen trafikte geçerli olmayacaktır. Bir alt ağda özel uç noktalar dağıtmak için [ağ ilkeleri zorlamasının devre dışı](disable-private-endpoint-network-policy.md) olması gerekir. NSG aynı alt ağda barındırılan diğer iş yükleri üzerinde de zorlanır. Herhangi bir istemci alt ağındaki rotalar bir/32 öneki kullanacaktır, varsayılan yönlendirme davranışının değiştirilmesi benzer bir UDR gerektirir  | Kaynak istemcilerde giden trafik için NSG kurallarını kullanarak trafiği denetleyin. Özel uç nokta yollarını geçersiz kılmak için/32 ön ekiyle tek tek yolları dağıtın. Giden bağlantılar için NSG akış günlükleri ve izleme bilgileri hala destekleniyor ve kullanılabilir        |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

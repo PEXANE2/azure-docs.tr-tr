@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a487e0c9d565993b45f7e271af23a622e61389ad
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028661"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990836"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
@@ -41,10 +41,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure geçişi dağıtımı için izinleri ayarlamanız gerekir.
 
-- Azure geçişi projesi oluşturmak için Azure hesabınız için izinler.
-- Azure geçişi gerecini kaydetmek için hesabınızın izinleri. Gereç, Hyper-V bulma ve geçiş için kullanılır. Gereç kaydı sırasında Azure geçişi, gereci benzersiz bir şekilde tanımlayan iki Azure Active Directory (Azure AD) uygulaması oluşturur:
-    - İlk uygulama Azure geçişi hizmet uç noktaları ile iletişim kurar.
-    - İkinci uygulama, Azure AD uygulama bilgileri ve gereç yapılandırma ayarlarını depolamak için kayıt sırasında oluşturulan Azure Key Vault erişir.
+**Görev** | **İzinler**
+--- | ---
+**Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir.
+**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile fiziksel sunucuları bulma ve değerlendirme için basit bir Azure geçiş gereci kullanır. Bu gereç sunucularını bulur ve meta verilerini ve performans verilerini Azure geçişi 'ne gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kayıt sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak bir Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> AAD uygulaması, Gereç üzerinde çalışan aracılar arasında Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.
 
 
 
@@ -61,15 +61,14 @@ Azure geçişi projesi oluşturma izniniz olup olmadığını denetleyin.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Gereci kaydetmek için izin atama
 
-Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında oluşturma sırasında Azure AD uygulamalarını oluşturmak için Azure geçişi izinleri atayabilirsiniz:
+Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında Azure AD uygulaması oluşturmak için Azure geçişi için izinler atayabilirsiniz:
 
 - Kiracı/Genel yönetici, Kiracıdaki kullanıcılara Azure AD uygulamaları oluşturmak ve kaydolmak için izin verebilir.
 - Kiracı/Genel yönetici, uygulama geliştirici rolünü (izinleri olan) hesaba atayabilir.
 
-Buna dikkat edin:
-
-- Uygulamalar, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinlerine sahip değildir.
-- Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
+> [!NOTE]
+> - Uygulamanın, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinleri yoktur.
+> - Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
 
 
 #### <a name="grant-account-permissions"></a>Hesap izinleri verme

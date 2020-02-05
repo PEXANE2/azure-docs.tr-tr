@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: maheshb
-ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 02/03/2020
+ms.author: aahi
+ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072736"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983121"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Portaldan Bing Özel Arama örneğinizi çağırın
 
@@ -42,7 +42,7 @@ Bazı önemli parametreler aşağıdadır:
 
 |Parametre  |Açıklama  |
 |---------|---------|
-|Safe Search     | Yetişkinlere yönelik içerik için Web sayfalarını filtrelemek üzere kullanılan filtre. Yalnızca Web, görüntü, video ve barındırılan Kullanıcı arabirimi uç noktaları için kullanılabilir.        |
+|Safe Search     | Yetişkinlere yönelik içerik için Web sayfalarını filtrelemek üzere kullanılan filtre. Yalnızca Web, görüntü, video ve barındırılan Kullanıcı arabirimi uç noktaları için kullanılabilir. Bing özel Video Arama yalnızca iki değeri desteklediğini unutmayın: `moderate` ve `strict`.        |
 |Kullanıcı arabirimi dili    | Kullanıcı arabirimi dizeleri için kullanılan dil. Örneğin, barındırılan Kullanıcı arabiriminde görüntüleri ve videoları etkinleştirirseniz, **görüntü** ve **video** sekmeleri belirtilen dili kullanır.        |
 |Sayı     | Yanıtta döndürülecek arama sonuçlarının sayısı. Yalnızca Web, görüntü ve video uç noktaları için kullanılabilir.         |
 |Uzaklık    | Sonuçları döndürmeden önce atlanacak arama sonuçlarının sayısı. Yalnızca Web, görüntü ve video uç noktaları için kullanılabilir.        |

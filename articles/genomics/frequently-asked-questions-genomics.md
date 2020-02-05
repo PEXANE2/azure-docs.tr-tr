@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476437"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986045"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomiks: genel sorular
 
@@ -22,8 +22,10 @@ Bu makalede, Microsoft Genomiks ile ilgili olabilecek en iyi sorgular listelenme
 
 
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>GATK4 iş akışlarını Microsoft Genomiks üzerinde Nasıl yaparım? çalıştırmak istiyor musunuz?
-Microsoft Genomiks hizmetinin config. txt dosyasında `gatk4`için işlem_adı ' ı belirtin. Düzenli faturalandırma ücretleri üzerinden faturalandırılabileceğinizi unutmayın.
+Microsoft Genomiks hizmetinin config. txt dosyasında `gatk4`process_name belirtin. Düzenli faturalandırma ücretleri üzerinden faturalandırılabileceğinizi unutmayın.
 
+## <a name="how-do-i-enable-output-compression"></a>Çıkış sıkıştırması etkinleştirilsin mi Nasıl yaparım??
+Çıkış sıkıştırması için isteğe bağlı bir bağımsız değişken kullanarak, çıkış VCF veya gvcf 'yi sıkıştırabilirsiniz. Bu, `.gz` (bgzıp çıkışı) ve `.tbi` (tabx çıkışı) dosyalarını oluşturmak için, `-tabix` ve VCF veya gvcf çıktısında `-bgzip` çalışan eşdeğerdir. `bgzip` VCF veya gvcf dosyasını sıkıştırır ve `tabix` sıkıştırılmış dosya için bir dizin oluşturur. Bağımsız değişkeni, varsayılan olarak VCF çıktısı için `false` ve gcvf çıktısı için varsayılan olarak `true` olarak ayarlanan bir Boole değeri. Komut satırında kullanmak için, `true` (bgzip ve tabx çalıştırma) veya `false`olarak `-bz` veya `--bgzip-output` belirtin. Bu bağımsız değişkeni config. txt dosyasında kullanmak için dosyaya `bgzip_output: true` veya `bgzip_output: false` ekleyin.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Microsoft Genomiks için SLA nedir?
 Microsoft Genomiks hizmeti 'nin iş akışı API 'SI isteklerini almak için kullanılabilir olduğu sürenin% 99,9 olacağını garanti ediyoruz. Daha fazla bilgi için bkz. [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).

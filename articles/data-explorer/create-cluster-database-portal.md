@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326721"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984362"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Hızlı başlangıç: Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -25,13 +25,13 @@ ms.locfileid: "71326721"
 > * [ARM şablonu](create-cluster-database-resource-manager.md)
 
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu hızlı başlangıçta bir küme ve bir veritabanı oluşturacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu hızlı başlangıçta bir küme ve bir veritabanı oluşturacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-cluster"></a>Küme oluşturma
 
@@ -41,7 +41,7 @@ Azure Kaynak grubunda tanımlı bir dizi işlem ve depolama kaynağı içeren bi
 
 1. *Azure Veri Gezgini* için arama yapın.
 
-   ![Kaynak arama](media/create-cluster-database-portal/search-resources.png)
+   ![Kaynakları arayın](media/create-cluster-database-portal/search-resources.png)
 
 1. **Azure Veri Gezgini**'nin altında, ekranın en alt bölümünde **Oluştur**'u seçin.
 
@@ -65,7 +65,7 @@ Azure Kaynak grubunda tanımlı bir dizi işlem ve depolama kaynağı içeren bi
 
     ![Kaynağa git](media/create-cluster-database-portal/notification-resource.png)
 
-## <a name="create-a-database"></a>Veritabanı oluşturma
+## <a name="create-a-database"></a>Veritabanı oluşturun
 
 Artık işlemin ikinci adımı olan veritabanı oluşturma bölümüne geçebilirsiniz.
 
@@ -80,7 +80,7 @@ Artık işlemin ikinci adımı olan veritabanı oluşturma bölümüne geçebili
     **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Veritabanı adı | *TestDatabase* | Veritabanı adı küme içinde benzersiz olmalıdır.
-    | Bekletme süresi | *3650* | Verilerin sorgu için kullanılabilir durumda tutulması garantisini veren zaman aralığı (gün cinsinden). Zaman aralığı verilerin alındığı andan itibaren hesaplanır.
+    | Bekletme dönemi | *3650* | Verilerin sorgu için kullanılabilir durumda tutulması garantisini veren zaman aralığı (gün cinsinden). Zaman aralığı verilerin alındığı andan itibaren hesaplanır.
     | Önbellek süresi | *31* | Sık sorgulanan verilerin, daha uzun vadeli depolama yerine SSD depolamada veya RAM 'de kullanılabildiği zaman aralığı (gün cinsinden).
     | | | |
 
@@ -123,6 +123,6 @@ Diğer hızlı başlangıç ve öğreticilerle izlemeyi planlıyorsanız, oluşt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Verileri Olay Hub'ından Azure Veri Gezgini'ne alma](ingest-data-event-hub.md)
+> [Hızlı başlangıç: Verileri Event Hub'dan Azure Veri Gezgini'ne alma](ingest-data-event-hub.md)
 
 

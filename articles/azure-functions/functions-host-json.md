@@ -3,18 +3,18 @@ title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c4cfbb40c0337a6141d3b1f9844a33227a4963f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978810"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988711"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-host-json-v1.md)
-> * [Sürüm 2](functions-host-json.md)
+> * [Sürüm 2 +](functions-host-json.md)
 
 *Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede, Azure Işlevleri çalışma zamanının 2. x sürümünden itibaren kullanılabilen ayarlar listelenir.  
 
@@ -27,7 +27,7 @@ Bazı Host. JSON ayarları yalnızca [yerel. Settings. JSON](functions-run-local
 
 ## <a name="sample-hostjson-file"></a>Örnek Host. JSON dosyası
 
-Aşağıdaki örnek *Host. JSON* dosyası, belirtilen tüm seçenekleri (yalnızca iç kullanım için olan) içerir.
+Sürüm 2. x + için aşağıdaki örnek *Host. JSON* dosyasında tüm olası seçenekler belirtilmiştir (yalnızca iç kullanım için olan).
 
 ```json
 {
@@ -218,7 +218,7 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
 
-## <a name="extensions"></a>uzantılar
+## <a name="extensions"></a>uzantılardan
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
@@ -280,7 +280,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md#hostjson-settings)içinde bulunabilir.
 
-## <a name="logging"></a>günlük kaydı
+## <a name="logging"></a>açmak
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -339,7 +339,7 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 }
 ```
 
-## <a name="queues"></a>sıralar
+## <a name="queues"></a>klarında
 
 Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
 
@@ -377,7 +377,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 
 ## <a name="version"></a>version
 
-Sürüm dizesi `"version": "2.0"`, v2 çalışma zamanını hedefleyen bir işlev uygulaması için gereklidir.
+Bu değer Host. JSON şema sürümünü gösterir. Sürüm dizesi `"version": "2.0"`, v2 çalışma zamanını veya sonraki bir sürümünü hedefleyen bir işlev uygulaması için gereklidir. Ana bilgisayar yok. v2 ve v3 arasında JSON şeması değişikliği.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

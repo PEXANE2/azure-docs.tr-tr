@@ -8,30 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007598"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986844"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
-Bu öğretici, bir kişiselleştirici döngüsünün uçtan uca yaşam döngüsünü gösteren bir Azure not defterinde kişiselleştirici döngüsü çalıştırır. 
+Bu öğretici, bir kişiselleştirici döngüsünün uçtan uca yaşam döngüsünü gösteren bir Azure not defterinde kişiselleştirici döngüsü çalıştırır.
 
 Döngü, bir müşterinin sipariş etmesi gereken tür kahve önerisinde bulunur. Kullanıcılar ve tercihleri bir kullanıcı veri kümesinde depolanır. Kahve hakkındaki bilgiler bir kahve veri kümesinde depolanır.
 
 ## <a name="users-and-coffee"></a>Kullanıcılar ve kahve
 
-Not defteri rastgele bir Kullanıcı, günün saati ve veri kümesinden Hava durumu türünü seçer. Kullanıcı bilgilerinin Özeti:
+Not defteri, kullanıcı etkileşimini bir Web sitesiyle taklit eden, rastgele bir Kullanıcı, günün saati ve veri kümesinden Hava durumu türü seçer. Kullanıcı bilgilerinin Özeti:
 
 |Müşteriler-bağlam özellikleri|Günün saati|Hava durumu türleri|
 |--|--|--|
-|Alice<br>Bob<br>Küçük harf<br>Dave|BAH<br>Öğleden sonra<br>Akşam|Güneşli<br>Rainy<br>Karlı| 
+|Alice<br>Bob<br>Küçük harf<br>Dave|BAH<br>Öğleden sonra<br>Akşam|Güneşli<br>Rainy<br>Karlı|
 
-Kişiselleştiriciye, zaman içinde her kişi için doğru kahve seçimi hakkında bilgi sahibi olmak için, _sistem_ , kahve hakkındaki ayrıntıları da bilir.
+Zaman içinde kişiselleştirici öğrenimi sağlamak için, _sistem_ her bir kişinin kahve seçimine ilişkin ayrıntıları da bilir.
 
 |Kahve-eylem özellikleri|Sıcaklık türleri|Kaynak yerleri|Roast türleri|Organik|
 |--|--|--|--|--|
@@ -40,64 +40,63 @@ Kişiselleştiriciye, zaman içinde her kişi için doğru kahve seçimi hakkın
 |Belirtilen Mocha|Soğuk|Etiyopya|Açık|Organik değil|
 |Latte|Sık Erişimli|Brezilya|Koyu|Organik değil|
 
-
-Kişiselleştirici döngüsünün **amacı** , mümkün olduğunca fazla Kullanıcı ve kahve arasındaki en iyi eşleşmeyi bulmalıdır. 
+Kişiselleştirici döngüsünün **amacı** , mümkün olduğunca fazla Kullanıcı ve kahve arasındaki en iyi eşleşmeyi bulmalıdır.
 
 Bu öğreticinin kodu, [kişiselleştirici örnekleri GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook)bulunur.
 
 ## <a name="how-the-simulation-works"></a>Simülasyonu nasıl çalışacaktır?
 
-Çalışan sistemin başlangıcında, kişiselleştirmeden gelen öneriler yalnızca %20 ila %30 arasında (1 ' in yeniden puanı ile gösterilir) geçerlidir. Bazı isteklerden sonra, sistem geliştirilir.
+Çalışan sistemin başlangıcında, kişiselleştirmeden gelen öneriler yalnızca %20 ila %30 arasında başarılı olur. Bu başarı, kişiselleştirici 'nin ödül API 'sine geri gönderilen ve 1 puanına göre gösterilir. Bazı derecelendirme ve yeniden çağrılar yapıldıktan sonra sistem geliştirilir.
 
-İlk 10.000 istekten sonra çevrimdışı bir değerlendirme çalıştırın. Bu, kişiselleştirici verileri gözden geçirmesine ve daha iyi bir öğrenme ilkesi önerilmesine olanak tanır. Yeni öğrenme ilkesini uygulayın ve Not defterini 2.000 istek ile yeniden çalıştırın. Döngü daha iyi gerçekleştirilir.
+İlk isteklerden sonra, çevrimdışı bir değerlendirme çalıştırın. Bu, kişiselleştirici verileri gözden geçirmesine ve daha iyi bir öğrenme ilkesi önerilmesine olanak tanır. Yeni öğrenme ilkesini uygulayın ve önceki istek sayısının %20 ' si ile not defterini yeniden çalıştırın. Döngü, yeni öğrenme ilkesiyle daha iyi işlem yapar.
 
 ## <a name="rank-and-reward-calls"></a>Derecelendirme ve yeniden aramalar
 
 Kişiselleştirici hizmetine yapılan binlerce çağrının her biri için Azure Not defteri, REST API **Derecelendirme** isteği gönderir:
 
 * Sıralama/Istek olayı için benzersiz KIMLIK
-* Bağlam-kullanıcının, hava durumunun ve günün zaman içindeki rastgele bir seçimi; bir Web sitesi veya mobil cihazda kullanıcının benzetimini yapın
-* Özellikler-Kişiselleştiriciye bir öneri yaptığı _Tüm_ kahve verileri
+* Bağlam özellikleri-Kullanıcı, hava durumu ve günün saati için rastgele bir seçenek; bir Web sitesi veya mobil cihazda kullanıcının benzetimini yapma
+* Özelliklerle ilgili eylemler-kişiselleştirici tarafından bir öneri yaptığı _Tüm_ kahve verileri
 
-Sistem kahve seçimlerinin derecesini alır, daha sonra bu tahmini, kullanıcının bilinen seçimiyle aynı gün ve hava durumu için karşılaştırır. Bilinen seçim tahmin edilen seçim ile aynıysa, 1 ' in **yeniden** kişiselleştiriciye geri gönderilir. Aksi takdirde, ödül 0 ' dır. 
+Sistem isteği alır, daha sonra bu tahminle aynı gün ve hava durumu için kullanıcının bilinen seçimiyle karşılaştırılır. Bilinen seçim tahmin edilen seçim ile aynıysa, 1 ' in **yeniden** kişiselleştiriciye geri gönderilir. Aksi takdirde geri gönderilen yeniden gönderme işlemi 0 ' dır.
 
 > [!Note]
-> Bu bir simülasyonu olduğundan, ödül için algoritma basittir. Gerçek dünyada bir senaryoda, algoritma iş mantığını kullanmalıdır, bu da müşterinin deneyiminin çeşitli yönlerine yönelik ağırlıklarla birlikte, ödül puanı tespit etmelidir. 
+> Bu bir simülasyonu olduğundan, ödül için algoritma basittir. Gerçek dünyada bir senaryoda, algoritma iş mantığını kullanmalıdır, bu da müşterinin deneyiminin çeşitli yönlerine yönelik ağırlıklarla birlikte, ödül puanı tespit etmelidir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Bir [Azure Not defteri](https://notebooks.azure.com/) hesabı. 
-* Bir [Azure kişiselleştirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). 
-    * Kişiselleştirici kaynağını zaten kullandıysanız, kaynağın Azure portal [verileri temizlediğinizden](how-to-settings.md#clear-data-for-your-learning-loop) emin olun. 
-* [Bu örneğe](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) ilişkin tüm dosyaları bir Azure Not defteri projesine yükleyin. 
+* Bir [Azure Not defteri](https://notebooks.azure.com/) hesabı.
+* Bir [Azure kişiselleştirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
+    * Kişiselleştirici kaynağını zaten kullandıysanız, kaynağın Azure portal [verileri temizlediğinizden](how-to-settings.md#clear-data-for-your-learning-loop) emin olun.
+* [Bu örneğe](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) ilişkin tüm dosyaları bir Azure Not defteri projesine yükleyin.
 
 Dosya açıklamaları:
 
 * [Kişiselleştirici. ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) , Bu öğreticinin Jupyter Not defteridir.
 * [Kullanıcı veri kümesi](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) bir JSON nesnesinde depolanır.
-* [Kahve veri kümesi](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) bir JSON nesnesinde depolanır. 
+* [Kahve veri kümesi](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) bir JSON nesnesinde depolanır.
 * [Örnek Istek JSON](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) , derecelendirme API 'SINE yönelik post isteği için beklenen biçimdir.
 
 ## <a name="configure-personalizer-resource"></a>Kişiselleştirici kaynağını yapılandırma
 
-Azure portal, [kişiselleştirici](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) kaynağınızı **güncelleştirme modeli sıklığı** 15 saniyeye ve 15 saniyelik bir **yeniden bekleme süresi** ile yapılandırın. Bu değerler **[yapılandırma](how-to-settings.md#configure-service-settings-in-the-azure-portal)** sayfasında bulunur. 
+Azure portal, [kişiselleştirici](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) kaynağınızı **güncelleştirme modeli sıklığı** 15 saniyeye ve 15 saniyelik bir **yeniden bekleme süresi** ile yapılandırın. Bu değerler **[yapılandırma](how-to-settings.md#configure-service-settings-in-the-azure-portal)** sayfasında bulunur.
 
 |Ayar|Değer|
 |--|--|
 |güncelleştirme modeli sıklığı|15 saniye|
-|bekleme süresi|15 saniye|
+|Bekleme süresi|15 saniye|
 
-Bu öğreticideki değişiklikleri göstermek için bu değerlerin çok kısa bir süresi vardır. Bu değerler, bir üretim senaryosunda, kişiselleştirici döngüsüyle amacınız elde etmeden kullanılmamalıdır. 
+Bu öğreticideki değişiklikleri göstermek için bu değerlerin çok kısa bir süresi vardır. Bu değerler, bir üretim senaryosunda, kişiselleştirici döngüsüyle amacınız elde etmeden kullanılmamalıdır.
 
 ## <a name="set-up-the-azure-notebook"></a>Azure Not defteri 'ni ayarlama
 
-1. Çekirdeği `Python 3.6`olarak değiştirin. 
+1. Çekirdeği `Python 3.6`olarak değiştirin.
 1. `Personalizer.ipynb` dosyasını açın.
 
 ## <a name="run-notebook-cells"></a>Not defteri hücrelerini Çalıştır
 
-Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar `*`yerine bir sayı görüntülerne zaman yapıldığını anlarsınız. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır. 
+Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar `*`yerine bir sayı görüntülerne zaman yapıldığını anlarsınız. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır.
 
 ### <a name="include-the-python-modules"></a>Python modüllerini dahil et
 
@@ -106,7 +105,7 @@ Gerekli Python modüllerini ekleyin. Hücrede çıkış yok.
 ```python
 import json
 import matplotlib.pyplot as plt
-import random 
+import random
 import requests
 import time
 import uuid
@@ -114,7 +113,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Kişiselleştirici kaynak anahtarını ve adını ayarla
 
-Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. `<your-resource-name>` değerini, kişiselleştirici kaynağınızın adı olarak değiştirin. `<your-resource-key>` değerini, kişiselleştirici anahtarınızla değiştirin. 
+Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. `<your-resource-name>` değerini, kişiselleştirici kaynağınızın adı olarak değiştirin. `<your-resource-key>` değerini, kişiselleştirici anahtarınızla değiştirin.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -136,11 +135,11 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Son model güncelleştirme zamanını al
 
-`get_last_updated`işlevi çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır. 
+`get_last_updated`işlevi çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır.
 
 Bu hücrelerde çıkış yok. İşlevi çağrıldığında son model eğitim tarihini çıktı olarak yapar.
 
-İşlevi, [model özelliklerini almak](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties)IÇIN bir get REST API kullanır. 
+İşlevi, [model özelliklerini almak](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties)IÇIN bir get REST API kullanır.
 
 ```python
 # ititialize variable for model's last modified date
@@ -149,18 +148,18 @@ modelLastModified = ""
 
 ```python
 def get_last_updated(currentModifiedDate):
-    
+
     print('-----checking model')
-    
+
     # get model properties
     response = requests.get(personalization_model_properties_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
 
     # get lastModifiedTime
     lastModifiedTime = json.dumps(response.json()["lastModifiedTime"])
-    
+
     if (currentModifiedDate != lastModifiedTime):
         currentModifiedDate = lastModifiedTime
         print(f'-----model updated: {lastModifiedTime}')
@@ -174,28 +173,28 @@ Bu hücrelerde çıkış yok. İşlevi çağrıldığında hizmet değerlerini �
 
 ```python
 def get_service_settings():
-    
+
     print('-----checking service settings')
-    
+
     # get learning policy
     response = requests.get(personalization_model_policy_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
-    
+
     # get service settings
     response = requests.get(personalization_service_configuration_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
 ```
 
 ### <a name="construct-urls-and-read-json-data-files"></a>URL 'Ler oluşturun ve JSON veri dosyalarını okuyun
 
-Bu hücre 
+Bu hücre
 
-* REST çağrılarında kullanılan URL 'Leri oluşturur 
-* kişiselleştirici kaynak anahtarınızı kullanarak güvenlik üst bilgisini ayarlar 
+* REST çağrılarında kullanılan URL 'Leri oluşturur
+* kişiselleştirici kaynak anahtarınızı kullanarak güvenlik üst bilgisini ayarlar
 * Sıra olay KIMLIĞI için rastgele çekirdek belirler
 * JSON veri dosyalarında okur
 * çağrı `get_last_updated` yöntemi-öğrenme ilkesi örnek çıktıda kaldırılmıştır
@@ -225,8 +224,8 @@ requestpath = "example-rankrequest.json"
 # initialize random
 random.seed(time.time())
 
-userpref = None 
-rankactionsjsonobj = None 
+userpref = None
+rankactionsjsonobj = None
 actionfeaturesobj = None
 
 with open(users) as handle:
@@ -234,10 +233,10 @@ with open(users) as handle:
 
 with open(coffee) as handle:
     actionfeaturesobj = json.loads(handle.read())
-    
+
 with open(requestpath) as handle:
-    rankactionsjsonobj = json.loads(handle.read())  
-    
+    rankactionsjsonobj = json.loads(handle.read())
+
 get_last_updated(modelLastModified)
 get_service_settings()
 
@@ -245,8 +244,8 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Çıktının `rewardWaitTime` ve `modelExportFrequency` her ikisinin de 15 saniye olarak ayarlandığını doğrulayın. 
-    
+Çıktının `rewardWaitTime` ve `modelExportFrequency` her ikisinin de 15 saniye olarak ayarlandığını doğrulayın.
+
 ```console
 -----checking model
 <Response [200]>
@@ -265,21 +264,21 @@ Coffee count 4
 
 Bu önceki hücre, Kişiselleştiriciye çağıran ilk hücredir. Çıkışdaki REST durum kodunun `<Response [200]>`olduğundan emin olun. 404 gibi bir hata alırsanız ancak kaynak anahtarınızın ve adınızın doğru olduğundan emin olun, Not defterini yeniden yükleyin.
 
-Kahve ve kullanıcı sayısının her ikisi de 4 olduğundan emin olun. Bir hata alırsanız, tüm 3 JSON dosyalarını karşıya yüklediğinize bakın. 
+Kahve ve kullanıcı sayısının her ikisi de 4 olduğundan emin olun. Bir hata alırsanız, tüm 3 JSON dosyalarını karşıya yüklediğinize bakın.
 
 ### <a name="set-up-metric-chart-in-azure-portal"></a>Ölçüm grafiğini Azure portal ayarlama
 
 Bu öğreticide daha sonra, 10.000 isteklerinin uzun süre çalışan işlemi tarayıcıdan bir güncelleştirme metin kutusuyla görünür. Uzun süre çalışan işlem sona erdiğinde bir grafik veya toplam toplam olarak bakmak daha kolay olabilir. Bu bilgileri görüntülemek için kaynakla birlikte sunulan ölçümleri kullanın. Artık, hizmete yönelik bir isteği tamamladığınıza göre grafiği oluşturabilir ve uzun süre çalışan işlem devam ederken grafiği düzenli aralıklarla yenileyebilirsiniz.
 
 1. Azure portal, kişiselleştirici kaynağı ' nı seçin.
-1. Kaynak gezintisinde, Izleme altındaki **ölçümler** ' i seçin. 
+1. Kaynak gezintisinde, Izleme altındaki **ölçümler** ' i seçin.
 1. Grafikte **ölçüm Ekle**' yi seçin.
 1. Kaynak ve ölçüm ad alanı zaten ayarlanmış. Yalnızca **başarılı çağrıların** ölçüsünü ve **Toplam**toplamayı seçmeniz gerekir.
 1. Zaman filtresini son 4 saat olarak değiştirin.
 
     ![Son 4 saat için başarılı çağrılar için ölçüm ekleyerek ölçüm grafiğini Azure portal ayarlayın.](./media/tutorial-azure-notebook/metric-chart-setting.png)
 
-    Grafikte üç başarılı çağrı görmeniz gerekir. 
+    Grafikte üç başarılı çağrı görmeniz gerekir.
 
 ### <a name="generate-a-unique-event-id"></a>Benzersiz bir olay KIMLIĞI oluştur
 
@@ -300,7 +299,7 @@ Bu işlev, benzersiz bir Kullanıcı, hava durumu ve günün saatini seçer ve a
 
 Hücrede çıkış yok. İşlev çağrıldığında rastgele kullanıcının adını, rastgele hava durumunu ve günün rastgele saatini döndürür.
 
-4 Kullanıcı ve tercihlerinin listesi, kısaltma için yalnızca bazı Tercihler gösteriliyor: 
+4 Kullanıcı ve tercihlerinin listesi, kısaltma için yalnızca bazı Tercihler gösteriliyor:
 
 ```json
 {
@@ -336,7 +335,7 @@ Hücrede çıkış yok. İşlev çağrıldığında rastgele kullanıcının ad�
 ```
 
 ```python
-def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, rankjsonobj):   
+def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, rankjsonobj):
     name = namesoption[random.randint(0,3)]
     weather = weatheropt[random.randint(0,2)]
     timeofday = timeofdayopt[random.randint(0,2)]
@@ -347,12 +346,12 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 ### <a name="add-all-coffee-data"></a>Tüm kahve verilerini Ekle
 
-Bu işlev, derece isteğine gönderilmek üzere bir kahve listesinin tamamını JSON nesnesine ekler. 
+Bu işlev, derece isteğine gönderilmek üzere bir kahve listesinin tamamını JSON nesnesine ekler.
 
 Hücrede çıkış yok. İşlev çağrıldığında `rankjsonobj` değiştirir.
 
 
-Tek bir kahve özelliklerinin örneği şunlardır: 
+Tek bir kahve özelliklerinin örneği şunlardır:
 
 ```json
 {
@@ -363,7 +362,7 @@ Tek bir kahve özelliklerinin örneği şunlardır:
         "origin": "kenya",
         "organic": "yes",
         "roast": "dark"
-        
+
     }
 }
 ```
@@ -382,34 +381,34 @@ Bu işlev, kullanıcının bu filtreler için Kişiselleştiriciye yönelik öne
 ```python
 def get_reward_from_simulated_data(name, weather, timeofday, prediction):
     if(userpref[name][weather][timeofday] == str(prediction)):
-        return 1 
+        return 1
     return 0
-``` 
+```
 
 ### <a name="loop-through-calls-to-rank-and-reward"></a>Derece ve ödül çağrıları aracılığıyla döngü
 
-Sonraki hücre, dizüstü bilgisayarın _ana_ çalışmadır, rastgele bir Kullanıcı alma, kahve listesini alma, her Ikisini de derecelendirme API 'sine gönderme. Kullanıcının bilinen tercihleriyle tahmine göre karşılaştırma yapın ve ardından kişiselleştirici hizmetine geri dönme gönderilmesini sağlar. 
+Sonraki hücre, dizüstü bilgisayarın _ana_ çalışmadır, rastgele bir Kullanıcı alma, kahve listesini alma, her Ikisini de derecelendirme API 'sine gönderme. Kullanıcının bilinen tercihleriyle tahmine göre karşılaştırma yapın ve ardından kişiselleştirici hizmetine geri dönme gönderilmesini sağlar.
 
-Döngü `num_requests` süreler boyunca çalışır. Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor. 
+Döngü `num_requests` süreler boyunca çalışır. Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor.
 
 Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. `coffee.json`için tüm JSON 'yi görebilirsiniz.
 
 Sıralama API 'sine gönderilen JSON:
 
 ```json
-{ 
-   'contextFeatures':[ 
-      { 
+{
+   'contextFeatures':[
+      {
          'timeofday':'Evening',
          'weather':'Snowy',
          'name':'Alice'
       }
    ],
-   'actions':[ 
-      { 
+   'actions':[
+      {
          'id':'Cappucino',
-         'features':[ 
-            { 
+         'features':[
+            {
                'type':'hot',
                'origin':'kenya',
                'organic':'yes',
@@ -419,7 +418,7 @@ Sıralama API 'sine gönderilen JSON:
       }
         ...rest of coffee list
    ],
-   'excludedActions':[ 
+   'excludedActions':[
 
    ],
    'eventId':'b5c4ef3e8c434f358382b04be8963f62',
@@ -436,8 +435,8 @@ Derecelendirme API 'sinden JSON yanıtı:
         {'id': 'Iced mocha', 'probability': 0.05 },
         {'id': 'Cappucino', 'probability': 0.05 },
         {'id': 'Cold brew', 'probability': 0.05 }
-    ], 
-    'eventId': '5001bcfe3bb542a1a238e6d18d57f2d2', 
+    ],
+    'eventId': '5001bcfe3bb542a1a238e6d18d57f2d2',
     'rewardActionId': 'Latte'
 }
 ```
@@ -450,14 +449,14 @@ Son olarak, her döngü kullanıcının rastgele seçimini, hava durumunu, gün�
 
 İşlev şunları kullanır:
 
-* Derece: bir POST REST API [sıra alır](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank). 
+* Derece: bir POST REST API [sıra alır](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
 * Ödül: [rapor ödül](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)için bir gönderi REST API.
 
 ```python
 def iterations(n, modelCheck, jsonFormat):
 
     i = 1
-    
+
     # default reward value - assumes failed prediction
     reward = 0
 
@@ -473,8 +472,8 @@ def iterations(n, modelCheck, jsonFormat):
     namesopt = ['Alice', 'Bob', 'Cathy', 'Dave']
     weatheropt = ['Sunny', 'Rainy', 'Snowy']
     timeofdayopt = ['Morning', 'Afternoon', 'Evening']
-    
-    
+
+
     while(i <= n):
 
         # create unique id to associate with an event
@@ -484,16 +483,16 @@ def iterations(n, modelCheck, jsonFormat):
         [name, weather, timeofday] = add_random_user_and_contextfeatures(namesopt, weatheropt, timeofdayopt, jsonFormat)
 
         # add action features to rank
-        add_action_features(jsonFormat) 
+        add_action_features(jsonFormat)
 
         # show JSON to send to Rank
-        print('To: ', jsonFormat)    
+        print('To: ', jsonFormat)
 
         # choose an action - get prediction from Personalizer
         response = requests.post(personalization_rank_url, headers = headers, params = None, json = jsonFormat)
 
-        # show Rank prediction 
-        print ('From: ',response.json())    
+        # show Rank prediction
+        print ('From: ',response.json())
 
         # compare personalization service recommendation with the simulated data to generate a reward value
         prediction = json.dumps(response.json()["rewardActionId"]).replace('"','')
@@ -502,7 +501,7 @@ def iterations(n, modelCheck, jsonFormat):
         # show result for iteration
         print(f'   {i} {currentDateTime()} {name} {weather} {timeofday} {prediction} {reward}')
 
-        # send the reward to the service 
+        # send the reward to the service
         response = requests.post(personalization_reward_url + eventid + "/reward", headers = headers, params= None, json = { "value" : reward })
 
         # for every N rank requests, compute total correct  total
@@ -513,7 +512,7 @@ def iterations(n, modelCheck, jsonFormat):
 
             print("**** 10% of loop found")
 
-            get_last_updated(modelLastModified) 
+            get_last_updated(modelLastModified)
 
         # aggregate so chart is easier to read
         if(i % 10 == 0):
@@ -522,7 +521,7 @@ def iterations(n, modelCheck, jsonFormat):
              total = 0
 
         i = i + 1
-        
+
     # Print out dateTime
     currentDateTime()
 
@@ -530,7 +529,7 @@ def iterations(n, modelCheck, jsonFormat):
 ```
 
 ## <a name="run-for-10000-iterations"></a>10.000 yineleme için Çalıştır
-10.000 yinelemeleri için kişiselleştirici döngüsünü çalıştırın. Bu, uzun süre çalışan bir olaydır. Not defterini çalıştıran tarayıcıyı kapatmayın. Hizmete yapılan toplam çağrıları görmek için Azure portal ölçüm grafiğini düzenli aralıklarla yenileyin. Her döngü yinelemesi için bir derecelendirme ve bir çağrı olan 20.000 çağrının etrafında yineleme yapılır. 
+10.000 yinelemeleri için kişiselleştirici döngüsünü çalıştırın. Bu, uzun süre çalışan bir olaydır. Not defterini çalıştıran tarayıcıyı kapatmayın. Hizmete yapılan toplam çağrıları görmek için Azure portal ölçüm grafiğini düzenli aralıklarla yenileyin. Her döngü yinelemesi için bir derecelendirme ve bir çağrı olan 20.000 çağrının etrafında yineleme yapılır.
 
 ```python
 # max iterations
@@ -547,7 +546,7 @@ jsonTemplate = rankactionsjsonobj
 
 
 
-## <a name="chart-results-to-see-improvement"></a>Gelişimi görmek için grafik sonuçları 
+## <a name="chart-results-to-see-improvement"></a>Gelişimi görmek için grafik sonuçları
 
 `count` ve `rewards`bir grafik oluşturun.
 
@@ -569,16 +568,16 @@ createChart(count,rewards)
 
 ## <a name="reading-the-chart"></a>Grafik okunuyor
 
-Bu grafik, geçerli varsayılan öğrenme ilkesi için modelin başarısını gösterir. 
+Bu grafik, geçerli varsayılan öğrenme ilkesi için modelin başarısını gösterir.
 
 ![Bu grafik, test süresi için geçerli öğrenme ilkesinin başarısını gösterir.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Testin sonuna kadar ideal hedef olan döngü, araştırmayı yüzde 100 ' a yakın olan bir başarı oranının ortalamasını elde edilir. Araştırmayla varsayılan değeri %20 ' dir. 
+Testin sonuna kadar ideal hedef olan döngü, araştırmayı yüzde 100 ' a yakın olan bir başarı oranının ortalamasını elde edilir. Araştırmayla varsayılan değeri %20 ' dir.
 
 `100-20=80`
 
-Bu araştırma değeri, **yapılandırma** sayfasında, kişiselleştirici kaynağı için Azure Portal bulunur. 
+Bu araştırma değeri, **yapılandırma** sayfasında, kişiselleştirici kaynağı için Azure Portal bulunur.
 
 Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak için, kişiselleştirici döngüize yönelik portalda bir [çevrimdışı değerlendirme](how-to-offline-evaluation.md) çalıştırın.
 
@@ -586,19 +585,19 @@ Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak içi
 
 1. Azure portal, kişiselleştirici kaynağın **değerlendirmeler** sayfasını açın.
 1. **Değerlendirme oluştur**' u seçin.
-1. Döngü değerlendirmesi için gerekli değerlendirme adı ve tarih aralığı verilerini girin. Tarih aralığı yalnızca değerlendirmenize odaklandığınız günleri içermelidir. 
+1. Döngü değerlendirmesi için gerekli değerlendirme adı ve tarih aralığı verilerini girin. Tarih aralığı yalnızca değerlendirmenize odaklandığınız günleri içermelidir.
     Azure portal ![, kişiselleştirici kaynağın değerlendirmeler sayfasını açın. Değerlendirme oluştur ' u seçin. Değerlendirme adını ve tarih aralığını girin.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Bu çevrimdışı değerlendirmeyi çalıştırmanın amacı, bu döngüde kullanılan özellikler ve eylemler için daha iyi bir öğrenme ilkesi olup olmadığını belirlemektir. Daha iyi öğrenme ilkesini bulmak için **Iyileştirme bulmanın** açık olduğundan emin olun.
 
-1. Değerlendirmeyi başlatmak için **Tamam ' ı** seçin. 
-1. Bu **değerlendirmeler** sayfasında, yeni değerlendirme ve geçerli durumu listelenir. Sahip olduğunuz veri miktarına bağlı olarak, bu değerlendirme biraz zaman alabilir. Sonuçları görmek için birkaç dakika sonra bu sayfaya geri dönebilirsiniz. 
-1. Değerlendirme tamamlandığında değerlendirmeyi seçip **farklı öğrenme Ilkelerinin karşılaştırmasını**seçin. Bu, kullanılabilir öğrenme ilkelerini ve verilerle nasıl davrandığını gösterir. 
-1. Tabloda en üstteki öğrenme ilkesini seçin ve **Uygula**' yı seçin. Bu, modelinize ve geri iadeinize _en iyi_ öğrenme ilkesini uygular. 
+1. Değerlendirmeyi başlatmak için **Tamam ' ı** seçin.
+1. Bu **değerlendirmeler** sayfasında, yeni değerlendirme ve geçerli durumu listelenir. Sahip olduğunuz veri miktarına bağlı olarak, bu değerlendirme biraz zaman alabilir. Sonuçları görmek için birkaç dakika sonra bu sayfaya geri dönebilirsiniz.
+1. Değerlendirme tamamlandığında değerlendirmeyi seçip **farklı öğrenme Ilkelerinin karşılaştırmasını**seçin. Bu, kullanılabilir öğrenme ilkelerini ve verilerle nasıl davrandığını gösterir.
+1. Tabloda en üstteki öğrenme ilkesini seçin ve **Uygula**' yı seçin. Bu, modelinize ve geri iadeinize _en iyi_ öğrenme ilkesini uygular.
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Güncelleştirme modeli sıklığını 5 dakikaya Değiştir
 
-1. Azure portal, hala kişiselleştirici kaynağında, **yapılandırma** sayfasını seçin. 
+1. Azure portal, hala kişiselleştirici kaynağında, **yapılandırma** sayfasını seçin.
 1. **Model güncelleştirme sıklığını** değiştirin ve **bekleme süresini** 5 dakikaya çevirin ve **Kaydet**' i seçin.
 
 Daha fazla [bekleme süresi](concept-rewards.md#reward-wait-time) ve [model güncelleştirme sıklığı](how-to-settings.md#model-update-frequency)hakkında daha fazla bilgi edinin.
@@ -608,7 +607,7 @@ Daha fazla [bekleme süresi](concept-rewards.md#reward-wait-time) ve [model gün
 get_service_settings()
 ```
 
-Çıktının `rewardWaitTime` ve `modelExportFrequency` her ikisinin de 5 dakika olarak ayarlandığını doğrulayın. 
+Çıktının `rewardWaitTime` ve `modelExportFrequency` her ikisinin de 5 dakika olarak ayarlandığını doğrulayın.
 ```console
 -----checking model
 <Response [200]>
@@ -623,9 +622,9 @@ User count 4
 Coffee count 4
 ```
 
-## <a name="validate-new-learning-policy"></a>Yeni öğrenme ilkesini doğrula 
+## <a name="validate-new-learning-policy"></a>Yeni öğrenme ilkesini doğrula
 
-Azure not defterine dönün ve yalnızca 2.000 yinelemesi için aynı döngüyü çalıştırarak devam edin. Hizmete yapılan toplam çağrıları görmek için Azure portal ölçüm grafiğini düzenli aralıklarla yenileyin. Her döngü yinelemesi için bir derecelendirme ve bir çağrı olan 4.000 çağrının etrafında yineleme yapılır. 
+Azure not defterine dönün ve yalnızca 2.000 yinelemesi için aynı döngüyü çalıştırarak devam edin. Hizmete yapılan toplam çağrıları görmek için Azure portal ölçüm grafiğini düzenli aralıklarla yenileyin. Her döngü yinelemesi için bir derecelendirme ve bir çağrı olan 4.000 çağrının etrafında yineleme yapılır.
 
 ```python
 # max iterations
@@ -650,7 +649,7 @@ createChart(count2,rewards2)
 
 ## <a name="review-the-second-chart"></a>İkinci grafiği gözden geçirme
 
-İkinci grafik, Kullanıcı tercihleri ile hizalanan derece tahminlerde görünür bir artış göstermelidir. 
+İkinci grafik, Kullanıcı tercihleri ile hizalanan derece tahminlerde görünür bir artış göstermelidir.
 
 ![İkinci grafik, Kullanıcı tercihleri ile hizalanan derece tahminlerde görünür bir artış göstermelidir.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
@@ -658,10 +657,10 @@ createChart(count2,rewards2)
 
 Öğretici serisine devam etmeyi planlamıyorsanız, aşağıdaki kaynakları temizleyin:
 
-* Azure Not defteri projenizi silin. 
-* Kişiselleştirici kaynağını silin. 
+* Azure Not defteri projenizi silin.
+* Kişiselleştirici kaynağını silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu örnekte kullanılan [Jupyter Not defteri ve veri dosyaları](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) , kişiselleştirici için GitHub deposunda mevcuttur. 
+Bu örnekte kullanılan [Jupyter Not defteri ve veri dosyaları](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) , kişiselleştirici için GitHub deposunda mevcuttur.
 

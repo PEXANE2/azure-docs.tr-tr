@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 97a215d8f111753c8fcc857fe4c48956c1236b3b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027438"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986451"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
 
@@ -36,14 +36,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Uygulamanızı oluşturmaya başlamak için uygulama **Oluştur** düğmesine tıklayın ve ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın. Bunu yaptığınızda **Yeni uygulama** sayfasına gidersiniz.
 
->[!div class="mx-imgBorder"] 
->![uygulama sağlık hizmetleri oluşturun](media/app-manager-health-create.png)
+![Uygulama sağlık hizmetleri oluşturma](media/app-manager-health-create.png)
+
+![Uygulama sağlık bilgileri faturalandırma bilgilerini oluşturma](media/app-manager-health-create-billinginfo.png)
 
 Uygulamanızı oluşturmak için:
 
 1. Azure IoT Central, seçtiğiniz şablona göre otomatik olarak bir uygulama adı önerir. Bu adı kabul edebilir veya **sürekli hasta izleme**gibi kendi kolay uygulama adınızı girebilirsiniz. Azure IoT Central, uygulama adına göre sizin için benzersiz bir URL ön eki de oluşturur. İsterseniz bu URL önekini daha kolay bir şekilde değiştirebilirsiniz.
 
-2. **Deneme** uygulaması veya **Kullandıkça Öde** uygulaması oluşturmak isteyip istemediğinizi seçebilirsiniz. **Deneme** uygulamaları, süresi dolmadan yedi gün önce ücretsizdir ve beş adede kadar ücretsiz cihaza izin verir. Süresi dolmadan önce herhangi bir anda Kullandıkça Öde uygulamasına dönüştürülebilir. Bir deneme uygulaması oluşturursanız, iletişim bilgilerinizi girmeniz ve Microsoft 'tan bilgi ve ipuçları alıp almamanız gerekir. **Kullandıkça Öde uygulamaları,** en fazla iki ücretsiz cihazı destekler ve Azure abonelik bilgilerinizi yerleştirmeniz gerekir.
+2. *Ücretsiz* fiyatlandırma planı veya *Standart* fiyatlandırma planlarından birini kullanarak uygulamayı oluşturmak isteyip istemediğinizi seçebilirsiniz. Ücretsiz planı kullanarak oluşturduğunuz uygulamalar, süreleri dolmadan yedi gün önce ücretsizdir ve beş adede kadar ücretsiz cihaza izin verir. Ücretsiz plandaki bir uygulamayı, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına taşıyabilirsiniz. Ücretsiz planı seçerseniz, iletişim bilgilerinizi girmeniz ve Microsoft 'tan bilgi ve ipucu alıp almadığınızı belirlemeniz gerekir. Standart bir plan kullanarak oluşturduğunuz uygulamalar, en fazla iki ücretsiz cihazı destekler ve faturalandırma için Azure abonelik bilgilerinizi girmenizi gerektirir.
 
 3. Uygulamanızı dağıtmak için sayfanın alt kısmındaki **Oluştur** ' u seçin.
 

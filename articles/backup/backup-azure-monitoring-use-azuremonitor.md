@@ -4,12 +4,12 @@ description: Azure Izleyici 'yi kullanarak Azure Backup iş yüklerini izleyin v
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 4ff51080d675c53e53397a070c1f6f1766aa9e85
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611705"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989595"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -21,54 +21,6 @@ Azure Backup, bir kurtarma hizmetleri kasasında [yerleşik izleme ve uyarı öz
 - Azure 'da System Center Data Protection Manager gibi şirket içi bir bileşenden bilgi görüntülemek istiyorsanız, portalın [**yedekleme işlerinde**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) veya [**yedekleme uyarılarında**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) gösterilmez
 
 ## <a name="using-log-analytics-workspace"></a>Log Analytics çalışma alanı kullanma
-
-> [!NOTE]
-> Azure VM yedeklemelerinden veri, Azure Backup Aracısı, System Center Data Protection Manager, Azure VM 'lerdeki SQL yedeklemeleri ve Azure dosya paylaşma yedeklemeleri, Tanılama ayarları aracılığıyla Log Analytics çalışma alanına potılmış olur. Microsoft Azure Backup Server (MABS) desteği yakında eklenecektir
-
-Ölçekteki izlemek/raporlamak için iki Azure hizmetinin özelliklerine ihtiyacınız vardır. *Tanılama ayarları* birden çok Azure Resource Manager kaynağından başka bir kaynağa veri gönderir. *Log Analytics* , diğer bildirim kanallarını tanımlamak için eylem gruplarını kullanabileceğiniz özel uyarılar oluşturur.
-
-Aşağıdaki bölümlerde, Azure Backup ölçeklendirmede Log Analytics nasıl kullanılacağı açıklanır.
-
-### <a name="configure-diagnostic-settings"></a>Tanılama ayarlarını yapılandırma
-
-Kurtarma Hizmetleri kasası gibi kaynaklar Azure Resource Manager, zamanlanmış işlemler ve Kullanıcı tarafından tetiklenen işlemler hakkındaki bilgileri Tanılama verileri olarak kaydeder.
-
-İzleme bölümünde **Tanılama ayarları** ' nı seçin ve kurtarma hizmetleri kasasının tanılama verilerinin hedefini belirtin.
-
-![Kurtarma Hizmetleri kasasının tanılama ayarı, hedefleme Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
-
-Bir Log Analytics çalışma alanını başka bir abonelikten hedefleyebilirsiniz. Tek bir yerde abonelikler arasında kasa izlemek için, birden çok kurtarma hizmeti Kasası için aynı Log Analytics çalışma alanını seçin. Log Analytics çalışma alanına Azure Backup ilgili tüm bilgileri kanala eklemek için, görüntülenen iki durumlu **AzureDiagnostics** öğesini seçin ve **AzureBackupReport** olayını seçin.
-
-> [!IMPORTANT]
-> Yapılandırmayı tamamladıktan sonra, ilk veri gönderimi işleminin tamamlanabilmesi için 24 saat beklemeniz gerekir. İlk veri gönderdikten sonra, tüm olaylar bu makalede daha sonra açıklanan [Sıklık bölümünde](#diagnostic-data-update-frequency)açıklandığı gibi gönderilir.
-
-### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına çözüm dağıtma
-
-> [!IMPORTANT]
-> Azure Backup ' de, LA tabanlı Izleme ve raporlama için güncelleştirilmiş, çok görünüm bir [şablon](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) yayımladık. [Önceki çözümü](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) kullanan kullanıcıların, yeni çözümü dağıttıktan sonra bile çalışma alanlarında görmeye devam edebileceğine lütfen unutmayın. Ancak, eski çözüm bazı küçük şema değişikliklerinden dolayı hatalı sonuçlar verebilir. Bu nedenle, kullanıcıların yeni şablonu dağıtması gerekir.
-
-Veriler Log Analytics çalışma alanının içindeyken, verileri görselleştirmek için Log Analytics için [bir GitHub şablonu dağıtın](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) . Çalışma alanını düzgün bir şekilde tanımlamak için, aynı kaynak grubu, çalışma alanı adı ve çalışma alanı konumuna sahip olduğunuzdan emin olun. Sonra bu şablonu çalışma alanına yükler.
-
-### <a name="view-azure-backup-data-by-using-log-analytics"></a>Log Analytics kullanarak Azure Backup verileri görüntüleme
-
-- **Azure izleyici**: **Öngörüler** bölümünde **diğer** ' i seçin ve ardından ilgili çalışma alanını seçin.
-- **Log Analytics çalışma alanları**: ilgili çalışma alanını seçin ve ardından **genel**altında **çalışma alanı Özeti**' ni seçin.
-
-![Log Analytics izleme ve raporlama kutucukları](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
-
-Genel Bakış kutucuklarından herhangi birini seçtiğinizde daha fazla bilgi görüntüleyebilirsiniz. Göreceğiniz raporlardan bazıları şunlardır:
-
-- Günlük yedekleme dışı Işler
-
-   ![Yedekleme işleri için grafik Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
-
-- Azure kaynakları yedeğinden gelen uyarılar
-
-   ![Geri yükleme işleri için Log Analytics grafiği](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
-
-Benzer şekilde, diğer kutucuklara tıklayarak, geri yükleme Işleri, bulut depolaması, yedekleme öğeleri, şirket içi kaynaklardan gelen uyarılar ve günlük yedekleme Işleri hakkında raporları görebileceksiniz.
-
-Bu grafikler, şablonla birlikte sağlanır. Gerektiğinde grafikleri düzenleyebilir veya daha fazla grafik ekleyebilirsiniz.
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Log Analytics kullanarak uyarı oluşturma
 
@@ -110,90 +62,65 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
 - Tüm başarılı yedekleme işleri
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Completed"
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Completed"
     ````
 
 - Tüm başarısız yedekleme işleri
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Failed"
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Failed"
     ````
 
 - Tüm başarılı Azure VM yedekleme işleri
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
-    | join kind=inner
-    (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
-        | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-    )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Completed"
+| join kind=inner
+(
+    CoreAzureBackup
+    | where OperationName == "BackupItem"
+    | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+)
+on BackupItemUniqueId
     ````
 
 - Tüm başarılı SQL günlük yedekleme işleri
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
-    | join kind=inner
-    (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
-        | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-    )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    AddonAzureBackupJobs
+| where JobOperation=="Backup" and JobOperationSubType=="Log"
+| where JobStatus=="Completed"
+| join kind=inner
+(
+    CoreAzureBackup
+    | where OperationName == "BackupItem"
+    | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+)
+on BackupItemUniqueId
     ````
 
 - Tüm başarılı Azure Backup Aracısı işleri
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
-    | join kind=inner
-    (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
-        | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-    )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Completed"
+| join kind=inner
+(
+    CoreAzureBackup
+    | where OperationName == "BackupItem"
+    | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+)
+on BackupItemUniqueId
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Tanılama verileri güncelleştirme sıklığı
@@ -236,7 +163,7 @@ Kaynak, kurtarma hizmetleri kasasının kendisidir. Etkinlik günlükleri aracı
 
 Etkinlik günlüklerinden oluşturulan tüm uyarıları ve Azure Izleyici 'de Log Analytics çalışma alanlarını görüntüleyebilirsiniz. Sol taraftaki **Uyarılar** bölmesini açmanız yeterlidir.
 
-Etkinlik günlükleri aracılığıyla bildirim alabilmeniz mümkün olsa da, ölçeklendirerek izleme için etkinlik günlükleri yerine Log Analytics kullanmanızı kesinlikle öneririz. Bunu istememizin nedeni:
+Etkinlik günlükleri aracılığıyla bildirim alabilmeniz mümkün olsa da, ölçeklendirerek izleme için etkinlik günlükleri yerine Log Analytics kullanmanızı kesinlikle öneririz. İşte şunları yapın:
 
 - **Sınırlı senaryolar**: etkinlik günlükleri aracılığıyla yapılan bildirimler yalnızca Azure VM yedeklemeleri için geçerlidir. Bildirimlerin her kurtarma hizmetleri Kasası için ayarlanmış olması gerekir.
 - **Tanım Sığdır**: zamanlanmış yedekleme etkinliği, etkinlik günlüklerinin en son tanımına uymuyor. Bunun yerine, [kaynak günlükleriyle](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)hizalanır. Bu hizalama, etkinlik günlüğü kanalı üzerinden akan veriler değiştiğinde beklenmeyen etkilere neden olur.

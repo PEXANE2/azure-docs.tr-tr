@@ -1,18 +1,18 @@
 ---
-title: 'Sanal bir makineye Kopyala ve buradan Yapıştır: Azure savunma | Microsoft Docs'
+title: 'Sanal bir makineye Kopyala ve buradan Yapıştır: Azure savunma'
 description: Bu makalede, savunma kullanarak bir Azure VM 'ye kopyalamayı ve buradan yapıştırmayı öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519364"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989544"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Sanal makineye Kopyala ve Yapıştır: Azure savunma
 
@@ -33,11 +33,11 @@ Yalnızca metin kopyalama/yapıştırma desteklenir. Doğrudan kopyalama ve yap�
 
    ![Araç paleti](./media/bastion-vm-manage/left.png)
 
-   ![Yapıştırır](./media/bastion-vm-manage/clipboard.png)
+   ![yapıştırır](./media/bastion-vm-manage/clipboard.png)
 1. Genellikle, kopyalanmış metin, bir savunma Kopyala Yapıştır paletinde otomatik olarak gösterilir. Metniniz yoksa, metni paletteki metin alanına yapıştırın.
 1. Metin metin alanından olduktan sonra Uzak oturuma yapıştırabilirsiniz.
 
-   ![Masına](./media/bastion-vm-manage/local.png)
+   ![masına](./media/bastion-vm-manage/local.png)
 
 ## <a name="from"></a>Uzak oturumdan Kopyala
 
@@ -48,11 +48,11 @@ Yalnızca metin kopyalama/yapıştırma desteklenir. Doğrudan kopyalama ve yap�
    ![Araç paleti](./media/bastion-vm-manage/remote.png)
 1. Uzak oturum sırasında, iki oku seçerek savunma panosu erişim aracı paletini başlatın. Oklar oturumun sol ortasında bulunur.
 
-   ![Yapıştırır](./media/bastion-vm-manage/clipboard2.png)
+   ![yapıştırır](./media/bastion-vm-manage/clipboard2.png)
 1. Genellikle, kopyalanmış metin, bir savunma Kopyala Yapıştır paletinde otomatik olarak gösterilir. Metniniz yoksa, metni paletteki metin alanına yapıştırın.
 1. Metin metin alanından olduktan sonra yerel cihaza yapıştırabilirsiniz.
 
-   ![Masına](./media/bastion-vm-manage/local2.png)
+   ![masına](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Azure geçişi ile fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846578"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990343"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -38,7 +38,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | **Windows:** Bulmaya dahil etmek istediğiniz tüm Windows sunucularında yerel bir kullanıcı hesabı ayarlayın. Kullanıcı hesabının bu gruplara eklenmesi gerekir-uzak masaüstü kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
+| **İzinler**           | **Windows:** Bulmaya dahil etmek istediğiniz tüm Windows sunucularında yerel veya etki alanı kullanıcı hesabı ayarlayın. Kullanıcı hesabının bu gruplara eklenmesi gerekir-uzak masaüstü kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
 | **İşletim sistemi** | Aşağıdakiler dışında tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri desteklenir:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

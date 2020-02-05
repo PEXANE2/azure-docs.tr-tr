@@ -1,5 +1,5 @@
 ---
-title: Azure Veri Gezgini zaman serisi anomali algılama ve tahmin etme
+title: Zaman serisi anomali algılama & tahmin-Azure Veri Gezgini
 description: Azure Veri Gezgini kullanarak anomali algılama ve tahmin için zaman serisi verilerini çözümlemeyi öğrenin.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e06569a3a6948836201b333501bf2de0416d4ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766047"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985834"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Azure Veri Gezgini anomali algılama ve tahmin etme
 
@@ -20,7 +20,7 @@ Azure Veri Gezgini, bulut hizmetlerinden veya IoT cihazlarından Telemetri veril
 
 Bu makalede Azure Veri Gezgini zaman serisi anomali algılama ve tahmin özelliklerine ilişkin ayrıntılar yer aldığı açıklanır. İlgili zaman serisi işlevleri, her orijinal zaman serisinin mevsimler, eğilim ve kalan bileşenlere dahil edildiği sağlam, iyi bilinen bir ayrıştırma modelini temel alır. Bu durumlar, kalan bileşen üzerinde aykırı durumlar tarafından algılanır, ancak tahmin, mevsimler ve eğilim bileşenleri tahmin edilirken tahmin yapılır. Azure Veri Gezgini uygulama, otomatik mevsimsellik algılama, güçlü aykırı değer analizi ve vektör haline getirilmiş uygulama için, saniyeler içinde binlerce zaman serisini işlemek üzere temel ayrıştırma modelini önemli ölçüde geliştirir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Zaman serisi özelliklerine genel bir bakış için [Azure Veri Gezgini zaman serisi analizini](/azure/data-explorer/time-series-analysis) okuyun.
 

@@ -4,50 +4,49 @@ description: Bu makalede, Azure Backup Izleme uyarısı ve rapor Azure Backup ha
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172921"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989578"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
 
-Bu makalede, Azure izleme uyarısıyla ilgili sık sorulan sorular yanıtlanmaktadır.
+Bu makalede Azure Backup izleme ve raporlama hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Nasıl yaparım? raporlama verilerinin bir depolama hesabında akışa başlayıp başlamadığına bakın.
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Nasıl yaparım? rapor verilerinin bir Log Analytics (LA) çalışma alanına aktarılmaya başlayıp başlamadığına bakın.
 
-Yapılandırdığınız depolama hesabına gidin ve kapsayıcılar ' ı seçin. Kapsayıcıda Öngörüler-logs-azurebackupreport girişi varsa, raporlama verilerinin ' de akışa başlatıldığını belirtir.
+Yapılandırdığınız LA çalışma alanına gidin, **Günlükler** menü öğesine gidin ve sorgu CoreAzureBackup ' ı çalıştırın | 1 yapın. Döndürülmekte olan bir kayıt görürseniz, verilerin çalışma alanına akışını başlatan anlamına gelir. İlk veri gönderme, 24 saate kadar sürebilir.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Bir depolama hesabına veri gönderme sıklığı ve Power BI Azure Backup içerik paketi nedir?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Bir LA çalışma alanına veri gönderme sıklığı nedir?
 
-  Gün 0 kullanıcıları için, bir depolama hesabına veri göndermek yaklaşık 24 saat sürer. Bu ilk gönderme işlemi tamamlandıktan sonra, veriler aşağıdaki şekilde gösterilen sıklığa göre yenilenir.
+Kasadaki Tanılama verileri, bazı gecikmeye sahip Log Analytics çalışma alanına potılmış olur. Her olay, kurtarma hizmetleri kasasından gönderdikten sonra, Log Analytics çalışma alanına 20 ila 30 dakika sonra ulaşır. Gecikme hakkında daha fazla ayrıntı aşağıda verilmiştir:
 
-* **İşlerle**, **uyarılarla**, **yedekleme öğeleriyle** **, kasaların,** **korumalı sunucularla**ve **ilkelerden** ilgili veriler, bir müşteri depolama hesabına ve ne zaman günlüğe kaydedilir.
+* Tüm çözümlerde, yedekleme hizmetinin yerleşik uyarıları, oluşturulduktan hemen sonra gönderilir. Bu nedenle, genellikle 20 ila 30 dakika sonra Log Analytics çalışma alanında görünürler.
+* Tüm çözümlerde, isteğe bağlı yedekleme işleri ve geri yükleme işleri, tamamlanır almaz gönderilir.
+* SQL yedekleme dışındaki tüm çözümler için, zamanlanmış yedekleme işleri, tamamlanır almaz gönderilir.
+* SQL yedekleme için, günlük yedeklemeleri 15 dakikada bir gerçekleşebildiğinden, günlükler de dahil olmak üzere tamamlanan tüm zamanlanmış yedekleme işlerinin bilgileri toplu olarak oluşturulur ve her 6 saatte bir gönderilir.
+* Tüm çözümlerde yedekleme öğesi, ilke, kurtarma noktaları, depolama vb. gibi diğer bilgiler günde en az bir kez gönderilir.
+* Yedekleme yapılandırmasındaki (ilkeyi değiştirme veya ilkeyi değiştirme gibi) bir değişiklik, ilgili tüm yedekleme bilgilerinin bir anında gönderimini tetikler.
 
-* **Depolama** ile ilgili veriler her 24 saatte bir müşteri depolama hesabına gönderilir.
+### <a name="how-long-can-i-retain-reporting-data"></a>Raporlama verilerini ne kadar süreyle saklayabilir?
 
-    ![Azure Backup rapor verileri gönderim sıklığı](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+Bir LA çalışma alanı oluşturduktan sonra, verileri en fazla 2 yıl tutmayı seçebilirsiniz. Varsayılan olarak, bir LA çalışma alanı verileri 31 gün korur.
 
-* Power BI [günde bir kez zamanlanmış yenileme](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)içerir. İçerik paketi için Power BI verileri el ile yenilemeyi gerçekleştirebilirsiniz.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>LA çalışma alanını yapılandırdıktan sonra raporlardaki tüm verilerimi görüyorum mi?
 
-### <a name="how-long-can-i-retain-reports"></a>Raporları ne kadar süreyle tutabilir?
-
-Bir depolama hesabı yapılandırdığınızda, depolama hesabındaki rapor verileri için bir saklama süresi seçebilirsiniz. [Raporlar için depolama hesabını yapılandırma](backup-azure-configure-reports.md#configure-storage-account-for-reports) bölümünde 6. adımı izleyin. Ayrıca, [raporları Excel 'de çözümleyebilir](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) ve gereksinimlerinize göre daha uzun bir saklama süresi için kaydedebilirsiniz.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Depolama hesabını yapılandırdıktan sonra raporlardaki tüm verilerimi görüyorum mi?
-
- Bir depolama hesabını yapılandırdıktan sonra oluşturulan tüm veriler depolama hesabına gönderilir ve raporlarda kullanılabilir. Devam eden işler raporlama için itilmedi. İş bittikten veya başarısız olduktan sonra raporlara gönderilir.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Raporları görüntülemek için depolama hesabını zaten yapılandırdım, yapılandırmayı başka bir depolama hesabı kullanacak şekilde değiştirebilir miyim?
-
-Evet, yapılandırmayı farklı bir depolama hesabına işaret etmek üzere değiştirebilirsiniz. Azure Backup içerik paketine bağlanırken yeni yapılandırılan depolama hesabını kullanın. Ayrıca, farklı bir depolama hesabı yapılandırıldıktan sonra, bu depolama hesabındaki yeni veriler akar. Eski veriler (yapılandırmayı değiştirmeden önce) hala eski depolama hesabında kalmaya devam eder.
+ Tanılama ayarlarını yapılandırdıktan sonra oluşturulan tüm veriler, LA çalışma alanına gönderilir ve raporlarda kullanılabilir. Devam eden işler raporlama için itilmedi. İş bittikten veya başarısız olduktan sonra, raporlara gönderilir.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Raporları kasaların ve aboneliklerde görüntüleyebilir miyim?
 
-Evet, farklı kasaların genelinde aynı depolama hesabını yapılandırarak çapraz kasa raporlarını görüntüleyebilirsiniz. Ayrıca, abonelikler genelinde aynı depolama hesabını da yapılandırabilirsiniz. Daha sonra, raporları görüntülemek için Power BI Azure Backup içerik paketine bağlanırken bu depolama hesabını kullanabilirsiniz. Seçilen depolama hesabı, kurtarma hizmetleri kasasıyla aynı bölgede olmalıdır.
+Evet, raporları kasaların ve aboneliklerde ve bölgeler arasında görüntüleyebilirsiniz. Verileriniz, tek bir LA çalışma alanında ya da bir LA çalışma alanı grubu içinde bulunabilir.
+
+### <a name="can-i-view-reports-across-tenants"></a>Raporları kiracılar arasında görüntüleyebilir miyim?
+
+Müşterilerinizin abonelikleri veya LA çalışma alanlarına temsilci erişimi olan bir [Azure](https://azure.microsoft.com/services/azure-lighthouse/) açık Kullanıcı kullanıyorsanız, tüm kiracılarınızdaki verileri görüntülemek Için Yedekleme raporları ' nı kullanabilirsiniz.
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup Aracısı iş durumunun portalda yansıtılması ne kadar sürer?
 
@@ -85,7 +84,7 @@ Evet. Aşağıdaki durumlarda bildirimler gönderilmez:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer SSS 'leri okuyun:
+Diğer SSS belgelerini okuyun:
 
-* Azure VM yedeklemeleri hakkında [sık sorulan sorular](backup-azure-vm-backup-faq.md) .
-* Azure Backup aracısıyla ilgili [sık sorulan sorular](backup-azure-file-folder-backup-faq.md)
+* Azure VM yedeklemeleriyle ilgili [yaygın sorular](backup-azure-vm-backup-faq.md).
+* Azure Backup aracısıyla ilgili [yaygın sorular](backup-azure-file-folder-backup-faq.md)

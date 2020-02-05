@@ -9,44 +9,44 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165753"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987963"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Hızlı başlangıç: bir tarayıcıyla amaç alın
 
-Bir LUIS tahmin uç noktasının ne döndüğünü anlamak için bir tahmin sonucunu bir Web tarayıcısında görüntüleyin. 
+Bir LUIS tahmin uç noktasının ne döndüğünü anlamak için bir tahmin sonucunu bir Web tarayıcısında görüntüleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bir ortak uygulamayı sorgulamak için şunlar gerekir:
 
-* Bir Language Understanding (LUSıS) yazma veya tahmin anahtarınız [, Luın portalından elde edilebilir (Önizleme)](https://preview.luis.ai/). Zaten anahtar oluşturmak için bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)için kaydolabilirsiniz. 
-* Ortak uygulamanın KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. 
+* Bir Language Understanding (LUSıS) yazma veya tahmin anahtarınız [, Luın portalından elde edilebilir (Önizleme)](https://preview.luis.ai/). Zaten anahtar oluşturmak için bir aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)için kaydolabilirsiniz.
+* Ortak uygulamanın KIMLIĞI: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Tahminleri görmek için tarayıcıyı kullanın
 
-1. Bir web tarayıcısı açın. 
+1. Bir web tarayıcısı açın.
 1. Aşağıdaki URL 'Leri kullanın ve `YOUR-KEY` kendi LUSıS yazma veya tahmin anahtarınızla değiştirin. İstekler GET isteklerdir ve bir sorgu dizesi parametresi olarak LUSıS yazma veya tahmin anahtarınızla yetkilendirmeyi içerir.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 tahmin isteği](#tab/V3-1-1)
-    
-    
+
+
     Bir **Get** Endpoint (yuvalara göre) Isteği IÇIN v3 URL 'sinin biçimi:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
     #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2 tahmin isteği](#tab/V2-1-2)
-    
+
     Bir **Get** Endpoint Isteği IÇIN v2 URL 'sinin biçimi:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
     `
@@ -97,7 +97,7 @@ Bir ortak uygulamayı sorgulamak için şunlar gerekir:
 
     * * *
 
-1. Tüm hedefleri görmek için uygun sorgu dizesi parametresini ekleyin. 
+1. Tüm hedefleri görmek için uygun sorgu dizesi parametresini ekleyin.
 
     #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3 tahmin uç noktası](#tab/V3-3-1)
 
@@ -174,7 +174,7 @@ Bir ortak uygulamayı sorgulamak için şunlar gerekir:
     ```
 
 
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->   
+<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

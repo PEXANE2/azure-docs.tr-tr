@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773446"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982290"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | Teknik profilin etki alanı adı. Örneğin, teknik profiliniz Facebook kimlik sağlayıcısını belirtiyorsa, etki alanı adı Facebook.com olur. |
-| DisplayName | 0:1 | Kullanıcılara görüntülenebilecek teknik profilin adı. |
+| DisplayName | 1:1 | Kullanıcılara görüntülenebilecek teknik profilin adı. |
 | Açıklama | 0:1 | Kullanıcılara görüntülenebilecek teknik profilin açıklaması. |
 | Protokol | 0:1 | Diğer tarafla iletişim için kullanılan protokol. |
 | Meta Veriler | 0:1 | Bir işlem sırasında uç noktayla iletişim kurmak için protokol tarafından kullanılan anahtar/değer çiftleri koleksiyonu. |

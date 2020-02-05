@@ -4,15 +4,15 @@ description: Bu makalede, Azure Log Analytics 'deki ITSM iş öğelerini merkezi
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289144"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990683"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
 
@@ -152,7 +152,7 @@ Pano, bağlantılarla ilgili sorunları çözümlemek için bir başlangıç nok
 
 Ayrıca, Hizmet Eşlemesi çözümü içinde etkilenen bilgisayarlara karşı eşitlenen olayları da görselleştirebilirsiniz.
 
-Hizmet Eşlemesi Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Sunucularınızı düşündüğünüz şekilde (kritik hizmetler sunan birbirine bağlı sistemler halinde) görüntülemenize olanak tanır. Hizmet Eşlemesi, bir aracının yüklenmesi dışında yapılandırma gerektirmeyen TCP bağlantılı bir mimari üzerinde bulunan sunucular, süreçler ve bağlantı noktaları arasındaki bağlantıları gösterir. [Daha fazla bilgi edinin](../../azure-monitor/insights/service-map.md).
+Hizmet Eşlemesi Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu sayede, önemli hizmetleri sunan bağlantılı sistemler gibi, sunucularınızı düşündüğünüzden görüntülemenize izin verir. Hizmet Eşlemesi, bir aracı yüklemesi dışında hiçbir yapılandırma gerekmeden, herhangi bir TCP bağlantılı mimarideki sunucular, süreçler ve bağlantı noktaları arasındaki bağlantıları gösterir. [Daha fazla bilgi edinin](../../azure-monitor/insights/service-map.md).
 
 Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Masası öğelerini aşağıdaki örnekte gösterildiği gibi görüntüleyebilirsiniz:
 
@@ -245,13 +245,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | Çözümleyen|
 | ClosedBy_s  | Kapatan |
 | Source_s| Kişi türü |
-| AssignedTo_s | Atamayı Alan  |
+| AssignedTo_s | Şuna atandı  |
 | Category_s | Kategori |
 | Title_s|  Kısa açıklama |
 | Description_s|  Notlar |
 | CreatedDate_t|  Makta |
 | ClosedDate_t| Kapalı|
-| ResolvedDate_t|Çözüldü|
+| ResolvedDate_t|Çözülüyor|
 | Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıkış verileri
@@ -261,7 +261,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Sayı |
 | CreatedBy_s | İsteyen |
 | ClosedBy_s | Kapatan |
-| AssignedTo_s | Atamayı Alan  |
+| AssignedTo_s | Şuna atandı  |
 | Title_s|  Kısa açıklama |
 | Type_s|  Tür |
 | Category_s|  Kategori |
@@ -271,13 +271,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Risk_s| Risk|
 | Impact_s| Etki|
 | RequestedDate_t  | İstek tarihine göre |
-| ClosedDate_t | Kapatılma tarihi |
+| ClosedDate_t | Kapatma tarihi |
 | PlannedStartDate_t  |     Planlanan başlangıç tarihi |
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
 | Description_s | Açıklama |
-| Bilgisayar  | Yapılandırma Öğesi |
+| Bilgisayar  | Yapılandırma öğesi |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 349932073394a967da58bf521449d22a48c1f91d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931728"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982866"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -216,7 +216,8 @@ Aşağıdaki örnek, MFA doğrulama sayfasında bazı Kullanıcı arabirimi öğ
 |verification_control_but_send_new_code |Yeni kod gönder |
 |verification_control_but_verify_code |Kodu doğrula |
 
-### <a name="verification-display-control-error-messages"></a>Doğrulama görüntüleme denetimi hata iletileri
+## <a name="one-time-password-error-messages"></a>Bir kerelik parola hata iletileri
+Bir [kerelik parola teknik profili](one-time-password-technical-profile.md) hata Iletileri için kimlikler şunlardır
 
 | Kimlik | Varsayılan değer |
 | -- | ------------- |

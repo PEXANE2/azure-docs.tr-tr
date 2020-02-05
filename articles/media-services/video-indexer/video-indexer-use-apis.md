@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892694"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989782"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Öğretici: Video Indexer API'sini kullanma
 
@@ -86,7 +86,7 @@ Hesap Kimliği parametresi, işleme yönelik tüm API çağrıları için gerekl
 
 * Hesap Kimliğini programlı olarak almak için **Video Indexer Geliştirici Portalı**’nı kullanın.
 
-    [Hesap Al](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API’sini kullanın.
+    [Hesap al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API 'sini kullanın.
 
     > [!TIP]
     > `generateAccessTokens=true` parametresini tanımlayarak hesaplar için erişim belirteçleri oluşturabilirsiniz.
@@ -214,4 +214,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[JSON çıktısının ayrıntılarını inceleyin](video-indexer-output-json-v2.md).
+- [JSON çıkışının ayrıntılarını inceleyin](video-indexer-output-json-v2.md)
+- Videoyu karşıya yükleme ve dizine almanın önemli yönlerini gösteren [örnek koda](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API) göz atın. Code WIL, API 'imizi temel işlevler için nasıl kullanacağınızı size iyi bir fikir verir. Satır içi açıklamaları okuduğunuzdan emin olun ve en iyi yöntemler ilerlerimize dikkat edin.
+

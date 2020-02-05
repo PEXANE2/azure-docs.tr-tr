@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468639"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989510"
 ---
 ### <a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -21,7 +21,7 @@ ms.locfileid: "75468639"
 
 ### <a name="publicip"></a>Sanal makinemdeki genel IP 'ye ihtiyacım var mı?
 
-Azure savunma hizmeti ile bağlanmakta olduğunuz Azure sanal makinesinde genel bir IP 'ye ihtiyacınız yoktur. Savunma hizmeti, sanal ağınız dahilinde sanal makinenizin özel IP 'si üzerinden sanal makinenize yönelik RDP/SSH oturumu/bağlantısını açar.
+Azure savunma kullanarak bir VM 'ye bağlandığınızda, bağlandığınız Azure sanal makinesinde genel bir IP 'ye ihtiyacınız yoktur. Savunma hizmeti, sanal ağınız dahilinde sanal makinenizin özel IP 'si üzerinden sanal makinenize yönelik RDP/SSH oturumu/bağlantısını açar.
 
 ### <a name="is-ipv6-supported"></a>IPv6 destekleniyor mu?
 
@@ -33,7 +33,7 @@ Azure portalınızda Azure sanal makinenize RDP/SSH erişimi sağlamak için RDP
 
 ### <a name="agent"></a>Azure sanal makinesinde çalışan bir aracıya ihtiyacım var mı?
 
-Tarayıcınıza veya Azure sanal makinenize bir aracı veya herhangi bir yazılım yüklemeniz gerekmez. Bastion hizmeti aracısızdır ve RDP/SSH için ek bir yazılım gerektirmez.
+Tarayıcınıza veya Azure sanal makinenize bir aracı ya da herhangi bir yazılımı yüklemeniz gerekmez. Bastion hizmeti aracısızdır ve RDP/SSH için ek bir yazılım gerektirmez.
 
 ### <a name="browsers"></a>Hangi tarayıcılar destekleniyor?
 
@@ -62,7 +62,7 @@ Azure savunma Şu anda VM 'nin içindeki en-US-QWERTY klavye yerleşimini destek
 ### <a name="udr"></a>Kullanıcı tanımlı yönlendirme (UDR), bir Azure savunma alt ağında destekleniyor mu?
 
 Hayır. UDR, bir Azure savunma alt ağında desteklenmez.
-Aynı sanal ağda hem Azure savunma hem de Azure Güvenlik Duvarı/ağ sanal gereci (NVA) içeren senaryolarda, Azure savunma ve VM 'leriniz arasındaki iletişim özel olduğundan Azure savunma alt ağından Azure Güvenlik Duvarı 'na trafik zorlamaya gerek kalmaz. Daha fazla ayrıntı için bkz. [Azure Güvenlik duvarı arkasındaki VM 'lere savunma Ile erişme](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+Aynı sanal ağda hem Azure savunma hem de Azure Güvenlik Duvarı/ağ sanal gereci (NVA) içeren senaryolarda, Azure savunma ve VM 'leriniz arasındaki iletişim özel olduğundan Azure savunma alt ağından Azure Güvenlik Duvarı 'na trafik zorlamaya gerek kalmaz. Daha fazla bilgi için bkz. [Azure Güvenlik duvarı arkasındaki sanal makinelere savunma Ile erişme](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
 ### <a name="filetransfer"></a>Azure savunma RDP oturumunda dosya aktarımı destekleniyor mu?
 

@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911004"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988558"
 ---
 # <a name="get-shape-data"></a>Şekil verilerini alma
 
-Bu makalede, [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) **Drawingmanager. GetSource ()** işlevini kullanarak haritada çizilmiş şekil verilerini alma işlemi gösterilmektedir. Çizilmiş bir şeklin coğrafi JSON verilerini ayıklamak ve başka bir yerde kullanmak isteyebileceğiniz çeşitli senaryolar olabilir.  
+Bu makalede, haritada çizilen şekillerin verilerini nasıl alacağınız gösterilmektedir. [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)Içinde **Drawingmanager. GetSource ()** işlevini kullanıyoruz. Çizilmiş bir şeklin coğrafi JSON verilerini ayıklamak ve başka bir yerde kullanmak istediğinizde çeşitli senaryolar vardır.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Çizilen şekilden verileri al
 
-Aşağıdaki işlev, çizilen şeklin kaynak verilerini alır ve ekranda çıktı. 
+Aşağıdaki işlev, çizilen şeklin kaynak verilerini alır ve ekrana verir. 
 
 ```Javascript
 function getDrawnShapes() {

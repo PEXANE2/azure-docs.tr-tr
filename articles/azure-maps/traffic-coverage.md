@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9e9a3d13eeb0c8704e2faac1037d51e5bd322dc4
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945105"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988155"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure haritalar trafik kapsamı
 
@@ -23,7 +23,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Ülke/Bölge  |Olaylar  |Akış  |
+|Ülke/Bölge  |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Arjantin      |✓         |✓         |
 |Brezilya     |✓         |✓         |
@@ -39,10 +39,10 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-|Ülke/Bölge   |Olaylar  |Akış  |
+|Ülke/Bölge   |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Avustralya     |✓         |✓        |
-|Brunei   |✓         |✓        |
+|Barış   |✓         |✓        |
 |Hong Kong SAR     |✓         |✓         |
 |Hindistan   |✓         |✓         |
 |Endonezya     |✓         |✓         |
@@ -59,7 +59,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="europe"></a>Avrupa
 
-|Ülke/Bölge   |Olaylar  |Akış  |
+|Ülke/Bölge   |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Avusturya     |✓         |✓         |
@@ -117,7 +117,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-|Ülke/Bölge |Olaylar  |Akış  |
+|Ülke/Bölge |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Bahreyn     |✓         |✓         |
 |Mısır     |✓         |✓         |

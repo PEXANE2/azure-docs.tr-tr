@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281283"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988082"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -72,7 +72,7 @@ Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443
 **Özellik** | **Ayrıntılar**
 --- | ---
 Bant genişliği denetimi | Destekleniyor. MARS aracısında, bant genişliğini ayarlamak için **Özellikleri Değiştir** ' i kullanın.
-Ağ kapasitesi azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
+Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
 
 ## <a name="support-for-direct-backups"></a>Doğrudan yedeklemeler için destek
 
@@ -95,8 +95,6 @@ Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet | Hay�
 Windows Server 2016 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, Foundation) | Evet | Evet |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Evet | Evet | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Evet | Hayır | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) <br> -Sanal sunucu 2005 tabanı + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
@@ -132,7 +130,7 @@ Sabit bağlantılar| Desteklenmez. Atlanmış.
 Yeniden ayrıştırma noktası| Desteklenmez. Atlanmış.
 Şifrelenmiş ve seyrek |Desteklenmez. Atlanmış.
 Sıkıştırılmış akış| Desteklenmez. Atlanmış.
-Aralıklı akış| Desteklenmez. Atlanmış.
+Seyrek akış| Desteklenmez. Atlanmış.
 OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmez.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler

@@ -4,12 +4,12 @@ description: Service Fabric ile Azure için Yönetilen kimlikler kullanma hakkı
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934975"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986759"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Service Fabric ile Azure için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -30,7 +30,7 @@ Azure için Yönetilen kimlikler çeşitli önemli kavramlara dayalıdır:
 
 - **Hizmet sorumlusu** -belirli bir KIRACıDA bir AAD uygulamasının projeksiyonunu temsil eden bir Azure Active Directory nesnesi (Ayrıca bkz. [hizmet sorumlusu](../active-directory/develop/developer-glossary.md#service-principal-object).)
 
-, Yönetilen kimliklerin iki türüdür:
+İki tür yönetilen kimlik vardır:
 
 - **Sistem tarafından atanan yönetilen kimlik** doğrudan bir Azure hizmeti örneği üzerinde etkinleştirilir.  Sistem tarafından atanan kimliğin yaşam döngüsü, etkinleştirilmiş olduğu Azure hizmet örneği için benzersizdir.
 - **Kullanıcı tarafından atanan yönetilen kimlik**, tek başına bir Azure kaynağı olarak oluşturulur. Kimlik bir veya daha fazla Azure hizmet örneğine atanabilir ve bu örneklerin yaşam döngülerinden ayrı olarak yönetilir.
@@ -39,7 +39,7 @@ Yönetilen kimlik türleri arasındaki farkı daha fazla anlamak için bkz. [Azu
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric uygulamalar için desteklenen senaryolar
 
-Service Fabric Yönetilen kimlikler yalnızca Azure tarafından dağıtılan Service Fabric kümelerinde ve yalnızca Azure kaynakları olarak dağıtılan uygulamalar için desteklenir; Azure kaynağı olarak dağıtılmayan bir uygulamaya bir kimlik atanamaz. Kavramsal konuşma, Azure Service Fabric kümesindeki Yönetilen kimlikler için destek iki aşamadan oluşur:
+Service Fabric Yönetilen kimlikler yalnızca Azure tarafından dağıtılan Service Fabric kümelerinde ve yalnızca Azure kaynakları olarak dağıtılan uygulamalar için desteklenir; Azure kaynağı olarak dağıtılmayan bir uygulamaya bir kimlik atanamaz. Kavramsal konuşma, bir Azure Service Fabric kümesindeki Yönetilen kimlikler için destek iki aşamadan oluşur:
 
 1. Uygulama kaynağına bir veya daha fazla yönetilen kimlik atayın; bir uygulamaya, sırasıyla, tek bir sistem tarafından atanan kimlik ve/veya en fazla 32 Kullanıcı tarafından atanan kimlik atanabilir.
 

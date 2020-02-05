@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772027"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990717"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -39,14 +39,7 @@ Gereç destek gereksinimlerini [gözden geçirin](migrate-appliance.md) .
 Gereç makinesi bir proxy 'nin arkasındaysa bu durum oluşabilir.
 
 - Proxy 'ye ihtiyaç duyuyorsa yetkilendirme kimlik bilgilerini sağladığınızdan emin olun.
-- Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu URL 'Leri izin verilenler listesine ekleyin:
-
-    - [VMware değerlendirmesi URL 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-V değerlendirmesi için URL 'Ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [VMware aracısız geçişinin URL 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [VMware Aracısı tabanlı geçiş için URL 'ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-V geçişi için URL 'Ler](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, [Bu URL 'leri](migrate-appliance.md#url-access) izin verilenler listesine ekleyin.
 - İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](https://docs.microsoft.com/azure/migrate/concepts-collector)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
 
 ##  <a name="datetime-synchronization-error"></a>Tarih/saat eşitleme hatası

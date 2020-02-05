@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7b04251211e716ef8e5f8c77aa3a2e74f6e9ef77
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112545"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982524"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
 
@@ -29,8 +29,8 @@ Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı öl
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Önkoşullar
-- None
+## <a name="prerequisites"></a>Ön koşullar
+- Hiçbiri
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı sayaç izleme uygulaması oluşturma 
@@ -51,8 +51,9 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
     * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
     * **Faturalandırma bilgisi**: uygulamanın kendisi ücretsizdir. Uygulamanıza yönelik kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
     * Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın, uygulamanız bir dakika içinde oluşturulur.     
-        > [!div class="mx-imgBorder"]
-        > Yeni ![uygulama formu](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+         Yeni ![uygulama formu](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+         ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve sanal verileri doğrulama

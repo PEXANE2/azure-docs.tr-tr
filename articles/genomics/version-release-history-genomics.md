@@ -9,22 +9,25 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249147"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991091"
 ---
 # <a name="version-release-history"></a>Sürüm yayınlama geçmişi
 Microsoft Genomiks ekibi, düzeltmeler ve yeni işlevler için Microsoft Genomiks Python istemcisini düzenli olarak güncelleştirir. 
 
 ## <a name="latest-release"></a>En son sürüm
-Geçerli Python istemcisi sürüm 0.8.1. 3 2018 Aralık olarak yayımlanmıştır ve GATK 3,5 ve GATK4 ile iş akışlarının çalıştırılmasını destekler. Ayrıca, gVCF çıkışını destekler.
+Geçerli Python istemcisi sürüm 0.9.0. 6 2019 Şubat tarihinde yayımlanmıştır ve GATK 3,5 ve GATK4 ile iş akışlarının çalıştırılmasını destekler. GVCF çıkışını destekler ve çıkış sıkıştırması için isteğe bağlı bir bağımsız değişkeni kabul edebilir.
 
 
 ## <a name="release-history"></a>Yayın geçmişi 
-Microsoft Genomiks Python istemcisinin yeni sürümleri yılda iki kez yayımlanır. Microsoft Genomiks Python istemcisinin yeni sürümleri yayınlanmışsa, düzeltmelerin ve özelliklerin bir listesi burada güncellenir. Yeni sürümler yayınlandığında, önceki sürümlerin en az 90 gün boyunca desteklenmeye devam etmesi gerekir. Önceki sürümler artık desteklenmedikçe bu sayfada belirtilir. 
+Microsoft Genomiks Python istemcisinin yeni sürümleri her yıl yaklaşık bir kez yayımlanır. Microsoft Genomiks Python istemcisinin yeni sürümleri yayınlanmışsa, düzeltmelerin ve özelliklerin bir listesi burada güncellenir. Yeni sürümler yayınlandığında, önceki sürümlerin en az 90 gün boyunca desteklenmeye devam etmesi gerekir. Önceki sürümler artık desteklenmedikçe bu sayfada belirtilir. 
+
+### <a name="version-090"></a>Sürüm 0.9.0
+Sürüm 0.9.0, çıkış sıkıştırması için destek içerir. Bu, çalıştırılan `-bgzip` ve ardından VCF veya gvcf çıkışında `-tabix` ile eşdeğerdir. Daha fazla bilgi için bkz. [sık sorulan sorular](frequently-asked-questions-genomics.md). 
 
 ### <a name="version-081"></a>Sürüm 0.8.1
 Sürüm 0.8.1, küçük hata düzeltmeleri içerir.  

@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863487"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984599"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 'SI için kimlik doğrulaması ve yetkilendirme
 
@@ -93,7 +93,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    1. Belirteç daha sonra uygulama Time Series Insights API 'sini çağırdığında `Authorization` üst bilgisine geçirilebilir.
 
-* Alternatif olarak, geliştiriciler MSAL kullanarak kimlik doğrulaması yapabilir. Daha fazla bilgi edinmek için [msal 'e geçiş](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) hakkında bilgi edinin. 
+* Alternatif olarak, geliştiriciler MSAL kullanarak kimlik doğrulaması yapabilir. [Msal 'e geçme](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) hakkında bilgi edinin ve daha fazla bilgi edinmek için makaleyi [ C# kullanarak Azure Time Series Insights ortamı için GA-Manage GA başvuru verilerini](time-series-insights-manage-reference-data-csharp.md) inceleyin. 
 
 ## <a name="common-headers-and-parameters"></a>Ortak üstbilgiler ve parametreler
 

@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 01/23/2018
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5db3b978193ab51fc60f1bcb97d83b4d24037b54
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 69e6b7beecb95c0e89b60640353155fc7802a881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66511397"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982951"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -41,6 +41,7 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | OpenID Connect’i kullanarak Express ile Web uygulaması ayarlamanın hızlı ve kolay bir yolunu sağlayan Node.js uygulaması. |
 | [javascript-nodejs-webapp](https://github.com/AzureADQuickStarts/active-directory-b2c-javascript-nodejs-webapp) | OAuth2 protokolünü kullanarak bir REST API hizmetini ayarlamanın hızlı ve kolay bir yolunu sağlayan node.js sunucusu. |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | Azure AD B2C için, Web API’nizin nasıl korunacağını ve passport.js kullanılarak B2C erişim belirteçlerinin nasıl kabul edileceğini gösteren küçük bir node.js Web API’si. |
+| [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Microsoft Identity platform B2C 'yi bir Python web uygulamasıyla tümleştirmeyi gösterir.  |
 
 ## <a name="single-page-apps"></a>Tek sayfa uygulamalar
 

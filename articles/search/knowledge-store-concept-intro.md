@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754102"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988643"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi depolarına giriş
 
@@ -133,147 +133,11 @@ Depolarda enzenginler varsa, Azure Blob veya tablo depolama 'ya bağlanan herhan
 
 ## <a name="api-reference"></a>API başvurusu
 
-Bu bölüm, bir `knowledgeStore` tanımı içerecek şekilde değiştirilen [Create beceri (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) başvuru belgesi 'nin bir sürümüdür. 
+REST API sürüm `2019-05-06-Preview` becerileri üzerinde ek tanımlar aracılığıyla bilgi deposu sağlar. Başvuruya ek olarak, API 'Leri çağırma hakkında ayrıntılı bilgi için bkz. [Postman kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md) .
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Örnek-knowledgeStore Embedded beceri
++ [Beceri oluşturma (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Güncelleştirme beceri (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-Aşağıdaki örnekte, bir beceri tanımının en altında `knowledgeStore` gösterilmektedir. 
-
-* İsteği formülleştirmek için **Post** veya **PUT** kullanın.
-* Bilgi deposu işlevine erişmek için REST API `api-version=2019-05-06-Preview` sürümünü kullanın. 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-İsteğin gövdesi, `knowledgeStore`içeren bir beceri tanımlayan bir JSON belgesidir.
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>İstek gövdesi sözdizimi  
-
-Aşağıdaki JSON, bir `indexer` (gösterilmez) tarafından çağrılan [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset)bir parçası olan `knowledgeStore`belirtir. AI zenginleştirme hakkında zaten bilgi sahibiyseniz bir beceri, zenginleştirilmiş bir belgenin birleşimini belirler. Bir beceri, veri yapılarını modüle ediyorsanız en az bir yetenek, büyük olasılıkla yetenek başına bir yetenek içermelidir.
-
-İstek yükünü yapılandırmak için sözdizimi aşağıdaki gibidir.
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-`knowledgeStore` iki özelliğe sahiptir: bir Azure depolama hesabına `storageConnectionString` ve fiziksel depolamayı tanımlayan `projections`. Herhangi bir depolama hesabını kullanabilirsiniz, ancak aynı bölgedeki hizmetleri kullanmak uygun maliyetli olabilir.
-
-`projections` koleksiyonu İzdüşüm nesneleri içerir. Her projeksiyon nesnesinin, belirtilen veya null olan `tables`, `objects`, `files` (her biri) sahip olması gerekir. Yukarıdaki sözdizimi iki nesne gösterir, biri tam olarak belirtilir ve diğeri tamamen null. Yansıtma nesnesi içinde, depolama alanında ifade edildikten sonra veriler arasındaki ilişkiler korunur. 
-
-Yalıtımı ve belirli senaryoları desteklemek için ihtiyacınız olan çok sayıda yansıtma nesnesi oluşturun (örneğin, araştırma için kullanılan veri yapıları ve bir veri bilimi iş yükünde gerekenlere karşı). `source` ve `storageContainer` ya da bir nesne içindeki farklı değerlere `table` ayarlayarak belirli senaryolar için yalıtım ve özelleştirme sağlayabilirsiniz. Daha fazla bilgi ve örnek için bkz. [bir bilgi deposunda projeksiyonlarla çalışma](knowledge-store-projection-overview.md).
-
-|Özellik      | Uygulandığı öğe: | Açıklama|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | Gereklidir. Şu biçimde: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | Gereklidir. `tables`, `objects`, `files` ve ilgili özelliklerinden oluşan özellik nesnelerinin bir koleksiyonu. Kullanılmayan projeksiyonlar null olarak ayarlanabilir.|  
-|`source`| Tüm projeksiyler| Projeksiyonun kökü olan zenginleştirme ağacının düğümünün yolu. Bu düğüm, Beceri içindeki yeteneklerin herhangi birinin çıktıdır. Yollar, zenginleştirilmiş belgeyi temsil eden, ancak `/document/content/` veya belge ağacı içindeki düğümlere genişletilebilen `/document/`başlar. Örnekler: `/document/countries/*` (tüm ülkeler) veya `/document/countries/*/states/*` (tüm ülkelerde tüm durumlar). Belge yolları hakkında daha fazla bilgi için bkz. [beceri kavramları ve bileşimi](cognitive-search-working-with-skillsets.md).|
-|`tableName`| `tables`| Azure Tablo depolamada oluşturulacak bir tablo. |
-|`storageContainer`| `objects`, `files`| Azure Blob depolamada oluşturulacak kapsayıcının adı. |
-|`generatedKeyName`| `tables`| Bir belgeyi benzersiz bir şekilde tanımlayan tabloda oluşturulan sütun. Zenginleştirme ardışık düzeni, bu sütunu üretilen değerlerle doldurur.|
-
-
-### <a name="response"></a>Yanıt  
-
- Başarılı bir istek için "201 oluşturuldu" durum kodunu görmeniz gerekir. Varsayılan olarak, yanıt gövdesi oluşturulan beceri tanımı için JSON 'u içerir. Bilgi deposunun, bu beceri başvuran bir Dizin Oluşturucu çağırana kadar oluşturulmadığından emin olarak unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

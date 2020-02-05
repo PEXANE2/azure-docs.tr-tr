@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823652"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987031"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
 
@@ -81,7 +81,7 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 
 Örneği indirmek ve çalıştırmak için aşağıdaki adımları izleyin: 
 
-1. [Azure SQL Için elastik veritabanı araçları-MSDN 'Den Başlarken örneği](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) ' ni indirin. Örneği, seçtiğiniz bir konuma ayıklayın.
+1. [Azure SQL Için elastik veritabanı araçları-başlangıç örneği](https://github.com/Azure/elastic-db-tools)' ni indirin. Örneği, seçtiğiniz bir konuma ayıklayın.
 
 2. Bir proje oluşturmak için, *C#* dizinden *Elakıscalestarterkit. sln* çözümünü açın.
 
@@ -91,7 +91,7 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 
 5. İstemci kitaplığı özellikleri hakkında daha fazla bilgi edinmek için çeşitli seçeneklerle denemeler yapın. Uygulamanın konsol çıkışında aldığı ve arka planda kodu keşfetmeye yönelik adımlara göz atın.
    
-    ![Lemesine][4]
+    ![İlerleme durumu][4]
 
 Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk parçalı uygulamanızı başarıyla oluşturup çalıştırın. SQL veritabanınıza bağlanmak için Visual Studio 'Yu veya SQL Server Management Studio kullanın ve örneğin oluşturulan parçalara hızlıca göz atın. Yeni örnek parça veritabanları ve örneğin oluşturduğu bir parça eşleme Yöneticisi veritabanı fark edeceksiniz.
 
@@ -127,7 +127,7 @@ Fiyatlandırma bilgileri için bkz. [SQL Veritabanı Fiyatlandırma ayrıntılar
 Elastik veritabanı araçları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * Kod örnekleri: 
-  * Elastik veritabanı araçları ([.net](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * Elastik veritabanı araçları ([.net](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Azure SQL Entity Framework tümleştirme için elastik veritabanı araçları](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Betik merkezinde parça esnekliği](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [elastik ölçek duyurusu](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

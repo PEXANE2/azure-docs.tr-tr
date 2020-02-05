@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
+ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4258bec3ceacd52f9679f48d8357be558ee0e27f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561624"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986640"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services’a giriş
 Azure 'da laboratuvar ortamlarını bulutta ayarlamanıza olanak tanıyan iki hizmet vardır. 
@@ -35,9 +35,6 @@ Bu hizmetler (Azure DevTest Labs ve Azure Lab Services) aşağıdaki temel özel
 - **Maliyet iyileştirme ve analizi**. Laboratuvar sahibi, sanal makineleri otomatik olarak kapatmak ve başlatmak için laboratuvar zamanlamaları ayarlayabilir. Laboratuvar sahibi, laboratuvarın sanal makinelerine kullanıcılar tarafından erişilebildiğinde zaman dilimlerini belirlemek üzere bir zamanlama ayarlayabilir, maliyeti iyileştirmek için kullanıcı ya da laboratuvar başına kullanım ilkeleri belirleyebilir ve bir laboratuvardaki kullanım ve etkinlik eğilimlerini analiz edebilir. Sınıf laboratuvarları gibi yönetilen laboratuvar türleri için şu anda daha küçük bir maliyet iyileştirmesi ve analiz seçenekleri alt kümesi bulunabilir.
 - **Yerleşik güvenlik**. Laboratuvar sahibi, özel bir sanal ağ ve bir laboratuvar alt ağı oluşturabilir ve paylaşılan bir genel IP adresini etkinleştirebilir. Laboratuvar kullanıcıları, ExpressRoute veya siteden siteye VPN ile yapılandırılan sanal ağı kullanarak kaynaklara güvenle erişebilir. (şu anda yalnızca DevTest Labs ile kullanılabilir)
 - **İş akışlarınız ve araçlarınızla tümleştirme**. Azure Lab Services, laboratuvarları kuruluşunuzun web sitesi ve yönetim sistemleri ile tümleştirme olanağı sağlar. Ortamları sürekli tümleştirme/sürekli dağıtım (CI/CD) araçlarınızın içinden otomatik olarak sağlayabilirsiniz. (şu anda yalnızca DevTest Labs ile kullanılabilir)
-
-> [!NOTE]
-> Şu anda Azure Lab Services yalnızca Azure Market görüntülerinden oluşturulan sanal makineleri destekler. Özel görüntüler kullanmak veya laboratuvar ortamında başka PaaS kaynakları oluşturmak istiyorsanız, DevTest Labs kullanın. Daha fazla bilgi için bkz. [DevTest Labs 'de özel görüntü oluşturma](devtest-lab-create-custom-image-from-vm-using-portal.md) ve [Kaynak Yöneticisi şablonları kullanarak laboratuvar ortamları oluşturma](devtest-lab-create-environment-from-arm.md).
 
 ## <a name="scenarios"></a>Senaryolar
 

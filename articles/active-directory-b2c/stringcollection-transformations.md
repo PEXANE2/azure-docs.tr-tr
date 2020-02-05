@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951012"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982305"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection talep dönüştürmeleri
 
@@ -30,9 +30,9 @@ Yeni bir stringCollection talebine bir dize talebi ekler.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | öğe | string | Çıkış talebine eklenecek ClaimType. |
+| Inputclaim | maddesinin | string | Çıkış talebine eklenecek ClaimType. |
 | Inputclaim | koleksiyon | stringCollection | Seçim Belirtilmişse, talep dönüştürmesi öğeleri bu koleksiyondan kopyalar ve öğeyi çıkış koleksiyonu talebinin sonuna ekler. |
-| outputClaim | koleksiyon | stringCollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. |
+| OutputClaim | koleksiyon | stringCollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. |
 
 Yeni veya mevcut bir stringCollection 'a bir dize eklemek için bu talep dönüşümünü kullanın. Bu, yaygın olarak bir **AAD-Userwriteusingalternativesecurityıd** teknik profilinde kullanılır. Yeni bir sosyal hesap oluşturulmadan önce, **Createothermailsfromemail** talep dönüştürmesi ClaimType 'ı okur ve değeri **Diğer postalar** ClaimType 'a ekler.
 
@@ -65,8 +65,8 @@ Yeni bir stringCollection talebine bir String parametresi ekler.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | koleksiyon | stringCollection | Seçim Belirtilmişse, talep dönüştürmesi öğeleri bu koleksiyondan kopyalar ve öğeyi çıkış koleksiyonu talebinin sonuna ekler. |
-| InputParameter | öğe | string | Çıkış talebine eklenecek değer. |
-| outputClaim | koleksiyon | stringCollection | Bu Claimstrans, tarafından üretilecek olan ClaimTypes çağrılır. |
+| InputParameter | maddesinin | string | Çıkış talebine eklenecek değer. |
+| OutputClaim | koleksiyon | stringCollection | Bu Claimstrans, tarafından üretilecek olan ClaimTypes çağrılır. |
 
 Yeni veya mevcut bir stringCollection 'a bir dize değeri eklemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, **Diğer postalar** talebine bir sabit e-posta adresi (admin@contoso.com) ekler.
 
@@ -100,7 +100,7 @@ Belirtilen dize koleksiyonundan ilk öğeyi alır.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | koleksiyon | stringCollection | Öğeyi almak için talep dönüştürmesi tarafından kullanılan ClaimTypes. |
-| outputClaim | Extracteditıtem | string | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Koleksiyondaki ilk öğe. |
+| OutputClaim | Extracteditıtem | string | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Koleksiyondaki ilk öğe. |
 
 Aşağıdaki örnek, **Diğer postalar** talebini okur ve ilk öğeyi **e-posta** talebine döndürür.
 
@@ -121,4 +121,42 @@ Aşağıdaki örnek, **Diğer postalar** talebini okur ve ilk öğeyi **e-posta*
   - **koleksiyon**: ["someone@outlook.com", "someone@contoso.com"]
 - Çıkış talepleri:
   - **Extractedidıtem**: "someone@outlook.com"
+
+
+## <a name="stringcollectioncontains"></a>StringCollectionContains
+
+Bir StringCollection talep türünün bir öğe içerip içermediğini denetler
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | stringCollection | Aranacak talep türü. |
+|InputParameter|maddesinin|string|Aranacak değer.|
+|InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizelerin durumunu yoksayıp saymayacağını belirtir.|
+| OutputClaim | OutputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Koleksiyon böyle bir dize içeriyorsa Boolean göstergesi |
+
+Aşağıdaki örnek, `roles` stringCollection talep türünün **yönetici**değerini içerip içermediğini denetler.
+
+```XML
+<ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="item" DataType="string" Value="Admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+- Giriş talepleri:
+    - **ınputclaim**: ["okuyucu", "yazar", "Yönetici"]
+- Giriş parametreleri:
+    - **öğe**: "Yönetici"
+    - **IgnoreCase**: "true"
+- Çıkış talepleri:
+    - **Outputclaim**: "true"
+
 

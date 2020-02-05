@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434997"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987603"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central Stream Analytics, Azure Işlevleri ve SendGrid kullanarak özel kurallarla genişletme
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ödeme planı | Kullandıkça Öde |
+| Fiyatlandırma planı | Standart |
 | Uygulama şablonu | Eski uygulama |
 | Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
 | URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
@@ -90,9 +90,9 @@ Aşağıdaki ayarlara sahip [bir işlev uygulaması oluşturmak için Azure Port
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | İşletim Sistemi | Windows |
-| Barındırma Planı | Tüketim Planı |
+| Barındırma planı | Tüketim Planı |
 | Konum | Doğu ABD |
-| Çalışma Zamanı Yığını | .NET |
+| Çalışma zamanı yığını | .NET |
 | Depolama | Yeni oluştur |
 
 ### <a name="sendgrid-account"></a>SendGrid hesabı
@@ -102,7 +102,7 @@ Aşağıdaki ayarlarla [bir SendGrid hesabı oluşturmak için Azure Portal](htt
 | Ayar | Değer |
 | ------- | ----- |
 | Ad    | SendGrid hesabınızın adını seçin |
-| Parola | Bir parola oluşturma |
+| Parola | Parola oluştur |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | Fiyatlandırma katmanı | F1 Ücretsiz |
@@ -318,7 +318,7 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
     | Olay hub'ı | centralexport |
     | Ölçümler | Açık |
     | Cihazlar | Kapalı |
-    | Cihaz Şablonları | Kapalı |
+    | Cihaz şablonları | Kapalı |
 
 ![Sürekli veri dışa aktarma yapılandırması](media/howto-create-custom-rules/cde-configuration.png)
 

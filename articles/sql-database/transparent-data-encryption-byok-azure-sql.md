@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981898"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990989"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 
@@ -124,7 +124,7 @@ Anahtar erişimi geri yüklendikten sonra, veritabanı yeniden çevrimiçi durum
 
 - Anahtar erişimi 8 saat içinde geri yüklenirse, veritabanı bir sonraki saat içinde otomatik olarak alınır.
 
-- Anahtar erişimi 8 saatten uzun bir süre geçtikten sonra geri yüklenirse, otomatik heveme mümkün olmaz ve veritabanının boyutuna bağlı olarak, bir destek bileti açılmasını gerektiren önemli miktarda zaman alabilir. Veritabanı yeniden çevrimiçi olduktan sonra, önceden [Yük devretme grubu](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) yapılandırması, zaman içinde geri yükleme geçmişi ve Etiketler gibi sunucu düzeyi ayarları daha önce yapılandırılmış olur. Bu nedenle, temel alınan anahtar erişim sorunlarını 8 saat içinde tanımlamanızı ve adresetmenizi sağlayan bir bildirim sistemi uygulanması önerilir.
+- Anahtar erişimi 8 saatten uzun bir süre sonra geri yüklenirse, otomatik heveme mümkün olmaz ve veritabanının geri yüklenmesi portalda ek adımlar gerektirir ve veritabanının boyutuna bağlı olarak önemli miktarda zaman alabilir. Veritabanı yeniden çevrimiçi olduktan sonra, önceden [Yük devretme grubu](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) yapılandırması, zaman içinde geri yükleme geçmişi ve Etiketler gibi sunucu düzeyi ayarları daha önce **yapılandırılmış olur.** Bu nedenle, temel alınan anahtar erişim sorunlarını 8 saat içinde tanımlamanızı ve adresetmenizi sağlayan bir bildirim sistemi uygulanması önerilir.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Yanlışlıkla TDE koruyucu erişimi iptali
 

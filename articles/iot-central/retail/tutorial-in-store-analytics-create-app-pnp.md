@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702034"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990666"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihazları uygulamanıza bağlama
 > * Koşulları izlemek için kurallar ve eylemler ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici serisini tamamlayabilmeniz için şunlar gerekir:
 * Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -80,6 +80,8 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 1. **Oluştur**'u seçin.
 
     ![Azure IoT Central Uygulama Oluştur sayfası](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
+
+    ![Azure IoT Central uygulama faturalandırma bilgileri oluşturma](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Uygulama ayarlarını özelleştirme
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz. Bu bölümde, önceden tanımlanmış bir uygulama teması seçersiniz. İsteğe bağlı olarak, özel bir tema oluşturmayı ve uygulama görüntüsünü güncelleştirmeyi öğreneceksiniz. Özel bir tema uygulama tarayıcısı renklerini, tarayıcı simgesini ve künyesi içinde görüntülenen uygulama logosunu ayarlamanıza olanak sağlar.
@@ -186,7 +188,7 @@ Aşağıdaki adımlarda, RuuviTag sensörlerinden `humidity` telemetri türünü
 
 1. **Anlamsal tür** seçeneğini *none* iken *nem*olarak değiştirin.  İsteğe bağlı olarak, genişletilmiş şema görünümünde nem telemetri türü için şema değerlerini ayarlayın. Şema ayarları, sensörlerinizin izlediğiniz veriler için ayrıntılı doğrulama gereksinimleri oluşturmanıza imkan tanır. Örneğin, belirli bir arabirim için en düşük ve en yüksek işletim aralığı değerlerini ayarlayabilirsiniz.
 
-1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
+1. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.
 
     ![Azure IoT Central RuuviTag cihaz şablonu özelleştirmesi](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 
@@ -214,7 +216,7 @@ Her bir cihazın konumunu depolamak üzere özel bir özellik oluşturmak için 
 
     Bir cihaz şablonu yayımlandığında uygulama işleçleri görünür hale gelir. Bir şablon yayımladıktan sonra, test etmek için sanal cihazlar oluşturmak veya gerçek cihazları uygulamanıza bağlamak için kullanın. Uygulamanıza bağlı cihazlarınız zaten varsa, özelleştirilmiş bir şablon yayımlandığında bu değişiklikler cihazlara bağlanır.
 
-## <a name="add-devices"></a>Cihaz Ekle
+## <a name="add-devices"></a>Cihazları ekleme
 Cihaz şablonlarını oluşturup özelleştirdikten sonra cihaz ekleme zamanı. 
 
 Bu öğreticide, uygulamayı derlemek için aşağıdaki gerçek ve sanal cihaz kümesini kullanacaksınız:

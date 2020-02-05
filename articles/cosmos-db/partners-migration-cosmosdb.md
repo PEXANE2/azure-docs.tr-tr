@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530706"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988184"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL geçiş ve uygulama geliştirme iş ortakları
 
@@ -21,7 +21,6 @@ Uygulama geliştirme için NoSQL geçiş, Azure Cosmos DB çözümlerinizi deste
 
 |**İş ortağı**  |**Yeteneklerini ve deneyimini**  |**Desteklenen ülkeler/bölgeler**  |**lgili kişi**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | MongoDB 'den Azure Cosmos DB veri geçişi. <br/> Imanis verilerin hızlı ve kolay bir şirket içi geçirmek veya Azure Cosmos DB için MongoDB veritabanları bulut açıdan sağlar. Imanis veri geçişini basitleştirir ve kapalı kalma süresini önemli ölçüde azaltır MongoDB veri depoları için bir bulut aracısız, devamlı artımlı geçiş yaklaşımı sunar.|  ABD  |   [Web sitesi](https://www.cohesity.com/products/imanis-data/)      |
 |![Striim][2]    |  [Azure Cosmos DB için gerçek zamanlı veri taşıma](https://www.striim.com/striim-for-azure-cosmos-db/) çeşitli veri kaynakları. <br/> Anlık ım, kurumsal belge ve ilişkisel veritabanları, sensör ve günlük Azure Cosmos DB dosyaları da dahil olmak üzere çok çeşitli şirket içi kaynaklardan gerçek zamanlı toplama ve veri taşımayı basitleştirir. |   ABD   |  [Web sitesi](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Sistemleri Tümleştirici iş ortakları
@@ -59,7 +58,6 @@ Uygulama geliştirme için NoSQL geçiş, Azure Cosmos DB çözümlerinizi deste
 Bazı Microsoft'un diğer iş ortaklarıyla ilgili daha fazla bilgi için bkz. [Microsoft Partner site](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
-[1]: ./media/partners-migration-cosmosdb/imanisdata_logo.png
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png

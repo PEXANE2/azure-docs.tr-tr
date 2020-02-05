@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435041"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987637"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ödeme planı | Kullandıkça Öde |
+| Fiyatlandırma planı | Standart |
 | Uygulama şablonu | Eski uygulama |
 | Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
 | URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
@@ -112,7 +112,7 @@ Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde gör
     | Olay hub'ı | centralexport |
     | Ölçümler | Açık |
     | Cihazlar | Kapalı |
-    | Cihaz Şablonları | Kapalı |
+    | Cihaz şablonları | Kapalı |
 
 ![Sürekli veri dışa aktarma yapılandırması](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -131,14 +131,14 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Ayar | Değer |
 | ------- | ----- |
 | Küme Adı | centralanalysis |
-| Küme Modu | Standart |
-| Databricks Runtime Sürümü | 5,3 (Scala 2,11, Spark 2.4.0) |
-| Python Sürümü | 3 |
+| Küme modu | Standart |
+| Databricks Runtime sürümü | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Python sürümü | 3 |
 | Otomatik Ölçeklendirmeyi Etkinleştirme | Hayır |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
-| Çalışan Türü | Standard_DS3_v2 |
+| Çalışan türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |
-| Sürücü Türü | Çalışan ile aynı |
+| Sürücü türü | Çalışan ile aynı |
 
 Bir küme oluşturmak birkaç dakika sürebilir, devam etmeden önce küme oluşturma işleminin tamamlanmasını bekleyin.
 

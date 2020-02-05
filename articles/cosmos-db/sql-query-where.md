@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB WHERE yan tümcesi
 description: Azure Cosmos DB için SQL WHERE yan tümcesi hakkında bilgi edinin
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 02/03/2020
+ms.author: tisande
+ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326633"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982238"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB WHERE yan tümcesi
 
@@ -104,10 +104,10 @@ Ayrıca, aşağıdaki örneklerde gösterildiği gibi, sorgularda DEĞIL Birli �
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin `SELECT * FROM Families f WHERE f.isRegistered`, `true`değerine eşit değere sahip `isRegistered` özelliğini içeren JSON öğesini döndürür. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`veya `<array>`gibi başka herhangi bir değer, öğeyi sonuçtan dışlar. 
+Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin `SELECT * FROM Families f WHERE f.isRegistered`, `true`değerine eşit değere sahip `isRegistered` özelliğini içeren JSON öğesini döndürür. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`veya `<array>`gibi başka herhangi bir değer, öğeyi sonuçtan dışlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Başlangıç](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Başlarken](sql-query-getting-started.md)
+- [IN anahtar sözcüğü](sql-query-keywords.md#in)
 - [FROM yan tümcesi](sql-query-from.md)

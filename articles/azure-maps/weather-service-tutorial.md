@@ -3,22 +3,22 @@ title: 'Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin veril
 description: Bu öğreticide, Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetinden gelen hava durumu tahmin verileriyle sensör verilerini nasıl katılabilmeniz gösterilmektedir.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/09/2019
+ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910787"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989629"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
-Rüzgar gücü, fossıl için bir alternatif enerji kaynağıdır ve bu da iklim değişikliğine karşı mücadele sağlar. Rüzgar kendisini doğası gereği uyumlu olmadığı için, Rüzgar enerji kapasitesini karşılamak üzere Rüzgar güç kapasitesini tahmin etmek ve ızgara kararlılığını sağlamak için, Rüzgar güç işleçlerini ML (makine öğrenimi) modellerini derlemeniz gerekir. Bu öğreticide, Azure Maps Hava durumu tahmin verilerinin, hava durumu okumalarıyla ilgili algılayıcı konumları kümesiyle nasıl birleştirileceği anlatılmaktadır. Hava durumu tahmin verileri, Azure Maps Hava durumu hizmeti çağırarak istenir.
+Rüzgar gücü, fossıl için bir alternatif enerji kaynağıdır ve bu da iklim değişikliğine karşı mücadele sağlar. Rüzgar doğası gereği uyumlu olmadığından, Rüzgar güç işleçlerini, Rüzgar güç kapasitesini tahmin etmek için makine öğrenimi (ML) modellerini derlemeniz gerekir. Bu tahmin, elektrik talebini karşılamak ve ızgara kararlılığını sağlamak için gereklidir. Bu öğreticide, Azure Maps Hava durumu tahmin verilerinin, hava durumu okumaları için tanıtım verileriyle nasıl birleştirildiğine yol göstereceğiz. Hava durumu tahmin verileri, Azure Maps Hava durumu hizmeti çağırarak istenir.
 
 Bu öğreticide şunları yapacaksınız:
 
@@ -39,7 +39,7 @@ Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 2. Hesabınız için birincil abonelik anahtarını alın, [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account)bölümündeki yönergeleri izleyin.
 
 
-Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
+Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 Azure Not defterleri hakkında bilgi edinmek ve nasıl başlaleyeceğinizi öğrenmek için, [Azure Not defteri oluşturma](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)yönergelerini izleyin.
 
@@ -51,15 +51,16 @@ Azure Not defterleri hakkında bilgi edinmek ve nasıl başlaleyeceğinizi öğr
 Gerekli tüm modülleri ve çerçeveleri yüklemek için aşağıdaki betiği çalıştırın:
 
 ```python
-import aiohttp
 import pandas as pd
 import datetime
 from IPython.display import Image, display
+!pip install aiohttp
+import aiohttp
 ```
 
 ## <a name="import-weather-data"></a>Hava durumu verilerini içeri aktar
 
-Bu öğreticinin bir listesi için, dört farklı rüzgar türlül 'de yüklü sensörlerden gelen hava durumu verileri okugilerinden yararlanacağız. Örnek veriler, her türbin konumunun yakınında Hava durumu veri merkezlerinden toplanan 30 günden fazla hava durumu okuduklarını içerir. Tanıtım verileri, sıcaklık, Rüzgar hızı ve yön için veri okuduklarını içerir. Tanıtım verilerini [buradan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)indirebilirsiniz. Aşağıdaki komut dosyası tanıtım verilerini Azure Not defteri 'ne aktarır.
+Bu öğreticinin bir listesi için, dört farklı rüzgar türgisinde yüklü sensörlerden gelen hava durumu verileri okumaları kullanacağız. Örnek veriler 30 günden fazla hava durumu okuduklarını içerir. Bu okumalar, her türbin konumunun yakınında Hava durumu veri merkezinden toplanır. Tanıtım verileri, sıcaklık, Rüzgar hızı ve yön için veri okuduklarını içerir. Tanıtım verilerini [buradan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)indirebilirsiniz. Aşağıdaki komut dosyası tanıtım verilerini Azure Not defteri 'ne aktarır.
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
@@ -67,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Günlük tahmin verileri iste
 
-Örnek Senaryomuzda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için günlük hava durumu tahminini almak üzere Azure Maps Hava durumu hizmetinin [günlük tahmın API](https://aka.ms/AzureMapsWeatherDailyForecast) 'sini çağırır.
+Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için günlük hava durumu tahminini almak üzere Azure Maps Hava durumu hizmetinin [günlük tahmın API](https://aka.ms/AzureMapsWeatherDailyForecast) 'sini çağırır.
 
 
 ```python
@@ -128,7 +129,7 @@ display(Image(poi_range_map))
 ![Türbin konumları](./media/weather-service-tutorial/location-map.png)
 
 
-Tanıtım verilerini tahmin verileriyle artırmak için, tanıtım verileri merkezinin istasyon KIMLIğINE bağlı olarak tahmin verilerini tanıtım verileriyle gruplandıracağız.
+Tanıtım verileri merkezinin istasyon KIMLIğINE bağlı olarak, tahmine ilişkin verileri tanıtım verileriyle gruplarız. Bu gruplandırma, tanıtım verilerini tahmin verileriyle genişlettiğini. 
 
 ```python
 # Group forecasted data for all locations
@@ -156,7 +157,7 @@ Gruplandırılmış verileri ![](./media/weather-service-tutorial/grouped-data.p
 
 ## <a name="plot-forecast-data"></a>Tahmin verilerini çiz
 
-Rüzgar hızı ve yönünün sonraki 15 gün boyunca nasıl değiştirileceğini görmek için tahmin edilen değerleri tahmin ettikleri günlere göre çizeceğiz.
+Tahmin edilen değerleri tahmin ettikleri günlere göre çizeceğiz. Bu çizim, sonraki 15 gün boyunca rüzgar hızı ve yön değişikliklerini görmemize olanak sağlar.
 
 ```python
 # Plot wind speed
@@ -175,7 +176,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Aşağıdaki grafikler, verilerin istendiği günden sonraki 15 gün içinde rüzgar hızı (sol grafik) ve Yön (sağ grafik) değişikliği için tahmin verilerini görselleştirir.
+Aşağıdaki grafiklerde tahmin verileri görselleştirilecek. Rüzgar hızı değişikliği için bkz. sol grafik. Rüzgar yönündeki değişiklik için sağ grafiğe bakın. Bu veriler, verilerin istendiği günden sonraki 15 günlük tahmindir.
 
 <center>
 
@@ -184,7 +185,7 @@ Aşağıdaki grafikler, verilerin istendiği günden sonraki 15 gün içinde rü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, hava durumu tahmin verileri almak ve grafiklerde verileri görselleştirmek için Azure haritalar REST API 'Lerini nasıl çağıracağınız anlatılmaktadır.
+Bu öğreticide, hava durumu tahmin verileri almak için Azure haritalar REST API 'Lerini nasıl çağıracağınız anlatılmaktadır. Ayrıca grafiklerde verileri görselleştirmeyi de öğrendiniz.
 
 Azure Notebooks içinde Azure haritalar REST API 'Lerini çağırma hakkında daha fazla bilgi için, bkz. [Azure Notebooks kullanarak ev yönlendirme](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
 

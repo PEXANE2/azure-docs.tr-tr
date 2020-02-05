@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d31ef856103d809fc02a183603bc45f9d94939c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112630"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990581"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Öğretici: IoT Central bir su tüketim izleme uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu öğretici, IoT Central su tüketim Izleme uygulaması şablonundan bir Azure
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 -  Bir Azure aboneliği önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -66,6 +66,7 @@ Yeni bir Azure IoT Central su tüketim izleme uygulaması oluşturmak için:
 
     ![Azure IoT Central Uygulama Oluştur sayfası](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
+    ![Azure IoT Central uygulama faturalandırma bilgileri oluşturma](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 6. Artık Azure IoT Central **su tüketim izleme** şablonunu kullanarak bir su tüketim izleme uygulaması oluşturdunuz.
 
 Tebrikler! Su kalitesi izleme uygulamanızı oluşturmayı tamamladınız ve önceden yapılandırılmış olarak gelir:
@@ -126,7 +127,7 @@ Azure IoT Central bir cihaz şablonu, telemetri, özellik veya komut olabilecek 
 Cihaz şablonunu görüntülemek için:
 
 1. IoT Central ' de uygulamanızın sol gezinti bölmesinden **cihaz şablonları** ' na tıklayın. 
-    Cihaz şablonları listesinde, iki cihaz şablonu **Flow meterr** ve **akıllı vana** 'yi görürsünüz
+    Cihaz şablonları listesinde, iki cihaz şablonu **akış ölçer** ve **akıllı vana** olarak görürsünüz
 
    ![Cihaz şablonu](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
@@ -154,7 +155,7 @@ Su tüketim İzleyicisi cihaz şablonu önceden tanımlanmış görünümlerle g
 
   ![Cihaz şablonu görünümleri](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Yayımlama 
+### <a name="publish"></a>Yayımla 
 Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımlamayı** unutmayın. 
 
 ### <a name="create-a-new-device-template"></a>Yeni cihaz şablonu oluşturma 

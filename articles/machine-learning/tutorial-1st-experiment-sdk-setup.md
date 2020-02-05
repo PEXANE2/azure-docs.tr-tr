@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658653"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982543"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 Özel pencere öğeleri varsa veya Jupyıter/Jupyıterlab kullanmayı tercih ediyorsanız, en sağdaki **jupi** açılan öğesini seçin ve ardından **jupi** veya **jupi veya jupi**'i seçin. Yeni tarayıcı penceresi açılır.
 
 > [!NOTE]
-> İşlem örnekleri (Önizleme) Şu anda yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
+> İşlem örnekleri (Önizleme) Şu anda yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bölgesine sahip çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.  Not defterinizi çalıştırmak için bir not defteri VM 'si ya da bir işlem örneği kullanabilirsiniz. Bir VM, siz durdurmadığınız takdirde çalışmaya ve maliyetlendirmeye devam edecektir. Bunu, Studio 'daki **işlem** sekmesinden el ile durdurabilir veya Azure VM 'leri için Zamanlanmış otomatik kapanmaya olanak sağlayan [blog gönderisine](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) bakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186070"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987722"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 genel bakış
 
@@ -32,6 +32,14 @@ Media Services v3 SDK 'Ları, [Media Services v3 Openapı belirtimini (Swagger)]
 
 > [!NOTE]
 > Şu anda v3 kaynaklarını yönetmek için Azure portal kullanamazsınız. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
+
+## <a name="compliance-privacy-and-security"></a>Uyumluluk, gizlilik ve güvenlik
+ 
+Önemli bir anımsatıcı olarak, Azure Media Services kullanımda olan tüm geçerli yasaların uyması gerekir ve Azure Media Services ya da başka bir Azure hizmetini diğerlerinin haklarını ihlal eden veya başkalarına zararlı olabilecek bir biçimde kullanamazsınız. 
+
+Biyometrik veriler de dahil olmak üzere herhangi bir videoları/görüntüyü karşıya yüklemeden önce, işleme ve depolama için Media Services için, videolar/görüntülerle ilgili tüm uygun haklara sahip olmanız gerekir. ve (2) videolardaki her bir uygun yarışmayı, Media Services biyometrik verilerinin kullanılmasına ve depolamasına izin vererek videolar içindeki her bir kişiye sahiptir. 
+
+Uyumluluk, gizlilik ve Microsoft 'un Azure Media Services verilerinizi nasıl koruduğunu ve güvenlik altına aldığı hakkında bilgi edinmek için lütfen Azure [Güven Merkezi](https://www.microsoft.com/trust-center/?rtc=1)' ni ziyaret edin. Microsoft 'un gizlilik yükümlülüklerini ve verilerinizi işleme için lütfen Microsoft 'un [Gizlilik bildirimini](https://privacy.microsoft.com/PrivacyStatement), [çevrimiçi hizmetler koşullarını](https://www.microsoft.com/licensing/product-licensing/products) ("OST") ve [veri Işleme eki](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 'ni ("DPA") gözden geçirin. Müşteri verilerini bekletme ve silme hakkında bilgiler DPA 'da bulunabilir. Azure Media Services kullanarak, OST, DPA ve gizlilik bildirimiyle bağlanmayı kabul etmiş olursunuz.
 
 ## <a name="what-can-i-do-with-media-services"></a>Media Services ile ne yapabilirim?
 
@@ -54,11 +62,11 @@ Media Services v3 ile içerik kodlama ve paketleme, Videoları isteğe bağlı o
 > [!TIP]
 > Geliştirmeye başlamadan önce şunları gözden geçirin:<br/>[temel kavramları](concepts-overview.md) * (paketleme, kodlama ve koruma gibi önemli kavramlar)<br/>[Media Services v3 API 'Leriyle geliştirme](media-services-apis-overview.md) * (API 'lere erişme, adlandırma kuralları vb.)
 
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK'ler
 
 [Azure Media Services v3 Istemci SDK 'ları](media-services-apis-overview.md#sdks)ile geliştirmeye başlayın.
 
-### <a name="quickstarts"></a>Hızlı girişler  
+### <a name="quickstarts"></a>Hızlı Başlangıçlar  
 
 Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmesinin temel gün 1 yönergeleri gösterilir.
 

@@ -1,22 +1,22 @@
 ---
-title: Azure savunma tanılama günlüklerini etkinleştirme ve bunlarla çalışma | Microsoft Docs
+title: Azure savunma tanılama günlüklerini etkinleştirme ve bunlarla çalışma
 description: Bu makalede, Azure savunma tanılama günlüklerini etkinleştirme ve bunlarla çalışmayı öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ae421b48f3cfa8055f636052c990f99e0c775b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512411"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989459"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Etkinleştirme tanılama günlüklerini etkinleştirme ve bunlarla çalışma
 
-Kullanıcılar Azure savunma kullanarak iş yüklerine bağlandıklarında, uzak oturumların tanılamayı günlüğe kaydedebilir. Ardından, hangi kullanıcıların hangi iş yüklerine bağlı olduğunu, nerede ve diğer ilgili günlüğe kaydetme bilgilerini görüntülemek için tanılamayı kullanabilirsiniz. Tanılamayı kullanabilmeniz için Azure 'da tanılama günlüklerini etkinleştirmeniz gerekir. Bu makale, tanılama günlüklerini etkinleştirmenize ve sonra günlükleri görüntülemenize yardımcı olur.
+Kullanıcılar Azure savunma kullanarak iş yüklerine bağlandıklarında, uzak oturumların tanılamayı günlüğe kaydedebilir. Daha sonra tanılamayı, hangi zaman, nerede ve diğer ilgili günlüğe kaydetme bilgilerini hangi iş yüklerine bağladığınızı görüntülemek için kullanabilirsiniz. Tanılamayı kullanabilmeniz için Azure 'da tanılama günlüklerini etkinleştirmeniz gerekir. Bu makale, tanılama günlüklerini etkinleştirmenize ve sonra günlükleri görüntülemenize yardımcı olur.
 
 ## <a name="enable"></a>Tanılama günlüğünü etkinleştirme
 

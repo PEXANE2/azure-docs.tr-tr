@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910620"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988949"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure haritalar yönlendirme kapsamı
 
-Bu makalede Azure haritalar yönlendirmesi için kapsam bilgileri sağlanmaktadır. A 'dan B 'ye en uygun yolu aradığınızda Azure Maps, yüksek oranda doğru seyahat süreleri, canlı güncelleştirilmiş seyahat bilgileri ve yönlendirme yönergeleri sağlayabilir. Yol, geçerli trafik, araç türü ve kaçınacak koşullar gibi ek arama terimlerini dikkate alır. Azure haritalar farklı bölgeler için çeşitli düzeylerde bilgilere ve doğrulukla, yolu en iyileştirme bölgesine bağlıdır. Aşağıdaki tabloda bölgeler ve ne tür bilgiler için talep edebilirsiniz.
+Bu makalede Azure haritalar yönlendirmesi için kapsam bilgileri sağlanmaktadır. Azure Maps, bir arama sorgusundan A konumundan B konumuna en iyi yolu döndürür. Doğru seyahat zamanları, seyahat bilgilerinin canlı güncelleştirmeleri ve yönlendirme yönergeleri ile birlikte sunulur. Bundan kaçınmak için geçerli trafik, araç türü ve koşullar gibi ek arama parametreleri de ekleyebilirsiniz. Yolun en iyi duruma getirilmesi bölgeye göre değişir. Bunun nedeni, Azure haritalar 'ın farklı bölgeler için çeşitli bilgi ve doğruluk düzeylerine sahip olması nedeniyle. Aşağıdaki tabloda bölgeler ve ne tür bilgiler için talep edebilirsiniz.
  
 [**Coğrafi kodlama**](geocoding-coverage.md)için kapsama göz atın.       
 [**Trafik**](traffic-coverage.md)için kapsama göz atın.  
 [**İşleme**](render-coverage.md)için kapsama göz atın.
 <br>  
-**Gösterge**
+**Deki**
 
 | Sembol             | Anlamı                                |
 |--------------------|----------------------------------------|
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | Nijerya                        |        ✓       |         ✓            |             |
 | Ruanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
-| Seyşeller                     |        ✓       |                       |             |
+| Seyş                     |        ✓       |                       |             |
 | Güney Afrika                   |        ✓       ||         ✓            |             |
 | Svaziland                      |        ✓       |                       |             |
 | Tanzanya                       |        ✓       |                       |             |
@@ -115,7 +115,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 | St. Lucia                      |        ✓       |                      |             |
 | St. Vincent & Grenadinler       |        ✓       |                      |             |
 | Surinam                       |        ✓       |                      |             |
-| Trinidad ve Tobago              |        ✓       |                      |             |
+| Trinidad & Tobago              |        ✓       |                      |             |
 | Birleşik Devletler                  |        ✓       |         ✓            |     ✓      | 
 | \+ Amerikan Samoası                |        ✓       |                      |             |
 | \+ Kuzey Mariana Adaları      |        ✓       |                      |             |
@@ -131,7 +131,7 @@ Aşağıdaki tabloda, Azure Maps yönlendirmesi için kapsam bilgileri sağlanma
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Avustralya                      |        ✓       |         ✓            |     ✓       |
 | \+ Christmas Adası              |        ✓       |                      |             |
-| Brunei                         |        ✓       |         ✓            |             |
+| Barış                         |        ✓       |         ✓            |             |
 | Kamboçya                       |        ✓       |                      |             |
 | Fiji                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |

@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899084"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989986"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -347,12 +347,13 @@ Varsayılan olarak, Java SDK 'sında hiçbir örnekleme etkinleştirilmez. Şu a
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>OpenCensus Python uygulamaları için sabit fiyat örneklemesi yapılandırma
 
-1. Uygulamanızı en son [Opencensus Azure izleyici dışarı layıcılarını](../../azure-monitor/app/opencensus-python.md)kullanarak işaretleyin.
+Uygulamanızı en son [Opencensus Azure izleyici dışarı layıcılarını](../../azure-monitor/app/opencensus-python.md)kullanarak işaretleyin.
 
 > [!NOTE]
-> Sabit fiyat örnekleme yalnızca izleme Dışarı Aktarıcı kullanılarak kullanılabilir. Bu, gelen ve giden isteklerin örnekleme yapılandırılabileceği tek türdeki telemetri olduğu anlamına gelir.
+> Ölçüm Dışarı Aktarıcı için sabit fiyat örnekleme kullanılamaz. Bu, örneklemenin yapılandırılamadığını tek tür telemetri olan özel ölçümleri gösterir. Ölçüm dışarı aktarıcı, izlediği tüm Telemetriyi gönderir.
 
-2. `Tracer` yapılandırmanız kapsamında bir `sampler` belirtmelisiniz. Açık örnekleyici sağlanmazsa, `ProbabilitySampler` varsayılan olarak kullanılır. `ProbabilitySampler`, varsayılan olarak 1/10000 oranını kullanır, yani her 10000 istekten biri Application Insights gönderilir. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
+#### <a name="fixed-rate-sampling-for-tracing"></a>İzleme için sabit fiyat örnekleme ####
+`Tracer` yapılandırmanız kapsamında bir `sampler` belirtmelisiniz. Açık örnekleyici sağlanmazsa, `ProbabilitySampler` varsayılan olarak kullanılır. `ProbabilitySampler`, varsayılan olarak 1/10000 oranını kullanır, yani her 10000 istekten biri Application Insights gönderilir. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
 
 Örnekleme hızını belirtmek için `Tracer`, 0,0 ve 1,0 dahil olmak üzere örnekleme oranına sahip bir örnekleyiciyi belirttiğinden emin olun. 1,0 örnekleme oranı %100 ' i temsil eder, ancak tüm istekleriniz Application Insights telemetri olarak gönderilir.
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>Günlükler için sabit fiyat örnekleme ####
+`logging_sampling_rate` isteğe bağlı bağımsız değişkenini değiştirerek `AzureLogHandler` için sabit fiyat örnekleme yapılandırabilirsiniz. Herhangi bir bağımsız değişken sağlanmazsa, 1,0 örnekleme ücreti kullanılacaktır. 1,0 örnekleme oranı %100 ' i temsil eder, ancak tüm istekleriniz Application Insights telemetri olarak gönderilir.
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 

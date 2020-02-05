@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702530"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983104"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
 
 Bir yeniden yönlendirme URI 'si veya yanıt URL 'SI, uygulama başarıyla yetkilendirildiğinde ve yetkilendirme kodu ya da erişim belirteci verildiğinde, yetkilendirme sunucusunun kullanıcıyı kullanıcıya göndereceği konumdur. Kod veya belirteç yeniden yönlendirme URI 'SI veya Yanıt belirtecinde bulunur, bu nedenle doğru konumu uygulama kayıt işleminin bir parçası olarak kaydetmeniz önemlidir.
 
+ Yanıt URL 'Leri için aşağıdaki kısıtlamalar geçerlidir:
+
+    * Yanıt URL 'SI `https`düzeniyle başlamalıdır.
+    * Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız `.../abc/response-oidc`yolunun bir parçası olarak içeriyorsa, yanıt URL 'sinde `.../ABC/response-oidc` belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, `.../abc/response-oidc` ile ilişkili tanımlama bilgileri, büyük/küçük harfe eşleşmeyen `.../ABC/response-oidc` URL 'sine yönlendiriliyorsa dışlanamaz.
+    
 ## <a name="maximum-number-of-redirect-uris"></a>Maksimum yeniden yönlendirme URI sayısı
 
 Aşağıdaki tabloda, uygulamanızı kaydettiğinizde ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısı gösterilmektedir.

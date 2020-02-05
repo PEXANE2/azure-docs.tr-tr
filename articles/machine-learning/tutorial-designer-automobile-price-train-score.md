@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: c7a21bb3f086257b7f6a5edde5cbfdf835645a70
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934028"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982628"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: tasarımcı ile otomobil fiyatını tahmin etme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -135,11 +135,13 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **tüm sütunlar**' ı seçin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **sütunu Düzenle**' yi seçin.
+
+1. **Ekle**' nin yanındaki **sütun adları** açılan ' i genişletin ve **tüm sütunlar**' ı seçin.
 
 1. Yeni bir kural eklemek için **+** seçin.
 
-1. Açılan menüden **Dışla** ve **sütun adlarını**seçin.
+1. Aşağı açılan menülerden **Dışla** ve **sütun adlarını**seçin.
     
 1. Metin kutusuna *normalleştirilmiş zararlar* girin.
 

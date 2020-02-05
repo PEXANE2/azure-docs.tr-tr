@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289467"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989357"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
 
@@ -62,14 +62,14 @@ Sunucu değerlendirmesi bir geçiş planlama aracıdır. Site Recovery Dağıtı
 - Her araçta Azure geçişi 'ne bağlanma seçeneği vardır. Aracı Azure geçişi ile bağlamak için araç yönergelerini ve belgeleri izleyin.
 Azure geçişi projesi içindeki geçiş yolculuğunun Azure ve diğer araçların tamamında merkezi olarak izlenmesi.
 
-### <a name="how-do-i-delete-a-project"></a>Nasıl yaparım? bir proje silinsin mi?
+## <a name="how-do-i-delete-a-project"></a>Nasıl yaparım? bir proje silinsin mi?
 
 Projeyi silmeyi [öğrenin](how-to-delete-project.md) . 
 
 
+## <a name="do-machines-retain-domain-identity-after-migration"></a>Makineler geçişten sonra etki alanı kimliğini tutar mı?
 
-
-
+Etki alanı hizmetlerinin Azure ile [tümleştirildiği](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/)varsayıldığında, etki alanı üyeliği ve etki alanındaki makine kimliği, geçişten sonra tutulur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure geçişi 'ne genel bakış](migrate-services-overview.md)konusunu okuyun.

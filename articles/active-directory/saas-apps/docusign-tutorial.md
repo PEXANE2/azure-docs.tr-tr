@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290079"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983670"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -48,7 +48,7 @@ Bu öğreticide, aşağıdakileri doğrulamak için bir test ortamında Azure AD
 * DocuSign *, tam zamanında* Kullanıcı sağlamayı destekler.
 
 * DocuSign [Otomatik Kullanıcı sağlamayı](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)destekler.
-* DocuSign 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* DocuSign 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>Galeriden DocuSign ekleme
 
@@ -112,7 +112,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına **B. Simon**girin.  
    1. **Kullanıcı adı** alanına `<username>@<companydomain>.<extension>`girin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
-   1. **Oluştur**’u seçin.
+   1. **Oluştur**'u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -205,12 +205,12 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
 
        ![Kimlik sağlayıcıları/uç noktalar][59]
 
-    l. DocuSign yönetim portalının **SAML 2,0 uç noktalarını görüntüle** bölümünde şu adımları izleyin:
+    girişindeki. DocuSign yönetim portalının **SAML 2,0 uç noktalarını görüntüle** bölümünde şu adımları izleyin:
        1. **Hizmet sağlayıcı verenin URL 'sini**kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** kutusuna yapıştırın.
 
        1. **Hizmet sağlayıcısı oturum açma URL**'sini kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** kutusuna yapıştırın.
 
-       1. **Kapat**’ı seçin.
+       1. **Kapat**' ı seçin.
 
        ![SAML 2,0 uç noktalarını görüntüle][60]
 
@@ -238,8 +238,6 @@ Erişim panelinde DocuSign kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız
 - [Azure AD ile DocuSign 'ı deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle DocuSign 'ı koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

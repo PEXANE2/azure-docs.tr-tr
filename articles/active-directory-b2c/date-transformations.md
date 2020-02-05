@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949125"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982917"
 ---
 # <a name="date-claims-transformations"></a>Tarih talebi dönüşümleri
 
@@ -92,7 +92,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | Inputclaim | date | Dönüştürülecek ClaimType. |
-| outputClaim | outputClaim | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| OutputClaim | OutputClaim | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 Aşağıdaki örnek, talep `dateOfBirth` (Tarih veri türü) başka bir talep `dateOfBirthWithTime` (TarihSaat veri türü) dönüştürmeyi gösterir.
 
@@ -114,13 +114,42 @@ Aşağıdaki örnek, talep `dateOfBirth` (Tarih veri türü) başka bir talep `d
 - Çıkış talepleri:
     - **Outputclaim**: 1559347200 (1 haziran 2019 12:00:00)
 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+
+Bir **DateTime** ClaimType 'ı bir **Tarih** ClaimType 'a dönüştürür. Talep dönüştürmesi saat biçimini tarihten itibaren kaldırır.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | Tarih/saat | Dönüştürülecek ClaimType. |
+| OutputClaim | OutputClaim | date | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+
+Aşağıdaki örnek, talep `systemDateTime` (dateTime veri türü) başka bir talep `systemDate` (Tarih veri türü) için dönüştürmeyi gösterir.
+
+```XML
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+  - **ınputclaim**: 1559347200 (1 haziran 2019 12:00:00)
+- Çıkış talepleri:
+  - **Outputclaim**: 2019-06-01
+
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 Geçerli UTC Tarih ve saatini alın ve değeri bir ClaimType 'a ekleyin.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| outputClaim | currentDateTime | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| OutputClaim | currentDateTime | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -145,7 +174,7 @@ Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit o
 | Inputclaim | secondDateTime | Tarih/saat | İlk tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ikinci tarih saat. Null değer geçerli datetTime olarak değerlendirilir. |
 | InputParameter | operator | string | Şu değerlerden biri: aynı, daha sonra veya daha önceki bir sürüm. |
 | InputParameter | Timespanınseconds | int | TimeSpan öğesini ilk tarih/saate ekleyin. |
-| outputClaim | Sonuç | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| OutputClaim | Sonuç | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 İki ClaimTypes 'ın eşit, daha sonra veya daha önceki bir sürümü olup olmadığını anlamak için bu talep dönüşümünü kullanın. Örneğin, bir kullanıcının hizmet koşullarınızı (TOS) en son kabul ettiği zamanı saklayabilirsiniz. 3 aydan sonra kullanıcıdan TOS 'a yeniden erişmesini isteyebilirsiniz.
 Talep dönüşümünü çalıştırmak için, ilk olarak geçerli tarih saat ve ayrıca Kullanıcı TOS 'ı kabul eden son zamanı almanız gerekir.

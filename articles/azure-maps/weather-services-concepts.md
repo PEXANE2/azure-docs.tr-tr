@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911021"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991400"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure haritalar 'da Hava durumu Hizmetleri
 
@@ -21,13 +21,13 @@ Bu makalede, [Azure Maps Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeather
 
 ## <a name="unit-types"></a>Birim türleri
 
-Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya eksik birimlerde döndürülüp döndürülmeyeceğini belirtmesini sağlar. Bu API 'Ler için döndürülen yanıt, birim çevirileri için kullanılabilen sayısal bir değer olan unitType öğesini de içerir. Bu değerleri yorumlamak için lütfen aşağıdaki tabloya bakın.
+Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya eksik birimlerde döndürülüp döndürülmeyeceğini belirtmesini sağlar. Bu API 'Ler için döndürülen yanıtlar, birim çevirileri için kullanılabilen ve bir sayısal değer içerir. Bu değerleri yorumlamak için aşağıdaki tabloya bakın.
 
 |unitType|Açıklama         |
 |--------|--------------------|
 |0       |fit                |
 |1       |Cm              |
-|2       |mil               |
+|2       |kilometre               |
 |3       |milimetre          |
 |4       |santimetre ölçümü          |
 |5       |si               |
@@ -45,14 +45,14 @@ Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya ek
 |17      |Celsius             |
 |18      |Fahrenhayt          |
 |19      |Kelvin              |
-|20      |{1&gt;yüzde&lt;1}             |
+|20      |yüzdeyi             |
 |21      |float               |
 |22      |integer             |
 
 
 ## <a name="weather-icons"></a>Hava durumu simgeleri
 
-Hava durumu hizmeti API 'Lerinden bazıları, bu simgeyi tanımlamak için kullanılabilecek sayısal bir değer olan yanıtta simge kodları (iconCode) döndürüyor. Lütfen uygulamalarınızdan bu görüntülere doğrudan bağlamayın, URL 'Ler ve değişecektir.
+Hava durumu hizmeti API 'Lerinin bazıları yanıttaki `iconCode` döndürür. `iconCode`, simgeyi tanımlamak için kullanılan sayısal bir değerdir. Uygulamalarınızdan bu görüntülere doğrudan bağlamayın, URL 'Ler ve değişecektir.
 
 | Simge numarası |Simge| Gün | Gerçekleştirilmiştir | Metin |
 |-------------|:----:|-----|-------|------|
@@ -77,7 +77,7 @@ Hava durumu hizmeti API 'Lerinden bazıları, bu simgeyi tanımlamak için kulla
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Evet |  Hayır    | Flurrıes ile kısmen güneş|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | Evet |  Evet   | Kar|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Evet |  Hayır    | Genellikle kar ile Cloudy|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Evet |  Evet   | Ice |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Evet |  Evet   | CE |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Evet |  Evet   | Uyun|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Evet |  Evet   | Yağmur dondurma|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Evet |  Evet   | Yağmur ve kar|
@@ -100,7 +100,7 @@ Hava durumu hizmeti API 'Lerinden bazıları, bu simgeyi tanımlamak için kulla
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Radar ve uydu Imagery renk ölçeği
 
-[Get Map kutucuğu v2 API](https://aka.ms/AzureMapsWeatherTiles) kullanıcıları, en son radar ve kızılötesi uydu görüntülerini isteyebilir. Radar ve uydu kutucukları için kullanılan renklerin yorumlanmasına yardımcı olmak için lütfen kılavuza bakın.
+[Get Map kutucuğu v2 API](https://aka.ms/AzureMapsWeatherTiles) kullanıcıları, en son radar ve kızılötesi uydu görüntülerini isteyebilir. Radar ve uydu kutucukları için kullanılan renkleri yorumlamaya yardımcı olması için aşağıdaki kılavuza bakın.
 
 ### <a name="radar-images"></a>Radar görüntüler
 

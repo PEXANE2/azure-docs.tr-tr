@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: c7354ecce9873cd65580dc2a9d79f9f3b8ac37db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9252fbbf0895bf821c119272ac37d3af1c91fc89
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966636"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987822"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966636"
 
 1. [Azure Portal](https://portal.azure.com) oturum açın
 1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
-1. Çalışma zamanı anahtarı için tüm gerekli ayarları girin:
+1. **Çalışma zamanı** anahtarı için tüm gerekli ayarları girin:
 
     |Ayar|Değer|
     |--|--|
@@ -89,11 +89,11 @@ ms.locfileid: "76966636"
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin anahtarınızla ve uç noktanızla değiştirin.
+1. `YOUR-KEY` ve `YOUR-ENDPOINT` değerlerini kendi tahmin **çalışma zamanı** anahtarınızla ve uç noktanızla değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter tahmini anahtarınız.|
+    |`YOUR-KEY`|32 karakter tahmini **çalışma zamanı** anahtarınız.|
     |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Bu komutla `request`, `request-promise`ve `querystring` bağımlılıklarını yükler:

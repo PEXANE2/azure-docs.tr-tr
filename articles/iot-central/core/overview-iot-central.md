@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c62b247da9447138bd7e5d84dfe49fdf75a06fd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434964"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990768"
 ---
 <!---
 Purpose of an Overview article: 
@@ -69,6 +69,13 @@ Oluşturucu olarak, Azure IoT Central uygulamanızın kullanıcı arabirimini uy
 - Bir cihaz şablonundaki özellik ve ayarların düzenini tanımlama.
 - Operatörlerin içgörüleri keşfetmesine ve sorunları daha hızlı çözümlemesine yardımcı olacak özel panoları yapılandırma.
 - Bağlı cihazlarınızdan zaman serisi verilerini keşfetmek için özel analizler yapılandırma.
+
+## <a name="pricing"></a>Fiyatlandırma
+
+7 günlük ücretsiz deneme sürümünü kullanarak IoT Central uygulaması oluşturabilir veya standart bir fiyatlandırma planı kullanabilirsiniz.
+
+- *Ücretsiz* planı kullanarak oluşturduğunuz uygulamalar yedi gün boyunca ücretsizdir ve en fazla beş cihaz destekler. Bunları, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planı kullanacak şekilde dönüştürebilirsiniz.
+- *Standart* planı kullanarak oluşturduğunuz uygulamalar cihaz başına alınarak faturalandırılır, ilk iki cihazla ücretsiz olarak **Standart 1** veya **Standart 2** fiyatlandırma planı seçebilirsiniz. [IoT Central fiyatlandırması](https://aka.ms/iotcentral-pricing)hakkında daha fazla bilgi edinin.
 
 ## <a name="connect-your-devices"></a>Cihazlarınızı bağlama
 

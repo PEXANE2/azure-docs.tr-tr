@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar Hizmetleri modülünü kullanma | Microsoft Azure haritaları
-description: Bu makalede, Azure haritalar Hizmetleri modülünü kullanarak Microsoft Azure haritaları REST hizmetlerinden nasıl yararlanalabileceğinizi öğreneceksiniz.
+description: Bu makalede, Azure haritalar Hizmetleri modülünü kullanarak Microsoft Azure haritaları REST hizmetlerinden nasıl yararlanabileceğinizi öğreneceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911308"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988745"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülünü kullanma
 
@@ -31,7 +31,7 @@ Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript
 
     - Alternatif olarak, Azure Maps web SDK kaynak kodu için hizmetler modülünü [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
     
-        > **npm install azure-maps-rest**
+        > **NPM Install Azure-Maps-Rest**
     
         Ardından, dosyanın `<head>` öğesine bir betik başvurusu ekleyin:
 

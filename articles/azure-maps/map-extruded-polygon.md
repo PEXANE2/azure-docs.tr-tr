@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911063"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988575"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Haritaya Çokgen kalıp ekleme
 
-Bu makalede, `Polygon` ve `MultiPolygon` Özellik geometrileri, haritada yükseltilmiş şekiller olarak oluşturmak için Çokgen kalıp katmanını nasıl kullanabileceğiniz gösterilmektedir. Azure Haritalar Web SDK 'Sı Ayrıca, [genişletilmiş GeoJSON şemasında](extend-geojson.md#circle)tanımlandığı şekilde daire geometrileri oluşturulmasını destekler. Bu daireler haritada işlendiğinde çokgenler halinde dönüştürülür. Tüm özellik geometrileri, Atlas ile sarmalandıktan sonra da kolayca güncelleştirilebilen olabilir [. Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı.
-
+Bu makalede, Çokgen katman katmanını kullanarak `Polygon` ve `MultiPolygon` Özellik geometrileri, yükseltilmiş şekiller olarak nasıl işlenir. Azure Haritalar Web SDK 'Sı, [genişletilmiş GeoJSON şemasında](extend-geojson.md#circle)tanımlandığı şekilde daire geometrileri işlemesini destekler. Bu daireler haritada işlendiğinde çokgenlere dönüştürülebilir. Tüm özellik geometrileri, Atlas ile sarmalandıktan sonra kolayca güncelleştirilebilen olabilir [. Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı.
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Çokgen katman kullan
 
-Bir [Çokgen kalıp katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) veri kaynağına bağlıyken ve haritada yüklendiğinde, bir `Polygon` ve `MultiPolygon` özelliklerinin özelliklerini yükseltilmiş şekiller olarak işler. Çokgen katman katmanının `height` ve `base` özellikleri, temel mesafeyi **Ölçü**cinsinden yükseltilmiş şeklin taban ve yüksekliğinden tanımlar. Aşağıdaki kod, bir çokgen oluşturmayı, bir veri kaynağına eklemeyi ve Çokgen katman sınıfını kullanarak nasıl işleneceğini gösterir.
+[Çokgen kalıp katmanını](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) bir veri kaynağına bağlayın. Daha sonra, bu dosyayı haritaya yükledi. Çokgen katman katmanı, bir `Polygon` ve `MultiPolygon` özelliklerinin özelliklerini yükseltilmiş şekiller olarak işler. Çokgen katman katmanının `height` ve `base` özellikleri, temel mesafeyi **Ölçü**cinsinden yükseltilmiş şeklin taban ve yüksekliğinden tanımlar. Aşağıdaki kod, bir çokgen oluşturmayı, bir veri kaynağına eklemeyi ve Çokgen katman sınıfını kullanarak nasıl işleneceğini gösterir.
 
 > [!Note]
 > Çokgen katman katmanında tanımlanan `base` değeri `height`eşit veya ondan küçük olmalıdır.
@@ -34,9 +33,9 @@ Bir [Çokgen kalıp katmanı](https://docs.microsoft.com/javascript/api/azure-ma
 <a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>yükseltilmiş Çokgen</a> 'e bakın.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Veri temelli MultiPolygon ekleme
+## <a name="add-data-driven-polygons"></a>Veri odaklı çokgenler ekleme
 
-Bir choroptath eşlemesi, `height` ve `fillColor` özelliklerinin `Polygon` ve `MultiPolygon` Özellik geometrileri tarafından istatistiksel değişken ölçüyle orantılı olarak ayarlanarak Çokgen katman katmanı kullanılarak oluşturulabilir. Aşağıdaki kod örneğinde, durum ile popülasyon yoğunluğu ölçüsünün temelinde U. S ' nin yükseltilmiş bir choroptath Haritası gösterilmektedir.
+Bir choroptath eşlemesi, Çokgen katman kullanılarak oluşturulabilir. Exkalıp katmanının `height` ve `fillColor` özelliklerini `Polygon` ve `MultiPolygon` Özellik geometrileri ' deki istatistiksel değişkenin ölçüsünün ayarlayın. Aşağıdaki kod örneğinde, durum ile popülasyon yoğunluğu ölçüsünün temelinde U. S ' nin yükseltilmiş bir choroptath Haritası gösterilmektedir.
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps, coğrafi [olarak gösterildiği gibi](https://docs.microsoft.com/azu
 } 
 ```
 
-Azure Haritalar Web SDK 'Sı bu `Point` özelliklerini, aşağıdaki kod örneğinde gösterildiği gibi, çokgen tarafından kullanılan `Polygon` özelliklere dönüştürür ve haritada oluşturulabilir.
+Azure Haritalar Web SDK 'Sı, bu `Point` özelliklerini, aynı özellikler altındaki `Polygon` özelliklerine dönüştürür. Bu `Point` özellikler, aşağıdaki kod örneğinde gösterildiği gibi Çokgen katman katmanı kullanılarak haritada oluşturulabilir.
 
 <br/>
 
@@ -72,7 +71,7 @@ Azure Haritalar Web SDK 'Sı bu `Point` özelliklerini, aşağıdaki kod örneğ
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>Çokgen kalıp katmanını özelleştirme
 
-Çokgen katman birçok stil seçeneğini katmana kat. İşte deneyebileceğiniz bir araç.
+Çokgen katman katmanı çeşitli stil seçeneklerine sahiptir. İşte deneyebileceğiniz bir araç.
 
 <br/>
 

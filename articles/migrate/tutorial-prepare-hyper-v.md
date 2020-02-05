@@ -4,12 +4,12 @@ description: Azure geçişi ile Hyper-V VM 'lerinin değerlendirmesi/geçirilmes
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028929"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984753"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -39,10 +39,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure geçişi dağıtımı için izinleri ayarlamanız gerekir.
 
-- Azure geçişi projesi oluşturmak için Azure hesabınız için izinler.
-- Azure geçişi gerecini kaydetmek için hesabınızın izinleri. Gereç, geçiş yaptığınız Hyper-V VM 'lerinin bulunması ve değerlendirmesi için kullanılır. Gereç kaydı sırasında Azure geçişi, gereci benzersiz bir şekilde tanımlayan iki Azure Active Directory (Azure AD) uygulaması oluşturur:
-    - İlk uygulama Azure geçişi hizmet uç noktaları ile iletişim kurar.
-    - İkinci uygulama, Azure AD uygulama bilgileri ve gereç yapılandırma ayarlarını depolamak için kayıt sırasında oluşturulan Azure Key Vault erişir.
+**Görev** | **İzinler**
+--- | ---
+**Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir.
+**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile Hyper-v VM 'lerini bulup değerlendirmek için hafif bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kayıt sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak bir Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> AAD uygulaması, Gereç üzerinde çalışan aracılar arasında Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.
 
 
 
@@ -59,15 +59,14 @@ Azure geçişi projesi oluşturma izniniz olup olmadığını denetleyin.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Gereci kaydetmek için izin atama
 
-Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında oluşturulan Azure AD uygulamalarını oluşturmak için Azure geçişi için izinler atayabilirsiniz:
+Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında Azure AD uygulaması oluşturmak için Azure geçişi için izinler atayabilirsiniz:
 
 - Kiracı/Genel yönetici, Kiracıdaki kullanıcılara Azure AD uygulamaları oluşturmak ve kaydolmak için izin verebilir.
 - Kiracı/Genel yönetici, uygulama geliştirici rolünü (izinleri olan) hesaba atayabilir.
 
-Buna dikkat edin:
-
-- Uygulamalar, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinlerine sahip değildir.
-- Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
+> [!NOTE]
+> - Uygulamanın, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinleri yoktur.
+> - Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
 
 
 #### <a name="grant-account-permissions"></a>Hesap izinleri verme
@@ -108,8 +107,8 @@ Betik şunları yapar:
 - Betiği desteklenen bir PowerShell sürümünde çalıştırıp çalıştırdığınızı denetler.
 - Sizin (betiği çalıştıran kullanıcı) Hyper-V konağında yönetim ayrıcalıklarına sahip olduğunu doğrular.
 - Azure geçişi hizmetinin Hyper-V konağından iletişim kurmak için kullandığı yerel bir kullanıcı hesabı (yönetici değil) oluşturmanıza olanak sağlar. Bu Kullanıcı hesabı konaktaki bu gruplara eklenir:
-    - Uzaktan Yönetim Kullanıcıları
-    - Hyper-V Yöneticileri
+    - Uzaktan yönetim kullanıcıları
+    - Hyper-V yöneticileri
     - Performans Izleyicisi kullanıcıları
 - Konağın desteklenen bir Hyper-V sürümü ve Hyper-V rolü çalıştığını denetler.
 - WinRM hizmetini etkinleştirilir ve konakta 5985 (HTTP) ve 5986 (HTTPS) bağlantı noktalarını (meta veri koleksiyonu için gereklidir) açar.
@@ -140,7 +139,7 @@ Betiği aşağıdaki gibi çalıştırın:
 
 Karma değerleri şunlardır:
 
-| **Karma** | **Değer** |
+| **Yla** | **Değer** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
@@ -165,8 +164,8 @@ Azure geçişi 'nin şirket içi VM 'Leri bulması için izinleri olması gereki
     - Bulmaya dahil etmek istediğiniz tüm konaklar ve kümeler için tek bir hesaba ihtiyacınız vardır.
     - Hesap bir yerel veya etki alanı hesabı olabilir. Hyper-V konakları veya kümeleri üzerinde yönetici izinlerine sahip olması önerilir.
     - Alternatif olarak, yönetici izinleri atamak istemiyorsanız, aşağıdaki izinler gereklidir:
-        - Uzaktan Yönetim Kullanıcıları
-        - Hyper-V Yöneticileri
+        - Uzaktan yönetim kullanıcıları
+        - Hyper-V yöneticileri
         - Performans Izleyicisi kullanıcıları
 
 ### <a name="verify-hyper-v-host-settings"></a>Hyper-V konak ayarlarını doğrulama

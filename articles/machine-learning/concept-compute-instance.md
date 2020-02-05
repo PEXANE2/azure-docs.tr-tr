@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769110"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984855"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -27,7 +27,7 @@ Bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız ol
 İşlem örnekleri genellikle geliştirme ortamları olarak kullanılır.  Ayrıca, geliştirme ve test için bilgi işlem hedefi olarak da kullanılabilir.  Büyük görevler için çok düğümlü ölçekleme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
 
 > [!NOTE]
-> İşlem örnekleri şu anda yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
+> İşlem örnekleri şu anda yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bölgesine sahip çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
 >Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
 
 ## <a name="why-use-a-compute-instance"></a>Neden bir işlem örneği kullanılmalıdır?

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712858"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982766"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -499,6 +499,47 @@ Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu 
 - Çıkış talepleri:
     - **etki alanı**: Outlook.com
 
+## <a name="setclaimsifregexmatch"></a>Setclaimsıfregexmatch
+
+Bir dize talebi `claimToMatch` ve `matchTo` giriş parametresinin eşit olup olmadığını denetler ve `outputClaimIfMatched` giriş parametresinde bulunan değerle birlikte çıkış taleplerini, karşılaştırma sonucuna göre `true` veya `false` olarak ayarlanacak şekilde karşılaştırın.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | claimToMatch | string | Karşılaştırılacak talep türü. |
+| InputParameter | matchTo | string | Eşleştirilecek normal ifade. |
+| InputParameter | Outputclaimifeşleşti | string | Dizeler eşitse ayarlanacak değer. |
+| OutputClaim | OutputClaim | string | Normal ifade eşleşiyorsa, bu çıkış talebi `outputClaimIfMatched` giriş parametresinin değerini içerir. Ya da eşleşme yoksa null. |
+| OutputClaim | regexCompareResultClaim | boole | `true` olarak ayarlanacak veya eşleştirme sonucuna göre `false` olarak ayarlanacak olan normal ifade, sonuç çıkış talep türü ile eşleşir. |
+
+Örneğin, telefon numarası normal ifade düzenine göre, girilen telefon numarasının geçerli olup olmadığını denetler.  
+
+```XML
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="^[0-9]{4,16}$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isPhone" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isPhoneBoolean" TransformationClaimType="regexCompareResultClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+    - **claimToMatch**: "64854114520"
+- Giriş parametreleri:
+    - **eşleşme**: "^ [0-9]{4,16}$"
+    - **Outputclaimifeşleşti**: "ısphone"
+- Çıkış talepleri:
+    - **Outputclaim**: "ısphone"
+    - **regexCompareResultClaim**: true
+
 ## <a name="setclaimsifstringsareequal"></a>Setclaimsıfstringsareeşittir
 
 Bir dize talebi ve `matchTo` giriş parametresinin eşit olup olmadığını denetler ve `stringMatchMsg` ve `stringMatchMsgCode` giriş parametrelerinde bulunan değer ile birlikte çıkış taleplerini, karşılaştırma sonucuna göre `true` veya `false` olarak ayarlanacak şekilde karşılaştırın.
@@ -592,3 +633,188 @@ Bir dize talebi ve `matchTo` giriş parametresinin eşit olup olmadığını den
     - **isMinorResponseCode**: B2C_V1_90001
     - **ısminor**: doğru
 
+
+## <a name="stringcontains"></a>StringContains
+
+Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belirleme. Sonuç, `true` veya `false`değerine sahip yeni bir Boole ClaimType değeridir. değer parametresi bu dize içinde gerçekleşirse `true`, aksi durumda `false`.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | string | Arama yapılacak talep türü. |
+|InputParameter|içerir|string|Aranacak değer.|
+|InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizenin durumunu yoksayıp saymayacağını belirtir.|
+| OutputClaim | OutputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Giriş talebi içinde alt dize gerçekleşirse Boole göstergesi. |
+
+Bir dize talep türünün bir alt dize içerip içermesinin olup olmadığını denetlemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, `roles` dize talep türünün **yönetici**değerini içerip içermediğini denetler.
+
+```XML
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="contains" DataType="string" Value="admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+    - **ınputclaim**: "Yönetici, onaylayan, düzenleyici"
+- Giriş parametreleri:
+    - **şunu içerir**: "Yönetici"
+    - **IgnoreCase**: true
+- Çıkış talepleri:
+    - **Outputclaim**: true 
+
+## <a name="stringsubstring"></a>StringSubstring
+
+Bir dize talep türünün parçalarını, belirtilen konumdaki karakterden başlayarak ayıklar ve belirtilen sayıda karakteri döndürür.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | string | Dizeyi içeren talep türü. |
+| InputParameter | startIndex | int | Bu örnekteki alt dizenin sıfır tabanlı başlangıç karakter konumu. |
+| InputParameter | length | int | Alt dizeden karakter sayısı. |
+| OutputClaim | OutputClaim | boole | Bu örnekte startIndex değerinde başlayan uzunluk uzunluğuna eşdeğer veya startIndex, bu örneğin uzunluğuna eşitse ve length sıfır olduğunda boş olan bir dize. |
+
+Örneğin, telefon numarası ülke önekini alın.  
+
+
+```XML
+<ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="startIndex" DataType="int" Value="0" />
+  <InputParameter Id="length" DataType="int" Value="2" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phonePrefix" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+    - **ınputclaim**: "+ 1644114520"
+- Giriş parametreleri:
+    - **startIndex**: 0
+    - **uzunluk**: 2
+- Çıkış talepleri:
+    - **Outputclaim**: "+ 1"
+
+## <a name="stringreplace"></a>StringReplace
+
+Belirtilen değer için bir talep türü dizesi arar ve geçerli dizedeki belirtilen dizenin tüm oluşumlarının belirtilen başka bir dizeyle değiştirildiği yeni bir talep türü dizesi döndürür.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | string | Dizeyi içeren talep türü. |
+| InputParameter | oldValue | string | Aranacak dize. |
+| InputParameter | Değer | string | Tüm `oldValue` tekrarlarının yerini alacak dize |
+| OutputClaim | OutputClaim | boole | Tüm oldValue örnekleri newValue ile değiştirilmeleri dışında, geçerli dize ile eşdeğer bir dize. OldValue geçerli örnekte bulunamazsa, yöntemi geçerli örneği değişmeden döndürür. |
+
+Örneğin, `-` karakterleri kaldırarak bir telefon numarasını normalleştirin  
+
+
+```XML
+<ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="oldValue" DataType="string" Value="-" />
+  <InputParameter Id="newValue" DataType="string" Value="" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+    - **ınputclaim**: "+ 164-411-452-054"
+- Giriş parametreleri:
+    - **OldValue**: "-"
+    - **uzunluk**: ""
+- Çıkış talepleri:
+    - **Outputclaim**: "+ 164411452054"
+
+## <a name="stringjoin"></a>Stringjoın
+
+Her öğe veya üye arasındaki belirtilen ayırıcıyı kullanarak belirtilen dize koleksiyonu talep türünün öğelerini birleştirir.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | stringCollection | Birleştirilecek dizeleri içeren bir koleksiyon. |
+| InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
+| OutputClaim | OutputClaim | string | `delimiter` giriş parametresiyle ayrılmış `inputClaim` dize koleksiyonunun üyelerinden oluşan bir dize. |
+  
+Aşağıdaki örnek, bir Kullanıcı rolleri dize koleksiyonunu alır ve bunu bir virgül sınırlayıcı dizesine dönüştürür. Azure AD Kullanıcı hesabı 'nda bir dize koleksiyonunu depolamak için bu yöntemi kullanabilirsiniz. Daha sonra, dizinden hesabı okuduğunuzda, virgül sınırlayıcı dizesini dize koleksiyonuna geri dönüştürmek için `StringSplit` kullanın.
+
+```XML
+<ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
+  <InputClaims>
+   <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter DataType="string" Id="delimiter" Value="," />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="rolesCommaDelimiterConverted" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+  - **ınputclaim**: ["admin", "author", "Reader"]
+- Giriş parametreleri:
+  - **sınırlayıcı**: ","
+- Çıkış talepleri:
+  - **Outputclaim**: "Yönetici, yazar, okuyucu"
+
+
+## <a name="stringsplit"></a>StringSplit
+
+Bu örnekte belirtilen bir dizenin öğeleriyle ayrılmış alt dizeleri içeren bir dize dizisi döndürür.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Inputclaim | Inputclaim | string | Bölünecek alt dizeleri içeren bir dize talep türü. |
+| InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
+| OutputClaim | OutputClaim | stringCollection | Öğeleri bu dizedeki `delimiter` giriş parametresiyle ayrılmış alt dizeleri içeren bir dize koleksiyonu. |
+  
+Aşağıdaki örnek, Kullanıcı rollerinin virgül sınırlayıcısı dizesini alır ve bunu bir dize koleksiyonuna dönüştürür.
+
+```XML
+<ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+  <InputParameter DataType="string" Id="delimiter" Value="," />
+    </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="roles" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+  - **ınputclaim**: "Yönetici, yazar, okuyucu"
+- Giriş parametreleri:
+  - **sınırlayıcı**: ","
+- Çıkış talepleri:
+  - **Outputclaim**: ["admin", "author", "Reader"]

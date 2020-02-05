@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910422"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988303"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure haritalar desteklenen Kategoriler
 
-Bir [Kategori araması](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) yaparken yüz olarak desteklenen bir kategori vardır. Desteklenen kategori adları için kategori kodlarının listesi aşağıda verilmiştir. Kategori kodları en üst düzey kategoriler için oluşturulur. Tüm alt kategoriler aynı kategori kodunu paylaşır. Bu kategori listesinin yeni veri sürümleriyle değişikliğe tabi olduğunu lütfen unutmayın.
+Bir [Kategori araması](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) yaparken yüz olarak desteklenen bir kategori vardır. Desteklenen kategori adları için kategori kodlarının listesi aşağıda verilmiştir. Kategori kodları en üst düzey kategoriler için oluşturulur. Tüm alt kategoriler aynı kategori kodunu paylaşır. Bu kategori listesi, yeni veri sürümleriyle değiştirilebilir.
 
 <br/>
 
@@ -73,7 +73,7 @@ Bir [Kategori araması](https://docs.microsoft.com/rest/api/maps/search/getsearc
 | ÖNEMLI\_TURURIST\_ | oluşturma, Rasathanesi, mimari, Tunnel, Trae, Tower, Bridge, Planetarium, Mausoleum/Grave, Monument, su deliği, doğal Attraction, önemli Tourist Attraction, Promenade, Pyramids, Pagoda, monle, damal, hermısat, piramit, Fort, geçit, ülke evi, Dam, mathouse, Grave |
 | ENDÜSTRIYEL\_oluşturma | bulunanın, yakıt deposu, endüstriyel bina, fabrika |
 | BOŞ\_MERKEZI | bowling, gözeleyici, havuz milyar, uçan Kulübü, dans Studio Okulu, Sauna, Solarium maszu, boş Merkez, Spa |
-| LIBRARY | kitaplık |
+| KITAPLıĞı | Kitaplığı |
 | ÜRETIM\_TESISI | üretim tesisi |
 | MARINA | Feribot Basin, Marina |
 | PAZARA | Süper pazarlar hiper pazarlar, hedefleyiciler, Kamu, resmi olmayan, Pazar |
@@ -86,7 +86,7 @@ Bir [Kategori araması](https://docs.microsoft.com/rest/api/maps/search/getsearc
 | NITE ömrü | çubuk, Karaoke kulüler, cakulüler, özel kulüler, şarap çubuğu, komedi kulüler, cocata Bar çubuğu, bultheque |
 | \_kamu\_kuruluşu | kamu kuruluşu olmayan |
 | \_Park\_ALANıNı aç | Park alanı açma, Park lotu |
-| DİĞER | yerleşim, ücretsiz ticari bölge, trafik çemberi bilinmiyor |
+| FARKLı | yerleşim, ücretsiz ticari bölge, trafik çemberi bilinmiyor |
 | Park\_garaj | Park oto |
 | PARK\_DINLENME\_alanı | tarihsel site, Lakeshore, deniz kısale, Irmağı manzara alanı, balığa yönelik arama alanı, battpafield, Winter Sport, bot başlatma rampa, koruma, orman alanı, dinlenme alanı, Kayak çare, Cemetery, geçmiş Park, Parkway, anma, Fairground, Picnic alanı, solderliği alanı, Park dinlenme alanı, orman, orman, orman, Bahçe, Bahçe, yaşam yedeği, doğa için ayrılan, orman İstasyonu, arama ayırma, orman ayırma, Park |
 | PETROL\_Istasyonu | Petrol İstasyonu |

@@ -4,18 +4,18 @@ description: Azure portal kullanarak Azure HPC önbelleğini yönetme ve güncel
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867075"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988914"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal önbelleğinizi yönetin
 
-Azure portal önbellekte Genel Bakış sayfasında, önbelleğiniz için proje ayrıntıları, önbellek durumu ve temel istatistikler gösterilmektedir. Ayrıca, önbelleği silmek, uzun süreli depolamaya verileri temizlemek veya yazılımı güncelleştirmek için denetimler de vardır.
+Azure portal önbellekte Genel Bakış sayfasında, önbelleğiniz için proje ayrıntıları, önbellek durumu ve temel istatistikler gösterilmektedir. Ayrıca, önbelleği durdurmak veya başlatmak, önbelleği silmek, uzun süreli depolamaya verileri temizlemek ve yazılımı güncelleştirmek için denetimler de vardır.
 
 Genel Bakış sayfasını açmak için Azure portal ön belleği kaynağını seçin. Örneğin, **tüm kaynaklar** sayfasını yükleyin ve önbellek adına tıklayın.
 
@@ -23,12 +23,29 @@ Genel Bakış sayfasını açmak için Azure portal ön belleği kaynağını se
 
 Sayfanın üst kısmındaki düğmeler, önbelleği yönetmenize yardımcı olabilir:
 
+* **Başlatma** ve [**durdurma**](#stop-the-cache) -önbellek işlemini askıya al
 * [**Flush**](#flush-cached-data) -değiştirilen verileri depolama hedeflerine yazar
 * [**Yükseltme**](#upgrade-cache-software) -önbellek yazılımını güncelleştirir
 * **Yenile** -genel bakış sayfasını yeniden yükler
 * [**Sil**](#delete-the-cache) -önbelleği kalıcı olarak yok eder
 
 Aşağıdaki seçenekler hakkında daha fazla bilgi edinin.
+
+## <a name="stop-the-cache"></a>Önbelleği durdur
+
+Etkin olmayan bir süre boyunca maliyetleri azaltmak için önbelleğin durdurulmasını sağlayabilirsiniz. Önbellek durdurulduğunda çalışma süresi ücretsizdir, ancak önbelleğin ayrılan disk depolaması için ücretlendirilirsiniz. (Ayrıntılar için [fiyatlandırma](https://aka.ms/hpc-cache-pricing) sayfasına bakın.)
+
+Durdurulmuş bir önbellek, istemci isteklerine yanıt vermez. Önbelleği durdurmadan önce istemcilerin bağlantısını çıkarmanız gerekir.
+
+**Durdur** düğmesi etkin bir önbelleği askıya alır. Önbelleğin durumu **sağlıklı** veya **düşürülmüş**olduğunda **Durdur** düğmesi kullanılabilir.
+
+![Durdur ile üst düğmelerin ve Durdur eylemini açıklayan ve ' devam etmek istiyor musunuz? ' adlı bir açılan iletinin ekran görüntüsü Evet (varsayılan) ve düğme yok](media/stop-cache.png)
+
+Önbelleği durdurmayı onaylamak için Evet ' e tıkladıktan sonra önbellek, içeriğini depolama hedeflerine otomatik olarak temizler. Bu işlem biraz zaman alabilir, ancak veri tutarlılığını sağlar. Son olarak, önbellek durumu **durduruldu**olarak değişir.
+
+Durdurulmuş bir önbelleği yeniden etkinleştirmek için **Başlat** düğmesine tıklayın. Onay gerekmez.
+
+![vurgulanacak üst düğmelerin ekran görüntüsü](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>Önbelleğe alınmış verileri temizleme
 
@@ -68,13 +85,14 @@ Depolama hedefleri olarak kullanılan arka uç depolama birimleri, önbelleği s
 > [!NOTE]
 > Azure HPC önbelleği, önbellek silinmeden önce, önbellekteki verileri otomatik olarak arka uç depolama sistemlerine yazar.
 >
-> Önbellekteki tüm verilerin uzun süreli depolamaya yazıldığından emin olmak için şu yordamı izleyin:
+> Önbellekteki tüm verilerin uzun süreli depolamaya yazıldığından emin olmak için, silmeden önce [önbelleği durdurun](#stop-the-cache) . Sil düğmesine tıklamadan önce **durdurulan** durumu gösteriyor olduğundan emin olun.
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. Depolama hedefleri sayfasındaki Sil düğmesini kullanarak her bir depolama hedefini Azure HPC önbelleğinden [kaldırın](hpc-cache-edit-storage.md#remove-a-storage-target) . Hedef kaldırılmadan önce sistem, önbellekteki değiştirilen verileri otomatik olarak arka uç depolama sistemine yazar.
-> 1. Depolama hedefinin tamamen kaldırılmasını bekleyin. Önbellekten yazılacak çok fazla veri varsa işlem bir saat veya daha uzun sürebilir. İşlem tamamlandığında, bir portal bildirimi silme işleminin başarılı olduğunu ve depolama hedefinin listeden kaybolduğunu söyler.
-> 1. Etkilenen tüm depolama hedefleri silindikten sonra, önbelleğin silinmesi güvenlidir.
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> Alternatif olarak, önbelleğe alınmış verileri kaydetmek için [Temizleme](#flush-cached-data) seçeneğini kullanabilirsiniz, ancak bir istemci, temizleme tamamlandıktan sonra ancak önbellek örneği yok edildiğinde önbellekte bir değişiklik yazdığında, çalışmanın kaybedilmesi için küçük bir risk vardır.
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Önbellek ölçümleri ve izleme
 

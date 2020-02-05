@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21d59f6543df7fe9d1fad47a006260bff9c93e2b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812743"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988065"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Azure Data Lake Analytics'i Node.js için Azure SDK'yı kullanarak yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -23,9 +23,9 @@ Bu makale, Node.js için Azure SDK ile yazılmış bir uygulama kullanarak Azure
 
 Aşağıdaki sürümler desteklenir:
 * **Node.js sürümü: 0.10.0 veya üzeri**
-* **Hesap için REST API sürümü: 2015-10-01-Önizleme**
-* **Katalog için REST API sürümü: 2015-10-01-Önizleme**
-* **İş için REST API sürümü: 2016-03-20-Önizleme**
+* **Hesap için REST API sürümü: 2015-10-01-önizleme**
+* **Katalog için REST API sürümü: 2015-10-01-önizleme**
+* **İş için REST API sürümü: 2016-03-20-önizleme**
 
 ## <a name="features"></a>Özellikler
 * Hesap yönetimi: oluşturma, alma, listeleme, güncelleştirme ve silme.
@@ -131,5 +131,3 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Node.js için Microsoft Azure SDK](https://github.com/azure/azure-sdk-for-node)
-* [Node.js için Microsoft Azure SDK - Data Lake Store Yönetimi](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-

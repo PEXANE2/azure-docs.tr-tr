@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172967"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989697"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -30,7 +30,7 @@ Azure portal, kurtarma hizmetleri Kasası panosu, aşağıdakiler de dahil olmak
 
 Kasa panosunda VM 'Leri görüntülemek için:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Hub menüsünde, **Araştır**' ı seçin. Kaynak listesinde **Kurtarma Hizmetleri** yazın. Siz yazarken liste, giriş listenize göre filtrelenir. **Kurtarma Hizmetleri kasalarını**seçin.
 
     ![Kurtarma Hizmetleri kasası oluşturma](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -38,32 +38,32 @@ Kasa panosunda VM 'Leri görüntülemek için:
 3. Kullanım kolaylığı için kasaya sağ tıklayın ve **panoya sabitle**' yi seçin.
 4. Kasa panosunu açın.
 
-    ![Kasa panosu ve ayarlar dikey penceresini açın](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![Kasa panosu ve ayarlar bölmesini açın](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. **Yedekleme öğeleri** kutucuğunda **Azure sanal makineler**' i seçin.
 
     ![Yedekleme öğeleri kutucuğunu aç](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. **Yedekleme öğeleri** dikey penceresinde korunan VM 'lerin listesini görüntüleyebilirsiniz. Bu örnekte, kasa bir sanal makineyi korur: demoyedekleme.  
+6. **Yedekleme öğeleri** bölmesinde, korunan VM 'lerin listesini görebilirsiniz. Bu örnekte, kasa bir sanal makineyi korur: demoyedekleme.  
 
-    ![Yedekleme öğeleri dikey penceresini görüntüleyin](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Yedekleme öğeleri bölmesini görüntüleme](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. Kasa öğesinin panosundan, yedekleme ilkelerini değiştirin, isteğe bağlı bir yedekleme çalıştırın, VM korumasını durdurun veya sürdürülemez, yedekleme verilerini silin, geri yükleme noktalarını görüntüleyin ve bir geri yükleme çalıştırın.
 
-    ![Yedekleme öğeleri panosu ve ayarlar dikey penceresi](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![Yedekleme öğeleri panosu ve ayarlar bölmesi](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>VM için yedekleme ilkesini yönetme
 
 Bir yedekleme ilkesini yönetmek için:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın. Kasa panosunu açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın. Kasa panosunu açın.
 2. **Yedekleme öğeleri** kutucuğunda **Azure sanal makineler**' i seçin.
 
     ![Yedekleme öğeleri kutucuğunu aç](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. **Yedekleme öğeleri** dikey penceresinde, korunan sanal makinelerin listesini ve en son geri yükleme noktası zamanına sahip son yedekleme durumunu görüntüleyebilirsiniz.
+3. **Yedekleme öğeleri** bölmesinde, korunan sanal makinelerin listesini ve en son geri yükleme noktası zamanına sahip son yedekleme durumunu görüntüleyebilirsiniz.
 
-    ![Yedekleme öğeleri dikey penceresini görüntüleyin](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Yedekleme öğeleri bölmesini görüntüleme](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. Kasa öğesinin panosundan bir yedekleme ilkesi seçebilirsiniz.
 
@@ -85,8 +85,8 @@ Korumasını ayarladıktan sonra bir VM 'nin isteğe bağlı yedeklemesini çal�
 
     ![Şimdi Yedekle seçeneği](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. **Yedekleme yönetimi türünden** **Azure sanal makinesi**' ni seçin. **Yedekleme öğesi (Azure sanal makine)** dikey penceresi görünür.
-3. Bir VM seçin ve isteğe bağlı yedekleme oluşturmak için **Şimdi Yedekle** ' yi seçin. **Şimdi Yedekle** dikey penceresi görünür.
+2. **Yedekleme yönetimi türünden** **Azure sanal makinesi**' ni seçin. **Yedekleme öğesi (Azure sanal makine)** bölmesi görüntülenir.
+3. Bir VM seçin ve isteğe bağlı yedekleme oluşturmak için **Şimdi Yedekle** ' yi seçin. **Şimdi Yedekle** bölmesi görüntülenir.
 4. Yedek alana **sakla** alanında yedeklemenin korunması için bir tarih belirtin.
 
     ![Şimdi Yedekle takvimi](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -128,7 +128,7 @@ Korumayı durdurmak ve bir VM 'nin verilerini silmek için:
 
 ## <a name="resume-protection-of-a-vm"></a>VM korumasını sürdürür
 
-VM korumasını durdurma sırasında [Korumayı Durdur ve yedek verileri sakla](#stop-protection-and-retain-backup-data) seçeneğini belirlediyseniz **yedeklemeyi sürdürme**' yı kullanabilirsiniz. [Korumayı Durdur ve yedekleme verilerini sil](#stop-protection-and-delete-backup-data) seçeneğini belirlerseniz veya [yedekleme verilerini silerseniz](#delete-backup-data)Bu seçenek kullanılamaz.
+VM korumasını durdurma sırasında [Korumayı Durdur ve yedek verileri sakla](#stop-protection-and-retain-backup-data) seçeneğini belirlediyseniz **yedeklemeyi devam ettirmeyi**kullanabilirsiniz. [Korumayı Durdur ve yedekleme verilerini sil](#stop-protection-and-delete-backup-data) seçeneğini belirlerseniz veya [yedekleme verilerini silerseniz](#delete-backup-data)Bu seçenek kullanılamaz.
 
 Bir VM için korumayı sürdürmesini sağlamak için:
 
@@ -157,6 +157,8 @@ Bir sanal makinenin yedekleme verilerini silmenin iki yolu vardır:
     ![Yedekleme verilerini silme](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
   * Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
+
+Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir VM 'nin yedekleme (tüm kurtarma noktaları) silindikten sonra bile, geçici silme ile, yedekleme verileri 14 ek gün boyunca tutulur. Daha fazla bilgi için bkz. [geçici silme belgeleri](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
   > [!NOTE]
   > Yedekleme verilerini sildiğinizde, ilişkili tüm kurtarma noktalarını silersiniz. Silmek için belirli kurtarma noktaları seçemezsiniz.

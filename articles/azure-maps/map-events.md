@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911070"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985926"
 ---
 # <a name="interact-with-the-map"></a>Harita ile etkileşim kurma
 
-Bu makalede haritadaki olayları ve haritanın farklı katmanlarını vurgulamak için [harita sınıfı olayları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) özelliğinin nasıl kullanılacağı gösterilir. Ayrıca, bir HTML işaretleyicisi ile etkileşim kurarken olayları vurgulamak için harita sınıfı olayları özelliğini nasıl kullanacağınızı gösterir.
+Bu makalede [harita olayları sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)nasıl kullanılacağı gösterilir. Özelliği haritadaki olayları ve haritanın farklı katmanlarını vurgular. Ayrıca, bir HTML işaretleyicisi ile etkileşim kurarken olayları vurgulayabilirsiniz.
 
 ## <a name="interact-with-the-map"></a>Harita ile etkileşim kurma
 
-Aşağıdaki haritada yürütün ve sağ tarafta vurgulanan ilgili fare olaylarına bakın. JavaScript kodunu görüntülemek ve düzenlemek için **js sekmesine** tıklayabilirsiniz. Ayrıca, **birlikte Düzenle** ' yi tıklatın ve kodu CodePen ' da düzenleyebilirsiniz.
+Aşağıdaki haritada yürütün ve sağ tarafta vurgulanan ilgili fare olaylarına bakın. JavaScript kodunu görüntülemek ve düzenlemek için **js sekmesine** tıklayabilirsiniz. CodePen 'da kodu değiştirmek için **birlikte Düzenle** ' ye de tıklayabilirsiniz.
 
 <br/>
 
@@ -31,7 +31,7 @@ Aşağıdaki haritada yürütün ve sağ tarafta vurgulanan ilgili fare olaylar�
 
 ## <a name="interact-with-map-layers"></a>Harita katmanları ile etkileşim kurma
 
-Aşağıdaki kod, sembol katmanıyla etkileşime geçerek harekete geçen olayların adını vurgular. Sembol, kabarcık, çizgi ve çokgen katmanı, hepsi aynı olay kümesini destekler. Isı haritası ve döşeme katmanları bu olayların hiçbirini desteklemez.
+Aşağıdaki kod, simge katmanıyla etkileşime geçerek tetiklenen olayı vurgular. Sembol, kabarcık, çizgi ve çokgen katmanı, hepsi aynı olay kümesini destekler. Isı haritası ve döşeme katmanları bu olayların hiçbirini desteklemez.
 
 <br/>
 

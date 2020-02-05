@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927160"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990530"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı
 Integration Runtime (IR), Azure Data Factory tarafından farklı ağ ortamlarında aşağıdaki veri tümleştirme özelliklerini sunmak için kullanılan işlem altyapısıdır:
@@ -141,9 +141,9 @@ Kendinden konak IR veri taşıma işlemini gerçekleştirmek için kullanıldı�
 ### <a name="azure-ssis-ir-location"></a>Azure SSIS IR konumu
 Ayıklama, dönüştürme, yükleme (ETL) iş akışlarınızda yüksek performansa ulaşmak için doğru Azure-SSIS IR konumunu seçmek önemlidir.
 
-- Azure-SSIS IR konumu, veri fabrikanızın konumuyla aynı olmalıdır, ancak SSıSDB 'nin barındırılması gereken kendi Azure SQL veritabanı/yönetilen örnek sunucunuzun konumuyla aynı olmalıdır. Bu şekilde Azure-SSIS Integration Runtime biriminiz farklı konumlar arasında aşırı trafik oluşturmadan kolayca SSISDB öğesine erişebilir.
-- SSıSDB barındırmak için var olan bir Azure SQL veritabanı/yönetilen örnek sunucunuz yoksa ancak şirket içi veri kaynaklarınız/hedefleri varsa, şirket içi ağınıza bağlı bir sanal ağın bulunduğu konumda yeni bir Azure SQL veritabanı/yönetilen örnek sunucusu oluşturmanız gerekir.  Bu şekilde, yeni Azure SQL veritabanı/yönetilen örnek sunucusunu kullanarak Azure-SSIS IR oluşturabilir ve bu sanal ağı aynı konumda birleştirerek farklı konumlarda veri taşımalarını etkili bir şekilde en aza indirebilirsiniz.
-- SSSıSDB 'nin barındırıldığı mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun konumu, şirket içi ağınıza bağlı bir sanal ağın konumuyla aynı değilse, önce mevcut bir Azure SQL veritabanı/yönetilen örnek sunucusu kullanarak Azure-SSIS IR oluşturun ve aynı konumdaki başka bir sanal ağa katılarak bir sanal ağı farklı konumlar arasında sanal ağ bağlantısı olarak yapılandırın.
+- Azure-SSIS IR konumu, veri fabrikanızın konumuyla aynı olmalıdır, ancak SSıSDB 'nin barındırılması için kendi Azure SQL veritabanınızın veya yönetilen örnek sunucunuzun konumuyla aynı olmalıdır. Bu şekilde Azure-SSIS Integration Runtime biriminiz farklı konumlar arasında aşırı trafik oluşturmadan kolayca SSISDB öğesine erişebilir.
+- SSıSDB barındırmak için var olan bir Azure SQL veritabanınız veya yönetilen örnek sunucunuz yoksa ancak şirket içi veri kaynaklarınız/hedefleri varsa, şirket içi ağınıza bağlı bir sanal ağın bulunduğu konumda yeni bir Azure SQL veritabanı veya yönetilen örnek sunucusu oluşturmanız gerekir.  Bu şekilde, yeni Azure SQL veritabanı veya yönetilen örnek sunucusunu kullanarak Azure-SSIS IR oluşturabilir ve bu sanal ağı aynı konumda birleştirerek farklı konumlarda veri taşımalarını etkili bir şekilde en aza indirebilirsiniz.
+- Var olan Azure SQL veritabanınızın veya SSSıSDB 'nin barındırıldığı yönetilen örnek sunucunuzun konumu, şirket içi ağınıza bağlı bir sanal ağın konumuyla aynı değilse, önce mevcut bir Azure SQL veritabanını kullanarak Azure-SSIS IR oluşturun veya Yönetilen örnek sunucusu ve aynı konumdaki başka bir sanal ağa katılma ve ardından sanal ağı farklı konumlar arasında sanal ağ bağlantısı ile yapılandırma.
 
 Aşağıdaki şemada Data Factory konum ayarları ve tümleştirme çalışma zamanları gösterilmektedir:
 
@@ -163,13 +163,13 @@ Kopyalama etkinliği için veri akışı yönünü tanımlamak üzere kaynak ve 
 
 Lookup ve GetMetadata etkinliği, veri deposu bağlı hizmetiyle ilişkili tümleştirme çalışma zamanı üzerinde yürütülür.
 
-### <a name="transformation-activity"></a>Dönüştürme etkinliği
+### <a name="external-transformation-activity"></a>Dış dönüşüm etkinliği
 
-Her dönüştürme etkinliğinde bir tümleştirme çalışma zamanını işaret eden hedef işlem Bağlı Hizmeti vardır. Bu tümleştirme çalışma zamanı örneği, dönüştürme etkinliğinin dağıtıldığı yerdir.
+Bir dış işlem altyapısını kullanan her dış dönüşüm etkinliğinin, bir tümleştirme çalışma zamanına işaret eden bir hedef işlem bağlı hizmeti vardır. Bu tümleştirme çalışma zamanı örneği, dış el kodlu dönüştürme etkinliğinin dağıtıldığı konumu belirler.
 
 ### <a name="data-flow-activity"></a>Veri akışı etkinliği
 
-Veri akışı etkinliği, onunla ilişkili tümleştirme çalışma zamanı üzerinde yürütülür. 
+Veri akışı etkinlikleri, onunla ilişkili Azure tümleştirme çalışma zamanı üzerinde yürütülür. Veri akışları tarafından kullanılan Spark işlem, Azure Integration Runtime veri akışı özellikleri tarafından belirlenir ve ADF tarafından tam olarak yönetilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

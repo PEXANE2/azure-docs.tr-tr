@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112650"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990053"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -31,7 +31,7 @@ Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azu
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 -  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -64,7 +64,10 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
 5. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
 
     ![Azure IoT Central bağlı çöp uygulama oluştur sayfası](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central bağlı faturalandırma bilgileri oluşturma](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. Artık Azure IoT Central **bağlı çöp yönetimi şablonunu**kullanarak bağlı bir çöp yönetimi uygulaması oluşturdunuz. 
 
 Tebrikler! Yeni oluşturduğunuz uygulamanız önceden yapılandırılmış olarak gelir:
@@ -131,7 +134,7 @@ Cihaz şablonunu görüntülemek için:
 
 2. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu görürsünüz. Ada tıklayarak açın.
 
-3. Familirize cihaz şablonuyla özelliklere. Bunun için, *Fill düzeyi*, *oçi ölçümü*, *Ağırlık*, *konum* vb. gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
+3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bunun için, *Fill düzeyi*, *oçi ölçümü*, *Ağırlık*, *konum* vb. gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
 
    ![Cihaz şablonu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -157,7 +160,7 @@ Aşağıdakileri özelleştirmeyi deneyin:
 
   ![Cihaz şablonu görünümleri](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Yayımlama 
+### <a name="publish"></a>Yayımla 
 
 * Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımlamayı** unutmayın. 
 

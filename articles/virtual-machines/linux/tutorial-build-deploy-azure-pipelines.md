@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: 8fda8e3079084ad917ad5a7fcfc4f80a622e2d82
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277232"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988337"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -86,7 +86,7 @@ Uygulama için kullanılan çalışma zamanı yığınına göre aşağıda aç�
 
 - Java Spring Boot ve Spring bulut tabanlı uygulamaları dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) şablonu kullanarak Azure 'da tümüyle desteklenen bir OpenJDK tabanlı çalışma zamanı sağlayan bir Linux sanal makinesi oluşturun.
 - Tomcat sunucusunda Java servi 'leri dağıtmak için, [Bu](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure şablonunu kullanarak Java 8 Ile BIR Linux VM oluşturun ve [bir hizmet olarak Tomcat 9. x 'i yapılandırın](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- Java EE tabanlı uygulamayı dağıtmak için bir Azure şablonu kullanarak bir [LINUX VM 'si oluşturun + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) veya Linux VM [+ Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleWebLogicServer12cEnterprise) veya Linux VM + Java + bir [Linux sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + jpatron 14 
+- Java EE tabanlı uygulamayı dağıtmak için bir Azure şablonu kullanarak bir [LINUX VM 'si oluşturun + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) veya Linux VM [+ Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) veya Linux VM + Java + bir [Linux sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + jpatron 14 
 
 #### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
 

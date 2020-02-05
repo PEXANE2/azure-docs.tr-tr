@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368044"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991040"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarında kaynaklar için ad çözümlemesi
 
@@ -31,13 +31,13 @@ Sanal ağlara dağıtılan kaynakların etki alanı adlarını iç IP adreslerin
 Kullandığınız ad çözümlemesi türü, kaynaklarınızın birbirleriyle nasıl iletişim kurmaları gerektiğine bağlıdır. Aşağıdaki tabloda senaryolar ve ilgili ad çözümleme çözümleri gösterilmektedir:
 
 > [!NOTE]
-> Senaryonuza bağlı olarak, şu anda genel önizleme aşamasında olan Azure DNS Özel Bölgeleri özelliğini kullanmak isteyebilirsiniz. Daha fazla bilgi için bkz. [Azure DNS'yi özel etki alanları için kullanma](../dns/private-dns-overview.md).
+> Senaryonuza bağlı olarak, Azure DNS özel bölgeleri kullanmak isteyebilirsiniz. Daha fazla bilgi için bkz. [Azure DNS'yi özel etki alanları için kullanma](../dns/private-dns-overview.md).
 >
 
 | **Senaryo** | **Çözüm** | **Önekini** |
 | --- | --- | --- |
-| Aynı sanal ağda bulunan VM 'Ler veya aynı bulut hizmetindeki Azure Cloud Services rol örnekleri arasındaki ad çözümlemesi. | [Azure DNS özel bölgeleri](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) |Ana bilgisayar adı veya FQDN |
-| Farklı sanal ağlardaki VM 'Ler veya farklı bulut hizmetlerindeki rol örneklerinde ad çözümleme. |[Azure DNS özel bölgeleri](../dns/private-dns-overview.md) veya, müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ILETEN (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
+| Aynı sanal ağda bulunan VM 'Ler veya aynı bulut hizmetindeki Azure Cloud Services rol örnekleri arasındaki ad çözümlemesi. | [Azure DNS özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) |Ana bilgisayar adı veya FQDN |
+| Farklı sanal ağlardaki VM 'Ler veya farklı bulut hizmetlerindeki rol örneklerinde ad çözümleme. |[Özel bölgeler](../dns/private-dns-overview.md) veya, müşteri tarafından yönetilen dns sunucuları Azure DNS sorguları Azure tarafından çözümlenmek üzere sanal ağlar arasında (DNS proxy) iletme. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Aynı sanal ağdaki rol örneklerine veya VM 'lere sanal ağ tümleştirmesi kullanarak bir Azure App Service (Web uygulaması, Işlev veya bot) ad çözümlemesi. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | App Service Web Apps aynı sanal ağdaki VM 'lere ad çözümleme. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Bir sanal ağdaki App Service Web Apps farklı bir sanal ağdaki VM 'lere ad çözümleme. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
@@ -58,7 +58,7 @@ Azure, genel DNS adlarını çözümlemesiyle birlikte, aynı sanal ağ veya bul
 ### <a name="features"></a>Özellikler
 
 Azure tarafından sunulan ad çözümlemesi aşağıdaki özellikleri içerir:
-* Kullanım kolaylığı. Yapılandırma gerekmez.
+* Kullanım kolaylığı. Yapılandırma gerekmiyor.
 * Yüksek kullanılabilirlik. Kendi DNS sunucularınızın kümelerini oluşturmanız ve yönetmeniz gerekmez.
 * Hizmeti, hem şirket içi hem de Azure ana bilgisayar adlarını çözümlemek için kendi DNS sunucularınızla birlikte kullanabilirsiniz.
 * Aynı bulut hizmetindeki sanal makineler ve rol örnekleri arasında ad çözümlemesini bir FQDN gereksinimi olmadan kullanabilirsiniz.

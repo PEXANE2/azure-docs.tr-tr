@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426273"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986997"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB için Azure Stream Analytics çıkışı  
 Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi uygulamaları kapsar.
@@ -97,7 +97,7 @@ Event Hubs gelen olay hızı Azure Cosmos DB kapsayıcılardan (20.000 ru) en fa
 
 1,2 ile Stream Analytics, azaltma veya hız sınırlandırmasından çok az sayıda yeniden gönderme işlemi ile Azure Cosmos DB, kullanılabilir üretilen iş hızının yüzde 100 ' ü kullanarak daha akıllı bir işlem olur. Bu, kapsayıcıda aynı anda çalışan sorgular gibi diğer iş yükleri için daha iyi bir deneyim sağlar. Stream Analytics, saniyede 1.000 ile 10.000 ileti için bir havuz olarak Azure Cosmos DB nasıl ölçeklendirebileceğiniz hakkında bilgi edinmek istiyorsanız, [Bu Azure örnek projesini](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)deneyin.
 
-Azure Cosmos DB çıkışının üretilen işi 1,0 ve 1,1 ile aynıdır. 1,2 Şu anda varsayılan değer olmadığı için, portalı kullanarak veya [Stream Analytics oluşturma REST API çağrısını](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)kullanarak bir Stream Analytics işinin [uyumluluk düzeyini ayarlayabilirsiniz](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) . Uyumluluk düzeyi 1,2 ' i Azure Cosmos DB Stream Analytics kullanmanızı *kesinlikle öneririz* .
+Azure Cosmos DB çıkışının üretilen işi 1,0 ve 1,1 ile aynıdır. Uyumluluk düzeyi 1,2 ' i Azure Cosmos DB Stream Analytics kullanmanızı *kesinlikle öneririz* .
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>JSON çıkışı için Azure Cosmos DB ayarları
 

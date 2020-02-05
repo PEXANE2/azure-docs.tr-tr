@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905190"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986198"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -831,7 +831,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | **Parametre** | **İzin verilen değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|dize, varsayılan değer ""| Statik |Bir kapsayıcı ağı ayarlanırken kullanılacak ağ adı.|
-|ContainerNetworkSetup|bool, varsayılan değer FALSE| Statik |Bir kapsayıcı ağının oluşturulup ayarlanmayacağı.|
+|ContainerNetworkSetup|bool, varsayılan değer FALSE (Linux) ve varsayılan değer TRUE (Windows)| Statik |Bir kapsayıcı ağının oluşturulup ayarlanmayacağı.|
 |FabricDataRoot |Dize | Izin verilmiyor |Veri kök dizinini Service Fabric. Azure için varsayılan değer d:\svcfab |
 |FabricLogRoot |Dize | Izin verilmiyor |Service Fabric günlük kök dizini. Bu, SF günlüklerinin ve izlemelerin yerleştirildiği yerdir. |
 |NodesToBeRemoved|dize, varsayılan değer ""| Dinamik |Yapılandırma yükseltmesinin bir parçası olarak kaldırılması gereken düğümler. (Yalnızca tek başına dağıtımlar için)|

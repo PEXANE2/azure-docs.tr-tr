@@ -1,27 +1,33 @@
 ---
 title: Bir Azure Service Fabric hizmetini gMSA hesabı altında çalıştırma
-description: Service Fabric Windows tek başına kümesinde bir hizmeti gMSA olarak çalıştırmayı öğrenin.
+description: Bir hizmeti Service Fabric Windows tek başına kümesi üzerinde grup tarafından yönetilen hizmet hesabı (gMSA) olarak çalıştırmayı öğrenin.
 author: dkkapur
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464265"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988405"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Grup tarafından Yönetilen Hizmet Hesabı olarak hizmet çalıştırma
-Windows Server tek başına kümesinde, bir Çalıştır ilkesi kullanarak bir hizmeti grup yönetilen hizmet hesabı (gMSA) olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar yapı. exe işleminin altında çalıştığı hesap altında çalışır. Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bunun Active Directory Azure Active Directory (Azure AD) değil, etki alanınız içinde şirket içinde kullandığını unutmayın. Bir gMSA kullanarak, uygulama bildiriminde depolanan parola veya şifreli parola yoktur.  Ayrıca, bir hizmeti [Active Directory Kullanıcı veya grup](service-fabric-run-service-as-ad-user-or-group.md)olarak da çalıştırabilirsiniz.
 
-Aşağıdaki örnekte *svc-test $* ; adlı bir gMSA hesabının nasıl oluşturulacağı gösterilmektedir. Bu yönetilen hizmet hesabını küme düğümlerine dağıtma; ve Kullanıcı sorumlusunu yapılandırma.
+Windows Server tek başına kümesinde *, bir Çalıştır ilkesi kullanarak* bir hizmeti *Grup yönetilen hizmet hesabı* (gMSA) olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar `Fabric.exe` işleminin altında çalıştığı hesap altında çalışır. Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bir gMSA kullanarak, uygulama bildiriminde depolanan parola veya şifreli parola yoktur.  Ayrıca, bir hizmeti [Active Directory Kullanıcı veya grup](service-fabric-run-service-as-ad-user-or-group.md)olarak da çalıştırabilirsiniz.
 
-Ön koşullar:
+Aşağıdaki örnek, *svc-test $* adlı bir gMSA hesabı oluşturmayı, bu yönetilen hizmet hesabını küme düğümlerine dağıtmayı ve Kullanıcı sorumlusunu yapılandırmayı gösterir.
+
+> [!NOTE]
+> Tek başına Service Fabric kümeyle bir gMSA kullanmak için etki alanınız içinde şirket içinde Active Directory gerekir (Azure Active Directory (Azure AD) yerine).
+
+Önkoşulların önkoşulları:
+
 - Etki alanı bir KDS kök anahtarı gerektirir.
 - Etki alanında en az bir Windows Server 2012 (veya R2) DC olması gerekir.
 
-1. Active Directory etki alanı yöneticisi, `New-ADServiceAccount` komutunu kullanarak Grup tarafından yönetilen hizmet hesabı oluşturun ve `PrincipalsAllowedToRetrieveManagedPassword` tüm Service Fabric küme düğümlerini içerdiğinden emin olun. `AccountName`, `DnsHostName`ve `ServicePrincipalName` benzersiz olmalıdır.
+1. Active Directory etki alanı yöneticisi, `New-ADServiceAccount` cmdlet 'ini kullanarak Grup tarafından yönetilen bir hizmet hesabı oluşturun ve `PrincipalsAllowedToRetrieveManagedPassword` Service Fabric küme düğümlerini içerdiğinden emin olun. `AccountName`, `DnsHostName`ve `ServicePrincipalName` benzersiz olmalıdır.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
@@ -35,7 +41,7 @@ Aşağıdaki örnekte *svc-test $* ; adlı bir gMSA hesabının nasıl oluşturu
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Kullanıcı sorumlusunu yapılandırın ve RunAsPolicy öğesini kullanıcıya başvuracak şekilde yapılandırın.
+3. Kullanıcı sorumlusunu yapılandırın ve `RunAsPolicy` [kullanıcıya](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas)başvuracak şekilde yapılandırın.
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -55,14 +61,14 @@ Aşağıdaki örnekte *svc-test $* ; adlı bir gMSA hesabının nasıl oluşturu
     </ApplicationManifest>
     ```
 
-> [!NOTE] 
-> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy**belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md). 
+> [!NOTE]
+> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy**belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md).
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Sonraki adım olarak, aşağıdaki makaleleri okuyun:
-* [Uygulama modelini anlama](service-fabric-application-model.md)
-* [Hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md)
-* [Uygulama dağıtma](service-fabric-deploy-remove-applications.md)
+Aşağıdaki makaleler sonraki adımlarda size kılavuzluk eder:
+
+- [Uygulama modelini anlama](service-fabric-application-model.md)
+- [Hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md)
+- [Uygulama dağıtma](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

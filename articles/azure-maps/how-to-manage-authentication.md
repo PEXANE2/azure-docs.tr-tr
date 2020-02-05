@@ -3,17 +3,17 @@ title: Kimlik doğrulamasını yönetme | Microsoft Azure haritaları
 description: Microsoft Azure haritaların kimlik doğrulamasını yönetmek için Azure portal kullanabilirsiniz.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/16/2020
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1f7f128898089292a8ccd92686af5d68fe328f3c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f856aebe5e3acaca142e460d18ec8c6498b18787
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766171"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989313"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
 
@@ -21,40 +21,40 @@ Azure haritalar hesabı oluşturduktan sonra, Azure Active Directory (Azure AD) 
 
 ## <a name="view-authentication-details"></a>Kimlik doğrulama ayrıntılarını görüntüle
 
-Azure haritalar hesabı oluşturulduktan sonra birincil ve ikincil anahtarlar oluşturulur. Abonelik anahtarı olarak birincil anahtarı kullanın, bazen bu adlar birbirinin yerine kullanılır. İkincil anahtar, kayan anahtar değişiklikleri gibi senaryolarda kullanılabilir. Her iki durumda da, Azure haritalar 'ı çağırmak için bir anahtar gereklidir. Bu işleme [paylaşılan anahtar kimlik doğrulaması](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)adı verilir. Paylaşılan anahtar ve Azure AD kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz. [Azure Maps Ile kimlik doğrulama](https://aka.ms/amauth) .
+Azure haritalar hesabı oluşturulduktan sonra birincil ve ikincil anahtarlar oluşturulur. Azure haritalar 'ı [paylaşılan anahtar kimlik doğrulaması](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)kullanarak çağırırken birincil anahtarın abonelik anahtarı olarak kullanılması önerilir. İkincil anahtar, kayan anahtar değişiklikleri gibi senaryolarda kullanılabilir. Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](https://aka.ms/amauth).
 
 Kimlik doğrulama ayrıntılarınızı Azure portal görüntüleyebilirsiniz. Hesabınıza gidin ve **Ayarlar** menüsünde **kimlik doğrulaması** ' nı seçin.
 
 ![Kimlik doğrulaması ayrıntıları](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 
-## <a name="set-up-azure-ad-app-registration"></a>Azure AD uygulama kaydını ayarlama
+## <a name="configure-azure-ad-app-registration"></a>Azure AD Uygulaması kaydını yapılandırma
 
-Azure haritalar hesabı oluşturduktan sonra Azure AD kiracınız ile Azure haritalar kaynağı arasında bir bağlantı kurmanız gerekir.
-
-1. Portal menüsünden **Azure Active Directory** ' yi seçin. Kayıt için bir ad girin. **Uygulama kayıtları** ' ye tıklayın ve ardından **Yeni kayıt**' a tıklayın. **Yeniden yönlendirme URI 'si** kutusunda, Web uygulamasının giriş sayfasını belirtin. Örneğin, https://localhost/. Zaten kayıtlı bir uygulamanız varsa 2. adıma gidin.
+1. Azure portal Azure hizmetleri listesinden **Azure Active Directory** seçin.  **Uygulama kayıtları** öğesini seçin ve **Yeni kayıt**' ı tıklatın.  İleri. **Ad**girin, **destek hesabı türünü**seçin ve **Kaydet**' e tıklayın.  Zaten kayıtlı bir uygulamanız varsa 2. adıma geçin. 
 
     ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
 
     ![Uygulama kaydı ayrıntıları](./media/how-to-manage-authentication/app-create.png)
 
-2. Azure haritalar 'a temsil edilen API izinleri atamak için, **uygulama kayıtları**altındaki uygulamaya gidin ve ardından **API izinleri**' ni seçin. **Izin Ekle**' yi seçin. **BIR API seçin**altında **Azure haritaları** ' nı arayıp seçin.
+2. Azure haritalar 'a temsil edilen API izinleri atamak için **uygulama kayıtları**altındaki uygulamaya gidin. Ardından, **API izinleri**' ni seçin ve **izin Ekle**' yi seçin. **Kuruluşumun kullandığı API 'ler**altında **Azure haritalar** ' ı arayın ve seçin.
 
     ![Uygulama API 'SI izinleri](./media/how-to-manage-authentication/app-permissions.png)
 
-3. **Izinleri Seç**' in altında, **kullanıcı kimliğine bürünme**kutusunu Işaretleyin ve ardından alttaki **Seç** düğmesine tıklayın.
+3. **Azure haritalar erişimini** denetleyin ve ardından **izin Ekle**' ye tıklayın.
 
     ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. Kimlik doğrulama yönteminize bağlı olarak, a veya b adımını tamamen doldurun.
+4. Kimlik doğrulama yönteminize bağlı olarak, a veya b adımını tamamen doldurun. 
 
-    1. Uygulamanız Azure Maps web SDK 'Sı ile kullanıcı belirteci kimlik doğrulaması kullanıyorsa, uygulama kaydlarınızın bildirim bölümünde true olarak ayarlayarak `oauth2AllowImplicitFlow` etkinleştirin.
+    1. Uygulamanız Azure Maps web SDK 'Sı ile kullanıcı belirteci kimlik doğrulaması kullanıyorsa, `oauth2AllowImplicitFlow`etkinleştirin. `oauth2AllowImplicitFlow`etkinleştirmek için, uygulama kaydlarınızın bildirim bölümünde bunu true olarak ayarlayın. 
     
        ![Uygulama bildirimi](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa, uygulama kaydı ' nda **sertifikalar & gizlilikler** dikey penceresine gidin ve bir parola oluşturun ya da uygulama kaydına bir ortak anahtar sertifikası yükleyin. Bir parola oluşturursanız, daha sonra kullanmak üzere güvenli bir şekilde saklayın. Bu parolayı Azure AD 'den belirteç almak için kullanacaksınız.
+    2. Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa, uygulama kayıt sayfanızda **sertifikalar & gizlilikler** dikey penceresine gidin ve **yeni istemci parolası** ' na tıklayarak bir parola oluşturun veya bir ortak anahtar sertifikasını uygulama kaydına yükleyin. Bir parola oluşturursanız, **Ekle**' ye tıkladıktan sonra parolayı daha sonra kopyalayın ve güvenli bir şekilde depolayın. Bu parolayı Azure AD 'den belirteç almak için kullanacaksınız.
 
        ![Uygulama anahtarları](./media/how-to-manage-authentication/app-keys.png)
+
+       ![Anahtar Ekle](./media/how-to-manage-authentication/add-key.png)
 
 
 ## <a name="grant-role-based-access-control-rbac-to-azure-maps"></a>Azure Maps 'e rol tabanlı erişim denetimi (RBAC) verme

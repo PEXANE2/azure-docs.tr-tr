@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257510"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986742"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +32,7 @@ Bu öğreticide, Tableau Server 'ı Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -45,6 +44,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Tableau sunucusu **SP** tarafından başlatılan SSO 'yu destekler
+* Tableau Server 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-tableau-server-from-the-gallery"></a>Galeriden Tableau Server ekleme
 
@@ -82,11 +82,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://azure.<domain name>.link`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://azure.<domain name>.link`
 
-    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://azure.<domain name>.link`
+    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://azure.<domain name>.link`
 
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
     > Yukarıdaki değerler gerçek değer değildir. Değerleri, Öğreticinin ilerleyen kısımlarında açıklanan Tableau sunucu yapılandırma sayfasından gerçek URL ve tanımlayıcıyla güncelleştirin.
@@ -107,7 +107,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
 
@@ -145,7 +145,7 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
     b. **Sunucu IÇIN SAML kimlik doğrulamasını etkinleştir**onay kutusunu seçin.
 
-    c. Tableau sunucusu dönüş URL 'SI — gibi Tableau Server kullanıcılarına erişim <http://tableau_server>verilecek URL. Kullanılması `http://localhost` önerilmez. Sondaki eğik çizgiyle (örneğin, `http://tableau_server/`) bir URL kullanılması desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
+    c. Tableau sunucusu dönüş URL 'SI — <http://tableau_server>gibi, sunucu kullanıcılarının eriştiği URL. `http://localhost` kullanmak önerilmez. Sondaki eğik çizgiyle (örneğin, `http://tableau_server/`) bir URL kullanılması desteklenmez. **Tableau sunucusu geri dönüş URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde URL metin kutusunu **oturum** açmak için yapıştırın
 
     d. SAML varlık KIMLIĞI — varlık KIMLIĞI, Tableau sunucu yüklemenizi IDP 'ye benzersiz şekilde tanımlar. İsterseniz Tableau sunucu URL 'nizi buraya girebilirsiniz, ancak Tableau Server URL 'niz olması gerekmez. **SAML VARLıK kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın
 
@@ -155,7 +155,7 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
 
     g. IDP 'nin Kullanıcı adlarını, görünen adları ve e-posta adreslerini tutmak için kullandığı özniteliklerin adlarını girin.
 
-    h. **Kaydet**'e tıklayın.
+    h. **Kaydet**’e tıklayın
 
     > [!NOTE]
     > Müşterinin, Tableau Server SAML SSO yapılandırmasındaki herhangi bir sertifikayı karşıya yüklemesi gerekir ve bu, SSO akışında yok sayılır. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [SAML 'Yi yapılandırma](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)makalesine başvurun.
@@ -184,3 +184,5 @@ Erişim panelinde Tableau sunucu kutucuğuna tıkladığınızda, SSO 'yu ayarla
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Tableau Server 'ı Azure AD ile deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457464"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988252"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
@@ -37,7 +37,7 @@ Eşitle komutu kopyalama komutundan farklı yollarla farklılık gösterir:
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
-- [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
 - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
@@ -141,13 +141,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
 
-**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: *. jpg;* . PDF; exactName
+**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: \*. jpg;\*. PDF; exactName
 
 **-h,--** eşitleme için yardım yardımı
 
 **--Include-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
 
-**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: *. jpg;* . PDF; exactName
+**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: \*. jpg;\*. PDF; exactName
 
 **--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler ve yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan BILGI). (varsayılan "BILGI")
 

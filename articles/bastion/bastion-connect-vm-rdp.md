@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dad6a517341f83f693e1e7e1f7d27e899e00f7e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498355"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990496"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Azure savunma kullanarak bir Windows sanal makinesine bağlanma
 
@@ -20,13 +20,22 @@ Bu makalede, Azure savunma kullanarak bir Azure sanal ağındaki Windows sanal m
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-VM 'nin bulunduğu sanal ağ için bir Azure savunma ana bilgisayarı ayarladığınızdan emin olun. Daha fazla bilgi için bkz. [Azure savunma Konağı oluşturma](bastion-create-host-portal.md). Savunma hizmeti, sanal ağınıza sağlandıktan ve dağıtıldıktan sonra, bu sanal ağdaki herhangi bir VM 'ye bağlanmak için kullanabilirsiniz. Savunma, bir Windows sanal makinesine bağlanmak için RDP kullandığınızı ve Linux sanal makinelerinize bağlanmak için SSH kullandığınızı varsayar. Bir Linux VM bağlantısı hakkında daha fazla bilgi için bkz. [VM 'ye bağlanma-Linux](bastion-connect-vm-ssh.md).
+VM 'nin bulunduğu sanal ağ için bir Azure savunma ana bilgisayarı ayarladığınızdan emin olun. Daha fazla bilgi için bkz. [Azure savunma Konağı oluşturma](bastion-create-host-portal.md). Savunma hizmeti, sanal ağınıza sağlandıktan ve dağıtıldıktan sonra, bu sanal ağdaki herhangi bir VM 'ye bağlanmak için kullanabilirsiniz.
 
+Savunma, bir Windows sanal makinesine bağlanmak için RDP kullandığınızı ve Linux sanal makinelerinize bağlanmak için SSH kullandığınızı varsayar. Bir Linux VM bağlantısı hakkında daha fazla bilgi için bkz. [VM 'ye bağlanma-Linux](bastion-connect-vm-ssh.md).
+
+### <a name="required-roles"></a>Gerekli roller
 Bir bağlantı oluşturmak için aşağıdaki roller gereklidir:
 
 * Sanal makinede okuyucu rolü
 * Sanal makinenin özel IP 'si ile NIC 'de okuyucu rolü
 * Azure savunma kaynağında okuyucu rolü
+
+### <a name="ports"></a>Bağlantı Noktaları
+
+Windows VM 'sine RDP aracılığıyla bağlanmak için Windows VM 'niz üzerinde aşağıdaki bağlantı noktalarının açık olması gerekir:
+
+* Gelen bağlantı noktaları: RDP (3389)
 
 ## <a name="rdp"></a>RDP kullanarak bağlanma
 

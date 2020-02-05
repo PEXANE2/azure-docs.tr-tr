@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545900"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988728"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 
@@ -86,9 +86,9 @@ Yeni projeler oluşturmak ve bir videonun öngörülerini yönetmek için düzen
     
 Bilişsel Öngörüler pencere öğesi içeriğini almak için aşağıdakilerden birini kullanın:<br/>
 - [Öngörüler al pencere öğesi](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API 'si.<br/>
-- [Video erişim belirteci al](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). URL 'ye bir sorgu parametresi olarak ekleyin. Daha önce gösterildiği gibi bu URL 'YI iframe için **src** değeri olarak belirtin.
+- [Video erişim belirteci al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). URL 'ye bir sorgu parametresi olarak ekleyin. Daha önce gösterildiği gibi bu URL 'YI iframe için **src** değeri olarak belirtin.
 
-Katıştırılmış pencere öğesinde içgörüler özelliklerini düzenlemenizi sağlamak için, Düzenle izinlerini içeren bir erişim belirteci geçirmeniz gerekir. [Öngörüler al pencere öğesini](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) kullanın veya `&allowEdit=true`[Görüntülü erişim belirteci alın](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) . 
+Katıştırılmış pencere öğesinde içgörüler özelliklerini düzenlemenizi sağlamak için, Düzenle izinlerini içeren bir erişim belirteci geçirmeniz gerekir. [Öngörüler al pencere öğesini](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) kullanın veya `&allowEdit=true`[Görüntülü erişim belirteci alın](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) . 
 
 ## <a name="widgets-interaction"></a>Pencere öğeleri etkileşimi
 
@@ -264,6 +264,23 @@ Açıklamalı alt yazıları devre dışı bırakmak istiyorsanız, `captions` p
 
 #### <a name="autoplay"></a>Yürüt
 Oynatıcı, varsayılan olarak videoyu oynatmaya başlayacaktır. `&autoplay=false` önceki ekleme URL 'sine geçirmekten seçim yapabilirsiniz.
+
+## <a name="code-samples"></a>Kod örnekleri
+
+Video Indexer API 'SI ve pencere öğeleri için örnekler içeren [kod örnekleri](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) deposuna bakın:
+
+| Dosya/klasör                       | Açıklama                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | Video Indexer videosunu özel bir Azure Media Player yükleme                        |
+| `azure-media-player-vi-insights`  | Özel bir Azure Media Player VI öngörüleri ekleme                             |
+| `control-vi-embedded-player`      | VI oynatıcı ekleme ve dışarıdan denetleme                                    |
+| `custom-index-location`           | Özel dış konumdan VI öngörüleri ekleme (müşteri blobu olabilir)     |
+| `embed-both-insights`             | İkım öngörülerinin hem Player hem de öngörülerinin temel kullanımı                            |
+| `embed-insights-with-AMP`         | Özel bir Azure Media Player VI öngörüleri pencere öğesi ekleme                      |
+| `customize-the-widgets`           | Özel seçeneklere sahip VI pencere öğelerini katıştır                                     |
+| `embed-both-widgets`              | VI oynatıcı ve öngörüleri ekleme ve aralarında iletişim kurma                      |
+| `url-generator`                   | Kullanıcı tarafından belirtilen seçeneklere göre pencere öğesi özel ekleme URL 'si oluşturur             |
+| `html5-player`                    | Varsayılan HTML5 video oynatıcı ile VI öngörüleri ekleme                            |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

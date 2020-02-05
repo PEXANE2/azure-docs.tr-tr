@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977259"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986670"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -32,7 +32,7 @@ Bu örnek uygulama şunları yapabilir:
 
 Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uygulamayı çalıştırmak için ihtiyacınız olacak birkaç şey:
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` `strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu formda iki durumu olan bir onay kutusu kullanılıyor. Bu kod parçacığında, SafeSearch `strict` veya `off` olarak ayarlanmıştır; `moderate` kullanılmaz.
+`SafeSearch``strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu form, iki durum içeren bir onay kutusu kullanır: `strict` veya `moderate`.
 
 **Yükselt** onay kutularından herhangi bir seçildiyse, sorguya `answerCount` parametresi eklenir. `promote` parametresi kullanıldığında `answerCount` gereklidir. Bu kod parçacığında, tüm kullanılabilir sonuç türlerinin döndürülmesi için değer `9` olarak ayarlanmıştır.
 > [!NOTE]

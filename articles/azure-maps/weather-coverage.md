@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898543"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989612"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
 
-Bu makalede Azure haritalar [Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri sağlanmaktadır. Azure haritalar Hava durumu verileri Hizmetleri, bir rota üzerinde radar kutucukları, geçerli hava durumu koşulları, hava durumu tahminleri ve hava durumu gibi ayrıntıları döndürebilir.
+Bu makalede Azure haritalar [Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri sağlanmaktadır. Azure haritalar Hava durumu veri Hizmetleri, radar kutucukları, geçerli hava durumu koşulları, hava durumu tahminleri ve bir rota üzerinde hava durumu gibi ayrıntıları getirir.
 
 Azure haritalar tüm ülkeler ve bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir.
 

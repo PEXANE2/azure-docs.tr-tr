@@ -3,18 +3,18 @@ title: 'Öğretici: bir konuma yol bulma | Microsoft Azure haritaları'
 description: Bu öğreticide, Microsoft Azure haritaları yönlendirme hizmeti kullanarak bir harita üzerindeki bir konuma (ilgi noktası) nasıl bir konuma nasıl bir yol işleneceğini gösterilmektedir.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910847"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989646"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bir ilgi noktasına yönlendirme
 
@@ -27,7 +27,7 @@ Bu öğreticide, Azure Haritalar hesabınız ile Yönlendirme Hizmeti SDK’nız
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Devam etmeden önce, [bir hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri izleyerek S1 fiyatlandırma katmanıyla bir Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+Devam etmeden önce [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)' daki yönergeleri Izleyin, S1 fiyatlandırma katmanı ile bir abonelik gerekir. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 
@@ -139,7 +139,7 @@ Bu öğreticide rota başlangıcı ve bitişi için bir simge ve rota yolu için
     });
     ```
     
-    Haritalar `ready` olay işleyicisinde, yol satırının yanı sıra başlangıç ve bitiş noktalarını depolamak için bir veri kaynağı oluşturulur. Bir çizgi katmanı oluşturulup veri kaynağına eklenir ve rota çizgisinin nasıl işleneceği tanımlanır. Rota çizgisi mavi renkli olarak 5 piksel genişliğinde işlenecek ve birleşim yerleri ile bitiş uçları yuvarlatılacaktır. Katman haritaya eklenirken bu katmanın harita etiketlerinin altında işlenmesi gerektiğini belirten `'labels'` değerine sahip ikinci bir parametre geçirilir. Bu parametre, rota çizgisinin yol etiketlerini kapatmamasını sağlar. Bir simge katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, başlangıç ve bitiş noktalarının nasıl işleneceğini belirtir. Bu durumda her bir nokta nesnesinin özelliklerinden simge görüntüsünü ve metin etiketi bilgilerini almak için ifadeler eklenmiştir. 
+    Haritalar `ready` olay işleyicisinde, yol satırını ve başlangıç ve bitiş noktalarını depolamak için bir veri kaynağı oluşturulur. Bir çizgi katmanı oluşturulup veri kaynağına eklenir ve rota çizgisinin nasıl işleneceği tanımlanır. Yol satırı, mavi renkli bir gölge olarak işlenir. Bu, beş piksellik bir genişliğe, yuvarlatılmış çizgi birleştirmelere ve büyük harflere sahip olacaktır. Katman haritaya eklenirken bu katmanın harita etiketlerinin altında işlenmesi gerektiğini belirten `'labels'` değerine sahip ikinci bir parametre geçirilir. Bu parametre, rota çizgisinin yol etiketlerini kapatmamasını sağlar. Bir simge katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, başlangıç ve bitiş noktalarının nasıl işleneceğini belirtir. Bu durumda, her bir nokta nesnesindeki özelliklerden simge görüntüsünü ve metin etiketi bilgisini almak için ifadeler eklenmiştir. 
     
 2. Bu öğretici için başlangıç noktası olarak Microsoft’u ve bitiş noktası olarak Seattle’da bir benzin istasyonunu ayarlayın. Haritalar `ready` olay işleyicisinde aşağıdaki kodu ekleyin.
 
@@ -164,7 +164,7 @@ Bu öğreticide rota başlangıcı ve bitişi için bir simge ve rota yolu için
     });
     ```
 
-    Bu kod, yolun başlangıç ve bitiş noktalarını temsil eden iki [coğrafi JSON noktası nesnesi](https://en.wikipedia.org/wiki/GeoJSON) oluşturur ve bu noktaları veri kaynağına ekler. Her noktaya `title` ve `icon` özelliği eklenir. Son blok, haritanın [Setcamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak başlangıç ve bitiş noktalarının Enlem ve boylam bilgilerini kullanarak kamera görünümünü ayarlar.
+    Bu kod, yolun başlangıç ve bitiş noktalarını temsil eden iki [coğrafi JSON noktası nesnesi](https://en.wikipedia.org/wiki/GeoJSON) oluşturur ve bu noktaları veri kaynağına ekler. Her noktaya `title` ve `icon` özelliği eklenir. Son blok, haritanın [Setcamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak başlangıç ve bitiş noktalarının Enlem ve boylamlarını kullanarak kamera görünümünü ayarlar.
 
 3. **MapRoute.html** dosyasını kaydedin ve tarayıcınızı yenileyin. Artık harita Seattle üzerinden ortalanıyor ve başlangıç noktasını işaret eden mavi PIN 'i ve bitiş noktasını işaret eden yuvarlak mavi PIN 'i görebilirsiniz.
 
@@ -174,7 +174,7 @@ Bu öğreticide rota başlangıcı ve bitişi için bir simge ve rota yolu için
 
 ## <a name="get-directions"></a>Yol tarifini alma
 
-Bu bölümde, belirli bir başlangıç noktasından bitiş noktasına yolu bulmak için Azure Maps Route hizmeti API 'sinin nasıl kullanılacağı gösterilmektedir. Yönlendirme hizmeti, iki konum arasındaki *en hızlı*, *en kısa*, *ekonomik* veya *heyecan verici* yolları planlamak için API’ler sağlar. Ayrıca, Azure’ın geçmişe ait kapsamlı trafik veritabanını kullanarak herhangi bir gün ve saat için yol süresini tahmin eder. Böylece kullanıcıların ileri bir tarih için yol tarifi alabilmesini sağlar. Daha fazla bilgi için bkz. [Yol tariflerini alma](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Eşleme kaynakları erişilmeye başladıktan sonra yüklendiklerinden emin olmak için, aşağıdaki işlevlerin hepsi **Map Ready eventListener içine** eklenmelidir.
+Bu bölümde, Azure Maps Route hizmeti API 'sinin nasıl kullanılacağı gösterilmektedir. Yönlendirme hizmeti API 'SI, belirli bir başlangıç noktasından bir bitiş noktasına yol bulur. Bu hizmette, iki konum arasında *en hızlı*, *en kısa*, *ekonomik*veya *Thrilling* rotaları planlamak için API 'ler vardır. Bu hizmet ayrıca kullanıcıların Azure 'un kapsamlı geçmiş trafik veritabanını kullanarak gelecek yolları planlayasağlar. Kullanıcılar, seçilen gün ve saatte rota sürelerinin tahminini görebilir. Daha fazla bilgi için bkz. [Yol tariflerini alma](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Eşleme kaynakları erişilmeye başladıktan sonra yüklendiklerinden emin olmak için, aşağıdaki işlevlerin hepsi **Map Ready eventListener içine** eklenmelidir.
 
 1. GetMap işlevinde, JavaScript koduna aşağıdakini ekleyin.
 

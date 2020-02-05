@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833883"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013867"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- Aşağıdaki VM Serisi destekleniyor: DSv3 ve ESv3. 
+- Aşağıdaki VM Serisi destekleniyor: DSv3, ESv3 ve Fsv2. 
 
 ## <a name="benefits"></a>Avantajlar 
 
@@ -73,7 +73,7 @@ Sanal makinelerinizi destekleyen altyapı, güvenilirliği, performansı ve güv
 **Bakım denetimi** , müşterilere kendi adanmış konaklarında zamanlanan normal platform güncelleştirmelerini atlama seçeneği sağlar ve ardından bunu, 35 günlük bir pencere penceresinde tercih ettikleri zaman uygular.
 
 > [!NOTE]
->  Bakım denetimi şu anda sınırlı bir önizleme aşamasındadır ve bir ekleme işlemi gerektirir. Bir [aday anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)göndererek bu önizleme için geçerlidir.
+>  Bakım denetimi şu anda genel önizlemededir. Daha fazla bilgi için bkz.  **[CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) veya [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)kullanarak bakım denetimiyle güncelleştirmeleri denetleme**.
 
 ## <a name="capacity-considerations"></a>Kapasite konuları
 
@@ -115,7 +115,7 @@ Adanmış konaklar şu ana bilgisayar SKU\types 'ı destekler: DSv3_Type1 ve ESv
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| Sistem Durumu   | Açıklama       |
+| Sistem durumu   | Açıklama       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |

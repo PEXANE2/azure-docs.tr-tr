@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1eaf4e7b2d769217ceace3ece339adff727c7835
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 66bac2a063a3257a2101ca2f30e5946264adb9ae
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832057"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989561"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme için önbelleğe alma yapılandırma
 
@@ -36,7 +36,9 @@ Zaten bir beceri olan mevcut bir dizin oluşturucunuz varsa, önbelleğe alma ek
 
 ### <a name="step-1-get-the-indexer-definition"></a>1\. Adım: Dizin Oluşturucu tanımını alın
 
-Şu bileşenlere sahip geçerli, mevcut bir Dizin Oluşturucu ile başlayın: veri kaynağı, Beceri, dizin. Dizin oluşturucunun çalıştırılabilir olması gerekir. Bir API istemcisi kullanarak, dizin oluşturucunun geçerli yapılandırmasını almak için bir [Get Indexer isteği](https://docs.microsoft.com/rest/api/searchservice/get-indexer) oluşturun.
+Şu bileşenlere sahip geçerli, mevcut bir Dizin Oluşturucu ile başlayın: veri kaynağı, Beceri, dizin. Dizin oluşturucunun çalıştırılabilir olması gerekir. 
+
+Bir API istemcisi kullanarak, dizin oluşturucunun geçerli yapılandırmasını almak için bir [Get Indexer isteği](https://docs.microsoft.com/rest/api/searchservice/get-indexer) oluşturun. Dizin oluşturucuyu al için Önizleme API sürümünü kullandığınızda, tanımlara null olarak ayarlanmış bir `cache` özelliği eklenir.
 
 ```http
 GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
@@ -48,12 +50,12 @@ Dizin Oluşturucu tanımını yanıttan kopyalayın.
 
 ### <a name="step-2-modify-the-cache-property-in-the-indexer-definition"></a>2\. Adım: Dizin Oluşturucu tanımındaki Cache özelliğini değiştirme
 
-Varsayılan olarak `cache` özelliği null olur. Önbellek yapılandırması eklemek için bir API istemcisi kullanın (Portal bu Particulate güncelleştirmesini desteklemez). 
+Varsayılan olarak `cache` özelliği null olur. Önbellek yapılandırmasını ayarlamak için bir API istemcisi kullanın (Portal bu Particulate güncelleştirmesini desteklemez). 
 
 Önbellek nesnesini aşağıdaki gerekli ve isteğe bağlı özellikleri içerecek şekilde değiştirin: 
 
 + `storageConnectionString` gerekir ve bir Azure depolama bağlantı dizesine ayarlanmalıdır. 
-+ `enableReprocessing` Boolean özelliği isteğe bağlıdır (varsayılan olarak`true`) ve artımlı zenginleştirme özelliğinin etkinleştirildiğini gösterir. Artımlı işlemeyi askıya almak için `false`, yeni belgeler için dizin oluşturma gibi diğer kaynak yoğunluklu işlemler devam ederken ve sonra yeniden `true` daha sonra geri çevirmek için ayarlayabilirsiniz.
++ `enableReprocessing` Boolean özelliği isteğe bağlıdır (varsayılan olarak`true`) ve artımlı zenginleştirme özelliğinin etkinleştirildiğini gösterir. Gerektiğinde, artımlı işlemeyi askıya almak için `false`, yeni belgeler için dizin oluşturma gibi diğer kaynak kullanımı yoğun işlemler devam ederken ve sonra yeniden `true` daha sonra geri çevirmek için ayarlayabilirsiniz.
 
 ```json
 {
@@ -83,7 +85,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-4-save-the-updated-definition"></a>4\. Adım: güncelleştirilmiş tanımı kaydetme
 
-Dizin Oluşturucu tanımını bir PUT isteğiyle güncelleştirme, isteğin gövdesi Cache özelliğine sahip güncelleştirilmiş Dizin Oluşturucu tanımını içermelidir. 400 alırsanız, tüm gereksinimlerin karşılandığından emin olmak için Dizin Oluşturucu tanımını denetleyin (veri kaynağı, Beceri, dizin).
+[Dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) bir put isteğiyle güncelleştirme, isteğin gövdesi Cache özelliğine sahip güncelleştirilmiş Dizin Oluşturucu tanımını içermelidir. 400 alırsanız, tüm gereksinimlerin karşılandığından emin olmak için Dizin Oluşturucu tanımını denetleyin (veri kaynağı, Beceri, dizin).
 
 ```http
 PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
@@ -109,9 +111,9 @@ Artık Indexer üzerinde başka bir GET isteği verirseniz, hizmetten gelen yan�
 
 ### <a name="step-5-run-the-indexer"></a>5\. Adım: Dizin oluşturucuyu çalıştırma
 
-Dizin oluşturucuyu çalıştırmak için portalını de kullanabilirsiniz. Dizin oluşturucular listesinden Dizin oluşturucuyu seçin ve **Çalıştır**' a tıklayın. Portalı kullanmanın bir avantajı, Dizin Oluşturucu durumunu izleyebilmeniz, işin süresini ve işlenen belge sayısını görebileceğinizi unutmayın. Portal sayfaları birkaç dakikada bir yenilenir.
+Dizin oluşturucuyu çalıştırmak için portalını veya API 'yi kullanabilirsiniz. Portalda, Dizin oluşturucular listesinden Dizin oluşturucuyu seçin ve **Çalıştır**' a tıklayın. Portalı kullanmanın bir avantajı, Dizin Oluşturucu durumunu izleyebilmeniz, işin süresini ve işlenen belge sayısını görebileceğinizi unutmayın. Portal sayfaları birkaç dakikada bir yenilenir.
 
-Alternatif olarak, şu Dizin oluşturucuyu çalıştırmak için REST kullanabilirsiniz:
+Alternatif olarak, şu [Dizin oluşturucuyu çalıştırmak](https://docs.microsoft.com/rest/api/searchservice/run-indexer)için REST kullanabilirsiniz:
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2019-05-06-Preview
@@ -127,13 +129,13 @@ Dizin Oluşturucu çalıştıktan sonra, önbelleği Azure Blob depolamada bulab
 
 ### <a name="step-6-modify-a-skillset-and-confirm-incremental-enrichment"></a>6\. Adım: bir beceri değiştirme ve artımlı zenginleştirme onaylama
 
-Bir beceri değiştirmek için, JSON tanımını düzenlemek üzere portalını kullanabilirsiniz. Örneğin, metin çevirisi kullanıyorsanız, `en` ' den `es` veya başka bir dilde basit bir satır içi değişiklik, artımlı zenginleştirme kavram kanıtı testi için yeterlidir.
+Bir beceri değiştirmek için portalını veya API 'yi kullanabilirsiniz. Örneğin, metin çevirisi kullanıyorsanız, `en` ' den `es` veya başka bir dilde basit bir satır içi değişiklik, artımlı zenginleştirme kavram kanıtı testi için yeterlidir.
 
 Dizin oluşturucuyu yeniden çalıştırın. Yalnızca zenginleştirilmiş belge ağacının bölümleri güncellenir. [Portal Hızlı](cognitive-search-quickstart-blob.md) başlangıcını kavram kanıtı olarak kullandıysanız ve metin çevirisi yetenini ' es ' olarak değiştirirken, özgün 14 yerine yalnızca 8 belge güncelleştirildiğini fark edersiniz. Çeviri işleminden etkilenen görüntü dosyaları önbellekten yeniden kullanılır.
 
 ## <a name="enable-caching-on-new-indexers"></a>Yeni Dizin oluşturucular üzerinde önbelleğe almayı etkinleştir
 
-Yeni bir Dizin Oluşturucu için artımlı zenginleştirme ayarlamak için, tek yapmanız gereken, [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)çağrılırken Dizin Oluşturucu tanımı yüküne `cache` özelliğini içermelidir. Bu özellikle bir Dizin Oluşturucu oluştururken, API 'nin `2019-05-06-Preview` sürümünü belirtmeyi unutmayın. 
+Yeni bir Dizin Oluşturucu için artımlı zenginleştirme ayarlamak için, tek yapmanız gereken, [Create Indexer (2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer)çağrılırken Dizin Oluşturucu tanımı yüküne `cache` özelliğini içermelidir. 
 
 
 ```json
@@ -167,10 +169,10 @@ Aşağıdaki tabloda, çeşitli API 'Lerin önbellekle bağlantılı olduğu öz
 
 | eklentisi           | Önbellek etkisi     |
 |---------------|------------------|
-| [Dizin Oluşturucu oluştur](https://docs.microsoft.com/rest/api/searchservice/create-indexer) | Dizin Oluşturucu tanımınızda bir önbellek oluşturma da dahil olmak üzere ilk kullanımda bir dizin oluşturucu oluşturur ve çalıştırır. |
-| [Dizin oluşturucuyu Çalıştır](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | İsteğe bağlı olarak bir zenginleştirme işlem hattı yürütür. Bu API, varsa önbellekten okur veya güncelleştirilmiş bir Dizin Oluşturucu tanımına önbelleğe alma eklediyseniz bir önbellek oluşturur. Önbelleğe alma özelliği etkin olan bir Dizin Oluşturucu çalıştırdığınızda, önbelleğe alınmış çıkışın kullanılabilmesi için Dizin Oluşturucu adımları atlar. |
-| [Dizin oluşturucuyu Sıfırla](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Herhangi bir artımlı dizin oluşturma bilgisinin Dizin oluşturucuyu temizler. Sonraki bir Dizin Oluşturucu çalıştırması (isteğe bağlı veya zamanlama), tüm becerileri yeniden çalıştırmak ve önbelleği yeniden oluşturmak dahil olmak üzere sıfırdan tam işleme alır. Dizin oluşturucuyu silmek ve yeniden oluşturmak için işlevsel olarak eşdeğerdir. |
-| [Becerileri sıfırlama](preview-api-resetskills.md) | Herhangi bir becerileri değiştirmemiş olsanız bile, bir sonraki Dizin Oluşturucu üzerinde hangi yeteneklerin yeniden çalıştırılacağını belirtir. Önbellek uygun şekilde güncelleştirilir. Bilgi deposu veya arama dizini gibi çıkışlar, önbellekteki yeniden kullanılabilir veriler ve güncelleştirilmiş yetenek başına yeni içerik kullanılarak yenilenir. |
+| [Dizin Oluşturucu oluştur (2019-05-06-Önizleme)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) | Dizin Oluşturucu tanımınızda bir önbellek oluşturma da dahil olmak üzere ilk kullanımda bir dizin oluşturucu oluşturur ve çalıştırır. |
+| [Dizin oluşturucuyu Çalıştır](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | İsteğe bağlı olarak bir zenginleştirme işlem hattı yürütür. Bu API, varsa önbellekten okur veya güncelleştirilmiş bir Dizin Oluşturucu tanımına önbelleğe alma eklediyseniz bir önbellek oluşturur. Önbelleğe alma özelliği etkin olan bir Dizin Oluşturucu çalıştırdığınızda, önbelleğe alınmış çıkışın kullanılabilmesi için Dizin Oluşturucu adımları atlar. Bu API 'nin genel kullanıma açık veya önizleme API sürümünü kullanabilirsiniz.|
+| [Dizin oluşturucuyu Sıfırla](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Herhangi bir artımlı dizin oluşturma bilgisinin Dizin oluşturucuyu temizler. Sonraki bir Dizin Oluşturucu çalıştırması (isteğe bağlı veya zamanlama), tüm becerileri yeniden çalıştırmak ve önbelleği yeniden oluşturmak dahil olmak üzere sıfırdan tam işleme alır. Dizin oluşturucuyu silmek ve yeniden oluşturmak için işlevsel olarak eşdeğerdir. Bu API 'nin genel kullanıma açık veya önizleme API sürümünü kullanabilirsiniz.|
+| [Becerileri sıfırlama (2019-05-06-Önizleme)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) | Herhangi bir becerileri değiştirmemiş olsanız bile, bir sonraki Dizin Oluşturucu üzerinde hangi yeteneklerin yeniden çalıştırılacağını belirtir. Önbellek uygun şekilde güncelleştirilir. Bilgi deposu veya arama dizini gibi çıkışlar, önbellekteki yeniden kullanılabilir veriler ve güncelleştirilmiş yetenek başına yeni içerik kullanılarak yenilenir. |
 
 Önbellekte ne olacağını denetleme hakkında daha fazla bilgi için bkz. [önbellek yönetimi](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

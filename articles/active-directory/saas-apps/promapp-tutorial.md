@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Promapp | Microsoft Docs'
-description: Bu öğreticide, Azure Active Directory ve Promapp arasında çoklu oturum açmayı yapılandırma öğreneceksiniz.
+title: 'Öğretici: Nintex Promapp ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
+description: Azure Active Directory ve Nintex Promapp arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,103 +11,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093593"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984498"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Öğretici: Promapp ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>Öğretici: Nintex Promapp ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Promapp tümleştirme öğreneceksiniz.
-Bu tümleştirme aşağıdaki avantajları sağlar:
+Bu öğreticide, Nintex Promapp 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Nintex Promapp 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD Promapp erişimi denetlemek için kullanabilirsiniz.
-* Kullanıcılarınız için Promapp (çoklu oturum açma) ile Azure AD hesaplarına otomatik olarak oturum açmanız etkinleştirebilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilir: Azure portalı.
+* Azure AD 'de Nintex Promapp erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Nintex Promapp 'de otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory'de uygulamalar için çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="prerequisites"></a>Önkoşullar
+Başlamak için aşağıdaki öğeler gereklidir:
 
-Azure AD Tümleştirmesi ile Promapp yapılandırmak için sahip olmanız gerekir:
-
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, oturum açabileceğiniz bir [bir aylık deneme](https://azure.microsoft.com/pricing/free-trial/).
-* Tekli etkin oturum sahip Promapp abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Nintex Promapp çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Promapp SP tarafından başlatılan ve IDP tarafından başlatılan SSO'yu destekler.
+* Nintex Promapp **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Nintex Promapp **, tam zamanında** Kullanıcı sağlamayı destekliyor
 
-* Promapp, just-ın-time kullanıcı sağlamayı destekler.
+## <a name="adding-nintex-promapp-from-the-gallery"></a>Galeriden Nintex Promapp ekleniyor
 
-## <a name="add-promapp-from-the-gallery"></a>Galeriden Promapp Ekle
+Nintex Promapp tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Nintex Promapp 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-Azure AD'de Promapp tümleştirmesini ayarlamak için yönetilen SaaS uygulamaları listenize Galeriden Promapp eklemeniz gerekir.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Nintex Promapp** yazın.
+1. Sonuçlar panelinden **Nintex Promapp** ' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol bölmede seçin **Azure Active Directory**:
+## <a name="configure-and-test-azure-ad-single-sign-on-for-nintex-promapp"></a>Nintex Promapp için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-    ![Azure Active Directory'yi seçin](common/select-azuread.png)
+**B. Simon**adlı bir test kullanıcısı kullanarak Nintex Promapp Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Nintex Promapp içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. Git **kurumsal uygulamalar** > **tüm uygulamaları**:
+Azure AD SSO 'yu Nintex Promapp ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Nintex Promapp SSO 'Yu yapılandırın](#configure-nintex-promapp-sso)** .
+    * Nintex **[Promapp test kullanıcısı oluşturma](#create-nintex-promapp-test-user)** -kullanıcının Azure AD gösterimine bağlı Nintex Promapp 'de B. Simon 'un bir karşılığı olacak.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Bir uygulama eklemek için seçin **yeni uygulama** pencerenin üst kısmındaki:
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-    ![Yeni uygulama seçme](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **Promapp**. Seçin **Promapp** seçin ve arama sonuçlarını **Ekle**.
+1. [Azure Portal](https://portal.azure.com/), **Nintex Promapp** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-     ![Arama sonuçları](common/search-new-app.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-Bu bölümde, yapılandırın ve Azure AD çoklu oturum açma ile Promapp Britta Simon adlı bir test kullanıcısı kullanarak test edin.
-Çoklu oturum açmayı etkinleştirmek için Promapp içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir ilişki yapmanız gerekir.
+    1. **Tanımlayıcı** kutusunda, bu modele bir URL girin:
 
-Yapılandırma ve Azure AD çoklu oturum açma Promapp ile test etmek için bu adımları tamamlamak gerekir:
-
-1. **[Azure AD çoklu oturum açmayı yapılandırma](#configure-azure-ad-single-sign-on)**  kullanıcılarınız için özelliği etkinleştirmek için.
-2. **[Promapp çoklu oturum açmayı yapılandırma](#configure-promapp-single-sign-on)**  uygulama tarafında.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açmayı test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Azure AD çoklu oturum açma için kullanıcı etkinleştirmek için.
-5. **[Çoklu oturum açmayı test](#test-single-sign-on)**  yapılandırma çalıştığını doğrulayın.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
-
-Bu bölümde, Azure AD çoklu oturum açma Azure portalındaki etkinleştirmeniz.
-
-Azure AD çoklu oturum açma ile Promapp yapılandırmak için şu adımları uygulayın:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), Promapp uygulama tümleştirme sayfasında **çoklu oturum açma**:
-
-    ![Çoklu oturum açma seçin](common/select-sso.png)
-
-2. İçinde **tek bir oturum açma yönteminizi seçmeniz** Seç iletişim kutusunda **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için:
-
-    ![Tek bir oturum açma yöntemi seçin](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim kutusunda:
-
-    ![Düzenle simgesi](common/edit-urls.png)
-
-4. İçinde **temel SAML yapılandırma** iletişim kutusu, IDP tarafından başlatılan modunda uygulama yapılandırmak istiyorsanız aşağıdaki adımları tamamlayın.
-
-    ![Temel SAML yapılandırma iletişim kutusu](common/idp-intiated.png)
-
-    1. İçinde **tanımlayıcı** kutusuna, bu düzende bir URL girin:
-
-       | |
+        | |
         |--|
         | `https://go.promapp.com/TENANTNAME/`|
         | `https://au.promapp.com/TENANTNAME/`|
@@ -117,129 +94,101 @@ Azure AD çoklu oturum açma ile Promapp yapılandırmak için şu adımları uy
         |   |
 
        > [!NOTE]
-       > Promapp ile Azure AD tümleştirmesi şu anda yalnızca hizmet tarafından başlatılan kimlik doğrulaması için yapılandırılır. (Diğer bir deyişle, kimlik doğrulama işlemi Promapp URL'ye giderek başlatır.) Ancak **yanıt URL'si** alan gerekli bir alandır.
+       > Nintex Promapp ile Azure AD tümleştirmesi Şu anda yalnızca hizmet tarafından başlatılan kimlik doğrulaması için yapılandırılmış. (Yani, bir Nintex Promapp URL 'sine gitmek, kimlik doğrulama işlemini başlatır.) Ancak, **yanıt URL 'si** alanı gerekli bir alandır.
 
-    1. İçinde **yanıt URL'si** kutusuna, bu düzende bir URL girin:
+    1. **Yanıt URL 'si** kutusuna, bu modele bir URL girin:
 
        `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
-5. SP tarafından başlatılan modunda uygulama yapılandırmak isteyip istemediğinizi seçin **ek URL'lerini ayarlayın**. İçinde **oturum açma URL'si** kutusuna, bu düzende bir URL girin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-      `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
-
-    ![Promapp etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
-
-   
+    **Oturum açma URL 'si** kutusunda, bu modele bir URL girin: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE]
-    > Bu değerler yer tutuculardır. Gerçek tanımlayıcısı kullanın, yanıt URL'si ve oturum açma URL'si gerekiyor. İlgili kişi [Promapp Destek ekibine](https://www.promapp.com/about-us/contact-us/) değerleri alabilirsiniz. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** Azure portalında iletişim kutusu.
+    > Bu değerler yer tutuculardır. Gerçek tanımlayıcıyı, yanıt URL 'sini ve oturum açma URL 'sini kullanmanız gerekir. Değerleri almak için [Nintex Promapp destek ekibine](https://www.promapp.com/about-us/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** iletişim kutusunda gösterilen desenlere de başvurabilirsiniz.
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünden **indirme** yanındaki bağlantı **sertifika (Base64)** , gereksinimlerinize göre ve bilgisayarınızdaki sertifika Kaydet:
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-7. İçinde **Promapp kümesi** bölümünde, gereksinimlerinize göre uygun URL'ler kopyalayın:
+1. **Nintex Promapp 'Yi ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
-
-    1. **Oturum açma URL'si**.
-
-    1. **Azure AD tanımlayıcısı**.
-
-    1. **Oturum kapatma URL'si**.
-
-### <a name="configure-promapp-single-sign-on"></a>Promapp çoklu oturum açmayı yapılandırın
-
-1. Promapp şirketinizin sitesi için bir yönetici olarak oturum açın
-
-2. Pencerenin üst kısmındaki menüde **yönetici**:
-   
-    ![Yönetici Seç][12]
-
-3. Seçin **yapılandırma**:
-   
-    ![Yapılandırma seçin][13]
-
-4. İçinde **güvenlik** iletişim kutusunda, aşağıdaki adımları uygulayın.
-   
-    ![Güvenlik iletişim kutusu][14]
-    
-    1. Yapıştırma **oturum açma URL'si** Azure portaldan kopyaladığınız **SSO oturum açma URL'si** kutusu.
-    
-    1. İçinde **SSO - çoklu oturum açma modu** listesinden **isteğe bağlı**. **Kaydet**’i seçin.
-
-       > [!NOTE]
-       > İsteğe bağlı modu, yalnızca test amaçlıdır. Yapılandırmasıyla memnun kaldıysanız sonra seçin **gerekli** içinde **SSO - çoklu oturum açma modu** tüm kullanıcıları, Azure AD kimlik doğrulaması için liste.
-
-    1. Önceki bölümde indirdiğiniz sertifika Not Defteri'nde açın. İlk satırı olmadan sertifikayı içeriğini kopyalayın ( **---BEGIN CERTIFICATE---** ) veya son satırı ( **---END CERTIFICATE---** ). Sertifika içerik içine yapıştırın **SSO x.509 sertifikası** kutusuna ve ardından **Kaydet**.
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalında **Azure Active Directory** seçin sol bölmede **kullanıcılar**ve ardından **tüm kullanıcılar**:
-
-    ![Tüm kullanıcıları seçin](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üst kısmındaki:
-
-    ![Yeni bir kullanıcı seçin](common/new-user.png)
-
-3. İçinde **kullanıcı** iletişim kutusunda, aşağıdaki adımları uygulayın.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    1. İçinde **adı** kutusuna **BrittaSimon**.
-  
-    1. İçinde **kullanıcı adı** kutusuna **@ BrittaSimon\<yourcompanydomain >.\< Uzantı >** . (Örneğin, BrittaSimon@contoso.com.)
-
-    1. Seçin **Göster parola**ve ardından içinde bir değer yazın **parola** kutusu.
-
-    1. **Oluştur**’u seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Promapp erişim vererek Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Nintex Promapp erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**ve ardından **Promapp**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Nintex Promapp**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde seçin **Promapp**.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamaların listesi](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Sol bölmede seçin **kullanıcılar ve gruplar**:
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    ![Kullanıcıları ve grupları seçin](common/users-groups-blade.png)
+## <a name="configure-nintex-promapp-sso"></a>Nintex Promapp SSO 'yu yapılandırma
 
-4. Seçin **Kullanıcı Ekle**ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim kutusu.
+1. Nintex Promapp şirket sitenizde yönetici olarak oturum açın.
 
-    ![Kullanıcı Ekle seçeneğini belirleme](common/add-assign-user.png)
+2. Pencerenin üst kısmındaki menüde **yönetici**' yi seçin:
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcıların listesini ve ardından **seçin** ekranın alt kısmındaki düğmesi.
+    ![Yönetici seçin][12]
 
-6. SAML onaylaması rol değeri de beklediğiniz **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin. Tıklayın **seçin** ekranın alt kısmındaki düğmesi.
+3. **Yapılandır**' ı seçin.
 
-7. İçinde **atama Ekle** iletişim kutusunda **atama**.
+    ![Yapılandır 'ı seçin][13]
 
-### <a name="just-in-time-user-provisioning"></a>Just-ın-time kullanıcı sağlama
+4. **Güvenlik** iletişim kutusunda, aşağıdaki adımları uygulayın.
 
-Promapp, just-ın-time kullanıcı sağlamayı destekler. Bu özellik varsayılan olarak etkindir. Bir kullanıcı Promapp içinde zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+    ![Güvenlik iletişim kutusu][14]
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+    1. Azure portal kopyaladığınız **oturum açma URL** 'sini **SSO-oturum açma URL 'si** kutusuna yapıştırın.
 
-Şimdi Azure AD çoklu oturum açma yapılandırmanızı erişim panelini kullanarak test gerekir.
+    1. **SSO-çoklu oturum açma modu** listesinde **isteğe bağlı**' yı seçin. **Kaydet**’i seçin.
 
-Erişim Paneli'nde Promapp kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama Promapp örneği için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim ve kullanım uygulamaları uygulamalarım portalında](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+       > [!NOTE]
+       > İsteğe bağlı mod yalnızca test içindir. Yapılandırma hakkında memnun olduktan sonra, tüm kullanıcıların Azure AD ile kimlik doğrulaması yapmasını zorlamak için **SSO-çoklu oturum açma modu** listesinde **gerekli** ' yi seçin.
+
+    1. Not defteri 'nde, önceki bölümde indirdiğiniz sertifikayı açın. Sertifikanın içeriğini ilk satır ( **-----Başlangıç sertifikası-----** ) veya son satırı ( **-----son sertifika-----** ) olmadan kopyalayın. Sertifika içeriğini **SSO-x. 509.440 sertifikası** kutusuna yapıştırın ve **Kaydet**' i seçin.
+
+### <a name="create-nintex-promapp-test-user"></a>Nintex Promapp test kullanıcısı oluştur
+
+Bu bölümde, Nintex Promapp ' de B. Simon adlı bir Kullanıcı oluşturulur. Nintex Promapp, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Nintex Promapp 'de zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+
+## <a name="test-sso"></a>Test SSO 'SU
+
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+
+Erişim panelinde Nintex Promapp kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Nintex Promapp ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Nintex Promapp 'yi deneyin](https://aad.portal.azure.com/)
 
 <!--Image references-->
 

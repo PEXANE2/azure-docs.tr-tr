@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327475"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989918"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (Önizleme)
 
@@ -69,7 +69,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
     * Eğitim anahtarı (eğitim kaynağı için)
     * Tahmin anahtarı (tahmin kaynağı için)
-    * Uç Nokta 
+    * Uç nokta 
     * Tahmin kaynak KIMLIĞI
     
     > [!NOTE]
@@ -81,7 +81,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 1. **Özel görüntü işleme hesabı Bağlan ' ı (Önizleme)** seçin ve **dene**' ye tıklayın.
 1. Gerekli alanların yanı sıra erişim belirtecini de girin ve **Gönder**' e tıklayın. 
 
-    Video Indexer erişim belirtecini alma hakkında daha fazla bilgi için [Geliştirici portalına](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)gidin ve [ilgili belgelere](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)bakın.  
+    Video Indexer erişim belirtecini alma hakkında daha fazla bilgi için [Geliştirici portalına](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)gidin ve [ilgili belgelere](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)bakın.  
 1. Çağrı 200 Tamam yanıtı döndürtikten sonra hesabınız bağlanır.
 1. Bağlantınızı doğrulamak için [video Indexer](https://vi.microsoft.com/)) portalına gidin:
 1. Sağ üst köşedeki **içerik modeli özelleştirmesi** düğmesine tıklayın.
