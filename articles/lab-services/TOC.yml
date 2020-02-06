@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: Ortamları dağıtmak için Azure yönetilen kimliklerini kullanma
           href: use-managed-identities-environments.md
+        - name: Ortamlar için güvenlik uyarıları
+          href: environment-security-alerts.md
     - name: Yeniden kullanılabilir şablonları yönetme
       items:
         - name: Özel görüntülerle formülleri karşılaştırma

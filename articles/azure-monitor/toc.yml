@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: Sanal makineleri izleme
       items:
-        - name: Toplama - Azure VM’leri
+        - name: Azure VM’leri
           href: learn/quick-collect-azurevm.md
-        - name: Toplama - Linux bilgisayarı
+        - name: Linux bilgisayarı
           href: learn/quick-collect-linux-computer.md
-        - name: Toplama - Windows bilgisayarı
+        - name: Windows bilgisayar
           href: learn/quick-collect-windows-computer.md
     - name: Uygulamaları izleme
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: Özel veri kaynaklarını ilişkilendirme
               href: app/custom-data-correlation.md
+            - name: Bağlantı dizeleri
+              href: app/sdk-connection-string.md
             - name: Özel konular
               items:
                 - name: Web uygulamalarını ve hizmetleri ayrıntılı tanılama
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel Bakış
-                  href: platform/diagnostics-extension-overview.md
-                - name: Günlük toplama
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: Sürüm geçmişi
-                      href: platform/diagnostics-extension-schema.md
-                    - name: Şema
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: Azure Depolama’ya gönderme
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Application Insights’a gönderme
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Event Hubs’a gönderme
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Azure İzleyici’ye özel ölçümler olarak gönderme
+                    - name: Genel Bakış
+                      href: platform/diagnostics-extension-overview.md
+                    - name: Yükleme ve yapılandırma
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager şablonu
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Azure İzleyici Ölçümleri’ne gönderme
                       items:
                         - name: Sanal Makine
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,17 +558,28 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Bulut hizmeti
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Event Hubs’a gönderme
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Günlükler’e gönderme
+                      href: platform/azure-storage-iis-table.md
+                    - name: Azure Depolama’ya gönderme
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Application Insights’a gönderme
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Sürüm geçmişi
+                      href: platform/diagnostics-extension-schema.md
                     - name: JSON Satırları kaynak günlüklerinin biçimi
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Sorun giderme
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: VM’lerle kullanma
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: Telegraf ile özel ölçümler
+                    - name: Genel Bakış
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Telegraf ile ölçümleri toplama
                       href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics aracıları
+            - name: Log Analytics aracısı
               items:
                 - name: Genel Bakış
                   href: platform/log-analytics-agent.md
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: Aracı Durumu
                   href: insights/solution-agenthealth.md
+                - name: Veri kaynakları
+                  items:
+                    - name: Genel Bakış
+                      href: platform/agent-data-sources.md
+                    - name: Windows olayları
+                      href: platform/data-sources-windows-events.md
+                    - name: Özel JSON verileri
+                      href: platform/data-sources-json.md
+                    - name: Toplanan performans verileri
+                      href: platform/data-sources-collectd.md
+                    - name: Syslog
+                      href: platform/data-sources-syslog.md
+                    - name: Performans sayaçları
+                      href: platform/data-sources-performance-counters.md
+                    - name: Linux uygulama performansı
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS günlükleri
+                      href: platform/data-sources-iis-logs.md
+                    - name: Özel günlükler
+                      href: platform/data-sources-custom-logs.md
+                    - name: Özel alanlar
+                      href: platform/custom-fields.md
             - name: Sorun giderme
               items:
                 - name: Log Analytics VM Uzantısı
@@ -600,28 +630,6 @@
                 - name: Log Analytics Linux aracısı
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: Aracı veri kaynakları
-          items:
-            - name: Genel Bakış
-              href: platform/agent-data-sources.md
-            - name: Windows olayları
-              href: platform/data-sources-windows-events.md
-            - name: Özel JSON verileri
-              href: platform/data-sources-json.md
-            - name: Toplanan performans verileri
-              href: platform/data-sources-collectd.md
-            - name: Syslog
-              href: platform/data-sources-syslog.md
-            - name: Performans sayaçları
-              href: platform/data-sources-performance-counters.md
-            - name: Linux uygulama performansı
-              href: platform/data-sources-linux-applications.md
-            - name: IIS günlükleri
-              href: platform/data-sources-iis-logs.md
-            - name: Özel günlükler
-              href: platform/data-sources-custom-logs.md
-            - name: Özel alanlar
-              href: platform/custom-fields.md
         - name: VM'ler için Azure İzleyici
           items:
             - name: Genel Bakış
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: İzlemeyi devre dışı bırakma
               href: insights/vminsights-optout.md
-        - name: Kapasite ve performans çözümü
-          href: insights/capacity-performance.md
-        - name: VMware Analytics çözümü
-          href: insights/vmware.md
-        - name: Wire Data çözümü
-          href: insights/wire-data.md
-        - name: Hizmet Eşlemesi çözümü
-          href: insights/service-map.md
+        - name: Çözümler
+          items:
+            - name: Kapasite ve performans çözümü
+              href: insights/capacity-performance.md
+            - name: VMware Analytics çözümü
+              href: insights/vmware.md
+            - name: Wire Data çözümü
+              href: insights/wire-data.md
+            - name: Hizmet Eşlemesi çözümü
+              href: insights/service-map.md
         - name: Bilgisayar grupları
           href: platform/computer-groups.md
     - name: Kapsayıcıları izleme
@@ -1125,6 +1135,10 @@
   items:
     - name: Hizmet sınırlamaları
       href: service-limits.md
+    - name: Tanılama uzantısı
+      items:
+        - name: Şema
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: Bağımlılık otomatik toplama

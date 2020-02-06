@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veri
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773126"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029580"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -29,7 +29,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol edin:
 
@@ -109,6 +109,9 @@ Veritabanı adlarında aşağıdaki öğeleri kullanmaktan kaçının:
 * Eğik çizgi '/'
 
 Diğer ad, desteklenmeyen karakterler için kullanılabilir, ancak bunlardan kaçınmasını öneririz. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
+>[!NOTE]
+>Adında "+" veya "&" gibi özel karakterler içeren veritabanları için **koruma yapılandırma** işlemi desteklenmez. Veritabanı adını değiştirebilir veya **otomatik korumayı**etkinleştirerek bu veritabanlarını başarıyla koruyabilirler.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -195,7 +198,7 @@ VM üzerinde çalışan veritabanlarını bulma:
 
     ![Bildirim alanı](./media/backup-azure-sql-database/notifications-area.png)
 
-### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
+### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluştur
 
 Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle korunduğunu tanımlar.
 
@@ -281,7 +284,7 @@ Otomatik korumayı devre dışı bırakmanız gerekirse, **yedeklemeyi Yapıland
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 * [Yedeklenen SQL Server veritabanlarını geri yükleme](restore-sql-database-azure-vm.md)
 * [Yedeklenen SQL Server veritabanlarını yönetme](manage-monitor-sql-database-backup.md)

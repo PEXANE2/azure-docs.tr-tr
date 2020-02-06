@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: Hata ayıklama modu
               href: concepts-data-flow-debug-mode.md
-            - name: JSON işleme
-              href: concepts-data-flow-json.md
             - name: Schema Drift
               href: concepts-data-flow-schema-drift.md
             - name: Sütun desenleri

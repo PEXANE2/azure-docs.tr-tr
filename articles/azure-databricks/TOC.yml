@@ -1150,6 +1150,9 @@
             - name: Kullanıcı arabirimi performans sorunlarını analiz etme
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: İşler çalışma alanında ilerlemiyor
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: Kümeler
           items:
             - name: Kümedeki çekirdek sayısını hesaplama
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: WASB’de dosya okunamıyor
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: JDBC veri kaynaklarından okuma performansını iyileştirme
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:
