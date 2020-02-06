@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934015"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031466"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -144,10 +144,10 @@ Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kulla
 
 HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için komut dosyaları sağlar:
 
-| Ad | Komut Dosyası |
+| Adı | Betik |
 | --- | --- |
 | Azure depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
-| Hue yükleme |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
+| Ton 'yi yükler |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
 | Hive kitaplıklarını Önyükle |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Bkz. [HDInsight kümenizi oluştururken özel Apache Hive kitaplıkları ekleme](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Küme oluşturma sırasında betik eylemi kullanma
@@ -156,9 +156,9 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Azure portal küme oluşturma sırasında bir betik eylemi kullanın
 
-1. [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. Küme oluşturma sırasında 6. adım, **betik eylemleri**' ne ulaşır. **Isteğe bağlı** >  **+ Yeni Gönder**' e gidin.
+1. [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. **Yapılandırma + fiyatlandırma** sekmesinden **+ betik eylemi Ekle**' yi seçin.
 
-    ![Azure portal kümesi betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
+    ![Azure portal kümesi betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
 1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
@@ -169,7 +169,7 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
     | Özellik | Değer |
     | --- | --- |
     | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
-    | Ad |Betik eylemi için bir ad belirtin. |
+    | Adı |Betik eylemi için bir ad belirtin. |
     | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
     | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker**veya **ZooKeeper**. |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
@@ -180,9 +180,9 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
     ![HDInsight birden çok betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    Betikler ekleme işiniz bittiğinde, __küme Özeti__ bölümüne devam etmek için __Seç__ düğmesini ve sonra __İleri__ düğmesini seçin.
+    Betikler ekleme işiniz bittiğinde **yapılandırma + fiyatlandırma** sekmesine dönersiniz.
 
-1. Kümeyi oluşturmak için __küme Özeti__ seçiminden __Oluştur__ ' u seçin.
+1. Kalan küme oluşturma adımlarını her zamanki gibi doldurun.
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarından betik eylemi kullanma
 
@@ -204,7 +204,7 @@ Bir şablonu dağıtma hakkında daha fazla bilgi alın:
 
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Azure PowerShell kümeden küme oluşturma sırasında betik eylemi kullan
 
@@ -249,7 +249,7 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
     | Özellik | Değer |
     | --- | --- |
     | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
-    | Ad |Betik eylemi için bir ad belirtin. |
+    | Adı |Betik eylemi için bir ad belirtin. |
     | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
     | HEAD/Worker/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker**veya **ZooKeeper**. |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
@@ -327,7 +327,7 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 ### <a name="the-azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **tüm hizmetler** > **Analytics** > **HDInsight kümelerine**gidin.
 
@@ -421,7 +421,7 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimi
 
-1. Tarayıcınızda `https://CLUSTERNAME.azurehdinsight.net` adresine gidin. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
+1. Tarayıcınızda `https://CLUSTERNAME.azurehdinsight.net`' a gidin. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
 
     İstendiğinde, küme için yönetici hesap adı, **yönetici**ve parolayı girin. Yönetici kimlik bilgilerini bir Web formunda yeniden girmeniz gerekebilir.
 
@@ -495,7 +495,7 @@ SSH ile kümeye bağlanma hakkında daha fazla bilgi için bkz. [SSH kullanarak 
 
 Kümeniz 15 Mart 2016 ' den önce oluşturulduysa, betik eylemi geçmişinde bir giriş görmeyebilirsiniz. Kümenin yeniden boyutlandırılması, betiklerin betik eylemi geçmişinde görünmesine neden olur.
 
-İki istisna mevcuttur:
+İki özel durum vardır:
 
 * Kümeniz 1 Eylül 2015 ' den önce oluşturulmuştur. Bu tarih, betik eylemlerinin tanıtılmasından yapılır. Bu tarihten önce oluşturulan herhangi bir küme, küme oluşturma için betik eylemlerini kullanamadı.
 

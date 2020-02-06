@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988048"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030736"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Karma runbook çalışanları sorunlarını giderme
 
@@ -28,7 +28,7 @@ Karma Runbook Worker, çalışan, runbook işlerini alacak ve durumu raporlamak 
 
 #### <a name="issue"></a>Sorun
 
-Runbook yürütmesi başarısız olur ve şu hatayı alırsınız:
+Runbook yürütmesi başarısız olur ve aşağıdaki hatayı alırsınız.
 
 ```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
@@ -40,29 +40,27 @@ Runbook 'unuzu üç kez yürütmeyi denediğinde kısa süre sonra askıya alın
 
 Olası nedenler şunlardır:
 
-* Runbook 'lar yerel kaynaklarla kimlik doğrulayamıyorum
+* Runbook 'lar yerel kaynaklarla kimlik doğrulaması yapamaz.
 
-* Karma çalışanı bir ara sunucu veya güvenlik duvarının arkasında
-
-* Runbook 'lar yerel kaynaklarla kimlik doğrulayamıyorum
+* Karma çalışanı bir ara sunucu veya güvenlik duvarının arkasında.
 
 * Karma Runbook Worker özelliğini çalıştıracak şekilde yapılandırılan bilgisayar, en düşük donanım gereksinimlerini karşılamıyor.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
-443 numaralı bağlantı noktasında, bilgisayarın *. azure-automation.net 'ye giden erişimi olduğunu doğrulayın.
+Bilgisayarın 443 numaralı bağlantı noktasında *. azure-automation.net 'ye giden erişimi olduğunu doğrulayın.
 
 Karma runbook çalışanı çalıştıran bilgisayarların, çalışan bu özelliği barındıracak şekilde yapılandırmadan önce en düşük donanım gereksinimlerini karşılaması gerekir. Runbook 'lar ve kullandıkları arka plan işlemi, sistemin aşırı kullanılmasına ve runbook iş gecikmeleri veya zaman aşımları oluşmasına neden olabilir.
 
-Karma Runbook Worker özelliğinin çalışacağı bilgisayarın en düşük donanım gereksinimlerini karşıladığını onaylayın. Varsa, karma Runbook Worker işlemlerinin ve pencerelerinin performansı arasındaki bağıntıyı öğrenmek için CPU ve bellek kullanımını izleyin. Herhangi bir bellek veya CPU baskısı, kaynakları yükseltme gereksinimini gösterebilir. Ayrıca, iş yükü beklentilerinin bir artış belirtmesi durumunda en düşük gereksinimleri destekleyebilen ve ölçeklendirilen farklı bir işlem kaynağı seçebilirsiniz.
+Karma Runbook Worker özelliğinin çalıştırılacağı bilgisayarın en düşük donanım gereksinimlerini karşıladığını onaylayın. Varsa, karma Runbook Worker işlemlerinin ve pencerelerinin performansı arasındaki bağıntıyı öğrenmek için CPU ve bellek kullanımını izleyin. Herhangi bir bellek veya CPU baskısı, kaynakları yükseltme gereksinimini gösterebilir. Ayrıca, iş yükü beklentilerinin gerekli olduğunu belirtmesi durumunda en düşük gereksinimleri ve ölçeği destekleyen farklı bir bilgi işlem kaynağı da seçebilirsiniz.
 
-# *[4294967295] kodlu Win32 Işlemine çıkıldı*açıklaması ile ilgili bir olay için **Microsoft-SMA** olay günlüğü 'nü denetleyin. Bu hatanın nedeni, runbook 'larınızda kimlik doğrulaması yapılandırmadınız veya karma çalışan grubu için farklı çalıştır kimlik bilgilerini belirtmezsiniz. Runbook 'larınız için kimlik doğrulamasını doğru şekilde yapılandırdığınızdan emin olmak için [runbook izinlerini](../automation-hrw-run-runbooks.md#runbook-permissions) gözden geçirin.
+# *[4294967295] kodlu Win32 Işlemine çıkıldı*açıklaması ile ilgili bir olay için **Microsoft-SMA** olay günlüğü 'nü denetleyin. Bu hatanın nedeni, runbook 'larınızda kimlik doğrulamasını yapılandırmadığınıza veya karma çalışan grubu için farklı çalıştır kimlik bilgilerini belirtmemiş olmanız olabilir. Runbook 'larınız için kimlik doğrulamasını doğru şekilde yapılandırdığınızdan emin olmak için [runbook izinlerini](../automation-hrw-run-runbooks.md#runbook-permissions) gözden geçirin.
 
 ### <a name="no-cert-found"></a>Senaryo: karma Runbook Worker 'daki sertifika deposunda sertifika bulunamadı
 
 #### <a name="issue"></a>Sorun
 
-Karma Runbook Worker üzerinde çalışan bir runbook şu hata iletisiyle başarısız oluyor:
+Karma Runbook Worker üzerinde çalışan bir runbook şu hata iletisiyle başarısız oluyor.
 
 ```error
 Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
@@ -76,7 +74,7 @@ At line:3 char:1
 
 Bu hata, farklı çalıştır hesabı sertifikasının bulunmadığı bir karma runbook çalışanında çalışan bir runbook 'ta [Farklı Çalıştır hesabını](../manage-runas-account.md) kullanmaya çalıştığınızda oluşur. Karma runbook çalışanları varsayılan olarak, farklı çalıştır hesabının düzgün çalışması için gerekli olan sertifika varlığını yerel olarak içermez.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Karma runbook çalışanınız bir Azure sanal makinesi ise bunun yerine [Azure kaynakları Için Yönetilen kimlikler](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) kullanabilirsiniz. Bu senaryo, farklı çalıştır hesabı yerine Azure VM 'nin yönetilen kimliğini kullanarak Azure kaynaklarında kimlik doğrulaması yapma olanağı sunarak kimlik doğrulamasını basitleştirir. Karma Runbook Worker şirket içi bir makinedir ve farklı çalıştır hesabı sertifikasını makineye yüklemeniz gerekir. Sertifikayı yüklemeyi öğrenmek için [bir karma runbook çalışanındaki runbook 'ları](../automation-hrw-run-runbooks.md)çalıştırmak için PowerShell runbook 'Unu dışarı aktarma-Runascercertificateatetohybridworker ' ı çalıştırma adımlarına bakın.
 
@@ -96,7 +94,7 @@ Olası nedenler şunlardır:
 * Aracının ayarlarında yanlış yazılmış bir çalışma alanı KIMLIĞI veya çalışma alanı anahtarı (birincil) var. 
 * Karma runbook çalışanı yapılandırmayı indiremez ve hesap bağlama hatasına neden olur. Azure çözümleri etkinleştirdiğinde, yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı bağlamak için yalnızca belirli bölgeleri destekler. Bilgisayarda yanlış bir tarih ve/veya saat kümesi de mümkündür. Saat, geçerli zamandan itibaren +/-15 dakika ise, ekleme başarısız olur.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 ##### <a name="mistyped-workspace-idkey"></a>Yanlış yazılan çalışma alanı KIMLIĞI/anahtarı
 Aracının çalışma alanı KIMLIĞI veya çalışma alanı anahtarının yanlış yazılmış olup olmadığını doğrulamak için, bkz. [bir çalışma alanı ekleme veya kaldırma –](../../azure-monitor/platform/agent-manage.md#windows-agent) Windows Aracısı için Windows Aracısı veya [bir çalışma alanı ekleme veya kaldırma –](../../azure-monitor/platform/agent-manage.md#linux-agent) Linux Aracısı için Linux Aracısı.  Azure portal tam dizeyi seçtiğinizden emin olun ve dikkatle kopyalayıp yapıştırın.
@@ -121,7 +119,7 @@ Linux için Log Analytics Aracısı çalışmıyor
 
 Aracı çalışmıyorsa, Linux hibrit Runbook Worker 'ın Azure Otomasyonu ile iletişim kurmasını engeller. Aracı çeşitli nedenlerle çalışmıyor olabilir.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
  Aşağıdaki komutu girerek aracının çalıştığını doğrulayın: `ps -ef | grep python`. Aşağıdakine benzer bir çıktı görmeniz gerekir, Python, **nxautomation** Kullanıcı hesabı ile işlenir. Güncelleştirme Yönetimi veya Azure Otomasyonu çözümleri etkinleştirilmemişse, aşağıdaki işlemlerden hiçbiri çalışmıyor.
 
@@ -133,10 +131,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 Aşağıdaki listede bir Linux karma Runbook Worker için başlatılan süreçler gösterilmektedir. Bunlar `/var/opt/microsoft/omsagent/state/automationworker/` dizinde bulunur.
 
-
 * **OMS. conf** -çalışan Yöneticisi işlemi. Doğrudan DSC 'den başlatılır.
 
-* **Worker. conf** -otomatik kayıtlı karma çalışan işlemi, çalışan Yöneticisi tarafından başlatılır. Bu işlem, Güncelleştirme Yönetimi tarafından kullanılır ve Kullanıcı için saydamdır. Güncelleştirme Yönetimi çözümü makinede etkinleştirilmemişse bu işlem yoktur.
+* **Worker. conf** -otomatik kaydedilen karma çalışan işlemi. Çalışan Yöneticisi tarafından başlatılır. Bu işlem, Güncelleştirme Yönetimi tarafından kullanılır ve Kullanıcı için saydamdır. Güncelleştirme Yönetimi çözümü makinede etkinleştirilmemişse bu işlem yoktur.
 
 * **diy/Worker. conf** -diy karma çalışan işlemi. Karma Runbook Worker 'daki Kullanıcı runbook 'larını yürütmek için DIY karma çalışan işlemi kullanılır. Bu, yalnızca farklı bir yapılandırma kullandığı anahtar ayrıntısı içindeki otomatik kayıtlı karma çalışan işleminden farklıdır. Bu işlem, Azure Otomasyonu çözümü devre dışıysa ve DIY Linux hibrit çalışanı kayıtlı değilse mevcut değildir.
 
@@ -164,7 +161,7 @@ Karma Runbook Worker makinesinde `healthservice` hizmeti çalışmıyor.
 
 Microsoft Monitoring Agent Microsoft hizmeti çalışmıyorsa, bu durum karma Runbook Worker 'ın Azure Otomasyonu ile iletişim kurmasını engeller.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 PowerShell 'de aşağıdaki komutu girerek aracının çalıştığını doğrulayın: `Get-Service healthservice`. Hizmet durdurulmuşsa, hizmeti başlatmak için PowerShell 'de aşağıdaki komutu girin: `Start-Service healthservice`.
 
@@ -178,7 +175,7 @@ PowerShell 'de aşağıdaki komutu girerek aracının çalıştığını doğrul
 
 Bu sorunun nedeni, proxy 'niz veya ağ güvenlik duvarınız Microsoft Azure ile iletişimi engelliyor olabilir. 443 bağlantı noktalarında, bilgisayarın *. azure-automation.net 'ye giden erişimi olduğunu doğrulayın. 
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandboxeson konumundaki her karma çalışan üzerinde yerel olarak depolanır. **Uygulama ve hizmetler Logs\Microsoft-SMA\Operations** ve **Application and Services logs\operations Manager** olay günlüğünde bir uyarı veya hata olayı olup olmadığını doğrulayabilirsiniz. Bu, normal Işlemler altında rolü Azure Otomasyonu veya sorununa eklemeyi etkileyen bir bağlantıyı veya diğer sorunu belirtir. Log Analytics aracısıyla ilgili sorunları gidermeye yönelik ek yardım için bkz. [Log Analytics Windows Agent ile ilgili sorunları giderme](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
@@ -202,7 +199,7 @@ Heartbeat
 
 Bu sorun, karma Runbook Worker 'daki bozuk bir önbellekten kaynaklanıyor olabilir.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Bu sorunu çözmek için karma runbook çalışanında oturum açın ve aşağıdaki betiği çalıştırın. Bu betik Microsoft Monitoring Agent sonlandırır, önbelleğini kaldırır ve hizmeti yeniden başlatır. Bu eylem, karma Runbook Worker 'ın yapılandırmasını Azure Otomasyonu 'ndan yeniden indirmesini zorlar.
 
@@ -228,7 +225,7 @@ Machine is already registered
 
 Bu sorun, makinenin farklı bir Otomasyon hesabıyla zaten kayıtlı olması veya bir makineden kaldırıldıktan sonra karma Runbook Worker 'ı yeniden eklemeye çalışırsanız meydana gelir.
 
-#### <a name="resolution"></a>Çözünürlük
+#### <a name="resolution"></a>Çözüm
 
 Bu sorunu çözmek için, aşağıdaki kayıt defteri anahtarını kaldırın ve `HealthService` yeniden başlatın ve `Add-HybridRunbookWorker` cmdlet 'ini yeniden deneyin:
 

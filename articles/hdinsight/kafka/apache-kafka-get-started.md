@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242043"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030053"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
@@ -35,7 +35,7 @@ Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağ
 
 HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol taraftaki menüden **+ bir kaynak oluştur** > **analiz** > **HDInsight**' a gidin.
 
@@ -51,7 +51,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
     |Konum    | Kümenizi oluşturmak istediğiniz bir Azure konumunu seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
     |Küme türü| **Küme türünü seç**' i seçin. Küme türü olarak **Kafka** öğesini seçin.|
     |Sürüm|Küme türü için varsayılan sürüm belirtilecektir. Farklı bir sürüm belirtmek istiyorsanız, açılan listeden seçim yapın.|
-    |Küme oturum açma Kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "\)' karakterleri dışında) içermelidir. "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
+    |Küme oturum açma Kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "\)' karakterleri dışında) içermelidir. " **" gibi genel parolalar** sağlamadığınızdanPass@word1 emin olun.|
     |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
     |SSH için küme oturum açma parolasını kullanma| SSH kullanıcısı için, küme oturum açma kullanıcısı için sağladınız aynı parolayı kullanmak üzere bu onay kutusunu işaretleyin.|
 
@@ -72,7 +72,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
     |Birincil depolama hesabı|Açılan listeyi kullanarak mevcut bir depolama hesabını seçin veya **Yeni oluştur**' u seçin. Yeni bir hesap oluşturursanız, ad 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir|
     |Kapsayıcı|Oto doldurulmuş değeri kullanın.|
 
-    ![HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "HDInsight kümesi oluşturmak için depolama değerleri sağlama")
+    ![HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "HDInsight kümesi oluşturmak için depolama değerleri sağlama")
 
     **Güvenlik + ağ** sekmesini seçin.
 
@@ -80,7 +80,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
    Kümenizi bir sanal ağa bağlamak istiyorsanız, aşağı açılan **Sanal ağ** listesinden bir sanal ağ seçin.
 
-   ![Sanal ağa küme ekleme](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![Sanal ağa küme ekleme](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     **Yapılandırma + fiyatlandırma** sekmesini seçin.
 

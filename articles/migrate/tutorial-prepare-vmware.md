@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin değerlendirmesi/geçirilmesi
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f00d5ba4841427098b0ab79ad1930e357008b6e0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989143"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030804"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM 'lerini değerlendirme ve Azure 'a geçiş için hazırlama
 
@@ -18,7 +18,7 @@ Bu makale, [Azure geçişi](migrate-services-overview.md)'ni kullanarak şirket 
 [Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
 
-Bu öğretici, VMware VM 'lerini nasıl değerlendirmekte ve geçirebileceğiniz gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, VMware VM 'lerini nasıl değerlendirmekte ve geçirebileceğiniz gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure 'u Azure geçişi ile çalışacak şekilde hazırlayın.
@@ -38,7 +38,7 @@ Bu izinlere ihtiyacınız vardır.
 **Görev** | **İzinler**
 --- | ---
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir.
-**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile VMware VM 'lerini değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kayıt sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak iki Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> -İlk uygulama, Gereç üzerinde çalışan aracılar ile Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.<br/> -İkinci uygulama, kullanıcının aracısız geçiş için Kullanıcı aboneliğinde oluşturulan anahtar kasasına erişmek için özel olarak kullanılır. Bu, gereçden bulma başlatıldığında Azure Key Vault (müşterinin kiracısında oluşturulan) bir RBAC erişimi ile sağlanır.
+**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile VMware VM 'lerini değerlendirmek ve Azure geçişi sunucu geçişi ile VMware VM 'lerinin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için basit bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kaynak sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak iki Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> -İlk uygulama, Gereç üzerinde çalışan aracılar ile Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.<br/> -İkinci uygulama, kullanıcının aracısız geçiş için Kullanıcı aboneliğinde oluşturulan anahtar kasasına erişmek için özel olarak kullanılır. Bu, gereçden bulma başlatıldığında Azure Key Vault (müşterinin kiracısında oluşturulan) bir RBAC erişimi ile sağlanır.
 **Key Vault oluşturma** | Azure geçişi, VMware VM 'lerini Azure geçişi sunucu geçişi ile geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek üzere bir Key Vault oluşturur. Kasayı oluşturmak için Azure geçişi projesinin bulunduğu kaynak grubunda rol atama izinlerine sahip olmanız gerekir.
 
 

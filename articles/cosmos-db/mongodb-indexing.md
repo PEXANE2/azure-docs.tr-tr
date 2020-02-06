@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753385"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029478"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sini kullanarak dizin oluşturma
 
@@ -21,17 +21,100 @@ MongoDB için Azure Cosmos DB API 'SI Cosmos DB otomatik dizin yönetimi yetenek
 
 ## <a name="indexing-for-version-36"></a>Sürüm 3,6 için dizin oluşturma
 
-Kablo Protokolü sürüm 3,6 ' a hizmet veren hesaplar, önceki sürümlerin sağladığı ilkeden farklı bir varsayılan dizin oluşturma ilkesi sağlar. Varsayılan olarak, yalnızca _ID alanı dizinlenir. Ek alanlara dizin eklemek için, kullanıcının MongoDB Dizin Yönetimi komutlarını uygulaması gerekir. Bir sorguya sıralama uygulamak için şu anda sıralama işleminde kullanılan alanlarda bir dizin oluşturulmalıdır.
+Kablo Protokolü sürüm 3,6 ' a hizmet veren hesaplar, önceki sürümlerin sağladığı ilkeden farklı bir varsayılan dizin oluşturma ilkesi sağlar. Varsayılan olarak, yalnızca _id alanı dizinlenir. Ek alanlara dizin eklemek için, kullanıcının MongoDB Dizin Yönetimi komutlarını uygulaması gerekir. Bir sorguya sıralama uygulamak için şu anda sıralama işleminde kullanılan alanlarda bir dizin oluşturulmalıdır.
 
 ### <a name="dropping-the-default-indexes-36"></a>Varsayılan dizinleri bırakma (3,6)
 
-Kablo protokol 3,6 sürümüne hizmet veren hesaplar için, yalnızca varsayılan dizin, bırakılamaz.
+Kablo protokol 3,6 sürümüne hizmet veren hesaplar için, yalnızca varsayılan dizin bırakılamaz _id.
 
 ### <a name="creating-a-compound-index-36"></a>Bileşik dizin oluşturma (3,6)
 
 3,6 kablo protokolünü kullanan hesaplar için doğru Bileşik dizinler desteklenir. Aşağıdaki komut, ' a ' ve ' b ' alanlarında bir bileşik dizin oluşturacak: `db.coll.createIndex({a:1,b:1})`
 
 Bileşik dizinler aynı anda birden çok alanda etkili bir şekilde sıralamak için kullanılabilir: `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>Dizin ilerlemesini izleme
+
+Azure Cosmos DB MongoDB hesapları için API 'nin 3,6 sürümü bir veritabanı örneğindeki dizin ilerlemesini izlemek için `currentOp()` komutunu destekler. Bu komut, bir veritabanı örneği üzerinde devam eden işlemler hakkında bilgi içeren bir belge döndürür. `currentOp` komutu, MongoDB için Azure Cosmos DB API 'sinde, yerel MongoDB 'deki tüm sürmekte olan işlemleri izlemek için kullanılır; Bu komut yalnızca dizin işleminin izlenmesini destekler.
+
+Dizin ilerlemesini izlemek için `currentOp` komutunun nasıl kullanılacağını gösteren bazı örnekler aşağıda verilmiştir:
+
+• Bir koleksiyon için Dizin ilerlemesini al:
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+• Bir veritabanındaki tüm koleksiyonlar için Dizin ilerlemesini al:
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+• Bir Azure Cosmos hesabındaki tüm veritabanları ve koleksiyonlar için Dizin ilerlemesini alın:
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+Dizin ilerleme durumu ayrıntıları, geçerli dizin işlemi için ilerleme yüzdesini içerir. Aşağıdaki örnek, Dizin ilerleme durumunun farklı aşamaları için çıkış belgesi biçimini gösterir:
+
+1. ' Foo ' koleksiyonundaki dizin işlemi ve %60 dizin oluşturma tamamlandı olan ' çubuk ' veritabanında aşağıdaki çıktı belgesi olacaktır. `Inprog[0].progress.total`, hedef tamamlama olarak 100 gösterir.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. ' Foo ' koleksiyonu ve ' Bar ' veritabanı üzerinde yeni başlayan bir dizin işlemi için, çıkış belgesi ölçülebilir bir düzeye ulaşıncaya kadar %0 ilerleme durumu gösterebilir.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. Devam eden dizin işlemi tamamlandığında, çıkış belgesi boş ınprog işlemlerini gösterir.
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>Sürüm 3,2 için dizin oluşturma
 

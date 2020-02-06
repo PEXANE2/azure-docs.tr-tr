@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747868"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030888"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -38,7 +38,7 @@ Kümenizdeki farklı düğüm türlerine ait konak adlarını almak için lütfe
 > [!IMPORTANT]  
 > Sayısal değeri bir düğümün birincil veya ikincil olup olmadığı ile ilişkilendirmeyin. Sayısal değer yalnızca her düğüm için benzersiz bir ad sağlamak üzere mevcuttur.
 
-### <a name="nimbus-nodes"></a>Nimbus Düğümleri
+### <a name="nimbus-nodes"></a>Nimbus düğümleri
 
 Nimbus düğümleri Apache Storm kümeleriyle kullanılabilir. Nimbus düğümleri, çalışan düğümleri arasında işlemeyi dağıtarak ve izleyerek Hadoop JobTracker 'e benzer işlevler sağlar. HDInsight, fırtınası kümeleri için iki Nimbus düğümü sağlar
 
@@ -101,7 +101,7 @@ Aşağıdaki yöntemleri kullanarak internet üzerinden doğrudan erişilemeyen 
 |---|---|
 |SSH|SSH kullanarak bir baş düğüme bağlandıktan sonra, kümedeki diğer düğümlere bağlanmak için baş düğümden SSH kullanabilirsiniz. Daha fazla bilgi için [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md) belgesine bakın.|
 |SSH tüneli|İnternet 'e açık olmayan düğümlerden birinde barındırılan bir Web hizmetine erişmeniz gerekiyorsa, bir SSH tüneli kullanmanız gerekir. Daha fazla bilgi için [HDInsight Ile SSH tüneli kullanma](hdinsight-linux-ambari-ssh-tunnel.md) belgesine bakın.|
-|Azure Sanal Ağı|HDInsight kümeniz bir Azure sanal ağının parçasıysa, aynı sanal ağ üzerindeki herhangi bir kaynak kümedeki tüm düğümlere doğrudan erişebilir. Daha fazla bilgi için bkz. [HDInsight için sanal ağ planlaması](hdinsight-plan-virtual-network-deployment.md) belgesi.|
+|Azure Sanal Ağ|HDInsight kümeniz bir Azure sanal ağının parçasıysa, aynı sanal ağ üzerindeki herhangi bir kaynak kümedeki tüm düğümlere doğrudan erişebilir. Daha fazla bilgi için bkz. [HDInsight için sanal ağ planlaması](hdinsight-plan-virtual-network-deployment.md) belgesi.|
 
 ## <a name="how-to-check-on-a-service-status"></a>Hizmet durumunu denetleme
 
@@ -119,7 +119,7 @@ Durumu göstermek için bir hizmetin yanında görünebilen bir dizi simge vard�
 
 Aşağıdaki uyarılar bir kümenin kullanılabilirliğini izlemeye yardımcı olur:
 
-| Uyarı Adı                               | Açıklama                                                                                                                                                                                  |
+| Uyarı adı                               | Açıklama                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ölçüm Izleyici durumu                    | Bu uyarı, izleme durumu betiği tarafından belirlendiği şekilde ölçüm Izleyici işleminin durumunu gösterir.                                                                                   |
 | Ambarı aracı sinyali                   | Bu uyarı, sunucuda bir aracıyla ilgili iletişim kesildiğinde tetiklenir.                                                                                                                        |
@@ -270,7 +270,7 @@ Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki b
 
 * **Azure Portal**: bir küme oluştururken, küme tarafından kullanılan düğümlerin boyutunu ayarlayabilirsiniz:
 
-    ![Düğüm boyutu seçimiyle küme oluşturma Sihirbazı görüntüsü](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![Düğüm boyutu seçimiyle küme oluşturma Sihirbazı görüntüsü](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure CLI**: [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) komutunu kullanırken, `--headnode-size`, `--workernode-size`ve `--zookeepernode-size` parametrelerini kullanarak baş, çalışan ve ZooKeeper düğümlerinin boyutunu ayarlayabilirsiniz.
 

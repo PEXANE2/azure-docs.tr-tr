@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990751"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031672"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -18,7 +18,7 @@ Bu makalede, Azure geçişi gereci açıklanmaktadır. Microsoft Azure 'e geçi�
 
 Azure geçişi gereci aşağıdaki senaryolarda kullanılır.
 
-**Senaryo** | **Araç** | **İçin kullanılan** 
+**Senaryo** | **Araç** | **Kullanıldığı yer** 
 --- | --- | ---
 VMware VM | Azure geçişi: Sunucu değerlendirmesi<br/><br/> Azure geçişi: sunucu geçişi | VMware VM 'lerini bulma<br/><br/> Makine uygulamalarını ve bağımlılıklarını bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.<br/><br/> VMware VM 'lerini aracısız geçişle çoğaltın.
 Hyper-V VM | Azure geçişi: Sunucu değerlendirmesi | Hyper-V VM 'lerini bulma<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
@@ -37,7 +37,7 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 **Karma değeri** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter sunucusu/ana bilgisayar** | Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
-**Bulma** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
+**Keşfini** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
 **Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/> DRA: VM çoğaltmasını düzenleyin ve makineler/Azure arasındaki iletişimi koordine edin.<br/> Ağ geçidi: çoğaltılan verileri Azure 'a gönderir.<br/> Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
 **VDDK (aracısız geçiş)** | Azure geçişi sunucu geçişi ile aracısız bir geçiş çalıştırıyorsanız, VMware vSphere VDDK gereci sanal makinesinde yüklü olmalıdır.
 
@@ -55,7 +55,7 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 **Karma değeri** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V konağı** | Windows Server 2012 R2 veya üstünü çalıştırın.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
-**Bulma** | Bir gereç, vCenter Server en fazla 5000 VMware VM 'yi bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+**Keşfini** | Bir gereç, vCenter Server en fazla 5000 VMware VM 'yi bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 **Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
 
 
@@ -63,14 +63,14 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 
 **Gereksinim** | **Z** 
 --- | ---
-**İndirme biçimi** | Daraltılmış klasör (PowerShell yükleyici betiği ile)
+**İndirme biçimi** | Daraltılmış klasör (PowerShell tabanlı yükleyici betiği ile)
 **Bağlantıyı indirin** | [Bağlantıyı indirin](https://go.microsoft.com/fwlink/?linkid=2105112)
 **İndirme boyutu** | 59,7 MB
-**Donanım** | Ayrılmış fiziksel makine veya VM. Gereci çalıştıran makinenin 16 GB RAM, 8 vCPU, 80 GB depolama alanı ve harici bir anahtar olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+**Donanım** | Ayrılmış fiziksel makine veya bir sanal makine kullanın. Gereci çalıştıran makinenin 16 GB RAM, 8 vCPU, 80 GB depolama alanı ve harici bir anahtar olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
 **Karma değeri** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-**Yazılım** | Gereç makinesi Windows Server 2016 çalıştırmalıdır. 
+**İşletim Sistemi** | Gereç makinesi Windows Server 2016 ' i çalıştırıyor olmalıdır. 
 **Gereç dağıtımı**   |  Gereç yükleyicisi betiği portaldan (daraltılmış bir klasörde) indirilir. <br/> Klasörü sıkıştırmasını açın ve PowerShell betiğini (AzureMigrateInstaller. ps1) çalıştırın.
-**Bulma** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.
+**Keşfini** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.
 **Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
 
 
@@ -91,9 +91,10 @@ dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlükle
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
 download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
-*.servicebus.windows.net | **VMware aracısız geçişi için kullanılır**<br/><br/> Gereç ve Azure geçişi hizmeti arasındaki iletişim.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **VMware aracısız geçişi için kullanılır**<br/><br/> Azure geçişi hizmeti URL 'Lerine bağlanın.
-*.blob.core.windows.net |  **VMware aracısız geçişi için kullanılır**<br/><br/>Verileri depolamaya yükleyin.
+*.servicebus.windows.net | Gereç ve Azure geçişi hizmeti arasındaki iletişim.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Azure geçişi hizmeti URL 'Lerine bağlanın.
+*.hypervrecoverymanager.windowsazure.com | **VMware aracısız geçişi için kullanılır**<br/><br/> Azure geçişi hizmeti URL 'Lerine bağlanın.
+*.blob.core.windows.net |  **VMware aracısız geçişi için kullanılır**<br/><br/>Geçiş için verileri depolamaya yükleyin.
 
 
 
@@ -104,9 +105,9 @@ download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 
-**Veriler** | **Counter** | **Değerlendirme etkisi**
+**Veriler** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
-CPU kullanımı | CPU. Usage. Average | Önerilen VM boyutu/maliyet
+CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
 Disk okuma üretilen işi (MB/saniye) | virtualDisk. Read. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
 Disk yazma miktarı (MB/saniye) | virtualDisk. Write. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
@@ -123,7 +124,7 @@ NIC yazma üretilen işi (MB/saniye) | net. iletilmiş. Average  |VM boyutu içi
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
 
-**Veriler** | **Counter**
+**Veriler** | **Sayaç**
 --- | --- 
 **Makine ayrıntıları** | 
 VM Kimliği | 'nin. Config. ınstanceuuıd 
@@ -138,7 +139,7 @@ Bellek (MB) | 'nin. Config. Hardware. MemoryMB
 Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
 Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
-CPU kullanımı | CPU. Usage. Average
+CPU utilization | CPU. Usage. Average
 Bellek kullanımı |mem. kullanım. Ortalama
 **Disk başına Ayrıntılar** | 
 Disk anahtarı değeri | dis. Anahtar
@@ -158,7 +159,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Ad | kapsayıcı. GetType (). Ada
+Adı | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -177,7 +178,7 @@ VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper VM performans verileri aşağıda verilmiştir.
 
-**Performans sayacı sınıfı** | **Counter** | **Değerlendirme etkisi**
+**Performans sayacı sınıfı** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
 Hyper-V hiper yönetici sanal Işlemcisi | % Konuk çalışma zamanı | Önerilen VM boyutu/maliyet
 Hyper-V Dinamik Bellek VM | Geçerli basınç (%)<br/> Konuk görünür fiziksel bellek (MB) | Önerilen VM boyutu/maliyet

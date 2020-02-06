@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646906"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031638"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 
@@ -157,7 +157,7 @@ Yapılandırma bölmesinde aşağıdaki GitHub deposu ayarları gösterilmektedi
 
 - Data Factory görsel yazma araçları ile GitHub tümleştirmesi yalnızca, Data Factory genel kullanıma sunulan sürümünde çalışmaktadır.
 
-- Her kaynak türü için (işlem hatları ve veri kümeleri gibi) en fazla 1.000 varlık tek bir GitHub dalında getirilebilir. Bu sınıra ulaşıldığında, kaynaklarınızı ayrı fabrikalar halinde bölmek için önerilir.
+- Her kaynak türü için (işlem hatları ve veri kümeleri gibi) en fazla 1.000 varlık tek bir GitHub dalında getirilebilir. Bu sınıra ulaşıldığında, kaynaklarınızı ayrı fabrikalar halinde bölmek için önerilir. Azure DevOps git 'in bu sınırlaması yoktur.
 
 ## <a name="switch-to-a-different-git-repo"></a>Farklı bir git deposuna geç
 
@@ -187,7 +187,7 @@ Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği
 
 ### <a name="configure-publishing-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örneğin:
+Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
 
 ```json
 {
@@ -249,10 +249,15 @@ Yayımla dalı ana Dalla eşitlenmemiş ve son bir yayımlamaya rağmen güncel 
 
 1. Geçerli git deponuzu kaldırma
 1. Git 'i aynı ayarlarla yeniden yapılandırın, ancak **mevcut Data Factory kaynaklarını depoya Içeri aktarma** işleminin seçili olduğundan emin olun ve **yeni dal** seçin
-1. İşbirliği dalınızdan tüm kaynakları silme
 1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme isteği oluşturun 
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+Aşağıda, eski bir yayımlama dalına neden olabilecek durumlara ilişkin bazı örnekler verilmiştir:
+- Bir kullanıcının birden çok dalı vardır. Tek bir özellik dalında, AKV ile ilişkili olmayan bağlı bir hizmeti sildi (gitmeyen veya olmayan bağlı hizmetler, git ' te olup olmadığı ve özellik dalını hiçbir şekilde birlikte çalışma işbirliğiyle birleştirmelidir).
+- Kullanıcı SDK veya PowerShell kullanarak veri fabrikasını değiştirdi
+- Bir Kullanıcı tüm kaynakları yeni bir dala taşıdı ve ilk kez yayımlamayı denedi. Bağlı hizmetler, kaynakları içeri aktarırken el ile oluşturulmalıdır.
+- Kullanıcı, bir AKG bağlı hizmetini veya bir JSON Integration Runtime el ile karşıya yükler. Veri kümesi, bağlantılı hizmet veya işlem hattı gibi başka bir kaynaktan bu kaynağa başvurur. UX aracılığıyla oluşturulan bir AKıŞ olmayan bağlantılı hizmet, kimlik bilgilerinin şifrelenmesi gerektiği için hemen yayımlanır. Bağlı hizmete başvuran bir veri kümesini karşıya yükler ve yayımlamayı denerseniz, git ortamında mevcut olduğundan UX buna izin verir. Veri Fabrikası hizmetinde mevcut olmadığından, yayımlama sırasında reddedilir.
+
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 Özellikler hakkında yorum yapmak veya araçla ilgili sorunları bildirmek için **geri bildirim** ' ı seçin:
 
 ![Geri Bildirim](media/author-visually/provide-feedback.png)

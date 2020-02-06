@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668143"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031569"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -42,7 +42,7 @@ Standard_v2 ve WAF_v2 SKU 'SU şu bölgelerde kullanılabilir: Orta Kuzey ABD, O
 V2 SKU 'SU ile, fiyatlandırma modeli tüketim ile çalıştırılır ve artık örnek sayılarına veya boyutlara eklenmez. V2 SKU fiyatlandırması iki bileşene sahiptir:
 
 - **Sabit fiyat** -bu, bir Standard_v2 veya WAF_v2 ağ geçidi sağlamak için saatlik (veya kısmi saat) fiyatıdır. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun.
-- **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı bir maliyettir. Kapasite birimi ücretlendirmesi ayrıca saatlik olarak veya kısmen saatlik olarak hesaplanır. Kapasite biriminde üç boyut bulunur: işlem birimi, kalıcı bağlantılar ve aktarım hızı. İşlem birimi, kullanılan işlemci kapasitesini ölçer. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL yeniden yazma hesaplamaları ve WAF kural işleme. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.  Faturalandırma, ayrılmış örnek sayısının üzerinde her şey için bir kapasite birimi düzeyinde yapılır.
+- **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı bir maliyettir. Kapasite Birimi ücreti de saatlik veya kısmi olarak hesaplanır. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç boyutu vardır. İşlem birimi, tüketilen işlemci kapasitesinin bir ölçüsüdür. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL yeniden yazma hesaplamaları ve WAF kural işleme. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.  Faturalandırma, ayrılmış örnek sayısının üzerinde her şey için bir kapasite birimi düzeyinde yapılır.
 
 Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda örnek fiyatlar gösterilmektedir ve yalnızca çizim amaç
 | Standard_v2                                       |    0,20             | 0,0080                          |
 | WAF_v2                                            |    0,36             | 0,0144                          |
 
-Daha fazla fiyatlandırma bilgisi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/application-gateway/). Faturalandırma, 1 Temmuz 2019 ' de başlayacak şekilde zamanlandı.
+Daha fazla fiyatlandırma bilgisi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/application-gateway/). 
 
 **Örnek 1**
 
@@ -172,11 +172,11 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 |Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenmiyor|
 |Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Azure tanılama 'da performans günlükleri|Desteklenmiyor.<br>Azure ölçümleri kullanılmalıdır.|
-|Faturalandırma|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
+|Faturalama|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
 |FIPS modu|Bunlar şu anda desteklenmiyor.|
 |Yalnızca ıLB modu|Bu şu anda desteklenmiyor. Ortak ve ıLB modu birlikte desteklenir.|
 |Netizleyici tümleştirmesi|Desteklenmiyor.|
-|Azure Güvenlik Merkezi tümleştirmesi|Henüz kullanılamıyor.
+|Azure Güvenlik Merkezi tümleştirmesi|Henüz bulunmamaktadır.
 
 ## <a name="migrate-from-v1-to-v2"></a>v1'den v2'ye geçiş
 

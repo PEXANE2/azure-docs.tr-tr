@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect sağlama Aracısı: Sürüm sürümü geçmişi | Microsoft Docs'
+title: 'Azure AD Connect sağlama Aracısı: sürüm sürümü geçmişi | Microsoft Docs'
 description: Bu makalede Azure AD Connect sağlama aracısının tüm sürümleri listelenir ve yeni özellikler ve düzeltilen sorunlar açıklanmaktadır
 services: active-directory
 documentationcenter: ''
@@ -12,27 +12,38 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 02/04/2020
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326455"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030698"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect sağlama Aracısı: Sürüm yayınlama geçmişi
+# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi
 Bu makalede, yayımlanan Azure Active Directory Connect sağlama aracısının sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, sağlama aracısını yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Yeni bir sürüm yayınlandığında sağlama Aracısı otomatik olarak güncelleştirilir. 
 
 En son özelliklere ve hata düzeltmelerine sahip olduğunuzdan emin olmak için aracılarınız için otomatik güncelleştirmeyi etkinleştirmenizi öneririz. Microsoft, en son aracı sürümü ve bir sürümü için doğrudan destek sağlar.
+
+## <a name="11960"></a>1.1.96.0
+
+### <a name="release-status"></a>Yayın durumu
+
+4 Aralık 2019: indirme için yayınlandı
+
+### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
+
+* Kullanıcıyı eşitlemeye yönelik [Azure AD Connect bulut sağlama](../cloud-provisioning/what-is-cloud-provisioning.md) , şirket içi Active Directory Ile Azure AD arasında iletişim kurma ve veri gruplama için destek içerir
+
 
 ## <a name="11670"></a>1.1.67.0
 
 ### <a name="release-status"></a>Yayın durumu
 
-9 Eylül 2019: Otomatik güncelleştirme için yayınlandı
+9 Eylül 2019: otomatik güncelleştirme için yayınlandı
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
@@ -49,7 +60,7 @@ En son özelliklere ve hata düzeltmelerine sahip olduğunuzdan emin olmak için
 
 ### <a name="release-status"></a>Yayın durumu
 
-23 Ocak 2019: İndirilmek üzere yayınlandı
+23 Ocak 2019: indirilmek üzere yayınlandı
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 

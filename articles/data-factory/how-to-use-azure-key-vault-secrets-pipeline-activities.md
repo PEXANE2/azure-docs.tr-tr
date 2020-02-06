@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926769"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031501"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
 
@@ -41,7 +41,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
 
 3. Key Vault verilerinize giderek gizli dizi tanımlayıcısını kopyalayın.
 
-    ![Gizli Dizi Tanımlayıcısı](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
+    ![Gizli dizi tanımlayıcısı](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
 
     Data Factory işlem hattı çalıştırma sırasında almak istediğiniz gizli URI 'nizi bir yere göz önünde bir şekilde oluşturun.
 
@@ -49,8 +49,8 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
 
     |Özellik  |Değer  |
     |---------|---------|
-    |Güvenli çıkış     |Doğru         |
-    |URL     |[Gizli URI değeri]? api-version = 7.0         |
+    |Güvenli çıkış     |True         |
+    |URL'si     |[Gizli URI değeri]? api-version = 7.0         |
     |Yöntem     |GET         |
     |Kimlik Doğrulaması     |MSI         |
     |Kaynak        |https://vault.azure.net       |
@@ -63,7 +63,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
     > [!CAUTION]
     > Gizli çıkışın düz metin olarak kaydedilmesini engellemek için güvenli çıkış seçeneğini true olarak ayarlayın.  Bu değeri kullanan diğer etkinliklerin, güvenli giriş seçeneğinin true olarak ayarlanmış olması gerekir.
 
-5. Değeri başka bir etkinlikte kullanmak için aşağıdaki kod ifadesini kullanın **@activity("Web"). Output. Value)** .
+5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini kullanın **@activity("Web"). Output. Value**.
 
     ![Kod ifadesi](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

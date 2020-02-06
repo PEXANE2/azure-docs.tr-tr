@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699498"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031518"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Öğretici: Windows dosya sunucularını Azure Dosya Eşitleme ile genişletme
 
@@ -69,7 +69,7 @@ Bir Azure depolama hesabı dağıttıktan sonra bir dosya paylaşma oluşturursu
 
 1. Yeni dosya payını seçin. Dosya paylaşma konumunda **karşıya yükle**' yi seçin.
 
-    ![Karşıya dosya yükle](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
+    ![Dosyayı karşıya yükleme](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
 1. . Txt dosyanızı oluşturduğunuz _Filestosync_ klasörüne gidin, _mytestdoc. txt_ dosyasını seçin ve **karşıya yükle**' yi seçin.
 
@@ -136,7 +136,7 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
 
 Windows Server 2016 Datacenter Server için Internet Explorer Artırılmış güvenlik yapılandırmasını devre dışı bırakın. Bu adım yalnızca ilk sunucu kaydı için gereklidir. Sunucu kaydedildikten sonra özelliği yeniden etkinleştirebilirsiniz.
 
-Windows Server 2016 Datacenter VM 'de Sunucu Yöneticisi otomatik olarak açılır.  Sunucu Yöneticisi varsayılan olarak açılmazsa dosyayı dosya Gezgini 'nde arayın.
+Windows Server 2016 Datacenter VM 'de Sunucu Yöneticisi otomatik olarak açılır.  Sunucu Yöneticisi varsayılan olarak açılmazsa, Başlat menüsünde arama yapın.
 
 1. **Sunucu Yöneticisi**, **yerel sunucu**' yı seçin.
 
@@ -154,7 +154,7 @@ Windows Server 2016 Datacenter VM 'de Sunucu Yöneticisi otomatik olarak açıl�
 
 ### <a name="add-the-data-disk"></a>Veri diski ekleme
 
-1. Hala **Windows Server 2016 Datacenter** VM 'de **Dosyalar ve depolama hizmetleri** > **birimleri** > **diskleri**' ni seçin.
+1. Hala **Windows Server 2016 Datacenter** VM 'de, **Dosyalar ve depolama hizmetleri** > **birimler** > **diskler**' i seçin.
 
     ![Veri diski](media/storage-sync-files-extend-servers/your-disk.png)
 
@@ -222,7 +222,7 @@ Azure Dosya Eşitleme dağıtmak için, önce seçtiğiniz abonelik için bir ka
    | **Ad** | Depolama Eşitleme Hizmeti için benzersiz bir ad (abonelik başına).<br><br>Bu öğretici için _afssyncservice02_ kullanın. |
    | **Abonelik** | Bu öğretici için kullandığınız Azure aboneliği. |
    | **Kaynak grubu** | Depolama eşitleme hizmetini içeren kaynak grubu.<br><br>Bu öğretici için _afsresgroup101918_ kullanın. |
-   | **Location** | Doğu ABD |
+   | **Konum** | Doğu ABD |
 
 1. İşiniz bittiğinde **Oluştur**’u seçerek **Depolama Eşitleme Hizmeti**’ni dağıtın.
 1. **Kaynak sayfasına gitmek**> **Bildirimler** sekmesini seçin.
@@ -240,7 +240,7 @@ Azure Dosya Eşitleme aracısı, Windows Server’ın bir Azure dosya paylaşım
 
    ![Aracı seçme](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. **Açık** **çalışmaya** > başladıktansonraizinver'i > seçin.
+1.  >  > **Çalıştır** ' ı seçerek **izin ver** ' i seçin.
 1. Henüz yapmadıysanız, PowerShell penceresini kapatın.
 1. **Depolama Eşitleme Aracısı Kurulum Sihirbazı**’nda varsayılan ayarları kabul edin.
 1. **Yükle**’yi seçin.
@@ -252,7 +252,7 @@ Azure Eşitleme Hizmeti dağıttıysanız ve aracıyı Windows Server 2016 Datac
 
 Windows Server 'ı bir depolama eşitleme hizmeti ile kaydettirmek, sunucunuz (veya kümeniz) ile depolama eşitleme hizmeti arasında bir güven ilişkisi kurar. Bir sunucu yalnızca bir depolama Eşitleme hizmetine kaydedilebilir. Bu, bu depolama eşitleme hizmeti ile ilişkili diğer sunucularla ve Azure dosya paylaşımlarıyla eşitlenebilir.
 
-Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledikten sonra otomatik olarak açılmalıdır. Değilse, dosya konumundan el ile açabilirsiniz:`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledikten sonra otomatik olarak açılmalıdır. Değilse, dosya konumundan el ile açabilirsiniz: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. VM 'de sunucu kaydı kullanıcı arabirimi açıldığında **Tamam**' ı seçin.
 1. Başlamak için **oturum aç '** ı seçin.
@@ -305,9 +305,9 @@ Sunucu uç noktası, kayıtlı bir sunucuda belirli bir konumu temsil eder. Örn
 
    | | |
    | ----- | ----- |
-   | Value | Açıklama |
+   | Değer | Açıklama |
    | **Kayıtlı sunucu** | Oluşturduğunuz sunucunun adı. Bu öğretici için *afsvm101918* kullanın. |
-   | **Yolu** | Oluşturduğunuz sürücünün Windows Server yolu. Bu öğreticide *f:\filestosync* kullanın. |
+   | **Path** | Oluşturduğunuz sürücünün Windows Server yolu. Bu öğreticide *f:\filestosync* kullanın. |
    | **Bulutta Katmanlama** | Bu öğretici için devre dışı bırakın. |
    | **Birim Boş Alanı** | Bu öğretici için boş bırakın. |
 

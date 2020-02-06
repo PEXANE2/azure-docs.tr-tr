@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215824"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030989"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive sorgularını iyileştirme
 
@@ -29,11 +29,11 @@ Bir HDInsight kümesindeki çalışan düğümü sayısının artırılması, ç
 
 * Bir küme oluştururken, Azure portal, Azure PowerShell veya komut satırı arabirimini kullanarak çalışan düğümü sayısını belirtebilirsiniz.  Daha fazla bilgi için bkz. [HDInsight kümesi oluşturma](hdinsight-hadoop-provision-linux-clusters.md). Aşağıdaki ekran görüntüsünde Azure portal çalışan düğümü yapılandırması gösterilmektedir:
   
-    ![Azure portal küme boyutu düğümleri](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Azure portal küme boyutu düğümleri](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * Oluşturulduktan sonra, bir kümeyi yeniden oluşturmadan daha fazla ölçek genişletmek için çalışan düğümü sayısını da düzenleyebilirsiniz:
 
-    ![Azure portal ölçek kümesi boyutu](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure portal ölçek kümesi boyutu](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 HDInsight ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight kümelerini ölçeklendirme](hdinsight-scaling-best-practices.md)
 
@@ -122,7 +122,7 @@ Daha fazla bilgi için bkz. [bölümlenmiş tablolar](https://cwiki.apache.org/c
 
 ## <a name="use-the-orcfile-format"></a>ORCFile biçimini kullanın
 
-Hive farklı dosya biçimlerini destekler. Örneğin:
+Hive farklı dosya biçimlerini destekler. Örnek:
 
 * **Metin**: varsayılan dosya biçimi ve çoğu senaryolarla birlikte kullanılır.
 * **Avro**: birlikte çalışabilirlik senaryolarında iyi sonuç verir.
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örneğin:
+Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örnek:
 
 ```sql
 INSERT INTO TABLE lineitem_orc

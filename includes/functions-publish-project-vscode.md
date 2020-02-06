@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964164"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029155"
 ---
 ## <a name="publish-the-project-to-azure"></a>Projeyi Azure'da yayımlama
 
@@ -46,7 +46,7 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
     + **[Depolama hesabı](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : işlev uygulamanızın adını temel alan benzersiz bir adla standart bir depolama hesabı oluşturulur.
     + **[Barındırma planı](../articles/azure-functions/functions-scale.md)** : sunucusuz işlev uygulamanızı barındırmak için Batı ABD bölgede bir tüketim planı oluşturulur.
     + **İşlev uygulaması**: projeniz bu yeni işlev uygulamasında dağıtılır ve çalışır.
-    + **[Application Insights]()** : işlev uygulamanıza bağlı olan bir örnek, işlev adınız temel alınarak oluşturulur.
+    + **Application Insights**: işlev uygulamanıza bağlı olan bir örnek, işlev adınız temel alınarak oluşturulur.
 
     İşlev uygulamanız oluşturulduktan sonra bir bildirim görüntülenir ve dağıtım paketi uygulanır. 
     

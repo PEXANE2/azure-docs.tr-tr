@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 89ae15bb82db1e9e06ac2cb52146137161dac47d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995955"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031348"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma
 
@@ -25,10 +25,15 @@ Aylık ödeme tutarınız, yerel para biriminiz için güncel ayın döviz kurun
 
 - Sanal makineler
 - Azure Storage
-- SQL Veritabanı
+- SQL Veritabanları
 - SQL Veri Ambarı
 - Cosmos DB
 - App Service damga pulu ücreti
+- Yönetilen Disk
+- Azure Veri Gezgini
+- MariaDB, MySQL ve PostgreSQL için Azure veritabanı
+- CloudSimple tarafından sunulan Azure VMware Çözümü
+
 
 [Azure portalında](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade) rezervasyon satın alın.
 

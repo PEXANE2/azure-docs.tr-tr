@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9a82b51083a7d31bc39c4556712c1489bad8bca0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103782"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031484"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory Azure Kubernetes hizmeti ile tümleştirme
 
@@ -50,13 +50,13 @@ Bir AKS kümesi için Azure AD kimlik doğrulaması sağlamak üzere iki Azure A
 
 İlk Azure AD uygulaması, bir kullanıcının Azure AD grubu üyeliğini almak için uygulanır. Bu uygulamayı Azure portal oluşturmak için:
 
-1. **Yeni kayıt** **uygulama kayıtları** > AzureActiveDirectory > seçin.
+1. **Yeni kayıt** > **uygulama kayıtları** **Azure Active Directory** > seçin.
 
     a. Uygulamaya *AKSAzureADServer*gibi bir ad verin.
 
     b. **Desteklenen hesap türleri**için **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
     
-    c. Yeniden yönlendirme URI 'SI türü için **Web** ' i seçin ve ardından, *https://aksazureadserver* URI biçimli herhangi bir değer (gibi) girin.
+    c. Yeniden yönlendirme URI 'SI türü için **Web** ' i seçin ve ardından *https://aksazureadserver* gibi URI biçimli bir değer girin.
 
     d. İşiniz bittiğinde **Kaydet** ' i seçin.
 
@@ -110,13 +110,20 @@ Bir AKS kümesi için Azure AD kimlik doğrulaması sağlamak üzere iki Azure A
 
 İkinci Azure AD uygulaması, Kubernetes CLı (kubectl) ile oturum açtığınızda kullanılır.
 
-1. **Yeni kayıt** **uygulama kayıtları** > AzureActiveDirectory > seçin.
+1. **Yeni kayıt** > **uygulama kayıtları** **Azure Active Directory** > seçin.
 
     a. Uygulamaya *AKSAzureADClient*gibi bir ad verin.
 
     b. **Desteklenen hesap türleri**için **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
 
-    c. Yeniden yönlendirme URI 'SI türü için **Web** ' i seçin ve ardından gibi *https://aksazureadclient* URI biçimli herhangi bir değer girin.
+    c. Yeniden yönlendirme URI 'SI türü için **Web** ' i seçin ve ardından *https://aksazureadclient* gibi URI biçimli herhangi bir değer girin.
+
+    >[!NOTE]
+    >Kapsayıcılar için Azure Izleyicisini desteklemek üzere yeni bir RBAC etkin küme oluşturuyorsanız, bu listeye **Web** uygulaması türleri olarak aşağıdaki iki ek yeniden yönlendirme URL 'sini ekleyin. İlk temel URL değeri `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` olmalıdır ve ikinci taban URL değeri `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`olmalıdır.
+    >
+    >Bu özelliği Azure Çin 'de kullanıyorsanız, ilk temel URL değeri `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` olmalıdır ve ikinci temel URL değeri `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`olmalıdır.
+    >
+    >Daha fazla bilgi için bkz. kapsayıcılar için Azure Izleyici için [canlı veri (Önizleme) özelliğini ayarlama](../azure-monitor/insights/container-insights-livedata-setup.md) ve [ad tümleşik kimlik doğrulaması yapılandırma](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) bölümünde kimlik doğrulamasını yapılandırma adımları.
 
     d. İşiniz bittiğinde **Kaydet** ' i seçin.
 
@@ -146,7 +153,7 @@ Bir AKS kümesi için Azure AD kimlik doğrulaması sağlamak üzere iki Azure A
 
 Ardından, Azure kiracınızın KIMLIĞINI alın. Bu değer, AKS kümesini oluştururken kullanılır.
 
-Azure Portal, **Azure Active Directory** > **Özellikler** ' i seçin ve **dizin kimliğini**aklınızda yapın. Azure AD özellikli bir AKS kümesi oluşturduğunuzda, bu değere kiracı KIMLIĞI denir.
+Azure portal, **Azure Active Directory** > **Özellikler** ' i seçin ve **dizin kimliğini**aklınızda yapın. Azure AD özellikli bir AKS kümesi oluşturduğunuzda, bu değere kiracı KIMLIĞI denir.
 
 ![Azure kiracı KIMLIĞI 'ni al](media/aad-integration/tenant-id.png)
 
@@ -180,7 +187,7 @@ AKS kümesinin oluşturulması birkaç dakika sürer.
 
 AKS kümesiyle bir Azure Active Directory hesabı kullanmadan önce, rol bağlama veya küme rolü bağlama oluşturmanız gerekir. Roller, verilecek izinleri tanımlar ve bağlamalar onları istenen kullanıcılara uygular. Bu atamalar, belirli bir ad alanına veya tüm küme genelinde uygulanabilir. Daha fazla bilgi için bkz. [RBAC yetkilendirmesi kullanma][rbac-authorization].
 
-İlk olarak, yönetici erişimiyle kümede oturum açmak için, `--admin` bağımsız değişkeniyle [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın.
+İlk olarak, yönetici erişimiyle kümede oturum açmak için `--admin` bağımsız değişkeniyle [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -254,7 +261,7 @@ Bir Kubernetes kümesinin RBAC ile güvenliğini sağlama hakkında daha fazla b
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-`kubectl` Komutu çalıştırdıktan sonra, Azure kullanarak kimlik doğrulaması yapmanız istenir. Aşağıdaki örnekte gösterildiği gibi, işlemi tamamlaması için ekrandaki yönergeleri izleyin:
+`kubectl` komutunu çalıştırdıktan sonra, Azure kullanarak kimlik doğrulaması yapmanız istenir. Aşağıdaki örnekte gösterildiği gibi, işlemi tamamlaması için ekrandaki yönergeleri izleyin:
 
 ```console
 $ kubectl get nodes
@@ -278,7 +285,7 @@ error: You must be logged in to the server (Unauthorized)
 
 - Kullanıcı hesabının aynı Azure AD kiracısında olup olmadığı ile ilgili olarak uygun nesne KIMLIĞINI veya UPN 'yi tanımlamış olursunuz.
 - Kullanıcı 200 taneden fazla grubun üyesi değil.
-- Sunucu için uygulama kaydında tanımlanan gizli dizi kullanılarak `--aad-server-app-secret`yapılandırılan değerle eşleşir.
+- Sunucu için uygulama kaydında tanımlanan gizli dizi, `--aad-server-app-secret`kullanılarak yapılandırılan değerle eşleşir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

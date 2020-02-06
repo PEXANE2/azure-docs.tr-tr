@@ -7,16 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935007"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031740"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı v2 için özel kurallar
 
-Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, birçok farklı saldırı türünden koruma sağlayan, önceden yapılandırılmış, platform tarafından yönetilen bir kural kümesiyle birlikte gelir. Bu saldırılar siteler arası betik oluşturma, SQL ekleme ve diğer kişiler içerir. Bir WAF yöneticisiyseniz, çekirdek kural kümesi (sp_configure) kurallarını artırmak için size kendi kuralları yazmak isteyebilirsiniz. Kurallarınız, eşleşen ölçütlere göre istenen trafiği engelleyebilir veya izin verebilir.
+Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, birçok farklı saldırı türünden koruma sağlayan, önceden yapılandırılmış, platform tarafından yönetilen bir kural kümesiyle birlikte gelir. Bu saldırılar siteler arası betik oluşturma, SQL ekleme ve diğer kişiler içerir. Bir WAF yöneticisiyseniz, çekirdek kural kümesi (sp_configure) kurallarını genişletmek için kendi kurallarınızı yazmak isteyebilirsiniz. Kurallarınız, eşleşen ölçütlere göre istenen trafiği engelleyebilir veya izin verebilir.
 
 Özel kurallar, WAF üzerinden geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanızı sağlar. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Özel kurallar bir kural adı, kural önceliği ve eşleşen koşulların bir dizisini içerir. Bu koşullar karşılanıyorsa, bir eylem yapılır (izin vermek veya engellemek için).
 
@@ -133,7 +133,7 @@ Aşağıdaki işleçlerden biri olmalıdır:
 - GreaterThanOrEqual
 - Ile başlıyor
 - EndsWith
-- Regex
+- Düzenli ifadesi
 - Coğrafi eşleşme (Önizleme)
 
 ### <a name="negate-condition-optional"></a>Negate koşulu [isteğe bağlı]

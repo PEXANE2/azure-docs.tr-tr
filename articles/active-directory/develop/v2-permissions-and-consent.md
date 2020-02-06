@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e673c2dfd9b3bef6d443498fc96a8c71e0737851
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833355"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030770"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -59,7 +59,7 @@ OAuth 2,0 ' de, bu tür izinler *kapsam*olarak adlandırılır. Bunlar da genell
 * `Calendars.ReadWrite` kullanarak bir kullanıcının takvimine yazma
 * `Mail.Send` tarafından Kullanıcı olarak posta gönder
 
-Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç noktası isteklerindeki kapsamları belirterek ister. Ancak, belirli yüksek ayrıcalık izinleri yalnızca yönetici onayı üzerinden verilebilir ve [Yönetici onay uç noktası](v2-permissions-and-consent.md#admin-restricted-permissions)kullanılarak istenir/verilir. Daha fazla bilgi için okumaya devam edin.
+Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç noktası isteklerindeki kapsamları belirterek ister. Ancak, belirli yüksek ayrıcalık izinleri yalnızca yönetici onayı üzerinden verilebilir ve [Yönetici onay uç noktası](v2-permissions-and-consent.md#admin-restricted-permissions)kullanılarak istenir/verilir. Daha fazla bilgi edinmek için okumaya devam edin.
 
 ## <a name="permission-types"></a>İzin türleri
 
@@ -204,11 +204,11 @@ Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı M
 
 | Parametre     | Koşul     | Açıklama                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Gereklidir | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi `common` GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. |
-| `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `redirect_uri` | Gereklidir |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
+| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi organizasyonlarla birlikte GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. Kişisel hesaplar kiracı bağlamı haricinde yönetici onayı sağlayamadığından ' Common ' kullanmayın. Kiracıların yönetiminde kişisel hesaplarla en iyi uyumluluğu sağlamak için, mümkün olduğunda kiracı KIMLIĞINI kullanın. |
+| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
-|`scope`        | Gereklidir      | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik ( [`/.default`](#the-default-scope)kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. Uygulama izinlerine ihtiyacınız varsa, statik olarak yapılandırılmış izin listesini istemek için `/.default` kullanmanız gerekir.  | 
+|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik ( [`/.default`](#the-default-scope)kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. Uygulama izinlerine ihtiyacınız varsa, statik olarak yapılandırılmış izin listesini istemek için `/.default` kullanmanız gerekir.  | 
 
 
 Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) bir değer kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.

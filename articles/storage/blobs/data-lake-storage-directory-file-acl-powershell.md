@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 983ae646db5f51f7efaa2ff2569133e20e2d1dbd
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 87ee0a931fd3b72a4acd36ecb600fd333aec21ab
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834958"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031110"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme (Önizleme)
 
@@ -25,10 +25,10 @@ Bu makalede, PowerShell kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmi�
 
 [Gen1 to Gen2 mapping](#gen1-gen2-map) | [geri bildirim verme](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 > * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 > * .NET Framework, 4.7.2 veya üzeri bir sürümü yüklendi. Bkz. [indirme .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 > * PowerShell sürüm `5.1` veya üzeri.
@@ -135,7 +135,7 @@ $dir.Directory.Metadata
 $dir.Directory.Properties
 ```
 
-## <a name="rename-or-move-a-directory"></a>Bir dizini yeniden adlandırma veya taşıma
+## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
 
 `Move-AzDataLakeGen2Item` cmdlet 'ini kullanarak bir dizini yeniden adlandırın veya taşıyın.
 
@@ -410,7 +410,7 @@ $filesystemName = "my-file-system"
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -FetchPermission | Update-AzDataLakeGen2Item -Acl $acl
 ```
 <a id="gen1-gen2-map" />
 

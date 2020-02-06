@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: 382205a958030d2a6d1c199627a591978ef8708a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
+ms.date: 02/03/2020
+ms.openlocfilehash: 2c9c5b35110be8f9e51d2205f9fe63dfa4ef8e10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934598"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031085"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını içeren kümeler ayarlayın
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, bir HDInsight kümesi kurmak için kullanabileceğiniz far
 
 | İle oluşturulan kümeler | Web tarayıcısı | Komut satırı | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure portalında](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -134,7 +134,7 @@ HDInsight ile depolama seçenekleri hakkında daha fazla bilgi için bkz. [Azure
 
 Yapılandırma sırasında, varsayılan depolama uç noktası için bir Azure depolama hesabının veya Data Lake Storage blob kapsayıcısını belirtirsiniz. Varsayılan depolama, uygulama ve sistem günlükleri içerir. İsteğe bağlı olarak, ek bağlı Azure depolama hesapları ve kümenin erişebileceği Data Lake Storage hesapları belirtebilirsiniz. HDInsight kümesi ve bağımlı depolama hesapları aynı Azure konumunda olmalıdır.
 
-![Küme depolama ayarları:,, uyumlu depolama uç noktaları](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage-blank.png)
+![Küme depolama ayarları:,, uyumlu depolama uç noktaları](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -211,7 +211,7 @@ HDInsight 'ı yeni deneiyorsanız, bir çalışan düğümü kullanmanızı öne
 
 Kümeyi yapılandırmak için Azure portal kullandığınızda, düğüm boyutu **yapılandırma + fiyatlandırma** sekmesinden kullanılabilir. Portalda, farklı düğüm boyutlarıyla ilişkili maliyeti de görebilirsiniz.
 
-![HDInsight düğüm boyutunuzu seçin](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-pricing-hadoop.png)
+![HDInsight düğüm boyutunuzu seçin](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
 
 ### <a name="virtual-machine-sizes"></a>Sanal makine boyutları
 
@@ -225,24 +225,21 @@ Farklı SDK 'Ları kullanarak bir küme oluştururken veya Azure PowerShell kull
 > [!IMPORTANT]  
 > Bir kümede 32 ' den fazla çalışan düğümüne ihtiyacınız varsa, en az 8 çekirdek ve 14 GB RAM içeren bir baş düğüm boyutu seçmeniz gerekir.
 
-Daha fazla bilgi için [sanal makine boyutları](../virtual-machines/windows/sizes.md). Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight).
+Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](../virtual-machines/windows/sizes.md). Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight).
 
-## <a name="classic-cluster-setup"></a>Klasik küme kurulumu
-
-Klasik küme kurulumu varsayılan oluşturma ayarlarını oluşturur ve aşağıdaki seçenekleri ekler:
-
-* [HDInsight uygulamaları](#install-hdinsight-applications-on-clusters)
-* [Betik eylemleri](#advanced-settings-script-actions)
-
-## <a name="install-hdinsight-applications-on-clusters"></a>Kümelere HDInsight uygulamaları yükleme
+## <a name="install-hdinsight-applications-on-clusters"></a>Kümelere HDInsight uygulamalarını yükler
 
 HDInsight uygulaması kullanıcıların Linux tabanlı HDInsight kümesine yükleyebileceği bir uygulamadır. Microsoft, üçüncü taraflar tarafından sunulan veya kendi kendinize Geliştirdiğiniz uygulamaları kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure HDInsight 'ta üçüncü taraf Apache Hadoop uygulamaları yüklemeyi](hdinsight-apps-install-applications.md).
 
 HDInsight uygulamalarının çoğu boş bir kenar düğümüne yüklenir.  Boş bir Edge düğümü, aynı istemci araçları yüklü ve baş düğümde olarak yapılandırılmış bir Linux sanal makinedir. Küme erişimi, istemci uygulamalarınızı test etmek ve istemci uygulamalarınızı barındırmak için kenar düğümünü kullanabilirsiniz. Daha fazla bilgi için bkz. [HDInsight 'ta boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md).
 
-## <a name="advanced-settings-script-actions"></a>Gelişmiş ayarlar: betik eylemleri
+![Azure portal kümesi yapılandırma uygulamaları](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-applications.png)
+
+## <a name="script-actions"></a>Betik eylemleri
 
 Oluşturma sırasında betikleri kullanarak ek bileşenler yükleyebilir veya küme yapılandırmasını özelleştirebilirsiniz. Bu tür betikler, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilen bir yapılandırma seçeneği olan **betik eylemi**aracılığıyla çağrılır. Daha fazla bilgi için bkz. [betik eylemini kullanarak HDInsight kümesini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
+
+![Azure portal kümesi yapılandırma betiği eylemleri](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-scriptaction.png)
 
 Apache Mahout ve basamaklı gibi bazı yerel Java bileşenleri, küme üzerinde Java Arşivi (JAR) dosyaları olarak çalıştırılabilir. Bu JAR dosyaları Azure depolama 'ya dağıtılabilir ve Hadoop iş gönderim mekanizmalarıyla HDInsight kümelerine gönderilebilir. Daha fazla bilgi için bkz. [Apache Hadoop işleri programlı olarak gönderme](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

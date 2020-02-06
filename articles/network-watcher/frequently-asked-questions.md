@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720281"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029500"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
 [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
@@ -54,17 +54,29 @@ Ağ Izleyicisi bileşenleri için [fiyatlandırma sayfasını](https://azure.mic
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Ağ Izleyicisi hangi bölgelerde desteklenir/kullanılabilir?
 [Azure hizmet kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) en son bölgesel kullanılabilirliği görüntüleyebilirsiniz
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Ağ izleyicisinden kaynak sınırları nelerdir?
-Tüm sınırlar için [hizmet limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) sayfasına bakın.  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Ağ Izleyicisi 'ni kullanmak için hangi izinler gereklidir?
+[Ağ İzleyicisi 'ni kullanmak için gereken RBAC izinlerinin](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listesine bakın. Kaynakları dağıtmak için, NetworkWatcherRG için katkıda bulunan izinlerine sahip olmanız gerekir (aşağıya bakın).
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Bölge başına yalnızca bir ağ Izleyicisi örneğine izin veriliyor mu?
-Bu özelliğin çalışması için bir abonelik için ağ Izleyicisi 'nin etkinleştirilmesi yeterlidir, bu bir hizmet sınırı değildir.
+### <a name="how-do-i-enable-network-watcher"></a>Ağ İzleyicisi'ni nasıl etkinleştirebilirim?
+Ağ Izleyicisi hizmeti her abonelik için [otomatik olarak etkinleştirilir](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) .
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>Ağ Izleyicisi dağıtım modeli nedir?
+Ağ Izleyicisi üst kaynağı her bölgede benzersiz bir örnekle dağıtılır. Adlandırma biçimi: NetworkWatcher_RegionName. Örnek: NetworkWatcher_centralus, "Orta ABD" bölgesinin ağ Izleyicisi kaynağıdır.
+
+### <a name="what-is-the-networkwatcherrg"></a>NetworkWatcherRG nedir?
+Ağ Izleyicisi kaynakları otomatik olarak oluşturulan gizli **NetworkWatcherRG** kaynak grubunda bulunur. Örneğin, NSG akış günlükleri kaynağı, ağ Izleyicisi 'nin bir alt kaynağıdır ve NetworkWatcherRG ' de etkinleştirilir.
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Neden ağ Izleyicisi uzantısını yüklemem gerekir? 
 Ağ Izleyicisi uzantısı, bir VM 'den trafik oluşturması veya bu trafiği ele almak için gereken tüm özellikler için gereklidir. 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>Hangi özellikler ağ Izleyicisi uzantısını gerektiriyor?
-Yalnızca paket yakalama, bağlantı sorunlarını giderme ve bağlantı Izleyicisi için ağ Izleyicisi uzantısının mevcut olması gerekir.
+Paket yakalama, bağlantı sorunlarını giderme ve bağlantı Izleyicisi özellikleri için ağ Izleyicisi uzantısının mevcut olması gerekir.
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>Ağ izleyicisinden kaynak sınırları nelerdir?
+Tüm sınırlar için [hizmet limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) sayfasına bakın.  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Bölge başına yalnızca bir ağ Izleyicisi örneğine izin veriliyor mu?
+Bu özelliğin çalışması için bir abonelik için ağ Izleyicisi 'nin etkinleştirilmesi yeterlidir, bu bir hizmet sınırı değildir.
 
 ## <a name="nsg-flow-logs"></a>NSG akış günlükleri
 
@@ -85,7 +97,7 @@ Birkaç dakika sonra depolama günlüklerini denetleyebilirsiniz; güncelleştir
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Nasıl yaparım? bir hizmet uç noktası arkasında depolama hesabı bulunan NSG akış günlükleri mi kullanıyorsunuz?
 
-NSG akış günlükleri, ek yapılandırma gerektirmeden hizmet uç noktaları ile uyumlu değildir. Lütfen sanal ağınızdaki [hizmet uç noktalarını etkinleştirme öğreticisine](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) bakın.
+NSG akış günlükleri, ek yapılandırma gerektirmeden hizmet uç noktaları ile uyumludur. Lütfen sanal ağınızdaki [hizmet uç noktalarını etkinleştirme öğreticisine](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) bakın.
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Akış günlükleri sürümleri 1 & 2 arasındaki fark nedir?

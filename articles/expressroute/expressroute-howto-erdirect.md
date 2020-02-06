@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705930"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031621"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct 'i yapılandırma
 
 ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme konumlarda doğrudan bağlanma özelliği sağlar. Daha fazla bilgi için bkz. [ExpressRoute Direct Hakkında](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Kaynak Oluştur
+## <a name="resources"></a>Kaynağı oluşturma
 
 1. Azure'da oturum açın ve aboneliği seçin. ExpressRoute bağlantı hatları ve ExpressRoute doğrudan kaynak aynı abonelikte olması gerekir.
 
@@ -27,13 +27,19 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. ExpressRoute doğrudan'ın desteklendiği tüm konumların listesi.
+   
+2. Expressrouteportslocation ve expressrouteport API 'Lerine erişmek için aboneliğinizi Microsoft. Network 'e yeniden kaydedin.
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. ExpressRoute doğrudan'ın desteklendiği tüm konumların listesi.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
    ```
 
-   **Örnek çıktı**
+   **Örnek çıkış**
   
    ```powershell
    Name                : Equinix-Ashburn-DC2
@@ -60,13 +66,13 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Yukarıda listelenen bir konum kullanılabilir bant genişliğini olup olmadığını belirleyin
+4. Yukarıda listelenen bir konum kullanılabilir bant genişliğini olup olmadığını belirleyin
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
    ```
 
-   **Örnek çıktı**
+   **Örnek çıkış**
 
    ```powershell
    Name                : Equinix-San-Jose-SV1
@@ -82,7 +88,7 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
                           }
                         ]
    ```
-4. Yukarıda seçilen konumuna bağlı olarak bir ExpressRoute doğrudan kaynak oluştur
+5. Yukarıda seçilen konumuna bağlı olarak bir ExpressRoute doğrudan kaynak oluştur
 
    ExpressRoute doğrudan QinQ hem Dot1Q kapsülleme destekler. QinQ seçili ise, her bir ExpressRoute bağlantı hattında S etiketi dinamik olarak atanır ve ExpressRoute doğrudan kaynak benzersiz olacaktır. Her C-Tag devredeki benzersiz olmalıdır. bağlantı hattını, ancak ExpressRoute doğrudan arasında değil.  
 
@@ -100,7 +106,7 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
    > Kapsülleme öznitelik Dot1Q için de ayarlayabilirsiniz. 
    >
 
-   **Örnek çıktı:**
+   **Örnek çıkış:**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -149,7 +155,7 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
    Circuits                   : []
    ```
 
-## <a name="state"></a>Bağlantı Yöneticisi durumunu değiştir
+## <a name="state"></a>Bağlantıların yönetici durumunu değiştirme
 
   Bu işlem, her bir çapraz bağlantı doğru birincil site için her yönlendirici olarak düzeltme eki uygulama ve ikincil olduğundan emin olmanın bir katman 1 testi yürütmek için kullanılmalıdır.
 1. ExpressRoute doğrudan ayrıntıları alın.
@@ -168,7 +174,7 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
    $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
-   **Örnek çıktı:**
+   **Örnek çıkış:**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -217,9 +223,9 @@ ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik
    Circuits                   : []
    ```
 
-   İle aynı yordamı `AdminState = "Disabled"` bağlantı noktalarını açmak için.
+   Bağlantı noktalarını kapatmak için `AdminState = "Disabled"` aynı yordamı kullanın.
 
-## <a name="circuit"></a>Bir bağlantı hattı oluşturma
+## <a name="circuit"></a>Devre oluşturma
 
 Varsayılan olarak 10 bağlantı hatları ExpressRoute doğrudan kaynak olduğu abonelikte oluşturabilirsiniz. Bu destek birimi tarafından artırılabilir. Sağlanan hem kullanılan bant genişliğini izlemek için sorumlu olursunuz. Bant genişliğiniz ExpressRoute doğrudan kaynaktaki tüm devreler bant genişliği toplamını ve kullanılan bant genişliği fiziksel kullanımı temel alınan fiziksel arabirim.
 
@@ -237,7 +243,7 @@ Bir devreyi ExpressRoute doğrudan kaynağı oluşturun.
 
   Diğer bant genişlikleri içerir: 5.0, 10.0 ve 40.0
 
-  **Örnek çıktı:**
+  **Örnek çıkış:**
 
   ```powershell
   Name                             : ExpressRoute-Direct-ckt
@@ -271,4 +277,4 @@ Bir devreyi ExpressRoute doğrudan kaynağı oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ExpressRoute doğrudan hakkında daha fazla bilgi için bkz: [genel bakış](expressroute-erdirect-about.md).
+ExpressRoute Direct hakkında daha fazla bilgi için bkz. [genel bakış](expressroute-erdirect-about.md).

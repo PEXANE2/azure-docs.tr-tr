@@ -4,12 +4,12 @@ description: Azure geçişi ile Hyper-V VM 'lerinin değerlendirmesi/geçirilmes
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984753"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031229"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -17,7 +17,7 @@ Bu makalede, [Azure geçişi](migrate-services-overview.md)ile şirket içi Hype
 
 [Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Bu öğretici, Hyper-V sanal makinelerini Azure 'a nasıl değerlendirmenizi ve geçirekullanacağınızı gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Hyper-V sanal makinelerini Azure 'a nasıl değerlendirmenizi ve geçirekullanacağınızı gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure 'u hazırlayın. Azure hesabınız ve kaynaklarınızın Azure geçişi ile çalışması için izinleri ayarlayın.
@@ -42,7 +42,7 @@ Azure geçişi dağıtımı için izinleri ayarlamanız gerekir.
 **Görev** | **İzinler**
 --- | ---
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için izinleri olması gerekir.
-**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile Hyper-v VM 'lerini bulup değerlendirmek için hafif bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kayıt sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak bir Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> AAD uygulaması, Gereç üzerinde çalışan aracılar arasında Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.
+**Azure geçişi gereci kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini bulup değerlendirmek için hafif bir Azure geçiş gereci kullanır. Bu gereç VM 'Leri bulur ve Azure geçişi 'ne VM meta verilerini ve performans verilerini gönderir.<br/><br/>Gereç kaydı sırasında, aşağıdaki kaynak sağlayıcıları gereç-Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasasında seçilen abonelikle kaydedilir. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.<br/><br/> Azure geçişi, ekleme 'nin bir parçası olarak bir Azure Active Directory (Azure AD) uygulaması oluşturur:<br/> AAD uygulaması, Gereç üzerinde çalışan aracılar arasında Azure üzerinde çalışan hizmetlerle birlikte iletişim için kullanılır (kimlik doğrulaması ve yetkilendirme). Bu uygulamanın herhangi bir kaynakta ARM çağrısı veya RBAC erişimi yapma ayrıcalıkları yoktur.
 
 
 

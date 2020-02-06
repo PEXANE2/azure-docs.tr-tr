@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: a64d03ebe7c8bbb4cfa9c7bd63a678892250373d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482874"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031431"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
 
@@ -36,7 +36,7 @@ REST proxy uç noktasına istek yapmadan önce, istemci uygulamanın doğru güv
 
 İstemci uygulaması OAuth belirtecine sahip olduktan sonra, bu belirteci REST proxy 'ye yapılan HTTP isteğinde iletmeleri gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Bir uygulamayı Azure AD'ye kaydedin. Kafka REST proxy ile etkileşimde bulunmak için yazdığınız istemci uygulamaları, Azure 'da kimlik doğrulaması yapmak için bu uygulamanın KIMLIĞINI ve parolasını kullanacaktır.
 1. Azure AD güvenlik grubu oluşturun ve Azure AD 'ye kaydettiğiniz uygulamayı güvenlik grubuna ekleyin. Bu güvenlik grubu, REST proxy ile etkileşime girmesine izin verilen uygulamaları denetlemek için kullanılacaktır. Azure AD grupları oluşturma hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -45,17 +45,17 @@ REST proxy uç noktasına istek yapmadan önce, istemci uygulamanın doğru güv
 
 1. Kafka kümesi oluşturma iş akışı sırasında, "güvenlik + ağ" sekmesinde "Kafka REST proxy 'yi etkinleştir" seçeneğini işaretleyin.
 
-     ![Kafka REST proxy 'yi etkinleştirin ve güvenlik grubunu seçin](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-enable.png)
+     ![Kafka REST proxy 'yi etkinleştirin ve güvenlik grubunu seçin](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. **Güvenlik grubu seç**' e tıklayın. Güvenlik grupları listesinden REST proxy 'sine erişimi olmasını istediğiniz güvenlik grubunu seçin. Uygun güvenlik grubunu bulmak için arama kutusunu kullanabilirsiniz. Alttaki **Seç** düğmesine tıklayın.
 
-     ![Kafka REST proxy 'yi etkinleştirin ve güvenlik grubunu seçin](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-select-security-group.png)
+     ![Kafka REST proxy 'yi etkinleştirin ve güvenlik grubunu seçin](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. [Azure Portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started)bölümünde açıklandığı gibi kümenizi oluşturmak için kalan adımları izleyin.
 
 1. Küme oluşturulduktan sonra, Kafka REST proxy URL 'sini kaydetmek için küme özelliklerine gidin.
 
-     ![REST proxy URL 'sini görüntüle](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     ![REST proxy URL 'sini görüntüle](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
 
 ## <a name="client-application-sample"></a>İstemci uygulaması örneği
 

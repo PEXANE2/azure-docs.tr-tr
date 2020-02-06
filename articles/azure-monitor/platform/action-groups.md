@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901477"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030755"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -62,7 +62,7 @@ Eylem gruplarını yapılandırmak için Azure Resource Manager şablonlarını 
 
 ## <a name="manage-your-action-groups"></a>Eylem gruplarınızı yönetin
 
-Bir eylem grubu oluşturduktan sonra, **izleyici** bölmesinin **eylem grupları** bölümünde görünür. Yönetmek istediğiniz eylem grubunu seçin:
+Bir eylem grubu oluşturduktan sonra, **izleme** bölmesinde **Uyarılar** giriş sayfasından **eylemleri Yönet** ' i seçerek **eylem gruplarını** görüntüleyebilirsiniz. Yönetmek istediğiniz eylem grubunu seçin:
 
 * Eylemleri ekleyin, düzenleyin veya kaldırın.
 * Eylem grubunu silin.
@@ -80,7 +80,7 @@ Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir.
 ### <a name="azure-app-push-notifications"></a>Azure Uygulama anında Iletme bildirimleri
 Bir eylem grubunda sınırlı sayıda Azure uygulama eylemi olabilir.
 
-### <a name="email"></a>E-posta
+### <a name="email"></a>Email
 E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesinin uygun şekilde yapılandırıldığından emin olun
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -103,7 +103,7 @@ ITSM eylemi bir ıTSM bağlantısı gerektiriyor. [ITSM bağlantısı](../../azu
 
 Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir. 
 
-### <a name="logic-app"></a>Mantıksal Uygulama
+### <a name="logic-app"></a>Logic App
 Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
 ### <a name="secure-webhook"></a>Güvenli Web kancası
@@ -111,7 +111,7 @@ Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
 Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview
+1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Korumalı API 'nizi bir Daemon uygulaması tarafından çağrılacak şekilde yapılandırın.
     
 1. Azure AD uygulamanızı kullanmak için eylem gruplarını etkinleştirin.

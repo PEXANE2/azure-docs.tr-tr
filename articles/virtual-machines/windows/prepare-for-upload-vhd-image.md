@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461119"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906754"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure 'a yüklemek için bir Windows VHD veya VHDX hazırlama
 
@@ -33,6 +33,22 @@ Azure VM 'Leri için destek ilkesi hakkında daha fazla bilgi için bkz. [Azure 
 > Bu makaledeki yönergeler için geçerlidir:
 >1. Windows Server 2008 R2 ve üzeri Windows Server işletim sistemlerinin 64 bitlik sürümü. Azure 'da 32 bitlik bir işletim sistemi çalıştırma hakkında bilgi için bkz. [Azure VM 'lerde 32 bit işletim sistemleri Için destek](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 >2. Azure Site Recovery veya Azure geçişi gibi iş yükünü geçirmek için herhangi bir olağanüstü durum kurtarma aracı kullanılacaksa, bu işlemin tamamlanması ve ardından Konuk işletim sistemi, geçişten önce görüntüyü hazırlamak için gereklidir.
+
+## <a name="system-file-checker-sfc-command"></a>Sistem dosyası denetleyicisi (SFC) komutu
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>Müşteri işletim sistemi görüntüsü oluşturma adımının genelleştirilmesinden önce IŞLETIM sisteminde Windows sistem dosyası denetleyicisi yardımcı programını çalıştırın (sfc/scannow komutunu çalıştırın)
+
+Sistem dosyası denetleyicisi (SFC) komutu, Windows sistem dosyalarını doğrulamak ve değiştirmek için kullanılır.
+
+SFC komutunu çalıştırmak için:
+
+1. Yükseltilmiş bir komut istemi 'ni yönetici olarak açın.
+1. `sfc /scannow` yazın ve **ENTER**' u seçin.
+
+    ![Sistem dosyası denetleyicisi](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+SFC taraması tamamlandıktan sonra, Windows güncelleştirmelerini yüklemeyi ve bilgisayarı yeniden başlatmayı deneyin.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Sanal diski sabit boyuta ve VHD 'ye Dönüştür
 
@@ -346,9 +362,9 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 
    - Yöneticiler
 
-   - Backup Operators
+   - Yedekleme Işleçleri
 
-   - Herkes
+   - Anlamasına
 
    - Kullanıcılar
 
@@ -383,7 +399,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 |                         | mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
 |                         | Tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | VmSwitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Çekirdek                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Uzak Masaüstü Hizmetleri | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |

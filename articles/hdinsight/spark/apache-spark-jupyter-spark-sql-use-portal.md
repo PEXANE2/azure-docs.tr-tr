@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494131"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029563"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
@@ -59,7 +59,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     |Birincil depolama hesabı|Otomatik doldurulmuş değeri kullanın.|
     |Kapsayıcı|Otomatik doldurulmuş değeri kullanın.|
 
-    ![HDInsight Spark kümesi temel yapılandırması oluşturma](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "HDInsight 'ta Spark kümesi oluşturma temel yapılandırma")
+    ![HDInsight Spark kümesi temel yapılandırması oluşturma](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "HDInsight 'ta Spark kümesi oluşturma temel yapılandırma")
 
     Devam etmek için **gözden geçir + oluştur** ' u seçin.
 
@@ -71,7 +71,7 @@ HDInsight kümelerini oluştururken sorunlarla karşılaşırsanız, bunu yapmak
 
 Jupyter Notebook, çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri, verilerle etkileşim kurmanıza, kodu markdown metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak sağlar.
 
-1. [Azure portalı](https://portal.azure.com) açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 
 1. **HDInsight kümeleri**’ni ve sonra oluşturduğunuz kümeyi seçin.
 

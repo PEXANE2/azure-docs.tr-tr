@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102021"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031365"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler'de SQL Server için Güvenlikle İlgili Dikkat Edilmesi Gerekenler
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yönelik güvenlik konuları
 
 Bu konu, bir Azure sanal makinesindeki (VM) SQL Server örneklerine güvenli erişim sağlamaya yardımcı olan genel güvenlik yönergelerini içerir.
 
@@ -57,6 +57,10 @@ Klasik dağıtım modeliyle uç noktalar kullanıyorsanız, bu dosyaları kullan
 
 Son olarak, Azure sanal makinenizde SQL Server veritabanı altyapısının örneği için şifrelenmiş bağlantıları etkinleştirmeyi düşünün. SQL Server örneğini imzalı bir sertifika ile yapılandırın. Daha fazla bilgi için bkz. veritabanı altyapısı ve [bağlantı dizesi söz dizimine](https://msdn.microsoft.com/library/ms254500.aspx) [şifreli bağlantıları etkinleştirme](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) .
 
+## <a name="encryption"></a>Şifreleme
+
+Yönetilen diskler sunucu tarafı şifrelemesi ve Azure disk şifrelemesi sunar. [Sunucu tarafı şifrelemesi](/azure/virtual-machines/windows/disk-encryption) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) , BitLocker ya da dm-crypt teknolojisini kullanır ve hem işletim sistemini hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
+
 ## <a name="use-a-non-default-port"></a>Varsayılan olmayan bir bağlantı noktası kullan
 
 Varsayılan olarak, SQL Server iyi bilinen bir bağlantı noktasını dinler, 1433. Daha yüksek güvenlik için, 1401 gibi varsayılan olmayan bir bağlantı noktasını dinlemek üzere SQL Server yapılandırın. Azure portal SQL Server Galeri görüntüsü sağlarsanız, bu bağlantı noktasını **SQL Server ayarları** dikey penceresinde belirtebilirsiniz.
@@ -74,7 +78,7 @@ Bunu sağlamaktan sonra yapılandırmak için iki seçeneğiniz vardır:
 > [!IMPORTANT]
 > SQL Server bağlantı noktası genel internet bağlantılarına açıksa, varsayılan olmayan bir bağlantı noktası belirtilmesi iyi bir fikirdir.
 
-SQL Server varsayılan olmayan bir bağlantı noktasında dinlerken, bağlantı noktasını, bağlandığınızda belirtmeniz gerekir. Örneğin, sunucu IP adresinin 13.55.255.255 olduğu ve SQL Server bağlantı noktası 1401 üzerinde dinlediği bir senaryoyu düşünün. SQL Server bağlanmak için bağlantı dizesinde belirtmeniz `13.55.255.255,1401` gerekir.
+SQL Server varsayılan olmayan bir bağlantı noktasında dinlerken, bağlantı noktasını, bağlandığınızda belirtmeniz gerekir. Örneğin, sunucu IP adresinin 13.55.255.255 olduğu ve SQL Server bağlantı noktası 1401 üzerinde dinlediği bir senaryoyu düşünün. SQL Server bağlanmak için bağlantı dizesinde `13.55.255.255,1401` belirtirsiniz.
 
 ## <a name="manage-accounts"></a>Hesapları yönetme
 
@@ -93,9 +97,14 @@ Saldırganların hesap adlarını veya parolaları kolayca tahmin etmesini istem
 
   - **Sa** oturumunu kullanmanız gerekiyorsa, sağlama ve yeni bir güçlü parola atama sonrasında oturum açmayı etkinleştirin.
 
-## <a name="follow-on-premises-best-practices"></a>Şirket içi en iyi uygulamaları izleyin
+## <a name="additional-best-practices"></a>Diğer en iyi uygulamalar
 
-Bu konuda açıklanan uygulamalara ek olarak, uygun yerlerde geleneksel şirket içi güvenlik uygulamalarını incelemenizi ve uygulamanızı öneririz. Daha fazla bilgi için bkz. [SQL Server yükleme Için güvenlik konuları](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)
+Bu konu başlığı altında açıklanan uygulamalara ek olarak, hem geleneksel şirket içi güvenlik uygulamalarından en iyi güvenlik uygulamalarını hem de sanal makine güvenlik en iyi yöntemlerini incelemenizi ve uygulamanızı öneririz. 
+
+Şirket içi güvenlik uygulamaları hakkında daha fazla bilgi için bkz. [SQL Server yüklemesinde güvenlik konuları](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) ve [Güvenlik Merkezi](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database). 
+
+Sanal makine güvenliği hakkında daha fazla bilgi için bkz. [sanal makineler güvenliğine genel bakış](/azure/security/fundamentals/virtual-machines-overview).
+
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
