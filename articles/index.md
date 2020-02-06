@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services’ı kullanarak güçlü uygulamalar
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 1b89c076f94750150b7fb57b2eb623b35f719f7b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5a99e3d8d71e154073bc908a55cf893eb2d925c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "76294210"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "77026022"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -321,7 +321,7 @@ ms.locfileid: "76294210"
                             <li></li>
                             <li class="bottomRightItem">
                                 <a href="https://docs.microsoft.com/azure/index#pivot=products&panel=all">
-                                    <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">Tüm Azure Hizmetlerini görüntüleyin<svg viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z" /></svg></button>
+                                    <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">Tüm Azure Hizmetlerini görüntüleyin<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z" /></svg></button>
                                 </a>
                             </li>
                         </ul>
@@ -705,8 +705,14 @@ ms.locfileid: "76294210"
                                         </li>
                                         <li>
                                             <a href="/azure/blockchain/workbench/">
-                                                <img src="media/index/blockchain-workbench.svg" alt="" />
+                                                <img src="media/index/blockchain-workbench-alt.svg" alt="" />
                                                 <p>Azure Blockchain Workbench</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/blockchain/tokens/">
+                                                <img src="media/index/blockchain-tokens.svg" alt="" />
+                                                <p>Azure Blok Zinciri Belirteçleri</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1369,7 +1375,7 @@ ms.locfileid: "76294210"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/managed-applications">
+                                            <a href="/azure/azure-resource-manager/managed-applications">
                                                 <img src="media/index/i_managed-application.svg" alt="" />
                                                 <p>Azure Yönetilen Uygulamalar</p>
                                             </a>
@@ -2665,7 +2671,7 @@ ms.locfileid: "76294210"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/blockchain-workbench.svg" alt="" />
+                                                        <img src="media/index/blockchain-workbench-alt.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2677,7 +2683,26 @@ ms.locfileid: "76294210"
                                     </div>
                                 </a>
                             </li>
-                        </ul>
+                            <li>
+                                <a href="/azure/blockchain/tokens/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/blockchain-tokens.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Blok Zinciri Belirteçleri</h3>
+                                                    <p>Kayıt defteri tabanlı belirteçleri kolayca tanımlama, oluşturma ve yönetme</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>  
                     </li>
                     <li>
                         <a href="#Compute">İşlem</a>
@@ -4859,7 +4884,7 @@ ms.locfileid: "76294210"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/managed-applications">
+                                <a href="/azure/azure-resource-manager/managed-applications">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
