@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: Uygulamalarım portalı yardımı
   items:
-    - name: Uygulamalarım portalına erişme ve portalı kullanma
+    - name: Uygulamalarım portalında oturum açma ve portalı kullanma
       href: my-apps-portal-end-user-access.md
     - name: Profil ve hesap bilgilerinizi güncelleştirme
       href: my-apps-portal-end-user-update-profile.md
     - name: Grup bilgilerinizi güncelleştirme
       href: my-apps-portal-end-user-groups.md
+    - name: Uygulamaları koleksiyonlarla düzenleme
+      href: my-applications-portal-workspaces.md
+    - name: Uygulama izinlerini düzenleme veya iptal etme
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: Kendi erişim gözden geçirmelerinizi gerçekleştirme
       href: my-apps-portal-end-user-access-reviews.md
     - name: Sorunları giderme
       href: my-apps-portal-end-user-troubleshoot.md
-- name: Uygulamalarım (önizleme) portalı yardımı
-  items:
-    - name: Uygulamalarım portalına erişme ve portalı kullanma
-      href: my-applications-portal-access.md
-    - name: Çalışma alanlarına erişme ve bunları kullanma
-      href: my-applications-portal-workspaces.md
-    - name: Uygulama izinlerini düzenleme veya iptal etme
-      href: my-applications-portal-permissions-saved-accounts.md

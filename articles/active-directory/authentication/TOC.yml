@@ -4,16 +4,13 @@
   items:
     - name: Kimlik doğrulaması nedir?
       href: overview-authentication.md
-- name: Hızlı Başlangıç
-  items:
-    - name: Parola sıfırlamayı yapılandırma
-      href: quickstart-sspr.md
 - name: Öğreticiler
+  expanded: true
   items:
-    - name: 1 Uygulamalar için MFA’yı etkinleştirme
+    - name: Kendi kendine parola sıfırlamayı etkinleştirme
+      href: tutorial-enable-sspr.md
+    - name: Uygulamalar için MFA’yı etkinleştirme
       href: tutorial-mfa-applications.md
-    - name: 2 SSPR pilotunu etkinleştirme
-      href: tutorial-sspr-pilot.md
     - name: SSPR şirket içi tümleştirmeyi etkinleştirme
       href: tutorial-enable-writeback.md
     - name: Azure Identity Protection’ı tümleştirme

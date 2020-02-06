@@ -1,9 +1,9 @@
-- name: CloudSimple tarafından sunulan VMware Çözümü
+- name: VMware Çözümleri (AVS)
   href: /azure/vmware-cloudsimple
   items:
     - name: Genel Bakış
       items:
-        - name: CloudSimple tarafından sunulan VMware Çözümü nedir?
+        - name: VMware Çözümleri (AVS) nedir?
           href: cloudsimple-vmware-solutions-overview.md
         - name: Yönetimle ilgili önemli kavramlar
           href: key-concepts.md
@@ -14,9 +14,9 @@
           href: cloudsimple-network-checklist.md
         - name: Başlatma ve sağlama kapasitesi
           href: quickstart-create-cloudsimple-service.md
-        - name: Özel Bulut ortamını yapılandırma
+        - name: AVS Özel Bulut ortamını yapılandırma
           href: quickstart-create-private-cloud.md
-        - name: Özel Bulut üzerinde VMware VM oluşturma
+        - name: AVS Özel Bulut üzerinde VMware VM oluşturma
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Azure'da VMware sanal makinelerini kullanma
           href: quickstart-create-vmware-virtual-machine.md
@@ -26,7 +26,7 @@
           href: cloudsimple-service.md
         - name: Düğümler
           href: cloudsimple-node.md
-        - name: Özel bulut
+        - name: AVS Özel Bulut
           href: cloudsimple-private-cloud.md
         - name: Sanal makineler
           href: cloudsimple-virtual-machines.md
@@ -44,7 +44,7 @@
           href: cloudsimple-account.md
         - name: Etkinlik yönetimi
           href: cloudsimple-activity.md
-        - name: Özel Bulut üzerinde VMware
+        - name: AVS Özel Bulut üzerinde VMware
           href: vmware-components.md
         - name: Güvenliğe genel bakış
           href: cloudsimple-security.md
@@ -56,9 +56,9 @@
           href: cloudsimple-faq.md
     - name: Öğreticiler
       items:
-        - name: CloudSimple hizmeti oluşturma
+        - name: AVS hizmetini oluşturma
           href: create-cloudsimple-service.md
-        - name: CloudSimple portalına erişim
+        - name: AVS portalına erişme
           href: access-cloudsimple-portal.md
         - name: Şirket içi güvenlik duvarı yapılandırması
           href: on-premises-firewall-configuration.md
@@ -70,25 +70,25 @@
               href: create-nodes.md
             - name: Düğümleri silme
               href: delete-nodes.md
-        - name: Özel Bulut kaynaklarını yönetme
+        - name: AVS Özel Bulut kaynaklarını yönetme
           items:
-            - name: Özel Bulut oluşturma
+            - name: AVS Özel Bulut oluşturma
               href: create-private-cloud.md
-            - name: Özel Bulutlarınızı yönetme
+            - name: AVS Özel Bulutlarınızı yönetme
               href: manage-private-cloud.md
-            - name: Özel Bulutu genişletme
+            - name: AVS Özel Bulutunu genişletme
               href: expand-private-cloud.md
-            - name: Özel Bulutu küçültme
+            - name: AVS Özel Bulutunu daraltma
               href: shrink-private-cloud.md
             - name: Azure aboneliğinizi eşleme
               href: azure-subscription-mapping.md
             - name: Ayrıcalıkları yükseltme
               href: escalate-private-cloud-privileges.md
-            - name: Özel Bulutu silme
+            - name: AVS Özel Bulutunu silme
               href: delete-private-cloud.md
-        - name: CloudSimple etkinliğini izleme
+        - name: AVS etkinliğini izleme
           href: monitor-activity.md
-        - name: Özel Bulut ağı ayarlama
+        - name: AVS Özel Bulut ağı ayarlama
           items:
             - name: VLAN ve alt ağlar oluşturma ve yönetme
               href: create-vlan-subnet.md
@@ -98,35 +98,35 @@
               href: public-ips.md
             - name: VPN bağlantıları ayarlama
               href: vpn-gateway.md
-            - name: CloudSimple’a sanal ağ bağlantısı
+            - name: AVS sanal ağ bağlantısı
               href: virtual-network-connection.md
-        - name: CloudSimple portal hesaplarını yönetme
+        - name: AVS portalı hesaplarını yönetme
           items:
             - name: Hesap özetini görüntüleme
               href: account.md
             - name: Kullanıcı listesini görüntüleme
               href: users.md
-        - name: CloudSimple sanal makinelerini ayarlama
+        - name: AVS sanal makinelerini ayarlama
           items:
-            - name: Azure’da CloudSimple VM’si oluşturma
+            - name: Azure’da bir AVS VM’si oluşturma
               href: azure-create-vm.md
-            - name: Azure’da CloudSimple VM’lerini yönetme
+            - name: Azure’da AVS VM’lerini yönetme
               href: azure-manage-vm.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Ortamınızı güvenli hale getirme
           href: private-cloud-secure.md
-        - name: Özel bulut yönetimi
+        - name: AVS Özel Bulut yönetimi
           items:
-            - name: Özel Bulut ayrıcalıklarını yükseltme
+            - name: AVS Özel Bulut ayrıcalıklarını yükseltme
               href: escalate-privileges.md
             - name: İş yükü DNS ve DHCP ayarı
               href: dns-dhcp-setup.md
             - name: Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
               href: migration-layer-2-vpn.md
-        - name: Özel bulut ağı oluşturma
+        - name: AVS Özel Bulut ağı oluşturma
           items:
-            - name: Özel Buluta VPN bağlantısı
+            - name: AVS Özel Bulutuna VPN bağlantısı
               href: set-up-vpn.md
             - name: ExpressRoute ile şirket içi ağ bağlantısı
               href: on-premises-connection.md
@@ -140,15 +140,15 @@
               href: private-cloud-dns-forwarding.md
         - name: VMware platformu
           items:
-            - name: Özel Bulut izin modelini öğrenme
+            - name: AVS Özel Bulut izin modelini öğrenme
               href: learn-private-cloud-permissions.md
             - name: vCenter kimlik kaynakları
               href: set-vcenter-identity.md
             - name: VMware sanal makineleriyle Azure Application Gateway
               href: azure-application-gateway.md
-            - name: Özel Bulut vCenter sunucusunu vRealize otomasyon uç noktası olarak yapılandırma
+            - name: AVS Özel Bulut vCenter sunucusunu vRealize otomasyon uç noktası olarak yapılandırma
               href: configure-server-vrealize-automation-endpoint.md
-            - name: İş yükü sanal makinelerini Özel Buluta geçirme
+            - name: İş yükü sanal makinelerini AVS Özel Bulutuna geçirme
               href: migrate-workloads.md
             - name: Azure Data Box kullanarak geçiş
               href: migration-using-azure-data-box.md
@@ -160,19 +160,19 @@
           items:
             - name: İş yükü sanal makinelerini yedekleme
               href: backup-workloads-veeam.md
-            - name: 'Özel Bulutu, Zerto’yu kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
+            - name: 'AVS Özel Bulutunu, Zerto’yu kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
               href: disaster-recovery-zerto.md
-            - name: 'Özel Bulutu, VMware SRM kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
+            - name: 'AVS Özel Bulutunu, VMware SRM kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
               href: disaster-recovery-site-recovery-manager.md
             - name: VMware Horizon çözüm kılavuzu
               href: horizon-guide.md
-            - name: Özel Bulutunuz için vSAN şifrelemesini yapılandırma
+            - name: AVS Özel Bulutunuz için vSAN şifrelemesini yapılandırma
               href: vsan-encryption.md
-            - name: Oracle RAC için Özel Bulutunuzu iyileştirin
+            - name: Oracle RAC için AVS Özel Bulutunuzu iyileştirin
               href: oracle-real-application-clusters.md
         - name: Azure Çekirdek Tümleştirmesi
           items:
-            - name: Özel Bulut vCenter üzerinde Azure AD kimlik kaynağı
+            - name: AVS Özel Bulut vCenter üzerinde Azure AD kimlik kaynağı
               href: azure-ad.md
             - name: ExpressRoute ile şirket içi ağ bağlantısı
               href: on-premises-connection.md
