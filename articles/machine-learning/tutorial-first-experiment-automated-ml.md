@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982430"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048295"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Deneme ayrıntılarını görüntüleyin.
 > * Model dağıtma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
@@ -69,11 +69,15 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 1. **+ Veri kümesi oluştur** açılır listesinden **yerel dosyalardan** seçim yaparak yeni bir veri kümesi oluşturun. 
 
+    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Azure Machine Learning Studio 'daki otomatik ML Şu anda yalnızca tablo veri kümelerini destekliyor, bu nedenle veri kümesi türü varsayılan olarak tablosal olmalıdır.
+
+    1. Sol alt kısımdaki **İleri ' yi** seçin
+
+    1. **Veri deposu ve dosya seçimi** formunda, çalışma alanı oluşturma, çalışma alanı **BlobStore (Azure Blob depolama)** sırasında otomatik olarak ayarlanan varsayılan veri deposunu seçin. Bu, çalışma alanınız için kullanılabilir hale getirmek üzere veri dosyanızı karşıya yükleyeceksiniz.
+
     1. **Gözat**’ı seçin.
     
     1. Yerel bilgisayarınızda **bankmarketing_train. csv** dosyasını seçin. Bu, bir [Önkoşul](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)olarak indirdiğiniz dosyadır.
-
-    1. Veri kümesi türü olarak **tablosal** ' ı seçin. 
 
     1. Veri kümenize benzersiz bir ad verin ve isteğe bağlı bir açıklama sağlayın. 
 
@@ -86,10 +90,10 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         Alan|Açıklama| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
-        Sınırlayıcı|Düz metin veya diğer veri akışlarında&nbsp; ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
+        Sınırlayıcı|Düz metin veya diğer veri akışlarında&nbsp; ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun üstbilgileri| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
 
@@ -133,21 +137,21 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
         Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştirme
-        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Hiçbiri
+        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;süresi (saat): 1 <br> Ölçüm&nbsp;puanı&nbsp;eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>çapraz doğrulama&nbsp;&nbsp;k katlama <br> <br> Doğrulama sayısı: 2
-        Eşzamanlılık| Yürütülen en fazla paralel yineleme sayısı ve yineleme başına kullanılan çekirdekler| En fazla&nbsp;eşzamanlı&nbsp;yineleme: 5<br> &nbsp;yineleme başına en fazla&nbsp;çekirdek&nbsp;: yok
+        Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla&nbsp;eşzamanlı&nbsp;yineleme: 5
         
         **Kaydet**’i seçin.
 
-1. Denemeyi çalıştırmak için **son** ' u seçin. Deneme hazırlığı başladığında, çalışma **durumu** Ile birlikte **çalıştırma** ekranı açılır.
+1. Denemeyi çalıştırmak için **son** ' u seçin. **Çalışma ayrıntısı** ekranı, deneme hazırlığı başladığında en üstteki **çalıştırma durumuyla** birlikte açılır.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
 > Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha**sürer.  
 > Deneme ilerledikçe çalıştırmanın durumunu görmek için düzenli aralıklarla **Yenile** ' yi seçin.
 >
-> Üretimde, büyük olasılıkla biraz daha fazla yol göstereceğiz. Ancak bu öğreticide, diğer kullanıcılar çalışmaya devam ederken, modeller sekmesinde sınanan algoritmaları keşfetmeye başlayacağız. 
+> Üretimde, büyük olasılıkla biraz daha fazla yol göstereceğiz. Ancak bu öğreticide, diğer kullanıcılar çalışmaya devam ederken, **modeller** sekmesinde sınanan algoritmaları keşfetmeye başlayacağız. 
 
 ##  <a name="explore-models"></a>Modelleri keşfet
 
@@ -165,11 +169,11 @@ Azure Machine Learning Studio 'da otomatik makine öğrenimi, birkaç adımda We
 
 Bu deneme için, bir Web hizmetine dağıtım, artık, potansiyel sabit depozito müşterilerinin tanımlanmasından sonra, mali kurumda yinelenen ve ölçeklenebilir bir Web çözümüne sahip olduğu anlamına gelir. 
 
-Çalıştırma tamamlandıktan sonra, **ayrıntıları Çalıştır** sayfasına dönün ve **modeller** sekmesini seçin. **Yenile**'yi seçin. 
+Çalıştırma tamamlandıktan sonra, **ayrıntıları Çalıştır** sayfasına dönün ve **modeller** sekmesini seçin.
 
 Bu deneme bağlamında, **Votingensediskte** **AUC_weighted** ölçüsüne göre en iyi model kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
 
-1. Sol alt köşedeki **En Iyi modeli dağıt** düğmesini seçin.
+1. Sol alt köşedeki **en iyi modeli dağıt** düğmesini seçin.
 
 1. **Model dağıt** bölmesini aşağıdaki gibi doldurun:
 
@@ -178,8 +182,8 @@ Bu deneme bağlamında, **Votingensediskte** **AUC_weighted** ölçüsüne göre
     Dağıtım adı| My-Oto ml-Deploy
     Dağıtım açıklaması| İlk otomatik makine öğrenimi deneme dağıtımı
     İşlem türü | Azure Işlem örneği (acı) seçin
-    Kimlik doğrulamayı etkinleştirme| Devre dışı bırak öğesini seçin. 
-    Özel dağıtımlar kullanın| Devre dışı bırak öğesini seçin. Varsayılan sürücü dosyası (Puanlama betiği) ve ortam dosyasının yeniden oluşturulmasına izin verir. 
+    Kimlik doğrulamasını etkinleştir| Dıı. 
+    Özel dağıtımlar kullanın| Dıı. Varsayılan sürücü dosyası (Puanlama betiği) ve ortam dosyasının yeniden oluşturulmasına izin verir. 
     
     Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 
 
@@ -216,11 +220,11 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 > [!div class="nextstepaction"]
 > [Web hizmeti kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ [Ön işleme](how-to-create-portal-experiments.md#preprocess)hakkında daha fazla bilgi edinin.
++ [Korleştirme](how-to-create-portal-experiments.md#featurization)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
 
 >[!NOTE]
 > Bu banka pazarlama veri kümesi, [Creative Commons (CCO: genel etki alanı) lisansı](https://creativecommons.org/publicdomain/zero/1.0/)altında kullanılabilir hale getirilir. Veritabanının bireysel içeriklerinde her türlü hak, [veritabanı Içeriği lisansı](https://creativecommons.org/publicdomain/zero/1.0/) kapsamında lisanslanır ve [kada](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)mevcuttur. Bu veri kümesi, ilk olarak [UCI Machine Learning veritabanı](https://archive.ics.uci.edu/ml/datasets/bank+marketing)dahilinde kullanılabilir.<br><br>
-> [Moro et al., 2014] S. Moro, P. Cortez ve P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Karar destek sistemleri, Elsevier, 62:22-31 Haziran 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez ve P. Rita. Banka telefonla Bansının başarısını tahmin etmeye yönelik veri odaklı bir yaklaşım. Karar destek sistemleri, Elsevier, 62:22-31 Haziran 2014.

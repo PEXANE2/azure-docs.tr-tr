@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231738"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046189"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
 
@@ -102,7 +102,7 @@ Betiği çalıştırmak için:
    * **Appgwname: [dize]: Isteğe bağlı**. Bu, yeni Standard_v2 veya ağ geçidi WAF_v2 için ad olarak kullanmak üzere belirttiğiniz bir dizedir. Bu parametre sağlanmazsa, mevcut v1 ağ geçidinizin adı, sonek *_v2* eklenmiş olarak kullanılır.
    * **Sslcertificates: [PSApplicationGatewaySslCertificate]: Isteğe bağlı**.  V1 ağ Geçidinizden SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülle ayrılmış bir listesi, yeni V2 ağ geçidine yüklenmelidir. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılmış SSL sertifikalarınızın her biri için burada gösterilen `New-AzApplicationGatewaySslCertificate` komutu aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. SSL sertifika dosyanızın ve parolanın yolu gereklidir.
 
-       Bu parametre yalnızca v1 Gateway veya WAF için HTTPS dinleyicilerinin yapılandırılmış olması durumunda isteğe bağlıdır. En az bir HTTPS dinleyicisi kurulumuna sahipseniz, bu parametreyi belirtmeniz gerekir.
+     Bu parametre yalnızca v1 Gateway veya WAF için HTTPS dinleyicilerinin yapılandırılmış olması durumunda isteğe bağlıdır. En az bir HTTPS dinleyicisi kurulumuna sahipseniz, bu parametreyi belirtmeniz gerekir.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ Betiği çalıştırmak için:
         -Password $password
       ```
 
-      Önceki örnekte, betikteki Bu parametre için değerler olarak `$mySslCert1, $mySslCert2` (virgülle ayrılmış) geçirebilirsiniz.
-   * **Trustedrootcertificates: [PSApplicationGatewayTrustedRootCertificate]: Isteğe bağlı**. V2 ağ Geçidinizden arka uç örneklerinizin kimlik doğrulaması için [güvenilir kök sertifikaları](ssl-overview.md) temsil etmek üzere oluşturduğunuz PSApplicationGatewayTrustedRootCertificate nesnelerinin virgülle ayrılmış bir listesi.  
+     Önceki örnekte, betikteki Bu parametre için değerler olarak `$mySslCert1, $mySslCert2` (virgülle ayrılmış) geçirebilirsiniz.
+   * **Trustedrootcertificates: [PSApplicationGatewayTrustedRootCertificate]: Isteğe bağlı**. V2 ağ Geçidinizden arka uç örneklerinizin kimlik doğrulaması için [güvenilir kök sertifikaları](ssl-overview.md) temsil etmek üzere oluşturduğunuz PSApplicationGatewayTrustedRootCertificate nesnelerinin virgülle ayrılmış bir listesi.
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       PSApplicationGatewayTrustedRootCertificate nesnelerinin bir listesini oluşturmak için, bkz. [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **Privateıpaddress: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidiniz ile ilişkilendirmek istediğiniz belirli bir özel IP adresi.  Bu, yeni V2 ağ geçidiniz için ayırdığınız VNet 'ten olmalıdır. Bu belirtilmemişse, betik V2 ağ geçidiniz için özel bir IP adresi ayırır.
-    * **Publicıpresourceıd: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidine ayırmak istediğiniz aboneliğinizdeki genel IP adresi (Standart SKU) kaynağının RESOURCEID değeri. Bu belirtilmemişse, komut dosyası aynı kaynak grubunda yeni bir genel IP ayırır. Ad, V2 ağ geçidinin adı *-IP* olarak eklenir.
+   * **Publicıpresourceıd: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidine ayırmak istediğiniz aboneliğinizdeki mevcut genel IP adresi (Standart SKU) kaynağının RESOURCEID değeri. Bu belirtilmemişse, komut dosyası aynı kaynak grubunda yeni bir genel IP ayırır. Ad, V2 ağ geçidinin adı *-IP* olarak eklenir.
    * **Validatemigration: [anahtar]: Isteğe bağlı**. Betiğin V2 ağ geçidi oluşturulduktan ve yapılandırma kopyasından sonra bazı temel yapılandırma karşılaştırma doğrulamaları kullanmasını istiyorsanız bu parametreyi kullanın. Varsayılan olarak, doğrulama yapılmaz.
    * **Enableotomatik ölçeklendirme: [anahtar]: Isteğe bağlı**. Betiğin oluşturulduktan sonra yeni V2 ağ geçidinde otomatik ölçeklendirmeyi etkinleştirmesini istiyorsanız bu parametreyi kullanın. Varsayılan olarak otomatik ölçeklendirme devre dışıdır. Daha sonra yeni oluşturulan V2 ağ geçidinde el ile etkinleştirebilirsiniz.
 
@@ -132,10 +137,10 @@ Betiği çalıştırmak için:
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf5b3c79e39e9baef49ce2c14408a15c3686a6a8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: df7fc366c5087e66c3022c212870397d77e6e34d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293445"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046754"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Öğretici: Azure Active Directory Dropbox for Business ile tümleştirin
 
@@ -32,7 +32,7 @@ Bu öğreticide, Dropbox for Business for Azure Active Directory (Azure AD) ile 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -44,7 +44,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 * Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Iş için Dropbox, **SP** tarafından başlatılan SSO 'yu destekler
 
 * Iş için Dropbox [Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı](dropboxforbusiness-tutorial.md) destekler
-* Dropbox 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve ne zaman korumasını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Dropbox 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infili korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>Galeriden Iş için Dropbox ekleme
 
@@ -64,8 +64,8 @@ Dropbox for Business 'un Azure AD 'ye tümleştirilmesini yapılandırmak için,
 Iş için Dropbox ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.    
-    1. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-    1. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Iş SSO 'su Için Dropbox 'U yapılandırın](#configure-dropbox-for-business-sso)** .
     1. Kullanıcının Azure AD gösterimine bağlı olan Iş için Dropbox 'ta Britta Simon 'un bir karşılığı olacak şekilde **[iş testi kullanıcısı Için Dropbox 'ı oluşturun](#create-dropbox-for-business-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
@@ -109,12 +109,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -178,7 +178,7 @@ Bu bölümde, Iş için Dropbox 'a erişim vererek Azure çoklu oturum açma öz
 
     d. **Kopyala bağlantısına** tıklayın ve kopyaladığınız değeri Azure Portal **iş etki alanı ve URL 'ler Için Dropbox** 'ın **oturum açma URL 'si** metin kutusuna yapıştırın.
 
-    e. **Save (Kaydet)** düğmesine tıklayın.
+    e. **Kaydet** düğmesine tıklayın.
 
 ### <a name="create-dropbox-for-business-test-user"></a>Iş testi kullanıcısı için Dropbox oluştur
 
@@ -193,10 +193,10 @@ Erişim panelinde Iş kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Iş 
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/cloud-app-security/protect-dropbox)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle Dropbox 'ı koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Dropbox 'ı koruma](https://docs.microsoft.com/cloud-app-security/protect-dropbox)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293700"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046731"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide ServiceNow 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * ServiceNow [Otomatik Kullanıcı sağlamayı](servicenow-provisioning-tutorial.md)destekler.
 
-* ServiceNow 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimleri uygulayabilir. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* ServiceNow 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 * SSO 'yu etkinleştirmek için ServiceNow klasik (mobil) uygulamayı Azure AD ile yapılandırabilirsiniz. Hem Android hem de iOS kullanıcılarını destekler. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
@@ -119,7 +119,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 Bu bölümde, Azure portal olarak B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden > **kullanıcılar** > **tüm kullanıcılar**' ı **Azure Active Directory** seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad**için `B.Simon`girin.  
    1. **Kullanıcı adı**için username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
@@ -136,12 +136,12 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
    ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı ekle**'yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Kullanıcı Ekle vurgulanmış olan kullanıcıların ve grupların ekran görüntüsü](common/add-assign-user.png)
 
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından **Seç**' i seçin.
-1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Daha sonra **Seç**’e tıklayın.
+1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Sonra **Seç**' i seçin.
 1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ### <a name="configure-azure-ad-sso-for-servicenow-express"></a>ServiceNow Express için Azure AD SSO 'yu yapılandırma
@@ -300,7 +300,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
         1. Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'sini** girin.
 
-        1. **Al**'ı seçin.
+        1. **Içeri aktar**' ı seçin.
 
     1. IDP meta veri URL 'sini okur ve tüm alan bilgilerini doldurur.
 
@@ -461,12 +461,12 @@ Erişim panelinde ServiceNow kutucuğunu seçtiğinizde, SSO 'yu ayarladığın�
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Kullanıcı sağlamayı yapılandırma](servicenow-provisioning-tutorial.md)
 
 - [ServiceNow 'ı Azure AD ile deneyin](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [ServiceNow 'ı gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [ServiceNow 'ı gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/protect-servicenow)

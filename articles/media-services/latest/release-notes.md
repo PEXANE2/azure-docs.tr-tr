@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962952"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049639"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -54,7 +54,7 @@ Canlı döküm, canlı olaylarla birlikte eklenti özelliği olarak çalışmak 
 > [!NOTE]
 > Şu anda, canlı döküm yalnızca Batı ABD 2 bölgesinde önizleme özelliği olarak kullanılabilir. Konuşulan sözcüklerin yalnızca şu anda Ingilizce (en-US) olarak dökümünü destekler.
 
-### <a name="content-protection"></a>Content Protection
+### <a name="content-protection"></a>İçerik koruma
 
 Eylül ayının sınırlı bölgelerinde yayınlanan *belirteç yeniden yürütme engellemesi* özelliği artık tüm bölgelerde kullanılabilir.
 Media Services müşteriler artık, bir anahtar veya lisans istemek için aynı belirtecin kaç kez kullanılabileceği konusunda bir sınır ayarlayabilirler. Daha fazla bilgi için bkz. [belirteç yeniden yürütme engellemesi](content-protection-overview.md#token-replay-prevention).
@@ -90,7 +90,7 @@ Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat 
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için, [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
 
 Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](../previous/migrate-indexer-v1-v2.md)konusuna bakın.
 
@@ -114,7 +114,7 @@ Ayrıntılar için bkz. [WAME 'i Media Encoder Standard geçirin](https://go.mic
  
 ## <a name="july-2019"></a>Temmuz 2019
 
-### <a name="content-protection"></a>Content Protection
+### <a name="content-protection"></a>İçerik koruma
 
 Belirteç kısıtlamasıyla korunan içerik akışı yaparken, son kullanıcılar anahtar teslim isteğinin bir parçası olarak gönderilen bir belirteç elde etmeniz gerekir. *Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Daha fazla bilgi için bkz. [belirteç yeniden yürütme engellemesi](content-protection-overview.md#token-replay-prevention).
 
@@ -341,5 +341,5 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel bakış](media-services-overview.md)
+- [Genel Bakış](media-services-overview.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

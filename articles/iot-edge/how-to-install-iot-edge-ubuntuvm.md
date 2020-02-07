@@ -8,19 +8,19 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: gregman
-ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.author: philmea
+ms.openlocfilehash: 49a783e1360aeddc8eeaadba442acf578d9d6f7f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510065"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046038"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
 Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' dir. Çalışma zamanı, cihaz olarak endüstriyel sunucusu olarak büyük veya küçük bir Raspberry Pi üzerinde dağıtılabilir. Bir cihaz IOT Edge çalışma zamanı ile yapılandırıldıktan sonra iş mantığı buluttan dağıttıktan başlayabilirsiniz.
 
-IOT Edge çalışma zamanı nasıl çalıştığını ve hangi bileşenler dahildir hakkında daha fazla bilgi için bkz: [Azure IOT Edge çalışma zamanı ve mimarisini anlama](iot-edge-runtime.md).
+IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin dahil olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
 Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubuntuvm)önceden yapılandırılmış Azure IoT Edge kullanılarak ubuntu 16,04 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenmektedir.
 
@@ -96,7 +96,7 @@ Kurulumdan sonra bu VM 'ye SSH eklemek istiyorsanız, Publicıpaddress komutunu 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüklü olan çalışma zamanı ile sağlanan bir IOT Edge cihazına sahip olduğunuza göre şunları yapabilirsiniz [IOT Edge modüllerini dağıtmak](how-to-deploy-modules-portal.md).
+Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
 
 IoT Edge çalışma zamanının düzgün şekilde yüklenmesiyle ilgili sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 

@@ -12,38 +12,38 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/24/2020
 ms.author: raiye
-ms.openlocfilehash: 89fd16b6afadee75678b76381739c12a31dc1a07
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a38685ba4cca4df2c2ae1a52e46626072135408d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765368"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049869"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
 ## <a name="january-2020-guest-os"></a>Ocak 2020 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-01  |  [4532960]  |  Windows güvenliği  | [2,94] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532960]  |  Windows Güvenliği  | [2,94] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2,94] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4534314]  |  Windows güvenliği  | [2,94] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4532958]  |  Windows güvenliği  | [3,81] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4532963]  |  Windows güvenliği  | [3,81] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534314]  |  Windows Güvenliği  | [2,94] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532958]  |  Windows Güvenliği  | [3,81] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532963]  |  Windows Güvenliği  | [3,81] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4534251]  |  Internet Explorer  | [3,81] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4534288]  |  Windows güvenliği  | [3,81] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4532961]  |  Windows güvenliği  | [4,74] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4532962]  |  Windows güvenliği  | [4,74] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534288]  |  Windows Güvenliği  | [3,81] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532961]  |  Windows Güvenliği  | [4,74] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532962]  |  Windows Güvenliği  | [4,74] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4534251]  |  Internet Explorer  | [4,74] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4534309]  |  Windows güvenliği  | [4,74] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534309]  |  Windows Güvenliği  | [4,74] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4494175]  |  Mikro kod v3  | [5,39] | 29 Ağu, 2019 |
-|  Rel 20-01  |  [4534271]  |  LCU  | [5,39] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534271]  |  LCU dili  | [5,39] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4494174]  |  Mikro kod v4  | [6,15] | 29 Ağu, 2019 |
-|  Rel 20-01  |  [4532947]  |  Windows güvenliği  | [6,15] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4534273]  |  LCU  | [6,15] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4532947]  |  Windows Güvenliği  | [6,15] | 14 Ocak 2020 |
+|  Rel 20-01  |  [4534273]  |  LCU dili  | [6,15] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4530734]  |  Güvenlik dışı  | [2,94] | 10. ara, 2019 |
-|  Rel 20-01  |  [4530691]  |  Güvenlik dışı   | [3,81] | 10. ara, 2019 |
+|  Rel 20-01  |  [4530691]  |  Aylık toplu   | [3,81] | 10. ara, 2019 |
 |  Rel 20-01  |  [4530702]  |  Güvenlik dışı  | [4,74] | 10. ara, 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
@@ -74,13 +74,13 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="december-2019-guest-os"></a>Aralık 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 19-12  |  [4530692]  |  Windows güvenliği  | [2,93] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530692]  |  Windows Güvenliği  | [2,93] | 10. ara, 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2,93] | 10. ara, 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | 10. ara, 2019 |
-|  Rel 19-12  |  [4530698]  |  Windows güvenliği  | [3,80] | 10. ara, 2019 |
-|  Rel 19-12  |  [4530730]  |  Windows güvenliği  | [4,73] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530698]  |  Windows Güvenliği  | [3,80] | 10. ara, 2019 |
+|  Rel 19-12  |  [4530730]  |  Windows Güvenliği  | [4,73] | 10. ara, 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | 10. ara, 2019 |
 |  Rel 19-12  |  [4530689]  |  En son birikimli güncelleştirme  | [5,38] | 10. ara, 2019 |
 |  Rel 19-12  |  [4530715]  |  En son birikimli güncelleştirme  | [6,14] | 10. ara, 2019 |
@@ -119,14 +119,14 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="november-2019-guest-os"></a>Kasım 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [2,92]  |  12 Kasım 2019  |
-|  Rel 19-11   |  [4525233]  |  Windows güvenliği   |  [2,92]  |  12 Kasım 2019  |
+|  Rel 19-11   |  [4525233]  |  Windows Güvenliği   |  [2,92]  |  12 Kasım 2019  |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [3,79]  |  12 Kasım 2019  |
-|  Rel 19-11   |  [4525253]  |  Windows güvenliği   |  [3,79]  |  12 Kasım 2019  |
+|  Rel 19-11   |  [4525253]  |  Windows Güvenliği   |  [3,79]  |  12 Kasım 2019  |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [4,72]  |  12 Kasım 2019  |
-|  Rel 19-11   |  [4525250]  |  Windows güvenliği   |  [4,72]  |  12 Kasım 2019  |
+|  Rel 19-11   |  [4525250]  |  Windows Güvenliği   |  [4,72]  |  12 Kasım 2019  |
 |  Rel 19-11   |  [4525236]  |  En son birikimli güncelleştirme   |  [5,37]  |  12 Kasım 2019  |
 |  Rel 19-11   |  [4523205]  |  En son birikimli güncelleştirme   |  [6,13]  |  12 Kasım 2019  |
 |  Rel 19-11   |  [4519976]  |  Güvenlik dışı   |  [2,92]  |  8 Ekim 2019  |
@@ -161,11 +161,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="october-2019-guest-os"></a>Ekim 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 19-10   |  [4520003]  |  Windows güvenliği   |  [2,91]  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519985]  |  Windows güvenliği   |  [3,78]  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519990]  |  Windows güvenliği   |  [4,71]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4520003]  |  Windows Güvenliği   |  [2,91]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519985]  |  Windows Güvenliği   |  [3,78]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519990]  |  Windows Güvenliği   |  [4,71]  |  8 Ekim 2019  |
 |  Rel 19-10   |  [4519998]  |  En son birikimli güncelleştirme   |  [5,36]  |  8 Ekim 2019  |
 |  Rel 19-10   |  [4519338]  |  En son birikimli güncelleştirme   |  [6,12]  |  8 Ekim 2019  |
 |  Rel 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  8 Ekim 2019  |
@@ -210,20 +210,20 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="september-2019-guest-os"></a>Eylül 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 |  Rel 19-09   |  [4516046]  |  Internet Explorer   |  [2,90], [3,77], [4,70]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4516115]  |  Flash   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4512578]  |  En son birikimli güncelleştirme   |  [6,11]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 ve 4.7.2   |  [6,11]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4516044]  |  En son birikimli güncelleştirme   |  [5,35]  |  10 Eylül 2019  |
-|  Rel 19-09   |  [4516064]  |  Windows güvenliği   |  [4,70]  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516064]  |  Windows Güvenliği   |  [4,70]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  10 Eylül 2019  |
-|  Rel 19-09   |  [4516062]  |  Windows güvenliği   |  [3,77]  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516062]  |  Windows Güvenliği   |  [3,77]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  10 Eylül 2019  |
-|  Rel 19-09   |  [4516033]  |  Windows güvenliği   |  [2,90]  |  12 Eylül 2019  |
+|  Rel 19-09   |  [4516033]  |  Windows Güvenliği   |  [2,90]  |  12 Eylül 2019  |
 |  Rel 19-09   |  [4512488]  |  Güvenlik dışı   |  [4,70]  |  13 Ağu, 2019  |
 |  Rel 19-09   |  [4512518]  |  Güvenlik dışı   |  [3,77]  |  13 Ağu, 2019  |
 |  Rel 19-09   |  [4512506]  |  Güvenlik dışı   |  [2,90]  |  13 Ağu, 2019  |
@@ -252,15 +252,15 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="august-2019-guest-os"></a>Ağustos 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 19-08   |  [4512482]  |  Windows güvenliği   |  [3,76]  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4512482]  |  Windows Güvenliği   |  [3,76]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4494175]  |  Mikro kod güncelleştirmesi   |  [5,34]  |  18 Haz 2019  |
 |  Rel 19-08   |  [4512517]  |  En son birikimli güncelleştirme   |  [5,34]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4494174]  |  Mikro kod güncelleştirmesi   |  [6,1]  |  18 Haz 2019  |
 |  Rel 19-08   |  [4511553]  |  En son birikimli güncelleştirme   |  [6,1]  |  13 Ağu, 2019  |
-|  Rel 19-08   |  [4512486]  |  Windows güvenliği   |  [2,89]  |  13 Ağu, 2019  |
-|  Rel 19-08   |  [4512489]  |  Windows güvenliği   |  [4,69]  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4512486]  |  Windows Güvenliği   |  [2,89]  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4512489]  |  Windows Güvenliği   |  [4,69]  |  13 Ağu, 2019  |
 |  Rel 19-08   |  [4511872]  |  Internet Explorer    |  [2,89], [3,76], [4,69]  |  15 Ağu, 2019  |
 |  Rel 19-08   |  [4507449]  |  Güvenlik dışı   |  [2,89]  |  9 Temmuz 2019  |
 |  Rel 19-08   |  [4507000]  |  .NET 4.5.2 güvenlik dışı   |  [3,76]  |  12 Ağu, 2019  |
@@ -309,21 +309,21 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="july-2019-guest-os"></a>Temmuz 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 |  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506966]  |  .NET 4.5.2 güvenliği   |  2,88  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506976]  |  .NET 3.5.1 güvenliği   |  2,88  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4507456]  |  Windows güvenliği   |  2,88  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4507456]  |  Windows Güvenliği   |  2,88  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506965]  |  .NET 4.5.2 güvenliği   |  3.75  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506974]  |  .NET 3,5 güvenliği   |  3.75  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4507464]  |  Windows güvenliği   |  3.75  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4507464]  |  Windows Güvenliği   |  3.75  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506964]  |  .NET 4.5.2 güvenliği   |  4,68  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506977]  |  .NET 3,5 güvenliği   |  4,68  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4507457]  |  Windows güvenliği   |  4,68  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4507460]  |  Windows güvenliği   |  5.33  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4507457]  |  Windows Güvenliği   |  4,68  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4507460]  |  Windows Güvenliği   |  5.33  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2 güvenliği   |  6.9  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4507469]  |  Windows güvenliği   |  6.9  |  9 Temmuz 2019  |
+|  Rel 19-07   |  [4507469]  |  Windows Güvenliği   |  6.9  |  9 Temmuz 2019  |
 |  Yok  |  [4503537]  |  Haziran ' 19 hizmet yığını güncelleştirmesi (sunucu 2016)   |  5.33  |  14 Mayıs 2019  |
 |  Yok  |  [4504369]  |  Haziran ' 19 hizmet yığını güncelleştirmesi (sunucu 2019)   |  6.9  |  14 Mayıs 2019  |
 |  Yok  |  [4503292]  |  Haziran ' 19 güvenlik dışı (sunucu 2008 R2)   |  2,88  |  20 Mayıs 2019  |
@@ -353,13 +353,13 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="june-2019-guest-os"></a>Haziran 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 |  Rel 19-06   |  [4503327]  |  Windows 10 güvenliği   |  6.8  |  11 Haziran 2019  |
 |  Rel 19-06   |  [4503267]  |  Windows 10 güvenliği   |  5,32  |  11 Haziran 2019  |
-|  Rel 19-06   |  [4503290]  |  Windows güvenliği   |  4,67  |  11 Haziran 2019  |
-|  Rel 19-06   |  [4503263]  |  Windows güvenliği   |  3,74  |  11 Haziran 2019  |
-|  Rel 19-06   |  [4503269]  |  Windows güvenliği   |  2,87  |  11 Haziran 2019  |
+|  Rel 19-06   |  [4503290]  |  Windows Güvenliği   |  4,67  |  11 Haziran 2019  |
+|  Rel 19-06   |  [4503263]  |  Windows Güvenliği   |  3,74  |  11 Haziran 2019  |
+|  Rel 19-06   |  [4503269]  |  Windows Güvenliği   |  2,87  |  11 Haziran 2019  |
 |  Rel 19-06   |  [4494174]  |  Mikro kod güncelleştirmesi   |  6.8  |  11 Haziran 2019  |
 |  Rel 19-06   |  [4494175]  |  Mikro kod güncelleştirmesi   |  5,32  |  3 Haziran 2019  |
 |  Rel 19-06   |  [4503308]  |  Flash   |  3,74, 4,67, 5,32, 6,8  |  11 Haziran 2019  |
@@ -403,7 +403,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="may-2019-guest-os"></a>Mayıs 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 |  Rel 19-05   |  [4498206]  |  IE toplu Mayıs   |  2,86, 3,73, 4,66  |  14 Mayıs 2019  |
 |  Rel 19-05   |  [4505050]  |  IE toplu Mayıs   |  2,86, 3,73, 4,66  |  18 Mayıs 2019  |
@@ -450,13 +450,13 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="april-2019-guest-os"></a>Nisan 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 19-04 | [4493509] | Windows 10 güvenliği | 6.6 | 9 Nisan 2019 |
 | Rel 19-04 | [4493470] | Windows 10 güvenliği | 5,30 | 9 Nisan 2019 |
-| Rel 19-04 | [4493467] | Windows güvenliği | 4,65 | 9 Nisan 2019 |
-| Rel 19-04 | [4493450] | Windows güvenliği | 3,72 | 9 Nisan 2019 |
-| Rel 19-04 | [4493448] | Windows güvenliği | 2,85 | 9 Nisan 2019 |
+| Rel 19-04 | [4493467] | Windows Güvenliği | 4,65 | 9 Nisan 2019 |
+| Rel 19-04 | [4493450] | Windows Güvenliği | 3,72 | 9 Nisan 2019 |
+| Rel 19-04 | [4493448] | Windows Güvenliği | 2,85 | 9 Nisan 2019 |
 | Rel 19-04 | [4493478] | Flash | 3,72, 4,65, 5,30, 6,6 | 9 Nisan 2019 |
 | Rel 19-04 | [4493435] | Internet Explorer | 2,85, 3,72, 4,65 | 9 Nisan 2019 |
 | Rel 19-04 | [4490628] | Hizmet yığını güncelleştirmesi | 2,85 | 12 Mart 2019 |
@@ -480,13 +480,13 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="march-2019-guest-os"></a>Mart 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 19-03 | [4489873] | Internet Explorer | 2,84, 3,71, 4,64 | 12 Mart 2019 |
 | Rel 19-03 | [4489907] | Flash | 3,71, 4,64, 5,29, 6,5 | 12 Mart 2019 |
-| Rel 19-03 | [4489885] | Windows güvenliği | 2,84 | 12 Mart 2019 |
-| Rel 19-03 | [4489884] | Windows güvenliği | 3,71 | 12 Mart 2019 |
-| Rel 19-03 | [4489883] | Windows güvenliği | 4,64 | 12 Mart 2019 |
+| Rel 19-03 | [4489885] | Windows Güvenliği | 2,84 | 12 Mart 2019 |
+| Rel 19-03 | [4489884] | Windows Güvenliği | 3,71 | 12 Mart 2019 |
+| Rel 19-03 | [4489883] | Windows Güvenliği | 4,64 | 12 Mart 2019 |
 | Rel 19-03 | [4489882] | Windows 10 güvenliği | 5,29 | 12 Mart 2019 |
 | Rel 19-03 | [4489899] | Windows 10 güvenliği | 6.5 | 12 Mart 2019 |
 | Rel 19-03 | [4486563] | Şubat güvenlik dışı toplu | 2,84 | 12 Şubat 2019 |
@@ -522,21 +522,21 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="february-2019-guest-os"></a>Şubat 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 19-02 | [4486474] | Internet Explorer | 2,83, 3,70, 4,63 | 12 Şubat 2019 |
 | Rel 19-02 | [4487038] | Flash | 3,70, 4,63, 5,28, 6,4 | 12 Şubat 2019 |
-| Rel 19-02 | [4486564] | Windows güvenliği | 2,83 | 12 Şubat 2019 |
+| Rel 19-02 | [4486564] | Windows Güvenliği | 2,83 | 12 Şubat 2019 |
 | Rel 19-02 | [4483483] | .NET 3.5.1 güvenliği | 2,83 | 12 Şubat 2019 |
 | Rel 19-02 | [4483474] | .NET 4.5.2 güvenliği | 2,83 | 12 Şubat 2019 |
-| Rel 19-02 | [4486993] | Windows güvenliği | 3,70 | 12 Şubat 2019 |
+| Rel 19-02 | [4486993] | Windows Güvenliği | 3,70 | 12 Şubat 2019 |
 | Rel 19-02 | [4483481] | .NET 3,5 güvenliği | 3,70 | 12 Şubat 2019 |
 | Rel 19-02 | [4483473] | .NET 4.5.2 güvenliği | 3,70 | 12 Şubat 2019 |
-| Rel 19-02 | [4487028] | Windows güvenliği | 4,63 | 12 Şubat 2019 |
+| Rel 19-02 | [4487028] | Windows Güvenliği | 4,63 | 12 Şubat 2019 |
 | Rel 19-02 | [4483484] | .NET 3,5 güvenliği | 4,63 | 12 Şubat 2019 |
 | Rel 19-02 | [4483472] | .NET 4.5.2 güvenliği | 4,63 | 12 Şubat 2019 |
-| Rel 19-02 | [4487026] | Windows güvenliği | 5,28 | 12 Şubat 2019 |
-| Rel 19-02 | [4487044] | Windows güvenliği | 6.4 | 12 Şubat 2019 |
+| Rel 19-02 | [4487026] | Windows Güvenliği | 5,28 | 12 Şubat 2019 |
+| Rel 19-02 | [4487044] | Windows Güvenliği | 6.4 | 12 Şubat 2019 |
 | Rel 19-02 | [4483452] | .NET 3,5, 4.7.2 güvenliği | 6.4 | 12 Şubat 2019 |
 | Yok | [4480970] | Ocak güvenlik dışı toplu | 2,83 | 8 Ocak 2019 |
 | Yok | [4483483] | Ocak güvenlik dışı toplu .NET 3.5.1  | 2,83 | 8 Ocak 2019 |
@@ -574,13 +574,13 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="january-2019-guest-os"></a>Ocak 2019 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 19-01 | [4480116] | Windows 10 güvenliği | 6.3 | 8 Ocak 2019 |
 | Rel 19-01 | [4480961] | Windows 10 güvenliği | 5,27 | 8 Ocak 2019 |
-| Rel 19-01 | [4480964] | Windows güvenliği | 4,62 | 8 Ocak 2019 |
-| Rel 19-01 | [4480972] | Windows güvenliği | 3,69 | 8 Ocak 2019 |
-| Rel 19-01 | [4480960] | Windows güvenliği | 2,82 | 8 Ocak 2019 |
+| Rel 19-01 | [4480964] | Windows Güvenliği | 4,62 | 8 Ocak 2019 |
+| Rel 19-01 | [4480972] | Windows Güvenliği | 3,69 | 8 Ocak 2019 |
+| Rel 19-01 | [4480960] | Windows Güvenliği | 2,82 | 8 Ocak 2019 |
 | Rel 19-01 | [4480056] | .NET güvenliği | 6.3 | 8 Ocak 2019 |
 | Rel 19-01 | [4480074] | .NET 4. x güvenliği | 4,62 | 8 Ocak 2019 |
 | Rel 19-01 | [4480075] | .NET 4. x güvenliği | 3,69 | 8 Ocak 2019 |
@@ -626,12 +626,12 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="december-2018-guest-os"></a>Aralık 2018 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-12 | [4471321] | Windows 10 güvenliği | 5,26 | 11 Aralık 2018 |
-| Rel 18-12 | [4471328] | Windows güvenliği   | 2,81 | 11 Aralık 2018 |
-| Rel 18-12 | [4471326] | Windows güvenliği   | 3,68 | 11 Aralık 2018 |
-| Rel 18-12 | [4471322] | Windows güvenliği   | 4,61 | 11 Aralık 2018 |
+| Rel 18-12 | [4471328] | Windows Güvenliği   | 2,81 | 11 Aralık 2018 |
+| Rel 18-12 | [4471326] | Windows Güvenliği   | 3,68 | 11 Aralık 2018 |
+| Rel 18-12 | [4471322] | Windows Güvenliği   | 4,61 | 11 Aralık 2018 |
 | Rel 18-12 | [4470600] | .NET 3. x güvenliği  | 2,81 | 11 Aralık 2018 |
 | Rel 18-12 | [4470601] | .NET 3. x güvenliği  | 3,68 | 11 Aralık 2018|
 | Rel 18-12 | [4470602] | .NET 3. x güvenliği  | 4,61 | 11 Aralık 2018 |
@@ -664,13 +664,13 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="november-2018-guest-os"></a>Kasım 2018 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-11 | [4466536] | Internet Explorer | 2,80, 3,67, 4,60 | 13 Kasım 2018 |
 | Rel 18-11 | [4467694] | Flash | 3,67, 4,60, 5,25 | 13 Kasım 2018 |
-| Rel 18-11 | [4467106] | Windows güvenliği | 2,80 | 13 Kasım 2018 |
-| Rel 18-11 | [4467678] | Windows güvenliği | 3,67 | 13 Kasım 2018 |
-| Rel 18-11 | [4467703] | Windows güvenliği | 4,60 | 13 Kasım 2018 |
+| Rel 18-11 | [4467106] | Windows Güvenliği | 2,80 | 13 Kasım 2018 |
+| Rel 18-11 | [4467678] | Windows Güvenliği | 3,67 | 13 Kasım 2018 |
+| Rel 18-11 | [4467703] | Windows Güvenliği | 4,60 | 13 Kasım 2018 |
 | Rel 18-11 | [4467691] | Windows 10 güvenliği | 5.25 | 13 Kasım 2018 |
 | Yok | [3173426] | Hizmet yığını güncelleştirmesi | 3,67 | 12 Temmuz 2016 |
 | Yok | [4465659] | Hizmet yığını güncelleştirmesi | 5.25 | 13 Kasım 2018 |
@@ -696,12 +696,12 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 ## <a name="october-2018-guest-os"></a>Ekim 2018 Konuk işletim sistemi
 
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-10 | [4462917] | Windows 10 güvenliği | 5,24 | 9 Ekim 2018 |
-| Rel 18-10 | [4462915] | Windows güvenliği | 2,79 | 9 Ekim 2018 |
-| Rel 18-10 | [4462931] | Windows güvenliği | 3,66 | 9 Ekim 2018 |
-| Rel 18-10 | [4462941] | Windows güvenliği | 4,59 | 9 Ekim 2018 |
+| Rel 18-10 | [4462915] | Windows Güvenliği | 2,79 | 9 Ekim 2018 |
+| Rel 18-10 | [4462931] | Windows Güvenliği | 3,66 | 9 Ekim 2018 |
+| Rel 18-10 | [4462941] | Windows Güvenliği | 4,59 | 9 Ekim 2018 |
 | Rel 18-10 | [4462930] | Flash | 3,66, 4,59, 5,24 | 9 Ekim 2018 |
 | Rel 18-10 | [4462949] | Internet Explorer | 2,79, 3,66, 4,59 | 9 Ekim 2018 |
 | Yok | [4339284] | Saat dilimi güncelleştirmesi | 2,79, 3,66, 4,59 | 24 Temmuz 2018 |
@@ -733,7 +733,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>Eylül 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-09 | [4457131] | Windows 10 güvenliği | 5,23 | 11 Eylül 2018'den |
 | Rel 18-09 | [4457145] | Yalnızca Windows güvenliği | 2,78 | 11 Eylül 2018'den |
@@ -755,7 +755,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4344147] | Ağustos-güvenlikle uyumlu olmayan .NET 4X toplaması | 4.58 | 14 Ağustos 2018 |
 
 ## <a name="august-2018-guest-os"></a>Ağustos 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10 güvenliği | 5,22 | 14 Ağustos 2018 |
 | Rel 18-08 | [4343899] | Yalnızca Windows güvenliği | 2.77 | 14 Ağustos 2018 |
@@ -778,7 +778,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4338415] |Güvenlikle uyumlu olmayan .NET 4X toplaması |3,64 | 10 Temmuz 2018 |
 
 ## <a name="july-2018-guest-os"></a>Temmuz 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-07 | [4338814] |Windows 10 güvenliği |5,21 |10 Temmuz 2018 |
 | Rel 18-07 | [4338823] |Yalnızca Windows güvenliği |2,76 |10 Temmuz 2018 |
@@ -798,7 +798,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4284815] |Haziran güvenlik dışı toplu |4,56 |12 Haziran 2018 |
 
 ## <a name="june-2018-guest-os"></a>Haziran 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-06 | [4284880] |Windows 10 güvenliği |5,20 |12 Haziran 2018 |
 | Rel 18-06 | [4284867] |Yalnızca Windows güvenliği |2,75 |12 Haziran 2018 |
@@ -823,7 +823,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4132216] |SSU Mayıs |5,20 |8 Mayıs 2018 |
 
 ## <a name="may-2018-guest-os"></a>Mayıs 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-05 | [4103721], [4103727], [4103723] |Windows 10 güvenliği |5,19 |8 Mayıs 2018 |
 | Rel 18-05 | [4103712] |Yalnızca Windows güvenliği |2,74 |8 Mayıs 2018 |
@@ -843,7 +843,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 
 ## <a name="april-2018-guest-os"></a>Nisan 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-04 | [4093119] |Windows 10 güvenliği |5,18 |10 Nisan 2018 |
 | Rel 18-04 | [4093108] |Yalnızca Windows güvenliği |2,73 |10 Nisan 2018 |
@@ -857,7 +857,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4088876] |Mart güvenlik dışı toplaması |4,53 |13 Mart 2018 |
 
 ## <a name="march-2018-guest-os"></a>Mart 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-03 | [4088787], [4088776] |Windows 10 güvenliği |5,17 |13 Mart 2018 |
 | Rel 18-03 | [4088878], [4088880], [4088879] |Yalnızca Windows güvenliği |2,72, 3,59, 4,52 |13 Mart 2018 |
@@ -870,7 +870,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 
 ## <a name="february-2018-guest-os"></a>Şubat 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-02 | [4074590], [4074588] |Windows 10 güvenliği |5,16 |13 Şubat 2018 |
 | Rel 18-02 | [4074587], [4074589], [4074597] |Yalnızca Windows güvenliği |2,71, 3,58, 4,51 |13 Şubat 2018 |
@@ -884,7 +884,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4054177], [4054170] |Ocak .NET toplu |4,51 |4 Ocak 2018 |
 
 ## <a name="january-2018-guest-os"></a>Ocak 2018 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Yalnızca Windows güvenliği |2,70, 3,57, 4,50 |3 Ocak 2018 |
 | Rel 18-01 | [4056890], [4056892] |Yalnızca Windows güvenliği |5.15 |3 Ocak 2018 |
@@ -896,7 +896,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 
 ## <a name="december-2017-guest-os"></a>Aralık 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-12 | [4053579], [4054517] |Windows 10 güvenlik güncelleştirmeleri |4.49, 5.14 |12 Aralık 2017 |
 | Rel 17-12 | [4054521], [4054522], [4054523] |Yalnızca Windows güvenliği |2.69, 3.56, 4.49 |12 Aralık 2017 |
@@ -908,7 +908,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4049068] |Aralık saat dilimi güncelleştirmesi |2.69, 3.56, 4.49 |12 Aralık 2017 |
 
 ## <a name="november-2017-guest-os"></a>Kasım 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-11 | [4048953] |Windows 10 güncelleştirmeleri |5.13 |14 Kasım 2017 |
 | Rel 17-11 | [4048960], [4048962], [4048961] |Yalnızca Windows güvenliği |2.68, 3.55, 4.48 |14 Kasım 2017 |
@@ -922,7 +922,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [3191564] |Windows Management Framework 5,1 güncelleştirmesi  |4.48 |14 Kasım 2017 |
 
 ## <a name="october-2017-guest-os"></a>Ekim 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4041691] |Windows 10 güncelleştirmeleri |5.12 |10 Ekim 2017 |
 | Rel 17-10 | [4041678], [4041679], [4041687] |Yalnızca Windows güvenliği |2.67, 3.54, 4.47 |10 Ekim 2017 |
@@ -936,19 +936,19 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4040981] |Eylül .NET güvenlik dışı paketi |4.47 |12 Eylül 2017 |
 
 ## <a name="september-2017-guest-os"></a>Eylül 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Windows 10 güncelleştirmeleri |5.11 |12 Eylül 2017 |
 | Rel 17-09 | [4038779], [4038786], [4038793] |Yalnızca Windows güvenliği |2.66, 3.53, 4.46 |12 Eylül 2017 |
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Eylül .NET güncelleştirmesi |2.66, 3.53, 4.46 |12 Eylül 2017 |
 | Rel 17-09 | [4036586] |Internet Explorer |2.66, 3.53, 4.46 |12 Eylül 2017 |
-| CVE-2017-8704 | [4038782] |Hizmet Reddi |5.11 |12 Eylül 2017 |
+| CVE-2017-8704 | [4038782] |Hizmet reddi |5.11 |12 Eylül 2017 |
 | Yok | [4034664] |Ağustos güvenlik dışı toplu  |2.66 |8 Ağustos 2017 |
 | Yok | [4034665] |Ağustos güvenlik dışı toplu |5.11 |8 Ağustos 2017 |
 | Yok | [4034681] |Ağustos güvenlik dışı toplu |4.46 |8 Ağustos 2017 |
 
 ## <a name="august-2017-guest-os"></a>Ağustos 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Windows 10 güncelleştirmeleri |5.10 |8 Ağustos 2017 |
 | Rel 17-07 | [4034679] |Yalnızca Windows güvenliği |2.65 |8 Ağustos 2017 |
@@ -962,7 +962,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Rel 17-07 | [4025336] |Güvenlik dışı toplaması Temmuz |4.45 |11 Temmuz 2017 |
 
 ## <a name="july-2017-guest-os"></a>Temmuz 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Windows 10 güncelleştirmeleri |5.9 |11 Temmuz 2017 |
 | Rel 17-07 | [4025337] |Yalnızca Windows güvenliği |2.64 |11 Temmuz 2017 |
@@ -976,7 +976,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4022726] |Haziran güvenlik dışı toplu |4.44 |13 Haziran 2017 |
 
 ## <a name="june-2017-guest-os"></a>Haziran 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-06 | [4019472] |WS 2016 OS kalite Iyileştirmeleri |5.8 |9 Mayıs 2017 |
 | Rel 17-06 | [4022722] |Yalnızca Windows güvenliği |2.63 |13 Haziran 2017 |
@@ -1004,7 +1004,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4014512] |.NET güvenlik dışı bir toplu işlem |4.43 |9 Mayıs 2017 |
 
 ## <a name="may-2017-guest-os"></a>Mayıs 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-05 | [4019472] |WS 2016 OS kalite Iyileştirmeleri |5.7 | 9 Mayıs 2017 |
 | Rel 17-05 | [4019263] |Yalnızca Windows güvenliği |2.62 | 9 Mayıs 2017 |
@@ -1032,7 +1032,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Yok | [4013418] |Hizmet yığını güncelleştirmesi |5.7 | 14 Mart 2017 |
 
 ## <a name="april-2017-guest-os"></a>Nisan 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-04 |  [4015217]  |WS 2016 OS kalite Iyileştirmeleri | 5.6 | 11 Nisan 2017 |
 | Rel 17-04 |  [4015546]  |Yalnızca Windows güvenliği |2.61 | 11 Nisan 2017 |
@@ -1052,7 +1052,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Rel 17-04 |  [4012216]  |Windows 8.1 ve Windows Server 2012 R2 için Mart 2017 güvenlik aylık kalite toplaması |4.41 | 11 Nisan 2017 |
 
 ## <a name="march-2017-guest-os"></a>Mart 2017 Konuk işletim sistemi
-| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| Ürün kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | Rel 17-03 |  [4013429] |Geliştirmeler ve düzeltmeler | 5.5 | 14 Mart 2017 |
 | Rel 17-03 |  [4012212] |Windows 7 SP1 ve Windows Server 2008 R2 SP1 için Mart 2017 güvenlik yalnızca kalite güncelleştirmesi |2.60 |14 Mart 2017 |
@@ -1345,7 +1345,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15-075 |[3072633] |OLE 'deki güvenlik açıkları ayrıcalık yükselmesine izin verebilir |4.22, 3.29, 2.41 |14 Temmuz 2015 |
 | MS15-076 |[3067505] |Windows Uzaktan yordam çağrısındaki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4.22, 3.29, 2.41 |14 Temmuz 2015 |
 | MS15-077 |[3077657] |ATM yazı tipi sürücüsündeki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4.22, 3.29, 2.41 |14 Temmuz 2015 |
-| Yok |[3057154] |DES şifrelemesi kullanımını kısıtlamak için güncelleştirme |4.22, 3.29, 2.41 |14 Temmuz 2015 |
+| NA |[3057154] |DES şifrelemesi kullanımını kısıtlamak için güncelleştirme |4.22, 3.29, 2.41 |14 Temmuz 2015 |
 
 ## <a name="june-2015-guest-os"></a>Haziran 2015 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
@@ -1378,7 +1378,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15-040 |[3045711] |ADFS 'deki güvenlik açığı bilgilerin açığa çıkmasına neden olabilir |4.20, 3.27, 2.39 |17 Nisan 2015 |
 | MS15-041 |[3048010] |.NET Framework güvenlik açığı bilgilerin açığa çıkmasına neden olabilir |4.20, 3.27, 2.39 |17 Nisan 2015 |
 | MS15-042 |[3047234] |Windows Hyper-V ' d i güvenlik açığı hizmet reddine Izin verebilir |4.20, 3.27, 2.39 |17 Nisan 2015 |
-| Yok |[3045755] |PKU2U kimlik doğrulamasını geliştirmek için Güncelleştir |4.20, 3.27, 2.39 |17 Nisan 2015 |
+| NA |[3045755] |PKU2U kimlik doğrulamasını geliştirmek için Güncelleştir |4.20, 3.27, 2.39 |17 Nisan 2015 |
 
 ## <a name="april-2015-guest-os"></a>Nisan 2015 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |

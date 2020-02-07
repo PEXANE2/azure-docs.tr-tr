@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983903"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Öğretici: Azure AD SAML araç seti ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, Azure AD SAML araç takımını Azure Active Directory (Azure A
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -45,6 +45,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Azure AD SAML araç seti **SP** tarafından başlatılan SSO 'yu destekler
+* Azure AD SAML araç takımını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-azure-ad-saml-toolkit-from-the-gallery"></a>Galeriden Azure AD SAML araç seti ekleme
 
@@ -76,17 +77,17 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/) **Azure AD SAML araç seti** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın. SAML araç seti SAML Yapılandırması sayfasını kullanarak ayarları alabilirsiniz. 
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`
+    a. **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://samltoolkit.azurewebsites.net/`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın: `https://samltoolkit.azurewebsites.net`
 
-    c. **Yanıt URL** 'si metin kutusuna bir URL yazın: `https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>`
+    c. **Yanıt URL** 'si metin kutusuna bir URL yazın: `https://samltoolkit.azurewebsites.net/SAML/Consume`
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -101,12 +102,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -136,7 +137,7 @@ Bu bölümde, Azure AD SAML araç seti 'ne erişim vererek Azure çoklu oturum a
 
     ![Azure AD SAML araç seti SAML yapılandırması](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
     ![Azure AD SAML araç seti SSO oluştur](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -152,7 +153,7 @@ Bu bölümde, Azure AD SAML araç seti 'ne erişim vererek Azure çoklu oturum a
 
     1. **Dosya Seç** ' e tıklayın ve Azure Portal indirdiğiniz **sertifika (ham)** dosyasını karşıya yükleyin.
 
-    1. **Oluştur**’a tıklayın.
+    1. **Oluştur**'a tıklayın.
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Azure AD SAML araç seti test kullanıcısı oluşturma
 
@@ -173,3 +174,7 @@ Erişim panelinde Azure AD SAML araç seti kutucuğuna tıkladığınızda, SSO 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Azure AD SAML araç setini deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Gelişmiş görünürlük ve denetimlerle Azure AD SAML araç setini koruma](https://docs.microsoft.com/cloud-app-security/protect-azure)

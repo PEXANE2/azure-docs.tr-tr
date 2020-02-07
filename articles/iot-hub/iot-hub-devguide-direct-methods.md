@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429279"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048266"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub doğrudan yöntemleri anlayın ve çağırın
 
@@ -73,7 +73,10 @@ Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden olu
     }
     ```
 
-Zaman aşımı saniye cinsinden. Zaman aşımı ayarlanmamışsa, varsayılan değer 30 saniyedir.
+İstek içinde `responseTimeoutInSeconds` olarak belirtilen değer, bir cihazdaki doğrudan yöntem yürütmeyi tamamlamak için IoT Hub hizmetinin tamamlaması gereken süre miktarıdır. Bu zaman aşımını, bir cihaz tarafından doğrudan bir metodun beklenen yürütme süresi kadar en az olacak şekilde ayarlayın. Zaman aşımı sağlanmazsa, varsayılan değer olan 30 saniye kullanılır. `responseTimeoutInSeconds` için en düşük ve en yüksek değerler, sırasıyla 5 ve 300 saniyedir.
+
+İstekte `connectTimeoutInSeconds` olarak belirtilen değer, IoT Hub hizmetin, bağlantısı kesilen bir cihazın çevrimiçi olması için beklemek zorunda olduğu doğrudan bir yöntemi çağırmada geçen süredir. Varsayılan değer 0 ' dır, yani doğrudan bir yöntemi çağırılmak için cihazların zaten çevrimiçi olması gerekir. `connectTimeoutInSeconds` için en büyük değer 300 saniyedir.
+
 
 #### <a name="example"></a>Örnek
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 Arka uç uygulaması, aşağıdaki öğelerden oluşan bir yanıt alır:
 
-* Şu anda bağlı olmayan cihazlarda 404 hatası da dahil olmak üzere IoT Hub gelen hatalar için kullanılan *http durum kodu*.
+* *Http durum kodu*:
+  * 200, doğrudan metodun başarıyla yürütülmesini gösterir;
+  * 404, cihaz KIMLIĞININ geçersiz olduğunu ya da cihazın doğrudan bir yöntemi çağırıldıktan sonra çevrimiçi olmadığını veya `connectTimeoutInSeconds` bundan sonra (kök nedenini anlamak için birlikte hata iletisini kullanın) olduğunu belirtir;
+  * 504, cihazın `responseTimeoutInSeconds`içindeki bir doğrudan yöntem çağrısına yanıt vermediğini neden olan ağ geçidi zaman aşımını belirtir.
 
 * ETag, istek KIMLIĞI, içerik türü ve içerik kodlamasını içeren *üst bilgiler* .
 

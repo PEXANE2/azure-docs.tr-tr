@@ -1,18 +1,18 @@
 ---
 title: Azure Nesnelerin İnterneti (IoT) teknolojileri ve çözümleri
 description: Azure IoT çözümü oluşturmak için kullanabileceğiniz teknolojiler ve hizmetler koleksiyonunu açıklar.
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457187"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046055"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>IoT çözümleri oluşturmaya yönelik Azure teknolojileri ve Hizmetleri
 
@@ -41,8 +41,8 @@ Tam olarak yönetilen bir uygulama platformu olarak, IoT Central basit ve öngö
 Azure IoT Çözüm Hızlandırıcıları, IoT çözümünüz üzerinde yüksek düzeyde denetim sağlar. Çözüm Hızlandırıcıları, Azure aboneliğinize dakikalar içinde dağıtabileceğiniz yaygın IoT senaryolarına yönelik önceden oluşturulmuş çözümler içerir. Senaryolar şunlardır:
 
   - Uzaktan izleme
-  - Bağlantılı fabrika
-  - Öngörücü bakım
+  - Bağlı fabrika
+  - Tahmine dayalı bakım
   - Cihaz benzetimi
 
 Tüm çözüm hızlandırıcılarına yönelik açık kaynaklı kod tabanı GitHub ' da kullanılabilir. Belirli IoT gereksinimlerinizi karşılayacak çözüm hızlandırıcıyı özelleştirmek için kodu indirin.
@@ -83,6 +83,8 @@ IoT Central, gerçek dünyada cihazları ve verileri, kullanıcıların bu bağl
 ### <a name="data-and-analytics"></a>Veri ve analiz
 
 IoT cihazları genellikle sensörlerden sıcaklık okumaları gibi büyük miktarlarda zaman serisi verileri oluşturur. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) , IoT Hub 'ına bağlanabilir, cihazlarınızdan telemetri akışını okuyabilir, bu verileri saklayabilir ve bunu sorgulayabilir ve görselleştirmenize olanak tanır.
+
+[Azure Maps](/azure/azure-maps) , Web ve mobil uygulamalara doğru coğrafi içerik sağlamak için yeni eşleme verilerini kullanan Jeo-uzamsal hizmetler topluluğudur. Uygulamalarınızı oluşturmak için REST API, Web tabanlı bir JavaScript denetimi veya bir Android SDK kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

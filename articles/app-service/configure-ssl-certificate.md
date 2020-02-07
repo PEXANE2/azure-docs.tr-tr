@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845918"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046425"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -37,6 +37,9 @@ Bu nasıl yapılır kılavuzunu izlemek için:
 - Yalnızca ücretsiz sertifika: bir alt etki alanını (örneğin, `www.contoso.com`) bir [CNAME kaydıyla](app-service-web-tutorial-custom-domain.md#map-a-cname-record)App Service eşleyin.
 
 ## <a name="private-certificate-requirements"></a>Özel sertifika gereksinimleri
+
+> [!NOTE]
+> Azure Web Apps, **AES256 desteklemez ve** tüm PFX dosyaları TrippleDES ile şifrelenmelidir.
 
 [Ücretsiz App Service yönetilen sertifika](#create-a-free-certificate-preview) veya [App Service sertifikası](#import-an-app-service-certificate) App Service gereksinimlerini zaten karşılamış. App Service bir özel sertifikayı karşıya yüklemeyi veya aktarmayı seçerseniz, sertifikanızın aşağıdaki gereksinimleri karşılaması gerekir:
 
@@ -112,12 +115,12 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 
 | Ayar | Açıklama |
 |-|-|
-| Ad | App Service sertifikanız için kolay bir ad. |
+| Adı | App Service sertifikanız için kolay bir ad. |
 | Naked etki alanı konak adı | Kök etki alanını burada belirtin. Verilen sertifika hem kök etki alanının hem *de* `www` alt etki alanının güvenliğini sağlar. Verilen sertifikada, ortak ad alanı kök etki alanını içerir ve konu alternatif adı alanı `www` etki alanını içerir. Yalnızca herhangi bir alt etki alanının güvenliğini sağlamak için burada alt etki alanının tam etki alanı adını belirtin (örneğin, `mysubdomain.contoso.com`).|
 | Abonelik | Sertifikayı içerecek abonelik. |
 | Kaynak grubu | Sertifikayı içerecek kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
 | Sertifika SKU 'SU | Oluşturulacak sertifikanın türünü, standart bir sertifika veya [Joker bir sertifika](https://wikipedia.org/wiki/Wildcard_certificate)olduğunu belirler. |
-| Yasal koşullar | Yasal koşulları kabul ettiğinizi onaylamak için tıklayın. Sertifikalar GoDaddy adresinden elde edilir. |
+| Yasal Koşullar | Yasal koşulları kabul ettiğinizi onaylamak için tıklayın. Sertifikalar GoDaddy adresinden elde edilir. |
 
 ### <a name="store-in-azure-key-vault"></a>Azure Key Vault içinde depola
 
@@ -133,7 +136,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 | Ayar | Açıklama |
 |-|-|
-| Ad | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
+| Adı | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
 | Kaynak grubu | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -191,7 +194,7 @@ Sertifikayı seçmenize yardımcı olması için aşağıdaki tabloyu kullanın.
 | Ayar | Açıklama |
 |-|-|
 | Abonelik | Key Vault ait olduğu abonelik. |
-| Key Vault | İçeri aktarmak istediğiniz sertifikayı içeren kasa. |
+| Anahtar Kasası | İçeri aktarmak istediğiniz sertifikayı içeren kasa. |
 | Sertifika | Kasadaki PKCS12 sertifikaları listesinden seçim yapın. Kasadaki tüm PKCS12 sertifikaları, parmak izleriyle birlikte listelenir, ancak App Service tümünde desteklenmez. |
 
 İşlem tamamlandığında, sertifikayı **özel anahtar sertifikaları** listesinde görürsünüz. İçeri aktarma işlemi bir hatayla başarısız olursa, sertifika [App Service gereksinimlerini](#private-certificate-requirements)karşılamıyor.
@@ -344,7 +347,7 @@ az keyvault secret download \
 
 İndirilen *appservicecertificate. pfx* dosyası, hem ortak hem de özel sertifikaları içeren BIR ham PKCS12 dosyasıdır. Her sorulduğunda, Import Password ve pek Pass ifadesi için boş bir dize kullanın.
 
-### <a name="delete-certificate"></a>Sertifikayı Sil 
+### <a name="delete-certificate"></a>Sertifikayı sil 
 
 App Service sertifikasını silme işlemi son ve geri alınamaz. Bu sertifikayla App Service olan herhangi bir bağlama geçersiz hale gelir. Yanlışlıkla silinmeye engel olmak için, Azure, sertifikaya bir kilit koyar. Bir App Service sertifikasını silmek için, önce sertifikadaki silme kilidini kaldırmanız gerekir.
 
@@ -366,7 +369,7 @@ Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Daha fazla kaynak
+## <a name="more-resources"></a>Diğer kaynaklar
 
 * [SSL bağlaması ile özel bir DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS zorlama](configure-ssl-bindings.md#enforce-https)

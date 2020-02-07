@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046165"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048823"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -131,7 +131,9 @@ Evet, bir SMB birimini dağıtabilmeniz için önce bir Active Directory bağlan
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kaç Active Directory bağlantı destekleniyor?
 
-Azure NetApp Files Şu anda NetApp hesabı başına, abonelik başına ve her bölgede yalnızca bir Active Directory bağlantısını desteklemektedir; bağlantı, NetApp hesaplarında paylaşılmaz.
+Azure NetApp Files, AD bağlantıları farklı NetApp hesaplarında olsa bile, tek bir *bölgede*birden çok ACTIVE DIRECTORY (ad) bağlantısını desteklemez. Ancak, AD bağlantıları farklı bölgelerde olduğu sürece, tek bir *abonelikte*bırden fazla ad bağlantısına sahip olabilirsiniz. Tek bir bölgede birden çok AD bağlantısına ihtiyacınız varsa, bunu yapmak için ayrı abonelikler kullanabilirsiniz. 
+
+NetApp hesabı başına bir AD bağlantısı yapılandırılır; AD bağlantısı yalnızca içinde oluşturulduğu NetApp hesabı aracılığıyla görülebilir.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files Azure Active Directory destekliyor mu? 
 

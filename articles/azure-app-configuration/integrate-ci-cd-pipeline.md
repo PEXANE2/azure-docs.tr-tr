@@ -1,44 +1,38 @@
 ---
-title: 'Öğretici: sürekli tümleştirme ve teslim işlem hattı ile tümleştirme'
-titleSuffix: Azure App Configuration
-description: Bu öğreticide sürekli tümleştirme ve teslim sırasında Azure Uygulama yapılandırmasındaki verileri kullanarak yapılandırma dosyası oluşturmayı öğreneceksiniz.
+title: Sürekli tümleştirme ve teslim işlem hattı kullanarak Azure uygulama yapılandırmasını tümleştirme
+description: Azure Uygulama yapılandırması 'nı kullanarak sürekli tümleştirme ve teslimi uygulamayı öğrenin
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 01/30/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899383"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047280"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
-Bu makalede, Azure Uygulama yapılandırmasından sürekli tümleştirme ve sürekli dağıtım sisteminde veri kullanmanın çeşitli yolları açıklanmaktadır.
+Bu makalede, Azure Uygulama yapılandırmasından sürekli tümleştirme ve sürekli dağıtım sisteminde verilerin nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Azure DevOps işlem hattınızda uygulama yapılandırması 'nı kullanma
 
-Bir Azure DevOps işlem hattına sahipseniz, anahtar değerlerini uygulama yapılandırmasından getirip görev değişkenleri olarak ayarlayabilirsiniz. [Azure Uygulama yapılandırması DevOps uzantısı](https://go.microsoft.com/fwlink/?linkid=2091063) , bu işlevselliği sağlayan bir eklenti modülüdür. Bir derleme veya yayın görev dizisinde uzantıyı kullanmak için yönergelerini izlemeniz yeterlidir.
+Bir Azure DevOps işlem hattına sahipseniz, anahtar değerlerini uygulama yapılandırmasından getirip görev değişkenleri olarak ayarlayabilirsiniz. [Azure Uygulama yapılandırması DevOps uzantısı](https://go.microsoft.com/fwlink/?linkid=2091063) , bu işlevselliği sağlayan bir eklenti modülüdür. Uzantıyı derleme veya yayın görev dizisinde kullanmak için yönergelerini izleyin.
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>Uygulamanızla uygulama yapılandırma verilerini dağıtma
 
-Uygulamanız Azure Uygulama yapılandırmasına bağımlıysa ve bu uygulamaya ulaşamadıysanız, çalışmayabilir. Uygulamanızın dayanıklılığını, bu tür bir olayla uğraşmak üzere geliştirebilirsiniz, ancak bu durum büyük olasılıkla gerçekleşmektir. Bunu yapmak için, geçerli yapılandırma verilerini uygulamayla birlikte dağıtılan bir dosyaya paketleyin ve başlatma sırasında yerel olarak yüklenir. Bu yaklaşım, uygulamanızın varsayılan ayar değerlerini en az bir değere sahip olmasını güvence altına alır. Bu değerler, kullanılabilir olduğunda, uygulama yapılandırma deposundaki daha yeni değişikliklerle üzerine yazılır.
+Uygulamanız Azure Uygulama yapılandırmasına bağımlıysa ve bu uygulamaya ulaşamadıysanız, çalışmayabilir. Yapılandırma verilerini uygulamayla dağıtılan ve uygulamanın başlatılması sırasında yerel olarak yüklenen bir dosyaya paketleyerek uygulamanızın dayanıklılığını geliştirin. Bu yaklaşım, uygulamanızın başlangıçta varsayılan ayar değerlerini olmasını sağlar. Bu değerler, kullanılabilir olduğunda, uygulama yapılandırma deposundaki daha yeni değişikliklerle üzerine yazılır.
 
-Azure Uygulama yapılandırması 'nın [dışa aktarma](./howto-import-export-data.md#export-data) işlevini kullanarak, geçerli yapılandırma verilerini tek bir dosya olarak alma işlemini otomatikleştirebilir. Sonra bu dosyayı sürekli tümleştirme ve sürekli dağıtım (CI/CD) işlem hattınızdaki bir derleme veya dağıtım adımına ekleyin.
+Azure Uygulama yapılandırması 'nın [dışa aktarma](./howto-import-export-data.md#export-data) işlevini kullanarak, geçerli yapılandırma verilerini tek bir dosya olarak alma işlemini otomatikleştirebilir. Böylece, bu dosyayı sürekli tümleştirme ve sürekli dağıtım (CI/CD) işlem hattınızdaki bir derleme veya dağıtım adımına katabilirsiniz.
 
 Aşağıdaki örnek, uygulama yapılandırma verilerinin hızlı başlangıçlarda tanıtılan web uygulamasına yönelik derleme adımı olarak nasıl ekleneceğini gösterir. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi indirip yükleyin.
 
@@ -54,10 +48,7 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-
-    Uygulama yapılandırma deponuzda ilişkili *ConnectionString* öğesini bir ortam değişkeni olarak ekleyin.
-
-2. *Program.cs*'i açın ve `CreateWebHostBuilder` yöntemi, `config.AddJsonFile()` metodunu çağırarak, DıŞARıYA aktarılmış json dosyasını kullanacak şekilde güncelleştirin.
+1. *Program.cs*'i açın ve `CreateWebHostBuilder` yöntemi, `config.AddJsonFile()` metodunu çağırarak, DıŞARıYA aktarılmış json dosyasını kullanacak şekilde güncelleştirin.  `System.Reflection` ad alanını da ekleyin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -75,7 +66,8 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
 
 ### <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
-1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
+1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. 
+    Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

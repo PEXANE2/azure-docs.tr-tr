@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841701"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049009"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
 
@@ -95,9 +95,13 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight kümesi oluşturma
 
-Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. BYOK, yalnızca küme oluşturma sırasında yeni kümelere uygulanabilir. Şifreleme BYOK kümelerinden kaldırılamaz ve var olan kümelere BYOK eklenemez.
+Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. **Temel bilgiler** sekmesinde, **küme türü**için **Kafka** öğesini seçin.
 
-![Azure portal Kafka disk şifrelemesi](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure portal Select Kafka Type](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+BYOK, yalnızca küme oluşturma sırasında yeni kümelere uygulanabilir. Şifreleme BYOK kümelerinden kaldırılamaz ve var olan kümelere BYOK eklenemez.
+
+![Azure portal Kafka disk şifrelemesi](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam anahtar URL 'sini sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir. Tüm küme oluşturma ayrıntıları için bkz [. Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](./apache-kafka-get-started.md)
 

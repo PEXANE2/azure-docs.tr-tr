@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901571"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048177"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -97,7 +97,7 @@ IP adresi ve AS numarasının aşağıdaki kayıt defterlerinden birinde size ka
 
 Ön ekleriniz ve AS numaranız yukarıdaki kayıtlarla atanmamışsa ön eklerinizin ve ASN değerinizin el ile doğrulanması amacıyla bir destek olayı oluşturmanız gerekir. Destek ekibi kaynakları kullanma izniniz olduğunu gösteren Yetki Yazısı gibi bir belge talep edecektir.
 
-Özel AS Numarası, Microsoft Eşlemesi ile birlikte kullanılabilir ancak bunun için de el ile doğrulama yapılması gerekecektir. Ayrıca, alınan ön ekler için AS YOLU’ndaki özel AS numaralarını kaldırırız. Bunun sonucu olarak, Microsoft Eşlemesi için yönlendirmeyi etkilemek amacıyla AS YOLU’nda özel AS numaraları ekleyemezsiniz. 
+Özel AS Numarası, Microsoft Eşlemesi ile birlikte kullanılabilir ancak bunun için de el ile doğrulama yapılması gerekecektir. Ayrıca, alınan ön ekler için AS YOLU’ndaki özel AS numaralarını kaldırırız. Bunun sonucu olarak, [Microsoft Eşlemesi için yönlendirmeyi etkilemek](expressroute-optimize-routing.md) amacıyla AS YOLU’nda özel AS numaraları ekleyemezsiniz. 
 
 > [!IMPORTANT]
 > Aynı genel IP yolu genel İnternet'e ve ExpressRoute üzerinden tanıtmıyoruz. Asimetrik yönlendirmeye neden olan hatalı yapılandırmanın riskini azaltmak için, ExpressRoute üzerinden Microsoft 'a tanıtılan [NAT IP adreslerinin](expressroute-nat.md) , internet 'e tanıtılmayan bir aralıktan olması önemle önerilir. Bu ulaşmak mümkün değilse, ExpressRoute üzerinde Internet bağlantından daha belirli bir Aralık tanıttığınızdan emin olmak önemlidir. NAT için genel yönlendirme yanı sıra ayrıca genel IP ExpressRoute üzerinden tanıtabilirsiniz içinden, Microsoft Office 365 uç noktaları ile iletişim kuran sunucular şirket içi ağınızda tarafından kullanılan adresleri. 
@@ -172,7 +172,7 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Kuzey Avrupa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
 | Batı Avrupa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
 | UK Güney | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
-| UK, Batı | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| UK Batı | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Fransa Orta | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Fransa Güney | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | İsviçre Kuzey | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
@@ -223,13 +223,14 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | Exchange Online * * | 12076:5010 |
 | SharePoint Online * * | 12076:5020 |
 | Skype Kurumsal Çevrimiçi | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online * * * |12076:5040 |
 | Azure genel Hizmetleri * | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Diğer Office 365 çevrimiçi hizmetleri * * | 12076:5100 |
 
-\* Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir.
-\* * Microsoft 'un yetkilendirmesi gereken yetkilendirme, [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-portal.md) konusuna bakın 
+\* Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir. \
+\* * Microsoft 'un yetkilendirmesi gerekiyor, [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-portal.md) konusuna bakın\
+CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümler için, Dynamics dağıtımlarınız için bölgesel topluluğu seçin.
 
 > [!NOTE]
 > Microsoft, Microsoft'a tanıtılan yollar üzerinde ayarladığınız hiçbir BGP topluluk değerini dikkate almaz.
@@ -244,7 +245,7 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | US Gov Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
 | US Gov Virginia | 12076:51105 |
-| US Gov Teksas | 12076:51108 |
+| US Gov Texas | 12076:51108 |
 | US DoD Orta | 12076:51209 |
 | US DoD Doğu | 12076:51205 |
 
