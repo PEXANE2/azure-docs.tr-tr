@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için tuş takımı yapılandırma | Microsoft Docs'
-description: Otomatik olarak sağlama ve sağlamasını tuş takımı için kullanıcı hesapları için Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için tuş takımını yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,163 +15,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 32e634bc089417aaa8080b30a5f77f663a3d8b33
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611775"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058417"
 ---
-# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Öğretici: Tuş takımı için otomatik kullanıcı hazırlama yapılandırın
+# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için tuş takımını yapılandırma
 
-Bu öğreticinin amacı otomatik olarak sağlamak ve kullanıcılara ve/veya tuş takımı gruplarına sağlamasını tuş takımı ve Azure Active Directory (Azure AD) Azure AD yapılandırmak için gerçekleştirilmesi gereken adımlar göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Dialpad 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Dialpad ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
->  Bu öğreticide, Azure AD kullanıcı sağlama hizmeti üzerinde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet yapar, nasıl çalıştığını ve sık sorulan sorular önemli ayrıntılar için bkz. [otomatik kullanıcı hazırlama ve sağlamayı kaldırma Azure Active Directory ile SaaS uygulamalarına](../manage-apps/user-provisioning.md).
+>  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-> Bu bağlayıcı, şu anda Önizleme aşamasındadır. Genel Microsoft Azure için kullanım koşulları Önizleme özellikleri hakkında daha fazla bilgi için bkz. [ek kullanım koşulları, Microsoft Azure önizlemeleri için](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulları zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir tuş takımı Kiracı](https://www.dialpad.com/pricing/).
-* Tuş takımı yönetici izinlerine sahip bir kullanıcı hesabı.
+* [Bir Dialpad kiracısı](https://www.dialpad.com/pricing/).
+* Yönetici izinlerine sahip tuş takımındaki bir kullanıcı hesabı.
 
-## <a name="assign-users-to-dialpad"></a>Tuş takımı için kullanıcı atama
-Azure Active Directory atamaları adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hazırlama bağlamında, yalnızca kullanıcı ve/veya Azure AD'de bir uygulamaya atanan gruplar eşitlenir.
+## <a name="assign-users-to-dialpad"></a>Çevir paneline Kullanıcı atama
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Yapılandırma ve otomatik kullanıcı hazırlama etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları tuş takımı erişmesi karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek tuş takımı için bu kullanıcılara ve/veya grupları atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Dialpad 'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Dialpad 'e atayabilirsiniz:
  
-* [Kurumsal bir uygulamayı kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md) 
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md) 
 
- ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Tuş takımı için kullanıcı atama önemli ipuçları
+ ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Kullanıcıların Dialpad 'e atanması için önemli ipuçları
 
- * Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmasını otomatik kullanıcı test etmek için tuş takımı atanır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+ * Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, tek bir Azure AD kullanıcısının, Dialpad 'e atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Tuş takımı için kullanıcı atama, atama iletişim kutusunda (varsa) geçerli bir uygulamaya özgü rolü seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar, sağlamasından bırakılır.
+* Bir kullanıcıyı bir Dialpad 'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-dialpad-for-provisioning"></a>Sağlama için Kurulum tuş takımı
+## <a name="setup-dialpad-for-provisioning"></a>Sağlama için tuş takımını ayarla
 
-Tuş takımı için otomatik kullanıcı hazırlama Azure AD'ye yapılandırmadan önce tuş takımı bazı sağlama bilgilerini almak gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için tuş takımını yapılandırmadan önce, bazı sağlama bilgilerini Dialpad 'ten almanız gerekir.
 
-1. Oturum açın, [tuş takımı Yönetici Konsolu](https://dialpadbeta.com/login) seçip **yönetici ayarları**. Emin **My Company** açılan listeden seçilir. Gidin **kimlik doğrulama > API anahtarları**.
+1. [Dialpad Yönetici konsolunuza](https://dialpadbeta.com/login) oturum açın ve **yönetici ayarları**' nı seçin. **Şirketimin** açılan listeden seçildiğinden emin olun. **Kimlik doğrulama > API anahtarları**' na gidin.
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/dialpad01.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad01.png)
 
-2. Tıklayarak yeni bir anahtar oluşturmak **bir anahtar ekleyin** ve gizli belirtecinizi özelliklerini yapılandırma.
+2. **Anahtar Ekle** ' ye tıklayıp gizli belirtecinizin özelliklerini yapılandırarak yeni bir anahtar oluşturun.
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/dialpad02.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad02.png)
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/dialpad03.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad03.png)
 
-3. Tıklayın **değer göstermek için tıklayın** düğme için son oluşturulan API anahtarınızı ve gösterilen değerini kopyalayın. Bu değer girilir **gizli belirteç** tuş takımı uygulamanızı Azure portalında sağlama sekmesindeki alan. 
+3. Son oluşturduğunuz API anahtarınız için **değer göster** düğmesine tıklayın ve gösterilen değeri kopyalayın. Bu değer, Azure portal Dialpad uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
 
-    ![Tuş takımı belirteci oluşturma](media/dialpad-provisioning-tutorial/dialpad04.png)
+    ![Tuş takımı belirteç oluştur](media/dialpad-provisioning-tutorial/dialpad04.png)
 
-## <a name="add-dialpad-from-the-gallery"></a>Tuş takımı Galeriden Ekle
+## <a name="add-dialpad-from-the-gallery"></a>Galeriden Dialpanel ekleme
 
-Tuş takımı için otomatik kullanıcı hazırlama Azure AD ile yapılandırmak için tuş takımı Azure AD uygulama galerideki yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlamak üzere Dialpad 'i yapılandırmak için Azure AD uygulama galerisindeki Aramapaneli yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden tuş takımı eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden Dialpad eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde  **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde seçin **Azure Active Directory**.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için seçin **yeni uygulama** bölmenin üstünde düğme.
+3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **tuş takımı**seçin **tuş takımı** Sonuçlar panelinde.
-    ![Sonuç listesinde tuş takımı](common/search-new-app.png)
+4. Arama kutusuna, **dialpad**yazın, sonuçlar panelinde **dialpad** ' i seçin.
+    sonuçlar listesinde ![tuş takımını](common/search-new-app.png)
 
-5. Gidin **URL** vurgulanmış altındaki ayrı bir tarayıcı. 
+5. Aşağıda vurgulanan **URL** 'yi ayrı bir tarayıcıda gezin. 
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/dialpad05.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad05.png)
 
-6. Sağ üst köşede seçin **oturum açın > çevrimiçi kullanım tuş takımı**.
+6. Sağ üst köşede oturum aç ' ı seçin **> çevrimiçi tuş takımını kullanın**.
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/dialpad06.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad06.png)
 
-7. Tuş takımı Openıdconnect uygulama olduğundan, Microsoft iş hesabınızı kullanarak tuş takımı için oturum açmak seçin.
+7. Dialpad bir Openıdconnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak giriş paneli 'Nde oturum açmayı seçin.
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/loginpage.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/loginpage.png)
 
-8. Başarılı bir kimlik doğrulamasından sonra onay sayfası için onay istemi kabul edin. Uygulama, kiracınıza sonra bir otomatik olarak eklenir ve tuş takımı hesabınıza yönlendirilir.
+8. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve bu, Dialpad hesabınıza yönlendirilirsiniz.
 
-    ![SCIM tuş takımı Ekle](media/dialpad-provisioning-tutorial/redirect.png)
+    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/redirect.png)
 
- ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Tuş takımı için otomatik kullanıcı sağlamayı yapılandırma
+ ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Otomatik Kullanıcı sağlamasını Dialpad 'e yapılandırma
 
-Bu bölümde oluşturmak, güncelleştirmek ve kullanıcılar devre dışı bırakmak için sağlama hizmetini Azure AD'yi yapılandırma adımlarında size kılavuzluk eder ve/veya Azure AD'de kullanıcı ve/veya grup atamaları bu tuş takımı olarak gruplandırır.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Dialpad 'teki kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
-### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Azure AD'de tuş takımı için otomatik kullanıcı hazırlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Azure AD 'de Dialpad için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Seçin **kurumsal uygulamalar**, ardından **tüm uygulamaları**.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **tuş takımı**.
+2. Uygulamalar listesinde, **Dialpad**' i seçin.
 
-    ![Uygulamalar listesinde tuş takımı bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki tuş takımı bağlantısı](common/all-applications.png)
 
-3. Seçin **sağlama** sekmesi.
+3. **Sağlama** sekmesini seçin.
 
-    ![Sağlama sekmesinde](common/provisioning.png)
+    ![Sağlama sekmesi](common/provisioning.png)
 
-4. Ayarlama **hazırlama modu** için **otomatik**.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Sağlama sekmesinde](common/provisioning-automatic.png)
+    ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Altında **yönetici kimlik bilgileri** giriş bölümünde `https://dialpad.com/scim` içinde **Kiracı URL'si**. Giriş değeri alındı ve tuş takımı daha önce kaydedilen **gizli belirteç**. Tıklayın **Test Bağlantısı** Azure emin olmak için AD, tuş takımı için bağlanabilirsiniz. Bağlantı başarısız olursa, tuş takımı hesabının yönetici izinlerine sahip olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://dialpad.com/scim` girin. Daha önce aldığınız ve **gizli belirteçteki**dialpad 'ten kaydettiğiniz değeri girin. Azure AD 'nin Dialpad 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Dialpad hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL'si + simgesi](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. İçinde **bildirim e-posta** alanında, bir kişi veya grubun ve sağlama hata bildirimleri almak - onay e-posta adresi girin **birhataoluşursa,bire-postabildirimigönder**.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
-8. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory Kullanıcıları için tuş takımı**.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları çevir paneli**' ni seçin.
 
-    ![Tuş takımı kullanıcı eşlemeleri](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
+    ![Tuş takımı Kullanıcı eşlemeleri](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. İçinde tuş takımı için Azure AD'den eşitlenen kullanıcı özniteliklerini gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri tuş takımı güncelleştirme işlemleri için kullanıcı hesaplarını eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den dialpad 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için, dialpad 'teki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Tuş takımı kullanıcı öznitelikleri](media/dialpad-provisioning-tutorial/dialpad07.png)
+    ![Tuş takımı Kullanıcı öznitelikleri](media/dialpad-provisioning-tutorial/dialpad07.png)
 
-10. Kapsam belirleme filtrelerini yapılandırmak için aşağıdaki yönergelere bakın [Scoping filtre öğretici](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-11. Azure AD sağlama hizmeti için tuş takımı etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** içinde **ayarları** bölümü.
+11. Azure AD sağlama hizmetini Dialpad için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Açıkken sağlama durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. Kullanıcılara ve/veya istediğiniz grupları tuş takımı sağlamak için istenen değerleri seçerek tanımlamak **kapsam** içinde **ayarları** bölümü.
+12. **Ayarlar** bölümünde **kapsam** içindeki Istenen değerleri seçerek, çevirme paneline sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Kapsam sağlama](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Sağlama için hazır olduğunuzda, tıklayın **Kaydet**.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Sağlama yapılandırmasını kaydetme](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, tüm kullanıcıların ilk eşitleme başlar ve/veya tanımlı gruplar **kapsam** içinde **ayarları** bölümü. İlk eşitleme yaklaşık 40 dakikada Azure AD sağlama hizmeti çalışıyor sürece oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve Azure AD sağlama hizmeti üzerinde tuş takımı tarafından gerçekleştirilen tüm eylemler açıklayan Etkinlik Raporu sağlama için bağlantıları izleyin.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü ve Azure AD sağlama hizmeti tarafından, dialpad üzerinde gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna ilişkin bağlantıları takip edebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [raporlama hesabı otomatik kullanıcı hazırlama](../manage-apps/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md)
 ##  <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
-* Tuş takımı grubu yeniden adlandırma şu anda desteklemiyor. Buna herhangi bir değişiklik **displayName** azure'da bir grubun AD değil güncelleştirilecek ve tuş takımı yansıtılır.
+* Dialpad, Grup yeniden adlandırmaları bugün desteklemez. Bu, Azure AD 'deki bir grubun **DisplayName** 'e yapılan tüm değişikliklerin, tuş takımında güncellenmeyeceği ve yansıtılmayacağı anlamına gelir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri gözden geçirin ve sağlama etkinliği raporları alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

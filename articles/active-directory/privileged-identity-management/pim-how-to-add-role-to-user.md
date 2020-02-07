@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024237"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047093"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri atama
 
@@ -61,19 +61,9 @@ Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu ad�
 
 1. Atamak istediğiniz bir rol seçin ve ardından **Seç**' e tıklayın.
 
-    **Üye veya Grup Seç** sayfası açılır.
+1. Role atamak istediğiniz üyeyi seçin ve ardından **Seç**' i seçin.
 
-1. Role atamak istediğiniz üye veya grubu seçin ve ardından **Seç**' i seçin.
-
-    ![Üye veya grup bölmesi seçin](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    Üyelik ayarları bölmesi açılır.
-
-1. **Atama türü** listesinde **uygun** veya **etkin**' i seçin.
-
-    ![Üyelik ayarları bölmesi](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Azure kaynakları için Privileged Identity Management iki farklı atama türü sağlar:
+1. **Üyelik ayarları** bölmesindeki **atama türü** listesinde **uygun** veya **etkin**' i seçin.
 
     - **Uygun** atamalar, rolü kullanmak için bir eylem gerçekleştirmek üzere rolün üyesini gerektirir. Eylemler, bir Multi-Factor Authentication (MFA) denetimi gerçekleştirmeye, iş gerekçesinin sağlanmasından veya belirlenen onaylayanlardan onay isteğinde bulunabilir.
 
@@ -83,13 +73,9 @@ Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek için bu ad�
 
     Rol ayarlarına bağlı olarak, onay kutusu görünmeyebilir veya hiç değiştirilebilir olmayabilir.
 
-1. Belirli bir atama süresi belirtmek için onay kutusunu temizleyin ve başlangıç ve/veya bitiş tarih ve saat kutularını değiştirin.
+1. Belirli bir atama süresi belirtmek için onay kutusunu temizleyin ve başlangıç ve/veya bitiş tarih ve saat kutularını değiştirin. İşiniz bittiğinde **bitti**' yi seçin.
 
     ![Üyelik ayarları-Tarih ve saat](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. İşiniz bittiğinde **bitti**' yi seçin.
-
-    ![Yeni atama-Ekle](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. Yeni rol atamasını oluşturmak için **Ekle**' yi seçin. Durum bildirimi görüntülenir.
 
@@ -171,7 +157,7 @@ Varsayılan olarak, yeni kullanıcılar yalnızca bir Azure AD yönetici rolü i
 
     ![Kalıcı değişiklik içeren üyelerin listesi](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
-## <a name="remove-a-user-from-a-role"></a>Bir rolden Kullanıcı kaldırma
+## <a name="remove-a-user-from-a-role"></a>Bir kullanıcıyı rolden kaldırır
 
 Kullanıcıları rol atamalarından kaldırabilirsiniz, ancak kalıcı bir genel yönetici olan en az bir kullanıcı olduğundan emin olabilirsiniz. Hangi kullanıcıların rol atamalarına ihtiyacı olduğundan emin değilseniz, [rol için bir erişim incelemesi başlatabilirsiniz](pim-how-to-start-security-review.md).
 

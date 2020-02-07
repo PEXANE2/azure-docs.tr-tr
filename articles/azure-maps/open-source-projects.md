@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75908936"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048908"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
-Bunlar, Azure haritalar ekibi tarafından oluşturulan ve tutulan, ancak standart ürün veya hizmet tekliflerinin bir parçası olmayan açık kaynaklı, topluluk odaklı girişimlerdir. Aşağıda, açık kaynak projeleri ve örnekleri oluşturan daha popüler Azure eşlemelerinin bir listesi verilmiştir.
+Bu açık kaynaklı ve topluluk odaklı girişimler, Azure haritalar ekibi tarafından oluşturulur ve sürdürülür. Standart ürün veya hizmet tekliflerinin bir parçası değildir.
+
+Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler listelenmiştir.
 
 | Proje Adı | Açıklama |
 |-|-|
@@ -27,7 +29,7 @@ Bunlar, Azure haritalar ekibi tarafından oluşturulan ve tutulan, ancak standar
 | [Azure haritalar & Azure Active Directory örnekleri](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure haritalar ile Azure Active Directory kullanmayı gösteren örnekler koleksiyonu. | 
 | [Azure haritalar kullanarak IoT uzamsal analizlerini uygulama](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Boşluk ve saat içinde oluşan ilgili olayları izlemek ve yakalamak, yaygın bir IoT senaryosudur. |
 | [Azure haritalar Jupyter Notebook örnekleri](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure haritalar REST hizmetlerini kullanarak Python örnekleri koleksiyonu. |
-| [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası, Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcı ile ilgili çok sayıda özellik sağlar. |
+| [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcıya yönelik POı ile ilgili yetenekler sağlar. |
 
 Topluluk tarafından oluşturulan açık kaynaklı projeleri içeren daha uzun bir [liste bulunabilir](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)
 
@@ -40,7 +42,7 @@ Oluşturulan ve açık kaynaklı projeler ve örnekler için aşağıdaki deyiml
 - Azure haritalar açık kaynaklı projeler ve örnekler desteklenen ve önerilen teknikleri kullanır.
 - Azure haritalar açık kaynaklı projeler ve örnekler, bir topluluk girişimidir. girişim üzerinde çalışan ve diğer kullanıcıların da normal gün işleri de vardır.
 - Azure haritalar açık kaynaklı projeler ve örnekler bir ürün DEĞILDIR ve bu nedenle Premier Destek veya diğer resmi destek kanalları tarafından desteklenmez.
-- Azure haritalar açık kaynaklı projeler ve örnekler, Microsoft tarafından topluluk tarafından sağlanan destek ile gerçekleştirilen diğer açık kaynak projelerle benzer yollarla desteklenir.
+- Azure haritalar açık kaynaklı projeler ve örnekler, Microsoft tarafından topluluk tarafından sağlanan destek ile gerçekleştirilen diğer açık kaynaklı projelerle benzer yollarla desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992355"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046687"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>Öğretici: EAB gezinmek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile EAB ile gezinmeyi nasıl 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -45,7 +45,8 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * EAB gezinmek **SP** tarafından başlatılan SSO 'yu destekler
 
-* EAB 'ye gitmeyi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>Galeriden EAB 'ye gitme ekleme
 
@@ -57,7 +58,6 @@ EAB 'nin Azure AD 'ye yönelik tümleştirmesini yapılandırmak için, Galeride
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, ara kutusuna **EAB git** yazın.
 1. Sonuçlar panelinden **EAB 'ye git** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>EAB gezinmek için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -82,44 +82,33 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+    
+    **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, tam olarak şu değeri girin: `https://bouncer.eab.com`
+    
+    **Yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** metin kutusunda, aşağıdaki değerleri ayrı satırlar olarak girin: `https://bouncer.eab.com/sso/saml2/acs`
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.navigate.eab.com/`
 
-    a. Tıklayın **meta veri dosyasını karşıya yükleme**.
+    > [!NOTE]
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [EAB ile Ilgili istemci destek ekibine](mailto:EABTechSupport@eab.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-    ![Meta veri dosyasını karşıya yükle](common/upload-metadata.png)
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
-    b. Tıklayarak **klasör logosu** meta veri dosyası seçin ve **karşıya**.
-
-    ![meta veri dosyası seçin](common/browse-upload-metadata.png)
-
-    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **tanımlayıcı** DEĞERI temel SAML yapılandırması bölümünde otomatik olarak doldurulur.
-
-    ![EAB etki alanı ve URL 'Lerde çoklu oturum açma bilgilerini gezin](common/sp-identifier.png)
-
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.navigate.eab.com`
-
-    > [!Note]
-    > **Tanımlayıcı** değeri otomatik olarak yoksa, lütfen gereksinime göre değeri el ile girin. Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [EAB ile Ilgili istemci destek ekibine](mailto:jmahoney@eab.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
-
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
-
-    ![Sertifika indirme bağlantısı](common/certificateraw.png)
-
-1. **EAB 'ye git ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
-
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -141,13 +130,13 @@ Bu bölümde, B. Simon 'u, EAB 'ye erişim izni vererek Azure çoklu oturum açm
 
 ## <a name="configure-eab-navigate-sso"></a>EAB gezin SSO 'yu yapılandırma
 
-**EAB** 'de çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' dan [EAB 'ye gitme destek ekibine](mailto:jmahoney@eab.com)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**EAB** 'de çoklu oturum açmayı yapılandırmak Için, [EAB destek ekibine](mailto:EABTechSupport@eab.com) **uygulama Federasyon meta veri URL 'sini** göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
 ### <a name="create-eab-navigate-test-user"></a>EAB kayıt testi Kullanıcı Oluştur
 
-Bu bölümde, EAB 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. EAB 'ye [gitme destek ekibine](mailto:jmahoney@eab.com) çalışarak EAB gezinme platformuna kullanıcı ekleyin. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, EAB 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. EAB 'ye [gitme destek ekibine](mailto:EABTechSupport@eab.com) çalışarak EAB gezinme platformuna kullanıcı ekleyin. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 

@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Zscaler Beta 'yı yapılandırın | Microsoft Docs"
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Zscaler Beta 'yı yapılandırın | Microsoft Docs"
 description: Kullanıcı hesaplarını Zscaler Beta 'ya otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d5ca1efb607160447bdbca59522c8ac72bc7eeb3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515526"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062761"
 ---
-# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Zscaler Beta 'yı yapılandırma
+# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler Beta 'yı yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Zscaler Beta sürümüne otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Zscaler Beta ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
@@ -48,7 +48,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Zscaler Beta 'yı yapıland�
 
 **Azure AD Uygulama Galerisi 'nden Zscaler Beta eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
@@ -56,7 +56,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Zscaler Beta 'yı yapıland�
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
@@ -83,7 +83,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Zscaler Beta 'daki kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Zscaler Beta [Çoklu oturum](zscaler-beta-tutorial.md)açma öğreticisinde sunulan yönergeleri Izleyerek Zscaler Beta için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Zscaler Beta [Çoklu oturum açma öğreticisinde](zscaler-beta-tutorial.md)sunulan yönergeleri Izleyerek Zscaler Beta için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Azure AD 'de Zscaler Beta için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -123,7 +123,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** düğmesine tıklayın.
 
 10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler Beta olarak eşitler**' ı seçin.
 
@@ -157,11 +157,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. , Zscaler Beta üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../active-directory-saas-provisioning-reporting.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

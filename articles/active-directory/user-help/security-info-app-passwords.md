@@ -2,7 +2,7 @@
 title: Güvenlik bilgisi (Önizleme) sayfasından uygulama parolaları oluşturma-Azure AD
 description: Herhangi bir tarayıcı olmayan uygulamayla veya iki öğeli doğrulamayı desteklemeyen herhangi bir uygulamayla kullanmak için otomatik olarak oluşturulan parolalar (Uygulama parolaları) oluşturun. Bu uygulama parolası normal bir paroladan ayrıdır ve güvenlik bilgileri sayfasından ayarlanabilir.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
-ms.author: lizross
-ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704903"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064079"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
 

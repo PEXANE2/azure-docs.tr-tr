@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026893"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049620"
 ---
-# <a name="overview"></a>Genel Bakış
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile Birleşik bağlantı izleme (Önizleme)
 
 Bağlantı Izleyicisi (Önizleme), karma ve Azure bulut dağıtımları için Azure ağ Izleyicisi 'nde birleştirilmiş uçtan uca bağlantı izleme olanakları sağlar. Azure ağ Izleyicisi, Azure dağıtımlarınız için bağlantı ile ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
 
@@ -78,8 +78,8 @@ _Bağlantı İzleyicisi_ , düzenli aralıklarla iletişimi izler ve kaynak arac
 
 ### <a name="accessing-connection-monitor-preview"></a>Bağlantı Izleyicisi 'ne erişme (Önizleme)
 
-1. Aşağıdaki bağlantıyı kullanarak ağ Izleyicisi 'ne erişin:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. Ağ Izleyicisi 'nin sol bölmesindeki Izleme bölümünde "bağlantı Izleyicisi (Önizleme)" sekmesine tıklayın. Bu sekme yalnızca, adım 1 ' de belirtilen bağlantı kullanılarak ağ Izleyicisi 'ne erişildiğinde görünür olur.
+1. Azure portal giriş sayfasından ağ Izleyicisi ' ni ziyaret edin.
+2. Ağ Izleyicisi 'nin sol bölmesindeki Izleme bölümünde "bağlantı Izleyicisi (Önizleme)" sekmesine tıklayın.
 3. Bağlantı Izleyicisi (Önizleme) deneyimi kullanılarak oluşturulan tüm bağlantı Izleyicilerini görebilirsiniz. Bağlantı Izleyicisi sekmesinin klasik deneyimi kullanılarak oluşturulan tüm bağlantı Izleyicileri, bağlantı Izleyicisi sekmesinde görünür.
 
     ![Bağlantı Izleyicisi oluşturma](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -423,7 +423,7 @@ Bir bağlantı Izleyicisinde bir test grubu oluşturmak için, yukarıda bahsedi
 
       ![TG Ekle](./media/connection-monitor-2-preview/add-test-config.png)
 
-Test yapılandırması belirtilen test grubuna eklenen tüm kaynaklar ve hedefler, bireysel testlere bölünmez. Örneğin:
+Test yapılandırması belirtilen test grubuna eklenen tüm kaynaklar ve hedefler, bireysel testlere bölünmez. Örnek:
 
 * Test grubu: TG1
 * Kaynaklar: 3 (A, B, C)
@@ -497,7 +497,7 @@ Bu listeye göre filtre uygulayabilirsiniz:
 
 ![Testleri filtrele](./media/connection-monitor-2-preview/cm-view.png)
 
-Örneğin:
+Örnek:
 
 1. Kaynak IP = 10.192.64.56 tüm bağlantı Izleyici (Önizleme) genelinde tüm testlere bakmak için:
    1. Görünümü "test" olarak değiştirin
@@ -550,7 +550,7 @@ Bu listeye göre filtre uygulayabilirsiniz:
    5. Daha fazla veri görüntülemek için zaman aralığını değiştirin
    6. B adımındaki görünümü değiştirebilir ve kaynakları, hedefleri veya test yapılandırmalarına göre görüntülemeyi seçebilirsiniz. Ardından, ilk 5 başarısız testi araştırmak için bir varlık seçin.  Örneğin: Seçili bağlantı Izleyicisinde Bu birleşim arasında çalışan tüm testleri araştırmak için görünüm ölçütü: kaynaklar ve hedefler ' i seçin.
 
-3. Test edin
+3. Test etme
    1. Ayrıntılı incelemek istediğiniz kaynak + hedef + test yapılandırmasına tıklayın
    2. Seçilen zaman aralığı için,% başarısız denetimler için eşik ve gerçek değerler görürsünüz. RTT için, Threshold, Ort, min ve Max değerlerini görürsünüz. Ayrıca, seçtiğiniz teste özel tetiklenen uyarıları da görürsünüz.
 
@@ -578,8 +578,8 @@ Kaynak türü-Microsoft. Network/networkWatchers/Connectionmonitörleri
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Yoklama başarısız oldu | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu | Boyut yok |
 | AverageRoundtripMs | Ort. gidiş dönüş süresi (MS) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ gidiş dönüş süresi (MS) |             Boyut yok |
-| ChecksFailedPercent (Önizleme) | % Denetim başarısız oldu (Önizleme) | Yüzde | Ortalama | test için başarısız olan denetim yüzdesi |Liste:-Connectionmonitorresourceıd-SourceAddress-SourceName-Sourceresourceıd-SourceType-Protocol-DestinationAddress-DestinationName-Destinationresourceıd-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Geli |
-| Roundüçlü MS (Önizleme) | Gidiş dönüş süresi (MS) (Önizleme) | Milisaniye | Ortalama | Kaynak ve hedef arasında gönderilen denetimler için gidiş dönüş süresi (MS). Bu değer ortalama değil | Liste:-Connectionmonitorresourceıd-SourceAddress-SourceName-Sourceresourceıd-SourceType-Protocol-DestinationAddress-DestinationName-Destinationresourceıd-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Geli |
+| ChecksFailedPercent (Önizleme) | % Denetim başarısız oldu (Önizleme) | Yüzde | Ortalama | test için başarısız olan denetim yüzdesi | * Connectionmonitorresourceıd <br> * SourceAddress <br> * SourceName <br> * Sourceresourceıd <br> * SourceType <br> * Protokolü <br> * Hedef adres <br> * DestinationName <br> * Hedef RESOURCEID <br> * DestinationType <br> * Hedef bağlantı noktası <br> * TestGroupName <br> * TestConfigurationName <br> * Bölge |
+| Roundüçlü MS (Önizleme) | Gidiş dönüş süresi (MS) (Önizleme) | Milisaniye | Ortalama | Kaynak ve hedef arasında gönderilen denetimler için gidiş dönüş süresi (MS). Bu değer ortalama değil | * Connectionmonitorresourceıd <br> * SourceAddress <br> * SourceName <br> * Sourceresourceıd <br> * SourceType <br> * Protokolü <br> * Hedef adres <br> * DestinationName <br> * Hedef RESOURCEID <br> * DestinationType <br> * Hedef bağlantı noktası <br> * TestGroupName <br> * TestConfigurationName <br> * Bölge |
 
  ![Ölçümleri izleme](./media/connection-monitor-2-preview/monitor-metrics.png)
 

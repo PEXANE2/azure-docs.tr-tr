@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720410"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046106"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 ## <a name="create-and-run-experiment"></a>Deneme oluşturma ve çalıştırma
 
-1. **+ Deneme oluştur** ' u seçin ve formu doldurun.
+1. **+ Yeni OTOMATIK ml Çalıştır** ' ı seçin ve formu doldurun.
 
 1. Depolama kapsayıcıınızdan bir veri kümesi seçin veya yeni bir veri kümesi oluşturun. Veri kümeleri yerel dosyalardan, Web URL 'lerinden, veri depolarından veya Azure açık veri kümelerinden oluşturulabilir. 
 
@@ -113,16 +113,19 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
         1. Tahmin ufku seçin: modelin kaç zaman birimi (dakika/saat/gün/hafta/ay/yıl) gelecek şekilde tahmin edemeyeceğini belirtin. Daha sonra modelin daha iyi tahmin edilmesi gerektiğinde, daha az doğru olacaktır. [Tahmin ve tahmin ufku hakkında daha fazla bilgi edinin](how-to-auto-train-forecast.md).
 
-1. Seçim Ek yapılandırma: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
+1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
     Ek yapılandırmalar|Açıklama
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#explore-model-metrics).
-    Otomatik olarak korleştirme| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme özelliğini etkinleştirmek veya devre dışı bırakmak için seçin. Ön işleme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürme içerir. [Ön işleme hakkında daha fazla bilgi edinin](#preprocess).
+    Otomatik olarak korleştirme| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme özelliğini etkinleştirmek veya devre dışı bırakmak için seçin. Ön işleme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürme içerir. Zaman serisi tahmin görev türü için desteklenmez. [Ön işleme hakkında daha fazla bilgi edinin](#featurization). 
+    En iyi modeli açıkla | Önerilen en iyi modelin explainability gösterilmesini etkinleştirmek veya devre dışı bırakmak için seçin
     Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin.
     Çıkış ölçütü| Bu ölçütlerden herhangi biri karşılandığında eğitim işi durdurulur. <br> *Eğitim işi süresi (saat)* : eğitim işinin ne kadar süreyle çalışmasına izin verme. <br> *Ölçüm puan eşiği*: tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
     Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md).
-    Eşzamanlılık| *Maksimum eşzamanlı yineleme*: eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak. <br> *Yineleme başına en fazla çekirdek*: çok çekirdekli işlem kullanırken kullanmak istediğiniz çok çekirdekli limitleri seçin.
+    Eşzamanlılık| *Maksimum eşzamanlı yineleme*: eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak.
+
+1. Seçim Özellik ayarlarını görüntüleme: **ek yapılandırma ayarları** formunda **Otomatik** özelliği etkinleştirmeyi seçerseniz bu form, bu özelliği hangi sütunların gerçekleştireceğini ve eksik imputations değeri için hangi istatistiksel değerin kullanılacağını seçin.
 
 <a name="profile"></a>
 
@@ -151,17 +154,13 @@ Komutunu| Bu sütun verilerinin normal bir dağılıma göre ne kadar farklı ol
 Basıklık| Bu sütun verilerinin ne kadar süden bir normal dağıtımla karşılaştırıldığı ölçüdür.
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Gelişmiş özellik seçenekleri
 
-Denemeleri 'nizi yapılandırırken `feauturization`gelişmiş ayarı etkinleştirebilirsiniz. 
+Otomatik makine öğrenimi, verilerle ilgili olası sorunları belirlemenize ve yönetmenize yardımcı olmak için otomatik olarak ön işleme ve veri guardları sunar. 
 
-|Korleştirme yapılandırması | Açıklama |
-| ------------- | ------------- |
-|"feauturization" = ' FeaturizationConfig '| Özelleştirilmiş basamak kullanılması gerektiğini gösterir. [Korleştirme özelleştirmeyi öğrenin](how-to-configure-auto-train.md#customize-feature-engineering).|
-|"feauturization" = ' off '| Korleştirme adımının otomatik olarak yapılmayacağını gösterir.|
-|"feauturization" = ' Auto '| Aşağıdaki veri guardları ve korleştirme adımlarının ön işleme bir parçası olarak otomatik olarak gerçekleştirileceğini gösterir.|
+### <a name="preprocessing"></a>Ön
 
 |&nbsp;adımları ön işleme| Açıklama |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ Denemeleri 'nizi yapılandırırken `feauturization`gelişmiş ayarı etkinleşt
 
 ### <a name="data-guardrails"></a>Veri, guardrayları
 
-Otomatikleştirilmiş makine öğrenimi, verileriniz ile ilgili olası sorunları belirlemenize yardımcı olmak için veri guardları sunar (örneğin, eksik değerler, sınıf dengesizliği) ve geliştirilmiş sonuçlar için düzeltici eylemler elde etmenize yardımcı olur. Kullanılabilen çok sayıda en iyi uygulama vardır ve güvenilir sonuçlara ulaşmak için uygulanabilir. 
+Verileriniz ile ilgili olası sorunları belirlemenize yardımcı olmak için veri guardı 'ler otomatik olarak uygulanır (örneğin, eksik değerler, sınıf dengesizliği) ve geliştirilmiş sonuçlar için düzeltici eylemler elde etmenize yardımcı olur. Kullanılabilen çok sayıda en iyi uygulama vardır ve güvenilir sonuçlara ulaşmak için uygulanabilir. 
 
 Aşağıdaki tabloda, şu anda desteklenen veri guardı ve kullanıcıların denemelerini gönderirken içinden gelebilmesi gereken ilgili durumlar açıklanmaktadır.
 
@@ -191,14 +190,11 @@ Zaman serisi veri tutarlılığı|**Geçiril** <br><br><br><br> **Düzenle** |<b
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 
-Denemenizi çalıştırmak için **Başlat** ' ı seçin. Deneme hazırlama işlemi 10 dakikaya kadar sürebilir. Eğitim işleri, her bir işlem hattının çalışmayı tamamlaması için ek 2-3 dakika daha fazla sürebilir.
+Denemenizi çalıştırmak için **son** ' u seçin. Deneme hazırlama işlemi 10 dakikaya kadar sürebilir. Eğitim işleri, her bir işlem hattının çalışmayı tamamlaması için ek 2-3 dakika daha fazla sürebilir.
 
 ### <a name="view-experiment-details"></a>Deneme ayrıntılarını görüntüle
 
->[!NOTE]
-> Çalıştırmanın durumunu görüntülemek için düzenli aralıklarla **Yenile** ' yi seçin. 
-
-**Ayrıntı Çalıştır** ekranı **Ayrıntılar** sekmesinde açılır. Bu ekranda **çalışma durumu**dahil olmak üzere deneme çalıştırmasının bir özeti gösterilir. 
+**Ayrıntı Çalıştır** ekranı **Ayrıntılar** sekmesinde açılır. Bu ekranda, çalışma numarasının yanında bir durum çubuğu dahil olmak üzere deneme çalıştırmasının bir özeti gösterilir. 
 
 **Modeller** sekmesi, ölçüm puanına göre sıralanmış oluşturulan modellerin bir listesini içerir. Varsayılan olarak, seçili ölçüm temelinde en yüksek düzeyde puan veren model listenin en üstünde yer alır. Eğitim işi daha fazla model denediğinde, bunlar listeye eklenir. Şimdiye kadar üretilen modellerin ölçümlerinin hızlı bir şekilde karşılaştırılmasını sağlamak için bunu kullanın.
 
@@ -218,9 +214,9 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 
 1. Dağıtım için birkaç seçeneğiniz vardır. 
 
-    + Seçenek 1: en iyi modeli dağıtmak Için (tanımladığınız ölçüm ölçütlerine göre), Ayrıntılar sekmesinden En Iyi modeli Dağıt ' ı seçin.
+    + Seçenek 1: en iyi modeli dağıtmak Için (tanımladığınız ölçüm ölçütlerine göre), **Ayrıntılar** sekmesinde **en iyi modeli dağıt** düğmesini seçin.
 
-    + 2\. seçenek: bu deneyime ait belirli bir model yinelemesini dağıtmak Için modelin detayına gidin ve model ayrıntıları sekmesini açın ve modeli Dağıt ' ı seçin.
+    + 2\. seçenek: bu deneyime ait belirli bir model yinelemesini dağıtmak Için modelin detayına gidin ve model **ayrıntıları** sekmesini açın ve **modeli dağıt**' ı seçin.
 
 1. **Modeli dağıt** bölmesini doldurun.
 
@@ -229,7 +225,7 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
     Adı| Dağıtımınız için benzersiz bir ad girin.
     Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)* .
-    Adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
+    İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
     Kimlik doğrulamasını etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.
     Özel dağıtım varlıklarını kullanma| Kendi Puanlama betiğinizi ve ortam dosyanızı karşıya yüklemek istiyorsanız bu özelliği etkinleştirin. [Puanlama betikleri hakkında daha fazla bilgi edinin](how-to-deploy-and-where.md#script).
 
@@ -244,7 +240,7 @@ Artık tahmin oluşturmak için işlemsel bir Web hizmetiniz vardır! [Power BI 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Machine Learning ilk OTOMATIK ml denemenizin oluşturulması için uçtan uca öğreticiyi](tutorial-first-experiment-automated-ml.md)deneyin. 
+* [Azure Machine Learning Studio ile ilk OTOMATIK ml denemenizi oluşturmaya yönelik uçtan uca öğreticiyi](tutorial-first-experiment-automated-ml.md)deneyin. 
 * [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .
 * [Otomatik makine öğrenimi sonuçlarını anlayın](how-to-understand-automated-ml.md).
 * [Bir Web hizmetini kullanmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).

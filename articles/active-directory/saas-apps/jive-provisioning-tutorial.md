@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için Jive yapılandırma | Microsoft Docs'
-description: Azure Active Directory ve Jive arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Jive 'yi yapılandırma | Microsoft Docs"
+description: Azure Active Directory ve Jive arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,93 +15,93 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60263364"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057743"
 ---
-# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Öğretici: Jive otomatik kullanıcı hazırlama için yapılandırma
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Jive 'yi yapılandırma
 
-Bu öğreticinin amacı Jive ve Azure AD içinde Jive için Azure AD'den otomatik olarak sağlama ve devre dışı bırakma sağlama kullanıcı hesaplarına gerçekleştirmek için gereken adımları Göster sağlamaktır.
+Bu öğreticinin amacı, Azure AD 'den Jive 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Jive ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğeleri zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
-*   Azure Active directory kiracısı.
+*   Azure Active Directory kiracısı.
 *   Bir Jive çoklu oturum açma etkin aboneliği.
-*   Jive takım Yöneticisi izinlerine sahip bir kullanıcı hesabı.
+*   Jive 'deki bir kullanıcı hesabı ekip Yöneticisi izinleri ile.
 
-## <a name="assigning-users-to-jive"></a>Jive için kullanıcı atama
+## <a name="assigning-users-to-jive"></a>Kullanıcıları Jive 'ye atama
 
-Azure Active Directory "atamaları" adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca kullanıcıların ve grupların, "Azure AD'de bir uygulama için atandı" eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Yapılandırma ve sağlama hizmetini etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları Jive uygulamanıza erişmek isteyen kullanıcılar temsil karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek bu kullanıcılar Jive uygulamanıza atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Jive uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Jive uygulamanıza atayabilirsiniz:
 
-[Kurumsal bir uygulamayı kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-jive"></a>Jive için kullanıcı atama önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-jive"></a>Kullanıcıları Jive 'ye atamaya yönelik önemli ipuçları
 
-*   Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmayı test etmek için Jive atanabilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+*   Sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının Jive 'ye atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-*   Bir kullanıcı için Jive atarken, geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
+*   Bir kullanıcıyı Jive 'ye atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="enable-user-provisioning"></a>Kullanıcı sağlamayı etkinleştirin
+## <a name="enable-user-provisioning"></a>Kullanıcı Sağlamayı Etkinleştir
 
-Bu bölümde, Azure AD sağlama API'si Jive kullanıcı hesabına bağlanma aracılığıyla size yol gösterir ve oluşturmak için sağlama hizmeti yapılandırma güncelleştirme ve Azure AD'de kullanıcı ve Grup atamasına dayalı Jive atanan kullanıcı hesaplarını devre dışı bırakın.
+Bu bölümde, Azure AD 'nizi Jive 'nin Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan Jive 'de atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
 
 > [!TIP]
-> Uygulamayı da seçebilirsiniz SAML tabanlı çoklu oturum açma Jive için etkin olarak, yönergeleri izleyerek sağlanan [Azure portalında](https://portal.azure.com). Bu iki özellik birbirine tamamlayıcı rağmen otomatik sağlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, Jive için SAML tabanlı çoklu oturum açmayı da seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlama yapılandırmak için:
+### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-Bu bölümün amacı, Jive Active Directory kullanıcı hesaplarının kullanıcı sağlamayı etkinleştirme anahat sağlamaktır.
-Bu yordam bir parçası olarak, Jive.com istemeniz gerekir kullanıcı güvenlik belirteci gereklidir.
+Bu bölümün amacı, Kullanıcı hesaplarının Active Directory Kullanıcı tarafından sağlanması için Jive 'nin nasıl etkinleştirileceğini özetler.
+Bu yordamın bir parçası olarak, Jive.com ' den istemeniz gereken bir Kullanıcı güvenlik belirteci sağlamanız gerekir.
 
-1. İçinde [Azure portalında](https://portal.azure.com), Gözat **Azure Active Directory > Kurumsal uygulamaları > tüm uygulamaları** bölümü.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-1. Çoklu oturum açma için Jive zaten yapılandırdıysanız arama alanını kullanarak Jive Örneğiniz için arama yapın. Aksi takdirde seçin **Ekle** araması **Jive** uygulama galerisinde. Arama sonuçlarından Jive seçin ve uygulama listenize ekleyin.
+1. Çoklu oturum açma için Jive 'yi zaten yapılandırdıysanız arama alanını kullanarak Jive örneğinizi arayın. Aksi takdirde, **Ekle** ' yi seçin ve uygulama galerisinde **Jive** 'yi arayın. Arama sonuçlarından Jive ' yi seçin ve uygulama listenize ekleyin.
 
-1. Jive örneğinizi seçin ve ardından **sağlama** sekmesi.
+1. Jive örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. Ayarlama **hazırlama modu** için **otomatik**. 
+1. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
 
-    ![Sağlama](./media/jive-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/jive-provisioning-tutorial/provisioning.png)
 
-1. Altında **yönetici kimlik bilgileri** bölümünde, aşağıdaki yapılandırma ayarları sağlayın:
+1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
-    a. İçinde **Jive yönetici kullanıcı adı** metin kutusuna bir Jive hesap adı **Sistem Yöneticisi** atanan Jive.com profilinde.
+    a. **Jive Yönetici Kullanıcı adı** metin kutusuna Jive.com atanmış **Sistem Yöneticisi** profiline sahip bir Jive hesap adı yazın.
    
-    b. İçinde **Jive yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
+    b. **Jive yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
    
-    c. İçinde **Jive Kiracı URL'si** metin Jive Kiracı URL'sini yazın.
+    c. **Jive kiracı URL 'si** metin kutusuna Jive KIRACı URL 'sini yazın.
       
       > [!NOTE]
-      > Jive Kiracı URL'si için Jive oturum açmak için kuruluşunuz tarafından kullanılan URL'dir.  
-      > Genellikle, URL'si şu biçimdedir: **www.\< Kuruluş\>. jive.com**.          
+      > Jive kiracı URL 'SI, kuruluşunuz tarafından Jive 'da oturum açmak için kullanılan URL 'dir.  
+      > Genellikle, URL şu biçimdedir: **www.\<organizasyonu\>. Jive.com**.          
 
-1. Azure portalında **Test Bağlantısı** Azure emin olmak için AD Jive uygulamanıza bağlanabilirsiniz.
+1. Azure portal, Azure AD 'nin Jive uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 
-1. Bir kişi veya grup sağlama hatası bildirimlerini alması gereken e-posta adresini girin **bildirim e-posta** alan ve aşağıdaki onay kutusunu işaretleyin.
+1. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-1. Tıklayın **kaydedin.**
+1. Kaydet ' e tıklayın **.**
 
-1. Eşlemeleri bölümü altında seçin **eşitleme Azure Active Directory Kullanıcıları Jive.**
+1. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Jive olarak eşitler** ' ı seçin.
 
-1. İçinde **öznitelik eşlemelerini** bölümünde, gözden Jive için Azure AD'den eşitlenen kullanıcı öznitelikleri. Seçilen öznitelikler **eşleşen** özellikleri Jive kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Jive 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, Jive güncelleştirme işlemlerinde Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
-1. Azure AD sağlama hizmeti için Jive etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** Ayarlar bölümünde
+1. Jive için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-1. Tıklayın **kaydedin.**
+1. Kaydet ' e tıklayın **.**
 
-Herhangi bir kullanıcı ve/veya Jive kullanıcılar ve Gruplar bölümünde atanan grupları ilk eşitleme başlar. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve Jive uygulamanızdan sağlama hizmeti tarafından gerçekleştirilen tüm eylemler açıklayan etkinlik günlüklerini sağlama için bağlantıları izleyin.
+Kullanıcılar ve Gruplar bölümünde Jive 'ye atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Jive uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izleyebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Çoklu oturum açmayı yapılandırın](jive-tutorial.md)
+* [Çoklu oturum açmayı yapılandırma](jive-tutorial.md)

@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173162"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063688"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) Identity Idare, kuruluşunuzun güvenlik ve ç
 
 Kimlik yönetimi, kuruluşlara çalışanlar, iş ortakları ve satıcılar arasında ve hem şirket içi hem de bulutlarda bulunan hizmetler ve uygulamalar arasında aşağıdaki görevleri yapma olanağı sağlar:
 
-- Kimlik yaşam döngüsü idaresi
+- Kimlik yaşam döngüsünü yönetir
 - Erişim yaşam döngüsünü yönetir
 - Yönetim için güvenli ayrıcalıklı erişim
 
@@ -58,7 +58,7 @@ Kuruluşların, Kullanıcı kimliğinin oluşturulduğu zaman bir kullanıcı i�
 
 Genellikle, iş karar mekanizmalarının onay kararlarını devreder.  Ayrıca, kullanıcıların kendilerini de içerebilir.  Örneğin, Avrupa 'daki bir şirketin pazarlama uygulamasındaki gizli müşteri verilerine erişen kullanıcıların şirket ilkelerini bilmeleri gerekir. Konuk kullanıcılar, davet edildikleri bir kuruluştaki veriler için işleme gereksinimlerini farkında olabilir.
 
-Kuruluşlar, [SIM ile tümleştirilmiş](../manage-apps/use-scim-to-provision-users-and-groups.md) [SaaS uygulamalarına](../saas-apps/tutorial-list.md) veya uygulamalarına Kullanıcı sağlama ile bağlanmış [Dinamik Gruplar](../users-groups-roles/groups-dynamic-membership.md)gibi teknolojiler aracılığıyla erişim yaşam döngüsü işlemini otomatikleştirebilir.  Kuruluşlar ayrıca hangi [Konuk kullanıcıların şirket içi uygulamalara erişebileceğini](../b2b/hybrid-cloud-to-on-premises.md)de denetleyebilir.  Bu erişim hakları daha sonra yinelenen [Azure AD erişim İncelemeleri](access-reviews-overview.md)kullanılarak düzenli olarak gözden geçirilebilir.   [Azure AD Yetkilendirme Yönetimi](entitlement-management-overview.md) , kullanıcıların grup ve takım üyelikleri, uygulama rolleri ve SharePoint Online rollerinin paketleri arasında nasıl erişim isteyeceğini tanımlamanızı da sağlar.
+Kuruluşlar, [SIM ile tümleştirilmiş](../app-provisioning/use-scim-to-provision-users-and-groups.md) [SaaS uygulamalarına](../saas-apps/tutorial-list.md) veya uygulamalarına Kullanıcı sağlama ile bağlanmış [Dinamik Gruplar](../users-groups-roles/groups-dynamic-membership.md)gibi teknolojiler aracılığıyla erişim yaşam döngüsü işlemini otomatikleştirebilir.  Kuruluşlar ayrıca hangi [Konuk kullanıcıların şirket içi uygulamalara erişebileceğini](../b2b/hybrid-cloud-to-on-premises.md)de denetleyebilir.  Bu erişim hakları daha sonra yinelenen [Azure AD erişim İncelemeleri](access-reviews-overview.md)kullanılarak düzenli olarak gözden geçirilebilir.   [Azure AD Yetkilendirme Yönetimi](entitlement-management-overview.md) , kullanıcıların grup ve takım üyelikleri, uygulama rolleri ve SharePoint Online rollerinin paketleri arasında nasıl erişim isteyeceğini tanımlamanızı da sağlar.
 
 Bir Kullanıcı uygulamalara erişmeye çalıştığında, Azure AD [koşullu erişim](/azure/active-directory/conditional-access/) ilkeleri uygular. Örneğin, koşullu erişim ilkeleri bir [kullanım koşulları](../conditional-access/terms-of-use.md) görüntülemeyi ve kullanıcının bir uygulamaya erişebilmek üzere [Bu koşulları kabul](../conditional-access/require-tou.md) etmesinin mümkün olmasını içerebilir.
 
@@ -70,7 +70,7 @@ Geçmişte, ayrıcalıklı erişim diğer satıcılar tarafından kimlik yöneti
 
 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) , Azure AD, Azure ve diğer Microsoft çevrimiçi hizmetleri arasında kaynaklara yönelik erişim haklarının güvenliğini sağlamaya yönelik ek denetimler sağlar.  Azure AD PıM tarafından sağlanan tam zamanında erişim ve rol değişikliği uyarısı özellikleri, Multi-Factor Authentication ve koşullu erişim 'in yanı sıra, şirketinizin kaynaklarını güvenli hale getirmeye yardımcı olmak için kapsamlı bir idare denetimleri kümesi sağlar (Dizin, Office 365 ve Azure Kaynak rolleri). Diğer erişim formlarında olduğu gibi, kuruluşlar yönetici rollerindeki tüm kullanıcılar için yinelenen erişim yeniden sertifika yapılandırmak üzere erişim gözden geçirmeleri kullanabilir.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Yetkilendirme Yönetimi, erişim incelemeleri, Privileged Identity Management ve Kullanım koşulları kullanmaya başlamak için Azure portal **kimlik** yönetimi 'nin Başlarken sekmesine göz atın.
 
@@ -91,8 +91,8 @@ Kimlik yönetimi 'nde Yönetim görevlerini gerçekleştirmek için en az ayrıc
 | Özellik | En az ayrıcalıklı rol |
 | ------- | --------------------- |
 | Yetkilendirme yönetimi | Kullanıcı Yöneticisi (genel yönetici gerektiren kataloglara SharePoint Online siteleri ekleme hariç) |
-| Erişim incelemeleri | Kullanıcı Yöneticisi (ayrıcalıklı rol yöneticisi gerektiren Azure veya Azure AD rolleri için erişim gözden geçirmeleri hariç) |
-|Ayrıcalıklı Kimlik Yönetimi | Ayrıcalıklı rol yöneticisi |
+| Erişim gözden geçirmeleri | Kullanıcı Yöneticisi (ayrıcalıklı rol yöneticisi gerektiren Azure veya Azure AD rolleri için erişim gözden geçirmeleri hariç) |
+|Privileged Identity Management | Ayrıcalıklı rol yöneticisi |
 | Kullanım koşulları | Güvenlik Yöneticisi veya koşullu erişim Yöneticisi |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,18 +1,17 @@
 ---
 title: Kavramlar-Azure Kubernetes hizmetlerinde (AKS) ağ oluşturma
 description: Azure Kubernetes hizmeti 'nde (AKS), Kubernetes kullanan ve Azure CNı ağı, giriş denetleyicileri, yük dengeleyiciler ve statik IP adresleri dahil ağ hakkında bilgi edinin.
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547974"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047451"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
 
@@ -99,14 +98,14 @@ Kubernetes kullanan ve Azure CNı arasında aşağıdaki davranış farklılıkl
 
 | Özellik                                                                                   | Kubernetes kullanan   | Azure CNı |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Desteklenen |
-| Pod-POD bağlantısı                                                                         | Desteklenen | Desteklenen |
+| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Destekleniyor |
+| Pod-POD bağlantısı                                                                         | Destekleniyor | Destekleniyor |
 | Pod-VM bağlantısı; Aynı sanal ağdaki VM                                          | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
 | Pod-VM bağlantısı; Eşlenen sanal ağdaki VM                                            | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
 | VPN veya Express Route kullanarak şirket içi erişim                                                | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
-| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Desteklenen | Desteklenen |
-| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Desteklenen | Desteklenen |
-| Varsayılan Azure DNS ve özel bölgeler                                                          | Desteklenen | Desteklenen |
+| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Destekleniyor | Destekleniyor |
+| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Destekleniyor | Destekleniyor |
+| Varsayılan Azure DNS ve özel bölgeler                                                          | Destekleniyor | Destekleniyor |
 
 ### <a name="support-scope-between-network-models"></a>Ağ modelleri arasındaki Destek kapsamı
 
@@ -115,10 +114,10 @@ Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem
 * Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
 * Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örneğin:
+Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
 
-* Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken desteklenemez.
-* Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak için bu AKS tarafından yönetilen kaynakların el ile değiştirilmesi desteklenmez.
+* Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken bu kaynakları destekliyoruz.
+* Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak üzere bu AKS tarafından yönetilen kaynakları el ile değiştirmek desteklenmez.
 
 ## <a name="ingress-controllers"></a>Giriş denetleyicileri
 
@@ -132,7 +131,7 @@ AKS 'de NGıNX gibi bir giriş kaynağı oluşturabilir veya AKS HTTP uygulama y
 
 Giriş ın başka bir ortak özelliği SSL/TLS sonlandırmasından oluşur. HTTPS üzerinden erişilen büyük Web uygulamalarında TLS sonlandırma, uygulamanın kendisi yerine giriş kaynağı tarafından işlenebilir. Otomatik TLS sertifikası oluşturma ve yapılandırma sağlamak için giriş kaynağını, şifrelemem gibi sağlayıcıları kullanacak şekilde yapılandırabilirsiniz. NGıNX giriş denetleyicisini Izin Verirme ile yapılandırma hakkında daha fazla bilgi için bkz. giriş [ve TLS][aks-ingress-tls].
 
-Ayrıca, Alım denetleyicinizi, AKS kümenizdeki kapsayıcılara yönelik isteklerde istemci kaynak IP 'sini koruyacak şekilde yapılandırabilirsiniz. Bir istemcinin isteği, Alım denetleyiciniz aracılığıyla AKS kümenizdeki bir kapsayıcıya yönlendirilince, bu isteğin özgün kaynak IP 'si hedef kapsayıcı tarafından kullanılamaz. *İstemci kaynak IP korumasını*etkinleştirdiğinizde, istemcisinin kaynak IP 'Si, *for Için X-iletilen*istek üstbilgisinde kullanılabilir. Giriş denetleyicinizde istemci kaynak IP Koruması kullanıyorsanız, SSL geçişini kullanamazsınız. İstemci kaynak IP koruması ve SSL geçişi, *yük dengeleyici* türü gibi diğer hizmetlerle birlikte kullanılabilir.
+Ayrıca, Alım denetleyicinizi, AKS kümenizdeki kapsayıcılara yönelik isteklerde istemci kaynak IP 'sini koruyacak şekilde yapılandırabilirsiniz. Bir istemcinin isteği, Alım denetleyiciniz aracılığıyla AKS kümenizdeki bir kapsayıcıya yönlendirilince, bu isteğin özgün kaynak IP 'si hedef kapsayıcı için kullanılamaz. *İstemci kaynak IP korumasını*etkinleştirdiğinizde, istemcisinin kaynak IP 'Si, *for Için X-iletilen*istek üstbilgisinde kullanılabilir. Giriş denetleyicinizde istemci kaynak IP korumasını kullanıyorsanız SSL geçişini kullanamazsınız. İstemci kaynak IP koruması ve SSL geçişi, *yük dengeleyici* türü gibi diğer hizmetlerle birlikte kullanılabilir.
 
 ## <a name="network-security-groups"></a>Ağ güvenlik grupları
 

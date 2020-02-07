@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c77b03c6e1f2240059d884b051e00b01836d714
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: d3c3eb715c3e371d7e2985f233df584fb83a9870
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724014"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063464"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Uygulamalar AD FS'den Azure AD'ye taşıma 
 
@@ -37,9 +37,9 @@ Birçok kuruluşun doğrudan Active Directory Federation Service (AD FS) gibi bi
 > [!NOTE]
 > Bu kılavuzda SaaS uygulaması yapılandırma ve geçişi hakkında ayrıntılı bilgi ve özel LOB uygulamaları hakkında üst düzey bilgi sağlanır. Gelecekte özel LOB uygulamalarına yönelik daha ayrıntılı bir kılavuz sağlanması planlanmaktadır.
 
-![Bağlı uygulamaları doğrudan şirket içine](media/migrate-adfs-apps-to-azure/migrate1.png)
+![Doğrudan şirket içine bağlı uygulamalar](media/migrate-adfs-apps-to-azure/migrate1.png)
 
-![Azure AD Federasyon oluşturan uygulamalar](media/migrate-adfs-apps-to-azure/migrate2.png)
+![Azure AD aracılığıyla federe uygulamalar](media/migrate-adfs-apps-to-azure/migrate2.png)
 
 ## <a name="reasons-for-moving-apps-to-azure-ad"></a>Uygulamaları Azure AD'ye taşınıyor nedenleri
 
@@ -47,7 +47,7 @@ Zaten AD FS, Ping veya başka bir şirket içi kimlik doğrulama sağlayıcısı
 
 - **Daha güvenli erişim**
 
-  - Azure multi-Factor Authentication dahil ayrıntılı uygulama başına erişim denetimlerini yapılandırın [Azure AD koşullu erişim](../active-directory-conditional-access-azure-portal.md). İlkeler, aynı bugün Office 365'le uyguluyor olabileceğiniz şekilde SaaS uygulamalarına ve özel uygulamalara da uygulanabilir.
+  - Azure [ad koşullu erişim](../active-directory-conditional-access-azure-portal.md)kullanarak Azure Multi-Factor Authentication dahil ayrıntılı uygulama başına erişim denetimlerini yapılandırın. İlkeler, aynı bugün Office 365'le uyguluyor olabileceğiniz şekilde SaaS uygulamalarına ve özel uygulamalara da uygulanabilir.
   - Tehditleri algılamak ve riskli trafiği tanımlayan makine öğrenme ve buluşsal yöntemler temelinde oturum açma bilgilerini korumaya yardımcı olmak için, [Azure AD Kimlik Koruması](../active-directory-identityprotection.md)'ndan yararlanın.
 
 - **Azure AD B2B işbirliği**
@@ -59,7 +59,7 @@ Zaten AD FS, Ping veya başka bir şirket içi kimlik doğrulama sağlayıcısı
   SaaS uygulamaları için bir kimlik sağlayıcısı olan Azure AD, aşağıdakiler gibi ek özellikleri destekler:
   - Uygulama başına belirteç imzalama sertifikaları.
   - [Yapılandırılabilir sertifika sona erme tarihleri](manage-certificates-for-federated-single-sign-on.md).
-  - Azure AD kimlikleri temelinde kullanıcı hesaplarının (önemli Azure Market uygulamalarında) [otomatik sağlanması](user-provisioning.md).
+  - Azure AD kimlikleri temelinde kullanıcı hesaplarının (önemli Azure Market uygulamalarında) [otomatik sağlanması](../app-provisioning/user-provisioning.md).
 
 - **Şirket içi bir kimlik sağlayıcısının avantajlarını koruma**
   
@@ -106,17 +106,17 @@ Aşağıdaki tabloda, çevirinize yardımcı olmak için AD FS, Azure AD ve SaaS
 Geçiş işlemi, uygulamanın şirket içinde nasıl yapılandırıldığını değerlendirerek ve bu yapılandırmayı Azure AD'ye eşleyerek başlar. Aşağıdaki tabloda, AD FS bağlı olan taraf yapılandırma öğelerinin Azure AD'de bunlara karşılık gelen öğelerle eşlemesini bulabilirsiniz.
 
 - AD FS terimi: Bağlı olan taraf veya bağlı olan taraf güveni.
-- Azure AD terimi: Kurumsal uygulama veya uygulama kaydı (uygulamanın türüne) bağlı olarak.
+- Azure AD terimi: Kurumsal uygulama veya uygulama kaydı (uygulamanın türüne bağlı olarak).
 
 |Uygulama yapılandırma öğesi|Açıklama|AD FS yapılandırmasındaki konum|Azure AD yapılandırmasında buna karşılık gelen konum|SAML belirteç öğesi|
 |-----|-----|-----|-----|-----|
-|Uygulama oturum açma URL'si|Bu uygulamanın oturum açma sayfasının URL'si. Burası, kullanıcının SP tarafından başlatılmış bir SAML akışında uygulamada oturum açmak için gittiği yerdir.|Yok|Azure AD'de oturum açma URL'si Azure Portal'ın içinde, uygulamanın **Çoklu oturum açma** özelliklerinde oturum açma URL'si olarak yapılandırılır.</br></br>(Oturum açma URL'sini görmek için **Gelişmiş URL ayarlarını göster**'i seçmeniz gerekebilir.)|Yok|
+|Uygulama oturum açma URL'si|Bu uygulamanın oturum açma sayfasının URL'si. Burası, kullanıcının SP tarafından başlatılmış bir SAML akışında uygulamada oturum açmak için gittiği yerdir.|YOK|Azure AD'de oturum açma URL'si Azure Portal'ın içinde, uygulamanın **Çoklu oturum açma** özelliklerinde oturum açma URL'si olarak yapılandırılır.</br></br>(Oturum açma URL'sini görmek için **Gelişmiş URL ayarlarını göster**'i seçmeniz gerekebilir.)|YOK|
 |Uygulama yanıt URL'si|Kimlik sağlayıcısının (IdP) perspektifinden uygulamanın URL'si. Burası, kullanıcı IdP'de oturum açtıktan sonra kullanıcının ve belirtecin gönderildiği yerdir.</br></br> Bazen "SAML onay belgesi tüketici uç noktası" olarak da adlandırılır.|Uygulamanın AD FS bağlı olan taraf güveninde bulunur. Bağlı olan tarafa sağ tıklayın, **Özellikler**'i seçin ve sonra da **Uç Noktalar** sekmesini seçin.|Azure AD'de yanıt URL'si Azure Portal'ın içinde, uygulamanın **Çoklu oturum açma** özelliklerinde yanıt URL'si olarak yapılandırılır.</br></br>(Yanıt URL'sini görmek için **Gelişmiş URL ayarlarını göster**'i seçmeniz gerekebilir.)|SAML belirtecindeki **Destination** öğesiyle eşlenir.</br></br> Örnek değer: `https://contoso.my.salesforce.com`|
-|Uygulama oturumu kapatma URL'si|Kullanıcı uygulamada oturumunu kapattığında, IdP'nin kullanıcı oturumu açtığı diğer tüm uygulamalarda da oturumu kapatmak için “oturum kapatma temizleme” isteklerinin gönderildiği URL.|AD FS Yönetimi'nde, **Bağlı Olan Taraf Güvenleri**'nin altında bulunur. Bağlı olan tarafa sağ tıklayın, **Özellikler**'i seçin ve sonra da **Uç Noktalar** sekmesini seçin.|Yok. Azure AD, tüm uygulamalarda oturumun kapatılması anlamına gelen “çoklu oturum kapatma” işlemini desteklemez. Kullanıcının yalnızca Azure AD oturumunu kapatır.|Yok|
+|Uygulama oturumu kapatma URL'si|Kullanıcı uygulamada oturumunu kapattığında, IdP'nin kullanıcı oturumu açtığı diğer tüm uygulamalarda da oturumu kapatmak için “oturum kapatma temizleme” isteklerinin gönderildiği URL.|AD FS Yönetimi'nde, **Bağlı Olan Taraf Güvenleri**'nin altında bulunur. Bağlı olan tarafa sağ tıklayın, **Özellikler**'i seçin ve sonra da **Uç Noktalar** sekmesini seçin.|Yok. Azure AD, tüm uygulamalarda oturumun kapatılması anlamına gelen “çoklu oturum kapatma” işlemini desteklemez. Kullanıcının yalnızca Azure AD oturumunu kapatır.|YOK|
 |Uygulama tanımlayıcısı|IdP’nin perspektifinden uygulamanın tanımlayıcısı. Tanımlayıcı olarak çoğunlukla oturum açma URL değeri kullanılır (ama her zaman kullanılmaz).</br></br> Bazen uygulama bunu “varlık kimliği" olarak adlandırır.|AD FS'de, bu bağlı olan taraf kimliğidir. Bağlı olan taraf güvenine sağ tıklayın, **Özellikler**'i seçin ve sonra da **Tanımlayıcılar** sekmesini seçin.|Azure AD'de, tanımlayıcı Azure Portal'ın içinde uygulamanın **Çoklu oturum açma** özelliklerinde, **Etki Alanı ve URL'ler** altında Tanımlayıcı olarak yapılandırılır. (**Gelişmiş URL ayarlarını göster** onay kutusunu seçmeniz gerekebilir.)|SAML belirtecindeki **Audience** öğesine karşılık gelir.|
-|Uygulama federasyon meta verileri|Uygulamanın federasyon meta verilerinin konumu. IdP bunu, uç noktalar veya şifreleme sertifikaları gibi belirli yapılandırma ayarlarını otomatik olarak güncelleştirmek için kullanır.|Uygulamanın federasyon meta veri URL'si, uygulamaya ilişkin AD FS bağlı olan taraf güveninde bulunur. Güvene sağ tıklayın, **Özellikler**'i seçin ve ardından **İzleme** sekmesini seçin.|Yok. Azure AD uygulama federasyon meta verilerini doğrudan kullanmayı desteklemez.|Yok|
+|Uygulama federasyon meta verileri|Uygulamanın federasyon meta verilerinin konumu. IdP bunu, uç noktalar veya şifreleme sertifikaları gibi belirli yapılandırma ayarlarını otomatik olarak güncelleştirmek için kullanır.|Uygulamanın federasyon meta veri URL'si, uygulamaya ilişkin AD FS bağlı olan taraf güveninde bulunur. Güvene sağ tıklayın, **Özellikler**'i seçin ve ardından **İzleme** sekmesini seçin.|Yok. Azure AD uygulama federasyon meta verilerini doğrudan kullanmayı desteklemez.|YOK|
 |Kullanıcı tanımlayıcısı/**NameID**|Azure AD'den veya AD FS'den kullanıcı tanımlayıcınızı uygulamanıza benzersiz olarak göstermek için kullanılan öznitelik.</br></br> Bu öznitelik normalde kullanıcının UPN'si veya e-posta adresidir.|AD FS'de, bunu bağlı olan tarafta bir talep kuralı olarak bulabilirsiniz. Çoğu durumda, talep kuralı "nameidentifier" ile biten bir türde bir talep gönderir.|Azure AD'de, kullanıcı tanımlayıcısını Azure Portal'ın içinde uygulamanın **Çoklu oturum açma** özelliklerindeki **Kullanıcı Öznitelikleri** başlığının altında bulabilirsiniz.</br></br>Varsayılan olarak UPN kullanılır.|IdP'den uygulamaya SAML belirtecindeki **NameID** öğesi olarak iletilir.|
-|Uygulamaya gönderilecek diğer talepler|Kullanıcı tanımlayıcısı/**NameID** bilgisinin yanı sıra, IdP'den uygulamaya yaygın olarak başka talep bilgileri de gönderilir. Bu bilgilere örnek olarak ad, soyadı, e-posta adresi ve kullanıcının üye olduğu gruplar verilebilir.|AD FS'de, bunu bağlı olan tarafta diğer talep kuralları olarak bulabilirsiniz.|Azure AD'de, Azure Portal'ın içinde uygulamanın **Çoklu oturum açma** özelliklerindeki **Kullanıcı Öznitelikleri** başlığının altında bulabilirsiniz. **Görünüm**'ü seçin ve diğer tüm kullanıcı özniteliklerini düzenleyin.|Yok|
+|Uygulamaya gönderilecek diğer talepler|Kullanıcı tanımlayıcısı/**NameID** bilgisinin yanı sıra, IdP'den uygulamaya yaygın olarak başka talep bilgileri de gönderilir. Bu bilgilere örnek olarak ad, soyadı, e-posta adresi ve kullanıcının üye olduğu gruplar verilebilir.|AD FS'de, bunu bağlı olan tarafta diğer talep kuralları olarak bulabilirsiniz.|Azure AD'de, Azure Portal'ın içinde uygulamanın **Çoklu oturum açma** özelliklerindeki **Kullanıcı Öznitelikleri** başlığının altında bulabilirsiniz. **Görünüm**'ü seçin ve diğer tüm kullanıcı özniteliklerini düzenleyin.|YOK|
 
 ### <a name="representing-azure-ad-as-an-identity-provider-in-an-saas-app"></a>SaaS uygulamasında Azure AD'yi kimlik sağlayıcısı olarak gösterme
 Geçiş kapsamında, uygulamayı Azure AD'ye (şirket içi kimlik sağlayıcısı yerine) işaret edecek şekilde yapılandırmanız gerekir. Bu bölüm, özel/LOB uygulamalarına değil SAML protokolü kullanan SaaS uygulamalarına odaklanır. Bununla birlikte, buradaki kavramlar özel LOB uygulamalarını da kapsayacak şekilde genişletilebilir.
@@ -134,11 +134,11 @@ Aşağıdaki tabloda, uygulamada SSO ayarlarını yapılandırmaya yönelik öne
 
 |Yapılandırma öğesi|Açıklama|AD FS|Azure AD|
 |---|---|---|---|
-|IdP </br>oturum açma </br>URL'si|Uygulamanın perspektifinden IdP'nin oturum açma URL'si (kullanıcının oturum açmak için yeniden yönlendirildiği konum).|AD FS oturum açma URL'si AD FS federasyon hizmeti adının arkasına “/adfs/ls/” eklenerek oluşturulur. Örneğin: https&#58;//fs.contoso.com/adfs/ls/|Azure AD için buna karşılık gelen değer, {kiracı-kimliği} öğesinin kiracı kimliğinizle değiştirildiği desene uyar. Bu değeri Azure Portal'da, **Azure Active Directory** > **Özellikler** altında **Dizin Kimliği** olarak bulabilirsiniz.</br></br>SAML-P protokolünü kullanan uygulamalar için: https&#58;//login.microsoftonline.com/{kiracı-kimliği}/saml2 </br></br>WS-Federasyon protokolünü kullanan uygulamalar için: https&#58;//login.microsoftonline.com/{kiracı-kimliği}/wsfed|
-|IdP </br>oturumu kapatma </br>URL'si|Uygulamanın perspektifinden IdP'nin oturumu kapatma URL'si (uygulamada oturumu kapatmayı seçen kullanıcının yeniden yönlendirildiği konum).|AD FS için, oturumu kapatma URL'si oturum açma URL'siyle aynı olabileceği gibi, aynı URL'nin sonuna “wa=wsignout1.0” eklenmiş hali de olabilir. Örneğin: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD'de buna karşılık gelen değer, uygulamanın SAML 2.0 oturumu kapatma işlemini destekleyip desteklemediğine bağlıdır.</br></br>Uygulama SAML oturumu kapatma işlemini destekliyorsa, değer {kiracı-kimliği} öğesinin kiracı kimliğiyle değiştirildiği desene uyar. Bunu Azure Portal'da, **Azure Active Directory** > **Özellikler** altında **Dizin Kimliği** olarak bulabilirsiniz: https&#58;//login.microsoftonline.com/{kiracı-kimliği}/saml2</br></br>Uygulama SAML oturumu kapatma işlemini desteklemiyorsa: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
+|IdP </br>oturum açma </br>{1&gt;URL&lt;1}|Uygulamanın perspektifinden IdP'nin oturum açma URL'si (kullanıcının oturum açmak için yeniden yönlendirildiği konum).|AD FS oturum açma URL'si AD FS federasyon hizmeti adının arkasına “/adfs/ls/” eklenerek oluşturulur. Örneğin: https&#58;//fs.contoso.com/adfs/ls/|Azure AD için buna karşılık gelen değer, {kiracı-kimliği} öğesinin kiracı kimliğinizle değiştirildiği desene uyar. Bu değeri Azure Portal'da, **Azure Active Directory** > **Özellikler** altında **Dizin Kimliği** olarak bulabilirsiniz.</br></br>SAML-P protokolünü kullanan uygulamalar için: https&#58;//login.microsoftonline.com/{kiracı-kimliği}/saml2 </br></br>WS-Federasyon protokolünü kullanan uygulamalar için: https&#58;//login.microsoftonline.com/{kiracı-kimliği}/wsfed|
+|IdP </br>oturumu kapatma </br>{1&gt;URL&lt;1}|Uygulamanın perspektifinden IdP'nin oturumu kapatma URL'si (uygulamada oturumu kapatmayı seçen kullanıcının yeniden yönlendirildiği konum).|AD FS için, oturumu kapatma URL'si oturum açma URL'siyle aynı olabileceği gibi, aynı URL'nin sonuna “wa=wsignout1.0” eklenmiş hali de olabilir. Örneğin: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD'de buna karşılık gelen değer, uygulamanın SAML 2.0 oturumu kapatma işlemini destekleyip desteklemediğine bağlıdır.</br></br>Uygulama SAML oturumu kapatma işlemini destekliyorsa, değer {kiracı-kimliği} öğesinin kiracı kimliğiyle değiştirildiği desene uyar. Bunu Azure Portal'da, **Azure Active Directory** > **Özellikler** altında **Dizin Kimliği** olarak bulabilirsiniz: https&#58;//login.microsoftonline.com/{kiracı-kimliği}/saml2</br></br>Uygulama SAML oturumu kapatma işlemini desteklemiyorsa: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |Belirteç </br>imzalama </br>sertifika|IdP'nin verilen belirteçleri imzalamak için özel anahtarını kullandığı sertifika. Belirtecin, uygulamanın güvenmek üzere yapılandırıldığı IdP'den geldiğini doğrular.|AD FS belirteç imzalama sertifikası AD FS Yönetimi'nde **Sertifikalar**'ın altında bulabilirsiniz.|Azure AD'de, belirteç imzalama sertifikasını Azure Portal'ın içinde uygulamanın **Çoklu oturum açma** özelliklerindeki **SAML İmzalama Sertifikası** başlığı altında bulabilirsiniz. Sertifikayı buradan indirip uygulamaya yükleyebilirsiniz.</br></br> Uygulamanın birden çok sertifikası varsa, tüm sertifikaları federasyon meta veri XML dosyasında bulabilirsiniz.|
 |Tanımlayıcı/</br>“veren”|Uygulamanın perspektifinden IdP'nin tanımlayıcısı (bazen “veren kimliği” olarak da adlandırılır).</br></br>SAML belirtecinde, değer **Issuer** öğesi olarak gösterilir.|AD FS için tanımlayıcı genellikle AD FS Yönetimi'nde **Hizmet** > **Federasyon Hizmeti Özelliklerini Düzenle**'nin altında yer alan federasyon hizmeti tanımlayıcısıdır. Örneğin: http&#58;//fs.contoso.com/adfs/services/trust|Azure AD için buna karşılık gelen değer, {kiracı-kimliği} değerinin kiracı kimliği ile değiştirildiği desene uyar. Bu değeri Azure Portal'da, **Azure Active Directory** > **Özellikler** altında **Dizin Kimliği** olarak bulabilirsiniz: https&#58;//sts.windows.net/{kiracı-kimliği}/|
-|IdP </br>federasyon </br>meta veriler|IdP'nin genel kullanıma açık federasyon meta verilerinin konumu. (Bazı uygulamalar federasyon meta verilerini yönetici yapılandırma URL'lerine, tanımlayıcıya ve bağımsız olarak belirteç imzalama sertifikasına alternatif olarak kullanılır)|AD FS federasyon meta verileri URL'sini AD FS Yönetimi altında bulabilirsiniz **hizmet** > **uç noktaları** > **meta verileri**  >   **Türü: Federasyon meta verileri**. Örneğin: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD'de buna karşılık gelen değer şu desene uyar: https&#58;//login.microsoftonline.com/{KiracıEtkiAlanıAdı}/FederationMetadata/2007-06/FederationMetadata.xml. {KiracıEtkiAlanıAdı} değerinin yerine kiracınızın “contoso.onmicrosoft.com” biçimindeki adı kullanılır. </br></br>Daha fazla bilgi için bkz. [Federasyon meta verileri](../develop/azure-ad-federation-metadata.md).
+|IdP </br>federasyon </br>meta veriler|IdP'nin genel kullanıma açık federasyon meta verilerinin konumu. (Bazı uygulamalar federasyon meta verilerini yönetici yapılandırma URL'lerine, tanımlayıcıya ve bağımsız olarak belirteç imzalama sertifikasına alternatif olarak kullanılır)|AD FS federasyon meta verileri URL'sini, AD FS Yönetimi'nde **Hizmet** > **Uç Noktalar** > **Meta Veriler** > **Tür: Federasyon Meta Verileri**'nın altında bulabilirsiniz. Örneğin: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD'de buna karşılık gelen değer şu desene uyar: https&#58;//login.microsoftonline.com/{KiracıEtkiAlanıAdı}/FederationMetadata/2007-06/FederationMetadata.xml. {KiracıEtkiAlanıAdı} değerinin yerine kiracınızın “contoso.onmicrosoft.com” biçimindeki adı kullanılır. </br></br>Daha fazla bilgi için bkz. [Federasyon meta verileri](../develop/azure-ad-federation-metadata.md).
 
 ## <a name="moving-saas-apps"></a>SaaS uygulamaları taşıma
 
@@ -175,7 +175,7 @@ Bugün kolayca taşıyabilirsiniz uygulamalar standart yapılandırma öğelerin
 
 Özel taleplere ve **NameID** öğelerine ek olarak, geçiş işlemi kapsamında Azure AD'de başka yapılandırma adımları gerektiren yapılandırmalar:
 
-- AD FS'de özel yetkilendirme veya Multi-Factor Authentication kuralları. Bunları kullanarak yapılandırma [Azure AD koşullu erişim](../active-directory-conditional-access-azure-portal.md) özelliği.
+- AD FS'de özel yetkilendirme veya Multi-Factor Authentication kuralları. [Azure AD koşullu erişim](../active-directory-conditional-access-azure-portal.md) özelliğini kullanarak bunları yapılandırırsınız.
 - Birden çok SAML uç noktası olan uygulamalar. Bunları Azure AD'de PowerShell kullanarak yapılandırırsınız. (Bu özellik portalda sağlanmaz.)
 - SAML sürüm 1.1 belirteçlerini gerektiren SharePoint uygulamaları gibi WS-Federasyon uygulamaları. Bunları PowerShell kullanarak el ile yapılandırmanız gerekir.
 
@@ -212,11 +212,11 @@ Azure AD'de SAML oturum açma ayarlarını (uygulamanızın gerektirdiği gibi) 
 
 Güvenlik belirtecinde talep olarak gönderilecek öznitelikleri görmek için **Diğer tüm kullanıcı özniteliklerini görüntüle ve düzenle**’yi seçin.
 
-![Talep olarak gönderebilirsiniz özniteliklerinin listesini gösterir](media/migrate-adfs-apps-to-azure/migrate4.png)
+![Talep olarak gönderebilmeniz için özniteliklerin listesini gösterir](media/migrate-adfs-apps-to-azure/migrate4.png)
 
 Düzenlemek için belirli bir öznitelik satırını seçin veya yeni öznitelik eklemek için **Öznitelik ekle**’yi seçin.
 
-!["Özniteliği Düzenle" bölmesi gösterir](media/migrate-adfs-apps-to-azure/migrate5.png)
+!["Öznitelik düzenleme" bölmesini gösterir](media/migrate-adfs-apps-to-azure/migrate5.png)
 
 #### <a name="assign-users-to-the-app"></a>Uygulamaya kullanıcı atama
 
@@ -226,7 +226,7 @@ Azure AD portalında kullanıcıları atamak için, SaaS uygulamasının sayfas�
 
 !["Kullanıcılar ve gruplar" altında "Kullanıcı ekle" düğmesi](media/migrate-adfs-apps-to-azure/migrate6.png)
 
-!["Atama Ekle" bölmesi gösterir](media/migrate-adfs-apps-to-azure/migrate7.png)
+!["Atama Ekle" bölmesini gösterir](media/migrate-adfs-apps-to-azure/migrate7.png)
 
 Erişimi doğrulamak için, kullanıcıların oturum açtıklarında [erişim panelinde](../user-help/active-directory-saas-access-panel-introduction.md) SaaS uygulamasını görüyor olması gerekir. Erişim panelini https://myapps.microsoft.com adresinde bulabilirler. Bu örnekte, kullanıcının hem Salesforce hem de ServiceNow'a erişimi başarıyla atanmıştır.
 
@@ -236,19 +236,19 @@ Erişimi doğrulamak için, kullanıcıların oturum açtıklarında [erişim pa
 
 Şirket içi federasyondan Azure AD'ye tam geçiş işlemi, üzerinde çalıştığınız SaaS uygulamasının birden çok kimlik sağlayıcısını destekleyip desteklemediğine bağlıdır. İşte birden çok IdP desteği hakkında sık sorulan bazı sorular:
 
-   **S: Bir uygulama birden çok Idp'yi desteklemesi ne anlama geliyor?**
+   **S: Bir uygulamanın birden çok IdP'yi desteklemesi ne anlama gelir?**
 
-   Y: Birden çok Idp'yi destekleyen SaaS uygulamaları oturum açma deneyimindeki tüm işlemeden önce yeni IDP (bizim durumumuzda Azure AD içinde) hakkında bilgileri girmenize olanak tanır. Yapılandırma bittikten sonra, Azure AD'ye işaret etmek için uygulamanın kimlik doğrulama yapılandırmasına geçebilirsiniz.
+   Y: Birden çok IdP'yi destekleyen SaaS uygulamaları, oturum açma deneyimindeki değişikliği işlemeden önce yeni IdP (bizim durumumuzda Azure AD) hakkındaki tüm bilgileri girmenize olanak tanır. Yapılandırma bittikten sonra, Azure AD'ye işaret etmek için uygulamanın kimlik doğrulama yapılandırmasına geçebilirsiniz.
 
-   **S: SaaS uygulamasının birden çok Idp'yi desteklemesi neden önemlidir?**
+   **S: SaaS uygulamasının birden çok IdP'yi desteklemesi neden önemlidir?**
 
-   Y: Birden çok IDP desteklenmiyorsa, yöneticinin bu sırada Azure AD'yi uygulamanın yeni Idp'si yapılandırması bir hizmet veya bakım kesintisi olarak kısa bir zaman penceresi kenara ayırmanız gerekir. Bu kesinti sırasında, kullanıcılara hesaplarında oturum açamayacakları bildirilmelidir.
+   Y: Birden çok IdP desteklenmiyorsa, yöneticinin hizmet veya bakım kesintisi olarak kısa bir süre ayırması ve bu sürede Azure AD'yi uygulamanın yeni IdP'si olarak yapılandırması gerekir. Bu kesinti sırasında, kullanıcılara hesaplarında oturum açamayacakları bildirilmelidir.
 
    Uygulama birden çok IdP'yi destekliyorsa, ek IdP önceden yapılandırılabilir. Bundan sonra yönetici Azure tam geçişi sırasında IdP'yi değiştirebilir.
 
    Uygulama birden çok IdP'yi destekliyorsa ve oturum açma için kimlik doğrulamasını birden çok IdP'nin eşzamanlı olarak işlemesini seçerseniz, kullanıcıya oturum açma sayfasında kimlik doğrulaması için IdP seçme olanağı sağlanır.
 
-#### <a name="example-support-for-multiple-identity-providers"></a>Örnek: Birden çok kimlik sağlayıcıları için destek
+#### <a name="example-support-for-multiple-identity-providers"></a>Örnek: birden çok kimlik sağlayıcısı için destek
 
 Örneğin Salesforce'ta, IDP yapılandırmasını **Settings** > **Company Settings** > **My Domain** > **Authentication Configuration** altında bulabilirsiniz.
 
@@ -260,7 +260,7 @@ Yapılandırma daha önce **Identity** > **Single sign-on settings** altında ol
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>İsteğe bağlı: Azure AD'de kullanıcı sağlamayı yapılandırma
 
-Azure AD'nin SaaS uygulaması için kullanıcı sağlamayı doğrudan işlemesini istiyorsanız, bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı sağlamayı ve kullanıcı sağlamasını kaldırmayı otomatikleştirme](user-provisioning.md).
+Azure AD'nin SaaS uygulaması için kullanıcı sağlamayı doğrudan işlemesini istiyorsanız, bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı sağlamayı ve kullanıcı sağlamasını kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 34d3a7fb299ba143eee01b6b7184f1c566d41aba
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515451"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062685"
 ---
-# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Zscaler Zscyüksek 'yi yapılandırma
+# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler Zscyüksek yapılandırma
 
 Bu öğreticide, Kullanıcı ve/veya grupları Zscaler Zscm 'ye otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory (Azure AD) yapılandırma hakkında bilgi edineceksiniz.
 
@@ -80,7 +80,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 > [!TIP]
 > Ayrıca, Zscaler Zscyüksek için SAML tabanlı çoklu oturum açmayı etkinleştirmek isteyebilirsiniz. Bunu yaparsanız, [Zscaler Zscyüksek çoklu oturum açma öğreticisindeki](zscaler-zsCloud-tutorial.md)yönergeleri izleyin. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak iki özellik birbirini tamamlayabilirler.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** > **tüm uygulamalar** > **Zscaler zscyüksek**' i seçin:
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı > **Zscaler zscı**' yi seçin:
 
     ![Kurumsal uygulamalar](common/enterprise-applications.png)
 
@@ -98,11 +98,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 5. **Yönetici kimlik bilgileri** bölümünde, bir sonraki adımda açıklandığı gibi Zscaler Zscı hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin.
 
-6. **Kiracı URL 'si** ve gizli dizi **belirtecini**almak için Zscaler zscı portalındaki **Yönetim** > **kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
+6. **Kiracı URL 'sini** ve **gizli anahtarı**almak Için, Zscaler Zscı portalındaki **Yönetim** > **kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
 
     ![Zscaler Zscyüksek kimlik doğrulama ayarları](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
-    SAML **Yapılandır penceresini açmak** Için **SAML Yapılandır** ' ı seçin:
+    **SAML Yapılandır penceresini açmak** Için **SAML Yapılandır** ' ı seçin:
 
     ![SAML penceresini Yapılandır](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
@@ -110,7 +110,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 7. **Kiracı URL 'si** ve **gizli dizi belirteci** kutularına değerleri GIRDIKTEN sonra, Azure AD 'Nin Zscaler zscyüksek 'e bağlanabildiğinizden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Zscaler Zscı hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Bağlantıyı test et](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
+    ![Bağlantıyı sınama](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
 8. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin. **Bir hata oluştuğunda e-posta bildirimi gönder**' i seçin:
 
@@ -124,7 +124,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 11. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Zscaler Zscyüksek ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Zscyüksek içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Öznitelik Eşlemeleri](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![Öznitelik eşlemeleri](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscalerzscı olarak eşitler**' ı seçin:
 
@@ -132,7 +132,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 13. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Zscaler Zscyüksek ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Zscyüksek içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Öznitelik Eşlemeleri](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![Öznitelik eşlemeleri](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisindeki](./../active-directory-saas-scoping-filters.md)yönergelere bakın.
 
@@ -154,7 +154,7 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

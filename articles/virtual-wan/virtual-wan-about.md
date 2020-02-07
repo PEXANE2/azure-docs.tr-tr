@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048483"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056351"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
 
@@ -37,6 +37,13 @@ Bu makalede, Azure sanal WAN 'da ağ bağlantısına hızlı bir bakış sunulma
 
 Bir sanal WAN yükseltme adımları için bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
 
+## <a name="architecture"></a>Mimarisini
+
+Sanal WAN mimarisi ve sanal WAN 'a geçiş hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+
+* [Sanal WAN mimarisi](migrate-from-hub-spoke-topology.md)
+* [Küresel aktarım ağı mimarisi](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>Sanal WAN kaynakları
 
 Uçtan uca sanal WAN'yi yapılandırmak için şu kaynakları oluşturursunuz:
@@ -57,7 +64,7 @@ Uçtan uca sanal WAN'yi yapılandırmak için şu kaynakları oluşturursunuz:
 
   * **Site:** Bu kaynak yalnızca siteden siteye bağlantılar için kullanılır. Site kaynağı **vpnsite**. Şirket içi VPN cihazınızı ve ayarlarını temsil eder. Sanal WAN iş ortağıyla çalıştığınızda, bu bilgileri otomatik olarak Azure’a aktarmak için yerleşik bir çözümünüz olur.
 
-## <a name="connectivity"></a>Bilirlik
+## <a name="connectivity"></a>Bağlantı türleri
 
 Sanal WAN, aşağıdaki bağlantı türlerine izin verir: siteden siteye VPN, kullanıcı VPN (Noktadan siteye) ve ExpressRoute.
 

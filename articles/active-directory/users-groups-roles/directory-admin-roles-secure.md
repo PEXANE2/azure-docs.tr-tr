@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967701"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063858"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Çoğu kuruluş için iş varlıklarının güvenliği, BT sistemlerini yöneten ve yöneten ayrıcalıklı hesapların bütünlüğüne bağlıdır. Cyber-saldırganlar, kuruluşun hassas verilerine erişim kazanmak için altyapı sistemlerine (örneğin Active Directory ve Azure Active Directory) ayrıcalıklı Erişime odaklanmaktadır. 
 
-Birincil güvenlik çevresi olarak bir ağın giriş ve çıkış noktalarının güvenliğini sağlamaya odaklanmaya odaklanılmış olan geleneksel yaklaşımlar, SaaS uygulamalarının ve kişisel cihazların Internet 'te kullanımıyla ilgili olarak daha az etkilidir. Karmaşık bir modern kuruluşta, kuruluşun kimlik katmanındaki kimlik doğrulama ve yetkilendirme denetimleri, ağ güvenliği çevresinin yerini doğal olarak almaktadır.
+Birincil güvenlik çevresi olarak bir ağın giriş ve çıkış noktalarının güvenliğini sağlamaya odaklanmaya odaklanılmış olan geleneksel yaklaşımlar, SaaS uygulamalarının ve kişisel cihazların Internet 'te kullanımıyla ilgili olarak daha az etkilidir. Karmaşık bir modern kuruluşta ağ güvenlik çevre 'nın doğal değişikliği, bir kuruluşun kimlik katmanındaki kimlik doğrulama ve yetkilendirme denetimleridir.
 
 Ayrıcalıklı yönetim hesapları, bu yeni "güvenlik çevre" denetiminde etkili bir şekilde kontrol edilir. Ortamın şirket içi, bulut ya da karma şirket içi ve bulut tarafından barındırılan hizmetler olmasından bağımsız olarak ayrıcalıklı erişimin korunması önemlidir. Belirlenen yönetici erişiminin korunması, kuruluşunuzun sistemlerini risklerden yalıtmak için tamamen ve düşünceli bir yaklaşım yapmanızı gerektirir. 
 
@@ -230,7 +230,7 @@ Azure etkinlik günlüğü, Azure 'da abonelik düzeyindeki olayların geçmişi
 
 Daha fazla şirket kullanıcısı bulut hizmetleri aracılığıyla ayrıcalıklı erişim elde edebilir ve bu da artan bir yönetilmeyen platforma yol açabilir. Bu, Office 365, Azure abonelik yöneticileri ve sanal makinelere ya da SaaS uygulamaları aracılığıyla yönetici erişimi olan kullanıcılar için küresel yöneticilere sahip olan kullanıcıları içerir. Bunun yerine, kuruluşların tüm çalışanları, özellikle Yöneticiler, günlük iş işlemlerini ayrıcalıksız kullanıcılar olarak işlemesini ve yalnızca gerektiğinde yönetici haklarına sahip olması gerekir. Yönetici rollerindeki kullanıcı sayısı ilk benimsemeye başladıktan sonra, yönetici ayrıcalıklarını etkinleştirmeye uygun olan her kullanıcıyı tanımlamak ve doğrulamak için tüm erişim incelemelerini gözden geçirdiklerinden emin olun. 
 
-Şunları yapın:
+Aşağıdakileri yapın:
 
 * Hangi kullanıcıların Azure AD yöneticileri olduğunu belirleme, isteğe bağlı, tam zamanında yönetici erişimi ve rol tabanlı güvenlik denetimlerini etkinleştirme.
 * Yönetici ayrıcalıklı erişimi için açık bir gerekçe olmayan kullanıcıları farklı bir role dönüştürün (uygun rol yoksa, bunları kaldırın).
@@ -241,7 +241,7 @@ C Suite yöneticileri, üst düzey yöneticiler, kritik BT ve güvenlik personel
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Azure AD yönetimi için adanmış iş istasyonlarını kullanma
 
-Saldırganlar, bir kuruluşun verilerine ve sistemlerine erişim kazanmak için ayrıcalıklı hesapları hedefleyebilir ve böylece, yöneticinin bir kimlik bilgisi girerek program mantığını veya gözops 'u değiştiren kötü amaçlı kodlar aracılığıyla verilerin bütünlüğünü ve gerçekliğini kesintiye uğramasını sağlayabilir. Ayrıcalıklı Erişim İş İstasyonları (PAW), hassas görevler için İnternet saldırıları ve tehdit vektörlerinden korunan ayrılmış bir işletim sistemi sağlar. Bu hassas görevler ve hesapların günlük kullanım iş istasyonları ve cihazlarından ayrılması, kimlik avı saldırıları, uygulama ve işletim sistemi güvenlik açıkları, çeşitli kimliğe bürünme saldırıları ve tuş vuruşu gibi kimlik bilgisi hırsızlığı saldırılarına karşı çok güçlü koruma sağlar günlüğe kaydetme, karma değer geçişi ve anahtar geçişi. Ayrıcalıklı erişim iş istasyonlarını dağıtarak, sağlamlaştırılmış bir masaüstü ortamı dışında yöneticinin yönetici kimlik bilgilerini girme riskini azaltabilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı erişim Iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Saldırganlar, bir kuruluşun verilerine ve sistemlerine erişim kazanmak için ayrıcalıklı hesapları hedefleyebilir ve böylece, yöneticinin bir kimlik bilgisi girerek program mantığını veya gözops 'u değiştiren kötü amaçlı kodlar aracılığıyla verilerin bütünlüğünü ve gerçekliğini kesintiye uğramasını sağlayabilir. Ayrıcalıklı erişim Iş Istasyonları (Paw 'lar), Internet saldırıları ve tehdit vektörlerinden korunan hassas görevler için adanmış bir işletim sistemi sağlar. Bu hassas görevler ve hesapların günlük kullanım iş istasyonları ve cihazlarından ayrılması, kimlik avı saldırıları, uygulama ve işletim sistemi güvenlik açıkları, çeşitli kimliğe bürünme saldırıları ve tuş vuruşu gibi kimlik bilgisi hırsızlığı saldırılarına karşı çok güçlü koruma sağlar günlüğe kaydetme, karma değer geçişi ve anahtar geçişi. Ayrıcalıklı erişim iş istasyonlarını dağıtarak, sağlamlaştırılmış bir masaüstü ortamı dışında yöneticinin yönetici kimlik bilgilerini girme riskini azaltabilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı erişim Iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Olayları işlemeye yönelik ulusal standartlar ve teknoloji önerilerini gözden geçirin 
 
@@ -298,11 +298,11 @@ Azure günlük tümleştirmesi, Azure kaynaklarınızdan ham günlükleri kurulu
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Bağlı uygulamalar için Kullanıcı sağlamayı uygulama
 
-Azure AD, kullanıcı kimliklerinin Dropbox, Salesforce, ServiceNow gibi bulut (SaaS) uygulamalarında oluşturulmasını, bakımını ve kaldırılmasını otomatik hale getirmenizi sağlar. Daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+Azure AD, kullanıcı kimliklerinin Dropbox, Salesforce, ServiceNow gibi bulut (SaaS) uygulamalarında oluşturulmasını, bakımını ve kaldırılmasını otomatik hale getirmenizi sağlar. Daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Tümleştirme bilgi koruması
 
-MCAS, dosyaları araştırmanıza ve Azure Information Protection sınıflandırma etiketlerine göre ilkeler ayarlamanıza olanak tanıyarak, buluttaki verilerinizin daha fazla görünürlüğünü ve denetimini etkinleştirir. Bulutta dosyaları tarayın ve sınıflandırın ve Azure Information Protection etiketlerini uygulayın. Daha fazla bilgi için [Azure Information Protection tümleştirmesi](https://docs.microsoft.com/cloud-app-security/azip-integration).
+MCAS, dosyaları araştırmanıza ve Azure Information Protection sınıflandırma etiketlerine göre ilkeler ayarlamanıza olanak tanıyarak, buluttaki verilerinizin daha fazla görünürlüğünü ve denetimini etkinleştirir. Bulutta dosyaları tarayın ve sınıflandırın ve Azure Information Protection etiketlerini uygulayın. Daha fazla bilgi için bkz. [Azure Information Protection tümleştirme](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Koşullu erişimi yapılandırma
 
@@ -318,7 +318,7 @@ Kullanıcıların erişiminin bağlı uygulamalarda da korunduğundan emin olmak
 * Veri sızıntısını önleme
 * Risk ve otomatik tehdit önleme ve ilke zorlamayı en aza indirme
 
-Cloud App Security SıEM Aracısı, Office 365 uyarıları ve etkinliklerini merkezi olarak izlemeyi etkinleştirmek için SıEM sunucunuz ile Cloud App Security tümleştirir. Sunucunuzda çalışır ve Cloud App Security uyarı ve etkinlik çeker ve bunları SıEM sunucusuna akıp. Daha fazla bilgi için [SIEM tümleştirmesi](https://docs.microsoft.com/cloud-app-security/siem).
+Cloud App Security SıEM Aracısı, Office 365 uyarıları ve etkinliklerini merkezi olarak izlemeyi etkinleştirmek için SıEM sunucunuz ile Cloud App Security tümleştirir. Sunucunuzda çalışır ve Cloud App Security uyarı ve etkinlik çeker ve bunları SıEM sunucusuna akıp. Daha fazla bilgi için bkz. [SIEM tümleştirmesi](https://docs.microsoft.com/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. Aşama: daha proaktif bir güvenlik duruşunu savunma oluşturmaya devam edin
 

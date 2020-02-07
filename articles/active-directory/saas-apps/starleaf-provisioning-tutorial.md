@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 0676eb2830c2e0233eb182cfec0be3f39c6a39e9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737751"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064315"
 ---
-# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
+# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Staryaprak 'ya otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Staryaprak ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
->  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+>  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -54,11 +54,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan önce, Staryaprak 'da SCıM sağlamasını yapılandırmanız gerekir:
 
-1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere** > gidin**tümleştirme Ekle**.
+1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere** > **tümleştirme Ekle**' ye gidin.
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**'ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Apply (Uygula)** düğmesine tıklayın.
 
     ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -85,7 +85,7 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
 4. Arama kutusuna **Staryaprak**yazın, sonuçlar panelinde **staryaprak** ' ı seçin.
-    ![Sonuç listesinde Staryaprak](common/search-new-app.png)
+    Sonuç listesinde Staryaprak ![](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Staryaprak için otomatik Kullanıcı sağlamayı yapılandırma
 
@@ -113,9 +113,9 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve bir **hata oluştuğunda e-posta bildirimi gönder** ' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Staryaprak olarak eşitler**' ı seçin.
 
@@ -126,7 +126,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
     ![Staryaprak oluşturma belirteci](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
 
 11. Staryaprak için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
@@ -143,7 +143,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve staryaprak ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna ilişkin bağlantıları izleyebilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
@@ -152,9 +152,9 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı](../manage-apps/check-status-user-account-provisioning.md)öğrenin.
+* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı](../app-provisioning/check-status-user-account-provisioning.md)öğrenin.

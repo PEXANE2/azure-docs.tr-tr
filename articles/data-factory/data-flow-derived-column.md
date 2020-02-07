@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972260"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048745"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
 
@@ -34,9 +34,9 @@ Değiştirmekte olduğunuz ve şemanıza eklemekte olduğunuz sütunlar çıktı
 
 ![Alt sütun Ekle](media/data-flow/addsubcolumn.png "Alt sütun Ekle")
 
-Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için bkz. [eşleme veri akışında JSON işleme](concepts-data-flow-json.md)
+Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için bkz. [eşleme veri akışında JSON işleme](format-json.md#mapping-data-flow-properties).
 
-![Karmaşık sütun Ekle](media/data-flow/complexcolumn.png "Sütun ekleme")
+![Karmaşık sütun Ekle](media/data-flow/complexcolumn.png "Sütun Ekle")
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 

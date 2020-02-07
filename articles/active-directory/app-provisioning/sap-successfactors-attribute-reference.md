@@ -1,0 +1,141 @@
+---
+title: SAP başarılı etmenleri öznitelik başvurusu | Microsoft Docs
+description: Başarılı bir şekilde hangi özniteliklerin desteklendiğini
+services: active-directory
+author: cmmdesai
+documentationcenter: na
+manager: jodadzie
+ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+ms.service: active-directory
+ms.subservice: app-mgmt
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 12/06/2019
+ms.author: chmutali
+ms.openlocfilehash: 6f7497e62be0036c13d5c33fa82301469df16f26
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77066193"
+---
+# <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
+
+## <a name="supported-successfactors-entities-and-attributes"></a>Desteklenen başarılı etken varlıkları ve öznitelikleri
+
+Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından desteklenen başarılı etmen özniteliklerinin listesi verilmiştir: 
+* [Kullanıcı sağlamayı Active Directory için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+* [Azure AD Kullanıcı sağlama için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+
+| \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem Türü |
+|----|----------------------------------------|------------------------------|----------------|
+| 1  | PerPerson                              | Personıdexternal             | Okuma           |
+| 2  | PerPerson                              | PersonID                     | Okuma           |
+| 3  | PerPerson                              | perPersonUuid                | Okuma           |
+| 4  | PerPersonal                            | displayName                  | Okuma           |
+| 5  | PerPersonal                            | firstName                    | Okuma           |
+| 6  | PerPersonal                            | cinsiyet                       | Okuma           |
+| 7  | PerPersonal                            | lastName                     | Okuma           |
+| 8  | PerPersonal                            | middleName                   | Okuma           |
+| 9  | PerPersonal                            | preferredName                | Okuma           |
+| 10 | Kullanıcı                                   | addressLine1                 | Okuma           |
+| 11 | Kullanıcı                                   | addressLine2                 | Okuma           |
+| 12 | Kullanıcı                                   | addressLIne3                 | Okuma           |
+| 13 | Kullanıcı                                   | businessPhone                | Okuma           |
+| 14 | Kullanıcı                                   | cellPhone                    | Okuma           |
+| 15 | Kullanıcı                                   | city                         | Okuma           |
+| 16 | Kullanıcı                                   | ülke                      | Okuma           |
+| 17 | Kullanıcı                                   | custom01                     | Okuma           |
+| 18 | Kullanıcı                                   | custom02                     | Okuma           |
+| 19 | Kullanıcı                                   | custom03                     | Okuma           |
+| 20 | Kullanıcı                                   | custom04                     | Okuma           |
+| 21 | Kullanıcı                                   | custom05                     | Okuma           |
+| 22 | Kullanıcı                                   | custom06                     | Okuma           |
+| 23 | Kullanıcı                                   | custom07                     | Okuma           |
+| 24 | Kullanıcı                                   | custom08                     | Okuma           |
+| 25 | Kullanıcı                                   | custom09                     | Okuma           |
+| 26 | Kullanıcı                                   | custom10                     | Okuma           |
+| 27 | Kullanıcı                                   | custom11                     | Okuma           |
+| 28 | Kullanıcı                                   | custom12                     | Okuma           |
+| 29 | Kullanıcı                                   | custom13                     | Okuma           |
+| 30 | Kullanıcı                                   | custom14                     | Okuma           |
+| 31 | Kullanıcı                                   | EmpID                        | Okuma           |
+| 32 | Kullanıcı                                   | homePhone                    | Okuma           |
+| 33 | Kullanıcı                                   | jobFamily                    | Okuma           |
+| 34 | Kullanıcı                                   | takma ad                     | Okuma           |
+| 35 | Kullanıcı                                   | durum                        | Okuma           |
+| 36 | Kullanıcı                                   | timeZone                     | Okuma           |
+| 37 | Kullanıcı                                   | kullanıcı adı                     | Okuma           |
+| 38 | Kullanıcı                                   | Posta kodu                      | Okuma           |
+| 39 | PerPhone                               | areaCode                     | Okuma           |
+| 40 | PerPhone                               | countryCode                  | Okuma           |
+| 41 | PerPhone                               | uzantının                    | Okuma           |
+| 42 | PerPhone                               | phoneNumber                  | Okuma           |
+| 43 | PerPhone                               | phoneType                    | Okuma           |
+| 44 | PerEmail                               | emailAddress                 | Okuma, yazma    |
+| 45 | PerEmail                               | emailType                    | Okuma           |
+| 46 | Empistihdam                          | Firstdateçalıştı              | Okuma           |
+| 47 | Empistihdam                          | Lastdateçalıştı               | Okuma           |
+| 48 | Empistihdam                          | userId                       | Okuma           |
+| 49 | Empistihdam                          | Iskıgentworker           | Okuma           |
+| 50 | EmpJob                                 | countryOfCompany             | Okuma           |
+| 51 | EmpJob                                 | emplStatus                   | Okuma           |
+| 52 | EmpJob                                 | endDate                      | Okuma           |
+| 53 | EmpJob                                 | Başlangıç                    | Okuma           |
+| 54 | EmpJob                                 | İş Unvanı                     | Okuma           |
+| 55 | EmpJob                                 | konum                     | Okuma           |
+| 65 | EmpJob                                 | customString13               | Okuma           |
+| 56 | EmpJob                                 | Yönetici kimliği                    | Okuma           |
+| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | Okuma           |
+| 58 | EmpJob\.BusinessUnit                   | Businessunid               | Okuma           |
+| 59 | EmpJob\.şirketi                        | Şirket                      | Okuma           |
+| 60 | EmpJob\.şirketi                        | companyId                    | Okuma           |
+| 61 | \.şirket\.CountryOfRegistration Iş | twoCharCountryCode           | Okuma           |
+| 62 | EmpJob\.CostCenter                     | costCenter                   | Okuma           |
+| 63 | EmpJob\.CostCenter                     | Costcenterıd                 | Okuma           |
+| 64 | EmpJob\.CostCenter                     | costCenterDescription        | Okuma           |
+| 65 | EmpJob\.departmanı                     | Bölüm                   | Okuma           |
+| 66 | EmpJob\.departmanı                     | DepartmentId                 | Okuma           |
+| 67 | EmpJob\.bölümü                       | bölme                     | Okuma           |
+| 68 | EmpJob\.bölümü                       | divisionId                   | Okuma           |
+| 69 | EmpJob\.JobCode                        | jobCode                      | Okuma           |
+| 70 | EmpJob\.JobCode                        | Jobcodeıd                    | Okuma           |
+| 71 | EmpJob\.konumu                       | LocationName                 | Okuma           |
+| 72 | EmpJob\.konumu                       | officeLocationAddress        | Okuma           |
+| 73 | EmpJob\.konumu                       | officeLocationCity           | Okuma           |
+| 74 | EmpJob\.konumu                       | officeLocationCustomString4  | Okuma           |
+| 75 | EmpJob\.konumu                       | officeLocationZipCode        | Okuma           |
+| 76 | EmpJob\.Paygrad                       | Paygrad                     | Okuma           |
+| 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Okuma           |
+| 78 | EmpEmploymentTermination               | Latestsonlandırmatarihi        | Okuma           |
+
+
+## <a name="default-attribute-mapping"></a>Varsayılan öznitelik eşlemesi
+
+Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure AD öznitelikleri arasında varsayılan öznitelik eşlemesi sağlanmaktadır. Azure AD sağlama uygulaması "eşleme" dikey penceresinde, yukarıdaki listeden öznitelikleri dahil etmek için bu varsayılan eşlemeyi değiştirebilirsiniz. 
+
+| \# | Başarılı etken varlığı                  | Başarılı etken özniteliği | Varsayılan AD/Azure AD öznitelik eşlemesi   | İşlem açıklaması                                                                            |
+|----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
+| 1  | PerPerson                              | Personıdexternal         | Çalışan                              | Eşleşen öznitelik olarak kullanıldı                                                                   |
+| 2  | PerPerson                              | perPersonUuid            | Kaynak Bağlayıcısı olarak kullanılan \- eşlenmemiş \[\] | İlk eşitleme sırasında, sağlama hizmeti personUuid var olan Objectguid\ dizinine bağlar.  |
+| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
+| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
+| 6  | Kullanıcı                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | Kullanıcı                                   | city                     | m                                       | NA                                                                                           |
+| 8  | Kullanıcı                                   | ülke                  | Ortak                                      | NA                                                                                           |
+| 9  | Kullanıcı                                   | durum                    | St                                      | NA                                                                                           |
+| 10 | Kullanıcı                                   | kullanıcı adı                 | Hesap                          | NA                                                                                           |
+| 11 | Kullanıcı                                   | Posta kodu                  | posta kodu                              | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | posta                                    | NA                                                                                           |
+| 13 | EmpJob                                 | İş Unvanı                 | title                                   | NA                                                                                           |
+| 14 | EmpJob                                 | Yönetici kimliği                | Yöneticisi                                 | NA                                                                                           |
+| 15 | \.şirket\.CountryOfRegistration Iş | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob\.departmanı                     | Bölüm               | Bölüm                              | NA                                                                                           |
+| 17 | EmpJob\.bölümü                       | bölme                 | Şirket                                 | NA                                                                                           |
+| 18 | EmpJob\.konumu                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | EmpJob\.konumu                       | officeLocationZipCode    | posta kodu                              | NA                                                                                           |
+| 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | activeEmploymentsCount = 0 ise, account\'ı devre dışı bırakın.                                           |
+

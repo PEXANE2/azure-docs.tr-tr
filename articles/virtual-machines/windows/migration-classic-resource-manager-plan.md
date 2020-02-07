@@ -3,8 +3,8 @@ title: Klasik 'dan Azure Resource Manager 'e geçiş planlaması
 description: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,26 +12,23 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 2d7eca56556c8a1097b625b8f4b0e2de2facbc60
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980879"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061616"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager çok sayıda harika özellik sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir.
-
-> [!NOTE]
-> Aşağıdaki yönergeler, Azure müşteri danışmanlık ekibi ve bulut çözümü mimarlarının büyük ortamları geçirme konusunda müşterilerle çalıştığı bir şekilde katkıda bulunmıştı. Bu belge başarılı bir şekilde başarılı oldu desenler olarak güncellenmeye devam edecek, bu nedenle yeni öneriler olup olmadığını görmek için zaman zaman geri çekin.
 
 Geçiş yolculuğunun dört genel aşaması vardır:<br>
 
 ![Geçiş aşamaları](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planlama
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Teknik hususlar ve avantajları
 
@@ -44,7 +41,7 @@ Teknik gereksinim boyutunuza, coğrafi ve işletimsel uygulamalara bağlı olara
 5. İşletimsel takımlar artık hem klasik hem de Azure Resource Manager uygulamalar/VM 'Leri destekliyor mu?
 6. (Varsa) VM dağıtımınızı, yönetimini, izlemeyi ve raporlama işlemlerinizi nasıl değiştirip Azure Resource Manager?  Dağıtım betiklerinizin güncellenmesi gerekiyor mu?
 7. Paydaşları (son kullanıcılar, uygulama sahipleri ve altyapı sahipleri) uyarmak için iletişim planı nedir?
-8. Ortamın karmaşıklığına bağlı olarak, uygulamanın son kullanıcılar ve uygulama sahipleri tarafından kullanılamadığı bir bakım dönemi olması gerekir mi?  Öyleyse ne kadar süreyle kullanmıştı?
+8. Ortamın karmaşıklığına bağlı olarak, uygulamanın son kullanıcılar ve uygulama sahipleri tarafından kullanılamadığı bir bakım dönemi olması gerekir mi?  Öyleyse, ne kadar süreyle?
 9. Paydaşların Azure Resource Manager konusunda bilgili ve proficde emin olmak için eğitim planı nedir?
 10. Geçiş için program yönetimi veya proje yönetim planı nedir?
 11. Azure Resource Manager geçişi ve diğer ilgili teknoloji yol haritaları için zaman çizelgeleri nelerdir?  En iyi şekilde hizalansın mı?
@@ -125,7 +122,7 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
   - Yük Dengeleyiciler
   - Genel IP'ler
   - Statik genel IP 'Ler
-  - Çekirdek
+  - Çekirdekler
   - Ağ Güvenlik Grupları
   - Yönlendirme Tabloları
 

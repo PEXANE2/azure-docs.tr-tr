@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cf6c89e5f891c5f16551885fb40e8d5082fd6ba5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841974"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063518"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Galeri olmayan uygulamalarda SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -32,7 +32,7 @@ SAML dışı bir uygulama için kod yazmadan çoklu oturum açmayı yapılandır
 
 Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama ekleme](add-non-gallery-app.md).
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>1\. Adım Temel SAML yapılandırmasını düzenleme
+## <a name="step-1-edit-the-basic-saml-configuration"></a>1\. Adım. Temel SAML yapılandırmasını düzenleme
 
 1. [Azure Portal](https://portal.azure.com) bir bulut uygulaması Yöneticisi veya Azure AD kiracınız için bir uygulama Yöneticisi olarak oturum açın.
 
@@ -53,14 +53,14 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama 
     | Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Açıklama |
     |:--|:--|:--|:--|
     | **Tanımlayıcı (varlık KIMLIĞI)** | Bazı uygulamalar için gereklidir | Bazı uygulamalar için gereklidir | Uygulamayı benzersiz olarak tanımlar. Azure AD, kimliği, SAML belirtecinin hedef kitle parametresi olarak uygulamaya gönderir. Uygulamanın doğrulaması bekleniyordu. Bu değer ayrıca uygulama tarafından sağlanan SAML meta verilerinde Varlık Kimliği olarak da görünür. Şu kalıbı kullanan bir URL girin: ' https://<subdomain>. contoso.com ' *Bu değeri, uygulama tarafından gönderilen authisteyesindeki (SAML isteği ) **veren** öğesi olarak bulabilirsiniz.* |
-    | **Yanıt URL'si** | Gereklidir | Gereklidir | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |
-    | **Oturum Açma URL'si** | Gereklidir | Belirtmeyin | Kullanıcı bu URL'yi açtığında hizmet sağlayıcısı kimlik doğrulaması ve oturum açma için Azure AD'ye yönlendirir. Azure AD, uygulamayı Office 365 veya Azure AD erişim panelinden başlatmak için URL 'YI kullanır. Boş olduğunda Azure AD, bir Kullanıcı uygulamayı Office 365, Azure AD erişim paneli veya Azure AD SSO URL 'sinden başlattığında IDP tarafından başlatılan oturum açma işlemini gerçekleştirir.|
-    | **Geçiş durumu** | İsteğe Bağlı | İsteğe Bağlı | Uygulamaya kimlik doğrulaması tamamlandıktan sonra kullanıcının yönlendirileceği yeri belirtir. Genellikle değer uygulamanın geçerli bir URL 'sidir. Ancak, bazı uygulamalar bu alanı farklı şekilde kullanır. Daha fazla bilgi için uygulama satıcısına danışın.
-    | **Oturum kapatma URL 'SI** | İsteğe Bağlı | İsteğe Bağlı | SAML oturum kapatma yanıtlarını uygulamaya geri göndermek için kullanılır.
+    | **Yanıt URL'si** | Gerekli | Gerekli | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |
+    | **Oturum Açma URL'si** | Gerekli | Belirtmeyin | Kullanıcı bu URL'yi açtığında hizmet sağlayıcısı kimlik doğrulaması ve oturum açma için Azure AD'ye yönlendirir. Azure AD, uygulamayı Office 365 veya Azure AD erişim panelinden başlatmak için URL 'YI kullanır. Boş olduğunda Azure AD, bir Kullanıcı uygulamayı Office 365, Azure AD erişim paneli veya Azure AD SSO URL 'sinden başlattığında IDP tarafından başlatılan oturum açma işlemini gerçekleştirir.|
+    | **Geçiş durumu** | İsteğe bağlı | İsteğe bağlı | Uygulamaya kimlik doğrulaması tamamlandıktan sonra kullanıcının yönlendirileceği yeri belirtir. Genellikle değer uygulamanın geçerli bir URL 'sidir. Ancak, bazı uygulamalar bu alanı farklı şekilde kullanır. Daha fazla bilgi için uygulama satıcısına danışın.
+    | **Oturum kapatma URL 'SI** | İsteğe bağlı | İsteğe bağlı | SAML oturum kapatma yanıtlarını uygulamaya geri göndermek için kullanılır.
 
 Daha fazla bilgi için bkz. [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md).
 
-## <a name="step-2-configure-user-attributes-and-claims"></a>2\. Adım. Kullanıcı özniteliklerini ve taleplerini yapılandırma 
+## <a name="step-2-configure-user-attributes-and-claims"></a>2\. Adım Kullanıcı özniteliklerini ve taleplerini yapılandırma 
 
 Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı benzersiz bir şekilde tanımlayan kullanıcı hakkında bilgi (veya talepler) içeren bir SAML belirteci uygulamayı yayınlar. Varsayılan olarak, bu bilgiler kullanıcının Kullanıcı adı, e-posta adresi, adı ve soyadı bilgilerini içerir. Örneğin, uygulama belirli talep değerleri veya Kullanıcı adı dışında bir **ad** biçimi gerektiriyorsa, bu talepleri özelleştirmeniz gerekebilir. Galeri uygulamaları için gereksinimler [uygulamaya özgü öğreticilerde](../saas-apps/tutorial-list.md)açıklanmıştır veya uygulama satıcısına danışabilirsiniz. Kullanıcı özniteliklerini ve taleplerini yapılandırmaya yönelik genel adımlar aşağıda açıklanmıştır.
 
@@ -85,7 +85,7 @@ Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı ben
    >- Uygulamanız için isteğe bağlı talepler yapılandırmak üzere uygulama bildirimini değiştirmek için bkz. [isteğe bağlı talepler yapılandırma](../develop/active-directory-optional-claims.md).
    >- Belirteç kullanım belirteçleri, erişim belirteçleri, oturum belirteçleri ve KIMLIK belirteçlerine yönelik belirteç ömür ilkelerini ayarlamak için bkz. [belirteç yaşam sürelerini yapılandırma](../develop/active-directory-configurable-token-lifetimes.md). Ya da Azure AD koşullu erişimi aracılığıyla kimlik doğrulaması oturumlarını kısıtlamak için bkz. [kimlik doğrulama oturumu yönetimi özellikleri](https://go.microsoft.com/fwlink/?linkid=2083106).
 
-## <a name="step-3-manage-the-saml-signing-certificate"></a>3\. Adım. SAML imzalama sertifikasını yönetme
+## <a name="step-3-manage-the-saml-signing-certificate"></a>Adım 3: SAML imzalama sertifikasını yönetme
 
 Azure AD, uygulamanın gönderdiği SAML belirteçlerini imzalamak için bir sertifika kullanır. Azure AD ile uygulama arasındaki güveni ayarlamak için bu sertifikaya ihtiyacınız vardır. Sertifika biçimi hakkında daha fazla bilgi için bkz. uygulamanın SAML belgeleri. Daha fazla bilgi için bkz. SAML belirtecindeki [Federasyon çoklu oturum açma](manage-certificates-for-federated-single-sign-on.md) ve [Gelişmiş sertifika imzalama seçenekleri](certificate-signing-options.md)için sertifikaları yönetme.
 
@@ -163,4 +163,4 @@ Daha fazla bilgi için bkz. [Azure Active Directory içindeki uygulamalarda SAML
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulamaya Kullanıcı veya Grup atama](methods-for-assigning-users-and-groups.md)
-- [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](configure-automatic-user-provisioning-portal.md)
+- [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)

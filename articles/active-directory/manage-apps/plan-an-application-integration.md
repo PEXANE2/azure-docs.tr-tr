@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895926"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063389"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama
 
@@ -85,7 +85,7 @@ Yeni bir uygulama yazıyorsanız ve geliştiricilerin Azure AD 'nin gücünden y
 Aşağıdaki makalelerde, Azure AD bağlayıcıları ve Azure AD 'yi kullanarak Azure AD ile tümleştirildiğinde uygulamalara erişimi yönetme yolları açıklanır.
 
 * [Azure AD kullanarak uygulamalara erişimi yönetme](what-is-access-management.md)
-* [Azure AD bağlayıcıları ile otomatikleştirme](user-provisioning.md)
+* [Azure AD bağlayıcıları ile otomatikleştirme](../app-provisioning/user-provisioning.md)
 * [Uygulamaya kullanıcı atama](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Uygulamaya grup atama](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [Hesapları paylaşma](../active-directory-sharing-accounts.md)
@@ -95,7 +95,7 @@ Ayrıntılı bilgi için, [GitHub](https://aka.ms/deploymentplans)'dan Azure Act
 
 Azure portal bir dağıtım planı indirmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Kurumsal uygulamalar** ' ı seçerek **bir uygulama** | **dağıtım planı**seçin | .
 
 Lütfen [dağıtım planı anketini](https://aka.ms/DeploymentPlanFeedback)alarak dağıtım planlarında geri bildirim sağlayın.

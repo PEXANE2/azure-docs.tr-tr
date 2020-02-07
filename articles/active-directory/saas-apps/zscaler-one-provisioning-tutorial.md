@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Zscaler 'ı yapılandırın | Microsoft Docs"
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Zscaler 'yi yapılandırma | Microsoft Docs"
 description: Kullanıcı hesaplarını otomatik olarak sağlamak ve, Zscaler 'ya yeniden sağlamak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de9dce04b6f27b6ae6f5c5caeed5728370359558
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515375"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064181"
 ---
-# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
+# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
 Bu öğreticide, Azure AD 'yi otomatik olarak sağlamak ve Kullanıcı ve grupları Zscaler 'ya yeniden sağlamak üzere yapılandırmak için Zscaler bir ve Azure Active Directory (Azure AD) içinde gerçekleştirme adımları gösterilmektedir.
 
@@ -84,7 +84,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Azure AD 'de Zscaler için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > **Zscaler**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm uygulamalar** >  > **Zscaler One** **Kurumsal uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -102,11 +102,11 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 5. **Yönetici kimlik bilgileri** bölümü altında, **kiracı URL 'si** ve gizli dizi **belirteci** kutularını, 6. adımda anlatıldığı gibi Zscaler hesabınız için ayarlarla birlikte girin.
 
-6. Kiracı URL 'sini ve gizli anahtarı almak için, tek bir Portal Kullanıcı arabirimindeki **Yönetim** > **kimlik doğrulaması ayarları** ' na gidin. **Kimlik doğrulama türü**altında **SAML**' yi seçin.
+6. Kiracı URL 'sini ve gizli anahtarı almak için, Zscaler Portal Kullanıcı arabirimindeki **yönetim** > **kimlik doğrulama ayarları** ' na gidin. **Kimlik doğrulama türü**altında **SAML**' yi seçin.
 
     ![Zscaler bir kimlik doğrulama ayarları](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    a. SAML **Yapılandır seçeneklerini açmak** Için **SAML Yapılandır** ' ı seçin.
+    a. **SAML Yapılandır seçeneklerini açmak** Için **SAML Yapılandır** ' ı seçin.
 
     ![Zscaler bir SAML Yapılandır](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
@@ -160,7 +160,7 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

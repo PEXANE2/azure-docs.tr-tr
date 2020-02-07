@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185375"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064351"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Sanal ağ alt ağını ekleme, değiştirme veya silme
 
@@ -49,11 +49,12 @@ Oturum açtığınızda veya Azure 'a bağlanmak için kullandığınız hesap, 
    - **Ağ güvenlik grubu**: alt ağın gelen ve giden ağ trafiğini filtrelemek için sıfır veya var olan bir ağ güvenlik grubunu bir alt ağla ilişkilendirebilirsiniz. Ağ güvenlik grubu, sanal ağla aynı abonelikte ve konumda bulunmalıdır. [Ağ güvenlik grupları](security-overview.md) ve [ağ güvenlik grubu oluşturma](tutorial-filter-network-traffic.md)hakkında daha fazla bilgi edinin.
    - **Yol tablosu**: diğer ağlara ağ trafiği yönlendirmeyi denetlemek için sıfır veya var olan bir yol tablosunu bir alt ağ ile ilişkilendirebilirsiniz. Yol tablosu, sanal ağla aynı abonelikte ve konumda bulunmalıdır. [Azure yönlendirme](virtual-networks-udr-overview.md) ve [yol tablosu oluşturma](tutorial-create-route-table-portal.md) hakkında daha fazla bilgi edinin
    - **Hizmet uç noktaları:** Bir alt ağda sıfır veya birden fazla hizmet uç noktası etkin olabilir. Hizmet için bir hizmet uç noktasını etkinleştirmek istiyorsanız, hizmet uç noktalarını **Hizmetler** listesinden etkinleştirmek istediğiniz hizmeti veya hizmetleri seçin. Konum, bir uç nokta için otomatik olarak yapılandırılır. Varsayılan olarak, hizmet uç noktaları sanal ağın bölgesi için yapılandırılır. Azure depolama için bölgesel yük devretme senaryolarını desteklemek üzere, uç noktalar otomatik olarak [Azure eşlenmiş bölgelere](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)yapılandırılır.
-   - **Alt ağ temsili:** Bir alt ağ için birden fazla temsilci etkin olabilir. Alt ağ temsili, hizmeti dağıtma sırasında benzersiz bir tanımlayıcı kullanarak alt ağda hizmete özel kaynaklar oluşturmak için hizmete açık izinler verir. Bir hizmet için temsilci seçmek için, **Hizmetler** listesinden yetkisini atamak istediğiniz hizmeti seçin.
-
+   
        Hizmet uç noktasını kaldırmak için hizmet uç noktasını kaldırmak istediğiniz hizmetin seçimini kaldırın. Hizmet uç noktaları ve için etkinleştiribilecekleri hizmetler hakkında daha fazla bilgi edinmek için bkz. [sanal ağ hizmeti uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md). Hizmet için bir hizmet uç noktasını etkinleştirdikten sonra, hizmet ile oluşturulan bir kaynağın alt ağı için ağ erişimini de etkinleştirmeniz gerekir. Örneğin, *Microsoft. Storage*için hizmet uç noktasını etkinleştirirseniz, ağ erişimi vermek Istediğiniz tüm Azure depolama hesaplarına ağ erişimini de etkinleştirmeniz gerekir. Hizmet uç noktasının etkinleştirildiği alt ağlara ağ erişimini etkinleştirme hakkında ayrıntılar için, hizmet uç noktasını etkinleştirdiğiniz bireysel hizmet belgelerine bakın.
 
      Bir alt ağ için hizmet uç noktasının etkinleştirildiğini doğrulamak için, alt ağdaki herhangi bir ağ arabirimi için [geçerli yolları](diagnose-network-routing-problem.md) görüntüleyin. Bir uç nokta yapılandırıldığında, hizmetin adres ön ekine sahip bir *varsayılan* yol ve bir Nexthoptype **virtualnetworkserviceendpoint**görürsünüz. Yönlendirme hakkında daha fazla bilgi için bkz. [yönlendirmeye genel bakış](virtual-networks-udr-overview.md).
+   - **Alt ağ temsili:** Bir alt ağ için birden fazla temsilci etkin olabilir. Alt ağ temsili, hizmeti dağıtma sırasında benzersiz bir tanımlayıcı kullanarak alt ağda hizmete özel kaynaklar oluşturmak için hizmete açık izinler verir. Bir hizmet için temsilci seçmek için, **Hizmetler** listesinden yetkisini atamak istediğiniz hizmeti seçin.
+
 6. Alt ağı seçtiğiniz sanal ağa eklemek için **Tamam**' ı seçin.
 
 **Komut**
@@ -99,7 +100,7 @@ Alt ağı yalnızca alt ağda kaynak yoksa silebilirsiniz. Alt ağda kaynaklar v
 
 Alt ağlarda görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-|Eylem                                                                   |   Ad                                       |
+|Eylem                                                                   |   Adı                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/alt ağlar/okuma                           |   Sanal ağ alt ağını oku              |
 |Microsoft. Network/virtualNetworks/alt ağlar/yazma                          |   Sanal ağ alt ağını oluşturma veya güncelleştirme  |

@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory ile bir dünya 'yi parola olmadan anlama | Microsoft Docs
+title: Azure AD ile passwordless kimlik doğrulaması
+titleSuffix: Active Directory
 description: Bu kılavuz CEOs, Cıos, Cıos, kimlik mimarları, kuruluş mimarları ve güvenlik ve BT karar mekanizmalarının, Azure Active Directory uygulamaları için bir passwordless kimlik doğrulama yöntemi seçmekten sorumlu olur.
 keywords: parolasız, azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945579"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064487"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory ile parolalar olmadan bir dünya
 
@@ -238,7 +239,7 @@ Donanım belirtecini varsayılan Multi-Factor Authentication yöntemi olarak se�
 
 * Telefon araması
 
-* Kısa mesaj
+* SMS mesajı
 
 #### <a name="user-using-fido2-security-key-for-sign-in"></a>Oturum açma için FIDO2 güvenlik anahtarını kullanan Kullanıcı
 
@@ -284,7 +285,7 @@ Microsoft parola-Less teknolojisini seçerken göz önünde bulundurmanız gerek
 ||**İş İçin Windows Hello**|**Microsoft Authenticator uygulamayla passwordless oturum açma**|**FIDO2 güvenlik anahtarları**|
 |:-|:-|:-|:-|
 |**Önkoşul**| Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory| Microsoft Authenticator uygulaması<br>Telefon (Android 6,0 veya üzeri çalıştıran iOS ve Android cihazları.)|Windows 10, sürüm 1809 veya üzeri<br>Azure Active Directory|
-|**Mode**|Platform|Yazılım|Donanım|
+|**Modundaysa**|Platform|Yazılım|Donanım|
 |**Sistemler ve cihazlar**|Yerleşik Güvenilir Platform Modülü bılgısayar (TPM)<br>PIN ve Biyometri tanıma |Telefonda PIN ve Biyometri tanıma|Microsoft uyumlu FIDO2 güvenlik cihazları|
 |**Kullanıcı deneyimi**|Windows cihazlarıyla bir PIN veya biyometrik tanıma (yüz, Iris veya parmak izi) kullanarak oturum açın.<br>Windows Hello kimlik doğrulaması cihaza bağlıdır; kullanıcının şirket kaynaklarına erişmek için hem cihaza hem de PIN veya biyometri faktörü gibi bir oturum açma bileşenine ihtiyacı vardır.|Parmak izi taraması, yüz veya Iris tanıma veya PIN ile cep telefonu kullanarak oturum açın.<br>Kullanıcılar, PC veya cep telefonlarından iş veya kişisel hesap için oturum açabilirler.|FIDO2 güvenlik cihazını (biyometri, PIN ve NFC) kullanarak oturum açın<br>Kullanıcı, cihaza, USB güvenlik anahtarları ve NFC 'nin etkinleştirildiği akıllı kartlar, anahtarlar veya wearables gibi cihazları kullanarak kuruluş denetimlerini ve kimlik doğrulamasını temel alarak cihaz erişimi sağlayabilir.|
 |**Etkin senaryolar**| Windows cihazındaki parola-daha az deneyim.<br>Cihaz ve uygulamalarda çoklu oturum açma yeteneğine sahip adanmış iş BILGISAYARı için geçerlidir.|Cep telefonu kullanan parola-daha az her yerde çözüm.<br>Herhangi bir cihazdan Web üzerinde iş veya kişisel uygulamalara erişmek için geçerlidir.|Biyometri, PIN ve NFC kullanan çalışanlar için parola açısından daha az deneyim.<br>Paylaşılan bilgisayarlar ve cep telefonunun uygun bir seçenek olmaması (örneğin, yardım masası personeli, genel bilgi noktası veya hastane ekibi gibi) için geçerlidir|
@@ -299,7 +300,7 @@ Gereksinimlerinizi ve kullanıcılarınızı hangi yöntemin destekleyeceği bel
 |**Bilgi çalışanı**|Üretkenlik çalışmaları| Mobil veya Windows dışı cihaz|Microsoft Authenticator uygulamayla passwordless oturum açma|
 |**Frontline Worker**|Bir fabrika, Tesis, perakende veya veri girişinde kiosks|Paylaşılan Windows 10 cihazları|FIDO2 güvenlik anahtarları|
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Parolasız kimlik doğrulaması, gelecekteki ve daha güvenli bir ortam yolunun yoludur. Kuruluşların bu değişikliği planlamaya ve parolalarla ilgili bağımlılıklarını azaltmasına başlaması önerilir. Başlamak için aşağıdaki hedefleri göz önünde bulundurun:
 

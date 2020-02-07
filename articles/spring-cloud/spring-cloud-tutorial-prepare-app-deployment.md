@@ -4,14 +4,14 @@ description: Bu öğreticide, bir Java Spring uygulamasını dağıtım için ha
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 10/06/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 9918c7866b21cd2a9e021a355fb43977c91a89cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277438"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064725"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -25,38 +25,14 @@ Azure yay bulutu hem Java 8 hem de Java 11 ' i destekler. Barındırma ortamı, 
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Yay önyükleme ve yay bulut sürümleri
 
-Azure yay bulutu yalnızca Spring Boot uygulamalarını destekler. Hem Spring Boot sürüm 2,0 hem de 2,1 sürümünü destekler. Aşağıdaki tabloda desteklenen Spring Boot ve Spring Cloud kombinasyonlarını listelenmektedir:
+Azure yay bulutu yalnızca Spring Boot uygulamalarını destekler. Hem Spring Boot sürüm 2,1 hem de 2,2 sürümünü destekler. Aşağıdaki tabloda desteklenen Spring Boot ve Spring Cloud kombinasyonlarını listelenmektedir:
 
 Spring Boot sürümü | Yay bulutu sürümü
 ---|---
-2.0 | Finchley. RELEASE
 2.1 | Greenwich. RELEASE
+2.2 | Hoxton. RELEASE
 
 Pod. XML dosyanızın, Spring Boot sürümünüze bağlı olarak doğru yay önyüklemesinde ve Spring Cloud Dependencies 'e sahip olduğunu doğrulayın.
-
-### <a name="dependencies-for-spring-boot-version-20"></a>Spring Boot sürüm 2,0 için bağımlılıklar
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.9.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR4</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
 
@@ -65,7 +41,7 @@ Pod. XML dosyanızın, Spring Boot sürümünüze bağlı olarak doğru yay öny
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <version>2.1.12.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -74,7 +50,31 @@ Pod. XML dosyanızın, Spring Boot sürümünüze bağlı olarak doğru yay öny
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR3</version>
+                <version>Greenwich.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
+
+### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot sürüm 2,2 için bağımlılıklar
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -90,20 +90,10 @@ Aşağıdaki tabloda, uygulamanız için Spring Boot ve Spring Cloud kullanan do
 
 Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
 ---|---|---
-2.0 | Finchley. RELEASE | 2.0
 2.1 | Greenwich. RELEASE | 2.1
+2.2 | Hoxton. RELEASE | 2.2
 
 Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.
-
-### <a name="dependency-for-azure-spring-cloud-version-20"></a>Azure Spring Cloud sürüm 2,0 için bağımlılık
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.0.0</version>
-</dependency>
-```
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud sürüm 2,1 için bağımlılık
 
@@ -111,7 +101,17 @@ Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay 
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0</version>
+        <version>2.1.1</version>
+</dependency>
+```
+
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud sürüm 2,2 için bağımlılık
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.2.0</version>
 </dependency>
 ```
 

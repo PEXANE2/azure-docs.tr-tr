@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934627"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064827"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu sözdizimi
 
@@ -196,7 +196,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti gövdesinde bir sorgunun önüne `$twin`ön eki eklenmiş olması gerekir. Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Bu hem cihaz ikis, hem de modül TWINS için geçerlidir. Ayrıca, özellik adları olarak `twin`, `$twin`, `body`veya `$body`kullanmaktan kaçının. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
+İleti ikizi üzerinde bir sorgunun ön eki olarak `$twin`gerekir. Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Bu hem cihaz ikis, hem de modül TWINS için geçerlidir. Ayrıca, özellik adları olarak `twin`, `$twin`, `body`veya `$body`kullanmaktan kaçının. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

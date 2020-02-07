@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421212"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063331"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Azure Active Directory ile uygulama yönetimi
 
-Azure Active Directory (Azure AD), bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi sağlayarak uygulamalarınızı yönetmenin yolunu basitleştirir. Hizmet olarak yazılım (SaaS) uygulamaları, şirket içi uygulamalar ve iş kolu (LOB) uygulamalarını Azure AD 'ye ekleyebilirsiniz. Ardından kullanıcılar bir kez oturum açarak Office 365 ve Microsoft 'un diğer iş uygulamalarıyla birlikte bu uygulamalara güvenli ve sorunsuz bir şekilde erişin. [Kullanıcı sağlamayı otomatikleştirerek](user-provisioning.md)yönetim maliyetlerini azaltabilirsiniz. Ayrıca, güvenli uygulama erişimi sağlamak için Multi-Factor Authentication ve koşullu erişim ilkelerini de kullanabilirsiniz.
+Azure Active Directory (Azure AD), bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi sağlayarak uygulamalarınızı yönetmenin yolunu basitleştirir. Hizmet olarak yazılım (SaaS) uygulamaları, şirket içi uygulamalar ve iş kolu (LOB) uygulamalarını Azure AD 'ye ekleyebilirsiniz. Ardından kullanıcılar bir kez oturum açarak Office 365 ve Microsoft 'un diğer iş uygulamalarıyla birlikte bu uygulamalara güvenli ve sorunsuz bir şekilde erişin. [Kullanıcı sağlamayı otomatikleştirerek](../app-provisioning/user-provisioning.md)yönetim maliyetlerini azaltabilirsiniz. Ayrıca, güvenli uygulama erişimi sağlamak için Multi-Factor Authentication ve koşullu erişim ilkelerini de kullanabilirsiniz.
 
 ![Azure AD aracılığıyla federe olan uygulamaları gösteren diyagram](media/what-is-application-management/app-management-overview.png)
 
@@ -62,4 +62,4 @@ Azure AD’ye geçirerek maliyet tasarrufu yapabilir ve şirket içi altyapını
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulama proxy nedir?](what-is-application-proxy.md)
-- [Hızlı Başlangıç: Azure AD kiracınıza Galeri uygulaması ekleme](add-application-portal.md)
+- [Hızlı başlangıç: Azure AD kiracınıza Galeri uygulaması ekleme](add-application-portal.md)

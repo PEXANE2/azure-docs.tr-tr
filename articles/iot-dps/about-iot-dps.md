@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15eaba5b1102ddb282d72497093b8554a6b4cf56
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904879"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061633"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi gerektirmeden tam zamanında sağlama sağlayan, IoT Hub için bir yardımcı hizmettir. DPS, milyonlarca cihazın güvenli ve ölçeklenebilir bir şekilde sağlanması için izin vermez.
@@ -80,8 +80,10 @@ DPS birçok özelliğe sahiptir ve bu, cihazları sağlamak için ideal hale get
 * **Kayıt listesi**: Bir noktada kaydedilebilecek cihazların/cihaz gruplarının tam kaydını içerir. Kayıt listesi, kaydedilen cihazın istenen yapılandırması hakkında bilgi içerir ve istenen zamanda güncelleştirilebilir.
 * Senaryolarınızı desteklemek için DPS Cihazları IoT Hub 'larına nasıl atayacağını denetlemek için **birden çok ayırma ilkesi** : en düşük gecikme süresi, eşit ağırlıklı dağıtım (varsayılan) ve kayıt listesi aracılığıyla statik yapılandırma. Gecikme süresi [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)ile aynı yöntem kullanılarak belirlenir.
 * **İzleme ve tanılama günlüğü**: Her şeyin düzgün çalıştığından emin olmanızı sağlar.
-* **Çoklu Hub desteği** , DPS 'nin çalışma zamanında cihazların bir IoT Hub 'ına geç bağlamasını sağlar. DPS, birden çok Azure aboneliği genelinde hub 'larla iletişim kurabilir.
-* **Çapraz bölge desteği** , DPS 'nin diğer bölgelerde IoT Hub 'larına cihaz atamasını sağlar.
+* **Çoklu hub desteği**: Cihaz Sağlama Hizmeti’nin cihazları birden fazla IoT hub’a atamasını sağlar. Cihaz Sağlama Hizmeti birden fazla Azure aboneliğindeki hub’larla iletişim kurabilir.
+* **Bölgeler arası destek**: Cihaz Sağlama Hizmeti’nin cihazları diğer bölgelerdeki IoT hub’lara atamasını sağlar.
+* **Bekleyen veriler Için şifreleme** , cihaz sağlama hizmeti 'ndeki verilerin, 256 bit AES şifrelemesi kullanılarak şeffaf ve şifresi çözüle, en güçlü blok şifrelemelerin KULLANILABILIR ve FIPS 140-2 ile uyumlu olmasını sağlar.
+
 
 [Cihaz kavramları](concepts-device.md), [hizmet kavramları](concepts-service.md) ve [güvenlik kavramları](concepts-security.md) bölümlerinde cihaz sağlamayla ilgili kavramlar ve özellikler hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -102,7 +104,7 @@ DPS birçok bölgede kullanılabilir. Tüm hizmetler için mevcut ve yeni duyuru
 > [!NOTE]
 > DPS geneldir ve bir konum ile bağlantılı değildir. Ancak, DPS profilinizde ilişkilendirilen meta verilerin bulunacağı bir bölge belirtmeniz gerekir.
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 DPS için% 99,9 Hizmet Düzeyi Sözleşmesi vardır ve [SLA 'yı okuyabilirsiniz](https://azure.microsoft.com/support/legal/sla/iot-hub/). [Azure SLA](https://azure.microsoft.com/support/legal/sla/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
 ## <a name="quotas"></a>Kotalar

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4c0467039cf4fefd7625f1146c4bade99b49304d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046012"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048735"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni bir Dynamics 365 Iş Merkezi teklifi oluşturma
 
@@ -61,7 +61,7 @@ Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başla
 
 Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management). 
 
-### <a name="test-drive"></a>Test sürüşü
+### <a name="test-drive"></a>Sınama sürücüsü
 
 Test sürücüsü, bu kullanıcılara teklifinizi "satın almadan önce dene" seçeneği sunarak, daha fazla dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olacak şekilde sergilemenin harika bir yoludur. [Sınama sürücüleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -100,7 +100,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 Teklifinizi uygun Market arama alanına yerleştirmek için kullanılacak en az bir ve en fazla üç kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğine dikkat edin. 
 
-### <a name="industry"></a>Sektör
+### <a name="industry"></a>Endüstri
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -108,19 +108,9 @@ Teklifinizi uygun Market arama alanına yerleştirmek için kullanılacak en az 
 
 Teklifinizin sürüm numarasını girin. Müşteriler bu sürümü teklifin ayrıntı sayfasında listelenmiş olarak görür.
 
-### <a name="standard-contract"></a>Standart Sözleşme
+### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
-Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, Market 'teki bir işlemin kolaylaştırılmasına yardımcı olmak üzere standart bir sözleşme şablonu sunmaktadır.
-
-Özel hüküm ve koşulları ortadan kaldırmaktansa, yazılımınızı standart sözleşme altında sunmayı tercih edebilirsiniz; bu da müşterilerin yalnızca VET ve bir kez kabul etmesi gerekir.
-
-Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Standart sözleşmeyi kullanmak için **Standart sözleşmeyi kullan?** kutusunu işaretleyin.
-
-#### <a name="terms-of-use"></a>Kullanım koşulları
-
-**Standart sözleşmeyi kullan?** kutusunu denetlemeyin, **kullanım koşulları** alanında kendi yasal kullanım koşullarınızı sağlamanız gerekir. En fazla 10.000 karakter girin veya kullanım koşullarınız daha uzun bir açıklama gerektiriyorsa, ek lisans koşullarınızın bulunabileceği URL 'YI sağlayın. Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+**Hüküm ve koşullar** alanında kendi yasal hüküm ve koşullarınızı belirtin. Ayrıca, hüküm ve koşullarınızın bulunabileceği URL 'YI de sağlayabilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
 ## <a name="offer-listing"></a>Teklif listesi
 
@@ -131,7 +121,7 @@ Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görünt�
 > [!NOTE]
 > Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -172,7 +162,7 @@ Zengin metin düzenleyicisini kullanmak için aşağıdaki yönergeleri kullanı
 
      ![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png)
 
-### <a name="search-keywords"></a>Anahtar sözcüklerde ara
+### <a name="search-keywords"></a>Anahtar sözcükleri ara
 
 Müşterilerin teklifinizi Market 'te bulmasına yardımcı olmak için isteğe bağlı en fazla üç arama anahtar sözcüğü girebilirsiniz. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanmayı deneyin.
 
@@ -226,7 +216,7 @@ Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. E
 
 - [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 
 **Kullanılabilirlik** sayfası, teklifinizin nerede ve nasıl kullanılabilir hale sunulabileceği hakkında seçenekler sağlar.
 
@@ -398,7 +388,7 @@ Teklifinizin bir belge (. PDF biçiminde) içinde listelenen anahtar kullanımı
 
 Sertifika ekibimizin teklifinizi doğru bir şekilde gözden geçirmesi için bir test hesabı gerekiyorsa, **test hesabı** bilgilerinizi içeren bir. PDF,. doc veya. docx dosyasını yükleyin.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 
