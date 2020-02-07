@@ -5,10 +5,10 @@
   items:
     - name: Bulut uygulaması yönetimi ve çoklu oturum açma nedir?
       href: what-is-application-management.md
-    - name: Uygulama sağlama nedir?
-      href: user-provisioning.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu nedir?
       href: what-is-application-proxy.md
+    - name: Uygulama sağlama nedir?
+      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Hızlı Başlangıçlar
   items:
     - name: Galeriden bulut uygulaması ekleme
@@ -72,16 +72,6 @@
               href: howto-saml-token-encryption.md
             - name: Son kullanıcı portalları
               href: end-user-experiences.md
-    - name: Uygulama sağlama (SCIM)
-      items:
-        - name: Sağlama nasıl çalışır?
-          href: how-provisioning-works.md
-        - name: Otomatik kullanıcı sağlama dağıtımı planlama
-          href: plan-auto-user-provisioning.md
-    - name: Bulutta İK sağlama
-      items:
-        - name: Bulutta İK kullanıcı sağlama dağıtımı planlama
-          href: plan-cloud-hr-provision.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Ara Sunucusu
@@ -237,60 +227,6 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Uygulama sağlama (SCIM)
-      items:
-        - name: Galeri uygulaması için sağlamayı yapılandırma
-          href: configure-automatic-user-provisioning-portal.md
-        - name: SCIM uç noktası oluşturma ve sağlamayı yapılandırma
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Öznitelik eşlemelerini düzenleme
-          items:
-            - name: Öznitelik eşlemelerini özelleştirme
-              href: Customize-application-attributes.md
-            - name: Öznitelik eşlemeleri için ifadeler yazma
-              href: functions-for-customizing-application-data.md
-        - name: Kullanıcıları ve grupları kapsamda dahil etme veya dışlama
-          items:
-            - name: Sağlanacak kullanıcıların veya grupların kapsamını belirleme
-              href: define-conditional-rules-for-provisioning-user-accounts.md
-            - name: Kapsam dışı kullanıcılar için silme işlemini atlama
-              href: skip-out-of-scope-deletions.md
-        - name: Sağlamayı izleme ve raporlama
-          items:
-            - name: Sağlama durumunu ve performansını izleme
-              href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Uygulama sağlama hakkında rapor oluşturma
-              href: check-status-user-account-provisioning.md
-            - name: Yapılandırmanızı dışarı ve içeri aktarma
-              href: export-import-provisioning-configuration.md
-        - name: MS Graph kullanarak yapılandırmayı otomatikleştirme
-          href: application-provisioning-configure-api.md
-        - name: Kullanıcı hazırlama sorunlarını giderme
-          items:
-            - name: Uygulama hazırlama sorunlarını giderme
-              href: application-provisioning-config-problem.md
-            - name: Karantina durumu
-              href: application-provisioning-quarantine-status.md
-            - name: Sağlama günlükleri
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Eşleme için özniteliği eşitleme - galeri uygulaması
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Saatler sürüyor - galeri uygulaması
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Yetkilendirme sorunu (yönetici kimlik bilgileri kaydedilemiyor)
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Kullanıcılar sağlanmıyor
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Yanlış kullanıcılar sağlanıyor
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
-            - name: Karantinadaki sağlama işi
-              href: application-provisioning-quarantine-status.md
-            - name: Eksik kaynak özniteliği
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Sağlama işi yavaş
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Sağlama günlükleri
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Bağlayıcıları yapılandırma
@@ -391,28 +327,10 @@
           href: secure-hybrid-access.md
 - name: Başvuru
   items:
-    - name: Uygulama sağlama (SCIM)
-      items:
-        - name: Öznitelik eşlemeleri için ifadeler yazma
-          href: functions-for-customizing-application-data.md
-        - name: Sağlama yöntemini seçme
-          href: isv-automatic-provisioning-multi-tenant-apps.md
-    - name: Bulutta İK sağlama
-      items:
-        - name: SuccessFactors öznitelik başvurusu
-          href: sap-successfactors-attribute-reference.md
-        - name: Workday öznitelik başvurusu
-          href: workday-attribute-reference.md
-    - name: Azure AD Connect Sağlama Aracısı
-      items:
-        - name: Sağlama Aracısı sürüm geçmişi
-          href: provisioning-agent-release-version-history.md
-    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
-      items:
-        - name: Uygulama Ara Sunucusu SSS
-          href: application-proxy-faq.md
-        - name: Uygulama Proxy’si sürüm geçmişi
-          href: application-proxy-release-version-history.md
+    - name: Uygulama Ara Sunucusu SSS
+      href: application-proxy-faq.md
+    - name: Uygulama Proxy’si sürüm geçmişi
+      href: application-proxy-release-version-history.md
 - name: Kaynaklar
   items:
     - name: Geliştiriciler için destek ve yardım seçenekleri
