@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990717"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048696"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -78,7 +78,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 60030 veya 60031 hatası alırsanız, "bir Azure Key Vault yönetim işlemi başarısız oldu", şunları yapın:
 - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
 - Hesabın hata iletisinde belirtilen anahtar kasasına erişimi olduğundan emin olun ve işlemi yeniden deneyin.
-- Sorun devam ederse, Microsoft desteği 'ne başvurun.
+- Sorun devam ederse, Microsoft destek ile iletişime geçin.
 - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) .
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Hata 60028: bulma başlatılamadı
@@ -139,9 +139,9 @@ VM 'Leri silerseniz ve portalda hala görünüyorsa 30 dakika bekleyin. Hala gö
 
 Azure geçişi, Azure geçişi: Sunucu değerlendirmesi kullanılarak uygulama, rol ve özellik bulmayı destekler. Uygulama bulma Şu anda yalnızca VMware için destekleniyor. Uygulama bulmayı ayarlamaya yönelik gereksinimler ve adımlar hakkında [daha fazla bilgi edinin](how-to-discover-applications.md) .
 
-Tipik uygulama bulma hataları tabloda özetlenir.
+Tipik uygulama bulma hataları tabloda özetlenir. 
 
-**Hata:** | **Neden** | **Eylem**
+**Hatayla** | **Neden** | **Eylem**
 --- | --- | --- | ---
 10000: "sunucuda yüklü olan uygulamalar bulunamıyor". | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yalnızca Windows/Linux için uygulama bulmayı kullanın.
 10001: "sunucu yüklü uygulamalar alınamıyor". | İç hata-gereç içindeki bazı dosyalar eksik. | Microsoft Desteği'ne başvurun.

@@ -2,7 +2,7 @@
 title: Doğrulama yöntemi olarak Microsoft Authenticator uygulamasını ayarlama-Azure AD
 description: Doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını kullanarak kimliğinizi doğrulamak için güvenlik bilgileriniz (Önizleme) sayfasını ayarlama.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: 9a3efc6f6b1b7137e8e29e37edd968765712fef5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704978"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062430"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını ayarlama
 
@@ -33,11 +33,11 @@ Bunu iş veya okul hesabınızda oturum açtıktan hemen sonra ayarlamanız iste
 
 Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
 
-| Yöntem | Kullanıldığı yerler |
+| Yöntem | Kullanım alanı: |
 | ------ | -------- |
 | Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon görüşmeleri | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 | Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |

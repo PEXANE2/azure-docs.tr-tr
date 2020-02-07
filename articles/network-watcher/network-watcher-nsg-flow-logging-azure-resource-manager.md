@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 2ae6314accf5ad9143e1e103239c2e7c884ec947
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6980518da00e6849c327ca712bbeadaa816ae479
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776644"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056674"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portalında](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -38,7 +38,7 @@ Bu makalede, Azure Resource Manager şablonu ve Azure PowerShell kullanarak el i
 
 ## <a name="nsg-flow-logs-object"></a>NSG akış günlükleri nesnesi
 
-NSG akış günlükleri nesnesi parametreleriyle birlikte tümü aşağıda gösterilmektedir.
+NSG akış günlüğü nesnesi tüm parametreleri aşağıda gösterilmiştir.
 Özelliklere yönelik kapsamlı bir genel bakış için [NSG akış günlükleri şablon başvurusunu](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)okuyabilirsiniz.
 
 ```json

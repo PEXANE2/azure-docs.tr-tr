@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894893"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048963"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -95,11 +95,11 @@ Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek i�
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Gelişmiş ön işleme: isteğe bağlı korleştirme
 
-Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess). Bu ayarı şu şekilde etkinleştirin:
+Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#featurization). Bu ayarı şu şekilde etkinleştirin:
 
-+ Azure Machine Learning Studio: **yapılandırma çalıştırması** bölümünde [Bu adımlarla](how-to-create-portal-experiments.md) **Görünüm özellik ayarlarını** seçme.
++ Azure Machine Learning Studio: [Bu adımlarla](how-to-create-portal-experiments.md#create-and-run-experiment) **ek yapılandırmayı görüntüle** bölümünde **Otomatik** özelliği etkinleştirin.
 
-+ Python SDK: [`AutoMLConfig` sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)Için `"feauturization": auto' / 'off' / FeaturizationConfig` belirtme.
++ Python SDK: [`AutoMLConfig` sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)Için `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` belirtme. 
 
 ## <a name="prevent-over-fitting"></a>Fazla sığdırmayı engelle
 
@@ -151,7 +151,7 @@ Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu 
 
 Model **C** , aşırı sığdırma durumunu açık bir şekilde temsil eder; Eğitim doğruluğu çok yüksektir, ancak test doğruluğu yüksek olan her yerde değildir. Bu ayrım öznel, ancak sorununuz ve verileriniz hakkında bilgi sahibi olur ve hata magnitudes ne olduğunu kabul edilebilir. 
 
-## <a name="time-series-forecasting"></a>Zaman serisi tahmin etme
+## <a name="time-series-forecasting"></a>Zaman serisi tahmin
 
 Tahminleri oluşturmak, her işletmenin, gelir, envanter, satış veya müşteri talebi gibi bir parçasıdır. Teknikleri ve yaklaşımları birleştirmek ve önerilen, yüksek kaliteli bir zaman serisi tahmin sağlamak için otomatik ML kullanabilirsiniz.
 

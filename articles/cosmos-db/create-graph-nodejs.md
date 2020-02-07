@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 966dfbf0280351c605e6dc20fc65178aee83d099
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 7ab259886409610fc89c35f4c96c9babb977b44d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735245"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061870"
 ---
-# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak bir Node. js uygulaması oluşturma
+# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak bir Node. js uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -26,17 +26,12 @@ ms.locfileid: "68735245"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
-
-Bu hızlı başlangıçta, Azure portal kullanılarak Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve grafiğinin nasıl oluşturulacağı gösterilmektedir. Bu adımların ardından açık kaynaklı [Gremlin Node.js](https://www.npmjs.com/package/gremlin) sürücüsünü kullanarak bir konsol uygulaması oluşturabilir ve çalıştırabilirsiniz.
+Bu hızlı başlangıçta, Azure portal bir Azure Cosmos DB Gremlin (Graf) API hesabı oluşturup yönetirsiniz ve GitHub 'dan kopyalanmış bir Node. js uygulamasını kullanarak veri eklersiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
-
-Bu örneği çalıştırmadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
-* [Node.js](https://nodejs.org/en/) v0.10.29 sürümü veya sonraki bir sürüm
-* [Git](https://git-scm.com/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- [Node. js 0.10.29 +](https://nodejs.org/).
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -72,9 +67,11 @@ Bu örneği çalıştırmadan önce aşağıdaki önkoşullara sahip olmanız ge
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
-Aşağıdaki kod parçacıklarının tamamı, app.js dosyasından alınmıştır.
+Aşağıdaki kod parçacıklarının tamamı, *app.js* dosyasından alınmıştır.
+
+Bu konsol uygulaması, açık kaynak [Gremlin Node. js](https://www.npmjs.com/package/gremlin) sürücüsünü kullanır.
 
 * Gremlin istemcisi oluşturulur.
 
@@ -97,7 +94,7 @@ Aşağıdaki kod parçacıklarının tamamı, app.js dosyasından alınmıştır
 
     ```
 
-  Tüm yapılandırmalar, [aşağıdaki bölümde](#update-your-connection-string) düzenlediğimiz `config.js` öğesinde yer alır.
+  Yapılandırmaların hepsi, [aşağıdaki bölümde](#update-your-connection-string)düzenleme yaptığımız *config. js*' de bulunur.
 
 * Farklı Gremlin işlemlerini yürütmek için bir dizi işlev tanımlanır. Bu, bunlardan biridir:
 
@@ -151,15 +148,15 @@ Aşağıdaki kod parçacıklarının tamamı, app.js dosyasından alınmıştır
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 
-1. Config.js dosyasını açın. 
+1. *Config. js* dosyasını açın. 
 
-2. Config.js dosyasında, `config.endpoint` anahtarını Azure portalının **Genel Bakış** sayfasında bulunan **Gremlin URI** değeriyle doldurun. 
+2. *Config. js*' de, Azure Portal Cosmos DB hesabınızın **genel bakış** sayfasından `config.endpoint` anahtarını **Gremlin uç noktası** değeriyle girin. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi](./media/create-graph-nodejs/gremlin-uri.png)
+    ![Azure portal, Genel Bakış sayfasında erişim anahtarını görüntüleme ve kopyalama](./media/create-graph-nodejs/gremlin-uri.png)
 
-3. Config.js dosyasında, config.primaryKey değerini Azure portalının **Anahtarlar** sayfasında bulunan **Birincil Anahtar** değeriyle doldurun. 
+3. *Config. js*' de, config. primaryKey değerini Azure Portal Cosmos DB hesabınızın **anahtarlar** sayfasından **birincil anahtar** değeriyle girin. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -167,7 +164,7 @@ Aşağıdaki kod parçacıklarının tamamı, app.js dosyasından alınmıştır
 
 4. Veritabanı adını ve config.database ve config.collection değerinin grafik (kapsayıcı) adını girin. 
 
-Aşağıda, tamamlanan config.js dosyanızın nasıl görüneceğine ilişkin bir örnek bulabilirsiniz:
+Aşağıda, tamamlanan *config. js* dosyanızın nasıl görüneceğine ilişkin bir örnek verilmiştir:
 
 ```javascript
 var config = {}
@@ -183,9 +180,9 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>Konsol uygulamasını çalıştırma
 
-1. Terminal penceresi açın ve projeye dahil olan package.json dosyası için yükleme diziniyle değiştirin (`cd` komutuyla).
+1. Bir Terminal penceresi açın ve projeye dahil olan *Package. JSON* dosyasının yükleme dizinine (`cd` komutu aracılığıyla) değiştirin.
 
-2. `gremlin` dahil gerekli npm modüllerini yüklemek için `npm install` öğesini çalıştırın.
+2. `npm install` dahil gerekli npm modüllerini yüklemek için `gremlin` öğesini çalıştırın.
 
 3. Node.js uygulamanızı başlatmak için bir terminalde `node app.js` komutunu çalıştırın.
 
@@ -209,7 +206,7 @@ Filtreyi test etmek için `g.V()` işlemini `.has('firstName', 'Thomas')` ile ta
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni kullanarak grafik oluşturmayı ve bir uygulamayı çalıştırmayı öğrendiniz. Artık daha karmaşık sorgular oluşturabilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
+Bu makalede, grafiğe veri eklemek için bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini kullanarak bir grafik oluşturmayı ve bir Node. js uygulamasını çalıştırmayı öğrendiniz. Artık daha karmaşık sorgular oluşturabilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Gremlin kullanarak sorgulama](tutorial-query-graph.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 457f5b8eb0a740800f9cc0fa69bd554f0679ae9a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: bbf3ba17e7f91e88136f2dac50c908262100e77a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509181"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048787"
 ---
 # <a name="azure-media-services-legacy-components"></a>Eski Azure Media Services bileşenleri
 
@@ -26,7 +26,7 @@ Zamanla, medya hizmeti bileşenlerinde sürekli iyileştirmeler ve geliştirmele
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Eski bileşenlerin ve geçiş kılavuzunun kullanımdan kaldırma planları
 
-*Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Medya Kodlayıcısı* (AME) medya işlemcilerinin kullanımdan kalkması duyuruluyor. Bu işlemciler, 1 Mart 2020 ' de kullanımdan kaldırılıyor.
+*Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Medya Kodlayıcısı* (AME) medya işlemcilerinin kullanımdan kalkması duyuruluyor. Bu işlemciler 31 Mart 2020 tarihinde devre dışı bırakılıyor.
 
 * [Windows Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş](migrate-windows-azure-media-encoder.md)
 * [Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş](migrate-azure-media-encoder.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için MerchLogix yapılandırma | Microsoft Docs'
-description: Otomatik olarak sağlama ve sağlamasını MerchLogix kullanıcı hesaplarını Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için MerchLogix yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını MerchLogix 'e otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -16,121 +16,121 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4aa60fb565552961a3c85346c39c318a90c8adc0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060332"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061344"
 ---
-# <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı hazırlama için MerchLogix yapılandırın
+# <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için MerchLogix yapılandırma
 
-Bu öğreticinin amacı otomatik olarak sağlamak ve kullanıcılara ve/veya gruplara MerchLogix sağlamasını MerchLogix ve Azure Active Directory (Azure AD) Azure AD yapılandırmak için gerçekleştirilmesi gereken adımlar göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi kullanıcıları ve/veya grupları MerchLogix 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için MerchLogix ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD kullanıcı sağlama hizmeti üzerinde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet yapar, nasıl çalıştığını ve sık sorulan sorular önemli ayrıntılar için bkz. [otomatik kullanıcı hazırlama ve sağlamayı kaldırma Azure Active Directory ile SaaS uygulamalarına](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulları zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracısı
-* A MerchLogix tenant
-* SCIM uç nokta URL'nizi ve kullanıcı sağlama için gereken gizli belirteç sağlayabilen MerchLogix teknik bir ilgili kişi
+* Bir Azure AD kiracısı
+* MerchLogix kiracısı
+* MerchLogix 'de, Kullanıcı sağlaması için gereken SCıM uç nokta URL 'SI ve gizli belirteç sağlayabilen teknik bir iletişim
 
 ## <a name="adding-merchlogix-from-the-gallery"></a>Galeriden MerchLogix ekleme
 
-Otomatik kullanıcı hazırlama ile Azure AD için MerchLogix yapılandırmadan önce MerchLogix Azure AD uygulama Galerisi yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için MerchLogix ' i yapılandırmadan önce Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize MerchLogix eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden MerchLogix eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden MerchLogix eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , üzerinde sol gezinti bölmesinde, tıklayarak **Azure Active Directory** simgesi. 
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın. 
 
     ![Azure Active Directory düğmesi][1]
 
-2. Gidin **kurumsal uygulamalar** > **tüm uygulamaları**.
+2. **Tüm uygulamalar** > **Kurumsal uygulamalar** 'a gidin.
 
     ![Kurumsal uygulamalar bölümü][2]
 
-3. MerchLogix eklemek için tıklatın **yeni uygulama** iletişim kutusunun üst kısmındaki düğmesi.
+3. MerchLogix eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni Uygulama düğmesi][3]
 
-4. Arama kutusuna **MerchLogix**.
+4. Arama kutusuna **Merchlogix**yazın.
 
-5. Sonuçlar panelinde seçin **MerchLogix**ve ardından **Ekle** düğmesini MerchLogix SaaS uygulamaları listenize ekleyin.
+5. Sonuçlar panelinde, **Merchlogix**' i seçin ve sonra SaaS uygulamaları listenize MerchLogix eklemek için **Ekle** düğmesine tıklayın.
 
-    ![MerchLogix Provisioning][4]
+    ![MerchLogix sağlama][4]
 
-## <a name="assigning-users-to-merchlogix"></a>MerchLogix için kullanıcı atama
+## <a name="assigning-users-to-merchlogix"></a>MerchLogix 'e Kullanıcı atama
 
-Azure Active Directory "atamaları" adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hazırlama bağlamında, yalnızca kullanıcı ve/veya "Azure AD'de bir uygulama için atandı" grupları eşitlenir. 
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve/veya gruplar eşitlenir. 
 
-Yapılandırma ve otomatik kullanıcı hazırlama etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları MerchLogix erişmesi karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek MerchLogix için bu kullanıcılara ve/veya grupları atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların MerchLogix erişimine ihtiyacı olduğuna karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları MerchLogix 'e atayabilirsiniz:
 
-* [Kurumsal bir uygulamayı kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-merchlogix"></a>Kullanıcılar için MerchLogix atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-merchlogix"></a>MerchLogix 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-* Önerilir tek bir Azure AD kullanıcı ilk otomatik kullanıcı sağlama yapılandırmasını test etmek için MerchLogix atanır. Testler başarılı olduktan sonra ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* İlk otomatik Kullanıcı sağlama yapılandırmanızı test etmek için MerchLogix öğesine tek bir Azure AD kullanıcısının atanması önerilir. Testler başarılı olduktan sonra ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcı için MerchLogix atarken, (varsa) geçerli bir uygulamaya özgü rol ataması iletişim kutusunda seçmeniz gerekir. Kullanıcılarla **varsayılan erişim** rol sağlamasından dışlanır.
+* Bir kullanıcıyı MerchLogix 'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>MerchLogix için otomatik kullanıcı sağlamayı yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>MerchLogix için otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölümde oluşturmak, güncelleştirmek ve kullanıcılar devre dışı bırakmak için sağlama hizmetini Azure AD'yi yapılandırma adımlarında size kılavuzluk eder ve/veya MerchLogix gruplarında Azure AD'de kullanıcı ve/veya grup atamaları temel alarak.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan MerchLogix içindeki kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Uygulamayı da seçebilirsiniz SAML tabanlı çoklu oturum açma için MerchLogix etkinleştirmek, yönergeleri izleyerek sağlanan [oturum açma MerchLogix tek öğretici](merchlogix-tutorial.md). Bu iki özellik birbirine tamamlayıcı rağmen otomatik kullanıcı hazırlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> Merchlogix için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Bu, [merchlogix çoklu oturum açma öğreticisinde](merchlogix-tutorial.md)sunulan yönergeleri izleyerek. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-merchlogix-in-azure-ad"></a>Azure AD'de MerchLogix için otomatik kullanıcı hazırlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-merchlogix-in-azure-ad"></a>Azure AD 'de MerchLogix için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. Oturum [Azure portalında](https://portal.azure.com) ve **Azure Active Directory > Kurumsal uygulamalar > tüm uygulamaları**.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **tüm uygulamalar > > kurumsal uygulamalara Azure Active Directory**gidin.
 
-2. MerchLogix SaaS uygulamaları listesinden seçin.
+2. SaaS uygulamaları listenizden MerchLogix ' i seçin.
 
-3. Seçin **sağlama** sekmesi.
+3. **Sağlama** sekmesini seçin.
 
-4. Ayarlama **hazırlama modu** için **otomatik**.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![MerchLogix Provisioning](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![MerchLogix sağlama](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
-5. Altında **yönetici kimlik bilgileri** bölümü:
+5. **Yönetici kimlik bilgileri** bölümünde:
 
-    * İçinde **Kiracı URL'si** , MerchLogix teknik konular ilgili kişisi tarafından sağlanan SCIM uç nokta URL'sini girin.
+    * **Kiracı URL 'si** alanında, MerchLogix Technical Contact 'niz tarafından sunulan SCIM uç nokta URL 'sini girin.
 
-    * İçinde **gizli belirteç** , MerchLogix teknik konular ilgili kişisi tarafından sağlanan gizli belirteç girin.
+    * **Gizli belirteç** alanına, MerchLogix Technical Contact 'niz tarafından sunulan gizli belirteç girin.
 
-6. 5\. adımda gösterilen alanlar doldurma üzerine tıklayın **Test Bağlantısı** Azure emin olmak için AD için MerchLogix bağlanabilirsiniz. Bağlantı başarısız olursa MerchLogix hesabınız yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+6. 5\. adımda gösterilen alanları doldurarak Azure AD ' ın MerchLogix ' e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, MerchLogix hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-7. İçinde **bildirim e-posta** alanında, bir kişi veya grubun ve sağlama hata bildirimleri almak - onay e-posta adresi girin **birhataoluşursa,bire-postabildirimigönder**.
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** düğmesine tıklayın.
 
-9. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory Kullanıcıları MerchLogix**.
+9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları MerchLogix ile eşitler**' ı seçin.
 
-10. İçinde MerchLogix için Azure AD'den eşitlenen kullanıcı özniteliklerini gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri MerchLogix kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+10. **Öznitelik eşleme** bölümünde Azure AD 'Den MerchLogix 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için MerchLogix içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-11. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory gruplarına MerchLogix**.
+11. **Eşlemeler** bölümünde **Azure Active Directory gruplarını MerchLogix olarak eşitler**' ı seçin.
 
-12. İçinde MerchLogix için Azure AD'den eşitlenen grup öznitelikleri gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri MerchLogix gruplarında güncelleştirme işlemleri eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+12. **Öznitelik eşleme** bölümünde Azure AD 'Den MerchLogix 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için MerchLogix içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-13. Azure AD sağlama hizmeti için MerchLogix etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** içinde **ayarları** bölümü.
+13. MerchLogix için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-14. Sağlama için hazır olduğunuzda, tıklayın **Kaydet**.
+14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-Bu işlem, tüm kullanıcıların ilk eşitleme başlar ve/veya tanımlı gruplar **kapsam** içinde **ayarları** bölümü. İlk eşitleme yaklaşık 40 dakikada Azure AD sağlama hizmeti çalışıyor sürece oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve sağlama hizmeti MerchLogix üzerinde Azure AD tarafından gerçekleştirilen tüm eylemler açıklayan Etkinlik Raporu sağlama için bağlantıları izleyin.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü Izleyip, MerchLogix ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunu kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri gözden geçirin ve sağlama etkinliği raporları alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: common/select-azuread.png

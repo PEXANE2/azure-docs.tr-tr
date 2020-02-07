@@ -1,5 +1,6 @@
 ---
-title: Kimlik altyapınızın güvenliğini sağlamak için beş adım Azure Active Directory
+title: Azure AD kimlik altyapınızın güvenliğini sağlama
+titleSuffix: Azure Active Directory
 description: Bu belgede, yöneticilerin Azure AD yeteneklerini kullanarak kuruluşlarını güvenli hale getirmeye yardımcı olmak için uygulaması gereken önemli eylemlerin bir listesi özetlenmektedir
 author: martincoetzer
 manager: manmeetb
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903581"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057218"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 

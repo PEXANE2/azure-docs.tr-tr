@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435849"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061650"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
 
 Kurumsal Güvenlik Paketi (ESP) Apache Kafka kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, `sales` ve `marketingspend` konularına erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Etki alanı kullanıcılarını oluşturma
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-domain-users"></a>Etki alanı kullanıcılarını oluşturma
 
-**sales_user** ve **marketing_user** etki alanı kullanıcılarını nasıl oluşturacağınızı öğrenmek için [Kurumsal Güvenlik Paketi ile HDInsight kümesi oluşturma](./apache-domain-joined-configure-using-azure-adds.md) bölümünü ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
+[sales_user](./apache-domain-joined-configure-using-azure-adds.md) ve **marketing_user** etki alanı kullanıcılarını nasıl oluşturacağınızı öğrenmek için **Kurumsal Güvenlik Paketi ile HDInsight kümesi oluşturma** bölümünü ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
 
 ## <a name="create-ranger-policy"></a>Ranger ilkesini oluşturma
 
@@ -55,7 +55,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Ayar  |Önerilen değer  |
    |---------|---------|
    |İlke Adı  |  hdi satış* ilkesi   |
-   |Konu   |  satış* |
+   |Konu başlığı   |  satış* |
    |Kullanıcı Seçin  |  sales_user1 |
    |İzinler  | yayımlama, kullanma, oluşturma |
 
@@ -75,7 +75,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Ayar  |Önerilen değer  |
    |---------|---------|
    |İlke Adı  |  hdi pazarlama ilkesi   |
-   |Konu   |  marketingspend |
+   |Konu başlığı   |  marketingspend |
    |Kullanıcı Seçin  |  marketing_user1 |
    |İzinler  | yayımlama, kullanma, oluşturma |
 
@@ -112,7 +112,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. [Apache Kafka etki alanına katılmış üretici tüketici örneklerini](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer) indirin.
 
-1. [Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) sayfasının **Örneği derleme ve dağıtma** bölümündeki 2 ve 3 numaralı adımları izleyin.
+1. **Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma** sayfasının [Örneği derleme ve dağıtma](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) bölümündeki 2 ve 3 numaralı adımları izleyin.
 
 1. Aşağıdaki komutları çalıştırın:
 
@@ -146,6 +146,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    Örnek: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
 4. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: `kafka-producer-consumer.jar` **sales_user**için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve tüketici API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) .
+
+**Not: Bu öğretici Için, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (etki alanına katılmış olmayan senaryolar için, Producer-Consumer projesi altında değil).**
 
 5. **Sales_user1** , aşağıdaki komutu yürüterek konuya `salesevents` üretebildiğini doğrulayın:
 
@@ -189,11 +191,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla oluşturduğunuz Kafka kümesini silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
 1. **Sil**'e tıklayın. **Evet**’e tıklayın.
+
+## <a name="troubleshooting"></a>Sorun giderme
+Kafka-Producer-Consumer. jar, etki alanına katılmış bir kümede çalışmazsa, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullandığınızdan emin olun (etki alanı olmayanlar için, Producer-Consumer projesi altında değil). Birleşik senaryolar).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

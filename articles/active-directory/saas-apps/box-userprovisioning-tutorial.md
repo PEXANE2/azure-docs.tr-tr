@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için yapılandırma kutusu | Microsoft Docs'
-description: Azure Active Directory ve kutusu arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için kutuyu Yapılandır | Microsoft Docs'
+description: Azure Active Directory ve Box arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,123 +15,123 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60431765"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058578"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Öğretici: Yapılandırma kutusu için otomatik kullanıcı hazırlama
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yapılandırma kutusu
 
-Bu öğreticinin amacı kutusu ve Azure AD kutusuna Azure AD'den otomatik olarak sağlama ve devre dışı bırakma sağlama kullanıcı hesapları için gerçekleştirmeniz gereken adımlar göstermektir.
+Bu öğreticinin amacı, Box ve Azure AD 'de gerçekleştirmeniz gereken adımları, Azure AD 'den Box ' a otomatik olarak sağlamak ve devre dışı bırakmak için gerekli adımları gösterir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD kullanıcı sağlama hizmeti üzerinde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet yapar, nasıl çalıştığını ve sık sorulan sorular önemli ayrıntılar için bkz. [otomatik kullanıcı hazırlama ve sağlamayı kaldırma Azure Active Directory ile SaaS uygulamalarına](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesi kutusuyla yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesi 'ni kutusuyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
-- Azure AD kiracısı
-- Kutusu iş planı ya da daha iyi
+- Bir Azure AD kiracısı
+- Bir Box Iş planı veya daha iyi
 
 > [!NOTE]
-> Bu öğreticideki adımları test ettiğinizde, bunu yapmanızı öneririz *değil* bir üretim ortamı kullanın.
+> Bu öğreticideki adımları test ettiğinizde, bir üretim *ortamı kullanmanızı öneririz* .
 
-Bu öğreticideki adımları test etmek için aşağıdaki önerileri uygulayın:
+Bu öğreticideki adımları test etmek için aşağıdaki önerileri izleyin:
 
 - Gerekli olmadıkça, üretim ortamında kullanmayın.
-- Azure AD deneme ortamı yoksa, şunları yapabilirsiniz [bir aylık deneme sürümü edinin](https://azure.microsoft.com/pricing/free-trial/).
+- Bir Azure AD deneme ortamınız yoksa, bir [aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)alabilirsiniz.
 
-## <a name="assigning-users-to-box"></a>Box'a kullanıcı atama 
+## <a name="assigning-users-to-box"></a>Box 'a Kullanıcı atama 
 
-Azure Active Directory "atamaları" adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca kullanıcıların ve grupların, "Azure AD'de bir uygulama için atandı" eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Yapılandırma ve sağlama hizmetini etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları Box uygulamanızı erişmesi gereken kullanıcıları temsil karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek bu kullanıcılar Box uygulamanızı atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların, Box uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Box uygulamanıza atayabilirsiniz:
 
-[Kurumsal bir uygulamayı kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-## <a name="assign-users-and-groups"></a>Kullanıcıları ve grupları atama
-**Kutusu > kullanıcıları ve grupları** Azure portalında sekme kutusuna hangi kullanıcıların ve grupların erişim verilmesi gerektiğini belirtmenize olanak sağlar. Bir kullanıcı veya grup atamasını gerçekleşmesi aşağıdakiler neden olur:
+## <a name="assign-users-and-groups"></a>Kullanıcıları ve grupları ata
+Azure portal kutu **> kullanıcılar ve gruplar** sekmesi, Box 'ın hangi kullanıcılara ve gruplara erişim izni verileceğini belirtmenize olanak tanır. Bir Kullanıcı ya da grup ataması aşağıdaki işlemlerin oluşmasına neden olur:
 
-* Azure AD kutusuna kimlik doğrulaması için atanan kullanıcı (ya da doğrudan atama veya grup üyeliği) izin verir. Bir kullanıcı atanmamışsa, Azure AD kutusuna oturum açmak için bunları izin vermez ve Azure AD oturum açma sayfasında bir hata döndürür.
-* Bir uygulama kutucuğunda kutusu için kullanıcının eklenen [uygulama Başlatıcısı](../manage-apps/end-user-experiences.md).
-* Otomatik sağlama etkinleştirildiğinde otomatik olarak sağlanacak sağlama kuyruğa atanan kullanıcılar ve/veya grupları eklenir.
+* Azure AD, atanan kullanıcıya (doğrudan atama ya da grup üyeliğiyle) kimlik doğrulaması yapmak için izin verir. Bir Kullanıcı atanmamışsa Azure AD, oturum açma ve Azure AD oturum açma sayfasında bir hata döndüren bir hata döndürür.
+* Kullanıcının [uygulama](../manage-apps/end-user-experiences.md)başlatıcısında Box için bir uygulama kutucuğu eklenir.
+* Otomatik sağlama etkinse, atanan kullanıcılar ve/veya grupları otomatik olarak sağlanacak sağlama kuyruğuna eklenir.
   
-  * Yalnızca bir kullanıcı, nesneyi sağlanması için yapılandırılmış olan, ardından doğrudan atanmış tüm kullanıcılar sağlama kuyruğuna yerleştirilir ve atanan tüm grupların üyeleri olan tüm kullanıcılar sağlama kuyruğuna yerleştirilir. 
-  * Grup nesnelerini sağlanması için yapılandırıldıysa, tüm atanmış Grup nesnelerini kutusu ve bu grupların üyeleri olan tüm kullanıcılar için sağlanır. Grup ve kullanıcı üyeliklerini kutusuna yazılan sırasında korunur.
+  * Yalnızca kullanıcı nesneleri sağlanacak şekilde yapılandırıldıysa, tüm doğrudan atanan kullanıcılar sağlama kuyruğuna yerleştirilir ve atanan grupların üyesi olan tüm kullanıcılar sağlama kuyruğuna yerleştirilir. 
+  * Grup nesneleri sağlanacak şekilde yapılandırıldıysa, tüm atanan Grup nesneleri, Box ve bu grupların üyesi olan tüm kullanıcılar tarafından sağlanır. Grup ve Kullanıcı üyelikleri, kutusuna yazıldıktan sonra korunur.
 
-Kullanabileceğiniz **öznitelikleri > çoklu oturum açma** hangi kullanıcı özniteliklerine (veya talep) kutusuna SAML tabanlı kimlik doğrulaması sırasında sunulan yapılandırmak için sekmesinde ve **öznitelikleri > sağlama** için sekmesinde nasıl kullanıcı ve grup öznitelikleri Azure AD'den kutusuna operations sağlama sırasında akışı yapılandırın.
+SAML tabanlı kimlik doğrulaması sırasında hangi kullanıcı özniteliklerinin (veya talepler) kullanıma sunulduğunu yapılandırmak için **öznitelikler > çoklu oturum açma** sekmesini ve Kullanıcı ve grup özniteliklerinin sağlama Işlemleri SıRASıNDA Azure AD 'den Box 'a nasıl akabileceğinizi yapılandırmak için **öznitelikler > sağlama** sekmesini kullanabilirsiniz.
 
-### <a name="important-tips-for-assigning-users-to-box"></a>Box'a kullanıcı atama önemli ipuçları 
+### <a name="important-tips-for-assigning-users-to-box"></a>Box 'a Kullanıcı atamaya yönelik önemli ipuçları 
 
-*   Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmasını test etmek için kutusuna atanmış. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+*   Sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının Box 'a atanmasını öneririz. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-*   Box'a kullanıcı atama, geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
+*   Bir kullanıcıyı Box 'a atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="enable-automated-user-provisioning"></a>Otomatik kullanıcı sağlamayı etkinleştirin
+## <a name="enable-automated-user-provisioning"></a>Otomatik Kullanıcı sağlamayı etkinleştir
 
-Bu bölümde Azure AD sağlama API'si kutunun kullanıcı hesabına bağlanma aracılığıyla size yol gösterir ve sağlama hizmeti oluşturmak için yapılandırma güncelleştirmesi ve atanan kullanıcı hesapları Azure AD'de kullanıcı ve Grup atamasına dayalı kutusunda devre dışı bırak.
+Bu bölüm, Azure AD 'nizi Box 'ın Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmetini, Azure AD 'de Kullanıcı ve grup atamasını temel alan Box 'ta atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırmayı gösterir.
 
-Otomatik sağlama etkinleştirildiğinde otomatik olarak sağlanacak sağlama kuyruğa atanan kullanıcılar ve/veya grupları eklenir.
+Otomatik sağlama etkinse, atanan kullanıcılar ve/veya grupları otomatik olarak sağlanacak sağlama kuyruğuna eklenir.
     
- * Yalnızca kullanıcı nesneleri doğrudan atanan kullanıcılar sağlama kuyruğuna yerleştirilir ve atanan tüm grupların üyeleri olan tüm kullanıcılar sağlama kuyruğuna yerleştirilir sağlanacak yapılandırılır. 
+ * Yalnızca kullanıcı nesneleri sağlanacak şekilde yapılandırıldıysa, doğrudan atanan kullanıcılar sağlama kuyruğuna yerleştirilir ve atanan grupların üyesi olan tüm kullanıcılar sağlama kuyruğuna yerleştirilir. 
     
- * Grup nesnelerini sağlanması için yapılandırıldıysa, tüm atanmış Grup nesnelerini kutusu ve bu grupların üyeleri olan tüm kullanıcılar için sağlanır. Grup ve kullanıcı üyeliklerini kutusuna yazılan sırasında korunur.
+ * Grup nesneleri sağlanacak şekilde yapılandırıldıysa, tüm atanan Grup nesneleri, Box ve bu grupların üyesi olan tüm kullanıcılar tarafından sağlanır. Grup ve Kullanıcı üyelikleri, kutusuna yazıldıktan sonra korunur.
 
 > [!TIP] 
-> Uygulamayı da seçebilirsiniz SAML tabanlı çoklu oturum açma kutusu etkin olarak, yönergeleri izleyerek sağlanan [Azure portalında](https://portal.azure.com). Bu iki özellik birbirine tamamlayıcı rağmen otomatik sağlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, Box için SAML tabanlı çoklu oturum açma 'yı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Otomatik kullanıcı hesabı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-Bu bölümün amacı, Active Directory kullanıcı hesaplarının kutusunu sağlamayı etkinleştirmek nasıl anahat sağlamaktır.
+Bu bölümün amacı, Box 'ın Active Directory Kullanıcı hesaplarının sağlanmasını nasıl etkinleştireceğinizi özetler.
 
-1. İçinde [Azure portalında](https://portal.azure.com), Gözat **Azure Active Directory > Kurumsal uygulamaları > tüm uygulamaları** bölümü.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-2. Çoklu oturum açma için kutusu zaten yapılandırdıysanız arama alanını kullanarak kutusunun Örneğiniz için arama yapın. Aksi takdirde seçin **Ekle** araması **kutusu** uygulama galerisinde. Arama sonuçlarından kutusunu seçin ve uygulama listenize ekleyin.
+2. Çoklu oturum açma için zaten yapılandırılmış bir kutu varsa, arama alanını kullanarak Box örneğiniz için arama yapın. Aksi takdirde, uygulama galerisinde **Ekle** ve ara **kutusunu** seçin. Arama sonuçlarından Box ' ı seçin ve uygulama listenize ekleyin.
 
-3. Örneğiniz kutusunu seçin ve ardından **sağlama** sekmesi.
+3. Box örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. Ayarlama **hazırlama modu** için **otomatik**. 
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
 
-    ![Sağlama](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/box-userprovisioning-tutorial/provisioning.png)
 
-5. Altında **yönetici kimlik bilgileri** bölümünde **Authorize** bir oturum açma iletişim kutusu yeni bir tarayıcı penceresinde açın.
+5. **Yönetici kimlik bilgileri** bölümünde, yeni bir tarayıcı penceresinde Box oturum açma iletişim kutusunu açmak için **Yetkilendir** ' e tıklayın.
 
-6. Üzerinde **kutusuna erişim vermek için oturum açma** sayfasında, gerekli kimlik bilgilerini sağlayın ve ardından **Authorize**. 
+6. **Box 'a erişim izni vermek Için oturum açma** sayfasında, gerekli kimlik bilgilerini sağlayın ve ardından **Yetkilendir**' e tıklayın. 
    
-    ![Otomatik kullanıcı sağlamayı etkinleştirin](./media/box-userprovisioning-tutorial/IC769546.png "otomatik kullanıcı sağlamayı etkinleştirin")
+    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/box-userprovisioning-tutorial/IC769546.png "Otomatik kullanıcı sağlamayı etkinleştirin")
 
-7. Tıklayın **kutusuna erişim ver** bu işlem son noktanın yetkilendirilmesi için ve Azure portalına dönün. 
+7. Bu işlemi yetkilendirmek ve Azure portal dönmek için, **kutuya erişim Izni ver** ' e tıklayın. 
    
-    ![Otomatik kullanıcı sağlamayı etkinleştirin](./media/box-userprovisioning-tutorial/IC769549.png "otomatik kullanıcı sağlamayı etkinleştirin")
+    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/box-userprovisioning-tutorial/IC769549.png "Otomatik kullanıcı sağlamayı etkinleştirin")
 
-8. Azure portalında **Test Bağlantısı** Azure emin olmak için AD, Box uygulamanızı bağlanabilirsiniz. Bağlantı başarısız olursa, Box hesabınıza takım Yöneticisi izinlerine sahip olduğundan emin olun ve deneyin **"Yetkilendir"** adım yeniden uygulayın.
+8. Azure portal, Azure AD 'nin Box uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Box hesabınızda Takım Yöneticisi izinlerine sahip olduğundan emin olun ve **"Yetkilendir"** adımını yeniden deneyin.
 
-9. Bir kişi veya grup sağlama hatası bildirimlerini alması gereken e-posta adresini girin **bildirim e-posta** alan ve onay kutusunu işaretleyin.
+9. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
 
-10. Tıklayın **kaydedin.**
+10. Kaydet ' e tıklayın **.**
 
-11. Eşlemeleri bölümü altında seçin **eşitleme Azure Active Directory Kullanıcıları kutusu.**
+11. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları kutuya zamanla** ' yı seçin.
 
-12. İçinde **öznitelik eşlemelerini** bölümünde, kutusuna Azure AD'den eşitlenen kullanıcı özniteliklerini gözden geçirin. Seçilen öznitelikler **eşleşen** özellikleri kutusunda kullanıcı hesapları için güncelleştirme işlemleri eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+12. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den kutusunda bulunan Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Box 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
-13. Azure AD sağlama hizmeti kutusu etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** Ayarlar bölümünde
+13. Kutusunu için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-14. Tıklayın **kaydedin.**
+14. Kaydet ' e tıklayın **.**
 
-Herhangi bir kullanıcı ve/veya Box'a kullanıcılar ve Gruplar bölümünde atanan gruplar ilk eşitleme başlar. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve Box uygulamanızı üzerindeki sağlama hizmeti tarafından gerçekleştirilen tüm eylemler açıklayan etkinlik günlüklerini sağlama için bağlantıları izleyin.
+Bu, kullanıcılar ve Gruplar bölümünde kutusuna atanmış tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. İşlem ilerlemesini izlemek ve bakım uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-Eşitlenmiş kullanıcılar listelenir kutusuna kiracınızda **yönetilen kullanıcılara** içinde **Yönetici Konsolu**.
+Box kiracınızda, eşitlenen kullanıcılar **Yönetim konsolundaki** **yönetilen kullanıcılar** altında listelenir.
 
-![Tümleştirme durumu](./media/box-userprovisioning-tutorial/IC769556.png "tümleştirme durumu")
+![Tümleştirme durumu](./media/box-userprovisioning-tutorial/IC769556.png "Tümleştirme durumu")
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Çoklu oturum açmayı yapılandırın](box-tutorial.md)
+* [Çoklu oturum açmayı yapılandırma](box-tutorial.md)

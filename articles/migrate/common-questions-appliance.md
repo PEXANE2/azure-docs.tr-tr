@@ -3,12 +3,12 @@ title: Azure geçişi gereci hakkında sık sorulan sorular
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292342"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064708"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -16,6 +16,7 @@ Bu makalede, Azure geçişi gereci hakkında sık sorulan sorular yanıtlanmakta
 
 - Azure geçişi hakkında [genel sorular](resources-faq.md) .
 - Bulma, değerlendirme ve bağımlılık görselleştirmesiyle ilgili [sorular](common-questions-discovery-assessment.md) .
+- Sunucu geçişi hakkında [sorular](common-questions-server-migration.md) .
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Azure geçişi gereci nedir?

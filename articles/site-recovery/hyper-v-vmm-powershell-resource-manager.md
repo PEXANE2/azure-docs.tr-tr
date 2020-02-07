@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: a46bca5c5c55338f8bea7e1ff370f92ce6a2d577
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841055"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048609"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell kullanarak Hyper-V VM 'lerini ikincil bir siteye olağanüstü durum kurtarmayı ayarlama (Kaynak Yöneticisi)
 
@@ -20,14 +20,14 @@ Bu makalede, System Center Virtual Machine Manager bulutlarındaki Hyper-V VM 'l
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Senaryo mimarisini ve bileşenlerini](hyper-v-vmm-architecture.md) gözden geçirin.
 - Tüm bileşenler için [destek gereksinimlerini](site-recovery-support-matrix-to-sec-site.md) gözden geçirin.
 - Virtual Machine Manager sunucularının ve Hyper-V konaklarının [destek gereksinimleriyle](site-recovery-support-matrix-to-sec-site.md)uyumlu olduğundan emin olun.
 - Çoğaltmak istediğiniz VM 'Lerin [çoğaltılan makine desteğiyle](site-recovery-support-matrix-to-sec-site.md)uyumlu olduğundan emin olun.
 
-## <a name="prepare-for-network-mapping"></a>Ağ eşlemeye hazırlama
+## <a name="prepare-for-network-mapping"></a>Ağ eşlemesi için hazırlanma
 
 Kaynak ve hedef bulutlarda şirket içi Virtual Machine Manager VM ağları arasında [ağ eşleme](hyper-v-vmm-network-mapping.md) haritaları. Eşleme sürecinde şu işlemler gerçekleştirilir:
 
@@ -219,9 +219,9 @@ Başlamaya Azure PowerShell olduğunuzdan emin olun:
 1. Kaynak Virtual Machine Manager sunucusu ve hedef Virtual Machine Manager sunucusu için ağları almak üzere bu komutu çalıştırın.
 
    ```azurepowershell
-   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[0]
+   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[0]
 
-   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[1]
    ```
 
    > [!NOTE]

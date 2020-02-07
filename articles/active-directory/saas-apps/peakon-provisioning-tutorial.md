@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: cc572206e20a1f2ef1a77efb8120ad4d2f805174
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847879"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063421"
 ---
-# <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı hazırlama için Peakon yapılandırma
+# <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Peakon yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Peakon 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Peakon ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
->  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+>  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 ## <a name="prerequisites"></a>Önkoşullar
@@ -95,7 +95,7 @@ Peakon 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak ü
 Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
 > [!TIP]
-> Ayrıca, [Peakon çoklu oturum](peakon-tutorial.md)açma öğreticisinde sunulan yönergeleri Izleyerek, PEAKON için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca, [Peakon çoklu oturum açma öğreticisinde](peakon-tutorial.md)sunulan yönergeleri Izleyerek, PEAKON için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Azure AD 'de Peakon için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -123,7 +123,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanı
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** düğmesine tıklayın.
 
 9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Peakon olarak eşitler**' ı seçin.
 
@@ -133,7 +133,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanı
 
     ![Peakon Kullanıcı öznitelikleri](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
     
     ![Sağlama kapsamı](common/provisioning-scope.png)
 
@@ -143,16 +143,16 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanı
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Peakon üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Peakon ' deki tüm özel kullanıcı özniteliklerinin, `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`Peakon 'ın özel SCIM Kullanıcı uzantısından genişletilmesi gerekir.
+* Peakon ' deki tüm özel kullanıcı özniteliklerinin, `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`'ın özel SCıM Kullanıcı uzantısından genişletilmesi gerekir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

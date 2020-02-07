@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445484"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061752"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak bir Python uygulaması oluşturma
 
@@ -26,21 +26,13 @@ ms.locfileid: "75445484"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
+Bu hızlı başlangıçta, GitHub 'dan kopyalanmış bir Python Flask-do Web uygulaması çalıştırmak için Mongo DB API hesabı veya Azure Cosmos DB öykünücüsü Azure Cosmos DB kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-Bu hızlı başlangıç kılavuzu aşağıdaki [Flask örneğini](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) kullanır ve [Azure Cosmos DB öykünücüsü](local-emulator.md) ve mongodb için Azure Cosmos DB API 'Si ile basit bir yapılacak-do Flask uygulaması oluşturmayı gösterir.
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
-
-- [Azure Cosmos DB Emulator](local-emulator.md)’ı indirin. Öykünücü şu anda yalnızca Windows’da desteklenmektedir. Örnek, herhangi bir platformda yapılabileceği gibi, Azure’dan bir üretim anahtarı ile örneği kullanma işlemini gösterir.
-
-- Visual Studio Code henüz yüklü değilse, platformunuza yönelik [VS Code](https://code.visualstudio.com/Download)’u (Windows, Mac, Linux) hızlıca yükleyebilirsiniz.
-
-- Popüler Python uzantılardan birini yükleyerek Python Dil Desteğini eklediğinizden emin olun.
-  1. Bir uzantı seçin.
-  2. `Ctrl+Shift+P` Komut Paletine `ext install` yazarak uzantıyı yükleyin.
-
-     Bu belgedeki örnekler Don Jayamanne’ın popüler ve tam özellikli [Python Uzantısını](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) kullanır.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . Ya da [Azure Cosmos DB öykünücüsünü](local-emulator.md)kullanabilirsiniz. 
+- [Python 3.6 +](https://www.python.org/downloads/)
+- [Python uzantısıyla](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) [Visual Studio Code](https://code.visualstudio.com/Download) .
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
@@ -72,9 +64,9 @@ Bu hızlı başlangıç kılavuzu aşağıdaki [Flask örneğini](https://github
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Web uygulamasını çalıştırma](#run-the-web-app) konusuna atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Web uygulamasını çalıştırma](#run-the-web-app) konusuna atlayabilirsiniz. 
 
-Aşağıdaki kod parçacıklarının tümü app.py dosyasından alınmıştır ve yerel Azure Cosmos DB Öykünücüsü’nün bağlantı dizesini kullanır. Başka türlü ayrıştırılamayan ileri eğik çizgiler için aşağıda görüldüğü gibi parolanın bölünmesi gerekir.
+Aşağıdaki kod parçacıklarının tamamı, *app.py* dosyasından alınır ve yerel Azure Cosmos DB öykünücüsü için bağlantı dizesini kullanır. Başka türlü ayrıştırılamayan ileri eğik çizgiler için aşağıda görüldüğü gibi parolanın bölünmesi gerekir.
 
 * MongoDB istemcisini başlatın, veritabanını alın ve kimlik doğrulaması yapın.
 
@@ -106,31 +98,33 @@ Aşağıdaki kod parçacıklarının tümü app.py dosyasından alınmıştır v
 
 3. Ardından, `set FLASK_APP=app.py`, PowerShell düzenleyicileri için `$env:FLASK_APP = app.py` veya Mac kullanıyorsanız `export FLASK_APP=app.py` için bir Flask uygulaması için ortam değişkenini ayarlayın. 
 
-4. Uygulamayı `flask run` ile çalıştırın ve [http://127.0.0.1:5000/](http://127.0.0.1:5000/) adresine göz atın.
+4. Uygulamayı `flask run` çalıştırın ve *http:\//127.0.0.1:5000/* öğesine gidin.
 
 5. Görevleri ekleyip kaldırın ve koleksiyona eklenip kaldırıldığına dikkat edin.
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
+Kodu canlı bir Azure Cosmos DB hesabına göre test etmek istiyorsanız, bir hesap oluşturmak için Azure portal gidin.
+
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 
-Kodu canlı Cosmos hesabına karşı test etmek istiyorsanız, hesap oluşturmak ve bağlantı dizesi bilgilerinizi almak için Azure portal gidin. Ardından uygulamaya kopyalayın.
+Canlı Azure Cosmos DB hesabıyla kodu test etmek için bağlantı dizesi bilgilerinizi alın. Ardından uygulamaya kopyalayın.
 
-1. [Azure Portal](https://portal.azure.com/), Cosmos hesabınızda, sol gezinti **bağlantı dizesi**' ne tıklayın ve ardından **okuma-yazma anahtarları**' na tıklayın. Sonraki adımda ekranın sağ tarafındaki kopyalama düğmelerini kullanarak Kullanıcı Adı, Parola ve Ana Bilgisayar değerlerini Dal.cs dosyasına kopyalayacaksınız.
+1. Azure portal Azure Cosmos DB hesabınızda, sol gezinti **bağlantı dizesi**' ni seçin ve ardından **okuma-yazma anahtarları**' nı seçin. Kullanıcı adını, bağlantı dizesini ve parolayı kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanacaksınız. 
 
-2. Kök dizinde **app.py** dosyasını açın.
+2. Kök dizinde *app.py* dosyasını açın.
 
-3. **username** değerini portaldan kopyalayın (kopyalama düğmesini kullanarak) ve **app.py** dosyasına **name** değeri olarak yapıştırın.
+3. **username** değerini portaldan kopyalayın (kopyalama düğmesini kullanarak) ve **app.py** dosyasına *name* değeri olarak yapıştırın.
 
-4. Daha sonra portaldan **connection string** değerini kopyalayın **app.py** dosyanızda MongoClient değeri olarak yapıştırın.
+4. Sonra **bağlantı dizesi** değerini portaldan kopyalayın ve *app.py* dosyanızdaki **mongoclient** değeri yapın.
 
-5. Son olarak, **password** değerini portaldan kopyalayın ve **app.py** dosyanıza **password** değeri olarak yapıştırın.
+5. Son olarak, **password** değerini portaldan kopyalayın ve **app.py** dosyanıza *password* değeri olarak yapıştırın.
 
-Artık uygulamanızı Cosmos DB ile iletişim kurması için gereken tüm bilgileri ile güncelleştirdiniz. Öncekiyle aynı şekilde çalıştırabilirsiniz.
+Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. Öncekiyle aynı şekilde çalıştırabilirsiniz.
 
-## <a name="deploy-to-azure"></a>Azure'a Dağıt
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu uygulamayı dağıtmak için Azure 'da yeni bir Web uygulaması oluşturabilir ve bu GitHub deposunun çatalından sürekli dağıtımı etkinleştirebilirsiniz. Azure 'da GitHub ile sürekli dağıtımı ayarlamak için bu [öğreticiyi](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) izleyin.
 
@@ -144,7 +138,7 @@ Azure'a dağıtırken uygulama anahtarlarınızı kaldırmanız ve aşağıdaki 
 
 Daha sonra MONGOURL, MONGO_PASSWORD ve MONGO_USERNAME değerlerinizi uygulama ayarlarına eklemeniz gerekir. Azure Web Apps’te Uygulama Ayarları hakkında daha fazla bilgi almak için bu [öğreticiyi](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) izleyebilirsiniz.
 
-Bu deponun bir çatalını oluşturmak istemiyorsanız, aşağıdaki Azure’a dağıt düğmesine de tıklayabilirsiniz. Daha sonra Azure’a gidip Cosmos DB hesabı bilgilerinizle uygulama ayarlarını yapmanız gerekir.
+Bu deponun bir çatalını oluşturmak istemiyorsanız, aşağıdaki **Azure 'A dağıt** düğmesini de seçebilirsiniz. Daha sonra Azure 'a gitmeniz ve Azure Cosmos DB hesap bilgilerinizden uygulama ayarlarını ayarlamanız gerekir.
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
 <img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
@@ -163,7 +157,7 @@ Bu deponun bir çatalını oluşturmak istemiyorsanız, aşağıdaki Azure’a d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Cosmos hesabı oluşturmayı ve Flask uygulamasını çalıştırmayı öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
+Bu hızlı başlangıçta, Mongo DB API hesabı için bir Azure Cosmos DB oluşturma ve GitHub 'dan kopyalanmış bir Python Flask-do Web uygulaması çalıştırmak için Azure Cosmos DB öykünücüsünü kullanma hakkında öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)

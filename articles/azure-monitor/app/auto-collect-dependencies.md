@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678295"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064283"
 ---
 # <a name="dependency-auto-collection"></a>Bağımlılık otomatik toplama
 
@@ -26,7 +26,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET Çekirdeği | 1.1 + |
 | <b>İletişim kitaplıkları</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -43,7 +43,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Uygulama çerçeveleri</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
-| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup> *</sup> |
+| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java Servlet | 3.1 + |
 | <b>İletişim kitaplıkları</b> |  |
 | [Apache HTTP Istemcisi](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
@@ -88,6 +88,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 
 - [.Net](../../azure-monitor/app/asp-net-dependencies.md)için özel bağımlılık izlemeyi ayarlayın.
 - [Java](../../azure-monitor/app/java-agent.md)için özel bağımlılık izlemeyi ayarlayın.
+- [Opencensus Python](../../azure-monitor/app/opencensus-python-dependency.md)için özel bağımlılık izlemeyi ayarlayın.
 - [Özel bağımlılık telemetrisi yazma](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - Application Insights türleri ve veri modeli için [veri modeli](../../azure-monitor/app/data-model.md) 'ne bakın.
 - Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.

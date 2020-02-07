@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407263"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047759"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Sertifika imzalama istek dosyasını oluşturma
 
@@ -26,6 +26,10 @@ Apple 'ın imzalı bir anında iletme sertifikası oluşturmak için kullandığ
 1. **Anahtarlık erişimi**seçin, **sertifika Yardımcısı**' nı genişletin ve bir **sertifika yetkilisinden sertifika iste**' yi seçin.
 
     ![Anahtarlık Erişimi kullanarak yeni sertifika isteğinde bulunma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+    
+> [!NOTE]
+> OS X varsayılan olarak Anahtarlık erişim aracında seçtiğiniz kategoride bulunan ilk öğeyi seçer. Bu sorun, **Sertifikalar** bölümünde yer alabilir ve **Apple Dünya çapında geliştirici ilişkileri sertifika yetkilisi** listedeki ilk öğe *değilse* sorunlu olabilir. Sertifika isteyebilmeniz için önce **Sertifikalar** bölümünde olduğunuzdan emin olun, sonra da **Apple Dünya çapında geliştirici ilişkileri sertifika yetkilisi**' ni seçin.
+
 
 1. **Kullanıcı e-posta adresinizi**seçin, **ortak ad** değerini girin, **diske kaydedilmiş**' ı belirttiğinizden emin olun ve ardından **devam**' ı seçin. **CA e-posta adresini** gerekli olmadığından boş bırakın.
 

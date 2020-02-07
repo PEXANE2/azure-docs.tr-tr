@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513159"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049039"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Video Indexer API 'Leriyle bir dil modelini özelleştirme
 
@@ -105,9 +105,8 @@ Yanıt, yeni eğitilen dil modelinde meta veriler sağlar ve örnek JSON çıkt�
 }
 ```
 
-[Videoyu yeniden](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)oluştururken [bir videoyu dizine](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) ve **languagemodelıd** parametresine karşıya yüklerken, **linguisticmodelıd** parametresi için dil modelinin döndürülen **kimlik** değerini kullanmanız gerekir.
+Döndürülen **kimlik** , dil modellerini ayırt etmek için kullanılan benzersiz bir kimliktir, ancak **languagemodelıd** , bir video API 'sini [dizine eklemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) ve [yeniden dizinlemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) için (video Indexer karşıya yükleme/yeniden dizin oluşturma API 'lerinde **linguisticmodelıd** olarak da bilinir) bir video yüklemek için kullanılır.
 
- 
 ## <a name="delete-a-language-model"></a>Dil modelini silme
 
 [Dil modeli silme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API 'si, belirtilen hesaptan özel bir dil modelini siler. Silinen dil modelini kullanan tüm videolar, videoyu yeniden dizinlene kadar aynı dizini tutacaktır. Videoyu yeniden dizinleyebilirsiniz, videoya yeni bir dil modeli atayabilirsiniz. Aksi takdirde, Video Indexer videoyu yeniden dizin oluşturacak varsayılan modelini kullanır.

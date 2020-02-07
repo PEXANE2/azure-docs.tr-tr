@@ -1,20 +1,19 @@
 ---
 title: 'İzleme: Apache ambarı & Azure Izleyici günlükleri-Azure HDInsight'
 description: Küme durumunu ve kullanılabilirliğini izlemek için ambarı ve Azure Izleyici günlüklerini nasıl kullanacağınızı öğrenin.
-keywords: izleme, ambarı, izleyici, Log Analytics, uyarı, kullanılabilirlik, sistem durumu
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687813"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060192"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>Apache ambarı ve Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 
@@ -96,9 +95,9 @@ Bir önkoşul olarak, toplanan verileri depolamak için bir Log Analytics çalı
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Izleyici günlükleri tümleştirmesini etkinleştirme
 
-Portaldaki HDInsight küme kaynağı sayfasında, **Operations Management Suite**' i seçin. Ardından, **Etkinleştir** ' i seçin ve açılan listeden Log Analytics çalışma alanınızı seçin.
+Portaldaki HDInsight küme kaynağı sayfasından **Azure İzleyicisi**' ni seçin. Ardından, **Etkinleştir** ' i seçin ve açılan listeden Log Analytics çalışma alanınızı seçin.
 
-![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>Sorgu ölçümleri ve günlük tabloları
 

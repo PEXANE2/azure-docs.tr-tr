@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793497"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059666"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Azure Bilişsel Arama kaynak tüketimini ve sorgu etkinliğini izleme
 
@@ -26,7 +26,7 @@ Bu makalede, izleme seçenekleriniz, günlüğe kaydetme ve günlük depolamayı
 
 ## <a name="metrics-at-a-glance"></a>Bir bakışta ölçümler
 
-Genel Bakış sayfasında yerleşik olarak bulunan ve kaynak tüketimine ve sorgu yürütme ölçümlerinde bulunan **kullanım** ve **izleme** bölümleri. Bu bilgiler, hizmeti kullanmaya başladığınızda yapılandırma gerekmeden kullanılabilir hale gelir. Bu sayfa birkaç dakikada bir yenilenir. [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin kopyaların ve bölümlerin sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı tüketiğini göstererek bu kararlara yardımcı olabilir ve geçerli yapılandırmanın mevcut yükü ne kadar iyi işlediğini.
+Genel Bakış sayfasında yerleşik olarak bulunan ve kaynak tüketimine ve sorgu yürütme ölçümlerinde bulunan **kullanım** ve **izleme** bölümleri. Bu bilgiler, hizmeti kullanmaya başladığınızda yapılandırma gerekmeden kullanılabilir hale gelir. Bu sayfa birkaç dakikada bir yenilenir. [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
 
 **Kullanım** sekmesi, geçerli [limitlere](search-limits-quotas-capacity.md)göre kaynak kullanılabilirliği gösterir. Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
 
@@ -56,7 +56,7 @@ Azure Bilişsel Arama, yönettiği nesnelerden daha fazla veri depolamaz, bu da 
 
 Aşağıdaki tabloda, günlükleri depolama ve Application Insights aracılığıyla hizmet işlemlerinin ve sorgu iş yüklerinin derinlemesine izlenmesini ekleme seçenekleri karşılaştırılmaktadır.
 
-| Kaynak | Kullanıldığı yerler |
+| Kaynak | Kullanım alanı: |
 |----------|----------|
 | [Azure İzleyici günlükleri](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri aşağıdaki şemalara göre yapılır. Olaylar Log Analytics çalışma alanına kaydedilir. Günlükte ayrıntılı bilgi döndürmek için sorguları bir çalışma alanına karşı çalıştırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici günlükleri ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri aşağıdaki şemalara göre yapılır. Olaylar bir blob kapsayıcısına kaydedilir ve JSON dosyalarında depolanır. Dosya içeriğini görüntülemek için bir JSON düzenleyicisi kullanın.|
@@ -66,7 +66,7 @@ Azure aboneliklerinizin kullanım ömrü boyunca ücretsiz olarak deneyebilmeniz
 
 Sonraki bölümde, Azure Bilişsel Arama işlemleri tarafından oluşturulan günlük verilerini toplamak ve erişmek için Azure Blob Storage 'ı etkinleştirme ve kullanma adımlarında adım adım gösterilmektedir.
 
-## <a name="enable-logging"></a>Günlü kaydını etkinleştir
+## <a name="enable-logging"></a>Günlüğü etkinleştirme
 
 Dizin oluşturma ve sorgu iş yükleri için günlüğe kaydetme varsayılan olarak kapalıdır ve hem günlük altyapısı hem de uzun vadeli dış depolama için eklenti çözümlerine bağımlıdır. Yalnızca Azure Bilişsel Arama kalıcı olan veriler oluşturduğu ve yönettiği nesnelerdir, bu nedenle günlüklerin başka bir yerde depolanması gerekir.
 
@@ -76,24 +76,26 @@ Bu bölümde, günlüğe kaydedilen olayları ve ölçüm verilerini depolamak i
 
    Depolama hesabınızın Azure Bilişsel Arama ile aynı bölgede bulunması gerekir.
 
-2. Arama hizmeti genel bakış sayfasını açın. Sol gezinti bölmesinde **izleme** ' ye kaydırın ve **izlemeyi etkinleştir**' e tıklayın.
+2. Arama hizmeti genel bakış sayfasını açın. Sol gezinti bölmesinde **izleme** ' ye kaydırın ve **Tanılama ayarları**' na tıklayın.
 
-   ![İzlemeyi etkinleştir](./media/search-monitor-usage/enable-monitoring.png "İzlemeyi etkinleştirme")
+   ![Tanılama ayarları](./media/search-monitor-usage/diagnostic-settings.png "Tanılama ayarları")
 
-3. Dışarı aktarmak istediğiniz verileri seçin: Günlükler, ölçümler veya her ikisi. Bir depolama hesabına kopyalayabilir, bunu bir olay hub 'ına gönderebilir veya Azure Izleyici günlüklerine aktarabilirsiniz.
+3. **Tanılama ayarı Ekle** 'yi seçin
+
+4. Dışa aktarmak istediğiniz verileri seçin: günlükler, Ölçümler ve her ikisi de. Bir depolama hesabına kopyalayabilir, bunu bir olay hub 'ına gönderebilir veya Azure Izleyici günlüklerine aktarabilirsiniz.
 
    Blob depolamaya Arşiv için yalnızca depolama hesabının mevcut olması gerekir. Kapsayıcılar ve Bloblar, günlük verileri aktarıldığında gerekli olduğu gibi oluşturulur.
 
    ![BLOB depolama arşivini yapılandırma](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB depolama arşivini yapılandırma")
 
-4. Profili kaydedin.
+5. Profili kaydetme
 
-5. Nesneleri oluşturarak veya silerek (günlük olayları oluşturur) ve sorgular göndererek (ölçüm oluşturur) test günlüğü. 
+6. Nesneleri oluşturarak veya silerek (günlük olayları oluşturur) ve sorgular göndererek (ölçüm oluşturur) test günlüğü. 
 
 Profil kaydedildikten sonra günlüğe kaydetme etkinleştirilir. Kapsayıcılar yalnızca günlüğe kaydedilecek veya ölçülecek bir etkinlik olduğunda oluşturulur. Veriler bir depolama hesabına kopyalandığında, veriler JSON olarak biçimlendirilir ve iki kapsayıcıya yerleştirilir:
 
-* Öngörüler-Günlükler-operationlogs: arama trafiği günlükleri için
-* Öngörüler-ölçümler-pt1m: ölçümler için
+* ınsights günlükleri operationlogs: arama trafiği günlükleri
+* ınsights ölçümleri pt1m: ölçümler için
 
 **Kapsayıcının blob depolamada görünmesi için bir saat sürer. Her kapsayıcı için bir blob, saat başına bir blob vardır.**
 
@@ -105,29 +107,29 @@ Dosyaları görüntülemek için [Visual Studio Code](#download-and-open-in-visu
 resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
 ```
 
-## <a name="log-schema"></a>Günlük şeması
+## <a name="log-schema"></a>Günlüğü şeması
 Arama hizmeti trafik günlüklerinizi içeren Bloblar, bu bölümde açıklandığı şekilde yapılandırılır. Her Blobun bir dizi günlük nesnesi içeren **kayıtlar** adlı bir kök nesnesi vardır. Her blob aynı saat boyunca gerçekleşen tüm işlemler için kayıtlar içerir.
 
 | Adı | Tür | Örnek | Notlar |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559 Z" |İşlemin zaman damgası |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>KAYNAKGRUPLARı/VARSAYıLAN/SAĞLAYıCıLAR/<br/> MICROSOFT. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |RESOURCEID |
-| operationName |string |"Query. Search" |İşlemin adı |
-| operationVersion |string |"2019-05-06" |Kullanılan api sürümü |
-| category |string |"OperationLogs" |sabit |
-| resultType |string |Başarılı |Olası değerler: başarılı veya başarısız |
-| resultSignature |int |200 |HTTP sonuç kodu |
-| Ort |int |50 |İşlem süresi (milisaniye) |
-| properties |object |aşağıdaki tabloya bakın |İşleme özgü verileri içeren nesne |
+| resourceId |string |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VARSAYILAN/RESOURCEGROUPS/SAĞLAYICILARI /<br/> MICROSOFT. ARAMA/SEARCHSERVICES/SEARCHSERVICE" |ResourceId |
+| operationName |string |"Query.Search" |İşlem adı |
+| operationVersion |string |"2019-05-06" |Kullanılan api-version |
+| category |string |"OperationLogs" |sabiti |
+| resultType |string |"Başarılı" |Olası değerler: başarı veya başarısızlık |
+| resultSignature |int |200 |HTTP Sonuç kodu |
+| süre (MS) |int |50 |Milisaniye cinsinden işlem süresi |
+| özellikler |object |aşağıdaki tabloya bakın |İşlem özgü verileri içeren nesne. |
 
 **Özellikler şeması**
 
 | Adı | Tür | Örnek | Notlar |
 | --- | --- | --- | --- |
-| Açıklama |string |"GET/Indexes (' content ')/docs" |İşlemin uç noktası |
+| Açıklama |string |"/İndexes('content')/docs Al" |İşlemin bitiş noktası |
 | Sorgu |string |"? Search = AzureSearch & $count = true & api-Version = 2019-05-06" |Sorgu parametreleri |
 | Belgeler |int |42 |İşlenen belge sayısı |
-| indexName |string |"testındex" |İşlemle ilişkili dizinin adı |
+| indexName |string |"testindex" |İşlemle ilişkili dizinin adı |
 
 ## <a name="metrics-schema"></a>Ölçüm şeması
 
@@ -135,22 +137,22 @@ Arama hizmeti trafik günlüklerinizi içeren Bloblar, bu bölümde açıklandı
 
 | Adı | Tür | Örnek | Notlar |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>KAYNAKGRUPLARı/VARSAYıLAN/SAĞLAYıCıLAR/<br/>MICROSOFT. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Kaynak KIMLIĞINIZ |
-| metricName |string |Dönemlerinde |ölçümün adı |
+| resourceId |string |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VARSAYILAN/RESOURCEGROUPS/SAĞLAYICILARI /<br/>MICROSOFT. ARAMA/SEARCHSERVICES/SEARCHSERVICE" |Kaynak KIMLIĞINIZ |
+| metricName |string |"Gecikme süresi" |Ölçüm adı |
 | time |datetime |"2018-12-07T00:00:43.6872559 Z" |işlemin zaman damgası |
-| Ortalama |int |64 |Ölçüm zaman aralığındaki ham örneklerin ortalama değeri |
-| En düşük |int |37 |Ölçüm zaman aralığındaki ham örneklerin en küçük değeri |
-| çok |int |78 |Ölçüm zaman aralığındaki ham örneklerin maksimum değeri |
-| Toplamda |int |258 |Ölçüm zaman aralığındaki ham örneklerin toplam değeri |
-| count |int |4 |Ölçümü oluşturmak için kullanılan ham örnek sayısı |
-| zamandilimi |string |"PT1M" |ISO 8601 ' de ölçümün zaman dilimi |
+| ortalama |int |64 |Ham örnekleri ölçüm zaman aralığındaki ortalama değeri |
+| en az |int |37 |En düşük değer ölçüm zaman aralığında ham örnekleri |
+| maksimum |int |78 |Ölçüm zaman aralığında ham örnekleri en yüksek değeri |
+| toplam |int |258 |Toplam değer ölçüm zaman aralığında ham örnekleri |
+| {1&gt;count&lt;1} |int |4 |Ölçü oluşturmak için kullanılan ham örnek sayısı |
+| timegrain |string |"PT1M" |ISO 8601 ölçümü, zaman dilimi |
 
-Tüm ölçümler tek dakikalık aralıklarla raporlanır. Her ölçüm, dakikada minimum, maksimum ve ortalama değerleri kullanıma sunar.
+Tüm ölçümler, bir dakikalık aralıklar olarak raporlanır. Her ölçüm, dakika başına en düşük, en yüksek ve ortalama değerleri gösterir.
 
-SearchQueriesPerSecond ölçümü için en az, bu dakika içinde kayıtlı olan saniye başına arama sorgularının en düşük değeridir. Aynı değer en büyük değer için geçerlidir. Average, tüm dakikadaki toplamalar.
-Bu senaryoyu bir dakika boyunca düşünün: en fazla SearchQueriesPerSecond için maksimum yük, ortalama yükün 58 saniye ve son olarak tek bir sorgu ile bir saniye, en düşük olan tek bir sorgudur.
+SearchQueriesPerSecond ölçüm için en az bu dakikasındaki kaydedildiği saniye başına arama sorguları için en düşük değeridir. Aynı en yüksek değeri için geçerlidir. Toplama tamamı ortalama, dakikadır.
+Bir dakika boyunca bu senaryoyu düşünün: yüksek bir saniye yüklemek diğer bir deyişle en fazla SearchQueriesPerSecond 58 saniyelik ortalama yük tarafından izlenen için ve son olarak yalnızca bir sorgu ile bir saniye olan en düşük gereksinimdir.
 
-Kısıtledsearchqueriespercentage, minimum, maksimum, Average ve Total için hepsi aynı değere sahiptir: bir dakika boyunca toplam arama sorgusu sayısından kısıtlanmış olan arama sorgularının yüzdesi.
+ThrottledSearchQueriesPercentage için minimum, maksimum, ortalama ve toplam, tümü aynı değere sahip:, arama sorguları bir dakika boyunca toplam sayısı azaltıldı arama sorguları yüzdesi.
 
 ## <a name="download-and-open-in-visual-studio-code"></a>Visual Studio Code indir ve aç
 

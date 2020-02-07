@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982766"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045360"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -81,7 +81,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 - Giriş talepleri:
   - **inputClaim1**: someone@contoso.com
   - **inputClaim2**: someone@outlook.com
-    - Giriş parametreleri:
+- Giriş parametreleri:
   - **StringComparison**: OrdinalIgnoreCase
 - Sonuç: hata oluştu
 
@@ -91,7 +91,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | inputClaim1 | string | Değiştirilen ClaimType. |
+| Inputclaim | inputClaim1 | string | Değiştirilecek ClaimType. |
 | InputParameter | toCase | string | Şu değerlerden biri: `LOWER` veya `UPPER`. |
 | OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
@@ -326,7 +326,7 @@ Tek parametreli {0}dize biçimlendirmek için bu talep dönüşümünü kullanı
 
 ## <a name="formatstringmultipleclaims"></a>Formatstringmultipleclaim
 
-Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# **String. Format** yöntemini kullanır.
+Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# `String.Format` yöntemini kullanır.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
@@ -361,6 +361,76 @@ Bu talep dönüşümünü, iki parametreli bir dize biçimlendirmek için kullan
     - **StringFormat**: {0} {1}
 - Çıkış talepleri:
     - **Outputclaim**: ali Fernando
+
+## <a name="getlocalizedstringstransformation"></a>Getlocalizedstringstranssize 
+
+Yerelleştirilmiş dizeleri talebe kopyalar.
+
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| OutputClaim | Yerelleştirilmiş dizenin adı | string | Bu talep dönüştürme işlemi yapıldıktan sonra üretilen talep türlerinin listesi. |
+
+Getlocalizedstringstrans, talep dönüşümünü kullanmak için:
+
+1. Bir [Yerelleştirme dizesi](localization.md) tanımlayın ve [kendini onaylanan teknik profille](self-asserted-technical-profile.md)ilişkilendirin.
+1. `LocalizedString` öğesinin `ElementType` `GetLocalizedStringsTransformationClaimType`olarak ayarlanmalıdır.
+1. `StringId`, tanımladığınız benzersiz bir tanımlayıcıdır ve daha sonra talep dönüşümünüzün içinde kullanın.
+1. Talep dönüşümünde, yerelleştirilmiş dizeyle ayarlanacak taleplerin listesini belirtin. `ClaimTypeReferenceId`, ilkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu. `TransformationClaimType`, `LocalizedString` öğesinin `StringId` tanımlanan yerelleştirilmiş dizenin adıdır.
+1. [Kendi kendine onaylanan bir teknik profilde](self-asserted-technical-profile.md)veya bir [görüntüleme denetim](display-controls.md) girişi veya çıkış talebi dönüştürmesi ' nde talep dönüşümünüze bir başvuru yapın.
+
+![Getlocalizedstringstranssize](./media/string-transformations/get-localized-strings-transformation.png)
+
+Aşağıdaki örnekte e-posta konusu, gövde, kod iletiniz ve e-postanın imzası yerelleştirilmiş dizelerdir. Bu talepler daha sonra özel e-posta doğrulama şablonu tarafından kullanılır.
+
+Ingilizce (varsayılan) ve Ispanyolca için yerelleştirilmiş dizeleri tanımlayın.
+
+```XML
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+     </LocalizedStrings>
+   </LocalizedResources>
+   <LocalizedResources Id="api.localaccountsignup.es">
+     <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Su código es</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Atentamente</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+Talep dönüştürmesi, `StringId` *Email_Subject*değeri ile *ilgili* talep türünün değerini ayarlar.
+
+```XML
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Çıkış talepleri:
+  - **Konu**: contoso hesabı e-posta doğrulama kodu
+  - **ileti**: hesabınız doğrulanırken teşekkürler! 
+  - **Codebir giriş**: kodunuz 
+  - **imza**: saygılarımla  
+
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -414,7 +484,7 @@ Bir değer listesinden, başka bir talebin değerine göre bir talep değeri ara
 | Inputclaim | ınputparameterıd | string | Arama değerini içeren talep |
 | InputParameter | |string | InputParameters koleksiyonu. |
 | InputParameter | errorOnFailedLookup | boole | Eşleşen arama olmadığında bir hatanın döndürülüp döndürülmeyeceğini denetleme. |
-| OutputClaim | ınputparameterıd | string | Bu talep dönüşümünde oluşturulacak ClaimTypes. Eşleşen kimliğin değeri. |
+| OutputClaim | ınputparameterıd | string | Bu talep dönüşümünde oluşturulacak ClaimTypes. Eşleşen `Id`değeri. |
 
 Aşağıdaki örnek, InputParameters koleksiyonlarından birinde etki alanı adını arar. Talep dönüştürmesi, Tanımlayıcıdaki etki alanı adını arar ve değerini (bir uygulama KIMLIĞI) döndürür.
 
@@ -479,7 +549,7 @@ Bir e-posta adresinin etki alanı kısmını alır.
 | Inputclaim | emailAddress | string | E-posta adresini içeren ClaimType. |
 | OutputClaim | alanını | string | Bu talep dönüştürme işleminden sonra üretilen ClaimType, etki alanı. |
 
-Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu talep dönüşümünü kullanın. Bu, denetim verilerinden kişisel olarak tanımlanabilen bilgilerin (PII) kaldırılması için yararlı olabilir. Aşağıdaki talep dönüşümünde, bir **e-posta** talebinde etki alanı adının nasıl ayrıştırılacağını gösterilmektedir.
+Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu talep dönüşümünü kullanın. Aşağıdaki talep dönüşümünde, bir **e-posta** talebinde etki alanı adının nasıl ayrıştırılacağını gösterilmektedir.
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -680,8 +750,8 @@ Bir dize talep türünün parçalarını, belirtilen konumdaki karakterden başl
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | Inputclaim | string | Dizeyi içeren talep türü. |
 | InputParameter | startIndex | int | Bu örnekteki alt dizenin sıfır tabanlı başlangıç karakter konumu. |
-| InputParameter | length | int | Alt dizeden karakter sayısı. |
-| OutputClaim | OutputClaim | boole | Bu örnekte startIndex değerinde başlayan uzunluk uzunluğuna eşdeğer veya startIndex, bu örneğin uzunluğuna eşitse ve length sıfır olduğunda boş olan bir dize. |
+| InputParameter | {1&gt;length&lt;1} | int | Alt dizeden karakter sayısı. |
+| OutputClaim | OutputClaim | boole | Bu örnekte startIndex değerinde başlayan uzunluğunun alt dizesi ile eşdeğer veya startIndex, bu örneğin uzunluğuna eşitse ve length sıfır olduğunda boş olan bir dize. |
 
 Örneğin, telefon numarası ülke önekini alın.  
 
@@ -758,7 +828,7 @@ Her öğe veya üye arasındaki belirtilen ayırıcıyı kullanarak belirtilen d
 | InputParameter | ayırıcı | string | Virgül `,`gibi bir ayırıcı olarak kullanılacak dize. |
 | OutputClaim | OutputClaim | string | `delimiter` giriş parametresiyle ayrılmış `inputClaim` dize koleksiyonunun üyelerinden oluşan bir dize. |
   
-Aşağıdaki örnek, bir Kullanıcı rolleri dize koleksiyonunu alır ve bunu bir virgül sınırlayıcı dizesine dönüştürür. Azure AD Kullanıcı hesabı 'nda bir dize koleksiyonunu depolamak için bu yöntemi kullanabilirsiniz. Daha sonra, dizinden hesabı okuduğunuzda, virgül sınırlayıcı dizesini dize koleksiyonuna geri dönüştürmek için `StringSplit` kullanın.
+Aşağıdaki örnek, bir Kullanıcı rolleri dize koleksiyonunu alır ve bunu bir virgül sınırlayıcı dizesine dönüştürür. Bu yöntemi, bir dize koleksiyonunu Azure AD Kullanıcı hesabında depolamak için kullanabilirsiniz. Daha sonra, dizinden hesabı okuduğunuzda, virgül sınırlayıcı dizesini dize koleksiyonuna geri dönüştürmek için `StringSplit` kullanın.
 
 ```XML
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">

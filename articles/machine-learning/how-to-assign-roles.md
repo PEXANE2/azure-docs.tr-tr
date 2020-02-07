@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935368"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064759"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +112,65 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 Özel rollerle kullanılabilen işlemler (Eylemler) hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
+
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>S. Azure Machine Learning hizmetinde çeşitli işlemleri gerçekleştirmek için gereken izinler nelerdir?
+
+Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en az kapsamda gerçekleştirmek için gereken izinler verilmiştir. Örnek olarak, bir etkinlik bir çalışma alanı kapsamıyla (sütun 4) gerçekleştirilebileceği takdirde, bu izne sahip tüm daha yüksek kapsam de otomatik olarak çalışacaktır. Bu tablodaki tüm yollar `Microsoft.MachineLearningServices/`**göreli yollardır** .
+
+| Etkinlik | Abonelik düzeyi kapsamı | Kaynak grubu düzeyi kapsamı | Çalışma alanı düzeyi kapsamı |
+|---|---|---|---|
+| Yeni çalışma alanı oluştur | Gerekli değil | Sahip veya katkıda bulunan | Yok (oluşturulduktan sonra sahip olur veya daha yüksek kapsam rolünü devralır) |
+| Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol şunları sağlar: `workspaces/computes/write` |
+| Yeni Not defteri VM 'si oluşturma | Gerekli değil | Sahip veya katkıda bulunan | Mümkün değil |
+| Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol şunları sağlar: `workspaces/computes/write` |
+| Çalıştırma, verilere erişme, model dağıtma veya yayımlama işlem hattı gibi veri düzlemi etkinliği | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol şunları sağlar: `workspaces/*/write` <br/> Ayrıca, MSI 'ın Depolama hesabınızdaki verilere erişmesine izin vermek için çalışma alanına kayıtlı bir veri deposuna ihtiyacınız olduğunu unutmayın. |
+
+
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>S. Aboneliğimde tüm özel rolleri listelemek Nasıl yaparım? mı?
+
+Azure CLı 'de aşağıdaki komutu çalıştırın.
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>S. Nasıl yaparım? Aboneliğimde bir rolün rol tanımını bulamıyor musunuz?
+
+Azure CLı 'de aşağıdaki komutu çalıştırın. `<role-name>` yukarıdaki komutun döndürdüğü biçimde olması gerektiğini unutmayın.
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+### <a name="q-how-do-i-update-a-role-definition"></a>S. Nasıl yaparım? bir rol tanımı güncelleştirilsin mi?
+
+Azure CLı 'de aşağıdaki komutu çalıştırın.
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+Yeni rol tanımınızın tüm kapsamı üzerinde izinleriniz olması gerektiğini unutmayın. Örneğin, bu yeni rolün üç abonelik arasında bir kapsamı varsa, üç abonelik için de izinleriniz olması gerekir. 
+
+> [!NOTE]
+> Rol güncelleştirmelerinin, bu kapsamdaki tüm rol atamaları üzerinde uygulanması 15 dakika ila saat arasında sürebilir.
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>S. Çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilir miyim? 
+
+Evet, çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilirsiniz. Çalışma alanı güncelleştirmesi, çalışma alanı nesnesinde bir yama çağrısı olduğundan, bunu JSON tanımınızda `"NotActions"` dizisine aşağıdaki eylemi koyarak yapabilirsiniz: 
+
+`"Microsoft.MachineLearningServices/workspaces/write"`
+
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>S. Bir çalışma alanında kota işlemleri gerçekleştirmek için hangi izinler gereklidir? 
+
+Çalışma alanındaki kota ile ilgili herhangi bir işlemi gerçekleştirmek için abonelik düzeyi izinlerine sahip olmanız gerekir. Bu, yönetilen işlem kaynaklarınız için abonelik düzeyi kotasının veya çalışma alanı düzeyi kotasının ayarlanması, yalnızca abonelik kapsamında yazma izinleriniz varsa meydana gelebileceği anlamına gelir. 
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kurumsal güvenliğe genel bakış](concept-enterprise-security.md)
 - [Bir sanal ağ içinde denemeleri ve çıkarımı/puanı güvenli bir şekilde çalıştırın](how-to-enable-virtual-network.md)
-- [Öğretici: Eğitme modelleri](tutorial-train-models-with-aml.md)
+- [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)
 - [Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

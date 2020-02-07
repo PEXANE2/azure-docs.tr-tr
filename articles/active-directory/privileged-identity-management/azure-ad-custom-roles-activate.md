@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management (PıM) içinde bir Azure AD özel rolünü etkinleştirme | Microsoft Docs
+title: Azure AD özel rolünü etkinleştirin-Privileged Identity Management (PıM)
 description: Atama Privileged Identity Management için Azure AD özel rolünü etkinleştirme (PıM)
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06ceb2d2c98c3f9b6b184b98ddaadea610d525d2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f2c096f41acd5852423205b0b185c8e1a8533c55
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896562"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048127"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management bir Azure AD özel rolünü etkinleştirin
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management artık kimlik v
 
 Bir Azure AD özel rolünü etkinleştirmeniz gerektiğinde, Privileged Identity Management ' de rollerim gezinti seçeneğini belirleyerek etkinleştirme isteyin.
 
-1. Oturum [Azure portalında](https://portal.azure.com).
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 1. Azure AD [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)açın.
 
 1. Uygun Azure AD özel rol atamalarınızın listesini görmek için **Azure AD özel rolleri** ' ni seçin.

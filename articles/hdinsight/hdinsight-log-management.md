@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837925"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064691"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -69,7 +69,7 @@ Her tür için uygun günlük stratejilerini tasarlamak üzere HDInsight kümeni
 
 * Bir izleme çözümünün veya hizmetinin yararlı bir avantaj olup olmayacağını göz önünde bulundurun. Microsoft System Center bir [HDInsight yönetim paketi](https://www.microsoft.com/download/details.aspx?id=42521)sağlar. Günlükleri toplamak ve merkezileştirmek için Apache Chukwa ve Gana gibi üçüncü taraf araçları da kullanabilirsiniz. Birçok şirket, Hadoop tabanlı büyük veri çözümlerini izlemek için hizmet sunar, örneğin: Centerity, Compuware APM, şeması metin SPM ve zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2\. Adım: küme hizmeti sürümlerini yönetme ve betik eylem günlüklerini görüntüleme
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>2\. Adım: küme hizmeti sürümlerini yönetme ve günlükleri görüntüleme
 
 Tipik bir HDInsight kümesi, çeşitli hizmetleri ve açık kaynaklı yazılım paketlerini (Apache HBase, Apache Spark vb.) kullanır. Biyotika gibi bazı iş yükleri için, iş yürütme günlüklerine ek olarak hizmet yapılandırma günlüğü geçmişini saklamanız gerekebilir.
 
@@ -89,9 +89,21 @@ Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya 
 
 HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el ile veya belirtildiğinde bir kümede betikleri çalıştırır. Örneğin, betik eylemleri kümeye ek yazılım yüklemek veya varsayılan değerlerden yapılandırma ayarlarını değiştirmek için kullanılabilir. Betik eylemi günlükleri, kümenin kurulumu sırasında oluşan hatalara ilişkin Öngörüler ve ayrıca küme performansını ve kullanılabilirliğini etkileyebilecek yapılandırma ayarları ' değişikliklerini sağlayabilir.  Bir betik eyleminin durumunu görmek için, ambarı Kullanıcı arabiriminizdeki **Ops** düğmesini seçin veya varsayılan depolama hesabındaki durum günlüklerine erişin. Depolama günlükleri `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`adresinden kullanılabilir.
 
+### <a name="view-ambari-alerts-status-logs"></a>Ambarı uyarıları durum günlüklerini görüntüle
+
+Apache ambarı, uyarı durumu değişikliklerini `ambari-alerts.log`yazar. Tam yol `/var/log/ambari-server/ambari-alerts.log`. Günlük için hata ayıklamayı etkinleştirmek üzere `/etc/ambari-server/conf/log4j.properties.` Değiştir ' de bir özelliği değiştirin ve sonra `# Log alert state changes` ' in altındaki giriş:
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. Adım: küme işi yürütme günlük dosyalarını yönetme
 
-Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyalarını gözden geçiriyorsunuz.  Hizmetler Apache HBase, Apache Spark ve diğer birçok tane içerebilir. Bir Hadoop kümesi çok sayıda ayrıntılı günlük üretir, bu nedenle hangi günlüklerin yararlı (ve olmayan) zaman alabilir olduğunu belirleyin.  Günlük sistemini anlamak, günlük dosyalarının hedeflenen yönetimi için önemlidir.  Aşağıda örnek bir günlük dosyası verilmiştir.
+Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyalarını gözden geçiriyorsunuz.  Hizmetler Apache HBase, Apache Spark ve diğer birçok tane içerebilir. Bir Hadoop kümesi çok sayıda ayrıntılı günlük üretir, bu nedenle hangi günlüklerin yararlı (ve olmayan) zaman alabilir olduğunu belirleyin.  Günlük sistemini anlamak, günlük dosyalarının hedeflenen yönetimi için önemlidir.  Aşağıdaki görüntü, örnek bir günlük dosyasıdır.
 
 ![HDInsight örnek günlük dosyası örnek çıktısı](./media/hdinsight-log-management/hdi-log-file-example.png)
 

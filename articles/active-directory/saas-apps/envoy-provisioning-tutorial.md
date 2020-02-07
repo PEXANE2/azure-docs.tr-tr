@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için Envoy yapılandırma | Microsoft Docs'
-description: Otomatik olarak sağlama ve sağlamasını Envoy kullanıcı hesaplarını Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Envoy yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,159 +15,159 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: df4c5895e15e7e9e63ad1f3d273af1c3fdab2e90
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 30faae80f1af4ff63924a76b26a03b8fe354a7df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672719"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058034"
 ---
-# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Öğretici: Envoy otomatik kullanıcı hazırlama için yapılandırma
+# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Envoy yapılandırma
 
-Bu öğreticinin amacı Envoy ve Azure otomatik olarak sağlamak için Azure AD'de yapılandırmak için Active Directory'yi (Azure AD) ve kullanıcı devre dışı bırakma sağlama ve/veya gruplara Envoy gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Envoy ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD kullanıcı sağlama hizmeti üzerinde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet yapar, nasıl çalıştığını ve sık sorulan sorular önemli ayrıntılar için bkz. [otomatik kullanıcı hazırlama ve sağlamayı kaldırma Azure Active Directory ile SaaS uygulamalarına](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı, şu anda genel Önizleme aşamasındadır. Genel Microsoft Azure için kullanım koşulları Önizleme özellikleri hakkında daha fazla bilgi için bkz. [ek kullanım koşulları, Microsoft Azure önizlemeleri için](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulları zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracısı
-* [Envoy Kiracı](https://envoy.com/pricing/)
-* Envoy yönetici izinlerine sahip bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Bir Envoy kiracısı](https://envoy.com/pricing/)
+* Yönetici izinlerine sahip bir kullanıcı hesabı.
 
-## <a name="add-envoy-from-the-gallery"></a>Envoy Galeriden Ekle
+## <a name="add-envoy-from-the-gallery"></a>Galeriden Envoy ekleyin
 
-Azure AD ile otomatik kullanıcı hazırlama için Envoy yapılandırmadan önce Envoy Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için Envoy 'yi yapılandırmadan önce Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize Envoy eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Envoy eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden bir sorgu eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde  **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde seçin **Azure Active Directory**.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için seçin **yeni uygulama** bölmenin üstünde düğme.
+3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Envoy**seçin **Envoy** sonuçlar paneli ve ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusuna, **Envoy**girin, sonuçlar panelinde **Envoy** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesinde envoy](common/search-new-app.png)
+    ![Sonuçlar listesinde Envoy](common/search-new-app.png)
 
-## <a name="assigning-users-to-envoy"></a>Envoy için kullanıcı atama
+## <a name="assigning-users-to-envoy"></a>Kullanıcıları Envoy 'ye atama
 
-Azure Active Directory kullanan adlı bir kavram *atamaları* hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için. Otomatik kullanıcı hazırlama bağlamında, yalnızca kullanıcı ve/veya Azure AD'de bir uygulamaya atanan gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Yapılandırma ve otomatik kullanıcı hazırlama etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları Envoy erişmesi karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek Envoy için bu kullanıcılara ve/veya grupları atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların, Envoy 'ye erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları istediğiniz şekilde atayabilirsiniz:
 
-* [Kurumsal bir uygulamayı kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-envoy"></a>Envoy için kullanıcı atama önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-envoy"></a>Kullanıcıları daha sonra atamak için önemli ipuçları
 
-* Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmasını otomatik kullanıcı test etmek için Envoy atanır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Envoy için kullanıcı atama, atama iletişim kutusunda (varsa) geçerli bir uygulamaya özgü rolü seçmeniz gerekir. Kullanıcılarla **varsayılan erişim** rol sağlamasından dışlanır.
+* Bir kullanıcıyı bir kullanıcı için atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="configuring-automatic-user-provisioning-to-envoy"></a>Envoy için otomatik kullanıcı sağlamayı yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-envoy"></a>Otomatik Kullanıcı sağlamasını yapılandırma 
 
-Bu bölümde oluşturmak, güncelleştirmek ve kullanıcılar devre dışı bırakmak için sağlama hizmetini Azure AD'yi yapılandırma adımlarında size kılavuzluk eder ve/veya Envoy gruplarında Azure AD'de kullanıcı ve/veya grup atamaları temel alarak.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Uygulamayı da seçebilirsiniz SAML tabanlı çoklu oturum açma için Envoy etkinleştirmek, yönergeleri izleyerek sağlanan [oturum açma Envoy tek öğretici](envoy-tutorial.md). Bu iki özellik birbirine tamamlayıcı rağmen otomatik kullanıcı hazırlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> Ayrıca, Envoy [Çoklu oturum açma öğreticisinde](envoy-tutorial.md)belirtilen yönergeleri Izleyerek, Envoy için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Azure AD'de Envoy için otomatik kullanıcı hazırlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Azure AD 'de Envoy için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Seçin **kurumsal uygulamalar**, ardından **tüm uygulamaları**.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Envoy**.
+2. Uygulamalar listesinde, **Envoy**' yi seçin.
 
-    ![Uygulamalar listesinde Envoy bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Envoy bağlantısı](common/all-applications.png)
 
-3. Seçin **sağlama** sekmesi.
+3. **Sağlama** sekmesini seçin.
 
-    ![Sağlama sekmesinde](common/provisioning.png)
+    ![Sağlama sekmesi](common/provisioning.png)
 
-4. Ayarlama **hazırlama modu** için **otomatik**.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Sağlama sekmesinde](common/provisioning-automatic.png)
+    ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Altında **yönetici kimlik bilgileri** giriş bölümünde `https://app.envoy.com/scim/v2` içinde **Kiracı URL'si**. Alınacak **gizli belirteç** Envoy hesabınızı adım 6'da açıklandığı gibi Kılavuzu izleyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://app.envoy.com/scim/v2` girin. Envoy hesabınızın **gizli belirtecini** almak için adım 6 ' da anlatıldığı şekilde izlenecek yolu izleyin.
 
-6. Oturum açın, [Envoy Yönetici Konsolu](https://dashboard.envoy.com/login). Tıklayarak **tümleştirmeler**.
+6. [Envoy Yönetici konsolunuza](https://dashboard.envoy.com/login)oturum açın. **Tümleştirmeler**' e tıklayın.
 
     ![Envoy tümleştirmeleri](media/envoy-provisioning-tutorial/envoy01.png)
 
-    Tıklayarak **yükleme** için **Microsoft Azure SCIM tümleştirme**.
+    **Microsoft Azure SCIM tümleştirmesi**için **yüklensin** ' e tıklayın.
 
-    ![Envoy yükleme](media/envoy-provisioning-tutorial/envoy02.png)
+    ![Envoy yüklemesi](media/envoy-provisioning-tutorial/envoy02.png)
 
-    Tıklayarak **Kaydet** için **tüm kullanıcıları eşitleme**. 
+    **Tüm kullanıcıları eşitlemek**için **Kaydet** ' e tıklayın. 
 
-    ![Envoy Kaydet](media/envoy-provisioning-tutorial/envoy03.png)
+    ![Kayıt kaydet](media/envoy-provisioning-tutorial/envoy03.png)
 
-    Gizli dizi doldurulmuş belirteci alın.
+    Doldurulmuş gizli dizi belirtecini alın.
     
     ![Envoy OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
 
-7. 5\. adımda gösterilen alanlar doldurma üzerine tıklayın **Test Bağlantısı** Azure emin olmak için AD için Envoy bağlanabilirsiniz. Bağlantı başarısız olursa Envoy hesabınız yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+7. 5\. adımda gösterilen alanları doldurulmaya göre, Azure AD 'nin Envoy 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Envoy hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. İçinde **bildirim e-posta** alanında, bir kişi veya grubun ve sağlama hata bildirimleri almak - onay e-posta adresi girin **birhataoluşursa,bire-postabildirimigönder**.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** düğmesine tıklayın.
 
-10. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory Kullanıcıları Envoy**.
+10. **Eşlemeler** bölümü altında, **kullanıcıları Azure Active Directory kullanıcılarla eşitler**' ı seçin.
     
-    ![Envoy kullanıcı öznitelikleri](media/envoy-provisioning-tutorial/envoy-user-mappings.png)
+    ![Envoy Kullanıcı öznitelikleri](media/envoy-provisioning-tutorial/envoy-user-mappings.png)
     
-11. Envoy içinde için Azure AD'den eşitlenen kullanıcı özniteliklerini gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri Envoy kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'den eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Envoy içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Envoy kullanıcı öznitelikleri](media/envoy-provisioning-tutorial/envoy-user-attribute.png)
+    ![Envoy Kullanıcı öznitelikleri](media/envoy-provisioning-tutorial/envoy-user-attribute.png)
 
-12. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory gruplarına Envoy**.
+12. **Eşlemeler** bölümünde **Azure Active Directory grupları eşitlemeyi**seçin.
 
-    ![Envoy kullanıcı eşlemeleri](media/envoy-provisioning-tutorial/envoy-group-mapping.png)
+    ![Kullanıcı eşlemelerini Envoy](media/envoy-provisioning-tutorial/envoy-group-mapping.png)
 
-13. Envoy içinde için Azure AD'den eşitlenen grup öznitelikleri gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri Envoy gruplarında güncelleştirme işlemleri eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+13. **Öznitelik eşleme** bölümünde, Azure AD 'Den Envoy ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Envoy içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Envoy kullanıcı eşlemeleri](media/envoy-provisioning-tutorial/envoy-group-attributes.png)
+    ![Kullanıcı eşlemelerini Envoy](media/envoy-provisioning-tutorial/envoy-group-attributes.png)
     
-14. Kapsam belirleme filtrelerini yapılandırmak için aşağıdaki yönergelere bakın [Scoping filtre öğretici](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-15. Azure AD sağlama hizmeti için Envoy etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** içinde **ayarları** bölümü.
+15. Azure AD sağlama hizmetini Envoy için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Açıkken sağlama durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-16. Kullanıcılara ve/veya istediğiniz grupları Envoy sağlamak için istenen değerleri seçerek tanımlamak **kapsam** içinde **ayarları** bölümü.
+16. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Kapsam sağlama](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-17. Sağlama için hazır olduğunuzda, tıklayın **Kaydet**.
+17. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Sağlama yapılandırmasını kaydetme](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, tüm kullanıcıların ilk eşitleme başlar ve/veya tanımlı gruplar **kapsam** içinde **ayarları** bölümü. İlk eşitleme yaklaşık 40 dakikada Azure AD sağlama hizmeti çalışıyor sürece oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve sağlama hizmeti Envoy üzerinde Azure AD tarafından gerçekleştirilen tüm eylemler açıklayan Etkinlik Raporu sağlama için bağlantıları izleyin.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü Izleyip, Azure AD sağlama hizmeti tarafından yapılan her türlü eylemi açıklayan, sağlama etkinlik raporuna ilişkin bağlantıları izleyebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri gözden geçirin ve sağlama etkinliği raporları alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 

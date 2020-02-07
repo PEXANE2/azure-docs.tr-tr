@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531386"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048353"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Denetimi veri akışları nelerdir?
 
@@ -42,9 +42,9 @@ Herhangi bir şeyi kaldırmak ve hızlı analizler için bir şekle uymak üzere
 
 | Bağlayıcı | Veri biçimi | Kimlik doğrulaması türü |
 | -- | -- | --|
-| [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV | Hesap anahtarı |
+| [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV, Parquet | Hesap Anahtarı |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Hizmet Sorumlusu |
-| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | CSV | Hesap anahtarı, hizmet sorumlusu |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | CSV, Parquet | Hesap anahtarı, hizmet sorumlusu |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | - | SQL kimlik doğrulaması |
 | [Azure SYNAPSE Analizi](connector-azure-sql-data-warehouse.md) | - | SQL kimlik doğrulaması |
 

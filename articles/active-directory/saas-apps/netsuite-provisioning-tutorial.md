@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için muhasebesi OneWorld yapılandırma | Microsoft Docs'
-description: Azure Active Directory ve muhasebesi OneWorld arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Netsuite OneWorld 'yi yapılandırma | Microsoft Docs"
+description: Azure Active Directory ve NetSuite OneWorld arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,86 +15,86 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928070ae7e5c9077c6f77e8cb7beb36815f47d6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c9a823e6515c2bfe09e1ab7bcef471eb8169e75
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515834"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063304"
 ---
-# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı hazırlama için muhasebesi yapılandırma
+# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Netsuite yapılandırma
 
-Bu öğreticinin amacı muhasebesi OneWorld ve Azure AD sağlama ve sağlamasını muhasebesi Azure AD'den kullanıcı hesaplarına otomatik olarak gerçekleştirmek için gereken adımları Göster sağlamaktır.
+Bu öğreticinin amacı, Azure AD 'den Netsuite 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Netsuite OneWorld ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğeleri zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
-*   Azure Active directory kiracısı.
-*   Muhasebesi OneWorld aboneliği. Otomatik kullanıcı hazırlama şu anda olduğuna dikkat edin yalnızca muhasebesi OneWorld ile desteklenir.
-*   Muhasebesi yönetici izinlerine sahip bir kullanıcı hesabı.
+*   Azure Active Directory kiracısı.
+*   Netsuite OneWorld aboneliği. Otomatik Kullanıcı hazırlama 'nın Şu anda yalnızca NetSuite OneWorld ile desteklendiğini unutmayın.
+*   Netsuite 'te yönetici izinlerine sahip bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-netsuite-oneworld"></a>Muhasebesi OneWorld için kullanıcı atama
+## <a name="assigning-users-to-netsuite-oneworld"></a>Kullanıcıları Netsuite OneWorld 'e atama
 
-Azure Active Directory "atamaları" adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca kullanıcıların ve grupların, "Azure AD'de bir uygulama için atandı" eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Yapılandırma ve sağlama hizmetini etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları muhasebesi uygulamanıza erişmek isteyen kullanıcılar temsil karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek bu kullanıcılar muhasebesi uygulamanıza atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Netsuite uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Netsuite uygulamanıza atayabilirsiniz:
 
-[Kurumsal bir uygulamayı kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Kullanıcılar için muhasebesi OneWorld atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Netsuite OneWorld 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-*   Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmayı test etmek için muhasebesi atanır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+*   Sağlama yapılandırmasını test etmek üzere Netsuite 'e tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-*   Bir kullanıcı için muhasebesi atarken, geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
+*   Bir kullanıcıyı Netsuite 'e atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="enable-user-provisioning"></a>Kullanıcı sağlamayı etkinleştirin
+## <a name="enable-user-provisioning"></a>Kullanıcı Sağlamayı Etkinleştir
 
-Bu bölümde, Azure AD sağlama API'si muhasebesi'nın kullanıcı hesabına bağlanma aracılığıyla size yol gösterir ve sağlama hizmeti oluşturmak için yapılandırma güncelleştirmesi ve atanan kullanıcı hesapları Azure AD'de kullanıcı ve Grup atamasına dayalı muhasebesi, devre dışı.
+Bu bölümde, Azure AD 'nizi Netsuite 'in Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan Netsuite 'teki atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
 
 > [!TIP] 
-> Ayrıca seçtiğiniz etkin SAML tabanlı çoklu oturum açma için muhasebesi, yönergeleri izleyerek sağlanan [Azure portalında](https://portal.azure.com). Bu iki özellik birbirine tamamlayıcı rağmen otomatik sağlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek NETSUITE için SAML tabanlı çoklu oturum açmayı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlama yapılandırmak için:
+### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-Bu bölümün amacı, muhasebesi Active Directory kullanıcı hesaplarının kullanıcı sağlamayı etkinleştirme anahat sağlamaktır.
+Bu bölümün amacı, Active Directory Kullanıcı hesaplarının Netsuite 'e Kullanıcı sağlamasını nasıl etkinleştireceğinizi özetler.
 
-1. İçinde [Azure portalında](https://portal.azure.com), Gözat **Azure Active Directory > Kurumsal uygulamaları > tüm uygulamaları** bölümü.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-1. Çoklu oturum açma için muhasebesi zaten yapılandırdıysanız arama alanını kullanarak muhasebesi Örneğiniz için arama yapın. Aksi takdirde seçin **Ekle** araması **muhasebesi** uygulama galerisinde. Arama sonuçlarından muhasebesi seçin ve uygulama listenize ekleyin.
+1. Zaten bir çoklu oturum açma için Netsuite yapılandırdıysanız, arama alanını kullanarak Netsuite örneğinizi arayın. Aksi takdirde, uygulama galerisinde **Netsuite** için **Ekle** ve ara ' yı seçin. Arama sonuçlarından Netsuite ' i seçin ve uygulama listenize ekleyin.
 
-1. Örneğiniz muhasebesi seçip **sağlama** sekmesi.
+1. Netsuite örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. Ayarlama **hazırlama modu** için **otomatik**. 
+1. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
 
-    ![Sağlama](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/netsuite-provisioning-tutorial/provisioning.png)
 
-1. Altında **yönetici kimlik bilgileri** bölümünde, aşağıdaki yapılandırma ayarları sağlayın:
+1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
-    a. İçinde **yönetici kullanıcı adı** metin kutusuna bir muhasebesi hesap adı **Sistem Yöneticisi** atanan Netsuite.com profilinde.
+    a. **Yönetici Kullanıcı adı** metin kutusuna Netsuite.com atanmış **Sistem Yöneticisi** profiline sahip bir Netsuite hesap adı yazın.
    
-    b. İçinde **yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
+    b. **Yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
       
-1. Azure portalında **Test Bağlantısı** Azure emin olmak için AD muhasebesi uygulamanıza bağlanabilirsiniz.
+1. Azure portal, Azure AD 'nin Netsuite uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 
-1. İçinde **bildirim e-posta** alanında, bir kişi veya grubun sağlama hata bildirimleri almak ve onay e-posta adresi girin.
+1. **Bildirim e-postası** alanına, sağlama hatası bildirimleri alması gereken kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
 
-1. Tıklayın **kaydedin.**
+1. Kaydet ' e tıklayın **.**
 
-1. Eşlemeleri bölümü altında seçin **eşitleme Azure Active Directory Kullanıcıları için muhasebesi.**
+1. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Netsuite olarak eşitler** ' ı seçin.
 
-1. İçinde **öznitelik eşlemelerini** bölümünde, muhasebesi için Azure AD'den eşitlenen kullanıcı özniteliklerini gözden geçirin. Seçilen öznitelikler olarak Not **eşleşen** özellikleri muhasebesi kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Netsuite 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen özniteliklerin, güncelleştirme Işlemleri Için Netsuite içindeki kullanıcı hesaplarıyla eşleşecek şekilde kullanıldığını unutmayın. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
-1. Azure AD sağlama hizmeti için muhasebesi etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** Ayarlar bölümünde
+1. Netsuite için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-1. Tıklayın **kaydedin.**
+1. Kaydet ' e tıklayın **.**
 
-Herhangi bir kullanıcı ve/veya muhasebesi kullanıcılar ve Gruplar bölümünde atanan grupları ilk eşitleme başlar. İlk eşitleme hizmetini çalıştıran sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve muhasebesi uygulamanızdan sağlama hizmeti tarafından gerçekleştirilen tüm eylemler açıklayan etkinlik günlüklerini sağlama için bağlantıları izleyin.
+Kullanıcılar ve Gruplar bölümünde Netsuite 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine gerçekleştirilmesini daha uzun sürdüğüne unutmayın. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve NetSuite uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izleyebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Çoklu oturum açmayı yapılandırın](netsuite-tutorial.md)
+* [Çoklu oturum açmayı yapılandırma](netsuite-tutorial.md)

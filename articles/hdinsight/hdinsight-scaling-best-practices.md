@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030940"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064640"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -126,7 +126,7 @@ ResourceManager Kullanıcı arabirimine doğrudan `https://<HDInsightClusterName
 yarn application -kill <application_id>
 ```
 
-Örnek:
+Örneğin:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -216,6 +216,10 @@ Hive geçici dosyaların arkasında bırakılırsa, güvenli moddan kaçınmak i
 En az üç çalışan düğümüne ölçeklendirirken kümeleriniz güvenli modda takılıyorsa ve önceki adımlar çalışmazsa, en az üç çalışan düğümü tutarak kümenizin güvenli moda tamamen devam etmesinden kaçınabilirsiniz.
 
 Üç çalışan düğümünü koruma, yalnızca bir çalışan düğümüne ölçeklendirmeden daha maliyetlidir, ancak kümenizin güvenli modda takılmasını önler.
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight 'ı bir çalışan düğümüne kadar ölçeklendirin
+
+Küme 1 düğüme azaltılabilen bile, çalışan düğümü 0 devam eder. Çalışan düğümü 0, hiçbir şekilde kullanımdan kaldırılamıyor.
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Güvenli moddan çıkmak için komutu çalıştırın
 

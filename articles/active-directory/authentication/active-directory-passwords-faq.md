@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848791"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061463"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Parola yönetimi hakkında sık sorulan sorular
 
@@ -36,7 +36,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 
 * **S: Kullanıcılarım kendi parola sıfırlama verilerini kaydedebilirler mi?**
 
-  > **Y:** Evet. Parola sıfırlama etkin olduğu ve lisanslandırıldıkları sürece, kullanıcılar, kimlik doğrulama bilgilerini kaydetmek için parola sıfırlama kayıt portalına gidebilir (https://aka.ms/ssprsetup). Kullanıcılar ayrıca erişim paneli (https://myapps.microsoft.com) de kaydedebilir. Erişim paneli 'ne kaydolmak için profil resmini seçmesini, **profil**' i ve ardından **parola sıfırlama için kaydol** seçeneğini belirlemeniz gerekir.
+  > **Y:** Evet. Parola sıfırlama etkin olduğu ve lisanslandırıldıkları sürece, kullanıcılar, kimlik doğrulama bilgilerini kaydetmek için parola sıfırlama kayıt portalına gidebilir (https://aka.ms/ssprsetup). Kullanıcılar ayrıca erişim paneli (https://myapps.microsoft.com)de kaydedebilir. Erişim paneli 'ne kaydolmak için profil resmini seçmesini, **profil**' i ve ardından **parola sıfırlama için kaydol** seçeneğini belirlemeniz gerekir.
   >
   >
 * **S: bir grup için parola sıfırlamayı etkinleştirdiğimde ve Kullanıcılarım için izin verme izni varsa, Kullanıcılarım için yeniden kayıt gerekli midir?**
@@ -114,7 +114,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
   >
 * **S: kullanıcılarınızın parolalarını sıfırlamamak üzere nereden gidebileceği hakkında nasıl eğitirim?**
 
-  > Y **:** [SSPR dağıtım](howto-sspr-deployment.md#communications-plan) makalemizden bazı önerilerden bazılarını deneyin.
+  > Y **:** [SSPR dağıtım](howto-sspr-deployment.md#plan-communications) makalemizden bazı önerilerden bazılarını deneyin.
   >
   >
 * **S: Bu sayfayı bir mobil cihazdan kullanabilir miyim?**

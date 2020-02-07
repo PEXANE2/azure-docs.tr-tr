@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026763"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046010"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
-Azure Active Directory B2C (Azure AD B2C) kullanım etkinliği olaylarını farklı izleme çözümlerine yönlendirmek için Azure Izleyici 'yi kullanın. Ortamınız hakkında bilgi edinmek için, uzun süreli kullanım veya üçüncü taraf güvenlik bilgileri ve olay yönetimi (SıEM) araçlarıyla bu günlükleri koruyabilirsiniz.
+Farklı izleme çözümlerine Azure Active Directory B2C (Azure AD B2C) oturum açma ve [Denetim](view-audit-logs.md) günlüklerini yönlendirmek Için Azure izleyici 'yi kullanın. Ortamınız hakkında bilgi edinmek için, uzun süreli kullanım veya üçüncü taraf güvenlik bilgileri ve olay yönetimi (SıEM) araçlarıyla bu günlükleri koruyabilirsiniz.
 
 Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 
@@ -30,7 +30,7 @@ Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 
 ![Azure İzleyici](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için, Azure PowerShell modülünü kullanarak bir Azure Resource Manager şablonu dağıtırsınız.
 
@@ -213,10 +213,10 @@ Kaynak yönetimine yetki verdikten ve aboneliğinizi seçtikten sonra, Azure por
 
 Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
-1. Altında **izleme**seçin **tanılama ayarları**.
+1. **İzleme**altında **Tanılama ayarları**' nı seçin.
 1. **+ Tanılama ayarı Ekle**' yi seçin.
 
     ![Azure portal Tanılama ayarları bölmesi](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)

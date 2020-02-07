@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024220"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048080"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rol ayarlarını yapılandırma
 
@@ -43,12 +43,8 @@ Azure AD rolleri için istekleri onaylamak veya reddetmek için bu makaledeki ad
 Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin.
 
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolündeki bir kullanıcıyla [Azure Portal](https://portal.azure.com/) için oturum açın.
-
-1. **Azure AD Privileged Identity Management**açın.
-
-1. **Azure AD rolleri**' ni seçin.
-
-1. **Rol ayarları**' nı seçin.
+>
+1. **Rol ayarlarını**&gt; **Azure AD rolleri** &gt; **Azure AD Privileged Identity Management** açın.
 
     ![Rol ayarları sayfası Azure Kaynak rollerini listeleme](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -89,7 +85,7 @@ Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure Mu
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Etkin atama üzerinde Multi-Factor Authentication gerektir
 
-Bazı durumlarda, bir kullanıcı veya grubu bir rol için kısa bir süre (örneğin, bir gün) atamak isteyebilirsiniz. Bu durumda, atanan kullanıcıların etkinleştirme istemesi gerekmez. Bu senaryoda, Kullanıcı rol atamasını kullandığında, rol atandığı zamandan zaten etkin olduklarından Privileged Identity Management Multi-Factor Authentication 'ı zorlayamıyor.
+Bazı durumlarda, bir kullanıcıyı bir rol için kısa bir süre (örneğin, bir gün) atamak isteyebilirsiniz. Bu durumda, atanan kullanıcıların etkinleştirme istemesi gerekmez. Bu senaryoda, Kullanıcı rol atamasını kullandığında, rol atandığı zamandan zaten etkin olduklarından Privileged Identity Management Multi-Factor Authentication 'ı zorlayamıyor.
 
 Atamayı karşılayan kaynak yöneticisinin bunları söyledikleri kim olduğundan emin olmak için, **etkin atama üzerinde Multi-Factor Authentication gerektir** kutusunu işaretleyerek, etkin atamada Multi-Factor Authentication 'ı zorunlu kılabilirsiniz.
 
@@ -115,11 +111,11 @@ Bir rolü etkinleştirmek için onay gerektirmek isterseniz, aşağıdaki adıml
 
 1. **Etkinleştirmek için onay gerektir** onay kutusunu işaretleyin.
 
-1. **Bir üye veya grup seçin** sayfasını açmak Için **onaylayanları Seç** ' i seçin.
+1. **Onaylayanları Seç**' i seçin.
 
     ![Onaylayanları seçmek için bir kullanıcı veya grup bölmesi seçin](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. En az bir kullanıcı veya grup seçin ve ardından **Seç**' e tıklayın. Herhangi bir Kullanıcı ve grup bileşimini ekleyebilirsiniz. En az bir onaylayan seçmelisiniz. Varsayılan onaylayanlar yok.
+1. En az bir kullanıcı seçin ve ardından **Seç**' e tıklayın. En az bir onaylayan seçmelisiniz. Varsayılan onaylayanlar yok.
 
     Seçimleriniz seçili onaylayanlar listesinde görünür.
 
@@ -135,7 +131,7 @@ Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin
 
 1. **Azure AD rolleri**' ni seçin.
 
-1. Seçin **ayarları**.
+1. **Ayarlar**' ı seçin.
 
     ![Azure AD rolleri-ayarlar](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -208,7 +204,7 @@ Bir rolü etkinleştirmek için gerekli onayı atamak istiyorsanız, bu adımlar
 
     ![Azure AD rolleri-ayarlar-onay gerektir](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Ayrıcalıklı rol yöneticisine ek olarak bir veya daha fazla onaylayan seçin ve ardından **Seç**' e tıklayın. Kullanıcılar veya gruplar ' ı seçebilirsiniz. En az iki onaylayan eklemenizi öneririz. Kendinizi onaylayan olarak eklemeseniz bile, bir rol etkinleştirmeyi kendi kendine onaylayamazsınız. Seçimleriniz seçili onaylayanlar listesinde görünür.
+1. Ayrıcalıklı rol yöneticisine ek olarak bir veya daha fazla onaylayan seçin ve ardından **Seç**' e tıklayın. En az iki onaylayan eklemenizi öneririz. Kendinizi onaylayan olarak eklemeseniz bile, bir rol etkinleştirmeyi kendi kendine onaylayamazsınız. Seçimleriniz seçili onaylayanlar listesinde görünür.
 
 1. Tüm rol ayarlarınızı belirledikten sonra değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 

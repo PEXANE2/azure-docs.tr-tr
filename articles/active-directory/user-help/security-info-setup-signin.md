@@ -2,7 +2,7 @@
 title: Güvenlik bilgilerinizi (Önizleme) bir oturum açma isteminden ayarlama-Azure AD
 description: Kuruluşunuzun oturum açma sayfasından istemde bulunulduktan sonra iş veya okul hesabınız için güvenlik bilgilerinizi (Önizleme) nasıl ayarlayacağız.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
 ms.date: 08/05/2019
-ms.author: lizross
-ms.openlocfilehash: 965943937a5cbc24f3c4dbe5bc85a6f5b4338fe2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704995"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063994"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi (Önizleme) bir oturum açma isteminden ayarlama
 
@@ -34,7 +34,7 @@ Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de p
 | ------ | -------- |
 | Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| Telefon aramaları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon görüşmeleri | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 | Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |

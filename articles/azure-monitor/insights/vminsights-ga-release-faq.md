@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765757"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047840"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
 
@@ -37,7 +37,9 @@ Geçmişte, çalışma alanınızda ServiceMap çözümünü etkinleştirdik ve 
 
 
 ## <a name="how-do-i-upgrade"></a>Nasıl yaparım? yükseltmesi yapılsın mı?
-Yükseltme gerektiren her VM, Azure portal VM'ler için Azure İzleyici **başlama** sekmesinde belirlenir. Tek bir VM 'yi yükseltebilir veya birden çok öğesini seçerek yükseltebilirsiniz. PowerShell kullanarak yükseltmek için aşağıdaki komutu kullanın:
+Bir Log Analytics çalışma alanı Azure Izleyici 'nin en son sürümüne sanal makinelere yükseltildiğinde, bu çalışma alanına eklenen her VM 'nin bağımlılık aracısını yükseltir. Yükseltme gerektiren her VM, Azure portal VM'ler için Azure İzleyici **başlama** sekmesinde belirlenir. Bir VM 'yi yükseltmeyi seçtiğinizde, bu sanal makine için çalışma alanını, bu çalışma alanına bağlı diğer VM 'lerle birlikte yükseltilecektir. Tek bir VM veya birden çok VM, kaynak grubu veya abonelik seçebilirsiniz. 
+
+PowerShell kullanarak bir çalışma alanını yükseltmek için aşağıdaki komutu kullanın:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -53,7 +55,7 @@ Kullanıcı arabirimimizi `InsightsMetrics` tablosundaki verileri kullanmak üze
 >`Perf` tablosundaki bu sayaçlara başvuran uyarı kurallarınız varsa, bunları `InsightsMetrics` tablosunda depolanan yeni verilere başvuracak şekilde güncelleştirmeniz gerekir. Bu tabloya başvuran, kullanabileceğiniz günlük sorguları için belgelerimize bakın.
 >
 
-Performans sayaçlarını etkin tutmaya karar verirseniz, [Log Analytics fiyatlandırması [(https://azure.microsoft.com/pricing/details/monitor/) temel alınarak `Perf` tabloda saklanan ve depolanan veriler için faturalandırılırsınız.
+Performans sayaçlarını etkin tutmaya karar verirseniz, [Log Analytics fiyatlandırması [(https://azure.microsoft.com/pricing/details/monitor/)temel alınarak `Perf` tabloda saklanan ve depolanan veriler için faturalandırılırsınız.
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Bu değişiklik, uyarı kurallarımı nasıl etkiler?
 
@@ -97,7 +99,7 @@ Güncelleştirme 2020 ' den erken Ocak ' de VM'ler için Azure İzleyici için y
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Sistem durumu özelliği sınırlı genel önizlemede
 
-VM sağlık özelliği kümesiyle ilgili olarak müşterilerden çok sayıda geri bildirim aldık. Bu özelliğe oldukça yoğun ilgi gösterildi ve olası bir iş akışlarını izleme desteği heyecanla bekleniyor. İşlevsellik eklemek ve aldığımız geri bildirimleri ele almak bir dizi değişiklikler yapmayı planlıyoruz. 
+VM sağlık özelliği kümesiyle ilgili olarak müşterilerden çok sayıda geri bildirim aldık. Bu özelliğin bir çok ilgisi vardır ve izleme iş akışlarını destekleme potansiyelini aşmakatın. İşlevselliği eklemek ve aldığımız geri bildirimi gidermek için bir dizi değişiklik yapmayı planlıyoruz. 
 
 Bu değişikliklerin yeni müşterilere etkilerini en aza indirmek için bu özelliği **sınırlı bir genel önizlemeye**taşıdık. Bu güncelleştirme 2019 Ekim 'de gerçekleşti.
 
@@ -119,4 +121,4 @@ Sistem durumu özelliğini kullanan mevcut bir müşterisiyseniz ve bunu yeni bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal makinelerinizi izlemenize yardımcı yöntemler ve gereksinimleri hakkında bilgilere [VM'ler için Azure İzleyici'ı Dağıtma](vminsights-enable-overview.md).
+Sanal makinelerinizi izlemenize yardımcı olan gereksinimleri ve yöntemleri anlamak için [VM'ler için Azure izleyici dağıt](vminsights-enable-overview.md)' ı inceleyin.

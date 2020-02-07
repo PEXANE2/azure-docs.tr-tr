@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458799"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064419"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics kullanmaya başlayın: gerçek zamanlı sahtekarlık algılama
 
@@ -31,7 +31,7 @@ Bu öğretici, telefon araması verilerine göre gerçek zamanlı sahtekarlık a
 
 Bir telekomünikasyon şirketi gelen çağrılar için büyük hacimde veri içerir. Şirket, müşterileri bilgilendirmek veya belirli bir numara için hizmeti kapatmak üzere sahte aramaları gerçek zamanlı olarak algılamak istiyor. Bir tür SIM dolandırıcılığı aynı kimliğin çevresindeki aynı kimliğe sahip birden fazla çağrı içerir, ancak coğrafi olarak farklı konumlarda. Bu tür dolandırıcılığın algılanması için şirketin gelen telefon kayıtlarını incelemesi ve belirli desenleri (Bu durumda, farklı ülkelerde/bölgelerde aynı zamanda yapılan çağrılar için) araması gerekir. Bu kategoriye giren tüm telefon kayıtları, sonraki analize yönelik depolama alanına yazılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, örnek telefon araması meta verileri üreten bir istemci uygulaması kullanarak telefon araması verilerinin benzetimini yapacaksınız. Uygulamanın ürettiği bazı kayıtlar, sahte çağrılar gibi görünüyor. 
 
@@ -55,26 +55,33 @@ Bir veri akışını analiz etmek için bunu Azure *'a alırsınız.* Verileri a
 ### <a name="create-a-namespace-and-event-hub"></a>Ad alanı ve olay hub'ı oluşturma
 Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alanına bir olay hub 'ı eklersiniz. Olay Hub 'ı ad alanları, ilgili olay veri yolu örneklerini mantıksal olarak gruplamak için kullanılır. 
 
-1. Azure portal oturum açın ve **Olay Hub**'ı **nesnelerin interneti** > **kaynak oluştur** > ' a tıklayın. 
+1. Azure portal oturum açın ve ekranın sol üst kısmında bulunan **kaynak oluştur ' a** tıklayın.
 
-2. **Ad alanı oluştur** bölmesinde `<yourname>-eh-ns-demo`gibi bir ad alanı adı girin. Ad alanı için herhangi bir ad kullanabilirsiniz, ancak ad bir URL için geçerli olmalıdır ve Azure genelinde benzersiz olmalıdır. 
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve **analiz** kategorisinde **Event Hubs** ' ın yanındaki **yıldız (`*`)** seçeneğini belirleyin. **Event Hubs** sol gezinti menüsünde **Sık kullanılanlara** eklendiğini doğrulayın. 
+
+   ![Event Hubs arayın](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. Sol gezinti menüsünde **Sık Kullanılanlar** ' ın altında **Event Hubs** ' ı seçin ve araç çubuğunda **Ekle** ' yi seçin.
+
+   ![Ekle düğmesi](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. **Ad alanı oluştur** bölmesinde `<yourname>-eh-ns-demo`gibi bir ad alanı adı girin. Ad alanı için herhangi bir ad kullanabilirsiniz, ancak ad bir URL için geçerli olmalıdır ve Azure genelinde benzersiz olmalıdır. 
     
-3. Bir abonelik seçin ve bir kaynak grubu oluşturun veya seçin, ardından **Oluştur**' a tıklayın.
+5. Bir abonelik seçin ve bir kaynak grubu oluşturun veya seçin, ardından **Oluştur**' a tıklayın.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. Ad alanı dağıtımı bitirdiğinde, Azure kaynakları listenizde Olay Hub 'ı ad alanını bulun. 
+6. Ad alanı dağıtımı bitirdiğinde, Azure kaynakları listenizde Olay Hub 'ı ad alanını bulun. 
 
-5. Yeni ad alanı ' na tıklayın ve ad alanı bölmesinde **Olay Hub**' ı tıklatın.
+7. Yeni ad alanı ' na tıklayın ve ad alanı bölmesinde **Olay Hub**' ı tıklatın.
 
    ![Yeni bir olay hub 'ı oluşturmak için Olay Hub 'ı Ekle düğmesi](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Yeni Olay Hub 'ını adlandırın `asa-eh-frauddetection-demo`. Farklı bir ad kullanabilirsiniz. Bunu yaparsanız, bu adı daha sonra gerekli olduğunuzdan emin olun. Şu anda Olay Hub 'ı için başka herhangi bir seçenek ayarlamanıza gerek yoktur.
+8. Yeni Olay Hub 'ını adlandırın `asa-eh-frauddetection-demo`. Farklı bir ad kullanabilirsiniz. Bunu yaparsanız, bu adı daha sonra gerekli olduğunuzdan emin olun. Şu anda Olay Hub 'ı için başka herhangi bir seçenek ayarlamanıza gerek yoktur.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. **Oluştur**'a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Olay hub’ına erişim verme ve bir bağlantı dizesi alma
 
@@ -131,7 +138,7 @@ TelcoGenerator uygulamasını başlamadan önce, oluşturduğunuz Olay Hub 'ına
 ### <a name="start-the-app"></a>Uygulamayı başlatma
 1.  Bir komut penceresi açın ve TelcoGenerator uygulamasının sıkıştırunı olan klasöre geçin.
 
-2.  Aşağıdaki komutu kullanın:
+2.  Aşağıdaki komutu girin:
 
    ```cmd
    telcodatagen.exe 1000 0.2 2
@@ -186,7 +193,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
-   |Giriş diğer adı  |  CallStream   |  İşin girdisini tanımlamak için bir ad girin.   |
+   |Girdi diğer adı  |  CallStream   |  İşin girdisini tanımlamak için bir ad girin.   |
    |Abonelik   |  \<Aboneliğiniz\> |  Oluşturduğunuz Olay Hub 'ına sahip Azure aboneliğini seçin.   |
    |Olay hub'ı ad alanı  |  asa-Eh-NS-demo |  Olay Hub 'ı ad alanının adını girin.   |
    |Olay Hub'ı adı  | asa-Eh-frauddetection-demo | Olay Hub 'ınızın adını seçin.   |
@@ -356,7 +363,7 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
-   |Çıkış diğer adı  |  CallStream-FraudulentCalls   |  İşin çıktısını tanımlamak için bir ad girin.   |
+   |Çıktı diğer adı  |  CallStream-FraudulentCalls   |  İşin çıktısını tanımlamak için bir ad girin.   |
    |Abonelik   |  \<Aboneliğiniz\> |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
    |Depolama hesabı  |  aşama ehstorage |  Oluşturduğunuz depolama hesabının adını girin. |
    |Kapsayıcı  | asa-fraudulentcalls-demo | Yeni Oluştur ' a tıklayın ve bir kapsayıcı adı girin. |
@@ -364,7 +371,7 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. **Save (Kaydet)** düğmesine tıklayın. 
+5. **Kaydet** düğmesine tıklayın. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>Akış Analizi işini başlatma
@@ -405,7 +412,7 @@ Ancak, işiniz bittiğinde ve oluşturduğunuz kaynaklara ihtiyacınız yoksa, g
 
 ## <a name="get-support"></a>Destek alın
 
-Daha fazla yardım için deneyin [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Daha fazla yardım için [Azure Stream Analytics forumunu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -415,7 +422,7 @@ Bu öğreticiye aşağıdaki makaleyle devam edebilirsiniz:
 
 Genel olarak Stream Analytics hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)

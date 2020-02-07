@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 05a796e5bf197bf9ea4f8f47adfbf30851b300ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35c6944ddcfac1553ffb2c1cc28472f2a56d4515
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445500"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061735"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB 'de Java ve MongoDB API 'SI ile bir konsol uygulaması oluşturma
 
@@ -27,18 +27,13 @@ ms.locfileid: "75445500"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Bu hızlı başlangıçta, bir konsol Web uygulaması oluşturmak için Mongo DB ve Java SDK Azure Cosmos DB API 'sini kullanacaksınız. Azure Cosmos DB, her türlü genel dağıtım ve yatay Cosmos DB ölçek özelliğinden faydalanabilir ve bu sayede belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulamanızı sağlar.
+Bu hızlı başlangıçta, Azure portal bir MongoDB API hesabı için Azure Cosmos DB oluşturup yönetirsiniz ve GitHub ' dan kopyalanmış bir Java SDK uygulamasını kullanarak veri eklersiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-Bu hızlı başlangıçta, [MongoDB için Azure Cosmos DB API 'si](mongodb-introduction.md)Ile Cosmos hesabının nasıl oluşturulacağı gösterilmektedir. Daha sonra [MongoDB Java sürücüsü](https://docs.mongodb.com/ecosystem/drivers/java/)kullanılarak oluşturulmuş bir konsol uygulaması derleyip dağıtacaksınız. 
-
-## <a name="prerequisites"></a>Ön koşullar
-
-Bu örneği çalıştırmadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
-* [Azure için JDK ve Azure Stack JDK sürüm 8 ' i yükler](https://aka.ms/azure-jdks)
-* Maven (Maven yoksa `apt-get install maven` komutunu çalıştırın)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+## <a name="prerequisites"></a>Önkoşullar
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsü](https://aka.ms/cosmosdb-emulator) `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`bağlantı dizesi ile de kullanabilirsiniz.
+- [Java Development Kit (JDK) sürüm 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
+- [Maven](https://maven.apache.org/download.cgi). Veya Maven 'yi yüklemek için `apt-get install maven` çalıştırın.
+- [Git](https://git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -46,13 +41,13 @@ Bu örneği çalıştırmadan önce aşağıdaki önkoşullara sahip olmanız ge
 
 ## <a name="add-a-collection"></a>Koleksiyon ekleme
 
-Yeni veritabanınıza **db**, yeni koleksiyonunuza da **coll** adını verin.
+Yeni **veritabanı veritabanınızı**ve yeni koleksiyon **kol**değerini adlandırın.
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub 'dan bir uygulama kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu göreceksiniz. 
+Şimdi GitHub 'dan bir uygulama kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz. 
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -76,9 +71,11 @@ Yeni veritabanınıza **db**, yeni koleksiyonunuza da **coll** adını verin.
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
-Aşağıdaki kod parçacıklarının tamamı, Program.java dosyasından alınmıştır.
+Aşağıdaki kod parçacıklarının hepsi *program. Java* dosyasından alınmıştır.
+
+Bu konsol uygulaması [MongoDB Java sürücüsünü](https://docs.mongodb.com/ecosystem/drivers/java/)kullanır. 
 
 * DocumentClient başlatılır.
 
@@ -114,9 +111,9 @@ Aşağıdaki kod parçacıklarının tamamı, Program.java dosyasından alınmı
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. Hesaptan **hızlı başlangıç**' yi seçin, **Java**' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
+1. Azure Cosmos DB hesabınızda **hızlı başlangıç**' i seçin, **Java**' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
 
-2. `Program.java` dosyasını açın, MongoClientURI oluşturucusunun bağımsız değişkenini bağlantı dizesiyle değiştirin. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
+2. *Program. Java* dosyasını açın, MongoClientURI oluşturucusuna bağımsız değişkenini bağlantı dizesiyle değiştirin. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
     
 ## <a name="run-the-console-app"></a>Konsol uygulamasını çalıştırma
 
@@ -136,7 +133,7 @@ Artık [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Cosmos hesabı oluşturmayı, bir koleksiyon oluşturmayı ve bir konsol uygulamasını çalıştırmayı öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz.
+Bu hızlı başlangıçta, Mongo DB hesabı için Azure Cosmos DB API oluşturma, Veri Gezgini kullanarak bir veritabanı ve kapsayıcı ekleme ve Java konsol uygulaması kullanarak veri ekleme hakkında öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB’ye MongoDB verileri aktarma](mongodb-migrate.md)

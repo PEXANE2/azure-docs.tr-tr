@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851973"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062764"
 ---
-# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Zendesk yapılandırma
+# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zendesk yapılandırma
 
 Bu öğreticide, Kullanıcı ve grupları Zendesk 'e otomatik olarak sağlamak ve sağlamak üzere Azure AD 'yi yapılandırmak için Zendesk ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımlar gösterilmektedir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -83,7 +83,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD 'de Zendesk için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > **Zendesk**' i seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Zendesk** > **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -105,9 +105,9 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
    * **Gizli belirteç** kutusunda adım 6 ' da açıklanan gizli anahtarı girin.
 
-   * **Etki alanı** kutusunda, Zendesk kiracınızın alt etki alanını girin. Örneğin, kiracı URL 'si `https://my-tenant.zendesk.com`olan bir hesap için, alt etki **alanım-kiracım**.
+   * **Etki alanı** kutusunda, Zendesk kiracınızın alt etki alanını girin. Örneğin, kiracı URL 'SI `https://my-tenant.zendesk.com`olan bir hesap için, alt etki **alanım-kiracım**olur.
 
-6. Zendesk hesabınız için gizli belirteç, **Yönetim** > **API 'si** > **ayarlarında**bulunur. **Belirteç erişiminin** **etkin**olarak ayarlandığından emin olun.
+6. Zendesk hesabınızın gizli belirteç, **yönetici** > **API** > **ayarları**' nda bulunur. **Belirteç erişiminin** **etkin**olarak ayarlandığından emin olun.
 
     ![Zendesk yönetici ayarları](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
@@ -139,7 +139,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Zendesk eşleşen grup öznitelikleri](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)yönergeleri izleyin.
+14. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)yönergeleri izleyin.
 
 15. Zendesk için Azure AD sağlama hizmetini etkinleştirmek üzere, **Ayarlar** bölümünde **sağlama durumunu** **Açık**olarak değiştirin.
 
@@ -157,7 +157,7 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcılar
 
 İlerleme durumunu izlemek ve sağlama etkinliği raporunun bağlantılarını izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz. Rapor Zendesk üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar.
 
-Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
@@ -167,12 +167,12 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: ce8ef987adc0cec4fcd8acef4cc075d50c92d62a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 244a71d400493a2029e831b729c63bc0b0dfe559
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722895"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049644"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub 'de TLS desteği
 
@@ -78,13 +78,13 @@ Yalnızca TLS 1,2 ' i kabul edecek şekilde yapılandırılan IoT Hub 'Ları, a�
 
 IoT Hub istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapılandırmak için aşağıdaki bağlantıları kullanın.
 
-| Dil | TLS 1,2 destekleniyor | Belgeler |
-|----------|-------------------|---------------|
-| C        | Yes               | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Yes               | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Yes               | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Yes               | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Yes               | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
+| Dil | TLS 1,2 destekleyen sürümler | Belgeler |
+|----------|------------------------------------|---------------|
+| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge kurulumunda TLS 1,2 kullanma

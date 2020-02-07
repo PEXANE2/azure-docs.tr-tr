@@ -3,12 +3,12 @@ title: Azure geçişi için Hyper-V geçişi desteği
 description: Azure geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031655"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064470"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
 
@@ -23,10 +23,10 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
-| **Dağıtım**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir. |
+| **Dağıtım**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir. <br/>Azure geçişi çoğaltma yazılımının (Hyper-V çoğaltma sağlayıcısı) Hyper-V konaklarında yüklü olması gerekir.|
 | **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. |
 | **Konak işletim sistemi** | Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2. |
-| **URL erişimi** | Hyper-V konaklarının bu URL 'LERE erişmesi gerekir:<br/><br/> -login.microsoftonline.com: Active Directory kullanarak erişim denetimi ve kimlik yönetimi.<br/><br/> -*. backup.windowsazure.com: çoğaltma veri aktarımı ve düzenlemesi. Hizmet URL 'Lerini geçirin.<br/><br/> -*. blob.core.windows.net: verileri depolama hesaplarına yükleyin.<br/><br/> -dc.services.visualstudio.com: iç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.<br/><br/> - time.windows.com | Sistem ve genel saat arasındaki saat eşitlemesini doğrular.
+| **URL erişimi** | Hyper-V konaklarındaki çoğaltma sağlayıcısı yazılımının bu URL 'LERE erişmesi gerekir:<br/><br/> -login.microsoftonline.com: Active Directory kullanarak erişim denetimi ve kimlik yönetimi.<br/><br/> -*. backup.windowsazure.com: çoğaltma veri aktarımı ve düzenlemesi. Hizmet URL 'Lerini geçirin.<br/><br/> -*. blob.core.windows.net: verileri depolama hesaplarına yükleyin.<br/><br/> -dc.services.visualstudio.com: iç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.<br/><br/> -time.windows.com: sistem ve genel saat arasındaki zaman eşitlemesini doğrular.
 | **Bağlantı noktası erişimi** |  VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 ' deki giden bağlantılar.
 
 ## <a name="hyper-v-vms"></a>Hyper-V Sanal Makineleri
@@ -34,8 +34,6 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 | **Destek**                  | **Ayrıntılar**               
 | :----------------------------- | :------------------- |
 | **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri. |
-| **İzinler**           | Değerlendirmek istediğiniz her Hyper-V VM üzerinde yönetici izinlerine sahip olmanız gerekir. |
-| **Tümleştirme Hizmetleri**       | [Hyper-V tümleştirme hizmetlerinin](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) , işletim sistemi bilgilerini yakalamak için değerlendirmekte olduğunuz VM 'lerde çalışıyor olması gerekir. |
 | **Azure için gereken değişiklikler** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir. Geçişten önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağı hakkında yönergeler içerir. |
 | **Linux önyüklemesi**                 | /Boot ayrılmış bir bölümse, işletim sistemi diskinde bulunmalı ve birden çok diske yayılmamalıdır.<br/> /Boot kök (/) bölümünün parçasıysa, '/' bölümünün işletim sistemi diskinde olması ve diğer disklere yayılmamamakta olması gerekir. |
 | **UEFı önyüklemesi**                  | Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür. VM yalnızca Windows Server 2012 ve üstünü çalıştırmalıdır. İşletim sistemi diski en fazla beş bölüm veya daha az olmalıdır ve işletim sistemi diskinin boyutu 300 GB 'tan az olmalıdır.
@@ -55,15 +53,13 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
-Azure 'a çoğaltılan tüm şirket içi VM 'Lerin bu tabloda özetlenen Azure VM gereksinimlerini karşılaması gerekir. Site Recovery, çoğaltma için bir önkoşul denetimi çalıştırdığında, bazı gereksinimler karşılanmazsa denetim başarısız olur.
+Azure 'a çoğaltılan tüm şirket içi VM 'Lerin bu tabloda özetlenen Azure VM gereksinimlerini karşılaması gerekir.
 
 **Bileşen** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
-Konuk işletim sistemi | Geçiş için desteklenen VMware VM işletim sistemlerini doğrular.<br/> Desteklenen bir işletim sistemi üzerinde çalışan herhangi bir iş yükünü geçirebilirsiniz. | Desteklenmiyorsa denetim başarısız olur.
-Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk boyutu | 2\.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
 İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
-Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
+Veri diski sayısı | 16 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
 Veri diski boyutu | 4\.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
 Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.

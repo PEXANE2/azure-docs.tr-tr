@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311667"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063807"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme
 
@@ -29,16 +29,16 @@ Bu belgede, bir HDInsight kümesiyle ambarı Web Kullanıcı arabirimini kullanm
 
 ## <a name="connectivity"></a>Bağlantı
 
-Ambarı Web Kullanıcı arabirimi `https://CLUSTERNAME.azurehdinsight.net` ' da HDInsight kümenizde kullanılabilir; burada `CLUSTERNAME` kümenizin adıdır.
+Ambarı Web Kullanıcı arabirimi, `https://CLUSTERNAME.azurehdinsight.net`adresindeki HDInsight kümenizde kullanılabilir; burada `CLUSTERNAME` kümenizin adıdır.
 
 > [!IMPORTANT]  
-> HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Kimlik doğrulaması istendiğinde, küme oluşturulduğunda verdiğiniz yönetici hesabı adını ve parolasını kullanın.
+> HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Kimlik doğrulaması istendiğinde, küme oluşturulduğunda verdiğiniz yönetici hesabı adını ve parolasını kullanın. Kimlik bilgileriniz istenmezse, istemci ve Azure HDInsight kümeleri arasında bağlantı sorunu olmadığını doğrulamak için ağ ayarlarınızı denetleyin.
 
 ## <a name="ssh-tunnel-proxy"></a>SSH tüneli (proxy)
 
 Kümenizin ambarı doğrudan Internet üzerinden erişilebilir olsa da, ambarı Web kullanıcı arabiriminden (örneğin, JobTracker gibi) bazı bağlantılar Internet 'te gösterilmez. Bu hizmetlere erişmek için bir SSH tüneli oluşturmanız gerekir. Daha fazla bilgi için bkz. [HDInsight Ile SSH tüneli kullanma](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi
+## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]  
 > Tüm ambarı Web Kullanıcı arabiriminin özellikleri HDInsight üzerinde desteklenmez. Daha fazla bilgi için bu belgenin [Desteklenmeyen işlemler](#unsupported-operations) bölümüne bakın.
@@ -56,9 +56,9 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 |uyarı sayısı|Küme için uyarıları veya kritik uyarıları görüntüler.|
 |Pano|Panoyu görüntüler.|
 |Hizmetler|Kümedeki hizmetler için bilgi ve yapılandırma ayarları.|
-|Ana bilgisayarlar|Kümedeki düğümlerin bilgileri ve yapılandırma ayarları.|
+|Konaklar|Kümedeki düğümlerin bilgileri ve yapılandırma ayarları.|
 |Uyarılar|Bilgi, uyarı ve kritik uyarıların günlüğü.|
-|Yöneticileri|Kümede yüklü olan yazılım yığını/Hizmetleri, hizmet hesabı bilgileri ve Kerberos güvenliği.|
+|Yönetici|Kümede yüklü olan yazılım yığını/Hizmetleri, hizmet hesabı bilgileri ve Kerberos güvenliği.|
 |Yönetici düğmesi|Ambarı yönetimi, Kullanıcı ayarları ve oturumu kapatma.|
 
 ## <a name="monitoring"></a>İzleme
@@ -138,7 +138,7 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
 > [!WARNING]  
 > Linux tabanlı HDInsight kümenizdeki ambarı izleme (hdinsightwatchdog) parolasını değiştirmeyin. Parola değiştirme, betik eylemlerini kullanma veya kümeniz ile ölçeklendirme işlemleri gerçekleştirme yeteneğini keser.
 
-### <a name="hosts"></a>Ana bilgisayarlar
+### <a name="hosts"></a>Konaklar
 
 **Konaklar** sayfasında kümedeki tüm konaklar listelenir. Konakları yönetmek için aşağıdaki adımları izleyin.
 
@@ -159,9 +159,9 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
     |Bakım modunu aç|Ana bilgisayar için uyarıları göstermez. Uyarı üreten eylemler gerçekleştiriyorsanız Bu mod etkinleştirilmelidir. Örneğin, bir hizmeti durdurup başlatma.|
     |Bakım modunu kapat|Ana bilgisayarı normal uyarı ' e döndürür.|
     |Durdur|Konakta Katanode veya Nodeyöneticileri sonlandırır.|
-    |Başlayın|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
+    |Başlangıç|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
     |Yeniden Başlatma|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
-    |Açığa|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
+    |Kullanımdan çıkar|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
     |Yeniden komisyon|Önceden yetkisi alınmış bir konağı kümeye ekler. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
 
 ### <a id="service"></a>Servislere

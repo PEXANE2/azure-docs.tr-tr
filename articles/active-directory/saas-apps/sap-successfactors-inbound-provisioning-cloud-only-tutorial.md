@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 2ae951896e9c97826264990dc33b9a1930b0eec2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530060"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063231"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Öğretici: Azure AD Kullanıcı sağlama (Önizleme) için SAP başarılı faktörleri yapılandırma
-Bu öğreticinin amacı, başarılı bir şekilde, başarılı bir şekilde e-posta adresi geri yazma işlemi sayesinde, başarılı bir şekilde çalışan verileri Azure Active Directory, çalışan verileri sağlamak için gerçekleştirmeniz gereken adımları gösterir. Bu tümleştirme genel önizlemededir ve başarılı bir şekilde çalışan merkezi 'nden 70 ' ten fazla [Kullanıcı özniteliği](../manage-apps/sap-successfactors-attribute-reference.md) almayı destekler. 
+Bu öğreticinin amacı, başarılı bir şekilde, başarılı bir şekilde e-posta adresi geri yazma işlemi sayesinde, başarılı bir şekilde çalışan verileri Azure Active Directory, çalışan verileri sağlamak için gerçekleştirmeniz gereken adımları gösterir. Bu tümleştirme genel önizlemededir ve başarılı bir şekilde çalışan merkezi 'nden 70 ' ten fazla [Kullanıcı özniteliği](../app-provisioning/sap-successfactors-attribute-reference.md) almayı destekler. 
 
 >[!NOTE]
 >Bu öğreticiyi, başarılı bir şekilde sağlamak istediğiniz kullanıcılar şirket içi AD hesabına gerek gerektirmeyen yalnızca bulutta yer alıyorsa bu öğreticiyi kullanın. Kullanıcılar yalnızca şirket içi AD hesabı veya hem AD hem de Azure AD hesabı gerektiriyorsa, lütfen Kullanıcı sağlamasını [Active Directory IÇIN SAP başarılı faktörleri yapılandırma](sap-successfactors-inbound-provisioning-tutorial.md#overview) hakkında öğreticiye bakın. 
 
 ## <a name="overview"></a>Genel Bakış
 
-[Azure Active Directory Kullanıcı sağlama hizmeti](../manage-apps/user-provisioning.md) , kullanıcıların kimlik yaşam döngüsünü yönetmek Için [çalışan merkezi](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) ile tümleşir. 
+[Azure Active Directory Kullanıcı sağlama hizmeti](../app-provisioning/user-provisioning.md) , kullanıcıların kimlik yaşam döngüsünü yönetmek Için [çalışan merkezi](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) ile tümleşir. 
 
 Azure AD Kullanıcı sağlama hizmeti tarafından desteklenen Kullanıcı sağlama iş akışlarının başarılı olması, aşağıdaki insan kaynakları ve kimlik yaşam döngüsü yönetimi senaryolarına yönelik Otomasyonu etkinleştirir:
 
-* **Yeni çalışanların işe** Alım-başarılı etkenlere yeni bir çalışan eklendiğinde, bir kullanıcı hesabı Azure Active Directory ' de otomatik olarak oluşturulur ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../manage-apps/user-provisioning.md), e-posta adresi başarıyla geri yazılır.
+* **Yeni çalışanların işe** Alım-başarılı etkenlere yeni bir çalışan eklendiğinde, bir kullanıcı hesabı Azure Active Directory ' de otomatik olarak oluşturulur ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md), e-posta adresi başarıyla geri yazılır.
 
-* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı başarılı bir şekilde güncelleştirildiğinde (ad, başlık veya yönetici gibi), kullanıcı hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../manage-apps/user-provisioning.md)için otomatik olarak güncelleştirilir.
+* **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı başarılı bir şekilde güncelleştirildiğinde (ad, başlık veya yönetici gibi), kullanıcı hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak güncelleştirilir.
 
-* **Çalışan sonlandırmaları** -bir çalışan başarılı bir şekilde sonlandırılırsa, kullanıcı hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../manage-apps/user-provisioning.md)otomatik olarak devre dışı bırakılır.
+* **Çalışan sonlandırmaları** -bir çalışan başarılı bir şekilde sonlandırılırsa, kullanıcı hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamalarında](../app-provisioning/user-provisioning.md)otomatik olarak devre dışı bırakılır.
 
-* **Çalışan rehires** -bir çalışan başarılı bir şekilde yeniden çalıştırıldığında, eski hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../manage-apps/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir (tercihinize bağlı olarak).
+* **Çalışan rehires** -bir çalışan başarılı bir şekilde yeniden çalıştırıldığında, eski hesapları Azure Active Directory ve isteğe bağlı olarak Office 365 ve [Azure AD tarafından desteklenen diğer SaaS uygulamaları](../app-provisioning/user-provisioning.md)için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir (tercihinize bağlı olarak).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Bu Kullanıcı sağlama çözümü kim için en uygun?
 
@@ -75,11 +75,11 @@ Bu bölümde, yalnızca bulutta bulunan kullanıcılar için uçtan uca Kullanı
 Bulut HR tabanlı Kullanıcı sağlamasının Azure AD 'ye başarılı bir şekilde yapılandırılması, şu gibi farklı yönleri kapsayan önemli bir planlama gerektirir:
 
 * Eşleşen KIMLIĞI belirleme 
-* Öznitelik eşlemesi
+* Öznitelik eşleme
 * Öznitelik dönüşümü 
 * Kapsam belirleme filtreleri
 
-Bu konularda kapsamlı yönergeler için lütfen [bulut HR dağıtım planına](../manage-apps/plan-cloud-hr-provision.md) bakın. 
+Bu konularda kapsamlı yönergeler için lütfen [bulut HR dağıtım planına](../app-provisioning/plan-cloud-hr-provision.md) bakın. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Tümleştirme için başarılı faktörleri yapılandırma
 
@@ -110,7 +110,7 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 * Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
   > [!div class="mx-imgBorder"]
   > Okuma yazma izinlerini ![](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* **Bitti**' ye tıklayın. Tıklayın **değişiklikleri kaydetmek**.
+* **Bitti**' ye tıklayın. **Değişiklikleri Kaydet**' e tıklayın.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API kullanıcısı için bir Izin grubu oluşturma
 
@@ -139,7 +139,7 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 * İzin grubuna verme Izni rolünü gözden geçirin. 
   > [!div class="mx-imgBorder"]
   > ![Izin rolü ve Grup Ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Tıklayın **değişiklikleri kaydetmek**.
+* **Değişiklikleri Kaydet**' e tıklayın.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Kullanıcı hazırlama işlemini başarılı etmenlerden Azure AD 'ye yapılandırma
 
@@ -181,7 +181,7 @@ Bu bölümde, Azure AD 'ye başarılı bir şekilde Kullanıcı hesabı sağlama
 
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, başarılı olan kimlik bilgilerinin ve URL 'nin geçerli olduğunu iki kez kontrol edin.
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
+    >![Azure portalında](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **eşlemeler** bölümünde varsayılan eşleme, kullanıcıları Azure Active Directory başarılı bir **şekilde eşitler**
 
@@ -211,14 +211,14 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
    > Sağlama uygulamasını ilk kez yapılandırırken, istenen sonucu elde ettiğinizden emin olmak için öznitelik eşlemelerinizi ve ifadelerini test etmeniz ve doğrulamanız gerekir. Microsoft, başarılı bir test kullanıcısı ile eşlemelerinizi test etmek için **kaynak nesne kapsamı** kapsamındaki kapsam filtrelerinin kullanılmasını önerir. Eşlemelerin çalıştığını doğruladıktan sonra filtreyi kaldırabilir ya da daha fazla kullanıcı eklemek için onu kademeli olarak genişletebilirsiniz.
 
    > [!CAUTION] 
-   > Sağlama altyapısının varsayılan davranışı, kapsam dışına çıkan kullanıcıları devre dışı bırakmak/silmektir. Bu işlem, Azure AD tümleştirmesinde başarılı bir şekilde istenmeyebilir. Bu varsayılan davranışı geçersiz kılmak için, [kapsam dışı olan kullanıcı hesaplarını silmeyi atlama](../manage-apps/skip-out-of-scope-deletions.md) makalesine başvurun.
+   > Sağlama altyapısının varsayılan davranışı, kapsam dışına çıkan kullanıcıları devre dışı bırakmak/silmektir. Bu işlem, Azure AD tümleştirmesinde başarılı bir şekilde istenmeyebilir. Bu varsayılan davranışı geçersiz kılmak için, [kapsam dışı olan kullanıcı hesaplarını silmeyi atlama](../app-provisioning/skip-out-of-scope-deletions.md) makalesine başvurun.
   
 1. **Hedef nesne eylemleri** alanında Active Directory üzerinde gerçekleştirilen eylemleri genel olarak filtreleyebilirsiniz. **Oluşturma** ve **güncelleştirme** en yaygın olarak kullanılır.
 
 1. **Öznitelik eşlemeleri** bölümünde, tek tek faktörlerin özniteliklerinin Active Directory özniteliklerle nasıl eşlendiğini tanımlayabilirsiniz.
 
   >[!NOTE]
-  >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../manage-apps/sap-successfactors-attribute-reference.md)
+  >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 
 1. Güncelleştirmek için varolan bir öznitelik eşlemesine tıklayın veya yeni eşlemeler eklemek için ekranın alt kısmındaki **Yeni eşleme Ekle** ' ye tıklayın. Tek bir öznitelik eşlemesi bu özellikleri destekler:
@@ -229,7 +229,7 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
          * **Sabit** -ad özniteliğine statik, sabit bir dize değeri yaz
 
-         * **İfade** – bir veya daha fazla başarılı bir ÖZNITELIĞE göre ad özniteliğine özel bir değer yazmanızı sağlar. [Daha fazla bilgi için ifadelerde bu makaleye bakın](../manage-apps/functions-for-customizing-application-data.md).
+         * **İfade** – bir veya daha fazla başarılı bir ÖZNITELIĞE göre ad özniteliğine özel bir değer yazmanızı sağlar. [Daha fazla bilgi için ifadelerde bu makaleye bakın](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Kaynak özniteliği** -başarılı faktörlerdeki Kullanıcı özniteliği
 
@@ -261,7 +261,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
-2. **Save (Kaydet)** düğmesine tıklayın.
+2. **Kaydet** düğmesine tıklayın.
 
 3. Bu işlem ilk eşitlemeyi başlatacak ve bu da, başarılı bir sayıda kullanıcının başarılı olan kiracı kiracısında olmasına bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 
@@ -274,11 +274,11 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Gelen sağlama için desteklenen başarılı etmenler öznitelikleri hakkında daha fazla bilgi edinin](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Gelen sağlama için desteklenen başarılı etmenler öznitelikleri hakkında daha fazla bilgi edinin](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [E-posta geri yazmanın başarılı etkenlere nasıl yapılandırılacağını öğrenin](sap-successfactors-writeback-tutorial.md)
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Başarılı ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](successfactors-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
-* [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../manage-apps/export-import-provisioning-configuration.md)
+* [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../app-provisioning/export-import-provisioning-configuration.md)
 
 

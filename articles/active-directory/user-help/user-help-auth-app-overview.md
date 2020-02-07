@@ -2,7 +2,7 @@
 title: Microsoft Authenticator uygulaması nedir? -Azure Active Directory | Microsoft Docs
 description: Ne olduğu, nasıl çalıştığı ve içeriğin bu bölümüne hangi bilgilerin dahil olduğu dahil olmak üzere Microsoft Authenticator uygulaması hakkında bilgi edinin.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: 010302d3a4c7498f7fa5344dc73e7b182c4b94bc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704672"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062294"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması nedir?
 
@@ -37,7 +37,7 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 
 ## <a name="terminology"></a>Terminoloji
 
-| Sözleşme Dönemi|Açıklama|
+| Süre|Açıklama|
 | ----|-----------|
 | İki öğeli doğrulama | Bir parola ve PIN gibi özellikle yalnızca iki doğrulama bilgisi parçasını kullanmanızı gerektiren bir doğrulama işlemi. Microsoft Authenticator uygulaması hem standart iki öğeli doğrulamayı hem de passwordless oturum açmayı destekler. |
 | Çok faktörlü kimlik doğrulaması (MFA) | İki öğeli kimlik doğrulama işlemi, kuruluşunuzun gereksinimlerine bağlı olarak, *en az* iki adet doğrulama bilgileri kullanmanızı gerektiren Multi-Factor Authentication ' dır. |
@@ -63,7 +63,7 @@ Kimlik doğrulama işlemini gerçekleştirmek için bir PIN kullanırsanız, Mic
 
 Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız gerektiğine karar verebilir veya kendiniz karar veremeyebilirsiniz.
 
-- **İş veya Okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleme hakkında daha fazla bilgi için bkz. [iş veya okul hesaplarınızı ekleme](user-help-auth-app-add-work-school-account.md).
+- **İş veya okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleme hakkında daha fazla bilgi için bkz. [iş veya okul hesaplarınızı ekleme](user-help-auth-app-add-work-school-account.md).
 
 - **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki öğeli doğrulama ayarlamayı seçebilirsiniz (örneğin, alain@outlook.com). Kişisel Microsoft hesabı ekleme hakkında daha fazla bilgi için bkz. [Kişisel hesaplarınızı ekleme](user-help-auth-app-add-personal-ms-account.md).
 

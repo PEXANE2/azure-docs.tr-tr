@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776397"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049661"
 ---
 # <a name="linux-support"></a>Linux desteği
 
@@ -30,7 +30,7 @@ SDK, Ubuntu 18,04 veya üzerini temel alan çoğu işletim sistemiyle uyumludur.
 
 SDK, masaüstü ve uzak uygulama oturumlarına yönelik birden çok bağlantıyı destekler. Aşağıdaki yeniden yönlendirmeler desteklenir:
 
-| Yönlendirme       | Desteklenen |
+| Yönlendirme       | Destekleniyor |
 | :---------------- | :-------: |
 | Klavye          | &#10004;  |
 | Tığında             | &#10004;  |
@@ -55,7 +55,7 @@ Windows sanal masaüstü için bir Linux istemcisi geliştirebilmeniz için aşa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Teknik topluluk forumumuza](https://go.microsoft.com/fwlink/?linkid=2116541)Linux SDK erişimi isteyebilirsiniz.
+SDK Şu anda geliştirme aşamasındadır. Bu belgeyi, kullanılabilir olduğunda SDK 'ya erişme yönergeleriyle birlikte güncelleştireceğiz.
 
 Aşağıdaki istemciler için belgelerimize göz atın:
 

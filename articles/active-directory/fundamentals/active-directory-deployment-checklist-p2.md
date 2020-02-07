@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880581"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063654"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özelliği dağıtım kılavuzu
 
@@ -41,7 +41,7 @@ Lisanslama hakkında ek bilgiler aşağıdaki sayfalarda bulunabilir:
 
 Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan veya oluşturmadan önce Azure AD 'de daha güvenli ve kolay bir temel oluşturmak için temel güvenlik özelliklerini etkinleştirir. Bu temel aşama, başlangıçtan itibaren daha güvenli bir durumda olmanızı ve son kullanıcılarınızın yalnızca yeni kavramlara bir kez tanıtılmasını sağlar.
 
-| Görev | Ayrıntılarını | Gerekli lisans |
+| Görev | Ayrıntı | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. | Azure AD Ücretsiz |
 | [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. | Azure AD Ücretsiz |
@@ -62,7 +62,7 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 
 Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve eşitlemeyi etkinleştirerek, konuk erişimi planlayarak ve ek işlevselliği desteklemeye hazırlanarak temel bir özellik ekleyeceğiz.
 
-| Görev | Ayrıntılarını | Gerekli lisans |
+| Görev | Ayrıntı | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | [Azure AD Connect'i yükleme](../connect/active-directory-aadconnect-select-installation.md) | Mevcut şirket içi dizininizdeki kullanıcıları buluta eşitlemeye hazırlanın. | Azure AD Ücretsiz |
 | [Parola karması eşitlemesini Uygula](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Parola değişikliklerinin çoğaltılmasını, hatalı parola algılamayı ve düzeltmesini ve sızdırılan kimlik bilgisi raporlamasını sağlamak için parola karmalarını eşitler. | Azure AD Ücretsiz |
@@ -78,7 +78,7 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 
 Önceki aşamalarda oluşturmaya devam ettiğimiz için, aday uygulamaları Azure AD ile geçiş ve tümleştirme için tanımladık ve bu uygulamaların kurulumunu tamamlayacağız.
 
-| Görev | Ayrıntılarını | Gerekli lisans |
+| Görev | Ayrıntı | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | Uygulamalarınızı tanımla | Kuruluşunuzda kullanımdaki uygulamaları tanımla: şirket içinde, bulutta SaaS uygulamaları ve diğer iş kolu uygulamaları. Bu uygulamaların Azure AD ile yönetilip yönetilmediğini ve bunların yönetilmesini saptayın. | Lisans gerekli değil |
 | [Galerideki desteklenen SaaS uygulamalarını tümleştirme](../manage-apps/add-application-portal.md) | Azure AD 'nin binlerce önceden tümleştirilmiş uygulama içeren bir Galerisi vardır. Kuruluşunuzun kullandığı uygulamalardan bazıları büyük olasılıkla galeride doğrudan Azure portal erişilebilir. | Azure AD Ücretsiz |
@@ -88,13 +88,13 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 
 4\. aşama, yöneticilere yönetim için en az ayrıcalık ilkeleri uygulayan, ilk erişim incelemelerini tamamlayan ve ortak Kullanıcı yaşam döngüsü görevlerinin otomatikleştirilmesini sağlayan yöneticileri görür.
 
-| Görev | Ayrıntılarını | Gerekli lisans |
+| Görev | Ayrıntı | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management kullanımını zorunlu kıl](../privileged-identity-management/pim-security-wizard.md) | Yönetim rollerini normal günden günlük Kullanıcı hesaplarından kaldırın. Yönetici kullanıcıları, bir Multi-Factor Authentication denetimini tamamladıktan sonra, bir iş gerekçe sağlayarak veya belirlenen onaylayanlardan onay isteyerek, rollerinin kullanımını uygun hale getirin. | Azure AD Premium P2 |
 | [PıM 'de Azure AD dizin rolleri için erişim gözden geçirmeyi tamamlar](../privileged-identity-management/pim-how-to-start-security-review.md) | Kuruluşunuzun ilkelerine bağlı olarak yönetim erişimini gözden geçirmek için bir erişim gözden geçirme ilkesi oluşturmak üzere güvenlik ve liderlik ekipleriyle birlikte çalışın. | Azure AD Premium P2 |
 | [Dinamik grup üyeliği ilkeleri uygulama](../users-groups-roles/groups-dynamic-membership.md) | Kullanıcıları, kendi özniteliklerine (veya gerçeği kaynağına) göre otomatik olarak gruplara atamak için dinamik grupları kullanın (örneğin, departman, başlık, bölge ve diğer öznitelikler). |  |
 | [Grup tabanlı uygulama sağlamayı Uygula](../manage-apps/what-is-access-management.md) | Kullanıcıları SaaS uygulamalarına otomatik olarak sağlamak için grup tabanlı erişim yönetimi sağlamayı kullanın. |  |
-| [Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../manage-apps/user-provisioning.md) | Yetkisiz erişimi engellemek için, çalışan hesabı yaşam döngünüzün el ile yapılan adımları kaldırın. Truth (IK sistem) kaynağınızdan Azure AD 'ye kimlikler eşitler. |  |
+| [Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../app-provisioning/user-provisioning.md) | Yetkisiz erişimi engellemek için, çalışan hesabı yaşam döngünüzün el ile yapılan adımları kaldırın. Getirilir (ik sistemine) kaynağınızdan Azure AD kimlikleri eşitleyin. |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

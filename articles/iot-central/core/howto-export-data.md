@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026802"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049730"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Azure IoT Central verilerinizi dışarı aktarın
 
@@ -29,7 +29,7 @@ Bu makalede verilerinizi **azure Event Hubs**, **Azure Service Bus**veya **Azure
 > [!Note]
 > Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
 
@@ -47,7 +47,7 @@ Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa
 
 3. Event Hubs ad alanında bir olay hub 'ı oluşturun. Ad alanına gidin ve bir olay hub 'ı örneği oluşturmak için en üstteki **+ Olay Hub 'ını** seçin.
 
-### <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluştur
+### <a name="create-service-bus-namespace"></a>Hizmet Veri Yolu ad alanı oluşturma
 
 Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoksa, aşağıdaki adımları izleyin:
 
@@ -62,10 +62,14 @@ Dışarı aktarma hedefi olarak Service Bus seçtiğinizde, kuyruklar ve konular
 
 ' A dışa aktarılacak mevcut bir Azure depolama hesabınız yoksa, aşağıdaki adımları izleyin:
 
-1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. Yeni [Azure Blob depolama hesapları](https://aka.ms/blobdocscreatestorageaccount) veya [Azure Data Lake Storage v2 depolama hesapları](../../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturma hakkında daha fazla bilgi edinebilirsiniz.
+1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. Yeni [Azure Blob depolama hesapları](https://aka.ms/blobdocscreatestorageaccount) veya [Azure Data Lake Storage v2 depolama hesapları](../../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturma hakkında daha fazla bilgi edinebilirsiniz. Veri dışa aktarma, yalnızca blok bloblarını destekleyen depolama hesaplarına veri yazabilir. Aşağıda, bilinen uyumlu depolama hesabı türlerinin bir listesi verilmiştir: 
 
-    - Verileri bir Azure Data Lake Storage v2 depolama hesabına aktarmayı seçerseniz, **Hesap türü**olarak **blobstorage** ' ı seçmeniz gerekir.
-    - IoT Central uygulamanız için olandan farklı aboneliklerdeki depolama hesaplarına veri aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
+    |Performans katmanı|Hesap türü|
+    |-|-|
+    |Standart|Genel Amaçlı v2|
+    |Standart|Genel Amaçlı v1|
+    |Standart|Blob Storage|
+    |Premium|Blob depolamayı engelle|
 
 2. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti**altında **bloblara gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
 

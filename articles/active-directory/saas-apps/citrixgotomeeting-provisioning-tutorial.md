@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için GoToMeeting yapılandırma | Microsoft Docs'
-description: Azure Active Directory ve GoToMeeting arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Sayfaymeeting yapılandırma | Microsoft Docs'
+description: Azure Active Directory ve Sayfaytoplantısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,86 +15,86 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0ac06fc3018b4230cbf32712067c48400599082
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430809"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058272"
 ---
-# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı hazırlama için GoToMeeting yapılandırın
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Sayfaymeeting yapılandırma
 
-Bu öğreticinin amacı GoToMeeting ve Azure AD sağlama ve sağlamasını GoToMeeting Azure AD'den kullanıcı hesaplarına otomatik olarak gerçekleştirmek için gereken adımları Göster sağlamaktır.
+Bu öğreticinin amacı, Azure AD 'den Sayfaymeeting 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için, Azure AD 'de yapmanız gereken adımları size gösterir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğeleri zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
-*   Azure Active directory kiracısı.
-*   Bir GoToMeeting çoklu oturum açma abonelik etkin.
-*   GoToMeeting takım Yöneticisi izinlerine sahip bir kullanıcı hesabı.
+*   Azure Active Directory kiracısı.
+*   Bir Sayfaymeeting çoklu oturum açma etkin aboneliği.
+*   Ekip Yöneticisi izinleri ile Sayfaytoplantısında bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-gotomeeting"></a>Kullanıcı için bir GoToMeeting atama
+## <a name="assigning-users-to-gotomeeting"></a>Kullanıcıları Sayfayan toplantısına atama
 
-Azure Active Directory "atamaları" adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca kullanıcıların ve grupların, "Azure AD'de bir uygulama için atandı" eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Yapılandırma ve sağlama hizmetini etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları GoToMeeting uygulamanıza erişmek isteyen kullanıcılar temsil karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek bu kullanıcılar GoToMeeting uygulamanıza atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcı ve/veya grupların, Sayfaymeeting uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Kararlandıktan sonra buradaki yönergeleri izleyerek bu kullanıcıları Sayfaytoplantısı uygulamanıza atayabilirsiniz:
 
-[Kurumsal bir uygulamayı kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Kullanıcılar için GoToMeeting atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Kullanıcıları Sayfayan toplantısına atamaya yönelik önemli ipuçları
 
-*   Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmayı test etmek için GoToMeeting atanır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+*   Sağlama yapılandırmasını test etmek için, tek bir Azure AD kullanıcısının, Sayfaymeeting 'e atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-*   Bir kullanıcı için bir GoToMeeting atarken, geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
+*   Bir kullanıcıyı, Sayfaymeeting 'e atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="enable-automated-user-provisioning"></a>Otomatik kullanıcı sağlamayı etkinleştirin
+## <a name="enable-automated-user-provisioning"></a>Otomatik Kullanıcı sağlamayı etkinleştir
 
-Bu bölümde, Azure AD sağlama API'si GoToMeeting'ın kullanıcı hesabına bağlanma aracılığıyla size yol gösterir ve oluşturmak için sağlama hizmeti yapılandırma güncelleştirme ve Azure AD'de kullanıcı ve Grup atamasına dayalı GoToMeeting atanan kullanıcı hesaplarını devre dışı bırakın.
+Bu bölümde, Azure AD 'nizi Sayfaymeeting 'in Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan Sayfaymeeting 'de atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca seçtiğiniz etkin SAML tabanlı çoklu oturum açma için GoToMeeting, yönergeleri izleyerek sağlanan [Azure portalında](https://portal.azure.com). Bu iki özellik birbirine tamamlayıcı rağmen otomatik sağlama bağımsız olarak, çoklu oturum açma yapılandırılabilir.
+> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, SAYFAYMEETING için SAML tabanlı çoklu oturum açmayı da seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Otomatik kullanıcı hesabı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-1. İçinde [Azure portalında](https://portal.azure.com), Gözat **Azure Active Directory > Kurumsal uygulamaları > tüm uygulamaları** bölümü.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-1. Çoklu oturum açma için GoToMeeting zaten yapılandırdıysanız arama alanını kullanarak GoToMeeting Örneğiniz için arama yapın. Aksi takdirde seçin **Ekle** araması **GoToMeeting** uygulama galerisinde. Arama sonuçlarından GoToMeeting seçin ve uygulama listenize ekleyin.
+1. Çoklu oturum açma için zaten Sayfaymeeting yapılandırdıysanız, arama alanını kullanarak Sayfaytoplantısı örneğinizi arayın. Aksi takdirde uygulama galerisinde, **Ekle** ' yi seçin ve **sayfaytoplantısı** ara ' yı seçin. Arama sonuçlarından Sayfaymeeting ' i seçin ve uygulama listenize ekleyin.
 
-1. Örneğiniz GoToMeeting seçip **sağlama** sekmesi.
+1. Sayfaytoplantısı örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. Ayarlama **sağlama** moduna **otomatik**. 
+1. **Sağlama** modunu **Otomatik**olarak ayarlayın. 
 
-    ![Sağlama](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
-1. Yönetici kimlik bilgileri bölümü altında aşağıdaki adımları gerçekleştirin:
+1. Yönetici kimlik bilgileri bölümünde aşağıdaki adımları uygulayın:
    
-    a. İçinde **GoToMeeting yönetici kullanıcı adı** metin kutusu, bir yönetici kullanıcı adını yazın.
+    a. **Sayfaymeeting Yönetici Kullanıcı adı** metin kutusuna bir yöneticinin kullanıcı adını yazın.
 
-    b. İçinde **GoToMeeting yönetici parolası** yöneticinin parolasını metin.
+    b. **Sayfaymeeting yönetici parolası** metin kutusunda, yöneticinin parolası.
 
-1. Azure portalında **Test Bağlantısı** Azure emin olmak için AD GoToMeeting uygulamanıza bağlanabilirsiniz. Bağlantı başarısız olursa GoToMeeting hesabınız takım Yöneticisi izinlerine sahip olduğundan emin olun ve deneyin **"Yönetici kimlik bilgileri"** adım yeniden uygulayın.
+1. Azure portal, Azure AD 'nin Sayfaymeeting uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Sayfaytoplantısı hesabınızın ekip Yöneticisi izinlerine sahip olduğundan emin olun ve **"yönetici kimlik bilgileri"** adımını yeniden deneyin.
 
-1. Bir kişi veya grup sağlama hatası bildirimlerini alması gereken e-posta adresini girin **bildirim e-posta** alan ve onay kutusunu işaretleyin.
+1. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
 
-1. Tıklayın **kaydedin.**
+1. Kaydet ' e tıklayın **.**
 
-1. Eşlemeleri bölümü altında seçin **eşitleme Azure Active Directory Kullanıcıları için GoToMeeting.**
+1. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları sayfaydığı şekilde eşitler** ' ı seçin.
 
-1. İçinde **öznitelik eşlemelerini** bölümünde, GoToMeeting için Azure AD'den eşitlenen kullanıcı özniteliklerini gözden geçirin. Seçilen öznitelikler **eşleşen** özellikleri GoToMeeting kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den sayfaymeeting 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, bu güncelleştirme Işlemleri Için sayfaymeeting içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
-1. Azure AD sağlama hizmeti için GoToMeeting etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** Ayarlar bölümünde
+1. Sayfaymeeting için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-1. Tıklayın **kaydedin.**
+1. Kaydet ' e tıklayın **.**
 
-Herhangi bir kullanıcı ve/veya GoToMeeting kullanıcılar ve Gruplar bölümünde atanan grupları ilk eşitleme başlar. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve GoToMeeting uygulamanızdan sağlama hizmeti tarafından gerçekleştirilen tüm eylemler açıklayan etkinlik günlüklerini sağlama için bağlantıları izleyin.
+Kullanıcılar ve Gruplar bölümünde, Sayfaymeeting 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. Kaldırma işlemini izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve bu işlem Için, sayfaytoplantısı uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izleyebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Çoklu oturum açmayı yapılandırın](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
+* [Çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
 
 

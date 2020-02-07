@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780292"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064997"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub verileri Azure Veri Gezgini 'a alma (Önizleme)
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>IoT Hub verileri Azure 'a alma Veri Gezgini 
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -22,9 +22,9 @@ ms.locfileid: "75780292"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-iot-hub-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük bir veri akışı platformu ve IoT alma hizmeti olan IoT Hub alma (veri yükleme) sağlar.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük bir veri akışı platformu ve IoT alma hizmeti olan IoT Hub alma (veri yükleme) sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * *TestDB*veritabanı adıyla [bir test kümesi ve veritabanı](create-cluster-database-portal.md) oluşturun.
@@ -80,7 +80,7 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
     **Ayar** | **Alan açıklaması**
     |---|---|
     | Veri bağlantısı adı | Azure Veri Gezgini oluşturmak istediğiniz bağlantının adı
-    | IoT Hub | IoT Hub adı |
+    | IOT hub'ı | IoT Hub adı |
     | Paylaşılan erişim ilkesi | Paylaşılan erişim ilkesinin adı. Okuma izinlerine sahip olmalıdır |
     | Tüketici grubu |  IoT Hub yerleşik uç noktasında tanımlanan Tüketici grubu |
     | Olay sistemi özellikleri | [IoT Hub olay sistemi özellikleri](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Sistem Özellikleri eklenirken, tablo şemasını [oluşturun](/azure/kusto/management/tables#create-table) veya [güncelleştirin](/azure/kusto/management/tables#alter-table-and-alter-merge-table) ve seçili özellikleri dahil etmek için [eşleme](/azure/kusto/management/mappings) yapın. | | | 

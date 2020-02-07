@@ -1,62 +1,66 @@
 ---
-title: Azure Veri Gezgini veri Görselleştirme
-description: Azure Veri Gezgini verilerinizi görselleştirmek farklı yollar hakkında bilgi edinin
+title: Azure Veri Gezgini veri görselleştirme
+description: Azure Veri Gezgini verilerinizi görselleştirebileceğiniz farklı yollar hakkında bilgi edinin
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.date: 01/30/2020
+ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536731"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064572"
 ---
-# <a name="data-visualization-with-azure-data-explorer"></a>Azure Veri Gezgini ile veri Görselleştirme 
+# <a name="data-visualization-with-azure-data-explorer"></a>Azure Veri Gezgini ile veri görselleştirme 
 
-Azure Veri Gezgini, karmaşık analiz çözümleri için çok büyük miktarda veri oluşturmak için kullanılan günlük ve telemetri verilerini için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. Azure Veri Gezgini, verilerinizi görselleştirin ve sonuçları kuruluşunuz içinde paylaşmak için çeşitli görselleştirme araçlarıyla tümleşir. Bu veriler, iş etkisi yapmak için eyleme dönüştürülebilir içgörüler haline dönüştürülebilir.
+Azure Veri Gezgini, büyük miktarlarda veri için karmaşık analiz çözümleri oluşturmak üzere kullanılan günlük ve telemetri verilerine yönelik hızlı ve yüksek düzeyde ölçeklenebilir bir veri araştırma hizmetidir. Azure Veri Gezgini, çeşitli görselleştirme araçlarıyla tümleşir, böylece verilerinizi görselleştirebilir ve sonuçları kuruluşunuz genelinde paylaşabilirsiniz. Bu veriler, işletmenize bir etkisi olması için eyleme dönüştürülebilir içgörüler halinde dönüştürülebilir.
 
-Veri Görselleştirme ve raporlama veri analiz işleminin kritik bir adım olduğunu. Senaryonuzu ve bütçe en uygun bir kullanabilmeniz için azure Veri Gezgini birçok BI Hizmetleri destekler.
+Veri görselleştirme ve raporlama, veri analizi işleminde önemli bir adımdır. Azure Veri Gezgini, senaryonuza ve bütçenize en uygun olanı kullanabilmeniz için birçok bı hizmetini destekler.
 
-## <a name="kusto-query-language-visualizations"></a>Kusto sorgu dili görselleştirmeler
+## <a name="kusto-query-language-visualizations"></a>Kusto sorgu dili görselleştirmeleri
 
-Kusto sorgu dili [ `render operator` ](/azure/kusto/query/renderoperator) tablolar, pasta grafiklerini ve çubuk grafikleri, sorgu sonuçları göstermek için gibi çeşitli görselleştirmeler sunar. Sorgu görselleştirmeler, anomali algılama ve tahmin, makine öğrenimi ve daha fazla yararlıdır.
+Kusto sorgu dili [`render operator`](/azure/kusto/query/renderoperator) sorgu sonuçlarını belirleyen tablolar, pasta grafikleri ve çubuk grafikler gibi çeşitli görselleştirmeler sunar. Sorgu Görselleştirmeleri, anomali algılama ve tahmin, makine öğrenimi ve daha birçok konuda yardımcı olur.
 
 ## <a name="power-bi"></a>Power BI
 
-Azure Veri Gezgini bağlanma olanağı sağlar [Power BI](https://powerbi.microsoft.com) çeşitli yöntemler kullanarak: 
+Azure Veri Gezgini, çeşitli yöntemler kullanarak [Power BI](https://powerbi.microsoft.com) bağlanma özelliği sağlar: 
 
   * [Yerleşik yerel Power BI Bağlayıcısı](/azure/data-explorer/power-bi-connector)
 
-  * [Azure Veri Gezgini Power bı'a sorgu Al](/azure/data-explorer/power-bi-imported-query)
+  * [Azure Veri Gezgini 'de sorgu içeri aktarma Power BI](/azure/data-explorer/power-bi-imported-query)
  
   * [SQL sorgusu](/azure/data-explorer/power-bi-sql-query)
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Azure Veri Gezgini bağlanma olanağı sağlar [Microsoft Excel](https://products.office.com/excel) yerleşik yerel kullanarak Excel Bağlayıcısı veya bir sorgu Azure veri Gezgini'nde Excel'e aktarmak.
+Azure Veri Gezgini, [yerleşik yerel Excel bağlayıcısını](excel-connector.md)kullanarak [Microsoft Excel](https://products.office.com/excel) 'e bağlanma yeteneği sağlar veya Azure Veri Gezgini 'den Excel 'e [bir sorgu içeri aktarabilir](excel-blank-query.md) .
 
 ## <a name="grafana"></a>Grafana
 
-[Grafana](https://grafana.com) Azure veri Gezgini'nde verileri görselleştirmenize olanak sağlayan bir Azure Veri Gezgini eklentisini sağlar. [Azure Veri Gezgini, Grafana için veri kaynağı olarak ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/grafana). 
+[Grafana](https://grafana.com) , Azure Veri Gezgini verileri görselleştirmenizi sağlayan bir Azure Veri Gezgini eklentisi sağlar. [Azure Veri Gezgini 'Yi Grafana için bir veri kaynağı olarak ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/grafana). 
 
 ## <a name="odbc-connector"></a>ODBC bağlayıcısı
 
-Azure Veri Gezgini sağlar bir [açık veritabanı bağlantısı (ODBC) bağlayıcı](connect-odbc.md) ODBC destekleyen herhangi bir uygulama, Azure veri Gezgini'ne bağlanabilmesi için.
+Azure Veri Gezgini, [açık bir veritabanı bağlantısı (ODBC) Bağlayıcısı](connect-odbc.md) sağlar, böylece ODBC 'yi destekleyen herhangi bir uygulama Azure Veri Gezgini bağlanabilir.
 
 ## <a name="tableau"></a>Tableau
 
-Azure Veri Gezgini bağlanma olanağı sağlar [Tableau](https://www.tableau.com) kullanarak [ODBC Bağlayıcısı](/azure/data-explorer/connect-odbc) ardından [Tableau verileri görselleştirin](tableau.md).
+Azure Veri Gezgini, [ODBC bağlayıcısını](/azure/data-explorer/connect-odbc) kullanarak [Tableau](https://www.tableau.com) 'e bağlanma yeteneği sağlar ve ardından [Tableau içindeki verileri görselleştirin](tableau.md).
 
 ## <a name="qlik"></a>Qlik
 
-Azure Veri Gezgini bağlanma olanağı sağlar [Qlik](https://www.qlik.com) kullanarak [ODBC Bağlayıcısı](/azure/data-explorer/connect-odbc) Qlik Sense panolar oluşturabilir ve verileri görselleştirin. Aşağıdaki videoda kullanarak, Azure Veri Gezgini ile Qlik görselleştirmek bilgi edinebilirsiniz. 
+Azure Veri Gezgini, [ODBC bağlayıcısını](/azure/data-explorer/connect-odbc) kullanarak [Qlik](https://www.qlik.com) 'e bağlanma yeteneği sağlar ve ardından Qlik Sense panoları oluşturup verileri görselleştirin. Aşağıdaki videoyu kullanarak Azure Veri Gezgini verilerini Qlik ile görselleştirmeyi öğrenebilirsiniz. 
 
 > [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
 
 ## <a name="sisense"></a>Sisense
 
-Azure Veri Gezgini bağlanma olanağı sağlar [Sisense](https://www.sisense.com) JDBC Bağlayıcısı'nı kullanarak. [Azure Veri Gezgini'ni Sisense için veri kaynağı olarak ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/sisense).
+Azure Veri Gezgini, JDBC bağlayıcısını kullanarak [Sisense](https://www.sisense.com) 'e bağlanma yeteneği sağlar. [Azure Veri Gezgini 'Yi Sisense için bir veri kaynağı olarak ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/sisense).
+
+## <a name="redash"></a>Redash
+
+Panoları derlemek ve verileri görselleştirmek için [yeniden Dash](https://redash.io/) kullanabilirsiniz. [Yeniden Dash için bir veri kaynağı olarak Azure Veri Gezgini ayarlayın ve ardından verileri görselleştirin](/azure/data-explorer/redash).

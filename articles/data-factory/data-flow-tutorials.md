@@ -1,25 +1,25 @@
 ---
-title: Veri akışı video öğreticileri eşleme
+title: Eşleme veri akışı video öğreticileri
 description: Veri akışı kavramlarını eşleştirmeyi açıklayan video öğreticilerinin listesi
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
-ms.translationtype: MT
+ms.openlocfilehash: 543d1599201a318a399b98ff855fd9cf241f1f4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030019"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048250"
 ---
-# <a name="mapping-data-flow-video-tutorials"></a>Veri akışı video öğreticileri eşleme
+# <a name="mapping-data-flow-video-tutorials"></a>Eşleme veri akışı video öğreticileri
 
 Azure Data Factory ekibi tarafından oluşturulan eşleme veri akışı öğreticisi videolarının bir listesi aşağıda verilmiştir.
 
 Ürüne yönelik güncelleştirmeler sürekli olarak yapıldığından, bazı özellikler geçerli Azure Data Factory Kullanıcı deneyimine eklenmiş veya farklı işlevlere sahiptir.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [Azure Data Factory veri akışlarını eşleme ile çalışmaya başlama](http://youtu.be/MFw7t_8tuV4)
 
@@ -27,7 +27,7 @@ Azure Data Factory ekibi tarafından oluşturulan eşleme veri akışı öğreti
 
 [Hata ayıklama ve eşleme veri akışları test etme](https://www.youtube.com/watch?v=3ANxyvDGfjA).
 
-[Veri keşfi](https://www.youtube.com/watch?v=En1ztyh5GaA)
+[Veri araştırması](https://www.youtube.com/watch?v=En1ztyh5GaA)
 
 [Veri önizleme hızlı eylemler](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
@@ -42,6 +42,8 @@ Azure Data Factory ekibi tarafından oluşturulan eşleme veri akışı öğreti
 [Türetilmiş sütun dönüşümü](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
 [Dönüşümü Birleştir](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[Kendi kendine birleşen desenler](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [Arama dönüşümü](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 

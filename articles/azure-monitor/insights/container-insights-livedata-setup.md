@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisini ayarlama Canlı veriler (Önizlem
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümünü ayarlama açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030701"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063773"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Canlı veri (Önizleme) özelliğini ayarlama
 
@@ -114,7 +114,7 @@ Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [K
     >[!NOTE]
     >Bu özelliği Azure Çin 'de kullanıyorsanız, ilk temel URL değeri `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` olmalıdır ve ikinci temel URL değeri `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`olmalıdır. 
     
-4. Yeniden yönlendirme URL 'Lerini kaydettikten sonra, **Gelişmiş ayarlar**' ın altında, Seçenekler **erişim belirteçleri** ve **Kimlik belirteçleri** ' ni seçin ve ardından değişikliklerinizi kaydedin.
+4. Yeniden yönlendirme URL 'Lerini kaydettikten sonra, **örtük izin**' ın altında, Seçenekler **erişim belirteçleri** ve **Kimlik belirteçleri** ' ni seçin ve ardından değişikliklerinizi kaydedin.
 
 >[!NOTE]
 >Tek oturum açma için Azure Active Directory kimlik doğrulamasını yapılandırma, yalnızca yeni bir AKS kümesinin ilk dağıtımı sırasında gerçekleştirilebilir. Çoklu oturum zaten dağıtılmış bir AKS kümesi için üzerinde yapılandıramazsınız.

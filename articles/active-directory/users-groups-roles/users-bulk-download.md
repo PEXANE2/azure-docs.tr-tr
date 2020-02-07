@@ -4,21 +4,21 @@ description: Kullanıcı kayıtlarını Azure Yönetim Merkezi 'nde Azure Active
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 07/15/2019
+manager: daveba
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720293"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063841"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory portalında kullanıcıların listesini indirme (Önizleme)
 
@@ -39,18 +39,17 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
 
    İndirme dosyası, filtrelenmiş Kullanıcı listesini içerecektir.
 
-   Aşağıdaki Kullanıcı öznitelikleri dahil edilecek: 
+   Aşağıdaki Kullanıcı öznitelikleri dahil edilmiştir:
 
    - userPrincipalName
    - displayName
    - Soyadı
-   - -
+   - posta
    - givenName
-   - Uzantının
+   - objectId
    - userType
-   - jobTitle
-   - bölüme
-   - Manager
+   - İş Unvanı
+   - Bölüm
    - accountEnabled
    - usageLocation
    - streetAddress
@@ -58,9 +57,9 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
    - ülke
    - physicalDeliveryOfficeName
    - city
-   - postalCode
+   - posta kodu
    - telephoneNumber 'dır
-   - Mo
+   - Mobil
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail

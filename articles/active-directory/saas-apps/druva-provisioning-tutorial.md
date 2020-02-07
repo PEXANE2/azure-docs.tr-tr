@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı hazırlama için Druva yapılandırma | Microsoft Docs'
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Druva yapılandırma | Microsoft Docs'
 description: Druva 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 27c8ca3a4b68d5f3a42777ff2cf9afa4b923c00b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3d1bb0bcbc0df98d7a884004cf96fe9810589185
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641831"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058119"
 ---
-# <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı hazırlama için Druva yapılandırma
+# <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Druva yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Druva 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Druva ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -60,7 +60,7 @@ Druva 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan �
 
     ![Druva Yönetici Konsolu](media/druva-provisioning-tutorial/menubar.png)
 
-2.  > **Dağıtımları**Yönet > **kullanıcılarını**gezin.
+2. **Kullanıcılara** >  > **dağıtımlarını** **yönetme** sayfasına gidin.
 
     ![Druva SCIM Ekle](media/druva-provisioning-tutorial/manage.png)
 
@@ -99,7 +99,7 @@ Druva 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üz
 Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
 > [!TIP]
-> Ayrıca, [Druva çoklu oturum](druva-tutorial.md)açma öğreticisinde sunulan yönergeleri Izleyerek, DRUVA için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca, [Druva çoklu oturum açma öğreticisinde](druva-tutorial.md)sunulan yönergeleri Izleyerek, DRUVA için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-druva-in-azure-ad"></a>Azure AD 'de Druva için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -119,15 +119,15 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5.  Yönetici kimlik bilgileri bölümünün altında, `https://apis.druva.com/insync/scim` **kiracı URL 'sini**girin. **Kimlik doğrulama belirteci** değerini **gizli belirteç**olarak girin. Azure AD 'nin Druva 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Druva hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5.  Yönetici kimlik bilgileri bölümünün altında, **kiracı URL 'sindeki**`https://apis.druva.com/insync/scim` girin. **Kimlik doğrulama belirteci** değerini **gizli belirteç**olarak girin. Azure AD 'nin Druva 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Druva hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder**' i seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Druva olarak eşitler**' ı seçin.
 
@@ -138,7 +138,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
     ![Druva Kullanıcı öznitelikleri](media/druva-provisioning-tutorial/userattribute.png)
 
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
 11. Druva için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
@@ -154,7 +154,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
     Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Druva üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-    Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+    Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
     
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
@@ -162,9 +162,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md).
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı öğrenin](../manage-apps/check-status-user-account-provisioning.md).
+* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md).

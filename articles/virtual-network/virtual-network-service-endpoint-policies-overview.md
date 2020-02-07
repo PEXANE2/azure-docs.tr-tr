@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumi
-ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595376"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056708"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Sanal ağ hizmet uç noktası ilkeleri (Önizleme)
 
 Sanal Ağ (VNet) hizmet uç noktası ilkeleri Azure hizmetlerine yönelik sanal ağ trafiğini filtrelemenizi sağlar. Böylelikle hizmet uç noktaları üzerinden yalnızca belirli Azure hizmet kaynaklarına izin verilir. Uç nokta ilkeleri Azure hizmetlerine yönelik sanal ağ trafiği için ayrıntılı erişim denetimi sağlar.
 
-Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için __önizleme__ sürümündedir:
-
-__Azure depolama__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, CentralUS, EastUS2.
+Bu özellik, Azure depolama için tüm genel Azure bölgelerinde __Önizleme__ olarak kullanılabilir.
 
 En güncel önizleme bildirimleri için [Azure Sanal Ağ güncelleştirmeleri](https://azure.microsoft.com/updates/?product=virtual-network) sayfasını gözden geçirin.
 
@@ -119,13 +117,13 @@ Sanal ağ hizmet uç noktası ilkeleri aşağıdaki avantajları sağlar:
      - Azure Application Gateway (Klasik)
      - Azure VPN Gateway (Klasik)
 
-- Azure Depolama: Uç nokta ilkelerinde Klasik depolama hesapları desteklenmez. İlkeler varsayılan olarak tüm klasik depolama hesaplarına erişimi reddedecektir. Uygulamanızın Azure Resource Manager'a ve klasik depolama hesaplarına erişmesi gerekiyorsa, bu trafik için uç nokta ilkeleri kullanılmamalıdır. 
+- Azure Depolama: Uç nokta ilkelerinde klasik depolama hesapları desteklenmez. İlkeler varsayılan olarak tüm klasik depolama hesaplarına erişimi reddedecektir. Uygulamanızın Azure Resource Manager'a ve klasik depolama hesaplarına erişmesi gerekiyorsa, bu trafik için uç nokta ilkeleri kullanılmamalıdır. 
 
 ## <a name="nsgs-with-service-endpoint-policies"></a>Hizmet Uç Nokta İlkeleri ile NSG'ler
 - Varsayılan olarak NSG'ler, Azure hizmetlerine sanal ağ trafiği de dahil olmak üzere giden İnternet trafiğine izin verir.
 - Giden İnternet trafiğinin tümünü reddetmek ve yalnızca belirli Azure hizmeti kaynaklarına giden trafiğe izin vermek istiyorsanız: 
 
-  1\. adım: Nsg'ler yalnızca kullanan Azure hizmetlerine uç nokta bölgelerde, giden trafiğe izin verecek şekilde yapılandırma *Azure hizmet etiketlerini*. Daha fazla bilgi için bkz. [NSG'ler için hizmet etiketleri](https://aka.ms/servicetags)
+  1\. Adım: *Azure hizmeti etiketlerini* kullanarak, NSG'leri yalnızca iç nokta bölgelerindeki Azure hizmetlerine giden trafiğe izin verilecek şekilde yapılandırın. Daha fazla bilgi için bkz. [NSG'ler için hizmet etiketleri](https://aka.ms/servicetags)
       
   Örneğin, erişimi yalnızca uç nokta bölgeleriyle kısıtlayan ağ güvenlik grubu kuralları aşağıdaki örneğe benzer:
 
@@ -135,18 +133,18 @@ Sanal ağ hizmet uç noktası ilkeleri aşağıdaki avantajları sağlar:
   Deny all
   ```
 
-  2\. adım: Hizmet uç noktası İlkesi erişim yalnızca belirli bir Azure hizmet kaynakları için geçerlidir.
+  2\. Adım: Yalnızca belirli Azure hizmet kaynaklarına erişim veren hizmet uç nokta ilkesini uygulayın.
 
   > [!WARNING]  
   > Ağ güvenlik grubu sanal ağın Azure hizmeti erişimini uç nokta bölgeleriyle sınırlayacak şekilde yapılandırılmadıysa, hizmet uç nokta ilkesi uygulanmış olsa bile diğer bölgelerdeki hizmet kaynaklarına erişebilirsiniz.
 
 ## <a name="scenarios"></a>Senaryolar
 
-- **Eşleştirilmiş, bağlanmış veya birden çok sanal ağ**: Eşlenen sanal ağlardaki trafiği filtrelemek için uç noktası ilkeleri bu sanal ağları için ayrı ayrı uygulanması gerekir.
-- **Ağ Gereçleri veya Azure güvenlik duvarı ile Internet trafiğini filtreleme**: Uç noktalar ilkeleri, Azure hizmet trafiğini filtrelemek ve cihazları veya Azure güvenlik duvarı üzerinden İnternet'te veya Azure trafiğinin geri kalanı filtreleyin. 
-- **Azure hizmetlerinde dağıtılan sanal ağlara trafiği filtreleme**: Önizleme sırasında sanal ağınıza dağıtılmış yönetilen Azure Hizmetleri için hizmet uç noktası İlkesi desteklenmez. 
+- **Eşleştirilmiş, bağlı veya birden çok sanal ağ**: Eşleştirilmiş sanal ağlarda trafiği filtrelemek için, uç nokta ilkelerinin bu sanal ağlara tek tek uygulanması gerekir.
+- **İnternet trafiğini Ağ Gereçleri veya Azure Güvenlik Duvarı ile filtreleme**: Azure hizmet trafiğini uç noktalar üzerinden ilkelerle filtreleyin ve kalan İnternet veya Azure trafiğini gereçler veya Azure Güvenlik Duvarı aracılığıyla filtreleyin. 
+- **Sanal Ağlara dağıtılan Azure hizmetlerinde trafiği filtreleme**: Önizleme sırasında, sanal ağınıza dağıtılan hiçbir yönetilen Azure hizmeti için hizmet uç noktası ilkeleri desteklenmez. 
  Belirli hizmetler için [kısıtlamalara](#limitations) bakın.
-- **Şirket içi ortamdan Azure hizmetlerine trafiği filtreleme**: Hizmet uç noktası İlkesi, ilkeleri için ilişkili alt ağlar'dan yalnızca trafiğe uygulanır. Şirket içinden belirli Azure hizmet kaynaklarına yönelik trafiğe izin vermek için, trafiğin ağ sanal cihazları veya güvenlik duvarları kullanılarak filtrelenmesi gerekir.
+- **Şirket içinden Azure hizmetlerine yönelik trafiği filtreleme**: Hizmet uç noktası ilkeleri yalnızca ilkelerle ilişkilendirilmiş uç noktalardan gelen trafiğe uygulanır. Şirket içinden belirli Azure hizmet kaynaklarına yönelik trafiğe izin vermek için, trafiğin ağ sanal cihazları veya güvenlik duvarları kullanılarak filtrelenmesi gerekir.
 
 ## <a name="logging-and-troubleshooting"></a>Günlüğe kaydetme ve sorun giderme
 Hizmet uç noktası ilkelerinde hiçbir merkezi günlük sağlanmaz. Hizmet tanılama günlükleri için bkz. [Hizmet uç noktaları günlüğü](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting).
@@ -154,7 +152,7 @@ Hizmet uç noktası ilkelerinde hiçbir merkezi günlük sağlanmaz. Hizmet tan�
 ### <a name="troubleshooting-scenarios"></a>Sorun giderme senaryoları
 - Uç nokta ilkelerinde listelenmeyen depolama hesaplarına erişim izni verildi
   - Ağ güvenlik grupları diğer bölgelerde İnternet veya Azure Depolama hesaplarına erişim izni verebilir.
-  - Ağ güvenlik grupları tüm giden İnternet trafiğini reddedecek ve yalnızca belirli Azure Depolama bölgelerine yönelik trafiğe izin verecek şekilde yapılandırılmalıdır. Ağ güvenlik grupları Ayrıntılar için bkz.
+  - Ağ güvenlik grupları tüm giden İnternet trafiğini reddedecek ve yalnızca belirli Azure Depolama bölgelerine yönelik trafiğe izin verecek şekilde yapılandırılmalıdır. Ayrıntılar için bkz. ağ güvenlik grupları.
 - Uç nokta ilkelerinde listelenen hesaplar için erişim reddedildi
   - Ağ güvenlik grupları veya güvenlik duvarı filtrelemesi erişimi engelliyor olabilir
   - İlkenin kaldırılması/yeniden uygulanması bağlantı kaybına yol açıyorsa:
@@ -182,7 +180,7 @@ Hizmet uç noktası ilkelerinin kullanımından ek ücret alınmaz. Hizmet uç n
 
 Hizmet uç noktası ilkelerinde aşağıdaki limitler zorunlu tutulur: 
 
- |Resource | Varsayılan limit |
+ |Kaynak | Varsayılan limit |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

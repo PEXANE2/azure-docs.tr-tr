@@ -2,7 +2,7 @@
 title: Kişisel cihazları bir kuruluşun ağına kaydetme-Azure AD
 description: Kuruluşunuzun korunan kaynaklarına erişebilmek için kişisel cihazınızı kuruluşunuzun ağına nasıl kaydedeceğinizi öğrenin.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e2e6585bac100a09f3f98037e90b24738e22816f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704621"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063875"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Kişisel cihazınızı kuruluşunuzun ağına kaydetme
 Kuruluşunuzun ağına kişisel cihazınızı (genellikle telefon veya tablet) kaydedin. Cihazınız kaydolduktan sonra kuruluşunuzun kısıtlanmış kaynaklarına erişebilir.
@@ -41,7 +41,7 @@ Cihazınızı kuruluşunuzun ağına kaydederken aşağıdaki eylemler gerçekle
 
 Kişisel cihazınızı ağınıza kaydetmek için aşağıdaki adımları izleyin.
 
-1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
+1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
@@ -58,7 +58,7 @@ Kişisel cihazınızı ağınıza kaydetmek için aşağıdaki adımları izleyi
 ## <a name="to-verify-that-youre-registered"></a>Kaydoldığınızı doğrulamak için
 Ayarlarınıza bakarak kaydolduğunuzdan emin olabilirsiniz.
 
-1. **Ayarlar**'ı açıp **Hesaplar**'ı seçin.
+1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 

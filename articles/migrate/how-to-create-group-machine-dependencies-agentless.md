@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288973"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049766"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Değerlendirme için aracısız bağımlılık görselleştirmesini ayarlama
 
@@ -62,7 +62,7 @@ Aracısız bağımlılık görselleştirmesi, makinelere herhangi bir aracı yü
 
 Sunucu değerlendirmesinin, bulma için VM 'ye erişebilmesi için gerekli izinlere sahip bir kullanıcı hesabı ayarlayın. Bir kullanıcı hesabı belirtebilirsiniz.
 
-- **Windows VM 'Lerde gerekli izin**: Kullanıcı hesabı ' Konuk ' erişimi gerektirir.
+- **Windows VM 'Lerde gerekli izin**: Kullanıcı hesabının yerel veya etki alanı yöneticisi olması gerekir.
 - **Linux VM 'Lerde gerekli izin**: hesapta kök ayrıcalığı gereklidir. Alternatif olarak, Kullanıcı hesabı/bin/netstat ve/bin/ls dosyalarında şu iki özelliği gerektirir: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
@@ -76,7 +76,7 @@ Hesabı aşağıdaki gibi ekleyin:
 3. **İşletim sistemini**seçin.
 4. Hesap için bir kolay ad belirtin.
 5. **Kullanıcı adı** ve **parola** belirtin
-6. **Save (Kaydet)** düğmesine tıklayın.
+6. **Kaydet** düğmesine tıklayın.
 7. **Kaydet ve bulmayı Başlat**' a tıklayın.
 
     ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)

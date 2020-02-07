@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 630d178a4f1a802d5c98b570544822e4f4013a5a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 648338f2ba57ad1c460c1c5b4a8d9a2ee91ebb1b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697022"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063722"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama
 
@@ -101,4 +101,4 @@ Hatayı gidermek için aşağıdaki adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık çoklu oturum açma, uygulamanız için çalışmaya başladığına göre, [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemini otomatikleştirebilir](../manage-apps/user-provisioning.md) veya [koşullu erişime](../conditional-access/app-based-conditional-access.md)başlamanızı sağlayabilirsiniz.
+Artık çoklu oturum açma, uygulamanız için çalışmaya başladığına göre, [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemini otomatikleştirebilir](../app-provisioning/user-provisioning.md) veya [koşullu erişime](../conditional-access/app-based-conditional-access.md)başlamanızı sağlayabilirsiniz.

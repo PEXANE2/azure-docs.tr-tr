@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276580"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058940"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Asana yapılandırma
 
@@ -89,7 +89,7 @@ Bu bölüm, Azure AD 'nizi Asana Kullanıcı hesabı sağlama API 'sine bağlama
 
 1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Asana olarak eşitler**' ı seçin.
 
-1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Asana 'a eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Asana 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin. Daha fazla bilgi için bkz. [Kullanıcı sağlama özniteliği eşlemelerini özelleştirme](../manage-apps/customize-application-attributes.md).
+1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Asana 'a eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Asana 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin. Daha fazla bilgi için bkz. [Kullanıcı sağlama özniteliği eşlemelerini özelleştirme](../app-provisioning/customize-application-attributes.md).
 
 1. Azure AD sağlama hizmetini Asana için etkinleştirmek üzere **Ayarlar** bölümünde, **sağlama durumunu** **Açık**olarak değiştirin.
 
@@ -97,10 +97,10 @@ Bu bölüm, Azure AD 'nizi Asana Kullanıcı hesabı sağlama API 'sine bağlama
 
 Artık ilk eşitleme, **Kullanıcılar** bölümünde Asana 'ya atanan tüm kullanıcılar için başlar. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. İlerleme durumunu izlemek ve etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanın. Denetim günlükleri, Asana uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri anlatmaktadır.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında rapor](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında rapor](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](asana-tutorial.md)

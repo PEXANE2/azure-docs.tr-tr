@@ -2,13 +2,13 @@
 title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
-ms.date: 01/28/2020
-ms.openlocfilehash: 80ecf0861f3d740fff6b68b0373f94d0e2845a9d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/05/2020
+ms.openlocfilehash: 0950c93c09c89ad92fc4f77f9f82937deb9e489e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903487"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064861"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -58,26 +58,26 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 
 | Sürüm adı | Windows sürüm numarası | Linux sürüm numarası |
 | --- | --- | --- |
-| 5,3 RTO | 5.3.121.9494 | Yok |
-| 5,3 CU1 | 5.3.204.9494 | Yok |
-| 5,3 CU2 UYGULAMAZSANıZ | 5.3.301.9590 | Yok |
-| 5,3 CU3 | 5.3.311.9590 | Yok |
-| 5,4 CU2 UYGULAMAZSANıZ | 5.4.164.9494 | Yok |
-| 5,5 CU1 | 5.5.216.0    | Yok |
-| 5,5 CU2 UYGULAMAZSANıZ | 5.5.219.0    | Yok |
-| 5,5 CU3 | 5.5.227.0    | Yok |
-| 5,5 CU4 | 5.5.232.0    | Yok |
-| 5,6 RTO | 5.6.204.9494 | Yok |
-| 5,6 CU2 UYGULAMAZSANıZ | 5.6.210.9494 | Yok |
-| 5,6 CU3 | 5.6.220.9494 | Yok |
-| 5,7 RTO | 5.7.198.9494 | Yok |
-| 5,7 CU4 | 5.7.221.9494 | Yok |
+| 5,3 RTO | 5.3.121.9494 | NA |
+| 5,3 CU1 | 5.3.204.9494 | NA |
+| 5,3 CU2 UYGULAMAZSANıZ | 5.3.301.9590 | NA |
+| 5,3 CU3 | 5.3.311.9590 | NA |
+| 5,4 CU2 UYGULAMAZSANıZ | 5.4.164.9494 | NA |
+| 5,5 CU1 | 5.5.216.0    | NA |
+| 5,5 CU2 UYGULAMAZSANıZ | 5.5.219.0    | NA |
+| 5,5 CU3 | 5.5.227.0    | NA |
+| 5,5 CU4 | 5.5.232.0    | NA |
+| 5,6 RTO | 5.6.204.9494 | NA |
+| 5,6 CU2 UYGULAMAZSANıZ | 5.6.210.9494 | NA |
+| 5,6 CU3 | 5.6.220.9494 | NA |
+| 5,7 RTO | 5.7.198.9494 | NA |
+| 5,7 CU4 | 5.7.221.9494 | NA |
 | 6,0 RTO | 6.0.211.9494 | 6.0.120.1 |
 | 6,0 CU1 | 6.0.219.9494 | 6.0.127.1 |
 | 6,0 CU2 UYGULAMAZSANıZ | 6.0.232.9494 | 6.0.133.1 |
 | 6,1 CU1 | 6.1.456.9494 | 6.1.183.1 |
 | 6,1 CU2 UYGULAMAZSANıZ | 6.1.467.9494 | 6.1.185.1 |
-| 6,1 CU3 | 6.1.472.9494 | Yok |
+| 6,1 CU3 | 6.1.472.9494 | NA |
 | 6,1 CU4 | 6.1.480.9494 | 6.1.187.1 |
 | 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6,2 CU1 | 6.2.274.9494 | 6.2.191.1 |
@@ -87,13 +87,13 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 6,3 CU1 | 6.3.176.9494 | 6.3.124.1 |
 | 6,3 CU1 | 6.3.187.9494 | 6.3.129.1 |
 | 6,4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6,4 CU2 UYGULAMAZSANıZ | 6.4.622.9590 | Yok |
+| 6,4 CU2 UYGULAMAZSANıZ | 6.4.622.9590 | NA |
 | 6,4 CU3 | 6.4.637.9590 | 6.4.634.1 |
 | 6,4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6,4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6,4 CU6 | 6.4.658.9590 | Yok |
+| 6,4 CU6 | 6.4.658.9590 | NA |
 | 6,4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6,4 CU8 | 6.4.670.9590 | Yok |
+| 6,4 CU8 | 6.4.670.9590 | NA |
 | 6,5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 CU2 UYGULAMAZSANıZ | 6.5.658.9590 | 6.5.460.1 |
@@ -101,3 +101,4 @@ Aşağıdaki tabloda Service Fabric sürüm adları ve bunlara karşılık gelen
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
 | 7,0 CU2 UYGULAMAZSANıZ | 7.0.464.9590 | 7.0.464.1 |
+| 7,0 CU3 | 7.0.466.9590 | 7.0.465.1 |

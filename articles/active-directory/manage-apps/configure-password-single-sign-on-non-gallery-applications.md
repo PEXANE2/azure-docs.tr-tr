@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422612"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063535"
 ---
 # <a name="configure-password-single-sign-on"></a>Parola çoklu oturum açmayı yapılandırma
 
@@ -44,7 +44,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
 
 1. [Azure Portal](https://portal.azure.com) bir bulut uygulaması Yöneticisi veya Azure AD kiracınız için bir uygulama Yöneticisi olarak oturum açın.
 
-2. **Azure Active Directory** > **kurumsal uygulamalara**gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
+2. **Kurumsal uygulamalarda** **Azure Active Directory** > gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
 
 3. **Uygulama türü** menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin.
 
@@ -68,7 +68,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
 
 Azure AD 'nin Ayrıştırma girişimi başarısız olursa, oturum açmayı el ile yapılandırabilirsiniz.
 
-1. **\<Uygulama adı > yapılandırma**altında, **oturum açma yapılandırma** sayfasını göstermek için **uygulama adı > parola çoklu oturum açma ayarları Yapılandır \<** ' ı seçin. 
+1. **Uygulama adı > yapılandırma\<** altında, **oturum açma yapılandırma** sayfasını göstermek için **\<uygulama adı > parola çoklu oturum açma ayarları Yapılandır** ' ı seçin. 
 
 2. **Oturum açma alanlarını el ile Algıla**' yı seçin. Oturum açma alanlarının el ile algılanmasını açıklayan ek yönergeler görüntülenir.
 
@@ -95,4 +95,4 @@ Oturum açma sayfasının yakalandıktan sonra, kullanıcıları ve grupları at
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulamaya Kullanıcı veya Grup atama](methods-for-assigning-users-and-groups.md)
-- [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](configure-automatic-user-provisioning-portal.md)
+- [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)

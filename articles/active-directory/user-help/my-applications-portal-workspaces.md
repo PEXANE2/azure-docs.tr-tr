@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022367"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064045"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Uygulamalarım portalındaki koleksiyonları kullanma
 
-Çalışma alanları, **My Apps** portalında gördüğünüz farklı uygulama görünümleridir. Uygulamalar, örneğin, Bölüm işlevine veya kullanıcı rolüne göre koleksiyonlar halinde gruplandırılabilir. Herhangi bir koleksiyon veya kategori görmüyorsanız, yöneticinizin sizinle hiç bir şekilde ayarlanmamış veya paylaşmadığı anlamına gelir. Paylaşılan koleksiyonları görmek için ek yardım veya izinler için kuruluşunuzun yardım masasına başvurun.
+Koleksiyonlar, **My Apps** portalında gördüğünüz farklı uygulama görünümleridir. Uygulamalar, örneğin, Bölüm işlevine veya kullanıcı rolüne göre koleksiyonlar halinde gruplandırılabilir. Herhangi bir koleksiyon veya kategori görmüyorsanız, yöneticinizin sizinle hiç bir şekilde ayarlanmamış veya paylaşmadığı anlamına gelir. Paylaşılan koleksiyonları görmek için ek yardım veya izinler için kuruluşunuzun yardım masasına başvurun.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,7 +46,7 @@ Uygulamalarınızı **uygulamalarım** portalındaki çeşitli kategorilerde org
 
 - Uygulamalara verilen izinleri gözden geçirin, güncelleştirin veya iptal edin. Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulama Izinlerini düzenleme veya iptal etme](my-applications-portal-permissions-saved-accounts.md).
 
-## <a name="related-articles"></a>İlgili makaleler
+## <a name="related-articles"></a>İlgili makaleler:
 
 - [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profil** portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
 

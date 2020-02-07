@@ -6,18 +6,18 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402440"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062141"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Izleyici 'de Aracı Durumu çözümü
 Azure 'daki Aracı Durumu çözümü, doğrudan Azure Izleyici 'de Log Analytics çalışma alanına veya Azure Izleyici 'ye bağlı bir System Center Operations Manager yönetim grubuna veya yanıt vermeyen ve işletimsel veriler gönderiliyor.  Ayrıca, kaç aracının dağıtıldığını, bunların coğrafi olarak nerelere dağıtıldığını da izleyebilir ve Azure’da, diğer bulut ortamlarında ya da şirket içinde dağıtılmış aracıların dağılımından her zaman haberdar olmaya yönelik diğer sorguları gerçekleştirebilirsiniz.    
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu çözümü dağıtmadan önce, Log Analytics çalışma alanına rapor veren veya çalışma alanınız ile tümleştirilmiş bir [Operations Manager yönetim grubuna](../../azure-monitor/platform/om-agents.md) raporlama için şu anda desteklenen [Windows aracılarını](../../log-analytics/log-analytics-windows-agent.md) doğrulayın.
 
 ## <a name="solution-components"></a>Çözüm bileşenleri
@@ -39,10 +39,10 @@ System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma 
 ### <a name="supported-agents"></a>Desteklenen aracılar
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Desteklenen | Açıklama |
+| Bağlı Kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
-| Windows aracıları | Evet | Sinyal olayları doğrudan Windows aracılarından toplanır.|
-| System Center Operations Manager yönetim grubu | Evet | Sinyal olayları, her 60 saniyede bir yönetim grubuna rapor veren aracılardan toplanır ve sonra Azure Izleyici 'ye iletilir. Operations Manager aracılarından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Sinyal olayı verileri yönetim grubundan Log Analytics çalışma alanına iletilir.|
+| Windows aracıları | Yes | Sinyal olayları doğrudan Windows aracılarından toplanır.|
+| System Center Operations Manager yönetim grubu | Yes | Sinyal olayları, her 60 saniyede bir yönetim grubuna rapor veren aracılardan toplanır ve sonra Azure Izleyici 'ye iletilir. Operations Manager aracılarından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Sinyal olayı verileri yönetim grubundan Log Analytics çalışma alanına iletilir.|
 
 ## <a name="using-the-solution"></a>Çözümü kullanma
 Çözümü Log Analytics çalışma alanınıza eklediğinizde **Aracı durumu** kutucuk panonuza eklenir. Bu kutucuk, son 24 saat içindeki toplam aracı sayısını ve yanıt vermeyen aracı sayısını gösterir.<br><br> ![Panodaki Aracı Durumu Çözüm kutucuğu](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -79,7 +79,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | `Version` | Log Analytics Aracısı veya Operations Manager Aracısı sürümü.|
 | `SCAgentChannel` | Değer *Doğrudan* ve/veya *SCManagementServer*’dır.|
 | `IsGatewayInstalled` | Log Analytics ağ geçidi yüklüyse, değer *true*'dur, aksi takdirde değer *false 'tur*.|
-| `ComputerIP` | Bilgisayarın IP adresi.|
+| `ComputerIP` | Bilgisayarın genel IP adresi. Azure VM 'lerinde, varsa ortak IP 'yi gösterir. Özel IP 'Ler kullanan VM 'Ler için bu işlem, Azure SNAT adresini (özel IP adresi değil) görüntüler. |
 | `RemoteIPCountry` | Bilgisayarın dağıtıldığı coğrafi konum.|
 | `ManagementGroupName` | Operations Manager yönetim grubunun adı.|
 | `SourceComputerId` | Bilgisayarın benzersiz kimliği.|

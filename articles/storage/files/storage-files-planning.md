@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906275"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062872"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
-[Azure dosyaları](storage-files-introduction.md) tam olarak yönetilen dosya paylaşımları endüstri standardı SMB protokolünü erişilebilen bulutta sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
+[Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
 
 ## <a name="management-concepts"></a>Yönetim kavramları
 
@@ -120,7 +120,7 @@ Kullandığınız paylaşımın boyutunu, kullanılan GiB 'nizin altında azaltm
 
 Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç örnek gösterilmektedir:
 
-|Kapasite (GiB) | Temel IOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
+|Kapasite (GiB) | Temel ıOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | 300 kadar     | 66   | 44   |
 |500         | 500     | 1\.500 kadar   | 90   | 60   |
@@ -169,7 +169,7 @@ Aşağıdaki bölümlerde, farklı artıklık seçenekleri arasındaki farklar a
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
-### <a name="geo-redundant-storage"></a>Coğrafi Olarak Yedekli Depolama
+### <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
 
 > [!Warning]  
 > Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
@@ -195,7 +195,7 @@ Hangi çoğaltma seçeneğinin kullanılacağına karar verirken bu noktaları g
 
 Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Premium dosya paylaşımları 100 TiB kapasitesinde kullanılabilir.
 
-### <a name="restrictions"></a>Kısıtlamalar
+### <a name="restrictions"></a>{1&gt;Kısıtlamalar&lt;1}
 
 - Büyük dosya paylaşımları etkin olan herhangi bir depolama hesabı için LRS/ZRS 'den GRS/GZRS hesabı dönüştürme mümkün olmayacaktır.
 
@@ -204,8 +204,7 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 100 TiB kapasite sınırına sahip standart dosya paylaşımları, genel olarak tüm Azure bölgelerinde kullanılabilir.
 
 - LRS: Güney Afrika Kuzey ve Güney Afrika Batı hariç tüm bölgeler.
-   - Ulusal bulutlar (kamu, Almanya, Çin) PowerShell ve Azure komut satırı arabirimi (CLı) aracılığıyla desteklenir. Portal desteği yok. 
-   - Doğu ABD, Doğu ABD2, Batı Avrupa: tüm yeni hesaplar desteklenir. Az sayıda mevcut hesap yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
+   - Doğu ABD ve Batı Avrupa: tüm yeni hesaplar desteklenir. Az sayıda mevcut hesap yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
 
 - ZRS: Japonya Doğu, Kuzey Avrupa, Güney Afrika Kuzey dışındaki tüm bölgeler.
 - GRS/GZRS: desteklenmiyor.

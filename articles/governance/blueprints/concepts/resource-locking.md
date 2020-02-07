@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406403"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057354"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -21,7 +21,7 @@ Ancak, kilitleme modları, şema dışında değiştirilemez.
 
 Şema atamasında yapıtlar tarafından oluşturulan kaynakların dört durumu vardır: **kilitli değil**, **salt okunurdur**, **düzenleme/silme yapılamaz** **veya silinemez**. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
 
-|Mod|Yapıt kaynak türü|State|Açıklama|
+|Mod|Yapıt kaynak türü|Durum|Açıklama|
 |-|-|-|-|
 |Kilitleme|*|Kilitlenmedi|Kaynaklar, planlar tarafından korunmuyor. Bu durum, bir **salt okunurdur** veya bir şema atamasının dışında kaynak grubu yapıtı **silme** ' ya eklenen kaynaklar için de kullanılır.|
 |Salt Okunur|Kaynak grubu|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
@@ -102,6 +102,26 @@ Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu 
   }
 }
 ```
+
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Reddetme atamasından bir eylemi hariç tutma
+
+Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-control/deny-assignments.md) [sorumluyu dışlamala](#exclude-a-principal-from-a-deny-assignment) benzer şekilde, belirli [RBAC işlemlerini](../../../role-based-access-control/resource-provider-operations.md)hariç bırakabilirsiniz. **Properties. kilitleri** bloğunda, **excludedsorumlularını** aynı yerde, bir **excludedadıctions** eklenebilir:
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+**Excludedsorumlularını** açık olmalıdır, **excludedadctions** girdileri RBAC işlemlerinin joker karakter eşleştirmesi için `*` kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

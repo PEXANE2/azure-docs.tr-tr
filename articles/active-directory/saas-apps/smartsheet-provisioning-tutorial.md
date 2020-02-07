@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için Smartsheet yapılandırma | Microsoft Docs'
-description: Otomatik olarak sağlama ve sağlamasını Smartsheet kullanıcı hesaplarını Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Smartsheet yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı Smartsheet 'e öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,185 +15,185 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f0ca2dfa90e1312db664962e7ffbe6b3f4dd96e1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9fbdf8a1c4b1881fc6dfd9d7b95a4103761e9ce7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670946"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063212"
 ---
-# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı hazırlama için Smartsheet yapılandırın
+# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Smartsheet yapılandırma
 
-Bu öğreticinin amacı otomatik olarak sağlamak ve kullanıcılara ve/veya gruplara Smartsheet sağlamasını için Smartsheet ve Azure Active Directory (Azure AD) Azure AD yapılandırmak için gerçekleştirilmesi gereken adımlar göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Smartsheet 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Smartsheet ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD kullanıcı sağlama hizmeti üzerinde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet yapar, nasıl çalıştığını ve sık sorulan sorular önemli ayrıntılar için bkz. [otomatik kullanıcı hazırlama ve sağlamayı kaldırma Azure Active Directory ile SaaS uygulamalarına](../manage-apps/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı, şu anda genel Önizleme aşamasındadır. Genel Microsoft Azure için kullanım koşulları Önizleme özellikleri hakkında daha fazla bilgi için bkz. [ek kullanım koşulları, Microsoft Azure önizlemeleri için](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulları zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracısı
-* [Bir Smartsheet Kiracı](https://www.smartsheet.com/pricing)
-* Bir Smartsheet Kurumsal veya Kurumsal Premier plan Sistem Yöneticisi izinlerine sahip bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Smartsheet kiracısı](https://www.smartsheet.com/pricing)
+* Bir Smartsheet kurumsal veya kurumsal Premier planında Sistem Yöneticisi izinlerine sahip bir kullanıcı hesabı.
 
-## <a name="assign-users-to-smartsheet"></a>Smartsheet için kullanıcı atama
+## <a name="assign-users-to-smartsheet"></a>Kullanıcıları Smartsheet 'e ata
 
-Azure Active Directory kullanan adlı bir kavram *atamaları* hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için. Otomatik kullanıcı hazırlama bağlamında, yalnızca kullanıcı ve/veya Azure AD'de bir uygulamaya atanan gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Yapılandırma ve otomatik kullanıcı hazırlama etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları Smartsheet erişmesi karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek Smartsheet için bu kullanıcılara ve/veya grupları atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Smartsheet 'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Smartsheet 'e atayabilirsiniz:
 
-* [Kurumsal bir uygulamayı kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Smartsheet için kullanıcı atama önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Smartsheet 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-* Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmasını otomatik kullanıcı test etmek için Smartsheet atanır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Smartsheet 'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcı için Smartsheet atarken, (varsa) geçerli bir uygulamaya özgü rol ataması iletişim kutusunda seçmeniz gerekir. Kullanıcılarla **varsayılan erişim** rol sağlamasından dışlanır.
+* Bir kullanıcıyı Smartsheet 'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-* Kullanıcı rolü atamaları Smartsheet ve Azure AD arasındaki eşlik emin olmak için tam Smartsheet kullanıcı listesi içinde aynı rol atamaları kullanmak için önerilir. Bu kullanıcı listesini Smartsheet'teki verileri almak için gidin **Hesap Yöneticisi > Kullanıcı Yönetimi > Diğer Eylemler > kullanıcı listesini indirin (csv)** .
+* Smartsheet ve Azure AD arasında Kullanıcı rolü atamalarında eşlik sağlamak için, tam Smartsheet Kullanıcı listesinde doldurulmuş rol atamalarının aynısını kullanmanız önerilir. Bu Kullanıcı listesini Smartsheet 'ten almak için **hesap yöneticisi > Kullanıcı yönetimi > daha fazla eylem > Kullanıcı Listesi (CSV) yükle**' ye gidin.
 
-* Uygulamasında belirli özelliklerine erişebilmeniz için bir kullanıcı birden çok rolü Smartsheet gerektirir. Kullanıcı türleri ve smartsheet'teki izinler hakkında daha fazla bilgi için Git [kullanıcı türlerinde ve izinlerde](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions).
+* Uygulamadaki belirli özelliklere erişmek için, Smartsheet bir kullanıcının birden çok rolüne sahip olmasını gerektirir. Smartsheet 'teki Kullanıcı türleri ve izinler hakkında daha fazla bilgi edinmek için [Kullanıcı türleri ve izinler](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions)' e gidin.
 
-*  Birden çok rol Smartsheet'te, atanmış bir kullanıcı varsa, **gerekir** bu rol atamaları burada kullanıcılar kaybeder Smartsheet nesnelere erişimi kalıcı olarak bir senaryonun olmaması için Azure AD'de çoğaltıldığından emin olun. Her benzersiz rolüne smartsheet'teki **gerekir** , Azure AD'de farklı bir gruba atanmış. Kullanıcı **gerekir** sonra istenen rollerine karşılık gelen grupların her biri için eklendi. 
+*  Smartsheet 'te bir kullanıcının birden çok rolü atanmışsa, kullanıcıların Smartsheet nesnelerine kalıcı olarak erişimini kaybedebileceği bir senaryoya engel olmak için bu rol atamalarının Azure AD 'de çoğaltılmasını **sağlamalısınız** . Smartsheet 'teki her benzersiz rolün Azure AD 'de farklı bir gruba atanması **gerekir** . Daha sonra Kullanıcı, istenen rollere karşılık gelen grupların her **birine eklenmelidir.** 
 
-## <a name="set-up-smartsheet-for-provisioning"></a>Smartsheet sağlamak için ayarlayın
+## <a name="set-up-smartsheet-for-provisioning"></a>Sağlama için Smartsheet ayarlama
 
-Otomatik kullanıcı hazırlama ile Azure AD için Smartsheet yapılandırmadan önce üzerinde Smartsheet SCIM sağlamayı etkinleştirmek gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için Smartsheet 'i yapılandırmadan önce, Smartsheet üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. Olarak oturum bir **SysAdmin** içinde **[Smartsheet portalı](https://app.smartsheet.com/b/home)** gidin **Hesap Yöneticisi**.
+1. **[Smartsheet portalında](https://app.smartsheet.com/b/home)** **sysadmin** olarak oturum açın ve **Hesap Yöneticisi**' ne gidin.
 
     ![Smartsheet Hesap Yöneticisi](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
 
-2. Git **güvenlik denetimleri > kullanıcı otomatik sağlama > Düzenle**.
+2. **Kullanıcı otomatik sağlama > Düzenle ' > güvenlik denetimlerine**gidin.
 
     ![Smartsheet güvenlik denetimleri](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
 
-3. Ekle ve e-posta etki alanları için Smartsheet Azure AD'den sağlamayı planlama kullanıcılar için doğrulayın. Seçin **etkin** sağlama tüm eylemleri yalnızca Azure AD'den geldiğinden emin olun ve ayrıca, Smartsheet kullanıcı listesi ile Azure AD atamaları eşitlenmiş olduğundan emin olun.
+3. Azure AD 'den Smartsheet 'e sağlamayı planladığınız kullanıcıların e-posta etki alanlarını ekleyin ve doğrulayın. Tüm sağlama eylemlerinin yalnızca Azure AD 'den kaynaklanmasından emin olmak ve ayrıca Smartsheet Kullanıcı listenizin Azure AD atamalarıyla eşitlenmiş olduğundan emin olmak için **etkin değil** ' i seçin.
 
-    ![Smartsheet kullanıcı sağlama](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
+    ![Smartsheet Kullanıcı sağlama](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
 
-4. Doğrulama tamamlandıktan sonra etki alanı etkinleştirmeniz gerekir. 
+4. Doğrulama tamamlandıktan sonra etki alanını etkinleştirmeniz gerekir. 
 
-    ![Smartsheet Activate Domain](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
+    ![Smartsheet etki alanını etkinleştir](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
 
-5. Oluşturma **gizli belirteç** giderek Azure AD ile otomatik kullanıcı hazırlama yapılandırmak için gereken **uygulamalar ve tümleştirmeler**.
+5. **Uygulamalar ve tümleştirmelere**gıderek Azure AD ile otomatik Kullanıcı sağlamayı yapılandırmak Için gereken **gizli dizi belirtecini** oluşturun.
 
-    ![Smartsheet yükleme](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Smartsheet yüklemesi](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
-6. Seçin **API erişimi**. Tıklayın **oluştur yeni bir erişim belirteci**.
+6. **API erişimi**seçin. **Yeni erişim belirteci oluştur**' a tıklayın.
 
-    ![Smartsheet yükleme](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![Smartsheet yüklemesi](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. API erişim belirteci adını tanımlayın.           **Tamam**'ı tıklatın.
+7. API erişim belirtecinin adını tanımlayın. **Tamam**'a tıklayın.
 
-    ![Smartsheet yükleme](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![Smartsheet yüklemesi](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
-8. API erişim belirteci kopyalayın ve bu raporu görüntüleyebilirsiniz yalnızca bir kez olarak kaydedin. Bu gereklidir **gizli belirteç** Azure ad alanı.
+8. API erişim belirtecini kopyalayın ve tek bir zaman görüntüleyebilmeniz için bunu kaydedin. Bu, Azure AD 'deki **gizli belirteç** alanında gereklidir.
 
     ![Smartsheet belirteci](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
 
-## <a name="add-smartsheet-from-the-gallery"></a>Smartsheet Galeriden Ekle
+## <a name="add-smartsheet-from-the-gallery"></a>Galeriden akıllı sayfa ekleme
 
-Smartsheet otomatik kullanıcı hazırlama Azure AD ile yapılandırmak için Smartsheet Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Smartsheet 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üzere, Azure AD uygulama galerisindeki Smartsheet 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. İçinde  **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde seçin **Azure Active Directory**.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için seçin **yeni uygulama** bölmenin üstünde düğme.
+3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Smartsheet**seçin **Smartsheet** Sonuçlar panelinde. 
+4. Arama kutusuna **Smartsheet**yazın, sonuçlar panelinde **Smartsheet** ' i seçin. 
 
     ![Sonuç listesinde Smartsheet](common/search-new-app.png)
 
-5. Seçin **Smartsheet kaydolun** düğmesine tıklamamalıdır Smartsheet'ın oturum açma sayfasına yönlendirir. 
+5. Sizi Smartsheet 'in oturum açma sayfasına yönlendiren **Smartsheet Için kaydolun** düğmesini seçin. 
 
-    ![Smartsheet OIDC Ekle](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
+    ![Smartsheet OıDC eklentisi](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
 
-6. Smartsheet, Openıdconnect uygulama olduğundan, Smartsheet ile Microsoft iş hesabınızı kullanarak oturum açmak seçin.
+6. Smartsheet bir Openıdconnect uygulaması olduğu için, Microsoft iş hesabınızı kullanarak Smartsheet oturumu açmayı seçin.
 
-    ![Smartsheet OIDC oturum açma](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
+    ![Smartsheet OıDC oturum açma](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
 
-7. Başarılı bir kimlik doğrulamasından sonra onay sayfası için onay istemi kabul edin. Uygulama, kiracınıza sonra bir otomatik olarak eklenir ve Smartsheet hesabınıza yönlendirilir.
+7. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve Smartsheet hesabınıza yönlendirilirsiniz.
 
-    ![Smartsheet Oıdc onayı](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
+    ![Smartsheet OIDC onayı](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
 
-## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Smartsheet için otomatik kullanıcı sağlamayı yapılandırma 
+## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Otomatik Kullanıcı sağlamasını Smartsheet 'e yapılandırma 
 
-Bu bölümde oluşturmak, güncelleştirmek ve kullanıcılar devre dışı bırakmak için sağlama hizmetini Azure AD'yi yapılandırma adımlarında size kılavuzluk eder ve/veya Azure AD'de kullanıcı ve/veya grup atamaları bu smartsheet'teki gruplandırır.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Smartsheet 'te kullanıcıları ve/veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
-### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Azure AD'de Smartsheet için otomatik kullanıcı hazırlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Azure AD 'de Smartsheet için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Seçin **kurumsal uygulamalar**, ardından **tüm uygulamaları**.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Smartsheet**.
+2. Uygulamalar listesinde **Smartsheet**' i seçin.
 
-    ![Uygulamalar listesini Smartsheet bağlantıdaki](common/all-applications.png)
+    ![Uygulamalar listesindeki Smartsheet bağlantısı](common/all-applications.png)
 
-3. Seçin **sağlama** sekmesi.
+3. **Sağlama** sekmesini seçin.
 
-    ![Sağlama sekmesinde](common/provisioning.png)
+    ![Sağlama sekmesi](common/provisioning.png)
 
-4. Ayarlama **hazırlama modu** için **otomatik**.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Sağlama sekmesinde](common/provisioning-automatic.png)
+    ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Altında **yönetici kimlik bilgileri** giriş bölümünde `https://scim.smartsheet.com/v2/` içinde **Kiracı URL'si**. Giriş değeri alındı ve Smartsheet'te daha önce kaydedilen **gizli belirteç**. Tıklayın **Test Bağlantısı** Azure emin olmak için AD, Smartsheet ile bağlanabilirsiniz. Bağlantı başarısız olursa, Smartsheet hesabınıza SysAdmin izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://scim.smartsheet.com/v2/` girin. Daha önce aldığınız ve **gizli bir belirteçte**Smartsheet 'ten kaydettiğiniz değeri girin. Azure AD 'nin Smartsheet 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Smartsheet hesabınızın SysAdmin izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. İçinde **bildirim e-posta** alanında, bir kişi veya grubun ve sağlama hata bildirimleri almak - onay e-posta adresi girin **birhataoluşursa,bire-postabildirimigönder**.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
-8. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory Kullanıcıları için Smartsheet**.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Smartsheet ile eşitler**' ı seçin.
 
-    ![Smartsheet kullanıcı eşlemeleri](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
+    ![Smartsheet Kullanıcı eşlemeleri](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
 
-9. Smartsheet'te için Azure AD'den eşitlenen kullanıcı özniteliklerini gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri, Smartsheet kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den Smartsheet 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Smartsheet içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Smartsheet kullanıcı öznitelikleri](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
+    ![Smartsheet Kullanıcı öznitelikleri](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
 
-10. Kapsam belirleme filtrelerini yapılandırmak için aşağıdaki yönergelere bakın [Scoping filtre öğretici](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-11. Azure AD sağlama hizmeti için Smartsheet etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** içinde **ayarları** bölümü.
+11. Smartsheet için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Açıkken sağlama durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. Kullanıcılara ve/veya istediğiniz grupları Smartsheet sağlamak için istenen değerleri seçerek tanımlamak **kapsam** içinde **ayarları** bölümü.
+12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Smartsheet 'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Kapsam sağlama](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Sağlama için hazır olduğunuzda, tıklayın **Kaydet**.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Sağlama yapılandırmasını kaydetme](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, tüm kullanıcıların ilk eşitleme başlar ve/veya tanımlı gruplar **kapsam** içinde **ayarları** bölümü. İlk eşitleme yaklaşık 40 dakikada Azure AD sağlama hizmeti çalışıyor sürece oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve sağlama hizmeti Smartsheet üzerinde Azure AD tarafından gerçekleştirilen tüm eylemler açıklayan Etkinlik Raporu sağlama için bağlantıları izleyin.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Smartsheet ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Smartsheet, geçici silme desteklemez. Bir kullanıcı ayarlandığında **etkin** öznitelik False olarak ayarlandığında, Smartsheet kullanıcıyı kalıcı olarak siler.
+* Smartsheet, geçici silmeleri desteklemez. Bir kullanıcının **etkin** özniteliği false olarak ayarlandığında, Smartsheet kullanıcıyı kalıcı olarak siler.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri gözden geçirin ve sağlama etkinliği raporları alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

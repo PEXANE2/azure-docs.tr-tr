@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 'ta Apache ambarı sinyal sorunları
 description: Azure HDInsight 'ta Apache ambarı sinyal sorunları için çeşitli nedenleri gözden geçirme
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964626"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057082"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı sinyal sorunları
 
@@ -22,13 +22,13 @@ Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adı
 
 ### <a name="issue"></a>Sorun
 
-Ambarı Aracısı yüksek CPU kullanımına sahiptir ve bu, bazı düğümlerde ambarı aracı sinyalinin kaybolduğu bir şekilde, ambarı kullanıcı arabiriminden gelen uyarılarla sonuçlanır. Sinyal kayıp uyarısı genellikle geçicidir. 
+Ambarı Aracısı yüksek CPU kullanımına sahiptir ve bu, bazı düğümlerde ambarı aracı sinyalinin kaybolduğu bir şekilde, ambarı kullanıcı arabiriminden gelen uyarılarla sonuçlanır. Sinyal kayıp uyarısı genellikle geçicidir.
 
 ### <a name="cause"></a>Nedeni
 
 Çeşitli ambarı Aracısı hataları nedeniyle, ender durumlarda, ambarı aracılarınız yüksek (100 ' e kadar) CPU kullanımına sahip olabilir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Ambarı aracısının işlem KIMLIĞINI (PID) tanımla:
 
@@ -61,13 +61,13 @@ Ambarı Aracısı yüksek CPU kullanımına sahiptir ve bu, bazı düğümlerde 
 
 ### <a name="issue"></a>Sorun
 
-Ambarı Aracısı, bazı düğümlerde, ambarı Aracısı sinyalinin kaybolduğu bazı düğümlere yönelik olarak, belirli bir düğümde bulunan uyarılarla sonuçlanır.
+Ambarı Aracısı, bazı düğümlerde, ambarı Aracısı sinyalinin kaybolduğu bazı düğümlere yönelik olarak, hangi düğümlerin uyarı ile sonuçlandığına neden olur.
 
 ### <a name="cause"></a>Nedeni
 
 Uyarılar, ambarı aracısının çalışmadığı kaynaklardır.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 1. Ambarı-aracısının durumunu onaylayın:
 
@@ -81,7 +81,7 @@ Uyarılar, ambarı aracısının çalışmadığı kaynaklardır.
     ps -ef | grep failover
     ```
 
-    Yük devretme denetleyicisi Hizmetleri çalışmıyorsa, büyük olasılıkla bir sorundan dolayı HDInsight-Agent ' ın yük devretme denetleyicisi 'ni başlatmasını engelliyor olabilir. `/var/log/hdinsight-agent/hdinsight-agent.out` dosyasından HDInsight-Agent günlüğünü denetleyin.
+    Yük devretme denetleyicisi Hizmetleri çalışmıyorsa, muhtemelen bir sorun nedeniyle HDInsight-Agent ' ın yük devretme denetleyicisi 'ni başlatmasını engelliyor olabilir. `/var/log/hdinsight-agent/hdinsight-agent.out` dosyasından HDInsight-Agent günlüğünü denetleyin.
 
 ## <a name="scenario-heartbeat-lost-for-ambari"></a>Senaryo: ambarı için Sinyal kayboldu
 
@@ -93,9 +93,9 @@ Ambarı sinyal Aracısı kayboldu.
 
 OMS günlükleri yüksek CPU kullanımına neden oluyor.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-* [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) PowerShell modülünü kullanarak OMS günlüğünü devre dışı bırakın. 
+* [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell cmdlet 'Ini kullanarak Azure izleyici günlüğünü devre dışı bırakın.
 * `mdsd.warn` günlük dosyasını silme
 
 ---

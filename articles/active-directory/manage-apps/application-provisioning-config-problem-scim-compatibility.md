@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712353"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063603"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
 Azure Active Directory (Azure AD), [etki alanları arası kimlik yönetimi (SCıM) 2,0 protokol belirtimi Için sistemde](https://tools.ietf.org/html/draft-ietf-scim-api-19)tanımlanan arabirimi içeren bir Web hizmeti tarafından belirtilen herhangi bir uygulamaya veya sisteme Kullanıcı ve grupları otomatik olarak sağlayabilir. 
 
-Azure AD 'nin SCıM 2,0 protokolü desteği, kullanıcıların ve grupların Azure AD 'den SCıM 2,0 ' i destekleyen uygulamalara otomatik olarak sağlanması için kullandığı protokolün belirli kısımlarını listeleyen, [etki alanları arası kimlik yönetimi (scım Azure Active Directory) Için sistem kullanma](use-scim-to-provision-users-and-groups.md)bölümünde açıklanmıştır.
+Azure AD 'nin SCıM 2,0 protokolü desteği, kullanıcıların ve grupların Azure AD 'den SCıM 2,0 ' i destekleyen uygulamalara otomatik olarak sağlanması için kullandığı protokolün belirli kısımlarını listeleyen, [etki alanları arası kimlik yönetimi (scım Azure Active Directory) Için sistem kullanma](../app-provisioning/use-scim-to-provision-users-and-groups.md)bölümünde açıklanmıştır.
 
 Bu makalede, Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokolüne uygunluğunu ve bu sorunları geçici olarak nasıl çözebileceğinizi açıklayan geçerli ve geçmişteki sorunlar açıklanmaktadır.
 
@@ -38,10 +38,10 @@ Bu makalede, Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokolüne u
 
 | **SCıM 2,0 uyumluluk sorunu** |  **Düzenle?** | **Onarma tarihi**  |  
 |---|---|---|
-| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Yes  |  18 Aralık 2018 | 
-| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | 
-|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | 
-|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  
+| Azure AD, uygulamanın SCıM uç nokta URL 'sinin kökünde olması için "/Scim" gerektirir  | Evet  |  18 Aralık 2018 | 
+| Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Evet  | 18 Aralık 2018  | 
+|  Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Evet  |  18 Aralık 2018  | 
+|  Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Evet  |  18 Aralık 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Hizmet düzeltmeleri önceden mevcut SCIM uygulamama otomatik olarak uygulandı mi?
 
@@ -113,5 +113,5 @@ Evet. Düzeltmelerden önce varolan eski davranışa bir uygulamayı kodlandırd
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[SaaS uygulamalarına sağlama ve sağlamayı kaldırma hakkında daha fazla bilgi edinin](user-provisioning.md)
+[SaaS uygulamalarına sağlama ve sağlamayı kaldırma hakkında daha fazla bilgi edinin](../app-provisioning/user-provisioning.md)
 

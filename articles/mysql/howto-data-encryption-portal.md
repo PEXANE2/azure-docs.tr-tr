@@ -1,28 +1,28 @@
 ---
-title: Portal kullanarak MySQL için Azure veritabanı için veri şifreleme
+title: Azure portal kullanarak MySQL için Azure veritabanı için veri şifreleme
 description: Azure portal kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayarlamayı ve yönetmeyi öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5bd100a5858660d80f3704844ed974f2bc9257b4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ba1ad7c533ea1dc9e88c8337373e607db653ac24
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028946"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048538"
 ---
-# <a name="data-encryption-for-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusu için veri şifreleme
+# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için veri şifreleme
 
-Bu makalede, MySQL için Azure veritabanı için veri şifrelemeyi ayarlamak üzere Azure portal kullanmak üzere ayarlama ve yönetme hakkında bilgi edineceksiniz.
+MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek üzere Azure portal nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites-for-cli"></a>CLı önkoşulları
+## <a name="prerequisites-for-azure-cli"></a>Azure CLı önkoşulları
 
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
-* Müşteri tarafından yönetilen anahtar için kullanmak üzere bir Azure Key Vault ve anahtar oluşturun.
-* Key Vault, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliğe sahip olmalıdır:
-  * [Geçici Silme](../key-vault/key-vault-ovw-soft-delete.md)
+* Azure Key Vault ' de, bir anahtar kasası ve müşterinin yönettiği anahtar için kullanılacak bir anahtar oluşturun.
+* Anahtar Kasası, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliklere sahip olmalıdır:
+  * [Geçici silme](../key-vault/key-vault-ovw-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
@@ -34,66 +34,66 @@ Bu makalede, MySQL için Azure veritabanı için veri şifrelemeyi ayarlamak üz
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* Anahtar, müşteri tarafından yönetilen anahtar için kullanılacak aşağıdaki özniteliklere sahip olmalıdır.
+* Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
   * Sona erme tarihi yok
   * Devre dışı değil
-  * Al, _sarmalama tuşu_, _anahtar sarmalama işlemini geri_ _alabilir_
+  * Al, sarmalama tuşu, anahtar sarmalama işlemini geri alabilir
 
-## <a name="setting-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarlama
+## <a name="set-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarla
 
-1. Azure Key Vault **erişim ilkelerini**seçin, sonra **erişim ilkesi ekleyin**:
+1. Key Vault, erişim **Ilkesi ekle** > erişim **ilkeleri** ' ni seçin.
 
-   ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. **Anahtar izinlerini**seçin ve MySQL sunucusunun adı olan Al **, sarmalama**, **geri** **Al**ve **asıl**' ı seçin. Sunucu sorumlunuz var olan sorumlular listesinde bulunamazsa, ilk kez veri şifrelemeyi ayarlamaya çalışırken kaydolmanız gerekir, bu da başarısız olur.
+2. **Anahtar izinleri**' ni seçin ve MySQL sunucusunun adı olan Al, **sarmalama**, **geri** **Al**ve **asıl**' ı seçin. Sunucu sorumlunuz mevcut sorumlular listesinde bulunamazsa, kaydolmanız gerekir. Veri şifrelemeyi ilk kez ayarlamaya çalıştığınızda sunucu sorumlunuzu kaydetmeniz istenir ve başarısız olur.
 
    ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. Ayarları **kaydedin** .
+3. **Kaydet**’i seçin.
 
-## <a name="setting-data-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için veri şifrelemeyi ayarlama
+## <a name="set-data-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için veri şifrelemeyi ayarlama
 
-1. **MySQL Için Azure veritabanı**'nda, müşteri tarafından yönetilen anahtar kurulumunu ayarlamak Için **veri şifrelemeyi** seçin.
+1. MySQL için Azure veritabanı 'nda, müşteri tarafından yönetilen anahtarı ayarlamak için **veri şifreleme** ' yi seçin.
 
-   ![Veri şifrelemeyi ayarlama](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![Veri şifrelemesi vurgulanmış şekilde MySQL için Azure veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. Bir **Key Vault** ve **anahtar** çifti seçebilir ya da **anahtar tanımlayıcısını**geçirebilirsiniz.
+2. Bir anahtar kasası ve anahtar çifti seçebilir ya da bir anahtar tanımlayıcı girebilirsiniz.
 
-   ![Key Vault ayarlama](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![Veri şifreleme seçenekleri vurgulanmış olan MySQL için Azure veritabanı 'nın ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. Ayarları **kaydedin** .
+3. **Kaydet**’i seçin.
 
-4. Tüm dosyaların ( **geçici dosyalar**dahil) tam şifrelendiğinden emin olmak için sunucu **yeniden başlatması** **gerekir**.
+4. Tüm dosyaların (geçici dosyalar dahil) tamamen şifrelendiğinden emin olmak için sunucuyu yeniden başlatın.
 
-## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>Veri şifrelemesi etkin olan sunucunun çoğaltmasını geri yükleme veya oluşturma
+## <a name="restore-or-create-a-replica-of-the-server"></a>Sunucu çoğaltmasını geri yükleme veya oluşturma
 
-MySQL için Azure veritabanı, Key Vault depolanan müşterinin yönetilen anahtarı ile şifrelendikten sonra, sunucunun yerel veya coğrafi geri yükleme işlemi ya da bir çoğaltma (yerel/çapraz bölge) işlemi gibi yeni oluşturulan bir kopyası. Bu nedenle, şifrelenmiş bir MySQL sunucusu için, şifrelenmiş bir geri yüklenmiş sunucu oluşturmak üzere aşağıdaki adımları izleyebilirsiniz.
+MySQL için Azure veritabanı, Key Vault ' de depolanan bir müşterinin yönetilen anahtarıyla şifrelendikten sonra, sunucunun yeni oluşturulan kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemi aracılığıyla ya da bir çoğaltma (yerel/bölge) işlemi aracılığıyla yapabilirsiniz. Bu nedenle, şifrelenmiş bir MySQL sunucusu için, şifrelenmiş bir geri yüklenmiş sunucu oluşturmak için aşağıdaki adımları kullanabilirsiniz.
 
-1. Sunucunuzda **genel bakış**' ı seçin ve ardından **geri yükle**' yi seçin.
+1. Sunucunuzda **genel bakış** > **geri yükleme**' yi seçin.
 
-   ![Başlat-geri yükle](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![MySQL için Azure veritabanı 'Na genel bakış ve geri yükleme vurgulanmış ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında aşağıda gösterildiği gibi **çoğaltma**' yı seçin:
+   Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında **çoğaltma**' yı seçin.
 
-   ![Başlatma-çoğaltma](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
+   ![Çoğaltma vurgulanmış şekilde, MySQL için Azure veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
 
-2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu, birincil sunucuyu şifrelemek için kullanılan anahtarla şifrelenir. Ancak, sunucudaki Özellikler ve seçenekler devre dışı bırakılır ve sunucu **erişilemeyen** bir durumda işaretlenir. Bu davranış, yeni sunucunun kimliğine Key Vault erişim izni verilmediğinden, herhangi bir veri işlemesini engellemek için tasarlanmıştır.
+2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu birincil sunucunun anahtarıyla şifrelenir. Ancak, sunucudaki Özellikler ve seçenekler devre dışı bırakılır ve sunucuya erişilemez. Bu, tüm veri düzenlemesini engeller, çünkü yeni sunucu kimliği henüz anahtar kasasına erişmek için izin verilmemiş.
 
-   ![Sunucuyu erişilemez olarak işaretle](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![Erişilemeyen durum vurgulanacak MySQL için Azure veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Erişilemeyen durumu onarmak için, geri yüklenen sunucuda anahtarı yeniden doğrulamanız gerekir. **Veri şifreleme** bölmesini ve sonra **anahtarı yeniden doğrula** düğmesini seçin.
+3. Sunucuyu erişilebilir hale getirmek için geri yüklenen sunucuda anahtarı yeniden doğrulayın. **Anahtarı yeniden doğrulamak** > **veri şifrelemeyi** seçin.
 
    > [!NOTE]
-   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusu oluşturmak için, bir hata veren ancak hizmet sorumlusu üreten **anahtarı yeniden doğrula**' yı seçin. Bundan sonra yukarıdaki 2. [bölümde bulunan](#setting-the-right-permissions-for-key-operations) adımlara bakın.
+   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusunu oluşturmak için **anahtarı yeniden doğrula**' yı seçin, bu, bir hatayı gösterir, ancak hizmet sorumlusu oluşturur. Bundan sonra bu makalede daha önce bahsedilen [adımlara](#set-the-right-permissions-for-key-operations) bakın.
 
-   ![sunucuyu yeniden doğrula](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![Yeniden doğrulama adımıyla MySQL için Azure veritabanı 'nın ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   Key Vault yeni sunucuya erişim sağlamanız gerekir.
+   Yeni sunucuya Anahtar Kasası erişimi sağlamanız gerekir.
 
-4. Hizmet sorumlusu kaydedildikten sonra anahtarı yeniden doğrulamanız gerekir ve sunucu normal işlevselliğini sürdürür.
+4. Hizmet sorumlusu kaydedildikten sonra anahtarı yeniden doğruladıktan sonra sunucu normal işlevselliğini sürdürür.
 
-   ![Normal sunucu geri yüklendi](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![MySQL için Azure veritabanı 'nın, geri yüklenen işlevselliği gösteren ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Veri şifreleme hakkında daha fazla bilgi için bkz. [Azure veri şifrelemesi nedir?](concepts-data-encryption-mysql.md).
+ Veri şifreleme hakkında daha fazla bilgi edinmek için bkz. [müşteri tarafından yönetilen anahtarla MySQL Için Azure veritabanı veri şifrelemesi](concepts-data-encryption-mysql.md).

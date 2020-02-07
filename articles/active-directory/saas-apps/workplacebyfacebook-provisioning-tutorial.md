@@ -15,19 +15,41 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985194"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064154"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için çalışma alanını Facebook ile yapılandırma
 
 Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Facebook ve Azure Active Directory (Azure AD) ile her iki çalışma alanında gerçekleştirmeniz gereken adımlar açıklanmaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [Facebook tarafından Iş yeri](https://work.workplace.com/) için kullanıcıları ve grupları otomatik olarak hazırlar ve serbest hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 
-> [!NOTE]
-> Facebook tarafından çalışma alanındaki Azure AD üçüncü taraf uygulaması onaylandı. Müşteriler, 16 Aralık 'ta hizmet kesintiine sahip olmayacaktır. Yeni uygulamaya geçiş yapmanız gerektiğinde, Facebook Yönetici Konsolu 'nda çalışma alanında, 28 Şubat 2020 ' ün son tarihini belirten bir notun olduğunu göreceksiniz. Geçişin mümkün olduğunca basit tutulması için çalışıyoruz ve bu şekilde, bir ay sonuna kadar geçiş üzerinde bir güncelleştirme sağlayacağız.
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Facebook uygulamasına yeni çalışma alanına geçiş
+Facebook ile çalışma alanıyla mevcut bir tümleştirmeye sahipseniz, lütfen gelen değişiklikler hakkında aşağıdaki bölüme bakın. Çalışma alanını Facebook tarafından ilk kez ayarlıyorsanız, bu bölümü atlayabilir ve desteklenen yetenekler için geçiş yapabilirsiniz. 
+
+#### <a name="whats-changing"></a>Ne değişiyor?
+* Azure AD tarafında yapılan değişiklikler: Iş yerindeki kullanıcıları sağlamak için yetkilendirme yöntemi geçmişte uzun süreli bir gizli belirteç oldu. Yakında, OAuth yetkilendirme izni olarak değiştirilen yetkilendirme yöntemi görüntülenir. 
+* Çalışma alanı tarafındaki değişiklikler: daha önce Azure AD uygulaması, Facebook tarafından çalışma alanında özel bir tümleştirmedir. Artık Azure AD 'yi, Iş yeri tümleştirme dizininde üçüncü taraf bir uygulama olarak görürsünüz. 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mevcut özel tümleştirmem yeni uygulamaya geçirmek için ne yapmam gerekir?
+Geçerli bir belirteçle mevcut bir çalışma alanı tümleştiriniz varsa, **herhangi bir eylem gerekmez**. Müşterileri her hafta yeni uygulamaya otomatik olarak geçiririz. Bu, arka planda tamamen yapılır. Bekleyemez ve yeni uygulamaya el ile geçmek istiyorsanız, galerideki çalışma alanının yeni bir örneğini ekleyebilir ve sağlamayı yeniden yapılandırabilirsiniz. Tüm yeni çalışma alanı örnekleri otomatik olarak yeni uygulama sürümünü kullanacaktır. 
+
+ 
+Çalışma alanı tümleştirmede iş yeriniz varsa, sizi geçirebilmesi için geçerli bir belirteç sağlamanız gerekir. Yönetici kimlik bilgileri bölümü gri kalacak, ancak şunları ekleyebilirsiniz ( **?** Kimlik bilgilerini yeniden kaydetmek IÇIN URL 'nize Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true). 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+ 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Yönetici kimlik bilgileri bölümü uygulamamda gri renkte ve kaydedemiyorum. Neden?
+Mevcut çalışma alanı müşterileri için yönetici kimlik bilgileri bölümünü kilitliyoruz. Kiracınız yeni çalışma alanı uygulamasına geçirildiğinde yönetici kimlik bilgileri bölümünü yeniden güncelleştirebileceksiniz. Bekleyemez, uygulamanızı düzenlemek için yukarıdaki URL 'YI kullanabilirsiniz. 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>Bu değişiklikler ne zaman meydana gelir?
+Çalışma alanının tüm yeni örnekleri yeni tümleştirme/yetkilendirme yöntemini zaten kullanıyor. Mevcut tümleştirmeler Şubat ayında kademeli olarak geçirilir. Geçiş işlemi, ayın sonuna kadar tüm kiracılar için tamamlanır. 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
@@ -36,7 +58,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Facebook
 > * Facebook tarafından Azure AD ve çalışma alanı arasında eşitlenmiş Kullanıcı özniteliklerini koruyun
 > * Facebook tarafından çalışma alanında [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,12 +74,12 @@ Bu öğreticideki adımları test etmek için bu önerileri izlemelidir:
 - Gerekli olmadıkça, üretim ortamında kullanmayın.
 - Azure AD deneme ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Facebook tarafından Azure AD Ile çalışma alanı arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın.
 
-## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>2\. Adım. Azure AD ile sağlamayı desteklemek için Facebook ile çalışma alanı yapılandırma
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>2\. Adım Azure AD ile sağlamayı desteklemek için Facebook ile çalışma alanı yapılandırma
 
 Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların çalışma alanınıza Facebook uygulaması tarafından erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Facebook uygulaması tarafından çalışma alanınıza atayabilirsiniz:
 
@@ -65,7 +87,7 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki 
 
 *   Facebook tarafından çalışma alanına bir Kullanıcı atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>3\. Adım. Azure AD Uygulama Galerisi 'nden Facebook ile çalışma alanı ekleme
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>3\. Adım Azure AD Uygulama Galerisi 'nden Facebook ile çalışma alanı ekleme
 
 Azure AD uygulama galerisindeki Facebook 'a çalışma alanı ekleyerek Facebook ile çalışma alanına sağlamayı yönetmeye başlayın. Daha önce Facebook için Facebook ile çalışma alanı ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin.
 
@@ -77,7 +99,7 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
 * Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -111,10 +133,10 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
    |Öznitelik|Tür|
    |---|---|
-   |Kullanıcı adı|Dize|
+   |userName adı|Dize|
    |displayName|Dize|
    |etkin|Boole|
-   |başlık|Boole|
+   |title|Boole|
    |e-postaları [türü eq "İş"] .value|Dize|
    |name.givenName|Dize|
    |name.familyName|Dize|

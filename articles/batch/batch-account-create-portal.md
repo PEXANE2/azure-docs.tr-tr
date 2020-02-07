@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025905"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048645"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
@@ -31,7 +31,7 @@ Batch hesapları ve senaryoları hakkında arka plan bilgileri için bkz. [özel
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. [Azure Portal][azure_portal]’ında oturum açın.
+1. [Azure Portal][azure_portal] oturum açın.
 
 1. **Kaynak oluştur** > **İşlem** > **Batch Hizmeti**'ni seçin.
 
@@ -83,7 +83,7 @@ Kullanıcı aboneliği modunda bir Batch hesabı oluşturmayı seçerseniz, hesa
 
 Kullanıcı aboneliği modunda ilk Batch hesabınızı oluştururken, aboneliğinizi Batch hizmetine kaydetmeniz gerekir. (Bunu daha önce yaptıysanız sonraki bölüme atlayın.)
 
-1. [Azure Portal][azure_portal]’ında oturum açın.
+1. [Azure Portal][azure_portal] oturum açın.
 
 1. **Tüm hizmetler** > **Abonelikler**'i ve ardından Batch hesabı için kullanmak istediğiniz aboneliği seçin.
 
@@ -117,6 +117,14 @@ Kullanıcı aboneliği modunda Batch hesabını oluştururken, Anahtar Kasası i
 Anahtar kasasına el ile erişim izni vermeyi tercih ediyorsanız, anahtar kasasının **erişim ilkeleri** bölümüne gidin ve **erişim ilkesi Ekle** ' yi seçin ve **Microsoft Azure Batch**arayın. Seçildikten sonra, açılan menüyü kullanarak **gizli izinleri** yapılandırmanız gerekecektir. Azure Batch, en az **Get**, **list**, **set**ve **Delete** izinleri olarak verilmelidir.
 
 ![Azure Batch için gizli izinler](./media/batch-account-create-portal/secret-permissions.png)
+
+
+> [!NOTE]
+> **Dağıtım Için Azure sanal makinelerinin** ve **şablon dağıtımı için Azure Resource Manager** , bağlantılı **Key Vault** kaynağı için **erişim ilkeleri** altında seçili olduğundan emin olun.
+> 
+> ![zorunlu Key Vault erişim Ilkesi](./media/batch-account-create-portal/key-vault-access-policy.png) Azure portal bir Batch hesabı oluşturulurken bu zorunlu değildir. Seçenek varsayılan olarak seçilidir.
+
+
 
 ### <a name="configure-subscription-quotas"></a>Abonelik kotalarını yapılandırma
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834119"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046227"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
@@ -53,7 +53,7 @@ Aşağıdaki bölümlerde, her makine türünü Azure Otomasyonu durum yapıland
 Azure Otomasyonu durum yapılandırması, Azure portal, Azure Resource Manager şablonlarını veya PowerShell 'i kullanarak Azure sanal makinelerini yapılandırma yönetimi için kolayca eklemenize olanak tanır. Yönetim altında ve bir yönetici sanal makineye uzak olarak gerek duymadan, Azure VM Istenen durum yapılandırma uzantısı VM 'yi Azure Otomasyonu durum yapılandırması 'na kaydeder.
 Azure VM Istenen durum yapılandırma uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek veya sorunu gidermek için gereken adımlar [**Azure sanal makinesi ekleme**](#troubleshooting-azure-virtual-machine-onboarding) bölümünde verilmiştir.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com/), sanal makineleri eklemek Istediğiniz Azure Otomasyonu hesabına gidin. Durum Yapılandırması sayfasında ve **düğümler** sekmesinde **+ Ekle**' ye tıklayın.
 

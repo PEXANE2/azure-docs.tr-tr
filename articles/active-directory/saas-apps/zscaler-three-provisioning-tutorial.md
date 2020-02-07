@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 43ae028e57578634c34c69357a264fdb180b8a1f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515373"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064113"
 ---
-# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlama için Zscaler üçünü yapılandırma
+# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Zscaler üçünü yapılandırma
 
 Bu öğreticide, kullanıcıları ve/veya grupları Zscaler 'ya otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory (Azure AD) yapılandırma hakkında bilgi edineceksiniz.
 
@@ -97,11 +97,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 5. **Yönetici kimlik bilgileri** bölümünde, bir sonraki adımda açıklandığı gibi Zscaler hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin.
 
-6. **Kiracı URL 'sini** ve **gizli anahtarı**almak için, Zscaler portalında **Yönetim** > **kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
+6. **Kiracı URL 'sini** ve **gizli anahtarı**almak Için, Zscaler portalında **Yönetim** > **kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
 
     ![Zscaler üç kimlik doğrulama ayarı](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
-    SAML **Yapılandır penceresini açmak** Için **SAML Yapılandır** ' ı seçin:
+    **SAML Yapılandır penceresini açmak** Için **SAML Yapılandır** ' ı seçin:
 
     ![SAML penceresini Yapılandır](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
 
@@ -109,7 +109,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 7. **Kiracı URL 'si** ve **gizli dizi belirteci** kutularına değerleri GIRDIKTEN sonra, Azure AD 'Nin Zscaler 'a bağlanabildiğinizden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Zscaler hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Bağlantıyı test et](./media/zscaler-three-provisioning-tutorial/test-connection.png)
+    ![Bağlantıyı sınama](./media/zscaler-three-provisioning-tutorial/test-connection.png)
 
 8. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin. **Bir hata oluştuğunda e-posta bildirimi gönder**' i seçin:
 
@@ -123,7 +123,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 11. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler ' a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Öznitelik Eşlemeleri](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
+    ![Öznitelik eşlemeleri](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
 12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını ZscalerThree olarak eşitler**' ı seçin:
 
@@ -131,7 +131,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 13. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler ' a eşitlenen grup özniteliklerini inceleyin. **Eşleşen** özellikler olarak seçilen öznitelikler, Zscaler 'daki grupları güncelleştirme işlemleri için eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Öznitelik Eşlemeleri](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
+    ![Öznitelik eşlemeleri](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisindeki](./../active-directory-saas-scoping-filters.md)yönergelere bakın.
 
@@ -153,7 +153,7 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

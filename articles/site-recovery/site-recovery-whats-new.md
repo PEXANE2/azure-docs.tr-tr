@@ -3,20 +3,18 @@ title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934934"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064538"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
 [Azure Site Recovery](site-recovery-overview.md) hizmeti sürekli olarak güncelleştirilir ve geliştirilmiştir. Güncel kalabilmeniz için, bu makalede en son yayınlar, yeni özellikler ve yeni içerikler hakkında bilgi verilmektedir. Bu sayfa düzenli olarak güncelleştirilir.
 
 [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) kanalında Site Recovery güncelleştirme bildirimlerini izleyip abone olabilirsiniz.
-
-
 
 ## <a name="supported-updates"></a>Desteklenen Güncelleştirmeler
 
@@ -30,18 +28,18 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 [Toplu 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Toplu 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
 
 ## <a name="updates-january-2020"></a>Güncelleştirmeler (Ocak 2020)
 
 ### <a name="update-rollup-44"></a>Güncelleştirme paketi 44
+
 [Güncelleştirme paketi 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
 **Güncelleştirme** | **Ayrıntılar**
 --- | ---
-**Sorun düzeltmeleri/geliştirmeler** | Site Recovery aracılardan ve sağlayıcılardan bir dizi güncelleştirme (toplamada ayrıntılı olarak).
+**Sağlayıcılar ve aracılar** | Site Recovery sağlayıcıları ve aracıları için güncelleştirme yoktu.
+**Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware olağanüstü durum kurtarma
 
@@ -199,7 +197,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 ## <a name="updates-july-2019"></a>Güncelleştirmeler (Temmuz 2019)
 
-### <a name="update-rollup-38"></a>Toplu güncelleştirme 38
+### <a name="update-rollup-38"></a>Güncelleştirme paketi 38
 
 [Güncelleştirme paketi 38](https://support.microsoft.com/help/4513507/) aşağıdaki güncelleştirmeleri sağlar.
 
@@ -242,7 +240,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 ## <a name="updates-may-2019"></a>Güncelleştirmeler (Mayıs 2019)
 
-### <a name="update-rollup-36"></a>Toplu güncelleştirme 36
+### <a name="update-rollup-36"></a>Güncelleştirme paketi 36
 
 [Güncelleştirme paketi 36](https://support.microsoft.com/help/4503156) aşağıdaki güncelleştirmeleri sağlar.
 

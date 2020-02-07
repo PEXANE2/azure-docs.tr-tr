@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717781"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064844"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -46,7 +46,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak çevrimdışı ve çevrimiçi g
 > Çevrimiçi bir geçiş gerçekleştirmek için Azure veritabanı geçiş hizmeti 'nin kullanılması, Premium fiyatlandırma katmanını temel alan bir örnek oluşturulmasını gerektirir. Daha fazla bilgi için bkz. Azure veritabanı geçiş hizmeti [fiyatlandırma](https://azure.microsoft.com/pricing/details/database-migration/) sayfası.
 
 **S. Azure veritabanı geçiş hizmeti, veritabanı Geçiş Yardımcısı (DMA) veya SQL Server Geçiş Yardımcısı (SSMA) gibi diğer Microsoft veritabanı geçiş araçlarıyla nasıl karşılaştırılır?**
-Azure veritabanı geçiş hizmeti, veritabanı geçişinin ölçeğe Microsoft Azure için tercih edilen yöntemdir. Azure veritabanı geçiş hizmeti 'nin diğer Microsoft veritabanı geçiş araçlarıyla nasıl Karşılaştırıldığı hakkında daha fazla bilgi için ve hizmeti çeşitli senaryolar için kullanmayla ilgili öneriler için, [Microsoft 'un veritabanı geçiş araçları ve Hizmetleri 'Ni farklılaştırmayı](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)açıklayan blog gönderisine bakın.
+Azure veritabanı geçiş hizmeti, veritabanı geçişinin ölçeğe Microsoft Azure için tercih edilen yöntemdir. Azure veritabanı geçiş hizmeti 'nin diğer Microsoft veritabanı geçiş araçlarıyla nasıl Karşılaştırıldığı hakkında daha fazla bilgi için ve hizmeti çeşitli senaryolar için kullanmayla ilgili öneriler için, [Microsoft 'un veritabanı geçiş araçları ve Hizmetleri 'Ni farklılaştırmayı](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)açıklayan blog gönderisine bakın.
 
 **S. Azure veritabanı geçiş hizmeti Azure geçiş teklifiyle nasıl karşılaştırılmaktadır?**
 Azure geçişi, şirket içi sanal makinelerin Azure IaaS 'ye geçişine yardımcı olur. Service değerlendirir geçiş uygunluğu ve performans tabanlı boyutlandırma, şirket içi sanal makinelerinizi Azure 'da çalıştırmaya yönelik maliyet tahminleri sağlar. Azure geçişi, şirket içi VM tabanlı iş yüklerinin Azure IaaS VM 'lerine geçiş ve kaydırma geçişleri için yararlıdır. Ancak, Azure veritabanı geçiş hizmeti 'nin aksine Azure geçişi, Azure SQL veritabanı veya Azure SQL veritabanı yönetilen örneği gibi Azure PaaS ilişkisel veritabanı platformları için özel bir veritabanı geçiş hizmeti teklifi değildir.

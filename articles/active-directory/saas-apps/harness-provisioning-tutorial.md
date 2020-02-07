@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767849"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057847"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bandı yapılandırma
 
 Bu makalede, kullanıcıları veya grupları otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory (Azure AD) yapılandırma hakkında bilgi edineceksiniz.
 
 > [!NOTE]
-> Bu makalede, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet ve sık sorulan soruların yanıtları hakkında önemli bilgiler için, bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+> Bu makalede, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet ve sık sorulan soruların yanıtları hakkında önemli bilgiler için, bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı, şu anda Önizleme aşamasındadır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -72,7 +72,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
    a. **Ad** kutusunda, anahtar için bir ad girin.  
    b. Açılan **öğeden devralınan izinler** listesinden bir seçenek belirleyin. 
    
-1. Seçin **gönderme**.
+1. **Gönder**' i seçin.
 
 1. **Anahtarı** Bu öğreticide daha sonra kullanmak üzere kopyalayın.
 
@@ -156,7 +156,7 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
     !["Öznitelik eşlemeleri" bölmesi](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. Kapsam filtrelerini yapılandırmak için, bkz. [kapsam filtreleri Ile öznitelik tabanlı uygulama sağlama](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Kapsam filtrelerini yapılandırmak için, bkz. [kapsam filtreleri Ile öznitelik tabanlı uygulama sağlama](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. **Ayarlar**' ın altında, ara IÇIN Azure AD sağlama hizmetini etkinleştirmek Için, **sağlama durumu** ' nu **Açık**' a değiştirin.
 
@@ -172,13 +172,13 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
 Bu işlem, hazırlama yaptığınız kullanıcıların veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra gerçekleştirmesi daha uzun sürer. Eşitlemeler, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık olarak her 40 dakikada bir gerçekleşir. İlerlemeyi izlemek için **eşitleme ayrıntıları** bölümüne gidin. Ayrıca, Azure AD sağlama hizmeti tarafından her türlü gerçekleştirilen tüm eylemleri içeren bir sağlama etkinliği raporunun bağlantılarını da izleyebilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında rapor](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında rapor](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

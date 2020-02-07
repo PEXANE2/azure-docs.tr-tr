@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi 'nde VMware değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846185"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048760"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -25,7 +25,7 @@ Bu makaleyle Azure 'a geçiş için şirket içi makineleri değerlendirmek üze
 --- | ---
 **Değerlendirme limitleri**| Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 VMware VM bulun ve değerlendirin.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Bir proje, VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucuları, değerlendirme sınırlarına kadar içerebilir.
-**Bulma** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
+**Keşfini** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -37,7 +37,7 @@ Azure geçişi: Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra mak
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Bulma** | Bulgu aracısız, makine konuk kimlik bilgileri kullanılarak ve WMI ve SSH çağrıları kullanılarak makinelere uzaktan erişim.
+**Keşfini** | Bulgu aracısız, makine konuk kimlik bilgileri kullanılarak ve WMI ve SSH çağrıları kullanılarak makinelere uzaktan erişim.
 **Desteklenen makineler** | Şirket içi VMware VM 'Leri.
 **Makine işletim sistemi** | Tüm Windows ve Linux sürümleri.
 **vCenter kimlik bilgileri** | Salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server bir hesabı.
@@ -65,7 +65,7 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
-**cihaz** | **bağlantı**
+**Aygıtların** | **Bağlanma**
 --- | ---
 Elektrikli | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası ile gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS), 5671 ve 5672 (AMQP) numaralı bağlantı noktası üzerinden giden bağlantılar.
 vCenter server | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
@@ -96,7 +96,7 @@ Bu seçenek şu anda önizleme aşamasındadır. [Daha fazla bilgi edinin](how-t
 **VM desteği** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
 **Windows VM’leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)
 **Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Windows hesabı** |  Görselleştirmenin konuk erişimi olan bir kullanıcı hesabı olması gerekir.
+**Windows hesabı** |  Görselleştirmenin yerel veya etki alanı yöneticisi hesabı olması gerekir.
 **Linux hesabı** | Görselleştirmenin kök ayrıcalığına sahip bir kullanıcı hesabı olması gerekir.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
 **VM aracıları** | VM 'lerde gerekli bir aracı yok.
 **VMware araçları** | VMware araçlarının, çözümlemek istediğiniz VM 'lerde yüklü ve çalışıyor olması gerekir.

@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 02/06/2020
+ms.author: tanmaygore
+ms.openlocfilehash: 3632e12f5e58f8cadefb1e666cf4014026e24358
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901905"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057031"
 ---
 Bu makale, IaaS kaynakları Azure klasik dağıtım modelinden Azure Resource Manager yığınına geçirilirken en sık karşılaşılan hataları ve risk azaltma yollarını içerir.
 
@@ -25,7 +25,7 @@ Bu makale, IaaS kaynakları Azure klasik dağıtım modelinden Azure Resource Ma
 | Sanal ağ {sanal-ağ-adı} yok. |Bu hata, sanal ağı yeni Azure portalında oluşturduysanız oluşabilir. Gerçek sanal ağ adı "Grup * \<VNET adı >" düzeniyle izler |
 | HostedService {barındırılan-hizmet-adı} içindeki VM {vm-adı}, Azure Resource Manager'da desteklenmeyen bir Uzantı {uzantı-adı} içeriyor. Geçirme işlemine devam etmeden önce sanal makineden bunu kaldırmanız için önerilir. |BgInfo 1 gibi XML uzantıları.\* Azure Resource Manager desteklenmez. Bu nedenle bu uzantılar geçirilemez. Bu uzantılar sanal makinede yüklü bırakılırsa bunlar geçiş tamamlanmadan önce otomatik olarak kaldırılır. |
 | HostedService {barındırılan-service-adı} içindeki VM {vm-adı}, VMSnapshot/VMSnapshotLinux Uzantısı içeriyor. Bu uzantının şu an için geçişi desteklenmemektedir. Uzantıyı sanal makineden kaldırın ve geçiş tamamlandıktan sonra Azure Resource Manager kullanarak tekrar ekleyin |Bu, sanal makinenin Azure Backup için yapılandırıldığı senaryodur. Bu şu anda desteklenmeyen bir senaryo olduğundan lütfen geçici çözüm olan https://aka.ms/vmbackupmigration |
-| HostedService {barındırılan-hizmet-adı} içindeki VM {vm-adı}, Durumu VM’den bildirilmeyen bir Uzantı {uzantı-adı} içeriyor. Bu nedenle bu VM geçirilemez. Uzantı durumunun bildirildiğinden emin olun veya uzantıyı VM'den kaldırın ve geçişi yeniden deneyin. <br><br> HostedService {barındırılan-hizmet-adı} içindeki VM {vm-adı}, İşleyici Durumu: {işleyici-durumu} bildiren bir Uzantı {uzantı-adı} içeriyor. Bu nedenle VM geçirilemiyor. Uzantı işleyici durumunun {handler-status} olduğundan emin olun veya uzantıyı VM’den kaldırıp geçişi tekrar deneyin. <br><br> HostedService {barındırılan-hizmet-adı} içindeki VM için VM Aracısı {vm-adı} genel aracı durumunun hazır olmadığı bildiriyor. Bu nedenle, geçirilebilir bir uzantısı varsa VM geçirilemeyebilir. VM Aracısının genel aracı durumunu hazır olarak bildirdiğinden emin olun. https://aka.ms/classiciaasmigrationfaqs başvurun. |Azure konuk aracısı ve VM Uzantılarının, durumlarını bildirmek için VM depolama hesabına giden İnternet erişimine sahip olması gerekir. Durum hatasının yaygın nedenleri <li> Giden İnternet erişimini engelleyen bir Ağ Güvenlik Grubu <li> VNET 'in şirket içi DNS sunucuları varsa ve DNS bağlantısı kaybolursa <br><br> Desteklenmeyen durum görmeye devam ederseniz, bu denetimi atlamak ve geçişe devam etmek için uzantıları kaldırabilirsiniz. |
+| HostedService {barındırılan-hizmet-adı} içindeki VM {vm-adı}, Durumu VM’den bildirilmeyen bir Uzantı {uzantı-adı} içeriyor. Bu nedenle bu VM geçirilemez. Uzantı durumunun bildirildiğinden emin olun veya uzantıyı VM'den kaldırın ve geçişi yeniden deneyin. <br><br> HostedService {barındırılan-hizmet-adı} içindeki VM {vm-adı}, İşleyici Durumu: {işleyici-durumu} bildiren bir Uzantı {uzantı-adı} içeriyor. Bu nedenle VM geçirilemiyor. Uzantı işleyici durumunun {handler-status} olduğundan emin olun veya uzantıyı VM’den kaldırıp geçişi tekrar deneyin. <br><br> HostedService {barındırılan-hizmet-adı} içindeki VM için VM Aracısı {vm-adı} genel aracı durumunun hazır olmadığı bildiriyor. Bu nedenle, geçirilebilir bir uzantısı varsa VM geçirilemeyebilir. VM Aracısının genel aracı durumunu hazır olarak bildirdiğinden emin olun. https://aka.ms/classiciaasmigrationfaqsbaşvurun. |Azure konuk aracısı ve VM Uzantılarının, durumlarını bildirmek için VM depolama hesabına giden İnternet erişimine sahip olması gerekir. Durum hatasının yaygın nedenleri <li> Giden İnternet erişimini engelleyen bir Ağ Güvenlik Grubu <li> VNET 'in şirket içi DNS sunucuları varsa ve DNS bağlantısı kaybolursa <br><br> Desteklenmeyen durum görmeye devam ederseniz, bu denetimi atlamak ve geçişe devam etmek için uzantıları kaldırabilirsiniz. |
 | HostedService {barındırılan hizmet adı} içindeki {dağıtım adı} Dağıtımı birden fazla Kullanılabilirlik Kümesine sahip olduğundan, dağıtımın geçirilmesi desteklenmiyor. |Şu anda yalnızca bir veya daha az kullanılabilirlik kümesine sahip barındırılan hizmetler geçirilebilir. Bu sorunu geçici olarak çözmek için lütfen bu kullanılabilirlik kümelerindeki ek kullanılabilirlik kümelerini ve sanal makineleri farklı bir barındırılan hizmete taşıyın. |
 | HostedService, içerdiği Kullanılabilirlik Kümesine ait olmayan VM'lere sahip olduğundan, HostedService {barındırılan-hizmet-adı} içindeki Dağıtım {dağıtım-adı} için geçiş desteklenmiyor. |Bu senaryo için geçici çözüm, tüm sanal makineleri tek bir kullanılabilirlik kümesine taşımak veya barındırılan hizmetteki kullanılabilirlik kümesinden tüm sanal makineleri kaldırmaktır. |
 | Depolama hesabı/HostedService/Sanal Ağ {sanal ağ-adı} geçiş sürecinde ve bu nedenle değiştirilemiyor |Bu hata, kaynakta "Hazırlama" geçiş işlemi tamamlandığında ve kaynakta değişiklik yapacak bir işlem tetiklendiğinde olur. "Hazırlama" işleminden sonra yönetim düzeyindeki kilit nedeniyle, kaynak değişiklikleri engellenir. Yönetim düzeyi kilidini açmak için, "İşleme" geçiş işlemini çalıştırarak geçişi tamamlayabilir veya "Hazırlama" işlemi geri almak için "İptal" geçiş işlemini çalıştırabilirsiniz. |

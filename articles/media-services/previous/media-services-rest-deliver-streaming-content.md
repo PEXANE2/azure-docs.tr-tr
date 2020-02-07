@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774936"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050000"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>REST kullanarak Azure Media Services içeriği yayımlama 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Bir Ondemandstreaming Locator ve akış URL 'SI oluşturarak bir uyarlamalı bit
 
 Ayrıca, aşamalı olarak indirilebilen MP4 dosyalarını işaret eden URL 'Ler oluşturmak için bir OnDemand akış Bulucu de kullanabilirsiniz.  
 
-Bu makalede, varlığınızı yayımlamak ve sorunsuz, MPEG DASH ve HLS akış URL 'Leri derlemek için bir Ondemandstreaming Locator oluşturma gösterilmektedir. Ayrıca, aşamalı indirme URL 'Lerinin oluşturulması için sık kullanılan öğesini gösterir.
+Bu makalede, varlığınızı yayımlamak ve sorunsuz, MPEG DASH ve HLS akış URL 'Leri derlemek için bir Ondemandstreaming Locator oluşturma gösterilmektedir. Ayrıca, aşamalı indirme URL 'Lerinin nasıl oluşturulacağını gösterir.
 
 [Aşağıdaki](#types) bölümde, değerleri Rest çağrılarında kullanılan enum türleri gösterilmektedir.   
 
@@ -41,12 +41,12 @@ Bu makalede, varlığınızı yayımlamak ve sorunsuz, MPEG DASH ve HLS akış U
 > Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
+## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
 AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->https://media.windows.net başarıyla bağlandıktan sonra, başka bir Media Services URI belirten 301 yeniden yönlendirme alırsınız. Yeni URI 'ye sonraki çağrıları yapmanız gerekir.
+>https://media.windows.netbaşarıyla bağlandıktan sonra, başka bir Media Services URI belirten 301 yeniden yönlendirme alırsınız. Yeni URI 'ye sonraki çağrıları yapmanız gerekir.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Bir Ondemandstreaming Locator oluşturma
 OnDemand akış bulucusu oluşturmak ve URL 'Leri almak için aşağıdakileri yapmanız gerekir:
@@ -187,10 +187,10 @@ URL: **yol** + varlık dosyası MP4 adı
         OnDemandOrigin = 2,
     }
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.

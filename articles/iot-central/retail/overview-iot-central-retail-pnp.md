@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022146"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059870"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
@@ -160,7 +160,7 @@ Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pa
 > [!div class="mx-imgBorder"]
 > ![mikro Karşılama Merkezi](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-Daha fazla bilgi edinmek için bkz. [dağıtım ve Micro-Karşılama Merkezi uygulama şablonu](./tutorial-iot-central-smart-inventory-management-pnp.md) öğreticisini inceleyin.
+Daha fazla bilgi edinmek için bkz. [dağıtım ve Micro-Karşılama Merkezi uygulama şablonu](./tutorial-micro-fulfillment-center-pnp.md) öğreticisini inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -170,5 +170,5 @@ Bir perakende çözümü oluşturmaya başlamak için:
 * [Bağlı bir lojistik uygulama şablonunu dağıtın ve gözden geçir](./tutorial-iot-central-connected-logistics-pnp.md).
 * [Bir dijital dağıtım merkezi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-iot-central-digital-distribution-center-pnp.md).
 * [Bir akıllı envanter yönetimi uygulama şablonunu dağıtın ve gözden geçir](./tutorial-iot-central-smart-inventory-management-pnp.md).
-* [Mikro Karşılama Merkezi uygulama şablonunu dağıtın ve adım adım](./tutorial-iot-central-smart-inventory-management-pnp.md)inceleyin.
+* [Mikro Karşılama Merkezi uygulama şablonunu dağıtın ve adım adım](./tutorial-micro-fulfillment-center-pnp.md)inceleyin.
 * [IoT Central genel bakışta](../preview/overview-iot-central.md)IoT Central hakkında daha fazla bilgi edinin.

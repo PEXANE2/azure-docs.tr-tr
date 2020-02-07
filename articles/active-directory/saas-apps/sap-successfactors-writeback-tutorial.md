@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530043"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060057"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Öğretici: Azure AD 'den SAP 'ye yönelik öznitelik geri yazma özelliğini yapılandırma başarılı etmenleri (Önizleme)
 Bu öğreticinin amacı, Azure AD 'deki öznitelikleri başarılı bir şekilde çalışan merkezi 'ne geri yazma için gerçekleştirmeniz gereken adımları gösteriyoruz. Şu anda geri yazma için desteklenen tek öznitelik e-posta özniteliğidir. 
@@ -63,7 +63,7 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 * Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
   > [!div class="mx-imgBorder"]
   > Okuma yazma izinlerini ![](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* **Bitti**' ye tıklayın. Tıklayın **değişiklikleri kaydetmek**.
+* **Bitti**' ye tıklayın. **Değişiklikleri Kaydet**' e tıklayın.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API kullanıcısı için bir Izin grubu oluşturma
 
@@ -92,7 +92,7 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 * İzin grubuna verme Izni rolünü gözden geçirin. 
   > [!div class="mx-imgBorder"]
   > ![Izin rolü ve Grup Ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Tıklayın **değişiklikleri kaydetmek**.
+* **Değişiklikleri Kaydet**' e tıklayın.
 
 ## <a name="configuring-successfactors-writeback"></a>Başarılı faktörlerin geri yazma yapılandırması
 
@@ -134,7 +134,7 @@ Bu bölüm için adımları sağlar
 
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, başarılı olan kimlik bilgilerinin ve URL 'nin geçerli olduğunu iki kez kontrol edin.
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
+    >![Azure portalında](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **eşlemeler** bölümü **Azure Active Directory kullanıcılara yönelik** varsayılan eşleme eşitlemesini gösterir
 
@@ -152,7 +152,7 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
 1. **Öznitelik eşlemeleri** bölümünde, yalnızca bir başarılı bir Kullanıcı PROFILINI Azure AD kullanıcısına bağlamak için kullanılan eşleşen kimliği değiştirebilir ve Azure AD 'deki bir özniteliği e-posta kaynağı olarak görev görür. 
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
+    >![Azure portalında](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
 
    >[!NOTE]
    >Başarılı bir şekilde geri yazma yalnızca email özniteliğini destekler. Yeni öznitelikler eklemek için lütfen **Yeni eşleme Ekle** 'yi kullanmayın. 
@@ -170,7 +170,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
-2. **Save (Kaydet)** düğmesine tıklayın.
+2. **Kaydet** düğmesine tıklayın.
 
 3. Bu işlem ilk eşitlemeyi başlatacak ve bu da, başarılı bir sayıda kullanıcının başarılı olan kiracı kiracısında olmasına bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 
@@ -183,8 +183,8 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Başarılı ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](successfactors-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
-* [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../manage-apps/export-import-provisioning-configuration.md)
+* [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../app-provisioning/export-import-provisioning-configuration.md)
 

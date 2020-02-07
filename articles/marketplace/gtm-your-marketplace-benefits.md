@@ -6,14 +6,14 @@ author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/08/2020
 ms.author: evansma
-ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1ecb48751715d32e1e67f09e0e3d4bf9577c8eab
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121820"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064963"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -45,7 +45,7 @@ Kullanmaya başlamak için adımlarınız kolaydır:
 2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyin ya da diğer adı girmek en iyi uygulamadır: info@company.com gibi diğer adlara gönderilen iletiler genellikle kaybediliyor.
 
 >[!Note]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupport bir destek bileti yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupportbir destek bileti yükseltebilirsiniz.
 
 Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
@@ -88,7 +88,7 @@ Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle
 
 Bu sayfada açıklanan tüm etkinlikler [Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) kapsamında ele alınmıştır ve ticari avantajlar program ekine göre işlenir.
 
-### <a name="cancellation-policy"></a>İptal etme ilkesi
+### <a name="cancellation-policy"></a>İptal İlkesi
 
 [Liste ve deneme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) yayımcıları, teklif yayını başına etkinlikleri kabul edebilir veya devre dışı bırakabilirsiniz. İş ortakları dilediğiniz zaman herhangi bir görevlendirmeyi devre dışı bırakabilir. 
 
@@ -99,7 +99,7 @@ Microsoft, Market 'in pazarlarını iptal etme ve bu avantajlardan sonlandırma 
 * Telif hakkı veya ticari marka yasaları ihlal eden pazarlama veya diğer içerikleri göstermek için teklifini kullanın.
 * kendi iç işlemleri veya bitpara madenciliği için Azure Sponsorluk funlarını kullanarak, ancak bunlarla sınırlı olmamak üzere [Azure sponsorluk programının](https://azure.microsoft.com/offers/ms-azr-0036p/)ilkelerini ihlal edin. 
 
-### <a name="offer-availability"></a>Teklifin Kullanılabilirliği
+### <a name="offer-availability"></a>Teklif kullanılabilirliği
 
 Bu teklif, Azure Marketi 'nde veya Microsoft AppSource canlı bir teklifiyle tüm iş ortakları için Ingilizce olarak yürütülür.
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: baf01c0a0d5c6154305f7137c24deb0365b5e812
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989357"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062107"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
 
@@ -55,7 +55,7 @@ Sunucu değerlendirmesi bir geçiş planlama aracıdır. Site Recovery Dağıtı
 
 [VMware VM](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) ve [Hyper-V VM 'Leri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)için Azure geçişi 'nin desteklenen coğrafi graflarını gözden geçirin.
 
-## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlarım?
+## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 
 İhtiyacınız olan aracı tanımlayabilir ve bunu bir Azure geçişi projesine ekleyebilirsiniz. Bir ISV aracı veya Movere ekliyorsanız:
 - Bir lisans edinerek veya ücretsiz deneme için kaydolduktan sonra araç ilkesine uygun olarak çalışmaya başlayın. Araçlar için lisanslama, ISV veya araç lisanslama modeline göre belirlenir.
@@ -67,9 +67,7 @@ Azure geçişi projesi içindeki geçiş yolculuğunun Azure ve diğer araçlar�
 Projeyi silmeyi [öğrenin](how-to-delete-project.md) . 
 
 
-## <a name="do-machines-retain-domain-identity-after-migration"></a>Makineler geçişten sonra etki alanı kimliğini tutar mı?
 
-Etki alanı hizmetlerinin Azure ile [tümleştirildiği](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/)varsayıldığında, etki alanı üyeliği ve etki alanındaki makine kimliği, geçişten sonra tutulur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure geçişi 'ne genel bakış](migrate-services-overview.md)konusunu okuyun.

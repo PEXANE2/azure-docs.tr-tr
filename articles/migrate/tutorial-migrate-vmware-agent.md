@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini ç
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
-ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028961"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057286"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -18,7 +18,7 @@ Bu makalede, Azure geçişi sunucusu geçiş aracı ile aracı tabanlı geçiş 
 [Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı ve iş yüklerinizi ve AWS/GCP sanal makine örneklerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Kaynak ortamı ayarlayın ve aracı tabanlı geçiş için bir Azure geçişi çoğaltma gereci dağıtın.
 > * Geçiş için hedef ortamı ayarlayın.
@@ -57,7 +57,7 @@ Aracısız veya aracı tabanlı geçiş kullanmak isteyip istemediğinize karar 
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -402,12 +402,12 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 
 2. **Makineleri çoğaltma** bölümünde VM > **Geçir** üzerine sağ tıklayın.
 3. **Geçir** > **Sanal makineleri kapat ve veri kaybı olmadan planlı geçiş yap** bölümünde **Evet** > **Tamam** seçeneğini belirleyin.
-    - Azure Geçişi, varsayılan olarak şirket içi VM’yi kapatır ve son çoğaltmadan bu yana gerçekleşen tüm VM değişikliklerini eşitlemek için bir isteğe bağlı çoğaltma çalıştırır. Bu, veri kaybı olmamasını sağlar.
+    - Varsayılan olarak Azure geçişi, en düşük veri kaybını sağlamak için şirket içi VM 'yi kapatır. 
     - VM’yi kapatmak istemiyorsanız, **Hayır** seçeneğini belirleyin
 4. VM için bir geçiş işlemi başlar. Azure bildirimlerinde işlemi izleyin.
 5. İşlem bittikten sonra **Sanal Makineler** sayfasında VM’yi görüntüleyebilir ve yönetebilirsiniz.
 
-## <a name="complete-the-migration"></a>Geçişi tamamlama
+## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
 1. Geçiş yapıldıktan sonra, **geçişi durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
 2. Geçirilen makinelere Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) Aracısı 'nı yükler.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549266"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063824"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir NFS (ağ dosya sistemi) Linux sunucu birimini el ile oluşturma ve kullanma
 Kapsayıcılar arasında veri paylaşımı, genellikle kapsayıcı tabanlı hizmet ve uygulamaların gerekli bir bileşenidir. Genellikle, bir dış kalıcı birimle aynı bilgilere erişmesi gereken çeşitli yığınlara sahip olursunuz.    
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-Sunucu yeniden başlatılır (komut dosyası nedeniyle) ve NFS sunucusunu AKS 'e bağlayabilirsiniz
+Sunucu yeniden başlatılır (komut dosyası nedeniyle) ve NFS sunucusunu AKS 'e bağlayabilirsiniz.
 
 >[!IMPORTANT]  
 >**AKS_SUBNET** kümenizdeki doğru bir ile değiştirdiğinizden emin olun, aksi takdirde "*", NFS sunucunuzu tüm bağlantı noktalarında ve bağlantılarda açacak.
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS kümesini NFS sunucusuna bağlama
-Birime nasıl erişebileceğinizi belirten kalıcı bir birim ve kalıcı birim talebi sağlayarak, NFS sunucusunu kümenize bağlayabiliriz.  
+Birime nasıl erişebileceğinizi belirten kalıcı bir birim ve kalıcı birim talebi sağlayarak, NFS sunucusunu kümenize bağlayabiliriz.
+
 Aynı veya eşlenmiş sanal ağlardaki iki hizmeti bağlamak gereklidir. Aynı VNET 'te küme ayarlamaya yönelik yönergeler şunlardır: [mevcut VNET 'TE AKS kümesi oluşturma][aks-virtual-network]
 
 Aynı sanal ağda (veya eşlenmiş) olduktan sonra, AKS kümenizde kalıcı bir birim ve kalıcı bir birim talebi sağlamanız gerekir. Kapsayıcılar daha sonra NFS sürücüsünü yerel dizinleriyle bağlayabilir.
