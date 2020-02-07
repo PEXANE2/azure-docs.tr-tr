@@ -4,6 +4,8 @@
   items:
     - name: Giriş
       href: iot-introduction.md
+    - name: Doğru IoT çözümünü seçme
+      href: iot-solution-options.md
     - name: Azure IoT hizmetleri ve teknolojileri
       href: iot-services-and-technologies.md
     - name: Destek ve yardım seçenekleri

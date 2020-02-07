@@ -437,7 +437,7 @@
       href: vmware-azure-disaster-recovery-powershell.md
     - name: PowerShell kullanarak Hyper-V VM'lerinin Azure'a olağanüstü durumdan kurtarmasını ayarlama
       href: hyper-v-azure-powershell-resource-manager.md
-    - name: PowerShell kullanarak Hyper-V VM'lerinin (VMM ile) Azure'a olağanüstü durumdan kurtarmasını ayarlama
+    - name: PowerShell kullanarak Hyper-V VM’lerinin (VMM ile) olağanüstü durum kurtarmasını ayarlama
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Kurtarma planlarına otomasyon runbook’larını ekleme
       href: site-recovery-runbook-automation.md

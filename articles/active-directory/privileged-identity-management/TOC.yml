@@ -67,7 +67,7 @@
               href: azure-ad-custom-roles-configure.md
         - name: Denetim geçmişini görüntüleme
           href: pim-how-to-use-audit-log.md
-    - name: Azure kaynağı rollerini yönetme
+    - name: Azure rollerini yönetme
       items:
         - name: Rol atama
           href: pim-resource-roles-assign-roles.md
@@ -97,7 +97,7 @@
               href: pim-how-to-perform-security-review.md
             - name: Erişim gözden geçirmesi tamamlama
               href: pim-how-to-complete-review.md
-        - name: Azure kaynağı rolleri
+        - name: Azure rolleri
           items:
             - name: Erişim gözden geçirmesi oluşturma
               href: pim-resource-roles-start-access-review.md

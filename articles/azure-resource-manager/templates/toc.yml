@@ -161,6 +161,8 @@
         - name: Dağıtma - REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: GitHub’dan dağıtım
+          href: deploy-to-azure-button.md
         - name: Durum çözümlemesi dağıtımı
           href: template-deploy-what-if.md
         - name: Hata durumunda yeniden dağıtma
