@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2019
+ms.date: 02/07/2020
 ms.author: barclayn
-ms.openlocfilehash: d814058866991b3d94363125870c27ae170b3ae8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064368"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087104"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -324,7 +324,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Blob Storage                     | Yes                | Evet, RSA 2048 bit  | Yes                |
 | Disk Depolama                     | Yes                | Yes                | -                  |
 | Yönetilen Disk Depolama             | Yes                | Yes                | -                  |
-| Dosya Depolama                     | Yes                | Evet, RSA 2048 bit  | -                  |
+| File Storage                     | Yes                | Evet, RSA 2048 bit  | -                  |
 | Kuyruk Depolama                    | Yes                | Yes                | Yes                |
 | Avere vFXT                       | Yes                | -                  | -                  |
 | Azure NetApp Files               | Yes                | -                  | -                  |

@@ -6,48 +6,99 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/18/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284174"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086911"
 ---
 ## <a name="general-entity-types"></a>Genel varlık türleri:
 
 ### <a name="person"></a>Kişi
-Metindeki bilinen adlar ve diğer kişiler.
+
+Metindeki kişi adlarını tanır.
+
 Diller:
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama             |
-|--------------|-------------------------|
-| Yok          | Tanınan adlar, örneğin `Bill Gates``Marie Curie` |
+| Alt tür adı | Açıklama                                                      | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------------------------|---------------------------------------|
+| Yok          | Tanınan kişi adları, örneğin `Bill Gates``Marie Curie` | `2019-10-01`                          | 
+
+### <a name="persontype"></a>Kişilik türü
+Bir kişi tarafından tutulan iş türü veya rol.
+
+Diller:
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                                                                | Model sürümünden itibaren kullanılabilir |
+|--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
+| Yok          | İş türleri örneğin `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Konum
 
-Doğal ve insan tarafından oluşturulan yer işaretleri, yapılar ve coğrafi özellikler.
+Doğal ve insan tarafından oluşturulan yer işaretleri, yapılar, coğrafi özellikler ve geopolitik varlıklar.
 
 Diller:
 
-
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| Yok          | konumlar, örneğin `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty` |
+| Alt tür adı              | Açıklama                                                                              | Model sürümünden itibaren kullanılabilir |
+|---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
+| Yok                       | konumlar, örneğin `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitik varlık (GPE) | Şehirlerin, ülkelerin, örneğin `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Kuruluş  
 
-Tanınan kuruluşlar, şirketler, kurumlar ve diğer kişi grupları. Örneğin: şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları. Bu varlık türünde ülke almallikleri ve dini dahil değildir. Diller: 
+Tanınan kuruluşlar, şirketler, kurumlar ve diğer kişi grupları. Örneğin: şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları. Bu varlık türünde ülke almallikleri ve dini dahil değildir. 
+
+Diller: 
 
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| Yok          | kuruluşlar, örneğin `Microsoft``NASA` `National Oceanic and Atmospheric Administration` |
+| Alt tür adı | Açıklama                                                                                             | Model sürümünden itibaren kullanılabilir |
+|--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
+| Yok          | kuruluşlar, örneğin `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
+
+### <a name="event"></a>Olay  
+
+Geçmiş, sosyal ve doğal ortaya çıkma olayları.  
+
+Diller: 
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                                            | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------------------------------|----------------------------------------|
+| Yok          | `wedding`, `hurricane`, `car accident`, `solar eclipse`gibi olaylar `American Revolution` | `2020-02-01`                           |
+
+### <a name="product"></a>Ürün  
+
+Çeşitli kategorilerin fiziksel nesneleri.  
+
+Diller: 
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                                                        | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------------------------------------------|----------------------------------------|
+| Yok          | Örneğin, `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox` | `2020-02-01`                           |
+| Bilgi işlem    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
+
+### <a name="skill"></a>İmde  
+
+Bir özelliği veya uzmanlığı açıklayan bir varlık.  
+
+Diller: 
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                                                 | Model sürümünden itibaren kullanılabilir |
+|--------------|-----------------------------------------------------------------------------|----------------------------------------|
+| Yok          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Telefon numarası
 
@@ -55,53 +106,84 @@ Telefon numaraları (yalnızca ABD telefon numaraları).
 
 Diller:
 
-
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama                                  |
-|----------|----------------------------------------------|
-| Yok         | ABD telefon numaraları, örneğin `(312) 555-0176`. |
+| Alt tür adı | Açıklama                                    | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------|----------------------------------------|
+| Yok          | ABD telefon numaraları, örneğin `(312) 555-0176` | `2019-10-01`                           |
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-posta
 
 E-posta adresi. 
 
 Diller:
 
-
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama                                  |
-|----------|----------------------------------------------|
-| Yok         | E-posta adresi, örneğin `support@contoso.com` |
+| Alt tür adı | Açıklama                                      | Model sürümünden itibaren kullanılabilir |
+|--------------|--------------------------------------------------|----------------------------------------|
+| Yok          | E-posta adresi, örneğin `support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>URL
+### <a name="url"></a>URL'si
 
 Internet URL 'Leri.
 
 Diller:
 
-
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama                                           |
-|----------|-------------------------------------------------------|
-| Yok         | Web sitelerinin URL 'Leri, örneğin `https://www.bing.com`. |
+| Alt tür adı | Açıklama                                          | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------------|----------------------------------------|
+| Yok          | Web sitelerine yönelik URL 'Ler, örneğin `https://www.bing.com` | `2019-10-01`                           |
 
-###  <a name="number"></a>Sayı
+### <a name="ip-address"></a>IP Adresi
 
-Sayılar ve sayısal miktarlar. 
+Internet Protokolü adresi
 
 Diller:
 
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                              | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------|----------------------------------------|
+| Yok          | Örneğin, ağ adresi `10.0.0.101` | `2019-10-01`                           |
+
+###  <a name="datetime"></a>DateTime
+
+Tarih ve saat varlıkları. 
+
+* Model sürümünden itibaren kullanılabilir `2019-10-01`
+
+Diller:
 
 * Genel Önizleme: `English`
 
 | Alt tür adı    | Örnekler                     |
 |-------------|------------------------------|
-| Yok         | `6`, `six`                   |
+| Yok         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| Tarih  | `May 2nd, 2017`, `05/02/2017`       |
+| Zaman     | `8:15`, `6AM`              |
+| DateRange    | `August 2nd to August 5th`         |
+| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
+| Süre | `2.5 minutes`, `one and a half hours`         |
+| Ayarla | `every Saturday`         |
+
+###  <a name="quantity"></a>Miktar
+
+Sayılar ve sayısal miktarlar. 
+
+* Model sürümünden itibaren kullanılabilir `2019-10-01`
+
+Diller:
+
+* Genel Önizleme: `English`
+
+| Alt tür adı    | Örnekler                     |
+|-------------|------------------------------|
+| Sayı         | `6`, `six`                   |
 | Yüzde  | `50%`, `fifty percent`       |
-| Sıra     | `2nd`, `second`              |
-| Currency    | `$10.99`, `€30.00`           |
+| Numarasını     | `2nd`, `second`              |
+| Yaş         | `90 day old`, `30 years old` |
+| Para birimi    | `$10.99`, `€30.00`           |
 | Boyut   | `10 miles`, `40 cm`          |
 | Sıcaklık | `32 degrees`, `10°C`         |

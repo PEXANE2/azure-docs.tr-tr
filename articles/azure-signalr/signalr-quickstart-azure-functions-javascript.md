@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR hizmeti sunucusuz hızlı başlangıç-JavaScript
+title: JavaScript kullanarak Azure Işlevleri ve SignalR hizmeti ile bir sohbet odası oluşturun
 description: Azure SignalR Hizmetini ve Azure İşlevlerini kullanarak bir sohbet odası oluşturmaya yönelik hızlı başlangıç.
 author: sffamily
 ms.service: signalr
@@ -7,28 +7,29 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450258"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083182"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Hızlı Başlangıç: Azure İşlevleri ve SignalR Hizmetini kullanarak JavaScript ile sohbet odası oluşturma
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Hızlı başlangıç: Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturmak için JavaScript kullanma
 
-Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik eklemenizi sağlar. Azure İşlevleri, herhangi bir altyapı yönetimine gerek kalmadan kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR Hizmeti ve İşlevlerini sunucusuz ve gerçek zamanlı bir sohbet uygulaması oluşturmak için kullanmayı öğrenin.
+Azure SignalR hizmeti, uygulamanıza kolayca gerçek zamanlı işlevselliği eklemenizi sağlar ve Azure Işlevleri, herhangi bir altyapıyı yönetmeden kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR hizmeti ve Işlevleri 'ni kullanarak sunucusuz, gerçek zamanlı bir sohbet uygulaması oluşturmak için JavaScript 'ı kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
+- [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod Düzenleyicisi
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), sürüm 2 veya üzeri. Azure Function uygulamalarını yerel olarak çalıştırmak için kullanılır.
+- [Node. js](https://nodejs.org/en/download/), sürüm 10. x
 
-[Visual Studio Code](https://code.visualstudio.com/) gibi bir kod editörünün yüklü olduğundan emin olun.
+   > [!NOTE]
+   > Örneklerin diğer Node. js sürümleriyle çalışması gerekir. daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümleri belgeleri](../azure-functions/functions-versions.md#languages) .
 
-Azure Function uygulamalarını yerel olarak çalıştırmak için [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (sürüm 2 veya üzeri) yüklemesini yapın.
-
-Bu hızlı başlangıçta [Node. js](https://nodejs.org/en/download/) 10. x kullanılmaktadır, ancak diğer sürümlerle birlikte çalışmalıdır. Desteklenen Node. js sürümleri hakkında daha fazla bilgi için [Azure işlevleri çalışma zamanı sürümleri belgelerine](../azure-functions/functions-versions.md#languages) bakın.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> [!NOTE]
+> Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -54,7 +55,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. *local.settings.sample.json* dosyasını *local.settings.json* olarak yeniden adlandırın.
 
-1. **local.settings.json** dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
+1. **local.settings.json** dosyasının içinde, bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
 1. JavaScript işlevleri klasörler halinde düzenlenir. Her klasörde iki dosya bulunur: *function.json* işlevde kullanılan bağlamaları tanımlar ve *index.js* işlevin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
 

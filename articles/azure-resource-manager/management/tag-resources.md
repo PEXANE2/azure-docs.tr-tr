@@ -3,18 +3,18 @@ title: Mantıksal kuruluş için kaynakları etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665148"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087316"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure kaynaklarınızı düzenlemek için etiketleri kullanma
 
 Bunları bir taksonomiye mantıksal olarak düzenlemek için Azure kaynaklarınıza Etiketler uygularsınız. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
-Etiketleri uyguladıktan sonra aboneliğinizde bu etiket adını ve değerini taşıyan tüm kaynakları alabilirsiniz. Etiketler farklı kaynak gruplarında bulunan birbiriyle ilişkili kaynakları almanızı sağlar. Bu yaklaşım, faturalama veya yönetim için kaynakları düzenlemeniz gerektiğinde yararlıdır.
+Etiketleri uyguladıktan sonra aboneliğinizde bu etiket adını ve değerini taşıyan tüm kaynakları alabilirsiniz. Etiketler, farklı kaynak gruplarından ilgili kaynakları almanızı sağlar. Bu yaklaşım, faturalama veya yönetim için kaynakları düzenlemeniz gerektiğinde yararlıdır.
 
 Taksonominiz, kullanıcıların yükünü azaltmak ve doğruluğu artırmak için otomatik etiketleme stratejisine ek olarak bir self servis meta veri etiketleme stratejisini göz önünde bulundurmalıdır.
 
@@ -394,7 +394,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ### <a name="apply-tags-from-resource-group"></a>Kaynak grubundan Etiketler uygulama
 
-Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken, `tags.tag-name` sözdizimi yerine `tags.[tag-name]` sözdizimini kullanın, çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
+Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken, `tags.tag-name` sözdizimi yerine `tags[tag-name]` sözdizimini kullanın, çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
 
 ```json
 {
@@ -436,7 +436,7 @@ Azure portal ve PowerShell, arka planda [Kaynak Yöneticisi REST API](/rest/api/
 
 ## <a name="tags-and-billing"></a>Etiketler ve faturalandırma
 
-Etiketleri kullanarak faturalama verilerinizi gruplandırabilirsiniz. Örneğin, farklı organizasyonlar için birden çok sanal makine çalıştırıyorsanız, maliyet merkezine göre kullanımı gruplandırmak için etiketleri kullanın. Ayrıca etiketleri kullanarak, üretim ortamında çalışan sanal makineler için faturalama kullanımı gibi, maliyetleri çalışma zamanı ortamına göre kategorilere ayırabilirsiniz.
+Fatura verilerinizi gruplandırmak için Etiketler kullanabilirsiniz. Örneğin, farklı kuruluşlar için birden çok VM çalıştırıyorsanız, kullanımı maliyet merkezine göre gruplamak için etiketleri kullanın. Ayrıca, üretim ortamında çalışan VM 'Ler için faturalandırma kullanımı gibi çalışma zamanı ortamına göre maliyetleri sınıflandırmak için Etiketler de kullanabilirsiniz.
 
 [Azure Kaynak kullanımı ve RateCard API 'leri](../../billing/billing-usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../billing/billing-download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 

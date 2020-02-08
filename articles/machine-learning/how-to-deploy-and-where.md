@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932389"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083244"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Machine Learning modelinizi bir Web hizmeti olarak Azure bulutu 'nda veya Azure 
 
 Dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -172,22 +172,22 @@ Birden çok modeli barındırmak için çok modelli uç noktalar paylaşılan bi
 
 Tek kapsayıcılı bir uç noktanın arkasında birden çok modelin nasıl kullanılacağını gösteren bir E2E örneği için, [Bu örneğe](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) bakın
 
-## <a name="prepare-to-deploy"></a>Dağıtmaya hazırlanma
+## <a name="prepare-deployment-artifacts"></a>Dağıtım yapıtları hazırlama
 
-Modeli dağıtmak için aşağıdaki öğeler gereklidir:
+Modeli dağıtmak için şunlar gerekir:
 
-* **Bir giriş betiği**. Bu betik istekleri kabul eder, modeli kullanarak istekleri puan eder ve sonuçları döndürür.
+* **Giriş betiği & kaynak kodu bağımlılıkları**. Bu betik istekleri kabul eder, modeli kullanarak istekleri puan eder ve sonuçları döndürür.
 
     > [!IMPORTANT]
     > * Giriş betiği modelinize özeldir. Gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
     >
     >   İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, yanıtı istemciye döndürmeden önce dönüştürebilir.
     >
-    > * Azure Machine Learning SDK, Web Hizmetleri veya IoT Edge dağıtımlarının veri deponuza veya veri kümelerine erişmesi için bir yol sağlamaz. Dağıtılmış modelinizin, bir Azure depolama hesabındaki veriler gibi dağıtım dışında depolanan verilere erişmesi gerekiyorsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
+    > * Web Hizmetleri ve IoT Edge dağıtımları, çalışma alanı veri depolarına veya veri kümelerine erişemez. Dağıtılan hizmetinizin, bir Azure depolama hesabındaki veriler gibi dağıtım dışında depolanan verilere erişmesi gerekiyorsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
     >
     >   Senaryonuz için işe yönelik bir alternatif, Puanlama sırasında veri depolarına erişim sağlayan [toplu tahmindir](how-to-use-parallel-run-step.md).
 
-* Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**.
+* **Çıkarım ortamı**. Modeli çalıştırmak için gereken yüklü paket bağımlılıklarına sahip temel görüntü.
 
 * Dağıtılan modeli barındıran işlem hedefi için **dağıtım yapılandırması** . Bu yapılandırma, modeli çalıştırmak için gereken bellek ve CPU gereksinimleri gibi şeyleri açıklar.
 
@@ -201,7 +201,7 @@ Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
 
 * `init()`: Bu işlev genellikle modeli genel bir nesneye yükler. Bu işlev, Web hizmetiniz için Docker kapsayıcısı başlatıldığında yalnızca bir kez çalıştırılır.
 
-* `run(input_data)`: Bu işlev, giriş verileri temel alan bir değer tahmin modelini kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
+* `run(input_data)`: Bu işlev, giriş verilerine göre bir değeri tahmin etmek için modeli kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Giriş betiğinizdeki model dosyalarını bulun
 
@@ -215,7 +215,7 @@ AZUREML_MODEL_DIR, hizmet dağıtımı sırasında oluşturulan bir ortam deği�
 
 Aşağıdaki tabloda, dağıtılan modellerin sayısına bağlı olarak AZUREML_MODEL_DIR değeri açıklanmaktadır:
 
-| Kurulum | Ortam değişkeni değeri |
+| Dağıtım | Ortam değişkeni değeri |
 | ----- | ----- |
 | Tek model | Modeli içeren klasörün yolu. |
 | Birden çok model | Tüm modelleri içeren klasörün yolu. Modeller bu klasördeki ad ve sürüm ile bulunur (`$MODEL_NAME/$VERSION`) |
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. ınısenceconfig 'nizi tanımlayın
+### <a name="2-define-your-inference-environment"></a>2. çıkarım ortamınızı tanımlayın
 
 Çıkarım yapılandırması, tahmine dayalı hale getirmek üzere modelin nasıl yapılandırılacağını açıklar. Bu yapılandırma giriş betiğinizin bir parçası değil. Giriş betiğine başvurur ve dağıtım için gerekli tüm kaynakları bulmak için kullanılır. Modeli dağıtırken daha sonra kullanılır.
 
@@ -547,41 +547,6 @@ Yerel, Azure Container Instances ve AKS Web Hizmetleri için sınıflar `azureml
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>Profil oluşturma
-
-Modelinizi bir hizmet olarak dağıtmadan önce en iyi CPU ve bellek gereksinimlerini öğrenmek için profili oluşturmanız gerekebilir. Modelinizin profilini eklemek için SDK veya CLı kullanabilirsiniz. Aşağıdaki örnekler SDK kullanarak bir modelin profilini oluşturmayı gösterir.
-
-> [!IMPORTANT]
-> Profil oluşturma kullandığınızda, sağladığınız çıkarım yapılandırması bir Azure Machine Learning ortamına başvuramaz. Bunun yerine, `InferenceConfig` nesnesinin `conda_file` parametresini kullanarak yazılım bağımlılıklarını tanımlayın.
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-Bu kod, aşağıdaki çıktıya benzer bir sonuç görüntüler:
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-Model profil oluşturma sonuçları `Run` nesne olarak dağıtılır.
-
-CLı 'dan profil oluşturmayı kullanma hakkında daha fazla bilgi için, bkz. [az ml model profili](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
-
-Daha fazla bilgi için aşağıdaki belgelere bakın:
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [Çıkarım yapılandırma dosyası şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Hedefe dağıt
 
@@ -1085,8 +1050,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Dağıtılmış bir web hizmetini silmek için kullanın `service.delete()`.
-Kayıtlı bir model silmek için kullanın `model.delete()`.
+Dağıtılan bir Web hizmetini silmek için `service.delete()`kullanın.
+Kayıtlı bir modeli silmek için `model.delete()`kullanın.
 
 Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) ve [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)belgeleri.
 
@@ -1094,7 +1059,7 @@ Daha fazla bilgi için bkz. [WebService. Delete ()](https://docs.microsoft.com/p
 
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
+* [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

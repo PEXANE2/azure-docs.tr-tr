@@ -3,22 +3,22 @@ title: Ortak ve gizli istemci uygulamaları (MSAL) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) ortak istemci ve gizli istemci uygulamaları hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 75ea183a9968c65957bcf2a4d39966d2553db84f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696598"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084127"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Ortak istemci ve gizli istemci uygulamaları
 Microsoft kimlik doğrulama kitaplığı (MSAL) iki tür istemci tanımlar: genel istemciler ve gizli istemciler. İki istemci türü, yetkilendirme sunucusuyla güvenli kimlik doğrulaması yapma ve istemci kimlik bilgilerinin gizliliğini koruma özelliklerine göre ayırt edilir. Buna karşılık, Azure AD kimlik doğrulama kitaplığı (ADAL), *kimlik doğrulama bağlamını* (Azure AD ile bağlantı olan) kullanır.
@@ -46,7 +46,7 @@ Ortak istemci ve gizli istemci uygulamaları arasında bazı benzerlikler ve far
 ADAL kullandıysanız, ADAL 'nin kimlik doğrulama bağlamından farklı olarak, MSAL ' de istemci KIMLIĞI ( *uygulama kimliği* veya uygulama *kimliği*olarak da bilinir) uygulamanın oluşturulmasından bir kez geçirildiğine dikkat edin. Uygulama bir belirteç aldığında yeniden geçirilmesi gerekmez. Bu, hem genel hem de gizli istemci uygulamaları için geçerlidir. Gizli istemci uygulamalarının oluşturucuları, istemci kimlik bilgileri: kimlik sağlayıcısıyla paylaştığı gizli dizi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şunları öğrenin:
+Hakkında bilgi edinin:
 - [İstemci uygulama yapılandırma seçenekleri](msal-client-application-configuration.md)
 - [MSAL.NET kullanarak istemci uygulamaları örnekleme](msal-net-initializing-client-applications.md)
 - [MSAL. js kullanarak istemci uygulamalarını örnekleme](msal-js-initializing-client-applications.md)

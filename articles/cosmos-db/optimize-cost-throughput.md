@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053359"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087074"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş maliyetini iyileştirin
 
@@ -19,7 +19,7 @@ Sağlanan aktarım hızı modeli sunarak Azure Cosmos DB, herhangi bir ölçekte
 
 En az 400 RU/sn aktarım hızı ile başlayabilir ve saniyede on milyonlarca istek ve daha fazlasını ölçeklendirebilirsiniz. Azure Cosmos kapsayıcınızda veya bir okuma isteği, yazma isteği, sorgu isteği, saklı yordamların, sizin sağladığınız iş maliyetinizden kesilen karşılık gelen bir maliyeti olan her bir istek için sorun. 400 RU/sn temin edebilir ve maliyeti 40 RU olan bir sorgu verirseniz, saniye başına 10 tür sorgu gönderebilirsiniz. Bundan sonraki tüm istekler hız sınırlı alır ve isteği yeniden denemeniz gerekir. İstemci sürücüleri kullanıyorsanız, otomatik yeniden deneme mantığını destekler.
 
-Veritabanları veya kapsayıcılar üzerinde üretilen iş sağlayabilirsiniz ve her strateji, senaryoya bağlı olarak maliyetlerde tasarruf etmenize yardımcı olabilir.
+Veritabanlarında veya kapsayıcılarda verim sağlayabilirsiniz. Her strateji, senaryoya bağlı olarak tasarruf elde etmenize yardımcı olur.
 
 ## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Farklı düzeylerde sağlama verimini sağlayarak iyileştirin
 
@@ -53,11 +53,11 @@ Aşağıda, sağlanan bir verimlilik stratejisine karar vermek için bazı yöne
 
 Aşağıdaki tabloda gösterildiği gibi, API seçimine bağlı olarak, farklı bir ayırluluya aktarım hızı sağlayabilirsiniz.
 
-|eklentisi|**Paylaşılan** verimlilik için yapılandırma |**Adanmış** aktarım hızı için yapılandırma |
+|API|**Paylaşılan** verimlilik için yapılandırma |**Adanmış** aktarım hızı için yapılandırma |
 |----|----|----|
-|SQL API’si|Database|Kapsayıcı|
-|MongoDB için Azure Cosmos DB API'si|Database|Koleksiyon|
-|Cassandra API’si|anahtar alanı|Tablo|
+|SQL API’si|Veritabanı|Kapsayıcı|
+|MongoDB için Azure Cosmos DB API'si|Veritabanı|Koleksiyon|
+|Cassandra API’si|Keyspace|Tablo|
 |Gremlin API|Veritabanı hesabı|Graph|
 |Tablo API’si|Veritabanı hesabı|Tablo|
 
@@ -123,7 +123,7 @@ Ayrıca, hız sınırlı isteklerin sayısının belirli bir eşiği aşıp aşm
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Aktarım hızını esnek ve isteğe bağlı olarak ölçeklendirin 
 
-Sağlanan aktarım hızı için faturalandırılırsınız, sağlanan aktarım hızını gereksinimlerinize göre eşleştirmek, kullanılmayan aktarım hızına karşı ücretlendirmeden kaçınmanıza yardımcı olabilir. Sağlanan aktarım hızını dilediğiniz zaman gerektiği gibi ölçeklendirebilir veya azaltabilirsiniz.  
+Sağlanan aktarım hızı için faturalandırılırsınız, sağlanan aktarım hızını gereksinimlerinize göre eşleştirmek, kullanılmayan aktarım hızına karşı ücretlendirmeden kaçınmanıza yardımcı olabilir. Sağlanan aktarım hızını dilediğiniz zaman gerektiği gibi ölçeklendirebilir veya azaltabilirsiniz. Aktarım hızı gereksinimleriniz çok öngörülebilir ise, Azure Işlevleri 'ni kullanabilir ve bir Zamanlayıcı tetikleyicisi kullanarak [bir zamanlamaya göre aktarım hızını artırabilir veya azaltabilirsiniz](scale-on-schedule.md). 
 
 * Ru 'nizin tüketimini izlemek ve hız sınırlı isteklerin oranı, her gün veya hafta boyunca sağlanan sabitten haberdar olmanız gerekmediğini açığa çıkabilir. Gece veya hafta sonu sırasında daha az trafik alabilirsiniz. Azure portal veya Azure Cosmos DB yerel SDK 'Ları veya REST API kullanarak, sağlanan aktarım hızını dilediğiniz zaman ölçeklendirebilirsiniz. Azure Cosmos DB REST API, kapsayıcılarınızın performans düzeyini programlı bir şekilde güncelleştirmek için uç noktalar sağlar. bu sayede, bir günün saatine veya haftanın gününe bağlı olarak kodunuzda üretilen işi ayarlayabilirsiniz. İşlem herhangi bir kesinti olmadan gerçekleştirilir ve genellikle bir dakikadan kısa bir süre içinde devreye girer. 
 

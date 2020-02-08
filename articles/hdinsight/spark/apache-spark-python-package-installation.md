@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529652"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087114"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -22,7 +22,7 @@ ms.locfileid: "75529652"
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Bazı durumlarda, müşterilerin, dış Python paketleri veya başka bir Python sürümü yükleme gibi Python ortamını özelleştirmesi gerekir. Bu makalede, HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesi için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
@@ -49,7 +49,7 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
 HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda Python 2,7 ve Python 3,5 olmak üzere iki Python yüklemesi vardır. Aşağıdaki tabloda Spark, Livy ve Jupyıter için varsayılan Python ayarları gösterilmektedir.
 
-| |Python 2.7|Python 3,5|
+| |Python 2,7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
 |Spark|Varsayılan olarak 2,7 ayarlanır|Yok|
@@ -122,7 +122,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
 ## <a name="known-issue"></a>Bilinen sorun
 
-Anaconda Version 4.7.11 ve 4.7.12 için bilinen bir hata vardır. Betik eylemlerinizin `"Collecting package metadata (repodata.json): ...working..."` askıda olduğunu ve `"Python script has been killed due to timeout after waiting 3600 secs"`başarısız olduğunu görürseniz. Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
+Anaconda Version 4.7.11, 4.7.12 ve 4.8.0 için bilinen bir hata vardır. Betik eylemlerinizin `"Collecting package metadata (repodata.json): ...working..."` askıda olduğunu ve `"Python script has been killed due to timeout after waiting 3600 secs"`başarısız olduğunu görürseniz. Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
 
 Anaconda sürümünüzü denetlemek için, küme üst bilgisi düğümüne SSH verebilir ve `/usr/bin/anaconda/bin/conda --v`çalıştırabilirsiniz.
 

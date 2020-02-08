@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986011"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086544"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -134,7 +134,7 @@ Evet. Bir arka uç havuzu içindeki üyeleri kesintiye uğramadan değiştirmek 
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Örnek boyutunu, kesintiye uğramadan büyük olarak değiştirebilir miyim?
 
-Evet. Azure, örneklerin aynı anda başarısız olmamasını sağlamak için örnekleri güncelleştirme ve hata etki alanları arasında dağıtır. Application Gateway, yükü paylaşmak için aynı ağ geçidinin birden fazla örneğini ekleyerek ölçeklendirmeyi destekler.
+Evet.
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -322,7 +322,7 @@ Daha fazla bilgi için bkz. [OWASP Top-10 güvenlik açıkları](https://www.owa
 
 ### <a name="does-waf-support-ddos-protection"></a>WAF, DDoS korumasını destekliyor mu?
 
-Evet. Uygulama ağ geçidinin dağıtıldığı sanal ağda DDoS korumasını etkinleştirebilirsiniz. Bu ayar, Azure DDoS Koruması hizmetinin uygulama ağ geçidi sanal IP'sini de (VIP) korumasını sağlar.
+Evet. DDoS korumasını, uygulama ağ geçidinin dağıtıldığı sanal ağ üzerinde etkinleştirebilirsiniz. Bu ayar, Azure DDoS Koruması hizmetinin Application Gateway sanal IP 'yi (VIP) de korumasını sağlar.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>V1 SKU 'sunda v2 SKU 'suna geçiş yapmak için kullanılabilecek bir kılavuz var mı?
 

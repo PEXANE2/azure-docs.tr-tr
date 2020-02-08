@@ -3,27 +3,27 @@ title: MSAL. js istemci uygulamalarını başlatın | Mavisi
 titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak istemci uygulamalarını başlatma hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696138"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084032"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL. js kullanarak istemci uygulamalarını başlatma
 Bu makalede, Kullanıcı Aracısı uygulamasının bir örneğiyle JavaScript (MSAL. js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır. Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir ortak istemci uygulaması biçimidir. Tarayıcı bağlamı başarıyla erişilebilir olduğundan bu istemciler gizli dizileri depolamaz. İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için öncelikle [bu Azure Portal kaydetmeniz](scenario-spa-app-registration.md) gerekir. Kayıttan sonra, aşağıdaki bilgiler (Azure portal bulunabilir) gerekebilir:
 
 - İstemci KIMLIĞI (uygulamanız için GUID 'ı temsil eden bir dize)
@@ -120,11 +120,11 @@ export type Configuration = {
 
 - **Validateauthority**: isteğe bağlı.  Belirteçlerin vereni doğrulayın. `true` varsayılan değerdir. B2C uygulamaları için, yetkili değeri bilindiğinden ve ilke başına farklı olduğundan, yetkili doğrulaması çalışmaz ve `false`olarak ayarlanması gerekir.
 
-- **Redirecturi**: isteğe bağlı.  Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. Varsayılan olarak `window.location.href`.
+- **Redirecturi**: isteğe bağlı.  Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. `window.location.href` değerini varsayılan olarak alır.
 
 - **Postlogoutredirecturi**: isteğe bağlı.  Oturumu kapattıktan sonra kullanıcıyı `postLogoutRedirectUri` yönlendirir. Varsayılan değer `redirectUri`.
 
-- **Navigatetologinrequesturl**: isteğe bağlı. Oturum açtıktan sonra başlangıç sayfasına varsayılan gezintiyi kapatma özelliği. Varsayılan değer doğru değeridir. Bu yalnızca yeniden yönlendirme akışları için kullanılır.
+- **Navigatetologinrequesturl**: isteğe bağlı. Oturum açtıktan sonra başlangıç sayfasına varsayılan gezintiyi kapatma özelliği. Varsayılan değer true 'dur. Bu yalnızca yeniden yönlendirme akışları için kullanılır.
 
 - **Önbellekelocation**: isteğe bağlı.  Tarayıcı depolamayı `localStorage` ya da `sessionStorage`olarak ayarlar. Varsayılan: `sessionStorage`.
 
@@ -139,6 +139,6 @@ export type Configuration = {
 - **Navigateframewait**: isteğe bağlı. Gizli iframe 'ler hedefine geçmeden önce bekleme süresini ayarlayan milisaniye sayısı. Varsayılan değer 500 milisaniyedir.
 
 Bunlar yalnızca MSAL angular sarmalayıcı kitaplığından geçirilme için geçerlidir:
-- **Unprotectedresources**: isteğe bağlı.  Korumasız kaynakları olan URI 'Ler dizisi. MSAL, bu URI 'ye sahip giden isteklere belirteç iliştirmez. Varsayılan olarak `null`.
+- **Unprotectedresources**: isteğe bağlı.  Korumasız kaynakları olan URI 'Ler dizisi. MSAL, bu URI 'ye sahip giden isteklere belirteç iliştirmez. `null` değerini varsayılan olarak alır.
 
-- **Protectedresourcemap**: isteğe bağlı.  Bu, Web API çağrılarında erişim belirteçlerini otomatik olarak eklemek için MSAL tarafından kullanılan kapsamlara yönelik kaynakları eşleştirmekte. Kaynak için tek bir erişim belirteci alındı. Bu nedenle, belirli bir kaynak yolunu şu şekilde eşleyebilirsiniz: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} veya kaynağın uygulama URL 'SI: {"https://graph.microsoft.com/", ["User. Read", "MAIL. Send"]}. CORS çağrıları için bu gereklidir. Varsayılan olarak `null`.
+- **Protectedresourcemap**: isteğe bağlı.  Bu, Web API çağrılarında erişim belirteçlerini otomatik olarak eklemek için MSAL tarafından kullanılan kapsamlara yönelik kaynakları eşleştirmekte. Kaynak için tek bir erişim belirteci alındı. Bu nedenle, belirli bir kaynak yolunu şu şekilde eşleyebilirsiniz: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} veya kaynağın uygulama URL 'SI: {"https://graph.microsoft.com/", ["User. Read", "MAIL. Send"]}. CORS çağrıları için bu gereklidir. `null` değerini varsayılan olarak alır.

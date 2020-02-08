@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023574"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087053"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -36,44 +36,46 @@ VM boyutu seçmenin bazı özel durumları ve sınırlamaları vardır:
 
 Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyutlarını destekler ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). Desteklenen boyutlar ve kısıtlamalar hakkında daha fazla bilgi edinmek için aşağıdaki tabloya bakın.
 
-Listelenen tüm promosyon veya önizleme VM boyutları destek için garanti edilmez.
+| VM Serisi  | Desteklenen boyutlar |
+|------------|---------|
+| Temel A | Basic_A0 *dışındaki* tüm boyutlar (a0) |
+| A | Standard_A0 *dışındaki* tüm boyutlar |
+| AV2 | Tüm Boyutlar |
+| B | Hiçbiri |
+| 'Ye | Hiçbiri |
+| Dv2, DSv2 | Tüm Boyutlar |
+| Dv3, Dsv3 | Tüm Boyutlar |
+| Dav4, Dasv4 | Hiçbiri-henüz kullanılamıyor |
+| Ev3, Esv3 | E64is_v3 ve E64i_v3 hariç tüm boyutlar |
+| Eav4, Easv4 | Hiçbiri-henüz kullanılamıyor |
+| F, FS | Tüm Boyutlar |
+| Fsv2 | Tüm Boyutlar |
+| G, GS | Tüm Boyutlar |
+| H | Tüm Boyutlar |
+| HB<sup>1</sup> | Tüm Boyutlar |
+| HBv2<sup>1</sup> | Tüm Boyutlar |
+| HC<sup>1</sup> | Tüm Boyutlar |
+| Ls | Tüm Boyutlar |
+| Lsv2 | Hiçbiri-henüz kullanılamıyor |
+| A<sup>1</sup> | M64, M64m, M128, M128m hariç tüm boyutlar |
+| Mv2 | Hiçbiri-henüz kullanılamıyor |
+| KSK | Tüm Boyutlar |
+| NCv2<sup>1</sup> | Tüm Boyutlar |
+| NCv3<sup>1</sup> | Tüm Boyutlar |
+| ND<sup>1</sup> | Tüm Boyutlar |
+| NDv2<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
+| DÜZENLEME | Tüm Boyutlar |
+| NVv3<sup>1</sup> | Tüm Boyutlar |
+| NVv4 | Hiçbiri |
+| SAP HANA | Hiçbiri |
 
-| VM serisi  | Desteklenen boyutlar | Batch hesabı havuzu ayırma modu<sup>1</sup> |
-|------------|---------|-----------------|
-| Temel A serisi | Basic_A0 *dışındaki* tüm boyutlar (a0) | Herhangi biri |
-| A Serisi | Standard_A0 *dışındaki* tüm boyutlar | Herhangi biri |
-| Av2 Serisi | Tüm Boyutlar | Herhangi biri |
-| B serisi | Hiçbiri | Kullanılamıyor |
-| DC serisi | Hiçbiri | Kullanılamıyor |
-| Dv2, DSv2 serisi | Tüm Boyutlar | Herhangi biri |
-| Dv3, Dsv3 serisi | Tüm Boyutlar | Herhangi biri |
-| Ev3, Esv3 serisi | Tüm Boyutlar | Herhangi biri |
-| Fsv2-serisi | Tüm Boyutlar | Herhangi biri |
-| H serisi | Tüm Boyutlar | Herhangi biri |
-| HB Serisi<sup>2</sup> | Tüm Boyutlar | Herhangi biri |
-| HC Serisi<sup>2</sup> | Tüm Boyutlar | Herhangi biri |
-| Ls serisi | Tüm Boyutlar | Herhangi biri |
-| Lsv2 serisi | Hiçbiri | Kullanılamıyor |
-| M serisi | Standard_M64ms (yalnızca düşük öncelikli), Standard_M128s (yalnızca düşük öncelikli) | Herhangi biri |
-| Mv2 serisi | Hiçbiri | Kullanılamıyor |
-| NC serisi | Tüm Boyutlar | Herhangi biri |
-| NCv2-serisi<sup>2</sup> | Tüm Boyutlar | Herhangi biri |
-| NCv3-serisi<sup>2</sup> | Tüm Boyutlar | Herhangi biri |
-| ND serisi<sup>2</sup> | Tüm Boyutlar | Herhangi biri |
-| NDv2 serisi | Tüm Boyutlar | Kullanıcı aboneliği modu |
-| NV serisi | Tüm Boyutlar | Herhangi biri |
-| NVv3 serisi | Hiçbiri | Kullanılamıyor |
-| SAP HANA | Hiçbiri | Kullanılamıyor |
-
-<sup>1</sup> bazı yeni VM serileri başlangıçta kısmen desteklenir. Bu VM Serisi, **havuz ayırma modu** **Kullanıcı aboneliğine**ayarlanmış olan Batch hesapları tarafından tahsis edilebilir. Batch hesabı yapılandırması hakkında daha fazla bilgi için bkz. [Batch hesaplarını yönetme](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . **Kullanıcı aboneliği** Batch hesapları için kısmen desteklenen bu VM serisine nasıl kota isteneceğini öğrenmek için [Kotalar ve sınırlar](batch-quota-limit.md) bölümüne bakın.  
-
-<sup>2</sup> bu VM boyutları, sanal makine yapılandırmasındaki Batch havuzlarında tahsis edilebilir, ancak belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir.
+<sup>1</sup> bu VM boyutları, sanal makine yapılandırmasındaki Batch havuzlarında tahsis edilebilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Bulut hizmeti yapılandırmasındaki havuzlar
 
 Bulut hizmeti yapılandırmasındaki toplu iş havuzları aşağıdakiler **dışında** [Cloud Services için tüm VM boyutlarını](../cloud-services/cloud-services-sizes-specs.md) destekler:
 
-| VM serisi  | Desteklenmeyen Boyutlar |
+| VM Serisi  | Desteklenmeyen Boyutlar |
 |------------|-------------------|
 | A Serisi   | Çok küçük       |
 | Av2 Serisi | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |

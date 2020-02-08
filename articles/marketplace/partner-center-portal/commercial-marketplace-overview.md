@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812067"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069447"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market portalına genel bakış
 
 Microsoft Iş Ortağı Merkezi ' nde ticari Market portalına hoş geldiniz. [Ticari Market portalı](https://partner.microsoft.com/dashboard/commercial-marketplace/) , ürünlerinizi ve hizmetlerinizi yeniden getirmenize, müşterilere ulaşmanıza ve işletmenizi büyütmenize yardımcı olmak için tasarlanmıştır.
 
-Bu belgede, Iş Ortağı Merkezi hesabınızı oluşturma ve kullanma, [Azure Market](https://azuremarketplace.microsoft.com/) veya [appsource](https://appsource.microsoft.com/)'Ta listelenmiş yeni bir hizmet olarak yazılım (SaaS) teklifi oluşturma, mevcut SaaS tekliflerinizi yönetme ve sorularınızı size yardımcı olmaya yönelik kaynaklar sağlama ve geri bildiriminizi toplama. 
+Bu belgede, Iş Ortağı Merkezi hesabınızı oluşturma ve kullanma, [Azure Market](https://azuremarketplace.microsoft.com/) veya [appsource](https://appsource.microsoft.com/)'Ta listelenmiş yeni bir hizmet olarak yazılım (SaaS) teklifi oluşturma, mevcut SaaS tekliflerinizi yönetme ve görüşlerinizi size yardımcı olacak kaynak sağlama ve geri bildiriminizi toplama hakkında temel bilgiler ele alınacaktır. 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>Microsoft 'un ticari marketi hakkında
 
-Kuruluşlar, kamu kurumları ve tüm boyutlardaki kuruluşlar, [Azure Marketi](https://azuremarketplace.microsoft.com/) ve [appsource](https://appsource.microsoft.com/) Web depoları aracılığıyla iş çözümleri, yenilikçi teknoloji ve etkinleştirme Hizmetleri bulur, [Azure Portal ürün içi deneyim](https://portal.azure.com), [Bulut çözümü sağlayıcıları](https://partner.microsoft.com/cloud-solution-provider)ve Microsoft satış takımları. 
+Kuruluşlar, kamu kurumları ve tüm boyutlardaki kuruluşlar, [Azure Marketi](https://azuremarketplace.microsoft.com/) ve [appsource](https://appsource.microsoft.com/) Web depoları aracılığıyla iş çözümleri, yenilikçi teknoloji ve etkinleştirme Hizmetleri bulur, [Azure Portal ürün Içi deneyim](https://portal.azure.com), [bulut çözümü sağlayıcıları](https://partner.microsoft.com/cloud-solution-provider)ve Microsoft satış ekipleri. 
 
 İş Ortağı Merkezi, bir Microsoft iş ortağının deneyiminin merkezidir. Microsoft ile pazara sunulan ve Market 'ten faydalanan kuruluşlar için Iş Ortağı Merkezi, yayımcıların teklif oluşturup yönetmeleri, test sürücüsü gösterileri sağlaması ve teklif performansı üzerinde analizler görüntülemek için gerekli olan portaldır. 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Bulut İş Ortağı Portalı geçiş
 
-İş Ortağı Merkezi, Microsoft 'un Yazılım yayımcıları ile ilişkisinin tüm yönlerini daha iyi tümleştirecek şekilde gelişiyor. Bu evrimi kapsamında, [bulut iş ortağı portalı](https://cloudpartner.azure.com/) Işlevlerini Iş ortağı merkezine geçiriyoruz. 
+İş Ortağı Merkezi, Microsoft 'un Yazılım yayımcıları ile ilişkisinin tüm yönlerini daha iyi tümleştirecek şekilde gelişiyor. Bu evrimi kapsamında, [bulut iş ortağı portalı](https://cloudpartner.azure.com/) Işlevlerini Iş ortağı merkezine geçiriyoruz.
 
-**Şu anda Iş ortağı merkezi yalnızca hizmet olarak yazılım (SaaS) tekliflerinin oluşturulmasını ve yönetimini destekler.**
+>[!NOTE]
+>Şu anda Iş Ortağı Merkezi, hizmet olarak yazılım (SaaS) tekliflerinin oluşturulmasını ve yönetimini, Azure Uygulama tekliflerini, müşteri teklifleri için Dynamics 365 ' i, katılım & PowerApps tekliflerini, Operations tekliflerini için Dynamics 365 ve Dynamics 365 'ı destekler. İş Merkezi teklifleri. Yakında daha fazla teklif desteklenecek.
 
-Mevcut Market yayımcıları, sezgisel bir arabirimle tanıdık ancak gelişmiş bir kullanıcı deneyimi bulacak. Portalda ve e-postayla gelen bildirimler, geçişin yayımcılarını bilgilendirir. Kullanıcılar uygun konuma sorunsuzca yönlendirilmeyecektir. Müşteriler bu iş ortağı deneyimi yükseltmesinden etkilenmeyecektir. 
+Mevcut Market yayımcıları, sezgisel bir arabirimle tanıdık ancak gelişmiş bir kullanıcı deneyimi bulacak. Portalda ve e-postayla gelen bildirimler, geçişin yayımcılarını bilgilendirir. Kullanıcılar uygun konuma sorunsuzca yönlendirilmeyecektir. Müşteriler bu iş ortağı deneyimi yükseltmesinden etkilenmeyecektir.
 
 ### <a name="improvements-on-user-experience-and-billing"></a>Kullanıcı deneyimi ve faturalandırmayla ilgili iyileştirmeler
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43787bfffcb04e816f58cdcc0d9e61a61f1f16fd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050252"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Öğretici: Syxsense ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Syxsense tümleştirme ha
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açabilmesi için bunları etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -100,9 +100,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Syxsense uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ------------ | --------- |
-    | Email | Kullanıcı. e-posta |
+    | E-posta | Kullanıcı. e-posta |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -144,11 +144,11 @@ Bu bölümde, Syxsense erişimi vererek Azure çoklu oturum açma özelliğini k
 
 1. **Ayarlar simgesine**tıklayın.
 
-    ![Syssense yapılandırması](./media/syxsense-tutorial/configure1.png)
+    ![Syxsense yapılandırması](./media/syxsense-tutorial/configure1.png)
 
 1. **Dış kimlik doğrulamasına** tıklayın ve **SAML 2.0 meta verileri** metin kutusuna **uygulama Federasyon meta verileri URL 'si** değerini girip **Kaydet**' e tıklayın.
 
-    ![Syssense yapılandırması](./media/syxsense-tutorial/configure2.png)
+    ![Syxsense yapılandırması](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Syxsense test kullanıcısı oluşturma
 
@@ -156,18 +156,17 @@ Bu bölümde, Syxsense erişimi vererek Azure çoklu oturum açma özelliğini k
 
 1. Sol Gezinti panelinden **Kullanıcı hesapları** ' na tıklayın.
 
-    ![Syssense yapılandırması](./media/syxsense-tutorial/user1.png)
+    ![Syxsense yapılandırması](./media/syxsense-tutorial/user1.png)
 
 1. **Ekle**'ye tıklayın.
 
-    ![Syssense yapılandırması](./media/syxsense-tutorial/user2.png)
+    ![Syxsense yapılandırması](./media/syxsense-tutorial/user2.png)
 
 1. Kullanıcı ayrıntılarını kuruluşunuzun gereksinimlerine göre sağlayın ve **Kaydet**' e tıklayın.
 
-    ![Syssense yapılandırması](./media/syxsense-tutorial/user3.png)
+    ![Syxsense yapılandırması](./media/syxsense-tutorial/user3.png)
 
-
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
@@ -177,7 +176,7 @@ Erişim panelinde Syxsense kutucuğuna tıkladığınızda, SSO 'yu ayarladığ�
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

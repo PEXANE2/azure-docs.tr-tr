@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543129"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084189"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
@@ -36,13 +36,13 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
  
 - **Kendi hizmetlerinizi genişletin**: Azure 'daki tüketicilerinize özel olarak kendi hizmetinizi işlemek için aynı deneyim ve işlevlerden yararlanın. Hizmetinizi bir Standart Load Balancer arkasına yerleştirerek, özel bağlantı için etkinleştirebilirsiniz. Tüketici daha sonra kendi VNet 'inde özel bir uç nokta kullanarak doğrudan hizmetinize bağlanabilir. Bu bağlantı isteklerini, basit bir onay çağrı akışı kullanarak yönetebilirsiniz. Azure özel bağlantısı, farklı Active Directory kiracılarına ait tüketiciler ve hizmetler için de geçerlidir. 
 
-## <a name="availability"></a>Erişilebilirlik 
+## <a name="availability"></a>Kullanılabilirlik 
  Aşağıdaki tabloda özel bağlantı Hizmetleri ve bunların kullanılabildiği bölgeler listelenmektedir. 
 
-|Senaryo  |Desteklenen hizmetler  |Kullanılabilen bölgeler | Durum  |
+|Senaryo  |Desteklenen hizmetler  |Kullanılabilir bölgeler | Durum  |
 |:---------|:-------------------|:-----------------|:--------|
 |Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler  | Önizleme  |
-|Azure PaaS hizmetleri için özel bağlantı   | Azure Depolama        |  Tüm ortak bölgeler      | Önizleme <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints).  |
+|Azure PaaS hizmetleri için özel bağlantı   | Azure Storage        |  Tüm ortak bölgeler      | Önizleme <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints).  |
 |  | Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      | Önizleme <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints).  |
 |  |  Azure SQL Veritabanı         | Tüm ortak bölgeler      |   Önizleme      |
 ||Azure SQL Veri Ambarı| Tüm ortak bölgeler |Önizleme|
@@ -50,6 +50,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |  |  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler      |   Önizleme      |
 |  |  MySQL için Azure Veritabanı         | Tüm ortak bölgeler      |   Önizleme      |
 |  |  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler      |   Önizleme      |
+|  |  Azure Key Vault         | Tüm ortak bölgeler      |   Önizleme      |
 
 En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin.
 

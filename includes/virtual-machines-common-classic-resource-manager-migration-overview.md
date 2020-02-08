@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines
-author: singhkays
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
-ms.author: kasing
+ms.date: 02/06/2020
+ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 0ffbbe5505c9316f362ebbc41d311f97408f1b17
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: aa03560160795e33a5d26a88d421894c6e20c61f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887587"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089046"
 ---
 Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik ' ten Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ kullanarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır siteden siteye ağ geçitleri. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -25,12 +25,11 @@ Klasik dağıtım modelinden neredeyse tüm özellikler Azure Resource Manager a
 ## <a name="supported-resources-for-migration"></a>Geçiş için desteklenen kaynaklar
 Bu klasik IaaS kaynakları geçiş sırasında desteklenir
 
-* Virtual Machines (Sanal Makineler)
+* Virtual Machines
 * Kullanılabilirlik Kümeleri
-* Bulut Hizmetleri ve Sanal Makineler
 * Depolama Hesapları
 * Sanal Ağlar
-* VPN Gateway’leri
+* VPN Ağ Geçitleri
 * Hızlı rota ağ geçitleri _(yalnızca sanal ağ ile aynı abonelikte)_
 * Ağ Güvenlik Grupları
 * Yönlendirme Tabloları
@@ -114,7 +113,7 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 
 | Hizmet | Yapılandırma | Öneri |
 | --- | --- | --- |
-| Kaynak Yöneticisi |Klasik kaynaklar için rol tabanlı Access Control (RBAC) |Kaynak URI 'SI geçişten sonra değiştirildiğinden, geçişten sonra gerçekleşmesi gereken RBAC ilke güncelleştirmelerini planlamanız önerilir. |
+| Resource Manager |Klasik kaynaklar için rol tabanlı Access Control (RBAC) |Kaynak URI 'SI geçişten sonra değiştirildiğinden, geçişten sonra gerçekleşmesi gereken RBAC ilke güncelleştirmelerini planlamanız önerilir. |
 | Bilgi İşlem |Bir VM ile ilişkili birden çok alt ağ |Alt ağ yapılandırmasını yalnızca bir alt ağa başvuracak şekilde güncelleştirin. Bu, VM 'den bir ikincil NIC (başka bir alt ağa başvuran) kaldırmanızı ve geçiş tamamlandıktan sonra yeniden iliştirmesini gerektirebilir. |
 | Bilgi İşlem |Bir sanal ağa ait olan ancak açık bir alt ağa sahip olmayan sanal makineler |İsteğe bağlı olarak VM 'yi silebilirsiniz. |
 | Bilgi İşlem |Uyarıları olan sanal makineler, otomatik ölçeklendirme ilkeleri |Geçiş aşamasından geçer ve bu ayarlar bırakılır. Geçiş yapmadan önce ortamınızı değerlendirmeniz kesinlikle önerilir. Alternatif olarak, geçiş tamamlandıktan sonra uyarı ayarlarını yeniden yapılandırabilirsiniz. |
@@ -130,5 +129,5 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 | Azure App Service |App Service ortamları içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Azure HDInsight |HDInsight hizmetlerini içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Microsoft Dynamics yaşam döngüsü Hizmetleri |Dynamics yaşam döngüsü Hizmetleri tarafından yönetilen sanal makineleri içeren sanal ağlar |Bu şu anda desteklenmiyor. |
-| Azure AD Etki Alanı Hizmetleri |Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar |Bu şu anda desteklenmiyor. |
+| Azure AD Domain Services |Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar |Bu şu anda desteklenmiyor. |
 | Azure API Management |Azure API Management dağıtımlarını içeren sanal ağlar |Bu şu anda desteklenmiyor. IaaS VNET 'i geçirmek için, kesinti süresi olmayan bir işlem olan API Management dağıtımının VNET 'i değiştirin. |

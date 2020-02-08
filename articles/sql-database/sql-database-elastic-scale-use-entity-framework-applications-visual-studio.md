@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823497"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087177"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework ile elastik veritabanı istemci kitaplığı
 
@@ -27,7 +27,7 @@ Bu belgede, [elastik veritabanı araçlarıyla](sql-database-elastic-scale-intro
 Bu makaleye ait kodu indirmek için:
 
 * Visual Studio 2012 veya üzeri gereklidir. 
-* MSDN 'den [Azure SQL Entity Framework tümleştirme örneği Için elastik veritabanı araçları](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) 'nı indirin. Örneği, seçtiğiniz bir konuma ayıklayın.
+* [Azure SQL Entity Framework tümleştirme örneği Için elastik veritabanı araçlarını](https://github.com/Azure/elastic-db-tools/)indirin. Örneği, seçtiğiniz bir konuma ayıklayın.
 * Visual Studio’yu çalıştırın. 
 * Visual Studio 'da Dosya-> Aç proje/çözüm ' ı seçin. 
 * **Projeyi aç** iletişim kutusunda, indirdiğiniz örneğe gidin ve örneği açmak Için **Entityframeworkcodefırst. sln** ' yi seçin. 
@@ -192,9 +192,9 @@ Yukarıdaki kod örnekleri, Entity Framework ile verilere bağımlı yönlendirm
 
 | Geçerli Oluşturucu | Veriler için yeniden yazan Oluşturucu | Taban Oluşturucu | Notlar |
 | --- | --- | --- | --- |
-| MyContext () |Elayapışscalecontext (ShardMap, TKey) |DbContext (DbConnection, bool) |Bağlantı, parça haritasında bir işlev ve verilere bağımlı yönlendirme anahtarı olmalıdır. Otomatik bağlantı oluşturma ile EF ile geçiş yapmanız gerekir, bunun yerine bağlantıyı aracısına eklemek için parça haritasını kullanın. |
+| MyContext() |Elayapışscalecontext (ShardMap, TKey) |DbContext (DbConnection, bool) |Bağlantı, parça haritasında bir işlev ve verilere bağımlı yönlendirme anahtarı olmalıdır. Otomatik bağlantı oluşturma ile EF ile geçiş yapmanız gerekir, bunun yerine bağlantıyı aracısına eklemek için parça haritasını kullanın. |
 | MyContext (dize) |Elayapışscalecontext (ShardMap, TKey) |DbContext (DbConnection, bool) |Bağlantı, parça haritasının ve verilere bağımlı yönlendirme anahtarının bir işlevidir. Sabit bir veritabanı adı veya bağlantı dizesi, parça eşlemesi tarafından doğrulama tarafından doğrudan doğrulanarak çalışmaz. |
-| MyContext (DbCompiledModel) |Elayapışscalecontext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Sağlanan model ile verilen parça eşlemesi ve parçalara ayırma anahtarı için bağlantı oluşturulur. Derlenen model, temel citor 'a geçirilir. |
+| MyContext(DbCompiledModel) |Elayapışscalecontext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Sağlanan model ile verilen parça eşlemesi ve parçalara ayırma anahtarı için bağlantı oluşturulur. Derlenen model, temel citor 'a geçirilir. |
 | MyContext (DbConnection, bool) |Elayapışscalecontext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |Bağlantı, parça haritalarından ve anahtardan çıkarsanmalıdır. Giriş olarak sağlanamaz (giriş, zaten parça haritasını ve anahtarı kullanmadıkça). Boole değeri geçirilir. |
 | MyContext (dize, DbCompiledModel) |Elayapışscalecontext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Bağlantı, parça haritalarından ve anahtardan çıkarsanmalıdır. Giriş olarak sağlanamaz (giriş, parça haritasını ve anahtarını kullanmadıkça). Derlenen model geçirilir. |
 | MyContext (ObjectContext, bool) |Elayapışscalecontext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Yeni oluşturucunun, bir giriş olarak geçirilen ObjectContext 'teki herhangi bir bağlantının elastik ölçeğe göre yönetilen bir bağlantıya yeniden yönlendirildiğinden emin olması gerekir. Objectbağlamların ayrıntılı bir tartışması, bu belgenin kapsamı dışındadır. |

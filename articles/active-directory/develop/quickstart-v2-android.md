@@ -2,21 +2,21 @@
 title: Microsoft Identity platform Android hızlı başlangıç | Mavisi
 description: Android uygulamalarının Microsoft Identity platform uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/15/2019
-ms.author: twhitney
+ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e0616ae2c3b58c694e300abca28a9e34f8442fcb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703720"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084534"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
@@ -46,7 +46,7 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 > ### <a name="step-2-download-the-project"></a>2\. Adım: Projeyi indirme 
 > * [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
-> ### <a name="step-3-configure-your-project"></a>3\. Adım:Projenizi yapılandırma
+> ### <a name="step-3-configure-your-project"></a>3\. Adım: Projenizi yapılandırma
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
 > 2.  >  **src** > **Main** > **res** > **RAW**, **auth_config_multiple_account. JSON** ' ı açın ve aşağıdaki kodla değiştirin:
 > ```javascript 

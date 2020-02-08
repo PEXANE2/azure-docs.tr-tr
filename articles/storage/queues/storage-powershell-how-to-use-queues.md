@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313861"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087060"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Kuyruk depolama işlemleri gerçekleştirme
 
@@ -25,7 +25,7 @@ Azure kuyruk depolama, dünyanın her yerinden HTTP veya HTTPS aracılığıyla 
 > * Kuyruğu alma
 > * Bir ileti ekleme
 > * İletiyi oku
-> * İleti silme
+> * İletiyi silme
 > * Bir kuyruk silme
 
 Bu nasıl yapılır, Azure PowerShell modülünü az sürüm 0,7 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
@@ -34,7 +34,7 @@ Kuyruklar için veri düzlemi için PowerShell cmdlet 'leri yok. İleti ekleme, 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
@@ -78,7 +78,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Kuyruk oluşturma
 
-Aşağıdaki örnek, depolama hesabı adını ve erişim anahtarını içeren depolama hesabı bağlamını kullanarak Azure depolama 'ya bir bağlantı kurar. Ardından, ' SıraAdı ' adlı bir sıra oluşturmak için [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) cmdlet 'ini çağırır.
+Aşağıdaki örnek, depolama hesabı adını ve erişim anahtarını içeren depolama hesabı bağlamını kullanarak Azure depolama 'ya bir bağlantı kurar. Ardından, ' howtoqueue ' adlı bir sıra oluşturmak için [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) cmdlet 'ini çağırır.
 
 ```powershell
 $queueName = "howtoqueue"
@@ -188,7 +188,7 @@ Bu nasıl yapılır makalesinde, aşağıdakiler dahil olmak üzere PowerShell i
 > * Kuyruğu alma
 > * Bir ileti ekleme
 > * Sonraki iletiyi okuyun
-> * İleti silme
+> * İletiyi silme
 > * Bir kuyruk silme
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell Storage cmdlet 'leri

@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849740"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086666"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Konuları ve olay aboneliklerini izleme
 
@@ -40,7 +40,7 @@ Event Grid Edge 'de, [Prometheus Exposition biçimindeki](https://prometheus.io/
         }
  ```    
 
-Ölçümler, http için modülün `5888/metrics` ve https için `4438/metrics` kullanılabilir. Örneğin, http için `http://<modulename>:4438/metrics?api-version=2019-01-01-preview`. Bu noktada, ölçüm modülü bu [örnek mimaride](https://github.com/veyalla/ehm)olduğu gibi ölçümleri toplamak için uç noktayı yoklayabilirler.
+Ölçümler, http için modülün `5888/metrics` ve https için `4438/metrics` kullanılabilir. Örneğin, http için `http://<modulename>:5888/metrics?api-version=2019-01-01-preview`. Bu noktada, ölçüm modülü bu [örnek mimaride](https://github.com/veyalla/ehm)olduğu gibi ölçümleri toplamak için uç noktayı yoklayabilirler.
 
 ## <a name="available-metrics"></a>Mevcut ölçümler
 
@@ -63,9 +63,9 @@ Hem konular hem de olay abonelikleri, olay teslimi ve modül performansı hakkı
 | Ölçüm | Açıklama |
 | ------ | ----------- |
 | Deliverybaşarılı sayısı | Yapılandırılmış uç noktaya başarıyla teslim edilen olay sayısı
-| deliveryFailureCounts | Yapılandırılan uç noktada başarısız olan olay teslimi denemesi sayısı
+| deliveryFailureCounts | Yapılandırılmış uç noktaya teslim edilemedi olay sayısı
 | Deliveryms | Milisaniye olarak başarıyla teslim edilen olayların gecikmesi
 | Deliveryfailurelat, MS | Milisaniye cinsinden olayların teslim hatalarının gecikmesi
 | systemDelayForFirstAttemptMs | İlk teslim denemesinden önce olayların sistem gecikmesi (milisaniye olarak)
 | Ityattemptscount | Olay teslim denemesi sayısı-başarılı ve başarısız
-| expiredCounts | Teslim edilemiyor olay sayısı 
+| expiredCounts | Zaman aşımına uğradığı ve yapılandırılan uç noktaya teslim edilmemiş olay sayısı

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932636"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084454"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -28,7 +28,7 @@ ms.locfileid: "75932636"
 
 Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Premium P2
 - Genel yönetici veya Kullanıcı Yöneticisi
@@ -93,7 +93,7 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
     ![Erişim gözden geçirmesi oluşturma-tamamlanma ayarları](./media/create-access-review/upon-completion-settings.png)
 
-1. Reddedilen kullanıcılar için erişimi otomatik olarak kaldırmak istiyorsanız, **etkinleştirilecek** **sonuçları kaynağa otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
+1. Engellenen kullanıcılar için otomatik olarak kaldırmak istiyorsanız, **etkinleştirmek**üzere **sonuçları otomatik uygula** ' yı ayarlayın. Gözden geçirme tamamlandığında sonuçları el ile uygulamak istiyorsanız, anahtarı **devre dışı**olarak ayarlayın.
 
 1. Gözden geçiren tarafından gözden geçirilmemiş kullanıcılar için gözden geçirme süresi içinde gözden **geçirmeli yanıt** verme listesini kullanın. Bu ayar, gözden geçirenler tarafından el ile gözden geçirilmiş kullanıcıları etkilemez. Son Gözden geçirenin kararı reddederse, kullanıcının erişimi kaldırılır.
 
@@ -127,6 +127,20 @@ Erişim gözden geçirmesi ayarlarını belirttikten sonra **Başlat**' a tıkla
 Varsayılan olarak, Azure AD gözden geçirenlere İnceleme başladıktan kısa bir bir e-posta gönderir. Azure AD 'ye e-posta gönderme seçeneğini belirlerseniz, gözden geçirenlere bir erişim incelemesinin tamamlanmasını beklediğini bildirin. Bunlara, [gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md)yönergelerini gösterebilirsiniz. Gözden geçirmeniz konuklarınız kendi erişimini gözden geçirmeleri için ise, bunları [gruplara veya uygulamalara yönelik erişimin nasıl incelendiğinin](review-your-access.md)talimatlarını gösterir.
 
 Konukları gözden geçirenler olarak atadıysanız ve daveti kabul etmediyse, bu kullanıcılar, gözden geçirenlerden önce daveti kabul etmeleri gerektiğinden, erişim incelemelerinden e-posta almamalıdır.
+
+## <a name="access-review-status-table"></a>Erişim gözden geçirmesi durum tablosu
+
+| Durum | Tanım |
+|--------|------------|
+|NotStarted | İnceleme oluşturuldu, Kullanıcı keşfi başlamak için bekliyor. |
+|Başlatılıyor   | Gözden geçirinin parçası olan tüm kullanıcıları tanımlamak için Kullanıcı keşfi devam ediyor. |
+|Başlatılıyor | İnceleme başlatılıyor. E-posta bildirimleri etkinse, e-postalar gözden geçirenlere gönderilir. |
+|Devam ediyor | İnceleme başlatıldı. E-posta bildirimlerinin etkin olduğu e-postalar gözden geçirenlere gönderilmiştir. Gözden geçirenler, son tarihe kadar karar gönderebilir. |
+|Tamamlan | Gözden geçirme tamamlandı ve gözden geçirme sahibine e-postalar gönderiliyor. |
+|Oto gözden geçirme | İnceleme bir sistem inceleme aşamasında. Sistem, öneriler veya önceden yapılandırılmış kararlar temelinde incelenebilecek kullanıcılar için kararları kaydediyor. |
+|Oto gözden geçirildi | Gözden geçirilmemiş tüm kullanıcılar için sistem tarafından kararlar kaydedilir. İnceleme, otomatik uygulama etkinse **uygulamaya** devam etmek için hazırlayın. |
+|Uygulamayı | Onaylanan kullanıcılar için erişim değişikliği olmayacaktır. |
+|Uygulanmış | Varsa, reddedilen kullanıcılar kaynak veya dizinden kaldırılmıştır. |
 
 ## <a name="create-reviews-via-apis"></a>API 'Ler aracılığıyla incelemeler oluşturma
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017012"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087133"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>AVS özel bulutunuz için bir VPN bağlantısı yapılandırma
 
@@ -97,7 +97,7 @@ Noktadan siteye VPN bağlantısı, oluşturduğunuz ilk AVS özel bulutunun DNS 
 
     ![VPN bağlantısını Düzenle](media/viscosity-edit-connection.png)
 
-7. **Ağ** sekmesine tıklayın ve bir virgül ya da boşluk ve etki alanı ile ayrılmış olan AVS özel bulut DNS sunucusu ıp adreslerini ```AVS.io```olarak girin. **VPN sunucusu tarafından GÖNDERILEN DNS ayarlarını yoksay**' ı seçin.
+7. **Ağ** sekmesine tıklayın ve bir virgül ya da boşluk ve etki alanı ile ayrılmış olan AVS özel bulut DNS sunucusu ıp adreslerini ```az.cloudsimple.io```olarak girin. **VPN sunucusu tarafından GÖNDERILEN DNS ayarlarını yoksay**' ı seçin.
 
     ![VPN ağı](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ Siteden siteye VPN ağ geçidi oluşturmak için bkz. [siteden sıteye VPN ağ g
 
 > [!IMPORTANT]
 >    1. VPN cihazınızda 1200 ' de TCP ve üst sınırı ayarlayın. Ya da VPN cihazlarınız, sahip olma özelliğini desteklemiyorsa, bunun yerine tünel arabirimindeki MTU değerini 1240 bayta ayarlayabilirsiniz.
-> 2. Siteden siteye VPN kurulduktan sonra, * için DNS isteklerini iletin. AVS.io, AVS özel bulut DNS sunucularına gidin. Şirket [ıçı DNS kurulumu](on-premises-dns-setup.md)'ndaki yönergeleri izleyin.
+> 2. Siteden siteye VPN kurulduktan sonra, *. cloudsimple.io için DNS isteklerini AVS özel bulut DNS sunucularına iletin. Şirket [ıçı DNS kurulumu](on-premises-dns-setup.md)'ndaki yönergeleri izleyin.

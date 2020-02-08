@@ -3,153 +3,153 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: tanmaygore
+ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188347"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068458"
 ---
-## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Iaas kaynaklarını Klasik dağıtım modelinden Azure Resource Manager'a geçirme
-İlk olarak, bir hizmet (Iaas) kaynak olarak altyapıyı veri düzlemi ve yönetim düzlemi işlemleri arasındaki farkı anlamak önemlidir.
+## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>IaaS kaynaklarını klasik dağıtım modelinden Azure Resource Manager geçirin
+İlk olarak, hizmet olarak altyapı (IaaS) kaynakları üzerinde veri düzlemi ve yönetim düzlemi işlemleri arasındaki farkı anlamak önemlidir.
 
-* *Yönetim/denetim düzlemi* yönetim/denetim düzlemi veya kaynakların değiştirilmesi için API'ye gelen çağrıları açıklar. Örneğin, VM oluşturma, bir sanal makineyi yeniden başlatma ve çalışmakta olan kaynakları yönetmek için bir sanal ağı yeni alt ağla güncelleştirme gibi işlemler. Bunlar Vm'lere bağlanması doğrudan etkilemez.
-* *Veri düzlemi* (uygulama) uygulamanın kendisinin çalışma zamanını açıklar ve örneklerle Azure API üzerinden gerçekleştirilmeyen etkileşimi içerir. Örneğin, sitenize erişme ya da çalışan bir SQL Server örneği veya bir MongoDB sunucusundan veri çekme verilerdir düzlemi veya uygulama etkileşimleri. Diğer, bir depolama hesabından blob kopyalama ve sanal makineye Uzak Masaüstü Protokolü (RDP) veya güvenli Kabuk (SSH) kullanmak için bir genel IP adresi erişim verilebilir. Bu işlemler, uygulamanın işlem, ağ ve depolama kaynaklarında çalışmaya devam etmesini sağlar.
+* *Yönetim/Denetim düzlemi* , yönetim/denetim düzlemi veya kaynak değiştirme API 'sine gelen çağrıları açıklar. Örneğin, VM oluşturma, bir sanal makineyi yeniden başlatma ve çalışmakta olan kaynakları yönetmek için bir sanal ağı yeni alt ağla güncelleştirme gibi işlemler. Bunlar VM 'lere bağlanmayı doğrudan etkilemez.
+* *Veri düzlemi* (uygulama) uygulamanın kendisi için çalışma zamanını açıklar ve Azure API 'si üzerinden gitmediği örneklerle etkileşim içerir. Örneğin, Web sitenize erişmek veya çalışan bir SQL Server örneğinden ya da MongoDB sunucusundan veri çekmek için veri düzlemi veya uygulama etkileşimlerinin olması gerekir. Diğer örneklerde, bir depolama hesabından bir blob kopyalama ve bir genel IP adresine Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) kullanmak için sanal makineye erişme dahildir. Bu işlemler, uygulamanın işlem, ağ ve depolama kaynaklarında çalışmaya devam etmesini sağlar.
 
-Veri düzlemi, Klasik dağıtım modeli ve Resource Manager yığını arasında aynıdır. Geçiş işlemi sırasında Klasik dağıtım modelinden Resource Manager yığınında kaynakları, gösterimini Microsoft çevirir farktır. Sonuç olarak, yeni araçlar, API'ler ve SDK'lar, Resource Manager yığınında kaynaklarınızı yönetmek için kullanmanız gerekir.
+Veri düzlemi, klasik dağıtım modeliyle Kaynak Yöneticisi yığınları arasında aynıdır. Bunun farkı, geçiş işlemi sırasında Microsoft 'un kaynakları klasik dağıtım modelinden Kaynak Yöneticisi yığınında dönüştürmektir. Sonuç olarak, Kaynak Yöneticisi yığınında kaynaklarınızı yönetmek için yeni araçlar, API 'Ler ve SDK 'Lar kullanmanız gerekir.
 
-![Yönetim/denetim düzlemi ve veri düzlemi arasındaki farkı gösteren diyagram](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Yönetim/Denetim düzlemi ve veri düzlemi arasındaki farkı gösteren diyagram](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
-> Bazı geçiş senaryolarında, Azure platformu sanal makinenizi durdurur, serbest bırakır ve yeniden başlatır. Bu kısa bir veri düzlemi kapalı kalma neden olur.
+> Bazı geçiş senaryolarında, Azure platformu sanal makinenizi durdurur, serbest bırakır ve yeniden başlatır. Bu, kısa bir veri düzlemi kapalı kalma süresine neden olur.
 >
 
 ## <a name="the-migration-experience"></a>Geçiş deneyimi
 Geçişe başlamadan önce:
 
 * Geçirmek istediğiniz kaynakların desteklenmeyen özellikleri veya yapılandırmaları olmadığından emin olun. Bu sorunlar genellikle platform tarafından algılanır ve bir hata oluşturulur.
-* Bir sanal ağda olmayan Vm'leriniz varsa, bunlar durdurulur ve serbest hazırlama işleminin bir parçası olarak. Genel IP adresini kaybetmek istemiyorsanız, hazırlama işlemini tetiklemeden önce IP adresi ayırma göz önünde bulundurun. VM'ler sanal ağdaysa, durduruldu serbest ve değil.
+* Sanal bir ağda olmayan VM 'leriniz varsa, hazırlama işleminin bir parçası olarak durdurulur ve serbest bırakılır. Genel IP adresini kaybetmek istemiyorsanız, hazırlama işlemini tetiklemeden önce IP adresini rezervasyonu göz önünde bulundurun. VM 'Ler bir sanal ağda ise durdurulmaz ve serbest bırakılır.
 * Geçiş sırasında gerçekleşebilecek beklenmeyen hataları göz önünde bulundurarak geçişinizi çalışma saatleri dışına gerçekleşecek şekilde planlayın.
 * Hazırlama adımı tamamlandıktan sonra doğrulamayı kolaylaştırmak için PowerShell’i, komut satırı arabirimi (CLI) komutlarını veya REST API’leri kullanarak VM’lerinizin geçerli yapılandırmasını indirin.
-* Otomasyon ve kullanıma hazır hale getirme betiklerinizi Resource Manager dağıtım modeline Geçişe başlamadan önce işlemek için güncelleştirin. İsteğe bağlı olarak, kaynaklar hazırlanmış durumdayken GET işlemleri gerçekleştirebilirsiniz.
-* Iaas kaynaklarını Klasik dağıtım modelinde yapılandırılır ve geçiş tamamlandıktan sonra planlama rol tabanlı erişim denetimi (RBAC) ilkelerini değerlendirin.
+* Geçişe başlamadan önce Kaynak Yöneticisi dağıtım modelini işlemek için Otomasyon ve işlemleştirme betikleri güncelleştirin. İsteğe bağlı olarak, kaynaklar hazırlanmış durumdayken GET işlemleri gerçekleştirebilirsiniz.
+* Klasik dağıtım modelindeki IaaS kaynaklarında yapılandırılan rol tabanlı Access Control (RBAC) ilkelerini değerlendirin ve geçiş tamamlandıktan sonra için plan yapın.
 
 Geçiş iş akışı aşağıdaki gibidir:
 
 ![Geçiş iş akışını gösteren diyagram](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
-> Aşağıdaki bölümlerde açıklanan işlem, tüm bir kere etkili olur. Desteklenmeyen bir özellik veya bir yapılandırma hatası dışında bir sorun varsa, hazırlama, yeniden deneme durdurma veya işlemeyi işlemi. Azure eylemi yeniden dener.
+> Aşağıdaki bölümlerde açıklanan işlemler ıdempotent. Desteklenmeyen bir özellik veya yapılandırma hatası dışında bir sorununuz varsa, hazırlama, durdurma veya işleme işlemini yeniden deneyin. Azure, eylemi yeniden dener.
 >
 >
 
 ### <a name="validate"></a>Doğrulama
-Doğrulama işlemi, geçiş sürecinin ilk adımıdır. Bu adımın amacı, Klasik dağıtım modelinde geçirmek istediğiniz kaynakların durumunu analiz sağlamaktır. İşlem kaynakları (başarı veya başarısızlık) geçişe uygun olup olmadığını değerlendirir.
+Doğrulama işlemi, geçiş sürecinin ilk adımıdır. Bu adımın amacı, klasik dağıtım modelinde geçirmek istediğiniz kaynakların durumunu analiz olmaktır. İşlem, kaynakların geçiş özelliğine sahip olup olmadığını değerlendirir (başarı veya başarısızlık).
 
-(Sanal ağ içinde değilse) sanal ağ veya Bulut hizmeti seçin, geçiş için doğrulamak istediğiniz. Kaynak geçişe uygun değilse, Azure neden olma nedenlerini listeler.
+Geçiş için doğrulamak istediğiniz sanal ağı veya bulut hizmetini (sanal ağ içinde değilse) seçersiniz. Kaynak geçiş özelliğine sahip değilse, Azure nedenleri bu nedenlerle listeler.
 
-#### <a name="checks-not-done-in-the-validate-operation"></a>Doğrulama işlemi içinde yapılmadı denetler
+#### <a name="checks-not-done-in-the-validate-operation"></a>Doğrulama işleminde yapılan denetimler yapılmadı
 
-Doğrulama işlemi, yalnızca klasik dağıtım modelinde kaynakların durumunu analiz eder. Tüm hataları ve desteklenmeyen senaryolar Klasik dağıtım modelinde çeşitli yapılandırmalarda nedeniyle kontrol edebilirsiniz. Azure Resource Manager yığınında geçiş sırasında kaynaklar üzerinde oluşturabileceğini tüm sorunları olup olmadığını denetlemek mümkün değildir. Kaynakları (Hazırlama işlemi) geçişin sonraki adımda dönüşüm geçmeleri olduğunda bu sorunlar yalnızca denetlenir. Aşağıdaki tabloda, doğrulama işleminde alınmamış tüm sorunları listeler:
+Doğrulama işlemi yalnızca klasik dağıtım modelindeki kaynakların durumunu analiz eder. Klasik dağıtım modelindeki çeşitli yapılandırmalar nedeniyle tüm hatalara ve desteklenmeyen senaryolara işaret edebilir. Azure Resource Manager yığınının geçiş sırasında kaynakları üzerinde getirebileceğini belirten tüm sorunları denetlemek mümkün değildir. Bu sorunlar yalnızca, geçiş işleminin bir sonraki adımında (hazırlama işlemi) kaynak dönüştürmesi yapıldığında denetlenir. Aşağıdaki tabloda, doğrulama işleminde Denetlenmemiş tüm sorunlar listelenmektedir:
 
 
-|Ağ denetimleri doğrulama işlemi içinde değil|
+|Ağ denetimleri doğrulama işleminde yok|
 |-|
-|ER hem de VPN ağ geçitleri olan sanal ağı.|
-|Bağlantısı kesik durumdaki bir sanal ağ geçidi bağlantısı.|
-|Tüm ER devreler için Azure Resource Manager yığını önceden geçirilir.|
-|Azure Resource Manager kotası, ağ kaynakları için denetler. Örneğin: statik genel IP, dinamik genel IP'ler, yük dengeleyici, ağ güvenlik grupları, yönlendirme tablolarını ve ağ arabirimleri. |
-| Tüm yük dengeleyici kuralları, dağıtım ve sanal ağ arasında geçerlidir. |
-| Aynı sanal ağda durdu-serbest VM'ler arasında çakışan özel IP'ler. |
+|Hem ER hem de VPN ağ geçitlerine sahip bir sanal ağ.|
+|Bağlantısı kesik durumda olan bir sanal ağ geçidi bağlantısı.|
+|Tüm ER devreleri Azure Resource Manager yığınına önceden geçirilir.|
+|Ağ kaynakları için kota denetimleri Azure Resource Manager. Örneğin: statik genel IP, dinamik genel IP 'Ler, yük dengeleyici, ağ güvenlik grupları, yol tabloları ve ağ arabirimleri. |
+| Tüm yük dengeleyici kuralları dağıtım ve sanal ağ arasında geçerlidir. |
+| Aynı sanal ağdaki durdurma serbest bırakılmış VM 'Ler arasında özel IP 'Ler çakışıyor. |
 
 ### <a name="prepare"></a>Hazırlama
-Hazırlama işlemi, geçiş sürecinin ikinci adımıdır. Bu adımın amacı, Iaas kaynaklarını Klasik dağıtım modelinden Resource Manager kaynaklarına dönüştürme içindir. Ayrıca, bu yan yana görselleştirmenizi için hazırlama işlemi sunar.
+Hazırlama işlemi, geçiş sürecinin ikinci adımıdır. Bu adımın amacı, kaynak Kaynak Yöneticisi için klasik dağıtım modelinden IaaS kaynaklarının dönüştürülmesine benzetim sağlamaktır. Ayrıca, hazırlama işlemi sizin görselleştirilecek şekilde bu yan yana sunulur.
 
 > [!NOTE] 
-> Kaynaklarınızı Klasik dağıtım modelinde, bu adım sırasında değiştirilmez. Geçiş çalışıyorsanız çalıştırmak için güvenli bir adımdır. 
+> Klasik dağıtım modelindeki kaynaklarınız Bu adım sırasında değiştirilmez. Geçişe çalışıyorsanız, çalıştırmak için güvenli bir adımdır. 
 
-(Bir sanal ağ değilse), sanal ağ veya Bulut hizmeti, geçiş için hazırlamak istediğinizi seçin.
+Geçiş için hazırlamak istediğiniz sanal ağı veya bulut hizmetini (sanal ağ değilse) seçersiniz.
 
-* Kaynak geçişe uygun değilse, Azure geçiş işlemini durdurur ve hazırlama işlemi başarısız olmasının nedeni listeler.
-* Azure, kaynağın geçirilebilir durumda, Geçirilmekte olan kaynaklar için yönetim düzlemi işlemlerini kilitler. Örneğin, geçirilmekte olan bir VM’ye veri diski ekleyemezsiniz.
+* Kaynak geçiş özelliğine sahip değilse, Azure geçiş işlemini sonlandırır ve hazırlama işleminin başarısız olma nedenini listeler.
+* Kaynak geçiş özelliğine sahipse, Azure geçiş altındaki kaynaklar için yönetim düzlemi işlemlerini kilitler. Örneğin, geçirilmekte olan bir VM’ye veri diski ekleyemezsiniz.
 
-Azure daha sonra meta verileri geçişi Klasik dağıtım modelinden Resource Manager kaynakların geçirilmesi için başlatır.
+Azure daha sonra, kaynak geçişi için Kaynak Yöneticisi için klasik dağıtım modelinden meta verilerin geçirilmesini başlatır.
 
-Hazırlama işlemi tamamlandıktan sonra Klasik dağıtım modeli ve Resource Manager kaynakları görselleştirme seçeneğiniz vardır. Azure platformu, klasik dağıtım modelindeki her bulut hizmeti için `cloud-service-name>-Migrated` deseninde bir kaynak grubu adı oluşturur.
-
-> [!NOTE]
-> Geçirilen kaynaklar için oluşturulan bir kaynak grubu adını seçmek mümkün değildir (diğer bir deyişle, "-geçirildi"). Ancak, geçiş tamamlandıktan sonra kaynakları, istediğiniz herhangi bir kaynak grubuna taşımak için Azure Resource Manager'ın taşıma özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../articles/resource-group-move-resources.md).
-
-Aşağıdaki iki ekran görüntüleri, başarılı bir hazırlama sonra işlem sonucunu göstermektedir. İlki, özgün bulut hizmetini içeren bir kaynak grubunu gösterir. İkinci yeni gösterilir "-geçirildi" eşdeğer Azure Resource Manager kaynaklarını içeren kaynak grubu.
-
-![Özgün bulut hizmetini gösteren ekran görüntüsü](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
-
-![Hazırlama işlemi Azure Resource Manager kaynaklarını gösteren ekran görüntüsü](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
-
-Hazırlık aşaması tamamlandıktan sonra kaynaklarınızı Sahne Arkası göz aşağıdadır. Veri düzlemi kaynak aynı olduğunu unutmayın. Hem yönetim düzlemi (Klasik dağıtım modeli) hem de denetim düzlemi (Resource Manager) gösterilir.
-
-![Hazırlık aşamasının diyagramı](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+Hazırlama işlemi tamamlandıktan sonra, hem klasik dağıtım modelinde hem de Kaynak Yöneticisi Kaynakları görselleştirme seçeneğiniz vardır. Azure platformu, klasik dağıtım modelindeki her bulut hizmeti için `cloud-service-name>-Migrated` deseninde bir kaynak grubu adı oluşturur.
 
 > [!NOTE]
-> Klasik dağıtım modelinde bir sanal ağda olmayan VM'lerin durdurulur ve serbest geçişin bu aşamasında.
+> Geçirilen kaynaklar için oluşturulan bir kaynak grubunun adını seçmek mümkün değildir (yani, "-geçirilmiş"). Geçiş tamamlandıktan sonra, kaynakları istediğiniz herhangi bir kaynak grubuna taşımak için Azure Resource Manager taşıma özelliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../articles/resource-group-move-resources.md).
+
+Aşağıdaki iki ekran görüntüsü başarılı bir hazırlama işleminden sonra sonucu gösterir. İlki, özgün bulut hizmetini içeren bir kaynak grubu gösterir. İkinci bir, eşdeğer Azure Resource Manager kaynaklarını içeren yeni "-geçirilmiş" kaynak grubunu gösterir.
+
+![Orijinal bulut hizmetini gösteren ekran görüntüsü](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+
+![Hazırlama işleminde Azure Resource Manager kaynaklarını gösteren ekran görüntüsü](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+
+Hazırlama aşamasının tamamlanmasından sonra kaynaklarınızın gerisinde bir bakış aşağıda verilmiştir. Veri düzledeki kaynağın aynı olduğunu unutmayın. Hem yönetim düzlemi (klasik dağıtım modeli) hem de denetim düzlemi (Kaynak Yöneticisi) ile temsil edilir.
+
+![Hazırlama aşamasının diyagramı](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+
+> [!NOTE]
+> Klasik dağıtım modelindeki bir sanal ağda olmayan VM 'Ler, geçişin bu aşamasında durdurulur ve serbest bırakılır.
 >
 
 ### <a name="check-manual-or-scripted"></a>Denetim (el ile veya betikle)
-Denetim adımında, daha önce indirmiş olduğunuz yapılandırmayı geçişte bir sorun olmadığını doğrulamak için kullanılacak seçeneğiniz vardır. Alternatif olarak, portalı ve Noktasal özellikleri ve meta verileri geçişi iyi görünüyor doğrulamak için kaynakları oturum açabilirsiniz.
+Denetim adımında, geçişin doğru göründüğünü doğrulamak için daha önce indirdiğiniz yapılandırmayı kullanma seçeneğiniz vardır. Alternatif olarak, portalda oturum açabilir ve meta veri geçişinin iyi göründüğünü doğrulamak için özellikleri ve kaynakları kontrol edin.
 
-Sanal ağ geçişi yapıyorsanız, sanal makinelerin çoğu yapılandırması yeniden başlatılmaz. Bu vm'lerdeki uygulamalar için uygulama hala çalıştığını doğrulayabilirsiniz.
+Sanal ağ geçişi yapıyorsanız, sanal makinelerin çoğu yapılandırması yeniden başlatılmaz. Bu sanal makinelerdeki uygulamalar için uygulamanın hala çalıştığını doğrulayabilirsiniz.
 
-VM'lerin beklendiği gibi çalıştığını ve güncelleştirilen betiklerinizin doğru çalışması için izleme ve operasyonel betiklerinizi test edebilirsiniz. Kaynaklar hazırlanmış durumdayken yalnızca GET işlemleri desteklenir.
+Sanal makinelerin beklendiği gibi çalışıp çalışmadığını ve güncelleştirilmiş betiklerinizin doğru çalıştığını görmek için izleme ve işletimsel betiklerinizi test edebilirsiniz. Kaynaklar hazırlanmış durumdayken yalnızca GET işlemleri desteklenir.
 
-Önce Geçişi tamamlamak gereken süreyi ayarlama penceresi yok. Bu durumdayken dilediğiniz kadar bekleyebilirsiniz. Bununla birlikte, bu kaynaklar için geçişi durdurana veya işleyene kadar yönetim düzlemi kilitli kalır.
+Geçişi yürütmeniz gereken bir zaman kümesi yoktur. Bu durumdayken dilediğiniz kadar bekleyebilirsiniz. Bununla birlikte, bu kaynaklar için geçişi durdurana veya işleyene kadar yönetim düzlemi kilitli kalır.
 
-Herhangi bir sorun yaşarsanız dilediğiniz zaman geçişi durdurabilir ve klasik dağıtım modeline dönebilirsiniz. Geri döndüğünüzde, Azure Klasik dağıtım modelinde bu VM'ler üzerinde normal işlemleri devam edebilir, kaynaklar üzerindeki yönetim düzlemi işlemlerini açar.
+Herhangi bir sorun yaşarsanız dilediğiniz zaman geçişi durdurabilir ve klasik dağıtım modeline dönebilirsiniz. Geri dönüp Azure, klasik dağıtım modelinde bu VM 'lerde normal işlemleri sürdürmenize olanak sağlamak üzere yönetim düzlemi işlemlerini kaynaklar üzerinde açar.
 
 ### <a name="abort"></a>Durdurma
-Değişikliklerinizi Klasik dağıtım modeline dönmek ve geçiş işlemini durdurmak istiyorsanız, bu isteğe bağlı bir adımdır. Bu işlem, kaynaklarınız için Resource Manager (hazırlama adımda oluşturulan) meta verileri siler. 
+Bu, değişikliklerinizi klasik dağıtım modeline dönüştürmek ve geçişi durdurmak istiyorsanız isteğe bağlı bir adımdır. Bu işlem kaynaklarınızın Kaynak Yöneticisi meta verilerini siler (hazırlama adımında oluşturulur). 
 
-![Abort adım diyagramı](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Durdurma adımının diyagramı](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
-> Yürütme işlemini tetiklendikten sonra bu işlem gerçekleştirilemez.     
+> Bu işlem, işleme işlemini tetikledikten sonra yapılamaz.     
 >
 
 ### <a name="commit"></a>İşleme
-Doğrulama adımını tamamladıktan sonra geçişi işleyebilirsiniz. Kaynaklar artık Klasik dağıtım modelinde görünmez ve yalnızca Resource Manager dağıtım modelinde kullanılabilir. Geçirilen kaynaklar yalnızca yeni portalda yönetilebilir.
+Doğrulama adımını tamamladıktan sonra geçişi işleyebilirsiniz. Kaynaklar artık klasik dağıtım modelinde görünmez ve yalnızca Kaynak Yöneticisi dağıtım modelinde kullanılabilir. Geçirilen kaynaklar yalnızca yeni portalda yönetilebilir.
 
 > [!NOTE]
-> Bu, bir kere etkili olan bir işlemdir. Başarısız olursa, işlemi yeniden deneyin. Bu, bir destek bileti oluşturun veya oluşturmak başarısız olmaya devam ederse etiketiyle bir forum gönderisi "Classicıaasmigration" bizim [VM forumumuzda](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
+> Bu, bir kere etkili olan bir işlemdir. Başarısız olursa, işlemi yeniden deneyin. Başarısız olmaya devam ederse, bir destek bileti oluşturun veya [Microsoft Q & a](https://docs.microsoft.com/answers/index.html) 'da bir forum oluşturun
 >
 >
 
-![İşleme adımı diyagramı](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Tamamlama adımının diyagramı](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
-## <a name="migration-flowchart"></a>Geçişi akış çizelgesi
+## <a name="migration-flowchart"></a>Geçiş akış çizelgesi
 
-Geçişe devam gösteren akış grafiği aşağıda verilmiştir:
+Geçişe nasıl devam edeceğine gösteren bir akış çizelgesi aşağıda verilmiştir:
 
 ![Geçiş adımlarını gösteren ekran görüntüsü](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Klasik dağıtım modeli Resource Manager kaynaklarına çevrilmesi
-Aşağıdaki tabloda Klasik dağıtım modelini ve kaynakları Resource Manager gösterimlerini bulabilirsiniz. Diğer özellikler ve kaynaklar şu an desteklenmemektedir.
+## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Kaynak Yöneticisi kaynaklara klasik dağıtım modelinin çevirisi
+Aşağıdaki tabloda, klasik dağıtım modelini ve kaynakların Kaynak Yöneticisi gösterimlerini bulabilirsiniz. Diğer özellikler ve kaynaklar şu an desteklenmemektedir.
 
 | Klasik gösterim | Resource Manager gösterimi | Notlar |
 | --- | --- | --- |
 | Bulut hizmeti adı |DNS adı |Geçiş sırasında, her bulut hizmeti için `<cloudservicename>-migrated` adlandırma deseni kullanılarak yeni bir kaynak grubu oluşturulur. Bu kaynak grubu tüm kaynaklarınızı içerir. Bulut hizmeti adı, genel IP adresiyle ilişkili bir DNS adı olur. |
-| Sanal makine |Sanal makine |Sanal makineye özgü özellikler değiştirilmeden geçirilir. Bilgisayar adı gibi belirli osProfile bilgileri Klasik dağıtım modelinde depolanmaz ve geçişten sonra boş kalır. |
-| Sanal makineye bağlı disk kaynakları |Sanal makineye bağlı örtük diskler |Resource Manager dağıtım modelinde diskler en üst düzey kaynaklar olarak modellenmez. Diskler, VM altındaki örtük diskler olarak geçirilir. Şu anda yalnızca sanal makineye bağlı diskler desteklenmektedir. Resource Manager Vm'lerinde diskler herhangi bir güncelleştirme gerekmeksizin kolayca geçirilmesini sağlayan Klasik dağıtım modelinde, depolama hesapları artık kullanabilirsiniz. |
+| Sanal makine |Sanal makine |Sanal makineye özgü özellikler değiştirilmeden geçirilir. Bilgisayar adı gibi bazı osProfile bilgileri klasik dağıtım modelinde depolanmaz ve geçişten sonra boş kalır. |
+| Sanal makineye bağlı disk kaynakları |Sanal makineye bağlı örtük diskler |Resource Manager dağıtım modelinde diskler en üst düzey kaynaklar olarak modellenmez. Diskler, VM altındaki örtük diskler olarak geçirilir. Şu anda yalnızca sanal makineye bağlı diskler desteklenmektedir. Kaynak Yöneticisi VM 'Ler artık klasik dağıtım modelinde depolama hesapları kullanabilir ve böylece disklerin hiçbir güncelleştirme olmadan kolayca geçirilmesini sağlar. |
 | VM uzantıları |VM uzantıları |Klasik dağıtım modelinden XML uzantıları dışındaki tüm kaynak uzantıları geçirilir. |
-| Sanal makine sertifikaları |Azure Key Vault’ta Sertifikalar |Bir bulut hizmeti hizmet sertifikaları içeriyorsa, geçiş bulut hizmeti başına yeni bir Azure anahtar kasası oluşturulur ve sertifikalar buraya taşınır. VM’ler, anahtar kasasındaki sertifikalara başvuracak şekilde güncelleştirilir. <br><br> Anahtar kasası silmeyin. Bu VM, başarısız bir duruma geçmesine neden olabilir. |
+| Sanal makine sertifikaları |Azure Key Vault’ta Sertifikalar |Bir bulut hizmeti hizmet sertifikaları içeriyorsa, geçiş, bulut hizmeti başına yeni bir Azure Anahtar Kasası oluşturur ve sertifikaları anahtar kasasına taşımaktadır. VM’ler, anahtar kasasındaki sertifikalara başvuracak şekilde güncelleştirilir. <br><br> Anahtar kasasını silmeyin. Bu, VM 'nin başarısız durumuna geçmesine neden olabilir. |
 | WinRM yapılandırması |osProfile altındaki WinRM yapılandırması |Windows Uzaktan Yönetimi yapılandırması, geçiş kapsamında değiştirilmeden taşınır. |
-| Kullanılabilirlik kümesi özelliği |Kullanılabilirlik kümesi kaynağı | Kullanılabilirlik kümesi belirtimi, Klasik dağıtım modelinde VM'deki bir özelliktir. Kullanılabilirlik kümeleri, geçiş kapsamında en üst düzey kaynağa dönüşür. Şu yapılandırmalar desteklenmez: bulut hizmeti başına birden çok kullanılabilirlik kümesi veya bir bulut hizmetindeki herhangi bir kullanılabilirlik kümesinde olmayan VM’lerle birlikte bir veya daha fazla kullanılabilirlik kümesi. |
+| Kullanılabilirlik kümesi özelliği |Kullanılabilirlik kümesi kaynağı | Kullanılabilirlik kümesi belirtimi, klasik dağıtım modelindeki VM 'deki bir özelliktir. Kullanılabilirlik kümeleri, geçiş kapsamında en üst düzey kaynağa dönüşür. Şu yapılandırmalar desteklenmez: bulut hizmeti başına birden çok kullanılabilirlik kümesi veya bir bulut hizmetindeki herhangi bir kullanılabilirlik kümesinde olmayan VM’lerle birlikte bir veya daha fazla kullanılabilirlik kümesi. |
 | Bir VM’deki ağ yapılandırması |Birincil ağ arabirimi |Bir VM’deki ağ yapılandırması, geçişten sonra birincil ağ arabirimi kaynağı olarak gösterilir. Bir sanal ağda olmayan VM’lerin iç IP adresi geçiş sırasında değişir. |
-| Bir VM’de birden çok ağ arabirimi |Ağ arabirimleri |Bir VM ile ilişkili birden çok ağ arabirimi varsa, her ağ arabirimi düzey bir kaynakla tam olarak birlikte tüm özellikler geçişin bir parçası haline gelir. |
+| Bir VM’de birden çok ağ arabirimi |Ağ arabirimleri |Bir VM ile ilişkili birden çok ağ arabirimi varsa, her bir ağ arabirimi, geçişin bir parçası olarak, tüm özelliklerle birlikte en üst düzey bir kaynak haline gelir. |
 | Yük dengeli uç nokta kümesi |Yük dengeleyici |Klasik dağıtım modelinde, platform tarafından her bulut hizmetine örtük bir yük dengeleyici atanıyordu. Geçiş sırasında yeni bir yük dengeleyici kaynağı oluşturulur ve yük dengeleme uç noktası kümesi, yük dengeleyici kurallarına dönüşür. |
 | Gelen NAT kuralları |Gelen NAT kuralları |VM’de tanımlanmış giriş uç noktaları, geçiş sırasında yük dengeleyici altındaki gelen ağ adresi çevirisi kurallarına dönüştürülür. |
-| VIP adresi |DNS adına sahip genel IP adresi |Sanal IP adresi genel bir IP adresine dönüşür ve yük dengeleyiciyle ilişkilendirilir. Yalnızca giriş uç noktası atanmış sanal IP’ler geçirilebilir. |
+| VIP adresi |DNS adına sahip genel IP adresi |Sanal IP adresi genel bir IP adresi olur ve yük dengeleyici ile ilişkilendirilir. Yalnızca giriş uç noktası atanmış sanal IP’ler geçirilebilir. |
 | Sanal ağ |Sanal ağ |Sanal ağ, tüm özellikleriyle birlikte Resource Manager dağıtım modeline geçirilir. `-migrated` adlı yeni bir kaynak grubu oluşturulur. |
 | Ayrılmış IP’ler |Statik ayırma yöntemi kullanan genel IP adresi |Yük dengeleyiciyle ilişkili ayrılmış IP’ler, bulut hizmetinin veya sanal makinenin geçişiyle birlikte geçirilir. İlişkili olmayan ayrılmış IP geçişi şu an desteklenmemektedir. |
 | VM başına genel IP adresi |Dinamik ayırma yöntemi kullanan genel IP adresi |VM’le ilişkili genel IP adresi, ayırma yöntemi statik olarak ayarlanarak bir genel IP adresi kaynağı olarak dönüştürülür. |
@@ -157,11 +157,11 @@ Aşağıdaki tabloda Klasik dağıtım modelini ve kaynakları Resource Manager 
 | DNS sunucuları |DNS sunucuları |Bir sanal ağ veya VM’le ilişkili DNS sunucuları, kendilerine karşılık gelen kaynağın geçişi kapsamında, tüm özellikleriyle birlikte geçirilir. |
 | UDR’ler |UDR’ler |Bir alt ağla ilişkili kullanıcı tanımlı rotalar, geçiş kapsamında Resource Manager dağıtım modeline kopyalanır. Geçiş sırasında, klasik dağıtım modelindeki UDR kaldırılmaz. Geçiş sürdüğü sırada UDR için yönetim düzlemi işlemleri engellenir. |
 | Bir sanal makinenin ağ yapılandırmasında IP iletme özelliği |NIC’de IP iletme özelliği |Bir VM’deki IP iletme özelliği, geçiş sırasında ağ arabirimindeki bir özelliğe dönüştürülür. |
-| Birden çok IP’si olan yük dengeleyici |Birden çok genel IP kaynağı olan yük dengeleyici |Yük dengeleyiciyle ilişkili her genel IP, genel bir IP kaynağına dönüştürülür ve geçişten sonra Yük dengeleyiciyle ilişkili. |
-| VM’deki iç DNS adları |NIC’deki iç DNS adları |Geçiş sırasında, VM’lerin iç DNS son ekleri NIC’deki “InternalDomainNameSuffix” adlı salt okunur bir özelliğe geçirilir. Geçişten sonra son ek değişmez ve VM çözümleme eskisi gibi çalışmaya devam etmesi gerekir. |
+| Birden çok IP’si olan yük dengeleyici |Birden çok genel IP kaynağı olan yük dengeleyici |Yük Dengeleyici ile ilişkili her genel IP, bir genel IP kaynağına dönüştürülür ve geçişten sonra yük dengeleyici ile ilişkilendirilir. |
+| VM’deki iç DNS adları |NIC’deki iç DNS adları |Geçiş sırasında, VM’lerin iç DNS son ekleri NIC’deki “InternalDomainNameSuffix” adlı salt okunur bir özelliğe geçirilir. Son ek geçişten sonra değişmeden kalır ve VM çözümünün daha önce olduğu gibi çalışmaya devam etmesi gerekir. |
 | Sanal ağ geçidi |Sanal ağ geçidi |Sanal ağ geçidi özellikleri değişmeden geçirilir. Ağ geçidiyle ilişkili VIP de değişmez. |
-| Yerel ağ sitesi |Yerel ağ geçidi |Yerel ağ sitesi özellikleri değişmeden yerel ağ geçidi adı verilen yeni bir kaynağa geçirilir. Bu, şirket içi adres ön eklerini ve uzak ağ geçidi IP'sini temsil eder. |
-| Bağlantı başvuruları |Bağlantı |Ağ geçidi ve ağ yapılandırmasının yerel ağ sitesi arasındaki bağlantı başvuruları bağlantı adlı yeni bir kaynak tarafından temsil edilir. Ağ yapılandırma dosyasındaki bağlantı başvurusunun tüm özellikleri değişmeden bağlantı kaynağına kopyalanır. Klasik dağıtım modelinde sanal ağlar arasında bağlantı, sanal ağları temsil eden yerel ağ sitelerine iki IPSec tüneli oluşturularak elde edilir. Bu kaynak yöneticisi modelindeki sanal ağ-sanal-ağ bağlantı türü için yerel ağ geçitleri gerektirmeden dönüştürülür. |
+| Yerel ağ sitesi |Yerel ağ geçidi |Yerel ağ alanı özellikleri, yerel ağ geçidi adlı yeni bir kaynağa değiştirilmeden geçirilir. Bu, şirket içi adres öneklerini ve uzak ağ geçidi IP 'sini temsil eder. |
+| Bağlantı başvuruları |Bağlantı |Ağ yapılandırmasındaki ağ geçidi ve yerel ağ sitesi arasındaki bağlantı başvuruları, bağlantı adlı yeni bir kaynak tarafından temsil edilir. Ağ yapılandırma dosyalarındaki bağlantı başvurusunun tüm özellikleri, bağlantı kaynağına değiştirilmeden kopyalanır. Klasik dağıtım modelindeki sanal ağlar arasındaki bağlantı, sanal ağları temsil eden yerel ağ sitelerine iki IPSec tüneli oluşturularak elde edilir. Bu, yerel ağ geçitleri gerekmeden Kaynak Yöneticisi modelinde sanal ağ-sanal ağ bağlantı türüne dönüştürülür. |
 
 ## <a name="changes-to-your-automation-and-tooling-after-migration"></a>Geçiş sonrası otomasyon ve araçlarınızda gerçekleşecek değişiklikler
-Kaynaklarınızı Klasik dağıtım modelinden Resource Manager dağıtım modeline geçiş işleminin bir parçası olarak, var olan Otomasyon veya geçişten sonra çalışmaya devam etmesini sağlamak için araçları güncelleştirmeniz gerekir.
+Kaynaklarınızı klasik dağıtım modelinden Kaynak Yöneticisi dağıtım modeline geçirmenin bir parçası olarak, geçiş sonrasında çalışmaya devam ettiğinden emin olmak için mevcut otomasyonu veya araçları güncelleştirmeniz gerekir.

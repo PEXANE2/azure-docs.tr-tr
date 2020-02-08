@@ -2,22 +2,22 @@
 title: Microsoft Identity platform iOS ve macOS hızlı başlangıç | Mavisi
 description: Bir iOS veya macOS uygulamasında kullanıcıların oturum açma ve sorgu Microsoft Graph sorgulama hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/24/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 25e37d27805adb47fae19bdcc0e94253f8c4ccf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703465"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084504"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -179,9 +179,9 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Nerede: ||
+> |Konumlar: ||
 > |---------|---------|
-> | `clientId` | *portal.azure.com*’da kaydedilen uygulamanın Uygulama Kimliği |
+> | `clientId` | *portal.azure.com* adresinde kayıtlı uygulamaya ait Uygulama Kimliği |
 > | `authority` | Microsoft Identity platform uç noktası. Çoğu durumda bu *https<span/>://login.microsoftonline.com/common* olur |
 > | `redirectUri` | Uygulamanın yeniden yönlendirme URI 'SI. Varsayılan değeri veya özel yeniden yönlendirme URI 'nizi kullanmak için ' Nil ' geçirebilirsiniz. |
 
@@ -243,7 +243,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Nerede:||
+> |Konumlar:||
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani, Microsoft Graph için `[ "user.read" ]` veya özel Web API 'Leri için `[ "<Application ID URL>/scope" ]` (`api://<Application ID>/access_as_user`) |
 
@@ -258,7 +258,7 @@ let silentParams = MSALSilentTokenParameters(scopes: kScopes, account: account)
 self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Nerede: ||
+> |Konumlar: ||
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani, Microsoft Graph için `[ "user.read" ]` veya özel Web API 'Leri için `[ "<Application ID URL>/scope" ]` (`api://<Application ID>/access_as_user`) |
 > | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, `applicationContext.account(forHomeAccountId: self.homeAccountId)` kullanarak belirteç isteklerinde kullanılacak hesabı belirlemek için mantığı tanımlamanız gerekir |

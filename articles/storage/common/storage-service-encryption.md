@@ -4,17 +4,17 @@ description: Azure depolama, verilerinizi buluta kalıcı yapmadan önce otomati
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942200"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082824"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure depolama şifrelemesi
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, Azure depolama şifrelemesi için anahtar yönetim seçene
 |                                        |    Microsoft tarafından yönetilen anahtarlar                             |    Müşteri tarafından yönetilen anahtarlar                                                                                                                        |    Müşteri tarafından sunulan anahtarlar                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Şifreleme/şifre çözme işlemleri    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Desteklenen Azure depolama hizmetleri    |    Tümü                                                |    BLOB depolama, Azure dosyaları<sup>1, 2</sup>                                                                                                               |    Blob depolaması                                                                  |
+|    Desteklenen Azure depolama hizmetleri    |    Tümü                                                |    BLOB depolama, Azure dosyaları<sup>1, 2</sup>                                                                                                               |    Blob depolama                                                                  |
 |    Anahtar depolama                         |    Microsoft anahtar deposu    |    Azure Key Vault                                                                                                                              |    Azure Key Vault veya başka bir anahtar deposu                                                                 |
 |    Anahtar döndürme sorumluluğu         |    Microsoft                                          |    Müşteri                                                                                                                                     |    Müşteri                                                                      |
 |    Anahtar kullanımı                           |    Microsoft                                          |    Azure portal, depolama kaynak sağlayıcısı REST API, Azure depolama yönetim kitaplıkları, PowerShell, CLı        |    Azure depolama REST API (BLOB depolama), Azure depolama istemci kitaplıkları    |
@@ -142,7 +142,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 
 İstemciler, REST çağrıları için aşağıdaki üst bilgileri kullanarak blob depolamaya yönelik bir istek üzerindeki şifreleme anahtarı bilgilerini güvenli bir şekilde geçirebilir:
 
-|İstek Başlığı | Açıklama |
+|İstek üst bilgisi | Açıklama |
 |---------------|-------------|
 |`x-ms-encryption-key` |Hem yazma hem de okuma istekleri için gereklidir. Base64 kodlamalı AES-256 şifreleme anahtarı değeri. |
 |`x-ms-encryption-key-sha256`| Hem yazma hem de okuma istekleri için gereklidir. Şifreleme anahtarının Base64 ile kodlanmış SHA256. |
@@ -154,7 +154,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 
 Aşağıdaki BLOB depolama işlemleri, bir istekte müşterinin sunduğu şifreleme anahtarlarını göndermeyi destekler:
 
-- [İkili Büyük Nesne Koyma](/rest/api/storageservices/put-blob)
+- [Blobu koy](/rest/api/storageservices/put-blob)
 - [Öbek listesini yerleştirme](/rest/api/storageservices/put-block-list)
 - [Yerleştirme bloğu](/rest/api/storageservices/put-block)
 - [Bloğu URL 'den koy](/rest/api/storageservices/put-block-from-url)
@@ -164,9 +164,9 @@ Aşağıdaki BLOB depolama işlemleri, bir istekte müşterinin sunduğu şifrel
 - [Blob özelliklerini ayarla](/rest/api/storageservices/set-blob-properties)
 - [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata)
 - [Blob al](/rest/api/storageservices/get-blob)
-- [BLOB özelliklerini Al](/rest/api/storageservices/get-blob-properties)
+- [Blob özelliklerini al](/rest/api/storageservices/get-blob-properties)
 - [Blob meta verilerini al](/rest/api/storageservices/get-blob-metadata)
-- [İkili Büyük Nesne Anlık Görüntüsünü Alma](/rest/api/storageservices/snapshot-blob)
+- [Anlık görüntü blobu](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Müşteri tarafından sunulan anahtarları döndür
 

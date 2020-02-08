@@ -5,21 +5,18 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171213"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086973"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway için Web uygulaması güvenlik duvarı ilkeleri oluşturma
 
 Bir WAF ilkesinin dinleyiciyle ilişkilendirilmesi, tek bir WAF arkasındaki birden fazla sitenin farklı ilkelerle korunmasını sağlar. Örneğin, WAF 'nizin arkasındaki beş site varsa, diğer dört uygulamadan bağımsız olarak bir siteye yönelik dışlamaları, özel kuralları ve yönetilen RuleSets 'ler özelleştirmek için beş ayrı WAF ilkesine (her dinleyici için bir tane) sahip olabilirsiniz. Tek bir ilkenin tüm sitelere uygulanmasını istiyorsanız, ilkeyi tek tek dinleyiciler yerine, genel olarak uygulanmasını sağlamak için yalnızca Application Gateway ile ilişkilendirebilirsiniz. İlkeler, yol tabanlı bir yönlendirme kuralına da uygulanabilir. 
-
-   > [!NOTE]
-   > Site başına WAF Ilkesi Orta Güney ABD ve Kuzey Avrupa kullanılabilir. Portalda bunlara erişmek için lütfen herkes için etkin olana kadar [Bu bağlantıyı](https://aka.ms/AppgwwafWithAllFeatureFlags) kullanın.  
 
 İstediğiniz kadar ilke yapabilirsiniz. Bir ilke oluşturduktan sonra, etkin olması için bir Application Gateway ilişkilendirilmesi gerekir, ancak uygulama ağ geçitlerinin ve dinleyicilerinin herhangi bir birleşimiyle ilişkilendirilebilir. 
 

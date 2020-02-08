@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861345"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087352"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme
 
@@ -189,10 +189,13 @@ Birçok veri toplama senaryosunda, işin sonuçlarını işlemeye son vermek iç
 
 Aşağıdaki örnek, birden çok veritabanından performans verilerini toplamak için yeni bir iş oluşturur.
 
-Varsayılan olarak, İş Aracısı döndürülen sonuçları depolamak için tablo oluşturmayı arayacaktır. Sonuç olarak, çıkış kimlik bilgisi için kullanılan kimlik bilgileriyle ilişkili oturum açmanın bu işlemi gerçekleştirmek için yeterli izinlere sahip olması gerekir. Tabloyu daha önce el ile oluşturmak isterseniz, aşağıdaki özelliklere sahip olması gerekir:
+Varsayılan olarak, İş Aracısı döndürülen sonuçları depolamak için çıkış tablosu oluşturur. Bu nedenle, çıkış kimlik bilgisiyle ilişkili veritabanı sorumlusu en az şu izinlere sahip olmalıdır: veritabanı üzerinde `CREATE TABLE`, `ALTER`, `SELECT`, `INSERT`, çıkış tablosu veya şeması üzerinde `DELETE` ve [sys. Indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) katalog görünümünde `SELECT`.
+
+Tabloyu daha önce el ile oluşturmak isterseniz, aşağıdaki özelliklere sahip olması gerekir:
 1. Sonuç kümesi için doğru adı ve veri türlerini içeren sütunlar.
 2. Uniqueidentifier veri türüyle internal_execution_id için ek sütun.
 3. İnternal_execution_id sütununda `IX_<TableName>_Internal_Execution_ID` adlı kümelenmemiş bir dizin.
+4. Veritabanında `CREATE TABLE` izin dışında, yukarıda listelenen tüm izinler.
 
 [*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutları çalıştırın:
 
@@ -350,7 +353,7 @@ ORDER BY start_time DESC
 ```
 
 
-## <a name="cancel-a-job"></a>Bir işi iptal etme
+## <a name="cancel-a-job"></a>İşi iptal et
 
 Aşağıdaki örnek, bir işin nasıl iptal edildiğini gösterir.  
 [*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
@@ -521,7 +524,7 @@ Güncellenme işinin adı. job_name nvarchar (128).
 [ **\@Enabled =** ] etkin  
 İş zamanlamasının etkin olup olmadığını belirtir (1) veya etkin değil (0). Etkin bit.
 
-[ **\@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type nvarchar (50) ve aşağıdaki değerlerden biri olabilir:
 
 - ' Bir kez ',
@@ -906,7 +909,7 @@ Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvar
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Hiçbiri.
+Yok.
  
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -934,7 +937,7 @@ Durdurulacak iş yürütmenin kimlik numarası. job_execution_id, varsayılan de
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Hiçbiri.
+Yok.
  
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -994,7 +997,7 @@ Silinecek hedef grubun adı. target_group_name, varsayılan değer olmadan nvarc
 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Hiçbiri.
+Yok.
 
 #### <a name="permissions"></a>İzinler
 Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
@@ -1192,7 +1195,7 @@ GO
 Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-overview.md#job-database)kullanılabilir.
 
 
-|Görüntüle  |Açıklama  |
+|Görünüm  |Açıklama  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  İş yürütme geçmişini gösterir.      |
 |[Çizelge](#jobs-view)     |   Tüm işleri gösterir.      |
@@ -1210,7 +1213,7 @@ Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-o
 İş yürütme geçmişini gösterir.
 
 
-|Sütun adı|   Veri türü   |Açıklama|
+|sütun adı|   Veri türü   |Açıklama|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  İş yürütme örneğinin benzersiz KIMLIĞI.
 |**job_name**   |nvarchar (128)  |İşin adı.
@@ -1238,12 +1241,12 @@ Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-o
 
 Tüm işleri gösterir.
 
-|Sütun adı|   Veri türü|  Açıklama|
+|sütun adı|   Veri türü|  Açıklama|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |İşin adı.|
 |**job_id**|    uniqueidentifier    |İşin benzersiz KIMLIĞI.|
 |**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
-|**description**    |nvarchar (512)| İş için açıklama. etkin bit, işin etkin veya devre dışı olduğunu belirtir. 1 etkin işleri gösterir ve 0 devre dışı işleri gösterir.|
+|**açıklaması**    |nvarchar (512)| İş için açıklama. etkin bit, işin etkin veya devre dışı olduğunu belirtir. 1 etkin işleri gösterir ve 0 devre dışı işleri gösterir.|
 |**schedule_interval_type** |nvarchar (50)   |İşin ne zaman yürütüleceğini belirten değer: ' bir kez ', ' dakika ', ' saat ', ' Days ', ' hafta ', ' ay '
 |**schedule_interval_count**|   int|    İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_type dönemi sayısı.|
 |**schedule_start_time**    |datetime2 (7)|  İşin en son başladığı tarih ve saat.|
@@ -1256,7 +1259,7 @@ Tüm işleri gösterir.
 
 Tüm iş sürümlerini gösterir.
 
-|Sütun adı|   Veri türü|  Açıklama|
+|sütun adı|   Veri türü|  Açıklama|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |İşin adı.|
 |**job_id**|    uniqueidentifier    |İşin benzersiz KIMLIĞI.|
@@ -1269,7 +1272,7 @@ Tüm iş sürümlerini gösterir.
 
 Her bir işin geçerli sürümündeki tüm adımları gösterir.
 
-|Sütun adı    |Veri türü| Açıklama|
+|sütun adı    |Veri türü| Açıklama|
 |------|------|-------|
 |**job_name**   |nvarchar (128)| İşin adı.|
 |**job_id** |uniqueidentifier   |İşin benzersiz KIMLIĞI.|
@@ -1310,7 +1313,7 @@ Her bir işin tüm sürümlerindeki tüm adımları gösterir. Şema, [JobSteps]
 
 Tüm hedef gruplarını listeler.
 
-|Sütun adı|Veri türü| Açıklama|
+|sütun adı|Veri türü| Açıklama|
 |-----|-----|-----|
 |**target_group_name**| nvarchar (128)   |Hedef grubun adı, veritabanı koleksiyonu. 
 |**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz KIMLIĞI.
@@ -1321,7 +1324,7 @@ Tüm hedef gruplarını listeler.
 
 Tüm hedef grupların tüm üyelerini gösterir.
 
-|Sütun adı|Veri türü| Açıklama|
+|sütun adı|Veri türü| Açıklama|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|Hedef grubun adı, veritabanı koleksiyonu. |
 |**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz KIMLIĞI.|

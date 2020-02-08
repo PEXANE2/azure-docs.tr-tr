@@ -2,22 +2,22 @@
 title: V 1.0 uygulamaları için kapsamlar (MSAL) | Mavisi
 description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir v 1.0 uygulaması için kapsamlar hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c532eb658e882f11bb380dce4f7a604097693c0f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704366"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085690"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V 1.0 belirteçlerini kabul eden bir Web API 'SI için kapsamlar
 
@@ -25,7 +25,7 @@ OAuth2 izinleri, geliştiriciler (v 1.0) için bir Azure Active Directory (Azure
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının belirli OAuth2 izinlerine erişim istemek için kapsamlar
 
-Bir v 1.0 uygulamasının belirli kapsamlarına yönelik belirteçleri almak için (örneğin, https://graph.windows.net) Azure AD Graph), istenen bir kaynak tanımlayıcısını ilgili kaynak için istenen bir OAuth2 izniyle birleştirerek kapsamlar oluşturun.
+Bir v 1.0 uygulamasının belirli kapsamlarına yönelik belirteçleri almak için (örneğin, https://graph.windows.net)Azure AD Graph), istenen bir kaynak tanımlayıcısını ilgili kaynak için istenen bir OAuth2 izniyle birleştirerek kapsamlar oluşturun.
 
 Örneğin, Kullanıcı adına, uygulama KIMLIĞI URI 'sinin `ResourceId`bir v 1.0 Web API 'sine erişmek için:
 

@@ -1,14 +1,14 @@
 ---
-title: Örnek-fedrampa yüksek şema-Control eşleme
+title: Fedrampa yüksek şema örnek denetimleri
 description: Fedrampa yüksek şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941384"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087335"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Fedrampa yüksek şema örneğinin denetim eşlemesi
 
@@ -28,7 +28,7 @@ Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapl
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) hesap yönetimi | Rol tabanlı şemalar
 
@@ -89,11 +89,11 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -102,7 +102,7 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 - Tanılama ayarını denetle
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) denetim Incelemesi, analiz ve raporlama | Merkezi Inceleme ve analiz
 
@@ -110,11 +110,11 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi raporlama ve anal
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) denetim Incelemesi, analiz ve raporlama | Tümleştirme/tarama ve Izleme özellikleri
 
@@ -123,12 +123,12 @@ Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işleml
 Ayrıntılı güvenlik açığı taraması ve izleme için Azure Sentinel ve Azure Güvenlik Merkezi 'nin de faydalanmasını öneririz.
 
 - \[önizleme\]: güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir
-- \[Önizleme\]: VM'ler için Azure İzleyici'yi etkinleştir
+- \[önizleme\]: VM'ler için Azure İzleyici etkinleştirin
 - \[Preview\]: VM Ölçek Kümeleri (VMSS) için Azure Izleyicisini etkinleştirme
-- SQL sunucularınızda güvenlik açığı değerlendirmesi etkin olmalıdır
+- Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - Tanılama ayarını denetle
 - SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir
-- SQL sunucularınızda güvenlik açığı değerlendirmesi etkin olmalıdır
+- Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir
 - Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir
@@ -141,15 +141,15 @@ Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işleml
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma
 - Ağ güvenlik grupları için tanılama ayarlarını dağıtma
@@ -241,7 +241,7 @@ Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Window
 Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
 
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Sanal makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -293,7 +293,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, bu şemayı, geri kalan bilgileri korumak için cryptograph denetimleri kullanma konusunda zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilke tanımları Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; ve SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin.
 
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL DB saydam veri şifrelemesini dağıtma
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
@@ -333,13 +333,13 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 
 - \[Preview\]: denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Preview\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics aracı dağıtımı listelenmemiş
-- \[Önizleme\]: Audit Log Analytics çalışma alanı için VM - uyumsuzluğu bildir
+- \[Preview\]: VM için denetim Log Analytics çalışma alanı-rapor uyumsuzluğu
 - \[Preview\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısını dağıtmayı
+- \[önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
-- \[Önizleme\]: Windows Vm'leri için Log Analytics aracısını dağıtmayı
+- \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Depolama hesaplarında Gelişmiş tehdit koruması dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma

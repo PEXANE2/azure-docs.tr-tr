@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nası
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989765"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069532"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -156,7 +156,7 @@ Bir Azure geçişi projesi ayarlayın ve ardından Azure geçiş sunucusu geçi�
     --- | ---
     Asya | Güneydoğu Asya
     Avrupa | Kuzey Avrupa veya Batı Avrupa
-    Birleşik Devletler | Doğu ABD veya Orta Batı ABD
+    Amerika Birleşik Devletleri | Doğu ABD veya Orta Batı ABD
 
     Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
 8. **Değerlendirme Seç aracında**, şimdi > **için değerlendirme aracı eklemeyi atla** ' yı seçin.
@@ -194,7 +194,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Gereç için yü
 
     ![Kaydı Sonlandır](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Kayıt tamamlandıktan sonra, bulunan makineler Azure geçişi sunucu geçişi 'nde görünene kadar 15 dakika sürebilir. VM 'Ler keşfedildiğinde, **bulunan sunucular** sayılır.
+Bulunan makineler Azure geçişi sunucu geçişi 'nde görünene kadar kayıt gerçekleştirildikten sonra bu işlem biraz zaman alabilir. VM 'Ler keşfedildiğinde, **bulunan sunucular** sayılır.
 
 ![Bulunan sunucular](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 
@@ -359,7 +359,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 4. VM için bir geçiş işlemi başlar. Azure bildirimlerinde işlemi izleyin.
 5. İşlem bittikten sonra **Sanal Makineler** sayfasında VM’yi görüntüleyebilir ve yönetebilirsiniz.
 
-## <a name="complete-the-migration"></a>Geçişi tamamlama
+## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
 1. Geçiş yapıldıktan sonra, **geçişi durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
 2. Geçirilen makinelere Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) Aracısı 'nı yükler.

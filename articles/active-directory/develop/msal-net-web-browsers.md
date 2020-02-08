@@ -3,22 +3,22 @@ title: Web tarayıcıları kullanma (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695084"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084606"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
 
@@ -47,13 +47,13 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 
 | Çerçeve        | Eklenen | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
-| .NET klasik     | Evet | Evet ^ | Eklenen |
+| .NET klasik     | Yes | Evet ^ | Eklenen |
 | .NET Core     | Hayır | Evet ^ | Sistem |
 | .NET Standard | Hayır | Evet ^ | Sistem |
-| UWP | Evet | Hayır | Eklenen |
-| Xamarin.Android | Evet | Evet  | Sistem |
-| Xamarin.iOS | Evet | Evet  | Sistem |
-| Xamarin.Mac| Evet | Hayır | Eklenen |
+| UWP | Yes | Hayır | Eklenen |
+| Xamarin.Android | Yes | Yes  | Sistem |
+| Xamarin.iOS | Yes | Yes  | Sistem |
+| Xamarin.Mac| Yes | Hayır | Eklenen |
 
 ^ "http://localhost" yeniden yönlendirme URI 'SI gerektirir
 
@@ -149,7 +149,7 @@ MSAL.NET ' de ekli Web görünümü ve sistem tarayıcısı arasında bazı gör
 
 **Katıştırılmış Web görünümü kullanılarak MSAL.NET ile etkileşimli oturum açma:**
 
-![katıştırılmış](media/msal-net-web-browsers/embedded-webview.png)
+![eklenen](media/msal-net-web-browsers/embedded-webview.png)
 
 **Sistem tarayıcısını kullanarak MSAL.NET ile etkileşimli oturum açma:**
 

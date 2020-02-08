@@ -3,22 +3,22 @@ title: İstemci uygulama yapılandırması (MSAL) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak genel istemci ve gizli istemci uygulamaları için yapılandırma seçenekleri hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696491"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085012"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
@@ -31,7 +31,7 @@ Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel v
     - [İstemci gizli](#client-secret) dizisi (gizli istemci uygulamaları için).
 - Günlük düzeyi, kişisel verilerin denetimi ve kitaplığı kullanarak bileşen adı dahil olmak üzere [günlüğe kaydetme seçenekleri](#logging).
 
-## <a name="authority"></a>Yetkili
+## <a name="authority"></a>İniz
 
 Yetkili, MSAL tarafından belirteçleri isteyebileceğini bir dizini gösteren bir URL 'dir. Ortak yetkililer şunlardır:
 
@@ -122,7 +122,7 @@ MSAL kullanan ortak bir istemci uygulama geliştiricisiyseniz:
 
 `RedirectUri` özelliğini kullanarak yeniden yönlendirme URI 'sini geçersiz kılabilirsiniz (örneğin, aracılar kullanıyorsanız). Bu senaryo için yeniden yönlendirme URI 'Leri örnekleri aşağıda verilmiştir:
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
+- `RedirectUriOnAndroid` = "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
 - `RedirectUriOnIos` = $ "msauth. {Demeti. ID}://kimlik doğrulaması ";
 
 Ek iOS ayrıntıları için bkz. [adal.net 'den msal.net 'ye Microsoft Authenticator kullanan iOS uygulamalarını geçirme](msal-net-migration-ios-broker.md) ve [iOS üzerinde aracı](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)kullanma.
