@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896087"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087379"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
 
@@ -30,13 +30,13 @@ Bu makalede Azure Time Series Insights önizlemesi için bazı yaygın kullanım
 
 Bu kullanım senaryolarına genel bir bakış aşağıdaki bölümlerde açıklanmıştır.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Azure Time Series Insights, uçtan uca, bir hizmet olarak platform sunumudur. Yüksek düzeyde tanımlı, zaman serisi iyileştirilmiş IoT ölçeğinde verileri toplamak, işlemek, depolamak, çözümlemek ve sorgulamak için kullanılır. Time Series Insights, geçici veri araştırması ve işletimsel analizler için idealdir. Time Series Insights, endüstriyel IoT dağıtımlarının geniş ihtiyaçlarını karşılayan benzersiz bir şekilde genişletilebilir, özelleştirilmiş bir hizmet sunumudur.
 
-## <a name="data-exploration-and-visual-anomaly-detection"></a>Veri inceleme ve görsel anormali algılama
+## <a name="data-exploration-and-visual-anomaly-detection"></a>Veri araştırması ve görsel anomali algılama
 
-Verilerinizdeki anomalileri bulmak ve gizli eğilimleri keşfetmek için milyarlarca olayı anında inceleyip analiz edin. Time Series Insights, IoT ve DevOps analiz iş yüklerinize neredeyse gerçek zamanlı performans katar.
+Milyarlarca olayı hızla araştırıp çözümleyin ve verilerinizdeki gizli eğilimleri bulun. Time Series Insights IoT ve DevOps analiz iş yükleriniz için neredeyse gerçek zamanlı performansı sunar.
 
 [![Veri Gezgini](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
@@ -62,11 +62,11 @@ Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel 
 
 * Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights, `from`, `to`, `first`ve `last`gibi zamana bağlı işleçlere sahiptir. `average`, `min`, `max`, `split by`, `order by`ve `DateHistogram`gibi toplamalara ve Dönüştürmelere sahiptir. Ayrıca, `has`, `in`, `and`, `or`, `greater than`ve `REGEX`gibi filtreleme işleçleri de vardır. Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Onları, anormal görselleştirmelere göre doldurmak için kullanın.
 
-## <a name="operational-analysis-and-driving-process-efficiency"></a>İşlem analizi ve işlem verimliliğini sağlama
+## <a name="operational-analysis-and-driving-process-efficiency"></a>İşletimsel analiz ve işlem verimliliğini işleme
 
-Donanımların sistem durumunu, kullanımını ve performansını ölçeklendirerek izlemek için Time Series Insights kullanın. Time Series Insights işlemsel verimliliği ölçmenin kolay bir yolunu sağlar. Time Series Insights, öngörülemeyen çeşitli IoT iş yüklerini, alma ve sorgu performansından ödün vermeden yönetmenize yardımcı olur.
+Donanımların sistem durumunu, kullanımını ve performansını ölçeklendirerek izlemek için Time Series Insights kullanın. Time Series Insights işlemsel verimliliği ölçmenin kolay bir yolunu sağlar. Time Series Insights, giriş veya sorgu performansından ödün vermeden farklı ve öngörülemeyen IoT iş yüklerinin yönetilmesine yardımcı olur.
 
-[![Genel bakış](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![genel bakış](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 İşlem işlemlerinden gelen verilerin akışını ve sürekli işlenmesi, doğru teknoloji veya çözümle birleştirilirse herhangi bir işi başarıyla dönüştürebilir. Bu çözümler genellikle birden çok sisteminin bir birleşimidir. Bunlar, özellikle IoT bölgesindeki, sürekli olarak değişen verilerin araştırmasını ve analizini etkinleştirir ve ortak bir model paylaşır.
 
@@ -82,7 +82,7 @@ Toplanan veriler, akış sorgulama ve analiz senaryoları için onu temizleştir
 
 Time Series Insights, geçmiş veriler üzerinde neredeyse gerçek zamanlı veri araştırması ve varlık tabanlı öngörüler sunar. İş gereksinimlerinize bağlı olarak, MapReduce ve Hive işleri, Time Series Insights Azure HDInsight 'a bağlanarak Time Series Insights depolanan veriler üzerinde çalışabilir. Time Series Insights depolanan veriler, Time Series Insights ortak yüzey sorgu API 'Leri aracılığıyla Power BI ve diğer müşteri uygulamaları tarafından kullanılabilir. Bu veriler, derin iş ve operasyonel zeka senaryoları için kullanılabilir.
 
-## <a name="advanced-analytics"></a>İleri düzey analitik
+## <a name="advanced-analytics"></a>Gelişmiş analiz
 
 Machine Learning ve Azure Databricks gibi gelişmiş analiz hizmetleriyle tümleştirin. Milyonlarca cihazdan ham verileri Time Series Insights. Azure Analytics Hizmetleri paketi tarafından sorunsuz şekilde kullanılabilecek bağlamsal verileri ekler.
 

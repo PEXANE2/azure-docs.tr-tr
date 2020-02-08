@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935190"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083728"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -45,7 +45,7 @@ SAP sistemleri genellikle hassas iş verileri içerir. SAP sistemlerini barınd�
 
 Azure genel uç noktasına erişim gerektiren senaryolara örnek olarak şunlar verilebilir:  
 - Pacemaker kümelerinde Azure sınır aracısını bir sınırlama mekanizması olarak kullanma
-- Azure Yedekleme
+- Azure Backup
 - Azure Site Recovery  
 - Işletim sisteminde düzeltme eki uygulama için ortak depoyu kullanma
 - SAP uygulama veri akışı, genel uç noktasına giden bağlantı gerektirebilir
@@ -106,7 +106,7 @@ Yapılandırma şöyle görünür:
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. Belirli genel uç noktalarına erişimi kısıtlamak için ağ güvenlik grubu kuralları oluşturun. Var olan bir ağ güvenlik grubu varsa, bunu ayarlayabilirsiniz. Aşağıdaki örnekte, yalnızca Azure Yönetim API 'sine erişim izni verme gösterilmektedir: 
+4. Belirli genel uç noktalarına erişimi kısıtlamak için ağ güvenlik grubu kuralları oluşturun. Var olan bir ağ güvenlik grubu varsa, bunu ayarlayabilirsiniz. Aşağıdaki örnekte, Azure Yönetim API 'sine erişimin nasıl etkinleştirileceği gösterilmektedir: 
    1. Ağ güvenlik grubuna git
    1. Giden güvenlik kuralları ' na tıklayın
    1. **Internet**'e giden tüm erişimi **reddetmek** için bir kural ekleyin.

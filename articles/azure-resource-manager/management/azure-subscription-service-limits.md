@@ -4,14 +4,14 @@ description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtla
 tags: billing
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901401"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087438"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar
 
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
 
@@ -22,7 +22,7 @@ Kaynak adları sınırları için bkz. [Azure kaynakları Için adlandırma kura
 > [!NOTE]
 > Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, [ücretsiz bir çevrimiçi müşteri destek isteği açın](../templates/error-resource-quota.md). Sınırlar, aşağıdaki tablolarda gösterilen en büyük sınır değerinin üzerinde olamaz. En fazla limit sütunu yoksa, kaynak, ayarlanabilir sınırlara sahip değildir.
 >
-> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. Varsa bir [ücretsiz deneme aboneliği](https://azure.microsoft.com/offers/ms-azr-0044p), Yükseltme yapabileceğiniz bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) abonelik. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](../../billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](../../billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Sınırlar ve Azure Resource Manager
@@ -71,6 +71,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [Veri paylaşma](#data-share-limits)
 * [Veritabanı Geçiş Hizmeti](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
@@ -103,7 +104,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Scheduler](#scheduler-limits)
 * [Service Bus](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
-* [SQL Veritabanı](#sql-database-limits)
+* [SQL Database](#sql-database-limits)
 * [SQL Veri Ambarı](#sql-data-warehouse-limits)
 * [Depolama](#storage-limits)
 * [StorSimple sistemi](#storsimple-system-limits)
@@ -404,6 +405,10 @@ Belge boyutu, saniye başına sorgu, anahtar, istek ve yanıt gibi daha ayrınt�
 ### <a name="data-lake-store-limits"></a>Data Lake Store sınırları
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
+
+### <a name="data-share-limits"></a>Veri paylaşma sınırları
+
+[!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
 
 ### <a name="database-migration-service-limits"></a>Veritabanı geçiş hizmeti sınırları
 

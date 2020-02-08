@@ -1,20 +1,21 @@
 ---
-title: Azure Kubernetes Service (AKS) içinde Kullanılabilirlik Alanları kullanma
+title: Azure Kubernetes Service (AKS) içinde kullanılabilirlik bölgelerini kullanma
 description: Azure Kubernetes Service (AKS) içindeki kullanılabilirlik bölgelerine düğümleri dağıtan bir küme oluşturmayı öğrenin
 services: container-service
 author: mlearned
+ms.custom: fasttrack-edit
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605081"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086514"
 ---
-# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
 Bir Azure Kubernetes hizmeti (AKS) kümesi, temel alınan Azure işlem altyapısının mantıksal bölümlerinin düğümleri ve depolanması gibi kaynakları dağıtır. Bu dağıtım modeli, düğümlerin tek bir Azure veri merkezinde ayrı güncelleştirme ve hata etki alanları arasında çalıştığından emin olmanızı sağlar. Bu varsayılan davranışla dağıtılan AKS kümeleri, bir donanım hatası veya planlı bakım olayına karşı korumak için yüksek düzeyde kullanılabilirlik sağlar.
 
@@ -58,11 +59,11 @@ Azure yönetilen diskleri kullanan birimler Şu anda bir kaynak değildir. Özg�
 
 Durum bilgisi olan iş yükleri çalıştırmanız gerekiyorsa, Kubernetes Scheduler ' ın disklerinizde aynı bölgede yer alan bir düğüm oluşturmasını söylemek için pod belirtimlerinizde tatları ve toleransı kullanın. Alternatif olarak, bölgeler arasında zamanlandıkları üzere Pod 'ye iliştirilabilen Azure dosyaları gibi ağ tabanlı depolama alanı kullanın.
 
-## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS kümelerine yönelik Kullanılabilirlik Alanları genel bakış
+## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS kümeleri için kullanılabilirlik bölgelerine genel bakış
 
-Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bölgeler, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun.
+Kullanılabilirlik alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bölgeler, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bölgenin içinde fiziksel olarak ayrılmış kullanılabilirlik alanları uygulamaları ve verileri veri merkezi hatalarına karşı korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi kullanılabilirlik alanları arasında çoğaltarak hata noktalarından koruyun.
 
-Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?][az-overview].
+Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik bölgeleri nelerdir?][az-overview].
 
 Kullanılabilirlik alanları kullanılarak dağıtılan AKS kümeleri, düğümleri tek bir bölge içinde birden çok bölgeye dağıtabilir. Örneğin, *Doğu ABD 2* bölgesindeki bir küme, *Doğu ABD 2*üç kullanılabilirlik bölgesinde düğüm oluşturabilir. AKS kümesi kaynaklarının bu dağıtımı, belirli bir bölgede hatalara dayanıklı oldukları için küme kullanılabilirliğini geliştirir.
 
@@ -122,6 +123,53 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Bir aracı havuzuna ek düğümler eklediğinizde, Azure platformu, belirtilen kullanılabilirlik alanları genelinde temel alınan VM 'Leri otomatik olarak dağıtır.
 
+Daha yeni Kubernetes sürümlerinde (1.17.0 ve üzeri), AKS 'nin kullanım dışı `failure-domain.beta.kubernetes.io/zone`ek olarak `topology.kubernetes.io/zone` daha yeni bir etiket kullandığını unutmayın.
+
+## <a name="verify-pod-distribution-across-zones"></a>Bölgeler arasında Pod dağıtımını doğrulama
+
+[Iyi bilinen Etiketler, ek açıklamalar ve tatları][kubectl-well_known_labels]de belgelendiği gibi, Kubernetes, bir çoğaltma denetleyicisindeki veya hizmette yer alan farklı bölgelerde bulunan farklı bölgelerde otomatik olarak dizin dağıtmak için `failure-domain.beta.kubernetes.io/zone` etiketini kullanır. Bunu test etmek için, doğru Pod yayılmasını doğrulamak üzere kümenizi 3 ' ten 5 düğüme ölçeklendirebilirsiniz:
+
+```azurecli-interactive
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5
+```
+
+Ölçek işlemi birkaç dakika sonra tamamlandığında, komut `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` bu örneğe benzer bir çıktı vermelidir:
+
+```console
+Name:       aks-nodepool1-28993262-vmss000000
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000001
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+Name:       aks-nodepool1-28993262-vmss000002
+            failure-domain.beta.kubernetes.io/zone=eastus2-3
+Name:       aks-nodepool1-28993262-vmss000003
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000004
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+```
+
+Gördüğünüz gibi, artık 1 ve 2. bölgelerde iki ek düğüm vardır. Üç çoğaltmalardan oluşan bir uygulamayı dağıtabilirsiniz. Örnek olarak NGıNX kullanacağız:
+
+```console
+kubectl run nginx --image=nginx --replicas=3
+```
+
+Yığınlarınızın çalıştığı düğümlerin olduğunu doğruladıktan sonra, üç farklı kullanılabilirlik bölgesine karşılık gelen düğüm üzerinde pod 'nin çalıştığını görürsünüz. Örneğin, komut `kubectl describe pod | grep -e "^Name:" -e "^Node:"` aşağıdakine benzer bir çıktı alırsınız:
+
+```console
+Name:         nginx-6db489d4b7-ktdwg
+Node:         aks-nodepool1-28993262-vmss000000/10.240.0.4
+Name:         nginx-6db489d4b7-v7zvj
+Node:         aks-nodepool1-28993262-vmss000002/10.240.0.6
+Name:         nginx-6db489d4b7-xz6wj
+Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
+```
+
+Önceki çıktıdan görebileceğiniz gibi, ilk Pod, `eastus2-1`kullanılabilirlik bölgesinde bulunan düğüm 0 ' da çalışır. İkinci Pod, `eastus2-3`karşılık gelen düğüm 2 ' de çalışıyor ve üçüncü tane düğüm 4 ' te `eastus2-2`. Ek bir yapılandırma olmadan, Kubernetes üç kullanılabilirlik alanı genelinde doğru şekilde yayılmaktadır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, kullanılabilirlik bölgelerini kullanan bir AKS kümesi oluşturma hakkında ayrıntılı olarak açıklanmıştır. Yüksek oranda kullanılabilir kümeler hakkında daha fazla bilgi için bkz. [AKS 'de iş sürekliliği ve olağanüstü durum kurtarma Için en iyi uygulamalar][best-practices-bc-dr].
@@ -144,3 +192,4 @@ Bu makalede, kullanılabilirlik bölgelerini kullanan bir AKS kümesi oluşturma
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/

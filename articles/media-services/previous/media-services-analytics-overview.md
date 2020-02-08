@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844352"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069634"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services platformunda Media Analytics 
 
 ## <a name="retirement-plans"></a>Emeklilik planları
 
 > [!IMPORTANT]
-> Aşağıdaki eski medya işlemcisi 2020 ' de kullanımdan kaldırılacak, aşağıdaki tablodaki ayrıntılara bakın. 
+> Bazı medya işlemcileri kullanımdan kaldırılıyor. Emeklilik tarihleri ve daha fazla bilgi için [eski bileşenler](legacy-components.md) konusuna bakın. 
 
-|Medya işlemci adı|Emeklilik tarihi|Ek notlar|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|1 Ekim 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştirilmeyecektir. Daha fazla bilgi için bkz. [Azure Media Indexer 'den Azure Media Services 'ye geçirme video Indexer](migrate-indexer-v1-v2.md)
- 
 ## <a name="overview"></a>Genel Bakış
 
 Daha fazla kuruluş, çalışanları eğitme, müşterilerine katılım ve iş işlevlerini belgelemek için tercih edilen ortam olarak videoyu kullanıyor. Bulut bilgi işlem, bu büyük medya dosyalarını depolamak, akışa almak ve bunlara erişmek için bir yol sağlar. Ancak, bir şirketin video içeriği kitaplığı büyüdükçe içerikten içgörüler elde etmek için eşit derecede etkili bir yöntem gerekir. 
@@ -49,7 +45,7 @@ Medya Analizi medya işlemcileri MP4 veya JSON dosyaları üretir. Medya işlemc
 
 ## <a name="media-analytics-services"></a>Media Analytics hizmetleri
 
-### <a name="indexer"></a>Dizinleyici
+### <a name="indexer"></a>dizinleyic
 Azure Media Indexer, içeriği aranabilir hale getirebilirsiniz ve kapalı açıklamalı altyazı parçaları oluşturabilirsiniz. Ayrıntılı bilgi ve örnekler için bkz. [Azure Media Indexer medya dosyalarını dizine alma](media-services-index-content.md).
 
 ### <a name="motion-detector"></a>Hareket Algılayıcısı
@@ -65,7 +61,7 @@ Azure Media OCR (optik karakter tanıma) ile video dosyalarındaki metin içeri�
 ### <a name="scalable-face-redaction"></a>Ölçeklenebilir yüz redaksiyon
 Azure Media Redactor, bulutta ölçeklenebilir yüz redaksiyon sağlayan bir Media Analytics medya işlemcisidir. Yüz redaksiyon kullanarak, seçili kişilerin yüzlerini bulanıklaştırmak için videonuzu değiştirebilirsiniz. Haber ortamında yüz redaksiyon hizmetini veya genel güvenlik dahil edildiğinde kullanmak isteyebilirsiniz. Birden çok yüz içeren birkaç dakikalık bir çekimi, el ile redaksiyonda zaman alabilir, ancak bu hizmette, yüz redaksiyon yalnızca birkaç basit adım sürer. Daha fazla bilgi için, [Azure Media Analytics ile yüzeyleri redaksiyona](media-services-face-redaction.md) bakın.
 
-### <a name="content-moderation"></a>İçerik Denetleme
+### <a name="content-moderation"></a>İçerik denetleme
 Azure Content Moderator, videolarınız için makine destekli denetleme kullanmanıza olanak sağlar. Örneğin videolardaki yetişkinlere yönelik veya müstehcen içerikleri tespit edip belirlenen içeriklerin moderasyon ekibiniz tarafından gözden geçirilmesini isteyebilirsiniz. İstenmeyen içerik için videoları el ile moderalıme, zaman alan ve pahalı bir görevdir. Bu hizmet ve ilişkili gözden geçirme araçlarıyla, en iyi sonuçlar için verimli ve uygun maliyetli bir şekilde, makine destekli denetleme özelliğini her ne kadar verimli bir şekilde birleştirmelisiniz. Daha fazla bilgi edinmek için bkz. [Azure Content moderator videolarınızı işleme](media-services-content-moderation.md) makalesi.
 
 ## <a name="common-scenarios"></a>Genel senaryolar
@@ -136,10 +132,10 @@ Yanıt:
        ]
     }
 
-## <a name="demos"></a>Demolar
+## <a name="demos"></a>Tanıtımlar
 Bkz. [Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler

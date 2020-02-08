@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815362"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087001"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -26,7 +26,7 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 > [!IMPORTANT]
 > Tüm konuşma kapsayıcıları Şu anda [Genel "geçitli" önizlemenin](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)bir parçası olarak sunulmaktadır. Konuşma kapsayıcıları genel kullanıma (GA) İlerlemede bir duyuru yapılır.
 
-| İşlev | Özellikler | En Son |
+| İşlev | Özellikler | Sürümü |
 |--|--|--|
 | Konuşmayı metne dönüştürme | Sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla metin içine ekleyin. | 2.0.0 |
 | Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.0.0 |
@@ -35,13 +35,13 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
-| Gereklidir | Amaç |
+| Gerekli | Amaç |
 |--|--|
-| Docker altyapısı | Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br> |
+| Docker altyapısı | Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br> |
 | Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlarının bilgisine sahip olmanız gerekir. |
 | Konuşma kaynağı | Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _konuşma_ kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcının başlatılması için her ikisi de gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası |
 
@@ -238,7 +238,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı `docker run` ile çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{Endpoint_URI}` Ve`{API_Key}` değerlerini alma hakkında ayrıntılar için gerekli [parametreleri](#gathering-required-parameters) toplama bölümüne bakın. `docker run` komutuna ek [örnekler](speech-container-configuration.md#example-docker-run-commands) de mevcuttur.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{Endpoint_URI}` ve `{API_Key}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın. `docker run` komutuna ek [örnekler](speech-container-configuration.md#example-docker-run-commands) de mevcuttur.
 
 # <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
@@ -252,7 +252,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Şu komut:
+Bu komut:
 
 * Kapsayıcı görüntüsünden *konuşmaya metin* kapsayıcısı çalıştırır.
 * 4 CPU çekirdeği ve 4 gigabayt (GB) bellek ayırır.
@@ -292,7 +292,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Şu komut:
+Bu komut:
 
 * Kapsayıcı görüntüsünden *özel konuşma tanıma metin* kapsayıcısı çalıştırır.
 * 4 CPU çekirdeği ve 4 gigabayt (GB) bellek ayırır.
@@ -314,7 +314,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Şu komut:
+Bu komut:
 
 * Kapsayıcı görüntüsünden *metinden konuşmaya* kapsayıcısı çalıştırır.
 * 2 CPU çekirdeği ve bir gigabayt (GB) bellek ayırır.
@@ -354,7 +354,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Şu komut:
+Bu komut:
 
 * Kapsayıcı görüntüsünden *özel bir metin okuma* kapsayıcısı çalıştırır.
 * 2 CPU çekirdeği ve bir gigabayt (GB) bellek ayırır.
@@ -367,13 +367,13 @@ ApiKey={API_KEY}
 ***
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](#billing).
+> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
 | Kapsayıcılar | SDK ana bilgisayar URL 'SI | Protokol |
 |--|--|--|
-| Konuşmadan metne ve Özel Konuşma Tanıma metne dönüştürme | `ws://localhost:5000` | WS |
+| Konuşmadan metne ve Özel Konuşma Tanıma metne dönüştürme | `ws://localhost:5000` | RW |
 | Metin okuma ve özel metin okuma | `http://localhost:5000` | HTTP |
 
 WSS ve HTTPS protokollerini kullanma hakkında daha fazla bilgi için bkz. [kapsayıcı güvenliği](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
@@ -392,7 +392,7 @@ Bu kapsayıcınızı ve KONAKTA çalışan farklı bir Azure bilişsel Hizmetler
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Kapsayıcıyı durdurma
+## <a name="stop-the-container"></a>Kapsayıcıyı durdur
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
@@ -402,7 +402,7 @@ Kapsayıcıyı başlatırken veya çalıştırırken sorunlarla karşılaşabili
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Konuşma kapsayıcıları, Azure hesabınızdaki bir *konuşma* kaynağını kullanarak faturalama bilgilerini Azure 'a gönderir.
 
@@ -425,7 +425,7 @@ Bu makalede, konuşma kapsayıcılarını indirmek, yüklemek ve çalıştırmak
   * *Özel metin okuma*
 * Kapsayıcı görüntüleri Azure 'daki kapsayıcı kayıt defterinden indirilir.
 * Docker kapsayıcı görüntüleri çalıştırın.
-* Kapsayıcının ana bilgisayar URI 'sini belirterek, konuşma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
+* REST API (yalnızca metinden konuşmaya) veya SDK (konuşmadan metne veya metinden konuşmaya) kullanarak kapsayıcının ana bilgisayar URI 'sini belirtirsiniz. 
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini sağlamanız gerekir.
 
 > [!IMPORTANT]

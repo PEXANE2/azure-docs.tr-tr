@@ -3,14 +3,14 @@ title: UI tanımı öğeleri oluşturma
 description: Azure portal için Kullanıcı arabirimi tanımları oluştururken kullanılacak öğeleri açıklar.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0ceb8f5762bb6bc987757845426a0f2b380264f1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650675"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086712"
 ---
 # <a name="createuidefinition-elements"></a>Createuıdefinition öğeleri
 
@@ -33,11 +33,11 @@ Bu makalede bir Createuıdefinition öğesinin tüm desteklenen öğelerinin şe
 }
 ```
 
-| Özellik | Gereklidir | Açıklama |
+| Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| ad | Evet | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği `outputs`. Ayrıca, bir öğenin çıkış değerini başka bir öğenin `defaultValue` bağlamak için de kullanabilirsiniz. |
-| type | Evet | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
-| etiket | Evet | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
+| ad | Yes | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği `outputs`. Ayrıca, bir öğenin çıkış değerini başka bir öğenin `defaultValue` bağlamak için de kullanabilirsiniz. |
+| type | Yes | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
+| etiket | Yes | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
 | defaultValue | Hayır | Öğesinin varsayılan değeri. Bazı öğe türleri karmaşık varsayılan değerleri destekler, bu yüzden değer bir nesne olabilir. |
 | toolTip | Hayır | Öğenin araç ipucunda görüntülenecek metin. `label`benzer şekilde, bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
 | constraints | Hayır | Öğesinin doğrulama davranışını özelleştirmek için kullanılan bir veya daha fazla özellik. Kısıtlamaların desteklenen özellikleri öğe türüne göre farklılık gösterir. Bazı öğe türleri doğrulama davranışının özelleştirilmesini desteklemez ve bu nedenle kısıtlama özelliğine sahip değildir. |
@@ -60,6 +60,7 @@ Her bir öğe için belge, Kullanıcı arabirimi örneği, şema, öğe (genelli
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft. Managedıdentity. ıdentityselector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)

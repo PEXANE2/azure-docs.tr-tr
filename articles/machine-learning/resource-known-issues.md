@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638366"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087143"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -46,7 +46,7 @@ Aşağıdaki görüntüde nasıl yapılacağı gösterilmektedir: ![visulize-Dat
 
 ## <a name="sdk-installation-issues"></a>SDK yükleme sorunları
 
-**Hata iletisi: 'PyYAML' kaldırılamıyor**
+**Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
 Python için Azure Machine Learning SDK: PyYAML olan yüklü distutils proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayma sırasında SDK'sı yüklemeye devam etmek için kullanın:
 
@@ -76,9 +76,9 @@ Web hizmeti dağıtılırken hata oluşturma görüntüsü. Geçici çözüm ola
 
 ## <a name="fpgas"></a>FPGA'lar
 
-İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota istek formunu doldurun: https://aka.ms/aml-real-time-ai
+İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>Otomatik makine öğrenmesi
+## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
 Tensor Flow otomatik makine öğrenimi Şu anda Tensor Flow sürüm 1,13 ' i desteklememektedir. Bu sürümün yüklenmesi paket bağımlılıklarının çalışmayı durdurmasına neden olur. Bu sorunu gelecekte yayımlanacak bir sürümde gidermeye çalışıyoruz. 
 
@@ -125,7 +125,7 @@ Databricks ve Azure Machine Learning sorunları.
 
 ### <a name="failure-when-installing-packages"></a>Paketler yüklenirken hata oluştu
 
-Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. Gibi bazı paketler `psutil`, çakışmaları neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
+Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. `psutil`gibi bazı paketler çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -172,7 +172,7 @@ Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası gör�
 * `azureml-dataprep` Version 1.1.8 veya üstünü ekleyin.
 * `pyarrow` sürüm 0,11 veya üstünü ekleyin.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portalı
 
 Doğrudan paylaşım bağlantısı SDK veya portalından çalışma alanınızda görüntülemeye giderseniz, uzantı normal genel bakış sayfası ile abonelik bilgilerini görüntülemek mümkün olmayacaktır. Siz de başka bir çalışma alanına geçmeniz mümkün olmayacaktır. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidip çalışma alanı adını arayacak.
 
@@ -191,7 +191,7 @@ Bu eylemlerden bazıları, çalışma alanınızın __Etkinlikler__ alanında g�
 
 ## <a name="resource-quotas"></a>Kaynak kotaları
 
-Hakkında bilgi edinin [kaynak kotaları](how-to-manage-quotas.md) Azure Machine Learning'i kullanmaya çalışırken hatalarla karşılaşabilirsiniz.
+Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları](how-to-manage-quotas.md) hakkında bilgi edinin.
 
 ## <a name="authentication-errors"></a>Kimlik Doğrulama hataları
 
@@ -306,3 +306,9 @@ Etiketlenmiş tüm görüntüleri yüklemek için **ilk** düğmeyi seçin. **İ
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Nesne algılama için etiketleme sırasında Esc tuşuna basmak, sol üst köşede Sıfır boyutlu bir etiket oluşturur. Etiketlerin bu durumda gönderilmesi başarısız oluyor.
 
 Yanındaki çapraz işaretine tıklayarak etiketi silin.
+
+## <a name="run-or-experiment-deletion"></a>Çalıştırma veya deneme silme
+
+Denemeleri, [deneme. Arşiv](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisinde deneme sekmesi görünümünden arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
+
+Tek tek denemeleri veya çalıştırmaları kalıcı olarak silme işlemi şu anda desteklenmiyor. Çalışma alanı varlıklarını silme hakkında daha fazla bilgi için bkz. [Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme](how-to-export-delete-data.md).

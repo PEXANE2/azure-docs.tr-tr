@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024713"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083139"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Şirket içi VMware iş yükleri için AVS özel bulutunu olağanüstü durum kurtarma sitesi olarak ayarlama
 
@@ -46,12 +46,12 @@ Aşağıdaki bölümlerde, AVS özel bulutunuzda Zerto sanal çoğaltma kullanı
 3. [AVS özel bulutunuzda ZVM ve VRA 'yi ayarlama](#set-up-zvm-and-vra-on-your-avs-private-cloud)
 4. [Sanal koruma grubunu ayarla](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Şirket içi ortamınızdan AVS özel bulutuna sanal çoğaltma gerçekleştirmek için aşağıdaki önkoşulları izleyin.
 
 1. Şirket [içi ağınız ve AVS özel bulutunuz arasında siteden sıteye VPN bağlantısı kurun](set-up-vpn.md).
-2. [AVS özel bulut yönetimi BILEŞENLERINIZIN AVS özel bulut DNS sunucularına iletilmesi IÇIN DNS aramasını ayarlayın](on-premises-dns-setup.md). DNS aramasının iletilmesini etkinleştirmek için, şirket içi DNS sunucunuzda `*.AVS.io` AVS DNS sunucularına yönelik bir iletme bölgesi girişi oluşturun.
+2. [AVS özel bulut yönetimi BILEŞENLERINIZIN AVS özel bulut DNS sunucularına iletilmesi IÇIN DNS aramasını ayarlayın](on-premises-dns-setup.md). DNS aramasının iletilmesini etkinleştirmek için, şirket içi DNS sunucunuzda `*.cloudsimple.io` AVS DNS sunucularına yönelik bir iletme bölgesi girişi oluşturun.
 3. Şirket içi vCenter bileşenlerinin şirket içi DNS sunucularına iletilmesi için DNS aramasını ayarlayın. DNS sunucularının, siteden siteye VPN üzerinden AVS özel bulutunuzda erişilebilir olması gerekir. Yardım almak için aşağıdaki bilgileri sağlayarak bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz. 
 
     * Şirket içi DNS etki alanı adı

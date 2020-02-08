@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024730"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083159"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Bir VMware Site Recovery Manager ile AVS özel bulutunu olağanüstü durum kurtarma hedefi olarak ayarlama
 
@@ -101,7 +101,7 @@ Aşağıdakilerden birini yapmak istiyorsanız, [Azure AD 'YI AVS özel bulutu '
 
 AVS özel bulutundaki iş yükleriniz için IP adresi araması, IP adresi yönetimi ve ad çözümleme hizmetleri sağlamak istiyorsanız, [AVS özel BULUTUNUZDA DNS ve DHCP uygulamaları ve iş yüklerini ayarlama](dns-dhcp-setup.md)bölümünde açıklandığı gıbı bir DHCP ve DNS sunucusu ayarlayın.
 
-*. Avs.io etki alanı, AVS özel bulutunuzda Yönetim sanal makineleri ve ana bilgisayarlar tarafından kullanılır. Bu etki alanına yönelik istekleri çözümlemek için DNS sunucusunda DNS iletmeyi, [koşullu Iletici oluşturma](on-premises-dns-setup.md#create-a-conditional-forwarder)bölümünde açıklandığı gibi yapılandırın.
+*. Cloudsimple.io etki alanı, AVS özel bulutunuzda Yönetim sanal makineleri ve ana bilgisayarlar tarafından kullanılır. Bu etki alanına yönelik istekleri çözümlemek için DNS sunucusunda DNS iletmeyi, [koşullu Iletici oluşturma](on-premises-dns-setup.md#create-a-conditional-forwarder)bölümünde açıklandığı gibi yapılandırın.
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>Şirket içi ortamınıza vSphere çoğaltma gereci yüklemesi
 
@@ -133,7 +133,7 @@ VRA ve SRM yüklemeden önce, cloudowner kullanıcısının vCenter ayrıcalıkl
 Yükleme bu üst düzey adımlardan oluşur:
 
 1. [Ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md).
-2. VSphere çoğaltma ve SRM yüklemesi için AVS özel bulutunuzda bir kullanıcı oluşturun. [VCenter Kullanıcı arabiriminde aşağıda açıklanmıştır: vRA & SRM yüklemesi IÇIN AVS özel bulutu 'nda bir kullanıcı oluşturun](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
+2. VSphere çoğaltma ve SRM yüklemesi için AVS özel bulutunuzda bir kullanıcı oluşturun. [VCenter Kullanıcı arabiriminde aşağıda açıklanmıştır: vRA &AMP; SRM yüklemesi IÇIN AVS özel bulutu 'nda bir kullanıcı oluşturun](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
 3. AVS özel bulut ortamınızı vRA yüklemesi için hazırlayın.
 4. Vmware.com adresinden VR ISO 'da OVF 'yi kullanarak AVS özel bulutunuzda vRA 'yi dağıtın. VRA 6,5 için, [Bu VMware bloguna](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgiler vardır.
 5. VRA için güvenlik duvarı kurallarını yapılandırın. [AVS portalında aşağıda açıklanmıştır: vRA Için güvenlik duvarı kurallarını yapılandırın](#avs-portal-configure-firewall-rules-for-vra).

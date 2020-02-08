@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150036"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069414"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış 
 Sanal makineler gibi işlem kaynakları, performansını ve kullanılabilirliğini yalnızca [diğer bulut kaynakları](../insights/monitor-azure-resource.md)gibi izlemek için veri oluşturur. İşlem kaynaklarında Ayrıca, izlenmesi gereken bir konuk işletim sistemi ve iş yükleri de vardır. Bu izleme verilerinin kaynağın içinden toplanması bir aracı gerektirir. Bu makalede, Azure Izleyici tarafından kullanılan aracılar açıklanmakta ve belirli ortamınızın gereksinimlerini karşılamanız gerektiğini belirlemenize yardımcı olur.
@@ -31,11 +31,11 @@ Azure Izleyici, her birinin belirli bir işlevi sağladığı üç aracı vardı
 
 Aşağıdaki tabloda, farklı aracıların hızlı karşılaştırması sağlanmıştır. Bu makalenin geri kalanında Ayrıntılar için bkz.
 
-| | Azure tanılama uzantısı | Log Analytics Aracısı | Bağımlılık aracısı |
+| | Azure tanılama uzantısı | Log Analytics aracısı | Bağımlılık aracısı |
 |:---|:---|:---|:---|
 | Desteklenen ortamlar | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
 | İşletim sistemleri | Windows<br>Linux | Windows<br>Linux | Windows<br>Linux
-| Aracı bağımlılıkları  | None | None | Log Analytics Aracısı gerektirir |
+| Aracı bağımlılıkları  | Hiçbiri | Hiçbiri | Log Analytics Aracısı gerektirir |
 | Toplanan veriler | Olay Günlükleri<br>ETW olayları<br>Syslog<br>Performans<br>IIS günlükleri<br>.NET uygulama izleme çıkış günlükleri<br>Kilitlenme bilgi dökümleri | Olay Günlükleri<br>Syslog<br>Performans<br>IIS günlükleri<br>Özel günlükler<br>Çözümlerdeki veriler | İşlem ayrıntıları ve bağımlılıklar<br>Ağ bağlantısı ölçümleri |
 | Gönderilen veriler | Azure Storage<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri |
 
@@ -60,10 +60,10 @@ Azure Tanılama uzantısı tarafından desteklenen senaryolar şunlardır:
 * [Önyükleme tanılamaları](../../virtual-machines/troubleshooting/boot-diagnostics.md)ile VM önyüklemesi sorunlarını araştırın.
 * Diğer uygulama izlemeyle tümleştirilecek [APPLICATION INSIGHTS](diagnostics-extension-to-application-insights.md) sanal makinenizde çalışan uygulamalardan verileri kopyalayın.
 
-## <a name="log-analytics-agent"></a>Log Analytics Aracısı
+## <a name="log-analytics-agent"></a>Log Analytics aracısı
 [Log Analytics Aracısı](log-analytics-agent.md) , Azure 'da, diğer bulut sağlayıcılarında ve Şirket içindeki sanal makinelerin Konuk işletim sisteminden ve iş yüklerinden izleme verilerini toplar. Log Analytics çalışma alanına veri toplar.
 
-Log Analytics Aracısı, System Center Operations Manager tarafından kullanılan aracıdır ve yönetim grubunuz ve Azure Izleyici ile aynı anda iletişim kurmak üzere çok ana aracı bilgisayarlardır. Bu aracı, Azure Izleyici 'deki belirli çözümler için de gereklidir.
+Log Analytics Aracısı, System Center Operations Manager tarafından kullanılan aracıdır ve aynı anda yönetim grubunuz ve Azure Izleyici ile iletişim kurmak için çok ana aracı bilgisayarları. Bu aracı, Azure Izleyici 'deki belirli çözümler için de gereklidir.
 
 Windows için Log Analytics Aracısı genellikle Microsoft Yönetim Aracısı (MMA) olarak adlandırılır. Linux için Log Analytics Aracısı genellikle OMS Aracısı olarak adlandırılır.
 

@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810099"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083125"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
@@ -66,7 +66,7 @@ SQL Aracısı Işlerinde birkaç temel kavram vardır:
 ### <a name="job-steps"></a>İş adımları
 
 SQL Aracısı Iş adımları SQL aracısının yürütmesi gereken eylem dizileridir. Her adımda, adım başarılı veya başarısız olursa yürütülmesi gereken adım, hata durumunda yeniden deneme sayısı.
-SQL Aracısı, veritabanına göre tek bir Transact-SQL toplu işi yürüten Transact-SQL iş adımı veya özel işletim sistemi betiği yürütebilmesi için SSIS iş adımları ile veri yükleme işlemini yapmanızı sağlar. SSIS çalışma zamanı veya değişiklikleri veritabanınızdaki diğer veritabanlarına yayımlayabilen [çoğaltma](sql-database-managed-instance-transactional-replication.md) adımları.
+SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi yürüten Transact-SQL iş adımı veya özel işletim sistemi betiği yürütebilen IŞLETIM sistemi komutu/PowerShell adımları gibi farklı türlerde iş adımları oluşturmanızı sağlar, SSIS iş adımları, veritabanınızdaki değişiklikleri veritabanından diğer veritabanlarına yayımlayabilen bir [çoğaltma](sql-database-managed-instance-transactional-replication.md) adımları veya veritabanlarını yükleyebilir.
 
 [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) , bir veya birden çok tabloda yapılan değişiklikleri tek bir veritabanında yayımlamanıza ve bunları bir abone veritabanları kümesine yayımlamanıza/dağıtmanıza olanak sağlayan bir veritabanı altyapısı özelliğidir. Değişiklikleri yayımlamak aşağıdaki SQL Aracısı işi adım türleri kullanılarak uygulanır:
 
@@ -168,7 +168,7 @@ SQL Server ' de kullanılabilir olan SQL Aracısı özelliklerinden bazıları y
 
 SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs-preview"></a>Elastik Veritabanı İşleri (Önizleme)
+## <a name="elastic-database-jobs-preview"></a>Elastik veritabanı Işleri (Önizleme)
 
 **Elastik Veritabanı İşleri**, bir zaman çizelgesine veya istek üzerine çok sayıda veritabanı arasında bir veya daha fazla T-SQL betiğinin paralel olarak çalıştırılmasını sağlar.
 
@@ -202,7 +202,9 @@ Elastik İş aracısı ücretsizdir. İş veritabanı, herhangi bir SQL veritaba
 
 Geçerli önizlemede, Elastik İş aracısı oluşturmak için bir Azure SQL veritabanı (S0 veya üzeri) gerekir.
 
-*İş veritabanının* yeni olması şart değildir ancak temiz, boş, S0 veya üzeri hizmet katmanında olması gerekir. *İş veritabanı* için önerilen hizmet katmanı S1 veya üzeridir ancak bu durum iş adımı sayısı, yineleme sayısı ve işlerin çalıştırılma sıklığı gibi performans ihtiyaçlarına göre değişiklik gösterir. Örneğin bir S0 veritabanı, bir saatte birkaç iş çalıştıran bir iş aracısı için yeterli olurken dakikada bir iş çalıştırmak için yeterli performansı sunmayabilir ve bu durumda daha yüksek bir hizmet katmanının kullanılması daha iyi olabilir.
+*İş veritabanının* yeni olması gerekmez, ancak temiz, boş, S0 veya daha yüksek bir hizmet hedefi olmalıdır. *İş veritabanının* önerilen hizmet hedefi S1 veya daha yükseği, ancak en uygun seçenek, işinizin performans ihtiyaçlarına bağlıdır: iş adımları sayısı, iş hedefi sayısı ve işlerin ne sıklıkta çalıştırıldığı. Örneğin, bir S0 veritabanı, çok sayıda işi çalıştıran bir iş Aracısı için yeterli olabilir, ancak her dakika, bir S0 veritabanı ile yeterince hızlı olmayabilir ve daha yüksek bir hizmet katmanı daha iyi olabilir. 
+
+İş veritabanına yönelik işlemler beklenenden yavaşsa, Azure portal veya [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV kullanarak yavaşlığın süresi boyunca veritabanı performansını ve iş veritabanındaki kaynak kullanımını [izleyin](sql-database-monitor-tune-overview.md#monitor-database-performance) . CPU, veri g/ç gibi bir kaynağın kullanımı veya %100 günlük yazma yaklaşımının ve yavaşlığın süreleriyle ilişkili olması halinde, iş veritabanı performansı yeterince iyileştirene kadar veritabanını daha yüksek hizmet hedeflerine ( [DTU modelinde](sql-database-service-tiers-dtu.md) veya [Vcore modelinde](sql-database-service-tiers-vcore.md)) artımlı olarak ölçeklendirin.
 
 
 ##### <a name="job-database-permissions"></a>İş veritabanı izinleri
@@ -212,7 +214,7 @@ Geçerli önizlemede, Elastik İş aracısı oluşturmak için bir Azure SQL ver
 
 |Rol adı  |'jobs' şeması izinleri  |'jobs_internal' şeması izinleri  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    None     |
+|**jobs_reader**     |    SELECT     |    Hiçbiri     |
 
 > [!IMPORTANT]
 > Veritabanı yöneticisi olarak *İş veritabanına* erişim izni vermeden önce güvenlik durumunu gözden geçirin. İş oluşturma veya düzenleme izinlerine sahip olan kötü niyetli bir kullanıcı, kendi denetimindeki bir veritabanına bağlanmak için kayıtlı kimlik bilgisini kullanan bir iş oluşturarak veya düzenleyerek ilgili kimlik bilgisinin parolasını belirleyebilir.
@@ -251,6 +253,10 @@ Aşağıdaki örneklerde işin çalıştırılacağı veritabanlarının belirle
 **Örnek 5** ve **örnek 6** Azure SQL sunucularının, elastik havuzların ve veritabanlarının dahil etme ve dışlama kuralları kullanılarak birleştirilebileceği gelişmiş senaryolar gösterme.<br>
 **Örnek 7**'de parça eşlemesi içinde bulunan ve iş çalıştırma zamanında değerlendirilebilecek parçalar gösterilmektedir.
 
+> [!NOTE]
+> Iş veritabanının kendisi bir işin hedefi olabilir. Bu senaryoda, Iş veritabanı tıpkı diğer hedef veritabanları gibi değerlendirilir. İş kullanıcısının oluşturulması ve iş veritabanında yeterli izinleri verilmesi gerekir ve iş kullanıcısına ait veritabanı kapsamlı kimlik bilgileri, diğer hedef veritabanları için de olduğu gibi Iş veritabanında da bulunmalıdır.
+>
+
 #### <a name="job"></a>İş
 
 *İş*, bir plan dahilinde veya tek seferlik olarak yürütülen çalışma birimidir. Bir işte bir veya daha fazla *iş adımı* bulunur.
@@ -265,7 +271,7 @@ Her işte yürütülecek bir T-SQL betiği, bu T-SQL betiğinin çalıştırıla
 
 #### <a name="job-history"></a>İş geçmişi
 
-İş yürütme geçmişi, *İş veritabanında* kaydedilir. Sistem temizleme işlemi 45 günden daha eski olan yürütme geçmişi verilerini siler. 45 günden daha yeni olan geçmişi kaldırmak için **İş veritabanında** *sp_purge_history* saklı yordamını çağırın.
+İş yürütme geçmişi, *İş veritabanında* kaydedilir. Sistem temizleme işlemi 45 günden daha eski olan yürütme geçmişi verilerini siler. 45 günden daha yeni olan geçmişi kaldırmak için **İş veritabanında***sp_purge_history* saklı yordamını çağırın.
 
 ### <a name="agent-performance-capacity-and-limitations"></a>Aracı performansı, kapasitesi ve sınırlamaları
 

@@ -3,12 +3,12 @@ title: Azure dosyalarını PowerShell ile yedekleme
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773096"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086950"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile yedekleme
 
@@ -44,6 +44,13 @@ Azure kitaplığı 'ndaki **az. RecoveryServices** [cmdlet başvuru](/powershell
 PowerShell 'i aşağıdaki şekilde ayarlayın:
 
 1. [Az PowerShell ' in en son sürümünü indirin](/powershell/azure/install-az-ps). Gerekli en düşük sürüm 1.0.0 ' dir.
+
+> [!WARNING]
+> Önizleme için gereken en düşük PS sürümü ' az 1.0.0 ' idi. GA için yaklaşan değişiklikler nedeniyle, gereken en düşük PS sürümü ' az. RecoveryServices 2.6.0 ' olacaktır. Tüm mevcut PS sürümlerini bu sürüme yükseltmek çok önemlidir. Aksi takdirde, mevcut betikler GA 'dan sonra kesilir. En düşük sürümü aşağıdaki PS komutlarıyla birlikte yükler
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. Bu komutla Azure Backup PowerShell cmdlet 'lerini bulun:
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Önemli bildirim-AFS yedeklemeleri için yedekleme öğesi kimliği
+
+Bu bölümde, AFS yedeklemeleri için Önizleme 'den GA 'ye kadar yedekleme öğesi almayla ilgili değişiklikler özetlenmektedir.
+
+AFS için yedeklemeyi etkinleştirirken, Kullanıcı, varlık adı olarak müşterinin kolay dosya paylaşma adını sağlar ve bir yedekleme öğesi oluşturulur. Yedekleme öğesinin ' name ', Azure Backup hizmeti tarafından oluşturulan benzersiz bir tanımlayıcıdır. Genellikle tanımlayıcı Kullanıcı dostu adı içerir. Ancak Azure hizmetleri 'nin bir Azure dosya paylaşımının dahili olarak nasıl tanımladığı gibi bir değişiklik de vardır. Bu, AFS yedeklemesi için yedekleme öğesinin benzersiz adının GUID olacağı ve müşterinin kolay adıyla hiçbir ilişkisi olmayacağı anlamına gelir. Her öğenin benzersiz adını bilmek için, tüm ilgili öğeleri almak üzere backupManagementType ve WorkloadType için ilgili filtrelerle ```Get-AzRecoveryServicesBackupItem``` komutunu çalıştırın ve ardından döndürülen PS nesnesi/yanıtı içindeki ad alanını gözlemleyin. Öğeleri listelemek ve sonra ' name ' alanından yanıt olarak benzersiz adlarını almak her zaman önerilir. ' Name ' parametresiyle öğeleri filtrelemek için bu değeri kullanın. Aksi takdirde, öğeyi müşterinin kolay adı/tanımlayıcısı ile almak için FriendlyName parametresini kullanın.
+
+> [!WARNING]
+> AFS yedeklemeleri için PS sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Bu sürümde, ' friendlyName ' filtresi ```Get-AzRecoveryServicesBackupItem``` komutu için kullanılabilir. Azure dosya paylaşımının adını friendlyName parametresine geçirin. Azure dosya paylaşımının adını ' name ' parametresine geçirirseniz, bu sürüm kolay ad parametresine bu kolay adı geçirmek için bir uyarı oluşturur. Bu en düşük sürümü yüklememe, mevcut betiklerin oluşmasına neden olabilecek. Aşağıdaki komutla en düşük PS sürümünü yükler.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>İsteğe bağlı yedekleme tetikleyin
 
 Korumalı bir Azure dosya paylaşımının isteğe bağlı yedeklemesini çalıştırmak için [Backup-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) komutunu kullanın.
 
-1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)ile yedekleme verilerinizi tutan, kasadaki kapsayıcıdan depolama hesabı ve dosya paylaşımının alınması.
-2. Bir yedekleme işi başlatmak için [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)ile VM hakkında bilgi edinebilirsiniz.
+1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)ile yedekleme verilerinizi tutan, kasadaki kapsayıcıdan depolama hesabını alın.
+2. Bir yedekleme işi başlatmak için [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)ile Azure dosya paylaşımıyla ilgili bilgiler elde edersiniz.
 3. [Backup-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem)ile isteğe bağlı bir yedekleme çalıştırın.
 
 İsteğe bağlı yedeklemeyi aşağıdaki gibi çalıştırın:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ Yedeklemeler çekilirken Azure dosya paylaşımının anlık görüntüleri kull
 İstek üzerine yedeklemeler, anlık görüntülerinizi 10 yıl boyunca koruyacak şekilde kullanılabilir. Zamanlayıcılar, seçili bekletme ile isteğe bağlı PowerShell betikleri çalıştırmak için kullanılabilir ve bu nedenle, anlık görüntüleri her hafta, ay veya yılda düzenli aralıklarla alabilir. Düzenli anlık görüntüler alırken Azure Backup kullanarak [isteğe bağlı yedeklemelerin kısıtlamalarına](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) bakın.
 
 Örnek komut dosyaları arıyorsanız, Azure Otomasyonu runbook 'u kullanarak GitHub 'daki örnek betiğe (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) başvurabilirsiniz. bu sayede, yedeklemeleri düzenli aralıklarla zamanlamanıza ve 10 yıla kadar bile koruyabilirsiniz.
+
+> [!WARNING]
+> Automation runbook 'larınızda AFS yedeklemeleri için PS sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Eski ' Azurere ' modülünü ' az ' modülle değiştirmeniz gerekecektir. Bu sürümde, ' friendlyName ' filtresi ```Get-AzRecoveryServicesBackupItem``` komutu için kullanılabilir. Azure dosya paylaşımının adını friendlyName parametresine geçirin. Azure dosya paylaşımının adını ' name ' parametresine geçirirseniz, bu sürüm kolay ad parametresine bu kolay adı geçirmek için bir uyarı oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

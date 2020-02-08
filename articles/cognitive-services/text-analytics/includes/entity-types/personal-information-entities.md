@@ -6,30 +6,110 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/21/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73800203"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086877"
 ---
 ## <a name="personal-information-entity-types"></a>Kişisel bilgi varlık türleri:
 
-### <a name="phone-number"></a>Telefon Numarası
+### <a name="person"></a>Kişi
+Metindeki kişi adlarını tanır.
 
-Telefon numaraları. 
+Diller:
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                               | Model sürümünden itibaren kullanılabilir |
+|--------------|-----------------------------------------------------------|----------------------------------------|
+| Yok          | Tanınan adlar, örneğin `Bill Gates``Marie Curie` | `2020-02-01`                           |
+
+### <a name="organization"></a>Kuruluş  
+
+Kuruluşları, şirketleri, kurumları, şirketleri, sinek ve diğer kişi gruplarını tanıyın.
+
+Diller: 
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                                                                       | Model sürümünden itibaren kullanılabilir|
+|--------------|---------------------------------------------------------------------------------------------------|--------------|
+| Yok          | kuruluşlar, örneğin `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration` | `2020-02-01` |
+
+### <a name="phone-number"></a>Telefon numarası
+
+Telefon numaraları (yalnızca ABD telefon numaraları). 
 
 Diller:
 
 * Genel Önizleme: `English`
 
-| Alt tür adı           | Açıklama                                           |
-|------------------------|-------------------------------------------------------|
-| Yok                    | Telefon numaraları, örneğin `+1 123-123-123`.          |
-| AB telefon numarası        | Avrupa Birliği 'ne özgü telefon numaraları.         |
-| AB cep telefonu numarası | Avrupa Birliği 'ne özgü cep telefonu numaraları. |
+| Alt tür adı | Açıklama                                    | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------|----------------------------------------|
+| Yok          | ABD telefon numaraları, örneğin `(312) 555-0176` | `2020-02-01`                           |
+
+### <a name="email"></a>E-posta
+
+E-posta adresi. 
+
+Diller:
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                      | Model sürümünden itibaren kullanılabilir |
+|--------------|--------------------------------------------------|----------------------------------------|
+| Yok          | E-posta adresi, örneğin `support@contoso.com` | `2020-02-01`                           |
+
+### <a name="url"></a>URL'si
+
+Internet URL 'Leri.
+
+Diller:
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                                          | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------------------|----------------------------------------|
+| Yok          | Web sitelerine yönelik URL 'Ler, örneğin `https://www.bing.com` | `2020-02-01`                           |
+
+### <a name="ip-address"></a>IP Adresi
+
+Internet Protokolü adresi
+
+Diller:
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                              | Model sürümünden itibaren kullanılabilir |
+|--------------|------------------------------------------|----------------------------------------|
+| Yok          | Örneğin, ağ adresi `10.0.0.101` | `2020-02-01`                           |
+
+### <a name="quantity"></a>Miktar 
+
+Sayısal miktarlar
+
+Diller:
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                   | Model sürümünden itibaren kullanılabilir |
+|--------------|-------------------------------|----------------------------------------|
+| Yaş          | `90 days old`, `30 years old` | `2020-02-01`                           |
+
+### <a name="datetime"></a>DateTime
+
+Tarih ve saat varlıkları
+
+Diller:
+
+* Genel Önizleme: `English`
+
+| Alt tür adı | Açıklama                   | Model sürümünden itibaren kullanılabilir |
+|--------------|-------------------------------|----------------------------------------|
+| Tarih         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>AB GPS koordinatları
 
@@ -39,13 +119,15 @@ Diller:
 
 * Genel Önizleme: `English`
 
-| Alt tür adı | Açıklama                               |
-|--------------|-------------------------------------------|
-| Yok          | Avrupa Birliği içindeki GPS koordinatları |
+| Alt tür adı | Açıklama                               | Model sürümünden itibaren kullanılabilir |
+|--------------|-------------------------------------------|----------------------------------------|
+| Yok          | Avrupa Birliği içindeki GPS koordinatları | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure bilgileri
 
 Kimlik doğrulama bilgileri ve bağlantı dizeleri dahil olmak üzere tanımlanabilir Azure bilgileri. 
+
+* Model sürümü `2019-10-01`başlayarak kullanılabilir.
 
 Diller:
 
@@ -66,6 +148,8 @@ Diller:
 | SQL Server bağlantı dizesi          | Bir SQL Server için bağlantı dizesi.                                         |
 
 ### <a name="identification"></a>İsi
+
+* Model sürümü `2019-10-01`başlayarak kullanılabilir.
 
 Diller:
 

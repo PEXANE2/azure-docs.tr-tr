@@ -3,18 +3,21 @@ title: Azure dosyalarını PowerShell ile geri yükleme
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını geri yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776345"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086831"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile geri yükleme
 
 Bu makalede, Azure PowerShell kullanılarak [Azure Backup](backup-overview.md) hizmeti tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yükleneceği açıklanmaktadır.
 
 Dosya paylaşımının tamamını veya paylaşımdaki belirli dosyaları geri yükleyebilirsiniz. Özgün konuma veya alternatif bir konuma geri yükleyebilirsiniz.
+
+> [!WARNING]
+> AFS yedeklemeleri için PS sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Daha fazla ayrıntı için bu değişikliğin gereksinimini seviyelendirme [bölümüne](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) bakın.
 
 ## <a name="fetch-recovery-points"></a>Kurtarma noktalarını getir
 

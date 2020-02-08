@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260863"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082945"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -32,7 +32,7 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
 * Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
@@ -55,7 +55,7 @@ Kullanıcıların eğitiminde kullanıcıları nasıl tükettiği temel alınara
 
 Yaklaşan API değişiklikleri hakkında daha fazla bilgi edinmek için bkz. [DataSet API Change bildirimi](https://aka.ms/tabular-dataset).
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturun
+## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
 Bir veri kümesi oluşturarak, veri kaynağı konumuna, meta verilerinin bir kopyasıyla birlikte bir başvuru oluşturursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz gerekmez. Python SDK veya çalışma alanı giriş sayfasını (Önizleme) kullanarak hem `TabularDataset` hem de `FileDataset` veri kümeleri oluşturabilirsiniz.
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |Passengerıd|Kalan|PClass|Ad|Komutu|Yaş|SibSp|Parch|Bilet|Tarifeli havayolu|Cabin|Embarked
+| |Passengerıd|Kalan|PClass|Ad|Komutu|Yaş|SibSp|Parch|Ticket|Tarifeli havayolu|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Yanlış|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
-1|2|Doğru|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
-2|3|Doğru|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|False|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
+1|2|True|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
+2|3|True|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Azure SQL veritabanı 'ndan okumak için `TabularDatasetFactory` sınıfında [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) yöntemi kullanın:
 
@@ -162,13 +162,13 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
-#### <a name="on-the-web"></a>Uygulama oluşturun 
-Aşağıdaki adımlar ve animasyon, Azure Machine Learning Studio https://ml.azure.com bir veri kümesi oluşturmayı gösterir.
+#### <a name="on-the-web"></a>Web 'de 
+Aşağıdaki adımlar ve animasyon, Azure Machine Learning Studio https://ml.azure.combir veri kümesi oluşturmayı gösterir.
 
 ![UI ile veri kümesi oluşturma](./media/how-to-create-register-datasets/create-dataset-ui.gif)
 
 Studio 'da bir veri kümesi oluşturmak için:
-1. https://ml.azure.com 'de oturum açın.
+1. https://ml.azure.com'de oturum açın.
 1. Sol bölmedeki **varlıklar** bölümünde **veri kümeleri** ' ni seçin. 
 1. Veri kümenizin kaynağını seçmek için **veri kümesi oluştur** ' u seçin. Bu kaynak yerel dosyalar, bir veri deposu veya genel URL olabilir.
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
@@ -177,7 +177,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 
 ## <a name="register-datasets"></a>Veri kümelerini Kaydet
 
-Oluşturma işlemini gerçekleştirmek için, veri kümelerinizi bir çalışma alanına kaydedin. Veri kümelerini başkalarıyla paylaşmak ve bunları çeşitli denemeleri genelinde yeniden kullanmak için çalışma alanınıza kaydetmek üzere [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) yöntemini kullanın:
+Oluşturma işlemini gerçekleştirmek için, veri kümelerinizi bir çalışma alanına kaydedin. Veri kümelerini başkalarıyla paylaşmak ve bunları çeşitli denemeleri genelinde yeniden kullanmak için çalışma alanınıza kaydetmek üzere [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) yöntemini kullanın:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
@@ -223,7 +223,7 @@ Kutucuğunu seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filtr
 
 ![Veri kümesi seçin](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**’u seçin.
+Veri kümesinin kaydedileceği bir ad seçin ve isteğe bağlı olarak, kullanılabilir filtreleri kullanarak verileri filtreleyin. Bu durumda, genel tatiller veri kümesi için zaman aralığını bir yıla, ülke kodunu ise yalnızca BIZIMLE filtreleyerek filtreleyebilirsiniz. **Oluştur**'u seçin.
 
 ![Veri kümesi params 'i ayarlama ve veri kümesi oluşturma](./media/how-to-create-register-datasets/open-datasets-3.png)
 

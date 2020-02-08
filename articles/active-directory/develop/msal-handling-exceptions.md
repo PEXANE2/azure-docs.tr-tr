@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916783"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084025"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL özel durumlarını ve hatalarını işleme
 
@@ -273,7 +273,7 @@ MSAL, daha iyi bir kullanıcı deneyimi sağlamak için kullanabileceğiniz bir 
 | `UserPasswordExpired` | Kullanıcının parolasının süresi doldu. | Kullanıcının parolasını sıfırlayabilmesi için etkileşimli parametre ile `acquireToken` çağırın |
 | `None` |  Daha fazla ayrıntı sağlanır. Bu koşul etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir. | Etkileşimli parametrelerle `acquireToken` çağrısı yapın |
 
-### <a name="code-example"></a>Kod Örneği
+### <a name="code-example"></a>Kod örneği
 
 ```java
         IAuthenticationResult result;

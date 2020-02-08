@@ -3,7 +3,7 @@ title: Kullanıcı oturum açma/kapatma & çağrı Microsoft Graph (Android)-Mic
 description: Erişim belirteci alın ve Microsoft Identity platform (Android) ' den erişim belirteçleri gerektiren Microsoft Graph veya API 'Leri çağırın
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4366f95a9c6d5c0e6b851583ac6001b3b413c08a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758844"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085400"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph çağırın 
 
@@ -58,7 +58,7 @@ Bu örnek, kimlik doğrulamasını uygulamak için Android için Microsoft kimli
 
  MSAL, belirteçleri otomatik olarak yenileyecek, cihazdaki diğer uygulamalar arasında çoklu oturum açma (SSO) sunacaktır ve hesapları yönetir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici Android Studio 3.5 + sürümünü gerektirir
 
@@ -77,7 +77,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
 ### <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. [Azure portalına](https://aka.ms/MobileAppReg) gidin.
+1. [Azure Portal](https://aka.ms/MobileAppReg) gidin.
 2. [Uygulama kayıtları dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) açın ve **+ Yeni kayıt**' ye tıklayın.
 3. Uygulamanız için bir **ad** girin ve yeniden yönlendirme URI **'sini ayarlamadan** **Kaydet**' e tıklayın.
 4. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulama** >  **+ bir platform** > **Android**ekleyin ' i seçin. (Bu bölümü görmek için dikey pencerenin üst kısmındaki "yeni deneyime geç" seçeneğini seçmeniz gerekebilir.

@@ -3,22 +3,22 @@ title: Sayfa yeniden yüklemeden kaçının (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak belirteçleri sessizce alırken sayfa yeniden yüklemeden kaçınmanın nasıl yapılacağını öğrenin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696155"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084963"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL. js kullanarak belirteçleri sessizce alırken ve yenilerken sayfa yeniden yüklemeden kaçının
 JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), arka planda belirteçleri sessizce almak ve yenilemek için gizli `iframe` öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, `iframe`yüklenmesi `redirect_uri` buna karşılık gelen HTML ile sonuçlanır. Genellikle uygulamanın `redirect_uri` kök sayfasıdır ve bunun yeniden yüklenmesine neden olur.

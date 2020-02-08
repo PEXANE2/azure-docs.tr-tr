@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 58b372e1f80386c4e02339f67f4c5aeaa686a662
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549232"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086463"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
 
@@ -97,8 +97,6 @@ AKS aşağıdaki [giriş denetleyicilerini][admission-controllers]destekler:
 - *Değiştirici Tingadmissionweb kancası*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
-- *DenyEscalatingExec*
-- *Alwaysulmages*
 
 Şu anda AKS 'de giriş denetleyicileri listesini değiştiremezsiniz.
 
@@ -122,7 +120,7 @@ Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerin
 
 AKS 'de, Azure CLı ve Azure Resource Manager şablonlarını kullanarak kümeyi oluştururken `maxPods` değerini ayarlayabilirsiniz. Ancak, hem Kubenet hem de Azure CNı, *en az bir değer* gerektirir (oluşturma sırasında doğrulama):
 
-| Networking (Ağ İletişimi) | Minimum | Maksimum |
+| Ağ | Minimum | Maksimum |
 | -- | :--: | :--: |
 | Azure CNı | 30 | 250 |
 | Kubernetes kullanan | 30 | 110 |

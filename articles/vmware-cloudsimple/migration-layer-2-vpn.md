@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019834"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083216"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
@@ -48,7 +48,7 @@ L2 VPN kullanarak geçiş hakkında daha fazla bilgi edinmek için bkz. VMware b
 * Tek başına NSX-T Edge gereci sürümü, AVS özel bulut ortamınızda kullanılan NSX-T Manager sürümü (NSX-T 2.3.0) ile uyumludur.
 * Şirket içi vCenter 'da, sahte aktarımlar etkinleştirilmiş bir santral bağlantı noktası grubu oluşturulmuştur.
 * NSX-T tek başına istemci yukarı IP adresi için kullanılmak üzere bir genel IP adresi ayrılmış ve iki adres arasındaki çeviri için 1:1 NAT yerinde.
-* DNS iletimi, az için şirket içi DNS sunucularında ayarlanır. AVS.io etki alanı, AVS özel bulut DNS sunucularını işaret etmek için.
+* DNS iletme, az.cloudsimple.io etki alanı için şirket içi DNS sunucularında, AVS özel bulut DNS sunucularını işaret etmek üzere ayarlanır.
 * VMotion 'in iki sitede çalışması için, RTT gecikmesi 150 MS 'den az veya buna eşittir.
 
 ## <a name="limitations-and-considerations"></a>Sınırlamalar ve önemli noktalar
@@ -57,8 +57,8 @@ Aşağıdaki tabloda desteklenen vSphere sürümleri ve ağ bağdaştırıcısı
 
 | vSphere sürümü | Kaynak vSwitch türü | Sanal NIC sürücüsü | Hedef vSwitch türü | Destekleniyor mu? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Evet |
-| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Evet |
+| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Yes |
+| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Yes |
 | vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | E1000 | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 | vSphere 6.7 UI veya 6.5 P03, NSX-V veya NSX-T 2.2, 6.5 P03 veya üzeri sürümlerindeki sürümler | Tümü | Tümü | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 
@@ -77,7 +77,7 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 |------------|-----------------|
 | Ağ adı | MGMT_NET_VLAN469 |
 | VLAN | 469 |
-| CıDR| 10.250.0.0/24 |
+| CIDR| 10.250.0.0/24 |
 | Tek başına uç gereç IP adresi | 10.250.0.111 |
 | Tek başına uç gereç NAT IP adresi | 192.227.85.167 |
 
@@ -86,7 +86,7 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 | **Öğe** | **Değer** |
 |------------|-----------------|
 | VLAN | 472 |
-| CıDR| 10.250.3.0/24 |
+| CIDR| 10.250.3.0/24 |
 
 ### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>NSX-T Tier0 yönlendirici için AVS özel bulutu IP şeması (L2 VPN hizmeti)
 
@@ -102,7 +102,7 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 | **Öğe** | **Değer** |
 |------------|-----------------|
 | VLAN | 712 |
-| CıDR| 10.200.15.0/24 |
+| CIDR| 10.200.15.0/24 |
 
 ## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal yönlendirici KIMLIĞINI getir
 
@@ -137,7 +137,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
 
 1. [NSX-T Manager](https://nsx-t-manager-ip-address)'da oturum açın.
-2. **Ağ** > **anahtarlama** > **anahtarlar** >  **< \Mantıksal anahtar\>** **Genel Bakış ' ı**seçin.
+2. **Ağ** > **anahtarlama** > **anahtarlar** >  **< \Mantıksal anahtar\>** **Genel Bakış ' ı**seçin. > 
 3. L2VPN yapılandırılırken gerekli olan Esnetme mantıksal anahtarının UUID 'sini bir yere unutmayın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch-switch01.png)

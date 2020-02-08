@@ -7,19 +7,22 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 29850cb9cb40eae0829b5d8c2b58b5f9518f18d5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021204"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089043"
 ---
-Metin Analizi API'si sürüm 3, verilerinizde kullanılan Metin Analizi modelini seçmenizi sağlar. İstekinizdeki modelin bir sürümünü seçmek için isteğe bağlı `model-version` parametresini kullanın. Bu parametre belirtilmemişse, API varsayılan olarak en son kararlı model sürümüne `latest`.
+Metin Analizi API'si sürüm 3, verileriniz için en güncel model sürümünü seçmenizi sağlar. İstekleriniz için istenen modelin sürümünü seçmek için isteğe bağlı `model-version` parametresini kullanın. Bu parametre belirtilmemişse, API varsayılan olarak en son kararlı sürümü `latest`. Herhangi bir istekte en yeni model sürümünü kullanabilirsiniz, ancak her sürümde yalnızca bazı özellikler güncelleştirilir. Aşağıdaki tabloda, her model sürümünde hangi özelliklerin güncelleştirildiği açıklanmaktadır:
 
-Kullanılabilir model sürümleri:
-* `2019-10-01` (`latest`)
+| Model sürümü           | Güncelleştirilmiş özellikler         | İçin en son sürüm:           |
+|-------------------------|--------------------------|--------------------------|
+| `2020-02-01`            | Varlık tanıma                      | Varlık tanıma                      |
+| `2019-10-01`            | Varlık tanıma, yaklaşım Analizi  | Dil algılama, anahtar tümceciği ayıklama, yaklaşım Analizi|
+
 
 V3 uç noktalarından alınan her yanıt, kullanılan model sürümünü belirten bir `model-version` alanı içerir.
 
@@ -30,3 +33,4 @@ V3 uç noktalarından alınan her yanıt, kullanılan model sürümünü belirte
     "model-version": "2019-10-01"
 }
 ```
+Bu model sürümlerinin güncelleştirmeleriyle ilgili ayrıntılar [için bkz. yenilikler.](../whats-new.md)

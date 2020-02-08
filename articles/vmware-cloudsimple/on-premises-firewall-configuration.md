@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024475"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082959"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>AVS özel bulut ortamınıza ve uygulamalarına Şirket içinden erişme
 
@@ -26,7 +26,7 @@ AVS özel bulut vCenter ve NSX-T yöneticinize erişmek için, aşağıdaki tabl
 
 | Bağlantı noktası       | Kaynak                           | Hedef                      | Amaç                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | Şirket içi DNS sunucuları          | AVS özel bulut DNS sunucuları        | Az olan DNS aramasını iletmek için gereklidir *. AVS.io* , şirket içi ağdan yalnızca AVS özel bulut DNS sunucularına sahiptir.     |
+| 53 (UDP)   | Şirket içi DNS sunucuları          | AVS özel bulut DNS sunucuları        | *Az.cloudsimple.io* 'in DNS aramasını, şirket ıçı ağdan AVS özel bulut DNS sunucularına iletmek için gereklidir.     |
 | 53 (UDP)   | AVS özel bulut DNS sunucuları        | Şirket içi DNS sunucuları          | AVS özel bulut vCenter 'dan şirket içi DNS sunucularına DNS 'in şirket içi etki alanı adlarının iletilmesi için gereklidir. |
 | 80 (TCP)   | Şirket içi ağı              | AVS özel bulut yönetimi ağı | *Http* 'den *https*'ye vCenter URL 'sini yeniden yönlendirmek için gereklidir.                                                         |
 | 443 (TCP)  | Şirket içi ağı              | AVS özel bulut yönetimi ağı | Şirket içi ağdan vCenter ve NSX-T yöneticisine erişmek için gereklidir.                                           |

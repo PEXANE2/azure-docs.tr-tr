@@ -3,22 +3,22 @@ title: Xamarin Android Sistem tarayıcısı konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android üzerinde sistem tarayıcıları kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9346a4d5eaabb2af490afc13d5785a8f8233e53f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c144c6dd090669ca16c03050cbb8b59ff0cc224f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695067"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084579"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>MSAL.NET ile Xamarin Android Sistem tarayıcısı konuları
 
@@ -28,11 +28,11 @@ MSAL.NET 2.4.0-Preview sürümünden itibaren, MSAL.NET Chrome dışındaki tara
 
 Bunlar gibi özel sekmeleri destekleyen tarayıcılar kullanmanızı öneririz:
 
-| Özel sekmeler desteği olan tarayıcılar | Paket Adı |
+| Özel sekmeler desteği olan tarayıcılar | Paket adı |
 |------| ------- |
-|Chrome | com.android.chrome|
+|Chrome | com. Android. Chrome|
 |Microsoft Edge | com. Microsoft. emmx|
-|Firefox | org. Mozilla. Firefox|
+|'U | org. Mozilla. Firefox|
 |Eko | com. ekosı. Android|
 |Kivi | com. kiwibrowser. Browser|
 |Brave | com. brave. Browser|

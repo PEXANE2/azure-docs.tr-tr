@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulaması paketleme
 description: Azure Service Fabric uygulaması paketleme ve bir kümeye dağıtım için hazırlanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639692"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083629"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
 
@@ -56,9 +56,9 @@ Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek 
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak paket oluşturma
 
-Uygulamanızı oluşturmak için Visual Studio 2015 kullanıyorsanız, yukarıda açıklanan düzen ile eşleşen bir paket otomatik olarak oluşturmak için Package komutunu kullanabilirsiniz.
+Uygulamanızı oluşturmak için Visual Studio kullandıysanız, yukarıda açıklanan düzen ile eşleşen bir paket otomatik olarak oluşturmak için *Package* komutunu kullanabilirsiniz.
 
-Bir paket oluşturmak için Çözüm Gezgini ' de uygulama projesine sağ tıklayın ve aşağıda gösterildiği gibi paket komutunu seçin:
+Bir paket oluşturmak için *Çözüm Gezgini* ' de uygulama projesine sağ tıklayın ve **paket** komutunu seçin:
 
 ![Visual Studio ile uygulama paketleme][vs-package-command]
 

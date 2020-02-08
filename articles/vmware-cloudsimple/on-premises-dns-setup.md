@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019613"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083091"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>AVS 'nin şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS 'yi yapılandırma
 
@@ -32,10 +32,10 @@ ms.locfileid: "77019613"
 
 DNS yapılandırması için bu seçeneklerden birini kullanın.
 
-* [* İçin DNS sunucusunda bir bölge oluşturun. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [* Çözümlemek için şirket içi DNS sunucunuzda koşullu bir iletici oluşturun. AVS.io](#create-a-conditional-forwarder)
+* [*. Cloudsimple.io için DNS sunucusunda bir bölge oluşturun](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [*. Cloudsimple.io çözümlemek için şirket içi DNS sunucunuzda koşullu bir iletici oluşturun](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>\* İçin DNS sunucusunda bir bölge oluşturun. AVS.io
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>*. Cloudsimple.io için DNS sunucusunda bir bölge oluşturun
 
 Bir bölgeyi saplama bölgesi olarak ayarlayabilir ve ad çözümlemesi için özel buluttaki DNS sunucularına işaret edebilirsiniz. Bu bölüm, BIND DNS sunucusu veya Microsoft Windows DNS sunucusu kullanma hakkında bilgi sağlar.
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>Koşullu iletici oluşturma
 
-Koşullu iletici, tüm DNS ad çözümleme isteklerini belirtilen sunucuya iletir. Bu kurulumla, * için herhangi bir istek vardır. AVS.io, AVS özel bulutu 'nda bulunan DNS sunucularına iletilir. Aşağıdaki örneklerde, farklı türlerde DNS sunucularında ileticilerin nasıl ayarlanacağı gösterilmektedir.
+Koşullu iletici, tüm DNS ad çözümleme isteklerini belirtilen sunucuya iletir. Bu kurulumla, tüm *. cloudsimple.io istekleri, AVS özel bulutu 'nda bulunan DNS sunucularına iletilir. Aşağıdaki örneklerde, farklı türlerde DNS sunucularında ileticilerin nasıl ayarlanacağı gösterilmektedir.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS sunucusunda koşullu iletici oluşturma
 

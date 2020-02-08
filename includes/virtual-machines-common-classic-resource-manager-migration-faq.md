@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines
-author: singhkays
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
-ms.author: kasing
+ms.date: 02/06/2020
+ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021145"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068467"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Bu geçiş planı Azure sanal makinelerde çalışan mevcut hizmetlerimi ya da uygulamaların herhangi birini etkiliyor mu? 
 
@@ -37,7 +37,7 @@ Kaynaklar hazır durumda olduğu sürece geçişinizi iptal edebilirsiniz. Kayna
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>İşleme süreci başarısız olursa geçişi geri alabilir miyim? 
 
-İşleme süreci başarısız olursa geçişi geri alamazsınız. Kaydetme işlemi de dahil olmak üzere tüm geçiş işlemleri birden fazla kez denenebilir. Bu nedenle kısa bir süre sonra işlemi yeniden denemenizi öneririz. Hatayla karşılaşmaya devam ederseniz bir destek bileti oluşturun veya [VM Forumumuzda](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows) ClassicIaaSMigration etiketiyle bir forum gönderisi oluşturun.
+İşleme süreci başarısız olursa geçişi geri alamazsınız. Kaydetme işlemi de dahil olmak üzere tüm geçiş işlemleri birden fazla kez denenebilir. Bu nedenle kısa bir süre sonra işlemi yeniden denemenizi öneririz. Hala bir hata varsa, [Microsoft Q & a](https://docs.microsoft.com/answers/index.html)'da bir destek bileti oluşturun veya bir forum gönderisi oluşturun.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Kaynak Yöneticisi altında IaaS kullanmam gerekiyorsa başka bir hızlı yol devresi satın almam gerekir mi? 
 
@@ -49,7 +49,7 @@ Geçiş sırasında kaynaklar klasikten Resource Manager’a dönüşür. Bu ned
 
 ## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Klasik VM 'lerimi bir kasada yedekledim. VM’lerimi klasik moddan Resource Manager moduna geçirip bunları bir Kurtarma Hizmetleri kasasında koruyabilir miyim?
 
-Bir VM 'yi klasik moddan Kaynak Yöneticisi <a name="vault">moduna taşıdığınızda,</a> geçişten önce alınan yedeklemeler, yeni GEÇIRILEN Kaynak Yöneticisi sanal makinesine geçirilmez. Ancak, klasik sanal makinelerinize ait yedeklemelerinizi korumak istiyorsanız geçişten önce bu adımları izleyin. 
+Bir VM 'yi klasik moddan Kaynak Yöneticisi moduna taşıdığınızda, geçişten önce alınan yedeklemeler, yeni geçirilen Kaynak Yöneticisi sanal makinesine geçirilmez. Ancak, klasik sanal makinelerinize ait yedeklemelerinizi korumak istiyorsanız geçişten önce bu adımları izleyin. 
 
 1. Kurtarma Hizmetleri kasasında **korunan öğeler** sekmesine gidin ve VM 'yi seçin. 
 2. Korumayı Durdur'ı tıklatın. *İlişkili yedekleme verilerini sil* seçeneğini **işaretlenmemiş** olarak bırakın.

@@ -2,22 +2,22 @@
 title: Yetkilendirme aracıları ve bunları etkinleştirme | Mavisi
 description: Farklı yetkilendirme aracıları hakkında bilgi edinin Microsoft kimlik doğrulama kitaplığı (MSAL), Android uygulamanızın kullanmasına ve bunların nasıl etkinleştirileceğini sağlar.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698008"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085323"
 ---
 # <a name="authorization-agents-android"></a>Yetkilendirme aracıları (Android)
 
@@ -76,17 +76,17 @@ Tarayıcı listesindeki tarayıcıların sırası, işletim sistemi tarafından 
 
 Aşağıdaki tarayıcılar yapılandırma dosyasında belirtilen `"redirect_uri"` doğru şekilde yönlendirildiklerini görmek üzere test edilmiştir:
 
-| | Yerleşik tarayıcı | Chrome | Opera  | Microsoft Edge | UC tarayıcısı | Firefox |
+| | Yerleşik tarayıcı | Chrome | Opera  | Microsoft Edge | UC tarayıcısı | 'U |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | aktar | aktar |uygulanamaz |uygulanamaz |uygulanamaz |uygulanamaz |
-| Samsung S7 (API 25) | aktar | aktar | aktar | aktar | fail |aktar |
-| Huawei (API 26) |Pass * * | aktar | fail | aktar | aktar |aktar |
-| Vivo (API 26) |aktar|aktar|aktar|aktar|aktar|fail|
-| Piksel 2 (API 26) |aktar | aktar | aktar | aktar | fail |aktar |
+| Samsung S7 (API 25) | aktar | aktar | aktar | aktar | Neden |aktar |
+| Huawei (API 26) |Pass * * | aktar | Neden | aktar | aktar |aktar |
+| Vivo (API 26) |aktar|aktar|aktar|aktar|aktar|Neden|
+| Piksel 2 (API 26) |aktar | aktar | aktar | aktar | Neden |aktar |
 | Oppo | aktar | uygulanamaz * * * |uygulanamaz  |uygulanamaz |uygulanamaz | uygulanamaz|
-| OnePlus (API 25) |aktar | aktar | aktar | aktar | fail |aktar |
-| Nexus (API 28) |aktar | aktar | aktar | aktar | fail |aktar |
-|MI | aktar | aktar | aktar | aktar | fail |aktar |
+| OnePlus (API 25) |aktar | aktar | aktar | aktar | Neden |aktar |
+| Nexus (API 28) |aktar | aktar | aktar | aktar | Neden |aktar |
+|ÖZELLEŞTIR | aktar | aktar | aktar | aktar | Neden |aktar |
 
 \* Samsung 'in yerleşik tarayıcısı Samsung Internet 'dir.  
 \* * Huawei 'ın yerleşik tarayıcı, Huawei tarayıcısıdır.  

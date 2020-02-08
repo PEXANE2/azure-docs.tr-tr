@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844571"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086645"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: yayımlama, olaylara yerel olarak abone olma
 
@@ -23,7 +23,7 @@ Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abo
 > [!NOTE]
 > Azure Event Grid konuları ve abonelikleri hakkında bilgi edinmek için bkz. [Event Grid kavramlar](concepts.md).
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -47,7 +47,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 ### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modül eklemek**, **yolları belirtin**, ve **gözden geçirin, dağıtım**.
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
 
 ### <a name="add-modules"></a>Modül Ekle
 
@@ -64,8 +64,7 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
         }
     ```    
  1. **Kaydet**’e tıklayın
- 1. Azure Işlevleri modülünü birlikte dağıtmadan önce eklemek için sonraki bölüme geçin.
+ 1. Azure Event Grid abone modülünü birlikte dağıtmadan önce eklemek için sonraki bölüme geçin.
 
     >[!IMPORTANT]
-    > Bu öğreticide, istemci kimlik doğrulaması devre dışı ve HTTP abonelerine izin ver Event Grid modülünü dağıtacaksınız. Üretim iş yükleri için, istemci kimlik doğrulamasını etkinleştirmenizi ve yalnızca HTTPs abonelerine izin vermeyi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md).
+    > Bu öğreticide, istemci kimlik doğrulaması devre dışı olarak Event Grid modülünü dağıtacaksınız. Üretim iş yükleri için, istemci kimlik doğrulamasını etkinleştirmenizi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md).
     > 
     > Bir Azure VM 'yi uç cihaz olarak kullanıyorsanız, 4438 numaralı bağlantı noktasında gelen trafiğe izin vermek için bir gelen bağlantı noktası kuralı ekleyin. Kuralı ekleme hakkında yönergeler için bkz. [BIR VM 'ye bağlantı noktalarını açma](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Azure Işlevi IoT Edge modülünü dağıtma
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid abonesi IoT Edge modülünü dağıtma
 
-Bu bölümde, olayların sunulabileceği bir Event Grid abonesi olarak görev yapacak Azure Işlevleri IoT modülünün nasıl dağıtılacağı gösterilmektedir.
-
->[!IMPORTANT]
->Bu bölümde, örnek bir Azure Işlev tabanlı abone modülü dağıtacaksınız. Bu, HTTP POST isteklerini dinleyebileceğiniz herhangi bir özel IoT modülü olabilir.
-
+Bu bölümde, olayların sunulabileceği bir olay işleyicisi olarak görev yapacak başka bir IoT modülünün nasıl dağıtılacağı gösterilmektedir.
 
 ### <a name="add-modules"></a>Modül Ekle
 
@@ -102,23 +97,8 @@ Bu bölümde, olayların sunulabileceği bir Event Grid abonesi olarak görev ya
 1. Kapsayıcının adını, görüntüsünü ve kapsayıcı oluşturma seçeneklerini belirtin:
 
    * **Ad**: abone
-   * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Kapsayıcı oluşturma seçenekleri**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Kapsayıcı oluşturma seçenekleri**: yok
 1. **Kaydet**’e tıklayın
 1. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
 
@@ -129,7 +109,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
 ### <a name="submit-the-deployment-request"></a>Dağıtım isteğini gönder
 
 1. İnceleme Bölümü, önceki bölümde yaptığınız seçimlere göre oluşturulan JSON dağıtım bildirimini gösterir. Her iki modülü de gördüistediğinizi onaylayın: **eventgridmodule** ve **abone** JSON içinde listelenmiştir. 
-1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**. Dağıtımı gönderdikten sonra **cihaz** sayfasına dönersiniz.
+1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin. Dağıtımı gönderdikten sonra **cihaz** sayfasına dönersiniz.
 1. **Modüller bölümünde**, hem **eventgrid** hem de **abone** modüllerinin listelendiğini doğrulayın. Ve, **dağıtım sırasında belirtilen** ve **cihaz sütunlarının rapor** sütunları **Evet**olarak ayarlandığını doğrulayın.
 
     Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
@@ -191,7 +171,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
     ```
 
     >[!NOTE]
-    > **EndpointType** özelliği, abonenin bir **Web kancası**olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure Işlev örneğine karşılık gelir.
+    > **EndpointType** özelliği, abonenin bir **Web kancası**olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure abonesi örneğine karşılık gelir.
 2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodu `200 OK`görtığınızdan emin olun.
 
     ```sh
@@ -223,7 +203,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
     Örnek çıktı:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>Kaynakları temizleme
