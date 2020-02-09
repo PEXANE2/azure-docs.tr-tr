@@ -4,8 +4,6 @@
   items:
     - name: Azure İzleyici nedir?
       href: overview.md
-    - name: Terminoloji değişiklikleri
-      href: terminology.md
     - name: SSS
       href: faq.md
     - name: Yenilikler
@@ -1141,6 +1139,8 @@
       items:
         - name: Şema
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: Terminoloji değişiklikleri
+      href: terminology.md
     - name: Application Insights
       items:
         - name: Bağımlılık otomatik toplama
