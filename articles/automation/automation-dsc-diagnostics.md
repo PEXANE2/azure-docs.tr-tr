@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850355"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111513"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Otomasyonu durum yapılandırması raporlama verilerini Azure Izleyici günlüklerine iletme
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>Durum yapılandırma günlüklerini görüntüleme
 
-Otomasyon durumu yapılandırma verilerinize yönelik Azure Izleyici günlükleri ile tümleştirmeyi ayarladıktan sonra, Otomasyon hesabınızın **DSC düğümleri** dikey penceresinde bir **günlük araması** düğmesi görünür. DSC düğüm verilerine yönelik günlükleri görüntülemek için **günlük arama** düğmesine tıklayın.
+Otomasyon durumu yapılandırma verilerinize yönelik Azure Izleyici günlükleri ile tümleştirmeyi ayarladıktan sonra, durum yapılandırması (DSC) sayfasının sol bölmesindeki **izleme** bölümünde **Günlükler** seçilerek görüntülenebilir.  
 
-![Günlük araması düğmesi](media/automation-dsc-diagnostics/log-search-button.png)
+![Günlükler](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 **Günlük araması** dikey penceresi açılır ve her bir durum yapılandırma düğümü Için bir **dscnodestatusdata** işlemi ve bu düğüme uygulanan düğüm yapılandırmasında çağrılan her [DSC kaynağı](/powershell/scripting/dsc/resources/resources) Için bir **dscresourcestatusdata** işlemi görürsünüz.
 
@@ -84,11 +84,14 @@ Otomasyon durumu yapılandırma verilerinize yönelik Azure Izleyici günlükler
 
 Bu işlem için verileri görmek üzere listedeki her bir işleme tıklayın.
 
-Günlükleri Azure Izleyici günlükleri ' nde arayarak da görüntüleyebilirsiniz.
-Bkz. [günlük aramalarını kullanarak veri bulma](../log-analytics/log-analytics-log-searches.md).
-Durum yapılandırma günlüklerinizi bulmak için aşağıdaki sorguyu yazın: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+Günlükleri Azure Izleyici günlükleri ' nde arayarak da görüntüleyebilirsiniz. Bkz. [günlük aramalarını kullanarak veri bulma](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview). Durum yapılandırma günlüklerinizi bulmak için aşağıdaki sorguyu yazın.
 
-Sorguyu işlem adına göre de daraltabilirsiniz. Örneğin, `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Bir durum yapılandırması uyumluluk denetimi başarısız olduğunda e-posta gönder
 
@@ -149,11 +152,11 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Azure için her zaman *Azure* tanılama. |
 | ResourceId |Azure Otomasyonu hesabını belirtir. |
 | ResultDescription | Bu işlemin açıklaması. |
-| kaynak grubundaki | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
+| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
 | adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |Uyumluluk raporunun bağıntı kimliği olan GUID. |
+| CorrelationId |Uyumluluk raporunun bağıntı KIMLIĞI olan GUID. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -180,11 +183,11 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Azure için her zaman *Azure* tanılama. |
 | ResourceId |Azure Otomasyonu hesabını belirtir. |
 | ResultDescription | Bu işlemin açıklaması. |
-| kaynak grubundaki | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
+| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
 | adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |Uyumluluk raporunun bağıntı kimliği olan GUID. |
+| CorrelationId |Uyumluluk raporunun bağıntı KIMLIĞI olan GUID. |
 
 ## <a name="summary"></a>Özet
 

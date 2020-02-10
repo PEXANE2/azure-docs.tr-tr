@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044899"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111557"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044899"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Çözüm güncelleştirmesi
-> Bu çözüm, [Azure Sentinel](../../sentinel/overview.md) 'de [Office 365](../../sentinel/connect-office-365.md) genel KULLANıLABILIRLIK çözümüyle ve [Azure AD raporlama ve izleme çözümünde](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle birlikte önceki Azure Izleyici Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlar. Mevcut çözümü 30 Mart 2020 ' e kadar kullanmaya devam edebilirsiniz.
+> Bu çözüm, [Azure Sentinel](../../sentinel/overview.md) 'de [Office 365](../../sentinel/connect-office-365.md) genel KULLANıLABILIRLIK çözümüyle ve [Azure AD raporlama ve izleme çözümünde](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle birlikte önceki Azure Izleyici Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlar. Mevcut çözümü 30 Nisan 2020 tarihine kadar kullanmaya devam edebilirsiniz.
 > 
 > Azure Sentinel, günlük kaydı yapan ve algılamalar, araştırmalar, araştırma ve makine öğrenimi odaklı Öngörüler dahil ek SıEM işlevselliği sağlayan bir bulut Yerel güvenlik bilgileri ve olay yönetimi çözümüdür. Azure Sentinel 'in kullanılması artık Office 365 SharePoint etkinliğinin ve Exchange Yönetim günlüklerinin kullanımını sağlar.
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044899"
 >
 > ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>S: Office 365 Azure Izleyici çözümü Şu anda ve 30 Mart arasında panoda olabilir mi?
-> Hayır, Azure Izleyici Office 365 çözüm ekleme betikleri artık kullanılamıyor. Çözüm, 30 Mart tarihinde kaldırılacak.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>S: Office 365 Azure Izleyici çözümü Şu anda ve 30 Nisan 'a ait olabilir mi?
+> Hayır, Azure Izleyici Office 365 çözüm ekleme betikleri artık kullanılamıyor. Çözüm, 30 Nisan 'da kaldırılır.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>S: tablolar ve şemalar değiştirilsin mi?
 > **Officeactivity** tablo adı ve şeması, geçerli çözümle aynı kalacaktır. Azure AD verilerine başvuran sorguları hariç tutarak yeni çözümde aynı sorguları kullanmaya devam edebilirsiniz.
@@ -104,11 +104,11 @@ ms.locfileid: "76044899"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>S: Azure Sentinel, çözümün bir parçası olarak ek bağlayıcılar sağlıyor mu?
 > Evet, bkz. [Azure Sentinel Connect veri kaynakları](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>S: 30 Mart 'ta ne olur? Önceden Pano yapmam gerekir mi?
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>S: 30 Nisan 'da ne olur? Önceden Pano yapmam gerekir mi?
 > 
 > - **Office365** çözümünden veri alamazsınız. Bu çözüm Market 'te artık kullanılamayacak
 > - Azure Sentinel müşterileri için, Azure Sentinel **Securityınsights** çözümüne Log Analytics çalışma alanı çözümü **Office365** eklenecektir.
-> - Çözümünüzü el ile boşaltmıyorsanız, verilerinizin 30 Mart 'ta otomatik olarak bağlantısı kesilir.
+> - Çözümünüzü el ile boşaltmıyorsanız, verilerinizin 30 Nisan tarihinde otomatik olarak bağlantısı kesilir.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: veri, yeni çözüme aktarılsın mı?
 > Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Yeni **Office 365** bağlayıcısını Sentinel 'de etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
@@ -247,8 +247,8 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 
 | Sütun | Açıklama |
 |:--|:--|
-| Operations | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
-| Değiştirin | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
+| İşlemler | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
+| Exchange | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
 | SharePoint | Kullanıcıların SharePoint belgelerinde gerçekleştirdiği en iyi etkinlikleri gösterir. Bu kutucuktan ayrıntıya indığınızda arama sayfasında, bu etkinliklerin hedef belge ve bu etkinliğin konumu gibi ayrıntıları gösterilir. Örneğin, dosya erişimli bir olay için, erişilen belgeye, ilişkili hesap adına ve IP adresine bakabilirsiniz. |
 | Azure Active Directory | Kullanıcı parolası ve oturum açma girişimlerini sıfırlama gibi ilk kullanıcı etkinliklerini içerir. Ayrıntıya gitmediğiniz zaman, bu etkinliklerin sonuç durumu gibi ayrıntılarını görebileceksiniz. Bu, genellikle Azure Active Directory şüpheli etkinlikleri izlemek istediğinizde yararlı olur. |
 
@@ -266,15 +266,15 @@ Aşağıdaki özellikler tüm Office 365 kayıtları için ortaktır.
 | Özellik | Açıklama |
 |:--- |:--- |
 | Tür | *Officeetkinliği* |
-| Clientıp | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi IPv4 veya IPv6 adresi biçiminde görüntülenir. |
-| Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Değiştirin<br>SharePoint|
+| ClientIP | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
+| Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | İşlem | Kullanıcı veya yönetici etkinliğinin adı.  |
-| OrganizationId | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
+| Kuruluş kimliği | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
 | RecordType | Gerçekleştirilen işlem türü. |
-| ResultStatus | Eylemin (Operation özelliğinde belirtilen) başarılı olup olmadığını belirtir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
-| UserId | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
+| ResultStatus | Eylemin (Işlem özelliğinde belirtilen) başarılı olup olmadığını gösterir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
+| UserID | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
 | UserKey | UserID özelliğinde tanımlanan Kullanıcı için alternatif bir KIMLIK.  Örneğin, bu özellik SharePoint, OneDrive Iş ve Exchange kullanıcıları tarafından gerçekleştirilen olaylar için Passport benzersiz KIMLIĞI (PUıD) ile doldurulur. Bu özellik aynı zamanda diğer hizmetlerde gerçekleşen olaylar ve sistem hesapları tarafından gerçekleştirilen olaylar için UserID özelliği ile aynı değeri belirtebilir|
-| UserType | İşlemi gerçekleştiren kullanıcının türü.<br><br>Yönetici<br>Uygulama<br>DcAdmin<br>Düzenli<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
+| UserType | İşlemi gerçekleştiren kullanıcı türü.<br><br>Yönetici<br>Uygulama<br>DcAdmin<br>Aralıklarla<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory taban
@@ -343,7 +343,7 @@ Bu kayıtlar, Exchange yapılandırmasında değişiklik yapıldığında oluşt
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Değiştirin |
+| Officeiş yükü | Exchange |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Cmdlet 'inin kuruluşunuzdaki bir kullanıcı tarafından, Microsoft veri merkezi personeli veya bir veri merkezi hizmet hesabı tarafından mı yoksa yetkilendirilmiş bir yönetici tarafından mı çalıştırılacağını belirtir. False değeri, cmdlet 'inin kuruluşunuzdaki bir kişi tarafından çalıştırıldığını gösterir. True değeri, cmdlet 'in veri merkezi personeli, bir veri merkezi hizmet hesabı veya yönetici temsilcisi tarafından çalıştırıldığını belirtir. |
 | ModifiedObjectResolvedName |  Bu, cmdlet tarafından değiştirilen nesnenin Kullanıcı dostu adıdır. Bu, yalnızca cmdlet nesneyi değiştirdiğinde günlüğe kaydedilir. |
@@ -358,10 +358,10 @@ Exchange posta kutularına değişiklik veya eklemeler yapıldığında bu kayı
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Değiştirin |
+| Officeiş yükü | Exchange |
 | RecordType     | Exchangeıtem |
 | Clientınfostring | Bir tarayıcı sürümü, Outlook sürümü ve mobil cihaz bilgileri gibi, işlemi gerçekleştirmek için kullanılan e-posta istemcisiyle ilgili bilgiler. |
-| Client_IPAddress | İşlem günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi IPv4 veya IPv6 adresi biçiminde görüntülenir. |
+| Client_IPAddress | İşlem günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
 | ClientMachineName | Outlook istemcisini barındıran makine adı. |
 | ClientProcessName | Posta kutusuna erişmek için kullanılan e-posta istemcisi. |
 | ClientVersion | E-posta istemcisinin sürümü. |
@@ -381,7 +381,7 @@ Bu kayıtlar, bir posta kutusu denetim girişi oluşturulduğunda oluşturulur.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Değiştirin |
+| Officeiş yükü | Exchange |
 | RecordType     | Exchangeıtem |
 | Öğe | İşlemin gerçekleştirildiği öğeyi temsil eder | 
 | SendAsUserMailboxGuid 'Si | E-posta göndermek için erişilen posta kutusunun Exchange GUID 'ı. |
@@ -396,7 +396,7 @@ Bu kayıtlar, Exchange gruplarında değişiklik veya eklemeler yapıldığında
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Değiştirin |
+| Officeiş yükü | Exchange |
 | Officeiş yükü | Exchangeıtemgroup |
 | AffectedItems | Gruptaki her öğe hakkında bilgi. |
 | CrossMailboxOperations | İşlemin birden fazla posta kutusu ile ilişkili olup olmadığını gösterir. |

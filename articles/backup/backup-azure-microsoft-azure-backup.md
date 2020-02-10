@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979880"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111603"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -66,6 +66,8 @@ Windows Server yinelenenleri kaldırma 'yı kullanarak DPM depolama alanını yi
 > * System Center Operations Manager yönetim grubu olan bir bilgisayar
 > * Exchange Server’ın çalıştırıldığı bir bilgisayar
 > * Küme düğümü olan bir bilgisayar
+>
+> Azure Backup Sunucusu yüklemek Windows Server Core veya Microsoft Hyper-V Server 'da desteklenmez.
 
 Azure Backup Sunucusu her zaman bir etki alanına ekleyin. Sunucuyu farklı bir etki alanına taşımayı planlıyorsanız, önce Azure Backup Sunucusu yükleyip sunucuyu yeni etki alanına katın. Mevcut bir Azure Backup Sunucusu makinenin dağıtımdan sonra yeni bir etki alanına taşınması *desteklenmez*.
 
@@ -283,14 +285,14 @@ Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Abone
 
 Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sunulan yedekleme/geri yükleme işlevlerine etkisini öğrenmek için aşağıdaki tabloyu kullanabilirsiniz.
 
-| Bağlantı durumu | Azure Aboneliği | Azure'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
+| Bağlantı durumu | Azure Aboneliği | Azure 'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
 | --- | --- | --- | --- | --- | --- |
 | Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
-| Bağlı |Süresi doldu |Durdurulan |Durdurulan |İzin Verildi |İzin Verildi |
-| Bağlı |Yetki Kaldırıldı |Durdurulan |Durdurulan |Durdurulmuş ve Azure kurtarma noktaları silindi |Durdurulan |
-| Kesilen bağlantı > 15 gün |Etkin |Durdurulan |Durdurulan |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Süresi doldu |Durdurulan |Durdurulan |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Yetki Kaldırıldı |Durdurulan |Durdurulan |Durdurulmuş ve Azure kurtarma noktaları silindi |Durdurulan |
+| Bağlı |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Bağlı |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Kesilen bağlantı > 15 gün |Süresi doldu |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
+| Kesilen bağlantı > 15 gün |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
 

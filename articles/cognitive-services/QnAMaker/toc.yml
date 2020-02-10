@@ -8,12 +8,14 @@
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Yeni bilgi bankası oluşturma
-      href: quickstarts/create-publish-knowledge-base.md
-    - name: Meta verilerle soru ekleme
-      href: quickstarts/add-question-metadata-portal.md
-    - name: Postman veya cURL ile yanıtlar alma
-      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Soru-Cevap Oluşturma portalı ile
+      items:
+        - name: 1. Bilgi bankası oluşturma
+          href: quickstarts/create-publish-knowledge-base.md
+        - name: 2. Meta verilerle soru ekleme
+          href: quickstarts/add-question-metadata-portal.md
+        - name: 3. Postman veya cURL ile yanıtlar alma
+          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Toplu iş dosyasıyla test etme
       href: Quickstarts/batch-testing.md
     - name: REST API’sini kullanma
@@ -61,8 +63,6 @@
     - name: KB’den oluşturma ve yanıtlama
       displayName: 'curl, publish, chit-chat, chit chat'
       href: Tutorials/create-publish-query-in-portal.md
-    - name: 'C# kullanarak KB’den oluşturma ve yanıtlama'
-      href: Tutorials/create-publish-answer.md
     - name: Soru-Cevap Oluşturma botu oluşturma
       href: Tutorials/create-qna-bot.md
 - name: Kavramlar

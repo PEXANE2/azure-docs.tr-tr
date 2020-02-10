@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275517"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111581"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
@@ -73,7 +73,7 @@ KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adı
 4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
 6. Raporlama Hizmetleri için kullandığınız hizmet hesabını girin. Bu, SPN 'yi Raporlama Hizmetleri Yapılandırması içinde eklediğiniz hesaptır.
-7. **OK (Tamam)** düğmesine tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
+7. **Tamam**’a tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
 
 Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -138,9 +138,6 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 3. Kullanıcılarınız için geçerli kimlik bilgilerini girin ve **oturum aç '** ı seçin. Reporting Services sunucunuzdaki öğeleri görürsünüz.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>5\. Adım: yönetilen cihazlar için Intune ilkesini yapılandırma (isteğe bağlı)
-
-> [!NOTE]
-> Bu işlevsellik şu anda yalnızca iOS 'ta kullanılabilir.
 
 Şirketinizin iş gücünün kullandığı istemci uygulamalarını yönetmek için Microsoft Intune kullanabilirsiniz. Intune, veri şifreleme ve ek erişim gereksinimleri gibi özellikleri kullanmanıza olanak sağlar. Intune ile uygulama yönetimi hakkında daha fazla bilgi edinmek için bkz. Intune uygulama yönetimi. Power BI mobil uygulamanın Intune ilkesiyle çalışmasını sağlamak için aşağıdaki adımları kullanın.
 

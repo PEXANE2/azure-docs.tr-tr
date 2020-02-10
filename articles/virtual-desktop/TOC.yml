@@ -64,7 +64,7 @@
           href: set-up-customize-master-image.md
         - name: Ana VHD görüntüsü üzerinde Office yükleme
           href: install-office-on-wvd-master-image.md
-    - name: Oturum konaklarını dinamik olarak ölçeklendirme
+    - name: Oturum konaklarını otomatik olarak ölçeklendirme
       href: set-up-scaling-script.md
     - name: Akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md

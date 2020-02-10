@@ -141,6 +141,8 @@
           href: applications-dont-support-TLS-1-2.md
         - name: Bulut Hizmeti rollerinin geri dönüşüme uğramasının genel nedenleri
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: Uygulama TLS 1.2’yi desteklemez
+          href: applications-dont-support-tls-1-2.md
         - name: 'Varsayılan TEMP klasörünün boyutu, rol için yeterli büyüklükte değil'
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: Genel dağıtım sorunları

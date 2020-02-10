@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 696885fa3e082ae7096954fb55b17da5b77788bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04b5727a1c5abf8eb44ada566847456c2100b2a9
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418906"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111498"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
 Runbook 'u doğrudan rolü barındıran bilgisayarda ve bu yerel kaynakları yönetmek için ortamdaki kaynaklara karşı çalıştırmak için Azure Otomasyonu 'nun karma Runbook Worker özelliğini kullanabilirsiniz. Runbook 'lar Azure Otomasyonu 'nda depolanır ve yönetilir ve ardından bir veya daha fazla belirlenen bilgisayara gönderilir. Bu makalede karma Runbook Worker 'ın bir Windows makinesine nasıl yükleneceği açıklanır.
+
+> [!NOTE]
+Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.3.0). Az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.4.0).
 
 ## <a name="installing-the-windows-hybrid-runbook-worker"></a>Windows karma Runbook Worker yükleniyor
 
@@ -31,12 +34,12 @@ Bir Windows karma runbook çalışanı yüklemek ve yapılandırmak için aşağ
 
 Bir Windows karma Runbook Worker için en düşük gereksinimler şunlardır:
 
-* Windows Server 2012 veya üzeri.
-* Windows PowerShell 5,1 veya üzeri ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616)).
-* .NET Framework 4.6.2 veya üzeri.
-* İki çekirdek.
-* 4 GB RAM.
-* Bağlantı noktası 443 (giden).
+* Windows Server 2012 veya üzeri
+* Windows PowerShell 5,1 veya üzeri ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))
+* .NET Framework 4.6.2 veya sonraki sürümü
+* İki çekirdek
+* 4 GB RAM
+* Bağlantı noktası 443 (giden)
 
 Karma Runbook Worker için daha fazla ağ gereksinimi almak üzere [ağınızı yapılandırma](automation-hybrid-runbook-worker.md#network-planning)konusuna bakın.
 
@@ -51,17 +54,17 @@ Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirke
 
 Windows hibrit çalışan rolünün yükleme ve yapılandırmasını otomatik hale getirmek için aşağıdaki adımları gerçekleştirin:
 
-1. Karma Runbook Worker rolünü çalıştıran bilgisayardan veya ortamınızda bulunan başka bir bilgisayardan doğrudan [PowerShell Galerisi](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) New-OnPremiseHybridWorker. ps1 betiğini indirin. Betiği çalışana kopyalayın.
+1. Karma Runbook Worker rolünü çalıştıran bilgisayardan veya ortamınızda bulunan başka bir bilgisayardan doğrudan [PowerShell Galerisi](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) New-OnPremiseHybridWorker. ps1 betiğini indirin. Betiği çalışana kopyalayın. New-OnPremiseHybridWorker. ps1 betiği yürütme sırasında aşağıdaki parametreleri gerektirir:
 
-   New-OnPremiseHybridWorker. ps1 betiği yürütme sırasında aşağıdaki parametreleri gerektirir:
-
-   * *Automationaccountname* (zorunlu): Otomasyon hesabınızın adı.
    * *Aaresourcegroupname* (zorunlu): Otomasyon hesabınızla ilişkili kaynak grubunun adı.
    * *Omsresourcegroupname* (isteğe bağlı): Log Analytics çalışma alanı için kaynak grubunun adı. Bu kaynak grubu belirtilmemişse, *Aaresourcegroupname* kullanılır.
-   * *Hybridgroupname* (zorunlu): Bu senaryoyu destekleyen runbook 'lar için hedef olarak belirttiğiniz bir karma Runbook Worker grubunun adı.
    * *SubscriptionID* (zorunlu): Otomasyon hesabınızın bulunduğu Azure abonelik kimliği.
+   * *Tenantıd* (isteğe bağlı): Otomasyon hesabınızla ilişkili kiracı kuruluşun tanıtıcısı.
    * *Çalışmaalanıadı* (isteğe bağlı): Log Analytics çalışma alanı adı. Log Analytics çalışma alanınız yoksa, betik bir tane oluşturur ve yapılandırır.
-
+   * *Automationaccountname* (zorunlu): Otomasyon hesabınızın adı.
+   * *Hybridgroupname* (zorunlu): Bu senaryoyu destekleyen runbook 'lar için hedef olarak belirttiğiniz bir karma Runbook Worker grubunun adı.
+   * *Kimlik bilgileri* (isteğe bağlı): Azure ortamında oturum açarken kullanılacak kimlik bilgileri.
+  
    > [!NOTE]
    > Çözümleri etkinleştirirken Log Analytics çalışma alanı ile Otomasyon Hesabı arasında bağlantı kurma seçeneği yalnızca belirli bölgelerde desteklenmektedir.
    >
@@ -97,10 +100,10 @@ Zaten bir Log Analytics çalışma alanınız yoksa, önce bir çalışma alanı
 
 Otomasyon çözümü, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Çözümü Log Analytics çalışma alanınıza eklediğinizde, çalışan bileşenleri otomatik olarak bir sonraki adımda yükleyeceğiniz Aracı bilgisayara iter.
 
-**Otomasyon** çözümünü çalışma alanınıza eklemek Için aşağıdaki PowerShell 'i çalıştırın.
+**Otomasyon** çözümünü çalışma alanınıza eklemek Için aşağıdaki PowerShell cmdlet 'ini çalıştırın.
 
 ```powershell-interactive
-Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true -DefaultProfile <IAzureContextContainer>
 ```
 
 #### <a name="3-install-the-log-analytics-agent-for-windows"></a>3. Windows için Log Analytics aracısını yükler
@@ -109,7 +112,7 @@ Windows için Log Analytics Aracısı Bilgisayarları bir Azure Izleyici Log Ana
 
 Aracıyı bilgisayara yüklemek için [Windows bilgisayarları Azure izleyici günlüklerine bağlama](../log-analytics/log-analytics-windows-agent.md)bölümündeki yönergeleri izleyin. Bu işlemi, ortamınıza birden çok çalışan eklemek için birden çok bilgisayar için yineleyebilirsiniz.
 
-Aracı Log Analytics çalışma alanınıza başarıyla bağlandığında, birkaç dakika sonra, çalışma alanına sinyal verisi gönderdiğini doğrulamak için aşağıdaki sorguyu çalıştırabilirsiniz:
+Aracı birkaç dakika sonra Log Analytics çalışma alanınıza başarıyla bağlandığında, çalışma alanına sinyal verisi gönderdiğini doğrulamak için aşağıdaki sorguyu çalıştırabilirsiniz:
 
 ```kusto
 Heartbeat 
@@ -117,7 +120,7 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-Döndürülen arama sonuçlarında, bağlı olduğunu ve hizmete raporlanmasını belirten bilgisayar için sinyal kayıtlarını görmeniz gerekir. Sinyal kaydı, her aracıdan varsayılan olarak atanan çalışma alanına iletilir. Aracının, C:\Program Files\Microsoft Monitoring Sservice içinde **Azureautomationfiles** adlı bir klasör olduğunda, otomasyon çözümünü doğru bir şekilde indirdiğini doğrulayabilirsiniz. Karma Runbook Worker sürümünü onaylamak için, C:\Program Files\Microsoft Monitoring Ise T\azureautomation\ konumuna göz atabilir ve \\*Sürüm* alt klasörünü aklınızda bulabilirsiniz.
+Döndürülen arama sonuçlarında, bağlı olduğunu ve hizmete raporlanmasını belirten bilgisayar için sinyal kayıtlarını görmeniz gerekir. Sinyal kaydı, her aracıdan varsayılan olarak atanan çalışma alanına iletilir. Aracının, C:\Program Files\Microsoft Monitoring Sservice içinde **Azureautomationfiles** adlı bir klasör olduğunda, otomasyon çözümünü doğru bir şekilde indirdiğini doğrulayabilirsiniz. Karma Runbook Worker sürümünü doğrulamak için, C:\Program Files\Microsoft Monitoring Ise T\azureautomation\ konumuna gidin ve \\*Sürüm* alt klasörünü aklınızda olun.
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. runbook ortamını yükleyip Azure Otomasyonu 'na bağlanın
 

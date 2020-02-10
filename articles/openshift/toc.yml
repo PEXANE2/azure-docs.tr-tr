@@ -47,6 +47,8 @@
             - name: Kapsayıcılar için Azure İzleyici’yi devre dışı bırakma
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: Azure Red Hat OpenShift kümesinde ayrıcalıklı kapsayıcılar çalıştırma
+      href: howto-run-privileged-containers.md
 - name: Başvuru
   items:
     - name: Azure Red Hat OpenShift CLI

@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Uygulama ve İK sağlama belgeleri
+summary: Azure Active Directory uygulama sağlama, bulut (SaaS) uygulamalarınızda kullanıcı kimliklerini otomatik olarak oluşturmanızı ve yönetmenizi sağlar. Azure AD ayrıca bulut tabanlı insan kaynakları (HR) uygulamalarıyla sağlama olanağı sunar. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle bulut uygulamasını ve İK sağlamayı nasıl yönetip dağıtacağınızı öğrenin.
+metadata:
+  title: Uygulama sağlama belgeleri
+  description: Azure Active Directory uygulama sağlama, bulut (SaaS) uygulamalarınızda kullanıcı kimliklerini otomatik olarak oluşturmanızı ve yönetmenizi sağlar. Azure AD ayrıca bulut tabanlı insan kaynakları (HR) uygulamalarıyla sağlama olanağı sunar. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle bulut uygulamasını ve İK sağlamayı nasıl yönetip dağıtacağınızı öğrenin.
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065510"
+landingContent:
+- title: Bulut uygulamasına kullanıcı ve grup sağlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Uygulama sağlama nedir?
+      url: user-provisioning.md
+    - text: Sağlama nasıl çalışır?
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: SAP Cloud Platform Kimlik Doğrulaması sağlama
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Oracle Fusion ERP sağlama
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Atlassian Bulut sağlama
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: Galeri uygulaması mı ekliyorsunuz? Uygulamaya sağlamayı yapılandırma
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Öznitelik eşlemelerini özelleştirme
+      url: customize-application-attributes.md
+    - text: Kapsam belirleme filtrelerini kullanma
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: Sağlama için SCIM kullanarak uygulama geliştirme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SCIM ile sağlama (Kimlik Standartları Blogu)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: Uygulama mı geliştiriyorsunuz? Otomatik sağlama için SCIM kullanma
+      url: use-scim-to-provision-users-and-groups.md
+- title: Bulut İK gelen sağlamayı yönetme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Bulut İK kullanıcı sağlama dağıtımı planlama
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Workday sağlama
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: SAP SuccessFactors sağlama
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

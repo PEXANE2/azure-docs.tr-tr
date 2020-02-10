@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: Son kullanıcı portalları
               href: end-user-experiences.md
+    - name: Bulut uygulama görünürlüğü ve denetimi
+      href: cloud-app-security.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Ara Sunucusu

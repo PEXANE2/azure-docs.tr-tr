@@ -25,6 +25,9 @@
         - name: Otomatik ML denemesi oluşturma
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: Otomatik ML ile talep tahmini (Bisiklet paylaşımı verileri)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python SDK'sı
       items:
         - name: İlk ML denemesini oluşturma
