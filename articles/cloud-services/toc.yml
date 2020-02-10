@@ -137,8 +137,6 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: Bulut Hizmeti ayırma hatası
           href: cloud-services-allocation-failures.md
-        - name: Uygulamalar TLS 1.2’yi desteklemez
-          href: applications-dont-support-TLS-1-2.md
         - name: Bulut Hizmeti rollerinin geri dönüşüme uğramasının genel nedenleri
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
         - name: Uygulama TLS 1.2’yi desteklemez
