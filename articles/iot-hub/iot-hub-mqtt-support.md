@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937756"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110735"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -34,23 +34,40 @@ Bir cihaz, aşağıdaki seçeneklerden herhangi birini kullanarak bir IoT Hub '�
 * [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)'larının kitaplıkları.
 * MQTT protokolü doğrudan.
 
+MQTT bağlantı noktası (8883) birçok kurumsal ve eğitim ağı ortamında engellenir. Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açamazsınız, Web Yuvaları üzerinden MQTT kullanmanızı öneririz. Web Yuvaları üzerinden MQTT, ağ ortamlarında neredeyse her zaman açık olan 443 numaralı bağlantı noktası üzerinden iletişim kurar. Azure IoT SDK 'larını kullanırken, Web Sockets protokolleri üzerinden MQTT ve MQTT 'yi belirtmeyi öğrenmek için bkz. [cihaz SDK 'Larını kullanma](#using-the-device-sdks).
+
 ## <a name="using-the-device-sdks"></a>Cihaz SDK 'larını kullanma
 
-MQTT protokolünü destekleyen [cihaz SDK 'ları](https://github.com/Azure/azure-iot-sdks) , Java, Node. js, C, C#ve Python için kullanılabilir. Cihaz SDK 'Ları, IoT Hub ile bağlantı kurmak için standart IoT Hub bağlantı dizesini kullanır. MQTT protokolünü kullanmak için, istemci protokol parametresi **MQTT**olarak ayarlanmalıdır. Varsayılan olarak, cihaz SDK 'Ları **Cleansession** bayrağı **0** olarak ayarlanmış bir IoT Hub bağlanır ve IoT Hub Ile ileti alışverişi için **QoS 1** kullanır.
+MQTT protokolünü destekleyen [cihaz SDK 'ları](https://github.com/Azure/azure-iot-sdks) , Java, Node. js, C, C#ve Python için kullanılabilir. Cihaz SDK 'Ları, IoT Hub ile bağlantı kurmak için standart IoT Hub bağlantı dizesini kullanır. MQTT protokolünü kullanmak için, istemci protokol parametresi **MQTT**olarak ayarlanmalıdır. İstemci protokol parametresinde, Web Yuvaları üzerinden MQTT ' i de belirtebilirsiniz. Varsayılan olarak, cihaz SDK 'Ları **Cleansession** bayrağı **0** olarak ayarlanmış bir IoT Hub bağlanır ve IoT Hub Ile ileti alışverişi için **QoS 1** kullanır.
 
 Bir cihaz IoT Hub 'ına bağlandığında cihaz SDK 'Ları, cihazın IoT Hub ile ileti alışverişi için izin veren yöntemler sağlar.
 
-Aşağıdaki tablo desteklenen her dil için kod örneklerine bağlantılar içerir ve MQTT protokolünü kullanarak IoT Hub bağlantı kurmak için kullanılacak parametreyi belirtir.
+Aşağıdaki tablo desteklenen her dil için kod örneklerine bağlantılar içerir ve MQTT veya Web soketi üzerinden MQTT kullanarak IoT Hub bağlantı kurmak için kullanılacak parametreyi belirtir.
 
-| Dil | Protokol parametresi |
-| --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
-| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Her zaman varsayılan olarak MQTT 'yi destekler |
+| Dil | MQTT protokol parametresi | Web Sockets protokol parametresi üzerinden MQTT
+| --- | --- | --- |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IoT-Device-MQTT. MQTT | Azure-IoT-Device-MQTT. MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT, MQTT başarısız olursa Web Yuvaları üzerinden MQTT 'e geri döner. Yalnızca Web Yuvaları üzerinden MQTT belirtmek için, TransportType. Mqtt_WebSocket_Only kullanın |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Varsayılan olarak MQTT 'yi destekler | İstemciyi oluşturmak için çağrıya `websockets=True` ekleyin |
 
-### <a name="default-keep-alive-timeout"></a>Varsayılan etkin tutma zaman aşımı 
+Aşağıdaki parça, Azure IoT Node. js SDK 'sını kullanırken MQTT Over Web Sockets protokolünü nasıl belirtmektir:
+
+```javascript
+var Client = require('azure-iot-device').Client;
+var Protocol = require('azure-iot-device-mqtt').MqttWs;
+var client = Client.fromConnectionString(deviceConnectionString, Protocol);
+```
+
+Aşağıdaki parça, Azure IoT Python SDK kullanılırken Web soketi üzerinden MQTT 'in nasıl kullanılacağını göstermektedir:
+
+```python
+from azure.iot.device.aio import IoTHubDeviceClient
+device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectionString, websockets=True)
+```
+
+### <a name="default-keep-alive-timeout"></a>Varsayılan etkin tutma zaman aşımı
 
 İstemci/IoT Hub bağlantısının etkin kalmasını sağlamak için, hem hizmet hem de istemci birbirlerine *sürekli olarak canlı* bir ping gönderin. IoT SDK kullanan istemci, aşağıdaki tabloda tanımlanan aralıkta etkin tutma gönderir:
 

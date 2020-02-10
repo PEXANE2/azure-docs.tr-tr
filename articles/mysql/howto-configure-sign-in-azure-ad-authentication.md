@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706056"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110617"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -40,42 +40,7 @@ Her MySQL sunucusu için yalnızca bir Azure AD yöneticisi oluşturulabilir ve 
 
 Gelecekteki bir sürümde, tek bir kullanıcı yerine birden çok yönetici olacak şekilde bir Azure AD grubu belirtmeyi destekliyoruz, ancak şu anda henüz desteklenmiyor.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure AD kullanıcıları oluşturma
-
-MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı eklemek için, bağlandıktan sonra aşağıdaki adımları gerçekleştirin (bkz. bağlanma hakkında sonraki bölüm):
-
-1. İlk olarak Azure AD Kullanıcı `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
-2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
-3. MySQL için Azure veritabanı 'nda Kullanıcı `<user>@yourtenant.onmicrosoft.com` oluşturun.
-
-**Örnek:**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-32 karakteri aşan Kullanıcı adları için, bağlantı sırasında kullanılmak üzere bunun yerine bir diğer ad kullanmanız önerilir: 
-
-Örnek:
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> Azure AD aracılığıyla bir kullanıcının kimliğini doğrulamak, kullanıcıya MySQL için Azure veritabanı veritabanı içindeki nesnelere erişim izni vermez. Kullanıcıya gerekli izinleri el ile vermeniz gerekir.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure AD grupları oluşturma
-
-Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
-
-**Örnek:**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-Oturum açarken, grubun üyeleri kendi kişisel erişim belirteçlerini kullanır, ancak Kullanıcı adı olarak belirtilen grup adıyla oturum açılır.
+Yönetici yapılandırıldıktan sonra artık oturum açabilirsiniz:
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Azure AD kullanarak MySQL için Azure veritabanı 'na bağlanma
 
@@ -156,12 +121,53 @@ Bağlantı sırasında MySQL Kullanıcı parolası olarak erişim belirtecini ku
 CLı kullanırken, bu kısa süreli bağlantı kurmak için şunu kullanabilirsiniz: 
 
 **Örnek (Linux/macOS):**
-
-MySQL-h mydb.mysql.database.azure.com \--Kullanıcı user@tenant.onmicrosoft.com@mydb \--enable-düz metin-eklentisi \--Password =`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 "Enable-şifresiz-Plugin" ayarını unutmayın. belirtecin karma kalmadan sunucuya gönderilmesini sağlamak için diğer istemcilerle benzer bir yapılandırma kullanmanız gerekir.
 
 Artık Azure AD kimlik doğrulaması kullanarak MySQL sunucunuza kimliğiniz doğrulanır.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure AD kullanıcıları oluşturma
+
+MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı eklemek için, bağlandıktan sonra aşağıdaki adımları gerçekleştirin (bkz. bağlanma hakkında sonraki bölüm):
+
+1. İlk olarak Azure AD Kullanıcı `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
+2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
+3. MySQL için Azure veritabanı 'nda Kullanıcı `<user>@yourtenant.onmicrosoft.com` oluşturun.
+
+**Örnek:**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+32 karakteri aşan Kullanıcı adları için, bağlantı sırasında kullanılmak üzere bunun yerine bir diğer ad kullanmanız önerilir: 
+
+Örnek:
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> Azure AD aracılığıyla bir kullanıcının kimliğini doğrulamak, kullanıcıya MySQL için Azure veritabanı veritabanı içindeki nesnelere erişim izni vermez. Kullanıcıya gerekli izinleri el ile vermeniz gerekir.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure AD grupları oluşturma
+
+Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
+
+**Örnek:**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+Oturum açarken, grubun üyeleri kendi kişisel erişim belirteçlerini kullanır, ancak Kullanıcı adı olarak belirtilen grup adıyla oturum açılır.
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 
@@ -176,7 +182,7 @@ MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcını
 
 Çoğu sürücü desteklenir, ancak belirtecin değişiklik yapılmadan gönderilmesi için parolayı düz metin olarak gönderme ayarlarını kullandığınızdan emin olun.
 
-* C/C++
+* ,C++
   * libmysqlclient: destekleniyor
   * MySQL-bağlayıcı-c + +: desteklenir
 * Java
@@ -194,7 +200,7 @@ MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcını
 * Perl
   * DBD:: MySQL: destekleniyor
   * Net:: MySQL: desteklenmiyor
-* Go
+* Başlayın
   * Go-SQL-Driver: desteklenir, bağlantı dizesine `?tls=true&allowCleartextPasswords=true` ekleyin
 
 ## <a name="next-steps"></a>Sonraki adımlar

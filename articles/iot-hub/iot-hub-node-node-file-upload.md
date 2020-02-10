@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147640"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110901"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>IoT Hub (node. js) ile cihazınızdan buluta dosya yükleme
 
@@ -26,7 +26,7 @@ Bu öğretici, [Azure Blob depolamaya](../storage/index.yml)bir dosyayı karşı
 
 * Uygulama arka uçtaki dosyayı işlemeyi tetiklemek için karşıya dosya yükleme bildirimlerini IoT Hub kullanın.
 
-[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-node.md) hızlı başlangıç telemetriyi, IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örneğin:
+[Bir cihazdan IoT Hub 'ına hızlı başlangıç Telemetriyi](quickstart-send-telemetry-node.md) , IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örneğin:
 
 * Görüntü içeren büyük dosyalar
 * Videolar
@@ -50,6 +50,8 @@ Bu öğreticinin sonunda iki Node. js konsol uygulaması çalıştırırsınız:
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Bir cihaz uygulamasından bir dosya yükleme
@@ -68,7 +70,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak ```simulateddevice``` klasöründe bir **SimulatedDevice.js** dosyası oluşturun.
+3. Bir metin düzenleyicisi kullanarak **klasöründe bir**SimulatedDevice.js```simulateddevice``` dosyası oluşturun.
 
 4. Aşağıdaki ```require``` deyimlerini **SimulatedDevice.js** dosyasının başlangıcına ekleyin:
 
@@ -80,7 +82,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. Bir `deviceconnectionstring` değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  `{deviceconnectionstring}` *IoT Hub oluşturma* bölümünde oluşturduğunuz cihazın adıyla değiştirin:
+5. Bir `deviceconnectionstring` değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  `{deviceconnectionstring}`, *IoT Hub oluşturma* bölümünde oluşturduğunuz cihazın adıyla değiştirin:
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -115,7 +117,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
 
 8. **SimulatedDevice.js** dosyasını kaydedin ve kapatın.
 
-9. Bir resim dosyasını `simulateddevice` klasöre kopyalayın ve `myimage.png`yeniden adlandırın.
+9. `simulateddevice` klasöre bir görüntü dosyası kopyalayın ve `myimage.png`yeniden adlandırın.
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
@@ -135,15 +137,15 @@ Bu bölümü tamamlayabilmeniz için IoT Hub **iothubowner** bağlantı dizesini
     npm init
     ```
 
-2. Komut istemindeki ```fileuploadnotification``` klasörde, **Azure-ıothub** SDK paketini yüklemek için aşağıdaki komutu çalıştırın:
+2. Komut istemindeki ```fileuploadnotification``` klasöründe, **Azure-ıothub** SDK paketini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak `fileuploadnotification` klasöründe bir **fileuploadnotification. js** dosyası oluşturun.
+3. Bir metin düzenleyicisi kullanarak `fileuploadnotification` klasöründe bir **Fileuploadnotification. js** dosyası oluşturun.
 
-4. `require` **Fileuploadnotification. js** dosyasının başlangıcında aşağıdaki deyimleri ekleyin:
+4. Aşağıdaki `require` deyimlerini **Fileuploadnotification. js** dosyasının başlangıcına ekleyin:
 
     ```javascript
     'use strict';
@@ -151,7 +153,7 @@ Bu bölümü tamamlayabilmeniz için IoT Hub **iothubowner** bağlantı dizesini
     var Client = require('azure-iothub').Client;
     ```
 
-5. Bir `iothubconnectionstring` değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  Yer tutucu `{iothubconnectionstring}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
+5. Bir `iothubconnectionstring` değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  `{iothubconnectionstring}` yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -194,13 +196,13 @@ Bu bölümü tamamlayabilmeniz için IoT Hub **iothubowner** bağlantı dizesini
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-`fileuploadnotification` Klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
+`fileuploadnotification` klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 node FileUploadNotification.js
 ```
 
-`simulateddevice` Klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
+`simulateddevice` klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 node SimulatedDevice.js

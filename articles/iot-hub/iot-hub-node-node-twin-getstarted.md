@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060719"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110837"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Cihaz ikizlerini kullanmaya başlama (node. js)
 
@@ -37,6 +37,8 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
@@ -55,7 +57,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Node. js konsol uygulaması oluşturacaksınız. Daha sonra, IoT Hub 'ında depolanan cihaz TWINS 'sini, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
 
-1. **Addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir Package. JSON dosyası oluşturun. `--yes` Parametresi tüm varsayılanları kabul eder.
+1. **Addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir Package. JSON dosyası oluşturun. `--yes` parametresi tüm varsayılanları kabul eder.
 
     ```cmd/sh
     npm init --yes
@@ -69,7 +71,7 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
 
 3. Bir metin düzenleyicisi kullanarak **addtagsandqueryapp** klasöründe yeni bir **Addtagsandquery. js** dosyası oluşturun.
 
-4. Aşağıdaki kodu **Addtagsandquery. js** dosyasına ekleyin. `{iot hub connection string}` [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+4. Aşağıdaki kodu **Addtagsandquery. js** dosyasına ekleyin. `{iot hub connection string}` [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
 
    ``` javascript
         'use strict';
@@ -150,7 +152,7 @@ Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgun
 
 Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol uygulaması oluşturursunuz ve ardından Device ikizi 'ın bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
 
-1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe, komut istemindeki aşağıdaki komutu kullanarak yeni bir Package. JSON dosyası oluşturun. `--yes` Parametresi tüm varsayılanları kabul eder.
+1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe, komut istemindeki aşağıdaki komutu kullanarak yeni bir Package. JSON dosyası oluşturun. `--yes` parametresi tüm varsayılanları kabul eder.
 
     ```cmd/sh
     npm init --yes
@@ -164,7 +166,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol u
 
 3. Bir metin düzenleyicisi kullanarak, **reportconnectivity** klasöründe yeni bir **reportconnectivity. js** dosyası oluşturun.
 
-4. **Reportconnectivity. js** dosyasına aşağıdaki kodu ekleyin. `{device connection string}` [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de **mydeviceıd** cihaz kimliğini oluştururken kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
+4. **Reportconnectivity. js** dosyasına aşağıdaki kodu ekleyin. `{device connection string}` [, IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde **mydeviceıd** cihaz kimliğini oluştururken kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
 
     ```javascript
         'use strict';
@@ -212,7 +214,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol u
         node ReportConnectivity.js
     ```
 
-    İletiyi `twin state reported`görmeniz gerekir.
+    İleti `twin state reported`görmeniz gerekir.
 
 6. Cihaz bağlantı bilgilerini raporladığı için, her iki sorgu da görünmelidir. **Addtagsandqueryapp** klasörüne dönün ve sorguları yeniden çalıştırın:
 

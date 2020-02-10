@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: bbb78dcd36ec986cefc1d57e01396f285a6b30dd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 9227192b2f7c554943fb3716ba1d1066f814c447
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161944"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110325"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>İşleri zamanlama ve yayınlama (Java)
 
@@ -30,9 +30,9 @@ Bir iş bu eylemlerden birini sarmalar ve yürütmeyi bir dizi cihaza karşı iz
 
 Bu yeteneklerin her biri hakkında daha fazla bilgi edinmek için bkz.:
 
-* Cihaz ikizi ve özellikleri: [Cihaz ikizlerini kullanmaya başlama](iot-hub-java-java-twin-getstarted.md)
+* Cihaz ikizi ve özellikleri: [cihaz](iot-hub-java-java-twin-getstarted.md) ikizlerini kullanmaya başlama
 
-* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: Doğrudan Yöntemler kullanma](quickstart-control-device-java.md)
+* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: doğrudan Yöntemler kullanma](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -58,6 +58,8 @@ IoT Hub 'ınıza bağlanan, **Lockkapısı** doğrudan yöntemini uygulayan ve i
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -149,7 +151,7 @@ Uygulamayı oluşturmak için:
     import java.util.UUID;
     ```
 
-9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{youriothubconnectionstring}` [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizeniz ile değiştirin:
+9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{youriothubconnectionstring}` [, IoT Hub bağlantı dizesini alın](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizeniz ile değiştirin:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -258,7 +260,7 @@ Uygulamayı oluşturmak için:
     }
     ```
 
-14. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
+14. **Ana** yöntem imzasını aşağıdaki `throws` yan tümcesini içerecek şekilde güncelleştirin:
 
     ```java
     public static void main( String[] args ) throws Exception
@@ -324,7 +326,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     > [!NOTE]
     > [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)kullanarak **IoT-Device-Client** ' ın en son sürümünü kontrol edebilirsiniz.
 
-4. Aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, bir NOP 'yi, cihaz istemci SDK 'Sı tarafından günlüğe kaydetmeyi uygulamak için kullanılan Apache [dolayısıyla slf4j](https://www.slf4j.org/) Logging façlade için yapılandırır. Bu yapılandırma isteğe bağlıdır, ancak bunu atlarsanız, uygulamayı çalıştırdığınızda konsolda bir uyarı görebilirsiniz. Cihaz istemcisi SDK 'sında günlüğe kaydetme hakkında daha fazla bilgi için bkz [](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging). *Java için Azure IoT cihaz SDK 'sı dosyası örnekleri* .
+4. Aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, bir NOP 'yi, cihaz istemci SDK 'Sı tarafından günlüğe kaydetmeyi uygulamak için kullanılan Apache [dolayısıyla slf4j](https://www.slf4j.org/) Logging façlade için yapılandırır. Bu yapılandırma isteğe bağlıdır, ancak bunu atlarsanız, uygulamayı çalıştırdığınızda konsolda bir uyarı görebilirsiniz. Cihaz istemcisi SDK 'sında günlüğe kaydetme hakkında daha fazla bilgi [için bkz.](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) *Java için Azure IoT cihaz SDK 'sı dosyası örnekleri* .
 
     ```xml
     <dependency>
@@ -367,7 +369,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     import java.util.Scanner;
     ```
 
-9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. Daha `{yourdeviceconnectionstring}` önce, [IoT Hub 'da yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde kopyaladığınız cihaz bağlantı dizesiyle değiştirin:
+9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{yourdeviceconnectionstring}`, daha önce, [IoT Hub 'ında yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde kopyaladığınız cihaz bağlantı dizesiyle değiştirin:
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -425,7 +427,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     }
     ```
 
-13. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
+13. **Ana** yöntem imzasını aşağıdaki `throws` yan tümcesini içerecek şekilde güncelleştirin:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
@@ -499,7 +501,7 @@ Artık konsol uygulamalarını çalıştırmaya hazırsınız.
 
    ![Cihaz istemcisi başlar](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-2. Bir komut isteminde `schedule-jobs` , iki işi çalıştırmak için **Schedule-Jobs** hizmet uygulamasını çalıştırmak için aşağıdaki komutu çalıştırın. İlk olarak, istenen özellik değerlerini ayarlar, ikincisi doğrudan yöntemini çağırır:
+2. `schedule-jobs` klasöründeki bir komut isteminde, iki işi çalıştırmak üzere **Schedule-Jobs** hizmet uygulamasını çalıştırmak için aşağıdaki komutu çalıştırın. İlk olarak, istenen özellik değerlerini ayarlar, ikincisi doğrudan yöntemini çağırır:
 
    ```cmd\sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

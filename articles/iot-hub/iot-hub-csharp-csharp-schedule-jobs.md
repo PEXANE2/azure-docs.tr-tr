@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 7925ca5c69d01b098764ff744fb832eaa43118d6
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147729"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108961"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>İşleri zamanlama ve yayınlama (.NET)
 
@@ -31,9 +31,9 @@ Bir iş bu eylemlerden birini sarmalar ve yürütmeyi bir cihaz ikizi sorgusu ta
 
 Bu yeteneklerin her biri hakkında daha fazla bilgi edinmek için bkz.:
 
-* Cihaz ikizi ve özellikleri: [Cihaz](iot-hub-csharp-csharp-twin-getstarted.md) ikizlerini ve [öğreticisini kullanmaya başlayın: Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
+* Cihaz ikizi ve özellikleri: [cihaz](iot-hub-csharp-csharp-twin-getstarted.md) Ikizlerini ve [öğreticisini kullanmaya başlama: cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
 
-* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: Doğrudan Yöntemler kullanma](quickstart-control-device-dotnet.md)
+* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: doğrudan Yöntemler kullanma](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -54,6 +54,8 @@ Bu öğreticinin sonunda iki .NET (C#) konsol uygulamanız vardır:
 * Visual Studio.
 
 * Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
+
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -81,7 +83,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
 
     Bu adım, [Azure IoT cihaz SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -164,7 +166,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
 
 Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özellik güncelleştirmelerini C#birden çok cihaza göndermek için işleri kullanan bir .NET konsol uygulaması (kullanarak) oluşturursunuz.
 
-1. Visual Studio'da **dosya** > **yeni** > **proje**. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
+1. Visual Studio 'da **dosya** > **Yeni** > **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
 1. **Yeni projenizi yapılandırın**bölümünde proje *schedulejob*' u adlandırın. **Çözüm**Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
 
@@ -176,14 +178,14 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
    Bu adım, [Azure IoT hizmeti SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
 
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Varsayılan deyimlerde `using` henüz yoksa, aşağıdaki deyimi ekleyin.
+1. Varsayılan deyimlerde henüz yoksa aşağıdaki `using` deyimini ekleyin.
 
     ```csharp
     using System.Threading;
@@ -261,7 +263,7 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
     > Sorgu sözdizimi hakkında daha fazla bilgi için [IoT Hub sorgu dili](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)' ne bakın.
     >
 
-1. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
+1. Son olarak, aşağıdaki satırları **Ana** yöntemine ekleyin:
 
     ```csharp
     Console.WriteLine("Press ENTER to start running jobs.");
@@ -292,9 +294,9 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
 1. Visual Studio Çözüm Gezgini çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler** > **Başlangıç projesi**' ni seçin ve ardından **birden çok başlangıç**projesi ' ni seçin.
+1. **Başlangıç projesi** > **ortak özellikler** ' i seçin ve ardından **birden çok başlangıç**projesi ' ni seçin.
 
-1. Listenin en `SimulateDeviceMethods` üstünde `ScheduleJob`ve sonrasında olduğundan emin olun. Her iki eylemini **Başlangıç** olarak ayarlayın ve **Tamam**' ı seçin.
+1. `SimulateDeviceMethods` listenin en üstünde ve ardından `ScheduleJob`geldiğinden emin olun. Her iki eylemini **Başlangıç** olarak ayarlayın ve **Tamam**' ı seçin.
 
 1. **Başlat** ' a tıklayarak veya **hata ayıklama** menüsüne gidip **hata ayıklamayı Başlat**' a tıklayarak projeleri çalıştırın.
 
@@ -306,6 +308,6 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
 Bu öğreticide, bir cihaza doğrudan yöntem zamanlamak ve Device ikizi 'in özelliklerinin güncelleştirilmesi için bir iş kullandınız.
 
-* AIR üretici yazılımı güncelleştirmesi üzerinden uzak gibi IoT Hub ve cihaz yönetim desenleriyle çalışmaya devam etmek için öğreticiyi okuyun [: Üretici yazılımı güncelleştirmesi](tutorial-firmware-update.md)nasıl yapılır?
+* AIR üretici yazılımı güncelleştirmesi üzerinden uzak gibi IoT Hub ve cihaz yönetimi desenleriyle çalışmaya devam etmek için [öğreticiyi okuyun: bellenim güncelleştirmesi](tutorial-firmware-update.md).
 
 * Azure IoT Edge ile uç cihazlara AI dağıtma hakkında bilgi edinmek için bkz. [IoT Edge kullanmaya](../iot-edge/tutorial-simulate-device-linux.md)başlama.

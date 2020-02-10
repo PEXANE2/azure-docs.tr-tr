@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 023128d35030f99458bc5fd2c7a4a155a856e4c9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: dc4a8da69b0398c6487008c106a9f5bcdb8a885e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861515"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110244"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Hızlı başlangıç: Azure Time Series Insights Preview demo ortamını keşfet
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, contoso verilerinde eyleme dönüştürülebilir Öng
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Tanıtım ortamında Time Series Insights Gezginini keşfet
 
-Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini gösterir. Kullanmaya başlamak için:
+Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini gösterir. Başlamak için:
 
 1.  [Contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.  
 

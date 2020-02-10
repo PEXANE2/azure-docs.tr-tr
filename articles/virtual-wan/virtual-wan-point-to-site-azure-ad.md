@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782434"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108333"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir kullanıcı VPN bağlantısı oluşturma
 
@@ -86,19 +86,17 @@ Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure he
 
 P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri tanımlar.
 
-1. Ortamınız için gereken değerleri değiştirerek aşağıdaki değişkenleri ayarlayın.
+1. Sanal WAN ' ın altında, **Kullanıcı VPN yapılandırması**' nı seçin.
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. Yapılandırmayı oluşturmak için aşağıdaki komutları çalıştırın:
+2. **+ Kullanıcı VPN yapılandırması oluştur**' a tıklayın.
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. Bilgileri girin ve **Oluştur** ' a tıklayın.
+
+   ![Yeni yapılandırma](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>Hub atamasını Düzenle
 

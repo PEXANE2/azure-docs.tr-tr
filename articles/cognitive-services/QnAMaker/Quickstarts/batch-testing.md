@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474042"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109000"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Hızlı başlangıç: toplu sorularla ve beklenen yanıtlardan test Bilgi Bankası
 
 Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Bu hızlı başlangıçta kullanılan örnek belge için Ingilizce dilini kullanan [bir soru-cevap oluşturma hizmeti oluşturun](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base) ya da mevcut bir hizmeti kullanın.
+* [Soru-cevap oluşturma bir hizmet oluşturun](create-publish-knowledge-base.md) ya da İngilizce dilini kullanan mevcut bir hizmeti kullanın.
 * [Çoklu çift örnek `.docx` dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) indirin
 * [Batch test aracı](https://aka.ms/qnamakerbatchtestingtool)'nı indirin, `.zip` dosyasından yürütülebilir dosyayı ayıklayın.
 
@@ -41,9 +41,16 @@ Soru-Cevap Oluşturma portalında [oturum açın](https://www.qnamaker.ai/) .
     * Azure QnA hizmeti adı
     * Dil-Ingilizce dili
 1. Bilgi Bankalarınızın adı olarak `Multi-turn batch test quickstart` adını girin.
-1. **4. adımda**, **URL 'ler,. PDF veya. docx dosyalarından çoklu açmayı etkinleştir**' i işaretleyin.
-1. `Quickstart - can't find answer`**varsayılan yanıt metnini** girin. Bir üretim bilgi tabanında, bu bilgiler kullanıcının daha etkin olması gerekir, ancak bu hızlı başlangıçta basit bir yanıt işe yarar.
-1. Hala **4. adımda** **+ Dosya Ekle** ' yi seçip ön koşullar ' da indirilen `.docx` dosya listesini seçin.
+
+1. **4. adımda**ayarları aşağıdaki tabloyla yapılandırın:
+
+    |Ayar|Değer|
+    |--|--|
+    |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
+    |**Varsayılan yanıt metni**| `Batch test - default answer not found.`|
+    |**+ Dosya Ekle**|Önkoşullardan indirilen `.docx` dosya listesini seçin.|
+    |**Chit-sohbet**|**Profesyonel** seçin|
+
 1. **5. adımda**, **KB 'nizi oluştur**' u seçin.
 
     Oluşturma işlemi tamamlandığında Portal, düzenlenebilir Bilgi Bankası 'nı görüntüler.
@@ -67,9 +74,9 @@ Batch test aracını kullanmak için, metin düzenleyicisiyle `batch-test-data-1
 |--|--|--|
 |Bilgi Bankası KIMLIĞI|Bilgi Bankası KIMLIĞINIZ Yayımla sayfasında bulunur. Tek bir dosyada farklı Bilgi Bankası kimliklerini kullanarak tek bir dosyada aynı hizmette bulunan birçok bilgi bankasını test edin.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 karakter dizesi `POST`bir parçası olarak gösteriliyor) |
 |Soru|Kullanıcının girebileceği soru metni. en fazla 1.000 karakter.|`How do I sign out?`|
-|Meta veri etiketleri|isteğe bağlı|`topic:power`, _anahtar: değer_ biçimini kullanır|
-|Üst parametre|isteğe bağlı|`25`|
-|Beklenen yanıt KIMLIĞI|isteğe bağlı|`13`|
+|Meta veri etiketleri|seçim|`topic:power`, _anahtar: değer_ biçimini kullanır|
+|Üst parametre|seçim|`25`|
+|Beklenen yanıt KIMLIĞI|seçim|`13`|
 
 Bu Bilgi Bankası için, dosyaya yalnızca 2 gerekli sütun 3 satırı ekleyin. İlk sütun Bilgi Bankası KIMLIĞINIZ ve ikinci sütun aşağıdaki soru listesi olmalıdır:
 
@@ -130,14 +137,14 @@ Veri kaynağı ve işlemi otomatikleştiriltiğinden, doğru değerleri belirley
 |Sütun numarası|İsteğe bağlı sütun|Veri konumu|
 |--|--|--|
 |3|meta veriler|Mevcut _anahtar: değer_ çiftleri için mevcut bilgi bankasını dışarı aktarın.|
-|4|üst|`25` varsayılan değeri önerilir.|
+|4|Sayfanın Üstü|`25` varsayılan değeri önerilir.|
 |5|Soru ve yanıt kümesi KIMLIĞI|KIMLIK değerleri için mevcut bilgi bankasını dışarı aktarın. Ayrıca, kimlikler çıkış dosyasında döndürülmediğine dikkat edin.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Bilgi Bankası 'na meta veri ekleme
 
 1. QnA portalında, **düzenleme** sayfasında, aşağıdaki sorulara `topic:power` meta verileri ekleyin:
 
-    |Sorular|
+    |UL|
     |--|
     |Surface Pro 4 ' ü ücretlendirin|
     |Pil düzeyini denetleme|
@@ -160,7 +167,7 @@ Toplu test için iki ana senaryo vardır:
 * **Sohbet günlüğü dosyalarını işle** -daha önce görülmeyen bir soru için en iyi yanıtı belirleme-en yaygın durum, bir sohbet bot 'un Kullanıcı soruları gibi, sorguların günlük dosyası olan bir işlemdir. Yalnızca gerekli sütunlarla bir toplu iş dosyası testi oluşturun. Test, her soru için en iyi yanıtı döndürür. Bu, en iyi yanıtın doğru yanıt olduğu anlamına gelmez. Bu testi tamamladıktan sonra doğrulama testine geçin.
 * **Doğrulama testi** -beklenen yanıtı doğrulayın. Bu test, toplu iş testinde tüm soruların ve beklenen yanıtları eşleştirmesinin doğrulanmasını gerektirir. Bu, bazı el ile işlem gerektirebilir.
 
-Aşağıdaki yordamda, senaryonun sohbet günlüklerini işlemek için olduğu varsayılmaktadır 
+Aşağıdaki yordamda, senaryonun sohbet günlüklerini işlemek için olduğu varsayılmaktadır
 
 1. İsteğe bağlı verileri dahil etmek için yeni bir Batch test dosyası oluşturun `batch-test-data-2.tsv`. Orijinal Batch test giriş dosyasından 6 satır ekleyin, ardından her satır için meta veri, üst ve QnA kümesi KIMLIĞINI ekleyin.
 

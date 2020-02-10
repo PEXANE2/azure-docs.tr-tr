@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: ed1abe3565805810a6a3fe383e1ddfa209950469
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935384"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110678"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
@@ -33,7 +33,7 @@ Cihaz bağlantısı olaylarını ve hatalarını günlüğe kaydetmek için IoT 
 
 3. **Tanılama ayarları**' nı seçin.
 
-4. Seçin **tanılamayı Aç**.
+4. **Tanılamayı aç '** ı seçin.
 
 5. Toplanabilecek **bağlantı** günlüklerini etkinleştirin.
 
@@ -101,6 +101,8 @@ Bağlı cihazlar için tanılama günlüklerini ve uyarılarını açtığınız
 * Fiziksel veya uzaktan (SSH gibi) sorunlu cihazlara erişiminiz varsa, sorun gidermeye devam etmek için [cihaz tarafı sorun giderme kılavuzunu](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) izleyin.
 
 * IoT Hub 'ınızın > IoT cihazlarınızın Azure portal >, cihazlarınızın **etkinleştirildiğini** doğrulayın.
+
+* Cihazınız MQTT protokolünü kullanıyorsa, 8883 numaralı bağlantı noktasının açık olduğunu doğrulayın. Daha fazla bilgi için bkz. [IoT Hub bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 * [Azure IoT Hub Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)veya [Azure desteğiyle](https://azure.microsoft.com/support/options/)yardım alın.
 

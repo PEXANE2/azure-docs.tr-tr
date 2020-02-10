@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264280"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109334"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
@@ -224,8 +224,8 @@ Dizin oluşturma ilkesi:
 Sorgu güncelleştirildi (`ORDER BY` yan tümcesindeki her iki özelliği de içerir):
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -262,7 +262,7 @@ Dizin oluşturma ilkesi güncelleştirildi:
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Alt sorgu kullanarak JOIN ifadelerini iyileştirme
 Çoklu değer alt sorguları, `WHERE` yan tümcesindeki tüm çapraz birleşimlerden sonra olmak yerine her bir SELECT-many ifadesinden sonra koşullar göndererek `JOIN` ifadelerini en iyileştirebilir.
 
-Şu sorguyu inceleyin:
+Aşağıdaki sorguyu göz önünde bulundurun:
 
 ```sql
 SELECT Count(1) AS Count
@@ -315,7 +315,7 @@ Bu sorgular, bölüm anahtarı sorguya dahil ederek de iyileştirilir:
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 Bölüm anahtarında Aralık filtrelerine sahip olan veya bölüm anahtarında filtre bulunmayan sorgular, "fan" ve sonuçlar için her fiziksel bölümün dizinini denetleyecek.

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939322"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110249"
 ---
 # <a name="get-started-with-device-management-net"></a>Cihaz yönetimini kullanmaya başlama (.NET)
 
@@ -34,13 +34,15 @@ Bu öğreticinin sonunda iki .NET konsol uygulamanız olacak:
 
 * **Triggerreboot**. Bu uygulama, sanal cihaz uygulamasında doğrudan bir yöntem çağırır, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio.
 
 * Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -116,7 +118,7 @@ Bu bölümde, bir doğrudan yöntem kullanan bir cihazda Uzaktan yeniden başlat
    }
    ```
 
-1. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
+1. Son olarak, aşağıdaki satırları **Ana** yöntemine ekleyin:
 
    ```csharp
    registryManager = RegistryManager.CreateFromConnectionString(connString);
@@ -234,7 +236,7 @@ Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
 
 1. Çözüm Gezgini, çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
-1.  > **Başlangıç projesi**Için **ortak özellikler** için, **tek başlangıç projesi**' ni seçin ve ardından **SimulateManagedDevice** projesini seçin. Seçin **Tamam** yaptığınız değişiklikleri kaydedin.
+1.  > **Başlangıç projesi**Için **ortak özellikler** için, **tek başlangıç projesi**' ni seçin ve ardından **SimulateManagedDevice** projesini seçin. Değişikliklerinizi kaydetmek için **Tamam ' ı** seçin.
 
 1. **Build** > **Build Solution**öğesini seçin.
 

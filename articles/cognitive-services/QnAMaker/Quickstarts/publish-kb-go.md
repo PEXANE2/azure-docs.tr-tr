@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: c66f4f2b126b3b2b86ea55112d1bdc79b4bf4571
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a000ade2fd9887efa411378fc0239e6f5ce2a5cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447436"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109490"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Hızlı başlangıç: Go kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
@@ -25,7 +25,7 @@ REST tabanlı bu hızlı başlangıçta, Bilgi Bankası (KB) program aracılığ
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Go 1.10.1](https://golang.org/dl/)
 * [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
@@ -41,7 +41,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 ## <a name="create-a-go-file"></a>Bir Git dosyası oluşturun
 
-Adlı yeni bir dosya oluşturun ve açın VSCode `publish-kb.go`.
+VSCode 'u açın ve `publish-kb.go`adlı yeni bir dosya oluşturun.
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
@@ -63,7 +63,7 @@ func main() {
 
 ## <a name="add-required-constants"></a>Gerekli sabitleri ekleme
 
-İçinde **ana**
+**Ana** iç
 
 
  işlev, soru-cevap Oluşturucu erişmek için gerekli sabitleri ekleyin. Değerleri kendi değerlerinizle değiştirin.
@@ -98,7 +98,7 @@ Programı çalıştırmak için aşağıdaki komutu bir komut satırına yazın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi Bankası yayımlandıktan sonra ihtiyacınız [yanıt oluşturmak için uç nokta URL'si](../Tutorials/create-publish-answer.md#generating-an-answer).
+Bilgi Bankası yayımlandıktan sonra, [bir yanıt oluşturmak için uç nokta URL 'sine](./get-answer-from-knowledge-base-go.md)ihtiyacınız vardır.
 
 > [!div class="nextstepaction"]
 > [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)

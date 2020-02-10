@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896093"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110434"
 ---
 # <a name="about-point-to-site-vpn"></a>Noktadan siteye VPN hakkında
 
@@ -45,7 +45,7 @@ Yerel Azure sertifika kimlik doğrulamasını kullanırken, bağlanan kullanıc�
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Yerel Azure Active Directory kimlik doğrulaması kullanarak kimlik doğrulama
 
-Azure AD kimlik doğrulaması, kullanıcıların Azure Active Directory kimlik bilgilerini kullanarak Azure 'a bağlanmasına olanak sağlar. Yerel Azure AD kimlik doğrulaması yalnızca OpenVPN Protokolü ve Windows 10 için desteklenir ve [Azure VPN istemcisinin (Önizleme)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)kullanılmasını gerektirir.
+Azure AD kimlik doğrulaması, kullanıcıların Azure Active Directory kimlik bilgilerini kullanarak Azure 'a bağlanmasına olanak sağlar. Yerel Azure AD kimlik doğrulaması yalnızca OpenVPN Protokolü ve Windows 10 için desteklenir ve [Azure VPN istemcisinin](https://go.microsoft.com/fwlink/?linkid=2117554)kullanılmasını gerektirir.
 
 Yerel Azure AD kimlik doğrulamasıyla, VPN için Multi-Factor Authentication (MFA) özelliklerinin yanı sıra Azure AD 'nin koşullu erişiminden de yararlanabilirsiniz.
 
@@ -55,7 +55,7 @@ Yüksek düzeyde, Azure AD kimlik doğrulamasını yapılandırmak için aşağ�
 
 2. [Ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirme](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [Azure VPN Istemcisini indirme ve yapılandırma (Önizleme)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN Istemcisini indirme ve yapılandırma](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) etki alanı sunucusu kullanarak kimlik doğrulama
@@ -68,7 +68,7 @@ RADIUS sunucusu, AD Sertifika Hizmetleri ile de tümleştirilebilir. Bu, Azure s
 
 Bir RADIUS sunucusu diğer dış kimlik sistemleriyle de tümleştirilebilir. Bu, Multi-Factor seçenekleri de dahil olmak üzere P2S VPN için birçok kimlik doğrulama seçeneği açar.
 
-![Noktadan siteye](./media/point-to-site-about/p2s.png "Uçtan Siteye")
+![Noktadan siteye](./media/point-to-site-about/p2s.png "Noktadan Siteye")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>İstemci yapılandırma gereksinimleri nelerdir?
 
@@ -100,7 +100,7 @@ ZIP dosyası Ayrıca, Azure tarafında bu cihazların kendi profilinizi oluştur
 ## <a name="IKE/IPsec policies"></a>P2S için VPN ağ geçitlerinde hangi ıKE/IPSec ilkeleri yapılandırılır?
 
 
-**IKEv2**
+**Ike**
 
 |**Şifre** | **Doğruluğunu** | **PRF** | **DH grubu** |
 |---        | ---           | ---       | ---   |

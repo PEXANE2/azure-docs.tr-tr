@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001118"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110754"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub (Python) ile cihazınızdan buluta dosya yükleme
 
@@ -43,6 +43,8 @@ Bu öğreticinin sonunda Python konsol uygulamasını çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Bir cihaz uygulamasından bir dosya yükleme
@@ -62,7 +64,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
 
 3. Bir metin düzenleyicisi kullanarak çalışma klasörünüzde bir **FileUpload.py** dosyası oluşturun.
 
-4. **FileUpload.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin. 
+4. **FileUpload.py** dosyasının başlangıcında aşağıdaki `import` deyimlerini ve değişkenlerini ekleyin. 
 
     ```python
     import time
@@ -78,7 +80,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
     FILENAME = "[File name for storage]"
     ```
 
-5. Dosyanızda, ' yi IoT `[Device Connection String]` hub cihazınızın bağlantı dizesiyle değiştirin. Oluşturduğunuz `[Full path to file]` test dosyasının yoluyla veya cihazınızda karşıya yüklemek istediğiniz herhangi bir dosyayı değiştirin. Blob `[File name for storage]` depolamaya yüklendikten sonra dosyanıza vermek istediğiniz adla değiştirin. 
+5. Dosyanızda `[Device Connection String]`, IoT Hub cihazınızın bağlantı dizesiyle değiştirin. `[Full path to file]`, oluşturduğunuz test dosyası yoluyla veya cihazınızda karşıya yüklemek istediğiniz herhangi bir dosya ile değiştirin. `[File name for storage]`, blob depolamaya yüklendikten sonra dosyanıza vermek istediğiniz adla değiştirin. 
 
 6. **Upload_blob** işlevi için bir geri çağırma oluşturun:
 
@@ -90,7 +92,7 @@ Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturac
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. İstemcisini bağlamak ve dosyayı karşıya yüklemek için aşağıdaki kodu ekleyin. Ayrıca, `main` yordamını da dahil edin:
+7. İstemcisini bağlamak ve dosyayı karşıya yüklemek için aşağıdaki kodu ekleyin. Ayrıca `main` yordamını da dahil edin:
 
     ```python
     def iothub_file_upload_sample_run():

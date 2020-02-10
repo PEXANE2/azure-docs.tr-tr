@@ -5,16 +5,16 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647926"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110566"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>P2S OpenVPN Protokolü bağlantıları için bir VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması (Önizleme)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN Protokolü bağlantıları için bir VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
 Bu makale, bir VPN istemcisini Noktadan siteye VPN ve Azure Active Directory kimlik doğrulaması kullanarak bir sanal ağa bağlanacak şekilde yapılandırmanıza yardımcı olur. Azure AD 'yi kullanarak bağlanabilmek ve kimlik doğrulayabilmeniz için önce Azure AD kiracınızı yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure AD kiracısı yapılandırma](openvpn-azure-ad-tenant.md).
 
@@ -24,17 +24,17 @@ Bu makale, bir VPN istemcisini Noktadan siteye VPN ve Azure Active Directory kim
 
 ## <a name="profile"></a>İstemci profilleriyle çalışma
 
-Bağlanmak için, Azure VPN Istemcisini (Önizleme) indirmeniz ve sanal ağa bağlanmak isteyen her bilgisayarda bir VPN istemci profili yapılandırmanız gerekir. Bir bilgisayarda istemci profili oluşturabilir, dışarı aktarabilir ve daha sonra ek bilgisayarlara aktarabilirsiniz.
+Bağlanmak için, Azure VPN Istemcisini indirmeniz ve sanal ağa bağlanmak isteyen her bilgisayarda bir VPN istemci profili yapılandırmanız gerekir. Bir bilgisayarda istemci profili oluşturabilir, dışarı aktarabilir ve daha sonra ek bilgisayarlara aktarabilirsiniz.
 
 ### <a name="to-download-the-azure-vpn-client"></a>Azure VPN istemcisini indirmek için
 
-Azure VPN Istemcisini (Önizleme) indirmek için bu [bağlantıyı](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) kullanın.
+Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://go.microsoft.com/fwlink/?linkid=2117554) kullanın.
 
 ### <a name="cert"></a>Sertifika tabanlı bir istemci profili oluşturmak için
 
 Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun sertifikaların yüklü olduğundan emin olun. Sertifikalar hakkında daha fazla bilgi için bkz. [istemci sertifikalarını Install](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+  ![CERT](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="radius"></a>RADIUS istemci profili oluşturmak için
 
@@ -50,33 +50,33 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar**' ı seçin.
 
-    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![işlemi](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Bu profili kaydetmek istediğiniz konumu seçin, dosya adını olduğu gibi bırakın ve **Kaydet** ' i seçerek XML dosyasını kaydedin.
 
-    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![işlemi](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>İstemci profilini içeri aktarmak için
 
 1. Sayfasında **Içeri aktar**' ı seçin.
 
-    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![aktarmaya](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
 
-    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![aktarmaya](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Profilin adını belirtin ve **Kaydet**' i seçin.
 
-    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![aktarmaya](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
 
-    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![aktarmaya](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
 
-    ![içeri aktarma](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![aktarmaya](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>İstemci profilini silmek için
 
@@ -116,19 +116,19 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 1. VPN istemcinizin ana sayfasında **VPN ayarları**' nı seçin.
 
-    ![otomobil](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Uygulamalar arasında geçiş yap iletişim kutusunda **Evet** ' i seçin.
 
-    ![otomobil](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ayarlamak istediğiniz bağlantının zaten bağlı olmadığından emin olun, sonra profili vurgulayın ve **otomatik olarak bağlan** onay kutusunu işaretleyin.
 
-    ![otomobil](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. VPN bağlantısını başlatmak için **Bağlan** ' ı seçin.
 
-    ![otomobil](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>Bağlantı sorunlarını Tanıla
 

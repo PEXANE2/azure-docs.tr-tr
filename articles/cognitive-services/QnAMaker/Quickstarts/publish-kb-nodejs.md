@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 3ca664afc458f794e07782354d0bad5c46c66537
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3df0a486baa2184a58ac33c24a5d13973885890f
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474028"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109511"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: node. js için REST API 'Leri Soru-Cevap Oluşturma
 
@@ -23,7 +23,7 @@ Node. js için Soru-Cevap Oluşturma REST API 'Leri ile çalışmaya başlayın.
 
 Node. js için Soru-Cevap Oluşturma REST API 'Lerini kullanarak şunları yapın:
 
-* Bilgi bankası oluşturun
+* Bilgi bankası oluşturma
 * Bilgi bankasını değiştirme
 * Bilgi bankası yayımlama
 * Bilgi bankasını silme
@@ -34,7 +34,7 @@ Node. js için Soru-Cevap Oluşturma REST API 'Lerini kullanarak şunları yapı
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Node. js](https://nodejs.org)' nin geçerli sürümü.
@@ -98,7 +98,7 @@ Aşağıdaki ortam değerlerini ayarlayın:
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturun
+## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
 
 Bilgi Bankası, bir JSON nesnesinden oluşturulan soru ve yanıt çiftlerini depolar:
 
@@ -170,6 +170,6 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 >[Öğretici: bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
-* [Bilgi Bankası Düzenle](../how-to/edit-knowledge-base.md)
+* [Bilgi Bankası düzenleme](../how-to/edit-knowledge-base.md)
 * [Kullanım analizlerini al](../how-to/get-analytics-knowledge-base.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js)' da bulunabilir.

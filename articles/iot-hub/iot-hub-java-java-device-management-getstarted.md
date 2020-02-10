@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 52d7eb035ed06c368214b8b5cb7ef583cd99b51b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f68e25a618f5c6499ccc9d76c510eab8f1650330
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161994"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110892"
 ---
 # <a name="get-started-with-device-management-java"></a>Cihaz yönetimini kullanmaya başlama (Java)
 
@@ -58,6 +58,8 @@ Bu öğreticinin sonunda iki Java konsol uygulamanız vardır:
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -146,7 +148,7 @@ Bu konsol uygulaması, doğrudan yöntemi çağırmak ve bildirilen özellikleri
     import java.util.concurrent.ExecutorService;
     ```
 
-9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. Daha `{youriothubconnectionstring}` önce [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
+9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{youriothubconnectionstring}` [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -259,7 +261,7 @@ Bu bölümde, bir cihaza benzetim yapan bir Java konsol uygulaması oluşturursu
     > [!NOTE]
     > [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)kullanarak **IoT-Device-Client** ' ın en son sürümünü kontrol edebilirsiniz.
 
-4. Aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, bir NOP 'yi, cihaz istemci SDK 'Sı tarafından günlüğe kaydetmeyi uygulamak için kullanılan Apache [dolayısıyla slf4j](https://www.slf4j.org/) Logging façlade için yapılandırır. Bu yapılandırma isteğe bağlıdır, ancak bunu atlarsanız, uygulamayı çalıştırdığınızda konsolunda bir uyarı görebilirsiniz. Cihaz istemcisi SDK 'sında günlüğe kaydetme hakkında daha fazla bilgi için bkz [](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) . *Java için Azure IoT cihaz SDK 'sı dosyası örnekleri* .
+4. Aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, bir NOP 'yi, cihaz istemci SDK 'Sı tarafından günlüğe kaydetmeyi uygulamak için kullanılan Apache [dolayısıyla slf4j](https://www.slf4j.org/) Logging façlade için yapılandırır. Bu yapılandırma isteğe bağlıdır, ancak bunu atlarsanız, uygulamayı çalıştırdığınızda konsolunda bir uyarı görebilirsiniz. Cihaz istemcisi SDK 'sında günlüğe kaydetme hakkında daha fazla bilgi [için bkz.](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) *Java için Azure IoT cihaz SDK 'sı dosyası örnekleri* .
 
     ```xml
     <dependency>
@@ -305,7 +307,7 @@ Bu bölümde, bir cihaza benzetim yapan bir Java konsol uygulaması oluşturursu
     import java.util.HashSet;
     ```
 
-9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{yourdeviceconnectionstring}` [IoT Hub 'ında yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde not ettiğiniz cihaz bağlantı dizesiyle değiştirin:
+9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{yourdeviceconnectionstring}`, [IoT Hub 'ında yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub) bölümünde not ettiğiniz cihaz bağlantı dizesiyle değiştirin:
 
     ```java
     private static final int METHOD_SUCCESS = 200;

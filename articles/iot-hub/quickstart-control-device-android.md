@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: d607608167e1287c7df35157ccb9870f40f22943
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 4b31b1ee77e6bcafc4981c85f0118d02de00a964
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516719"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108933"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme (Android)
 
@@ -47,7 +47,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Bu hızlı başlangıç Için iki örnek uygulama gerekiyor: [CIHAZ SDK örnek Android uygulaması](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) ve [Service SDK örnek Android uygulaması](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Bu örneklerin her ikisi de GitHub 'daki Azure-IoT-Samples-Java deposunun bir parçasıdır. [Azure-IoT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunu indirin veya kopyalayın.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu hızlı başlangıçta bulunan cihaz örneği, 8883 bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Önceki hızlı başlangıcı tamamladıysanız [: bir cihazdan IoT Hub 'ına telemetri gönderin](quickstart-send-telemetry-android.md), bu adımı atlayabilir ve daha önce oluşturduğunuz IoT Hub 'ını kullanabilirsiniz.
 
@@ -111,13 +113,13 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
-2. Android Studio ' de, örnek proje için *Gradle. Properties* ' i açın ve **Device_Connection_String** yer tutucusunu, daha önce bir örneği yaptığınız cihaz bağlantı dizesiyle değiştirin.
+2. Android Studio, örnek proje için *Gradle. Properties* ' i açın ve **Device_Connection_String** yer tutucusunu, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin.
 
     ```
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio ' de, **dosya** > **Gradle dosyaları ile eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
+3. Android Studio, **dosya** > **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın. Oluşturma işlemini doğrulayın.
 
    > [!NOTE]
    > Proje eşitleme başarısız olursa, aşağıdaki nedenlerden biri olabilir:
@@ -125,7 +127,7 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
    > * Android Studio sürümünüz için, projede başvurulan Android Gradle Plugin ve Gradle sürümleri güncel değil. Yüklemeniz için eklentinin ve Gradle sürümlerinin doğru sürümlerini başvurmak ve yüklemek için [Bu yönergeleri](https://developer.android.com/studio/releases/gradle-plugin) izleyin.
    > * Android SDK için lisans sözleşmesi imzalanmadı. Lisans sözleşmesini imzalamak ve SDK 'Yı indirmek için derleme çıktısındaki yönergeleri izleyin.
 
-4. Derleme tamamlandıktan sonra **Çalıştır** '  >  **' uygulama ' Çalıştır**' a tıklayın. Uygulamayı fiziksel bir Android cihazda veya bir Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
+4. Derleme tamamlandıktan sonra **Çalıştır** ' >  **' uygulama ' Çalıştır**' a tıklayın. Uygulamayı fiziksel bir Android cihazda veya bir Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Uygulama yüklendikten sonra, IoT Hub telemetri göndermeye başlamak için **Başlat** düğmesine tıklayın:
 
@@ -170,7 +172,7 @@ Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada,
     DeviceId=MyAndroidDevice
     ```
 
-3. Android Studio ' de, **dosya** > **Gradle dosyaları ile eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
+3. Android Studio, **dosya** > **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın. Oluşturma işlemini doğrulayın.
 
    > [!NOTE]
    > Proje eşitleme başarısız olursa, aşağıdaki nedenlerden biri olabilir:
@@ -178,7 +180,7 @@ Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada,
    > * Android Studio sürümünüz için, projede başvurulan Android Gradle Plugin ve Gradle sürümleri güncel değil. Yüklemeniz için eklentinin ve Gradle sürümlerinin doğru sürümlerini başvurmak ve yüklemek için [Bu yönergeleri](https://developer.android.com/studio/releases/gradle-plugin) izleyin.
    > * Android SDK için lisans sözleşmesi imzalanmadı. Lisans sözleşmesini imzalamak ve SDK 'Yı indirmek için derleme çıktısındaki yönergeleri izleyin.
 
-4. Derleme tamamlandıktan sonra **Çalıştır** '  >  **' uygulama ' Çalıştır**' a tıklayın. Uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
+4. Derleme tamamlandıktan sonra **Çalıştır** ' >  **' uygulama ' Çalıştır**' a tıklayın. Uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Uygulama yüklendikten sonra, **set Messaging Interval** değerini **1000** olarak güncelleştirin ve **çağır**' a tıklayın.
 

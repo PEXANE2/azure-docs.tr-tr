@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 4754d7c2182de79d583dce4982b33395bf037479
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 518f8057f222a628f8c3cd077cad4a7362e2cac8
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161884"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110816"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Java)
 
@@ -45,13 +45,15 @@ Bu öğreticinin sonunda iki Java konsol uygulaması çalıştırırsınız:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) veya [IoT Hub öğreticisiyle ileti yönlendirmeyi yapılandırma ile](tutorial-routing.md) Telemetriyi gönderme işleminin tamamen bir çalışma sürümü.
+* [Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) veya [IoT Hub öğreticisiyle ileti yönlendirmeyi yapılandırma ile Telemetriyi](tutorial-routing.md) gönderme işleminin tamamen bir çalışma sürümü.
 
 * [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
+
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Sanal cihaz uygulamasında ileti alma
 

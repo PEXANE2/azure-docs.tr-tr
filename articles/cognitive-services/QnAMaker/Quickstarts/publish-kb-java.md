@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 44b53cbfdb1982d9f9e6a0cb6408a16b1d660d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 48da92374a29b5319f0ae5eaa830f2e03511b512
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447418"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109475"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı başlangıç: Java kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
@@ -25,10 +25,10 @@ REST tabanlı bu hızlı başlangıçta, Bilgi Bankası (KB) program aracılığ
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
-* Bu örnek, Apache kullanır [HTTP istemcisi](https://hc.apache.org/httpcomponents-client-ga/) HTTP Components'tan. Projenize aşağıdaki Apache HTTP istemcisi kitaplıkları ekleme yapmanız gerekir:
+* Bu örnek, HTTP bileşenlerinden Apache [http istemcisini](https://hc.apache.org/httpcomponents-client-ga/) kullanır. Projenize aşağıdaki Apache HTTP istemcisi kitaplıkları ekleme yapmanız gerekir:
     * httpclient 4.5.3.jar
     * httpcore 4.4.6.jar
     * Commons günlük 1.2.jar
@@ -45,11 +45,11 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 ## <a name="create-a-java-file"></a>Bir Java dosyası oluşturma
 
-Adlı yeni bir dosya oluşturun ve açın VSCode `PublishKB.java`.
+VSCode 'u açın ve `PublishKB.java`adlı yeni bir dosya oluşturun.
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
-Üst kısmındaki `PublishKB.java`, sınıfı üzerinde gerekli bağımlılıkları projeye eklemek için aşağıdaki satırları ekleyin:
+`PublishKB.java`en üstünde, sınıfının üzerine gerekli bağımlılıkları eklemek için aşağıdaki satırları ekleyin:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
 
@@ -68,7 +68,7 @@ public class PublishKB {
 
 ## <a name="add-required-constants"></a>Gerekli sabitleri ekleme
 
-İçinde **ana** yöntemi, soru-cevap Oluşturucu erişmek için gerekli sabitleri ekleyin. Değerleri kendi değerlerinizle değiştirin.
+**Main** yönteminde soru-cevap oluşturma erişmek için gereken sabitleri ekleyin. Değerleri kendi değerlerinizle değiştirin.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
 
@@ -102,7 +102,7 @@ Derleme ve komut satırından programı çalıştırın. Otomatik olarak için s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi Bankası yayımlandıktan sonra ihtiyacınız [yanıt oluşturmak için uç nokta URL'si](../Tutorials/create-publish-answer.md#generating-an-answer).
+Bilgi Bankası yayımlandıktan sonra, [bir yanıt oluşturmak için uç nokta URL 'sine](./get-answer-from-knowledge-base-java.md)ihtiyacınız vardır.
 
 > [!div class="nextstepaction"]
 > [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,6 +1,5 @@
 ---
 title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
-titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt kümelerinin nasıl ekleneceği gösterilmektedir.
 services: cognitive-services
 author: diberry
@@ -8,58 +7,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/22/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843048"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109936"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
-Bir Bilgi Bankası oluşturulduktan sonra, kullanıcılarınızın sorularını doğru yanıtı bulabilmesi için meta verilerle soru ve yanıt kümeleri ekleyin.
-
-Doğru yanıt tek bir yanıttır ancak bir müşterinin söz konusu tek yanıta neden olan soruyu sormasına birçok yol olabilir.
-
-Örneğin, aşağıdaki tablodaki sorular Azure hizmet limitleriyle ilgilidir, ancak her birinin farklı bir Azure hizmeti ile yapması gerekir.
+Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle soru ve yanıt (QnA) kümeleri ekleyin. Aşağıdaki tablodaki sorular Azure hizmet limitleri ile ilgilidir, ancak her birinin farklı bir Azure hizmeti ile yapması gerekir.
 
 <a name="qna-table"></a>
 
-
-|Ayarla|Sorular|Yanıt|Meta Veriler|
+|Ayarla|UL|Yanıt|Meta Veriler|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-Bir soru-cevap kümesine meta veriler eklendikten sonra istemci uygulama şunları yapabilir:
+Bir QnA kümesine meta veriler eklendikten sonra istemci uygulama şunları yapabilir:
 
 * Yalnızca belirli meta verilerle eşleşen yanıt isteyin.
 * Tüm yanıtları al, ancak her yanıt için meta verilere bağlı olarak yanıtları son işle.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Soru-Cevap Oluşturma Hizmeti
-* Bu Soru-Cevap Oluşturma hizmetinde oluşturulmuş bir bilgi tabanı
-
-Her ikisi de [ilk hızlı](../how-to/create-knowledge-base.md)başlangıçta oluşturulmuştur.
+* [Önceki hızlı](./create-publish-knowledge-base.md) başlangıcı doldurun
 
 ## <a name="sign-in-to-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında oturum açın
 
 1. [Soru-cevap oluşturma portalında](https://www.qnamaker.ai)oturum açın.
 
-1. Mevcut bilgi bankasını seçin. Bilgi tabanınız yoksa, [önceki hızlı](../how-to/create-knowledge-base.md) Başlangıca dönün ve bilgi tabanınızı oluşturma adımlarını izleyin.
+1. [Önceki hızlı](../how-to/create-knowledge-base.md)başlangıçta mevcut bilgi bankasını seçin.
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Ek alternatif olarak phrased soruları ekleyin
 
-[Önceki hızlı](../how-to/create-knowledge-base.md)başlangıçta bulunan soru-cevap oluşturma sorun giderme sorusu ve yanıt kümelerine sahip geçerli bilgi tabanı. Bu kümeler, oluşturma işlemi sırasında URL Bilgi Bankası 'na eklendiğinde oluşturulmuştur.
+Geçerli Bilgi Bankası 'nda Soru-Cevap Oluşturma sorun giderme QnA Sets vardır. Bu kümeler, oluşturma işlemi sırasında URL Bilgi Bankası 'na eklendiğinde oluşturulmuştur.
 
-Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru oluşturulur.
-
-Bu yordamda, ek sorular ekleyin.
+Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru oluşturulur. Bu yordamda, ek sorular ekleyin.
 
 1. **Düzenleme** sayfasında, soruyu bulmak için soru ve yanıt kümelerinin üzerindeki arama metin kutusunu kullanın `How large a knowledge base can I create?`
 
@@ -76,11 +64,13 @@ Bu yordamda, ek sorular ekleyin.
 
     `What GB size can a knowledge base be?`
 
-    Doğru yanıt markaşağı biçiminde döndürülür: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    Doğru yanıt markaşağı biçiminde döndürülür:
+
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     Döndürülen yanıtın altında **İncele** ' yi seçerseniz, soruyu karşılayan daha fazla yanıt görebilirsiniz, ancak aynı yüksek düzeyde güvenle bilgi alabilirsiniz.
 
-    Alternatif özelliklerin her olası birleşimini eklemeyin. Soru-Cevap Oluşturma [etkin öğrenimini](../how-to/improve-knowledge-base.md)açın, bu, bilgi tabanınızın kullanıcılarınızın ihtiyaçlarını karşılayacak en iyi şekilde yardımcı olacak alternatif duymalları bulur.
+    Alternatif özelliklerin her olası birleşimini eklemeyin. Soru-Cevap Oluşturma [etkin öğrenimini](../how-to/improve-knowledge-base.md)açtığınızda, bu, bilgi tabanınızın kullanıcılarınızın ihtiyaçlarını karşılayacak en iyi şekilde yardımcı olacak alternatif duymalları bulur.
 
 1. Test penceresini kapatmak için yeniden **Test** ' i seçin.
 
@@ -92,14 +82,15 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
 
 1. **Görünüm seçeneklerini**belirleyin ve **meta verileri göster**' i seçin.
 
-1. Yeni eklediğiniz soru ve yanıt kümesi için, **meta veri etiketleri Ekle**' yi seçin, ardından `service` adı ve `search`değeri `service:search`ekleyin.
+1. Az önce eklediğiniz QnA kümesi için, **meta veri etiketleri Ekle**' yi seçin, ardından `service` adını ve `search`değerini ekleyin. Şöyle görünür: `service:search`.
 
-1. `link_in_answer` adı ve `false`değeri `link_in_answer:false`olan başka bir meta veri etiketi ekleyin.
+1. `link_in_answer` adı ve `false`değeri olan başka bir meta veri etiketi ekleyin. Şöyle görünür: `link_in_answer:false`.
 
 1. Tablodaki ilk yanıtı arayın, `How large a knowledge base can I create?`.
+
 1. Aynı iki meta veri etiketi için meta veri çiftleri ekleyin:
 
-    `link_in_answer` : `true`<br>
+    `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
     Artık, farklı değerlerle aynı meta veri etiketlerine sahip iki sorunuz vardır.
@@ -107,71 +98,16 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
 1. Bilgi Bankası 'nı yeniden eğitmek için **Kaydet ve eğitme '** yi seçin.
 
 1. Yayımla sayfasına gitmek için üstteki menüden **Yayımla** ' yı seçin.
-1. Geçerli Bilgi Bankası 'nı sorgulanabilir bir uç noktaya yayımlamak için **Yayımla** düğmesini seçin.
-1. Bilgi Bankası yayımlandıktan sonra, Bilgi Bankası 'ndan bir yanıt oluşturmak için kullanılan örnek bir kıvrımlı komutu görmek için **kıvrımlı** sekmesini seçin.
-1. Komutu düzenlemek için bir not defteri veya başka bir düzenlenebilir ortama komutu kopyalayın. Kendi kaynak adınız, Bilgi Bankası KIMLIĞI ve uç nokta anahtarınız için düzenleme yapın:
+1. Geçerli bilgi bankasını uç noktaya yayımlamak için **Yayımla** düğmesini seçin.
+1. Bilgi Bankası yayımlandıktan sonra, bilgi tabanınızdan nasıl yanıt oluşturacağınızı öğrenmek için sonraki hızlı başlangıca geçin.
 
-    |Değiştir|
-    |--|
-    |`your-resource-name`|
-    |`your-knowledge-base-id`|
-    |`your-endpoint-key`|
+## <a name="what-did-you-accomplish"></a>Ne başardınız?
 
-    ```curl
-    curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
-    ```
-
-    Sorunun yalnızca tek bir kelime, `size`olduğunu ve soru ve yanıt kümesi döndürebileceğini fark edebilirsiniz. `strictFilters` dizisi, yanıta yalnızca `qna_maker` yanıtlara karşı azaltmasını söyler.
-
-    [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
-
-1. Yanıt yalnızca filtre ölçütlerini karşılayan yanıtı içerir.
-
-    Aşağıdaki kıvrımlı yanıtı okunabilirlik için biçimlendirildi:
-
-    ```JSON
-    {
-        "answers": [
-            {
-                "questions": [
-                    "How large a knowledge base can I create?",
-                    "What is the max size of a knowledge base?",
-                    "How many GB of data can a knowledge base hold?"
-                ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.",
-                "score": 68.76,
-                "id": 3,
-                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
-                "metadata": [
-                    {
-                        "name": "link_in_answer",
-                        "value": "true"
-                    },
-                    {
-                        "name": "service",
-                        "value": "qna_maker"
-                    }
-                ],
-                "context": {
-                    "isContextOnly": false,
-                    "prompts": []
-                }
-            }
-        ],
-        "debugInfo": null
-    }
-    ```
-
-    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
-
-    Meta veri adınızı ve değer çiftlerini gerekli limitlerin içinde tutduğunuzdan emin olun.
+Bilgi bankanızı, daha fazla soru ve verilen ad/değer çiftlerini, yanıt veya Yanıt döndürülbaşladıktan sonra, en üstteki yanıt veya geri yükleme sırasında filtrelemeyi destekleyecek şekilde düzenlediniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
-
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+Sonraki hızlı başlangıca devam değilseniz, Azure portal Soru-Cevap Oluşturma ve bot Framework kaynaklarını silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

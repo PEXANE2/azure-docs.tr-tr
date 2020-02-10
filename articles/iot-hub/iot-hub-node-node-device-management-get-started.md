@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5b2e4c03347020b5d5fc67927165403f06854e0b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147439"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110922"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Cihaz yönetimini kullanmaya başlama (node. js)
 
@@ -31,13 +31,15 @@ Bu öğreticinin sonunda iki Node. js konsol uygulaması vardır:
 
 * daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan **dmpatterns_getstarted_device. js**, bir yeniden başlatma doğrudan yöntemi alır, fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
 
-* **dmpatterns_getstarted_service. js**, sanal cihaz uygulamasında doğrudan bir yöntemi çağırır, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
+* sanal cihaz uygulamasında doğrudan bir yöntemi çağıran **dmpatterns_getstarted_service. js**, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -80,7 +82,7 @@ Bu bölümde şunları yapacaksınız:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  Yer tutucu `{yourdeviceconnectionstring}` değerini, daha önce, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)kopyaladığınız cihaz bağlantı dizesiyle değiştirin.  
+5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  `{yourdeviceconnectionstring}` yer tutucu değerini, daha önce, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)kopyaladığınız cihaz bağlantı dizesiyle değiştirin.  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';

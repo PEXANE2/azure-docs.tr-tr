@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147653"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110850"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>İşleri zamanlama ve yayınlama (node. js)
 
@@ -30,9 +30,9 @@ Kavramsal olarak, bir iş bu eylemlerden birini sarmalar ve yürütmenin ilerlem
 
 Bu makalelerdeki her bir özellik hakkında daha fazla bilgi edinin:
 
-* Cihaz ikizi ve özellikleri: [Cihaz](iot-hub-node-node-twin-getstarted.md) ikizlerini ve [öğreticisini kullanmaya başlayın: Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
+* Cihaz ikizi ve özellikleri: [cihaz](iot-hub-node-node-twin-getstarted.md) Ikizlerini ve [öğreticisini kullanmaya başlama: cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
 
-* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: doğrudan Yöntemler](quickstart-control-device-node.md)
+* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan](iot-hub-devguide-direct-methods.md) Yöntemler ve [öğretici: doğrudan Yöntemler](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -53,6 +53,8 @@ Bu öğreticinin sonunda iki Node. js uygulamanız vardır:
 * Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -89,7 +91,7 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın. Yer tutucu `{yourDeviceConnectionString}` değerini, daha önce kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
+5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın. `{yourDeviceConnectionString}` yer tutucu değerini, daha önce kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -166,7 +168,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde kopyaladığınız değerle değiştirin. `{iothubconnectionstring}` **Mydeviceıd**'den farklı bir cihaz kaydettiniz, bunu sorgu koşulunda değiştirdiğinizden emin olun.
+5. Aşağıdaki değişken bildirimlerini ekleyin. `{iothubconnectionstring}` yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde kopyaladığınız değerle değiştirin. **Mydeviceıd**'den farklı bir cihaz kaydettiniz, bunu sorgu koşulunda değiştirdiğinizden emin olun.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -295,6 +297,6 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
 
 Bu öğreticide, bir cihaza doğrudan yöntem zamanlamak ve Device ikizi 'in özelliklerinin güncelleştirilmesi için bir iş kullandınız.
 
-AIR üretici yazılımı güncelleştirmesi üzerinden uzak gibi IoT Hub ve cihaz yönetim desenleriyle çalışmaya devam etmek için bkz [. Öğretici: Üretici yazılımı güncelleştirmesi](tutorial-firmware-update.md)nasıl yapılır?
+AIR üretici yazılımı güncelleştirmesi üzerinden uzak gibi IoT Hub ve cihaz yönetim desenleriyle çalışmaya devam etmek için bkz. [öğretici: üretici yazılımı güncelleştirmesi](tutorial-firmware-update.md).
 
 IoT Hub kullanmaya başlarken devam etmek için bkz. [Azure IoT Edge kullanmaya](../iot-edge/tutorial-simulate-device-linux.md)başlama.

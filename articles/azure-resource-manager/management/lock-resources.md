@@ -2,40 +2,39 @@
 title: Değişiklikleri engellemek için kaynakları kilitle
 description: Kullanıcıların, tüm kullanıcılar ve roller için bir kilit uygulayarak kritik Azure kaynaklarını güncelleştirmesini veya silmelerini önleyin.
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644367"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109547"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri engellemek için kaynakları kilitle
 
 Yönetici olarak kuruluşunuzdaki diğer kullanıcıların yanlışlıkla silmesini veya kritik kaynakları değiştirmesini önlemek için belirli bir aboneliği, kaynak grubunu veya kaynağı kilitlemeniz gerekebilir. Kilit düzeyini **CanNotDelete** veya **ReadOnly** olarak ayarlayabilirsiniz. Portalda, kilitler sırasıyla **silme** ve **salt okuma** olarak adlandırılır.
 
 * **Cannotdelete** , yetkili kullanıcıların bir kaynağı hala okuyabilecekleri ve değiştirebilecekleri anlamına gelir, ancak kaynakları silemez. 
-* **ReadOnly** , yetkili kullanıcıların bir kaynağı okuyabilecekleri anlamına gelir, ancak kaynakları silemez veya güncelleştiremez. Bu kilidi uygulamak, tüm yetkili kullanıcıları **okuyucu** rolü tarafından verilen izinlerle kısıtlamak için benzerdir. 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** , yetkili kullanıcıların bir kaynağı okuyabilecekleri anlamına gelir, ancak kaynakları silemez veya güncelleştiremez. Bu kilidi uygulamak, tüm yetkili kullanıcıları **okuyucu** rolü tarafından verilen izinlerle kısıtlamak için benzerdir.
 
 ## <a name="how-locks-are-applied"></a>Kilitlerin uygulanma şekli
 
 Üst kapsamda bir kilit uyguladığınızda, bu kapsamdaki tüm kaynaklar aynı kilidi alır. Daha sonra eklediğiniz kaynaklar bile kilidi üst öğeden alır. Devralmada en kısıtlayıcı kilit öncelik kazanır.
 
-Rol tabanlı erişim denetiminin aksine, yönetim kilitlerini tüm kullanıcılar ve rollere kısıtlama getirmek için kullanırsınız. Kullanıcılar ve roller için izinleri ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı Access Control](../../role-based-access-control/role-assignments-portal.md).
+Rol tabanlı erişim denetiminden farklı olarak, tüm kullanıcılar ve roller arasında bir kısıtlama uygulamak için yönetim kilitlerini kullanırsınız. Kullanıcılar ve roller için izinleri ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı Access Control](../../role-based-access-control/role-assignments-portal.md).
 
-Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve `https://management.azure.com` adresine gönderilen işlemlere uygulanır. Kilitler kaynakların kendi işlevlerini gerçekleştirmesine bir kısıtlama getirmez. Kaynak değişiklikleri kısıtlanır ama kaynak işlemleri kısıtlanmaz. Örneğin, bir SQL veritabanı üzerinde salt okunur bir kilit, veritabanını silmenizi veya değiştirmenizi önler. Veritabanında veri oluşturmanızı, güncelleştirmenizi veya silmenizi engellemez. Bu işlemler `https://management.azure.com`gönderilmediğinden veri işlemlerine izin verilir.
+Kaynak Yöneticisi kilitleri yalnızca, `https://management.azure.com`gönderilen işlemlerden oluşan yönetim düzleminde gerçekleşen işlemler için geçerlidir. Kilitler, kaynakların kendi işlevlerini nasıl gerçekleştireceğini kısıtlamaz. Kaynak değişiklikleri kısıtlıdır, ancak kaynak işlemleri kısıtlanamaz. Örneğin, bir SQL veritabanı üzerinde salt okunur bir kilit, veritabanını silmenizi veya değiştirmenizi önler. Veritabanında veri oluşturmanızı, güncelleştirmenizi veya silmenizi engellemez. Bu işlemler `https://management.azure.com`gönderilmediğinden veri işlemlerine izin verilir.
 
 **ReadOnly** uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit tarafından engellenen eylemler gerektirdiğinden beklenmedik sonuçlara neden olabilir. **Salt okunur** kilit, kaynağa veya kaynağı içeren kaynak grubuna uygulanabilir. **Salt okunur** kilit tarafından engellenen işlemlerin bazı yaygın örnekleri şunlardır:
 
-* Depolama hesabındaki bir **salt okunur** kilit, tüm kullanıcıların anahtarları listelemesine engel olur. Anahtarları listeleme işlemi bir POST isteği aracılığıyla işlenir çünkü döndürülen anahtarlar yazma işlemlerinde kullanılabilir.
+* Depolama hesabındaki bir **salt okunur** kilit, tüm kullanıcıların anahtarları listelemesine engel olur. Döndürülen anahtarlar yazma işlemleri için kullanılabilir olduğundan, liste anahtarları işlemi bir POST isteği aracılığıyla işlenir.
 
 * App Service bir kaynaktaki **salt okunur** kilit, bu etkileşim yazma erişimi gerektirdiğinden Visual Studio Sunucu Gezgini kaynak için dosya görüntülemesini engeller.
 
 * Bir sanal makine içeren bir kaynak grubundaki **salt okunur** kilit, tüm kullanıcıların sanal makineyi başlatmasını veya yeniden başlatmasını önler. Bu işlemler bir POST isteği gerektirir.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kilitleri kimler oluşturabilir veya silebilir
+
 Yönetim kilitleri oluşturmak veya silmek için `Microsoft.Authorization/*` veya `Microsoft.Authorization/locks/*` eylemlere erişiminizin olması gerekir. Yerleşik rollerden yalnızca **Sahip** ve **Kullanııcı Erişiimi Yöneticisi** bu eylemleri kullanabilir.
 
 ## <a name="managed-applications-and-locks"></a>Yönetilen uygulamalar ve kilitler
@@ -58,7 +57,12 @@ Kilitli altyapı kaynak grubu dahil olmak üzere hizmetin her şeyi silmek için
 
 ![Hizmeti Sil](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Azure yedeklemeleri ve kilitleri
+
+Azure Backup hizmeti tarafından oluşturulan kaynak grubunu kilitlerseniz yedeklemeler başarısız olur. Hizmet en fazla 18 geri yükleme noktasını destekler. Bir **Cannotdelete** kilidi ile yedekleme hizmeti geri yükleme noktalarını temizleyemiyor. Daha fazla bilgi için bkz. [sık sorulan sorular-Azure sanal makinelerini yedekleme](../../backup/backup-azure-vm-backup-faq.md).
+
 ## <a name="portal"></a>Portal
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Şablon

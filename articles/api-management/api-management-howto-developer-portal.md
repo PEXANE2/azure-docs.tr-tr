@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898837"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108246"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -39,7 +39,7 @@ Bu makalede, API Management 'de geliştirici portalının şirket içinde barın
 Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
 
 - **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL `<your-api-management-instance-name>.developer.azure-api.net`üzerinden erişilebilen portalı düzenleyerek ve özelleştirerek. Yönetilen portala erişme ve bunları özelleştirme hakkında bilgi edinmek için [Bu belge makalesine](api-management-howto-developer-portal-customize.md) başvurun.
-- **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan çekirdek işlevselliği genişletmenizi sağlar. Ayrıca, portalı en son sürüme yükseltmeniz gerekir. Ayrıntılar ve yönergeler için, [portalın kaynak koduyla GitHub deposuna][1] ve [pencere öğesi uygulama hakkında öğreticiye][4]bakın. [Yönetilen sürüm için öğretici](api-management-howto-developer-portal-customize.md) , portalın Yönetim panelinden, ayrıca şirket içinde barındırılan sürümde de tanıtılan bir adım adım yol gösterir.
+- **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan çekirdek işlevselliği genişletmenizi sağlar. Ayrıca, portalı en son sürüme yükseltmeniz gerekir. Ayrıntılar ve yönergeler için, [portalın kaynak koduyla GitHub deposuna][1] ve [pencere öğesi uygulama hakkında öğreticiye][3]bakın. [Yönetilen sürüm için öğretici](api-management-howto-developer-portal-customize.md) , portalın Yönetim panelinden, ayrıca şirket içinde barındırılan sürümde de tanıtılan bir adım adım yol gösterir.
 
 ## <a name="portal-architectural-concepts"></a>Portal mimari kavramları
 
@@ -98,13 +98,13 @@ Etkileşimli geliştirici konsolundaki OAuth ile kimlik doğrulaması henüz des
 
 ### <a name="has-the-old-portal-been-deprecated"></a>Eski Portal kullanımdan kaldırılmıştır mı?
 
-Eski geliştirici ve yayımcı portalları artık *eski* özelliklerdir; yalnızca güvenlik güncelleştirmelerini alacak. Yeni özellikler yalnızca yeni geliştirici portalına eklenecek.
+Eski geliştirici ve yayımcı portalları artık *eski* özelliklerdir; yalnızca güvenlik güncelleştirmelerini alacak. Yeni özellikler yalnızca yeni geliştirici portalında uygulanır.
 
 Eski portalların kullanımdan kaldırılması, ayrı olarak duyurulacak. Sorularınız, endişeleriniz veya açıklamalarınız varsa, bunları [özel bir GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/121)yükseltin.
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Gerekli işlevsellik portalda desteklenmiyor
 
-Şirket içinde barındırılan sürümü kullanın ve [kendi pencere öğesini uygulayın][4].
+Şirket içinde barındırılan sürümü kullanın ve [kendi pencere öğesini uygulayın][3].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Portal dağıtımlarını nasıl otomatikleştirebilirim?
 
@@ -216,7 +216,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>Portal için tarayıcı desteği nedir?
 
-| Tarayıcı                     | Desteklenen       |
+| Tarayıcı                     | Destekleniyor       |
 |-----------------------------|-----------------|
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |
@@ -232,14 +232,12 @@ Yeni geliştirici portalı hakkında daha fazla bilgi edinin:
 
 - [Yönetilen geliştirici portalına erişme ve bunları özelleştirme](api-management-howto-developer-portal-customize.md)
 - [Portalın şirket içinde barındırılan sürümünü ayarlama][2]
-- [Kendi pencere öğesini uygulama][4]
+- [Kendi pencere öğesini uygulama][3]
 
 Diğer kaynaklara gözatamazsınız:
 
 - [Kaynak kodlu GitHub deposu][1]
-- [Projenin ortak yol haritası][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

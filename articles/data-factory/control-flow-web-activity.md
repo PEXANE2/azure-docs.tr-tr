@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678181"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110022"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
 Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz.
@@ -65,15 +65,15 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | Web etkinliğinin adı | Dize | Evet
-type | **Webactivity**olarak ayarlanmalıdır. | Dize | Evet
-method | Hedef uç nokta için REST API yöntemi. | dizisinde. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Evet
-url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Evet
-Bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
-bölümü | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
+ad | Web etkinliğinin adı | Dize | Yes
+type | **Webactivity**olarak ayarlanmalıdır. | Dize | Yes
+method | Hedef uç nokta için REST API yöntemi. | dizisinde. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Yes
+url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Yes
+üstbilgiler | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
+body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
 kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | Hayır
-kümelerinin | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Evet
-LinkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Evet
+datasets | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Yes
+LinkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Yes
 
 > [!NOTE]
 > Web etkinliğinin çağırdığı REST uç noktaları JSON türünde bir yanıt döndürmelidir. Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır.
@@ -90,10 +90,14 @@ Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-### <a name="none"></a>None
+Aşağıda, Web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
+
+### <a name="none"></a>Hiçbiri
+
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 
 ### <a name="basic"></a>Temel
+
 Temel kimlik doğrulamasıyla kullanılacak kullanıcı adını ve parolayı belirtin.
 
 ```json
@@ -104,7 +108,8 @@ Temel kimlik doğrulamasıyla kullanılacak kullanıcı adını ve parolayı bel
 }
 ```
 
-### <a name="client-certificate"></a>İstemci sertifikası
+### <a name="client-certificate"></a>istemci sertifikası
+
 PFX dosyası ve parolanın Base64 ile kodlanmış içeriğini belirtin.
 
 ```json
@@ -125,6 +130,9 @@ Veri Fabrikası için yönetilen kimlik kullanılarak erişim belirtecinin isten
     "resource": "https://management.azure.com/"
 }
 ```
+
+> [!NOTE]
+> Data Factory 'niz bir git deposu ile yapılandırıldıysa, temel veya istemci sertifikası kimlik doğrulamasını kullanmak için kimlik bilgilerinizi Azure Key Vault depolamanız gerekir. Azure Data Factory, parolaları git 'te depolamaz.
 
 ## <a name="request-payload-schema"></a>İstek yük şeması
 POST/PUT yöntemini kullandığınızda Body özelliği uç noktaya gönderilen yükü temsil eder. Bağlı hizmetleri ve veri kümelerini yükün bir parçası olarak geçirebilirsiniz. Yükün şeması aşağıda verilmiştir:

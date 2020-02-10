@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 81b80edcd2e880488e203960f8e2a6aa71b69679
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161825"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110367"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub (Java) ile cihazınızdan buluta dosya yükleme
 
@@ -52,15 +52,17 @@ Bu öğreticinin sonunda iki Java konsol uygulaması çalıştırırsınız:
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Bir cihaz uygulamasından bir dosya yükleme
 
 Bu bölümde, IoT Hub 'a bir dosyayı karşıya yüklemek için [IoT Hub ile buluttan cihaza Iletileri gönderme](iot-hub-java-java-c2d.md) bölümünde oluşturduğunuz cihaz uygulamasını değiştirirsiniz.
 
-1. Bir resim dosyasını `simulated-device` klasöre kopyalayın ve `myimage.png`yeniden adlandırın.
+1. `simulated-device` klasöre bir görüntü dosyası kopyalayın ve `myimage.png`yeniden adlandırın.
 
-2. Bir metin düzenleyicisi kullanarak `simulated-device\src\main\java\com\mycompany\app\App.java` dosyayı açın.
+2. Bir metin düzenleyicisi kullanarak `simulated-device\src\main\java\com\mycompany\app\App.java` dosyasını açın.
 
 3. **Uygulama** sınıfına değişken bildirimini ekleyin:
 
@@ -136,9 +138,9 @@ Bu bölümde, IoT Hub karşıya dosya yükleme bildirim iletilerini alan bir Jav
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Komut istemindeki yeni `read-file-upload-notification` klasöre gidin.
+2. Komut istemindeki yeni `read-file-upload-notification` klasörüne gidin.
 
-3. Bir metin düzenleyicisi kullanarak `pom.xml` dosyayı `read-file-upload-notification` klasöründe açın ve **Bağımlılıklar** düğümüne aşağıdaki bağımlılığı ekleyin. Bağımlılığı eklemek, IoT Hub hizmetinize iletişim kurmak için uygulamanızdaki **ıothub-Java-Service-Client** paketini kullanmanıza olanak sağlar:
+3. Bir metin düzenleyicisi kullanarak, `read-file-upload-notification` klasöründeki `pom.xml` dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bağımlılığı eklemek, IoT Hub hizmetinize iletişim kurmak için uygulamanızdaki **ıothub-Java-Service-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
@@ -151,9 +153,9 @@ Bu bölümde, IoT Hub karşıya dosya yükleme bildirim iletilerini alan bir Jav
     > [!NOTE]
     > [Maven aramasını](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)kullanarak **IoT-Service-Client** ' ın en son sürümünü kontrol edebilirsiniz.
 
-4. `pom.xml` Dosyayı kaydedin ve kapatın.
+4. `pom.xml` dosyasını kaydedin ve kapatın.
 
-5. Bir metin düzenleyicisi kullanarak `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` dosyayı açın.
+5. Bir metin düzenleyicisi kullanarak `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` dosyasını açın.
 
 6. Aşağıdaki **içeri aktarma** deyimlerini dosyaya ekleyin:
 
@@ -165,7 +167,7 @@ Bu bölümde, IoT Hub karşıya dosya yükleme bildirim iletilerini alan bir Jav
     import java.util.concurrent.Executors;
     ```
 
-7. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. Yer tutucu `{Your IoT Hub connection string}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
+7. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{Your IoT Hub connection string}` yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -228,7 +230,7 @@ Bu bölümde, IoT Hub karşıya dosya yükleme bildirim iletilerini alan bir Jav
     }
     ```
 
-10. `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` Dosyayı kaydedin ve kapatın.
+10. `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` dosyasını kaydedin ve kapatın.
 
 11. **Okuma-dosya-karşıya yükleme-bildirim** uygulamasını derlemek ve hataları denetlemek için aşağıdaki komutu kullanın:
 
@@ -240,13 +242,13 @@ Bu bölümde, IoT Hub karşıya dosya yükleme bildirim iletilerini alan bir Jav
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-`read-file-upload-notification` Klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
+`read-file-upload-notification` klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-`simulated-device` Klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
+`simulated-device` klasöründeki bir komut isteminde aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

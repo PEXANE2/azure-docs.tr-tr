@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7ce56237631b858347a99c310751d4f2c1506e10
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746209"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108224"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -34,13 +34,16 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
 > * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 - [Visual Studio](https://www.visualstudio.com/)’yu yükleyin. 
 
 - Posta alan bir e-posta hesabı.
+
+- Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -259,7 +262,7 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
    **Bildirim e-posta alıcıları**: e-posta adresinizi buraya koyun. 
 
-   Kuralı kaydetmek için **Tamam**’a tıklayın. 
+   Kuralı kaydetmek için **Tamam** ' ı tıklatın. 
 
 5. Şimdi klasik uyarılar bölmesinde iki uyarı görmeniz gerekir: 
 

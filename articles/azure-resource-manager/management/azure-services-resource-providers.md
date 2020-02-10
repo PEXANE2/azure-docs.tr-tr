@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 64c1d3c6f30a4f817abbea5001852df3eeeb9327
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984379"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109357"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -19,18 +19,18 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Kaynak sağlayıcısı ad alanı | Azure hizmeti |
 | --------------------------- | ------------- |
 | Microsoft.AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
-| Microsoft. addons | çekirdek |
+| Microsoft. addons | çekirdeğin |
 | Microsoft.ADHybridHealthService | [Azure Active Directory](/azure/active-directory/) |
 | Microsoft.Advisor | [Azure Danışmanı](../../advisor/index.yml) |
 | Microsoft.AlertsManagement | [Azure Izleyici](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft.ApiManagement | [API Management](../../api-management/index.yml) |
-| Microsoft. AppConfiguration | çekirdek |
+| Microsoft. AppConfiguration | çekirdeğin |
 | Microsoft. kanıtlama | Azure kanıtlama hizmeti |
 | Microsoft. Authorization | [Azure Resource Manager](../index.yml) |
 | Microsoft. Automation | [Automation](../../automation/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| Microsoft.AzureStack | çekirdek |
+| Microsoft.AzureStack | çekirdeğin |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft.Billing | [Maliyet yönetimi ve faturalandırma](/azure/billing/) |
 | Microsoft.BingMaps | [Bing Haritalar](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
@@ -38,7 +38,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Blueprint | [Azure şemaları](/azure/governance/blueprints/) |
 | Microsoft. BotService | [Azure bot hizmeti](/azure/bot-service/) |
 | Microsoft.Cache | [Redis için Azure Önbelleği](/azure/azure-cache-for-redis/) |
-| Microsoft. Capacity | çekirdek |
+| Microsoft. Capacity | çekirdeğin |
 | Microsoft.Cdn | [Content Delivery Network](../../cdn/index.yml) |
 | Microsoft.CertificateRegistration | [App Service sertifikaları](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft. ChangeAnalysis | [Azure Izleyici](../../azure-monitor/index.yml) |
@@ -48,7 +48,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.ClassicStorage | Klasik dağıtım modeli depolaması |
 | Microsoft. ClassicSubscription | Klasik dağıtım modeli |
 | Microsoft.CognitiveServices | [Bilişsel hizmetler](/azure/cognitive-services/) |
-| Microsoft. Commerce | çekirdek |
+| Microsoft. Commerce | çekirdeğin |
 | Microsoft.Compute | [Sanal makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
 | Microsoft. tüketim | [Maliyet yönetimi](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [Container Instances](/azure/container-instances/) |
@@ -104,9 +104,9 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. ManagedServices | [Azure Lighthouse](/azure/lighthouse/) |
 | Microsoft. Management | [Yönetim Grupları](/azure/governance/management-groups/) |
 | Microsoft. Maps | [Azure haritalar](../../azure-maps/index.yml) |
-| Microsoft. Market | çekirdek |
-| Microsoft. MarketplaceApps | çekirdek |
-| Microsoft. Marketplacesıralaması | çekirdek |
+| Microsoft. Market | çekirdeğin |
+| Microsoft. MarketplaceApps | çekirdeğin |
+| Microsoft. Marketplacesıralaması | çekirdeğin |
 | Microsoft. Media | [Media Services](../../media-services/index.yml) |
 | Microsoft. Migrate | [Azure geçişi](../../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Azure uzamsal bağlayıcıları](/azure/spatial-anchors/) |
@@ -124,9 +124,9 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. RecoveryServices | [Site Recovery](../../site-recovery/index.yml) |
 | Microsoft. Relay | [Azure Relay](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft. ResourceGraph | [Azure Kaynak Grafiği](/azure/governance/resource-graph/) |
-| Microsoft. ResourceHealth | çekirdek |
+| Microsoft. ResourceHealth | [Azure Hizmet Durumu](../../service-health/index.yml)|
 | Microsoft. resources | [Azure Resource Manager](../index.yml) |
-| Microsoft. SaaS | çekirdek |
+| Microsoft. SaaS | çekirdeğin |
 | Microsoft. Scheduler | [Scheduler](/azure/scheduler/) |
 | Microsoft.Search | [Azure Search](../../search/index.yml) |
 | Microsoft.Security | [Güvenlik Merkezi](../../security-center/index.yml) |
@@ -145,8 +145,8 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.StorageSync | [Depolama](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Akış Analizi](../../stream-analytics/index.yml) |
-| Microsoft. Subscription | çekirdek |
-| Microsoft. support | çekirdek |
+| Microsoft. Subscription | çekirdeğin |
+| Microsoft. support | çekirdeğin |
 | Microsoft.TimeSeriesInsights | [Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. Virtualmachineımages | [Azure görüntü Oluşturucu](../../virtual-machines/linux/image-builder-overview.md) |
 | Microsoft. VisualStudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
