@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/24/2020
+ms.date: 02/07/2020
 ms.author: raiye
-ms.openlocfilehash: a38685ba4cca4df2c2ae1a52e46626072135408d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049869"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087237"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -42,9 +42,9 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 20-01  |  [4494174]  |  Mikro kod v4  | [6,15] | 29 Ağu, 2019 |
 |  Rel 20-01  |  [4532947]  |  Windows Güvenliği  | [6,15] | 14 Ocak 2020 |
 |  Rel 20-01  |  [4534273]  |  LCU dili  | [6,15] | 14 Ocak 2020 |
-|  Rel 20-01  |  [4530734]  |  Güvenlik dışı  | [2,94] | 10. ara, 2019 |
+|  Rel 20-01  |  [4530734]  |  Aylık toplu  | [2,94] | 10. ara, 2019 |
 |  Rel 20-01  |  [4530691]  |  Aylık toplu   | [3,81] | 10. ara, 2019 |
-|  Rel 20-01  |  [4530702]  |  Güvenlik dışı  | [4,74] | 10. ara, 2019 |
+|  Rel 20-01  |  [4530702]  |  Aylık toplu  | [4,74] | 10. ara, 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -218,10 +218,10 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 ve 4.7.2   |  [6,11]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4516044]  |  En son birikimli güncelleştirme   |  [5,35]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4516064]  |  Windows Güvenliği   |  [4,70]  |  10 Eylül 2019  |
-|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4516062]  |  Windows Güvenliği   |  [3,77]  |  10 Eylül 2019  |
-|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  10 Eylül 2019  |
 |  Rel 19-09   |  [4516033]  |  Windows Güvenliği   |  [2,90]  |  12 Eylül 2019  |
 |  Rel 19-09   |  [4512488]  |  Güvenlik dışı   |  [4,70]  |  13 Ağu, 2019  |

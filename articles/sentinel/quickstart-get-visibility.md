@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: fasttrack-edit
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d91567f10b33717b157bd0b839d2706996c5b591
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548042"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087206"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama
 
@@ -53,7 +53,7 @@ Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik duru
 
 ## Yerleşik çalışma kitaplarını kullanma<a name="dashboards"></a>
 
-Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure KIMLIĞI, Azure etkinlik olayları ve şirket içi Windows olaylarından, ilk taraf uyarılardan, Windows 'a dayalı güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere herhangi bir üçüncü tarafın verileri bulunabilir. olayları. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/app/usage-workbooks.md).
+Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure AD, Azure etkinlik olayları ve şirket içi Windows olaylarından, ilk taraf uyarılardan, Windows 'a dayalı güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere herhangi bir üçüncü tarafın verileri bulunabilir. olayları. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/app/usage-workbooks.md).
 
 1. **Ayarlar**altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
 2. Tüm liste ve her bir tekliflerinin açıklamasını görmek için belirli bir çalışma kitabı arayın. 
