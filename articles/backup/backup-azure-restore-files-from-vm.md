@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294091"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114332"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -56,6 +56,8 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 7. İndirme konumundan (genellikle Indirmeler klasörü), çalıştırılabilir veya betiğe sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve **ENTER**tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
 
     ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. Linux makinelerinde, bir Python betiği oluşturulur. Bunlardan birinin betiği indirmesi ve ilgili/uyumlu Linux sunucusuna kopyalanması gerekir. ```chmod +x <python file name>```ile yürütmek için izinleri değiştirmeniz gerekebilir. Sonra Python dosyasını ```./<python file name>```çalıştırın.
 
 Betiğin başarıyla çalıştığından emin olmak için [erişim gereksinimleri](#access-requirements) bölümüne bakın.
 
@@ -190,8 +192,8 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 
 |Bileşen | Sürüm  |
 | --------------- | ---- |
-| bash | 4 ve üzeri |
-| Python | 2.6.6 ve üzeri  |
+| Bash | 4 ve üzeri |
+| python | 2.6.6 ve üzeri  |
 | TLS | 1,2 desteklenmelidir  |
 
 ## <a name="access-requirements"></a>Erişim gereksinimleri

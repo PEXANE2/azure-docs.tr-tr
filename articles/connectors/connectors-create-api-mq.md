@@ -3,18 +3,18 @@ title: IBM MQ sunucusuna bağlan
 description: Azure veya şirket içi IBM MQ Server ve Azure Logic Apps ileti gönderin ve alın
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789580"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118059"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps bir IBM MQ sunucusuna bağlanma
 
@@ -66,7 +66,7 @@ IBM MQ Bağlayıcısı bu eylemleri içerir, ancak hiçbir tetikleyici sağlamaz
    
       Bağlantınız Şu örneğe benzer şekilde görünür:
 
-      ![Bağlantı özellikleri](media/connectors-create-api-mq/Connection_Properties.png)
+      ![Bağlantı Özellikleri](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. Eylemin özelliklerini ayarlayın:
 

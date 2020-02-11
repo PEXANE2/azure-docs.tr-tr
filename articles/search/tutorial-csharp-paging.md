@@ -3,17 +3,17 @@ title: C#Arama sonuçları sayfalandırmasına ilişkin öğretici
 titleSuffix: Azure Cognitive Search
 description: Bu öğreticide arama sonuçlarının sayfalama gösterilmektedir. İlk, sonraki, önceki, son ve numaralandırılmış düğmelere göre disk belleğine sahip mevcut bir oteller projesi üzerinde oluşturulur. İkinci bir disk belleği sistemi, dikey bir kaydırma çubuğunu alt sınırına taşıyarak tetiklenen, sonsuz kaydırma kullanır.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113756"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121512"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#Öğretici: arama sonuçları sayfalandırma-Azure Bilişsel Arama
 

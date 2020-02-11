@@ -3,18 +3,21 @@ title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
 description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970984"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116151"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
 Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılacağı açıklanır. Bir işlevi *devre dışı bırakmak* , çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yoksayması anlamına gelir. Bu, belirli bir işlevin işlev uygulamasının tamamını durdurmadan çalışmasını engellemenizi sağlar.
 
 Bir işlevi devre dışı bırakmak için önerilen yol `AzureWebJobs.<FUNCTION_NAME>.Disabled`biçimindeki bir uygulama ayarı kullanmaktır. Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
+
+> [!NOTE]  
+> HTTP ile tetiklenen bir işlevi bu makalede açıklanan yöntemleri kullanarak devre dışı bıraktığınızda, yerel bilgisayarınızda çalışırken uç nokta hala erişilebilir olabilir.  
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
@@ -105,7 +108,7 @@ Sürüm 1. x ' de, çalışma zamanına bir işlev tetikleyemediğinden bilgi al
     "disabled": true
 }
 ```
-or 
+veya 
 
 ```json
     "bindings": [

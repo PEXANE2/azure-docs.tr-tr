@@ -15,12 +15,12 @@ ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264263"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121983"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -152,9 +152,9 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | [Depolama Blobu veri sahibi](#storage-blob-data-owner) | , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Depolama Blobu veri okuyucusu](#storage-blob-data-reader) | Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Depolama Blobu Delegator](#storage-blob-delegator) | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [Depolama dosyası veri SMB paylaşımında katkıda bulunan](#storage-file-data-smb-share-contributor) | SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma ve silme erişimine izin verir | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan](#storage-file-data-smb-share-elevated-contributor) | SMB üzerinden Azure depolama dosya paylaşımlarında NTFS izin erişimini okuma, yazma, silme ve değiştirme sağlar | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [Depolama dosyası veri SMB paylaşma okuyucusu](#storage-file-data-smb-share-reader) | SMB üzerinden Azure dosya paylaşımında okuma erişimine izin verir | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [Depolama dosyası veri SMB paylaşımında katkıda bulunan](#storage-file-data-smb-share-contributor) | Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan](#storage-file-data-smb-share-elevated-contributor) | Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir. | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [Depolama dosyası veri SMB paylaşma okuyucusu](#storage-file-data-smb-share-reader) | Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu rol, Windows dosya sunucularında okunan bir dosya paylaşma ACL 'sine eşdeğerdir. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [Depolama kuyruğu verileri Katılımcısı](#storage-queue-data-contributor) | Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [Depolama kuyruğu veri Iletisi Işlemcisi](#storage-queue-data-message-processor) | Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 8a0f0c08-91a1-4084-bc3d-661d67233bes |
 > | [Depolama kuyruğu veri Iletisi gönderici](#storage-queue-data-message-sender) | Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -195,7 +195,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotActions** |  |
 > | Microsoft. Authorization/*/Delete | Rolleri, ilke atamalarını, ilke tanımlarını ve ilke kümesi tanımlarını Sil |
 > | Microsoft. Authorization/*/Write | Roller, rol atamaları, ilke atamaları, ilke tanımları ve ilke kümesi tanımları oluşturun |
-> | Microsoft.Authorization/elevateAccess/Action | Çağrı yapana kiracı kapsamında Kullanıcı Erişimi Yöneticisi erişim izni verir |
+> | Microsoft.Authorization/elevateAccess/Action | Arayan kullanıcının kiracı kapsamındaki Kullanıcı erişimi yöneticisi erişimine izin verir |
 > | Microsoft. Blueprint/Blueprintasbir/Write | Şema atamalarını oluşturun veya güncelleştirin |
 > | Microsoft. Blueprint/Blueprintasbir/Delete | Tüm şema atamalarını silme |
 > | **Veri eylemleri** |  |
@@ -233,7 +233,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="acrimagesigner"></a>AcrImageSigner
+## <a name="acrimagesigner"></a>Acrimageimzalayan
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -279,7 +279,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="acrquarantinereader"></a>AcrQuarantineReader
+## <a name="acrquarantinereader"></a>Acrquaranınereader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -310,7 +310,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="api-management-service-contributor"></a>API Management Hizmet Katılımcısı
+## <a name="api-management-service-contributor"></a>API Management hizmet Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -331,7 +331,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="api-management-service-operator-role"></a>API Management Hizmet Operatörü Rolü
+## <a name="api-management-service-operator-role"></a>Hizmet Işletmeni rolü API Management
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -933,7 +933,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="backup-operator"></a>Yedekleme İşleci
+## <a name="backup-operator"></a>Yedekleme Işletmeni
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1304,7 +1304,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft. ClassicCompute/domainNames/* | Klasik işlem etki alanı adları oluşturma ve yönetme |
-> | Microsoft.ClassicCompute/virtualMachines/* | Sanal makine oluşturma ve yönetme |
+> | Microsoft.ClassicCompute/virtualMachines/* | Sanal makineler oluşturma ve yönetme |
 > | Microsoft.ClassicNetwork/networkSecurityGroups/join/action |  |
 > | Microsoft.ClassicNetwork/reservedIps/link/action | Ayrılmış bir IP 'yi bağlama |
 > | Microsoft.ClassicNetwork/reservedIps/read | Ayrılmış IP 'Leri alır |
@@ -2381,7 +2381,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="security-reader"></a>Güvenlik Okuyucusu
+## <a name="security-reader"></a>Güvenlik okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2474,7 +2474,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir | Korunabilir öğeleri oku |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/applyRecoveryPoint/Action | Kurtarma noktası Uygula |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük devretme yürütmesi |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlı Yük Devretme |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlı Yük devretme |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Read | Tüm korumalı öğeleri okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/recoveryPoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
@@ -2482,7 +2482,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/switchprotection/eylem | Koruma kapsayıcısını Değiştir |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük Devretme |
+> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationRecoveryServicesProviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
@@ -2915,7 +2915,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma ve silme erişimine izin verir |
+> | **Açıklama** | Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur. |
 > | **Kimlik** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -2932,7 +2932,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | SMB üzerinden Azure depolama dosya paylaşımlarında NTFS izin erişimini okuma, yazma, silme ve değiştirme sağlar |
+> | **Açıklama** | Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir. |
 > | **Kimlik** | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -2950,7 +2950,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | SMB üzerinden Azure dosya paylaşımında okuma erişimine izin verir |
+> | **Açıklama** | Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu rol, Windows dosya sunucularında okunan bir dosya paylaşma ACL 'sine eşdeğerdir. |
 > | **Kimlik** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -3101,7 +3101,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="virtual-machine-contributor"></a>Sanal Makine Katkıda Bulunanı
+## <a name="virtual-machine-contributor"></a>Sanal makine Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -3111,8 +3111,8 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/* | İşlem kullanılabilirlik kümeleri oluşturma ve yönetme |
 > | Microsoft. COMPUTE/Locations/* | İşlem konumları oluşturma ve yönetme |
-> | Microsoft. COMPUTE/virtualMachines/* | Sanal makine oluşturma ve yönetme |
-> | Microsoft. COMPUTE/virtualMachineScaleSets/* | Sanal makine ölçek kümeleri oluşturma ve yönetme |
+> | Microsoft. COMPUTE/virtualMachines/* | Sanal makineler oluşturma ve yönetme |
+> | Microsoft. COMPUTE/virtualMachineScaleSets/* | Sanal Makine Ölçek Kümeleri oluşturma ve yönetme |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Network/Applicationgateway/Backendavddresspoir/JOIN/Action | Bir uygulama ağ geçidi arka uç adres havuzunu birleştirir. Alertable değil. |

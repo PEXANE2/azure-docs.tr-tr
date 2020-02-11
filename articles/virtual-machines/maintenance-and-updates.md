@@ -1,22 +1,18 @@
 ---
-title: Azure 'da VM 'Ler için bakım ve güncelleştirmeler | Microsoft Docs
+title: Bakım ve güncelleştirmeler
 description: Azure 'da çalışan sanal makineler için bakım ve güncelleştirmelere genel bakış.
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807094"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121851"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için bakım
 
@@ -48,7 +44,7 @@ Bu tür güncelleştirmeler bazı uygulamaları etkileyebilir. SANAL makine dina
 Ayrıca, bir yeniden başlatma gerektirmeyen bakımın yönetilmesine yardımcı olabilecek genel önizlemede bir özellik, bakım denetimi de vardır. [Azure ayrılmış Konakları](./linux/dedicated-hosts.md) ya da [yalıtılmış bir VM](../security/fundamentals/isolation-choices.md)kullanıyor olmanız gerekir. Bakım denetimi, platform güncelleştirmelerini atlama ve güncelleştirme işlemini 35 günlük bir bir pencere içinde tercih ettiğiniz zamanda uygulama seçeneği sunar. Daha fazla bilgi için bkz. [bakım denetimi ve Azure CLI ile güncelleştirmeleri denetleme](maintenance-control-cli.md).
 
 
-### <a name="live-migration"></a>Canlı geçiş
+### <a name="live-migration"></a>Dinamik geçiş
 
 Dinamik geçiş, bir yeniden başlatma gerektirmeyen ve VM için belleği koruyan bir işlemdir. Genellikle 5 saniyeden fazla bir duraklama veya dondurma ile devam etmesine neden olur. G, M, N ve H serisi dışında tüm hizmet olarak altyapı (IaaS) VM 'Leri dinamik geçiş için uygun değildir. Uygun VM 'Ler, Azure Fleet 'e dağıtılan IaaS sanal makinelerinin yüzde 90 ' inden fazlasını temsil eder. 
 

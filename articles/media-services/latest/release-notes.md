@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049639"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114231"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -35,14 +35,33 @@ ms.locfileid: "77049639"
 > Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-sdk), CLI veya desteklenen SDK 'lardan birini kullanın.
 
 Daha fazla bilgi için bkz. [Media Services V2 'den v3 'e geçiş Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
-
+ 
 ## <a name="january-2020"></a>Ocak 2020
 
 ### <a name="improvements-in-media-processors"></a>Medya işlemcilerinde iyileştirmeler
 
 - Video analizinde aralıklı kaynaklar için geliştirilmiş destek: Bu içerikler artık, çıkarım altyapılarına gönderilmeden önce doğru şekilde uyumlu değildir.
 - "En Iyi" modu ile küçük resimler oluştururken, kodlayıcı artık tek parçalı olmayan bir çerçeveyi seçmek için 30 saniyeden daha fazla arama yapar.
- 
+
+### <a name="azure-government-cloud-updates"></a>Azure Kamu bulut güncelleştirmeleri
+
+Media Services şu Azure Kamu bölgelerinde: *Usgov Arizona* ve *Usgov Texas*.
+
+## <a name="december-2019"></a>Aralık 2019
+
+Canlı ve video isteğe bağlı akış için *kaynak yardımı önceden getirme* ÜSTBILGILERI için CDN desteği eklendi; Akamai CDN ile doğrudan sözleşme sahibi olan müşteriler için kullanılabilir. Kaynak-yardım CDN-önceden getirme özelliği, Akamai CDN ve Azure Media Services Origin arasındaki aşağıdaki HTTP üst bilgi alışverişlerini içerir:
+
+|HTTP üstbilgisi|Değerler|Gönderen|Alıcı|Amaç|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-Origin-yardım-önceden getirme-etkin | 1 (varsayılan) veya 0 |CDN|Kaynak|CDN 'in önceden getirme etkin olduğunu göstermek için|
+|CDN-Origin-yardım-önceden getirme-yol| Örnek: <br/>Parçalar (video = 1400000000, Format = MPD-Time-cmaf)|Kaynak|CDN|CDN 'ye önceden getirme yolu sağlamak için|
+|CDN-Origin-yardım-önceden getirme-Istek|1 (önceden getirme isteği) veya 0 (normal istek)|CDN|Kaynak|CDN 'den gelen isteğin bir önceden getirme olduğunu belirtmek için|
+
+Üst bilgi değişimi 'nin bir parçasını eylemde görmek için aşağıdaki adımları deneyebilirsiniz:
+
+1. Bir ses veya video segmenti veya parçası için Media Services kaynağa bir istek vermek üzere Postman veya kıvrımlı kullanın. İstekte CDN-Origin-yardım-önceden getirme-etkin: 1 üst bilgisini eklediğinizden emin olun.
+2. Yanıtta, değeri olarak göreli bir yol ile CDN-Origin-yardım-önceden getirme-yol başlığını görmeniz gerekir.
+
 ## <a name="november-2019"></a>Kasım 2019
 
 ### <a name="live-transcription-preview"></a>Canlı döküm önizlemesi
@@ -302,7 +321,7 @@ Aşağıdaki Event Grid destek geliştirmelerini görebilirsiniz:
 
 Apple HLS (iOS 11 +) için CMAF ve ' CBCS ' şifreleme desteği ve CMAF 'yi destekleyen MPEG-DASH çalarlar.
 
-### <a name="video-indexer"></a>Video Dizinleyici
+### <a name="video-indexer"></a>Video Indexer
 
 Video Indexer GA yayını Ağustos ayında duyuruldu. Şu anda desteklenen özellikler hakkında daha fazla bilgi için bkz. [video Indexer nedir](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 

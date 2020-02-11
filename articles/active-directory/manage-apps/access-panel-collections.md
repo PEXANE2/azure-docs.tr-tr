@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907480"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120089"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Uygulamalarım portalında koleksiyonlar oluşturma
 
@@ -30,7 +30,7 @@ Kullanıcılarınız, erişimi olan bulut tabanlı uygulamaları görüntülemek
 > [!NOTE]
 > Bu makalede, bir yöneticinin koleksiyonları nasıl etkinleştirebileceğini ve oluşturabileceğiniz ele alınmaktadır. My Apps Portal ve koleksiyonlarımı kullanma hakkında bilgi için bkz. [erişim ve kullanım koleksiyonları](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
-## <a name="enable-my-apps-preview-features"></a>Uygulamalarımın Önizleme özelliklerini etkinleştir
+## <a name="enable-the-latest-my-apps-features"></a>En son uygulamalarımı etkinleştir özellikleri
 
 1. [**Azure Portal**](https://portal.azure.com/) açın ve Kullanıcı Yöneticisi veya genel yönetici olarak oturum açın.
 
@@ -39,13 +39,13 @@ Kullanıcılarınız, erişimi olan bulut tabanlı uygulamaları görüntülemek
 3. **Kullanıcı özelliği önizlemeleri**altında **Kullanıcı özelliği Önizleme ayarlarını yönet**' i seçin.
 
 4. **Kullanıcılar Uygulamalarım için Önizleme özelliklerini kullanabilir**, aşağıdaki seçeneklerden birini belirleyin:
-   * **Selected** -belirli bir grup için Önizleme özelliklerini sunar. Önizleme özelliklerini etkinleştirmek istediğiniz grubu seçmek için **Grup Seç** seçeneğini kullanın.  
-   * **All** -tüm kullanıcılar için Önizleme özelliklerini etkinleştirilir.
+   * **Selected** -belirli bir grup için özellikleri etkinleştirilir. Özelliklerini etkinleştirmek istediğiniz grubu seçmek için **Grup Seç** seçeneğini kullanın.  
+   * **All** -tüm kullanıcılar için özellikleri etkinleştirilir.
 
 > [!NOTE]
 > Uygulamalar portalı 'nı açmak için, kullanıcılar bağlantı `https://myapps.microsoft.com` veya kuruluşunuzun `https://myapps.microsoft.com/contoso.com`gibi özelleştirilmiş bağlantıyı kullanabilir. Yeni uygulamalarım deneyimini etkinleştirdikten sonra, **güncelleştirilmiş uygulamalar deneyimimin kullanılabilir olduğu** başlık, uygulamalar sayfasının en üstünde görüntülenir ve kullanıcılar yeni deneyimi görüntülemek için **deneyin** seçeneğini belirleyebilir. Kullanıcılar yeni deneyimi kullanmayı durdurmak için sayfanın üst kısmındaki **yeni deneyim dışında bırak** başlığından **Evet** ' i seçebiliyor.
 
-## <a name="create-a-collection"></a>Koleksiyon oluşturun
+## <a name="create-a-collection"></a>Koleksiyon oluşturma
 
 Bir koleksiyon oluşturmak için bir Azure AD Premium P1 veya P2 lisansına sahip olmanız gerekir.
 

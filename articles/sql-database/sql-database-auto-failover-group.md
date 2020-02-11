@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768670"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116198"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -242,7 +242,7 @@ Her örnek kendi VNet 'inde yalıtılmış olduğundan, bu VNET 'ler arasındaki
 Yönetilen örnekler arasında iki farklı abonelikteki bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, ikincil örnek için `PartnerSubscriptionId` parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, `properties.managedInstancePairs` parametresinde bulunan her örnek KIMLIĞI kendi SubscriptionID değerine sahip olabilir.
   
 > [!IMPORTANT]
-> Azure Portal, farklı aboneliklerde yük devretme gruplarını desteklemez.
+> Azure portal, farklı aboneliklerde yük devretme gruplarının oluşturulmasını desteklemez. Ayrıca, farklı abonelikler ve/veya kaynak gruplarındaki mevcut yük devretme grupları için yük devretme, Portal aracılığıyla birincil örnekten el ile başlatılamaz. Bunun yerine coğrafi ikincil örnekten başlatın.
 
 ### <a name="managing-failover-to-secondary-instance"></a>İkincil örneğe yük devretmeyi yönetme
 
@@ -442,7 +442,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: SQL veritabanı yük devretme gruplarını tek ve havuza alınmış veritabanlarıyla yönetme
 
-| eklentisi | Açıklama |
+| API | Açıklama |
 | --- | --- |
 | [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -454,7 +454,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: yönetilen örneklerle yük devretme gruplarını yönetme
 
-| eklentisi | Açıklama |
+| API | Açıklama |
 | --- | --- |
 | [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Bir yük devretme grubunun yapılandırmasını oluşturur veya güncelleştirir |
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu örnekten kaldırır |

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c68206eda008b93220fdde8f2666c0495499bdef
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311385"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114378"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Baştan sona bir iş akışı modeli geliştirmenize veya [mevcut bir modeli](ho
 
 [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -247,7 +247,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 ### <a name="parameter-server"></a>Parametre sunucusu
 
-Ayrıca çalıştırabileceğiniz [yerel dağıtılmış TensorFlow](https://www.tensorflow.org/deploy/distributed), parametre sunucu modeli kullanır. Bu yöntemde, parametre sunucularının ve çalışan bir küme genelinde eğitin. Parametre sunucuları gradyanlar toplama sırasında çalışan gradyanlar eğitim sırasında hesaplayın.
+Ayrıca, parametre sunucu modelini kullanan [Yerel dağıtılmış TensorFlow](https://www.tensorflow.org/deploy/distributed)' u de çalıştırabilirsiniz. Bu yöntemde, parametre sunucularının ve çalışan bir küme genelinde eğitin. Parametre sunucuları gradyanlar toplama sırasında çalışan gradyanlar eğitim sırasında hesaplayın.
 
 Parameter Server metodunu kullanmak için, TensorFlow oluşturucusunda `distributed_training` parametresi için bir [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) nesnesi belirtin.
 
@@ -258,7 +258,7 @@ distributed_training = TensorflowConfiguration()
 distributed_training.worker_count = 2
 
 # Tensorflow constructor
-estimator= TensorFlow(source_directory=project_folder,
+tf_est= TensorFlow(source_directory=project_folder,
                       compute_target=compute_target,
                       script_params=script_params,
                       entry_script='script.py',
@@ -276,7 +276,7 @@ run = exp.submit(tf_est)
 
 Ayrıca, [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)kümenin ağ adresleri ve bağlantı noktaları da gerekir, Azure Machine Learning `TF_CONFIG` ortam değişkenini sizin için ayarlar.
 
-`TF_CONFIG` Ortam değişkenidir bir JSON dizesi. Parametre sunucusu için değişkenin bir örnek aşağıda verilmiştir:
+`TF_CONFIG` ortam değişkeni bir JSON dizesidir. Parametre sunucusu için değişkenin bir örnek aşağıda verilmiştir:
 
 ```JSON
 TF_CONFIG='{
@@ -305,7 +305,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
 Yeni Kaydolmakta olduğunuz model, eğitim için kullandığınız tahmin etmeksizin, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle tamamen aynı şekilde dağıtılabilir. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
@@ -323,6 +323,6 @@ Daha ayrıntılı Azure Machine Learning dağıtımı [nasıl](how-to-deploy-and
 
 Bu makalede, bir TensorFlow modeli eğitilmiş ve kaydettiniz ve dağıtım seçenekleri hakkında bilgi edindiniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için bu makaleye bakın.
 
-* [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
-* [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
+* [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
+* [Hiper parametreleri ayarla](how-to-tune-hyperparameters.md)
 * [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

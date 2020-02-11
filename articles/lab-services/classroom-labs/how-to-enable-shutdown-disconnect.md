@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e615170952ea2987639a0bfc269ad5a1692e1e59
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68a27a325a0ef02c6eeea9867a21ba0e24ab5321
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480807"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117140"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Bağlantı kesildiğinde VM 'lerin otomatik kapatılmasını etkinleştir
 Bu makalede, Uzak Masaüstü bağlantısı kesildikten sonra **Windows 10** laboratuvar VM 'lerinin (şablon veya öğrenci) otomatik olarak kapatılmasını nasıl etkinleştirebilirim veya devre dışı bırakabilirim. Ayrıca, sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini de belirtebilirsiniz.
@@ -34,6 +34,9 @@ Laboratuvar oluşturma Sihirbazı 'nın adım 3 sayfasında bu özelliği etkinl
 Bu ayarı, aşağıdaki görüntüde gösterildiği gibi **Ayarlar** sayfasında yapılandırabilirsiniz: 
 
 ![Laboratuvar oluşturulduktan sonra yapılandırma](../media/how-to-enable-shutdown-disconnect/configure-lab-automatic-shutdown.png)
+
+> [!WARNING]
+> VM 'ye bir RDP oturumunun bağlantısını kesmeden önce bir VM 'deki Windows işletim sistemini (OS) kapatırsanız, oto kapatma özelliği düzgün çalışmaz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122092"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116497"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,9 +38,9 @@ Container Instances, iş akışını test etmek ve anlamak için harika bir çö
 >[!NOTE]
 > Bu makaledeki kod, Azure Machine Learning SDK sürümü 1.0.41 ile test edilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Not defterini çalıştırmak için, ilk olarak öğreticide model eğitimi ' ni [(1. bölüm) doldurun: görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).   Ardından, klonlanan **öğreticiler** klasörünüzde **img-Classification-part2-Deploy. ipynb** Not defterini açın.
+Not defterini çalıştırmak için, ilk olarak öğreticide model eğitimi ' ni [(1. bölüm) doldurun: görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).   Ardından klonlanan *öğreticiler/Image-Classification-mnist-Data* klasöründe *img-Classification-part2-Deploy. ipynb* Not defterini açın.
 
 Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızda `matplotlib` ve `scikit-learn` yüklediğinizden emin olun. 
 

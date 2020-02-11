@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f16cb95a42bf201aa7d75a3393917c58f51fbb07
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122449"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122481"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -57,7 +57,7 @@ SQL VM kaynak sağlayıcısını kullanmanın avantajları hakkında daha fazla 
 <iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure 'da SQL Server kendi kendine yüklerken SQL VM kaynak sağlayıcısından avantaj-Microsoft Channel 9 videosu"></iframe>
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
@@ -91,7 +91,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
 
 SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için öncelikle aboneliğinizi kaynak sağlayıcısına kaydetmeniz gerekir. Bu, SQL VM kaynak sağlayıcısına aboneliğinizdeki kaynakları oluşturma olanağı sağlar.  Azure portal, Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 1. Azure portal açın ve **tüm hizmetlere**gidin. 
 1. **Abonelikler** ' e gidin ve ilgilendiğiniz aboneliği seçin.  
@@ -161,20 +161,20 @@ PowerShell ile SQL Server VM hafif modda kaydolun:
 
 SQL IaaS uzantısı zaten VM 'ye el ile yüklenmişse, SQL Server hizmetini yeniden başlatmadan SQL Server VM tam moda kaydedebilirsiniz. **Ancak, SQL IaaS uzantısı yüklenmemişse, tam modda kaydetme işlemi SQL IaaS uzantısını tam modda yükler ve SQL Server hizmetini yeniden başlatır. Lütfen dikkatli ilerleyin.**
 
-Aşağıda, SQL VM kaynak sağlayıcısı 'na tam modda kaydolmak için kod parçacığı verilmiştir. Tam yönetim modunda kaydolmak için aşağıdaki PowerShell komutunu kullanın:
+
+SQL Server VM doğrudan tam modda kaydetmek için (ve SQL Server hizmetinizi büyük olasılıkla yeniden başlatmanız), aşağıdaki PowerShell komutunu kullanın: 
 
   ```powershell-interactive
   # Get the existing  Compute VM
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
         
   # Register with SQL VM resource provider in full mode
-  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
   ```
-
 
 ### <a name="noagent-management-mode"></a>NoAgent yönetim modu 
 
-Windows Server 2008 ' de yüklü olan SQL Server 2008 ve 2008 R2, [Noagent MODUNDAKI](#management-modes)SQL VM kaynak sağlayıcısı ile kaydedilebilir. Bu seçenek uyumluluk sağlar ve Azure portal sınırlı işlevlerle birlikte SQL Server VM izlenmesini sağlar.
+Windows Server 2008 (_R2 değil_) üzerinde yüklü olan SQL Server 2008 ve 2008 R2, [NOAGENT modundaki](#management-modes)SQL VM kaynak sağlayıcısı ile kaydedilebilir. Bu seçenek uyumluluk sağlar ve Azure portal sınırlı işlevlerle birlikte SQL Server VM izlenmesini sağlar.
 
 **Sqllicensetype**olarak `AHUB` veya `PAYG` ve **Sqlimageteklifini**`SQL2008-WS2008` ya da `SQL2008R2-WS2008` belirtin. 
 
@@ -183,17 +183,37 @@ SQL Server 2008 veya 2008 R2 örneğinizi Windows Server 2008 örneğine kaydetm
 
 # <a name="az-clitabbash"></a>[AZ CLı](#tab/bash)
 
-Az CLı ile NoAgent modunda SQL Server VM kaydolun: 
+Az CLı ile SQL Server 2008 sanal makinesini NoAgent modunda kaydedin: 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
    --image-sku Enterprise --image-offer SQL2008-WS2008R2
  ```
+ 
+ 
+Az CLı ile SQL Server 2008 R2 sanal makinesini NoAgent modunda kaydedin: 
+
+  ```azurecli-interactive
+   az sql vm create -n sqlvm -g myresourcegroup -l eastus |
+   --license-type PAYG --sql-mgmt-type NoAgent 
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+ ```
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell ile NoAgent moduna SQL Server VM kaydetme: 
+PowerShell ile NoAgent modunda SQL Server 2008 VM 'yi kaydetme: 
+
+
+  ```powershell-interactive
+  # Get the existing compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+          
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+    -LicenseType PAYG -SqlManagementType NoAgent -Sku Standard -Offer SQL2008-WS2008
+  ```
+  
+  PowerShell ile NoAgent modunda SQL Server 2008 R2 VM 'yi kaydedin: 
 
 
   ```powershell-interactive
@@ -221,7 +241,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
 Aracı modunu tam olarak yükseltmek için: 
 
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. [SQL sanal makineler](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
@@ -252,10 +272,9 @@ Aşağıdaki PowerShell kod parçacığını çalıştırın:
   ```powershell-interactive
   # Get the existing  Compute VM
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Update to full mode
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-     -LicenseType PAYG -SqlManagementType Full
+        
+  # Register with SQL VM resource provider in full mode
+  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
   ```
 
 ---
@@ -263,7 +282,7 @@ Aşağıdaki PowerShell kod parçacığını çalıştırın:
 ## <a name="verify-registration-status"></a>Kayıt durumunu doğrula
 SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak sağlayıcısı ile zaten kaydedilmiş olup olmadığını doğrulayabilirsiniz. 
 
-### <a name="azure-portal"></a>Azure portalında 
+### <a name="azure-portal"></a>Azure portalı 
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 1. [SQL Server sanal makinelerinize](virtual-machines-windows-sql-manage-portal.md)gidin.
@@ -300,7 +319,7 @@ SQL Server VM SQL VM kaynak sağlayıcısı ile kaydını silmek için, Azure po
 
 Yönetim modunun tam olarak indirgenmesini sağlamak için SQL VM kaynak sağlayıcısı ile SQL VM kaydının kaydı gereklidir. 
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek için şu adımları izleyin:
 
@@ -434,7 +453,7 @@ Evet. Azure VM 'de yük devretme kümesi örnekleri SQL Server, SQL VM kaynak sa
 Evet. Her zaman açık kullanılabilirlik grubu yapılandırmasına katılıyorsanız, SQL VM kaynak sağlayıcısı ile bir Azure VM 'de SQL Server örneğini kaydetme kısıtlaması yoktur.
 
 **SQL VM kaynak sağlayıcısına kaydolma veya tam yönetilebilirlik moduna yükseltme maliyeti nedir?**
-Hiçbiri. SQL VM kaynak sağlayıcısı ile veya üç yönetilebilirlik modundan birini kullanarak kayıt ile ilişkili bir ücret alınmaz. SQL Server VM kaynak sağlayıcıyla yönetme tamamen ücretsizdir. 
+Yok. SQL VM kaynak sağlayıcısı ile veya üç yönetilebilirlik modundan birini kullanarak kayıt ile ilişkili bir ücret alınmaz. SQL Server VM kaynak sağlayıcıyla yönetme tamamen ücretsizdir. 
 
 **Farklı yönetilebilirlik modlarını kullanmanın performans etkisi nedir?**
 *Noagent* ve *hafif* yönetilebilirlik modları kullanılırken hiçbir etkisi yoktur. İşletim sistemine yüklenen iki hizmetten *tam* yönetilebilirlik modunu kullanırken en az etkisi vardır. Bunlar, Görev Yöneticisi ile izlenebilir ve yerleşik Windows Hizmetleri konsolunda görülebilir. 

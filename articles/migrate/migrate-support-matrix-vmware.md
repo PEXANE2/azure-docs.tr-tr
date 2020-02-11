@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi 'nde VMware değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086767"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121330"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -42,7 +42,7 @@ Azure geçişi: Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra mak
 **Makine işletim sistemi** | Tüm Windows ve Linux sürümleri.
 **vCenter kimlik bilgileri** | Salt okuma erişimi olan ve konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıkların vCenter Server bir hesabı.
 **VM kimlik bilgileri** | Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
-**VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır.
+**VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır. <br/> VMware araçları sürümünüz 9,10-10.2.0 arasındaysa, lütfen 10.2.0 'in ötesine yükseltdiğinizden emin olun.
 **Bağlantı noktası erişimi** | Bulmayı istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
 **Limitler** | Uygulama bulma için, her gereç için 10000 'e kadar keşfedebilirsiniz. 
 

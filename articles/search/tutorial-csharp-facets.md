@@ -3,17 +3,17 @@ title: C#gezinmeye yardımcı olmak için modelleri kullanma öğreticisi
 titleSuffix: Azure Cognitive Search
 description: Bu öğretici, model gezintisi eklemek için "arama sonuçları sayfalandırma-Azure Bilişsel Arama" projesinde oluşturulur. Bir aramanın kolayca daraltabilmesini sağlamak için modellerinin nasıl kullanılabileceğini öğrenin.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794062"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121574"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#Öğretici: Azure Bilişsel Arama Yardım için modelleri kullanma
 

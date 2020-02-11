@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976188"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122257"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning 'daki IoT Hub 'ından gelen algılayıcı verilerini kullanarak hava durumu tahmini
 
@@ -49,24 +49,77 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Hava durumu tahmin modelini Web hizmeti olarak dağıtma
 
+Bu bölümde, Azure AI kitaplığından Hava durumu tahmin modelini alırsınız. Ardından, sıcaklığın ve nem verilerinin temizlenmesi için modele bir R-Script modülü eklersiniz. Son olarak, modeli bir tahmine dayalı Web hizmeti olarak dağıtırsınız.
+
+### <a name="get-the-weather-prediction-model"></a>Hava durumu tahmin modelini al
+
+Bu bölümde, hava durumu tahmin modelini Azure Yapay Zeka Galerisi alın ve Azure Machine Learning Studio (klasik) içinde açın.
+
 1. [Hava durumu tahmin modeli sayfasına](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)gidin.
-1. Microsoft Azure Machine Learning Studio (klasik) içinde **Studio 'Da aç** ' a tıklayın.
-   ![Cortana Intelligence Gallery Hava durumu tahmin modeli sayfasını açın](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Modeldeki adımları doğrulamak için **Çalıştır** ' a tıklayın. Bu adımın tamamlanması 2 dakika sürebilir.
-   Hava durumu tahmin modelini Azure Machine Learning Studio (klasik) ![açın](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. **Web hizmeti** > tahmine **dayalı Web hizmeti**ayarla ' ya tıklayın.
-   Hava durumu tahmin modelini Azure Machine Learning Studio (klasik) ![dağıtın](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Diyagramda, **Web hizmeti giriş** modülünü **puan modeli** modülünün yakınında bir yere sürükleyin.
-1. **Web hizmeti giriş** modülünü, **puan modeli** modülüne bağlayın.
-   Azure Machine Learning Studio (klasik) iki modüle ![bağlama](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
+   ![Azure Yapay Zeka Galerisi içinde hava durumu tahmin modeli sayfasını açın](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
+
+1. Modeli Microsoft Azure Machine Learning Studio (klasik) içinde açmak için **Studio 'Da aç (klasik)** seçeneğine tıklayın.
+
+   ![Hava durumu tahmin modelini Azure Machine Learning Studio (klasik) açın](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+
+### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>Sıcaklık ve nem verilerini temizlemek için bir R-betik modülü ekleme
+
+Modelin doğru şekilde davranması için sıcaklık ve nem verileri sayısal verilere dönüştürülebilir olmalıdır. Bu bölümde, sıcaklık veya nem için veri değerlerine sahip satırları kaldıran, sayısal değerlere dönüştürülemeyen bir R-Script modülü eklersiniz.
+
+1. Azure Machine Learning Studio penceresinin sol tarafında, Araçlar panelini genişletmek için oka tıklayın. Arama kutusuna "Execute" yazın. **R betiği Yürüt** modülünü seçin.
+
+   ![R betik modülünü Yürüt seçeneğini belirleyin](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
+
+1. **Execute r betiği** modülünü **Temizleme eksik veri** modülünün yanına sürükleyin ve diyagramda var olan **r betik modülünü yürütün** . **Eksik verileri temizleme** ve **R betiği çalıştırma** modüllerini arasındaki bağlantıyı silin ve ardından yeni modülün giriş ve çıkışlarını gösterildiği gibi bağlayın.
+
+   ![R betiği yürütme modülü Ekle](media/iot-hub-weather-forecast-machine-learning/add-r-script-module.png)
+
+1. Özellikler penceresini açmak için yeni **R betiği Yürüt** modülünü seçin. Aşağıdaki kodu kopyalayıp **R betik** kutusuna yapıştırın.
+
+   ```r
+   # Map 1-based optional input ports to variables
+   data <- maml.mapInputPort(1) # class: data.frame
+
+   data$temperature <- as.numeric(as.character(data$temperature))
+   data$humidity <- as.numeric(as.character(data$humidity))
+
+   completedata <- data[complete.cases(data), ]
+
+   maml.mapOutputPort('completedata')
+
+   ```
+
+   İşiniz bittiğinde, Özellikler penceresi şuna benzer görünmelidir:
+
+   ![R betik modülünü yürütmek için kod ekleme](media/iot-hub-weather-forecast-machine-learning/add-code-to-module.png)
+
+### <a name="deploy-predictive-web-service"></a>Tahmine dayalı Web hizmeti dağıtma
+
+Bu bölümde, modeli doğrular, modele göre tahmine dayalı bir Web hizmeti ayarlarsınız ve sonra Web hizmetini dağıtırsınız.
+
+1. Modeldeki adımları doğrulamak için **Çalıştır** ' a tıklayın. Bu adımın tamamlanması birkaç dakika sürebilir.
+
+   ![Adımları doğrulamak için denemeyi çalıştırın](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
+
+1. **Web hizmeti** > tahmine **dayalı Web hizmeti**ayarla ' ya tıklayın. Tahmine dayalı deneme diyagramı açılır.
+
+   ![Hava durumu tahmin modelini Azure Machine Learning Studio dağıtma (klasik)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+
+1. Tahmine dayalı deneme diyagramında, **Web hizmeti giriş** modülü ile üst kısımdaki **Hava durumu veri kümesi** arasındaki bağlantıyı silin. Ardından, **Web hizmeti giriş** modülünü **puan modeli** modülünün yakınında bir yere sürükleyin ve gösterildiği gibi bağlayın:
+
+   ![Azure Machine Learning Studio iki modülü bağlama (klasik)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
 1. Modeldeki adımları doğrulamak için **Çalıştır** ' a tıklayın.
+
 1. Modeli bir Web hizmeti olarak dağıtmak için **Web Hizmeti Dağıt** ' a tıklayın.
+
 1. Modelin panosunda, **istek/yanıt**için **Excel 2010 veya önceki bir çalışma kitabını** indirin.
 
    > [!Note]
    > Bilgisayarınızda Excel 'in daha yeni bir sürümünü çalıştırıyor olsanız bile **excel 2010 veya önceki bir çalışma kitabını** indirdiğinizden emin olun.
 
-   ![Istek yanıtı uç noktası için Excel 'i indirin](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Istek yanıtı uç noktası için Excel 'i indirin](media/iot-hub-weather-forecast-machine-learning/download-workbook.png)
 
 1. Excel çalışma kitabını açın, **Web hizmeti URL 'si** ve **erişim anahtarı**' nı bir yere getirin.
 
@@ -89,7 +142,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işi oluşturma](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -105,7 +158,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işine bir giriş ekleme](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
@@ -124,7 +177,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işine bir çıktı ekleyin](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Dağıttığınız Web hizmetini çağırmak için Stream Analytics işine bir işlev ekleyin
 
@@ -143,7 +196,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    ![Azure 'da Stream Analytics işine bir işlev ekleme](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
@@ -163,7 +216,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 
    `[YourOutputAlias]` değerini işin çıkış diğer adıyla değiştirin.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
@@ -180,9 +233,9 @@ IoT Hub 'ınıza sıcaklık ve nem verileri toplamaya ve göndermeye başlamak i
 1. Azure hesabınızda oturum açın.
 1. Aboneliğinizi seçin.
 1. Depolama hesabınız > **BLOB kapsayıcıları** > > depolama hesabı > depolama **hesaplarınız** ' e tıklayın.
-1. Sonucu görmek için bir. csv dosyası açın. Son sütun, yağmur olma olasılığını kaydeder.
+1. Sonucu görmek için bir. csv dosyası indirin. Son sütun, yağmur olma olasılığını kaydeder.
 
-   ![Azure Machine Learning Hava durumu tahmin sonucu alın](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![Azure Machine Learning Hava durumu tahmin sonucu alın](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>Özet
 

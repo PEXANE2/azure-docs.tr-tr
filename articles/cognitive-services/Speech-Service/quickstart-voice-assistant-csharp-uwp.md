@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: özel ses Yardımcısı C# , (UWP)-konuşma hizmet
 titleSuffix: Azure Cognitive Services
 description: Bu makalede bilişsel hizmetler konuşma C# yazılım geliştirme seti 'NI (SDK) kullanarak bir evrensel WINDOWS platformu (UWP) uygulaması oluşturacaksınız. İstemci uygulamanızı, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a bağlanırsınız. Uygulama, konuşma SDK 'Sı NuGet paketiyle oluşturulmuştur ve 2019 Microsoft Visual Studio.
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816236"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119789"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Hızlı başlangıç: konuşma SDK 'Sı ile bir ses Yardımcısı oluşturma, UWP
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, bir istemci uygulamasını konuşma özellikli bot 'a
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Örnek kod ekleme
+## <a name="add-sample-code"></a>Örnek kodu ekleme
 
 Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
 
@@ -400,7 +400,7 @@ Arka plan kod kaynağını eklemek için aşağıdaki adımları izleyin:
 
 Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan, uygulamayı derlemek için **build** > **Build Solution** öğesini seçin. Kodun artık hatasız derlenmesi gerekir.
 
 1. Uygulamayı başlatmak için hata **ayıklamayı başlatın** > **Hata Ayıkla** ' yı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 

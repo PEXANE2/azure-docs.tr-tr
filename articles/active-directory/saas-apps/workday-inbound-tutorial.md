@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064317"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121731"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -292,7 +292,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
 
      ![Etki alanı güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_08.png "Etki Alanı Güvenlik İlkeleri") 
 
-     **Tamam**'a tıklayın.
+     **Tamam**’a tıklayın.
 
 3. Görüntülenen raporda, **dış hesap sağlama** seçeneğinin yanında görüntülenen üç nokta (...) simgesini seçin ve **etki alanı-> güvenlik ilkesi izinlerini Düzenle** ' ye tıklayın.
 
@@ -737,7 +737,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
-2. **Kaydet** düğmesine tıklayın.
+2. **Save (Kaydet)** düğmesine tıklayın.
 
 3. Bu işlem, iş günü kiracısında kaç Kullanıcı olduğuna bağlı olarak değişken sayıda saat sürebilen ilk eşitlemeyi başlatacak. 
 

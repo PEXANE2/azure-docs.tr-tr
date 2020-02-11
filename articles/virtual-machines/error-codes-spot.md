@@ -1,20 +1,19 @@
 ---
 title: Azure spot VM 'Ler ve ölçek kümeleri örnekleri için hata kodları
 description: Spot VM 'Leri ve ölçek kümesi örneklerini kullanırken görebileceğiniz hata kodları hakkında bilgi edinin.
-services: virtual-machines-windows
 author: cynthn
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 97e68f4d0d671ffa0f697c484c502b9070a3f20f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781949"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115861"
 ---
 # <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>Önizleme: spot VM 'Ler ve ölçek kümeleri için hata iletileri
 

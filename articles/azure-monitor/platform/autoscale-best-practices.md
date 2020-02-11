@@ -4,12 +4,12 @@ description: Web Apps, sanal makine ölçek kümeleri ve Cloud Services için Az
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396994"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117120"
 ---
 # <a name="best-practices-for-autoscale"></a>Otomatik ölçeklendirme için en iyi uygulamalar
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
@@ -113,7 +113,7 @@ Benzer şekilde, otomatik ölçeklendirme varsayılan profile geri geçtiğinde,
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Bir profilde birden çok kural yapılandırıldığında ölçeklendirme konuları
 
-Bir profilde birden çok kural ayarlamanız gerektiği durumlar vardır. Aşağıdaki otomatik ölçeklendirme kuralları, birden çok kural ayarlandığında hizmetler tarafından kullanılır.
+Bir profilde birden çok kural ayarlamanız gerektiği durumlar vardır. Aşağıdaki otomatik ölçeklendirme kuralları, birden çok kural ayarlandığında otomatik ölçeklendirme motoru tarafından kullanılır.
 
 *Ölçek Genişletme*sırasında, herhangi bir kural karşılanıyorsa otomatik ölçeklendirme çalışır.
 *Ölçeklendirmede*, otomatik ölçeklendirme tüm kuralların karşılanmasını gerektirir.
@@ -133,13 +133,13 @@ Ardından, aşağıdaki durum oluşur:
 Öte yandan, CPU %25 ise ve bellek %51 ise ölçek ölçeklendirme **yapmaz** . Ölçeği ölçeklendirmek için CPU %29 ve bellek %49 olmalıdır.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Her zaman güvenli bir varsayılan örnek sayısı seçin
-Varsayılan örnek sayısı önemli otomatik ölçeklendirme, ölçümleri kullanılabilir olmadığında hizmetinizi bu saymaya ölçeklendirir. Bu nedenle, iş yükleriniz için güvenli olan bir varsayılan örnek sayısı seçin.
+Varsayılan örnek sayısı, ölçümler kullanılabilir olmadığında hizmetinize otomatik ölçeklendirme bu sayıya ölçeklenirken önemlidir. Bu nedenle, iş yükleriniz için güvenli olan bir varsayılan örnek sayısı seçin.
 
 ### <a name="configure-autoscale-notifications"></a>Otomatik ölçeklendirme bildirimlerini yapılandırma
 Aşağıdaki koşullardan biri gerçekleşirse otomatik ölçeklendirme etkinlik günlüğüne gönderilir:
 
-* Otomatik ölçeklendirme bir ölçeklendirme işlemi verir
-* Otomatik Ölçeklendirme hizmeti bir ölçeklendirme eylemini başarıyla tamamlar
+* Otomatik ölçeklendirme bir ölçeklendirme işlemi verir.
+* Otomatik Ölçeklendirme hizmeti bir ölçeklendirme eylemini başarıyla tamamlar.
 * Otomatik Ölçeklendirme hizmeti bir ölçeklendirme eylemi alamaz.
 * Otomatik Ölçeklendirme hizmeti için ölçümler, ölçek kararı vermek üzere kullanılamaz.
 * Ölçümler, bir ölçek kararı vermek için yeniden kullanılabilir (kurtarma).

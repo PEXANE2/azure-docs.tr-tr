@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984176"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118585"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Öğretici: Azure bilişsel hizmetler ile bir Flask uygulaması derleme
 
@@ -44,7 +44,7 @@ Bu öğreticinin ne kadar ayrıntılı olmasını istediğiniz, birkaç faydalı
 * [Flask belgeleri](http://flask.pocoo.org/)
 * [Flask, Dummies için bir başlangıç kılavuzu](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için ihtiyacınız olan yazılım ve abonelik anahtarlarını gözden geçirelim.
 
@@ -103,7 +103,7 @@ Flask Web uygulamanızı oluşturmadan önce, projeniz için bir çalışma dizi
 
 2. Sanal ortamınızı etkinleştirme komutları, platforma/kabuğa bağlı olarak değişir:   
 
-   | Platform | Shell | Komut |
+   | Platform | Kabuk | Komut |
    |----------|-------|---------|
    | macOS/Linux | Bash/ZSH | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |
@@ -182,7 +182,7 @@ Bu kod, bir Kullanıcı `about.html` dosyasının işlendiği `http://your-web-a
 
 Bu örnekler, bir kullanıcı için HTML sayfalarının nasıl işleneceğini gösterir, ancak bir düğmeye basıldığında API 'Leri çağırmak için yollar kullanılabilir veya giriş sayfasından uzaklaşmak zorunda kalmadan istediğiniz sayıda eylem yapabilirsiniz. Çeviri, yaklaşım ve konuşma senkiyle ilgili yollar oluştururken bunu eylemde görürsünüz.
 
-### <a name="get-started"></a>Kullanmaya Başlayın
+### <a name="get-started"></a>başlarken
 
 1. Projeyi IDE 'de açın, sonra çalışma dizininizin kökünde `app.py` adlı bir dosya oluşturun. Sonra, bu kodu `app.py` kopyalayın ve kaydedin:
 
@@ -474,7 +474,7 @@ Uygulamayı sonlandırmak için **Ctrl + c** tuşlarına basın ve ardından son
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-[Metin Analizi API'si](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) , yaklaşım analizi gerçekleştirmek, metinden anahtar ifadeleri ayıklamak veya kaynak dilini algılamak için kullanılabilir. Bu uygulamada, girilen metnin pozitif, nötr veya negatif olduğunu anlamak için yaklaşım analizini kullanacağız. API, 0 ile 1 arasında bir sayısal puan döndürür. Puanın 1’e yakın olması yaklaşımın olumlu olduğunu, 0’a yakın olması ise olumsuz olduğunu gösterir.
+[Metin Analizi API'si](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) , yaklaşım analizi gerçekleştirmek, metinden anahtar ifadeleri ayıklamak veya kaynak dilini algılamak için kullanılabilir. Bu uygulamada, girilen metnin pozitif, nötr veya negatif olduğunu anlamak için yaklaşım analizini kullanacağız. API, 0 ile 1 arasında bir sayısal puan döndürür. 1 ' e yakın puan pozitif yaklaşımı gösterir ve 0 ' a yakın puan negatif yaklaşımı gösterir.
 
 Bu bölümde birkaç şey yapacağız:
 

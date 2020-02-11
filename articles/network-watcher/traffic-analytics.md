@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840596"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114397"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -72,7 +72,7 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Batı Avrupa
 * Kuzey Avrupa
 * Brezilya Güney
-* UK, Batı
+* UK Batı
 * UK Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
@@ -103,7 +103,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Batı Avrupa
 * Kuzey Avrupa
 * Brezilya Güney
-* UK, Batı
+* UK Batı
 * UK Güney
 * Avustralya Doğu
 * Avustralya Güneydoğu
@@ -115,7 +115,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * US Gov Virginia
 * Çin Doğu 2
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 
@@ -123,7 +123,7 @@ Hesabınız aşağıdaki Azure [yerleşik rollerinin](../role-based-access-contr
 
 |Dağıtım modeli   | Rol                   |
 |---------          |---------               |
-|Kaynak Yöneticisi   | Sahip                  |
+|Resource Manager   | Sahip                  |
 |                   | Katılımcı            |
 |                   | Okuyucu                 |
 |                   | Ağ katılımcısı    |
@@ -151,7 +151,7 @@ Trafiği çözümlemek için, var olan bir ağ izleyicisine sahip olmanız ya da
 
 NSG akış günlüğünü etkinleştirmeden önce, akışları günlüğe kaydetmek için bir ağ güvenlik grubunuz olması gerekir. Ağ güvenlik grubunuz yoksa, oluşturmak için [ağ güvenlik grubu oluşturma](../virtual-network/manage-network-security-group.md#create-a-network-security-group) bölümüne bakın.
 
-Azure portal sol tarafında **izleyici**' yi ve ardından **Ağ İzleyicisi**' ni seçin ve **NSG akış günlükleri**' ni seçin. Aşağıdaki resimde gösterildiği gibi NSG akış günlüğünü etkinleştirmek istediğiniz ağ güvenlik grubunu seçin:
+Azure portal, **Ağ İzleyicisi**' ne gidin ve **NSG akış günlükleri**' ni seçin. Aşağıdaki resimde gösterildiği gibi NSG akış günlüğünü etkinleştirmek istediğiniz ağ güvenlik grubunu seçin:
 
 ![NSG akış günlüğünün etkinleştirilmesini gerektiren NSG 'ler seçimi](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 

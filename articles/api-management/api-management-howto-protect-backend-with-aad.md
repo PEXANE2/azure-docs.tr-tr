@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120818"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121400"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2,0 kullanarak API 'YI koruma
 
@@ -27,7 +27,7 @@ Bu kılavuzda, Azure Active Directory (Azure AD) ile OAuth 2,0 protokolünü kul
 > [!NOTE]
 > Bu özellik, API Management **Geliştirici**, **Standart** ve **Premium** katmanlarında kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 * Bir API Management örneği
 * API Management örneğini kullanan yayımlanmış bir API
@@ -47,7 +47,7 @@ Adımlara hızlı bir genel bakış aşağıda verilmiştir:
 
 Bir API 'yi Azure AD ile korumak için ilk adım, API 'YI temsil eden bir uygulamayı Azure AD 'ye kaydettirebilir. 
 
-1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **API kayıtlarını**arayın ve seçin.
+1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **Uygulama kayıtları**arayın ve seçin.
 
 1. **Yeni kayıt**seçeneğini belirleyin. 
 
@@ -147,7 +147,7 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. İstemci gizliliğini hemen takip eden, yetkilendirme kodu verme türü için **redirect_url** . Bu URL 'YI bir yere getirin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. İstemci uygulamanıza geri dönün ve **kimlik doğrulaması**' nı seçin.
 
@@ -161,7 +161,7 @@ Sonraki adım, API 'niz için OAuth 2,0 Kullanıcı yetkilendirmesini etkinleşt
 
 2. Korumak istediğiniz API 'YI seçin. Örneğin, `Echo API`kullanabilirsiniz.
 
-3. Git **ayarları**.
+3. **Ayarlar**' a gidin.
 
 4. **Güvenlik**altında **OAuth 2,0**' ı seçin ve daha önce yapılandırdığınız OAuth 2,0 sunucusunu seçin. 
 

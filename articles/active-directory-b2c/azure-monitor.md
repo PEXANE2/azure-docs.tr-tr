@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/05/2020
-ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046010"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121387"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -24,9 +24,9 @@ Farklı izleme çözümlerine Azure Active Directory B2C (Azure AD B2C) oturum a
 
 Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 
-* Bir Azure depolama hesabı.
-* Azure Olay Hub 'ı (ve splunk ve sumo Logic Instances ile tümleştirin).
-* Azure Log Analytics çalışma alanı (verileri analiz etmek, panolar oluşturmak ve belirli olaylara uyarı vermek için).
+* Bir Azure [depolama hesabı](../storage/blobs/storage-blobs-introduction.md).
+* Azure [Olay Hub 'ı](../event-hubs/event-hubs-about.md) (ve splunk ve sumo Logic Instances ile tümleştirin).
+* [Log Analytics çalışma alanı](../azure-monitor/platform/resource-logs-collect-workspace.md) (verileri analiz etmek, panolar oluşturmak ve belirli olaylara uyarı vermek için).
 
 ![Azure İzleyici](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ Azure PowerShell modülünün en son sürümünü içeren [Azure Cloud Shell](ht
 
 Azure AD B2C [Azure Active Directory izlemeyi](../active-directory/reports-monitoring/overview-monitoring.md)kullanır. Azure AD B2C kiracınızda Azure Active Directory *tanılama ayarlarını* etkinleştirmek için, [Temsilcili kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanırsınız.
 
-Azure aboneliğinizi ( **Müşteri**) içeren kiracı Içinde Azure izleyici örneğini yapılandırmak için Azure AD B2C dizininizde ( **hizmet sağlayıcısı**) bir kullanıcıyı yetkilendirirsiniz. Yetkilendirmeyi oluşturmak için aboneliği içeren Azure AD kiracınıza bir [Azure Resource Manager](../azure-resource-manager/index.yml) şablonu dağıtırsınız. Aşağıdaki bölümler süreç boyunca size yol gösterir.
+Azure aboneliğinizi ( **Müşteri**) içeren kiracı Içinde Azure izleyici örneğini yapılandırmak için Azure AD B2C dizininizde ( **hizmet sağlayıcısı**) bir kullanıcı veya grup yetkilendirirsiniz. Yetkilendirmeyi oluşturmak için aboneliği içeren Azure AD kiracınıza bir [Azure Resource Manager](../azure-resource-manager/index.yml) şablonu dağıtırsınız. Aşağıdaki bölümler süreç boyunca size yol gösterir.
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+## <a name="create-or-choose-resource-group"></a>Kaynak grubu oluşturma veya seçme
 
-Azure aboneliğinizi içeren Azure Active Directory (Azure AD) kiracısında (Azure AD B2C kiracınızı içeren dizin*değil* ), [bir kaynak grubu oluşturun](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). Aşağıdaki değerleri kullanın:
+Bu, Azure Izleyici 'den veri almak için hedef Azure depolama hesabı, Olay Hub 'ı veya Log Analytics çalışma alanını içeren kaynak grubudur. Azure Resource Manager şablonunu dağıtırken kaynak grubu adını belirtirsiniz.
 
-* **Abonelik**: Azure aboneliğinizi seçin.
-* **Kaynak grubu**: kaynak grubu için ad girin. Örneğin, *Azure-AD-B2C-Monitor*.
-* **Bölge**: bir Azure konumu seçin. Örneğin, *Orta ABD*.
+Azure AD B2C kiracınızı içeren dizin *değil* , Azure aboneliğinizi içeren Azure Active Directory (Azure AD) kiracısında [bir kaynak grubu oluşturun](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) veya mevcut olanı seçin.
+
+Bu örnek *Orta ABD* bölgesinde *Azure-AD-B2C-Monitor* adlı bir kaynak grubu kullanır.
 
 ## <a name="delegate-resource-management"></a>Kaynak yönetimini devretmek
 
@@ -209,20 +209,42 @@ Parameters              :
 
 ## <a name="configure-diagnostic-settings"></a>Tanılama ayarlarını yapılandırma
 
-Kaynak yönetimine yetki verdikten ve aboneliğinizi seçtikten sonra, Azure portal [Tanılama ayarları oluşturmaya](../active-directory/reports-monitoring/overview-monitoring.md) hazırsınız demektir.
+Tanılama ayarları, bir kaynağın hangi günlüklerde ve ölçümlerinin gönderileceğini tanımlar. Olası hedefler şunlardır:
+
+- [Azure depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Olay Hub 'ları](../azure-monitor/platform/resource-logs-stream-event-hubs.md) çözümleri.
+- [Log Analytics çalışma alanı](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+Henüz yapmadıysanız, [Azure Resource Manager şablonunda](#create-an-azure-resource-manager-template)belirttiğiniz kaynak grubunda seçtiğiniz hedef türünün bir örneğini oluşturun.
+
+### <a name="create-diagnostic-settings"></a>Tanılama ayarları oluşturma
+
+Azure portal [Tanılama ayarları oluşturmaya](../active-directory/reports-monitoring/overview-monitoring.md) hazırsınız.
 
 Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
 1. **İzleme**altında **Tanılama ayarları**' nı seçin.
-1. **+ Tanılama ayarı Ekle**' yi seçin.
+1. Kaynakta mevcut ayarlar varsa, önceden yapılandırılmış ayarların bir listesini görürsünüz. Yeni bir ayar eklemek için **Tanılama ayarı Ekle** veya var olanı düzenlemek Için ayarı **Düzenle** seçeneklerinden birini belirleyin. Her bir ayarda hedef türlerin her biri birden çok olamaz..
 
     ![Azure portal Tanılama ayarları bölmesi](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. Ayarınız yoksa, bir ad verin.
+1. Günlükleri göndermek için her bir hedefin kutusunu işaretleyin. Ayarlarını aşağıdaki tabloda açıklandığı gibi belirtmek için **Yapılandır** ' ı seçin.
+
+    | Ayar | Açıklama |
+    |:---|:---|
+    | Bir depolama hesabına Arşivle | Depolama hesabının adı. |
+    | Bir olay hub 'ına akış | Olay Hub 'ının oluşturulduğu ad alanı (Bu, ilk zaman akış günlükleriniz ise) veya akışa (Bu ad alanına ait günlük kategorisini akışa alınmış kaynaklar varsa).
+    | Log Analytics’e gönderme | Çalışma alanının adı. |
+
+1. **Auditlogs** ve **signınlogs**' u seçin.
+1. **Kaydet**’i seçin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Izleyici 'de tanılama ayarlarını ekleme ve yapılandırma hakkında daha fazla bilgi için Azure Izleyici belgelerindeki Bu öğreticiye bakın:
+Azure Izleyici 'de tanılama ayarlarını ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [öğretici: kaynak günlüklerini bir Azure kaynağından toplayın ve çözümleyin](../azure-monitor/insights/monitor-azure-resource.md).
 
-[Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin](/azure-monitor/learn/tutorial-resource-logs.md)
+Azure AD günlüklerini bir olay hub 'ına akışı hakkında daha fazla bilgi için bkz. [öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: Java için özel ses Yardımcısı (Windows, Linux
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir Java konsol uygulamasında bilişsel hizmetler konuşma SDK 'sını kullanmayı öğreneceksiniz. Doğrudan hat konuşma kanalını kullanmak ve bir ses Yardımcısı deneyimini etkinleştirmek üzere yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a istemci uygulamanızı nasıl bağlayabileceğinizi öğreneceksiniz.
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815862"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119687"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile bir ses Yardımcısı oluşturma, Java (Önizleme)
 
@@ -65,7 +65,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için _Pod. xml_ dosyasını aşa
  </dependency>
 ```
 
-## <a name="add-sample-code"></a>Örnek kod ekleme
+## <a name="add-sample-code"></a>Örnek kodu ekleme
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 

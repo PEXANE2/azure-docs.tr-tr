@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082945"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116727"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -172,7 +172,9 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. Sol bölmedeki **varlıklar** bölümünde **veri kümeleri** ' ni seçin. 
 1. Veri kümenizin kaynağını seçmek için **veri kümesi oluştur** ' u seçin. Bu kaynak yerel dosyalar, bir veri deposu veya genel URL olabilir.
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
-1. Ayarları gözden geçirmek **ve önizleme**, **şema** ve **ayrıntıları onaylamak** için **İleri** ' yi seçin; dosya türüne göre akıllıca doldurulur. Seçimlerinizi denetlemek ve veri kümenizi oluşturmadan önce daha fazla yapılandırmak için bu formları kullanın.  
+1. **Veri deposu ve dosya seçim** formunu açmak için **İleri ' yi** seçin. Bu formda, oluşturulduktan sonra veri kümenizin saklanacağı yeri ve veri kümeniz için kullanılacak veri dosyalarını seçin. 
+1. **Ayarları ve önizleme** ve **şema** formlarını doldurmak için **İleri ' yi** seçin; Bunlar dosya türüne göre akıllıca doldurulmuştur ve veri kümenizi bu formlarda oluşturmadan önce daha sonra yapılandırabilirsiniz. 
+1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin. 
 1. Veri kümesi oluşturmayı gerçekleştirmek için **Oluştur** ' u seçin.
 
 ## <a name="register-datasets"></a>Veri kümelerini Kaydet

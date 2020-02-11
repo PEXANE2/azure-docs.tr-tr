@@ -2,19 +2,21 @@
 title: Şablon sözdizimi ve ifadeleri
 description: Azure Resource Manager şablonları için bildirim temelli JSON sözdizimini açıklar.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484200"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120608"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler
 
-Şablonun temel sözdizimi JSON ' dır. Ancak, şablon içinde kullanılabilir olan JSON değerlerini genişletmek için ifadeleri kullanabilirsiniz.  İfadeler köşeli ayraçla başlayıp biter: `[` ve `]`. İfadenin değeri, şablon dağıtıldığında değerlendirilir. İfade dize, tamsayı, boole, dizi veya nesne döndürebilir.
+Şablonun temel sözdizimi JSON ' dır. Ancak, şablon içinde kullanılabilir olan JSON değerlerini genişletmek için ifadeleri kullanabilirsiniz.  İfadeler, sırasıyla `[` ve `]`parantez ile başlayıp biter. İfade değeri, şablon dağıtıldığında değerlendirilir. Bir ifade dize, tamsayı, Boolean, dizi veya nesne döndürebilir.
 
 Şablon ifadesi 24.576 karakterden uzun olamaz.
+
+İfadeler JSON (' null ') özelliğini destekler ve Özellikler değişmez değer olan null değerini destekler. Her iki durumda da Kaynak Yöneticisi şablonlar, özelliği mevcut olmadığı gibi kabul eder.
 
 ## <a name="use-functions"></a>İşlev kullanma
 

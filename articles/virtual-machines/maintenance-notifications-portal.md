@@ -1,20 +1,18 @@
 ---
-title: Azure VM 'Leri için bakım bildirimleri için portalı kullanma
+title: Bakım bildirimleri için portalı kullanma
 description: Azure 'da çalışan sanal makineler için bakım bildirimlerini görüntüleyin ve portalı kullanarak Self servis bakımı başlatın.
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535827"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115730"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Portalı kullanarak planlı bakım bildirimlerini işleme
 
@@ -36,7 +34,7 @@ Azure portal kullanabilir ve bakım için zamanlanmış VM 'Ler için arama yapa
       
       | Değer | Açıklama |
       |-------|-------------|
-      | Şimdi başlayın | VM, bakımı kendiniz başlatabilmenizi sağlayan self servis bakım penceresidir. VM 'niz üzerinde bakım başlatma hakkında bilgi için aşağıya bakın. | 
+      | Hemen başlayın | VM, bakımı kendiniz başlatabilmenizi sağlayan self servis bakım penceresidir. VM 'niz üzerinde bakım başlatma hakkında bilgi için aşağıya bakın. | 
       | Zamanlanan | VM, size başlatma seçeneği sunulmayan bir bakım için zamanlanır. Bakım penceresini, bu görünümdeki bakım-zamanlanan pencereyi seçerek veya VM 'ye tıklayarak öğrenebilirsiniz. | 
       | Zaten güncelleştirildi | VM 'niz zaten güncelleştirildi ve şu anda başka bir eylem gerekmiyor. | 
       | Daha sonra yeniden dene | Başarılı olmadan bakım başlattınız. Self Servis Bakım seçeneğini daha sonra kullanabileceğiniz şekilde kullanabileceksiniz. | 

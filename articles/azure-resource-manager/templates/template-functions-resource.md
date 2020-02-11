@@ -2,13 +2,13 @@
 title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048795"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120534"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -354,7 +354,7 @@ SAS belirtecini almak için bir nesneyi süre sonu zamanına geçirin. Süre son
 }
 ```
 
-## <a name="providers"></a>sağlayıcılar
+## <a name="providers"></a>sağlayıcıları
 
 ```json
 providers(providerNamespace, [resourceType])
@@ -530,7 +530,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örnek:
+Örneğin:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` doğru değil
 
@@ -752,14 +752,14 @@ Yukarıdaki örnekte, aşağıdaki biçimde bir nesne döndürür:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz veya aynı şablon içinde sağlanan olduğunda bu işlevi kullanın.
+Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz veya aynı şablon içinde sağlanan olduğunda bu işlevi kullanın. Döndürülen Tanımlayıcının biçimi, dağıtımın bir kaynak grubunun, aboneliğin, yönetim grubunun veya kiracının kapsamında gerçekleşmediğine göre farklılık gösterir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Hayır |dize (içinde GUID biçimi) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
-| resourceGroupName |Hayır |string |Geçerli kaynak grubu varsayılan değerdir. Başka bir kaynak grubunda kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
+| resourceGroupName |Hayır |string |Geçerli kaynak grubu varsayılan değerdir. Başka bir kaynak grubunda kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |
 | resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
@@ -768,7 +768,7 @@ Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak 
 
 ### <a name="return-value"></a>Dönüş değeri
 
-Kaynak KIMLIĞI aşağıdaki biçimde döndürülür:
+Şablon bir kaynak grubunun kapsamına dağıtıldığında, kaynak KIMLIĞI aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ Kaynak KIMLIĞI aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+[Yönetim grubu düzeyinde bir dağıtımda](deploy-to-management-group.md) veya kiracı düzeyinde dağıtımda kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Diğer biçimlerdeki KIMLIĞI almak için bkz.:
@@ -890,7 +896,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Adı | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | sameRGOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

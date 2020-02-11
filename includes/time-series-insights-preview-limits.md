@@ -4,23 +4,23 @@ description: include dosyası
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 02/07/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013903"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123234"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Genel kullanılabilirlik ve önizleme karşılaştırması
 
 Aşağıdaki tabloda Azure Time Series Insights genel kullanım (GA) ve önizleme örnekleri arasındaki birçok önemli fark özetlenmektedir.
 
-| | Genel Kullanım | Önizleme |
+| | GA | Önizleme |
 | --- | --- | ---|
 | Birinci sınıf vatandaşlık | Olay merkezli | Zaman serisi merkezli |
 | Anlam mantık yürütme | Alt düzey (başvuru verileri) | Üst düzey (modeller) |
@@ -50,7 +50,7 @@ Time Series Insights Özellik sınırları, GA 'de en fazla 800 ' den 1.000 ' e 
 * [Bir olay hub 'ı kaynağı eklemeyi](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)öğrenin.
 * [IoT Hub 'ı kaynağı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)yapılandırın.
 
-Varsayılan olarak, [Önizleme ortamları](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) **ortam başına en fazla 1 megabayt (MB/sn)** hızda giriş hızını destekler. Müşteriler, gerekirse, önizleme ortamlarını **16 MB/sn** aktarım hızına kadar ölçeklendirebilir. Bölüm başına **0,5 MB/sn**sınırı da vardır. 
+Varsayılan olarak, [Önizleme ortamları](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) **ortam başına en fazla 1 megabayt (MB/sn)** hızda giriş hızını destekler. Müşteriler, gerekirse, önizleme ortamlarını **16 MB/sn** aktarım hızına kadar ölçeklendirebilir. Bölüm başına **0,5 MB/sn**sınırı da vardır. 
 
 ### <a name="api-limits"></a>API sınırları
 

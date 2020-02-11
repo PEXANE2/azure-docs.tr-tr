@@ -1,34 +1,32 @@
 ---
-title: 'Hızlı başlangıç: metin okuma seslerini, Python-konuşma hizmetini listeleme'
+title: Metin okuma seslerini, Python-konuşma hizmetini listeleme
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Python kullanarak bir bölgenin/uç noktanın standart ve sinir sesinden tam listesini almayı öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir.
+description: Bu makalede, Python kullanarak bir bölge/uç nokta için standart ve sinir sesin tam listesini nasıl alabileceğinizi öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: c645d01dd37fd370911019446c99c76c9da6221c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975984"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119801"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Hızlı başlangıç: Python kullanarak metin okuma sesin listesini alın
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Python kullanarak metin okuma sesin listesini alın
 
-Bu hızlı başlangıçta, Python kullanarak bir bölgenin/uç noktanın standart ve sinir sesinden tam listesini almayı öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir. Desteklenen bölgelerin listesi için bkz. [bölgeler](regions.md).
+Bu makalede, Python kullanarak bir bölge/uç nokta için standart ve sinir sesin tam listesini nasıl alabileceğinizi öğreneceksiniz. Liste JSON olarak döndürülür ve ses kullanılabilirliği bölgeye göre değişir. Desteklenen bölgelerin listesi için bkz. [bölgeler](regions.md).
 
-Bu hızlı başlangıç, bir konuşma hizmeti kaynağı olan bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
+Bu makalede, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç şunları gerektirir:
-
 * Python 2.7.x veya 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), veya en sevdiğiniz metin düzenleyiciyi
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)veya sık kullandığınız metin düzenleyiciniz
 * Konuşma hizmeti için bir Azure abonelik anahtarı
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
@@ -55,15 +53,15 @@ class GetVoices(object):
         self.access_token = None
 ```
 
-`subscription_key` Azure portalından, benzersiz anahtar.
+`subscription_key`, Azure portal benzersiz anahtarınızdan farklıdır.
 
 ## <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
 Bu uç nokta, kimlik doğrulaması için bir erişim belirteci gerektirir. Erişim belirteci almak için bir exchange gereklidir. Bu örnek, `issueToken` uç noktasını kullanarak bir erişim belirteci için konuşma hizmeti abonelik anahtarınızı de değiş tokuş eder.
 
-Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölgeye kullanıyorsanız, değerini güncelleştirin `fetch_token_url`. Tam bir listesi için bkz [bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, `fetch_token_url`değerini güncelleştirin. Tam liste için bkz. [bölgeler](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
-Bu kodu kopyalayın `GetVoices` sınıfı:
+Bu kodu `GetVoices` sınıfa kopyalayın:
 
 ```python
 def get_token(self):
@@ -80,11 +78,11 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Bir istekte bulunmak ve yanıt Kaydet
 
-Burada, isteği derleyip döndürülen seslerin listesini kaydedeceklürsünüz. İlk olarak, ayarlanacak ihtiyacınız `base_url` ve `path`. Bu örnek, Batı ABD uç nokta kullanmakta olduğunuz varsayılır. Kaynağınız için farklı bir bölgede kayıtlı değilse, güncelleştirdiğinizden emin olun `base_url`. Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Burada, isteği derleyip döndürülen seslerin listesini kaydedeceklürsünüz. İlk olarak, `base_url` ve `path`ayarlamanız gerekir. Bu örnek, Batı ABD uç nokta kullanmakta olduğunuz varsayılır. Kaynağınız farklı bir bölgeye kayıtlıysa, `base_url`güncelleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Sonra, istek için gerekli üstbilgileri ekleyin. Son olarak, hizmete istek yapacaksınız. İstek başarılı olursa ve 200 durum kodu döndürülürse, yanıt dosyaya yazılır.
 
-Bu kodu kopyalayın `GetVoices` sınıfı:
+Bu kodu `GetVoices` sınıfa kopyalayın:
 
 ```python
 def get_voices(self):
@@ -137,5 +135,5 @@ Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan olan gizli bil
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Metin Okuma API başvurusu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Özel ses tipi olarak oluşturma](how-to-customize-voice-font.md)
-* [Özel ses oluşturma kayıt ses örnekleri](record-custom-voice-samples.md)
+* [Özel ses yazı tipleri oluşturma](how-to-customize-voice-font.md)
+* [Özel bir ses oluşturmak için ses örneklerini kaydetme](record-custom-voice-samples.md)

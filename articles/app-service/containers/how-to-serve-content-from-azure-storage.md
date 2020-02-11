@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930005"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121423"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux üzerinde App Service Azure Storage 'tan içerik sunma
 
@@ -20,7 +20,7 @@ ms.locfileid: "75930005"
 
 Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 veya üzeri).
 - [Linux uygulamasında](https://docs.microsoft.com/azure/app-service/containers/)mevcut bir App Service.
@@ -34,6 +34,7 @@ Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği
 - App Service ile Azure depolama, **Azure dosya kapsayıcıları** (okuma/yazma) ve **Azure Blob kapsayıcıları** (salt okuma) bağlamayı destekler
 - App Service ile Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
 - App Service ile Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
+- Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)'ni kullanın.
 - Azure depolama, Web uygulamanıza **dahil değildir** ve ayrı olarak faturalandırılır. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage)hakkında daha fazla bilgi edinin.
 
 > [!WARNING]

@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371828"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121928"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -76,13 +76,13 @@ Kaynak URI ve SAS belirtecini gösteren bir Service SAS URI 'SI örneği aşağ�
 
 Depolama hesabınızdaki kaynaklara güvenli erişim sağlamak istediğinizde bir SAS kullanın, aksi takdirde bu kaynaklar için izinleri olmayan herhangi bir istemciye.
 
-SAS 'ın yararlı olduğu yaygın bir senaryo, kullanıcıların depolama hesabınıza kendi verilerini okuacağı ve yazdıkları bir hizmettir. Depolama hesabının kullanıcı verilerini depoladığı bir senaryoda iki tipik tasarım deseni vardır:
+SAS 'ın yararlı olduğu yaygın bir senaryo, kullanıcıların depolama hesabınıza kendi verilerini okuacağı ve yazdıkları bir hizmettir. Bir depolama hesabının kullanıcı verilerini depoladığı bir senaryoda, tipik iki tasarım deseni vardır:
 
-1. İstemciler, kimlik doğrulamasını yapan ön uç ara sunucu hizmeti üzerinden verileri karşıya yükleyip indirirler. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin vermenin avantajlarından yararlanır, ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
+1. İstemciler, kimlik doğrulaması gerçekleştiren bir ön uç proxy hizmeti aracılığıyla verileri karşıya yükleyip indirir. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin vermenin avantajlarından yararlanır, ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
 
    ![Senaryo diyagramı: ön uç proxy hizmeti](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Basit bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, SAS tarafından tanımlanan izinlerle ve SAS tarafından izin verilen aralığa göre depolama hesabı kaynaklarına doğrudan erişebilirler. SAS tüm verileri ön uç ara sunucu hizmetiyle yönlendirme gereksinimini azaltır.
+1. Hafif bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, SAS tarafından tanımlanan izinlerle ve SAS tarafından izin verilen aralığa göre depolama hesabı kaynaklarına doğrudan erişebilirler. SAS, ön uç proxy hizmeti aracılığıyla tüm verileri yönlendirme gereksinimini azaltır.
 
    ![Senaryo diyagramı: SAS sağlayıcı hizmeti](./media/storage-sas-overview/sas-storage-provider-service.png)
 
@@ -110,6 +110,7 @@ Paylaşılan erişim imzalarını kullanmaya yönelik aşağıdaki öneriler, bu
 - **Geçici SAS hizmeti SAS veya hesap SAS 'si üzerinde neredeyse vadeli süre sonu zamanlarını kullanın.** Bu şekilde, SAS tehlikede olsa bile, yalnızca kısa bir süre için geçerlidir. Bu uygulama, saklı erişim ilkesine başvurmamak için özellikle önemlidir. Yakın dönem süre sonu süreleri Ayrıca, kendisine karşıya yükleme için kullanılabilir süreyi sınırlayarak bir bloba yazılabilen veri miktarını da sınırlar.
 - **Gerektiğinde istemcilerin SAS 'yi otomatik olarak yenilemesini sağlayabilirsiniz.** SAS sağlayan hizmet kullanılamıyorsa istemciler, yeniden denemeler için zaman tanımak üzere süre sonundan önce SAS 'yi yenilemelidir. SAS 'nizin, sona erme döneminde tamamlanması beklenen kısa süreli, kısa süreli işlemler için kullanılması gerekiyorsa, SAS 'nin yenilenmesi beklenmediği için bu işlem gereksizdir. Ancak, SAS üzerinden düzenli olarak istek yapan istemciniz varsa, süre sonu olma olasılığı oynatma olur. Temel olarak, istemcinin yenilemeyi yeterince erken istediğini güvence altına almak için (daha önce belirtildiği gibi), istemcinin yenileme gereksinimini yeterince erken (daha önce belirtildiği gibi) dengelenmesi gerekir (başarılı yenilemeden önce SAS süresinin dolmasını önlemek için).
 - **SAS başlangıç zamanına dikkat edin.** Bir SAS için başlangıç saatini **Şimdi**olarak ayarlarsanız, saat farkı (geçerli zaman farklı makinelere göre farklılık gösteren farklılıklar) nedeniyle, hatalardan bazıları ilk birkaç dakika boyunca zaman zaman gözlenebilir. Genel olarak, başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın. Ya da, hiç ayarlama yapmayın, bu, tüm durumlarda hemen geçerli hale gelir. Aynı genellikle süre sonu zamanı için geçerlidir ve herhangi bir isteğe bağlı olarak, 15 dakikaya kadar saatin ölçeğini gözlemleyebilirsiniz. 2012-02-12 ' dan önceki bir REST sürümünü kullanan istemciler için, depolanan bir erişim ilkesine başvurmayan SAS için en uzun süre 1 saattir ve daha uzun vadeyi belirten herhangi bir ilke başarısız olur.
+- **SAS tarih saat biçimiyle dikkatli olun.** Bir SAS için başlangıç saati ve/veya süre sonu ayarlarsanız bazı yardımcı programlar için (örneğin komut satırı yardımcı programı AzCopy), tarih saat biçiminin ' +% Y-% d-% dT% H:%D:% SZ ' olması gerekir, bu da özellikle de SAS belirtecini kullanarak çalışması için saniyeler dahil olur.  
 - **Erişilecek kaynağa özel olun.** En iyi güvenlik uygulaması, gerekli en düşük ayrıcalıklara sahip bir kullanıcı sağlamaktır. Bir kullanıcının yalnızca tek bir varlığa okuma erişimi olması gerekiyorsa, tüm varlıklara okuma/yazma/silme erişimi değil, onlara bu tek varlığa yönelik okuma erişimi izni verin. Bu, SAS 'nin bir saldırgan içinde daha az gücü olduğundan, SAS tehlikeye atılırsa hasar azaltır.
 - **Hesabınızın bir SAS aracılığıyla da dahil olmak üzere herhangi bir kullanım için faturalandırılacağını anlayın.** Blob 'a yazma erişimi sağlarsanız, bir Kullanıcı bir 200 GB blobu karşıya yüklemeyi tercih edebilir. Bunlara yönelik okuma erişimi de aldıysanız, çıkış maliyetlerinde 2 TB 'a sahip olmak üzere 10 kez indirmeyi seçebilirler. Bu, kötü amaçlı kullanıcıların olası eylemlerini azaltmaya yardımcı olmak için sınırlı izinler sağlar. Bu tehdidi azaltmak için kısa süreli SAS kullanın (ancak bitiş saati üzerinde geçen saat çarpıklığı).
 - **SAS kullanarak yazılan verileri doğrulayın.** Bir istemci uygulaması depolama hesabınıza veri yazdığında, bu verilerle ilgili sorunlar olabileceğini aklınızda bulundurun. Uygulamanız, kullanıma hazırlanmadan önce verilerin doğrulanmasını veya yetkilendirilmesini gerektiriyorsa, veriler yazıldıktan sonra ve uygulamanız tarafından kullanılmadan önce Bu doğrulamayı gerçekleştirmelisiniz. Bu yöntem ayrıca, ister bir kullanıcı tarafından, hem de bir veya sızdırılan SAS kullanan bir kullanıcı tarafından hesabınıza yazılan bozuk veya kötü amaçlı verilere karşı koruma sağlar.

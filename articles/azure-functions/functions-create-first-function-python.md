@@ -4,12 +4,12 @@ description: Azure Işlevleri 'ni kullanarak sunucusuz Python kodunu oluşturun 
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898571"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116208"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Hızlı başlangıç: Azure 'da HTTP tarafından tetiklenen bir Python işlevi oluşturma
 
@@ -17,7 +17,7 @@ Bu makalede, HTTP isteklerine yanıt veren bir Python işlevi oluşturmak için 
 
 Bu makalenin [Visual Studio Code tabanlı bir sürümü](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) de vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1846 veya sonraki bir sürümü.
@@ -107,7 +107,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
 
 İsterseniz, [işlevi yerel olarak çalıştırmayı](#run-the-function-locally) atlayıp dosya içeriğini daha sonra incelemenizi sağlayabilirsiniz.
 
-### <a name="__init__py"></a>\_\_init\_\_. Kopyala
+#### <a name="__init__py"></a>\_\_init\_\_. Kopyala
 
 *\_\_init\_\_. Kopyala* , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir `main()` Python işlevi içeriyor.
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 HTTP tetikleyicisi için işlev, `req` değişkende istek verilerini alır, *function. JSON*içinde tanımlanmıştır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. *Function. JSON*içinde `$return` olarak tanımlanan Return nesnesi, [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md).
 
-### <a name="functionjson"></a>Function. JSON
+#### <a name="functionjson"></a>function. JSON
 
 *function. JSON* , tetikleyici türü de dahil olmak üzere işlevin giriş ve çıkış `bindings` tanımlayan bir yapılandırma dosyasıdır. İsterseniz farklı bir Python dosyası çağırmak için `scriptFile` değiştirebilirsiniz.
 
@@ -199,7 +199,7 @@ Hazırsanız, işlevler ana bilgisayarını durdurmak için **Ctrl**+**C** ' yi 
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>İşleviniz için destekleyici Azure kaynakları oluşturma
 
-İşlev kodunuzu Azure 'a dağıtmak için üç kaynak oluşturmanız gerekir:
+İşlev kodunuzu Azure 'a dağıtabilmeniz için önce üç kaynak oluşturmanız gerekir:
 
 - İlgili kaynaklar için mantıksal kapsayıcı olan bir kaynak grubu.
 - Projelerinizle ilgili durumu ve diğer bilgileri tutan bir Azure depolama hesabı.

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261373"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116484"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,14 +39,14 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 >[!NOTE]
 > Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sürümü 1.0.65 ile test edilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Öğreticiyi doldurun: Ilk Azure ML denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md) :
     * Çalışma alanı oluşturma
     * Öğreticiler Not defterini çalışma alanındaki klasörünüze kopyalayın.
     * Bulut tabanlı bir işlem örneği oluşturun.
 
-* Klonlanan **öğreticiler** klasörünüzde **img-Classification-part1-eğitim. ipynb** Not defterini açın. 
+* Klonlanan *öğreticiler/görüntü-sınıflandırma-mnist-Data* klasöründe *img-Classification-part1-eğitim. ipynb* Not defterini açın. 
 
 
 Öğretici ve ilgili **Utils.py** dosyası, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak isterseniz [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Bu öğreticinin bağımlılıklarını yüklemek için `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` çalıştırın.
@@ -183,7 +183,7 @@ mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
 
 ### <a name="display-some-sample-images"></a>Bazı örnek görüntüleri gösterme
 
-Sıkıştırılmış dosyaları `numpy` dizilerine yükleyin. Ardından `matplotlib` kullanarak, üst kısımlarında etiketleriyle veri kümesinden 30 rastgele görüntü çizin. Bu adım, bir `util.py` dosyasına dahil edilen `load_data` bir işlev gerektirir. Bu dosya örnek klasöründe bulunur. Bu not defteriyle aynı klasöre yerleştirildiğinden emin olun. `load_data` İşlevi yalnızca sıkıştırılmış dosyalar numpy diziye ayrıştırır.
+Sıkıştırılmış dosyaları `numpy` dizilerine yükleyin. Ardından `matplotlib` kullanarak, üst kısımlarında etiketleriyle veri kümesinden 30 rastgele görüntü çizin. Bu adım, bir `util.py` dosyasına dahil edilen `load_data` bir işlev gerektirir. Bu dosya örnek klasöründe bulunur. Bu not defteriyle aynı klasöre yerleştirildiğinden emin olun. `load_data` işlevi, sıkıştırılmış dosyaları yalnızca sayısal tuş takımı dizileri olarak ayrıştırır.
 
 ```python
 # make sure utils.py is in the same directory as this code
@@ -304,13 +304,13 @@ Betiğin verileri nasıl aldığına ve modelleri nasıl kaydettiğine dikkat ed
 
 ### <a name="create-an-estimator"></a>Tahmin aracı oluşturma
 
-Bir [sköğrenme tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) nesnesi, çalıştırmayı göndermek için kullanılır. Şu öğeleri için aşağıdaki kodu çalıştırın ve tahmin aracınızı oluşturun:
+Bir [sköğrenme tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) nesnesi, çalıştırmayı göndermek için kullanılır. Bu öğeleri tanımlamak için aşağıdaki kodu çalıştırarak tahmin aracı 'nizi oluşturun:
 
-* Tahmin aracı nesnesinin adı: `est`.
+* Tahmin aracı nesnesinin adı, `est`.
 * Betiklerinizi içeren dizin. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
-* Bilgi işlem hedefi. Bu örnekte oluşturduğunuz Azure Machine Learning işlem kümesini kullanacaksınız.
-* Eğitim betiğinin adı: **train.py**.
-* Eğitin betiğinden gerekli parametreler.
+* Bilgi işlem hedefi. Bu durumda, oluşturduğunuz Azure Machine Learning işlem kümesini kullanırsınız.
+* Eğitim betiği adı, **train.py**.
+* Eğitim betiğiyle gerekli parametreler.
 
 Bu öğreticide, bu AmlCompute hedefidir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **Data_folder** , veri kümesini kullanacak şekilde ayarlanır. İlk olarak, eğitim için gereken bağımlılıkları belirten bir ortam nesnesi oluşturun. 
 

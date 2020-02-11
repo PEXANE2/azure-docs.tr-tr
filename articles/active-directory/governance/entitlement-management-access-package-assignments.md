@@ -16,16 +16,16 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74553983"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120436"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma
 
-Azure AD Yetkilendirme Yönetimi 'nde, paketlere kimlerin atandığını, ilkelerini ve durumunu görebilirsiniz. Bir erişim paketinin uygun bir ilkesi varsa, kullanıcıyı da bir erişim paketine doğrudan atayabilirsiniz. Bu makalede, bir erişim paketleri için atamaları görüntüleme, ekleme ve kaldırma işlemlerinin nasıl yapılacağı açıklanır.
+Azure AD Yetkilendirme Yönetimi 'nde, paketlere kimlerin atandığını, ilkelerini ve durumunu görebilirsiniz. Bir erişim paketinin uygun bir ilkesi varsa, kullanıcıyı da bir erişim paketine doğrudan atayabilirsiniz. Bu makalede erişim paketleri için atamaları görüntüleme, ekleme ve kaldırma işlemlerinin nasıl yapılacağı açıklanır.
 
 ## <a name="view-who-has-an-assignment"></a>Kimin atamaya sahip olduğunu görüntüleme
 
@@ -48,6 +48,10 @@ Azure AD Yetkilendirme Yönetimi 'nde, paketlere kimlerin atandığını, ilkele
 1. Süre biten atamaları görmek için, filtre durumuna tıklayın ve süre **bitti**' yi seçin.
 
 1. Filtrelenmiş listenin CSV dosyasını indirmek için **İndir**' e tıklayın.
+
+### <a name="viewing-assignments-programmatically"></a>Atamaları programlı görüntüleme
+
+Ayrıca, Microsoft Graph kullanarak bir erişim paketindeki atamaları alabilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` iznine sahip bir uygulamayla uygun bir roldeki kullanıcı, [Accesspackageatamaları listelemek](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)için API 'yi çağırabilir.
 
 ## <a name="directly-assign-a-user"></a>Doğrudan kullanıcı atama
 
@@ -76,6 +80,10 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 1. Seçili kullanıcıları doğrudan erişim paketine atamak için **Ekle** ' ye tıklayın.
 
     Birkaç dakika sonra, atamalar listesinde kullanıcıları görmek için **Yenile** ' ye tıklayın.
+
+### <a name="directly-assigning-users-programmatically"></a>Kullanıcı aracılığıyla doğrudan kullanıcı atama
+
+Ayrıca, Microsoft Graph kullanarak bir kullanıcıyı doğrudan bir erişim paketine atayabilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` iznine sahip bir uygulamayla uygun bir roldeki kullanıcı, [bir Accesspackageatamaisteği oluşturmak](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)için API 'yi çağırabilir.
 
 ## <a name="remove-an-assignment"></a>Atama kaldırma
 

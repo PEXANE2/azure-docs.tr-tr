@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722263"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116751"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi işlem hatlarını zamanlayın
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>Bir zamanlama oluşturun
 
 Bir işlem hattını yineleme temelinde çalıştırmak için bir zamanlama oluşturacaksınız. Bir `Schedule` işlem hattını, denemeyi ve bir tetikleyiciyi ilişkilendirir. Tetikleyici, çalışma veya değişiklik için izlenecek bir dizin belirten bir veri deposu yolu arasındaki beklemeyi açıklayan bir`ScheduleRecurrence` olabilir. Her iki durumda da, işlem hattı tanımlayıcısı ve zamanlamanın oluşturulacağı denemenin adı gerekir.
+
+Python dosyanızın en üstünde `Schedule` ve `ScheduleRecurrence` sınıfları içeri aktarın:
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>Zamana dayalı zamanlama oluşturma
 
@@ -141,3 +148,4 @@ Daha fazla bilgi için bkz.
 
 * İşlem [hatları](concept-ml-pipelines.md) hakkında daha fazla bilgi
 * [Jupyıter ile Azure Machine Learning araştırma](samples-notebooks.md) hakkında daha fazla bilgi edinin
+

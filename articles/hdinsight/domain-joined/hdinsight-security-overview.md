@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053731"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122118"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -87,7 +87,7 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 |  | Düzenli aralıklarla [Işletim sistemi düzeltme eki uygulama](../hdinsight-os-patching.md) | Müşteri |
 | Ağ güvenliği | [Sanal ağ](../hdinsight-plan-virtual-network-deployment.md) yapılandırma |
 |  | [Gelen ağ güvenlik grubu (NSG) kurallarını](../hdinsight-plan-virtual-network-deployment.md#networktraffic) yapılandırma | Müşteri |
-|  | Güvenlik duvarıyla [giden trafik kısıtlamasını](../hdinsight-restrict-outbound-traffic.md) yapılandırma (Önizleme) | Müşteri |
+|  | Güvenlik duvarıyla [giden trafik kısıtlamasını](../hdinsight-restrict-outbound-traffic.md) yapılandırma | Müşteri |
 | Sanallaştırılmış altyapı | Yok | HDInsight (bulut sağlayıcısı) |
 | Fiziksel altyapı güvenliği | Yok | HDInsight (bulut sağlayıcısı) |
 

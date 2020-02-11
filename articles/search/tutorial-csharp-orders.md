@@ -3,17 +3,17 @@ title: C#sonuçları sipariş etme öğreticisi
 titleSuffix: Azure Cognitive Search
 description: Bu öğreticide, arama sonuçlarının nasıl sipariş yapılacağı gösterilmektedir. Önceki bir oteller projesinde, birincil özelliğe göre sıralama, ikincil özellik ve yükseltme ölçütü eklemek için bir Puanlama profili içerir.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112676"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121551"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Öğretici: sonuçları sıralama-Azure Bilişsel Arama
 

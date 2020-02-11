@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982798"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114060"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -51,9 +51,9 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 **Inputclaim** öğesi, bir kerelik parola Protokolü sağlayıcısına göndermek için gereken taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
 
-| Claimreferenceıd | Gereklidir | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Evet | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| tanımlayıcı | Yes | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -61,9 +61,9 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 **Outputclaim** öğesi, tek seferlik parola Protokolü sağlayıcısı tarafından oluşturulan taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
 
-| Claimreferenceıd | Gereklidir | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| otpGenerated | Evet | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
+| otpGenerated | Yes | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -71,13 +71,13 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 Kod oluşturmayı ve bakımını yapılandırmak için aşağıdaki ayarlar kullanılabilir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60`; Maksimum: `1200`; Varsayılan: `600`. |
 | Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
 | CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
 | NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
-| İşlem | Evet | Gerçekleştirilecek işlem. Olası değerler: `GenerateCode`veya `VerifyCode`. |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değerler: `GenerateCode`veya `VerifyCode`. |
 | ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="returning-error-message"></a>Hata iletisi döndürülüyor
@@ -117,10 +117,10 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için yapılandı
 
 **Inputclaim** öğesi, bir kerelik parola Protokolü sağlayıcısına göndermek için gereken taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
 
-| Claimreferenceıd | Gereklidir | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Evet | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
-| otpToVerify | Evet | Kullanıcı tarafından belirtilen doğrulama kodu. |
+| tanımlayıcı | Yes | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| otpToVerify | Yes | Kullanıcı tarafından belirtilen doğrulama kodu. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
@@ -134,7 +134,7 @@ Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkı
 
 Aşağıdaki ayarlar, kod doğrulama hatası üzerine görüntülenecek hata iletisini yapılandırmak için kullanılabilir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
 | UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
@@ -168,3 +168,10 @@ Aşağıdaki örnek `TechnicalProfile` bir kodu doğrulamak için kullanılır:
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Özel e-posta doğrulamayla bir kerelik parola technial profili kullanma örneği için aşağıdaki makaleye bakın:
+
+- [Azure Active Directory B2C özel e-posta doğrulaması](custom-email.md)
+

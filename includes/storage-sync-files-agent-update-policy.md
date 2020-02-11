@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391821"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123170"
 ---
 Azure Dosya Eşitleme Aracısı, yeni işlevsellik eklemek ve sorunları gidermek için düzenli olarak güncelleştirilir. Microsoft Update, Azure Dosya Eşitleme aracısına ait güncelleştirmeleri kullanıma almak için yapılandırmanızı öneririz.
 
@@ -40,7 +40,7 @@ Aşağıdaki yönergelerde, değişiklikler yapmanız gerekiyorsa, yükleyiciyi 
 Bir PowerShell konsolu açın ve eşitleme aracısını yüklediğiniz dizine gidin ve sunucu cmdlet 'lerini içeri aktarın. Bu, varsayılan olarak şuna benzer:
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
-Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
+Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
 Geçerli ilke ayarını denetlemek ve değiştirmek istediğinizi öğrenmek için `Get-StorageSyncAgentAutoUpdatePolicy` çalıştırabilirsiniz.

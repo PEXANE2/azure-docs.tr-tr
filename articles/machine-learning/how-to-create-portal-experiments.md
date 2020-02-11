@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046106"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116892"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -60,7 +60,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
     1. Veri kümenize benzersiz bir ad verin ve isteğe bağlı bir açıklama sağlayın. 
 
-    1. **İleri**' yi seçerek, çalışma alanınız ile otomatik olarak oluşturulan varsayılan depolama kapsayıcısına yükleyin veya deneme için kullanmak istediğiniz bir depolama kapsayıcısını seçin. 
+    1. **Veri deposu ve dosya seçim formunu**açmak için **İleri ' yi** seçin. Bu formda veri kümenizin nereye yükleneceğini seçersiniz; Çalışma alanım ile otomatik olarak oluşturulan varsayılan depolama kapsayıcısı veya deneme için kullanmak istediğiniz bir depolama kapsayıcısı seçin. 
 
     1. Doğruluk için **ayarları ve önizleme** formunu gözden geçirin. Form, dosya türüne göre akıllıca doldurulur. 
 
@@ -78,7 +78,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
             
         **İleri ' yi seçin.**
 
-    1. **Ayrıntıları Onayla** formu, daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulmuş bilgilerin bir özetidir. Ayrıca, profil oluşturma etkinleştirilmiş bir işlem kullanarak veri kümenizi profil oluşturma seçeneğiniz de vardır. [Veri profili oluşturma](#profile)hakkında daha fazla bilgi edinin.
+    1. **Ayrıntıları Onayla** formu, daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulmuş bilgilerin bir özetidir. Ayrıca, profil oluşturma etkinleştirilmiş bir işlem kullanarak veri kümeniz için bir veri profili oluşturma seçeneğiniz de vardır. [Veri profili oluşturma](#profile)hakkında daha fazla bilgi edinin.
 
         **İleri**’yi seçin.
 1. Yeni oluşturduğunuz veri kümenizi göründüğünde seçin. Ayrıca, veri kümesinin ve örnek istatistiklerin önizlemesini de görüntüleyebilirsiniz. 
@@ -97,7 +97,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
     Sanal makine boyutu| İşlem için sanal makine boyutunu seçin.
     En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir. İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
     
-    **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
+    **Oluştur**'u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
 
     >[!NOTE]
     > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](#profile) bölümü).
@@ -222,7 +222,7 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 
     Alan| Değer
     ----|----
-    Adı| Dağıtımınız için benzersiz bir ad girin.
+    Ad| Dağıtımınız için benzersiz bir ad girin.
     Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)* .
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514844"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120827"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulama ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,16 +48,16 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Adı|Açıklama|Gereklidir|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |kimlik doğrulama-temel|Kök öğe.|Yes|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Adı|Açıklama|Gereklidir|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|Yok|
-|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|Yok|
+|parola|Temel kimlik bilgisinin parolasını belirtir.|Yes|Yok|
 
 ### <a name="usage"></a>Kullanım
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
@@ -88,16 +88,16 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Adı|Açıklama|Gereklidir|  
+|Ad|Açıklama|Gerekli|  
 |----------|-----------------|--------------|  
 |kimlik doğrulama-sertifika|Kök öğe.|Yes|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Adı|Açıklama|Gereklidir|Varsayılan|  
+|Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|#c0|İstemci sertifikası için parmak izi.|@No__t_0 ya da `certificate-id` mevcut olmalıdır.|Yok|  
-|sertifika kimliği|Sertifika kaynağı adı.|@No__t_0 ya da `certificate-id` mevcut olmalıdır.|Yok|  
+|thumbprint|İstemci sertifikası için parmak izi.|`thumbprint` ya da `certificate-id` mevcut olmalıdır.|Yok|  
+|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint` ya da `certificate-id` mevcut olmalıdır.|Yok|  
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  
@@ -147,17 +147,17 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Adı|Açıklama|Gereklidir|  
+|Ad|Açıklama|Gerekli|  
 |----------|-----------------|--------------|  
 |kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Yes|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Adı|Açıklama|Gereklidir|Varsayılan|  
+|Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|Kaynak|dizisinde. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI URI 'SI.|Yes|Yok|  
-|çıkış-belirteç-değişken-adı|dizisinde. @No__t_0 nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı. |Hayır|Yok|  
-|yoksayma-hata|Boolean. @No__t_0 olarak ayarlanırsa, bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|yanlış|  
+|resource|Dizisinde. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|Yok|  
+|çıkış-belirteç-değişken-adı|Dizisinde. `string`nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı. |Hayır|Yok|  
+|yoksayma-hata|Boolean. `true`olarak ayarlanırsa, bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|false|  
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  

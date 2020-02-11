@@ -3,8 +3,8 @@ title: Klasik 'dan Azure Resource Manager 'e geçiş planlaması
 description: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: 460db5a3c836ecb35fd6c5943c88d32516d91674
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 91af575e0326d773143fe15711694f939144974a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969869"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121992"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager harika özellikler sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları çok önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir.
@@ -31,7 +31,7 @@ Geçiş yolculuğunun dört genel aşaması vardır:
 
 ![Geçiş aşamaları](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planlama
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Teknik hususlar ve avantajları
 
@@ -44,7 +44,7 @@ Teknik gereksinim boyutunuza, coğrafi ve işletimsel uygulamalara bağlı olara
 5. İşletimsel takımlar artık hem klasik hem de Azure Resource Manager uygulamalar/VM 'Leri destekliyor mu?
 6. (Varsa) VM dağıtımınızı, yönetimini, izlemeyi ve raporlama işlemlerinizi nasıl değiştirip Azure Resource Manager?  Dağıtım betiklerinizin güncellenmesi gerekiyor mu?
 7. Paydaşları (son kullanıcılar, uygulama sahipleri ve altyapı sahipleri) uyarmak için iletişim planı nedir?
-8. Ortamın karmaşıklığına bağlı olarak, uygulamanın son kullanıcılar ve uygulama sahipleri tarafından kullanılamadığı bir bakım dönemi olması gerekir mi?  Öyleyse ne kadar süreyle kullanmıştı?
+8. Ortamın karmaşıklığına bağlı olarak, uygulamanın son kullanıcılar ve uygulama sahipleri tarafından kullanılamadığı bir bakım dönemi olması gerekir mi?  Öyleyse, ne kadar süreyle?
 9. Paydaşların Azure Resource Manager konusunda bilgili ve proficde emin olmak için eğitim planı nedir?
 10. Geçiş için program yönetimi veya proje yönetim planı nedir?
 11. Azure Resource Manager geçişi ve diğer ilgili teknoloji yol haritaları için zaman çizelgeleri nelerdir?  En iyi şekilde hizalansın mı?

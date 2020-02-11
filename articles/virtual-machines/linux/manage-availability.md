@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5742ed346c6761dd443d6252e5c9e457fa952b87
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 55c9075f28a9ff7e28fcb01352494cd6cff73f14
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035896"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121914"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux sanal makinelerinin kullanılabilirliğini yönetme
 
 Azure 'da Linux uygulamanız için yüksek kullanılabilirlik sağlamak üzere birden çok sanal makine ayarlama ve yönetme yolları hakkında bilgi edinin. [Windows sanal makinelerinin kullanılabilirliğini de yönetebilirsiniz](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-Kaynak Yöneticisi dağıtım modelinde CLı kullanarak bir kullanılabilirlik kümesi oluşturma yönergeleri için bkz. [kullanılabilirlik kümelerinizi yönetmek için Azure availset: komutlar](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 

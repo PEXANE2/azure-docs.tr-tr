@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f40ed05391c36f820940d5351373ecd8f9492b17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422499"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120146"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yaygın senaryolar
 
@@ -61,7 +61,7 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 
 1. [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Erişim paketi bul
-1. [Erişim isteği](entitlement-management-request-access.md#request-an-access-package)
+1. [Erişim iste](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Onaylayan: istekleri kaynaklara onaylama
 
@@ -94,7 +94,7 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 
 1. Kişinizden aldığınız erişim paketi bağlantısını bulun
 1. [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Erişim isteği](entitlement-management-request-access.md#request-an-access-package)
+1. [Erişim iste](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Onaylayan: istekleri kaynaklara onaylama
 
@@ -150,6 +150,10 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 
 1. [Bir kullanıcı için erişim paketlerini görüntüleme](entitlement-management-reports.md#view-access-packages-for-a-user)
 1. [Bir kullanıcı için kaynak atamalarını görüntüleme](entitlement-management-reports.md#view-resource-assignments-for-a-user)
+
+## <a name="programmatic-administration"></a>Programlı yönetim
+
+Ayrıca, Microsoft Graph kullanarak erişim paketlerini, katalogları, ilkeleri, istekleri ve atamaları yönetebilirsiniz.  Temsilci olarak atanan `EntitlementManagement.ReadWrite.All` iznine sahip bir uygulamayla uygun bir roldeki kullanıcı, [Yetkilendirme YÖNETIMI API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)'sini çağırabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

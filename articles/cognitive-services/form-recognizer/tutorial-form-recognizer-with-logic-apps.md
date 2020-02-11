@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773091"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118273"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Öğretici: faturaları çözümlemek için Azure Logic Apps ile form tanıyıcı kullanma
 
@@ -31,13 +31,9 @@ Bu öğreticinin şu şekilde ele alınmaktadır:
 > * Mantıksal uygulamayı form tanıyıcı kaynağı kullanacak şekilde yapılandırma
 > * Mantıksal uygulamayı çalıştırarak iş akışını test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
-
-## <a name="request-access-for-form-recognizer"></a>Form tanıyıcı için erişim isteyin
-
-Form tanıyıcı, sınırlı erişim önizlemesinde kullanılabilir. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz. İsteğiniz Azure bilişsel hizmetler ekibi tarafından onaylandıktan sonra, hizmete erişmek için yönergeler içeren bir e-posta alacaksınız.
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Çözümlenecek faturayı anlayın
 
@@ -131,7 +127,7 @@ Faturaları çözümlemek için form tanıyıcı hizmetini kullanabilmeniz için
     > [!div class="mx-imgBorder"]
     > Form tanıyıcı için bağlantı adı ![](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    **Oluştur**’ tıklayın.
+    **Oluştur**'a tıklayın.
 
 1. **Modeli eğitme** iletişim kutusunda, **kaynak**için örnek verileri karşıya yüklediğiniz kapsayıcının URL 'sini girin.
 

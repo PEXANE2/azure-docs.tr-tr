@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379460"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118549"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -51,17 +51,9 @@ Form tanıyıcı Ayrıca, restoranlar, gaz istasyonları, perakende vb. ([örnek
 
 Form tanıyıcı, yüksek tanımlı optik karakter tanıma (OCR) kullanarak metin ve tablo yapısını (metinle ilişkili satır ve sütun numaraları) de ayıklayabilir. 
 
-## <a name="where-do-i-start"></a>Nereden başlamalıyım?
+## <a name="get-started"></a>başlarken
 
-**1. Adım:** Erişim iste:
-
-Form tanıyıcı, sınırlı erişim önizlemesinde kullanılabilir. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz. Form, siz, şirketiniz ve form tanıyıcıyı kullanacağınız senaryoyla ilgili bilgiler ister.
-
-**2. Adım:** Azure portal form tanıyıcı kaynağı oluşturun:
-
-Form tanıyıcı kullanma erişimi verildiğinde, birkaç bağlantı ve kaynakla bir hoş geldiniz e-postası alacaksınız. Bu iletideki "Azure portal" bağlantısını kullanarak Azure portal açın ve bir form tanıyıcı kaynağı oluşturun.
-
-**Adım 3:** Formlarınızın verilerini ayıklayın:
+Formlarınızın verilerini ayıklamaya başlamak için hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
 * Özel-formlarınızı modelize eğitme
   * Etiketler olmadan eğitme
@@ -76,9 +68,7 @@ Form tanıyıcı kullanma erişimi verildiğinde, birkaç bağlantı ve kaynakla
 * Düzen-formlardan metin ve tablo yapısını Ayıkla
   * [Hızlı başlangıç: Python kullanarak düzen verilerini ayıklama](quickstarts/python-layout.md)
 
-Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
-
-**4. Adım:** REST API 'Leri gözden geçirin:
+### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
 
 Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için aşağıdaki API 'Leri kullanacaksınız.
 

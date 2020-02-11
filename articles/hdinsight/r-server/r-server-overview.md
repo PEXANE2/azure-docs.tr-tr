@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321667"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122362"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
@@ -35,7 +35,7 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft ve açık kaynaklı AI yeniliği
 
-  ML Hizmetleri, fiziksel belleğin boyutundan daha [büyük olan veri](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) boyutları üzerinde çalışabilen ve ' deki çok çeşitli platformlar üzerinde çalışabilen, geri [alınamaz](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), geri alınamaz, [iptal](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)edilebilir ve bir dağıtılmış şekilde. Microsoft 'un özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
+  ML Hizmetleri, fiziksel belleğin boyutundan daha [büyük olan veri](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) boyutları üzerinde çalışabilen ve dağıtılmış bir şekilde çok çeşitli platformlarda çalışabilen, geri [alınamaz](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), geri alınamaz, [iptal](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)edilebilir ve geri yüklenmiş bir algoritma kümesi içerir. Microsoft 'un özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
   
   ML Hizmetleri, bu Microsoft yeniliklerini ve katkılarını açık kaynaklı topluluktan (R, Python ve AI araç takımları), hepsi de tek bir kurumsal sınıf platformun üzerine köprüler. Tüm R veya Python açık kaynaklı makine öğrenimi paketleri, Microsoft 'un herhangi bir özel yeniliği ile yan yana çalışabilir.
 
@@ -50,6 +50,9 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
+
+> [!NOTE]  
+> HDInsight üzerinde ML Hizmetleri küme türü yalnızca HDInsight 3,6 ' de desteklenir. HDInsight 3,6, 31 Aralık 2020 tarihinde devre dışı bırakılacak şekilde zamanlandı.
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri 'nin temel özellikleri
 
@@ -116,7 +119,7 @@ Ayrıca, **RxHadoopMR** çağrısında bulunan Hadoop ANAHTARLARıNı kullanarak
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
-### <a name="scale-your-cluster"></a>Kümenizi ölçeklendirme
+### <a name="scale-your-cluster"></a>Kümenizi ölçeklendirin
 
 HDInsight 'ta mevcut bir ML Hizmetleri kümesi, Portal üzerinden yukarı veya aşağı ölçeklendirilebilir. Ölçeği büyüerek, daha büyük işlem görevleri için ihtiyaç duyduğunuz ek kapasiteyi elde edebilir veya boşta kaldığında bir kümeyi geri ölçeklendirebilirsiniz. Bir kümenin ölçeklendirilmesi hakkında yönergeler için bkz. [HDInsight kümelerini yönetme](../hdinsight-administer-use-portal-linux.md).
 

@@ -2,13 +2,13 @@
 title: EmptyDir birimini kapsayıcı grubuna bağla
 description: Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için emptyDir birimini nasıl bağlayacağınızı öğrenin
 ms.topic: article
-ms.date: 02/08/2018
-ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/31/2020
+ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552466"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117744"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances bir emptyDir birimi bağlama
 
@@ -29,18 +29,20 @@ Bir *Emptydir* birimi için bazı örnekler kullanılmıştır:
 
 *Emptydir* birimindeki veriler, kapsayıcı Kilitlenmelerinde kalıcı hale getirilir. Ancak yeniden başlatılan kapsayıcılar, verileri bir *Emptydir* biriminde kalıcı hale getirmek için garanti edilmez. Bir kapsayıcı grubunu durdurursanız *Emptydir* birimi kalıcı olmaz.
 
+Linux *Emptydir* biriminin en büyük boyutu 50 GB 'dir.
+
 ## <a name="mount-an-emptydir-volume"></a>EmptyDir birimi bağlama
 
-Bir boş dizin birimini bir kapsayıcı örneğine bağlamak için bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups)kullanarak dağıtmanız gerekir.
+Bir dizin birimini bir kapsayıcı örneğine bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), [YAML dosyası](container-instances-reference-yaml.md)ya da bir kapsayıcı grubunu dağıtmak için diğer programlı yöntemler kullanarak dağıtabilirsiniz.
 
-İlk olarak, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. Ardından, bir kapsayıcı grubundaki *Emptydir* birimini bağlamak istediğiniz her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümündeki `volumeMounts` dizisini doldurun.
+İlk olarak, dosyanın kapsayıcı grubu `properties` bölümünde `volumes` diziyi doldurun. Ardından, bir kapsayıcı grubundaki *Emptydir* birimini bağlamak istediğiniz her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümündeki `volumeMounts` dizisini doldurun.
 
 Örneğin, aşağıdaki Kaynak Yöneticisi şablonu, her biri *Emptydir* birimini bağlayan iki kapsayıcıyı içeren bir kapsayıcı grubu oluşturur:
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Azure Resource Manager şablonuyla kapsayıcı örneği dağıtımına bir örnek görmek için bkz. [Azure Container Instances birden çok Kapsayıcılı grupları dağıtma](container-instances-multi-container-group.md).
+Kapsayıcı grubu dağıtımına ait örnekleri görmek için bkz. [Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtma](container-instances-multi-container-group.md) ve [YAML dosyası kullanarak çok kapsayıcılı bir grup dağıtma](container-instances-multi-container-yaml.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

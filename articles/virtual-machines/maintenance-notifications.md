@@ -1,22 +1,18 @@
 ---
-title: Azure VM 'Leri için bakım bildirimleri | Microsoft Docs
+title: Bakım bildirimleri
 description: Azure 'da çalışan sanal makineler için bakım bildirimlerine genel bakış.
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 83a1f3921272f5ec15ae4d1f4220652f56679c96
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 68159577cb31145be5063bb19af6db71ca1727bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903214"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115688"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
@@ -29,7 +25,7 @@ Azure sanal makine konak altyapısının güvenilirlik, performans ve güvenliğ
 
 Yeniden başlatma gerektiren planlı bakım dalgaları 'nda zamanlanır. Her bir dalga, farklı kapsama (bölgelere) sahiptir.
 
-- Bir dalga, müşterilere yönelik bir bildirimle başlar. Varsayılan olarak bildirim, hizmet yöneticisi ve ortak yöneticilerine gönderilir. [Etkinlik günlüğü uyarılarını](../service-health/alerts-activity-log-service-notifications.md)kullanarak e-posta, SMS ve Web kancaları gibi daha fazla alıcı ve mesajlaşma seçeneği ekleyebilirsiniz.  
+- Bir dalga, müşterilere yönelik bir bildirimle başlar. Varsayılan olarak, bildirim hizmet yöneticisine ve ortak yöneticilere gönderilir. [Etkinlik günlüğü uyarılarını](../service-health/alerts-activity-log-service-notifications.md)kullanarak e-posta, SMS ve Web kancaları gibi daha fazla alıcı ve mesajlaşma seçeneği ekleyebilirsiniz.  
 - Bir bildirim alındıktan sonra, bir *self servis penceresi* kullanılabilir hale getirilir. Bu pencere sırasında, sanal makinelerinizin hangilerinin etkilendiğini sorgulayabilir ve kendi zamanlama gereksinimlerinize göre bakım başlatabilirsiniz. Self servis penceresi genellikle yaklaşık 35 gündür.
 - Self Servis penceresinden sonra, *Zamanlanmış bir bakım penceresi* başlar. Bu pencere sırasında, Azure tarafından zamanlama ve gerekli bakım sanal makinenize uygulanıyor. 
 

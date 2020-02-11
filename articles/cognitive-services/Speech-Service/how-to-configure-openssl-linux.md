@@ -1,5 +1,5 @@
 ---
-title: Linux için OpenSSL 'yi yapılandırma
+title: Linux için OpenSSL’yi yapılandırma
 titleSuffix: Azure Cognitive Services
 description: Linux için OpenSSL 'yi nasıl yapılandıracağınızı öğrenin.
 services: cognitive-services
@@ -10,26 +10,46 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: cadf31dede8ee81323076013d00b9431f597bda6
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156497"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119988"
 ---
-# <a name="configure-openssl-for-linux"></a>Linux için OpenSSL 'yi yapılandırma
+# <a name="configure-openssl-for-linux"></a>Linux için OpenSSL’yi yapılandırma
 
 1\.9.0 öncesinde herhangi bir konuşma SDK sürümü kullanılırken, [OpenSSL](https://www.openssl.org) dinamik olarak konak sistemi sürümüne yapılandırılır. Konuşma SDK 'sının sonraki sürümlerinde OpenSSL (sürüm [1.1.1 b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)), konuşma SDK 'sının temel kitaplığına statik olarak bağlanır.
 
-## <a name="troubleshoot-connectivity"></a>Bağlantı sorunlarını giderme
-
-Konuşma SDK 'sının 1.9.0 sürümünü kullanırken bağlantı hatalarıyla karşılaşırsanız, `ssl/certs` dizininin Linux dosya sisteminde bulunan `/usr/lib` dizininde bulunduğundan emin olun. `ssl/certs` Dizin *yoksa*, aşağıdaki komutu kullanarak OpenSSL 'nin sisteminizde yüklü olduğunu kontrol edin:
-
+Bağlantıyı sağlamak için, OpenSSL sertifikalarının sisteminizde yüklü olduğunu doğrulayın. Bir komut çalıştırın:
 ```bash
-which openssl
+openssl version -d
 ```
 
-Ardından, OpenSSL `certs` dizinini bulun ve bu dizinin içeriğini `/usr/lib/ssl/certs` dizinine kopyalayın. Sonra, bağlantı sorunlarının çözümlenip çözümlenmediğini görmek için yeniden deneyin.
+Ubuntu/de, tabanlı sistemlerdeki çıkış şu şekilde olmalıdır:
+```
+OPENSSLDIR: "/usr/lib/ssl"
+```
+
+OPENSSLDIR altında `certs` alt dizin olup olmadığını denetleyin. Yukarıdaki örnekte `/usr/lib/ssl/certs`olacaktır.
+
+* `/usr/lib/ssl/certs` varsa ve çok sayıda ayrı sertifika dosyası içeriyorsa (`.crt` veya `.pem` uzantılı), başka eylemlere gerek yoktur.
+
+* OPENSSLDIR `/usr/lib/ssl` ' den başka bir şeydir ve/veya birden çok ayrı dosya yerine tek bir sertifika paketi dosyası varsa, sertifikaların nerede bulunabileceği göstermek için uygun bir SSL ortam değişkeni ayarlamanız gerekir.
+
+## <a name="examples"></a>Örnekler
+
+- OPENSSLDIR `/opt/ssl`. Birçok `.crt` veya `.pem` dosyası içeren `certs` alt dizini vardır.
+Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce `/opt/ssl/certs` göstermek için ortam değişkeni `SSL_CERT_DIR` ayarlayın. Örneğin:
+```bash
+SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+```
+
+- OPENSSLDIR `/etc/pki/tls`. Bir sertifika paketi dosyası (örneğin `ca-bundle.pem` veya `ca-bundle.crt`) vardır.
+Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce `/etc/pki/tls/ca-bundle.pem` göstermek için ortam değişkeni `SSL_CERT_FILE` ayarlayın. Örneğin:
+```bash
+SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

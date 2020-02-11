@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862841"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116260"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portal bir depolama hesabını izleme
 
@@ -25,6 +25,8 @@ ms.locfileid: "75862841"
 > Azure portal izleme verilerini inceleme ile ilişkili maliyetler vardır. Daha fazla bilgi için bkz. [depolama Analizi](storage-analytics.md).
 >
 > Azure dosyaları şu anda Depolama Analizi ölçümleri destekler, ancak günlüğe kaydetmeyi henüz desteklememektedir.
+>
+> Premium performans bloğu BLOB depolama hesapları, depolama analitik ölçümlerini desteklemez, ancak günlüğe kaydetmeyi destekler. REST API veya istemci kitaplığı aracılığıyla programlı bir şekilde günlük kaydını etkinleştirebilirsiniz. Premium performans blobu BLOB depolama hesaplarıyla ölçümleri görüntülemek istiyorsanız Azure [izleyici 'de Azure depolama ölçümlerini](storage-metrics-in-azure-monitor.md)kullanmayı göz önünde bulundurun.
 >
 > Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sorunlarını gidermek için Depolama Analizi ve diğer araçları kullanma hakkında ayrıntılı bir kılavuz için bkz. [izleme, tanılama ve sorun giderme Microsoft Azure depolama](storage-monitoring-diagnosing-troubleshooting.md).
 >

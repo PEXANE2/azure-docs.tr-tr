@@ -3,17 +3,17 @@ title: C#ilk uygulamanızı oluşturma öğreticisi
 titleSuffix: Azure Cognitive Search
 description: İlk C# arama uygulamanızı nasıl oluşturacağınızı öğrenin adım adım. Öğretici, GitHub 'da çalışan bir uygulamanın bağlantısını ve uygulamayı sıfırdan oluşturmak için tüm işlemleri sağlar. Azure Bilişsel Arama 'nin temel bileşenleri hakkında bilgi edinin.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112236"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121578"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#Öğretici: ilk uygulamanızı oluşturma-Azure Bilişsel Arama
 
@@ -25,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Model veri yapıları
 > * Web sayfası oluşturma
 > * Yöntemleri tanımlama
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
 Ayrıca, bir arama çağrısının ne olduğunu de öğreneceksiniz. Geliştirileceği koddaki anahtar deyimler aşağıdaki birkaç satırda kapsüllenir.
 
@@ -506,7 +506,7 @@ Azure Bilişsel Arama çağrısı **Runqueryasync** yöntemi içinde kapsülleni
 
 Şimdi gerçeği.
 
-### <a name="test-the-app"></a>Uygulamayı test etme
+### <a name="test-the-app"></a>Uygulamayı test edin
 
 Şimdi uygulamanın doğru şekilde çalıştığını kontrol edelim.
 

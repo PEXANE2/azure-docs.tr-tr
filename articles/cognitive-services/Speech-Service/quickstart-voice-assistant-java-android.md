@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: özel ses Yardımcısı, Java (Android)-konuşma h
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'sını kullanarak Android 'de Java 'da bir ses Yardımcısı uygulaması oluşturmayı öğrenin
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975967"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119734"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak Android 'de Java 'da ses Yardımcısı oluşturma
 
@@ -104,7 +104,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 ![](media/sdk/qs-java-android-assistant-designer-ui.png)
 
-## <a name="add-sample-code"></a>Örnek kod ekleme
+## <a name="add-sample-code"></a>Örnek kodu ekleme
 
 1. `MainActivity.java`açın ve içeriği şu kodla değiştirin:
 

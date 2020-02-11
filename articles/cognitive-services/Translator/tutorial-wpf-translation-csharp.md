@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978535"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118611"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile bir çeviri uygulaması oluşturma
 
@@ -40,8 +40,8 @@ Bu liste, bu öğreticide kullanılan bilişsel hizmetleri içerir. Her bir öze
 | Hizmet | Özellik | Açıklama |
 |---------|---------|-------------|
 | Translator Metni | [Dilleri al](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Metin çevirisi için desteklenen dillerin tüm listesini alın. |
-| Translator Metni | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 60 ' den fazla dile çevirin. |
-| Translator Metni | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
+| Translator Metni | [Çevir](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 60 ' den fazla dile çevirin. |
+| Translator Metni | [Acağı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
 | Bing Yazım Denetimi | [Yazım Denetimi](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Çeviri doğruluğunu artırmak için yazım hatalarını düzeltin. |
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -59,7 +59,7 @@ Devam etmeden önce şunlar gerekir:
 
 Yapmanız gereken ilk şey, Visual Studio 'da projemizi ayarladık.
 
-1. Visual Studio'yu açın. **Yeni proje oluştur**' u seçin.
+1. Visual Studio’yu açın. **Yeni proje oluştur**' u seçin.
 1. **Yeni proje oluştur**' da WPF uygulaması ' nı bulun ve seçin **(.NET Framework)** . Seçenekleri daraltmak için C# **dilden** seçim yapabilirsiniz.
 1. **İleri**' yi seçin ve ardından projenizin `MSTranslatorTextDemo`adını belirleyin.
 1. Framework sürümünü **.NET Framework 4.7.2** veya üzeri olarak ayarlayın ve **Oluştur**' u seçin.
@@ -114,14 +114,14 @@ Biz oluşturduğumuzun bir bakalım.
 
 Kullanıcı arabirimi şu bileşenleri içerir:
 
-| Adı | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 |------|------|-------------|
-| `FromLanguageComboBox` | ComboBox | Metin çevirisi için Microsoft Translator tarafından desteklenen dillerin listesini görüntüler. Kullanıcı çeviri yaptığı kaynak dili seçer. |
-| `ToLanguageComboBox` | ComboBox | `FromComboBox`dil listesini görüntüler, ancak kullanıcının çevirdiğini dili seçmek için kullanılır. |
+| `FromLanguageComboBox` | Öğesi | Metin çevirisi için Microsoft Translator tarafından desteklenen dillerin listesini görüntüler. Kullanıcı çeviri yaptığı kaynak dili seçer. |
+| `ToLanguageComboBox` | Öğesi | `FromComboBox`dil listesini görüntüler, ancak kullanıcının çevirdiğini dili seçmek için kullanılır. |
 | `TextToTranslate` | TextBox | Kullanıcının çevrilecek metin girmesine izin verir. |
 | `TranslateButton` | Düğme | Metni çevirmek için bu düğmeyi kullanın. |
-| `TranslatedTextLabel` | Etiket | Çeviriyi görüntüler. |
-| `DetectedLanguageLabel` | Etiket | Çevrilecek metnin algılanan dilini görüntüler (`TextToTranslate`). |
+| `TranslatedTextLabel` | Etiketle | Çeviriyi görüntüler. |
+| `DetectedLanguageLabel` | Etiketle | Çevrilecek metnin algılanan dilini görüntüler (`TextToTranslate`). |
 
 > [!NOTE]
 > Bu formu XAML kaynak kodunu kullanarak oluşturuyoruz, ancak formu Visual Studio 'daki düzenleyiciyle oluşturabilirsiniz.
@@ -322,7 +322,7 @@ Son bölümde kaldığınız yerden başladığımızda, uygulamamıza desteklen
    // In the following sections, we'll add code below this.
    ```
 
-`GetLanguagesForTranslate()` yöntemi bir HTTP GET isteği oluşturur ve isteğin kapsamını çeviri için desteklenen dillere sınırlamak için `scope=translation` sorgu dizesi parametresini kullanır. Desteklenen dillerin İngilizce olarak döndürülmesi için `en` değerine sahip `Accept-Language` üst bilgisi eklenir.
+`GetLanguagesForTranslate()` yöntemi bir HTTP GET isteği oluşturur ve isteğin kapsamını çeviri için desteklenen dillere sınırlamak için `scope=translation` sorgu dizesi parametresini kullanır. Desteklenen dillerin İngilizce olarak döndürülmesi için `Accept-Language` değerine sahip `en` üst bilgisi eklenir.
 
 JSON yanıtı ayrıştırılır ve bir sözlüğe dönüştürülür. Ardından dil kodları `languageCodes` üye değişkenine eklenir. Dil kodlarını ve kolay dil adlarını içeren anahtar/değer çiftleri döndürülür ve `languageCodesAndTitles` üye değişkenine eklenir. Formdaki açılan menülerde kolay adlar görüntülenir, ancak bu kodlar çeviriyi istemek için gereklidir.
 
@@ -571,7 +571,7 @@ Başarılı bir istekten sonra, `TranslatedTextLabel.Content`, çevrilmiş metni
 
 Bu, WPF kullanılarak oluşturulan bir çalışan çeviri uygulamasına sahipsiniz. Uygulamanızı çalıştırmak için, Visual Studio 'daki **Başlat** düğmesine tıklayın.
 
-## <a name="source-code"></a>Kaynak kodu
+## <a name="source-code"></a>Kaynak kod
 
 Bu proje için kaynak kodu GitHub ' da kullanılabilir.
 

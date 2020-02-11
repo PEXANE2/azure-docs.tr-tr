@@ -3,19 +3,19 @@ title: Konuşma SDK 'sını kullanarak konuşma amaçlarını tanımaC#
 titleSuffix: Azure Cognitive Services
 description: Bu kılavuzda, için C#konuşma SDK 'sını kullanarak konuşmadan amaçları tanımayı öğrenirsiniz.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805901"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120049"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>İçin konuşma SDK 'sını kullanarak konuşma amaçlarını tanımaC#
 
@@ -52,7 +52,7 @@ LUSıS üç tür anahtar kullanır:
 | --------- | ----------------------------------------------------- |
 | Yazma | LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar |
 | Başlangıç   | LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar   |
-| Uç nokta  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
+| Uç Nokta  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
 
 Bu kılavuz için uç nokta anahtar türüne ihtiyacınız vardır. Bu kılavuzda, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneği kullanılmaktadır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
@@ -91,12 +91,15 @@ Ardından, projeye kod eklersiniz.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. Belirtilen `Main()` yöntemi içinde aşağıdaki kodu ekleyin:
+1. Belirtilen `Main()` yöntemini aşağıdaki zaman uyumsuz eşdeğerleriyle değiştirin:
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. Burada gösterildiği gibi boş bir zaman uyumsuz yöntem `RecognizeIntentAsync()`oluşturun:
@@ -143,7 +146,7 @@ Amaçları eklemek için üç bağımsız değişken sağlamalısınız: LUSıS 
 | `intentName` | LUIS app’te tanımlandığı şekliyle amacın adı. Bu değer, LUO amaç adıyla tam olarak eşleşmelidir. |
 | `intentID` | Konuşma SDK’sı tarafından tanınan amaca atanan kimlik. Bu değer, istediğiniz her şey olabilir; LUSıS uygulamasında tanımlanan amaç adına karşılık gelmesi gerekmez. Örneğin, aynı kodla birden çok amaç işleniyorsa, bunlar için aynı kimliği kullanabilirsiniz. |
 
-Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `RecognizeIntentAsync()` yöntemindeki üç `AddIntent` satırını bu kodla değiştirin.
+Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `AddIntent` yöntemindeki üç `RecognizeIntentAsync()` satırını bu kodla değiştirin.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
@@ -173,7 +176,7 @@ Uygulama JSON sonucunu ayrıştırmıyor. Yalnızca konsol penceresinde JSON met
 
 ## <a name="specify-recognition-language"></a>Tanıma dilini belirtme
 
-LUIS varsayılan olarak ABD İngilizcesindeki (`en-us`) amaçları tanır. Konuşma yapılandırmasının `SpeechRecognitionLanguage` özelliğine yerel ayar kodu atayarak başka dillerde de amaçları tanıyabilirsiniz. Örneğin, Almanca 'nın amaçlarını tanımak üzere tanıyıcı oluşturmadan önce uygulamamızda `config.SpeechRecognitionLanguage = "de-de";` ekleyin. Daha fazla bilgi için bkz. [desteklenen diller](language-support.md#speech-to-text).
+LUIS varsayılan olarak ABD İngilizcesindeki (`en-us`) amaçları tanır. Konuşma yapılandırmasının `SpeechRecognitionLanguage` özelliğine yerel ayar kodu atayarak başka dillerde de amaçları tanıyabilirsiniz. Örneğin, Almanca 'nın amaçlarını tanımak üzere tanıyıcı oluşturmadan önce uygulamamızda `config.SpeechRecognitionLanguage = "de-de";` ekleyin. Daha fazla bilgi için bkz. [lusıs dil desteği](../LUIS/luis-language-support.md#languages-supported).
 
 ## <a name="continuous-recognition-from-a-file"></a>Dosyadan sürekli tanıma
 

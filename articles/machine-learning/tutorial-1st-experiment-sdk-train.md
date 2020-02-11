@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533429"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116542"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -31,11 +31,11 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 > * Portalda Eğitim sonuçlarını görüntüleme
 > * En iyi modeli alma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
 
-Öğreticinin bu kısmında, örnek Jupyter Not defteri ' nde kodu birinci bölüm sonunda açılan `tutorials/tutorial-1st-experiment-sdk-train.ipynb` çalıştırırsınız. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
+Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek Jupyter Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* 'de kodu çalıştırın. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
 
 ## <a name="open-the-notebook"></a>Not defterini açın
 
@@ -45,7 +45,7 @@ Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanı
 
 
 > [!Warning]
-> Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Not defteri `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, bu öğretici için **gereken tüm kod ve verileri** dahil değildir.
+> Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** Bu öğretici için **gereken tüm kod ve verileri** içeren Not defteri *öğreticileri/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-train. ipynb* .
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
 
@@ -133,7 +133,7 @@ Eğitim tamamlandıktan sonra, portalda deneye bir bağlantı getirmek için `ex
 experiment
 ```
 
-<table style="width:100%"><tr><th>Ad</th><th>Çalışma Alanı</th><th>Rapor sayfası</th><th>Belgeler Sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge Bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
 
@@ -216,5 +216,5 @@ Bu öğreticide, aşağıdaki görevleri yaptınız:
 > * Yüklenen veriler ve eğitimli scikit-modelleri öğrenme
 > * Görüntülenen eğitim sonuçları portalda ve modeller alındı
 
-[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile.
+[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile dağıtın.
 [Otomatik makine öğrenimi](tutorial-auto-train-models.md) denemeleri geliştirmeyi öğrenin.

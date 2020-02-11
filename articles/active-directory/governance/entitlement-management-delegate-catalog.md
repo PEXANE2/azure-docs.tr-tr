@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174386"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120186"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde Katalog oluşturucuları için erişim yönetimine temsilci seçme
 
-Yönetici olmayan kullanıcılara temsilci seçmek için, bu kullanıcıları kendi kataloglarını oluşturabilmeleri için Azure AD Yetkilendirme Yönetimi tanımlı Katalog Oluşturucu rolüne ekleyebilirsiniz. Bireysel kullanıcılar ekleyebilir veya üyeleri, daha sonra kataloglar oluşturabilebilen bir grup ekleyebilirsiniz.
+Katalog, kaynak ve erişim paketlerinin bir kapsayıcısıdır. İlgili kaynakları ve erişim paketlerini gruplamak istediğinizde bir katalog oluşturursunuz. Varsayılan olarak, genel yönetici veya Kullanıcı Yöneticisi [bir katalog oluşturabilir](entitlement-management-catalog-create.md)ve Katalog sahipleri olarak ek kullanıcılar ekleyebilir.
+
+Yönetici olmayan kullanıcılara temsilci seçmek için, bu kullanıcıları kendi kataloglarını oluşturabilmeleri için Azure AD Yetkilendirme Yönetimi tanımlı Katalog Oluşturucu rolüne ekleyebilirsiniz. Bireysel kullanıcılar ekleyebilir veya üyeleri, daha sonra kataloglar oluşturabilebilen bir grup ekleyebilirsiniz.  Katalog oluşturduktan sonra, kendilerine ait oldukları kaynakları daha sonra kataloglarına ekleyebilirler.
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>BT Yöneticisi olarak, bir katalog oluşturucuya temsilci seçme
 
@@ -45,7 +47,7 @@ Bir kullanıcıyı Katalog Oluşturucu rolüne atamak için aşağıdaki adımla
 
 1. **Seç**'e tıklayın.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Temsilci rollerinin Azure portal erişmesine izin ver
 

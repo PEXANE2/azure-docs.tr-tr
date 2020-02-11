@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937303"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121726"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS SSS
 
@@ -32,25 +32,25 @@ Azure DNS faturalandırma modeli, Azure DNS barındırılan DNS bölgelerinin sa
 
 Daha fazla bilgi için [Azure DNS fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/dns/)bakın.
 
-### <a name="what-is-the-sla-for-azure-dns"></a>Azure DNS için hani SLA sunulur?
+### <a name="what-is-the-sla-for-azure-dns"></a>Azure DNS SLA nedir?
 
 Azure, geçerli DNS isteklerinin en az bir Azure DNS ad sunucusundan %100 yanıt alacağını garanti eder.
 
 Daha fazla bilgi için [Azure DNS SLA sayfasına](https://azure.microsoft.com/support/legal/sla/dns)bakın.
 
-### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>DNS bölgesi nedir? DNS etki alanıyla aynı şey midir? 
+### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>DNS bölgesi nedir? Bu, bir DNS etki alanıyla aynı mı? 
 
 Etki alanı, etki alanı adı sisteminde benzersiz bir addır. Örneğin: contoso.com.
 
-DNS bölgesi, belirli bir etki alanının DNS kayıtlarını barındırmak için kullanılır. Örneğin, contoso.com etki alanı birkaç DNS kaydı içerebilir. Kayıtlar bir posta sunucusu için mail.contoso.com ve bir Web sitesi için www\.contoso.com içerebilir. Bu kayıtlar, DNS bölgesi contoso.com içinde barındırılır.
+DNS bölgesi belirli bir etki alanıyla ilgili DNS kayıtlarını barındırmak için kullanılır. Örneğin, contoso.com etki alanı birkaç DNS kaydı içerebilir. Kayıtlar bir posta sunucusu için mail.contoso.com ve bir Web sitesi için www\.contoso.com içerebilir. Bu kayıtlar, DNS bölgesi contoso.com içinde barındırılır.
 
 Bir etki alanı adı *yalnızca bir addır*. DNS bölgesi, bir etki alanı adı için DNS kayıtlarını içeren bir veri kaynağıdır. Azure DNS’yi kullanarak bir DNS bölgesi barındırabilir ve Azure'da bir etki alanının DNS kayıtlarını yönetebilirsiniz. Ayrıca, DNS sorgularını Internet 'ten yanıtlamak için DNS ad sunucuları sağlar.
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Azure DNS kullanmak için bir DNS etki alanı adı satın almam gerekiyor mu? 
 
-Olmayabilir.
+Gerekli değildir.
 
-Azure DNS bir DNS bölgesini barındırmak için bir etki alanı satın almanız gerekmez. Bir etki alanı adına sahip olmadan, istediğiniz zaman DNS bölgesi oluşturabilirsiniz. Bu bölge için DNS sorguları yalnızca bölgeye atanan Azure DNS ad sunucularına yönlendirildikleri takdirde çözümlenir.
+Azure DNS bir DNS bölgesini barındırmak için bir etki alanı satın almanız gerekmez. Her zaman etki alanı adına sahip olmadan bir DNS bölgesi oluşturabilirsiniz. Bu bölge için DNS sorguları yalnızca bölgeye atanan Azure DNS ad sunucularına yönlendirildikleri takdirde çözümlenir.
 
 DNS diliminizi küresel DNS hiyerarşisine bağlamak için etki alanı adını satın almalısınız. Ardından, dünyanın herhangi bir yerinden DNS sorguları DNS bölgenizi ve DNS kayıtlarınız ile yanıtını bulur.
 
@@ -149,7 +149,7 @@ Evet. Azure DNS, diğer DNS hizmetleriyle birlikte barındırma etki alanların�
 
 Ortak barındırma ayarlamak için, etki alanı için NS kayıtlarını her iki sağlayıcının ad sunucularına işaret etmek üzere değiştirin. Ad sunucusu (NS) kayıtları, hangi sağlayıcıların etki alanı için DNS sorguları alacağını denetler. Bu NS kayıtlarını, diğer sağlayıcıda ve üst bölgede Azure DNS değiştirebilirsiniz. Üst bölge genellikle etki alanı adı kaydedicisi aracılığıyla yapılandırılır. DNS temsili hakkında daha fazla bilgi için bkz. [DNS etki alanı temsili](dns-domain-delegation.md).
 
-Ayrıca, etki alanı için DNS kayıtlarının her iki DNS sağlayıcısı arasında eşitlenmiş olduğundan emin olun. Azure DNS, DNS bölge aktarımlarını desteklememektedir. DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)ya da [CLI aracı](dns-operations-recordsets-cli.md)kullanılarak eşitlenmelidir.
+Ayrıca, etki alanı için DNS kayıtlarının her iki DNS sağlayıcısı arasında eşitlenmiş olduğundan emin olun. Azure DNS, DNS bölge aktarımlarını desteklememektedir. DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/rest/api/dns/), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)ya da [CLI aracı](dns-operations-recordsets-cli.md)kullanılarak eşitlenmelidir.
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Etki alanım 'ı dört Azure DNS ad sunucusuna temsilcmem gerekir mi?
 

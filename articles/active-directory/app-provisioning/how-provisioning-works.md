@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066856"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121359"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -86,6 +86,8 @@ Bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik t
 ### <a name="b2b-guest-users"></a>B2B (konuk) kullanıcıları
 
 Azure AD Kullanıcı sağlama hizmeti 'ni kullanarak Azure AD 'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlayabilirsiniz. Ancak, B2B kullanıcılarının Azure AD 'yi kullanarak SaaS uygulamasında oturum açması için, SaaS uygulamasının SAML tabanlı çoklu oturum açma yeteneğine belirli bir şekilde yapılandırılmış olması gerekir. SaaS uygulamalarının B2B kullanıcılarından oturum açma işlemlerini desteklemesi için nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [B2B işbirliği Için SaaS uygulamalarını yapılandırma](../b2b/configure-saas-apps.md).
+
+Konuk Kullanıcı için userPrincipalName genellikle "alias # EXT #@domain.com" olarak depolandığını unutmayın. userPrincipalName, öznitelik eşlemelerinizde kaynak özniteliği olarak dahil edildiğinde, #EXT # userPrincipalName öğesinden çıkarılır. #EXT # öğesinin mevcut olmasını istiyorsanız, userPrincipalName değerini kaynak öznitelik olarak originalUserPrincipalName ile değiştirin. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Sağlama döngüleri: Ilk ve artımlı
 

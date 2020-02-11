@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964847"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121022"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan Preview cihaz uygulamasını IoT Hub (C#) ile bağlama
 
@@ -23,9 +23,9 @@ Bu hızlı başlangıçta, örnek bir IoT Tak ve Kullan cihaz uygulamasının na
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenize .NET Core 2,2 ' i yüklemeniz gerekir. Birden çok platform için .NET Core SDK bu sürümünü [.NET Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)' i indirin.
+Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenize .NET Core 3,0 ' i yüklemeniz gerekir. Birden çok platform için .NET Core SDK bu sürümünü [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)' i indirin.
 
 Bir yerel Terminal penceresinde aşağıdaki komutu çalıştırarak geliştirme makinenize ait .NET sürümünü doğrulayabilirsiniz: 
 
@@ -72,7 +72,7 @@ Bir IoT Hub 'ına bağlanan bir cihaza benzetim yapan bir uygulama oluşturmak i
 1. IoT Hub 'ınıza telemetri gönderen bir IoT Tak ve Kullan cihazının benzetimini yapmak için örnek bir uygulama çalıştırın. Aynı Terminal penceresinde, gerekli paketleri oluşturmak ve örnek uygulamayı çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 Cihazın başarıyla kaydedildiğini ve buluttan güncelleştirme beklediğini belirten iletiler görürsünüz. Bu, cihazın artık komutları ve özellik güncelleştirmelerini almaya hazır olduğunu ve hub 'a telemetri verileri göndermeye başlamış olduğunu gösterir. Sonraki adımları tamamladıktan sonra örneği çalışır durumda tutun.

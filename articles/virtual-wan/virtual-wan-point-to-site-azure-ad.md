@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108333"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122020"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir kullanıcı VPN bağlantısı oluşturma
 
@@ -123,7 +123,7 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 
 ## <a name="configure-user-vpn-clients"></a>Kullanıcı VPN istemcilerini yapılandırma
 
-Bağlanmak için, Azure VPN Istemcisini (Önizleme) indirmeniz ve sanal ağa bağlanmak isteyen her bilgisayarda önceki adımlarda indirilen VPN istemci profilini içeri aktarmanız gerekir.
+Bağlanmak için, Azure VPN Istemcisini indirmeniz ve sanal ağa bağlanmak isteyen her bilgisayarda önceki adımlarda indirilen VPN istemci profilini içeri aktarmanız gerekir.
 
 > [!NOTE]
 > Azure AD kimlik doğrulaması yalnızca OpenVPN® Protokolü bağlantılarında desteklenir.
@@ -131,7 +131,7 @@ Bağlanmak için, Azure VPN Istemcisini (Önizleme) indirmeniz ve sanal ağa ba�
 
 #### <a name="to-download-the-azure-vpn-client"></a>Azure VPN istemcisini indirmek için
 
-Azure VPN Istemcisini (Önizleme) indirmek için bu [bağlantıyı](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) kullanın.
+Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) kullanın.
 
 #### <a name="import"></a>İstemci profilini içeri aktarmak için
 

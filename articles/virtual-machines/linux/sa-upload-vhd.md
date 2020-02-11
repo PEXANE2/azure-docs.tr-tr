@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458681"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115842"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux sanal makinesi yükleme ve oluşturma
 
@@ -35,7 +35,7 @@ En son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olduğundan ve [az 
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. `myResourceGroup`, `mystorageaccount`ve `mydisks`dahil olmak üzere örnek parametre adları.
 
-Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek `WestUs` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
+Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek `myResourceGroup` konumunda `WestUs` adlı bir kaynak grubu oluşturur:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Hedef depolama hesabı, sanal diskinizi karşıya yüklediğiniz konum ile aynı olmalıdır. Ayrıca, sanal ağ, genel IP adresi, Kullanıcı adı ve SSH anahtarları gibi **az VM Create** komutu için gereken tüm ek parametreleri de belirtmeniz veya yanıt vermenizi da gerekir. [KULLANILABILIR clı Kaynak Yöneticisi parametreleri](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)hakkında daha fazla bilgi edinebilirsiniz.
+Hedef depolama hesabı, sanal diskinizi karşıya yüklediğiniz konum ile aynı olmalıdır. Ayrıca, sanal ağ, genel IP adresi, Kullanıcı adı ve SSH anahtarları gibi **az VM Create** komutu için gereken tüm ek parametreleri de belirtmeniz veya yanıt vermenizi da gerekir. [Kullanılabilir klasık clı Kaynak Yöneticisi parametreleri](../azure-cli-arm-commands.md#virtual-machines)hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="requirements"></a>Gereksinimler
 Aşağıdaki adımları tamamlayabilmeniz için şunlar gerekir:
@@ -124,7 +124,7 @@ Ayrıca, Linux görüntülerini Azure için hazırlama hakkında daha genel ipu�
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 Kaynak grupları, sanal ağ ve depolama gibi sanal makinelerinizi desteklemek için tüm Azure kaynaklarını mantıksal olarak bir araya getirir. Daha fazla bilgi kaynak grubu için bkz. [kaynak gruplarına genel bakış](../../azure-resource-manager/management/overview.md). Özel diskinizi karşıya yüklemeden ve VM 'Ler oluşturmadan önce, [az Group Create](/cli/azure/group)ile bir kaynak grubu oluşturmanız gerekir.
 
-Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek `myResourceGroup` konumunda `westus` adlı bir kaynak grubu oluşturur:
 
 ```azurecli
 az group create --name myResourceGroup --location westus

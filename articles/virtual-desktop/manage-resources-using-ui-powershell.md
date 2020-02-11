@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772793"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115910"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell ile bir Yönetim Aracı dağıtma
 
@@ -109,7 +109,7 @@ Web uygulaması URL 'sini almak için aşağıdaki PowerShell komutlarını çal
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
 ```
 
 Yeniden yönlendirme URI 'SI eklemişseniz, yönetim aracının API arka uç hizmetiyle etkileşime geçmesini sağlamak için bir sonraki API URL 'sini güncelleştirmeniz gerekir.

@@ -2,16 +2,16 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 942636a6ff6dcfe74a04a66d67a4490224b4538e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9e02af0652108fe10e4b73e7bb43c48451ca77
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391812"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123201"
 ---
-Masaüstü geliştirme için C++ bir Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz ve konuşma SDK 'sını yüklemeniz gerekir. 
+Masaüstü geliştirme için C++ bir Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz ve konuşma SDK 'sını yüklemeniz gerekir.
 
 ### <a name="set-up-visual-studio-development-options"></a>Visual Studio geliştirme seçeneklerini ayarlama
 
@@ -19,11 +19,11 @@ Başlamak için, masaüstü geliştirme için C++ Visual Studio 'da doğru şeki
 
 1. **Başlangıç** penceresini göstermek Için Visual Studio 2019 ' i açın.
 
-   ![Başlangıç penceresi-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
+   ![Başlangıç penceresi-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Visual Studio IDE 'ye gitmek için **kod olmadan devam et** ' i seçin.
 
-1. Visual Studio menü çubuğunda **araçlar** >  ' i seçerek Visual Studio yükleyicisi**açın ve** **değiştirme** iletişim kutusunu görüntüleyin.
+1. Visual Studio menü çubuğunda **Araçlar** ' ı seçin > Araçlar **ve Özellikler** ' i seçerek Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
 
    ![İş yükleri sekmesi, değiştirme iletişim kutusu, Visual Studio Yükleyicisi](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
@@ -39,7 +39,7 @@ Başlamak için, masaüstü geliştirme için C++ Visual Studio 'da doğru şeki
 
 Sonra, projenizi oluşturun:
 
-1. Visual Studio menü çubuğunda **dosya** > **Yeni** > **Proje** ' yi seçerek **Yeni proje oluştur** penceresini görüntüleyin.
+1. **Yeni proje oluştur** penceresini göstermek Için Visual Studio menü çubuğunda **dosya** > **Yeni** > **projesi** öğesini seçin.
 
    ![Yeni proje oluşturma, C++ -Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
@@ -49,11 +49,11 @@ Sonra, projenizi oluşturun:
 
    ![Yeni projenizi yapılandırın, C++ -Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
 
-1. **Proje adı**' nda `helloworld` girin.
+1. **Proje adı**alanına `helloworld`girin.
 
 1. **Konum**' a gidin ve projenizi kaydetmek için klasörü seçin veya oluşturun.
 
-Şimdi hedef platform mimarinizi seçin. Visual Studio araç çubuğunda, **çözüm platformları** açılan kutusunu bulun. (Bunu görmüyorsanız, **çözüm platformlarını**içeren araç çubuğunu görüntülemek için  > **araç çubuklarını** **görüntüle** > **standardı** ' nı seçin.) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows ayrıca 32 bit uygulamalar çalıştırabilir, bu sayede isterseniz **x86** seçeneğini belirleyebilirsiniz.
+Şimdi hedef platform mimarinizi seçin. Visual Studio araç çubuğunda, **çözüm platformları** açılan kutusunu bulun. (Bunu görmüyorsanız, **çözüm platformlarını**içeren araç çubuğunu görüntülemek Için > **araç çubuklarını** **Standart** > **göster** ' i seçin.) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows ayrıca 32 bit uygulamalar çalıştırabilir, bu sayede isterseniz **x86** seçeneğini belirleyebilirsiniz.
 
 ### <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
@@ -67,7 +67,7 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. **Paket kaynağı**' nda **NuGet.org**' yi seçin.
 
-1. **Arama** kutusuna `Microsoft.CognitiveServices.Speech` girin ve sonra arama sonuçlarında göründükten sonra bu paketi seçin.
+1. **Arama** kutusuna `Microsoft.CognitiveServices.Speech`girin ve sonra arama sonuçlarında göründükten sonra bu paketi seçin.
 
    ![Microsoft. Biliveservices. Speech C++ paketi yüklemesi-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
@@ -77,4 +77,4 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 
-1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında, **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`. 
+1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında, **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`.

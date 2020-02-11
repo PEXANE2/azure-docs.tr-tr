@@ -1,18 +1,18 @@
 ---
 title: Azure ağ gidiş dönüş gecikme süresi istatistikleri | Microsoft Docs
-description: Azure bölgeleri arasında gidiş dönüş gecikme süresi istatistikleri hakkında bilgi edinin.
+description: Azure bölgeleri arasındaki gidiş dönüş gecikme süresi istatistikleri hakkında bilgi edinin.
 services: networking
 author: nayak-mahesh
 ms.service: virtual-network
 ms.topic: article
-ms.date: 01/08/2020
-ms.author: mnayak
-ms.openlocfilehash: 91b528cc6900a3ec91ff7189f58f941226b8acd5
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.date: 02/10/2020
+ms.author: kumud
+ms.openlocfilehash: dc2cb6545093e8ab70d18014a5fd9d0e7d36f8b7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779731"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122401"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure ağ gidiş dönüş gecikme süresi istatistikleri
 
@@ -22,11 +22,11 @@ Azure, iç izleme araçlarının yanı sıra üçüncü taraf yapay bir izleme h
 
 Gecikme ölçümleri, dünya çapındaki Azure bulut bölgelerinde barındırılan ThousandEyes aracılarından toplanır ve bunlar arasında sürekli olarak 1 dakikalık aralıklarla ağ araştırmaları gönderilir. Aylık gecikme istatistikleri, bu ay için toplanan örneklerin ortalarından ortalaması alınır.
 
-## <a name="december-2019-latency-figures"></a>Aralık 2019 gecikme rakamları
+## <a name="january-2020-round-trip-latency-figures"></a>Ocak 2020 gidiş dönüş gecikme süresi rakamları
 
-Son 30 gün boyunca Azure bölgeleri arasındaki aylık ortalama gidiş dönüş süresi (31 Aralık 2019 ' de sona eriyor) aşağıda gösterilmiştir. Aşağıdaki ölçümler [ThousandEyes](https://thousandeyes.com)tarafından desteklenmektedir.
+Son 31 gün boyunca Azure bölgeleri arasındaki aylık ortalama gidiş dönüş süreleri (31 Ocak 2020 tarihinde sona eriyor) aşağıda gösterilmiştir. Aşağıdaki ölçümler [ThousandEyes](https://thousandeyes.com)tarafından desteklenmektedir.
 
-[Azure bölgeler arası gecikme istatistikleri ![](media/azure-network-latency/december.jpg)](media/azure-network-latency/december.jpg#lightbox)
+[Azure bölgeler arası gecikme istatistikleri ![](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

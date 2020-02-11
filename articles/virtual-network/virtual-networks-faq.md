@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646889"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121809"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -35,7 +35,7 @@ Sanal ağları şu şekilde kullanın:
 
 * Karma bulut senaryolarını etkinleştirin. VNET 'ler, bir dizi karma bulut senaryosunu destekleme esnekliği sağlar. Bulut tabanlı uygulamaları, ana bilgisayarlar ve UNIX sistemleri gibi herhangi bir şirket içi sistem türüne güvenli bir şekilde bağlayabilirsiniz.
 
-### <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlarım?
+### <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 Başlamak için [sanal ağ belgelerini](https://docs.microsoft.com/azure/virtual-network/) ziyaret edin. Bu içerik, tüm VNet özellikleri için genel bakış ve dağıtım bilgileri sağlar.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Şirket içi bağlantı olmadan VNET 'i kullanabilir miyim?
@@ -49,7 +49,7 @@ Evet. Azure Marketi aracılığıyla çeşitli satıcıların [WAN optimizasyon 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>VNet oluşturmak için hangi araçları kullanabilirim?
 VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilirsiniz:
 
-* Azure Portal
+* Azure portalı
 * PowerShell
 * Azure CLI
 * Ağ yapılandırma dosyası (yalnızca klasik sanal ağlar için netcfg). [Ağ yapılandırma dosyası kullanarak VNET yapılandırma](virtual-networks-using-network-configuration-file.md) makalesini inceleyin.
@@ -100,7 +100,7 @@ Hayır.
 Evet. Alt ağ adres aralığı başka bir alt ağın parçası olmadığı ve sanal ağın adres aralığında kalan kullanılabilir alan olduğu sürece, alt ağlar VNET 'lere eklenebilir.
 
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Oluşturduktan sonra alt ağımın boyutunu değiştirebilir miyim?
-Evet. Alt ağın içinde dağıtılmış VM'ler veya hizmetler yoksa alt ağı ekleyebilir, kaldırabilir, genişletebilir veya daraltabilirsiniz.
+Evet. İçinde dağıtılan bir VM veya hizmet yoksa alt ağ ekleyebilir, kaldırabilir, genişletebilir veya küçültebilirsiniz.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Alt ağları oluşturduktan sonra değiştirebilir miyim?
 Evet. VNet tarafından kullanılan CıDR bloklarını ekleyebilir, kaldırabilir ve değiştirebilirsiniz.
@@ -161,7 +161,7 @@ Evet. Kaynak Yöneticisi dağıtım modeliyle dağıtılan bir VM 'ye bağlı t�
 Hayır. Özel bir IP adresi ayıramazsınız. Özel bir IP adresi varsa, DHCP sunucusu tarafından bir VM veya rol örneğine atanır. VM, özel IP adresinin atanmasını istediğiniz bir tane olabilir veya olmayabilir. Bununla birlikte, zaten oluşturulmuş bir VM 'nin özel IP adresini kullanılabilir bir özel IP adresine değiştirebilirsiniz.
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>VNet 'teki VM 'Ler için özel IP adresleri değişikliği yapılsın mı?
-Duruma göre değişir. VM Kaynak Yöneticisi üzerinden dağıtılmışsa, IP adresinin statik veya dinamik ayırma yöntemiyle atanıp atanmadığına bakılmaksızın, hayır. VM, klasik dağıtım modeli üzerinden dağıtılmışsa, bir VM durdurulmuş (serbest bırakıldı) durumda olduktan sonra başlatıldığında dinamik IP adresleri değişebilir. Adres, VM silindiğinde dağıtım modeli aracılığıyla dağıtılan bir VM 'den serbest bırakılır.
+Bu, bağımlıdır. VM Kaynak Yöneticisi üzerinden dağıtılmışsa, IP adresinin statik veya dinamik ayırma yöntemiyle atanıp atanmadığına bakılmaksızın, hayır. VM, klasik dağıtım modeli üzerinden dağıtılmışsa, bir VM durdurulmuş (serbest bırakıldı) durumda olduktan sonra başlatıldığında dinamik IP adresleri değişebilir. Adres, VM silindiğinde dağıtım modeli aracılığıyla dağıtılan bir VM 'den serbest bırakılır.
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>IP adreslerini VM işletim sistemi içindeki NIC 'lere el ile atayabilir miyim?
 Evet, ancak bir sanal makineye birden çok IP adresi atarken olduğu gibi gerekmedikçe bu önerilmez. Ayrıntılar için bkz. [sanal makineye birden çok IP adresi ekleme](virtual-network-multiple-ip-addresses-portal.md#os-config). Bir sanal makineye bağlı bir Azure NIC 'sine atanan IP adresi değişirse ve VM işletim sistemi içindeki IP adresi farklıysa, VM bağlantısı kaybedilir.
@@ -230,9 +230,9 @@ Evet. [Azure Resource Manager](/rest/api/virtual-network) ve [Klasik](https://go
 Evet. Kullanma hakkında daha fazla bilgi edinin:
 - [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) ve [Klasik](virtual-networks-create-vnet-classic-pportal.md) dağıtım modelleriyle vnet 'leri dağıtmak için Azure Portal.
 - [Kaynak Yöneticisi](/powershell/module/az.network) ve [Klasik](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) dağıtım modelleriyle dağıtılan sanal ağları yönetmek için PowerShell.
-- [Kaynak Yöneticisi](/cli/azure/network/vnet) ve [Klasik](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) dağıtım modelleri aracılığıyla dağıtılan VNET 'leri dağıtmak ve yönetmek için Azure komut satırı arabirimi (CLI).  
+- [Kaynak Yöneticisi](/cli/azure/network/vnet) ve [Klasik](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) dağıtım modelleri aracılığıyla dağıtılan VNET 'leri dağıtmak ve yönetmek için Azure komut satırı arabirimi (CLI).  
 
-## <a name="vnet-peering"></a>Sanal ağ eşleme
+## <a name="vnet-peering"></a>VNet eşlemesi
 
 ### <a name="what-is-vnet-peering"></a>VNet eşlemesi nedir?
 VNet eşlemesi (veya sanal ağ eşlemesi), sanal ağlara bağlanmanızı sağlar. Sanal ağlar arasındaki VNet eşleme bağlantısı, trafiği özel olarak IPv4 adresleriyle yönlendirmenizi sağlar. Eşlenen VNET 'lerdeki sanal makineler, aynı ağ içinde olup olmadıkları gibi birbirleriyle iletişim kurabilir. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (genel VNet eşlemesi olarak da bilinir) olabilir. VNet eşleme bağlantıları, Azure abonelikleri arasında da oluşturulabilir.
@@ -402,12 +402,12 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 |||
 |---|---|
 |Azure hizmeti| VNet kuralları sınırları|
-|Azure Depolama| 100|
+|Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Veri Ambarı|  128|
-|Azure KeyVault|    127|
+|Azure Keykasası|    127|
 |Azure Cosmos DB|   64|
-|Azure Olay Hub’ı|   128|
+|Azure Olay Hub'ı|   128|
 |Azure Service Bus| 128|
 |Azure Data Lake Store v1|  100|
  

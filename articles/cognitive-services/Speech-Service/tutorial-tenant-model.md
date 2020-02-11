@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446794"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118894"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
 
@@ -37,13 +37,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Kiracı modelinizi dağıtabilmeniz için önce kiracı modeli hizmetine kaydolmuş olmanız gerekir. Kayıt, Microsoft 365 Yönetim merkezinde tamamlanır ve yalnızca Microsoft 365 yöneticiniz tarafından yapılabilir.
 
-1. [Microsoft 365 yönetim merkezinde](https://admin.microsoft.com) oturum açın.
+1. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)oturum açın.
 
-1. Sol bölmede, **Ayarlar**' ı seçin, **uygulamalar**' ı seçin ve ardından **Azure konuşma Hizmetleri**' ni seçin.
+1. Sol bölmede **Ayarlar**' ı seçin, ardından iç Içe menüsünden **Ayarlar** ' ı seçin ve ardından Ana penceredeki **Azure konuşma Hizmetleri** ' ni seçin.
 
    !["Hizmetler & eklentileri" bölmesi](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. **Kuruluş genelinde dil modeline Izin ver** onay kutusunu seçin ve ardından **Değişiklikleri Kaydet**' i seçin. 
+1. **Kuruluş genelinde dil modeline Izin ver** onay kutusunu seçin ve ardından **Değişiklikleri Kaydet**' i seçin.
 
    ![Azure konuşma Hizmetleri bölmesi](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -56,13 +56,13 @@ Kiracı model örneğini devre dışı bırakmak için:
 Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
 
 1. [Azure Portal](https://aka.ms/azureportal)’ında oturum açın.
-1. Seçin **kaynak Oluştur**.
+1. **Kaynak oluştur**' u seçin.
 1. **Arama** kutusuna **konuşma**yazın.
 1. Sonuçlar listesinde **konuşma**' yı seçin ve ardından **Oluştur**' u seçin.
-1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunlardan emin olun:
+1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunları yaptığınızdan emin olun:
    * **Konum** **eastus** veya **westus**olarak ayarlanır.
    * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
 
@@ -83,7 +83,7 @@ Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Offic
    > * [Müşteri anahtarı](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Office 365 Kamu](https://www.microsoft.com/microsoft-365/government)
 
-1. **Kabul et**’i seçin. 
+1. **Kabul et**’i seçin.
 
    Kiracı modeliniz hazırlandığınızda, daha fazla yönerge içeren bir onay e-posta iletisi alırsınız.
 

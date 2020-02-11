@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 01/06/2020
+ms.date: 02/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75706997"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122052"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -55,8 +55,9 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 [Azure Backup](../../backup/index.yml):
 
 - Müşteri kiracılarında müşteri verilerini yedekleme ve geri yükleme
+- Temsilci olan abonelikler için yedekleme öğelerinin (henüz yedekleme için yapılandırılmamış Azure kaynakları dahil) ve izleme bilgilerinin (işlerin ve uyarıların) işletimsel bilgilerini görüntülemeye yardımcı olması için [yedekleme Gezginini](../../backup/monitor-azure-backup-with-backup-explorer.md) kullanın. Yedekleme Gezgini Şu anda yalnızca Azure VM verileri için kullanılabilir.
 
-[Azure Kubernetes Service (AKS)](../../aks/index.yml):
+[Azure Kubernetes hizmeti (AKS)](../../aks/index.yml):
 
 - Barındırılan Kubernetes ortamlarını yönetme ve müşteri kiracılarında Kapsayıcılı uygulamaları dağıtma ve yönetme
 
@@ -117,7 +118,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 - Müşteri kiracılarında seri konsol ile VM 'Lere erişme
 - Bir VM 'ye uzaktan oturum açma için Azure Active Directory kullanmayacağınızı ve disk şifrelemesi için parolalar, gizlilikler veya şifreleme anahtarları için bir sanal makineyi Key Vault ile tümleştiremiyorum gerektiğini unutmayın
 
-[Azure Sanal Ağ](../../virtual-network/index.yml):
+[Azure sanal ağı](../../virtual-network/index.yml):
 
 - Sanal ağlar ve sanal ağ arabirim kartları (vNIC 'ler) ile müşteri kiracılar arasında dağıtın ve yönetin
 

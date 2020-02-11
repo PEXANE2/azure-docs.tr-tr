@@ -1,25 +1,18 @@
 ---
 title: Geliştirici kaynakları-Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Geliştiricilerin hem REST API 'Leri hem de Language Understanding SDK 'Ları vardır.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 01/22/2020
-ms.author: diberry
-ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+description: SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
+ms.topic: reference
+ms.date: 02/09/2020
+ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716142"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119967"
 ---
-# <a name="developer-resources-for-language-understanding"></a>Language Understanding için geliştirici kaynakları
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding için SDK, REST ve CLı geliştirici kaynakları (LUSıS)
 
-Geliştiriciler, Language Understanding için hem REST API 'Leri hem de SDK 'Ları kullanabilir.
+SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin. 
 
 ## <a name="azure-resource-management"></a>Azure Kaynak Yönetimi
 
@@ -31,11 +24,17 @@ Araca göre başvuru belgelerini bulun:
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
+
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding yazma ve tahmin istekleri
 
-Language Understanding hizmetine, oluşturmanız gereken bir Azure kaynağından erişilir. İki kaynak vardır: yazma ve tahmin uç noktası kaynakları. Bu kaynakların her ikisi de LUSıS kaynaklarınızı denetlemenize olanak tanır.
+Language Understanding hizmetine, oluşturmanız gereken bir Azure kaynağından erişilir. İki kaynak vardır:
+
+* Oluşturma, düzenleme, eğitme ve yayımlama için eğitim için **yazma** kaynağını kullanın.
+* Kullanıcının metnini göndermek ve tahmin almak için çalışma zamanı **tahminini** kullanın.
 
 [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında bilgi edinin.
+
+En yaygın görevleri öğrenmek ve kullanmak için bilişsel [Hizmetler örnek kodunu](https://github.com/Azure-Samples/cognitive-services-quickstart-code) kullanın.
 
 ### <a name="rest-apis"></a>REST API'leri
 
@@ -77,7 +76,7 @@ Bot Framework, aşağıdakiler dahil olmak üzere Language Understanding yardım
 * [LUSıS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) -LUIS.ai uygulamalarınızı oluşturma ve yönetme
 * [Dağıtım](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)-üst ve alt uygulamaları yönetme
 * [Luisgen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) -lusıs amaçları C#ve varlıklarınız için otomatik olarak yedekleme/TypeScript sınıfları oluşturun.
-* [Bot öykünücüsü](https://github.com/Microsoft/BotFramework-Emulator/releases) -bot geliştiricilerinin, bot Framework SDK kullanılarak oluşturulan botları test etmesine ve hata ayıklamasına izin veren bir masaüstü uygulaması
+* [Bot Framework öykünücüsü](https://github.com/Microsoft/BotFramework-Emulator/releases) -bot geliştiricilerinin, bot Framework SDK kullanılarak oluşturulan botları test etmesine ve hata ayıklamasına izin veren bir masaüstü uygulaması
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

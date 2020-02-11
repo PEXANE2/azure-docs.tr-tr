@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422687"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120476"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma
 
@@ -119,7 +119,7 @@ Bu erişim paketini isteyebilmek istediğinize bağlı olarak, aşağıdaki böl
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Gözden geçir ve oluştur
+## <a name="review--create"></a>Gözden geçir + oluştur
 
 **Gözden geçir + oluştur** sekmelerinde, ayarlarınızı gözden geçirebilir ve herhangi bir doğrulama hatası olup olmadığını denetleyebilirsiniz.
 
@@ -131,7 +131,18 @@ Bu erişim paketini isteyebilmek istediğinize bağlı olarak, aşağıdaki böl
 
     Yeni erişim paketi, erişim paketleri listesinde görünür.
 
+## <a name="creating-an-access-package-programmatically"></a>Programlı olarak bir erişim paketi oluşturma
+
+Ayrıca, Microsoft Graph kullanarak bir erişim paketi de oluşturabilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` izni olan bir uygulamayla uygun bir roldeki kullanıcı, API 'yi çağırabilir
+
+1. [Katalogda accesspackageresoresources listesini listeleyin](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ve henüz katalogda olmayan kaynaklar Için [bir accessPackageResourceRequest oluşturun](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) .
+1. Bir accessPackageCatalog içindeki her accessPackageResource 'ın [accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) ' i listeleyin. Daha sonra bu roller listesi, daha sonra bir accessPackageResourceRoleScope oluştururken bir rol seçmek için kullanılacaktır.
+1. [Bir accessPackage oluşturun](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Accesspackageatamailkesi oluşturun](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. Erişim paketinde gereken her kaynak rolü için [bir accessPackageResourceRoleScope oluşturun](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) .
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Erişim paketi istemek için bağlantıyı paylaşma](entitlement-management-access-package-settings.md)
 - [Erişim paketi için kaynak rollerini değiştirme](entitlement-management-access-package-resources.md)
+- [Erişim paketine doğrudan kullanıcı atama](entitlement-management-access-package-assignments.md)

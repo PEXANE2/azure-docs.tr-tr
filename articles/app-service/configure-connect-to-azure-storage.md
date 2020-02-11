@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866990"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120677"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>App Service bir Windows kapsayıcısında Azure dosyalarını yapılandırma
 
@@ -20,7 +20,7 @@ ms.locfileid: "75866990"
 
 Bu kılavuzda, Windows kapsayıcılarında Azure depolama 'ya nasıl erişebileceğiniz gösterilmektedir. Yalnızca [Azure dosya paylaşımları](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) ve [Premium dosya paylaşımları](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) desteklenir. Azure dosya paylaşımlarını bu nasıl yapılır ile kullanıyorsunuz. Avantajlar güvenli içerik, içerik taşınabilirlik, birden çok uygulamaya erişim ve birden çok aktarım yöntemi içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 veya üzeri).
 - [Azure App Service var olan bir Windows kapsayıcı uygulaması](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
@@ -38,6 +38,7 @@ Bu kılavuzda, Windows kapsayıcılarında Azure depolama 'ya nasıl erişebilec
 - Windows kapsayıcılarındaki Azure depolama, Windows App Service planlarına kendi kod senaryolarınızı getirmek için şu anda **desteklenmiyor** .
 - Windows kapsayıcılarındaki Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
 - Windows kapsayıcılarındaki Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
+- Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)'ni kullanın.
 - Azure depolama, bağımsız olarak faturalandırılır ve Web uygulamanıza **dahil edilmez** . [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage)hakkında daha fazla bilgi edinin.
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Depolama alanını Web uygulamanıza bağlama (Önizleme)

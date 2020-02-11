@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422636"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120246"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -51,6 +51,10 @@ Katalog, kaynak ve erişim paketlerinin bir kapsayıcısıdır. İlgili kaynakla
 
 1. Kataloğu oluşturmak için **Oluştur** ' a tıklayın.
 
+### <a name="creating-a-catalog-programmatically"></a>Program aracılığıyla Katalog oluşturma
+
+Ayrıca, Microsoft Graph kullanarak da bir katalog oluşturabilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` iznine sahip bir uygulamayla uygun bir roldeki kullanıcı, [bir accessPackageCatalog oluşturmak](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)için API 'yi çağırabilir.
+
 ## <a name="add-resources-to-a-catalog"></a>Kataloğa kaynak ekleme
 
 Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda mevcut olması gerekir. Ekleyebileceğiniz kaynak türleri gruplar, uygulamalar ve SharePoint Online siteleridir. Gruplar, bulutta oluşturulmuş Office 365 grupları veya bulutta oluşturulmuş Azure AD güvenlik grupları olabilir. Uygulamalar hem SaaS uygulamaları hem de Azure AD 'ye federe olan uygulamalar dahil olmak üzere Azure AD kurumsal uygulamaları olabilir. Siteler SharePoint Online siteleri veya SharePoint Online site koleksiyonları olabilir.
@@ -76,6 +80,10 @@ Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda m
 1. İşiniz bittiğinde **Ekle**' ye tıklayın.
 
     Bu kaynaklar artık kataloğun içindeki erişim paketlerine dahil edilebilir.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Bir kataloğa program aracılığıyla kaynak ekleme
+
+Ayrıca, Microsoft Graph kullanarak bir kataloğa kaynak ekleyebilirsiniz.  Uygun bir roldeki bir kullanıcı veya bir katalog ve kaynak sahibi, temsilcili `EntitlementManagement.ReadWrite.All` izni olan bir uygulamayla bir [accessPackageResourceRequest oluşturmak](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)için API 'yi çağırabilir.
 
 ## <a name="remove-resources-from-a-catalog"></a>Katalogdan kaynakları kaldırma
 
@@ -144,6 +152,10 @@ Bir kataloğu yalnızca herhangi bir erişim paketi yoksa silebilirsiniz.
 1. Kataloğun **genel bakış**sayfasında **Sil**' e tıklayın.
 
 1. Görüntülenen ileti kutusunda **Evet**' e tıklayın.
+
+### <a name="deleting-a-catalog-programmatically"></a>Bir kataloğu programlama yoluyla silme
+
+Ayrıca, Microsoft Graph kullanarak da bir kataloğu silebilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` iznine sahip bir uygulama ile uygun bir roldeki kullanıcı, [accessPackageCatalog 'u silmek](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)için API 'yi çağırabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

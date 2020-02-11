@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: .NET C# kullanarak bir arama dizini oluşturma'
 titleSuffix: Azure Cognitive Search
 description: Bu C# hızlı başlangıçta, Azure BILIŞSEL arama .NET SDK kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı öğrenin.
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: e9f43f729fc9e08054cd160b82945ee4bcd5821c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406769"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121653"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Hızlı başlangıç: .NET SDK C# kullanarak Azure bilişsel arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygulama projesi oluşturarak başlayın.
 

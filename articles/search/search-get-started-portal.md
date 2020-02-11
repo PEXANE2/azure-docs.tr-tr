@@ -2,18 +2,18 @@
 title: Azure portal arama dizini oluşturma
 titleSuffix: Azure Cognitive Search
 description: Bu portal hızlı başlangıcı ' nda, Azure Bilişsel Arama 'de ilk arama dizininizi oluşturmak, yüklemek ve sorgulamak için veri alma Sihirbazı ' nı nasıl kullanacağınızı öğrenin.
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900996"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121678"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** 
 
   ![oteller Dizin Oluşturucusu](media/search-get-started-portal/hotels-indexer.png)
 
-## <a name="monitor-progress"></a>İlerlemeyi İzle
+## <a name="monitor-progress"></a>İlerlemeyi izleme
 
 Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine götürebilmelidir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular**' ye tıklayın.
 
@@ -260,7 +260,7 @@ Ayrıca, portalda Dizin, Dizin oluşturucular ve veri kaynaklarını bulmayı de
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 14740e780f6143f19f843891c16b25df761d0b4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a4faad8bfe92a5389e0ee440aa3ccc404535955
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931273"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118076"
 ---
-Form tanıyıcı kullanma erişimi verildiğinde, birkaç bağlantı ve kaynakla bir hoş geldiniz e-postası alacaksınız. Bu iletideki "Azure portal" bağlantısını kullanarak Azure portal açın ve bir form tanıyıcı kaynağı oluşturun. **Oluştur** bölmesinde aşağıdaki bilgileri sağlayın:
+Azure portalına gidin ve [Yeni bir form tanıyıcı kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer). **Oluştur** bölmesinde aşağıdaki bilgileri sağlayın:
 
 |    |    |
 |--|--|
-| **Adı** | Kaynağınız için açıklayıcı bir ad. Örneğin, *Mynameformtanıyıcı*gibi açıklayıcı bir ad kullanmanızı öneririz. |
+| **Ad** | Kaynağınız için açıklayıcı bir ad. Örneğin, *Mynameformtanıyıcı*gibi açıklayıcı bir ad kullanmanızı öneririz. |
 | **Abonelik** | Erişim izni verilen Azure aboneliğini seçin. |
 | **Konum** | Bilişsel hizmet örneğinizin konumu. Farklı konumlar gecikme gösterebilir, ancak kaynağınızın çalışma zamanı kullanılabilirliğini etkilemez. |
 | **Fiyatlandırma katmanı** | Kaynağınızın maliyeti seçtiğiniz fiyatlandırma katmanına ve kullanımınıza bağlıdır. Daha fazla bilgi için bkz. API [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/).

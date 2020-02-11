@@ -2,13 +2,13 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121922"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117046"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
@@ -63,8 +63,20 @@ Yönetim grubu dağıtımları için, Şablon işlevleri kullanılırken bazı �
 
 * [ResourceGroup ()](template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
 * [Subscription ()](template-functions-resource.md#subscription) **işlevi desteklenmiyor.**
-* [RESOURCEID ()](template-functions-resource.md#resourceid) işlevi desteklenir. Yönetim grubu düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Örneğin, `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`bir ilke tanımının kaynak KIMLIĞINI alın. `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`biçimindeki kaynak KIMLIĞINI döndürür.
 * [Reference ()](template-functions-resource.md#reference) ve [List ()](template-functions-resource.md#list) işlevleri desteklenir.
+* [RESOURCEID ()](template-functions-resource.md#resourceid) işlevi desteklenir. Yönetim grubu düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Kaynak grubu parametresi için bir değer sağlamamayın.
+
+  Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  Döndürülen kaynak KIMLIĞI şu biçimdedir:
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>İlkeleri oluşturma
 
@@ -136,9 +148,13 @@ Aşağıdaki örnek, var olan bir ilke tanımını yönetim grubuna atar. İlke 
 }
 ```
 
+## <a name="template-sample"></a>Şablon örneği
+
+* Bir kaynak grubu, ilke ve ilke ataması oluşturun.  [Buraya](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)bakın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Rol atama hakkında bilgi edinmek için bkz. [RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-template.md).
 * Azure Güvenlik Merkezi için çalışma alanı ayarlarını dağıtmaya ilişkin bir örnek için bkz. [Deployascwithworkspace Settings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md). 
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
 * Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](template-functions.md).

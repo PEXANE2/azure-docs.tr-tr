@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veri
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029580"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120837"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -87,7 +87,7 @@ PowerShell kullanarak bir kural oluşturmak için:
 
 **Azure Güvenlik Duvarı etiketlerini kullanarak erişime Izin verin**. Azure Güvenlik duvarı kullanıyorsanız, AzureBackup [FQDN etiketini](https://docs.microsoft.com/azure/firewall/fqdn-tags)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup giden erişimine izin verir.
 
-**Trafiği yönlendirmek için BIR http proxy sunucusu dağıtın**. Azure VM 'de bir SQL Server veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
+**Trafiği yönlendirmek için BIR http proxy sunucusu dağıtın**. Azure VM 'de bir SQL Server veritabanını yedeklerken, VM 'deki yedekleme uzantısı, Azure depolama 'ya Azure Backup ve verilere yönetim komutları göndermek için HTTPS API 'Lerini kullanır. Yedekleme uzantısı, kimlik doğrulaması için Azure AD 'yi de kullanır. Bu üç hizmetin yedekleme uzantısı trafiğini HTTP proxy üzerinden yönlendirin. Proxy kurallarınızın izin verilenler listesine eklemek için Azure Backup ile birlikte kullanılan joker karakter etki alanı yok. Azure tarafından sunulan bu hizmetler için genel IP aralıklarını kullanmanız gerekir. Uzantılar, genel internet erişimi için yapılandırılan tek bileşendir.
 
 Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
 
@@ -96,7 +96,7 @@ Bağlantı seçenekleri aşağıdaki avantajları ve dezavantajları içerir:
 IP aralıklarına izin ver | Ek maliyet yok | IP adresi aralıkları zaman içinde değiştiğinden yönetilmesi karmaşıktır <br/><br/> Yalnızca Azure Storage değil Azure 'un tamamına erişim sağlar
 NSG hizmet etiketlerini kullanma | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi <br/><br/> Ek maliyet yok <br/><br/> | Yalnızca NSG 'ler ile kullanılabilir <br/><br/> Hizmetin tamamına erişim sağlar
 Azure Güvenlik Duvarı FQDN etiketlerini kullanma | Gerekli FQDN 'Ler otomatik olarak yönetildiğinden yönetimi daha kolay | Yalnızca Azure Güvenlik Duvarı ile kullanılabilir
-HTTP proxy kullanma | Depolama URL 'Lerinde ara sunucuya ayrıntılı denetime izin verilir <br/><br/> VM 'lere tek bir internet erişimi noktası <br/><br/> Azure IP adresi değişikliklerine tabi değildir | Proxy yazılımıyla VM çalıştırmak için ek maliyetler
+HTTP proxy kullanma | VM 'lere tek bir internet erişimi noktası <br/> | Proxy yazılımıyla VM çalıştırmak için ek maliyetler <br/> Yayımlanmış FQDN adresi yok, izin verme kuralları Azure IP adresi değişikliklerine tabi olacak
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure Backup için veritabanı adlandırma yönergeleri
 

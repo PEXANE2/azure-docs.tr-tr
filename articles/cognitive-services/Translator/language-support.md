@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ec8d389c99ad96e59bf49d4345855fa44d6c7aa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902007"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118821"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Metin Çevirisi API'si için dil ve bölge desteği
 
@@ -42,85 +42,85 @@ Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri des
 
 |Dil|  Dil kodu|  V3 APı 'SI|
 |:-----|:-----:|:-----|
-|Afrikaner dili| `af`|   Nöral|
-|Arapça|    `ar`    |   Nöral|
-|Bangla|    `bn`    |   Nöral|
-|Boşnakça (Latin)|   `bs`    |   Nöral|
-|Bulgarca| `bg`    |   Nöral|
+|Afrikaner dili| `af`|   Sinir|
+|Arapça|    `ar`    |   Sinir|
+|Bangla|    `bn`    |   Sinir|
+|Boşnakça (Latin)|   `bs`    |   Sinir|
+|Bulgarca| `bg`    |   Sinir|
 |Kanton (Geleneksel)|   `yue`|  Ki|
 |Katalanca|   `ca`    |   Ki|
-|Basitleştirilmiş Çince|    `zh-Hans`|Nöral|
-|Geleneksel Çince|   `zh-Hant`       |Nöral|
-|Hırvatça|  `hr`    |Nöral|
-|Çekçe| `cs`    |   Nöral|
-|Danca|    `da`        |Nöral|
-|Felemenkçe| `nl`|   Nöral|
-|Türkçe|   `en`    |   Nöral|
-|Estonca|  `et`    |   Nöral|
+|Basitleştirilmiş Çince|    `zh-Hans`|Sinir|
+|Geleneksel Çince|   `zh-Hant`       |Sinir|
+|Hırvatça|  `hr`    |Sinir|
+|Çekçe| `cs`    |   Sinir|
+|Danca|    `da`        |Sinir|
+|Felemenkçe| `nl`|   Sinir|
+|Türkçe|   `en`    |   Sinir|
+|Estonca|  `et`    |   Sinir|
 |Fiji Adaları dili|    `fj`    |   Ki|
 |Filipin dili|  `fil`   |   Ki|
-|Fince|   `fi`    |   Nöral|
-|Fransızca|    `fr`    |   Nöral|
-|Almanca|    `de`    |   Nöral|
-|Yunanca| `el`    |   Nöral|
+|Fince|   `fi`    |   Sinir|
+|Fransızca|    `fr`    |   Sinir|
+|Almanca|    `de`    |   Sinir|
+|Yunanca| `el`    |   Sinir|
 |Haiti Kreyolu|    `ht`        |Ki|
-|İbranice |`he`   |Nöral
-|Hintçe| `hi`    |   Nöral|
+|İbranice |`he`   |Sinir
+|Hintçe| `hi`    |   Sinir|
 |Hmong Daw| `mww`   |   Ki|
-|Macarca| `hu`    |   Nöral|
-|İzlanda dili| `is`    |   Nöral|
+|Macarca| `hu`    |   Sinir|
+|İzlanda dili| `is`    |   Sinir|
 |Endonezya dili|    `id`    |   Ki|
-|İrlanda dili | `ga`| Nöral
-|İtalyanca|   `it`    |   Nöral|
-|Japonca|  `ja`    |   Nöral|
-|Kannada dili|`kn`| Nöral
+|İrlanda dili | `ga`| Sinir
+|İtalyanca|   `it`    |   Sinir|
+|Japonca|  `ja`    |   Sinir|
+|Kannada dili|`kn`| Sinir
 |Svahili dili| `sw`    |   Ki|
 |Klingon|   `tlh`   |   Ki|
 |Klingon (plqaD)|   `tlh-Qaak`  |   Ki|
-|Korece |`ko`   |   Nöral|
-|Letonca|   `lv`    |   Nöral|
-|Litvanca|    `lt`    |   Nöral|
+|Korece |`ko`   |   Sinir|
+|Letonca|   `lv`    |   Sinir|
+|Litvanca|    `lt`    |   Sinir|
 |Malgaşça|  `mg`    |   Ki|
 |Malay dili| `ms`        |Ki|
-|Malayalam dili| `ml` | Nöral
+|Malayalam dili| `ml` | Sinir
 |Malta dili|   `mt`    |   Ki|
-|Maori dili| `mi`  | Nöral|
-|Norveççe| `nb`    |   Nöral|
-|Farsça|   `fa`    |   Nöral|
-|Lehçe|    `pl`    |   Nöral|
-|Portekizce (Brezilya)|   `pt-br` |   Nöral|
-|Portekizce (Portekiz)| `pt-pt` | Nöral
-|Pencap dili|`pa`|Nöral
+|Maori dili| `mi`  | Sinir|
+|Norveççe| `nb`    |   Sinir|
+|Farsça|   `fa`    |   Sinir|
+|Lehçe|    `pl`    |   Sinir|
+|Portekizce (Brezilya)|   `pt-br` |   Sinir|
+|Portekizce (Portekiz)| `pt-pt` | Sinir
+|Pencap dili|`pa`|Sinir
 |Queretaro Otomi|   `otq`   |   Ki|
-|Rumence|  `ro`    |   Nöral|
-|Rusça|   `ru`    |   Nöral|
+|Rumence|  `ro`    |   Sinir|
+|Rusça|   `ru`    |   Sinir|
 |Samoaca|    `sm`    |   Ki|
 |Sırpça (Kiril)|    `sr-Cyrl`|  Ki|
 |Sırpça (Latin)|   `sr-Latn`       |Ki|
-|Slovakça|    `sk`    |   Nöral|
-|Slovence| `sl`    |   Nöral|
-|İspanyolca|   `es`    |   Nöral|
-|İsveççe|   `sv`    |Nöral|
+|Slovakça|    `sk`    |   Sinir|
+|Slovence| `sl`    |   Sinir|
+|İspanyolca|   `es`    |   Sinir|
+|İsveççe|   `sv`    |Sinir|
 |Tahitian|  `ty`    |Ki|
-|Tamil dili| `ta`    |   Nöral|
-|Telugu dili|    `te`    |   Nöral|
-|Tay Dili|  `th`    |   Nöral|
+|Tamil dili| `ta`    |   Sinir|
+|Telugu dili|    `te`    |   Sinir|
+|Tay Dili|  `th`    |   Sinir|
 |Tonga Dili|    `to`    |   Ki|
-|Türkçe|   `tr`        |Nöral|
-|Ukrayna dili| `uk`    |   Nöral|
+|Türkçe|   `tr`        |Sinir|
+|Ukrayna dili| `uk`    |   Sinir|
 |Urduca|  `ur`    |   Ki|
-|Vietnam dili|    `vi`    |   Nöral|
-|Gaelce| `cy`    |   Nöral|
+|Vietnam dili|    `vi`    |   Sinir|
+|Gaelce| `cy`    |   Sinir|
 |Yucatec Maya|  `yua`   |   Ki|
 
 > [!NOTE]
 > Dil kodu `pt` varsayılan olarak `pt-br`, Portekizce (Brezilya) olur.
 
-## <a name="transliteration"></a>Alfabe çevirisi
+## <a name="transliteration"></a>Alfabeye çevirme
 
 Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dilin listelenen betiklerden veya bunlardan herhangi birine dönüştürülmüş olduğunu gösterir. "-->", Dilin yalnızca bir betikten diğerine dönüştürülmüş olduğunu gösterir.
 
-| Dil    | Dil kodu | Komut Dosyası | /Kimden | Komut Dosyası|
+| Dil    | Dil kodu | Betik | /Kimden | Betik|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça `Arab` | <--> | Latin `Latn` |
 |Bangla  | `bn` | Bangla `Beng` | <--> | Latin `Latn` |
@@ -135,7 +135,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Kannada dili | `kn` | Kannada dili `Knda` | --> | Latin `Latn` |
 | Malayalam dili | `ml` | Malayalam dili `Mlym` | --> | Latin `Latn` |
 | Marathi | `mr` | Devanagari `Deva` | --> | Latin `Latn` |
-| Oriya | `or` | Odia `Orya` | <--> | Latin `Latn` |
+| Oriya | `or` | Oriya dili `Orya` | <--> | Latin `Latn` |
 | Pencap dili | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | Sırpça (Kiril) | `sr-Cyrl` | Kiril `Cyrl`  | --> | Latin `Latn` |
 | Sırpça (Latin) | `sr-Latn` | Latin `Latn` | --> | Kiril `Cyrl`|

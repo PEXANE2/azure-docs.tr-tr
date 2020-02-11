@@ -1,5 +1,5 @@
 ---
-title: İş ortakları için Microsoft Azure StorSimple ve bulut çözümleri sağlayıcısı programı hakkında sık sorulan sorular | Microsoft Docs
+title: 'İş ortakları için SSS: bulut çözümleri sağlayıcısı programı için StorSimple'
 description: İş ortakları için StorSimple ve CSP ile ilgili bazı yaygın soruların yanıtlarını bulun.
 services: storsimple
 documentationcenter: NA
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 893e8de5efc523df34e2c1e139082d2b471cb63e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828536"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116155"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Cloud Solutions sağlayıcı programı için StorSimple: sık sorulan sorular
 
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 Azure portal bir StorSimple Sanal dizisi dağıtırken veya yönetirken, StorSimple iş ortağı olarak sahip olabileceğiniz sorular ve yanıtlar aşağıda verilmiştir.
 
 Sorular ve yanıtlar aşağıdaki kategorilerde düzenlenir:

@@ -1,22 +1,18 @@
 ---
 title: PowerShell kullanarak Azure VM 'Leri için bakım bildirimleri alın
 description: Azure 'da çalışan sanal makineler için bakım bildirimlerini görüntüleyin ve PowerShell kullanarak Self servis bakımı başlatın.
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f136fc3001e6ae224e264a59ceba66ed61ead865
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535840"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121843"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell kullanarak planlı Bakımı işleme
 

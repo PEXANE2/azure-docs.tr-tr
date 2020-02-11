@@ -4,12 +4,12 @@ description: Otomatik ölçeklendirme eylemlerini kullanarak Web URL 'Lerini ça
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364212"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120695"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma
 Bu makalede, belirli Web URL 'Lerini çağırabilmeniz veya Azure 'daki otomatik ölçeklendirme eylemlerine göre e-posta gönderebilmek için Tetikleyicileri ayarlama yöntemi gösterilmektedir.  
@@ -20,8 +20,8 @@ Web kancaları, Azure uyarı bildirimlerini, işleme sonrası veya özel bildiri
 ## <a name="email"></a>E-posta
 E-posta, geçerli herhangi bir e-posta adresine gönderilebilir. Kuralın çalıştığı aboneliğin yöneticileri ve ortak yöneticileri de bilgilendirilir.
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services ve Web Apps
-Cloud Services ve sunucu grupları (Web Apps) için Azure portal tercih edebilirsiniz.
+## <a name="cloud-services-and-app-services"></a>Cloud Services ve uygulama hizmetleri
+Cloud Services ve sunucu grupları (App Services) için Azure portal tercih edebilirsiniz.
 
 * Ölçüyü ölçmeye **göre** seçin.
 
@@ -105,16 +105,16 @@ Otomatik ölçeklendirme bildirimi oluşturulduğunda aşağıdaki meta veriler 
 | operation |evet |Örneklerin artması için, "ölçeği genişletme" ve örneklerde bir azalma için "ölçeklendirilmesi" olacaktır. |
 | context |evet |Otomatik ölçeklendirme eylemi bağlamı |
 | timestamp |evet |Otomatik ölçeklendirme eyleminin tetiklendiği zaman damgası |
-| id |Evet |Otomatik ölçeklendirme ayarının Kaynak Yöneticisi KIMLIĞI |
-| ad |Evet |Otomatik ölçeklendirme ayarının adı |
-| details |Evet |Otomatik ölçeklendirme hizmetinin aldığı eylemin açıklaması ve örnek sayısında değişiklik |
-| subscriptionId |Evet |Ölçeklendirilen hedef kaynağın abonelik KIMLIĞI |
-| resourceGroupName |Evet |Ölçeklendirilen hedef kaynağın kaynak grubu adı |
-| resourceName |Evet |Ölçeklendirilen hedef kaynağın adı |
-| resourceType |Evet |Desteklenen üç değer: "Microsoft. classiccompute/DomainNames/yuvalar/roller"-bulut hizmeti rolleri, "Microsoft. COMPUTE/virtualmachinescalesets"-sanal makine ölçek kümeleri ve "Microsoft. Web/sunucugrupları"-Web uygulaması |
-| resourceId |Evet |Ölçeklendirilen hedef kaynağın Kaynak Yöneticisi KIMLIĞI |
-| Portal bağlantısı |Evet |Hedef kaynağın özet sayfasına Azure portal bağlantı |
-| oldCapacity |Evet |Otomatik ölçeklendirme bir ölçeklendirme eylemi gerçekleştirirse geçerli (eski) örnek sayısı |
-| newCapacity |Evet |Otomatik olarak kaynağı ölçeklendirilen yeni örnek sayısı |
+| id |Yes |Otomatik ölçeklendirme ayarının Kaynak Yöneticisi KIMLIĞI |
+| ad |Yes |Otomatik ölçeklendirme ayarının adı |
+| details |Yes |Otomatik ölçeklendirme hizmetinin aldığı eylemin açıklaması ve örnek sayısında değişiklik |
+| subscriptionId |Yes |Ölçeklendirilen hedef kaynağın abonelik KIMLIĞI |
+| resourceGroupName |Yes |Ölçeklendirilen hedef kaynağın kaynak grubu adı |
+| resourceName |Yes |Ölçeklendirilen hedef kaynağın adı |
+| resourceType |Yes |Desteklenen üç değer: "Microsoft. classiccompute/DomainNames/yuvalar/roller"-bulut hizmeti rolleri, "Microsoft. COMPUTE/virtualmachinescalesets"-sanal makine ölçek kümeleri ve "Microsoft. Web/sunucugrupları"-Web uygulaması |
+| resourceId |Yes |Ölçeklendirilen hedef kaynağın Kaynak Yöneticisi KIMLIĞI |
+| Portal bağlantısı |Yes |Hedef kaynağın özet sayfasına Azure portal bağlantı |
+| oldCapacity |Yes |Otomatik ölçeklendirme bir ölçeklendirme eylemi gerçekleştirirse geçerli (eski) örnek sayısı |
+| newCapacity |Yes |Otomatik olarak kaynağı ölçeklendirilen yeni örnek sayısı |
 | properties |Hayır |İsteğe bağlı. < Anahtar, değer > çiftleri (örneğin, sözlük < dizesi, dize >) kümesi. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabiriminde veya mantıksal uygulama tabanlı iş akışında, yük kullanılarak geçirilebilecek anahtar ve değerleri girebilirsiniz. Özel özellikleri giden Web kancası çağrısına geri geçirmenin alternatif bir yolu, Web kancası URI 'sinin kendisini kullanmaktır (sorgu parametreleri olarak) |
 

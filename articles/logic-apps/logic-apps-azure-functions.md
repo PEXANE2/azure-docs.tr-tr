@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453465"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116910"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps Azure işlevleri 'ni çağırma
 
@@ -26,7 +26,7 @@ Kod parçacıklarını Azure işlevleri oluşturmadan çalıştırmak için [sat
 > [!NOTE]
 > Logic Apps ve Azure Işlevleri arasındaki tümleştirme Şu anda etkin yuvalarla çalışmıyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -200,11 +200,11 @@ Bir Azure işlevinin içinden bir mantıksal uygulama tetiklemek istediğinizde,
 
 Oturum açmak ve kimlik bilgilerini ya da gizli dizileri sağlamak zorunda kalmadan diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişimin kimliğini doğrulamak için mantıksal uygulamanız [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
 
-Mantıksal uygulamanızı sistem tarafından atanan yönetilen kimliği kullanacak şekilde ayarlarsanız, mantıksal uygulamanızdaki Azure işlevleri de kimlik doğrulaması için aynı kimliği kullanabilir. Logic Apps 'te Azure işlevleri için kimlik doğrulama desteği hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Mantıksal uygulamanızı sistem tarafından atanan kimliği veya el ile oluşturulmuş bir kullanıcı tarafından oluşturulmuş kimliği kullanacak şekilde ayarlarsanız, mantıksal uygulamanızdaki Azure işlevleri de kimlik doğrulaması için aynı kimliği kullanabilir. Logic Apps 'te Azure işlevleri için kimlik doğrulama desteği hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-İşleviniz ile sistem tarafından atanan kimliği ayarlamak ve kullanmak için şu adımları izleyin:
+İşleviniz ile yönetilen kimliği ayarlamak ve kullanmak için şu adımları izleyin:
 
-1. Mantıksal uygulamanızda sistem tarafından atanan kimliği etkinleştirin ve bu kimliğin hedef kaynağa erişimini ayarlayın. Bkz. [Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişim kimlik doğrulaması](../logic-apps/create-managed-service-identity.md).
+1. Mantıksal uygulamanızda yönetilen kimliği etkinleştirin ve bu kimliğin hedef kaynağa erişimini ayarlayın. Bkz. [Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişim kimlik doğrulaması](../logic-apps/create-managed-service-identity.md).
 
 1. Aşağıdaki adımları izleyerek Azure işlevinizde ve işlev uygulamanızda kimlik doğrulamasını etkinleştirin:
 
@@ -215,7 +215,7 @@ Mantıksal uygulamanızı sistem tarafından atanan yönetilen kimliği kullanac
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>İşlevinizde anonim kimlik doğrulamasını ayarlama
 
-Mantıksal uygulamanızın sistem tarafından atanan kimliğini Azure işlevinizde kullanmak için, işlevinizin kimlik doğrulama düzeyini anonim olarak ayarlamış olursunuz. Aksi takdirde, mantıksal uygulamanız bir "Rozrequest" hatası oluşturur.
+Mantıksal uygulamanızın yönetilen kimliğini Azure işlevinizde kullanmak için, işlevinizin kimlik doğrulama düzeyini anonim olarak ayarlamış olursunuz. Aksi takdirde, mantıksal uygulamanız bir "Rozrequest" hatası oluşturur.
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanızı bulun ve seçin. Bu adımlar örnek işlev uygulaması olarak "FabrikamFunctionApp" kullanır.
 

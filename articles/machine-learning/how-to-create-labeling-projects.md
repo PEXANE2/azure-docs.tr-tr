@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765078"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116857"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -37,7 +37,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Etiketleri dışarı aktarma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel dosyalarda veya Azure Storage 'da etiketlemek istediğiniz veriler.
 * Uygulamak istediğiniz Etiketler kümesi.
@@ -125,7 +125,7 @@ Sınırlayıcı kutular için, önemli sorular şunlardır:
 
 ## <a name="initialize-the-labeling-project"></a>Etiketleme projesini başlatma
 
-Etiketleme projesi başlatıldıktan sonra, projenin bazı yönleri sabittir. Görev türünü veya veri kümesini değiştiremezsiniz. Görev açıklamasının etiketlerini ve URL *'sini değiştirebilirsiniz.* Projeyi oluşturmadan önce ayarları dikkatle gözden geçirin. Projeyi gönderdikten sonra **etiketleme** giriş sayfasına döndürülürsünüz, bu, projeyi **başlatılıyor**olarak gösterir. Bu sayfa otomatik olarak yenilenmez. Bu nedenle, bir duraklama sonrasında, projenin durumunu **oluşturulduğu**şekilde görmek için sayfayı el ile yenileyin.
+Etiketleme projesi başlatıldıktan sonra, projenin bazı yönleri sabittir. Görev türünü veya veri kümesini değiştiremezsiniz. Görev açıklamasının etiketlerini ve URL *'sini değiştirebilirsiniz.* Projeyi oluşturmadan önce ayarları dikkatle gözden geçirin. Projeyi gönderdikten sonra, **veri etiketleme** giriş sayfasına döndürülürsünüz, bu da projeyi **başlatılıyor**olarak gösterir. Bu sayfa otomatik olarak yenilenmez. Bu nedenle, bir duraklama sonrasında, projenin durumunu **oluşturulduğu**şekilde görmek için sayfayı el ile yenileyin.
 
 ## <a name="manage-teams-and-people"></a>Takımları ve kişileri yönetme
 
@@ -139,7 +139,7 @@ Ekibe e-posta göndermek için takım **ayrıntıları** sayfasını görüntül
 
 ## <a name="run-and-monitor-the-project"></a>Projeyi çalıştırma ve izleme
 
-Projeyi başlattıktan sonra Azure bu uygulamayı çalıştırmaya başlayacaktır. **Proje ayrıntılarına**gitmek Için ana **etiketleme** sayfasında projeyi seçin. **Pano** sekmesi etiketleme görevinin ilerlemesini gösterir.
+Projeyi başlattıktan sonra Azure bu uygulamayı çalıştırmaya başlayacaktır. **Proje ayrıntılarına**gitmek Için ana **veri etiketleme** sayfasında projeyi seçin. **Pano** sekmesi etiketleme görevinin ilerlemesini gösterir.
 
 **Veri** sekmesinde, veri kümenizi görebilir ve etiketli verileri gözden geçirebilirsiniz. Hatalı etiketlenmiş verileri görürseniz, bunu seçin ve **Reddet**' i seçin. Bu, etiketleri kaldırır ve verileri etiketsiz kuyruğa geri koyar.
 
@@ -148,6 +148,24 @@ Projeyi başlattıktan sonra Azure bu uygulamayı çalıştırmaya başlayacakt�
 Projeyi duraklatmak veya yeniden başlatmak için **duraklat**/**Başlat** düğmesini seçin. Yalnızca proje çalışırken verileri etiketleyebilir.
 
 **Etiket verileri**' ni seçerek doğrudan **proje ayrıntıları** sayfasından verileri etiketleyebilir.
+
+## <a name="add-labels-to-a-project"></a>Bir projeye etiketler ekleme
+
+Etiketleme işlemi sırasında, görüntülerinizi sınıflandırmak için ek etiketlerin gerekli olduğunu fark edebilirsiniz.  Örneğin, kafa karıştırıcı görüntüleri göstermek için bir "Bilinmeyen" veya "diğer" etiketi eklemek isteyebilirsiniz.
+
+Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
+
+1. Ana **veri etiketleme** sayfasında projeyi seçin.
+1. Sayfanın en üstünde bulunan etiketleyicilerinin etkinliğini durdurmak için **Duraklat** ' ı seçin.
+1. **Ayrıntılar** sekmesini seçin.
+1. Sol taraftaki listede **etiket sınıfları**' nı seçin.
+1. Listenin en üstünde **+** etiket ekle ![etiket ekle ' yi seçin](media/how-to-create-labeling-projects/add-label.png)
+1. Formunda, yeni etiketinizi ekleyin ve nasıl devam etmek istediğinizi seçin.  Bir görüntü için kullanılabilir etiketleri değiştirdiğiniz için, zaten etiketlenmiş verilerin nasıl davranalınacağını seçersiniz:
+    * Tüm mevcut etiketleri kaldırarak baştan başlayın.  Tüm görüntüleri etiketlemek için tüm mevcut etiketleri temizlemek istiyorsanız bu seçeneği belirleyin.
+    * Tüm mevcut etiketleri koruyarak, baştan başlayın.  Tüm verileri etiketsiz olarak işaretlemek için bu seçeneği belirleyin, ancak etiketli görüntüler için mevcut etiketleri varsayılan etiket olarak tutun.
+    * Tüm mevcut etiketleri koruyarak devam edin. Tüm verilerin zaten olduğu gibi etiketlenmesi ve henüz sınıflandırılmamış veriler için yeni etiketi kullanmaya başlamak üzere bu seçeneği belirleyin.
+1. Yönergeler sayfanızı yeni etiketler için gereken şekilde değiştirin.
+1. Tüm yeni etiketleri ekledikten sonra, sayfanın üst kısmında, projeyi yeniden başlatmak için **Başlat** ' ı seçin.  
 
 ## <a name="export-the-labels"></a>Etiketleri dışarı aktarma
 

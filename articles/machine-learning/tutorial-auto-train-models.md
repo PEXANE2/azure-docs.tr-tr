@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 83c4ad92cc367deb52e4e9e5cd8b76ddab409933
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533282"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116454"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,10 +33,10 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
-* Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak **öğreticiler/Regression-Automated-ml. ipynb** Not defterini açın.
+* Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
 
 Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Gerekli paketleri almak için `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` çalıştırın.
 
@@ -70,7 +70,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -122,7 +122,7 @@ green_taxi_df.head(10)
       <td>-73,94</td>
       <td>...</td>
       <td>2</td>
-      <td>15.00</td>
+      <td>15,00</td>
       <td>0.50</td>
       <td>0.50</td>
       <td>0,3</td>
@@ -266,7 +266,7 @@ green_taxi_df.head(10)
       <td>-73,87</td>
       <td>...</td>
       <td>2</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>0.00</td>
       <td>0.50</td>
       <td>0,3</td>
@@ -371,7 +371,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -676,7 +676,7 @@ green_taxi_df.describe()
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -751,7 +751,7 @@ green_taxi_df.describe()
       <td>6,83</td>
     </tr>
     <tr>
-      <th>dk</th>
+      <th>en küçük</th>
       <td>1.00</td>
       <td>0.00</td>
       <td>0.00</td>
@@ -769,7 +769,7 @@ green_taxi_df.describe()
       <th>%25</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>1.06</td>
+      <td>1,06</td>
       <td>-73,96</td>
       <td>40,70</td>
       <td>-73,97</td>
@@ -781,7 +781,7 @@ green_taxi_df.describe()
       <td>9,00</td>
     </tr>
     <tr>
-      <th>%50</th>
+      <th>50%</th>
       <td>2.00</td>
       <td>1.00</td>
       <td>1,90</td>
@@ -791,9 +791,9 @@ green_taxi_df.describe()
       <td>40,75</td>
       <td>11,30</td>
       <td>6,50</td>
-      <td>15.00</td>
+      <td>15,00</td>
       <td>3.00</td>
-      <td>15.00</td>
+      <td>15,00</td>
     </tr>
     <tr>
       <th>%75</th>
@@ -822,7 +822,7 @@ green_taxi_df.describe()
       <td>450,00</td>
       <td>12,00</td>
       <td>30,00</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>23,00</td>
     </tr>
   </tbody>
@@ -869,7 +869,7 @@ ws = Workspace.from_config()
 
 `scikit-learn` kitaplığındaki `train_test_split` işlevini kullanarak verileri eğitim ve test kümelerine ayırın. Bu işlev, model eğitimi için verileri x (**Özellikler**) veri kümesine ayırır ve test için y (**tahmin edilecek değerler**) veri kümesini gösterir.
 
-`test_size` Parametresi test ayrılacak veri yüzdesini belirler. `random_state` parametresi, tren test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
+`test_size` parametresi, teste ayrılacak verilerin yüzdesini belirler. `random_state` parametresi, tren test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -892,16 +892,16 @@ Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
 
 ### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
 
-Eğitim için deneme parametresi ve model ayarlarını tanımlayın. Tam listesini görüntüleyin [ayarları](how-to-configure-auto-train.md). Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametresini küçültün.
+Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametresini küçültün.
 
 |Özellik| Bu öğreticideki değer |Açıklama|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Her yineleme için dakika cinsinden zaman sınırı. Toplam çalışma zamanını azaltmak için bu değeri küçültün.|
 |**experiment_timeout_minutes**|20|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için geçmesi gereken en uzun süre.|
-|**enable_early_stopping**|Doğru|Puan, kısa vadede iyileştirilmediğinden erken sonlandırmayı etkinleştirmek için bayrak.|
+|**enable_early_stopping**|True|Puan, kısa vadede iyileştirilmediğinden erken sonlandırmayı etkinleştirmek için bayrak.|
 |**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. En uygun model bu ölçüme göre seçilecek.|
-|**korturlama**| otomobil | **Otomatik**, deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
-|**Ayrıntı düzeyi**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
+|**korturlama**| auto | **Otomatik**, deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
+|**ayrıntı**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
 |**n_cross_validations**|5|Doğrulama verileri belirtilmediğinde gerçekleştirilecek çapraz doğrulama bölme sayısı.|
 
 ```python
@@ -1008,7 +1008,7 @@ print(fitted_model)
 
 ### <a name="test-the-best-model-accuracy"></a>En iyi modeli doğruluk testi
 
-Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve `x_test` veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder. Yazdırma değerlerinden maliyet tahmin ilk 10 `y_predict`.
+Taksi Fares 'yi tahmin etmek için test verileri kümesindeki tahminleri çalıştırmak için en iyi modeli kullanın. İşlevi `predict` en iyi modeli kullanır ve `x_test` veri kümesinden y, **seyahat maliyeti**değerlerini tahmin eder. İlk 10 tahmini maliyet değerini `y_predict`yazdır.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
@@ -1086,4 +1086,4 @@ Bu otomatik makine öğrenimi öğreticisinde aşağıdaki görevleri yaptınız
 > * Özel parametrelerle yerel olarak otomatik regresyon modeli kullanılarak eğitilen.
 > * Araştırılan ve gözden geçirilmiş eğitim sonuçları.
 
-[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile.
+[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile dağıtın.

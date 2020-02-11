@@ -3,12 +3,12 @@ title: Azure dosyalarını PowerShell ile yedekleme
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086950"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120507"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile yedekleme
 
@@ -250,9 +250,9 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Önemli bildirim-AFS yedeklemeleri için yedekleme öğesi kimliği
 
-Bu bölümde, AFS yedeklemeleri için Önizleme 'den GA 'ye kadar yedekleme öğesi almayla ilgili değişiklikler özetlenmektedir.
+Bu bölümde, GA için hazırlanan AFS yedeklemesiyle ilgili önemli bir değişiklik özetlenmektedir.
 
-AFS için yedeklemeyi etkinleştirirken, Kullanıcı, varlık adı olarak müşterinin kolay dosya paylaşma adını sağlar ve bir yedekleme öğesi oluşturulur. Yedekleme öğesinin ' name ', Azure Backup hizmeti tarafından oluşturulan benzersiz bir tanımlayıcıdır. Genellikle tanımlayıcı Kullanıcı dostu adı içerir. Ancak Azure hizmetleri 'nin bir Azure dosya paylaşımının dahili olarak nasıl tanımladığı gibi bir değişiklik de vardır. Bu, AFS yedeklemesi için yedekleme öğesinin benzersiz adının GUID olacağı ve müşterinin kolay adıyla hiçbir ilişkisi olmayacağı anlamına gelir. Her öğenin benzersiz adını bilmek için, tüm ilgili öğeleri almak üzere backupManagementType ve WorkloadType için ilgili filtrelerle ```Get-AzRecoveryServicesBackupItem``` komutunu çalıştırın ve ardından döndürülen PS nesnesi/yanıtı içindeki ad alanını gözlemleyin. Öğeleri listelemek ve sonra ' name ' alanından yanıt olarak benzersiz adlarını almak her zaman önerilir. ' Name ' parametresiyle öğeleri filtrelemek için bu değeri kullanın. Aksi takdirde, öğeyi müşterinin kolay adı/tanımlayıcısı ile almak için FriendlyName parametresini kullanın.
+AFS için yedeklemeyi etkinleştirirken, Kullanıcı, varlık adı olarak müşterinin kolay dosya paylaşma adını sağlar ve bir yedekleme öğesi oluşturulur. Yedekleme öğesinin ' name ', Azure Backup hizmeti tarafından oluşturulan benzersiz bir tanımlayıcıdır. Genellikle tanımlayıcı Kullanıcı dostu adı içerir. Ancak, bir dosya paylaşımının silinebileceği ve aynı adla başka bir dosya paylaşımının oluşturulabilmesi için önemli olan geçici bir senaryoyu işlemek için, Azure dosya paylaşımının benzersiz kimliği artık müşterinin kolay adı yerine bir KIMLIK olur. Her öğenin benzersiz kimliğini/adını bilmek için, tüm ilgili öğeleri almak üzere backupManagementType ve WorkloadType için ilgili filtrelerle ```Get-AzRecoveryServicesBackupItem``` komutunu çalıştırın ve ardından döndürülen PS nesnesi/yanıtı içindeki ad alanını gözlemleyin. Öğeleri listelemek ve sonra ' name ' alanından yanıt olarak benzersiz adlarını almak her zaman önerilir. ' Name ' parametresiyle öğeleri filtrelemek için bu değeri kullanın. Aksi takdirde, öğeyi müşterinin kolay adı/tanımlayıcısı ile almak için FriendlyName parametresini kullanın.
 
 > [!WARNING]
 > AFS yedeklemeleri için PS sürümünün ' az. RecoveryServices 2.6.0 ' için en düşük sürüme yükseltildiğinden emin olun. Bu sürümde, ' friendlyName ' filtresi ```Get-AzRecoveryServicesBackupItem``` komutu için kullanılabilir. Azure dosya paylaşımının adını friendlyName parametresine geçirin. Azure dosya paylaşımının adını ' name ' parametresine geçirirseniz, bu sürüm kolay ad parametresine bu kolay adı geçirmek için bir uyarı oluşturur. Bu en düşük sürümü yüklememe, mevcut betiklerin oluşmasına neden olabilecek. Aşağıdaki komutla en düşük PS sürümünü yükler.

@@ -1,36 +1,29 @@
 ---
-title: Kaynak Yöneticisi modunda Azure CLı komutları | Microsoft Docs
-description: Kaynak Yöneticisi dağıtım modelindeki kaynakları yönetmek için Azure komut satırı arabirimi (CLı) komutları
-services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+title: Azure klasik CLı komutları
+description: Kaynakları yönetmek için Azure komut satırı arabirimi (CLı) komutları.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: command-line-interface
-ms.devlang: na
+ms.service: virtual-machines
+ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355923"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122459"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Kaynak Yöneticisi modunda Azure CLı komutları
-Bu makalede, Azure komut satırı arabirimi (CLı) komutları için, Azure Resource Manager dağıtım modelinde Azure kaynakları oluşturmak ve yönetmek için kullanılan söz dizimi ve seçenekler sağlanmaktadır. CLı Kaynak Yöneticisi (ARM) modunda çalıştırarak bu komutlara erişirsiniz. Bu, tüm bir başvuru değildir ve CLı sürümünüz biraz farklı komutlar veya parametreler gösterebilir. Azure kaynaklarına ve kaynak gruplarına genel bir bakış için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md).  
+# <a name="azure-classic-cli-commands"></a>Azure klasik CLı komutları 
 
-> [!NOTE]
-> Bu makalede Azure CLı 'de bazen Azure klasik CLı olarak adlandırılan Kaynak Yöneticisi mod komutları gösterilmektedir. Kaynak Yöneticisi modelinde çalışmak için yeni nesil çok platformlu CLı olan [Azure CLI](/cli/azure/install-az-cli2)'yi de deneyebilirsiniz.
->[Eski ve yeni Azure uçları](/cli/azure/old-and-new-clis)hakkında daha fazla bilgi edinin.
->
+> [!IMPORTANT]
+> Bu konu başlığı altında Azure klasik CLI'nin nasıl yüklendiği açıklanır. Klasik CLI kullanımdan kaldırılmıştır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır.
+> Diğer tüm dağıtımlar için [Azure CLI](https://docs.microsoft.com/cli/azure/)'yi kullanın.
 
-Başlamak için önce [Azure CLI 'yı yükleyip](../cli-install-nodejs.md) [Azure aboneliğinize bağlanın](/cli/azure/authenticate-azure-cli).
+Bu makalede, Azure kaynakları oluşturmak ve yönetmek için sık kullandığınız Azure klasik komut satırı arabirimi (CLı) komutları için sözdizimi ve seçenekler sağlanmaktadır. Bu, tüm bir başvuru değildir ve CLı sürümünüz biraz farklı komutlar veya parametreler gösterebilir. 
+
+Başlamak için ilk olarak [Azure klasık CLI 'yı yükledikten](../cli-install-nodejs.md) sonra [Azure aboneliğinize bağlanın](/cli/azure/authenticate-azure-cli).
 
 Kaynak Yöneticisi modundaki komut satırındaki geçerli komut sözdizimi ve seçenekleri için, `azure help [command]`belirli bir komut için Yardımı göstermek üzere `azure help` veya yazın. Ayrıca, belirli Azure hizmetlerini oluşturmak ve yönetmek için belgelerde CLı örnekleri de bulabilirsiniz.
 
@@ -45,10 +38,10 @@ Azure CLı Kaynak Yöneticisi modu komutlarını etkinleştirmek için aşağıd
 
 > [!NOTE]
 > CLı Azure Resource Manager modu ve Azure hizmet yönetimi modu birbirini dışlıyor. Diğer bir deyişle, bir modda oluşturulan kaynaklar diğer moddan yönetilemez.
-> 
-> 
+>
 
-## <a name="azure-account-manage-your-account-information"></a>Azure hesabı: hesap bilgilerinizi yönetin
+
+## <a name="account-information"></a>Hesap bilgileri
 Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kullanılır.
 
 **İçeri aktarılan abonelikleri listeleyin**
@@ -75,7 +68,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: Active Directory nesneleri görüntüleme komutları
+## <a name="active-directory-objects"></a>Active Directory nesneleri
 **Active Directory uygulamalarını görüntüleme komutları**
 
     ad app create [options]
@@ -102,7 +95,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure availset: kullanılabilirlik kümelerinizi yönetmek için komutlar
+## <a name="availability-sets"></a>Kullanılabilirlik kümeleri
 **Bir kaynak grubu içinde bir kullanılabilirlik kümesi oluşturur**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -119,7 +112,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure config: Yerel ayarlarınızı yönetmeye yönelik komutlar
+## <a name="local-settings"></a>Yerel ayarlar
 **Azure CLı yapılandırma ayarlarını listeleme**
 
     config list [options]
@@ -137,7 +130,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>Azure özelliği: hesap özelliklerini yönetmeye yönelik komutlar
+## <a name="account-features"></a>Hesap özellikleri
 **Aboneliğiniz için kullanılabilen tüm özellikleri listeleyin**
 
     feature list [options]
@@ -150,7 +143,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure grubu: Kaynak gruplarınızı yönetmek için komutlar
+## <a name="resource-groups"></a>Kaynak grupları
 **Bir kaynak grubu oluşturur**
 
     group create [options] <name> <location>
@@ -189,12 +182,13 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure HDInsight: HDInsight kümelerinizi yönetmek için komutlar
+## <a name="hdinsight-clusters"></a>HDInsight kümeleri
 **Bir küme yapılandırma dosyası oluşturmak veya kümeye eklemek için komutlar**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
+
 
 Örnek: bir küme oluştururken çalıştırılacak betik eylemi içeren bir yapılandırma dosyası oluşturun.
 
@@ -307,17 +301,17 @@ Parametre seçenekleri:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: izleme öngörüleriyle ilgili komutlar (olaylar, uyarı kuralları, otomatik ölçeklendirme ayarları, ölçümler)
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Öngörüler (olaylar, uyarı kuralları, otomatik ölçeklendirme ayarları, ölçümler)
 **Abonelik, bir CorrelationId, bir kaynak grubu, kaynak veya kaynak sağlayıcısı için işlem günlüklerini alma**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure konumu: tüm kaynak türleri için kullanılabilir konumları almak için komutlar
+## <a name="locations"></a>Konumlar 
 **Kullanılabilir konumları listeleyin**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Azure ağı: ağ kaynaklarını yönetmeye yönelik komutlar
+## <a name="network-resources"></a>Ağ kaynakları
 **Sanal ağları yönetmeye yönelik komutlar**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1503,7 @@ Parametre seçenekleri:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure sağlayıcısı: kaynak sağlayıcısı kayıtlarını yönetmeye yönelik komutlar
+## <a name="resource-provider-registrations"></a>Kaynak sağlayıcı kayıtları
 **Kaynak Yöneticisi kayıtlı olan sağlayıcıları listeleyin**
 
     provider list [options]
@@ -1526,7 +1520,7 @@ Parametre seçenekleri:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure kaynağı: kaynaklarınızı yönetme komutları
+## <a name="resources"></a>Kaynaklar
 **Kaynak grubunda bir kaynak oluşturur**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1541,7 @@ Parametre seçenekleri:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure rolü: Azure rollerinizi yönetmek için komutlar
+## <a name="azure-roles"></a>Azure rolleri
 **Tüm kullanılabilir rol tanımlarını al**
 
     role list [options]
@@ -1562,7 +1556,7 @@ Parametre seçenekleri:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure depolama: depolama nesnelerinizi yönetme komutları
+## <a name="storage-objects"></a>Depolama nesneleri
 **Depolama hesaplarınızı yönetmek için komutlar**
 
     storage account list [options]
@@ -1685,7 +1679,7 @@ Parametre seçenekleri:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure etiketi: Resource Manager etiketinizi yönetme komutları
+## <a name="tags"></a>Etiketler
 **Etiket ekle**
 
     tag create [options] <name> <value>
@@ -1702,7 +1696,7 @@ Parametre seçenekleri:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: Azure sanal makinelerinizi yönetme komutları
+## <a name="virtual-machines"></a>Virtual Machines
 **VM oluşturma**
 
     vm create [options] <resource-group> <name> <location> <os-type>

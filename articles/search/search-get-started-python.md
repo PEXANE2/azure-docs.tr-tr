@@ -2,19 +2,19 @@
 title: "Hızlı başlangıç: REST API 'Leri kullanarak Python 'da arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
 description: Python, jupi Not defterleri ve Azure Bilişsel Arama REST API kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
-author: heidisteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792271"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121626"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Hızlı başlangıç: Jupyter not defterlerini kullanarak Python 'da Azure Bilişsel Arama dizini oluşturma
 
