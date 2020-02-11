@@ -1,239 +1,142 @@
 ---
-title: Hızlı başlangıç-sunucular için Azure Arc kullanarak makineleri Azure 'a bağlama-PowerShell
-description: Bu hızlı başlangıçta, PowerShell kullanarak sunucular için Azure Arc kullanarak makineleri Azure 'a bağlamayı öğrenirsiniz.
+title: Karma makineleri Azure 'a ölçeklendirmeye bağlama
+description: Bu makalede, hizmet sorumlusu kullanarak sunucular için Azure Arc (Önizleme) kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
-author: bobbytreed
-ms.author: robreed
-keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma, yerleşik
-ms.date: 11/04/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 02/04/2020
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0b0e37f8967c23c1be7dcf4ac987a2fc998e9c6a
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834073"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114284"
 ---
-# <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Hızlı başlangıç: sunucular için Azure Arc kullanarak makineleri Azure 'a bağlama-PowerShell
+# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri Azure 'a ölçeklendirmeye bağlama
+
+Gereksinimlerinize bağlı olarak çeşitli esnek seçeneklerle ortamınızda birden çok Windows veya Linux makinesi için sunucu (Önizleme) için Azure yayı 'yi etkinleştirebilirsiniz. Sağladığımız şablon betiğini kullanarak, Azure Arc bağlantısı kurulması da dahil olmak üzere, yüklemenin her adımını otomatikleştirebiliriz. Bununla birlikte, bu betiği, hedef makinede ve Azure 'da yükseltilmiş izinlere sahip bir hesapla etkileşimli olarak yürütmeniz gerekir. Makineleri sunucular için Azure yaya bağlamak için, [makineyi etkileşimli olarak bağlamak](quickstart-onboard-portal.md)üzere ayrıcalıklı kimliğinizi kullanmak yerine bir Azure Active Directory [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md) kullanabilirsiniz. Hizmet sorumlusu, yalnızca `azcmagent` komutunu kullanarak makineleri Azure 'a bağlamak için gereken en düşük izne sahip özel sınırlı bir yönetim kimliğidir. Bu, Kiracı Yöneticisi gibi daha yüksek ayrıcalıklı bir hesap kullanmaktan daha güvenlidir ve erişim denetimi güvenliği en iyi yöntemlerimizi izler. Hizmet sorumlusu yalnızca ekleme sırasında kullanılır, başka bir amaçla kullanılmaz.  
+
+Bağlı makine aracısını yüklemeye ve yapılandırmaya yönelik yükleme yöntemleri, kullandığınız otomatik metodun makinelerde yönetici izinlerine sahip olmasını gerektirir. Linux 'ta, kök hesabı ve Windows üzerinde yerel Yöneticiler grubunun bir üyesi olarak.
+
+Başlamadan önce, [önkoşulları](overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Desteklenen istemcileri ve [sunucu Için Azure Arc genel bakış](overview.md)' da gereken ağ yapılandırmasını gözden geçirin.
+Bu işlemin sonunda, karma makinelerinizi sunucular için Azure yaya başarıyla bağlamış olursunuz.
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Ölçekte ekleme için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu, yalnızca makineleri Azure 'a bağlamak için gereken en düşük izni verilen özel sınırlı bir yönetim kimliğidir. Bu, Kiracı Yöneticisi gibi daha güçlü bir hesap kullanmaktan daha güvenlidir. Hizmet sorumlusu yalnızca ekleme sırasında kullanılır. İstediğiniz sunuculara bağlandıktan sonra hizmet sorumlusunu güvenle silebilirsiniz.
+[New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) cmdlet 'i ile bir hizmet sorumlusu oluşturmak için [Azure PowerShell](/powershell/azure/install-az-ps) kullanabilirsiniz. Ya da bu görevi gerçekleştirmek için [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) altında listelenen adımları izleyebilirsiniz.
 
 > [!NOTE]
-> Bu adım önerilir, ancak gerekli değildir.
+> Bir hizmet sorumlusu oluşturduğunuzda, hesabınız, ekleme için kullanmak istediğiniz abonelikte bir sahip veya Kullanıcı erişimi Yöneticisi olmalıdır. Rol atamaları oluşturmak için yeterli izniniz yoksa, hizmet sorumlusu oluşturulmuş olabilir, ancak makine ekleyemez.
+>
 
-### <a name="steps-to-create-the-service-principal"></a>Hizmet sorumlusu oluşturma adımları
+PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın.
 
-Bu örnekte, bir hizmet asıl adı (SPN) oluşturmak için [Azure PowerShell](/powershell/azure/install-az-ps) kullanacağız. Alternatif olarak, bu görev için [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) altında listelenen adımları izleyebilirsiniz.
+1. Aşağıdaki komutu çalıştırın. [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) cmdlet 'inin çıkışını bir değişkende depolamanız gerekir, aksi durumda daha sonraki bir adımda gereken parolayı alamazsınız.
+
+    ```azurepowershell-interactive
+    $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
+    $sp
+    ```
+
+    ```output
+    Secret                : System.Security.SecureString
+    ServicePrincipalNames : {ad9bcd79-be9c-45ab-abd8-80ca1654a7d1, https://Arc-for-servers}
+    ApplicationId         : ad9bcd79-be9c-45ab-abd8-80ca1654a7d1
+    ObjectType            : ServicePrincipal
+    DisplayName           : Hybrid-RP
+    Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
+    Type                  :
+    ```
+
+2. `$sp` değişkeninde depolanan parolayı almak için aşağıdaki komutu çalıştırın:
+
+    ```azurepowershell-interactive
+    $credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
+    $credential.GetNetworkCredential().password
+    ```
+
+3. Çıktıda, alan **parolasının** altındaki parola değerini bulun ve kopyalayın. Ayrıca, **applicationfield** alanının altındaki değeri bulur ve ayrıca kopyalayın. Daha sonra güvenli bir yerde saklayın. Hizmet sorumlusu Parolanızı unutur veya kaybederseniz, [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) cmdlet 'ini kullanarak sıfırlayabilirsiniz.
+
+Aşağıdaki özelliklerden alınan değerler `azcmagent`geçirilen parametrelerle kullanılır:
+
+* **ApplicationId** özelliğinden alınan değer `--service-principal-id` parametre değeri için kullanılır
+* **Password** özelliğinden alınan değer, aracıyı bağlamak için kullanılan `--service-principal-secret` parametresi için kullanılır.
 
 > [!NOTE]
-> Hizmet sorumlusu oluşturduğunuzda, ekleme için kullanmak istediğiniz abonelikte bir sahip veya Kullanıcı erişimi yöneticisi olmanız gerekir. Rol atamaları oluşturmak için yeterli izniniz yoksa, hizmet sorumlusu oluşturulmuş olabilir, ancak makine ekleyemez.
+> **Kimlik** özelliğini değil hizmet sorumlusu **ApplicationId** özelliğini kullandığınızdan emin olun.
+>
 
-`Azure Connected Machine Onboarding` rolü yalnızca ekleme için gereken izinleri içerir. Kapsamının bir kaynak grubunu veya aboneliği kapsamasını sağlamak için bir SPN iznini tanımlayabilirsiniz.
+**Azure bağlı makine ekleme** rolü yalnızca bir makineyi eklemek için gereken izinleri içerir. Kapsamının bir kaynak grubu veya abonelik içermesini sağlamak için hizmet sorumlusu iznini atayabilirsiniz. Rol ataması eklemek için bkz. [Azure RBAC ve Azure Portal kullanarak rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md) , [Azure RBAC ve Azure CLI kullanarak rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md).
 
-[`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) cmdlet 'inin çıkışını depolamanız gerekir veya sonraki bir adımda kullanılacak parolayı alamazsınız.
+## <a name="install-the-agent-and-connect-to-azure"></a>Aracıyı yükleyip Azure 'a bağlanın
 
-```azurepowershell-interactive
-$sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
-$sp
+Aşağıdaki adımlar, [Azure Portal makalesinden karma makinelerde Azure 'A bağlanma](quickstart-onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştiren betik şablonunu kullanarak, karma makinelerinize bağlı makine aracısını yükler ve yapılandırır. Fark, hizmet sorumlusunu kullanarak `azcmagent` komutunu kullanarak Azure Arc bağlantısını oluşturduğunuz son adımdır. 
+
+Aşağıda, hizmet sorumlusu için kullanmak üzere `azcmagent` komutunu yapılandırdığınız ayarlar verilmiştir.
+
+* `tenant-id`: adanmış Azure AD örneğinizi temsil eden benzersiz tanımlayıcı (GUID).
+* `subscription-id`: içinde makinelere istediğiniz Azure aboneliğinizin abonelik KIMLIĞI (GUID).
+* `resource-group`: bağlı makinelerinizin ait olmasını istediğiniz kaynak grubu adı.
+* `location`: [desteklenen Azure bölgelerine](overview.md#supported-regions)bakın. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
+* `resource-name`: (*Isteğe bağlı*) Şirket Içi makinenizin Azure Kaynak temsili için kullanılır. Bu değeri belirtmezseniz makine ana bilgisayar adı kullanılır.
+
+[Azcmagent başvurusunu](azcmagent-reference.md)inceleyerek `azcmagent` komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
+
+### <a name="windows-installation-script"></a>Windows yükleme betiği
+
+Aşağıda, aracının tam otomatik ve etkileşimli olmayan bir yüklemesini desteklemek üzere hizmet sorumlusunu kullanacak şekilde değiştirilen Windows yükleme betiği için bağlı makine aracısına bir örnek verilmiştir.
+
 ```
-
-```output
-Secret                : System.Security.SecureString
-ServicePrincipalNames : {ad9bcd79-be9c-45ab-abd8-80ca1654a7d1, https://Arc-for-servers}
-ApplicationId         : ad9bcd79-be9c-45ab-abd8-80ca1654a7d1
-ObjectType            : ServicePrincipal
-DisplayName           : Hybrid-RP
-Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
-Type                  :
-```
-
-> [!NOTE] 
-> SPN izinleriniz doğru doldurulmuş hale getirmek biraz zaman alabilir. İzinleri çok daha hızlı bir şekilde ayarlamak için aşağıdaki rol atamasını çalıştırın.
-> ``` PowerShell
-> New-AzRoleAssignment -RoleDefinitionName "Azure Connected Machine Onboarding" -ServicePrincipalName $sp.ApplicationId
-> ```
-
-Şimdi, PowerShell 'i kullanarak parolayı alın.
-
-```azurepowershell-interactive
-$credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
-$credential.GetNetworkCredential().password
-```
-
-Çıkışta, **parolayı** ve **ApplicationId** 'yi (önceki adımdan) kopyalayın ve daha sonra sunucu yapılandırma aracınız için gizli dizi gibi güvenli bir yerde depolayın. SPN Parolanızı unutur veya kaybederseniz, [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) cmdlet 'ini kullanarak sıfırlayabilirsiniz.
-
-Aracıyı Install ekleme betiği:
-
-* **ApplicationId** özelliği, aracıyı bağlamak için kullanılan `--service-principal-id` parametresi için kullanılır
-* **Password** özelliği, aracıyı bağlamak için kullanılan `--service-principal-secret` parametresi için kullanılır.
-
-> [!NOTE]
-> **Kimlik** özelliğini değil hizmet sorumlusu **ApplicationId** özelliğini kullandığınızdan emin olun. **Kimlik** çalışmayacak.
-
-## <a name="manually-install-the-agent-and-connect-to-azure"></a>Aracıyı el ile yüklemek ve Azure 'a bağlamak
-
-Aşağıdaki kılavuz, makinede oturum açarak ve adımları gerçekleştirerek bir makineyi Azure 'a bağlamanıza olanak tanır. Ayrıca [portaldan](quickstart-onboard-portal.md)Azure 'a makineler de bağlayabilirsiniz.
-
-### <a name="download-and-install-the-agent"></a>Aracısını indirme ve yükleme
-
-Aracı paketini yüklemek için hedef sunucuda kök veya yerel yönetici erişimi gerekir, ancak Azure erişimi yoktur.
-
-#### <a name="linux"></a>Linux
-
-**Linux** sunucuları için, aracı dağıtım için tercih edilen paket biçimi kullanılarak [Microsoft 'un paket deposu](https://packages.microsoft.com) aracılığıyla dağıtılır (. RPM veya. DEB).
-
-> [!NOTE]
-> Genel Önizleme sırasında, Ubuntu 16,04 veya 18,04 için uygun olan yalnızca bir paket yayımlanmıştır.
-
-En basit seçenek, paket deposunu kaydetmek ve sonra dağıtımın paket yöneticisini kullanarak paketi yüklemektir.
-[https://aka.ms/azcmagent](https://aka.ms/azcmagent) konumunda bulunan Bash betiği aşağıdaki eylemleri gerçekleştirir:
-
-1. `packages.microsoft.com`'den indirilecek konak makineyi yapılandırır.
-2. Karma kaynak sağlayıcısı paketini kurar.
-3. İsteğe bağlı olarak, `--proxy`belirtirseniz aracıyı proxy işlemi için yapılandırır.
-
-Betik Ayrıca, desteklenen ve desteklenmeyen dağıtımlar için denetimler de içerir ve yüklenmek üzere gerekli izinleri tespit eder.
-
-Aşağıdaki örnek, aracı indirir ve koşullu denetimlerden herhangi biri olmadan yükler.
-
-```bash
-# Download the installation package
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
-
-# Install the connected machine agent. Omit the '--proxy "{proxy-url}"' parameters if proxy is not needed
-bash ~/Install_linux_azcmagent.sh--proxy "{proxy-url}"
-```
-
-> [!NOTE]
-> Microsoft 'un paket deposuna başvurmayı tercih ediyorsanız, paket dosyasını buradan iç deponuza kopyalayabilirsiniz.
-
-#### <a name="windows"></a>Windows
-
-**Windows**için, aracı bir Windows Installer (`.MSI`) dosyasında paketlenir ve [https://download.microsoft.com](https://download.microsoft.com)üzerinde barındırılan [https://aka.ms/AzureConnectedMachineAgent](https://aka.ms/AzureConnectedMachineAgent)indirilebilir.
-
-```powershell
-# Download the package
+ # Download the package
 Invoke-WebRequest -Uri https://aka.ms/AzureConnectedMachineAgent -OutFile AzureConnectedMachineAgent.msi
 
 # Install the package
 msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-String
-```
 
-> [!NOTE]
-> Linux 'ta, yükleme betiğini yeniden çalıştırmak en son sürüme otomatik olarak yükseltilir. Windows 'ta, yükleyiciyi yeniden çalıştırmadan önce "Azure bağlı makine aracısını" kaldırmanız gerekir.
-
-### <a name="connecting-to-azure"></a>Azure 'a bağlanılıyor
-
-Yüklendikten sonra, `azcmagent.exe`adlı bir komut satırı aracını kullanarak aracıyı yönetebilir ve yapılandırabilirsiniz. Aracı, Linux üzerinde `/opt/azcmagent/bin` ve Windows üzerinde `$env:programfiles\AzureConnectedMachineAgent` bulunur.
-
-Windows 'ta, PowerShell 'i bir hedef düğümde yönetici olarak açın ve şunu çalıştırın:
-
-```powershell
+# Run connect command
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
-  --service-principal-id "{your-spn-appid}" `
-  --service-principal-secret "{your-spn-password}" `
-  --resource-group "{your-resource-group-name}" `
-  --tenant-id "{your-tenant-id}" `
-  --location "{desired-location}" `
-  --subscription-id "{your-subscription-id}"
+  --service-principal-id "{serviceprincipalAppID}" `
+  --service-principal-secret "{serviceprincipalPassword}" `
+  --resource-group "{ResourceGroupName}" `
+  --tenant-id "{tenantID}" `
+  --location "{resourceLocation}" `
+  --subscription-id "{subscriptionID}"
 ```
 
-Linux 'ta bir kabuğu açın ve şunu çalıştırın
+### <a name="linux-installation-script"></a>Linux yükleme betiği
 
-<!-- Same command for linux?-->
-```bash
+Aşağıda, aracının tam otomatik ve etkileşimli olmayan bir yüklemesini desteklemek üzere hizmet sorumlusunu kullanacak şekilde değiştirilen Linux yükleme betiği için bağlı makine aracısına bir örnek verilmiştir.
+
+```
+# Download the installation package
+wget https://aka.ms/azcmagent -O ~/install_linux_azcmagent.sh
+
+# Install the hybrid agent
+bash ~/install_linux_azcmagent.sh
+
+# Run connect command
 azcmagent connect \
-  --service-principal-id "{your-spn-appid}" \
-  --service-principal-secret "{your-spn-password}" \
-  --resource-group "{your-resource-group-name}" \
-  --tenant-id "{your-tenant-id}" \
-  --location "{location-of-your-resource-group}" \
-  --subscription-id "{your-subscription-id}"
+  --service-principal-id "{serviceprincipalAppID}" \
+  --service-principal-secret "{serviceprincipalPassword}" \
+  --resource-group "{ResourceGroupName}" \
+  --tenant-id "{tenantID}" \
+  --location "{resourceLocation}" \
+  --subscription-id "{subscriptionID}"
 ```
 
-Parametreler:
+Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure Portal](https://aka.ms/hybridmachineportal)makinelerinizi görüntüleyin.
 
-* `tenant-id`: kiracı GUID 'SI. Azure portal, **Azure Active directory** -> **PROPERTIES** -> **dizin kimliği**' ni seçerek bulabilirsiniz.
-* `subscription-id`: Azure 'da, makinenizi bağlamak istediğiniz aboneliğin GUID 'SI.
-* `resource-group`: makinenizin bağlanmasını istediğiniz kaynak grubu.
-* `location`: bkz. [Azure bölgeleri ve konumları](https://azure.microsoft.com/global-infrastructure/regions/). Bu konum, kaynak grubunun konumu olarak aynı veya farklı olabilir. Genel önizleme için, hizmet **WestUS2**, **güneydoğu Asya**ve **Batı Avrupa**desteklenir.
-* `resource-name`: (*Isteğe bağlı*) Şirket Içi makinenizin Azure Kaynak temsili için kullanılır. Bu değeri belirtmezseniz makine ana bilgisayar adı kullanılır.
-
-[Azcmagent başvurusunda](azcmagent-reference.md)' azcmagent ' aracında daha fazla bilgi edinebilirsiniz.
-<!-- Isn't this still needed to view machines? -->
-
-Başarılı bir şekilde tamamlandıktan sonra makineniz Azure 'a bağlanır. [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal)ziyaret ederek makinenizi Azure Portal görüntüleyebilirsiniz.
-
-![Başarılı ekleme](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
-
-### <a name="proxy-server-configuration"></a>Proxy sunucusu yapılandırması
-
-#### <a name="linux"></a>Linux
-
-<!-- New proxy name? -->
-
-**Linux**için, sunucu bir ara sunucu gerektiriyorsa şunlardan birini yapabilirsiniz:
-
-* `install_linux_hybrid_agent.sh` betiği, yukarıdaki [aracıyı Install](#download-and-install-the-agent) bölümünde `--proxy`ile çalıştırın.
-* Aracıyı zaten yüklediyseniz, proxy 'yi yapılandıran ve aracıyı yeniden başlatan `/opt/azcmagent/bin/hybridrp_proxy add http://{proxy-url}:{proxy-port}`komutunu yürütün.
-
-#### <a name="windows"></a>Windows
-
-**Windows**için sunucu, internet kaynaklarına erişim için proxy sunucusu gerektiriyorsa, proxy sunucusu ortam değişkenini ayarlamak için aşağıdaki komutu çalıştırmalısınız. Bu, aracının internet erişimi için proxy sunucu kullanmasına izin verir.
-
-```powershell
-# If a proxy server is needed, execute these commands with actual proxy URL
-[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
-$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
-# The agent service needs to be restarted after the proxy environment variable is set in order for the changes to take effect.
-Restart-Service -Name himds
-```
-
-> [!NOTE]
-> Kimliği doğrulanmış proxy 'ler genel önizleme için desteklenmez.
-
-## <a name="clean-up"></a>Temizleme
-
-Bir makinenin sunucular için Azure Arc bağlantısını kesmek için iki adım gerçekleştirmeniz gerekir.
-
-1. [Portalda](https://aka.ms/hybridmachineportal)makineyi seçin, üç noktaya (`...`) tıklayın ve **Sil**' i seçin.
-1. Aracıyı makineden kaldırın.
-
-   Windows 'da Aracıyı kaldırmak için "uygulamalar & özellikleri" denetim masasını kullanabilirsiniz.
-  
-  ![Uygulamalar & özellikleri](./media/quickstart-onboard/apps-and-features.png)
-
-   Kaldırma işlemini yapmak isterseniz, **PackageID** 'yi alan ve `msiexec /X`kullanarak aracıyı kaldırabilen aşağıdaki örneği kullanabilirsiniz.
-
-   `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` kayıt defteri anahtarını bulun ve **PackageID**' i bulun. Ardından `msiexec`kullanarak aracıyı kaldırabilirsiniz.
-
-   Aşağıdaki örnekte aracının kaldırılması gösterilmektedir.
-
-   ```powershell
-   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
-   Get-ItemProperty | `
-   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
-   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
-   ```
-
-   Linux 'ta Aracıyı kaldırmak için aşağıdaki komutu yürütün.
-
-   ```bash
-   sudo apt purge hybridagent
-   ```
+![Başarılı bir sunucu bağlantısı](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Bağlı makinelere Ilke atama](../../governance/policy/assign-policy-portal.md)
+- VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+
+- [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.

@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/29/2020
+ms.date: 02/09/2020
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 81083a9d94f782201a8eb765ac1f88093c0337c4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c6dd2e9ce01205b34b95fa224e8bd16d21588b70
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024101"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114265"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -167,7 +167,7 @@ Bir makinenin sunucular için Azure Arc bağlantısını kesmek için (Önizleme
 
     Kaldırma işlemini komut dosyasına almak istiyorsanız, ürün kodunu alan ve Msiexec. exe komut satırı-`msiexec /x {Product Code}`kullanarak aracıyı kaldırmayan aşağıdaki örneği kullanabilirsiniz. Bunu yapmak için:  
     
-    a. Kayıt defteri düzenleyicisini açın.  
+    a. Kayıt Defteri Düzenleyicisi'ni açın.  
     b. Kayıt defteri anahtarı `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`altında ürün kodu GUID 'INI bulup kopyalayın.  
     c. Ardından, msiexec kullanarak aracıyı kaldırabilirsiniz.
 
@@ -188,5 +188,6 @@ Bir makinenin sunucular için Azure Arc bağlantısını kesmek için (Önizleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Bağlı makinelere ilke atama](../../governance/policy/assign-policy-portal.md)
+- VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+
+- [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.

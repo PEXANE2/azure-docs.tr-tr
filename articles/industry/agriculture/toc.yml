@@ -38,5 +38,8 @@
     - name: Azure FarmBeats sorunlarını giderme
       href: troubleshoot-azure-farmbeats.md
 - name: Başvuru
-  items: null
-  href: references-for-azure-farmbeats.md
+  items:
+    - name: Başvuru
+      href: references-for-azure-farmbeats.md
+    - name: REST API
+      href: rest-api-in-azure-farmbeats.md

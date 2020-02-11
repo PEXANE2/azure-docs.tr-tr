@@ -6,6 +6,8 @@
       href: allocation-failure.md
     - name: Klasik dağıtımlarıyla ilgili ayırma hataları
       href: allocation-failure-classic.md
+    - name: Kullanılabilirlik kümeleri
+      href: virtual-machines-availability-set-supportability.md
 - name: RDP
   href: rdp.md
   items:

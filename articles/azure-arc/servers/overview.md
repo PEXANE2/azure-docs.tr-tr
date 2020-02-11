@@ -7,15 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 01/29/2020
+ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899189"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114249"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
 
@@ -42,7 +42,7 @@ Sunucular için Azure Arc (Önizleme) ile yalnızca belirli bölgeler destekleni
 - WestEurope
 - Westasıya
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -54,6 +54,12 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 >[!NOTE]
 >Windows için bağlı makine aracısının bu önizleme sürümü yalnızca Ingilizce dilini kullanmak üzere yapılandırılmış Windows Server 'ı destekler.
 >
+
+### <a name="required-permissions"></a>Gerekli izinler
+
+- Makineleri eklemek için, **Azure bağlı makine ekleme** rolünün bir üyesidir.
+
+- Bir makineyi okumak, değiştirmek, yeniden eklemek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
