@@ -418,5 +418,7 @@
       href: 'https://blog.botframework.com/category/luis/'
     - name: Bilgi Bankası
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
+- name: Videolar
+  href: 'whats-new.md#videos'
 - name: LUIS portalı
   href: 'https://www.luis.ai'

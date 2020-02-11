@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 12/30/2019
+ms.date: 02/10/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 392d7d7efcd5b23a7a4575e2d22d21fb4433bb6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552755"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121965"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -36,16 +36,16 @@ Bu özelliklerin çoğu mimari kısıtlamalardır ve hizmet özelliklerini temsi
 
 Bu sayfada Ayrıca, gelecekte çözümlenecek olan yönetilen örnekte bulunan [bilinen geçici sorunlar](#Issues) açıklanmaktadır.
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 
 ### <a name="always-on-availability-groups"></a>Always on kullanılabilirlik grupları
 
 [Yüksek kullanılabilirlik](sql-database-high-availability.md) yönetilen örnekte yerleşiktir ve kullanıcılar tarafından denetlenemez. Aşağıdaki deyimler desteklenmez:
 
 - [UÇ NOKTA OLUŞTUR... DATABASE_MIRRORING IÇIN](/sql/t-sql/statements/create-endpoint-transact-sql)
-- [KULLANıLABILIRLIK GRUBU OLUŞTUR](/sql/t-sql/statements/create-availability-group-transact-sql)
-- [KULLANıLABILIRLIK GRUBUNU DEĞIŞTIR](/sql/t-sql/statements/alter-availability-group-transact-sql)
-- [KULLANıLABILIRLIK GRUBU BıRAKMA](/sql/t-sql/statements/drop-availability-group-transact-sql)
+- [KULLANILABILIRLIK GRUBU OLUŞTUR](/sql/t-sql/statements/create-availability-group-transact-sql)
+- [KULLANILABILIRLIK GRUBUNU DEĞIŞTIR](/sql/t-sql/statements/alter-availability-group-transact-sql)
+- [KULLANILABILIRLIK GRUBU BIRAKMA](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [Alter database](/sql/t-sql/statements/alter-database-transact-sql) ifadesinin [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) yan tümcesi
 
 ### <a name="backup"></a>Backup
@@ -61,7 +61,7 @@ Yönetilen örneklerin otomatik yedeklemeleri vardır, böylece kullanıcılar `
   - Bant seçenekleri: `REWIND`, `NOREWIND`, `UNLOAD`ve `NOUNLOAD` desteklenmez.
   - Günlüğe özel seçenekler: `NORECOVERY`, `STANDBY`ve `NO_TRUNCATE` desteklenmez.
 
-Sınırlamalar: 
+Algılan 
 
 - Yönetilen bir örnek ile, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
 - Hizmet tarafından yönetilen Saydam Veri Şifrelemesi (TDE) ile şifrelenen bir veritabanında `BACKUP DATABASE ... WITH COPY_ONLY` çalıştıramazsınız. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
@@ -110,7 +110,7 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 
 Bkz. SERTIFIKA ve [yedekleme sertifikası](/sql/t-sql/statements/backup-certificate-transact-sql) [oluşturma](/sql/t-sql/statements/create-certificate-transact-sql) . 
  
-**Geçici çözüm**: sertifika yedeklemesi oluşturmak ve yedeklemeyi geri yüklemek yerine [sertifika ikili içeriğini ve özel anahtarı alın, bunu. SQL dosyası olarak depolayın ve ikiliden oluşturun](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Geçici çözüm**: Sertifika yedeklemesi oluşturmak ve yedeklemeyi geri yüklemek yerine [sertifika ikili içeriğini ve özel anahtarı alın, bunu. SQL dosyası olarak depolayın ve ikiliden oluşturun](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -140,7 +140,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 
 - `CREATE LOGIN ... FROM WINDOWS` sözdizimiyle oluşturulan Windows oturum açmaları desteklenmez. Azure Active Directory oturumlarını ve kullanıcıları kullanın.
 - Örneği oluşturan Azure AD kullanıcısının [sınırsız yönetici ayrıcalıkları](sql-database-manage-logins.md#unrestricted-administrative-accounts)vardır.
-- Yönetici olmayan Azure AD Veritabanı düzeyi kullanıcılar `CREATE USER ... FROM EXTERNAL PROVIDER` sözdizimi kullanılarak oluşturulabilir. Bkz [. Kullanıcı oluşturma... Dış SAĞLAYıCıDAN](sql-database-manage-logins.md#non-administrator-users).
+- Yönetici olmayan Azure AD Veritabanı düzeyi kullanıcılar `CREATE USER ... FROM EXTERNAL PROVIDER` sözdizimi kullanılarak oluşturulabilir. Bkz. [kullanıcı oluştur... DIŞ SAĞLAYICIDAN](sql-database-manage-logins.md#non-administrator-users).
 - Azure AD Server sorumluları (oturum açmalar) yalnızca yönetilen bir örnek içindeki SQL özelliklerini destekler. Aynı Azure AD kiracısı veya farklı kiracılar dahilinde olup olmadıkları fark etmeksizin, Azure AD kullanıcıları için desteklenmez. Bu özelliklere örnek olarak şunlar verilebilir:
 
   - SQL işlem çoğaltması.
@@ -152,7 +152,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
   - Ad, oturum açma adından farklı olduğunda Azure AD kullanıcıları için Kullanıcı tarafından desteklenmez. Kullanıcı, [john@contoso.com] oturum açma aşamasından [myAadUser] Kullanıcı oluşturma [] ve kimliğe bürünme Kullanıcı = _myaaduser_aracılığıyla denendiğinde bir örnektir. Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluşturduğunuzda, user_name **oturum açma**işleminden aynı login_name olarak belirtin.
   - Yalnızca `sysadmin` rolünün bir parçası olan SQL Server düzeyi sorumlular (oturum açmalar), Azure AD sorumlularını hedefleyen aşağıdaki işlemleri yürütebilirler:
 
-    - KULLANıCı OLARAK YÜRÜT
+    - KULLANICI OLARAK YÜRÜT
     - OTURUM AÇMA OLARAK YÜRÜT
 
 - Bacpac dosyalarını kullanarak veritabanı dışarı aktarma/içeri aktarma, [SMS v 18.4 veya üzeri](/sql/ssms/download-sql-server-management-studio-ssms)ya da [SqlPackage. exe](/sql/tools/sqlpackage-download)KULLANıLARAK yönetilen örnekteki Azure AD kullanıcıları için desteklenir.
@@ -276,7 +276,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 
 - SQL Server Agent etkinleştirme ve devre dışı bırakma Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
 - SQL Server Agent ayarları salt okunurdur. `sp_set_agent_properties` yordamı yönetilen örnekte desteklenmez. 
-- İş
+- İşler
   - T-SQL iş adımları desteklenir.
   - Aşağıdaki çoğaltma işleri desteklenir:
     - İşlem-günlük okuyucu
@@ -302,7 +302,7 @@ Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 - Proxy'ler
 - Boştaki bir CPU 'da iş planlama
 - Aracıyı etkinleştirme veya devre dışı bırakma
-- Uyarılar
+- Alerts
 
 SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 
@@ -310,7 +310,7 @@ SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](/sql/ssms/agent/s
 
 Aşağıdaki tablo türleri desteklenmez:
 
-- [AKıŞı](/sql/relational-databases/blob/filestream-sql-server)
+- [AKIŞI](/sql/relational-databases/blob/filestream-sql-server)
 - [FILETABLE](/sql/relational-databases/blob/filetables-sql-server)
 - [Dış tablo](/sql/t-sql/statements/create-external-table-transact-sql) (PolyBase)
 - [MEMORY_OPTIMIZED](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (yalnızca genel amaçlı katmanında desteklenmez)
@@ -389,7 +389,7 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
 - Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. Dosya içeri aktarma için alternatif olarak `BULK INSERT` veya `OPENROWSET` kullanarak Azure Blob depolamadan yerel CSV içeri aktarmayı kullanmayı deneyin.
 
-Operations
+İşlemler
 
 - Çapraz örnek yazma işlemleri desteklenmez.
 - `sp_dropserver`, bağlantılı bir sunucuyu bırakma için desteklenir. Bkz. [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
@@ -429,7 +429,7 @@ Operations
   - `FROM DISK`/`TAPE`/Backup cihazı desteklenmez.
   - Yedekleme kümeleri desteklenmez.
 - `DIFFERENTIAL` veya `STATS`gibi `WITH` seçenekleri desteklenmez.
-- `ASYNC RESTORE`: geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldığı takdirde, bir geri yükleme işleminin durumu için `sys.dm_operation_status` görünümü ve bir oluşturma ve BıRAKMA veritabanı için denetim yapabilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: İstemci bağlantısı kesilse bile geri yükleme devam eder. Bağlantınız atıldığı takdirde, bir geri yükleme işleminin durumu için `sys.dm_operation_status` görünümü ve bir oluşturma ve BıRAKMA veritabanı için denetim yapabilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve daha sonra değiştirilemez: 
 
@@ -441,7 +441,7 @@ Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve da
 - Bellek için iyileştirilmiş mevcut dosya grubu XTP olarak yeniden adlandırılır. 
 - `SINGLE_USER` ve `RESTRICTED_USER` seçenekleri `MULTI_USER`'e dönüştürülür.
 
-Sınırlamalar: 
+Algılan 
 
 - Bozulan veritabanlarının yedeklemeleri, bozulmanın türüne bağlı olarak geri yüklenebilir, ancak bozulma düzeltilinceye kadar otomatik yedeklemeler alınmaz. Bu sorunu engellemek için `DBCC CHECKDB` kaynak örneğinde çalıştırıp yedekleme `WITH CHECKSUM` kullandığınızdan emin olun.
 - Bu belgede açıklanan (örneğin, `FILESTREAM` veya `FILETABLE` nesneleri) herhangi bir sınırlama içeren bir veritabanının `.BAK` dosyasını geri yükleme, yönetilen örnek üzerinde geri yüklenemez.
@@ -458,9 +458,9 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
 
 Çapraz örnek hizmet Aracısı desteklenmez:
 
-- `sys.routes`: bir önkoşul olarak sys. Routes adresini seçmeniz gerekir. Adresin her rotada yerel olması gerekir. Bkz. [sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: `LOCAL`dışında `ADDRESS` ile `CREATE ROUTE` kullanamazsınız. Bkz. [yol oluşturma](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: `LOCAL`dışında `ADDRESS` ile `ALTER ROUTE` kullanamazsınız. Bkz. [yol değiştirme](/sql/t-sql/statements/alter-route-transact-sql). 
+- `sys.routes`: Bir önkoşul olarak sys. Routes adresini seçmeniz gerekir. Adresin her rotada yerel olması gerekir. Bkz. [sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
+- `CREATE ROUTE`: `LOCAL`dışındaki `ADDRESS` `CREATE ROUTE` kullanamazsınız. Bkz. [yol oluşturma](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: `LOCAL`dışındaki `ADDRESS` `ALTER ROUTE` kullanamazsınız. Bkz. [yol değiştirme](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Saklı yordamlar, işlevler ve Tetikleyiciler
 
@@ -490,7 +490,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ## <a name="Environment"></a>Ortam kısıtlamaları
 
-### <a name="subnet"></a>Alt ağ
+### <a name="subnet"></a>Subnet
 -  Yönetilen örneğinizi dağıttığınız alt ağa başka herhangi bir kaynak (örneğin, sanal makineler) yerleştirebilirsiniz. Bu kaynakları farklı bir alt ağ kullanarak dağıtın.
 - Alt ağda yeterli sayıda kullanılabilir [IP adresi](sql-database-managed-instance-connectivity-architecture.md#network-requirements)olmalıdır. En az 16, ancak öneri alt ağda en az 32 IP adresine sahip olur.
 - [Hizmet uç noktaları, yönetilen örneğin alt ağıyla ilişkilendirilemez](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Sanal ağı oluştururken hizmet uç noktaları seçeneğinin devre dışı olduğundan emin olun.
@@ -502,7 +502,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
 - App Service ortamları, mantıksal uygulamalar ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki yönetilen örneklere erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
-### <a name="tempdb"></a>'Nın
+### <a name="tempdb"></a>'NIN
 
 `tempdb` en büyük dosya boyutu, bir Genel Amaçlı katmanında çekirdek başına 24 GB 'den büyük olamaz. Bir İş Açısından Kritik katmanındaki en büyük `tempdb` boyutu örnek depolama boyutuyla sınırlıdır. `Tempdb` günlük dosyası boyutu Genel Amaçlı katmanında 120 GB ile sınırlıdır. Bazı sorgular, `tempdb` çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
 
@@ -515,7 +515,7 @@ Yönetilen örnekteki aşağıdaki MSDB şemaları, kendi önceden tanımlanmı�
 - [Düzeltilen veritabanı rolleri](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
-  - SQLAgentOperatorRole
+  - Da SQLAgentOperatorRole rolünün
 - [DatabaseMail rolleri](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
 - [Tümleştirme Hizmetleri rolleri](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
@@ -530,15 +530,24 @@ Yönetilen örnekteki aşağıdaki MSDB şemaları, kendi önceden tanımlanmı�
 
 Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. Azure Data Studio için [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) veya [yönetilen örnek uzantısı (Önizleme)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) .
 
-## <a name="Issues"></a> Bilinen sorunlar
+## <a name="Issues"></a>Bilinen sorunlar
+
+
+### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması
+
+**Güncel** Ocak 2020
+
+Yük devretme grubu farklı Azure aboneliklerindeki veya kaynak gruplarındaki örneklere yayılmışsa, yük devretme grubundaki birincil örnekten el ile yük devretme işlemi başlatılamaz.
+
+**Geçici çözüm**: Coğrafi ikincil örnekten Portal aracılığıyla yük devretmeyi başlatın.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL Aracısı rollerinin sysadmin olmayan oturumlar için açık yürütme izinlerine ihtiyacı vardır
 
-**Tarih:** Dec 2019
+**Güncel** Dec 2019
 
-Sysadmin olmayan oturum açma işlemleri [SQL Agent sabit veritabanı rollerine](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)eklenirse, bu oturumların çalışması için ana saklı YORDAMLARA açık yürütme izinlerinin verilmesi gereken bir sorun vardır. Bu sorunla karşılaşılırsa, "nesne üzerinde yürütme izni reddedildi < object_name > (Microsoft SQL Server, hata: 229)" hata mesajını görürsünüz.
+Sysadmin olmayan oturum açma işlemleri [SQL Agent sabit veritabanı rollerine](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)eklenirse, bu oturumların çalışması için ana saklı YORDAMLARA açık yürütme izinlerinin verilmesi gereken bir sorun vardır. Bu sorunla karşılaşılırsa, "nesne üzerinde yürütme izni reddedildi < object_name > (Microsoft SQL Server hatası: 229) "görüntülenir.
 
-**Geçici çözüm**: SQL Aracısı sabit veritabanı rollerinden birine oturum açma işlemleri eklediğinizde: bu rollere eklenen her oturum açma için SQLAgentUserRole, SQLAgentReaderRole veya da SQLAgentOperatorRole rolünün, listelenen saklı YORDAMLARA açıkça yürütme izinleri vermek Için aşağıdaki T-SQL betiğini yürütür.
+**Geçici çözüm**: SQL Agent sabit veritabanı rollerinin birine oturum açma bilgileri ekledikten sonra: Bu rollere eklenen her bir oturum açma için SQLAgentUserRole, SQLAgentReaderRole veya da SQLAgentOperatorRole rolünün, listelenen saklı yordamlara açıkça yürütme izinleri vermek için aşağıdaki T-SQL betiğini yürütür.
 
 ```tsql
 USE [master]
@@ -552,21 +561,21 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL Aracısı işleri, aracı işleminin yeniden başlatılmasına göre kesintiye uğrar
 
-**Tarih:** Dec 2019
+**Güncel** Dec 2019
 
 SQL Aracısı, her defasında iş her başlatıldığında yeni bir oturum oluşturur ve bellek tüketimini kademeli olarak artırır. Zamanlanan işlerin yürütülmesini engelleyecek iç bellek sınırına ulaşmaktan kaçınmak için, bellek tüketimi eşiğe ulaştığında Aracı işlemi yeniden başlatılır. Yeniden başlatma sırasında çalışan işlerin yürütülmesini kesintiye neden olabilir.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Bellek içi OLTP bellek sınırları uygulanmadı
 
-**Tarih:** Eki 2019
+**Güncel** Eki 2019
 
 İş Açısından Kritik hizmet katmanı, bazı durumlarda [bellek için iyileştirilmiş nesneler için maksimum bellek sınırlarını](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) doğru bir şekilde uygulamacaktır. Yönetilen örnek, iş yükünün bellek Içi OLTP işlemleri için daha fazla bellek kullanmasını sağlayabilir ve bu da örneğin kullanılabilirliğini ve kararlılığını etkileyebilir. Sınırlara ulaşan bellek içi OLTP sorguları hemen başarısız olmayabilir. Bu sorun yakında düzeltilecektir. Daha fazla bellek Içi OLTP belleği kullanan sorgular [sınırlara](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)ulaştıklarında daha önce başarısız olur.
 
-**Geçici çözüm:** iş yükünün kullanılabilir bellek kullandığından emin olmak için [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) kullanarak [bellek içi OLTP depolama kullanımını izleyin](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) . Sanal çekirdek sayısına bağlı olan bellek sınırlarını artırın veya daha az bellek kullanmak için iş yükünüzü iyileştirin.
+**Sorunu** İş yükünün kullanılabilir bellek kullandığından emin olmak için [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) kullanarak [bellek içi OLTP depolama kullanımını izleyin](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) . Sanal çekirdek sayısına bağlı olan bellek sınırlarını artırın veya daha az bellek kullanmak için iş yükünüzü iyileştirin.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü
 
-**Tarih:** Eki 2019
+**Güncel** Eki 2019
 
 SQL Server/yönetilen örnek [, kullanıcının boş olmayan bir dosyayı bırakmaya izin vermez](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Boş olmayan bir veri dosyasını `ALTER DATABASE REMOVE FILE` ifadesini kullanarak kaldırmaya çalışırsanız, hata `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` hemen döndürülmeyecektir. Yönetilen örnek dosyayı bırakmaya çalışmaya devam edecektir ve `Internal server error`30 dakika sonra işlem başarısız olur.
 
@@ -574,31 +583,31 @@ SQL Server/yönetilen örnek [, kullanıcının boş olmayan bir dosyayı bırak
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Hizmet katmanını değiştirme ve örnek oluşturma işlemleri sürekli veritabanı geri yükleme tarafından engelleniyor
 
-**Tarih:** Eyl 2019
+**Güncel** Eyl 2019
 
 Devam eden `RESTORE` ekstresi, veri geçiş hizmeti geçiş işlemi ve yerleşik nokta geri yükleme işlemi, hizmet katmanını güncelleştirmeyi veya mevcut örneğin yeniden boyutlandırılmasını engeller ve geri yükleme işlemi bitene kadar yeni örnekler oluşturur. Geri yükleme işlemi, geri yükleme işleminin çalıştırıldığı aynı alt ağdaki yönetilen örneklerde ve örnek havuzlardaki bu işlemleri engeller. Örnek havuzlardaki örnekler etkilenmez. Hizmet katmanı işlemleri oluşturma veya değiştirme başarısız olmayacak veya zaman aşımı-geri yükleme işlemi tamamlandıktan veya iptal edildikten sonra devam eder.
 
-**Geçici çözüm**: geri yükleme işlemi tamamlanana kadar bekleyin veya hizmet katmanı oluşturma veya güncelleştirme işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
+**Geçici çözüm**: Geri yükleme işlemi tamamlanana kadar bekleyin veya hizmet katmanı oluşturma veya güncelleştirme işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir
 
-**Tarih:** Eyl 2019
+**Güncel** Eyl 2019
 
 Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) özellik, yük devretme veya Kullanıcı tarafından başlatılan hizmet katmanı değişikliği sonrasında bazı Kullanıcı iş yükünü yanlış sınıflandırabilir (örneğin, en büyük Vcore veya en büyük örnek depolama boyutu değişikliği).
 
-**Geçici çözüm**: [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)KULLANıYORSANıZ, örnek başladığında SQL aracısını yürüten SQL Aracısı işinin bir parçası olarak veya `ALTER RESOURCE GOVERNOR RECONFIGURE` çalıştırın.
+**Geçici çözüm**: `ALTER RESOURCE GOVERNOR RECONFIGURE`, [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)kullanıyorsanız, örnek başladığında SQL ARACıSıNı yürüten SQL Aracısı işinin bir parçası olarak veya çalıştırın.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 
-**Tarih:** Ağu 2019
+**Güncel** Ağu 2019
 
 Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler **kaybolmaz** ve gönderici kuyruğunda bulunabilir. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki `service_broke_guid` değerin tüm veritabanları için değiştirilmesine neden olur. [BEGIN iletişim kutusu](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) kullanılarak oluşturulan tüm `DIALOG` diğer veritabanındaki hizmet aracılarına başvuran bir ileti, hedef hizmete ileti teslimi durdurur.
 
-**Geçici çözüm:** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın. Hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
+**Sorunu** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın. Hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Azure AD oturum açma türleri için ımpersonbirleşme desteklenmez
 
-**Tarih:** 2019 Temmuz
+**Güncel** Temmuz 2019
 
 Aşağıdaki AAD sorumlularının `EXECUTE AS USER` veya `EXECUTE AS LOGIN` kullanarak kimliğe bürünme desteklenmez:
 -   Diğer ad AAD kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
@@ -606,19 +615,19 @@ Aşağıdaki AAD sorumlularının `EXECUTE AS USER` veya `EXECUTE AS LOGIN` kull
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query parametre sp_send_db_mail desteklenmiyor
 
-**Tarih:** 2019 Nisan
+**Güncel** Nisan 2019
 
 [Sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) yordamındaki `@query` parametresi çalışmıyor.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir
 
-**Tarih:** Mar 2019
+**Güncel** Mar 2019
 
 Bir otomatik yük devretme grubundaki bir veritabanında Işlem çoğaltması etkinleştirilmişse, yönetilen örnek yöneticisinin eski birincil üzerindeki tüm yayınları temizlemesi ve başka bir bölgeye yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırması gerekir. Daha fazla ayrıntı için bkz. [çoğaltma](#replication) .
 
 ### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>SSDT 'de AAD oturum açmaları ve kullanıcılar desteklenmez
 
-**Tarih:** Kas 2019
+**Güncel** Kas 2019
 
 SQL Server Veri Araçları Azure Active Directory oturumlarını ve kullanıcılarını tam olarak desteklemez.
 
@@ -626,7 +635,7 @@ SQL Server Veri Araçları Azure Active Directory oturumlarını ve kullanıcıl
 
 Bir veritabanı yönetilen örneğe geri yüklenirken, geri yükleme hizmeti öncelikle adı örnek üzerinde ayırmak için istenen ada sahip boş bir veritabanı oluşturur. Bir süre sonra, bu veritabanı bırakılır ve gerçek veritabanının geri yüklenmesi başlatılır. *Geri yükleme* durumundaki veritabanı geçici olarak ad yerine rastgele bir GUID değeri olur. Geri yükleme işlemi tamamlandıktan sonra, geçici ad `RESTORE` bildiriminde belirtilen istenen adla değiştirilecektir. İlk aşamada, Kullanıcı boş veritabanına erişebilir ve hatta tablo oluşturabilir veya bu veritabanında veri yükleyebilir. Bu geçici veritabanı, geri yükleme hizmeti ikinci aşamayı başlattığında bırakılacak.
 
-**Geçici çözüm**: geri yükleme işleminin tamamlandığını görene kadar geri yüklemekte olduğunuz veritabanına erişmeyin.
+**Geçici çözüm**: Geri yükleme işleminin tamamlandığını görene kadar geri yüklediğiniz veritabanına erişmeyin.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
 
@@ -686,13 +695,13 @@ using (var scope = new TransactionScope())
 
 Bu kod aynı örnekteki verilerle çalışabilse de, MSDTC 'yi gerektirir.
 
-**Geçici çözüm:** İki bağlantı kullanmak yerine, başka bir veritabanını bir bağlantı bağlamında kullanmak için [SqlConnection. ChangeDatabase (dize)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) kullanın.
+**Sorunu** İki bağlantı kullanmak yerine, başka bir veritabanını bir bağlantı bağlamında kullanmak için [SqlConnection. ChangeDatabase (dize)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) kullanın.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz
 
 Yönetilen bir örneğe yerleştirilmiş olan CLR modülleri veya geçerli örneğe başvuran dağıtılmış sorgular bazen yerel bir örneğin IP 'sini çözümleyemeyebilir. Bu hata, geçici bir sorundur.
 
-**Geçici çözüm:** Mümkünse, bir CLR modülünde bağlam bağlantılarını kullanın.
+**Sorunu** Mümkünse, bir CLR modülünde bağlam bağlantılarını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
