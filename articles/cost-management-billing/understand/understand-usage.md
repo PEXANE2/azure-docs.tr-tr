@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290147"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretleri dosyasındaki terimleri anlama
@@ -26,9 +26,9 @@ Her hesap türü için hangi ücretlerin dahil edildiğini aşağıdaki tabloda 
 
 Hesap türü | Azure kullanımı | Market kullanımı | Satın almalar | Para iadeleri
 --- | --- | --- | --- | ---
-Kurumsal Anlaşma (EA) | Evet | Evet | Evet | Hayır
-Microsoft Müşteri Sözleşmesi (MCA) | Evet | Evet | Evet | Evet
-Kullandıkça Öde (PAYG) | Evet | Evet | Hayır | Hayır
+Kurumsal Anlaşma (EA) | Yes | Yes | Yes | Hayır
+Microsoft Müşteri Sözleşmesi (MCA) | Yes | Yes | Yes | Yes
+Kullandıkça Öde (PAYG) | Yes | Yes | Hayır | Hayır
 
 Market siparişleri (dış hizmetler olarak da bilinir) hakkında daha fazla bilgi için bkz. [Azure dış hizmet ücretlerinizi anlama](understand-azure-marketplace-charges.md).
 
@@ -40,7 +40,7 @@ Kullanım ve ücretler CSV dosyanızı Microsoft Excel'de veya başka bir elektr
 Aşağıdaki tabloda Azure kullanımı ve ücretleri dosyasının en son sürümünde kullanılan önemli terimler açıklanır.
 Liste Kullandıkça öde (PAYG), Kurumsal Anlaşma (EA), ve Microsoft Müşteri Sözleşmesi (MCA) hesaplarını içerir.
 
-Sözleşme Dönemi | Hesap türü | Açıklama
+Süre | Hesap türü | Açıklama
 --- | --- | ---
 AccountName | EA, PAYG | EA kayıt hesabı veya PAYG ödeme hesabının görünen adı.
 AccountOwnerId<sup>1</sup> | EA, PAYG | EA kayıt hesabı veya PAYG ödeme hesabının benzersiz tanımlayıcısı.
@@ -69,7 +69,7 @@ InvoiceId | PAYG, MCA | Fatura PDF dosyasında listelenen benzersiz belge kimli�
 InvoiceSection | MCA | Bkz. InvoiceSectionName.
 InvoiceSectionId<sup>1</sup> | EA, MCA | EA bölümünün veya MCA fatura bölümünün benzersiz tanımlayıcısı.
 InvoiceSectionName | EA, MCA | EA bölümünün veya MCA fatura bölümünün adı.
-IsAzureCreditEligible | Tümü | Ücretin Azure kredileri kullanılarak ödenmeye uygun olup olmadığını gösterir (değerler: true, false).
+IsAzureCreditEligible | Tümü | Ücretin Azure kredileri kullanılarak ödenmeye uygun olup olmadığını belirtir(Değerler: True, False).
 Konum | MCA | Kaynağın çalıştırıldığı veri merkezi konumu.
 MeterCategory | Tümü | Ölçüm için sınıflandırma kategorisinin adı. Örneğin *Bulut hizmetleri* ve *Ağ iletişimi*.
 MeterId<sup>1</sup> | Tümü | Ölçümün benzersiz tanımlayıcısı.
@@ -86,24 +86,24 @@ ProductId<sup>1</sup> | MCA | Ürünün benzersiz tanımlayıcısı.
 ProductOrderId | Tümü | Ürün siparişinin benzersiz tanımlayıcısı.
 ProductOrderName | Tümü | Ürün siparişinin benzersiz adı.
 PublisherName | Tümü | Market hizmetlerinin yayımcısı.
-PublisherType | Tümü | Yayımcı türü (değerler: **Azure**, **AWS**, **Market**).
+PublisherType | Tümü | Yayımcı türü (Değerler: **Azure**, **AWS**, **Market**).
 Miktar | Tümü | Satın alınan veya tüketilen birim sayısı.
 ReservationId | EA, MCA | Satın alınan rezervasyon örneğinin benzersiz tanımlayıcısı.
 ReservationName | EA, MCA | Satın alınan rezervasyon örneğinin adı.
-ResourceGroup | Tümü | Kaynağın içinde bulunduğu [kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) adı. Ücret, kaynak gruplarına dağıtılan kaynaklardan gelir. Kaynak grubu olmayan ücretler null/boş, **diğerleri**veya **geçerli değil**olarak gösterilir.
+adlı yönetilen örnek, | Tümü | Kaynağın içinde bulunduğu [kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) adı. Tüm ücretler, kaynak gruplarına dağıtılmış olan kaynaklar ait değildir. Kaynak grubu bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.
 ResourceId<sup>1</sup> | Tümü | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) kaynağının benzersiz tanımlayıcısı.
 ResourceLocation | Tümü | Kaynağın çalıştırıldığı veri merkezi konumu. Bkz. Location.
-ResourceName | EA, PAYG | Kaynağın adı. Tüm ücretler dağıtılan kaynaklardan gelmiyor. Kaynak türüne sahip olmayan ücretler null/boş, **diğerleri**veya **geçerli değil**olarak gösterilir.
-ResourceType | MCA | Kaynak örneğinin türü. Tüm ücretler dağıtılan kaynaklardan gelmiyor. Kaynak türüne sahip olmayan ücretler null/boş, **diğerleri**veya **geçerli değil**olarak gösterilir.
+ResourceName | EA, PAYG | Kaynağın adı. Tüm ücretler, dağıtılan kaynaklara ait değildir. Kaynak türü bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.
+ResourceType | MCA | Kaynak örneğinin türü. Tüm ücretler, dağıtılan kaynaklara ait değildir. Kaynak türü bulunmayan ücretler null/boş, **Diğerleri** veya **Geçerli değil** olarak gösterilir.
 ServiceFamily | MCA | Hizmetin ait olduğu hizmet ailesi.
 ServiceInfo1 | Tümü | Hizmete özgü meta veriler.
-HizmetBilgisi2 | Tümü | Hizmete özgü isteğe bağlı meta verilerin bulunduğu eski alan.
+ServiceInfo2 | Tümü | Hizmete özgü isteğe bağlı meta verilerin bulunduğu eski alan.
 ServicePeriodEndDate | MCA | Kullanılan veya satın alınan hizmet için fiyatlandırmanın tanımlandığı ve kilitlendiği değerlendirme döneminin bitiş tarihi.
 ServicePeriodStartDate | MCA | Kullanılan veya satın alınan hizmet için fiyatlandırmanın tanımlandığı ve kilitlendiği değerlendirme döneminin başlangıç tarihi.
 SubscriptionId<sup>1</sup> | Tümü | Azure aboneliğinin benzersiz tanımlayıcısı.
 SubscriptionName | Tümü | Azure aboneliğinin adı.
 Tags<sup>1</sup> | Tümü | Kaynağa atanan etiketler. Kaynak grubu etiketlerini içermez. Kuruluş içinde geri ödeme için maliyetleri gruplandırırken veya dağıtırken kullanılabilir. Daha fazla bilgi için bkz. [Azure kaynaklarınızı etiketlerle düzenleme](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
-Sözleşme Dönemi | Tümü | Teklifin geçerlilik süresini görüntüler. Örneğin: ayrılmış örnekler söz konusu olduğunda, dönem olarak 12 ay görüntüler. Tek seferlik satın almalar veya yinelenen satın almalar için Dönem 1 aydır (SaaS, Market Desteği). Bu Azure tüketimi için geçerli değildir.
+Süre | Tümü | Teklifin geçerlilik süresini görüntüler. Örneğin: Ayrılmış örnekler söz konusu olduğunda Dönem olarak 12 ay görüntüler. Tek seferlik satın almalar veya yinelenen satın almalar için Dönem 1 aydır (SaaS, Market Desteği). Bu Azure tüketimi için geçerli değildir.
 UnitOfMeasure | Tümü | Hizmet faturalamasının ölçü birimi. Örneğin, işlem hizmetleri saat bazında faturalandırılır.
 UnitPrice | EA, PAYG | Ücret için birim başına fiyat.
 
@@ -120,7 +120,7 @@ Eski terim | Yeni terim
 ConsumedQuantity | Miktar
 IncludedQuantity | Yok
 InstanceId | ResourceId
-Kur | EffectivePrice
+Fiyat | EffectivePrice
 Birim | UnitOfMeasure
 UsageDate | Tarih
 UsageEnd | Tarih
@@ -131,7 +131,7 @@ UsageStart | Tarih
 
 Ayrıntılı kullanım ve ücretler hakkında daha fazla bilgi edinmek için [kullandıkça öde](review-individual-bill.md) veya [Microsoft Müşteri Sözleşmesi](review-customer-agreement-bill.md) faturanızı anlamayla ilgili makaleleri okuyun.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

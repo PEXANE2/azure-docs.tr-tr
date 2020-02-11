@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987830"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure faturanızı görüntüleme ve indirme
@@ -50,7 +50,7 @@ Bir faturayı görmemenizin birden fazla nedeni olabilir:
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Azure portalında fatura indirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
 1. Erişiminize bağlı olarak, bir ödeme hesabı veya faturalama profili seçmeniz gerekebilir.
 1. Soldaki menüde **Faturalama** altındaki **Faturalar**’ı seçin.
@@ -87,56 +87,56 @@ Faturanızı e-postayla almayı geri çevirmek için önceki adımları izleyin 
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft Müşteri Sözleşmesi faturalarınızı e-postayla alma
 
-Microsoft Müşteri Sözleşmesi için bir faturalandırma hesabınız varsa, faturanızı bir e-posta ile almak için kabul edebilirsiniz. Bir faturalandırma profilinde sahibi, katkıda bulunan, okuyucu veya Fatura Yöneticisi rolüne sahip tüm kullanıcılar, faturasını e-posta ile alır. 
+Microsoft Müşteri Sözleşmesi için ödeme hesabınız varsa faturanızı e-postayla almayı kabul edebilirsiniz. Fatura, faturalama profilinde sahip, katkıda bulunan, okuyucu veya fatura yöneticisi rolüne sahip olan tüm kullanıcılara e-posta ile gönderilir. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 
    ![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
 
-1. Sol taraftaki **faturalandırma profilleri** ' ni seçin. Faturalandırma profilleri listesinden, e-postadaki faturaları almak için bir faturalandırma profili seçin.
+1. Soldaki **Faturalama profilleri** seçeneğini belirleyin. Faturalama profilleri listesinden faturaların e-posta olarak gönderilmesini istediğiniz faturalama profilini seçin.
 
-   [Faturalama profili listesini gösteren ekran görüntüsü ![](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Sol taraftaki **Özellikler** ' i seçin ve ardından **e-posta faturası tercihini Güncelleştir**' i seçin.
+1. Sol taraftan **Özellikler**'i ve ardından **E-posta fatura tercihini güncelleştir**'i seçin.
 
-   [Faturalama profili listesini gösteren ekran görüntüsü ![](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
+   [![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
 
-1. **Kabul** et ' i seçin ve ardından **Güncelleştir**' e tıklayın.
+1. **Katıl**'ı seçin ve ardından **Güncelleştir**'e tıklayın.
 
-   [Faturalama profili listesini gösteren ekran görüntüsü ![](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
+   [![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft Müşteri Sözleşmesi faturalarınızı e-postayla almayı geri çevirme
 
-Faturanızı e-postayla almayı devre dışı bırakmak için yukarıdaki adımları izleyin ve **devre dışı**bırak ' a tıklayın. Sahip, katkıda bulunan, okuyucu veya Fatura Yöneticisi rolüne sahip tüm kullanıcılar, faturayı e-posta ile almayı kabul etmedi. 
+Faturanızı e-postayla almayı geri çevirmek için önceki adımları izleyin ve **Geri çevir**’e tıklayın. Sahip, katkıda bulunan, okuyucu veya fatura yöneticisi rolüne sahip olan tüm kullanıcılara faturanın e-posta ile gönderilmesi özelliği devre dışı bırakılır. 
 
-## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Başkalarına Microsoft müşteri anlaşması faturanız için erişim verme
+## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Microsoft Müşteri Sözleşmesi faturalarınız için başkalarına erişim verme
 
-Bir faturalandırma profili için onlara Fatura Yöneticisi rolü atayarak, diğer kullanıcılara faturaları görüntüleme, indirme ve ödeme için erişim izni verebilirsiniz. Faturanızı e-postada almayı tercih ettiyseniz, bu kullanıcılar da e-postadaki faturaları alırlar. 
+Bir faturalama profilinde fatura yöneticisi rolünü atayarak başkalarına faturaları görüntüleme, indirme ve ödeme erişimi verebilirsiniz. Faturanın e-posta ile gönderilmesini kabul ettiyseniz faturalar bu kullanıcılara da e-posta ile gönderilir. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
 
    ![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
 
-1. Sol taraftaki **faturalandırma profilleri** ' ni seçin. Faturalandırma profilleri listesinden, Fatura Yöneticisi rolünü atamak istediğiniz bir faturalandırma profili seçin.
+1. Soldaki **Faturalama profilleri** seçeneğini belirleyin. Faturalama profilleri listesinden fatura yöneticisi rolünü atamak istediğiniz faturalama profilini seçin.
 
-   [Faturalama profili listesini gösteren ekran görüntüsü ![](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Sol taraftaki **Access Control (IAM)** seçeneğini belirleyin ve ardından sayfanın en üstünden **Ekle** ' yi seçin.
+1. Sol taraftan **Erişim Denetimi (IAM)** girişini seçtikten sonra sayfanın üst tarafından **Ekle**'yi seçin.
 
-   [Access Control sayfasını gösteren ![ekran görüntüsü](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
+   [![Erişim denetimi sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
 
-1. Rol açılan listesinde, **Fatura Yöneticisi**' ni seçin. Erişim izni vermek istediğiniz kullanıcının e-posta adresini girin. Rolü atamak için **Kaydet**’i seçin.
+1. Rol açılan listesinde **Fatura Yöneticisi**'ni seçin. Erişim izni vermek istediğiniz kullanıcının e-posta adresini girin. Rolü atamak için **Kaydet**’i seçin.
 
-   [bir kullanıcı tarafından Fatura Yöneticisi olarak eklenmesinin gösterildiği ![ekran görüntüsü](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   [![Bir kullanıcıyı fatura yöneticisi olarak eklemeyi gösteren ekran görüntüsü](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
 
 ## <a name="check-your-billing-account-type"></a>Ödeme hesabınızın türünü denetleme
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -1,45 +1,44 @@
 ---
 title: Cloudyn ile Azure aboneliğinizi kaydetme | Microsoft Docs
 description: Bu hızlı başlangıçta bir Cloudyn deneme aboneliği oluşturmak ve Cloudyn portalında oturum açmak için gereken kayıt işlemleri açıklanmaktadır.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
-manager: benshy
-ms.openlocfilehash: 04ca2027ab0433c710fba40e1a980c71e1127c96
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 8d1b032ff1805b34359dfa4ca8269bbf82c9ef27
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987694"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774082"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Ayrı bir Azure aboneliğini kaydetme ve maliyet verilerini görüntüleme
 
 Cloudyn’e kaydolmak için Azure aboneliğinizi kullanırsınız. Kaydınız Cloudyn portalına erişim sağlar. Bu hızlı başlangıçta bir Cloudyn deneme aboneliği oluşturmak ve Cloudyn portalında oturum açmak için gereken kayıt işlemleri açıklanmaktadır. Ayrıca nasıl maliyet verilerini hemen görüntülemeye başlayabileceğinizi gösterir.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 - https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="register-with-cloudyn"></a>Cloudyn ile kaydetme
+## <a name="register-with-cloudyn"></a>Cloudyn’e kaydolma
 
 1. Azure portalında, hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya tıklayın.
 2. **Genel Bakış** altında, **Cloudyn**’e tıklayın  
-    ![Azure portalında gösterilen Cloudyn sayfası](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
+    ![Azure portalındaki Cloudyn sayfası](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. **Maliyet Yönetimi** sayfasında, Cloudyn kayıt sayfasını yeni bir pencerede açmak için **Cloudyn’e git**’e tıklayın.
 4. Cloudyn portal deneme kayıt sayfasında, şirketinizin adını yazıp **Azure Bireysel Abonelik Sahibi**’ni seçin ve daha sonra **İleri**’ye tıklayın. Hesap adınız ve Kiracı Kimliğiniz forma otomatik olarak eklenir.  
-    ![Kayıt bilgilerinizi girebileceğiniz deneme kayıt sayfasında](./media/quick-register-azure-sub/trial-reg-ind.png)
+    ![Kayıt bilgilerinizi girdiğiniz deneme kaydı sayfası](./media/quick-register-azure-sub/trial-reg-ind.png)
 5. Aboneliğinizle ilişkili **Teklif Kimliği - Ad**’ı seçin. Aboneliğinizin Oran Kimliğinin ne olduğundan emin değilseniz, Azure faturanızı görüntüleyerek **Teklif Kimliği**’ni arayabilirsiniz.
 6. Kullanım Koşulları’nı kabul edip bilgilerinizi doğrulayın ve ardından **İleri**’ye tıklayın.
 7. **Ek veri topla** sayfasında, Cloudyn’i Azure kaynak verilerini toplamak için yetkilendirmek üzere **İleri**’ye tıklayın. Toplanan veriler aboneliklerinizden kullanım, performans, faturalama ve etiket verilerini içerir.  
-    ![Cloudyn yetkilendirmek burada ek veri sayfası toplayın](./media/quick-register-azure-sub/gather-additional.png)
+    ![Cloudyn'i yetkilendirdiğiniz ek veri toplama sayfası](./media/quick-register-azure-sub/gather-additional.png)
 8. Tarayıcınız sizi Cloudyn oturum açma sayfasına götürür. Azure abonelik kimlik bilgilerinizle oturum açın.
 9. Cloudyn portalını açmak için **Cloudyn’e git**’e tıklayın, **Hesap Yönetimi** sayfasında, Azure abonelik hesap bilgilerinizi görmeniz gerekir.  
-    ![Azure abonelik bilgilerini gösteren yönetim sayfasının hesapları](./media/quick-register-azure-sub/accounts-mgt.png)
+    ![Azure abonelik bilgilerini gösteren Hesap Yönetimi sayfası](./media/quick-register-azure-sub/accounts-mgt.png)
 
 Azure aboneliğinizi kaydetme hakkında öğretici bir video izlemek için, bkz. [Cloudyn’de Dizin GUID’i ve Oran Kimliğinizi bulma](https://youtu.be/PaRjnyaNGMI).
 

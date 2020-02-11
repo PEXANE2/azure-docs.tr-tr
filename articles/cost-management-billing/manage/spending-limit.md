@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76314156"
 ---
 # <a name="azure-spending-limit"></a>Azure harcama limiti
@@ -40,20 +40,20 @@ Harcama limitine ulaştığınızda Azure e-posta bildirimleri gönderir. Harcam
 
 Azure aboneliğinizle ilişkili geçerli bir ödeme yöntemi olduğu sürece, harcama limitini istediğiniz zaman kaldırabilirsiniz. Visual Studio Enterprise ve Visual Studio Professional gibi birden çok aya yayılan krediler içeren abonelik türleri için, bir sonraki faturalama döneminizin başlangıcında harcama limitini etkinleştirebilirsiniz.
 
-Harcama limitini kaldırmak için şu adımları izleyin:
+Harcama limitinizi kaldırmak için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)’ında oturum açın.
-1. **Abonelikler**' e gidin.
+1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oturum açın.
+1. **Abonelikler**'e gidin.
 1. Aboneliğinizi seçin. Örneğin, *Visual Studio Enterprise*.
-1. Sayfanın üst kısmında **Yönet**' i seçin. https://account.azure.com/ yönlendirilirsiniz. Sayfanın sağ tarafında, **harcama limitini kaldır**' ı seçin.  
-  harcama limitini kaldırma sınırını gösteren örnek ![](./media/spending-limit/account-azure-com-spending-limit.png)
-1. Azure portal tekrar yönlendiriliyorsunuz. Sizin için uygun bir seçenek belirleyin ve ardından bir ödeme yöntemi seçin. **Son**’u seçin.  
-  ![harcama limitini kaldırmak için bir seçenek belirleyin](./media/spending-limit/remove-spending-limit.png)
+1. Sayfanın üst kısmında **Yönet**'i seçin. https://account.azure.com/ sayfasına yönlendirilirsiniz. Sayfanın sağ tarafında **Harcama limitini kaldır**’ı seçin.  
+  ![Harcama limitini kaldır bağlantısını gösteren örnek](./media/spending-limit/account-azure-com-spending-limit.png)
+1. Azure portalına yeniden yönlendirilirsiniz. Uygun seçeneklerden birini belirledikten sonra bir ödeme yöntemi seçin. **Son**’u seçin.  
+  ![Harcama limitini kaldırmak için bir seçenek belirleyin](./media/spending-limit/remove-spending-limit.png)
 
 | Seçenek | Etki |
 | --- | --- |
-| Harcama limitini süresiz olarak kaldırma | Harcama limiti kaldırılır ve bir sonraki fatura döneminin başlangıcında otomatik olarak yeniden açılmaz. |
-| Geçerli fatura dönemi için harcama limitini kaldırma | Harcama limiti kaldırılır ve bir sonraki fatura döneminin başlangıcında otomatik olarak yeniden açılır. |
+| Harcama limitini süresiz olarak kaldır | Harcama limiti kaldırılır ve bir sonraki faturalama döneminin başlangıcında otomatik olarak yeniden açılmaz. |
+| Geçerli fatura dönemi için harcama limitini kaldır | Harcama limiti kaldırılır ve bir sonraki fatura döneminin başlangıcında otomatik olarak yeniden açılır. |
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Harcama limitini neden kaldırmak isteyebilirsiniz?
 
@@ -68,7 +68,7 @@ Harcama limiti, belirli üçüncü taraf ve Microsoft hizmetlerini dağıtmanız
 Bu özellik yalnızca birden çok aya yayılan krediler içeren abonelik türleri için harcama limiti süresiz olarak kaldırıldığında kullanılabilir. Bu özelliği, bir sonraki fatura döneminin başlangıcında harcama limitini otomatik olarak etkinleştirmek için kullanabilirsiniz.
 
 1. [Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde oturum açın.
-1. Harcama limiti seçeneğini değiştirmek için sarı başlık ' ı seçin.
+1. Harcama limiti seçeneğini değiştirmek için sarı başlığı seçin.
 1. **Sonraki faturalama döneminde (\<faturalama döneminin başlangıç tarihi\>) harcama limitini aç** seçeneğini belirleyin
 
 ## <a name="custom-spending-limit"></a>Özel harcama limiti
@@ -81,7 +81,7 @@ Bu özellik yalnızca birden çok aya yayılan krediler içeren abonelik türler
 
 ![Market satın alma uyarısı](./media/spending-limit/marketplace-warning01.png)
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -1,6 +1,6 @@
 ---
-title: Azure maliyet yönetimi 'nde AWS maliyetlerini ve kullanımını yönetme
-description: Bu makale, AWS maliyetlerinizi ve kullanımınızı yönetmek için maliyet yönetimi 'nde maliyet analizini ve bütçeleri nasıl kullanacağınızı anlamanıza yardımcı olur.
+title: Azure Maliyet Yönetimi'nde AWS maliyetlerini ve kullanımını yönetme
+description: Bu makale, Maliyet Yönetimi'ndeki maliyet analizlerini ve bütçeleri kullanarak AWS maliyetlerinizi ve kullanımınızı yönetme konusunda yardımcı olur.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,176 +11,176 @@ ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: a7520d7b3bd46aa9151c68598574f9cbec84d6fc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988623"
 ---
-# <a name="manage-aws-costs-and-usage-in-azure"></a>Azure 'da AWS maliyetlerini ve kullanımını yönetme
+# <a name="manage-aws-costs-and-usage-in-azure"></a>Azure'da AWS maliyetlerini ve kullanımını yönetme
 
-Azure maliyet yönetimi için AWS maliyet ve kullanım raporu tümleştirmesini ayarladıktan ve yapılandırdıktan sonra AWS maliyetlerinizi ve kullanımınızı yönetmeye hazırsınız demektir. Bu makale, AWS maliyetlerinizi ve kullanımınızı yönetmek için maliyet yönetimi 'nde maliyet analizini ve bütçeleri nasıl kullanacağınızı anlamanıza yardımcı olur.
+Azure Maliyet Yönetimi için AWS Maliyet ve Kullanım raporu tümleştirmesini ayarlayıp yapılandırdıktan sonra AWS maliyetlerinizi ve kullanımınızı yönetmeye başlayabilirsiniz. Bu makale, Maliyet Yönetimi'ndeki maliyet analizlerini ve bütçeleri kullanarak AWS maliyetlerinizi ve kullanımınızı yönetme konusunda yardımcı olur.
 
-Tümleştirmeyi zaten yapılandırmadıysanız, bkz. [AWS kullanım raporu tümleştirmesini ayarlama ve yapılandırma](aws-integration-set-up-configure.md).
+Tümleştirmeyi henüz yapılandırmadıysanız bkz. [AWS Kullanım raporu tümleştirmesini ayarlama ve yapılandırma](aws-integration-set-up-configure.md).
 
-_Başlamadan önce: maliyet analizinden_daha fazla bilginiz varsa maliyet analizi hızlı başlangıç [ile maliyetleri inceleyin ve çözümleyin](quick-acm-cost-analysis.md) . Ayrıca, Azure 'daki bütçeleri tanımıyorsanız, [Azure bütçeleri oluşturma ve yönetme](tutorial-acm-create-budgets.md) öğreticisine bakın.
+_Başlamadan önce_: Maliyet analizi konusunda bilginiz yoksa [Maliyet analiziyle maliyetleri keşfetme ve analiz etme](quick-acm-cost-analysis.md) hızlı başlangıcına bakın. Azure'daki bütçeler konusunda bilginiz yoksa bkz. [Azure bütçesi oluşturma ve yönetme öğreticisi](tutorial-acm-create-budgets.md).
 
 ## <a name="view-aws-costs-in-cost-analysis"></a>Maliyet analizinde AWS maliyetlerini görüntüleme
 
-AWS maliyetleri, aşağıdaki kapsamlarda maliyet analizi kapsamında mevcuttur:
+AWS maliyetleri aşağıdaki kapsamlarda Maliyet Analizi'nde kullanılabilir:
 
 - Yönetim grubu altındaki AWS bağlı hesapları
-- AWS bağlı hesap maliyetleri
-- AWS birleştirilmiş hesap maliyetleri
+- AWS bağlı hesaplarıyla ilgili maliyetler
+- AWS birleştirilmiş hesaplarla ilgili maliyetler
 
-Sonraki bölümlerde, her birinin maliyet ve kullanım verilerini görmeniz için kapsamların nasıl kullanılacağı açıklanır.
+Aşağıdaki bölümlerde her birine ait olan maliyet ve kullanım verilerini görebilmeniz için kapsamları nasıl kullanacağınız açıklanmıştır.
 
-### <a name="view-aws-linked-accounts-under-a-management-group"></a>Yönetim grubu altındaki AWS bağlı hesaplarını görüntüle
+### <a name="view-aws-linked-accounts-under-a-management-group"></a>Yönetim grubu altındaki AWS bağlı hesaplarını görüntüleme
 
-Yönetim grubu kapsamını kullanarak maliyetleri görüntülemek, farklı aboneliklerden ve bağlı hesaplardan gelen toplam maliyetleri görmenin tek yoludur. Bir yönetim grubu kullanmak, platformlar arası bir görünüm sağlar.
+Maliyetleri yönetim grubu kapsamı kullanarak görüntüleme, farklı aboneliklerden ve bağlı hesaplardan gelen toplu maliyetleri görmenin tek yoludur. Yönetim grubu kullanmak, bulutlar arası bir görünüm sunar.
 
-Maliyet Analizi ' nde kapsam seçiciyi açın ve AWS bağlantılı hesaplarınızı tutan yönetim grubunu seçin. Azure portal örnek bir resim aşağıda verilmiştir:
+Maliyet analizinde kapsam seçiciyi açın ve AWS bağlı hesaplarınızı barındıran yönetim grubunu seçin. Aşağıda Azure portalından örnek bir görüntü verilmiştir:
 
-![Seçim kapsamı görünümü örneği](./media/aws-integration-manage/select-scope01.png)
-
-
-
-Aşağıda, sağlayıcıya (Azure ve AWS) göre gruplanan, maliyet analizi 'nde Yönetim grubu maliyetinin gösterildiği bir örnek verilmiştir.
-
-![Maliyet analizinde bir çeyrek için Azure ve AWS maliyetlerini gösteren örnek](./media/aws-integration-manage/cost-analysis-aws-azure.png)
-
-### <a name="view-aws-linked-account-costs"></a>AWS bağlı hesap maliyetlerini görüntüle
-
-AWS bağlantısı hesap maliyetlerini görüntülemek için kapsam seçiciyi açın ve AWS bağlı hesabını seçin. Bağlı hesapların AWS bağlayıcısında tanımlandığı şekilde bir yönetim grubuyla ilişkilendirildiğini unutmayın.
-
-Bir AWS bağlı hesap kapsamını seçmeyi gösteren bir örnek aşağıda verilmiştir.
-
-![Seçim kapsamı görünümü örneği](./media/aws-integration-manage/select-scope02.png)
+![Kapsam seç görünümü örneği](./media/aws-integration-manage/select-scope01.png)
 
 
 
-### <a name="view-aws-consolidated-account-costs"></a>AWS birleştirilmiş hesap maliyetlerini görüntüle
+Aşağıda maliyet analizinde yönetim grubunu Sağlayıcıya (Azure ve AWS) göre gruplanmış şekilde gösteren bir örnek verilmiştir.
 
-AWS birleştirilmiş hesap maliyetlerini görüntülemek için kapsam seçiciyi açın ve AWS birleştirilmiş hesabını seçin. Aşağıda, bir AWS birleştirilmiş hesap kapsamının seçilmesinin gösterildiği bir örnek verilmiştir.
+![Maliyet analizinde üç aylık döneme ait Azure ve AWS maliyetlerini gösteren örnek](./media/aws-integration-manage/cost-analysis-aws-azure.png)
 
-![Seçim kapsamı görünümü örneği](./media/aws-integration-manage/select-scope03.png)
+### <a name="view-aws-linked-account-costs"></a>AWS bağlı hesaplarıyla ilgili maliyetleri görüntüleme
+
+AWS bağlı hesaplarıyla ilgili maliyetleri görüntülemek için kapsam seçiciyi açıp AWS bağlı hesabını seçin. Bağlı hesapların AWS bağlayıcısında tanımlandığı şekilde bir yönetim grubuyla ilişkilendirildiğini unutmayın.
+
+Aşağıda AWS bağlı hesap kapsamını seçmeyi gösteren bir örnek verilmiştir.
+
+![Kapsam seç görünümü örneği](./media/aws-integration-manage/select-scope02.png)
 
 
 
-Bu kapsam, AWS birleştirilmiş hesabıyla ilişkili tüm AWS bağlı hesaplarının toplu bir görünümünü sağlar. Aşağıda, bir AWS birleştirilmiş hesabının, hizmet adına göre gruplanan maliyetleri gösteren bir örnek verilmiştir.
+### <a name="view-aws-consolidated-account-costs"></a>AWS birleştirilmiş hesaplarla ilgili maliyetleri görüntüleme
 
-![Maliyet analizinde AWS birleştirilmiş maliyetlerin gösterildiği örnek](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+AWS birleştirilmiş hesaplarla ilgili maliyetleri görüntülemek için kapsam seçiciyi açıp AWS birleştirilmiş hesabını seçin. Aşağıda AWS birleştirilmiş hesap kapsamını seçmeyi gösteren bir örnek verilmiştir.
 
-### <a name="dimensions-available-for-filtering-and-grouping"></a>Filtreleme ve gruplama için kullanılabilen Boyutlar
+![Kapsam seç görünümü örneği](./media/aws-integration-manage/select-scope03.png)
 
-Aşağıdaki tabloda, Grup ve filtreleme için kullanılabilen boyutlar maliyet analizine göre açıklanmaktadır.
+
+
+Bu kapsam, AWS birleştirilmiş hesabıyla ilişkili tüm AWS bağlı hesaplarının toplu bir görünümünü sağlar. Aşağıda bir AWS birleştirilmiş hesabının, hizmet adına göre gruplanan maliyetleri gösterdiği bir örnek verilmiştir.
+
+![Maliyet analizinde AWS birleştirilmiş maliyetlerini gösteren örnek](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+
+### <a name="dimensions-available-for-filtering-and-grouping"></a>Filtreleme ve gruplama için kullanılabilen boyutlar
+
+Aşağıdaki tabloda maliyet analizinde gruplama ve filtreleme için kullanılabilecek olan boyutlar verilmiştir.
 
 | Boyut | Amazon CUR üst bilgisi | Kapsamlar | Yorumlar |
 | --- | --- | --- | --- |
-| Kullanılabilirlik alanı | LineItem/kullanılabilirliği Bilityzone | Tümü |   |
-| Konum | Ürün/bölge | Tümü |   |
+| Kullanılabilirlik alanı | lineitem/AvailabilityZone | Tümü |   |
+| Konum | product/Region | Tümü |   |
 | Ölçüm |   | Tümü |   |
-| Ölçüm kategorisi | LineItem/ProductCode | Tümü |   |
-| Ölçüm alt kategorisi | LineItem/UsageType | Tümü |   |
-| İşlem | LineItem/Işlem | Tümü |   |
-| Kaynak | LineItem/RESOURCEID | Tümü |   |
-| Kaynak türü | Ürün/InstanceType | Tümü | Ürün/InstanceType null ise, LineItem/UsageType kullanılır. |
-| ResourceGuid | Yok | Tümü | Azure ölçüm GUID 'ı. |
-| Hizmet adı | Ürün/ÜrünAdı | Tümü | Ürün/ÜrünAdı null ise, LineItem/ProductCode kullanılır. |
+| Ölçüm kategorisi | lineItem/ProductCode | Tümü |   |
+| Ölçüm alt kategorisi | lineitem/UsageType | Tümü |   |
+| İşlem | lineItem/Operation | Tümü |   |
+| Kaynak | lineItem/ResourceId | Tümü |   |
+| Kaynak türü | product/instanceType | Tümü | product/instanceType null ise lineItem/UsageType kullanılır. |
+| ResourceGuid | Yok | Tümü | Azure ölçüm GUID değeri. |
+| Hizmet adı | product/ProductName | Tümü | product/ProductName null ise lineItem/ProductCode kullanılır. |
 | Hizmet katmanı |   |   |   |
-| Abonelik Kimliği | LineItem/Usageaccountıd | Birleştirilmiş hesap ve yönetim grubu |   |
-| Abonelik adı | Yok | Birleştirilmiş hesap ve yönetim grubu | Hesap adları AWS kuruluş API 'SI kullanılarak toplanır. |
-| Etiket | resourceTags/\* | Tümü | _Kullanıcı:_ ön ek, platformlar arası etiketlere izin vermek için Kullanıcı tanımlı etiketlerden kaldırılır. _AWS:_ öneki bozulmadan bırakılır. |
-| Faturalandırma hesabı KIMLIĞI | Fatura/Payeraccountıd | Yönetim grubu |   |
-| Faturalandırma hesabı adı | Yok | Yönetim grubu | Hesap adları AWS kuruluş API 'SI kullanılarak toplanır. |
+| Abonelik Kimliği | lineItem/UsageAccountId | Birleştirilmiş hesap ve yönetim grubu |   |
+| Abonelik adı | Yok | Birleştirilmiş hesap ve yönetim grubu | Hesap adları AWS Kuruluş API'si kullanılarak toplanır. |
+| Etiket | resourceTags/\* | Tümü | _user:_ ön eki, bulutlar arası etiketlere izin vermek için kullanıcı tanımlı etiketlerden kaldırılmıştır. _aws:_ ön eki değiştirilmeden bırakılmıştır. |
+| Faturalama hesabı kimliği | bill/PayerAccountId | Yönetim grubu |   |
+| Faturalama hesabı adı | Yok | Yönetim grubu | Hesap adları AWS Kuruluş API'si kullanılarak toplanır. |
 | Sağlayıcı | Yok | Yönetim grubu | AWS veya Azure. |
 
 ## <a name="set-budgets-on-aws-scopes"></a>AWS kapsamlarında bütçeleri ayarlama
 
-Bütçelerde maliyetleri kullanarak maliyetlerinizi önceden yönetebilir ve kuruluşunuzdaki sorumlulukları yönetin. Bütçeler AWS birleştirilmiş hesabı ve AWS bağlı hesap kapsamları üzerinde ayarlanır. Aşağıda, maliyet yönetimi 'nde gösterilen bir AWS birleştirilmiş hesabının bütçeleriyle ilgili bir örnek verilmiştir:
+Kuruluşunuzda maliyetleri önceden yönetmek ve sorumluluk bilinci sağlamak için bütçeleri kullanabilirsiniz. Bütçeler AWS birleştirilmiş hesabı ve AWS bağlı hesap kapsamlarında ayarlanır. Aşağıda Maliyet Yönetimi'ndeki bir AWS birleştirilmiş hesabına ait bütçe örnekleri gösterilmiştir:
 
-![AWS birleştirilmiş hesabı için bütçeleri gösteren örnek](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+![Birleştirilmiş AWS hesabı için bütçeleri gösteren örnek](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
 
 ## <a name="aws-data-collection-process"></a>AWS veri toplama işlemi
 
 AWS bağlayıcısını ayarladıktan sonra veri toplama ve bulma işlemi başlar. Tüm kullanım verilerinin toplanması birkaç saat sürebilir. Süre şunlara bağlıdır:
 
-- AWS S3 demetini içindeki GEÇERLI dosyaları işlemek için gereken süre.
-- AWS birleştirilmiş hesabının ve AWS bağlı hesap kapsamlarının oluşturulması için gereken süre.
-- AWS 'nin saat ve sıklığı, S3 demet içindeki maliyet ve kullanım raporu dosyalarını yazıyor
+- AWS S3 demeti içindeki CUR dosyalarını işlemek için gereken zaman.
+- AWS birleştirilmiş hesabı ve AWS bağlı hesap kapsamlarını oluşturmak için gereken zaman.
+- AWS'nin S3 demetindeki Maliyet ve Kullanım Raporu dosyalarına yazma süresi ve sıklığı
 
 ## <a name="aws-integration-pricing"></a>AWS tümleştirme fiyatlandırması
 
-Her AWS Bağlayıcısı 90 ücretsiz deneme günü alır. Genel Önizleme sırasında ücret alınmaz.
+Her AWS bağlayıcısı 90 günlük ücretsiz deneme sunar. Genel Önizleme sırasında ücret alınmaz.
 
-Liste fiyatı AWS aylık maliyetlerinizin %1 ' i oranında. Her ay, önceki aydan faturalanan maliyetlerinizi temel alarak ücretlendirilirsiniz.
+Liste fiyatı, aylık AWS maliyetlerinizin %1'inin altındadır. Her ay, önceki ay kullanılan tutarlara göre ödeme yaparsınız.
 
-AWS API’lerine erişim için ek ücretler uygulanabilir.
+AWS API'lerine erişmek için ek ücret uygulanabilir.
 
 ## <a name="aws-integration-limitations"></a>AWS tümleştirme sınırlamaları
 
-- Maliyet yönetimi, birden çok para birimi türü içeren maliyet raporlarını desteklemez. Birden çok para birimi olan bir kapsam seçerseniz bir hata iletisi gösterilir.
-- Bulut bağlayıcıları AWS GovCloud (US), AWS gov veya AWS Çin 'yi desteklemez.
-- Maliyet yönetimi yalnızca AWS _kullanım maliyetlerini_ gösterir. Vergi, destek, para iadesi, RI, krediler veya diğer ücret türleri henüz desteklenmiyor.
+- Maliyet Yönetimi, birden fazla para birimi içeren maliyet raporlarını desteklemez. Birden fazla para birimine sahip bir kapsam seçtiğinizde hata iletisi görüntülenir.
+- Bulut bağlayıcıları AWS GovCloud (US), AWS Gov veya AWS China desteği sunmaz.
+- Maliyet Yönetimi yalnızca AWS _kullanım maliyetlerini_ gösterir. Vergiler, destek, para iadeleri, RI, krediler ve diğer ücret türleri desteklenmemektedir.
 
-## <a name="troubleshooting-aws-integration"></a>AWS tümleştirmesinde sorun giderme
+## <a name="troubleshooting-aws-integration"></a>AWS tümleştirmesiyle ilgili sorunları giderme
 
-Sık karşılaşılan sorunları çözmek için aşağıdaki sorun giderme bilgilerini kullanın.
+Sık karşılaşılan sorunları çözmek için aşağıdaki sorun giderme bilgilerini inceleyin.
 
-### <a name="no-permission-to-aws-linked-accounts"></a>AWS bağlantılı hesaplara izin yok
+### <a name="no-permission-to-aws-linked-accounts"></a>Bağlı AWS hesapları için izin yok
 
-**Hata kodu:** _yetkisiz_
+**Hata kodu:** _Yetkisiz_
 
-AWS bağlı hesap maliyetlerine erişim izinleri almanın iki yolu vardır:
+AWS bağlı hesap maliyetlerine erişim izni almanın iki yolu vardır:
 
-- AWS bağlantılı hesaplarına sahip yönetim grubuna erişim sağlayın.
-- AWS bağlantılı hesabı için size izin verin.
+- AWS bağlı hesaplarına sahip yönetim grubuna erişim sağlama.
+- Birinin AWS bağlı hesabına erişim izni vermesini isteme.
 
-Varsayılan olarak AWS Bağlayıcısı Oluşturucu, bağlayıcının oluşturduğu tüm nesnelerin sahibidir. Dahil olmak üzere, AWS birleştirilmiş hesabı ve AWS bağlantılı hesabı.
+AWS bağlayıcı oluşturucu varsayılan olarak bağlayıcının oluşturduğu tüm nesnelerin sahibidir. Buna AWS birleştirilmiş hesabı ve AWS bağlı hesapları da dahildir.
 
-Bağlayıcı ayarlarını doğrulayabilmek için en az bir katkıda bulunan rolüne ihtiyacınız olacaktır, okuyucu bağlayıcı ayarlarını doğrulayamaz
+Bağlayıcı ayarlarını doğrulayabilmek için en azından katkıda bulunan rolüne ihtiyacınız olacaktır, okuyucu rolü bağlayıcı ayarlarını doğrulayamaz
 
-### <a name="collection-failed-with-assumerole"></a>Koleksiyon AssumeRole ile başarısız oldu
+### <a name="collection-failed-with-assumerole"></a>AssumeRole bağlantısı başarısız oldu
 
-**Hata kodu:** _failedtoassumerole_
+**Hata kodu:** _FailedToAssumeRole_
 
-Bu hata, maliyet yönetiminin AWS AssumeRole API 'sini çağıramadığı anlamına gelir. Bu sorun, rol tanımıyla ilgili bir sorun nedeniyle ortaya çıkabilir. Aşağıdaki koşulların doğru olduğundan emin olun:
+Bu hata, Maliyet Yönetimi'nin AWS AssumeRole API'sini çağıramadığı anlamına gelir. Bu sorunun nedeni rol tanımıyla ilgili bir sorun olması olabilir. Aşağıdaki koşulların doğru olduğundan emin olun:
 
-- Dış KIMLIK, rol tanımınızdaki ve bağlayıcı tanımındaki ile aynıdır.
-- Rol türü **size veya 3. tarafa ait başka BIR AWS hesabı** olarak ayarlanır.
-- **MFA gerektir** seçeneği temizlenir.
-- AWS rolündeki güvenilir AWS hesabı _432263259397_' dir.
+- Dış kimlik, rol tanımındaki ve bağlayıcı tanımındaki değerle aynı.
+- Rol türü **Size veya 3. taraflara ait olan başka bir Azure hesabı** olarak ayarlanmış.
+- **MFA gerektirme** işaretlenmemiş.
+- AWS rolündeki güvenilir AWS hesabı _432263259397_.
 
-### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Koleksiyon, erişim reddedildi hatasıyla başarısız oldu-GEÇERLI rapor tanımları
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Koleksiyon, Erişim Reddedildi hatasıyla başarısız oldu - CUR rapor tanımları
 
 **Hata kodu:** _AccessDeniedReportDefinitions_
 
-Bu hata, maliyet yönetiminin maliyet ve kullanım raporu tanımlarını göremediği anlamına gelir. Bu izin, CUR 'in Azure maliyet yönetimi tarafından beklendiği gibi tanımlandığını doğrulamak için kullanılır. [AWS 'de maliyet ve kullanım raporu oluşturma](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)konusuna bakın.
+Bu hata, Maliyet Yönetimi'nin Maliyet ve Kullanım raporu tanımlarını göremediği anlamına gelir. Bu izin, CUR'un Azure Maliyet Yönetimi tarafından tanımlanan ve beklenen şekilde olduğunu doğrulamak için kullanılır. Bkz. [AWS'de Maliyet ve Kullanım raporu oluşturma](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
-### <a name="collection-failed-with-access-denied---list-reports"></a>Koleksiyon, erişim reddedildi-liste raporları ile başarısız oldu
+### <a name="collection-failed-with-access-denied---list-reports"></a>Koleksiyon, Erişim Reddedildi hatasıyla başarısız oldu - Raporları listeleme
 
 **Hata kodu:** _AccessDeniedListReports_
 
-Bu hata, maliyet yönetiminin, nesne 'nin bulunduğu S3 demetini içinde listekullanamayacağı anlamına gelir. AWS ıAM ilkesi, demet üzerinde ve demet içindeki nesnelerde bir izin gerektirir. Bkz. [AWS 'de rol ve Ilke oluşturma](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
+Bu hata, Maliyet Yönetimi'nin CUR'un olduğu S3 demetindeki nesneyi listeleyemediği anlamına gelir. AWS IAM ilkesi demek ve demetteki nesneler için erişim ihtiyacı duyar. Bkz. [AWS'de rol ve ilke oluşturma](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
 
-### <a name="collection-failed-with-access-denied---download-report"></a>Koleksiyon, erişim reddedildi hatasıyla başarısız oldu-Indirme raporu
+### <a name="collection-failed-with-access-denied---download-report"></a>Koleksiyon, Erişim Reddedildi hatasıyla başarısız oldu - Raporu indirme
 
 **Hata kodu:** _AccessDeniedDownloadReport_
 
-Bu hata, maliyet yönetiminin Amazon S3 demetini içinde depolanan GEÇERLI dosyaları erişemeyeceği ve indiremediği anlamına gelir. Role bağlı AWS JSON ilkesinin, [AWS 'de rol ve Ilke oluşturma](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) bölümünde gösterilen örneğe benzer olduğundan emin olun.
+Bu hata, Maliyet Yönetimi'nin Amazon S3 demetinde depolanan CUR dosyalarına erişemediğini ve onları indiremediğini gösterir. Role eklenmiş olan AWS JSON ilkesinin [AWS'de rol ve ilke oluşturma](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) bölümünün en altında gösterilen örneğe benzediğinden emin olun.
 
-### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Maliyet ve kullanım raporu bulamadığı için koleksiyon başarısız oldu
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Maliyet ve Kullanım Raporunu bulamadığımız için koleksiyon başarısız oldu
 
-**Hata kodu:** _failedtofindreport_
+**Hata kodu:** _FailedToFindReport_
 
-Bu hata, maliyet yönetiminin bağlayıcıda tanımlı maliyet ve kullanım raporunu bulamadığı anlamına gelir. Bunun silinmediğinden ve role bağlı AWS JSON ilkesinin [AWS 'de rol ve Ilke oluşturma](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) bölümünde gösterilen örneğe benzer olduğundan emin olun.
+Bu hata, Maliyet Yönetimi'nin bağlayıcıda tanımlanmış olan Maliyet ve Kullanım raporunu bulamadığı anlamına gelir. Silinmediğinden emin olun ve role atanmış olan AWS JSON ilkesinin [AWS'de rol ve ilke oluşturma](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) bölümünün en altında gösterilen örneğe benzediğini unutmayın.
 
-### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Maliyet ve kullanım raporu tanımlarının eşleşmemesi nedeniyle bağlayıcı oluşturulamıyor veya doğrulanamıyor
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Maliyet ve Kullanım Raporu tanımlarının eşleşmemesi nedeniyle bağlayıcı oluşturulamıyor veya doğrulanamıyor
 
-**Hata kodu:** _reportınotvalid_
+**Hata kodu:** _ReportIsNotValid_
 
-AWS maliyet ve kullanım raporunun tanımıyla ilgili bu hata, bu rapor için özel ayarlar gerektirdiğimiz için, [AWS 'de maliyet ve kullanım raporu oluşturma](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws) içindeki gereksinimlere bakın.
+Bu hata, AWS Maliyet ve Kullanım raporunun tanımıyla ilgilidir, bu rapor için belirli ayarlar gerekmektedir, gereksinimler için bkz. [AWS'de özel Maliyet ve Kullanım raporu oluşturma](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure ortamınızı zaten yönetim gruplarıyla yapılandırmadıysanız, bkz. [yönetim gruplarının ilk kurulumu](../../governance/management-groups/overview.md#initial-setup-of-management-groups).
+- Azure ortamınızı yönetim gruplarıyla yapılandırmadıysanız bkz. [Yönetim gruplarını ilk kez ayarlama](../../governance/management-groups/overview.md#initial-setup-of-management-groups).

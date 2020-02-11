@@ -255,8 +255,6 @@
         - name: Bulut kodlayıcısıyla kullanım için şirket içi kodlayıcılarını yapılandırma
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE kodlayıcı
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB kodlayıcı
               href: media-services-configure-kb-live-encoder.md
             - name: NewTek TriCaster kodlayıcı

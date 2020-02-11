@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75996046"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure müşterileri için Açık Bankacılık (P2D2) ve Güçlü Müşteri Kimlik Doğrulaması (SCA)
@@ -48,7 +48,7 @@ Banka ücretleri reddederse Azure portalında Azure hesabınızın durumu **Sür
 
 1. [Azure portalında](https://portal.azure.com/) Hesap Yöneticisi olarak oturum açın.
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
-3. **Maliyet yönetimi + faturalandırma** **genel bakış** sayfasında, **Aboneliklerim** kılavuzundaki durum sütununu gözden geçirin.
+3. **Maliyet Yönetimi + Faturalama** **Genel Bakış** sayfasında, **Aboneliklerim** kılavuzundaki durum sütununu gözden geçirin.
 4. Aboneliğiniz **Süresi geçti** olarak etiketlendiyse **Bakiyeyi ödeyin** bağlantısına tıklayın. İşlem sırasında çok faktörlü kimlik doğrulamasını tamamlamanız istenir.
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Market ve rezervasyon satın almaları için ödenmemiş ücretleri ödeme

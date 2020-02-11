@@ -1,21 +1,20 @@
 ---
 title: Azure'da Cloudyn’e genel bakış | Microsoft Docs
 description: Cloudyn, Azure ve diğer bulut kaynaklarını kullanmanıza yardımcı olan çoklu bulut maliyet yönetimi çözümüdür.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: d4a31518dcd6fb5722fc19617b153bafb8a20f68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: bfd00613a3949b29e2defcb6f97398a39091d0e6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987659"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774046"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Cloudyn hizmeti nedir?
 
@@ -25,42 +24,42 @@ Tanıtım videosunu izlemek için bkz. [Azure Cloudyn’e Giriş](https://azure.
 
 Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yönetimi, yerel Azure maliyet yönetimi çözümüdür. Maliyet analizi yapmanıza, bütçe oluşturup yönetmenize, verileri dışarı aktarmanıza ve tasarruf önerilerini gözden geçirip gerekli eylemleri gerçekleştirmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure Maliyet Yönetimi](../cost-management-billing-overview.md).
 
-Azure maliyet yönetimi [ve Cloudyn videosunu](https://www.youtube.com/watch?v=PmwFWwSluh8) , iş gereksinimlerinize göre Azure Cost Management veya Cloudyn ' i kullanmanız gereken önerileri görmek için izleyin.
+İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlarla ilgili öneriler için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=PmwFWwSluh8) izleyin.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
-## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Cloudyn özellikleri Azure maliyet yönetimine taşınıyor
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Cloudyn özellikleri Azure Maliyet Yönetimi'ne taşınıyor
 
-Microsoft, Cloudyn 'i almış ve kendi maliyet yönetimi özelliklerini Cloudyn portalından yerel olarak Azure 'a geçirmektedir. Yeni özellikleri kullanmak için Azure portal oturum açın ve Azure hizmetleri listesinde [maliyet yönetimi ve faturalandırma](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) ' a gidin. Cloudyn ile karşılaştırıldığında, yerel deneyim yaklaşık sekiz saat boyunca gelişmiş performans ve daha düşük veri gecikme süresi sağlar.
+Microsoft, Cloudyn'i satın aldı ve Cloudyn portalındaki maliyet yönetimi özellikleri, Azure'da yerel olarak kullanılacak şekilde geçiriliyor. Yeni özellikleri kullanmak için Azure portalında oturum açın ve Azure hizmetleri listesinden [Maliyet Yönetimi ve Faturalandırma](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview)'ya gidin. Cloudyn'e kıyasla yerel deneyim, daha yüksek performans ve sekiz saatlik daha düşük veri gecikme süresi sunar.
 
-Azure maliyet yönetimi için Kurumsal Anlaşma, Kullandıkça öde ve MSDN teklif kategorilerinin temel özellik geçişi tamamlanmıştır. CSP abonelikleri, Azure maliyet yönetimi 'ne geçiş sürecinde.
+Kurumsal Anlaşma, Kullandıkça Öde ve MSDN teklifi kategorileri için temel özelliklerin Azure Maliyet Yönetimi'ne geçişi tamamlanmıştır. CSP aboneliklerinin Azure Maliyet Yönetimi'ne geçirilme süreci devam etmektedir.
 
-Henüz geçirilmeyen bir teklif kategorili varsa Cloudyn portalını kullanmaya devam etmelisiniz. Diğer herkes Azure maliyet yönetimi 'ni kullanabilir.
+Henüz geçirilmemiş bir teklif kategoriniz varsa Cloudyn portalını kullanmaya devam edebilirsiniz. Bunun dışında Azure Maliyet Yönetimi'ni kullanabilirsiniz.
 
 | Microsoft Azure teklifleri ve özellikleri | Önerilen maliyet yönetimi hizmeti |
 | --- | --- |
 | Azure Kurumsal Anlaşma | [Azure Maliyet Yönetimi](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure Web Direct (PAYG/MSDN) | [Azure Maliyet Yönetimi](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Devlet Kurumları | [Azure Maliyet Yönetimi](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Kamu | [Azure Maliyet Yönetimi](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
-| AWS için platformlar arası maliyet analizi desteği (önizlemede) | [Azure Maliyet Yönetimi](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| AWS için bulutlar arası maliyet analizi desteği (önizleme) | [Azure Maliyet Yönetimi](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | AWS önerileri | [Cloudyn](https://azure.cloudyn.com) |
 
-Aşağıdaki özelliklerden bazıları Cloudyn 'de mevcuttur, ancak bunların hepsi Azure maliyet yönetimi 'nde kullanıma sunulmuştur.
+Aşağıdaki özelliklerden bazıları Cloudyn'de mevcuttur ancak tümü Azure Maliyet Yönetimi'nde kullanıma sunulmuştur.
 
 - API'ler
 - Azure işlem önerileri
-- Azure ayırma önerileri
+- Azure Rezervasyon önerileri
 - Bütçeler
 - Maliyet analizi
-- Azure depolama hesabına veri aktarma
-- Düşük gecikme süresi
-- Power BI içerik paketi ve bağlayıcı
+- Verileri Azure depolama hesabına aktarma
+- Daha düşük gecikme süresi
+- Power BI içerik paketi ve bağlayıcısı
 - Kaynak etiketi desteği
 
 ## <a name="monitor-usage-and-spending"></a>Kullanımı ve harcamayı izleyin
 
-Kuruluşlar zaman içinde kullandığı kaynaklar için ödeme yaptığından bulut altyapıları için kullanımınızı ve harcamanızı izlemeniz kritik öneme sahiptir. Kullanım sözleşme eşiklerini aşarsa kısa bir sürede beklenmedik fazla kullanım ücretleriyle karşılaşılabilir. Birkaç önemli etken, geçici izleme yapmayı zorlaştırır. İlk olarak, ortalama kullanıma göre maliyet tahmini yapılırken belirli bir fatura dönemi boyunca tüketiminizin tutarlı kalacağı varsayılır. İkinci olarak, maliyetler bütçenize yaklaştığında veya bütçenizi aştığında harcamanızı proaktif olarak ayarlayabilmeniz için bildirim almanız önemlidir. Ayrıca, bulut hizmeti sağlayıcıları eşikle karşılaştırmalı maliyet tahmini veya dönemler arası karşılaştırma raporları sağlamıyor olabilir.
+Kuruluşlar zaman içinde kullandığı kaynaklar için ödeme yaptığından bulut altyapıları için kullanımınızı ve harcamanızı izlemeniz kritik öneme sahiptir. Kullanım sözleşme eşiklerini aşarsa kısa bir sürede beklenmedik fazla kullanım ücretleriyle karşılaşılabilir. Birkaç önemli faktör, geçici izlemeyi zorlaştırabilir. İlk olarak, ortalama kullanıma göre maliyet tahmini yapılırken belirli bir fatura dönemi boyunca tüketiminizin tutarlı kalacağı varsayılır. İkinci olarak, maliyetler bütçenize yaklaştığında veya bütçenizi aştığında harcamanızı proaktif olarak ayarlayabilmeniz için bildirim almanız önemlidir. Ayrıca, bulut hizmeti sağlayıcıları eşikle karşılaştırmalı maliyet tahmini veya dönemler arası karşılaştırma raporları sağlamıyor olabilir.
 
 Raporlar, harcamayı izleyerek bulut kullanımını, maliyetleri ve eğilimleri analiz etmenize ve izlemenize yardımcı olur. Zaman İçinde raporlarını kullanarak normal eğilimlerden farklı olan anormal durumları algılayabilirsiniz. İyileştirme raporlarında bulut dağıtımınızdaki verimsizlikler görülebilir. Ayrıca, maliyet analizi raporlarında verimsizlikler olduğunu fark edebilirsiniz.
 

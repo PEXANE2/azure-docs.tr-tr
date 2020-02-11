@@ -494,6 +494,8 @@
           href: javascript-query-api.md
     - name: Azure Cosmos DB maliyetinizi iyileştirme
       items:
+        - name: Maliyetleri planlama ve yönetme
+          href: plan-manage-costs.md
         - name: Fiyatlandırma modeli
           href: how-pricing-works.md
         - name: Toplam Sahip Olma Maliyeti (TCO)

@@ -1,21 +1,20 @@
 ---
 title: 'Öğretici: Azure’da Cloudyn ile erişim atama | Microsoft Docs'
 description: Bu öğreticide, varlıklara erişim düzeylerini tanımlayan kullanıcı hesapları ile Cloudyn verilerine erişim atamayı öğrenirsiniz.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 412b296ed13c7708ed1a79f39ff08c3c1c559d19
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986931"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774000"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Öğretici: Cloudyn verilerine erişim atama
 
@@ -47,7 +46,7 @@ Siz zaten yönetici erişimine sahip olsanız da, kuruluşunuzdaki iş arkadaşl
 Kullanıcı hakkında gerekli bilgileri girin. **Oturum Açma Kimliği**, geçerli bir e-posta adresi olmalıdır. Kullanıcının başka kullanıcılar oluşturabilmesi ve diğer kullanıcıları değiştirebilmesi için Kullanıcı Yönetimi’ne izin vermek üzere izinleri seçin. Alıcı Listeleri Yönetimi, kullanıcının alıcı listelerini düzenlemesine olanak tanır. **Kullanıcıya e-posta ile bildir**’i seçtiğinizde, kullanıcıya Cloudyn’den oturum açma bilgilerini içeren bir bağlantı e-posta ile gönderilir. İlk oturum açma işleminde kullanıcı bir parola ayarlar.
 
 **Kullanıcının yönetici erişimi var** altında, kuruluşunuzun kök varlığı seçilidir. Kökü seçili durumda bırakın ve sonra kullanıcı bilgilerini kaydedin. Kök varlığın seçilmesi, kullanıcının yalnızca ağaçtaki kök varlıkta değil, aynı zamanda onun içinde bulunan tüm varlıklarda da yönetici iznine sahip olmasını sağlar.  
-  ![Yönetici erişimi Ekle yeni kullanıcı kutusunda gösteren örnek](./media/tutorial-user-access/new-admin-access.png)
+  ![Yeni kullanıcı ekle kutusunda yönetici erişimini gösteren örnek](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Kullanıcı erişimi olan bir kullanıcı oluşturma
 Pano ve raporlar gibi Cloudyn verilerine erişmesi gereken tipik kullanıcılar, bunları görüntüleme erişimine sahip olmalıdır. Aşağıdaki farklılıklar dışında, yönetici erişimi ile oluşturduğunuz kullanıcıya benzer şekilde kullanıcı erişimi olan yeni bir kullanıcı oluşturun:
@@ -56,7 +55,7 @@ Pano ve raporlar gibi Cloudyn verilerine erişmesi gereken tipik kullanıcılar,
 - **Kullanıcının kullanıcı erişimi var** listesinde kullanıcının erişmesi gereken varlıkları seçin.
 - Ayrıca, gerektiğinde yöneticinin belirli varlıklara erişmesine izin verebilirsiniz.
 
-![Kullanıcı erişimi Ekle yeni kullanıcı kutusunda gösteren örnek](./media/tutorial-user-access/new-user-access.png)
+![Yeni kullanıcı ekle kutusunda kullanıcı erişimini gösteren örnek](./media/tutorial-user-access/new-user-access.png)
 
 Kullanıcı ekleme hakkında öğretici bir video izlemek için bkz. [Cloudyn’e Kullanıcı Ekleme](https://youtu.be/Nzn7GLahx30).
 
@@ -88,11 +87,11 @@ Azure sözleşmenizi veya hesabınızı Cloudyn’e kaydettiğinizde, abonelikle
 
 Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin. Tek bir varlık (kök) ile başlayıp kök altında varlık ağacınızı oluşturabilirsiniz. Ağaç tamamlandıktan sonra birçok BT kuruluşunun benzeyebileceği bir varlık hiyerarşisi örneği aşağıda verilmiştir:
 
-![Hesap Yönetimi sayfasında görüntülenen bir varlık ağacı örneği](./media/tutorial-user-access/entity-tree.png)
+![Hesap Yönetimi sayfasında varlık ağacı örneği](./media/tutorial-user-access/entity-tree.png)
 
 **Varlıklar**’ın yanındaki **Varlık Ekle** öğesine tıklayın. Eklemek istediğiniz kişi veya departmana ilişkin bilgileri girin. **Tam Ad** ve **E-posta** alanları, mevcut kullanıcılarla aynı olmamalıdır. Erişim düzeylerinin bir listesini görüntülemek isterseniz *Varlık ekleme* yardımını arayın.
 
-![Varlık Ekle varlık kutusuna adını ve erişim düzeylerini gösteren örnek](./media/tutorial-user-access/add-entity.png)
+![Varlık ekle kutusundaki varlık adını ve erişim düzeylerini gösteren örnek](./media/tutorial-user-access/add-entity.png)
 
 İşiniz bittiğinde varlığı **Kaydedin**.
 
@@ -110,7 +109,7 @@ Bir kullanıcının erişimi ile birlikte varlık erişim düzeylerini kullanara
 
 Maliyet varlık hiyerarşisi oluşturmak için kurumsal veya kurumsal ve maliyet ayırma erişimine sahip bir hesabınızın olması gerekir.
 
-Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin. **Varlıklar** ağacı, sol bölmede gösterilir. Gerekirse, bir hesapla ilişkilendirmek istediğiniz varlığı görüntüleyebilmek için varlık ağacını genişletin.  Bulut hizmeti sağlayıcı hesaplarınız sağ bölmedeki sekmelerde gösterilir. Bir sekme seçin ve sonra varlığa bir hesabı/aboneliği sürükleyip bırakın. **Taşı** kutusu, hesabın başarıyla taşındığını size bildirir. **Tamam**’a tıklayın.
+Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin. **Varlıklar** ağacı, sol bölmede gösterilir. Gerekirse, bir hesapla ilişkilendirmek istediğiniz varlığı görüntüleyebilmek için varlık ağacını genişletin.  Bulut hizmeti sağlayıcı hesaplarınız sağ bölmedeki sekmelerde gösterilir. Bir sekme seçin ve sonra varlığa bir hesabı/aboneliği sürükleyip bırakın. **Taşı** kutusu, hesabın başarıyla taşındığını size bildirir. **Tamam** düğmesine tıklayın.
 
 Bir varlıkla birden fazla hesabı da ilişkilendirebilirsiniz. Hesapları seçin ve **Taşı**’ya tıklayın. Hesapları Taşı kutusunda, hesabı taşımak istediğiniz varlığı seçin ve ardından **Kaydet**’e tıklayın. Hesapları taşı kutusu, hesapları taşımak isteğinizi doğrulamanızı ister. **Evet**’e ve ardından **Tamam**’a tıklayın.
 

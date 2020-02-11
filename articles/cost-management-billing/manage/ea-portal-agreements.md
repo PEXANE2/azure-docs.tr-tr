@@ -25,7 +25,7 @@ Azure müşterilerine yönelik tüm düzeltmelerin iş ortaklarından veya Micro
 
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
-Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. https://www.explore.ms adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
+Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. [https://www.explore.ms](https://www.explore.ms ) adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
 
 ## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Özel fiyatlandırma ve Azure taahhüt indirimi düzeltmeleri
 

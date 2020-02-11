@@ -1,134 +1,133 @@
 ---
-title: Amazon Web Services hesabınız Azure Cloudyn bağlanın | Microsoft Docs
-description: Cloudyn raporlarında maliyet ve kullanım verilerini görüntülemek için bir Amazon Web Services hesabına bağlanın.
-services: cost-management
+title: Azure'da Cloudyn'e Amazon Web Services hesabı bağlama | Microsoft Docs
+description: Maliyet ve kullanım verilerini Cloudyn raporlarında görüntülemek için bir Amazon Web Services hesabı bağlayın.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b64d54df43b27abb51210995f2426e23690fa2d3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994889"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770326"
 ---
-# <a name="connect-an-amazon-web-services-account"></a>Amazon Web Services hesabına bağlanma
+# <a name="connect-an-amazon-web-services-account"></a>Amazon Web Services hesabı bağlama
 
-Amazon Web Services (AWS) hesabınızı Cloudyn'e bağlamak için iki seçeneğiniz vardır. IAM rolü veya bir salt okunur IAM kullanıcı hesabı ile bağlanabilirsiniz. IAM rol temsilci erişimi güvenilir varlıklar için tanımlanmış izinlerle izin verdiği için önerilir. IAM rolünü uzun süreli erişim anahtarlarınızı paylaşmak gerektirmez. AWS hesabı Cloudyn'e bağlandıktan sonra maliyet ve kullanım verileri, Cloudyn raporlarında kullanılabilir. Bu belge, her iki çalışma seçeneklerde size yol gösterir.
+Amazon Web Services (AWS) hesabınızı Cloudyn'e bağlamak için kullanabileceğiniz iki seçenek vardır. Bir IAM rolü ile veya salt okunur IAM kullanıcı hesabı ile bağlayabilirsiniz. Güvenilen varlıklara tanımlı izinlerle erişim yetkisi vermenizi sağladığı için IAM rolü önerilir. IAM rolü uzun süreli erişim anahtarları paylaşmanızı gerektirmez. Bir AWS hesabını Cloudyn'e bağladıktan sonra maliyet ve kullanım verilerini Cloudyn raporlarında görüntüleyebilirsiniz. Bu belgede iki seçenek için de gerekli yönergeler verilmiştir.
 
-AWS IAM kimlikler hakkında daha fazla bilgi için bkz. [kimlikleri (kullanıcılar, gruplar ve roller)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
+AWS IAM kimlikleri hakkında daha fazla bilgi için bkz. [Kimlikler (Kullanıcılar, Gruplar ve Roller)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
 
-Ayrıca, AWS ayrıntılı sağlayan raporlar faturalama ve bir AWS basit depolama hizmeti (S3 için) demetine bilgileri depolar. Ayrıntılı bir faturalandırma raporlarını saatlik olarak herhangi bir etiket ve kaynak bilgileriyle faturalandırma ücretleri dahildir. Depolama raporları, bunları, alanı almak ve onun raporlarında bilgileri görüntülemek Cloudyn sağlar.
+Ayrıca AWS ayrıntılı faturalama raporlarını etkinleştirmeniz ve bilgileri bir AWS Simple Storage Service (S3) demetinde depolamanız gerekir. Ayrıntılı faturalama raporları, etiketlere ve kaynak b ilgilerine sahip saatlik faturalama ücretlerini kapsar. Raporların depolanması, Cloudyn'in bunları demetinizden alarak raporlarında göstermesini sağlar.
 
 
-## <a name="aws-role-based-access"></a>AWS rol tabanlı erişim
+## <a name="aws-role-based-access"></a>AWS rol tabanlı erişimi
 
-Aşağıdaki bölümlerde, Cloudyn'e erişim sağlamak için bir salt okunur IAM rol oluşturmak adım adım açıklanmaktadır.
+Aşağıdaki bölümlerde, Cloudyn için erişim sağlama amacıyla salt okunur IAM rolü oluşturma adımları listelenmiştir.
 
-### <a name="get-your-cloudyn-account-external-id"></a>Cloudyn hesap dış kimliği alma
+### <a name="get-your-cloudyn-account-external-id"></a>Cloudyn hesabınızın dış kimliğini alma
 
-İlk adım, Cloudyn portaldan benzersiz bağlantı parolası almaktır. AWS kullanılan **dış kimliği**.
+İlk adım, Cloudyn portalından benzersiz bağlantı parolasını almaktır. Bu parola, AWS'de **Dış Kimlik** olarak kullanılır.
 
-1. Cloudyn portalını Azure portalından açın veya gidin [ https://azure.cloudyn.com ](https://azure.cloudyn.com) ve oturum açın.
-2. Dişli simgesine tıklayın ve ardından **bulut hesapları**.
-3. Hesapları Yönetimi'nde seçin **AWS hesapları** sekmesine ve ardından **yeni Ekle +** .
-4. İçinde **AWS hesabı Ekle** iletişim kutusunda, kopyalama **Dış kimlik** ve AWS oluşturma adımları sonraki bölümde rol için değer kaydedin. Dış hesabınıza benzersiz kimliğidir. Aşağıdaki görüntüde, örneğin dış kimliğidir _Contoso_ bir sayı takip eder. Kimliğinizi farklıdır.  
-    ![AWS hesabı Ekle iletişim kutusunda gösterilen dış kimliği](./media/connect-aws-account/external-id.png)
+1. Cloudyn portalını Azure portalından açın veya [https://azure.cloudyn.com](https://azure.cloudyn.com) sayfasına gidip oturum açın.
+2. Dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin.
+3. Hesap Yönetimi bölümünde **AWS Hesapları** sekmesini seçip **Yeni ekle +** öğesine tıklayın.
+4. **AWS Hesabı Ekle** iletişim kutusunda **Dış Kimliği** kopyalayın ve sonraki bölümlerde yer alan AWS Rolü oluşturma adımları için saklayın. Dış Kimlik, hesabınıza özgü bir değerdir. Örneğin aşağıdaki görüntüde Dış Kimlik, _Contoso_ ve arkasından gelen telefon numarasıdır. Sizin kimliğiniz farklıdır.  
+    ![AWS Hesabı Ekle kutusunda gösterilen dış kimlik](./media/connect-aws-account/external-id.png)
 
-### <a name="add-aws-read-only-role-based-access"></a>AWS salt okunur rol tabanlı erişim Ekle
+### <a name="add-aws-read-only-role-based-access"></a>AWS salt okunur rol tabanlı erişimi ekleme
 
-1. Oturum açmak için AWS konsolunda https://console.aws.amazon.com/iam/home seçip **rolleri**.
-2. Tıklayın **Rol Oluştur** seçip **başka bir AWS hesabı**.
-3. İçinde **hesap kimliği** kutusu, yapıştırma `432263259397`. Bu hesap kimliği, Cloudyn hizmete AWS tarafından atanan Cloudyn veri toplayıcı hesabıdır. Tam hesap kimliği kullanın.
-4. Yanındaki **seçenekleri**seçin **dış ID gerektir**. Öğesinden daha önce kopyaladığınız benzersiz değerinizi yapıştırın **Dış kimlik** Cloudyn alanındaki. Ardından **sonraki: izinleri**.  
-    ![Cloudyn dış kimliği Oluştur rol sayfasında yapıştırın](./media/connect-aws-account/create-role01.png)
-5. Altında **izin ilkeleriyle ekleme**, **ilke türü** filtre kutusuna arama, türü `ReadOnlyAccess`seçin **ReadOnlyAccess**, ardından **sonraki: Gözden geçirme**.  
-    ![salt okunur erişim ilke adları listesinden seçin](./media/connect-aws-account/readonlyaccess.png)
-6. İnceleme sayfasında, seçimlerinizi doğru olduğundan ve tür olun bir **rol adı**. Örneğin, *Azure-maliyet-yön*. **Rol açıklaması**girin. Örneğin, _Cloudyn için rol ataması_, ardından **rol oluşturma**.
-7. İçinde **rolleri** listesinde, oluşturduğunuz role tıklayın ve kopyalama **rol ARN** Özet sayfasından değeri. Rol ARN (Amazon kaynak adı) değeri, daha sonra yapılandırmanızı Cloudyn'de kaydettiğinizde kullanın.  
-    ![Rol ARN Özet sayfasından kopyalayın](./media/connect-aws-account/role-arn.png)
+1. https://console.aws.amazon.com/iam/home adresinden AWS konsolunda oturum açın ve **Roller**'i seçin.
+2. **Rol Oluştur**'a tıklayın ve **Başka bir AWS hesabı**'nı seçin.
+3. **Hesap kimliği** kutusuna `432263259397` değerini yapıştırın. Bu Hesap Kimliği, AWS tarafından Cloudyn hizmetine atanmış olan Cloudyn veri toplayıcısı hesabıdır. Gösterilen Hesap Kimliği olduğu şekilde kullanın.
+4. **Seçenekler**'in yanında **Dış kimlik gerektir**'i seçin. Daha önce, Cloudyn'deki **Dış Kimlik** alanından kopyaladığınız benzersiz değeri yapıştırın. Ardından **İleri: İzinler**'e tıklayın.  
+    ![Rol oluştur sayfasına Cloudyn'den alınan Dış Kimlik değerini yapıştırın](./media/connect-aws-account/create-role01.png)
+5. **İzin ilkeleri ekle** bölümündeki **İlke türü** filtre kutusunda `ReadOnlyAccess` yazın, **ReadOnlyAccess** girişini seçin ve **İleri: İncele**'ye tıklayın.  
+    ![İlke adları listesinde salt okunur erişimini seçin](./media/connect-aws-account/readonlyaccess.png)
+6. İnceleme sayfasında seçimlerinizin doğru olduğundan emin olun ve bir **Rol adı** yazın. Örneğin, *Azure-Cost-Mgt*. **Rol açıklaması** girin. Örneğin, _Cloudyn için rol ataması_. Ardından **Rolü oluştur**'a tıklayın.
+7. **Roller** listesinde oluşturduğunuz role tıklayın ve Özet sayfasından **Rol ARN'si** değerini kopyalayın. Rol ARN'si (Amazon Kaynak Adı) değerini daha sonra yapılandırmanızı Cloudyn'e kaydederken kullanacaksınız.  
+    ![Özet sayfasındaki Rol ARN'sini kopyalayın](./media/connect-aws-account/role-arn.png)
 
 ### <a name="configure-aws-iam-role-access-in-cloudyn"></a>Cloudyn'de AWS IAM rol erişimini yapılandırma
 
-1. Cloudyn portalını Azure portalından açın veya gidin https://azure.cloudyn.com/ ve oturum açın.
-2. Dişli simgesine tıklayın ve ardından **bulut hesapları**.
-3. Hesapları Yönetimi'nde seçin **AWS hesapları** sekmesine ve ardından **yeni Ekle +** .
-4. İçinde **hesap adı**, hesap için bir ad yazın.
-5. Yanındaki **erişim türü**seçin **IAM rol**.
-6. İçinde **rol ARN** alan, daha önce kopyaladığınız değeri yapıştırın ve ardından **Kaydet**.  
-    ![AWS hesabı Ekle kutusunu rol ARN yapıştırın](./media/connect-aws-account/add-aws-account-box.png)
+1. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com/ sayfasına gidip oturum açın.
+2. Dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin.
+3. Hesap Yönetimi bölümünde **AWS Hesapları** sekmesini seçip **Yeni ekle +** öğesine tıklayın.
+4. **Hesap Adı** alanına bir hesap adı yazın.
+5. **Erişim Türü**'nün yanında **IAM Rolü**'nü seçin.
+6. **Rol ARN'si** alanına önceden kopyaladığınız değeri yapıştırın ve **Kaydet**'e tıklayın.  
+    ![Rol ARN'sini AWS Hesabı Ekle kutusuna yapıştırın](./media/connect-aws-account/add-aws-account-box.png)
 
 
-AWS hesabınız hesapları listesinde görünür. **Sahibinin kimliği** listelenen, rol ARN değeri eşler. **Hesap durumu** Cloudyn AWS hesabınız erişebilirsiniz belirten yeşil onay işareti simgesi olmalıdır. Ayrıntılı AWS faturalamayı etkinleştirene kadar birleştirme durumunuzu olarak görünür **tek başına**.
+AWS hesabınız hesap listesinde görünür. Listelenen **Sahip Kimliği**, Rol ARN'si değeriyle eşleşir. **Hesap Durumunuzun** yanında Cloudyn'in AWS hesabınıza erişebildiğini gösteren yeşil renkli bir onay işareti bulunmalıdır. Ayrıntılı AWS faturalarını etkinleştirene kadar birleştirme durumunuz **Tek başına** olarak görüntülenir.
 
 ![Hesap Yönetimi sayfasında gösterilen AWS hesabı durumu](./media/connect-aws-account/aws-account-status01.png)
 
-Cloudyn, veri toplama ve raporları doldurma başlatır. Ardından, [ayrıntılı AWS faturalamayı etkinleştirme](#enable-detailed-aws-billing).
+Cloudyn verileri toplamaya ve raporları doldurmaya başlar. Sonraki adım için [ayrıntılı AWS faturalandırmasını etkinleştirin](#enable-detailed-aws-billing).
 
 
-## <a name="aws-user-based-access"></a>AWS kullanıcı tabanlı erişim
+## <a name="aws-user-based-access"></a>AWS kullanıcı tabanlı erişimi
 
-Aşağıdaki bölümlerde, Cloudyn'e erişim sağlamak için salt okunur bir kullanıcı oluşturmak adım adım açıklanmaktadır.
+Aşağıdaki bölümlerde, Cloudyn için erişim sağlama amacıyla salt okunur kullanıcı oluşturma adımları listelenmiştir.
 
-### <a name="add-aws-read-only-user-based-access"></a>AWS salt okunur kullanıcı tabanlı erişim Ekle
+### <a name="add-aws-read-only-user-based-access"></a>AWS salt okunur kullanıcı tabanlı erişimi ekleme
 
-1. Oturum açmak için AWS konsolunda https://console.aws.amazon.com/iam/home seçip **kullanıcılar**.
-2. Tıklayın **kullanıcı ekleme**.
-3. İçinde **kullanıcı adı** alanında, bir kullanıcı adı yazın.
-4. İçin **erişim türü**seçin **programlı erişim** tıklatıp **sonraki: izinleri**.  
-    ![Kullanıcı Ekle sayfasında bir kullanıcı adı girin](./media/connect-aws-account/add-user01.png)
-5. İzinler için seçin **mevcut ilkeleri doğrudan Ekle**.
-6. Altında **izin ilkeleriyle ekleme**, **ilke türü** filtre kutusuna arama, türü `ReadOnlyAccess`seçin **ReadOnlyAccess**ve ardından **İleri : Gözden geçirin**.  
-    ![kullanıcı izinlerini ayarlamak için ReadOnlyAccess seçin](./media/connect-aws-account/set-permission-for-user.png)
-7. İnceleme sayfasında, seçimlerinizi doğru tıklayın emin olun ve **kullanıcı oluşturma**.
-8. Tam sayfada erişim anahtarı kimliği ve parolası erişim anahtarınızı gösterilir. Cloudyn'de kaydını yapılandırmak için bu bilgileri kullanın.
-9. Tıklayın **csv'i indir** credentials.csv dosyayı güvenli bir konuma kaydedin.  
-    ![İndirme .csv kimlik bilgilerini kaydetmek için tıklatın](./media/connect-aws-account/download-csv.png)
+1. https://console.aws.amazon.com/iam/home adresinden AWS konsolunda oturum açın ve **Kullanıcılar**'ı seçin.
+2. **Kullanıcı Ekle**'ye tıklayın.
+3. **Kullanıcı adı** alanına bir kullanıcı adı yazın.
+4. **Erişim türü** için **Programlı erişim**'i seçin ve **İleri: İzinler**' e tıklayın.  
+    ![Kullanıcı ekle sayfasında bir kullanıcı adı girin](./media/connect-aws-account/add-user01.png)
+5. İzinler için **Mevcut ilkeleri doğrudan ekle**'yi seçin.
+6. **İzin ilkeleri ekle** bölümündeki **İlke türü** filtre kutusunda `ReadOnlyAccess` yazın, **ReadOnlyAccess** girişini seçin ve **İleri: İncele**'ye tıklayın.  
+    ![Kullanıcı izinlerini ayarlamak için ReadOnlyAccess'i seçin](./media/connect-aws-account/set-permission-for-user.png)
+7. İnceleme sayfasında seçimlerinizin doğru olduğundan emin olun ve **Kullanıcı oluştur**'a tıklayın.
+8. Tamamlanma sayfasında Erişim anahtarı kimliğiniz ve Gizli dizi erişim anahtarınız gösterilir. Cloudyn'de kaydı yapılandırmak için bu bilgileri kullanmanız gerekir.
+9. **.csv dosyasını indir**'e tıklayıp credentials.csv dosyasını güvenli bir konuma kaydedin.  
+    ![Kimlik bilgilerini kaydetmek için .csv dosyasını indir'e tıklayın](./media/connect-aws-account/download-csv.png)
 
-### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>AWS IAM kullanıcı tabanlı erişim Cloudyn'de yapılandırın
+### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>Cloudyn'de AWS IAM kullanıcı tabanlı erişimi yapılandırma
 
 1. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com/ sayfasına gidip oturum açın.
-2. Dişli simgesine tıklayın ve ardından **bulut hesapları**.
-3. Hesapları Yönetimi'nde seçin **AWS hesapları** sekmesine ve ardından **yeni Ekle +** .
-4. İçin **hesap adı**, hesap adını yazın.
-5. Yanındaki **erişim türü**seçin **IAM kullanıcı**.
-6. İçinde **erişim anahtarı**, Yapıştır **erişim anahtarı kimliği** credentials.csv dosyasından değer.
-7. İçinde **gizli anahtar**, Yapıştır **gizli erişim anahtarı** credentials.csv dosyasından değer ve ardından **Kaydet**.  
+2. Dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin.
+3. Hesap Yönetimi bölümünde **AWS Hesapları** sekmesini seçip **Yeni ekle +** öğesine tıklayın.
+4. **Hesap Adı** alanında bir hesap adı yazın.
+5. **Erişim Türü**'nün yanında **IAM Kullanıcısı**'nı seçin.
+6. **Erişim Anahtarı** bölümünde credentials.csv dosyasındaki **Erişim anahtarı kimliği** değerini yapıştırın.
+7. **Gizli Anahtar** bölümünde credentials.csv dosyasındaki **Gizli erişim anahtarı** değerini yapıştırın ve **Kaydet**'e tıklayın.  
 
-AWS hesabınız hesapları listesinde görünür. **Hesap durumu** yeşil onay işareti simgesi olmalıdır.
+AWS hesabınız hesap listesinde görünür. **Hesap Durumu** alanında yeşil onay işareti görünmelidir.
 
-Cloudyn, veri toplama ve raporları doldurma başlatır. Ardından, [ayrıntılı AWS faturalamayı etkinleştirme](#enable-detailed-aws-billing).
+Cloudyn verileri toplamaya ve raporları doldurmaya başlar. Sonraki adım için [ayrıntılı AWS faturalandırmasını etkinleştirin](#enable-detailed-aws-billing).
 
-## <a name="enable-detailed-aws-billing"></a>Ayrıntılı AWS faturalamayı etkinleştirme
+## <a name="enable-detailed-aws-billing"></a>Ayrıntılı AWS faturalandırmasını etkinleştirme
 
-AWS rol ARN almak için aşağıdaki adımları kullanın. Rol ARN fatura bir demet için Okuma izinleri vermek için kullanın.
+AWS Rol ARN'sini almak için aşağıdaki adımları izleyin. Bir faturalama demetine okuma izni vermek için Rol ARN'sini kullanırsınız.
 
-1. Oturum açmak için AWS konsolunda https://console.aws.amazon.com seçip **Hizmetleri**.
-2. Hizmet arama kutusuna *IAM*ve bu seçeneği belirleyin.
-3. Seçin **rolleri** sol taraftaki menüden.
-4. Rolleri listesinde, oluşturduğunuz Cloudyn erişimi için rolü seçin.
-5. Rol Özeti sayfasında kopyalamak için tıklayın **rol ARN**. Rol daha sonraki adımlar için kullanışlı tutun.
+1. https://console.aws.amazon.com adresinden AWS konsolunda oturum açın ve **Hizmetler**'ı seçin.
+2. Hizmet arama kutusuna *IAM* yazın ve sonuçlardan seçin.
+3. Sol taraftaki menüden **Roller**'i seçin.
+4. Rol listesinde Cloudyn erişimi için oluşturduğunuz rolü seçin.
+5. Rol Özeti sayfasında, **Rol ARN'sini** tıklayarak kopyalayın. Role ARN'sini sonraki adımlar için kaydedin.
 
-### <a name="create-an-s3-bucket"></a>Bir S3 demetini oluşturma
+### <a name="create-an-s3-bucket"></a>S3 demeti oluşturma
 
-Bir S3 demetini ayrıntılı faturalandırma bilgileri depolamak için oluşturduğunuz.
+Ayrıntılı faturalandırma bilgilerini depolamak için bir S3 demeti oluşturun.
 
-1. Oturum açmak için AWS konsolunda https://console.aws.amazon.com seçip **Hizmetleri**.
-2. Hizmet arama kutusuna *S3*seçip **S3**.
-3. Amazon S3 sayfasında tıklayın **Oluştur demet**.
-4. Oluşturma demet Sihirbazı'nda bir demet adı ve bölge seçin ve ardından **sonraki**.  
-    ![Örnek bilgiler bir oluşturma demetine sayfası](./media/connect-aws-account/create-bucket.png)
-5. Üzerinde **özelliklerini ayarlama** sayfasında varsayılan değerleri koruyun ve ardından **sonraki**.
-6. İnceleme sayfasında tıklayın **Oluştur demet**. Demet listenizde görüntülenir.
-7. Oluşturduğunuz demetine tıklayıp **izinleri** sekmesini seçip **demet ilke**. Demet İlke Düzenleyicisi açılır.
-8. Aşağıdaki JSON örneği kopyalayın ve demet İlkesi Düzenleyicisi'nde yapıştırın.
-   - Değiştirin `<BillingBucketName>` , S3 demetini adı.
-   - Değiştirin `<ReadOnlyUserOrRole>` rolü veya kullanıcı ARN, daha önce kopyaladığınız.
+1. https://console.aws.amazon.com adresinden AWS konsolunda oturum açın ve **Hizmetler**'ı seçin.
+2. Hizmet arama kutusuna *S3* yazın ve sonuçlardan **S3**'ü seçin.
+3. Amazon S3 sayfasında **Demet oluştur**'a tıklayın.
+4. Demet oluşturma sihirbazında Demek için bir ad ve Bölge seçip **İleri**'ye tıklayın.  
+    ![Demet oluştur sayfasındaki örnek bilgiler](./media/connect-aws-account/create-bucket.png)
+5. **Özellikleri ayarla** sayfasında varsayılan değerleri bırakın ve **İleri**'ye tıklayın.
+6. İnceleme sayfasında, **Demet oluştur**'a tıklayın. Demet listeniz görüntülenir.
+7. Oluşturduğunuz demete tıklayıp **İzinler** sekmesini ve ardından **Demet İlkesi**'ni seçin. Demet ilkesi düzenleyicisi açılır.
+8. Aşağıdaki JSON örneğini kopyalayın ve Demet ilkesi düzenleyicisine yapıştırın.
+   - `<BillingBucketName>` değerini, S3 demetinizin adıyla değiştirin.
+   - `<ReadOnlyUserOrRole>` değerini daha önce kopyaladığınız Rol veya Kullanıcı ARN'si ile değiştirin.
 
    ```json
    {
@@ -172,25 +171,25 @@ Bir S3 demetini ayrıntılı faturalandırma bilgileri depolamak için oluşturd
    }
    ```
 
-9. **Save (Kaydet)** düğmesine tıklayın.  
-    ![Demet İlkesi Düzenleyicisi'nde Kaydet'e tıklayın](./media/connect-aws-account/bucket-policy-editor.png)
+9. **Kaydet**’e tıklayın.  
+    ![Demet ilke düzenleyicisinde Kaydet'e tıklayın](./media/connect-aws-account/bucket-policy-editor.png)
 
 
-### <a name="enable-aws-billing-reports"></a>AWS raporları faturalama etkinleştir
+### <a name="enable-aws-billing-reports"></a>AWS faturalandırma raporlarını etkinleştirme
 
-Oluşturup S3 demetini yapılandırdıktan sonra gidin [faturalama tercihleri](https://console.aws.amazon.com/billing/home?#/preference) AWS konsolunda.
+S3 demeti oluşturup yapılandırdıktan sonra AWS konsolundaki [Faturalandırma Tercihleri](https://console.aws.amazon.com/billing/home?#/preference)'ne gidin.
 
-1. Tercihler sayfasında **faturalama raporları alma**.
-2. Altında **faturalama raporları alma**, oluşturduğunuz demet adını girin ve ardından **doğrulama**.  
-3. Dört rapor ayrıntı düzeyi seçenekleri ve ardından seçin **Tercihleri Kaydet**.  
-    ![raporları etkinleştirmek için ayrıntı düzeyi seçin](./media/connect-aws-account/enable-reports.png)
+1. Tercihler sayfasında, **Faturalandırma Raporları Al**'ı seçin.
+2. **Faturalandırma Raporları Al** bölümünde oluşturduğunuz demetin adını girin ve ardından **Doğrula**'ya tıklayın.  
+3. Dört rapor ayrıntı düzeyi seçeneğini de belirleyin ve ardından **Tercihleri kaydet**'e tıklayın.  
+    ![Raporları etkinleştirmek için ayrıntı düzeyi seçin](./media/connect-aws-account/enable-reports.png)
 
-Cloudyn, S3 demetini ayrıntılı fatura bilgilerini alır ve ayrıntılı bir faturalandırma etkinleştirildikten sonra raporları doldurur. Uygulamanın ayrıntılı faturalama verileri Cloudyn konsolunda görünene kadar en fazla 24 saat sürebilir. Ayrıntılı bir faturalandırma veriler kullanılabilir olduğunda, hesap birleştirme durumunuzu olarak görünür **birleştirilmiş**. Hesap durumu olarak görünür **tamamlandı**.
+Ayrıntılı faturalandırma etkinleştirildikten sonra Cloudyn, S3 demetinizdeki ayrıntılı fatura bilgilerini alır ve raporlara ekler. Ayrıntılı faturalandırma verilerinin Cloudyn konsolunda görünmesi 24 saate kadar sürebilir. Ayrıntılı faturalandırma verileri kullanılabilir durumda olduğunda hesap birleştirme durumunuz **Birleştirildi** olarak görünür. Hesap durumu **Tamamlandı** olarak görünür.
 
-![AWS hesapları sekmesinde gösterilen birleştirme durumu](./media/connect-aws-account/consolidated-status.png)
+![AWS Hesapları sekmesinde gösterilen birleştirme durumu](./media/connect-aws-account/consolidated-status.png)
 
-Bazı iyileştirme raporlar, birkaç günlük bir yeterli veri örnek boyutu için doğru öneriler almak için veri gerektirebilir.
+İyileştirme raporlarının bazılarının doğru öneriler için yeterli veri örneği boyutuna ulaşması için birkaç günlük veri gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Cloudyn hakkında daha fazla bilgi için devam [kullanımı ve maliyetleri gözden geçirme](tutorial-review-usage.md) Cloudyn Öğreticisi.
+- Cloudyn hakkında daha fazla bilgi edinmek isterseniz Cloudyn için [Kullanımı ve maliyetleri gözden geçirme](tutorial-review-usage.md) öğreticisine geçin.

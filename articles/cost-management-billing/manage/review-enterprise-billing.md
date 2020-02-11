@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993472"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API’leri kullanarak kurumsal kayıt faturalamasını gözden geçirme
@@ -44,7 +44,7 @@ Aşağıdaki üstbilgiler gereklidir:
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
 |*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
-|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)ayarlayın. |  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) ayarlayın. |  
 
 Bu örnekte, geçerli faturalama dönemine ilişkin ayrıntıları döndüren zaman uyumlu bir çağrı gösterilmektedir. Performans nedeniyle zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca 36 aylık verileri döndürmek için de [Zaman uyumsuz API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)’yi çağırabilirsiniz.
 
@@ -97,7 +97,7 @@ Aşağıdaki üstbilgiler gereklidir:
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
 |*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
-|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)ayarlayın. |  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) ayarlayın. |  
 
 Bu örnekte, geçerli faturalama dönemine ilişkin ayrıntıları döndüren zaman uyumlu bir çağrı gösterilmektedir. Performans nedeniyle zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca 36 aylık verileri döndürmek için de [Zaman uyumsuz API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)’yi çağırabilirsiniz.
 
@@ -153,7 +153,7 @@ Aşağıdaki üstbilgiler gereklidir:
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
 |*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
-|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)ayarlayın. |  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) ayarlayın. |  
 
 Bu örnekte, geçerli faturalama dönemine ilişkin ayrıntıları döndüren zaman uyumlu bir çağrı gösterilmektedir. Performans nedeniyle zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca 36 aylık verileri döndürmek için de [Zaman uyumsuz API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)’yi çağırabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: banders
-ms.openlocfilehash: 2fadd0b6eb0951031a9d577b2fd3a3d497076dd8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: dfee9218f1e65189117c3d37808a303cf7568cd7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990118"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76846234"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portalındaki Hesap Yöneticisi görevleri
 
@@ -29,13 +29,18 @@ Bu görevleri gerçekleştirmek için Hesap Yöneticisi olmanız gerekir.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Aboneliğinizin ödeme yöntemlerine gitme
 
-1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
+1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın. 
+
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
     
     ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/account-admin-tasks/search-bar.png)
 
-1. **Aboneliklerim** listesinde kredi kartını eklemek istediğiniz aboneliği seçin.
-    ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+1. **Aboneliklerim** listesinde kredi kartını eklemek istediğiniz aboneliği seçin. 
+   
+   ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   
+   > [!NOTE]
+   > Aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın. 
 
 1. **Ödeme yöntemleri**'ni seçin.
 
@@ -119,10 +124,13 @@ Harcama limiti, taahhüt planları veya kullandıkça öde fiyatlandırmasının
 
     ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/account-admin-tasks/search-bar.png)
 
-1. **Aboneliklerim** listesinde Visual Studio Enterprise aboneliğinizi seçin.
-    
-    ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+1. **Aboneliklerim** listesinde Visual Studio Enterprise aboneliğinizi seçin. 
 
+   ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Visual Studio aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
+    
 1. Harcama limitini kaldırmak için Abonelik genel görünümünde turuncu renkli başlığa tıklayın.
     
     ![Harcama limitini kaldırma başlığını gösteren ekran görüntüsü](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
@@ -133,7 +141,7 @@ Harcama limiti, taahhüt planları veya kullandıkça öde fiyatlandırmasının
 
 1. Aboneliğiniz için bir ödeme yöntemi seçmek üzere **Ödeme yöntemini seçin**'e tıklayın. Bu yöntem, aboneliğinizin etkin ödeme yöntemi olur.
 
-1. **Finish (Son)** düğmesine tıklayın.
+1. **Son**'a tıklayın.
 
 ## <a name="add-credits-to-azure-in-open-subscription"></a>Open ile Azure aboneliğine kredi ekleme
 
@@ -144,10 +152,13 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
 
     ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/account-admin-tasks/search-bar.png)
 
-1. **Aboneliklerim** listesinde Open ile Azure aboneliğinizi seçin.
-   
+1. **Aboneliklerim** listesinde Open ile Azure aboneliğinizi seçin. 
+
     ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
+   > [!NOTE]
+   > Aboneliğinizi burada görmüyorsanız, bunun nedeni dizinini değiştirmeniz olabilir. Aboneliğinizde özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
+    
 1. **Kredi geçmişi**'ni seçin.
     
     ![Kredi geçmişini gösteren ekran görüntüsü](./media/account-admin-tasks/aio-credit-history-blade.png)

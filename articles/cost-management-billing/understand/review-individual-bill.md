@@ -1,6 +1,6 @@
 ---
-title: Bireysel Azure faturanızı gözden geçirin
-description: Faturanızı ve kaynak kullanımınızı nasıl anlayacağınızı ve bireysel Azure aboneliğiniz için ücretleri doğrulamanızı öğrenin.
+title: Bireysel Azure faturanızı gözden geçirme
+description: Bireysel Azure aboneliğinize ait faturanızı ve kaynak kullanımınızı anlama ve ücretleri doğrulama konusunda bilgi edinin.
 author: bandersmsft
 manager: dougeby
 tags: billing
@@ -12,114 +12,114 @@ ms.workload: na
 ms.date: 11/20/2019
 ms.author: banders
 ms.openlocfilehash: 1249758e5dd5b7e823c11890e57549195da22529
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987351"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>Öğretici: bireysel Azure faturanızı gözden geçirin
+# <a name="tutorial-review-your-individual-azure-bill"></a>Öğretici: Bireysel Azure faturanızı gözden geçirme
 
-Bu makale, Azure faturanızı anlamanıza ve incelemenizi sağlar. Her faturalandırma döneminde, normalde e-postada bir fatura alırsınız. Fatura, Azure faturanızı temsil eden bir gösterimidir. Azure portal faturada aynı maliyet bilgileri kullanılabilir. Bu öğreticide faturanızı ayrıntılı günlük kullanım dosyasıyla ve Azure portal maliyet analiziyle karşılaştırırsınız.
+Bu makale, Azure faturanızı anlamanıza ve gözden geçirmenize yardımcı olur. Her faturalama döneminde e-posta ile bir fatura gönderilir. Faturanız Azure ücretlerinizin gösterimidir. Faturadaki maliyet bilgileri Azure portalında da mevcuttur. Bu öğreticide Azure portalında faturanızı ayrıntılı günlük kullanım dosyası ve maliyet analizi ile karşılaştıracaksınız.
 
-Bu öğretici yalnızca bireysel aboneliğe sahip Azure müşterileri için geçerlidir. Ortak ayrı abonelikler, doğrudan Azure Web sitesinden satın alınan Kullandıkça Öde tarifelerine sahip olanlardır.
+Bu öğretici yalnızca bireysel aboneliğe sahip olan Azure müşterileri için geçerlidir. Bireysel abonelikler genellikle doğrudan Azure web sitesinden satın alınan ve kullandıkça öde ücretlerini kullanan aboneliklerdir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Kullanım dosyası ile faturalanmış ücretleri karşılaştırın
-> * Maliyet analizinde ücretleri ve kullanımı karşılaştırın
+> * Faturadaki ücretleri kullanım dosyasıyla karşılaştırma
+> * Ücretleri ve kullanımı maliyet analiziyle karşılaştırma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Ücretli bir *Microsoft Online Services programı* faturalandırma hesabına sahip olmanız gerekir. Hesap, Azure 'a Azure Web sitesi üzerinden kaydolduğunuzda oluşturulur. Örneğin, [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/) sahip bir hesabınız varsa veya bir [Visual Studio abonesi](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)olduğunuzda.
+Ücretli bir *Microsoft Online Services Program* ödeme hesabına sahip olmanız gerekir. Bu hesap, Azure web sitesi üzerinden Azure’a kaydolduğunuzda oluşturulur. Örneğin [kullandıkça öde ücretlerine sahip bir hesabınız](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Visual Studio aboneliğiniz](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) olabilir.
 
-[Ücretsiz Azure hesabı](https://azure.microsoft.com/offers/ms-azr-0044p/) faturaları yalnızca aylık kredi miktarı aşıldığında oluşturulur.
+[Azure Ücretsiz Hesapları](https://azure.microsoft.com/offers/ms-azr-0044p/) için faturalar yalnızca aylık kredi tutarı aşıldığında düzenlenir.
 
-Azure 'a abone olduğunuz günden 30 günden daha uzun olmalıdır. Azure sizi fatura döneminizin sonunda faturalar.
+Azure'a abone olmanızın üzerinden en az 30 gün geçmiş olmalıdır. Azure sizi fatura döneminizin sonunda faturalar.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 - https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>Kullanım dosyası ile faturalanmış ücretleri karşılaştırın
+## <a name="compare-invoiced-charges-with-usage-file"></a>Faturadaki ücretleri kullanım dosyasıyla karşılaştırma
 
 <a name="charges"></a>
 
-Kullanım ve maliyetlerin karşılaştırılacağı ilk adım faturanızı ve kullanım dosyalarınızı indirmaktır. Ayrıntılı kullanım CSV dosyası faturalama dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Herhangi bir vergi bilgisi içermez. Dosyaları indirmek için bir hesap yöneticisi olmanız veya sahip rolüne sahip olmanız gerekir.
+Kullanım verilerini ve maliyetleri karşılaştırmanın ilk adımı, faturanızı ve kullanım dosyalarınızı indirmektir. Ayrıntılı kullanım CSV dosyası faturalama dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Vergi konusunda bilgi içermez. Dosyaları indirmek için hesap yöneticisi olmanız veya Sahip rolüne sahip olmanız gerekir.
 
-Azure portal, arama kutusuna *abonelikler* yazın ve ardından [abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)' e tıklayın.
+Azure portalında arama kutusuna *abonelikler* yazın ve [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'e tıklayın.
 
-![Aboneliklerde gezin](./media/review-individual-bill/navigate-subscriptions.png)
+![Abonelikler'e gidin](./media/review-individual-bill/navigate-subscriptions.png)
 
 Abonelikler listesinde aboneliğe tıklayın.
 
-**Faturalama**altında **faturalar**' ı tıklatın.
+**Faturalama**'nın altında **Faturalar**'a tıklayın.
 
-Faturalar listesinde, indirmek istediğiniz olanı bulun ve indir simgesine tıklayın. Eski faturaları görüntülemek için TimeSpan değeri değiştirmeniz gerekebilir. Kullanım ayrıntıları dosyasını ve faturasını oluşturmak birkaç dakika sürebilir.
+Faturalar listesinde indirmek istediğiniz faturayı bulun ve indir simgesine tıklayın. Eski faturaları görüntülemek için zaman aralığı değerini değiştirmeniz gerekebilir. Kullanım ayrıntıları dosyasının ve faturanın oluşturulması birkaç dakika sürebilir.
 
 ![Faturalama dönemini, indirme seçeneğini ve her faturalama dönemi için toplam ücretleri gösteren ekran görüntüsü](./media/review-individual-bill/download-invoice.png)
 
-Kullanımı ve ücretleri Indir penceresinde, **CSV 'Yi indir** ve **faturayı indir**' i tıklatın.
+Kullanımı + Ücretleri İndir penceresinde **CSV dosyasını indir**'e ve **Faturayı indir**'e tıklayın.
 
 ![Faturayı indir'i ve kullanım sayfasını gösteren ekran görüntüsü](./media/review-individual-bill/usageandinvoice.png)
 
-**Kullanılabilir değilse** , kullanım ayrıntılarını veya bir faturayı görmemenizi belirten birkaç neden vardır:
+**Kullanılamıyor** iletisiyle karşılaşırsanız kullanım verilerinin veya faturanın mevcut olmamasının birkaç nedeni olabilir:
 
 - Azure'a abone olmanızın üzerinden 30 gün geçmemiştir.
-- Fatura dönemi için kullanım yok.
-- Henüz bir fatura oluşturulmaz. Fatura döneminin sonuna kadar bekleyin.
-- Faturaları görüntüleme izniniz yoktur. Hesap yöneticisi olmadığınız takdirde eski faturaları görmeyebilirsiniz. Faturalama bilgilerine erişme hakkında daha fazla bilgi için bkz. [Rolleri kullanarak Azure faturalamasına erişimi yönetme](../manage/manage-billing-access.md).
+- Fatura dönemine ait kullanım yoktur.
+- Fatura henüz düzenlenmemiştir. Fatura döneminin sonuna kadar bekleyin.
+- Faturaları görüntüleme izniniz yoktur. Hesap Yöneticisi değilseniz eski faturaları göremezsiniz. Faturalama bilgilerine erişme hakkında daha fazla bilgi için bkz. [Rolleri kullanarak Azure faturalamasına erişimi yönetme](../manage/manage-billing-access.md).
 - Aboneliğinizde Ücretsiz Deneme sürümünüz veya aşmadığınız bir aylık kredi tutarınız varsa, Microsoft Müşteri Sözleşmeniz olmadığı sürece bir fatura almazsınız.
 
-Ardından, ücretleri gözden geçirin. Faturanızda vergiler ve kullanım ücretlerinizi gösteren değerler gösterilir.
+Sonraki adımda ücretleri gözden geçirin. Faturanızda vergiler ve kullanım ücretleriniz gösterilir.
 
-![Örnek Azure faturası](./media/review-individual-bill/invoice-usage-charge.png)
+![Azure Faturası Örneği](./media/review-individual-bill/invoice-usage-charge.png)
 
-İndirdiğiniz CSV kullanım dosyasını açın. Dosyanın sonunda, *Maliyet* sütunundaki tüm öğeler için değeri toplayın.
+İndirdiğiniz CSV kullanım dosyasını açın. Dosyanın sonunda, *Maliyet* sütunundaki tüm satırların değerini toplayın.
 
-![Toplanan maliyetli örnek kullanım dosyası](./media/review-individual-bill/usage-file-usage-charges.png)
+![Toplam maliyetin gösterildiği örnek kullanım dosyası](./media/review-individual-bill/usage-file-usage-charges.png)
 
- Toplanan *Maliyet* değeri, faturanızda *kullanım ücretleri* maliyetiyle tam olarak eşleşmelidir.
+ Toplam *Maliyet* değeri, faturanızdaki *kullanım ücretleri* maliyeti ile tam olarak aynı olmalıdır.
 
 Kullanım ücretleriniz ölçüm düzeyinde görüntülenir. Aşağıdaki terimler hem faturada hem de ayrıntılı kullanım dosyasında aynı anlama gelir. Örneğin faturadaki faturalama dönemi, ayrıntılı kullanım dosyasındaki faturalama dönemiyle aynıdır.
 
 | Fatura (PDF) | Ayrıntılı kullanım (CSV)|
 | --- | --- |
 |Fatura döngüsü | BillingPeriodStartDate BillingPeriodEndDate |
-|Ad |Ölçüm Kategorisi |
+|Adı |Ölçüm Kategorisi |
 |Tür |Ölçüm Alt Kategorisi |
 |Kaynak |MeterName |
 |Bölge |MeterRegion |
-|Tüketilen | Miktar |
-|Var |Dahil Edilen Miktar |
+|Kullanılan | Miktar |
+|Dahil |Dahil Edilen Miktar |
 |Faturalanabilir |Kapasite Aşım Miktarı |
-|Kur | EffectivePrice|
+|Fiyat | EffectivePrice|
 | Değer | Maliyet |
 
-Faturanızda **kullanım ücretleri** bölümü, fatura döneminize göre tüketilen her bir ölçüm için toplam değeri (maliyet) gösterir. Örneğin, aşağıdaki görüntüde *P10 diskler* kaynağı Için Azure Storage hizmeti 'nin kullanım ücreti gösterilmektedir.
+Faturanızın **Kullanım Ücretleri** bölümü, faturalama döneminiz boyunca kullanılan her ölçümün toplam değerini (maliyet) gösterir. Örneğin, aşağıdaki resimde Azure Depolama hizmetinin *P10 Diskleri* kaynağı için kullanım ücreti gösterilir.
 
 ![Fatura kullanım ücretleri](./media/review-individual-bill/invoice-usage-charges.png)
 
-CSV kullanım dosyanızda, faturada gösterilen ilgili kaynak için *MeterName* göre filtreleyin. Ardından, sütundaki öğelerin *Maliyet* değerini toplayın. Bir örneği aşağıda verilmiştir.
+CSV kullanım bilgileri dosyanıza *MeterName* filtresi uygulayarak faturanızda gösterilen kaynağa belirtin. Ardından sütundaki öğelerin *Maliyet* değerini toplayın. Bir örneği aşağıda verilmiştir.
 
-![MeterName için kullanım dosyası toplamı değeri](./media/review-individual-bill/usage-file-usage-charge-resource.png)
+![Kullanım dosyasının MeterName için toplam değeri](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 
-Toplanan *Maliyet* değeri, faturanızda ücretlendirilen tek kaynak için *kullanım ücretleri* maliyetine tam olarak eşleşmelidir.
+Özetlenen *Maliyet* değeri, faturanıza yansıtılan tek kaynağın *kullanım maliyetleri* ile aynı olmalıdır.
 
-Daha fazla bilgi için bkz. [Azure faturanızı anlayın](understand-invoice.md) ve [Azure ayrıntılı kullanımınızı anlayın](understand-usage.md).
+Daha fazla bilgi için bkz. [Azure faturanızı anlama](understand-invoice.md) ve [Azure ayrıntılı kullanımınızı anlama](understand-usage.md).
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>Maliyet analizinde ücretleri ve kullanımı karşılaştırın
+## <a name="compare-charges-and-usage-in-cost-analysis"></a>Ücretleri ve kullanımı maliyet analiziyle karşılaştırma
 
-Azure portal maliyet analizi, ücretlerinizi doğrulamanıza da yardımcı olabilir. Faturalanmış kullanımınız ve ücretlerinize hızlı bir genel bakış almak için Azure portal [abonelikler sayfasından](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) aboneliğinizi seçin. Ardından, **Maliyet Analizi** ' ne tıklayın ve ardından görünümler listesinden **Fatura Ayrıntıları**' na tıklayın.
+Azure portalındaki maliyet analizi de ücretlerinizi doğrulamanıza yardımcı olabilir. Faturaya yansıtılan kullanım ve ücretlerle ilgili genel bakış için Azure portalındaki [Abonelikler sayfasından](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) aboneliğinizi seçin. Ardından **Maliyet analizi**'ne ve daha sonra görünüm listesinde **Fatura ayrıntıları**'na tıklayın.
 
-![Fatura Ayrıntıları seçimini gösteren örnek](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
+![Fatura ayrıntıları seçimini gösteren örnek](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
-Sonra, tarih aralığı listesinde faturanızda bir zaman aralığı seçin. Fatura numarası için bir filtre ekleyin ve ardından faturanızdan eşleşen faturaya karşılık gelen fatura numarasını seçin. Maliyet analizi, faturalanmış öğelerinizin maliyet ayrıntılarını gösterir.
+Ardından tarih aralığı listesinde faturanız için bir tarih aralığı belirtin. Fatura numarasını filtre olarak ekleyin ve faturanızla eşleşen InvoiceNumber değerini seçin. Maliyet analizi, faturalanmış öğelerinizin maliyet ayrıntılarını gösterir.
 
 ![Maliyet analizinde faturalanmış maliyet ayrıntılarını gösteren örnek](./media/review-individual-bill/cost-analysis-service-usage-charges.png)
 
-Maliyet analizinde gösterilen maliyetlerin, faturanızda ücretlendirilen tek kaynak için *kullanım ücretleri* maliyetiyle tam olarak eşleşmesi gerekir.
+Maliyet analizinde gösterilen maliyetler, faturanıza yansıtılan tek kaynağın *kullanım maliyetleri* ile aynı olmalıdır.
 
 ![Fatura kullanım ücretleri](./media/review-individual-bill/invoice-usage-charges.png)
 
@@ -133,7 +133,7 @@ Dış hizmetlerin ücretleri ayrı faturalanır. Ücretler Azure faturanızda g�
 
 Azure doğrudan kaynak maliyetine göre faturalama yapmaz. Kaynağın ücretleri bir veya birden fazla ölçüm kullanılarak hesaplanır. Ölçümler, kaynağın yaşam süresi boyunca tüketilen kaynak kullanımını izlemek için kullanılır. Bu ölçümler daha sonra faturayı hesaplamak için kullanılır.
 
-Sanal makine gibi tek bir Azure kaynağı oluşturduğunuzda, bir veya daha fazla ölçüm örneği oluşturulur. Ölçümler, kaynağın zaman içinde kullanımını izlemek için kullanılır. Her ölçüm, Azure tarafından faturayı hesaplamak için kullanılan kullanım kayıtlarını üretir.
+Sanal makine gibi tek bir Azure kaynağı oluşturduğunuzda bu kaynağın bir veya birden fazla ölçüm örneği oluşturulur. Ölçümler, kaynağın zaman içinde kullanımını izlemek için kullanılır. Her ölçüm, Azure tarafından faturayı hesaplamak için kullanılan kullanım kayıtlarını üretir.
 
 Örneğin, Azure’da oluşturulan tek bir sanal makinenin (VM) kullanımını izlemek için aşağıdaki ölçümler oluşturulmuş olabilir:
 
@@ -150,11 +150,11 @@ Sanal makine gibi tek bir Azure kaynağı oluşturduğunuzda, bir veya daha fazl
 
 VM oluşturulduğunda her ölçüm kullanım kayıtları üretmeye başlar. Bu kullanım ve ölçümün fiyatı Azure ölçüm sisteminde izlenir.
 
-Kullanım CSV dosyasında faturanızı hesaplamak için kullanılan ölçüleri görebilirsiniz.
+CSV biçimindeki kullanım dosyanızda faturanızın hesaplanması için kullanılan ölçümleri görebilirsiniz.
 
 ## <a name="payment"></a>Faturanızı ödeme
 
-Ödeme yönteminiz olarak bir kredi kartı ayarlarsanız, faturalandırma dönemi sona erdikten sonra ödeme 10 gün içinde otomatik olarak ücretlendirilir. Kredi kartı hesap özetinizde satır öğesi **MSFT Azure** olarak görünür.
+Ödeme yönteminiz olarak bir kredi kartı ayarladıysanız ödeme faturalama döneminin bitişinden sonraki 10 gün içinde otomatik olarak ücretlendirilir. Kredi kartı hesap özetinizde satır öğesi **MSFT Azure** olarak görünür.
 
 Ücretlendirilen kredi kartını değiştirmek için bkz. [Azure’da kredi kartı ekleme, güncelleştirme veya kaldırma](../manage/change-credit-card.md).
 
@@ -167,10 +167,10 @@ Kullanım CSV dosyasında faturanızı hesaplamak için kullanılan ölçüleri 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Kullanım dosyası ile faturalanmış ücretleri karşılaştırın
-> * Maliyet analizinde ücretleri ve kullanımı karşılaştırın
+> * Faturadaki ücretleri kullanım dosyasıyla karşılaştırma
+> * Ücretleri ve kullanımı maliyet analiziyle karşılaştırma
 
-Maliyet analizini kullanmaya başlamak için hızlı başlangıcı doldurun.
+Maliyet analizini kullanmaya başlamak için hızlı başlangıcı tamamlayın.
 
 > [!div class="nextstepaction"]
 > [Maliyet analizini başlatma](../costs/quick-acm-cost-analysis.md)

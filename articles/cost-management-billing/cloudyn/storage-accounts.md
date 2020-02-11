@@ -1,71 +1,70 @@
 ---
-title: Depolama hesaplarını Azure Cloudyn için yapılandırma | Microsoft Docs
-description: Bu makalede, Azure depolama hesapları ve AWS depolama demet için Cloudyn nasıl yapılandırılacağını açıklar.
-services: cost-management
+title: Azure'da Cloudyn için depolama hesaplarını yapılandırma | Microsoft Docs
+description: Bu makalede Cloudyn için Azure depolama hesaplarını ve AWS depolama demetlerini yapılandırma adımları anlatılmaktadır.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 2a8f3645dcf2987d0c0a204e7e8a86cd6d718e47
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994876"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769951"
 ---
-# <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn depolama hesaplarını yapılandırma
+# <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn için depolama hesaplarını yapılandırma
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-Cloudyn portalında, Azure depolama veya AWS depolama demet Cloudyn raporlarını kaydedebilirsiniz. Cloudyn portalında raporlarınızı kaydetme ücretsizdir. Ancak, bulut hizmeti sağlayıcısının depolama alanına raporlarınızı kaydetme isteğe bağlıdır ve ek ücret doğurur. Bu makalede, Azure depolama hesapları ve raporlarınızı depolamak için depolama demetler Amazon Web Services (AWS) yapılandırmanıza yardımcı olur.
+Cloudyn raporlarını Cloudyn portalına, Azure depolama alanına veya AWS depolama demetlerine kaydedebilirsiniz. Raporlarınızı Cloudyn portalına kaydetmek ücretsizdir. Ancak raporlarınızı bulut hizmeti sağlayıcınızın depolama alanına kaydetmek isteğe bağlı ve ek ücrete tabidir. Bu makale, Azure depolama hesaplarınızı ve Amazon Web Services (AWS) depolama demetlerinizi raporlarınızı depolayacak şekilde yapılandırmanıza yardımcı olacaktır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir Azure depolama hesabı ya da bir Amazon depolama aralığı olmalıdır.
+Azure depolama hesabına veya Amazon depolama demetine sahip olmanız gerekir.
 
-Azure depolama hesabınız yoksa, oluşturmanız gerekir. Azure depolama hesabı oluşturma hakkında daha fazla bilgi için bkz. [depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
+Azure depolama hesabınız yoksa bir tane oluşturmanız gerekir. Azure depolama hesabı oluşturma hakkında daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
 
-AWS yoksa basit depolama hizmeti (S3 için) demetine bir oluşturmanız gerekir. Bir S3 demetini oluşturma hakkında daha fazla bilgi için bkz. [bir demet oluşturma](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+AWS Simple Storage Service (S3) demetiniz yoksa bir tane oluşturmanız gerekir. S3 demeti oluşturma hakkında daha fazla bilgi için bkz. [Demet oluşturma](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-## <a name="configure-your-azure-storage-account"></a>Azure depolama hesabınızı yapılandırın
+## <a name="configure-your-azure-storage-account"></a>Azure depolama hesabınızı yapılandırma
 
-Yapılandırdığınız Cloudyn tarafından kullanılmak üzere Azure depolama oldukça basittir. Depolama hesabı ayrıntılarını toplayın ve bunları Cloudyn portalında kopyalayın.
+Azure depolama hesabınızı Cloudyn tarafından kullanılacak şekilde yapılandırmak oldukça kolaydır. Depolama hesabıyla ilgili ayrıntılı bilgileri alın ve Cloudyn portalına kopyalayın.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-2. Tıklayın **tüm hizmetleri**seçin **depolama hesapları**, ardından hesabını seçin ve istediğiniz depolama hesabına gidin.
-3. Depolama hesabı sayfanıza altında **ayarları**, tıklayın **erişim anahtarlarını**.
-4. Kopyalama, **depolama hesabı adı** ve **bağlantı dizesi** key1 altında.  
-   ![Depolama hesabı adı ve bağlantı dizesini kopyalayın](./media/storage-accounts/azure-storage-access-keys.png)  
+2. **Tüm Hizmetler**'e tıklayın, **Depolama hesapları**'nı seçin, kullanmak istediğiniz depolama hesabını bulun ve seçin.
+3. Depolama hesabı sayfanızın **Ayarlar** bölümünde **Erişim Anahtarları**'na tıklayın.
+4. **Depolama hesabı adı** ve key1 altındaki **Bağlantı dizesi** bilgilerini kopyalayın.  
+   ![Depolama hesabı adı ve bağlantı dizesi bilgilerini kopyalayın](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com sayfasına gidip oturum açın.
-6. Dişli simgesine tıklayın ve ardından **raporları Depolama Yönetimi**.
-7. Tıklayın **yeni Ekle +** ve Microsoft Azure'nın seçili olduğundan emin olun. Azure depolama hesabı adınızı yapıştırın **adı** alan. Yapıştırma, **bağlantı dizesi** karşılık gelen alandaki. Bir kapsayıcı adı girin ve ardından **Kaydet**.  
-   ![Azure depolama hesabı adı ve bağlantı yeni bir rapor depolama Kutusu Ekle dize yapıştırın](./media/storage-accounts/azure-cloudyn-storage.png)
+6. Dişli simgesine tıklayıp **Rapor Depolama Alanı Yönetimi**'ni seçin.
+7. **Yeni ekle +** öğesine tıklayın ve Microsoft Azure'ın seçili olduğundan emin olun. **Ad** alanına Azure depolama hesabınızın adını yapıştırın. **Bağlantı dizenizi** ilgili alana yapıştırın. Bir kapsayıcı adı girin ve ardından **Kaydet**'e tıklayın.  
+   ![Azure depolama hesabı adını ve bağlantı dizesini yeni rapor depolama alanı ekle kutusuna yapıştırın](./media/storage-accounts/azure-cloudyn-storage.png)
 
-   Yeni Azure rapor depolama giriş depolama hesabı listesinde görüntülenir.  
-    ![Yeni Azure rapor depolama giriş listesi](./media/storage-accounts/azure-storage-entry.png)
+   Yeni Azure rapor depolama girişi, depolama hesabı listesinde görüntülenir.  
+    ![Listedeki yeni Azure rapor depolama girişi](./media/storage-accounts/azure-storage-entry.png)
 
 
-Raporları, artık Azure depolama alanına kaydedebilirsiniz. Herhangi bir raporda tıklayın **eylemleri** seçip **rapor zamanla**. Rapor adı ve ardından kendi URL ekleyebilir veya otomatik olarak oluşturulan URL'yi kullanın. Seçin **depolamaya kaydetme** ve ardından depolama hesabını seçin. Raporu dosya adına eklenmiş bir ön eki girin. CSV veya JSON dosya biçimi seçin ve ardından raporu kaydedin.
+Artık raporları Azure depolama alanına kaydedebilirsiniz. Herhangi bir rapor açıkken **Eylemler**'e tıklayın ve ardından **Raporu zamanla**'yı seçin. Rapora bir ad verin ve kendi URL'nizi ekleyin ya da otomatik olarak oluşturulan URL'yi kullanın. **Depolama alanına kaydet**'i ve depolama hesabını seçin. Rapor dosya adına eklenen bir ön ek girin. CSV veya JSON dosya biçimini seçin ve raporu kaydedin.
 
-## <a name="configure-an-aws-storage-bucket"></a>Bir AWS depolama aralığı yapılandırın
+## <a name="configure-an-aws-storage-bucket"></a>AWS depolama demeti yapılandırma
 
-Mevcut AWS kimlik bilgilerini Cloudyn kullanır: kullanıcı veya rol, raporları, demetine kaydetmek için. Erişimi test etmek için Cloudyn küçük bir metin dosyası için dosya adına sahip demet kaydetmeyi denediğinde _onay demet permission.txt_.
+Cloudyn mevcut AWS kimlik bilgilerini kullanır: Kullanıcı veya Rol ile raporları demetinize kaydeder. Cloudyn, erişimi test etmek için _check-bucket-permission.txt_ adlı küçük bir metin dosyasını demete kaydetmeye çalışır.
 
-Cloudyn rolü ya da kullanıcı PutObject izinle, demet için sağladığınız. Ardından, var olan bir demet kullanın veya raporları kaydetmek için yeni bir tane oluşturun. Son olarak, depolama sınıfı yönetmek, yaşam döngüsü kurallar veya gereksiz dosyaları kaldırın nasıl karar verin.
+Cloudyn rolüne veya kullanıcısına demetinizde PutObject iznini vermeniz gerekir. Ardından var olan bir demeti kullanabilir veya raporları kaydetmek için yeni bir tane oluşturabilirsiniz. Son olarak depolama sınıfını nasıl yöneteceğinizi belirleyebilir, yaşam döngüsü kuralları koyabilir veya gereksiz dosyaları kaldırabilirsiniz.
 
-###  <a name="assign-permissions-to-your-aws-user-or-role"></a>AWS kullanıcı veya rol izin atama
+###  <a name="assign-permissions-to-your-aws-user-or-role"></a>AWS kullanıcınıza veya rolünüze izin atama
 
-Yeni bir ilke oluşturduğunuzda, bir rapor için bir S3 demetini kaydetmek için gereken tam izinleri sağlar.
+Yeni bir ilke oluşturduğunuzda raporu S3 demetine kaydetmek için gerekli olan tam izinleri sağlarsınız.
 
-1. AWS konsolunda oturum açın ve seçin **Hizmetleri**.
-2. Seçin **IAM** hizmetler listesinden.
-3. Seçin **ilkeleri** konsolu ve ardından sol tarafındaki **ilke Oluştur**.
-4. Tıklayın **JSON** sekmesi.
-5. Aşağıdaki ilke bir rapor için bir S3 demetini kaydetmenize olanak tanır. Aşağıdaki ilke örneğini kopyalayıp **JSON** sekmesine yapıştırın. &lt;bucketname&gt; değerini demet adınızla değiştirin.
+1. AWS konsolunda oturum açın ve **Hizmetler**'i seçin.
+2. Hizmetler listesinde **IAM** girişini seçin.
+3. Konsolunun sol tarafında **İlkeler**'i seçin ve **İlke Oluştur**'a tıklayın.
+4. **JSON** sekmesine tıklayın.
+5. Aşağıdaki ilke, raporu bir S3 demetine kaydetmenizi sağlar. Aşağıdaki ilke örneğini kopyalayıp **JSON** sekmesine yapıştırın. &lt;bucketname&gt; değerini demetinizin adıyla değiştirin.
 
    ```json
    {
@@ -85,42 +84,42 @@ Yeni bir ilke oluşturduğunuzda, bir rapor için bir S3 demetini kaydetmek içi
    }
    ```
 
-6. Tıklayın **incelemesi İlkesi**.  
-    ![AWS JSON İlkesi örnek bilgiler gösteriliyor](./media/storage-accounts/aws-policy.png)  
-7. İnceleme İlkesi sayfasında, ilke için bir ad yazın. Örneğin, _CloudynSaveReport2S3_.
-8. Tıklayın **ilkesi oluşturma**.
+6. **İlkeyi gözden geçir**'e tıklayın.  
+    ![Örnek bilgileri gösteren AWS JSON ilkesi](./media/storage-accounts/aws-policy.png)  
+7. İlkeyi gözden geçir sayfasında ilkeniz için bir ad belirleyin. Örneğin, _CloudynSaveReport2S3_.
+8. **İlke oluştur**'a tıklayın.
 
-### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>İlkeyi bir Cloudyn rolü ya da kullanıcı hesabı ekleme
+### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>İlkeyi hesabınızdaki bir Cloudyn rolüne veya kullanıcısına ekleyin
 
-Yeni ilke eklemek için AWS konsolunu açın ve Cloudyn rolü ya da kullanıcı düzenleyin.
+Yeni ilkeyi eklemek için AWS konsolunu açın ve Cloudyn rolünü veya kullanıcısını düzenleyin.
 
-1. AWS konsolunda oturum açın ve seçin **Hizmetleri**, ardından **IAM** hizmetler listesinden.
-2. Şunlardan birini seçin **rolleri** veya **kullanıcılar** konsolun sol tarafındaki.
+1. AWS konsolunda oturum açın, **Hizmetler**'i ve ardından hizmetler listesinden **IAM** girişini seçin.
+2. Konsolun sol tarafından **Roller** veya **Kullanıcılar**'ı seçin.
 
 **Roller için:**
 
-  1. Cloudyn rol adınızı tıklatın.
-  2. Üzerinde **izinleri** sekmesinde **ekleme İlkesi**.
-  3. Arama için oluşturduğunuz ilke ve onu seçin ve ardından tıklayın **ekleme İlkesi**.
-    ![Cloudyn rolünüze bağlı örnek ilke](./media/storage-accounts/aws-attach-policy-role.png)
+  1. Cloudyn rolünün adına tıklayın.
+  2. **İzinler** sekmesinde **İlke Ekle**'ye tıklayın.
+  3. Oluşturduğunuz ilkeyi arayın, seçin ve ardından **İlke Ekle**'ye tıklayın.
+    ![Cloudyn rolünüze eklenen örnek ilke](./media/storage-accounts/aws-attach-policy-role.png)
 
 **Kullanıcılar için:**
 
-1. Cloudyn kullanıcı seçin.
-2. Üzerinde **izinleri** sekmesinde **izinleri eklemek**.
-3. İçinde **izni** bölümünden **mevcut ilkeleri doğrudan Ekle**.
-4. Arama için oluşturduğunuz ilke ve onu seçin ve ardından tıklayın **sonraki: gözden geçirme**.
-5. Rol adı sayfasına Ekle izinlerini tıklayın **izinleri eklemek**.  
-    ![Cloudyn kullanıcı için bağlı örnek ilke](./media/storage-accounts/aws-attach-policy-user.png)
+1. Cloudyn kullanıcısını seçin.
+2. **İzinler** sekmesinde **İzin ekle**'ye tıklayın.
+3. **İzin Ver** bölümünde **Mevcut ilkeleri doğrudan ekle**'yi seçin.
+4. Oluşturduğunuz ilkeyi arayın, seçin ve ardından **İleri: Gözden Geçir**'e tıklayın.
+5. Rol adına izin ekle sayfasında **İzin ekle**'ye tıklayın.  
+    ![Cloudyn kullanıcısına eklenen örnek ilke](./media/storage-accounts/aws-attach-policy-user.png)
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>İsteğe bağlı: demetine ilkesiyle izni ayarlayın
+### <a name="optional-set-permission-with-bucket-policy"></a>İsteğe bağlı: Demet ilkesiyle izin ayarlama
 
-Bir demet İlkesi'ni kullanarak, S3 demetini üzerinde raporlar oluşturma izni de ayarlayabilirsiniz. Klasik S3 Görünümü'nde:
+İsterseniz demet ilkesi kullanarak da S3 demetinizde rapor oluşturma izni verebilirsiniz. Klasik S3 görünümünde:
 
-1. Oluşturun veya mevcut bir aralığı seçin.
-2. Seçin **izinleri** sekmesine ve ardından **demetine ilke**.
-3. Aşağıdaki ilke örneği kopyalayıp yeniden açın. Değiştirin &lt;demet\_adı&gt; ve &lt;Cloudyn\_ilkesine&gt; , sepet, ARN ile. Cloudyn tarafından kullanılan kullanıcı veya rol ARN değiştirin.
+1. Demet oluşturun veya var olanlardan birini seçin.
+2. **İzinler** sekmesini seçip **Demet ilkesi**'ne tıklayın.
+3. Aşağıdaki örnek ilkeyi kopyalayıp yapıştırın. &lt;bucket\_name&gt; ve &lt;Cloudyn\_principle&gt; yerine demetinizin ARN değerini yazın. Cloudyn tarafından kullanılan rolün veya kullanıcının ARN değerini değiştirin.
 
    ```
    {
@@ -144,23 +143,23 @@ Bir demet İlkesi'ni kullanarak, S3 demetini üzerinde raporlar oluşturma izni 
    }
    ```
 
-4. Demet İlkesi Düzenleyicisi'nde tıklayın **Kaydet**.
+4. Demet ilke düzenleyicisinde **Kaydet**'e tıklayın.
 
-### <a name="add-aws-report-storage-to-cloudyn"></a>Cloudyn'e AWS rapor depolama ekleme
+### <a name="add-aws-report-storage-to-cloudyn"></a>Cloudyn'e AWS rapor depolama alanı ekleme
 
 1. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com sayfasına gidip oturum açın.
-2. Dişli simgesine tıklayın ve ardından **raporları Depolama Yönetimi**.
-3. Tıklayın **yeni Ekle +** ve AWS seçili olduğundan emin olun.
-4. Bir hesabı ve depolama aralığı seçin. AWS depolama demet adını otomatik olarak doldurulmuş bileşenidir.  
-    ![Örnek bilgiler, yeni bir rapor depolama Kutusu Ekle](./media/storage-accounts/aws-cloudyn-storage.png)  
-5. Tıklayın **Kaydet** ve ardından **Tamam**.
+2. Dişli simgesine tıklayıp **Rapor Depolama Alanı Yönetimi**'ni seçin.
+3. **Yeni ekle +** öğesine tıklayın ve AWS'nin seçili olduğundan emin olun.
+4. Bir hesap ve depolama demeti seçin. AWS depolama demetinin adı otomatik olarak doldurulur.  
+    ![Yeni rapor depolama alanı ekle kutusundaki örnek bilgiler](./media/storage-accounts/aws-cloudyn-storage.png)  
+5. **Kaydet**'e ve **Tamam**'a tıklayın.
 
-    Yeni AWS rapor depolama giriş depolama hesabı listesinde görüntülenir.  
-    ![Depolama giriş show depolama hesabı listesinde yeni AWS rapor](./media/storage-accounts/aws-storage-entry.png)
+    Yeni AWS rapor depolama girişi, depolama hesabı listesinde görüntülenir.  
+    ![Yeni AWS rapor depolama girişi, depolama hesabı listesinde gösterilir](./media/storage-accounts/aws-storage-entry.png)
 
 
-Raporları, artık Azure depolama alanına kaydedebilirsiniz. Herhangi bir raporda tıklayın **eylemleri** seçip **rapor zamanla**. Rapor adı ve ardından kendi URL ekleyebilir veya otomatik olarak oluşturulan URL'yi kullanın. Seçin **depolamaya kaydetme** ve ardından depolama hesabını seçin. Raporu dosya adına eklenmiş bir ön eki girin. CSV veya JSON dosya biçimi seçin ve ardından raporu kaydedin.
+Artık raporları Azure depolama alanına kaydedebilirsiniz. Herhangi bir rapor açıkken **Eylemler**'e tıklayın ve ardından **Raporu zamanla**'yı seçin. Rapora bir ad verin ve kendi URL'nizi ekleyin ya da otomatik olarak oluşturulan URL'yi kullanın. **Depolama alanına kaydet**'i ve depolama hesabını seçin. Rapor dosya adına eklenen bir ön ek girin. CSV veya JSON dosya biçimini seçin ve raporu kaydedin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme [anlama Cloudyn raporlarını](understanding-cost-reports.md) temel yapısını ve Cloudyn raporlarını işlevleri hakkında bilgi edinmek için.
+- Cloudyn raporlarının temel yapısı ve işlevleri hakkında bilgi edinmek için bkz. [Cloudyn raporlarını anlama](understanding-cost-reports.md).

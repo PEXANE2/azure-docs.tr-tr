@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
 ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988207"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
@@ -67,7 +67,7 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
 
 ## <a name="check-the-transfer-request-status"></a>Aktarım isteğinin durumunu denetleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
@@ -102,7 +102,7 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
    |İptal edildi|Aktarım isteğine erişimi olan birisi isteği iptal etti|
    |Reddedildi|Kullanıcı aktarım isteğini reddetti|
 
-6. Ayrıntılarını görüntülemek için bir aktarım isteği seçin. Aktarım ayrıntıları sayfasında aşağıdaki bilgiler görüntülenir: ![aktarılan Aboneliklerin listesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-transfer-completed.png)
+6. Ayrıntılarını görüntülemek için bir aktarım isteği seçin. Aktarım ayrıntıları sayfasında aşağıdaki bilgiler görüntülenir: ![Aktarılan aboneliklerin listesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-transfer-completed.png)
 
    |Sütun  |Tanım|
    |---------|---------|
@@ -122,7 +122,7 @@ Aşağıda listelenen abonelik türlerinin fatura sahipliğini isteyebilirsiniz.
 
 \* Kurumsal DevTest aboneliği, aktarım sonrasındaki kullandıkça öde fiyatından faturalandırılır ve Kurumsal DevTest teklifi ile müşterinin Kurumsal Anlaşmasında sunulan indirimler CSP iş ortağı tarafından kullanılamaz.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 Aşağıdaki bölümde, abonelik aktarma hakkında ek bilgiler sağlanır.
 
@@ -148,7 +148,7 @@ Azure rezervasyonları abonelikle birlikte otomatik olarak taşınmaz. Rezervasy
 
 ### <a name="access-to-azure-services"></a>Azure hizmetlerine erişim
 
-[Azure RBAC (rol tabanlı erişim denetimi)](../../role-based-access-control/overview.md) kullanılarak atanan mevcut kullanıcılar, gruplar veya hizmet sorumluları için erişim, geçiş sırasında etkilenmez. İş ortağı, aboneliklerde Yeni RBAC erişimi alamaz.  
+Mevcut kullanıcılar, gruplar veya hizmet sorumlularına [Azure RBAC (rol tabanlı erişim denetimi)](../../role-based-access-control/overview.md) kullanılarak atanan erişim, aktarım sırasında etkilenmez. İş ortağı, aboneliklere yeni bir RBAC erişimi elde etmez.  
 
 İş ortakları, aboneliklerle erişim elde etmek için müşteriyle birlikte çalışmalıdır.  İş ortaklarının [Adına Yönetici - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) veya [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) erişimi açık destek biletlerini alması gerekir.
 
@@ -181,7 +181,7 @@ Bu iki dizin eşleşmezse abonelikler aktarılamaz. Azure aboneliklerinin dizini
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft İş Ortağı Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

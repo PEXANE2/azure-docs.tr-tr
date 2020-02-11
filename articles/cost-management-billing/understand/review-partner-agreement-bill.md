@@ -1,6 +1,6 @@
 ---
-title: Microsoft Iş ortağı sözleşmenizin faturasını gözden geçirin-Azure
-description: Faturanızı ve kaynak kullanımınızı incelemeyi ve Microsoft Iş ortağı sözleşmesi faturanızda ücretleri doğrulamanızı öğrenin.
+title: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirme - Azure
+description: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirerek kaynak kullanımınızı incelemeyi ve ücretleri doğrulamayı öğrenin.
 author: jureid
 manager: jureid
 tags: billing
@@ -12,34 +12,34 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990846"
 ---
-# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Öğretici: Microsoft Iş ortağı sözleşmesi faturanızı gözden geçirin
+# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Öğretici: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirme
 
- Microsoft İş Ortağı Sözleşmesi'nin ödeme hesabında, her faturalama profili için ayda bir fatura oluşturulur. Fatura önceki aya ait tüm müşteri ücretlerini içerir. Azure portalında tek tek işlemleri analiz ederek faturanızdaki ücretleri anlayabilirsiniz. Ayrıca Azure portal faturanız görüntüleyebilir ve ücretleri kullanım ayrıntı dosyası ile karşılaştırabilirsiniz.
+ Microsoft İş Ortağı Sözleşmesi'nin ödeme hesabında, her faturalama profili için ayda bir fatura oluşturulur. Fatura önceki aya ait tüm müşteri ücretlerini içerir. Azure portalında tek tek işlemleri analiz ederek faturanızdaki ücretleri anlayabilirsiniz. Faturalarınızı Azure portalında da görüntüleyebilir ve ücretleri kullanım ayrıntıları dosyasıyla karşılaştırabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure portalından faturaları indirme](download-azure-invoice.md).
 
-Bu öğretici yalnızca bir Microsoft Iş ortağı sözleşmesi olan Azure iş ortakları için geçerlidir.
+Bu öğretici yalnızca Microsoft İş Ortağı Sözleşmesi olan Azure iş ortakları için geçerlidir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure portal faturalanmış işlemleri gözden geçirin
+> * Azure portalında faturalanmış işlemleri gözden geçirme
 > * Sonraki faturanızı tahmin etmek için bekleyen ücretleri gözden geçirme
 > * Azure kullanım ücretlerinizi analiz etme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Microsoft Iş ortağı sözleşmesi için bir faturalandırma hesabına erişiminizin olması gerekir.
+Microsoft İş Ortağı Sözleşmesi’ne ait bir ödeme hesabına erişiminizin olması gerekir.
 
-Azure 'a abone olduğunuz günden 30 günden daha uzun olmalıdır. Azure sizi fatura döneminizin sonunda faturalar.
+Azure'a abone olmanızın üzerinden en az 30 gün geçmiş olmalıdır. Azure sizi fatura döneminizin sonunda faturalar.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 - https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -47,21 +47,21 @@ Azure 'a abone olduğunuz günden 30 günden daha uzun olmalıdır. Azure sizi f
 
 Bir Microsoft İş Ortağı Sözleşmesi için ödeme hesabına erişiminiz olup olmadığını belirlemek için sözleşme türünü denetleyin.
 
-Azure portal, arama kutusuna *maliyet yönetimi + faturalandırma* yazın ve ardından **maliyet yönetimi + faturalandırma**' i seçin.
+Azure portalındaki arama kutusuna *maliyet yönetimi + faturalandırma* yazın ve **Maliyet Yönetimi + Faturalandırma**'yı seçin.
 
 ![Azure portalı aramasını gösteren ekran görüntüsü](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
 Yalnızca bir faturalama kapsamına erişiminiz varsa soldan **Özellikler**’i seçin. Ödeme hesabı türü **Microsoft İş Ortağı Sözleşmesi** olursa, bir Microsoft İş Ortağı Sözleşmesi için ödeme hesabına erişiminiz olur.
 
-![Özellikler sayfasında Microsoft Iş ortağı sözleşmesi 'Ni gösteren ekran görüntüsü](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
+![Özellikler sayfasında Microsoft İş Ortağı Sözleşmesi'ni gösteren ekran görüntüsü](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
 Birden çok faturalama kapsamına erişiminiz varsa, ödeme hesabı sütunundaki türü denetleyin. Herhangi bir kapsamın ödeme hesabı türü **Microsoft İş Ortağı Sözleşmesi** ise bir Microsoft İş Ortağı Sözleşmesi için ödeme hesabına erişiminiz olur.
 
-![Faturalandırma hesabı liste sayfasında Microsoft Iş ortağı Sözleşmesi ' ni gösteren ekran görüntüsü](./media/review-partner-agreement-bill/mpa-in-the-list.png)
+![Ödeme hesabı liste sayfasında Microsoft İş Ortağı Sözleşmesi'ni gösteren ekran görüntüsü](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
-## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Azure portal faturalanmış işlemleri gözden geçirin
+## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Azure portalında faturalanmış işlemleri gözden geçirme
 
-Maliyet yönetimi + Faturalandırma bölümünde sayfanın sol tarafındaki **tüm işlemler** ' i seçin. Erişiminize bağlı olarak, bir ödeme hesabı, faturalama profili veya müşteri seçmeniz ve sonra da **Tüm işlemler** seçeneğini belirlemeniz gerekebilir.
+Maliyet Yönetimi + Faturalandırma sayfasının sol tarafında **Tüm işlemler**'i seçin. Erişiminize bağlı olarak, bir ödeme hesabı, faturalama profili veya müşteri seçmeniz ve sonra da **Tüm işlemler** seçeneğini belirlemeniz gerekebilir.
 
 Tüm işlemler sayfasında aşağıdaki bilgiler görüntülenir:
 
@@ -73,11 +73,11 @@ Tüm işlemler sayfasında aşağıdaki bilgiler görüntülenir:
 |Fatura kimliği     | İşlemin faturalandığı faturanın tanımlayıcısı. Destek isteği gönderiyorsanız, destek isteğinizi hızlandırmak için Azure desteğiyle bu kimliği paylaşın |
 |İşlem türü     |  Satın alma, iptal ve kullanım ücretleri gibi işlemin türü  |
 |Ürün ailesi     | Sanal makine için işlem veya Azure SQL veritabanı için veritabanı gibi ürünün kategorisi|
-|Ürün SDKU     | Ürününüzün örneğini tanımlayan benzersiz kod |
+|Ürün SDKU'su     | Ürününüzün örneğini tanımlayan benzersiz kod |
 |Miktar     |  İşlem miktarı      |
 |Faturalama profili     | İşlem bu faturalama profili faturasında gösterilir |
 
-Faturaya yönelik işlemleri filtrelemek için bir fatura KIMLIĞI arayın.
+Faturanın işlemlerini filtrelemek için fatura kimliği araması yapın.
 
 ## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>Sonraki faturanızı tahmin etmek için bekleyen ücretleri gözden geçirme
 
@@ -87,7 +87,7 @@ Faturaya yönelik işlemleri filtrelemek için bir fatura KIMLIĞI arayın.
 
 Bekleyen ücretleri belirlediğinizde, ücretlere katkıda bulunan tek tek işlemleri analiz ederek ücretleri anlayabilirsiniz. Bu noktada, Tüm işlemler sayfasında bekleyen kullanım ücretleri görüntülenmez. Bekleyen kullanım ücretlerini Azure abonelikler sayfasında görüntüleyebilirsiniz.
 
-Maliyet yönetimi + Faturalandırma ' de bir faturalandırma profili seçin. Erişiminize bağlı olarak, bir ödeme hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından bir faturalama profili seçin.
+Maliyet Yönetimi + Faturalandırma sayfasında bir faturalama profili seçin. Erişiminize bağlı olarak, bir ödeme hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından bir faturalama profili seçin.
 
 Sayfanın sol tarafında **Tüm işlemler**'i seçin.
 
@@ -97,7 +97,7 @@ Sayfanın sol tarafında **Tüm işlemler**'i seçin.
 
 ### <a name="view-pending-charges-by-customer"></a>Müşteriye göre beklemedeki ücretleri görüntüleme
 
-Maliyet yönetimi + Faturalandırma ' de bir faturalandırma profili seçin. Erişiminize bağlı olarak, bir ödeme hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından bir faturalama profili seçin.
+Maliyet Yönetimi + Faturalandırma sayfasında bir faturalama profili seçin. Erişiminize bağlı olarak, bir ödeme hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından bir faturalama profili seçin.
 
 Sayfanın sol tarafından **Müşteriler**’i seçin.
 
@@ -107,7 +107,7 @@ Müşteriler sayfasında, faturalama profili ile ilişkili her müşteri için g
 
 ### <a name="view-pending-usage-charges"></a>Bekleyen kullanım ücretlerini görüntüleme
 
-Maliyet yönetimi + Faturalandırma ' de bir faturalandırma profili seçin. Erişiminize bağlı olarak, bir ödeme hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından bir faturalama profili seçin.
+Maliyet Yönetimi + Faturalandırma sayfasında bir faturalama profili seçin. Erişiminize bağlı olarak, bir ödeme hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından bir faturalama profili seçin.
 
 Sayfanın sol tarafından **Azure abonelikleri**'ni seçin. Azure abonelikleri sayfasında, faturalama profilindeki her abonelik için geçerli ayın ve geçen ayın ücretleri görüntülenir. Ayın başından bugüne kadarki ücretler geçerli ay için bekleyen ücretlerdir ve aya ait fatura oluşturulduğunda faturalandırılır. Geçen ayın faturası henüz oluşturulmadıysa geçen ayın ücretleri de beklemededir.
 
@@ -130,11 +130,11 @@ Faturanızı zaten ödediyseniz Azure portalındaki Faturalar sayfasında ödeme
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure portal faturalanmış işlemleri gözden geçirin
+> * Azure portalında faturalanmış işlemleri gözden geçirme
 > * Sonraki faturanızı tahmin etmek için bekleyen ücretleri gözden geçirme
 > * Azure kullanım ücretlerinizi analiz etme
 
-İş ortakları için Azure maliyet yönetimi 'ni kullanma hakkında bilgi edinin.
+İş ortakları için Azure Maliyet Yönetimi'ni kullanma hakkında bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama](../costs/get-started-partners.md)
+> [İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama](../costs/get-started-partners.md)

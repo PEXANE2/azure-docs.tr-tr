@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: GÇ Önbellek ile önbelleğe almayı etkinleştirme
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Jar bağımlılıklarını yönetme
+              href: ./spark/manage-jar-dependency.md
             - name: Not defterlerini Apache Spark ile kullanma
               items:
                 - name: Yerel Jupyter not defterini kullanma

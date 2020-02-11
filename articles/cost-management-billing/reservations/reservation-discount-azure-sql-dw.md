@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76313935"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı için rezervasyon indirimleri nasıl uygulanır?
@@ -31,13 +31,13 @@ Tam bir saat boyunca çalıştırılmayan ambarlar için rezervasyon, o saatteki
 
 Aşağıdaki örneklerde, dağıtımlara bağlı olarak SQL Veri Ambarı ayrılmış kapasite indiriminin nasıl uygulandığı gösterilmektedir.
 
-- **Örnek 1**: 100 cdwu ayrılmış kapasitesi 5 birim satın alabilirsiniz. Bir saat boyunca bir DW1500c SQL Veri Ambarı örneği çalıştırırsınız. Bu durumda, 15 birim 100 cDWU kullanımı gösterilir. Rezervasyon indirimi, kullandığınız 5 birime uygulanır. Kullandığınız kalan 10 birim 100 cDWU kullanımı için kullandıkça öde fiyatları kullanılarak ücretlendirilirsiniz. Diğer bir deyişle, çok sayıda ayırma için kısmi kapsam mümkündür.
+- **Örnek 1**: 5 birim 100 cDWU ayrılmış kapasite satın alırsınız. Bir saat boyunca bir DW1500c SQL Veri Ambarı örneği çalıştırırsınız. Bu durumda, 15 birim 100 cDWU kullanımı gösterilir. Rezervasyon indirimi, kullandığınız 5 birime uygulanır. Kullandığınız kalan 10 birim 100 cDWU kullanımı için kullandıkça öde fiyatları kullanılarak ücretlendirilirsiniz. Diğer bir deyişle, birden çok rezervasyon için kısmi kapsam mümkündür.
 
-- **Örnek 2**: 100 cdwu ayrılmış kapasitesi 5 birim satın alabilirsiniz. Bir saat boyunca iki DW100c SQL Veri Ambarı örneğini çalıştırırsınız. Bu durumda, 1 birim 100 cDWU kullanımı için iki kullanım olayı gösterilir. Her iki kullanım olayı da ayrılmış kapasite indirimi alır. Kalan 3 birim 100 cDWU ayrılmış kapasitesi boş gider ve gelecekte kullanılmak üzere devredilmez. Diğer bir deyişle, tek bir ayırma birden çok SQL veri ambarı örneğiyle eşleştirilebilir.
+- **Örnek 2**: 5 birim 100 cDWU ayrılmış kapasite satın alırsınız. Bir saat boyunca iki DW100c SQL Veri Ambarı örneğini çalıştırırsınız. Bu durumda, 1 birim 100 cDWU kullanımı için iki kullanım olayı gösterilir. Her iki kullanım olayı da ayrılmış kapasite indirimi alır. Kalan 3 birim 100 cDWU ayrılmış kapasitesi boş gider ve gelecekte kullanılmak üzere devredilmez. Diğer bir deyişle, tek bir rezervasyon birden çok SQL Veri Ambarı örneğiyle eşleştirilebilir.
 
-- **Örnek 3**: 100 cdwu ayrılmış kapasitesi için 1 birim satın alabilirsiniz. İki DW100c SQL Veri Ambarı örneğini çalıştırırsınız. Her biri 30 dakika boyunca çalışır. Bu durumda her iki kullanım olayı da ayrılmış kapasite indirimi alır. Kullandıkça öde fiyatları kullanılarak bir kullanım ücretlendirilmez.
+- **Örnek 3**: 1 birim 100 cDWU ayrılmış kapasitesi satın alırsınız. İki DW100c SQL Veri Ambarı örneğini çalıştırırsınız. Her biri 30 dakika boyunca çalışır. Bu durumda her iki kullanım olayı da ayrılmış kapasite indirimi alır. Kullandıkça öde fiyatları kullanılarak bir kullanım ücretlendirilmez.
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
 - Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

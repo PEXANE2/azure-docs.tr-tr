@@ -1,6 +1,6 @@
 ---
-title: Azure maliyet yönetimi kapsamlarını anlayın ve bunlarla çalışın
-description: Bu makale, Azure 'da kullanılabilen faturalandırma ve kaynak yönetimi kapsamlarını anlamanıza ve maliyet yönetimi ve API 'lerde kapsamları nasıl kullanacağınızı anlamanıza yardımcı olur.
+title: Azure Maliyet Yönetimi kapsamlarını anlama ve bunlarla çalışma
+description: Bu makale, Azure'da sunulan faturalandırma ve kaynak yönetimi kapsamlarını anlamanıza ve bu kapsamları Maliyet Yönetimi ile API'lerde kullanmanıza yardımcı olmayı amaçlamaktadır.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,245 +11,245 @@ ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: 58bd1d3e3fb27344706b23866a68c7e1363e7ec2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990144"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
-Bu makale, Azure 'da kullanılabilen faturalandırma ve kaynak yönetimi kapsamlarını anlamanıza ve maliyet yönetimi ve API 'lerde kapsamları nasıl kullanacağınızı anlamanıza yardımcı olur.
+Bu makale, Azure'da sunulan faturalandırma ve kaynak yönetimi kapsamlarını anlamanıza ve bu kapsamları Maliyet Yönetimi ile API'lerde kullanmanıza yardımcı olmayı amaçlamaktadır.
 
 ## <a name="scopes"></a>Kapsamlar
 
-_Kapsam_ , Azure AD kullanıcılarının Hizmetlere erişen ve Hizmetleri yönetmesine sonra Azure kaynak hiyerarşisindeki bir düğümdür. Çoğu Azure kaynağı, aboneliklerinin bir parçası olan kaynak gruplarına oluşturulup dağıtılır. Microsoft, faturalandırma verilerini yönetmek için özel rollere sahip Azure aboneliklerinin üzerinde de iki hiyerarşi sunar:
+_Kapsam_, Azure AD kullanıcılarının hizmetlere eriştiği ve bunları yönettiği Azure kaynak hiyerarşisindeki düğümlerden biridir. Çoğu Azure kaynağı, aboneliklere ait olan kaynak grupları içinde oluşturulur ve dağıtılır. Microsoft ayrıca faturalandırma verilerini yönetmek için Azure aboneliklerinin üzerinde özel rollere sahip olan iki hiyerarşi sunmaktadır:
 - Ödemeler ve faturalar gibi faturalandırma verileri
-- Maliyet ve ilke yönetimi gibi bulut Hizmetleri
+- Maliyet ve ilke idaresi gibi bulut hizmetleri
 
-Kapsam, faturalandırma verilerini yönettiğiniz, ödemelere özgü rollere sahip olan roller, faturaları görüntüleme ve genel hesap yönetimi yürütme yerdir. Faturalandırma ve hesap rolleri, [Azure RBAC](../../role-based-access-control/overview.md)kullanan kaynak yönetimi için kullanılanlardan ayrı olarak yönetilir. Erişim denetimi farklılıkları da dahil olmak üzere ayrı kapsamların amacını açıkça ayırt etmek için, bunlar sırasıyla _faturalandırma kapsamları_ ve _RBAC kapsamları_olarak adlandırılır.
+Kapsamlar; faturalandırma verilerini yönetmenizi, ödemelere özgü rollere sahip olmanızı, faturaları görüntülemenizi ve genel hesap yönetimi işlemlerini yaptığınız yerdir. Faturalama ve hesap rolleri, kaynak yönetimi için kullanılan ve [Azure RBAC](../../role-based-access-control/overview.md) kullanan kapsamlardan ayrı yönetilir. Erişim denetimi farklılıkları dahil olmak üzere ayrı kapsamların amacını net bir şekilde belirlemek için _faturalama kapsamları_ ve _RBAC kapsamları_ şeklinde kullanılır.
 
-## <a name="how-cost-management-uses-scopes"></a>Maliyet yönetimi kapsamları nasıl kullanır
+## <a name="how-cost-management-uses-scopes"></a>Maliyet Yönetimi kapsamları nasıl kullanır?
 
-Maliyet yönetimi, kuruluşların, tüm faturalama hesabı ya da tek bir kaynak grubu olmak üzere erişim sahibi oldukları düzeyde maliyetleri yönetmesine olanak tanımak için kaynakların üzerindeki tüm kapsamlar üzerinde çalışmaktadır. Faturalama kapsamları Microsoft anlaşmanıza (abonelik türü) göre farklılık gösterir, ancak RBAC kapsamları desteklemez.
+Maliyet Yönetimi, ödeme hesabının tamamı veya tek bir kaynak grubu fark etmeksizin kuruluşların maliyetleri erişim sağladıkları düzeyde yönetmelerini sağlamak için kaynakların üzerindeki tüm kapsamlarda çalışır. Faturalama kapsamları Microsoft sözleşmenize (abonelik türüne) bağlı olsa da RBAC kapsamları her zaman aynıdır.
 
 ## <a name="azure-rbac-scopes"></a>Azure RBAC kapsamları
 
-Azure, kaynak yönetimi için üç kapsamı destekler. Her kapsam, maliyet yönetimi dahil ancak bunlarla sınırlı olmamak üzere erişim ve idare yönetimini destekler.
+Azure, kaynak yönetimi için üç kapsamı destekler. Her bir kapsam, maliyet yönetimi dahil olmak ancak bununla sınırlı olmamak üzere erişim ve idare yönetimini destekler.
 
-- Azure aboneliklerini düzenlemek için, [**Yönetim grupları**](../../governance/management-groups/overview.md) -en fazla sekiz düzey olan hiyerarşik kapsayıcılar.
+- [**Yönetim grupları**](../../governance/management-groups/overview.md): Azure aboneliklerini düzenlemek için kullanılan ve en fazla sekiz düzeye kadar çıkan hiyerarşik kapsayıcılardır.
 
-    Kaynak türü: [Microsoft. Management/managementGroups](/rest/api/resources/managementgroups)
+    Kaynak türü: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 
-- **Abonelikler** -Azure kaynakları için birincil kapsayıcılar.
+- **Abonelikler**: Azure kaynaklarına yönelik birincil kapsayıcılardır.
 
-    Kaynak türü: [Microsoft. resources/abonelikler](/rest/api/resources/subscriptions)
+    Kaynak türü: [Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
 
-- [**Kaynak grupları**](../../azure-resource-manager/management/overview.md#resource-groups) -aynı yaşam döngüsünü paylaşan bir Azure çözümü için ilgili kaynakların mantıksal gruplandırmaları. Örneğin, birlikte dağıtılan ve silinen kaynaklar.
+- [**Kaynak grupları**](../../azure-resource-manager/management/overview.md#resource-groups): Bir Azure çözümünün aynı yaşam döngüsünü paylaşan kaynaklarından oluşan mantıksal gruplardır. Bu kaynaklar birlikte dağıtılıp birlikte silinebilir.
 
-    Kaynak türü: [Microsoft. resources/abonelikler/resourceGroups](/rest/api/resources/resourcegroups)
+    Kaynak türü: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
-Yönetim grupları, abonelikleri bir hiyerarşiye düzenlemenizi sağlar. Örneğin, Yönetim gruplarını kullanarak bir mantıksal kuruluş hiyerarşisi oluşturabilirsiniz. Ardından, üretim ve geliştirme/test iş yükleri için takımlar abonelikleri verin. Ve sonra her bir alt sistemi veya bileşeni yönetmek için aboneliklerde kaynak grupları oluşturun.
+Yönetim grupları, abonelikleri bir hiyerarşi altında düzenlemenizi sağlar. Örneğin yönetim gruplarını kullanarak mantıksal bir kuruluş hiyerarşisi oluşturabilirsiniz. Ardından ekiplerinize üretim ile geliştirme ve test iş yükleri için abonelik verebilirsiniz. Daha sonra aboneliklerde her bir alt sistemi veya bileşeni yönetmek için kaynak grupları oluşturabilirsiniz.
 
-Kuruluş hiyerarşisi oluşturmak, maliyet ve ilke uyumluluğu toplaması kuruluş sağlar. Ardından, her öncü geçerli maliyetlerini görüntüleyebilir ve analiz edebilir. Daha sonra, ücretsiz harcama desenleri oluşturmak ve en düşük düzeyde danışman önerileriyle maliyetleri iyileştirmek için bütçeleri oluşturabilir.
+Kuruluş hiyerarşisi oluşturmak, maliyet ve ilke uyumluluğunun kuruluş genelinde yerleşmesini sağlar. Bu sayede her lider kendi maliyetlerini görüntüleyebilir ve analiz edebilir. Bu liderler daha sonra Danışman önerileriyle en alt düzeyde verimsiz harcama düzenlerini düzeltmek ve maliyetleri iyileştirmek için bütçe oluşturabilirler.
 
-Maliyetleri görüntüleme ve isteğe bağlı olarak bütçe ve dışarı aktarma gibi maliyet konfigürasyonunu yönetme erişimi verme, Azure RBAC kullanılarak idare kapsamları üzerinde gerçekleştirilir. Belirli bir kapsamdaki ve aşağıdaki bir rolde tanımlanmış bir dizi önceden tanımlanmış eylem kümesi gerçekleştirmek için Azure RBAC 'yi Azure AD kullanıcılarına ve gruplarına erişim sağlamak üzere kullanırsınız. Örneğin, bir yönetim grubu kapsamına atanan bir rol, iç içe abonelikler ve kaynak grupları için de aynı izinleri verir.
+Maliyetleri görüntüleme ve isteğe bağlı olarak bütçeler ve dışarı aktarma işlemleri gibi maliyet yapılandırmasını yönetme erişimi verme işlemleri, Azure RBAC ile idare kapsamlarında gerçekleştirilir. Azure RBAC'yi kullanarak Azure AD kullanıcılarına ve gruplarına belirli bir kapsamda ve altında belirli bir rol için tanımlanmış olan önceden belirlenmiş eylemleri gerçekleştirme erişimi verebilirsiniz. Örneğin yönetim grubu kapsamında atanan bir rol, aynı izinleri iç içe yerleştirilmiş aboneliklere ve kaynak gruplarına da verir.
 
-Maliyet yönetimi aşağıdaki kapsamların her biri için aşağıdaki yerleşik rolleri destekler:
+Maliyet Yönetimi, aşağıdaki kapsamlar için aşağıda belirtilen yerleşik rolleri destekler:
 
-- [**Sahip**](../../role-based-access-control/built-in-roles.md#owner) – maliyet yapılandırması dahil olmak üzere maliyetleri görüntüleyebilir ve her şeyi yönetebilir.
-- [**Katkıda bulunan**](../../role-based-access-control/built-in-roles.md#contributor) – maliyet yapılandırması dahil, ancak erişim denetimi hariç olmak üzere maliyetleri görüntüleyebilir ve her şeyi yönetebilir.
-- [**Okuyucu**](../../role-based-access-control/built-in-roles.md#reader) – maliyet verileri ve yapılandırma dahil olmak üzere her şeyi görüntüleyebilir, ancak herhangi bir değişiklik yapamaz.
-- [**Maliyet yönetimi katılımcısı**](../../role-based-access-control/built-in-roles.md#cost-management-contributor) – maliyetleri görüntüleyebilir, maliyet yapılandırmasını yönetebilir ve önerileri görüntüleyebilirsiniz.
-- [**Maliyet yönetimi okuyucusu**](../../role-based-access-control/built-in-roles.md#cost-management-reader) – maliyet verilerini, maliyet yapılandırmasını görüntüleyebilir ve önerileri görüntüleyebilirsiniz.
+- [**Sahip**](../../role-based-access-control/built-in-roles.md#owner): Maliyetleri görüntüleyebilir ve maliyet yapılandırması da dahil olmak üzere her şeyi yönetebilir.
+- [**Katkıda bulunan**](../../role-based-access-control/built-in-roles.md#contributor): Maliyetleri görüntüleyebilir ve maliyet yapılandırması dahil, ancak erişim denetimi hariç olmak üzere her şeyi yönetebilir.
+- [**Okuyucu**](../../role-based-access-control/built-in-roles.md#reader): Maliyet verileri ve yapılandırma da dahil olmak üzere her şeyi görüntüleyebilir, ancak herhangi bir değişiklik yapamaz.
+- [**Maliyet Yönetimi Katkıda Bulunanı**](../../role-based-access-control/built-in-roles.md#cost-management-contributor): Maliyetleri görüntüleyebilir, maliyet yapılandırmasını yönetebilir ve önerileri görüntüleyebilir.
+- [**Maliyet Yönetimi Okuyucusu**](../../role-based-access-control/built-in-roles.md#cost-management-reader): Maliyet verilerini, maliyet yapılandırmasını ve önerileri görüntüleyebilir.
 
-Maliyet yönetimi katılımcısı, önerilen en düşük ayrıcalıklı roldür. Kullanıcıların bütçeleri oluşturup yönetmesine ve maliyetleri daha etkin bir şekilde izlemelerine ve rapor etmesine olanak tanır. Maliyet yönetimi katılımcıları, uçtan uca maliyet yönetimi senaryolarını desteklemek için ek roller de gerektirebilir. Aşağıdaki senaryoları göz önünde bulundurun:
+Maliyet Yönetimi Katkıda Bulunanı, önerilen en düşük ayrıcalıklı roldür. İnsanlara maliyetleri daha etkili şekilde izlemek ve raporlamak için bütçe ve dışarı aktarım oluşturma ve yönetme erişimi sağlar. Maliyet Yönetimi Katkıda Bulunanları, uçtan uca maliyet yönetimi senaryolarını destekleyecek ek rollere de ihtiyaç duyabilir. Aşağıdaki senaryoları göz önünde bulundurun:
 
-- **Bütçeler aşıldığında davran** – maliyet yönetimi katkıda bulunanlar Ayrıca fazla kullanım için otomatik olarak tepki vermek üzere eylem grupları oluşturma ve/veya yönetme erişimi de gerektirir. Bütçe eşikleri aşıldığında kullanılacak eylem grubunu içeren bir kaynak grubuna [Izleme katılımcısı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vermeyi göz önünde bulundurun. Belirli eylemlerin otomatikleştirilmesi, otomasyon ve Azure Işlevleri gibi, kullanılan belirli hizmetler için ek roller gerektirir.
-- **Maliyet verilerinin dışarı aktarılmasını zamanla** – maliyet yönetimi katılımcıları, verileri bir depolama hesabına kopyalamak üzere bir dışarı aktarma zamanlamak için depolama hesaplarını yönetme erişimi de gerektirir. Maliyet verilerinin aktarılacağı depolama hesabını içeren bir kaynak grubuna [depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) vermeyi göz önünde bulundurun.
-- Maliyet **tasarrufu önerilerini görüntüleme** – maliyet yönetimi okuyucuları ve maliyet yönetimi katılımcıları, maliyet önerilerini varsayılan olarak *görüntüleme* erişimine sahiptir. Ancak, maliyet önerilerinde işlem için erişim, tek tek kaynaklara erişim gerektirir. Maliyet tabanlı bir öneri üzerinde işlem yapmak istiyorsanız [hizmete özgü bir rol](../../role-based-access-control/built-in-roles.md#built-in-role-descriptions) vermeyi göz önünde bulundurun.
+- **Bütçeler aşıldığında harekete geçme**: Maliyet Yönetimi Katkıda Bulunanlarının fazla kullanım durumlarına otomatik olarak müdahale edebilmek için eylem grubu oluşturma ve/veya yönetme izinlerine de sahip olması gerekir. Bütçe eşikleri aşıldığında kullanılacak eylem grubunu içeren kaynak grubuna [İzleme Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) iznini verebilirsiniz. Belirli eylemlerin otomatikleştirilmesi için Otomasyon ve Azure İşlevleri gibi kullanılan hizmetlere özgü ek rollere ihtiyaç duyulur.
+- **Maliyet verilerini dışarı aktarmayı zamanlama**: Maliyet Yönetimi Katkıda Bulunanlarının, verileri depolama hesabına kopyalamak üzere bir dışarı aktarma işlemi zamanlamak için depolama hesaplarını yönetme izinlerine de sahip olması gerekir. Maliyet verilerinin dışarı aktarıldığı depolama hesabını içeren kaynak grubuna [Depolama Hesabı Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) iznini verebilirsiniz.
+- **Maliyet tasarrufu önerilerini görüntüleme**: Maliyet Yönetimi Okuyucuları ve Maliyet Yönetimi Katkıda Bulunanları, varsayılan olarak maliyet önerilerini *görüntüleme* erişimine sahiptir. Ancak maliyet önerilerine göre işlem yapmak için ilgili kaynaklar üzerinde erişim sahibi olmaları gerekir. Maliyet tabanlı önerilere göre hareket etmek istiyorsanız [hizmete özgü bir rol](../../role-based-access-control/built-in-roles.md#built-in-role-descriptions) atamayı düşünebilirsiniz.
 
 ## <a name="enterprise-agreement-scopes"></a>Kurumsal Anlaşma kapsamları
 
-Kayıt olarak da bilinen Kurumsal Anlaşma (EA) Faturalandırma hesapları aşağıdaki kapsamlara sahiptir:
+Kayıt olarak da adlandırılan Kurumsal Anlaşma (EA) ödeme hesapları iki kapsama sahiptir:
 
-- [**Faturalandırma hesabı**](../manage/view-all-accounts.md) -bir EA kaydını temsil eder. Faturalar bu kapsamda oluşturulur. Market ve rezervasyonlar gibi kullanım tabanlı olmayan satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Departmanlar veya kayıt hesaplarında temsil edilmez.
+- [**Ödeme hesabı**](../manage/view-all-accounts.md): Bir EA kaydını temsil eder. Faturalar bu kapsamda oluşturulur. Market ve rezervasyonlar gibi kullanım tabanlı olmayan satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Bunlar departmanlarda veya kayıt hesaplarında temsil edilmez.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
-- **Departman** -isteğe bağlı kayıt hesapları gruplandırması.
+- **Departman**: İsteğe bağlı kayıt hesapları gruplaması.
 
     Kaynak türü: `Billing/billingAccounts/departments`
 
-- **Kayıt hesabı** -tek bir hesap sahibini temsil eder. Birden çok kişiye erişim vermeyi desteklemez.
+- **Kayıt hesabı**: Tek bir hesap sahibini temsil eder. Birden çok kişiye erişim vermeyi desteklemez.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
-İdare kapsamları tek bir dizine bağlansa da, EA faturalandırma kapsamları değildir. Bir EA faturalandırma hesabının herhangi bir sayıda Azure AD dizininde aboneliği olabilir.
+İdare kapsamları tek bir dizine bağlıdır ancak EA faturalama kapsamları öyle değildir. Bir EA ödeme hesabı, farklı Azure AD dizinlerinde birden fazla aboneliğe sahip olabilir.
 
-EA faturalandırma kapsamları aşağıdaki rolleri destekler:
+EA faturalama kapsamları şu rolleri destekler:
 
-- **Kurumsal Yönetici** – faturalandırma hesabı ayarlarını ve erişimini yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, EA faturalandırma kapsamı, [maliyet yönetimi katılımcısı Azure RBAC rolüyle](../../role-based-access-control/built-in-roles.md#cost-management-contributor)aynıdır.
-- **Kurumsal salt okunurdur Kullanıcı** – faturalandırma hesabı ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, EA faturalandırma kapsamı, [maliyet yönetimi okuyucusu Azure RBAC rolüyle](../../role-based-access-control/built-in-roles.md#cost-management-reader)aynıdır.
-- **Departman Yöneticisi** – maliyet merkezi gibi departman ayarlarını yönetebilir ve erişim sağlayabilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Örneğin, bütçeler ve dışarı aktarmalar.  Ayrıca, maliyetleri görmek için departman yöneticileri ve salt okuma kullanıcıları için de **görüntüleme ücretleri** faturalandırma hesabı ayarı etkinleştirilmelidir. **Da görünüm ücretleri** devre dışıysa, departman kullanıcıları hesap veya abonelik sahibi olsalar bile herhangi bir düzeyde maliyeti göremez.
-- **Bölüm salt okuma kullanıcısı** – departman ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Örneğin, bütçeler ve dışarı aktarmalar. **Da görünüm ücretleri** devre dışıysa, departman kullanıcıları hesap veya abonelik sahibi olsalar bile herhangi bir düzeyde maliyeti göremez.
-- **Hesap sahibi** – kayıt hesabı için kayıt hesabı ayarlarını (maliyet merkezi gibi) yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını (örneğin, bütçeler ve dışarı aktarmalar) yönetebilirsiniz. Hesap sahipleri için **Ao görünüm ücretleri** faturalandırma hesabı ayarı etkinleştirilmelidir ve kullanıcıların maliyetleri görmesini sağlar.
+- **Kuruluş yöneticisi**: Ödeme hesabı ayarlarını ve erişimini yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
+- **Kurumsal salt okunur kullanıcı**: Ödeme hesabı ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Okuyucusu Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
+- **Departman yöneticisi**: Maliyet merkezi gibi departman ayarlarını yönetebilir, tüm maliyetlere erişebilir, onları görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir.  Departman yöneticilerinin ve salt okunur kullanıcıların maliyetleri görebilmesi için **DA ücretleri görüntüleme** fatura hesabı ayarının etkinleştirilmiş olması gerekir. **DA ücretleri görüntüleme** ayarının devre dışı bırakılması halinde hesap veya abonelik sahibi olsalar dahi kullanıcılar herhangi bir düzeydeki maliyetleri göremezler.
+- **Departman salt okunur kullanıcı**: Departman ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. **DA ücretleri görüntüleme** ayarının devre dışı bırakılması halinde hesap veya abonelik sahibi olsalar dahi kullanıcılar herhangi bir düzeydeki maliyetleri göremezler.
+- **Hesap sahibi**: Kayıt hesabı ayarlarını (maliyet merkezi gibi) yönetebilir, tüm maliyetleri görüntüleyebilir ve kayıt hesabının maliyet yapılandırmasını (bütçeler ve dışarı aktarma işlemleri gibi) yönetebilir. Hesap sahiplerinin ve RBAC kullanıcılarının maliyetleri görebilmesi için **AO ücretleri görüntüleme** fatura hesabı ayarının etkinleştirilmiş olması gerekir.
 
-EA faturalandırma hesabı kullanıcıları faturalara doğrudan erişemez. Faturalar, bir dış toplu lisanslama sisteminde kullanılabilir.
+EA ödeme hesabı kullanıcıları, faturalara doğrudan erişim sahibi değildir. Faturalar, dış toplu lisanslama sistemi aracılığıyla kullanılabilir.
 
-Azure abonelikleri kayıt hesapları altında iç içe geçmiş. Faturalandırma kullanıcıları, kendi kapsamları altında olan abonelikler ve kaynak grupları için maliyet verilerine erişebilir. Azure portal kaynakları görmek veya yönetmek için erişimleri yoktur. Faturalama kullanıcıları **maliyet yönetimi + faturalandırma** ' e giderek maliyetleri görüntüleyebilir Azure Portal hizmet listesi. Ardından, maliyetleri raporlamak için gereken belirli abonelikler ve kaynak grupları için filtre uygulayabilir.
+Azure abonelikleri kayıt hesapları altında iç içe yerleştirilmiş şekilde bulunur. Faturalandırma kullanıcıları, kendi kapsamları altında yer alan aboneliklere ve kaynak gruplarına ait maliyet verilerine erişebilir. Bu kaynakları Azure portalında göremez ve yönetemezler. Faturalandırma kullanıcıları, Azure portalındaki hizmet listesinde **Maliyet Yönetimi + Faturalandırma**'ya giderek maliyetleri görüntüleyebilir. Bu kullanıcılar maliyetleri belirli aboneliklere ve kaynak gruplarına göre filtreleyerek ihtiyaç duydukları raporlara ulaşabilirler.
 
-Faturalandırma kullanıcıları, belirli bir faturalandırma hesabı altında açıkça düşmedikleri için yönetim gruplarına erişemez. Erişim, yönetim gruplarına açıkça verilmelidir. Yönetim grupları tüm iç içe aboneliklerden alınan maliyetleri geri alma. Ancak, yalnızca kullanım tabanlı satın alma işlemleri dahil değildir. Rezervasyonlar ve üçüncü taraf Market teklifleri gibi satın almalara dahil değildir. Bu maliyetleri görüntülemek için EA faturalandırma hesabını kullanın.
+Faturalandırma kullanıcıları, açıkça belirli bir ödeme hesabının altına girmeyen yönetim gruplarına erişemez. Yönetim gruplarına açıkça erişim verilmelidir. Yönetim grupları, iç içe yerleştirilmiş aboneliklere ait toplam maliyetleri kapsar. Ancak yalnızca kullanım tabanlı satın alma işlemleri dahil edilir. Rezervasyonlar ve üçüncü taraf Market teklifleri gibi satın alma işlemleri dahil edilmez. Bu maliyetleri görüntülemek için EA ödeme hesabını kullanın.
 
-## <a name="individual-agreement-scopes"></a>Bireysel anlaşma kapsamları
+## <a name="individual-agreement-scopes"></a>Bağımsız sözleşme kapsamları
 
-Kullandıkça öde ve ücretsiz deneme ve geliştirme/test teklifleri gibi bireysel tekliflerden oluşturulan Azure abonelikleri, açık bir faturalandırma hesabı kapsamına sahip değildir. Bunun yerine, her aboneliğin EA hesabı sahibi gibi bir hesap sahibi veya hesap yöneticisi vardır.
+Kullandıkça öde ve Ücretsiz Deneme ile geliştirme ve test teklifleri gibi bağımsız tekliflerden oluşturulan Azure abonelikleri özel ödeme hesabı kapsamına sahip değildir. Bunun yerine her abonelikte EA hesabı sahibi gibi bir hesap sahibi veya hesap yöneticisi vardır.
 
-- [**Faturalandırma hesabı**](../manage/view-all-accounts.md) -bir veya daha fazla Azure aboneliği için tek bir hesap sahibini temsil eder. Bu, şu anda birden çok kişiye erişim vermeyi veya toplu maliyet görünümlerine erişimi desteklemez.
+- [**Ödeme hesabı**](../manage/view-all-accounts.md): Bir veya daha fazla Azure aboneliği için tek bir hesap sahibini temsil eder. Şu anda birden fazla kişiye veya toplu maliyet görünümlerine erişim izni vermeyi desteklemez.
 
-    Kaynak türü: geçerli değil
+    Kaynak türü: Uygulanamaz
 
-Bireysel Azure aboneliği hesap yöneticileri, [Azure Hesap Merkezi](https://account.azure.com/subscriptions)fatura ve ödemeler gibi faturalandırma verilerini görüntüleyebilir ve yönetebilir. Ancak, maliyet verilerini görüntüleyemez veya Azure portal kaynakları yönetebilir. Hesap yöneticisine erişim vermek için, daha önce bahsedilen maliyet yönetimi rollerini kullanın.
+Bağımsız Azure abonelik hesabı yöneticileri, faturalar ve ödemeler gibi faturalandırma verilerini [Azure Hesap Merkezi](https://account.azure.com/subscriptions)'nden görüntüleyebilir ve yönetebilir. Ancak bu yöneticiler, Azure portalında maliyet verilerini görüntüleyemez veya kaynakları yönetemez. Hesap yöneticisine erişim vermek için yukarıda anlatılan Maliyet Yönetimi rollerini kullanın.
 
-EA 'dan farklı olarak, bireysel Azure aboneliği hesap yöneticileri Azure portal faturalarını görüntüleyebilir. Maliyet yönetimi okuyucusu ve maliyet yönetimi katkıda bulunan rollerinin faturalara erişim sağlamadığını aklınızda bulundurun. Daha fazla bilgi için bkz. [faturalara erişim verme](../manage/manage-billing-access.md#give-read-only-access-to-billing).
+EA'dan farklı olarak bağımsız Azure abonelik hesabı yöneticileri, Azure portalında faturalarını görebilir. Maliyet Yönetimi Okuyucusu ile Maliyet Yönetimi Katkıda Bulunanı rollerinin fatura erişimi sağlamadığını unutmayın. Daha fazla bilgi için bkz. [Faturalara erişim izni verme](../manage/manage-billing-access.md#give-read-only-access-to-billing).
 
-## <a name="microsoft-customer-agreement-scopes"></a>Microsoft müşteri anlaşması kapsamları
+## <a name="microsoft-customer-agreement-scopes"></a>Microsoft Müşteri Sözleşmesi kapsamları
 
-Microsoft Müşteri Sözleşmesi faturalandırma hesaplarında aşağıdaki kapsamlar vardır:
+Microsoft Müşteri Sözleşmesi ödeme hesapları şu kapsamlara sahiptir:
 
-- **Faturalandırma hesabı** -birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesi temsil eder. Müşteri Sözleşmesi faturalandırma hesapları, EA kayıtları ile aynı şekilde işlevsel değildir. EA kayıtları, faturalandırma profillerine daha yakından hizalanır.
+- **Ödeme hesabı**: Birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesini temsil eder. Müşteri Sözleşmesi ödeme hesapları, işlev açısından EA kayıtları ile aynı değildir. EA kayıtları, faturalama profillerine daha yakından uyumludur.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Organization)`
 
-- **Faturalandırma profili** -bir faturaya dahil edilen abonelikleri tanımlar. Fatura profilleri, faturaların oluşturulduğu kapsam olduğundan, bir EA kaydının işlevsel eşdeğeridir. Benzer şekilde, kullanım tabanlı olmayan (Market ve rezervasyonlar gibi) satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Bunlar fatura bölümlerine dahil edilmez.
+- **Faturalama profili**: Faturaya dahil edilen abonelikleri tanımlar. Faturalama profilleri, faturaların oluşturulduğu kapsamda olduğundan EA kaydıyla aynı işlevlere sahiptir. Benzer şekilde kullanım tabanlı olmayan satın alma işlemleri (Market ve rezervasyonlar gibi) yalnızca bu kapsamda kullanılabilir. Bunlar fatura bölümlerine dahil edilmez.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts/billingProfiles`
 
-- **Fatura bölümü** -bir fatura veya faturalandırma profilindeki bir abonelik grubunu temsil eder. Fatura bölümleri departmanlar gibi, birden çok kişi de bir fatura bölümüne erişebilir.
+- **Fatura bölümü** - Bir faturadaki veya faturalama profilindeki abonelik grubunu temsil eder. Fatura bölümleri departmanlar gibidir, bir fatura bölümünde birden fazla kişi erişim sağlayabilir.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts/invoiceSections`
 
-- **Müşteri** -iş ortağı tarafından Microsoft Müşteri anlaşmasıyla eklendi belirli bir müşteriyle ilişkili bir abonelik grubunu temsil eder. Bu kapsam CSP 'ye özeldir.
+- **Müşteri**: Bir iş ortağı tarafından Microsoft Müşteri Sözleşmesi'ne eklenmiş olan belirli bir müşteriyle ilişkilendirilmiş abonelik grubunu temsil eder. Bu kapsam, CSP'ye özgüdür.
 
-EA faturalandırma kapsamlarından farklı olarak, Müşteri Sözleşmesi _faturalandırma hesapları tek_ bir dizine bağlanır ve birden çok Azure AD dizininde abonelikler olamaz.
+Müşteri Sözleşmesi ödeme hesapları, EA faturalama kapsamlarından farklı olarak tek bir dizine _bağlıdır_ ve birden fazla Azure AD dizininde farklı hesaplara sahip olamaz.
 
-Müşteri Sözleşmesi faturalandırma kapsamları iş ortakları için uygulanmaz. İş ortağı rolleri ve izinleri, [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview)konusunda belgelenmiştir.
+Müşteri Sözleşmesi faturalama kapsamları iş ortakları için geçerli değildir. İş ortağı rolleri ve izinleri, [Kullanıcı rollerini ve izinlerini atama](/partner-center/permissions-overview) bölümünde listelenmiştir.
 
-Müşteri Sözleşmesi faturalandırma kapsamları aşağıdaki rolleri destekler:
+Müşteri Sözleşmesi faturalama kapsamları şu rolleri destekler:
 
-- **Sahip** – fatura ayarlarını yönetebilir ve erişimi, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, bu müşteri sözleşmesi faturalandırma kapsamı, [maliyet yönetimi katılımcısı Azure RBAC rolüyle](../../role-based-access-control/built-in-roles.md#cost-management-contributor)aynıdır.
-- **Katkıda bulunan** – erişim hariç faturalandırma ayarlarını yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilirsiniz. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, bu müşteri sözleşmesi faturalandırma kapsamı, [maliyet yönetimi katılımcısı Azure RBAC rolüyle](../../role-based-access-control/built-in-roles.md#cost-management-contributor)aynıdır.
-- **Okuyucu** – faturalandırma ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, bu müşteri sözleşmesi faturalandırma kapsamı, [maliyet yönetimi okuyucusu Azure RBAC rolüyle](../../role-based-access-control/built-in-roles.md#cost-management-reader)aynıdır.
-- **Fatura Yöneticisi** – faturaları görüntüleyebilir ve ödeyebilir ve maliyet verilerini ve yapılandırmayı görüntüleyebilir. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, bu müşteri sözleşmesi faturalandırma kapsamı, [maliyet yönetimi okuyucusu Azure RBAC rolüyle](../../role-based-access-control/built-in-roles.md#cost-management-reader)aynıdır.
-- **Azure abonelik Oluşturucu** – Azure abonelikleri oluşturabilir, maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Örneğin, bütçeler ve dışarı aktarmalar. İşlevinde, bu müşteri sözleşmesi faturalandırma kapsamı, EA kayıt hesabı sahibi rolüyle aynıdır.
+- **Sahip**: Faturalandırma ayarlarını yönetebilir, tüm maliyetlere erişebilir, bunları görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
+- **Katkıda bulunan**: Erişim haricindeki faturalandırma ayarlarını yönetebilir, tüm maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Bulunanı Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-contributor) ile aynıdır.
+- **Okuyucu**: Faturalandırma ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Okuyucusu Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
+- **Fatura yöneticisi**: Faturaları görüntüleyip ödeyebilir, maliyet verilerini ve yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, [Maliyet Yönetimi Katkıda Okuyucusu Azure RBAC rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
+- **Azure aboneliği oluşturucusu**: Azure aboneliği oluşturabilir, maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte bu Müşteri Sözleşmesi faturalama kapsamı, EA kayıt hesabı sahibi rolüyle aynıdır.
 
-Azure abonelikleri, EA kayıt hesapları altında oldukları gibi, fatura bölümlerinin altına yuvalanmıştır. Faturalandırma kullanıcıları, kendi kapsamları altındaki abonelikler ve kaynak grupları için maliyet verilerine erişebilir. Ancak, Azure portal kaynakları görmek veya yönetmek için erişimleri yoktur. Faturalama kullanıcıları **maliyet yönetimi + faturalandırma** ' e giderek maliyetleri görüntüleyebilir Azure Portal hizmet listesi. Ardından, maliyetleri raporlamak için gereken belirli abonelikler ve kaynak grupları için filtreleyin.
+Azure abonelikleri, EA kayıt hesaplarında olduğu gibi fatura bölümleri altında iç içe yerleştirilir. Faturalandırma kullanıcıları, kendi kapsamları altında yer alan aboneliklere ve kaynak gruplarına ait maliyet verilerine erişebilir. Ancak bu kaynakları Azure portalında göremez ve yönetemezler. Faturalandırma kullanıcıları, Azure portalındaki hizmet listesinde **Maliyet Yönetimi + Faturalandırma**'ya giderek maliyetleri görüntüleyebilir. Bu kullanıcılar maliyetleri belirli aboneliklere ve kaynak gruplarına göre filtreleyerek ihtiyaç duydukları raporlara ulaşabilirler.
 
-Faturalama hesabı, faturalandırma hesabının altına açık olmadıkları için yönetim gruplarına erişemez. Ancak, kuruluş için yönetim grupları etkinleştirildiğinde, her ikisi de tek bir dizinle sınırlı olduklarından, tüm abonelik ücretleri faturalandırma hesabına ve kök yönetim grubuna aktarılır. Yönetim grupları yalnızca kullanım tabanlı satın alımları içerir. Rezervasyonlar ve üçüncü taraf Market teklifleri gibi satın alma işlemleri, yönetim gruplarına dahil değildir. Bu nedenle, faturalandırma hesabı ve kök yönetim grubu farklı toplamlar rapor edebilir. Bu maliyetleri görüntülemek için faturalandırma hesabını veya ilgili faturalandırma profilini kullanın.
+Faturalandırma kullanıcıları, açıkça ödeme hesabının altına girmeyen yönetim gruplarına erişemez. Ancak yönetim grupları kuruluş için etkinleştirildiğinde tüm abonelik maliyetleri tek bir dizinle sınırlı olan ödeme hesabında ve kök yönetim grubunda toplanır. Yönetim grupları yalnızca kullanım tabanlı ücretleri içerir. Rezervasyonlar ve üçüncü taraf Market teklifleri gibi satın alma işlemleri yönetim gruplarına dahil edilmez. Bu nedenle ödeme hesabı ve kök yönetim grubu, farklı toplamlar verebilir. Bu maliyetleri görüntülemek için ödeme hesabını veya ilgili faturalama profilini kullanın.
 
 ## <a name="aws-scopes"></a>AWS kapsamları
 
-AWS tümleştirmesi tamamlandıktan sonra, bkz. [AWS tümleştirmesini ayarlama ve yapılandırma](aws-integration-set-up-configure.md). Aşağıdaki kapsamlar kullanılabilir:
+AWS tümleştirmesi tamamlandıktan sonra bkz. [AWS tümleştirmesini ayarlama ve yapılandırma](aws-integration-set-up-configure.md). Aşağıdaki kapsamlar kullanılabilir:
 
-- **Dış faturalandırma hesabı** -üçüncü taraf satıcı ile bir müşteri anlaşmasını temsil eder. Bu, EA faturalandırma hesabına benzer.
+- **Dış faturalama hesabı**: Üçüncü taraf satıcı ile yapılan müşteri sözleşmesini temsil eder. Bu, EA ödeme hesabı ile benzerdir.
 
     Kaynak türü: `Microsoft.CostManagement/externalBillingAccounts`
 
-- **Dış abonelik** -üçüncü taraf satıcı ile bir müşteri operasyonel hesabını temsil eder. Bu, bir Azure aboneliğine benzerdir.
+- **Dış abonelik**: Üçüncü taraf satıcı ile oluşturulan müşteri işlem hesabını temsil eder. Bu, Azure aboneliği ile benzerdir.
 
     Kaynak türü: `Microsoft.CostManagement/externalSubscriptions`
 
-## <a name="cloud-solution-provider-csp-scopes"></a>Bulut çözümü sağlayıcısı (CSP) kapsamları
+## <a name="cloud-solution-provider-csp-scopes"></a>Bulut Çözümü Sağlayıcısı (CSP) kapsamları
 
-Aşağıdaki kapsamlar, Microsoft Müşteri anlaşmasındaki müşterilerin bulunduğu CSP 'Ler için desteklenir:
+Aşağıdaki kapsamlar, Microsoft Müşteri Sözleşmesi kapsamındaki müşteriler için CSP'lerde desteklenir:
 
-- **Faturalandırma hesabı** -birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesi temsil eder. Müşteri Sözleşmesi faturalandırma hesapları, EA kayıtları ile aynı şekilde işlevsel değildir. EA kayıtları, faturalandırma profillerine daha yakından hizalanır.
+- **Ödeme hesabı**: Birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesini temsil eder. Müşteri Sözleşmesi ödeme hesapları, işlev açısından EA kayıtları ile aynı değildir. EA kayıtları, faturalama profillerine daha yakından uyumludur.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Organization)`
 
-- **Faturalandırma profili** -bir faturaya dahil edilen abonelikleri tanımlar. Fatura profilleri, faturaların oluşturulduğu kapsam olduğundan, bir EA kaydının işlevsel eşdeğeridir. Benzer şekilde, kullanım tabanlı olmayan (Market ve rezervasyonlar gibi) satın alma işlemleri yalnızca bu kapsamda kullanılabilir.
+- **Faturalama profili**: Faturaya dahil edilen abonelikleri tanımlar. Faturalama profilleri, faturaların oluşturulduğu kapsamda olduğundan EA kaydıyla aynı işlevlere sahiptir. Benzer şekilde kullanım tabanlı olmayan satın alma işlemleri (Market ve rezervasyonlar gibi) yalnızca bu kapsamda kullanılabilir.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts/billingProfiles`
 
-- **Müşteri** -bir iş ortağı tarafından Microsoft Müşteri anlaşmasıyla eklendi belirli bir müşteriyle ilişkili bir abonelik grubunu temsil eder.
+- **Müşteri**: Bir iş ortağı tarafından Microsoft Müşteri Sözleşmesi'ne eklenmiş olan belirli bir müşteriyle ilişkilendirilmiş abonelik grubunu temsil eder.
 
-Yalnızca *genel yönetici* ve yönetici Aracısı rollerine sahip olan kullanıcılar, doğrudan ortağın Azure *kiracısında* faturalandırma hesapları, faturalandırma profilleri ve müşteriler için maliyetleri yönetebilir ve görüntüleyebilir. İş Ortağı Merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview).
+Doğrudan iş ortağının Azure kiracısında bulunan ödeme hesapları, faturalama profilleri ve müşteriler ile ilgili maliyetleri yönetme ve görüntüleme işlemleri yalnızca *Genel yönetici* ve *Yönetici aracısı* rolleri tarafından gerçekleştirilebilir. İş ortağı merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini ve izinlerini atama](/partner-center/permissions-overview).
 
-Azure maliyet yönetimi yalnızca müşterilerin bir Microsoft Müşteri Anlaşması varsa CSP iş ortağı müşterilerini destekler. Henüz bir Microsoft Müşteri sözleşmenizde olmayan CSP desteği olan müşteriler için bkz. [Iş Ortağı Merkezi](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Azure Maliyet Yönetimi, CSP iş ortağı müşterilerini yalnızca Microsoft Müşteri Sözleşmesi'ne sahip olmaları durumunda destekler. Henüz bir Microsoft Müşteri Sözleşmesi'ne sahip olmayan desteklenen CSP müşterileri için bkz. [İş Ortağı Merkezi](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-## <a name="switch-between-scopes-in-cost-management"></a>Maliyet yönetimi 'nde kapsamlar arasında geçiş yapma
+## <a name="switch-between-scopes-in-cost-management"></a>Maliyet Yönetimi'ndeki kapsamlar arasında geçiş yapma
 
-Azure Portal tüm maliyet yönetimi görünümleri, görünümün sol üst kısmındaki **kapsam** seçimi hap ' i içerir. Kapsamı hızlı bir şekilde değiştirmek için kullanın. Kapsam seçiciyi açmak için **kapsama** tıklayın. Faturalandırma hesaplarını, kök yönetim grubunu ve kök yönetim grubu altında iç içe olmayan abonelikleri gösterir. Bir kapsam seçmek için, üst plana tıklayarak vurgulayın ve ardından altta **Seç** ' e tıklayın. Bir abonelikteki kaynak grupları gibi iç içe kapsamların ayrıntısına gitmek için kapsam adı bağlantısına tıklayın. Herhangi bir iç içe düzeydeki üst kapsamı seçmek için, kapsam seçicinin en üstündeki **bu &lt;kapsam&gt;Seç** ' e tıklayın.
+Azure portalındaki tüm Maliyet Yönetimi görünümlerinin sol üst köşesinde **Kapsam** seçimi düğmesi bulunur. Bu düğmeyi kullanarak kapsamı hızlıca değiştirebilirsiniz. **Kapsam** düğmesine tıklayarak kapsam seçiciyi açın. Burada ödeme hesapları, kök yönetim grubu ve kök yönetim grubu altında bulunmayan abonelikler yer alır. Kapsam seçmek için arka planına tıklayarak vurgulayın ve en altta **Seç**'e tıklayın. Bir abonelik içindeki kaynak grupları gibi iç içe yerleştirilmiş olan kapsamların detayına gitmek için kapsam adı bağlantısına tıklayın. İç içe yerleştirilmiş düzeylerde üst kapsamı seçmek için kapsam seçicisinin en üstündeki **Bu &lt;kapsamı&gt; seç** bağlantısına tıklayın.
 
-## <a name="identify-the-resource-id-for-a-scope"></a>Bir kapsamın kaynak KIMLIĞINI tanımla
+## <a name="identify-the-resource-id-for-a-scope"></a>Kapsamın kaynak kimliğini belirleme
 
-Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilmektir. Maliyet yönetimi API 'Leri için doğru kapsam URI 'sini derlemek üzere aşağıdaki bilgileri kullanın.
+Maliyet Yönetimi API'leriyle çalışırken kapsamı bilmek çok önemlidir. Maliyet Yönetimi API'leri için doğru kapsam URI'sini oluşturmak üzere aşağıdaki bilgileri kullanın.
 
-### <a name="billing-accounts"></a>Faturalandırma hesapları
+### <a name="billing-accounts"></a>Ödeme hesapları
 
-1. Azure portal açın ve ardından hizmetler listesinden **maliyet yönetimi + faturalandırma** ' a gidin.
-2. Faturalandırma hesabı menüsünde **Özellikler** ' i seçin.
-3. Faturalandırma hesabı KIMLIĞINI kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya gidin.
+2. Ödeme hesabı menüsünde **Özellikler**'i seçin.
+3. Ödeme hesabı kimliğini kopyalayın.
 4. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
 ### <a name="billing-profiles"></a>Faturalama profilleri
 
-1. Azure portal açın ve ardından hizmetler listesinden **maliyet yönetimi + faturalandırma** ' a gidin.
-2. Faturalandırma hesabı menüsünde **faturalandırma profilleri** ' ni seçin.
-3. İstenen fatura profilinin adına tıklayın.
-4. Faturalandırma profili menüsünde **Özellikler** ' i seçin.
-5. Faturalandırma hesabı ve faturalandırma profili kimliklerini kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya gidin.
+2. Ödeme hesabı menüsünde **Faturalama profilleri**'ni seçin.
+3. İstediğiniz faturalama profilinin adına tıklayın.
+4. Faturalama profili menüsünde **Özellikler**'i seçin.
+5. Ödeme hesabı ve faturalama profili kimliklerini kopyalayın.
 6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
 ### <a name="invoice-sections"></a>Fatura bölümleri
 
-1. Azure portal açın ve ardından hizmetler listesinden **maliyet yönetimi + faturalandırma** ' a gidin.
-2. Faturalandırma hesabı menüsünde **Fatura bölümleri** ' ni seçin.
-3. İstenen fatura bölümünün adına tıklayın.
-4. Fatura bölüm menüsünde **Özellikler** ' i seçin.
-5. Faturalandırma hesabı ve fatura bölümü kimliklerini kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya gidin.
+2. Ödeme hesabı menüsünde **Fatura bölümleri**'ni seçin.
+3. İstediğiniz faturalama bölümünün adına tıklayın.
+4. Fatura bölümü menüsünde **Özellikler**'i seçin.
+5. Ödeme hesabı ve fatura bölümü kimliklerini kopyalayın.
 6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
 
 ### <a name="ea-departments"></a>EA departmanları
 
-1. Azure portal açın ve ardından hizmetler listesinden **maliyet yönetimi + faturalandırma** ' a gidin.
-2. Faturalandırma hesabı menüsünde **Departmanlar** ' ı seçin.
-3. İstenen departmanın adına tıklayın.
-4. Departman menüsünde **Özellikler** ' i seçin.
-5. Faturalandırma hesabı ve departman kimliklerini kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya gidin.
+2. Ödeme hesabı menüsünde **Departmanlar**'ı seçin.
+3. İstediğiniz departmanın adına tıklayın.
+4. Departman menüsünde **Özellikler**'i seçin.
+5. Ödeme hesabı ve departman kimliklerini kopyalayın.
 6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
-### <a name="ea-enrollment-account"></a>EA kayıt hesabı
+### <a name="ea-enrollment-account"></a>EA kaydı hesabı
 
-1. Azure portal açın ve Hizmetler listesinde **maliyet yönetimi + faturalandırma** ' a gidin.
-2. Faturalandırma hesabı menüsünde **kayıt hesapları** ' nı seçin.
-3. İstenen kayıt hesabının adına tıklayın.
-4. Kayıt hesabı menüsünde **Özellikler** ' i seçin.
-5. Faturalandırma hesabı ve kayıt hesabı kimliklerini kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Maliyet Yönetimi + Faturalama**’ya gidin.
+2. Ödeme hesabı menüsünde **Kayıt hesapları**'nı seçin.
+3. İstediğiniz kayıt hesabının adına tıklayın.
+4. Kayıt hesabı menüsünde **Özellikler**'i seçin.
+5. Faturalama hesabı ve kayıt hesabı kimliklerini kopyalayın.
 6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Yönetim grubu
 
-1. Azure portal açın ve Hizmetler listesinde **Yönetim grupları** ' na gidin.
+1. Azure portalını açın ve hizmetler listesinde **Yönetim grupları**’na gidin.
 2. İstenen yönetim grubuna gidin.
-3. Yönetim grubu KIMLIĞINI tablodan kopyalayın.
+3. Tablodan yönetim grubu kimliğini kopyalayın.
 4. Kapsamınız: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
 ### <a name="subscription"></a>Abonelik
 
-1. Azure portal açın ve hizmetler listesinden **abonelikler** ' e gidin.
-2. Tablodaki abonelik KIMLIĞINI kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Abonelikler**’e gidin.
+2. Tablodan abonelik kimliğini kopyalayın.
 3. Kapsamınız: `"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Kaynak grupları
 
-1. Azure portal açın ve hizmetler listesinden **kaynak grupları** ' na gidin.
-2. İstenen kaynak grubunun adına tıklayın.
-3. Kaynak grubu menüsünde **Özellikler** ' i seçin.
-4. Kaynak KIMLIĞI alan değerini kopyalayın.
+1. Azure portalını açın ve hizmetler listesinde **Kaynak grupları**’na gidin.
+2. İstediğiniz kaynak grubunun adına tıklayın.
+3. Kaynak grubu menüsünde **Özellikler**'i seçin.
+4. Kaynak kimliği alanındaki değeri kopyalayın.
 5. Kapsamınız: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-Maliyet yönetimi şu anda [Azure genel](https://management.azure.com) ve [Azure Kamu](https://management.usgovcloudapi.net)'da desteklenmektedir. Azure Kamu hakkında daha fazla bilgi için bkz. [Azure genel ve kamu API uç noktaları](../../azure-government/documentation-government-developer-guide.md#endpoint-mapping).
+Maliyet Yönetimi şu anda [Azure Global](https://management.azure.com) ve [Azure Kamu](https://management.usgovcloudapi.net) ortamlarında desteklenmektedir. Azure Kamu hakkında daha fazla bilgi için bkz. [Azure Global ve Kamu API uç noktaları](../../azure-government/documentation-government-developer-guide.md#endpoint-mapping).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Maliyet yönetimi için zaten ilk hızlı tamamlamadıysanız, hem okuma [maliyetleri başlamanızı](quick-acm-cost-analysis.md).
+- Maliyet Yönetimi için ilk hızlı başlangıcı önceden tamamlamadıysanız, [Maliyetleri analiz etmeye başlama](quick-acm-cost-analysis.md) bölümünden bilgi edinin.

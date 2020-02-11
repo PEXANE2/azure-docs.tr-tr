@@ -1,21 +1,20 @@
 ---
 title: Azure aboneliklerini ve hesaplarını etkinleştirme | Microsoft Docs
 description: Yeni ve mevcut hesaplar için Azure Resource Manager API'lerini kullanarak erişimi etkinleştirin ve ortak hesap sorunlarını çözün.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a3d40e478d1fbb4a789124b72b73268db37540ab
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 6b788df15b14f8e2e0b394cf7002a1c8236d2c67
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987757"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770495"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure aboneliklerini ve hesaplarını Cloudyn ile etkinleştirme
 
@@ -41,7 +40,7 @@ Hesabınıza **Katkıda Bulunan** rolü atandıysa, uygulamayı atamak için yet
 3. Azure Active Directory’de **Kullanıcı ayarları**’nı seçin.
 4. **Uygulama kayıtları** seçeneğini işaretleyin.
     - Bu **Evet** olarak ayarlanırsa, yönetici olmayan kullanıcılar AD uygulamalarını kaydedebilir. Bu ayar, Azure AD kiracısı içindeki herhangi bir kullanıcının bir uygulamayı kaydedebileceği anlamına gelir.  
-    ![Kullanıcı Ayarları'nda uygulama kayıtları seçin](./media/activate-subs-accounts/app-register.png)
+    ![Kullanıcı ayarlarında Uygulama kayıtları'nı seçin](./media/activate-subs-accounts/app-register.png)
     - **Uygulama kayıtları** seçeneği **Hayır** olarak ayarlanırsa, yalnızca kiracı yönetici kullanıcıları Azure Active Directory uygulamalarını kaydedebilir. Kiracı yöneticinizin, CloudynCollector uygulamasını kaydetmesi gerekir.
 
 
@@ -53,14 +52,14 @@ Bir aboneliğe hesap güncelleştirme eklediğinizde, Cloudyn'e Azure verilerini
 
 1. Cloudyn portalında, sağ üst kısımdaki dişli simgesine tıklayın ve **Bulut Hesapları**'nı seçin.
 2. **Yeni hesap ekle**’ye tıklayın, böylece **Yeni hesap ekle** kutusu görüntülenir. Gerekli bilgileri girin.  
-    ![Ekleme yeni hesap kutusunda gerekli bilgileri girin](./media/activate-subs-accounts/add-new-account.png)
+    ![Yeni hesap ekle kutusuna gerekli bilgileri girin](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aboneliği güncelleştirme
 
 1. Cloudyn’de önceden mevcut olan _etkinleştirilmemiş_ bir aboneliği güncelleştirmek istiyorsanız, üst _kiracı GUID'si_'nin sağındaki düzenleme kalemi simgesine tıklayın. Abonelikler bir üst kiracı altında gruplanır, bu nedenle abonelikleri tek tek etkinleştirmekten kaçının.
-    ![Kiracı Kimliğinizi Rediscover abonelik kutuya seçin](./media/activate-subs-accounts/existing-sub.png)
+    ![Abonelikleri yeniden keşfetme kutusunda kiracı kimliğinizi seçin](./media/activate-subs-accounts/existing-sub.png)
 2. Gerekirse Kiracı Kimliğini girin. Kiracı Kimliğinizi bilmiyorsanız, bulmak için aşağıdaki adımları kullanın:
-    1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+    1. [Azure Portal](https://portal.azure.com) oturum açın.
     2. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
     3. Kiracı kimliğini almak için Azure AD kiracınızda **Özellikler**'i seçin.
     4. Dizin Kimliği GUID’ini kopyalayın. Bu değer kiracı kimliğinizdir.
@@ -87,7 +86,7 @@ Cloudyn portalını ilk kullandığınızda, Kurumsal Anlaşma veya Bulut Çöz�
 
 - **Cloudyn'i Kurma** sihirbazında *Belirtilen API anahtarı, üst düzey bir kayıt anahtarı değil* iletisi görüntülenir.
 - Kurumsal Anlaşma portalında *Doğrudan Kayıt - Hayır* görüntülenir.
-- *Son 30 gün için kullanım verisi bulunamadı. Cloudyn portalında görünen Azure hesabınız için biçimlendirmenin etkinleştirildiğinden emin olmak için lütfen dağıtıcıya başvurun* .
+- Azure Maliyet Yönetimi portalında *Son 30 gün için kullanım verisi bulunamadı. Cloudyn portalında, Azure hesabınız için işaretlemenin etkinleştirildiğinden emin olmak için lütfen dağıtımcınızla görüşün* iletisi görüntülenir.
 
 Önceki ileti, bir kurumsal bayi veya CSP aracılığıyla Azure Kurumsal Anlaşma satın aldığınızı belirtir. Cloudyn'de verilerinizi görüntüleyebilmeniz için satıcınızın veya CSP’nin Azure hesabınız için _işaretlemeyi_ etkinleştirmesi gerekir.
 

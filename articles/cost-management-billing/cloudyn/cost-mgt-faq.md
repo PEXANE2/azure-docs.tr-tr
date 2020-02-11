@@ -1,33 +1,32 @@
 ---
-title: Cloudyn Azure için sık sorulan sorular | Microsoft Docs
-description: Bu makalede, Cloudyn hakkında genel soruların yanıtları sağlanır.
-services: cost-management
+title: Azure'da Cloudyn için sık sorulan sorular | Microsoft Docs
+description: Bu makalede Cloudyn ile ilgili sık sorulan soruların yanıtları sağlanmaktadır.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 70f5edfb186cb7a9c05fe8ee59533193cee4fcd4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990768"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770071"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn için sık sorulan sorular
 
-Bu makalede Cloudyn hakkında bazı yaygın sorular ele alınmıştır. Cloudyn hakkında sorularınız varsa, onları sorabilir [Cloudyn için sık sorulan sorular](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+Bu makalede Cloudyn ile ilgili sık sorulan sorulara yer verilmiştir. Cloudyn hakkında sorularınız varsa [Cloudyn Hakkında SSS](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn) sayfasından sorabilirsiniz.
 
-## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Sık karşılaşılan dolaylı Kurumsal kurulum sorunlarını nasıl giderebilirim?
+## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Genel dolaylı kurumsal kurulum sorunlarını nasıl çözebilirim?
 
 Cloudyn portalını ilk kullandığınızda, Kurumsal Anlaşma veya Bulut Çözümü Sağlayıcı (CSP) kullanıcısıysanız şu iletileri görebilirsiniz:
 
-- "Belirtilen API anahtarı bir üst düzey kayıt anahtarı değil" görüntülenen **Cloudyn ayarlamak** Sihirbazı.
-- "– Hayır Kurumsal Anlaşma portalında gösterilen doğrudan kayıt".
-- "Son 30 güne ait kullanım verisi bulunamadı. Biçimlendirme Azure hesabınız için etkinleştirildi emin olmak için dağıtımcı başvurun", Cloudyn portalında görüntülenmez.
+- **Cloudyn'i Kurma** sihirbazında "Belirtilen API anahtarı, üst düzey bir kayıt anahtarı değil" iletisi görüntülenir.
+- Kurumsal Anlaşma portalında "Doğrudan Kayıt - Hayır" görüntülenir.
+- Azure Maliyet Yönetimi portalında "Son 30 gün için kullanım verisi bulunamadı. Cloudyn portalında, Azure hesabınız için işaretlemenin etkinleştirildiğinden emin olmak için lütfen dağıtımcınızla görüşün" iletisi görüntülenir.
 
 Önceki ileti, bir kurumsal bayi veya CSP aracılığıyla Azure Kurumsal Anlaşma satın aldığınızı belirtir. Cloudyn'de verilerinizi görüntüleyebilmeniz için satıcınızın veya CSP’nin Azure hesabınız için _işaretlemeyi_ etkinleştirmesi gerekir.
 
@@ -35,7 +34,7 @@ Sorunların çözümü:
 
 1. Kurumsal bayinin hesabınız için _işaretlemeyi_ etkinleştirmesi gerekir. Yönergeler için bkz. [Dolaylı Müşteri Ekleme Kılavuzu](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Cloudyn ile kullanılmak için Azure Kurumsal Anlaşma anahtarını üretirsiniz. Yönergeler için [ekleme bilgisayarınızı Azure EA](quick-register-ea.md#register-with-cloudyn) veya [Bul EA kayıt Kimliğinizi ve API anahtarı](https://youtu.be/u_phLs_udig).
+2. Cloudyn ile kullanılmak için Azure Kurumsal Anlaşma anahtarını üretirsiniz. Yönergeler için bkz. [Azure EA'nızı Ekleme](quick-register-ea.md#register-with-cloudyn) veya [EA Kayıt Kimliğinizi ve API Anahtarınızı Bulma](https://youtu.be/u_phLs_udig).
 
 Yalnızca bir Azure hizmet yöneticisi Cloudyn'i etkinleştirebilir. Ortak yönetici izinleri yeterli değil.
 
@@ -47,115 +46,115 @@ Cloudyn'i kurmak için Azure Kurumsal Anlaşma API anahtarını oluşturabilmeni
 
 Departman yöneticilerine, hesap sahiplerine ve kurumsal yöneticilere Faturalama API’si ile _ücretleri görüntüleme_ izni vermeniz de gerekebilir.
 
-## <a name="why-dont-i-see-optimizer-recommendations"></a>İyileştirici önerileri neden göremiyorum?
+## <a name="why-dont-i-see-optimizer-recommendations"></a>İyileştirici önerilerini neden göremiyorum?
 
-Öneri bilgiler, yalnızca etkinleştirilen hesapları için kullanılabilir. Herhangi bir öneri bilgisi görmeyeceğiniz **iyileştirici** rapor hesapları için kategorileri *etkinleştirilmemiş*de dahil olmak üzere:
+Öneri bilgileri yalnızca etkinleştirilen hesaplarda kullanılabilir. Aşağıdakiler dahil olmak üzere *etkinleştirilmemiş* durumdaki hesaplar için **İyileştirici** rapor kategorilerinde öneri bilgileri görüntülenmez:
 
-- En iyi duruma getirme Yöneticisi
-- Boyutlandırma optimizasyonu
-- Verimsizlikleri
+- İyileştirme Yöneticisi
+- Boyut İyileştirme
+- Verimsizlikler
 
-İyileştirici öneri verileri görüntüleyemezsiniz sonra büyük olasılıkla etkinleştirilmemiş olan hesapların varsa. Bir hesabı etkinleştirmek için Azure kimlik bilgilerinizle kaydetmeniz gerekir.
+İyileştirici öneri verilerini görüntüleyemiyorsanız büyük ihtimalle hesaplarınız etkinleştirilmemiş olabilir. Bir hesabı etkinleştirmek için Azure kimlik bilgilerinizle kaydetmeniz gerekir.
 
 Bir hesabı etkinleştirmek için:
 
 1.  Cloudyn portalında, sağ üst kısımdaki **Ayarlar**’a tıklayın ve **Bulut Hesapları**’nı seçin.
-2.  Microsoft Azure hesapları sekmesinde sahip hesaplar için Ara bir **etkinleştirilmemiş** abonelik.
-3.  Sağa etkinleştirilmemiş bir hesabın tıklayın **Düzenle** benzer bir kalem simgesi.
-4.  Kiracı kimliği ve oran Kimliğinizi otomatik olarak algılanır. **İleri**’ye tıklayın.
-5.  Azure portalına yönlendirilirsiniz. Portalda oturum açın ve Azure verilerinize erişmek için Cloudyn Toplayıcı yetkisi verin.
-6.  Ardından, Cloudyn hesapları Yönetim sayfasına yönlendirilirsiniz ve aboneliğiniz ile güncelleştirilir **etkin** hesap durumu. Bu, yeşil onay işareti simgesi gösterir.
-7.  Bir veya daha fazla abonelik için bir yeşil onay işareti simgesini görmüyorsanız, (CloudynCollector) abonelik için bir okuyucu uygulaması oluşturmak için gerekli izinlere sahip değilsiniz demektir. Abonelik için daha yüksek izinlere sahip bir kullanıcı, 3 ve 4 gerekiyor.  
+2.  Microsoft Azure Hesapları sekmesinde **etkinleştirilmiş** aboneliğe sahip olan hesapları bulun.
+3.  Etkinleştirilmemiş hesabın sağ tarafındaki kaleme benzeyen **düzenleme** simgesine tıklayın.
+4.  Kiracı kimliğiniz ve ücret kimliğiniz otomatik olarak algılanır. **İleri**’ye tıklayın.
+5.  Azure portalına yeniden yönlendirilirsiniz. Portalda oturum açın ve Cloudyn Toplayıcısına Azure verilerinize erişim izni verin.
+6.  Sonraki adımda Cloudyn Hesapları yönetim sayfasına yeniden yönlendirilirsiniz ve aboneliğiniz **etkin** Hesap Durumu ile güncelleştirilir. Yanında yeşil renkli onay işareti gösterilir.
+7.  Aboneliklerden biri veya daha fazlası için yeşil bir onay işareti simgesi görmezseniz bu, abonelik için okuyucu uygulamasını (CloudynCollector) oluşturma izninizin olmadığı anlamına gelir. Abonelik için daha yüksek izinleri olan bir kullanıcının 3. ve 4. adımları yinelemesi gerekir.  
 
-Yukarıdaki adımları tamamladıktan sonra bir veya iki gün içinde iyileştirici önerileri görüntüleyebilirsiniz. Ancak, uygulamanın tam iyileştirme veri kullanılabilir olmadan önce en fazla beş gün sürebilir.
+Yukarıdaki adımları tamamladıktan sonra, İyileştirici önerilerini bir veya iki gün içinde görüntüleyebilirsiniz. Ancak tam iyileştirme verilerinin kullanılabilir duruma gelmesi beş gün sürebilir.
 
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Askıya alınmış veya kilitlenmiş kullanıcıları nasıl etkinleştirebilirim?
 
-İlk olarak, kullanıcı hesaplarını almak neden en yaygın senaryo bakalım *initiallySuspended*.
+Öncelikle kullanıcı hesaplarının *initiallySuspended* durumuna geçmesine neden olan en yaygın senaryoyu inceleyelim.
 
-> Admin1 bir Microsoft Bulut çözüm sağlayıcısı veya Kurumsal Anlaşma Kullanıcı olabilir. Kuruluşları Cloudyn kullanmaya başlamaya hazırlanıyor.  Kendisi, Azure portalı üzerinden kaydeder ve Cloudyn portalında oturum açar. Cloudyn hizmetini kaydeden ve Cloudyn portalında oturum açan kişi, admin1 *birincil yönetici*olur. Tüm kullanıcı hesaplarını admin1 oluşturmaz. Ancak, Cloudyn portalını kullanarak Azure hesapları oluşturur ve bir varlık hiyerarşisi ayarlar. Admin1, Cloudyn 'e kaydolmaları ve Cloudyn portalında oturum açması için gereken Admin2, kiracı yöneticisi 'ne bildirir.
+> Admin1, bir Microsoft Bulut Çözümü Sağlayıcısı veya Kurumsal Anlaşma kullanıcısı olabilir. Kuruluşu, Cloudyn'i kullanmaya başlamaya hazırlanıyor.  Azure portalından kaydoluyor ve Cloudyn portalında oturum açıyor. Cloudyn hizmetini kaydeden ve Cloudyn portalında oturum açan Admin1, *birincil yönetici* oluyor. Admin1 herhangi bir kullanıcı hesabı oluşturmuyor. Ancak Cloudyn portalını kullanarak Azure hesapları oluşturuyor ve bir varlık hiyerarşisi belirliyor. Admin1, kiracı yöneticisi olan Admin2'ye Cloudyn'e kaydolması ve Cloudyn portalında oturum açması gerektiğini bildiriyor.
 >
-> Azure portalı üzerinden Admin2 kaydeder. Ancak Cloudyn portalında oturum açmaya çalıştıklarında, hesaplarının **askıya alındığını**belirten bir hata alırlar. Admin1, birincil yönetici hesabı askıya alınması bildirilir. Admin1 Admin2'ın hesabı etkinleştirin ve vermek için gereksinim duyduğu *yönetici varlık erişimi* uygun varlıkların ve kullanıcı yönetim erişimini ve etkin kullanıcı hesabı sağlar.
+> Admin2, Azure portalından kaydoluyor. Ancak Cloudyn portalında oturum açmaya çalıştığında hesabının **askıya alındığını** belirten bir hatayla karşılaşıyor. Birincil yönetici olan Admin1'i hesabın askıya alındığına dair bilgilendiriyor. Admin1'in Admin2’nin hesabını etkinleştirmesi ve uygun varlıklar için *yönetici varlığı erişimi* vermesi, kullanıcı yönetimi erişimi sağlaması ve kullanıcı hesabını etkinleştirmesi gerekiyor.
 
 
-Bir istek, bir kullanıcı için erişim izni olan bir uyarı alırsanız, kullanıcı hesabı'nı etkinleştirmeniz gerekir.
+Bir kullanıcıya erişim izni verme isteği içeren bir uyarı alırsanız kullanıcı hesabını etkinleştirmeniz gerekir.
 
 Kullanıcı hesabını etkinleştirmek için:
 
-1. İçin Cloudyn, Cloudyn ' için kullandığınız Azure yönetici kullanıcı hesabıyla oturum açın. Veya yönetici erişim izni bir kullanıcı hesabıyla oturum açın.
-2. Sağ üst köşedeki dişli simgesini seçin ve seçin **kullanıcı yönetimi**.
-3. Kullanıcıyı bulun, kalem simgesini seçin ve ardından kullanıcı düzenleyin.
-4. Altında **kullanıcı durumu**, durumu değiştirme **askıya alındı** için **etkin**.
+1. Cloudyn'i kurmak için kullandığınız Azure yöneticisi kullanıcı hesabını kullanarak Cloudyn'de oturum açın. Yönetici erişimi verilmiş olan bir kullanıcı hesabıyla da oturum açabilirsiniz.
+2. Sağ üst kısımdaki dişli simgesine tıklayın ve **Kullanıcı Yönetimi**'ni seçin.
+3. Kullanıcıyı bulun, kalem simgesini seçin ve kullanıcıyı düzenleyin.
+4. **Kullanıcı durumu** bölümünde durumu **Askıya alındı** yerine **Etkin** olarak değiştirin.
 
-Cloudyn kullanıcı hesapları, çoklu oturum açmayı azure'dan kullanarak bağlanın. Bir kullanıcı parolasını mistypes, Azure yine de erişebilmeleri olsa da bunlar Cloudyn dışında saldırdığında.
+Cloudyn kullanıcı hesapları, Azure'dan çoklu oturum açma ile bağlanır. Parolasını yanlış yazan bir kullanıcının Cloudyn hesabı kilitlenebilir ancak bu kullanıcı Azure'a erişmeye devam edebilir.
 
-Cloudyn ' deki e-posta adresinizi Azure 'daki varsayılan adresten değiştirirseniz, hesabınız kilitlenebilir. "Durum ınitiallysuspsonsonu" gösterebilir. Kullanıcı hesabınız kilitlendi, hesabınızı sıfırlamak için başka bir yönetici ile iletişime geçin.
+Cloudyn'deki e-posta adresinizi Azure'daki varsayılan adresten farklı olacak şekilde değiştirirseniz hesabınız kilitlenebilir. "durum initiallySuspended" ifadesi görüntülenebilir. Kullanıcı hesabınızın kilitlenmesi halinde başka bir yöneticiden hesabınızı kilitlemesini isteyin.
 
-Hesaplardan birini kilitli durumunda en az iki Cloudyn yöneticisi hesabı oluşturmanızı öneririz.
+Birinin kilitlenme ihtimaline karşı en az iki Cloudyn yönetici hesabı oluşturmanız önerilir.
 
-Cloudyn portalında oturum açamıyorsanız Cloudyn'e oturum açmak için doğru URL'yi kullandığınızdan emin olun. Kullanım [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Cloudyn portalında oturum açamıyorsanız Cloudyn'de oturum açmak için doğru URL'yi kullandığınızdan emin olun. [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) adresini kullanın.
 
-Cloudyn doğrudan URL kullanmaktan kaçının https://app.cloudyn.com.
+Doğrudan Cloudyn'in URL'sini (https://app.cloudyn.com ) kullanmaktan kaçının.
 
-## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Azure kimlik etkinleştirilmemiş hesaplarıyla nasıl etkinleştirebilirim?
+## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Etkinleştirilmemiş hesapları Azure kimlik bilgileriyle nasıl etkinleştirebilirim?
 
-Hesaplarınız Cloudyn tarafından bulunduktan hemen sonra maliyet verilerini hemen maliyet tabanlı raporlara sağlanır. Bununla birlikte, Cloudyn kullanım ve performans verilerini sağlamak hesapları için Azure kimlik bilgilerinizi kaydetmeniz gerekir. Yönergeler için [bir hesap ekleyin veya aboneliği güncelleştirme](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
+Azure hesaplarınız Cloudyn tarafından keşfedildikten hemen sonra maliyet tabanlı raporlar halinde maliyet verileri sağlanır. Ancak Cloudyn'in kullanım ve performans verilerini sunabilmesi için Azure kimlik bilgilerinizi hesaplara kaydetmeniz gerekir. Yönergeler için bkz. [Hesap ekleme veya aboneliği güncelleştirme](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
-Azure'ı eklemek için hesap adı, abonelik sağındaki düzenleme simgesi Cloudyn portalında, bir hesabın kimlik bilgilerini seçin.
+Bir hesaba Azure kimlik bilgilerini eklemek için Cloudyn portalında hesap adının (aboneliğin değil) sağ tarafındaki kalem simgesini seçin.
 
-Azure kimlik bilgilerinizi Cloudyn'e eklenene kadar hesabı olarak görünür _beklemediğiniz etkinleştirilmiş_.
+Azure kimlik bilgileriniz Cloudyn'e eklenene kadar hesap _etkinleştirilmemiş_ olarak görünür.
 
-## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Mevcut bir aboneliğe birden çok hesap ve varlıkları nasıl ekleyebilirim?
+## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Mevcut aboneliğe nasıl birden fazla hesap ve varlık nasıl ekleyebilirim?
 
-Ek varlıklar Cloudyn aboneliğine ek Kurumsal anlaşmalar eklemek için kullanılır. Daha fazla bilgi için [oluşturun ve varlıkları yönetme](tutorial-user-access.md#create-and-manage-entities).
+Cloudyn aboneliğine ek Kurumsal Anlaşma eklemek için ek varlıklar kullanılır. Daha fazla bilgi için bkz. [Varlıkları oluşturma ve yönetme](tutorial-user-access.md#create-and-manage-entities).
 
 CSP'ler için:
 
-Bir varlığa ek CSP hesapları eklemek için seçin **MSP erişim** yerine **Kurumsal** yeni bir varlık oluşturduğunuzda. Hesabınızı bir Kurumsal Anlaşma kaydedilir ve CSP kimlik bilgileri eklemek istediğiniz, Cloudyn destek personeli, hesap ayarlarını değiştirmek gerekebilir. Ücretli bir Azure abonesi iseniz, Azure portalında yeni bir destek isteği oluşturabilirsiniz. Seçin **Yardım + Destek**ve ardından **yeni destek isteği**.
+Bir varlığa ek CSP hesapları eklemek için yeni varlığı oluştururken **Kurumsal** yerine **MSP Erişimi**'ni seçin. Hesabınız Kurumsal Anlaşma olarak kayıtlıysa ve CSP kimlik bilgileri eklemek istiyorsanız Cloudyn destek ekibinin hesap ayarlarınızı değiştirmesi gerekebilir. Ücretli bir Azure abonesiyseniz, Azure portalında yeni bir destek isteği oluşturabilirsiniz. **Yardım + destek** ve ardından **Yeni destek isteği**'ni seçin.
 
-## <a name="currency-symbols-in-cloudyn-reports"></a>Cloudyn raporlarında para birimi sembolleri
+## <a name="currency-symbols-in-cloudyn-reports"></a>Cloudyn raporlarındaki para birimi simgeleri
 
-Farklı para birimlerinin kullanarak birden çok Azure hesabında olabilir. Bununla birlikte, Cloudyn maliyet raporlarında, rapor başına birden fazla para birimi türü gösterme.
+Farklı para birimlerini kullanan birden fazla Azure hesabına sahip olabilirsiniz. Ancak Cloudyn'deki raporlar, rapor başına yalnızca bir para birimi türü gösterir.
 
-Farklı para birimlerinin kullanarak birden fazla aboneliğiniz varsa, bir üst varlık ve onun alt varlık para ABD Doları görüntülenir **$** . Bizim önerilen en iyi uygulama, aynı varlık hiyerarşideki farklı para birimlerinin kullanarak önlemek içindir. Diğer bir deyişle, bir varlık yapısında düzenlenmiş tüm abonelikler aynı para kullanmanız gerekir.
+Farklı para birimlerini kullanan birden fazla aboneliğiniz varsa, üst varlık ve onun alt varlığı olan para birimleri ABD doları **$** olarak görüntülenir. Önerilen en iyi yöntemlerden biri, aynı varlık hiyerarşisinde farklı para birimlerini kullanmaktan kaçınmaktır. Başka bir deyişle bir varlık yapısı altında düzenlenmiş olan tüm abonelikleriniz aynı para birimini kullanmalıdır.
 
-Cloudyn, otomatik olarak, Kurumsal Anlaşma abonelik para algılar ve düzgün şekilde raporlar sunar.  Bununla birlikte, Cloudyn ABD Doları yalnızca görüntüler **$** CSP ve doğrudan web Azure hesapları için.
+Cloudyn, Kurumsal Anlaşma aboneliğinizdeki para birimini otomatik olarak algılar ve bunu raporlarda doğru şekilde sunar.  Ancak Cloudyn, CSP ve doğrudan web Azure hesapları için yalnızca ABD doları **$** para birimini görüntüler.
 
-## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn veri nelerdir zaman çizelgeleri yenilensin mi?
+## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn veri yenileme zaman çizelgeleri nedir?
 
-Cloudyn, aşağıdaki veri yenileme zaman çizelgeleri sahiptir:
+Cloudyn aşağıdaki veri yenileme zaman çizelgelerine sahiptir:
 
-- **İlk**: ayarladıktan sonra Cloudyn maliyet verilerini görüntülemek için 24 saat sürebilir. Ayrıca, Cloudyn boyutlandırma önerileri görüntülemek için yeterli veri toplamak üzere 10 güne kadar da sürebilir.
-- **Günlük**: on günün sonuna kadar her ay, Cloudyn verilerinizin önceki günden sonra UTC + 3 hakkında sonraki günün tarihi göstermelidir.
-- **Aylık**: her ayın on günü için ilk günden Cloudyn verilerinizi yalnızca önceki ayın sonuna üzerinden gösterebilir.
+- **Başlangıç**: Ayarladıktan sonra, maliyet verilerinin Cloudyn'de görüntülemesi 24 saate kadar sürebilir. Ayrıca Cloudyn'in boyutlandırma önerilerini görüntülemesi için yeterli verilerin toplanması 10 güne kadar sürebilir.
+- **Günlük**: Cloudyn, her ayın onuncu gününden son gününe kadar bir sonraki gün yaklaşık UTC+3 sonrasında önceki günle ilgili güncel verileri göstermelidir.
+- **Aylık**: Cloudyn, her ayın ilk gününden onuncu gününe kadar yalnızca önceki ayın sonuna kadar olan verilerinizi gösterebilir.
 
-Cloudyn, önceki günün önceki gün tam veri kullanılabilir olduğunda verileri işler. Önceki günün verileri her gün genellikle UTC + 3 hakkında Cloudyn tarafından kullanılabilir. Etiketler gibi bazı veriler ilaveten 24 işlemek için saat sürebilir.
+Cloudyn, önceki güne ait tüm veriler kullanılabilir duruma geldiğinde bunları işler. Önceki günün verileri genellikle Cloudyn'de mevcuttur ancak her gün yaklaşık UTC+3 civarında verilir. Etiketler gibi bazı verileri işlemek için ayrı bir 24 saat sürebilir.
 
-Geçerli ay için verileri, her ayın başında toplamalarında kullanılamaz. Dönemi boyunca, hizmet sağlayıcıları önceki ay için bunların faturalandırma sonlandırın. Önceki ayın verilerini 10 gün sonra her ay başı Cloudyn 5'te görünür. Bu süre boyunca, yalnızca önceki ayın amorti edilmiş maliyet görebilirsiniz. Günlük faturalandırma ya da kullanım verilerini göremeyebilirsiniz. Cloudyn veri kullanılabilir olduğunda, geriye dönük olarak işler. İşlemden sonra tüm aylık verileri görüntülenir her ayın on günü beşinci arasında.
+Geçerli aya ait veriler, her ayın başında toplanmak için uygun değildir. Hizmet sağlayıcıları bu süre boyunca önceki ayın faturasını tamamlar. Önceki ayın verileri Cloudyn'de yeni ay başladıktan 5-10 gün sonra görünür. Bu süre boyunca yalnızca önceki aya ait amorti edilen maliyetleri görebilirsiniz. Günlük faturalandırma veya kullanım verilerini göremeyebilirsiniz. Veriler kullanılabilir hale geldiğinde Cloudyn bunları geriye dönük olarak işler. İşlem tamamlandıktan sonra her ayın beşinci günü ile onuncu günü arasında aylık verilerin tamamı görüntülenir.
 
-Cloudyn'e Azure'dan veri gönderen bir gecikme varsa, verileri Azure'da hala kaydedilir. Bağlantı geri geldiğinde, veriler Cloudyn'e aktarılır.
+Verilerin Azure'dan Cloudyn'e gönderilmesi sırasında bir gecikme yaşanırsa veriler Azure'da kaydedilmeye devam eder. Bağlantı kurulduğunda bu veriler Cloudyn'e aktarılır.
 
-## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn maliyet raporlarında maliyet dalgalanmaları
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn Maliyet Raporlarındaki maliyet dalgalanmaları
 
-Her bulut hizmeti sağlayıcıları güncelleştirilmiş fatura dosyaları gönderdiğinizde maliyet raporlarında maliyet dalgalanmaları gösterebilirsiniz. Yeni dosyaları bir bulut hizmeti sağlayıcısından dışında normal günlük veya aylık zamanlama bildirimi alındığında dalgalı maliyetler oluşur. Maliyet değişiklikler Cloudyn yeniden hesaplanmasına neden yoktur.
+Bulut hizmeti sağlayıcılarının güncelleştirilmiş fatura dosyaları göndermesi durumunda maliyet raporlarında dalgalanmalar olabilir. Maliyet dalgalanmalarının nedeni, bulut hizmeti sağlayıcısından olağan günlük veya aylık raporlama zamanlaması haricinde yeni dosya gelmesidir. Maliyet değişikliklerinin nedeni Cloudyn hesaplamaları değildir.
 
-Ay boyunca, bulut hizmet sağlayıcınız tarafından gönderilen tüm faturalandırma günlük maliyetlerinizi tahmini dosyalarıdır. Bazen verileri sık sık güncelleştirilir — birden çok kez günde bazen. AWS ile Azure sık güncelleştirmeler. Önceki aya ait fatura hesaplama ve son fatura dosya alındığında, maliyet toplamları kararlı kalmalıdır. Genellikle, 10 ay tarafından.
+Ay boyunca bulut hizmeti sağlayıcınız tarafından gönderilen tüm faturalandırma dosyaları, günlük maliyetlerinizin tahmini değerini gösterir. Bazen veriler sıklıkla (genellikle günde birkaç kaz) güncelleştirilir. AWS'de Azure'da olduğundan daha sık güncelleştirme yapılır. Önceki ay için faturalandırma toplamı tamamlandığında ve son faturalandırma dosyası alındığında maliyet toplamları sabit kalmalıdır. Bu da genellikle ayın 10'u olur.
 
-Değişiklikler, bulut hizmeti sağlayıcısından maliyet ayarlamaları aldığında gerçekleşir. Kredisi alma örnek verilebilir. İlgili ay kapatıldıktan sonra değişiklikleri ay ortaya çıkabilir. Değişiklikler yeniden hesaplama bulut hizmet sağlayıcınız tarafından yapılan her. Cloudyn, tüm ayarlarını hesaplanır emin olmak için geçmiş verilerini güncelleştirir. Ayrıca maliyetleri doğru içinde görüntülendiğini doğrular, bildirir.
+Bulut hizmeti sağlayıcınızdan maliyet ayarlamaları aldığınızda değişiklikler oluşur. Buna örnek olarak kredi almak verilebilir. İlgili ay kapatıldıktan aylar sonra değişiklik yapılabilir. Bulut hizmeti sağlayıcınız tarafında yeniden hesaplama yapıldığında ilgili değişiklikler gösterilir. Cloudyn, tüm ayarlamaların yeniden hesaplanmasını sağlamak için geçmiş verilerini güncelleştirir. Ayrıca maliyetlerin raporlarda doğru şekilde gösterildiğini de doğrular.
 
-## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Nasıl doğrudan bir CSP dolaylı CSP müşterileri veya iş ortakları için Cloudyn erişimi yapılandırabilirsiniz?
+## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Doğrudan CSP'ler, dolaylı CSP müşterileri veya iş ortakları için Cloudyn erişimini nasıl yapılandırabilir?
 
-Yönergeler için [Cloudyn'de dolaylı CSP erişimini yapılandırma](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
+Yönergeler için bkz. [Cloudyn’de dolaylı CSP erişimini yapılandırma](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
 
-## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Görüntülenecek iyileştirici menü öğesi nedeni nedir?
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>İyileştirici menü öğesi neden kayboldu?
 
-Azure Resource Manager erişim ve veri ekledikten sonra görmelisiniz, toplanır **iyileştirici** seçeneği. Azure Resource Manager erişimi etkinleştirmek için bkz: [nasıl etkinleştirilmemiş hesapları Azure kimlik bilgileri ile etkinleştirebilirim?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+Azure Resource Manager erişimi eklendikten ve veriler toplandıktan sonra **İyileştirici** seçeneğinin gelmesi gerekir. Azure Resource Manager erişimini etkinleştirmek için bkz. [Etkinleştirilmemiş hesapları Azure kimlik bilgileriyle nasıl etkinleştirebilirim?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cloudyn-agent-based"></a>Cloudyn Aracısı bağlıdır?
+## <a name="is-cloudyn-agent-based"></a>Cloudyn, aracı tabanlı mıdır?
 
-Hayır. Aracıları kullanılmaz. Microsoft Insights API'den VM'ler için Azure sanal makine ölçüm verileri toplanır. Azure sanal makinelerinden ölçüm verilerini toplamak istiyorsanız, tanılama ayarları etkin olması gerekir.
+Hayır. Aracı kullanılmaz. VM'ler için Azure sanal makine ölçüm verileri, Microsoft Insights API'sinden alınır. Azure VM'lerinden ölçüm verilerini almak istiyorsanız tanılama ayarlarının etkinleştirilmesi gerekir.
 
-## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn raporlarını, rapor başına birden fazla AD Kiracı göstermemesidir?
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn raporları, rapor başına birden fazla AD kiracısı gösteriyor mu?
 
-Evet. Yapabilecekleriniz [karşılık gelen bir bulut hesap varlığı oluşturma](tutorial-user-access.md#create-and-manage-entities) sahip olduğunuz her bir AD Kiracı için. Ardından, tüm Azure AD Kiracı verilerinizi ve Amazon Web Services ve Google Cloud Platform dahil diğer bulut platform sağlayıcıları görüntüleyebilirsiniz.
+Evet. Sahip olduğunuz her bir AD kiracısı için [karşılık gelen bir bulut hesabı varlığı oluşturabilirsiniz](tutorial-user-access.md#create-and-manage-entities). Daha sonra Azure AD kiracı verilerinizin yanı sıra Amazon Web Services ve Google Cloud Platform dahil olmak üzere diğer bulut platformu sağlayıcılarını görüntüleyebilirsiniz.

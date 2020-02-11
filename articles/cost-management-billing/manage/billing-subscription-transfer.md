@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270864"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
@@ -86,7 +86,7 @@ Visual Studio ve Microsoft İş Ortağı Ağı abonelikleriyle ilişkili aylık 
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Kurumsal Anlaşma (EA) aboneliklerinin faturalama sahipliğini aktarma
 
-Kuruluş Yöneticisi, bir kayıt içindeki hesaplar arasında aboneliklerin sahipliğini farklı kişilere aktarabilir. Daha fazla bilgi için bkz. EA portalındaki [hesap sahibini değiştirme](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) .
+Kuruluş Yöneticisi, bir kayıt içindeki hesaplar arasında aboneliklerin sahipliğini farklı kişilere aktarabilir. Daha fazla bilgi için bkz. [EA portalında hesap sahibini değiştirme](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner).
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Faturalama sahipliğini kabul ettikten sonraki adımlar
 
@@ -190,7 +190,7 @@ Aktarım sırasında [Rol Tabanlı Erişim Denetimi (RBAC)](../../role-based-acc
 
 Alıcının kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
 
-  1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+  1. [Azure Portal](https://portal.azure.com) oturum açın.
   2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.
   3. Kaynağı seçin.
   4. Kaynak sayfasında **Ayarlar**'a tıklayın. Buradan mevcut gizli dizileri görüntüleyebilir ve güncelleştirebilirsiniz.
@@ -222,7 +222,7 @@ Abonelik türlerinin hepsi faturalama sahipliğinin aktarımını desteklemez. A
 Bir Microsoft Azure planı aboneliğini aktarmaya çalışıyorsanız ve gerekli izniniz yoksa bu hatayı görürsünüz. Bir Microsoft Azure planı aboneliğini aktarmak için, aboneliğin faturalandırıldığı fatura bölümünde bir sahip veya katkıda bulunan olmanız gerekir. Daha fazla bilgi için bkz. [Fatura bölümleri için abonelikleri yönetme](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

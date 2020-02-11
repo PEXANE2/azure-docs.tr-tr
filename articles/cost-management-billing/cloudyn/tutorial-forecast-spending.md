@@ -1,21 +1,20 @@
 ---
 title: 'Öğretici: Azure’da Cloudyn ile harcama tahmini | Microsoft Docs'
 description: Bu öğreticide, geçmiş kullanımı ve harcanan verileri kullanarak harcama tahmini yapmayı öğrenirsiniz.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: ab2a29eacbb2881dbfc0f383f70dbb5148506f5a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987484"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769921"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Öğretici: Gelecek harcamaları tahmin etme
 
@@ -37,11 +36,11 @@ Cloudyn, zaman içindeki kullanımınızı temel alarak harcama tahmini yapmanı
 
 Geçerli Ay Öngörülen Maliyet raporu, hizmetlerinizin maliyetini gösterir. Ayın başlangıcına ve önceki aya ait maliyetleri kullanarak tahmini maliyeti gösterir. Portalın üstündeki raporlar menüsünde **Maliyetler** > **Öngörü ve Bütçe** > **Geçerli Ay Öngörülen Maliyet** seçeneklerine tıklayın. Aşağıdaki resimde bir örnek gösterilir.
 
-![Geçerli ay öngörülen maliyet raporu gösterilen örnek bilgileri](./media/tutorial-forecast-spending/project-month01.png)
+![Geçerli ay öngörülen maliyet raporunda gösterilen örnek bilgiler](./media/tutorial-forecast-spending/project-month01.png)
 
 Örnekte, en fazla harcama yapılan hizmetleri görebilirsiniz. Azure maliyetleri, AWS maliyetlerinden daha düşüktü. Azure VM'ler için maliyet öngörü ayrıntılarını görmek istiyorsanız, **Filtre** listesinde **Azure/VM**’i seçin.
 
-![Azure VM geçerli ay öngörülen maliyet gösteren örnek](./media/tutorial-forecast-spending/project-month02.png)
+![Azure VM geçerli ay öngörülen maliyetini gösteren örnek](./media/tutorial-forecast-spending/project-month02.png)
 
 İlgilendiğiniz diğer hizmetlere yönelik aylık maliyeti öngörülerine bakmak için önceki temel adımların aynılarını izleyin.
 
@@ -49,11 +48,11 @@ Yıllık Öngörülen Maliyet raporu, hizmetlerinizin sonraki 12 ay boyunca orta
 
 Portalın üstündeki raporlar menüsünde **Maliyetler** > **Öngörü ve Bütçe** > **Yıllık Öngörülen Maliyet** seçeneklerine tıklayın. Aşağıdaki resimde bir örnek gösterilir.
 
-![Yıllık öngörülen maliyet raporu gösteren örnek](./media/tutorial-forecast-spending/project-annual01.png)
+![Yıllık öngörülen maliyet raporunu gösteren örnek](./media/tutorial-forecast-spending/project-annual01.png)
 
 Örnekte, en fazla harcama yapılan hizmetleri görebilirsiniz. Aylık örnekteki gibi, Azure maliyetleri AWS maliyetlerinden daha düşüktü. Azure VM'ler için maliyet öngörü ayrıntılarını görmek istiyorsanız, **Filtre** listesinde **Azure/VM**’i seçin.
 
-![VM'lerin yıllık öngörülen maliyeti gösteren örnek](./media/tutorial-forecast-spending/project-annual02.png)
+![VM'lerin yıllık öngörülen maliyeti raporunu gösteren örnek](./media/tutorial-forecast-spending/project-annual02.png)
 
 Yukarıdaki resimde, Azure VM’lerinin yıllık öngörülen maliyeti 28.374 ABD dolarıdır.
 

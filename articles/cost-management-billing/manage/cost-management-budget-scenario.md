@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992731"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets ile maliyetleri yönetme
@@ -135,7 +135,7 @@ Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir 
 3.  **Yeni adım** > **Eylem ekle**’yi seçin.
 
     ![Azure - Yeni adım - Eylem ekle](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  **Veri işlemleri-JSON ayrıştırma** [eylemini](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)bulmak ve seçmek için **LOGIC Apps Tasarımcısı** arama kutusunda "JSON 'ı ayrıştır" ifadesini arayın.
+4.  **Logic Apps Tasarımcısı** arama kutusuna "JSON ayrıştırma" yazarak **Veri İşlemleri - JSON Ayrıştırma** [eylemini](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) bulup seçin.
 
     ![Azure - Mantıksal uygulama - JSON ayrıştırma eylemi ekleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  JSON Ayrıştırma yükü için **İçerik** adı olarak "Yük" yazın veya dinamik içerikten "Gövde" etiketini kullanın.

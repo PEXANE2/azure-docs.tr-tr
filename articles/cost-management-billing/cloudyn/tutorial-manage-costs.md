@@ -1,21 +1,20 @@
 ---
 title: 'Öğretici: Azure’da Cloudyn ile maliyetleri yönetme | Microsoft Docs'
 description: Bu öğreticide, maliyet dağıtımı, ücret hesaplama raporları ve ücret yansıtma raporları kullanarak maliyetleri yönetmeyi öğrenirsiniz.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987414"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769902"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Öğretici: Cloudyn kullanarak maliyetleri yönetme
 
@@ -23,7 +22,7 @@ Maliyetlerin etiketler temelinde dağıtımını yaparak Cloudyn'de maliyetleri 
 
 Örneğin, mühendislik maliyetleri için geri ödeme almak isteyebilirsiniz. Mühendislik ekibinize, kaynak maliyetleri temelinde belirli bir miktar almanız gerektiğini gösterebilmelisiniz. Tüm tüketilen *mühendislik* etiketli kaynaklar için onlara bir rapor gösterebilirsiniz.
 
-Bu makalede, etiketler ve kategoriler bazen eş anlamlı kullanılmıştır. Kategorileri geniş koleksiyonlardır ve birçok şey olabilir. Bunlar iş birimlerini, maliyet merkezlerini, web hizmetlerini veya etiketlenmiş herhangi bir şeyi içerebilir. Etiketler, birden fazla kaynağa ve kaynak grubuna aynı etiketi uygulayarak, kaynakları kategorilere ayırmanıza ve birleştirilmiş faturalandırma bilgilerini görüntülemenize ve yönetmenize olanak tanıyan ad/değer çiftleridir. Azure portalının önceki sürümlerinde *etiket adı*, *anahtar* olarak adlandırılıyordu. Etiketler tek bir Azure aboneliği için oluşturulur ve bu abonelikte depolanır. AWS etiketleri anahtar/değer çiftlerinden oluşur. Hem Azure'da hem de AWS'de kullanıldığından, Cloudyn'de de *anahtar* terimi kullanılır. Kategori Yöneticisi, etiketleri birleştirmek için anahtarları (etiket adları) kullanır.
+Bu makalede, etiketler ve kategoriler bazen eş anlamlı kullanılmıştır. Kategorileri geniş koleksiyonlardır ve birçok şey olabilir. Bunlar iş birimlerini, maliyet merkezlerini, web hizmetlerini veya etiketlenmiş herhangi bir şeyi içerebilir. Etiketler, birden fazla kaynağa ve kaynak grubuna aynı etiketi uygulayarak kaynakları kategorilere ayırmanızı, birleşik fatura bilgilerini görüntülemenizi ve yönetmenizi sağlayan ad/değer çiftleridir. Azure portalının önceki sürümlerinde *etiket adı*, *anahtar* olarak adlandırılıyordu. Etiketler tek bir Azure aboneliği için oluşturulur ve bu abonelikte depolanır. AWS etiketleri anahtar/değer çiftlerinden oluşur. Hem Azure'da hem de AWS'de kullanıldığından, Cloudyn'de de *anahtar* terimi kullanılır. Kategori Yöneticisi, etiketleri birleştirmek için anahtarları (etiket adları) kullanır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -53,11 +52,11 @@ Maliyet dağıtımına başladığınızda, ilk olarak bir maliyet modeli kullan
 
 Özel bir maliyet dağıtma modeli oluşturmak için, raporun menüsünde **Maliyetler** &gt; **Maliyet Yönetimi** &gt; **360° Maliyet Dağıtma**'yı seçin.
 
-![360 maliyet seçtiğiniz bir panoya gösteren örnek](./media/tutorial-manage-costs/cost-allocation-360.png)
+![360 Maliyet Dağıtma seçimi yapılan panoyu gösteren örnek](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 **360 Maliyet Dağıtma** sayfasında **Ekle**'yi seçin ve ardından maliyet modeliniz için bir ad ve açıklama girin. Tüm hesapları veya tek tek hesapları seçin. Tek tek hesapları kullanmak istiyorsanız, birden çok bulut hizmeti sağlayıcısından birden çok hesap seçebilirsiniz. Sonra, bulunan ve verilerinizi kategorilere ayıracak etiketleri seçmek için **Kategorilere Ayırma**'ya tıklayın. Modelinize eklemek istediğiniz etiketleri (kategorileri) seçin. Aşağıdaki örnekte **Unit** (Birim) etiketi seçilmiştir.
 
-![Örnek gösteren maliyet modeli kategorilere ayırma](./media/tutorial-manage-costs/cost-model01.png)
+![Maliyet modeli kategorilere ayırma işlemini gösteren örnek](./media/tutorial-manage-costs/cost-model01.png)
 
 Örnekte, 19.680 ABD dolarının kategorilere ayrılmadığı (etiket içermediği) gösteriliyor.
 
@@ -95,7 +94,7 @@ Yeni kural oluşturmak için, **Kurallar** alanında yeni kuralı oluşturun. Ö
 
 Aşağıdaki resimde, **Work-Load** adlı yeni kategori için oluşturulan örnek kurallar gösterilir:
 
-![Yeni iş yükü kategori gösteren örnek](./media/tutorial-manage-costs/category01.png)
+![Yeni iş yükü kategorisini gösteren örnek](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Etiket kaynakları ve raporlar
 
@@ -122,7 +121,7 @@ Kuruluşların ücret hesaplama ve ücret yansıtma işlemlerini yapmak için ku
 
 Maliyet dağıtma sonuçlarını görüntülemek için, Maliyet Analizi raporunu açın ve oluşturduğunuz maliyet modelini seçin. Ardından, maliyet modelinde seçilen bir veya birden çok etiketle bir gruplandırma ekleyin.
 
-![Maliyet gösteren bir örnek veri yeni maliyet analizi raporu](./media/tutorial-manage-costs/cost-analysis.png)
+![Yeni maliyetten bir veri örneği gösteren Maliyet Analizi raporu](./media/tutorial-manage-costs/cost-analysis.png)
 
 Kolaylıkla belirli gruplar tarafından tüketilen belirli hizmetlere odaklanmış raporlar oluşturabilir ve kaydedebilirsiniz. Örneğin, Azure sanal makinelerini yaygın olarak kullanan bir bölümünüz olabilir. Tüketimi ve maliyetleri göstermek için Azure sanal makinelerine göre filtrelenmiş bir rapor oluşturabilirsiniz.
 
