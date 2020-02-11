@@ -109,6 +109,10 @@
           href: long-audio-api.md
         - name: Docker kapsayıcılarıyla konuşma sentezi özelliğini kullanma
           href: speech-container-howto.md?tabs=tts
+        - name: REST ile seslerin bir listesini alma (Python)
+          href: quickstart-python-get-text-to-speech-voices.md
+        - name: REST ile metin okumayı dönüştürme (Python)
+          href: quickstart-python-text-to-speech.md
     - name: Başvuru
       items:
         - name: Konuşma SDK'sı

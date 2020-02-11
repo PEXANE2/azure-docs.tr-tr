@@ -44,6 +44,8 @@
           href: get-started-partners.md
         - name: Power BI Desktop’a bağlanma
           href: /power-bi/desktop-connect-azure-cost-management
+        - name: Power BI şablon uygulamasıyla Azure maliyetlerini analiz etme
+          href: analyze-cost-data-azure-cost-management-power-bi-template-app.md
     - name: Başvuru
       items:
         - name: Azure Maliyet Yönetimi REST API
