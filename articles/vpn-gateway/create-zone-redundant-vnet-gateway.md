@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133614"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150221"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Kullanılabilirlik Alanları bölgede yedekli bir sanal ağ geçidi oluşturma
 
@@ -21,27 +21,11 @@ VPN ve ExpressRoute ağ geçitlerini Azure Kullanılabilirlik Alanları dağıta
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Bilgisayarınızda yerel olarak yüklü PowerShell veya Azure Cloud Shell kullanabilirsiniz. PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu özellik PowerShell modülünün en son sürümünü gerektirir.
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>PowerShell 'i yerel olarak kullanmak için
-
-Bilgisayarınızda PowerShell 'i yerel olarak kullanıyorsanız, Cloud Shell kullanmak yerine PowerShell modülünü 1.0.0 veya üstünü yüklemelisiniz. Yüklediğiniz PowerShell sürümünü denetlemek için şu komutu kullanın:
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps).
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. değişkenlerinizi bildirin
 
-Örnek adımlar için kullanılan değerler aşağıda listelenmiştir. Bunlara ek olarak, bazı örnekler adımlarda tanımlanan değişkenleri kullanır. Bu adımları kendi ortamınızda kullanıyorsanız, bu değerleri kendi değerlerinizle değiştirdiğinizden emin olun. Konum belirtirken, belirttiğiniz bölgenin desteklendiğini doğrulayın. Daha fazla bilgi için bkz. [SSS](#faq).
+Kullanmak istediğiniz değişkenleri bildirin. Aşağıdaki örneği kullanın ve gerektiğinde, değerleri kendi değerlerinizle değiştirin. Alıştırma sırasında herhangi bir noktada PowerShell/Cloud Shell oturumunuzu kapatırsanız, değişkenleri yeniden bildirmek için değerleri kopyalamanız ve yeniden yapıştırmanız yeterlidir. Konum belirtirken, belirttiğiniz bölgenin desteklendiğini doğrulayın. Daha fazla bilgi için bkz. [SSS](#faq).
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

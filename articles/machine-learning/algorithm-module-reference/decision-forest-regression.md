@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 2c1b61d43fde00c435b83071015246bf990e873e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546682"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152389"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
 
@@ -24,7 +24,7 @@ Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak 
 
 Modeli yapılandırdıktan sonra, etiketli bir veri kümesi ve [model eğitimi](./train-model.md) modülünü kullanarak modeli eğmeniz gerekir. Daha sonra eğitilen model, tahminleri yapmak için kullanılabilir. 
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Karar ağaçları, her bir örnek için bir dizi basit test gerçekleştiren ve bir yaprak düğümüne (karar) kadar bir ikili ağaç veri yapısına geçiş yapan, parametrik olmayan modellerdir.
 

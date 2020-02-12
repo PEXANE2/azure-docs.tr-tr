@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7f8989cd1a174ecd66f23324a7760fb5cbb665b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838007"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148073"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (klasik) modelinin bir deneyden bir Web hizmetine nasıl ilerlemesi
 Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modelini temsil eden bir ***deneme*** geliştirmenize, çalıştırmanıza, test etmenize ve tekrarlamenize olanak sağlayan etkileşimli bir tuval sağlar. Şunları yapmak için kullanabileceğiniz çok çeşitli modüller mevcuttur:
@@ -49,7 +49,7 @@ Machine Learning Studio (klasik) kullanarak geliştirdikçe ve dağıtırken tip
 ***Eğitim*** denemesi, Web hizmetinizi Machine Learning Studio (klasik) geliştirmenin ilk aşamasıdır. Eğitim denemesinin amacı, bir makine öğrenimi modeli geliştirmek, test etmek, yinelemek ve en sonunda eğitmeniz için size bir yer sağlamaktır. En iyi çözümü yazarken aynı anda birden çok modeli eğitebilirsiniz, ancak denemeye başladıktan sonra tek bir eğitilen model seçip denemeyi deneyden çıkarabilirsiniz. Tahmine dayalı analiz denemesi geliştirme hakkında bir örnek için bkz. [Azure Machine Learning Studio (klasik) üzerinde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü geliştirme](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Tahmine dayalı deneme
-Eğitim denemenize yönelik eğitilen bir modelden sonra eğitim denemenizin bir tahmine dayalı olarak dönüştürülmesi işlemini başlatmak için **Web hizmeti ayarla** ' ya ve Machine Learning Studio (klasik) ' de tahmine **dayalı Web hizmeti** ' ni seçin.  ***deneme***. Tahmine dayalı denemenin amacı, eğitilen modelinizin yeni verileri, son olarak Azure Web hizmeti olarak kullanım açısından kullanıma hazır hale gelmesini sağlamak için kullanmaktır.
+Eğitim denemenize yönelik eğitilen bir modelden sonra, eğitim denemenizi bir tahmine ***dayalı***denemeye dönüştürme işlemini başlatmak Için **Web hizmeti ayarla** ' ya tıklayın ve Machine Learning Studio (klasik) ' de tahmine **dayalı Web hizmeti** ' ni seçin. Tahmine dayalı denemenin amacı, eğitilen modelinizin yeni verileri, son olarak Azure Web hizmeti olarak kullanım açısından kullanıma hazır hale gelmesini sağlamak için kullanmaktır.
 
 Bu dönüştürme işlemi sizin için aşağıdaki adımlarda yapılır:
 
@@ -95,14 +95,14 @@ Modeli değiştirmiyorsanız, ancak yalnızca Web hizmetinin verileri nasıl iş
 
 Makine öğrenimi modelinizi korumak istiyorsanız, ancak yeni verilerle yeniden eğmek istiyorsanız iki seçeneğiniz vardır:
 
-1. **Web hizmeti çalışırken modeli yeniden eğmek** isterseniz, tahmine dayalı Web hizmeti çalışırken modelinize yeniden eğmek istiyorsanız bunu, eğitim denemenize ***yeniden eğitim***denemesi yaparak, daha sonra  ***yeniden eğitim Web* hizmeti**olarak dağıtabilirsiniz. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Machine Learning modellerini programlı olarak yeniden eğitme](/azure/machine-learning/studio/retrain-machine-learning-model).
+1. **Web hizmeti çalışırken modeli yeniden eğmek** isterseniz, tahmine dayalı Web hizmeti çalışırken modelinize yeniden eğmek istiyorsanız bunu, eğitim denemenize bir ***yeniden eğitim***denemesi yaparak bir  ***yeniden eğitme Web* hizmeti**olarak dağıtabilirsiniz. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Machine Learning modellerini programlı olarak yeniden eğitme](/azure/machine-learning/studio/retrain-machine-learning-model).
 2. **Özgün eğitim denemesine dönün ve modelinizi geliştirmek için farklı eğitim verileri kullanın** . tahmine dayalı denemenizin Web hizmetiyle bağlantısı vardır, ancak eğitim denemesi bu şekilde doğrudan bağlantılı değildir. Özgün Eğitim denemesini değiştirip **Web hizmeti ayarla**' ya tıkladığınızda, dağıtıldığında *Yeni* bir Web hizmeti oluşturacak *Yeni* bir tahmine dayalı deneme oluşturulur. Yalnızca özgün Web hizmetini güncelleştirmez.
 
    Eğitim denemesini değiştirmeniz gerekiyorsa dosyayı açın ve **farklı kaydet** ' e tıklayarak bir kopyasını oluşturun. Bu, özgün eğitim denemenize, tahmine dayalı denemenize ve Web hizmetine dokunmaz. Artık, yaptığınız değişikliklerle yeni bir Web hizmeti oluşturabilirsiniz. Yeni Web hizmetini dağıttıktan sonra, önceki Web hizmetini durdurup durdurmayacağınıza veya yeni bir hizmet ile birlikte çalışmaya devam edebilirsiniz.
 
 **Farklı bir model eğitme**
 
-Farklı bir makine öğrenimi algoritması seçme, farklı bir eğitim yöntemi vb. gibi orijinal tahmine dayalı denemenize değişiklikler yapmak istiyorsanız, modelinize yeniden eğitim sağlamak için yukarıda açıklanan ikinci yordamı izlemeniz gerekir: Eğitim denemesi, **farklı kaydet** ' e tıklayarak bir kopya oluşturun, ardından modelinizi geliştirme, tahmine dayalı deneme oluşturma ve Web hizmetini dağıtma yeni yolunu başlatın. Bu, özgün bir hizmetle ilgisi olmayan yeni bir Web hizmeti oluşturur. bir veya her ikisinin de çalışmaya devam etmesini seçebilirsiniz.
+Orijinal tahmine dayalı denemenize değişiklikler yapmak istiyorsanız, farklı bir makine öğrenimi algoritması seçme, farklı bir eğitim yöntemi, vb. gibi, modelinize yeniden eğitim sağlamak için yukarıda açıklanan ikinci yordamı izlemeniz gerekir: Eğitim denemesini açın, bir kopya oluşturmak için **farklı kaydet** ' e tıklayın ve ardından modelinizi geliştirmeye, tahmine dayalı denemeyi oluşturmaya ve Web hizmetini dağıtmaya yönelik yeni yolu başlatın. Bu, özgün bir hizmetle ilgisi olmayan yeni bir Web hizmeti oluşturur. bir veya her ikisinin de çalışmaya devam etmesini seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Geliştirme ve deneme süreci hakkında daha fazla bilgi için aşağıdaki makalelere bakın:

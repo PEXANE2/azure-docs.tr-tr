@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: b57728b56efc84b903ed442c0dea7e70d4eb5bb2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4907166c392172d243d2d8bb424d9cfd3c8441b2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454848"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150417"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>İndirilebilir Bilgi Grafiği: Algoritma örnekleri ile machine learning temel bilgileri
 
@@ -27,7 +27,7 @@ Machine learning temel bilgileri yaygın machine learning soruları yanıtlamak 
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Algoritma örnekleri ile bilgi Grafiği'ni indirin
 
-**[İndirin: Bilgi grafiği machine learning temel bilgileri algoritma örnekleri (PDF) için bağlantılarla birlikte](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[İndirin: algoritma örneklerine yönelik bağlantılarla makine öğrenimi temelleri hakkında bilgi grafiği (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![Bilgi grafiği: algoritma örnekleri ile temellerini öğrenme makine. Yaygın algoritmalar. Yeni başlayanlar için makine.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
@@ -36,7 +36,7 @@ Machine learning temel bilgileri yaygın machine learning soruları yanıtlamak 
 * Farklı makine öğrenimi algoritmalarının, nasıl kullanılabilecekleri ve çözümünüz için doğru bir şekilde nasıl seçeceğiniz hakkında daha derin bir tartışma için bkz. [Microsoft Azure Machine Learning Studio algoritmaları seçme (klasik)](algorithm-choice.md).
 * Machine Learning Studio (klasik) ' de bulunan tüm makine öğrenimi algoritmalarının kategorilerine göre bir liste için, bkz. Machine Learning Studio (klasik) algoritması ve modül yardımı 'nda [modeli başlatma][initialize-model] .
 * Machine Learning Studio (klasik) içindeki algoritmaların ve modüllerin tam alfabetik bir listesi için, bkz. Machine Learning Studio (klasik) algoritması ve modül yardımı 'nda [a-Z Machine Learning Studio (klasik) modülleri listesi][a-z-list] .
-* Azure AI Gallery ve topluluk tarafından oluşturulan kaynaklara genel bir bakış için bkz: [paylaşımı ve Azure AI Gallery'de kaynakları bulmak](gallery-how-to-use-contribute-publish.md).
+* Azure Yapay Zeka Galerisi ve topluluk tarafından üretilen birçok kaynağa genel bir bakış için, bkz. [Azure yapay zeka Galerisi kaynakları paylaşma ve bulma](gallery-how-to-use-contribute-publish.md).
 
 
 <!-- Module References -->

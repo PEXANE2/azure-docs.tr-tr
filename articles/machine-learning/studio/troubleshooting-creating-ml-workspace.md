@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3f2cc3dcc5c9e34590d1cb2d0d3747fd1255f0e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a4385d88912e7c4d391baa8f5bc50be1e07f4fa7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427477"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152797"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Sorun giderme kılavuzu: Azure Machine Learning Studio (klasik) çalışma alanı oluşturma ve bağlanma
 Bu kılavuz, Azure Machine Learning Studio (klasik) çalışma alanlarını ayarlarken bazı sık karşılaşılan güçlükler için çözümler sağlar.
@@ -45,7 +45,7 @@ Yeni Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, 
 
 1. Internet Explorer kullanıyorsanız, sağ üst köşedeki **Araçlar** düğmesine tıklayın ve **Internet seçenekleri**' ni seçin.  
 
-   ![İnternet seçenekleri](media/troubleshooting-creating-ml-workspace/screen4.png)
+   ![Internet seçenekleri](media/troubleshooting-creating-ml-workspace/screen4.png)
 
 2. **Genel** sekmesinde Sil ' e tıklayın **...**
 
@@ -53,7 +53,7 @@ Yeni Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, 
 
 3. **Gözatma Geçmişini Sil** iletişim kutusunda, **tanımlama bilgileri ve Web sitesi verilerinin** seçili olduğundan emin olun ve **Sil**' e tıklayın.
 
-   ![Tanımlama bilgilerini silme](media/troubleshooting-creating-ml-workspace/screen6.png)
+   ![Tanımlama bilgilerini sil](media/troubleshooting-creating-ml-workspace/screen6.png)
 
 Tanımlama bilgileri silindikten sonra, tarayıcıyı yeniden başlatın ve ardından [Microsoft Azure Machine Learning Studio (klasik)](https://studio.azureml.net) sayfasına gidin. Bir Kullanıcı adı ve parola istendiğinde, çalışma alanını oluşturmak için kullandığınız Microsoft hesabı aynısını girin.
 
