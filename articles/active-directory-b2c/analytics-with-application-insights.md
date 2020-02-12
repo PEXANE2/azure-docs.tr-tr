@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2018
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 646e3e0d68846013d656627a4ef6ef1fb1e11e09
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 002221bc69659a3be6fee950319909c9fc63ea9c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846776"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136319"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
 
@@ -29,7 +29,7 @@ Azure Application Insights ile birlikte Azure Active Directory B2C (Azure AD B2C
 * Ölçüm performansı.
 * Application Insights bildirimler oluşturun.
 
-## <a name="how-it-works"></a>Nasıl çalışır
+## <a name="how-it-works"></a>Nasıl çalışır?
 
 Azure AD B2C ' deki kimlik deneyimi çerçevesi, sağlayıcı `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`içerir. Azure AD B2C için sunulan izleme anahtarını kullanarak doğrudan Application Insights olay verileri gönderir.
 
@@ -37,7 +37,7 @@ Teknik bir profil, Azure AD B2C bir olay tanımlamak için bu sağlayıcıyı ku
 
 Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIMLIĞI kullanarak olayları birleştirebilirsiniz. Application Insights, olay ve oturumu Saniyeler içinde kullanılabilir hale getirir ve birçok görselleştirme, dışarı aktarma ve analitik araç sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Bu makalede özel ilke başlangıç paketini kullandığınız varsayılır. Ancak, başlangıç paketi gerekli değildir.
 
@@ -48,11 +48,11 @@ Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak
 1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**’ tıklayın.
+4. **Oluştur**'a tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**’ tıklayın.
+8. **Oluştur**'a tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/analytics-with-application-insights/app-insights.png)
@@ -158,7 +158,7 @@ Profilleri, başlatıcı paketinden *TrustFrameworkExtensions. xml* dosyasına e
       <InputClaims>
         <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
         <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
-        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" />
+        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
         <InputClaim ClaimTypeReferenceId="Culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
       </InputClaims>
     </TechnicalProfile>

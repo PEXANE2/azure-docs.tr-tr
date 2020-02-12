@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/10/2020
 ms.author: alzam
-ms.openlocfilehash: 3072fc3a82cfe85649cf080c9def69cc4869b7ec
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122509"
+ms.locfileid: "77134509"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN Protokolü bağlantıları için bir VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
@@ -170,7 +170,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve **\<route >\<ıncluderoutes >\<destination >\<mask > \</Route >\</ıncluderoutes >\</destionation >\</Mask >** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<route >\<ıncluderoutes >\<hedef >\<maskesini > \</Route >\</ıncluderoutes >\</Destination >\</Mask >** etiketlerini ekleyebilirsiniz
 
 ```
 <azvpnprofile>

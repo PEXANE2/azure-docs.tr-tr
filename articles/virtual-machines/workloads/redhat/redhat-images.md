@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 5ed5d9337dd4e7acdbba25c4cb66d2690793f250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941459"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134401"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 Bu makalede, Azure Marketi 'ndeki kullanılabilir Red Hat Enterprise Linux (RHEL) görüntüleri, adlandırma ve bekletme ilkelerine göre birlikte açıklanmaktadır.
@@ -30,7 +30,7 @@ Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat 
 >[!NOTE]
 > Azure Marketi 'ndeki RHEL görüntüleriyle ilgili herhangi bir sorun için lütfen Microsoft ile bir destek bileti gönderin.
 
-## <a name="images-available-in-azure"></a>Azure 'da kullanılabilen görüntüler
+## <a name="viewing-images-available-in-azure"></a>Azure 'da kullanılabilen görüntüleri görüntüleme
 Market 'te "Red hat" araması yaptığınızda veya Azure portal Kullanıcı arabiriminde bir kaynak oluşturduğunuzda, tüm kullanılabilir RHEL görüntülerinin yalnızca bir alt kümesini görürsünüz. Azure CLı/PowerShell/API kullanarak, kullanılabilir VM görüntülerinin tam kümesini her zaman elde edebilirsiniz.
 
 Azure 'da kullanılabilir Red Hat görüntülerinin tam kümesini görmek için aşağıdaki komutu çalıştırın
@@ -60,24 +60,25 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 
 >[!NOTE]
 > Genel olarak, en son değerin [CompareTo yöntemi](https://msdn.microsoft.com/library/a5ts8tb6.aspx)kurallarına göre belirlenmesi için sürümlerin karşılaştırması.
+Bu görüntü sürümü karşılaştırması, değerleri bir dize olarak değil, bir [Sürüm](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) nesnesi olarak karşılaştırarak yapılır.
 
-### <a name="rhel-6-image-types"></a>RHEL 6 görüntü türleri
+## <a name="rhel-6-image-types"></a>RHEL 6 görüntü türleri
 RHEL 6. x görüntüleri için, görüntü türleri aşağıdaki gibidir:
 
-|Yayımcı | Teklif | SKU değeri | Sürüm | Ayrıntılar
+|Yayımcı | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | İkincil sürüm (ör. 6,9) | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 6.9.2018010506) | Tüm standart RHEL 6. x görüntüleri bu kurala uyar
 |RedHat | RHEL-byos | RHEL-raw69 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 6.9.20181023) | Bu görüntü bir RHEL 6,9 BYOS görüntüsüdür.
 |RedHat | RHEL | RHEL-SAP-APPS | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 6.8.2017053118) | Bu, SAP uygulamaları için bir RHEL 6,8 görüntüsüdür. SAP uygulamaları depolarına ve temel RHEL depolarına erişim hakkına sahiptir.
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 6.7.2017053121) | Bu, SAP HANA görüntüsü için bir RHEL 6,7 ' dir. SAP HANA depolarına ve temel RHEL depolarına erişim hakkına sahiptir.
 
-### <a name="rhel-7-image-types"></a>RHEL 7 görüntü türleri
+## <a name="rhel-7-image-types"></a>RHEL 7 görüntü türleri
 RHEL 7. x görüntüleri için birkaç farklı görüntü türü vardır. Aşağıdaki tabloda, sunduğumuz farklı görüntü kümeleri gösterilmektedir. Tam liste az CLı komutu `az vm image list --publisher redhat --all`görüntülenebilir.
 
 >[!NOTE]
 > Aksi belirtilmedikçe, tüm görüntüler LVM-bölümlenmiş olur ve normal RHEL depolarına bağlanır (yani, E4S değil). İleriye doğru, yalnızca LVM bölümlenmiş görüntüleri yayımlamaya devam ediyoruz ancak bu kararların geri bildirimlerine açık olacak. Genişletilmiş güncelleştirme desteği ve SAP güncelleştirme hizmetleri ile ilgili ayrıntılar [Red Hat Enterprise Linux yaşam döngüsü sayfasında](https://access.redhat.com/support/policy/updates/errata)bulunabilir.
 
-|Yayımcı | Teklif | SKU değeri | Sürüm | Ayrıntılar
+|Yayımcı | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | İkincil sürüm (ör. 7,6) | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 7.6.2019102813) | 2019 Nisan 'dan önce yayımlanan görüntüler standart RHEL depolarına eklenecektir. 2019 Nisan 'dan sonra yayımlanan görüntüler, belirli bir ikincil sürümün sürüm kilitlemesini sağlamak için Red Hat 'ın genişletilmiş güncelleştirme desteği (EUS) depolarına iliştirilir. Düzenli depolarda bulunan müşterilerin, SKU değerinde 7-LVM veya 7-RAW içeren görüntüleri kullanması gerekir (Ayrıntılar aşağıda verilmiştir). RHEL 7,7 ve üzeri görüntüleri LVM bölümlenmiş olacaktır. Bu kategorideki diğer tüm görüntüler RAW bölümlenmiştir.
 |RedHat | RHEL | 7-HAM | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 7.6.2019102813) | Bu görüntüler RAW bölümlenmiştir (yani mantıksal birimler eklenmez).
@@ -90,15 +91,17 @@ RHEL 7. x görüntüleri için birkaç farklı görüntü türü vardır. Aşağ
 |RedHat | RHEL | RHEL-SAP-APPS | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 7.3.2017053118) | SAP uygulamaları ve SAP HANA depoları SAP depolarında birleştirildiğinde bu görüntüler güncel değildir. Bunlar SAP uygulamaları görüntüleri için RHEL ' dir. Ayrıca, SAP uygulamaları depolarına ve temel RHEL depolarına erişme hakkına sahiptir.
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 7.3.2018051421) | SAP uygulamaları ve SAP HANA depoları SAP depolarında birleştirildiğinde bu görüntüler güncel değildir. Bunlar RHEL for SAP HANA görüntülerdir. Bunlar, temel RHEL depolarında SAP HANA depolarına ve bunlara erişim hakkına sahiptir.
 
-### <a name="rhel-8-image-types"></a>RHEL 8 görüntü türleri
+## <a name="rhel-8-image-types"></a>RHEL 8 görüntü türleri
 RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 
-|Yayımcı | Teklif | SKU değeri | Sürüm | Ayrıntılar
+|Yayımcı | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 8.0.20191023) | Bu görüntüler, standart Red Hat depolarına bağlı RHEL 8,0 LVM bölümlenmiş görüntüleridir.
 |RedHat | RHEL | 8-Gen2 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (ör. 8.0.20191024) | Bu görüntüler, standart Red Hat depolarına bağlı Hyper-V oluşturma 2 RHEL 8,0 LVM bölümlenmiş görüntüleridir. Azure 'da 2. nesil VM 'Ler hakkında daha fazla bilgiye [buradan](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ulaşabilirsiniz.
 
-## <a name="extended-update-support-eus"></a>Genişletilmiş güncelleştirme desteği (EUS)
+## <a name="rhel-longer-support-add-ons"></a>RHEL eklentileri daha uzun destekler
+
+### <a name="extended-update-support-eus"></a>Genişletilmiş güncelleştirme desteği (EUS)
 2019 Nisan itibariyle, RHEL görüntüleri varsayılan olarak genişletilmiş güncelleştirme desteği (EUS) depolarına eklenmiş olarak kullanılabilir. RHEL EUS hakkında daha fazla ayrıntı, [Red Hat 'in belgelerinde](https://access.redhat.com/articles/rhel-eus)bulunabilir.
 
 EUS depolarında geçiş yapılabilir ve desteklenir. VM 'nizi Canus 'e nasıl TAŞıYACAĞıNıZ ve öğrendikleri son kullanım tarihleri hakkında daha fazla ayrıntı hakkında yönergeler [burada](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)bulunabilir.
@@ -106,7 +109,7 @@ EUS depolarında geçiş yapılabilir ve desteklenir. VM 'nizi Canus 'e nasıl T
 >[!NOTE]
 > RHEL ek özellikleri üzerinde EUS desteklenmez. Bu, genellikle RHEL ek özellikler kanalından kullanılabilen bir paketi yüklüyorsanız, duyurken bunu yapamazsınız. Red Hat ek özellikleri ürün yaşam döngüsü [burada](https://access.redhat.com/support/policy/updates/extras/)ayrıntılı olarak verilmiştir.
 
-### <a name="differentiating-between-regular-and-eus-images"></a>Normal ve EUS görüntüleri arasında ayrım.
+#### <a name="differentiating-between-regular-and-eus-images"></a>Normal ve EUS görüntüleri arasında ayrım.
 EUS depolarına eklenmiş olan görüntüleri kullanmak isteyen müşteriler, SKU 'da bir RHEL alt sürüm numarası içeren RHEL görüntüsünü kullanmalıdır.
 
 Örneğin, aşağıdaki iki RHEL 7,4 görüntüsünü kullanılabilir olarak görebilirsiniz:
@@ -133,11 +136,16 @@ RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | 2019 Haziran ve üzeri yayıml
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | 2019 ve üzeri yayımlanan görüntüler varsayılan olarak EUS olacaktır  |
 RHEL 8,0      |Yok                            | Red Hat 'te kullanılabilir EUS yok                               |
 
+### <a name="update-services-for-sap-e4s"></a>SAP güncelleştirme hizmetleri (E4S)
+SAP için en son RHEL görüntüleri, SAP çözüm abonelikleri (E4S) güncelleştirme hizmetlerine bağlanır. E4S hakkında daha fazla ayrıntı, Red hat [belgelerinde](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)bulunabilir.
 
+#### <a name="rhel-images-with-e4s"></a>E4S ile RHEL görüntüleri
+Aşağıdaki tekliflerden, Aralık 2019 ' den sonra oluşturulan görüntüler E4S depolarına bağlanır.
 
+* RHEL-SAP (RHEL for SAP)
+* RHEL-SAP-HA (HA ve Update Services ile SAP için RHEL)
 
-
-### <a name="other-available-offers-and-skus"></a>Diğer kullanılabilir teklifler ve SKU 'Lar
+## <a name="other-available-offers-and-skus"></a>Diğer kullanılabilir teklifler ve SKU 'Lar
 Kullanılabilir tekliflerin ve SKU 'ların tam listesi, yukarıdaki tabloda listelenenlerin ötesinde ek görüntüler içerebilir, örneğin `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Bu teklifler, belirli Market çözümlerinin desteğini sağlamak için kullanılabilir veya önizlemeler ve test amaçları için yayımlanabilir. Uyarı vermeden herhangi bir zamanda değiştirilebilir veya kaldırılabilirler. Bu kişilerin varlığı Microsoft veya Red Hat tarafından genel olarak belgelenmediği takdirde kullanmayın.
 
 ## <a name="publishing-policy"></a>Yayımlama ilkesi

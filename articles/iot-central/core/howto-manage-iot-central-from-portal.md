@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/02/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018984"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137690"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
@@ -23,15 +23,13 @@ ms.locfileid: "77018984"
 
 ## <a name="create-iot-central-applications"></a>IoT Central uygulamaları oluşturma
 
-Bir uygulama oluşturmak için [Azure Portal](https://ms.portal.azure.com) gidin ve soldaki ana bölmede **kaynak oluştur** ' u seçin.
+Bir uygulama oluşturmak için [Azure Portal](https://ms.portal.azure.com) gidin ve **kaynak oluştur**' u seçin.
 
-![Yönetim Portalı: gezinti menüsü](media/howto-manage-iot-central-from-portal/image0.png)
-
-Arama çubuğuna **IoT Central**yazın.
+**Market çubuğunda ara** çubuğuna *IoT Central*yazın:
 
 ![Yönetim Portalı: arama](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-Arama sonuçlarındaki **uygulama satırı IoT Central** öğesini seçin.
+Arama sonuçlarında **IoT Central uygulama** kutucuğunu seçin:
 
 ![Yönetim Portalı: arama sonuçları](media/howto-manage-iot-central-from-portal/image0b1.png)
 
@@ -55,19 +53,17 @@ Zaten bir Azure IoT Central uygulamanız varsa, bunu silebilir veya Azure portal
 > [!NOTE]
 > Aboneliğiniz ile ilişkilendirilmediğinden, Azure portal ücretsiz fiyatlandırma planında oluşturulan uygulamaları göremezsiniz.
 
-Başlamak için sol taraftaki ana bölmedeki **tüm kaynaklar** ' ı seçin. Kaynak listenizde bulmak için uygulamanızın adını yazmak üzere arama kutusunu kullanın. Ardından, yönetmek istediğiniz IoT Central uygulamayı seçin.
+Başlamak için portalda **tüm kaynaklar** ' ı seçin. **Gizli türleri göster** ' i seçin ve bunu bulmak için **ada göre filtrele** ' de uygulamanızın adını yazmaya başlayın. Ardından, yönetmek istediğiniz IoT Central uygulamayı seçin.
 
-![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image2a.png)
-
-Uygulamaya gitmek için IoT Central uygulama URL 'sini seçin.
+Uygulamaya gitmek için **IoT Central uygulama URL 'sini**seçin:
 
 ![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image3.png)
 
-Uygulamayı farklı bir kaynak grubuna taşımak için kaynak grubunun yanındaki **Değiştir** ' i seçin. **Kaynakları taşı** sayfasında, bu uygulamayı geçirmek istediğiniz kaynak grubunu seçin.
+Uygulamayı farklı bir kaynak grubuna taşımak için kaynak grubunun yanındaki **Değiştir** ' i seçin. **Kaynakları taşı** sayfasında, bu uygulamayı taşımak istediğiniz kaynak grubunu seçin:
 
 ![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Uygulamayı farklı bir aboneliğe taşımak için aboneliğin yanındaki **değişiklik** bağlantısını seçin. Görüntülenen iletişim kutusunda bu uygulamayı geçirmek istediğiniz aboneliği seçin.
+Uygulamayı farklı bir aboneliğe taşımak için, aboneliğin yanındaki **Değiştir** ' i seçin. **Kaynakları taşı** sayfasında, bu uygulamayı taşımak istediğiniz aboneliği seçin:
 
 ![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image5a.png)
 

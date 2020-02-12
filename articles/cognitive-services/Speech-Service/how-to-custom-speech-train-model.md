@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806037"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137763"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Özel Konuşma Tanıma için model eğitme
 
-Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli veya oluşturmayı planladığınız özel bir model için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir. Daha önce karşıya yüklenen ses verileriyle birlikte bu veri kümeleri, sözcükleri, tümceleri, kısaltmaları, adları ve ürüne özgü diğer koşulları tanımak üzere konuşmayı metne dönüştürme ve eğitim için kullanılır. Sağladığınız daha fazla etki alanı veri kümesi (kullanıcıların söyledikleri ve tanımak istediğiniz veriler ile ilgili veriler), modelinizin daha doğru olur ve bu da daha iyi bir tanıma sonucu elde edilir. İlgisiz verileri eğitimlere besleyerek, modelinize ait doğruluğu azaltabilir veya zarar verebilir.
+Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir. Daha önce karşıya yüklenen ses verileriyle birlikte bu veri kümeleri, sözcükleri, tümceleri, kısaltmaları, adları ve ürüne özgü diğer koşulları tanımak üzere konuşmayı metne dönüştürme ve eğitim için kullanılır. Sağladığınız daha fazla etki alanı veri kümesi (kullanıcıların söyledikleri ve tanımak istediğiniz veriler ile ilgili veriler), modelinizin daha doğru olur ve bu da daha iyi bir tanıma sonucu elde edilir. İlgisiz verileri eğitimlere besleyerek, modelinize ait doğruluğu azaltabilir veya zarar verebilir.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Doğruluk sorunlarını gidermek için eğitim kullanma
 
@@ -34,7 +34,7 @@ Modelinize yönelik tanınma sorunlarıyla karşılaşdıysanız, insan etiketli
 > [!IMPORTANT]
 > Bir veri kümesini karşıya yüklemediyseniz lütfen [verilerinizi hazırlayın ve test](how-to-custom-speech-test-data.md)edin. Bu belge, verileri karşıya yüklemeye yönelik yönergeler ve yüksek kaliteli veri kümeleri oluşturma yönergeleri sağlar.
 
-## <a name="train-and-evaluate-a-model"></a>Modeli eğitme ve değerlendirme
+## <a name="train-and-evaluate-a-model"></a>Bir modeli eğitme ve değerlendirme
 
 Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](how-to-custom-speech-test-data.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 

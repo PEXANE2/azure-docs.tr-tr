@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell kullanarak Azure kaynakları için atamaları izin verilmeyenler listesi | Microsoft Docs
-description: Kullanıcılar, gruplar, hizmet sorumluları ve Azure PowerShell kullanarak belirli kapsamları, belirli bir Azure kaynak eylemlerine erişim reddedildi yönetilen kimlikleri listesi öğrenin.
+title: Azure PowerShell ile Azure kaynakları için atamaları reddetme listesi
+description: Azure PowerShell kullanarak belirli kapsamlardaki belirli Azure Kaynak eylemlerine erişimi reddedilmiş kullanıcıları, grupları, hizmet sorumlularını ve yönetilen kimlikleri nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,32 +13,32 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c1ea26fdb4d60262f89ea6ab0f87220a08c01e68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110491"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137388"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynakları için atamaları izin verilmeyenler listesi
+# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynakları için atamaları reddetme listesi
 
-[Atamalar Reddet](deny-assignments.md) bir rol ataması bunları erişim verse bile kullanıcıların belirli bir Azure kaynak eylemler gerçekleştirme. Bu makalede nasıl listelemek Azure PowerShell kullanarak atamaları reddet.
+Bir rol ataması erişime izin verirse, [atamaları Reddet](deny-assignments.md) , kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede Azure PowerShell kullanılarak reddedilen atamaları listeleme açıklanmaktadır.
 
 > [!NOTE]
-> Doğrudan kendi oluşturamazsınız atamaları reddet. Hakkında bilgi reddetmek için atamaları oluşturulur bkz [atamaları Reddet](deny-assignments.md).
+> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [atamaları reddetme](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir reddetme atama hakkında bilgi edinmek için şunlara sahip olmalısınız:
+Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
-- `Microsoft.Authorization/denyAssignments/read` çoğu dahil izni [Azure kaynakları için yerleşik roller](built-in-roles.md)
-- [Azure Cloud shell'de PowerShell](/azure/cloud-shell/overview) veya [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure kaynakları için en yerleşik rollerde](built-in-roles.md) bulunan `Microsoft.Authorization/denyAssignments/read` izni
+- [Azure Cloud Shell](/azure/cloud-shell/overview) veya [Azure PowerShell](/powershell/azure/install-az-ps) PowerShell
 
-## <a name="list-deny-assignments"></a>Atamalar izin verilmeyenler listesi
+## <a name="list-deny-assignments"></a>Ret atamalarını listeleme
 
-### <a name="list-all-deny-assignments"></a>İzin verilmeyenler listesi tüm atamaları
+### <a name="list-all-deny-assignments"></a>Tüm reddetme atamalarını Listele
 
-Tümünü Reddet kullanın geçerli abonelik atamalarını listelemek için [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
+Geçerli abonelik için tüm reddetme atamalarını listelemek için [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment)kullanın.
 
 ```azurepowershell
 Get-AzDenyAssignment
@@ -90,9 +90,9 @@ ExcludePrincipals       : {
 IsSystemProtected       : True
 ```
 
-### <a name="list-deny-assignments-at-a-resource-group-scope"></a>Bir kaynak grubu kapsamda atamaları izin verilmeyenler listesi
+### <a name="list-deny-assignments-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki atamaları reddetme listesi
 
-Tümünü Reddet atamalarını kapsamda bir kaynak grubu, kullanım liste [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
+Bir kaynak grubu kapsamındaki tüm reddetme atamalarını listelemek için [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment)kullanın.
 
 ```azurepowershell
 Get-AzDenyAssignment -ResourceGroupName <resource_group_name>
@@ -111,9 +111,9 @@ Principals         : {
                      }
 ```
 
-### <a name="list-deny-assignments-at-a-subscription-scope"></a>Bir abonelik kapsamda atamaları izin verilmeyenler listesi
+### <a name="list-deny-assignments-at-a-subscription-scope"></a>Abonelik kapsamındaki atamaları reddetme listesi
 
-Listelemek için bir abonelik kapsamda kullanım atamaları tümünü Reddet [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment). Abonelik Kimliğini almak için bunu bulabileceğiniz **abonelikleri** dikey penceresinde Azure portalını veya kullanabilir [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
+Tüm reddedilen atamaları bir abonelik kapsamında listelemek için [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment)kullanın. Abonelik KIMLIĞINI almak için Azure portal **abonelikler** dikey penceresinde bulabilir veya [Get-azsubscription](/powershell/module/Az.Accounts/Get-AzSubscription)' u kullanabilirsiniz.
 
 ```azurepowershell
 Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
@@ -125,6 +125,6 @@ PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-11111
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anlamak Azure kaynakları için atamaları Reddet](deny-assignments.md)
-- [Azure portalını kullanarak Azure kaynakları için atamaları izin verilmeyenler listesi](deny-assignments-portal.md)
-- [REST API kullanarak Azure kaynakları için atamaları izin verilmeyenler listesi](deny-assignments-rest.md)
+- [Azure kaynakları için reddedilen atamaları anlama](deny-assignments.md)
+- [Azure portal kullanarak Azure kaynakları için atamaları reddetme listesi](deny-assignments-portal.md)
+- [REST API kullanarak Azure kaynakları için atamaları reddetme listesi](deny-assignments-rest.md)

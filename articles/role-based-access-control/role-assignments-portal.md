@@ -1,5 +1,5 @@
 ---
-title: Azure RBAC ve Azure portal kullanarak rol atamaları ekleme veya kaldırma
+title: RBAC ve Azure portal rol atamaları ekleme veya kaldırma
 description: Azure rol tabanlı erişim denetimi (RBAC) ve Azure portal kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4003e11120c13624379cf7dad9334e896cd3a7a8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774673"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138341"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak rol atamaları ekleme veya kaldırma
 
@@ -27,7 +27,7 @@ ms.locfileid: "76774673"
 
 Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 

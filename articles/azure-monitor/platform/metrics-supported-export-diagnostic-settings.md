@@ -4,16 +4,16 @@ description: Azure Izleyici ile her kaynak türü için kullanılabilen ölçüm
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 05/20/2019
+ms.date: 02/10/2020
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fb11bf402ec671a46c191be0d8958c6a8a2c963d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963487"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134953"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
 
@@ -24,6 +24,19 @@ Azure izleyici ardışık düzeninde bulunan Platform ölçümlerini iki şekild
 2. Ölçümleri kullanın [REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 
 Azure Izleyici arka ucunun anormal olması nedeniyle, tüm ölçümler Tanılama ayarları kullanılarak dışarı aktarılabilir değildir. Aşağıdaki tabloda, Tanılama ayarları kullanılarak verilebilen ve verilemeyen listeler listelenmiştir.
+
+## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Null değerler ve sıfır değerleri için davranışa değiştirme 
+ 
+Tanılama ayarları aracılığıyla verilebilen platform ölçümleri için, Azure Izleyici 'nin ' 0s ' öğesini ' nulls ' olarak yorumlaması için birkaç ölçüm vardır. Bu, gerçek ' 0s ' (kaynağa göre yayılan) ve yorumlanan ' 0s ' (null değerler) arasında karışıklık oluşmasına neden oldu. **1 nisan 2020** ' den itibaren, Tanılama ayarları aracılığıyla dışarı aktarılmış platform ölçümleri, temel alınan kaynak tarafından gerçekten yayılmadığı takdirde artık ' 0s ' öğesini dışarı aktarmayacaktır. Lütfen unutmayın:
+
+1.  Bir kaynak grubunu veya belirli bir kaynağı silerseniz, etkilenen kaynaklardaki ölçüm verileri artık dışarı aktarma hedeflerine tanılama ayarına gönderilmez. Diğer bir deyişle, artık Event Hubs, depolama hesapları ve Log Analytics çalışma alanlarında görünmez.
+2.  Bu geliştirme, tüm genel ve özel bulutlarda kullanılabilir.
+3.  Bu değişiklik aşağıdaki deneyimlerden herhangi birinin davranışını etkilemez: 
+-   Tanılama ayarları aracılığıyla içe aktarılmış platform kaynak günlükleri
+-   Ölçüm grafik Ölçüm Gezgini
+-   Platform ölçümleri üzerinde uyarı verme
+ 
+## <a name="metrics-exportable-table"></a>Ölçümler dışarı aktarılabilir tablosu 
 
 Tabloda aşağıdaki sütunlar bulunur. 
 - Tanılama ayarları aracılığıyla dışarı aktarılabilir mi? 
@@ -293,7 +306,7 @@ Yes | Microsoft. Cache/redsıs | operationsPerSecond6 | Saniyedeki işlem (parç
 Yes | Microsoft. Cache/redsıs | operationsPerSecond7 | Saniyedeki işlem (parça 7) | Sayı | Maksimum
 Yes | Microsoft. Cache/redsıs | operationsPerSecond8 | Saniyedeki işlem (parça 8) | Sayı | Maksimum
 Yes | Microsoft. Cache/redsıs | operationsPerSecond9 | Saniyedeki işlem (parça 9) | Sayı | Maksimum
-Yes | Microsoft. Cache/redsıs | PercentProcessorTime | CPU | Yüzde | Maksimum
+Yes | Microsoft. Cache/redsıs | percentProcessorTime | CPU | Yüzde | Maksimum
 Yes | Microsoft. Cache/redsıs | percentProcessorTime0 | CPU (parça 0) | Yüzde | Maksimum
 Yes | Microsoft. Cache/redsıs | percentProcessorTime1 | CPU (parça 1) | Yüzde | Maksimum
 Yes | Microsoft. Cache/redsıs | percentProcessorTime2 | CPU (parça 2) | Yüzde | Maksimum

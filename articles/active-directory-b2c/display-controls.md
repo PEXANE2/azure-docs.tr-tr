@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479065"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136335"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
 
@@ -30,7 +30,7 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürümü 2.0.0 veya üzeri olarak ayarlanmış olması gerekir. Örneğin:
 
@@ -46,10 +46,10 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 **DisplayControl** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
-| Userınterfacecontroltype | Evet | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
+| Kimlik | Yes | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
+| Userınterfacecontroltype | Yes | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
 
 **DisplayControl** öğesi aşağıdaki öğeleri içerir:
 
@@ -90,7 +90,7 @@ Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için 
 
 Bir görüntü denetiminin **Çıkış talepleri** bir sonraki düzenleme adımına gönderilmez. Yalnızca geçerli görüntüleme denetim oturumu için geçici olarak kaydedilir. Bu geçici talepler, aynı görüntü denetiminin farklı eylemleri arasında paylaşılabilir.
 
-Sonraki düzenleme adımındaki talepleri çıkarmak için, bu görüntü denetimine başvuran gerçek bir kendi kendine onaylanan teknik profilin **Outputclaim** 'sini kullanın.
+Sonraki düzenleme adımındaki çıkış taleplerini kabarcığa çıkarmak için, bu görüntü denetimine başvuran gerçek bir kendi kendine onaylanan teknik profilin **Outputclaim** 'sini kullanın.
 
 ### <a name="display-control-actions"></a>Görüntüleme Denetim eylemleri
 

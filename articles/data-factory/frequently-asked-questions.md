@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644707"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131464"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory SSS
 Bu makale Azure Data Factory hakkında sık sorulan soruların yanıtlarını sağlar.  
@@ -55,7 +55,7 @@ Visual Data Developers ve veri mühendislerine yönelik Data Factory Web Kullan�
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Gelişmiş kullanıcılar için zengin platformlar arası SDK 'lar
 Data Factory v2, aşağıdakiler dahil olmak üzere en sevdiğiniz IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek ve izlemek için kullanılabilen zengin bir SDK kümesi sağlar:
-* Python SDK
+* Python SDK'sı
 * PowerShell CLı
 * C# SDK’sı
 
@@ -69,7 +69,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK'ler
+### <a name="sdks"></a>SDK’lar
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -112,7 +112,7 @@ Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hatt�
 ### <a name="data-flows"></a>Veri akışları
 Veri akışları, arka uç Spark hizmetlerindeki ölçekteki verileri dönüştüren Data Factory görsel olarak oluşturduğunuz nesnelerdir. Programlama veya Spark iç yapıları anlamanız gerekmez. Grafikler (eşleme) veya elektronik tablolar (Wrangling) kullanarak veri dönüştürme hedefini tasarlamanızı yeterlidir.
 
-### <a name="activities"></a>Olaylar
+### <a name="activities"></a>Etkinlikler
 Etkinlikler bir işlem hattındaki işleme adımını temsil eder. Örneğin, bir veri deposundan başka bir veri deposuna veri kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Benzer şekilde, verilerinizi dönüştürmek veya analiz etmek için bir Azure HDInsight kümesinde Hive sorgusu çalıştıran bir Hive etkinliği kullanabilirsiniz. Data Factory üç tür etkinliği destekler: veri taşıma etkinlikleri, veri dönüştürme etkinlikleri ve denetim etkinlikleri.
 
 ### <a name="datasets"></a>Veri kümeleri
@@ -195,6 +195,9 @@ Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etk
 
 Şirket içinde barındırılan IR, şirket içi veya VM tabanlı veri kaynaklarına ve havuza veri almak veya buradan veri aktarmak için kopyalama etkinliğiyle birlikte kullanabileceğiniz bir ADF işlem hattı yapısıdır. Verileri bir kopyalama ile önce, ardından dönüştürme için veri akışı ve ardından bu dönüştürülmüş verileri şirket içi depoya geri taşımanız gerekiyorsa sonraki bir kopya.
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Veri akışı işlem altyapısı birden çok kiracıya sahip mi?
+Kümeler hiçbir şekilde paylaşılmaz. Üretim çalıştırmalarından her bir iş çalıştırması için yalıtım garantisi veriyoruz. Hata ayıklama senaryosunda bir kişi bir küme alır ve tüm hata ayıklayıcı bu kullanıcı tarafından başlatılan bu kümeye gider.
+
 ## <a name="wrangling-data-flows"></a>Wrangling veri akışları
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Denetimi veri akışı için desteklenen bölgeler nelerdir?
@@ -244,7 +247,7 @@ Azure Data Factory (ADF), veri mühendislerinin ve vatandaşlık veri tümleşti
 
 Wrangling veri akışı, SQL 'de aşağıdaki veri türlerini destekler. Desteklenmeyen bir veri türü kullanmaya yönelik bir doğrulama hatası alacaksınız.
 
-* short
+* kısadır
 * double
 * real
 * float
@@ -259,7 +262,7 @@ Wrangling veri akışı, SQL 'de aşağıdaki veri türlerini destekler. Destekl
 * smallint
 * tinyint
 * bigint
-* uzun
+* long
 * metin
 * date
 * datetime

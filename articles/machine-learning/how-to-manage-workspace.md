@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: df50654b8673306a6bee544d9b5fcc2cb578795d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5a1d3753dfec673338bdde67656afd9c5f413ef0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988201"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137600"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,6 @@ Silmek istediğiniz çalışma alanının üstündeki Sil düğmesini kullanın.
 
   ![Sil düğmesi](./media/how-to-manage-workspace/delete-workspace.png)
 
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
@@ -116,9 +115,14 @@ Silmek istediğiniz çalışma alanının üstündeki Sil düğmesini kullanın.
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
+### <a name="moving-the-workspace"></a>Çalışma alanı taşınıyor
+
+> [!WARNING]
+> Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Machine Learning ile modeller derlemek, eğitme ve dağıtmak için bir çalışma alanı kullanmayı öğrenmek üzere tam uzunluklu öğreticiyi izleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Eğitme modelleri](tutorial-train-models-with-aml.md)
+> [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)

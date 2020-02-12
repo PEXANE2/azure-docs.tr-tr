@@ -16,70 +16,82 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 33510015f4f05661ad2ea041b1fd3da0e8bfb1ed
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 75cfd304869bfb63131dfd2afed9f925c86d32fb
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702088"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132432"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran mobil uygulama-uygulama kaydı
+# <a name="register-mobile-apps-that-call-web-apis"></a>Web API 'Lerini çağıran mobil uygulamaları kaydetme
 
-Bu makale, bir mobil uygulama oluşturmaya yönelik uygulama kayıt yönergelerini içerir.
+Bu makalede, oluşturmakta olduğunuz bir mobil uygulamayı kaydetmenize yardımcı olacak yönergeler yer almaktadır.
 
-## <a name="supported-accounts-types"></a>Desteklenen hesap türleri
+## <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Mobil uygulamalarda desteklenen hesap türleri, etkinleştirmek istediğiniz deneyime ve kullanmak istediğiniz akışlara bağlıdır.
+Mobil uygulamalarınızın desteklediği hesap türleri, etkinleştirmek istediğiniz deneyime ve kullanmak istediğiniz akışlara bağlıdır.
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Etkileşimli belirteç alımı için hedef kitle
 
-Çoğu mobil uygulama etkileşimli kimlik doğrulaması kullanır. Bu durumda, kullanıcıların herhangi bir [Hesap türünden](quickstart-register-app.md#register-a-new-application-using-the-azure-portal) oturum açmasını sağlayabilirsiniz
+Çoğu mobil uygulama etkileşimli kimlik doğrulaması kullanır. Uygulamanız bu kimlik doğrulama biçimini kullanıyorsa, kullanıcıların herhangi bir [Hesap türünden](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)oturum açmasını sağlayabilirsiniz.
 
-### <a name="audience-for-integrated-authentication-usernamepassword-and-b2c"></a>Tümleşik kimlik doğrulaması, Kullanıcı adı/parola ve B2C için hedef kitle
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Tümleşik Windows kimlik doğrulaması, Kullanıcı adı-parola ve B2C için hedef kitle
 
-- Tümleşik Windows kimlik doğrulamasını (UWP uygulamalarında mümkündür) veya Kullanıcı adı/parola kullanmak istiyorsanız, uygulamanızın kendi kiracınızda (LOB Geliştirici) veya Azure Active Directory kuruluşları 'nda (ISV senaryosu) Kullanıcı oturum açması gerekir. Bu kimlik doğrulama akışları, Microsoft kişisel hesapları için desteklenmez
-- Sosyal kimlik ve ilke geçirimli kullanıcılar oturum açarsanız, yalnızca etkileşimli ve Kullanıcı adı-parola kimlik doğrulamasını kullanabilirsiniz. Kullanıcı adı-parola Şu anda yalnızca Xamarin. iOS, Xamarin. Android ve UWP üzerinde destekleniyor.
+Evrensel Windows Platformu (UWP) uygulamanız varsa, kullanıcıların oturum açması için tümleşik Windows kimlik doğrulaması kullanabilirsiniz. Tümleşik Windows kimlik doğrulaması veya Kullanıcı adı-parola kimlik doğrulamasını kullanmak için, uygulamanızın kendi iş kolu (LOB) geliştirici kiracınızdaki kullanıcılar oturum açması gerekir. Bağımsız bir yazılım satıcısı (ISV) senaryosunda, uygulamanız Azure Active Directory kuruluşlardaki kullanıcıları oturum açabilir. Bu kimlik doğrulama akışları, Microsoft kişisel hesapları için desteklenmez.
 
-Büyük resim için bkz. [senaryolar ve desteklenen kimlik doğrulaması akışları](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) ve [senaryolar ve desteklenen platformlar ve diller](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
+Ayrıca, B2C yetkilisini ve ilkesini geçiren sosyal kimlikleri kullanarak kullanıcılara oturum açabilirsiniz. Bu yöntemi kullanmak için yalnızca etkileşimli kimlik doğrulaması ve Kullanıcı adı-parola kimlik doğrulaması kullanabilirsiniz. Kullanıcı adı-parola kimlik doğrulaması şu anda yalnızca Xamarin. iOS, Xamarin. Android ve UWP üzerinde desteklenmektedir.
+
+Daha fazla bilgi için bkz. [senaryolar ve desteklenen kimlik doğrulaması akışları](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) ve [senaryolar ve desteklenen platformlar ve diller](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
 ## <a name="platform-configuration-and-redirect-uris"></a>Platform yapılandırma ve yeniden yönlendirme URI 'Leri  
 
 ### <a name="interactive-authentication"></a>Etkileşimli kimlik doğrulaması
 
-Etkileşimli kimlik doğrulaması kullanarak bir mobil uygulama oluştururken, en kritik kayıt adımı yeniden yönlendirme URI 'sidir. Bu, [kimlik doğrulama dikey penceresindeki platform yapılandırması](https://aka.ms/MobileAppReg)aracılığıyla ayarlanabilir.
+Etkileşimli kimlik doğrulaması kullanan bir mobil uygulama yapılandırdığınızda, en kritik kayıt adımı yeniden yönlendirme URI 'sidir. Etkileşimli kimlik doğrulamasını, [ **kimlik doğrulama** dikey penceresinde platform yapılandırması](https://aka.ms/MobileAppReg)aracılığıyla ayarlayabilirsiniz.
 
-Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirket Portalı) aracılığıyla çoklu oturum açma (SSO) ve cihaz yönetim ilkelerini destekleme olanağı sağlar.
+Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirket Portalı) aracılığıyla çoklu oturum açma (SSO) almasını sağlar. Ayrıca cihaz yönetim ilkelerini de destekleyecektir.
 
-İOS ve Android uygulamaları için aracılı yanıt URI 'sini hesaplamanıza yardımcı olmak üzere uygulama kayıt portalında bir önizleme deneyimi olduğunu unutmayın:
+Uygulama kayıt portalı, iOS ve Android uygulamaları için aracılı yanıt URI 'sini hesaplamanıza yardımcı olmak için bir önizleme deneyimi sağlar:
 
-1. Uygulama kaydı ' nda, **kimlik doğrulama** ve seçim ' i seçin
-   **yeni deneyim** ![görüntüsünü deneyin](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. Uygulama kayıt portalında **kimlik doğrulaması** ' nı seçin > **Yeni deneyimi deneyin**.
 
-2. 
-   **platform** ![görüntü Ekle ' yi seçin](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+   ![Yeni bir deneyim seçtiğiniz kimlik doğrulama dikey penceresi](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-3. Platformların listesi desteklenmiş olduğunda **iOS**
-   ![görüntüsü ' nü seçin](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+2. **Platform Ekle**' yi seçin.
 
-4. Paket KIMLIĞINIZI istenen şekilde girin ve ardından
-   ![görüntüsüne **Kaydet** ' e basın](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![Platform ekleme](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-5. Yeniden yönlendirme URI 'SI sizin için hesaplanır.
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+3. Platformların listesi desteklenmiş olduğunda **iOS**' ı seçin.
 
-Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bunu uygulama bildirimi aracılığıyla yapabilirsiniz. Önerilen biçim aşağıda verilmiştir:
+   ![Bir mobil uygulama seçin](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-- ***iOS***: `msauth.<BUNDLE_ID>://auth` (örneğin, "msauth. com. yourcompany. AppName:/Auth")
-- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - Android imza karması, anahtar aracı komutu aracılığıyla sürüm veya hata ayıklama anahtarları kullanılarak oluşturulabilir.
+4. Paket KIMLIĞINIZI girip **Kaydet**' i seçin.
 
-### <a name="username-password"></a>Kullanıcı adı parolası
+   ![Paket KIMLIĞINIZI girin](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-Uygulamanız yalnızca Kullanıcı adı/parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Gerçekten, bu akış Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapar ve uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır. Ancak, uygulamanızın ortak bir istemci uygulaması olduğunu ifade etmeniz gerekir. Bu yapılandırma, uygulamanızın **kimlik doğrulama** bölümüne giderek elde edilir ve **Gelişmiş ayarlar** alt bölümünde **Evet**' i seçerek **uygulamayı ortak istemci olarak işle** ( **varsayılan istemci türü** paragrafında)
+Adımları tamamladığınızda, aşağıdaki görüntüde olduğu gibi yeniden yönlendirme URI 'SI sizin için hesaplanır.
+
+![Elde edilen yeniden yönlendirme URI 'SI](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+
+Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bunu uygulama bildirimi aracılığıyla yapabilirsiniz. Bildirim için önerilen biçim aşağıda verilmiştir:
+
+- **iOS**: `msauth.<BUNDLE_ID>://auth` 
+  - Örneğin, `msauth.com.yourcompany.appName://auth` girin
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - Anahtar araç komutu aracılığıyla sürüm anahtarını veya hata ayıklama anahtarını kullanarak Android imza karmasını oluşturabilirsiniz.
+
+### <a name="username-password-authentication"></a>Kullanıcı adı-parola kimlik doğrulaması
+
+Uygulamanız yalnızca Kullanıcı adı-parola kimlik doğrulaması kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akış Microsoft Identity Platform sürüm 2,0 uç noktasına gidiş dönüş yapar. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır. 
+
+Ancak, uygulamanızı ortak bir istemci uygulaması olarak belirlemeniz gerekir. Bunu yapmak için uygulamanızın **kimlik doğrulama** bölümünde öğesini başlatın. **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak bir istemci olarak değerlendir**için **Evet**' i seçin.
 
 ## <a name="api-permissions"></a>API izinleri
 
-Mobil uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırır. Uygulamanızın, kapsam olarak da adlandırılan, temsilci izinleri istemesi gerekir. İstenen deneyime bağlı olarak, bu Azure portal statik olarak veya çalışma zamanında dinamik olarak yapılabilir. Statik olarak kayıt izinleri, yöneticilerin uygulamanızı kolayca onaylamasını sağlar ve önerilir.
+Mobil uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırır. Uygulamanızın temsilci izinleri istemesi gerekiyor. Bu izinler Ayrıca kapsamlar olarak adlandırılır. İstediğiniz deneyime bağlı olarak, Azure portal aracılığıyla statik olarak temsilci izinleri isteyebilirsiniz. Ya da çalışma zamanında dinamik olarak istek yapabilirsiniz. 
+
+İzinleri statik olarak kaydederek, yöneticilerin uygulamanızı kolayca onaylamasını sağlayabilirsiniz. Statik kayıt önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

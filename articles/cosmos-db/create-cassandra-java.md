@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1f9151ab174a9a1f9e492bd068b5285772f6a546
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442055"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134900"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Hızlı başlangıç: Azure Cosmos DB Cassandra API verileri yönetmek için bir Java uygulaması oluşturma
 
@@ -25,22 +25,14 @@ ms.locfileid: "75442055"
 > * [Python](create-cassandra-python.md)
 >  
 
-Bu hızlı başlangıçta GitHub’dan bir örneği kopyalayarak bir profil uygulaması derlemek için Java ve Azure Cosmos DB [Cassandra API’sini](cassandra-introduction.md) nasıl kullanacağınız gösterilmektedir. Bu hızlı başlangıçta web tabanlı Azure portalını kullanarak bir Azure Cosmos DB hesabı oluşturma işlemi de gösterilmektedir.
+Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturur ve GitHub 'dan kopyalanmış bir Cassandra Java uygulaması kullanarak Cassandra veritabanı ve kapsayıcısı oluşturursunuz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, tablo, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
-
-Ayrıca, şunlar gerekir:
-
-* [Java Development Kit (JDK) sürüm 8](https://aka.ms/azure-jdks)
-    * JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
-* Bir [Maven](https://maven.apache.org/) ikili arşivi [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html)
-    * Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz.
-* [Git](https://www.git-scm.com/)
-    * Ubuntu’da Git’i yüklemek için `sudo apt-get install git` komutunu çalıştırabilirsiniz.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME` ortam değişkeninizi JDK 'nin yüklü olduğu klasöre getirin.
+- [Maven ikili Arşivi](https://maven.apache.org/download.cgi). Ubuntu 'da, Maven 'yi yüklemek için `apt-get install maven` çalıştırın.
+- [Git](https://www.git-scm.com/downloads). Ubuntu 'da git 'i yüklemek için `sudo apt-get install git` çalıştırın.
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -150,29 +142,29 @@ Aşağıdaki kod parçacıkları *src/Main/Java/com/Azure/cosmosdb/Cassandra/dep
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin. Bağlantı dizesi ayrıntıları, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portalında](https://portal.azure.com/)**Bağlantı Dizesi**’ni seçin. 
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
     ![Azure portalı, Bağlantı Dizesi sayfasından kullanıcı adını görüntüleme ve kopyalama](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
 2. CONTACT POINT değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-java/copy-button-azure-portal.png) kullanın.
 
-3. `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources` klasöründen `config.properties` dosyasını açın. 
+3. *C:\git-samples\azure-cosmosdb-Cassandra-Java-getting-started\java-examples\src\main\resources* klasöründeki *config. Properties* dosyasını açın. 
 
 3. Portaldan CONTACT POINT değerini 2. satırdaki `<Cassandra endpoint host>` üzerine yapıştırın.
 
-    Config.properties 2. satırı şuna benzer görünmelidir: 
+    *Config. Properties 2.* satırı şuna benzer görünmelidir 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
-3. Portala geri dönün ve USERNAME değerini kopyalayın. Portaldan USERNAME değerini 4. satırdaki `<cassandra endpoint username>` üzerine yapıştırın.
+3. Portala geri dönün ve Kullanıcı adı değerini kopyalayın. Portaldan USERNAME değerini 4. satırdaki `<cassandra endpoint username>` üzerine yapıştırın.
 
-    Config.properties 4. satırı şuna benzer görünmelidir: 
+    *Config. Properties 3.* satırı şuna benzer görünmelidir 
 
     `cassandra_username=cosmos-db-quickstart`
 
-4. Portala geri dönün ve PASSWORD değerini kopyalayın. Portaldan PASSWORD değerini 5. satırdaki `<cassandra endpoint password>` üzerine yapıştırın.
+4. Portala geri dönün ve parola değerini kopyalayın. Portaldan PASSWORD değerini 5. satırdaki `<cassandra endpoint password>` üzerine yapıştırın.
 
-    Config.properties 5. satırı şuna benzer görünmelidir: 
+    *Config. Properties* 'in 5. satırı şuna benzer görünmelidir 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
@@ -180,11 +172,11 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 6. 6\. satırı belirli bir SSL sertifikası kullanmak üzere değiştirdiyseniz, 7. satırı bu sertifikanın parolasını kullanacak şekilde güncelleştirin. 
 
-7. `config.properties` dosyasını kaydedin.
+7. *Config. Properties* dosyasını kaydedin.
 
 ## <a name="run-the-java-app"></a>Java uygulamasını çalıştırma
 
-1. Git terminal penceresinde, `azure-cosmosdb-cassandra-java-getting-started\java-examples` klasörüne `cd`.
+1. Git terminal penceresinde, `cd` klasörüne `azure-cosmosdb-cassandra-java-getting-started\java-examples`.
 
     ```git
     cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples"
@@ -204,7 +196,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     Terminal penceresinde anahtar alanı ve tablonun oluşturulduğuna yönelik bildirimler gösterilir. Daha sonra tablodaki tüm kullanıcıları seçip döndürür ve çıktıyı gösterir, ardından kimliğe göre bir satır seçip değeri gösterir.  
 
-    Programın yürütülmesini durdurmak için **CTRL + C** ' yi seçin ve konsol penceresini kapatın.
+    Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın.
 
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
@@ -220,7 +212,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure Cosmos DB hesabını ve Cassandra veritabanını oluşturmayı, Veri Gezgini'ni kullanarak kapsayıcı oluşturmayı ve bu işlemleri programlı bir şekilde yapacak bir uygulamayı çalıştırmayı öğrendiniz. Artık Azure Cosmos kapsayıcınıza ek veri aktarabilirsiniz. 
+Bu hızlı başlangıçta, Cassandra API sahip bir Azure Cosmos DB hesabı oluşturmayı ve Cassandra veritabanı ve kapsayıcısı oluşturan Cassandra Java uygulamasını çalıştırmayı öğrendiniz. Artık Azure Cosmos DB hesabınıza daha fazla veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Cassandra verilerini Azure Cosmos DB’ye aktarma](cassandra-import-data.md)

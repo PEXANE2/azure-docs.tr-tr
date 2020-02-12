@@ -1,6 +1,6 @@
 ---
-title: Azure AD Privileged Identity Management (PIM) ile Azure kaynaklarına erişimi yönetme
-description: Azure Active Directory Privileged Identity Management (PIM) ve rol tabanlı erişim denetimi (RBAC) kullanarak Azure kaynaklarına erişimi yönetme hakkında bilgi edinin.
+title: Azure AD ve PıM ile Azure kaynaklarına erişimi yönetme
+description: Azure Active Directory Privileged Identity Management (PıM) ve rol tabanlı erişim denetimi (RBAC) kullanarak Azure kaynaklarına erişimi yönetme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 757068034868744b408c9402b521a0e4c73950f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344623"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138047"
 ---
 # <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management ile Azure kaynaklarına erişimi yönetme
 
-Kötü amaçlı siber saldırılara karşı ayrıcalıklı hesapları korumak için raporlar ve uyarılar aracılığıyla kullanımlarının görünürlüğünüzü artırın ve ayrıcalıkların tehditlere maruz kalabileceği süreyi azaltmak için Azure Active Directory Privileged Identity Management (PIM) kullanabilirsiniz. PIM bunu yapar yalnızca kendi ayrıcalıklarını "tam zamanında" alma kullanıcıların sınırlayarak (JIT) ya da kısaltılmış bir süre sonra ayrıcalıkları otomatik olarak iptal edilir için ayrıcalıkları atayarak. 
+Ayrıcalıklı hesapları kötü niyetli Cyber saldırılarına karşı korumak için Azure Active Directory Privileged Identity Management (PıM) kullanarak ayrıcalıkların etkilenme süresini azaltır ve raporlar ve uyarılar aracılığıyla kullanım için görünürlüğünüzü artırabilirsiniz. PıM, kullanıcıları yalnızca kendi ayrıcalıklarını "zamanında" (JıT) olarak sınırlayarak veya ayrıcalık otomatik olarak iptal edildikten sonra kısaltılmış bir süre için ayrıcalıklar atayarak bunu yapar. 
 
-Artık Azure rol tabanlı erişim denetimi (RBAC) ile PIM yönetebilir, denetleyebilir ve Azure kaynaklarına erişimi izlemek için kullanabilirsiniz. PIM yardımcı olması için yerleşik ve özel rol üyeliklerini yönetebilir: 
+Artık Azure kaynaklarına erişimi yönetmek, denetlemek ve izlemek için Azure rol tabanlı erişim denetimi (RBAC) ile PıM 'yi kullanabilirsiniz. PıM, size yardımcı olmak için yerleşik ve özel rollerin üyeliğini yönetebilir: 
 
-- İsteğe bağlı, "yalnızca zamanında" Azure kaynaklarına erişimi etkinleştirme
-- Otomatik olarak atanan kullanıcılar ve gruplar için kaynak erişim süre sonu
-- Hızlı Görevler veya nöbet zamanlamalar için Azure kaynaklarına geçici erişim atama
-- Yeni kullanıcılar veya gruplar kaynak erişimi atandığında ve bunlar uygun atamalar'ı etkinleştirdiğinizde uyarılar alın
+- İsteğe bağlı, "tam zamanında" Azure kaynaklarına erişimi etkinleştirme
+- Atanan kullanıcılar ve gruplar için kaynak erişiminin otomatik olarak dolmasına
+- Hızlı Görevler veya çağrı zamanlamaları için Azure kaynaklarına geçici erişim atama
+- Yeni kullanıcılara veya gruplara kaynak erişimi atandığında ve uygun atamaları etkinleştirdiklerinde uyarı alın
 
-Daha fazla bilgi için [Azure AD Privileged Identity Management nedir?](../active-directory/privileged-identity-management/pim-configure.md).
+Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management nedir?](../active-directory/privileged-identity-management/pim-configure.md).

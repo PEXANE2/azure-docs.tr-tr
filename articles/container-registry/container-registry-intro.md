@@ -3,15 +3,15 @@ title: Yönetilen kapsayıcı kayıt defterleri
 description: Bulut tabanlı, yönetilen, özel Docker kayıt defterleri sağlayan Azure Container Kayıt Defteri hizmetine giriş.
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445723"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132023"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure'da özel Docker kapsayıcısı kayıt defterlerine giriş
 
@@ -25,8 +25,8 @@ Docker ve kayıt defteri kavramları hakkında daha fazla bilgi için bkz. [Dock
 
 Azure kapsayıcısı kayıt defterinden çeşitli dağıtım hedeflerine görüntü çekme:
 
-* [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) ve [Docker Swarm](https://docs.docker.com/swarm/) dahil olmak üzere konak kümeleri arasında kapsayıcı haline getirilmiş uygulamaları yöneten **ölçeklenebilir düzenleme sistemleri**.
-* [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) ve diğerleri gibi uygun ölçekte uygulama oluşturulmasını ve çalıştırılmasını destekleyen **Azure hizmetleri**.
+* **Kubernetes**, [DC/OS](https://kubernetes.io/docs/) ve [Docker Swarm](https://docs.mesosphere.com/) dahil olmak üzere konak kümeleri arasında kapsayıcı haline getirilmiş uygulamaları yöneten [ölçeklenebilir düzenleme sistemleri](https://docs.docker.com/swarm/).
+* **Azure Kubernetes Service (AKS)** , [App Service](../aks/index.yml), [Batch](../app-service/index.yml), [Service Fabric](../batch/index.yml) ve diğerleri gibi uygun ölçekte uygulama oluşturulmasını ve çalıştırılmasını destekleyen [Azure hizmetleri](/azure/service-fabric/).
 
 Geliştiriciler bir kapsayıcı geliştirme iş akışı kapsamında bir kapsayıcı kayıt defterine de öğe itebilir. Örneğin, [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) veya [Jenkins](https://jenkins.io/)gibi bir sürekli tümleştirme ve teslim aracından bir kapsayıcı kayıt defteri hedefleyin.
 
@@ -41,7 +41,7 @@ Azure, Azure Container kayıt zincirlerinizi yönetmek için Azure komut satır�
 * **Güvenlik ve erişim** -Azure CLI veya standart `docker login` komutunu kullanarak bir kayıt defterinde oturum açın. Azure Container Registry, kapsayıcı görüntülerini HTTPS üzerinden aktarır ve istemci bağlantılarının güvenliğini sağlamak için TLS 'yi destekler. 
 
   > [!IMPORTANT]
-  > Azure Container Registry 13 Ocak 2020 tarihinden itibaren, sunuculardan ve uygulamalardan gelen tüm güvenli bağlantıların TLS 1,2 kullanması gerekir. TLS 1,0 ve 1,1 desteği kullanımdan kaldırılacak.
+  > Azure Container Registry 13 Ocak 2020 tarihinden itibaren, sunuculardan ve uygulamalardan gelen tüm güvenli bağlantıların TLS 1,2 kullanması gerekir. Herhangi bir yeni Docker istemcisini (sürüm 18.03.0 veya üzeri) kullanarak TLS 1,2 'yi etkinleştirin. TLS 1,0 ve 1,1 desteği kullanımdan kaldırılacak. 
 
   Bir Azure kimliği, Azure Active Directory ile desteklenen bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)veya sağlanmış bir yönetici hesabı kullanarak bir kapsayıcı kayıt defterine [erişimi kontrol](container-registry-authentication.md) edersiniz. Kullanıcı veya sistemlerin bir kayıt defterine hassas izinler atamak için rol tabanlı erişim denetimi (RBAC) kullanın.
 

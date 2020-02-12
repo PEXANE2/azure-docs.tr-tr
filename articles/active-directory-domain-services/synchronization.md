@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481314"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132198"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
 
@@ -70,12 +70,12 @@ Aşağıdaki tabloda, Azure AD 'deki Kullanıcı nesneleri için belirli öznite
 | mailNickname |SAMAccountName (bazen otomatik olarak oluşturulabilir) |
 | Mobil |Mobil |
 | uzantının |msDS-AzureADObjectId |
-| onPremiseSecurityIdentifier |Sıdhistory |
+| OnPremiseSecurityIdentifier |Sıdhistory |
 | passwordPolicies |userAccountControl (DONT_EXPIRE_PASSWORD bitini ayarlar veya temizler) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | posta kodu |posta kodu |
 | preferredLanguage |preferredLanguage |
-| state |St |
+| durum |St |
 | streetAddress |streetAddress |
 | Soyadı |sn |
 | telephoneNumber 'dır |telephoneNumber 'dır |
@@ -92,12 +92,12 @@ Aşağıdaki tabloda, Azure AD 'deki grup nesnelerinin belirli özniteliklerinin
 | posta |posta |
 | mailNickname |msDS-Azureadmailtakma ad |
 | uzantının |msDS-AzureADObjectId |
-| onPremiseSecurityIdentifier |Sıdhistory |
+| OnPremiseSecurityIdentifier |Sıdhistory |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Şirket içi AD DS Azure AD 'ye ve Azure AD DS eşitleme
 
-Azure AD Connect, şirket içi AD DS ortamından Azure AD 'ye Kullanıcı hesaplarını, grup üyeliklerini ve kimlik bilgisi karmalarını eşitlemeye yönelik olarak kullanılır. UPN ve şirket içi güvenlik tanımlayıcısı (SID) gibi kullanıcı hesaplarının öznitelikleri eşitlenir. Azure AD Domain Services kullanarak oturum açmak için NTLM ve Kerberos kimlik doğrulaması için gereken eski parola karmaları da Azure AD 'ye eşitlenir.
+Azure AD Connect, şirket içi AD DS ortamından Azure AD 'ye Kullanıcı hesaplarını, grup üyeliklerini ve kimlik bilgisi karmalarını eşitlemeye yönelik olarak kullanılır. UPN ve şirket içi güvenlik tanımlayıcısı (SID) gibi kullanıcı hesaplarının öznitelikleri eşitlenir. Azure AD DS kullanarak oturum açmak için, NTLM ve Kerberos kimlik doğrulaması için gereken eski parola karmaları da Azure AD 'ye eşitlenir.
 
 > [!IMPORTANT]
 > Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
@@ -113,7 +113,7 @@ Birçok kuruluşun birden çok orman içeren oldukça karmaşık bir şirket iç
 
 Azure AD daha basit ve düz bir ad alanına sahiptir. Kullanıcıların Azure AD tarafından güvenli hale getirilmiş uygulamalara güvenilir bir şekilde erişmesini sağlamak için, farklı ormanlardaki Kullanıcı hesapları genelinde UPN çakışmalarını çözün. Azure AD DS yönetilen etki alanları, Azure AD 'ye benzer bir düz OU yapısı kullanır. Şirket içinde hiyerarşik bir OU yapısını yapılandırmış olsanız bile, tüm Kullanıcı hesapları ve grupları *Aaddc kullanıcıları* kapsayıcısında depolanır. Bu, şirket içinde hiyerarşik bir OU yapısını yapılandırsanız bile, farklı şirket içi etki alanlarından veya ormanlardan eşitlenmemesine karşın. Azure AD DS yönetilen etki alanı tüm hiyerarşik OU yapılarını düzleştirir.
 
-Daha önce açıklandığı gibi Azure AD DS 'den Azure AD 'ye geri eşitleme yoktur. Azure AD DS 'de [özel bir kuruluş birimi (OU)](create-ou.md) ve ardından bu özel OU 'lar içindeki kullanıcılar, gruplar veya hizmet hesapları oluşturabilirsiniz. Özel OU 'Larda oluşturulan nesnelerden hiçbiri Azure AD 'ye geri eşitlenir. Bu nesneler yalnızca Azure AD DS yönetilen etki alanı içinde kullanılabilir ve Azure AD PowerShell cmdlet 'leri, Azure AD Graph API veya Azure AD Yönetim kullanıcı arabirimi kullanılarak görülemez.
+Daha önce açıklandığı gibi Azure AD DS 'den Azure AD 'ye geri eşitleme yoktur. Azure AD DS 'de [özel bir kuruluş birimi (OU)](create-ou.md) ve ardından bu özel OU 'lar içindeki kullanıcılar, gruplar veya hizmet hesapları oluşturabilirsiniz. Özel OU 'Larda oluşturulan nesnelerden hiçbiri Azure AD 'ye geri eşitlenir. Bu nesneler yalnızca Azure AD DS yönetilen etki alanında kullanılabilir ve Azure AD PowerShell cmdlet 'leri, Microsoft Graph API veya Azure AD Yönetim kullanıcı arabirimi kullanılarak görülemez.
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Azure ile eşitlenmemiş AD DS
 
@@ -128,9 +128,13 @@ Aşağıdaki nesneler veya öznitelikler, şirket içi AD DS ortamından Azure A
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Parola karması eşitleme ve güvenlik konuları
 
-Azure AD DS etkinleştirdiğinizde, NTLM + Kerberos kimlik doğrulaması için eski parola karmaları gereklidir. Azure AD, şifresiz metin parolalarını depolamaz, bu nedenle mevcut kullanıcı hesapları için bu karmaların otomatik olarak oluşturulması gerekir. Oluşturulup depolandıktan sonra NTLM ve Kerberos uyumlu parola karmaları her zaman Azure AD 'de şifreli bir şekilde depolanır. Şifreleme anahtarları her bir Azure AD kiracısına özeldir. Bu karmalar, yalnızca Azure AD DS şifre çözme anahtarlarına erişime sahip olacak şekilde şifrelenir. Azure AD 'de başka bir hizmet veya bileşen şifre çözme anahtarlarına erişemez. Eski parola karmaları daha sonra Azure AD DS yönetilen bir etki alanı için etki alanı denetleyicilerine eşitlenir. Azure AD DS içindeki bu yönetilen etki alanı denetleyicileri için diskler, bekleyen olarak şifrelenir. Bu parola karmaları, parolaların şirket içi AD DS ortamında nasıl depolandığı ve güvenliğinin sağlandığı gibi bu etki alanı denetleyicilerinde saklanır ve güvenlik altına alınır.
+Azure AD DS etkinleştirdiğinizde, NTLM + Kerberos kimlik doğrulaması için eski parola karmaları gereklidir. Azure AD, şifresiz metin parolalarını depolamaz, bu nedenle mevcut kullanıcı hesapları için bu karmalar otomatik olarak oluşturulamaz. Oluşturulup depolandıktan sonra NTLM ve Kerberos uyumlu parola karmaları her zaman Azure AD 'de şifreli bir şekilde depolanır.
 
-Yalnızca bulut Azure AD ortamlarında, gerekli parola karmalarının Azure AD 'de oluşturulup depolanması için [Kullanıcıların parolalarını sıfırlaması/değiştirmesi gerekir](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) . Azure AD Domain Services etkinleştirildikten sonra Azure AD 'de oluşturulan herhangi bir bulut Kullanıcı hesabı için, parola karmaları oluşturulup NTLM ve Kerberos uyumlu biçimlerinde depolanır. Bu yeni hesapların parolalarını sıfırlaması/değiştirmesi, eski parola karmalarının oluşturulmasını gerektirmez.
+Şifreleme anahtarları her bir Azure AD kiracısına özeldir. Bu karmalar, yalnızca Azure AD DS şifre çözme anahtarlarına erişime sahip olacak şekilde şifrelenir. Azure AD 'de başka bir hizmet veya bileşen şifre çözme anahtarlarına erişemez.
+
+Eski parola karmaları daha sonra Azure AD DS yönetilen bir etki alanı için etki alanı denetleyicilerine eşitlenir. Azure AD DS içindeki bu yönetilen etki alanı denetleyicileri için diskler, bekleyen olarak şifrelenir. Bu parola karmaları, parolaların şirket içi AD DS ortamında nasıl depolandığı ve güvenliğinin sağlandığı gibi bu etki alanı denetleyicilerinde saklanır ve güvenlik altına alınır.
+
+Yalnızca bulut Azure AD ortamlarında, gerekli parola karmalarının Azure AD 'de oluşturulup depolanması için [Kullanıcıların parolalarını sıfırlaması/değiştirmesi gerekir](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) . Azure AD Domain Services etkinleştirildikten sonra Azure AD 'de oluşturulan herhangi bir bulut Kullanıcı hesabı için, parola karmaları oluşturulup NTLM ve Kerberos uyumlu biçimlerinde depolanır. Eski parola karmalarını oluşturmak için bu yeni hesapların parolasını sıfırlaması veya değiştirmesi gerekmez.
 
 Azure AD Connect kullanılarak şirket içi AD DS ortamından eşitlenen hibrit Kullanıcı hesapları için, [NTLM ve Kerberos uyumlu biçimlerdeki parola karmalarını eşitlenecek Azure AD Connect yapılandırmanız](tutorial-configure-password-hash-sync.md)gerekir.
 

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546699"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137542"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -80,10 +80,10 @@ Bu bir kümeleme modeli olduğundan, değerlendirme sonuçları, puanları iki g
 
 Bu bölümde, **modeli değerlendir**ile kullanılmak üzere desteklenen belirli model türleri için döndürülen ölçümler açıklanmaktadır:
 
-+ [sınıflandırma modelleri](#bkmk_classification)
-+ [regresyon modelleri](#bkmk_regression)
++ [sınıflandırma modelleri](#metrics-for-classification-models)
++ [regresyon modelleri](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>Sınıflandırma modelleriyle ilgili ölçümler
+### <a name="metrics-for-classification-models"></a>Sınıflandırma modelleriyle ilgili ölçümler
 
 Sınıflandırma modelleri değerlendirilirken aşağıdaki ölçümler raporlanır. Modelleri karşılaştırırsanız, bunlar değerlendirme için seçtiğiniz ölçüm tarafından derecelendirilir.  
   
@@ -101,7 +101,7 @@ Sınıflandırma modelleri değerlendirilirken aşağıdaki ölçümler raporlan
   
 - **Eğitim günlük kaybı** , sınıflandırıcının rastgele bir tahmine göre faydalanmasını temsil eden tek bir puandır. Günlük kayıp, çıktılarının çıkış yaptığı olasılıkların, etiketlerde bilinen değerler (zemin dışı) ile karşılaştırılmasıyla, modelinizin unkliğini ölçer. Modelin günlük kaybını bir bütün olarak en aza indirmek istiyorsunuz.
 
-##  <a name="bkmk_regression"></a>Regresyon modelleriyle ilgili ölçümler
+### <a name="metrics-for-regression-models"></a>Regresyon modelleriyle ilgili ölçümler
  
 Regresyon modelleri için döndürülen ölçümler, hata miktarını tahmin etmek için tasarlanmıştır.  Gözlemlenen ve tahmin edilen değerler arasındaki fark küçük olduğunda, bir model veriye uyacak şekilde değerlendirilir. Ancak, fazlalıklar (tahmin edilen herhangi bir nokta ve ilgili gerçek değer arasındaki fark), modelde potansiyel sapma hakkında çok daha fazla bilgi verebilir.  
   
@@ -115,7 +115,7 @@ Regresyon modelleri için döndürülen ölçümler, hata miktarını tahmin etm
   
 - **Göreli kare hatası (RSE)** , gerçek değerlerin toplam kare şeklinde hataya göre öngörülen değerlerin toplam kare halinde hata sayısını normalleştirir.  
   
-- **Ortalama sıfır bir hata (MZOE)** , tahmine uygun olup olmadığını gösterir.  Diğer bir deyişle: `x!=y``ZeroOneLoss(x,y) = 1`; Aksi takdirde `0`.
+
   
 - Genellikle R<sup>2</sup>olarak anılan **belirleme katsayısı**, modelin tahmine dayalı gücünü 0 ile 1 arasında bir değer olarak temsil eder. Sıfır, modelin rastgele olduğu anlamına gelir (hiçbir şey açıklar); 1, mükemmel bir uyum olduğu anlamına gelir. Ancak, düşük değerler tamamen normal olabilir ve yüksek değerler şüpheli olduğundan, R<sup>2</sup> değerlerini yorumlamak için dikkatli bir değer kullanılmalıdır.
   

@@ -1,21 +1,21 @@
 ---
-title: Öğretici-Azure yay bulutu 'nda dağıtım için bir yay uygulaması hazırlama
-description: Bu öğreticide, bir Java Spring uygulamasını dağıtım için hazırlarsınız.
+title: Öğretici-Azure yay bulutu 'nda dağıtım için bir Java Spring uygulaması hazırlama
+description: Bu öğreticide, bir Java Spring uygulamasını Azure yay bulutuna dağıtım için hazırlarsınız.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1af4bdcfc0fea319b9e5c9f39a1ade3f4492404f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064725"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137623"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
-Bu hızlı başlangıçta, mevcut bir Java Spring Cloud uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağı gösterilmektedir. Doğru yapılandırılmışsa, Azure yay bulutu, Java Spring Cloud uygulamanızı izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sunar.
+Bu hızlı başlangıçta, mevcut bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için hazırlanması gösterilmektedir. Doğru yapılandırılmışsa, Azure yay bulutu, Java Spring Cloud uygulamanızı izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sunar.
 
 ## <a name="java-runtime-version"></a>Java çalışma zamanı sürümü
 

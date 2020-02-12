@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75530689"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133742"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyıter Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama
 
@@ -30,7 +30,7 @@ Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve lab
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators).
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
@@ -46,7 +46,7 @@ Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.
 | Laboratuvar ayarları | Değer/yönergeler |
 | ------------ | ------------------ |
 |Sanal Makine Boyutu| Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
-|Sanal makine görüntüsü| Veri Bilimi Sanal Makinesi - Windows 2016|
+|Sanal makine görüntüsü| Veri Bilimi Sanal Makinesi-Windows 2016|
 
 ## <a name="template-machine"></a>Şablon makinesi
 

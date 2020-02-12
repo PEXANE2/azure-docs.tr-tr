@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548382"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137911"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hiper Parametrelerini Ayarlama
 
@@ -43,17 +43,13 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 
 2.  Eğitimli olmayan bir modeli en soldaki girişe bağlayın. 
 
-3. **Parametre aralığına**bir **çöp modu oluştur** seçeneğini ayarlayın. Parametre süpür'da kullanılacak bir değer aralığı belirtmek için **Aralık Oluşturucu** kullanın.  
 
-    Neredeyse tüm sınıflandırma ve regresyon modülleri tümleşik bir parametre süpürmesini destekler. Bir parametre aralığı yapılandırmayı desteklemeyen öğrenenler için, yalnızca kullanılabilir parametre değerlerini test edebilirsiniz.
-
-    Bir veya daha fazla parametre için değeri el ile ayarlayabilir ve ardından kalan parametrelerin üzerinde tarama yapabilirsiniz. Bu işlem biraz zaman kazandırabilir.
 
 4.  Eğitim için kullanmak istediğiniz veri kümesini ekleyin ve bunu ayarlama modeli hiper parametrelerinin orta girişine bağlayın.  
 
     İsteğe bağlı olarak, etiketli bir veri kümeniz varsa, bunu en sağdaki giriş bağlantı noktasına (**Isteğe bağlı doğrulama veri kümesi**) bağlayabilirsiniz. Bu, eğitim ve ayarlama sırasında doğruluğu ölçmenize olanak tanır.
 
-5.  Model hiper parametrelerinin ayarla ' nın **Özellikler** bölmesinde, **parametre swemodu**için bir değer seçin. Bu seçenek parametrelerin nasıl seçili olduğunu denetler.
+5.  Model hiper parametrelerini ayarla ' nın sağ panelinde, **parametre swemodu**için bir değer seçin. Bu seçenek parametrelerin nasıl seçili olduğunu denetler.
 
     - **Tüm ızgara**: Bu seçeneği belirlediğinizde, modül, sistem tarafından önceden tanımlanmış bir kılavuz üzerinde döngü gerçekleştirerek farklı birleşimler deneyebilir ve en iyi öğrenme kimliğini belirler. Bu seçenek, en iyi parametre ayarlarının ne olabileceğini bilmiyorsanız ve tüm olası değer birleşimlerini denemek istediğinizde faydalıdır.
 
@@ -64,8 +60,6 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 7.  Çalıştırma sayısını seçin:
 
     1. **Rastgele tarama sırasında en fazla çalışma sayısı**: rastgele bir tarama seçerseniz, parametre değerlerinin rastgele bir birleşimini kullanarak modelin kaç kez eğitilmek gerektiğini belirtebilirsiniz.
-
-    2. **Rastgele kılavuzda en fazla çalışma sayısı**: Bu seçenek ayrıca parametre değerlerinin rastgele bir örneklemede yineleme sayısını denetler, ancak değerler belirtilen aralıktan rastgele oluşturulmaz. Bunun yerine, modül tüm olası parametre değerleri birleşimlerinin bir matrisini oluşturur. Ardından, matris üzerinde rastgele bir örnekleme gerçekleştirir. Bu yöntem, bölgesel fazla örnekleme veya yetersiz örnekleme konusunda daha etkilidir ve daha az açıktır.
 
 8.  **Sıralama**için, modelleri derecelendirerek kullanılacak tek bir ölçüm seçin.
 

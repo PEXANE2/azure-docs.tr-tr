@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177122"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133672"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
 Bu makalede, Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarın nasıl ayarlanacağı gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevleri önlemeyi sağlayan, sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıfı geleneksel Bash betiklerini ve gelişmiş betikleri içerir. Gelişmiş betikler, Bash komutlarını ve Ruby 'yi birleştiren betiklerdir. Bu yaklaşım, Ruby 'nin kabuğa ve Bash komutlarına karşı etkileşimde bulunmak için veri geçmesini sağlar. 
@@ -32,7 +32,7 @@ Laboratuvar hesabını oluşturduktan sonra laboratuvar hesabında aşağıdaki 
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ----------- | ------------ |  
-| Market görüntüleri | Laboratuar hesabınızda kullanmak için [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) | 
+| Market görüntüleri | Laboratuar hesabınızda kullanmak için [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) | 
 
 Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu öğreticiyi](tutorial-setup-classroom-lab.md) izleyin:
 
@@ -47,7 +47,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 [Ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünde varsayılan olarak uzak masaüstü sunucusu yüklü değil. Uzak Masaüstü Protokolü aracılığıyla bağlanmak üzere şablon makinesinde gerekli olan paketleri yüklemek için, [Uzak Masaüstü 'Nü yüklemek ve yapılandırmak Için Azure 'da bir LINUX VM 'ye bağlanma](../../virtual-machines/linux/use-remote-desktop.md) makalesindeki yönergeleri izleyin.
 
 ## <a name="install-ruby"></a>Ruby’yi yükleme
-Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. Bu bölümde, [Ruby](https://www.ruby-lang.org/)'nin en son sürümünü yüklemek için `apt-get` ' ın nasıl kullanılacağı gösterilmektedir.
+Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. Bu bölümde, [Ruby](https://www.ruby-lang.org/)'nin en son sürümünü yüklemek için `apt-get` nasıl kullanılacağı gösterilmektedir.
 
 1. Aşağıdaki komutları çalıştırarak güncelleştirmeleri yükler:
 

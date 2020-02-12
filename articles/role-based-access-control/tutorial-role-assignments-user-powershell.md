@@ -1,5 +1,5 @@
 ---
-title: Öğretici-RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme
+title: 'Öğretici: RBAC ve Azure PowerShell ile Azure kaynaklarına Kullanıcı erişimi verme'
 description: Bu öğreticide rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f4ba56bf79d707200bf361ab4c717bb63d081953
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418618"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138221"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 

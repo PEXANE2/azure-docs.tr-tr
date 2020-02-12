@@ -5,27 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: deabef0c2c3540e515fe72a161710c95a20fa86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188234"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133618"
 ---
-PowerShell Konsolunuzu yükseltilmiş ayrıcalıklarla açın.
+PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın.
 
-
-
-Azure PowerShell'i yerel olarak çalıştırıyorsanız, Azure hesabınıza bağlanın. *Connect AzAccount* cmdlet için kimlik bilgilerini ister. Azure PowerShell için kullanılabilir olacak şekilde doğrulandıktan sonra hesap ayarlarınızı indirir. PowerShell ile yerel olarak çalışan ve bunun yerine Azure Cloud Shell'i 'Try' tarayıcıda kullanıyorsanız, bu ilk adımı atlayın. Azure hesabınızda otomatik olarak bağlanır.
+Azure PowerShell yerel olarak çalıştırıyorsanız Azure hesabınıza bağlanın. *Connect-AzAccount* cmdlet 'i sizden kimlik bilgilerini ister. Kimlik doğrulamasından sonra, Azure PowerShell için kullanılabilir olmaları için hesap ayarlarınızı indirir. Bunun yerine Azure Cloud Shell kullanıyorsanız, *Connect-AzAccount*komutunu çalıştırmanız gerekmez. Azure Cloud Shell Azure hesabınıza otomatik olarak bağlanır.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Birden fazla aboneliğiniz varsa, Azure aboneliklerinizin bir listesini alın.
+Birden fazla aboneliğiniz varsa Azure aboneliklerinizin bir listesini alın.
 
 ```azurepowershell-interactive
 Get-AzSubscription

@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nası
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069532"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134931"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -61,9 +61,6 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 Azure geçişi sunucu geçişi ile geçiş yapabilmeniz için önce Azure izinleri ayarlayın.
 
 - **Proje oluşturma**: Azure hesabınız, Azure geçişi projesi oluşturmak için izinlere ihtiyaç duyuyor. 
-- **Azure geçişi çoğaltma gereci kaydetme**: çoğaltma gereci Azure hesabınızda bir Azure Active Directory uygulaması oluşturur ve kaydeder. Bu için temsilci izinleri.
-- **Oluşturma Key Vault**: makineleri geçirmek Için, Azure geçişi, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek için kaynak grubunda bir Key Vault oluşturur. Kasayı oluşturmak için Azure geçişi projesinin bulunduğu kaynak grubunda rol atama izinlerine sahip olmanız gerekir. 
-
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
 
@@ -73,43 +70,6 @@ Azure geçişi sunucu geçişi ile geçiş yapabilmeniz için önce Azure izinle
     - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
     - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Çoğaltma gerecini kaydetmek için izin atama
-
-Aracı tabanlı geçiş için, hesabınızda bir Azure AD uygulaması oluşturmak ve kaydetmek üzere Azure 'a geçiş sunucusu geçişini devretmek için temsilci izinleri. Aşağıdaki yöntemlerden birini kullanarak izinleri atayabilirsiniz:
-
-- Kiracı/Genel yönetici, Kiracıdaki kullanıcılara Azure AD uygulamaları oluşturmak ve kaydolmak için izin verebilir.
-- Kiracı/Genel yönetici, uygulama geliştirici rolünü (izinleri olan) hesaba atayabilir.
-
-Buna dikkat edin:
-
-- Uygulamalar, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinlerine sahip değildir.
-- Yalnızca yeni bir çoğaltma gereci kaydettiğinizde bu izinlere ihtiyacınız vardır. Çoğaltma gereci kurulduktan sonra izinleri kaldırabilirsiniz. 
-
-
-#### <a name="grant-account-permissions"></a>Hesap izinleri verme
-
-Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir
-
-1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** > **Kullanıcılar** > **Kullanıcı ayarları**' na gitmelidir.
-2. Yönetici **uygulama kayıtları** **Evet**olarak ayarlanmalıdır.
-
-    ![Azure AD izinleri](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
-
-#### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama 
-
-Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
-
-## <a name="assign-permissions-to-create-key-vault"></a>Key Vault oluşturmak için izin atama
-
-Azure geçişi projesinin bulunduğu kaynak grubunda rol atama izinlerini aşağıdaki gibi atayın:
-
-1. Azure portal içindeki kaynak grubunda, **erişim denetimi (IAM)** seçeneğini belirleyin.
-2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın. Sahip (veya **katkıda bulunan** ve **Kullanıcı erişimi Yöneticisi**) izinlerine **sahip** olmanız gerekir.
-3. Gerekli izinleriniz yoksa, bunları kaynak grubu sahibinden isteyin. 
-
 ## <a name="prepare-for-migration"></a>Geçiş için hazırlanma
 
 ### <a name="check-machine-requirements-for-migration"></a>Geçiş için makine gereksinimlerini denetleme
@@ -117,7 +77,7 @@ Azure geçişi projesinin bulunduğu kaynak grubunda rol atama izinlerini aşağ
 Makinelerin Azure 'a geçiş gereksinimleriyle uyumlu olduğundan emin olun. 
 
 > [!NOTE]
-> Azure geçişi sunucu geçişi ile aracı tabanlı geçiş, Azure Site Recovery hizmetinin özelliklerine dayalıdır. Bazı gereksinimler Site Recovery belgelerine bağlantı verebilir.
+> Azure geçişi sunucu geçişi ile aracı tabanlı geçiş, Azure Site Recovery hizmetinin aracı tabanlı olağanüstü durum kurtarma özelliği ile aynı çoğaltma mimarisine sahiptir ve kullanılan bileşenlerden bazıları aynı kod tabanını paylaşır. Bazı gereksinimler Site Recovery belgelerine bağlantı verebilir.
 
 1. Fiziksel sunucu gereksinimlerini [doğrulayın](migrate-support-matrix-physical-migration.md#physical-server-requirements) .
 2. VM ayarlarını doğrulayın. Azure 'a çoğaltılan şirket içi makineler, [Azure VM gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.

@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanma hakkında konular hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,48 +13,51 @@ ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fd6dd6781b808bc454a402a55aac9d07a6fc23b0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 81b55253d757f641979c6f72001803d7d38d9af3
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085825"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132508"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin Android 'e özgü konular
-Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanılırken belirli noktalar ele alınmaktadır.
+# <a name="considerations-for-using-xamarin-android-with-msalnet"></a>MSAL.NET ile Xamarin Android kullanma konuları
+Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı ile Xamarin Android kullandığınızda göz önünde bulundurmanız gerekenler açıklanmaktadır (MSAL.NET).
 
 ## <a name="set-the-parent-activity"></a>Üst etkinliği ayarla
 
-Xamarin. Android üzerinde, etkileşim kurulduktan sonra belirtecin geri dönmesi için üst etkinliği ayarlamanız gerekir.
+Xamarin Android 'de, belirtecin etkileşimden sonra döndürdüğü şekilde üst etkinliği ayarlayın. Aşağıda bir kod örneği verilmiştir:
 
 ```csharp
 var authResult = AcquireTokenInteractive(scopes)
  .WithParentActivityOrWindow(parentActivity)
  .ExecuteAsync();
 ```
-Bunu, PublicClientApplication düzeyinde (MSAL 4.2 + içinde) bir geri çağırma yoluyla da ayarlayabilirsiniz.
+
+MSAL 4,2 ve üzeri sürümlerde, bu işlevselliği `PublicClientApplication`düzeyinde de ayarlayabilirsiniz. Bunu yapmak için bir geri çağırma kullanın:
 
 ```csharp
-// Requires MSAL.NET 4.2 or above
+// Requires MSAL.NET 4.2 or later
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
   .WithParentActivityOrWindow(() => parentActivity)
   .Build();
 ```
 
-Bunun bir önerisi [burada](https://github.com/jamesmontemagno/CurrentActivityPlugin)CurrentActivityPlugin kullanmaktır.  Ardından, PublicClientApplication Oluşturucu kodunuz şöyle görünür:
+[CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)kullanıyorsanız, `PublicClientApplication` Builder kodunuz aşağıdaki örneğe benzer şekilde görünür.
 
 ```csharp
-// Requires MSAL.NET 4.2 or above
+// Requires MSAL.NET 4.2 or later
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
   .WithParentActivityOrWindow(() => CrossCurrentActivity.Current)
   .Build();
 ```
 
+## <a name="ensure-that-control-returns-to-msal"></a>Denetimin MSAL 'e döndürdüğünden emin olun 
+Kimlik doğrulama akışının etkileşimli kısmı sona erdiğinde, denetimin MSAL 'e geri gitmesini sağlayın. Android 'de `Activity``OnActivityResult` yöntemini geçersiz kılın. Sonra `AuthenticationContinuationHelper` MSAL sınıfının `SetAuthenticationContinuationEventArgs` yöntemini çağırın. 
 
-## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Kimlik doğrulama akışının etkileşimli kısmı sona erdikten sonra denetimin MSAL 'e geri gitmesini sağlama
-Android 'de, `Activity` `OnActivityResult` yöntemini geçersiz kılmanız ve AuthenticationContinuationHelper MSAL sınıfının SetAuthenticationContinuationEventArgs yöntemini çağırmanız gerekir.
+Bir örneği aşağıda verilmiştir:
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -67,20 +70,32 @@ protected override void OnActivityResult(int requestCode,
 }
 
 ```
-Bu satır, kimlik doğrulama akışının etkileşimli kısmı sona erdikten sonra denetimin MSAL 'e geri gelmesini sağlar.
+
+Bu satır, denetim, kimlik doğrulama akışının etkileşimli bölümünün sonundaki denetimin MSAL 'e dönüşmesini sağlar.
 
 ## <a name="update-the-android-manifest"></a>Android bildirimini güncelleştirme
-`AndroidManifest.xml` aşağıdaki değerleri içermelidir:
+*AndroidManifest. xml* dosyası aşağıdaki değerleri içermelidir:
 
 <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
-  <activity
-        android:name="com.microsoft.identity.client.BrowserTabActivity">< hedefini filtreleme > <action android:name="android.intent.action.VIEW" /> <category android:name="android.intent.category.DEFAULT" /> <category android:name="android.intent.category.BROWSABLE" /> <data android:scheme="msauth"
-                android:host="Enter_the_Package_Name"
-                android:path="/Enter_the_Signature_Hash" /> </i t-Filter ></activity>
 ```
-Substitute the package name you registered in the Azure portal for the `android:host=` value. Substitute the key hash you registered in the Azure portal for the `android:path=` value. The Signature Hash should **not** be URL encoded. Ensure that there is a leading `/` at the beginning of your Signature Hash.
+  <activity
+        android:name="com.microsoft.identity.client.BrowserTabActivity">
+     <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="msauth"
+                android:host="Enter_the_Package_Name"
+                android:path="/Enter_the_Signature_Hash" />
+     </intent-filter>
+ </activity>
+```
 
-Or, you can [create the activity in code](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) and not manually edit `AndroidManifest.xml`. For that, you must create a class that has the `Activity` and `IntentFilter` attribute. A class that represents the same values of the above xml would be:
+`android:host=` değeri için Azure portal kaydettiğiniz paket adını değiştirin. `android:path=` değeri için Azure portal kaydettiğiniz anahtar karmasını değiştirin. İmza karması URL kodlamalı *olmamalıdır.* İmza karmalarınızın başlangıcında önde gelen eğik çizgi (`/`) göründüğünden emin olun.
+
+Alternatif olarak, *AndroidManifest. xml*' yi el ile düzenlemeniz yerine, [etkinliği kodda oluşturun](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) . Etkinliği kodda oluşturmak için önce `Activity` özniteliğini ve `IntentFilter` özniteliğini içeren bir sınıf oluşturun. 
+
+XML dosyasının değerlerini temsil eden bir sınıf örneği aşağıda verilmiştir:
 
 ```csharp
   [Activity]
@@ -93,13 +108,15 @@ Or, you can [create the activity in code](https://docs.microsoft.com/xamarin/and
   }
 ```
 
-### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X bildirimi
+### <a name="xamarinforms-43x-manifest"></a>Xamarin. Forms 4.3. X bildirimi
 
-XamarinForms 4.3. x tarafından oluşturulan kod, `AndroidManifest.xml``com.companyname.{appName}` `package` özniteliğini ayarlar. `DataScheme` `msal{client_id}`olarak kullanırsanız, değeri `MainActivity.cs` ad alanıyla aynı olacak şekilde değiştirmek isteyebilirsiniz.
+Xamarin. Forms 4.3. x, `package` özniteliğini *AndroidManifest. xml*içinde `com.companyname.{appName}` olarak ayarlayan kodu oluşturur. `DataScheme` `msal{client_id}`olarak kullanırsanız, değeri `MainActivity.cs` ad alanının değeriyle eşleşecek şekilde değiştirmek isteyebilirsiniz.
 
 ## <a name="use-the-embedded-web-view-optional"></a>Katıştırılmış Web görünümünü kullanın (isteğe bağlı)
 
-Varsayılan olarak MSAL.NET, Web uygulamaları ve diğer uygulamalarla SSO almanızı sağlayan sistem Web tarayıcısını kullanır. Nadir bazı durumlarda, katıştırılmış Web görünümünü kullanmak istediğinizi belirtmek isteyebilirsiniz. Daha fazla bilgi için bkz. [msal.net bir Web tarayıcısı](msal-net-web-browsers.md) ve [Android Sistem tarayıcısı](msal-net-system-browser-android-considerations.md)kullanır.
+Varsayılan olarak, MSAL.NET, sistem Web tarayıcısını kullanır. Bu tarayıcı, Web uygulamalarını ve diğer uygulamaları kullanarak çoklu oturum açmayı (SSO) almanızı sağlar. Nadir bazı durumlarda sisteminizin gömülü bir Web görünümü kullanmasını isteyebilirsiniz. 
+
+Bu kod örneği, gömülü bir Web görünümünün nasıl ayarlanacağını gösterir:
 
 ```csharp
 bool useEmbeddedWebView = !app.IsSystemWebViewAvailable;
@@ -110,23 +127,28 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-## <a name="troubleshooting"></a>Sorun giderme
-Yeni bir Xamarin. Forms uygulaması oluşturur ve MSAL.Net NuGet paketine bir başvuru eklerseniz, bu işlem yalnızca çalışır.
-Ancak, var olan bir Xamarin. Forms uygulamasını MSAL.NET Preview 1.1.2 veya sonraki bir sürüme yükseltmek istiyorsanız, derleme sorunlarıyla karşılaşabilirsiniz.
-
-Bu sorunları gidermek için şunları yapmalısınız:
-- Mevcut MSAL.NET NuGet paketini MSAL.NET Preview 1.1.2 veya sonraki bir sürüme güncelleştirin
-- Xamarin. Forms 'un 2.5.0.122203 sürümüne otomatik olarak güncelleştirildiğini denetleyin (değilse, bu sürüme güncelleştirin)
-- Xamarin. Android. support. v4 'nin 25.4.0.2 sürümüne otomatik olarak güncelleştirildiğini denetleyin (değilse, bu sürüme güncelleştirin)
-- Tüm Xamarin. Android. support paketleri 25.4.0.2 sürümünü hedefliyor olmalıdır
-- Temizle/yeniden oluştur
-- Visual Studio 'da maksimum paralel proje derlemelerini 1 ' e ayarlamayı deneyin (Seçenekler-> Projeler ve Çözümler-> derleme ve çalıştırma-> en fazla paralel proje derlemesi sayısı)
-- Alternatif olarak, komut satırından oluşturuyorsanız, kullanıyorsanız/m komutunu komutınızdan kaldırmayı deneyin.
+Daha fazla bilgi için bkz. MSAL.NET ve [Xamarin Android sistem tarayıcı konuları](msal-net-system-browser-android-considerations.md) [Için Web tarayıcıları kullanma](msal-net-web-browsers.md) .
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hata: ' AuthenticationContinuationHelper ' adı geçerli bağlamda yok
+## <a name="troubleshoot"></a>Sorun giderme
+Yeni bir Xamarin. Forms uygulaması oluşturabilir ve MSAL.NET NuGet paketine bir başvuru ekleyebilirsiniz.
+Ancak mevcut bir Xamarin. Forms uygulamasını MSAL.NET Preview 1.1.2 veya sonraki bir sürüme yükseltirseniz, derleme sorunlarıyla karşılaşabilirsiniz.
 
-Bu, Visual Studio 'Nun Android. csproj * dosyasını doğru bir şekilde güncelleştirmediği için büyük olasılıkla oluşur. Bazen **\<HintPath >** FilePath, **monoandroid90**yerine netstandard13 içerir.
+Derleme sorunlarını gidermek için:
+
+- Mevcut MSAL.NET NuGet paketini MSAL.NET Preview 1.1.2 veya sonraki bir sürüme güncelleştirin.
+- Xamarin. Forms 'un 2.5.0.122203 sürümüne otomatik olarak güncelleştirildiğinden emin olun. Gerekirse, Xamarin. Forms 'u bu sürüme güncelleştirin.
+- Xamarin. Android. support. v4 'nin 25.4.0.2 sürümüne otomatik olarak güncelleştirilmesini denetleyin. Gerekirse, 25.4.0.2 sürümüne güncelleştirin.
+- Tüm Xamarin. Android. support paketlerinin 25.4.0.2 sürümünü hedef aldığından emin olun.
+- Uygulamayı temizleyin veya yeniden derleyin.
+- Visual Studio 'da, en fazla paralel proje derlemesi sayısını 1 olarak ayarlamayı deneyin. Bunu yapmak için, > **Projeler ve çözümler** > , **en fazla paralel proje derlemesi sayısı** > **derleme ve çalıştırma** **seçeneklerini** belirleyin.
+- Komut satırından derleme yapıyorsanız ve komutunuz `/m`kullanıyorsa, bu öğeyi komuttan kaldırmayı deneyin.
+
+### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>Hata: AuthenticationContinuationHelper adı geçerli bağlamda yok
+
+Bir hata `AuthenticationContinuationHelper` geçerli bağlamda mevcut olmadığını gösteriyorsa, Visual Studio Android. csproj * dosyasını yanlış bir şekilde güncelleştirmiş olabilir. Bazen *\<HintPath >* dosya yolu, *monoandroid90*yerine *netstandard13* içerir.
+
+Bu örnek, doğru bir dosya yolu içerir:
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -137,8 +159,8 @@ Bu, Visual Studio 'Nun Android. csproj * dosyasını doğru bir şekilde güncel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki örnek readme.md dosyasının [Android 'e özgü hususlar](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) paragrafında daha fazla ayrıntı ve örnek verilmiştir:
+Daha fazla bilgi için [Microsoft Identity platform kullanan bir Xamarin mobil uygulaması](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)örneğine bakın. Aşağıdaki tabloda README dosyasındaki ilgili bilgiler özetlenmektedir.
 
 | Örnek | Platform | Açıklama |
 | ------ | -------- | ----------- |
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Basit bir Xamarin Forms uygulaması, AADD v 2.0 uç noktası aracılığıyla MSA ve Azure AD kimlik doğrulaması için MSAL kullanma ve elde edilen belirteçle Microsoft Graph erişme. <br>![Topoloji](media/msal-net-xamarin-android-considerations/topology.png) |
+|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS, Android, UWP | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin. Forms uygulaması. Uygulama ayrıca Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Topoloji](media/msal-net-xamarin-android-considerations/topology.png) |

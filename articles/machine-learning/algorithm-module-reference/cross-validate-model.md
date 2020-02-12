@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546716"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137523"
 ---
 # <a name="cross-validate-model"></a>Modeli Çapraz Doğrulama
 
@@ -62,21 +62,19 @@ Bu senaryoda, çapraz doğrulama modelini kullanarak modeli eğitetin ve test ed
 
 2. Herhangi bir sınıflandırma veya regresyon modelinin çıkışını bağlayın. 
 
-    Örneğin, sınıflandırma için **Iki sınıf Bayes noktası makinesi** kullanıyorsanız, modeli istediğiniz parametrelerle yapılandırın. Ardından, sınıflandırıcının **eğitilen model** bağlantı noktasındaki bağlayıcıyı çapraz doğrulama modelinin eşleşen bağlantı noktasına sürükleyin. 
+    Örneğin, sınıflandırma için Iki sınıf tarafından artırılmış bir **karar ağacı** kullanıyorsanız, modeli istediğiniz parametrelerle yapılandırın. Ardından, sınıflandırıcının **eğitilen model** bağlantı noktasındaki bağlayıcıyı çapraz doğrulama modelinin eşleşen bağlantı noktasına sürükleyin. 
 
     > [!TIP] 
     > Çapraz doğrulama modeli, değerlendirmenin bir parçası olarak modeli otomatik olarak yaptığından modeli eğmenize gerek kalmaz.  
 3.  Çapraz doğrulama modelinin **veri kümesi** bağlantı noktasındaki tüm etiketli eğitim veri kümelerini bağlayın.  
 
-4.  Çapraz doğrulama modelinin **Özellikler** bölmesinde, **sütun seçiciyi Başlat**' ı seçin. Sınıf etiketini veya tahmin edilebilir değeri içeren tek bir sütun seçin. 
+4.  Çapraz doğrulama modelinin sağ panelinde, **sütunu Düzenle**' ye tıklayın. Sınıf etiketini veya tahmin edilebilir değeri içeren tek bir sütunu seçin. 
 
 5. Aynı verilerdeki art arda çalıştırılan çalıştırmalar arasında çapraz doğrulama sonuçlarını yinelemek istiyorsanız **rastgele çekirdek** parametresi için bir değer ayarlayın.  
 
 6. İşlem hattını çalıştırma.
 
 7. Raporların açıklaması için [sonuçlar](#results) bölümüne bakın.
-
-    Modelin daha sonra yeniden kullanmak üzere bir kopyasını almak için, algoritmayı içeren modülün sağ panelindeki **çıktılar** sekmesine geçin (örneğin, **Iki sınıf Bayes noktası makinesi**). Ardından, modül ağacında eğitilen modelin bir kopyasını kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 ## <a name="results"></a>Sonuçlar
 
@@ -103,7 +101,7 @@ Bu raporda, katların dizin değeri, artan sırada listelenir.  Diğer herhangi 
 Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak görselleştirin**' i seçin.
 
 
-|Sütun adı| Açıklama|
+|sütun adı| Açıklama|
 |----|----|
 |Katlama sayısı| Her katlama için bir tanımlayıcı. Beş katlama oluşturduysanız, 0 ile 4 arasında bir beş veri kümesi vardır.
 |Katdaki örneklerin sayısı|Her kata atanan satır sayısı. Bunlar kabaca eşit olmalıdır. |

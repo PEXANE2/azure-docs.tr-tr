@@ -1,6 +1,6 @@
 ---
-title: Çoklu bit hızına sahip akışlar oluşturmak üzere Azure Media Services'ı kullanırken, şirket içi Kodlayıcıları yapılandırma | Microsoft Docs
-description: Bu konu, Canlı olayları yakalamak ve daha ayrıntılı işleme için (Bu, Canlı kodlama etkin olan) AMS kanala tek bit hızlı canlı akış göndermek için kullanabileceğiniz bir şirket içi Canlı Kodlayıcıları listeler. Başlık altında listelenen Kodlayıcıları yapılandırma işlemini gösteren öğreticilerin bağlantılar bulunur.
+title: Çoklu bit hızına sahip akışlar oluşturmak için Azure Media Services kullanırken şirket içi kodlayıcıları yapılandırma | Microsoft Docs
+description: Bu konuda, daha fazla işleme için canlı olaylarınızı yakalamak ve AMS kanallarına (canlı kodlama etkin) tek bir bit hızlı canlı akış göndermek için kullanabileceğiniz şirket içi canlı kodlayıcıları listelenmektedir. Bu konu başlığı altında listelenen kodlayıcılara nasıl yapılandırılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,35 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8bd0014518dc93abb952114a1728f8fc1d3fb4a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708087"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133277"
 ---
-# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Çoklu bit hızına sahip akışlar oluşturmak üzere Azure Media Services'ı kullanırken, şirket içi Kodlayıcıları yapılandırma
-Bu konu, Canlı olayları yakalamak ve daha ayrıntılı işleme için (Bu, Canlı kodlama etkin olan) AMS kanala tek bit hızlı canlı akış göndermek için kullanabileceğiniz bir şirket içi Canlı Kodlayıcıları listeler. Konu ayrıca listelenen Kodlayıcıları yapılandırma gösteren öğreticileri bağlantılarını içerir.
+# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Çoklu bit hızına sahip akışlar oluşturmak için Azure Media Services kullanırken şirket içi kodlayıcıları yapılandırma
+Bu konuda, daha fazla işleme için canlı olaylarınızı yakalamak ve AMS kanallarına (canlı kodlama etkin) tek bir bit hızlı canlı akış göndermek için kullanabileceğiniz şirket içi canlı kodlayıcıları listelenmektedir. Konu başlığı altında, listelenen kodlayıcılara nasıl yapılandırılacağını gösteren öğreticilerin bağlantıları da yer almaktadır.
 
 > [!NOTE]
 > RTMP üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 1935 ve 1936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.
 
-## <a name="flash-media-live-encoder"></a>Flash medyanın gerçek zamanlı kodlayıcı
-Yapılandırma hakkında daha fazla bilgi için [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) Kodlayıcı bir AMS kanala tek bit hızlı canlı akış göndermek için bkz. [yapılandırma FMLE](media-services-configure-fmle-live-encoder.md).
+## <a name="haivision-kb-encoder"></a>Haivision KB Kodlayıcısı
+[HAIVISION KB kodlayıcı](https://www.haivision.com/products/kb-series/) Encoder ' ı BIR AMS kanalına tek bit hızlı canlı akış gönderecek şekilde yapılandırma hakkında bilgi için bkz. [Haivision KB Kodlayıcısı yapılandırma](media-services-configure-kb-live-encoder.md).
 
-## <a name="haivision-kb-encoder"></a>Haivision KB kodlayıcı
-Yapılandırma hakkında daha fazla bilgi için [Haivision KB Kodlayıcı](https://www.haivision.com/products/kb-series/) bir AMS kanala tek bit hızlı canlı akış göndermek için Kodlayıcı bkz [yapılandırma Haivision KB Kodlayıcı](media-services-configure-kb-live-encoder.md).
+## <a name="telestream-wirecast"></a>Telestream kablolu dönüştürme
+[Telestream kablolu dönüştürme](https://www.telestream.net/wirecast/overview.htm) Kodlayıcısı 'nın bir AMS kanalına tek bir bit hızlı canlı akış göndermek için nasıl yapılandırılacağı hakkında bilgi için bkz. [kablolandırma yapılandırma](media-services-configure-wirecast-live-encoder.md).
 
-## <a name="telestream-wirecast"></a>Telestream Wirecast
-Yapılandırma hakkında daha fazla bilgi için [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) bir AMS kanala tek bit hızlı canlı akış göndermek için Kodlayıcı bkz [yapılandırma Wirecast](media-services-configure-wirecast-live-encoder.md).
-
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-Yapılandırma hakkında daha fazla bilgi için [Tricaster](https://newtek.com/products/tricaster-40.html) bir AMS kanala tek bit hızlı canlı akış göndermek için Kodlayıcı bkz [yapılandırma Tricaster](media-services-configure-tricaster-live-encoder.md).
+## <a name="newtek-tricaster"></a>NewTek karmaşık Aster
+Bir AMS kanalına tek bit hızlı canlı akış göndermek için, [karmaşık Aster](https://newtek.com/products/tricaster-40.html) Encoder 'ın nasıl yapılandırılacağı hakkında bilgi için, bkz. [karmaşık Aster yapılandırma](media-services-configure-tricaster-live-encoder.md).
 
 ## <a name="elemental-live"></a>Elemental Live
-Daha fazla bilgi için [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).
+Daha fazla bilgi için bkz. [on canlı](https://www.elementaltechnologies.com/products/elemental-live).
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
@@ -50,5 +47,5 @@ Daha fazla bilgi için [Elemental Live](https://www.elementaltechnologies.com/pr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Çoklu bit hızına sahip akışlar oluşturmak üzere Azure Media Services aracılığıyla canlı akış](media-services-manage-live-encoder-enabled-channels.md).
+[Çoklu bit hızına sahip akışlar oluşturmak için Azure Media Services kullanarak canlı akış](media-services-manage-live-encoder-enabled-channels.md).
 

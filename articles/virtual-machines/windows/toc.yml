@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: Kullanıma açılmamış diskleri bulma
           href: find-unattached-disks.md
-        - name: Dosya depolamayı kullanma
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: Disklerle ilgili SSS
           href: faq-for-disks.md
     - name: Ağı yönetme

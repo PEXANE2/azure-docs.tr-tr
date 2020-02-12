@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647348"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134525"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Laboratuvar sanal makineleri için Azure DevTest Labs bir kaynak grubu belirtin
 
@@ -31,9 +31,9 @@ Laboratuvar sahibi olarak, laboratuar sanal makinelerinizi belirli bir kaynak gr
 Bu özellik ile, tüm Laboratuvar sanal makinelerinizdeki Azure aboneliğinizde yeni veya mevcut bir kaynak grubu belirtmek için bir komut dosyası kullanabilirsiniz. Şu anda bu özelliği bir API aracılığıyla destekler Azure DevTest Labs.
 
 > [!NOTE]
-> DevTest Labs 'de Labs oluşturduğunuzda tüm abonelik limitleri geçerlidir. Laboratuvarınızı aboneliğinizdeki herhangi bir kaynak olarak düşünün. Kaynak grupları söz konusu olduğunda sınır, [abonelik başına 980 kaynak gruplarıdır](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> DevTest Labs 'de Labs oluşturduğunuzda tüm abonelik limitleri geçerlidir. Laboratuvarınızı aboneliğinizdeki herhangi bir kaynak olarak düşünün. Kaynak grupları söz konusu olduğunda sınır, [abonelik başına 980 kaynak gruplarıdır](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
-## <a name="use-azure-portal"></a>Azure portalını kullanma
+## <a name="use-azure-portal"></a>Azure portalı kullanma
 Laboratuvarda oluşturulan tüm VM 'Ler için bir kaynak grubu belirtmek üzere bu adımları izleyin. 
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
@@ -47,7 +47,7 @@ Laboratuvarda oluşturulan tüm VM 'Ler için bir kaynak grubu belirtmek üzere 
 
     ![Tüm laboratuvar VM 'Leri için kaynak grubunu seçin](./media/resource-group-control/select-resource-group.png)
 
-## <a name="use-powershell"></a>PowerShell'i kullanma 
+## <a name="use-powershell"></a>PowerShell kullanma 
 Aşağıdaki örnekte, yeni bir kaynak grubundaki tüm Laboratuvar sanal makinelerini oluşturmak için bir PowerShell betiğinin nasıl kullanılacağı gösterilmektedir.
 
 ```powershell

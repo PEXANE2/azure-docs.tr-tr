@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548416"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137912"
 ---
 # <a name="train-model-module"></a>Train Model Modülü
 
@@ -39,7 +39,7 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
 
 3. Eğitim tamamlandıktan sonra, yeni verilerde tahmine dayalı hale getirmek için, [Puanlama modülleriyle](./score-model.md)eğitilen modeli kullanın.
 
-## <a name="how-to-use-train-model"></a>**Eğitim modeli** kullanma  
+## <a name="how-to-use-train-model"></a>Eğitim modeli kullanma 
   
 1.  Azure Machine Learning, bir sınıflandırma modeli veya regresyon modeli yapılandırın.
     
@@ -49,7 +49,7 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
 
     Eğitim veri kümesi bir etiket sütunu içermelidir. Etiketleri olmayan herhangi bir satır yok sayılır.
   
-4.  **Etiket sütunu**için, **sütun seçiciyi Başlat**' a tıklayın ve modelin eğitim için kullanabileceği sonuçları içeren tek bir sütun seçin.
+4.  **Etiket sütunu**için, modülün sağ panelindeki **sütunu Düzenle** ' ye tıklayın ve modelin eğitim için kullanabileceği sonuçları içeren tek bir sütun seçin.
   
     - Sınıflandırma sorunları için etiket sütunu **kategorik** değerler ya da **ayrık** değerler içermelidir. Bazı örnekler bir Evet/Hayır derecelendirmesi, bir dimevsimi sınıflandırma kodu veya adı ya da bir gelir grubu olabilir.  Kategorik olmayan bir sütun seçerseniz, modül eğitim sırasında bir hata döndürür.
   

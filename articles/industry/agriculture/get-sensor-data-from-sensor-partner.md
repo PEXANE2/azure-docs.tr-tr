@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715569"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138362"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -40,27 +40,32 @@ Algılayıcı verilerinin akışını başlattıktan sonra, verileri Farmtts sis
 Aşağıdaki adımları izleyerek yukarıdaki bilgileri oluşturabilirsiniz: (lütfen Azure 'da, Farmtts 'nin dağıtıldığı Azure aboneliğine erişmeniz için bu adımların gerçekleştirilmesi gerektiğini unutmayın)
 
 1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscriptv2)indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde bir dosya olacaktır.
-2. https://portal.azure.com/ oturum açın ve Azure Active Directory > uygulama kayıtlarına gidin
 
-3. Farmtts dağıtımınızın bir parçası olarak oluşturulan uygulama kaydına tıklayın. Bu, Farmtts veri merkeziniz ile aynı ada sahip olacaktır.
+2. https://portal.azure.com/oturum açın.
 
-4. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı (Cloud Shell) erişimi sağlar.
+3. Bu **Sürüm 1.2.7 veya sonraki bir sürümü kullanıyorsanız, lütfen 3A, 3B ve 3c adımlarını atlayın ve 4. adıma gidin.** Farmtts Kullanıcı arabiriminin sağ üst tarafındaki Ayarlar simgesine tıklayarak Farmtts sürümünü denetleyebilirsiniz.
 
-5. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
+3a. Azure Active Directory > uygulama kayıtlarına gidin
+
+3b. Farmtts dağıtımınızın bir parçası olarak oluşturulan uygulama kaydına tıklayın. Bu, Farmtts veri merkeziniz ile aynı ada sahip olacaktır.
+
+3c. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı (Cloud Shell) erişimi sağlar.
+
+4. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 
     ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
+5. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
 
     ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Cloud Shell örneğindeki 1. adımdan dosyayı karşıya yükleyin.
+6. Cloud Shell örneğindeki 1. adımdan dosyayı karşıya yükleyin.
 
     ![Araç çubuğu düğmesini karşıya yükle](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. Dosyanın karşıya yüklendiği dizine gidin. Varsayılan olarak, dosyalar Kullanıcı adı altında ana dizine yüklenir.
+7. Dosyanın karşıya yüklendiği dizine gidin. Varsayılan olarak, dosyalar Kullanıcı adı altında ana dizine yüklenir.
 
-9. Aşağıdaki betiği çalıştırın. Betik, Azure Active Directory > Genel Bakış sayfasından edinilen kiracı KIMLIĞINI ister.
+8. Aşağıdaki betiği çalıştırın. Betik, Azure Active Directory > Genel Bakış sayfasından edinilen kiracı KIMLIĞINI ister.
 
     ```azurepowershell-interactive 
 
@@ -68,7 +73,7 @@ Aşağıdaki adımları izleyerek yukarıdaki bilgileri oluşturabilirsiniz: (l�
 
     ```
 
-10. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
+9. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme
 

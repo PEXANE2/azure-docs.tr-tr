@@ -8,16 +8,16 @@ ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: ead9dab61e0cb60505aed9db43c61eb73a0e22a9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760207"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133285"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Silinen bir panoyu Azure portal kurtarma
 
-Azure portal _yayımlanmış_ bir panoyu silerseniz, bu panoyu silmenin 14 gün içinde kurtarabilirsiniz. Pano yayınlanmamışsa, bu panoyu kurtaramazsınız ve yeniden oluşturmanız gerekir. Pano yayımlama hakkında daha fazla bilgi için bkz. [panoyu Yayımla](azure-portal-dashboard-share-access.md#publish-dashboard). Yayımlanan bir panoyu kurtarmak için şu adımları izleyin:
+Ortak Azure bulutunuz varsa ve Azure portal _yayımlanmış_ bir panoyu silerseniz, bu panoyu silmenin 14 gün içinde kurtarabilirsiniz. Azure Kamu bulutunda çalışıyorsanız veya Pano yayınlanmamışsa, bu dosyayı kurtaramazsınız ve yeniden oluşturmanız gerekir. Pano yayımlama hakkında daha fazla bilgi için bkz. [panoyu Yayımla](azure-portal-dashboard-share-access.md#publish-dashboard). Yayımlanan bir panoyu kurtarmak için şu adımları izleyin:
 
 1. Azure portal menüsünden **kaynak grupları**' nı seçin ve ardından panoyu yayımladığınız kaynak grubunu seçin (varsayılan olarak, **panolar**olarak adlandırılır).
 

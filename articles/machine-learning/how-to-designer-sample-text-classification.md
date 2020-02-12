@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: f15f50e372d0bfe58018b16ebfa5d5d85644ae1a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963250"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137778"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak şirket kategorisini tahmin etmek için bir sınıflandırıcı oluşturun.
 
@@ -63,7 +63,7 @@ Makaleler, bazı şirketler için bulunamadı, bu nedenle kayıt sayısı 500 ' 
 
 ## <a name="pre-process-the-text-data"></a>Metin verilerini önceden işleme
 
-Metin verilerini önceden işlemek için, cümlelere, simgeleştirme cümlelerini ve benzerlerini Algıla dahil olmak üzere, **önceden Işlem metin** modülünü kullanıyoruz. [**Işlem öncesi metin**](algorithm-module-reference/preprocess-text.md) makalesinde desteklenen tüm seçenekleri buldum. Veri verileri önceden işlendikten sonra, eğitim veri kümesinin özgün verilerin %50 ' i içermesi ve test veri kümesinin özgün verilerin %50 ' i içermesi için, verileri ayrılmış olarak bölmek için **bölünmüş veri** modülünü kullanırız.
+Metin verilerini önceden işlemek için, cümlelere, simgeleştirme cümlelerini ve benzerlerini Algıla dahil olmak üzere, **önceden Işlem metin** modülünü kullanıyoruz. [**Işlem öncesi metin**](algorithm-module-reference/preprocess-text.md) makalesinde desteklenen tüm seçenekleri buldum. Metin verileri önceden işlendikten sonra, eğitim veri kümesinin orijinal verilerin %50 ' u içermesi ve test veri kümesinin özgün verilerin %50 ' i içermesi adına, verileri rastgele bölmek için **bölünmüş veri** modülünü kullanırız.
 
 ## <a name="feature-engineering"></a>Özellik Mühendisliği
 Bu örnekte, özellik Mühendisliği gerçekleştiren iki yöntem kullanacağız.
@@ -79,7 +79,7 @@ Makalelerin düz metnini tamsayılara dönüştürmek ve model için giriş öze
 
 N-gram, belirli bir metin dizisinden n terimlerin ardışık sırasıdır. Bir n-gram Boyut 1, unigram olarak adlandırılır; 2 boyutlu bir n-gram bir bigram; bir n-gram Boyut 3, bir trigramı. N-daha büyük boyutlarda, bazen n değeri, örneğin "dört-gram", "beş-gram" vb. olarak adlandırılır.
 
-Özellik Mühendisliği için başka bir çözüm olarak [**metin modülünden N-gram özelliğini ayıklama**](algorithm-module-reference/extract-n-gram-features-from-text.md)kullandık. Bu modül ilk olarak n-gram kümesini ayıklar, n-gram sayısına ek olarak her n-gram metinde göründüğü belge sayısı sayılır (DF). Bu örnekte, özellik değerlerini hesaplamak için TF-ıDF ölçümü kullanılır. Daha sonra, yapılandırılmamış metin verilerini her bir özelliğin bir metin örneğindeki n-gram öğesinin TF-ıDF ' i temsil ettiği eşit uzunlukta sayısal Özellik vektörlerine dönüştürür.
+Özellik Mühendisliği için başka bir çözüm olarak [**metin modülünden N-gram özelliğini ayıklama**](algorithm-module-reference/extract-n-gram-features-from-text.md) kullandık. Bu modül ilk olarak n-gram kümesini ayıklar, n-gram sayısına ek olarak her n-gram metinde göründüğü belge sayısı sayılır (DF). Bu örnekte, özellik değerlerini hesaplamak için TF-ıDF ölçümü kullanılır. Daha sonra, yapılandırılmamış metin verilerini her bir özelliğin bir metin örneğindeki n-gram öğesinin TF-ıDF ' i temsil ettiği eşit uzunlukta sayısal Özellik vektörlerine dönüştürür.
 
 Metin verilerini sayısal Özellik vektörlerine dönüştürdükten sonra, veri kümesinden metin verilerini kaldırmak için bir **Select Column** modülü kullanılır. 
 
