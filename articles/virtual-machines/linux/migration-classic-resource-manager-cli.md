@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 4273ca00110a2966ca794eaa3d6b5fcc5ec9f00e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 43be6947b464a18cc29edc5a578fd8879b70bacf
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057405"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153188"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLı kullanarak IaaS kaynaklarını klasik 'dan Azure Resource Manager geçirme
 Bu adımlarda, klasik dağıtım modelinden Azure Resource Manager dağıtım modeline hizmet olarak altyapı (IaaS) kaynaklarını geçirmek için Azure komut satırı arabirimi (CLı) komutlarının nasıl kullanılacağı gösterilmektedir. Makale, [Azure klasık CLI](../../cli-install-nodejs.md)'yi gerektirir. Azure CLı yalnızca Azure Resource Manager kaynakları için geçerli olduğundan, bu geçiş için kullanılamaz.
@@ -84,7 +84,7 @@ Bu adım için `arm` moduna geçmeniz gerekir. Bunu aşağıdaki komutla yapın.
 azure config mode arm
 ```
 
-Azure Resource Manager içinde sahip olduğunuz vCPU 'ların geçerli sayısını denetlemek için aşağıdaki CLı komutunu kullanabilirsiniz. VCPU kotaları hakkında daha fazla bilgi için bkz [. sınırlara ve Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager)
+Azure Resource Manager içinde sahip olduğunuz vCPU 'ların geçerli sayısını denetlemek için aşağıdaki CLı komutunu kullanabilirsiniz. VCPU kotaları hakkında daha fazla bilgi için bkz. [sınırlara ve Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"

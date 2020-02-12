@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8db1d782b6f92637ad929ba863a8d24c81280577
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548433"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152355"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
 
@@ -84,7 +84,7 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
         [Verileri el Ile gir](./enter-data-manually.md) modülünü çalıştırdığınızda, bu satırlar sütun ve dizin değerlerinin veri kümesine aşağıdaki şekilde dönüştürülür:  
   
-        |Süt1|Süt2|Col3|Col4|Etiketler|  
+        |Süt|Col2|Col3|Col4|Etiketler|  
         |-|-|-|-|-|  
         |0,00016|0,004|0,999961|0,00784|1|  
         |0|0,004|0,999955|0,008615|1|  

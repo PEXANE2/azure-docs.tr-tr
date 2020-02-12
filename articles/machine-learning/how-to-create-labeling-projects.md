@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e469837c8e374e62824bd8f7a7feb110ed1be9c9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116857"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153120"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -161,9 +161,9 @@ Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
 1. Sol taraftaki listede **etiket sınıfları**' nı seçin.
 1. Listenin en üstünde **+** etiket ekle ![etiket ekle ' yi seçin](media/how-to-create-labeling-projects/add-label.png)
 1. Formunda, yeni etiketinizi ekleyin ve nasıl devam etmek istediğinizi seçin.  Bir görüntü için kullanılabilir etiketleri değiştirdiğiniz için, zaten etiketlenmiş verilerin nasıl davranalınacağını seçersiniz:
-    * Tüm mevcut etiketleri kaldırarak baştan başlayın.  Tüm görüntüleri etiketlemek için tüm mevcut etiketleri temizlemek istiyorsanız bu seçeneği belirleyin.
-    * Tüm mevcut etiketleri koruyarak, baştan başlayın.  Tüm verileri etiketsiz olarak işaretlemek için bu seçeneği belirleyin, ancak etiketli görüntüler için mevcut etiketleri varsayılan etiket olarak tutun.
-    * Tüm mevcut etiketleri koruyarak devam edin. Tüm verilerin zaten olduğu gibi etiketlenmesi ve henüz sınıflandırılmamış veriler için yeni etiketi kullanmaya başlamak üzere bu seçeneği belirleyin.
+    * Tüm mevcut etiketleri kaldırarak baştan başlayın.  Yeni tam Etiketler kümesiyle başlayarak etiketlemeye başlamak istiyorsanız bu seçeneği belirleyin. 
+    * Tüm mevcut etiketleri koruyarak, baştan başlayın.  Tüm verileri etiketsiz olarak işaretlemek için bu seçeneği belirleyin, ancak önceden etiketlenmiş görüntüler için mevcut etiketleri varsayılan etiket olarak tutun.
+    * Tüm mevcut etiketleri koruyarak devam edin. Tüm verilerin zaten olduğu şekilde etiketlendiği ve henüz etiketsiz veriler için yeni etiketi kullanmaya başlamış olan bu seçeneği belirleyin.
 1. Yönergeler sayfanızı yeni etiketler için gereken şekilde değiştirin.
 1. Tüm yeni etiketleri ekledikten sonra, sayfanın üst kısmında, projeyi yeniden başlatmak için **Başlat** ' ı seçin.  
 

@@ -1,5 +1,5 @@
 ---
-title: R kullanmaya başlama
+title: R ile çalışmaya başlama
 titleSuffix: ML Studio (classic) - Azure
 description: Tahmin çözümü oluşturmak için Azure Machine Learning Studio (klasik) ile R dilini kullanmaya başlamak için bu R programlama öğreticisini kullanın.
 services: machine-learning
@@ -7,21 +7,21 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3972fb3c0717069f84b177c54e8fc002ec52f469
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427569"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152882"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) R programlama diliyle çalışmaya başlama
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Bu öğretici, R programlama dilini kullanarak Azure Machine Learning Studio (klasik) genişletmeye başlamanıza yardımcı olur. Studio (klasik) içinde R kodu oluşturmak, test etmek ve yürütmek için bu R programlama öğreticisini izleyin. Öğreticide çalışırken, Studio (klasik) dilinde R dilini kullanarak bir tahmin çözümü oluşturacaksınız.  
 
@@ -133,7 +133,7 @@ RStudio, R için yaygın olarak kullanılan bir IDE 'dir. RStudio 'Yu, bu kılav
 
 Masaüstü makinenizde R programlama dili yüklü değilse, bunu şimdi yapmanızı öneririz. Açık kaynaklı R dilinin ücretsiz indirmeleri [https://www.r-project.org/](https://www.r-project.org/)adresindeki kapsamlı r arşiv ağı 'NDA (Cran) kullanılabilir. Windows, Mac OS ve Linux/UNIX için indirilebilir dosyalar var. Yakındaki bir yansıtma seçin ve indirme yönergelerini izleyin. Ayrıca, CRAN, çok sayıda kullanışlı analiz ve veri işleme paketi içerir.
 
-RStudio 'yu yeni kullanıyorsanız Masaüstü sürümünü indirip yüklemelisiniz. Windows, Mac OS ve Linux/UNIX için RStudio İndirmeleri http://www.rstudio.com/products/RStudio/ adresinde bulabilirsiniz. Masaüstü makinenize RStudio 'Yu yüklemek için belirtilen yönergeleri izleyin.  
+RStudio 'yu yeni kullanıyorsanız Masaüstü sürümünü indirip yüklemelisiniz. Windows, Mac OS ve Linux/UNIX için RStudio İndirmeleri http://www.rstudio.com/products/RStudio/adresinde bulabilirsiniz. Masaüstü makinenize RStudio 'Yu yüklemek için belirtilen yönergeleri izleyin.  
 
 Rstudio [IDE 'Yi kullanarak](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)rstudio 'ya bir öğreticiye giriş sunulmaktadır.
 
@@ -756,7 +756,7 @@ Bu kodu çalıştırın ve neler olduğunu görün. R cihaz bağlantı noktasın
 
 Bu değişkenler arasındaki ilişkilerde bazı tek görünümlü yapı mevcuttur. Belki de bu, verilerdeki eğilimler ve değişkenleri standart olmayan olgudan ortaya çıkar.
 
-### <a name="correlation-analysis"></a>Bağıntı analizi
+### <a name="correlation-analysis"></a>Bağıntı Analizi
 
 Bağıntı analizini gerçekleştirmek için, değişkenleri aynı şekilde ve standartlaştırmanız gerekir. Yalnızca değişkenleri ortalar ve ölçeklendirilen R `scale()` işlevini kullanabiliriz. Bu işlev iyi şekilde daha hızlı çalıştırılabilir. Bununla birlikte, R 'de savunma programı 'nın bir örneğini göstermek istiyorum.
 

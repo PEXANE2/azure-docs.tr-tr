@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427548"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153035"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
 
@@ -55,7 +55,7 @@ Kendi çözümlerinizi geliştirmek için kullanmak üzere kendi Machine Learnin
 AI Galerisi içinden bir kaynağı indirmek için:
 
 1. Kaynağı AI galerisinde açın.
-1. Tıklayın **Studio'da Aç**.
+1. **Studio 'Da aç**' a tıklayın.
 
 ![AI galerisinden bir öğe açma](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
@@ -88,9 +88,9 @@ Ve katkılarınız hakkında yorum bildirimleri almak için Disqus gibi bir tart
 
 1. Galeride, açıklayıcı bir **ad** ve **Etiketler** girin. Kullandığınız teknikleri veya çözüm yaptığınız gerçek sorunu vurgulayın. Bir tanımlayıcı deneme başlık örneğidir "ikili sınıflandırma: Twitter yaklaşım analizi."
 
-1. İçinde **Özet** kutusuna, denemenizi özetini girin. Denemeyi çözen sorun ve nasıl yaklaşıldığında kısaca açıklayın.
+1. **Özet** kutusunda, denemenizin bir özetini girin. Denemeyi çözen sorun ve nasıl yaklaşıldığında kısaca açıklayın.
 
-1. İçinde **ayrıntılı bir açıklama** kutusunda, her bir parçası denemenizi gerçekleştirdiğiniz adımları tanımlayın. Dahil etmek için bazı yararlı konular şunlardır:
+1. **AYRıNTıLı açıklama** kutusunda, denemenizin her bölümünde yaptığınız adımları açıklayacağız. Dahil etmek için bazı yararlı konular şunlardır:
    * Deneme grafiği ekran görüntüsü
    * Veri kaynakları ve açıklaması
    * Veri işleme
@@ -98,19 +98,19 @@ Ve katkılarınız hakkında yorum bildirimleri almak için Disqus gibi bir tart
    * Model açıklaması
    * Sonuçları ve model performansını değerlendirme
 
-   Açıklamanızı biçimlendirmek için markdown'ı kullanabilirsiniz. Denemeyi yayımlandığında girişlerinizi deneme açıklama sayfasında nasıl görüneceğine bakmak için seçin **Önizleme**.
+   Açıklamanızı biçimlendirmek için markdown'ı kullanabilirsiniz. Deneme açıklaması sayfasındaki girişlerinizin deneme yayımlandığında nasıl görüneceğini görmek için **Önizleme**' yi seçin.
 
    > [!TIP]
    > Markdown düzenleme ve Önizleme küçük için sağlanan metin kutuları. Deneme belgelerinizi bir markı düzenleyicisine (örneğin, [Visual Studio Code](https://aka.ms/vscode)) yazmanızı ve sonra tamamlanan belgeleri kopyalayıp galerideki metin kutusuna yapıştırmayı öneririz.
 
-1. Üzerinde **görüntü seçimi** denemeniz için bir küçük resim görüntüsünü seçin. Deneme ayrıntıları sayfasının ve deneme kutucuğunda en küçük resim görüntüsü görünür. Kullanıcıların galeri göz diğer kullanıcıların resmine görürsünüz. Bilgisayarınızdan bir resim yükleyin ya da Galeriden stok bir görüntü seçin.
+1. **Görüntü seçimi** sayfasında, denemenizin küçük bir görüntüsünü seçin. Deneme ayrıntıları sayfasının ve deneme kutucuğunda en küçük resim görüntüsü görünür. Kullanıcıların galeri göz diğer kullanıcıların resmine görürsünüz. Bilgisayarınızdan bir resim yükleyin ya da Galeriden stok bir görüntü seçin.
 
-1. Üzerinde **ayarları** sayfasındaki **görünürlük**, içeriğinizi herkese açık şekilde yayımlamak isteyip istemediğinizi seçin (**genel**) mi, yoksa bir bağlantı sayfası (sahip kişiler için erişilebilir **Listelenmemiş**).
+1. **Ayarlar** sayfasında, **görünürlük**' ın altında, Içeriğinizi herkese açık (**genel**) veya yalnızca sayfaya bağlantısı olan kişiler için erişilebilir hale mi (**listelenmemiş**) seçin.
 
    > [!TIP]
-   > Genel olarak yayınlamak önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, ilk olarak denemeyi yayımlayabilirsiniz **Unlisted**. Daha sonra görünürlük ayarını değiştirebilirsiniz **genel** deneme Ayrıntıları sayfasında. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
+   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
 
-1. Denemeyi galerisinde yayımlamak için seçin **Tamam** işaretleyin.
+1. Denemeyi galeriye yayımlamak için **Tamam** onay işaretini seçin.
 
 ### <a name="update-your-experiment"></a>Denemenizi güncelleştir
 
@@ -121,23 +121,23 @@ Denemenizde doğrudan galeri için aşağıdaki bilgileri değiştirebilirsiniz:
 * Deney adı
 * Özet ya da açıklaması
 * Etiketler
-* Resim
-* Görünürlük ayarı (**genel** veya **Unlisted**)
+* Görüntü
+* Görünürlük ayarı (**genel** veya **listelenmemiş**)
 
 Galeriden denemeler de silebilirsiniz.
 
 Bu değişiklikleri yapmak veya deneme Ayrıntıları sayfasında veya galeride profil sayfanızdan denemeyi silin.
 
-* Denemenizi ayrıntılarını değiştirmek için deneme Ayrıntıları sayfasında seçin **Düzenle**. Ayrıntılar sayfası, düzenleme moduna girer. Değişiklik yapmak için seçin **Düzenle** deney adı, Özet veya etiketleri yanında. Değişiklik yapmadan tamamladığınızda seçin **Bitti**. Denemeyi görünürlük ayarlarını değiştirmek için (**genel** veya **Unlisted**), veya denemeyi Galeriden silmek için işaretleyin **ayarları** simgesi.
+* Deneme ayrıntıları sayfasında, denemenizin ayrıntılarını değiştirmek için **Düzenle**' yi seçin. Ayrıntılar sayfası, düzenleme moduna girer. Değişiklik yapmak için deneme adı, Özet veya etiketlerin yanındaki **Düzenle** ' yi seçin. Değişiklik yapmayı tamamladığınızda **bitti**' yi seçin. Deneyinin görünürlük ayarlarını değiştirmek (**genel** veya **listelenmemiş**) ya da bir deneyden denemeyi silmek için **Ayarlar** simgesini seçin.
 
-* Profil sayfanızdan, deneme için aşağı oku seçin ve ardından **Düzenle**. Bu sizi düzenleme modunda denemeniz için ayrıntıları sayfasına götürür. Değişiklikleri yapmayı tamamladığınızda, seçin **Bitti**. Galeriden denemeyi silmek için işaretleyin **Sil**.
+* Profil sayfanızda, deneme için aşağı oku seçin ve ardından **Düzenle**' yi seçin. Bu sizi düzenleme modunda denemeniz için ayrıntıları sayfasına götürür. Değişiklik yapmayı tamamladığınızda **bitti**' yi seçin. Galerideki denemeyi silmek için **Sil**' i seçin.
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Belgeleme ve denemenizi yayımlama için ipuçları
 
 * Önceki veri bilimi deneyimi okuyucu var, ancak basit bir dil kullanmak üzere yararlı olabilir varsayabilirsiniz. Mümkün olduğunca ayrıntılı şeyler açıklanmaktadır.
 * Yeterli bilgi ve denemenizi gidin okuyucular yardımcı olmak için adım adım açıklamalar sağlar.
 * Görselleri yorumlamak ve deneme belgelerinize doğru şekilde kullanmak, okuyucular için yararlı olabilir. Görselleri deneme grafikleri ve veri ekran görüntüleri içerir.
-* Denemeniz için bir veri kümesi eklerseniz (yani, veri kümesini Içeri aktarma verileri modülünden içeri aktarmadığınız), veri kümesi denemenizin bir parçasıdır ve galeride yayımlanır. Yayımladığınız veri kümesinin, herkes tarafından paylaşım ve indirmeye izin veren lisanslama koşullarına sahip olduğundan emin olun. Gallery Katkıları altında Azure kapsamında [kullanım](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+* Denemeniz için bir veri kümesi eklerseniz (yani, veri kümesini Içeri aktarma verileri modülünden içeri aktarmadığınız), veri kümesi denemenizin bir parçasıdır ve galeride yayımlanır. Yayımladığınız veri kümesinin, herkes tarafından paylaşım ve indirmeye izin veren lisanslama koşullarına sahip olduğundan emin olun. Galeri katkıları, Azure [kullanım koşulları](https://azure.microsoft.com/support/legal/website-terms-of-use/)kapsamında ele alınmıştır.
 
 ## <a name="contribute-tutorials-and-collections"></a>Öğreticiler ve koleksiyonlar için katkıda bulunun
 
@@ -156,9 +156,9 @@ Bir **öğreticiye** , makine öğrenimi kavramlarını açıklayan bir öğreti
 1. **Ayarlar** sayfasında, **görünürlük**Için, katkınızın **herkese açık** olup olmadığını seçin (herkes tarafından görüntülenebilir) veya **listelenmemiş** (yalnızca doğrudan bağlantı olan kişiler tarafından görüntülenebilir).
 
    > [!TIP]
-   > Genel olarak yayınlamak önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, ilk olarak denemeyi yayımlayabilirsiniz **Unlisted**. Daha sonra görünürlük ayarını değiştirebilirsiniz **genel** deneme Ayrıntıları sayfasında. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
+   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** sekmesindeki hesap sayfanızda listelenir.
 
@@ -185,20 +185,20 @@ Katkısıyla gönderdiğiniz görüntüler bir kutucuk oluşturmak için kullan�
 
 **Denemem sırasında kullandığım veri kümesine ne olur? Veri kümesi galeride da yayımlanmış mi?**
 
-Veri kümeniz denemenizin bir parçası ise ve Içeri aktarma verileri modülünden içeri aktarılmamışsa, veri kümesi, denemenizin bir parçası olarak galeride yayımlanır. Denemenize göre yayımladığınız veri kümesinin uygun lisans koşullarına sahip olduğundan emin olun. Lisans koşullarını herkes paylaşmak ve verileri indirmek izin vermelidir. Gallery Katkıları altında Azure kapsamında [kullanım](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+Veri kümeniz denemenizin bir parçası ise ve Içeri aktarma verileri modülünden içeri aktarılmamışsa, veri kümesi, denemenizin bir parçası olarak galeride yayımlanır. Denemenize göre yayımladığınız veri kümesinin uygun lisans koşullarına sahip olduğundan emin olun. Lisans koşullarını herkes paylaşmak ve verileri indirmek izin vermelidir. Galeri katkıları, Azure [kullanım koşulları](https://azure.microsoft.com/support/legal/website-terms-of-use/)kapsamında ele alınmıştır.
 
 **Azure HDInsight veya SQL Server veri çekmek için veri alma modülünü kullanan bir denemem var. Verileri almak için kimlik bilgilerimi kullanır. Bu tür bir deneme yayınlayabilirim miyim? Kimlik bilgilerimin paylaşılmaması için nasıl emin olabilirim?**
 
 Şu anda galeride kimlik bilgilerini kullanan bir deneyde yayımlayamazsınız.
 
-**Birden çok etiketi nasıl katılabilirim?**
+**Nasıl yaparım? birden çok etiket girin.**
 
 Başka bir etiket girmek için bir etiket girdikten sonra SEKME tuşuna basın.
 
-## <a name="we-want-to-hear-from-you"></a>Fikrinizi öğrenmek isteriz.
+## <a name="we-want-to-hear-from-you"></a>Sizi dinlemek istiyoruz!
 
 Galerinin kullanıcılarımıza ve kullanıcılarımıza göre olmasını istiyoruz. Galeri hakkında ne kadar sevdiğiniz veya nefret verdiğiniz şeyleri bize bildirmek için sağ taraftaki gülümseme 'nı kullanın.  
 
 ![Geri Bildirim](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[BENİ GALERİSİNE GÖTÜR &GT;&GT;](https://gallery.azure.ai)**
+**[GALERIYE > >](https://gallery.azure.ai)**

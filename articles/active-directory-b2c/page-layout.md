@@ -1,91 +1,47 @@
 ---
-title: Sayfa düzeni seçin-Azure Active Directory B2C
-description: Azure Active Directory B2C bir sayfa düzeni seçme hakkında bilgi edinin.
+title: Sayfa düzeni sürümleri
+titleSuffix: Azure AD B2C
+description: Özel ilkelerde UI özelleştirmesi için sayfa düzeni sürüm geçmişi.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 12/18/2019
+ms.topic: reference
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 452687f3886a85bea796e3899410667ee1d592fa
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840324"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149516"
 ---
-# <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Özel ilkeleri kullanarak Azure Active Directory B2C bir sayfa düzeni seçme
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
-Kullanıcı akışları veya özel ilkeler mi kullandığınızı Azure Active Directory B2C (Azure AD B2C) ilkeleriniz için JavaScript istemci tarafı kodunu etkinleştirebilirsiniz. Uygulamalarınız için JavaScript 'i etkinleştirmek üzere [özel ilkenize](custom-policy-overview.md)bir öğe eklemeniz, bir sayfa düzeni seçmeniz ve isteklerinizin [b2clogin.com](b2clogin.md) kullanmanız gerekir.
-
-Sayfa düzeni, Azure AD B2C sağladığı öğelerin ve sağladığınız içeriğin bir ilişkidir.
-
-Bu makalede, bir özel ilkede yapılandırarak Azure AD B2C bir sayfa düzeninin nasıl görüntüleneceği açıklanır.
-
-> [!NOTE]
-> Kullanıcı akışları için JavaScript 'ı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory B2C JavaScript ve sayfa düzeni sürümleri](user-flow-javascript-overview.md).
-
-## <a name="replace-datauri-values"></a>DataUri değerleri Değiştir
-
-Özel ilkelerinizi etkinleştirmiş olabilirsiniz [ContentDefinitions](contentdefinitions.md) kullanıcı yolculuğunda kullanılan HTML şablonları tanımlayın. **ContentDefinition** içeren bir **DataUri** Azure AD B2C tarafından sağlanan sayfa öğelerine başvurur. **LoadUri** sağladığınız HTML ve CSS içeriği göreli yolu.
-
-```XML
-<ContentDefinition Id="api.idpselections">
-  <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Idp selection page</Item>
-    <Item Key="language.intro">Sign in</Item>
-  </Metadata>
-</ContentDefinition>
-```
-
-Bir sayfa düzeni seçmek için ilkeleriniz içindeki [ContentDefinitions](contentdefinitions.md) Içindeki **datauri** değerlerini değiştirirsiniz. Eski geçiş tarafından **DataUri** değerleri için yeni değerleri, sabit bir paket seçeneğini belirliyoruz. Bu paketi kullanmanın avantajı, bu paketin değişmediğini ve sayfanızda beklenmeyen davranışlara neden olduğunu biliyoruz.
-
-Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için `elements` ile sayfa türü arasında `contract` ekleyin (örneğin, `selfasserted`) ve sürüm numarasını belirtin. Örneğin:
-
-| Eski DataUri değer | Yeni DataUri değeri |
-| ----------------- | ----------------- |
-| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
-
-## <a name="version-change-log"></a>Sürüm değişiklik günlüğü
+# <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
 Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü her sürümde tanıtılan değişiklikleri belirtir.
 
-### <a name="200"></a>2.0.0
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="200"></a>2.0.0
 
 - Otomatik olarak onaylanan sayfa (`selfasserted`)
   - Özel ilkelerde [görüntüleme denetimleri](display-controls.md) için destek eklendi.
 
-### <a name="120"></a>1.2.0
+## <a name="120"></a>1.2.0
 
 - Tüm sayfalar
   - Erişilebilirlik düzeltmeleri
-  - Artık CSS ve JavaScript için yükleme sırasını denetlemek üzere HTML etiketinizdeki `data-preload="true"` özniteliğini ekleyebilirsiniz. Senaryolar şunlardır:
-    - CSS 'yi, dosyaları yükleme arasında ' titreşimsiz ' olacak şekilde HTML 'niz ile aynı anda yüklemek için CSS bağlantılarınızın üzerinde kullanın
-    - Bu öznitelik, sayfa yüklemeden önce betik etiketlerinizin getirilme sırasını denetlemenizi sağlar
+  - Artık CSS ve JavaScript için yükleme sırasını denetlemek üzere HTML etiketinizdeki `data-preload="true"` özniteliğini ekleyebilirsiniz.
+    - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
+    - `script` etiketlerinizin, sayfa yüklemeden önce getirilme ve yürütüldüğü sırayı kontrol edin.
   - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlar
   - Chrome çevirisi desteği
-- Birleşik ve kendiliğinden onaylanan sayfa
-  - Kullanıcı adı/e-posta ve parola alanları artık HTML öğesi formunu kullanır.  Bu, artık Edge ve IE 'nin bu bilgileri düzgün bir şekilde kaydetmesine izin verir
+- Birleşik ve kendinden onaylanan sayfalar
+  - Username/email ve Password alanları artık Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için `form` HTML öğesini kullanır.
 
-### <a name="110"></a>1.1.0
+## <a name="110"></a>1.1.0
 
 - Özel durum sayfası (globalexception)
   - Erişilebilirlik onarımı
@@ -107,10 +63,10 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 - Birleşik SSP (unifiedssp)
   - Oturumumu Açık tut (KMSı) denetimi eklendi
 
-### <a name="100"></a>1.0.0
+## <a name="100"></a>1.0.0
 
 - İlk yayın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcı arabirimi, uygulamalarınızın nasıl özelleştirebileceğiniz hakkında daha fazla bilgi [özel bir ilke kullanarak Azure Active Directory B2C'de, uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md).
+Özel ilkelerde uygulamalarınızın Kullanıcı arabirimini özelleştirmeye ilişkin ayrıntılar için bkz. [özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md).

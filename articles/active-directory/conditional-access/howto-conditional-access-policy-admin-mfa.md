@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043379"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148207"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu erişim: Yöneticiler için MFA gerektir
 
@@ -24,14 +24,14 @@ Yönetici hakları atanmış hesaplar saldırganlar tarafından hedeflenir. Bu h
 
 Microsoft, en azından aşağıdaki rollerde MFA gerektirmenizi önerir:
 
-* Genel yönetici
-* SharePoint yöneticisi
-* Exchange yöneticisi
+* Faturalama yöneticisi
 * Koşullu Erişim Yöneticisi
-* Güvenlik yöneticisi
+* Exchange Yöneticisi
+* Genel yönetici
 * Yardım Masası (parola) Yöneticisi
 * Parola yöneticisi
-* Faturalama yöneticisi
+* Güvenlik yöneticisi
+* SharePoint yöneticisi
 * Kullanıcı Yöneticisi
 
 Kuruluşlar, uygun gördüğünüz şekilde rolleri dahil etmek veya hariç tutmak seçebilirler.
@@ -55,14 +55,14 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **Dizin rolleri (Önizleme)** öğesini seçin ve en azından aşağıdaki rolleri seçin:
-      * Genel yönetici
-      * SharePoint yöneticisi
-      * Exchange yöneticisi
+      * Faturalama yöneticisi
       * Koşullu Erişim Yöneticisi
-      * Güvenlik yöneticisi
+      * Exchange Yöneticisi
+      * Genel yönetici
       * Yardım Masası Yöneticisi
       * Parola yöneticisi
-      * Faturalama yöneticisi
+      * Güvenlik yöneticisi
+      * SharePoint yöneticisi
       * Kullanıcı Yöneticisi
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.

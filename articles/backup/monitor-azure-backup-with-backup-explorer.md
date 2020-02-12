@@ -1,99 +1,104 @@
 ---
 title: Yedekleme Gezgini ile yedeklemelerinizi izleme
-description: Yedekleme Gezgini 'nin kasaların, aboneliklerin, bölgelerin ve kiracıların tamamında gerçek zamanlı olarak izlenmesini gerçekleştirmek için nasıl kullanılacağını açıklayan bir makale
+description: Bu makalede, kasaların, aboneliklerde, bölgelerde ve kiracılar genelinde yedeklemelerin gerçek zamanlı olarak izlenmesini gerçekleştirmek için yedekleme Gezgini 'nin nasıl kullanılacağı açıklanır.
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 331d8aeeb828dedb6700a94fafa074c179bef7ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65f68e33b53dff341ee72f6b9e9f42e344c49b1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992189"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149585"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Yedekleme Gezgini ile yedeklemelerinizi izleme
 
-Kuruluşlar buluta daha fazla veya daha fazla makine yedeklemesinde, yedeklemeleri verimli bir şekilde izlemek için büyük bir emlak genelinde yedeklemeler hakkındaki işletimsel bilgileri görüntülemek için merkezi bir konum olması önemli hale gelir.
+Kuruluşlar buluta daha fazla makine yedekleştiğinde, bu yedeklemeleri verimli bir şekilde izlemek daha fazla önemli hale gelir. Başlamak için en iyi yol, işlem bilgilerini büyük bir emlak genelinde görüntülemek için merkezi bir konum kullanmaktır.
 
-Yedekleme Gezgini çalışma kitabı, yedekleme müşterilerinin Azure 'daki tüm yedekleme genelinde yedekleme ile ilgili işlem izleme etkinliklerini gerçekleştirmek için tek bir cam bölmesine sahip olmasını sağlayan yerleşik bir Azure Izleyici çalışma kitabıdır (kapsayıcı kiracılar, konumlar, Abonelikler, kaynak grupları ve Kasaların hepsi merkezi bir yerden yapılır. Yaygın olarak, aşağıdaki özellikleri sağlar:
+Yedekleme Gezgini, Azure Backup müşterilerine bu tek, merkezi bir konum sağlayan yerleşik bir Azure Izleyici çalışma kitabıdır. Yedekleme Gezgini, Azure 'da, kapsayıcı kiracılar, konumlar, abonelikler, kaynak grupları ve kasaların bulunduğu tüm yedekleme genelinde işlem etkinliklerini izlemenize yardımcı olur. Büyük ölçüde, yedekleme Gezgini aşağıdaki özellikleri sağlar:
 
-* **Ölçek perspektifinde:** yedekleme öğelerinin, işlerin, uyarıların, ilkelerin ve kaynakların tamamı boyunca yedekleme için yapılandırılmayan toplu bir görünümü. 
-* **Ayrıntıya gitme** : her bir varlığın (işler, uyarılar, ilkeler ve yedekleme öğeleri) tek bir yerden ayrıntılı bilgilerini almayı seçebilirsiniz.
-* Eyleme dönüştürülebilir **arabirimler** – bir sorunu tanımladıktan sonra, Yedekleme öğesine veya Azure kaynağına sorunsuz bir şekilde gezinerek eylemler gerçekleştirmeyi seçebilirsiniz.
+* **Ölçekli perspektif**: yedekleme öğelerinin, işlerin, uyarıların, ilkelerin ve tüm emlak genelinde yedekleme için henüz yapılandırılmamış kaynakların toplanmış bir görünümünü alın. 
+* **Detaya gitme Analizi**: her bir iş, uyarı, ilke ve yedekleme öğesi hakkında ayrıntılı bilgileri tek bir yerde görüntüleyin.
+* Eyleme dönüştürülebilir **arabirimler**: bir sorunu tanımladıktan sonra ilgili yedekleme öğesine veya Azure kaynağına sorunsuz bir şekilde giderek bu sorunu çözebilirsiniz.
 
-Yukarıdaki yetenekler Azure Kaynak Graph ve Azure Izleyici çalışma kitapları ile yerel tümleştirme tarafından kullanıma hazır olarak sağlanır.
+Bu yetenekler, Azure Kaynak Grafiği ve Azure Izleyici çalışma kitapları ile yerel tümleştirme tarafından kullanıma hazır olarak sağlanır.
 
 > [!NOTE]
-> * Yedekleme Gezgini Şu anda yalnızca Azure VM verileri için kullanılabilir.
-> * Yedekleme Gezgini, son 7 gün içinde yedeklemeleriniz hakkındaki bilgileri (en fazla) görüntülemek için bir işlemsel pano olarak tasarlanmıştır.
-> * Şu anda, yedekleme Gezgini şablonunun özelleştirilmesi desteklenmez. Ayrıca, şu anda Azure Kaynak Grafiği verilerinde özel bir tahmin yazmak önermiyoruz.
+> * Yedekleme Gezgini Şu anda yalnızca Azure sanal makineler (VM) verileri için kullanılabilir.
+> * Yedekleme Gezgini, son 7 gün içinde yedeklemeleriniz hakkındaki bilgileri (en fazla) görüntülemek için bir işlemsel Pano olmak üzere tasarlanmıştır.
+> * Şu anda, yedekleme Gezgini şablonunun özelleştirilmesi desteklenmez. 
+> * Azure Kaynak Grafiği verilerinde özel geliştirmeler yazılmasını önermiyoruz.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="get-started"></a>başlarken
 
-Kurtarma Hizmetleri kasalarınıza giderek ve **genel bakış** sayfasındaki **yedekleme Gezgini** bağlantısına tıklayarak yedekleme Gezgini 'ne erişebilirsiniz.
+Kurtarma Hizmetleri kasalarınıza gidip **genel bakış** bölmesinde **yedek gezgin** bağlantısını seçerek yedekleme Gezgini 'ne erişebilirsiniz.
 
 ![Kasa hızlı bağlantısı](media/backup-azure-monitor-with-backup-explorer/vault-quick-link.png)
 
-Bağlantıya tıkladığınızda, erişiminiz olan tüm kasaların ve aboneliklerde toplanmış bir görünüm sağlayan yedekleme Gezgini açılır. Azure açık bir hesabı kullanıyorsanız, erişiminiz olan tüm kiracılar genelinde verileri görüntüleyebilirsiniz (çapraz kiracı görünümlerinde aşağıdaki bölümde daha fazla bilgi bulabilirsiniz).
+Bağlantıyı seçmek, erişiminiz olan tüm kasaların ve aboneliklerde toplu bir görünüm sağlayan yedekleme Gezgini 'ni açar. Azure açık bir hesabı kullanıyorsanız, erişiminiz olan tüm kiracılar genelinde verileri görüntüleyebilirsiniz. Daha fazla bilgi için, bu makalenin sonundaki "çapraz kiracı görünümleri" bölümüne bakın.
 
-![Gezgin giriş sayfası](media/backup-azure-monitor-with-backup-explorer/explorer-landing-page.png)
+![Yedekleme Gezgini giriş sayfası](media/backup-azure-monitor-with-backup-explorer/explorer-landing-page.png)
 
 ## <a name="backup-explorer-use-cases"></a>Yedekleme Gezgini kullanım örnekleri
 
-Yedekleme Gezgini, her sekmenin belirli bir tür yedekleme yapıtı (örneğin, yedekleme öğeleri, işler, ilkeler vb.) hakkında ayrıntılı bilgi sağlayan birden çok sekmeden oluşur. Bu bölümde, sekmelerin her birine ilişkin kısa bir genel bakış sunulmaktadır. Videolar, sekmelerin her biri için örnek kullanım durumları sağlar ve Kullanıcı için kullanılabilen çeşitli denetimlerin bir açıklamasıyla birlikte.
+Yedekleme Gezgini, her biri belirli bir yedekleme yapıtı (örneğin, bir yedekleme öğesi, iş veya ilke) hakkında ayrıntılı bilgi sağlayan birden çok sekme görüntüler. Bu bölümde, sekmelerin her birine ilişkin kısa bir genel bakış sunulmaktadır. Videolar, her yedekleme yapıtı için, kullanılabilir denetimlerin açıklamalarıyla birlikte örnek kullanım durumları sağlar.
 
-### <a name="summary"></a>Özet
+### <a name="the-summary-tab"></a>Özet sekmesi
 
-Özet sekmesi, yedeğinizin genel koşulundaki hızlı bir bakış sağlamanıza olanak sağlar. Korunan öğe sayısı, korumanın etkinleştirilmediği öğe sayısı, son 24 saat içinde kaç iş başarılı olduğunu vb. gibi bilgileri görüntüleyebilirsiniz. 
+**Özet** sekmesi, yedeklemeniz için genel koşula hızlı bir bakış sağlar. Örneğin, korunan öğe sayısını, korumanın etkinleştirilmediği öğe sayısını veya son 24 saat içinde kaç iş başarılı olduğunu görüntüleyebilirsiniz.
 
-Diğer sekmelerin her biri farklı bir varlığı temsil eder; örneğin, yedekleme öğeleri, yedekleme Işleri, yedekleme uyarıları ve yedekleme Ilkeleri. Ayrıca, yedeklemenin yapılandırılmadığı makineler hakkındaki bilgileri de görüntüleyebilirsiniz. Bu sekmelerin herhangi birine tıkladığınızda, bu varlığa özgü bilgiler gösterilir.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYd]
 
-### <a name="backup-items"></a>Yedekleme öğeleri
+### <a name="the-backup-items-tab"></a>Yedekleme öğeleri sekmesi
 
-Abonelik, kasa ve diğer parametrelere göre filtrelenen yedekleme öğelerinizin her birini görüntüleyebilirsiniz. Bir yedekleme öğesinin adına tıklamak, bu yedekleme öğesi için Azure dikey penceresini açmanızı sağlar. Örneğin, tablosundan, ' X ' öğesi için son yedeklemenin başarısız olduğunu gözlemleyebilirsiniz. ' X ' öğesine tıkladığınızda, bu öğe için yedekleme dikey penceresi açılır ve burada isteğe bağlı yedekleme işlemini tetikleyebilirsiniz.
+Her yedekleme öğelerinizi abonelik, kasa ve diğer özelliklere göre filtreleyebilir ve görüntüleyebilirsiniz. Bir yedekleme öğesinin adını seçerek söz konusu öğe için Azure bölmesini açabilirsiniz. Örneğin, tablosundan, son yedeklemenin *X*öğesi için başarısız olduğunu gözlemleyebilirsiniz. *X*' i seçerek öğenin **yedekleme** bölmesini açabilirsiniz, burada isteğe bağlı yedekleme işlemini tetikleyebilirsiniz.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
-### <a name="jobs"></a>İş
+### <a name="the-jobs-tab"></a>Işler sekmesi
 
-Işler sekmesine giderek, son yedi gün içinde tetiklenen tüm işlerin ayrıntılarını görüntüleyebilirsiniz. Burada Iş Işlemine, Iş durumuna ve hata koduna göre filtreleyebilirsiniz (başarısız olan işler söz konusu olduğunda).
+Son 7 gün içinde tetiklenen tüm işlerin ayrıntılarını görüntülemek için **işler** sekmesini seçin. Burada *Iş işlemine*, *Iş durumuna*ve *hata koduna* göre filtreleyebilirsiniz (başarısız işler için).
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
-### <a name="alerts"></a>Uyarılar
+### <a name="the-alerts-tab"></a>Uyarılar sekmesi
 
-Son yedi gün içinde, uyarılar sekmesine tıklayarak vakalarınızda tetiklenen tüm uyarıların ayrıntılarını görüntüleyebilirsiniz. Burada, kayıtları uyarının türüne (örneğin, yedekleme hatası, geri yükleme hatası), uyarının geçerli durumunu (örneğin, etkin veya çözümlenmiş) ve uyarı önem derecesini (örneğin, kritik, uyarı, bilgi) göre filtreleyebilirsiniz. Ayrıca, VM bağlantısına tıklayarak Azure VM 'ye gidebilir ve gerekli işlemleri gerçekleştirebilirsiniz.
+Son 7 gün içinde kasalarınızda oluşturulan tüm uyarıların ayrıntılarını görüntülemek için **Uyarılar** sekmesini seçin. Uyarıları türe (*Yedekleme hatası* veya *geri yükleme hatası*), geçerli durum (*etkin* veya *Çözümlenmiş*) ve önem derecesi (*kritik*, *Uyarı*veya *bilgi*) göre filtreleyebilirsiniz. Ayrıca, Azure VM 'ye gidip tüm gerekli işlemleri gerçekleştirmeniz için bir bağlantı seçebilirsiniz.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 
-### <a name="policies"></a>İlkeler
+### <a name="the-policies-tab"></a>Ilkeler sekmesi
 
-Ilkeler sekmesine tıklanması, yedeklemeinizde oluşturulmuş tüm yedekleme ilkelerine ilişkin önemli bilgileri görüntülemenize olanak sağlar. Her ilkeyle ilişkili kaç öğe olduğunu, her ilke tarafından belirtilen bekletme aralığı ve yedekleme sıklığı ile birlikte görebilirsiniz.
+Yedeklemeinizde oluşturulmuş tüm yedekleme ilkelerine ilişkin anahtar bilgileri görüntülemek için **ilkeler** sekmesini seçebilirsiniz. İlke tarafından belirtilen bekletme aralığı ve yedekleme sıklığı ile birlikte her ilkeyle ilişkili öğelerin sayısını görüntüleyebilirsiniz.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nLKV]
 
-### <a name="backup-not-enabled"></a>Yedekleme etkin değil
+### <a name="the-backup-not-enabled-tab"></a>Yedekleme etkin değil sekmesi
 
-Kuruluşun yedekleme yöneticisinin henüz yedeklemenin etkin olmadığı hızlı bir şekilde belirlenmesi önemlidir, böylece koruma gerektiren tüm makineler için yedekleme etkinleştirilebilir. **Etkin** sekmesine tıklanması, bu görevde size yardımcı olur.
+Koruma gerektiren tüm makineler için yedekleme etkinleştirilmelidir. Yedekleme Gezgini ile, yedekleme yöneticileri bir kuruluştaki hangi makinelerin yedekleme tarafından henüz korunmuyor olduğunu hızlıca belirleyebilir. Bu bilgileri görüntülemek için **Yedekleme etkin değil** sekmesini seçin.
 
-Bu sekmede, korunmayan öğelerin listesini içeren bir tablo görürsünüz. Kuruluşunuz üretim makinelerine ve test makinelerine farklı Etiketler atama ya da her biri ayrı bir yedekleme ilkesi gerektiren farklı işlevlere hizmet eden makineler için bir uygulama kullanıyorsa, etiketlere göre filtreleme, bir öğesine özgü bilgileri görüntülemenize yardımcı olur. belirli makine sınıfları. Herhangi bir öğenin adına tıkladığınızda bu öğe için **yedekleme yapılandırma** dikey penceresine yönlendirilirsiniz. Bu öğe, uygun bir yedekleme ilkesiyle yedeklemeyi tercih edebilirsiniz.
+**Yedekleme etkin değil** bölmesinde, korumasız makinelerin listesini içeren bir tablo görüntülenir. Kuruluşunuz, üretim makinelerine ve test makinelerine veya çeşitli işlevlere sahip makinelere farklı Etiketler atayabilir. Her makine sınıfı ayrı bir yedekleme ilkesine ihtiyaç duyduğundan, etiketlere göre filtreleme, her birine özgü bilgileri görüntülemenize yardımcı olur. Herhangi bir makinenin adını seçtiğinizde, uygun bir yedekleme ilkesi uygulamayı seçebileceğiniz bu makinenin **yedekleme yapılandırma** bölmesine yönlendirilirsiniz.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQXZ]
 
-## <a name="exporting-to-excel"></a>Excel 'e verme
+## <a name="export-to-excel"></a>Excel'e Dışarı Aktarma
 
-Herhangi bir pencere öğesinin sağ üst köşesindeki aşağı ok düğmesine tıklamak (tablo/grafik), varolan filtrelerin uygulanmış olduğu gibi bu pencere öğesinin içeriğini Excel sayfası olarak dışa aktarır. Bir tablonun daha fazla satırını Excel 'e aktarmak için, her sekmenin en üstünde bulunan **sayfa başına satır** açılan listesini kullanarak sayfada görüntülenecek satır sayısını artırabilirsiniz.
+Herhangi bir tablo veya grafiğin içeriğini Excel elektronik tablosu olarak dışarı aktarabilirsiniz. İçerik, mevcut filtrelerinizin uygulandığı gibi olarak verilir. Ek tablo satırlarını dışarı aktarmak için, her sekmenin en üstündeki **sayfa başına satır** sayısı açılan listesini kullanarak sayfada görüntülenecek satır sayısını artırabilirsiniz.
 
-## <a name="pinning-to-dashboard"></a>Panoya sabitleme
+## <a name="pin-to-the-dashboard"></a>Panoya sabitle
 
-Bu pencere öğesini Azure portal panonuza sabitlemek için her pencere öğesinin en üstündeki sabitleme simgesine tıklayabilirsiniz. Bu, ihtiyacınız olan en önemli bilgileri görüntüleyecek şekilde uyarlanmış özelleştirilmiş panolar oluşturmanıza yardımcı olur.
+Azure portal panonuza sabitlemek için her bir tablonun veya grafiğin en üstünde "sabitle" simgesini seçebilirsiniz. Bu bilgilerin sabitlenmesi, sizin için en önemli bilgileri görüntüleyecek şekilde uyarlanmış bir özelleştirilmiş Pano oluşturmanıza yardımcı olur.
 
 ## <a name="cross-tenant-views"></a>Çapraz kiracı görünümleri
 
-Çoklu kiracı ortamlarında abonelikler için temsilci erişimi olan bir Azure ışıklı Kullanıcı kullanıyorsanız, istediğiniz tüm abonelikleri seçmek için varsayılan abonelik filtresini (Azure portal en sağ üst köşesindeki filtre simgesine tıklayarak) kullanabilirsiniz. için verileri görüntüleyin. Bunun yapılması, yedekleme Gezgini 'nin bu aboneliklerdeki tüm kasalardaki bilgileri toplamasını sağlar. [Burada](https://docs.microsoft.com/azure/lighthouse/overview)Azure ışıklı kullanım hakkında daha fazla bilgi edinin.
+Çoklu kiracı ortamlarında abonelikler için temsilci erişimi olan bir Azure açık Kullanıcı kullanıyorsanız, varsayılan abonelik filtresini kullanabilirsiniz. Azure portal, ' ın sağ üst köşesindeki "filtre" simgesini seçerek verilerini görmek istediğiniz abonelikleri görüntüleyebilirsiniz. Bu özelliği kullandığınızda, yedek gezgin seçili aboneliklerinizde tüm kasaların bilgilerini toplar. Daha fazla bilgi edinmek için bkz. [Azure ışıklı kullanım nedir?](https://docs.microsoft.com/azure/lighthouse/overview).
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Yedekleme verileriniz hakkında öngörü almak için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)

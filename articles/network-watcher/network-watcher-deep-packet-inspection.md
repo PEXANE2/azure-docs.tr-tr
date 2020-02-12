@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845070"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152933"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure ağ Izleyicisi ile paket incelemesi
 
@@ -39,17 +39,17 @@ Bu senaryoda şunları yapabilirsiniz:
 
 Bu senaryoda, iki uç nokta arasında gerçekleşen bir Iletim Denetim Protokolü (TCP) görüşmesinin ilk gidiş dönüş süresini (RTT) görüntülemeyi göstereceğiz.
 
-TCP bağlantısı oluşturulduğunda, bağlantıda gönderilen ilk üç paket, genellikle üç yönlü el sıkışma olarak adlandırılan bir düzene uyar. Bu el sıkışma içinde gönderilen ilk iki paket, istemciden gelen bir başlangıç isteği ve sunucudan bir yanıt inceleyerek, bu bağlantı oluşturulduğunda gecikme süresini hesaplayabiliriz. Bu gecikme süresi, gidiş dönüş süresi (RTT) olarak adlandırılır. TCP protokolü ve üç yönlü el sıkışma hakkında daha fazla bilgi için aşağıdaki kaynağa bakın. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+TCP bağlantısı oluşturulduğunda, bağlantıda gönderilen ilk üç paket, genellikle üç yönlü el sıkışma olarak adlandırılan bir düzene uyar. Bu el sıkışma içinde gönderilen ilk iki paket, istemciden gelen bir başlangıç isteği ve sunucudan bir yanıt inceleyerek, bu bağlantı oluşturulduğunda gecikme süresini hesaplayabiliriz. Bu gecikme süresi, gidiş dönüş süresi (RTT) olarak adlandırılır. TCP protokolü ve üç yönlü el sıkışma hakkında daha fazla bilgi için aşağıdaki kaynağa bakın. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
-### <a name="step-1"></a>Adım 1
+### <a name="step-1"></a>1\. Adım
 
 WireShark Başlat
 
-### <a name="step-2"></a>Adım 2
+### <a name="step-2"></a>2\. Adım
 
 Paket yakalamadan **. Cap** dosyasını yükleyin. Bu dosya, nasıl yapılandırdığınıza bağlı olarak, sanal makinede yerel olarak kaydedildiği blob 'da bulunabilir.
 
-### <a name="step-3"></a>Adım 3
+### <a name="step-3"></a>3\. Adım
 
 TCP konuşmalarında ilk gidiş dönüş süresini (RTT) görüntülemek için, yalnızca TCP el sıkışmasına sahip olan ilk iki pakete bakacağız. Üç yönlü el sıkışma ([SYN], [SYN, ACK] paketleri) ile ilk iki paketi kullanacağız. TCP üstbilgisinde ayarlanan bayraklar için adlandırılır. Bu senaryoda, [ACK] paketi, el sıkışma içindeki son paket kullanılmayacak. [SYN] paketi istemci tarafından gönderilir. Sunucu alındıktan sonra sunucu [ACK] paketini istemciden SYN alma bildirimi olarak gönderir. Sunucu yanıtının çok az ek yük gerektirmesi durumunda, [SYN, ACK] paketinin istemci tarafından, istemci tarafından gönderilen zaman tarafından alındığı süreyi çıkararak RTT 'yi hesapladık.
 
@@ -75,7 +75,7 @@ Azure 'da dağıttığınız bir sanal makine örneği üzerinde çalışan bir�
 
 Bu örnekte, makinenizde çalışan bir uygulamadan yetkisiz iletişimi gösterebilen istenmeyen protokoller için önceki bir çalıştırılan paket yakalamayı gözden geçiririz.
 
-### <a name="step-1"></a>Adım 1
+### <a name="step-1"></a>1\. Adım
 
 Önceki senaryoda aynı yakalamanın kullanılması **, > ** **protokol hiyerarşisi** ' ne tıklayın.
 
@@ -91,13 +91,13 @@ Aşağıdaki ekran yakalamada görebileceğiniz gibi, eşler arası dosya payla�
 
 Trafik türlerini, uç noktaları ve üzerinden iletilen bağlantı noktalarını anlamak, ağınızdaki uygulamaları ve kaynakları izlerken veya sorunlarını giderirken önemli bir öneme sahiptir. Yukarıdaki bir paket yakalama dosyasını kullanarak, sanal makinenizin iletişim kurduğu en üst hedefleri ve kullanılan bağlantı noktalarını hızlıca öğreniyoruz.
 
-### <a name="step-1"></a>Adım 1
+### <a name="step-1"></a>1\. Adım
 
 Önceki senaryoda aynı yakalamanın kullanılması, **istatistikler** > **IPv4 istatistikleri** > **hedefler ve bağlantı noktaları** ' na tıklayın
 
 ![paket yakalama penceresi][4]
 
-### <a name="step-2"></a>Adım 2
+### <a name="step-2"></a>2\. Adım
 
 Bir satırın temsil edildiği sonuçlara baktığımızda, 111 numaralı bağlantı noktası üzerinde birden fazla bağlantı vardı. En çok kullanılan bağlantı noktası, uzak masaüstü olan 3389 ve kalan RPC dinamik bağlantı noktalardır.
 
@@ -105,7 +105,7 @@ Bu trafik hiçbir şey anlamına gelirken, çok sayıda bağlantı için kullan�
 
 ![Şekil 5][5]
 
-### <a name="step-3"></a>Adım 3
+### <a name="step-3"></a>3\. Adım
 
 Artık bir yerinde bağlantı noktası belirlediğimizden, yakaımızı bağlantı noktasına göre filtreleyebiliriz.
 

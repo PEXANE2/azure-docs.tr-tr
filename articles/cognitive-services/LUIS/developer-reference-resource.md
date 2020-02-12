@@ -2,17 +2,17 @@
 title: Geliştirici kaynakları-Language Understanding
 description: SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
 ms.topic: reference
-ms.date: 02/09/2020
-ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119967"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152695"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding için SDK, REST ve CLı geliştirici kaynakları (LUSıS)
 
-SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin. 
+SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
 
 ## <a name="azure-resource-management"></a>Azure Kaynak Yönetimi
 
@@ -36,6 +36,10 @@ Language Understanding hizmetine, oluşturmanız gereken bir Azure kaynağından
 
 En yaygın görevleri öğrenmek ve kullanmak için bilişsel [Hizmetler örnek kodunu](https://github.com/Azure-Samples/cognitive-services-quickstart-code) kullanın.
 
+### <a name="rest-specifications"></a>REST belirtimleri
+
+[LUSıS Rest belirtimleri](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS), tüm [Azure Rest belirtimleriyle](https://github.com/Azure/azure-rest-api-specs)birlikte GitHub 'da herkese açık bir şekilde sunulmaktadır.
+
 ### <a name="rest-apis"></a>REST API'leri
 
 REST API 'lerden hem yazma hem de tahmin uç nokta API 'LERI kullanılabilir:
@@ -44,6 +48,29 @@ REST API 'lerden hem yazma hem de tahmin uç nokta API 'LERI kullanılabilir:
 |--|--|
 |Yazma|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[izleme v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |Tahmin|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Yüklemesinde](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>REST uç noktaları
+
+LUIN Şu anda 2 uç nokta türü vardır:
+
+* Eğitim uç noktasında yazma
+* çalışma zamanı uç noktasında sorgu tahmini.
+
+|Amaç|URL'si|
+|--|--|
+|Eğitim uç noktasında yazma|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 çalışma zamanı-çalışma zamanı uç noktasındaki tüm tahminler|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 çalışma zamanı-çalışma zamanı uç noktasındaki sürümler tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 çalışma zamanı-çalışma zamanı uç noktasında yuva tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+Aşağıdaki tabloda, önceki tabloda `{}`küme ayraçları ile belirtilen parametreler açıklanmaktadır.
+
+|Parametre|Amaç|
+|--|--|
+|`your-resource-name`|Azure Kaynak adı|
+|`q` veya `query`|Sohbet Robotu gibi istemci uygulamasından gönderilen utterance metin|
+|`version`|10 karakter sürümü adı|
+|`slot`| `production` veya `staging`|
 
 ### <a name="language-based-sdks"></a>Dil tabanlı SDK 'lar
 
@@ -77,7 +104,7 @@ Bot Framework, aşağıdakiler dahil olmak üzere Language Understanding yardım
 * [Dağıtım](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)-üst ve alt uygulamaları yönetme
 * [Luisgen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) -lusıs amaçları C#ve varlıklarınız için otomatik olarak yedekleme/TypeScript sınıfları oluşturun.
 * [Bot Framework öykünücüsü](https://github.com/Microsoft/BotFramework-Emulator/releases) -bot geliştiricilerinin, bot Framework SDK kullanılarak oluşturulan botları test etmesine ve hata ayıklamasına izin veren bir masaüstü uygulaması
-
+* [Bot Framework besteci](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) -geliştiriciler ve çok disiplinli takımlar Için Microsoft bot Framework ile botları ve konuşma deneyimleri oluşturmaya yönelik tümleşik bir geliştirme aracı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

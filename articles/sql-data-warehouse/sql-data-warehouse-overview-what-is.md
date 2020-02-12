@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 68d39b4f363794d50fd05c2067502fc55d5d0170
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760768"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153256"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) nedir?
 
-Azure Synapse, kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Dilediğiniz ölçekteki sunucusuz, isteğe bağlı veya sağlanmış kaynakları kullanarak verileri istediğiniz gibi sorgulama özgürlüğü sağlar. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar
+Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar
 
 Azure SYNAPSE dört bileşene sahiptir:
 - SQL Analytics: tam T-SQL tabanlı analiz – genel kullanıma sunuldu
@@ -34,7 +34,7 @@ Azure SYNAPSE dört bileşene sahiptir:
 
 ## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>Azure 'da SQL Analytics ve SQL havuzu SYNAPSE
 
-SQL Analytics, Azure SYNAPSE ile genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder. 
+SQL Analytics, Azure SYNAPSE 'da genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder. 
 
 SQL havuzu, SQL Analytics kullanılırken sağlanmakta olan analitik kaynakların bir koleksiyonunu temsil eder. SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
 

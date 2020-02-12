@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778031"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148341"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>İş ortağı VPN cihaz yapılandırmalarına genel bakış
 Bu makalede, Azure VPN ağ geçitlerine bağlanmak için şirket içi VPN cihazlarını yapılandırmaya ilişkin bir genel bakış sunulmaktadır. Aynı parametreleri kullanarak farklı şirket içi VPN cihaz yapılandırmalarına nasıl bağlanakullanacağınızı göstermek için örnek bir Azure sanal ağ ve VPN ağ geçidi kurulumu kullanılır.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>Cihaz gereksinimleri
 Azure VPN ağ geçitleri, siteden siteye (S2S) VPN tünelleri için standart IPSec/ıKE protokol paketleri kullanır. Azure VPN ağ geçitleri için IPSec/ıKE parametrelerinin ve şifreleme algoritmalarının bir listesi için bkz. [VPN cihazları hakkında](vpn-gateway-about-vpn-devices.md). Ayrıca, [Şifreleme gereksinimleri hakkında](vpn-gateway-about-compliance-crypto.md)bölümünde açıklandığı gibi, belirli bir bağlantı için tam algoritmaları ve anahtar güçlerini de belirtebilirsiniz.
@@ -32,7 +32,7 @@ Tek bir VPN tüneli ayarlamaya yönelik adım adım yönergeler için bkz. [site
 ### <a name="connection-parameters"></a>Bağlantı parametreleri
 Bu bölümde, önceki bölümlerde açıklanan örneklerin parametreleri listelenmektedir.
 
-| **Parametre**                | **Değer**                    |
+| **Parametresinin**                | **Değer**                    |
 | ---                          | ---                          |
 | Sanal ağ adresi önekleri        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN ağ geçidi IP 'si         | Azure VPN Gateway IP 'si         |

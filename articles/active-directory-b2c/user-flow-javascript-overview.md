@@ -8,46 +8,46 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78fc3af10bde5e9dd25d02f7a21d77e958b15190
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840103"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149533"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki JavaScript ve sayfa düzeni sürümleri
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C, Kullanıcı akışlarınızda ve özel ilkelerindeki Kullanıcı arabirimi öğeleri için HTML, CSS ve JavaScript içeren bir paketlenmiş içerik kümesi sağlar. Uygulamalarınız için JavaScript 'i etkinleştirmek üzere [özel ilkenize](custom-policy-overview.md) bir öğe eklemeniz veya Portal 'da Kullanıcı akışları için etkinleştirmeniz, bir sayfa düzeni seçmeniz ve isteklerinizin [b2clogin.com](b2clogin.md) kullanmanız gerekir.
+Azure AD B2C, Kullanıcı akışlarınızda ve özel ilkelerindeki Kullanıcı arabirimi öğeleri için HTML, CSS ve JavaScript içeren bir paketlenmiş içerik kümesi sağlar.
 
-[JavaScript](javascript-samples.md) istemci tarafı kodunu etkinleştirmek Istiyorsanız, JavaScript 'i temel alan öğelerin sabit olduğundan emin olmanız gerekir. Aksi takdirde, tüm değişiklikler Kullanıcı sayfalarınızda beklenmedik davranışa neden olabilir. Bu sorunları engellemek için, bir sayfa düzeninin kullanımını zorunlu kılabilir ve bir sayfa düzeni sürümü belirtebilirsiniz. Bunu yapmak, JavaScript 'i temel alan tüm içerik tanımlarının sabit olmasını sağlar. JavaScript 'i etkinleştirmeyi amaçlamadığınız halde, sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz.
+Uygulamalarınız için JavaScript 'ı etkinleştirmek üzere:
 
-## <a name="user-flows"></a>Kullanıcı akışları
+* Azure portal kullanarak Kullanıcı akışında etkinleştirin
+* [Sayfa düzeni](page-layout.md) seçin
+* İsteklerinizi [b2clogin.com](b2clogin.md) kullanma
 
-Kullanıcı akışı **özelliklerinde**JavaScript 'i etkinleştirebilirsiniz ve bu da sayfa düzeninin kullanımını zorunlu kılar. Daha sonra, sonraki bölümde açıklandığı gibi Kullanıcı akışının sayfa düzeni sürümünü ayarlayabilirsiniz.
+[JavaScript](javascript-samples.md) istemci tarafı kodunu etkinleştirmek Istiyorsanız, JavaScript 'i temel alan öğelerin sabit olması gerekir. Sabit olmadıkları takdirde, herhangi bir değişiklik Kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları engellemek için, bir sayfa düzeni kullanımını zorunlu tutun ve JavaScript 'i temel alan içerik tanımlarının sabit olduğundan emin olmak için bir sayfa düzeni sürümü belirtin. JavaScript 'i etkinleştirmeyi amaçlamadığınız halde, sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz.
+
+## <a name="enable-javascript"></a>JavaScript'i etkinleştirme
+
+Kullanıcı akışı **özelliklerinde**JavaScript 'i etkinleştirebilirsiniz. JavaScript 'in etkinleştirilmesi, sayfa düzeninin kullanımını da zorunlu kılar. Daha sonra, sonraki bölümde açıklandığı gibi Kullanıcı akışının sayfa düzeni sürümünü ayarlayabilirsiniz.
 
 ![JavaScript ayarlarını etkinleştir seçeneği vurgulanmış şekilde Kullanıcı akışı özellikleri sayfası](media/user-flow-javascript-overview/javascript-settings.png)
 
-### <a name="select-a-page-layout-version"></a>Sayfa düzeni sürümü seçin
+## <a name="select-a-page-layout-version"></a>Sayfa düzeni sürümü seçin
 
 Kullanıcı akışınızın özelliklerinde JavaScript 'ı etkinleştirip etkinleştirmeyeceğinizi, Kullanıcı akış sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz. Kullanıcı akışını açın ve **sayfa düzenleri**' ni seçin. **Düzen adı**altında, bir Kullanıcı akış sayfası seçin ve **sayfa düzeni sürümünü**seçin.
 
-Farklı sayfa düzeni sürümleri hakkında daha fazla bilgi için bkz. [sürüm değişiklik günlüğü](page-layout.md#version-change-log).
+Farklı sayfa düzeni sürümleri hakkında daha fazla bilgi için bkz. [sayfa düzeni sürümü değişiklik günlüğü](page-layout.md).
 
 ![Portalda sayfa düzeni sürüm açılan listesini gösteren sayfa düzeni ayarları](media/user-flow-javascript-overview/page-layout-version.png)
 
-## <a name="custom-policies"></a>Özel ilkeler
-
-Özel ilkelerde JavaScript 'ı etkinleştirmek için **Scriptexecution** öğesini özel Ilke dosyanızdaki **RelyingParty** öğesine eklersiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C Için JavaScript örnekleri](javascript-samples.md).
-
-Özel ilkeleriniz için JavaScript 'ı etkinleştirip etkinleştiremeyeceğinizi, sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz. Sayfa düzeni belirtme hakkında daha fazla bilgi için bkz. [özel ilkeleri kullanarak Azure Active Directory B2C sayfa düzeni seçme](page-layout.md).
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Farklı sayfa düzeni sürümleri hakkında daha fazla bilgi için, [özel ilkeler kullanarak Azure Active Directory B2C sayfa düzeni seçin](page-layout.md#version-change-log)konusunun **sürüm değişiklik günlüğü** bölümüne bakın.
 
 JavaScript örneklerindeki JavaScript kullanım örneklerini [Azure Active Directory B2C ' de kullanmak üzere](javascript-samples.md)bulabilirsiniz.

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37968e968a0f9a1098dd5e90d463879bfa95ce1f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454799"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153596"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmeti dağıtma
 
@@ -34,7 +34,7 @@ BES girişi, RRS’nin kullandığı veri girişi gibidir. Aralarındaki temel f
 
 * **[Eğitim denemesi oluşturma]** (klasik), büyük bir yerleşik makine öğrenimi algoritması kümesi kullanarak, sağladığınız eğitim verilerini kullanarak tahmine dayalı analiz modelini eğitebilirsiniz ve test edebilirsiniz.
 * **[Tahmine dayalı bir deneyiye Dönüştür]** . modelinizin mevcut verilerle eğitilirken ve yeni veri puanlaması için kullanmaya hazırsanız, tahminlere yönelik denemenizi hazırlayın ve kolaylaştırın.
-* **[Yeni web hizmeti]** veya **[Klasik Web hizmeti]** olarak **dağıtma** -tahmine dayalı denemenizi bir Azure Web hizmeti olarak dağıttığınızda, kullanıcılar modelinize veri gönderebilir ve modelinizin tahminlerinizi alabilir.
+* **[Yeni Web hizmeti]** veya **[Klasik Web hizmeti]** olarak **dağıtma** -tahmine dayalı denemenizi bir Azure Web hizmeti olarak dağıttığınızda, kullanıcılar modelinize veri gönderebilir ve modelinizin tahminlerinizi alabilir.
 
 ## <a name="create-a-training-experiment"></a>Eğitim denemenizi oluşturma
 
@@ -68,7 +68,7 @@ Tahmine dayalı denemenin hazırlandığına göre, bunu yeni (Kaynak Yöneticis
 Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın. Deneme çalışmayı tamamladıktan sonra **Web Hizmeti Dağıt** ' a tıklayın ve **Web Hizmeti Dağıt [Yeni]** ' yi seçin.  Machine Learning Studio (klasik) Web hizmeti portalının dağıtım sayfası açılır.
 
 > [!NOTE] 
-> Yeni bir web hizmetini dağıtmak için yeterli olan aboneliği, web hizmetini dağıtma olması gerekir. Daha fazla bilgi edinmek, [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md). 
+> Yeni bir web hizmetini dağıtmak için yeterli olan aboneliği, web hizmetini dağıtma olması gerekir. Daha fazla bilgi için, [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md)makalesine bakın. 
 
 ### <a name="web-service-portal-deploy-experiment-page"></a>Web Service Portal dağıtımı deneme sayfası
 
@@ -132,28 +132,28 @@ Fiyatlandırma bölgeye özeldir, bu nedenle Web hizmetini dağıtacağınız he
 #### <a name="create-a-plan-in-another-region"></a>Başka bir bölgede plan oluşturma
 
 1. [Microsoft Azure Machine Learning Web hizmetlerinde](https://services.azureml.net/)oturum açın.
-2. Tıklayın **planları** menü seçeneği.
-3. Görünüm sayfası üzerinden planlarında tıklayın **yeni**.
-4. Gelen **abonelik** açılır listesinde, yeni plan bulunacağı aboneliği seçin.
-5. Gelen **bölge** açılır listesinde, yeni plan için bölge seçin. Seçilen bölge için Plan seçenekleri görüntüler **planlama seçenekleri** sayfasının bölümünde.
-6. Gelen **kaynak grubu** bir kaynak grubu için plan açılır penceresinde seçin. Kaynak grupları hakkında daha fazla bilgi [Azure Resource Manager'a genel bakış](../../azure-resource-manager/management/overview.md).
-7. İçinde **planı adı** planın adını yazın.
-8. Altında **planı seçenekleri**, fatura yeni plan için tıklayın.
+2. **Planlar** menü seçeneğine tıklayın.
+3. Görünüm üzerinden planlar sayfasında **Yeni**' ye tıklayın.
+4. **Abonelik** açılan menüsünde, yeni planın bulunacağı aboneliği seçin.
+5. **Bölge** açılan listesinden yeni plan için bir bölge seçin. Seçilen bölge için plan seçenekleri, sayfanın **plan seçenekleri** bölümünde görüntülenecektir.
+6. **Kaynak grubu** açılır listesinden plan için bir kaynak grubu seçin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
+7. **Plan adı** ' nda planın adını yazın.
+8. **Plan seçenekleri**altında, yeni plan için faturalandırma düzeyine tıklayın.
 9. **Oluştur**'a tıklayın.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Web hizmetini başka bir bölgeye dağıtma
 
 1. Microsoft Azure Machine Learning Web Hizmetleri sayfasında, **Web Hizmetleri** menü seçeneğine tıklayın.
 2. Yeni bir bölgeye dağıttığınız Web hizmeti seçin.
-3. Tıklayın **kopyalama**.
-4. İçinde **Web hizmeti adı**, web hizmeti için yeni bir ad yazın.
-5. İçinde **Web hizmeti açıklaması**, web hizmeti için bir açıklama yazın.
-6. Gelen **abonelik** açılır listesinde, yeni bir web hizmeti bulunacağı aboneliği seçin.
-7. Gelen **kaynak grubu** bir kaynak grubu web hizmeti için açılır penceresinde seçin. Kaynak grupları hakkında daha fazla bilgi [Azure Resource Manager'a genel bakış](../../azure-resource-manager/management/overview.md).
-8. Gelen **bölge** açılır listesinde, web hizmeti dağıtacağınız bölgeyi seçin.
-9. Gelen **depolama hesabı** açılır listesinde, bir depolama hesabı web hizmeti depolamak için.
-10. Gelen **fiyat planı** açılır listesinde, 8. adımda seçtiğiniz bölgede planı seçin.
-11. Tıklayın **kopyalama**.
+3. **Kopyala** öğesine tıklayın.
+4. **Web hizmeti adı**' nda, Web hizmeti için yeni bir ad yazın.
+5. **Web hizmeti açıklamasında**, Web hizmeti için bir açıklama yazın.
+6. **Abonelik** açılan menüsünde, yeni Web hizmetinin bulunacağı aboneliği seçin.
+7. **Kaynak grubu** açılır listesinden Web hizmeti için bir kaynak grubu seçin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
+8. **Bölge** açılan listesinden, Web hizmetinin dağıtılacağı bölgeyi seçin.
+9. **Depolama hesabı** açılan menüsünde, Web hizmetinin kaydedileceği bir depolama hesabı seçin.
+10. **Fiyat planı** açılan menüsünde, adım 8 ' de seçtiğiniz bölgede bir plan seçin.
+11. **Kopyala** öğesine tıklayın.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>Bunu klasik Web hizmeti olarak dağıtma
 
@@ -167,7 +167,7 @@ Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **
 
 Web hizmetini Machine Learning Studio (klasik) Web Hizmetleri portalında veya Machine Learning Studio (klasik) test edebilirsiniz.
 
-Istek yanıtı Web hizmetini test etmek için Web hizmeti panosundaki **Test** düğmesine tıklayın. Bir iletişim kutusu açılır ve hizmet için giriş verilerini ister. Bunlar, Puanlama denemesine göre beklenen sütunlardır. Bir veri kümesini girin ve ardından **Tamam**. Web hizmeti tarafından oluşturulan sonuçlar panonun en altında görüntülenir.
+Istek yanıtı Web hizmetini test etmek için Web hizmeti panosundaki **Test** düğmesine tıklayın. Bir iletişim kutusu açılır ve hizmet için giriş verilerini ister. Bunlar, Puanlama denemesine göre beklenen sütunlardır. Bir veri kümesi girin ve ardından **Tamam**' a tıklayın. Web hizmeti tarafından oluşturulan sonuçlar panonun en altında görüntülenir.
 
 Daha önce yeni Web hizmeti bölümünde gösterildiği gibi Azure Machine Learning Studio (klasik) Web Hizmetleri portalında hizmetinizi test etmek için **Test** önizleme bağlantısına tıklayabilirsiniz.
 
@@ -222,8 +222,8 @@ Web hizmetinizi güncelleştirmek için bir seçenek, modeli programlı bir şek
 <!-- internal links -->
 [Eğitim denemesi oluşturma]: #create-a-training-experiment
 [Tahmine dayalı bir deneyiye Dönüştür]: #convert-the-training-experiment-to-a-predictive-experiment
-[Yeni web hizmeti]: #deploy-it-as-a-new-web-service
-[Klasik web hizmeti]: #deploy-it-as-a-classic-web-service
+[Yeni Web hizmeti]: #deploy-it-as-a-new-web-service
+[Klasik Web hizmeti]: #deploy-it-as-a-classic-web-service
 [Yeni]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service

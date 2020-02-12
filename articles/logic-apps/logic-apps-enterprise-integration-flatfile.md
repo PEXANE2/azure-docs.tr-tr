@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 53d9935f68c21238cb4f90f78e543a7ab343ced2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2d6182ba01507c2fb361628e01bb52e1ea821f44
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792522"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152661"
 ---
 # <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack düz dosyaları kodla veya kodunu çözün
 
@@ -23,25 +23,35 @@ XML içeriğini işletmeden işletmeye (B2B) senaryosundaki bir iş ortağına g
 Mantıksal uygulamanıza düz bir dosya kodlama Bağlayıcısı eklemek için bu adımları izleyin.
 
 1. Bir mantıksal uygulama oluşturun ve [bunu tümleştirme hesabınıza bağlayın](logic-apps-enterprise-integration-accounts.md "Tümleştirme hesabını bir Logic App 'e bağlamayı öğrenin"). Bu hesap, XML verilerini kodlamak için kullanacağınız şemayı içerir.  
-1. Bir Istek ekleyin-mantıksal uygulamanıza bir **http isteği alındığında** tetiklenir.  
-   ](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png) seçmek için tetikleyicinin ekran görüntüsünü ![    
+
+1. Mantıksal uygulama Tasarımcısı ' nda, mantıksal uygulamanıza **BIR http isteği alındığında** tetikleyiciyi ekleyin.
+
 1. Düz dosya kodlama eylemini aşağıdaki gibi ekleyin:
-   
-    a. **Artı** işaretini seçin.
-   
-    b. **Eylem Ekle** bağlantısını seçin (artı işaretini seçtikten sonra görünür).
-   
-    c. Kullanmak istediğiniz tüm eylemleri filtrelemek için arama kutusuna *düz* ' i girin.
-   
-    d. Listeden **düz dosya kodlama** seçeneğini belirleyin.   
-   Düz dosya kodlama seçeneğinin ekran görüntüsünü ![](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+
+   a. **Artı** işaretini seçin.
+
+   b. **Eylem Ekle** bağlantısını seçin (artı işaretini seçtikten sonra görünür).
+
+   c. Kullanmak istediğiniz tüm eylemleri filtrelemek için arama kutusuna *düz* ' i girin.
+
+   d. Listeden **düz dosya kodlama** seçeneğini belirleyin.   
+
+      ![Düz dosya kodlama seçeneğinin ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+
 1. **Düz dosya kodlama** Iletişim kutusunda **içerik** metin kutusunu seçin.  
-   Içerik metin kutusunun ![ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
+
+   ![Içerik metin kutusunun ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
+
 1. Kodlamak istediğiniz içerik olarak Body etiketini seçin. Body etiketi, içerik alanını dolduracaktır.     
+
    ![Gövde etiketinin ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
+
 1. **Şema adı** liste kutusunu seçin ve giriş içeriğini kodlamak için kullanmak istediğiniz şemayı seçin.    
-   Şema adı liste kutusunun ekran görüntüsünü ![](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-1. Çalışmanızı kaydedin.   
+
+   ![Şema adı liste kutusunun ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
+
+1. Çalışmanızı kaydedin.
+
    ![Kaydet simgesinin ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
 Bu noktada, düz dosya kodlama bağlayıcınızı ayarlamayı tamamladınız. Gerçek bir dünya uygulamasında, kodlanmış verileri Salesforce gibi bir iş kolu uygulamasında depolamak isteyebilirsiniz. Ya da bu kodlanmış verileri bir ticaret ortağına gönderebilirsiniz. Kodlama eyleminin çıkışını, sunulan diğer bağlayıcılardan birini kullanarak Salesforce 'a veya ticari iş ortağınıza göndermek için kolayca bir eylem ekleyebilirsiniz.
@@ -53,24 +63,30 @@ Artık, HTTP uç noktasına bir istek yaparak ve isteğin gövdesindeki XML içe
 > [!NOTE]
 > Bu adımları tamamlayabilmeniz için, tümleştirme hesabınıza önceden yüklenmiş bir şema dosyası olması gerekir.
 
-1. Bir Istek ekleyin-mantıksal uygulamanıza bir **http isteği alındığında** tetiklenir.  
-   ](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png) seçmek için tetikleyicinin ekran görüntüsünü ![    
+1. Mantıksal uygulama Tasarımcısı ' nda, mantıksal uygulamanıza **BIR http isteği alındığında** tetikleyiciyi ekleyin.
+
 1. Düz dosya kod çözme eylemini aşağıdaki gibi ekleyin:
-   
-    a. **Artı** işaretini seçin.
-   
-    b. **Eylem Ekle** bağlantısını seçin (artı işaretini seçtikten sonra görünür).
-   
-    c. Kullanmak istediğiniz tüm eylemleri filtrelemek için arama kutusuna *düz* ' i girin.
-   
-    d. Listeden **düz dosya kod çözme** seçeneğini belirleyin.   
-   Düz dosya kod çözme seçeneğinin ekran görüntüsünü ![](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+
+   a. **Artı** işaretini seçin.
+
+   b. **Eylem Ekle** bağlantısını seçin (artı işaretini seçtikten sonra görünür).
+
+   c. Kullanmak istediğiniz tüm eylemleri filtrelemek için arama kutusuna *düz* ' i girin.
+
+   d. Listeden **düz dosya kod çözme** seçeneğini belirleyin.   
+
+      ![Düz dosya kod çözme seçeneğinin ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+
 1. **İçerik** denetimini seçin. Bu, kodunu çözecek içerik olarak kullanabileceğiniz önceki adımlardan içerik listesini oluşturur. Gelen HTTP isteğindeki *gövdenin* , kodunu çözecek içerik olarak kullanılabilir olduğunu unutmayın. **İçerik** denetimine doğrudan kod çözme için içerik de girebilirsiniz.     
+
 1. *Gövde* etiketini seçin. Gövde etiketinin şimdi **içerik** denetiminde olduğuna dikkat edin.
+
 1. İçeriğin kodunu çözmek için kullanmak istediğiniz şemanın adını seçin. Aşağıdaki ekran görüntüsünde, *Orderfile* seçili şema adı gösterilmektedir. Bu şema adı daha önce tümleştirme hesabına yüklendi.
-   
-   ![Düz dosya kod çözme iletişim kutusunun ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
+
+   ![Düz dosya kod çözme iletişim kutusunun ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png) 
+
 1. Çalışmanızı kaydedin.  
+
    ![Kaydet simgesinin ekran görüntüsü](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
 Bu noktada, düz dosya kod çözme bağlayıcınızı ayarlamayı tamamladınız. Gerçek bir dünya uygulamasında, kodu çözülen verileri Salesforce gibi bir iş kolu uygulamasında depolamak isteyebilirsiniz. Kod çözme eyleminin çıkışını Salesforce 'a göndermek için kolayca bir eylem ekleyebilirsiniz.

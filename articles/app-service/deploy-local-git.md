@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680962"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153001"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
 
 Bu nasıl yapılır Kılavuzu, uygulamanızı yerel bilgisayarınızdaki bir git deposundan [Azure App Service](overview.md) için nasıl dağıtacağınızı gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları takip etmek için:
 
@@ -50,6 +50,9 @@ Mevcut bir uygulama için yerel git dağıtımını etkinleştirmek üzere URL '
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> Linux App-Service-plan kullanıyorsanız şu parametreyi eklemeniz gerekir:--Runtime Python | 3.7
+
 
 Ya da git özellikli yeni bir uygulama oluşturmak için, Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) `--deployment-local-git` parametresiyle çalıştırın. \<app-name >, \<grup adı > ve \<plan-adı > Yeni git uygulamanız, Azure Kaynak grubu ve onun Azure App Service planı adlarıyla değiştirin.
 
@@ -142,7 +145,7 @@ Azure Pipelines (Önizleme) ile uygulamanız için yerel git dağıtımını etk
 
 Azure 'da bir App Service uygulamasına yayımlamak için git kullandığınızda aşağıdaki genel hata iletilerini görebilirsiniz:
 
-|İleti|Nedeni|Çözünürlük
+|İleti|Nedeni|Çözüm
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Uygulama çalışır durumda değil.|Uygulamayı Azure portal başlatın. Web uygulaması durdurulduğunda git dağıtımı kullanılamaz.|
 |`Couldn't resolve host 'hostname'`|' Azure ' uzak için adres bilgileri yanlış.|Tüm uzaktan kumandalar listesini, ilişkili URL ile birlikte listelemek için `git remote -v` komutunu kullanın. ' Azure ' uzak için URL 'nin doğru olduğundan emin olun. Gerekirse, doğru URL 'YI kullanarak bu uzak kopyayı kaldırın ve yeniden oluşturun.|

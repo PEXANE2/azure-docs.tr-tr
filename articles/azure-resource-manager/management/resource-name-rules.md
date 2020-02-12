@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 9d685e2852dee25e03bdd98ea5463fd40e795f23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/11/2020
+ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157811"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153171"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -25,26 +25,26 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | sunucular | kaynak grubu | 3-63 | Küçük harfler ve rakamlar.<br><br>Küçük harfle başlayın. |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | hizmet | genel | 1-50 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | hizmet | global | 1-50 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 > | hizmet/API 'ler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/sorunlar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/sorunlar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/ekler | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/sorunlar/açıklamalar | konuda | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/işlemler | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/işlemler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API 'ler/işlemler/Etiketler | operation | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/yayınlar | API | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
-> | hizmet/API 'ler/şemalar | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API/tagDescriptions | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/API 'ler/Etiketler | API | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/yayınlar | api | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal veya alt çizgi ile başlatın ve sonlandırın. |
+> | hizmet/API 'ler/şemalar | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API/tagDescriptions | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/API 'ler/Etiketler | api | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/API-sürüm-ayarlar | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/authorizationServers | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/arka uçlar | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
@@ -71,14 +71,14 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Configurationmağazaların | kaynak grubu | 5-50 | Alfasayısal, alt çizgi ve kısa çizgi. |
 
 ## <a name="microsoftauthorization"></a>Microsoft. Authorization
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | kilitler | atama kapsamı | 1-90 | Alfasayısal, nokta, alt çizgi, kısa çizgi ve parantez.<br><br>Süre içinde bitemez. |
 > | poliyasatamaları | atama kapsamı | 1-128 görünen adı<br><br>1-260 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` içeremez ve nokta veya boşluk ile bitemez. |
@@ -88,7 +88,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | automationAccounts | kaynak grubu | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektupla başlayın ve alfasayısal ile bitemez. |
 > | automationAccounts/Certificates | Otomasyon hesabı | 1-128 | Şu kullanılamıyor:<br> `<>*%&:\?.+/` <br><br>Boşluk ile bitemez.  |
@@ -103,7 +103,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -113,16 +113,16 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | blockchainMembers | genel | 2-20 | Küçük harfler ve rakamlar.<br><br>Küçük harfle başlayın. |
+> | blockchainMembers | global | 2-20 | Küçük harfler ve rakamlar.<br><br>Küçük harfle başlayın. |
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | botServices | genel | 2-64 |  Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. |
+> | botServices | global | 2-64 |  Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. |
 > | botServices/kanallar | bot hizmeti | 2-64 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. |
 > | botServices/Connections | bot hizmeti | 2-64 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. |
 > | enterpriseChannels | kaynak grubu | 2-64 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. |
@@ -130,44 +130,44 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | Redis | genel | 1-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. Ardışık tireler kullanılamaz. |
+> | Redis | global | 1-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. Ardışık tireler kullanılamaz. |
 > | Redsıs/firewallRules | Redis | 1-256 | Alfasayısal karakterler |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | profiles | kaynak grubu | 1-260 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
-> | Profiller/uç noktalar | genel | 1-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | Profiller/uç noktalar | global | 1-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Sertifikadüzenleri | kaynak grubu | 3-30 | Alfasayısal karakterler. |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | accounts | kaynak grubu | 2-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | availabilitySets | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
 > | diskEncryptionSets | kaynak grubu | 1-80 | Alfasayısal ve alt çizgi. |
 > | diskler | kaynak grubu | 1-80 | Alfasayısal ve alt çizgi. |
 > | Galeriler | kaynak grubu | 1-80 | Alfasayısal ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/uygulamalar | galeri | 1-80 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
-> | Galeriler/uygulamalar/sürümler | uygulama | 32 bit tamsayı | Sayılar ve dönemler. |
+> | Galeriler/uygulamalar/sürümler | Uygulamanızı | 32 bit tamsayı | Sayılar ve dönemler. |
 > | Galeriler/görüntüler | galeri | 1-80 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/resimler/sürümler | image | 32 bit tamsayı | Sayılar ve dönemler. |
 > | images | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
@@ -181,16 +181,16 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Kapsayıcı grupları | kaynak grubu | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | kayıt | genel | 5-50 | Alfasayısal karakterler. |
+> | kayıt | global | 5-50 | Alfasayısal karakterler. |
 > | kayıt defterleri/buildTasks | kayıt defteri | 5-50 | Alfasayısal karakterler. |
 > | kayıt defterleri/buildTasks/Steps | Derleme görevi | 5-50 | Alfasayısal karakterler. |
 > | kayıt defterleri/çoğaltmalar | kayıt defteri | 5-50 | Alfasayısal karakterler. |
@@ -202,7 +202,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Managedkümeler | kaynak grubu | 1-63 | Alfasayısal, alt çizgi ve kısa çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | openShiftManagedClusters | kaynak grubu | 1-30 | Alfasayısal karakterler. |
@@ -210,9 +210,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | hub'lar | kaynak grubu | 1-64 | Alfasayısal karakterler.<br><br>Mektup ile başlayın.  |
+> | Lara | kaynak grubu | 1-64 | Alfasayısal karakterler.<br><br>Mektup ile başlayın.  |
 > | Hub/authorizationPolicies | Hub | 1-50 | Alfasayısal, alt çizgi ve nokta.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Hub 'lar/bağlayıcılar | Hub | 1-128 | Alfasayısal ve alt çizgi.<br><br>Mektup ile başlayın. |
 > | Hub 'lar/bağlayıcılar/eşlemeler | bağlayıcı | 1-128 | Alfasayısal ve alt çizgi.<br><br>Mektup ile başlayın. |
@@ -229,7 +229,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | ilişkilendirmeler | kaynak grubu | 1-180 | Şu kullanılamıyor:<br>`%&\\?/`<br><br>Nokta veya boşluk ile bitemez. |
 > | resourceProviders | kaynak grubu | 3-64 | Şu kullanılamıyor:<br>`%&\\?/`<br><br>Nokta veya boşluk ile bitemez. |
@@ -237,23 +237,23 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Çizelge | kaynak grubu | 3-24 | Alfasayısal, tire, alt çizgi ve nokta. |
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | çalışma alanları | kaynak grubu | 3-30 | Alfasayısal, alt çizgi ve kısa çizgi |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | oluşturucular | genel | 3-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | oluşturucular | global | 3-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | fabrika/veri akışları | Çar | 1-260 | Şu kullanılamıyor:<br>`<>*#.%&:\\+?/`<br><br>Alfasayısal olarak başlayın. |
 > | fabrika/veri kümeleri | Çar | 1-260 | Şu kullanılamıyor:<br>`<>*#.%&:\\+?/`<br><br>Alfasayısal olarak başlayın. |
 > | Fabrika/tümleştirme çalışma zamanları | Çar | 3-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
@@ -265,9 +265,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | accounts | genel | 3-24 | Küçük harfler ve rakamlar. |
+> | accounts | global | 3-24 | Küçük harfler ve rakamlar. |
 > | hesaplar/computePolicies | account | 3-60 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | hesaplar/dataLakeStoreAccounts | account | 3-24 | Küçük harfler ve rakamlar. |
 > | hesaplar/firewallRules | account | 3-50 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
@@ -276,16 +276,16 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | accounts | genel | 3-24 | Küçük harfler ve rakamlar. |
+> | accounts | global | 3-24 | Küçük harfler ve rakamlar. |
 > | hesaplar/firewallRules | account | 3-50 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | hesaplar/virtualNetworkRules | account | 3-50 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | services | kaynak grubu | 2-62 | Alfasayısal, kısa çizgi, nokta ve alt çizgi.<br><br>Alfasayısal olarak başlayın. |
 > | Hizmetler/Projeler | hizmet | 2-57 | Alfasayısal, kısa çizgi, nokta ve alt çizgi.<br><br>Alfasayısal olarak başlayın. |
@@ -293,9 +293,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | sunucular | genel | 3-63 | Küçük harfler, tireler ve sayılar.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | sunucular | global | 3-63 | Küçük harfler, tireler ve sayılar.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | sunucular/veritabanları | sunucular | 1-63 | Alfasayısal karakterler ve kısa çizgiler. |
 > | sunucular/firewallRules | sunucular | 1-128 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/virtualNetworkRules | sunucular | 1-128 | Alfasayısal karakterler ve kısa çizgiler. |
@@ -303,9 +303,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | sunucular | genel | 3-63 | Küçük harfler, tireler ve sayılar.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | sunucular | global | 3-63 | Küçük harfler, tireler ve sayılar.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | sunucular/veritabanları | sunucular | 1-63 | Alfasayısal karakterler ve kısa çizgiler. |
 > | sunucular/firewallRules | sunucular | 1-128 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/virtualNetworkRules | sunucular | 1-128 | Alfasayısal karakterler ve kısa çizgiler. |
@@ -313,9 +313,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | sunucular | genel | 3-63 | Küçük harfler, tireler ve sayılar.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | sunucular | global | 3-63 | Küçük harfler, tireler ve sayılar.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | sunucular/veritabanları | sunucular | 1-63 | Alfasayısal karakterler ve kısa çizgiler. |
 > | sunucular/firewallRules | sunucular | 1-128 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/virtualNetworkRules | sunucular | 1-128 | Alfasayısal karakterler ve kısa çizgiler. |
@@ -323,18 +323,18 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdevices"></a>Microsoft. Devices
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | Iothubs | genel | 3-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Kısa çizgi ile bitemez. |
-> | IotHubs/sertifikalar | IoT hub’ı | 1-64 | Alfasayısal, kısa çizgi, nokta ve alt çizgi. |
+> | Iothubs | global | 3-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Kısa çizgi ile bitemez. |
+> | IotHubs/sertifikalar | IoT Hub 'ı | 1-64 | Alfasayısal, kısa çizgi, nokta ve alt çizgi. |
 > | IotHubs/eventHubEndpoints/ConsumerGroups | eventHubEndpoints | 1-50 | Alfasayısal, kısa çizgi, nokta ve alt çizgi. |
-> | ProvisioningServices | kaynak grubu | 3-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal ile biter. |
-> | provisioningServices/sertifikalar | ProvisioningServices | 1-64 | Alfasayısal, kısa çizgi, nokta ve alt çizgi. |
+> | provisioningServices | kaynak grubu | 3-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal ile biter. |
+> | provisioningServices/sertifikalar | provisioningServices | 1-64 | Alfasayısal, kısa çizgi, nokta ve alt çizgi. |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | labs | kaynak grubu | 1-50 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | Labs/CustomImages | ın | 1-80 | Alfasayısal, alt çizgi, kısa çizgi ve parantez. |
@@ -344,27 +344,27 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | Veritabanı hesapları | genel | 3-31 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. |
+> | Veritabanı hesapları | global | 3-31 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | etki alanları | kaynak grubu | 3-50 | Alfasayısal karakterler ve kısa çizgiler. |
-> | etki alanları/konular | domain | 3-50 | Alfasayısal karakterler ve kısa çizgiler. |
+> | etki alanları/konular | alanını | 3-50 | Alfasayısal karakterler ve kısa çizgiler. |
 > | Eventabonelikleri | kaynak grubu | 3-64 | Alfasayısal karakterler ve kısa çizgiler. |
-> | konuları | kaynak grubu | 3-50 | Alfasayısal karakterler ve kısa çizgiler. |
+> | konularıyla | kaynak grubu | 3-50 | Alfasayısal karakterler ve kısa çizgiler. |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | leriniz | kaynak grubu | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya sayı ile biter. |
-> | ad alanları | genel | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya sayı ile biter. |
+> | ad alanları | global | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya sayı ile biter. |
 > | ad alanları/AuthorizationRules | ad alanı | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Harf veya sayı ile başlatın ve sonlandırın. |
 > | ad alanları/Diskalrecoveryconfigs | ad alanı | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Harf veya sayı ile başlatın ve sonlandırın. |
 > | ad alanları/eventhubs | ad alanı | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Harf veya sayı ile başlatın ve sonlandırın. |
@@ -374,46 +374,46 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | leriniz | genel | 3-59 | Alfasayısal ve tireler<br><br>Harf veya sayı ile başlatın ve sonlandırın. |
+> | leriniz | global | 3-59 | Alfasayısal ve tireler<br><br>Harf veya sayı ile başlatın ve sonlandırın. |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Çizelge | kaynak grubu | 2-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | Iotapps | genel | 2-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. |
+> | Iotapps | global | 2-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | kasaları | genel | 3-24 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya rakamla biter. Ardışık kısa çizgi içeremez. |
+> | kasaları | global | 3-24 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya rakamla biter. Ardışık kısa çizgi içeremez. |
 > | kasa/gizlilikler | Kasa | 1-127 | Alfasayısal karakterler ve kısa çizgiler. |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | leriniz | genel | 4-22 | Küçük harfler ve rakamlar.<br><br>Mektup ile başlayın. |
-> | /kümeler/veritabanları | cluster | 1-260 | Alfasayısal, tire, boşluk ve nokta. |
-> | /kümeler/veritabanları/veri bağlantıları | veritabanı | 1-40 | Alfasayısal, tire, boşluk ve nokta. |
-> | /kümeler/veritabanları/eventhubconnections | veritabanı | 1-40 | Alfasayısal, tire, boşluk ve nokta. |
+> | leriniz | global | 4-22 | Küçük harfler ve rakamlar.<br><br>Mektup ile başlayın. |
+> | /kümeler/veritabanları | içi | 1-260 | Alfasayısal, tire, boşluk ve nokta. |
+> | /kümeler/veritabanları/veri bağlantıları | database | 1-40 | Alfasayısal, tire, boşluk ve nokta. |
+> | /kümeler/veritabanları/eventhubconnections | database | 1-40 | Alfasayısal, tire, boşluk ve nokta. |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Tümleştirme hesapları | kaynak grubu | 1-80 | Alfasayısal, tire, alt çizgi, nokta ve parantez. |
 > | Tümleştirme hesapları/derlemeler | tümleştirme hesabı | 1-80 | Alfasayısal, tire, alt çizgi, nokta ve parantez. |
@@ -431,7 +431,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Commitmentplanlar | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`<>*%&:?+/\\`<br><br>Boşluk ile bitemez. |
 > | Hizmetleri | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`<>*%&:?+/\\`<br><br>Boşluk ile bitemez. |
@@ -440,7 +440,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | çalışma alanları | kaynak grubu | 3-33 | Alfasayısal karakterler ve kısa çizgiler. |
 > | çalışma alanları/hesaplar | çalışma alanı | 2-16 | Alfasayısal karakterler ve kısa çizgiler. |
@@ -448,21 +448,21 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Userassignedıdentities | kaynak grubu | 3-128 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler<br><br>Harf veya sayı ile başlayın. |
 
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | accounts | kaynak grubu | 1-98 (kaynak grubu adı ve hesap adı için) | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. |
 
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | mediaservices | kaynak grubu | 3-24 | Küçük harfler ve rakamlar. |
 > | mediaservices/liveEvents | Medya hizmeti | 1-32 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlayın. |
@@ -472,7 +472,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | Applicationgateway 'ler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | applicationSecurityGroups | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
@@ -483,7 +483,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Expressroutedevreleri | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | firewallPolicies | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | firewallPolicies/ruleGroups | güvenlik duvarı ilkesi | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
-> | Frontkapıların | genel | 5-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | Frontkapıların | global | 5-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | loadBalancers | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | loadBalancers/ınboundnatrules | yük dengeleyici | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | Localnetworkgateway 'ler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
@@ -500,7 +500,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | routeTables | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | routeTables/rotalar | yol tablosu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | serviceEndpointPolicies | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
-> | trafficmanagerprofiles | genel | 1-63 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | trafficmanagerprofiles | global | 1-63 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | virtualNetworkGateways | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | virtualNetworks | kaynak grubu | 2-64 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | virtualnetworks/alt ağları | sanal ağ | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
@@ -513,9 +513,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | ad alanları | genel | 6-50 | Alfasayısal ve tireler<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | ad alanları | global | 6-50 | Alfasayısal ve tireler<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | ad alanları/AuthorizationRules | ad alanı | 1-256 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal başlatın. |
 > | ad alanları/Notificationhub 'Lar | ad alanı | 1-260 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal başlatın. |
 > | ad alanları/Notificationhub 'Lar/AuthorizationRules | Bildirim Hub 'ı | 1-256 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal başlatın. |
@@ -523,29 +523,36 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | leriniz | kaynak grubu | 4-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | çalışma alanları | kaynak grubu | 4-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 
+## <a name="microsoftportal"></a>Microsoft. Portal
+
+> [!div class="mx-tableFixed"]
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | --- | --- | --- | --- |
+> | panolar | kaynak grubu | 3-160 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Kısıtlı karakterleri kullanmak için, kullanmak istediğiniz Pano adıyla **gizli-title** adlı bir etiket ekleyin. Portal, Panoyu gösterirken bu adı görüntüler. |
+
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | workspaceCollections | bölgesinde kullanılamıyor | 3-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz. Ardışık tireler kullanılamaz. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | kapasiteler | bölgesinde kullanılamıyor | 3-63 | Küçük harfler veya rakamlar<br><br>Küçük harfle başlayın. |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | kasaları | kaynak grubu | 2-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. |
 > | kasa/backupPolicies | kasa | 3-150 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Kısa çizgi ile bitemez. |
@@ -553,9 +560,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | ad alanları | genel | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>En başta bir harf kullanın. Bir harf veya sayıyla biter. |
+> | ad alanları | global | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>En başta bir harf kullanın. Bir harf veya sayıyla biter. |
 > | ad alanları/AuthorizationRules | ad alanı | 1-50 |  Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | ad alanları/HybridConnections | ad alanı | 1-260 | Alfasayısal, nokta, tire, alt çizgi ve eğik çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | ad alanları/HybridConnections/authorizationRules | karma bağlantı | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
@@ -565,7 +572,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftresources"></a>Microsoft. resources
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | dağıtımlar | kaynak grubu | 1-64 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |
 > | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
@@ -575,11 +582,11 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | ad alanları | genel | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>En başta bir harf kullanın. Bir harf veya sayıyla biter.<br><br>Daha fazla bilgi için bkz. [ad alanı oluşturma](/rest/api/servicebus/create-namespace). |
+> | ad alanları | global | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>En başta bir harf kullanın. Bir harf veya sayıyla biter.<br><br>Daha fazla bilgi için bkz. [ad alanı oluşturma](/rest/api/servicebus/create-namespace). |
 > | ad alanları/AuthorizationRules | ad alanı | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alphnumeric ile başlatın ve sonlandırın. |
-> | ad alanları/Diskalrecoveryconfigs | genel | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Alfasayısal ile biter. |
+> | ad alanları/Diskalrecoveryconfigs | global | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Alfasayısal ile biter. |
 > | ad alanları/migrationConfigurations | ad alanı |  | Her zaman **$Default**olmalıdır. |
 > | ad alanları/kuyruklar | ad alanı | 1-260 | Alfasayısal, nokta, tire, alt çizgi ve eğik çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | ad alanları/kuyruklar/authorizationRules | kuyruk | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alphnumeric ile başlatın ve sonlandırın. |
@@ -591,36 +598,36 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | leriniz | bölgesinde kullanılamıyor | 4-23 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harfle başlayın. Küçük harf veya sayı ile biter. |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | signalR | genel | 3-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya sayı ile biter.  |
+> | signalR | global | 3-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Harf veya sayı ile biter.  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | ManagedInstances | genel | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
-> | sunucular | genel | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | ManagedInstances | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | sunucular | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | sunucular/veritabanları | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:\/?`<br><br>Nokta veya boşluk ile bitemez. |
-> | sunucular/veritabanları/syncGroups | veritabanı | 1-150 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
+> | sunucular/veritabanları/syncGroups | database | 1-150 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/Elaun havuzları | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:\/?`<br><br>Nokta veya boşluk ile bitemez. |
-> | sunucular/failoverGroups 'lar | genel | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | sunucular/failoverGroups 'lar | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | sunucular/firewallRules | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:;\/?`<br><br>Nokta ile bitemez. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | storageAccounts | genel | 3-24 | Küçük harfler ve rakamlar. |
+> | storageAccounts | global | 3-24 | Küçük harfler ve rakamlar. |
 > | storageAccounts/blobServices | depolama hesabı |  | `default`olmalıdır. |
 > | storageAccounts/blobServices/kapsayıcılar | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Küçük harf veya sayı ile başlayın. Ardışık tireler kullanılamaz. |
 > | storageAccounts/fileServices | depolama hesabı |  | `default`olmalıdır. |
@@ -633,7 +640,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | storageSyncServices | kaynak grubu | 1-260 | Alfasayısal, boşluk, nokta, kısa çizgi ve alt çizgi.<br><br>Nokta veya boşluk ile bitemez. |
 > | storageSyncServices/syncGroups | depolama eşitleme hizmeti | 1-260 | Alfasayısal, boşluk, nokta, kısa çizgi ve alt çizgi.<br><br>Nokta veya boşluk ile bitemez. |
@@ -641,14 +648,14 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | ilerinde | kaynak grubu | 2-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Alfasayısal ile biter. |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | streammingjobs | kaynak grubu | 3-63 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | streammingjobs/işlevleri | akış işi | 3-63 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
@@ -659,7 +666,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | ortamlar | kaynak grubu | 1-90 | Şu kullanılamıyor:<br>`'<>%&:\?/#` |
 > | ortamlar/accessPolicies | environment | 1-90 | Şu kullanılamıyor:<br> `'<>%&:\?/#` |
@@ -669,10 +676,10 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
-> | Kurum | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | serverfarms | kaynak grubu | 1-40 | Alfasayısal karakterler ve kısa çizgiler. |
-> | siteler | genel | 2-60 | Alfasayısal ve kısa çizgi içerir.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | siteler | global | 2-60 | Alfasayısal ve kısa çizgi içerir.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | siteler/yuvalar | site | 2-59 | Alfasayısal karakterler ve kısa çizgiler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750988"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148904"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
 
@@ -38,7 +38,7 @@ Azure kaynakları, önemli miktarda izleme verisi üretir. Azure Izleyici, bu ve
 
 Azure Izleyici ölçümleri, zaman damgalı verileri çözümlemek için en iyi duruma getirilmiş bir zaman serisi veritabanında depolanır. Bu, ölçümleri uyarı ve hızlı bir şekilde algılama için özellikle uygun hale getirir. Bunlar sisteminizin nasıl çalıştığını söyleyebilir, ancak genellikle sorunların temel nedenini belirlemek için günlüklerle birleştirilmesi gerekir.
 
-Ölçümler, [Ölçüm Gezgini](../app/metrics-explorer.md)Azure Portal etkileşimli analiz için kullanılabilir. Bunlar, başka verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) eklenebilir ve neredeyse gerçek zamanlı [Uyarı](alerts-metric.md)için kullanılabilir.
+Ölçümler [Azure Ölçüm Gezgini](../platform/metrics-getting-started.md)ile Azure Portal etkileşimli analiz için kullanılabilir. Bunlar, başka verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) eklenebilir ve neredeyse gerçek zamanlı [Uyarı](alerts-metric.md)için kullanılabilir.
 
 Azure izleyici [ölçümlerinde](data-platform-metrics.md)bulunan veri kaynakları da dahil olmak üzere Azure izleyici ölçümleri hakkında daha fazla bilgi edinin.
 
@@ -83,7 +83,7 @@ Her türü dolduran farklı veri kaynaklarının listesi için bkz. Azure izleyi
 
 
 ## <a name="stream-data-to-external-systems"></a>Stream veri harici sistemlere bağlanma
-İzleme verilerini analiz etmek için Azure'da araçlarını kullanabilmenin yanı sıra güvenlik bilgileri ve Olay yönetimi (SIEM) ürün gibi bir dış araç iletmek için bir gereksinim olabilir. Bu iletme genellikle doğrudan izlenen kaynakları üzerinden yapılır [Azure Event Hubs](/azure/event-hubs/). Bazı kaynaklar, gerekli verileri almak için mantıksal uygulama gibi başka bir işlem de kullanabilmeniz sırasında, verileri doğrudan bir olay hub 'ına gönderecek şekilde yapılandırılabilir. Ayrıntılar için bkz. [bir dış araçla tüketim Için Azure izleme verilerini bir olay hub 'ına akış](stream-monitoring-data-event-hubs.md) .
+İzleme verilerini analiz etmek için Azure'da araçlarını kullanabilmenin yanı sıra güvenlik bilgileri ve Olay yönetimi (SIEM) ürün gibi bir dış araç iletmek için bir gereksinim olabilir. Bu iletme, genellikle [Azure Event Hubs](/azure/event-hubs/)aracılığıyla izlenen kaynaklardan doğrudan yapılır. Bazı kaynaklar, gerekli verileri almak için mantıksal uygulama gibi başka bir işlem de kullanabilmeniz sırasında, verileri doğrudan bir olay hub 'ına gönderecek şekilde yapılandırılabilir. Ayrıntılar için bkz. [bir dış araçla tüketim Için Azure izleme verilerini bir olay hub 'ına akış](stream-monitoring-data-event-hubs.md) .
 
 
 
@@ -91,4 +91,4 @@ Her türü dolduran farklı veri kaynaklarının listesi için bkz. Azure izleyi
 
 - [Azure izleyici 'de ölçümler](data-platform-metrics.md)hakkında daha fazla bilgi edinin.
 - [Azure izleyici 'de Günlükler](data-platform-logs.md)hakkında daha fazla bilgi edinin.
-- Hakkında bilgi edinin [izleme verilerini kullanılabilir](data-sources.md) azure'daki farklı kaynakları.
+- Azure 'daki farklı kaynaklar için [kullanılabilen izleme verileri](data-sources.md) hakkında bilgi edinin.

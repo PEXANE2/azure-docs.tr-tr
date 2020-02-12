@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951743"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152032"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Portalı kullanarak farklı dağıtım modellerindeki sanal ağları bağlama
 
@@ -30,7 +30,7 @@ Zaten bir sanal ağ geçidinizin yoksa ve bir tane oluşturmak istemiyorsanız V
 
 ### <a name="before"></a>Başlamadan önce
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 * Bu adımlarda her iki VNET de zaten oluşturulmuş olduğu varsayılır. Bu makaleyi bir alıştırma olarak kullanıyorsanız ve sanal ağlar yoksa, bunları oluşturmanıza yardımcı olacak adımlarda bağlantılar vardır.
 * Sanal ağlar için adres aralıklarının birbirleriyle çakışmayacak veya ağ geçitlerinin bağlı olabileceği diğer bağlantılar için aralıklardan hiçbiriyle çakışmadığından emin olun.
@@ -100,7 +100,7 @@ VPN ağ geçidi olan bir VNet 'iniz zaten varsa, ağ geçidinin dinamik olduğun
 
 1. **Tüm kaynaklara** gidin ve listedeki **classicvnet** 'i bulun.
 2. Menüdeki **Ayarlar** bölümünde **ağ geçidi** ' ne tıklayın ve ardından bir ağ geçidi oluşturmak için başlık ' a tıklayın.
-  ![VPN ağ geçidi yapılandırma](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CVPN ağ geçidi onşekil ")
+  ![VPN ağ geçidi yapılandırma](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN ağ geçidi yapılandırma")
 3. **Yenı VPN bağlantısı** sayfasında, **bağlantı türü**için **siteden siteye**' yı seçin.
 4. **Yerel site**için **gerekli ayarları Yapılandır**' a tıklayın. Bu, **yerel site** sayfasını açar.
 5. **Yerel site** sayfasında, Kaynak Yöneticisi VNET 'e başvuracak bir ad oluşturun. Örneğin, ' RMVNetLocal '.

@@ -1,6 +1,6 @@
 ---
 title: Veritabanını güvenli hale getirme
-description: Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik bir veritabanını güvenli hale getirme ipuçları.
+description: SQL Analytics 'in SQL havuzu kaynağında bir veritabanını güvenli hale getirme ve çözüm geliştirme ipuçları.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064742"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153290"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL veri ambarı 'nda bir veritabanının güvenliğini sağlama
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "77064742"
 > 
 > 
 
-Bu makalede, Azure SQL veri ambarı veritabanınızı güvenli hale getirmenin temelleri anlatılmaktadır. Özellikle bu makale, bir veritabanında erişimi sınırlandırma, verileri koruma ve etkinlikleri izlemeye yönelik kaynakları kullanmaya başlamanızı gösterir.
+Bu makalede, SQL Analytics 'te SQL havuzunuzu güvenli hale getirmenin temelleri adım adım açıklanmaktadır. Özellikle bu makale, SQL havuzu kullanılarak sağlanan bir veritabanında erişimi sınırlandırma, verileri koruma ve etkinlikleri izlemeye yönelik kaynakları kullanmaya başlamanızı temin ediyor.
 
 ## <a name="connection-security"></a>Bağlantı güvenliği
 Bağlantı Güvenliği, veritabanı bağlantılarını güvenlik duvarı kuralları ve bağlantı şifrelemesi kullanarak kısıtlamayı ve bu bağlantıların güvenliğini sağlamayı kapsar.
 
 Güvenlik duvarı kuralları, açıkça bir şekilde listelenmiş olmayan IP adreslerinden gelen bağlantı girişimlerini reddetmek için hem sunucu hem de veritabanı tarafından kullanılır. Uygulamanızın veya istemci makinenizin ortak IP adresinden gelen bağlantılara izin vermek için, önce Azure portal, REST API veya PowerShell 'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir. 
 
-En iyi uygulama olarak sunucu güvenlik duvarınızdan geçmesine izin verilen IP adresi aralıklarını mümkün olduğunca sınırlı tutmanız gerekir.  Yerel bilgisayarınızdan Azure SQL veri ambarı 'na erişmek için, ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının TCP bağlantı noktası 1433 ' de giden iletişime izin verdiğinden emin olun.  
+En iyi uygulama olarak sunucu güvenlik duvarınızdan geçmesine izin verilen IP adresi aralıklarını mümkün olduğunca sınırlı tutmanız gerekir.  Yerel bilgisayarınızdan SQL havuzuna erişmek için, ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının TCP bağlantı noktası 1433 ' de giden iletişime izin verdiğinden emin olun.  
 
-Azure SYNAPSE, sunucu düzeyinde IP güvenlik duvarı kurallarını kullanır. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez. Daha fazla bilgi için bkz. [Azure SQL veritabanı güvenlik duvarı kuralları](../sql-database/sql-database-firewall-configure.md)
+Azure SYNAPSE Analytics, sunucu düzeyinde IP güvenlik duvarı kuralları kullanır. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez. Daha fazla bilgi için bkz. [Azure SQL veritabanı güvenlik duvarı kuralları](../sql-database/sql-database-firewall-configure.md)
 
-SQL veri Ambarınızla kurulan bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı bırakmak için bağlantı ayarlarını değiştirme yok sayılır.
+SQL havuzunuza bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı bırakmak için bağlantı ayarlarını değiştirme yok sayılır.
 
-## <a name="authentication"></a>Kimlik Doğrulama
-Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL veri ambarı Şu anda Kullanıcı adı ve parolayla SQL Server kimlik doğrulamasını destekler ve Azure Active Directory. 
+## <a name="authentication"></a>Kimlik Doğrulaması
+Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL havuzu şu anda Kullanıcı adı ve parolayla SQL Server kimlik doğrulamasını destekler ve Azure Active Directory. 
 
 Veritabanınıza ait mantıksal sunucuyu oluşturduktan sonra kullanıcı adı ve parola belirleyerek "sunucu yöneticisi" oturum açma bilgisi oluşturdunuz. Bu kimlik bilgilerini kullanarak, bu sunucuda veritabanı sahibi olarak veya SQL Server kimlik doğrulaması aracılığıyla "dbo" olarak herhangi bir veritabanında kimlik doğrulaması yapabilirsiniz.
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ardından, Sunucu Yöneticisi oturum açma bilgilerinizi kullanarak **SQL veri ambarı veritabanınıza** bağlanın ve oluşturduğunuz sunucu oturumuna göre bir veritabanı kullanıcısı oluşturun.
+Ardından, Sunucu Yöneticisi oturum açma bilgilerinizi kullanarak **SQL havuzu veritabanınıza** bağlanın ve oluşturduğunuz sunucu oturumuna göre bir veritabanı kullanıcısı oluşturun.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ SQL veritabanında, veritabanı şifreleme anahtarı yerleşik bir sunucu sertif
 [Azure Portal](sql-data-warehouse-encryption-tde.md) veya [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)' i kullanarak veritabanınızı şifreleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Farklı protokollerle ambarınıza bağlanma hakkındaki ayrıntılar ve örnekler için bkz. [SQL Data Warehouse 'A bağlanma](sql-data-warehouse-connect-overview.md).
+Farklı protokollerle ambarınıza bağlanma hakkındaki ayrıntılar ve örnekler için bkz. [SQL Pool 'A bağlanma](sql-data-warehouse-connect-overview.md).

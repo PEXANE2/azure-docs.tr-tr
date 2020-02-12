@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427698"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150927"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio kullanarak müşteri karmaşıklığını çözümleme (klasik)
 ## <a name="overview"></a>Genel Bakış
@@ -25,7 +25,7 @@ Bu makale, Azure Machine Learning Studio (klasik) kullanılarak oluşturulan bir
 Bu deneme, daha önce Microsoft Azure Machine Learning Studio (klasik) için üretim yöneticisi olan Serge Berger, Microsoft 'ta sorumlu veri Bilimcu ve Roger Barga tarafından geliştirilmiştir ve test edilmiştir. Azure belgeleri takımının minnettar uzmanlıklarını bildirir ve bu teknik incelemeyi paylaşmak için teşekkürler.
 
 > [!NOTE]
-> Bu deneme için kullanılan verileri genel olarak kullanılabilir değil. Değişim sıklığı analiz için makine öğrenme modeli oluşturmak nasıl bir örnek için bkz: [perakende karmaşıklığı model şablonunun](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) içinde [Azure AI Gallery](https://gallery.azure.ai/)
+> Bu deneme için kullanılan verileri genel olarak kullanılabilir değil. Dalgalanma analizi için makine öğrenimi modelinin nasıl oluşturulacağı hakkında bir örnek için, bkz. [Azure yapay zeka Galerisi](https://gallery.azure.ai/) [Perakende değişim modeli şablonu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
@@ -37,13 +37,13 @@ Bu deneme, daha önce Microsoft Azure Machine Learning Studio (klasik) için ür
 İşletmeler, bu özel müşteri elde tutma çalışmaları en aza indirmek gereken ortak faktördür. Bu nedenle, her müşteri dalgalanması olasılığını ile puan ve üst N olanları adres için doğal bir Metodoloji olacaktır. En iyi müşteriler En Karlı olanları olabilir. Örneğin, daha karmaşık senaryolarda, kar işlevi özel dispensation için adayları seçim sırasında kullanılır. Ancak, bu tam stratejisi karmaşası başa çıkmak için yalnızca bir kısmını faktörlerdir. İşletmelerin de hesap risk (ve ilişkili risk toleransınıza) düzeyini ve müdahale ve yatkýn müşteri Segmentasyonu maliyetini uygulamanız gerekir.  
 
 ## <a name="industry-outlook-and-approaches"></a>Sektör outlook ve yaklaşımları
-Gelişmiş işleme değişim olgun bir sektör bir işarettir. Klasik örnek, sıklıkla bir sağlayıcısından diğerine geçmek için aboneleri burada bilinen telekomünikasyon endüstri standardıdır. Gönüllü Bu karmaşıklığı prime bir konudur. Sağlayıcılar hakkında önemli bilgileri ayrıca, birikti *sürücüleri karmaşıklığı*, müşterilerin geçiş sürücü etkenler şunlardır.
+Gelişmiş işleme değişim olgun bir sektör bir işarettir. Klasik örnek, sıklıkla bir sağlayıcısından diğerine geçmek için aboneleri burada bilinen telekomünikasyon endüstri standardıdır. Gönüllü Bu karmaşıklığı prime bir konudur. Üstelik, sağlayıcılar, müşterilerin geçiş yapmak için gereken faktörler olan *karmaşıklık sürücüleri*hakkında önemli bilgi edindi.
 
 Cep telefonu iş değişim ahize veya cihaz seçim örneği için bilinen bir sürücüdür. Sonuç olarak, bir popüler ahize fiyatı subsidize yeni abonelere yönelik ve mevcut müşteriler bir yükseltme için tam bir fiyat uyguladığınız ilkesidir. Tarihsel olarak, bu ilke, yeni indirim almak için bir sağlayıcısından diğerine atlamalı müşterilere açmıştır. Bu, istenir, kendi stratejileri iyileştirmek için sağlayıcıları.
 
 Yüksek dalgalanma ahize tekliflere değişim geçerli ahize modellerde dayalı modelleri hızla çıkarır bir faktördür. Ayrıca, cep telefonları yalnızca telekomünikasyon cihazları değil; bunlar da biçimde deyimleri (iPhone göz önünde bulundurun). Bu sosyal adaylarının normal telekomünikasyon veri kümesi kapsamı dışında olan.
 
-Net modelleme için bilinen nedenlerle karmaşıklığı ortadan kaldırarak bir ses ilke insanlara olamaz sonucudur. Aslında, ölçme kategorik değişkenleri (örneğin, karar ağaçları), Klasik modeli de dahil olmak üzere bir sürekli modelleme, stratejidir **zorunlu**.
+Net modelleme için bilinen nedenlerle karmaşıklığı ortadan kaldırarak bir ses ilke insanlara olamaz sonucudur. Aslında, kategorik değişkenlerin (karar ağaçları gibi) miktarını karşılayan klasik modeller dahil sürekli bir modelleme stratejisi **zorunludur**.
 
 Müşterilerinin büyük veri kümelerini kullanarak, kuruluşların büyük veri analizi (özellikle, büyük verilere dayalı değişim saptama içinde) sorun yönelik etkili bir yaklaşım olarak çalışıp çalışmadığını denetleyin. ETL bölümüne önerileri karmaşıklığı sorununu büyük veri yaklaşımı hakkında daha fazla bilgi bulabilirsiniz.  
 
@@ -60,9 +60,9 @@ Müşterilerinin büyük veri kümelerini kullanarak, kuruluşların büyük ver
 
 ![Dalgalanma modeli etkileşim diyagramı](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-*Şekil 4: çok modelli archetype birleşik*  
+*Şekil 4: Birleşik çok modelli, arşiv Etype*  
 
-Müşteri bekletme için bütünsel bir yaklaşım sunmak için ise modelleri arasındaki etkileşimi anahtardır. Her model, zaman içinde mutlaka düşürür; Bu nedenle, örtük bir döngü mimaridir (benzer şekilde NET-DM veri araştırma standardına göre ayarlama archetype [***3***]).  
+Müşteri bekletme için bütünsel bir yaklaşım sunmak için ise modelleri arasındaki etkileşimi anahtardır. Her bir modelin zaman içinde düşmesi gerekli; Bu nedenle, mimari kapalı bir döngüdür (net/DM veri araştırma standardı tarafından ayarlanan, [***3***]).  
 
 Risk karar pazarlama kesimleme/ayrıştırma genel döngüsü hala birçok iş sorunlarını için geçerli olan bir genelleştirilmiş, yapısıdır. Basitleştirilmiş Tahmine dayalı bir çözüm izin vermeyen bir karmaşık iş sorunun tüm nitelikler sergilediğinden karmaşıklığı analizi yalnızca bir güçlü sorunları bu grubun temsilcisidir. Değişim sıklığı için modern yaklaşımı sosyal yönlerini özellikle yaklaşımda vurgulanmış değil, ancak bunlar herhangi bir modelde olduğu gibi sosyal özelliklerini modelleme archetype içinde kapsüllenir.  
 
@@ -79,7 +79,7 @@ Aşağıdaki diyagramda, karmaşıklığın tahmin edilmesi için Machine Learni
 
 ![Birçok bağlantılı modülle karmaşık bir Studio (klasik) çalışma alanını gösteren ekran görüntüsü](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-*Şekil 5: Prototip yaklaşım modelleme bir değişim*  
+*Şekil 5: bir dalgalanma modelleme yaklaşımını prototip*  
 
 Aşağıdaki bölümler Machine Learning Studio (klasik) kullanarak uyguladığımız prototip Puanlama modeliyle ilgili daha fazla ayrıntı sağlar.  
 
@@ -98,17 +98,17 @@ Aşağıdaki diyagramlarda kullanılan verileri gösterilmektedir.
 
 ![Ham değerlerle kullanılan verilerin bir örneğini gösteren ekran görüntüsü](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-*Şekil 6: Alıntı (farklı) veri kaynağının*  
+*Şekil 6: veri kaynağı alıntısı (karıştırılmış)*  
 
 ![Veri kaynağından ayıklanan istatistiksel özellikleri gösteren ekran görüntüsü](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-*Şekil 7: veri kaynağından ayıklanan özellikleri*
+*Şekil 7: veri kaynağından ayıklanan Özellikler*
  
 
 > Bu veriler özeldir ve bu nedenle modeli ve veri paylaşılamaz unutmayın.
-> Ancak bu örnek deneme herkese verileri kullanarak benzer bir model için bkz [Azure AI Gallery](https://gallery.azure.ai/): [telekomünikasyon müşteri karmaşıklığı](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Ancak, genel olarak kullanılabilir verileri kullanan benzer bir model için [Azure yapay zeka Galerisi](https://gallery.azure.ai/): [Telco Müşteri karmaşıklığı](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)' nda bu örnek deneyime bakın.
 > 
-> Cortana Intelligence Suite'i kullanarak bir değişim analiz modeli nasıl uygulayacağınıza dair hakkında daha fazla bilgi için ayrıca öneririz [bu videoyu](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) Kıdemli Program Yöneticisi Wee Hyong Tok tarafından. 
+> Cortana Intelligence Suite kullanarak bir dalgalanma Analizi modeli uygulama hakkında daha fazla bilgi edinmek için [Bu videoyu](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) , üst düzey Program Yöneticisi Wee Hyong tok tarafından da öneririz. 
 > 
 > 
 
@@ -137,14 +137,14 @@ Bu bölümde, bizim bulguları Puanlama veri kümesini temel alan bir model doğ
 ### <a name="accuracy-and-precision-of-scoring"></a>Doğruluk ve puanlamasını duyarlık
 Genellikle, Azure Machine Learning Studio (klasik) uygulamasındaki uygulama,% 10-15 (eğri veya AUC altındaki alan) ile aynı şekilde SAS 'nin arkasında olur.  
 
-Ancak, en önemli değişim sıklığı ölçümü misclassification oranıdır: diğer bir deyişle, tahmin edilen sınıflandırıcı tarafından olarak üst N churners hangisinin gerçekten yaptığınız **değil** karmaşıklığı ve özel olarak değerlendirilmesi henüz alınan? Aşağıdaki diyagram bu modelleri misclassification ücretine karşılaştırılır:  
+Bununla birlikte, karmaşıklık bakımından en önemli ölçüm, yanlış sınıflandırma oranıdır: Yani sınıflandırıcının tahmin edilebileceği, gerçekten ne kadar **karmaşıklamadığı ve** henüz özel bir işleme aldıkları, en önemli N çüleri. Aşağıdaki diyagram bu modelleri misclassification ücretine karşılaştırılır:  
 
 ![4 algoritmaların performansını karşılaştıran eğri grafiğinin alanı](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-*Şekil 9: Passau prototip eğri alanında*
+*Şekil 9: eğri altındaki Passau prototip alanı*
 
 ### <a name="using-auc-to-compare-results"></a>Sonuçları karşılaştırmak için AUC kullanma
-Alanı altında eğri (AUC) genel bir ölçü temsil eden bir ölçüm olan *separability* puanlar pozitif ve negatif yerleştirme için dağıtımlar arasında. Geleneksel alıcı işleci özellikleri (ROC) grafiğe benzer, ancak AUC ölçüm eşiği değeri seçmenizi gerektirmeyeceğini bir önemli fark vardır. Bunun yerine, üzerinden sonuçları özetler **tüm** olası seçenekler. Buna karşılık, dikey eksen ve hatalı pozitif sonuç oranı yatay eksende pozitif sonuç oranı geleneksel ROC grafik gösterir ve sınıflandırma eşiği değişir.   
+Eğri altındaki alan (AUC), pozitif ve negatif popülasyonlar için puanlar dağıtımları *arasındaki genel* bir ölçü ölçüsünü temsil eden bir ölçümdür. Geleneksel alıcı işleci özellikleri (ROC) grafiğe benzer, ancak AUC ölçüm eşiği değeri seçmenizi gerektirmeyeceğini bir önemli fark vardır. Bunun yerine, **Tüm** olası seçimler üzerinde sonuçları özetler. Buna karşılık, dikey eksen ve hatalı pozitif sonuç oranı yatay eksende pozitif sonuç oranı geleneksel ROC grafik gösterir ve sınıflandırma eşiği değişir.   
 
 AUC, modellerin AUC değerleri aracılığıyla karşılaştırılmasını sağladığından farklı algoritmalar (veya farklı sistemler) için değer ölçüsü olarak kullanılır. Bu, sektörde meteorology ve biosciences gibi popüler bir yaklaşımdır. Bu nedenle, AUC sınıflandırıcı performansını değerlendirmek için popüler bir aracı temsil eder.  
 
@@ -162,14 +162,14 @@ Aşağıdaki Wikipedia diyagramdan canlı, anlaşılması kolay bir grafik iliş
 
 ![İki hedef. Bir hedef isabet işaretlerini gevşek gruplanmış, ancak "düşük doğruluk: iyi, zayıf hassasiyet" olarak işaretlenen Bulls-Eye yakın şekilde gösterir. Başka bir hedef sıkı bir şekilde gruplandırılır, ancak "düşük doğruluk: zayıf gerçeği, iyi duyarlık" olarak işaretlendi.](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-*Şekil 10: Etmekten doğruluk ve duyarlık*
+*Şekil 10: doğruluk ve duyarlık arasında zorunluluğunu getirir*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Artırmalı karar ağacı modeli doğruluğu ve duyarlık sonuçları
 Aşağıdaki grafikte en doğru olan dört model arasında özelleştirmede artırmalı karar ağacı modeli için Machine Learning'i prototype kullanarak Puanlama ham sonuçları görüntüler:  
 
 ![Dört algoritma için doğruluk, duyarlık, geri çekme, F puanı, AUC, ortalama günlük kaybı ve eğitim günlüğü kaybını gösteren tablo kod parçacığı](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-*Şekil 11: Artırmalı karar ağacı model özellikleri*
+*Şekil 11: Artırılmış karar ağacı model özellikleri*
 
 ## <a name="performance-comparison"></a>Performans karşılaştırma
 Machine Learning Studio (klasik) modellerini ve SAS kurumsal Miner 12,1 Masaüstü sürümü kullanılarak oluşturulan karşılaştırılabilir bir modeli kullanarak verilerin puanlanması hızını karşılaştırdık.  
@@ -191,10 +191,10 @@ Telekomünikasyon sektörün değişim sıklığı, analiz etmek için çeşitli
   * **Varlık (örneğin, bir abonelik)** . Abonelik ve/veya değişim konusu müşteri hakkındaki temel bilgileri sağlayın.
   * **Etkinlik**. Örneğin, oturum açma sayısı varlıkla ilgili tüm olası kullanım bilgilerini edinin.
   * **Müşteri desteği**. Aboneliğin sorunları veya müşteri desteği ile etkileşim var olup olmadığını belirtmek için müşteri destek günlüklerinden bilgi toplar.
-  * **Rekabetçi ve iş verilerini**. Tüm olası müşteri bilgilerini elde (örneğin, kullanılamıyor veya izlemek zor olabilir).
+  * **Rekabet ve iş verileri**. Tüm olası müşteri bilgilerini elde (örneğin, kullanılamıyor veya izlemek zor olabilir).
 * Önem derecesi için sürücü özellik seçimi kullanın. Bu, artırmalı karar ağacı modeli her zaman taahhüdü bir yaklaşım olduğunu gösterir.  
 
-Bu dört kategoriden kullanımı, izlenimini yaratır basit *belirleyici* Kategori başına makul etkenlere biçimlendirilmiş dizinleri dayalı bir yaklaşım değişim sıklığı için riskli müşterileri belirlemek için yeterli. Ne yazık ki atayabiliyoruz yatkýn görünüyor olsa da, bu yanlış bir anlayış olur. , Değişim sıklığı geçici etkisidir ve karmaşıklığı süresini etkileyen faktörleri genellikle geçici bir durumda olmadığından nedenidir. Bugün bırakarak dikkate alınması gereken bir müşterinin ne müşteri adayları yarın farklı olabilir ve bu kesinlikle altı ay bundan farklı olacaktır. Bu nedenle, bir *olasılıklara* seçeneği modelidir.  
+Bu dört kategorinin kullanılması, kategori başına makul faktörlere göre biçimlendirilmiş olan dizinlere dayalı basit bir *belirleyici* yaklaşımın belirlenmesi, müşterileri karmaşıklık açısından riske almak için yeterli olmalıdır. Ne yazık ki atayabiliyoruz yatkýn görünüyor olsa da, bu yanlış bir anlayış olur. , Değişim sıklığı geçici etkisidir ve karmaşıklığı süresini etkileyen faktörleri genellikle geçici bir durumda olmadığından nedenidir. Bugün bırakarak dikkate alınması gereken bir müşterinin ne müşteri adayları yarın farklı olabilir ve bu kesinlikle altı ay bundan farklı olacaktır. Bu nedenle, bir *dayalı* modeli bir zorunludur.  
 
 Bu önemli gözlem genellikle iş zekası odaklı bir yaklaşım analizi için genellikle tercih ettiği iş kaçan, çoğunlukla, olduğundan daha kolay bir satış ve basit bir Otomasyon admits.  
 
@@ -215,14 +215,14 @@ Bu yazıda, genel framework kullanarak genel müşteri karmaşıklığı sorunun
 
 [2] Vikipedi makalesi: [doğruluk ve duyarlık](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [NET-DM 1.0: adım adım veri araştırma Kılavuzu](https://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [net-DM 1,0: adım adım veri araştırma Kılavuzu](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [büyük veri pazarlama: müşterilerinize daha etkili bir şekilde etkileşim kurun ve sürücü değeri](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [büyük veri Pazarlaması: müşterilerinize daha etkin ve sürücü değeri de katılın](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco karmaşıklığı model şablonunun](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) içinde [Azure AI Gallery](https://gallery.azure.ai/) 
+[5] [Azure yapay zeka Galerisi](https://gallery.azure.ai/) Içindeki [Telco karmaşıklığı modeli şablonu](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
  
 
 ## <a name="appendix"></a>Ek
 ![Dalgalanma prototipi üzerinde bir sununun anlık görüntüsü](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-*Şekil 12: Anlık görüntü karmaşası prototipinde sunu*
+*Şekil 12: bir sununun dalgalanma prototipi üzerinde anlık görüntüsü*

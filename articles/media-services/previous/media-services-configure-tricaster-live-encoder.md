@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131561"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152508"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Tek bit hızlı canlı akış göndermek için NewTek karmaşık Aster Kodlayıcısı 'nı kullanın  
 > [!div class="op_single_selector"]
@@ -34,10 +34,10 @@ Bu makalede, [NewTek](https://newtek.com/products/tricaster-40.html) bir bit hı
 
 Bu öğreticide, Azure Media Services Gezgini (AMSE) aracı ile Azure Media Services (AMS) yönetilecek gösterilmektedir. Bu araç yalnızca Windows bilgisayarda çalışır. Mac veya Linux kullanıyorsanız, [kanalları](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) ve [programları](media-services-portal-creating-live-encoder-enabled-channel.md)oluşturmak için Azure Portal kullanın.
 
+Gerçek zamanlı kodlama için etkinleştirilmiş AMS kanallarına bir katkı akışında göndermek üzere karmaşık bir şekilde kullanırken,, akışlar arasında hızlı kesme veya SLA 'lara geçiş yapma gibi karmaşık olaylarınızın belirli özelliklerini kullanırsanız canlı olayınızdaki video/ses bozuklukları olabilir. AMS ekibi bu sorunları gidermeye çalışarak, bu özelliklerin kullanılması önerilmez.
+
 > [!NOTE]
-> Gerçek zamanlı kodlama için etkinleştirilmiş AMS kanallarına bir katkı akışında göndermek üzere karmaşık bir şekilde kullanırken,, akışlar arasında hızlı kesme veya SLA 'lara geçiş yapma gibi karmaşık olaylarınızın belirli özelliklerini kullanırsanız canlı olayınızdaki video/ses bozuklukları olabilir. AMS ekibi bu sorunları gidermeye çalışarak, bu özelliklerin kullanılması önerilmez.
->
->
+>  Önceden fferred TLS sürümü olan TLS 1,2 ' e geçmeyi göz önünde bulundurun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

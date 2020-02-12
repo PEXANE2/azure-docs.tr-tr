@@ -1,5 +1,5 @@
 ---
-title: Web hizmetini yeniden eğitme
+title: Bir Web hizmetini yeniden eğitme
 titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (klasik) sürümünde yeni eğitilen makine öğrenimi modelini kullanmak üzere bir Web hizmetini güncelleştirmeyi öğrenin.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 867d104b58980679dc815238fef14050e7d9e8c7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838676"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152865"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Makine öğrenimi modelini yeniden eğitme ve dağıtma
 
@@ -31,7 +31,7 @@ Machine Learning yeni Web hizmeti 'ni yeniden eğitmek ve dağıtmak için şu a
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>Yeniden eğitme Web hizmetini dağıtma
+## <a name="deploy-the-retraining-web-service"></a>Yeniden eğitme web hizmetini dağıtma
 
 Yeniden eğitim Web hizmeti, modelinize yeni veriler gibi yeni bir parametre kümesiyle yeniden eğmenize ve daha sonra daha sonra kaydetmenizi sağlar. Bir **Web hizmeti çıkışını** **eğitme modeline**bağladığınızda, eğitim denemesi kullanabileceğiniz yeni bir model çıkarır.
 
@@ -72,7 +72,7 @@ Aşağıdaki ekran görüntüsünde, Azure Machine Learning Web Hizmetleri porta
 
 ![Tüketme sayfası](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>Apikey bildirimini güncelleştirme
+### <a name="update-the-apikey-declaration"></a>Apikey bildirimini güncelleştirin
 
 **Apikey** bildirimini bulun:
 
@@ -80,13 +80,13 @@ Aşağıdaki ekran görüntüsünde, Azure Machine Learning Web Hizmetleri porta
 
 Kullanım sayfasının **temel tüketim bilgileri** bölümünde, birincil anahtarı bulun ve **apikey** bildirimine kopyalayın.
 
-### <a name="update-the-azure-storage-information"></a>Azure depolama bilgilerini güncelleştirme
+### <a name="update-the-azure-storage-information"></a>Azure depolama bilgilerini güncelleştir
 
 BES örnek kodu, yerel sürücüden bir dosyayı (örneğin, "C:\temp\censusınput,CSV") Azure depolama 'ya yükler, işler ve sonuçları Azure depolama 'ya geri yazar.
 
 1. Azure portalda oturum açma
 1. Sol gezinti sütununda, **diğer hizmetler**' e tıklayın, **depolama hesapları**' nı arayın ve seçin.
-1. Depolama hesapları listesinden, geri çekme modelini depolamak için bir tane seçin.
+1. Depolama hesapları listesinden bir retrained modelini depolamak için seçin.
 1. Sol gezinti sütununda **erişim tuşları**' na tıklayın.
 1. **Birincil erişim anahtarını**kopyalayın ve kaydedin.
 1. Sol gezinti sütununda, **Bloblar**' a tıklayın.
@@ -100,7 +100,7 @@ BES örnek kodu, yerel sürücüden bir dosyayı (örneğin, "C:\temp\censusınp
 
 Ayrıca, giriş dosyasının kodda belirttiğiniz konumda kullanılabilir olduğundan emin olmanız gerekir.
 
-### <a name="specify-the-output-location"></a>Çıkış konumunu belirtin
+### <a name="specify-the-output-location"></a>Çıkış konumunu belirtme
 
 Istek yükünde çıkış konumunu belirttiğinizde, ' ın *Relatıvelocation* 'da belirtilen uzantısının `ilearner`olarak belirtilmesi gerekir.
 
@@ -116,7 +116,7 @@ Istek yükünde çıkış konumunu belirttiğinizde, ' ın *Relatıvelocation* '
 
 Yeniden eğitim çıkışının bir örneği aşağıda verilmiştir:
 
-![Yeniden eğitim çıkışı](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Çıktı yeniden eğitme](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Yeniden eğitim sonuçlarını değerlendirin
 
@@ -140,7 +140,7 @@ Ardından, [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Var olan bir Web hizmetinin kaynak grubu adını öğrenmek için, aboneliğinizdeki Web hizmetlerini göstermek üzere herhangi bir parametre olmadan Get-AzMlWebService cmdlet 'ini çalıştırın. Web hizmeti ' ni bulun ve Web hizmeti KIMLIĞINE bakın. Kaynak grubunun adı, *ResourceGroups* öğesinden hemen sonra, kimliğin dördüncü öğesidir. Aşağıdaki örnekte, kaynak grubu adı varsayılan-Machinöğrenim-Güneydoğu ABD ' dir.
+Var olan bir Web hizmetinin kaynak grubu adını öğrenmek için, aboneliğinizdeki Web hizmetlerini göstermek üzere herhangi bir parametre olmadan Get-AzMlWebService cmdlet 'ini çalıştırın. Web hizmeti bulun ve ardından, web hizmeti kimliğini arayın Kaynak grubunun adı, *ResourceGroups* öğesinden hemen sonra, kimliğin dördüncü öğesidir. Aşağıdaki örnekte kaynak grubu adı varsayılan MachineLearning SouthCentralUS ' dir.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -149,7 +149,7 @@ Var olan bir Web hizmetinin kaynak grubu adını öğrenmek için, aboneliğiniz
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Alternatif olarak, var olan bir Web hizmetinin kaynak grubu adını öğrenmek için, Azure Machine Learning Web Hizmetleri portalında oturum açın. Web hizmetini seçin. Kaynak grubu adı, Web hizmeti URL 'sinin, *ResourceGroups* öğesinden hemen sonra beşinci öğesidir. Aşağıdaki örnekte, kaynak grubu adı varsayılan-Machinöğrenim-Güneydoğu ABD ' dir.
+Alternatif olarak, var olan bir Web hizmetinin kaynak grubu adını öğrenmek için, Azure Machine Learning Web Hizmetleri portalında oturum açın. Web hizmeti seçin. Kaynak grubu adı, Web hizmeti URL 'sinin, *ResourceGroups* öğesinden hemen sonra beşinci öğesidir. Aşağıdaki örnekte kaynak grubu adı varsayılan MachineLearning SouthCentralUS ' dir.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
@@ -182,7 +182,7 @@ Değiştirilen JSON dosyasını, tahmine dayalı denemeyi güncelleştirmek içi
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>Web hizmetini güncelleştirme
+### <a name="update-the-web-service"></a>Web hizmetini güncelleştirmek
 
 Son olarak, tahmine dayalı denemesini güncelleştirmek için [Update-azmlwebservice](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) cmdlet 'ini kullanın.
 

@@ -1,6 +1,6 @@
 ---
 title: Yönetilebilirlik ve izleme-genel bakış
-description: Azure SQL veri ambarı 'nda kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruması (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik açısından genel bakış.
+description: SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruması (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik açısından genel bakış.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760751"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153273"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL veri ambarı ile yönetilebilirlik ve izleme
+# <a name="manageability-and-monitoring-with-sql-pool"></a>SQL havuzuyla yönetilebilirlik ve izleme
 
-SQL veri ambarını yönetmenize ve izlemenize yardımcı olmak için nelerin kullanılabilir olduğunu göz atın. Aşağıdaki makalelerde, veri ambarınızın performansını ve kullanımını iyileştirmek için yollar vurgulanacak.
+SQL Analytics, SQL havuzu aracılığıyla bir veri ambarı sağlamanıza olanak tanır. Aşağıdaki makaleler, veri Ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını iyileştirmenin yollarını öğreneceksiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -33,4 +33,4 @@ SQL veri ambarını yönetmenize ve izlemenize yardımcı olmak için nelerin ku
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Nasıl yapılır kılavuzlarında, bkz. [veri Ambarınızı izleme ve ayarlama](sql-data-warehouse-manage-monitor.md).
+Nasıl yapılır kılavuzlarında bkz. [SQL havuzunuzu izleme ve ayarlama](sql-data-warehouse-manage-monitor.md).

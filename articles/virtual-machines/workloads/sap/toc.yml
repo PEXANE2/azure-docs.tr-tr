@@ -78,6 +78,8 @@
           href: os-upgrade-hana-large-instance.md
         - name: SUSE Linux için SMT sunucusunu ayarlama
           href: hana-setup-smt.md
+        - name: HLI’dan Azure VM’ye geçiş
+          href: hana-large-instance-virtual-machine-migration.md
 - name: Azure Sanal Makinelerde SAP HANA
   items:
     - name: Tek örnek SAP HANA yüklemesi

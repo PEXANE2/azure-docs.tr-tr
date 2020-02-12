@@ -11,12 +11,12 @@ ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ce57c48e568e840f3a651a5530f3fba6c0be60b7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721056"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153375"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL veri ambarı sorunlarını giderme
 Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
@@ -53,7 +53,7 @@ Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: sunucu, izin verilen veritabanı Işlem birimi kotasını (45000) aşacağından işlem gerçekleştirilemedi. | Oluşturmaya çalıştığınız veritabanının [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) değerini azaltın ya da [bir kota artışı isteyin](sql-data-warehouse-get-started-create-support-ticket.md). |
 | Alan kullanımını araştırma                              | Sisteminizin alan kullanımını anlamak için bkz. [Tablo boyutları]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) . |
-| Tabloları yönetmeyle ilgili yardım                                    | Tablolarınızın yönetimiyle ilgili yardım için [tabloya genel bakış] [Genel Bakış] makalesine bakın.  Bu makale ayrıca [tablo veri türleri](sql-data-warehouse-tables-data-types.md), tablo [dağıtma](sql-data-warehouse-tables-distribute.md), tablo [dizini oluşturma](sql-data-warehouse-tables-index.md) [, tablo](sql-data-warehouse-tables-partition.md)istatistikleri ve [geçici tabloları](sql-data-warehouse-tables-temporary.md) [koruma](sql-data-warehouse-tables-statistics.md) gibi daha ayrıntılı konulara bağlantılar içerir. |
+| Tabloları yönetmeyle ilgili yardım                                    | Tablolarınızı yönetme hakkında yardım almak için [tabloya genel bakış](../sql-data-warehouse/sql-data-warehouse-tables-overview.md) makalesine bakın.  Bu makale ayrıca [tablo veri türleri](sql-data-warehouse-tables-data-types.md), tablo [dağıtma](sql-data-warehouse-tables-distribute.md), tablo [dizini oluşturma](sql-data-warehouse-tables-index.md) [, tablo](sql-data-warehouse-tables-partition.md)istatistikleri ve [geçici tabloları](sql-data-warehouse-tables-temporary.md) [koruma](sql-data-warehouse-tables-statistics.md) gibi daha ayrıntılı konulara bağlantılar içerir. |
 | Saydam veri şifrelemesi (TDE) ilerleme çubuğu Azure portal güncelleştirilmiyor | TDE [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)ile durumunu görüntüleyebilirsiniz. |
 
 

@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792548"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152678"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama basit sorgu söz dizimi
 
 Azure Bilişsel Arama iki adet Lucene tabanlı sorgu dili uygular: [basit sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) ve [Lucene sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Azure Bilişsel Arama 'de basit sorgu söz dizimi, benzer/slop seçeneklerini dışlar.  
 
-> [!NOTE]  
->  Azure Bilişsel Arama, daha karmaşık sorgular için alternatif bir [Lucene sorgu söz dizimi](query-lucene-syntax.md) sağlar. Her bir sözdiziminin sorgu ayrıştırma mimarisi ve avantajları hakkında daha fazla bilgi edinmek için bkz. [tam metin aramasının Azure bilişsel arama nasıl çalıştığı](search-lucene-query-architecture.md).
+> [!NOTE]
+> Basit sorgu söz dizimi, [arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 'sinin **arama** parametresinde geçirilen sorgu ifadeleri IÇIN kullanılır, bu API 'nin [$Filter](search-filters.md) parametresi için kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır. Bu farklı sözdizimlerinin sorgu oluşturma, kaçış dizeleri vb. oluşturmak için kendi kuralları vardır.
+>
+> Azure Bilişsel Arama, **arama** parametresinde daha karmaşık sorgular için alternatif bir [tam Lucene sorgu söz dizimi](query-lucene-syntax.md) sağlar. Her bir sözdiziminin sorgu ayrıştırma mimarisi ve avantajları hakkında daha fazla bilgi edinmek için bkz. [tam metin aramasının Azure bilişsel arama nasıl çalıştığı](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Basit ayrıştırma çağırma
 
@@ -72,7 +74,7 @@ Sonek işleci bir yıldız `*`. Örneğin, `lux*`, `lux`ile başlayan, büyük/k
 
 ## <a name="phrase-search-operator"></a>Tümcecik arama işleci
 
-Tümcecik işleci, tırnak işaretleri `" "`bir tümceciği barındırır. Örneğin, `Roach Motel` (tırnak işareti olmadan) herhangi bir sırada `Roach` ve/veya `Motel` içeren belgeleri aradığında, `"Roach Motel"` (tırnak işaretleriyle) yalnızca bu tümceciği içeren belgelerle ve bu sırayla eşleşir (metin analizi devam ediyor geçerlidir).
+Tümcecik işleci, tırnak işaretleri `" "`bir tümceciği barındırır. Örneğin, `Roach Motel` (tırnak işareti olmadan) herhangi bir sırada `Roach` ve/veya `Motel` içeren belgeleri aradığında, `"Roach Motel"` (tırnak işaretleriyle) yalnızca bu tümceciği içeren belgelerle ve bu sırada (metin analizi hala geçerlidir) eşleşir.
 
 ## <a name="precedence-operator"></a>Öncelik operatörü
 

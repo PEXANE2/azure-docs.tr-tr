@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 313b9c92b10d3170eb71bb8290a9388bb8dcc67c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1041954f5cd3456fe24e17c8ffc0a586bca2d954
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427516"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152831"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) ' de bir yaklaşım analiz modeli oluşturma
 
@@ -33,16 +33,16 @@ Bu öğreticide, Amazon Book Incelemeleri veri kümesini kullanarak bir yaklaş�
 
 Bu öğreticide Azure AI Gallery ele denemeleri bulabilirsiniz:
 
-[Kitap incelemelerini tahmin edin](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
+[Kitap Incelemelerini tahmin etme](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Kitap incelemeleri - Tahmine dayalı denemeye tahmin edin](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Tahmin Rehberi Incelemeleri-tahmine dayalı deneme](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>1\. adım: Temiz ve metin veri kümesi için önceden işlenir
-Biz, denemeyi iki sınıflı sınıflandırma sorunlu formüle etmek için kategorik düşük ve yüksek demet gözden geçirme puanları bölerek başlayın. Kullandığımız [meta verileri Düzenle](https://msdn.microsoft.com/library/azure/dn905986.aspx) ve [grubu kategorik değerlere](https://msdn.microsoft.com/library/azure/dn906014.aspx) modüller.
+Biz, denemeyi iki sınıflı sınıflandırma sorunlu formüle etmek için kategorik düşük ve yüksek demet gözden geçirme puanları bölerek başlayın. [Düzenle meta verileri](https://msdn.microsoft.com/library/azure/dn905986.aspx) ve [Grup kategorik değerleri](https://msdn.microsoft.com/library/azure/dn906014.aspx) modüllerini kullanıyoruz.
 
 ![Etiket oluşturma](./media/text-analytics-module-tutorial/create-label.png)
 
-Ardından, metin kullanarak temizleme [metin ön işleme](https://msdn.microsoft.com/library/azure/mt762915.aspx) modülü. Temizleme, en önemli özellikleri bulmak ve son modelin doğruluğunu artırmak Yardım kümesindeki gürültü azaltır. Biz stopword - "" veya "a" - gibi ortak kelimeler ve numaralarını, özel karakterler, yinelenen karakterler, e-posta adreslerini ve URL'leri kaldırın. Biz de küçük harf, sözcükleri lemmatize metne dönüştürün ve ardından tarafından belirtilen cümle sınırları algılamak "|||" önceden işlenmiş metin sembolü.
+Daha sonra, [önceden Işlem metin](https://msdn.microsoft.com/library/azure/mt762915.aspx) modülünü kullanarak metni temizliyoruz. Temizleme, en önemli özellikleri bulmak ve son modelin doğruluğunu artırmak Yardım kümesindeki gürültü azaltır. Biz stopword - "" veya "a" - gibi ortak kelimeler ve numaralarını, özel karakterler, yinelenen karakterler, e-posta adreslerini ve URL'leri kaldırın. Biz de küçük harf, sözcükleri lemmatize metne dönüştürün ve ardından tarafından belirtilen cümle sınırları algılamak "|||" önceden işlenmiş metin sembolü.
 
 ![Metni Ön İşleme](./media/text-analytics-module-tutorial/preprocess-text.png)
 
@@ -51,7 +51,7 @@ Peki özel stopword listesini kullanmak istiyorsunuz? İsteğe bağlı bir giri�
 Ön işleme tamamlandıktan sonra biz verileri train bölme ve kümelerini test.
 
 ## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>2\. adım: sayısal özellik vektör önceden işlenmiş metin ayıklayın.
-Metin verileri için bir model oluşturmak için genellikle sayısal özellik vektör serbest biçimli metin dönüştürmeniz gerekir. Bu örnekte [N-Gram özelliklerinden ayıklamak metin](https://msdn.microsoft.com/library/azure/mt762916.aspx) metin verileri gibi biçimine dönüştürmek için modülü. Bu modül, boşluk ayrılmış sözcüklerin bir sütun alır ve bir kelimelerin sözlük veya N-gram, veri kümesinde görünen sözcük hesaplar. Ardından, süreleri her sözcük veya N-gram, her kayıt görünür ve bu özellik vektörler oluşturur kaç sayıları sayar. Sunduğumuz özellik vektör tek sözcükler ve iki sonraki sözcük birleşimlerini içerir, böylece bu öğreticide, N-gram boyutu 2 olarak ayarladık.
+Metin verileri için bir model oluşturmak için genellikle sayısal özellik vektör serbest biçimli metin dönüştürmeniz gerekir. Bu örnekte, metin verilerini bu biçime dönüştürmek için [metin modülünden Ayıkla N-gram özelliklerini](https://msdn.microsoft.com/library/azure/mt762916.aspx) kullanırız. Bu modül, boşluk ayrılmış sözcüklerin bir sütun alır ve bir kelimelerin sözlük veya N-gram, veri kümesinde görünen sözcük hesaplar. Ardından, süreleri her sözcük veya N-gram, her kayıt görünür ve bu özellik vektörler oluşturur kaç sayıları sayar. Sunduğumuz özellik vektör tek sözcükler ve iki sonraki sözcük birleşimlerini içerir, böylece bu öğreticide, N-gram boyutu 2 olarak ayarladık.
 
 ![N-gram ayıklayın](./media/text-analytics-module-tutorial/extract-ngrams.png)
 
@@ -61,12 +61,12 @@ Bu metin özellikler genellikle yüksek işlenemez sahiptir. Gövde 100.000 benz
 
 Ayrıca, tahmin hedefi olan en bağıntılı olan özellikler seçmek için özellik seçimi kullanabilirsiniz. 1000 özellikleri seçmek için kikare özellik seçimi kullanın. Sözcüklerin veya N-gram sözlüğünü doğru Extract N-gram modülün çıkışına tıklayarak görüntüleyebilirsiniz.
 
-Ayıklamak N-Gram özelliklerini kullanmak için alternatif bir yaklaşım, özellik karma modülünü kullanabilirsiniz. Ancak dikkat [özellik karma](https://msdn.microsoft.com/library/azure/dn906018.aspx) yerleşik özellik seçimi yetenekleri veya TF yok * IDF kolaylığı karşılaştırması.
+Ayıklamak N-Gram özelliklerini kullanmak için alternatif bir yaklaşım, özellik karma modülünü kullanabilirsiniz. Bu [özellik](https://msdn.microsoft.com/library/azure/dn906018.aspx) karması, derleme özelliği seçimi ÖZELLIKLERINE veya TF * IDF ağırlıklı olmasına sahip değildir.
 
 ## <a name="step-3-train-classification-or-regression-model"></a>3\. adım: sınıflandırma veya regresyon modelini eğitme
 Şimdi metin için sayısal özellik sütunu dönüştürülmüş. Sütunları Seç kümesinde dışında tutmak için kullanacağız veri kümesi önceki aşamalar dize sütunlarından yine de içerir.
 
-Ardından kullandığımız [iki sınıflı Lojistik regresyon](https://msdn.microsoft.com/library/azure/dn905994.aspx) Hedefimiz tahmin etmek için: yüksek veya düşük gözden geçirme puanı. Bu noktada, metin analizi sorun, bir normal sınıflandırma sorunla dönüştürülmüş. Modeli geliştirmek için Azure Machine Learning Studio (klasik) ' de bulunan araçları kullanabilirsiniz. Örneğin, farklı sınıflandırıcılar verdikleri nasıl doğru sonuçları bulmayı denemek veya hiper parametre ayarı doğruluğunu artırmak için kullanın.
+Hedefimizi tahmin etmek için [Iki sınıf lojistik regresyon](https://msdn.microsoft.com/library/azure/dn905994.aspx) kullanıyoruz: yüksek veya düşük gözden geçirme puanı. Bu noktada, metin analizi sorun, bir normal sınıflandırma sorunla dönüştürülmüş. Modeli geliştirmek için Azure Machine Learning Studio (klasik) ' de bulunan araçları kullanabilirsiniz. Örneğin, farklı sınıflandırıcılar verdikleri nasıl doğru sonuçları bulmayı denemek veya hiper parametre ayarı doğruluğunu artırmak için kullanın.
 
 ![Eğitme ve puanı](./media/text-analytics-module-tutorial/scoring-text.png)
 
@@ -87,5 +87,5 @@ Biz Sütunları Seç metin ön işleme modülü etiket sütunu kaldırmak için 
 Artık bir web hizmeti olarak yayımlanan ve istek-yanıt ya da toplu iş yürütme API'leri kullanarak adlı bir denemeyi sahibiz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Metin analiz modüllerini öğrenin [MSDN belgelerine](https://msdn.microsoft.com/library/azure/dn905886.aspx).
+[MSDN belgelerinden](https://msdn.microsoft.com/library/azure/dn905886.aspx)metin analizi modülleri hakkında bilgi edinin.
 

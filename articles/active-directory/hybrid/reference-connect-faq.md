@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473317"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149822"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -101,7 +101,7 @@ Aşağıda, mühendislik, destek ve danışmanlarımızın yıllarca geliştiril
     - Yedekleme anahtarları
     - Yedekleme eşitleme kuralları
     - Yedekleme sunucusu yapılandırması
-    - SQL veritabanını yedekle
+    - SQL Veritabanını Yedekle
 - SQL VSS Yazıcı olmadan SQL 'i yedekleyen 3. taraf yedekleme Aracısı olmadığından emin olun (3. taraf anlık görüntülerle sanal sunucularda ortak)
 - Karmaşıklık ekleme için kullanılan özel eşitleme kuralları miktarını sınırlayın
 - Azure AD Connect sunucularını katman 0 sunucuları olarak değerlendir
@@ -113,7 +113,7 @@ Aşağıda, mühendislik, destek ve danışmanlarımızın yıllarca geliştiril
 - Hazırlama sunucularının yüksek kullanılabilirlik çözümü olması amaçlıyordu, ancak birden fazla hazırlama sunucunuz olabilir
 - "Gecikme" hazırlama sunucularına giriş, hata durumunda bazı olası kapalı kalma sürelerini azaltabileceği için
 - Önce hazırlama sunucusundaki tüm yükseltmeleri test edin ve doğrulayın
-- Hazırlama sunucusun üzerinde geçiş yapmadan önce her zaman dışarı aktarmaları doğrula, tam Içeri aktarmalar için hazırlama sunucusundan yararlanın ve iş etkisini azaltmak için tam eşitlemeler
+- Hazırlama sunucusuna geçiş yapmadan önce her zaman dışarı aktarmaları doğrula.  Tam Içeri aktarmalar ve iş etkisini azaltmak için tam eşitlemeler hazırlama sunucusundan yararlanın
 - Azure AD Connect sunucular arasında sürüm tutarlılığını mümkün olduğunca koru 
 
 **S: Azure AD Connect çalışma grubu makinesinde Azure AD bağlayıcı hesabı oluşturmasına izin verebilir miyim?**

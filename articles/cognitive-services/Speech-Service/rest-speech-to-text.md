@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975848"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153222"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -42,9 +42,9 @@ Bu parametreleri REST isteğinin sorgu dizesinde eklenebilir.
 
 | Parametre | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| `language` | Tanınan konuşulan dil tanımlar. Bkz: [desteklenen diller](language-support.md#speech-to-text). | Gereklidir |
-| `format` | Sonuç biçimi belirtir. Kabul edilen değerler `simple` ve `detailed`. Basit sonuçlarında `RecognitionStatus`, `DisplayText`, `Offset`, ve `Duration`. Ayrıntılı yanıtlar, birden çok sonuçla güvenle değerleri ve dört farklı temsilleri içerir. Varsayılan ayar `simple`. | İsteğe Bağlı |
-| `profanity` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `masked`, küfür ile `removed`, sonuçtaki tüm küfür kaldıran ve `raw`sonuçtaki küfür içeren. Varsayılan ayar `masked`. | İsteğe Bağlı |
+| `language` | Tanınan konuşulan dil tanımlar. [Desteklenen diller](language-support.md#speech-to-text)bölümüne bakın. | Gerekli |
+| `format` | Sonuç biçimi belirtir. Kabul edilen değerler `simple` ve `detailed`. Basit sonuçlar `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, birden çok sonuçla güvenle değerleri ve dört farklı temsilleri içerir. Varsayılan ayar `simple`. | İsteğe bağlı |
+| `profanity` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `masked`, küfür ile `removed`, sonuçtaki tüm küfür kaldıran ve `raw`sonuçtaki küfür içeren. Varsayılan ayar `masked`. | İsteğe bağlı |
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
@@ -52,16 +52,16 @@ Bu tablo, Konuşmayı metne istekler için gerekli ve isteğe bağlı üst bilgi
 
 |Üst bilgi| Açıklama | Gerekli / isteğe bağlı |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Ya da bu üst bilgi veya `Authorization` gereklidir. |
-| `Authorization` | Bir yetkilendirme belirteci word tarafından öncesinde `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Ya da bu üst bilgi veya `Ocp-Apim-Subscription-Key` gereklidir. |
-| `Content-type` | Sağlanan ses verisi codec ve biçim açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` ve `audio/ogg; codecs=opus`. | Gereklidir |
-| `Transfer-Encoding` | Öbekli ses, tek bir dosya yerine gönderilen veri olduğunu belirtir. Yalnızca ses verileri varsa bu üstbilgiyi kullanır. | İsteğe Bağlı |
-| `Expect` | Öbekli aktarım kullanıyorsanız, gönderme `Expect: 100-continue`. Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses veri gönderen gereklidir. |
-| `Accept` | Sağlanırsa, olmalıdır `application/json`. Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. `Accept`her zaman dahil etmek iyi bir uygulamadır. | İsteğe bağlı, ancak önerilir. |
+| `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üstbilgi veya `Authorization` gereklidir. |
+| `Authorization` | Öncesinde `Bearer`bir yetkilendirme belirteci. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üstbilgi veya `Ocp-Apim-Subscription-Key` gereklidir. |
+| `Content-type` | Sağlanan ses verisi codec ve biçim açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` ve `audio/ogg; codecs=opus`. | Gerekli |
+| `Transfer-Encoding` | Öbekli ses, tek bir dosya yerine gönderilen veri olduğunu belirtir. Yalnızca ses verileri varsa bu üstbilgiyi kullanır. | İsteğe bağlı |
+| `Expect` | Öbekli aktarım kullanılıyorsa `Expect: 100-continue`gönderin. Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses veri gönderen gereklidir. |
+| `Accept` | Sağlanmışsa, `application/json`olması gerekir. Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. `Accept`her zaman dahil etmek iyi bir uygulamadır. | İsteğe bağlı, ancak önerilir. |
 
 ## <a name="audio-formats"></a>Ses biçimleri
 
-Ses HTTP gövdesi gönderilen `POST` isteği. Bu tabloda biçimlerden birinde olmalıdır:
+Ses HTTP `POST` isteği gövdesinde gönderilir. Bu tabloda biçimlerden birinde olmalıdır:
 
 | Biçimlendir | Codec bileşeni | Bit hızı | Örnek hızı |
 |--------|-------|---------|-------------|
@@ -69,7 +69,7 @@ Ses HTTP gövdesi gönderilen `POST` isteği. Bu tabloda biçimlerden birinde ol
 | OGG | GEÇERLİ | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
->Yukarıdaki biçimler, konuşma hizmetindeki REST API ve WebSocket aracılığıyla desteklenir. [Speech SDK'sı](speech-sdk.md) WAV PCM codec ile biçim şu anda yalnızca destekler.
+>Yukarıdaki biçimler, konuşma hizmetindeki REST API ve WebSocket aracılığıyla desteklenir. [Konuşma SDK 'sı](speech-sdk.md) Şu anda, PCM codec ve [DIĞER biçimlere](how-to-use-codec-compressed-audio-input-streams.md)sahip WAV biçimini desteklemektedir.
 
 ## <a name="sample-request"></a>Örnek istek
 
@@ -92,16 +92,16 @@ Her yanıt için HTTP durum kodu, başarı veya sık karşılaşılan hataları 
 | HTTP durum kodu | Açıklama | Olası neden |
 |------------------|-------------|-----------------|
 | 100 | Devam | İlk istek kabul edildi. Kalan verileri göndermek ile devam edin. (İle öbekli aktarım kullanılır.) |
-| 200 | TAMAM | İstek başarılı oldu; yanıt gövdesi bir JSON nesnesidir. |
+| 200 | Tamam | İstek başarılı oldu; yanıt gövdesi bir JSON nesnesidir. |
 | 400 | Hatalı istek | Dil kodu sağlanmadı, desteklenen bir dil değil, geçersiz ses dosyası, vb. |
-| 401 | Yetkilendirilmemiş | Abonelik anahtarı veya yetkilendirme belirteci, belirtilen bölge veya geçersiz uç nokta geçersiz. |
+| 401 | Yetkisiz | Abonelik anahtarı veya yetkilendirme belirteci, belirtilen bölge veya geçersiz uç nokta geçersiz. |
 | 403 | Yasak | Eksik abonelik anahtarı veya yetkilendirme belirteci. |
 
 ## <a name="chunked-transfer"></a>Öbekli aktarım
 
 Öbekli aktarım (`Transfer-Encoding: chunked`), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API, kısmi veya Ara sonuçlar sağlamaz.
 
-Bu kod örneği, nasıl öbekler halinde ses gönderileceğini gösterir. Yalnızca ilk öbekte ses dosyanın üst bilgisi içermelidir. `request` HTTPWebRequest nesneyi uygun REST uç noktasına bağlanır. `audioFile` ses dosyası diskte yoludur.
+Bu kod örneği, nasıl öbekler halinde ses gönderileceğini gösterir. Yalnızca ilk öbekte ses dosyanın üst bilgisi içermelidir. `request`, uygun REST uç noktasına bağlı bir HTTPWebRequest nesnesidir. `audioFile`, diskteki bir ses dosyasının yoludur.
 
 ```csharp
 
@@ -142,31 +142,31 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="response-parameters"></a>Yanıt parametreleri
 
-Sonuçları JSON olarak sağlanır. `simple` Biçimi bu üst düzey alanlar içerir.
+Sonuçları JSON olarak sağlanır. `simple` biçimi bu üst düzey alanları içerir.
 
 | Parametre | Açıklama  |
 |-----------|--------------|
-|`RecognitionStatus`|Durumu gibi `Success` başarılı tanıma. Sonraki tabloya bakın.|
+|`RecognitionStatus`|Başarılı tanıma için `Success` gibi durum. Sonraki tabloya bakın.|
 |`DisplayText`|Büyük harfler, noktalama, ters metin normalleştirmesinin ardından tanınan metin ("Doctor Smith" için "200" veya "Dr. Smith" için 200 gibi daha kısa formlara dönüştürme) ve küfür maskeleme. Yalnızca başarı sunar.|
 |`Offset`|Tanınan konuşma tanıma ses akışı başlar süre (100 nanosaniyelik birimleri).|
 |`Duration`|Ses akışı olarak tanınan konuşma süresi (100 nanosaniyelik birimlerindeki).|
 
-`RecognitionStatus` Alan, bu değerleri içerebilir:
+`RecognitionStatus` alanı şu değerleri içerebilir:
 
 | Durum | Açıklama |
 |--------|-------------|
-| `Success` | Tanıma başarılı oldu ve `DisplayText` alanının olduğunu farkedin. |
+| `Success` | Tanıma başarılı oldu ve `DisplayText` alanı var. |
 | `NoMatch` | Konuşma Tanıma Ses akışında algılandı, ancak hiçbir hedef dil sözcükleri eşleştirilmiş olan. Genellikle kullanıcı Konuşmayı olandan farklı bir dil tanıma dilidir anlamına gelir. |
 | `InitialSilenceTimeout` | Ses akışı başlangıcını yalnızca sessizlik ve konuşma için beklerken zaman aşımına hizmetini içeriyordu. |
 | `BabbleTimeout` | Ses akışı başlangıcını yalnızca gürültü ve konuşma için beklerken zaman aşımına hizmetini içeriyordu. |
 | `Error` | Tanıma hizmeti bir iç hatayla karşılaştı ve çalışmaya devam edemedi. Mümkün olduğunda yeniden deneyin. |
 
 > [!NOTE]
-> Ses yalnızca küfür oluşuyorsa ve `profanity` sorgu parametresi ayarlandığında `remove`, hizmeti bir konuşma sonuç döndürmez.
+> Ses yalnızca küfür içeriyorsa ve `profanity` sorgu parametresi `remove`olarak ayarlanırsa, hizmet bir konuşma sonucu döndürmez.
 
-`detailed` biçimi `simple` biçimiyle aynı verileri, aynı tanınma sonucunun alternatif yorumlarının bir listesini `NBest`ile birlikte içerir. Bu sonuçlar en büyük olasılıkla en az büyük olasılıkla derecelendirilir. İlk giriş, ana tanıma sonucuyla aynıdır.  Kullanırken `detailed` biçimi `DisplayText` olarak sağlanan `Display` her sonucu için `NBest` listesi.
+`detailed` biçimi `simple` biçimiyle aynı verileri, aynı tanınma sonucunun alternatif yorumlarının bir listesini `NBest`ile birlikte içerir. Bu sonuçlar en büyük olasılıkla en az büyük olasılıkla derecelendirilir. İlk giriş, ana tanıma sonucuyla aynıdır.  `detailed` biçimi kullanılırken, `DisplayText` `NBest` listesindeki her sonuç için `Display` olarak sağlanır.
 
-Her bir nesnenin `NBest` liste aşağıdakileri içerir:
+`NBest` listesindeki her nesne şunları içerir:
 
 | Parametre | Açıklama |
 |-----------|-------------|
@@ -174,7 +174,7 @@ Her bir nesnenin `NBest` liste aşağıdakileri içerir:
 | `Lexical` | Sözcük şeklinde tanınan metin: Gerçek sözcüklerin tanınır. |
 | `ITN` | Ters metin normalleştirilmiş ("") kurallı tanınan metinle telefon numaraları, sayılar, kısaltmaları ("doktor smith" için "dr smith") ve uygulanan diğer dönüşümler. |
 | `MaskedITN` | Edemezsiniz formun, istenmesi halinde uygulanan küfür maskeleme ile. |
-| `Display` | Noktalama işaretleri ve eklenen büyük/küçük harf ile tanınan metin görüntüleme formu. Bu parametre aynı olan `DisplayText` biçimi ayarlandığında sağlanan `simple`. |
+| `Display` | Noktalama işaretleri ve eklenen büyük/küçük harf ile tanınan metin görüntüleme formu. Biçim `simple`olarak ayarlandığında, bu parametre `DisplayText` sağlandığı ile aynıdır. |
 
 ## <a name="sample-responses"></a>Örnek yanıt
 

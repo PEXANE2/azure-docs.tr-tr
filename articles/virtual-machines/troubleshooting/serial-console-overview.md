@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134062"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153868"
 ---
 # <a name="azure-serial-console"></a>Azure seri konsol
 
@@ -66,37 +66,6 @@ Seri konsol, ölçek kümesi içindeki her bir örnek üzerinde erişilebilir ol
   1. **Destek + sorun giderme** bölümünde **seri konsol**' yi seçin. Seri konsolu ile yeni bir bölme açılır ve bağlantısını başlatır.
 
      ![Linux sanal makine ölçek kümesi seri konsolu](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-## <a name="serial-console-rbac-role"></a>Seri konsol RBAC rolü
-Yukarıda belirtildiği gibi, seri konsol VM katılımcısı veya sanal makine ölçek kümesine daha fazla erişim gerektirir. Bir kullanıcıya VM katılımcısı vermek istemiyorsanız, ancak yine de bir kullanıcının seri konsoluna erişmesine olanak tanımak istiyorsanız, bunu aşağıdaki rolle yapabilirsiniz:
-
-```
-{
-  "Name": "Serial Console Role",
-  "IsCustom": true,
-  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
-  "Actions": [
-      "Microsoft.Compute/virtualMachines/*/write",
-      "Microsoft.Compute/virtualMachines/*/read",
-      "Microsoft.Storage/storageAccounts/*"
-  ],
-  "NotActions": [],
-  "DataActions": [],
-  "NotDataActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
-
-### <a name="to-create-and-use-the-role"></a>Rolü oluşturmak ve kullanmak için:
-*   JSON 'ı bilinen bir konuma kaydedin: ör. `~/serialconsolerole.json`.
-*   Rol tanımını oluşturmak için şu az CLı komutunu kullanın: `az role definition create --role-definition serialconsolerole.json -o=json`
-*   Rolü güncelleştirmeniz gerekiyorsa, şu komutu kullanın: `az role definition update --role-definition serialconsolerole.json -o=json`
-*   Rol portalda Access Control (ıAM) içinde görünür (yaymayı birkaç dakika sürebilir)
-*   Kullanıcıları VM 'ye ve önyükleme tanılama depolama hesabına özel rol rolüyle ekleyebilirsiniz
-    *   Kullanıcıya VM 'de özel rol *ve* önyükleme tanılama depolama hesabı verilmelidir
-
 
 ## <a name="advanced-uses-for-serial-console"></a>Seri konsol için gelişmiş kullanımlar
 Sanal makinenize konsol erişiminin yanı sıra aşağıdakiler için de Azure seri konsolu 'nu kullanabilirsiniz:
