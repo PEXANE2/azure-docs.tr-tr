@@ -34,11 +34,11 @@ AKS kümeleri Şu anda şu bölgelerde kullanılabilirlik alanları kullanılara
 * Orta ABD
 * Doğu ABD 2
 * Doğu ABD
-* Fransa Orta
-* Japonya Doğu
+* Orta Fransa
+* Doğu Japonya
 * Kuzey Avrupa
 * Güneydoğu Asya
-* UK Güney
+* Güney Birleşik Krallık
 * Batı Avrupa
 * Batı ABD 2
 

@@ -186,7 +186,7 @@ Media Services müşterileri **Standart** akış uç noktası veya **Premium** a
 
 #### <a name="availability"></a>Erişilebilirlik
 
-Şu bölgeler hariç tüm veri merkezlerinde kullanılabilir: Almanya, Brezilya Güney, Hindistan Batı, Hindistan Güney ve Hindistan Orta. 
+Şu bölgeler hariç tüm veri merkezlerinde kullanılabilir: Almanya, Güney Brezilya, Hindistan Batı, Hindistan Güney ve Hindistan Orta. 
 
 ### <a name="encoding-media-processors"></a>Kodlama medya işleyicileri
 
@@ -249,7 +249,7 @@ Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
 |RU türü adı|Durum|Veri merkezleri
 |---|---|---|
 |S1|Genel Kullanım|Tümü|
-|S2|Genel Kullanım|Brezilya Güney ve Hindistan Batı dışında tümü|
+|S2|Genel Kullanım|Güney Brezilya ve Hindistan Batı dışında tümü|
 |S3|Genel Kullanım|Hindistan Batı dışında tümü|
 
 ## <a name="additional-notes"></a>Ek notlar

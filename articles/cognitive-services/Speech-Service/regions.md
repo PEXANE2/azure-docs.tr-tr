@@ -44,14 +44,14 @@ Konuşma SDK 'Sı, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**i�
 | Orta Hindistan    | `centralindia`       | https://centralindia.cris.ai   |
 | Doğu Asya        | `eastasia`           | https://eastasia.cris.ai       |
 | Güneydoğu Asya   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Japonya Doğu       | `japaneast`          | https://japaneast.cris.ai      |
-| Kore Orta    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Avustralya Doğu   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Kanada Orta   | `canadacentral`      | https://canadacentral.cris.ai  |
+| Doğu Japonya       | `japaneast`          | https://japaneast.cris.ai      |
+| Güney Kore - Orta    | `koreacentral`       | https://koreacentral.cris.ai   |
+| Doğu Avustralya   | `australiaeast`      | https://australiaeast.cris.ai  |
+| Orta Kanada   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Kuzey Avrupa     | `northeurope`        | https://northeurope.cris.ai    |
 | Batı Avrupa      | `westeurope`         | https://westeurope.cris.ai     |
-| UK Güney         | `uksouth`            | https://uksouth.cris.ai        |
-| Fransa Orta   | `francecentral`      | https://francecentral.cris.ai  |
+| Güney Birleşik Krallık         | `uksouth`            | https://uksouth.cris.ai        |
+| Orta Fransa   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Amaç tanıma
 
@@ -61,7 +61,7 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
-| Avustralya     | Avustralya Doğu   | `australiaeast`      |
+| Avustralya     | Doğu Avustralya   | `australiaeast`      |
 | Avrupa        | Kuzey Avrupa     | `northeurope`        |
 | Avrupa        | Batı Avrupa      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
@@ -70,7 +70,7 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
-| Güney Amerika | Brezilya Güney     | `brazilsouth`        |
+| Güney Amerika | Güney Brezilya     | `brazilsouth`        |
 
 Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 

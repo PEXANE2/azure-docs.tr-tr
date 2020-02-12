@@ -1,5 +1,5 @@
 ---
-title: Model performansını değerlendirme
+title: Model performansını değerlendir
 titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (klasik) ve bu görev için kullanılabilen ölçümler hakkında model performansını değerlendirmeyi öğrenin.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: baf2352c8842a07691288c9296438624d53d3990
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427636"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153494"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de model performansını değerlendirme (klasik)
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Machine Learning Studio (klasik) ' de bir modelin performans�
 
 * regresyon
 * ikili sınıflandırma 
-* birden çok Lass sınıflandırması
+* Birden çok Lass sınıflandırması
 
 
 

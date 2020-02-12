@@ -71,23 +71,23 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | Uç nokta türü | Bölge | Uç Nokta |
 |---------------|--------|----------|
 | Genel | Küresel (Translator Metin Çevirisi & Bing) | `https://api.cognitive.microsoft.com` |
-| | Avustralya Doğu | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Brezilya Güney | `https://brazilsouth.api.cognitive.microsoft.com` |
-| | Kanada Orta | `https://canadacentral.api.cognitive.microsoft.com` |
+| | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
+| | Güney Brezilya | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
 | | Orta ABD | `https://centralus.api.cognitive.microsoft.com` |
 | | Doğu Asya | `https://eastasia.api.cognitive.microsoft.com` |
 | | Doğu ABD | `https://eastus.api.cognitive.microsoft.com` |
 | | Doğu ABD 2 | `https://eastus2.api.cognitive.microsoft.com` |
-| | Fransa Orta | `https://francecentral.api.cognitive.microsoft.com` |
+| | Orta Fransa | `https://francecentral.api.cognitive.microsoft.com` |
 | | Hindistan Orta | `https://centralindia.api.cognitive.microsoft.com` |
-| | Japonya Doğu | `https://japaneast.api.cognitive.microsoft.com` |
-| | Kore Orta | `https://koreacentral.api.cognitive.microsoft.com` |
+| | Doğu Japonya | `https://japaneast.api.cognitive.microsoft.com` |
+| | Güney Kore - Orta | `https://koreacentral.api.cognitive.microsoft.com` |
 | | Orta Kuzey ABD | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Kuzey Avrupa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Güney Afrika Kuzey | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | Orta Güney ABD | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Güneydoğu Asya | `https://southeastasia.api.cognitive.microsoft.com` |
-| | UK Güney | `https://uksouth.api.cognitive.microsoft.com` |
+| | Güney Birleşik Krallık | `https://uksouth.api.cognitive.microsoft.com` |
 | | Orta Batı ABD | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Batı Avrupa | `https://westeurope.api.cognitive.microsoft.com` |
 | | Batı ABD | `https://westus.api.cognitive.microsoft.com` |

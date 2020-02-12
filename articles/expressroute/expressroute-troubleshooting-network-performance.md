@@ -187,10 +187,10 @@ Test kurulumu:
 | Seattle | Orta Kuzey ABD |  2\.792 km |  55 MS |  27,7 Mbits/sn |  2,19 Gbit/sn |
 | Seattle | Doğu ABD 2        |  3\.769 km |  73 MS |  21,3 Mbits/sn |  1,79 Gbit/sn |
 | Seattle | Doğu ABD          |  3\.699 km |  74 MS |  21,1 Mbits/sn |  1,78 Gbit/sn |
-| Seattle | Japonya Doğu       |  7\.705 km | 106 MS |  14,6 Mbits/sn |  1,22 Gbit/sn |
-| Seattle | UK Güney         |  7\.708 km | 146 MS |  10,6 Mbits/sn |   896 Mbits/sn |
+| Seattle | Doğu Japonya       |  7\.705 km | 106 MS |  14,6 Mbits/sn |  1,22 Gbit/sn |
+| Seattle | Güney Birleşik Krallık         |  7\.708 km | 146 MS |  10,6 Mbits/sn |   896 Mbits/sn |
 | Seattle | Batı Avrupa      |  7\.834 km | 153 MS |  10,2 Mbits/sn |   761 Mbits/sn |
-| Seattle | Avustralya Doğu   | 12.484 km | 165 MS |   9,4 Mbits/sn |   794 Mbits/sn |
+| Seattle | Doğu Avustralya   | 12.484 km | 165 MS |   9,4 Mbits/sn |   794 Mbits/sn |
 | Seattle | Güneydoğu Asya   | 12.989 km | 170 MS |   9,2 Mbits/sn |   756 Mbits/sn |
 | Seattle | Brezilya Güney *   | 10.930 km | 189 MS |   8,2 Mbits/sn |   699 Mbits/sn |
 | Seattle | Güney Hindistan      | 12.918 km | 202 MS |   7,7 Mbits/sn |   634 Mbits/sn |

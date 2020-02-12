@@ -33,10 +33,10 @@ Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve oto
 
 | **Bölge** | **Düşük Gen2 kullanılabilir** | **Otomatik yükseltmeler başlar** |
 |:--- |:--- |:--- |
-| Kanada Doğu |1 Haziran 2020 |1 Temmuz 2020 |
+| Doğu Kanada |1 Haziran 2020 |1 Temmuz 2020 |
 | Çin Doğu |\* |\* |
 | Çin Kuzey |\* |\* |
-| Almanya Orta |\* |\* |
+| Orta Almanya |\* |\* |
 | Almanya Orta Batı |Kullanılabilir |1 Mayıs 2020 |
 | Hindistan Batı |Kullanılabilir |1 Mayıs 2020  |
 

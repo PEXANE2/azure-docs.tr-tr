@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905590"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151998"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure dosyaları ölçeklenebilirlik ve performans hedefleri
 
-[Azure dosyaları](storage-files-introduction.md) tam olarak yönetilen dosya paylaşımları endüstri standardı SMB protokolünü erişilebilen bulutta sunar. Bu makalede, Azure dosyaları ve Azure dosya eşitleme için ölçeklenebilirlik ve performans hedefleri ele alır.
+[Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyaları ve Azure dosya eşitleme için ölçeklenebilirlik ve performans hedefleri ele alır.
 
-Burada listelenen ölçeklenebilirlik ve performans hedefleri olan çeşitli yüksek teknolojiye sahip hedefler, ancak diğer değişkenleri, dağıtımınızdaki etkilenebilir. Örneğin, bir dosya aktarım hızı da, kullanılabilir ağ bant genişliği ile yalnızca Azure dosyaları hizmeti barındıran sunucular sınırlı olabilir. Azure dosyaları performansını ve ölçeklenebilirliğini gereksinimlerinizi karşılayıp karşılamadığını belirlemek için kullanım şekillerini sınama önerilir. Biz de bu sınırların zaman içinde artmasına uygulanır. Lütfen görüşlerinizi bize bildirin, ya da altında veya üzerinde açıklamalarda başvurmaktan çekinmeyin [Azure dosyaları UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files), hangi sınırları hakkında bize artırmak görmek istediğiniz.
+Burada listelenen ölçeklenebilirlik ve performans hedefleri olan çeşitli yüksek teknolojiye sahip hedefler, ancak diğer değişkenleri, dağıtımınızdaki etkilenebilir. Örneğin, bir dosya aktarım hızı da, kullanılabilir ağ bant genişliği ile yalnızca Azure dosyaları hizmeti barındıran sunucular sınırlı olabilir. Azure dosyaları performansını ve ölçeklenebilirliğini gereksinimlerinizi karşılayıp karşılamadığını belirlemek için kullanım şekillerini sınama önerilir. Biz de bu sınırların zaman içinde artmasına uygulanır. Lütfen aşağıdaki açıklamalarda veya [Azure dosyaları UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)'ta, ne kadar yükseğine bakmak istediğinizi öğrenmek istediğiniz limitleri bize geri bildirimde bulunun.
 
 ## <a name="azure-storage-account-scale-targets"></a>Azure depolama hesabı ölçek hedefleri
 
@@ -70,15 +70,15 @@ Azure dosya eşitleme aracısının Azure dosya paylaşımları için bağlanan 
 
 Azure dosya eşitleme için performans iki aşamada önemlidir:
 
-1. **İlk tek seferlik sağlama**: ilk sağlama üzerinde performansını iyileştirmek için başvurmak [Azure dosya eşitleme ile ekleme](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) için en uygun dağıtım ayrıntılarını.
-2. **Devam eden eşitleme**: veri başlangıçta Azure dosya paylaşımlarını sağlanmış sonra Azure dosya eşitleme birden fazla uç noktası eşitlenmiş tutar.
+1. **İlk bir kerelik sağlama**: ilk sağlama performansını iyileştirmek için en iyi dağıtım ayrıntıları için [Azure dosya eşitleme ile ekleme](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) bölümüne bakın.
+2. **Devam eden eşitleme**: veriler başlangıçta Azure dosya paylaşımlarında oluşturulduktan sonra Azure dosya eşitleme birden çok uç noktayı eşitlenmiş halde tutar.
 
 Her aşamalar için dağıtım planlamanıza yardımcı olması için aşağıdaki sonuçları iç bir sistemde bir yapılandırma ile test sırasında gözetilir
 
 | Sistem yapılandırması |  |
 |-|-|
 | CPU | 64 MiB L3 önbellek ile 64 sanal çekirdekler |
-| Hafıza | 128 GiB |
+| Bellek | 128 GiB |
 | Disk | Önbellek pil RAID 10 ile SAS diskleri desteklenir |
 | Ağ | 1 GB/sn ağ |
 | İş yükü | Genel amaçlı dosya sunucusu|
@@ -88,7 +88,7 @@ Her aşamalar için dağıtım planlamanıza yardımcı olması için aşağıda
 | Nesne sayısı | 25.000.000 nesneleri |
 | Veri kümesi boyutu| ~ 4,7 TiB |
 | Ortalama dosya boyutu | ~ 200 KiB (en büyük dosya: 100 GiB) |
-| Aktarım hızı karşıya yükleme | saniye başına 20 nesneleri |
+| Aktarım hızı karşıya yükleme | Her eşitleme grubu için saniyede 20 nesne |
 | Namespace indirme aktarım hızı * | saniyede 400 nesne |
 
 \* Yeni bir sunucu uç noktası oluşturulduğunda, Azure dosya eşitleme aracısının dosya içeriği indirmez. İlk tam ad alanı eşitler ve ardından Tetikleyiciler ya da tamamen dosyaları indirmek için geri çağırma arka plan veya Bulut katmanlaması sunucu uç noktasında ayarlayın bulut katmanlama ilkesi etkinleştirilir.
@@ -98,7 +98,7 @@ Her aşamalar için dağıtım planlamanıza yardımcı olması için aşağıda
 | Eşitlenen nesne sayısı| 125,000 nesneleri (yaklaşık %1 değişim sıklığı) |
 | Veri kümesi boyutu| 50 giB |
 | Ortalama dosya boyutu | Yaklaşık 500 KiB |
-| Aktarım hızı karşıya yükleme | saniye başına 20 nesneleri |
+| Aktarım hızı karşıya yükleme | Her eşitleme grubu için saniyede 20 nesne |
 | Tam yükleme verimi * | saniyede 60 nesne |
 
 \* İse bulut katmanlama etkin olduğunda, muhtemelen yalnızca bazı veri karşıdan dosya olarak daha iyi performans gözlemleyin. Bunlar herhangi bir uç nokta değiştirildiğinde azure dosya eşitleme yalnızca verilerin önbelleğe alınmış dosyaları indirir. Aracı, tüm katmanlı veya yeni oluşturulan dosyalar için dosya verilerini indirmez ve bunun yerine, tüm sunucu uç noktaları için ad alanı yalnızca eşitleyebilir. Kullanıcı tarafından erişilen gibi aracı katmanlı dosyaların kısmi yüklemeleri de destekler. 

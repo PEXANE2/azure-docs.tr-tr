@@ -69,7 +69,7 @@ Aşağıdaki tabloda kullanılabilir birincil ve ikincil bölge eşleştirmeleri
 | ABD Doğu 2 |Orta ABD |
 | Batı Avrupa |Kuzey Avrupa |
 | Güneydoğu Asya |Doğu Asya |
-| Japonya Doğu |Japonya Batı |
+| Doğu Japonya |Batı Japonya |
 
 Birincil bölge verilerinin kaybolduğu olası bir olayda, Microsoft bunu kurtarmaya çalışır. Birincil veriler kurtarılamazsa coğrafi Yük devretme gerçekleştirilir ve etkilenen müşteriler, abonelikleri üzerinden bu hakkında bildirim alınacaktır.
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427458"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152780"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Analizi Excel 'den Azure Machine Learning Studio 'ye geçirme (klasik)
 
@@ -71,17 +71,17 @@ Machine Learning ekipte geliştiriciler ve veri uzmanları tarafından yaptığ�
 
 |  | Excel | Studio (klasik) (başlangıç) | Studio (klasik) k/en az kareler |
 | --- |:---:|:---:|:---:|
-| Etiketli değer |Gerçekler (sayısal) |Naklettiğiniz |Naklettiğiniz |
+| Etiketli değer |Gerçekler (sayısal) |naklettiğiniz |naklettiğiniz |
 | Learner |Excel-> Veri Analizi-> gerileme |Doğrusal regresyon. |Çizgisel Regresyon |
-| Learner seçenekleri |Yok |Varsayılan değerler |normal en az kareler<br />L2 = 0,005 |
-| Veri Kümesi |26 satır, 3 özellik, 1 etiket. Tüm sayısal. |Naklettiğiniz |Naklettiğiniz |
-| Böl: eğitme |Excel ilk 18 satırı üzerinde eğitilen, son 8 satırda test edildi. |Naklettiğiniz |Naklettiğiniz |
-| Böl: test |Son 8 satıra uygulanan Excel regresyon formülü |Naklettiğiniz |Naklettiğiniz |
+| Learner seçenekleri |Yok |Olarak |normal en az kareler<br />L2 = 0,005 |
+| Veri kümesi |26 satır, 3 özellik, 1 etiket. Tüm sayısal. |naklettiğiniz |naklettiğiniz |
+| Böl: eğitme |Excel ilk 18 satırı üzerinde eğitilen, son 8 satırda test edildi. |naklettiğiniz |naklettiğiniz |
+| Böl: test |Son 8 satıra uygulanan Excel regresyon formülü |naklettiğiniz |naklettiğiniz |
 | **Performans** | | | |
 | Ayarlanmış R karesi |0.96 |Yok | |
 | Belirleme katsayısı |Yok |0.78 |0.952049 |
 | Ortalama mutlak hata |11 9,5 milyon |$19.4 d |11 9,5 milyon |
-| Ortalama mutlak hata (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
+| Ortalama mutlak hata (%) |<span style="background-color: 00FF00;">% 6,03</span> |12.2% |<span style="background-color: 00FF00;">% 6,03</span> |
 
 Ayrıca, Excel 'In katılacağı Azure eğitilen modeldeki Özellik ağırlıklarla aynı şekilde karşılaştırılır:
 

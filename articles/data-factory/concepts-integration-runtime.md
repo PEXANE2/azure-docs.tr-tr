@@ -131,7 +131,7 @@ Varsayılan olan **Otomatik çözümle Azure IR** kullanmayı seçerseniz,
 Kullanıcı arabirimindeki işlem hattı etkinliğini izleme görünümünde veya etkinlik izleme yükündeki etkinlik yürütme işlemi sırasında kullanıma alınan IR konumunu izleyebilirsiniz.
 
 >[!TIP]
->Katı veri uyumluluğu gereksinimleriniz varsa ve verilerin belirli bir coğrafyadan ayrılmamasını sağlamak istiyorsanız, belirli bir bölgede açık bir şekilde Azure IR oluşturabilir ve ConnectVia özelliğini kullanarak Bağlı Hizmeti bu IR’ye yönlendirebilirsiniz. Örneğin UK Güney’deki bir Blob’dan UK Güney’deki bir SQL DW’ye veri kopyalamak, fakat verilerin Birleşik Krallık’tan ayrılmamasını sağlamak istiyorsanız UK Güney’de bir Azure IR oluşturup her iki Bağlı Hizmet’i de bu IR’ye yönlendirin.
+>Katı veri uyumluluğu gereksinimleriniz varsa ve verilerin belirli bir coğrafyadan ayrılmamasını sağlamak istiyorsanız, belirli bir bölgede açık bir şekilde Azure IR oluşturabilir ve ConnectVia özelliğini kullanarak Bağlı Hizmeti bu IR’ye yönlendirebilirsiniz. Örneğin Güney Birleşik Krallık’deki bir Blob’dan Güney Birleşik Krallık’deki bir SQL DW’ye veri kopyalamak, fakat verilerin Birleşik Krallık’tan ayrılmamasını sağlamak istiyorsanız Güney Birleşik Krallık’de bir Azure IR oluşturup her iki Bağlı Hizmet’i de bu IR’ye yönlendirin.
 
 ### <a name="self-hosted-ir-location"></a>Kendinden konak IR konumu
 Kendinden konak IR, mantıksal olarak Data Factory'ye kayıtlıdır ve işlevini desteklemek için kullanılan işlem sizin tarafınızdan sağlanır. Bu nedenle kendinden konak IR için açık bir konum özelliği yoktur. 

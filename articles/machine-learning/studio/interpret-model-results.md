@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454713"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153477"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model sonuçlarını yorumlama (klasik)
 Bu konuda, tahmin sonuçlarının Azure Machine Learning Studio (klasik) görselleştirilmesi ve yorumlanması açıklanmaktadır. Bir modeli eğitdikten ve bunun üzerine ("model puanlanır") ilişkin tahminleri tamamladıktan sonra, tahmin sonucunu anlamanız ve yorumlamanıza gerek duyarsınız.
@@ -94,7 +94,7 @@ Web hizmetini çalıştırdıktan ve bir test örneğinin bazı özellik değerl
 
 Şekil 5. Iris iki sınıf sınıflandırmasının Web hizmeti sonucu
 
-### <a name="multi-class-classification"></a>Çok sınıflı sınıflandırma
+### <a name="multi-class-classification"></a>Çok sınıf sınıflandırması
 **Örnek deneme**
 
 Bu deneyde, birden çok Lass sınıflandırmasına örnek olarak bir mektup tanıma görevi gerçekleştirirsiniz. Sınıflandırıcı, el ile yazılmış görüntülerden ayıklanan, el ile yazılmış bazı öznitelik değerlerine göre belirli bir harf (sınıf) tahmin etmeye çalışır.
@@ -224,7 +224,7 @@ Web hizmetini çalıştırdıktan sonra, döndürülen sonuç Şekil 19 gibi gö
 
 * Müşterilerden Restoran derecelendirmeleri
 * Müşteri özelliği verileri
-* Restoran özelliği verileri
+* Restoran özellik verileri
 
 Azure Machine Learning Studio (klasik) ile [eğitme kutusu öneren][train-matchbox-recommender] modülü ile yapabiliriz birkaç şey vardır:
 

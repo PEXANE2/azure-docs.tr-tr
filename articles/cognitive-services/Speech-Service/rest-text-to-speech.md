@@ -43,22 +43,22 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 | Bölge | Uç nokta |
 |--------|----------|
-| Avustralya Doğu | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Kanada Orta | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Güney Brezilya | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu ABD | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu ABD 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Fransa Orta | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Orta Fransa | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Hindistan Orta | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Japonya Doğu | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Kore Orta | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Doğu Japonya | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Güney Kore - Orta | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kuzey ABD | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kuzey Avrupa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Güney ABD | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Güneydoğu Asya | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| UK Güney | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Güney Birleşik Krallık | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı Avrupa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |

@@ -3,12 +3,12 @@ title: Fedrampa yüksek şema örnek denetimleri
 description: Fedrampa yüksek şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087335"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150621"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Fedrampa yüksek şema örneğinin denetim eşlemesi
 
@@ -261,7 +261,7 @@ Ayrıca, bu şema korunmayan uç noktaları, uygulamalar ve depolama hesapların
 
 - Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
+- Web bağlantı noktaları, VM 'niz ile ilişkili ağ güvenlik gruplarında sınırlandırılmalıdır
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) sınır koruması | Erişim noktaları

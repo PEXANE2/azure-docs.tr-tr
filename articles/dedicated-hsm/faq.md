@@ -74,16 +74,16 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 * Doğu Asya
 * Hindistan Orta
 * Hindistan Güney
-* Japonya Doğu
-* Japonya Batı
+* Doğu Japonya
+* Batı Japonya
 * Kuzey Avrupa
 * Batı Avrupa
-* UK Güney
-* UK Batı
-* Kanada Orta
-* Kanada Doğu
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Güney Birleşik Krallık
+* Batı Birleşik Krallık
+* Orta Kanada
+* Doğu Kanada
+* Doğu Avustralya
+* Güneydoğu Avustralya
 
 ## <a name="interoperability"></a>Birlikte çalışabilirlik
 

@@ -30,29 +30,29 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 
 | **Bölge adı** | **Ağ geçidi IP adresleri** |
 |:----------------|:-------------|
-| Avustralya Orta| 20.36.105.0     |
+| Orta Avustralya| 20.36.105.0     |
 | Avustralya Central2     | 20.36.113.0   |
-| Avustralya Doğu | 13.75.149.87, 40.79.161.1     |
+| Doğu Avustralya | 13.75.149.87, 40.79.161.1     |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |
-| Brezilya Güney | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
-| Kanada Orta |40.85.224.249  |
-| Kanada Doğu | 40.86.226.166    |
+| Güney Brezilya | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
+| Orta Kanada |40.85.224.249  |
+| Doğu Kanada | 40.86.226.166    |
 | Orta ABD | 23.99.160.139, 13.67.215.62   |
 | Çin Doğu 2 | 40.73.82.1  |
 | Çin Kuzey 2 | 40.73.50.0     |
 | Doğu Asya | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | Doğu ABD | 40.121.158.30, 191.238.6.43  |
 | Doğu ABD 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
-| Fransa Orta | 40.79.137.0, 40.79.129.1  |
-| Almanya Orta | 51.4.144.100     |
+| Orta Fransa | 40.79.137.0, 40.79.129.1  |
+| Orta Almanya | 51.4.144.100     |
 | Almanya Kuzey Doğu | 51.5.144.179  |
 | Hindistan Orta | 104.211.96.159     |
 | Hindistan Güney | 104.211.224.146  |
 | Hindistan Batı | 104.211.160.80    |
-| Japonya Doğu | 13.78.61.196, 191.237.240.43  |
-| Japonya Batı | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
-| Kore Orta | 52.231.32.42   |
-| Kore Güney | 52.231.200.86    |
+| Doğu Japonya | 13.78.61.196, 191.237.240.43  |
+| Batı Japonya | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
+| Güney Kore - Orta | 52.231.32.42   |
+| Güney Kore - Güney | 52.231.200.86    |
 | Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Kuzey Avrupa | 40.113.93.91, 191.235.193.75    |
 | Güney Afrika Kuzey  | 102.133.152.0    |
@@ -61,7 +61,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | BAE Orta | 20.37.72.64  |
 | BAE Kuzey | 65.52.248.0    |
-| UK Güney | 51.140.184.11   |
+| Güney Birleşik Krallık | 51.140.184.11   |
 | UK, Batı | 51.141.8.11  |
 | Orta Batı ABD | 13.78.145.25     |
 | Batı Avrupa | 40.68.37.158, 191.237.232.75     |

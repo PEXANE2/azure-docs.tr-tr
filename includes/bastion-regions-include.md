@@ -20,8 +20,8 @@ ms.locfileid: "76938331"
 >
 
 **Kuzey**
-* Brezilya Güney
-* Kanada Orta
+* Güney Brezilya
+* Orta Kanada
 * Orta ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -32,22 +32,22 @@ ms.locfileid: "76938331"
 * Batı ABD 2
 
 **Avrupa**
-* Fransa Orta
+* Orta Fransa
 * Kuzey Avrupa
 * Norveç Doğu
-* UK Güney
+* Güney Birleşik Krallık
 * UK, Batı
 * Batı Avrupa
 
 **Asya Pasifik**
-* Avustralya Orta 2
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Orta Avustralya 2
+* Doğu Avustralya
+* Güneydoğu Avustralya
 * Doğu Asya
-* Japonya Doğu
-* Japonya Batı
-* Kore Orta
-* Kore Güney
+* Doğu Japonya
+* Batı Japonya
+* Güney Kore - Orta
+* Güney Kore - Güney
 * Güneydoğu Asya
 * Batı Hindistan
 

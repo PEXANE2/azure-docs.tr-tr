@@ -26,12 +26,12 @@ Düzeltme 3 damgalarına dayanan Azure (büyük örnekler) hizmeti SAP HANA, Azu
 
 - Batı ABD
 - Doğu ABD
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Doğu Avustralya
+- Güneydoğu Avustralya
 - Batı Avrupa
 - Kuzey Avrupa
-- Japonya Doğu
-- Japonya Batı
+- Doğu Japonya
+- Batı Japonya
 
 Düzeltme 4 damgalarına dayanan Azure (büyük örnekler) hizmetinde SAP HANA, Azure bölgelerindeki çeşitli yapılandırmalarda mevcuttur:
 

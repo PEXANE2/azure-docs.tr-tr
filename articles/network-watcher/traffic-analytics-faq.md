@@ -64,7 +64,7 @@ Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişi
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Hangi Azure bölgeleri Trafik Analizi kullanılabilir?
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
-- Kanada Orta
+- Orta Kanada
 - Orta Batı ABD
 - Doğu ABD
 - Doğu ABD 2
@@ -73,26 +73,26 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 - Orta ABD
 - Batı ABD
 - Batı ABD 2
-- Fransa Orta
+- Orta Fransa
 - Batı Avrupa
 - Kuzey Avrupa
-- Brezilya Güney
+- Güney Brezilya
 - UK, Batı
-- UK Güney
-- Avustralya Doğu
-- Avustralya Güneydoğu 
+- Güney Birleşik Krallık
+- Doğu Avustralya
+- Güneydoğu Avustralya 
 - Doğu Asya
 - Güneydoğu Asya
-- Kore Orta
+- Güney Kore - Orta
 - Orta Hindistan
 - Güney Hindistan
-- Japonya Doğu
-- Japonya Batı
+- Doğu Japonya
+- Batı Japonya
 - US Gov Virginia
 - Çin Doğu 2
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-- Kanada Orta
+- Orta Kanada
 - Orta Batı ABD
 - Doğu ABD
 - Doğu ABD 2
@@ -101,18 +101,18 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 - Orta ABD
 - Batı ABD
 - Batı ABD 2
-- Fransa Orta
+- Orta Fransa
 - Batı Avrupa
 - Kuzey Avrupa
 - UK, Batı
-- UK Güney
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Güney Birleşik Krallık
+- Doğu Avustralya
+- Güneydoğu Avustralya
 - Doğu Asya
 - Güneydoğu Asya 
-- Kore Orta
+- Güney Kore - Orta
 - Orta Hindistan
-- Japonya Doğu
+- Doğu Japonya
 - US Gov Virginia
 - Çin Doğu 2
 

@@ -21,15 +21,15 @@ Siteden siteye tabanlı VPN bağlantısı ve sanal WAN mimarisi aşağıdaki bö
 
 |Coğrafi bölge | Azure bölgeleri|
 |---|---|
-| Kuzey Amerika | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Kanada Orta, Kanada Doğu |
-|Güney Amerika |Brezilya Güney |
-| Avrupa | Fransa Orta, Fransa Güney, Kuzey Avrupa, Batı Avrupa, UK Batı, UK Güney |
+| Kuzey Amerika | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Orta Kanada, Doğu Kanada |
+|Güney Amerika |Güney Brezilya |
+| Avrupa | Orta Fransa, Güney Fransa, Kuzey Avrupa, Batı Avrupa, Batı Birleşik Krallık, Güney Birleşik Krallık |
 | Asya | Doğu Asya, Güneydoğu Asya |
-| Japonya  | Japonya Batı, Japonya Doğu |
-| Avustralya | Avustralya Güneydoğu, Avustralya Doğu |
-| Avustralya kamu | Avustralya Orta, Avustralya Orta 2 |
+| Japonya  | Batı Japonya, Doğu Japonya |
+| Avustralya | Güneydoğu Avustralya, Doğu Avustralya |
+| Avustralya kamu | Orta Avustralya, Orta Avustralya 2 |
 | Hindistan | Hindistan Batı, Hindistan Orta, Hindistan Güney |
-| Güney Kore | Kore Orta, Kore Güney |
+| Güney Kore | Güney Kore - Orta, Güney Kore - Güney |
 | Güney Afrika | Güney Afrika Kuzey, Güney Afrika Batı |
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Ulusal bulutlar için Azure bölgeleri ve geopolitik sınırlar
@@ -38,6 +38,6 @@ Siteden siteye tabanlı VPN bağlantısı ve sanal WAN mimarisi aşağıdaki bö
 
 |Coğrafi bölge | Azure bölgeleri|
 |---|---|
-| US Government bulutu | US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia, US DoD Orta, US DoD Doğu |
-| Çin Doğu | Çin Doğu, Çin Doğu2|
-| Çin Kuzey | Çin Kuzey, Çin Kuzey2 |
+| US Government bulutu | US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia, Orta US DoD, Doğu US DoD |
+| Çin Doğu | Doğu Çin, Doğu Çin2|
+| Çin Kuzey | Kuzey Çin, Kuzey Çin2 |

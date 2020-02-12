@@ -176,22 +176,22 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 |Orta Kuzey ABD | https:\//northcentralus.monitoring.azure.com
 |Orta Güney ABD| https:\//southcentralus.monitoring.azure.com/ |
 |Orta ABD      | https:\//centralus.monitoring.azure.com |
-|Kanada Orta | https:\//canadacentral.Monitoring.Azure.Comc
+|Orta Kanada | https:\//canadacentral.Monitoring.Azure.Comc
 |Doğu ABD| https:\//eastus.monitoring.azure.com/ |
 | **Avrupa** | |
 |Kuzey Avrupa    | https:\//northeurope.monitoring.azure.com/ |
 |Batı Avrupa     | https:\//westeurope.monitoring.azure.com/ |
-|UK Güney | https:\//uksouth.monitoring.azure.com
-|Fransa Orta | https:\//francecentral.monitoring.azure.com |
+|Güney Birleşik Krallık | https:\//uksouth.monitoring.azure.com
+|Orta Fransa | https:\//francecentral.monitoring.azure.com |
 | **Doğu** | |
 |Güney Afrika Kuzey | https:\//southafricanorth.monitoring.azure.com
 | **Asya** | |
 |Orta Hindistan | https:\//centralindia.monitoring.azure.com
-|Avustralya Doğu | https:\//australiaeast.monitoring.azure.com
-|Japonya Doğu | https:\//japaneast.monitoring.azure.com
+|Doğu Avustralya | https:\//australiaeast.monitoring.azure.com
+|Doğu Japonya | https:\//japaneast.monitoring.azure.com
 |Güneydoğu Asya  | https:\//southeastasia.monitoring.azure.com |
 |Doğu Asya | https:\//eastasia.monitoring.azure.com
-|Kore Orta   | https:\//koreacentral.monitoring.azure.com
+|Güney Kore - Orta   | https:\//koreacentral.monitoring.azure.com
 
 
 ## <a name="quotas-and-limits"></a>Kotalar ve sınırlar

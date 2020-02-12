@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e32e3ddd99efe1d389b65f7a4134633a40b29a9a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2e95c4bfbe7342e251e6d845fd4acfed6ff6109a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839730"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150111"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel 'den bir Azure Machine Learning Studio (klasik) Web hizmeti kullanma
 
@@ -26,7 +26,7 @@ Excel 2013 (veya üzeri) veya Excel Online kullanıyorsanız, Excel [Excel eklen
 
 
 ## <a name="steps"></a>Adımlar
-Web hizmeti yayımlayın. [Öğretici 3: Kredi risk modelini dağıtma](tutorial-part3-credit-risk-deploy.md) , bunun nasıl yapılacağını açıklar. Şu anda Excel çalışma kitabı özelliği yalnızca tek bir çıkışı olan Istek/yanıt Hizmetleri için desteklenir (yani, tek bir Puanlama etiketi). 
+Web hizmeti yayımlama. [Öğretici 3: Kredi risk modelini dağıtma](tutorial-part3-credit-risk-deploy.md) , bunun nasıl yapılacağını açıklar. Şu anda Excel çalışma kitabını özelliği yalnızca tek bir çıkış (diğer bir deyişle, tek bir Puanlama etiketi) sahip istek/yanıt hizmetler için desteklenir. 
 
 Bir Web hizmetiniz olduktan sonra, Studio 'nun sol tarafındaki **Web Hizmetleri** bölümüne tıklayın ve sonra Excel 'den kullanmak için Web hizmeti ' ni seçin.
 
@@ -51,18 +51,18 @@ Bir Web hizmetiniz olduktan sonra, Studio 'nun sol tarafındaki **Web Hizmetleri
 3. Bir güvenlik uyarısı görüntülenir. Elektronik tablonuzun makrolarını çalıştırmak için **Içeriği etkinleştir** düğmesine tıklayın.
 
     ![Makroları devre dışı bırakma güvenlik uyarısını kapatmak için Içeriği etkinleştirin](./media/consuming-from-excel/enablecontent.png)
-4. Makrolar etkinleştirildikten sonra bir tablo oluşturulur. , RR 'ler Web hizmetine veya **parametrelerine**giriş olarak Blue sütunları gereklidir. RR hizmetinin çıkışını, **tahmin EDILEN değerleri** yeşil olarak dikkate alın. Belirli bir satır için tüm sütunlar dolduğunda, çalışma kitabı Puanlama API 'sini otomatik olarak çağırır ve puanlanmış sonuçları görüntüler.
+4. Makrolar etkinleştirildikten sonra bir tablo oluşturulur. , RR 'ler Web hizmetine veya **parametrelerine**giriş olarak Blue sütunları gereklidir. RR hizmetinin çıkışını, **tahmin EDILEN değerleri** yeşil olarak dikkate alın. Belirli bir satır için tüm sütunları dolduğunda, çalışma kitabına otomatik olarak Puanlama API'yi çağıran ve puanlanmış sonuçların görüntüler.
 
     ![Parametre girişleri ve sonuç tahmini değerleri için tablo](./media/consuming-from-excel/sampletable.png)
-5. Birden fazla satıra puan vermek için ikinci satırı verilerle doldurup tahmin edilen değerler üretilir. Aynı anda birden çok satırı yapıştırabilirsiniz.
+5. Birden fazla satır puanlamak için dolgu verileri ve tahmin edilen değerler ikinci satırı oluşturulur. Aynı anda birden çok satır bile yapıştırabilirsiniz.
 
-Verilerin görselleştirilmesine yardımcı olmak için, tahmin edilen değerlerle Excel özelliklerinden herhangi birini (grafikler, Power Map, koşullu biçimlendirme vb.) kullanabilirsiniz.
+Verileri görselleştirme yardımcı olmak için tahmin edilen değerleri (grafikleri power map, koşullu biçimlendirme, vb.) Excel özelliklerinden herhangi birini kullanabilirsiniz.
 
 ## <a name="sharing-your-workbook"></a>Çalışma kitabınızı paylaşma
-Makroların çalışması için API anahtarınızın elektronik tablonun parçası olması gerekir. Bu, çalışma kitabını yalnızca güvendiğiniz varlıklarla/kişilerle paylaşmanız gerektiği anlamına gelir.
+İş için makrolar, API anahtarınızı elektronik bir parçası olmalıdır. Bu çalışma kitabını yalnızca varlık/güvenilir kişiler ile paylaşmalıdır anlamına gelir.
 
 ## <a name="automatic-updates"></a>Otomatik güncelleştirmeler
-Bu iki durumda bir RR çağrısı yapılır:
+Bu iki durumda bir RRS çağrısıyla yapılır:
 
 1. Bir satırda, tüm **parametrelerinde** içerik olduğunda ilk kez
 2. **Parametrelerin** tüm **parametreleri** girilen bir satırdaki herhangi bir zaman değişir.

@@ -56,7 +56,7 @@ Azure Farmtts 'nin maliyeti, temel alınan Azure hizmetlerinin maliyetinin topla
 
 Şu anda, şu bölgelerde genel bulut ortamlarında Azure Farmtempts desteklenir:
 
-- Avustralya Doğu
+- Doğu Avustralya
 - Orta ABD
 - Doğu ABD
 - Doğu ABD 2

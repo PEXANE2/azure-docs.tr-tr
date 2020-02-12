@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 7626714812b44119099344b52fe7506989555a57
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c164a487ef94ea1eae4b369105cb785d1e8d0f66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314309"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150310"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmetini kullanma
 
@@ -24,8 +24,8 @@ Bir Web hizmeti olarak Azure Machine Learning Studio (klasik) tahmine dayalı bi
 Machine Learning Studio (klasik) kullanarak Machine Learning Web hizmeti oluşturma ve dağıtma hakkında daha fazla bilgi edinebilirsiniz:
 
 * Machine Learning Studio (klasik) ' de deneme oluşturma hakkında bir öğretici için, bkz. [İlk denemenizi oluşturma](create-experiment.md).
-* Bir Web hizmeti dağıtma hakkında daha fazla ayrıntı için bkz. [Machine Learning Web hizmetini dağıtma](deploy-a-machine-learning-web-service.md).
-* Genel olarak, Machine Learning hakkında daha fazla bilgi için ziyaret [Machine Learning Belge Merkezi](https://azure.microsoft.com/documentation/services/machine-learning/).
+* Web hizmeti dağıtma hakkında ayrıntılı bilgi için bkz. [Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
+* Genel olarak Machine Learning hakkında daha fazla bilgi için [Machine Learning belge merkezini](https://azure.microsoft.com/documentation/services/machine-learning/)ziyaret edin.
 
 
 
@@ -37,76 +37,76 @@ Azure Machine Learning Studio (klasik) iki tür hizmete sahiptir:
 * İstek-yanıt hizmeti (RR) – Machine Learning Studio (klasik) tarafından oluşturulan ve dağıtılan durum bilgisiz modellerin arabirimini sağlayan düşük gecikmeli, yüksek düzeyde ölçeklenebilir bir hizmettir.
 * Toplu yürütme hizmeti (BES) – bir zaman uyumsuz yapan veri kayıtları için toplu iş hizmettir.
 
-Machine Learning Web Hizmetleri hakkında daha fazla bilgi için bkz. [Machine Learning Web hizmetini dağıtma](deploy-a-machine-learning-web-service.md).
+Machine Learning Web Hizmetleri hakkında daha fazla bilgi için bkz. [Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-an-authorization-key"></a>Yetkilendirme anahtarı al
 API anahtarları, denemenizi dağıttığınızda, Web hizmeti oluşturulur. Çeşitli konumlardan anahtarları alabilirsiniz.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Microsoft Azure Machine Learning Web Hizmetleri portalından
-Oturum [Microsoft Azure Machine Learning Web Hizmetleri](https://services.azureml.net) portalı.
+[Microsoft Azure Machine Learning Web Hizmetleri](https://services.azureml.net) portalında oturum açın.
 
 Yeni Machine Learning Web hizmeti için API anahtarını almak için:
 
-1. Azure Machine Learning Web Hizmetleri portalında **Web Hizmetleri** üst menü.
+1. Azure Machine Learning Web Hizmetleri portalında, **Web Hizmetleri** üst menüsü ' ne tıklayın.
 2. Anahtar almak istediğiniz Web hizmeti tıklayın.
-3. Üst menüsünde **Tüket**.
-4. Kopyalayıp kaydedin **birincil anahtar**.
+3. Üstteki menüde **tüketme**' ye tıklayın.
+4. **Birincil anahtarı**kopyalayın ve kaydedin.
 
 Klasik Machine Learning Web hizmeti için API anahtarını almak için:
 
-1. Azure Machine Learning Web Hizmetleri portalında **Klasik Web Hizmetleri** üst menü.
+1. Azure Machine Learning Web Hizmetleri portalında, **Klasik Web Hizmetleri** üst menüsü ' ne tıklayın.
 2. Web hizmeti ile çalıştığınız tıklayın.
 3. Anahtar almak istediğiniz uç noktaya tıklayın.
-4. Üst menüsünde **Tüket**.
-5. Kopyalayıp kaydedin **birincil anahtar**.
+4. Üstteki menüde **tüketme**' ye tıklayın.
+5. **Birincil anahtarı**kopyalayın ve kaydedin.
 
 ### <a name="classic-web-service"></a>Klasik Web hizmeti
  Ayrıca, klasik Web hizmeti için Machine Learning Studio (klasik) için bir anahtar alabilirsiniz.
 
 #### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (klasik)
 1. Machine Learning Studio (klasik) bölümünde, sol taraftaki **Web Hizmetleri** ' ne tıklayın.
-2. Bir Web hizmetine tıklayın. **API anahtarı** açıktır **PANO** sekmesi.
+2. Bir Web hizmetine tıklayın. **API anahtarı** **Pano** sekmesindedir.
 
-## <a id="connect"></a>Bir Machine Learning Web hizmetine bağlanma
+## <a id="connect"></a>Machine Learning Web hizmetine bağlanma
 HTTP istek ve yanıt destekleyen herhangi bir programlama dilini kullanarak bir Machine Learning Web hizmetine bağlanabilirsiniz. Örneklerde görüntüleyebileceğiniz C#, Python ve R bir Machine Learning Web hizmeti Yardım sayfası.
 
-**Machine Learning API Yardım** Machine Learning API Yardım, bir Web hizmetini dağıttığınızda oluşturulur. Bkz. [öğretici 3: Kredi risk modelini dağıtma](tutorial-part3-credit-risk-deploy.md).
+**MACHINE LEARNING API yardımı** Bir Web hizmeti dağıtırken API yardımı Machine Learning oluşturulur. Bkz. [öğretici 3: Kredi risk modelini dağıtma](tutorial-part3-credit-risk-deploy.md).
 Machine Learning API Yardım bir tahmin Web hizmeti hakkındaki ayrıntıları içerir.
 
 1. Web hizmeti ile çalıştığınız tıklayın.
 2. API Yardım sayfasında görüntülemek istediğiniz uç noktaya tıklayın.
-3. Üst menüsünde **Tüket**.
-4. Tıklayın **API Yardım sayfası** istek-yanıt ya da toplu iş yürütme bitiş noktaları altında.
+3. Üstteki menüde **tüketme**' ye tıklayın.
+4. Istek-yanıt veya toplu yürütme uç noktaları altında **API Yardım sayfası** ' na tıklayın.
 
-**Machine Learning API görünümüne yeni Web hizmeti için Yardım**
+**Yeni bir Web hizmeti için Machine Learning API yardımını görüntülemek için**
 
-İçinde [Azure Machine Learning Web Hizmetleri portalını](https://services.azureml.net/):
+[Azure Machine Learning Web Hizmetleri portalında](https://services.azureml.net/):
 
-1. Tıklayın **WEB Hizmetleri** en üstteki menüde.
+1. Üst menüdeki **Web Hizmetleri** ' ne tıklayın.
 2. Anahtar almak istediğiniz Web hizmeti tıklayın.
 
 Istek-yanıt ve toplu yürütme Hizmetleri için URI 'Leri ve, R ve Python 'daki C#örnek kodu almak Için **Web hizmetini kullan** ' a tıklayın.
 
-Tıklayın **Swagger API'si** Swagger almak için sağlanan bir URI'leri API çağrısı için Belge tabanlı.
+Sağlanan URI 'lerden çağrılan API 'Ler için Swagger tabanlı belgeler almak üzere **Swagger API** ' ye tıklayın.
 
 ### <a name="c-sample"></a>C# örneği
-Bir Machine Learning Web hizmetine bağlanmak için bir **HttpClient** ScoreData geçirme. ScoreData bir FeatureVector ScoreData temsil eden bir n-boyutlu vektör sayısal özelliklerini içerir. Machine Learning hizmeti için bir API anahtarı ile kimlik doğrulaması.
+Bir Machine Learning Web hizmetine bağlanmak için, bir **HttpClient** kullanarak ScoreData kullanın. ScoreData bir FeatureVector ScoreData temsil eden bir n-boyutlu vektör sayısal özelliklerini içerir. Machine Learning hizmeti için bir API anahtarı ile kimlik doğrulaması.
 
-Machine Learning Web hizmetine bağlanmak için **System.NET.http.Formatting** NuGet paketi yüklü olmalıdır.
+Bir Machine Learning Web hizmetine bağlanmak için **Microsoft. Aspnet. WebApi. Client** NuGet paketinin yüklü olması gerekir.
 
-**Visual Studio'da System.NET.http.Formatting NuGet yükleyin**
+**Visual Studio 'da Microsoft. AspNet. WebApi. Client NuGet 'i yükler**
 
 1. UCI indirme kümesinden yayımlama: yetişkin 2 sınıf dataset Web hizmeti.
 2. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**’na tıklayın.
-3. Seçin **Install-Package System.NET.http.Formatting**.
+3. **Install-Package Microsoft. Aspnet. WebApi. Client**öğesini seçin.
 
-**Kod örneği çalıştırmak için**
+**Kod örneğini çalıştırmak için**
 
 1. Yayımlama "Örnek 1: veri kümesi UCI ' indirin: yetişkin 2 sınıf dataset" deneme, Machine Learning örnek koleksiyonun parçası.
 2. ApiKey bir Web hizmetinden anahtarla atayın. Yukarıdaki **Yetkilendirme anahtarını öğrenin** bölümüne bakın.
 3. İstek URI'si ile serviceUri atayın.
 
-**İşte tam bir istek aşağıdaki gibi görünür.**
+**Bunun için bir bütün istek şöyle görünecektir.**
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -194,15 +194,15 @@ namespace CallRequestResponseService
 ```
 
 ### <a name="python-sample"></a>Python örneği
-Bir Machine Learning Web hizmetine bağlanmak için kullanmak **urllib2** kitaplığı için Python 2.X ve **urllib.request** kitaplığı için Python 3.X. Bir FeatureVector ScoreData temsil eden bir n-boyutlu vektör sayısal özellikleri içeren ScoreData geçer. Machine Learning hizmeti için bir API anahtarı ile kimlik doğrulaması.
+Bir Machine Learning Web hizmetine bağlanmak için Python 2. X için **urllib2** kitaplığını ve Python 3. x için **urllib. Request** kitaplığını kullanın. Bir FeatureVector ScoreData temsil eden bir n-boyutlu vektör sayısal özellikleri içeren ScoreData geçer. Machine Learning hizmeti için bir API anahtarı ile kimlik doğrulaması.
 
-**Kod örneği çalıştırmak için**
+**Kod örneğini çalıştırmak için**
 
 1. Dağıtma "Örnek 1: veri kümesi UCI ' indirin: yetişkin 2 sınıf dataset" deneme, Machine Learning örnek koleksiyonun parçası.
 2. ApiKey bir Web hizmetinden anahtarla atayın. Bu makalenin başındaki **bir yetkilendirme anahtarı al** bölümüne bakın.
 3. İstek URI'si ile serviceUri atayın.
 
-**İşte tam bir istek aşağıdaki gibi görünür.**
+**Bunun için bir bütün istek şöyle görünecektir.**
 ```python
 import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
@@ -248,9 +248,9 @@ except urllib2.HTTPError, error:
 
 ### <a name="r-sample"></a>Örnek R
 
-Machine Learning Web hizmetine bağlanmak için **RCurl** ve **rjson** döndürülen JSON yanıtı istekte bulunmak ve kitaplıkları. Bir FeatureVector ScoreData temsil eden bir n-boyutlu vektör sayısal özellikleri içeren ScoreData geçer. Machine Learning hizmeti için bir API anahtarı ile kimlik doğrulaması.
+Bir Machine Learning Web hizmetine bağlanmak için, isteği yapmak ve döndürülen JSON yanıtını işlemek üzere **Rkıvrık** ve **rjson** kitaplıklarını kullanın. Bir FeatureVector ScoreData temsil eden bir n-boyutlu vektör sayısal özellikleri içeren ScoreData geçer. Machine Learning hizmeti için bir API anahtarı ile kimlik doğrulaması.
 
-**İşte tam bir istek aşağıdaki gibi görünür.**
+**Bunun için bir bütün istek şöyle görünecektir.**
 ```r
 library("RCurl")
 library("rjson")
@@ -304,9 +304,9 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>JavaScript örneği
 
-Machine Learning Web hizmetine bağlanmak için **isteği** npm paketini projenize. Ayrıca kullanacağınız `JSON` Biçimlendir ve istemcinin sonucu ayrıştırması için nesne. Kullanarak yükleme `npm install request --save`, veya ekleme `"request": "*"` Package.json'ınızdaki altında için `dependencies` çalıştırıp `npm install`.
+Bir Machine Learning Web hizmetine bağlanmak için, projenizdeki **istek** NPM paketini kullanın. Ayrıca, girişinizi biçimlendirmek ve sonucu ayrıştırmak için `JSON` nesnesini de kullanacaksınız. `npm install request --save`kullanarak yüklemeyi yapın veya `dependencies` altında Package. json ' a `"request": "*"` ekleyin ve `npm install`çalıştırın.
 
-**İşte tam bir istek aşağıdaki gibi görünür.**
+**Bunun için bir bütün istek şöyle görünecektir.**
 ```js
 let req = require("request");
 

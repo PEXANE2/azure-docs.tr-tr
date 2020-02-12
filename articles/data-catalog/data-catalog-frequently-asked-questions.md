@@ -37,7 +37,7 @@ Veri Kataloğu Hizmetleri şu anda aşağıdaki veri merkezlerinde kullanılabil
 * Doğu ABD
 * Batı Avrupa
 * Kuzey Avrupa
-* Avustralya Doğu
+* Doğu Avustralya
 * Güneydoğu Asya
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>Veri varlıklarının sayısı sınırları nelerdir?

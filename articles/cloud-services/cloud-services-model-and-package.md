@@ -2,17 +2,17 @@
 title: Bulut hizmeti modeli ve paketi nedir? | Microsoft Docs
 description: Azure 'da bulut hizmeti modelini (. csdef,. cscfg) ve paketi (. cspkg) açıklar
 services: cloud-services
-author: tgore03
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360710"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148318"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Bulut hizmeti modeli nedir ve nasıl paketlarım?
 Üç bileşenden bir bulut hizmeti, hizmet tanımı *(. csdef)* , hizmet yapılandırma *(. cscfg)* ve bir hizmet paketi *(. cspkg)* oluşturulur. Hem **ServiceDefinition. csdef** hem de **ServiceConfig. cscfg** dosyaları XML tabanlıdır ve bulut hizmetinin yapısını ve nasıl yapılandırıldığını açıklamaktadır; toplu olarak model olarak adlandırılır. **Servicepackage. cspkg** , **ServiceDefinition. csdef** öğesinden ve diğer şeyler arasında oluşturulan ve tüm gerekli ikili tabanlı bağımlılıkları içeren bir zip dosyasıdır. Azure, hem **Servicepackage. cspkg** hem de **ServiceConfig. cscfg**öğesinden bir bulut hizmeti oluşturur.
@@ -106,7 +106,7 @@ Yerel depolama kaynakları için tanımları içerir. Yerel depolama kaynağı, 
 **İşlemlerinin**  
 İçeri aktarılan modüller için tanımları içerir. Önceki kod örneğinde, Uzak Masaüstü Bağlantısı ve Azure Connect için modüller gösterilmektedir.
 
-**Startup**  
+**Başlangıç**  
 Rol başlatıldığında çalıştırılan görevleri içerir. Görevler bir. cmd veya yürütülebilir dosya içinde tanımlanır.
 
 <a name="cscfg"></a>
@@ -136,7 +136,7 @@ Hizmet yapılandırma dosyası uygulamayla paketlenemez, ancak Azure 'a ayrı bi
 
 Burada kullanılan XML şemasını daha iyi anlamak için [hizmet yapılandırma şemasına](/previous-versions/azure/reference/ee758710(v=azure.100)) başvurabilirsiniz, ancak aşağıdaki öğelerin hızlı bir açıklaması aşağıda verilmiştir:
 
-**Örnekler**  
+**Larında**  
 Rol için çalışan örneklerin sayısını yapılandırır. Bulut hizmetinizin yükseltmeler sırasında kullanılamaz duruma gelmesine engel olmak için, Web 'e yönelik rollerinizin birden fazla örneğini dağıtmanız önerilir. Birden fazla örnek dağıtarak, bir hizmet için iki veya daha fazla rol örneği dağıtıldığında, Internet 'e yönelik rollere yönelik% 99,95 dış bağlantıyı garanti eden [Azure işlem hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/)yönergelerine bağlı olursunuz.
 
 **ConfigurationSettings**  
@@ -216,6 +216,9 @@ Hizmeti çevrimdışı yapmadan, Azure 'da çalışırken bulut hizmetinizin yap
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> Dağıtılabilecek maksimum paket boyutu 600 MB 'tır
+
 Azure 'da bir uygulamayı bulut hizmeti olarak dağıtmak için, önce uygulamayı uygun biçimde paketetmeniz gerekir. Paket dosyasını Visual Studio 'ya alternatif olarak oluşturmak için **CSPack** komut satırı aracını ( [Azure SDK](https://azure.microsoft.com/downloads/)ile birlikte yüklenir) kullanabilirsiniz.
 
 **CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket `[ServiceDefinitionFileName].cspkg`olarak adlandırılır, ancak **CSPack**seçeneğini `/out` kullanarak farklı bir ad belirtebilirsiniz.

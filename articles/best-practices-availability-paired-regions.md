@@ -29,27 +29,27 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | Coğrafya | Eşleştirilmiş bölgeler |  |
 |:--- |:--- |:--- |
 | Asya |Doğu Asya |Güneydoğu Asya |
-| Avustralya |Avustralya Doğu |Avustralya Güneydoğu |
-| Avustralya |Avustralya Orta |Avustralya Orta 2 |
-| Brezilya |Brezilya Güney |Orta Güney ABD |
-| Kanada |Kanada Orta |Kanada Doğu |
+| Avustralya |Doğu Avustralya |Güneydoğu Avustralya |
+| Avustralya |Orta Avustralya |Orta Avustralya 2 |
+| Brezilya |Güney Brezilya |Orta Güney ABD |
+| Kanada |Orta Kanada |Doğu Kanada |
 | Çin |Çin Kuzey |Çin Doğu|
 | Çin |Çin Kuzey 2 |Çin Doğu 2|
 | Avrupa |Kuzey Avrupa (İrlanda) |Batı Avrupa (Hollanda) |
-| Fransa |Fransa Orta|Fransa Güney|
-| Almanya |Almanya Orta |Almanya Kuzeydoğu |
+| Fransa |Orta Fransa|Güney Fransa|
+| Almanya |Orta Almanya |Kuzeydoğu Almanya |
 | Hindistan |Orta Hindistan |Güney Hindistan |
 | Hindistan |Batı Hindistan |Güney Hindistan |
-| Japonya |Japonya Doğu |Japonya Batı |
-| Güney Kore |Kore Orta |Kore Güney |
+| Japonya |Doğu Japonya |Batı Japonya |
+| Güney Kore |Güney Kore - Orta |Güney Kore - Güney |
 | Kuzey Amerika |Doğu ABD |Batı ABD |
 | Kuzey Amerika |Doğu ABD 2 |Orta ABD |
 | Kuzey Amerika |Orta Kuzey ABD |Orta Güney ABD |
 | Kuzey Amerika |Batı ABD 2 |Orta Batı ABD 
 | Güney Afrika | Güney Afrika Kuzey | Güney Afrika Batı
-| UK |UK Batı |UK Güney |
+| UK |Batı Birleşik Krallık |Güney Birleşik Krallık |
 | Birleşik Arap Emirlikleri | BAE Kuzey | BAE Orta
-| ABD Savunma Bakanlığı |US DoD Doğu |US DoD Orta |
+| ABD Savunma Bakanlığı |Doğu US DoD |Orta US DoD |
 | ABD Devleti |US Gov Arizona |US Gov Texas |
 | ABD Devleti |US Gov Iowa |US Gov Virginia |
 | ABD Devleti |US Gov Virginia |US Gov Texas |

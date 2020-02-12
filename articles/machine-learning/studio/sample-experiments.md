@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbca6514328897afe0c0eda5ce7d5a6d2ff92a7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427502"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152848"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi çalışma örneklerinden Azure Machine Learning Studio (klasik) denemeleri oluşturma
 
@@ -23,7 +23,7 @@ Sıfırdan makine öğrenimi denemeleri oluşturmayı öğrenmek yerine [Azure A
 
 Galeri, Microsoft Azure Machine Learning Studio (klasik) ekibinin yanı sıra Machine Learning topluluğu tarafından paylaşılan örneklere sahip örnek denemeleri sahiptir. Ayrıca, denemeler hakkında soru sorabilir veya yorum yazabilirsiniz.
 
-Galeriyi nasıl kullanacağınızı görmek için [Yeni Başlayanlar için Veri Bilimi](data-science-for-beginners-the-5-questions-data-science-answers.md) serisinden [Veri bilimi yapmak için başka insanların çalışmalarını kopyalama](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) başlıklı 3 dakikalık videoyu izleyin.
+Galeriyi nasıl kullanacağınızı görmek için [Yeni Başlayanlar için Veri Bilimi](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) serisinden [Veri bilimi yapmak için başka insanların çalışmalarını kopyalama](data-science-for-beginners-the-5-questions-data-science-answers.md) başlıklı 3 dakikalık videoyu izleyin.
 
 
 

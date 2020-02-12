@@ -62,8 +62,8 @@ Aşağıdaki tabloda, Almanya bulutu için döndürülen konumlar gösterilmekte
 
 |Konum | Görünen Ad |
 |----|----|
-| `germanycentral` | Almanya Orta|
-| `germanynortheast` | Almanya Kuzeydoğu |
+| `germanycentral` | Orta Almanya|
+| `germanynortheast` | Kuzeydoğu Almanya |
 
 
 ## <a name="endpoint-suffix"></a>Uç nokta soneki

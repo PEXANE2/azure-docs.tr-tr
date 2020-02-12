@@ -199,30 +199,30 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure genel| Orta Güney ABD (genel)| 104.214.19.224|
 | Azure genel| Orta Kuzey ABD (genel)| 52.162.110.80|
 | Azure genel| Orta Batı ABD| 52.253.135.58|
-| Azure genel| Kore Orta| 40.82.157.167|
-| Azure genel| UK Batı| 51.137.136.0|
-| Azure genel| Japonya Batı| 40.81.185.8|
+| Azure genel| Güney Kore - Orta| 40.82.157.167|
+| Azure genel| Batı Birleşik Krallık| 51.137.136.0|
+| Azure genel| Batı Japonya| 40.81.185.8|
 | Azure genel| Orta Kuzey ABD| 40.81.47.216|
-| Azure genel| UK Güney| 51.145.56.125|
+| Azure genel| Güney Birleşik Krallık| 51.145.56.125|
 | Azure genel| Batı Hindistan| 40.81.89.24|
 | Azure genel| Doğu ABD| 52.224.186.99|
 | Azure genel| Batı Avrupa| 51.145.179.78|
-| Azure genel| Japonya Doğu| 52.140.238.179|
-| Azure genel| Fransa Orta| 40.66.60.111|
-| Azure genel| Kanada Doğu| 52.139.80.117|
+| Azure genel| Doğu Japonya| 52.140.238.179|
+| Azure genel| Orta Fransa| 40.66.60.111|
+| Azure genel| Doğu Kanada| 52.139.80.117|
 | Azure genel| BAE Kuzey| 20.46.144.85|
-| Azure genel| Brezilya Güney| 191.233.24.179|
+| Azure genel| Güney Brezilya| 191.233.24.179|
 | Azure genel| Güneydoğu Asya| 40.90.185.46|
 | Azure genel| Güney Afrika Kuzey| 102.133.130.197|
-| Azure genel| Kanada Orta| 52.139.20.34|
-| Azure genel| Kore Güney| 40.80.232.185|
+| Azure genel| Orta Kanada| 52.139.20.34|
+| Azure genel| Güney Kore - Güney| 40.80.232.185|
 | Azure genel| Orta Hindistan| 13.71.49.1|
 | Azure genel| Batı ABD| 13.64.39.16|
-| Azure genel| Avustralya Güneydoğu| 20.40.160.107|
-| Azure genel| Avustralya Orta| 20.37.52.67|
+| Azure genel| Güneydoğu Avustralya| 20.40.160.107|
+| Azure genel| Orta Avustralya| 20.37.52.67|
 | Azure genel| Güney Hindistan| 20.44.33.246|
 | Azure genel| Orta ABD| 13.86.102.66|
-| Azure genel| Avustralya Doğu| 20.40.125.155|
+| Azure genel| Doğu Avustralya| 20.40.125.155|
 | Azure genel| Batı ABD 2| 51.143.127.203|
 | Azure genel| EUAP Doğu ABD 2| 52.253.229.253|
 | Azure genel| EUAP Orta ABD| 52.253.159.160|
@@ -230,9 +230,9 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure genel| Doğu ABD 2| 20.44.72.3|
 | Azure genel| Kuzey Avrupa| 52.142.95.35|
 | Azure genel| Doğu Asya| 52.139.152.27|
-| Azure genel| Fransa Güney| 20.39.80.2|
+| Azure genel| Güney Fransa| 20.39.80.2|
 | Azure genel| İsviçre Batı| 51.107.96.8|
-| Azure genel| Avustralya Orta 2| 20.39.99.81|
+| Azure genel| Orta Avustralya 2| 20.39.99.81|
 | Azure genel| BAE Orta| 20.37.81.41|
 | Azure genel| İsviçre Kuzey| 51.107.0.91|
 | Azure genel| Güney Afrika Batı| 102.133.0.79|

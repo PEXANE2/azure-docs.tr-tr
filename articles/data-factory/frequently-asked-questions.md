@@ -204,17 +204,17 @@ Kümeler hiçbir şekilde paylaşılmaz. Üretim çalıştırmalarından her bir
 
 Wrangling veri akışı şu anda şu bölgelerde oluşturulan veri fabrikaları 'nda destekleniyor:
 
-* Avustralya Doğu
-* Kanada Orta
+* Doğu Avustralya
+* Orta Kanada
 * Orta Hindistan
 * Orta ABD
 * Doğu ABD
 * Doğu ABD 2
-* Japonya Doğu
+* Doğu Japonya
 * Kuzey Avrupa
 * Güneydoğu Asya
 * Orta Güney ABD
-* UK Güney
+* Güney Birleşik Krallık
 * Orta Batı ABD
 * Batı Avrupa
 * Batı ABD

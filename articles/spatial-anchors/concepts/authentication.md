@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270594"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152610"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -96,6 +96,13 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için önerilen y
 
 1. Azure portal yapılandırma
     1.  Uygulamanızı Azure AD 'ye **yerel uygulama**olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz ve uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
+        1.  **API izinleri** sekmesine geçiş yap
+        2.  **Izin Ekle** seçeneğini belirleyin
+            1.  **Kuruluşumun kullandığı API 'ler** altında **karma gerçeklik kaynak sağlayıcısını** seçin
+            2.  **Temsilci izinleri** seçin
+            3.  **Mixedreality** altında **mixedreality. SignIn** kutusunu işaretleyin
+            4.  **Izin Ekle** seçeneğini belirleyin
+        3.  **Yönetici Izni ver** ' i seçin
     2.  Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
         1.  Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
         2.  **Erişim denetimi (IAM)** sekmesine geçiş yap

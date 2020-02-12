@@ -9,7 +9,7 @@ ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
 ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/16/2020
 ms.locfileid: "76046091"
@@ -251,22 +251,22 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 | Bölge | Veri merkezi konumu |
 |--------|---------------------|
-| Avustralya Doğu | Yeni Güney Galler |
-| Avustralya Güneydoğu | Victoria |
-| Brezilya Güney | Sao Paulo Eyaleti |
-| Kanada Orta | Toronto |
-| Kanada Doğu | Quebec City |
+| Doğu Avustralya | Yeni Güney Galler |
+| Güneydoğu Avustralya | Victoria |
+| Güney Brezilya | Sao Paulo Eyaleti |
+| Orta Kanada | Toronto |
+| Doğu Kanada | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
 | Doğu Asya | Hong Kong SAR |
 | Doğu ABD | Virginia |
 | Doğu ABD 2 | Virginia |
-| Fransa Orta | Paris |
+| Orta Fransa | Paris |
 | Fransa Güney * | Marseille |
-| Kore Orta | Seoul |
-| Kore Güney | Busan |
-| Japonya Doğu | Tokyo, Saitama |
-| Japonya Batı | Osaka |
+| Güney Kore - Orta | Seoul |
+| Güney Kore - Güney | Busan |
+| Doğu Japonya | Tokyo, Saitama |
+| Batı Japonya | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
 | Güney Afrika Kuzey | Johannesburg |
@@ -274,7 +274,7 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Orta Güney ABD | Texas |
 | Güney Hindistan | Chennai |
 | Güneydoğu Asya | Singapur |
-| UK Güney | Londra |
+| Güney Birleşik Krallık | Londra |
 | UK, Batı | Cardiff |
 | US Gov Arizona | Arizona |
 | US Gov Teksas | Texas |
@@ -300,22 +300,22 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 
 | Birincil bölge      | Eşleştirilmiş bölge      |
 |---------------------|--------------------|
-| Avustralya Doğu      | Avustralya Güneydoğu|
-| Avustralya Güneydoğu | Avustralya Doğu     |
-| Brezilya Güney        | Orta Güney ABD   |
-| Kanada Orta      | Kanada Doğu        |
-| Kanada Doğu         | Kanada Orta     |
+| Doğu Avustralya      | Güneydoğu Avustralya|
+| Güneydoğu Avustralya | Doğu Avustralya     |
+| Güney Brezilya        | Orta Güney ABD   |
+| Orta Kanada      | Doğu Kanada        |
+| Doğu Kanada         | Orta Kanada     |
 | Orta Hindistan       | Güney Hindistan        |
 | Orta ABD          | Doğu ABD 2          |
 | Doğu Asya           | Güneydoğu Asya     |
 | Doğu ABD             | Batı ABD            |
 | Doğu ABD 2           | Orta ABD         |
-| Fransa Orta      | Fransa Güney       |
-| Fransa Güney        | Fransa Orta     |
-| Japonya Doğu          | Japonya Batı         |
-| Japonya Batı          | Japonya Doğu         |
-| Kore Orta       | Kore Güney        |
-| Kore Güney         | Kore Orta      |
+| Orta Fransa      | Güney Fransa       |
+| Güney Fransa        | Orta Fransa     |
+| Doğu Japonya          | Batı Japonya         |
+| Batı Japonya          | Doğu Japonya         |
+| Güney Kore - Orta       | Güney Kore - Güney        |
+| Güney Kore - Güney         | Güney Kore - Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |
 | Orta Kuzey ABD    | Orta Güney ABD   |
 | Güney Afrika Kuzey  | Güney Afrika Batı  |
@@ -323,8 +323,8 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Orta Güney ABD    | Orta Kuzey ABD   |
 | Güney Hindistan         | Orta Hindistan      |
 | Güneydoğu Asya      | Doğu Asya          |
-| UK Güney            | UK, Batı            |
-| UK, Batı             | UK Güney           |
+| Güney Birleşik Krallık            | UK, Batı            |
+| UK, Batı             | Güney Birleşik Krallık           |
 | US Gov Arizona      | US Gov Teksas       |
 | US Gov Iowa         | US Gov Virginia    |
 | US Gov Virginia      | US Gov Teksas       |

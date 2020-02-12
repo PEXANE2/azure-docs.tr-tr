@@ -107,27 +107,27 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 | Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
-| Genel |Avustralya Doğu | https:\//kailani-aue.one.microsoft.com | Avustralya Güneydoğu | https:\//tm-kailani-aue.one.microsoft.com |
-| Genel |Avustralya Güneydoğu | https:\//kailani-aus.one.microsoft.com | Avustralya Doğu | https:\//tm-kailani-aus.one.microsoft.com |
-| Genel | Brezilya Güney | https:\//brazilsouth01.afs.azure.net | Orta Güney ABD | https:\//tm-brazilsouth01.afs.azure.net |
-| Genel | Kanada Orta | https:\//kailani-cac.one.microsoft.com | Kanada Doğu | https:\//tm-kailani-cac.one.microsoft.com |
-| Genel | Kanada Doğu | https:\//kailani-cae.one.microsoft.com | Kanada Orta | https:\//tm-kailani.cae.one.microsoft.com |
+| Genel |Doğu Avustralya | https:\//kailani-aue.one.microsoft.com | Güneydoğu Avustralya | https:\//tm-kailani-aue.one.microsoft.com |
+| Genel |Güneydoğu Avustralya | https:\//kailani-aus.one.microsoft.com | Doğu Avustralya | https:\//tm-kailani-aus.one.microsoft.com |
+| Genel | Güney Brezilya | https:\//brazilsouth01.afs.azure.net | Orta Güney ABD | https:\//tm-brazilsouth01.afs.azure.net |
+| Genel | Orta Kanada | https:\//kailani-cac.one.microsoft.com | Doğu Kanada | https:\//tm-kailani-cac.one.microsoft.com |
+| Genel | Doğu Kanada | https:\//kailani-cae.one.microsoft.com | Orta Kanada | https:\//tm-kailani.cae.one.microsoft.com |
 | Genel | Orta Hindistan | https:\//kailani-cin.one.microsoft.com | Güney Hindistan | https:\//tm-kailani-cin.one.microsoft.com |
 | Genel | Orta ABD | https:\//kailani-cus.one.microsoft.com | Doğu ABD 2 | https:\//tm-kailani-cus.one.microsoft.com |
 | Genel | Doğu Asya | https:\//kailani11.one.microsoft.com | Güneydoğu Asya | https:\//tm-kailani11.one.microsoft.com |
 | Genel | Doğu ABD | https:\//kailani1.one.microsoft.com | Batı ABD | https:\//tm-kailani1.one.microsoft.com |
 | Genel | Doğu ABD 2 | https:\//kailani-ess.one.microsoft.com | Orta ABD | https:\//tm-kailani-ess.one.microsoft.com |
-| Genel | Japonya Doğu | https:\//japaneast01.afs.azure.net | Japonya Batı | https:\//tm-japaneast01.afs.azure.net |
-| Genel | Japonya Batı | https:\//japanwest01.afs.azure.net | Japonya Doğu | https:\//tm-japanwest01.afs.azure.net |
-| Genel | Kore Orta | https:\//koreacentral01.afs.azure.net/ | Kore Güney | https:\//tm-koreacentral01.afs.azure.net/ |
-| Genel | Kore Güney | https:\//koreasouth01.afs.azure.net/ | Kore Orta | https:\//tm-koreasouth01.afs.azure.net/ |
+| Genel | Doğu Japonya | https:\//japaneast01.afs.azure.net | Batı Japonya | https:\//tm-japaneast01.afs.azure.net |
+| Genel | Batı Japonya | https:\//japanwest01.afs.azure.net | Doğu Japonya | https:\//tm-japanwest01.afs.azure.net |
+| Genel | Güney Kore - Orta | https:\//koreacentral01.afs.azure.net/ | Güney Kore - Güney | https:\//tm-koreacentral01.afs.azure.net/ |
+| Genel | Güney Kore - Güney | https:\//koreasouth01.afs.azure.net/ | Güney Kore - Orta | https:\//tm-koreasouth01.afs.azure.net/ |
 | Genel | Orta Kuzey ABD | https:\//northcentralus01.afs.azure.net | Orta Güney ABD | https:\//tm-northcentralus01.afs.azure.net |
 | Genel | Kuzey Avrupa | https:\//kailani7.one.microsoft.com | Batı Avrupa | https:\//tm-kailani7.one.microsoft.com |
 | Genel | Orta Güney ABD | https:\//southcentralus01.afs.azure.net | Orta Kuzey ABD | https:\//tm-southcentralus01.afs.azure.net |
 | Genel | Güney Hindistan | https:\//kailani-sin.one.microsoft.com | Orta Hindistan | https:\//tm-kailani-sin.one.microsoft.com |
 | Genel | Güneydoğu Asya | https:\//kailani10.one.microsoft.com | Doğu Asya | https:\//tm-kailani10.one.microsoft.com |
-| Genel | UK Güney | https:\//kailani-uks.one.microsoft.com | UK, Batı | https:\//tm-kailani-uks.one.microsoft.com |
-| Genel | UK, Batı | https:\//kailani-ukw.one.microsoft.com | UK Güney | https:\//tm-kailani-ukw.one.microsoft.com |
+| Genel | Güney Birleşik Krallık | https:\//kailani-uks.one.microsoft.com | UK, Batı | https:\//tm-kailani-uks.one.microsoft.com |
+| Genel | UK, Batı | https:\//kailani-ukw.one.microsoft.com | Güney Birleşik Krallık | https:\//tm-kailani-ukw.one.microsoft.com |
 | Genel | Orta Batı ABD | https:\//westcentralus01.afs.azure.net | Batı ABD 2 | https:\//tm-westcentralus01.afs.azure.net |
 | Genel | Batı Avrupa | https:\//kailani6.one.microsoft.com | Kuzey Avrupa | https:\//tm-kailani6.one.microsoft.com |
 | Genel | Batı ABD | https:\//kailani.one.microsoft.com | Doğu ABD | https:\//tm-kailani.one.microsoft.com |

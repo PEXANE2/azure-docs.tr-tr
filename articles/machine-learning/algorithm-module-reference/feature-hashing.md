@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312217"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152270"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
-Bu makalede Azure Machine Learning tasarımcısında bulunan bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında (Önizleme) bulunan bir modül açıklanmaktadır.
 
 Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
@@ -30,7 +30,7 @@ Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel a
 
 Örneğin, bunlar gibi bir basit tümceler ve ardından bir yaklaşım puanı alın. Bir model oluşturmak için bu metni kullanmak istediğinizi varsayın.
 
-|Kullanıcı metni|Duygu|
+|Kullanıcı metni|Yaklaşım|
 |--------------|---------------|
 |Bu kitabı sevdim|3|
 |Bu kitabı aldım|1|
@@ -50,9 +50,9 @@ N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigra
 
 |Terim (tek gram)|Frequency|
 |------------|---------------|
-|Kitap|3|
+|Kitabın|3|
 |I|3|
-|kitaplar|1|
+|kitap|1|
 |bulunamadı|1|
 
 Sözlük derlendikten sonra, özellik karma modülü sözlük koşullarını karma değerlerine dönüştürür. Daha sonra her durumda bir özelliğin kullanılıp kullanılmadığını hesaplar. Her metin verisi satırı için, modül bir sütun kümesi, her karma özellik için bir sütun verir.
@@ -121,7 +121,7 @@ Aşağıdaki en iyi yöntemler, özellik karma modülünden en iyi şekilde yara
     
 * Sonuçları basitleştirmek ve doğruluğu artırmak için bu metin ön işleme seçeneklerini kullanmayı göz önünde bulundurun:
 
-    * Sözcük bölme
+    * Sözcük bölünmesi
     * Word kaldırma durduruluyor
     * Örnek olay normalleştirme
     * Noktalama işaretleri ve özel karakterlerin kaldırılması

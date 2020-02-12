@@ -56,7 +56,7 @@ Azure HPC önbelleği şu Azure bölgelerinde kullanılabilir:
 * Güneydoğu Asya
 * Sidney
 * Batı ABD 2
-* Kore Orta
+* Güney Kore - Orta
 
 En son kullanılabilirlik bilgileri için [Azure HPC önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) kontrol edin.
 

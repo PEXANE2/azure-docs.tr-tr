@@ -56,23 +56,23 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
-| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
-| &nbsp; | Avustralya Orta | HDInsight. AustraliaCentral |
+| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
+| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
+| &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
 | Birleşik Devletler | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
 | &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
 | &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
-| Kanada | Kanada Doğu | HDInsight. Canadadoğu |
-| Brezilya | Brezilya Güney | HDInsight. BrazilSouth |
-| Güney Kore | Kore Orta | HDInsight. KoreaCentral |
-| &nbsp; | Kore Güney | HDInsight. Koreagüney |
+| Kanada | Doğu Kanada | HDInsight. Canadadoğu |
+| Brezilya | Güney Brezilya | HDInsight. BrazilSouth |
+| Güney Kore | Güney Kore - Orta | HDInsight. KoreaCentral |
+| &nbsp; | Güney Kore - Güney | HDInsight. Koreagüney |
 | Hindistan | Orta Hindistan | HDInsight. merkezde Hindistan |
 | &nbsp; | Güney Hindistan | HDInsight. Güneydoğu |
-| Japonya | Japonya Batı | HDInsight. JapanWest |
-| Fransa | Fransa Orta| HDInsight. Francecna al |
-| UK | UK Güney | HDInsight. UKGüney |
+| Japonya | Batı Japonya | HDInsight. JapanWest |
+| Fransa | Orta Fransa| HDInsight. Francecna al |
+| UK | Güney Birleşik Krallık | HDInsight. UKGüney |
 | Azure Devlet Kurumları | USDoD orta   | HDInsight. Usdodorta |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD Doğu | HDInsight. USDoDEast |
@@ -101,12 +101,12 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen
 | &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
 | &nbsp; | Doğu ABD | HDInsight. EastUS |
 | &nbsp; | Batı ABD | HDInsight. WestUS |
-| Japonya | Japonya Doğu | HDInsight. JapanEast |
+| Japonya | Doğu Japonya | HDInsight. JapanEast |
 | Avrupa | Kuzey Avrupa | HDInsight. NorthEurope |
 | &nbsp; | Batı Avrupa| HDInsight. WestEurope |
 | Asya | Doğu Asya | HDInsight. Eastasıya |
 | &nbsp; | Güneydoğu Asya | HDInsight. Güneydoğu |
-| Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
+| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
 
 #### <a name="group-2"></a>Grup 2
 

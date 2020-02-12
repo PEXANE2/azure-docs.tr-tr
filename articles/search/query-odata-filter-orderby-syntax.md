@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786152"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153885"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 'da `$filter`, `$orderby`ve `$select` için OData diline genel bakış Bilişsel Arama
 
@@ -93,7 +93,7 @@ Alan yolları [Azure BILIŞSEL arama REST API](https://docs.microsoft.com/rest/a
 
 | API | Parametre adı | Kısıtlamalar |
 | --- | --- | --- |
-| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | None |
+| Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Hiçbiri |
 | Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Yalnızca **aranabilir** alanlara başvurabilir |
 | Dizin [Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştir](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Yalnızca **filtrelenebilir** alanlara başvurabilir |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `queryType` ne zaman `search` `full` | Yalnızca **aranabilir** alanlara başvurabilir |
@@ -105,7 +105,7 @@ Alan yolları [Azure BILIŞSEL arama REST API](https://docs.microsoft.com/rest/a
 | [Arama](https://docs.microsoft.com/rest/api/searchservice/search-documents) ve [önerme](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Yalnızca **sıralanabilir** alanlara başvurabilir |
 | [Arama](https://docs.microsoft.com/rest/api/searchservice/search-documents), [önerme](https://docs.microsoft.com/rest/api/searchservice/suggestions)ve [arama](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Yalnızca **alınabilir** alanlara başvurabilir |
 
-## <a name="constants"></a>Lerde
+## <a name="constants"></a>{1&gt;Sabitler&lt;1}
 
 OData içindeki sabitler, belirli bir [varlık veri modeli](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) türünün sabit değerlerdir. Azure Bilişsel Arama desteklenen türlerin listesi için bkz. [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) . Koleksiyon türü sabitleri desteklenmez.
 
@@ -121,6 +121,17 @@ Aşağıdaki tabloda, Azure Bilişsel Arama tarafından desteklenen her bir veri
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>Dize sabitlerinde özel karakterleri kaçış
+
+OData içindeki dize sabitleri tek tırnak ile sınırlandırılmıştır. Tek tırnak içerebilen bir dize sabiti ile bir sorgu oluşturmanız gerekiyorsa, gömülü tırnak işaretlerini bu bir katına çıkabilir.
+
+Örneğin, "Gamze 'nin Car" gibi biçimlendirilmemiş kesme işareti içeren bir ifade, `'Alice''s car'`dize sabiti olarak OData 'de temsil edilir.
+
+> [!IMPORTANT]
+> Program aracılığıyla filtre oluştururken, Kullanıcı girişinden gelen dize sabitlerini kaçırmamak önemlidir. Bu, özellikle [güvenlik kırpması](search-security-trimming-for-azure-search.md)uygulamak için filtreler kullanılırken, [saldırıları ekleme](https://wikipedia.org/wiki/SQL_injection)olasılığını hafifletmeye yönelik olur.
+
+### <a name="constants-syntax"></a>Sabitler sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), yukarıdaki tabloda gösterilen sabitler için dilbilgisini tanımlar. Coğrafi uzamsal türler için dilbilgisi, [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevlerde](search-query-odata-geo-spatial-functions.md)bulunabilir.
 

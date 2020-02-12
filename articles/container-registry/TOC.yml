@@ -84,12 +84,14 @@
               items:
                 - name: Kimlik Doğrulamasına genel bakış
                   href: container-registry-authentication.md
-                - name: Hizmet sorumlusu kimlik doğrulaması
+                - name: Hizmet sorumlusuyla kimlik doğrulama
                   href: container-registry-auth-service-principal.md
-                - name: Yönetilen kimlik doğrulaması
+                - name: Yönetilen kimlikle kimlik doğrulaması
                   href: container-registry-authentication-managed-identity.md
                 - name: Azure Container Instances'dan kimliği doğrulama
                   href: container-registry-auth-aci.md
+                - name: Çekme gizli dizisiyle Kubernetes’ten kimlik doğrulama
+                  href: container-registry-auth-kubernetes.md
                 - name: Azure Kubernetes Hizmeti'nden (AKS) kimliği doğrulama
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: Rol tabanlı erişim denetimi

@@ -1,5 +1,6 @@
 ---
-title: JavaScript örnekleri-Azure Active Directory B2C | Microsoft Docs
+title: JavaScript örnekleri
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C'de JavaScript kullanma hakkında bilgi edinin.
 services: active-directory-b2c
 author: mmacy
@@ -7,39 +8,47 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1381ddb16697b1e892794604bbfafda815bd6182
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841940"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149091"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'yi kullanmak için JavaScript örnekleri
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Kendi JavaScript istemci tarafı kodunuzu Azure Active Directory B2C (Azure AD B2C) uygulamalarınıza ekleyebilirsiniz. Uygulamalarınız için JavaScript 'i etkinleştirmek üzere [özel ilkenize](custom-policy-overview.md)bir öğe eklemeniz, bir [sayfa düzeni](page-layout.md)seçmeniz ve isteklerinizin [b2clogin.com](b2clogin.md) kullanmanız gerekir. Bu makalede, betik yürütmeyi etkinleştirmek için özel ilkenizi nasıl değiştirebileceğiniz açıklanır.
+Kendi JavaScript istemci tarafı kodunuzu Azure Active Directory B2C (Azure AD B2C) uygulamalarınıza ekleyebilirsiniz.
+
+Uygulamalarınız için JavaScript 'ı etkinleştirmek üzere:
+
+* [Özel ilkenize](custom-policy-overview.md) bir öğe ekleyin
+* [Sayfa düzeni](page-layout.md) seçin
+* İsteklerinizi [b2clogin.com](b2clogin.md) kullanma
+
+Bu makalede, betik yürütmeyi etkinleştirmek için özel ilkenizi nasıl değiştirebileceğiniz açıklanır.
 
 > [!NOTE]
 > Kullanıcı akışları için JavaScript 'ı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory B2C JavaScript ve sayfa düzeni sürümleri](user-flow-javascript-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
 
-* Uygulamanızın Kullanıcı arabirimi öğeleri için [bir sayfa düzeni seçin](page-layout.md) .
+* Uygulamanızın Kullanıcı arabirimi öğeleri için bir [sayfa düzeni](contentdefinitions.md#select-a-page-layout) seçin.
 
-    JavaScript kullanmayı düşünüyorsanız, özel ilkenizde *Tüm* içerik tanımları için [bir sayfa düzeni sürümü tanımlamanız](page-layout.md#replace-datauri-values) gerekir.
+    JavaScript kullanmayı düşünüyorsanız, özel ilkenizde *Tüm* içerik tanımlarının sayfa `contract` sürümüyle sayfa [düzeni sürümü tanımlamanız](contentdefinitions.md#migrating-to-page-layout) gerekir.
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution öğe ekleyin
 
-Ekleyerek betik yürütmesini etkinleştirme **ScriptExecution** öğesine [RelyingParty](relyingparty.md) öğesi.
+**Scriptexecution** öğesini [RelyingParty](relyingparty.md) öğesine ekleyerek betik yürütmeyi etkinleştirirsiniz.
 
-1. Özel ilke dosyanızı açın. Örneğin, *SignUpOrSignin.xml*.
-2. Ekleme **ScriptExecution** öğesine **UserJourneyBehaviors** öğesinin **RelyingParty**:
+1. Özel ilke dosyanızı açın. Örneğin, *Signuporsignın. xml*.
+2. **Scriptexecution** öğesini **RelyingParty**öğesinin **userscripts newydavranışlar** öğesine ekleyin:
 
     ```XML
     <RelyingParty>
@@ -52,31 +61,13 @@ Ekleyerek betik yürütmesini etkinleştirme **ScriptExecution** öğesine [Rely
     ```
 3. Kaydedin ve dosyayı karşıya yükleyin.
 
-## <a name="guidelines-for-using-javascript"></a>JavaScript kullanma yönergeleri
-
-JavaScript kullanarak uygulamanızı arabiriminin'nı özelleştirdiğinizde, aşağıdaki yönergeleri izleyin:
-
-- Bir tıklama olayı bağlamayın `<a>` HTML öğeleri.
-- Azure AD B2C kod ya da yorumlarınız bağımlılık almaz.
-- Sipariş veya Azure AD B2C HTML öğeleri hiyerarşisini değiştirmeyin. UI öğelerin sırasını denetlemek için bir Azure AD B2C İlkesi'ni kullanın.
-- Bu konuları ile herhangi bir RESTful hizmeti çağırabilirsiniz:
-    - İstemci tarafı HTTP çağrıları izin vermek için CORS'yi RESTful hizmetinizi ayarlamanız gerekebilir.
-    - RESTful hizmetiniz güvendedir ve yalnızca HTTPS protokolünü kullanan emin olun.
-    - JavaScript, Azure AD B2C uç noktaları doğrudan çağırmak için kullanmayın.
-- Javascript'inizi ekleyebilir veya dış JavaScript dosyalarına bağlayabilirsiniz. Harici bir JavaScript dosyasını kullanırken, mutlak bir URL ve göreli bir URL değil kullanmaya dikkat edin.
-- Yeni JavaScript çerçevesi:
-    - Azure AD B2C, jQuery belirli bir sürümünü kullanır. JQuery başka bir sürümünü içermez. Aynı sayfa üzerinde birden fazla sürümünü kullanarak sorunlarına neden olur.
-    - RequireJS kullanımı desteklenmiyor.
-    - En yeni JavaScript çerçevesi, Azure AD B2C tarafından desteklenmez.
-- Azure AD B2C ayarlarını çağırarak okunabilir `window.SETTINGS`, `window.CONTENT` geçerli kullanıcı Arabirimi dili gibi nesneler. Bu nesneler değerini değiştirmeyin.
-- Azure AD B2C hata iletisini özelleştirmek için bir ilke yerelleştirme kullanın.
-- Herhangi bir ilke kullanarak gerçekleştirilebilir, genellikle bu önerilen yoludur.
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript örnekleri
 
 ### <a name="show-or-hide-a-password"></a>Bir parolayı Gizle veya Göster
 
-Kaydolma başarılarını ile müşterilerinize yardımcı olmak için yaygın bir yolu, bunları ne bunlar kendi parolanızı girdikten görmek izin vermektir. Bu seçenek, kullanıcıların kolayca görebilir ve gerekirse parolasını düzeltmeler yapmak sağlayarak kaydolma yardımcı olur. Checkbox ile herhangi bir alan türü parolası olan bir **Show parola** etiketi.  Bu düz metin parolayı görmesine olanak sağlar. Bu kod parçacığı uygulamasına kaydolma veya oturum açma şablonunuz için bir otomatik olarak onaylanan sayfa şunları içerir:
+Kaydolma başarılarını ile müşterilerinize yardımcı olmak için yaygın bir yolu, bunları ne bunlar kendi parolanızı girdikten görmek izin vermektir. Bu seçenek, kullanıcıların kolayca görebilir ve gerekirse parolasını düzeltmeler yapmak sağlayarak kaydolma yardımcı olur. Parola türünde herhangi bir alanda, **parolayı göster** etiketi olan bir onay kutusu vardır.  Bu düz metin parolayı görmesine olanak sağlar. Bu kod parçacığı uygulamasına kaydolma veya oturum açma şablonunuz için bir otomatik olarak onaylanan sayfa şunları içerir:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -122,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Kullanım koşulları ekleme
 
-Aşağıdaki kod, eklemek istediğiniz sayfanıza dahil bir **kullanım** onay kutusu. Bu onay kutusunu, genellikle, yerel hesap kaydolma ve sosyal hesap kaydolma sayfalarında gereklidir.
+Aşağıdaki kodu sayfanıza bir **kullanım koşulları** onay kutusu eklemek istediğiniz yere ekleyin. Bu onay kutusunu, genellikle, yerel hesap kaydolma ve sosyal hesap kaydolma sayfalarında gereklidir.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -147,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-Kod içinde `termsOfUseUrl` kullanım anlaşma koşullarınıza bağlantı. Dizininiz için, **termsofuse** adlı yeni bir kullanıcı özniteliği oluşturun ve ardından Kullanıcı özniteliği olarak **termsofuse** ekleyin.
+Kodda `termsOfUseUrl` ' yi kullanım koşullarınızın bağlantısı ile değiştirin. Dizininiz için, **termsofuse** adlı yeni bir kullanıcı özniteliği oluşturun ve ardından Kullanıcı özniteliği olarak **termsofuse** ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcı arabirimi, uygulamalarınızın nasıl özelleştirebileceğiniz hakkında daha fazla bilgi [özel bir ilke kullanarak Azure Active Directory B2C'de, uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md).
+[Azure Active Directory B2C ' de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md)bölümünde uygulamalarınızın Kullanıcı arabirimini özelleştirme hakkında daha fazla bilgi edinin.

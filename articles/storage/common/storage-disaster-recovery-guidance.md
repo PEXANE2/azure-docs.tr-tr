@@ -118,8 +118,8 @@ Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS
 
 - Doğu Asya
 - Güneydoğu Asya
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Doğu Avustralya
+- Güneydoğu Avustralya
 - ABD Orta
 - ABD Doğu 2
 - ABD Orta Batı

@@ -1,0 +1,191 @@
+- name: Geliştiriciler için Azure Active Directory
+  href: index.yml
+- name: Genel Bakış
+  href: v1-overview.md
+- name: Örnekler
+  href: sample-v1-code.md
+- name: Kavramlar
+  items:
+    - name: Neden v2.0'a yükseltmeli?
+      href: azure-ad-endpoint-comparison.md
+    - name: Uygulama türleri
+      items:
+        - name: Uygulama türleri
+          href: app-types.md
+        - name: Tek sayfalı uygulama
+          href: single-page-application.md
+        - name: Web uygulaması
+          href: web-app.md
+        - name: Web API
+          href: web-api.md
+        - name: Mobil ve masaüstü uygulama
+          href: native-app.md
+        - name: Daemon veya sunucu uygulaması
+          href: service-to-service.md
+    - name: Kimlik Doğrulaması
+      items:
+        - name: Kimlik doğrulaması temel bilgileri
+          href: v1-authentication-scenarios.md
+        - name: OAuth 2.0 ve OpenID Connect protokolleri
+          items:
+            - name: OpenID Connect
+              href: v1-protocols-openid-connect-code.md
+            - name: OAuth 2.0 örtülü izin akışı
+              href: v1-oauth2-implicit-grant-flow.md
+            - name: OAuth 2.0 kimlik doğrulama kodu verme
+              href: v1-protocols-oauth-code.md
+            - name: OAuth 2.0 on-behalf-of akışı
+              href: v1-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0 istemci kimlik bilgileri verme
+              href: v1-oauth2-client-creds-grant-flow.md
+        - name: SAML 2.0 protokolü
+          items:
+            - name: Çoklu oturum açma
+              href: ../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Oturumu kapatma
+              href: ../develop/single-sign-out-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 'Azure AD, SAML protokolünü nasıl kullanır?'
+              href: ../develop/active-directory-saml-protocol-reference.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WS-Federation
+          items:
+            - name: Federasyon meta verileri
+              href: azure-ad-federation-metadata.md
+        - name: İmzalama anahtarı geçiş işlemi
+          href: ../develop/active-directory-signing-key-rollover.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Kimlik belirteçleri
+          href: ../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Erişim belirteçleri
+          href: ../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Sertifika kimlik bilgileri
+          href: ../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: SAML belirteçleri
+          href: ../develop/reference-saml-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Uygulama yapılandırması
+      items:
+        - name: Uygulamalar ve hizmet sorumluları
+          href: ../develop/app-objects-and-service-principals.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Azure AD'ye uygulamalar nasıl ve neden eklenir?
+          href: ../develop/active-directory-how-applications-are-added.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Tek kiracılı ve çok kiracılı uygulamalar
+          href: ../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: İzinler ve onay
+      displayName: Scopes
+      items:
+        - name: İzin ve onay türleri
+          href: v1-permissions-consent.md
+        - name: Onay çerçevesi
+          href: ../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Uygulama onayı deneyimleri
+          href: ../develop/application-consent-experience.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Koşullu Erişim
+      href: conditional-access-dev-guide.md
+    - name: Ulusal Bulutlar
+      href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Kimlik Doğrulaması
+      items:
+        - name: Çoklu oturum açmayı yapılandırma
+          displayName: SSO
+          items:
+            - name: Android’de SSO etkinleştirme
+              href: howto-v1-enable-sso-android.md
+            - name: iOS’te SSO etkinleştirme
+              href: howto-v1-enable-sso-ios.md
+            - name: SAML tabanlı SSO hata ayıklama
+              href: howto-v1-debug-saml-sso-issues.md
+        - name: Talepleri yapılandırma
+          items:
+            - name: Rol taleplerini yapılandırma
+              href: ../develop/active-directory-enterprise-app-role-management.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Talep özelleştirme - Portal
+              href: ../develop/active-directory-saml-claims-customization.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Talep özelleştirme - PowerShell
+              href: ../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: İsteğe bağlı talepleri yapılandırma
+              href: ../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Belirteç ömrünü yapılandırma
+              href: ../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ADAL hatalarını ele almaya yönelik en iyi yöntemler
+          href: active-directory-devhowto-adal-error-handling.md
+    - name: Uygulama yapılandırması
+      items:
+        - name: Tek kiracılı bir uygulamayı çok kiracılı uygulamaya dönüştürme
+          href: ../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Hizmet sorumlusu oluşturma
+          items:
+            - name: Azure PowerShell’i kullanma
+              href: ../develop/howto-authenticate-service-principal-powershell.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Azure portalını kullanma
+              href: ../develop/howto-create-service-principal-portal.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Uygulamanızı bir kullanıcı kümesiyle sınırlama
+          href: ../develop/howto-restrict-your-app-to-a-set-of-users.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Uygulamanıza uygulama rolleri ekleme
+          href: ../develop/howto-add-app-roles-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Marka yönergeleri
+          href: ../develop/howto-add-branding-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Hizmet Koşulları ve Gizlilik Bildirimi
+          href: ../develop/howto-add-terms-of-service-privacy-statement.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Visual Studio ile çalışma
+      items:
+        - name: Active Directory bağlı hizmetini kullanma
+          href: ../develop/vs-active-directory-add-connected-service.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: .NET MVC projelerini kullanmaya başlama
+          href: ../develop/vs-active-directory-dotnet-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: .NET MVC projeme ne oldu?
+          href: ../develop/vs-active-directory-dotnet-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: .NET WebAPI projelerini kullanmaya başlama
+          href: ../develop/vs-active-directory-webapi-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WebAPI projeme ne oldu?
+          href: ../develop/vs-active-directory-webapi-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Kimlik doğrulama algılama sırasında bir hata oluştu
+          href: ../develop/vs-active-directory-error.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Uygulamayı piyasaya sürme
+      items:
+        - name: Uygulama Kaynağında Yayımlama
+          href: howto-get-appsource-certified.md
+        - name: Azure AD Uygulama Galerisi'nde Yayımlama
+          href: howto-app-gallery-listing.md
+        - name: Office 365 Satıcı Panosu'nda Yayımlama
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+    - name: Azure Access Control Service
+      displayName: ACS
+      items:
+        - name: Azure Access Control Service'ten geçiş yapma
+          href: active-directory-acs-migration.md
+        - name: Devre dışı bırakılmış Access Control Service ad alanlarını yeniden etkinleştirme
+          href: howto-reactivate-disabled-acs-namespaces.md
+    - name: Azure AD Graph API’sini kullanma
+      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Geliştiriciler için AD FS
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+- name: Başvurular
+  items:
+    - name: Kimlik doğrulama kitaplıkları
+      displayName: ADAL
+      href: active-directory-authentication-libraries.md
+    - name: Azure AD Graph API
+      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Uygulama bildirimi
+      href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Kimlik doğrulaması ve yetkilendirme hata kodları
+      href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Yeni değişiklikler
+      href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: Kaynaklar
+  items:
+    - name: Sözlük
+      href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure yol haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure AD blogu
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+    - name: Microsoft kimlik platformu geliştirici blogu
+      href: 'https://developer.microsoft.com/identity/blogs/'
+    - name: Microsoft’ta oturum açma özelliğini deneyin
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Yardım alma
+      displayName: 'support, help options'
+      href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure kaynakları için yönetilen kimlikler
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

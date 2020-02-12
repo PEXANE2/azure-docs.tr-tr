@@ -59,7 +59,7 @@ Genel önizleme için aşağıdaki bölgeler desteklenir:
 
 - Batı Avrupa, Kuzey Avrupa, Fransa Orta, Fransa Güney, UK Güney, UK Batı
 - Avustralya Doğu, Avustralya Orta, Avustralya Orta 2, Avustralya Güneydoğu
-- Kanada Orta
+- Orta Kanada
 - Doğu ABD, Batı ABD, Doğu ABD 2, Orta Güney ABD, Batı ABD 2, Orta ABD, Orta Kuzey ABD, Orta Batı ABD
 
 Azure Güvenlik Duvarı Ilkeleri yalnızca bu bölgelerde oluşturulabilir, ancak bölgeler arasında kullanılabilirler. Örneğin, Batı ABD bir ilke oluşturabilir ve Doğu ABD ' de kullanabilirsiniz. 

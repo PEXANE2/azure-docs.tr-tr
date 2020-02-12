@@ -109,8 +109,8 @@ veya
 
 Microsoft Azure Almanya bir önbellek oluşturmak için aşağıdaki konumlardan birini kullanın.
 
-* Almanya Orta
-* Almanya Kuzeydoğu
+* Orta Almanya
+* Kuzeydoğu Almanya
 
 Microsoft Azure Almanya hakkında daha fazla bilgi için bkz. [Microsoft Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/).
 

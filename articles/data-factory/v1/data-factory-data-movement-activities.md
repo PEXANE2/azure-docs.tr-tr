@@ -102,24 +102,24 @@ Hem kaynak hem de havuz veri deposu bulutta olduğunda Data Factory, verileri ta
 | &nbsp; | Orta Batı ABD | Orta Batı ABD |
 | &nbsp; | Batı ABD | Batı ABD |
 | &nbsp; | Batı ABD 2 | Batı ABD 2 |
-| Kanada | Kanada Doğu | Kanada Orta |
-| &nbsp; | Kanada Orta | Kanada Orta |
-| Brezilya | Brezilya Güney | Brezilya Güney |
+| Kanada | Doğu Kanada | Orta Kanada |
+| &nbsp; | Orta Kanada | Orta Kanada |
+| Brezilya | Güney Brezilya | Güney Brezilya |
 | Avrupa | Kuzey Avrupa | Kuzey Avrupa |
 | &nbsp; | Batı Avrupa | Batı Avrupa |
-| Birleşik Krallık | UK, Batı | UK Güney |
-| &nbsp; | UK Güney | UK Güney |
+| Birleşik Krallık | UK, Batı | Güney Birleşik Krallık |
+| &nbsp; | Güney Birleşik Krallık | Güney Birleşik Krallık |
 | Asya Pasifik | Güneydoğu Asya | Güneydoğu Asya |
 | &nbsp; | Doğu Asya | Güneydoğu Asya |
-| Avustralya | Avustralya Doğu | Avustralya Doğu |
-| &nbsp; | Avustralya Güneydoğu | Avustralya Güneydoğu |
+| Avustralya | Doğu Avustralya | Doğu Avustralya |
+| &nbsp; | Güneydoğu Avustralya | Güneydoğu Avustralya |
 | Hindistan | Orta Hindistan | Orta Hindistan |
 | &nbsp; | Batı Hindistan | Orta Hindistan |
 | &nbsp; | Güney Hindistan | Orta Hindistan |
-| Japonya | Japonya Doğu | Japonya Doğu |
-| &nbsp; | Japonya Batı | Japonya Doğu |
-| Güney Kore | Kore Orta | Kore Orta |
-| &nbsp; | Kore Güney | Kore Orta |
+| Japonya | Doğu Japonya | Doğu Japonya |
+| &nbsp; | Batı Japonya | Doğu Japonya |
+| Güney Kore | Güney Kore - Orta | Güney Kore - Orta |
+| &nbsp; | Güney Kore - Güney | Güney Kore - Orta |
 
 Alternatif olarak, kopyalama etkinliği `typeProperties`altında `executionLocation` özelliği belirterek kopyayı gerçekleştirmek için kullanılacak Data Factory hizmetin bölgesini açıkça belirtebilirsiniz. Bu özellik için desteklenen değerler, **veri taşıma sütunu için kullanılan yukarıdaki bölgede** listelenmiştir. Verileriniz, kopyalama sırasında, bu bölgeden gelen bölge üzerinden gider. Örneğin, Kore 'deki Azure mağazalarını kopyalamak için, Japonya bölgesi üzerinden yönlendirmek üzere `"executionLocation": "Japan East"` belirtebilirsiniz (bkz. başvuru olarak [örnek JSON](#by-using-json-scripts) ).
 

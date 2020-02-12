@@ -36,17 +36,17 @@ Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmı
 Önizleme sırasında, aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir: 
 
 * **Azure bölgeleri**
-    * Brezilya Güney
+    * Güney Brezilya
     * Orta Hindistan
     * Orta ABD
     * Doğu Asya
     * Doğu ABD
-    * Japonya Batı
+    * Batı Japonya
     * Kuzey Avrupa
     * Güney Afrika Kuzey
     * Güneydoğu Asya 
     * BAE Kuzey
-    * UK Batı  
+    * Batı Birleşik Krallık  
     * Batı Avrupa
     * Batı ABD 
     * Batı ABD 2

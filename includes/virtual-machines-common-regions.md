@@ -38,7 +38,7 @@ Her Azure bölgesi aynı coğrafyadaki (ABD, Avrupa veya Asya) başka bir bölge
 
 * Daha geniş bir Azure kesintisi durumunda, uygulamalar için geri yükleme süresini azaltmak üzere her çift içinden bir bölgeye öncelik verilir. 
 * Kapalı kalma süresini ve uygulama kesintisi riskini azaltmak amacıyla, planlı Azure güncelleştirmeleri, bölge çiftlerine tek tek uygulanır.
-* Veriler, vergi ve yasa uygulama yetkisi bakımından çiftiyle aynı coğrafyada (Brezilya Güney hariç) bulunmaya devam eder.
+* Veriler, vergi ve yasa uygulama yetkisi bakımından çiftiyle aynı coğrafyada (Güney Brezilya hariç) bulunmaya devam eder.
 
 Bölge çiftlerinin örnekleri şunlardır:
 

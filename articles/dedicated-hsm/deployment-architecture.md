@@ -37,16 +37,16 @@ HSM'ler, Microsoft veri merkezleri arasında dağıtılan ve yüksek oranda kull
 * Doğu Asya
 * Hindistan Orta
 * Hindistan Güney
-* Japonya Doğu
-* Japonya Batı
+* Doğu Japonya
+* Batı Japonya
 * Kuzey Avrupa
 * Batı Avrupa
-* UK Güney
-* UK Batı
-* Kanada Orta
-* Kanada Doğu
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Güney Birleşik Krallık
+* Batı Birleşik Krallık
+* Orta Kanada
+* Doğu Kanada
+* Doğu Avustralya
+* Güneydoğu Avustralya
 
 Bu bölgeler her iki bağımsız veri merkezine veya en az iki bağımsız kullanılabilirlik alanları dağıtılmış HSM raflar sahiptir. Güney Doğu Asya üç kullanılabilirlik ve Doğu ABD 2 iki sahiptir. Avrupa, Asya ve ayrılmış HSM hizmeti sunan ABD toplam sekiz bölgede yoktur. Azure bölgeleri hakkında daha fazla bilgi için bkz. resmi [Azure bölgeleri bilgileri](https://azure.microsoft.com/global-infrastructure/regions/).
 Ayrılmış HSM tabanlı herhangi bir çözüm için bazı tasarım etkenleri konum/gecikme, yüksek kullanılabilirliği olan ve diğer dağıtılmış uygulamalar için destek.

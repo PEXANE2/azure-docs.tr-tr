@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884006"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148241"
 ---
 # <a name="authentication-requests-and-responses"></a>Kimlik doğrulaması, istekler ve yanıtlar
 
@@ -27,20 +27,20 @@ Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/ye
 
  Azure Key Vault nesneleriyle çalışmak için aşağıdaki örnek URL 'Ler verilmiştir:  
 
-- Key Vault kullanımı içinde TESTKEY adlı bir anahtar oluşturmak için`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Key Vault Use-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1` TESTKEY adlı bir anahtar oluşturmak için  
 
-- IMPORTEDKEY adlı bir anahtarı Key Vault kullanımı-içine aktarmak için`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORTEDKEY adlı bir anahtarı Key Vault kullanım `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1` içeri aktarmak için  
 
-- Bir Key Vault kullanımı ile MYSECRET adlı bir gizli dizi almak için`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Key Vault kullanımı ile MYSECRET adlı bir gizli dizi almak için `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Key Vault kullanımı içinde TESTKEY adlı bir anahtarı kullanarak bir özeti IMZALAMAK için`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Key Vault Use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1` TESTKEY adlı bir anahtarı kullanarak bir özeti IMZALAMAK için  
 
-  Bir Key Vault isteği için olan yetki her zaman aşağıdaki gibidir.`https://{keyvault-name}.vault.azure.net/`  
+  Bir Key Vault isteği için olan yetki her zaman aşağıdaki gibidir `https://{keyvault-name}.vault.azure.net/`  
 
   Anahtarlar her zaman/Keys yolu altında depolanır, gizlilikler her zaman/gizlilikler yolu altında depolanır.  
 
-## <a name="api-version"></a>API Sürümü  
- Azure Key Vault hizmeti, alt düzey istemcilerle uyumluluk sağlamak için protokol sürümü oluşturmayı destekler, ancak tüm yetenekler bu istemciler için kullanılabilir olmaz. İstemcilerin, desteklediği protokol `api-version` sürümünü belirtmek için sorgu dizesi parametresini kullanması gerekir, çünkü varsayılan yoktur.  
+## <a name="api-version"></a>API sürümü  
+ Azure Key Vault hizmeti, alt düzey istemcilerle uyumluluk sağlamak için protokol sürümü oluşturmayı destekler, ancak tüm yetenekler bu istemciler için kullanılabilir olmaz. İstemcilerin, desteklediği protokol sürümünü belirtmek için `api-version` sorgu dizesi parametresini kullanması gerekir, çünkü varsayılan yoktur.  
 
  Azure Key Vault protokol sürümleri, {YYYY} kullanarak bir tarih numaralandırma şemasını izler. {MM}. {DD} biçimi.  
 
@@ -60,13 +60,13 @@ Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/ye
 ## <a name="error-responses"></a>Hata yanıtları  
  Hata işleme HTTP durum kodlarını kullanacaktır. Tipik sonuçlar şunlardır:  
 
-- 2xx – başarılı: Normal işlem için kullanılır. Yanıt gövdesinde beklenen sonuç yer alacak  
+- 2xx – başarılı: normal işlem için kullanılır. Yanıt gövdesinde beklenen sonuç yer alacak  
 
-- 3xx – yeniden yönlendirme: Koşullu GET 'in yerine getirilmesi için 304 "değiştirilmedi" de döndürülebilir. Diğer 3xx kodları gelecekte DNS ve yol değişikliklerini göstermek için kullanılabilir.  
+- 3xx – yeniden yönlendirme: koşullu bir GET yerine getirmek için 304 "değiştirilmedi" geri döndürülebilir. Diğer 3xx kodları gelecekte DNS ve yol değişikliklerini göstermek için kullanılabilir.  
 
 - 4xx – Istemci hatası: Hatalı istekler, eksik anahtarlar, sözdizimi hataları, geçersiz parametreler, kimlik doğrulama hataları vb. için kullanılır. Yanıt gövdesinde ayrıntılı hata açıklaması yer alacak.  
 
-- 5xx – sunucu hatası: İç sunucu hataları için kullanılır. Yanıt gövdesi özetlenen hata bilgilerini içerir.  
+- 5xx – sunucu hatası: iç sunucu hataları için kullanılır. Yanıt gövdesi özetlenen hata bilgilerini içerir.  
 
   Sistem bir proxy veya güvenlik duvarının arkasında çalışacak şekilde tasarlanmıştır. Bu nedenle, bir istemci diğer hata kodlarını alabilir.  
 
@@ -87,7 +87,7 @@ Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/ye
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>Kimlik Doğrulaması  
  Azure Key Vault tüm isteklerin kimliğinin doğrulanması gerekır. Azure Key Vault, OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] kullanılarak elde edilebilir Azure Active Directory erişim belirteçlerini destekler. 
  
  Uygulamanızı kaydetme ve Azure Key Vault kullanmak için kimlik doğrulama hakkında daha fazla bilgi için bkz. [istemci uygulamanızı Azure AD 'ye kaydetme](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
@@ -110,9 +110,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  WWW-Authenticate üstbilgisindeki parametreler şunlardır:  
 
--   Yetkisi İstek için bir erişim belirteci almak üzere kullanılabilecek OAuth2 yetkilendirme hizmetinin adresi.  
+-   Yetkilendirme: istek için bir erişim belirteci almak üzere kullanılabilecek OAuth2 yetkilendirme hizmetinin adresi.  
 
--   Kaynak Yetkilendirme isteğinde kullanılacak kaynağın adı.  
+-   Kaynak: yetkilendirme isteğinde kullanılacak kaynağın adı (https://vault.azure.net).  
 
 ## <a name="see-also"></a>Ayrıca Bkz.  
  [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-and-certificates.md)

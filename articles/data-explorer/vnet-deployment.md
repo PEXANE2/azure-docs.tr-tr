@@ -102,13 +102,13 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 | Bölge | Adresler |
 | --- | --- |
-| Avustralya Orta | 20.37.26.134 |
+| Orta Avustralya | 20.37.26.134 |
 | Avustralya Central2 | 20.39.99.177 |
-| Avustralya Doğu | 40.82.217.84 |
-| Avustralya Güneydoğu | 20.40.161.39 |
+| Doğu Avustralya | 40.82.217.84 |
+| Güneydoğu Avustralya | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
-| Kanada Orta | 40.82.188.208 |
-| Kanada Doğu | 40.80.255.12 |
+| Orta Kanada | 40.82.188.208 |
+| Doğu Kanada | 40.80.255.12 |
 | Orta Hindistan | 40.81.249.251 |
 | Orta ABD | 40.67.188.68 |
 | EUAP Orta ABD | 40.89.56.69 |
@@ -116,12 +116,12 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Doğu ABD | 52.224.146.56 |
 | Doğu ABD 2 | 52.232.230.201 |
 | Doğu ABD2 EUAP | 52.253.226.110 |
-| Fransa Orta | 40.66.57.91 |
-| Fransa Güney | 40.82.236.24 |
-| Japonya Doğu | 20.43.89.90 |
-| Japonya Batı | 40.81.184.86 |
-| Kore Orta | 40.82.156.149 |
-| Kore Güney | 40.80.234.9 |
+| Orta Fransa | 40.66.57.91 |
+| Güney Fransa | 40.82.236.24 |
+| Doğu Japonya | 20.43.89.90 |
+| Batı Japonya | 40.81.184.86 |
+| Güney Kore - Orta | 40.82.156.149 |
+| Güney Kore - Güney | 40.80.234.9 |
 | Orta Kuzey ABD | 40.81.45.254 |
 | Kuzey Avrupa | 52.142.91.221 |
 | Güney Afrika Kuzey | 102.133.129.138 |
@@ -129,7 +129,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Orta Güney ABD | 20.45.3.60 |
 | Güneydoğu Asya | 40.119.203.252 |
 | Güney Hindistan | 40.81.72.110 |
-| UK Güney | 40.81.154.254 |
+| Güney Birleşik Krallık | 40.81.154.254 |
 | UK, Batı | 40.81.122.39 |
 | Orta Batı ABD | 52.159.55.120 |
 | Batı Avrupa | 51.145.176.215 |
@@ -141,13 +141,13 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 | Bölge | Adresler |
 | --- | --- |
-| Avustralya Orta | 191.239.64.128 |
-| Avustralya Orta 2 | 191.239.64.128 |
-| Avustralya Doğu | 191.239.64.128 |
-| Avustralya Güneydoğu | 191.239.160.47 |
-| Brezilya Güney | 23.98.145.105 |
-| Kanada Orta | 168.61.212.201 |
-| Kanada Doğu | 168.61.212.201 |
+| Orta Avustralya | 191.239.64.128 |
+| Orta Avustralya 2 | 191.239.64.128 |
+| Doğu Avustralya | 191.239.64.128 |
+| Güneydoğu Avustralya | 191.239.160.47 |
+| Güney Brezilya | 23.98.145.105 |
+| Orta Kanada | 168.61.212.201 |
+| Doğu Kanada | 168.61.212.201 |
 | Orta Hindistan | 23.99.5.162 |
 | Orta ABD | 168.61.212.201 |
 | EUAP Orta ABD | 168.61.212.201 |
@@ -155,12 +155,12 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Doğu ABD | 137.116.81.189 |
 | Doğu ABD 2 | 137.116.81.189 |
 | EUAP Doğu ABD 2 | 137.116.81.189 |
-| Fransa Orta | 23.97.212.5 |
-| Fransa Güney | 23.97.212.5 |
-| Japonya Doğu | 138.91.19.129 |
-| Japonya Batı | 138.91.19.129 |
-| Kore Orta | 138.91.19.129 |
-| Kore Güney | 138.91.19.129 |
+| Orta Fransa | 23.97.212.5 |
+| Güney Fransa | 23.97.212.5 |
+| Doğu Japonya | 138.91.19.129 |
+| Batı Japonya | 138.91.19.129 |
+| Güney Kore - Orta | 138.91.19.129 |
+| Güney Kore - Güney | 138.91.19.129 |
 | Orta Kuzey ABD | 23.96.212.108 |
 | Kuzey Avrupa | 191.235.212.69 
 | Güney Afrika Kuzey | 104.211.224.189 |
@@ -168,7 +168,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Orta Güney ABD | 23.98.145.105 |
 | Güney Hindistan | 23.99.5.162 |
 | Güneydoğu Asya | 168.63.173.234 |
-| UK Güney | 23.97.212.5 |
+| Güney Birleşik Krallık | 23.97.212.5 |
 | UK, Batı | 23.97.212.5 |
 | Orta Batı ABD | 168.61.212.201 |
 | Batı Avrupa | 23.97.212.5 |

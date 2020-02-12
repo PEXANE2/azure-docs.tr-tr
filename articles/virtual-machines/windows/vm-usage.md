@@ -96,11 +96,11 @@ Kullanım ayrıntılarında kaynak konumu alanında doldurulmuş bölge adı, Az
 |    southeastasia         |    Güneydoğu Asya                        |
 |    Güneydoğu            |    IN Güney                              |
 |    Ukkuzey               |    ABD Kuzey                              |
-|    uksouth               |    UK Güney                              |
-|    UKSouth2              |    UK Güney 2                            |
+|    uksouth               |    Güney Birleşik Krallık                              |
+|    UKSouth2              |    Güney Birleşik Krallık 2                            |
 |    ukbatı                |    UK, Batı                               |
-|    Usdodorta          |    US DoD Orta                        |
-|    USDoDEast             |    US DoD Doğu                           |
+|    Usdodorta          |    Orta US DoD                        |
+|    USDoDEast             |    Doğu US DoD                           |
 |    USGovArizona          |    USGov Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
 |    USGovTexas            |    USGov Texas                           |

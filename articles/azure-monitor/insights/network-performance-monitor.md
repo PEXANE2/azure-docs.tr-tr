@@ -39,7 +39,7 @@ Ağ Performansı İzleyicisi üç geniş özellik sunar:
 NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki bağlantıyı, aşağıdaki bölgelerden birinde barındırılan bir çalışma alanından izleyebilir:
 * Kuzey Avrupa
 * Batı Avrupa
-* Fransa Orta
+* Orta Fransa
 
 * Orta Batı ABD
 * Orta Kuzey ABD
@@ -51,11 +51,11 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 * Doğu Japonya
 * Güneydoğu Asya
 * Güney Doğu Avustralya
-* Avustralya Orta
-* Avustralya Doğu
+* Orta Avustralya
+* Doğu Avustralya
 * Güney UK
 * Doğu Asya
-* Kore Orta
+* Güney Kore - Orta
 * Orta Hindistan
 * ABD devleti Virginia
 * Çin Doğu 2

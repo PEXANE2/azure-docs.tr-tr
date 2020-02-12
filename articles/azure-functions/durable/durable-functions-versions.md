@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849811"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152899"
 ---
 # <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
 
@@ -59,6 +59,10 @@ Dayanıklı İşlevler 2. x yeni bir Host. JSON şeması kullanır. 1\. x üzeri
 * Event Grid bildirim yapılandırması için `"notifications"` (ve `"eventGrid"` alt bölümü).
 
 Ayrıntılar için [dayanıklı işlevler Host. JSON başvurusu belgelerine](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.
+
+#### <a name="default-taskhub-name-changes"></a>Varsayılan taskhub adı değişiklikleri
+
+Sürüm 1. x içinde, Host. JSON içinde bir görev hub 'ı adı belirtilmemişse, varsayılan olarak "DurableFunctionsHub" olarak kabul edildi. Sürüm 2. x ' de, varsayılan görev merkezi adı artık işlev uygulamasının adından türetilir. Bu nedenle, 2. x sürümüne yükseltirken bir görev hub 'ı adı belirtmiyorsanız, kodunuz yeni görev hub 'ı ile çalışır ve tüm uçuş düzenlemeleri artık bunları işleyen bir uygulamaya sahip olmayacaktır. Bu sorunu geçici olarak çözmek için, görev hub 'ınızın adını "DurableFunctionsHub" nin varsayılan değeri olan v1. x varsayılan olarak ayarlayabilir veya kesintiye neden olan değişiklikleri nasıl işleyebileceğine ilişkin ayrıntılar için [sıfır kesinti dağıtım kılavuzumuzu](durable-functions-zero-downtime-deployment.md) takip edebilirsiniz.
 
 #### <a name="public-interface-changes-net-only"></a>Ortak arabirim değişiklikleri (yalnızca .NET)
 

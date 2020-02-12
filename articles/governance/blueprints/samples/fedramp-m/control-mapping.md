@@ -3,12 +3,12 @@ title: Fedratin orta şeması örnek denetimleri
 description: Fedrampa orta şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 0ecf5430f643ee795f81759f3d07a062e433f5b6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544565"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150487"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Fedrampa orta şema örneğinin denetim eşlemesi
 
@@ -27,7 +27,7 @@ Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapl
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) hesap yönetimi | Rol tabanlı şemalar
 
@@ -70,7 +70,7 @@ Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın devre d
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
-- Web uygulaması için uzaktan hata ayıklama kapatılmalıdır
+- Uzaktan hata ayıklama için Web uygulaması kapalı olmaları
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-denetim Işleme hatalarının 5 yanıtı
 
@@ -79,7 +79,7 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 - Tanılama ayarını denetle
 - SQL Server üzerinde denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 
 ## <a name="au-12-audit-generation"></a>AU-12 denetim oluşturma
 
@@ -95,7 +95,7 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 - Tanılama ayarını denetle
 - SQL Server üzerinde denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma
 - Ağ güvenlik grupları için tanılama ayarlarını dağıtma
@@ -170,7 +170,7 @@ Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Window
 Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
 
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Sanal makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -190,7 +190,7 @@ Ayrıca, bu şema korunmayan uç noktaları, uygulamalar ve depolama hesapların
 
 - Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
+- Web bağlantı noktaları, VM 'niz ile ilişkili ağ güvenlik gruplarında sınırlandırılmalıdır
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) sınır koruması | Erişim noktaları
@@ -212,7 +212,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için gereksinimleri dağıtma
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
@@ -222,7 +222,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, bu şemayı, geri kalan bilgileri korumak için cryptograph denetimleri kullanma konusunda zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilke tanımları Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; ve SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin.
 
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL DB saydam veri şifrelemesini dağıtma
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
@@ -268,7 +268,7 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 - \[Preview\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
 - \[Preview\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Depolama hesaplarında Gelişmiş tehdit koruması dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma

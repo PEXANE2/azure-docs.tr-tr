@@ -26,7 +26,7 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 ## <a name="impact-of-this-change"></a>Bu değişikliğin etkisi
 
 Trafik geçişinin yeni ağ geçitlerine ilk **turu, aşağıdaki bölgelerde 14 ekim 2019** için zamanlanır:
-- Brezilya Güney
+- Güney Brezilya
 - Batı ABD
 - Batı Avrupa
 - Doğu ABD
@@ -35,8 +35,8 @@ Trafik geçişinin yeni ağ geçitlerine ilk **turu, aşağıdaki bölgelerde 14
 - Orta Güney ABD
 - Kuzey Avrupa
 - Orta Kuzey ABD
-- Japonya Batı
-- Japonya Doğu
+- Batı Japonya
+- Doğu Japonya
 - Doğu ABD 2
 - Doğu Asya
 

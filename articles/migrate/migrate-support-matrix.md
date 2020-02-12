@@ -78,10 +78,10 @@ Bir dizi coğrafi bölgedeki Azure geçişi projesi oluşturabilirsiniz. Yalnız
 Azure Devlet Kurumları | US Gov Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-Brezilya | Brezilya Güney
+Brezilya | Güney Brezilya
 Kanada | Kanada Orta veya Kanada Doğu
 Avrupa | Kuzey Avrupa veya Batı Avrupa
-Fransa | Fransa Orta
+Fransa | Orta Fransa
 Hindistan | Orta Hindistan veya Güney Hindistan
 Japonya |  Japonya Doğu veya Japonya Batı
 Güney Kore | Kore Orta veya Kore Güney
