@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312218"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137518"
 ---
 # <a name="edit-metadata-module"></a>Meta veri modülünü Düzenle
 
-Bu makalede Azure Machine Learning tasarımcısında bulunan bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında (Önizleme) bulunan bir modül açıklanmaktadır.
 
 Bir veri kümesindeki sütunlarla ilişkili meta verileri değiştirmek için veri düzenleme modülünü kullanın. Veri kümesinin değeri ve veri türü, verileri Düzenle modülü kullanıldıktan sonra değişir.
 
@@ -40,9 +40,9 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
 ## <a name="configure-edit-metadata"></a>Meta verileri düzenleme yapılandırma
   
-1. Azure Machine Learning ' de, meta veri düzenleme modülünü ardışık düzene ekleyin ve güncelleştirmek istediğiniz veri kümesini bağlayın. **Veri kümesini veri dönüştürme** altında, **işleme** kategorisinde bulabilirsiniz.
+1. Azure Machine Learning Tasarımcısı ' nda, meta veri düzenleme modülünü işlem hattınızla ekleyin ve güncelleştirmek istediğiniz veri kümesini bağlayın. Modülü **veri dönüştürme** kategorisinde bulabilirsiniz.
   
-1. **Sütun seçiciyi Başlat** ' ı seçin ve birlikte çalışmak için sütun veya sütun kümesi seçin. Sütunları ada veya dizine göre tek tek seçebilir veya bir sütun grubunu türüne göre seçebilirsiniz.  
+1. Modülün sağ panelindeki **sütunu Düzenle** ' ye tıklayın ve ile çalışmak için sütun veya sütun kümesi seçin. Sütunları ada veya dizine göre tek tek seçebilir veya bir sütun grubunu türüne göre seçebilirsiniz.  
   
 1. Seçili sütunlara farklı bir veri türü atamanız gerekiyorsa **veri türü** seçeneğini belirleyin. Belirli işlemler için veri türünü değiştirmeniz gerekebilir. Örneğin, kaynak veri kümeniz metin olarak işlenen sayılar içeriyorsa, matematik işlemlerini kullanmadan önce bunları sayısal bir veri türü olarak değiştirmeniz gerekir.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474447"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132291"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için yaygın kullanım örnekleri ve senaryolar
 
@@ -48,7 +48,7 @@ Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir
 
 Contoso, örnek senaryo olarak, bir ISV çok yıldan önce satın alınan şirket içi bir uygulamaya sahiptir. Uygulama Şu anda ISV tarafından bakım modunda ve uygulamada değişiklikler yapmak canlı olarak pahalıdır. Bu uygulamada, Kullanıcı kimlik bilgilerini bir Web formu kullanarak toplayan ve ardından Şirket içi AD DS ortamına LDAP bağlaması gerçekleştirerek kullanıcıların kimliğini doğrulayan Web tabanlı bir ön uç vardır.
 
-![LDAP bağlama](./media/active-directory-domain-services-scenarios/ldap-bind.png)
+![LDAP bağlaması](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
 Contoso bu uygulamayı Azure 'a geçirmek istiyor. Uygulama, hiçbir değişiklik gerekmeden olduğu gibi çalışmaya devam etmelidir. Ayrıca, kullanıcılar mevcut kurumsal kimlik bilgilerini ve ek eğitim olmadan kimlik doğrulaması yapabilmelidir. Uygulamanın çalıştığı son kullanıcılar için saydam olması gerekir.
 
@@ -65,7 +65,7 @@ Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir
 
 Önceki örnek senaryoya benzer şekilde, contoso 'nun neredeyse yılda bir önce geliştirilen şirket içi iş kolu (LOB) uygulaması olduğunu varsayalım. Bu uygulama, Dizin farkınındır ve AD DS kullanıcılar hakkındaki bilgileri/öznitelikleri okumak için LDAP kullanmak üzere tasarlanmıştır. Uygulama, öznitelikleri değiştirmez veya başka bir şekilde dizine yazamaz.
 
-Contoso bu uygulamayı Azure 'a geçirmek ve şu anda bu uygulamayı barındırmakta olan şirket içi donanımı devre dışı bırakmak istiyor. Uygulama, REST tabanlı Azure AD Graph API gibi modern Dizin API 'Lerini kullanmak için yeniden yazılabilir. Uygulama, kod değiştirmeden veya uygulamayı yeniden yazmadan bulutta çalışmak üzere geçirilebileceği bir kaldırma ve kaydırma seçeneği tercih edilir.
+Contoso bu uygulamayı Azure 'a geçirmek ve şu anda bu uygulamayı barındırmakta olan şirket içi donanımı devre dışı bırakmak istiyor. Uygulama, REST tabanlı Microsoft Graph API gibi modern Dizin API 'Leri kullanmak için yeniden yazılabilir. Uygulama, kod değiştirmeden veya uygulamayı yeniden yazmadan bulutta çalışmak üzere geçirilebileceği bir kaldırma ve kaydırma seçeneği tercih edilir.
 
 Azure AD DS, bu senaryoya yardımcı olmak için uygulamaların, ihtiyaç duyacağı öznitelik bilgilerini almak için yönetilen etki alanında LDAP okumaları gerçekleştirmesini sağlar. Uygulamanın yeniden yazılması gerekmez, bu nedenle Azure 'a bir yükseltme ve kaydırma, kullanıcıların, çalıştığı yerde bir değişiklik yapmadan uygulamayı kullanmaya devam etmesine olanak tanır.
 
@@ -90,7 +90,7 @@ Bu senaryo için, Web ön ucu, SQL Server ve FTP sunucusunu barındıran sunucul
 
 Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir:
 
-* Uygulamalarda kimlik doğrulaması için bir Kullanıcı adı + parola kullandığınızdan emin olun. Sertifika veya akıllı kart tabanlı kimlik doğrulaması Azure AD DS tarafından desteklenmez.
+* Uygulamalarda kimlik doğrulaması için bir Kullanıcı adı ve parola kullandığınızdan emin olun. Sertifika veya akıllı kart tabanlı kimlik doğrulaması Azure AD DS tarafından desteklenmez.
 * Parolaları doğrudan Azure AD DS yönetilen bir etki alanına karşı değiştiremezsiniz. Son kullanıcılar, Azure AD 'nin self servis parola değiştirme mekanizmasını veya şirket içi dizine karşı parolalarını değiştirebilir. Bu değişiklikler daha sonra otomatik olarak eşitlenir ve Azure AD DS yönetilen etki alanında kullanılabilir.
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Azure 'da Windows Server Uzak Masaüstü Hizmetleri dağıtımları

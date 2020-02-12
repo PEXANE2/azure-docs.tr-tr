@@ -1,5 +1,5 @@
 ---
-title: Azure kaynakları için atamaları reddetme ' yı anlama | Microsoft Docs
+title: Azure kaynakları için reddedilen atamaları anlama
 description: Azure kaynakları için rol tabanlı erişim denetimi 'nde (RBAC) atamaları reddetme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479368"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137370"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Azure kaynakları için reddedilen atamaları anlama
 
@@ -54,21 +54,21 @@ Atamaları Reddet, benzer bir kalıbı rol atamaları olarak izler, ancak bazı 
  Reddetme atama aşağıdaki özelliklere sahiptir:
 
 > [!div class="mx-tableFixed"]
-> | Özellik | Gerekli | Type | Açıklama |
+> | Özellik | Gerekli | Tür | Açıklama |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Evet | Dize | Reddetme atamasının görünen adı. Adlar, belirli bir kapsam için benzersiz olmalıdır. |
+> | `DenyAssignmentName` | Yes | Dize | Reddetme atamasının görünen adı. Adlar, belirli bir kapsam için benzersiz olmalıdır. |
 > | `Description` | Hayır | Dize | Reddetme atamasının açıklaması. |
 > | `Permissions.Actions` | En az bir eylem veya bir veri eylemi | String[] | Reddetme atamasının erişimi engellediği yönetim işlemlerini belirten dizeler dizisi. |
 > | `Permissions.NotActions` | Hayır | String[] | Reddetme atamasından dışlanacak yönetim işlemlerini belirten dizeler dizisi. |
 > | `Permissions.DataActions` | En az bir eylem veya bir veri eylemi | String[] | Reddetme atamasının erişimi engellediği veri işlemlerini belirten dizeler dizisi. |
 > | `Permissions.NotDataActions` | Hayır | String[] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
 > | `Scope` | Hayır | Dize | Reddetme atamasının geçerli olduğu kapsamı belirten bir dize. |
-> | `DoNotApplyToChildScopes` | Hayır | Boole değeri | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
-> | `Principals[i].Id` | Evet | String[] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. Tüm sorumluları temsil etmek için `00000000-0000-0000-0000-000000000000` boş bir GUID olarak ayarlayın. |
+> | `DoNotApplyToChildScopes` | Hayır | Boole | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
+> | `Principals[i].Id` | Yes | String[] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. Tüm sorumluları temsil etmek için `00000000-0000-0000-0000-000000000000` boş bir GUID olarak ayarlayın. |
 > | `Principals[i].Type` | Hayır | String[] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. tüm sorumlularını temsil etmek için `SystemDefined` olarak ayarlayın. |
 > | `ExcludePrincipals[i].Id` | Hayır | String[] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
 > | `ExcludePrincipals[i].Type` | Hayır | String[] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
-> | `IsSystemProtected` | Hayır | Boole değeri | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
+> | `IsSystemProtected` | Hayır | Boole | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
 
 ## <a name="the-all-principals-principal"></a>Tüm asıl adlar
 

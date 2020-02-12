@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427124"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133433"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -43,7 +43,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
 * [.Net](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node. js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)ve Ruby için kullanılabilir SDK 'lar.
 * Basit betik desteği için [Azure CLI](https://aka.ms/ams-v3-cli-ref) tümleştirmesi.
 
-### <a name="new-features"></a>Yeni özellikler
+### <a name="new-features"></a>Yeni Özellikler
 
 * Dosya tabanlı Iş işleme için, giriş olarak bir HTTP (S) URL 'SI kullanabilirsiniz.<br/>Azure 'da zaten depolanmış içeriklere sahip olmanız veya varlık oluşturmanız gerekmez.
 * Dosya tabanlı Iş işleme için [dönüşüm](transforms-jobs-concept.md) kavramını tanıtır. Bir dönüşüm yeniden kullanılabilir yapılandırma oluşturmak, Azure Resource Manager şablonları oluşturmak ve birden çok müşteri veya kiracı arasında işlem ayarlarını yalıtmak için kullanılabilir.
@@ -115,7 +115,7 @@ Aşağıdaki tabloda yaygın senaryolar için v2 ve v3 arasındaki kod farklıl�
 * Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-sdk), CLI veya desteklenen SDK 'lardan birini kullanın.
 * Işlerinizin eşzamanlılık ve performansını denetlemek için, özellikle video veya ses analizine sahip olanlar için hesabınıza medya ayrılmış birimleri (MRU) sağlamanız gerekir. Daha fazla bilgi için bkz. [Medya İşlemeyi Ölçeklendirme](../previous/media-services-scale-media-processing-overview.md). [Media Services v3 Için clı 2,0](media-reserved-units-cli-how-to.md)kullanarak, [Azure Portal](../previous/media-services-portal-scale-media-processing.md)veya [v2 API 'lerini](../previous/media-services-dotnet-encoding-units.md)kullanarak MRUs 'yi yönetebilirsiniz. Media Services v2 veya v3 API 'Leri kullanıp kullanmayacağınızı MRU sağlamanız gerekir.
 * V3 API ile oluşturulan Media Services varlıkları v2 API 'SI tarafından yönetilemez.  
-* V3 API 'leri aracılığıyla v2 API 'Leriyle oluşturulan varlıkların yönetilmesi önerilmez. Aşağıda, iki sürümündeki varlıkların uyumsuz hale getirilme farklılıklarının örnekleri verilmiştir:   
+* V2 API 'sindeki varlıkların hepsi, v3 API 'sinde otomatik olarak gösterilmez.  Aşağıda, uyumlu olmayan iki sürümde varlıkların örnekleri verilmiştir:  
     * V2 'de oluşturulan işler ve görevler, bir dönüşümle ilişkilendirilmediği için v3 'de gösterilmez. Öneri, v3 dönüştürmelerini ve Işlerine geçiş yapmak. Geçiş sırasında değerlendirmedeki v2 işlerini izlemeye ihtiyaç duyan görece kısa bir zaman dilimi olacaktır.
     * V2 ile oluşturulan kanallar ve programlar (yani, canlı olaylar ve v3 'de canlı çıktılar ile eşlenir) v3 ile yönetilmeye devam edemez. Kullanışlı bir kanal durdurulduğunda v3 canlı olaylara ve canlı çıkışlara geçiş yapma önerisi.<br/>Şu anda, sürekli olarak çalışan kanalları geçiremezsiniz.  
 

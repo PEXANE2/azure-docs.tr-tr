@@ -5,24 +5,24 @@ services: azure-portal
 keywords: ayarlar, zaman aşımı
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310807"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132086"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Dizin düzeyinde eylemsizlik zaman aşımını ayarla
 
-Eylemsizlik zaman aşımı ayarı, kullanıcılar iş istasyonlarını güvenli hale getirmeye unutur durumunda kaynaklarınızın yetkisiz erişimden korunmasına yardımcı olur. Bir Kullanıcı bir süredir boşta kaldığında Azure portal oturumu otomatik olarak imzalanır. Yöneticiler, oturum kapatmadan önce en fazla boşta kalma süresini uygulayabilir. Etkin olmama zaman aşımı ayarı dizin düzeyinde geçerlidir. Dizinler hakkında daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Eylemsizlik zaman aşımı ayarı, kullanıcılar iş istasyonlarını güvenli hale getirmeye unutur durumunda kaynaklarınızın yetkisiz erişimden korunmasına yardımcı olur. Bir Kullanıcı bir süredir boşta kaldığında Azure portal oturumu otomatik olarak imzalanır. [Genel yönetici rolündeki](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) Yöneticiler, oturum kapatmadan önce en fazla boş süreyi uygulayabilir. Etkin olmama zaman aşımı ayarı dizin düzeyinde geçerlidir. Dizinler hakkında daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 ## <a name="configure-the-inactive-timeout-setting"></a>Etkin olmayan zaman aşımı ayarını yapılandırın
 
-Yönetici değilseniz ve Azure portal tüm kullanıcıları için boşta kalma zaman aşımı ayarını zorlamak istiyorsanız aşağıdaki adımları izleyin:
+Genel yöneticiyseniz ve Azure portal tüm kullanıcıları için boşta kalma zaman aşımı ayarını zorlamak istiyorsanız aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Genel sayfa üstbilgisindeki **ayarları** seçin.

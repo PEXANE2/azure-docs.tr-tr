@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314479"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137563"
 ---
 # <a name="clean-missing-data-module"></a>Eksik veri modülünü temizle
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Eksik değerleri kaldırmak, değiştirmek veya çıkarsmak için bu modülü kullanın. 
 
@@ -37,11 +37,11 @@ Bu modül aynı zamanda eksik değerleri temizlemek için kullanılan dönüşü
 
 ## <a name="how-to-use-clean-missing-data"></a>Eksik verileri temizleme kullanımı
 
-Bu modül bir temizleme işlemi tanımlamanıza olanak sağlar. Temizleme işlemini, daha sonra yeni verilere uygulayabilmeniz için de kaydedebilirsiniz. Temizleme işlemi oluşturma ve kaydetme hakkında açıklama için aşağıdaki bağlantılara bakın: 
+Bu modül bir temizleme işlemi tanımlamanıza olanak sağlar. Temizleme işlemini, daha sonra yeni verilere uygulayabilmeniz için de kaydedebilirsiniz. Temizleme işlemi oluşturma ve kaydetme hakkında aşağıdaki bölümlere bakın: 
  
-+ Eksik değerleri değiştirmek için
++ [Eksik değerleri değiştirmek için](#replace-missing-values)
   
-+ Yeni verilere Temizleme dönüştürmesi uygulamak için
++ [Yeni verilere Temizleme dönüştürmesi uygulamak için](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
 > Eksik değerleri işlemek için kullandığınız temizleme yöntemi, sonuçlarınızı önemli ölçüde etkileyebilir. Farklı yöntemlerle denemeler yapmanızı öneririz. Belirli bir yöntemin kullanımı için gerekçe ve sonuçların kalitesini göz önünde bulundurun.
@@ -56,12 +56,9 @@ Bir veri kümesine [Temizleme eksik veri](./clean-missing-data.md) modülünü h
 
     Örneğin, tüm sayısal sütunlardaki eksik değerleri denetlemek için:
 
-    1. Sütun seçiciyi açın ve **kurallarla**öğesini seçin.
-    2. **Başlangıç**Için **sütun yok**' u seçin.
+    1. **Eksik verileri temizle** modülünü seçin ve modülün sağ panelindeki **sütunu Düzenle** ' ye tıklayın.
 
-        Ayrıca, tüm SÜTUNLARLA başlayıp sütunları hariç tutabilir. İlk olarak, **tüm sütunlara**tıkladığınızda kurallar gösterilmez, ancak **sütun yok** ' a tıklayabilir ve **ardından tüm sütunlar** ' a tıklayabilir ve ardından sütunları ad, veri türü veya sütunlar dizinine göre filtreleyebilirsiniz (hariç tut).
-
-    3. **İçerme**için, açılan listeden **sütun türü** ' nü seçin ve ardından **sayısal**veya daha belirli bir sayısal tür seçin. 
+    3. **Ekle**için, açılan listeden **sütun türleri** ' ni seçin ve ardından **sayısal**' i seçin. 
   
     Seçtiğiniz Temizleme veya değiştirme yöntemi, seçimdeki **Tüm** sütunlara uygulanabilir olmalıdır. Herhangi bir sütundaki veriler belirtilen işlemle uyumsuzsa, modül bir hata döndürür ve işlem hattını sonlandırır.
   
@@ -109,7 +106,7 @@ Bir veri kümesine [Temizleme eksik veri](./clean-missing-data.md) modülünü h
   
 6. Seçenek **değiştirme değeri** , **özel değiştirme değeri**seçeneğini belirlediyseniz kullanılabilir. Sütundaki tüm eksik değerler için değiştirme değeri olarak kullanılacak yeni bir değer yazın.  
   
-    Bu seçeneği yalnızca Integer, Double, Boolean veya date veri türlerine sahip sütunlarda kullanabileceğinizi unutmayın. Tarih sütunları için, değiştirme değeri 1/1/0001 12:00 ' den beri 100-nanosaniyelik Ticks sayısı olarak da girilebilir  
+    Bu seçeneği yalnızca Integer, Double, Boolean veya String olan sütunlarda kullanabileceğinizi unutmayın.
   
 7. **Eksik değer göstergesi sütunu oluştur**: sütundaki değerlerin eksik değer Temizleme ölçütlerini karşılaıp karşılanmadığını belirten bir bildirim almak istiyorsanız bu seçeneği belirleyin. Bu seçenek özellikle yeni bir temizleme işlemi ayarlarken ve tasarlandığı gibi çalıştığından emin olmak istediğinizde yararlıdır.
   

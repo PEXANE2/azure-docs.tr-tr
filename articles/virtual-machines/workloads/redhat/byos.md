@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989850"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133828"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -177,16 +177,16 @@ Red Hat Enterprise Linux kendi aboneliğinizi getir Gold görüntülerinin [Azur
 
 Azure disk şifrelemesi, [Red hat özel görüntülerinde](/linux/redhat-create-upload-vhd)desteklenmez. Ek ADE gereksinimleri ve önkoşulları, [Linux sanal makineleri Için Azure disk şifrelemesi](../../linux/disk-encryption-overview.md#additional-vm-requirements)bölümünde belgelenmiştir.
 
-Azure disk şifrelemesi uygulama adımları, Linux VM 'lerinde ve ilgili makalelerde [Azure disk şifrelemesi senaryolarında](../../linux/disk-encryption-linux.md) bulunabilir.  
+Azure disk şifrelemesi uygulama adımları, Linux VM 'lerinde ve ilgili makalelerde [Azure disk şifrelemesi senaryolarında](../../linux/disk-encryption-linux.md) bulunabilir.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - Bu teklif için etkinleştirilmemiş bir abonelikte VM sağlamaya çalışırsanız aşağıdaki hatayı alırsınız:
 
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     Bu durumda, aboneliğinizi etkinleştirmek için Microsoft veya Red Hat ile iletişim kurun.
 
 - Bir RHEL BYOS görüntüsünden bir anlık görüntüyü değiştirir ve bu özel görüntüyü [paylaşılan görüntü galerisine](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)yayımlamayı denerseniz, anlık görüntünün özgün kaynağıyla eşleşen plan bilgilerini sağlamanız gerekir. Örneğin, komut şöyle görünebilir:

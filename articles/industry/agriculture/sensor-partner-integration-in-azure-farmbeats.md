@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530655"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132822"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -135,7 +135,7 @@ Farmtts veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta veri
   Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
-  **cihaz** |  |
+  **Aygıtların** |  |
   Devicemodelıd  |İlişkili cihaz modelinin KIMLIĞI. |
   Donanım kimliği   |Cihazın MAC adresi gibi benzersiz KIMLIĞI.  |
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
@@ -345,4 +345,4 @@ Cihaz üreticileri veya iş ortakları, müşteri tarafından sunulan kimlik bil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-REST API hakkında daha fazla bilgi için bkz. [REST API](references-for-azure-farmbeats.md#rest-api).
+REST API hakkında daha fazla bilgi için bkz. [REST API](rest-api-in-azure-farmbeats.md).

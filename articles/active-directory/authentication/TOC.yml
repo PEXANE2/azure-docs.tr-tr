@@ -9,8 +9,8 @@
   items:
     - name: Kendi kendine parola sıfırlamayı etkinleştirme
       href: tutorial-enable-sspr.md
-    - name: Uygulamalar için MFA’yı etkinleştirme
-      href: tutorial-mfa-applications.md
+    - name: Azure Multi-Factor Authentication’ı etkinleştirme
+      href: tutorial-enable-azure-mfa.md
     - name: SSPR şirket içi tümleştirmeyi etkinleştirme
       href: tutorial-enable-writeback.md
     - name: Azure Identity Protection’ı tümleştirme

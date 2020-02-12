@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482562"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132044"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Drone iş ortaklarından drone canlandırın al
 
@@ -38,7 +38,7 @@ Farmtempts ile tümleştirmeyi etkinleştirmek için cihaz sağlayıcınıza aş
 Şu adımları izleyin.
 
 1. Bu [betiği](https://aka.ms/farmbeatspartnerscript)indirip yerel sürücünüze ayıklayın. ZIP dosyasının içinde iki dosya bulunur.
-2. [Azure portalında](https://portal.azure.com/) oturum açın ve Azure Cloud Shell'i açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur.
+2. [Azure Portal](https://portal.azure.com/) oturum açın ve Azure Cloud Shell açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur.
 
     ![Portalın sağ üst çubuğunda Azure Cloud Shell açın](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -91,4 +91,4 @@ Drone sağlayıcısı tarafından karşıya yüklenen dosyalar ve görüntüler 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tek bir imagere 'yi almak için Farmtts veri hub 'ı [API 'lerini](references-for-azure-farmbeats.md#rest-api) nasıl kullanacağınızı öğrenin.
+Tek bir imagere 'yi almak için Farmtts veri hub 'ı [API 'lerini](rest-api-in-azure-farmbeats.md) nasıl kullanacağınızı öğrenin.

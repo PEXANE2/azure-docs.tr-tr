@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806822"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133661"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Sınıf türlerine genel bakış-Azure Lab Services
 
@@ -28,7 +28,7 @@ Azure Lab Services, bulutta ders Laboratuvarı ortamlarını hızlıca ayarlaman
 
 Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenmeye odaklanan bir laboratuvar ayarlayabilirsiniz. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir. Bir NLP sınıfı alan öğrenciler bir Linux sanal makinesi (VM) alır ve yazılı insan dilini çözümlemek için kullanılan derin öğrenme modelleri geliştirmek üzere sinir ağ algoritmalarının nasıl uygulanacağını öğrenin.
 
-Bu tür bir laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar ayarlama](class-type-deep-learning-natural-processing.md).
+Bu tür Laboratuvarı ayarlama hakkında ayrıntılı bilgi için, bkz. [Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar ayarlama](class-type-deep-learning-natural-processing.md).
 
 ## <a name="shell-scripting-on-linux"></a>Linux üzerinde kabuk betiği oluşturma
 
@@ -36,7 +36,7 @@ Linux 'ta kabuk betiği oluşturmak için bir laboratuvar ayarlayabilirsiniz. Ko
 
 Bu komut dosyası sınıflarını alan öğrenciler Linux 'un temel bilgilerini öğrenmenizi ve Bash Shell komut dosyası hakkında bilgi sahibi olmak için bir Linux sanal makinesi alır. Linux sanal makinesi, uzak masaüstü erişimi etkinleştirilmiş ve [gedit](https://help.gnome.org/users/gedit/stable/) ve [Visual Studio Code](https://code.visualstudio.com/) metin düzenleyicileri yüklüyken birlikte gelir.
 
-Bu tür bir laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [Linux 'Ta Shell Scripting](class-type-shell-scripting-linux.md).
+Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Linux 'Ta Shell Scripting](class-type-shell-scripting-linux.md).
 
 ## <a name="ethical-hacking"></a>Etik korsanlık
 
@@ -44,7 +44,23 @@ Ahlak hackinin çatalına odaklanan bir sınıf için laboratuvar ayarlayabilirs
 
 Ahlak hacklik bir sınıfta öğrenciler, güvenlik açıklarına karşı savunma için modern teknikler öğrenmesini sağlayabilir. Her öğrenci, iki iç içe sanal makineye sahip bir sanal makine olan [Metasploitable3](https://github.com/rapid7/metasploitable3) görüntüsüne sahip bir sanal makine ve [kalı Linux](https://www.kali.org/) görüntüsüne sahip başka bir makine içeren bir Windows Server konak sanal makinesi alır Metasplosever sanal makinesi, yararlanmak amacıyla kullanılır.  Kalı Linux sanal makinesi, adli görevlerini yürütmek için gereken araçlara erişim sağlar.
 
-Bu tür bir laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [ahlak hacme sınıfı öğretmek için laboratuvar ayarlama](class-type-ethical-hacking.md).
+Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [ahlak hacme sınıfı öğretmek için laboratuvar ayarlama](class-type-ethical-hacking.md).
+
+## <a name="database-management"></a>Veritabanı yönetimi
+Veritabanları kavramlarından biri, üniversitenin çoğu bilgisayar bilimi departmanlarından biridir. Azure Lab Services bir temel veritabanı yönetim sınıfı için laboratuvar ayarlayabilirsiniz. Örneğin, bir sanal makine şablonunu [MySQL](https://www.mysql.com/) veritabanı sunucusu veya [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) sunucusuyla bir laboratuvarda ayarlayabilirsiniz.
+
+Bu tür Laboratuvarı ayarlama hakkında ayrıntılı bilgi için bkz. [ilişkisel veritabanları için veritabanı yönetimini öğretmek için laboratuvar ayarlama](class-type-database-management.md).
+
+## <a name="python-and-jupyter-notebooks"></a>Python ve Jupyıter Not defterleri
+Öğrencilerle, [jupi not defterlerini](http://jupyter-notebook.readthedocs.io)nasıl kullanacağınızı öğretmek için gereken araçlarla Azure Lab Services bir şablon makinesi ayarlayabilirsiniz. Jupyter Not defterleri, zengin metin ve yürütülebilir [Python](https://www.python.org/) kaynak kodunu not defteri adlı tek bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem. Bir not defteri çalıştırmak, giriş ve çıkışları doğrusal bir kaydıyla sonuçlanır.  Bu çıktılar metin, bilgi tabloları, dağılım çizimleri ve daha fazlasını içerebilir.
+
+Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Python ve jupi Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama](class-type-jupyter-notebook.md).
+
+## <a name="mobile-app-development-with-android-studio"></a>Android Studio ile mobil uygulama geliştirme
+Tanıtım amaçlı bir mobil uygulama geliştirme sınıfı öğretmek için Azure Lab Services bir laboratuvar oluşturabilirsiniz. Bu sınıf, [Google Play Store](https://play.google.com/store/apps)yayımlanmakta olabilecek Android mobil uygulamalarına odaklanır.  Öğrenciler, uygulama derlemek için [Android Studio](https://developer.android.com/studio) kullanmayı öğrenin.  [Android Için Visual Studio öykünücüsü](https://visualstudio.microsoft.com/vs/msft-android-emulator/) , uygulamayı yerel olarak test etmek için kullanılır.
+
+Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [mobil uygulama geliştirmeyi Android Studio öğretmek için laboratuvar ayarlama](class-type-mobile-dev-android-studio.md).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,14 +7,14 @@ manager: borisb2015
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8ca249a5f6c300a39548e4e16927d7a20acae1a8
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942334"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133815"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 'da Red hat iş yükleri
 Red hat iş yükleri, Azure 'daki çeşitli tekliflerle desteklenir. Red Hat Enterprise Linux (RHEL) görüntüleri, Red Hat güncelleştirme altyapısı (RHUı) gibi RHEL iş yüklerinin çekirdeğleridir.
@@ -37,6 +37,11 @@ Azure ayrıca Red Hat altın görüntülerini da sunar. Bu görüntüler, var ol
 
 > [!NOTE]
 > Çift faturalandırma üzerine göz önünde, bir kullanıcının RHEL abonelikleri için iki kez ödeme yaptığı iki faturalandırma yapılır. Bu genellikle bir müşterinin bir RHEL PAYG sanal makinesine yetkilendirme eklemek için abonelik Yöneticisi kullandığında oluşur. Örneğin, bir RHEL PAYG görüntüsündeki SAP paketlerine yönelik bir yetkilendirme eklemek için abonelik Yöneticisi 'ni kullanan bir müşteri, bir kez RHEL-bir kez ve SAP aboneliğinden bir kez olmak üzere iki kez faturalandırılacağından, dolaylı olarak çift faturalandırılır. Bu, KCG görüntü kullanıcıları tarafından gerçekleşmeyecektir.
+
+### <a name="generation-2-images"></a>2\. nesil görüntüler
+2\. nesil sanal makineler, 1. nesil VM 'lere kıyasla daha yeni özellikler sunar. Ayrıntılar [2. nesil belgelerde](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)düzenlenir. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır ve önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. Bu, diğer işlerin yanı sıra 2TB ' den büyük olan işletim sistemi disk boyutlarını sağlar. Ayrıca, [Mv2 serisi VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) yalnızca 2. nesil görüntülerde çalışır.
+
+RHEL Generation 2 görüntüleri Market 'te mevcuttur. Azure CLı kullanarak tüm görüntüleri listelerken görüntü SKU 'sunda "Gen2" öğesini arayın ve 2. nesil bir VM dağıtmak için VM dağıtım işlemindeki "Gelişmiş" sekmesine gidin.
 
 ## <a name="red-hat-update-infrastructure-rhui"></a>Red Hat güncelleştirme altyapısı (RHUı)
 Azure, yalnızca PAYG RHEL sanal makineleri (VM 'Ler) için Red Hat güncelleştirme altyapısı sağlar. RHUı, Red Hat CDNs 'in bir yansıtmasıdır ancak yalnızca Azure PAYG RHEL VM 'lerinin erişimine açık olur. Dağıttığınız RHEL görüntüsüne bağlı olarak uygun paketlere erişebilirsiniz. Örneğin, bir RHEL for SAP görüntüsü, temel RHEL paketlerine ek olarak SAP paketlerine erişebilcektir.

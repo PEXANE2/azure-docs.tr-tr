@@ -1,7 +1,7 @@
 ---
 title: Mobil uygulamadan bir Web API 'SI çağırma | Mavisi
 titleSuffix: Microsoft identity platform
-description: Web API 'Leri çağıran bir mobil uygulama oluşturmayı öğrenin (Web API 'SI çağırma)
+description: Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin. (Bir Web API 'SI çağırın.)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,37 +16,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6b87809e29940b343a395ffb461c0829295fcd8a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f41c9a0e4754c60fd248e540a81e2afa833d655b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702071"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132397"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Web API 'Lerini çağıran mobil uygulama-bir Web API 'SI çağırma
+# <a name="call-a-web-api-from-a-mobile-app"></a>Mobil uygulamadan bir Web API 'SI çağırma
 
-Uygulamanız bir kullanıcıya kaydolduktan ve belirteçleri aldıktan sonra, MSAL Kullanıcı, kullanıcının ortamı ve verilen belirteçler hakkında çeşitli bilgi parçalarını gösterir. Uygulamanız, bu değerleri bir Web API 'SI çağırmak veya kullanıcıya bir hoş geldiniz iletisi göstermek için kullanabilir.
+Uygulamanız bir kullanıcıya kaydolduktan ve belirteçleri aldıktan sonra, Microsoft kimlik doğrulama kitaplığı (MSAL) Kullanıcı, kullanıcının ortamı ve verilen belirteçler hakkında bilgi gösterir. Uygulamanız, bu değerleri bir Web API 'SI çağırmak veya kullanıcıya bir hoş geldiniz iletisi göstermek için kullanabilir.
 
-İlk olarak MSAL sonucuna bakacağız. Daha sonra, `AuthenticationResult` bir erişim belirtecinin nasıl kullanılacağını veya korumalı bir Web API 'sini çağırmak için `result` bakacağız.
+Bu makalede, ilk olarak MSAL sonucuna bakacağız. Daha sonra, korumalı bir Web API 'sini çağırmak için `AuthenticationResult` veya `result` erişim belirtecinin nasıl kullanılacağını inceleyeceğiz.
 
 ## <a name="msal-result"></a>MSAL sonucu
 MSAL aşağıdaki değerleri sağlar: 
 
-- `AccessToken`: bir HTTP taşıyıcı isteğindeki korumalı Web API 'Lerini çağırmak için kullanılır.
-- `IdToken`: kullanıcının adı, ev kiracısı ve depolama için benzersiz bir tanımlayıcı gibi oturum açmış kullanıcıyla ilgili yararlı bilgiler Içerir.
-- `ExpiresOn`: belirtecin sona erme saati. MSAL, uygulamalar için otomatik yenilemeyi işler.
-- `TenantId`: kullanıcının oturum açmasından kiracının tanımlayıcısı. Konuk kullanıcılar (Azure Active Directory B2B) için, bu değer kullanıcının giriş kiracısına değil, kullanıcının oturum açmasından kiracıyı belirler.  
-- `Scopes`: belirtecinizle verilen kapsamlar. Verilen kapsamlar, istediğiniz kapsamların bir alt kümesi olabilir.
+- `AccessToken`, HTTP taşıyıcı isteğinde korunan Web API 'Lerini çağırır.
+- `IdToken`, oturum açmış kullanıcıyla ilgili yararlı bilgiler içerir. Bu bilgiler kullanıcının adını, ana kiracısını ve depolama için benzersiz bir tanımlayıcıyı içerir.
+- `ExpiresOn`, belirtecin sona erme zamanıdır. MSAL, bir uygulamanın otomatik yenilemesini işler.
+- `TenantId`, kullanıcının oturum açmadığı kiracının tanımlayıcısıdır. Azure Active Directory (Azure AD) B2B 'daki Konuk kullanıcılar için bu değer, kullanıcının oturum açmakta olduğu kiracıyı tanımlar. Değer, kullanıcının ana kiracısını tanımlamaz.  
+- `Scopes`, belirtecinizle verilen kapsamları gösterir. Verilen kapsamlar, istediğiniz kapsamların bir alt kümesi olabilir.
 
-MSAL Ayrıca `Account`için bir soyutlama sağlar. `Account`, geçerli kullanıcının oturum açmış olan hesabını temsil eder.
+MSAL Ayrıca `Account` bir değer için bir soyutlama sağlar. `Account` bir değer, geçerli kullanıcının oturum açmış olan hesabını temsil eder:
 
-- `HomeAccountIdentifier`: kullanıcının ana kiracının tanımlayıcısı.
-- `UserName`: kullanıcının tercih ettiği Kullanıcı adı. Bu, Azure Active Directory B2C kullanıcılar için boş olabilir.
-- `AccountIdentifier`: oturum açan kullanıcının tanımlayıcısı. Bu değer, Kullanıcı başka bir kiracıda Konuk olmadığı sürece çoğu durumda `HomeAccountIdentifier` değeriyle aynı olacaktır.
+- `HomeAccountIdentifier` kullanıcının ana kiracısını tanımlar.
+- kullanıcının tercih ettiği Kullanıcı adı `UserName`. Azure AD B2C kullanıcılar için bu değer boş olabilir.
+- `AccountIdentifier`, oturum açan kullanıcıyı tanımlar. Çoğu durumda, Kullanıcı başka bir kiracıda Konuk olmadığı sürece bu değer `HomeAccountIdentifier` değeriyle aynıdır.
 
 ## <a name="call-an-api"></a>API çağırma
 
-Erişim belirtecine sahip olduktan sonra, bir Web API 'SI çağırmak kolaydır. Uygulamanız bir HTTP isteği oluşturmak için belirteci kullanır ve sonra isteği çalıştırır.
+Erişim belirtecine sahip olduktan sonra, bir Web API 'SI çağırabilirsiniz. Uygulamanız bir HTTP isteği oluşturmak için belirteci kullanır ve sonra isteği çalıştırır.
 
 ### <a name="android"></a>Android
 
@@ -90,9 +90,7 @@ Erişim belirtecine sahip olduktan sonra, bir Web API 'SI çağırmak kolaydır.
 
 ### <a name="msal-for-ios-and-macos"></a>iOS ve macOS için MSAL
 
-Belirteçleri elde etmek için yöntemler bir `MSALResult` nesnesi döndürür. `MSALResult`, bir Web API 'sini çağırmak için kullanılabilen bir `accessToken` özelliğini kullanıma sunar. Korunan Web API 'sine erişmek için çağrı yapılmadan önce, erişim belirtecinin HTTP yetkilendirme üstbilgisine eklenmesi gerekir.
-
-Amaç-C:
+Belirteçleri elde etmek için yöntemler bir `MSALResult` nesnesi döndürür. `MSALResult`, bir `accessToken` özelliğini kullanıma sunar. Bir Web API 'sini çağırmak için `accessToken` kullanabilirsiniz. Korumalı Web API 'sine erişmek için çağrı yapmadan önce bu özelliği HTTP yetkilendirme üstbilgisine ekleyin.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -105,8 +103,6 @@ NSURLSessionDataTask *task =
      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
 [task resume];
 ```
-
-SWIFT
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -122,16 +118,17 @@ task.resume()
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-## <a name="making-several-api-requests"></a>Birkaç API isteği oluşturma
+## <a name="make-several-api-requests"></a>Birkaç API isteği yapın
 
-Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağırmanız gerekiyorsa, uygulamanızı oluştururken aşağıdakileri dikkate alın:
+Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağırmanız gerekiyorsa, uygulamanızı oluştururken aşağıdaki konuları göz önünde bulundurun:
 
-- **Artımlı izin**: Microsoft Identity platform, uygulamaların başlangıçta değil, kullanıcı onayı almasına izin verir. Uygulamanız bir API 'yi çağırmaya her seferinde yalnızca kullanması gereken kapsamları istemesi gerekir.
-- **Koşullu erişim**: bazı senaryolarda, birkaç API isteği yaptığınızda ek koşullu erişim gereksinimleri alabilirsiniz. Bu durum, ilk isteğin uygulanmış koşullu erişim ilkesi yoksa ve uygulamanız koşullu erişim gerektiren yeni bir API 'ye sessizce erişmeye çalışırsa meydana gelebilir. Bu senaryoyu işlemek için sessiz isteklerden gelen hataları yakalamalı ve etkileşimli bir istek oluşturmak için hazırlandığınızdan emin olun.  Daha fazla bilgi için bkz. [koşullu erişim Için rehberlik](conditional-access-dev-guide.md).
+- **Artımlı izin**: Microsoft Identity platform, uygulamaların başlangıçta değil, izin gerektiğinde kullanıcı onayı almasına izin verir. Uygulamanız bir API 'yi çağırmaya her seferinde, yalnızca ihtiyaç duyacağı kapsamları istemesi gerekir.
 
-## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>Xamarin veya UWP 'de birkaç API çağırma-artımlı onay ve koşullu erişim
+- **Koşullu erişim**: birkaç API isteği yaptığınızda, bazı senaryolarda ek koşullu erişim gereksinimlerini karşılamanız gerekebilir. Bu şekilde, ilk isteğin koşullu erişim ilkeleri yoksa ve uygulamanız koşullu erişim gerektiren yeni bir API 'ye sessizce erişmeyi denediğinde gereksinimler bu şekilde artabilir. Bu sorunu gidermek için, sessiz isteklerden gelen hataları yakalamalı ve etkileşimli bir istek oluşturmak için hazırlandığınızdan emin olun.  Daha fazla bilgi için bkz. [koşullu erişim Için rehberlik](conditional-access-dev-guide.md).
 
-Aynı kullanıcı için birden çok API çağrısı yapmanız gerekiyorsa, bir kullanıcı için bir belirteç aldıktan sonra, bir belirteci almak için `AcquireTokenSilent` daha sonra çağırarak kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz.
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Artımlı onay ve koşullu erişim kullanarak birkaç API çağırın
+
+Aynı kullanıcı için birden çok API çağırmanız gerekiyorsa, Kullanıcı için bir belirteç aldıktan sonra, bir belirteci almak için `AcquireTokenSilent` daha sonra çağırarak kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -141,10 +138,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Etkileşimin gerekli olduğu durumlar şunlardır:
+Şu durumlarda etkileşim gerekir:
 
-- Kullanıcı ilk API 'yi kabul etmiş, ancak artık daha fazla kapsam için onay gerektirir (artımlı onay)
-- İlk API çok faktörlü kimlik doğrulaması gerektirmez, ancak bir sonraki tane.
+- Kullanıcı ilk API 'ye onay verdi, ancak şimdi daha fazla kapsam için onay gerektirir. Bu durumda, artımlı onay kullanırsınız.
+- İlk API çok faktörlü kimlik doğrulaması gerektirmez, ancak sonraki API.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

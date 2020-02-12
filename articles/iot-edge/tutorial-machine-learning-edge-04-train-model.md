@@ -4,39 +4,29 @@ description: Bu öğreticide, Azure Machine Learning kullanarak bir makine öğr
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c0613d319c0c82fa61d75ed016d68d38dfcea8d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701820"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133498"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
 
 > [!NOTE]
 > Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
-Bu makalede, Azure Machine Learning kullanarak bir makine öğrenimi modelini eğitme ve sonra bu modeli bir Azure IoT Edge modülü olarak dağıtılabilecek bir kapsayıcı görüntüsü olarak paketleme için Azure Notebooks kullanırız. Azure Notebooks, makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullanılan temel bir blok olan Azure Machine Learning çalışma alanından faydalanır.
+Bu makalede, aşağıdaki görevleri yaptık:
 
-Öğreticinin bu bölümündeki etkinlikler iki not defteri arasında bölünmüştür.
+* Machine Learning modelini eğitmek için Azure Notebooks kullanın.
+* Eğitilen modeli kapsayıcı görüntüsü olarak paketleyin.
+* Kapsayıcı görüntüsünü Azure IoT Edge modülü olarak dağıtın.
 
-* **01-turbofan\_gerileme. ipynb:** Bu not defteri Azure Machine Learning kullanarak bir modeli eğitme ve yayımlama adımlarında size yol gösterir. Genel olarak, ilgili adımlar şunlardır:
-
-  1. Eğitim verilerini indirin, hazırlayın ve araştırın
-  2. Makine öğrenimi denemesi oluşturmak ve çalıştırmak için hizmet çalışma alanını kullanma
-  3. Deneyden model sonuçlarını değerlendirin
-  4. En iyi modeli hizmet çalışma alanına yayımlayın
-
-* **02-turbofan\_\_modeli dağıt. ipynb:** Bu not defteri, önceki bir not defterinde oluşturulan modeli alır ve bir Azure IoT Edge cihazına dağıtılmaya yönelik bir kapsayıcı görüntüsü oluşturmak için kullanır.
-
-  1. Model için bir Puanlama betiği oluşturun
-  2. Görüntü oluşturma ve yayımlama
-  3. Görüntüyü Azure Container Instance üzerinde Web hizmeti olarak dağıtma
-  4. Modeli doğrulamak için Web hizmetini kullanma ve görüntünün beklendiği gibi çalışması
+Azure Notebooks, makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullanılan temel bir blok olan Azure Machine Learning çalışma alanından faydalanır.
 
 Bu makaledeki adımlar genellikle veri bilimcileri tarafından gerçekleştirilmiş olabilir.
 
@@ -47,76 +37,135 @@ Bu makaledeki adımlar genellikle veri bilimcileri tarafından gerçekleştirilm
 * **Hızlı başlangıç:** [Not defteri oluşturma ve paylaşma](../notebooks/quickstart-create-share-jupyter-notebook.md)
 * **Öğretici:** [Python Ile Jupyter Not defteri oluşturma ve çalıştırma](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-Geliştirici sanal makinesinde daha önce olduğu gibi Azure Not defterleri kullanmak, alıştırma için tutarlı bir ortam sağlar.
+Azure Not defterleri 'nin kullanılması, alıştırma için tutarlı bir ortam sağlar.
 
 > [!NOTE]
 > Ayarladıktan sonra, Azure Notebooks hizmetine herhangi bir makineden erişilebilir. Kurulum sırasında, ihtiyacınız olacak tüm dosyaları içeren geliştirme sanal makinesini kullanmanız gerekir.
 
 ### <a name="create-an-azure-notebooks-account"></a>Azure Notebooks hesabı oluşturma
 
-Azure Not defteri hesapları Azure aboneliklerinden bağımsızdır. Azure Notebooks kullanmak için bir hesap oluşturmanız gerekir.
+Azure Notebooks kullanmak için bir hesap oluşturmanız gerekir. Azure Not defteri hesapları Azure aboneliklerinden bağımsızdır.
 
 1. [Azure Not defterleri](https://notebooks.azure.com)' ne gidin.
 
-2. Sayfanın sağ üst köşesinde **bulunan oturum aç** ' a tıklayın.
+1. Sayfanın sağ üst köşesinde **bulunan oturum aç** ' a tıklayın.
 
-3. İş veya okul hesabınızla (Azure Active Directory) ya da kişisel hesabınızla (Microsoft hesabı) oturum açın.
+1. İş veya okul hesabınızla (Azure Active Directory) ya da kişisel hesabınızla (Microsoft hesabı) oturum açın.
 
-4. Daha önce Azure Notebooks kullanmadıysanız, Azure Notebooks uygulamasına erişim vermeniz istenir.
+1. Daha önce Azure Notebooks kullanmadıysanız, Azure Notebooks uygulamasına erişim vermeniz istenir.
 
-5. Azure Notebooks için bir kullanıcı KIMLIĞI oluşturun.
+1. Azure Notebooks için bir kullanıcı KIMLIĞI oluşturun.
 
-### <a name="upload-jupyter-notebooks-files"></a>Jupyıter Not defteri dosyalarını karşıya yükle
+### <a name="upload-jupyter-notebook-files"></a>Jupyter Not defteri dosyalarını karşıya yükle
 
-Bu adımda, yeni bir Azure Notebooks projesi oluşturur ve bu dosyayı karşıya yükleyin. Karşıya yüklemediğimiz dosyalar özellikle:
+Örnek Not defteri dosyalarını yeni bir Azure Notebooks projesine yükleyeceğiz.
 
-* **01-turbofan\_gerileme. ipynb**: Azure Storage hesabından cihaz bandı tarafından oluşturulan verileri indirme işlemini adım adım gösteren Jupyter Not defteri dosyası; sınıflandırıcının eğitimi için verileri keşfetme ve hazırlama; modeli eğitme; Test\_FD003. txt dosyasında bulunan test veri kümesini kullanarak verileri test etme; ve son olarak, Machine Learning hizmet çalışma alanına sınıflandırıcı modelini kaydetme.
+1. Yeni hesabınızın kullanıcı sayfasında, üst menü çubuğundan **Projelerim** ' ı seçin.
 
-* **02-turbofan\_\_modeli dağıt. ipynb:** Bir kapsayıcı görüntüsü oluşturmak için Machine Learning hizmeti çalışma alanına kaydedilen sınıflandırıcı modelini kullanma sürecinde size kılavuzluk eden Jupyter Not defteri. Görüntü oluşturulduktan sonra Not defteri, görüntüyü bir Web hizmeti olarak dağıtma sürecinde size kılavuzluk eder; böylece, beklendiği gibi çalıştığını doğrulayabilirsiniz. Doğrulanan görüntü, Bu öğreticinin [özel IoT Edge modülleri oluştur ve dağıt](tutorial-machine-learning-edge-06-custom-modules.md) bölümünde IoT Edge cihazımız cihaza dağıtılır.
+1. **Yeni proje oluştur** iletişim kutusunda, **Proje kimliğini**de otomatik olarak oluşturan bir **Proje adı** girin.
 
-* **Test\_FD003. txt:** Bu dosya, eğitilen sınıflandırıcımız doğrulanırken test kümesi olarak kullanacağız verileri içerir. Örnek basitliği için test kümesi olarak özgün yarışma göre belirtilen test verilerini kullanmayı seçtik.
+1. Projenin public olması veya bir Benioku dosyası olması gerektiği için **Public** ve **README** işaretini kaldırın.
 
-* **Rul\_FD003. txt:** Bu dosya, test\_FD003. txt dosyasındaki her bir cihazın son döngüsüyle ilgili RUL 'yi içerir. Verilerin ayrıntılı bir açıklaması için bkz. C:\\Source\\ıotedgeandmlsample\\\\Data içindeki **README. txt** ve **hasar yayma modellemesi. PDF** dosyaları.
+1. **Oluştur**'u seçin.
 
-* **Utils.py:** Verilerle çalışmak için bir Python yardımcı program işlevleri kümesi içerir. İlk not defteri, işlevlerin ayrıntılı bir açıklamasını içerir.
-
-* **README.MD:** Not defterlerinin kullanımını açıklayan Benioku dosyası.
-
-Yeni bir proje oluşturun ve dosyaları Not defterinize yükleyin.
-
-1. Üst menü çubuğundan **Projelerim** ' nı seçin.
-
-1. **+ Yeni proje**' yi seçin. Bir ad ve KIMLIK girin. Projenin genel olması veya bir Benioku dosyası olması gerekmez.
-
-1. **Karşıya yükle** ' yi seçin ve **bilgisayar**' ı seçin.
+1. **Karşıya yükle** ' yi (yukarı ok simgesi) seçin ve **bilgisayardan**öğesini seçin.
 
 1. **Dosya Seç**' i seçin.
 
-1. **C:\source\ıotedgeandmlsample\azurenotebooks**dizinine gidin. Tüm dosyalar ' ı seçin ve **Aç**' a tıklayın.
+1. **C:\source\ıotedgeandmlsample\azurenotebooks**dizinine gidin. Listedeki tüm dosyaları seçin ve **Aç**' a tıklayın.
 
 1. Karşıya yüklemeye başlamak için **karşıya yükle** ' yi seçin ve sonra işlem tamamlandıktan sonra **bitti** ' yi seçin.
 
+### <a name="azure-notebook-files"></a>Azure Not defteri dosyaları
+
+Azure Notebooks projenize yüklediğiniz dosyaları gözden geçirelim. Öğreticinin bu bölümündeki etkinlikler, birkaç destekleyici dosya kullanan iki Not Defteri dosyasında yayılamaz.
+
+* **01-turbofan\_gerileme. ipynb:** Bu not defteri, makine öğrenimi denemesi oluşturmak ve çalıştırmak için Machine Learning hizmeti çalışma alanını kullanır. Genel olarak, Not defteri aşağıdaki adımları yapar:
+
+  1. Cihaz bandı tarafından oluşturulan Azure Storage hesabından verileri indirir.
+  1. Eğitim ve sınıflandırıcı ad modeli için verileri araştırır ve hazırlar.
+  1. Test veri kümesi (test\_FD003. txt) kullanarak deneyden modeli değerlendirin.
+  1. En iyi sınıflandırıcı modelini Machine Learning hizmeti çalışma alanına yayınlar.
+
+* **02-turbofan\_\_modeli dağıt. ipynb:** Bu not defteri, önceki bir not defterinde oluşturulan modeli alır ve bir Azure IoT Edge cihazına dağıtılmaya yönelik bir kapsayıcı görüntüsü oluşturmak için kullanır. Not defteri aşağıdaki adımları gerçekleştirir:
+
+  1. Model için bir Puanlama betiği oluşturur.
+  1. Machine Learning hizmeti çalışma alanında kaydedilen sınıflandırıcı modelini kullanarak bir kapsayıcı görüntüsü üretir.
+  1. Görüntüyü Azure Container Instance üzerinde bir Web hizmeti olarak dağıtır.
+  1. , Modeli doğrulamak için Web hizmetini kullanır ve görüntü beklendiği gibi çalışır. Doğrulanan görüntü, Bu öğreticinin [özel IoT Edge modülleri oluştur ve dağıt](tutorial-machine-learning-edge-06-custom-modules.md) bölümünde IoT Edge cihazımız cihaza dağıtılır.
+
+* **Test\_FD003. txt:** Bu dosya, eğitilen sınıflandırıcımız doğrulanırken test kümesi olarak kullanacağız verileri içerir. Kendi basitliği için test kümesi olarak, özgün yarışma göre belirtilen test verilerini kullanmayı seçtik.
+
+* **Rul\_FD003. txt:** Bu dosya, test\_FD003. txt dosyasındaki her bir cihazın son döngüsüyle ilgili RUL 'yi içerir. Verilerin ayrıntılı bir açıklaması için bkz. C:\\Source\\ıotedgeandmlsample\\\\Data içindeki Readme. txt ve hasar yayma modellemesi. PDF dosyaları.
+
+* **Utils.py:** Verilerle çalışmak için bir Python yardımcı program işlevleri kümesi içerir. İlk not defteri, işlevlerin ayrıntılı bir açıklamasını içerir.
+
+* **README.MD:** Not defterlerinin kullanımını açıklayan Benioku dosyası.  
+
 ## <a name="run-azure-notebooks"></a>Azure Notebooks Çalıştır
 
-Proje oluşturuldığına göre, **01-turbofan\_gerileme. ipynb** Not defterini çalıştırın.
+Artık proje oluşturulduğuna göre, not defterlerini çalıştırabilirsiniz. 
 
-1. Turbofan proje sayfasında, **01-turbofa\_regresyon. ipynb**' yi seçin.
+1. Proje sayfanıza **01-turbofan\_gerileme. ipynb**öğesini seçin.
 
     ![Çalıştırılacak ilk not defterini seçin](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-2. İstenirse, iletişim kutusunda Python 3,6 çekirdeğini seçin ve **çekirdeği ayarla**' yı seçin.
+1. İstenirse, iletişim kutusunda Python 3,6 çekirdeğini seçin ve **çekirdeği ayarla**' yı seçin.
 
-3. Not defteri **güvenilir değil**olarak listeleniyorsa, Not defterinin sağ üst köşesindeki **güvenilir değil** pencere öğesine tıklayın. İletişim kutusu geldiğinde **güven**' i seçin.
+1. Not defteri **güvenilir değil**olarak listeleniyorsa, Not defterinin sağ üst köşesindeki **güvenilir değil** pencere öğesine tıklayın. İletişim kutusu geldiğinde **güven**' i seçin.
 
-4. Not defterindeki yönergeleri izleyin.
+1. Not defteri 'nde, aşağıdaki **genel özellikleri ayarla** yönergelerinden ve kod `AZURE_SUBSCRIPTION_ID =` başlayıp Azure aboneliğiniz, ayarlarınız ve kaynaklarınız için değerleri dolduracak olan hücreye aşağı doğru kaydırın.
 
-    * `Ctrl + Enter` bir hücre çalıştırır.
-    * `Shift + Enter` bir hücre çalıştırır ve sonraki hücreye gider.
-    * Bir hücre çalışırken, köşeli ayraçlar arasında **[\*]** gibi bir yıldız işareti vardır. İşlem tamamlandığında, yıldız işareti bir sayıyla değişir ve aşağıda ilgili bir çıktı aşağıda bulunabilir. Hücreler genellikle önceki çalışmaların çalışmasına göre oluşturulduğundan, tek seferde yalnızca bir hücre çalıştırılabilir.
+    ![Not defterindeki genel özellikleri ayarlama](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
 
-5. **01-turbofan\_gerileme. ipynb** Not defterini çalıştırmayı bitirdiğinizde proje sayfasına dönün.
+1. Araç çubuğunda **Çalıştır** ' i seçerek o hücreyi çalıştırın.
 
-6. **02-turbofa\_deploy\_model. ipynb** ' nı açın ve ikinci not defterini çalıştırmak için bu bölümdeki adımları tekrarlayın.
+    Bir hücre çalışırken, köşeli ayraçlar ([\*]) arasında bir yıldız işareti görüntüler. Hücrenin işlemi tamamlandığında, yıldız işareti bir sayıyla değişir ve ilgili çıktı görünebilir. Bir not defterindeki hücreler sırayla oluşturulur ve tek seferde yalnızca bir adet çalıştırılabilir.
+
+    Not defterindeki yönergeleri izleyin. Ayrıca **, hücre menüsündeki Çalıştır** seçeneklerini, bir hücreyi çalıştırmak için  + `Enter` `Ctrl`ve bir hücreyi çalıştırmak ve sonraki hücreye ilerlemek için  + `Enter` `Shift`.
+
+    > [!TIP]
+    > Tutarlı hücre işlemleri için tarayıcınızda birden çok sekmeden aynı not defterini çalıştırmaktan kaçının.
+
+1. **Çalışma alanına** genel bakış metnini hemen izleyen hücreye kaydırın ve bu hücreyi çalıştırın. Hücrenin çıktısında, kimlik doğrulaması için oturum açmanızı sağlayan bağlantıyı arayın. 
+
+    ![Cihaz kimlik doğrulaması için oturum açma istemi](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
+
+    Bağlantıyı açın ve belirtilen kodu girin. Bu oturum açma yordamı, Microsoft Azure platformlar arası komut satırı arabirimini kullanarak Azure kaynaklarına erişmek için Jupyter Not defterinin kimliğini doğrular.  
+
+    ![Cihazda uygulamanın kimliğini doğrulama onayı](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
+
+1. Bu noktada, kalan hücreleri çalıştırabilirsiniz. Hücrelerdeki kodun sıralı olarak çalışması için tüm hücreleri çalıştırmak idealdir. **Hücre** menüsünden **Tümünü Çalıştır** ' ı seçin. Not defteri aracılığıyla yedekleme yapın ve hücre işlemlerinin nasıl tamamlandığını inceleyin.
+
+    **Verileri keşfet** bölümünde, algılayıcı değerlerinin dağlarını oluşturan **algılayıcı okumaları ve rul** alt bölümünde yer alan hücreleri gözden geçirebilirsiniz.
+
+    ![Algılayıcı readler dağınık terçizer](media/tutorial-machine-learning-edge-04-train-model/sensor-readings.png)
+
+1. Not defterini kaydedin ve Not defteri 'nin sağ üst köşesindeki proje adına tıklayarak veya tarayıcınıza geri giderek proje sayfanıza dönün.
+
+1. **02-turbofa\_deploy\_model. ipynb** ' nı açın ve ikinci not defterini çalıştırmak için bu yordamdaki adımları tekrarlayın.
+
+1. Not defterini kaydedin ve Not defteri 'nin sağ üst köşesindeki proje adına tıklayarak veya tarayıcınıza geri giderek proje sayfanıza dönün.
+
+### <a name="verify-success"></a>Başarıyı doğrula
+
+Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğenin oluşturulduğunu doğrulayın.
+
+1. Azure Notebooks projesi sayfanızda, bir noktayla başlayan öğe adlarının görünmesi için **gizli öğeleri göster** ' i seçin.
+
+1. Aşağıdaki dosyaların oluşturulduğunu doğrulayın:
+
+    | Dosya | Açıklama |
+    | --- | --- |
+    | ./aml_config/.azureml/config.JSON | Azure Machine Learning Çalışma Alanı oluşturmak için kullanılan yapılandırma dosyası. |
+    | ./aml_config/model_config. JSON | Modeli Azure 'daki **Turbofandemo** Machine Learning çalışma alanına dağıtmak için gereken yapılandırma dosyası. |
+    | MyENV. yıml| Dağıtılan Machine Learning modeli için bağımlılıklar hakkında bilgi sağlar.|
+
+1. Azure portal, **Turbofandemo** Machine Learning çalışma alanının kaynak grubunuzda mevcut olduğunu doğrulayın.
+
+### <a name="debugging"></a>Hata Ayıklama
+
+Hata ayıklama için Python deyimlerini not defterine iç içe ekleyebilirsiniz, genellikle `print()` komutu. Tanımlı olmayan değişkenler veya nesneler görürseniz, ilk olarak bildirildiği veya örneklendiği hücreleri çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314105"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138169"
 ---
 # <a name="score-model-module"></a>Score Model (Model Puanlama) modülü
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Eğitilen bir sınıflandırma veya regresyon modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
 
@@ -44,7 +44,7 @@ Puan veya tahmin edilen değer, modele ve giriş verilerinize bağlı olarak bir
 
 - Sınıflandırma modelleri için, [puan modeli](./score-model.md) , sınıf için tahmin edilen değerin yanı sıra öngörülen değerin olasılığını verir.
 - Regresyon modelleri için, [puan modeli](./score-model.md) yalnızca öngörülen sayısal değeri oluşturur.
-- Görüntü sınıflandırma modelleri için, puan görüntüdeki nesnenin sınıfı veya belirli bir özelliğin bulunup bulunmadığını gösteren bir Boole olabilir.
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Puanları Web hizmeti olarak yayımlama
 

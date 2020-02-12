@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314530"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137575"
 ---
 # <a name="apply-transformation-module"></a>Dönüştürme modülü Uygula
 
-Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Bir giriş veri kümesini önceden hesaplanan bir dönüşüme göre değiştirmek için bu modülü kullanın.  
   
@@ -32,9 +32,9 @@ Azure Machine Learning birçok farklı özel dönüştürme türü oluşturma ve
 
 ## <a name="how-to-use-apply-transformation"></a>Dönüştürme uygula kullanımı  
   
-1. İşlem hattınızda **dönüştürme modülünü Uygula** ' yı ekleyin. Bu modülü, **puan** kategorisinde **Machine Learning**altında bulabilirsiniz. 
+1. İşlem hattınızda **dönüştürme modülünü Uygula** ' yı ekleyin. Bu modülü **model puanlama & değerlendirme** kategorisinde bulabilirsiniz. 
   
-2. Giriş olarak kullanmak için mevcut bir dönüştürmeyi bulun.  Daha önce kaydedilen dönüşümler sol gezinti bölmesindeki **dönüşümler** grubunda bulunabilir.  
+2. Giriş olarak kullanmak için mevcut bir dönüştürmeyi bulun. Daha önce kaydedilen dönüşümler, sol modül ağacındaki **veri** kümeleri kategorisi altında **My DataSet** grubunda bulunabilir.  
   
    
   

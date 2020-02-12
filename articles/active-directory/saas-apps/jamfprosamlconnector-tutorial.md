@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: JAMF Pro ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici Azure Active Directory: JAMF Pro ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve JAMF Pro arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
-ms.translationtype: MT
+ms.openlocfilehash: 80bc0a1680d43b40b5ab69db5ded5898e5a52ddf
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212387"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137486"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Öğretici: JAMF Pro ile SSO tümleştirmesi Azure Active Directory
 
@@ -80,11 +80,11 @@ Bu bölümde, Azure portal Azure AD SSO 'yu etkinleştirirsiniz.
 
 1. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP tarafından başlatılan** modda yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna aşağıdaki formülü kullanan bir URL girin:`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. **Tanımlayıcı** metin kutusuna şu formülü kullanan bir URL girin: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki formülü kullanan bir URL girin:`https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. **Yanıt URL 'si** metin kutusuna şu formülü kullanan bir URL girin: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-1. **Ek URL 'Ler ayarla**' yı seçin. Uygulamayı **SP tarafından başlatılan** modda yapılandırmak Istiyorsanız, **oturum açma URL 'si** metin kutusuna AŞAĞıDAKI formülü kullanan bir URL girin:`https://<subdomain>.jamfcloud.com`
+1. **Ek URL 'Ler ayarla**' yı seçin. Uygulamayı **SP tarafından başlatılan** modda yapılandırmak Istiyorsanız, **oturum açma URL 'si** metin kutusuna şu formülü kullanan bir URL girin: `https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. JAMF Pro portalındaki **Çoklu oturum açma** bölümünden gerçek tanımlayıcı değerini alacaksınız, bu da Öğreticinin ilerleyen kısımlarında açıklanmıştır. Tanımlayıcı değerden gerçek alt etki alanı değerini ayıklayabilir ve bu alt etki alanı bilgilerini oturum açma URL 'SI ve yanıt URL 'SI olarak kullanabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen formüllere de başvurabilirsiniz.
@@ -98,12 +98,12 @@ Bu bölümde, Azure portal Azure AD SSO 'yu etkinleştirirsiniz.
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmede **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
+   1. **Ad** alanına `B.Simon` girin.
    1. **Kullanıcı adı** alanına [ad] @ [companydomain] yazın. [uzantı]. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’u seçin.
+   1. **Oluştur**'u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -123,7 +123,7 @@ Bu bölümde, JAMF Pro 'ya B. Simon erişimi verirsiniz.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için uygun rolü seçin. Ardından, ekranın alt kısmındaki **Seç** düğmesini seçin.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
 
-## <a name="configure-sso-in-jamf-pro"></a>JAMF Pro 'da SSO 'Yu yapılandırma 
+## <a name="configure-sso-in-jamf-pro"></a>JAMF Pro 'da SSO 'Yu yapılandırma
 
 1. JAMF Pro 'da yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**' ı seçerek **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklersiniz.
 
@@ -147,30 +147,32 @@ Bu bölümde, JAMF Pro 'ya B. Simon erişimi verirsiniz.
 
     ![JAMF Pro 'da çoklu oturum açma sayfası](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. **Çoklu oturum açma kimlik doğrulamasını etkinleştir** onay kutusunu seçin.
+  a. **Düzenle**’yi seçin.
 
-    b. **KIMLIK sağlayıcısı** açılan menüsünden bir seçenek olarak **diğer** ' i seçin.
+  b. **Çoklu oturum açma kimlik doğrulamasını etkinleştir** onay kutusunu seçin.
 
-    c. **DIĞER sağlayıcı** ALANıNA **Azure AD**girin.
+    c. **Kimlik sağlayıcısı** açılan menüsünden **Azure** seçeneğini belirleyin.
 
     d. **VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** BÖLÜMÜNDEKI **tanımlayıcı (varlık kimliği)** alanına yapıştırın.
 
     > [!NOTE]
-    > Azure Portal 'teki `<SUBDOMAIN>` **temel SAML yapılandırması** bölümünde oturum açma URL 'sini ve yanıt URL 'sini doldurmak için alanındaki değeri kullanın.
+    > `<SUBDOMAIN>` alanındaki değeri, Azure portal **temel SAML yapılandırması** bölümünde oturum açma URL 'sini ve yanıt URL 'sini tamamladıktan sonra kullanın.
 
-    e. **KIMLIK sağlayıcısı meta VERI kaynağı** açılan menüsünden **meta veri URL 'sini** seçin. Görüntülenen alanda, Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
+    e. **Kimlik sağlayıcısı meta veri kaynağı** açılan menüsünden **meta veri URL 'sini** seçin. Görüntülenen alanda, Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
-7. Aynı sayfada, **Kullanıcı eşleme** bölümüne gidin. Ardından, aşağıdaki adımları uygulayın.   
+    f. Seçim Belirteç süre sonu değerini düzenleyin veya "SAML belirteci süre sonunu devre dışı bırak" seçeneğini belirleyin.
+
+7. Aynı sayfada, **Kullanıcı eşleme** bölümüne gidin. Ardından, aşağıdaki adımları uygulayın.
 
     ![JAMF Pro 'da çoklu oturum açma sayfasının Kullanıcı eşleme bölümü.](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
-    a. **KIMLIK sağlayıcısı kullanıcı eşlemesi**Için **NameID** seçeneğini belirleyin. Varsayılan olarak, bu seçenek **NameID**olarak ayarlanır, ancak özel bir öznitelik tanımlayabilirsiniz.
+    a. **Kimlik sağlayıcısı kullanıcı eşlemesi**Için **NameID** seçeneğini belirleyin. Varsayılan olarak, bu seçenek **NameID**olarak ayarlanır, ancak özel bir öznitelik tanımlayabilirsiniz.
 
     b. **JAMF Pro kullanıcı eşlemesi**Için **e-posta** ' yı seçin. JAMF Pro, IDP tarafından önce kullanıcılar ve ardından gruplar tarafından gönderilen SAML özniteliklerini eşleştirir. Bir Kullanıcı JAMF Pro 'ya erişmeyi denediğinde, JAMF Pro, kimlik sağlayıcısından Kullanıcı hakkında bilgi alır ve tüm JAMF Pro Kullanıcı hesaplarıyla eşleşir. Gelen Kullanıcı hesabı bulunmazsa, JAMF Pro bunu grup adıyla eşleştirmeye çalışır.
 
-    c. Değeri `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` **kimlik sağlayıcısı grubu öznitelik adı** alanına yapıştırın.
+    c. `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` değerini, **KIMLIK sağlayıcısı grubu ÖZNITELIK adı** alanına yapıştırın.
 
-    d. **Kullanıcıların çoklu oturum açma kimlik doğrulamasını atlamasına Izin ver '** i seçin. Sonuç olarak, kullanıcılar kimlik doğrulaması için kimlik sağlayıcısı oturum açma sayfasına yönlendirilmez ve bunun yerine JAMF Pro 'da doğrudan oturum açabilir. Bir Kullanıcı, kimlik sağlayıcısı aracılığıyla JAMF Pro 'ya erişmeyi denediğinde, IDP tarafından başlatılan SSO kimlik doğrulaması ve yetkilendirme oluşur.
+    d. Aynı sayfada, **güvenlik** bölümüne gidin ve **kullanıcıların çoklu oturum açma kimlik doğrulamasını atlamasına izin ver**' i seçin. Sonuç olarak, kullanıcılar kimlik doğrulaması için kimlik sağlayıcısı oturum açma sayfasına yönlendirilmez ve bunun yerine JAMF Pro 'da doğrudan oturum açabilir. Bir Kullanıcı, kimlik sağlayıcısı aracılığıyla JAMF Pro 'ya erişmeyi denediğinde, IDP tarafından başlatılan SSO kimlik doğrulaması ve yetkilendirme oluşur.
 
     e. **Kaydet**’i seçin.
 
@@ -202,11 +204,11 @@ Bir kullanıcı hesabı sağlamak için aşağıdaki adımları uygulayın:
 
     ![JAMF Pro sistem ayarlarındaki yeni hesap kurulum seçenekleri](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. **Kullanıcı adı** alanına, test kullanıcısının `Britta Simon`tam adını girin.
+    a. **Kullanıcı adı** alanına, test kullanıcısının tam adını `Britta Simon`girin.
 
     b. Kuruluşunuza uygun **ERIŞIM düzeyi**, **ayrıcalık KÜMESI**ve **erişim durumu** seçeneklerini belirleyin.
 
-    c. **Tam ad** alanına girin `Britta Simon`.
+    c. **Tam ad** alanına `Britta Simon`girin.
 
     d. **E-posta adresi** alanına Britta Simon hesabının e-posta adresini girin.
 
@@ -216,7 +218,7 @@ Bir kullanıcı hesabı sağlamak için aşağıdaki adımları uygulayın:
 
     g. **Kaydet**’i seçin.
 
-## <a name="test-the-sso-configuration"></a>SSO yapılandırmasını test etme 
+## <a name="test-the-sso-configuration"></a>SSO yapılandırmasını test etme
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
@@ -231,4 +233,3 @@ Erişim panelinde JAMF Pro kutucuğunu seçtiğinizde, SSO 'Yu yapılandırdığ
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile JAMF Pro 'Yu deneyin](https://aad.portal.azure.com/)
-

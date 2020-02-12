@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895922"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134920"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "74895922"
 Azure Media Services (AMS) ' de **Kanal** , canlı akış içeriğini işlemek için bir işlem hattını temsil eder. **Kanal** , canlı giriş akışlarını iki şekilde alır:
 
 * Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
-* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream kablolü, haivision, teradek ve karmaşık Aster kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Telestream kablo, haivision, teradek ve karmaşık Aster kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
   > [!NOTE]
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
@@ -58,22 +58,22 @@ Kanalın daha fazla faturalandırmasını engellemek için, API 'yi API aracıl�
 Canlı kodlama kanalı ile işiniz bittiğinde kanallarınızı durdurmaktan siz sorumlusunuz.  Bir kodlama kanalının durdurulamaması, faturalandırmaya devam edilmesine neden olur.
 
 ### <a id="states"></a>Kanal durumları ve bunların faturalama moduyla nasıl eşlendikleri
-Kanalın geçerli durumu. Olası değerler şunlardır:
+Bir kanalın geçerli durumu. Olası değerler şunlardır:
 
-* **Durduruldu**. Bu, oluşturulduktan sonra kanalın ilk durumudur (portalda otomatik başlatma seçili değilse). Bu durumda faturalandırma yapılmaz. Bu durumda, Kanal özellikleri güncelleştirilebilir ama akışa izin verilmez.
-* **Başlatılıyor**. Kanal başlatılıyor. Bu durumda faturalandırma yapılmaz. Bu durum süresince güncelleştirmelere veya akışa izin verilmez. Bir sorun oluşursa Kanal, Durduruldu durumuna döndürülür.
-* **Çalışıyor**. Kanal canlı akışları işleyebilir. Artık fatura kullanımı. Daha fazla faturalandırma yapılmasını engellemek için kanalı durdurmanız gerekir. 
-* **Durduruluyor**. Kanal durduruluyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
-* **Siliniyor**. Kanal siliniyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
+* **Durduruldu**. Bu, oluşturulduktan sonra kanalın ilk durumudur (portalda otomatik başlatma seçili değilse). Bu durumda faturalandırma yapılmaz. Bu durumda, kanal özellikleri güncelleştirilemeyebilir ancak akışa izin verilmez.
+* **Başlatılıyor**. Kanal başlatılıyor. Bu durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez. Bir hata oluşursa, kanal durdurulmuş duruma geri döner.
+* **Çalışıyor**. Kanal Canlı akışları işleyebilir. Artık fatura kullanımı. Daha fazla faturalandırma yapılmasını engellemek için kanalı durdurmanız gerekir. 
+* **Durduruluyor**. Kanal durduruluyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
+* **Siliniyor**. Kanal siliniyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
 
-Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşleştiği gösterilir. 
+Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenme gösterilmektedir. 
 
-| Kanal durumu | Portal Arabirimi Göstergeleri | BT faturalandırma mı? |
+| Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | BT faturalandırma mı? |
 | --- | --- | --- |
-| Başlangıç |Başlangıç |Hayır (geçici durum) |
-| Çalışıyor |Hazır (çalışan program yok)<br/>or<br/>Akış (en az bir program çalışıyor) |EVET |
+| Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
+| Çalışıyor |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |EVET |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durdurulan |Durdurulan |Hayır |
+| Durduruldu |Durduruldu |Hayır |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Kullanılmayan kanallar için otomatik kapatma
 25 Ocak 2016 tarihinden itibaren, uzun bir süre boyunca kullanılmayan bir durumda çalıştıktan sonra bir kanalı otomatik olarak durduran bir güncelleştirmeyi (canlı kodlama etkin olan) Media Services. Bu, etkin bir programı olmayan ve uzun bir süre için bir giriş katkısı akışı almamış olan kanallar için geçerlidir.
@@ -204,7 +204,7 @@ Ad işaretçileri sinyallerinin kaynağını belirtebilirsiniz. Varsayılan değ
 ### <a name="cea-708-closed-captions"></a>CEA 708 kapalı açıklamalı altyazı
 Live Encoder 'ın gelen videoda gömülü olan CEA 708 açıklamalı alt yazı verilerini yok saymasını belirten isteğe bağlı bir bayrak. Bayrak false (varsayılan) olarak ayarlandığında, kodlayıcı çıkış video akışlarına CEA 708 verilerini algılayıp yeniden ekleyecektir.
 
-#### <a name="index"></a>Dizin
+#### <a name="index"></a>Dizin oluşturma
 Tek bir program aktarım akışı (SPTS) içinde göndermeniz önerilir. Giriş akışı birden çok program içeriyorsa, kanal içindeki canlı kodlayıcı, girişte program eşleme tablosunu (DEVRESEL_ÖDEME) ayrıştırır, MPEG-2 AAC ADTS veya AC-3 Sistem-A veya AC-3 sistem-B veya MPEG-2 özel PES veya MPEG-1 akış türü adına sahip girdileri tanımlar Ses veya MPEG-2 ses ve bu, DEVRESEL_ÖDEME olarak belirtilen sırayla düzenler. Sıfır tabanlı dizin daha sonra bu düzenlemede n. girişi seçmek için kullanılır.
 
 #### <a name="language"></a>Dil
@@ -260,7 +260,7 @@ Live Encoder, bir tablet görüntüsüne geçiş yapmak ve örneğin bir ad kesm
 Saniye cinsinden kurşun süre. Bu, kurşun rengi başlatmak için sıfır olmayan pozitif bir değer olmalıdır. Bir devam eden kurşun değer varsa ve sıfır süresi belirtilmişse, bu durumda bu, devam eden kurşun işlem sonlandırılır.
 
 ### <a name="insert-slate-on-ad-marker"></a>Ad işaretleyicisi üzerine kurşun ekler
-True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırasında bir tablet görüntüsü eklemek üzere yapılandırır. Varsayılan değer true olur. 
+True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırasında bir tablet görüntüsü eklemek üzere yapılandırır. Varsayılan değer true şeklindedir. 
 
 ### <a id="default_slate"></a>Varsayılan kurşun varlık kimliği
 
@@ -300,22 +300,22 @@ Arşivlenen içeriği tutmak istiyor ancak bu içeriğin akış için kullanılm
 Live Encoding etkinleştirildiğinde, artık kanala ulaşan canlı akışın önizlemesini alabilirsiniz. Bu, canlı akışınızın gerçekten kanala ulaşılıp ulaşmadığını kontrol etmek için değerli bir araç olabilir. 
 
 ## <a id="states"></a>Kanal durumları ve durumların faturalandırma moduna nasıl eşlenir
-Kanalın geçerli durumu. Olası değerler şunlardır:
+Bir kanalın geçerli durumu. Olası değerler şunlardır:
 
-* **Durduruldu**. Bu, Kanalın oluşturulduktan sonraki ilk durumudur. Bu durumda, Kanal özellikleri güncelleştirilebilir ama akışa izin verilmez.
-* **Başlatılıyor**. Kanal başlatılıyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez. Bir sorun oluşursa Kanal, Durduruldu durumuna döndürülür.
-* **Çalışıyor**. Kanal canlı akışları işleyebilir.
-* **Durduruluyor**. Kanal durduruluyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
-* **Siliniyor**. Kanal siliniyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
+* **Durduruldu**. Bu, kanalın oluşturulduktan sonraki ilk durumudur. Bu durumda, kanal özellikleri güncelleştirilemeyebilir ancak akışa izin verilmez.
+* **Başlatılıyor**. Kanal başlatılıyor. Bu durum sırasında güncelleştirme veya akışa izin verilmez. Bir hata oluşursa, kanal durdurulmuş duruma geri döner.
+* **Çalışıyor**. Kanal Canlı akışları işleyebilir.
+* **Durduruluyor**. Kanal durduruluyor. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
+* **Siliniyor**. Kanal siliniyor. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
 
-Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşleştiği gösterilir. 
+Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenme gösterilmektedir. 
 
-| Kanal durumu | Portal Arabirimi Göstergeleri | Faturalandırılmış mı? |
+| Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
-| Başlangıç |Başlangıç |Hayır (geçici durum) |
-| Çalışıyor |Hazır (çalışan program yok)<br/>or<br/>Akış (en az bir program çalışıyor) |Yes |
+| Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
+| Çalışıyor |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |Yes |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durdurulan |Durdurulan |Hayır |
+| Durduruldu |Durduruldu |Hayır |
 
 > [!NOTE]
 > Şu anda kanal başlangıç ortalaması yaklaşık 2 dakikadır, ancak her zaman 20 + dakikaya kadar sürebilir. Kanal sıfırlamaları 5 dakikaya kadar sürebilir.
@@ -340,7 +340,7 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 * Kurşun görüntüleri [burada](media-services-manage-live-encoder-enabled-channels.md#default_slate)açıklanan kısıtlamalara uymalıdır. 1920x1080 'den daha büyük bir varsayılan kurşun ile bir kanal oluşturmaya çalışırsanız, istek sonunda hata olur.
 * Bir daha.... akışı bitirdiğinizde KANALLARıNıZı DURDURMAYı unutmayın. Bunu yapmazsanız faturalandırma devam eder.
 
-## <a name="need-help"></a>Yardım mı gerekiyor?
+## <a name="need-help"></a>Yardıma mı ihtiyacınız var?
 
 [Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 
@@ -350,7 +350,7 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

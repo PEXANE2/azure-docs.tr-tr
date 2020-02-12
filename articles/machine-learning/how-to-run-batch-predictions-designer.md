@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
+title: Azure Machine Learning Designer (Önizleme) kullanarak toplu tahmine dayalı tahminleri çalıştırma
 titleSuffix: Azure Machine Learning
 description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işlem hattı ayarlama hakkında bilgi edinin. İşlem hattını, herhangi bir HTTP kitaplığından tetiklenebilecek parametreli bir Web hizmeti olarak dağıtın.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311895"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138099"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](how-to-run-batch-predictions.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 
@@ -41,7 +41,7 @@ Bir ınsele sınırlama işlem hattı oluşturabilmek için eğitim işlem hatt�
 
 1. Çalışma alanınızdaki **Tasarımcı** sekmesine gidin.
 
-1. Modeli tahmin yapmak için kullanmak istediğini eğitim işlem hattını seçin.
+1. Tahmin yapmak için kullanmak istediğiniz modeli gösteren eğitim işlem hattını seçin.
 
 1. İşlem hattını **çalıştırın** .
 

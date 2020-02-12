@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 224180bdebdf94c6d2360df8ea6615add4675921
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5dccdb6c357635e78b076b1560bf6c0c62c03753
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72902323"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77135077"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Desteklenen dağıtımlar ve sürücüler
 
@@ -34,7 +34,7 @@ Microsoft, sanal iş istasyonları veya sanal uygulamalar olarak kullanılan NV 
 
 | Dağıtım | Sürücü |
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,0 Red Hat Enterprise Linux 7,6<br/><br/>CentOS tabanlı 7,0 7,6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 9,1, sürücü dalı R430|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,0 Red Hat Enterprise Linux 7,6<br/><br/>CentOS tabanlı 7,0 7,6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 10,1, sürücü dalı R440|
 
 > [!WARNING] 
 > Red Hat ürünlerine üçüncü taraf yazılım yüklenmesi Red Hat destek koşullarını etkileyebilir. Bkz. [Red Hat Bilgi Bankası makalesi](https://access.redhat.com/articles/1067).

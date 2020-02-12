@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774133"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137964"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -44,46 +44,8 @@ Metin Analizi API'si, adlandırılmış varlık tanıma-v2 ve v3 'in iki sürüm
 
 Bilgi için bkz. [dil desteği](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
-#### <a name="version-2tabversion-2"></a>[Sürüm 2](#tab/version-2)
 
-### <a name="entity-types"></a>Varlık türleri
-
-> [!NOTE]
-> Adlandırılmış varlık tanıma (NER) sürüm 2 yalnızca aşağıdaki varlıkları destekler. NER v3 genel önizlemededir ve metinde tanınan varlıkların sayısını ve derinliğini büyük ölçüde genişletir.   
-
-| Tür  | SubType | Örnek |
-|:-----------   |:------------- |:---------|
-| Kişi        | Yok\*         | "Jeff", "Bill Gates"     |
-| Konum      | Yok\*         | "Redmond, Washington", "Paris"  |
-| Kuruluş  | Yok\*         | “Microsoft”   |
-| Miktar      | Sayı        | "6", "altı"     |
-| Miktar      | Yüzde    | "%50", "yüzde elli"|
-| Miktar      | Sıra       | "2.", "ikinci"     |
-| Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
-| Miktar      | Para birimi      | “10,99 ABD Doları”     |
-| Miktar      | Boyut     | "10 mil", "40 cm"     |
-| Miktar      | Sıcaklık   | "32 derece"    |
-| Tarih Saat      | Yok\*         | “18:30 4 Şubat 2012”      |
-| Tarih Saat      | Tarih          | “2 Mayıs 2017”, “02.05.2017”   |
-| Tarih Saat      | Zaman          | "08:00", "8:00"  |
-| Tarih Saat      | Tarih Aralığı     | “2 - 5 Mayıs Arası”    |
-| Tarih Saat      | Saat Aralığı     | “18.00 ve 19.00 Arası”     |
-| Tarih Saat      | Süre      | "1 dakika 45 saniye"   |
-| Tarih Saat      | Ayarla           | "Her Salı"     |
-| URL           | Yok\*         | "https:\//www.bing.com"    |
-| E-posta         | Yok\*         | "support@contoso.com" |
-| ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
-| IP Adresi    | Yok\*         | alana 10.0.0.100 |
-
-giriş ve ayıklanan varlıklara göre \*, bazı varlıklar `SubType`yok edebilir.  Listelenen tüm desteklenen varlık türleri yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dillerde kullanılabilir.
-
-### <a name="request-endpoints"></a>İstek uç noktaları
-
-Adlandırılmış varlık tanıma v2, NER ve varlık bağlama istekleri için tek bir uç nokta kullanır:
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Sürüm 3 (Genel Önizleme)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 ### <a name="entity-types"></a>Varlık türleri
 
@@ -110,6 +72,45 @@ Varlık bağlama
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+
+### <a name="entity-types"></a>Varlık türleri
+
+> [!NOTE]
+> Adlandırılmış varlık tanıma (NER) sürüm 2 yalnızca aşağıdaki varlıkları destekler. NER v3 genel önizlemededir ve metinde tanınan varlıkların sayısını ve derinliğini büyük ölçüde genişletir.   
+
+| Tür  | SubType | Örnek |
+|:-----------   |:------------- |:---------|
+| Kişi        | Yok\*         | "Jeff", "Bill Gates"     |
+| Konum      | Yok\*         | "Redmond, Washington", "Paris"  |
+| Kuruluş  | Yok\*         | MICROSOFT   |
+| Miktar      | Sayı        | "6", "altı"     |
+| Miktar      | Yüzde    | "%50", "50 yüzdesi"|
+| Miktar      | Numarasını       | "2.", "saniye"     |
+| Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
+| Miktar      | Para birimi      | "$10,99"     |
+| Miktar      | Boyut     | "10 mil", "40 cm"     |
+| Miktar      | Sıcaklık   | "32 derece"    |
+| DateTime      | Yok\*         | "6:12:30 4, 2012"      |
+| DateTime      | Tarih          | "2 Mayıs, 2017", "05/02/2017"   |
+| DateTime      | Zaman          | "08:00", "8:00"  |
+| DateTime      | DateRange     | "2 Mayıs-5 Mayıs 'ta olabilir"    |
+| DateTime      | TimeRange     | "6pm-7pm"     |
+| DateTime      | Süre      | "1 dakika ve 45 saniye"   |
+| DateTime      | Ayarla           | "her Salı"     |
+| URL'si           | Yok\*         | "https:\//www.bing.com"    |
+| E-posta         | Yok\*         | "support@contoso.com" |
+| ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
+| IP Adresi    | Yok\*         | alana 10.0.0.100 |
+
+giriş ve ayıklanan varlıklara göre \*, bazı varlıklar `SubType`yok edebilir.  Listelenen tüm desteklenen varlık türleri yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dillerde kullanılabilir.
+
+### <a name="request-endpoints"></a>İstek uç noktaları
+
+Adlandırılmış varlık tanıma v2, NER ve varlık bağlama istekleri için tek bir uç nokta kullanır:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor
@@ -124,17 +125,10 @@ Her belge 5.120 karakterden oluşmalıdır ve koleksiyon başına en fazla 1.000
 
 POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek için aşağıdaki bağlantılardan [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-2tabversion-2"></a>[Sürüm 2](#tab/version-2)
-
-[Adlandırılmış varlık tanıma (NER) v2 başvurusu](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-Sürüm 2, varlık bağlama ve NER istekleri için aşağıdaki uç noktayı kullanır: 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[Sürüm 3](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 [Adlandırılmış varlık tanıma v3 başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ HI
 
 Varlık bağlama
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+
+[Adlandırılmış varlık tanıma (NER) v2 başvurusu](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+Sürüm 2, varlık bağlama ve NER istekleri için aşağıdaki uç noktayı kullanır: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ Tüm POST istekleri, kimlik ve algılanan varlık özelliklerine sahip JSON biç
 
 Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
 
-#### <a name="version-2tabversion-2"></a>[Sürüm 2](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Örnek NER v2 yanıtı
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Sürüm 3 (Genel Önizleme)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Sürüm 3,0-Önizleme)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Örnek v3 yanıtları
 
@@ -271,6 +237,43 @@ Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki iş
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21tabversion-2"></a>[Sürüm 2,1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Örnek NER v2 yanıtı
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

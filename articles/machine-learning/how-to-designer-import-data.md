@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314037"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138161"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Verilerinizi Azure Machine Learning tasarımcıya aktarın
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcı 'ya aktarma (Önizleme)
 
 Bu makalede, özel çözümler oluşturmak için kendi verilerinizi tasarımcıda nasıl içeri aktaracağınızı öğreneceksiniz. Verileri tasarımcıya içeri aktarabilmeniz için kullanabileceğiniz iki yol vardır: 
 
@@ -45,7 +45,7 @@ Kayıtlı veri kümeleriniz, veri **kümelerim** > **veri** kümeleri altında b
 
 ![Tasarımcı paletindeki kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
 
-Machine Learning çalışma alanınıza kayıtlı herhangi bir [dosya veri kümesi](how-to-create-register-datasets.md#dataset-types) modül paletinde görüntülenir. Tasarımcıda oluşturulan veri kümelerini kullanma sınırlı değilsiniz.
+
 
 > [!NOTE]
 > Tasarımcı şu anda yalnızca [tablolu veri kümelerini](how-to-create-register-datasets.md#dataset-types)işlemeyi destekliyor. [Dosya veri kümelerini](how-to-create-register-datasets.md#dataset-types)kullanmak istiyorsanız Python ve R için kullanılabilen Azure Machine Learning SDK 'sını kullanın.
@@ -69,7 +69,7 @@ Desteklenen veri deposu kaynaklarının listesi için bkz. [Azure Storage hizmet
 Tasarımcı, aşağıdaki kaynaklardan oluşturulan tablo veri kümelerini destekler:
  * Sınırlandırılmış dosyalar
  * JSON dosyaları
- * Parquet dosyalarını
+ * Parquet dosyaları
  * SQL sorguları
 
 ## <a name="data-types"></a>Veri türleri
@@ -78,7 +78,7 @@ Tasarımcı aşağıdaki veri türlerini dahili olarak tanır:
 
 * Dize
 * Tamsayı
-* Decimal
+* Ondalık
 * Boole
 * Tarih
 

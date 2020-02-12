@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure CLı kullanarak Azure kaynakları için özel bir rol oluşturma
+title: 'Öğretici: Azure CLı ile Azure kaynakları için özel bir rol oluşturma'
 description: Bu öğreticide Azure CLı kullanarak Azure kaynakları için özel bir rol oluşturmaya başlayın.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 29b0bea851466b5173711441a5a7927c796c9926
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419587"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138259"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure kaynakları için özel bir rol oluşturma
 
@@ -51,7 +51,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 1. [Microsoft.Support kaynak sağlayıcısının](resource-provider-operations.md#microsoftsupport) işlem listesini gözden geçirin. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır.
 
-    | Çalışma | Açıklama |
+    | İşlem | Açıklama |
     | --- | --- |
     | Microsoft.Support/register/action | Destek Kaynağı Sağlayıcısı'na kayıt yapar |
     | Microsoft.Support/supportTickets/read | Durum, önem derecesi, kişi ayrıntıları ve iletişimler gibi Destek Biletleri ayrıntılarını alır veya aboneliklerdeki Destek Biletleri listesini alır. |

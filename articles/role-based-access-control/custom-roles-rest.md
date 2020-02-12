@@ -1,5 +1,5 @@
 ---
-title: Azure kaynakları için REST API-Azure kullanarak özel roller oluşturma veya güncelleştirme | Microsoft Docs
+title: REST API ile Azure kaynakları için özel roller oluşturun veya güncelleştirin
 description: REST API kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel rolleri listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452933"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137357"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme
 
@@ -38,7 +38,7 @@ Bir dizindeki tüm özel rolleri listelemek için, [rol tanımları-liste](/rest
 
 1. *{Filter}* öğesini rol türüyle değiştirin.
 
-    | Filtrele | Açıklama |
+    | Filtre | Açıklama |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | CustomRole türünü temel alan filtre |
 
@@ -62,7 +62,7 @@ Bir dizindeki tüm özel rolleri listelemek için, [rol tanımları-liste](/rest
 
 1. *{Filter}* öğesini rol türüyle değiştirin.
 
-    | Filtrele | Açıklama |
+    | Filtre | Açıklama |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | CustomRole türünü temel alan filtre |
 
@@ -86,7 +86,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 1. *{Filter}* değerini rolün görünen adıyla değiştirin.
 
-    | Filtrele | Açıklama |
+    | Filtre | Açıklama |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Rolün tam ekran adının URL kodlamalı formunu kullanın. Örneğin, `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 

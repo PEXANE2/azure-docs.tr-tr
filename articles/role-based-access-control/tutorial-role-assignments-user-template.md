@@ -1,5 +1,5 @@
 ---
-title: Öğretici-RBAC ve Kaynak Yöneticisi şablonu kullanarak Azure kaynaklarına Kullanıcı erişimi verme
+title: 'Öğretici: RBAC ve Kaynak Yöneticisi şablonuyla Azure kaynaklarına Kullanıcı erişimi verme'
 description: Bu öğreticide Azure Resource Manager şablonu kullanarak rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418497"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138211"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Öğretici: RBAC ve Kaynak Yöneticisi şablonu kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Son yordamda oluşturulan kaynak grubunu açın. Varsayılan ad, **RG** eklenmiş proje adıdır.
 1. Soldaki menüden **Erişim denetimi (IAM)** öğesini seçin.
 1. **Rol atamaları**’nı seçin. 

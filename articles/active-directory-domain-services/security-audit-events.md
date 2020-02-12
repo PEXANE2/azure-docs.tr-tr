@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979938"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132245"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
-Azure Active Directory Domain Services (Azure AD DS) güvenlik denetimleri, Azure 'un hedeflenen kaynaklara yönelik güvenlik olaylarının akışını sağlar. Bu kaynaklar Azure Storage, Azure Log Analytics çalışma alanları veya Azure Olay Hub 'ı içerir. Güvenlik denetim olaylarını etkinleştirdikten sonra Azure AD DS, seçilen kategorinin tüm denetlenen olaylarını hedeflenen kaynağa gönderir. Olayları Azure depolama 'ya arşivleyebilir ve olayları Azure Event Hubs kullanarak güvenlik bilgileri ve olay yönetimi (ya da eşdeğeri) yazılımlarına kaydedebilir ya da kendi analizinizi yapabilir ve Azure portal Azure Log Analytics çalışma alanlarını kullanabilirsiniz.
+Azure Active Directory Domain Services (Azure AD DS) güvenlik denetimleri, Azure 'un hedeflenen kaynaklara yönelik güvenlik olaylarının akışını sağlar. Bu kaynaklar Azure Storage, Azure Log Analytics çalışma alanları veya Azure Olay Hub 'ı içerir. Güvenlik denetim olaylarını etkinleştirdikten sonra Azure AD DS, seçilen kategorinin tüm denetlenen olaylarını hedeflenen kaynağa gönderir.
+
+Olayları Azure depolama 'ya arşivleyebilir ve olayları Azure Event Hubs kullanarak güvenlik bilgileri ve olay yönetimi (ya da eşdeğeri) yazılımlarına kaydedebilir ya da kendi analizinizi yapabilir ve Azure portal Azure Log Analytics çalışma alanlarını kullanabilirsiniz.
 
 > [!IMPORTANT]
 > Azure AD DS Güvenlik denetimleri yalnızca Azure Resource Manager tabanlı örnekler için kullanılabilir. Geçirme hakkında daha fazla bilgi için bkz. [Azure AD DS 'Yi klasik sanal ağ modelinden Kaynak Yöneticisi 'ye geçirme][migrate-azure-adds].
@@ -61,25 +63,25 @@ Aşağıdaki denetim olayı kategorileri kullanılabilir:
 
 ## <a name="security-audit-destinations"></a>Güvenlik denetimi hedefleri
 
-Azure depolama, Azure Event Hubs veya Azure Log Analytics çalışma alanlarının herhangi bir birleşimini Azure AD DS Güvenlik denetimleri için hedef kaynak olarak kullanabilirsiniz. Azure depolama 'yı güvenlik denetim olaylarını arşivlemek için kullanabilirsiniz, ancak kısa dönem içindeki bilgileri analiz etmek ve raporlamak için bir Azure Log Analytics çalışma alanı.
+Azure depolama, Azure Event Hubs veya Azure Log Analytics çalışma alanlarını Azure AD DS Güvenlik denetimleri için hedef kaynak olarak kullanabilirsiniz. Bu hedefler birleştirilebilir. Örneğin, güvenlik denetim olaylarını arşivlemek için Azure Storage 'ı kullanabilir, ancak kısa dönem içindeki bilgileri analiz etmek ve raporlamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz.
 
 Aşağıdaki tabloda, her bir hedef kaynak türü için senaryolar özetlenmektedir.
 
 > [!IMPORTANT]
-> Azure AD Domain Services güvenlik denetimlerini etkinleştirmeden önce hedef kaynağı oluşturmanız gerekir. Azure portal, Azure PowerShell veya Azure CLı kullanarak bu kaynakları oluşturabilirsiniz.
+> Azure AD DS güvenlik denetimlerini etkinleştirmeden önce hedef kaynağı oluşturmanız gerekir. Azure portal, Azure PowerShell veya Azure CLı kullanarak bu kaynakları oluşturabilirsiniz.
 
 | Hedef kaynak | Senaryo |
 |:---|:---|
-|Azure Depolama| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
-|Azure Event Hubs| Bu hedef, birincil ihtiyacınız olduğunda, veri analizi yazılımı veya güvenlik bilgileri & olay yönetimi (SıEM) yazılımları gibi ek yazılımlarla güvenlik denetim olaylarını paylaşmak gerektiğinde kullanılmalıdır. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [Azure Portal kullanarak bir olay hub 'ı oluşturun](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır. Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure Storage| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. <br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
+|Azure Event Hubs| Bu hedef, birincil ihtiyacınız olduğunda, veri analizi yazılımı veya güvenlik bilgileri & olay yönetimi (SıEM) yazılımları gibi ek yazılımlarla güvenlik denetim olaylarını paylaşmak gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [Azure Portal kullanarak bir olay hub 'ı oluşturun](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Azure portal kullanarak güvenlik denetim olaylarını etkinleştirin
 
 Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirmek için aşağıdaki adımları uygulayın.
 
 > [!IMPORTANT]
-> Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları geçmişteki bir şekilde almak veya olayları geçmişteki bir şekilde yeniden oynatmak mümkün değildir. Azure AD DS, yalnızca etkinleştirildikten sonra oluşan olayları gönderebilir.
+> Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları eski bir kaynaktan alamaz veya yeniden çalıştıramazsınız. Azure AD DS, yalnızca güvenlik denetimleri etkinleştirildikten sonra oluşan olayları gönderebilir.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aadds.contoso.com*gibi yönetilen etki alanınızı seçin.
@@ -116,7 +118,7 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
 Azure PowerShell kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirmek için aşağıdaki adımları uygulayın. Gerekirse, önce [Azure PowerShell modülünü yükledikten sonra Azure aboneliğinize bağlanın](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları geçmişteki bir şekilde almak veya olayları geçmişteki bir şekilde yeniden oynatmak mümkün değildir. Azure AD DS, yalnızca etkinleştirildikten sonra oluşan olayları gönderebilir.
+> Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları eski bir kaynaktan alamaz veya yeniden çalıştıramazsınız. Azure AD DS, yalnızca güvenlik denetimleri etkinleştirildikten sonra oluşan olayları gönderebilir.
 
 1. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure aboneliğinizde kimlik doğrulaması yapın. İstendiğinde, hesap kimlik bilgilerinizi girin.
 
@@ -175,7 +177,7 @@ Log analitik çalışma alanları, Azure Izleyici ve kusto sorgu dilini kullanar
 * [Azure İzleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
 * [Azure Izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md)
 * [Azure Izleyici 'de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md)
-* [Log Analytics verilerinden pano oluşturma ve paylaşma](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Log Analytics veri panoları oluşturma ve paylaşma](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Aşağıdaki örnek sorgular, Azure AD DS güvenlik denetim olaylarını çözümlemeye başlamak için kullanılabilir.
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Örnek sorgu 2
 
-26 Haziran 2019 arasındaki tüm hesap kilitleme olaylarını (*4740*) saat 9 ' da görüntüle ve 1 Temmuz 2019 gece yarısı, tarih ve saate göre artan düzende sıralanır:
+Hesap kilitleme olaylarını (*4740*) 3 Şubat 2020 ile 9 saat arasında görüntüleyin 10 Şubat 2019 gece yarısı, tarih ve saate göre artan düzende sıralanır:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

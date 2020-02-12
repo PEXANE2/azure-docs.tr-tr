@@ -3,13 +3,13 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087438"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133739"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar
 
@@ -28,8 +28,6 @@ Kaynak adları sınırları için bkz. [Azure kaynakları Için adlandırma kura
 ## <a name="limits-and-azure-resource-manager"></a>Sınırlar ve Azure Resource Manager
 
 Birden çok Azure kaynağını tek bir Azure Kaynak grubunda birleştirebilirsiniz. Kaynak gruplarını kullandığınızda, bir kez genel olan sınırlar, Azure Resource Manager ile bölgesel düzeyde yönetilmeye gelir. Azure Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](overview.md).
-
-Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullandığınızda limitlerde yapılan farkları yansıtır. Örneğin, bir **abonelik limitleri** tablosu ve **abonelik limitleri Azure Resource Manager** tablo vardır. Her iki senaryo için de bir sınır geçerliyse, bu yalnızca ilk tabloda gösterilir. Aksi belirtilmedikçe, sınırlar tüm bölgelerde geneldir.
 
 > [!NOTE]
 > Azure kaynak gruplarındaki kaynaklara yönelik kotalar, hizmet yönetimi kotaları olduğu için abonelik başına değil, aboneliğiniz tarafından erişilebilir. Örnek olarak vCPU kotaları kullanalım. VCPU desteğiyle bir kota artışı istemek için, hangi bölgelerde kaç vCPU kullanmak istediğinize karar vermelisiniz. Daha sonra istediğiniz miktarlar ve bölgeler için Azure Kaynak grubu vCPU kotaları için özel bir istek yaparsınız. Uygulamanızı orada çalıştırmak için Batı Avrupa 'de 30 vCPU kullanmanız gerekiyorsa, Batı Avrupa özellikle 30 vCPU isteğinde bulunur. VCPU kotanızı başka hiçbir bölgede artmıyor; yalnızca Batı Avrupa 30-vCPU kotasına sahiptir.
@@ -115,13 +113,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 
 ### <a name="subscription-limits"></a>Abonelik sınırları
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Abonelik limitleri-Azure hizmet yönetimi (klasik dağıtım modeli)
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>Abonelik limitleri-Azure Resource Manager
-
-Azure Resource Manager ve Azure kaynak gruplarını kullandığınızda aşağıdaki sınırlar geçerlidir. Azure Resource Manager ile değiştirilmemiş sınırlar listelenmez. Bu limitler için önceki tabloya bakın.
+Azure Resource Manager ve Azure kaynak gruplarını kullandığınızda aşağıdaki sınırlar geçerlidir.
 
 Kaynak Yöneticisi API okuma ve yazma sınırları hakkında bilgi için bkz. [azaltma Kaynak Yöneticisi istekleri](request-limits-and-throttling.md).
 
@@ -485,6 +477,12 @@ SQL veritabanı limitleri için bkz. [SQL veritabanı kaynak limitleri tek verit
 ### <a name="sql-data-warehouse-limits"></a>SQL veri ambarı sınırları
 
 SQL veri ambarı sınırları için bkz. [SQL veri ambarı kaynak sınırları](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+
+### <a name="classic-deployment-model-limits"></a>Klasik dağıtım modeli limitleri
+
+Azure Resource Manager dağıtım modeli yerine klasik dağıtım modelini kullanıyorsanız, aşağıdaki sınırlar geçerlidir.
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
