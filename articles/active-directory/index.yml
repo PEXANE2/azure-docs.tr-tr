@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75443472"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77159310"
 highlightedContent:
   items:
   - title: Azure AD nedir?
@@ -53,6 +53,20 @@ conceptualContent:
       text: Şirket içi uygulamalar için Uygulama Ara Sunucusu
     footerLink:
       url: ./manage-apps/index.yml
+      text: Daha fazla göster
+  - title: Uygulama ve İK sağlama
+    links:
+    - url: ./app-provisioning/user-provisioning.md
+      itemType: overview
+      text: Uygulama sağlama nedir?
+    - url: ./app-provisioning/how-provisioning-works.md
+      itemType: concept
+      text: Uygulama sağlama nasıl çalışır?
+    - url: ./app-provisioning/plan-cloud-hr-provision.md
+      itemType: how-to-guide
+      text: Bulut İK sağlama dağıtımı planlama
+    footerLink:
+      url: ./app-provisioning/index.yml
       text: Daha fazla göster
   - title: Kimlik Doğrulaması
     links:

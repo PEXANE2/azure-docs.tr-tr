@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: ebabeccc43998c229bcd28063b6cbabae4b046ea
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cd00fb2df0063bd8bc753f9078194648f6745f1b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795770"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156731"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -21,7 +21,7 @@ Başlamadan önce:
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=jre)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
-## <a name="add-sample-code"></a>Örnek kod ekleme
+## <a name="add-sample-code"></a>Örnek kodu ekleme
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 
@@ -35,7 +35,7 @@ Başlamadan önce:
 
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+1. `YourServiceRegion` dize, aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) "konuşma SDK parametresi" ile değiştirin (örneğin, ücretsiz deneme aboneliği için `westus`).
 
 1. Değişiklikleri projeye kaydedin.
 

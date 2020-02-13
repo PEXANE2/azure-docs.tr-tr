@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 78e18998d6e6096b045cc8328ca5adacb1342e68
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699538"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161435"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft Identity Platform'un gelişimi
 
@@ -68,4 +68,4 @@ Microsoft Identity platform (v 2.0) uç noktası artık OıDC sertifikalı. Micr
 v1.0 ve v2.0 hakkında daha fazla bilgi edinin.
 
 * [Microsoft Identity platform (v 2.0) genel bakış](v2-overview.md)
-* [Geliştiriciler için Azure Active Directory (v 1.0) genel bakış](v1-overview.md)
+* [Geliştiriciler için Azure Active Directory (v 1.0) genel bakış](../azuread-dev/v1-overview.md)

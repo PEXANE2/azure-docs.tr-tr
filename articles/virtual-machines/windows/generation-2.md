@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837366"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161741"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -58,7 +58,8 @@ ms.locfileid: "76837366"
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8,0
+* RHEL 8,0, 7,6, 7,5, 7,4, 7,0
+* Sent OS 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
@@ -78,7 +79,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 | Özellik | 1\. nesil | 2\. nesil |
 |---------|--------------|--------------|
-| Önyükleme             | PCAT                      | UEFI                               |
+| Başlatma             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
 | VM boyutları         | Tüm VM boyutları | Yalnızca Premium depolamayı destekleyen VM 'Ler |
 
@@ -100,18 +101,19 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portalı
 
-Windows ve SLES için 2. nesil görüntüler, Gen1 görüntülerle aynı sunucu teklifine dahildir. Flow perspektifinden bu şekilde, VM 'niz için portaldan teklif ve SKU 'YU seçersiniz. SKU hem 1. kuşak hem de 2. nesil görüntüleri destekliyorsa, VM oluşturma akışındaki *Gelişmiş* sekmesinden 2. nesıl bir VM oluşturmayı seçebilirsiniz.
+Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmiştir.
 
-Şu anda, aşağıdaki SKU 'Lar 1. kuşak ve 2. nesil görüntüleri destekler:
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-Teklif olarak bir Windows Server SKU seçtiğinizde, **Gelişmiş** sekmesinde, bir **Gen 1** (BIOS) veya **Gen 2** (UEFI) VM oluşturma seçeneği vardır. **Gen 2**' yi seçerseniz, **temel kavramlar** sekmesinde seçilen VM boyutunun [2. nesil VM 'ler için desteklendiğinden](#generation-2-vm-sizes)emin olun.
+1. https://portal.azure.com adresinden Azure portalında oturum açın.
+1. **Kaynak oluştur**' u seçin.
+1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
+1. Gen2 destekleyen bir görüntü seçin.
+1. **Oluştur**'a tıklayın.
+1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
+1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
+1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.
+1. VM oluşturma işleminin tamamlanabilmesi için [Azure Portal oluşturma akışından](quick-create-portal.md) ilerleyin.
 
 ![Gen 1 veya Gen 2 VM seçin](./media/generation-2/gen1-gen2-select.png)
 
@@ -195,6 +197,13 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
 
 * **1. nesil bir VM 'yi 2. nesil 'e geçirebilir miyim?**  
     Hayır, bir VM 'yi oluşturduktan sonra oluşturmayı değiştiremezsiniz. VM nesilleri arasında geçiş yapmanız gerekiyorsa, farklı nesil yeni bir VM oluşturun.
+
+* **Gen2 sanal makinesi oluşturmaya çalıştığımda, neden VM boyutum boyut seçicide etkin değil mi?**
+
+    Bu, aşağıdakiler gerçekleşerek çözülebilir:
+
+    1. **Gelişmiş** sekmesinde **VM oluşturma** özelliğinin **Gen 2** olarak ayarlandığını doğrulayın.
+    1. [Gen2 VM 'leri destekleyen bir VM boyutu](#generation-2-vm-sizes)arıyor olduğunuzdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

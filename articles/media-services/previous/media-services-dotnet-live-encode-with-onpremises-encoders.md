@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015832"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162897"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>.NET kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirme
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Bu öğretici, bir doğrudan dağıtım için yapılandırılmış bir **Kanal**
 * Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * İçerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumunda olduğundan emin olun. 
 * Geliştirme ortamınızı ayarlayın. Daha fazla bilgi için bkz. [ortamınızı ayarlama](media-services-set-up-computer.md).
-* Bir Web kamerası. Örneğin, [Telestream Wirecast kodlayıcı](https://www.telestream.net/wirecast/overview.htm).
+* Bir Web kamerası. Örneğin, [Telestream Wirecast kodlayıcı](media-services-configure-wirecast-live-encoder.md).
 
 Aşağıdaki makaleleri gözden geçirmeniz önerilir:
 

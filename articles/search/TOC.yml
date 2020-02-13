@@ -271,6 +271,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI ile bağlanma
               href: knowledge-store-connect-power-bi.md
+            - name: Yansıtma örnekleri
+              href: knowledge-store-projections-examples.md
     - name: Belgeleri sorgulama
       items:
         - name: Sorgu türleri ve oluşturma

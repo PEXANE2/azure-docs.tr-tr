@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701935"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160075"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Tek sayfalı uygulama: API 'YI çağırmak için belirteç alma
 
@@ -42,7 +42,7 @@ Erişim belirtecinin, erişim belirteci isteği oluştururken dahil olmasını i
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Açılır pencere ile belirteç alma
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki kod, daha önce açıklanan kalıbı bir açılır deneyim yöntemleriyle birleştirir:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL angular sarmalayıcısı, erişim belirteçlerini sessizce otomatik olarak alacak ve bunları API 'lere HTTP isteklerine ekleyecek HTTP yakalayıcısını sağlar.
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 Alternatif olarak, çekirdek MSAL. js kitaplığı 'nda açıklandığı gibi Acquire-Token yöntemlerini kullanarak açıkça belirteç alabilirsiniz.
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>Yeniden yönlendirme ile belirteç alma
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki model daha önce açıklanmamaktadır, ancak belirteçleri etkileşimli olarak almak için bir yeniden yönlendirme yöntemiyle gösteriliyor. Yeniden yönlendirme geri aramasını daha önce belirtildiği gibi kaydetmeniz gerekir.
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>İsteğe bağlı talepler isteme
+
 Aşağıdaki amaçlar için isteğe bağlı talepler kullanabilirsiniz:
 
 - Uygulamanıza yönelik belirteçlere ek talepler ekleyin.
@@ -150,7 +153,6 @@ Aşağıdaki amaçlar için isteğe bağlı talepler kullanabilirsiniz:
 
 `IdToken`isteğe bağlı talepler istemek için, bir strıngiingclaim nesnesini `AuthenticationParameters.ts` sınıfının `claimsRequest` alanına gönderebilirsiniz.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 Daha fazla bilgi için bkz. [Isteğe bağlı talepler](active-directory-optional-claims.md).
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Bu kod, daha önce açıklananla aynıdır.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -64,7 +64,7 @@
   items:
     - name: Self servis parola sıfırlama
       items:
-        - name: Self servis parola sıfırlamayı dağıtma
+        - name: Dağıtım kılavuzu
           href: howto-sspr-deployment.md
         - name: Kimlik doğrulama verilerini önceden kaydetme
           href: howto-sspr-authenticationdata.md
@@ -74,7 +74,7 @@
           href: howto-sspr-windows.md
     - name: Bulut tabanlı MFA
       items:
-        - name: Bulut tabanlı MFA dağıtma
+        - name: Dağıtım kılavuzu
           href: howto-mfa-getstarted.md
         - name: Kullanıcı başına MFA
           href: howto-mfa-userstates.md

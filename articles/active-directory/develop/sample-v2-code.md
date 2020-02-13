@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3c77b74eb97f03b1234cb2735b4a680b030d2073
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0282336cb5df7d010571a15e9d1f9d93b82d461e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108203"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160331"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -34,7 +34,7 @@ Microsoft Identity platformunu kullanarak şunları yapabilirsiniz:
 Bu makalede kısaca Microsoft Identity platform uç noktası için örneklere bağlantılar sunulmaktadır. Bu örnekler, bunun nasıl yapıldığını gösterir ve uygulamalarınızda kullanabileceğiniz kod parçacıklarını da sağlar. Kod örneği sayfasında gereksinimler, yükleme ve Kuruluma yardımcı olacak ayrıntılı Benioku konuları bulacaksınız. Kod içindeki açıklamalar kritik bölümleri anlamanıza yardımcı olur.
 
 > [!NOTE]
-> V 1.0 örnekleri ile ilgileniyorsanız, bkz. [Azure AD kod örnekleri (v 1.0 uç noktası)](sample-v1-code.md).
+> V 1.0 örnekleri ile ilgileniyorsanız, bkz. [Azure AD kod örnekleri (v 1.0 uç noktası)](../azuread-dev/sample-v1-code.md).
 
 Her örnek tür için temel senaryoyu anlamak üzere bkz. [Microsoft Identity platform uç noktası Için uygulama türleri](v2-app-types.md).
 
@@ -132,6 +132,6 @@ Azure AD ile kimlik doğrulaması da dahil olmak üzere Microsoft Graph API 'SI 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory (v 1.0) Geliştirici Kılavuzu](v1-overview.md)
+- [Azure Active Directory (v 1.0) Geliştirici Kılavuzu](../azuread-dev/v1-overview.md)
 - [Azure AD Graph API kavramsal ve başvuru](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 - [Azure AD Graph API Yardımcısı kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)

@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 917dc85672fcc5e4c3f1431f80d1f6eb68207392
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 125f92b64ee745a595d15ccacafb6a62414955a9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050044"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157542"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
 > [!NOTE]
 > Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için AskAzureDBforPostgreSQL@service.microsoft.combaşvurun.
 
-PostgreSQL için Azure veritabanı tek sunuculu veri şifreleme, müşteri tarafından yönetilen bir anahtarla, bekleyen veri koruması için Kendi Anahtarını Getir (BYOK) sağlar. Ayrıca, kuruluşların anahtar ve veri yönetiminde görev ayrımı uygulamasına olanak tanır. Müşteri tarafından yönetilen şifreleme ile, bir anahtarın yaşam döngüsü, anahtar kullanım izinleri ve anahtarlar üzerindeki işlemlerin denetimi ile ilgili tam bir denetim ile sorumludur.
+PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu, bekleyen veri koruması için qwN anahtarınızı (BYOK) getirmenize olanak sağlar. Ayrıca, kuruluşların anahtar ve veri yönetiminde görev ayrımı uygulamasına olanak tanır. Müşteri tarafından yönetilen şifreleme ile, bir anahtarın yaşam döngüsü, anahtar kullanım izinleri ve anahtarlar üzerindeki işlemlerin denetimi ile ilgili tam bir denetim ile sorumludur.
 
-PostgreSQL için Azure veritabanı tek sunuculu için, veri şifrelemesini sunucu düzeyinde ayarlarsınız. Bu veri şifreleme biçimi sayesinde, anahtarı veri şifreleme anahtarı (DEK) şifrelemesinde kullanırsınız. DEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) örneğinde depolanan, müşteri tarafından yönetilen, asimetrik bir anahtardır. DEK, bu makalenin ilerleyen bölümlerinde daha ayrıntılı açıklanmıştır.
+PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
 
 Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda kullanılabilir ve isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen RSA şifreleme anahtarlarına yönelik ölçeklenebilir, güvenli depolama alanı sağlar. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıklara şifreleme ve şifre çözme hizmetleri sağlar. Key Vault anahtarı oluşturabilir, içeri aktarılabilir veya [Şirket içi BIR HSM cihazından aktarılmasını](../key-vault/key-Vault-hsm-protected-keys.md)sağlayabilir.
 
@@ -31,11 +31,10 @@ Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda 
 
 PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu aşağıdaki avantajları sağlar:
 
-* Şifreleme anahtarı için daha fazla saydam, ayrıntılı denetim ve yönetim.
-* Azure Key Vault içinde barındırarak anahtar merkezi yönetimi ve kuruluşu.
-* Kuruluş içindeki anahtar ve verilerin yönetiminde görev ayrımı uygulama özelliği.
-* Bir kuruluş içindeki veri yönetiminden anahtar yönetimini ayırabilme olanağı, böylece bir Key Vault Yöneticisi şifrelenmiş bir veritabanını erişilemez hale getirmek için anahtar erişim izinlerini iptal edebilir.
-* Microsoft Key Vault 'de şifreleme anahtarlarını göremediği veya ayıklayamadığı için son kullanıcılarınızın daha fazla güveni.
+* Veri erişimi, anahtarı kaldırabilme ve veritabanını erişilemez hale getirme özelliği tarafından tam olarak denetlenir 
+*   Anahtar yaşam döngüsü üzerinde, kurumsal ilkelerle hizalamak için anahtar dönüşü dahil tam denetim
+*   Azure Key Vault içinde anahtarların merkezi yönetimi ve organizasyonu
+*   Güvenlik ofisler ve DBA ve sistem yöneticileri arasında görev ayrımı uygulama yeteneği
 
 ## <a name="terminology-and-description"></a>Terminoloji ve açıklama
 

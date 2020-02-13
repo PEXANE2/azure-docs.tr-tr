@@ -11,18 +11,20 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816655"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168352"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
 Konuşma hizmeti, uygulamanızın sesi metne dönüştürün, gizli metin okuma ve konuşma çevirisi gerçekleştirin sağlar. Hizmet, REST API'leri ve Speech SDK'sı için benzersiz uç noktaları ile birden fazla bölgede kullanılabilir.
 
-Aboneliğiniz için bölge eşleşen uç nokta kullandığınızdan emin olun.
+Tüm bölgeler için konuşma deneyiminize özel yapılandırma gerçekleştirmeye yönelik konuşma portalı şurada bulunabilir: https://speech.microsoft.com
+
+Konuşma hizmetinizin etkinleştirmeleri için, çağrının aboneliğinizin bölgesiyle eşleştiğinden emin olun.
 
 ## <a name="speech-sdk"></a>Konuşma SDK'sı
 
@@ -30,28 +32,13 @@ Aboneliğiniz için bölge eşleşen uç nokta kullandığınızdan emin olun.
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Konuşmadan metne, metinden konuşmaya ve çeviri
 
-Konuşma SDK 'Sı, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**için şu bölgelerde kullanılabilir:
+Konuşma özelleştirme portalı şurada bulunabilir: https://speech.microsoft.com
 
-| Bölge           | Konuşma SDK parametresi | Konuşma özelleştirme portalı    |
-| ---------------- | -------------------- | ------------------------------ |
-| Batı ABD          | `westus`             | https://westus.cris.ai         |
-| Batı ABD 2        | `westus2`            | https://westus2.cris.ai        |
-| Doğu ABD          | `eastus`             | https://eastus.cris.ai         |
-| Doğu ABD 2        | `eastus2`            | https://eastus2.cris.ai        |
-| Orta ABD       | `centralus`          | https://centralus.cris.ai      |
-| Orta Kuzey ABD | `northcentralus`     | https://northcentralus.cris.ai |
-| Orta Güney ABD | `southcentralus`     | https://southcentralus.cris.ai |
-| Orta Hindistan    | `centralindia`       | https://centralindia.cris.ai   |
-| Doğu Asya        | `eastasia`           | https://eastasia.cris.ai       |
-| Güneydoğu Asya   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Doğu Japonya       | `japaneast`          | https://japaneast.cris.ai      |
-| Güney Kore - Orta    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Doğu Avustralya   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Orta Kanada   | `canadacentral`      | https://canadacentral.cris.ai  |
-| Kuzey Avrupa     | `northeurope`        | https://northeurope.cris.ai    |
-| Batı Avrupa      | `westeurope`         | https://westeurope.cris.ai     |
-| Güney Birleşik Krallık         | `uksouth`            | https://uksouth.cris.ai        |
-| Orta Fransa   | `francecentral`      | https://francecentral.cris.ai  |
+Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**için şu bölgelerde kullanılabilir:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+[Konuşma SDK 'sını](speech-sdk.md)kullanıyorsanız, bölgeler **bölge tanımlayıcısı** tarafından belirtilir (örneğin, `SpeechConfig.FromSubscription`parametresi olarak). Bölgenin aboneliğinizin bölgesiyle aynı olduğundan emin olun.
 
 ### <a name="intent-recognition"></a>Amaç tanıma
 
@@ -61,7 +48,7 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
-| Avustralya     | Doğu Avustralya   | `australiaeast`      |
+| Avustralya     | Avustralya Doğu   | `australiaeast`      |
 | Avrupa        | Kuzey Avrupa     | `northeurope`        |
 | Avrupa        | Batı Avrupa      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
@@ -70,7 +57,7 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
-| Güney Amerika | Güney Brezilya     | `brazilsouth`        |
+| Güney Amerika | Brezilya Güney     | `brazilsouth`        |
 
 Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 
@@ -96,7 +83,18 @@ Konuşma hizmeti de konuşma metin ve metin okuma istekleri için REST uç nokta
 
 Konuşmadan metne başvuru belgeleri için bkz. [konuşmayı metne dönüştürme REST API](rest-speech-to-text.md).
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+REST API uç noktası şu biçimdedir:
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+`<REGION_IDENTIFIER>`, bu tablodaki aboneliğinizin bölgesiyle eşleşen tanımlayıcıyla değiştirin:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> Bir 4xx HTTP hatası almamak için dil parametresi URL 'ye eklenmelidir. Örneğin, Batı ABD uç noktası kullanılarak ABD Ingilizcesi olarak ayarlanan dil: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ### <a name="text-to-speech"></a>Metin okuma
 

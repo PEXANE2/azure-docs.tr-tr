@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152610"
+ms.locfileid: "77161690"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -92,7 +92,7 @@ Bu işlem yapıldıktan sonra SDK, bir erişim belirtecinin hesap anahtarının 
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD Kullanıcı kimlik doğrulaması
 
-Azure Active Directory kullanıcıları hedefleyen uygulamalar için önerilen yaklaşım, Kullanıcı için bir Azure AD belirteci kullanmaktır ve bu, aşağıdaki belgelerde açıklandığı şekilde ADAL kitaplığını kullanarak elde edebilirsiniz: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); "hızlı başlar" altında listelenen adımları izlemelisiniz, ancak şunları yapabilirsiniz:
+Kullanıcıları Azure Active Directory hedefleyen uygulamalar için, önerilen yaklaşım Kullanıcı için bir Azure AD belirteci kullanmaktır ve bu, [msal kitaplığını](../../active-directory/develop/msal-overview.md)kullanarak elde edebilirsiniz. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı ' nı içeren aşağıdaki adımları izlemeniz gerekir:
 
 1. Azure portal yapılandırma
     1.  Uygulamanızı Azure AD 'ye **yerel uygulama**olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz ve uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
@@ -118,7 +118,7 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için önerilen y
         3.  Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri **ortak** ile değiştirin
     3.  Belirteç isteğiniz üzerinde, **kaynağı** "https://sts.mixedreality.azure.com" olarak ayarlayın. Bu "kaynak", Azure AD 'ye, uygulamanızın Azure uzamsal bağlayıcı hizmeti için bir belirteç istediğini gösterir.
 
-Bu şekilde, uygulamanız ADAL bir Azure AD belirteci ile elde edilebilir. Bu Azure AD belirtecini, bulut oturumu yapılandırma nesneniz üzerinde **Authenticationtoken** olarak ayarlayabilirsiniz.
+Bu şekilde, uygulamanız MSAL bir Azure AD belirteci ile elde edilebilir. Bu Azure AD belirtecini, bulut oturumu yapılandırma nesneniz üzerinde **Authenticationtoken** olarak ayarlayabilirsiniz.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ Azure uzamsal Bağlayıcılarından üretime yönelik uygulamaları dağıtmak i
 
 Burada, uygulamanızın arka uç hizmetinde kimlik doğrulaması yapmak için kendi mekanizmasını (örneğin: Microsoft hesabı, PlayFab, Facebook, Google ID, Özel Kullanıcı adı/parola vb.) kullandığı varsayılır. Kullanıcılarınızın arka uç hizmetinize kimlik doğrulaması yapıldıktan sonra, bu hizmet bir Azure AD belirtecini alabilir, Azure uzamsal Tutturucuların erişim belirteci için Exchange 'e geri dönebilir ve bunu istemci uygulamanıza geri döndürebilir.
 
-Azure AD erişim belirteci, ADAL kitaplığı kullanılarak aşağıdaki belgelerde açıklandığı şekilde alınır: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); "hızlı başlar" altında listelenen adımları izlemelisiniz, ancak şunları yapabilirsiniz:
+Azure AD erişim belirteci [msal kitaplığı](../../active-directory/develop/msal-overview.md)kullanılarak alınır. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı ' nı içeren aşağıdaki adımları izlemeniz gerekir:
 
 1.  Azure portal yapılandırma:
     1.  Uygulamanızı Azure AD 'ye kaydedin:

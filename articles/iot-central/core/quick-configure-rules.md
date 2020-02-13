@@ -3,18 +3,18 @@ title: Hızlı başlangıç-Azure IoT Central kuralları ve eylemleri yapıland�
 description: Bu hızlı başlangıçta, Azure IoT Central uygulamanızda telemetri tabanlı kuralların ve eylemlerin nasıl yapılandırılacağı hakkında bir Oluşturucu olarak gösterilir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027807"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169510"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Hızlı başlangıç: Azure IoT Central cihazınız için kuralları ve eylemleri yapılandırma
 
@@ -22,7 +22,7 @@ ms.locfileid: "77027807"
 
 Bu hızlı başlangıçta, bir cihaz algılayıcısı tarafından bildirilen sıcaklık 90&deg; F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygulaması oluşturun](./quick-deploy-iot-central.md) ve birlikte çalışmak üzere **Mxyongaıot devkit** cihaz şablonunu oluşturmak için [IoT Central uygulamanıza sanal bir cihaz ekleyin](./quick-create-pnp-device.md) .
 
@@ -34,7 +34,7 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
 
 1. Kural adı olarak **çevresel sıcaklık** girin.
 
-1. **Hedef cihazlar** bölümünde, cihaz şablonu olarak **Mxyongaıot devkit** ' i seçin. Bu seçenek, kural için geçerli olan cihazları cihaz şablonu türüne göre filtreler. Daha fazla filtre ölçütü eklemek için **+ filtresi**öğesini seçin.
+1. **Hedef cihazlar** bölümünde, cihaz şablonu olarak **Mxyongaıot devkit** ' i seçin. Bu seçenek, kural için geçerli olan cihazları cihaz şablonu türüne göre filtreler. **+ Filter**öğesini seçerek daha fazla filtre ölçütü ekleyebilirsiniz.
 
 1. **Koşullar** bölümünde, kuralınızı neyin tetikleyeceğini tanımlarsınız. Sıcaklık telemetrisine dayalı bir koşul tanımlamak için aşağıdaki bilgileri kullanın:
 
@@ -55,7 +55,7 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
     | Ayar   | Değer                                             |
     | --------- | ------------------------------------------------- |
     | Görünen ad | İşleç e-posta eylemi                          |
-    | Bitiş        | E-posta adresiniz                                |
+    | Alıcı        | E-posta adresiniz                                |
     | Notlar     | Çevresel sıcaklık eşiği aştı. |
 
     > [!NOTE]

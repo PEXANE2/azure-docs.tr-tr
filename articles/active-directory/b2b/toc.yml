@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Öğreticiler
       items:
-        - name: B2B konuk kullanıcılarını toplu davet etme
+        - name: PowerShell aracılığıyla toplu davet
+          href: bulk-invite-powershell.md
+        - name: Portal aracılığıyla toplu davet (önizleme)
           href: tutorial-bulk-invite.md
         - name: Çok faktörlü kimlik doğrulamasını zorlama
           href: b2b-tutorial-require-mfa.md

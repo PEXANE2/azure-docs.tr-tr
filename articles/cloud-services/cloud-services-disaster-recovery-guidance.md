@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: f65b61d7265268b33d2c9a113503cc1b5a87db8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361220"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157516"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure Cloud Services etkileyen bir Azure hizmet kesintisi durumunda yapılacaklar
 Microsoft 'ta, hizmetlerimizin ihtiyacınız olduğunda her zaman sizin için kullanılabilir olduğundan emin olmak için çok çalıştık. Denetiimizin ötesine geçmeye, planlanmamış hizmet kesintilerine neden olacak şekilde bizi etkilemekte yarar vardır.
@@ -27,7 +27,7 @@ Azure 'da, yüksek oranda kullanılabilir uygulamaları destekleyen birçok yerl
 Bu makalede, bir bütün bölge ana doğal olağanüstü durum veya geniş çaplı hizmet kesintisi nedeniyle bir kesinti yaşandığında, doğru bir olağanüstü durum kurtarma senaryosu ele alınmaktadır. Bunlar nadir oluşumlardır, ancak bir bölgenin tamamı için bir kesinti olması olasılığa hazırlanmanız gerekir. Bir bölgenin tamamı bir hizmet kesintisi yaşıyorsa, verilerinizin yerel olarak yedekli kopyaları geçici olarak devre dışı olur. Coğrafi çoğaltmayı etkinleştirdiyseniz, Azure Storage bloblarınızın ve tablolarının üç ek kopyası farklı bir bölgede depolanır. Tam bir bölgesel kesinti veya birincil bölgenin kurtarılabilir olmadığı bir olağanüstü durum durumunda Azure, tüm DNS girdilerini coğrafi olarak çoğaltılan bölgeye yeniden eşler.
 
 > [!NOTE]
-> Bu işlem üzerinde herhangi bir denetiminiz olmadığı ve yalnızca veri merkezi genelindeki hizmet kesintileri için gerçekleşmeyeceği hakkında dikkat edin. Bu nedenle, en yüksek kullanılabilirlik düzeyini elde etmek için uygulamaya özgü diğer yedekleme stratejilerine de güvenmelidir. Daha fazla bilgi için bkz. [Microsoft Azure oluşturulan uygulamalar Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Kendi yük devretmesini etkileyebilmek istiyorsanız, farklı bir bölgedeki verilerinizin salt okunurdur kopyasını oluşturan [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)kullanımını göz önünde bulundurmanız gerekebilir.
+> Bu işlem üzerinde herhangi bir denetiminiz olmadığı ve yalnızca veri merkezi genelindeki hizmet kesintileri için gerçekleşmeyeceği hakkında dikkat edin. Bu nedenle, en yüksek kullanılabilirlik düzeyini elde etmek için uygulamaya özgü diğer yedekleme stratejilerine de güvenmelidir. Daha fazla bilgi için bkz. [Microsoft Azure oluşturulan uygulamalar Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Kendi yük devretmesini etkileyebilmek istiyorsanız, farklı bir bölgedeki verilerinizin salt okunurdur kopyasını oluşturan [Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-redundancy.md)kullanımını göz önünde bulundurmanız gerekebilir.
 >
 >
 
@@ -46,7 +46,7 @@ Bulut hizmeti uygulaması oluşturma ve dağıtma hakkında daha fazla ayrıntı
 
 Uygulama veri kaynaklarınıza bağlı olarak, uygulama veri kaynağınız için kurtarma yordamlarını denetlemeniz gerekebilir.
 
-* Azure depolama veri kaynakları için bkz. [Azure depolama çoğaltma](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , uygulamanız için seçilen çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için.
+* Azure depolama veri kaynakları için bkz. [Azure depolama yedekliliği](../storage/common/storage-redundancy.md) , uygulamanız için seçilen artıklık modeline göre kullanılabilir seçenekleri denetlemek için kullanılır.
 * SQL veritabanı kaynakları için bkz. genel bakış: uygulamanıza yönelik seçili çoğaltma modeline göre kullanılabilir seçenekleri denetlemek için [SQL veritabanı Ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](../sql-database/sql-database-business-continuity.md) .
 
 

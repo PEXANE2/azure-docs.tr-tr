@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 5b99d76ef20c288d6ae0bd33e1e2b6a75a359d3a
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616284"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158154"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme
 
@@ -172,7 +172,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > RBAC bağlamasını verdiğiniz kullanıcı aynı Azure AD kiracısında ise, *userPrincipalName*öğesine göre izinler atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve onun yerine *ObjectID* özelliğini kullanın.
 
-Adlı `basic-azure-ad-binding.yaml` bir YAML bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId* değerini ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
+`basic-azure-ad-binding.yaml` adlı bir YAML bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId* ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -197,7 +197,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 
 ## <a name="access-cluster-with-azure-ad"></a>Azure AD ile küme erişimi
 
-Şimdi AKS kümesi için Azure AD kimlik doğrulaması tümleştirmesini test edelim. `kubectl` Yapılandırma bağlamını normal kullanıcı kimlik bilgilerini kullanacak şekilde ayarlayın. Bu bağlam, tüm kimlik doğrulama isteklerini Azure AD aracılığıyla geri geçirir.
+Şimdi AKS kümesi için Azure AD kimlik doğrulaması tümleştirmesini test edelim. `kubectl` yapılandırma bağlamını normal kullanıcı kimlik bilgilerini kullanacak şekilde ayarlayın. Bu bağlam, tüm kimlik doğrulama isteklerini Azure AD aracılığıyla geri geçirir.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
@@ -209,7 +209,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --overwr
 kubectl get pods --all-namespaces
 ```
 
-Bir Web tarayıcısı kullanarak Azure AD kimlik bilgilerini kullanarak kimlik doğrulaması gerçekleştirmek için bir oturum açma istemi alırsınız. Kimliği başarıyla doğrulandıktan sonra, `kubectl` komut aşağıdaki örnek çıktıda gösterildiği gibi aks kümesindeki Pod 'leri görüntüler:
+Bir Web tarayıcısı kullanarak Azure AD kimlik bilgilerini kullanarak kimlik doğrulaması gerçekleştirmek için bir oturum açma istemi alırsınız. Kimliği başarıyla doğrulandıktan sonra, `kubectl` komutu aşağıdaki örnek çıktıda gösterildiği gibi aks kümesindeki Pod 'leri görüntüler:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -228,7 +228,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-İçin `kubectl` alınan kimlik doğrulama belirteci önbelleğe alındı. Yalnızca belirtecin süresi dolduğunda veya Kubernetes yapılandırma dosyası yeniden oluşturulduğunda oturum açmanız yeniden istenir.
+`kubectl` için alınan kimlik doğrulama belirteci önbelleğe alındı. Yalnızca belirtecin süresi dolduğunda veya Kubernetes yapılandırma dosyası yeniden oluşturulduğunda oturum açmanız yeniden istenir.
 
 Aşağıdaki örnek çıktıda olduğu gibi bir Web tarayıcısını kullanarak başarıyla oturum açtıktan sonra bir yetkilendirme hata iletisi görürseniz, aşağıdaki olası sorunları kontrol edin:
 
@@ -238,7 +238,7 @@ error: You must be logged in to the server (Unauthorized)
 
 * Kullanıcı hesabının aynı Azure AD kiracısında olup olmadığı ile ilgili olarak uygun nesne KIMLIĞINI veya UPN 'yi tanımlamış olursunuz.
 * Kullanıcı 200 taneden fazla grubun üyesi değil.
-* Sunucu için uygulama kaydında tanımlanan gizli dizi, kullanılarak yapılandırılan değerle eşleşiyor`--aad-server-app-secret`
+* Sunucu için uygulama kaydında tanımlanan gizli dizi, `--aad-server-app-secret` kullanılarak yapılandırılan değerle eşleşiyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -260,7 +260,7 @@ Kimlik ve kaynak denetiminde en iyi uygulamalar için bkz. [AKS 'de kimlik doğr
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update

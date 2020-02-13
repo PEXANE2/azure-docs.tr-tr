@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd02f143fe35edd867ce26f26a4cba74bd6f10b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847348"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166956"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -61,7 +61,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="identity-providers-tokens-protocols"></a>Kimlik sağlayıcıları, belirteçler, protokoller
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-Openıdconnect |  |  | X | Örneğin, Google +.  |
 | IDP-OAUTH2 |  |  | X | Örneğin, Facebook.  |
@@ -72,24 +72,24 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 | Bağlı olan taraf OAUTH1 |  |  |  | Desteklenmez. |
 | Bağlı olan taraf OAUTH2 |  |  | X |  |
 | Bağlı olan taraf OıDC |  |  | X |  |
-| Bağlı olan taraf SAML | X |  |  |  |
+| Bağlı olan taraf SAML |  |X  |  |  |
 | Bağlı olan taraf wsbes | X |  |  |  |
 | Temel ve sertifika kimlik doğrulaması ile REST API |  |  | X | Örneğin, Azure Logic Apps. |
 
 ### <a name="component-support"></a>Bileşen desteği
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | Yerel Dizin olarak Azure Active Directory |  |  | X |  |
 | Eposta doğrulaması için Azure e-posta alt sistemi |  |  | X |  |
 | Çoklu dil desteği|  |  | X |  |
 | Koşul doğrulamaları |  |  | X | Örneğin, parola karmaşıklığı. |
-| Üçüncü taraf e-posta hizmeti sağlayıcılarını kullanma | X |  |  |  |
+| Üçüncü taraf e-posta hizmeti sağlayıcılarını kullanma |  |X  |  |  |
 
 ### <a name="content-definition"></a>İçerik tanımı
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Hata sayfası, api. Error |  |  | X |  |
 | IDP seçim sayfası, api. ıdpseçimlerin |  |  | X |  |
@@ -105,7 +105,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="app-ief-integration"></a>App-ıEF tümleştirmesi
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Sorgu dizesi parametre domain_hint |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
 | Sorgu dizesi parametre login_hint |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
@@ -115,7 +115,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="session-management"></a>Oturum yönetimi
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | SSO oturum sağlayıcısı |  |  | X |  |
 | Dış oturum açma oturumu sağlayıcısı |  |  | X |  |
@@ -124,7 +124,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="security"></a>Güvenlik
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | İlke anahtarları-oluştur, El Ile, karşıya yükle |  |  | X |  |
 | İlke anahtarları-RSA/CERT, gizlilikler |  |  | X |  |
@@ -132,7 +132,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="developer-interface"></a>Geliştirici arabirimi
 
-| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure portalı-ıEF UX |  |  | X |  |
 | Application Insights Kullanıcı yolculuğu günlükleri |  | X |  | Geliştirme sırasında sorun giderme için kullanılır.  |

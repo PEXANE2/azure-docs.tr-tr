@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782131"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158953"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Önizleme: Azure PowerShell kullanarak spot VM 'Leri dağıtma
 
@@ -29,7 +29,7 @@ VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seç
 > Nokta örnekleri şu anda genel önizlemededir.
 > Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Genel önizlemenin erken bölümü için, spot örnekleri sabit bir fiyata sahip olur, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
+
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
@@ -37,9 +37,6 @@ VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seç
 Yapılandırmayı oluşturmak için [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) kullanarak bir spotvm oluşturun. `-Priority Spot` ekleyin ve `-MaxPrice` birine ayarlayın:
 - `-1`, VM fiyata çıkarılmaz.
 - en fazla 5 basamaklı bir dolar miktarı. Örneğin, `-MaxPrice .98765` bir spotVM 'nin fiyatı yaklaşık olarak $. 98765 ' e geçtiğinde VM 'nin serbest bırakılacak olması anlamına gelir.
-
-> [!IMPORTANT]
-> Genel önizlemenin erken bölümü için, en yüksek fiyat ayarlayabilirsiniz ancak yok sayılır. Spot VM 'Ler sabit bir fiyata sahip olacak, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
 
 
 Bu örnek, fiyatlandırma temelinde serbest bırakılmayacak bir spotVM oluşturur (yalnızca Azure 'un kapasiteyi geri sağlaması gerektiğinde).

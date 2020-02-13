@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e70d2e07f74a48e1d99e04c5369a933cfd9cede1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905359"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162067"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git depoları ile Azure Event Hubs için örnekleri 
-Event Hubs örnekleri bulabilirsiniz [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Bu örnekler, anahtar özelliklerini gösteren [Azure Event Hubs](/azure/event-hubs/). Bu makale, kategorilere ayırır ve her biri için bağlantılarla birlikte kullanılabilir örnekler açıklar.
+[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)üzerinde Event Hubs örnekleri bulabilirsiniz. Bu örnekler [Azure Event Hubs](/azure/event-hubs/)'daki temel özellikleri gösterir. Bu makale, kategorilere ayırır ve her biri için bağlantılarla birlikte kullanılabilir örnekler açıklar.
 
 ## <a name="net-samples"></a>.NET örnekleri
 
 | Sürüm | Örnek konumu |
 | ------- | ---------------- | 
-| Azure. Messaging. EventHubs sürüm 5 (en son) | [Github'da Event Hubs örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[GitHub 'da Event Hubs Işlemci örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Azure. Messaging. EventHubs sürüm 5 (en son) | [GitHub 'daki Event Hubs örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[GitHub 'da Event Hubs Işlemci örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
 | Microsoft. Azure. EventHubs sürüm 4 (eski) | [GitHub konumu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Java örnekleri
@@ -46,7 +46,7 @@ Event Hubs örnekleri bulabilirsiniz [GitHub](https://github.com/Azure/azure-eve
 | Azure-eventhub sürüm 5 (en son) | [GitHub konumu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
 | Azure-eventhub sürüm 1 (eski) | [GitHub konumu](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
-## <a name="nodejs-samples"></a>Node.js örnekleri
+## <a name="javascript-samples"></a>JavaScript örnekleri
 
 | Sürüm | Örnek konumu |
 | ------- | ---------------- | 
@@ -55,16 +55,16 @@ Event Hubs örnekleri bulabilirsiniz [GitHub](https://github.com/Azure/azure-eve
 
 
 ## <a name="go-samples"></a>Go örnekleri
-Azure olay hub'ları için Go örnekleri bulabilirsiniz [azure-event-hubs-Git](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) GitHub deposu.
+Azure Event Hubs için go örneklerini [Azure-Event-hub-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) GitHub deposunda bulabilirsiniz.
 
 ## <a name="azure-cli-samples"></a>Azure CLI örnekleri
-Azure Event hubs Azure CLI örnekleri bulabilirsiniz [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) GitHub deposu.
+Azure [-Event-hub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) GitHub deposunda Azure Event Hubs IÇIN Azure CLI örnekleri bulabilirsiniz.
 
 ## <a name="azure-powershell-samples"></a>Azure PowerShell örnekleri
-Azure Event hubs Azure PowerShell örnekleri bulabilirsiniz [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) GitHub deposu.
+Azure [-Event-hub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) GitHub deposunda Azure Event Hubs için Azure PowerShell örnekleri bulabilirsiniz.
  
 ## <a name="apache-kafka-samples"></a>Apache Kafka örnekleri
-Apache Kafka özelliği için olay hub'ları için örnekler bulabilirsiniz [azure-event-hubs-için-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub deposu.
+[Azure-Event-hub-for-Kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub deposunda Apache Kafka özelliği için Event Hubs örnekleri bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makaleler de Event Hubs hakkında daha fazla bilgi edinebilirsiniz:

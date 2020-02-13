@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806890"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158919"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Azure depolama için özel uç noktaları kullanma (Önizleme)
 
@@ -25,7 +25,7 @@ Depolama hesabınız için özel uç noktalar kullanmak şunları yapmanızı sa
 - Sanal ağ (VNet) için güvenliği artırarak VNet 'ten veri alımını engelleyebilirsiniz.
 - [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../../expressroute/expressroute-locations.md) Ile özel eşleme ile sanal ağa bağlanan şirket içi ağlardan depolama hesaplarına güvenli bir şekilde bağlanın.
 
-## <a name="conceptual-overview"></a>Kavramsal Genel Bakış
+## <a name="conceptual-overview"></a>Kavramsal genel bakış
 ![Azure depolama için özel uç noktalara genel bakış](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 Özel uç nokta, [sanal ağınızdaki](../../virtual-network/virtual-networks-overview.md) (VNet) bir Azure hizmeti için özel bir ağ arabirimidir. Depolama hesabınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve depolama ağınızdaki istemciler arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve depolama hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
@@ -50,7 +50,7 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 > [!TIP]
 > RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
 
-[Okuma Erişimli Coğrafi olarak yedekli depolama hesabında](storage-redundancy-grs.md#read-access-geo-redundant-storage)okuma kullanılabilirliği için, hizmetin birincil ve ikincil örneklerinde ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme**için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır.
+Coğrafi olarak yedekli depolama için yapılandırılmış bir depolama hesabıyla ikincil bölgeye okuma erişimi için, hizmetin birincil ve ikincil örnekleri için ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme**için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır. Depolama artıklığı seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](storage-redundancy.md).
 
 #### <a name="resources"></a>Kaynaklar
 
@@ -78,7 +78,7 @@ Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğü
 
 Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' StorageAccountA ' depolama hesabı için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                                  | Tür  | Değer                                                 |
+| Ad                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<depolama hizmeti genel uç noktası\>                   |
@@ -88,7 +88,7 @@ Daha önce belirtildiği gibi, depolama güvenlik duvarını kullanarak genel u�
 
 Özel uç noktasını barındıran VNet 'teki bir istemci tarafından çözümlendiğinde StorageAccountA için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                                  | Tür  | Değer                                                 |
+| Ad                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -104,7 +104,7 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 
 | Depolama hizmeti        | Bölge adı                            |
 | :--------------------- | :----------------------------------- |
-| Blob Hizmeti           | `privatelink.blob.core.windows.net`  |
+| Blob hizmeti           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
 | Dosya hizmeti           | `privatelink.file.core.windows.net`  |
 | Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |

@@ -12,16 +12,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 58fce1ca2401ecf79e478377e7547a6c5785f7d1
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c11f7daf68585d63d19fca282ef2f4a306303ac7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703652"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160738"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açabiltireceğinizi öğreneceksiniz.
 
@@ -45,7 +43,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 > Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+> 1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
@@ -54,7 +52,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 > 1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Yeniden yönlendirme URI 'lerinde**`https://localhost:44321/signin-oidc`ekleyin ve **Kaydet**' i seçin.
 >    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** `https://localhost:44321/signout-oidc`olarak ayarlayın.
->    - **Örtük onay**'ın altında **Kimlik belirteçleri**'ni işaretleyin.
+>    - **Örtük izin**' ın altında, **kimlik belirteçlerini**denetleyin.
 >    - **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -86,7 +84,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 > > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
 
 > [!div renderon="docs"]
-> Nerede:
+> Konumlar:
 > - `Enter_the_Application_Id_here`-Azure portal kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** . Uygulamanın **genel bakış** sayfasında **uygulama (istemci) kimliğini** bulabilirsiniz.
 > - `Enter_the_Tenant_Info_Here`-aşağıdaki seçeneklerden biridir:
 >   - Uygulamanız **yalnızca bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
@@ -142,7 +140,7 @@ Yöntemi `AddAuthentication`, hizmetini tarayıcı senaryolarında kullanılan v
 > |Konum  |  |
 > |---------|---------|
 > | ClientId  | Azure portal kayıtlı uygulamadan uygulama (istemci) KIMLIĞI. |
-> | Yetkili | Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle bu, genel bulut için <https://login.microsoftonline.com/{tenant}/v2.0>; burada {Tenant}, kiracınızın adı veya kiracı KIMLIĞINIZ veya ortak uç noktaya yönelik bir başvuru için *ortaktır* (çok kiracılı uygulamalar için kullanılır) |
+> | İniz | Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle bu, genel bulut için <https://login.microsoftonline.com/{tenant}/v2.0>; burada {Tenant}, kiracınızın adı veya kiracı KIMLIĞINIZ veya ortak uç noktaya yönelik bir başvuru için *ortaktır* (çok kiracılı uygulamalar için kullanılır) |
 > | TokenValidationParameters | Belirteç doğrulaması için parametre listesi. Bu durumda, tüm kişisel veya okul hesaplarından oturum açma işlemlerini kabul edemeyeceğini göstermek için `ValidateIssuer` `false` olarak ayarlanır. |
 
 

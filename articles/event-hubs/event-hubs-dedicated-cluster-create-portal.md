@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
-ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029937"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157491"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış Event Hubs kümesi oluşturma 
 Event Hubs kümeler en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. Bu teklif,% 99,99 SLA garanti etti ve yalnızca adanmış fiyatlandırma katmanımızda kullanılabilir. Bir [Event Hubs kümesi](event-hubs-dedicated-overview.md) , garantili kapasiteye ve alt saniyelik gecikmeye göre saniyede milyonlarca olayı alabilir. Bir küme içinde oluşturulan ad alanları ve Olay Hub 'ları, tüm giriş limitleri olmadan standart teklifin tüm özelliklerini ve daha fazlasını içerir. Adanmış teklif, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak [Azure Blob depolama alanına](../storage/blobs/storage-blobs-introduction.md) veya [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)' e otomatik olarak günlüğe kaydedebilirsiniz.
@@ -41,7 +41,7 @@ Kaynak grubunuzda Azure portal kullanarak bir küme oluşturmak için lütfen a�
 
 1. Azure portal bir küme oluşturmak için [Bu bağlantıyı](https://aka.ms/eventhubsclusterquickstart) izleyin. Buna karşılık, sol gezinti bölmesinden **tüm hizmetler** ' i seçin, sonra arama çubuğuna "Event Hubs kümeleri" yazın ve sonuçlar listesinden "Event Hubs kümeler" ' ı seçin.
 2. **Küme oluştur** sayfasında, aşağıdakileri yapılandırın:
-    1. **Küme için bir ad**girin. Adın kullanılabilirliği sistem tarafından hemen kontrol edilir.
+    1. **Küme için bir ad**girin. Adın kullanılabilirliği sistem tarafından hemen denetlenir.
     2. Kümeyi oluşturmak istediğiniz **aboneliği** seçin.
     3. Kümeyi oluşturmak istediğiniz **kaynak grubunu** seçin.
     4. Küme için bir **konum** seçin. Tercih ettiğiniz bölge gri ise, geçici olarak kapasitesinin dışında olur ve Event Hubs ekibine bir [destek isteği](#submit-a-support-request) gönderebilirsiniz.
@@ -106,6 +106,10 @@ Oluşturulduktan sonra kümenizin boyutunu değiştirmek isterseniz veya tercih 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede bir Event Hubs kümesi oluşturdunuz. Olay Hub 'ından olay gönderme ve alma ve olayları Azure depolama veya Azure Data Lake Store yakalama hakkında adım adım yönergeler için aşağıdaki öğreticilere bakın:
 
-- [.NET Core 'da olay gönderme ve alma](event-hubs-dotnet-standard-getstarted-send.md)
+- Olay gönderme ve alma 
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 - [Event Hubs yakalamayı etkinleştirmek için Azure portal kullanma](event-hubs-capture-enable-through-portal.md)
 - [Apache Kafka için Azure Event Hubs kullanma](event-hubs-for-kafka-ecosystem-overview.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: 7f2d282541e8a5a3752a0784a3f00a48ad2fb303
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769150"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162591"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
 
@@ -35,7 +35,7 @@ Algoritma seçme konusunda yardım için bkz.
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
 | Veri girişi ve çıkışı | Verileri bulut kaynaklarından ardışık düzene taşıyın. Sonuçları veya ara verilerinizi Azure depolama 'ya, bir SQL veritabanına veya Hive 'ye, işlem hattı çalıştırırken veya işlem hatları arasında veri alışverişi yapmak için bulut depolama alanını kullanarak yazın.  | [Verileri el Ile girin](enter-data-manually.md) <br/> [Verileri dışarı aktar](export-data.md) <br/> [Verileri içeri aktar](import-data.md) |
-| Veri dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekle](add-columns.md) <br/> [Satır Ekle](add-rows.md) <br/> [Matematik Işlemini Uygula](apply-math-operation.md) <br/> [SQL dönüşümünü Uygula](apply-sql-transformation.md) <br/> [Eksik verileri temizle](clean-missing-data.md) <br/> [Klip değerleri](clip-values.md) <br/> [CSV 'ye Dönüştür](convert-to-csv.md) <br/> [Veri kümesine Dönüştür](convert-to-dataset.md) <br/> [Meta verileri Düzenle](edit-metadata.md) <br/> [Verileri birleştirin](join-data.md) <br/> [Verileri Normalleştir](normalize-data.md) <br/> [Bölüm ve örnek](partition-and-sample.md)  <br/> [Yinelenen satırları kaldır](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun dönüştürmeyi Seç](select-columns-transform.md) <br/> [Veri kümesindeki sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Böl](split-data.md) |
+| Veri dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekle](add-columns.md) <br/> [Satır Ekle](add-rows.md) <br/> [Matematik Işlemini Uygula](apply-math-operation.md) <br/> [SQL dönüşümünü Uygula](apply-sql-transformation.md) <br/> [Eksik verileri temizle](clean-missing-data.md) <br/> [Klip değerleri](clip-values.md) <br/> [CSV 'ye Dönüştür](convert-to-csv.md) <br/> [Veri kümesine Dönüştür](convert-to-dataset.md) <br/> [Gösterge değerlerine Dönüştür](convert-to-indicator-values.md) <br/> [Meta verileri Düzenle](edit-metadata.md) <br/> [Verileri birleştirin](join-data.md) <br/> [Verileri Normalleştir](normalize-data.md) <br/> [Bölüm ve örnek](partition-and-sample.md)  <br/> [Yinelenen satırları kaldır](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun dönüştürmeyi Seç](select-columns-transform.md) <br/> [Veri kümesindeki sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Böl](split-data.md) |
 | Özellik seçimi | Analitik model oluştururken kullanılacak ilgili, yararlı özelliklerin bir alt kümesini seçin. | [Filtre tabanlı özellik seçimi](filter-based-feature-selection.md) <br/> [Permütasyon özelliği önem derecesi](permutation-feature-importance.md) |
 | İstatistiksel İşlevler | Veri bilimi ile ilgili çok çeşitli istatistiksel yöntemler sağlar. | [Verileri özetleme](summarize-data.md)|
 

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162884"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162217"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight’ta Apache Hadoop mimarisi
 
@@ -46,6 +46,27 @@ Nodeyöneticileri, uygulamayı oluşturan görevleri çalıştırır ve sonra il
 Tüm HDInsight küme türleri YARN 'yi dağıtır. ResourceManager, birincil ve ikincil örnekle, sırasıyla küme içindeki birinci ve ikinci baş düğümlerde çalışan yüksek kullanılabilirlik için dağıtılır. Tek seferde yalnızca bir ResourceManager örneği etkindir. NodeManager örnekleri, kümedeki kullanılabilir çalışan düğümleri arasında çalışır.
 
 ![Azure HDInsight 'ta Apache YARN](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>Geçici silme
+
+Depolama hesabınızdan bir dosyayı geri almak için, bkz.:
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Azure Depolama blobları için geçici silme](../storage/blobs/storage-blob-soft-delete.md)
+* [Blobu geri al](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+
+[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Azure Data Lake Storage 2. ile ilgili bilinen sorunlar](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>Çöp Temizleme
+
+`fs.trash.interval` özelliği, > **Gelişmiş çekirdek-site** , yerel dosya sisteminde herhangi bir veri saklamamanız gerektiğinden, varsayılan **değer olan `0`** kalmalıdır. Bu değer, uzak depolama hesaplarını etkilemez (EB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f41c9a0e4754c60fd248e540a81e2afa833d655b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd848fa6f74f049f97956ef1736ac2b08f3a6148
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132397"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160160"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Mobil uygulamadan bir Web API 'SI çağırma
 
@@ -124,7 +124,7 @@ Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağ�
 
 - **Artımlı izin**: Microsoft Identity platform, uygulamaların başlangıçta değil, izin gerektiğinde kullanıcı onayı almasına izin verir. Uygulamanız bir API 'yi çağırmaya her seferinde, yalnızca ihtiyaç duyacağı kapsamları istemesi gerekir.
 
-- **Koşullu erişim**: birkaç API isteği yaptığınızda, bazı senaryolarda ek koşullu erişim gereksinimlerini karşılamanız gerekebilir. Bu şekilde, ilk isteğin koşullu erişim ilkeleri yoksa ve uygulamanız koşullu erişim gerektiren yeni bir API 'ye sessizce erişmeyi denediğinde gereksinimler bu şekilde artabilir. Bu sorunu gidermek için, sessiz isteklerden gelen hataları yakalamalı ve etkileşimli bir istek oluşturmak için hazırlandığınızdan emin olun.  Daha fazla bilgi için bkz. [koşullu erişim Için rehberlik](conditional-access-dev-guide.md).
+- **Koşullu erişim**: birkaç API isteği yaptığınızda, bazı senaryolarda ek koşullu erişim gereksinimlerini karşılamanız gerekebilir. Bu şekilde, ilk isteğin koşullu erişim ilkeleri yoksa ve uygulamanız koşullu erişim gerektiren yeni bir API 'ye sessizce erişmeyi denediğinde gereksinimler bu şekilde artabilir. Bu sorunu gidermek için, sessiz isteklerden gelen hataları yakalamalı ve etkileşimli bir istek oluşturmak için hazırlandığınızdan emin olun.  Daha fazla bilgi için bkz. [koşullu erişim Için rehberlik](../azuread-dev/conditional-access-dev-guide.md).
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Artımlı onay ve koşullu erişim kullanarak birkaç API çağırın
 

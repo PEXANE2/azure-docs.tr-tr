@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/05/2020
+ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061337"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162421"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma
 
@@ -43,11 +43,11 @@ HDInsight kümeleri, Data Lake Storage 1. iki şekilde kullanabilir:
 | HDInsight küme türü | Varsayılan depolama alanı olarak Data Lake Storage 1. | Ek depolama alanı olarak Data Lake Storage 1.| Notlar |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight sürüm 4,0 | Hayır | Hayır |HDInsight 4,0 ADLS 1. desteklenmez |
-| HDInsight sürümü 3.6 | Evet | Evet | HBase dışında|
-| HDInsight sürümü 3.5 | Evet | Evet | HBase dışında|
-| HDInsight sürümü 3.4 | Hayır | Evet | |
+| HDInsight sürümü 3.6 | Yes | Yes | HBase dışında|
+| HDInsight sürümü 3.5 | Yes | Yes | HBase dışında|
+| HDInsight sürümü 3.4 | Hayır | Yes | |
 | HDInsight sürümü 3.3 | Hayır | Hayır | |
-| HDInsight sürümü 3.2 | Hayır | Evet | |
+| HDInsight sürümü 3.2 | Hayır | Yes | |
 | Storm | | |Data Lake Storage 1., bir fırtınası topolojisinden veri yazmak için kullanabilirsiniz. Daha sonra, bir fırtınası topolojisi tarafından okunabilen başvuru verileri için Data Lake Storage de kullanabilirsiniz.|
 
 > [!WARNING]  
@@ -130,6 +130,8 @@ HDInsight kümenizdeki Data Lake Storage erişimi yapılandırmak için bir Azur
 
 > [!NOTE]  
 > HDInsight kümesi için ek depolama alanı olarak Azure Data Lake Storage 1. kullanacaksanız, bu makalede açıklandığı gibi kümeyi oluştururken bunu yapmanızı önemle öneririz. Mevcut bir HDInsight kümesine ek depolama alanı olarak Azure Data Lake Storage 1. eklemek, desteklenen bir senaryo değildir.
+
+Data Lake Storage 1. için erişim denetimi modelinin temelleri hakkında daha fazla bilgi için, bkz. [Azure Data Lake Storage 1. Access Control](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="access-files-from-the-cluster"></a>Kümeden dosyalara erişme
 
@@ -218,7 +220,7 @@ Yapılandırılmış varsayılan deponun tüm yolunu belirlemek için, > **confi
 
 Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma hakkında ayrıntılı yönergeler için aşağıdaki bağlantıları kullanın.
 
-* [Portal’ı kullanma](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Portalı kullanma](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [PowerShell 'i kullanma (Data Lake Storage 1. varsayılan depolama alanı olarak)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [PowerShell 'i kullanma (Data Lake Storage 1. ek depolama alanı olarak)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure şablonlarını kullanma](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)

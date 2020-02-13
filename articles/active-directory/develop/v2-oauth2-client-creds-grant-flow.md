@@ -17,16 +17,14 @@ ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebdebd48710e892ec8f1a96eeba0f91228024420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700541"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159769"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Bir uygulamanın kimliğini kullanarak Web 'de barındırılan kaynaklara erişmek için, bazen *iki adet aralıklı OAuth*olarak adlandırılan RFC 6749 ' de belirtilen [OAuth 2,0 istemci kimlik bilgileri verme](https://tools.ietf.org/html/rfc6749#section-4.4) ' yi kullanabilirsiniz. Bu tür bir izin, genellikle bir kullanıcıyla etkileşimde bulunmadan, arka planda çalışması gereken sunucu-sunucu etkileşimleri için kullanılır. Bu tür uygulamalar genellikle *Daemon 'ları* veya *hizmet hesapları*olarak adlandırılır.
 
@@ -119,9 +117,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gereklidir | İzin istemek istediğiniz dizin kiracısı. Bu, GUID veya kolay ad biçiminde olabilir. Kullanıcının hangi kiracıya ait olduğunu bilmiyorsanız ve herhangi bir kiracı ile oturum açmalarına izin vermek istiyorsanız, `common`kullanın. |
-| `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `redirect_uri` | Gereklidir | Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması ve ek yol segmentlerine sahip olması dışında, portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
+| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. Bu, GUID veya kolay ad biçiminde olabilir. Kullanıcının hangi kiracıya ait olduğunu bilmiyorsanız ve herhangi bir kiracı ile oturum açmalarına izin vermek istiyorsanız, `common`kullanın. |
+| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `redirect_uri` | Gerekli | Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması ve ek yol segmentlerine sahip olması dışında, portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülen bir değeri. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
 
 Bu noktada, Azure AD yalnızca kiracı yöneticisinin isteği tamamlamada oturum açmasını zorunlu kılar. Yönetici, uygulama kayıt portalı 'nda uygulamanız için istediğiniz tüm doğrudan uygulama izinlerini onaylaması istenecektir.
@@ -182,11 +180,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gereklidir | Dizin, GUID veya etki alanı adı biçiminde işlem yapmak için uygulama planlarını kiralıyor. |
-| `client_id` | Gereklidir | Uygulamanıza atanan uygulama KIMLIĞI. Bu bilgileri, uygulamanızı kaydettiğiniz portalda bulabilirsiniz. |
-| `scope` | Gereklidir | Bu istekteki `scope` parametresi için geçirilen değer, `.default` sonekiyle birlikte sabitlenmiş, istediğiniz kaynağın kaynak tanımlayıcısı (uygulama KIMLIĞI URI 'SI) olmalıdır. Microsoft Graph örnek için değer `https://graph.microsoft.com/.default`. <br/>Bu değer, Microsoft Identity platform uç noktasına, uygulamanız için yapılandırdığınız tüm doğrudan uygulama izinlerinin bir belirteç vermesini söyler ve uç noktanın, kullanmak istediğiniz kaynakla ilişkili olanlar için bir belirteç vermesi gerekir. `/.default` kapsamı hakkında daha fazla bilgi edinmek için bkz. [onay belgeleri](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Gereklidir | Uygulama kayıt portalında uygulamanız için oluşturduğunuz istemci gizli anahtarı. İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. |
-| `grant_type` | Gereklidir | Ayarlanmalıdır `client_credentials`. |
+| `tenant` | Gerekli | Dizin, GUID veya etki alanı adı biçiminde işlem yapmak için uygulama planlarını kiralıyor. |
+| `client_id` | Gerekli | Uygulamanıza atanan uygulama KIMLIĞI. Bu bilgileri, uygulamanızı kaydettiğiniz portalda bulabilirsiniz. |
+| `scope` | Gerekli | Bu istekteki `scope` parametresi için geçirilen değer, `.default` sonekiyle birlikte sabitlenmiş, istediğiniz kaynağın kaynak tanımlayıcısı (uygulama KIMLIĞI URI 'SI) olmalıdır. Microsoft Graph örnek için değer `https://graph.microsoft.com/.default`. <br/>Bu değer, Microsoft Identity platform uç noktasına, uygulamanız için yapılandırdığınız tüm doğrudan uygulama izinlerinin bir belirteç vermesini söyler ve uç noktanın, kullanmak istediğiniz kaynakla ilişkili olanlar için bir belirteç vermesi gerekir. `/.default` kapsamı hakkında daha fazla bilgi edinmek için bkz. [onay belgeleri](v2-permissions-and-consent.md#the-default-scope). |
+| `client_secret` | Gerekli | Uygulama kayıt portalında uygulamanız için oluşturduğunuz istemci gizli anahtarı. İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. |
+| `grant_type` | Gerekli | `client_credentials`olarak ayarlanmalıdır. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: bir sertifikayla erişim belirteci isteği
 
@@ -204,12 +202,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gereklidir | Dizin, GUID veya etki alanı adı biçiminde işlem yapmak için uygulama planlarını kiralıyor. |
-| `client_id` | Gereklidir |Uygulamanıza atanan uygulama (istemci) KIMLIĞI. |
-| `scope` | Gereklidir | Bu istekteki `scope` parametresi için geçirilen değer, `.default` sonekiyle birlikte sabitlenmiş, istediğiniz kaynağın kaynak tanımlayıcısı (uygulama KIMLIĞI URI 'SI) olmalıdır. Microsoft Graph örnek için değer `https://graph.microsoft.com/.default`. <br/>Bu değer, uygulamanız için yapılandırdığınız tüm doğrudan uygulama izinlerinin Microsoft Identity platform uç noktasını bilgilendirir ve kullanmak istediğiniz kaynakla ilişkili olanlar için bir belirteç yayınlaması gerekir. `/.default` kapsamı hakkında daha fazla bilgi edinmek için bkz. [onay belgeleri](v2-permissions-and-consent.md#the-default-scope). |
-| `client_assertion_type` | Gereklidir | Değerin `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`olarak ayarlanması gerekir. |
-| `client_assertion` | Gereklidir | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web belirteci). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için [sertifika kimlik bilgileri](active-directory-certificate-credentials.md) hakkında bilgi edinin.|
-| `grant_type` | Gereklidir | Ayarlanmalıdır `client_credentials`. |
+| `tenant` | Gerekli | Dizin, GUID veya etki alanı adı biçiminde işlem yapmak için uygulama planlarını kiralıyor. |
+| `client_id` | Gerekli |Uygulamanıza atanan uygulama (istemci) KIMLIĞI. |
+| `scope` | Gerekli | Bu istekteki `scope` parametresi için geçirilen değer, `.default` sonekiyle birlikte sabitlenmiş, istediğiniz kaynağın kaynak tanımlayıcısı (uygulama KIMLIĞI URI 'SI) olmalıdır. Microsoft Graph örnek için değer `https://graph.microsoft.com/.default`. <br/>Bu değer, uygulamanız için yapılandırdığınız tüm doğrudan uygulama izinlerinin Microsoft Identity platform uç noktasını bilgilendirir ve kullanmak istediğiniz kaynakla ilişkili olanlar için bir belirteç yayınlaması gerekir. `/.default` kapsamı hakkında daha fazla bilgi edinmek için bkz. [onay belgeleri](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Gerekli | Değerin `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`olarak ayarlanması gerekir. |
+| `client_assertion` | Gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web belirteci). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için [sertifika kimlik bilgileri](active-directory-certificate-credentials.md) hakkında bilgi edinin.|
+| `grant_type` | Gerekli | `client_credentials`olarak ayarlanmalıdır. |
 
 Parametrelerin, client_secret parametresi iki parametre ile değiştirilmeleri dışında, paylaşılan gizliliğe göre istek durumuyla neredeyse aynı olduğuna dikkat edin: bir client_assertion_type ve client_assertion.
 

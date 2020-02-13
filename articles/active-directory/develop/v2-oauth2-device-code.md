@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700524"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159740"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platformu ve OAuth 2,0 cihaz yetkilendirmesi verme akışı
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Microsoft Identity platformu, kullanıcıların akıllı TV, IoT cihazı veya yazıcı gibi giriş kısıtlı cihazlarda oturum açmasına olanak tanıyan [cihaz yetkilendirme yetkisini](https://tools.ietf.org/html/rfc8628)destekler.  Bu akışı etkinleştirmek için, cihazda kullanıcının oturum açmasını sağlamak üzere başka bir cihazdaki tarayıcıda bir Web sayfasını ziyaret ettiği bir cihaz vardır.  Kullanıcı oturum açtıktan sonra cihaz, erişim belirteçlerini alabilir ve belirteçleri gerektiği şekilde yenileyebilir.  
 
@@ -62,8 +60,8 @@ scope=user.read%20openid%20profile
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gereklidir | /Common,/tüketicileri veya/Organizations. olabilir.  Ayrıca, GUID veya kolay ad biçiminde izin istemek istediğiniz dizin kiracısı de olabilir.  |
-| `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `tenant` | Gerekli | /Common,/tüketicileri veya/Organizations. olabilir.  Ayrıca, GUID veya kolay ad biçiminde izin istemek istediğiniz dizin kiracısı de olabilir.  |
+| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `scope` | Önerilen | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  |
 
 ### <a name="device-authorization-response"></a>Cihaz yetkilendirme yanıtı
@@ -99,12 +97,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parametre | Gereklidir | Açıklama|
+| Parametre | Gerekli | Açıklama|
 | -------- | -------- | ---------- |
-| `tenant`  | Gereklidir | İlk istekte aynı kiracı veya kiracı diğer adı kullanıldı. | 
-| `grant_type` | Gereklidir | `urn:ietf:params:oauth:grant-type:device_code` olmalıdır|
-| `client_id`  | Gereklidir | İlk istekte kullanılan `client_id` eşleşmelidir. |
-| `device_code`| Gereklidir | Cihaz yetkilendirme isteğinde döndürülen `device_code`.  |
+| `tenant`  | Gerekli | İlk istekte aynı kiracı veya kiracı diğer adı kullanıldı. | 
+| `grant_type` | Gerekli | `urn:ietf:params:oauth:grant-type:device_code` olmalıdır|
+| `client_id`  | Gerekli | İlk istekte kullanılan `client_id` eşleşmelidir. |
+| `device_code`| Gerekli | Cihaz yetkilendirme isteğinde döndürülen `device_code`.  |
 
 ### <a name="expected-errors"></a>Beklenen hatalar
 

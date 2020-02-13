@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827718"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157185"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Özellikler ve Azure Event Hubs terminolojisinde
 
-Azure Event Hubs, ölçeklenebilir bir olay işleme alır ve büyük hacimli olayları ve verileri, düşük gecikme süresi ve yüksek güvenilirlikle işler hizmetidir. Bkz: [Event Hubs nedir?](event-hubs-what-is-event-hubs.md) üst düzey bir genel bakış.
+Azure Event Hubs, ölçeklenebilir bir olay işleme alır ve büyük hacimli olayları ve verileri, düşük gecikme süresi ve yüksek güvenilirlikle işler hizmetidir. Üst düzey genel bakış için bkz. [Event Hubs nedir?](event-hubs-what-is-event-hubs.md) .
 
-Bu makalede yer alan bilgiler geliştirir [genel bakış makalesi](event-hubs-what-is-event-hubs.md)ve Event Hubs bileşenler ve özellikler hakkında teknik ve uygulama ayrıntılarını sağlar.
+Bu makale, [genel bakış makalesindeki](event-hubs-what-is-event-hubs.md)bilgileri oluşturur ve Event Hubs bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
 
-## <a name="namespace"></a>Ad Alanı
-Bir Event Hubs ad alanı tarafından başvurulan bir benzersiz bir kapsam kapsayıcı sağlar. kendi [tam etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), içinde bir veya daha fazla event hubs'ı veya Kafka konularını oluşturma. 
+## <a name="namespace"></a>Ad alanı
+Bir Event Hubs ad alanı, [tam etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)tarafından başvurulan, bir veya daha fazla olay hub 'ı veya Kafka konu oluşturacağınız benzersiz bir kapsam kapsayıcısı sağlar. 
 
 ## <a name="event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs
 
-[Bu özellik](event-hubs-for-kafka-ecosystem-overview.md) müşterilerin Event Hubs'a Kafka protokolünü kullanarak iletişim kurmasına olanak tanır bir uç nokta sağlar. Bu tümleştirme, müşterilere bir Kafka uç noktası sağlar. Bu, müşterilerin kendi Kafka kümelerini çalıştırmak için bir alternatif sunar, Event Hubs konuşabilir mevcut Kafka uygulamalarını yapılandırmak sağlar. Event Hubs için Apache Kafka, Kafka protokolü 1.0 ve üzeri destekler. 
+[Bu özellik](event-hubs-for-kafka-ecosystem-overview.md) , müşterilerin Kafka protokolünü kullanarak Event Hubs konuşmalarını sağlayan bir uç nokta sağlar. Bu tümleştirme, müşterilere bir Kafka uç noktası sağlar. Bu, müşterilerin kendi Kafka kümelerini çalıştırmak için bir alternatif sunar, Event Hubs konuşabilir mevcut Kafka uygulamalarını yapılandırmak sağlar. Event Hubs için Apache Kafka, Kafka protokolü 1.0 ve üzeri destekler. 
 
-Bu tümleştirme sayesinde Kafka kümelerini çalıştırmak veya bunları içeren Zookeeper yönetmeniz gerekmez. Bu ayrıca, En zorlu olay hub'ları gibi yakalama, otomatik şişme ve coğrafi olağanüstü durum kurtarma özelliklerinin bazılarını ile çalışmanıza olanak sağlar.
+Bu tümleştirmeyle Kafka kümelerini çalıştırmanız veya Zookeeper ile yönetmeniz gerekmez. Bu ayrıca, En zorlu olay hub'ları gibi yakalama, otomatik şişme ve coğrafi olağanüstü durum kurtarma özelliklerinin bazılarını ile çalışmanıza olanak sağlar.
 
 Bu tümleştirme de yansıtma Oluşturucu gibi uygulamalar veya framework Kafka bağlanma gibi çalışması yalnızca yapılandırma değişikliğiyle clusterless sağlar. 
 
 ## <a name="event-publishers"></a>Olay yayımcıları
 
-Olay hub'ına veri gönderen herhangi bir olay üretici varlıktır veya *olay yayımcısı*. Olay yayımcıları HTTPS veya AMQP 1.0 veya Kafka 1.0 ve üzeri kullanarak olayları yayımlayabilir. Olay yayımcıları kendilerini bir olay hub'ına tanıtmak için Paylaşılan Erişim İmzası (SAS) belirteci kullanır ve benzersiz bir kimliğe sahip olabilir ya da ortak bir SAS belirteci kullanabilir.
+Bir olay hub 'ına veri gönderen herhangi bir varlık bir olay üreticisi veya *olay yayımcısıdır*. Olay yayımcıları HTTPS veya AMQP 1.0 veya Kafka 1.0 ve üzeri kullanarak olayları yayımlayabilir. Olay yayımcıları kendilerini bir olay hub'ına tanıtmak için Paylaşılan Erişim İmzası (SAS) belirteci kullanır ve benzersiz bir kimliğe sahip olabilir ya da ortak bir SAS belirteci kullanabilir.
 
 ### <a name="publishing-an-event"></a>Olay yayımlama
 
-Bir olayı AMQP 1.0, 1.0 (ve üzeri) Kafka veya HTTPS üzerinden yayımlayabilirsiniz. Event Hubs sağlar [istemci kitaplıkları ve sınıfları](event-hubs-dotnet-framework-api-overview.md) olayları, .NET istemcilerinden bir olay hub'ına yayımlama. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (Olay verileri örneği), tek bir olay ya da toplu işlem olmasına bakılmaksızın 1 MB sınırı vardır. Bu hata eşiği sonuçlarında daha büyük olaylar yayımlama. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
+Bir olayı AMQP 1.0, 1.0 (ve üzeri) Kafka veya HTTPS üzerinden yayımlayabilirsiniz. Event Hubs, .NET istemcilerinden gelen bir olay hub 'ına olay yayımlamaya yönelik [istemci kitaplıkları ve sınıflar](event-hubs-dotnet-framework-api-overview.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (Olay verileri örneği), tek bir olay ya da toplu işlem olmasına bakılmaksızın 1 MB sınırı vardır. Bu hata eşiği sonuçlarında daha büyük olaylar yayımlama. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
 
 AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. Oturum başlatılırken AMQP’nin ağ maliyetleri daha yüksektir, ancak HTTPS her istek için ek SSL yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
 
@@ -63,7 +63,7 @@ Yayımcı adlarını önceden oluşturmanız gerekli değildir, ancak bunlar ba�
 
 ## <a name="capture"></a>Capture
 
-[Event Hubs yakalama](event-hubs-capture-overview.md) otomatik olarak Event Hubs, akış verilerini yakalamanıza ve seçtiğiniz bir Blob Depolama hesabı veya bir Azure veri Gölü hizmeti hesabı için kaydetmeden olanak tanır. Azure portalından yakalamayı etkinleştirme ve en küçük boyut ve yakalama gerçekleştirmek için zaman penceresi belirtin. Event Hubs yakalama özelliğini kullanarak, kendi Azure Blob Depolama hesabı ve kapsayıcı ya da bunlardan biri yakalanan verileri depolamak için kullanılan Azure veri Gölü hizmeti hesabı belirtin. Yakalanan veriler Apache Avro biçiminde yazılır.
+[Event Hubs yakalama](event-hubs-capture-overview.md) , akış verilerini Event Hubs otomatik olarak yakalamanızı ve bir BLOB depolama hesabı ya da bir Azure Data Lake hizmet hesabına kaydetmenizi sağlar. Azure portalından yakalamayı etkinleştirme ve en küçük boyut ve yakalama gerçekleştirmek için zaman penceresi belirtin. Event Hubs yakalama özelliğini kullanarak, kendi Azure Blob Depolama hesabı ve kapsayıcı ya da bunlardan biri yakalanan verileri depolamak için kullanılan Azure veri Gölü hizmeti hesabı belirtin. Yakalanan veriler Apache Avro biçiminde yazılır.
 
 ## <a name="partitions"></a>Bölümler
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -83,7 +83,7 @@ Event Hubs yayımlama/abonelik mekanizması *tüketici grupları* aracılığıy
 
 Bir akış işleme mimarisinde her bir aşağı akış uygulaması bir tüketici grubuna karşılık gelir. Olay verilerini uzun süreli depolama alanına yazmak isterseniz bu depolama yazma uygulaması bir tüketici grubudur. Bundan sonra karmaşık olay işlemesi başka ve ayrı bir tüketici grubu tarafından gerçekleştirilebilir. Bölümlere yalnızca bir tüketici grubu üzerinden erişebilirsiniz. Bir olay hub'ında her zaman varsayılan bir tüketici grubu vardır ve Standart katmanlı bir olay hub'ı için en fazla 20 tüketici grubu oluşturabilirsiniz.
 
-Olabilir en fazla 5 eşzamanlı okuyucu tüketici grubu başına bir bölüme; ancak **olduğunu yalnızca bir etkin alıcı tüketici grubu başına bir bölüme önerilir**. Tek bir bölüm içinde her Okuyucu tüm iletileri alır. Ardından aynı bölüme birden fazla okuyucuyu kapsayacak varsa, yinelenen iletileri işler. Bu Önemsiz olmayabilir, kodunuzda ele almanız gerekir. Ancak, bazı senaryolarda geçerli bir yaklaşım değildir.
+Tüketici grubu başına bölüm üzerinde en fazla 5 eşzamanlı okuyucu olabilir; Ancak **, Tüketici grubu başına bir bölümde yalnızca bir etkin alıcı olması önerilir**. Tek bir bölüm içinde her Okuyucu tüm iletileri alır. Ardından aynı bölüme birden fazla okuyucuyu kapsayacak varsa, yinelenen iletileri işler. Bu Önemsiz olmayabilir, kodunuzda ele almanız gerekir. Ancak, bazı senaryolarda geçerli bir yaklaşım değildir.
 
 
 Tüketici grubu URI kuralının örnekleri aşağıda verilmiştir:
@@ -134,11 +134,14 @@ Uzaklığın yönetilmesi sizin sorumluluğunuzdadır.
 
 Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
 
-* [Event Hubs öğreticisi][Event Hubs tutorial] ile çalışmaya başlayın
+- Event Hubs kullanmaya başlayın
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 * [Event Hubs örnekleri][]
 
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [Event Hubs örnekleri]: https://github.com/Azure/azure-event-hubs/tree/master/samples

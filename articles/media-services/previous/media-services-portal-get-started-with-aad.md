@@ -1,6 +1,6 @@
 ---
-title: Azure portalını kullanarak Azure AD kimlik doğrulamasını kullanmaya başlama | Microsoft Docs
-description: Azure Media Services API'sine kullanmak için Azure Active Directory (Azure AD) kimlik erişmek için Azure portalını kullanmayı öğrenin.
+title: Azure portal kullanarak Azure AD kimlik doğrulaması ile çalışmaya başlama | Microsoft Docs
+description: Azure Media Services API 'sini kullanmak için Azure Active Directory (Azure AD) kimlik doğrulamasına erişmek üzere Azure portal nasıl kullanacağınızı öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,105 +13,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4428187c985c1004c88f2ac20b0e5811803cce2a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719629"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162778"
 ---
-# <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure AD kimlik doğrulamasını kullanmaya başlama
+# <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure portal kullanarak Azure AD kimlik doğrulaması ile çalışmaya başlama
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz [geçiş kılavuzuna v2'den v3](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Azure Media Services API'sine erişmek için Azure Active Directory (Azure AD) kimlik erişmek için Azure portalını kullanmayı öğrenin.
+Azure Media Services API 'sine erişmek için Azure Active Directory (Azure AD) kimlik doğrulamasına erişmek üzere Azure portal nasıl kullanacağınızı öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure hesabı. Bir hesabınız yoksa, başlayan bir [Azure ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/). 
-- Bir Media Services hesabı. Daha fazla bilgi için [Azure portalını kullanarak bir Azure Media Services hesabı oluşturma](media-services-portal-create-account.md).
-- Gözden emin [Azure AD kimlik doğrulamasına genel bakış ile Azure Media Services API'sine erişim](media-services-use-aad-auth-to-access-ams-api.md). 
+- Bir Azure hesabı. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile başlayın. 
+- Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](media-services-portal-create-account.md)konusuna bakın.
+- [Azure AD kimlik doğrulamasına genel bakış Ile erişim Azure MEDIA SERVICES API](media-services-use-aad-auth-to-access-ams-api.md)'sini gözden geçirdiğinizden emin olun. 
 
 Azure Media Services ile Azure AD kimlik doğrulaması kullandığınızda, iki kimlik doğrulama seçeneğiniz vardır:
 
-- **Kullanıcı kimlik doğrulaması**. Uygulama Media Services kaynaklarıyla etkileşim kurmak için kullanıyor bir kişiyi kimlik doğrulaması. Etkileşimli uygulama, kullanıcıdan kimlik bilgilerini ilk isteyecektir. Kodlama işi izlemek veya canlı akış için yetkili kullanıcılar tarafından kullanılan bir yönetim konsol uygulaması örneğidir. 
-- **Hizmet sorumlusu kimlik doğrulaması**. Bir hizmet kimlik doğrulaması. Genellikle bu kimlik doğrulama yöntemi kullanan uygulamalar daemon Hizmetleri, orta katman Hizmetleri ya da zamanlanmış işleri çalışan uygulamalar şunlardır: web apps, işlev uygulamaları, logic apps, API veya bir mikro hizmet.
+- **Kullanıcı kimlik doğrulaması**. Media Services kaynaklarla etkileşim kurmak için uygulamayı kullanan bir kişinin kimliğini doğrulayın. Etkileşimli uygulama öncelikle kullanıcıdan kimlik bilgilerini istemelidir. Bu örnek, yetkili kullanıcılar tarafından kodlama işlerini veya canlı akışı izlemek için kullanılan bir yönetim konsolu uygulamasıdır. 
+- **Hizmet sorumlusu kimlik doğrulaması**. Bir hizmetin kimliğini doğrulayın. Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar, Daemon Hizmetleri, orta katman hizmetler veya zamanlanan işleri çalıştıran uygulamalardır: Web Apps, işlev uygulamaları, Logic Apps, API 'Ler veya mikro hizmet.
 
 > [!IMPORTANT]
-> Şu anda Media Services, Azure erişim denetimi hizmeti kimlik doğrulama modeli destekler. Ancak, erişim denetimi yetkilendirme 1 Haziran 2018'de kullanımdan kaldırılacaktır. Azure AD kimlik doğrulaması modeline mümkün olan en kısa sürede geçiş yapmanız önerilir.
+> Şu anda Media Services Azure Access Control hizmeti kimlik doğrulama modelini destekler. Ancak, Access Control yetkilendirmesi 1 Haziran 2018 ' de kullanım dışı olacaktır. Azure AD kimlik doğrulaması modeline mümkün olan en kısa sürede geçiş yapmanız önerilir.
 
 ## <a name="select-the-authentication-method"></a>Kimlik doğrulama yöntemini seçin
 
-1. İçinde [Azure portalında](https://portal.azure.com/), Media Services hesabınızı seçin.
-2. Media Services API'sine bağlanma seçin.
+1. [Azure portal](https://portal.azure.com/)Media Services hesabınızı seçin.
+2. Media Services API 'sine nasıl bağlanılacağını seçin.
 
-    ![Bağlantı yöntemi sayfası seçin](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started01.png)
+    ![Bağlantı yöntemi seçin sayfası](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started01.png)
 
 ## <a name="user-authentication"></a>Kullanıcı kimlik doğrulaması
 
-Kullanıcı kimlik doğrulaması seçeneği kullanarak Media Services API'sine bağlanmak için aşağıdaki parametreleri olan Azure AD belirteçlerini istemek istemci uygulaması gerekir:  
+Kullanıcı kimlik doğrulaması seçeneğini kullanarak Media Services API 'sine bağlanmak için, istemci uygulamanın aşağıdaki parametrelere sahip bir Azure AD belirteci istemesi gerekir:  
 
-* Azure AD Kiracı uç noktası
-* Media Services kaynak URI'si
-* Media Services (yerel) uygulama istemci kimliği 
-* Media Services (yerel) uygulama yeniden yönlendirme URI'si 
-* Kaynak URI REST Media Services için
+* Azure AD kiracı uç noktası
+* Media Services kaynak URI 'SI
+* Media Services (yerel) uygulama istemci KIMLIĞI 
+* Media Services (yerel) uygulama yeniden yönlendirme URI 'SI 
+* REST Media Services için kaynak URI 'SI
 
-Değerleri bu parametrelerin alma **kullanıcı kimlik doğrulaması ile Media Services API'sine** sayfası. 
+Bu parametrelerin değerlerini **Kullanıcı kimlik doğrulaması ile Media Services API 'si ile** alabilirsiniz. 
 
-![Kullanıcı kimlik doğrulaması sayfası ile bağlanma](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
+![Kullanıcı kimlik doğrulama sayfasıyla Bağlan](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
 
-Medya Hizmetleri Microsoft .NET SDK'sını kullanarak Media Services API'sine bağlanma, gerekli değerleri, SDK'ın bir parçası olarak kullanılabilir. Daha fazla bilgi için [.NET ile Azure Media Services API'sine erişmek için Azure AD kullanım kimlik doğrulaması](media-services-dotnet-get-started-with-aad.md).
+Media Services Microsoft .NET SDK 'sını kullanarak Media Services API 'sine bağlanıyorsanız, gerekli değerler SDK 'nin bir parçası olarak kullanılabilir. Daha fazla bilgi için bkz. [.NET ile Azure MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](media-services-dotnet-get-started-with-aad.md).
 
-Media Services .NET İstemci SDK'sı kullanmıyorsanız, daha önce açıklanan parametreleri kullanarak, el ile bir Azure AD belirteç isteği oluşturmalısınız. Daha fazla bilgi için [Azure AD belirtecini almak için Azure AD kimlik doğrulama kitaplığı kullanmayı](../../active-directory/develop/active-directory-authentication-libraries.md).
+Media Services .NET istemci SDK 'sını kullanmıyorsanız, daha önce tartışılan parametreleri kullanarak el ile bir Azure AD belirteç isteği oluşturmanız gerekir. Daha fazla bilgi için bkz. Azure AD [kimlik doğrulama kitaplığı 'nı kullanarak Azure AD belirtecini alma](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ## <a name="service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması
 
-Hizmet sorumlusu seçeneğini kullanarak Media Services API'sine bağlanmak için aşağıdaki parametreleri olan Azure AD belirteçlerini istemek orta katman uygulamanızı (web API'si veya web uygulaması) gerekir:  
+Hizmet sorumlusu seçeneğini kullanarak Media Services API 'sine bağlanmak için, orta katman uygulamanızın (Web API 'SI veya Web uygulaması) aşağıdaki parametrelere sahip bir Azure AD belirteci istemesi gerekir:  
 
-* Azure AD Kiracı uç noktası
-* Media Services kaynak URI'si 
-* Kaynak URI REST Media Services için
-* Azure AD uygulama değerlerini: **istemci kimliği** ve **istemci gizli anahtarı**
+* Azure AD kiracı uç noktası
+* Media Services kaynak URI 'SI 
+* REST Media Services için kaynak URI 'SI
+* Azure AD uygulama değerleri: **ISTEMCI kimliği** ve **istemci parolası**
 
-Değerleri bu parametrelerin alma **hizmet sorumlusu ile Media Services API'sine bağlanma** sayfası. Yeni bir oluşturmak için bu sayfayı kullanın. Azure AD uygulaması veya varolan bir tanesini seçin. Azure AD uygulamasını seçtikten sonra istemci kimliği (uygulama kimliği) alın ve istemci gizli anahtarı (anahtar) değerlerini oluşturur. 
+Bu parametrelerin değerlerini **hizmet sorumlusu ile MEDIA SERVICES API 'Sine Bağlan** sayfasından alabilirsiniz. Yeni bir Azure AD uygulaması oluşturmak veya var olanı seçmek için bu sayfayı kullanın. Azure AD uygulamasını seçtikten sonra, istemci KIMLIĞINI (uygulama KIMLIĞI) alabilir ve istemci gizli anahtarı (anahtar) değerlerini oluşturabilirsiniz. 
 
-![İle hizmet sorumlusu sayfasına bağlanma](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
+![Hizmet sorumlusu sayfasıyla bağlantı](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
 
-Zaman **hizmet sorumlusu** dikey penceresi açıldığında, aşağıdaki ölçütleri karşılayan ilk Azure AD uygulaması seçilir:
+**Hizmet sorumlusu** dikey penceresi açıldığında, aşağıdaki ölçütlere uyan Ilk Azure AD uygulaması seçilidir:
 
-- Kayıtlı olan Azure AD uygulaması.
-- Bu hesapta katkıda bulunan veya Owner Role-Based erişim denetimi izinleri vardır.
+- Kayıtlı bir Azure AD uygulamasıdır.
+- Hesapta katkıda bulunan veya sahip rol tabanlı Access Control izinleri vardır.
 
-Oluşturun veya bir Azure AD uygulamasını seçin sonra oluşturabilir ve bir gizli anahtar (anahtar) ve istemci kimliği (uygulama kimliği) kopyalayın. İstemci kimliği ve gizli anahtar erişim Bu senaryoda, belirteci almak için gereklidir.
+Bir Azure AD uygulaması oluşturduktan veya seçtikten sonra, bir istemci parolası (anahtar) ve istemci KIMLIĞI (uygulama KIMLIĞI) oluşturup kopyalayabilirsiniz. Bu senaryoda erişim belirtecini almak için istemci parolası ve istemci KIMLIĞI gereklidir.
 
-Etki alanınızı Azure AD uygulamaları oluşturmak için izinleriniz yoksa, Azure AD uygulama denetimleri dikey pencerenin gösterilmez ve bir uyarı iletisi görüntülenir.
+Etki alanında Azure AD uygulamaları oluşturma izniniz yoksa, dikey pencerenin Azure AD uygulama denetimleri gösterilmez ve bir uyarı iletisi görüntülenir.
 
-Media Services .NET SDK'sını kullanarak Media Services API'sine bağlanma olup [.NET ile Azure Media Services API'sine erişmek için Azure AD kullanım kimlik doğrulaması](media-services-dotnet-get-started-with-aad.md).
+Media Services .NET SDK 'Yı kullanarak Media Services API 'sine bağlanıyorsanız, bkz. [.NET ile Azure MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](media-services-dotnet-get-started-with-aad.md).
 
-Media Services .NET İstemci SDK'sı kullanmıyorsanız, daha önce açıklanan parametreleri kullanarak bir Azure AD belirteç isteği el ile oluşturmanız gerekir. Daha fazla bilgi için [Azure AD belirtecini almak için Azure AD kimlik doğrulama kitaplığı kullanmayı](../../active-directory/develop/active-directory-authentication-libraries.md).
+.NET istemci SDK Media Services kullanmıyorsanız, daha önce tartışılan parametreleri kullanarak el ile bir Azure AD belirteç isteği oluşturmanız gerekir. Daha fazla bilgi için bkz. Azure AD [kimlik doğrulama kitaplığı 'nı kullanarak Azure AD belirtecini alma](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
-### <a name="get-the-client-id-and-client-secret"></a>İstemci Kimliğini ve istemci gizli anahtarını alma
+### <a name="get-the-client-id-and-client-secret"></a>İstemci KIMLIĞINI ve gizli anahtarı al
 
-Mevcut bir Azure AD uygulamasını seçin veya yeni bir tane oluşturmak için bu seçeneği seçin sonra aşağıdaki düğmeleri görünür:
+Mevcut bir Azure AD uygulamasını seçip yeni bir tane oluşturma seçeneğini belirledikten sonra aşağıdaki düğmeler görüntülenir:
 
-![İzinler ve yönetme uygulaması düğmesi yönetme](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
+![İzinleri Yönet düğmesi ve uygulamayı Yönet düğmesi](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
 
-Azure AD uygulama dikey penceresini açmak için **uygulamasını Yönet**. Üzerinde **uygulamasını Yönet** dikey penceresinde, uygulamanın istemci kimliği (uygulama kimliği) elde edebilirsiniz. Bir gizli anahtar (anahtar) oluşturmak üzere **anahtarları**.
+Azure AD uygulaması dikey penceresini açmak için, **Uygulamayı Yönet**' e tıklayın. **Uygulamayı Yönet** dikey penceresinde, UYGULAMANıN istemci kimliğini (uygulama kimliği) alabilirsiniz. Bir istemci gizli anahtarı (anahtar) oluşturmak için **anahtarlar**' ı seçin.
 
-![Uygulama dikey penceresinde anahtarlar seçeneğini yönetme](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
+![Uygulama dikey penceresi tuşlarını Yönet seçeneği](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
 
-### <a name="manage-permissions-and-the-application"></a>İzinler ve uygulama yönetme
+### <a name="manage-permissions-and-the-application"></a>İzinleri ve uygulamayı yönetme
 
-Azure AD uygulaması seçtikten sonra uygulamanızı ve izinlerini yönetebilir. Diğer uygulamalara erişmek için Azure AD uygulamanızı ayarlamak için tıklayın **izinleri Yönet**. İçin yönetim görevleri, anahtarları ve yanıt URL'lerini değiştirme gibi veya uygulama bildirimini düzenlemek için tıklayın **uygulamasını Yönet**.
+Azure AD uygulamasını seçtikten sonra, uygulamayı ve izinleri yönetebilirsiniz. Azure AD uygulamanızı diğer uygulamalara erişecek şekilde ayarlamak için **Izinleri Yönet**' e tıklayın. Anahtar ve yanıt URL 'Leri değiştirme veya uygulamanın bildirimini düzenleme gibi yönetim görevleri için, **Uygulamayı Yönet**' e tıklayın.
 
-### <a name="edit-the-apps-settings-or-manifest"></a>Bildirim veya uygulamanın ayarlarını Düzenle
+### <a name="edit-the-apps-settings-or-manifest"></a>Uygulamanın ayarlarını veya bildirimini düzenleme
 
-Uygulama ayarları veya bildirimi düzenlemek için tıklayın **uygulamasını Yönet**.
+Uygulamanın ayarlarını veya bildirimini düzenlemek için, **Uygulamayı Yönet**' e tıklayın.
 
-![Uygulamasını Yönet sayfası](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
+![Uygulama sayfasını yönet](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanmaya başlama [dosyaları hesabınıza Yükleniyor](media-services-portal-upload-files.md).
+[Hesabınıza dosya yüklemeye](media-services-portal-upload-files.md)başlayın.

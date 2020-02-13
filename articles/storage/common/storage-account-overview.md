@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274562"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157286"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -115,11 +115,9 @@ Verilerinizin kullanım düzeninde bir değişiklik varsa, bu erişim katmanlar�
 > [!IMPORTANT]
 > Mevcut bir depolama hesabı veya Blobun erişim katmanını değiştirmek ek ücretler elde edebilir. Daha fazla bilgi için [depolama hesabı faturalama bölümüne](#storage-account-billing)bakın.
 
-## <a name="replication"></a>Çoğaltma
+## <a name="redundancy"></a>Yedeklilik
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-Depolama çoğaltma hakkında daha fazla bilgi için bkz. [Azure Storage çoğaltma](storage-redundancy.md).
 
 ## <a name="encryption"></a>Şifreleme
 

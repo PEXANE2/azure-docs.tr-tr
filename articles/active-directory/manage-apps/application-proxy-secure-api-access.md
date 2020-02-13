@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063033"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166001"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile şirket içi API 'lere güvenli erişim
 
@@ -53,19 +53,19 @@ SecretAPI Web API 'sini uygulama proxy 'Si aracılığıyla yayımlamak için:
 
 1. Örnek SecretAPI projesini yerel bilgisayarınızda veya intranette bir ASP.NET Web uygulaması olarak derleyin ve yayımlayın. Web uygulamasına yerel olarak erişebildiğinizden emin olun. 
    
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' ı seçin. Daha sonra **genel bakış** sayfasında **Kurumsal uygulamalar**' ı seçin.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory**' ni seçin. Ardından **Kurumsal uygulamalar**' ı seçin.
    
 1. **Kurumsal uygulamalar-tüm uygulamalar** sayfasının en üstünde **Yeni uygulama**' yı seçin.
    
-1. **Azure AD galerisine gözatamıyorum** sayfasında şirket **içi uygulamalar**' ın altında, Şirket **içi uygulama ekle**' yi seçin. **Kendi şirket içi uygulamanızı ekleyin** sayfası görüntülenir.
+1. **Uygulama Ekle** sayfasında şirket **içi uygulamalar**' ı seçin. **Kendi şirket içi uygulamanızı ekleyin** sayfası görüntülenir.
    
 1. Yüklü bir uygulama proxy Bağlayıcısı yoksa, yüklemek isteyip istemediğiniz sorulur. Bağlayıcıyı indirmek ve yüklemek için **uygulama proxy bağlayıcısını indir** ' i seçin. 
    
 1. Uygulama proxy bağlayıcısını yükledikten sonra, **kendi şirket içi uygulamanızı ekleyin** sayfasında:
    
-   1. **Ad**' ın yanına *secretapı* girin.
+   1. **Ad**' ın yanındaki *secretapi*yazın.
       
-   1. İntranetinizdeki **Iç URL**'nın yanına API 'ye erişmek için kullandığınız URL 'yi girin. 
+   1. **Iç URL**'nin yanına, INTRANETINIZDEKI API 'ye erişmek için kullandığınız URL 'yi girin.
       
    1. **Ön kimlik doğrulamanın** **Azure Active Directory**olarak ayarlandığından emin olun. 
       

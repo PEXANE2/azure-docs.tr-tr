@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639880"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161945"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks kümeleri için bölgesel olağanüstü durum kurtarma
 
@@ -37,7 +37,7 @@ Kendi bölgesel olağanüstü durum kurtarma topolojinizi oluşturmak için aşa
 
    1. Ayrı Azure bölgelerinde birden çok Azure Databricks çalışma alanı sağlayın. Örneğin, Doğu ABD2 içinde birincil Azure Databricks çalışma alanını oluşturun. İkincil olağanüstü durum kurtarma Azure Databricks çalışma alanını Batı ABD gibi ayrı bir bölgede oluşturun.
 
-   2. [Coğrafi olarak yedekli depolama](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)kullanın. Azure Databricks ilişkili veriler, Azure depolama 'da varsayılan olarak depolanır. Databricks işlerinin sonuçları da Azure Blob depolama alanında depolanır, böylece işlenen veriler dayanıklı olur ve küme sonlandırıldıktan sonra yüksek oranda kullanılabilir kalır. Depolama ve Databricks kümesi birlikte bulunduğundan, birincil bölge artık erişilebilir değilse, verilerin ikincil bölgede erişilebilir olması için coğrafi olarak yedekli depolamayı kullanmanız gerekir.
+   2. [Coğrafi olarak yedekli depolama](../storage/common/storage-redundancy.md)kullanın. Azure Databricks ilişkili veriler, Azure depolama 'da varsayılan olarak depolanır. Databricks işlerinin sonuçları da Azure Blob depolama alanında depolanır, böylece işlenen veriler dayanıklı olur ve küme sonlandırıldıktan sonra yüksek oranda kullanılabilir kalır. Depolama ve Databricks kümesi birlikte bulunduğundan, birincil bölge artık erişilebilir değilse, verilerin ikincil bölgede erişilebilir olması için coğrafi olarak yedekli depolamayı kullanmanız gerekir.
 
    3. İkincil bölge oluşturulduktan sonra, kullanıcılar, Kullanıcı klasörleri, Not defterleri, küme yapılandırması, iş yapılandırması, kitaplıklar, depolama, init betikleri ve erişim denetimini yeniden yapılandırmanız gerekir. Ek ayrıntılar aşağıdaki bölümde açıklanmıştır.
 

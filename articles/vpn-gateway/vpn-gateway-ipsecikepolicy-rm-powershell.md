@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514927"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161911"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN veya VNet-VNet bağlantıları için IPSec/ıKE ilkesini yapılandırma
 
 Bu makale, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak siteden siteye VPN veya VNet-VNet bağlantıları için IPSec/ıKE ilkesini yapılandırma adımlarında size yol gösterir.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>Azure VPN ağ geçitleri için IPSec ve ıKE ilke parametreleri hakkında
 IPSec ve ıKE protokol standardı çeşitli birleşimlerde çok sayıda şifreleme algoritmasını destekler. Bunun şirket içi ve VNet 'ten VNet 'e bağlantısının uyumluluk veya güvenlik gereksinimlerinizi karşılamasını sağlamaya nasıl yardımcı olduğunu görmek için [Şifreleme gereksinimleri ve Azure VPN ağ geçitleri hakkında](vpn-gateway-about-compliance-crypto.md) bölümüne bakın.

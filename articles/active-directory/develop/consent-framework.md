@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 3f95a0743ca6fadff0c7a26a796ef20659adfb80
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697753"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161161"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory izin çerçevesi
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) onay çerçevesi, çok kiracılı web ve yerel
 
 Onay çerçevesi, OAuth 2,0 ' de ve yetkilendirme kodu verme ve istemci kimlik bilgileri gibi çeşitli akışlarda, genel veya gizli istemciler kullanılarak oluşturulmuştur. Azure AD, OAuth 2,0 kullanarak bir telefon, tablet, sunucu veya Web uygulaması gibi birçok farklı türde istemci uygulaması oluşturmayı mümkün kılar ve gerekli kaynaklara erişim elde edebilir.
 
-Onay çerçevesini OAuth 2.0 yetkilendirmesi ile kullanma hakkında daha fazla bilgi için bkz. [Azure AD Için](authentication-scenarios.md) [OAuth 2,0 ve Azure AD ve kimlik doğrulama senaryolarını kullanarak Web uygulamalarına erişim yetkisi verme](v1-protocols-oauth-code.md) . Microsoft Graph aracılığıyla Office 365 yetkilendirme erişimi alma hakkında bilgi için bkz. [Microsoft Graph Ile uygulama kimlik doğrulaması](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Onay çerçevesini OAuth 2.0 yetkilendirmesi ile kullanma hakkında daha fazla bilgi için bkz. [Azure AD Için](authentication-scenarios.md) [OAuth 2,0 ve Azure AD ve kimlik doğrulama senaryolarını kullanarak Web uygulamalarına erişim yetkisi verme](v2-oauth2-auth-code-flow.md) . Microsoft Graph aracılığıyla Office 365 yetkilendirme erişimi alma hakkında bilgi için bkz. [Microsoft Graph Ile uygulama kimlik doğrulaması](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Onay deneyimi-bir örnek
 
@@ -42,13 +42,13 @@ Aşağıdaki adımlarda, onay deneyiminin hem uygulama geliştiricisi hem de Kul
 
 1. Kullanıcının kimliği doğrulanmıyorsa, Azure AD 'nin `/authorize` uç noktası kullanıcıdan oturum açmasını ister.
 
-    ![Azure AD'de kullanıcı veya yönetici oturumu açma](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Azure AD'de kullanıcı veya yönetici oturumu açma](./media/consent-framework/usersignin.png)
 
 1. Kullanıcı oturum açtıktan sonra, Azure AD kullanıcının bir onay sayfası gösterilmesi gerekip gerekmediğini tespit eder. Bu belirleme, kullanıcının (veya kuruluşun yöneticisinin) uygulama iznini zaten vermiş olup olmadığına bağlıdır. İzin verilmemişse, Azure AD kullanıcıya onay ister ve çalışması gereken gerekli izinleri görüntüler. Onay iletişim kutusunda görüntülenen izin kümesi, Azure portal **temsilci izinleri** içinde seçili olanlarla eşleşir.
 
-    ![Onay iletişim kutusunda gösterilen izinlere bir örnek gösterir](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Onay iletişim kutusunda gösterilen izinlere bir örnek gösterir](./media/consent-framework/consent.png)
 
-1. Kullanıcı onay verdikten sonra uygulamanıza bir erişim belirteci ve yenileme belirteci almak için kullanılan bir yetkilendirme kodu döndürülür. Bu akış hakkında daha fazla bilgi için bkz. [Web API uygulaması türü](web-api.md).
+1. Kullanıcı onay verdikten sonra uygulamanıza bir erişim belirteci ve yenileme belirteci almak için kullanılan bir yetkilendirme kodu döndürülür. Bu akış hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
 
 1. Yönetici olarak, kiracınızdaki tüm kullanıcılar adına bir uygulamanın temsilci izinlerini de kabul edebilirsiniz. Yönetici onayı, izin iletişim kutusunun Kiracıdaki her kullanıcı için görünmesini engeller ve yönetici rolüne sahip kullanıcılar tarafından [Azure Portal](https://portal.azure.com) yapılabilir. Hangi Yönetici rollerinin temsilci izinleri onaylamasına izin verebileceğini öğrenmek için bkz. [Azure AD 'de yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).
 

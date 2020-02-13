@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 364395a05737f6dc6333b922f54376a9d5149fe6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 38cb1222a64b1759528749caa15dfb1bb906cef6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701459"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159922"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory kiracı
 
@@ -36,7 +36,7 @@ Uygulamalar geliştirilirken, geliştiriciler [Azure Portal](https://portal.azur
 
 Azure portal, hedef kitleyi aşağıdaki gibi ayarlayarak uygulamanızı tek kiracılı veya çok kiracılı olacak şekilde yapılandırabilirsiniz.
 
-| Hedef Kitle | Tek/çok kiracılı | Kimler oturum açabilir | 
+| Hedef kitle | Tek/çok kiracılı | Kimler oturum açabilir | 
 |----------|--------| ---------|
 | Yalnızca bu dizindeki hesaplar | Tek kiracılı | Dizininizdeki tüm kullanıcılar ve Konuk hesapları, uygulamanızı veya API 'nizi kullanabilir.<br>*Hedef hedef kitlesi kuruluşunuzda dahili ise bu seçeneği kullanın.* |
 | Herhangi bir Azure AD dizinindeki hesaplar | Çok Kiracılı | Microsoft 'un iş veya okul hesabına sahip tüm kullanıcılar ve konukları, uygulamanızı veya API 'nizi kullanabilir. Bu, Office 365 kullanan okullar ve işletmeler içerir.<br>*Hedef kitleniz iş veya Eğitim müşterileri ise bu seçeneği kullanın.* |
@@ -46,9 +46,9 @@ Azure portal, hedef kitleyi aşağıdaki gibi ayarlayarak uygulamanızı tek kir
 
 Harika çok kiracılı uygulamalar oluşturmak, BT yöneticilerinin kiracılarında ayarlayabildiğinden farklı ilkelerin sayısı nedeniyle zor olabilir. Çok kiracılı bir uygulama oluşturmayı seçerseniz, bu en iyi yöntemleri izleyin:
 
-* Uygulamanızı [koşullu erişim ilkelerini](conditional-access-dev-guide.md)yapılandıran bir kiracıda test edin.
+* Uygulamanızı [koşullu erişim ilkelerini](../azuread-dev/conditional-access-dev-guide.md)yapılandıran bir kiracıda test edin.
 * Uygulamanızın yalnızca gerçekten gereken izinleri istediğinden emin olmak için en az Kullanıcı erişimi ilkesini izleyin. Yönetici onayı gerektiren izinler istememeye özen gösterin. Bu, kullanıcıların uygulamanızı bazı kuruluşlarda almasını önleyebilmesine engel olabilir. 
-* Uygulamanızın bir parçası olarak kullanıma sunabileceğiniz tüm izinler için uygun adlar ve açıklamalar sağlayın. Bu, kullanıcıların ve yöneticilerin uygulamanızın API 'Lerini kullanmaya çalıştıklarında ne kabul etmiş olduklarını bilmesini sağlar. Daha fazla bilgi için, [izinler kılavuzundaki](v1-permissions-and-consent.md)en iyi uygulamalar bölümüne bakın.
+* Uygulamanızın bir parçası olarak kullanıma sunabileceğiniz tüm izinler için uygun adlar ve açıklamalar sağlayın. Bu, kullanıcıların ve yöneticilerin uygulamanızın API 'Lerini kullanmaya çalıştıklarında ne kabul etmiş olduklarını bilmesini sağlar. Daha fazla bilgi için, [izinler kılavuzundaki](v2-permissions-and-consent.md)en iyi uygulamalar bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

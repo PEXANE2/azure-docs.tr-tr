@@ -6,31 +6,27 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/30/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d977ae9ea8b78664ac1d3a318f58553da696c089
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906349"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162982"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure-eventhub sürüm 5)
-
-Azure Event Hubs, saniyede milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Olay Hub 'ları dağıtılmış yazılım ve cihazlar tarafından üretilen olayları, verileri veya Telemetriyi işleyebilir ve saklayabilir. Bir olay hub 'ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işlem/depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Daha fazla bilgi için bkz. [Event Hubs genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
-
-Bu hızlı başlangıçta, Olay Hub 'ından olay gönderebilen veya olayları alabilen Python uygulamalarının nasıl oluşturulacağı açıklanmaktadır.
+Bu hızlı başlangıçta, **Azure-eventhub sürüm 5** Python paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 > [!IMPORTANT]
-> Bu hızlı başlangıçta Azure Event Hubs Python SDK 'sının 5. sürümü kullanılmaktadır. Python SDK 'sının 1. sürümünü kullanan hızlı bir başlangıç için [Bu makaleye](event-hubs-python-get-started-send.md)bakın. 
+> Bu hızlı başlangıç, en son Azure-eventhub sürüm 5 paketini kullanır. Eski Azure-eventhub sürüm 1 paketini kullanan hızlı bir başlangıç için bkz. [Azure-eventhub sürüm 1 kullanarak olay gönderme ve alma](event-hubs-python-get-started-send.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
+Azure Event Hubs 'yi yeni kullanıyorsanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
-- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
-- Etkin bir Event Hubs ad alanı ve Olay Hub 'ı. Bunları oluşturmak için [hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturma](event-hubs-create.md)' daki yönergeleri izleyin. Bu hızlı başlangıçta kullanmak için ad alanı ve Olay Hub 'ı adlarını kaydedin.
-- Event Hubs ad alanınız için paylaşılan erişim anahtarı adı ve birincil anahtar değeri. [Olay Hub 'ları bağlantı dizesi edinme](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)yönergelerini izleyerek erişim anahtarı adını ve değerini alın. Varsayılan erişim anahtarı adı *RootManageSharedAccessKey*' dir. Daha sonra bu hızlı başlangıçta kullanmak için anahtar adını ve birincil anahtar değerini kaydedin.
+- **Microsoft Azure aboneliği**. Azure Event Hubs dahil olmak üzere Azure hizmetlerini kullanmak için bir aboneliğiniz olması gerekir.  Mevcut bir Azure hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/free/) için kaydolabilir veya [BIR hesap oluştururken](https://azure.microsoft.com)MSDN abonesi avantajlarınızı kullanabilirsiniz.
 - PıP yüklü ve güncelleştirilmiş Python 2,7 veya 3,5 ya da üzeri.
 - Event Hubs için Python paketi. 
 
@@ -45,12 +41,13 @@ Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahi
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
+- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makalenin yönergelerini izleyerek **Event Hubs ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bağlantı dizesini daha sonra bu hızlı başlangıçta kullanacaksınız.
 
 ## <a name="send-events"></a>Olayları gönderme
 Bu bölümde, daha önce oluşturduğunuz Olay Hub 'ına olayları göndermek için bir Python betiği oluşturacaksınız.
 
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi en sevdiğiniz Python düzenleyicisini açın.
-2. Adlı bir betik oluşturma *send.py*. Bu betik, daha önce oluşturduğunuz Olay Hub 'ına bir olay toplu işi gönderir.
+2. *Send.py*adlı bir komut dosyası oluşturun. Bu betik, daha önce oluşturduğunuz Olay Hub 'ına bir olay toplu işi gönderir.
 3. Aşağıdaki kodu *Send.py*' ye yapıştırın:
 
     ```python
@@ -101,7 +98,7 @@ Alma kodunda daha sonra kullanmak için bağlantı dizesini ve kapsayıcı adın
 Bu bölümde, Olay Hub 'ınızdan olayları almak için bir Python betiği oluşturursunuz:
 
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi en sevdiğiniz Python düzenleyicisini açın.
-2. Adlı bir betik oluşturma *recv.py*.
+2. *Recv.py*adlı bir komut dosyası oluşturun.
 3. Aşağıdaki kodu *recv.py*' ye yapıştırın:
 
     ```python

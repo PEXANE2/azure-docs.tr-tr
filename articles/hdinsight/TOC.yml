@@ -372,6 +372,8 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Sorun giderme
           items:
+            - name: Jupyter not defteri oluşturulamıyor
+              href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError özel durumu
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
             - name: Apache Spark iş başarısızlıkları - NoClassDefFoundError
@@ -396,6 +398,8 @@
               href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
             - name: Apache Spark işlerinde hata ayıklama
               href: ./spark/apache-spark-job-debugging.md
+            - name: WASB dosya işlemlerindeki hataları ayıklama
+              href: ./spark/troubleshoot-debug-wasb.md
             - name: Apache Spark işlerinde hata ayıklamak için IntelliJ kullanma
               href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Apache Spark sorunlarını giderme
@@ -523,6 +527,8 @@
               href: ./hadoop/troubleshoot-port-conflict.md
             - name: Key Vault erişiminin kaybolması
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
+            - name: WASBS depolama özel durumu
+              href: ./hadoop/troubleshoot-wasbs-storage-exception.md
 - name: Apache Kafka
   items:
     - name: Genel Bakış

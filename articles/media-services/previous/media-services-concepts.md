@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978841"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162914"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services kavramlar 
 
@@ -29,7 +29,7 @@ Bu konu, en önemli Media Services kavramlara genel bakış sunar.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>varlıklar ve depolama
 ### <a name="assets"></a>Varlıklar
-Bir [varlık](https://docs.microsoft.com/rest/api/media/operations/asset) dijital dosyalar (video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları dahil) ve bu dosyalar hakkındaki meta veriler içerir. Dijital dosyalar bir varlığa karşıya yüklendikten sonra medya kodlama ve iş akışları akış Hizmetleri'nde kullanılabilir.
+Bir [varlık](https://docs.microsoft.com/rest/api/media/operations/asset) , dijital dosyalar (video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil) ve bu dosyalarla ilgili meta veriler içerir. Dijital dosyalar bir varlığa karşıya yüklendikten sonra medya kodlama ve iş akışları akış Hizmetleri'nde kullanılabilir.
 
 Bir varlık, Azure depolama hesabındaki bir blob kapsayıcısına eşlenir ve varlık içindeki dosyalar bu kapsayıcıda blok Bloblar olarak depolanır. Sayfa Blobları Azure Media Services tarafından desteklenmez.
 
@@ -111,7 +111,7 @@ Desteklenen kodlayıcılar hakkında daha fazla bilgi için bkz. [kodlayıcılar
 ## <a name="live-streaming"></a>Canlı Akış
 Azure Media Services, kanal canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Kanal, canlı giriş akışlarını iki şekilde alır:
 
-* Şirket içi bir Live Encoder, kanala çoklu bit hızlı RTMP veya Kesintisiz Akış (parçalanmış MP4) gönderir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Adobe Flash Live Encoder, Telestream kablolu dönüştürme, teradek, haivision ve karmaşık Aster kodlayıcıları. Alınan akışlar, başka bir dönüştürme ve kodlama olmadan kanalları geçer. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içi bir Live Encoder, kanala çoklu bit hızlı RTMP veya Kesintisiz Akış (parçalanmış MP4) gönderir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Adobe Flash Live Encoder, [Telestream kablolu dönüştürme](media-services-configure-wirecast-live-encoder.md), teradek, haivision ve karmaşık Aster kodlayıcıları. Alınan akışlar, başka bir dönüştürme ve kodlama olmadan kanalları geçer. İstendiğinde, Media Services akışı müşterilere teslim eder.
 * Tek bit hızlı bir akış (aşağıdaki biçimlerden birinde: RTMP veya Kesintisiz Akış (parçalanmış MP4)) Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala gönderilir. Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
 ### <a name="channel"></a>Kanal
@@ -190,7 +190,7 @@ Aşamalı indirme, tüm dosya indirilmeden önce medya çalmaya başlayabilmeniz
 >[!NOTE]
 >Bu kaynakların aşamalı indirme için kullanılabilir olmasını istiyorsanız şifrelenmiş varlıkların şifresini çözmeniz gerekir.
 
-Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örnek:
+Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örneğin:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
@@ -232,9 +232,9 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

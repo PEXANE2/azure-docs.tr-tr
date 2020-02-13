@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965963"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163118"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için kullanmaya başlama kılavuzu
+# <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için Başlarken Kılavuzu
 
 ## <a name="what-is-azure"></a>Azure nedir?
 
@@ -93,7 +93,7 @@ Kodunuzu çalıştırmak için tüm uygulamayı veya altyapıyı oluşturma ve y
 Azure Service Fabric, dağıtılmış bir sistem platformudur. Bu platform ölçeklenebilir ve güvenilir mikro hizmetler oluşturmayı, dağıtmayı, dağıtmayı ve yönetmeyi kolaylaştırır. Ayrıca, gibi kapsamlı uygulama yönetimi özellikleri de sağlar:
 
 * Sağlama
-* Dağıtılıyor
+* Dağıtma
 * İzleme
 * Yükseltme/düzeltme eki uygulama
 * Siliniyor
@@ -171,7 +171,7 @@ Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza
 
   > **Ne zaman kullanılır**: bir SSO deneyimi sağlamak Istediğinizde, Graph tabanlı verilerle çalışın veya etki alanı tabanlı kullanıcıların kimliğini doğrulayın.
   >
-  > **Kullanmaya**başlayın: daha fazla bilgi edinmek için [Geliştirici Kılavuzu Azure Active Directory](../../active-directory/develop/v1-overview.md)bakın.
+  > **Kullanmaya**başlayın: daha fazla bilgi edinmek için [Geliştirici Kılavuzu Azure Active Directory](../../active-directory/develop/v2-overview.md)bakın.
 
 - **App Service kimlik doğrulaması**: uygulamanızı barındırmak için App Service ' i seçtiğinizde Facebook, Google, Microsoft ve Twitter gibi sosyal kimlik sağlayıcılarının yanı sıra Azure AD için de yerleşik kimlik doğrulama desteği alırsınız.
 
@@ -238,9 +238,9 @@ Azure, uygulamalarınızı ve hizmetlerinizi komut satırından yönetmenin iki 
 
 -   [Azure PowerShell](../../powershell-install-configure.md): Windows PowerShell kullanarak Azure kaynaklarını yönetmenizi sağlayan cmdlet 'ler içeren bir modül kümesi sağlar.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalı
 
-[Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Aşağıdakileri içerir:
+[Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Şunları içerir:
 
 * Yapılandırılabilir bir pano
 * Azure Kaynak yönetimi araçları
@@ -288,7 +288,7 @@ Her Azure aboneliği bir Azure AD örneğiyle güven ilişkisine sahiptir. Bu; A
 
 Ayrıca, *Kullanıcılar*olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, rol tabanlı erişim denetimi (RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
 
-### <a name="manage-your-subscriptions"></a>Aboneliklerinizi yönetme
+### <a name="manage-your-subscriptions"></a>Aboneliklerinizi yönetin
 
 Abonelik, Azure hesabına bağlı Azure hizmetlerinin mantıksal gruplandırmasıdır. Tek bir Azure hesabı, birden çok abonelik içerebilir. Azure hizmetleri için faturalandırma, abonelik başına esasına göre yapılır. Türe göre kullanılabilir abonelik tekliflerinin bir listesi için, [Microsoft Azure teklif ayrıntıları](https://azure.microsoft.com/support/legal/offer-details/)' na bakın. Azure aboneliklerinde, abonelik üzerinde tam denetim sahibi olan bir hesap yöneticisi vardır. Ayrıca, abonelikteki tüm hizmetler üzerinde denetim sahibi olan bir hizmet yöneticisi de vardır. Klasik abonelik yöneticileri hakkında daha fazla bilgi için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](../../cost-management-billing/manage/add-change-subscription-administrator.md). [Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)kullanılarak tek tek hesaplara Azure kaynakları için ayrıntılı denetim verilebilir.
 
@@ -320,11 +320,11 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 * Azure Resource Manager şablonunda
 * REST API’sini kullanma
 * Azure CLI kullanma
-* PowerShell'i kullanma
+* PowerShell’i kullanma
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../resource-group-using-tags.md).
 
-### <a name="billing"></a>Faturalandırma
+### <a name="billing"></a>Faturalama
 
 Şirket içi bilgi işlemden bulutta barındırılan hizmetlere geçiş yaparken, hizmet kullanımını ve ilgili maliyetleri izlemek ve tahmin etmek önemli kaygılardır. Aylık olarak hangi yeni kaynakların çalışacağını tahmin etmek önemlidir. Ayrıca, geçerli harcama temelinde faturalandırmanın belirli bir aya nasıl göründüğünü de proje yapabilirsiniz.
 

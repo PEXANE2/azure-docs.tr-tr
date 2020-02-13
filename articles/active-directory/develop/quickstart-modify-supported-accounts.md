@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704128"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160698"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme
 
@@ -25,20 +25,20 @@ Bir uygulamayı Microsoft kimlik platformunda kaydederken uygulamaya yalnızca k
 
 Bu hızlı başlangıçta, kimlerin veya hangi hesapların uygulamaya erişebileceğini değiştirmek için uygulamanızın yapılandırmasını değiştirmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
 * Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Kaydedilmiş uygulamaları olan bir kiracısı olma.
+* Uygulamaların kaydedilmiş olduğu bir kiracı kullanın.
   * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
 
 Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' i seçin.
 1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
 1. [Uygulama kaydını farklı hesapları destekleyecek şekilde değiştirme](#change-the-application-registration-to-support-different-accounts) adımlarını izleyin.
@@ -63,7 +63,7 @@ Kuruluşunuzun dışındaki müşterilerinize veya iş ortaklarınıza sunmak is
 
 Tek sayfalı uygulamalar (SPA) genellikle tarayıcıda çalışan ve iş mantığını gerçekleştirmek için uygulamanın web API'sini çağıran ve yoğun JavaScript kullanan bir ön uca sahiptir. Azure AD'de barındırılan SPA'lar için OAuth 2.0 Örtük Onayını kullanarak kullanıcı kimliğini Azure AD ile doğrulayabilir ve uygulamanın JavaScript istemcisinden arka uç web API'sine güvenli çağrı göndermek için kullanabileceğiniz bir belirteç alabilirsiniz.
 
-Kullanıcı onay verdikten sonra yine bu kimlik doğrulaması protokolünü kullanarak istemci ile uygulamada yapılandırılmış olan diğer web API'si kaynakları arasında güvenli çağrı göndermek için de belirteç alabilirsiniz. Örtük yetkilendirme onayı hakkında daha fazla bilgi almak ve uygulama senaryonuz için doğru seçenek olup olmadığını öğrenmek için Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) ve [v2.0](v2-oauth2-implicit-grant-flow.md) için OAuth 2.0 örtük onay akışı hakkında bilgi edinin.
+Kullanıcı onay verdikten sonra yine bu kimlik doğrulaması protokolünü kullanarak istemci ile uygulamada yapılandırılmış olan diğer web API'si kaynakları arasında güvenli çağrı göndermek için de belirteç alabilirsiniz. Örtük yetkilendirme onayı hakkında daha fazla bilgi almak ve uygulama senaryonuz için doğru seçenek olup olmadığını öğrenmek için Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) ve [v2.0](v2-oauth2-implicit-grant-flow.md) için OAuth 2.0 örtük onay akışı hakkında bilgi edinin.
 
 OAuth 2.0 örtük onay özelliği uygulamalar için varsayılan olarak devre dışı bırakılır. Aşağıda özetlenen adımları izleyerek uygulamanız için OAuth 2.0 örtük onayını etkinleştirebilirsiniz.
 
@@ -78,7 +78,7 @@ OAuth 2.0 örtük onay özelliği uygulamalar için varsayılan olarak devre dı
 
 Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
 
-* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
+* [Microsoft kimlik platformu ile uygulama kaydetme](quickstart-register-app.md)
 * [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md)
 * [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
 * [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)

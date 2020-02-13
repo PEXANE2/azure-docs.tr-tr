@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758759"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160369"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir? 
 
@@ -104,7 +104,7 @@ Contoso Gateway uygulaması çok kiracılı bir uygulamatı, ancak, Contoso.com 
 
 **Etkilenen protokol**: tüm akışlar
 
-[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)BAŞıNA Azure AD uygulamaları artık statik sorgu parametreleriyle (örneğin, OAuth 2,0 istekleri için https://contoso.com/oauth2?idp=microsoft) ) yeniden yönlendirme (yanıtlama) URI 'leri kaydedebilir ve kullanabilir.  Dinamik yeniden yönlendirme URI 'Leri, bir güvenlik riskini temsil ettiğinden hala yasaktır ve bu, bir kimlik doğrulama isteği genelinde durum bilgilerini sürdürmek için kullanılamaz; bunun için `state` parametresini kullanın.
+[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)BAŞıNA Azure AD uygulamaları artık statik sorgu parametreleriyle (örneğin, OAuth 2,0 istekleri için https://contoso.com/oauth2?idp=microsoft)) yeniden yönlendirme (yanıtlama) URI 'leri kaydedebilir ve kullanabilir.  Dinamik yeniden yönlendirme URI 'Leri, bir güvenlik riskini temsil ettiğinden hala yasaktır ve bu, bir kimlik doğrulama isteği genelinde durum bilgilerini sürdürmek için kullanılamaz; bunun için `state` parametresini kullanın.
 
 Statik sorgu parametresi, yeniden yönlendirme URI 'sinin diğer herhangi bir bölümü gibi yeniden yönlendirme URI 'Leri için dize eşlemeye tabidir. URI kodu çözülen redirect_uri eşleşen bir dize yoksa istek reddedilir.  URI uygulama kaydında bulunursa, statik sorgu parametresi dahil olmak üzere, kullanıcının yeniden yönlendirileceği dizenin tamamı kullanılacaktır. 
 
@@ -133,7 +133,7 @@ Birden çok kez yinelenen istek veren istemcilere `invalid_grant` hatası gönde
 
 * İstemci Kimliği
 
-* Yeniden yönlendirme URI 'SI
+* Yeniden yönlendirme URI'si
 
 * Yanıt türü ve modu
 
@@ -156,7 +156,7 @@ Tüm uygulamalar, sessizce bir belirteç istemek yerine etkileşimli bir istem g
 
 Uygulamanız için birden fazla kaynak belirteçlerini almak için yetkilendirme kodları yeniden kullanır, bir yenileme belirteci almak için kodu kullanın ve ardından diğer kaynaklar için ek belirteçlerini almak için yenileme belirtecini kullanmak öneririz. Yetkilendirme kodları yalnızca bir kez kullanılabilir, ancak yenileme belirteçleri birden fazla kaynak arasında birden çok kez kullanılabilir. OAuth kod akışı sırasında bir kimlik doğrulama kodunu yeniden kullanmayı deneyen tüm yeni uygulamalar invalid_grant bir hata alır.
 
-Belirteçleri yenileme hakkında daha fazla bilgi için bkz. [erişim belirteçlerini yenileme](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  ADAL veya MSAL kullanılıyorsa, bu işlem sizin için oluşturulur-' AcquireTokenByAuthorizationCodeAsync ' öğesinin ikinci örneğini ' AcquireTokenSilentAsync ' ile değiştirin. 
+Belirteçleri yenileme hakkında daha fazla bilgi için bkz. [erişim belirteçlerini yenileme](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  ADAL veya MSAL kullanılıyorsa, bu işlem sizin için oluşturulur-' AcquireTokenByAuthorizationCodeAsync ' öğesinin ikinci örneğini ' AcquireTokenSilentAsync ' ile değiştirin. 
 
 ## <a name="may-2018"></a>Mayıs 2018
 
@@ -166,7 +166,7 @@ Belirteçleri yenileme hakkında daha fazla bilgi için bkz. [erişim belirteçl
 
 **Etkilenen uç noktalar**: v 1.0 ve v 2.0
 
-**Etkilenen protokoller**: örtük akış ve [OBO akışı](v1-oauth2-on-behalf-of-flow.md)
+**Etkilenen protokoller**: örtük akış ve [Şirket adına akış](v2-oauth2-on-behalf-of-flow.md)
 
 1 Mayıs 2018 ' den sonra, yeni uygulamalar için bir OBO akışında onaylama olarak id_tokens kullanılamaz. API 'Lerin güvenliğini sağlamak için, aynı uygulamanın bir istemcisi ve orta katmanı arasında bile erişim belirteçleri kullanılmalıdır. 1 Mayıs 2018 tarihinden önce kaydolan uygulamalar çalışmaya devam eder ve erişim belirteci için id_tokens değiş tokuş edebilir. Ancak, bu model en iyi yöntem olarak kabul edilmez.
 

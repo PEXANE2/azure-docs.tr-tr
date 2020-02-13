@@ -1,6 +1,6 @@
 ---
-title: .NET ile Azure Media Services API'sine erişmek için Azure AD kullanım kimlik doğrulaması | Microsoft Docs
-description: Bu konuda, Azure Active Directory (Azure AD) kimlik doğrulaması .NET ile Azure Media Services (AMS) API'sine erişmek için nasıl kullanılacağı gösterilmektedir.
+title: .NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasını kullanma | Microsoft Docs
+description: Bu konuda, .NET ile Azure Media Services (AMS) API 'sine erişmek için Azure Active Directory (Azure AD) kimlik doğrulamasının nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,92 +13,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b53fca292630ef988ee1357ea50adc4d7b7e9be5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726527"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162888"
 ---
-# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET ile Azure Media Services API'sine erişmek için Azure AD kimlik doğrulaması kullanın.
+# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasını kullanma
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz [geçiş kılavuzuna v2'den v3](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-4\.0.0.4 windowsazure.mediaservices ile başlayarak, Azure Media Services, Azure Active Directory (Azure AD) göre kimlik doğrulamasını destekler. Bu konuda Microsoft .NET ile Azure Media Services API'sine erişmek için Azure AD kimlik doğrulaması kullanmayı gösterir.
+Windowsazure. mediaservices 4.0.0.4 ile başlayan Azure Media Services, Azure Active Directory (Azure AD) tabanlı kimlik doğrulamasını destekler. Bu konuda, Microsoft .NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasının nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/). 
-- Bir Media Services hesabı. Daha fazla bilgi için [Azure portalını kullanarak bir Azure Media Services hesabı oluşturma](media-services-portal-create-account.md).
-- En son [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paket.
-- Konu konusunda [Azure AD kimlik doğrulamasına genel bakış ile Azure Media Services API'sine erişim](media-services-use-aad-auth-to-access-ams-api.md). 
+- Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](media-services-portal-create-account.md)konusuna bakın.
+- En son [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paketi.
+- [Azure AD kimlik doğrulamasına genel bakış ile Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md)konusuyla benzerlik. 
 
-Azure Media Services ile Azure AD kimlik doğrulamasını kullanırken, iki yoldan biriyle kimlik doğrulaması yapabilir:
+Azure Media Services ile Azure AD kimlik doğrulaması kullanırken, iki şekilde kimlik doğrulaması yapabilirsiniz:
 
-- **Kullanıcı kimlik doğrulaması** kullanan uygulama etkileşim kurmak için Azure Media Services kaynaklarla bir kişinin kimliğini doğrular. Etkileşimli uygulama, kullanıcıdan kimlik bilgilerini ilk isteyecektir. Kodlama işi izlemek veya canlı akış için yetkili kullanıcılar tarafından kullanılan bir yönetim konsol uygulaması örneğidir. 
-- **Hizmet sorumlusu kimlik doğrulaması** bir hizmetin kimliğini doğrular. Genellikle bu kimlik doğrulama yöntemi kullanan uygulamalar, daemon Hizmetleri, orta katman Hizmetleri ve web uygulamaları, işlev uygulamaları, logic apps, API veya mikro hizmetler gibi zamanlanmış işler çalışan uygulamalardır.
+- **Kullanıcı kimlik doğrulaması** , Azure Media Services kaynaklarla etkileşim kurmak için uygulamayı kullanan bir kişinin kimliğini doğrular. Etkileşimli uygulama öncelikle kullanıcıdan kimlik bilgilerini istemelidir. Bu örnek, yetkili kullanıcılar tarafından kodlama işlerini veya canlı akışı izlemek için kullanılan bir yönetim konsolu uygulamasıdır. 
+- **Hizmet sorumlusu kimlik doğrulaması** bir hizmetin kimliğini doğrular. Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar, Web uygulamaları, işlev uygulamaları, Logic Apps, API 'Ler veya mikro hizmetler gibi Daemon Hizmetleri, orta katman hizmetler veya zamanlanan işleri çalıştıran uygulamalardır.
 
 >[!IMPORTANT]
->Azure medya Hizmetleri şu anda bir Azure Access Control Service kimlik doğrulama modelini destekler. Ancak, erişim denetimi yetkilendirme 22 Haziran 2018'de kullanım dışı olacaktır. Bir Azure Active Directory kimlik doğrulama modeline olabildiğince çabuk geçirme öneririz.
+>Azure Media Service şu anda bir Azure Access Control Service kimlik doğrulama modelini desteklemektedir. Ancak, Access Control yetkilendirmesi 22 Haziran 2018 ' de kullanım dışı olacaktır. Azure Active Directory bir kimlik doğrulama modeline mümkün olan en kısa sürede geçiş yapmanızı öneririz.
 
-## <a name="get-an-azure-ad-access-token"></a>Azure AD erişim belirteci alma
+## <a name="get-an-azure-ad-access-token"></a>Azure AD erişim belirteci alın
 
-Azure AD kimlik doğrulamasıyla Azure Media Services API'sine bağlanmak için bir Azure AD erişim belirteci istemek istemci uygulaması gerekir. Media Services .NET İstemci SDK'sı kullandığınızda, Azure AD erişim belirteci alma konusunda ayrıntıların birçoğu sarmalanmış ve size için Basitleştirilmiş [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) ve [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs)sınıfları. 
+Azure AD kimlik doğrulamasıyla Azure Media Services API 'sine bağlanmak için, istemci uygulamanın bir Azure AD erişim belirteci istemesi gerekir. Media Services .NET istemci SDK 'sını kullandığınızda, bir Azure AD erişim belirtecinin nasıl ele alınacağını gösteren pek çok ayrıntı, [Azureadtokenprovider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) ve [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) sınıflarında sizin için sarmalanır ve basitleştirilmiştir. 
 
-Örneğin, Azure AD yetkilisini, Media Services kaynağı URI ya da yerel sağlamanıza gerek kalmaması Azure AD uygulama ayrıntıları. Bunlar Azure AD erişim belirteci sağlayıcısı sınıfı tarafından zaten yapılandırılmış iyi bilinen değerlerdir. 
+Örneğin, Azure AD yetkilisini, Media Services kaynak URI 'sini veya yerel Azure AD uygulama ayrıntılarını sağlamanız gerekmez. Bunlar, Azure AD erişim belirteci sağlayıcısı sınıfı tarafından zaten yapılandırılmış olan iyi bilinen değerlerdir. 
 
-Azure medya hizmeti .NET SDK'sı kullanmıyorsanız kullanmanızı öneririz [Azure AD kimlik doğrulama Kitaplığı](../../active-directory/develop/active-directory-authentication-libraries.md). Azure AD kimlik doğrulama kitaplığı ile kullanmak için gereken parametreler için değerleri almak için bkz: [Azure AD kimlik doğrulama ayarlarına erişmek için Azure portal'ı kullanmanızı](media-services-portal-get-started-with-aad.md).
+Azure Media Service .NET SDK kullanmıyorsanız [Azure AD kimlik doğrulama kitaplığı](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)' nı kullanmanızı öneririz. Azure AD kimlik doğrulama kitaplığı ile kullanmanız gereken parametrelerin değerlerini almak için bkz. [Azure AD kimlik doğrulaması ayarlarına erişmek için Azure Portal kullanma](media-services-portal-get-started-with-aad.md).
 
-Varsayılan uygulamasını değiştirme seçeneği de **AzureAdTokenProvider** kendi uygulaması.
+Ayrıca, **Azureadtokenprovider** öğesinin varsayılan uygulamasını kendi uygulamanız ile değiştirme seçeneğiniz de vardır.
 
-## <a name="install-and-configure-azure-media-services-net-sdk"></a>Yükleme ve Azure Media Services .NET SDK'sını yapılandırma
+## <a name="install-and-configure-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK 'sını yükleyip yapılandırın
 
 >[!NOTE] 
->Media Services .NET SDK ile Azure AD kimlik doğrulamasını kullanmak için en son gerekir [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paket. Ayrıca, bir başvuru ekleyin **Microsoft.IdentityModel.Clients.activedirectory** derleme. Mevcut bir uygulamayı kullanıyorsanız dahil **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** derleme. 
+>Media Services .NET SDK ile Azure AD kimlik doğrulamasını kullanmak için en son [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paketine sahip olmanız gerekir. Ayrıca, **Microsoft. IdentityModel. clients. ActiveDirectory** derlemesine bir başvuru ekleyin. Mevcut bir uygulamayı kullanıyorsanız, **Microsoft. WindowsAzure. MediaServices. Client. Common. Authentication. dll** derlemesini ekleyin. 
 
-1. Visual Studio'da yeni bir C# konsol uygulaması oluşturun.
-2. Kullanım [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet paketini yüklemek için **Azure Media Services .NET SDK'sı**. 
+1. Visual Studio 'da C# yeni bir konsol uygulaması oluşturun.
+2. **.NET SDK Azure Media Services**yüklemek için [windowsazure. mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet paketini kullanın. 
 
-    NuGet kullanarak başvuru eklemek için aşağıdaki adımları uygulayın: içinde **Çözüm Gezgini**proje adına sağ tıklayın ve ardından **NuGet paketlerini Yönet**. Ardından, arama **windowsazure.mediaservices** seçip **yükleme**.
+    NuGet kullanarak başvuru eklemek için aşağıdaki adımları uygulayın: **Çözüm Gezgini**, proje adına sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin. Ardından, **windowsazure. mediaservices** araması yapın ve **yüklemeyi**seçin.
     
-    veya
+    -veya-
 
-    Aşağıdaki komutu çalıştırın **Paket Yöneticisi Konsolu** Visual Studio'da.
+    Visual Studio 'da **Paket Yöneticisi konsolunda** aşağıdaki komutu çalıştırın.
 
         Install-Package windowsazure.mediaservices -Version 4.0.0.4
 
-3. Ekleme **kullanarak** kaynak kodunuz için.
+3. Kaynak kodunuza **kullanarak** ekleyin.
 
         using Microsoft.WindowsAzure.MediaServices.Client; 
 
 ## <a name="use-user-authentication"></a>Kullanıcı kimlik doğrulaması kullan
 
-Kullanıcı kimlik doğrulaması seçeneği ile Azure Media Service API'sine bağlanmak için aşağıdaki parametreleri kullanarak bir Azure AD belirteç istemek istemci uygulaması gerekir:  
+Azure Media Service API 'sine Kullanıcı kimlik doğrulaması seçeneğiyle bağlanmak için, istemci uygulamanın aşağıdaki parametreleri kullanarak bir Azure AD belirteci istemesi gerekir:  
 
-- Azure AD Kiracı uç noktası. Kiracı bilgileri, Azure portalından alınabilir. Sağ üst köşedeki oturum açmış kullanıcı üzerine gelin.
-- Media Services kaynak URI'si.
-- Media Services (yerel) uygulama istemci kimliği 
-- Media Services (yerel) uygulama yeniden yönlendirme URI'si. 
+- Azure AD kiracı uç noktası. Kiracı bilgileri Azure portal elde edilebilir. Sağ üst köşedeki oturum açmış kullanıcının üzerine gelin.
+- Kaynak URI 'sini Media Services.
+- Media Services (yerel) uygulama istemci KIMLIĞI. 
+- Media Services (yerel) uygulama yeniden yönlendirme URI 'SI. 
 
-Bu parametrelerin değerleri bulunabilir **AzureEnvironments.AzureCloudEnvironment**. **AzureEnvironments.AzureCloudEnvironment** doğru ortamda genel bir Azure veri merkezi için değişken ayarları almak için .NET SDK'sındaki bir yardımcı sabittir. 
+Bu parametrelerin değerleri **AzureEnvironments. AzureCloudEnvironment**içinde bulunabilir. **AzureEnvironments. AzureCloudEnvironment** sabiti, bir genel Azure veri merkezine yönelik doğru ortam değişkeni ayarlarını almak için .NET SDK 'sında yardımcı olur. 
 
-Media Services yalnızca ortak veri merkezlerinde erişmek için önceden tanımlı bir ortam ayarlarını içerir. Bağımsız veya kamu bulut bölgeleri için kullanabileceğiniz **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**, veya **AzureGermanCloudEnvironment** sırasıyla.
+Yalnızca ortak veri merkezlerinde Media Services erişmek için önceden tanımlanmış ortam ayarlarını içerir. Sogeign veya kamu bulut bölgeleri için sırasıyla **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**veya **AzureGermanCloudEnvironment** kullanabilirsiniz.
 
-Aşağıdaki kod örneği, bir belirteç oluşturur:
+Aşağıdaki kod örneği bir belirteç oluşturur:
     
     var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
   
-Media Services karşı programlama başlatmak için oluşturmak gereken bir **CloudMediaContext** sunucu bağlamı temsil eden örneği. **CloudMediaContext** işleri, varlıklar, dosyaları, erişim ilkeleri ve bulucular dahil olmak üzere önemli koleksiyonlar için başvurular içerir. 
+Programlamaya Media Services karşı başlamak için sunucu bağlamını temsil eden bir **Cloudmediacontext** örneği oluşturmanız gerekir. **Cloudmediacontext** , işler, varlıklar, dosyalar, erişim ilkeleri ve Konumlandırıcı dahil olmak üzere önemli koleksiyonlara yönelik başvurular içerir. 
 
-Geçirmeniz gerekir **kaynak medya REST Hizmetleri için URI** için **CloudMediaContext** Oluşturucusu. Medya REST Hizmetleri, Azure portalında oturum açma, Azure Media Services hesabınızı seçin için Kaynak URI ulaşmak için **API erişimi**ve ardından **Azure Media Services ile kullanıcı kimlik doğrulamasıBağlan**. 
+Ayrıca, **medya Rest Hizmetleri için kaynak URI** 'Sini **cloudmediacontext** oluşturucusuna geçirmeniz gerekir. Medya REST Hizmetleri için kaynak URI 'sini almak için Azure portal oturum açın, Azure Media Services hesabınızı seçin, **API erişimi**' ni seçin ve ardından **kullanıcı kimlik doğrulamasıyla Azure Media Services Bağlan**' ı seçin. 
 
-Aşağıdaki kod örneği oluşturur bir **CloudMediaContext** örneği:
+Aşağıdaki kod örneği bir **Cloudmediacontext** örneği oluşturur:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
 
-Aşağıdaki örnek, Azure AD belirtecini ve bağlam oluşturma işlemi gösterilmektedir:
+Aşağıdaki örnek, Azure AD belirtecinin ve bağlamının nasıl oluşturulacağını gösterir:
 
     namespace AzureADAuthSample
     {
@@ -125,19 +125,19 @@ Aşağıdaki örnek, Azure AD belirtecini ve bağlam oluşturma işlemi gösteri
     }
 
 >[!NOTE]
->Bildiren bir özel durum alırsanız "uzak sunucu bir hata döndürdü: Yetkisiz (401)"konusuna bakın [erişim denetimi](media-services-use-aad-auth-to-access-ams-api.md#access-control) Azure Media Services API'sine erişim bölümünü ile Azure AD kimlik doğrulamasına genel bakış.
+>"Uzak sunucu bir hata döndürdü: (401) yetkilendirilmemiş" ifadesini içeren bir özel durum alırsanız, Azure AD kimlik doğrulamasına genel bakış ile Azure Media Services API 'sine erişme konusunun [erişim denetimi](media-services-use-aad-auth-to-access-ams-api.md#access-control) bölümüne bakın.
 
-## <a name="use-service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması kullanma
+## <a name="use-service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulamasını kullanma
     
-(Web API veya web uygulaması) gereksinimlerini hizmet sorumlusu seçeneğiyle orta katman uygulamanızı Azure Media Services API'sine bağlanma aşağıdaki parametrelerle bir Azure AD belirtecini ister:  
+Hizmet sorumlusu seçeneğiyle Azure Media Services API 'sine bağlanmak için, orta katman uygulamanızın (Web API 'SI veya Web uygulaması) aşağıdaki parametrelerle bir Azure AD belirteci istemesi gerekir:  
 
-- Azure AD Kiracı uç noktası. Kiracı bilgileri, Azure portalından alınabilir. Sağ üst köşedeki oturum açmış kullanıcı üzerine gelin.
-- Media Services kaynak URI'si.
-- Azure AD uygulama değerlerini: **istemci kimliği** ve **gizli**.
+- Azure AD kiracı uç noktası. Kiracı bilgileri Azure portal elde edilebilir. Sağ üst köşedeki oturum açmış kullanıcının üzerine gelin.
+- Kaynak URI 'sini Media Services.
+- Azure AD uygulama değerleri: **ISTEMCI kimliği** ve **istemci parolası**.
 
-Değerleri **istemci kimliği** ve **gizli** parametreleri, Azure portalında bulunabilir. Daha fazla bilgi için [Azure portalını kullanarak Azure AD kimlik doğrulamasını kullanmaya başlama](media-services-portal-get-started-with-aad.md).
+**ISTEMCI kimliği** ve **istemci gizli** parametrelerinin değerleri Azure Portal bulunabilir. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure AD kimlik doğrulaması ile çalışmaya](media-services-portal-get-started-with-aad.md)başlama.
 
-Aşağıdaki kod örneği kullanarak bir belirteç oluşturur **AzureAdTokenCredentials** alan oluşturucu **AzureAdClientSymmetricKey** bir parametre olarak: 
+Aşağıdaki kod örneği, bir parametre olarak **Azureadclientsymmetrickey** alan **AzureAdTokenCredentials** oluşturucusunu kullanarak bir belirteç oluşturur: 
     
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"), 
@@ -145,21 +145,21 @@ Aşağıdaki kod örneği kullanarak bir belirteç oluşturur **AzureAdTokenCred
 
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-Ayrıca belirtebileceğiniz **AzureAdTokenCredentials** alan oluşturucu **AzureAdClientCertificate** bir parametre olarak. 
+Ayrıca, **Azureadclientcertificate** öğesini parametre olarak alan **AzureAdTokenCredentials** oluşturucusunu belirtebilirsiniz. 
 
-Oluşturma ve Azure AD tarafından kullanılabilecek bir formda bir sertifika yapılandırmanız hakkında yönergeler için bkz: [sertifikalar - elle yapılandırma adımları ile arka plan programı uygulamalarında Azure AD'ye kimlik doğrulaması](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
+Azure AD tarafından kullanılabilecek bir formda sertifika oluşturma ve yapılandırma hakkında yönergeler için bkz. [sertifikalarla Azure AD 'de kimlik doğrulaması, sertifikalarla birlikte, el ile yapılandırma adımları](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
 
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"), 
                                 AzureEnvironments.AzureCloudEnvironment);
 
-Media Services karşı programlama başlatmak için oluşturmak gereken bir **CloudMediaContext** sunucu bağlamı temsil eden örneği. Geçirmeniz gerekir **kaynak medya REST Hizmetleri için URI** için **CloudMediaContext** Oluşturucusu. Alabileceğiniz **kaynak medya REST Hizmetleri için URI** de Azure portalından değeri.
+Programlamaya Media Services karşı başlamak için sunucu bağlamını temsil eden bir **Cloudmediacontext** örneği oluşturmanız gerekir. Ayrıca, **medya Rest Hizmetleri için kaynak URI** 'Sini **cloudmediacontext** oluşturucusuna geçirmeniz gerekir. **Medya Rest Hizmetleri için kaynak URI** 'sini Azure Portal de alabilirsiniz.
 
-Aşağıdaki kod örneği oluşturur bir **CloudMediaContext** örneği:
+Aşağıdaki kod örneği bir **Cloudmediacontext** örneği oluşturur:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
     
-Aşağıdaki örnek, Azure AD belirtecini ve bağlam oluşturma işlemi gösterilmektedir:
+Aşağıdaki örnek, Azure AD belirtecinin ve bağlamının nasıl oluşturulacağını gösterir:
 
     namespace AzureADAuthSample
     {
@@ -191,4 +191,4 @@ Aşağıdaki örnek, Azure AD belirtecini ve bağlam oluşturma işlemi gösteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanmaya başlama [dosyaları hesabınıza Yükleniyor](media-services-dotnet-upload-files.md).
+[Hesabınıza dosya yüklemeye](media-services-dotnet-upload-files.md)başlayın.

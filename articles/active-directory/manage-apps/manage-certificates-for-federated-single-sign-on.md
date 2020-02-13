@@ -1,6 +1,6 @@
 ---
-title: Azure AD'de Federasyon sertifikalarını yönetme | Microsoft Docs
-description: Federasyon sertifikalarınızı sona erme tarihini özelleştirme ve yakında sona erecek sertifikaları yenile öğrenin.
+title: Azure AD 'de Federasyon sertifikalarını yönetme | Microsoft Docs
+description: Federasyon sertifikalarınız için sona erme tarihini özelleştirmeyi ve yakında süresi dolacak sertifikaların nasıl yenileneceğini öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,100 +15,100 @@ ms.date: 04/04/2019
 ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 416e72f7e9e8622f044f7bb6430fbb36010b164e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701981"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159038"
 ---
-# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Federasyon çoklu oturum açma için Azure Active Directory'de sertifikaları yönetme
+# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme
 
-Bu makalede, yaygın soruları ve Azure Active Directory (Azure AD), yazılım için Federasyon çoklu oturum açma (SSO) bir hizmet (SaaS) uygulamaları kurmak için oluşturduğu sertifikalar ilgili bilgileri kapsar. Uygulamaları Azure AD uygulama galerisinde veya galeri dışı uygulama şablonu kullanarak ekleyin. Federasyon SSO seçeneği kullanarak uygulamayı yapılandırın.
+Bu makalede, hizmet olarak yazılım (SaaS) uygulamaları için Federasyon çoklu oturum açma (SSO) oluşturmak üzere Azure Active Directory (Azure AD) tarafından oluşturulan sertifikalarla ilgili yaygın soruların ve bilgilerin ele alınmaktadır. Azure AD Uygulama Galerisi 'nden veya Galeri dışı bir uygulama şablonu kullanarak uygulamalar ekleyin. Federasyon SSO seçeneğini kullanarak uygulamayı yapılandırın.
 
-Bu makalede, Azure AD SSO ile kullanacak şekilde yapılandırılan uygulamalar için uygundur [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) Federasyon.
+Bu makale yalnızca [Security assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) Federasyonu aracılığıyla Azure AD SSO 'yu kullanacak şekilde yapılandırılmış uygulamalar için geçerlidir.
 
-## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Galeri ve galeri dışı uygulamalar için otomatik olarak oluşturulan sertifika
+## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Galeri ve Galeri olmayan uygulamalar için otomatik olarak oluşturulan sertifika
 
-Ne zaman galeriden yeni bir uygulama eklemek ve bir SAML tabanlı oturum açmayı yapılandırın (seçerek **çoklu oturum açma** > **SAML** uygulama genel bakış sayfasında), Azure AD oluşturur bir üç yıl boyunca geçerli uygulama için sertifika. Güvenlik sertifikası etkin sertifikayı indirmek için ( **.cer**) dosyası, bu sayfaya dönün (**SAML tabanlı oturum açma**) ve içinde bir indirme bağlantısı seçin **SAML imzalama sertifikası** başlığı. Ham (ikili) sertifikası veya Base64 (taban 64 ile kodlanmış metin) arasında seçim yapabilirsiniz. Galeri uygulamaları için bu bölümde Ayrıca sertifikayı Federasyon meta verileri XML dosyası indirmek için bir bağlantı gösterebilir (bir **.xml** dosyası), uygulamanın gereksinim bağlı olarak.
+Galeriden yeni bir uygulama eklediğinizde ve SAML tabanlı bir oturum açma yapılandırdığınızda (uygulamaya genel bakış sayfasından **Çoklu oturum açma** > **SAML** ' yi seçerek), Azure AD, uygulama için üç yıl geçerli bir sertifika oluşturur. Etkin sertifikayı bir güvenlik sertifikası ( **. cer**) dosyası olarak indirmek için bu sayfaya (**SAML tabanlı oturum açma**) dönün ve **SAML imzalama sertifikası** başlığından bir indirme bağlantısı seçin. Ham (ikili) sertifika veya Base64 (temel 64-kodlanmış metin) sertifikası arasında seçim yapabilirsiniz. Galeri uygulamaları için bu bölüm, uygulamanın gereksinimine bağlı olarak sertifikayı Federasyon meta verileri XML (bir **. xml** dosyası) olarak indirmek için bir bağlantı da gösterebilir.
 
-![SAML etkin imzalama sertifikası yükleme seçenekleri](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
+![SAML etkin imza sertifikası indirme seçenekleri](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Etkin veya etkin olmayan bir sertifika seçerek de indirebilirsiniz **SAML imzalama sertifikası** başlık **Düzenle** görüntüler (bir kalem), simge **SAML imzalama sertifikası** sayfası. Öğesinin üç noktasını ( **...** ) indirin ve ardından hangi sertifika biçimi istediğiniz sertifikanın yanındaki istediğiniz. Sertifikayı gizliliği artırılmış posta (PEM) biçiminde indirmek için ek bir seçeneğiniz vardır. Base64 için bu biçim aynıdır ancak bir **.pem** dosya adı uzantısı, Windows Sertifika biçimi olarak tanınmıyor.
+**SAML imzalama** sertifikası sayfasının **düzenleme** simgesini (bir kurşun kalem) seçerek, SAML **imzalama sertifikası** sayfasını görüntüleyen etkin veya etkin olmayan bir sertifikayı da indirebilirsiniz. İndirmek istediğiniz sertifikanın yanındaki üç nokta ( **...** ) simgesini seçin ve ardından istediğiniz sertifika biçimini seçin. Sertifikayı gizlilik Gelişmiş posta (pek) biçiminde indirmek için ek seçeneğiniz vardır. Bu biçim Base64 ile aynıdır, ancak Windows 'da sertifika biçimi olarak tanınmayan bir **. ped** dosya adı uzantısıyla aynıdır.
 
-![SAML imzalama sertifikası yükleme seçenekleri (etkin ve etkin olmayan)](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
+![SAML imzalama sertifikası indirme seçenekleri (etkin ve etkin değil)](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
-## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Federasyon sertifikanız için sona erme tarihi özelleştirebilir ve yeni bir sertifika atla
+## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Federasyon sertifikanızın sona erme tarihini özelleştirin ve yeni bir sertifikaya geri alın
 
-Varsayılan olarak, Azure sertifika sırasında SAML çoklu oturum açma yapılandırması ne zaman otomatik olarak oluşturulur üç yıl sonra süresi dolacak şekilde yapılandırır. Kaydedildikten sonra bir sertifika tarihi değiştirilemiyor çünkü için gerekenler:
+Varsayılan olarak, Azure bir sertifikayı SAML çoklu oturum açma yapılandırması sırasında otomatik olarak oluşturulduğunda üç yıl sonra sona ermek üzere yapılandırır. Kaydettikten sonra bir sertifikanın tarihini değiştiremiyoruz, şunları yapmanız gerekir:
 
-1. İstenilen tarihte ile yeni bir sertifika oluşturun.
-1. Yeni sertifikayı kaydeder.
-1. Doğru biçimde yeni sertifikayı yükleyin.
-1. Uygulamaya yeni sertifikayı yükleyin.
-1. Azure Active Directory portalındaki yeni sertifikayı etkinleştirin.
+1. İstenen tarihle yeni bir sertifika oluşturun.
+1. Yeni sertifikayı kaydedin.
+1. Yeni sertifikayı doğru biçimde indirin.
+1. Yeni sertifikayı uygulamaya yükleyin.
+1. Yeni sertifikayı Azure Active Directory portalında etkin hale getirin.
 
-Aşağıdaki iki bölümü adımları gerçekleştirmenize yardımcı olur.
+Aşağıdaki iki bölüm, bu adımları gerçekleştirmenize yardımcı olur.
 
-### <a name="create-a-new-certificate"></a>Yeni bir sertifika oluşturun
+### <a name="create-a-new-certificate"></a>Yeni bir sertifika oluştur
 
-İlk olarak, oluşturma ve bir farklı sona erme tarihi ile yeni sertifikayı kaydeder:
+İlk olarak, farklı bir sona erme tarihi ile yeni sertifika oluşturun ve kaydedin:
 
-1. Oturum [Azure Active Directory portalında](https://aad.portal.azure.com/). **Azure Active Directory Yönetim Merkezi** sayfası görüntülenir.
-1. Sol bölmede **Kurumsal uygulamalar**’ı seçin. Hesabınızdaki kurumsal uygulamalar listesi görüntülenir.
-1. Etkilenen uygulaması'nı seçin. Uygulama için bir genel bakış sayfası görüntülenir.
-1. Uygulama genel bakış sayfasının sol bölmesinde seçin **çoklu oturum açma**.
-1. Varsa **tek bir oturum açma yönteminizi seçmeniz** sayfası görüntülenirse, seçin **SAML**.
-1. İçinde **yukarı çoklu oturum açma SAML - Preview ile ayarlanmış** sayfasında, bulmak **SAML imzalama sertifikası** seçin ve başlık **Düzenle** simgesi (Kalem). **SAML imzalama sertifikası** sayfası görüntülenirse, durumunu görüntüleyen (**etkin** veya **Inactive**), sona erme tarihi ve her bir sertifikanın parmak izi (karma dize).
-1. Seçin **yeni sertifika**. Yeni bir satır, burada sona erme tarihi geçerli tarihten sonra tam olarak üç yıl için varsayılan olarak sertifika listesi altında görünür. (Sona erme tarihi hala değiştirebilmesi değişikliklerinizi henüz kaydedilmemiş.)
-1. Yeni sertifika satırda sona erme tarihi sütunların üzerine gelin ve seçin **tarihi seçin** simgesi (Takvim). Yeni satırın geçerli sona erme tarihi ayın günü görüntüleme bir Takvim denetimi görünür.
-1. Yeni bir tarihi ayarlamak için takvim denetimini kullanın. Geçerli tarih ve geçerli tarihten sonra üç yıl arasında herhangi bir tarihi ayarlayabilirsiniz.
-1. **Kaydet**’i seçin. Yeni sertifikayı durumuyla görünür **Inactive**, sona erme tarihi, belirttiğiniz, seçtiğiniz ve parmak izi.
-1. Seçin **X** dönmek için **yukarı çoklu oturum açma SAML - Preview ile ayarlanmış** sayfası.
+1. [Azure Active Directory portalında](https://aad.portal.azure.com/)oturum açın. **Azure Active Directory Yönetim Merkezi** sayfası görüntülenir.
+1. Sol bölmede **Kurumsal uygulamalar**’ı seçin. Hesabınızdaki kurumsal uygulamaların bir listesi görüntülenir.
+1. Etkilenen uygulamayı seçin. Uygulama için bir genel bakış sayfası görüntülenir.
+1. Uygulamaya Genel Bakış sayfasının sol bölmesinde, **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seç** sayfası görünürse, **SAML**' yi seçin.
+1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** başlığını bulun ve **düzenleme** simgesini (bir kurşun kalem) seçin. Her sertifikanın durumunu (**etkin** veya **etkin değil**), sona erme tarihini ve parmak izini (bir karma dize) gösteren **SAML imzalama sertifikası** sayfası görüntülenir.
+1. **Yeni sertifika**' yı seçin. Sertifika listesinin altında, sona erme tarihi varsayılan olarak geçerli tarihten üç yıl sonra olacak şekilde yeni bir satır görüntülenir. (Değişiklikleriniz henüz kaydedilmedi, bu nedenle süre sonu tarihini değiştirebilirsiniz.)
+1. Yeni sertifika satırında, sona erme tarihi sütununun üzerine gelin ve **Tarih Seç** simgesini (Takvim) seçin. Yeni satırın geçerli sona erme tarihi için bir ayın günlerini görüntüleyen bir Takvim denetimi görünür.
+1. Takvim denetimini kullanarak yeni bir tarih ayarlayın. Geçerli tarih ile üç yıl arasında herhangi bir tarihi geçerli tarihten sonra ayarlayabilirsiniz.
+1. **Kaydet**’i seçin. Yeni sertifika artık **etkin değil**durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
+1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasına dönmek için **X** işaretini seçin.
 
-### <a name="upload-and-activate-a-certificate"></a>Karşıya yükleme ve sertifikayı etkinleştir
+### <a name="upload-and-activate-a-certificate"></a>Sertifika yükleme ve etkinleştirme
 
-Ardından, doğru biçimde yeni sertifikayı indirip uygulamayı yükleyin ve Azure Active Directory'de etkin hale getirin:
+Ardından, yeni sertifikayı doğru biçimde indirin, uygulamayı uygulamaya yükleyin ve Azure Active Directory etkin hale getirin:
 
-1. Uygulamanın ek SAML oturum açma yapılandırma yönergeleri ile görüntüleyin:
+1. Uygulamanın ek SAML oturum açma yapılandırma yönergelerini şunlardan biriyle görüntüleyin:
 
-   - seçme **Yapılandırma Kılavuzu** ayrı bir tarayıcı penceresi veya sekmesi içinde görüntülemek için bağlantıyı veya
-   - gidip **ayarlanan** başlık ve seçerek **görüntülemek hakkında adım adım yönergeler** Kenar çubuğunda görüntülemek için.
+   - Ayrı bir tarayıcı penceresinde veya sekmede görüntülemek için **yapılandırma kılavuzu** bağlantısını seçme veya
+   - Başlığa gidip bir kenar çubuğunda görüntülemek için **adım adım yönergeleri görüntüle** seçeneğini **belirleyin** .
 
-1. Yönergelerde sertifika karşıya yükleme için gerekli kodlama biçimi unutmayın.
-1. Bölümündeki yönergeleri [galeri ve galeri dışı uygulamalar için otomatik olarak oluşturulan sertifika](#auto-generated-certificate-for-gallery-and-non-gallery-applications) bölümüne. Bu adım, kodlama biçimi uygulama tarafından karşıya yükleme için gerekli sertifika indirir.
-1. Yeni sertifikayı gece yarısında değil istediğiniz zaman geri dönüp **SAML imzalama sertifikası** sayfasında ve yeni kaydedilen sertifikayı satırda üç noktayı seçin ( **...** ) seçip **sertifika etkin hale getirin**. Yeni sertifika durumu değişiklikleri **etkin**, ve daha önce etkin sertifika için bir durumunun değiştiğini **Inactive**.
-1. SAML imzalama yükleyebilirsiniz. böylece, daha önce görüntülenen uygulamanın SAML oturum açma yapılandırma yönergeleri kodlama biçimi doğru sertifika aşağıdaki devam edin.
+1. Yönergelerde, sertifika karşıya yüklemesi için gereken kodlama biçimine göz önünde.
+1. Daha önce [Galeri ve Galeri olmayan uygulamalar Için otomatik olarak oluşturulan sertifika](#auto-generated-certificate-for-gallery-and-non-gallery-applications) bölümündeki yönergeleri izleyin. Bu adım, sertifikayı uygulama tarafından karşıya yüklemek için gereken kodlama biçiminde indirir.
+1. Yeni sertifikayı almak istediğinizde, **SAML Imzalama sertifikası** sayfasına dönün ve yeni kaydedilen sertifika satırında üç nokta ( **...** ) simgesini seçin ve **sertifikayı etkin yap**' ı seçin. Yeni sertifikanın durumu **etkin**olarak değişir ve önceden etkin sertifika, etkin **olmayan**bir duruma geçer.
+1. SAML imzalama sertifikasını doğru kodlama biçiminde karşıya yükleyebilmeniz için, daha önce kullandığınız SAML oturum açma yapılandırma yönergelerini izleyerek devam edin.
 
-## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Sertifika süre sonu için e-posta bildirim adresleri ekleyin
+## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Sertifika süre sonu için e-posta bildirim adresleri ekleme
 
-Azure AD, SAML sertifikanın süresi dolmadan önce bir e-posta bildirimi 60, 30 ve 7 gün gönderir. Bildirimleri almak için birden fazla e-posta adresi ekleyebilirsiniz. Bildirimlerin gönderilmesini istediğiniz e-posta adresleri belirtmek için:
+Azure AD, SAML sertifikasının süresi dolmadan 60, 30 ve 7 gün önce bir e-posta bildirimi gönderir. Bildirimleri almak için birden fazla e-posta adresi ekleyebilirsiniz. Bildirimlerin gönderilmesini istediğiniz e-posta adreslerini belirtmek için:
 
-1. İçinde **SAML imzalama sertifikası** sayfasında, Git **bildirim e-posta adreslerini** başlığı. Varsayılan olarak, bu başlığı, yalnızca uygulamaya eklenen yönetici e-posta adresini kullanır.
-1. Aşağıdaki son e-posta adresi, sertifikanın süre sonu bildirimi alırsınız ve ardından Enter tuşuna basın e-posta adresini yazın.
-1. Önceki adımı, eklemek istediğiniz her bir e-posta adresi için yineleyin.
-1. Silmek istediğiniz her e-posta adresi için seçin **Sil** e-posta adresinin yanındaki simge (Çöp Kutusu).
+1. **SAML Imzalama sertifikası** sayfasında, **bildirim e-posta adresleri** başlığına gidin. Varsayılan olarak, bu başlık yalnızca uygulamayı ekleyen yöneticinin e-posta adresini kullanır.
+1. Son e-posta adresinin altına, sertifikanın süre sonu bildirimini alması gereken e-posta adresini yazın ve ardından ENTER tuşuna basın.
+1. Eklemek istediğiniz her e-posta adresi için önceki adımı tekrarlayın.
+1. Silmek istediğiniz her e-posta adresi için, e-posta adresinin yanındaki **Sil** simgesini (çöp kutusu) seçin.
 1. **Kaydet**’i seçin.
 
-Bildirim e-postası alırsınız aadnotification@microsoft.com. İstenmeyen posta konumunuza giden e-posta önlemek için bu e-posta kişilerinize ekleyin.
+aadnotification@microsoft.combildirim e-postasını alırsınız. E-postaları istenmeyen posta konumunuza karşı önlemek için bu e-postayı kişilerinize ekleyin.
 
-## <a name="renew-a-certificate-that-will-soon-expire"></a>Süresi yakında dolacak bir sertifikayı yenileme
+## <a name="renew-a-certificate-that-will-soon-expire"></a>Yakında sona erecek bir Sertifikayı Yenile
 
-Süresi dolmak üzere bir sertifika ise, kullanıcılarınızın önemli kapalı kalma süresi sonuçlanır bir yordamı kullanarak yenileyebilirsiniz. Süresi dolacak bir sertifikayı yenilemek için:
+Bir sertifikanın süresi sona ermek üzereyken, kullanıcılarınız için önemli bir kesinti yaşanmasına neden olan bir yordamı kullanarak yenileyebilirsiniz. Süresi dolan bir sertifikayı yenilemek için:
 
-1. Bölümündeki yönergeleri [yeni bir sertifika oluşturmak](#create-a-new-certificate) daha önce çakışan tarih olan mevcut sertifikayı kullanarak bölümü. Bu tarih ile sertifika sona erme neden olduğu çalışmama süresi miktarını sınırlar.
-1. Uygulamayı otomatik olarak bir sertifika geri alabilirsiniz, yeni sertifikayı etkin olarak aşağıdaki adımları izleyerek ayarlayın:
-   1. Geri Git **SAML imzalama sertifikası** sayfası.
-   1. Yeni kaydedilen sertifikayı satırda üç noktayı seçin ( **...** ) ve ardından **sertifika etkin hale getirin**.
+1. Mevcut sertifikayla örtüşen bir tarih kullanarak daha önce [Yeni sertifika oluşturma](#create-a-new-certificate) bölümünde yer alan yönergeleri izleyin. Bu tarih, sertifika süresinin dolmasından kaynaklanan kesinti süresini sınırlar.
+1. Uygulama bir sertifikayı otomatik olarak alabilir, aşağıdaki adımları izleyerek yeni sertifikayı etkin olarak ayarlayın:
+   1. **SAML Imzalama sertifikası** sayfasına dönün.
+   1. Yeni kaydedilen sertifika satırında üç nokta ( **...** ) simgesini seçin ve ardından **sertifikayı etkin yap**' ı seçin.
    1. Sonraki iki adımı atlayın.
 
-1. Uygulamayı aynı anda yalnızca bir sertifika işleyebilir, bir sonraki adımı gerçekleştirmeniz için bir kapalı kalma süresi aralığı seçin. (Uygulama otomatik olarak yeni sertifikayı seçin değil, ancak birden fazla imzalama sertifikası işleyebilir, aksi halde, sonraki adıma dilediğiniz zaman gerçekleştirebilirsiniz.)
-1. Eski sertifikayı süresi dolmadan önce yönergeleri [karşıya yükleme ve sertifikayı etkinleştirmek](#upload-and-activate-a-certificate) bölümüne.
-1. Sertifika doğru şekilde çalıştığından emin olmak için uygulamaya oturum açın.
+1. Uygulama aynı anda yalnızca bir sertifikayı işleyebilir, sonraki adımı gerçekleştirmek için bir kesinti süresi seçin. (Aksi halde, uygulama yeni sertifikayı otomatik olarak içermiyorsa, ancak birden fazla imzalama sertifikasını işleyemezse, bir sonraki adımı dilediğiniz zaman gerçekleştirebilirsiniz.)
+1. Eski sertifikanın süresi dolmadan önce, daha önce [sertifikayı yükle ve Etkinleştir](#upload-and-activate-a-certificate) bölümündeki yönergeleri izleyin.
+1. Sertifikanın doğru çalıştığından emin olmak için uygulamada oturum açın.
 
 ## <a name="related-articles"></a>İlgili makaleler
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](../saas-apps/tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
 - [Azure Active Directory ile uygulama yönetimi](what-is-application-management.md)
-- [Azure Active Directory'de uygulamalar için çoklu oturum açma](what-is-single-sign-on.md)
-- [Azure Active Directory'de uygulamalar için SAML tabanlı çoklu oturum açma hata ayıklama](../develop/howto-v1-debug-saml-sso-issues.md)
+- [Azure Active Directory uygulamalarda çoklu oturum açma](what-is-single-sign-on.md)
+- [Azure Active Directory uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

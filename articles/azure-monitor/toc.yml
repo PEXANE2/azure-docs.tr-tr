@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: Verileri görselleştirme
       items:
-        - name: Görünümler
-          items:
-            - name: Görünüm Tasarımcısı
-              href: platform/view-designer.md
-            - name: Kutucuk başvurusu
-              href: platform/view-designer-tiles.md
-            - name: Görselleştirme bölümü başvurusu
-              href: platform/view-designer-parts.md
-            - name: Filtreler
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: Günlük verilerini dışarı aktarma
-              href: platform/powerbi.md
-            - name: Uygulama verilerini dışarı aktarma
-              href: app/export-power-bi.md
         - name: Çalışma Kitapları
           items:
             - name: Genel Bakış
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: Metin parametreleri
                       href: platform/workbooks-text.md
+        - name: Görünümler
+          items:
+            - name: Görünümleri çalışma kitaplarına dönüştürme
+              items:
+                - name: Dönüştürmeye genel bakış
+                  href: platform/view-designer-conversion-overview.md
+                - name: Dönüştürme seçenekleri
+                  href: platform/view-designer-conversion-options.md
+                - name: Genel bakış ve erişim
+                  href: platform/view-designer-conversion-access.md
+                - name: Genel görevler
+                  href: platform/view-designer-conversion-tasks.md
+                - name: Kutucuk dönüştürmeleri
+                  href: platform/view-designer-conversion-tiles.md
+                - name: Örnekler
+                  href: platform/view-designer-conversion-examples.md
+            - name: Görünüm Tasarımcısı
+              href: platform/view-designer.md
+            - name: Kutucuk başvurusu
+              href: platform/view-designer-tiles.md
+            - name: Görselleştirme bölümü başvurusu
+              href: platform/view-designer-parts.md
+            - name: Filtreler
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: Günlük verilerini dışarı aktarma
+              href: platform/powerbi.md
+            - name: Uygulama verilerini dışarı aktarma
+              href: app/export-power-bi.md
         - name: Panolar
           items:
             - name: Günlük verilerini kullanan pano

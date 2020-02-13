@@ -17,16 +17,15 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 92e4376108de02b912c05459411adfacf926c448
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700473"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159651"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform ve OAuth 2,0-adına akış
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OAuth 2,0 on-of-the Flow (OBO), bir uygulamanın bir hizmet/Web API 'sini çağırdığı, yani başka bir hizmet/Web API çağrısı yapması gereken kullanım durumunu görür. Amaç, temsilci kullanıcı kimliğini ve izinleri istek zinciri aracılığıyla yaymanız önerilir. Orta katman hizmetin, aşağı akış hizmetine kimliği doğrulanmış istekleri yapması için Kullanıcı adına Microsoft Identity platformundan bir erişim belirtecinin güvenli hale getirme ihtiyacı vardır.
 
@@ -70,12 +69,12 @@ Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci 
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| `grant_type` | Gereklidir | Belirteç isteği türü. JWT kullanan bir istek için, değerin `urn:ietf:params:oauth:grant-type:jwt-bearer`olması gerekir. |
-| `client_id` | Gereklidir | [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
-| `client_secret` | Gereklidir | Azure portal Uygulama kayıtları sayfasında uygulamanız için oluşturduğunuz istemci gizli anahtarı. |
-| `assertion` | Gereklidir | İstekte kullanılan belirtecin değeri.  Bu belirteç, bu OBO isteğini (`client-id` alanı tarafından belirtilen uygulama) yapan uygulamanın hedef kitlesi olmalıdır. |
-| `scope` | Gereklidir | Belirteç isteği için bir alan ayrılmış kapsam listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md). |
-| `requested_token_use` | Gereklidir | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin `on_behalf_of`olarak ayarlanması gerekir. |
+| `grant_type` | Gerekli | Belirteç isteği türü. JWT kullanan bir istek için, değerin `urn:ietf:params:oauth:grant-type:jwt-bearer`olması gerekir. |
+| `client_id` | Gerekli | [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
+| `client_secret` | Gerekli | Azure portal Uygulama kayıtları sayfasında uygulamanız için oluşturduğunuz istemci gizli anahtarı. |
+| `assertion` | Gerekli | İstekte kullanılan belirtecin değeri.  Bu belirteç, bu OBO isteğini (`client-id` alanı tarafından belirtilen uygulama) yapan uygulamanın hedef kitlesi olmalıdır. |
+| `scope` | Gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md). |
+| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin `on_behalf_of`olarak ayarlanması gerekir. |
 
 #### <a name="example"></a>Örnek
 
@@ -102,13 +101,13 @@ Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki p
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| `grant_type` | Gereklidir | Belirteç isteğinin türü. JWT kullanan bir istek için, değerin `urn:ietf:params:oauth:grant-type:jwt-bearer`olması gerekir. |
-| `client_id` | Gereklidir |  [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
-| `client_assertion_type` | Gereklidir | Değerin `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`olması gerekir. |
-| `client_assertion` | Gereklidir | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web belirteci). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için bkz. [sertifika kimlik bilgileri](active-directory-certificate-credentials.md). |
-| `assertion` | Gereklidir | İstekte kullanılan belirtecin değeri. |
-| `requested_token_use` | Gereklidir | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin `on_behalf_of`olarak ayarlanması gerekir. |
-| `scope` | Gereklidir | Belirteç isteğine yönelik kapsamların boşlukla ayrılmış listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md).|
+| `grant_type` | Gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için, değerin `urn:ietf:params:oauth:grant-type:jwt-bearer`olması gerekir. |
+| `client_id` | Gerekli |  [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
+| `client_assertion_type` | Gerekli | Değerin `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`olması gerekir. |
+| `client_assertion` | Gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web belirteci). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için bkz. [sertifika kimlik bilgileri](active-directory-certificate-credentials.md). |
+| `assertion` | Gerekli | İstekte kullanılan belirtecin değeri. |
+| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin `on_behalf_of`olarak ayarlanması gerekir. |
+| `scope` | Gerekli | Belirteç isteğine yönelik kapsamların boşlukla ayrılmış listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md).|
 
 Parametrelerin, `client_secret` parametresi iki parametre ile değiştirilmeleri dışında, paylaşılan gizliliğe göre istek durumuyla neredeyse aynı olduğuna dikkat edin: bir `client_assertion_type` ve `client_assertion`.
 

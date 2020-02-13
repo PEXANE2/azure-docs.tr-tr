@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864120"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157916"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
 
@@ -33,7 +33,7 @@ Bu makale, sanal ağlar arasında bir VPN Gateway bağlantısı oluşturmanıza 
 
 ![VNet 'ten VNet 'e bağlantı diyagramı](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>Sanal Ağdan Sanal Ağa bağlantıları hakkında
 
@@ -199,7 +199,7 @@ Sanal ağ geçitleriniz her iki VNET için de oluşturulduktan sonra, yerel site
    ![Siteyi değiştir](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
 5. **VPN ağ GEÇIDI IP adresini** güncelleştirin ve **Tamam** ' a tıklayarak ayarları kaydedin.
 
-   ![Ağ geçidi IP 'si](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
+   ![ağ geçidi IP 'si](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
 6. Diğer sayfaları kapatın.
 7. TestVNet4 için bu adımları tekrarlayın.
 

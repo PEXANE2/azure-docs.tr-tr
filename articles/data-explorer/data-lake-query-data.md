@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512921"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161758"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama
 
-Azure Data Lake Storage, büyük veri analizi için yüksek düzeyde ölçeklenebilir ve ekonomik bir Data Lake çözümüdür. İçgörülere daha hızlı bir şekilde ulaşabilmeniz için yüksek performanslı dosya sisteminin gücünü büyük ölçek ve tasarrufla sunar. Analiz iş yükleri için iyileştirilmiş olan Data Lake Storage Gen2, Azure Blob Depolama özelliklerini geliştirir.
+Azure Data Lake Storage, büyük veri analizi için yüksek düzeyde ölçeklenebilir ve ekonomik bir Data Lake çözümüdür. Yüksek performanslı bir dosya sisteminin gücünü büyük ölçekli ve ekonomisi ile birleştirerek, öngörülere yönelik zamandan hızlanmanıza yardımcı olur. Data Lake Storage 2. Azure Blob Storage yeteneklerini genişletir ve analiz iş yükleri için iyileştirilmiştir.
  
-Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleştirilerek, Gölü verilere hızlı, önbelleğe alınmış ve dizinli erişim sağlar. Azure Veri Gezgini 'a girmeden önce Gölü verileri analiz edebilir ve sorgulayabilirsiniz. Ayrıca, alınan ve toplanan yerel Gölü verileri aynı anda sorgulayabilirsiniz.  
+Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage (gen1 ve Gen2) ile tümleşir. Bu, Gölü verilere hızlı, önbelleğe alınmış ve dizinli erişim sağlar. Azure Veri Gezgini 'a girmeden önce Gölü verileri analiz edebilir ve sorgulayabilirsiniz. Ayrıca, alınan ve toplanan yerel Gölü verileri aynı anda sorgulayabilirsiniz.  
 
 > [!TIP]
-> En iyi sorgu performansı, verileri Azure Veri Gezgini 'e göre gerekli hale getiriliyor. Önceki giriş yapılmadan Azure Data Lake Storage 2. verileri sorgulama özelliği yalnızca geçmiş veriler veya nadiren sorgulanan veriler için kullanılmalıdır. En iyi sonuçlar için, Gölü [sorgu performansınızı iyileştirin](#optimize-your-query-performance) .
+> En iyi sorgu performansı, verileri Azure Veri Gezgini 'e göre gerekli hale getiriliyor. Öncesinde içeri alma olmadan dış verileri sorgulama özelliği yalnızca geçmiş veriler veya nadiren sorgulanan veriler için kullanılmalıdır. En iyi sonuçlar için, Gölü [sorgu performansınızı iyileştirin](#optimize-your-query-performance) .
  
 
 ## <a name="create-an-external-table"></a>Dış tablo oluşturma
 
  > [!NOTE]
- > Şu anda desteklenen depolama hesapları Azure Blob depolama veya Azure Data Lake Storage 2. Şu anda desteklenen veri biçimleri JSON, CSV, TSV ve txt ' dir.
+ > Şu anda desteklenen depolama hesapları Azure Blob depolama veya Azure Data Lake Storage (gen1 ve Gen2).
 
 1. Azure Veri Gezgini 'de dış tablo oluşturmak için `.create external table` komutunu kullanın. `.show`, `.drop`ve `.alter` gibi ek dış tablo komutları [dış tablo komutlarında](/azure/kusto/management/externaltables)belgelenmiştir.
 
@@ -45,7 +45,8 @@ Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleşti
     > * Daha ayrıntılı bölümlendirme ile artan performans beklenir. Örneğin, günlük bölümleri olan dış tablolar üzerinde sorgular, aylık bölümlenmiş tablolarla bu sorgulardan daha iyi performansa sahip olacaktır.
     > * Bölümler içeren bir dış tablo tanımladığınızda, depolama yapısının aynı olması beklenir.
 Örneğin, tablo YYYY/AA/GG biçiminde bir tarih saat bölümüyle tanımlanmışsa (varsayılan), URI depolama dosya yolu *kapsayıcı1/yyyy/aa/gg/all_exported_blobs*olmalıdır. 
-    > * Dış tablo, bir tarih saat sütunuyla bölümlense, sorgunuza kapalı bir Aralık için her zaman bir zaman filtresi ekleyin (örneğin, sorgu-`ArchivedProducts | where Timestamp between (ago(1h) . 10m)`-bu değerden (açılan Aralık) bir-`ArchivedProducts | where Timestamp > ago(1h)`) daha iyi gerçekleştirmelidir. 
+    > * Dış tablo, bir tarih saat sütunuyla bölümlense, sorgunuza kapalı bir Aralık için her zaman bir zaman filtresi ekleyin (örneğin, sorgu-`ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-bu değerden (açılan Aralık) bir-`ArchivedProducts | where Timestamp > ago(1h)`) daha iyi gerçekleştirmelidir. 
+    > * Tüm [desteklenen alma biçimleri](ingest-data-overview.md#supported-data-formats) , dış tablolar kullanılarak sorgulanabilir.
 
 1. Dış tablo, Web Kullanıcı arabiriminin sol bölmesinde görünür
 

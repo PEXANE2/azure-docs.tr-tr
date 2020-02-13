@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148870"
+ms.locfileid: "77157882"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -84,11 +84,11 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 | `globalexception` | Bir özel durum veya hata ile karşılaşıldığında bir hata sayfası görüntüler. |
 | `providerselection` | Kullanıcıların oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler. |
 | `unifiedssp` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. Bu değer ayrıca "Oturumumu Açık bırak" ve "parolanızı unuttum mı" değerlerini de sağlar. bağlantı. |
-| `unifiedssp` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. |
+| `unifiedssd` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. |
 | `multifactor` | Kaydolma veya oturum açma sırasında metin veya ses kullanarak telefon numaralarını doğrular. |
 | `selfasserted` | Kullanıcıların profillerini oluşturmalarına veya güncelleştirmesine olanak sağlayan bir form görüntüler. |
 
-## <a name="select-a-page-layout"></a>Sayfa düzeni seçin
+### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
 
 `elements` ve sayfa türü arasında `contract` ekleyerek [JavaScript istemci tarafı kodunu](javascript-samples.md) etkinleştirebilirsiniz. Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
@@ -126,6 +126,29 @@ Değerin biçimi `contract`: _urn: com: Microsoft: AAD: B2C: Elements:**Contract
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+
+### <a name="metadata"></a>Meta Veriler
+
+**Meta veri** öğesi aşağıdaki öğeleri içerir:
+
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| Öğe | 0: n | İçerik tanımıyla ilgili meta veriler. |
+
+**Meta veri** öğesinin **Item** öğesi aşağıdaki öznitelikleri içerir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| Anahtar | Yes | Meta veri anahtarı.  |
+
+#### <a name="metadata-keys"></a>Meta veri anahtarları
+
+İçerik tanımı aşağıdaki meta veri öğelerini destekler: 
+
+| Anahtar | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| DisplayName | Hayır | İçerik tanımının adını içeren bir dize. |
+
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **Localizedresourcesreferences** öğesi aşağıdaki öğeleri içerir:
@@ -134,7 +157,7 @@ Değerin biçimi `contract`: _urn: com: Microsoft: AAD: B2C: Elements:**Contract
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
 
-**Localizedresourcesreferences** öğesi aşağıdaki öznitelikleri içerir:
+**Localizedresourcesreference** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |

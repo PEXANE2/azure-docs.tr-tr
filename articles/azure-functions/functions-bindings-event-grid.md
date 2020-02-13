@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547464"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167502"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Event Grid tetikleyicisi
 
@@ -97,7 +97,7 @@ namespace Company.Function
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir.
 
-Veri bağlama işte *function.json* dosyası:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -149,7 +149,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
-Veri bağlama işte *function.json* dosyası:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -180,7 +180,7 @@ module.exports = function (context, eventGridEvent) {
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
 
-Veri bağlama işte *function.json* dosyası:
+Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 ```json
 {
@@ -224,19 +224,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 * [Event Grid tetikleyicisi, dize parametresi](#event-grid-trigger-string-parameter)
 * [Event Grid tetikleyicisi, POJO parametresi](#event-grid-trigger-pojo-parameter)
 
-Aşağıdaki örneklerde, önce olayı bir POJO olarak ```String``` ve ikinci olarak alarak, bir olayı ve bir olayı yazdırmayı kullanan bir *function. JSON* dosyası ve [Java işlevlerinde](functions-reference-java.md) tetikleyici bağlama gösterilmektedir.
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ]
-}
-```
+Aşağıdaki örneklerde, ilk olarak olayı `String` ve ikinci olarak bir POJO olarak alarak, bağlama ve olay yazdırma gibi [Java](functions-reference-java.md) 'daki tetikleyici bağlama gösterilmektedir.
 
 ### <a name="event-grid-trigger-string-parameter"></a>Event Grid tetikleyicisi, dize parametresi
 
@@ -340,7 +328,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ayarladığınız bağlama ya
 |---------|---------|
 | **type** | Gerekli-`eventGridTrigger`olarak ayarlanmalıdır. |
 | **direction** | Gerekli-`in`olarak ayarlanmalıdır. |
-| **Adı** | Gerekli-olay verilerini alan parametre için işlev kodunda kullanılan değişken adı. |
+| **ada** | Gerekli-olay verilerini alan parametre için işlev kodunda kullanılan değişken adı. |
 
 ## <a name="usage"></a>Kullanım
 
@@ -428,7 +416,7 @@ Ortak ve olaya özgü özelliklerin açıklamaları için Event Grid belgelerind
 
 Event Grid HTTP isteklerini almaya başlamak için, işlevi çağıran uç nokta URL 'sini belirten bir Event Grid aboneliği oluşturun.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 Event Grid tetikleyicisiyle Azure portal geliştirdiğiniz işlevlerde **Event Grid aboneliği Ekle**' yi seçin.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f1fa447312ad6a1f92eaed1164020cb6ee95606e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847261"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161605"
 ---
 # <a name="how-to-configure-password-writeback"></a>Nasıl yapılır: parola geri yazmayı yapılandırma
 
@@ -35,7 +35,7 @@ Aşağıdaki adımlarda, [hızlı](../hybrid/how-to-connect-install-express.md) 
 Parola geri yazma ile ilgili yaygın sorun giderme görevlerinde, sorun giderme makalesindeki [parola geri yazma sorunlarını giderme](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) bölümüne bakın.
 
 > [!WARNING]
-> Parola geri yazma işlemi, [Azure Access Control hizmeti (ACS) 7 kasım 2018 tarihinde devre dışı bırakıldığında,](../develop/active-directory-acs-migration.md)Azure AD Connect sürümlerini kullanan müşteriler için çalışmayı durdurur. Azure AD Connect sürümleri, bu işlev için ACS 'ye bağlı olduğundan, 1.0.8641.0 ve üzeri sürümler artık parola geri yazmaya izin vermez.
+> Parola geri yazma işlemi, [Azure Access Control hizmeti (ACS) 7 kasım 2018 tarihinde devre dışı bırakıldığında,](../azuread-dev/active-directory-acs-migration.md)Azure AD Connect sürümlerini kullanan müşteriler için çalışmayı durdurur. Azure AD Connect sürümleri, bu işlev için ACS 'ye bağlı olduğundan, 1.0.8641.0 ve üzeri sürümler artık parola geri yazmaya izin vermez.
 >
 > Bir hizmette kesintiye uğramamak için, önceki bir Azure AD Connect sürümünden daha yeni bir sürüme yükseltme yapın Azure AD Connect şu makaleye bakın [: önceki bir sürümden en son sürüme yükseltme](../hybrid/how-to-upgrade-previous-version.md)
 >

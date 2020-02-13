@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466758"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156456"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -48,7 +48,7 @@ Ortak HelloWorld projesi, platformlar arası uygulamanız için platformdan bağ
 1. Kaynak dosyanın `OnRecognitionButtonClicked` işleyicisinde, `YourSubscriptionKey`dizesini bulun ve abonelik anahtarınızla değiştirin.
 
 
-1. `OnRecognitionButtonClicked` işleyicisinde, `YourServiceRegion`dizesini bulun ve aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.)
+1. `OnRecognitionButtonClicked` işleyicisinde, `YourServiceregion`dizesini bulun ve aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) "konuşma SDK 'sı parametresi" ile değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.)
 
 1. Daha sonra, UWP, Android ve iOS gibi farklı platform projelerinden gelen mikrofon izinlerini sorgulamak için kullanılan bir [Xamarin hizmeti](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)oluşturmanız gerekir. Bunu yapmak için HelloWorld projesi altında *Hizmetler* adlı yeni bir klasör ekleyin ve bunun altında yeni C# bir kaynak dosya oluşturun. *Hizmetler* klasörüne sağ tıklayıp > **Yeni öğe** > **kod dosyası** **Ekle** ' yi seçebilirsiniz. `IMicrophoneService.cs`dosyayı yeniden adlandırın ve aşağıdaki kod parçacığındaki tüm kodu bu dosyaya yerleştirin:
 

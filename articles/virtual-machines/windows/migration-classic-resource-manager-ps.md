@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153137"
+ms.locfileid: "77168347"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS kaynaklarını klasik bilgisayardan Azure Resource Manager PowerShell kullanarak geçirme
 Bu adımlarda, klasik dağıtım modelinden bir hizmet olarak altyapı (IaaS) kaynaklarını Azure Resource Manager dağıtım modeline geçirmek için Azure PowerShell komutlarının nasıl kullanılacağı gösterilmektedir.
@@ -52,8 +52,6 @@ IaaS kaynaklarının klasik 'ten Kaynak Yöneticisi geçişe geçirilip geçirme
 Azure PowerShell yüklemek için iki ana seçenek vardır: [PowerShell Galerisi](https://www.powershellgallery.com/profiles/azure-sdk/) veya [Web Platformu Yükleyicisi (WebPI)](https://aka.ms/webpi-azps). WebPI aylık güncelleştirmeleri alır. PowerShell Galerisi güncelleştirmeleri sürekli olarak alır. Bu makale, Azure PowerShell sürüm 2.1.0 ' i temel alır.
 
 Yükleme yönergeleri için bkz. [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview).
-
-<br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3\. Adım: abonelik için yönetici olduğunuzdan emin olun
 Bu geçişi gerçekleştirmek için, [Azure Portal](https://portal.azure.com)abonelik için bir ortak yönetici olarak eklenmeli.
@@ -104,6 +102,14 @@ Kaydın tamamlanabilmesi için beş dakika bekleyin. Aşağıdaki komutu kullana
 
 Devam etmeden önce RegistrationState `Registered` olduğundan emin olun.
 
+Klasik dağıtım modeline geçmeden önce, geçerli dağıtımınızın veya sanal ağınızın Azure bölgesinde yeterli sayıda Azure Resource Manager sanal makineye sahip olduğunuzdan emin olun. Azure Resource Manager ' de mevcut vCPU sayısını denetlemek için aşağıdaki PowerShell komutunu kullanabilirsiniz. VCPU kotaları hakkında daha fazla bilgi için bkz. [sınırlara ve Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
+
+Bu örnek **Batı ABD** bölgesindeki kullanılabilirliği denetler. Örnek bölge adını kendi adınızla değiştirin.
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 Şimdi, klasik dağıtım modeli için hesabınızda oturum açın.
 
 ```powershell
@@ -122,27 +128,17 @@ Geçerli oturum için Azure aboneliğinizi ayarlayın. Bu örnekte, varsayılan 
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>5\. Adım: yeterli Kaynak Yöneticisi VM vCPU 'su
-Geçerli dağıtımınızın veya sanal ağınızın Azure bölgesinde yeterli sayıda Azure Resource Manager sanal makineye sahip olduğunuzdan emin olun. Azure Resource Manager ' de mevcut vCPU sayısını denetlemek için aşağıdaki PowerShell komutunu kullanabilirsiniz. VCPU kotaları hakkında daha fazla bilgi için bkz. [sınırlara ve Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
-
-Bu örnek **Batı ABD** bölgesindeki kullanılabilirliği denetler. Örnek bölge adını kendi adınızla değiştirin.
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6\. Adım: IaaS kaynaklarınızı geçirmek için komutları çalıştırın
-* [VM 'Leri bir bulut hizmetinde geçirme (Sanal ağda değil)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [Sanal ağdaki VM 'Leri geçirme](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [Depolama hesabını geçirme](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>5\. Adım: IaaS kaynaklarınızı geçirmek için komutları çalıştırın
+* [VM 'Leri bir bulut hizmetinde geçirme (Sanal ağda değil)](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Sanal ağdaki VM 'Leri geçirme](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Depolama hesabını geçirme](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > Burada açıklanan tüm işlemler ıdempotent. Desteklenmeyen bir özellik veya yapılandırma hatası dışında bir sorununuz varsa, hazırlama, durdurma veya işleme işlemini yeniden denemeniz önerilir. Platform daha sonra eylemi yeniden dener.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Adım 6,1: seçenek 1-sanal makineleri bir bulut hizmetinde geçirme (Sanal ağda değil)
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Adım 5,1: seçenek 1-sanal makineleri bir bulut hizmetinde geçirme (Sanal ağda değil)
 Aşağıdaki komutu kullanarak bulut hizmetleri listesini alın. Ardından, geçirmek istediğiniz bulut hizmetini seçin. Bulut hizmetindeki VM 'Ler bir sanal ağda yer alıyorsa veya Web veya çalışan rolleri varsa, komut bir hata mesajı döndürür.
 
 ```powershell
@@ -223,7 +219,7 @@ Hazırlanan yapılandırma iyi görünüyorsa, aşağıdaki komutu kullanarak ka
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Adım 6,1: seçenek 2-sanal ağdaki sanal makineleri geçirme
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Adım 5,1: seçenek 2-sanal ağdaki sanal makineleri geçirme
 
 Sanal bir ağdaki sanal makineleri geçirmek için, sanal ağı geçirolursunuz. Sanal makineler sanal ağla otomatik olarak geçirilir. Geçirmek istediğiniz sanal ağı seçin.
 > [!NOTE]
@@ -266,7 +262,7 @@ Hazırlanan yapılandırma iyi görünüyorsa, aşağıdaki komutu kullanarak ka
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>Adım 6,2: depolama hesabını geçirme
+### <a name="step-52-migrate-a-storage-account"></a>Adım 5,2: depolama hesabını geçirme
 Sanal makineleri geçirmeyi tamamladıktan sonra, depolama hesaplarını geçirmeden önce aşağıdaki önkoşul denetimlerini gerçekleştirin.
 
 > [!NOTE]

@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274638"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159174"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma
 
@@ -271,4 +271,4 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure AD 'de kimlik doğrulamanın nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-scenarios.md).
 - Kullanıcı çoklu oturum açma hakkında daha fazla bilgi için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](what-is-single-sign-on.md).
-- Geliştirici ile ilgili tüm içeriklere genel bakış için [Active Directory geliştirici kılavuzunu](../develop/v1-overview.md) ziyaret edin.
+- Geliştiriciyle ilgili tüm içeriklere genel bakış için [Microsoft Identity platformu](../develop/v2-overview.md) ' nu ziyaret edin.

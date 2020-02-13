@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134920"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162540"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "77134920"
 Azure Media Services (AMS) ' de **Kanal** , canlı akış içeriğini işlemek için bir işlem hattını temsil eder. **Kanal** , canlı giriş akışlarını iki şekilde alır:
 
 * Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
-* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Telestream kablo, haivision, teradek ve karmaşık Aster kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: [Telestream kablo,](media-services-configure-wirecast-live-encoder.md)haivision, teradek ve karmaşık Aster kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
   > [!NOTE]
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
@@ -146,7 +146,7 @@ Dikkat edilmesi gerekenler:
 * 44,1 kHz örnekleme hızı
 * MPEG-2 stili ADTS paketleme
 * Önerilen kodlayıcılar şunları içerir:
-* Telestream kablolu dönüştürme
+* [Telestream kablolu dönüştürme](media-services-configure-wirecast-live-encoder.md)
 * Flash Media Live Encoder
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Tek bit hızlı Parçalanmış MP4 (Kesintisiz Akış)

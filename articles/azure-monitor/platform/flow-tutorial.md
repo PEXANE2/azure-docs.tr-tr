@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395074"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166943"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow için bağlayıcı ile Azure Izleyici günlük işlemlerini otomatikleştirme
 [Microsoft Flow](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Bir eylemden çıkış, farklı hizmetler arasında tümleştirme oluşturmanıza olanak sağlayan başka bir eylem için giriş olarak kullanılabilir.  Microsoft Flow için Azure Log Analytics Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanındaki günlük sorguları tarafından alınan verileri içeren iş akışları oluşturmanıza olanak tanır.
@@ -36,7 +36,7 @@ Bu makaledeki öğreticide, bir Azure Izleyici günlük sorgusunun sonuçların�
 
 
 ## <a name="step-3-add-a-log-analytics-action"></a>3\. Adım: Log Analytics eylem ekleme
-1. **+ Yeni adım**’a tıklayın ve ardından **Eylem ekle**’ye tıklayın.
+1. **+ Yeni adım**' a ve ardından **Eylem Ekle**' ye tıklayın.
 2. **Log Analytics**arayın.
 3. Azure Log Analytics ' e tıklayın **– sorgu çalıştırın ve sonuçları görselleştirin**.<br><br>sorgu penceresini ![Log Analytics Çalıştır](media/flow-tutorial/flow02.png)
 
@@ -77,6 +77,5 @@ Bu makaledeki öğreticide, bir Azure Izleyici günlük sorgusunun sonuçların�
 
 - [Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
-
 
 

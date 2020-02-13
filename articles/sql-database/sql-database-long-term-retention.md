@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819903"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162166"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL veritabanı yedeklerini 10 yıla kadar depolayın
 
-Birçok uygulamanın, veritabanı yedeklerini Azure SQL veritabanı [Otomatik yedeklemeleri](sql-database-automated-backups.md)tarafından belirtilen 7-35 günden daha fazla tutmanız gereken mevzuata, uyumluluk veya diğer iş amaçları vardır. Uzun süreli saklama (LTR) özelliğini kullanarak, belirtilen SQL veritabanı tam yedeklemelerini [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) BLOB depolama alanında 10 yıla kadar saklayabilirsiniz. Daha sonra herhangi bir yedeklemeyi yeni bir veritabanı olarak geri yükleyebilirsiniz.
+Birçok uygulamanın, veritabanı yedeklerini Azure SQL veritabanı [Otomatik yedeklemeleri](sql-database-automated-backups.md)tarafından belirtilen 7-35 günden daha fazla tutmanız gereken mevzuata, uyumluluk veya diğer iş amaçları vardır. Uzun süreli saklama (LTR) özelliğini kullanarak, belirtilen SQL veritabanı tam yedeklemelerini, Okuma Erişimli Coğrafi olarak yedekli depolama ile 10 yıla kadar Azure Blob depolamada saklayabilirsiniz. Daha sonra tüm yedeklemeyi yeni bir veritabanı olarak geri yükleyebilirsiniz. Azure depolama artıklığı hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](../storage/common/storage-redundancy.md).
 
 > [!NOTE]
 > LTR, tek ve havuza alınmış veritabanları için etkinleştirilebilir. Henüz yönetilen örneklerde örnek veritabanları için kullanılamaz. [Yalnızca kopya veritabanı yedeklerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) 35 gün daha fazla LTR 'e alternatif olarak ZAMANLAMAK Için SQL Agent işlerini kullanabilirsiniz.
@@ -40,7 +40,7 @@ LTR ilkesinin örnekleri:
 
    Her ayın ilk tam yedeklemesi üç ay boyunca saklanır.
 
-- W = 12, Z = 0, Y = 0
+- W=12, M=0, Y=0
 
    Her haftalık tam yedekleme, 12 hafta boyunca saklanacaktır.
 

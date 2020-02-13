@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152253"
+ms.locfileid: "77163203"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -42,7 +42,7 @@ Bulut depolama 'yı kullanmadan önce, Azure Machine Learning çalışma alanın
 
 İstediğiniz verileri tanımladıktan ve kaynağa bağlandıktan sonra, **[verileri Içeri aktarın](./import-data.md)** her bir sütunun veri türünü içerdiği değerlere göre alır ve verileri Tasarımcı işlem hattınızla yükler. **Içeri aktarma verilerinin** çıktısı, herhangi bir tasarımcı işlem hattı ile kullanılabilen bir veri kümesidir.
 
-Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı yeniden çalıştırarak veri kümesini yenileyebilir ve yeni veri ekleyebilirsiniz. Ancak, işlem hattını her çalıştırdığınızda kaynaktan yeniden okumak istemiyorsanız, **önbelleğe alınmış sonuçları kullan** seçeneğini true olarak ayarlayın. Bu seçenek belirlendiğinde modül, işlem hattının, aynı kaynak ve aynı giriş seçeneklerini kullanarak daha önce çalıştırılıp çalıştırılmadığını denetler. Önceki bir çalıştırma bulunursa, verileri kaynaktan yeniden yükleme yerine önbellekteki veriler kullanılır.
+Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı yeniden çalıştırarak veri kümesini yenileyebilir ve yeni veri ekleyebilirsiniz.
 
 ## <a name="how-to-configure-import-data"></a>Içeri aktarma verilerini yapılandırma
 
@@ -60,11 +60,7 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
     ![İçeri aktarma-veri önizleme](media/module/import-data.png)
 
-1. Veri kümesini art arda çalışma sırasında yeniden kullanmak üzere önbelleğe almak istiyorsanız **önbelleğe alınmış sonuçları kullan** seçeneğini belirleyin.
 
-    Modül parametrelerinde başka değişiklik olmadığı varsayılarak, işlem hattı yalnızca modülün ilk kez çalıştırıldığı sırada verileri yükler ve bundan sonra veri kümesinin önbelleğe alınmış bir sürümünü kullanır.
-
-    İşlem hattını her çalıştırdığınızda verileri yeniden yüklemeniz gerekiyorsa bu seçeneğin işaretini kaldırın.
 
 1. İşlem hattını çalıştırma.
 

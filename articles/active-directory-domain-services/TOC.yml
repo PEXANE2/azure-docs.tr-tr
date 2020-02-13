@@ -77,7 +77,7 @@
           href: notifications.md
         - name: Yönetilen bir etki alanını silme
           href: delete-aadds.md
-        - name: Klasik dağıtımdan geçiş yapma (önizleme)
+        - name: Klasik dağıtımdan geçiş yapma
           href: migrate-from-classic-vnet.md
         - name: SKU’yu değiştirme
           href: change-sku.md

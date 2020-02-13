@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363515"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162268"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Izleme REST API izlenecek yol
 
@@ -57,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Azure Izleyici API 'sini sorgulamak için, istemci uygulamanın kimlik doğrulaması için önceden oluşturulmuş hizmet sorumlusunu kullanması gerekir. Aşağıdaki örnek PowerShell betiği, JWT kimlik doğrulama belirtecini almak için [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) kullanarak bir yaklaşımı gösterir. JWT belirteci, Azure Izleyici REST API isteklerde HTTP yetkilendirme parametresinin bir parçası olarak geçirilir.
+Azure Izleyici API 'sini sorgulamak için, istemci uygulamanın kimlik doğrulaması için önceden oluşturulmuş hizmet sorumlusunu kullanması gerekir. Aşağıdaki örnek PowerShell betiği, JWT kimlik doğrulama belirtecini almak için [Active Directory Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) kullanarak bir yaklaşımı gösterir. JWT belirteci, Azure Izleyici REST API isteklerde HTTP yetkilendirme parametresinin bir parçası olarak geçirilir.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -314,7 +314,7 @@ Herhangi bir filtreleme isteği için ölçüm adı ' Value ' değerini (' local
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / {Resource- *Type* }/ *{Resource-name}* /Providers/Microsoft.insights/Metrics? metricnames = *{Metric}* & timespan = *{StartTime/bitişsaati}* & $Filter = *{Filter}* & Interval = *{timegre}* & toplama = *{Aggreation}* & api-Version = *{Apiversion}*
+**İstek URI 'si**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* /{Resource- *Type* }/ *{Resource-name}* /Providers/Microsoft.insights/Metrics? metricnames = *{Metric}* & timespan = *{StartTime/bitişsaati}* & $Filter = *{Filter}* & Interval = *{timegre}* & toplama = *{Aggreation}* & api-Version = *{Apiversion}*
 
 Örneğin, en iyi 3 API 'yi azalan değerde, bir 5 dakikalık Aralık sırasında ' Işlem ' sayısına göre, yani GeotType 'ın ' PRIMARY ' olması halinde, istek şu şekildedir:
 
@@ -466,7 +466,7 @@ Kullanılabilir Ölçüm tanımları bilindikten sonra ilgili ölçüm değerler
 
 **Yöntem**: Get
 
-**İstek URI 'si**: *https://management.azure.com/subscriptions/ {Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{* Resource- *Name}/ {resource-Name}* /Providers/Microsoft.insights/Metrics? $Filter = *{Filter}* & api-Version = *{apiversion}*
+**İstek URI 'si**: *https://management.azure.com/subscriptions/{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{* Resource- *Name}/{resource-Name}* /Providers/Microsoft.insights/Metrics? $Filter = *{Filter}* & api-Version = *{apiversion}*
 
 Örneğin, belirli bir zaman aralığı ve 1 saatlik zaman dilimi için RunsSucceeded ölçüm veri noktalarını almak için, istek aşağıdaki gibi olacaktır:
 
@@ -620,7 +620,7 @@ Azure Kaynak Gezgini kullanma, Azure portal istenen kaynağı görüntüleme, Po
 
 ![Alt "Azure Kaynak Gezgini"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kaynak KIMLIĞI Azure portal de elde edilebilir. Bunu yapmak için, istenen kaynağa gidin ve Özellikler ' i seçin. Kaynak KIMLIĞI, aşağıdaki ekran görüntüsünde görüldüğü gibi Özellikler bölümünde görüntülenir:
 

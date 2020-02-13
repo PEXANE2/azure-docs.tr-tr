@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015203"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162574"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Azure portal ile çoklu bit hızına sahip akışlar oluşturmak için Media Services kullanarak canlı akış gerçekleştirme  
 > [!div class="op_single_selector"]
@@ -43,8 +43,8 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
 
 1. Bilgisayara bir video kamera bağlayın. <br/>Kurulum fikirleri için [basit ve taşınabilir olay video dişli kurulumuna]( https://link.medium.com/KNTtiN6IeT)göz atın.
 
-    Bir kameraya erişiminiz yoksa, [Telestream kablolu dönüştürme](https://www.telestream.net/wirecast/overview.htm) gibi araçlar, bir video dosyasından canlı bir akış oluşturmak için kullanılabilir.
-1. Aşağıdaki protokollerden birinde tek bit hızlı bir akış çıktısı veren şirket içi bir Live Encoder başlatın ve yapılandırın: RTMP veya Kesintisiz Akış. Daha fazla bilgi için bkz. [Azure Media Services RTMP Desteği ve Gerçek Zamanlı Kodlayıcılar](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ayrıca, bu bloga göz atın: [OBS Ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
+    Bir kameraya erişiminiz yoksa, [Telestream kablolu dönüştürme](media-services-configure-wirecast-live-encoder.md) gibi araçlar, bir video dosyasından canlı bir akış oluşturmak için kullanılabilir.
+1. Şu protokollerin birinde tek bit hızlı bir akış çıktısı sağlayabilecek şirket içi bir gerçek zamanlı kodlayıcı başlatıp bunu yapılandırın: RTMP veya Kesintisiz Akış. Daha fazla bilgi için bkz. [Azure Media Services RTMP Desteği ve Gerçek Zamanlı Kodlayıcılar](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ayrıca, bu bloga göz atın: [OBS Ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
 
     Bu adım, Kanalınızı oluşturduktan sonra da gerçekleştirilebilir.
 1. Bir Kanal oluşturup başlatın. 
@@ -65,8 +65,8 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir.
 
-* Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. 
-  Ayrıntılar için bkz [Azure ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. 
+  Ayrıntılar için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Media Services hesabı oluşturma konusunda bilgi edinmek için bkz. [Hesap Oluşturma](media-services-portal-create-account.md).
 * Bir web kamerası ve tek bit hızlı bir canlı akış gönderebilen bir kodlayıcı.
 
@@ -94,7 +94,7 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
         Kanal veya ilişkili olayları/programları çalışıyorken protokol seçeneğini değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir akış protokolü için farklı bir kanal oluşturmalısınız.  
    2. Alma işlemine IP kısıtlaması uygulayabilirsiniz. 
 
-       Bu kanala video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri, tek bir IP adresi (ör. '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanarak bir IP aralığı (ör. ‘10.0.0.1/22’) veya bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (ör. '10.0.0.1(255.255.252.0)').
+       Bu kanala video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örn. ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi (örn. ' 10.0.0.1/22 ') kullanan bir IP aralığı ya da bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örn. ' 10.0.0.1 (255.255.252.0) ') olarak belirtilebilir.
 
        Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.
 6. **Önizleme** sekmesinde önizlemeye IP kısıtlaması uygulayın.
@@ -167,7 +167,7 @@ Yayımlanmış olayı **Canlı olay** sayfasından izleyebilirsiniz.
 ## <a name="watch-the-event"></a>Olayı izleme
 Olay izlemek için, Azure portalda **İzle**’ye tıklayın veya akış URL'sini kopyalayın ve tercih ettiğiniz bir oynatıcı kullanın. 
 
-![Oluşturuldu](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![Oluşturulan](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 Canlı olay durduğunda otomatik olarak isteğe bağlı içeriğe dönüşür.
 

@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931397"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166578"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
 Bu öğreticide, zaten Azure Active Directory (Azure AD) Connect Sync kullanılarak eşitlenmiş bir test Active Directory ormanı için bulut sağlamasının nasıl ele aldığı anlatılmaktadır.
 
-![Create](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Oluştur](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
@@ -35,7 +35,7 @@ Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
 
 4. Bu gelişmiş bir senaryodur. Bu öğreticide açıklanan adımları tam olarak izlediğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - Azure AD Connect Sync sürüm 1.4.32.0 veya üzeri bir test ortamı
 - Eşitleme kapsamındaki bir OU veya grup ve pilot kullanılabilir. Küçük bir nesne kümesiyle başlamasını öneririz.
@@ -67,8 +67,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
  3. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
     **Ad:** Kurala anlamlı bir ad verin<br>
-    **Açıklama:** Anlamlı bir açıklama ekleyin<br> 
-    
+    **Açıklama:** Anlamlı bir açıklama ekleyin<br>
     **Bağlı sistem:** Özel eşitleme kuralı yazarken AD bağlayıcısını seçin<br>
     **Bağlı sistem nesne türü:** Kullanıcısını<br>
     **Meta veri deposu nesne türü:** Kişiler<br>

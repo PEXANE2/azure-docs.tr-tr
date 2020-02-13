@@ -7,14 +7,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: 5b6358c3316fae3df37243a941664214bd9272f4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: a77fedd92800a73ef446f1f8241a518e42f977ee
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264588"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155981"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -23,7 +23,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=windows)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kodu ekleme
 
 1. Visual Studio 'dan **HelloWorld. cpp**kaynak dosyasını açın.
 
@@ -55,7 +55,11 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     {
         // Set these
         std::string subscriptionKey("YourSubscriptionKey");
+
+        // Replace below with your own service region (e.g., "westus", use the one of SpeechSDKParameters
+        // from here: https://aka.ms/speech/sdkregion).   
         std::string region("YourServiceRegion");
+        
         std::string speechLanguage("en-US");
     
         // Create the conversation object you'll need to manage the conversation

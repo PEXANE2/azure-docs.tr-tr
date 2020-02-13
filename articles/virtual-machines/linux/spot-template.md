@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782209"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162455"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak spot VM 'Leri dağıtma
 
@@ -33,7 +33,7 @@ VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seç
 > Nokta örnekleri şu anda genel önizlemededir.
 > Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Genel önizlemenin erken bölümü için, spot örnekleri sabit bir fiyata sahip olur, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
+
 
 
 ## <a name="use-a-template"></a>Şablon kullanma 
@@ -48,9 +48,6 @@ Spot şablon dağıtımları için`"apiVersion": "2019-03-01"` veya üstünü ku
                 }
 ```
 
-
-> [!IMPORTANT]
-> Genel önizlemenin erken bölümü için, en yüksek fiyat ayarlayabilirsiniz ancak yok sayılır. Spot VM 'Ler sabit bir fiyata sahip olacak, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
 
 
 Bir spot VM 'nin eklenen özelliklerine sahip örnek bir şablon aşağıda verilmiştir. Kaynak adlarını kendi ve `<password>` VM üzerindeki yerel yönetici hesabı için bir parolayla değiştirin.

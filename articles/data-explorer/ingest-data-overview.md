@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091794"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157253"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Veri Gezgini veri alımı
 
@@ -118,7 +118,7 @@ Olay Hub 'ı ve IoT Hub gibi bir mesajlaşma hizmetini temel alan mevcut bir alt
 ## <a name="supported-data-formats"></a>Desteklenen veri biçimleri
 
 Sorgudan alma haricinde tüm alım yöntemleri için, verileri Azure Veri Gezgini ayrıştırabilmesi için biçimlendirin. 
-* Desteklenen veri biçimleri şunlardır: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (satır için ayrılmış, çok satırlı), avro ve Parquet. 
+* Desteklenen veri biçimleri şunlardır: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (satır için ayrılmış, çok satırlı), avro, Orc ve Parquet. 
 * ZIP ve GZIP sıkıştırmasını destekler.
 
 > [!NOTE]

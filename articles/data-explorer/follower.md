@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111487"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162948"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
 
@@ -206,8 +206,8 @@ Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/ma
 
 |**Ayar**  |**Açıklama**  |
 |---------|---------|
-|İzleyici kümesi adı     |  İzleyici kümesinin adı. Bu, bu şablonun dağıtılacağı kümesidir.  |
-|Ekli veritabanı yapılandırması adı    |    Eklenmiş veritabanı yapılandırma nesnesinin adı. Ad, küme düzeyinde benzersiz olduğu sürece herhangi bir dize olabilir.     |
+|İzleyici kümesi adı     |  İzleyici kümesinin adı; şablonun dağıtılacağı yer.  |
+|Ekli veritabanı yapılandırması adı    |    Eklenmiş veritabanı yapılandırma nesnesinin adı. Ad, küme düzeyinde benzersiz olan herhangi bir dize olabilir.     |
 |Veritabanı Adı     |      Takip edilecek veritabanının adı. Tüm öncü veritabanlarını izlemek isterseniz, ' * ' kullanın.   |
 |Öncü küme kaynak KIMLIĞI    |   Öncü kümenin kaynak KIMLIĞI.      |
 |Varsayılan asıl adlar değişiklik türü    |   Varsayılan asıl değişiklik türü. `Union`, `Replace` veya `None`olabilir. Varsayılan asıl değişiklik türü hakkında daha fazla bilgi için bkz. [asıl değişiklik türü denetim komutu](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |

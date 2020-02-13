@@ -1,38 +1,39 @@
 ---
 title: İlke örnekleri dizini
-description: Azure İlkesi örnekleri dizini. Adlandırma, etiketler, Key Vault, ağ iletişimi, depolama ve daha fazlasını içeren kategoriler.
-ms.date: 03/19/2019
+description: Azure İlkesi için yerleşik ilkeler dizini. Kategori Etiketleri, Mevzuat Uyumluluğu, Key Vault, Kubernetes, Konuk Yapılandırması ve daha fazlası.
+ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 54e77a83a03d9a8f5cedd59f010569d7ecef7d90
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070110"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168039"
 ---
 # <a name="azure-policy-samples"></a>Azure İlkesi Örnekleri
 
-Aşağıdaki tabloda Azure İlkesi’ne ait örneklerin bağlantıları yer almaktadır. Bu örnekler aynı zamanda [Azure İlkesi örnekleri deposunda](https://github.com/Azure/azure-policy) da bulunur.
+Bu sayfa, Azure İlkesi’ndeki yerleşik ilkelerin tanımlarının ve dil kullanım desenlerinin bir dizinidir.
 
-[!INCLUDE [azure-policy-samples-general](../../../../includes/azure-policy-samples-general.md)]
+## <a name="built-ins"></a>Yerleşik ilkeler
 
-[!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
+- [İlkeler](./built-in-policies.md)
+- [Girişimler](./built-in-initiatives.md)
 
-[!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+## <a name="patterns"></a>Desenler
 
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
+Aşağıda, Azure İlkesi’nde dil ve işleçler kullanılarak elde edilen farklı desenlerin örnekleri verilmiştir:
 
-[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
-
-[!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
-
-[!INCLUDE [azure-policy-samples-network](../../../../includes/azure-policy-samples-network.md)]
-
-[!INCLUDE [azure-policy-samples-sql](../../../../includes/azure-policy-samples-sql.md)]
-
-[!INCLUDE [azure-policy-samples-storage](../../../../includes/azure-policy-samples-storage.md)]
+- [Mantıksal işleçler](./pattern-logical-operators.md)
+- [Alanlar](./pattern-fields.md)
+- [Parametreler](./pattern-parameters.md)
+- [Etki ayrıntıları](./pattern-effect-details.md)
+- [Değer işleci](./pattern-value-operator.md)
+- [Sayım işleci](./pattern-count-operator.md)
+- [Bir girişimde ilke tanımlarını gruplandırma](./pattern-group-with-initiative.md)
+- [deployIfNotExists ile kaynak dağıtma](./pattern-deploy-resources.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Yerleşik ilkeleri görmek için [Azure İlkesi GitHub deposuna](https://github.com/Azure/azure-policy) gidin.
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.

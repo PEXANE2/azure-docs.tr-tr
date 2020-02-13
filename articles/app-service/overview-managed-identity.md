@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834157"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161928"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -270,7 +270,7 @@ Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gö
 > |resource|Alıcı Web hizmetinin uygulama KIMLIĞI URI 'SI.|
 > |token_type|Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-Bu yanıt, [AAD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.
+Bu yanıt, [AAD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)ile aynıdır.
 
 > [!NOTE]
 > Ortam değişkenleri, işlem ilk kez başladığında ayarlanır, bu nedenle uygulamanız için yönetilen bir kimlik etkinleştirildikten sonra, `MSI_ENDPOINT` ve `MSI_SECRET` kodunuzda kullanabilmeniz için uygulamanızı yeniden başlatmanız veya kodunu yeniden dağıtmanız gerekebilir.

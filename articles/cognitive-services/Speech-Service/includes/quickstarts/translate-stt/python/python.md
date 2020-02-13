@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı konuşmaya çevirme, Python-konuşma hizmeti'
-description: Daha sonra belirlenecek
+description: TBD
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: 81933540e963bfb00b6c8601e854a58f41f3e5e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 57898160206d16945304a2c358a6db52099f3c2b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467917"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156513"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
@@ -25,7 +25,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=python)
 > * [Boş bir örnek proje oluşturun](../../../../quickstarts/create-project.md?tabs=python)
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kodu ekleme
 
 1. `quickstart.py` dosyasını açın ve tüm kodu aşağıdakiyle değiştirin.
 
@@ -37,7 +37,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
     def translate_speech_to_text():
 
         # Creates an instance of a speech translation config with specified subscription key and service region.
-        # Replace with your own subscription key and service region (e.g., "westus").
+        # Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+        # from here: https://aka.ms/speech/sdkregion).   
         translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=speech_key, region=service_region)
 
         # Sets source and target languages.

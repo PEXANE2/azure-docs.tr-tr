@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544795"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162693"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Önizleme: sanal makine ölçek kümeleri için Azure spot VM 'Ler 
 
@@ -25,7 +25,6 @@ Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası 
 > Nokta örnekleri şu anda genel önizlemededir.
 > Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Genel önizlemenin erken bölümü için, spot örnekleri sabit bir fiyata sahip olur, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -160,12 +159,12 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Sözleşme         | Evet                               |
-| Kullandıkça Öde                | Evet                               |
+| Kurumsal Anlaşma         | Yes                               |
+| Kullandıkça öde                | Yes                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Avantajlar                     | Kullanılamıyor                     |
-| Sponsorlu                    | Kullanılamıyor                     |
-| Ücretsiz Deneme                   | Kullanılamıyor                     |
+| Avantajlar                     | Kullanılamaz                     |
+| Sponsorlu                    | Kullanılamaz                     |
+| Ücretsiz deneme                   | Kullanılamaz                     |
 
 
 **S:** Sorularınızı nereden gönderebilirim?

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a45a3412a1ceb8e8a9bd9fd1a34dfdbd10ba1c75
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425737"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162438"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway için OpenVPN istemcileri yapılandırma
 
@@ -20,7 +20,7 @@ Bu makale, **OpenVPN® Protokolü** istemcilerini yapılandırmanıza yardımcı
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 VPN ağ geçidiniz için OpenVPN yapılandırma adımlarını tamamladığınızdan emin olun. Ayrıntılar için bkz. [Azure Için OpenVPN 'ı yapılandırma VPN Gateway](vpn-gateway-howto-openvpn.md).
 
@@ -105,7 +105,7 @@ VPN ağ geçidiniz için OpenVPN yapılandırma adımlarını tamamladığınız
 
 13. OpenVPN uygulamasını başlatın ve anahtarı bağlamak için **profil** sayfasına sağ kaydırın
 
-    ![Bağlayın](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+    ![Bağlan](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
 
 
 ## <a name="linux"></a>Linux istemcileri
@@ -162,7 +162,7 @@ VPN ağ geçidiniz için OpenVPN yapılandırma adımlarını tamamladığınız
 15. Profil dosyasına gidin ve çift tıklayın veya **Aç**' ı seçin.
 16. **VPN Ekle** penceresinde **Ekle** ' ye tıklayın.
   
-    ![Dosyadan içe aktar](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
+    ![Dosyadan içeri aktar](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. **Ağ ayarları** sayfasında veya sistem tepsisindeki ağ SIMGESI altında VPN **'yi** açarak bağlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

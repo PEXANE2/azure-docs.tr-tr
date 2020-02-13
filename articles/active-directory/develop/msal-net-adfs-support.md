@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0dd9b339ca6372a34ff46222cad347eb1a673f9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084982"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160769"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET içinde destek Active Directory Federasyon Hizmetleri (AD FS)
 Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), geliştirmekte olduğunuz uygulamalara OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. Bu uygulamalar daha sonra kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Daha fazla bilgi için, [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)makalesini okuyun.
@@ -54,7 +54,7 @@ MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekle
 - AD FS, PCE 'yi desteklemediğinden ve yine de kaynakları kullandığından (kapsam değil) 16.
 - OıDC uyumlu olmayan AD FS v2.
 
- AD FS 2016 'e doğrudan bağlantı gerektiren senaryoları desteklemeniz gerekiyorsa [Azure Active Directory kimlik doğrulama kitaplığının](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)en son sürümünü kullanın. Şirket içi sisteminizi AD FS 2019 ' e yükseltmişseniz, MSAL.NET kullanabilirsiniz.
+ AD FS 2016 'e doğrudan bağlantı gerektiren senaryoları desteklemeniz gerekiyorsa [Azure Active Directory kimlik doğrulama kitaplığının](../azuread-dev/active-directory-authentication-libraries.md#microsoft-supported-client-libraries)en son sürümünü kullanın. Şirket içi sisteminizi AD FS 2019 ' e yükseltmişseniz, MSAL.NET kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
