@@ -10,7 +10,7 @@
     - name: Ansible çözüm şablonunu CentOS’a dağıtma
       href: ./ansible-deploy-solution-template.md
     - name: Linux sanal makinelerine Ansible’ı yükleme
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: Cloud Shell’de playbook çalıştırma
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,10 +18,10 @@
       expanded: true
       items:
         - name: Linux sanal makinelerini yapılandırma
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: Linux sanal makinelerini yönetme
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
 - name: Öğreticiler
   items:
@@ -59,7 +59,7 @@
           href: ./ansible-service-bus-queue-configure.md
         - name: Konuları yapılandırma
           href: ./ansible-service-bus-topic-configure.md
-    - name: Database
+    - name: Veritabanı
       items:
         - name: MySQL için Azure Veritabanı’nı yapılandırma
           href: ./ansible-create-configure-mysql.md

@@ -327,7 +327,15 @@
     - name: Tetikleyiciler ve bağlamalar
       items:
         - name: Blob depolama
-          href: functions-bindings-storage-blob.md
+          items:
+            - name: Genel Bakış
+              href: functions-bindings-storage-blob.md
+            - name: Tetikleyici
+              href: functions-bindings-storage-blob-trigger.md
+            - name: Girdi
+              href: functions-bindings-storage-blob-input.md
+            - name: Çıktı
+              href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
             - name: İşlevler 1.x

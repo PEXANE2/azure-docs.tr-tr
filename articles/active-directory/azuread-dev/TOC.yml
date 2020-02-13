@@ -176,6 +176,8 @@
   items:
     - name: Sözlük
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Videolar
+      href: videos.md
     - name: Azure yol haritası
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure AD blogu
