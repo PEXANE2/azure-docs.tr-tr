@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769951"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117631"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn için depolama hesaplarını yapılandırma
 
@@ -34,12 +34,12 @@ AWS Simple Storage Service (S3) demetiniz yoksa bir tane oluşturmanız gerekir.
 
 Azure depolama hesabınızı Cloudyn tarafından kullanılacak şekilde yapılandırmak oldukça kolaydır. Depolama hesabıyla ilgili ayrıntılı bilgileri alın ve Cloudyn portalına kopyalayın.
 
-1. https://portal.azure.com adresinden Azure portalında oturum açın.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. **Tüm Hizmetler**'e tıklayın, **Depolama hesapları**'nı seçin, kullanmak istediğiniz depolama hesabını bulun ve seçin.
 3. Depolama hesabı sayfanızın **Ayarlar** bölümünde **Erişim Anahtarları**'na tıklayın.
 4. **Depolama hesabı adı** ve key1 altındaki **Bağlantı dizesi** bilgilerini kopyalayın.  
    ![Depolama hesabı adı ve bağlantı dizesi bilgilerini kopyalayın](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com sayfasına gidip oturum açın.
+5. Cloudyn portalını Azure portalından açın veya [https://azure.cloudyn.com](https://azure.cloudyn.com) sayfasına gidip oturum açın.
 6. Dişli simgesine tıklayıp **Rapor Depolama Alanı Yönetimi**'ni seçin.
 7. **Yeni ekle +** öğesine tıklayın ve Microsoft Azure'ın seçili olduğundan emin olun. **Ad** alanına Azure depolama hesabınızın adını yapıştırın. **Bağlantı dizenizi** ilgili alana yapıştırın. Bir kapsayıcı adı girin ve ardından **Kaydet**'e tıklayın.  
    ![Azure depolama hesabı adını ve bağlantı dizesini yeni rapor depolama alanı ekle kutusuna yapıştırın](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +147,7 @@ Yeni ilkeyi eklemek için AWS konsolunu açın ve Cloudyn rolünü veya kullanı
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>Cloudyn'e AWS rapor depolama alanı ekleme
 
-1. Cloudyn portalını Azure portalından açın veya https://azure.cloudyn.com sayfasına gidip oturum açın.
+1. Cloudyn portalını Azure portalından açın veya [https://azure.cloudyn.com](https://azure.cloudyn.com) sayfasına gidip oturum açın.
 2. Dişli simgesine tıklayıp **Rapor Depolama Alanı Yönetimi**'ni seçin.
 3. **Yeni ekle +** öğesine tıklayın ve AWS'nin seçili olduğundan emin olun.
 4. Bir hesap ve depolama demeti seçin. AWS depolama demetinin adı otomatik olarak doldurulur.  
