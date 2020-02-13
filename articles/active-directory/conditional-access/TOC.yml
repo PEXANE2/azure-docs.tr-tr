@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: Koşullu Erişim ilkesi bileşenleri
       href: concept-conditional-access-policies.md
-    - name: Bulut uygulamaları ve eylemleri
-      href: concept-conditional-access-cloud-apps.md
-    - name: Koşullar
-      href: conditions.md
-    - name: Konum koşulları
-      href: location-condition.md
-    - name: Denetimler
-      href: controls.md
+    - name: Atamalar
+      items:
+        - name: Kullanıcılar ve gruplar
+          href: concept-conditional-access-users-groups.md
+        - name: Bulut uygulamaları veya eylemleri
+          href: concept-conditional-access-cloud-apps.md
+        - name: Koşullar
+          href: concept-conditional-access-conditions.md
+    - name: Erişim denetimleri
+      items:
+        - name: İzin verme
+          href: concept-conditional-access-grant.md
+        - name: Oturum
+          href: concept-conditional-access-session.md
     - name: Yalnızca rapor modu
       href: concept-conditional-access-report-only.md
     - name: Hizmet bağımlılıkları
       href: service-dependencies.md
+    - name: Konum koşulları
+      href: location-condition.md
     - name: Durum aracı
       href: what-if-tool.md
+    - name: Denetimler
+      href: controls.md
     - name: Klasik ilke geçişleri
       href: policy-migration.md
     - name: Ana hat koruma ilkeleri
@@ -84,10 +94,6 @@
       items:
         - name: What If aracını kullanarak sorun giderme
           href: troubleshoot-conditional-access-what-if.md
-- name: Başvuru
-  items:
-    - name: Teknik başvuru
-      href: technical-reference.md
 - name: Kaynaklar
   items:
     - name: Azure geri bildirim forumu

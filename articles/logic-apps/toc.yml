@@ -87,7 +87,7 @@
           href: logic-apps-handle-large-messages.md
         - name: Güvenlik
           items:
-            - name: Mantıksal uygulamanızı güvenli hale getirme
+            - name: Mantıksal uygulamaların güvenliğini artırma
               href: logic-apps-securing-a-logic-app.md
             - name: Yönetilen kimliklerle kimlik doğrulaması
               href: create-managed-service-identity.md
@@ -97,7 +97,7 @@
           items:
             - name: Mantıksal uygulamalar için özel API’ler oluşturma
               href: logic-apps-create-api-app.md
-            - name: Özel API'lere giden çağrıların güvenliğini sağlama
+            - name: Özel API’lere yapılan çağrıların güvenliğini artırma
               href: logic-apps-custom-api-authentication.md
             - name: Özel API'leri dağıtma ve çağırma
               href: logic-apps-custom-api-host-deploy-call.md

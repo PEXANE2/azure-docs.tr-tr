@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: Makineleri Azure portalından Azure Arc’a bağlama
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: Başvuru
   items:
     - name: Azure Bağlı Makine Aracısı CLI arabirimi

@@ -23,14 +23,18 @@
           href: connect-truffle.md
 - name: Öğreticiler
   items:
-    - name: Akıllı anlaşmaları kullanma
+    - name: Akıllı anlaşmalar oluşturma
       href: send-transaction.md
+    - name: Veri Yöneticisi kullanarak verileri yayımlama
+      href: data-manager-cosmosdb.md
 - name: Kavramlar
   items:
     - name: Konsorsiyum
       href: consortium.md
     - name: Veri erişimi ve güvenlik
       href: data-security.md
+    - name: Veri yöneticisine genel bakış
+      href: data-manager.md
     - name: Geliştirme
       href: develop.md
     - name: Sınırlar
@@ -41,6 +45,10 @@
   items:
     - name: Azure AD erişimini yapılandırma
       href: configure-aad.md
+    - name: Veri Yöneticisi'ni Yapılandırma - Portal
+      href: data-manager-portal.md
+    - name: Veri Yöneticisi'ni Yapılandırma - CLI
+      href: data-manager-cli.md
     - name: İşlem düğümlerini yapılandırma
       href: configure-transaction-nodes.md
     - name: Azure CLI kullanarak yönetme
@@ -51,16 +59,6 @@
       href: ethereum-logic-app.md
     - name: Azure Blok Zinciri Hizmeti’ni izleme
       href: monitor-azure-blockchain-service.md
-- name: Blok Zinciri Veri Yöneticisi
-  items:
-    - name: Veri yöneticisine genel bakış
-      href: data-manager.md
-    - name: Veri Yöneticisi'ni Yapılandırma - Portal
-      href: data-manager-portal.md
-    - name: Veri Yöneticisi'ni Yapılandırma - CLI
-      href: data-manager-cli.md
-    - name: Verileri Cosmos DB’ye yayımlama
-      href: data-manager-cosmosdb.md
 - name: Kaynaklar
   items:
     - name: Azure Blok Zinciri geliştirme seti
