@@ -7,15 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 02/03/2020
-ms.custom: mvc
+ms.date: 02/12/2020
 ms.topic: overview
-ms.openlocfilehash: ad24418bf3879e4ef9a0ae4833c37c051079c668
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133857"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190315"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
 
@@ -41,6 +40,8 @@ Sunucular için Azure Arc (Önizleme) ile yalnızca belirli bölgeler destekleni
 - WestUS2
 - WestEurope
 - Westasıya
+
+Çoğu durumda, yükleme betiğini oluştururken seçtiğiniz konum coğrafi olarak makinenizin konumuna en yakın olan Azure bölgesi olmalıdır. Bekleyen veriler, belirttiğiniz bölgeyi içeren Azure Coğrafya içinde depolanır ve bu da veri yerleşimi gereksinimleriniz varsa bölge seçiminizi de etkileyebilir. Makinenizin bağlandığı Azure bölgesi bir kesinti nedeniyle etkileniyorsa, bağlı makine etkilenmez, ancak Azure 'u kullanan yönetim işlemleri tamamlanmayabilir. Bölgesel bir kesinti durumunda esnekliği için, coğrafi olarak yedekli bir hizmet sağlayan birden çok konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -135,10 +136,10 @@ Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerini
 
 | Yöntem | Açıklama |
 |--------|-------------|
-| Biriyle | [Azure Portal makinelerinden gelen bağlantı](quickstart-onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
-| Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](quickstart-onboard-powershell.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|
+| Biriyle | [Azure Portal makinelerinden gelen bağlantı](onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
+| Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](onboard-service-principal.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sunucular için Azure Arc 'ı değerlendirmeye başlamak üzere (Önizleme), [Azure Portal Azure 'a karma makineler bağlama](quickstart-onboard-portal.md)makalesini izleyin. 
+- Sunucular için Azure Arc 'ı değerlendirmeye başlamak üzere (Önizleme), [Azure Portal Azure 'a karma makineler bağlama](onboard-portal.md)makalesini izleyin. 

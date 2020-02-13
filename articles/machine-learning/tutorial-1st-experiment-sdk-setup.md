@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 1dacc59ee0bf79128efd8920a91f3c3d54e5584a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116600"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165985"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,10 +99,6 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 1. VM kullanılabilir olduktan sonra, üst araç çubuğunda görüntülenir.  Artık Not defterini, araç çubuğunda **Tümünü Çalıştır** ' ı kullanarak veya Not defterinin kod hücrelerinde **SHIFT + enter** ' u kullanarak çalıştırabilirsiniz.
 
 Özel pencere öğeleri varsa veya Jupyıter/Jupyıterlab kullanmayı tercih ediyorsanız, en sağdaki **jupi** açılan öğesini seçin ve ardından **jupi** veya **jupi veya jupi**'i seçin. Yeni tarayıcı penceresi açılır.
-
-> [!NOTE]
-> İşlem örnekleri (Önizleme) Şu anda yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bölgesine sahip çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
->Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.  Not defterinizi çalıştırmak için bir not defteri VM 'si ya da bir işlem örneği kullanabilirsiniz. Bir VM, siz durdurmadığınız takdirde çalışmaya ve maliyetlendirmeye devam edecektir. Bunu, Studio 'daki **işlem** sekmesinden el ile durdurabilir veya Azure VM 'leri için Zamanlanmış otomatik kapanmaya olanak sağlayan [blog gönderisine](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) bakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

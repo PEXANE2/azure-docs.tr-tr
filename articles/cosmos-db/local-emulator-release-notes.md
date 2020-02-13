@@ -6,25 +6,29 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719696"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168643"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
 Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan Özellik güncelleştirmelerinin bir listesi ile gösterilir. Ayrıca, indirme ve kullanma öykünücünün en son sürümünü de listeler.
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndir
 
 | | |
 |---------|---------|
 |**MSI indirme**|[Microsoft İndirme Merkezi](https://aka.ms/cosmosdb-emulator)|
-|**Başlarken**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
+|**Başlangıç**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="291"></a>2.9.1
+
+- Bu sürüm, sorgu API 'SI desteğinin her iki sorununu düzeltir ve Windows Server 2012 gibi eski OSs ile uyumluluğu geri yükler.
 
 ### <a name="290"></a>2.9.0
 

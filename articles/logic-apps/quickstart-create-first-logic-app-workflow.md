@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428756"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191292"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps Azure portal kullanarak ilk iş akışınızı oluşturun
 
@@ -44,7 +44,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
    | **Konum** | *Azure-region*> < | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
@@ -116,7 +116,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 1. Seçtiğiniz e-posta Bağlayıcınız kimliğinizin kimliğini doğrulamanızı isterse, mantıksal uygulamanız ile e-posta hizmetiniz arasında bir bağlantı oluşturmak için bu adımı hemen doldurun.
 
    > [!NOTE]
-   > Bu belirli örnekte, kimliğinizi el ile doğrukullanırsınız. Ancak, kimlik doğrulaması gerektiren bağlayıcılar destekledikleri kimlik doğrulama türlerinde farklılık gösterir. Ayrıca, kimlik doğrulamasını işlemek istediğiniz şekilde ayarlama seçenekleriniz vardır. Örneğin, dağıtım için Azure Resource Manager Şablonlar kullandığınızda, bağlantı bilgileri gibi sıklıkla veya kolayca değiştirmek istediğiniz girdileri parametreleştirebilirsiniz ve güvenli hale getirebilirsiniz. Daha fazla bilgi için şu konulara bakın:
+   > Bu belirli örnekte, kimliğinizi el ile doğrukullanırsınız. Ancak, kimlik doğrulaması gerektiren bağlayıcılar destekledikleri kimlik doğrulama türlerinde farklılık gösterir. Ayrıca, kimlik doğrulamasını işlemek istediğiniz şekilde ayarlama seçenekleriniz vardır. Örneğin, dağıtım için Azure Resource Manager Şablonlar kullandığınızda, bağlantı bilgileri gibi sıklıkla veya kolayca değiştirmek istediğiniz girişler üzerindeki güvenliği parametreleştirebilirsiniz ve artırabilirsiniz. Daha fazla bilgi için şu konulara bakın:
    >
    > * [Dağıtım için şablon parametreleri](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [OAuth bağlantılarını yetkilendir](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)

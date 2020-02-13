@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0695416c65eed2bbf0a19d5ed1ea0c53a7ece332
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ac928d9087ba5db312540b8ec542d7a2a29e2a99
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485527"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179128"
 ---
 | Kaynak | Varsayılan limit |
 | --- | :--- |
 | Abonelik başına en fazla küme | 100 |
 | Sanal makine kullanılabilirlik kümeleri ve temel Load Balancer SKU 'SU ile küme başına en fazla düğüm  | 100 |
-| Sanal Makine Ölçek Kümeleri ve [Standart Load Balancer SKU 'su][standard-load-balancer] olan küme başına en fazla düğüm | 800 ( [düğüm havuzu][node-pool]başına 100 düğüm) |
+| Sanal Makine Ölçek Kümeleri ve [Standart Load Balancer SKU 'su][standard-load-balancer] olan küme başına en fazla düğüm | 1000 ( [düğüm havuzu][node-pool]başına 100 düğüm) |
 | Düğüm başına maksimum Pod: kubenet ile [temel ağ][basic-networking] | 110 |
 | Düğüm başına en fazla düğüm sayısı: Azure Container ağ arabirimi ile [Gelişmiş ağ][advanced-networking] | Azure CLI dağıtımı: 30<sup>1</sup><br />Azure Resource Manager şablonu: 30<sup>1</sup><br />Portal dağıtımı: 30 |
 

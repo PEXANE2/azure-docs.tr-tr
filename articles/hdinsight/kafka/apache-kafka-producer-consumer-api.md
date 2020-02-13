@@ -1,19 +1,19 @@
 ---
 title: "Öğretici: Apache Kafka üreticisi & tüketici API 'Leri-Azure HDInsight"
 description: HDInsight’ta Apache Kafka Üretici ve Tüketici API’lerini kullanmayı öğrenin. Bu öğreticide, bu API’leri HDInsight üzerinde Kafka ile kullanmayı öğreneceksiniz.
-author: dhgoelmsft
-ms.author: dhgoel
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
-ms.translationtype: MT
+ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242000"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161724"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
 
@@ -65,7 +65,7 @@ API’ler hakkında daha fazla bilgi için [Üretici API’si](https://kafka.apa
     </dependency>
     ```
 
-    `${kafka.version}` girişi, `pom.xml` dosyasının `<properties>..</properties>` bölümünde bildirilir ve HDInsight kümesinin Kafka sürümüne yapılandırılır.
+    `${kafka.version}` girişi, `<properties>..</properties>` dosyasının `pom.xml` bölümünde bildirilir ve HDInsight kümesinin Kafka sürümüne yapılandırılır.
 
 * Eklentiler: Maven eklentileri çeşitli özellikler sağlar. Bu projede aşağıdaki eklentiler kullanılır:
 
@@ -124,7 +124,7 @@ Bu kodda tüketici, konu başlangıcından okumak üzere yapılandırılmıştı
     mvn clean package
     ```
 
-    Bu komut, `kafka-producer-consumer-1.0-SNAPSHOT.jar` adlı dosyayı içeren `target` adlı bir dizin oluşturur.
+    Bu komut, `target` adlı dosyayı içeren `kafka-producer-consumer-1.0-SNAPSHOT.jar` adlı bir dizin oluşturur.
 
 3. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `CLUSTERNAME` değerini kümenizin adıyla değiştirin. `kafka-producer-consumer-1.0-SNAPSHOT.jar` dosyasını HDInsight kümenize kopyalamak için aşağıdaki komutu girin. İstendiğinde, SSH kullanıcısının parolasını girin.
 
@@ -152,7 +152,7 @@ Bu kodda tüketici, konu başlangıcından okumak üzere yapılandırılmıştı
     export password='PASSWORD'
     ```
 
-1. Doğru şekilde oluşturulmuş küme adını ayıklayın. Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir. Bu komut gerçek büyük küçük harf elde eder ve bir değişkende depolar. Aşağıdaki komutu girin:
+1. Doğru şekilde oluşturulmuş küme adını ayıklayın. Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir. Bu komut gerçek büyük küçük harf elde eder ve bir değişkende depolar. Aşağıdaki komutu kullanın:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')

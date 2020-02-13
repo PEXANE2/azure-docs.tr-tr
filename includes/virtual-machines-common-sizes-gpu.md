@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 0f15a6a277020d593465fa0aa78fc434413c4545
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8f256749c363e2900fe62bda557f7cb4caa72e3e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909139"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179022"
 ---
 GPU iyileştirilmiş VM boyutları, tek veya birden çok NVıDıA GPU ile kullanılabilen özelleştirilmiş sanal makinelerdir. Bu boyutlar, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır. Bu makalede GPU 'Lar, vCPU 'Lar, veri diskleri ve NIC 'lerin sayısı ve türleri hakkında bilgi sağlanır. Bu gruplandırmadaki her boyut için depolama verimlilik ve ağ bant genişliği de mevcuttur.
 
@@ -34,7 +34,7 @@ Premium depolama önbelleği: desteklenmiyor
 
 NC serisi VM 'Ler [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) Card ve Intel Xeon E5-2690 v3 (Haswell) işlemcisi tarafından desteklenmektedir. Kullanıcılar, enerji araştırması uygulamaları, kilitlenme benzetimleri, Ray tarafından izlenen işleme, derin öğrenme ve daha fazlası için CUDA 'yı kullanarak verileri daha hızlı bir şekilde kullanabilir. NC24r yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem iş yükleri için iyileştirilmiş, düşük gecikme süreli ve yüksek performanslı bir ağ arabirimi sağlar.
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | En fazla veri diski | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
 | Standard_NC6 |6 |56 | 340 | 1 | 12 | 24 | 1 |
 | Standard_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
@@ -59,7 +59,7 @@ NC24rs v2 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem i
 > Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
 | Standard_NC6s_v2 | 6 |112 | 736 | 1 | 16 | 12 | 20000/ 200 | 4 |
 | Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -82,7 +82,7 @@ NCv3 serisi VM 'Ler [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center
 > Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000/200 | 4 |
 | Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -118,7 +118,7 @@ Kritik olarak, NDv2 her ikisi de hesaplama için (VM başına 8 GPU) ve genişle
 > Lütfen unutmayın: GPU başına 16 GB bellek içeren ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 yerini almıştır.
 <br>
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En yüksek ağ bant genişliği | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En yüksek ağ bant genişliği | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
@@ -128,18 +128,18 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme iş yüklerine yeni bir ektir. Eğitim ve çıkarım için mükemmel performans sunar. ND örnekleri [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU 'Lar ve Intel Xeon E5-2690 v4 (çok Iyi) CPU 'lar tarafından desteklenir. Bu örnekler Microsoft Cognitive Toolkit, TensorFlow, Caffe ve diğer çerçeveleri kullanan AI iş yükleri için tek duyarlıklı kayan nokta işlemleri için mükemmel bir performans sağlar. Ayrıca, ND serisi çok daha büyük bir GPU bellek boyutu (24 GB) sunarak daha büyük sinir ağı modellerinin sığdırılmasına imkan tanır. NC serisi gibi, ND serisi, RDMA aracılığıyla ikincil düşük gecikmeli, yüksek performanslı bir ağ ve InfiniBand bağlantısı sunan bir yapılandırma sunarak çok sayıda GPU 'yu kapsayan büyük ölçekli eğitim işleri çalıştırabilirsiniz.
+ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme iş yüklerine yeni bir ektir. Eğitim ve çıkarım için mükemmel performans sunar. ND örnekleri [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU 'Lar ve Intel Xeon E5-2690 v4 (çok Iyi) CPU 'lar tarafından desteklenir. Bu örnekler Microsoft Cognitive Toolkit, TensorFlow, Caffe ve diğer çerçeveleri kullanan AI iş yükleri için tek duyarlıklı kayan nokta işlemleri için mükemmel bir performans sağlar. ND serisi aynı zamanda çok daha büyük bir GPU bellek boyutu (24 GB) sunarak çok daha büyük sinir net modellerini mümkün hale getirecek şekilde etkinleştirir. NC serisi gibi, ND serisi, RDMA aracılığıyla ikincil düşük gecikmeli, yüksek performanslı bir ağ ve InfiniBand bağlantısı sunan bir yapılandırma sunarak çok sayıda GPU 'yu kapsayan büyük ölçekli eğitim işleri çalıştırabilirsiniz.
 
 > [!IMPORTANT]
 > Bu boyut ailesinde, aboneliğinizdeki bölge başına vCPU (çekirdek) kotası başlangıçta 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 >
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_ND6s | 6 |112 | 736 | 1 | 24 | 12 | 20000/200 | 4 |
 | Standard_ND12s | 12 |224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 | 
-| Standard_ND24s | 24 |448 | 2948 | 4 | 6400/96 | 32 | 80000/800 | 8 |
-| Standard_ND24rs * | 24 |448 | 2948 | 4 | 6400/96 | 32 | 80000/800 | 8 |
+| Standard_ND24s | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+| Standard_ND24rs * | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
 
 1 GPU = bir P40 kart.
 
@@ -155,7 +155,7 @@ NV serisi sanal makineler, müşterilerin verilerini veya simülasyonlarını g�
 
 NV örneklerindeki her GPU bir KıLAVUZ lisansıyla birlikte gelir. Bu lisans, bir NV örneğini tek bir kullanıcı için sanal iş istasyonu olarak kullanma esnekliği sağlar veya 25 eşzamanlı kullanıcı sanal uygulama senaryosu için VM 'ye bağlanabilir.
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | En fazla veri diski | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV6 |6 |56 |380 | 1 | 8 | 24 | 1 | 1 | 25 |
 | Standard_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
@@ -169,15 +169,15 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-NVv3 serisi sanal makineler, [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 'LARı ve NVIDIA GRID Teknolojisi Ile Intel E5-2690 v4 (çok Iyi) CPU 'lar tarafından desteklenir. Bu sanal makineler, müşterilerin verilerini görselleştirmek, görüntülemek için sonuçların benzetimini yapmak, CAD üzerinde çalışmak veya içerik oluşturmak ve akışa almak istedikleri GPU hızlandırmalı grafik uygulamalarına ve sanal masaüstlerine yöneliktir. Ayrıca bu sanal makineler kodlama ve işleme gibi tek hassas iş yüklerini de çalıştırabilir. NVv3 sanal makineleri, Premium depolamayı destekler ve öncül NV serisi ile karşılaştırıldığında, sistem belleği (RAM) ile birlikte gelir.  
+NVv3 serisi sanal makineler, [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 'LARı ve NVIDIA GRID Teknolojisi Ile Intel E5-2690 v4 (çok Iyi) CPU 'lar tarafından desteklenir. Bu sanal makineler, müşterilerin verilerini görselleştirmek, görüntülemek için sonuçların benzetimini yapmak, CAD üzerinde çalışmak veya içerik oluşturmak ve akışa almak istedikleri GPU hızlandırmalı grafik uygulamalarına ve sanal masaüstlerine yöneliktir. Ayrıca, bu sanal makineler kodlama ve işleme gibi tek duyarlıklı iş yüklerini çalıştırabilir. NVv3 sanal makineleri, Premium depolamayı destekler ve öncül NV serisi ile karşılaştırıldığında, sistem belleği (RAM) ile birlikte gelir.  
 
 NVv3 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV örneğini tek bir kullanıcı için sanal iş istasyonu olarak kullanma esnekliği sağlar veya 25 eşzamanlı kullanıcı sanal uygulama senaryosu için VM 'ye bağlanabilir.
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | En fazla veri diski | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar | 
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV12s_v3 |12 |112 |336 | 1 | 8 | 12 | 20000/200 | 4 | 1 | 25 |
-| Standard_NV24s_v3 |24 |224 |672 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
-| Standard_NV48s_v3 |48 |448 |1344 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
+| Standard_NV12s_v3 |12 |112 |736 | 1 | 8 | 12 | 20000/200 | 4 | 1 | 25 |
+| Standard_NV24s_v3 |24 |224 |1474 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
+| Standard_NV48s_v3 |48 |448 |2948 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
 
 1 GPU = M60 kartın yarısı.
 
@@ -194,7 +194,7 @@ NVv4 serisi sanal makineler, [AMD Radeon INSTINCT MI25](https://www.amd.com/en/p
 [Önizleme sırasında bu makinelere kaydolun ve erişim kazanın](https://aka.ms/nvv4signup).
 <br>
 
-| Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | En fazla veri diski | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | 
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
 | Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |

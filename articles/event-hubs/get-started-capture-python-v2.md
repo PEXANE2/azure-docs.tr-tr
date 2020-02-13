@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906397"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187235"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun (Azure-eventhub sürüm 5)
 
-Bir olay hub 'ına bir olay hub 'ına gönderilen verilerin bir Azure depolama hesabında veya Azure Data Lake Storage yakalanabilmesi için, bir olay hub 'ı yapılandırabilirsiniz. Bu makalede, bir olay hub 'ına olayları göndermek ve Azure Blob depolamadan yakalanan verileri okumak için Python kodu yazma yöntemi gösterilmektedir. Bu özellik hakkında daha fazla bilgi için bkz. [Event Hubs Capture özelliğine genel bakış](event-hubs-capture-overview.md).
+Bir olay hub 'ına bir olay hub 'ına gönderilen verilerin bir Azure depolama hesabında veya Azure Data Lake Storage Gen 1 veya Gen 2 ' ye göre yakalanabilmesi için bir olay hub 'ı yapılandırabilirsiniz. Bu makalede, bir olay hub 'ına olayları göndermek ve **Azure Blob depolamadan**yakalanan verileri okumak için Python kodu yazma yöntemi gösterilmektedir. Bu özellik hakkında daha fazla bilgi için bkz. [Event Hubs Capture özelliğine genel bakış](event-hubs-capture-overview.md).
 
 Bu hızlı başlangıç, yakalama özelliğini göstermek için [Azure Python SDK 'sını](https://azure.microsoft.com/develop/python/) kullanır. *Sender.py* UYGULAMASı, JSON biçimindeki Olay Hub 'larına sanal çevresel telemetri gönderir. Olay hub'ı, bu verileri Blob Depolama alanında toplu yazılacak yakalama özelliğini kullanmak için yapılandırılır. *Capturereader.py* uygulaması bu Blobları okur ve her cihaz için bir ekleme dosyası oluşturur. Uygulama daha sonra verileri CSV dosyalarına yazar.
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta:
 > * Bir Python betiği kullanarak Olay Hub 'ınıza veri gönderme.
 > * Başka bir Python betiği kullanarak Event Hubs yakalamadan dosyaları okuyun ve işleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - PıP yüklü ve güncelleştirilmiş Python 2,7 ve 3,5 ya da üzeri.  
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).  
@@ -55,7 +55,7 @@ Bu hızlı başlangıçta:
 Bu bölümde, bir olay hub 'ına 200 olayları (10 cihaz * 20 olay) gönderen bir Python betiği oluşturacaksınız. Bu olaylar JSON biçiminde gönderilen örnek bir çevre okumasından oluşan bir örnektir. 
 
 1. [Visual Studio Code][Visual Studio Code]gibi en sevdiğiniz Python düzenleyicisini açın.
-2. Adlı bir betik oluşturma *sender.py*. 
+2. *Sender.py*adlı bir komut dosyası oluşturun. 
 3. Aşağıdaki kodu *Sender.py*' ye yapıştırın. 
    
     ```python

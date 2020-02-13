@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43f1fe0d5850b53f0f72f05633e498a94d871c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149313"
+ms.locfileid: "77166446"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu davet etme (Önizleme)
 
@@ -27,7 +27,7 @@ ms.locfileid: "77149313"
 
 > [!NOTE]
 > 12/22/2019 itibariyle, toplu davet kullanıcıları (Önizleme) özelliği geçici olarak devre dışı bırakılmıştır.
-> Şu anda bu özelliğin Azure portal için yeniden etkinleştirileceği bilinen bir tarih yok. PowerShell kullanarak Konuk kullanıcıları toplu olarak davet etmek için bkz. [B2B kodu ve PowerShell örnekleri](code-samples.md).
+> Şu anda bu özelliğin Azure portal için yeniden etkinleştirileceği bilinen bir tarih yok. PowerShell kullanarak Konuk kullanıcıları toplu olarak davet etmek için bkz. [B2B toplu davet öğreticisi](bulk-invite-powershell.md) veya [B2B kodu ve PowerShell örnekleri](code-samples.md).
 
 Şirket dışındaki ortaklarla çalışmak için Azure Active Directory (Azure AD) B2B işbirliğini kullanıyorsanız, kuruluşunuza aynı anda birden çok konuk kullanıcı davet edebilirsiniz. Bu öğreticide, dış kullanıcılara toplu davetiye göndermek için Azure portal kullanmayı öğreneceksiniz. Özellikle aşağıdakileri yapın:
 

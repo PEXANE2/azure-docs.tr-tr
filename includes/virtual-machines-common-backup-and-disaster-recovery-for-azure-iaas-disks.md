@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530940"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179003"
 ---
 Bu makalede, Azure 'da IaaS sanal makineleri (VM) ve disklerinin yedekleme ve olağanüstü durum kurtarma (DR) için nasıl planlanacağı açıklanmaktadır. Bu belgede hem yönetilen hem de yönetilmeyen diskler ele alınmaktadır.
 
 İlk olarak, Azure platformunda yerel hatalara karşı koruma sağlamaya yardımcı olan yerleşik hata toleransı yeteneklerini ele aldık. Daha sonra yerleşik özellikleri tam olarak ele almayan olağanüstü durum senaryolarını tartıştık. Farklı yedekleme ve DR önemli noktaları 'nın uygulayabileceği çeşitli iş yükü senaryolarına örnek de göstereceğiz. Daha sonra IaaS disklerinin DR için olası çözümleri gözden geçiririz.
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Azure platformu, müşterilerin yerelleştirilmiş donanım arızalarına karşı korunmasına yardımcı olmak için yedekleme ve hata toleransı için çeşitli yöntemler kullanır. Yerel hatalarda, bir sanal disk için verilerin bir kısmını veya o sunucudaki SSD veya HDD başarısızlıklarını depolayan bir Azure Storage Server makinesi ile ilgili sorunlar bulunabilir. Bu tür yalıtılmış donanım bileşeni hatalarının normal işlemler sırasında meydana gelebilirler.
 
@@ -33,7 +33,7 @@ Yedekleme ve DR seçeneklerine bakmadan önce, yerelleştirilmiş hataların iş
 
 ### <a name="azure-iaas-resiliency"></a>Azure IaaS dayanıklılığı
 
-*Dayanıklılık* , donanım bileşenlerinde oluşan normal hatalara yönelik toleransı ifade eder. Dayanıklılık, hatalardan kurtulmakta ve çalışmaya devam edebilmesidir. Hatalardan kaçınmakla değil, hatalara kapalı kalma süresi veya veri kaybını önleyecek bir şekilde yanıt vermekle ilgilidir. Dayanıklılığın hedefi, bir hatanın ardından uygulamayı tam çalışır duruma geri döndürmektir. Azure sanal makineleri ve diskleri, yaygın donanım hatalarına karşı dayanıklı olacak şekilde tasarlanmıştır. Azure IaaS platformunun bu esnekliği nasıl sağladığını inceleyelim.
+*Dayanıklılık* , donanım bileşenlerinde oluşan normal hatalara yönelik toleransı ifade eder. Dayanıklılık, hatalardan kurtulmakta ve çalışmaya devam edebilmesidir. Bu, hatalardan kaçınma ve kapalı kalma süresi veya veri kaybını önleyen bir şekilde hatalara yanıt vermemeye yönelik değildir. Dayanıklılığın hedefi, bir hatanın ardından uygulamayı tam çalışır duruma geri döndürmektir. Azure sanal makineleri ve diskleri, yaygın donanım hatalarına karşı dayanıklı olacak şekilde tasarlanmıştır. Azure IaaS platformunun bu esnekliği nasıl sağladığını inceleyelim.
 
 Bir sanal makine, genellikle iki bölümden oluşur: bir işlem sunucusu ve kalıcı diskler. Her ikisi de bir sanal makinenin hata toleransını etkiler.
 
@@ -103,17 +103,17 @@ IaaS uygulama verileri sorunları başka bir olasılık. Fiyatlandırma bilgiler
 Yönetilmeyen diskler için, IaaS diskleri için yerel olarak yedekli depolama türünü kullanabilir, ancak kurtarma hizmetleri Kasası için coğrafi olarak yedekli depolama seçeneğiyle Azure Backup etkinleştirildiğinden emin olabilirsiniz.
 
 > [!NOTE]
-> Yönetilmeyen diskleriniz için [coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md) veya [Okuma Erişimli Coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) seçeneğini KULLANıRSANıZ, yedekleme ve Dr için yine de tutarlı anlık görüntüler gerekir. [Azure Backup](https://azure.microsoft.com/services/backup/) veya [tutarlı anlık görüntüleri](#alternative-solution-consistent-snapshots)kullanın.
+> Yönetilmeyen diskleriniz için [coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md) veya [Okuma Erişimli Coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy.md) seçeneğini KULLANıRSANıZ, yedekleme ve Dr için yine de tutarlı anlık görüntüler gerekir. [Azure Backup](https://azure.microsoft.com/services/backup/) veya [tutarlı anlık görüntüleri](#alternative-solution-consistent-snapshots)kullanın.
 
  Aşağıdaki tablo, DR için kullanılabilen çözümlerin bir özetidir.
 
 | Senaryo | Otomatik çoğaltma | DR çözümü |
 | --- | --- | --- |
 | Premium SSD diskler | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Yönetilen Diskler | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Yönetilen diskler | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Yönetilmeyen yerel olarak yedekli depolama diskleri | Yerel ([yerel olarak yedekli depolama](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Yönetilmeyen coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
-| Yönetilmeyen Okuma Erişimli Coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([Okuma Erişimli Coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
+| Yönetilmeyen Okuma Erişimli Coğrafi olarak yedekli depolama diskleri | Çapraz bölge ([Okuma Erişimli Coğrafi olarak yedekli depolama](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots) |
 
 Yüksek kullanılabilirlik, Azure Backup birlikte bir kullanılabilirlik kümesinde yönetilen diskler kullanılarak en iyi şekilde karşılanır. Yönetilmeyen diskler kullanıyorsanız, DR için Azure Backup kullanmaya devam edebilirsiniz. Azure Backup kullandıysanız ve daha sonraki bir bölümde açıklandığı gibi [tutarlı anlık görüntüler](#alternative-solution-consistent-snapshots)almak, yedekleme ve Dr için alternatif bir çözümdür.
 
@@ -121,10 +121,10 @@ Uygulama veya altyapı seviyeleri için yüksek kullanılabilirlik, yedekleme ve
 
 | Düzey |   Yüksek kullanılabilirlik   | Yedekleme veya DR |
 | --- | --- | --- |
-| Uygulama | SQL Server AlwaysOn | Azure Yedekleme |
+| Uygulama | SQL Server AlwaysOn | Azure Backup |
 | Altyapı    | Kullanılabilirlik kümesi  | Tutarlı anlık görüntülerle coğrafi olarak yedekli depolama |
 
-### <a name="using-azure-backup"></a>Azure Backup’ı kullanma 
+### <a name="using-azure-backup"></a>Azure Backup kullanma 
 
 [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) , Windows veya Linux çalıştıran sanal makinelerinizi Azure kurtarma hizmetleri kasasına yedekleyebilir. İş açısından kritik verilerin yedeklenmesi ve geri yüklenmesi, verileri üreten uygulamalar çalışırken iş açısından kritik verilerin yedeklenmesi gereken bir olgusuna göre karmaşıktır. 
 

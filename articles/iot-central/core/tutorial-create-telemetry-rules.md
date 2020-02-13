@@ -3,29 +3,27 @@ title: Öğretici-Azure IoT Central uygulamanızda kurallar oluşturma ve yönet
 description: Bu öğreticide, Azure IoT Central kurallarının cihazınızı neredeyse gerçek zamanlı olarak izlemenize ve kural tetiklendiğinde e-posta gönderme gibi eylemleri otomatik olarak nasıl çağıracağına ilişkin yönergeler gösterilmektedir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 96514a224960240f2187164aac7c79c1659880e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027709"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167491"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda bir kural oluşturma ve bildirim ayarlama
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-
-
 Bağlı cihazlarınızı uzaktan izlemek için Azure IoT Central kullanabilirsiniz. Azure IoT Central kuralları, cihazlarınızı neredeyse gerçek zamanlı olarak izlemenizi sağlar ve e-posta gönder gibi eylemleri otomatik olarak çağırır. Yalnızca birkaç tıklamayla, cihazlarınızdan Telemetriyi izlemek ve ilgili bir eylemi yapılandırmak için bir koşul tanımlayabilirsiniz. Bu makalede, cihaz tarafından gönderilen Telemetriyi izlemek için kuralların nasıl oluşturulacağı açıklanmaktadır.
 
 Cihazlar, cihazdan sayısal veri göndermek için telemetri kullanır. Seçilen cihaz telemetrisi belirtilen eşiği aştığında bir kural tetiklenir.
 
-Bu öğreticide, bir ortam algılayıcısı cihazındaki sıcaklık 70&deg; F 'yi aştığında e-posta göndermek için bir kural oluşturacaksınız.
+Bu öğreticide, sanal bir ortam algılayıcısı cihazındaki sıcaklık 70&deg; F 'yi aştığında e-posta göndermek için bir kural oluşturacaksınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -34,9 +32,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kural oluşturma
 > * E-posta eylemi ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-pnp-device.md) , birlikte çalışmak üzere **ortam algılayıcı** cihaz şablonu oluşturmanız gerekir.
+Başlamadan önce, [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-pnp-device.md) , birlikte çalışmak üzere **mxyonga IoT devkit** cihaz şablonunu oluşturmanız gerekir.
 
 ## <a name="create-a-rule"></a>Kural oluşturma
 
@@ -52,7 +50,7 @@ Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri �
 
 1. Kuralı tanımlamak için _sıcaklık izleyicisini_ girin ve ENTER 'a basın.
 
-1. **Çevresel algılayıcı** cihaz şablonunu seçin. Varsayılan olarak, kural cihaz şablonuyla ilişkili tüm cihazlara otomatik olarak uygulanır. Cihazların bir alt kümesini filtrelemek için **+ filtre** ' yi seçin ve cihazları tanımlamak için cihaz özellikleri ' ni kullanın. Kuralı devre dışı bırakmak için, kural üstbilgisindeki **etkin/devre dışı** düğmesini değiştirin:
+1. **Mxyongaıot DevKit** cihaz şablonunu seçin. Varsayılan olarak, kural cihaz şablonuyla ilişkili tüm cihazlara otomatik olarak uygulanır. Cihazların bir alt kümesini filtrelemek için **+ filtre** ' yi seçin ve cihazları tanımlamak için cihaz özellikleri ' ni kullanın. Kuralı devre dışı bırakmak için, kural üstbilgisindeki **etkin/devre dışı** düğmesini değiştirin:
 
     ![Filtreler ve Etkinleştir](media/tutorial-create-telemetry-rules/device-filters.png)
 
@@ -77,7 +75,7 @@ Koşullar kuralın izlediği kriterleri tanımlar. Bu öğreticide, sıcaklık 7
 
 ### <a name="configure-actions"></a>Eylemleri yapılandırma
 
-Koşulu tanımladıktan sonra, kural tetiklendiğinde gerçekleştirilecek eylemleri ayarlarsınız. Kuralda belirtilen tüm koşulların doğru olarak değerlendirilmesi durumunda eylemler çağrılır. Şu anda, e-posta kullanılabilir tek eylemdir.
+Koşulu tanımladıktan sonra, kural tetiklendiğinde gerçekleştirilecek eylemleri ayarlarsınız. Kuralda belirtilen tüm koşulların doğru olarak değerlendirilmesi durumunda eylemler çağrılır.
 
 1. **Eylemler** bölümünde **+ e-posta** ' yı seçin.
 

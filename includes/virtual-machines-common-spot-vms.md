@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901752"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179017"
 ---
 Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
@@ -23,16 +23,12 @@ Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası 
 > Nokta örnekleri şu anda genel önizlemededir.
 > Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Genel önizlemenin erken bölümü için, spot örnekleri sabit bir fiyata sahip olur, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
 VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Sanal makineler için çıkarma ilkesi, çıkarılan VM 'lerinizi durdurulmuş serbest bırakılmış duruma taşırken *serbest bırakma* olarak ayarlanır ve çıkarılan VM 'leri daha sonra yeniden dağıtmanıza olanak tanır. Ancak, spot VM 'Lerin yeniden yerleştirilmesi kullanılabilir spot kapasiteye göre değişir. Serbest bırakılmış VM 'Ler, spot sanal CPU kotanıza göre sayılır ve temel disklerinizin üzerinden ücretlendirilirsiniz. 
 
 Kullanıcılar [Azure zamanlanan olaylar](../articles/virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı kabul edebilir. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
-
-> [!IMPORTANT]
-> Genel önizlemenin erken bölümü için, en yüksek fiyat ayarlayabilirsiniz ancak yok sayılır. Spot VM 'Ler sabit bir fiyata sahip olacak, bu nedenle fiyat tabanlı çıkarmalar olmayacaktır.
 
 
 | Seçenek | Sonuç |
@@ -54,7 +50,7 @@ Aşağıdaki VM boyutları, spot VM 'Ler için desteklenmez:
 
 Spot VM 'Ler Şu anda kısa ömürlü işletim sistemi disklerini kullanamaz.
 
-Spot sanal makineler, Azure Kamu bölgesindeki Microsoft Azure Çin 21Vianet ve Savunma Bakanlığı (DoD) dışında herhangi bir bölgeye dağıtılabilir.
+Spot sanal makineler, Microsoft Azure Çin 21Vianet dışında herhangi bir bölgeye dağıtılabilir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -94,12 +90,12 @@ Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
 
 | Azure kanalları               | Azure spot VM kullanılabilirliği       |
 |------------------------------|-----------------------------------|
-| Kurumsal Sözleşme         | Evet                               |
-| Kullandıkça Öde                | Evet                               |
+| Kurumsal Anlaşma         | Yes                               |
+| Kullandıkça öde                | Yes                               |
 | Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Avantajlar                     | Kullanılamıyor                     |
-| Sponsorlu                    | Kullanılamıyor                     |
-| Ücretsiz Deneme                   | Kullanılamıyor                     |
+| Avantajlar                     | Kullanılamaz                     |
+| Sponsorlu                    | Kullanılamaz                     |
+| Ücretsiz deneme                   | Kullanılamaz                     |
 
 
 **S:** Sorularınızı nereden gönderebilirim?

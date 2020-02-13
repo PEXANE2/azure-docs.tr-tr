@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792459"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191365"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack ile B2B kurumsal tümleştirme çözümleri
 
-İşletmeler arası (B2B) çözümleri ve kuruluşlar arasındaki sorunsuz iletişim için [Azure Logic Apps](../logic-apps/logic-apps-overview.md)ile Enterprise Integration Pack (EIP) kullanarak otomatik ölçeklendirilebilir kurumsal tümleştirme iş akışları oluşturabilirsiniz. Kuruluşlar farklı protokoller ve biçimler kullanmasına karşın, iletileri elektronik olarak değiş tokuş edebilirler. EıP, farklı biçimleri, kuruluşların sistemlerinin [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [x12](logic-apps-enterprise-integration-x12.md)ve [ediolgu](../logic-apps/logic-apps-enterprise-integration-edifact.md)gibi sektör standardı protokollerini işleyebildiğine ve desteklediğinden bir biçime dönüştürür. Ayrıca, hem şifreleme hem de dijital imzalarla iletileri güvenli hale getirebilirsiniz. EıP, bu [kurumsal tümleştirme bağlayıcılarını](../connectors/apis-list.md#integration-account-connectors) ve bu sektör standartlarını destekler:
+İşletmeler arası (B2B) çözümleri ve kuruluşlar arasındaki sorunsuz iletişim için [Azure Logic Apps](../logic-apps/logic-apps-overview.md)ile Enterprise Integration Pack (EIP) kullanarak otomatik ölçeklendirilebilir kurumsal tümleştirme iş akışları oluşturabilirsiniz. Kuruluşlar farklı protokoller ve biçimler kullanmasına karşın, iletileri elektronik olarak değiş tokuş edebilirler. EıP, farklı biçimleri, kuruluşların sistemlerinin [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [x12](logic-apps-enterprise-integration-x12.md)ve [ediolgu](../logic-apps/logic-apps-enterprise-integration-edifact.md)gibi sektör standardı protokollerini işleyebildiğine ve desteklediğinden bir biçime dönüştürür. Ayrıca, hem şifreleme hem de dijital imza kullanarak iletiler için güvenliği geliştirebilirsiniz. EıP, bu [kurumsal tümleştirme bağlayıcılarını](../connectors/apis-list.md#integration-account-connectors) ve bu sektör standartlarını destekler:
 
 * Elektronik veri değişimi (EDI)
 * Kurumsal uygulama tümleştirme (EAı)
@@ -32,7 +32,7 @@ Microsoft BizTalk Server veya Azure BizTalk Services hakkında bilgi sahibiyseni
 
 * Azure işlevleri ile mantıksal uygulamalarınız için özel kod oluşturabilirsiniz.
 
-## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlarım?
+## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 
 EıP ile B2B Logic App iş akışları oluşturmaya başlayabilmeniz için önce şu öğeler gerekir:
 
@@ -48,7 +48,7 @@ B2B Logic Apps oluşturmaya başlamak için üst düzey adımlar şunlardır:
 
 ![B2B Logic Apps oluşturmak için Önkoşullar](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-## <a name="try-now"></a>Şimdi deneyin
+## <a name="try-now"></a>Hemen deneyin
 
 [AS2 iletileri gönderen ve alan tam işlemsel bir örnek mantıksal uygulama dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 

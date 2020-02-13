@@ -4,7 +4,6 @@ description: "Hızlı başlangıç: Event Hubs yakalama özelliğini göstermek 
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
@@ -15,12 +14,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904495"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187286"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python (Azure-eventhub sürüm 1)
 
@@ -39,7 +38,7 @@ Bu izlenecek yolda şunları yapabilirsiniz:
 > * Bir Python betiği kullanarak Olay Hub 'ınıza veri gönderme.
 > * Başka bir Python betiği kullanarak Event Hubs yakalamadan dosyaları okuyun ve işleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - `pip` yüklenip güncelleştirildiğinden Python 3,4 veya sonraki bir sürümü.
   

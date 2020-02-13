@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701272"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159889"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -50,8 +50,8 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 |[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript önizlemesi için Microsoft kimlik doğrulama kitaplığı|
 
 > [!NOTE]
-> *Msal. js* , kişisel hesapların ve okulun ve iş hesaplarının oturum açmasını ve belirteçleri almasını sağlayan Microsoft Identity platform uç noktasını hedefler. Microsoft Identity platform uç noktasında [bazı sınırlamalar](azure-ad-endpoint-comparison.md#limitations)vardır.
-> V 1.0 ve v 2.0 uç noktaları arasındaki farkları anlamak için [uç nokta karşılaştırma kılavuzuna](azure-ad-endpoint-comparison.md)bakın.
+> *Msal. js* , kişisel hesapların ve okulun ve iş hesaplarının oturum açmasını ve belirteçleri almasını sağlayan Microsoft Identity platform uç noktasını hedefler. Microsoft Identity platform uç noktasında [bazı sınırlamalar](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)vardır.
+> V 1.0 ve v 2.0 uç noktaları arasındaki farkları anlamak için [uç nokta karşılaştırma kılavuzuna](../azuread-dev/azure-ad-endpoint-comparison.md)bakın.
 
 <!--end-collapse-->
 
@@ -65,7 +65,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticiyi çalıştırmak için [Node. js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
 
@@ -80,7 +80,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > ### <a name="option-2-visual-studio"></a>Seçenek 2: Visual Studio
 > Visual Studio kullanıyorsanız ve yeni bir proje oluşturuyorsanız, şu adımları izleyin:
-> 1. Visual Studio'da **dosya** > **yeni** > **proje**.
+> 1. Visual Studio 'da **dosya** > **Yeni** > **Proje**' yi seçin.
 > 1. **Visual C#\Web** bölümünde **ASP.NET Web Uygulaması (.NET Framework)** girişini seçin.
 > 1. Uygulamanız için bir ad girin ve ardından **Tamam**' ı seçin.
 > 1. **Yeni ASP.NET Web uygulaması**altında **boş**' ı seçin.
@@ -266,7 +266,7 @@ Bu kılavuz tarafından oluşturulan SPA, Kullanıcı profili bilgileri için Mi
 
 #### <a name="getting-a-user-token-interactively"></a>Kullanıcı belirtecini etkileşimli olarak alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örneğin:
+İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örneklere şunlar dahildir:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
@@ -329,7 +329,7 @@ Aşağıdaki kodu `<script></script>` etiketleri içinde `index.html` dosyanıza
 
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
+1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listeden **Web** platformunu seçin ve ardından değeri Web sunucunuza bağlı olan uygulama URL 'si olarak ayarlayın.
 
@@ -377,14 +377,14 @@ Aşağıdaki kodu `<script></script>` etiketleri içinde `index.html` dosyanıza
     };
     ```
 
-    Nerede:
+    Konumlar:
     - *\<Enter_the_Application_Id_here >* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
     - *\<Enter_the_Tenant_info_here >* aşağıdaki seçeneklerden birine ayarlanır:
        - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** (örneğin, *contoso.Microsoft.com*) ile değiştirin.
        - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
        - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin.
 
-## <a name="test-your-code"></a>Kodunuza test etme
+## <a name="test-your-code"></a>Kodunuzu test etme
 
 Aşağıdaki ortamlardan birini kullanarak kodunuzu test edin.
 

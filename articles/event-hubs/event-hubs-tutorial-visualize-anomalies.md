@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906393"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163186"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun][].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -186,7 +186,7 @@ Artık olay hub'ınıza veri akışını başlatabilirsiniz. Bu verileri bir Pow
 
    ![Yeni bir Azure Stream Analytics işi oluşturma işleminin gösterildiği ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**’ tıklayın. 
+    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**'a tıklayın. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -320,7 +320,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    **İleri**’ye tıklayın.
 
-10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Uygula**'ya tıklayın. Kutucuk, panonuza kaydedilir.
+10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Apply (Uygula)** düğmesine tıklayın. Kutucuk, panonuza kaydedilir.
 
     ![Pano kutucuğu için başlık ve alt başlık belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -384,6 +384,6 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Azure Event Hubs hakkında daha fazla bilgi edinmek için bir sonraki makaleye geçin.
 
 > [!div class="nextstepaction"]
-> [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](event-hubs-dotnet-standard-getstarted-send.md)
+> [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](get-started-dotnet-standard-send-v2.md)
 
 [ücretsiz bir hesap oluşturun]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

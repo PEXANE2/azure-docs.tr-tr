@@ -8,16 +8,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136162"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191095"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
-Bir Azure özel bağlantı hizmeti, özel bağlantı tarafından yönetilen kendi hizmetinize başvurur. Azure Load Balancer arkasında çalışan hizmet veya kaynağa özel bağlantı erişimi verebilirsiniz. Hizmetinizin tüketicileri, kendi sanal ağlarından özel olarak erişebilir. Bu hızlı başlangıçta, Azure portal kullanarak özel bir bağlantı hizmeti oluşturmayı öğreneceksiniz.
+Bir Azure özel bağlantı hizmeti, özel bağlantı tarafından yönetilen kendi hizmetinize başvurur. Azure Standart Load Balancer arkasında çalışan hizmet veya kaynağa özel bağlantı erişimi verebilirsiniz. Hizmetinizin tüketicileri, kendi sanal ağlarından özel olarak erişebilir. Bu hızlı başlangıçta, Azure portal kullanarak özel bir bağlantı hizmeti oluşturmayı öğreneceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

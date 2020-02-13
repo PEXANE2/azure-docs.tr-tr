@@ -11,28 +11,31 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 022af5ce0774ff106a29a2ef0bcf3fe11acfda15
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023251"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187209"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Azure Event Hubs-.NET Core 'a (Azure. Messaging. EventHubs) olay gönderme veya olayları alma 
-Event Hubs bağlı cihaz ve uygulamalardan büyük miktarlarda olay verileri (telemetri) işleyen bir hizmettir. Event Hubs verileri topladıktan sonra, depolama kümesi veya işlem olaylarını kullanarak verileri saklayabilirsiniz. Örneğin, gerçek zamanlı bir analiz sağlayıcısı kullanarak olay verilerini dönüştürebilirsiniz. Bu büyük ölçekli olay toplama ve işleme özelliği, Nesnelerin İnterneti (IoT) dahil modern uygulama mimarilerinin temel bir bileşenidir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
-
-Bu öğreticide, Event Hubs .NET Core SDK kullanarak bir olay hub 'ından olayları gönderme veya alma işlemlerinin nasıl yapılacağı gösterilir. 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Azure Event Hubs .NET Core 'a (Azure. Messaging. EventHubs) olay gönderme ve olayları alma 
+Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET Core kitaplığı kullanılarak Olay Hub 'ından olay gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
 
 > [!IMPORTANT]
-> Bu hızlı başlangıç, yeni **Azure. Messaging. EventHubs** kitaplığını kullanır. Eski **Microsoft. Azure. EventHubs** kitaplığını kullanan bir hızlı başlangıç için, [Bu makaleye](event-hubs-dotnet-standard-getstarted-send.md)bakın. 
+> Bu hızlı başlangıç, yeni **Azure. Messaging. EventHubs** kitaplığını kullanır. Eski **Microsoft. Azure. EventHubs** kitaplığını kullanan bir hızlı başlangıç için bkz. [Microsoft. Azure. eventhubs kitaplığını kullanarak olay gönderme ve alma](event-hubs-dotnet-standard-getstarted-send.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+
+
+## <a name="prerequisites"></a>Önkoşullar
+Azure Event Hubs 'yi yeni kullanıyorsanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
+
+Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 - **Microsoft Azure aboneliği**. Azure Event Hubs dahil olmak üzere Azure hizmetlerini kullanmak için bir aboneliğiniz olması gerekir.  Mevcut bir Azure hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/free/) için kaydolabilir veya [BIR hesap oluştururken](https://azure.microsoft.com)MSDN abonesi avantajlarınızı kullanabilirsiniz.
 - **Microsoft Visual Studio 2019**. Azure Event Hubs istemci kitaplığı, 8,0 ' de C# tanıtılan yeni özelliklerden yararlanmaktadır.  Kitaplığı daha eski sürümleriyle kullanmaya devam edebilirsiniz C#, ancak bazı işlevleri kullanılamaz.  Bu özellikleri etkinleştirmek için, [.NET Core 3,0 ' i hedeflemelidir](/dotnet/standard/frameworks#how-to-specify-target-frameworks) veya kullanmak istediğiniz [dil sürümünü](/dotnet/csharp/language-reference/configure-language-version#override-a-default) (8,0 veya üzeri) belirtmeniz gerekir. Visual Studio kullanıyorsanız, Visual Studio 2019 ' den önceki sürümler 8,0 proje oluşturmak C# için gereken araçlarla uyumlu değildir. Ücretsiz topluluk sürümü de dahil olmak üzere Visual Studio 2019, [buradan](https://visualstudio.microsoft.com/vs/) indirilebilir
-- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve olay hub'ı oluşturmak için verilen yordamı izleyin [bu makalede](event-hubs-create.md). Ardından, makalenin yönergelerini izleyerek **Event Hubs ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra'de bağlantı dizesini kullanın.
+- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makalenin yönergelerini izleyerek **Event Hubs ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bağlantı dizesini daha sonra bu hızlı başlangıçta kullanacaksınız.
 
 ## <a name="send-events"></a>Olayları gönderme 
 Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. 
@@ -226,5 +229,6 @@ Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kull
 ## <a name="next-steps"></a>Sonraki adımlar
 GitHub 'daki örneklere göz atın. 
 
-- [Github'da Event Hubs örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [GitHub 'daki Event Hubs örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [GitHub 'daki olay işlemcisi örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
+- [Rol tabanlı erişim denetimi (RBAC) örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

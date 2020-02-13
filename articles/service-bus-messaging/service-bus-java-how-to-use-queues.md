@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d819d4f7b3049a5c034ec8ac5170175f3ad3e9bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760649"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190840"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: ileti göndermek ve almak için Java ile Azure Service Bus kuyrukları kullanma
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak i�
 > [!NOTE]
 > [Azure-Service-Bus deposunda](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)GitHub 'da Java örnekleri bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
     1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
@@ -124,9 +124,9 @@ Sıradan ileti almanın birincil yolu **Servicebuscontract** nesnesini kullanmak
 **Receiveanddelete** modunu kullanırken alma işlemi tek bir işlem olur. yani, Service Bus kuyruktaki bir ileti için okuma isteği aldığında, iletiyi tüketildiği gibi işaretler ve uygulamaya döndürür. **Receiveanddelete** modu (varsayılan mod) en basit modeldir ve bir uygulamanın hata durumunda bir iletiyi işlememesi için en iyisi senaryolar için geçerlidir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın.
 Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-**PeekLock** modunda, alma işlemi iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletide **silme** işlemini çağırarak alma işleminin ikinci aşamasını tamamlar. Service Bus **silme** çağrısını gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
+**PeekLock** modunda, alma işlemi iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiye **tamamlandı ()** çağrısı yaparak alma işleminin ikinci aşamasını tamamlar. Service Bus, **tüm ()** çağrısını gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır. 
 
-Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınacağını ve işlenebileceğinizi gösterir (varsayılan mod değil). Aşağıdaki örnek sonsuz bir döngü yapar ve iletileri `TestQueue`geldikçe işler:
+Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınacağını ve işlenebileceğinizi gösterir (varsayılan mod değil). Aşağıdaki örnekte, kayıtlı bir ileti işleyicisiyle geri çağırma modeli kullanılmıştır ve `TestQueue`iletileri işlenir. Bu mod, geri çağırma normal olarak döner ve geri çağırma bir özel durum oluşturursa **Abandon ()** **öğesini çağırır.** 
 
 ```java
     public void run() throws Exception {
@@ -179,11 +179,11 @@ Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınaca�
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunmayan iletileri giderme
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemeyeceği takdirde, alınan ileti üzerinde **Unlockmessage** yöntemini çağırabilir ( **deleteMessage** yöntemi yerine). Bu işlem Service Bus hizmetinin kuyruktaki iletinin kilidini açmasına ve iletiyi aynı veya başka bir kullanıcı uygulama tarafından tekrar alınabilir hale getirmesine neden olur.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemezse, istemci nesnesinde, **Getlocktoken ()** ile alınan ileti kilit belirteci ile birlikte **Abandon ()** metodunu çağırabilir. Bu işlem Service Bus hizmetinin kuyruktaki iletinin kilidini açmasına ve iletiyi aynı veya başka bir kullanıcı uygulama tarafından tekrar alınabilir hale getirmesine neden olur.
 
 Ayrıca, kuyruk içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı da vardır ve uygulamanın kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse), iletinin kilidini otomatik olarak Service Bus ve bunu yapar yeniden alınmak üzere kullanılabilir.
 
-Uygulamanın ileti işlendikten sonra çöktüğü durumda, ancak **deleteMessage** isteği verildikten önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu durum *En Az Bir Kez İşleme* olarak adlandırılır. Her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu genellikle iletinin **Getmessageıd** yöntemi kullanılarak sağlanır ve bu durum, teslim girişimleri arasında sabit kalır.
+Uygulamanın ileti işlendikten sonra çöktüğü durumda, ancak **tamamlanma ()** isteği verildikten önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu durum *En Az Bir Kez İşleme* olarak adlandırılır. Her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu genellikle iletinin **Getmessageıd** yöntemi kullanılarak sağlanır ve bu durum, teslim girişimleri arasında sabit kalır.
 
 > [!NOTE]
 > Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 

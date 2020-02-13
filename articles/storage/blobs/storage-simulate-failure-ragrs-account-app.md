@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892456"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162710"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Öğretici: birincil bölgeden verileri okurken hata benzetimi yap
 
-Bu öğretici, bir dizinin ikinci bölümüdür. Bu durumda, bir hata benzetimi yaparak [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) avantajları hakkında bilgi edineceksiniz.
+Bu öğretici, bir dizinin ikinci bölümüdür. Bu durumda, hata benzetimi yaparak [Okuma Erişimli Coğrafi olarak yedekli depolamanın](../common/storage-redundancy.md) (RA-GRS) avantajları hakkında bilgi edineceksiniz.
 
-Bir hatanın benzetimini yapmak için, [statik yönlendirme](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler)kullanabilirsiniz. Her iki yöntem de [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) depolama hesabınızın birincil uç noktasına yönelik isteklerin hata benzetimi yapmanıza olanak sağlar. bunun yerine uygulamanın ikincil uç noktadan okunmasını sağlayabilirsiniz.
+Bir hatanın benzetimini yapmak için, [statik yönlendirme](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler)kullanabilirsiniz. Her iki yöntem de [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy.md) (RA-GRS) depolama hesabınızın birincil uç noktasına yönelik isteklerin hata benzetimi yapmanıza olanak sağlar. bunun yerine uygulamanın ikincil uç noktadan okunmasını sağlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 Serinin ikinci bölümünde şunları öğrenirsiniz:
 
@@ -41,7 +41,7 @@ Fiddler kullanarak bir hatanın benzetimini yapmak için [Fiddler](https://www.t
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Geçersiz bir statik rota ile hata benzetimi yapma
 
-[Okuma erişimli coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) depolama hesabınızın birincil uç noktasına yönelik tüm istekler için geçersiz bir statik rota oluşturabilirsiniz. Bu öğreticide, isteklerin depolama hesabına yönlendirilmesi için ağ geçidi olarak yerel ana bilgisayar kullanılır. Yerel ana bilgisayarın ağ geçidi olarak kullanılması, depolama hesabınızın birincil uç noktasına yönelik tüm isteklerin ana bilgisayara dönecek şekilde bir döngüye girmesine ve sonuçta başarısız olmasına yol açar. Geçersiz bir statik rota ile bir hata ve birincil uç noktayı geri yükleme benzetimi yapmak için aşağıdaki adımları izleyin.
+[Okuma erişimli coğrafi olarak yedekli](../common/storage-redundancy.md) (RA-GRS) depolama hesabınızın birincil uç noktasına yönelik tüm istekler için geçersiz bir statik rota oluşturabilirsiniz. Bu öğreticide, isteklerin depolama hesabına yönlendirilmesi için ağ geçidi olarak yerel ana bilgisayar kullanılır. Yerel ana bilgisayarın ağ geçidi olarak kullanılması, depolama hesabınızın birincil uç noktasına yönelik tüm isteklerin ana bilgisayara dönecek şekilde bir döngüye girmesine ve sonuçta başarısız olmasına yol açar. Geçersiz bir statik rota ile bir hata ve birincil uç noktayı geri yükleme benzetimi yapmak için aşağıdaki adımları izleyin.
 
 ### <a name="start-and-pause-the-application"></a>Uygulamayı başlatma ve duraklatma
 

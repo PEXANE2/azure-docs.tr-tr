@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights nedir? | Microsoft Belgeleri
+title: Azure Application Insights nedir? | Microsoft Docs
 description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kullanımını izleme.  Sorunları algılayın, önceliklendirin ve tanılayın; kullanıcıların uygulamanızı nasıl kullandığını anlayın.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: ba5879543d7640993ac834811ec6a82965557755
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 16ebde7d98fbbf95f6c83275ab986ed91c89d736
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432684"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190219"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure izleyici](../overview.md)'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı uygulamalarınızı izlemek için bu uygulamayı kullanın. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node. js ve Java EE dahil olmak üzere şirket içi, karma veya herhangi bir genel bulut gibi çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -53,7 +53,7 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 
 |  |  |
 | --- | --- |
-| [**Akıllı algılama ve el ile uyarılar**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Otomatik uyarıları ayarlama, uygulamanızın normal telemetri desenlerine uyarlayın ve normal desen dışında bir şey olduğunda tetikleyin. Belirli özel veya standart ölçüm düzeylerinde de [uyarılar](../../azure-monitor/app/alerts.md) ayarlayabilirsiniz. |![Uyarı örneği](./media/app-insights-overview/alerts-tn.png) |
+| [**Akıllı algılama ve el ile uyarılar**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Uygulamanızın normal telemetri desenlerine uyarlanabilen otomatik uyarıları ayarlayın ve normal desen dışında bir şey olduğunda tetikleyin. Belirli özel veya standart ölçüm düzeylerinde de [uyarılar](../../azure-monitor/app/alerts.md) ayarlayabilirsiniz. |![Uyarı örneği](./media/app-insights-overview/alerts-tn.png) |
 | [**Uygulama eşlemesi**](../../azure-monitor/app/app-map.md)<br/>Ana ölçümler ve uyarılarla uygulamanızın bileşenlerini araştırma. |![Uygulama eşlemesi](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profil Oluşturucu**](../../azure-monitor/app/profiler.md)<br/>Örnek isteklerinin yürütme profillerini inceleyin. |![Profil Oluşturucu](./media/app-insights-overview/profiler.png) |
 | [**Kullanım analizi**](../../azure-monitor/app/usage-overview.md)<br/>Kullanıcıların segmentlere nasıl ayrıldığını ve nasıl elde tutulduğunu çözümleyin.|![Elde tutma aracı](./media/app-insights-overview/retention.png) |
@@ -66,11 +66,11 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 | [**Anlık görüntü hata ayıklayıcısı**](../../azure-monitor/app/snapshot-debugger.md)<br/>Dinamik işlemlerden örneklenen anlık görüntülerdeki hataları parametre değerleriyle ayıklayın.|![Visual studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Kullanım ölçümlerini diğer iş zekası verileriyle tümleştirin.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Ölçümleriniz ve ham verileriniz üzerinde sorgu çalıştırmak için kod yazın.| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**Sürekli dışarı aktarma**](../../azure-monitor/app/export-telemetry.md)<br/>Ham verilerin ulaşır ulaşmaz toplu olarak depolamaya aktarılması. |![Dışarı Aktar](./media/app-insights-overview/export-tn.png) |
+| [**Sürekli dışarı aktarma**](../../azure-monitor/app/export-telemetry.md)<br/>Ham verilerin ulaşır ulaşmaz toplu olarak depolamaya aktarılması. |![Dışarı Aktarma](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Application Insights’ı nasıl kullanabilirim?
 
-### <a name="monitor"></a>İzleyin
+### <a name="monitor"></a>İzleme
 Application Insights’ı uygulamanıza yükleyin, [kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md) ayarlayın ve:
 
 * Yük, yanıt verme ve bağımlılıklarınızın, sayfa yüklerinizin ve AJAX çağrılarının performansını göz önünde tutmak için ekip odasına yönelik varsayılan [uygulama panosunu](../../azure-monitor/app/overview-dashboard.md) kullanıma alma.
@@ -91,7 +91,7 @@ Dağıttığınız her yeni özelliğin [ne kadar etkili olduğunu ölçün](../
 * Kodunuza özel telemetri yazın.
 * Bir sonraki geliştirme döngüsünü telemetrinizden edindiğiniz somut kanıtlara dayandırın.
 
-## <a name="get-started"></a>Kullanmaya Başlayın
+## <a name="get-started"></a>başlarken
 Application Insights, Microsoft Azure’da barındırılan birçok hizmetten biridir ve telemetri verileri analiz edilip sunulmak üzere buraya gönderilir. Bu nedenle, başka bir işlem yapmadan önce bir [Microsoft Azure](https://azure.com) aboneliğinizin olması gerekir. Kaydolmak ücretsizdir ve Application Insights’ın temel [fiyatlandırma planını](https://azure.microsoft.com/pricing/details/application-insights/) seçerseniz, uygulamanız önemli bir kullanım oranına ulaşana kadar ücret ödemezsiniz. Kuruluşunuzun zaten aboneliği varsa, Microsoft hesabınızı bu aboneliğe eklettirebilirsiniz.
 
 Hizmeti kullanmaya başlamanın birkaç yolu vardır. Sizin için en uygun yöntemi kullanarak başlayın. Diğerlerini daha sonra ekleyebilirsiniz.

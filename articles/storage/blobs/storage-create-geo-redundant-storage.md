@@ -6,27 +6,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892915"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162183"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Burada, uygulama verilerinizi Azure 'da yüksek oranda kullanılabilir hale getirme hakkında bilgi edineceksiniz.
+Bu öğretici, bir serinin birinci bölümüdür. Burada, uygulama verilerinizi Azure 'da yüksek oranda kullanılabilir hale getirme hakkında bilgi edineceksiniz.
 
-Bu öğreticiyi tamamladığınızda, [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) depolama hesabından bir blobu yükleyen ve alan bir konsol uygulamasına sahip olursunuz.
+Bu öğreticiyi tamamladığınızda, [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy.md) (RA-GRS) depolama hesabından bir blobu yükleyen ve alan bir konsol uygulamasına sahip olursunuz.
 
 RA-GRS, işlemleri birincil bir bölgeden ikincil bir bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, ikincil bölgedeki verilerin nihai olarak tutarlı olmasını sağlar. Uygulama, hangi uç noktanın bağlanacağı için [devre kesici](/azure/architecture/patterns/circuit-breaker) modelini kullanır, otomatik olarak başarısızlık ve kurtarmalar arasında geçiş noktaları arasında geçiş yapılır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -52,7 +52,7 @@ Bu öğreticiyi tamamlamak için:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* [Node.js](https://nodejs.org)’yi yükleyin.
+* [Node. js](https://nodejs.org)' i yükler.
 
 ---
 
@@ -73,8 +73,8 @@ Okuma erişimli coğrafi olarak yedekli depolama hesabı oluşturmak için aşa�
 
    | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Adı** | mystorageaccount | Depolama hesabınız için benzersiz bir değer |
-   | **Dağıtım modeli** | Kaynak Yöneticisi  | Resource Manager en son özellikleri içerir.|
+   | **Ad** | mystorageaccount | Depolama hesabınız için benzersiz bir değer |
+   | **Dağıtım modeli** | Resource Manager  | Resource Manager en son özellikleri içerir.|
    | **Hesap türü** | StorageV2 | Hesap türleri hakkında ayrıntılı bilgi almak için bkz. [depolama hesabı türleri](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Performans** | Standart | Standart, örnek senaryo için yeterli olacaktır. |
    | **Çoğaltma**| Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS) | Örneğin çalışması için bunun seçilmesi gereklidir. |
@@ -177,7 +177,7 @@ Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çöz
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
-Örnek kodda, [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak depolama hesabından bir resim indirmek için `Program.cs` dosyasındaki `RunCircuitBreakerAsync` görevi kullanılmaktadır. İndirme işlemi öncesinde bir [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) (İşlem Bağlamı) tanımlanır. İşlem bağlamı, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
+Örnek kodda, `RunCircuitBreakerAsync`DownloadToFileAsync`Program.cs` yöntemini kullanarak depolama hesabından bir resim indirmek için [ dosyasındaki ](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) görevi kullanılmaktadır. İndirme işlemi öncesinde bir [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) (İşlem Bağlamı) tanımlanır. İşlem bağlamı, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -185,7 +185,7 @@ Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitb
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
-Örnek kodda, [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) yöntemini kullanarak depolama hesabından bir resim indirmek için `circuitbreaker.py` dosyasındaki `run_circuit_breaker` yöntemi kullanılmaktadır.
+Örnek kodda, `run_circuit_breaker`get_blob_to_path`circuitbreaker.py` yöntemini kullanarak depolama hesabından bir resim indirmek için [ dosyasındaki ](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) yöntemi kullanılmaktadır.
 
 Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine ayarlıdır. Yeniden deneme işlevi, isteklerin yeniden denenip denenmeyeceğini belirler ve isteği yeniden denemeden önce kaç saniye bekleneceğini belirtir. Birincile yapılan istek başarısız olursa aynı isteğin ikincile yeniden denenmesini istiyorsanız **retry\_to\_secondary** değerini true olarak ayarlayın. Örnek uygulamada depolama nesnesinin `retry_callback` işlevinde özel bir yeniden deneme ilkesi tanımlanmıştır.
 
