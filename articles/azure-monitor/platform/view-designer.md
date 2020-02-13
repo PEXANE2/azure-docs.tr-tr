@@ -6,18 +6,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/22/2018
-ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2019
+ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363209"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166472"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> Azure Izleyici 'deki görünümler kullanıma alınıyor ve ek işlevsellik sağlayan [çalışma kitapları](workbooks-overview.md) ile değiştiriliyor. Mevcut görünümlerinizi çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](view-designer-conversion-overview.md) .
 
 Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
@@ -32,9 +33,9 @@ Görünümler, Azure portal Azure Izleyici **genel bakış** sayfasında görün
 
 Görünüm Tasarımcısı ile oluşturduğunuz görünümler aşağıdaki tabloda açıklanan öğeleri içerir:
 
-| Bölüm | Açıklama |
+| Bölümüyle | Açıklama |
 |:--- |:--- |
-| Tiles | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
+| Parça | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
 | Özel görünüm | Bir kutucuk seçtiğinizde gösterilir. Her görünüm bir veya daha fazla görselleştirme bölümü içerir. |
 | Görselleştirme parçaları | Bir veya daha fazla [günlük sorgusuna](../log-query/log-query-overview.md)göre Log Analytics çalışma alanında bir veri görselleştirmesi sunun. Çoğu bölüm, üst düzey bir görselleştirme sağlayan bir üst bilgi ve en üstteki sonuçları görüntüleyen bir liste içerir. Her bölüm türü, Log Analytics çalışma alanındaki kayıtların farklı bir görselleştirmesini sağlar. Ayrıntılı kayıtlar sağlayan bir günlük sorgusu gerçekleştirmek için bölümünde öğeleri seçersiniz. |
 
@@ -54,7 +55,7 @@ Seçenekler aşağıdaki tabloda açıklanmıştır:
 | Yenile   | En son verilerle görünümü yeniler. | 
 | Günlükler      | Günlük sorgularıyla verileri çözümlemek için [Log Analytics](../log-query/portals.md) açar. |
 | Düzenle       | İçeriğini ve yapılandırmasını düzenlemek için Görünüm Tasarımcısı ' nda görünümü açar.  |
-| Kopyala      | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
+| Kopyalama      | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 | Tarih aralığı | Görünümde yer alan veriler için tarih ve saat aralığı filtresini ayarlayın. Bu tarih aralığı, görünümdeki sorgularda ayarlanan herhangi bir tarih aralığından önce uygulanır.  |
 | +          | Görünüm için tanımlanan özel bir filtre tanımlayın. |
 
@@ -73,7 +74,7 @@ Görünüm tasarımcısının üç bölmesi vardır:
 * **Denetimler**: **Tasarım** bölmesine eklediğiniz kutucukları ve parçaları içerir. 
 * **Özellikler**: kutucukların veya seçili parçaların özelliklerini görüntüler.
 
-![View Designer (Görünüm Tasarımcısı)](media/view-designer/view-designer-screenshot.png)
+![Görünüm Tasarımcısı](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>Görünüm kutucuğunu yapılandırma
 Özel bir görünüm yalnızca tek bir kutucuğa sahip olabilir. Geçerli kutucuğu görüntülemek veya alternatif bir tane seçmek için **Denetim** bölmesinde **kutucuk** sekmesini seçin. **Özellikler** bölmesi, geçerli kutucuğun özelliklerini görüntüler. 
@@ -100,9 +101,9 @@ Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda 
 | Kaydet        | Değişikliklerinizi kaydeder ve görünümü kapatır. |
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
-| Dışarı Aktar      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
+| Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
 | İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
-| Kopyala       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
+| Kopyalama       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Özel görünüminizdeki [kutucukları](view-designer-tiles.md) ekleyin.

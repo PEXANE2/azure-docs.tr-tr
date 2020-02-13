@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Geliştiriciler için Azure Active Directory
+summary: Azure Active Directory (Azure AD), geliştiricilerin Microsoft iş veya okul hesabına sahip kullanıcıların güvenli şekilde oturumunu açan uygulamalar derlemesine olanak sağlayan bir bulut kimlik hizmetidir. Azure AD, tek kiracılı, iş kolu (LOB) uygulamalarını derleyen geliştiricileri ve çok kiracılı uygulamalar geliştirmek isteyen geliştiricileri destekler. Microsoft kimlik platformu, Azure Active Directory (Azure AD) geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Yeni uygulamalarda, belirteç almak ve güvenli web API'lerine erişmek için Microsoft kimlik platformunu (v2.0) ve MSAL’yi kullanmanızı öneririz.
+metadata:
+  ms.topic: landing-page
+  ms.date: 01/27/2020
+  author: CelesteDG
+  ms.author: celested
+  ms.service: active-directory
+  ms.subservice: azuread-dev
+  ms.workload: identity
+  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77163220"
+landingContent:
+- title: Geliştiriciler için Azure Active Directory
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Geliştiriciler için Azure Active Directory (v1.0)
+      url: v1-overview.md
+    - text: Microsoft Identity Platform'un gelişimi
+      url: ../develop/about-microsoft-identity-platform.md
+    - text: Microsoft kimlik platformu (v2.0)
+      url: ../develop/v2-overview.md
+  - linkListType: concept
+    links:
+    - text: Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
+      url: azure-ad-endpoint-comparison.md
+    - text: Uygulama türleri ve senaryolar
+      url: app-types.md
+- title: Kimlik doğrulama protokolleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kimlik doğrulaması temel bilgileri
+      url: v1-authentication-scenarios.md
+  - linkListType: concept
+    links:
+    - text: OAuth 2.0 yetkilendirme kod akışı
+      url: v1-protocols-oauth-code.md
+    - text: OpenID Connect kod akışı
+      url: v1-protocols-openid-connect-code.md
+    - text: OAuth 2.0 istemci kimlik bilgileri verme akışı
+      url: v1-oauth2-client-creds-grant-flow.md
+- title: Örnekler
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Örnek uygulamalar
+      url: sample-v1-code.md

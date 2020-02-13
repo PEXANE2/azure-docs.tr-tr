@@ -3,18 +3,18 @@ title: Hızlı başlangıç-Azure IoT Central cihazlarınızı Izleyin
 description: Bir operatör olarak, cihazlarınızı izlemek için Azure IoT Central uygulamanızı nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027751"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168716"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Hızlı başlangıç: cihazlarınızı izlemek için Azure IoT Central kullanma
 
@@ -22,7 +22,7 @@ ms.locfileid: "77027751"
 
 Bu hızlı başlangıçta, cihazlarınızı izlemek ve ayarları değiştirmek için Microsoft Azure IoT Central uygulamanızı nasıl kullanacağınızı bir operatör olarak gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, önceki üç hızlı başlangıç [Oluştur Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md), [IoT Central uygulamanıza sanal bir cihaz ekleme](./quick-create-pnp-device.md) ve [cihazınız için kuralları ve eylemleri yapılandırma işlemleri](quick-configure-rules.md)gerçekleştirmeniz gerekir.
 
@@ -41,8 +41,6 @@ Cihaz hızlı başlangıç [için kuralları yapılandırma ve eylemlerin](quick
 ## <a name="investigate-an-issue"></a>Sorun araştırma
 
 Bir operatör olarak, **genel bakış**, **hakkında**ve **Komutlar** görünümlerinde cihaz hakkındaki bilgileri görüntüleyebilirsiniz. Oluşturucu cihaz bilgilerini düzenlemeniz ve cihaz özelliklerini ayarlamanız için bir **cihaz yönetme** görünümü oluşturdu.
-
-Cihaz hakkındaki bilgileri görmek için **genel bakış** görünümünü seçin.
 
 Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. Cihaz sıcaklığının çok yüksek olduğuna karar verirsiniz.
 

@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084025"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160853"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL özel durumlarını ve hatalarını işleme
 
@@ -506,7 +506,7 @@ Aşağıdaki amaç-C örnek kodu, bazı genel hata koşullarını işlemek için
 
 ## <a name="conditional-access-and-claims-challenges"></a>Koşullu erişim ve talep sorunları
 
-Belirteçleri sessizce alırken, erişmeye çalıştığınız bir API 'nin MFA İlkesi gibi [koşullu erişim talep zorluğu](conditional-access-dev-guide.md) gerektiğinde uygulamanız hatalar alabilir.
+Belirteçleri sessizce alırken, erişmeye çalıştığınız bir API 'nin MFA İlkesi gibi [koşullu erişim talep zorluğu](../azuread-dev/conditional-access-dev-guide.md) gerektiğinde uygulamanız hatalar alabilir.
 
 Bu hatayı işleme deseninin, MSAL kullanarak etkileşimli bir şekilde belirteç edinmesi. Bir belirteci etkileşimli bir şekilde almak kullanıcıya sorar ve gerekli koşullu erişim ilkesini karşılamak için bu fırsata yanıt verir.
 
@@ -520,7 +520,7 @@ Talep sınamasını işlemek için `PublicClientApplicationBuilder` sınıfını
 
 ### <a name="javascript"></a>JavaScript
 
-MSAL. js kullanarak belirteçleri sessizce alırken (`acquireTokenSilent`kullanarak), erişmeye çalıştığınız bir API için MFA İlkesi gibi [koşullu erişim talep zorluğu](conditional-access-dev-guide.md) gerektiğinde uygulamanız hatalar alabilir.
+MSAL. js kullanarak belirteçleri sessizce alırken (`acquireTokenSilent`kullanarak), erişmeye çalıştığınız bir API için MFA İlkesi gibi [koşullu erişim talep zorluğu](../azuread-dev/conditional-access-dev-guide.md) gerektiğinde uygulamanız hatalar alabilir.
 
 Bu hatayı işleme deseninin, aşağıdaki örnekte olduğu gibi, MSAL. js ' de `acquireTokenPopup` veya `acquireTokenRedirect` gibi belirteç almak için etkileşimli bir çağrı yapmak için kullanabileceğiniz bir yol vardır:
 

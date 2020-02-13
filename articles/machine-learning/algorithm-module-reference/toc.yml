@@ -26,6 +26,8 @@
       href: convert-to-csv.md
     - name: Veri kümesine dönüştürme
       href: convert-to-dataset.md
+    - name: Gösterge Değerlerine dönüştürme
+      href: convert-to-indicator-values.md
     - name: Eksik Verileri Temizleme
       href: clean-missing-data.md
     - name: Meta Verileri Düzenleme

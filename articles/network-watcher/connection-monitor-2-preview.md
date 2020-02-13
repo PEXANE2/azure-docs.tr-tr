@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049620"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169328"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile Birleşik bağlantı izleme (Önizleme)
 
@@ -403,7 +403,7 @@ Bir bağlantı Izleyicisinde bir test grubu oluşturmak için, yukarıda bahsedi
 
       ![Hedef Ekle 2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Azure VM 'lerini hedef olarak seçmek için "uç noktalar" sekmesine tıklayın. Uç nokta listesi O365 ve D365 test URL 'Leriyle doldurulacak, ada göre gruplandırılır.  Aynı bağlantı Izleyicisinde diğer test gruplarında oluşturulan bir uç noktasını da seçebilirsiniz. Yeni bir uç nokta eklemek için, ekranın sağ üst köşesinden "+ uç nokta" düğmesine tıklayın ve uç nokta URL 'SI/IP/FQDN ve ad sağlayın
+   2. Uç noktaları hedef olarak seçmek için "uç noktalar" sekmesine tıklayın. Uç nokta listesi O365 ve D365 test URL 'Leriyle doldurulacak, ada göre gruplandırılır.  Aynı bağlantı Izleyicisinde diğer test gruplarında oluşturulan bir uç noktasını da seçebilirsiniz. Yeni bir uç nokta eklemek için, ekranın sağ üst köşesinden "+ uç nokta" düğmesine tıklayın ve uç nokta URL 'SI/IP/FQDN ve ad sağlayın
 
       ![Uç nokta Ekle](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -423,7 +423,7 @@ Bir bağlantı Izleyicisinde bir test grubu oluşturmak için, yukarıda bahsedi
 
       ![TG Ekle](./media/connection-monitor-2-preview/add-test-config.png)
 
-Test yapılandırması belirtilen test grubuna eklenen tüm kaynaklar ve hedefler, bireysel testlere bölünmez. Örnek:
+Test yapılandırması belirtilen test grubuna eklenen tüm kaynaklar ve hedefler, bireysel testlere bölünmez. Örneğin:
 
 * Test grubu: TG1
 * Kaynaklar: 3 (A, B, C)
@@ -497,7 +497,7 @@ Bu listeye göre filtre uygulayabilirsiniz:
 
 ![Testleri filtrele](./media/connection-monitor-2-preview/cm-view.png)
 
-Örnek:
+Örneğin:
 
 1. Kaynak IP = 10.192.64.56 tüm bağlantı Izleyici (Önizleme) genelinde tüm testlere bakmak için:
    1. Görünümü "test" olarak değiştirin

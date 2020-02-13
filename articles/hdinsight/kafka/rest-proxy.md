@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031431"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157151"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
 
@@ -24,6 +24,8 @@ Kafka REST proxy, HTTP üzerinden bir REST API aracılığıyla Kafka kümeniz i
 
 REST proxy olmadan Kafka istemcilerinin Kafka kümesi veya eşlenmiş VNet ile aynı VNet 'te olması gerekir. REST proxy, her yerde bulunan veri üreticileri veya tüketicilere bağlanmanızı sağlar. REST proxy 'yi dağıtmak kümeniz için yeni bir genel uç nokta oluşturur ve bu, Portal ayarlarınızda bulabilirsiniz.
 
+![Kafka REST proxy mimarisi](./media/rest-proxy/rest-proxy-architecture.png)
+
 API tarafından desteklenen işlemlerin tam belirtimi için lütfen [Apache Kafka Rest Proxy API 'sine](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
 
 ### <a name="security"></a>Güvenlik
@@ -32,7 +34,7 @@ Kafka REST proxy 'sine erişim Azure Active Directory güvenlik grupları ile y�
 
 REST proxy etkinken Kafka kümesini oluştururken REST uç noktasına erişimi olması gereken AAD güvenlik grubunu sağlarsınız. REST proxy 'sine erişmesi gereken Kafka istemcileri (uygulamalar) Grup sahibi tarafından bu gruba kaydedilmelidir. Grup sahibi bunu portal veya PowerShell aracılığıyla yapabilir.
 
-REST proxy uç noktasına istek yapmadan önce, istemci uygulamanın doğru güvenlik grubunun üyeliğini doğrulamak için bir OAuth belirteci alması gerekir. OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [oauth 2,0 kod verme akışını kullanarak Azure Active Directory Web uygulamalarına erişimi yetkilendirme](../../active-directory/develop/v1-protocols-oauth-code.md). Python 'da OAuth belirteci getirme örneği için bkz. [istemci uygulaması örneği](#client-application-sample)
+REST proxy uç noktasına istek yapmadan önce, istemci uygulamanın doğru güvenlik grubunun üyeliğini doğrulamak için bir OAuth belirteci alması gerekir. OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [oauth 2,0 kod verme akışını kullanarak Azure Active Directory Web uygulamalarına erişimi yetkilendirme](../../active-directory/azuread-dev/v1-protocols-oauth-code.md). Python 'da OAuth belirteci getirme örneği için bkz. [istemci uygulaması örneği](#client-application-sample)
 
 İstemci uygulaması OAuth belirtecine sahip olduktan sonra, bu belirteci REST proxy 'ye yapılan HTTP isteğinde iletmeleri gerekir.
 

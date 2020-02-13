@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: e2216d1f489acea27bbc788c6ded21c6d9835915
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 33894e237144628634c3b63393130eb0af5b9877
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699946"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159463"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory kullanmaya başlama (WebApi projeleri)
 
@@ -35,4 +35,4 @@ Projenizdeki tüm denetleyiciler `[Authorize]` özniteliğiyle donatılmıştı.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory için kimlik doğrulama senaryoları](authentication-scenarios.md)
-- [Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme](quickstart-v1-aspnet-webapp.md)
+- [Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme](quickstart-v2-aspnet-webapp.md)

@@ -12,18 +12,18 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698552"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161197"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 'da anahtar geçişi imzalanıyor
 Bu makalede, güvenlik belirteçlerini imzalamak için Azure Active Directory (Azure AD) ' de kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Azure AD kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir veya düzenli bir el ile geçiş işlemi oluşturabilir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 'de imzalama anahtarlarına genel bakış
-Azure AD, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartlarına göre oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde geçerlidir: Azure AD ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Azure AD kullanan bir uygulamada oturum açtığında, Azure AD Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Azure AD tarafından imzalanır. Belirtecin geçerli olduğunu ve Azure AD 'den geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-besbir [Federasyon meta veri BELGESINDE](azure-ad-federation-metadata.md)bulunan Azure AD tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir.
+Azure AD, kendisini kullanan uygulamalar arasında güven sağlamak için endüstri standartlarına göre oluşturulmuş ortak anahtar şifrelemeyi kullanır. Pratik koşullarda, bu işlem aşağıdaki şekilde geçerlidir: Azure AD ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Bir kullanıcı kimlik doğrulaması için Azure AD kullanan bir uygulamada oturum açtığında, Azure AD Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturur. Bu belirteç, uygulamaya geri gönderilmeden önce özel anahtarı kullanılarak Azure AD tarafından imzalanır. Belirtecin geçerli olduğunu ve Azure AD 'den geldiğini doğrulamak için, uygulamanın, kiracının [OpenID Connect bulgu belgesi](https://openid.net/specs/openid-connect-discovery-1_0.html) veya SAML/WS-besbir [Federasyon meta veri BELGESINDE](../azuread-dev/azure-ad-federation-metadata.md)bulunan Azure AD tarafından kullanıma sunulan ortak anahtarı kullanarak belirtecin imzasını doğrulaması gerekir.
 
 Güvenlik nedeniyle, Azure AD 'nin imzalama anahtarı düzenli olarak kaydedilir ve acil durumda bir acil durum durumunda hemen üzerinden alınabilir. Azure AD ile tümleştirilen herhangi bir uygulama, ne sıklıkta gerçekleşebileceğini önemli bir anahtar geçişi olayını işleyecek şekilde hazırlanmalıdır. Yoksa ve uygulamanız bir belirteçte imzayı doğrulamak için bir süre sonu anahtarını kullanmayı denerse, oturum açma isteği başarısız olur.
 
@@ -131,7 +131,7 @@ Uygulamanız, Visual Studio 2015 veya sonraki sürümlerde bir Web uygulaması �
 ### <a name="vs2013"></a>Kaynakları koruyan ve Visual Studio 2013 ile oluşturulan Web uygulamaları
 Uygulamanız Visual Studio 2013 bir Web uygulaması şablonu kullanılarak oluşturulmuşsa ve **kimlik doğrulama** menüsünden **Kurumsal hesaplar** ' ı seçtiyseniz, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır. Bu mantık, kuruluşunuzun benzersiz tanımlayıcısını ve imza anahtarı bilgilerini projeyle ilişkili iki veritabanı tablosu halinde depolar. Veritabanının bağlantı dizesini projenin Web. config dosyasında bulabilirsiniz.
 
-Çözümünüze el ile kimlik doğrulaması eklediyseniz, uygulamanız gerekli anahtar geçiş mantığına sahip olmayabilir. Kendiniz yazmak veya adımları gerekecek [Web uygulamaları / diğer kitaplıkları'nı kullanarak veya el ile desteklenen protokoller hiçbirini uygulama API'leri](#other).
+Çözümünüze el ile kimlik doğrulaması eklediyseniz, uygulamanız gerekli anahtar geçiş mantığına sahip olmayabilir. Kendiniz yazmanız veya [diğer kitaplıkları kullanarak Web uygulamalarında/API 'lerde bulunan veya desteklenen protokollerden herhangi birini elle uygulayan](#other)adımları izlemeniz gerekecektir.
 
 Aşağıdaki adımlar, mantığın uygulamanızda düzgün çalıştığını doğrulamanıza yardımcı olur.
 
@@ -281,7 +281,7 @@ Anahtar aktarma mantığının çalıştığını doğrulamak için aşağıdaki
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. **\<parmak izi Ekle = "" >** ayarı içinde, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web.config** dosyasını kaydedin.
+2. **\<parmak izi Ekle = "" >** ayarı içinde, herhangi bir karakteri farklı bir karakterle değiştirerek parmak izi değerini değiştirin. **Web. config** dosyasını kaydedin.
 3. Uygulamayı derleyin ve çalıştırın. Oturum açma işlemini tamamlayabilirseniz, uygulamanız dizininizin Federasyon meta veri belgesinden gerekli bilgileri indirerek anahtarı başarıyla güncelliyor. Oturum açarken sorun yaşıyorsanız, [Azure AD makalesini kullanarak Web uygulamanıza oturum açma ekleme](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) veya aşağıdaki kod örneğini indirme ve İnceleme ' yi okuyarak uygulamanızdaki değişikliklerin doğru olduğundan emin olun: [Azure Active Directory Için çok kiracılı bulut uygulaması](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>.NET 3,5 için kaynakları koruyan ve Visual Studio 2008 ya da 2010 ve Windows Identity Foundation (WıF) v 1.0 ile oluşturulan Web uygulamaları

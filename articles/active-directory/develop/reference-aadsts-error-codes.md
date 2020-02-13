@@ -16,12 +16,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 03f88b0b1369020d0ba5e8cb1e1b416059def21d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703057"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160386"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
@@ -152,7 +152,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS67003 | Actornotvalidserviceıdentity |
 | AADSTS70000 | Invalidgrant-kimlik doğrulaması başarısız oldu. Yenileme belirteci geçerli değil. Hatanın nedeni aşağıdakilerden biri olabilir:<ul><li>Belirteç bağlama üst bilgisi boş</li><li>Belirteç bağlama karması eşleşmiyor</li></ul> |
 | AADSTS70001 | UnauthorizedClient-uygulama devre dışı bırakıldı. |
-| AADSTS70002 | Invalidclient-kimlik bilgileri doğrulanırken hata oluştu. Belirtilen client_secret, bu istemci için beklenen değerle eşleşmiyor. Client_secret düzeltip yeniden deneyin. Daha fazla bilgi için bkz. [erişim belirteci istemek için yetkilendirme kodunu kullanma](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token). |
+| AADSTS70002 | Invalidclient-kimlik bilgileri doğrulanırken hata oluştu. Belirtilen client_secret, bu istemci için beklenen değerle eşleşmiyor. Client_secret düzeltip yeniden deneyin. Daha fazla bilgi için bkz. [erişim belirteci istemek için yetkilendirme kodunu kullanma](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType-uygulama, desteklenmeyen bir izin türü döndürdü. |
 | AADSTS70004 | Invalidredirecturi-uygulama geçersiz bir yeniden yönlendirme URI 'SI döndürdü. İstemci tarafından belirtilen yeniden yönlendirme adresi, yapılandırılmış bir adresle veya OIDC onay listesindeki herhangi bir adresle eşleşmiyor. |
 | AADSTS70005 | UnsupportedResponseType-uygulama, aşağıdaki nedenlerden dolayı desteklenmeyen bir yanıt türü döndürdü:<ul><li>' token ' yanıt türü uygulama için etkin değil</li><li>'id_token' yanıt türü 'OpenID' kapsamı gerektiriyor -kodlanmış wctx içinde desteklenmeyen bir OAuth parametre değeri içeriyor</li></ul> |

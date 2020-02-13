@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544166"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161656"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Önizleme-Azure AD Domain Services klasik sanal ağ modelinden Kaynak Yöneticisi 'e geçirin
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure AD Domain Services Kaynak Yöneticisi 'ye geçirin
 
 Azure Active Directory Domain Services (AD DS), şu anda klasik sanal ağ modelini kullanan müşterilerin Kaynak Yöneticisi sanal ağ modeline tek seferlik bir taşımayı destekler. Kaynak Yöneticisi dağıtım modelini kullanan Azure AD DS yönetilen etki alanları, hassas parola ilkesi, denetim günlükleri ve hesap kilitleme koruması gibi ek özellikler sağlar.
 
-Bu makalede, var olan bir Azure AD DS örneğini başarılı bir şekilde geçirmek için gereken adımlar ve geçiş konuları özetlenmektedir. Bu geçiş özelliği şu anda önizlemededir.
+Bu makalede, var olan bir Azure AD DS örneğini başarılı bir şekilde geçirmek için gereken adımlar ve geçiş konuları özetlenmektedir.
 
 ## <a name="overview-of-the-migration-process"></a>Geçiş işlemine genel bakış
 
@@ -112,7 +112,7 @@ Geri alma durumunda IP adresleri geri alındıktan sonra değişebilir.
 
 Azure AD DS, genellikle adres aralığındaki kullanılabilir ilk iki IP adresini kullanır, ancak bu garanti edilmez. Şu anda geçişten sonra kullanılacak IP adreslerini belirtemezsiniz.
 
-### <a name="downtime"></a>Kesinti
+### <a name="downtime"></a>Kapalı kalma süresi
 
 Geçiş işlemi, etki alanı denetleyicilerinin bir süre çevrimdışı olmasını içerir. Azure AD DS Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçirildiğinde etki alanı denetleyicilerine erişilemez. Ortalama süre kapalı kalma süresi 1 ile 3 saat arasında. Bu süre, etki alanı denetleyicilerinin ilk etki alanı denetleyicisinin yeniden çevrimiçi duruma geldiği sırada çevrimdışına alındığı zamana göre belirlenir. Bu ortalama, ikinci etki alanı denetleyicisinin çoğaltılması için geçen süreyi veya Kaynak Yöneticisi dağıtım modeline ek kaynakların geçirilmesi için gereken süreyi içermez.
 
@@ -151,9 +151,9 @@ Sanal ağ gereksinimleri hakkında daha fazla bilgi için bkz. [sanal ağ tasar�
 
 Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma bölünür:
 
-| Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Kesinti  | Geri alma/geri yükleme? |
+| Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Kapalı kalma süresi  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portalında | 15 dakika | Kesinti süresi gerekli değildir | Yok |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portalı | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-geçiş için Azure AD DS yönetilen etki alanını hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-Azure AD DS yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |

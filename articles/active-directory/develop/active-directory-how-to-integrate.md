@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698858"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161231"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory ile tümleştirme
 
@@ -32,7 +32,7 @@ Uygulamanızın Azure AD ile tümleştirilmesine yönelik çeşitli yollar vard�
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Azure AD 'yi uygulamanızda oturum açmak için bir yol olarak destekleme
 
-**Oturum açma ve destek maliyetlerini azaltma.** Uygulamanızda oturum açmak için Azure AD 'yi kullanarak kullanıcılarınız hatırlayamayacak bir ad ve parolaya sahip olmayacaktır. Bir geliştirici olarak depolamak ve korumak için bir parola daha az olacaktır. Unutulmuş parola sıfırlamaları işlemek gerekmez, tek başına önemli bir tasarruf olabilir. Office 365 ve Microsoft Azure dahil olmak üzere dünyanın en popüler bulut uygulamaları için Azure AD güçleri oturum açın. Milyonlarca kuruluşun yüz milyonlarca kullanıcısı sayesinde, kullanıcılarınız zaten Azure AD 'de oturum açtı. [Azure AD oturum açma desteği ekleme](v1-authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+**Oturum açma ve destek maliyetlerini azaltma.** Uygulamanızda oturum açmak için Azure AD 'yi kullanarak kullanıcılarınız hatırlayamayacak bir ad ve parolaya sahip olmayacaktır. Bir geliştirici olarak depolamak ve korumak için bir parola daha az olacaktır. Unutulmuş parola sıfırlamaları işlemek gerekmez, tek başına önemli bir tasarruf olabilir. Office 365 ve Microsoft Azure dahil olmak üzere dünyanın en popüler bulut uygulamaları için Azure AD güçleri oturum açın. Milyonlarca kuruluşun yüz milyonlarca kullanıcısı sayesinde, kullanıcılarınız zaten Azure AD 'de oturum açtı. [Azure AD oturum açma desteği ekleme](authentication-scenarios.md)hakkında daha fazla bilgi edinin.
 
 **Uygulamanıza kaydolmayı kolaylaştırın.**  Uygulamanıza kaydolma sırasında Azure AD, kayıt formunuzu önceden doldurabilmeniz veya tamamen ortadan kaldırabilmeniz için bir kullanıcı hakkında önemli bilgiler gönderebilir. Kullanıcılar, sosyal medya ve mobil uygulamalarda bulunanlara benzer tanıdık bir onay deneyimi aracılığıyla Azure AD hesabını kullanarak uygulamanıza kaydolabilir. Herhangi bir Kullanıcı, Azure AD ile tümleştirilmiş bir uygulamaya kaydolabilir ve BT katılımı gerekmeden oturum açabilir. [Azure AD hesabı oturum açma için uygulamanızı imzalama](../../app-service/configure-authentication-provider-aad.md)hakkında daha fazla bilgi edinin.
 
@@ -70,7 +70,7 @@ Azure AD ile tümleştirme, ek kod yazmanızı gerektirmeyen avantajlarla birlik
 
 **Uygulamanızın AD ile tümleştirebilmesi için Azure AD Active Directory buluta genişletir.**  Dünyanın dört bir yanındaki kuruluşlar, sorumlu oturum açma ve kimlik yönetimi sistemi olarak Active Directory kullanır ve uygulamalarının AD ile çalışmasını gerektirir. Azure AD ile tümleştirme, uygulamanızı Active Directory tümleştirir.
 
-### <a name="advanced-security-features"></a>İleri düzey güvenlik özellikleri
+### <a name="advanced-security-features"></a>Gelişmiş güvenlik özellikleri
 
 **Multi-Factor Authentication.**  Azure AD, yerel Multi-Factor Authentication sağlar. BT yöneticileri uygulamanıza erişmek için çok faktörlü kimlik doğrulamasının yapılmasını gerektirebilir. bu sayede, bu desteği kendiniz kodlamayın. [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)hakkında daha fazla bilgi edinin.
 
@@ -92,5 +92,5 @@ Azure AD ile tümleştirme, ek kod yazmanızı gerektirmeyen avantajlarla birlik
 
 [Kod yazmaya başlayın](v2-overview.md#getting-started).
 
-[Kullanıcıları Microsoft Identity platformu kullanarak imzalama](v1-authentication-scenarios.md)
+[Kullanıcıları Microsoft Identity platformu kullanarak imzalama](authentication-scenarios.md)
 

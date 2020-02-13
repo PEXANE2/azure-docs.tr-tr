@@ -2,13 +2,13 @@
 title: Güvenlik Duvarı erişim kuralları
 description: ("Beyaz listeye") REST API ve depolama uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745193"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168014"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
@@ -115,6 +115,10 @@ Erişime izin vermeniz gereken ACR REST uç nokta IP aralıklarını bulmak içi
 Bir Azure sanal ağında, sanal makine gibi bir kaynaktan bir kapsayıcı kayıt defterine giden trafiği filtrelemek için ağ güvenlik kurallarını kullanın. Azure ağ kurallarının oluşturulmasını basitleştirmek için **AzureContainerRegistry** [Service etiketini](../virtual-network/security-overview.md#service-tags)kullanın. Hizmet etiketi, bir Azure hizmetine küresel olarak veya Azure bölgesine erişmek için bir IP adresi ön eki grubunu temsil eder. Adresler değiştiğinde etiket otomatik olarak güncelleştirilir. 
 
 Örneğin, Azure Container Registry 'ye giden trafiğe izin vermek için hedef **AzureContainerRegistry** ile giden ağ güvenlik grubu kuralı oluşturun. Yalnızca belirli bir bölgedeki hizmet etiketine erişime izin vermek için, bölgeyi şu biçimde belirtin: **AzureContainerRegistry**. [*bölge adı*].
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>MCR için istemci güvenlik duvarı kurallarını yapılandırma
+
+Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğesine erişmeniz gerekiyorsa, [MCR istemci güvenlik duvarı kurallarını](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)Yapılandırma Kılavuzu ' na bakın. MCR, Windows Server görüntüleri gibi tüm Microsoft tarafından yayınlanan Docker görüntülerinin birincil kayıt defteridir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

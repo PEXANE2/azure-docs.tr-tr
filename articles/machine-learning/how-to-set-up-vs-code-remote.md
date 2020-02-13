@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990360"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169747"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama
 
 Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde uzaktan Visual Studio Code ayarlamayı öğrenirsiniz, böylece VS Code **kodunuzda kodunuzun hatalarını etkileşimli olarak ayıklayabilirsiniz** . 
-
-> [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bir bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
 
 + [Azure Machine Learning Işlem örneği](concept-compute-instance.md) , veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar. 
 
@@ -37,7 +34,7 @@ Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yükleme
 
 ## <a name="get-ip-and-ssh-port"></a>IP ve SSH bağlantı noktası al 
 
-1. https://ml.azure.com/ Azure Machine Learning Studio 'ya gidin.
+1. https://ml.azure.com/Azure Machine Learning Studio 'ya gidin.
 
 2. [Çalışma alanınızı](concept-workspace.md)seçin.
 1. **Işlem örnekleri** sekmesine tıklayın.
@@ -91,7 +88,7 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
-|Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
+|Host|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |ana bilgisayar adı|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
 |Kullanıcı|Bunun `azureuser` olması gerekir |

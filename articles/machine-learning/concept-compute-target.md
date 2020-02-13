@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984821"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169826"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -50,16 +50,12 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 
 İçinde Azure Machine Learning işlem örnekleri (Önizleme) veya işlem kümeleri oluşturabilirsiniz:
 
-| | Azure Machine Learning Studio | Azure portalında | SDK | Resource Manager şablonu | CLI |
+| | Azure Machine Learning Studio | Azure portalı | SDK | Resource Manager şablonu | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | İşlem örneği | evet | evet | evet | evet |  |
 | İşlem kümesi | evet | evet | evet | evet | evet |
 
 Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
-
-> [!NOTE]
-> İşlem örnekleri yalnızca **Orta Kuzey ABD**, **Doğu ABD 2**, **Kuzey Avrupa** veya **UK Güney**bir bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
->Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
 
 ### <a name="compute-clusters"></a>İşlem kümeleri
 
@@ -78,6 +74,6 @@ Yönetilmeyen bir işlem hedefi Azure Machine Learning *tarafından yönetilmiyo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 * [Modelinizi eğitme için bir işlem hedefi ayarlama](how-to-set-up-training-targets.md)
 * [Modelinizi bir işlem hedefine dağıtın](how-to-deploy-and-where.md)

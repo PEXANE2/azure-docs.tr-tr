@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
-ms.translationtype: HT
+ms.openlocfilehash: 483603b8ff2f4b51f85d21d6ff4f02ad6f8a8272
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046091"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162098"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -124,7 +124,7 @@ Sonuçları CSV 'de göstermek için:
 
 | Özellik | Destek durumu | Notlar |
 |---------|----------------|-------|
-| Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows ACL 'Leri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Dosyalara doğrudan bulutta erişiliyorsa, Windows ACL 'Leri (henüz) Azure dosyaları tarafından desteklenmez. |
+| Erişim denetim listeleri (ACL 'Ler) | Tam olarak destekleniyor | Windows ACL 'Leri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Dosyalara doğrudan bulutta erişiliyorsa, Windows ACL 'Leri (henüz) Azure dosyaları tarafından desteklenmez. |
 | Sabit bağlantılar | Atlandı | |
 | Sembolik bağlantılar | Atlandı | |
 | Bağlama noktaları | Kısmen destekleniyor | Bağlama noktaları bir sunucu uç noktasının kökü olabilir, ancak sunucu uç noktasının ad alanında yer alıyorsa atlanır. |
@@ -147,7 +147,7 @@ Sonuçları CSV 'de göstermek için:
 | ehthumbs.db | Medya küçük resimleri için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
-| \*.laccdb | DB kilitleme dosyasına erişin|
+| \*. laccdb | DB kilitleme dosyasına erişin|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | İç eşitleme dosyası|
 | Sistem birimi bilgilerini \\ | Birime özgü klasör |
 | $RECYCLE. BÖLME| Klasör |
@@ -206,10 +206,10 @@ Azure Dosya Eşitleme ve DFS-R 'nin yan yana çalışması için:
 
 Daha fazla bilgi için bkz. [DFS çoğaltma genel bakış](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>Sysprep
+### <a name="sysprep"></a>'İ
 Azure Dosya Eşitleme aracısının yüklü olduğu bir sunucuda Sysprep kullanılması desteklenmez ve beklenmeyen sonuçlara yol açabilir. Aracı yüklemesi ve sunucu kaydı, sunucu görüntüsünü dağıttıktan ve Sysprep Mini Kurulumu tamamlandıktan sonra gerçekleşmelidir.
 
-### <a name="windows-search"></a>Windows Search
+### <a name="windows-search"></a>Windows arama
 Bulut katmanlaması bir sunucu uç noktasında etkinleştirilmişse, katmanlı dosyalar atlanır ve Windows Search tarafından dizine alınmamış olur. Katmanlı olmayan dosyalar doğru şekilde dizine alınır.
 
 ### <a name="antivirus-solutions"></a>Virüsten koruma çözümleri
@@ -246,52 +246,52 @@ Genellikle, Azure Dosya Eşitleme BitLocker gibi dosya sisteminin altında bulun
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Diğer hiyerarşik depolama yönetimi (HSM) çözümleri
 Azure Dosya Eşitleme ile başka bir HSM çözümü kullanılmamalıdır.
 
-## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
+## <a name="region-availability"></a>Bölge kullanılabilirliği
 Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 
 | Bölge | Veri merkezi konumu |
 |--------|---------------------|
-| Doğu Avustralya | Yeni Güney Galler |
-| Güneydoğu Avustralya | Victoria |
-| Güney Brezilya | Sao Paulo Eyaleti |
-| Orta Kanada | Toronto |
-| Doğu Kanada | Quebec City |
+| Avustralya Doğu | Yeni Güney Galler |
+| Avustralya Güneydoğu | Victoria |
+| Brezilya Güney | Sao Paulo durumu |
+| Kanada Orta | Toronto |
+| Kanada Doğu | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
-| Doğu Asya | Hong Kong SAR |
+| Doğu Asya | Hong Kong Çin ÖİB |
 | Doğu ABD | Virginia |
 | Doğu ABD 2 | Virginia |
-| Orta Fransa | Paris |
-| Fransa Güney * | Marseille |
-| Güney Kore - Orta | Seoul |
-| Güney Kore - Güney | Busan |
-| Doğu Japonya | Tokyo, Saitama |
-| Batı Japonya | Osaka |
+| Fransa Orta | Paris |
+| Fransa Güney * | Marsilya |
+| Kore Orta | Seul |
+| Kore Güney | Busan |
+| Japonya Doğu | Tokyo, sate ma |
+| Japonya Batı | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
 | Güney Afrika Kuzey | Johannesburg |
-| Güney Afrika Batı * | Cape Town |
+| Güney Afrika Batı * | Cabo Town |
 | Orta Güney ABD | Texas |
 | Güney Hindistan | Chennai |
 | Güneydoğu Asya | Singapur |
-| Güney Birleşik Krallık | Londra |
-| UK, Batı | Cardiff |
+| UK Güney | Londra |
+| UK Batı | Cardiff |
 | US Gov Arizona | Arizona |
-| US Gov Teksas | Texas |
+| US Gov Texas | Texas |
 | US Gov Virginia | Virginia |
 | BAE Kuzey | Dubai |
 | BAE Orta * | Abu Dabi |
 | Batı Avrupa | Hollanda |
-| Orta Batı ABD | Wyoming |
-| Batı ABD | Kaliforniya |
-| Batı ABD 2 | Washington DC |
+| Orta Batı ABD | Wyota |
+| Batı ABD | For |
+| Batı ABD 2 | Eyaleti |
 
 Azure Dosya Eşitleme, yalnızca depolama eşitleme hizmeti ile aynı bölgedeki bir Azure dosya paylaşımıyla eşitlemeyi destekler.
 
 Yıldız işaretleri ile işaretlenmiş bölgeler için, bu bölgelerde Azure depolama 'ya erişim istemek üzere Azure desteği 'ne başvurmanız gerekir. İşlem [Bu belgede](https://azure.microsoft.com/global-infrastructure/geographies/)özetlenmiştir.
 
 ### <a name="azure-disaster-recovery"></a>Azure olağanüstü durum kurtarma
-Azure bölgesinin kaybedilmesine karşı korunmak için, Azure Dosya Eşitleme [coğrafi olarak yedekli depolama artıklığı](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) seçeneğiyle tümleştirilir. GRS depolama, birincil bölgedeki depolama alanı arasında zaman uyumsuz blok çoğaltma kullanarak çalışır ve bu da eşleştirilmiş ikincil bölgede depolama alanı. Bir Azure bölgesinin geçici veya kalıcı olarak çevrimdışı olmasına neden olan bir olağanüstü durum durumunda, Microsoft depolama 'yı eşleştirilmiş bölgeye devreder. 
+Azure bölgesinin kaybedilmesine karşı korunmak için, Azure Dosya Eşitleme [coğrafi olarak yedekli depolama](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) ile tümleşir. GRS depolama, birincil bölgedeki depolama alanı arasında zaman uyumsuz blok çoğaltma kullanarak çalışır ve bu da eşleştirilmiş ikincil bölgede depolama alanı. Bir Azure bölgesinin geçici veya kalıcı olarak çevrimdışı olmasına neden olan bir olağanüstü durum durumunda, Microsoft depolama 'yı eşleştirilmiş bölgeye devreder. 
 
 > [!Warning]  
 > Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
@@ -300,22 +300,22 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 
 | Birincil bölge      | Eşleştirilmiş bölge      |
 |---------------------|--------------------|
-| Doğu Avustralya      | Güneydoğu Avustralya|
-| Güneydoğu Avustralya | Doğu Avustralya     |
-| Güney Brezilya        | Orta Güney ABD   |
-| Orta Kanada      | Doğu Kanada        |
-| Doğu Kanada         | Orta Kanada     |
+| Avustralya Doğu      | Avustralya Güneydoğu|
+| Avustralya Güneydoğu | Avustralya Doğu     |
+| Brezilya Güney        | Orta Güney ABD   |
+| Kanada Orta      | Kanada Doğu        |
+| Kanada Doğu         | Kanada Orta     |
 | Orta Hindistan       | Güney Hindistan        |
 | Orta ABD          | Doğu ABD 2          |
 | Doğu Asya           | Güneydoğu Asya     |
 | Doğu ABD             | Batı ABD            |
 | Doğu ABD 2           | Orta ABD         |
-| Orta Fransa      | Güney Fransa       |
-| Güney Fransa        | Orta Fransa     |
-| Doğu Japonya          | Batı Japonya         |
-| Batı Japonya          | Doğu Japonya         |
-| Güney Kore - Orta       | Güney Kore - Güney        |
-| Güney Kore - Güney         | Güney Kore - Orta      |
+| Fransa Orta      | Fransa Güney       |
+| Fransa Güney        | Fransa Orta     |
+| Japonya Doğu          | Japonya Batı         |
+| Japonya Batı          | Japonya Doğu         |
+| Kore Orta       | Kore Güney        |
+| Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |
 | Orta Kuzey ABD    | Orta Güney ABD   |
 | Güney Afrika Kuzey  | Güney Afrika Batı  |
@@ -323,11 +323,11 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | Orta Güney ABD    | Orta Kuzey ABD   |
 | Güney Hindistan         | Orta Hindistan      |
 | Güneydoğu Asya      | Doğu Asya          |
-| Güney Birleşik Krallık            | UK, Batı            |
-| UK, Batı             | Güney Birleşik Krallık           |
-| US Gov Arizona      | US Gov Teksas       |
+| UK Güney            | UK Batı            |
+| UK Batı             | UK Güney           |
+| US Gov Arizona      | US Gov Texas       |
 | US Gov Iowa         | US Gov Virginia    |
-| US Gov Virginia      | US Gov Teksas       |
+| US Gov Virginia      | US Gov Texas       |
 | Batı Avrupa         | Kuzey Avrupa       |
 | Orta Batı ABD     | Batı ABD 2          |
 | Batı ABD             | Doğu ABD            |

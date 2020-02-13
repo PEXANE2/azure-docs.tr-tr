@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5d29598b0962fc42c855e7a26917a34269c30ddb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615858"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158071"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -40,7 +40,7 @@ AKS kümelerinin güvenliği Azure Active Directory (AD) Tümleştirmesi ile gel
 
 ![AKS kümeleriyle Azure Active Directory tümleştirme](media/concepts-identity/aad-integration.png)
 
-Azure AD ile tümleşik AKS kümeleri sayesinde, kullanıcılara veya gruplara bir ad alanı veya küme genelinde Kubernetes kaynaklarına erişim izni verebilirsiniz. Bir `kubectl` yapılandırma bağlamı elde etmek için, Kullanıcı [az aks Get-Credentials][az-aks-get-credentials] komutunu çalıştırabilir. Bir Kullanıcı daha sonra aks kümesiyle `kubectl`etkileşime geçtiğinde Azure AD kimlik bilgileriyle oturum açması istenir. Bu yaklaşım Kullanıcı hesabı yönetimi ve parola kimlik bilgileri için tek bir kaynak sağlar. Kullanıcı yalnızca küme yöneticisi tarafından tanımlanan kaynaklara erişebilir.
+Azure AD ile tümleşik AKS kümeleri sayesinde, kullanıcılara veya gruplara bir ad alanı veya küme genelinde Kubernetes kaynaklarına erişim izni verebilirsiniz. Bir `kubectl` yapılandırma bağlamını almak için, Kullanıcı [az aks Get-Credentials][az-aks-get-credentials] komutunu çalıştırabilir. Bir Kullanıcı `kubectl`ile AKS kümesiyle etkileşime geçtiğinde, bunların Azure AD kimlik bilgileriyle oturum açması istenir. Bu yaklaşım Kullanıcı hesabı yönetimi ve parola kimlik bilgileri için tek bir kaynak sağlar. Kullanıcı yalnızca küme yöneticisi tarafından tanımlanan kaynaklara erişebilir.
 
 AKS kümelerinde Azure AD kimlik doğrulaması, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanı olan OpenID Connect 'i kullanır. OAuth 2,0, korumalı kaynaklara erişmek için erişim belirteçleri alma ve kullanma mekanizmalarını tanımlar ve OpenID Connect, kimlik doğrulamasını OAuth 2,0 yetkilendirme işlemine bir uzantı olarak uygular. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][openid-connect]. OpenID Connect aracılığıyla Azure AD 'den alınan kimlik doğrulama belirteçlerini doğrulamak için, AKS kümeleri Kubernetes Web kancası belirteci kimlik doğrulamasını kullanır. Daha fazla bilgi için [Web kancası belirteci kimlik doğrulama belgelerine][webhook-token-docs]bakın.
 
@@ -91,7 +91,7 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md

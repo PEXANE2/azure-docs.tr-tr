@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466526"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157848"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Bilişsel Arama hizmetinizi PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -24,23 +24,19 @@ ms.locfileid: "73466526"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Bilişsel Arama oluşturmak ve yapılandırmak için Windows, Linux veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 'de PowerShell cmdlet 'leri ve betikleri çalıştırabilirsiniz. **Az. Search** modülü Azure PowerShell] öğesini [Azure bilişsel arama Management REST API 'lerine](https://docs.microsoft.com/rest/api/searchmanagement)tam eşlik ile genişletir. Azure PowerShell ve **az. Search**ile aşağıdaki görevleri gerçekleştirebilirsiniz:
+Azure Bilişsel Arama oluşturmak ve yapılandırmak için Windows, Linux veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 'de PowerShell cmdlet 'leri ve betikleri çalıştırabilirsiniz. **Az. Search** modülü, [arama yönetimi REST API 'lerine](https://docs.microsoft.com/rest/api/searchmanagement) tam eşlik ile [Azure PowerShell](https://docs.microsoft.com/powershell/) genişletir ve aşağıdaki görevleri gerçekleştirebilir:
 
 > [!div class="checklist"]
-> * [Aboneliğinizdeki tüm arama hizmetlerini listeleyin](#list-search-services)
-> * [Belirli bir arama hizmeti hakkında bilgi alın](#get-search-service-information)
+> * [Bir abonelikte arama hizmetlerini listeleme](#list-search-services)
+> * [Hizmet bilgilerini döndür](#get-search-service-information)
 > * [Hizmet oluşturma veya silme](#create-or-delete-a-service)
 > * [Yönetici API anahtarlarını yeniden oluştur](#regenerate-admin-keys)
 > * [Sorgu API 'si oluşturma veya silme](#create-or-delete-query-keys)
-> * [Çoğaltmaları ve bölümleri artırarak veya azaltarak bir hizmeti ölçeklendirin](#scale-replicas-and-partitions)
+> * [Çoğaltmalar ve bölümlerle ölçeği artırma veya azaltma](#scale-replicas-and-partitions)
 
-PowerShell, hizmetinizin adını, bölgesini veya katmanını değiştirmek için kullanılamaz. Adanmış kaynaklar bir hizmet oluşturulduğunda ayrılır. Temel alınan donanımın (konum veya düğüm türü) değiştirilmesi için yeni bir hizmet gerekir. Bir hizmetten diğerine içerik aktarmaya yönelik araç veya API yok. Tüm içerik yönetimi [rest](https://docs.microsoft.com/rest/api/searchservice/) veya [.net](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API 'dedir ve dizinleri taşımak istiyorsanız, yeni bir hizmette yeniden oluşturmanız ve yeniden yüklemeniz gerekir. 
+Bazen, yukarıdaki listede *olmayan* görevlerle ilgili soruların sorulması istenir. Şu anda, sunucu adını, bölgeyi veya katmanını değiştirmek için **az. Search** modülünü ya da yönetim REST API kullanamazsınız. Adanmış kaynaklar bir hizmet oluşturulduğunda ayrılır. Bu nedenle, temel alınan donanımın (konum veya düğüm türü) değiştirilmesi için yeni bir hizmet gerekir. Benzer şekilde, bir hizmetten diğerine bir dizin gibi içerik aktarmaya yönelik bir araç veya API yoktur.
 
-İçerik yönetimi için adanmış PowerShell komutu bulunmadığından, dizin oluşturmak ve yüklemek için REST veya .NET çağıran PowerShell betiği yazabilirsiniz. **Az. Search** modülünün kendisi bu işlemleri sağlamaz.
-
-PowerShell veya başka bir API aracılığıyla desteklenmeyen diğer görevler (yalnızca portal) şunları içerir:
-+ [AI zenginleştirilmiş dizin oluşturma](cognitive-search-concept-intro.md)için bilişsel [Hizmetler kaynağı ekleyin](cognitive-search-attach-cognitive-services.md) . Bilişsel hizmet bir abonelik veya hizmete değil, bir beceri bağlı.
-+ Azure Bilişsel Arama izlemeye yönelik [eklenti izleme çözümleri](search-monitor-usage.md#add-on-monitoring-solutions) .
+Bir hizmette, içerik oluşturma ve Yönetim [Arama Hizmeti REST API](https://docs.microsoft.com/rest/api/searchservice/) veya [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)ile yapılır. İçerik için adanmış bir PowerShell komutu bulunmadığından, dizinler oluşturmak ve yüklemek için REST veya .NET API 'Leri çağıran PowerShell betiği yazabilirsiniz.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Aboneliğinizdeki tüm Azure Bilişsel Arama hizmetlerini listeleyin
+## <a name="list-services-in-a-subscription"></a>Bir abonelikteki hizmetleri listeleme
 
 Aşağıdaki komutlar [**az. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), aboneliğinizde zaten sağlanmış olan mevcut kaynaklar ve hizmetler hakkında bilgi döndürüyor. Kaç tane arama hizmeti oluşturulduğunu bilmiyorsanız, bu komutlar bu bilgileri döndürür ve portala seyahat ister.
 

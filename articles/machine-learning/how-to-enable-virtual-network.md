@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988235"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169956"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Bu makalede, *Gelişmiş güvenlik ayarları*, temel veya Deneysel kullanım dur
 > [!WARNING]
 > Microsoft, bir sanal ağ içindeki kaynaklarla Azure Machine Learning tasarımcısını veya otomatik makine öğrenimini (Studio 'dan) kullanmayı desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 
@@ -124,10 +124,6 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>Machine Learning İşlem kullanma
-
-> [!NOTE]
-> İşlem örnekleri (Önizleme) Şu anda yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir ve yakında diğer bölgelere yönelik desteğe sahiptir.
-> Sanal ağa eklenebilecek bir işlem örneği oluşturmak için bu bölgelerden birini kullanın.
 
 Bir sanal ağda Azure Machine Learning işlem örneği veya işlem kümesi kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
 
@@ -508,5 +504,5 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güve
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Eğitim ortamlarını ayarlama](how-to-set-up-training-targets.md)
-* [Modelleri dağıtılacağı yeri](how-to-deploy-and-where.md)
+* [Modellerin dağıtılacağı konum](how-to-deploy-and-where.md)
 * [SSL ile güvenli bir şekilde model dağıtma](how-to-secure-web-service.md)

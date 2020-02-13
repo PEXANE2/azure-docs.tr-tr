@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274188"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159055"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulaması için parola çoklu oturum açmayı yapılandırma sorunu
 
@@ -31,7 +31,7 @@ Bu sorun genellikle uygulama satıcısı oturum açma sayfasını son zamanlarda
 
 Microsoft, tümleştirmelerin ne zaman otomatik olarak algılanması için teknolojiler sağlarken, sorunları hemen bulmak mümkün olmayabilir veya sorunların düzeltilmesi biraz zaman alabilir. Bu tümleştirmelerin bir örneği doğru şekilde çalışmazsa, mümkün olduğunca çabuk düzeltibilmeleri için bir destek talebi açın.
 
-**Bu uygulamanın satıcısıyla iletişim kursunsam, Microsoft 'un** kendi uygulamasını Azure Active Directory ile yerel olarak tümleştirmeleri için onlarla birlikte çalışmasına yol açabilir. Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/howto-app-gallery-listing.md) gönderebilirsiniz.
+**Bu uygulamanın satıcısıyla iletişim kursunsam, Microsoft 'un** kendi uygulamasını Azure Active Directory ile yerel olarak tümleştirmeleri için onlarla birlikte çalışmasına yol açabilir. Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Kimlik bilgileri doldurulmuştur ve gönderilir, ancak sayfa kimlik bilgilerinin yanlış olduğunu belirtiyor
 
@@ -59,7 +59,7 @@ Bu sorunu çözmek için öncelikle şunları deneyin:
 
 Microsoft, uygulama tümleştirmeleri sırasında otomatik olarak algılamaya yönelik teknolojiler sağlarken, sorunları hemen bulmak mümkün olmayabilir veya sorunların düzeltilmesi biraz zaman alabilir. Bir tümleştirme düzgün çalışmazsa, mümkün olduğunca hızlı bir şekilde düzeltilmesi için bir destek talebi açabilirsiniz. 
 
-Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/howto-app-gallery-listing.md) gönderebilirsiniz.
+Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Uzantı Chrome ve Firefox 'ta çalışmaktadır, ancak Internet Explorer 'da kullanılamaz
 
@@ -73,7 +73,7 @@ Bu sorunun başlıca iki nedeni vardır:
 
   * Ne yazık ki bu durum tarayıcı sürümüne, bilgisayar hızına veya ziyaret edilen siteye bağlı olarak farklılık gösterebilir. Bu durumda, bu belirli uygulama için tümleştirmeyi çözebilmemiz için destek ekibiyle iletişime geçin.
 
-Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/howto-app-gallery-listing.md) gönderebilirsiniz.
+Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Uygulamanın oturum açma sayfasının yakın zamanda değişip değişmediğini ve ek bir alan gerektirip gerektirmediğini denetleyin
 
@@ -81,7 +81,7 @@ Uygulamanın oturum açma sayfası büyük ölçüde değiştirilmişse, bazı d
 
 Microsoft, uygulama tümleştirmeleri sırasında otomatik olarak algılamaya yönelik teknolojiler sağlarken, sorunları hemen bulmak mümkün olmayabilir veya sorunların düzeltilmesi biraz zaman alabilir. Bir tümleştirme düzgün çalışmazsa, mümkün olduğunca hızlı bir şekilde düzeltilmesi için bir destek talebi açabilirsiniz. 
 
-Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/howto-app-gallery-listing.md) gönderebilirsiniz.
+Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Erişim paneli tarayıcı uzantısını nasıl yüklenir
 

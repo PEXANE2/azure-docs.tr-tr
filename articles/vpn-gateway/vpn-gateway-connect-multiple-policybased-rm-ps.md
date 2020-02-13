@@ -7,24 +7,24 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 97db6af7233a8cc0e1feac75734225815282131a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: dec088ed751856957735867f740dc951c3b8f2ac
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896163"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162081"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerini birden çok şirket içi ilke tabanlı VPN cihazına bağlama
 
 Bu makale, Azure rota tabanlı bir VPN ağ geçidini, S2S VPN bağlantılarında özel IPSec/ıKE ilkeleri kullanan birden çok şirket içi ilke tabanlı VPN cihazına bağlanmak üzere yapılandırmanıza yardımcı olur.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>İlke tabanlı ve rota tabanlı VPN ağ geçitleri hakkında
 
 İlke-ve rota tabanlı VPN cihazları, IPSec trafik seçicilerin bir bağlantıda nasıl *ayarlananlara* göre farklılık gösterir:
 
-* **İlke tabanlı** VPN cihazları, trafiğin IPsec tünelleriyle nasıl şifrelendiğini/çözülemediğini tanımlamak için her iki ağdan gelen ön eklerin birleşimini kullanır. Genellikle paket filtrelemesi gerçekleştiren güvenlik duvarı cihazlarında oluşturulur. Paket filtreleme ve işleme altyapısına IPsec tünel şifreleme ve şifre çözme özellikleri eklenir.
+* **İlke tabanlı** VPN cihazları, trafiğin IPsec tünelleriyle nasıl şifrelendiğini/çözülemediğini tanımlamak için her iki ağdan gelen ön eklerin birleşimini kullanır. Genellikle paket filtrelemesi gerçekleştiren güvenlik duvarı cihazlarında oluşturulur. IPSec tünel şifreleme ve şifre çözme, paket filtreleme ve işleme motoruna eklenir.
 * **Rota tabanlı** VPN cihazları herhangi bir ile herhangi bir (joker karakter) trafik seçicileri kullanır ve tabloları yönlendirme/iletme tablolarının farklı IPSec tünellerinin doğrudan trafiğine izin verir. Genellikle her ıpsec tünelinin bir ağ arabirimi veya VTı (sanal tünel arabirimi) olarak modellendiği yönlendirici platformları üzerine kurulmuştur.
 
 Aşağıdaki diyagramlar iki modeli vurgulayacaktır:

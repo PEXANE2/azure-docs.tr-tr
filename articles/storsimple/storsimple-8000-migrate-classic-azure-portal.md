@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 8759de162227e8504360e64673ca9295c12cd13a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 428c336d98e278910b229e9c0d877a9ae6268c96
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121893"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169715"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetiyle ilişkili abonelikleri ve depolama hesaplarını geçirme
 
@@ -35,7 +35,7 @@ StorSimple hizmetinizi yeni bir kayda veya yeni bir aboneliğe taşımanız gere
 |Bir Azure aboneliğinin sahipliğini başka bir dizine aktarabilir miyim? | Yes       | Hayır       | Mevcut bir aboneliği Azure AD dizininizle ilişkilendirin | [Mevcut bir aboneliği Azure AD dizininizle ilişkilendirme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)bölümüne bakın. Her şeyin doğru şekilde gösterilmesi 10 dakikaya kadar sürebilir.|
 | Tek bir StorSimple Aygıt Yöneticisi hizmetinden farklı bir bölgedeki başka bir hizmete StorSimple cihazı mı kullanıyorsunuz?      | Hayır        | Yes            | Hiçbiri, el ile işlem |Yukarıdaki gibi.|
 | Depolama hesabı yeni bir aboneliğe veya kaynak grubuna mı?     | Yes        | Hayır             |Depolama hesabını farklı bir aboneliğe veya kaynak grubuna taşıyın |Taşıma işleminden sonra, depolama hesabı erişim anahtarları güncelleştirilirse, kullanıcının, StorSimple Aygıt Yöneticisi hizmeti aracılığıyla, geçirilen depolama hesabı için erişim anahtarlarını el ile yapılandırması gerekir.|
-| Azure Resource Manager depolama hesabına klasik depolama hesabı      | Yes        | Hayır             |Klasik 'ten Azure Resource Manager 'e geçiş |<li>Bir depolama hesabını klasik ' ten Azure Resource Manager geçirme hakkında ayrıntılı yönergeler için, [Klasik depolama hesabını geçirme](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-62-migrate-a-storage-account)' ye gidin.</li><li> Depolama hesabı erişim anahtarları geçişten sonra güncelleştirilirse, kullanıcının, StorSimple Aygıt Yöneticisi hizmeti aracılığıyla geçirilmiş depolama hesabı için erişim anahtarlarını eşitlemesi gerekecektir. Bu, StorSimple cihazlarının normal şekilde çalışmaya devam etmesini ve birincil/yedekleme verilerini Azure 'a katabilebilmesini sağlamaktır. Erişim anahtarlarını eşitlemeye ilişkin ayrıntılı yönergeler için, [döndürme iş akışına](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)gidin.</li><li> StorSimple Cloud Appliance söz konusu olduğunda, klasik depolama hesabı geçirilir ancak temeldeki sanal makine yine de klasik halde kalırsa, Gereç düzgün şekilde çalışır. Bulut gereci için temel alınan sanal makine geçirilirse, devre dışı bırak ve Sil işlevselliği çalışmaz.</li><li> Azure portal yeni bir StorSimple bulut gereçini oluşturmanız ve daha sonra eski bulut gereçlerinde yük devredebilmeniz gerekir. Klasik depolama hesabı kullanarak yeni Azure portal StorSimple Cloud Appliance oluşturamazsınız, bir Azure Resource Manager depolama hesabına sahip olmaları gerekir. Daha fazla bilgi için, [StorSimple Cloud Appliance dağıtma ve yönetme](storsimple-8000-cloud-appliance-u2.md)konusuna gidin.</li>|
+| Azure Resource Manager depolama hesabına klasik depolama hesabı      | Yes        | Hayır             |Klasik 'ten Azure Resource Manager 'e geçiş |<li>Bir depolama hesabını klasik ' ten Azure Resource Manager geçirme hakkında ayrıntılı yönergeler için, [Klasik depolama hesabını geçirme](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account)' ye gidin.</li><li> Depolama hesabı erişim anahtarları geçişten sonra güncelleştirilirse, kullanıcının, StorSimple Aygıt Yöneticisi hizmeti aracılığıyla geçirilmiş depolama hesabı için erişim anahtarlarını eşitlemesi gerekecektir. Bu, StorSimple cihazlarının normal şekilde çalışmaya devam etmesini ve birincil/yedekleme verilerini Azure 'a katabilebilmesini sağlamaktır. Erişim anahtarlarını eşitlemeye ilişkin ayrıntılı yönergeler için, [döndürme iş akışına](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)gidin.</li><li> StorSimple Cloud Appliance söz konusu olduğunda, klasik depolama hesabı geçirilir ancak temeldeki sanal makine yine de klasik halde kalırsa, Gereç düzgün şekilde çalışır. Bulut gereci için temel alınan sanal makine geçirilirse, devre dışı bırak ve Sil işlevselliği çalışmaz.</li><li> Azure portal yeni bir StorSimple bulut gereçini oluşturmanız ve daha sonra eski bulut gereçlerinde yük devredebilmeniz gerekir. Klasik depolama hesabı kullanarak yeni Azure portal StorSimple Cloud Appliance oluşturamazsınız, bir Azure Resource Manager depolama hesabına sahip olmaları gerekir. Daha fazla bilgi için, [StorSimple Cloud Appliance dağıtma ve yönetme](storsimple-8000-cloud-appliance-u2.md)konusuna gidin.</li>|
 
 ## <a name="datacenter-changes"></a>Veri merkezi değişiklikleri
 
