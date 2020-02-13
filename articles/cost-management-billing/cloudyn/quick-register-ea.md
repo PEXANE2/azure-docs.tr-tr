@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: dcb4a04ced1d36a6d0717b9a65150faacc702cc5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e6431d1fa73106267730db721060906e43c456d2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769968"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117756"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure Kurumsal Anlaşma kaydetme ve maliyet verilerini görüntüleme
 
@@ -24,7 +24,7 @@ Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yöneti
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-- https://portal.azure.com adresinden Azure portalında oturum açın.
+- [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="register-with-cloudyn"></a>Cloudyn’e kaydolma
 
