@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: seyahat moduna göre birden çok yol bulma | Microsoft Azure haritaları'
 description: Bu öğreticide, Microsoft Azure haritaları kullanarak farklı seyahat modlarına yönelik yolların nasıl bulunacağını öğreneceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989663"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209503"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için rotalar bulma
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure haritalar hesabınızı ve yönlendirme hizmetini nasıl 
 > * Seyahat modunu bildiren yol sorguları oluşturma
 > * Haritanızda birden fazla yol görüntüleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Devam etmeden önce, [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri Izleyin ve S1 fiyatlandırma katmanını seçin. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="create-a-new-map"></a>Yeni harita oluşturma
@@ -79,7 +79,7 @@ Aşağıdaki adımlarda, Harita Denetimi API’sinin tümleşik olduğu statik b
     </html>
     ```
 
-    HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `GetMap` işlevini çağıracak olan `onload` olayına dikkat edin. Bu işlev, Azure Haritalar API’lerine erişime yönelik satır içi JavaScript kodunu içerir.
+    HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `onload` işlevini çağıracak olan `GetMap` olayına dikkat edin. Bu işlev, Azure Haritalar API’lerine erişime yönelik satır içi JavaScript kodunu içerir.
 
 3. `GetMap` işlevine aşağıdaki JavaScript kodunu ekleyin. Dize `<Your Azure Maps Key>`, haritalar hesabınızdan kopyaladığınız birincil anahtarla değiştirin.
 
@@ -158,7 +158,7 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. Rotalardan biri
     });
     ```
     
-    Haritalar `ready` olay işleyicisinde, yol çizgilerini ve başlangıç ve bitiş noktalarını depolamak için bir veri kaynağı oluşturulur. Bir çizgi katmanı oluşturulup veri kaynağına eklenir ve rota çizgisinin nasıl işleneceği tanımlanır. Rota çizgisi özelliğinden çizgi kalınlığını ve rengini almak için ifadeler kullanılır. Katman haritaya eklenirken bu katmanın harita etiketlerinin altında işlenmesi gerektiğini belirten `'labels'` değerine sahip ikinci bir parametre geçirilir. Bu parametre, rota çizgisinin yol etiketlerini kapatmamasını sağlar. Bir simge katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, başlangıç ve bitiş noktalarının nasıl işleneceğini belirtir. Bu durumda, her bir nokta nesnesindeki özelliklerden simge görüntüsünü ve metin etiketi bilgisini almak için ifadeler eklenmiştir. 
+    Haritalar `ready` olay işleyicisinde, yol çizgilerini ve başlangıç ve bitiş noktalarını depolamak için bir veri kaynağı oluşturulur. Bir çizgi katmanı oluşturulup veri kaynağına eklenir ve rota çizgisinin nasıl işleneceği tanımlanır. Rota çizgisi özelliğinden çizgi kalınlığını ve rengini almak için ifadeler kullanılır. Katman haritaya eklenirken bu katmanın harita etiketlerinin altında işlenmesi gerektiğini belirten `'labels'` değerine sahip ikinci bir parametre geçirilir. Bu, rota satırının yol etiketlerini kapsamamasını sağlar. Bir simge katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, başlangıç ve bitiş noktalarının nasıl işleneceğini belirtir. Bu durumda, her bir nokta nesnesindeki özelliklerden simge görüntüsünü ve metin etiketi bilgisini almak için ifadeler eklenmiştir. 
     
 2. Bu öğreticide başlangıç noktasını Seattle’daki Fabrikam adlı hayali şirket, varış noktasını ise bir Microsoft ofisi olarak ayarlayın. Haritalar `ready` olay işleyicisinde aşağıdaki kodu ekleyin.
 
@@ -200,7 +200,11 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. Rotalardan biri
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Ulaşım yöntemine göre önceliklendirilmiş yolları işleme
 
-Bu bölümde, taşıma modınızdan yola çıkarak belirli bir başlangıç noktasından son noktaya birden çok yol bulmak için Maps Route Service API 'sinin nasıl kullanılacağı gösterilmektedir. Yönlendirme hizmeti, mevcut trafik koşullarını göz önünde bulundurarak iki konum arasındaki *en hızlı*, *en kısa*, *ekonomik* veya *heyecan verici* yolları planlamak için API’ler sağlar. Ayrıca, Azure’ın geçmişe ait kapsamlı trafik veritabanını kullanarak herhangi bir gün ve saat için yol süresini tahmin eder. Böylece kullanıcıların ileri bir tarih için yol tarifi alabilmesini sağlar. Daha fazla bilgi için bkz. [getRouteDirections](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Aşağıdaki kod bloklarının harita tamamen yüklendikten sonra yüklendiğinden emin olmak için tümü **map load eventListener** içine eklenmelidir.
+Bu bölümde, Maps Route Service API 'sinin nasıl kullanılacağı gösterilmektedir. Yönlendirme API 'SI, taşıma modınızdan yola çıkarak belirli bir başlangıç noktasından bitiş noktasına birden çok yol bulmak için kullanılır. Rota hizmeti, *en hızlı*, *en kısa*, *ekonomik*veya *Thrilling* yollarını planlamak için API 'ler sağlar. API 'Leri yalnızca iki konum arasında yönlendirmeler planı yoktur, ancak aynı zamanda geçerli trafik koşullarını da dikkate alırlar. 
+
+Yönlendirme API 'SI, kullanıcıların Azure 'un kapsamlı geçmiş trafik veritabanını kullanarak gelecek yolları planlayasağlar. API, belirli bir gün ve saat için rota sürelerini tahmin edebilir. Daha fazla bilgi için bkz. [getRouteDirections](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). 
+
+Eşleme tamamen yüklendikten sonra yüklendiklerinden emin olmak için, aşağıdaki kod bloklarının hepsi **Map Load eventListener içine** eklenmelidir.
 
 1. GetMap işlevinde, JavaScript koduna aşağıdakini ekleyin.
 
@@ -244,7 +248,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak belirli bir başlangıç nokt
     });
     ```
 
-    Yukarıdaki kod parçacığı, Azure Maps yönlendirme hizmetini [Getrouteyönleri](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) yöntemiyle sorgular. Daha sonra yol satırı, `geojson.getFeatures()` yöntemi kullanılarak ayıklanan yanıttan coğrafi JSON özelliği koleksiyonundan ayıklanır. Yol satırı daha sonra veri kaynağına eklenir. 0 dizini, veri kaynağındaki diğer satırlardan önce oluşturulmasını sağlar. Bunun nedeni, tır rotası hesaplama işlemlerinin araba rotası hesaplama işlemlerinden genellikle daha yavaş gerçekleştirilmesi ve tır rotasının araba rotasından sonra veri kaynağına eklenmesi durumunda üstünde işlenecek olmasıdır. Kamyonun yol satırına iki özellik eklenir, iyi bir mavi gölge ve dokuz piksellik bir vuruş genişliği.
+    Yukarıdaki kod parçacığı, Azure Maps yönlendirme hizmetini [Getrouteyönleri](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) yöntemiyle sorgular. Daha sonra yol satırı, `geojson.getFeatures()` yöntemi kullanılarak ayıklanan yanıttan coğrafi JSON özelliği koleksiyonundan ayıklanır. Yol satırı daha sonra veri kaynağına eklenir. 0 dizini, veri kaynağındaki diğer satırlardan önce oluşturulmasını sağlar. Bu işlem, kamyon rotası hesaplamasının genellikle bir otomobil rota hesaplamasından daha yavaş olacağı için yapılır. Kamyon rotası satırı, araba yönlendirdikten sonra veri kaynağına eklenirse, üzerine işlenir. Kamyonun yol satırına iki özellik eklenir, iyi bir mavi gölge ve dokuz piksellik bir vuruş genişliği.
 
 3. Bir otomobil için yol oluşturmak ve sonuçları göstermek için aşağıdaki JavaScript kodunu ekleyin.
 
@@ -270,7 +274,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak belirli bir başlangıç nokt
 
     ![Azure Yönlendirme Hizmeti ile önceliklendirilen yollar](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    Kamyon yolu mavi ve daha kalınken araba yolu mor ve daha ince gösterilir. Araba yolu konut alanlarının altındaki tünellerden geçen I-90 üzerinden Washington Gölü’nü geçer ve bu nedenle tehlikeli atık yükünü kısıtlar. USHazmatClass2 yük tipini belirten kamyon yolu ise farklı bir otoyol kullanmak üzere doğru şekilde yönlendirilir.
+    Kamyonun yolu kalın mavi, araba yolu ise ince mor. Araba rotası,, yöresel alanlarındaki tünellerden geçen I-90 aracılığıyla Gölü üzerinden gider. Tüneller yöresel alanlara yakın olduğu için, tehlikeli çöp kargo kısıtlı olur. USHazmatClass2 kargo türünü belirten kamyon rotası, farklı bir Highway kullanımına yönlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

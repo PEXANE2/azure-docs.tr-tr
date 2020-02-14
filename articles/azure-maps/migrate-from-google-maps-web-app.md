@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086423"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208752"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Google Maps 'tan bir Web uygulaması geçirme
 
 Google Maps kullanan çoğu Web uygulaması Google Maps v3 JavaScript SDK 'sını kullanıyor. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları kendi içerikleriyle ve Imagery ile özelleştirmenizi sağlar. Uygulamanızı hem Web 'de hem de mobil uygulamalarda çalıştırabilirsiniz. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
 
-Var olan bir Web uygulamasını geçiriyorsanız, bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Açık kaynak eşleme denetim kitaplığı örnekleri şunlardır: Cesium, leaflet ve Openkatmanları. Uygulamanız bir açık kaynak eşleme denetim kitaplığı kullanıyorsa ve Azure Maps web SDK 'sını kullanmak istemiyorsanız, hala geçiş yapabilirsiniz. Bu durumda, uygulamanızı Azure Maps kutucuk hizmetlerine ([yol kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [uydu kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) bağlayın. Aşağıda, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure maps kullanma hakkında ayrıntılı bilgi verilmiştir.
+Var olan bir Web uygulamasını geçiriyorsanız, bir açık kaynak eşleme denetim kitaplığı kullanıp kullanmın olup olmadığını kontrol edin. Açık kaynak eşleme denetim kitaplığı örnekleri şunlardır: Cesium, leaflet ve Openkatmanları. Bir açık kaynak eşleme denetim kitaplığı kullandığından ve Azure Maps web SDK 'sını kullanmak istemediğinizde bile uygulamanızı geçirebilirsiniz. Böyle bir durumda, uygulamanızı Azure Maps kutucuk hizmetlerine ([yol kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [uydu kutucukları](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) bağlayın. Aşağıda, yaygın olarak kullanılan bazı açık kaynaklı harita denetim kitaplıklarında Azure maps kullanma hakkında ayrıntılı bilgi verilmiştir.
 
 - Cesium-Web için 3B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [belgeleri](https://cesiumjs.org/)
 - Leaflet – Web için hafif 2B harita denetimi. [Kod örneği](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [belgeleri](https://leafletjs.com/)
@@ -62,7 +62,7 @@ Aşağıda, Google Maps ve Azure Maps web SDK 'Ları arasındaki bazı önemli f
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK yan yana örnekleri
 
-Bu koleksiyonda her platform için kod örnekleri bulunur, her örnek ortak bir kullanım durumunu içerir. Web uygulamanızı Google Maps v3 JavaScript SDK 'dan Azure Maps web SDK 'sına geçirmenize yardımcı olmak üzere tasarlanmıştır. Web uygulamalarıyla ilgili kod örnekleri JavaScript 'te verilmiştir. Ancak Azure Maps, bir [NPM modülü](how-to-use-map-control.md)aracılığıyla ek bir seçenek olarak TypeScript tanımları da sağlar.
+Bu koleksiyonda her platform için kod örnekleri bulunur ve her örnek ortak kullanım durumunu içerir. Web uygulamanızı Google Maps v3 JavaScript SDK 'dan Azure Maps web SDK 'sına geçirmenize yardımcı olmak üzere tasarlanmıştır. Web uygulamalarıyla ilgili kod örnekleri JavaScript 'te verilmiştir. Ancak Azure Maps, bir [NPM modülü](how-to-use-map-control.md)aracılığıyla ek bir seçenek olarak TypeScript tanımları da sağlar.
 
 ### <a name="load-a-map"></a>Harita yükleme
 
@@ -80,7 +80,7 @@ Her iki SDK da bir eşlemeyi yüklemek için aynı adımlara sahiptir:
 - Haritanın işlenebileceği `div` öğesine başvurulduğunda, Azure Maps 'daki `Map` sınıfı, yalnızca Google Maps bir `HTMLElement` nesnesi gerektirdiğinde `id` değeri gerektirir.
 - Azure haritalarındaki Koordinatlar, `[longitude, latitude]`biçiminde basit bir sayı dizisi olarak belirtibilen konum nesneleri olarak tanımlanır.
 - Azure haritalar 'daki yakınlaştırma düzeyi, Google Maps 'taki yakınlaştırma düzeyinden bir düzey daha düşüktür. Bu tutarsızlık, iki platformun döşeme sistem boyutlarındaki farkın farkından kaynaklanır.
-- Azure haritalar harita tuvaline hiçbir gezinti denetimi eklemez. Bu nedenle, varsayılan olarak haritada yakınlaştırma düğmeleri ve harita stili düğmeleri yoktur. Ancak harita stili seçici, yakınlaştırma düğmeleri, pusula ya da döndürme denetimi ve bir aralıklı denetim ekleme denetimleri vardır.
+- Azure haritalar harita tuvaline hiçbir gezinti denetimi eklemez. Bu nedenle, varsayılan olarak haritada yakınlaştırma düğmeleri ve harita stili düğmeleri yoktur. Ancak harita stili seçici, yakınlaştırma düğmeleri, pusula ya da döndürme denetimi ve bir aralıklı denetim eklemek için denetim seçenekleri mevcuttur.
 - Harita örneğinin `ready` olayını izlemek için Azure Maps 'a bir olay işleyicisi eklenir. Bu olay, eşleme WebGL bağlamını ve gerekli tüm kaynakları yüklemeyi tamamladığında harekete geçmeyecektir. Bu olay işleyicisine haritanın yüklenmesi tamamlandıktan sonra çalıştırmak istediğiniz herhangi bir kodu ekleyin.
 
 Aşağıdaki temel örneklerde, New York üzerinde ortalanmış bir harita yüklemek için Google haritaları kullanılmaktadır. Boylam:-73,985, Enlem: 40,747 ve eşleme, 12 ' nin yakınlaştırma düzeyidir.
@@ -212,7 +212,7 @@ Dilde "fr-FR" olarak ayarlanmış Google Maps örneği aşağıda verilmiştir.
 
 **Sonrasında: Azure Maps**
 
-Azure haritalar haritanın dilini ve bölgesel görünümünü ayarlamanın iki farklı yolunu sağlar. İlk seçenek, bu bilgileri Global *Atlas* ad alanına eklemektir. Bu, uygulamanızdaki tüm harita denetim örneklerinin bu ayarları varsayılan olarak geçersiz sonuçlarına neden olur. Aşağıdaki dil, dili Fransızca ("fr-FR") ve bölgesel görünüm olarak "Auto" olarak ayarlar:
+Azure haritalar haritanın dilini ve bölgesel görünümünü ayarlamanın iki farklı yolunu sağlar. İlk seçenek, bu bilgileri Global *Atlas* ad alanına eklemektir. Bu, uygulamanızdaki tüm harita denetim örneklerinin bu ayarlara göre varsayılan olarak oluşmasına neden olur. Aşağıdaki dil, dili Fransızca ("fr-FR") ve bölgesel görünüm olarak "Auto" olarak ayarlar:
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ Aşağıda dil "fr" olarak ayarlanan ve Kullanıcı bölgesinin "fr-FR" olarak a
 
 ### <a name="setting-the-map-view"></a>Harita görünümü ayarlanıyor
 
-Azure haritalar ve Google Maps 'ta dinamik haritalar programlı bir şekilde yeni coğrafi konumlara taşınabilir. Bunu yapmak için JavaScript 'te uygun işlevleri çağırın. Örnek, haritanın uydu havadan görüntüsünü görüntüleme, Haritayı bir konum üzerine ortalama gösterme ve Google Maps 'ta yakınlaştırma düzeyini 15 olarak değiştirme işlemlerinin nasıl yapılacağını gösterir. Aşağıdaki konum koordinatları kullanılır: Boylam:-111,0225 ve Enlem: 35,0272.
+Azure haritalar ve Google Maps 'ta dinamik haritalar programlı bir şekilde yeni coğrafi konumlara taşınabilir. Bunu yapmak için JavaScript 'te uygun işlevleri çağırın. Örnek, haritanın uydu havadan görüntüleme, Haritayı bir konum üzerine ortalama gösterme ve yakınlaştırma düzeyini değiştirme işlemlerinin nasıl yapılacağını gösterir. Aşağıdaki konum koordinatları kullanılır: Boylam:-111,0225 ve Enlem: 35,0272.
 
 > [!NOTE]
 > Azure haritalar, daha büyük bir 512 piksellik kutucuk kullandığında, Google Maps, boyutlarda 256 piksel olan kutucukları kullanır. Bu nedenle Azure haritalar, Google Maps ile aynı harita alanını yüklemek için daha az sayıda ağ isteği gerektirir. Tile Pyramids 'in harita denetimlerinde çalışma yöntemi nedeniyle, Google Maps 'ta kullanılan yakınlaştırma düzeyini Azure haritalar kullanırken bir sayı ile çıkarmanız gerekir. Bu aritmetik işlem, Azure haritalarındaki daha büyük kutucukların Google Haritalar 'da olduğu gibi aynı harita alanını işlemesini sağlar.
@@ -856,7 +856,7 @@ Aşağıdaki örneklerde, USGS 'nin son yedi gününe ait tüm deprem coğrafi J
 
 **Sonrasında: Azure Maps**
 
-GeoJSON, Azure Maps 'ta temel veri türüdür. `datasource.importFromUrl` yöntemi kullanarak bir veri kaynağına içeri aktarın. Kabarcık katmanı kullanın, bir veri kaynağındaki özelliklerin özelliklerine göre ölçeklendirilen daireleri işlemek için işlevsellik sağlar. Bir geri çağırma işlevi olması yerine, iş mantığı bir ifadeye dönüştürülür ve stil seçeneklerine geçirilir. İfadeler, iş mantığının nasıl çalıştığını tanımlar. İfadeler, başka bir iş parçacığına geçirilebilir ve özellik verilerine göre değerlendirilir. Azure haritalar 'a her biri farklı iş mantığına sahip birden çok veri kaynağı ve katman eklenebilir. Bu özellik, haritada farklı yollarla birden çok veri kümesinin işlenmesine izin verir.
+GeoJSON, Azure Maps 'ta temel veri türüdür. `datasource.importFromUrl` yöntemi kullanarak bir veri kaynağına içeri aktarın. Balon katmanını kullanın. Kabarcık katmanı, bir veri kaynağındaki özelliklerin özelliklerine göre ölçeklendirilen daireleri işlemek için işlevsellik sağlar. Bir geri çağırma işlevi olması yerine, iş mantığı bir ifadeye dönüştürülür ve stil seçeneklerine geçirilir. İfadeler, iş mantığının nasıl çalıştığını tanımlar. İfadeler, başka bir iş parçacığına geçirilebilir ve özellik verilerine göre değerlendirilir. Azure haritalar 'a her biri farklı iş mantığına sahip birden çok veri kaynağı ve katman eklenebilir. Bu özellik, haritada farklı yollarla birden çok veri kümesinin işlenmesine izin verir.
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ Aşağıdaki örneklerde kod, eski haftadan gelen deprem verilerinin coğrafi JS
 
 **Önce: Google Maps**
 
-Küme işaretçileri için MarkerCluster kitaplığını kullanın. Küme simgeleri, adları adı olarak beş ile bir arasında olan görüntülerle sınırlıdır ve aynı dizinde barındırılır.
+Küme işaretçileri için MarkerCluster kitaplığını kullanın. Küme simgeleri, adları adı olarak beş ile bir arasında olan görüntülerle sınırlıdır. Aynı dizinde barındırılır.
 
 ```html
 <!DOCTYPE html>
@@ -1151,7 +1151,7 @@ Azure Maps Kümelemesi ![](media/migrate-google-maps-web-app/azure-maps-clusteri
 
 Nokta yoğunluğu haritaları olarak da bilinen ısı haritaları, veri görselleştirmesinin bir türüdür. Bunlar, bir aralıktaki renkler kullanılarak verilerin yoğunluğunu göstermek için kullanılırlar. Ayrıca, genellikle bir haritada "etkin noktalar" verilerini göstermek için kullanılır. Isı haritaları, büyük nokta veri kümelerini işlemek için harika bir yoldur.
 
-Aşağıdaki örneklerde, tüm deprem bir coğrafi JSON akışını USGS 'den geçen aya yükleyin ve bunları ağırlıklı bir ısı haritası olarak işlenir. `"mag"` özelliği ağırlık olarak kullanılır.
+Aşağıdaki örnekler, tüm deprem bir coğrafi JSON akışını, USGS 'lerden geçen aya yükler ve bunları ağırlıklı bir ısı haritası olarak işler. `"mag"` özelliği ağırlık olarak kullanılır.
 
 **Önce: Google Maps**
 
@@ -1395,7 +1395,7 @@ Azure haritalar 'daki trafik simgelerinden birine tıklarsanız, açılan pencer
 
 ### <a name="add-a-ground-overlay"></a>Zemin kaplama ekleme
 
-Hem Azure hem de Google Maps, haritada coğrafi olarak başvurulan görüntüleri fazla düzenlemeyi destekler. Coğrafi olarak başvurulan görüntüler, Haritada kaydırma ve yakınlaştırma sırasında taşınır ve ölçeklendirebilir. Google Maps 'ta, coğrafi olarak başvurulan görüntüler, Azure haritalar 'da görüntü katmanları olarak adlandırıldıkları sırada arka üste biçimlendirmeler olarak bilinir. Bunlar, kat planları oluşturmak, eski haritaları yerleştirmek veya bir DRA 'dan Imagery için harika.
+Hem Azure hem de Google Maps, haritada coğrafi olarak başvurulan görüntüleri fazla düzenlemeyi destekler. Coğrafi olarak başvurulan görüntüler, Haritada kaydırma ve yakınlaştırma sırasında taşınır ve ölçeklendirebilir. Google Maps 'ta, coğrafi olarak başvurulan görüntüler, Azure haritalar 'da görüntü katmanları olarak adlandırıldıkları sırada arka üste biçimlendirmeler olarak bilinir. Kat planları oluşturmak, eski haritaları yerleştirmek veya bir DRA 'dan Imagery için harika.
 
 **Önce: Google Maps**
 

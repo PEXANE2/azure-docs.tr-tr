@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562022"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210217"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management kullanarak sunucusuz bir API için Openapı tanımı oluşturma
 
@@ -41,11 +41,11 @@ Bu öğretici, iki parametre alan HTTP ile tetiklenen bir işlev kullanır:
 
 Daha sonra, işlev tarafından onarım maliyetinin ne olacağı ve türbinin 24 saatlik bir dönemde ne kadar gelir kazandırabileceği hesaplanır. [Azure Portal](https://portal.azure.com)http ile tetiklenen işlevi oluşturmak için:
 
-1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesini seçin. **Portal içi** > **devam et**' i seçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesini seçin. **Portal içi** > **devam et**' i seçin.
 
 1. **Daha fazla şablon seçin...** , ardından son ' u seçin **ve şablonları görüntüleyin**
 
-1. HTTP tetikleyicisi ' ni seçin, işlev **adı**için `TurbineRepair` yazın, **[kimlik doğrulama düzeyi](functions-bindings-http-webhook.md#http-auth)** için `Function` seçin ve ardından **Oluştur**' u seçin.  
+1. HTTP tetikleyicisi ' ni seçin, işlev **adı**için `TurbineRepair` yazın, **[kimlik doğrulama düzeyi](functions-bindings-http-webhook-trigger.md#http-auth)** için `Function` seçin ve ardından **Oluştur**' u seçin.  
 
     ![Openapı için HTTP işlevi oluşturma](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
@@ -137,7 +137,7 @@ Artık OpenAPI tanımını oluşturmaya hazırsınız.
 
     | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Adı** | Genel olarak benzersiz bir ad | İşlev uygulamanızın adı temel alınarak bir ad oluşturulur. |
+    | **Ad** | Genel olarak benzersiz bir ad | İşlev uygulamanızın adı temel alınarak bir ad oluşturulur. |
     | **Abonelik** | Aboneliğiniz | Bu yeni kaynağın altında oluşturulduğu abonelik. |  
     | **[Kaynak Grubu](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Sizin için ayarlanmış olması gereken işlev uygulamanız ile aynı kaynak. |
     | **Konum** | Batı ABD | Batı ABD konumunu seçin. |
@@ -145,17 +145,17 @@ Artık OpenAPI tanımını oluşturmaya hazırsınız.
     | **Yönetici e-postası** | e-postanız | API Management 'den sistem bildirimleri alan e-posta. |
     | **Fiyatlandırma katmanı** | Tüketim (Önizleme) | Tüketim katmanı önizleme aşamasındadır ve tüm bölgelerde kullanılamaz. Tüm fiyatlandırma ayrıntıları için [API Management fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/api-management/) bakın |
 
-1. API Management örneğini oluşturmak için **Oluştur**'u seçin; bu işlem birkaç dakika sürebilir.
+1. API Management örneğini oluşturmak için **Oluştur** ' u seçin ve bu işlem birkaç dakika sürebilir.
 
 1. Günlükleri işlev uygulamasıyla aynı yere göndermek için **Application Insights etkinleştir** ' i seçin, ardından kalan Varsayılanları kabul edin ve **bağlantı API 'si**' ni seçin.
 
-1. **Içeri aktarma Azure işlevleri** , **Turbinerepair** işlevi vurgulanmış şekilde açılır. Devam etmek için **Seç**'i seçin.
+1. **Içeri aktarma Azure işlevleri** , **Turbinerepair** işlevi vurgulanmış şekilde açılır. Devam etmek için **Seç ' i** seçin.
 
     ![Azure Işlevlerini API Management içine aktarın](media/functions-openapi-definition/import-function-openapi.png)
 
 1. **İşlev uygulaması oluştur** sayfasında, Varsayılanları kabul edin ve **Oluştur** ' u seçin.
 
-    ![İşlev Uygulamasından oluşturma](media/functions-openapi-definition/create-function-openapi.png)
+    ![İşlev Uygulaması Oluştur](media/functions-openapi-definition/create-function-openapi.png)
 
 API artık işlev için oluşturulmuştur.
 

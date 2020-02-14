@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 11eb2e0363682d39a00a3f47cd3cc6c4badc040f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086509"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208311"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Google Maps 'tan Azure Maps 'e geçiş
 
@@ -22,11 +22,11 @@ Bu öğreticide Web, mobil ve sunucu tabanlı uygulamaların Google Maps 'tan Mi
 
 ## <a name="azure-maps-platform-overview"></a>Azure haritalar platformuna genel bakış
 
-Azure haritalar, geliştiricilerin tüm sektörler açısından güçlü Jeo uzamsal yetenekler sağlar. Özellikleri, Web uygulamaları ve mobil uygulamalar için coğrafi bağlam sağlamak amacıyla düzenli olarak güncelleştirilmiş harita verileriyle paketlenmiştir. Azure haritalar 'ın Azure One API uyumlu bir REST API kümesi vardır. Bu REST API 'Leri, haritalar Işleme, arama, yönlendirme, trafik, saat dilimi, coğrafi konum, bölge sınırlama, harita verileri, hava durumu, taşınabilirlik ve uzamsal Işlemler sunar. Hem Web hem de Android SDK 'larının yanı sıra, geliştirme işlemlerini kolay, esnek ve birden çok platformda taşınabilir hale getirebilirsiniz.
+Azure haritalar, geliştiricilerin tüm sektörler açısından güçlü Jeo uzamsal yetenekler sağlar. Bu yetenekler, Web ve mobil uygulamalar için coğrafi bağlam sağlamak amacıyla düzenli olarak güncelleştirilmiş harita verileriyle paketlenmiştir. Azure haritalar 'ın Azure One API uyumlu bir REST API kümesi vardır. REST API 'Leri, haritalar Işleme, arama, yönlendirme, trafik, saat dilimi, coğrafi konum, bölge sınırlama, harita verileri, hava durumu, taşınabilirlik ve uzamsal Işlemler sunar. Hem Web hem de Android SDK 'larının yanı sıra, geliştirme işlemlerini kolay, esnek ve birden çok platformda taşınabilir hale getirebilirsiniz.
 
 ## <a name="high-level-platform-comparison"></a>Üst düzey platform karşılaştırması
 
-Tablo, Google Maps özelliklerine karşılık gelen Azure Maps özelliklerinin üst düzey bir listesini sağlar. Bu liste Azure Maps özelliklerinin tümünü göstermez. Bazı ek Azure haritaları özellikleri arasında erişilebilirlik, bölge sınırlaması API 'leri, ısodenler, uzamsal işlemler, doğrudan harita kutucuğu erişimi, Batch Hizmetleri ve veri kapsamı karşılaştırmaları (diğer bir deyişle, canlandırın kapsamı) bulunur.
+Tablo, Google Maps özelliklerine karşılık gelen Azure Maps özelliklerinin üst düzey bir listesini sağlar. Bu liste Azure Maps özelliklerinin tümünü göstermez. Ek Azure haritaları özellikleri şunlardır: erişilebilirlik, bölge sınırlaması, ısodenes, uzamsal işlemler, doğrudan harita kutucuk erişimi, Batch Hizmetleri ve veri kapsamı karşılaştırmaları (yani, ımatay kapsamı).
 
 | Google Haritalar özelliği         | Azure haritalar desteği                     |
 |-----------------------------|:--------------------------------------:|
@@ -49,14 +49,14 @@ Tablo, Google Maps özelliklerine karşılık gelen Azure Maps özelliklerinin �
 | Harita katıştırılmış API           | Yok                                    |
 | Harita URL 'Leri                    | Yok                                    |
 
-Google Maps temel anahtar tabanlı kimlik doğrulaması sağlar. Azure haritalar hem temel anahtar tabanlı kimlik doğrulaması hem de Azure Active Directory kimlik doğrulaması sağlar. Azure Active Directory, temel anahtar tabanlı kimlik doğrulamaya kıyasla daha fazla güvenlik özelliğine sahiptir.
+Google Maps temel anahtar tabanlı kimlik doğrulaması sağlar. Azure haritalar hem temel anahtar tabanlı kimlik doğrulaması hem de Azure Active Directory kimlik doğrulaması sağlar. Azure Active Directory kimlik doğrulaması, temel anahtar tabanlı kimlik doğrulamaya kıyasla daha fazla güvenlik özelliği sağlar.
 
 ## <a name="licensing-considerations"></a>Lisanslama konuları
 
 Google Maps 'lerden Azure Maps 'a geçiş yaparken lisanslama hakkında aşağıdaki noktaları göz önünde bulundurun.
 
-- Azure Maps, yüklü harita kutucuklarının sayısına bağlı olarak etkileşimli haritalar kullanımına yönelik ücretler ücretlendirir. Diğer yandan, Google Haritalar harita denetimini yükleme ücretini ücretlendirir. Etkileşimli Azure Haritalar SDK 'lerinde, eşleme kutucukları, geliştirme maliyetini azaltmak için otomatik olarak önbelleğe alınır. Yüklenen her 15 harita kutucuğu için bir Azure haritalar işlemi oluşturulur. Etkileşimli Azure Haritalar SDK 'Ları 512 piksellik kutucukları kullanır ve ortalama üzerinde sayfa görünümü başına bir veya daha az işlem oluşturur.
-- Genellikle, Google Maps web SDK 'sındaki statik harita görüntülerini Azure Maps web SDK 'sı ile değiştirmek daha uygun maliyetli bir hesaplıdır. Azure Haritalar Web SDK 'Sı harita kutucukları kullanır ve Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, hizmet genellikle her harita yükü için bir işlemin bir bölümünü oluşturur. Azure Haritalar Web SDK 'Sı isterseniz, kaydırma ve yakınlaştırmayı devre dışı bırakma seçenekleri vardır. Ayrıca, Azure Maps web SDK 'Sı, statik harita Web hizmetinden daha fazla sayıda görselleştirme seçeneği sağlar.
+- Azure Maps, yüklü harita kutucuklarının sayısına bağlı olarak etkileşimli haritalar kullanımına yönelik ücretler ücretlendirir. Diğer yandan, Google Haritalar harita denetimini yükleme ücretini ücretlendirir. Etkileşimli Azure Haritalar SDK 'lerinde, eşleme kutucukları, geliştirme maliyetini azaltmak için otomatik olarak önbelleğe alınır. Yüklenen her 15 harita kutucuğu için bir Azure haritalar işlemi oluşturulur. Etkileşimli Azure Haritalar SDK 'Ları 512 piksellik kutucukları kullanır ve ortalama olarak sayfa görünümü başına bir veya daha az işlem oluşturur.
+- Genellikle, Azure Maps web SDK ile Google Maps Web hizmetlerinden statik harita görüntülerini değiştirme maliyeti de geçerli olur. Azure Haritalar Web SDK 'Sı harita kutucukları kullanır. Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, hizmet genellikle harita yükü başına bir işlemin bir bölümünü oluşturur. Azure Haritalar Web SDK 'Sı isterseniz, kaydırma ve yakınlaştırmayı devre dışı bırakma seçenekleri vardır. Ayrıca, Azure Maps web SDK 'Sı, statik harita Web hizmetinden daha fazla sayıda görselleştirme seçeneği sağlar.
 - Azure haritalar, platformdaki verilerin Azure 'da depolanmasını sağlar. Ayrıca, veriler, [kullanım koşullarına](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)göre altı aya kadar bir yerde önbelleğe alınabilir.
 
 Azure haritalar için bazı ilgili kaynaklar aşağıda verilmiştir:

@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: bir haritada bölge alanı oluşturma ve cihazları izleme | Microsoft Azure haritaları'
 description: Microsoft Azure Maps uzamsal hizmetini kullanarak bölge sınırlaması ile ilişkili cihazları nasıl ayarlayacağınızı ve bu cihazların nasıl izleneceğini öğrenin.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899221"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209605"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bölge bölge ayarlama
 
@@ -32,7 +32,7 @@ Bu öğreticide nasıl yapılacağını ele aldık:
 > *   Bir oluşturma varlığının yapım sitesi içinde olup olmadığını izlemek için Azure haritalar bölge hizmeti API 'Lerini kullanın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma 
 

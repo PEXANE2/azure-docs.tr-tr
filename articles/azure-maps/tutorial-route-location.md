@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: bir konuma yol bulma | Microsoft Azure haritaları'
 description: Bu öğreticide, Microsoft Azure haritaları yönlendirme hizmeti kullanarak bir harita üzerindeki bir konuma (ilgi noktası) nasıl bir konuma nasıl bir yol işleneceğini gösterilmektedir.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba9ef8ad98dd33bdd61875e5c1cf02e15a739c03
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989646"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208089"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bir ilgi noktasına yönlendirme
 
@@ -25,7 +25,7 @@ Bu öğreticide, Azure Haritalar hesabınız ile Yönlendirme Hizmeti SDK’nız
 > * Adres koordinatlarını ayarlama
 > * İstenen konuma yol tarifi almak için Sorgu Yönlendirme Hizmeti
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)' daki yönergeleri Izleyin, S1 fiyatlandırma katmanı ile bir abonelik gerekir. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
@@ -81,7 +81,7 @@ Aşağıdaki adımlarda, Harita Denetimi API’sinin tümleşik olduğu statik b
     </html>
     ```
 
-    HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `GetMap` işlevini çağıracak olan `onload` olayına dikkat edin. Bu işlev, Azure Haritalar API’lerine erişime yönelik satır içi JavaScript kodunu içerir. 
+    HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `onload` işlevini çağıracak olan `GetMap` olayına dikkat edin. Bu işlev, Azure Haritalar API’lerine erişime yönelik satır içi JavaScript kodunu içerir. 
 
 3. `GetMap` işlevine aşağıdaki JavaScript kodunu ekleyin. Dize `<Your Azure Maps Key>`, haritalar hesabınızdan kopyaladığınız birincil anahtarla değiştirin.
 

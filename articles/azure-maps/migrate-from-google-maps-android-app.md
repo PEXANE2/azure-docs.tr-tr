@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086307"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209741"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Google Maps 'tan Android uygulaması geçirme
 
@@ -365,7 +365,7 @@ static {
     />
 ```
 
-Üçüncü seçenek, harita `setStyle` yöntemi kullanılarak dil ve bölgesel harita görünümünü programlayadilleridir. Bu seçenek, dil ve bölgesel görünümü kod her çalıştırıldığında güncelleştirir.
+Üçüncü seçenek, harita `setStyle` yöntemi kullanılarak dil ve bölgesel harita görünümünü programlayadilleridir. Bu seçenek, dil ve bölgesel görünümü kod her yürütüldüğünde güncelleştirir.
 
 ```java
 mapControl.onReady(map -> {
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 Bir kutucuk katmanı, diğer herhangi bir katmanda benzer bir şekilde haritaya eklenebilir. X, y ve zoom yer tutucuları olan biçimli bir URL; `{x}`, `{y}`, sırasıyla `{z}`, kutucuklara nerede erişebileceğini bildirmek için kullanılır. Ayrıca, Azure haritalar 'daki döşeme katmanları `{quadkey}`, `{bbox-epsg-3857}`ve `{subdomain}` yer tutucuları destekler. Kutucuk katmanını yarı şeffaf hale getirmek için 0,8 opaklık değeri kullanılır. Opaklık ve saydamlık, benzer olmasına karşın ters çevrilmiş değerler kullanır. Her iki seçenek arasında dönüştürmek için, değerlerini bir sayıdan çıkarın.
 
 > [!TIP]
-> Azure haritalar 'da, temel harita katmanları dahil olmak üzere diğer katmanların altında katmanları işlemek kullanışlı olur. Genellikle, daha kolay okunabilmeleri için harita etiketlerinin altında döşeme katmanlarını işlemek tercih edilir. `map.layers.add` yöntemi, aşağıdaki yeni katmanın ekleneceği katmanın kimliği olan ikinci bir parametreyi alır. Harita etiketlerinin altına bir kutucuk katmanı eklemek için aşağıdaki kod kullanılabilir: `map.layers.add(myTileLayer, "labels");`
+> Azure haritalar 'da, temel harita katmanları dahil olmak üzere diğer katmanların altında katmanları işlemek kullanışlı olur. Ayrıca, daha kolay okunabilmeleri için harita etiketlerinin altında döşeme katmanlarını işlemek tercih edilir. `map.layers.add` yöntemi, aşağıdaki yeni katmanın ekleneceği katmanın kimliği olan ikinci bir parametreyi alır. Harita etiketlerinin altına bir kutucuk katmanı eklemek için aşağıdaki kod kullanılabilir: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

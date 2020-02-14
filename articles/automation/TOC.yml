@@ -116,13 +116,7 @@
               href: source-control-integration.md
               displayName: 'github, vsts, azure devops, personal access token'
             - name: Kaynak denetimi tümleştirmesi - eski
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: GitHub Enterprise ile kaynak denetimi tümleştirmesi
-              href: automation-scenario-source-control-integration-with-github-ent.md
-              displayName: 'CI, runbooks'
-            - name: Azure DevOps ile kaynak denetimi tümleştirmesi
-              href: automation-scenario-source-control-integration-with-VSTS.md
+              href: source-control-integration-legacy.md
     - name: Sorun giderme
       items:
         - name: Microsoft Azure Otomasyonu için bir servis talebi açtığınızda toplanan veriler

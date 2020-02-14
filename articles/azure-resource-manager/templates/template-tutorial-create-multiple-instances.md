@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472747"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209486"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Öğretici: Resource Manager şablonlarıyla birden çok kaynak örneği oluşturma
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -45,7 +45,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
 4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için **Dosya**>**Farklı Kaydet**’i seçin.
+5. Dosyayı yerel bilgisayarınıza **azuredeploy.json** olarak kaydetmek için >Dosya**Farklı Kaydet**’i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -108,7 +108,7 @@ Tamamlanan şablon aşağıdaki gibi görünür:
 }
 ```
 
-Birden çok örnek oluşturma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager Şablonları’nda bir kaynağın veya özelliğin birden çok örneğini dağıtma](./create-multiple-instances.md)
+Birden çok örnek oluşturma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager Şablonları’nda bir kaynağın veya özelliğin birden çok örneğini dağıtma](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 

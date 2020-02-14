@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu uygulaması oluşturma | Microsoft Azure haritaları'
 description: Bu öğreticide, Microsoft Azure Maps web SDK 'sını kullanarak bir depo Konumlandırıcı Web uygulaması oluşturmayı öğreneceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987014"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209571"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
@@ -33,11 +33,11 @@ Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıc
 
 [Canlı mağaza Bulucu örneğine](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) veya [kaynak koduna](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)atlayın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
-## <a name="design"></a>Tasarlayın
+## <a name="design"></a>Tasarım
 
 Koda geçmeden önce tasarım ile başlamak iyi bir fikirdir. Mağaza konumlarınız, olmasını istediğiniz kadar basit veya karmaşık olabilir. Bu öğreticide, basit bir mağaza Bulucu oluşturacağız. Tercih ediyorsanız bazı işlevleri genişletmenize yardımcı olmak için bazı ipuçları ekledik. Contoso kahve adlı kurgusal bir şirket için mağaza Bulucu oluşturacağız. Aşağıdaki şekilde, bu öğreticide oluşturduğumuz mağaza bulucunun genel düzeninin bir tel kafes 'i gösterilmektedir:
 
@@ -381,7 +381,7 @@ Uygulamayı şimdi çalıştırın, üst bilgi, arama kutusu ve arama düğmesin
 
 Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek ve ayrıştırmak için JavaScript 'i eklememiz ve sonra verileri haritada işlemesi gerekir. Başlamak için *index. js* ' yi açın ve aşağıdaki adımlarda açıklandığı gibi buna kod ekleyin.
 
-1. Ayarları daha kolay güncelleştirilmesini sağlamak için genel seçenekler ekleyin. Harita, açılan pencere, veri kaynağı, simge katmanı, bir arama alanının merkezini görüntüleyen bir HTML işaretleyicisi ve Azure haritalar arama hizmeti istemcisinin bir örneğini tanımlayın.
+1. Ayarları daha kolay güncelleştirilmesini sağlamak için genel seçenekler ekleyin. Harita, açılan pencere, veri kaynağı, simge katmanı ve HTML işaretçisi için değişkenleri tanımlayın. HTML işaretini bir arama alanının merkezini gösterecek şekilde ayarlayın. Azure haritalar arama hizmeti istemcisinin bir örneğini tanımlayın.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
 
 1. *İndex. js*' ye kod ekleyin. Aşağıdaki kod eşlemeyi başlatır. Sayfa yüklemeyi bitirene kadar beklemek için bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) ekledik. Daha sonra, eşlemenin yüklenmesini izlemek için olaylar ve arama düğmesine ve Konumum düğmesine işlevsellik veririz.
 
-   Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum girdikten sonra Kullanıcı ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için `countrySet` seçeneğine bir Country ISO 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
+   Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum yazdığında, sonra ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için `countrySet` seçeneğine bir Country ISO 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
   
-   Arama tamamlandığında, ilk sonucu alın ve harita kamerayı bu alana ayarlayın. Kullanıcı konumumu seçtiğinde, kullanıcının konumunu almak ve Haritayı konumlarına göre ortalamak için tarayıcıda yerleşik HTML5 coğrafi konum API 'sini kullanın.  
+   Arama tamamlandıktan sonra, ilk sonucu alın ve harita kamerayı bu alana ayarlayın. Kullanıcı konumumu seçtiğinde, HTML5 coğrafi konum API 'sini kullanarak kullanıcının konumunu alın. Bu API tarayıcıda yerleşik olarak bulunur. Ardından, Haritayı konumlarına göre ortalayın.  
 
    > [!Tip]
    > Açılır pencereleri kullanırken, tek bir `Popup` örneği oluşturmak ve içeriğini ve konumunu güncelleştirerek örneği yeniden kullanmak en iyisidir. Kodunuza eklediğiniz her `Popup`örneği için, sayfaya birden fazla DOM öğesi eklenir. Sayfada daha fazla DOM öğesi varsa, tarayıcıda izlemek için gereken daha fazla şey vardır. Çok fazla öğe varsa tarayıcı yavaş kalabilir.
@@ -527,7 +527,7 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
     map.markers.add(centerMarker);
     ```
 
-1. Haritanın `ready` olay dinleyicisinde bir veri kaynağı ekleyin. Ardından, veri kümesini yükleme ve ayrıştırma çağrısı yapın. Veri kaynağında kümelendirmeyi etkinleştirin. Veri kaynağı gruplarında, çakışan noktaları bir kümede birlikte bulunan kümelendirmelidir. Kümeler, Kullanıcı yakınlaşarak tek tek noktalara ayrılır. Bu, daha akıcı bir kullanıcı deneyimi sağlar ve performansı geliştirir.
+1. Haritanın `ready` olay dinleyicisinde bir veri kaynağı ekleyin. Ardından, veri kümesini yükleme ve ayrıştırma çağrısı yapın. Veri kaynağında kümelendirmeyi etkinleştirin. Veri kaynağı gruplarında, çakışan noktaları bir kümede birlikte bulunan kümelendirmelidir. Kümeler, Kullanıcı yakınlaşarak tek tek noktalara ayrılır. Bu davranış daha iyi bir kullanıcı deneyimi sağlar ve performansı geliştirir.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ Kullanıcı konumumu ilk kez seçtiğinde tarayıcı, kullanıcının konumuna e
 
 tarayıcının kullanıcının konumuna erişim isteğinin ekran görüntüsünü ![](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Kahve dükterleri bulunan bir alanda yeterince yakından yakınlaştırdığınızda, kümeler tek tek konumlara ayrılır. Haritadaki simgelerden birini seçin veya yan bölmede bir öğe seçerek söz konusu konumun bilgilerini gösteren bir açılır pencere görüntüleyin.
+Kahve dükterleri bulunan bir alanda yeterince yakından yakınlaştırdığınızda, kümeler tek tek konumlara ayrılır. Harita üzerindeki simgelerden birini seçin veya açılan pencereyi görmek için yan paneldeki bir öğeyi seçin. Açılır pencere, seçili konum için bilgileri gösterir.
 
 <center>
 

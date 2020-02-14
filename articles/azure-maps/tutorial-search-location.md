@@ -1,24 +1,24 @@
 ---
 title: 'Öğretici: harita üzerinde yakındaki konumları arama | Microsoft Azure haritaları'
 description: Bu öğreticide, Microsoft Azure haritaları kullanarak bir haritada ilgi çekici noktaların nasıl aranacağını öğreneceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9b390806e678c7900b166a07316d7f8ac32a5153
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1035f9c8284f3acf2667d93ce257039defeb3c71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716192"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209520"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
-Bu öğreticide, Azure Haritalar hesabı ayarlama ve sonra Haritalar API’lerini kullanarak ilgi çekici bir noktayı arama işlemleri gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide, Azure Haritalar hesabı ayarlama ve sonra Haritalar API’lerini kullanarak ilgi çekici bir noktayı arama işlemleri gösterilmektedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Haritalar hesabı oluşturma
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 <a id="createaccount"></a>
 

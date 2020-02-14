@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846493"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210200"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Windows, Mac OS veya Linux çalıştıran tüm bilgisayarlarda bu öğreticiyi izleyebilirsiniz. Öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları maliyetlerinden oluşur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1846 veya sonraki bir sürümü
@@ -256,7 +256,7 @@ Windows, Mac OS veya Linux çalıştıran tüm bilgisayarlarda bu öğreticiyi i
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gereken `http://localhost:8080`için bir tarayıcı açın. Bu noktada, işleviniz Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı ve bu, `"authLevel": "function"` özelliği ile *function. JSON* içinde tanımlanan bir erişim anahtarı tarafından korunduğu için görüntü bu noktada görünür. Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel olarak test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini `"authLevel": "anonymous"`olarak değiştirin, görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra *function. JSON*içinde `"authLevel": "function"` sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook.md#authorization-keys).
+1. Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gereken `http://localhost:8080`için bir tarayıcı açın. Bu noktada, işleviniz Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı ve bu, `"authLevel": "function"` özelliği ile *function. JSON* içinde tanımlanan bir erişim anahtarı tarafından korunduğu için görüntü bu noktada görünür. Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel olarak test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini `"authLevel": "anonymous"`olarak değiştirin, görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra *function. JSON*içinde `"authLevel": "function"` sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
     ![Kapsayıcının yerel olarak çalıştığını gösteren yer tutucu resim](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 

@@ -1,24 +1,24 @@
 ---
 title: 'Öğretici: IoT uzamsal analizlerini uygulama | Microsoft Azure haritaları'
 description: IoT Hub Microsoft Azure Maps hizmet API 'Leriyle tümleştirin.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 24295e27a3b94f6960777a8704fdf448697da4e1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987319"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208378"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal Analizi uygulama
 
-Boşluk ve saat içinde oluşan ilgili olayları izlemek ve yakalamak, yaygın bir IoT senaryosudur. Örnek senaryolar, filo yönetimi, varlık izleme, Mobility ve akıllı şehir uygulamaları içerir. Bu öğretici, Azure Haritalar API 'Lerini kullanmaya yönelik bir çözüm düzeninde size rehberlik eder. İlgili olaylar, Event Grid tarafından sunulan olay abonelik modeli kullanılarak IoT Hub tarafından yakalanır.
+IoT senaryosunda, boşluk ve saat içinde oluşan ilgili olayları yakalamak ve izlemek yaygındır. Örnek senaryolar, filo yönetimi, varlık izleme, Mobility ve akıllı şehir uygulamaları içerir. Bu öğretici, Azure Maps API 'Lerini kullanarak bir çözüm deseninin size rehberlik eder. İlgili olaylar, Event Grid tarafından sunulan olay abonelik modeli kullanılarak IoT Hub tarafından yakalanır.
 
 Bu öğreticide şunları yapmanız gerekir:
 
@@ -34,7 +34,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 ## <a name="use-case"></a>Kullanım örneği
 
-Bu çözüm, bir otomobil kiralama şirketinin, Kiralama otomobilleri için olayları izleyip günlüğe kaydetme planlarında yer aldığı bir senaryoyu gösterir. Araba kiralama şirketleri genellikle belirli bir coğrafi bölge için otomobilleri kiralayıp bir süre sonra da bunların yer aldığı yeri takip etmeniz gerekir. Seçili coğrafi bölgeyi terk eden bir otomobil örneklerinin günlüğe kaydedilmesinin gerekli olması gerekir. Günlüğe kaydetme verileri, ilkelerin, ücretlerin ve diğer iş yönlerinin düzgün şekilde işlenebilmesini sağlar.
+Bu çözüm, bir otomobil kiralama şirketinin, Kiralama otomobilleri için olayları izleyip günlüğe kaydetme planlarında yer aldığı bir senaryoyu gösterir. Araba kiralama şirketleri genellikle belirli bir coğrafi bölgeye kadar otomobilleri kiramıştır. Bu kişiler, yeniden kullanıldıkları sırada araba bulunulan yerlerinizi izlememeleri gerekir. Seçilen coğrafi bölgeyi terk eden bir otomobil örnekleri günlüğe kaydedilmelidir. Günlüğe kaydetme verileri, ilkelerin, ücretlerin ve diğer iş yönlerinin düzgün şekilde işlenebilmesini sağlar.
 
 Kullanım örneğimizde, Kiralama otomobilleri düzenli olarak Azure IoT Hub telemetri verileri gönderen IoT cihazlarıyla donatılmıştır. Telemetri geçerli konumu içerir ve otomobil altyapısının çalışıp çalışmadığını gösterir. Cihaz konumu şeması, [Jeo uzamsal veriler Için ıot Tak ve kullan şemasına](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)uyar. Kiralık otomobil cihaz telemetri şeması şöyle görünür:
 
@@ -63,9 +63,13 @@ Kullanım örneğimizde, Kiralama otomobilleri düzenli olarak Azure IoT Hub tel
 }
 ```
 
-Hedefimizi gerçekleştirmek için araç içi cihaz telemetrisini kullanalım. Arabasının taşındığını belirten bir olay alırızda bölge sınırlaması kuralları yürütmek ve yanıt vermek istiyoruz. Bunu yapmak için, Event Grid üzerinden IoT Hub cihaz telemetri olaylarına abone edeceğiz. Event Grid abone olmanın birkaç yolu vardır. Bu öğreticide Azure Işlevleri kullanırız. Azure Işlevleri Event Grid yayımlanan olaylara yeniden davranır. Ayrıca, Azure Maps uzamsal analizine dayalı olan otomobil kiralama iş mantığını da uygular. Azure işlevi içindeki kod, araç 'nın bölge bölge 'nin soluna doğru olup olmadığını denetler. Araç bölge sınırlaması altına alıyorsa Azure işlevi, geçerli konumla ilişkili adres gibi ek bilgiler toplar. İşlev Ayrıca, olay koşulları açıklamasının sağlanmasına yardımcı olan bir veri blobu depolamada anlamlı olay verilerini depolamak için mantığı uygular. Olay koşulları, otomobil kiralama şirketi ve Kiralama müşterisi için yararlı olabilir.
+Hedefimizi gerçekleştirmek için araç içi cihaz telemetrisini kullanalım. Bölge sınırlaması kuralları yürütmek istiyoruz. Arabasının taşındığını belirten bir olay alırızda yanıt vermek istiyoruz. Bunu yapmak için, Event Grid üzerinden IoT Hub cihaz telemetri olaylarına abone olacaksınız. 
 
-Aşağıdaki diyagramda sisteme yüksek düzeyde bir genel bakış sunulmaktadır.
+Event Grid abone olmanın birkaç yolu vardır. Bu öğreticide Azure Işlevleri kullanırız. Azure Işlevleri Event Grid yayımlanan olaylara yeniden davranır. Ayrıca, Azure Maps uzamsal analizine dayalı olan otomobil kiralama iş mantığını da uygular. 
+
+Azure işlevi içindeki kod, araç 'nın bölge bölge 'nin soluna doğru olup olmadığını denetler. Araç bölge sınırlaması altına alıyorsa Azure işlevi, geçerli konumla ilişkili adres gibi ek bilgiler toplar. İşlev Ayrıca, olay koşulları açıklamasının sağlanmasına yardımcı olan bir veri blobu depolamada anlamlı olay verilerini depolamak için mantığı uygular. 
+
+Olay koşulları, otomobil kiralama şirketi ve Kiralama müşterisi için yararlı olabilir. Aşağıdaki diyagramda sisteme yüksek düzeyde bir genel bakış sunulmaktadır.
 
  
   <center>
@@ -74,16 +78,16 @@ Aşağıdaki diyagramda sisteme yüksek düzeyde bir genel bakış sunulmaktadı
   
   </center>
 
-Aşağıdaki şekilde, bir yeşil çizgi ile belirtilen bölge Bölgesi alanı, mavi renkle ve kiralık araç rotası gösterilmektedir.
+Aşağıdaki şekil, mavi renkle vurgulanmış bölge alanı alanını temsil eder. Kiralık araç rotası yeşil bir çizgi ile belirtilir.
 
   ![Geofence rotası](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bu öğreticideki adımları tamamlayabilmeniz için öncelikle Azure portal bir kaynak grubu oluşturmanız gerekir. Bir kaynak grubu oluşturmak için aşağıdakileri yapın:
+Bu öğreticideki adımları tamamlayabilmeniz için öncelikle Azure portal bir kaynak grubu oluşturmanız gerekir. Bir kaynak grubu oluşturmak için aşağıdaki adımları uygulayın:
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
@@ -106,13 +110,13 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle Azure portal bir
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma 
 
-Azure haritalar uzamsal analizlerini temel alan iş mantığını uygulamak için, oluşturduğumuz kaynak grubunda bir Azure Maps hesabı oluşturuyoruz. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+Azure haritalar uzamsal analizlerini temel alan iş mantığını uygulamak için, oluşturduğumuz kaynak grubunda bir Azure Maps hesabı oluşturuyoruz. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin. Hesabınız için birincil anahtarınızı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Olay verilerini günlüğe kaydetmek için, "ContosoRental" kaynak grubunda, verileri Bloblar olarak depolamak için bir genel amaçlı **v2storage** hesabı oluşturacağız. Depolama hesabı oluşturmak için [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)' daki yönergeleri izleyin. Daha sonra Blobları depolamak için bir kapsayıcı oluşturması gerekir. Bunu yapmak için aşağıdaki adımları izleyin:
+Olay verilerini günlüğe kaydetmek için, "ContosoRental" kaynak grubunda, verileri Bloblar olarak depolamak için bir genel amaçlı **v2storage** hesabı oluşturacağız. Depolama hesabı oluşturmak için [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)' daki yönergeleri izleyin. Daha sonra Blobları depolamak için bir kapsayıcı oluşturmanız gerekir. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. Depolama hesabınızda kapsayıcılar ' a gidin.
 
@@ -122,7 +126,7 @@ Olay verilerini günlüğe kaydetmek için, "ContosoRental" kaynak grubunda, ver
 
     ![blob kapsayıcısı](./media/tutorial-iot-hub-maps/blob-container.png)
 
-3. Depolama hesabınızdaki **erişim tuşları** dikey penceresine gidin ve "depolama hesabı adı" ve "erişim anahtarı" ' nı kopyalayın. Daha sonraki bir adımda olmaları gerekir.
+3. Depolama hesabınızdaki **erişim tuşları** dikey penceresine gidin ve "depolama hesabı adı" ve "erişim anahtarı" ' nı kopyalayın. Daha sonraki bir adımda bu gereklidir.
 
     ![erişim tuşları](./media/tutorial-iot-hub-maps/access-keys.png)
 
@@ -131,7 +135,7 @@ Olay verilerini günlüğe kaydetmek için, "ContosoRental" kaynak grubunda, ver
 
 ### <a name="create-an-iot-hub"></a>IoT Hub'ı oluşturma
 
-IoT Hub, bir IoT uygulaması ve BT tarafından yönetilen cihazlar arasında çift yönlü iletişim için merkezi bir ileti hub 'ı görevi gören, bulutta yönetilen bir hizmettir. Cihaz telemetri iletilerini bir Event Grid yönlendirmek için, "ContosoRental" kaynak grubu içinde bir IoT Hub oluşturun. İletileri arabasının altyapı durumuna göre filtreleyecek bir ileti yolu tümleştirmesi ayarlayın. Ayrıca, otomobil hareket ettirdiğinde cihaz telemetri iletilerini Event Grid de göndereceğiz.
+IoT Hub, bulutta yönetilen bir hizmettir. IoT Hub, bir IoT uygulaması ve BT tarafından yönetilen cihazlar arasında çift yönlü iletişim için bir merkezi ileti hub 'ı görevi görür. Cihaz telemetri iletilerini bir Event Grid yönlendirmek için, "ContosoRental" kaynak grubu içinde bir IoT Hub oluşturun. İletileri arabasının altyapı durumuna göre filtreleyecek bir ileti yolu tümleştirmesi ayarlayın. Ayrıca, otomobil hareket ettirdiğinde cihaz telemetri iletilerini Event Grid de göndereceğiz.
 
 > [!Note] 
 > IoT Hub cihaz telemetri olaylarını Event Grid yayımlama işlevselliği genel önizlemede. Genel Önizleme özellikleri **Doğu ABD, Batı ABD, Batı Avrupa, Azure Kamu, Azure Çin 21Vianet** ve **Azure Almanya**dışındaki tüm bölgelerde kullanılabilir. 
@@ -204,7 +208,11 @@ Daha sonra, "ContosoRental" kaynak grubu içinde bir Azure Işlevi oluşturacak 
 
 ## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>Azure Işlevi oluşturma ve bir Event Grid aboneliği ekleme
 
-Azure Işlevleri, işlem altyapısını açıkça sağlamaya veya yönetmeye gerek kalmadan isteğe bağlı olarak kod çalıştırmamızı sağlayan sunucusuz bir işlem hizmetidir. Azure Işlevleri hakkında daha fazla bilgi edinmek için [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) belgelerine göz atın. İşlevinde uygulamadığımız mantık, bölge durumunu değerlendirmek için araç içi cihaz telemetrisinden gelen konum verilerini kullanmaktır. Belirli bir araç bölge alanının dışında kaldığında, işlev, belirli bir konum koordinatını insan tarafından anlaşılabilir bir açık adrese çeviren [arama adresini al ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) aracılığıyla konumun adresi gibi daha fazla bilgi toplar. Tüm ilgili olay bilgileri daha sonra Blob deposunda depolanır. Aşağıdaki 5. adım, böyle bir mantığı uygulayan çalıştırılabilir kodu gösterir. Depolama hesabındaki blob kapsayıcısına veri günlüklerini gönderen ve buna Event Grid bir abonelik ekleyen bir Azure Işlevi oluşturmak için aşağıdaki adımları izleyin.
+Azure Işlevleri, işlem altyapısını açıkça sağlamaya veya yönetmeye gerek kalmadan isteğe bağlı olarak kod çalıştırmamızı sağlayan sunucusuz bir işlem hizmetidir. Azure Işlevleri hakkında daha fazla bilgi edinmek için [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) belgelerine göz atın. 
+
+İşlevinde uygulamadığımız mantık, bölge durumunu değerlendirmek için araç içi cihaz telemetrisinden gelen konum verilerini kullanmaktır. Belirli bir araç bölge alanının dışında kaldığında, işlev [arama adresini al ters API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)aracılığıyla konumun adresi gibi daha fazla bilgi toplar. Bu API, belirli bir konum koordinatını insan tarafından anlaşılabilir bir sokak adresine çevirir. 
+
+Tüm ilgili olay bilgileri daha sonra Blob deposunda tutulur. Aşağıdaki 5. adım, böyle bir mantığı uygulayan çalıştırılabilir kodu gösterir. BLOB depolama hesabındaki blob kapsayıcısına veri günlüklerini gönderen ve buna Event Grid bir abonelik ekleyen bir Azure Işlevi oluşturmak için aşağıdaki adımları izleyin.
 
 1. Azure portal panosunda kaynak oluştur ' u seçin. Kullanılabilir kaynak türleri listesinden **işlem** ' ı seçin ve ardından **işlev uygulaması**' nı seçin.
 
@@ -216,7 +224,7 @@ Azure Işlevleri, işlem altyapısını açıkça sağlamaya veya yönetmeye ger
 
 2. İşlev uygulaması ayrıntıları ' nı gözden geçirin ve "Oluştur" ' u seçin.
 
-3. Uygulama oluşturulduktan sonra buna bir işlev eklememiz gerekir. İşlev uygulamasına gidin ve bir işlev eklemek için **yeni işlev** ' e tıklayın, geliştirme ortamı olarak **Portal içi** ' i seçin ve ardından **devam**' ı seçin.
+3. Uygulama oluşturulduktan sonra buna bir işlev eklememiz gerekir. İşlev uygulamasına gidin. Bir işlev eklemek için **yeni işlev** ' e tıklayın ve geliştirme ortamı olarak **Portal içi** ' yi seçin. Sonra **devam**' ı seçin.
 
     ![oluşturma-işlev](./media/tutorial-iot-hub-maps/function.png)
 
@@ -231,20 +239,20 @@ Azure Işlevleri, işlem altyapısını açıkça sağlamaya veya yönetmeye ger
 7. C# komut dosyasında aşağıdaki parametreleri değiştirin:
     * **SUBSCRIPTION_KEY** Azure Maps hesabı birincil abonelik anahtarınızla değiştirin.
     * **UDID** 'yi karşıya yüklediğiniz bölge sayısının UDID değeriyle değiştirin, 
-    * Betikteki **Createblobasync** işlevi, veri depolama hesabında olay başına bir blob oluşturur. **ACCESS_KEY**, **account_name** ve **STORAGE_CONTAINER_NAME** , depolama hesabınızın erişim anahtarı, hesap adı ve veri depolama kapsayıcınızla değiştirin.
+    * Betikteki **Createblobasync** işlevi, veri depolama hesabında olay başına bir blob oluşturur. **ACCESS_KEY**, **account_name**ve **STORAGE_CONTAINER_NAME** değerini depolama hesabınızın erişim anahtarı, hesap adı ve veri depolama kapsayıcınızla değiştirin.
 
 10. **Event Grid abonelik Ekle**' ye tıklayın.
     
     ![Add-Event-Grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Abonelik ayrıntılarını doldur, **olay ABONELIĞI ayrıntıları** ' nın altında aboneliğiniz ve olay şeması için "Event Grid şeması" seçeneğini belirleyin. Konu **ayrıntıları** ' nın altında, konu türü olarak "Azure IoT Hub hesapları" nı seçin. Kaynak grubunu oluşturmak için kullandığınız aboneliği seçin, "kaynak grubu" olarak "ContosoRental" öğesini seçin ve "kaynak" olarak oluşturduğunuz IoT Hub seçin. **Cihaz telemetrisini** olay türü olarak seçin. Bu seçenekleri belirledikten sonra, "IoT Hub" için "konu türü" değişikliğini otomatik olarak görürsünüz.
+11. Abonelik ayrıntılarını doldur, **olay ABONELIĞI ayrıntıları** ' nın altında aboneliğiniz ve olay şeması için "Event Grid şeması" seçeneğini belirleyin. Konu **ayrıntıları** ' nın altında, konu türü olarak "Azure IoT Hub hesapları" nı seçin. Kaynak grubunu oluşturmak için kullandığınız aboneliği seçin, "kaynak grubu" olarak "ContosoRental" öğesini seçin. "Kaynak" olarak oluşturduğunuz IoT Hub seçin. **Cihaz telemetrisini** olay türü olarak seçin. Bu seçenekleri belirledikten sonra, "IoT Hub" için "konu türü" değişikliğini otomatik olarak görürsünüz.
 
     ![olay-kılavuz-abonelik](./media/tutorial-iot-hub-maps/af-egs.png)
  
 
 ## <a name="filter-events-using-iot-hub-message-routing"></a>IoT Hub ileti yönlendirme kullanarak olayları filtreleme
 
-Azure Işlevine Event Grid aboneliği ekledikten sonra, artık IoT Hub **Ileti yönlendirme** dikey penceresinde Event Grid bir varsayılan ileti yolu görebilirsiniz. İleti yönlendirme, cihaz telemetri iletileri, cihaz yaşam döngüsü olayları ve cihaz ikizi değişiklik olayları gibi farklı veri türlerini çeşitli uç noktalara yönlendirmenizi sağlar. IoT Hub ileti yönlendirme hakkında daha fazla bilgi için bkz. [IoT Hub ileti yönlendirmeyi kullanma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Azure Işlevine Event Grid aboneliği ekledikten sonra, IoT Hub **Ileti yönlendirme** dikey penceresinde Event Grid bir varsayılan ileti yolu görürsünüz. İleti yönlendirme, farklı veri türlerini çeşitli uç noktalara yönlendirmenizi sağlar. Örneğin, cihaz telemetri iletilerini, cihaz yaşam döngüsü olaylarını ve cihaz ikizi değişiklik olaylarını yönlendirebilirsiniz. IoT Hub ileti yönlendirme hakkında daha fazla bilgi için bkz. [IoT Hub ileti yönlendirmeyi kullanma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
 ![Merkez-örn. rota](./media/tutorial-iot-hub-maps/hub-route.png)
 

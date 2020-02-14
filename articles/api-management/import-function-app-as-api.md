@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442576"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209197"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure İşlev Uygulamalarını Azure API Management'a API olarak aktarma
 
@@ -35,7 +35,7 @@ Bu makale, Azure İşlev Uygulamalarını Azure API Management'a API olarak akta
 > * Azure portalında API’yi test etme
 > * API'yi geliştirici portalında test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure API Management örneği oluşturma](get-started-create-service-instance.md) hızlı başlangıcını tamamlayın.
 * Aboneliğinizde bir Azure İşlevleri uygulaması bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure İşlev Uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Uygulamanın HTTP tetikleyicili İşlevler içermesi ve yetkilendirme düzeyinin *Anonim* veya *İşlev* olarak ayarlanması gerekir.
@@ -118,7 +118,7 @@ Bir Azure İşlev Uygulaması içeri aktarıldığında aşağıdakiler otomatik
 * İşlev Uygulaması içindeki ana bilgisayar anahtarı apim-{*Azure API Management hizmet örneğiniz*adı},
 * Oluşturulan ana bilgisayar anahtarını içeren, Azure API Management örneği içindeki adlandırılmış değer {*azure işlev uygulaması örneğiniz*adı}-anahtar.
 
-4 Nisan 2019 ' den sonra oluşturulan API 'Ler için, ana bilgisayar anahtarı API Management olan HTTP isteklerinde bir başlıktaki İşlev Uygulaması geçirilir. Eski API 'Ler, ana bilgisayar anahtarını [bir sorgu parametresi](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)olarak iletir. Bu davranış, İşlev Uygulaması ilişkili *arka uç* varlığındaki `PATCH Backend` [REST API çağrısıyla](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) değiştirilebilir.
+4 Nisan 2019 ' den sonra oluşturulan API 'Ler için, ana bilgisayar anahtarı API Management olan HTTP isteklerinde bir başlıktaki İşlev Uygulaması geçirilir. Eski API 'Ler, ana bilgisayar anahtarını [bir sorgu parametresi](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)olarak iletir. Bu davranış, İşlev Uygulaması ilişkili *arka uç* varlığındaki `PATCH Backend` [REST API çağrısıyla](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) değiştirilebilir.
 
 > [!WARNING]
 > Azure İşlev Uygulaması ana bilgisayar anahtarının veya Azure API Management adlandırılmış değerinin kaldırılması veya değiştirilmesi, hizmetler arasındaki iletişimin kopmasına neden olur. Değerler otomatik olarak eşitlenmez.

@@ -1,20 +1,20 @@
 ---
 title: 'Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme | Microsoft Azure haritaları'
 description: Bu öğreticide, Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetinden gelen hava durumu tahmin verileriyle sensör verilerini nasıl katılabilmeniz gösterilmektedir.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989629"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208038"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Tahmin verilerini grafiklerde çiz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Günlük tahmin verileri iste
 
-Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için günlük hava durumu tahminini almak üzere Azure Maps Hava durumu hizmetinin [günlük tahmın API](https://aka.ms/AzureMapsWeatherDailyForecast) 'sini çağırır.
+Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, Azure Maps Hava durumu hizmetinin [günlük tahmın API](https://aka.ms/AzureMapsWeatherDailyForecast) 'sini çağırır. Bu API, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için hava durumu tahminini döndürür.
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![Türbin konumları](./media/weather-service-tutorial/location-map.png)
 
 
-Tanıtım verileri merkezinin istasyon KIMLIğINE bağlı olarak, tahmine ilişkin verileri tanıtım verileriyle gruplarız. Bu gruplandırma, tanıtım verilerini tahmin verileriyle genişlettiğini. 
+Veri tahmini verileri, istasyon KIMLIĞI temel alınarak tanıtım verileriyle gruplandıracağız. İstasyon KIMLIĞI, hava durumu veri merkezine yöneliktir. Bu gruplandırma, tanıtım verilerini tahmin verileriyle genişlettiğini.
 
 ```python
 # Group forecasted data for all locations
