@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: Laboratuvar hesaplarını yapılandırma
           href: how-to-configure-lab-accounts.md
+        - name: Laboratuvar oluşturucunun laboratuvar konumunu seçmesine izin verme
+          href: allow-lab-creator-pick-lab-location.md
         - name: Laboratuvarlarınızı eş sanal ağa bağlama
           href: how-to-connect-peer-virtual-network.md
         - name: Paylaşılan görüntü galerisi ekleme ve kaldırma

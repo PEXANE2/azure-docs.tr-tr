@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: İlgi düzeyini ayarlama (puanlama profilleri)
           href: index-add-scoring-profiles.md
-    - name: Yönetme ve izleme
+    - name: Hizmet yönetme
       items:
-        - name: Portal yönetimi
+        - name: Portal
           href: search-manage.md
-        - name: PowerShell yönetimi
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Etkinliği izleme ve günlüğe kaydetme
+    - name: İzleme ve günlüğe kaydetme
+      items:
+        - name: Temel Konular
           href: search-monitor-usage.md
+        - name: Sorgu etkinliğini izleme
+          href: search-monitor-queries.md
+        - name: Tanılama günlüğüne kaydetme
+          href: search-monitor-logs.md
         - name: Arama trafiği analizi
           href: search-traffic-analytics.md
     - name: Sorun giderme

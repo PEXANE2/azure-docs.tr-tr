@@ -23,8 +23,6 @@
           href: b2b-tutorial-require-mfa.md
     - name: Örnekler
       items:
-        - name: Self servis kaydolma portal örneği
-          href: self-service-portal.md
         - name: Kod ve Azure PowerShell örnekleri
           href: code-samples.md
     - name: Kavramlar
@@ -50,6 +48,8 @@
           href: conditional-access.md
         - name: Hibrit kuruluşlar için B2B
           href: hybrid-organizations.md
+        - name: Self servis kaydolma
+          href: self-service-portal.md
         - name: Geçerli sınırlamalar
           href: current-limitations.md
     - name: Nasıl yapılır kılavuzları
