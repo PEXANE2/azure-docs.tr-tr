@@ -1,6 +1,6 @@
 ---
-title: Kendi kendine barındırılan tümleştirme çalışma zamanını SSIS için proxy olarak yapılandırma
-description: Şirket içinde barındırılan Integration Runtime Azure-SSIS Integration Runtime için proxy olarak yapılandırmayı öğrenin.
+title: Kendini barındırılan tümleştirme çalışma zamanını SSIS için proxy olarak yapılandırma
+description: Şirket içinde barındırılan tümleştirme çalışma zamanının bir Azure-SSIS Integration Runtime proxy olarak nasıl yapılandırılacağını öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,65 +12,75 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 02/06/2020
-ms.openlocfilehash: b20a615691d95c04574e2909f69b5a83a97f9d14
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048944"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187675"
 ---
-# <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>ADF 'de Azure-SSIS IR için şirket içinde barındırılan IR 'yi bir ara sunucu olarak yapılandırma
+# <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
 
-Bu makalede, proxy olarak yapılandırılan şirket içinde barındırılan IR ile Azure Data Factory (ADF) üzerinde Azure-SSIS Integration Runtime (IR) için SQL Server Integration Services (SSIS) paketlerinin nasıl çalıştırılacağı açıklanmaktadır.  Bu özellik, [Azure-SSIS IR bir sanal ağa katılmadan](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)Şirket içindeki verilere erişmenizi sağlar.  Şirket ağınızda Azure-SSIS IR eklemek için aşırı karmaşık bir yapılandırma/kısıtlayıcı ilke olduğunda faydalıdır.
+Bu makalede, proxy olarak yapılandırılan şirket içinde barındırılan tümleştirme çalışma zamanı (Şirket içinde barındırılan IR) ile Azure Data Factory SQL Server Integration Services (SSIS) paketlerinin bir Azure-SSIS Integration Runtime (Azure-SSIS IR) üzerinde nasıl çalıştırılacağı açıklanmaktadır. 
 
-Bu özellik, şirket içi veri kaynağı ile bir veri akışı görevi içeren paketinizi iki hazırlama görevine bölecektir: şirket içinde barındırılan IR üzerinde çalışan ilk, verileri şirket içi veri kaynağından Azure Blob depolama alanındaki bir hazırlama alanına taşıyacaktır, ancak Azure-SSIS IR ikinci bir işlem, hazırlama alanındaki verileri amaçlanan veri hedefine taşır.
+Bu özellikle, [Azure-SSIS IR bir sanal ağa katmak](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)zorunda kalmadan şirket içi verilere erişebilirsiniz. Bu özellik, kurumsal ağınızın bir yapılandırması çok karmaşık olduğunda veya bir ilke Azure-SSIS IR eklemek için çok fazla kısıtlayıcı olduğunda faydalıdır.
 
-Bu özellik ayrıca, Azure-SSIS IR tarafından henüz desteklenmeyen bölgelerde şirket içinde barındırılan IR sağlamanıza olanak sağladığından diğer avantajlar/özellikler de sağlar, veri kaynaklarınızın güvenlik duvarında şirket içinde barındırılan IR 'nin genel statik IP adresine izin verir, vb.
+Bu özellik, şirket içi veri kaynağı olan bir veri akışı görevi içeren paketleri iki hazırlama görevine ayırır: 
+* Şirket içinde barındırılan IR üzerinde çalışan ilk görev, önce verileri şirket içi veri kaynağından Azure Blob depolama alanındaki bir hazırlama alanına taşımalıdır.
+* Azure-SSIS IR çalışan ikinci görev, hazırlama alanındaki verileri amaçlanan veri hedefine taşıır.
 
-## <a name="prepare-self-hosted-ir"></a>Şirket içinde barındırılan IR hazırlama
+Bu özelliğin diğer avantajları ve özellikleri, örneğin, henüz bir Azure-SSIS IR tarafından desteklenmeyen bölgelerde şirket içinde barındırılan IR ayarlamanıza ve veri kaynaklarınızın güvenlik duvarında şirket içinde barındırılan IR 'nizin genel statik IP adresine izin verir.
 
-Bu özelliği kullanmak için önce bir ADF oluşturmanız Azure-SSIS IR ve bu işlemi henüz yapmadıysanız, [bir Azure-SSIS IR nasıl](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) sağlayacağınızı takip etmeniz gerekir.
+## <a name="prepare-the-self-hosted-ir"></a>Şirket içinde barındırılan IR 'yi hazırlama
 
-Daha sonra, şirket içinde barındırılan IR 'nin [nasıl](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime) oluşturulacağı ile Azure-SSIS IR aynı ADF altında otomatik olarak barındırılan IR sağlamanız gerekir.
+Bu özelliği kullanmak için, önce bir veri fabrikası oluşturun ve içinde bir Azure-SSIS IR ayarlayın. Daha önce yapmadıysanız, [Azure-SSIS IR ayarlama](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)bölümündeki yönergeleri izleyin.
 
-Son olarak, şirket içi makinenize/Azure sanal makinenize (VM) aşağıdaki gibi otomatik olarak barındırılan IR 'nin ve ek sürücü ve çalışma zamanının en son sürümünü indirip yüklemeniz gerekir:
-- Şirket içinde barındırılan IR 'nin en son sürümünü [buradan](https://www.microsoft.com/download/details.aspx?id=39717)indirin ve yükleyin.
-- Paketlerinizdeki OLEDB bağlayıcıları kullanıyorsanız, zaten yapmadıysanız, ilgili OLEDB sürücülerini şirket içinde barındırılan IR 'nin yüklendiği makinede indirin ve yükleyin.  SQL Server (SQLNCLI) için OLEDB sürücüsünün önceki sürümünü kullanıyorsanız, 64 bitlik sürümü [buradan](https://www.microsoft.com/download/details.aspx?id=50402)indirebilirsiniz.  SQL Server (MSOLEDBSQL) için OLEDB sürücüsünün en son sürümünü kullanıyorsanız, 64 bitlik sürümü [buradan](https://www.microsoft.com/download/details.aspx?id=56730)indirebilirsiniz.  PostgreSQL, MySQL, Oracle vb. gibi diğer veritabanı sistemleri için OLEDB sürücüleri kullanıyorsanız, 64 bitlik sürümü ilgili web sitelerinden indirebilirsiniz.
-- Daha önce yapmadıysanız, C++ Visual (VC) çalışma zamanını şirket IÇINDE barındırılan IR 'nin yüklendiği makinede indirin ve yükleyin.  64 bitlik sürümü [buradan](https://www.microsoft.com/download/details.aspx?id=40784)indirebilirsiniz.
+Daha sonra, Azure-SSIS IR ayarlandığı veri fabrikasında kendi kendine barındırılan IR 'yi ayarlarsınız. Bunu yapmak için bkz. [Şirket içinde BARıNDıRıLAN IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
 
-## <a name="prepare-azure-blob-storage-linked-service-for-staging"></a>Azure Blob depolama bağlı hizmetini hazırlama için hazırlama
+Son olarak, şirket içi makinenize veya Azure sanal makinenize (VM) ek sürücü ve çalışma zamanının yanı sıra şirket içinde barındırılan IR 'nin en son sürümünü indirip yüklersiniz:
+- [Şirket içinde BARıNDıRıLAN IR](https://www.microsoft.com/download/details.aspx?id=39717)'nin en son sürümünü indirip yükleyin.
+- Paketlerinize nesne bağlama ve katıştırma veritabanı (OLEDB) bağlayıcıları kullanıyorsanız, henüz yapmadıysanız, ilgili OLEDB sürücülerini şirket içinde barındırılan IR 'nin yüklü olduğu makinede indirin ve yükleyin.  
 
-Zaten [BIR ADF bağlantılı hizmet oluşturma](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) makalesini tamamladıktan sonra, Azure-SSIS IR SAĞLANDıĞı aynı ADF altında Azure Blob depolama bağlı hizmeti oluşturun.  Lütfen şunlardan emin olun:
-- **Veri deposu** Için **Azure Blob depolama** seçildi
-- **Tümleştirme çalışma zamanı aracılığıyla Bağlan** Için **oto resolveıntegrationruntime** seçildi
-- **Kimlik doğrulama yöntemi** için **hesap anahtarı**/**SAS URI**/**hizmet sorumlusu** seçili olmalıdır
+  SQL Server (SQL Server Native Client [SQLNCLI]) için OLEDB sürücüsünün önceki sürümünü kullanıyorsanız, [64 bitlik sürümü indirin](https://www.microsoft.com/download/details.aspx?id=50402).  
 
->[!TIP]
-> **Hizmet sorumlusu** seçildiğinde, en az **Depolama Blobu veri katılımcısı rolüne**izin verin. Daha fazla bilgi için [Azure Blob depolama Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties)' na bakın.
+  SQL Server (MSOLEDBSQL) için OLEDB sürücüsünün en son sürümünü kullanıyorsanız, [64 bitlik sürümü indirin](https://www.microsoft.com/download/details.aspx?id=56730).  
+  
+  PostgreSQL, MySQL, Oracle vb. gibi diğer veritabanı sistemleri için OLEDB sürücüleri kullanıyorsanız, 64 bitlik sürümleri Web sitelerinden indirebilirsiniz.
+- Henüz yapmadıysanız, [ C++ Visual (VC) çalışma zamanının 64 bit sürümünü](https://www.microsoft.com/download/details.aspx?id=40784) , şirket içinde barındırılan IR 'nin yüklü olduğu makineye indirip yükleyin.
 
-![Azure Blob depolama bağlı hizmetini hazırlama için hazırlama](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
+## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama
 
-## <a name="configure-azure-ssis-ir-with-self-hosted-ir-as-a-proxy"></a>Ara sunucu olarak şirket içinde barındırılan IR ile Azure-SSIS IR yapılandırma
+Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir Azure Blob depolama alanına bağlı hizmet oluşturun. Bunu yapmak için bkz. [Azure Data Factory 'ye bağlı hizmet oluşturma](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service). Aşağıdakileri yaptığınızdan emin olun:
+- **Veri depolama**Için **Azure Blob depolama**' yı seçin.  
+- **Tümleştirme çalışma zamanı aracılığıyla Bağlan**Için, **oto resolveıntegrationruntime**' ı seçin.  
+- **Kimlik doğrulama yöntemi**için **hesap anahtarı**, **SAS URI 'si**veya **hizmet sorumlusu**' nı seçin.  
 
-Şirket içinde barındırılan IR ve Azure Blob depolama bağlı hizmetinizi hazırlama için hazırladığınıza göre, yeni/mevcut Azure-SSIS IR, kendiliğinden konak IR ile, ADF portalında/uygulamada bir proxy olarak yapılandırabilirsiniz.  Mevcut Azure-SSIS IR çalışıyorsa, bunu yapmadan önce durdurun ve ardından yeniden başlatın.
+    >[!TIP]
+    > **Hizmet sorumlusu**' nı seçerseniz, en azından *depolama blobu veri katılımcısı* rolünü verin. Daha fazla bilgi için [Azure Blob depolama Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties)' na bakın.
 
-1. Tümleştirme çalışma zamanı kurulum panelinde, **İleri** düğmesini seçerek **Genel ayarlar** ve **SQL ayarları** bölümlerinde ilerleyin. 
+![Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
-1. **Gelişmiş ayarlar** bölümünde:
+## <a name="configure-an-azure-ssis-ir-with-your-self-hosted-ir-as-a-proxy"></a>Ara sunucu olarak şirket içinde barındırılan IR ile bir Azure-SSIS IR yapılandırma
+
+Şirket içinde barındırılan IR ve Azure Blob depolama ile bağlantılı hizmetinizi hazırlama için hazırladığınıza göre, artık yeni veya mevcut Azure-SSIS IR, Veri Fabrikası portalınızdaki veya uygulamanızda ara sunucu olarak şirket içinde barındırılan IR ile yapılandırabilirsiniz. Bunu yapmadan önce, mevcut Azure-SSIS IR zaten çalışıyorsa, durdurun ve yeniden başlatın.
+
+1. **Tümleştirme çalışma zamanı kurulumu** bölmesinde, **İleri**' yi seçerek **Genel ayarlar** ve **SQL ayarları** bölümlerinin ötesine atlayın. 
+
+1. **Gelişmiş ayarlar** bölümünde şunları yapın:
 
    1. Azure-SSIS Integration Runtime onay kutusu **Için şirket Içinde barındırılan Integration Runtime ara sunucu olarak ayarla** ' yı seçin. 
 
-   1. **Şirket Içinde barındırılan Integration Runtime**, Azure-SSIS IR için mevcut şirket IÇINDE barındırılan IR 'yi bir ara sunucu olarak seçin.
+   1. Şirket içinde **barındırılan Integration Runtime** açılır listesinde, Azure-SSIS IR için mevcut şirket IÇINDE barındırılan IR 'yi bir ara sunucu olarak seçin.
 
-   1. **Hazırlama depolama bağlı hizmeti**Için mevcut Azure Blob depolama bağlı hizmetinizi seçin veya hazırlama için yeni bir tane oluşturun.
+   1. **Hazırlama depolama bağlı hizmeti** aşağı açılan listesinde, mevcut Azure Blob depolama ile bağlantılı hizmetinizi seçin veya hazırlama için yeni bir tane oluşturun.
 
-   1. **Hazırlama yolu**için, seçili Azure Blob depolama hesabınızda bir blob kapsayıcısı belirtin veya hazırlama için varsayılan bir tane kullanmak üzere boş bırakın.
+   1. **Hazırlama yolu** kutusunda, seçili Azure Blob depolama hesabınızda bir blob kapsayıcısı belirtin veya hazırlama için varsayılan bir tane kullanmak üzere boş bırakın.
 
    1. **Devam**'ı seçin.
 
    ![Şirket içinde barındırılan IR ile gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
-Ayrıca, PowerShell kullanarak, yeni/mevcut Azure-SSIS IR kendi şirket içinde barındırılan IR ile proxy olarak yapılandırabilirsiniz.
+Ayrıca, PowerShell kullanarak, yeni veya mevcut Azure-SSIS IR şirket içinde barındırılan IR ile proxy olarak yapılandırabilirsiniz.
 
 ```powershell
 $ResourceGroupName = "[your Azure resource group name]"
@@ -106,52 +116,58 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS paketlerini proxy ile bağlanacak şekilde etkinleştir
 
-[Buradan indirilebilen ve buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) indirilebilecek tek başına bir yükleyici olarak, Visual STUDIO için SSIS projeleri Uzantısı ile en son SSDT 'yi [kullanarak, OLEDB](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)/düz dosya bağlantı yöneticilerine eklenen yeni bir **connectbyproxy** özelliği bulabilirsiniz.  
+Visual Studio veya tek başına yükleyici için SSIS projeleri Uzantısı ile en son SSDT 'yi kullanarak, OLEDB veya düz dosya bağlantı yöneticilerine eklenen yeni bir `ConnectByProxy` özelliği bulabilirsiniz.
+* [Visual Studio için SSIS projeleri Uzantısı ile SSDT 'yi indirin](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
+* [Tek başına yükleyiciyi indirme](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
-Şirket içindeki veritabanlarına/dosyalara erişmek için OLEDB/düz dosya kaynaklarıyla veri akışı görevleri içeren yeni paketler tasarlarken, ilgili bağlantı yöneticilerinin Özellikler panelinde onu **true** olarak ayarlayarak bu özelliği etkinleştirebilirsiniz.
+OLEDB veya düz dosya kaynaklarıyla veri akışı görevleri içeren yeni paketleri tasarlarken, şirket içi veritabanlarına veya dosyalara erişmenize olanak tanıyan bu özelliği, ilgili bağlantı yöneticilerinin **Özellikler** bölmesinde *true* olarak ayarlayarak etkinleştirebilirsiniz.
 
 ![ConnectByProxy özelliğini etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-Bu özelliği, var olan paketleri bir tane ile tek tek değiştirmek zorunda kalmadan çalıştırırken de etkinleştirebilirsiniz.  İki seçenek vardır:
-- Azure-SSIS IR için en son SSDT ile bu paketleri içeren projeyi açma, yeniden oluşturma ve yeniden dağıtma: Bu özellik daha sonra SSMS 'den paket çalıştırırken paket açılır penceresini Çalıştır ' ın **bağlantı yöneticileri** sekmesinde görünen ilgili bağlantı yöneticileri için **true** olarak ayarlanarak etkinleştirilebilir.
+Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane ile el ile değiştirmek zorunda kalmadan da etkinleştirebilirsiniz.  İki seçenek vardır:
+- **Seçenek A**: Azure-SSIS IR için en son SSDT ile bu paketleri içeren projeyi açın, yeniden oluşturun ve yeniden dağıtın. Daha sonra ilgili bağlantı yöneticileri için özelliği *true* olarak ayarlayarak özelliği etkinleştirebilirsiniz. Paketleri SSMS 'den çalıştırırken, bu bağlantı yöneticileri **paket Çalıştır** açılır penceresinin **bağlantı yöneticileri** sekmesinde görüntülenir.
 
   ![ConnectByProxy Property2 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  Özelliği, ADF işlem hatlarında paket çalıştırırken [SSIS paketi yürütme etkinliğinin](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) **bağlantı yöneticileri** sekmesinde görünen Ilgili bağlantı yöneticileri için **true** olarak ayarlanarak da etkinleştirilebilir.
+  Ayrıca, Data Factory işlem hatları 'nda paket çalıştırırken [SSIS paketi etkinliğini Çalıştır etkinliğinin](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) **bağlantı yöneticileri** sekmesinde görünen ilgili bağlantı yöneticileri için özelliği *true* olarak ayarlayarak de etkinleştirebilirsiniz.
   
   ![ConnectByProxy property3 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- SSIS IR 'niz üzerinde çalıştırılacak olan bu paketleri içeren projeyi yeniden dağıtma: özellik, özellik yolu ve `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`sağlayarak etkinleştirilebilir ve paketleri SSMS 'den çalıştırırken paket açılır penceresini Çalıştır **Gelişmiş** sekmesinde bir özellik geçersiz kılma olarak **true** olarak ayarlanarak etkinleştirilebilir.
+- **Seçenek B:** SSIS IR 'niz üzerinde çalışmak üzere bu paketlerin bulunduğu projeyi yeniden dağıtın. Daha sonra özellik `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`yolunu sağlayarak özelliği etkinleştirebilir ve paketleri SSMS 'den çalıştırırken **paket Çalıştır** açılır penceresinin **Gelişmiş** sekmesinde bir özellik geçersiz kılma olarak *true* olarak ayarlayabilirsiniz.
 
   ![ConnectByProxy property4 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Özelliği, Ayrıca, ADF işlem hatlarında paket çalıştırırken [SSIS paketi yürütme etkinliğinin](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) **geçersiz kılınmasına** izin vererek özellik yolu, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`ve **true** olarak ayarlanarak etkinleştirilebilir.
+  Ayrıca özelliği, Data Factory işlem hatlarında paket çalıştırırken [SSIS paketi yürütme etkinliğinin](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) **geçersiz kılınmasına** izin vermek için özellik yolunu, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`ve *true* olarak ayarlayarak özelliği etkinleştirebilirsiniz.
   
   ![ConnectByProxy Property5 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-first-and-second-staging-tasks"></a>İlk ve ikinci hazırlama görevlerinde hata ayıkla
 
-Şirket içinde barındırılan IR 'de, çalışma zamanı günlüklerini `C:\ProgramData\SSISTelemetry` klasöre ve `C:\ProgramData\SSISTelemetry\ExecutionLog` klasöründeki ilk hazırlama görevlerinin yürütme günlüklerine bulabilirsiniz.  Paketleri SSıSDB veya dosya sistemi/dosya paylaşımları/Azure dosyalarında sakladığınıza bağlı olarak, ikinci hazırlama görevlerinin yürütme günlükleri SSıSDB veya belirtilen günlüğe kaydetme yollarında bulunabilir.  İlk hazırlama görevlerinin benzersiz kimlikleri, ikinci hazırlama görevlerinin yürütme günlüklerinde de bulunabilir, örn. 
+Şirket içinde barındırılan IR 'de, çalışma zamanı günlüklerini *C:\ProgramData\SSISTelemetry* klasöründe ve *C:\ProgramData\SSISTelemetry\ExecutionLog* klasöründeki ilk hazırlama görevlerinin yürütme günlüklerinde bulabilirsiniz.  Paketlerinizi SSSıSDB veya dosya sistemi, dosya paylaşımları veya Azure dosyalarında depoladığınıza bağlı olarak, SSıSDB veya belirtilen günlük yollarındaki ikinci hazırlama görevlerinin yürütme günlüklerini bulabilirsiniz. İkinci hazırlama görevlerinin yürütme günlüklerinde ilk hazırlama görevlerinin benzersiz kimliklerini de bulabilirsiniz. 
 
 ![İlk hazırlama görevinin benzersiz KIMLIĞI](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="using-windows-authentication-in-staging-tasks"></a>Hazırlama görevlerinde Windows kimlik doğrulamasını kullanma
+## <a name="use-windows-authentication-in-staging-tasks"></a>Hazırlama görevlerinde Windows kimlik doğrulamasını kullanma
 
-Şirket içinde barındırılan IR üzerinde hazırlama görevleriniz Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırmanız](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)gerekir. Hazırlama görevleriniz, şirket içinde barındırılan IR Hizmeti hesabıyla (varsayılan olarak`NT SERVICE\DIAHostService`) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla birlikte erişilecektir. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Sonuç olarak, şirket içinde barındırılan IR makinesinde, `Local Security Policy` -> `Local Policies` -> `User Rights Assignment` açın ve aşağıdaki adımları izleyin.
-- **Bir işlem için bellek kotalarını ayarlama** ve **bir işlem düzeyi belirteç** ILKELERINI şirket içinde barındırılan IR Hizmeti hesabıyla değiştirme. Bu, varsayılan hizmet hesabıyla şirket içinde barındırılan IR 'yi yüklerken otomatik olarak yapılmalıdır. Farklı bir hizmet hesabı kullanıyorsanız, buna aynı ilkeleri atayın.
-- Windows kimlik doğrulama hesabına **hizmet olarak oturum** açma ilkesi atayın.
+Şirket içinde barındırılan IR 'de hazırlama görevleri Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırın](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+
+Hazırlama görevleriniz, şirket içinde barındırılan IR Hizmeti hesabıyla (varsayılan olarak*NT SERVICE\DIAHostService*) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla erişilir. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Şirket içinde barındırılan IR makinesinde yerel **güvenlik ilkesi** ' ne gidin > yerel **Ilkeler** **Kullanıcı hakları ataması** > ve ardından aşağıdakileri yapın:
+
+1. *Bir işlem için bellek kotalarını ayarlama* ve *bir işlem düzeyi belirteç* ILKELERINI şirket içinde barındırılan IR Hizmeti hesabıyla değiştirme. Bu, kendi kendine barındırılan IR 'yi varsayılan hizmet hesabıyla yüklediğinizde otomatik olarak gerçekleşir. Farklı bir hizmet hesabı kullanıyorsanız, buna aynı ilkeleri atayın.
+
+1. Windows kimlik doğrulama hesabına *hizmet olarak oturum* açma ilkesi atayın.
 
 ## <a name="billing-for-the-first-and-second-staging-tasks"></a>İlk ve ikinci hazırlama görevleri için faturalandırma
 
-Şirket içinde barındırılan IR üzerinde çalışan ilk hazırlama görevleri, [ADF veri ardışık düzen fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) makalesinde belirtilen şekilde faturalandırılır ve şirket IÇINDE barındırılan IR üzerinde çalışan tüm veri taşıma etkinlikleri aynı şekilde faturalandırılır.
+Şirket içinde barındırılan IR üzerinde çalışan ilk hazırlama görevleri, tıpkı şirket içinde barındırılan bir IR üzerinde çalışan tüm veri taşıma etkinlikleri faturalandırılır, ayrı olarak faturalandırılır. Bu, [Azure Data Factory veri işlem hattı fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) makalesinde belirtilmiştir.
 
 Azure-SSIS IR çalışan ikinci hazırlama görevleri ayrı olarak faturalandırılmaz, ancak çalıştırdığınız Azure-SSIS IR [Azure-SSIS IR fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/ssis/) makalesinde belirtilen şekilde faturalandırılır.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Yalnızca ODBC/OLEDB/düz dosya bağlantı yöneticileri ve ODBC/OLEDB/düz dosya kaynakları veya OLEDB hedefi olan veri akışı görevleri şu anda desteklenmektedir. 
-- Yalnızca **hesap anahtarı**/**SAS URI**/**hizmet sorumlusu** kimlik doğrulaması ile yapılandırılmış Azure Blob depolama bağlı hizmetleri şu anda destekleniyor.
+- Yalnızca açık veritabanı bağlantısı (ODBC), OLEDB veya düz dosya bağlantı yöneticileri ve ODBC, OLEDB ve düz dosya kaynakları ya da OLEDB hedefi olan veri akışı görevleri şu anda desteklenmektedir. 
+- Yalnızca *hesap anahtarı*, *paylaşılan ERIŞIM imzası (SAS) URI 'Si*veya *hizmet sorumlusu* kimlik doğrulaması ile yapılandırılmış Azure Blob depolama ile bağlantılı hizmetler şu anda desteklenmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şirket içinde barındırılan IR 'yi, Azure-SSIS IR için bir ara sunucu olarak yapılandırdıktan sonra, ADF işlem hatlarında SSIS paket etkinliklerini yürütme olarak [SSIS paketlerini](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)yürütme gibi paketleri dağıtabilir
+Şirket içinde barındırılan IR 'yi, Azure-SSIS IR için bir proxy olarak yapılandırdıktan sonra, Data Factory işlem hatlarında SSIS paketi etkinliklerini yürütmek üzere paketlerinizi dağıtıp çalıştırabilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [Data Factory işlem hatları 'nda SSIS paketlerini yürütme SSIS paketi etkinlikleri](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

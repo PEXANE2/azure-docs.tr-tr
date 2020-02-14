@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275651"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189099"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesinde vamp ile mikro hizmetler yayın
 
@@ -91,7 +91,7 @@ Vamp, ölçüm toplama ve toplama için Elana Search gerektirir. [Manyetik ticio
    ```
   
 
-3. Tıklayın **dağıtma**.
+3. **Dağıt**' a tıklayın.
 
    DC/OS, Elayoara kapsayıcısını dağıtır. İlerlemeyi **Hizmetler** sayfasında izleyebilirsiniz.  
 
@@ -127,7 +127,7 @@ Bir kez **çalışıyor**olarak rapor aradıktan sonra, vamp DC/OS Universe pake
 
 Artık vamp çalışır durumdadır ve bir Blueprint 'ten bir hizmet dağıtın. 
 
-En basit biçimde, bir [vamp şeması](https://vamp.io/documentation/using-vamp/blueprints/) , dağıtılacak uç noktaları (ağ geçitleri), kümeleri ve hizmetleri açıklar. Vamp, aynı hizmetin farklı türevlerini, kanlarca serbest bırakma veya A/B testi için mantıksal gruplar halinde gruplamak için kümeler kullanır.  
+En basit biçimde, bir [vamp şeması](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) , dağıtılacak uç noktaları (ağ geçitleri), kümeleri ve hizmetleri açıklar. Vamp, aynı hizmetin farklı türevlerini, kanlarca serbest bırakma veya A/B testi için mantıksal gruplar halinde gruplamak için kümeler kullanır.  
 
 Bu senaryo, sürüm 1,0 ' de olan [**Sava**](https://github.com/magneticio/sava)adlı örnek bir tek parçalı uygulama kullanır. Mimariden, manyetik ticio/Sava: 1.0.0 altındaki Docker Hub 'ında bulunan bir Docker kapsayıcısında paketlenir. Uygulama normalde bağlantı noktası 8080 ' de çalışır, ancak bu durumda, bağlantı noktası 9050 altında kullanıma sunabilirsiniz. Basit bir Blueprint kullanarak uygulamayı vamp aracılığıyla dağıtın.
 
@@ -287,9 +287,9 @@ Ayrıca, vamp 'nin bazı güçlü özelliklerine de dokunduk: çalışan dağıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Vamp eylemlerini, [vamp REST API](https://vamp.io/documentation/api/api-reference/)aracılığıyla yönetme hakkında bilgi edinin.
+* Vamp eylemlerini, [vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events)aracılığıyla yönetme hakkında bilgi edinin.
 
-* Node. js ' de vamp Otomasyon betikleri oluşturun ve bunları [vamp iş akışları](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)olarak çalıştırın.
+* Node. js ' de vamp Otomasyon betikleri oluşturun ve bunları [vamp iş akışları](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)olarak çalıştırın.
 
-* Ek [vamp öğreticilerine](https://vamp.io/documentation/tutorials/)bakın.
+* Ek [vamp öğreticilerine](https://docs.vamp.io/tutorials/)bakın.
 

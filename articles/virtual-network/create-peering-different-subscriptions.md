@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi farklı abonelikler
+title: VNet eşlemesi oluşturma-farklı abonelikler
 titlesuffix: Azure Virtual Network
 description: Farklı Azure aboneliklerinde bulunan Kaynak Yöneticisi kullanılarak oluşturulan sanal ağlar arasında sanal ağ eşlemesi oluşturmayı öğrenin.
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020021"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201773"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi, farklı abonelikler
 
@@ -27,8 +27,8 @@ Sanal ağ eşlemesi oluşturma adımları, sanal ağların aynı veya farklı, a
 
 |Azure dağıtım modeli  | Azure aboneliği  |
 |--------- |---------|
-|[Her iki Kaynak Yöneticisi](tutorial-connect-virtual-networks-portal.md) |Naklettiğiniz|
-|[Bir Kaynak Yöneticisi, klasik bir](create-peering-different-deployment-models.md) |Naklettiğiniz|
+|[Her iki Kaynak Yöneticisi](tutorial-connect-virtual-networks-portal.md) |naklettiğiniz|
+|[Bir Kaynak Yöneticisi, klasik bir](create-peering-different-deployment-models.md) |naklettiğiniz|
 |[Bir Kaynak Yöneticisi, klasik bir](create-peering-different-deployment-models-subscriptions.md) |Farklı|
 
 Klasik dağıtım modeli aracılığıyla dağıtılan iki sanal ağ arasında sanal ağ eşlemesi oluşturulamaz. Hem klasik dağıtım modeliyle oluşturulan sanal ağlara bağlanmanız gerekiyorsa, sanal ağları bağlamak için bir Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanabilirsiniz.

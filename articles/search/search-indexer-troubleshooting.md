@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931115"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190923"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu sorunlarını giderme
 
@@ -43,7 +43,7 @@ Dizin oluşturucularının böyle bir örnekteki bu kaynaklara erişmesine izin 
 
 Her veri kaynağı türü için IP adresi aralığı kısıtlamalarını yapılandırmaya ilişkin ayrıntılar aşağıdaki bağlantılardan bulunabilir:
 
-* [Azure depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
+* [Azure Depolama](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
 * [Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
@@ -112,6 +112,6 @@ Dizin oluşturucular bir [veri kaynağından](https://docs.microsoft.com/rest/ap
 
 * Belge Dizinlenmemiş. Başarılı bir Dizin Oluşturucu çalıştırması için portalı denetleyin.
 * Dizin Oluşturucu çalıştırıldıktan sonra belge güncelleştirildi. Dizinleyicinin bir [zamanlamaya](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)göre olması, sonunda yeniden çalıştırılır ve belgeyi seçer.
-* Veri kaynağında belirtilen [sorgu](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) , belgeyi dışlar. Dizin oluşturucular, veri kaynağının parçası olmayan belgeleri dizinlemez.
+* Veri kaynağında belirtilen [sorgu](/rest/api/searchservice/create-data-source) , belgeyi dışlar. Dizin oluşturucular, veri kaynağının parçası olmayan belgeleri dizinlemez.
 * [Alan eşlemeleri](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) veya [AI zenginleştirme](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) belgeyi değiştirdi ve beklediğinizden farklı görünüyor.
 * Belgenizi bulmak için [arama BELGESI API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 'sini kullanın.

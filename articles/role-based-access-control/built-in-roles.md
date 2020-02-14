@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/17/2020
+ms.date: 02/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121983"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198675"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -422,7 +422,8 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Kimlik** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
+> | Microsoft.Insights/alertRules/* | Klasik uyarı kuralları oluşturma ve yönetme |
+> | Microsoft. Insights/metricAlerts/* | Yeni uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Insights/bileşenler/* | Öngörüler bileşenleri oluşturma ve yönetme |
 > | Microsoft.Insights/webtests/* | Web testleri oluşturma ve yönetme |
 > | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
@@ -2480,7 +2481,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/switchprotection/eylem | Koruma kapsayıcısını Değiştir |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Yük Devretme Sınaması |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |

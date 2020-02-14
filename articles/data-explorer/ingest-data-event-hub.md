@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773932"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188198"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub 'ından Azure Veri Gezgini veri alma
 
@@ -22,9 +22,9 @@ ms.locfileid: "76773932"
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Bir test kümesi ve veritabanı](create-cluster-database-portal.md).
@@ -45,7 +45,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
 
     **Azure'a dağıtma** düğmesi Azure portalda doldurmanız gereken bir form sayfasını açar.
 
-    ![Azure'a Dağıt](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Azure’a dağıtma](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Olay hub'ının oluşturulmasını istediğiniz aboneliği seçin ve *test-hub-rg* adlı bir kaynak grubu oluşturun.
 
@@ -117,8 +117,8 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
     | Olay hub’ı ad alanı | Benzersiz bir ad alanı adı | Önceden seçtiğiniz ve ad alanınızı tanımlayan ad. |
     | Olay hub'ı | *test-hub* | Oluşturduğunuz olay hub'ı. |
     | Tüketici grubu | *test-group* | Oluşturduğunuz olay hub'ında tanımlanan tüketici grubu. |
-    | Olay sistemi özellikleri | İlgili özellikleri seçin | [Olay Hub 'ı sistem özellikleri](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilk birine eklenir. Sistem Özellikleri eklenirken, tablo şemasını [oluşturun](/azure/kusto/management/tables#create-table) veya [güncelleştirin](/azure/kusto/management/tables#alter-table-and-alter-merge-table) ve seçili özellikleri dahil etmek için [eşleme](/azure/kusto/management/mappings) yapın. |
-    | Sıkıştırma | *Yok* | Olay Hub 'ı ileti yükünün sıkıştırma türü. Desteklenen sıkıştırma türleri: *none, gzip*.|
+    | Olay sistemi özellikleri | İlgili özellikleri seçin | [Olay Hub 'ı sistem özellikleri](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilk birine eklenir. Sistem Özellikleri eklenirken, tablo şemasını [oluşturun](/azure/kusto/management/create-table-command) veya [güncelleştirin](/azure/kusto/management/alter-table-command) ve seçili özellikleri dahil etmek için [eşleme](/azure/kusto/management/mappings) yapın. |
+    | Sıkıştırma | *Seçim* | Olay Hub 'ı ileti yükünün sıkıştırma türü. Desteklenen sıkıştırma türleri: *none, gzip*.|
     | | |
 
     **Hedef tablo:**

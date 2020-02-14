@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760802"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191036"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Bilişsel Arama Beceri kavramları ve bileşimi
 
@@ -43,11 +43,11 @@ Belge, zenginleştirme ardışık düzeninde olduktan sonra bir içerik ağacı 
 
 |Veri kaynağı \ ayrıştırma modu|Varsayılan|JSON, JSON satırları & CSV|
 |---|---|---|
-|Blob Depolama|/Document/Content<br>/Document/normalized_images/*<br>…|/Document/{KEY1}<br>/Document/{key2}<br>…|
-|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|Yok |
-|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|Yok|
+|Blob Storage|/Document/Content<br>/Document/normalized_images/*<br>…|/Document/{KEY1}<br>/Document/{key2}<br>…|
+|SQL|/Document/{column1}<br>/Document/{Column2}<br>…|YOK |
+|Cosmos DB|/Document/{KEY1}<br>/Document/{key2}<br>…|YOK|
 
- Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
+ Yetenekler yürütülürken, yeni düğümleri zenginleştirme ağacına ekler. Bu yeni düğümler daha sonra aşağı akış becerileri, bilgi deposuna yansıtma veya dizin alanlarıyla eşleme için giriş olarak kullanılabilir. Enrichments değişebilir değil: oluşturulduktan sonra düğümler düzenlenemez. Becerileri daha karmaşık olsa da, zenginleştirme ağacınızı oluşturur, ancak zenginleştirme ağacındaki tüm düğümlerin dizin veya bilgi deposu üzerinde olması gerekmez. 
 
 Dizine veya bilgi deposuna yalnızca zenginlerin bir alt kümesini seçerek kalıcı hale getirebilirsiniz.
 Bu belgenin geri kalanında, [otel İncelemeleri örneği](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)ile çalıştık, ancak aynı kavramlar diğer tüm veri kaynaklarından belge zenginleştirilmesi için de geçerlidir.
@@ -58,7 +58,7 @@ Her yetenek bir bağlam gerektirir. Bağlam şunları belirler:
 +   Enzenginleştirme ağacında, yetenek çıkışları eklenir. Çıktılar, her zaman bağlam düğümünün alt öğeleri olarak ağaca eklenir. 
 +   Girişlerin şekli. Çoklu düzey koleksiyonlar için, bağlamı üst koleksiyon olarak ayarlamak, Beceri girişinin şeklini etkiler. Örneğin, ülkelerin listesini içeren bir zenginleştirme ağacınızı kullanıyorsanız, her biri bir ZipCodes listesi içeren bir eyalet listesi ile zenginleştirir.
 
-|Bağlam|Girdi|Giriş şekli|Yetenek çağırma|
+|Bağlam|Giriş|Giriş şekli|Yetenek çağırma|
 |---|---|---|---|
 |```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Ülke içindeki tüm ZipCodes listesi |Ülke başına bir kez |
 |```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Durumdaki ZipCodes listesi | Ülke ve eyalet birleşimine göre|

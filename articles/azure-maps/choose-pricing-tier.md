@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 8764e9161f952118ca7ae28343dcd16477cf1eee
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2950c0e0fdd6839b905386c90665d95563a0a3f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155766"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190277"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure haritalar 'da doğru fiyatlandırma katmanını seçin
 
-Azure haritalar, S0 ve S1 olmak üzere iki fiyatlandırma katmanı sunar. Bu makalenin amacı, gereksinimleriniz için doğru fiyatlandırma katmanını seçmenize yardımcı olmak içindir. Doğru fiyatlandırma katmanını seçmenize yardımcı olmak için aşağıdaki iki soruyu kendinize sorun.
-
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Hangi jeo kullanım özelliklerini kullanmayı planlıyorum?
-Çekirdek Jeo-uzamsal API 'Leri hizmet gereksinimlerinizi karşılıyorsa, S0 fiyatlandırma katmanı sizin için doğru olur. Uygulamanız için daha gelişmiş yetenekler istiyorsanız S1 fiyatlandırma katmanını tercih edin. Gelişmiş yetenekler örneği: havadan, hibrit ve karma imagery, yol aralığı alma ve toplu iş coğrafi kodlama. **Fiyatlandırma Katmanı Özellikleri** tablosu, uygulamanız için en uygun fiyatlandırma katmanını seçmenize yardımcı olabilir.
+Azure haritalar, S0 ve S1 olmak üzere iki fiyatlandırma katmanı sunar. Bu makalenin amacı, gereksinimleriniz için doğru fiyatlandırma katmanını seçmenize yardımcı olmak içindir. Doğru fiyatlandırma katmanını seçmek için kendinize aşağıdaki iki soruyu sorun.
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Kaç tane eşzamanlı kullanıcı desteklemeyi planlıyorum? 
-S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. S0 fiyatlandırma katmanı saniyede **50 sorguyu**(S1 katmanı **saniyede 50 ' den fazla sorgu**işlerken) işler.
+S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. S0 fiyatlandırma katmanı, **saniyede 50 sorgunun sayısını**işler. S1 katmanı **saniyede 50 ' den fazla sorgu**işler.
+
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Hangi jeo kullanım özelliklerini kullanmayı planlıyorum?
+Çekirdek Jeo-uzamsal API 'Leri hizmet gereksinimlerinizi karşılıyorsa, S0 fiyatlandırma katmanı sizin için doğru olur. Uygulamanız için daha gelişmiş yetenekler istiyorsanız S1 fiyatlandırma katmanını tercih edin. Gelişmiş yetenekler şunlardır: havadan, hibrit Plus hibriy, yol aralığı alma ve toplu iş coğrafi kodlama. Uygulamanız için en uygun fiyatlandırma katmanını seçmek için **Fiyatlandırma Katmanı Özellikleri** tablosunu gözden geçirin.
 
 ### <a name="pricing-tier-capabilities"></a>Fiyatlandırma Katmanı Özellikleri
 
@@ -32,21 +32,21 @@ S0 ve S1 fiyatlandırma katmanları farklı miktarda veri aktarımını işler. 
 | Eşleme Işleme                              | ✓                   | ✓       |
 | Uydu Imagery                       |                     | ✓        |
 | Arama                                  | ✓                    | ✓        |
-| Toplu Arama                            |                     | ✓        |
+| Toplu işlem arama                            |                     | ✓        |
 | Yol                                   | ✓                    |✓        |
-| Toplu Yönlendirme                            |                    | ✓        |
-| Matris Yönlendirme                          |                     | ✓        |
-| Rota Aralığı (İzokronlar)                |                     | ✓        |
+| Batch yönlendirme                            |                    | ✓        |
+| Matris yönlendirme                          |                     | ✓        |
+| Yol aralığı (Izites)                |                     | ✓        |
 | Trafik                                |✓                    |✓        |
 | Saat Dilimi                               |✓                    |✓        |
 | Coğrafi konum (Önizleme)                    |✓                   |✓        |
-| Uzamsal İşlemler                        |                    |✓        |
-| Coğrafi Sınırlama                                |                    |✓        |
+| Uzamsal Işlemler                        |                    |✓        |
+| Bırakmanıza                                |                    |✓        |
 | Azure haritalar verileri (Önizleme)                |                     | ✓        |
 | Mobility (Önizleme)                       |                     | ✓        |
 | Hava durumu (Önizleme)                        |✓                    |✓        |
 
-Bu ek veri noktalarına göz önünde bulundurulmayı düşünülüyor:
+Şu ek noktaları göz önünde bulundurun:
 * Ne tür bir kuruluş kullanıyorsunuz?
 * Uygulamanız ne kadar kritik?
 
@@ -57,7 +57,7 @@ S0 ve S1 fiyatlandırma katmanlarından daha iyi bir fikir almak için **fiyatla
 | Fiyatlandırma katmanı  |     Hedeflenen müşteriler                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>S0 fiyatlandırma katmanı, tüm üretim aşamalarında uygulamalar için geçerlidir: kavram kanıtı geliştirme ve uygulama üretim ve dağıtımına yönelik erken aşama testi. Ancak, bu katman küçük ölçekli geliştirme veya düşük eşzamanlı kullanıcıları olan müşteriler ya da her ikisi için tasarlanmıştır. <p>|
-| S1            |    <p>S1 fiyatlandırma katmanı, büyük ölçekli kurumsal, görev açısından kritik uygulamalar veya çok sayıda eşzamanlı kullanıcı için destek gerektiren müşterilere yöneliktir. Bu, gelişmiş Jeo-uzamsal hizmetler gerektiren müşteriler için de gereklidir.</p>|
+| S1            |    <p>S1 fiyatlandırma katmanı, büyük ölçekli kurumsal uygulamalar, görev açısından kritik uygulamalar veya yüksek miktarda eşzamanlı kullanıcı olan müşterilere yöneliktir. Bu, gelişmiş Jeo-uzamsal hizmetler gerektiren müşteriler için de gereklidir.</p>|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

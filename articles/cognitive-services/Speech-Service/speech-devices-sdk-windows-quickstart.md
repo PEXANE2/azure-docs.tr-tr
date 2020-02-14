@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 78d9dc8c2302de6a9bdbfef62d47d10d252cf0c5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815547"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189023"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Hızlı başlangıç: Windows 'ta konuşma cihazları SDK örnek uygulamasını çalıştırma
 
@@ -25,7 +25,7 @@ Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64 bit Windows üzerinde J
 
 Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
-[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıç şunları gerektirir:
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 * Java için [konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download-JRE) en son sürümünü indirin ve. zip dosyasını çalışma dizininize ayıklayın.
    > [!NOTE]
-   > JRE-Sample-Release. zip dosyası JRE örnek uygulamasını içerir ve bu hızlı başlangıç, uygulamanın C:\SDSDK\JRE-Sample-Release konumuna ayıklandığını varsayar
+   > Bu hızlı başlangıçta, uygulamanın C:\SDSDK\JRE-Sample-Release 'e ayıklanacağı varsayılmaktadır
 
 Konuşma dökümü şu anda yalnızca "en-US" ve "zh-CN" için kullanılabilir ve "merkezileştirme" ve "eastaya" bölgelerinde mevcuttur. Konuşma dökümünü kullanmak için bu bölgelerden birinde bir konuşma anahtarınız olmalıdır.
 
@@ -81,7 +81,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -92,7 +92,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma
 
-1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
+1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
 
    Konuşma ve LUSıS için, bilgileriniz `FunctionsList.java`'ye gider:
 
@@ -142,7 +142,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 ## <a name="create-and-run-a-standalone-application"></a>Tek başına uygulama oluşturma ve çalıştırma
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. Seçin **dışarı**.
+1. **Paket Gezgini**' nde projenize sağ tıklayın. **Dışarı aktar**' ı seçin.
 
 1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 

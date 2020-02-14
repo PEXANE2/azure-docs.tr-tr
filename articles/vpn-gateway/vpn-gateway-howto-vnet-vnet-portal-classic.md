@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157916"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201858"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
 
@@ -61,9 +61,9 @@ Sanal ağları aşağıdaki sebeplerden dolayı bağlamak isteyebilirsiniz:
 
 Sanal ağlar arası bağlantılar hakkında daha fazla bilgi için bu makalenin sonunda yer alan [Sanal ağdan sanal ağa dikkat edilecek noktalar](#faq) bölümünü inceleyin.
 
-### <a name="before-you-begin"></a>Başlamadan önce
+### <a name="powershell"></a>Azure PowerShell çalışma
 
-Bu alıştırmaya başlamadan önce, Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). Çoğu adım için portalı kullanıyoruz, ancak sanal ağlar arasındaki bağlantıları oluşturmak için PowerShell kullanmanız gerekir. Azure portal kullanarak bağlantı oluşturamazsınız.
+Çoğu adım için portalı kullanıyoruz, ancak sanal ağlar arasındaki bağlantıları oluşturmak için PowerShell kullanmanız gerekir. Azure portal kullanarak bağlantı oluşturamazsınız. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>1. adım -, IP adres aralıklarını planlama
 
@@ -160,7 +160,7 @@ Her sanal ağın bir sanal ağ geçidine sahip olması gerekir. Sanal ağ geçid
 3. Ağ geçidi alt ağ adı, gereken ' GatewaySubnet ' adıyla otomatik olarak doldurulur. **Adres aralığı** , VPN Gateway hIzmetlerIne ayrılan IP adreslerini içerir. Bazı yapılandırmalara/29 ağ geçidi alt ağına izin verir, ancak ağ geçidi Hizmetleri için daha fazla IP adresi gerektirebilecek gelecek yapılandırmalara uyum sağlamak için bir/28 veya/27 kullanmak en iyisidir. Örnek ayarlarımızda 10.11.1.0/27 kullanıyoruz. Adres alanını ayarlayın ve ardından **Tamam**' a tıklayın.
 4. **Ağ geçidi boyutunu**yapılandırın. Bu ayar [ağ geçidi SKU 'su](vpn-gateway-about-vpn-gateway-settings.md#gwsku)anlamına gelir.
 5. **Yönlendirme türünü**yapılandırın. Bu yapılandırma için yönlendirme türü **dinamik**olmalıdır. Ağ geçidini koparmadığınız ve yeni bir tane oluşturmadığınız müddetçe yönlendirme türünü daha sonra değiştiremezsiniz.
-6. **Tamam**’a tıklayın.
+6. **Tamam**'a tıklayın.
 7. **Yenı VPN bağlantısı** sayfasında, sanal ağ geçidini oluşturmaya başlamak için **Tamam** ' ı tıklatın. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
 ## <a name="vnet4settings"></a>5. adım-TestVNet4 ayarlarını yapılandırma
@@ -209,37 +209,34 @@ Azure portal klasik VNET oluştururken, görüntülediğiniz ad PowerShell için
 
 Aşağıdaki adımlarda, Azure hesabınıza bağlanır ve bağlantılarınız için gerekli olan değerleri almak için ağ yapılandırma dosyasını indirmeniz ve görüntülemeniz gerekir.
 
-1. Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+1. Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell çalışma](#powershell).
 
-2. PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   Hesapla ilişkili abonelikleri kontrol edin.
+2. PowerShell konsolunuzu yükseltilmiş haklarla açın. Bağlanmanıza yardımcı olması için aşağıdaki örnekleri kullanın. PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   Ardından, Azure aboneliğiniz için PowerShell Klasik dağıtım modeli için eklemek için aşağıdaki cmdlet'i kullanın.
+3. Hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
    ```powershell
    Add-AzureAccount
    ```
-3. Ağ yapılandırma dosyasını dışa aktarın ve görüntüleyin. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası **C:\azurenet dizinine**aktarılmalıdır.
+4. Hesapla ilişkili abonelikleri kontrol edin.
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin.
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. Ağ yapılandırma dosyasını dışa aktarın ve görüntüleyin. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası **C:\azurenet dizinine**aktarılmalıdır.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Dosyayı bir metin düzenleyici ile açın ve sanal ağlarınız ve sitelerinizin adlarını görüntüleyin. Bunlar, bağlantılarınızı oluştururken kullandığınız ad olacaktır.<br>VNet adları **Virtualnetworksite Name =** olarak listelenir.<br>Site adları **LocalNetworkSiteRef Name =** olarak listelenir
+7. Dosyayı bir metin düzenleyici ile açın ve sanal ağlarınız ve sitelerinizin adlarını görüntüleyin. Bu adlar, bağlantılarınızı oluştururken kullandığınız adlar olacaktır.<br>VNet adları **Virtualnetworksite Name =** olarak listelenir.<br>Site adları **LocalNetworkSiteRef Name =** olarak listelenir
 
 ## <a name="createconnections"></a>8. adım-VPN Gateway bağlantılarını oluşturma
 
@@ -273,7 +270,7 @@ Tüm önceki adımlar tamamlandığında, IPSec/ıKE önceden paylaşılan anaht
 ## <a name="faq"></a>Klasik sanal ağlar için sanal ağdan sanal ağa dikkat edilecek noktalar
 * Sanal ağlar aynı veya farklı aboneliklerde olabilir.
 * Sanal ağlar aynı ya da farklı Azure bölgelerinde (konumlarında) bulunabilir.
-* Bir bulut hizmeti ya da yük dengeleme uç noktası, birbirlerine bağlı olsa da sanal ağlara yayılamaz.
+* Bir bulut hizmeti veya yük dengeleme uç noktası, birbirine bağlı olsalar dahi sanal ağlar arasında yayılamaz.
 * Birden çok sanal ağı birbirine bağlamak için herhangi bir VPN cihazı gerekmez.
 * VNet 'ten VNet 'e Azure sanal ağlarını bağlamayı destekler. Bir sanal ağa dağıtılan sanal makinelerin veya bulut hizmetlerinin bağlanmasını desteklemez.
 * VNet 'ten VNet 'e dinamik yönlendirme ağ geçitleri gerekir. Azure statik yönlendirme ağ geçitleri desteklenmez.

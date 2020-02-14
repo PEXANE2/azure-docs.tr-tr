@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048577"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198778"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,6 +173,8 @@ Bazı örnekler:
     ```
 
 Üç farklı `task` parametre değeri (üçüncü görev türü `forecasting`ve benzer bir algoritma havuzunu `regression` görevler), uygulanacak modellerin listesini belirleme. Dahil edilecek veya hariç tutulacak mevcut modellerle yinelemeleri daha fazla değiştirmek için `whitelist` veya `blacklist` parametrelerini kullanın. Desteklenen modellerin listesi, [Supportedmodeller sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([Sınıflandırma](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [tahmin](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)ve [gerileme](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)) bulunabilir.
+
+Otomatik ML 'nin doğrulama hizmeti, deneme zaman aşımı hatalarından kaçınmak için `experiment_timeout_minutes` minimum zaman aşımı süresi 15 dakika olarak ayarlanmalıdır.
 
 ### <a name="primary-metric"></a>Birincil Metrik
 Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.

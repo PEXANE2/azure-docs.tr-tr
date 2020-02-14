@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031861"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191061"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Özel uç nokta bağlantı sorunlarını giderme
+# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Özel Uç Nokta bağlantı sorunlarını giderme
 
 Bu kılavuzda, Özel uç nokta bağlantısı kurulumunuzu doğrulamak ve tanılamak için adım adım yönergeler sağlanmaktadır. 
 
@@ -100,7 +100,7 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumunuzda bağlantı soru
        ![NSG giden kuralları](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. Bağlantıda sonuçlar doğrulandıktan sonra bağlantı sorunu, uygulama katmanındaki gizli dizileri, belirteçleri, parolaları gibi diğer yönlerle ilgili olabilir.
-   - Bu durumda, Özel uç noktayla ilişkili özel bağlantı kaynağının yapılandırmasını gözden geçirin. [Özel bağlantı sorun giderme kılavuzu](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)' na bakın. 
+   - Bu durumda, Özel uç noktayla ilişkili özel bağlantı kaynağının yapılandırmasını gözden geçirin. [Özel bağlantı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)' na bakın. 
 
 6. Sorununuz çözülmedi ve bağlantı sorunu hala varsa [Azure destek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ekibine başvurun. 
 
@@ -108,4 +108,4 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumunuzda bağlantı soru
 
  * [Güncelleştirilmiş alt ağda özel bir uç nokta oluşturma (Azure portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [Özel bağlantı sorun giderme kılavuzu](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [Özel bağlantı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)

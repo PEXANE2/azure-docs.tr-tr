@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754363"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190988"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Bilişsel Arama karmaşık veri türlerini modelleme
 
@@ -125,7 +125,7 @@ Arama sonuçlarında isterseniz, alanların dizinde alınabilir olarak işaretle
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Filtre, model ve karmaşık alanları sıralama
 
-Filtreleme ve ara sıra aramaları için kullanılan aynı [OData yolu söz dizimi](query-odata-filter-orderby-syntax.md) , bir arama isteğindeki alanları otomatik olarak sıralama, sıralama ve seçme için de kullanılabilir. Karmaşık türler için, hangi alt alanların sıralanabilir veya çok yönlü tablo olarak işaretleneceğini belirleyen kurallar uygulanır. Bu kurallar hakkında daha fazla bilgi için [create INDEX API Reference](https://docs.microsoft.com/rest/api/searchservice/create-index#request)bölümüne bakın.
+Filtreleme ve ara sıra aramaları için kullanılan aynı [OData yolu söz dizimi](query-odata-filter-orderby-syntax.md) , bir arama isteğindeki alanları otomatik olarak sıralama, sıralama ve seçme için de kullanılabilir. Karmaşık türler için, hangi alt alanların sıralanabilir veya çok yönlü tablo olarak işaretleneceğini belirleyen kurallar uygulanır. Bu kurallar hakkında daha fazla bilgi için [create INDEX API Reference](/rest/api/searchservice/create-index)bölümüne bakın.
 
 ### <a name="faceting-sub-fields"></a>Alt alanları renklendirme
 
@@ -149,7 +149,7 @@ Karmaşık bir koleksiyon alanını filtrelemek için, [`any` ve `all` işleçle
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Üst düzey basit alanlarda olduğu gibi, karmaşık alanların basit alt alanları, yalnızca **filtrelenebilir** özniteliği Dizin tanımında `true` olarak ayarlandıysa filtrelere dahil edilebilir. Daha fazla bilgi için [create INDEX API Reference](https://docs.microsoft.com/rest/api/searchservice/create-index#request)bölümüne bakın.
+Üst düzey basit alanlarda olduğu gibi, karmaşık alanların basit alt alanları, yalnızca **filtrelenebilir** özniteliği Dizin tanımında `true` olarak ayarlandıysa filtrelere dahil edilebilir. Daha fazla bilgi için [create INDEX API Reference](/rest/api/searchservice/create-index)bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967129"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190432"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -141,7 +141,7 @@ SQL Server erişmek için Karma Bağlantılar kullanırsanız, 10 Mayıs 2016 ' 
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
 Bu durum, bu yana Karma Bağlantı Yöneticisi düzeltilen bir sorun nedeniyle oluştu. Bu sorunu çözmek için [karma bağlantı Yöneticisi güncelleştirdiğinizden](https://go.microsoft.com/fwlink/?LinkID=841308) emin olun.
 
@@ -314,4 +314,4 @@ Sıkıştırmak istediğiniz belirli dinamik ve statik MIME türlerini de belirt
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Şirket içi ortamdan App Service geçiş Nasıl yaparım? istiyor musunuz?
 
-Siteleri Windows ve Linux Web sunucularından App Service geçirmek için, Azure App Service Geçiş Yardımcısı ' nı kullanabilirsiniz. Geçiş Aracı gerektiğinde Azure 'da Web uygulamaları ve veritabanları oluşturur ve sonra içeriği yayımlar. Daha fazla bilgi için bkz. [Azure App Service Geçiş Yardımcısı](https://www.migratetoazure.net/).
+Siteleri Windows ve Linux Web sunucularından App Service geçirmek için, Azure App Service Geçiş Yardımcısı ' nı kullanabilirsiniz. Geçiş Aracı gerektiğinde Azure 'da Web uygulamaları ve veritabanları oluşturur ve sonra içeriği yayımlar. Daha fazla bilgi için bkz. [Azure App Service Geçiş Yardımcısı](https://appmigration.microsoft.com/).

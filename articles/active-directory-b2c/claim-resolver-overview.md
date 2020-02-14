@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836057"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193388"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -48,7 +48,7 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 | İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {Culture: LanguageName} | Dil için iki harfli ISO kodu. | en |
+| {Culture: LanguageName} | Dil için iki harfli ISO kodu. | tr |
 | {Culture: LCıD}   | Dil kodunun LCıD 'SI. | 1033 |
 | {Culture: RegionName} | Bölgenin iki harfli ISO kodu. | US |
 | {Culture: RFC5646} | RFC5646 dil kodu. | tr-TR |
@@ -66,14 +66,14 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 | İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {OıDC: AuthenticationContextReferences} |`acr_values` sorgu dizesi parametresi. | Yok |
+| {OıDC: AuthenticationContextReferences} |`acr_values` sorgu dizesi parametresi. | YOK |
 | {OıDC: ClientID} |`client_id` sorgu dizesi parametresi. | 00000000-0000-0000-0000-000000000000 |
 | {OıDC: Domainipucuyla} |`domain_hint` sorgu dizesi parametresi. | facebook.com |
 | {OıDC: Loginipucu} |  `login_hint` sorgu dizesi parametresi. | someone@contoso.com |
-| {OıDC: MaxAge} | `max_age`. | Yok |
+| {OıDC: MaxAge} | `max_age`. | YOK |
 | {OıDC: nonce} |`Nonce` sorgu dizesi parametresi. | defaultNonce |
-| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum aç |
-| {OıDC: kaynak} |`resource` sorgu dizesi parametresi. | Yok |
+| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum açma |
+| {OıDC: kaynak} |`resource` sorgu dizesi parametresi. | YOK |
 | {OıDC: scope} |`scope` sorgu dizesi parametresi. | OpenID |
 
 ### <a name="context"></a>Bağlam
@@ -96,13 +96,35 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | {OAUTH-KV: kampanya Nkimliği} | Sorgu dizesi parametresi. | Hawaii |
 | {OAUTH-KV: app_session} | Sorgu dizesi parametresi. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Sorgu dizesi parametresi. | 1234 |
-| {OAUTH-KV: herhangi bir özel sorgu dizesi} | Sorgu dizesi parametresi. | Yok |
+| {OAUTH-KV: herhangi bir özel sorgu dizesi} | Sorgu dizesi parametresi. | YOK |
 
 ### <a name="oauth2"></a>OAuth2
 
 | İste | Açıklama | Örnek |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Erişim belirteci. | Yok |
+| {OAuth2: access_token} | Erişim belirteci. | YOK |
+
+## <a name="using-claim-resolvers"></a>Talep çözücüler kullanma 
+
+Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz: 
+
+| Öğe | Öğe | Ayarlar |
+| ----- | ----------------------- | --------|
+|Application Insights teknik profili |`InputClaim` | |
+|[Azure Active Directory](active-directory-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
+|[Talep dönüştürme](claims-transformation-technical-profile.md) teknik profili| `InputClaim`, `OutputClaim`| 1, 2|
+|[Restsize sağlayıcı](restful-technical-profile.md) teknik profili| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md) teknik profili| `OutputClaim`| 1, 2|
+|[Kendi kendine onaylanan](self-asserted-technical-profile.md) teknik profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile) teknik profili| `OutputClaim`| 2 |
+
+Ayarlar: 
+1. `IncludeClaimResolvingInClaimsHandling` meta verileri `true` olarak ayarlanmalıdır
+1. Giriş veya çıkış talepleri özniteliği `AlwaysUseDefaultValue` `true` olarak ayarlanmalıdır
 
 ## <a name="how-to-use-claim-resolvers"></a>Talep çözücüler kullanma
 

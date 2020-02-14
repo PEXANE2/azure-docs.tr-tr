@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840290"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197995"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -121,7 +121,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ServiceUrl | Evet | REST API uç noktasının URL 'SI. |
 | AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None`, `Basic`, `Bearer`veya `ClientCertificate`. `None` değeri REST API adsız olmadığını gösterir. `Basic` değeri, REST API HTTP temel kimlik doğrulaması ile korunmuş olduğunu gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate` (önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer` değeri, REST API Client OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
@@ -129,6 +129,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 | ClaimsFormat | Hayır | Çıkış taleplerinin biçimini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`veya `QueryString`. `Body` değeri, JSON biçiminde istek gövdesinde gönderilen çıkış talebinde bulunur. `Form` değeri, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen çıkış talebinde bulunur. `Header` değeri, istek üstbilgisinde gönderilen çıkış talebinde bulunur. `QueryString` değeri, istek sorgu dizesinde gönderilen çıkış talebinde bulunur. |
 | ClaimUsedForRequestPayload| Hayır | REST API gönderilecek yükü içeren bir dize talebinin adı. |
 | DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Olası değerler: `true`veya `false` (varsayılan). Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. [Hata Iletisi döndüren](#returning-error-message) bölümüne bakın. |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız bunu `true`olarak ayarlayın. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -148,7 +149,7 @@ Kimlik doğrulaması türü `None`olarak ayarlandıysa **Cryptographickeys** ö�
 
 Kimlik doğrulaması türü `Basic`olarak ayarlandıysa, **Cryptographickeys** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Evet | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
 | BasicAuthenticationPassword | Evet | Kimlik doğrulaması için kullanılan parola. |
@@ -173,7 +174,7 @@ Aşağıdaki örnek, temel kimlik doğrulaması ile bir teknik profil gösterir:
 
 Kimlik doğrulaması türü `ClientCertificate`olarak ayarlandıysa, **Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ClientCertificate | Evet | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
 
@@ -194,7 +195,7 @@ Kimlik doğrulaması türü `ClientCertificate`olarak ayarlandıysa, **Cryptogra
 
 Kimlik doğrulaması türü `Bearer`olarak ayarlandıysa, **Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Yataya Authenticationtoken | Hayır | OAuth 2,0 taşıyıcı belirteci. |
 
@@ -217,11 +218,11 @@ Kimlik doğrulaması türü `Bearer`olarak ayarlandıysa, **Cryptographickeys** 
 
 REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa, REST API aşağıdaki özniteliklere sahip bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| version | Evet | 1.0.0 |
-| status | Evet | 409 |
-| kod | Hayır | `DebugMode` etkinleştirildiğinde görünen, RESTAN uç nokta sağlayıcısından bir hata kodu. |
+| sürüm | Evet | 1.0.0 |
+| durum | Evet | 409 |
+| code | Hayır | `DebugMode` etkinleştirildiğinde görünen, RESTAN uç nokta sağlayıcısından bir hata kodu. |
 | requestId | Hayır | `DebugMode` etkinleştirildiğinde görünen, yeniden Istenen uç nokta sağlayıcısından gelen istek tanımlayıcısı. |
 | userMessage | Evet | Kullanıcıya gösterilen bir hata iletisi. |
 | developerMessage | Hayır | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini `DebugMode` etkinleştirildiğinde görüntülenir. |

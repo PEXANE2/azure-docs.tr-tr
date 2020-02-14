@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427000"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190952"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama trafiği analizini uygulama
 
@@ -106,7 +106,7 @@ Bir kullanıcı tarafından her bir arama isteği verildiğinde, bir Application
 **SearchServiceName**: (dize) arama hizmeti adı **searchıd**: (GUID) arama sorgusunun benzersiz tanımlayıcısı (arama yanıtında gelir) **IndexName**: (dize) arama hizmeti **dizinine sorgulama ölçütü**: (dize) Kullanıcı resultcount: (int) tarafından girilen arama terimleri Kullanıcı **resultcount**: (int) ile döndürülen Puanlama profilinin (arama yanıtında gelir) **ScoringProfile**: (dize) adı
 
 > [!NOTE]
-> Arama sorgunuza $count = true ekleyerek kullanıcı tarafından oluşturulan sorgularda istek sayısı. Daha fazla bilgi için [buraya](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) bakın
+> Arama sorgunuza $count = true ekleyerek kullanıcı tarafından oluşturulan sorgularda istek sayısı. Daha fazla bilgi için [buraya](/rest/api/searchservice/search-documents#counttrue--false)bakın.
 >
 
 > [!NOTE]
@@ -179,9 +179,9 @@ Uygulamanızı doldurduktan ve uygulamanızın Application Insights doğru şeki
 
 3. Rapor Power BI Desktop açılır ve Application Insights bağlanmanız ve kimlik bilgilerini sağlamanız istenir. Application Insights kaynağınızın Azure portal sayfalarında bağlantı bilgilerini bulabilirsiniz. Kimlik bilgileri için, Portal oturum açma için kullandığınız kullanıcı adını ve parolayı belirtin.
 
-   ![Application Insights Bağlan](./media/search-traffic-analytics/connect-to-app-insights.png "Application Insights'a Bağlan")
+   ![Application Insights Bağlan](./media/search-traffic-analytics/connect-to-app-insights.png "Application Insights Bağlan")
 
-4. **Yükle**’ye tıklayın.
+4. **Yükle**' ye tıklayın.
 
 Rapor, arama performansınızı ve ilginizi geliştirmek için daha bilinçli kararlar almanıza yardımcı olan grafikleri ve tabloları içerir.
 

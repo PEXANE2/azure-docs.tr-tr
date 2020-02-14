@@ -1,20 +1,20 @@
 ---
-title: Azure sanal WAN iş ortakları | Microsoft Docs
+title: Azure sanal WAN iş ortakları Otomasyon yönergeleri | Microsoft Docs
 description: Bu makale, iş ortaklarının Azure sanal WAN Otomasyonu 'nu ayarlama konusunda yardımcı olur.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775311"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190410"
 ---
-# <a name="virtual-wan-partners"></a>Sanal WAN iş ortakları
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Sanal WAN iş ortakları için Otomasyon yönergeleri
 
 Bu makale, Azure sanal WAN için bir şube cihazını (bir müşteri şirket içi VPN cihazı veya SDWAN CPE) bağlamak ve yapılandırmak üzere otomasyon ortamının nasıl ayarlanacağını anlamanıza yardımcı olur. IPSec/Ikev2 veya IPSec/IKEv1 üzerinden VPN bağlantısı barındırabilecek dal cihazları sağlayan bir sağlayıcısıysanız, bu makale sizin için sizin içindir.
 
@@ -27,7 +27,7 @@ Bir dal aygıtı (bir müşteri şirket içi VPN cihazı veya SDWAN CPE) genelli
 * Azure sanal WAN 'ın Portal deneyimini test edin.
 * Sonra, bağlantı adımlarının hangi bölümünü otomatikleştirmek istediğinizi belirleyin. En azından, otomatikleştirilmesi önerilir:
 
-  * Access Control
+  * Erişim Denetimi
   * Şube cihaz bilgilerini Azure sanal WAN 'a yükleme
   * Azure yapılandırmasını indirme ve şube cihazından Azure sanal WAN 'a bağlantı ayarlama
 

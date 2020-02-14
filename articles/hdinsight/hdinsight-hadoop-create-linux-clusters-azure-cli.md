@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990700"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199050"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLı kullanarak HDInsight kümeleri oluşturma
 
@@ -25,7 +25,7 @@ Bu belgedeki adımlar, Azure CLı kullanarak HDInsight 3,6 kümesi oluşturma ko
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure CLı. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
@@ -48,7 +48,7 @@ Azure CLı. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi
     |---|---|
     |`--workernode-count`| Kümedeki çalışan düğümlerinin sayısı. Bu makale, `--workernode-count`aktarılan değer olarak `clusterSizeInNodes` değişkenini kullanır. |
     |`--version`| HDInsight kümesi sürümü. Bu makale, `--version`aktarılan değer olarak `clusterVersion` değişkenini kullanır. Ayrıca bkz: [desteklenen HDInsight sürümleri](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| HDInsight kümesinin türü, örneğin: Hadoop, ınteractivehive, HBase, Kafka, fırtınası, Spark, Rserver, mlservices.  Bu makale, `--type`aktarılan değer olarak `clusterType` değişkenini kullanır. Ayrıca bkz: [küme türleri ve yapılandırması](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--type`| HDInsight kümesinin türü, örneğin: Hadoop, ınteractivehive, HBase, Kafka, fırtınası, Spark, Rserver, mlservices.  Bu makale, `--type`aktarılan değer olarak `clusterType` değişkenini kullanır. Ayrıca bkz: [küme türleri ve yapılandırması](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
     |`--component-version`|' Component = Version ' biçimindeki, boşlukla ayrılmış sürümlerde çeşitli Hadoop bileşenlerinin sürümleri. Bu makale, `--component-version`aktarılan değer olarak `componentVersion` değişkenini kullanır. Ayrıca bkz: [Hadoop bileşenleri](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
     `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`ve `PASSWORD` istenen değerlerle değiştirin. Diğer değişkenlerin değerlerini istediğiniz şekilde değiştirin. Ardından CLı komutlarını girin.
@@ -161,7 +161,7 @@ az group delete \
     --name $resourceGroupName
 ```
 
-## <a name="troubleshoot"></a>Sorun giderme
+## <a name="troubleshoot"></a>Sorunları Gider
 
 HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gereksinimleri](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 

@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120650"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198505"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 'teki dayanıklı varlıklara Geliştirici Kılavuzu
 
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. `DispatchAsync<T>` geçirilen herhangi bir nesne, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
 
-Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob.md#input) `CloudBlobContainer` başvurusunun sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
+Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob-input.md) `CloudBlobContainer` başvurusunun sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
 
 ```csharp
 public class BlobBackedEntity

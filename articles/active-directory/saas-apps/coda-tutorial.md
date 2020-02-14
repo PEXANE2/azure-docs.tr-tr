@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f015b1568098b506abc847608a1fca91ef72b6e9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761227"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Öğretici: CODA ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,12 +32,12 @@ Bu öğreticide, Coda 'yı Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* CODA çoklu oturum açma (SSO) aboneliği etkin.
+* GDrive tümleştirmesi ile Coda çoklu oturum açma (SSO) özellikli abonelik (Kurumsal) devre dışı. Etkin durumda olan kuruluşunuz için GDrive tümleştirmesini devre dışı bırakmak üzere [Coda destek ekibine](mailto:support@coda.io) başvurun.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -47,7 +47,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * CODA **, tam zamanında** Kullanıcı sağlamayı destekler
 
-* CODA 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* CODA 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve korunmasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-coda-from-the-gallery"></a>Galeriden Coda ekleme
 
@@ -67,12 +67,33 @@ CODA tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden, yöne
 
 Azure AD SSO 'yu CODA ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
+1. CODA SSO yapılandırmasına başlamak için Coda **[SSO 'Yu kullanmaya başlayın](#begin-configuration-of-coda-sso)** .
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Coda SSO 'Yu yapılandırma](#configure-coda-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * CODA, kullanıcının Azure AD gösterimine bağlı olan, Coda 'da B. Simon 'a karşılık gelen bir, **[Coda test kullanıcısı oluşturun](#create-coda-test-user)** .
+   * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+   * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. CODA SSO 'yu, Coda 'da çoklu oturum açma ayarlarının yapılandırılmasını tamamlayacak şekilde **[yapılandırın](#configure-coda-sso)** .
+   * CODA, kullanıcının Azure AD gösterimine bağlı olan, Coda 'da B. Simon 'a karşılık gelen bir, **[Coda test kullanıcısı oluşturun](#create-coda-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+
+## <a name="begin-configuration-of-coda-sso"></a>CODA SSO yapılandırmasına başla
+
+Başlamak için Coda 'daki adımları izleyin.
+
+1. CODA bölümünde **kuruluş ayarları** masasını açın.
+
+   ![Kuruluş ayarlarını aç](media/coda-tutorial/org-settings.png)
+
+1. Kuruluşunuzun GDrive tümleştirmesi kapalı olduğundan emin olun. Şu anda etkinse, GDrive 'a geçiş yapmanıza yardımcı olması için [Coda destek ekibine](mailto:support@coda.io) başvurun.
+
+   ![GDrive devre dışı](media/coda-tutorial/gdrive-off.png)
+
+1. **SSO (SAML) Ile kimlik doğrulaması**altında **SAML Yapılandır** seçeneğini belirleyin.
+
+   ![SAML ayarları](media/coda-tutorial/saml-settings-link.png)
+
+1. Sonraki adımlarda ihtiyacınız olacak **VARLıK kimliği** ve **SAML yanıtı URL 'si**değerlerini aklınızda bulabilirsiniz.
+
+   ![Azure 'da kullanılacak varlık KIMLIĞI ve SAML yanıtı URL 'SI](media/coda-tutorial/azure-settings.png)
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
@@ -86,32 +107,32 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://coda.io/samlId/<CUSTOMID>`
+   a. **Tanımlayıcı** metin kutusunda, yukarıdaki "varlık kimliği" ni girin. Şu kalıbı izlemelidir: `https://coda.io/samlId/<CUSTOMID>`
 
-    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://coda.io/samlId/<CUSTOMID>/consume`
+   b. **Yanıt URL 'si** metin kutusunda, YUKARıDAKI "SAML yanıt URL 'si" nu girin. Şu kalıbı izlemelidir: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
-    > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Coda istemci destek ekibine](mailto:support@coda.io) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+   > [!NOTE]
+   > Değerleriniz, Yukarıdakilerden farklı olacaktır; değerlerinizi, Coda "SAML yapılandırma" konsolunda bulabilirsiniz. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+   ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
 1. **Coda ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+   ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
+   1. **Ad** alanına `B.Simon` girin.
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’ tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -125,7 +146,7 @@ Bu bölümde, Coda erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+   ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
@@ -133,13 +154,23 @@ Bu bölümde, Coda erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
 ## <a name="configure-coda-sso"></a>CODA SSO 'yu yapılandırma
 
-**Coda** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'leri [Coda destek ekibine](mailto:support@coda.io)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+Kurulumu gerçekleştirmek için, Coda **SAML yapılandırma** paneline Azure Active Directory değerler girersiniz.
+
+1. CODA bölümünde **kuruluş ayarları** masasını açın.
+1. **SSO (SAML) Ile kimlik doğrulaması**altında **SAML Yapılandır** seçeneğini belirleyin.
+1. **SAML sağlayıcısını** **Azure Active Directory**olarak ayarlayın.
+1. **Kimlik sağlayıcısı oturum açma URL 'si**' nde, Azure konsolundan **oturum açma URL** 'sini yapıştırın.
+1. **Kimlik sağlayıcısı yayımcısı**' nda Azure **ad tanımlayıcısını** Azure konsolundan yapıştırın.
+1. **Kimlik sağlayıcısı genel sertifikası**' nda **sertifikayı karşıya yükle** seçeneğini seçin ve daha önce indirdiğiniz sertifika dosyasını seçin.
+1. **Kaydet**’i seçin.
+
+Bu, SAML SSO bağlantı kurulumu için gereken işi tamamlar.
 
 ### <a name="create-coda-test-user"></a>CODA test kullanıcısı oluşturma
 
 Bu bölümde, Coda 'da Britta Simon adlı bir Kullanıcı oluşturulur. CODA, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten Coda 'da yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 

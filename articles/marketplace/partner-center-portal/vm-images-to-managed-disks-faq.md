@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775008"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198743"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketi 'ndeki sanal makine (VM) görüntülerini yönetilen disk depolama alanına taşııyoruz
 
@@ -61,6 +61,6 @@ Taşıma sırasında VM görüntülerine yönelik güncelleştirmeler yapılamaz
 
 Hayır, yayımlama işlemi aynı kalacaktır. 
 
-## <a name="next-steps"></a>Sonraki adımlar
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Yayımcı teklifleri yönetilen diske taşıyabilir mi?
 
-[Sanal Makine teklifi yayımcı Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) sayfasını ziyaret edin.
+Hayır, yayımcılar teklifleri yönetilen diske taşıyamıyor. Bunların beklemesi gerekecektir ve görüntüleri otomatik olarak taşınır. Herhangi bir değişiklik yapmadan önce yayımcıya bildirim göndereceğiz.

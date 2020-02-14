@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: d90739fbdc862d67dc2ce0f1dfdf5af5f4089a44
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899667"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189434"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights aracı API 'SI: set-Applicationınsiısmonitoringconfig
 
@@ -38,22 +38,20 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter` `'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
-- `AppFilter='WebAppExclude'` `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
-- `AppFilter='WebAppOne'`, belirtilen uygulamayı benzersiz bir izleme anahtarı olarak atar.
-- `AppFilter='WebAppTwo'`, belirtilen uygulamayı benzersiz bir izleme anahtarı olarak atar.
-- Son olarak, `AppFilter`, önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için `'.*'` joker karakterini de kullanır.
+- `MachineFilter`, `'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
+- `AppFilter='WebAppExclude'`, `null` bir izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
+- `AppFilter='WebAppOne'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `AppFilter='WebAppTwo'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- Son olarak `AppFilter` Ayrıca, önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için `'.*'` joker karakterini kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
-PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
-    @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
-
+Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
+       @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
+          @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+          @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+          @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
-
 
 ## <a name="parameters"></a>Parametreler
 

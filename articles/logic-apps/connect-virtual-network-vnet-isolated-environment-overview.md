@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/10/2020
+ms.openlocfilehash: 1f743384f467e4559412fa1a46d48011b568d249
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860767"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191562"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -27,7 +27,7 @@ Mantıksal uygulamanız artık mantıksal uygulamanızla aynı ıSE içinde çal
 
 * Bu sistem için **Ise**etiketli bağlayıcı
 * HTTP tetikleyicisi veya eylemi gibi **çekirdek**etiketli bir yerleşik tetikleyici veya eylem
-* Özel bir bağlayıcı
+* Özel bağlayıcı
 
 Bu genel bakışta, bir ıSE 'nin mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın Azure sanal ağınıza doğrudan erişimini nasıl verdiği ve bir ıSE ile küresel Logic Apps hizmeti arasındaki farkları karşılaştıran daha fazla ayrıntı açıklanmaktadır.
 
@@ -45,7 +45,7 @@ Azure 'da tümleşik bir hizmet ortamı (ıSE) oluşturduğunuzda, ıSE *'nizi e
 
 Bir ıSE 'de Logic Apps, genel küresel Logic Apps hizmetiyle aynı kullanıcı deneyimlerini ve benzer özellikleri sağlar. Genel Logic Apps hizmetinde bulunan tüm yerleşik Tetikleyicileri, eylemleri ve yönetilen bağlayıcıları kullanabilirsiniz. Bazı yönetilen bağlayıcılar ek ıSE sürümlerini sunar. Bu fark, çalıştırıldıkları yerde ve bir ıSE içinde çalışırken Logic App Designer 'da görüntülenen Etiketler ' de bulunur.
 
-![ISE 'de etiketleri olan ve olmayan bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
+![ISE 'de etiketleri olan ve olmayan bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
 * Yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler ve her zaman mantıksal uygulamanızla aynı Ise çalıştırılır. **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, mantıksal UYGULAMANıZLA aynı Ise içinde de çalışır.
 
@@ -111,10 +111,10 @@ Bir Azure sanal ağına bağlı şirket içi sistemler için, mantıksal uygulam
 * Özel bağlayıcı
 
   * Şirket içi veri ağ geçidini gerektiren özel bağlayıcılarınız varsa ve bu bağlayıcıları bir ıSE dışında oluşturduysanız, bir ıSE içindeki Logic Apps de bu bağlayıcıları kullanabilir.
-  
+
   * Bir ıSE içinde oluşturulan özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Ancak, bu bağlayıcılar, ıSE 'yi barındıran sanal ağa bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps, bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymamasından kaynaklanıyor olabilir.
 
-Bir sanal ağa bağlı olmayan veya ıSE-lablı bağlayıcılar bulunmayan şirket içi sistemler için, mantıksal uygulamalarınızın bu sistemlere bağlanabilmesi için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
+Bir sanal ağa bağlı olmayan veya ıSE etiketli bağlayıcılar bulunmayan şirket içi sistemler için, mantıksal uygulamalarınızın bu sistemlere bağlanabilmesi için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
 
 <a name="create-integration-account-environment"></a>
 

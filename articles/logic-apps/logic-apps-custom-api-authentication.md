@@ -1,25 +1,25 @@
 ---
 title: Özel API 'lere yapılan çağrıların güvenliğini sağlamak için kimlik doğrulaması ekleme
-description: Azure Logic Apps 'den özel API 'lere yönelik çağrıların güvenliğini sağlamak için kimlik doğrulaması ayarlama
+description: Azure Logic Apps 'den özel API 'lere yapılan çağrılar için güvenliği artırmak üzere kimlik doğrulama ayarlama
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666916"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191401"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'den özel API 'lere güvenli çağrılar
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'ten özel API çağrıları için güvenliği artırma
 
-API 'lerinize yönelik çağrıları güvenli hale getirmek için, Azure Active Directory (Azure AD) kimlik doğrulamasını Azure portal aracılığıyla ayarlayabilirsiniz, böylece kodunuzu güncelleştirmeniz gerekmez. İsterseniz, API'nizin kodu aracılığıyla kimlik doğrulamasının gerekli ve zorunlu olmasını da sağlayabilirsiniz.
+API 'lerinize yapılan çağrılara yönelik güvenliği artırmak için, kodunuzu güncelleştirmeniz gerekmez, bu sayede Azure Active Directory (Azure AD) kimlik doğrulamasını Azure portal olarak ayarlayabilirsiniz. İsterseniz, API'nizin kodu aracılığıyla kimlik doğrulamasının gerekli ve zorunlu olmasını da sağlayabilirsiniz.
 
 ## <a name="authentication-options-for-your-api"></a>API 'niz için kimlik doğrulama seçenekleri
 
-Özel API 'nize yapılan çağrıları şu yollarla güvenli hale getirebilirsiniz:
+Aşağıdaki yollarla özel API 'nize yapılan çağrılar için güvenliği geliştirebilirsiniz:
 
 * [Kod değişikliği yok](#no-code): apı 'nizi [Azure ACTIVE DIRECTORY (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) ile Azure Portal ile koruyun, böylece kodunuzu güncelleştirmeniz veya API 'nizi yeniden dağıtmanız gerekmez.
 
@@ -197,13 +197,13 @@ Mantıksal uygulama tanımınızı kod görünümünde açın, **http** eylem ta
 }
 ```
 
-| Özellik | Gereklidir | Açıklama | 
+| Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
 | tenant | Evet | Azure AD kiracısı için GUID | 
 | audience | Evet | Web uygulamanız veya API uygulamanız için uygulama kimliğinden istemci KIMLIĞI olan, erişmek istediğiniz hedef kaynak için GUID | 
-| clientID | Evet | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
+| clientId | Evet | Mantıksal uygulamanızın uygulama kimliğinden istemci KIMLIĞI olan, erişim isteyen istemcinin GUID 'SI | 
 | gizli dizi | Evet | Erişim belirtecini isteyen istemcinin uygulama kimliğinden anahtar veya parola | 
-| type | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
+| tür | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
 |||| 
 
 Örneğin:
@@ -248,7 +248,7 @@ Mantıksal uygulamanızdan gelen istekleri Web uygulamanıza veya API uygulaman�
 } 
 ```
 
-| Özellik | Gereklidir | Açıklama |
+| Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
 | `type` | Evet | Kimlik doğrulama türü. SSL istemci sertifikaları için değerin `ClientCertificate`olması gerekir. |
 | `password` | Hayır | İstemci sertifikasına (PFX dosyası) erişim parolası |
@@ -271,9 +271,9 @@ Mantıksal uygulamanızdan Web uygulamanıza veya API uygulamanıza gelen istekl
 }
 ```
 
-| Özellik | Gereklidir | Açıklama | 
+| Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
-| type | Evet | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
+| tür | Evet | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`olmalıdır. | 
 | kullanıcı adı | Evet | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
 | parola | Evet | Kimlik doğrulaması için kullanmak istediğiniz parola | 
 |||| 

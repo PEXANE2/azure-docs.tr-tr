@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825966"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191140"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Market ve AppSource için danışmanlık hizmetleri
 Azure Market ve AppSource 'ta Danışmanlık Hizmetleri, Microsoft iş ortakları 'na, Azure ve iş hedefleri kullanımını desteklemek ve bunları genişletmek üzere Hizmetleri ile bağlama amacını sağlar. 
@@ -77,7 +77,7 @@ Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Az
 |Avustralya |Fransa  |     Meksika          |İspanya       |
 |Belçika   |Almanya |     Hollanda     |İsveç       |
 |Kanada    |Hindistan   |     Yeni Zelanda     |Birleşik Krallık  |
-|Danimarka   |İtalya   |     Norveç          |Amerika Birleşik Devletleri |
+|Danimarka   |İtalya   |     Norveç          |Birleşik Devletler |
 |Finlandiya   |Japonya   |     Polonya          
 
 
@@ -94,7 +94,7 @@ Kayıt işleminden önce, listelemesine yardımcı olacak içeriği toplamaya ve
 
 |Yeni yayımcılar için ayarlama  |
 |---------|
-|MPN Kimliği     |
+|MPN KIMLIĞI     |
 |Şirket logoları ( &#215; 48 48, &#215; 216 216)     |
 |Müşteri adayı hedefi     |
 
@@ -151,7 +151,7 @@ Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru iyileştirm
 
 Teklif açıklamalarını ve teklif özetlerini gözden geçirirken, takım aşağıdaki ölçütleri uygular:
 
-|Teklif Türü  |Gerekli |Önerilen  |
+|Teklif türü  |Gerekli |Önerilen  |
 |---------|---------|---------|
 |**Değerlendirme**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin      |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
 |**Bilgilendirme istemek**    |   Müşterinin beklediği teslim edilebilirini ifade edebilir. Kişi içinde Brit 'in sunulması gerektiğini unutmayın. Bir sanal hizmet sağlıyorsanız, lütfen farklı bir teklif türü seçin    |  En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin       |
@@ -159,7 +159,7 @@ Teklif açıklamalarını ve teklif özetlerini gözden geçirirken, takım aşa
 |**Kavram kanıtı**    |    Müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edebilir     | En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin        |
 |**Sev**    |   Önerinizi seçtiğiniz süreye göre günlük, haftalık veya aylık olarak ayrıntılı bir ajanda ekleyin. Eğitim hedeflerinin veya diğer teslim öğelerinin atölyenin ne olduğunu ifade edin     |   En üst arama motoru iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin      |
 
-Bulut İş Ortağı Portalı içinde [Marku](https://docs.microsoft.com/contribute/how-to-write-use-markdown)kullanarak listelemenize biçimlendirme ekleyebilirsiniz. Bu, listelemesine Lehçe eklemeye yardımcı olacak basit bir tasarım dilidir. 
+Bulut İş Ortağı Portalı içinde [Marku](/contribute/markdown-reference)kullanarak listelemenize biçimlendirme ekleyebilirsiniz. Bu, listelemesine Lehçe eklemeye yardımcı olacak basit bir tasarım dilidir. 
 
 **Örnek Markaşağı notları**
 * Kopya bloğunun başlangıç ve bitişine * ekleyin-italik (örn. *içerik*) oluşturmak için boşluk olmadan

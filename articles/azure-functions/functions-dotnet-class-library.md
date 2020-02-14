@@ -3,12 +3,12 @@ title: Azure Işlevleri C# geliştirici başvurusu
 description: Kullanarak C#Azure işlevleri geliştirmeyi anlayın.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921041"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198386"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# geliştirici başvurusu
 
@@ -204,7 +204,7 @@ Ana araçları NPM kullanarak yüklerseniz, Visual Studio tarafından kullanıla
 
 ## <a name="supported-types-for-bindings"></a>Bağlamalar için desteklenen türler
 
-Her bağlamanın kendi desteklenen türleri vardır; Örneğin, bir blob tetikleyici özniteliği bir dize parametresine, POCO parametresine, `CloudBlockBlob` parametresine veya desteklenen diğer birkaç türden birine uygulanabilir. [BLOB bağlamaları için bağlama başvuru makalesi](functions-bindings-storage-blob.md#trigger---usage) , desteklenen tüm parametre türlerini listeler. Daha fazla bilgi için, bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md) ve [her bağlama türü için bağlama başvurusu belgeleri](functions-triggers-bindings.md#next-steps).
+Her bağlamanın kendi desteklenen türleri vardır; Örneğin, bir blob tetikleyici özniteliği bir dize parametresine, POCO parametresine, `CloudBlockBlob` parametresine veya desteklenen diğer birkaç türden birine uygulanabilir. [BLOB bağlamaları için bağlama başvuru makalesi](functions-bindings-storage-blob-trigger.md#usage) , desteklenen tüm parametre türlerini listeler. Daha fazla bilgi için, bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md) ve [her bağlama türü için bağlama başvurusu belgeleri](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -255,7 +255,7 @@ public static class SimpleExample
 
 Azure Işlevleri 'nde `Console.Write` kullanmaktan kaçının. Daha fazla bilgi için bkz. **Azure Işlevlerini izleme** makalesindeki [ C# günlük yazma işlevleri](functions-monitoring.md#write-logs-in-c-functions) .
 
-## <a name="async"></a>Zaman Uyumsuz
+## <a name="async"></a>Eş
 
 Bir işlevi [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesnesi döndürün.
 
@@ -353,7 +353,7 @@ Zorunlu bir bağlamayı aşağıdaki gibi tanımlayın:
 
 ### <a name="single-attribute-example"></a>Tek öznitelik örneği
 
-Aşağıdaki örnek kod, çalışma zamanında tanımlanmış blob yolu ile bir [Depolama Blobu çıkış bağlaması](functions-bindings-storage-blob.md#output) oluşturur ve sonra blob 'a bir dize yazar.
+Aşağıdaki örnek kod, çalışma zamanında tanımlanmış blob yolu ile bir [Depolama Blobu çıkış bağlaması](functions-bindings-storage-blob-output.md) oluşturur ve sonra blob 'a bir dize yazar.
 
 ```cs
 public static class IBinderExample

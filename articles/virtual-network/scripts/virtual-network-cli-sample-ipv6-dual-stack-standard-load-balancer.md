@@ -1,5 +1,5 @@
 ---
-title: Azure CLı betik örneği-IPv6 sanal ağ uç noktalarını yapılandırma-Standart Load Balancer (Önizleme)
+title: Azure CLı betik örneği-IPv6 ön uç Standart Load Balancer yapılandırma
 titlesuffix: Azure Virtual Network
 description: Azure sanal ağ 'da Azure CLı kullanarak IPv6 uç noktalarını etkinleştirme
 services: virtual-network
@@ -12,18 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: afeb0c83c6e9afca16d0f0b21adafac4b7f3f2c2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269721"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201348"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standart Load Balancer kullanarak sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
 
 Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir Standart Load Balancer ve çift IP 'si olan NIC 'leri olan VM 'Leri içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. yapılandırma, çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
 
-Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI yüklemesinden betiği yürütebilirsiniz. CLI’yi yerel olarak kullanıyorsanız bu betik, 2.0.28 veya üzeri bir sürümü çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLI’yi yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `az login` komutunu da çalıştırmanız gerekir.
+Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI yüklemesinden betiği yürütebilirsiniz. CLI’yi yerel olarak kullanıyorsanız bu betik, 2.0.28 veya üzeri bir sürümü çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli). CLI’yi yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `az login` komutunu da çalıştırmanız gerekir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177370"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198880"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight 'ta Apache Spark işlerini iyileştirme
 
-Belirli bir iş yükünüz için [Apache Spark](https://spark.apache.org/) kümesi yapılandırmasını iyileştirmenizi öğrenin.  En yaygın zorluk, yanlış yapılandırma (özellikle yanlış boyutlu yürüticileri), uzun süreli işlemler ve Kartezyen işlemlere neden olan görevler nedeniyle bellek baskısı olur. Uygun önbelleğe alma ile işleri hızlandırabilir ve [veri eğmaya](#optimize-joins-and-shuffles)izin verebilirsiniz. En iyi performansı elde etmek için, uzun süreli ve kaynak kullanan Spark iş yürütmelerini izleyin ve gözden geçirin.
+Belirli bir iş yükünüz için [Apache Spark](https://spark.apache.org/) kümesi yapılandırmasını iyileştirmenizi öğrenin.  En yaygın zorluk, yanlış yapılandırma (özellikle yanlış boyutlu yürüticileri), uzun süreli işlemler ve Kartezyen işlemlere neden olan görevler nedeniyle bellek baskısı olur. Uygun önbelleğe alma ile işleri hızlandırabilir ve [veri eğmaya](#optimize-joins-and-shuffles)izin verebilirsiniz. En iyi performansı elde etmek için, uzun süreli ve kaynak kullanan Spark iş yürütmelerini izleyin ve gözden geçirin. HDInsight üzerinde Apache Spark kullanmaya başlama hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak Apache Spark kümesi oluşturma](apache-spark-jupyter-spark-sql-use-portal.md).
 
 Aşağıdaki bölümlerde ortak Spark iş iyileştirmeleri ve önerileri açıklanır.
 
@@ -57,13 +57,15 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alanı olarak Azure Blob depolama veya Azure Data Lake Storage seçebilirsiniz. Her iki seçenek de, geçici kümeler için uzun süreli depolamanın avantajını sağlar. bu sayede, kümenizi sildiğinizde verileriniz otomatik olarak silinmez. Geçici bir kümeyi yeniden oluşturabilir ve verilerinize erişmeye devam edebilirsiniz.
 
-| Mağaza türü | Dosya Sistemi | Hız | Larsa | Kullanım Örnekleri |
+| Mağaza türü | Dosya Sistemi | Hız | Geçici | Kullanım örnekleri |
 | --- | --- | --- | --- | --- |
-| Azure Blob Depolama | fazla **b:** // | **Standart** | Yes | Geçici küme |
-| Azure Blob depolama (güvenli) | fazla **BS:** // | **Standart** | Yes | Geçici küme |
-| Azure Data Lake Storage Gen 2| **ABFS:** // | **Lýdýr** | Yes | Geçici küme |
-| Azure Data Lake Storage Gen 1| **adl:** // | **Lýdýr** | Yes | Geçici küme |
+| Azure Blob Depolama | fazla **b:** // | **Standart** | Evet | Geçici küme |
+| Azure Blob depolama (güvenli) | fazla **BS:** // | **Standart** | Evet | Geçici küme |
+| Azure Data Lake Storage Gen 2| **ABFS:** // | **Lýdýr** | Evet | Geçici küme |
+| Azure Data Lake Storage Gen 1| **adl:** // | **Lýdýr** | Evet | Geçici küme |
 | Yerel olarak | Bu **:** // | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
+
+HDInsight kümeleri için kullanılabilen depolama seçeneklerinin tam açıklaması için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](../hdinsight-hadoop-compare-storage-options.md).
 
 ## <a name="use-the-cache"></a>Önbelleği kullanma
 
@@ -74,7 +76,7 @@ Spark, `.persist()`, `.cache()`ve `CACHE TABLE`gibi farklı yöntemler aracılı
     * Bölümlendirme ile çalışmaz ve bu, gelecekteki Spark sürümlerinde değişebilir.
 
 * Depolama düzeyi önbelleğe alma (önerilir)
-    * , [Alluxıo](https://www.alluxio.io/)kullanılarak uygulanabilir.
+    * , [GÇ önbelleği](apache-spark-improve-performance-iocache.md) özelliği kullanılarak HDInsight üzerinde uygulanabilir.
     * Bellek içi ve SSD önbelleği kullanır.
 
 * Yerel olarak (önerilir)
@@ -106,6 +108,8 @@ Başvurunuz için Spark bellek yapısı ve bazı önemli yürütücü belleği p
 * Yürüticileri veya `Reduce`bölümleri üzerinde daha fazla iş olan `TreeReduce`tercih eder, bu, sürücü üzerinde çalışır.
 * Alt düzey RDD nesneleri yerine veri çerçevelerinden yararlanın.
 * "Ilk N", çeşitli toplamalar veya Pencereleme işlemleri gibi eylemleri kapsülleyen Karmaşıktürler oluşturun.
+
+Ek sorun giderme adımları için bkz. [Azure HDInsight 'ta Apache Spark Için OutOfMemoryError özel durumları](apache-spark-troubleshoot-outofmemory.md).
 
 ## <a name="optimize-data-serialization"></a>Veri serileştirmesini iyileştirme
 
@@ -193,7 +197,11 @@ Eşzamanlı sorgular çalıştırılırken şunları göz önünde bulundurun:
 3. Sorguları paralel uygulamalar arasında dağıtın.
 4. Hem deneme çalışmalarından hem de GC yükü gibi önceki faktörlere göre boyut boyutunu değiştirin.
 
-Zaman çizelgesi görünümüne, SQL grafiğine, iş istatistiklerine vb. bakarak, aykırı değerler veya diğer performans sorunları için sorgu performansınızı izleyin. Bazen yürüticilerinin biri veya birkaçı diğerlerinden daha yavaştır ve görevlerin yürütülmesi çok daha uzun sürer. Bu çoğunlukla daha büyük kümelerde (> 30 düğüm) oluşur. Bu durumda, Scheduler 'ın yavaş görevleri dengeyapabilmesi için çalışmayı daha fazla sayıda göreve bölün. Örneğin, uygulamadaki yürütücü çekirdekleri sayısı kadar en az iki görev vardır. Ayrıca, `conf: spark.speculation = true`görevlerin yansımalı yürütülmesini de etkinleştirebilirsiniz.
+Yürüticileri yapılandırmak için ambarı kullanma hakkında daha fazla bilgi için bkz. [Apache Spark Settings-Spark yürüticileri](apache-spark-settings.md#configuring-spark-executors).
+
+Zaman çizelgesi görünümüne, SQL grafiğine, iş istatistiklerine vb. bakarak, aykırı değerler veya diğer performans sorunları için sorgu performansınızı izleyin. YARN ve Spark geçmiş sunucusunu kullanarak Spark işlerinin hatalarını ayıklama hakkında bilgi için bkz. [Azure HDInsight üzerinde çalışan hata ayıklama Apache Spark işleri](apache-spark-job-debugging.md). YARN zaman çizelgesi sunucusu kullanma hakkında ipuçları için bkz. [erişim Apache HADOOP YARN uygulama günlükleri](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+
+Bazen yürüticilerinin biri veya birkaçı diğerlerinden daha yavaştır ve görevlerin yürütülmesi çok daha uzun sürer. Bu çoğunlukla daha büyük kümelerde (> 30 düğüm) oluşur. Bu durumda, Scheduler 'ın yavaş görevleri dengeyapabilmesi için çalışmayı daha fazla sayıda göreve bölün. Örneğin, uygulamadaki yürütücü çekirdekleri sayısı kadar en az iki görev vardır. Ayrıca, `conf: spark.speculation = true`görevlerin yansımalı yürütülmesini de etkinleştirebilirsiniz.
 
 ## <a name="optimize-job-execution"></a>İş yürütmeyi iyileştirme
 

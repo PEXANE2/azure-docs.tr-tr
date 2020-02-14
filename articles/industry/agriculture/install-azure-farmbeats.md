@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131874"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198863"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats'i yükleme
 
@@ -56,7 +56,7 @@ Azure Farmtts 'nin maliyeti, temel alınan Azure hizmetlerinin maliyetinin topla
 
 Şu anda, şu bölgelerde genel bulut ortamlarında Azure Farmtempts desteklenir:
 
-- Doğu Avustralya
+- Avustralya Doğu
 - Orta ABD
 - Doğu ABD
 - Doğu ABD 2
@@ -83,7 +83,9 @@ Azure Farmtts 'yi yüklemek için Azure kiracısında aşağıdaki izinlere sahi
 - Abonelik-sahip
 - Farmtts 'nin yüklendiği kaynak grubu-sahip
 
-[AAD uygulama adımını oluşturmak](#create-an-aad-application) için ilk iki izin gerekir. Gerekirse, AAD uygulamasını oluşturmak için uygun izinlere sahip bir kişiye ulaşabilirsiniz. Farmtts 'yi yükleyen kişinin, Farmtts 'nin yüklenmekte olduğu kaynak grubunun sahibi olması gerekir.
+[AAD uygulama adımını oluşturmak](#create-an-aad-application) için ilk iki izin gerekir. Gerekirse, AAD uygulamasını oluşturmak için uygun izinlere sahip bir kişiye ulaşabilirsiniz.
+
+Market 'ten yüklenen Farmtts 'leri çalıştıran kişinin, Farmtts 'nin yüklenmekte olduğu kaynak grubunun sahibi olması gerekir. Abonelik sahipleri için, kaynak grubu oluşturulduğunda bu otomatik olarak gerçekleşir. Diğerleri için lütfen kaynak grubunu önceden oluşturun ve abonelik sahibinden kaynak grubunun sahibini yapmasını isteyin.
 
 [Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/check-access)yönergelerini izleyerek Azure Portal erişim izinlerinizi doğrulayabilirsiniz.
 
@@ -120,7 +122,15 @@ PowerShell ortamını kullanarak bir Cloud Shell örneğinde aşağıdaki adıml
         ./create_aad_script.ps1
     ```
 
-4. AAD betiği, aynı dizindeki bir JSON dosyasına ve hem ekranda hem de değerleri çalıştırmak ve çıktısını almak için 2 dakika sürer. Betiği başka birine çalıştırdıysanız, bu çıktıyı sizinle paylaşmasını isteyin.
+4. Betik aşağıdaki üç girişi ister:
+
+    - Farmtts Web sitesi adı: Bu, Farmtts Web uygulamanızın benzersiz URL önekidir. Ön ek zaten alınmış olması durumunda, betik hata vermez. Yüklendikten sonra, https://\<farmınts-Web sitesi-adı >. azurewebsites. net ve Swagger API 'Leri, https://\<Farmpts-Web sitesi-adı >-api.azurewebsites.net konumunda olacak.
+
+    - Azure oturum açma KIMLIĞI: Farmof 'Lar Yöneticisi olarak eklenmesini istediğiniz kullanıcı için Azure oturum açma KIMLIĞI sağlayın. Bu Kullanıcı daha sonra, diğer kullanıcılara Farmtempts Web uygulamasına erişim izni verebilir. Oturum açma KIMLIĞI genellikle john.doe@domain.com. Azure UPN de desteklenir.
+
+    - Abonelik KIMLIĞI: Bu, Azure Farmtts 'yi yüklemek istediğiniz aboneliğin KIMLIĞIDIR
+
+5. AAD betiği, aynı dizindeki bir JSON dosyasına ve hem ekranda hem de değerleri çalıştırmak ve çıktısını almak için 2 dakika sürer. Betiği başka birine çalıştırdıysanız, bu çıktıyı sizinle paylaşmasını isteyin.
 
 ### <a name="create-sentinel-account"></a>Sentinel hesabı oluştur
 

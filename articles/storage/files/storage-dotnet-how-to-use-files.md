@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460353"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190658"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -36,10 +36,10 @@ Azure dosyaları hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları
 
 Azure Dosyaları istemci uygulamalarına iki geniş yaklaşım sağlar: Sunucu İleti Bloğu (SMB) ve REST. .NET içinde, `System.IO` ve `WindowsAzure.Storage` API 'Leri bu yaklaşımları soyutlar.
 
-eklentisi | Kullanılması gereken durumlar | Notlar
+API | Kullanılması gereken durumlar | Notlar
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Uygulamanız: <ul><li>SMB kullanarak dosyaları okuma/yazma gerekir</li><li>Azure Dosyaları hesabınıza 445 bağlantı noktası üzerinden erişimi olan bir cihazda çalışıyor</li><li>Dosya paylaşımının yönetim ayarlarından herhangi birini yönetmesi gerekmiyor</li></ul> | SMB üzerinden Azure dosyaları ile uygulanan dosya g/ç, genellikle herhangi bir ağ dosya paylaşımıyla veya yerel depolama cihazındaki g/ç ile aynıdır. .NET 'teki dosya g/ç dahil olmak üzere çeşitli özelliklere giriş için, bkz. [konsol uygulaması](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) öğreticisi.
-[Microsoft. Azure. Storage. File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Uygulamanız: <ul><li>Güvenlik duvarı veya ISS kısıtlamaları nedeniyle 445 numaralı bağlantı noktasında SMB kullanılarak Azure dosyalarına erişilemiyor</li><li>Bir dosya paylaşımının kotasını ayarlama veya paylaşılan bir erişim imzası oluşturma gibi yönetim işlevleri gerektiriyor</li></ul> | Bu makalede, dosya paylaşımının SMB ve yönetimi yerine REST kullanılarak dosya g/ç için `Microsoft.Azure.Storage.File` kullanımı gösterilmektedir.
+[Microsoft. Azure. Storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Uygulamanız: <ul><li>Güvenlik duvarı veya ISS kısıtlamaları nedeniyle 445 numaralı bağlantı noktasında SMB kullanılarak Azure dosyalarına erişilemiyor</li><li>Bir dosya paylaşımının kotasını ayarlama veya paylaşılan bir erişim imzası oluşturma gibi yönetim işlevleri gerektiriyor</li></ul> | Bu makalede, dosya paylaşımının SMB ve yönetimi yerine REST kullanılarak dosya g/ç için `Microsoft.Azure.Storage.File` kullanımı gösterilmektedir.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Konsol uygulaması oluşturma ve derleme alma
 
@@ -491,16 +491,16 @@ Azure dosyaları hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage için araç desteği
 
-* [AzCopy’yi kullanmaya başlama](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Depolama ile Azure CLI kullanma](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Windows’ta Azure Dosyalar sorunlarını giderme](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Başvuru
 
-* [.NET için Azure Depolama API'leri](/dotnet/api/overview/azure/storage)
-* [Dosya Hizmeti REST API'si](/rest/api/storageservices/File-Service-REST-API)
+* [.NET için Azure depolama API 'Leri](/dotnet/api/overview/azure/storage)
+* [Dosya hizmeti REST API](/rest/api/storageservices/File-Service-REST-API)
 
-### <a name="blog-posts"></a>Blog gönderileri
+### <a name="blog-posts"></a>Blog yazıları
 
 * [Azure dosya depolama genel kullanıma sunuldu](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Azure Dosya Depolama İncelemesi](https://azure.microsoft.com/blog/inside-azure-file-storage/)

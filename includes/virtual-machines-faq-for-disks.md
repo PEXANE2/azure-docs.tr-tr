@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961424"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205694"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
-## <a name="managed-disks"></a>Managed Disks (Yönetilen Diskler)
+## <a name="managed-disks"></a>Yönetilen Diskler
 
 **Azure yönetilen diskler nedir?**
 
@@ -29,7 +29,7 @@ Yönetilen diskler, depolama hesabı yönetimini sizin için işleyerek Azure Ia
 
 **Standart yönetilen diskler için herhangi bir işlem maliyeti var mı?**
 
-Evet. Her bir işlem için ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+Evet. Her işlem için ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
 **Standart yönetilen bir disk için, diskteki verilerin gerçek boyutu veya diskin sağlanmış kapasitesi için ücretlendirilecektir mi?**
 
@@ -148,7 +148,7 @@ Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu ü�
 **Azure disk rezervasyonları nelerdir?**
 Disk ayırma, toplam maliyetinizi azaltmak için önceden bir yıllık disk depolama alanı satın alma seçeneğidir. Azure disk ayırmaları ile ilgili ayrıntılar için konu hakkındaki makalemize bakın: [rezervasyon Iskontosunun Azure diskine nasıl uygulandığını anlayın](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Azure disk rezervasyonu hangi seçenekleri sunar?** Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca peşin ödeme, ön ödeme veya aylık ödeme seçeneklerinden birini belirleyebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur. 
+**Azure disk rezervasyonu hangi seçenekleri sunar?** Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca, tek, ön ödeme veya aylık ödemeler ile ödeme yapmayı tercih edebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur. 
 
 Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske bölemez. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
 
@@ -160,6 +160,44 @@ Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gib
 
 **Azure disklerimin ayırması sona erdiğinde ne olur?**    
 Süresi dolmadan 30 gün önce ve sona erme tarihinde bir süre sonra bir e-posta bildirimi alacaksınız. Ayırma süresi dolduktan sonra, dağıtılan diskler çalışmaya devam eder ve en son [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır.
+
+### <a name="azure-shared-disks"></a>Azure paylaşılan diskler
+
+**Paylaşılan diskler özelliği yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
+
+Hayır, yalnızca Premium SSD tarafından yönetilen diskler için desteklenir.
+
+**Hangi bölgeler Paylaşılan diskleri destekler?**
+
+Şu anda yalnızca Orta Batı ABD.
+
+**Paylaşılan diskler, işletim sistemi diski olarak kullanılabilir mi?**
+
+Hayır, paylaşılan diskler yalnızca veri diskleri için desteklenir.
+
+**Hangi disk boyutları Paylaşılan diskleri destekliyor?**
+
+Yalnızca P15 veya üzeri olan Premium SSD 'ler Paylaşılan diskleri destekler.
+
+**Mevcut bir Premium SSD varsa, üzerinde paylaşılan diskler etkinleştirebilirim miyim?**
+
+API sürümü 2019-07-01 veya üzeri ile oluşturulan tüm yönetilen diskler, Paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM 'lerden diski çıkarmanız gerekir. Sonra, diskteki `maxShares` özelliğini düzenleyin.
+
+**Artık paylaşılan modda bir disk kullanmak istemiyorum, bunu nasıl devre dışı bırakabilirim?**
+
+Diski, eklendiği tüm VM 'lerden çıkarın. Sonra, diskteki maxShare özelliğini 1 olarak düzenleyin.
+
+**Paylaşılan bir diski yeniden boyutlandırabilir misiniz?**
+
+Evet.
+
+**Paylaşılan diskler de etkinleştirilmiş bir diskte yazma hızlandırıcıyı etkinleştirebilir miyim?**
+
+Hayır.
+
+**Paylaşılan disk etkin olan bir disk için konak önbelleğe almayı etkinleştirebilir miyim?**
+
+Desteklenen tek konak önbelleğe alma seçeneği ' none '.
 
 ## <a name="ultra-disks"></a>Ultra diskler
 
@@ -245,7 +283,7 @@ Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. st
 Şablon ile Standart SSD disk oluşturma hakkında ayrıntılı bir örnek için, bkz. [Standart SSD Veri disklerine sahip bir Windows GÖRÜNTÜSÜNDEN VM oluşturma](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 **Mevcut disklerimi Standart SSD dönüştürebilir miyim?**
-Evet, uygulayabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
+Evet, bunu yapabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
 -AccountType StandardSSD_LRS
 
 **HDD yerine Standart SSD diskleri kullanmanın avantajı nedir?**
@@ -257,7 +295,7 @@ Hayır, standart SSD diskler yalnızca yönetilen diskler olarak kullanılabilir
 **Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
 Hayır, standart SSD 'Lerin tek örnekli VM SLA 'Sı yoktur. Tek örnekli VM SLA 'Sı için Premium SSD diskleri kullanın.
 
-## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere Geçme
+## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere geçme
 
 **Yönetilen diskler performansında geçişin etkileri var mı?**
 

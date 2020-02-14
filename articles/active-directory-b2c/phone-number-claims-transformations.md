@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c43e3386886456eed0c58fefd0fb1212795db66c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480170"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185469"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C 'de telefon numarası talep dönüşümlerini tanımlayın
 
@@ -32,8 +32,8 @@ Bu talep telefon numarasının biçimini doğrular. Geçerli bir biçimde ise, A
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | Inputclaim | string | Dönüştürme dize türü talebi. |
-| OutputClaim | OutputClaim | string | Bu talep dönüştürmesinin sonucu. |
+| Inputclaim | ınputclaim | string | Dönüştürme dize türü talebi. |
+| OutputClaim | OutputClaim | phoneNumber | Bu talep dönüştürmesinin sonucu. |
 
 **Convertstringtophonenumberclaim** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profil](self-asserted-technical-profile.md) veya [görüntüleme denetimi](display-controls.md)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **Usermessageifclaimstransformationınvalidphonenumber** kendi kendine onaylanan teknik profil meta verileri, kullanıcıya sunulan hata iletisini denetler.
 

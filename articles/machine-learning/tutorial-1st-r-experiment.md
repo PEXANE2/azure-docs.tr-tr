@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: R ile ilk ML modeliniz'
+title: "Öğretici: R 'de lojistik regresyon modeli"
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, Azure Machine Learning temel tasarım düzenlerini öğrenirsiniz ve bir lojistik regresyon modeli modelini, bir otomobil yanlışlıkla bir Fatality olasılığını tahmin etmek için R Packages azuremlsdk ve şapka işareti kullanarak eğitebilirsiniz.
+description: Bu öğreticide, bir lojistik 'ın bir otomobil olma olasılığını tahmin etmek için R paketleri azuremlsdk ve giriş işaretini kullanarak bir regresyon modeli oluşturacaksınız.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,35 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533450"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191273"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile ilk modelinizi eğitim ve dağıtma
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile R 'de lojistik regresyon modeli oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğreticide, Azure Machine Learning temel tasarım düzenlerini öğrenirsiniz.  Bir Fatality, yanlışlıkla bir otomobil olma olasılığını tahmin etmek için bir giriş **işareti** modeli eğtireceksiniz ve dağıtırsınız. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeğini ölçeklendirmek için R SDK 'sının pratik bilgisine sahip olacaksınız.
+Bu öğreticide, lojistik bir otomobil yanlışlıkla bir Fatality olma olasılığını tahmin eden bir regresyon modeli oluşturmak için R ve Azure Machine Learning kullanacaksınız. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeğini ölçeklendirmek için Azure Machine Learning R SDK 'sının pratik bilgisine sahip olacaksınız.
 
-Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
-
+Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > [!div class="checklist"]
-> * Çalışma alanınızı bağlama
+> * Bir Azure Machine Learning çalışma alanı oluşturma
+> * Bu öğreticiyi çalışma alanınıza çalıştırmak için gerekli dosyaları içeren bir not defteri klasörünü kopyalayın
+> * Çalışma alanınızdan RStudio 'Yu açın
 > * Veri yükleme ve eğitim için hazırlanma
-> * Verileri veri deposuna yükleyin, böylece uzak eğitim için kullanılabilir hale gelir
-> * İşlem kaynağı oluşturma
-> * Fatality olasılığını tahmin etmek için bir giriş işareti modeli eğitme
+> * Verileri bir veri deposuna yükleme uzak eğitim için kullanılabilir
+> * Modeli uzaktan eğitme için bir işlem kaynağı oluşturma
+> * Fatality olasılığını tahmin etmek için bir `caret` modeli eğitme
 > * Tahmin uç noktası dağıtma
 > * Modeli R 'den test etme
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 
-## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
+## <a name="create-a-workspace"></a>Çalışma alanı oluştur
 
 Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
 
@@ -66,13 +67,11 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 1. Klasörü üzerinde bir sürüm numarasıyla açın.  Bu sayı, R SDK için geçerli yayını temsil eder.
 
-1. **Vignettes** klasörünü açın.
-
-1. **Tren ve dağıt-aci** klasörünün sağ tarafındaki **"..."** öğesini seçin ve ardından **Kopyala**' yı seçin.
+1. **Vignettes** klasörünün sağ tarafındaki **"..."** öğesini seçin ve ardından **Kopyala**' yı seçin.
 
     ![Klasörü kopyala](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. Çalışma alanına erişen her kullanıcıyı gösteren bir klasör listesi görüntülenir.  **Eğitim ve dağıtma-aci** klasörünü buraya kopyalamak için klasörünüzü seçin.
+1. Çalışma alanına erişen her kullanıcıyı gösteren bir klasör listesi görüntülenir.  **Vignettes** klasörünü kopyalamak için klasörünüzü seçin.
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">açık RStudio
 
@@ -84,10 +83,11 @@ Bu öğreticiyi çalıştırmak için bir işlem örneği veya Not defteri sanal
 
 1. İşlem çalışırken **rstudio 'yu** kullanarak rstudio 'yu açın.
 
-1. RStudio 'da, **eğitme ve---aci** klasörünüz, sağ alt köşedeki **dosyalar** bölümünde yer alan **kullanıcılardan** birkaç düzeydir.  Bu öğreticide gereken dosyaları bulmak için **eğitme ve dağıtma-aci** klasörünü seçin.
+1. RStudio 'da, *Vignettes* klasörünüz, alt sağ taraftaki **dosyalar** bölümünde yer alan *kullanıcılardan* birkaç düzeydir.  *Vignettes*altında, bu öğreticide gereken dosyaları bulmak için *eğitme ve dağıtma-aci* klasörünü seçin.
 
 > [!Important]
-> Bu makalenin geri kalanında, **eğitme ve dağıtma-aci ile aynı içeriğe sahip olursunuz. RMD** dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz.  
+> Bu makalenin geri kalanında, *eğitme ve dağıtma-aci ile aynı içeriğe sahip olursunuz. RMD* dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz.  
+
 
 ## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 Bu öğreticide geliştirme çalışmalarınız için kurulum aşağıdaki eylemleri içerir:
@@ -102,12 +102,6 @@ Bu öğreticide, Azure ML SDK 'sının zaten yüklü olduğu varsayılır. Devam
 
 ```R
 library(azuremlsdk)
-```
-
-Öğretici, [ **davag** paketindeki](https://cran.r-project.org/package=DAAG)verileri kullanır. Paketi yoksa, yükleyebilirsiniz.
-
-```R
-install.packages("DAAG")
 ```
 
 Eğitim ve Puanlama betikleri (`accidents.R` ve `accident_predict.R`) bazı ek bağımlılıklara sahiptir. Bu betikleri yerel olarak çalıştırmayı planlıyorsanız, gerekli paketlerin de bulunduğundan emin olun.
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>Eğitim için verileri hazırlama
-Bu öğretici, **Dadag** paketindeki verileri kullanır. Bu veri kümesi, Fatality olma olasılığını tahmin etmek için kullanabileceğiniz değişkenlerle birlikte ABD 'de 25.000 otomobil kilitlenmelerinden veri içerir. İlk olarak, verileri R 'ye aktarın ve analiz için `accidents` yeni bir veri çerçevesine dönüştürün ve bir `Rdata` dosyasına dışarı aktarın.
+Bu öğretici ABD [Ulusal otoyolu trafik güvenliği yönetimi](https://cdan.nhtsa.gov/tsftables/tsfar.htm) ( [Mary C. Meyer ve Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)sayesinde) verilerini kullanır.
+Bu veri kümesi, Fatality olma olasılığını tahmin etmek için kullanabileceğiniz değişkenlerle birlikte ABD 'de 25.000 otomobil kilitlenmelerinden veri içerir. İlk olarak, verileri R 'ye aktarın ve analiz için `accidents` yeni bir veri çerçevesine dönüştürün ve bir `Rdata` dosyasına dışarı aktarın.
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -394,5 +394,6 @@ Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-R 'de ilk Azure Machine Learning denemenizi tamamladığınıza göre, [r için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/index.html)hakkında daha fazla bilgi edinin.
+* R 'de ilk Azure Machine Learning denemenizi tamamladığınıza göre, [r için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/index.html)hakkında daha fazla bilgi edinin.
 
+* Diğer *Vignettes* klasörlerindeki örneklerden R ile Azure Machine Learning hakkında daha fazla bilgi edinin.

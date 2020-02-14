@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911329"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198131"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Haritalar API'si kullanım ölçümlerini görüntüleme
 
-Bu makalede, [portalda](https://portal.azure.com)Azure haritalar HESABıNıZ için API kullanım ölçümlerinin nasıl görüntüleneceği gösterilmektedir. Ölçümler, özelleştirilebilir bir süre boyunca uygun bir grafik biçiminde gösterilir.
+Bu makalede, Azure haritalar hesabınız için [Azure Portal](https://portal.azure.com)API kullanım ölçümlerini nasıl görüntüleyebileceğiniz gösterilmektedir. Ölçümler, özelleştirilebilir bir süre boyunca uygun bir grafik biçiminde gösterilir.
 
 ## <a name="view-metric-snapshot"></a>Ölçüm anlık görüntüsünü görüntüle
 
@@ -35,22 +35,22 @@ Belirli analize yönelik bu grafikleri özelleştirmeniz gerekiyorsa sonraki bö
 
 3. Haritalar hesabınız açıkken, sol taraftaki **ölçümler** menüsüne tıklayın.
 
-4. **Ölçümler** bölmesinde aşağıdakilerden birini seçin:
+4. **Ölçümler** bölmesinde, aşağıdaki seçeneklerden birini seçin:
 
    1. **Kullanılabilirlik** -bir süre içinde API kullanılabilirliği *ortalamasını* gösterir.
    2. **Kullanım** -hesabınız Için kullanım *sayısını* gösterir.
 
       ![Azure Haritalar kullanım ölçümleri bölmesi](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Ardından, **son 24 saat (otomatik)** öğesine tıklayarak *zaman aralığını* seçebilirsiniz. Varsayılan olarak, zaman aralığı 24 saat olarak ayarlanır. ' İ tıkladıktan sonra, tüm seçilebilir zaman aralıklarını görürsünüz. *Zaman parçalı yapısını* seçebilir ve aynı açılan kutuda saati *Yerel* veya *GMT* olarak göstermeyi seçebilirsiniz. **Uygula**'ya tıklayın.
+5. Ardından, **son 24 saat (otomatik)** öğesine tıklayarak *zaman aralığını* seçebilirsiniz. Varsayılan olarak, zaman aralığı 24 saat olarak ayarlanır. ' İ tıkladıktan sonra, tüm seçilebilir zaman aralıklarını görürsünüz. *Zaman parçalı yapısını* seçebilir ve aynı açılan kutuda saati *Yerel* veya *GMT* olarak göstermeyi seçebilirsiniz. **Apply (Uygula)** düğmesine tıklayın.
 
     ![Azure haritalar ölçümleri zaman aralığı](media/how-to-view-api-usage/time-range.png)
 
-6. Ölçümünüzün eklendikten sonra, Bu ölçüyle ilgili özellikler arasından **filtre ekleyebilirsiniz** ve ardından grafiğini görmek istediğiniz özelliğin değerini seçebilirsiniz.
+6. Ölçümünüzün eklendikten sonra, Bu ölçüyle ilgili özelliklerden **filtre ekleyebilirsiniz** . Ardından, grafiğe yansıtılmasını istediğiniz özelliğin değerini seçin.
 
     ![Azure Haritalar kullanım ölçümleri filtresi](media/how-to-view-api-usage/filter.png)
 
-7. Ayrıca, seçtiğiniz ölçüm özelliğine göre ölçümünüzün **bölünmesini de uygulayabilirsiniz** . Bu, grafiğin her bir değer için bir tane olmak üzere birden çok grafiğe bölünmesini sağlar. Aşağıdaki resimde, her grafiğin rengi grafiğin altında gösterilen özellik değerine karşılık gelir.
+7. Ayrıca, seçtiğiniz ölçüm özelliğine göre ölçümünüzün **bölünmesini de uygulayabilirsiniz** . Grafiğin, bu özelliğin her değeri için birden çok grafiğe bölünmesine izin verir. Aşağıdaki resimde, her grafiğin rengi grafiğin altında gösterilen özellik değerine karşılık gelir.
 
     ![Azure Haritalar kullanım ölçümleri bölme](media/how-to-view-api-usage/splitting.png)
 

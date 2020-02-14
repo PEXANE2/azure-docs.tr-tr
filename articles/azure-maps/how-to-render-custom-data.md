@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766010"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198216"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
-Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak için görüntü oluşturma işlevselliğiyle [statik görüntü hizmeti](https://docs.microsoft.com/rest/api/maps/render/getmapimage) 'nin nasıl kullanılacağı açıklanır. Görüntü birleştirme, özel Pushpin, etiket ve geometri Yerpaylaşımları gibi ek verilerle bir raster kutucuğu geri alma özelliği içerir.
+Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak için görüntü oluşturma işleviyle [statik görüntü hizmetinin](https://docs.microsoft.com/rest/api/maps/render/getmapimage)nasıl kullanılacağı açıklanmaktadır. Görüntü birleştirme, özel Pushpin, etiket ve geometri Yerpaylaşımları gibi ek verilerle bir raster kutucuğu geri alma özelliği içerir.
 
 Özel pushpın 'leri, etiketleri ve geometri yer paylaşımlarını işlemek için Postman uygulamasını kullanabilirsiniz. Yer paylaşımlarını depolamak ve işlemek için Azure Maps [veri hizmeti API 'lerini](https://docs.microsoft.com/rest/api/maps/data) kullanabilirsiniz.
 
 > [!Tip]
 > Azure Haritalar Web SDK 'sını kullanarak, bir Web sayfasında statik görüntü hizmetini kullanmaktan daha basit bir harita göstermek için çok daha uygun maliyetli hale gelir. Web SDK 'Sı harita kutucukları kullanır ve Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, genellikle harita yükü başına bir işlemin yalnızca bir bölümünü oluşturur. Azure Maps web SDK 'sının yatay kaydırmayı ve yakınlaştırmasını devre dışı bırakma seçenekleri olduğunu unutmayın. Ayrıca, Azure Maps web SDK 'Sı statik bir harita Web hizmetinden daha zengin bir veri görselleştirme seçenekleri kümesi sağlar.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
@@ -43,7 +43,7 @@ Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımla
 
 1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin ve ardından **Kaydet**' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Ardından **Kaydet**’i seçin.
     
     ![Postman 'da istek oluşturma](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. UDID 'yi almak için, Postman uygulamasında yeni bir sekme açın ve Oluşturucu sekmesinde HTTP yöntemi Al ' ı seçin ve durum URI 'sinde bir GET isteği yapın. Karşıya veri yükleme işlemi başarılı olduysa yanıt gövdesinde bir UDID alırsınız. Uıdıd 'i kopyalayın.
+6. UDID 'yi almak için Postman uygulamasında yeni bir sekme açın. Oluşturucu sekmesinde HTTP yöntemini Al ' ı seçin. durum URI 'sinde bir GET isteği yapın. Karşıya veri yükleme işlemi başarılı olduysa yanıt gövdesinde bir UDID alırsınız. Uıdıd 'i kopyalayın.
 
    ```JSON
    {

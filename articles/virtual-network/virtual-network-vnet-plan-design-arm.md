@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845577"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190471"
 ---
 # <a name="plan-virtual-networks"></a>Sanal ağları planlama
 
@@ -27,7 +27,7 @@ Denemek için bir sanal ağ oluşturmak oldukça kolaydır, ancak olasılığın
 
 ## <a name="naming"></a>Adlandırma
 
-Tüm Azure kaynakları bir ada sahiptir. Ad, her kaynak türü için değişebilen bir kapsam içinde benzersiz olmalıdır. Örneğin, bir sanal ağın adı bir [kaynak grubu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)içinde benzersiz olmalıdır, ancak bir [abonelik](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) veya Azure [bölgesi](https://azure.microsoft.com/regions/#services)içinde yinelenebilir. Zaman içinde birkaç ağ kaynağını yönetirken, kaynak adlandırma yararlı olduğunda tutarlı bir şekilde kullanabileceğiniz bir adlandırma kuralı tanımlama. Öneriler için bkz. [adlandırma kuralları](/azure/architecture/best-practices/resource-naming#networking).
+Tüm Azure kaynakları bir ada sahiptir. Ad, her kaynak türü için değişebilen bir kapsam içinde benzersiz olmalıdır. Örneğin, bir sanal ağın adı bir [kaynak grubu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)içinde benzersiz olmalıdır, ancak bir [abonelik](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) veya Azure [bölgesi](https://azure.microsoft.com/regions/#services)içinde yinelenebilir. Zaman içinde birkaç ağ kaynağını yönetirken, kaynak adlandırma yararlı olduğunda tutarlı bir şekilde kullanabileceğiniz bir adlandırma kuralı tanımlama. Öneriler için bkz. [adlandırma kuralları](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork).
 
 ## <a name="regions"></a>Bölgeler
 
@@ -56,7 +56,7 @@ Sanal ağ, Azure genel ağının sanal, yalıtılmış bir parçasıdır. Her sa
 - Farklı sanal ağlardaki kaynaklar için herhangi bir kuruluş yönetim gereksinimleriniz var mı? Bu durumda, kuruluşunuzdaki bireylere [izin atamasını](#permissions) kolaylaştırmak veya farklı sanal ağlara farklı ilkeler atamak için kaynakları ayrı sanal ağa ayırabilirsiniz.
 - Bazı Azure hizmet kaynaklarını bir sanal ağa dağıttığınızda, kendi sanal ağını oluşturamazlar. Bir Azure hizmetinin kendi sanal ağını oluşturup oluşturmadığını öğrenmek için, [bir sanal ağa dağıtılabilecek her bir Azure hizmeti](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)için bilgiler bölümüne bakın.
 
-### <a name="subnets"></a>Alt ağlar
+### <a name="subnets"></a>Alt Ağlar
 
 Bir sanal ağ, [sınırlara](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar bir veya daha fazla alt ağa ayrılabilir. Bir abonelikte tek bir alt ağ veya birden çok sanal ağ oluşturma konusunda karar verirken dikkate almanız gerekenler:
 

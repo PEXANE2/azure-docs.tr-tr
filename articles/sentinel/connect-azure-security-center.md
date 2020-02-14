@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563675"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190872"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden verileri bağlama
 
@@ -24,13 +24,12 @@ ms.locfileid: "75563675"
 
 Azure Sentinel, uyarıları [Azure Güvenlik Merkezi](../security-center/security-center-intro.md) ' nden bağlamanıza ve Azure Sentinel 'e akışla göndermenizi sağlar. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Uyarıları Azure Güvenlik Merkezi 'nden dışarı aktarmak istiyorsanız, abone olduğunuz abonelik üzerinde bir katkıda bulunan olması gerekir.
+- Uyarıları Azure Güvenlik Merkezi 'nden dışarı aktarmak için, akış yaptığınız günlüklerin aboneliğinde güvenlik okuyucusu rolüne sahip olmanız gerekir.
 
 - Abonelikte çalışan [Azure Güvenlik Merkezi Standart katmanının](../security-center/security-center-pricing.md) olması gerekir. Aksi takdirde, [aboneliğinizi standart sürümüne yükseltin](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Bağlanmak istediğiniz her abonelik üzerinde genel yönetici veya Güvenlik Yöneticisi izinlerine sahip bir kullanıcıyla oturum açmalısınız.
 
 
 ## <a name="connect-to-azure-security-center"></a>Azure Güvenlik Merkezi 'ne bağlanma

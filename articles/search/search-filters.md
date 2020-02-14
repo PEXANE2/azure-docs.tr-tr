@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406737"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191014"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama filtreler 
 
@@ -51,7 +51,7 @@ Arama sonuçlarınızda bir daraltma efekti istiyorsanız, filtreler tek seçimi
 
 + `$select` parametresi, bir sonuç kümesinde hangi alanların ekleneceğini belirlemek için kullanılır, yanıtı çağıran uygulamaya göndermeden önce etkin bir şekilde kırpmaz. Bu parametre sorguyu iyileştirmez veya belge koleksiyonunu azaltır, ancak daha küçük bir yanıt hedefiniz ise, bu parametre dikkate alınması gereken bir seçenektir. 
 
-Her iki parametre hakkında daha fazla bilgi için bkz. [arama belgeleri > istek > sorgu parametreleri](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Her iki parametre hakkında daha fazla bilgi için bkz. [arama belgeleri > istek > sorgu parametreleri](/rest/api/searchservice/search-documents#query-parameters).
 
 
 ## <a name="how-filters-are-executed"></a>Filtrelerin nasıl yürütüldüğü
@@ -197,8 +197,8 @@ Daha fazla örnekle çalışmak için bkz. [OData filtre Ifadesi söz dizimi > �
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Tam metin aramasının Azure 'da nasıl çalıştığı Bilişsel Arama](search-lucene-query-architecture.md)
-+ [Belgelerde ara REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
++ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

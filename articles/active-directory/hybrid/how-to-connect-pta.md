@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Geçişli kimlik doğrulaması | Microsoft Docs'
+title: 'Azure AD Connect: geçişli kimlik doğrulaması | Microsoft Docs'
 description: Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulaması ve kullanıcıların parolalarını şirket içi Active Directory karşı doğrulayarak Azure AD oturum açma işlemlerinin nasıl izin verdiği açıklanmaktadır.
 services: active-directory
 keywords: Azure AD Connect geçişli kimlik doğrulaması, Active Directory yüklemesi, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779117"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185511"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory geçişli kimlik doğrulamasıyla Kullanıcı oturumu açma
 
@@ -49,7 +49,7 @@ Doğrudan kimlik doğrulamayı [sorunsuz çoklu oturum açma](how-to-connect-sso
   - Yönetim yükü yok. Aracı iyileştirmeleri ve hata düzeltmelerini otomatik olarak alır.
 - *Güvenlik*
   - Şirket içi parolalar hiçbir biçimde bulutta depolanmaz.
-  - Multi-Factor Authentication (MFA) dahil olmak üzere [Azure AD koşullu erişim ilkeleri](../active-directory-conditional-access-azure-portal.md)ile sorunsuz çalışarak kullanıcı hesaplarınızı korur, [eski kimlik doğrulamasını engellemeyi](../conditional-access/conditions.md) ve [deneme yanılma saldırılarına zorlar](../authentication/howto-password-smart-lockout.md).
+  - Multi-Factor Authentication (MFA) dahil olmak üzere [Azure AD koşullu erişim ilkeleriyle](../active-directory-conditional-access-azure-portal.md)sorunsuz çalışarak kullanıcı hesaplarınızı korur, [eski kimlik doğrulamasını engellemeyi](../conditional-access/concept-conditional-access-conditions.md) ve [deneme yanılma saldırılarına zorlar](../authentication/howto-password-smart-lockout.md).
   - Aracı yalnızca ağınızın içinden giden bağlantılar oluşturur. Bu nedenle, aracıyı DMZ olarak da bilinen bir çevre ağına yüklemek için gerekli değildir.
   - Bir aracı ve Azure AD arasındaki iletişimin sertifika tabanlı kimlik doğrulaması kullanılarak güvenliği sağlanır. Bu sertifikalar Azure AD tarafından her birkaç ayda bir otomatik olarak yenilenir.
 - *Yüksek oranda kullanılabilir*
@@ -58,8 +58,8 @@ Doğrudan kimlik doğrulamayı [sorunsuz çoklu oturum açma](how-to-connect-sso
 ## <a name="feature-highlights"></a>Özellik vurguları
 
 - , Tüm Web tarayıcısı tabanlı uygulamalarda ve [modern kimlik doğrulaması](https://aka.ms/modernauthga)kullanan Microsoft Office istemci uygulamalarında Kullanıcı oturum açmayı destekler.
-- Oturum açma kullanıcı adları, şirket içi varsayılan Kullanıcı adı (`userPrincipalName`) veya Azure AD Connect yapılandırılmış başka bir öznitelik (olarak `Alternate ID`bilinir) olabilir.
-- Özelliği, kullanıcılarınızın güvenliğini sağlamaya yardımcı olmak için Multi-Factor Authentication (MFA) gibi [koşullu erişim](../active-directory-conditional-access-azure-portal.md) özellikleriyle sorunsuz bir şekilde çalışır.
+- Oturum açma kullanıcı adları, şirket içi varsayılan Kullanıcı adı (`userPrincipalName`) veya Azure AD Connect yapılandırılmış başka bir öznitelik (`Alternate ID`olarak bilinir) olabilir.
+- Özelliği, kullanıcılarınızın güvenliğini sağlamaya yardımcı olmak üzere Multi-Factor Authentication (MFA) gibi [koşullu erişim](../active-directory-conditional-access-azure-portal.md) özellikleriyle sorunsuz şekilde çalışır.
 - Yaygın olarak kullanılan parolalara bakarak şirket içi Active Directory ve parola korumasına yönelik parola geri yazma özelliği de dahil olmak üzere bulut tabanlı [self servis parola yönetimiyle](../authentication/active-directory-passwords-overview.md)tümleşiktir.
 - AD ormanlarınız arasında orman güvenleri varsa ve ad soneki yönlendirmesi doğru yapılandırılmışsa, çok ormanlı ortamlar desteklenir.
 - Bu, ücretsiz bir özelliktir ve Azure AD 'nin ücretli sürümlerinin kullanılmasını gerektirmez.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379987"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185876"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu erişimde What If aracını kullanarak sorun giderme
 
@@ -26,13 +26,13 @@ Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kul
 
 ## <a name="what-it-is"></a>Nedir?
 
-**Koşullu erişim What If ilkesi aracı** , ortamınızda koşullu erişim ilkelerinizin etkisini anlamanıza olanak tanır. İlkelerinizi test etmek için elle birden fazla oturum açma işlemi gerçekleştirmek yerine, bu aracı kullanarak bir kullanıcının oturum açmasının simülasyonunu yapabilirsiniz. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur. Rapor yalnızca uygulanan koşullu erişim ilkelerini listelemez, ancak varsa [Klasik ilkeleri](policy-migration.md#classic-policies) de listeler.    
+**Koşullu erişim What If ilkesi aracı** , ortamınızda koşullu erişim ilkelerinizin etkisini anlamanıza olanak tanır. Birden çok oturum açma işlemini el ile gerçekleştirerek, ilkelerinizi test etmek yerine, bu araç kullanıcının benzetimli bir oturum açmasını değerlendirmenizi sağlar. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur. Rapor yalnızca uygulanan koşullu erişim ilkelerini listelemez, ancak varsa [Klasik ilkeleri](policy-migration.md#classic-policies) de listeler.    
 
 **What If** Aracı, belirli bir kullanıcı için uygulanan ilkeleri hızlıca belirleyebilmek için bir yol sağlar. Bu bilgileri, örneğin bir sorunu gidermeniz gerekiyorsa kullanabilirsiniz.    
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-**Koşullu erişim What If aracında**, önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunlardır:
+**Koşullu erişim What If aracında**, önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunları içerir:
 
 - Test etmek istediğiniz Kullanıcı 
 - Kullanıcının erişmeyi deneyeceği bulut uygulamaları
@@ -72,11 +72,11 @@ IP adresi, [konum koşulunu](location-condition.md)taklit eden tek bir IPv4 adre
 
 ### <a name="device-platforms"></a>Cihaz platformları
 
-Bu ayar [cihaz platformları koşulunu](conditions.md#device-platforms) taklit eder ve **Tüm platformların (desteklenmeyen dahil)** eşdeğerini temsil eder. 
+Bu ayar [cihaz platformları koşulunu](concept-conditional-access-conditions.md#device-platforms) taklit eder ve **Tüm platformların (desteklenmeyen dahil)** eşdeğerini temsil eder. 
 
 ### <a name="client-apps"></a>İstemci uygulamaları
 
-Bu ayar, [istemci uygulamaları koşulunu](conditions.md#client-apps)taklit eder.
+Bu ayar, [istemci uygulamaları koşulunu](concept-conditional-access-conditions.md#client-apps-preview)taklit eder.
 Varsayılan olarak, bu ayar **tarayıcı** veya **mobil uygulamalar ve Masaüstü istemcileri** tek tek veya her ikisi de seçili olan tüm ilkelerin değerlendirilmesine neden olur. Ayrıca, **Exchange ActiveSync (EAS)** uygulayan ilkeleri de algılar. Şunları seçerek bu ayarı daraltabilirsiniz:
 
 - En az **tarayıcı** seçili olan tüm ilkeleri değerlendirmek için **tarayıcı** . 
@@ -84,7 +84,7 @@ Varsayılan olarak, bu ayar **tarayıcı** veya **mobil uygulamalar ve Masaüst�
 
 ### <a name="sign-in-risk"></a>Oturum açma riski
 
-Bu ayar, [oturum açma risk koşulunu](conditions.md#sign-in-risk)taklit eder.   
+Bu ayar, [oturum açma risk koşulunu](concept-conditional-access-conditions.md#sign-in-risk)taklit eder.   
 
 ## <a name="evaluation"></a>Değerlendirmesinin 
 

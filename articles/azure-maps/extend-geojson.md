@@ -8,19 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911647"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198284"
 ---
 # <a name="extended-geojson-geometries"></a>Genişletilmiş GeoJSON geometrileri
 
-Azure Maps, coğrafi özellikler içinde/içinde arama yapmak için güçlü API 'lerin bir listesini sağlar.
-Bu API 'Ler coğrafi özellikleri temsil etmek için [geojson spec][1] üzerinde standartlaştırın (örneğin: durum sınırları, rotalar).  
+Azure Maps, coğrafi özelliklerin içinde ve üzerinde arama yapmak için güçlü API 'lerin bir listesini sağlar. Bu API 'Ler, coğrafi özellikleri temsil eden standart [geojson][1] belirtimine uyar.  
 
-[Geojson özelliği][1] yalnızca aşağıdaki geometrileri destekler:
+[Geojson belirtimi][1] yalnızca aşağıdaki geometrileri destekler:
 
 * GeometryCollection
 * LineString
@@ -30,7 +29,7 @@ Bu API 'Ler coğrafi özellikleri temsil etmek için [geojson spec][1] üzerinde
 * Seçeneğinin
 * Gen
 
-Bazı Azure Maps API 'Leri (örneğin, [geometri Içinde arama](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)), [geojson belirtiminin][1]parçası olmayan "Circle" gibi geometriler kabul eder.
+Bazı Azure Maps API 'Leri, [geojson belirtiminin][1]parçası olmayan geometrileri kabul eder. Örneğin, geometri API 'si [Içinde arama](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) , daire ve çokgenler kabul eder.
 
 Bu makalede, Azure eşlemelerinin belirli geometrileri göstermek için [geojson belirtimini][1] nasıl genişlettiği hakkında ayrıntılı bir açıklama sunulmaktadır.
 
@@ -38,13 +37,13 @@ Bu makalede, Azure eşlemelerinin belirli geometrileri göstermek için [geojson
 
 `Circle` geometrisi [geojson belirtimi][1]tarafından desteklenmiyor. Bir daireyi temsil etmek için bir `GeoJSON Point Feature` nesnesi kullanıyoruz.
 
-`GeoJSON Feature` nesnesi kullanılarak temsil edilen bir `Circle` geometrisi __şunları içermelidir:__
+`GeoJSON Feature` nesnesi kullanılarak temsil edilen bir `Circle` geometrisi aşağıdaki koordinatları ve __özellikleri içermelidir:__
 
 - Center
 
     Dairenin merkezi bir `GeoJSON Point` nesnesi kullanılarak temsil edilir.
 
-- Yarıçap
+- La
 
     Dairenin `radius` `GeoJSON Feature`özellikleri kullanılarak temsil edilir. Yarıçap değeri _Ölçü_ cinsindendir ve `double`türünde olmalıdır.
 
@@ -54,7 +53,7 @@ Bu makalede, Azure eşlemelerinin belirli geometrileri göstermek için [geojson
 
 #### <a name="example"></a>Örnek
 
-`GeoJSON Feature` bir nesne kullanarak, bir yarıçapı (Latitude: 47,639754, Boylam:-122,126986) ile bir Radius 100 eşit olan bir daire olarak temsil edebilirsiniz:
+Bir `GeoJSON Feature` nesnesini kullanarak bir daireyi nasıl temsil ettiğini aşağıda bulabilirsiniz. Bu çemberi Enlem: 47,639754 ve Boylam:-122,126986 ' ye kadar daire ortalayalım ve bu değere bir Radius atamak için 100.
 
 ```json            
 {
@@ -74,11 +73,11 @@ Bu makalede, Azure eşlemelerinin belirli geometrileri göstermek için [geojson
 
 `Rectangle` geometrisi [geojson belirtimi][1]tarafından desteklenmiyor. Bir dikdörtgeni temsil etmek için bir `GeoJSON Polygon Feature` nesnesi kullanıyoruz. Dikdörtgen uzantısı öncelikle web SDK 'nın çizim araçları modülü tarafından kullanılır.
 
-`GeoJSON Polygon Feature` nesnesi kullanılarak temsil edilen bir `Rectangle` geometrisi __şunları içermelidir:__
+`GeoJSON Polygon Feature` nesnesi kullanılarak temsil edilen bir `Rectangle` geometrisi aşağıdaki koordinatları ve __özellikleri içermelidir:__
 
 - Elerinden
 
-    Dikdörtgenin köşeleri, bir `GeoJSON Polygon` nesnesinin koordinatları kullanılarak temsil edilir. Her köşede biri olan beş koordinat ve çokgen halkasını kapatmak için 1 ile aynı olan beşinci bir koordinat olmalıdır. Bu koordinatların, geliştirici tarafından istendiği şekilde hizalanıp döndürülmeyeceğini varsayacaktır.
+    Dikdörtgenin köşeleri, bir `GeoJSON Polygon` nesnesinin koordinatları kullanılarak temsil edilir. Her köşede birer tane olmak üzere beş koordinat olmalıdır. Ve çokgen halkasını kapatmak için ilk koordinat ile aynı olan beşinci bir koordinat. Bu koordinatların hizalandığından ve geliştiricinin istenen şekilde döndürebildiğinden emin olacak.
 
 - SubType
 

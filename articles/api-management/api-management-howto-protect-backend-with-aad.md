@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161809"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190374"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2,0 kullanarak API 'YI koruma
 
@@ -71,7 +71,7 @@ Bir API 'yi Azure AD ile korumak için ilk adım, API 'YI temsil eden bir uygula
 
 API 'YI çağıran her istemci uygulamasının, Azure AD 'de bir uygulama olarak kaydedilmesi gerekir. Bu örnekte, istemci uygulaması API Management geliştirici portalındaki geliştirici konsoludur. Geliştirici konsolunu göstermek için Azure AD 'de başka bir uygulamanın nasıl kaydedileceği aşağıda açıklanmaktadır.
 
-1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **API kayıtlarını**arayın ve seçin.
+1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **Uygulama kayıtları**arayın ve seçin.
 
 1. **Yeni kayıt**seçeneğini belirleyin.
 
@@ -97,7 +97,7 @@ Gizli dizi oluşturulduğunda, sonraki bir adımda kullanılacak anahtar değeri
 
 API 'yi ve geliştirici konsolunu temsil etmek üzere iki uygulama kaydettirdiğiniz için, istemci uygulamanın arka uç uygulamasını çağırmasını sağlamak için izinler vermeniz gerekir.  
 
-1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. **API kayıtlarını**arayın ve seçin.
+1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. **Uygulama kayıtları**arayın ve seçin.
 
 1. İstemci uygulamanızı seçin. Ardından, uygulama için sayfa listesinden **API izinleri**' ni seçin.
 
@@ -202,7 +202,7 @@ Her gelen isteğin erişim belirteçlerini doğrulayarak, API Management istekle
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

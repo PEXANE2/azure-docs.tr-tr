@@ -3,8 +3,7 @@ title: Event Hubs-Azure portal kullanarak akış olaylarını yakala
 description: Bu makalede Azure portalını kullanarak Azure Event Hubs ile akış olayların yakalamayı etkinleştirme.
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.author: shvija
-ms.openlocfilehash: 267f7c47d101406463378ad12c295ace80aecb7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/12/2020
+ms.author: spelluru
+ms.openlocfilehash: 8a6d9456b00e5520e6f4fbb9ccb77b0260731ddd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437231"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187363"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs ile olayların akışını yakalamayı etkinleştirme
 
-Azure [Event Hubs yakalama][capture-overview] , akış verilerini Event Hubs bir [Azure Blob depolama alanına](https://azure.microsoft.com/services/storage/blobs/) veya seçtiğiniz [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) hesabına otomatik olarak göndermenizi sağlar.
+Azure [Event Hubs yakalama][capture-overview] , akış verilerini Event Hubs bir [Azure Blob depolama alanına](https://azure.microsoft.com/services/storage/blobs/) veya [Azure Data Lake Storage 1. ya da Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabına otomatik olarak sunmanıza olanak sağlar.
 
-[Azure portalını](https://portal.azure.com) kullanarak olay hub'ı oluşturma sırasında Yakalama özelliğini yapılandırabilirsiniz. Verileri bir Azure [Blob depolama](https://azure.microsoft.com/services/storage/blobs/) kapsayıcısına veya bir [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) hesabına alabilirsiniz.
+[Azure portalını](https://portal.azure.com) kullanarak olay hub'ı oluşturma sırasında Yakalama özelliğini yapılandırabilirsiniz. Verileri bir Azure [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) kapsayıcısına veya [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabına yakalayabilirsiniz.
 
 Daha fazla bilgi için [Event Hubs yakalamaya genel bakış][capture-overview]bölümüne bakın.
 
-## <a name="capture-data-to-an-azure-storage-account"></a>Azure Depolama hesabına veri alma  
+## <a name="capture-data-to-azure-storage"></a>Verileri Azure depolama 'da yakala
 
 Bir olay hub’ı oluşturduğunuzda **Olay Hub'ı oluştur** portal ekranında **Aç** düğmesine tıklayarak Yakalama özelliğini etkinleştirebilirsiniz. Ardından **Yakalama Sağlayıcısı** kutusunda **Azure Storage**’a tıklayarak bir Depolama Hesabı ve kapsayıcı belirtirsiniz. Event Hubs Yakalama özelliği, depolama ile hizmetten hizmete kimlik doğrulama kullandığından depolama bağlantı dizesi belirtmenize gerek yoktur. Kaynak seçici, depolama hesabınız için kaynak URI'sini otomatik olarak seçer. Azure Resource Manager kullanıyorsanız bu URI'yi dize olarak açıkça belirtmeniz gerekir.
 
@@ -41,24 +40,48 @@ Zaman penceresi varsayılan olarak 5 dakikadır. En düşük değer 1, en yükse
 > [!NOTE]
 > Yakalama penceresi sırasında hiçbir olay gerçekleşmeyecek boş dosyaları yaymayı etkinleştirebilir veya devre dışı bırakabilirsiniz. 
 
-## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Azure Data Lake Store hesabına veri alma
+## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 ' ye veri yakala 
 
-Azure Data Lake Store'a veri almak için bir Data Lake Store hesabı ve bir olay hub'ı oluşturun:
+1. Bir Azure depolama hesabı oluşturmak için [depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) makalesini izleyin. Azure Data Lake Storage Gen 2 hesabı yapmak için, **Gelişmiş** sekmesinde **hiyerarşik ad alanını** **etkin** olarak ayarlayın.
+2. Bir olay hub 'ı oluştururken aşağıdaki adımları uygulayın: 
 
-### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Azure Data Lake Store hesabı ve klasörleri oluşturma
+    1. **Yakalama**için **Açık** seçeneğini belirleyin. 
+    2. Yakalama sağlayıcısı olarak **Azure Storage** ' ı seçin. **Yakalama sağlayıcısı** için gördüğünüz **Azure Data Lake Store** seçeneği, Azure Data Lake Storage Gen 1 ' dir. Azure Data Lake Storage Gen 2 ' yi kullanmak için **Azure Storage**' ı seçin.
+    2. **Kapsayıcı Seç** düğmesini seçin. 
+
+        ![Data Lake Storage Gen 2 ' ye yakalamayı etkinleştir](./media/event-hubs-capture-enable-through-portal/data-lake-storage-gen2.png)
+3. Listeden **Azure Data Lake Storage Gen 2** hesabını seçin. 
+
+    ![Data Lake Storage Gen 2 ' yi seçin](./media/event-hubs-capture-enable-through-portal/select-data-lake-storage-gen2.png)
+4. **Kapsayıcıyı** seçin (Data Lake Storage Gen 2 ' deki dosya sistemi).
+
+    ![Depolama alanında dosya sistemi seçin](./media/event-hubs-capture-enable-through-portal/select-file-system-data-lake-storage.png)
+5. **Olay Hub 'ı oluştur** sayfasında **Oluştur**' u seçin. 
+
+    ![Oluştur düğmesini seçin](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
+
+    > [!NOTE]
+    > Bu Kullanıcı arabirimini (UI) kullanarak Azure Data Lake Storage Gen 2 içinde oluşturduğunuz kapsayıcı, **Depolama Gezgini** **dosya sistemleri** altında gösterilir. Benzer şekilde, bir Data Lake Storage Gen 2 hesabında oluşturduğunuz dosya sistemi, bu kullanıcı arabirimindeki bir kapsayıcı olarak gösterilir. 
 
 
-1. [Azure Portal'ı kullanarak Azure Data Lake Store ile çalışmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md) bölümündeki yönergeleri uygulayarak bir Data Lake Store hesabı oluşturun.
-2. Event Hubs verilerini almak ve Data Lake Store hesabınıza veri yazabilmesi için Event Hubs'a izin atamak istediğiniz Data Lake Stora hesabı içinde bir klasör oluşturmak için [Event Hubs'a izin atama](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) bölümündeki yönergeleri uygulayın.  
+## <a name="capture-data-to-azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 ' e veri yakala 
+
+Azure Data Lake Storage Gen 1 ' e veri yakalamak için, bir Data Lake Storage Gen 1 hesabı ve bir olay hub 'ı oluşturursunuz:
+
+### <a name="create-an-azure-data-lake-storage-gen-1-account-and-folders"></a>Azure Data Lake Storage Gen 1 hesabı ve klasörleri oluşturma
+
+1. [Azure Portal kullanarak Azure Data Lake Storage Gen 1 ile çalışmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md)bölümündeki yönergeleri izleyerek Data Lake Storage hesabı oluşturun.
+2. [Event Hubs Izinleri ata](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) bölümünde yer alan yönergeleri izleyerek Event Hubs verileri yakalamak Istediğiniz Data Lake Storage Gen 1 hesabında bir klasör oluşturun ve Data Lake Storage Gen 1 hesabınıza veri yazabilmesi için Event Hubs izinler atayın.  
 
 
 ### <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-1. Olay hub'ının oluşturduğunuz Azure Data Lake Store ile aynı Azure aboneliğinde olması gerektiğini unutmayın. **Event Hub'ı oluştur** portal sayfasının **Yakalama** bölümünde **Açık** düğmesine tıklayarak olay hub'ını oluşturun. 
+1. Olay Hub 'ı, oluşturduğunuz Azure Data Lake Storage Gen 1 hesabıyla aynı Azure aboneliğinde olmalıdır. **Event Hub'ı oluştur** portal sayfasının **Yakalama** bölümünde **Açık** düğmesine tıklayarak olay hub'ını oluşturun. 
 2. **Event Hub'ı oluştur** portal sayfasında, **Yakalama Sağlayıcısı** kutusundan **Azure Data Lake Store**’u seçin.
-3. **Data Lake Store’u seçin** kısmında, daha önce oluşturduğunuz Data Lake Store hesabını belirtin ve **Data Lake Yolu** alanına, oluşturduğunuz veri klasörünün yolunu girin.
+3. **Data Lake Store** açılır listesinin yanındaki **Mağaza Seç** ' de, daha önce oluşturduğunuz Data Lake Storage Gen 1 hesabını belirtin ve **Data Lake yolu** alanına oluşturduğunuz veri klasörünün yolunu girin.
 
     ![Data Lake Storage hesabını seçin][3]
+
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>Mevcut bir olay hub'ında Yakalama özelliğini yapılandırma
 
@@ -68,7 +91,11 @@ Event Hubs ad alanlarında mevcut olan olay hub'ları üzerinde Yakalama özelli
 
 ![Azure Blob depolamayı yapılandırma][2]
 
-### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+![Azure Data Lake Storage Gen 2 ' ye yapılandırma](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![Azure Data Lake depolama yapılandırma][4]
 

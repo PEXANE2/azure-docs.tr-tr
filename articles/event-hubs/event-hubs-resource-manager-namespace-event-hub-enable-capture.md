@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/06/2019
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: a71751ba8dde2152a00a1455a51d13a3dedb792a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437171"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187339"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Olay hub’ı ile bir ad alanı oluşturma ve şablon kullanarak Yakalamayı etkinleştirm
 
@@ -235,7 +235,7 @@ Olay verilerinin yakalanacağı blob kapsayıcısı.
 }
 ```
 
-Hedef olarak Azure Data Lake Store’u seçerseniz aşağıdaki parametreleri kullanın. Olayı yakalamak istediğiniz Data Lake Store yolunuzda izinleri ayarlamanız gerekir. İzinleri ayarlamak için [bu makaleye](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account) bakın.
+Hedef olarak Azure Data Lake Store Gen 1 ' i seçerseniz aşağıdaki parametreleri kullanın. Olayı yakalamak istediğiniz Data Lake Store yolunuzda izinleri ayarlamanız gerekir. İzinleri ayarlamak için bkz. [Gen 1 Azure Data Lake Storage verileri yakalama](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
 
 ### <a name="subscriptionid"></a>subscriptionId
 

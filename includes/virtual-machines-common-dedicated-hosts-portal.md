@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833921"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192502"
 ---
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- İlk sürüm şu VM serisini destekler: DSv3 ve ESv3. 
+- İlk sürüm şu VM serisini destekler: DSv3, ESv3 ve Fsv2. 
 
 ## <a name="create-a-host-group"></a>Konak grubu oluştur
 
@@ -54,7 +54,7 @@ Konak grubunun oluşturulması yalnızca birkaç dakika sürer.
 
 ## <a name="create-a-dedicated-host"></a>Adanmış konak oluşturma
 
-Şimdi konak grubunda ayrılmış bir konak oluşturun. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar. Aşağıdaki konak SKU değerleri desteklenir: DSv3_Type1 ve ESv3_Type1.
+Şimdi konak grubunda ayrılmış bir konak oluşturun. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
 

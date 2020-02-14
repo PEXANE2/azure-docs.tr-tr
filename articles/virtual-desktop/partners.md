@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906877"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201790"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -46,6 +46,8 @@ Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları M
 Microsoft ve adanmış bir Microsoft Azure ve Windows sanal masaüstü ortağıyla, son teknoloji ile Ince ve sıfır Istemci donanımı ve yazılımıyla 10ZiG teknolojisi. 10ZiG Windows 10 IoT tabanlı Ince Istemciler, tüm Windows sanal masaüstü çoklu kullanıcıları için güçlü, güvenilir ve ekonomik uç noktalardır. 10ZiG Manager yazılımı, hiçbir ek ücret ödemeden Lisans sınırlamaları olmadan olağanüstü yönetim ve dağıtım sağlar. 10ZiG Tech ekibi, öncelikli garanti programı ve sorun olmayan tanıtımlar, bulutta tek bir Windows sanal masaüstü çoklu oturum desteği çözümüdür.
 
 10ZiG's World-sanal masaüstleri için Ince ve sıfır Istemci uç noktası cihazlarının ve yönetim yazılımlarının müşterileri için nasıl çalıştıkları Ölçülü Istemci donanımı, müşterilerin gereksinimlerine göre doğru Istemci cihazları aldığından emin olmak için tasarlanan, düşünceli bir şekilde oluşturulmuş avantaj özellikleri ve seçenekleri sunar. 10ZiG, sanal masaüstlerinde hem bulut içinde hem de dışında en iyi performansı sağlayan Windows tabanlı ve Linux tabanlı Istemcilerle müşteri ortamlarına uyum sağlamak için cihazlarını özelleştirir.
+
+- [İş ortağı Web sitesine gidin](https://www.10zig.com/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -149,6 +151,8 @@ Uygulamalar ve hizmet sağlayıcılarının tüm çalışma alanı arka uçları
 
 Sertifikalı tümleştirme ortağı olarak, Liquit, RIP ve değiştirme gecikmesi olmadan buluta geçişi hızlandırmaya yardımcı olur. Windows sanal masaüstü, var olan bir ortama kolayca bağlanabilir, çalışma alanı oluşturabilir ve masaüstünü sunabilir. Daha sonra zamandan eski platformlardan geçiş yapabilir ve kullanıcılarınız yaşıyorsanız olmadan arka uçta değişiklikler yapabilirsiniz. Tutarlı bir son kullanıcı deneyimi, esnek altyapı elde edin ve nerede olurlarsa olsun uygulamalarınızın denetimini koruyun.
 
+- [İş ortağı Web sitesine gidin](https://www.liquit.com/wvd/).
+
 ## <a name="login-vsi"></a>Oturum açma VSI
 
 ![Oturum açma VSI logosu](./media/partners/loginvsi.png)
@@ -250,7 +254,7 @@ Karmaşık bir şekilde, Windows sanal masaüstü ve ötesinde yazdırma sorunsu
 
 - [İş ortağı Web sitesine gidin](https://www.tricerat.com/microsoft-printing).
 
-## <a name="workspot"></a>Workspot
+## <a name="workspot"></a>Çalışma noktası
 
 ![Çalışma noktası logosu](./media/partners/workspot.png)
 

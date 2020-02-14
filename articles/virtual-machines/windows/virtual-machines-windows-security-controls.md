@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0e35efc0da929136a889b1611a48a60671ed2af8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828327"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190556"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows Sanal Makineleri için güvenlik denetimleri
 
@@ -26,35 +26,35 @@ Bu makalede, Windows Sanal Makineleri yerleşik olarak bulunan güvenlik denetim
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Yes | |
-| VNet ekleme desteği| Yes | |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Yes |  |
-| Zorlamalı tünel desteği| Yes | Bkz. [Azure Resource Manager dağıtım modelini kullanarak Zorlamalı tünel yapılandırma](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Hizmet uç noktası desteği| Evet | |
+| VNet ekleme desteği| Evet | |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet |  |
+| Zorlamalı tünel desteği| Evet | Bkz. [Azure Resource Manager dağıtım modelini kullanarak Zorlamalı tünel yapılandırma](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
 ## <a name="monitoring--logging"></a>& Günlüğü izleme
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | [Azure 'da bir Windows sanal makinesini izleyin ve güncelleştirin](tutorial-monitoring.md). |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes |  |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | [Azure 'da bir Windows sanal makinesini izleyin ve güncelleştirin](tutorial-monitoring.md). |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet |  |
 | Veri düzlemi günlüğü ve denetimi | Hayır |  |
 
 ## <a name="identity"></a>Kimlik
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Yes |  |
-| Yetkilendirme| Yes |  |
+| Kimlik Doğrulama| Evet |  |
+| Yetkilendirme| Evet |  |
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | Bkz. [WINDOWS VM 'de sanal diskleri şifreleme](/azure/virtual-machines/windows/encrypt-disks). |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yes | Azure sanal makineleri [ExpressRoute](/azure/expressroute) ve VNET şifrelemesini destekler. Bkz. [VM 'lerde geçiş içi şifreleme](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yes | Müşteri tarafından yönetilen anahtarlar desteklenen bir Azure şifreleme senaryosudur; bkz. [Azure şifrelemesi 'ne genel bakış](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
-| Şifrelenmiş API çağrıları| Yes | HTTPS ve SSL aracılığıyla. |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Bkz. [WINDOWS VM 'de sanal diskleri şifreleme](/azure/virtual-machines/windows/encrypt-disks). |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Azure sanal makineleri [ExpressRoute](/azure/expressroute) ve VNET şifrelemesini destekler. Bkz. [VM 'lerde geçiş içi şifreleme](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri tarafından yönetilen anahtarlar desteklenen bir Azure şifreleme senaryosudur; bkz. [Azure şifrelemesi 'ne genel bakış](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |
+| Şifrelenmiş API çağrıları| Evet | HTTPS ve TLS aracılığıyla. |
 
 
 
@@ -62,7 +62,7 @@ Bu makalede, Windows Sanal Makineleri yerleşik olarak bulunan güvenlik denetim
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes |  | 
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet |  | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

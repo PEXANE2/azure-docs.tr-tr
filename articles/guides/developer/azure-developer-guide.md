@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163118"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186942"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için Başlarken Kılavuzu
 
@@ -60,7 +60,7 @@ Her üç uygulama türü App Service çalışma zamanını paylaştığından, b
 
 App Service, DevOps göz önünde bulundurularak tasarlanmıştır. Yayımlama ve sürekli tümleştirme dağıtımları için çeşitli araçları destekler. Bu araçlar GitHub Web kancaları, Jenkins, Azure DevOps, TeamCity ve diğerleri içerir.
 
-[Çevrimiçi geçiş aracını](https://www.migratetoazure.net/)kullanarak, mevcut uygulamalarınızı App Service geçirebilirsiniz.
+[Çevrimiçi geçiş aracını](https://appmigration.microsoft.com/)kullanarak, mevcut uygulamalarınızı App Service geçirebilirsiniz.
 
 > **Ne zaman kullanılır**: mevcut Web uygulamalarını Azure 'a geçirirken ve Web uygulamalarınız için tam olarak yönetilen bir barındırma platformuna ihtiyacınız olduğunda App Service kullanın. Ayrıca, mobil istemcileri destekletmelisiniz veya REST API 'Leri uygulamanızla birlikte kullanıma sunabileceğiniz App Service de kullanabilirsiniz.
 >
@@ -163,7 +163,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   >
   > **Kullanmaya başlayın**: [Linux üzerinde App Service Için özel bir Docker görüntüsü kullanın](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulama
 
 Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza yetkisiz erişimi engellemek için çok önemlidir. Azure, uygulama istemcilerinizin kimliğini doğrulamak için çeşitli yollar sağlar.
 
@@ -320,7 +320,7 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 * Azure Resource Manager şablonunda
 * REST API’sini kullanma
 * Azure CLI kullanma
-* PowerShell’i kullanma
+* PowerShell kullanarak
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../resource-group-using-tags.md).
 

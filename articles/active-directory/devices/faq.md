@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207379"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185840"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -55,9 +55,9 @@ Y **:** **DeviceID**'nin gösterdiği cihaz JOIN durumu, Azure AD 'deki durumla 
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>S: Kullanıcılarım, "kuruluşunuz cihazı sildi" veya "kuruluşunuz cihazı devre dışı bırakmış" iletisini Windows 10 cihazlarında neden alıyorum?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>S: Kullanıcılarım, "kuruluşunuz cihazı sildi" veya "kuruluşunuz cihazı devre dışı bırakmış" iletisini Windows 10 cihazlarında neden alıyorum?
 
-Y **:** Azure AD 'ye katılmış veya kayıtlı Windows 10 cihazlarında, kullanıcılara çoklu oturum açma özelliği sağlayan bir [birincil yenileme belirteci (PRT)](concept-primary-refresh-token.md) verilir. PRT 'nin geçerliliği, cihazın kararlılığını temel alır. Cihaz, cihazın kendisinden eylemi başlatmadan Azure AD 'de silinmiş veya devre dışı bırakılmışsa bu iletiyi görür. Azure AD 'de aşağıdaki senaryolardan birinde bir cihaz silinebilir veya devre dışı bırakılabilir: 
+Y **:** Azure AD 'ye katılmış veya kayıtlı Windows 10 cihazlarında, kullanıcılara çoklu oturum açma özelliği sağlayan bir [birincil yenileme belirteci (PRT)](concept-primary-refresh-token.md) verilir. PRT 'nin geçerliliği, cihazın geçerliliğini temel alır. Cihaz, cihazın kendisinden eylemi başlatmadan Azure AD 'de silinmiş veya devre dışı bırakılmışsa bu iletiyi görür. Azure AD 'de aşağıdaki senaryolardan birinde bir cihaz silinebilir veya devre dışı bırakılabilir: 
 
 - Kullanıcı, cihazı uygulamalarım portalından devre dışı bırakır. 
 - Yönetici (veya Kullanıcı) Azure portal veya PowerShell kullanarak cihazı siler veya devre dışı bırakır
@@ -119,7 +119,7 @@ Y **:** Bu işlem tasarıma göre yapılır. Bu durumda, cihazın buluttaki kayn
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>S: Azure AD 'de Windows 10 cihaz kaydı FIPS modunda TPMs 'yi destekliyor mu?
 
-Y **:** Windows 10 cihaz kaydı yalnızca FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, Azure AD JOIN veya hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft 'un TPM üreticisine bağlı olduğu için, TPM 'Ler için FIPS modunu devre dışı bırakmaya yönelik araçlar sağlamayacağını unutmayın. Destek için lütfen donanımınızın OEM 'nize başvurun. 
+Y **:** Windows 10 cihaz kaydı yalnızca FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, Azure AD JOIN veya hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için donanım OEM 'niz ile iletişim kurun. 
 
 ---
 
@@ -288,7 +288,7 @@ Y **:** Şirket ağı dışında bir parola değiştirilirse (örneğin, Azure A
 **C:** 
 - Windows 10 Azure AD kayıtlı cihazlar için, **iş veya okul erişimi** > **Ayarlar** > **hesaplar** ' a gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
 - İOS ve Android için, **cihaz kaydı** > Microsoft Authenticator uygulama **ayarlarını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
-- MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırın ve kaydı kaldırabilirsiniz. 
+- MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırabilir ve kaydı kaldırabilirsiniz. 
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>S: Kurumsal Windows 10 Cihazlarıma kullanıcıların ek iş hesapları (Azure AD kaydı) eklemelerini nasıl engelleyebilirim?
@@ -312,7 +312,7 @@ Y **:** Aşağıdaki adımları uygulayın:
 
 **Açıklamalarının**
 
-- Koşullu erişim ilkenize dahil olan kullanıcılar, kaynaklara erişmek için [macOS 'un desteklenen bir Office sürümüne](../conditional-access/technical-reference.md#client-apps-condition) ihtiyaç duyar. 
+- Koşullu erişim ilkenize dahil olan kullanıcılar, kaynaklara erişmek için [macOS 'un desteklenen bir Office sürümüne](../conditional-access/concept-conditional-access-conditions.md) ihtiyaç duyar. 
 - İlk erişim girişimi sırasında, kullanıcılarınızın Şirket portalı 'nı kullanarak cihazı kaydetmesi istenir.
 
 ---

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483468"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195071"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
 
@@ -49,7 +49,24 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 - SharePoint ve OneDrive
 - Takımlar Web istemcisi
 - Dynamics CRM Online
-- Azure portal
+- Azure portalı
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>Kullanıcı oturum açma sıklığı ve cihaz kimlikleri
+
+Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış veya Azure AD kayıtlı cihazlara sahipseniz, bir kullanıcı cihazlarından veya etkileşimli olarak oturum açtığında bu olay, oturum açma sıklığı ilkesini de karşılar. Aşağıdaki 2 örnekte, Kullanıcı oturum açma sıklığı 1 saat olarak ayarlanır:
+
+Örnek 1:
+
+- 00:00 ' de, bir Kullanıcı Windows 10 Azure AD 'ye katılmış cihazından oturum açar ve SharePoint Online 'da depolanan bir belge üzerinde çalışmaya başlar.
+- Kullanıcı, bir saat boyunca cihazındaki aynı belge üzerinde çalışmaya devam eder.
+- 01:00 ' de, kullanıcıdan yönetici tarafından yapılandırılan koşullu erişim ilkesindeki oturum açma sıklığı gereksinimine göre yeniden oturum açması istenir.
+
+Örnek 2:
+
+- 00:00 ' de, bir Kullanıcı Windows 10 Azure AD 'ye katılmış cihazından oturum açar ve SharePoint Online 'da depolanan bir belge üzerinde çalışmaya başlar.
+- 00:30 ' de, Kullanıcı kendi cihazını kilitlemesini alır ve keser.
+- 00:45 ' de, Kullanıcı kesmesinden geri döner ve cihazın kilidini açar.
+- 01:45 ' de, kullanıcıdan en son oturum açma işlemi 00:45 ' de gerçekleşmesinden bu yana yönetici tarafından yapılandırılan koşullu erişim ilkesindeki oturum açma sıklığı gereksinimine göre yeniden oturum açması istenir.
 
 ## <a name="persistence-of-browsing-sessions"></a>Gözatma oturumlarının kalıcılığı
 

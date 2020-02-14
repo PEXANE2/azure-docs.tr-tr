@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: a423b123626633eac761122583c5c494af68ca65
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020446"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200104"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -34,7 +34,7 @@ Bu makalede değişkenler, işleçler, işlemler ve işlevler de dahil olmak üz
 > [!IMPORTANT]
 > Bir Batch hesabı oluşturduğunuzda, havuzların bir Batch hizmeti aboneliğine mi (varsayılan) yoksa Kullanıcı aboneliğinizde mi ayrılacağını belirleyen [hesap yapılandırmasını](batch-api-basics.md#account)belirtebilirsiniz. Batch hesabınızı varsayılan Batch hizmeti yapılandırmasıyla oluşturduysanız, hesabınız, işlenmek üzere kullanılabilecek en fazla çekirdek sayısıyla sınırlıdır. Batch hizmeti işlem düğümlerini yalnızca bu çekirdek sınırına kadar ölçeklendirir. Bu nedenle, Batch hizmeti bir otomatik ölçeklendirme formülü tarafından belirtilen işlem düğümlerinin hedef sayısına ulaşmayabilir. Hesap kotalarınızı görüntüleme ve artırma hakkında bilgi için bkz. [Azure Batch hizmetine yönelik kotalar ve sınırlar](batch-quota-limit.md) .
 >
->Hesabınızı Kullanıcı aboneliği yapılandırmasıyla oluşturduysanız, hesabınız abonelik için çekirdek kotasında paylaşımınızdaymış olursunuz. Daha fazla bilgi için [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasındaki [Sanal Makine limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) bölümüne bakın.
+>Hesabınızı Kullanıcı aboneliği yapılandırmasıyla oluşturduysanız, hesabınız abonelik için çekirdek kotasında paylaşımınızdaymış olursunuz. Daha fazla bilgi için [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) sayfasındaki [Sanal Makine limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md) bölümüne bakın.
 >
 >
 
@@ -172,7 +172,7 @@ Bu türler bir formülde desteklenir:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>İşlemler
 
 Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
@@ -675,10 +675,10 @@ Bu örnekte, havuz boyutu kuyruktaki görev sayısına göre ayarlanır. Açıkl
 
 ```csharp
 // Get pending tasks for the past 15 minutes.
-$samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
+$samples = $PendingTasks.GetSamplePercent(TimeInterval_Minute * 15);
 // If we have fewer than 70 percent data points, we use the last sample point,
 // otherwise we use the maximum of last sample point and the history average.
-$tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1), avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
+$tasks = $samples < 70 ? max(0,$PendingTasks.GetSample(1)) : max( $PendingTasks.GetSample(1), avg($PendingTasks.GetSample(TimeInterval_Minute * 15)));
 // If number of pending tasks is not 0, set targetVM to pending tasks, otherwise
 // half of current dedicated.
 $targetVMs = $tasks > 0? $tasks:max(0, $TargetDedicatedNodes/2);

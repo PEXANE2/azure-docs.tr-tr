@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767679"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186879"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma
 
@@ -47,7 +47,7 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 
 ![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
-### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage 2. Nesil hesabı oluşturma
+### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage 2. hesabı oluşturma
 
 Azure Data Lake Storage 2. depolama hesabı oluşturun.
 
@@ -57,7 +57,7 @@ Azure Data Lake Storage 2. depolama hesabı oluşturun.
 1. **Oluştur**'a tıklayın.
 1. **Depolama hesabı oluştur** ekranında:
     1. Doğru aboneliği ve kaynak grubunu seçin.
-    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırma kuralları hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/architecture/best-practices/resource-naming#storage).
+    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırma kuralları hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
     1. **Gelişmiş** sekmesine tıklayın.
     1. **Data Lake Storage 2.** altındaki **hiyerarşik ad alanı** ' nın yanında **etkin** ' e tıklayın.
     1. **Gözden geçir ve oluştur**’a tıklayın.

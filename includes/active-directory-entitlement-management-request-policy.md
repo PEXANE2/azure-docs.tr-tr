@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981278"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193051"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
@@ -81,7 +81,7 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 1. Bağlı Kuruluşlarınızın tümünü seçtikten sonra **Seç**' e tıklayın.
 
     > [!NOTE]
-    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için [B2B kullanıcıları için izin verilenler veya Engellenenler davetleri belirli kuruluşlardan](../articles/active-directory/b2b/allow-deny-list.md).
+    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. [Onay](#approval) bölümüne atlayın.
 
@@ -198,7 +198,7 @@ Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şe
 
 ## <a name="enable-requests"></a>İstekleri etkinleştir
 
-1. Erişim paketinin istek ilkesindeki kullanıcılar için hemen kullanılabilir olmasını istiyorsanız, etkinleştirmek için **Evet** ' i tıklatın.
+1. Erişim paketinin istek ilkesindeki kullanıcıların istemesi için hemen kullanılabilir olmasını istiyorsanız, etkinleştir seçeneğini **Evet**olarak taşıyın.
 
     Erişim paketini oluşturma işlemi bittikten sonra bunu gelecekte etkinleştirebilirsiniz.
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372712"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201280"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-tek sunucu
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla birlikte tek bir pakette yüklenebilecek veya kaldırılabileceği tek bir pakette birden çok ilgili SQL nesnesini birlikte paketleyebilir. Veritabanına yüklendikten sonra uzantı işlevleri yerleşik özellikler gibi.
@@ -26,7 +26,7 @@ PostgreSQL için Azure veritabanı aşağıda listelenen bir anahtar uzantılar�
 Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Azure veritabanı 'nda mevcuttur. 
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantının**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -71,7 +71,7 @@ Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Az
 Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure veritabanı sunucuları 'nda mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantının**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -117,7 +117,7 @@ Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure ver
 Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantının**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -163,7 +163,7 @@ Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı**| **Uzantı sürümü** | **Açıklama** |
+> | **Uzantının**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Adres Standartlayıcı ABD veri kümesi örneği|
@@ -204,22 +204,26 @@ Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-Pg_stat_statements uzantısı, SQL deyimlerinin yürütme istatistiklerini izlemek için her PostgreSQL için Azure veritabanı sunucusuna önceden yüklenir.
+[Pg_stat_statements uzantısı](https://www.postgresql.org/docs/current/pgstatstatements.html) , SQL deyimlerinin yürütme istatistiklerini izlemek Için her PostgreSQL Için Azure veritabanı sunucusuna önceden yüklenir.
 Uzantı tarafından hangi deyimlerin sayıldığını denetleyen `pg_stat_statements.track`ayar, varsayılan olarak `top`olarak, istemciler tarafından doğrudan verilen tüm deyimler izlenir. Diğer iki izleme düzeyi `none` ve `all`. Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
 
 Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, `pg_stat_statements.track` `none`olarak ayarlamanızı öneririz. Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunmak için pg_stat_statements güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
-dblink ve postgres_fdw, bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir. PostgreSQL için Azure veritabanı sunucuları arasında bağlanmak üzere bu uzantıları kullanırken, bu, "Azure hizmetlerine erişime Izin ver" ayarı kullanılarak yapılabilir. Ayrıca, uzantıları aynı sunucuya geri dönmek için kullanmak istiyorsanız bu da gereklidir. "Azure hizmetlerine erişime Izin ver" ayarı, Postgres sunucusunun Azure portal sayfasında, bağlantı güvenliği altında bulunabilir. "Azure hizmetlerine erişime Izin ver" seçeneği açıldığında tüm Azure IP 'Leri izin verilenler listesine koyar.
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) ve [Postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) , bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir. PostgreSQL için Azure veritabanı sunucuları arasında bağlanmak üzere bu uzantıları kullanırken, bu, "Azure hizmetlerine erişime Izin ver" ayarı kullanılarak yapılabilir. Ayrıca, uzantıları aynı sunucuya geri dönmek için kullanmak istiyorsanız bu da gereklidir. "Azure hizmetlerine erişime Izin ver" ayarı, Postgres sunucusunun Azure portal sayfasında, bağlantı güvenliği altında bulunabilir. "Azure hizmetlerine erişime Izin ver" seçeneği açıldığında tüm Azure IP 'Leri izin verilenler listesine koyar.
 
 Şu anda PostgreSQL için Azure veritabanı 'na giden bağlantılar, PostgreSQL için Azure veritabanı sunucuları için bağlantılar dışında desteklenmez.
 
 ## <a name="uuid"></a>uuid
-UUID-ossp uzantısından `uuid_generate_v4()` kullanmayı planlıyorsanız performans avantajları için pgşifre uzantısından `gen_random_uuid()` ile karşılaştırmayı göz önünde bulundurun.
-
+[UUID-ossp uzantısından](https://www.postgresql.org/docs/current/uuid-ossp.html)`uuid_generate_v4()` kullanmayı planlıyorsanız performans avantajları için [pgşifre uzantısından](https://www.postgresql.org/docs/current/pgcrypto.html) `gen_random_uuid()` ile karşılaştırmayı göz önünde bulundurun.
 
 ## <a name="pgaudit"></a>pgAudit
-PgAudit uzantısı, oturum ve nesne denetim günlüğü sağlar. Bu uzantıyı PostgreSQL için Azure veritabanı 'nda nasıl kullanacağınızı öğrenmek için [Denetim kavramları makalesini](concepts-audit.md)ziyaret edin. 
+[Pgaudit uzantısı](https://github.com/pgaudit/pgaudit/blob/master/README.md) , oturum ve nesne denetim günlüğü sağlar. Bu uzantıyı PostgreSQL için Azure veritabanı 'nda nasıl kullanacağınızı öğrenmek için [Denetim kavramları makalesini](concepts-audit.md)ziyaret edin. 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+Pg_prewarm uzantısı, ilişkisel verileri önbelleğe yükler. Önbellekler önceden ısındıktan sonra, bir yeniden başlatmanın ardından sorgularınızın ilk çalıştırmaları için daha iyi yanıt süresi olduğu anlamına gelir. Postgres 10 ve sonrasında, ön [sıcak işlevi](https://www.postgresql.org/docs/10/pgprewarm.html)kullanılarak el ile yapılır.
+
+Postgres 11 ve üzeri sürümlerde, önısını [otomatik olarak](https://www.postgresql.org/docs/current/pgprewarm.html)gerçekleşecek şekilde yapılandırabilirsiniz. Pg_prewarm `shared_preload_libraries` parametresinin listesine eklemeniz ve değişikliği uygulamak için sunucuyu yeniden başlatmanız gerekir. Parametreler [Azure Portal](howto-configure-server-parameters-using-portal.md), [CLI](howto-configure-server-parameters-using-cli.md), REST API veya ARM şablonundan ayarlanabilir. 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB, PostgreSQL için bir uzantı olarak paketlenmiş bir zaman serisi veritabanıdır. TimescaleDB zamana dayalı analitik işlevler, iyileştirmeler ve zaman serisi iş yükleri için Postgres ölçekleme sağlar.

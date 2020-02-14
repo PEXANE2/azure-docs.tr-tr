@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443822"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201739"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -38,8 +38,8 @@ Yönetilen örnek, temel altyapıyı ve mimarisine bağlı olan özelliklere ve 
 | En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 TB | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
-> - 4\. nesil donanım kullanıma alınıyor. 5. nesil donanımında yeni yönetilen örnekler dağıtmanız önerilir.
-> - 4\. nesil donanım Şu anda yalnızca şu bölgelerde kullanılabilir: Kuzey Avrupa, Batı Avrupa, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Batı ABD 2, Orta ABD, Kanada Orta, Güney Hindistan, Güneydoğu Asya ve Kore Orta.
+> - 4\. nesil donanım kullanıma alınıyor ve Yeni dağıtımlar için artık kullanılamıyor. Tüm yeni yönetilen örneklerin 5. nesil donanımında dağıtılması gerekir.
+> - Daha geniş bir sanal çekirdek ve depolama ölçeklenebilirliği, hızlandırılmış ağ, en iyi GÇ performansı ve en düşük gecikme süresine sahip olmak için [yönetilen örneklerinizi Gen 5 donanımına taşımayı](sql-database-service-tiers-vcore.md) göz önünde bulundurun.
 
 ### <a name="in-memory-oltp-available-space"></a>Bellek içi OLTP kullanılabilir alanı 
 
@@ -99,7 +99,7 @@ Genel Amaçlı hizmet katmanında her veritabanı dosyası, dosya boyutuna bağl
 | Dosya boyutu           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Dosya başına ıOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
-| Dosya başına aktarım hızı | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MiB/sn | 250 MiB/sn | 480 MIB/sn | 
+| Dosya başına aktarım hızı | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MIB/sn | 250 MIB/sn | 480 MIB/sn | 
 
 Bazı veritabanı dosyasında yüksek GÇ gecikme süresi fark ederseniz veya ıOPS/aktarım hızının sınıra ulaşdığına görürseniz, [dosya boyutunu artırarak](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)performansı artırabilirsiniz.
 

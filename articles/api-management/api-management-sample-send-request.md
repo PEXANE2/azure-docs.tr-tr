@@ -1,6 +1,6 @@
 ---
-title: HTTP istekleri oluşturmak için API Management hizmeti kullanarak
-description: Dış hizmetler, API çağrısı için API Yönetimi'nde istek ve yanıt ilkelerini kullanmayı öğrenin
+title: HTTP istekleri oluşturmak için API Management hizmetini kullanma
+description: API 'nizden dış Hizmetleri çağırmak için API Management istek ve yanıt ilkelerini kullanmayı öğrenin
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557958"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190005"
 ---
-# <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management hizmetinden dış hizmetler kullanma
-Azure API Management hizmetinde kullanılabilir ilkeleri faydalı iş tamamen gelen istek, giden yanıt ve temel yapılandırma bilgilerini göre çeşitli işlemleri gerçekleştirebilirsiniz. Ancak, API Yönetimi'nden dış hizmetlerle etkileşim için ilkeleri açılır daha fazla fırsatlarının.
+# <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management Service 'ten dış hizmetler kullanma
+Azure API Management hizmetinde kullanılabilen ilkeler, yalnızca gelen istek, giden yanıt ve temel yapılandırma bilgilerini temel alan çok sayıda kullanışlı iş gerçekleştirebilir. Ancak API Management ilkelerden, dış hizmetlerle etkileşime girebilmek birçok fırsat daha açar.
 
-İle etkileşim kurmak nasıl daha önce gördünüz [günlüğe kaydetme, izleme ve analiz için Azure olay hub'ı hizmet](api-management-log-to-eventhub-sample.md). Bu makalede, dış bir HTTP tabanlı hizmetle etkileşim kurmanıza imkan tanıyan ilkelerin gösterilmektedir. Bu ilkeler, uzak olaylarını tetiklemek ya da özgün istek ve yanıt bir şekilde işlemek için kullanılan bilgi almak için kullanılabilir.
+[Azure Event hub hizmeti ile günlüğe kaydetme, izleme ve analiz için](api-management-log-to-eventhub-sample.md)nasıl etkileşim kuracağınızı daha önce gördünüz. Bu makalede, herhangi bir dış HTTP tabanlı hizmetle etkileşime girebilmeniz için ilkeler gösterilmektedir. Bu ilkeler, uzak olayları tetiklemek veya özgün isteği ve yanıtı bir şekilde işlemek için kullanılan bilgileri almak için kullanılabilir.
 
-## <a name="send-one-way-request"></a>Bir şekilde İsteği Gönder
-Muhtemelen en basit dış tür önemli olay bildirim almak bir dış hizmet veren istek Başlat ve unut stilini etkileşimidir. Denetim akışı İlkesi `choose` ilgilendiğiniz koşul herhangi bir türden algılamak için kullanılabilir.  Koşul gerçekleştirilirse, dış bir HTTP isteği kullanarak yapabileceğiniz [bir şekilde isteği gönderme](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) ilkesi. Destek gerektiren kritik olayları için şuna benzer PagerDuty veya bu istek Hipchat veya Slack veya SendGrid veya MailChimp gibi bir posta API gibi bir Mesajlaşma sistemi olabilir. Bu ileti sistemlerini çağrılabilir basit HTTP API'si sahiptir.
+## <a name="send-one-way-request"></a>Tek yönlü Istek gönder
+Büyük olasılıkla en basit dış etkileşim, bir dış hizmetin bazı önemli olay türlerini bilgilendirilmesine olanak tanıyan bir istek olan yangın ve unutma stilidir. Denetim akışı ilkesi `choose` ilgilendiğiniz her türlü koşulu algılamak için kullanılabilir.  Koşul karşılanmıyorsa, [tek yönlü istek temelli istek](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) ilkesini kullanarak dış http isteği yapabilirsiniz. Bu, HipChat veya bolluk gibi bir mesajlaşma sistemine veya SendGrid ya da MailChimp gibi bir posta API 'sine ya da Pagerharcı gibi kritik destek olaylarına yönelik bir istek olabilir. Bu mesajlaşma sistemlerinin tümünde çağrılabilecek basit HTTP API 'Leri vardır.
 
-### <a name="alerting-with-slack"></a>Slack ile uyarı
-Aşağıdaki örnek, HTTP yanıtı durum kodunun en az 500 ise, Slack sohbet odası için bir ileti göndermek nasıl gösterir. Bir 500 aralığı hata istemci API'ın kendilerine çözümlenemiyor arka uç API ile ilgili bir sorun olduğunu gösterir. Genellikle, API Management bölümünde müdahale tür gerektirir.  
+### <a name="alerting-with-slack"></a>Bolluk ile uyarma
+Aşağıdaki örnek, HTTP yanıt durum kodu 500 ' den büyük veya buna eşitse bir bolluk sohbet odasına nasıl ileti gönderileceğini gösterir. 500 Aralık hatası, API 'nin istemcisinin kendini çözemediğini arka uç API 'SI ile ilgili bir sorun olduğunu gösterir. Genellikle API Management parça üzerinde bazı tür bir müdahale gerektirir.  
 
 ```xml
 <choose>
@@ -57,31 +57,31 @@ Aşağıdaki örnek, HTTP yanıtı durum kodunun en az 500 ise, Slack sohbet oda
 </choose>
 ```
 
-Slack, gelen web kancaları kavramı vardır. Gelen web kancasını yapılandırırken, Slack, basit bir POST isteği yapmak ve bir Slack kanalına ileti geçmesine izin veren özel bir URL oluşturur. Oluşturduğunuz JSON gövdesi Slack tarafından tanımlanan bir biçimini temel alır.
+Bolluk, gelen Web kancaları kavramını içerir. Bir gelen Web kancası yapılandırırken, bolluk basit bir POST isteği yapmanıza ve bir iletiyi bolluk kanalına iletmenize olanak tanıyan özel bir URL oluşturur. Oluşturduğunuz JSON gövdesi, bolluk tarafından tanımlanan bir biçime dayanır.
 
-![Slack Web kancası](./media/api-management-sample-send-request/api-management-slack-webhook.png)
+![Bolluk Web kancası](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
-### <a name="is-fire-and-forget-good-enough"></a>Ateş ve yeterli unuttunuz mu?
-İsteği Başlat ve unut stilini kullanırken bazı ödünler vardır. Sonra da başarısız olması bildirilmedi bıraktıysanız için istek başarısız olur. Bu belirli durumda, sistem ve ek performans maliyetini yanıt bekleyen raporlama ikincil bir hataya neden karmaşıklığı izin yok. Yanıtı denetlemek için gerekli olduğu senaryolar için sonra [gönderme isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilke daha iyi bir seçenektir.
+### <a name="is-fire-and-forget-good-enough"></a>Ateştir ve yeterince iyi unutur.
+İstek için bir ateş ve unutma stili kullanılırken belirli bir denge vardır. Bir nedenden dolayı istek başarısız olursa, hata bildirilmemiştir. Bu durumda, ikincil hata raporlama sistemine sahip olmanın karmaşıklığı ve yanıt için bekleyen ek performans maliyeti garanti edilmez. Yanıtın denetlenmesi gereken senaryolarda, [gönderme isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilkesi daha iyi bir seçenektir.
 
-## <a name="send-request"></a>Gönderme isteği
-`send-request` İlke etkinleştirir karmaşık işleme işlevleri gerçekleştiren ve verileri API management hizmet döndürmek için bir dış hizmet kullanarak daha fazla ilke işleme için kullanılabilir.
+## <a name="send-request"></a>Gönderme Isteği
+`send-request` ilkesi, karmaşık işleme işlevleri gerçekleştirmek ve daha fazla ilke işleme için kullanılabilecek API Yönetimi hizmetine veri döndürmek için bir dış hizmet kullanılmasını sağlar.
 
-### <a name="authorizing-reference-tokens"></a>Başvuru belirteçleri yetkilendirme
-API Management'ın önemli bir işlev, arka uç kaynaklarına korumaktır. API'niz tarafından kullanılan yetkilendirme sunucusu oluşturursa [JWT belirteçleri](https://jwt.io/) kendi OAuth2 akışının parçası olarak olarak [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) mu kullanabileceğiniz sonra `validate-jwt` belirtecin geçerliliğini doğrulamak için ilke. Bazı yetkilendirme sunucusu adı verilir oluşturmak [başvuru belirteçleri](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , doğrulanamıyor yetkilendirme sunucusu için bir geri çağırma işlemini yapmadan.
+### <a name="authorizing-reference-tokens"></a>Başvuru belirteçlerini yetkilendirme
+API Management büyük bir işlevi arka uç kaynaklarını koruuyor. API 'niz tarafından kullanılan yetkilendirme sunucusu, [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) olduğu gibi, OAuth2 akışının bir parçası olarak [JWT belirteçleri](https://jwt.io/) oluşturursa, belirtecin geçerliliğini doğrulamak için `validate-jwt` ilkesini kullanabilirsiniz. Bazı yetkilendirme sunucuları, yetkilendirme sunucusuna geri çağırma yapılmadan doğrulanamayan [başvuru belirteçleri](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) olarak adlandırılır.
 
 ### <a name="standardized-introspection"></a>Standartlaştırılmış iç denetim
-Geçmişte, yetkilendirme sunucusu bir başvuru belirteçle doğrulama hiçbir standartlaştırılmış bir yol olmuştur. Ancak en son önerilen standart [RFC 7662](https://tools.ietf.org/html/rfc7662) nasıl bir kaynak sunucuda bir belirtecin geçerliliğini doğrulayabilirsiniz tanımlar IETF tarafından yayımlandı.
+Geçmişte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak için standartlaştırılmış bir yöntem yoktu. Ancak, son öneren standart [RFC 7662](https://tools.ietf.org/html/rfc7662) , bir kaynak sunucunun bir belirtecin geçerliliğini nasıl DOĞRULAYABILECEĞINI tanımlayan IETF tarafından yayımlanmıştır.
 
 ### <a name="extracting-the-token"></a>Belirteç ayıklanıyor
-İlk adım yetkilendirme üst bilgisinden ayıklamaktır belirteç. Üst bilgi değeri ile biçimlendirilmelidir `Bearer` Yetkilendirme düzeni, tek bir boşluk ve yetkilendirme belirteci olarak başına [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Ne yazık ki burada Yetkilendirme düzeni atlanırsa durumlar vardır. Ayrıştırılırken bu hesap için API Management üstbilgi değeri bir alana ayırır ve dizeleri döndürülen diziden son dizeyse seçer. Bu, hatalı biçimlendirilmiş yetkilendirme üstbilgileri için geçici bir çözüm sağlar.
+İlk adım, yetkilendirme başlığından belirteci ayıklamaya yönelik olur. Üst bilgi değeri, `Bearer` yetkilendirme şeması, tek bir boşluk ve sonra, [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1)başına yetkilendirme belirteci ile biçimlendirilmelidir. Ne yazık ki yetkilendirme şemasının atlanamadığı durumlar vardır. Ayrıştırılırken bu için hesap için, API Management bir boşluk üzerinde üst bilgi değerini böler ve döndürülen dize dizisinden son dizeyi seçer. Bu, hatalı biçimlendirilen Yetkilendirme üstbilgileri için geçici bir çözüm sağlar.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 ```
 
-### <a name="making-the-validation-request"></a>Doğrulama isteği yapan
-API yönetimi, API Management yetkilendirme belirteci aldığında, belirteci doğrulamak için istekte bulunabilirsiniz. RFC 7662 bu işlemi iç denetim çağırır ve gerektiren, `POST` iç denetim kaynak için bir HTML formu. HTML formu anahtarla en az bir anahtar/değer çifti içermelidir `token`. Bu istek için yetkilendirme sunucusu Ayrıca, kötü amaçlı istemciler için geçerli belirteçleri trawling Git olamaz emin olmak için kimliğinin doğrulanması gerekir.
+### <a name="making-the-validation-request"></a>Doğrulama isteği yapılıyor
+API Management, yetkilendirme belirtecine sahip olduktan sonra, API Management belirteci doğrulama isteğinde bulunabilir. RFC 7662 bu işlemi iç denetim çağırır ve iç denetim kaynağına bir HTML formu `POST` gerektirir. HTML formu en azından anahtar `token`bir anahtar/değer çifti içermelidir. Kötü amaçlı istemcilerin geçerli belirteçler için gidemediğinden emin olmak için, yetkilendirme sunucusuna yönelik bu isteğin de kimliği doğrulanmalıdır.
 
 ```xml
 <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
@@ -98,12 +98,16 @@ API yönetimi, API Management yetkilendirme belirteci aldığında, belirteci do
 ```
 
 ### <a name="checking-the-response"></a>Yanıt denetleniyor
-`response-variable-name` Özniteliği erişim döndürülen yanıt vermek için kullanılır. Bu özelliği içinde tanımlı adı bir anahtar olarak kullanılan `context.Variables` erişmek için sözlük `IResponse` nesne.
+Döndürülen yanıta erişim vermek için `response-variable-name` özniteliği kullanılır. Bu özellikte tanımlanan ad, `IResponse` nesnesine erişmek için `context.Variables` sözlüğüne bir anahtar olarak kullanılabilir.
 
-Yanıt nesneden gövdesi alabilir ve RFC 7622 söyler API Management yanıt bir JSON nesnesi olmalıdır ve adlı en az bir özellik içermelidir `active` diğer bir deyişle bir Boole değeri. Zaman `active` belirtecin geçerli kabul geçerlidir.
+Yanıt nesnesinden gövdeyi alabilir ve RFC 7622, yanıtın bir JSON nesnesi olması gerektiğini API Management ve en az bir Boole değeri olan `active` adlı bir özellik içermesi gerektiğini belirtir. `active` true olduğunda, belirteç geçerli kabul edilir.
 
-### <a name="reporting-failure"></a>Hata Raporlama
-Kullanabileceğiniz bir `<choose>` belirteç geçersiz olduğu ve bu durumda, algılamak için ilke 401 yanıtı döndürür.
+Alternatif olarak, belirtecin geçerli olup olmadığını belirtmek için yetkilendirme sunucusu "etkin" alanını içermiyorsa, geçerli bir belirteçte hangi özelliklerin ayarlandığını belirlemek için Postman gibi bir araç kullanın. Örneğin, geçerli bir belirteç yanıtı "expires_in" adlı bir özellik içeriyorsa, bu özellik adının yetkilendirme sunucusu yanıtında bu şekilde mevcut olup olmadığını denetleyin:
+
+koşul = "@ (((IResponse) bağlamında <. Değişkenler ["tokenstate"]). Body.As<JObject>(). Özellik ("expires_in") = = null) ">
+
+### <a name="reporting-failure"></a>Raporlama hatası
+Belirtecin geçersiz olup olmadığını algılamak için bir `<choose>` İlkesi kullanabilirsiniz ve bu durumda, 401 yanıtı döndürür.
 
 ```xml
 <choose>
@@ -118,10 +122,10 @@ Kullanabileceğiniz bir `<choose>` belirteç geçersiz olduğu ve bu durumda, al
 </choose>
 ```
 
-Olarak başına [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) açıklayan nasıl `bearer` belirteçleri kullanılmalıdır, API Management ayrıca döndürür bir `WWW-Authenticate` 401 yanıt üst bilgisi. WWW-Authenticate amacı bir istemcide düzgün yetkili isteğinin nasıl oluşturulduğunun bildirin. Çeşitli yaklaşımlar OAuth2 framework ile olası nedeniyle, gerekli tüm bilgileri iletişim kurmak zordur. Neyse ki devam ettiği yardımcı olmak için çaba vardır [istemcileri bulmak nasıl düzgün bir şekilde istekleri kaynak sunucuya yetki vereceğiniz](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+`bearer` belirteçlerinin nasıl kullanılacağını açıklayan [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) ' ye kadar API Management Ayrıca 401 yanıtını içeren bir `WWW-Authenticate` üstbilgisi de döndürür. WWW-Authenticate, bir istemciyi düzgün şekilde yetkilendirilmiş bir istek oluşturma konusunda size bildirmek üzere tasarlanmıştır. OAuth2 çerçevesiyle mümkün olan çok çeşitli yaklaşımlar nedeniyle, gereken tüm bilgileri iletmek zordur. Neyse ki [İstemcilerin bir kaynak sunucusuna istekleri düzgün bir şekilde nasıl yetkilendirebileceği](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)konusunda yardımcı olmaya yönelik çalışmalar vardır.
 
 ### <a name="final-solution"></a>Son çözüm
-Sonunda, şu ilkeyi alın:
+Sonunda aşağıdaki ilkeyi alırsınız:
 
 ```xml
 <inbound>
@@ -157,32 +161,32 @@ Sonunda, şu ilkeyi alın:
 </inbound>
 ```
 
-Bu birçok örneği nasıl yalnızca biri olan `send-request` ilke yararlı dış hizmetlerden isteklerin ve yanıtların API Management hizmeti aracılığıyla akan sürecinizle tümleştirerek için kullanılabilir.
+Bu, `send-request` ilkesinin, yararlı dış Hizmetleri, API Management hizmeti üzerinden akan istek ve yanıt sürecinde bütünleştirmek için nasıl kullanılabileceğinizi gösteren birçok örnekten biridir.
 
-## <a name="response-composition"></a>Yanıt oluşturma
-`send-request` İlkesi, önceki örnekte gördüğünüz veya bir tam değiştirme için arka uç çağrının kullanılabilir bir arka uç sistemine birincil bir istek geliştirme için kullanılabilir. Bu tekniği kullanarak birden çok farklı sistemlerden toplanan bileşik kaynakları kolayca oluşturabilirsiniz.
+## <a name="response-composition"></a>Yanıt kompozisyonu
+`send-request` ilkesi, önceki örnekte gördüğünüz gibi bir arka uç sistemine birincil isteği geliştirmek için veya arka uç çağrısının tamamen yerini alacak şekilde kullanılabilir. Bu tekniği kullanarak, birden çok farklı sistemden toplanmış bileşik kaynakları kolayca oluşturabilirsiniz.
 
-### <a name="building-a-dashboard"></a>Bir pano oluşturma
-Bazen birden fazla arka uç sistemleri, örneğin mevcut bilgi göstermek için bir panoyu desteklemek üzere yönetebilmek istiyorsunuz. KPI'ları tüm farklı arka uçları, gelir, ancak bunları doğrudan erişim sağlamak için değil tercih ve tüm bilgileri tek bir istekte almışsa de iyi olurdu. Belki de arka uç bilgilerden bazılarını gereken bazı dilimleme ve ayrıntılı olarak incelemenin ve biraz önce temizlenirken! Bu bileşik kaynak önbellek için yeterli performansa sahip olmayan kullanıcıların ölçümleri değiştirirseniz görmek için F5 tuşuna sözcüğüne, bir alýþkanlýk kullanıcınız bildiğiniz gibi arka uç yükü azaltmak bir yararlı olacaktır.    
+### <a name="building-a-dashboard"></a>Pano oluşturma
+Bazen birden fazla arka uç sisteminde bulunan bilgileri (örneğin, bir panoyu) açığa çıkarmak isteyebilirsiniz. KPI 'ler tüm farklı arka uçlardan gelir, ancak bunlara doğrudan erişim sağlamamayı tercih edersiniz, ancak tüm bilgiler tek bir istekte alınacaksa bu iyi bir durum olabilir. Arka uç bilgilerden bazılarının bazı Dilimleme ve sözlük ve ilk olarak küçük bir temizleme yapması gerekir! Kullanıcıların, düşük performanslı ölçümlerinin değişebilir olup olmadığını görmek için, kullanıcının, F5 tuşunu aşağı bir şekilde değiştirip değiştiremediğini bildiğiniz için, arka uç yükünü azaltmak yararlı olacaktır.    
 
-### <a name="faking-the-resource"></a>Kaynak faking
-Pano kaynak oluşturmak için ilk adım, Azure portalında yeni bir işlem yapılandırmaktır. Dinamik kaynak oluşturmak için bir bileşim İlkesi yapılandırmak için kullanılan bir yer tutucu işlemdir.
+### <a name="faking-the-resource"></a>Kaynağa göz yorma
+Pano kaynağını oluşturmanın ilk adımı Azure portal yeni bir işlem yapılandırmaktır. Bu, dinamik kaynağı oluşturmak üzere bir bileşim ilkesi yapılandırmak için kullanılan bir yer tutucu işlemidir.
 
 ![Pano işlemi](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
 
-### <a name="making-the-requests"></a>İstekler yapma
-İşlem oluşturulduktan sonra bu işlem için özel bir ilke yapılandırabilirsiniz. 
+### <a name="making-the-requests"></a>İstekleri yapma
+İşlem oluşturulduktan sonra, bu işlem için özel olarak bir ilke yapılandırabilirsiniz. 
 
 ![Pano işlemi](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
-Arka uç için iletme ilk adımı gelen istekte, sorgu parametreleri ayıklamak için böylelikle. Bu örnekte, Pano bir sürede temel bilgilerini gösterir ve bu nedenle bir `fromDate` ve `toDate` parametresi. Kullanabileceğiniz `set-variable` ilke isteği URL'den bilgileri ayıklamak için.
+İlk adım, gelen istekten herhangi bir sorgu parametresi ayıklayarak bunları arka uca iletebilmeniz için kullanılır. Bu örnekte, Pano bir zaman dilimine göre bilgileri gösteriyor ve bu nedenle `fromDate` ve `toDate` parametresine sahip. İstek URL 'sindeki bilgileri ayıklamak için `set-variable` ilkesini kullanabilirsiniz.
 
 ```xml
 <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
 <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
 ```
 
-Bu bilgi aldıktan sonra tüm arka uç sistemlerine isteğinde bulunabilir. Her istek parametre bilgileri içeren yeni bir URL oluşturur ve ilgili kendi sunucusuna çağırır ve yanıt bir bağlam değişkeninde depolar.
+Bu bilgileri aldıktan sonra, tüm arka uç sistemlerine istek yapabilirsiniz. Her istek, parametre bilgilerine sahip yeni bir URL oluşturur ve ilgili sunucusunu çağırır ve yanıtı bir bağlam değişkenine depolar.
 
 ```xml
 <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
@@ -206,10 +210,10 @@ Bu bilgi aldıktan sonra tüm arka uç sistemlerine isteğinde bulunabilir. Her 
 </send-request>
 ```
 
-Bu istekler ideal değil sırayla yürütülür. 
+Bu istekler, ideal olmayan sırayla yürütülür. 
 
-### <a name="responding"></a>Yanıt
-Bileşik yanıt oluşturmak için kullanabileceğiniz [döndürülecek yanıt](/azure/api-management/api-management-advanced-policies#ReturnResponse) ilkesi. `set-body` Öğesi yeni oluşturmak için bir ifade kullanabilirsiniz `JObject` özellikleri olarak katıştırılmış bileşen gösterimler ile.
+### <a name="responding"></a>Başlamasına
+Bileşik yanıtı oluşturmak için, [Return-Response](/azure/api-management/api-management-advanced-policies#ReturnResponse) ilkesini kullanabilirsiniz. `set-body` öğesi, özellikler olarak gömülü tüm bileşen temsillerine sahip yeni bir `JObject` oluşturmak için bir ifade kullanabilir.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -227,7 +231,7 @@ Bileşik yanıt oluşturmak için kullanabileceğiniz [döndürülecek yanıt](/
 </return-response>
 ```
 
-Tüm ilke şu şekilde görünür:
+Tüm ilke aşağıdaki gibi görünür:
 
 ```xml
 <policies>
@@ -279,8 +283,8 @@ Tüm ilke şu şekilde görünür:
 </policies>
 ```
 
-Yer tutucu işlemi yapılandırmada en az bir saat için önbelleğe alınacak Pano kaynak yapılandırabilirsiniz. 
+Yer tutucu işleminin yapılandırmasında, pano kaynağını en az bir saat için önbelleğe alınacak şekilde yapılandırabilirsiniz. 
 
 ## <a name="summary"></a>Özet
-Azure API Management hizmeti, HTTP trafiğini seçmeli olarak uygulanabilir esnek ilkeleri sağlar ve arka uç hizmetleri oluşturma sağlar. Uyarı işlevleri, doğrulama, doğrulama özellikleri ile API ağ geçidi geliştirmek veya birden fazla arka uç hizmetlerini temel alarak yeni bileşik kaynakları oluşturmak isteyip istemediğinizi `send-request` ve ilgili ilkeler olasılıklar oluşan bir dünyaya açın.
+Azure API Management hizmeti, HTTP trafiğine seçmeli olarak uygulanabilen ve arka uç hizmetleri oluşturmayı sağlayan esnek ilkeler sağlar. API ağ geçidinizi uyarı işlevleri, doğrulama, doğrulama özellikleri ile geliştirmek veya birden fazla arka uç hizmetine göre yeni bileşik kaynaklar oluşturmak isteyip istemediğiniz, `send-request` ve ilgili ilkeler bir olanaklar dünyasını açar.
 

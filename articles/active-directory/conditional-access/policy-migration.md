@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846189"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185919"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Koşullu erişim klasik ilke geçişi
 
@@ -89,7 +89,7 @@ Klasik ilkeleriniz çeşitli koşullar içeriyorsa, tek bir yeni ilkeye birleşt
 
 ![Koşullu erişim koşulları](./media/policy-migration/16.png)
  
-İstemci uygulamaları koşulu olarak **Exchange Active Sync** içeren Office 365 Exchange Online için [uygulama tabanlı](technical-reference.md#approved-client-app-requirement) klasik ilkeler **desteklenen** ve **Desteklenmeyen** [cihaz platformlarına](technical-reference.md#device-platform-condition)izin verir. İlişkili yeni ilkede ayrı cihaz platformları yapılandıramamanıza karşın, desteği yalnızca [desteklenen cihaz platformlarıyla](technical-reference.md#device-platform-condition) sınırlayabilirsiniz. 
+İstemci uygulamaları koşulu olarak **Exchange Active Sync** içeren Office 365 Exchange Online için uygulama tabanlı klasik ilkeler **desteklenen** ve **Desteklenmeyen** cihaz platformlarına izin verir. İlişkili yeni ilkede ayrı cihaz platformları yapılandıramamanıza karşın, desteği yalnızca [desteklenen cihaz platformlarıyla](concept-conditional-access-conditions.md#device-platforms) sınırlayabilirsiniz. 
 
 ![Koşullu erişim Exchange ActiveSync seçin](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ Bu durumda, klasik ilkelerinizi her iki gereksinimin de seçildiği yeni bir ilk
 
 ### <a name="device-platforms"></a>Cihaz platformları
 
-[Uygulama tabanlı denetimlerle](technical-reference.md#approved-client-app-requirement) klasik ilkeler, [Cihaz platformu koşulu](technical-reference.md#device-platform-condition)olarak iOS ve Android ile önceden yapılandırılmıştır. 
+Uygulama tabanlı denetimlerle klasik ilkeler, cihaz platformu koşulu olarak iOS ve Android ile önceden yapılandırılmıştır. 
 
-Yeni bir ilkede, desteklemek istediğiniz [cihaz platformlarını](technical-reference.md#device-platform-condition) tek tek seçmeniz gerekir.
+Yeni bir ilkede, desteklemek istediğiniz [cihaz platformlarını](concept-conditional-access-conditions.md#device-platforms) tek tek seçmeniz gerekir.
 
 ![Koşullu erişim cihaz platformları seçimi](./media/policy-migration/41.png)
 

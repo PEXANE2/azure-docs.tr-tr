@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112583"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190981"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET uygulamasından Azure Bilişsel Arama kullanma
 
@@ -462,7 +462,7 @@ public partial class Hotel
 > 
 > 
 
-Dikkat edilecek ikinci şey, her bir özellik `IsFilterable`, `IsSearchable`, `Key`ve `Analyzer`gibi özniteliklerle tasarlanmalıdır. Bu öznitelikler, [bir Azure bilişsel arama dizininde karşılık gelen alan özniteliklerine](https://docs.microsoft.com/rest/api/searchservice/create-index#request)doğrudan eşlenir. `FieldBuilder` sınıfı, dizin için alan tanımları oluşturmak üzere bu özellikleri kullanır.
+Dikkat edilecek ikinci şey, her bir özellik `IsFilterable`, `IsSearchable`, `Key`ve `Analyzer`gibi özniteliklerle tasarlanmalıdır. Bu öznitelikler, [bir Azure bilişsel arama dizininde karşılık gelen alan özniteliklerine](/rest/api/searchservice/create-index)doğrudan eşlenir. `FieldBuilder` sınıfı, dizin için alan tanımları oluşturmak üzere bu özellikleri kullanır.
 
 `Hotel` sınıfıyla ilgili üçüncü önemli şey, genel özelliklerin veri türleridir. Bu özelliklerin .NET türleri, dizin tanımında eşdeğer alan türleriyle eşlenir. Örneğin, `Category` dize özelliği `category` türündeki `Edm.String` alanına eşlenir. `bool?`, `Edm.Boolean`, `DateTimeOffset?`ve `Edm.DateTimeOffset` arasında benzer tür eşlemeleri vardır. Tür eşlemesine yönelik belirli kurallar, [Azure bilişsel arama .NET SDK başvurusunda](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)`Documents.Get` yöntemiyle belgelenmiştir. `FieldBuilder` sınıfı sizin için bu eşlemeyi üstlenir, ancak herhangi bir serileştirme sorununa sorun gidermeniz gerektiğinde anlaşılması yararlı olabilir.
 

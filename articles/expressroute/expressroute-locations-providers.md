@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: f8aa7c689379b73187349c3e6ee2a4658064ed7d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 1f042e12c0069e68d9008c3e520331766a92e7dd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163152"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186960"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -85,7 +85,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Busan** | [LG CNS](https://www.lgcns.com/datacenter) | 2 | Kore Güney | yok | LG CNS |
 | **Kanberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Avustralya Orta | 10G, 100G | CDC |
 | **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Avustralya Orta 2| 10G, 100G | CDC |
-| **Cape Town** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Güney Afrika Batı | 'Yi | Internet Solutions - Cloud Connect, Liquid Telecom, Teraco |
+| **Cape Town** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Güney Afrika Batı | 'Yi | BCX, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, Teraco |
 | **Chennai** | Tata Communications | 2 | Güney Hindistan | 'Yi | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Chennai2** | Airtel | 2 | Güney Hindistan | yok | Airtel |
 | **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | Orta Kuzey ABD | 10G, 100G | Aryaka Networks, & T Netbono, CenturyLink Cloud Connect, Geregix, Colt, Comcast, Coresıte, Equinix, Intercloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCFA Global Limited, Sprint, Telia taşıyıcısı, Verizon, Zayo |

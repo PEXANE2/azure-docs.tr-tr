@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161724"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186809"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
 
@@ -33,21 +33,20 @@ API’ler hakkında daha fazla bilgi için [Üretici API’si](https://kafka.apa
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight 3,6 Apache Kafka. HDInsight kümesinde Kafka oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md).
-
+* HDInsight kümesinde Apache Kafka. Küme oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md).
 * [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks) veya OpenJDK gibi bir eşdeğer.
-
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
-
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* PuTTY gibi bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Örnek uygulama, [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) konumunda `Producer-Consumer` alt dizininde bulunur. Uygulama öncelikli olarak dört dosyadan oluşur:
+Örnek uygulama, [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) konumunda `Producer-Consumer` alt dizininde bulunur. **Kurumsal güvenlik paketi (ESP)** etkin Kafka kümesi kullanıyorsanız, `DomainJoined-Producer-Consumer` alt dizininde bulunan uygulama sürümünü kullanmanız gerekir.
 
+Uygulama öncelikli olarak dört dosyadan oluşur:
 * `pom.xml`: Bu dosya, proje bağımlılıklarını, Java sürümünü ve paketleme yöntemlerini tanımlar.
 * `Producer.java`: Bu dosya, üretici API’sini kullanarak Kafka’ya rastgele tümceler gönderir.
 * `Consumer.java`: Bu dosya, tüketici API’sini kullanarak Kafka’dan verileri okur ve STDOUT’a yayar.
+* `AdminClientWrapper.java`: Bu dosya, Kafka konularını oluşturmak, anlatmak ve silmek için yönetim API 'sini kullanır.
 * `Run.java`: Üretici ve tüketici kodunu çalıştırmak için kullanılan komut satırı arabirimi.
 
 ### <a name="pomxml"></a>Pom.xml
@@ -116,9 +115,11 @@ Bu kodda tüketici, konu başlangıcından okumak üzere yapılandırılmıştı
 
 ## <a name="build-and-deploy-the-example"></a>Örnek derleme ve dağıtma
 
+Bu adımı atlamak isterseniz, önceden oluşturulmuş jar dosyaları dışındaki `Prebuilt-Jars` alt dizininden indirilebilir. Kafka-Producer-Consumer. jar dosyasını indirin. Kümeniz **Kurumsal güvenlik paketi (ESP)** etkinse, Kafka-Producer-Consumer-ESP. jar kullanın. Jar dosyasını HDInsight kümenize kopyalamak için adım 3 ' ü yürütün.
+
 1. [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)örnekleri indirip ayıklayın.
 
-2. Geçerli dizininizi `hdinsight-kafka-java-get-started\Producer-Consumer` Directory konumuna ayarlayın ve şu komutu kullanın:
+2. Geçerli dizininizi `hdinsight-kafka-java-get-started\Producer-Consumer` dizininin konumuna ayarlayın. **Kurumsal güvenlik paketi (ESP)** etkin Kafka kümesi kullanıyorsanız, konumu `DomainJoined-Producer-Consumer`alt dizine ayarlamanız gerekir. Uygulamayı derlemek için aşağıdaki komutu kullanın:
 
     ```cmd
     mvn clean package
@@ -140,29 +141,12 @@ Bu kodda tüketici, konu başlangıcından okumak üzere yapılandırılmıştı
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/)'yi yükler. Açık SSH bağlantısından `jq`yüklemek için aşağıdaki komutu girin:
+1. Kafka Broker konaklarına sahip olmak için, aşağıdaki komutta `<clustername>` ve `<password>` değerlerini yerine koyun ve yürütün. Azure portal gösterildiği gibi `<clustername>` için aynı büyük/küçük harf kullanın. `<password>` küme oturum açma parolasıyla değiştirip yürütün:
 
     ```bash
     sudo apt -y install jq
-    ```
-
-1. Parola değişkenini ayarlayın. `PASSWORD`, küme oturum açma parolasıyla değiştirin, ardından şu komutu girin:
-
-    ```bash
-    export password='PASSWORD'
-    ```
-
-1. Doğru şekilde oluşturulmuş küme adını ayıklayın. Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir. Bu komut gerçek büyük küçük harf elde eder ve bir değişkende depolar. Aşağıdaki komutu kullanın:
-
-    ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    ```
-    > [!Note]  
-    > Bu işlemi küme dışından yapıyorsanız, küme adını depolamak için farklı bir yordam vardır. Azure portal küme adını küçük harf olarak alın. Ardından, aşağıdaki komutta `<clustername>` için küme adını değiştirin ve çalıştırın: `export clusterName='<clustername>'`.  
-
-1. Kafka Broker Konakları almak için aşağıdaki komutu kullanın:
-
-    ```bash
+    export clusterName='<clustername>'
+    export password='<password>'
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 

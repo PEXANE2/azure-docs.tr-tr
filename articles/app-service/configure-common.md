@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666201"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198590"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -27,7 +27,7 @@ App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak ge�
 
 Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
 
-![Uygulama Ayarları](./media/configure-common/open-ui.png)
+![Uygulama ayarları](./media/configure-common/open-ui.png)
 
 ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarlarının ayarlanması, *Web. config* veya *appSettings. JSON*içinde `<appSettings>` ayarlamak gibidir, ancak App Service içindeki değerler *Web. config* veya *appSettings. JSON*içinde olanları geçersiz kılar. *Web. config* veya *appSettings. JSON*içinde geliştirme ayarlarını (örneğin, yerel MySQL parolası) tutabilir, ancak üretim gizli dizileri (örneğin, Azure MySQL veritabanı parolası) App Service güvenlidir. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
@@ -84,11 +84,11 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
 ]
 ```
 
-## <a name="configure-connection-strings"></a>Bağlantı ayarlarını yapılandırma
+## <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
 
 [Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
 
-![Uygulama Ayarları](./media/configure-common/open-ui.png)
+![Uygulama ayarları](./media/configure-common/open-ui.png)
 
 ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizelerinin, *Web. config*'de `<connectionStrings>` ayarlama gibidir, ancak App Service ' de ayarladığınız değerler *Web. config*'de olanları geçersiz kılar. *Web. config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) ' nde güvenli App Service için geliştirme ayarlarını (örneğin, veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 

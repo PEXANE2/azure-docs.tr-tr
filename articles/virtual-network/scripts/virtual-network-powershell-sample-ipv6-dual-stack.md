@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betik örneği-IPv6 sanal ağ uç noktalarını yapılandırma (Önizleme)
+title: Azure PowerShell betiği örneği-IPv6 uç noktalarını yapılandırma
 titlesuffix: Azure Virtual Network
 description: Azure sanal ağ 'da PowerShell kullanarak IPv6 uç noktalarını etkinleştirme
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248805"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201402"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
 
@@ -35,7 +35,7 @@ Aşağıdaki gibi kaydolun:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Aşağıdaki Azure PowerShell komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz: Kaydı aşağıdaki gibi denetleyin:
+Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Aşağıdaki Azure PowerShell komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz: kaydı şu şekilde denetleyin:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network

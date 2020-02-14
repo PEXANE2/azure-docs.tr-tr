@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 78c20c72d0e344d993878f6e06ccc94f42048606
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162336"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187452"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core (Microsoft. Azure. EventHubs) kullanarak Azure Event Hubs olay gönderme veya olayları alma
 Bu hızlı başlangıçta, **Microsoft. Azure. EventHubs** .NET Core kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.
@@ -371,6 +371,9 @@ Aşağıdaki adımları izleyerek [**Microsoft.Azure.EventHubs**](https://www.nu
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makaleleri okuyun:
 
+- [Rol tabanlı erişim denetimi (RBAC) örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+    
+    Bu örnekler eski **Microsoft. Azure. EventHubs** kitaplığını kullanır, ancak en son **Azure. Messaging. eventhubs** kitaplığını kullanarak kolayca güncelleştirebilirsiniz. Eski kitaplığı kullanarak örneği yeni bir tane ile taşımak için [Microsoft. Azure. eventhubs ' den Azure. Messaging. eventhubs 'ye geçiş kılavuzu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)'na bakın.
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure Event Hubs'ın özellikleri ve terminolojisi](event-hubs-features.md)
 - [Event Hubs ile ilgili SSS](event-hubs-faq.md)

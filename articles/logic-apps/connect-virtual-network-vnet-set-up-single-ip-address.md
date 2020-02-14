@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453474"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191473"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
 
@@ -19,7 +19,7 @@ Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-net
 
 Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzerinden nasıl yönlendirileceği gösterilmektedir, ancak Azure Marketi 'nden üçüncü taraf güvenlik duvarı gibi bir ağ sanal gerecine benzer kavramlar uygulayabilirsiniz. Bu konu, birden çok ıSE örneğine yönelik kuruluma odaklanırken, senaryonuza erişmesi gereken IP adresi sayısını sınırlamayı gerektirdiğinde tek bir ıSE için de bu yaklaşımı kullanabilirsiniz. Güvenlik duvarının veya sanal ağ gerecinin ek maliyetlerinin senaryonuz için anlamlı olup olmadığını göz önünde bulundurun. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-firewall/)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * ISE ile aynı sanal ağda çalışan bir Azure Güvenlik Duvarı. Güvenlik duvarınız yoksa, önce sanal ağınıza `AzureFirewallSubnet` adlı [bir alt ağ ekleyin](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) . Daha sonra, sanal ağınızda [bir güvenlik duvarı oluşturabilir ve dağıtabilirsiniz](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) .
 
@@ -73,7 +73,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
+   | **Ad** | <*ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
    | **Öncelik** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
    | **Eylem** | **İzin ver** | Bu kural için gerçekleştirilecek eylem türü |
    |||
@@ -82,7 +82,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*ağ kuralı-adı*> | Ağ kuralınız için ad |
+   | **Ad** | <*ağ kuralı-adı*> | Ağ kuralınız için ad |
    | **Protokol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |
    | **Kaynak adresler** | <*Ise-alt ağ-adresler*> | ISE 'nin çalıştığı ve mantıksal uygulamanızdan gelen trafiğin kaynaklandığı alt ağ IP adresleri |
    | **Hedef adresler** | <*hedef-IP adresi*> | Trafiğin gitmesini istediğiniz hedef sisteminizin IP adresi |

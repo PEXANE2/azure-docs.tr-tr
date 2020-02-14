@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031501"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200121"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
 
@@ -50,9 +50,9 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
     |Özellik  |Değer  |
     |---------|---------|
     |Güvenli çıkış     |True         |
-    |URL'si     |[Gizli URI değeri]? api-version = 7.0         |
+    |{1&gt;URL&lt;1}     |[Gizli URI değeri]? api-version = 7.0         |
     |Yöntem     |GET         |
-    |Kimlik Doğrulaması     |MSI         |
+    |Kimlik Doğrulama     |MSI         |
     |Kaynak        |https://vault.azure.net       |
 
     ![Web etkinliği](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -63,7 +63,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
     > [!CAUTION]
     > Gizli çıkışın düz metin olarak kaydedilmesini engellemek için güvenli çıkış seçeneğini true olarak ayarlayın.  Bu değeri kullanan diğer etkinliklerin, güvenli giriş seçeneğinin true olarak ayarlanmış olması gerekir.
 
-5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini kullanın **@activity("Web"). Output. Value**.
+5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini kullanın **@activity(' Web1 '). Output. Value**.
 
     ![Kod ifadesi](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

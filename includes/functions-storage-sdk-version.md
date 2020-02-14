@@ -2,20 +2,20 @@
 title: include dosyası
 description: include dosyası
 services: functions
-author: ggailey777
-manager: cfowler
+author: craigshoemaker
+manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/17/2018
-ms.author: tdykstra
+ms.date: 01/28/2020
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: c2fff707dcaafac69efcad3dbf33446a7b797396
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a37850eb6536c5399d63144e60ea210fbc194d8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608414"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198436"
 ---
-### <a name="azure-storage-sdk-version-in-functions-1x"></a>Azure depolama SDK'sı sürümü işlevlerde 1.x
+#### <a name="azure-storage-sdk-version-in-functions-1x"></a>1\. x Işlevleri içindeki Azure Storage SDK sürümü
 
-Azure depolama SDK'sı sürümünü 7.2.1 işlevlerde 1.x, depolama Tetikleyicileri ve bağlamaları kullanın ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet paketi). Farklı bir depolama SDK'sı sürümü başvurmak ve bir depolama SDK'sı türe, işlev imzasında bağlama, İşlevler çalışma zamanı bu türe bağlanamaz bildirebilir. Çözüm, proje başvurularınızın emin olmaktır [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+1\. x Işlevleri içinde depolama Tetikleyicileri ve bağlamaları, Azure Storage SDK 'sının ([windowsazure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet paketi) 7.2.1 sürümünü kullanır. Depolama SDK 'sının farklı bir sürümüne başvurdıysanız ve işlev imzanıza bir depolama SDK 'Sı türüne bağlarsanız, Işlevler çalışma zamanı bu türe bağlanamaz. Çözüm, projenizin [windowsazure. Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1)başvurduğundan emin olmak için.

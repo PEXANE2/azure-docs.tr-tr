@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833848"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190512"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 
@@ -28,7 +28,7 @@ Azure PowerShell sürüm 2.8.0 veya sonraki bir sürümü yüklediğinizden emin
 ## <a name="limitations"></a>Sınırlamalar
 
 - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- Aşağıdaki VM Serisi destekleniyor: DSv3 ve ESv3. 
+- Aşağıdaki VM Serisi destekleniyor: DSv3, ESv3 ve Fsv2. 
 
 ## <a name="create-a-host-group"></a>Konak grubu oluştur
 
@@ -56,7 +56,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Konak Oluşturma
 
-Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Önizleme sırasında, aşağıdaki konak SKU değerlerini destekliyoruz: DSv3_Type1 ve ESv3_Type1.
+Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.
 
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).

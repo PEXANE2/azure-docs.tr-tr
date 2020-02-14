@@ -1,6 +1,6 @@
 ---
 title: Android harita denetimi ile çalışmaya başlama | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak Android harita denetimiyle çalışmaya nasıl başlacağınızı öğreneceksiniz.
+description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak Android harita denetimiyle nasıl başlayacağınızı öğreneceksiniz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911409"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198199"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
 Azure Maps Android SDK, Android için bir vektör eşleme kitaplığıdır. Bu makale, Azure Maps Android SDK yükleme ve eşleme yükleme işlemlerinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
 Bu makaledeki yordamları tamamlayabilmeniz için, önce S1 fiyatlandırma katmanında [bir Azure Maps hesabı oluşturmanız](quick-demo-map-app.md#create-an-account-with-azure-maps) ve hesabınız için [birincil anahtar almanız](quick-demo-map-app.md#get-the-primary-key-for-your-account) gerekir.
 
-Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
+Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
-### <a name="download-android-studio"></a>Android Studio’yu indirin
+### <a name="download-android-studio"></a>Android Studio indir
 
 Azure Haritalar Android SDK yüklemeden önce Android Studio indirin ve boş bir etkinliğe sahip bir proje oluşturun. Android Studio Google 'dan ücretsiz olarak [indirebilirsiniz](https://developer.android.com/studio/) . 
 
@@ -51,7 +51,7 @@ Android Studio, bilgisayarınızda bir sanal Android cihaz ayarlamanıza olanak 
 
 [Android Studio belgelerinde](https://developer.android.com/studio/run/managing-avds)bir AVD ayarlama hakkında daha fazla bilgi edinebilirsiniz.
 
-![Android Öykünücüsü](./media/how-to-use-android-map-control-library/android-emulator.png)
+![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
 
 ## <a name="install-the-azure-maps-android-sdk"></a>Azure haritalar 'ı Android SDK
 
@@ -111,7 +111,7 @@ Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar '�
 
     `setSubscriptionKey` veya `setAadProperties` yöntemler kullanılarak `AzureMaps` sınıftaki kimlik doğrulama bilgilerini genel olarak ayarlamak, kimlik doğrulama bilgilerinizi her görünüme eklemeniz gerekmez. 
 
-    Harita denetimi, Android 'in OpenGL yaşam döngüsünü yönetmeye yönelik kendi yaşam döngüsü yöntemlerini içerir. Bu, doğrudan içeren etkinlikten çağrılmalıdır. Uygulamanızın doğru şekilde doğru olması için harita denetiminin yaşam döngüsü yöntemlerini çağırın, eşleme denetimini içeren etkinliğin aşağıdaki yaşam döngüsü yöntemlerini geçersiz kılmanız ve ilgili harita denetim yöntemini çağırmanız gerekir. 
+    Harita denetimi, Android 'ın OpenGL yaşam döngüsünü yönetmeye yönelik kendi yaşam döngüsü yöntemlerini içerir. Bu yaşam döngüsü yöntemlerinin doğrudan içeren etkinlikten çağrılması gerekir. Uygulamanızın harita denetiminin yaşam döngüsü yöntemlerini doğru bir şekilde çağırması için, eşleme denetimini içeren etkinliğin aşağıdaki yaşam döngüsü yöntemlerini geçersiz kılmanız gerekir. Ve ilgili Map denetim yöntemini çağırmanız gerekir. 
 
     * onCreate (paket) 
     * onStart () 

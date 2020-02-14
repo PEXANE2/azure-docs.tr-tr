@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a89439f49dd53f09d5cd40be0bf2e4981e9235d4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970188"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201394"
 ---
-# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson Sürekli Tümleştirme çözümüyle Azure Depolama'yı kullanma
+# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson Sürekli Tümleştirme çözümüyle Azure depolama 'yı kullanma
 ## <a name="overview"></a>Genel Bakış
 Aşağıdaki bilgiler, bir Hudson sürekli tümleştirme (CI) çözümü tarafından oluşturulan derleme yapıtlarının bir deposu veya bir yapı işleminde kullanılacak indirilebilir dosyaların kaynağı olarak nasıl kullanılacağını gösterir. Bu faydalı bulduğunuz senaryolardan biri, çevik bir geliştirme ortamında (Java veya diğer diller kullanarak) kodlama yaparken, sürekli tümleştirmeye dayalı olarak çalışır ve derleme yapılarınız için bir depo gerekir, böylece Örneğin, bunları diğer kuruluş üyeleriyle, müşterilerinizle paylaşabilirsiniz veya bir arşivi saklayın.  Başka bir senaryo, derleme işinizin kendisi için başka dosyalar gerektirdiğinde, örneğin, derleme girişinin bir parçası olarak indirilecek bağımlılıklardır.
 
@@ -35,14 +35,14 @@ Hudson ile ilgili daha fazla bilgi için bkz. [Hudson](https://wiki.eclipse.org/
 * Müşterilerinizin ve iş ortaklarınızın yapı yapıtlarınızı indirme performansı.
 * Anonim erişim, sona erme tabanlı paylaşılan erişim imzası erişimi, özel erişim vb. arasında seçim içeren Kullanıcı erişim ilkeleri üzerinde denetim.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Blob hizmetini Hudson CI çözümünüz ile kullanmak için aşağıdakiler gerekir:
 
 * Bir Hudson sürekli tümleştirme çözümü.
   
     Şu anda bir Hudson CI çözümünüz yoksa, aşağıdaki tekniği kullanarak bir Hudson CI çözümü çalıştırabilirsiniz:
   
-  1. Java etkin bir makinede, <http://hudson-ci.org/>'den Hudson WAR 'i indirin.
+  1. Java etkin bir makinede, [Hudson WAR dosyasını indirin](https://www.eclipse.org/hudson/download.php).
   2. Hudson WAR dosyasını içeren klasöre açılan bir komut isteminde, Hudson WAR ' ı çalıştırın. Örneğin, 3.1.2 sürümünü indirdiyseniz:
      
       `java -jar hudson-3.1.2.war`
@@ -53,7 +53,7 @@ Blob hizmetini Hudson CI çözümünüz ile kullanmak için aşağıdakiler gere
      
       Tipik bir Hudson CI çözümü bir hizmet olarak çalışacak şekilde ayarlanacağından, komut satırında Hudson War çalıştırılması Bu öğretici için yeterli olacaktır.
 * Bir Azure hesabı. <https://www.azure.com>bir Azure hesabı için kaydolabilirsiniz.
-* Bir Azure depolama hesabı. Henüz bir depolama hesabınız yoksa [depolama hesabı oluşturma](../common/storage-account-create.md)kısmındaki adımları kullanarak bir tane oluşturabilirsiniz.
+* Azure depolama hesabı. Henüz bir depolama hesabınız yoksa [depolama hesabı oluşturma](../common/storage-account-create.md)kısmındaki adımları kullanarak bir tane oluşturabilirsiniz.
 * Aşağıdaki içerik, Hudson CI derleme yapıtları için bir depo olarak blob hizmetini kullanırken gereken adımları göstermek üzere temel bir örnek kullanacağı için, Hudson CI çözümünün kullanılması önerilir, ancak gerekli değildir.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Hudson CI ile blob hizmetini kullanma
@@ -83,7 +83,7 @@ Blob hizmetini Hudson ile kullanmak için Azure Storage eklentisini yüklemeniz,
    
     e. Seçim Hudson CI 'niz için kullanılabilir hale getirdiğiniz ek depolama hesaplarınız varsa, **daha fazla depolama hesabı ekle**' ye tıklayın.
    
-    f. Tıklayın **Kaydet** ayarlarınızı kaydetmek için.
+    f. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Derleme yapılarınızı depolama hesabınıza yükleyen bir oluşturma sonrası eylem oluşturma
 Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı ve sonra dosyaları depolama hesabınıza yüklemek için derleme sonrası eylemini ekleyeceğiz.
@@ -112,7 +112,7 @@ Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı v
 9. Seçim Kapsayıcının, derleme yapıtları karşıya yüklenmeden önce içeriğin temizlenmesini istiyorsanız **karşıya yüklemeden önce kapsayıcıyı temizle** ' ye tıklayın (kapsayıcının içeriğini temizlemek istemiyorsanız işaretini işaretsiz bırakın).
 10. **Karşıya yüklenecek yapıtların listesi**için **metin/*. txt**yazın.
 11. **Karşıya yüklenen yapıtlar Için ortak sanal yol**için, **$ {BUILD\_ID}/$ {BUILD\_Number}** girin.
-12. Tıklayın **Kaydet** ayarlarınızı kaydetmek için.
+12. Ayarlarınızı kaydetmek için **Kaydet** ' e tıklayın.
 13. Hudson panosunda, **Myjob**'u çalıştırmak Için **Şimdi Oluştur** ' a tıklayın. Durum için konsol çıkışını inceleyin. Oluşturma sonrası eylemi, derleme yapılarını karşıya yüklemeye başladığında, Azure depolama için durum iletileri konsol çıktısına dahil edilir.
 14. İşi başarılı bir şekilde tamamladıktan sonra, genel blobu açarak derleme yapıtlarını inceleyebilirsiniz.
     

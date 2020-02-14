@@ -3,18 +3,18 @@ title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yap�
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759901"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198063"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
-Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, Azure dışında barındırılan Kubernetes kümelerinin izlenmesini etkinleştirme ve benzer bir izleme deneyimi elde etme açıklanmaktadır.
+Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan kendinden yönetilen bir Kubernetes kümesi olan Azure Kubernetes hizmeti (AKS) ve [aks altyapısı](https://github.com/Azure/aks-engine)için zengin izleme deneyimi sağlar. Bu makalede, Azure dışında barındırılan Kubernetes kümelerinin izlenmesini etkinleştirme ve benzer bir izleme deneyimi elde etme açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -32,7 +32,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
 * Linux için Log Analytics aracısının Kapsayıcılı sürümünün Azure Izleyici ile iletişim kurması için aşağıdaki proxy ve güvenlik duvarı yapılandırma bilgileri gereklidir:
 
-    |Aracı Kaynağı|Bağlantı Noktaları |
+    |Aracı Kaynağı|Bağlantı noktaları |
     |------|---------|   
     |*.ods.opinsights.azure.com |Bağlantı noktası 443 |  
     |*.oms.opinsights.azure.com |Bağlantı noktası 443 |  
@@ -72,9 +72,9 @@ Bir şablon kullanarak kaynakları dağıtma kavramıyla alışkın değilseniz,
 
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Bu yöntem, iki JSON şablonları içerir. Yapılandırmayı, izlemeyi etkinleştirmek için bir şablon belirtir ve diğer aşağıdaki belirtmek için yapılandırdığınız parametre değerlerini içerir:
 
@@ -285,10 +285,10 @@ Karma Kubernetes kümeniz için izlemeyi etkinleştirmeye çalışırken bir hat
 
 * Belirtilen Log Analytics çalışma alanı geçerli
 * Log Analytics çalışma alanı, kapsayıcılar için Azure Izleyici çözümü ile yapılandırılır. Aksi takdirde, çalışma alanını yapılandırın.
-* OmsAgent replicaset Pod çalışıyor
-* OmsAgent daemonset Pod çalışıyor
+* Omsagent replicaset Pod çalışıyor
+* Omsagent daemonset Pod çalışıyor
 * OmsAgent Health hizmeti çalışıyor
-* Kapsayıcılı aracıda yapılandırılan Log Analytics çalışma alanı kimliği ve anahtarı, Insight ile yapılandırılan çalışma alanıyla eşleşir.
+* Kapsayıcılı aracıda yapılandırılan Log Analytics çalışma alanı KIMLIĞI ve anahtarı, Insight ile yapılandırılan çalışma alanıyla eşleşir.
 * Tüm Linux çalışan düğümlerinin RS Pod zamanlamak için `kubernetes.io/role=agent` etiketine sahip olduğunu doğrulayın. Mevcut değilse, ekleyin.
 * `cAdvisor secure port:10250` veya `unsecure port: 10255` doğrulama kümedeki tüm düğümlerde açıldı.
 

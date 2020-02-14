@@ -4,20 +4,20 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75658534"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198352"
 ---
 | Kaynak | [Tüketim planı](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service planı](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Ölçeği genişletme | Olay odaklı | Olay odaklı | [El ile/otomatik ölçeklendirme](../articles/app-service/manage-scale-up.md) | 
-| En fazla örnek sayısı | 200 | 100 | 10-20 |
+| En fazla örnek | 200 | 100 | 10-20 |
 |Varsayılan [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |5 | 30 |30<sup>2</sup> |
-|En fazla [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | 60 | sınırsız<sup>3</sup> |
-| En fazla giden bağlantı (örnek başına) | 600 etkin (1200 toplam) | unbounded | unbounded |
+|En fazla [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | sınırsız<sup>8</sup> | sınırsız<sup>3</sup> |
+| En fazla giden bağlantı (örnek başına) | 600 etkin (1200 toplam) | Unbounded | Unbounded |
 | En fazla istek boyutu (MB)<sup>4</sup> | 100 | 100 | 100 |
 | En fazla sorgu dizesi uzunluğu<sup>4</sup> | 4096 | 4096 | 4096 |
 | En fazla istek URL uzunluğu<sup>4</sup> | 8192 | 8192 | 8192 |
@@ -35,4 +35,5 @@ ms.locfileid: "75658534"
 <sup>4</sup> bu sınırlar [konakta ayarlanır](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
 <sup>5</sup> barındırabilmeniz gereken işlev uygulamalarının gerçek sayısı, uygulamaların etkinliğine, makine örneklerinin boyutuna ve karşılık gelen kaynak kullanımına göre değişir.  
 <sup>6</sup> depolama sınırı, aynı App Service planındaki tüm uygulamalarda geçici depolamadaki toplam içerik boyutudur. Tüketim planı, geçici depolama için Azure dosyalarını kullanır.  
-<sup>7</sup> işlev uygulamanız bir [Tüketim PLANıNDA](../articles/azure-functions/functions-scale.md#consumption-plan)barındırılıyorsa yalnızca CNAME seçeneği desteklenir. Bir [Premium planındaki](../articles/azure-functions/functions-scale.md#premium-plan) veya bir [App Service planındaki](../articles/azure-functions/functions-scale.md#app-service-plan)işlev UYGULAMALARı için, bir CNAME veya a kaydı kullanarak özel bir etki alanını eşleyebilirsiniz.
+<sup>7</sup> işlev uygulamanız bir [Tüketim PLANıNDA](../articles/azure-functions/functions-scale.md#consumption-plan)barındırılıyorsa yalnızca CNAME seçeneği desteklenir. Bir [Premium planındaki](../articles/azure-functions/functions-scale.md#premium-plan) veya bir [App Service planındaki](../articles/azure-functions/functions-scale.md#app-service-plan)işlev UYGULAMALARı için, bir CNAME veya a kaydı kullanarak özel bir etki alanını eşleyebilirsiniz.  
+60 dakikaya <sup>kadar garanti edilir</sup> .

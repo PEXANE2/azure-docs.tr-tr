@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608729"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185571"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -91,7 +91,7 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 ### <a name="review-your-conditional-access-policies"></a>Koşullu erişim ilkelerinizi gözden geçirin
 
-- Yeni konuk kullanıcıların, dizininizde oturum açabilmelerini engelleyecek şekilde, yeni konuk kullanıcıların karşılayamayacak tüm koşullu erişim ilkelerinden konukları hariç tutdığınızdan emin olun. Örneğin, konukların kayıtlı bir cihazı yoktur, bilinen bir konumda değildir ve Multi-Factor Authentication (MFA) için yeniden kaydolmak istemezsiniz. bu nedenle, bu gereksinimlerin bir koşullu erişim ilkesinde eklenmesi, konukların yetkilendirme kullanmasını engeller yönetme. Daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory koşullar nelerdir?](../conditional-access/conditions.md).
+- Yeni konuk kullanıcıların, dizininizde oturum açabilmelerini engelleyecek şekilde, yeni konuk kullanıcıların karşılayamayacak tüm koşullu erişim ilkelerinden konukları hariç tutdığınızdan emin olun. Örneğin, konukların kayıtlı bir cihazı yoktur, bilinen bir konumda değildir ve Multi-Factor Authentication (MFA) için yeniden kaydolmak istemezsiniz. bu nedenle, bu gereksinimlerin bir koşullu erişim ilkesinde eklenmesi, konukların yetkilendirme kullanmasını engeller yönetme. Daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory koşullar nelerdir?](../conditional-access/concept-conditional-access-conditions.md).
 
     ![Azure AD koşullu erişim ilkesi dışlama ayarları](./media/entitlement-management-external-users/conditional-access-exclude.png)
 

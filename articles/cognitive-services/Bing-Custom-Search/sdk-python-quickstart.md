@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.author: aahi
-ms.openlocfilehash: d67075fad719b1780682c705f0e17f15c5801559
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f4b6bad38992a9e0146d6324bc3a3fc7632ded2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136158"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201263"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Hızlı başlangıç: Python SDK 'sını kullanarak Bing Özel Arama uç noktanızı çağırma 
 
@@ -47,17 +47,17 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="create-a-search-client-and-send-a-request"></a>Arama İstemcisi Oluşturma ve istek gönderme
 
-1. Abonelik anahtarınız için bir değişken oluşturun.
+1. Abonelik anahtarınız ve uç noktanız için bir değişken oluşturun.
 
     ```python
     subscription_key = 'your-subscription-key'
-    endpoint = 'your-custom-endpoint'
+    endpoint = 'your-endpoint'
     ```
 
 2. Abonelik anahtarı ile bir `CognitiveServicesCredentials` nesnesi kullanarak `CustomSearchClient`örneğini oluşturun. 
 
     ```python
-    client = CustomSearchClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 3. `client.custom_instance.search()`bir arama isteği gönderin. Arama teriminizi `query` parametresine ekleyin ve arama örneğinizi kullanmak için `custom_config` özel yapılandırma KIMLIĞINIZE ayarlayın. **Üretim** sekmesine tıklayarak [Bing özel arama portalından](https://www.customsearch.ai/)kimliğiniz edinebilirsiniz.

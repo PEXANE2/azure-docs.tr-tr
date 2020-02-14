@@ -1,5 +1,5 @@
 ---
-title: Sanal ağ eşlemesi ile sanal ağları bağlama - öğretici - Azure portalı | Microsoft Docs
+title: Sanal ağları VNet eşlemesi ile bağlama-öğretici-Azure portal
 description: Bu öğreticide, Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağların nasıl bağlanacağını öğreneceksiniz.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016060"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201307"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
@@ -34,7 +34,7 @@ Tercih ederseniz, [Azure CLI](tutorial-connect-virtual-networks-cli.md) veya [Az
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="log-in-to-azure"></a>Azure'da oturum açma 
+## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -88,7 +88,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     Durumu görmüyorsanız tarayıcınızı yenileyin.
 
-## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
+## <a name="create-virtual-machines"></a>Sanal makineler oluşturun
 
 Sonraki bir adımda aralarında iletişim kurabilmeniz için her sanal ağ üzerinde bir sanal makine oluşturun.
 
@@ -132,7 +132,7 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makin
 ## <a name="communicate-between-vms"></a>Sanal makineler arasında iletişim
 
 1. Portalın üst kısmındaki *Arama* kutusuna *myVm1* yazmaya başlayın. Arama sonuçlarında **myVm1** görüntülendiğinde bunu seçin.
-2. Aşağıdaki resimde gösterildiği gibi, **Bağlan**’ı seçerek *myVm1* sanal makinesine uzak masaüstü bağlantısı oluşturun:
+2. Aşağıdaki resimde gösterildiği gibi, *Bağlan*’ı seçerek **myVm1** sanal makinesine uzak masaüstü bağlantısı oluşturun:
 
     ![Sanal makineye bağlanma](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
 
@@ -165,9 +165,9 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makin
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin: 
 
-1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
+3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

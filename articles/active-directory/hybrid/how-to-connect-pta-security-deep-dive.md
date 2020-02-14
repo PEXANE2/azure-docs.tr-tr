@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174447"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185551"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory geçişli kimlik doğrulama güvenliğini derinlemesine bakış
 
@@ -42,10 +42,10 @@ Bunlar, bu özelliğin önemli güvenlik yönlerinden oluşur:
 - Yalnızca standart bağlantı noktaları (80 ve 443), kimlik doğrulama aracılarından Azure AD 'ye giden iletişim için kullanılır. Güvenlik duvarınızdaki gelen bağlantı noktalarını açmanıza gerek yoktur. 
   - 443 numaralı bağlantı noktası, kimliği doğrulanmış tüm giden iletişimler için kullanılır.
   - Bağlantı noktası 80 yalnızca sertifika Iptal listelerini (CRL 'Ler) indirmek için kullanılır. Bu özellik tarafından kullanılan sertifikaların hiçbirinin iptal edildiğinden emin olun.
-  - Ağ gereksinimlerinin tam listesi için, [Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)' a bakın.
+  - Ağ gereksinimlerinin tam listesi için bkz. [Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Oturum açma sırasında kullanıcıların sağladığı parolalar, şirket içi kimlik doğrulama aracıları Active Directory karşı doğrulama için kabul etmeden önce bulutta şifrelenir.
 - Azure AD ile şirket içi kimlik doğrulama Aracısı arasındaki HTTPS kanalı, karşılıklı kimlik doğrulaması kullanılarak güvenli hale getirilir.
-- Multi-Factor Authentication (MFA) dahil olmak üzere [Azure AD koşullu erişim ilkeleriyle](../active-directory-conditional-access-azure-portal.md)sorunsuz çalışarak kullanıcı hesaplarınızı korur, [eski kimlik doğrulamasını engellemeyi](../conditional-access/conditions.md) ve [deneme yanılma saldırılarına zorlar](../authentication/howto-password-smart-lockout.md).
+- Multi-Factor Authentication (MFA) dahil olmak üzere [Azure AD koşullu erişim ilkeleriyle](../active-directory-conditional-access-azure-portal.md)sorunsuz çalışarak kullanıcı hesaplarınızı korur, [eski kimlik doğrulamasını engellemeyi](../conditional-access/concept-conditional-access-conditions.md) ve [deneme yanılma saldırılarına zorlar](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Dahil edilen bileşenler
 
@@ -141,7 +141,7 @@ Doğrudan kimlik doğrulaması, bir Kullanıcı oturum açma isteğini aşağıd
 8. Azure AD STS, Kullanıcı adı ve şifreli parola değerlerinden oluşan parola doğrulama isteğini kiracınıza özgü Service Bus kuyruğuna koyar.
 9. Başlatılmış kimlik doğrulama aracıları Service Bus kuyruğuna kalıcı olarak bağlandığından, kullanılabilir kimlik doğrulama aracılarından biri parola doğrulama isteğini alır.
 10. Kimlik doğrulama Aracısı ortak anahtarına özgü şifrelenmiş parola değerini bir tanımlayıcı kullanarak bulur ve onun özel anahtarını kullanarak şifresini çözer.
-11. Kimlik doğrulama Aracısı, **LOGON32_LOGON_NETWORK**olarak ayarlanan **dwlogontype** PARAMETRESI ile [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) 'sini kullanarak kullanıcı adını ve parolayı şirket içi Active Directory karşı doğrulamaya çalışır. 
+11. Kimlik doğrulama Aracısı, **LOGON32_LOGON_NETWORK**olarak ayarlanan **dwlogontype** PARAMETRESI ile [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) 'sini kullanarak, kullanıcı adını ve parolayı şirket içi Active Directory karşı doğrulamaya çalışır. 
     - Bu API, kullanıcıların bir Federasyon oturum açma senaryosunda oturum açması için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından kullanılan API 'dir.
     - Bu API, etki alanı denetleyicisini bulmak için Windows Server 'daki standart çözümleme işlemini kullanır.
 12. Kimlik doğrulama Aracısı başarı, Kullanıcı adı veya parola yanlış veya parolanın geçerliliği aşıldığı gibi Active Directory sonucunu alır.
@@ -157,7 +157,7 @@ Doğrudan kimlik doğrulaması, bir Kullanıcı oturum açma isteğini aşağıd
 
 Doğrudan kimlik doğrulamanın güvenli kalmasını sağlamak için, Azure AD kimlik doğrulama aracılarının sertifikalarını düzenli aralıklarla yeniler. Azure AD, yenilemeler tetikler. Yenilemeler, kimlik doğrulama aracılarının kendilerine tabidir.
 
-![İşletimsel Güvenlik](./media/how-to-connect-pta-security-deep-dive/pta4.png)
+![İşletimsel güvenlik](./media/how-to-connect-pta-security-deep-dive/pta4.png)
 
 Azure AD ile bir kimlik doğrulama aracısının güvenini yenilemek için:
 
@@ -177,10 +177,10 @@ Azure AD ile bir kimlik doğrulama aracısının güvenini yenilemek için:
     - Kiracınızı benzersiz bir şekilde tanımlayan GUID olan kiracı KIMLIĞINIZLE sertifikanın konusunu (ayırt edici ad veya DN) ayarlayın. DN, sertifikayı yalnızca kiracınızla kapsamlar.
 6. Azure AD, kimlik doğrulama aracısının yeni ortak anahtarını yalnızca erişimi olan bir Azure SQL veritabanında depolar. Ayrıca, kimlik doğrulama aracısıyla ilişkili eski ortak anahtarı geçersiz kılar.
 7. Yeni sertifika (5. adımda verilen), daha sonra Windows sertifika depolama alanındaki sunucuda (özellikle [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) konumunda) depolanır.
-    - Güven yenileme yordamı etkileşimli olmayan bir şekilde yapıldığından (genel yönetici mevcut olmadığında), kimlik doğrulama aracısının artık CERT_SYSTEM_STORE_LOCAL_MACHINE konumundaki mevcut sertifikayı güncelleştirme erişimi yoktur. 
+    - Güven yenileme yordamı etkileşimli olmayan bir şekilde yapıldığından (genel yönetici mevcut olmadığında), kimlik doğrulama aracısının artık CERT_SYSTEM_STORE_LOCAL_MACHINE konumdaki mevcut sertifikayı güncelleştirme erişimi yoktur. 
     
    > [!NOTE]
-   > Bu yordam, sertifikayı CERT_SYSTEM_STORE_LOCAL_MACHINE konumundan kaldırmaz.
+   > Bu yordam, sertifikanın kendisini CERT_SYSTEM_STORE_LOCAL_MACHINE konumundan kaldırmaz.
 8. Yeni sertifika bu noktadan kimlik doğrulaması için kullanılır. Sertifikanın sonraki yenilenmesi, CERT_SYSTEM_STORE_LOCAL_MACHINE konumundaki sertifikanın yerini alır.
 
 ## <a name="auto-update-of-the-authentication-agents"></a>Kimlik doğrulama aracılarının otomatik güncelleştirilmesi

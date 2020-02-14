@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122481"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201637"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>Hafif yönetim modu
 
-[SQL Server IaaS Aracısı UZANTıSı](virtual-machines-windows-sql-server-agent-extension.md) VM 'ye YÜKLENMEMIŞSE, SQL VM kaynak sağlayıcısına basit modda kaydolma önerisi de vardır. Bu işlem SQL IaaS uzantısını [hafif modda](#management-modes) yükleyecek ve SQL Server hizmetinin yeniden başlatılmasını engelleyecek. Dilediğiniz zaman tam moda yükseltebilirsiniz, ancak bunu yapmak SQL Server hizmeti 'ni yeniden başlatarak zamanlanan bir bakım penceresine kadar beklemeniz önerilir. Kullanım başına ödeme yapmak için Kullandıkça Öde (`PAYG`) veya kendi lisansınızı kullanmak için Azure Hibrit Avantajı (`AHUB`) SQL Server lisans türünü sağlamanız gerekir.
+[SQL Server IaaS Aracısı UZANTıSı](virtual-machines-windows-sql-server-agent-extension.md) VM 'ye YÜKLENMEMIŞSE, SQL VM kaynak sağlayıcısına basit modda kaydolma önerisi de vardır. Bu işlem SQL IaaS uzantısını [hafif modda](#management-modes) yükleyecek ve SQL Server hizmetinin yeniden başlatılmasını engelleyecek. Dilediğiniz zaman tam moda yükseltebilirsiniz, ancak bunu yapmak SQL Server hizmeti 'ni yeniden başlatarak zamanlanan bir bakım penceresine kadar beklemeniz önerilir. 
+
+Kullanım başına ödeme yapmak için Kullandıkça Öde (`PAYG`), kendi lisansınızı kullanmak için Azure Hibrit Avantajı (`AHUB`) veya [ÜCRETSIZ Dr çoğaltma lisansını](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)etkinleştirmek için olağanüstü durum kurtarma (`DR`) olarak SQL Server lisans türü sağlayın.
 
 Yük devretme kümesi örnekleri ve çok örnekli dağıtımlar yalnızca SQL VM kaynak sağlayıcısı ile hafif modda kaydedilebilir. 
 
@@ -176,7 +178,7 @@ SQL Server VM doğrudan tam modda kaydetmek için (ve SQL Server hizmetinizi bü
 
 Windows Server 2008 (_R2 değil_) üzerinde yüklü olan SQL Server 2008 ve 2008 R2, [NOAGENT modundaki](#management-modes)SQL VM kaynak sağlayıcısı ile kaydedilebilir. Bu seçenek uyumluluk sağlar ve Azure portal sınırlı işlevlerle birlikte SQL Server VM izlenmesini sağlar.
 
-**Sqllicensetype**olarak `AHUB` veya `PAYG` ve **Sqlimageteklifini**`SQL2008-WS2008` ya da `SQL2008R2-WS2008` belirtin. 
+`AHUB`, `PAYG`veya `DR` **Sqllicensetype**olarak, `SQL2008-WS2008` ya da `SQL2008R2-WS2008` **Sqlimageteklifini**olarak belirtin. 
 
 SQL Server 2008 veya 2008 R2 örneğinizi Windows Server 2008 örneğine kaydetmek için, aşağıdaki az CLı veya PowerShell kod parçacığını kullanın: 
 

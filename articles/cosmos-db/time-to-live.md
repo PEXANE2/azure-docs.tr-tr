@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498309"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188712"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi (TTL) 
 
@@ -44,9 +44,7 @@ Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değişti
 
 * TTL bir kapsayıcıda ayarlanmamışsa, bu kapsayıcıdaki bir öğe üzerinde yaşam süresi etkisizdir. 
 
-* Bir kapsayıcıda TTL değeri-1 olarak ayarlandıysa, bu kapsayıcıda yaşam süresi n olarak ayarlanan bir öğe n saniye sonra sona erer ve kalan öğelerin süresi dolmaz. 
-
-TTL tabanlı öğeleri silme ücretsizdir. TTL süre sonu sonucu olarak öğe silindiğinde ek bir ücret (yani başka bir ru tüketilmemiş) yoktur.
+* Bir kapsayıcıda TTL değeri-1 olarak ayarlandıysa, bu kapsayıcıda yaşam süresi n olarak ayarlanan bir öğe n saniye sonra sona erer ve kalan öğelerin süresi dolmaz.
 
 ## <a name="examples"></a>Örnekler
 

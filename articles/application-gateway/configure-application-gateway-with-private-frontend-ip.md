@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: c49c37ced4a5d5cc7cdde0737b889aad3b538f7f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899030"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198641"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>İç yük dengeleyici (ıLB) uç noktası ile uygulama ağ geçidi yapılandırma
 
@@ -25,11 +25,11 @@ Bu makale, Azure portal kullanarak bir ön uç özel IP adresi ile uygulama ağ 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-<https://portal.azure.com>kV konumundaki Azure portal oturum açın
+<https://portal.azure.com> Azure portal oturum açın
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, yeni bir sanal ağ oluşturursunuz. Uygulama ağ geçidini oluştururken aynı zamanda bir sanal makine oluşturabilirsiniz. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
 
@@ -87,9 +87,9 @@ Bunu yapmak için şunları yapın:
 2. Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere IIS 'yi yükler.
 3. Arka uç sunucularını arka uç havuzuna ekleyin.
 
-### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+### <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
 
-1. Seçin **kaynak Oluştur**.
+1. **Kaynak oluştur**' u seçin.
 2. **İşlem** ' ı seçin ve ardından **sanal makine**' yi seçin.
 4. Sanal makine için şu değerleri girin:
    - **kaynak grubu**için *myResourceGroupAG* öğesini seçin.
@@ -141,7 +141,7 @@ Bunu yapmak için şunları yapın:
 ### <a name="add-backend-servers-to-backend-pool"></a>Arka uç sunucularını arka uç havuzuna Ekle
 
 1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
-2. Seçin **arka uç havuzları**. Seçin **appGatewayBackendPool**.
+2. **Arka uç havuzlarını**seçin. **Appgatewaybackendpool**öğesini seçin.
 3. **Hedef türü** ' nün altında **sanal makine** ' yi seçin ve **hedef**altında myvm ile ilişkili vNIC 'i seçin.
 4. MyVM2 eklemek için tekrarlayın.
    ![Private-frontendıp-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)

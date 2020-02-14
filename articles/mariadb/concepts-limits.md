@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969556"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191144"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı sınırlamaları
 Aşağıdaki bölümlerde, kapasitesi, depolama altyapısı desteği, destek ayrıcalığına, veri işleme ifadesi desteği ve veritabanı hizmeti işlevsel sınırları açıklanmaktadır.
@@ -38,28 +38,33 @@ Fiyatlandırma katmanı ve sanal çekirdek başına bağlantıları sayısı aş
 Bağlantı sınırı aştıklarında aşağıdaki hata iletisini alabilirsiniz:
 > 1040 (08004). hata: Çok fazla sayıda bağlantı
 
+> [!IMPORTANT]
+> En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek üzere ProxySQL gibi bir bağlantı havuzlayıcı kullanmanızı öneririz.
+
+MariaDB 'ye yeni istemci bağlantıları oluşturma zaman alır ve bir kez kurulduktan sonra bile bu bağlantılar veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu çözer birçok kısa süreli bağlantı ister. Sonuç olarak gerçek iş yükünüz için daha az kaynak kullanılabilir ve performansı azaltıldı. Boştaki bağlantıları azaltan ve var olan bağlantıları yeniden kullanan bir bağlantı havuzlayıcı bunun önlenmesine yardımcı olur. ProxySQL 'i ayarlama hakkında bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
+
 ## <a name="storage-engine-support"></a>Depolama altyapısı desteği
 
-### <a name="supported"></a>Desteklenen
-- [Innodb](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
+### <a name="supported"></a>Destekleniyor
+- [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
 - [BELLEK](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [KARA DELİK](https://mariadb.com/kb/en/library/blackhole/)
-- [ARŞİV](https://mariadb.com/kb/en/library/archive/)
+- [KARA DELIK](https://mariadb.com/kb/en/library/blackhole/)
+- [ARŞIVLIYORSANıZ](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Ayrıcalık desteği
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - DBA rol: birçok sunucu parametreleri ve ayarları yanlışlıkla sunucu performansının düşmesine neden veya DBMS ACID özelliklerini negate. Bu nedenle, bir ürün düzeyinde SLA ve hizmet bütünlüğü korumak için bu hizmeti DBA rol kullanıma sunmuyor. Yeni bir veritabanı örneği oluşturulduğunda bu oluşturulur, varsayılan kullanıcı hesabı, veritabanı yönetilen örneğine DDL ve DML deyimleri çoğunu gerçekleştirmek bu kullanıcı sağlar.
-- Süper ayrıcalık: benzer şekilde [Süper ayrıcalık](https://mariadb.com/kb/en/library/grant/#global-privileges) de sınırlıdır.
+- Süper ayrıcalık: benzer [süper ayrıcalık](https://mariadb.com/kb/en/library/grant/#global-privileges) da kısıtlıdır.
 - DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, bir mysqldump gerçekleştirirken `CREATE DEFINER` komutlarını el ile veya `--skip-definer` komutunu kullanarak kaldırın.
 
 ## <a name="data-manipulation-statement-support"></a>Veri işleme ifadesi desteği
 
-### <a name="supported"></a>Desteklenen
-- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilen ve bir UNC yolu (Azure depolama bağlı SMB) yönlendirilir.
+### <a name="supported"></a>Destekleniyor
+- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bir UNC yoluna (SMB üzerinden bağlanmış Azure depolama) yönlendirilmelidir.
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - `SELECT ... INTO OUTFILE`
@@ -87,8 +92,8 @@ Bağlantı sınırı aştıklarında aşağıdaki hata iletisini alabilirsiniz:
 - Fiyatlandırma Katmanı başına depolama boyutu sınırları için lütfen [fiyatlandırma katmanlarına](concepts-pricing-tiers.md) bakın.
 
 ## <a name="current-known-issues"></a>Bilinen geçerli sorunlar
-- MariaDB sunucu örneği, bağlantı kurulduktan sonra yanlış sunucu sürümünü görüntülüyor. Doğru sunucu örneği altyapı sürümü almak için kullanın `select version();` komutu.
+- MariaDB sunucu örneği, bağlantı kurulduktan sonra yanlış sunucu sürümünü görüntülüyor. Doğru sunucu örneği altyapısı sürümünü almak için `select version();` komutunu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Her hizmet katmanında nelerin kullanılabildiğini](concepts-pricing-tiers.md)
+- [Her hizmet katmanında kullanılabilen özellikler](concepts-pricing-tiers.md)
 - [Desteklenen MariaDB veritabanı sürümleri](concepts-supported-versions.md)

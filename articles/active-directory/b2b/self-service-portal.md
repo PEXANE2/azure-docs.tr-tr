@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272098"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195802"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B işbirliği kaydı için self servis portalı
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B işbirliği kaydı için self servis
 
-Müşteriler, son kullanıcılar için [Azure portalı](https://portal.azure.com) ve [Uygulama Erişim Paneli](https://myapps.microsoft.com) aracılığıyla ortaya çıkan yerleşik özelliklerle birçok işlem yapabilir. Ancak B2B kullanıcıları için ekleme iş akışını, kuruluşunuzun gereksinimlerine uyacak şekilde özelleştirmeniz gerekebilir. [Davet API’si](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) ile bunu yapabilirsiniz.
+Müşteriler, son kullanıcılar için [Azure portalı](https://portal.azure.com) ve [Uygulama Erişim Paneli](https://myapps.microsoft.com) aracılığıyla ortaya çıkan yerleşik özelliklerle birçok işlem yapabilir. Ancak B2B kullanıcıları için ekleme iş akışını, kuruluşunuzun gereksinimlerine uyacak şekilde özelleştirmeniz gerekebilir.
 
-Davet eden bir kuruluş olarak, kaynaklarınıza erişmesi gereken bireysel harici ortak çalışanların kim olduğunu önceden bilmeyebilirsiniz. Ortak şirketlerdeki kullanıcıların, davet eden kuruluş olarak sizin denetlediğiniz bir dizi ilke ile kendilerini kaydetmesi için bir yol gerekir. Bu senaryo, API’ler aracılığıyla mümkündür. [GitHub’da bunu yapan bir örnek proje](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) vardır.
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>B2B Konuk Kullanıcı kaydı için Azure AD Yetkilendirme Yönetimi
 
-Bu GitHub projesi, kuruluşların, uygulamaların erişebildiği uygulamaları belirleyen kurallarla güvenilir ortaklarınız için ilke tabanlı, self servis kayıt özelliği sağlamak amacıyla API’leri nasıl kullanabildiğini gösterir. Ortak kullanıcılar, ihtiyaç duydukları anda kaynaklara erişim elde edebilir. Davet eden kuruluşun el ile eklemesi gerekmeden güvenli şekilde bunu yapabilir. Projeyi istediğiniz bir Azure aboneliğinize kolayca dağıtabilirsiniz.
+Davet edilen bir kuruluş olarak, tek tek dış çalışanların kaynaklarınıza erişmesi gereken sürenin önünde haberdar olmayabilirsiniz. İş ortağı şirketlerinden kullanıcıların denetlediğiniz ilkelerle kaydolmalarına yönelik bir yönteme ihtiyacınız vardır. Diğer kuruluşlardan kullanıcıların erişim istemesine ve Grup, uygulamalar ve SharePoint Online sitelerine atanmasını sağlamak istiyorsanız, [dış kullanıcılara erişimi yöneten](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) ' ni kullanabilirsiniz.
 
-## <a name="as-is-code"></a>As-is kodu
+## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B davet API 'SI
 
-Bu kod, Azure Active Directory B2B davet API’sinin kullanımını göstermek için örnek olarak kullanılabilir duruma getirilir. Geliştirme ekibiniz veya bir ortak tarafından özelleştirilmelidir ve üretim senaryosunda dağıtmanızdan önce gözden geçirilmelidir.
+Kuruluşlar, B2B Konuk kullanıcıları için kendi ekleme deneyimlerini derlemek üzere [Microsoft Graph davet YÖNETICISI API](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) 'sini kullanabilir. Self Servis B2B Konuk Kullanıcı kaydı sunmak istediğinizde [Azure AD yetkilendirme yönetimini](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)kullanmanızı öneririz. Ancak kendi deneyiminizi derlemek isterseniz, özelleştirilmiş davet e-postanızı doğrudan B2B kullanıcısına otomatik olarak göndermek için [davet oluşturma API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) 'sini kullanabilirsiniz. Ya da uygulamanız, davet edilen kullanıcıya kendi davetinizi (iletişim mekanizmanız aracılığıyla) oluşturmak için oluşturma yanıtında döndürülen davet edilen Teredeemurl 'Yi kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

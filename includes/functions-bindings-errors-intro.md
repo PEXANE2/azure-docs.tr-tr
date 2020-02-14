@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 0c04e7812d023cd394b54cf03bcca11a5589b18a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 8573a915c572885b53437843b114aa987be4c66b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564728"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198470"
 ---
 Bir Azure Işlevlerinde oluşan hatalar aşağıdaki kaynaklardan herhangi birinden gelebilir:
 
@@ -39,4 +39,4 @@ Aşağıdaki Tetikleyiciler yerleşik yeniden deneme desteğine sahiptir:
 
 Bu, varsayılan olarak, istekleri beş kata kadar yeniden dener. Beşinci yeniden denemeden sonra, hem Azure kuyruk depolaması hem de Azure Service Bus, bir [zarar kuyruğuna](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages)ileti yazar.
 
-Diğer Tetikleyiciler veya bağlama türleri için yeniden deneme ilkelerini el ile uygulamanız gerekir. El ile uygulamalar, bir [zarar iletisi kuyruğuna](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs)hata bilgilerini yazmayı içerebilir. Bir Poison kuyruğuna yazarak, daha sonra işlemleri yeniden deneme şansınız vardır. Bu yaklaşım, BLOB depolama tetikleyicisi tarafından kullanılan bir yaklaşımdır.
+Diğer Tetikleyiciler veya bağlama türleri için yeniden deneme ilkelerini el ile uygulamanız gerekir. El ile uygulamalar, bir [zarar iletisi kuyruğuna](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs)hata bilgilerini yazmayı içerebilir. Bir Poison kuyruğuna yazarak, daha sonra işlemleri yeniden deneme şansınız vardır. Bu yaklaşım, BLOB depolama tetikleyicisi tarafından kullanılan bir yaklaşımdır.

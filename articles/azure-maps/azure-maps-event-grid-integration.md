@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ca77d4704fb71972090ce0b96dfdb888ef7d1d2c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989068"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190326"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid kullanarak Azure Maps olaylarına tepki verme 
 
-Azure Maps, kullanıcıların diğer hizmetlere olay bildirimleri gönderebilmesi ve aşağı akış süreçlerini tetikleyebilmeleri için Azure Event Grid ile tümleşir. Bu makalenin amacı, Azure Maps olaylarını dinlemek için iş uygulamalarınızı yapılandırmanıza yardımcı olur. Bu hizmet, kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde tepki vermenize olanak tanır. Örneğin, kullanıcılar bir cihaz bölge alanı her girdiğinde bir veritabanını güncelleştirmek, Bilet oluşturmak ve bir e-posta bildirimi göndermek için bir uygulama oluşturabilir.
+Azure Maps, kullanıcıların diğer hizmetlere olay bildirimleri gönderebilmesi ve aşağı akış süreçlerini tetikleyebilmeleri için Azure Event Grid ile tümleşir. Bu makalenin amacı, Azure Maps olaylarını dinlemek için iş uygulamalarınızı yapılandırmanıza yardımcı olur. Bu, kullanıcıların kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde tepki vermesini sağlar. Örneğin, kullanıcılar bir cihaz bölge alanı her girdiğinde bir veritabanını güncelleştirmek, Bilet oluşturmak ve bir e-posta bildirimi göndermek için bir uygulama oluşturabilir.
 
 Azure Event Grid, yayımlama-abonelik modeli kullanan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) ve [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)gibi Azure hizmetleri için yerleşik desteğe sahiptir. Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](https://docs.microsoft.com/azure/event-grid/overview).
 
@@ -32,7 +32,7 @@ Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikler
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge sınırı 'ın içinden içine arasında taşındığında tetiklenir |
+| Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge dışından, içindeki ' dan ' a taşındığında tetiklenir |
 | Microsoft. maps. Geofenceçıkıldı | Alınan koordinatlar belirli bir bölge içinden dışarıya taşındığında tetiklenir |
 | Microsoft. maps. GeofenceResult | Bölge sınırlama sorgusu, durumdan bağımsız olarak bir sonuç döndürdüğünde tetiklenir |
 
@@ -80,9 +80,9 @@ Aşağıdaki örnek, GeofenceResult için şemayı gösterir:
 
 Azure haritalar bölge olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
 
-* Aynı olay işleyicisine olayları yönlendirmek için birden çok abonelik yapılandırılabilir. Olayların belirli bir kaynaktan olduğunu varsaymamak önemlidir. Beklenen kaynaktan geldiğinden emin olmak için ileti konusunu her zaman denetleyin.
-* İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir. Nesneler hakkında bilgilerinizin güncel olup olmadığını anlamak için yanıt üstbilgisindeki `X-Correlation-id` alanını kullanın.
-* Get ve post bölge sınırı API 'si `EnterAndExit`olarak ayarlanan mod parametresi ile çağrıldığında, durumun önceki bölge API çağrısından değiştiği bölge alanındaki her bir geometri için bir Enter veya Exit olayı oluşturulur.
+* Olayları aynı olay işleyicisine yönlendirmek için birden çok abonelik yapılandırın. Olayların belirli bir kaynaktan olduğunu varsaymamak önemlidir. İletinin, beklediği kaynaktan geldiğinden emin olmak için her zaman ileti konusunu denetleyin.
+* Nesneler hakkında bilgilerinizin güncel olup olmadığını anlamak için yanıt üstbilgisindeki `X-Correlation-id` alanını kullanın. İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir.
+* Bölge sınırı API 'sindeki bir get veya post isteği `EnterAndExit`olarak ayarlanan mod parametresi ile çağrıldığında, durumun önceki bölge API çağrısından değiştiği bölge alanındaki her bir geometri için bir Enter veya Exit olayı oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

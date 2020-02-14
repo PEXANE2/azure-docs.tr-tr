@@ -1,5 +1,5 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu özel etki alanları | Microsoft Docs
+title: Azure AD uygulama proxy'sinde özel etki alanları | Microsoft Docs
 description: Azure AD Uygulama Ara Sunucusu 'de özel etki alanlarını yapılandırın ve yönetin.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062515"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185533"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
-Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımladığınızda dış URL *https: \//Expenses-contoso.msappproxy.net*. *Msappproxy.net*yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
+Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımladığınızda dış URL *https:\//Expenses-contoso.msappproxy.net*. *Msappproxy.net*yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
 
 ## <a name="benefits-of-custom-domains"></a>Özel etki alanlarının avantajları
 
@@ -49,7 +49,7 @@ Gereksinimlerinize bağlı olarak DNS yapılandırmanızı ayarlamaya yönelik �
 
 İç kullanıcılarınızın uygulama proxy 'Si aracılığıyla yönlendirilmesini istemiyorsanız, *bölünmüş beyinli BIR DNS*ayarlayabilirsiniz. Bölünmüş bir DNS altyapısı, iç Konakları iç etki alanı ad sunucusuna ve dış ana bilgisayarları, ad çözümlemesi için bir dış etki alanı ad sunucusuna yönlendirir. 
 
-![Bölünmüş beyinli DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![Ayrık beyinli DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>Farklı iç ve dış URL 'Ler 
 
@@ -93,11 +93,11 @@ Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yay
    
 6. Etki alanının zaten bir sertifikası varsa, **sertifika** alanı sertifika bilgilerini görüntüler. Aksi takdirde, **sertifika** alanını seçin. 
    
-   ![Sertifikayı karşıya yüklemek için tıklayın](./media/application-proxy-configure-custom-domain/certificate.png)
+   ![Bir sertifikayı karşıya yüklemek için tıklayın](./media/application-proxy-configure-custom-domain/certificate.png)
    
 7. **SSL sertifikası** SAYFASıNDA, PFX Sertifika dosyanıza gidin ve seçin. Sertifika için parola girin ve **sertifikayı karşıya yükle**' yi seçin. Sertifikalar hakkında daha fazla bilgi için bkz. [özel etki alanları Için sertifikalar](#certificates-for-custom-domains) bölümü.
    
-   ![Sertifikayı karşıya yükle](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
+   ![Sertifikayı Karşıya Yükle](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Özel bir etki alanı yalnızca sertifikasını bir kez karşıya yüklenmesini gerektirir. Bundan sonra, diğer uygulamalar için özel etki alanını kullandığınızda karşıya yüklenen sertifika otomatik olarak uygulanır.
@@ -144,5 +144,5 @@ Bir sertifikanın süresi dolmuşsa, başka bir sertifikayı karşıya yüklemey
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure AD kimlik doğrulamasıyla yayımlanmış uygulamalarınızda [Çoklu oturum açmayı etkinleştirin](application-proxy-configure-single-sign-on-with-kcd.md) .
-* Yayınlanan uygulamalarınıza [koşullu erişimi etkinleştirin](../conditional-access/technical-reference.md#cloud-apps-assignments) .
+* Yayınlanan uygulamalarınıza [koşullu erişimi etkinleştirin](../conditional-access/overview.md) .
 

@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802838"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190684"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL veritabanı için güvenlik denetimleri
 
@@ -44,8 +44,8 @@ SQL veritabanı hem [tek veritabanı](sql-database-single-index.yml) hem de [yö
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Azure Active Directory (Azure AD) |
-| Yetkilendirme| Evet | None |
+| Kimlik Doğrulama| Evet | Azure Active Directory (Azure AD) |
+| Yetkilendirme| Evet | Hiçbiri |
 
 ## <a name="data-protection"></a>Veri koruma
 
@@ -55,13 +55,13 @@ SQL veritabanı hem [tek veritabanı](sql-database-single-index.yml) hem de [yö
 | Aktarım sırasında şifreleme:<ul><li>Azure ExpressRoute şifrelemesi</li><li>Bir sanal ağda şifreleme</li><li>Sanal ağlar arasında şifreleme</ul>| Evet | HTTPS kullanma. |
 | CMK veya BYOK gibi şifreleme anahtarı işleme| Evet | Hem hizmet tarafından yönetilen hem de müşteri tarafından yönetilen anahtar işleme sunulur. İkincisi [Azure Key Vault](../key-vault/index.yml)aracılığıyla sunulur. |
 | Azure veri Hizmetleri tarafından sunulan sütun düzeyinde şifreleme| Evet | [Always Encrypted](sql-database-always-encrypted.md)üzerinden. |
-| Şifrelenmiş API çağrıları| Evet | HTTPS/SSL kullanma. |
+| Şifrelenmiş API çağrıları| Evet | HTTPS/TLS kullanma. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma sürümü oluşturma gibi yapılandırma yönetimi desteği| Hayır  | None |
+| Yapılandırma sürümü oluşturma gibi yapılandırma yönetimi desteği| Hayır  | Hiçbiri |
 
 ## <a name="additional-security-controls-for-sql-database"></a>SQL veritabanı için ek güvenlik denetimleri
 

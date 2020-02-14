@@ -1,6 +1,6 @@
 ---
 title: Sertifikalarla güvenli B2B iletileri
-description: Enterprise Integration Pack Azure Logic Apps içindeki güvenli B2B iletilerine sertifika ekleme
+description: Enterprise Integration Pack Azure Logic Apps içindeki B2B iletilerinin güvenliğini sağlamaya yardımcı olmak için sertifikalar ekleyin
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,19 +8,19 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790677"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191394"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>Sertifikalarla güvenli B2B iletileri
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Sertifikaları kullanarak B2B iletileri için güvenliği geliştirme
 
-B2B iletişimini gizli tutmanız gerektiğinde, tümleştirme hesabınıza sertifikalar ekleyerek kurumsal tümleştirme uygulamalarınızın, özellikle mantıksal uygulamalarınızın B2B iletişimini güvenli hale getirebilirsiniz. Sertifikalar, elektronik iletişimlerdeki katılımcılar için kimlikleri denetleyen ve bu yollarla iletişimin güvenliğini sağlamanıza yardımcı olan dijital belgelerdir:
+B2B iletişimini gizli tutmanız gerektiğinde, tümleştirme hesabınıza sertifikalar ekleyerek kurumsal tümleştirme uygulamalarınızda ve özellikle mantıksal uygulamalarda B2B iletişimi için güvenliği artırabilirsiniz. Sertifikalar, elektronik iletişimlerdeki katılımcılar için kimlikleri denetleyen ve bu yollarla iletişimin güvenliğini sağlamanıza yardımcı olan dijital belgelerdir:
 
 * İleti içeriğini şifreleyin.
-* İletileri dijital olarak imzala. 
+* İletileri dijital olarak imzala.
 
 Bu sertifikaları, kurumsal tümleştirme uygulamalarınızda kullanabilirsiniz:
 
@@ -46,7 +46,7 @@ B2B özelliklerine sahip Logic Apps 'te *ortak bir sertifika* kullanmak için ö
 
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
-   | **Adı** | <*sertifika adı*> | Bu örnekte, sertifikanızın adı "publicCert" | 
+   | **Ad** | <*sertifika adı*> | Bu örnekte, sertifikanızın adı "publicCert" | 
    | **Sertifika türü** | Genel | Sertifikanızın türü |
    | **Sertifika** | <*sertifikası-dosya adı*> | Karşıya yüklemek istediğiniz sertifika dosyasını bulmak ve seçmek için, **sertifika** kutusunun yanındaki klasör simgesini seçin. |
    ||||
@@ -85,7 +85,7 @@ Oluşturduğunuz [anlaşmalarda](logic-apps-enterprise-integration-agreements.md
 
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
-   | **Adı** | <*sertifika adı*> | Bu örnekte, sertifikanızın adı "privateCert" | 
+   | **Ad** | <*sertifika adı*> | Bu örnekte, sertifikanızın adı "privateCert" | 
    | **Sertifika türü** | Özel | Sertifikanızın türü |
    | **Sertifika** | <*sertifikası-dosya adı*> | Karşıya yüklemek istediğiniz sertifika dosyasını bulmak ve seçmek için, **sertifika** kutusunun yanındaki klasör simgesini seçin. Özel anahtar için bir Anahtar Kasası kullanırken, karşıya yüklenen dosya ortak sertifika olacaktır. | 
    | **Kaynak Grubu** | <*Integration-Account-Resource-group*> | Bu örnekte "MyResourceGroup" olan tümleştirme hesabınızın kaynak grubu | 

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902432"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198113"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme (klasik)
 
@@ -55,10 +55,13 @@ Yapılandırmaya başlamadan önce, aşağıdakilere sahip olduğunuzu doğrulay
 
 * Her şirket içi konum için uyumlu VPN donanımı. Kullanmak istediğiniz cihazın uyumlu olduğu bilinen bir şey olup olmadığını doğrulamak için [sanal ağ bağlantısı IÇIN VPN cihazları hakkında](vpn-gateway-about-vpn-devices.md) ' yı denetleyin.
 * Her VPN aygıtı için dışarıdan kullanıma açık bir genel IPv4 IP adresi. IP adresi bir NAT 'ın arkasında bulunamıyor. Bu gereksinim.
-* Azure PowerShell cmdlet’lerinin en yeni sürümünü yüklemeniz gerekir. Kaynak Yöneticisi sürümüne ek olarak hizmet yönetimi (SM) sürümünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview) .
 * VPN donanımınızı yapılandırırken yetereden bir kişi. VPN cihazınızı nasıl yapılandıracağınızı veya çalıştıran biriyle nasıl çalışacağına ilişkin kesin bir anlaya sahip olmanız gerekir.
 * Sanal ağınız için kullanmak istediğiniz IP adresi aralıkları (henüz bir oluşturmadıysanız).
 * Bağlanacağınız her yerel ağ sitesinin IP adresi aralıkları. Bağlanmak istediğiniz her yerel ağ sitesi için IP adresi aralıklarının çakışmadığından emin olmanız gerekir. Aksi takdirde, portal veya REST API karşıya yüklenen yapılandırmayı reddeder.<br>Örneğin, 10.2.3.0/24 IP adres aralığını içeren iki yerel ağ siteniz varsa ve hedef adresi 10.2.3.3 olan bir paketiniz varsa, Azure, adres aralıkları örtüştiğinden paketi hangi siteye göndermek istediğinizi bilmez. Azure, yönlendirme sorunlarını engellemek için çakışan aralıklar içeren bir yapılandırma dosyasını karşıya yüklemeye izin vermez.
+
+### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. siteden siteye VPN oluşturma
 Dinamik yönlendirme ağ geçidi ile siteden siteye VPN zaten varsa harika! [Sanal ağ yapılandırma ayarlarını dışarı aktarmaya](#export)devam edebilirsiniz. Aksi takdirde, şunları yapın:
@@ -72,6 +75,19 @@ Dinamik yönlendirme ağ geçidi ile siteden siteye VPN zaten varsa harika! [San
 2. Şu yönergeleri kullanarak dinamik yönlendirme ağ geçidi yapılandırın: [bir VPN Gateway yapılandırın](vpn-gateway-configure-vpn-gateway-mp.md). Ağ Geçidi türü için **dinamik yönlendirme** ' yi seçtiğinizden emin olun.
 
 ## <a name="export"></a>2. ağ yapılandırma dosyasını dışarı aktarma
+
+PowerShell konsolunuzu yükseltilmiş haklarla açın. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
+
+```powershell
+azure config mode asm
+```
+
+Hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
+
+```powershell
+Add-AzureAccount
+```
+
 Aşağıdaki komutu çalıştırarak Azure ağ yapılandırma dosyanızı dışarı aktarın. Dosyanın konumunu, gerekirse farklı bir konuma dışarı aktarılacak şekilde değiştirebilirsiniz.
 
 ```powershell

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494496"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198897"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgular çalıştırma
 
@@ -60,7 +60,9 @@ Uygulamalar, Azure depolama veya Azure Data Lake Storage gibi uzak depolamada bu
 
     ![Etkileşimli Spark SQL sorgusunun durumu](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Etkileşimli Spark SQL sorgusunun durumu")
 
-2. Aşağıdaki kodu çalıştırarak bir dataframe ve geçici bir tablo (**hvac**) oluşturun.
+1. Döndürülen oturum kimliği ' ni aklınızda yapın. Yukarıdaki resimden oturum kimliği 0 ' dır. İsterseniz `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` ' a giderek oturum ayrıntılarını alabilirsiniz; burada CLUSTERNAME, Spark Kümenizin adı, KIMLIK ise oturum kimliği numarasıdır.
+
+1. Aşağıdaki kodu çalıştırarak bir dataframe ve geçici bir tablo (**hvac**) oluşturun.
 
     ```python
     # Create a dataframe and table from sample data

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964098"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186629"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi gerektir (Önizleme)
 
@@ -36,7 +36,7 @@ Koşullu erişim terminolojisinde, bu istemci uygulamalarının ilke bir *Uygula
 
 ![Koşullu Erişim](./media/app-protection-based-conditional-access/05.png)
 
-İlkeyle korunan istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](technical-reference.md#approved-client-app-requirement).
+İlkeyle korunan istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
 
 Uygulama koruma tabanlı koşullu erişim ilkelerini, [cihaz tabanlı koşullu erişim ilkeleri](require-managed-devices.md)gibi diğer ilkelerle birleştirebilirsiniz. Bu şekilde, hem kişisel hem de kurumsal cihazların verilerini koruma konusunda esneklik sağlayabilirsiniz.
 
@@ -55,8 +55,8 @@ Uygulama koruma tabanlı koşullu erişim ilkelerini, [cihaz tabanlı koşullu e
 
 Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 
-- [Uygulama koruma ilkesi gereksinimi](technical-reference.md#app-protection-policy-requirement) teknik başvurusu.
-- [Onaylanan istemci uygulaması gereksinimi](technical-reference.md#approved-client-app-requirement) teknik başvurusu.
+- [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-grant.md).
+- [Onaylanan istemci uygulaması gereksinimi](concept-conditional-access-grant.md).
 - [Azure Active Directory ' deki Koşullu erişimin](overview.md)temel kavramları.
 - [Koşullu erişim ilkesini yapılandırma](app-based-mfa.md).
 

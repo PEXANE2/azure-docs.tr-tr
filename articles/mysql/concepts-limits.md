@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/9/2019
-ms.openlocfilehash: 8b3d6ea46c4a88187b70b520457ad34f7e7f36ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 757a061bff72ca9fc34d408cd94cec9966d1157f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975151"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191109"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı'nda sınırlamaları
-Aşağıdaki bölümlerde, kapasitesi, depolama altyapısı desteği, destek ayrıcalığına, veri işleme ifadesi desteği ve veritabanı hizmeti işlevsel sınırları açıklanmaktadır. Ayrıca bkz: [genel kısıtlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) MySQL veritabanı altyapısı için geçerlidir.
+Aşağıdaki bölümlerde, kapasitesi, depolama altyapısı desteği, destek ayrıcalığına, veri işleme ifadesi desteği ve veritabanı hizmeti işlevsel sınırları açıklanmaktadır. Ayrıca bkz. MySQL veritabanı altyapısı için geçerli olan [genel sınırlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) .
 
 ## <a name="maximum-connections"></a>Bağlantı sayısı üst sınırı
 Fiyatlandırma katmanı ve sanal çekirdek başına bağlantıları sayısı aşağıdaki gibidir: 
@@ -38,29 +38,34 @@ Fiyatlandırma katmanı ve sanal çekirdek başına bağlantıları sayısı aş
 Bağlantı sınırı aştıklarında aşağıdaki hata iletisini alabilirsiniz:
 > 1040 (08004). hata: Çok fazla sayıda bağlantı
 
+> [!IMPORTANT]
+> En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek üzere ProxySQL gibi bir bağlantı havuzlayıcı kullanmanızı öneririz.
+
+MySQL 'e yeni istemci bağlantıları oluşturma zaman alır ve bir kez kurulduktan sonra bile bu bağlantılar veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu çözer birçok kısa süreli bağlantı ister. Sonuç olarak gerçek iş yükünüz için daha az kaynak kullanılabilir ve performansı azaltıldı. Boştaki bağlantıları azaltan ve var olan bağlantıları yeniden kullanan bir bağlantı havuzlayıcı bunun önlenmesine yardımcı olur. ProxySQL 'i ayarlama hakkında bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
+
 ## <a name="storage-engine-support"></a>Depolama altyapısı desteği
 
-### <a name="supported"></a>Desteklenen
-- [Innodb](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
+### <a name="supported"></a>Destekleniyor
+- [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
 - [BELLEK](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
-- [KARA DELİK](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
-- [ARŞİV](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
-- [FEDERASYON](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
+- [KARA DELIK](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
+- [ARŞIVLIYORSANıZ](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
+- [Federasyon](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privilege-support"></a>Ayrıcalık desteği
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - DBA rol: birçok sunucu parametreleri ve ayarları yanlışlıkla sunucu performansının düşmesine neden veya DBMS ACID özelliklerini negate. Bu nedenle, bir ürün düzeyinde SLA ve hizmet bütünlüğü korumak için bu hizmeti DBA rol kullanıma sunmuyor. Yeni bir veritabanı örneği oluşturulduğunda bu oluşturulur, varsayılan kullanıcı hesabı, veritabanı yönetilen örneğine DDL ve DML deyimleri çoğunu gerçekleştirmek bu kullanıcı sağlar. 
-- Süper ayrıcalık: benzer şekilde [Süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) de sınırlıdır.
+- Süper ayrıcalık: benzer [süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) da kısıtlıdır.
 - DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, bir mysqldump gerçekleştirirken `CREATE DEFINER` komutlarını el ile veya `--skip-definer` komutunu kullanarak kaldırın.
 
 ## <a name="data-manipulation-statement-support"></a>Veri işleme ifadesi desteği
 
-### <a name="supported"></a>Desteklenen
-- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilen ve bir UNC yolu (Azure depolama bağlı SMB) yönlendirilir.
+### <a name="supported"></a>Destekleniyor
+- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bir UNC yoluna (SMB üzerinden bağlanmış Azure depolama) yönlendirilmelidir.
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - `SELECT ... INTO OUTFILE`
@@ -72,7 +77,7 @@ Bağlantı sınırı aştıklarında aşağıdaki hata iletisini alabilirsiniz:
 - Sunucu depolama boyutunu küçültme desteklenmiyor.
 
 ### <a name="server-version-upgrades"></a>Sunucu sürümü yükseltme
-- Ana veritabanı altyapısı sürümleri arasında otomatik geçişi şu anda desteklenmiyor. Bir sonraki ana sürümüne yükseltmek istiyorsanız, olması bir [döküm ve geri yükleme](./concepts-migrate-dump-restore.md) yeni altyapısı sürümü ile oluşturulmuş bir sunucu için.
+- Ana veritabanı altyapısı sürümleri arasında otomatik geçişi şu anda desteklenmiyor. Bir sonraki ana sürüme yükseltmek isterseniz, bir dökümünü alın ve yeni altyapı sürümüyle oluşturulmuş bir sunucuya [geri yükleyin](./concepts-migrate-dump-restore.md) .
 
 ### <a name="point-in-time-restore"></a>belirli bir noktaya geri yükleme
 - PITR özelliğini kullanırken, yeni sunucuya bağlı olduğu sunucusuyla aynı yapılandırmaları ile oluşturulur.
@@ -85,8 +90,8 @@ Bağlantı sınırı aştıklarında aşağıdaki hata iletisini alabilirsiniz:
 - Fiyatlandırma Katmanı başına depolama boyutu sınırları için lütfen [fiyatlandırma katmanlarına](concepts-pricing-tiers.md) bakın.
 
 ## <a name="current-known-issues"></a>Bilinen geçerli sorunlar
-- Bağlantı kurulduktan sonra MySQL sunucu örneğinde yanlış sunucu sürümünü görüntüler. Doğru sunucu örneği altyapı sürümü almak için kullanın `select version();` komutu.
+- Bağlantı kurulduktan sonra MySQL sunucu örneğinde yanlış sunucu sürümünü görüntüler. Doğru sunucu örneği altyapısı sürümünü almak için `select version();` komutunu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Her hizmet katmanında nelerin kullanılabildiğini](concepts-pricing-tiers.md)
-- [MySQL veritabanı için desteklenen sürümler](concepts-supported-versions.md)
+- [Her hizmet katmanında kullanılabilen özellikler](concepts-pricing-tiers.md)
+- [Desteklenen MySQL veritabanı sürümleri](concepts-supported-versions.md)

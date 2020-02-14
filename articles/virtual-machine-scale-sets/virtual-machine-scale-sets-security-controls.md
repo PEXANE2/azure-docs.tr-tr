@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51ddd4f3775ae8e41c0d0bdd4ed8a3a2a59b7db4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4007f4adeee065fe32492d3bd16f3a06d24e7d96
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271787"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190603"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için güvenlik denetimleri
 
@@ -40,18 +40,18 @@ Bu makale, Azure sanal makine ölçek kümelerine yerleşik olarak bulunan güve
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet |  |
+| Kimlik Doğrulama| Evet |  |
 | Yetkilendirme| Evet |  |
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Bkz. [Sanal Makine Ölçek Kümeleri Için Azure disk şifrelemesi](disk-encryption-overview.md). |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Azure sanal makineleri [ExpressRoute](/azure/expressroute) ve VNET şifrelemesini destekler. Bkz. [VM 'lerde geçiş içi şifreleme](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri tarafından yönetilen anahtarlar desteklenen bir Azure şifreleme senaryosudur; bkz. [Sanal Makine Ölçek Kümeleri Için bkz. Azure disk şifrelemesi](disk-encryption-overview.md)|
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
-| Şifrelenmiş API çağrıları| Evet | HTTPS ve SSL aracılığıyla. |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |
+| Şifrelenmiş API çağrıları| Evet | HTTPS ve TLS aracılığıyla. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 

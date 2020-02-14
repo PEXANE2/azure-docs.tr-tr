@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 33bdf718e74011dbd7adedd766ebc90923fffb83
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547294"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189832"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama bağlamaları
 
@@ -21,7 +21,7 @@ Bu makalede Azure Işlevleri 'nde Azure kuyruk depolama bağlamalarıyla nasıl 
 
 ## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2. x ' de verilmiştir. Paket için kaynak kodu konusu [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub deposu.
+Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2. x ' de verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub deposundadır.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -29,7 +29,7 @@ Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/
 
 ## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
-Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet paketi, sürüm 3. x içinde verilmiştir. Paket için kaynak kodu konusu [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub deposu.
+Kuyruk depolama bağlamaları [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub deposundadır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -61,7 +61,7 @@ public static class QueueFunctions
 
 Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# betik (. CSX)](functions-reference-csharp.md) kodunda bir sıra tetikleyicisi bağlamasını gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -78,7 +78,7 @@ Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# 
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -116,7 +116,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir kuyruk tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -133,7 +133,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir kuyruk tetikleyicisi
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 > [!NOTE]
 > Ad parametresi, kuyruk öğesi yükünü içeren JavaScript kodunda `context.bindings.<name>` olarak yansıtır. Bu yük aynı zamanda işleve ikinci parametre olarak geçirilir.
@@ -255,7 +255,7 @@ Aşağıdaki Java örneğinde, kuyruğa `myqueuename`tetiklenen iletiyi günlü�
   }
   ```
 
-  Tam bir örnek için bkz. [tetikleyici - C# örneği](#trigger).
+  Tam bir örnek için bkz. [tetikleyici- C# örnek](#trigger).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -275,10 +275,10 @@ Aşağıdaki Java örneğinde, kuyruğa `myqueuename`tetiklenen iletiyi günlü�
 
 Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
-* `QueueTrigger` Özniteliğin `Connection` özelliği.
-* `StorageAccount` Özniteliği aynı parametresine uygulanan `QueueTrigger` özniteliği.
-* `StorageAccount` İşleve uygulanmış bir öznitelik.
-* `StorageAccount` Sınıfına uygulanan bir öznitelik.
+* `QueueTrigger` özniteliğin `Connection` özelliği.
+* `StorageAccount` özniteliği `QueueTrigger` özniteliğiyle aynı parametreye uygulandı.
+* İşleve uygulanan `StorageAccount` özniteliği.
+* Sınıfına uygulanan `StorageAccount` özniteliği.
 * "AzureWebJobsStorage" uygulama ayarı.
 
 # <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
@@ -324,15 +324,15 @@ public class QueueTriggerDemo {
 
 ## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `QueueTrigger` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `QueueTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok| Ayarlanmalıdır `queueTrigger`. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction**| Yok | Yalnızca *function. JSON* dosyasında. Ayarlanmalıdır `in`. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | Yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
-|**queueName** | **queueName**| Yoklamaya yönelik kuyruğun adı. |
-|**bağlantı** | **bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
+|**type** | yok| `queueTrigger`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction**| yok | Yalnızca *function. JSON* dosyasında. `in`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
+|**Adı** | **Adı**| Yoklamaya yönelik kuyruğun adı. |
+|**bağlanma** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -447,7 +447,7 @@ public static class QueueFunctions
 
 Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# betik (. CSX)](functions-reference-csharp.md) kodunda bir http tetikleyici bağlamasını gösterir. İşlevi, alınan her HTTP isteği için bir **Customqueuemessage** nesne yüküne sahip bir kuyruk öğesi oluşturur.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -474,7 +474,7 @@ Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [ C# 
 }
 ```
 
-[Yapılandırma](#output---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 Tek bir C# sıra iletisi oluşturan betik kodu aşağıda verilmiştir:
 
@@ -508,7 +508,7 @@ public static void Run(
 
 Aşağıdaki örnek, bir *function. JSON* DOSYASıNDAKI bir http tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, alınan her HTTP isteği için bir kuyruk öğesi oluşturur.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -535,7 +535,7 @@ Aşağıdaki örnek, bir *function. JSON* DOSYASıNDAKI bir http tetikleyicisi b
 }
 ```
 
-[Yapılandırma](#output---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -641,7 +641,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)' ı kullanın.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs)' ı kullanın.
 
 Özniteliği bir `out` parametresi veya işlevin dönüş değeri için geçerlidir. Aşağıdaki örnekte gösterildiği gibi özniteliğin Oluşturucusu sıranın adını alır:
 
@@ -665,7 +665,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Tam bir örnek için bkz. [çıkış - C# örneği](#output).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output).
 
 Sınıf, yöntem veya parametre düzeyinde depolama hesabını belirtmek için `StorageAccount` özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. tetikleyici-öznitelikler.
 
@@ -716,15 +716,15 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Queue` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Queue` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Ayarlanmalıdır `queue`. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction** | Yok | Ayarlanmalıdır `out`. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | Yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.|
-|**queueName** |**queueName** | Kuyruğun adı. |
-|**bağlantı** | **bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
+|**type** | yok | `queue`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | yok | `out`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.|
+|**Adı** |**Adı** | Kuyruğun adı. |
+|**bağlanma** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -799,7 +799,7 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
 
 > [!NOTE]
-> İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
+> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
 
 ```json
 {

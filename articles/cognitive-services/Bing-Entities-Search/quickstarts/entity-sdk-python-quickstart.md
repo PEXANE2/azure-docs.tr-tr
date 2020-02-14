@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 02/11/2020
 ms.author: aahi
-ms.openlocfilehash: 33ab516b5b501a79ba84c5aba9c3231634f3c662
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6b62f7ab95f7b2720434c0cf59cce33b0adb1b4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448705"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201246"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Hızlı Başlangıç: Python ile Bing Varlık Arama SDK'sı
 
 Python için Bing Varlık Arama SDK ile varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)' da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Python [2. x veya 3. x](https://www.python.org/)
 
@@ -47,16 +47,17 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarma deyimlerini ekleyin. 
 
     ```python
-    from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
+    from azure.cognitiveservices.search.entitysearch import EntitySearchClient
     from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Abonelik anahtarınız için bir değişken oluşturun ve ile yeni bir `CognitiveServicesCredentials` nesnesi oluşturarak istemciyi oluşturun.
+2. Abonelik anahtarınız ve uç noktanız için bir değişken oluşturun. Anahtarınızla yeni bir `CognitiveServicesCredentials` nesnesi oluşturarak istemciyi örneğini oluşturun.
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
-    client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
+    endpoint = "YOUR-ENDPOINT"
+    client = EntitySearchclient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 ## <a name="send-a-search-request-and-receive-a-response"></a>Arama isteği gönderme ve yanıt alma

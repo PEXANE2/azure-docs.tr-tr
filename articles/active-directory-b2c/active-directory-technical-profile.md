@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f00bebfbab7b3726930e212893ae9dd2f5c17c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835802"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193486"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -253,7 +253,7 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
 ```
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | İşlem | Evet | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Hayır | Kullanıcı nesnesi dizinde yoksa bir hata oluştur. Olası değerler: `true` veya `false`. |
@@ -262,6 +262,7 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
 | Usermessageifclaimsprincıpalalreadyexists | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
 | Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md). |
 | ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız bunu `true`olarak ayarlayın. |
 
 
 

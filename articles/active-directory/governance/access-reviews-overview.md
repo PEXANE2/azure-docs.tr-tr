@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932652"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185748"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -58,13 +58,13 @@ Gözden geçirmek istediğinize bağlı olarak, Azure AD erişim gözden geçirm
 | --- | --- | --- | --- |
 | Güvenlik grubu üyeleri</br>Office grubu üyeleri | Belirtilen gözden geçirenler</br>Grup sahipleri</br>Kendi kendini gözden geçirme | Azure AD erişim gözden geçirmeleri</br>Azure AD grupları | Erişim paneli |
 | Bağlı bir uygulamaya atandı | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | Azure AD erişim gözden geçirmeleri</br>Azure AD kurumsal uygulamaları (önizlemede) | Erişim paneli |
-| Azure AD rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
-| Azure Kaynak rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Azure AD rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portalı |
+| Azure Kaynak rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portalı |
 
 
-## <a name="onboard-access-reviews"></a>Erişim gözden geçirmeleri ekleme
+## <a name="create-access-reviews"></a>Erişim incelemeleri oluşturma
 
-Erişim gözden geçirmeleri eklemek için aşağıdaki adımları izleyin.
+Erişim İncelemeleri oluşturmak için aşağıdaki adımları izleyin:
 
 1. Erişim incelemelerini yönetmek ve genel yönetici veya Kullanıcı Yöneticisi olarak oturum açmak için [Azure Portal](https://portal.azure.com) gidin.
 
@@ -74,13 +74,9 @@ Erişim gözden geçirmeleri eklemek için aşağıdaki adımları izleyin.
 
 1. **Identity idare**seçin.
 
-1. **Erişim İncelemeleri**' ne tıklayın.
- 
-    ![Erişim İncelemeleri başlangıç sayfası](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. Başlarken sayfasında, **erişim gözden geçirmesi oluştur** düğmesine tıklayın.
 
-1. Sayfasında, **Şimdi** Ekle düğmesine tıklayın.
-    
-      ![Bulunan erişim İncelemeleri](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![Erişim İncelemeleri başlangıç sayfası](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>Erişim incelemeleri hakkında bilgi edinin

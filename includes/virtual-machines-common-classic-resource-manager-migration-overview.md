@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: aa03560160795e33a5d26a88d421894c6e20c61f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77089046"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192961"
 ---
 Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik ' ten Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ kullanarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır siteden siteye ağ geçitleri. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -100,7 +100,7 @@ Bazı özellikler ve Konfigürasyonlar Şu anda desteklenmiyor; Aşağıdaki bö
 ### <a name="unsupported-features"></a>Desteklenmeyen özellikler
 Aşağıdaki özellikler Şu anda desteklenmemektedir. İsteğe bağlı olarak bu ayarları kaldırabilir, VM 'Leri geçirebilir ve sonra Kaynak Yöneticisi dağıtım modelindeki ayarları yeniden etkinleştirebilirsiniz.
 
-| Kaynak sağlayıcısı | Özellik | Öneri |
+| Kaynak sağlayıcı | Özellik | Öneri |
 | --- | --- | --- |
 | Bilgi İşlem | İlişkilendirilmemiş sanal makine diskleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
 | Bilgi İşlem | Sanal makine görüntüleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
@@ -122,7 +122,7 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 | Bilgi İşlem | Web/çalışan rollerini içeren bulut Hizmetleri | Bu şu anda desteklenmiyor. |
 | Bilgi İşlem | Birden fazla kullanılabilirlik kümesi veya birden çok kullanılabilirlik kümesi içeren bulut hizmetleri. |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce sanal makineleri aynı Kullanılabilirlik kümesine taşıyın. |
 | Bilgi İşlem | Azure Güvenlik Merkezi uzantısı olan VM | Azure Güvenlik Merkezi, güvenliğini izlemek ve uyarıları yükseltmek için sanal makinelerinizdeki uzantıları otomatik olarak kurar. Bu uzantılar genellikle abonelikte Azure Güvenlik Merkezi ilkesi etkinse otomatik olarak yüklenir. Sanal makineleri geçirmek için, abonelikteki Güvenlik Merkezi ilkesini devre dışı bırakın ve bu, güvenlik merkezi izleme uzantısını sanal makinelerden kaldırır. |
-| Bilgi İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) yönergeleri izleyin.  |
+| Bilgi İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) yönergeleri izleyin.  |
 | Bilgi İşlem | Azure Site Recovery uzantılı VM | Bu uzantılar Azure Site Recovery hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Site Recovery ile kullanılan depolama alanı geçişi çalışır, ancak geçerli çoğaltma etkilenecek. Depolama geçişten sonra VM çoğaltmasını devre dışı bırakıp etkinleştirmeniz gerekir. |
 | Ağ |Sanal makineler ve web/çalışan rolleri içeren sanal ağlar |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce web/çalışan rollerini kendi sanal ağına taşıyın. Klasik sanal ağ geçirildikten sonra geçirilmiş Azure Resource Manager sanal ağı, daha önce olduğu gibi benzer yapılandırmalar elde etmek için klasik sanal ağla eşlenebilir.|
 | Ağ | Klasik Express Route devreleri |Bu şu anda desteklenmiyor. IaaS geçişine başlamadan önce bu devrelerin Azure Resource Manager geçirilmesi gerekir. Daha fazla bilgi edinmek için bkz. [ExpressRoute devreleri klasik 'dan Kaynak Yöneticisi dağıtım modeline taşıma](../articles/expressroute/expressroute-move.md).|

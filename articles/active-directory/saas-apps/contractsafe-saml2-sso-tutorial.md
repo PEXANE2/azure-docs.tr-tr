@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291541"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185628"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Öğretici: ContractSafe SAML2 SSO ile çoklu oturum açma (SSO) Azure Active Directory tümleştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide, ContractSafe SAML2 SSO 'yu Azure Active Directory (Azure AD) il
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için gerekli olanlar:
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki biçimi kullanarak bir URL girin: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Contractsafe SAML2 SSO istemci destek ekibine](mailto:donne@contractsafe.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen biçimlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Contractsafe SAML2 SSO istemci destek ekibine](mailto:support@contractsafe.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen biçimlere de başvurabilirsiniz.
 
 1. ContractSafe SAML2 SSO 'SU, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -111,12 +111,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 Bu bölümde, **B. Simon**adlı Azure Portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına `username@companydomain.extension` biçiminde bir e-posta adresi girin. `B.Simon@contoso.com` bunun bir örneğidir.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’u seçin.
+   1. **Oluştur**'u seçin.
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -138,11 +138,11 @@ Bu bölümde, ContractSafe SAML2 SSO 'ya erişim vererek **B. Simon** 'U Azure S
 
 ## <a name="configure-contractsafe-saml2-sso"></a>ContractSafe SAML2 SSO yapılandırma
 
-**Contractsafe SAML2 SSO** tarafında SSO 'yu yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal [contractsafe SAML2 SSO destek ekibine](mailto:donne@contractsafe.com)göndermeniz gerekir. Ekip, SAML SSO bağlantısının her iki tarafında da düzgün şekilde kurulmasından sorumludur.
+**Contractsafe SAML2 SSO** tarafında SSO 'yu yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal [contractsafe SAML2 SSO destek ekibine](mailto:support@contractsafe.com)göndermeniz gerekir. Ekip, SAML SSO bağlantısının her iki tarafında da düzgün şekilde kurulmasından sorumludur.
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>ContractSafe SAML2 SSO test kullanıcısı oluşturma
 
-ContractSafe SAML2 SSO 'da B. Simon adlı bir kullanıcı oluşturun. ContractSafe SAML2 SSO platformunda kullanıcıları eklemek için [Contractsafe SAML2 SSO destek ekibi](mailto:donne@contractsafe.com) ile çalışın. SSO kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+ContractSafe SAML2 SSO 'da B. Simon adlı bir kullanıcı oluşturun. ContractSafe SAML2 SSO platformunda kullanıcıları eklemek için [Contractsafe SAML2 SSO destek ekibi](mailto:support@contractsafe.com) ile çalışın. SSO kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
@@ -154,6 +154,6 @@ Erişim panelini kullanarak Azure AD SSO yapılandırmanızı test edin. Erişim
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile ContractSafe SAML2 SSO 'yu deneyin](https://aad.portal.azure.com/)

@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 59670742586f596a817ad52383160a38358a6786
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fda65e900b7faf0ff77d533e8dbfd2e7369ad602
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911377"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198148"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure haritalar 'a veri geri bildirimi sağlama
 
-Azure Maps, 2018 Mayıs 'dan itibaren, yeni harita verileri, kullanımı kolay REST API 'Leri ve kurumsal müşterilerimizi çeşitli iş kullanımı durumlarında desteklemek için güçlü SDK 'Lar sağlamak için de kullanılabilir. Gerçek dünya her saniye değişmekte ve müşterilerimiz için dijital bir gösterim sağlamamız önemlidir. Açık veya kapalı tesisler için planlama yapan müşterilerimiz, doğru tesislerde teslim, bakım veya müşteri hizmetini verimli bir şekilde planlayabilmeleri için haritalarımızın hemen güncelleştirilmesini sağlamaktır. Müşterilerin doğrudan veri geri bildirimi sağlaması için Azure haritalar veri geri bildirim sitesini oluşturduk. Müşterilerin veri geri bildirimi, doğrudan veri sağlayıcılarımıza ve eşleme ürünlerimize hızlı bir şekilde değerlendirme ve geri bildirim birleştirebilen harita düzenleyicilerimize gider.  
+Azure haritalar 2018 Mayıs 'tan itibaren kullanılabilir. Azure haritalar, yeni harita verileri, kullanımı kolay REST API 'Leri ve kurumsal müşterilerimizi farklı türde iş kullanım örnekleri ile desteklemeye yönelik güçlü SDK 'Lar sağlıyor. Gerçek dünya her saniye değiştiriliyor ve müşterilerimiz için dijital bir gösterim sağlamamız önemlidir. Açık veya kapalı tesisler için planlama yapan müşterilerimiz, haritalarımıza hemen güncelleştirmek için gerekli olmalıdır. Bu nedenle, doğru tesislerde teslim, bakım veya müşteri hizmetini verimli bir şekilde planlayabilirler. Müşterilerin doğrudan veri geri bildirimi sağlaması için Azure haritalar veri geri bildirim sitesini oluşturduk. Müşterilerin veri geri bildirimi doğrudan veri sağlayıcılarımıza ve harita düzenleyicilerimize gider. Bunlar, eşleme ürünlerimize hızlı bir şekilde değerlendirme yapabilir ve geri bildirim ekleyebilir.  
 
 [Azure haritalar veri geri bildirim sitesi](https://feedback.azuremaps.com) , müşterilerinizin özellikle ilgi çekici ve mesken adreslerdeki harita verilerine geri bildirim sağlaması için kolay bir yol sunar. Bu makalede, Azure Maps geri bildirim sitesini kullanarak farklı türlerde geri bildirimde bulunmak için size kılavuzluk eder.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Bir iş yeri veya mesken adresi ekleyin 
 
-Haritada eksik bir ilgi veya konut adresi noktası için geri bildirim sağlamak isteyebilirsiniz. Bunu iki şekilde yapabilirsiniz, Azure Map veri geri bildirim sitesini açın ve eksik konumun koordinatlarını aratıp "bir konum Ekle" ye tıklayın.
+Eksik bir ilgi noktası veya mesken adresi hakkında geri bildirim sağlamak isteyebilirsiniz. Bunu iki şekilde yapabilirsiniz. Azure Map veri geri bildirim sitesini açın, eksik konumun koordinatlarını arayın ve "bir konum Ekle" ye tıklayın.
 
   ![eksik konumu ara](./media/how-to-use-feedback-tool/search-poi.png)
 
-Ya da eşlemle etkileşim kurabilir ve bir PIN 'i koordine etmek için konuma tıklayabilir ve "yer Ekle" seçeneğine tıklayabilirsiniz. 
+Ya da eşlemesiyle etkileşime geçebilirsiniz. Bir PIN 'i koordinat üzerinde bırakmak için konuma tıklayın ve "bir konum Ekle" ye tıklayın.
 
   ![PIN Ekle](./media/how-to-use-feedback-tool/add-poi.png)
 
@@ -38,27 +38,27 @@ Tıklandıktan sonra, yer için ilgili ayrıntıları sağlamak üzere bir forma
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Bir iş yerini veya mesken adresini çözün 
 
-Geri bildirim sitesi aynı zamanda bir iş yerinin veya bir adresin aranmanıza ve bulunmasına ve doğru olmadıkları takdirde, adresi veya PIN konumunu düzeltmeye yönelik geribildirim sağlamanıza olanak tanır. Adresi gidermek için geri bildirim sağlamak üzere, arama çubuğunu kullanarak bir iş yeri veya mesken adresi arayın. Sonuçlar listesinden ilgilendiğiniz konuma tıklayın ve "Bu yeri düzeltir" düğmesine tıklayın.
+Geri bildirim sitesi ayrıca bir iş yeri veya adres aramanızı ve bulmanızı sağlar. Doğru değilse, adresi veya PIN konumunu düzeltmek için geri bildirim sağlayabilirsiniz. Adresi gidermek için geri bildirim sağlamak üzere, arama çubuğunu kullanarak bir iş yeri veya mesken adresi arayın. Sonuçlar listesinden ilgilendiğiniz konuma tıklayın. "Bu yeri çözme" seçeneğine tıklayın.
 
   ![düzeltilmesi için arama yeri](./media/how-to-use-feedback-tool/fix-place.png)
 
-Adresi gidermek için geri bildirim sağlamak üzere "bir yeri çözün" formu doldurun ve "Gönder" düğmesine tıklayın.
+Adresi gidermek için geri bildirimde bulunmak için, "bir yeri çözme" formunu doldurun ve ardından "Gönder" düğmesine tıklayın.
 
   ![formu onarma](./media/how-to-use-feedback-tool/fix-form.png)
 
-Konumun PIN konumu yanlış ise, "PIN konumu yanlış" şeklindeki "bir yeri düzelt" formundaki onay kutusunu işaretleyin ve PIN 'i doğru konuma taşıyın ve "Gönder" düğmesine tıklayın.
+Yer için PIN konumu yanlış ise, "PIN konumu yanlış" şeklindeki "bir yeri sabitle" formundaki onay kutusunu işaretleyin. PIN 'i doğru konuma taşıyın ve ardından "Gönder" düğmesine tıklayın.
 
   ![PIN konumunu taşı](./media/how-to-use-feedback-tool/move-pin.png)
 
-## <a name="add-a-comment"></a>Açıklama ekle 
+## <a name="add-a-comment"></a>Açıklama Ekle 
 
-Ayrıca, bir konum aramanıza izin veren geri bildirim aracı, konum ile ilgili ayrıntılar için de ücretsiz form metni açıklaması eklemenize olanak tanır. Konum için bir açıklama araması eklemek veya konuma tıklayın ve "Açıklama Ekle" ye tıklayın, yorum yazıp "Gönder" seçeneğine tıklayın. 
+Geri bildirim aracı, bir konumu aramanıza izin vermenin yanı sıra, konum ile ilgili ayrıntılar için de ücretsiz form metni açıklaması eklemenize olanak tanır. Bir açıklama eklemek için konumu arayın veya konuma tıklayın. "Açıklama Ekle" ye tıklayın, bir açıklama yazın ve ardından "Gönder" e tıklayın.
 
   ![Açıklama Ekle](./media/how-to-use-feedback-tool/add-comment.png)
 
 ## <a name="track-status"></a>Durumu izleme 
 
-Ayrıca, "durumu izlemek istiyorum" kutusunu işaretleyerek ve bir istek yaparken e-postanızı sağlamak için isteğinizin durumunu izleyebilirsiniz. E-postada, isteğiniz için güncel durum sağlayan bir izleme bağlantısı alacaksınız. 
+Ayrıca, "durumu izlemek istiyorum" kutusunu işaretleyerek ve bir istek yaparken e-postanızı sağlamak için isteğinizin durumunu izleyebilirsiniz. E-postada, isteğinizin güncel durumunu sağlayan bir izleme bağlantısı alacaksınız. 
 
   ![geri bildirim durumu](./media/how-to-use-feedback-tool/feedback-status.png)
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030888"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198948"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -27,7 +27,7 @@ Hadoop, bir kümedeki birden çok düğümdeki Hizmetleri ve verileri çoğaltar
 HDInsight kümesindeki düğümler Azure sanal makineleri kullanılarak uygulanır. Aşağıdaki bölümlerde HDInsight ile kullanılan tek düğüm türleri ele alınmaktadır.
 
 > [!NOTE]  
-> Küme türü için tüm düğüm türleri kullanılmaz. Örneğin, bir Hadoop kümesi türünün herhangi bir Nimbus düğümü yoktur. HDInsight küme türleri tarafından kullanılan düğümler hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Linux tabanlı Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) ' nın küme türleri bölümü.
+> Küme türü için tüm düğüm türleri kullanılmaz. Örneğin, bir Hadoop kümesi türünün herhangi bir Nimbus düğümü yoktur. HDInsight küme türleri tarafından kullanılan düğümler hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Linux tabanlı Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md#cluster-type) ' nın küme türleri bölümü.
 
 ### <a name="head-nodes"></a>Baş düğümler
 

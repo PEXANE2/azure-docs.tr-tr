@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 17c7949f2bbd6d75343bb2e6825be36b56a20967
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695339"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185822"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>ADAL.NET 'den MSAL.NET 'ye Microsoft Authenticator kullanan iOS uygulamalarını geçirme
 
@@ -25,10 +25,10 @@ ms.locfileid: "76695339"
 
 Nereden başlamanız gerekir? Bu makale, Xamarin iOS uygulamanızı ADAL 'dan MSAL 'e geçirmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, iOS broker ile tümleştirilmiş bir Xamarin iOS uygulamasına zaten sahip olduğunuz varsayılır. Bunu yapmazsanız, doğrudan MSAL.NET 'e taşıyın ve aracı uygulamasını orada başlatın. MSAL.NET içinde iOS Broker 'ı yeni bir uygulamayla çağırma hakkında daha fazla bilgi için [Bu belgelere](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)bakın.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 ### <a name="what-are-brokers"></a>Aracılar nelerdir?
 
@@ -37,7 +37,7 @@ Aracılar, Android ve iOS 'ta Microsoft tarafından sunulan uygulamalardır. (İ
 Bunlar şunları etkinleştirir:
 
 - Çoklu oturum açma.
-- Bazı [koşullu erişim ilkeleri](../conditional-access/overview.md)için gereken cihaz kimliği. Daha fazla bilgi için bkz. [cihaz yönetimi](../conditional-access/conditions.md#device-platforms).
+- Bazı [koşullu erişim ilkeleri](../conditional-access/overview.md)için gereken cihaz kimliği. Daha fazla bilgi için bkz. [cihaz yönetimi](../conditional-access/concept-conditional-access-conditions.md#device-platforms).
 - Uygulama tanımlama doğrulaması, bazı kurumsal senaryolarda de gereklidir. Daha fazla bilgi için bkz. [Intune mobil uygulama yönetimi (MAM)](https://docs.microsoft.com/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>ADAL 'ten MSAL 'e geçiş
@@ -151,7 +151,7 @@ ADAL.NET ve MSAL.NET, aracıyı çağırmak ve aracı yanıtını uygulamaya ger
 <tr><td>
 URL şeması, uygulamanız için benzersizdir.
 </td><td>
-Bir veya birden çok anlık görüntü içerdiği için 
+Bağlamayı içeren 
 
 `CFBundleURLSchemes` adı şunu içermelidir 
 
@@ -189,7 +189,7 @@ ADAL.NET ve MSAL.NET, aracının cihaza yüklenip yüklenmediğini denetlemek i�
 <table>
 <tr><td>Geçerli ADAL kodu:</td><td>MSAL karşılığı:</td></tr>
 <tr><td>
-Kullanımlar 
+Kullanma 
 
 `msauth`
 
@@ -201,7 +201,7 @@ Kullanımlar
 </array>
 ```
 </td><td>
-Kullanımlar 
+Kullanma 
 
 `msauthv2`
 

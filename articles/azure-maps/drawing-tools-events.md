@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911676"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198318"
 ---
 # <a name="drawing-tool-events"></a>Çizim aracı olayları
 
-Bir haritada çizim araçları kullanılırken, Kullanıcı haritada çizilirken belirli olaylara yanıt vermek genellikle yararlı olur. Aşağıdaki tabloda `DrawingManager` sınıfı tarafından desteklenen tüm olaylar listelenmektedir.
+Bir haritada çizim araçları kullanılırken, Kullanıcı haritada çizilirken belirli olaylara yanıt vermek yararlıdır. Bu tablo `DrawingManager` sınıfı tarafından desteklenen tüm olayları listeler.
 
 | Olay | Açıklama |
 |-------|-------------|
 | `drawingchanged` | Bir şekildeki koordinat eklendiğinde veya değiştirildiğinde harekete geçirilir. | 
-| `drawingchanging` | Bir şekil için herhangi bir önizleme koordinatı görüntülenirken tetiklenir. Örneğin, bir koordinat sürüklenirken birden çok kez harekete geçmeyecektir. | 
+| `drawingchanging` | Bir şekil için herhangi bir önizleme koordinatı görüntülenirken tetiklenir. Örneğin, bir koordinat sürüklenirken bu olay birden çok kez harekete geçmeyecektir. | 
 | `drawingcomplete` | Şekil, düzenleme modundan çekilmek veya kullanıma alınması bittiğinde tetiklenir. |
 | `drawingmodechanged` | Çizim modu değiştiğinde harekete geçirilir. Yeni çizim modu olay işleyicisine geçirilir. |
 | `drawingstarted` | Kullanıcı bir şekil çizmeye başladığında veya şekil düzenleme moduna geçirildiğinde tetiklenir.  |
@@ -39,11 +39,11 @@ Aşağıdaki kod, çizim araçları modülündeki olayların nasıl çalıştı�
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıda, çizim araçları olaylarını kullanan bazı yaygın senaryoların örnekleri verilmiştir.
+Çizim araçları olaylarını kullanan bazı yaygın senaryolar görelim.
 
 ### <a name="select-points-in-polygon-area"></a>Çokgen alanında noktaları seçin
 
-Aşağıdaki kod, çokgen alanını (çokgenler, dikdörtgenler ve daireler) temsil eden şekillerin çizimini nasıl izleyeceğinizi ve haritadaki hangi veri noktalarının çizili alanın içinde olduğunu belirlemenizi gösterir. `drawingcomplete` olayı, select mantığını tetiklemek için kullanılır. Select mantığındaki haritadaki tüm veri noktaları, çizilen şeklin Çokgen alanıyla kesişmeyle birlikte işlenir ve test edilir. Bu örnek, uzamsal bir kesişim hesaplamayı gerçekleştirmek için açık kaynaklı [Turf. js](https://turfjs.org/) kitaplığını kullanır.
+Bu kod, Kullanıcı çizimi şekillerindeki bir olayın nasıl izleneceğini gösterir. Bu örnekte, kod çokgenler, dikdörtgenler ve dairelerin şekillerini izler. Ardından, haritadaki hangi veri noktalarının çizilen alanın içinde olduğunu belirler. `drawingcomplete` olayı, select mantığını tetiklemek için kullanılır. Select mantığındaki kod, haritadaki tüm veri noktalarında döngü yapılır. Noktanın ve çizilen şeklin alanının kesişimi olup olmadığını denetler. Bu örnek, uzamsal bir kesişim hesaplamayı gerçekleştirmek için açık kaynaklı [Turf. js](https://turfjs.org/) kitaplığını kullanır.
 
 <br/>
 
@@ -55,7 +55,7 @@ Aşağıdaki kod, çokgen alanını (çokgenler, dikdörtgenler ve daireler) tem
 
 ### <a name="draw-and-search-in-polygon-area"></a>Çokgen alanında çizim ve arama
 
-Aşağıdaki kod, Kullanıcı şekli çizmeyi tamamladıktan sonra bir şekil alanı içindeki ilgi alanları için bir aramanın nasıl gerçekleştirileceğini gösterir. `drawingcomplete` olayı, arama mantığını tetiklemek için kullanılır. Kullanıcı bir dikdörtgen veya Çokgen çizdiğinde, geometri içinde bir arama gerçekleştirilir. Bir daire çizildiyse, bir faiz arama noktası gerçekleştirmek için yarıçap ve orta konum kullanılır. `drawingmodechanged` olayı, kullanıcının çizim moduna ne zaman geçiş yaparken belirlenmesi için kullanılır ve çizim tuvalini temizler.
+Bu kod, Kullanıcı şekli çizmeyi tamamladıktan sonra bir şeklin alanındaki ilgi alanlarını arar. Çerçevenin sağ üst köşesindeki ' kod kalemlerini Düzenle ' seçeneğine tıklayarak kodu değiştirebilir ve yürütebilirsiniz. `drawingcomplete` olayı, arama mantığını tetiklemek için kullanılır. Kullanıcı bir dikdörtgen veya Çokgen çizdiğinde, geometri içinde bir arama gerçekleştirilir. Bir daire çizildiyse, bir faiz arama noktası gerçekleştirmek için yarıçap ve orta konum kullanılır. `drawingmodechanged` olayı, kullanıcının çizim moduna ne zaman geçiş yaptığında ve bu olayın çizim tuvalini temizleyeceğini tespit etmek için kullanılır.
 
 <br/>
 
@@ -67,7 +67,7 @@ Bkz. kalemin <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>çizimi ve çokg
 
 ### <a name="create-a-measuring-tool"></a>Ölçüm aracı oluşturma
 
-Aşağıdaki kod, bir ölçüm aracı oluşturmak için çizim olaylarının nasıl kullanılabileceğini gösterir. `drawingchanging` şekli çizilmekte olduğundan izlemek için kullanılır. Kullanıcı fareyi taşırken, şeklin boyutları hesaplanır. `drawingcomplete` olay, çizdikten sonra şeklin üzerinde son bir hesaplama yapmak için kullanılır. `drawingmodechanged` olayı, kullanıcının çizim moduna ne zaman geçiş yaparken belirlenmesi için kullanılır ve çizim tuvalini ve eski ölçüm bilgilerini temizler.
+Aşağıdaki kod, bir ölçüm aracı oluşturmak için çizim olaylarının nasıl kullanılabileceğini gösterir. `drawingchanging`, şekli çizilmek üzere izlemek için kullanılır. Kullanıcı fareyi taşırken, şeklin boyutları hesaplanır. `drawingcomplete` olay, çizdikten sonra şeklin üzerinde son bir hesaplama yapmak için kullanılır. `drawingmodechanged` olayı, kullanıcının bir çizim moduna ne zaman geçiş yaparken olduğunu tespit etmek için kullanılır. Ayrıca, `drawingmodechanged` olay çizim tuvalini temizler ve eski ölçüm bilgilerini temizler.
 
 <br/>
 

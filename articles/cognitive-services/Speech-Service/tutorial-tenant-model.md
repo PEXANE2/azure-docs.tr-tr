@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118894"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189011"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
 
@@ -79,9 +79,9 @@ Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Offic
 
    > [!NOTE]
    > Kuzey Amerika 'de Office 365 Kurumsal müşterileri bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Müşteri Kasası, müşteri anahtarı veya Office 365 Kamu müşterisiyseniz bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için bkz.:
-   > * [Müşteri Kasası](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
-   > * [Müşteri anahtarı](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Office 365 Kamu](https://www.microsoft.com/microsoft-365/government)
+   > * [Müşteri Kasası](/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Müşteri anahtarı](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365 Kamu](/microsoft-365/government)
 
 1. **Kabul et**’i seçin.
 

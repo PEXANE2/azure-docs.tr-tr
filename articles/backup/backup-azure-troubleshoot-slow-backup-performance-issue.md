@@ -4,12 +4,12 @@ description: Azure Backup performans sorunlarının nedenini tanılamanıza yard
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172578"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198635"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
@@ -25,6 +25,18 @@ Sorun giderme sorunlarını gidermeye başlamadan önce [en son Azure Backup ara
 Ayrıca, yaygın yapılandırma sorunlarından biriyle karşılaşmadığınızdan emin olmak için [Azure Backup hizmeti hakkında SSS](backup-azure-backup-faq.md) 'yi incelemenizi öneririz.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Neden: yedekleme işi iyileştirilmemiş modda çalışıyor
+
+* MARS Aracısı, tüm birimi tarayarak dizin veya dosyalardaki değişiklikleri denetleyerek, USN (güncelleştirme sıra numarası) değişiklik günlüğü veya **en iyi duruma getirilmiş modu** kullanarak yedekleme işini **iyileştirilmiş modda** çalıştırabilir.
+* En iyi duruma getirilmiş mod, aracının birim üzerindeki her dosyayı tarayabilmesi ve değiştirilen dosyaları belirlemede meta verilere göre karşılaştırılabilmesi için yavaş bir moddur.
+* Bunu doğrulamak için, MARS Aracısı konsolundan **Iş ayrıntıları** ' nı açın ve **verilerin aktarımını (iyileştirilmez, daha fazla zaman alabilir)** aşağıda gösterildiği gibi denetleyin:
+
+    ![İyileştirilmemiş modda çalışıyor](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* Aşağıdaki koşullar yedekleme işinin iyileştirilmemiş modda çalışmasına neden olabilir:
+  * İlk yedekleme (Ilk çoğaltma olarak da bilinir), her zaman iyileştirilmemiş modda çalıştırılır
+  * Önceki yedekleme işi başarısız olursa, sonraki zamanlanmış yedekleme işi en iyileştirilmemiş olarak çalışacaktır.
 
 <a id="cause1"></a>
 

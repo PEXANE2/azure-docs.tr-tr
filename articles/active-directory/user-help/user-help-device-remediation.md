@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062192"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190021"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"Buradan alamazsınız" hata iletisiyle ilgili olası düzeltmeler
 
@@ -29,7 +29,7 @@ Burada, kuruluşunuzun sitelerine desteklenmeyen bir tarayıcıdan erişmeye ça
 
 ![Tarayıcı desteğiyle ilgili hata iletisi](media/user-help-device-remediation/browser-version.png)
 
-Bu sorunu gidermek için işletim sisteminize bağlı olarak desteklenen bir tarayıcı yükleyip çalıştırmanız gerekir. Windows 10 kullanıyorsanız, desteklenen tarayıcılar Microsoft Edge, Internet Explorer ve Google Chrome 'u içerir. Farklı bir işletim sistemi kullanıyorsanız, [Desteklenen tarayıcıların](../conditional-access/technical-reference.md#supported-browsers)tüm listesini kontrol edebilirsiniz.
+Bu sorunu gidermek için işletim sisteminize bağlı olarak desteklenen bir tarayıcı yükleyip çalıştırmanız gerekir. Windows 10 kullanıyorsanız, desteklenen tarayıcılar Microsoft Edge, Internet Explorer ve Google Chrome 'u içerir. Farklı bir işletim sistemi kullanıyorsanız, [Desteklenen tarayıcıların](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)tüm listesini kontrol edebilirsiniz.
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Desteklenen bir işletim sistemi kullandığınızdan emin olun
 İşletim sisteminin desteklenen bir sürümünü çalıştırdığınızdan emin olun; örneğin:

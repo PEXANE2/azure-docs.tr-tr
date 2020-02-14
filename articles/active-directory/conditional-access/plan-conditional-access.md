@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880269"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185896"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Nasıl yapılır: Azure Active Directory 'de koşullu erişim dağıtımınızı planlayın
 
@@ -53,7 +53,7 @@ Kuruluşunuz için koşullu erişim ilkeleri oluşturmak için aşağıdaki örn
 |Bir erişim denemesi yapılır:<br>-Bir bulut uygulamasına *<br>-kullanıcılara ve gruplara göre*<br>Kullanarak<br>-Koşul 1 (örneğin, Corp ağı dışında)<br>-Condition 2 (örneğin, cihaz platformları)|(Ve) ile erişim izni verin:<br>-Gereksinim 1 (örneğin, MFA)<br>-Gereksinim 2 (örneğin, cihaz uyumluluğu)|
 |Bir erişim denemesi yapılır:<br>-Bir bulut uygulamasına *<br>-kullanıcılara ve gruplara göre*<br>Kullanarak<br>-Koşul 1 (örneğin, Corp ağı dışında)<br>-Condition 2 (örneğin, cihaz platformları)|(Veya) ile erişim izni verin:<br>-Gereksinim 1 (örneğin, MFA)<br>-Gereksinim 2 (örneğin, cihaz uyumluluğu)|
 
-**Bu durumda** , en azından bir bulut uygulamasına (**ne**) erişmeye çalışan sorumlusu (**kim**) tanımlar. Gerekirse, bir erişim denemesinin **nasıl** gerçekleştirileceğini de dahil edebilirsiniz. Koşullu erişim 'de, kimin, ne ve nasıl koşul olarak bilindiklerinizi tanımlayan öğeler. Daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory koşullar nelerdir?](conditions.md) 
+**Bu durumda** , en azından bir bulut uygulamasına (**ne**) erişmeye çalışan sorumlusu (**kim**) tanımlar. Gerekirse, bir erişim denemesinin **nasıl** gerçekleştirileceğini de dahil edebilirsiniz. Koşullu erişim 'de, kimin, ne ve nasıl koşul olarak bilindiklerinizi tanımlayan öğeler. Daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory koşullar nelerdir?](concept-conditional-access-conditions.md) 
 
 Bunu **yaptığınızda**, ilkenizin yanıtını bir erişim koşulu olarak tanımlarsınız. Yanıtınız içinde, çok faktörlü kimlik doğrulaması (MFA) gibi ek gereksinimlere sahip olan erişimi engeller veya erişim izni verirsiniz. Kapsamlı bir genel bakış için bkz. [Azure Active Directory Koşullu erişim içindeki erişim denetimleri nelerdir?](controls.md)  
 
@@ -116,7 +116,7 @@ MFA 'nın erişime ihtiyacı olan yaygın kullanım örnekleri:
 
 Koşullu erişim ilkeleriyle, riskli olabilecek kimliklerden oturum açma işlemleri için otomatik yanıtlar uygulayabilirsiniz. Bir hesabın tehlikeye düşmesi olasılığı, risk düzeyleri biçiminde ifade edilir. Kimlik koruması ile hesaplanan iki risk düzeyi vardır: oturum açma riski ve Kullanıcı riski. Bir oturum açma riskine yanıt uygulamak için iki seçeneğiniz vardır:
 
-- Koşullu erişim ilkesinde [oturum açma risk koşulu](conditions.md#sign-in-risk)
+- Koşullu erişim ilkesinde [oturum açma risk koşulu](concept-conditional-access-conditions.md#sign-in-risk)
 - Kimlik koruması 'nda [oturum açma risk ilkesi](../identity-protection/howto-sign-in-risk-policy.md) 
 
 Daha fazla özelleştirme seçeneği sağladığından, oturum açma riskini koşul olarak adresleme tercih edilen yöntemdir.
@@ -131,7 +131,7 @@ Bulut kaynaklarınıza erişmek için desteklenen cihazların uzalama, kullanıc
 
 ### <a name="require-approved-client-apps"></a>Onaylı istemci uygulamaları gerektirme
 
-Kendi cihazlarını getir (BYOD) senaryolarında yapmanız gereken ilk kararlardan biri, tüm cihazı veya yalnızca üzerindeki verileri yönetmeniz gerekip gerekmediğini belirtir. Çalışanlarınız hem kişisel hem de iş görevleri için mobil cihazları kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi, Şirket verilerinizi koruyabilecek onaylanan istemci uygulamalarıyla sınırlandırabilirsiniz. Daha fazla bilgi için bkz. [koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md).
+Kendi cihazlarını getir (BYOD) senaryolarında yapmanız gereken ilk kararlardan biri, tüm cihazı veya yalnızca üzerindeki verileri yönetmeniz gerekip gerekmediğini belirtir. Çalışanlarınız hem kişisel hem de iş amaçlı görevler için mobil cihazlar kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi, Şirket verilerinizi koruyabilecek onaylanan istemci uygulamalarıyla sınırlandırabilirsiniz. Daha fazla bilgi için bkz. [koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Eski kimlik doğrulamasını engelleme
 
@@ -181,7 +181,7 @@ Koşullu erişim ilkeleri oluşturma hakkında daha fazla bilgi edinmek istiyors
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Benzetimli bir oturum açmayı değerlendir
 
-Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği gibi çalışıp çalışmadığını bilmeniz gerekir. İlk adım olarak, test kullanıcılarınız için bir oturum açma benzetimi yapmak üzere koşullu erişim [ilke aracı](what-if-tool.md) ' nı kullanın. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur.
+Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği gibi çalışıp çalışmadığını bilmeniz gerekir. İlk adım olarak, test kullanıcılarınız için bir oturum açma benzetimi yapmak üzere koşullu erişim [ilke aracı](what-if-tool.md) ' nı kullanın. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur.
 
 >[!NOTE]
 > Sanal bir çalıştırma, koşullu erişim ilkesinin etkisinden oluşan bir izlenim sağlarken, gerçek bir test çalıştırmasının yerini almaz.
@@ -220,7 +220,7 @@ Yeni uygulanan ilkelerinizi geri almanız gerekiyorsa, geri almak için aşağı
 
 1. **Ilkeyi devre dışı bırakma** -bir ilkeyi devre dışı bırakmak, bir Kullanıcı oturum açmaya çalıştığında uygulanmasının mümkün olmadığından emin olur. Her zaman geri dönüp ilkeyi kullanmak istediğinizde etkinleştirebilirsiniz.
 
-   ![ilkeyi devre dışı bırak](media/plan-conditional-access/07.png)
+   ![İlkeyi devre dışı bırakma](media/plan-conditional-access/07.png)
 
 1. Bir **Kullanıcı/grubu Ilkeden hariç tutma** -bir Kullanıcı uygulamaya erişe, kullanıcıyı ilkeden dışlamayı seçebilirsiniz
 

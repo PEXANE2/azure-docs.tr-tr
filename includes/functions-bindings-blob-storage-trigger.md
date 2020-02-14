@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 557e34e8a6bddd36a92b0e212bda3609baa14407
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642168"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202118"
 ---
 Tetikleme blobu için aşağıdaki parametre türlerini kullanabilirsiniz:
 
@@ -28,8 +28,8 @@ Tetikleme blobu için aşağıdaki parametre türlerini kullanabilirsiniz:
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> , *function. JSON* içinde `FileAccess.ReadWrite` veya `direction` bir C# sınıf kitaplığında "Inout" bağlamasını gerektirir.
+<sup>1</sup> , bir C# Sınıf kitaplığındaki *function. JSON* veya `FileAccess.ReadWrite` içindeki "Inout" bağlamasını `direction` gerektirir.
 
-Depolama SDK türlerinden birini bağlamaya çalışırsanız ve bir hata iletisi alırsanız, [doğru depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
+Depolama SDK türlerinden birini bağlamaya çalışırsanız ve bir hata iletisi alırsanız, [doğru depolama SDK sürümüne](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-`string` ,`Byte[]`Veya poco 'a bağlama yalnızca BLOB boyutu küçük olduğunda önerilir, tüm blob içerikleri belleğe yüklenir. Genellikle, `Stream` veya `CloudBlockBlob` türünde kullanılması tercih edilir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [Eşzamanlılık ve bellek kullanımı](#trigger---concurrency-and-memory-usage) bölümüne bakın.
+`string`, `Byte[]`veya POCO 'a bağlama yalnızca BLOB boyutu küçük olduğunda önerilir, çünkü tüm blob içerikleri belleğe yüklenir. Genellikle, bir `Stream` veya `CloudBlockBlob` türü kullanmak tercih edilir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [Eşzamanlılık ve bellek kullanımı](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) bölümüne bakın.

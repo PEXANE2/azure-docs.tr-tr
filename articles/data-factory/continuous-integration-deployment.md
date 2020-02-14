@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110195"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187823"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -139,6 +139,9 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
    ![Yayın oluştur ' u seçin](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> CI/CD senaryolarında, farklı ortamlardaki Integration Runtime (IR) türü aynı olmalıdır. Örneğin, geliştirme ortamında şirket içinde barındırılan bir IR varsa, aynı IR, test ve üretim gibi diğer ortamlarda da kendi kendine barındırılan türde olmalıdır. Benzer şekilde, tümleştirme çalışma zamanlarını birden çok aşamada paylaşıyorsanız, tümleştirme çalışma zamanlarını, geliştirme, test ve üretim gibi tüm ortamlarda bağlanmış bir şekilde yapılandırmanız gerekir.
+
 ### <a name="get-secrets-from-azure-key-vault"></a>Azure Key Vault parolaları al
 
 Azure Resource Manager şablonunda geçiş yapmak için gizli dizileri varsa, Azure Pipelines sürümü ile Azure Key Vault kullanmanızı öneririz.
@@ -184,11 +187,11 @@ Gizli dizileri ele almanın iki yolu vardır:
 
 Etkin Tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarısız olabilir. Etkin Tetikleyicileri güncelleştirmek için, bunları el ile durdurmanız ve dağıtımdan sonra yeniden başlatmanız gerekir. Bunu bir Azure PowerShell görevi kullanarak yapabilirsiniz:
 
-1.  Sürümün **Görevler** sekmesinde **Azure PowerShell** bir görev ekleyin.
+1.  Sürümün **Görevler** sekmesinde **Azure PowerShell** bir görev ekleyin. Görev sürümü 4. * öğesini seçin. 
 
-1.  Bağlantı türü olarak **Azure Resource Manager** ' yi seçin ve ardından aboneliğinizi seçin.
+1.  Fabrikanızın bulunduğu aboneliği seçin.
 
-1.  Komut dosyası türü olarak **satır Içi betik** ' ı seçin ve kodunuzu girin. Aşağıdaki kod Tetikleyicileri durduruyor:
+1.  Betik türü olarak **betik dosyası yolunu** seçin. Bu, PowerShell betiğinizi deponuza kaydetmenizi gerektirir. Tetikleyicileri durdurmak için aşağıdaki PowerShell betiği kullanılabilir:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ Etkin Tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarıs�
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell görev](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 Dağıtımdan sonra Tetikleyicileri yeniden başlatmak için benzer adımları (`Start-AzDataFactoryV2Trigger` işleviyle birlikte) tamamlayabilirsiniz.
 
-> [!IMPORTANT]
-> CI/CD senaryolarında, farklı ortamlardaki Integration Runtime (IR) türü aynı olmalıdır. Örneğin, geliştirme ortamında şirket içinde barındırılan bir IR varsa, aynı IR, test ve üretim gibi diğer ortamlarda da kendi kendine barındırılan türde olmalıdır. Benzer şekilde, tümleştirme çalışma zamanlarını birden çok aşamada paylaşıyorsanız, tümleştirme çalışma zamanlarını, geliştirme, test ve üretim gibi tüm ortamlarda bağlanmış bir şekilde yapılandırmanız gerekir.
+### <a name="sample-pre--and-post-deployment-script"></a>Örnek ön ve dağıtım sonrası betiği
 
-#### <a name="sample-pre--and-post-deployment-script"></a>Örnek ön ve dağıtım sonrası betiği
+Aşağıdaki örnek betik, dağıtımdan önce Tetikleyicileri durdurmak ve daha sonra yeniden başlatmak için kullanılabilir. Betik Ayrıca kaldırılan kaynakları silmek için kod içerir. Betiği bir Azure DevOps git deposuna kaydedin ve sürüm 4. * kullanarak bir Azure PowerShell görevi aracılığıyla buna başvurun.
 
-Aşağıdaki örnek betik, dağıtımdan önce Tetikleyicileri durdurmayı ve daha sonra yeniden başlatmayı gösterir. Betik Ayrıca kaldırılan kaynakları silmek için kod içerir. Azure PowerShell 'ın en son sürümünü yüklemek için bkz. [PowerShellGet Ile Windows 'a Azure PowerShell yüklemesi](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Dağıtım öncesi betiği çalıştırırken, **betik bağımsız değişkenleri** alanında aşağıdaki parametrelerin bir çeşidini belirtmeniz gerekecektir.
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+Dağıtım sonrası betiği çalıştırırken, **betik bağımsız değişkenleri** alanında aşağıdaki parametrelerin bir çeşidini belirtmeniz gerekecektir.
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+Dağıtım öncesi ve sonrası için kullanılabilecek komut dosyası aşağıda verilmiştir. Silinen kaynaklar ve kaynak başvuruları için BT hesapları.
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

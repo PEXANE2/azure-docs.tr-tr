@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a16fb1184de5b545b3ef527b1a66ffb7b68d1ef4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982747"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197927"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde kendi kendine onaylanan teknik profil tanımlama
 
@@ -187,7 +187,7 @@ Ayrıca kurumsal iş kolu uygulamasıyla daha fazla tümleştirme yaparak iş ma
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Setting. operatingMode | Hayır | Oturum açma sayfası için bu özellik, giriş doğrulaması ve hata iletileri gibi Kullanıcı adı alanının davranışını denetler. Beklenen değerler: `Username` veya `Email`. |
 | AllowGenerationOfClaimsWithNullValues| Hayır| Null değerli bir talep oluşturmaya izin verin. Örneğin, bir durumda Kullanıcı bir onay kutusu seçmez.|
@@ -199,6 +199,8 @@ Ayrıca kurumsal iş kolu uygulamasıyla daha fazla tümleştirme yaparak iş ma
 | Setting. Showdevam düğmesi | Hayır | Devam düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya `false` |
 | . Showsignyukarı ayarlanıyor | Hayır | Kaydolma düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya `false` |
 | Setting. forgotPasswordLinkLocation| Hayır| Parolayı unuttum bağlantısını görüntüler. Olası değerler: `AfterInput` (varsayılan) bağlantı sayfanın alt kısmında görüntülenir `None` veya parola unutulan bağlantıyı kaldırır.| 
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız bunu `true`olarak ayarlayın. |
+
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
 **Cryptographickeys** öğesi kullanılmıyor.

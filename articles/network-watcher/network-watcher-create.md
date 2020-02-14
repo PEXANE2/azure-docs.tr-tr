@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845131"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191188"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure ağ Izleyicisi örneği oluşturma
 
@@ -27,7 +27,7 @@ Ağ Izleyicisi, Azure 'daki ve Azure 'dan bir ağ senaryosu düzeyinde koşullar
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="network-watcher-is-automatically-enabled"></a>Ağ Izleyicisi otomatik olarak etkinleştirilir
-Aboneliğinizde bir sanal ağ oluşturduğunuzda veya güncelleştirdiğinizde, sanal ağınızın bölgesinde ağ Izleyicisi otomatik olarak etkinleştirilir. Ağ İzleyicisi’nin otomatik olarak etkinleştirilmesi sırasında kaynaklarınız veya bu hizmete ilişkin ücretler etkilenmez.
+Aboneliğinizde bir sanal ağ oluşturduğunuzda veya güncelleştirdiğinizde, sanal ağınızın bölgesinde ağ Izleyicisi otomatik olarak etkinleştirilir. Ağ İzleyicisini otomatik olarak etkinleştirmek için kaynaklarınız veya ilişkili ücretler üzerinde bir etkisi yoktur.
 
 #### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Ağ Izleyicisi otomatik etkinleştirme devre dışı
 Ağ Izleyicisi Otomatik etkinleştirmeyi devre dışı bırakmak isterseniz, aşağıdaki komutları çalıştırarak bunu yapabilirsiniz:
@@ -132,5 +132,3 @@ Artık bir ağ Izleyicisi örneğine sahip olduğunuza göre, kullanılabilir ö
 * [Güvenlik grubu görünümü](network-watcher-security-group-view-overview.md)
 * [NSG akış günlüğü](network-watcher-nsg-flow-logging-overview.md)
 * [Sanal ağ geçidi sorunlarını giderme](network-watcher-troubleshoot-overview.md)
-
-Bir ağ Izleyicisi örneği olduktan sonra sanal makineler içinde paket yakalamayı etkinleştirebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [paket yakalamayı tetikleyen uyarı oluşturma](network-watcher-alert-triggered-packet-capture.md)

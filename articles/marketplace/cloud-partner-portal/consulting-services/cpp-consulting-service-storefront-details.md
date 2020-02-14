@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818090"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191162"
 ---
 # <a name="storefront-details-tab"></a>StoreFront Ayrıntıları sekmesi
 
@@ -27,7 +27,7 @@ Bu makalede, storefront 'nizin ayrıntılarının nasıl girilmesi açıklanmakt
 ![Yeni bir danışmanlık hizmeti teklifi-storefront Ayrıntıları sekmesi oluşturma](media/consultingoffer-storefront-details.png)
 
 
-## <a name="offer-details"></a>Teklif ayrıntıları
+## <a name="offer-details"></a>Teklif Ayrıntıları
 
 **Teklif Ayrıntıları** bölümü aşağıdaki kutuları içerir:
 
@@ -71,7 +71,7 @@ Teklif Özeti, teklif adının hemen altında görüntülenen teklifinizin kısa
 
 Teklif açıklamalarınız için e-posta adresinizi veya telefon numaranızı eklemeyin. Teklif için belirttiğiniz müşteri adayı yönetim hedefine müşteri adaylarını karşıya yükleme teklifinizle birlikte bir **Iletişim kurun** düğmesi eklenmiştir.
 
-Teklif açıklamasını markın biçiminde girin. Markaşağı veya HTML için biçimlendirme konusunda bilgi sahibi değilseniz bkz. [belgeleri yazmak Için Marku kullanma](https://docs.microsoft.com/contribute/how-to-write-use-markdown).
+Teklif açıklamasını markın biçiminde girin. Markaşağı veya HTML için biçimlendirme konusunda bilgi sahibi değilseniz bkz. [belgeleri yazmak Için Marku kullanma](/contribute/markdown-reference).
 
 Teklifinizin müşterilerinizin okuması için kolay olduğundan emin olmak için bu biçimleri kullanın.
 
@@ -85,13 +85,13 @@ Aşağıdaki örnekte, iyi oluşturulmuş bir teklif açıklaması ve ilgili ad�
 
 **Teklif açıklaması**: Bu 3 günlük atölye, teknik ve iş liderlerine yöneliktir ve istemci tesisinde yerinde tutulur.
 
-Ajanda
+Gündem
 
-Gün 1
+1\. gün
 
 -   Azure Data Lake, Azure HDInsight veya Azure SQL veri ambarı kullanılarak Microsoft bulutundaki verileri güvenli hale getirme, ölçeklendirme ve düzenleme konusunda odaklanır.
 
-Gün 2
+2\. gün
 
 -   Microsoft R ve Azure Machine Learning ile gelişmiş analiz çözümlerini yapılandırma ve dağıtma konularını ele alır.
 

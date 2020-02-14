@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "70934128"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192542"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
 
 Aşağıdaki bölümlerde, yeni bir ASP.NET WebAPI arka ucu oluşturma işlemi açıklanmaktadır. Bu işlemin üç ana amacı vardır:
 
-- **Istemcilerin kimliğini doğrulama**: İstemci isteklerinin kimliğini doğrulamak ve kullanıcıyı istekle ilişkilendirmek için bir ileti işleyicisi ekleyin.
-- **WebAPI arka ucunu kullanarak bildirimlere kaydolun**: Bir istemci cihazının bildirimlerini almak için yeni kayıtları işlemek üzere bir denetleyici eklersiniz. Kimliği doğrulanmış kullanıcı adı, otomatik olarak kayda bir [etiket](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) halinde eklenir.
-- **İstemcilere bildirim gönder**: Kullanıcıların, etiketle ilişkilendirilmiş cihazlara ve istemcilere güvenli bir gönderim tetiklemesi için bir yol sağlamak üzere bir denetleyici eklersiniz.
+- **İstemcilerin kimliğini doğrulama**: İstemci isteklerinin kimliğini doğrulamak ve kullanıcıyı istekle ilişkilendirmek üzere bir ileti işleyicisi eklersiniz.
+- **WebAPI arka ucunu kullanarak bildirimlere kaydolma**: Bir istemci cihazının bildirimleri alması için yeni kayıtları işlemek üzere bir denetleyici eklersiniz. Kimliği doğrulanmış kullanıcı adı, otomatik olarak kayda bir [etiket](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) halinde eklenir.
+- **İstemcilere bildirimleri gönderme**: Kullanıcıların etiketle ilişkili cihazlara ve istemcilere güvenli bir gönderimi tetiklemesi için yeni bir yol sağlamak üzere bir denetleyici de eklersiniz.
 
 Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 
@@ -108,7 +108,7 @@ Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir i
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir i
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;
@@ -140,8 +140,8 @@ Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir i
     ```
 
     > [!NOTE]
-    > Güvenlik notno: Sınıf `AuthenticationTestHandler` , doğru kimlik doğrulaması sağlamaz. Yalnızca temel kimlik doğrulamasını taklit etmek için kullanılır ve güvenli değildir. Üretim uygulamalarınızda ve hizmetlerinizde güvenli bir kimlik doğrulama mekanizması uygulamanız gerekir.
-5. İleti işleyicisini kaydetmek için **App_Start/WebApiConfig.cs** sınıfındaki `Register` yönteminin sonuna aşağıdaki kodu ekleyin:
+    > Güvenlik notu: `AuthenticationTestHandler` sınıfı gerçek kimlik doğrulaması sağlamaz. Yalnızca temel kimlik doğrulamasını taklit etmek için kullanılır ve güvenli değildir. Üretim uygulamalarınızda ve hizmetlerinizde güvenli bir kimlik doğrulama mekanizması uygulamanız gerekir.
+5. İleti işleyicisini kaydetmek için `Register`App_Start/WebApiConfig.cs**sınıfındaki** yönteminin sonuna aşağıdaki kodu ekleyin:
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());
@@ -392,7 +392,7 @@ Ardından bu uygulamayı tüm cihazlardan erişilebilir kılmak için bir Azure 
 
 3. **App Service Oluştur** penceresinde Azure hesabınızı seçin. **Türü Değiştir** > **Web App**’i seçin. Varsayılan **Web App Adı**’nı değiştirmeyin ve **Abonelik**, **Kaynak Grubu** ve **App Service Planı**’nı seçin.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. **Özet** bölümündeki **Site URL** özelliğini not edin. Bu URL, daha sonra bu öğreticide *arka uca ait uç noktanız* olacaktır.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: b9d2b3916e4509e5ce3aa8a9ddd66f1cf14a8827
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 27682863a96e2f190a0dafe6e4d783029e987453
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690867"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201654"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 
@@ -50,7 +50,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | **Özel görüntü desteklenebilirliği** | Artık [SQL Server IaaS uzantısını](virtual-machines-windows-sql-server-agent-extension.md#installation) özel işletim SISTEMI ve SQL yansımalarına yükleyebilirsiniz ve bu da [Esnek lisansın](virtual-machines-windows-sql-ahb.md)sınırlı işlevlerini sunar. Özel görüntünüzü SQL kaynak sağlayıcısı ile kaydederken, lisans türünü "AHUB" olarak belirtin. Aksi takdirde, kayıt başarısız olur. | 
 | **Adlandırılmış örnek desteklenebilirliği** | Varsayılan örnek düzgün şekilde kaldırılmışsa, artık [SQL Server IaaS uzantısını](virtual-machines-windows-sql-server-agent-extension.md#installation) adlandırılmış bir örnekle kullanabilirsiniz. | 
 | **Portal geliştirmesi** | SQL Server VM dağıtmaya yönelik Azure portal deneyim, kullanılabilirliği iyileştirmeye yönelik olarak yeniden belirlenmiştir. Daha fazla bilgi için bkz. kısa [Başlangıç](quickstart-sql-vm-create-portal.md) ve daha kapsamlı [nasıl yapılır Kılavuzu](virtual-machines-windows-portal-sql-server-provision.md) SQL Server VM dağıtma.|
-|  **Portal geliştirme** | Bir SQL Server VM için lisans modelini, [Azure Portal](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider)kullanarak kendi lisansınıza sahip olmak üzere Kullandıkça Öde için değiştirmek mümkündür.|
+| **Portal geliştirme** | Bir SQL Server VM için lisans modelini, [Azure Portal](virtual-machines-windows-sql-ahb.md#vms-already-registered-with-the-resource-provider)kullanarak kendi lisansınıza sahip olmak üzere Kullandıkça Öde için değiştirmek mümkündür.|
 | **Azure SQL Server VM CLı ile kullanılabilirlik grubu dağıtımının basitleştirmesi** | Artık bir kullanılabilirlik grubunu Azure 'da bir SQL Server VM dağıtmaya hiç zamankinden daha kolay. Windows Yük devretme kümesi, iç yük dengeleyici ve kullanılabilirlik grubu dinleyicilerini komut satırından oluşturmak için [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) 'yı kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [SQL Server VM CLI kullanarak bir Azure VM 'de SQL Server Için her zaman açık kullanılabilirlik grubu yapılandırma](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 

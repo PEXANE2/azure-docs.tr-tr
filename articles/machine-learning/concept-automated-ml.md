@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048963"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191199"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -143,7 +143,7 @@ Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accur
 |-------|----------------|---------------|
 | A | %99,9 | %95 |
 | B | %87 | %87 |
-| C | %99,9 | %45 |
+| Mş | %99,9 | %45 |
 
 Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu eğitim doğruluğunun altındaysa, modelin daha fazla uydurulur. Ancak, test doğruluğu her zaman eğitim doğruluğunu azaltır ve fazla sığdırma ile *uygun şekilde ayrım, daha az doğru* olacaktır. 
 
@@ -217,9 +217,9 @@ Otomatikleştirilmiş ML, gibi diğer Microsoft çözümlerinde de kullanılabil
 
 |Tümleştirmeler|Açıklama|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio ve ML.NET otomatik ML (Önizleme) ile Visual Studio Code .NET uygulamalarında otomatik model seçme ve eğitim.|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio kullanarak .NET uygulamalarında otomatik model seçme ve eğitim ve ML.NET otomatik ML ile Visual Studio Code.|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|HDInsight kümelerinde Spark üzerinde otomatik ML eğitim işlerinizi paralel olarak ölçeklendirin.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Makine öğrenimi modellerini doğrudan Power BI (Önizleme) içinde çağırın.|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Makine öğrenimi modellerini doğrudan Power BI çağırın.|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 büyük veri kümelerinde verileriniz üzerinde yeni makine öğrenimi modelleri oluşturun.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

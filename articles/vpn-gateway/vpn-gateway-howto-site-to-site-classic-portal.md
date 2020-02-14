@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863732"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201569"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
@@ -39,7 +39,7 @@ Yapılandırmaya başlamadan önce aşağıdaki ölçütleri karşıladığını
 * Uyumlu bir VPN cihazı ve bu cihazı yapılandırabilecek birinin bulunduğundan emin olun. Uyumlu VPN cihazları ve cihaz yapılandırması hakkında daha fazla bilgi için bkz.[VPN Cihazları Hakkında](vpn-gateway-about-vpn-devices.md).
 * VPN cihazınız için dışarıya dönük genel bir IPv4 adresi olduğunu doğrulayın.
 * Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarıyla ilgili fazla bilginiz yoksa size bu ayrıntıları sağlayabilecek biriyle çalışmanız gerekir. Bu yapılandırmayı oluşturduğunuzda, Azure’un şirket içi konumunuza yönlendireceği IP adres aralığı ön eklerini oluşturmanız gerekir. Şirket içi ağınızın alt ağlarından hiçbiri, bağlanmak istediğiniz sanal ağ alt ağlarıyla çakışamaz.
-* Şu anda, ortak anahtarı belirtmek ve VPN ağ geçidi bağlantısını oluşturmak için PowerShell gereklidir. Azure Hizmet Yönetimi (SM) PowerShell cmdlet’lerinin en son sürümünü yükleyin. Cmdlet 'leri yüklemek için bkz. [hizmet yönetimi](/powershell/azure/servicemanagement/install-azure-ps). Genel olarak PowerShell yüklemeleri hakkında daha fazla bilgi için bkz. [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview). Bu yapılandırma için PowerShell ile çalışırken yönetici olarak işlem yaptığınızdan emin olun.
+* Paylaşılan anahtarı belirtmek ve VPN ağ geçidi bağlantısını oluşturmak için PowerShell gereklidir. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>Bu alıştırma için örnek yapılandırma değerleri
 
@@ -72,11 +72,11 @@ S2S bağlantısı için kullanılacak bir sanal ağ oluşturduğunuzda, belirtti
 1. Tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve gerekiyorsa Azure hesabınızla giriş yapın.
 2. * *+ Kaynak oluştur ' a*tıklayın. **Markette ara** alanına 'Sanal Ağ' yazın. Döndürülen listeden **Sanal Ağ**’ı bulun ve tıklayarak **Sanal Ağ** sayfasını açın.
 3. tıklayın **(klasik olarak değiştirin)** ve ardından **Oluştur**' a tıklayın.
-4. **Sanal ağ oluştur (klasik)** sayfasında sanal ağ ayarlarını yapılandırın. Bu sayfada, ilk adres alanınızı ve tek alt ağ adres aralığınızı eklersiniz. VNet oluşturma işlemini tamamladıktan sonra geri dönüp ek alt ağları ve adres alanlarını ekleyin.
+4. **Sanal ağ oluştur (klasik)** sayfasında sanal ağ ayarlarını yapılandırın. Bu sayfada, ilk adres alanınızı ve tek alt ağ adres aralığınızı eklersiniz. VNet 'i oluşturduktan sonra geri dönüp ek alt ağlar ve adres alanları ekleyebilirsiniz.
 
    ![Sanal ağ oluştur sayfası](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Sanal ağ oluştur sayfası")
 5. **Abonelik** alanında doğru bir giriş olduğunu doğrulayın. Açılan listeyi kullanarak abonelikleri değiştirebilirsiniz.
-6. **Kaynak grubu**’na tıklayın, mevcut bir kaynak grubunu seçin ya da bir ad yazarak yeni bir tane oluşturun. Kaynak grupları hakkında daha fazla bilgi için [Azure Resource Manager’a Genel Bakış](../azure-resource-manager/management/overview.md#resource-groups) sayfasını ziyaret edin.
+6. **Kaynak grubu**’na tıklayın, mevcut bir kaynak grubunu seçin ya da bir ad yazarak yeni bir tane oluşturun. Kaynak grupları hakkında daha fazla bilgi için [Azure Resource Manager’a Genel Bakış](../azure-resource-manager/management/overview.md#resource-groups)’ı ziyaret edin.
 7. Ardından, sanal ağınız için **Konum** ayarlarını seçin. Konum bu sanal ağa dağıttığınız kaynakların nerede olacağını belirler.
 8. VNet’inizi oluşturmak için **Oluştur**'a tıklayın.
 9. “Oluştur”a tıkladıktan sonra, panoda sanal ağınızın ilerleme durumunu yansıtan bir kutucuk görünür. Sanal ağ oluşturulurken kutucuk değişir.
@@ -159,23 +159,24 @@ Bu adımda, paylaşılan anahtarı ayarlayabilir ve bağlantıyı oluşturabilir
 
 ### <a name="step-1-connect-to-your-azure-account"></a>1\. Adım Azure hesabınıza bağlanma
 
-PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
+PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. 
 
-```powershell
-azure config mode asm
-```
+1. PowerShell konsolunuzu yükseltilmiş haklarla açın. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
 
-1. PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
+   ```powershell
+   azure config mode asm
+   ```
+2. Hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
    ```powershell
    Add-AzureAccount
    ```
-2. Hesapla ilişkili abonelikleri kontrol edin.
+3. Hesapla ilişkili abonelikleri kontrol edin.
 
    ```powershell
    Get-AzureSubscription
    ```
-3. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin.
+4. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin.
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"

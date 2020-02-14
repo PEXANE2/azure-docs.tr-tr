@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936398"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200087"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -34,11 +34,11 @@ Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır. Şu anda bir iş
 
 Kullanımı kolay API 'nin yanında, Özel uç noktaları dağıtmanız gerekmez ve gözlemlemeye yönelik eşzamanlılık gereksinimleriniz yoktur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="subscription-key"></a>Abonelik anahtarı
 
-Konuşma hizmeti tüm özellikleri ile bir abonelik anahtarı oluştururken [Azure portalında](https://portal.azure.com) izleyerek bizim [Başlarken Kılavuzu](get-started.md).
+Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](get-started.md)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
 >[!NOTE]
 > Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz Abonelik anahtarları (F0) işe yaramaz. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
@@ -89,8 +89,8 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| `ProfanityFilterMode` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `None` , devre dışı bırakır küfür filtresi `Masked` yıldız işareti ile küfür değiştirir `Removed` sonuç, tüm küfür kaldırır veya `Tags` "küfür" etiketleri ekler. Varsayılan ayar `Masked`. |
-| `PunctuationMode` | Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Değerler kabul `None` , devre dışı bırakır, noktalama `Dictated` açık noktalama gelir `Automatic` noktalama işaretleri ile uğraşmak kod çözücü olanak tanıyan veya `DictatedAndAutomatic` dikte noktalama işaretleri veya otomatik olduğu anlamına gelir. |
+| `ProfanityFilterMode` | Tanıma sonuçları küfür nasıl ele alınacağını belirtir. Kabul edilen değerler `None`, küfür filtrelemeyi devre dışı bırakan, `Masked`, sonuçtan tüm küfür kaldıran `Removed` veya "küfür" etiketleri ekleyen `Tags`. Varsayılan ayar `Masked`. |
+| `PunctuationMode` | Noktalama işaretleri tanıma sonuçları nasıl ele alınacağını belirtir. Kabul edilen değerler, noktalama işaretini devre dışı bırakan `None`, `Dictated` açık noktalama işareti olan `Automatic`, bu da kod çözücüsünün noktalama işaretleriyle veya dikte edilen noktalama işaretlerini veya otomatik olarak veya otomatik olarak kullanıldığı `DictatedAndAutomatic` |
 | `AddWordLevelTimestamps` | Sözcük düzeyi tarih damgalarının çıktıya eklenip eklenmesinin gerekip gerekmediğini belirtir. Kabul edilen değerler, Word düzeyi zaman damgalarını ve `false` (varsayılan değer) devre dışı bırakmak için `true`. |
 | `AddSentiment` | Yaklaşım 'ın utterance 'e eklenmesi gerektiğini belirtir. Kabul edilen değerler, her ay için yaklaşım ve `false` (varsayılan değer) tarafından devre dışı bırakılacak `true`. |
 | `AddDiarization` | İki ses içeren mono kanalı olması beklenen girişte, seçme analizinin gerçekleştirilmesi gerektiğini belirtir. Kabul edilen değerler, devre dışı bırakmak için `true` ve `false` (varsayılan değer) sağlar. Ayrıca, `AddWordLevelTimestamps` true olarak ayarlanmasını gerektirir.|
@@ -129,8 +129,8 @@ Mono giriş sesi için bir döküm sonuç dosyası oluşturuluyor. Stereo giriş
                                                              speakerId as a string if
                                                              diarization requested for
                                                              mono audio file'
-          "Offset": number                                  'time in milliseconds'
-          "Duration": number                                'time in milliseconds'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
           "OffsetInSeconds" : number                        'Real number. Two decimal places'
           "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
@@ -150,8 +150,8 @@ Mono giriş sesi için bir döküm sonuç dosyası oluşturuluyor. Stereo giriş
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                          'time in milliseconds'
-                  "Duration": number                        'time in milliseconds'
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
                   "OffsetInSeconds": number                 'Real number. Two decimal places'
                   "DurationInSeconds": number               'Real number. Two decimal places'
                   "Confidence": number                      'between 0 and 1'
@@ -199,7 +199,7 @@ Daha fazla bilgi almak için, aşağıda gösterildiği gibi, HTTP isteğine ilg
 
 Yukarıdaki istekteki parametreler gösterildiği gibi, sözcük düzeyi zaman damgalarının de ' açık ' olması gerekir.
 
-## <a name="sentiment-analysis"></a>Duygu analizi
+## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
 Yaklaşım özelliği, ses içinde ifade edilen yaklaşımı tahmin eder. Yaklaşım, `Negative`, `Neutral`ve `Positive` yaklaşımı için 0 ile 1 arasında bir değere göre ifade edilir. Örneğin, yaklaşım Analizi çağrı merkezi senaryolarında kullanılabilir:
 
@@ -265,7 +265,7 @@ Tüm örnekler, `samples/batch` alt dizininin içindeki [GitHub örnek deposunda
 
 Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.cris.ai/swagger/ui/index)inceleyin. Burada gösterilen tam örnek için `samples/batch` alt dizininde [GitHub](https://aka.ms/csspeech/samples) ' a gidin.
 
-Ses gönderme ve döküm durumu almak için zaman uyumsuz Kurulum not alın. Oluşturduğunuz .NET HTTP istemci istemcisidir. Var. bir `PostTranscriptions` ses dosyası ayrıntılarını göndermek için yöntem ve bir `GetTranscriptions` sonuçları almak için yöntemi. `PostTranscriptions` bir tanıtıcı döndürür ve `GetTranscriptions` transkripsiyonu durumu almak için bir tanıtıcı oluşturmak için kullanır.
+Ses gönderme ve döküm durumu almak için zaman uyumsuz Kurulum not alın. Oluşturduğunuz .NET HTTP istemci istemcisidir. Ses dosyası ayrıntılarını göndermek için bir `PostTranscriptions` yöntemi ve sonuçları almak için bir `GetTranscriptions` yöntemi vardır. `PostTranscriptions` bir tanıtıcı döndürür ve `GetTranscriptions`, döküm durumunu almak üzere bir tanıtıcı oluşturmak için onu kullanır.
 
 Geçerli örnek kod, özel bir model belirtmez. Hizmet, dosya veya dosyalar fotoğrafını için temel modelleri kullanır. Modelleri belirtmek için model kimliklerini akustik ve dil modeli için aynı yönteme geçirebilirsiniz.
 

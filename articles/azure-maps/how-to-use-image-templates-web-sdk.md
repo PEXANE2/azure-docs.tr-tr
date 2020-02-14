@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911566"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198233"
 ---
 # <a name="how-to-use-image-templates"></a>Görüntü şablonlarını kullanma
 
@@ -24,7 +24,7 @@ Görüntüler, HTML işaretçileri ve Azure Maps web SDK içindeki çeşitli kat
  - Çokgen katmanları, bir doldur örüntüsünün görüntüsü ile oluşturulabilir. 
  - HTML işaretçileri, görüntüleri ve diğer HTML öğelerini kullanarak noktaları işleyebilir.
 
-Katmanlarla iyi performans sağlamak için bu görüntülerin, işlemeden önce harita görüntüsü Sprite kaynağına yüklenmesi gerekir. SymbolLayer 'ın [Iconoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) 'ı, varsayılan olarak harita görüntüsü Sprite öğesine, el ile birkaç işaret görüntüsünü önceden yükler. Aynı işaret görüntüleri ve daha fazlası SVG şablonları olarak kullanılabilir ve bir müşterinin birincil ve ikincil rengi ile özel ölçeklendirmeli görüntüler oluşturmak için kullanılabilir. Toplamda, belirtilen 42 görüntü şablonu vardır; 27 sembol simgeleri ve 15 Çokgen dolgusu desenleri.
+Katmanlarla iyi bir performans sağlamak için görüntüleri, işlemeden önce harita görüntüsü Sprite kaynağına yükleyin. SymbolLayer [Iconoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions), varsayılan olarak harita görüntüsü Sprite öğesine, el ile birkaç işaret görüntüsünü önceden yükler. Bu işaret görüntüleri ve daha fazlası SVG şablonları olarak kullanılabilir. Özel ölçeklendirmeleri olan veya müşteri birincil ve ikincil renk olarak kullanılan görüntüler oluşturmak için kullanılabilir. Toplamda 42 görüntü şablonu sağlanır: 27 sembol simgeleri ve 15 Çokgen dolgusu desenleri.
 
 Görüntü şablonları, `map.imageSprite.createFromTemplate` işlevi kullanılarak harita görüntüsü Sprite kaynaklarına eklenebilir. Bu işlev, en fazla beş parametrenin geçirilmesine izin verir;
 
@@ -32,11 +32,11 @@ Görüntü şablonları, `map.imageSprite.createFromTemplate` işlevi kullanıla
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-Burada `id`, harita görüntüsü Sprite öğesine eklendiğinde görüntüye atanan, oluşturduğunuz benzersiz bir tanımlayıcıdır. Hangi görüntü kaynağının işleneceğini belirtmek için katmanlarda bu tanımlayıcıyı kullanın. `templateName` kullanılacak görüntü şablonunu belirtir. `color` seçeneği görüntünün birincil rengini ayarlar ve `secondaryColor` seçenekleri görüntünün ikincil rengini ayarlar. `scale` seçeneği resim Sprite öğesine uygulamadan önce görüntü şablonunu ölçeklendirir. Görüntü, görüntü Sprite öğesine uygulandığında, PNG 'ye dönüştürülür. Net işleme sağlamak için, görüntü şablonunu bir katmanda ölçeklendirmeye kıyasla, Sprite öğesine eklemeden önce ölçeklendirmeniz daha iyidir.
+`id`, oluşturduğunuz benzersiz bir tanımlayıcıdır. `id`, haritalar görüntü Sprite öğesine eklendiğinde görüntüye atanır. Hangi görüntü kaynağının işleneceğini belirtmek için katmanlarda bu tanımlayıcıyı kullanın. `templateName` kullanılacak görüntü şablonunu belirtir. `color` seçeneği görüntünün birincil rengini ayarlar ve `secondaryColor` seçenekleri görüntünün ikincil rengini ayarlar. `scale` seçeneği resim Sprite öğesine uygulamadan önce görüntü şablonunu ölçeklendirir. Görüntü, görüntü Sprite öğesine uygulandığında, PNG 'ye dönüştürülür. Net işleme sağlamak için, görüntü şablonunu bir katmanda ölçeklendirmeye kıyasla Sprite öğesine eklemeden önce ölçeklendirmeniz daha iyidir.
 
-Bu işlev görüntüyü zaman uyumsuz olarak görüntü Sprite öğesine yükler ve bu işlevin tamamlanmasını beklerseniz bir Promise döndürür.
+Bu işlev, görüntüyü zaman uyumsuz olarak görüntü hareketli görüntüsüne yükler. Bu nedenle, bu işlevin tamamlanmasını beklerseniz bir Promise döndürür.
 
-Aşağıdaki kod, yerleşik şablonlardan birinden bir görüntünün nasıl oluşturulduğunu ve sembol katmanıyla birlikte nasıl kullanılacağını gösterir.
+Aşağıdaki kod, yerleşik şablonlardan birinden bir görüntünün nasıl oluşturulacağını ve bir sembol katmanıyla birlikte nasıl kullanılacağını gösterir.
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -106,9 +106,9 @@ Aşağıdaki örnek, `marker-arrow` şablonunu kırmızı bir birincil renkle, b
 
 ## <a name="create-custom-reusable-templates"></a>Özel yeniden kullanılabilir şablonlar oluşturma
 
-Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü şablonları ekleyen bir modül oluşturuyorsanız, `atlas` ad alanında aşağıdaki statik işlevleri kullanarak bu simgeleri Azure Maps web SDK 'sinden kolayca ekleyebilir ve alabilirsiniz.
+Uygulamanız farklı simgelerle aynı simgeyi kullanıyorsa veya ek görüntü şablonları ekleyen bir modül oluşturuyorsanız, bu simgeleri Azure Maps web SDK 'sına kolayca ekleyebilir ve alabilirsiniz. `atlas` ad alanında aşağıdaki statik işlevleri kullanın.
 
-| Ad | Dönüş Türü | Açıklama | 
+| Ad | Dönüş türü | Açıklama | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Atlas ad alanına özel bir SVG resim şablonu ekler. |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | Bir SVG şablonunu ada göre alır. |
@@ -133,31 +133,31 @@ Aşağıdaki örnek, bir SVG şablonunun nasıl alınacağını ve Azure Maps we
 
 ## <a name="list-of-image-templates"></a>Görüntü şablonlarının listesi
 
-Aşağıdaki tabloda, Azure Maps web SDK 'sının her bir görüntünün üzerindeki şablon adı ile birlikte kullanılabilir olan tüm görüntü şablonları listelenmektedir. Varsayılan olarak, birincil renk mavidir ve ikincil renk beyazdır. İkincil rengin beyaz bir arka planda daha kolay görülmesini sağlamak için aşağıdaki görüntülerde ikincil renk siyah olarak ayarlanmıştır.
+Bu tablo, Azure Maps web SDK 'sının Şu anda kullanılabilir olan tüm görüntü şablonlarını listeler. Şablon adı her bir görüntünün üzerinde. Varsayılan olarak, birincil renk mavidir ve ikincil renk beyazdır. İkincil rengin beyaz bir arka planda daha kolay görülmesini sağlamak için aşağıdaki görüntülerde ikincil renk siyah olarak ayarlanmıştır.
 
 **Sembol simgesi şablonları**
 
 |||||
 |:-:|:-:|:-:|:-:|
-| İm | işaretleyici-kalın | işaretleyici daire | işaretleyici-düz |
+| im | işaretleyici-kalın | işaretleyici daire | işaretleyici-düz |
 |![işaret simgesi](./media/image-templates/marker.png)|![işaretleyici-kalın simgesi](./media/image-templates/marker-thick.png)|![işaret-daire simgesi](./media/image-templates/marker-circle.png)|![işaret-düz simgesi](./media/image-templates/marker-flat.png)|
 ||||
 | işaretleyici-kare | işaretleyici-kare-küme | işaretleyici-ok | işaretleyici-bol-pin | 
 |![işaret-kare simgesi](./media/image-templates/marker-square.png)|![işaretleyici-kare-küme simgesi](./media/image-templates/marker-square-cluster.png)|![işaret-ok simgesi](./media/image-templates/marker-arrow.png)|![işaretleyici-bol-pin simgesi](./media/image-templates/marker-ball-pin.png)|
 ||||
-| işaretleyici-kare yuvarlatılmış | işaretleyici-kare yuvarlatılmış-küme | flag | bayrak-üçgen |
+| işaretleyici-kare yuvarlatılmış | işaretleyici-kare yuvarlatılmış-küme | bayrağıyla | bayrak-üçgen |
 | ![işaretleyici-kare yuvarlatılmış simgesi](./media/image-templates/marker-square-rounded.png) | ![işaretleyici-kare yuvarlatılmış-küme simgesi](./media/image-templates/marker-square-rounded-cluster.png) | ![bayrak simgesi](./media/image-templates/flag.png) | ![bayrak-üçgen simgesi](./media/image-templates/flag-triangle.png) |
 ||||
-| üçgen | üçgen-kalın | üçgen-yukarı ok | üçgen-sol ok |
+| den | üçgen-kalın | üçgen-yukarı ok | üçgen-sol ok |
 | ![üçgen simgesi](./media/image-templates/triangle.png) | ![üçgen-kalın simgesi](./media/image-templates/triangle-thick.png) | ![Üçgen-aşağı ok simgesi](./media/image-templates/triangle-arrow-up.png) | ![üçgen-sol ok simgesi](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | altıgeni | altıgen-kalın | altıgen yuvarlatılmış | altıgen-yuvarlatılmış-kalın |
 | ![altıgen simgesi](./media/image-templates/hexagon.png) | ![altıgen-kalın simgesi](./media/image-templates/hexagon-thick.png) | ![altıgen yuvarlatılmış simgesi](./media/image-templates/hexagon-rounded.png) | ![altıgen-yuvarlatılmış-kalın simgesi](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
 | pin | PIN-yuvarlak | yuvarlak kare | yuvarlak köşeli-kalın |
-| ![raptiye simgesi](./media/image-templates/pin.png) | ![PIN-Round simgesi](./media/image-templates/pin-round.png) | ![Yuvarlatılmış-kare simgesi](./media/image-templates/rounded-square.png) | ![yuvarlak köşeli-kalın simgesi](./media/image-templates/rounded-square-thick.png) |
+| ![PIN simgesi](./media/image-templates/pin.png) | ![PIN-Round simgesi](./media/image-templates/pin-round.png) | ![Yuvarlatılmış-kare simgesi](./media/image-templates/rounded-square.png) | ![yuvarlak köşeli-kalın simgesi](./media/image-templates/rounded-square-thick.png) |
 ||||
-| yukarı ok | ok-yukarı-ince | araba ||
+| yukarı ok | ok-yukarı-ince | Araç ||
 | ![yukarı ok simgesi](./media/image-templates/arrow-up.png) | ![ok-yukarı-ince simgesi](./media/image-templates/arrow-up-thin.png) | ![Araba simgesi](./media/image-templates/car.png) | |
 
 **Çokgen dolgusu kalıp şablonları**

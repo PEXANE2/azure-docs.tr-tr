@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 1598451ce184db5a25cac28870b70a446aef123c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137718"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198829"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell’den IoT Central’ı yönetme
 
@@ -28,6 +28,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Yerel makinenizde Azure PowerShell çalıştırmayı tercih ediyorsanız, bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps). Azure PowerShell yerel olarak çalıştırdığınızda, bu makaledeki cmdlet 'leri denemeden önce Azure 'da oturum açmak için **Connect-AzAccount** cmdlet 'ini kullanın.
+
+> [!TIP]
+> PowerShell komutlarınızı farklı bir Azure aboneliğinde çalıştırmanız gerekiyorsa bkz. [etkin aboneliği değiştirme](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription).
 
 ## <a name="install-the-iot-central-module"></a>IoT Central modülünü yükler
 

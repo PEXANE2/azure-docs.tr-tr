@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793216"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191440"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -172,7 +172,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 | İstek `triggerState`içeriyor mu? | API yanıtı | 
 | -------------------------------- | -------------| 
 | Hayır | `triggerState` geçerli saate ve `retry-after` aralığına 15 saniyeye ayarlanmış olan bir HTTP `202 ACCEPTED` durumu ve `location` üst bilgisi döndürün. | 
-| Yes | `triggerState`için `DateTime` sonra eklenen dosyalar için hizmetinizi denetleyin. | 
+| Evet | `triggerState`için `DateTime` sonra eklenen dosyalar için hizmetinizi denetleyin. | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 
@@ -206,9 +206,9 @@ Web kancası Tetikleyicileri, bu konuda daha önce açıklanan [Web kancası eyl
 > [!TIP]
 > Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyici denetleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da gözden geçirin.
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Mantıksal uygulamalardan API 'lerinize güvenli çağrılar
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Mantıksal uygulamalardan API 'lerinize yapılan çağrılar için güvenliği geliştirme
 
-Özel API 'lerinizi oluşturduktan sonra, mantıksal uygulamalardan güvenli bir şekilde çağırabilmeniz için API 'niz için kimlik doğrulaması ayarlayın. [Mantıksal uygulamalardan özel API 'lere yapılan çağrıların nasıl güvenli hale alınacağını](../logic-apps/logic-apps-custom-api-authentication.md)öğrenin.
+Özel API 'lerinizi oluşturduktan sonra, mantıksal uygulamalardan güvenli bir şekilde çağırabilmeniz için API 'niz için kimlik doğrulaması ayarlayın. [Mantıksal uygulamalardan özel API 'lere yapılan çağrılar için Güvenliği geliştirmeyi](../logic-apps/logic-apps-custom-api-authentication.md)öğrenin.
 
 ## <a name="deploy-and-call-your-apis"></a>API 'lerinizi dağıtın ve çağırın
 

@@ -4,12 +4,12 @@ description: Azure dinamik envanterlerinizi yönetmek için nasıl kullanılaca�
 keywords: anerişilebilir, Azure, DevOps, Bash, cloudshell, Dynamic Inventory
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442780"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193608"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Öğretici: Azure kaynaklarınızın dinamik envanterini, anormal kullanarak yapılandırma
 
@@ -24,7 +24,7 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 > * Etiketli sanal makinelere NGINX 'i yükler
 > * Yapılandırılmış Azure kaynaklarını içeren bir dinamik envanter yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -47,7 +47,7 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 
 1. Aşağıdaki tekniklerden birini kullanarak Azure 'da iki Linux sanal makinesi oluşturun:
 
-    - **Anormal PlayBook** -makale, [Azure 'da bir temel sanal makine oluşturun](/azure/virtual-machines/linux/ansible-create-vm) ve anormal bir PlayBook 'tan sanal makine oluşturmayı gösterir. Sanal makinelerden birini veya her ikisini tanımlamak için bir PlayBook kullanırsanız, SSH bağlantısının parola yerine kullanıldığından emin olun.
+    - **Anormal PlayBook** -makale, [Azure 'da bir temel sanal makine oluşturun](./ansible-create-vm.md) ve anormal bir PlayBook 'tan sanal makine oluşturmayı gösterir. Sanal makinelerden birini veya her ikisini tanımlamak için bir PlayBook kullanırsanız, SSH bağlantısının parola yerine kullanıldığından emin olun.
 
     - **Azure CLI** -iki sanal makineyi oluşturmak için Cloud Shell aşağıdaki komutlardan her birini verin:
 
@@ -316,4 +316,4 @@ Bu bölümde, NGINX 'in sanal makinenizde yüklü olduğunu test eden bir teknik
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Hızlı başlangıç: Azure 'da Linux sanal makinelerini kullanarak yapılandırma](/azure/virtual-machines/linux/ansible-create-vm)
+> [Hızlı başlangıç: Azure 'da Linux sanal makinelerini kullanarak yapılandırma](./ansible-create-vm.md)

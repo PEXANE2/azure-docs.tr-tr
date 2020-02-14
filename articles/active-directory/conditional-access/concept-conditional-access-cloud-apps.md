@@ -1,31 +1,31 @@
 ---
-title: Koşullu erişim ilkesindeki istemci uygulamaları-Azure Active Directory
-description: ''
+title: Koşullu erişim ilkesindeki bulut uygulamaları veya eylemleri-Azure Active Directory
+description: Azure AD koşullu erişim ilkesinde bulut uygulamaları veya eylemleri nelerdir?
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544064"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186368"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>Koşullu erişim: bulut uygulamaları ve eylemleri
+# <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
-Bulut uygulamaları veya eylemleri, koşullu erişim ilkesinin önemli bir parçasıdır. Koşullu erişim ilkeleri, yöneticilerin belirli uygulamalara veya eylemlere denetim atamasını sağlar. 
+Bulut uygulamaları veya eylemleri, koşullu erişim ilkesindeki önemli sinyaldir. Koşullu erişim ilkeleri, yöneticilerin belirli uygulamalara veya eylemlere denetim atamasını sağlar.
 
 - Yöneticiler, yerleşik Microsoft uygulamaları ve Galeri, Galeri olmayan uygulamalar ve [uygulama proxy 'si](../manage-apps/what-is-application-proxy.md)aracılığıyla yayınlanan uygulamalar dahil olmak üzere [Azure AD ile tümleştirilmiş](../manage-apps/what-is-application-management.md) uygulamalar içeren uygulamalar listesinden seçim yapabilir.
 - Yöneticiler, bir bulut uygulamasına göre değil, bir Kullanıcı eyleminde ilke tanımlamaya seçim gösterebilir. Desteklenen tek eylem güvenlik bilgilerini (Önizleme) kaydettirir ve bu, [Birleşik güvenlik bilgileri kayıt deneyimi](../authentication/howto-registration-mfa-sspr-combined.md)etrafında denetimleri zorlamak Için koşullu erişime izin verir.
 
-![Koşullu erişim ilkesi tanımlama ve bulut uygulamaları belirtme](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![Koşullu erişim ilkesi tanımlama ve bulut uygulamaları belirtme](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft bulut uygulamaları
 
@@ -61,7 +61,7 @@ Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim
 - Office Delve
 - Office Sway
 - Outlook Groups
-- Power BI Hizmeti
+- Power BI hizmeti
 - Project Online
 - Skype Kurumsal Çevrimiçi Sürüm
 - Sanal özel ağ (VPN)
@@ -90,15 +90,15 @@ Office 365 (Önizleme) istemci uygulamasında bulunan önemli uygulamalar:
    - Office Online
    - Office.com
    - OneDrive
-   - PowerApp’ler
+   - PowerApps
    - Skype Kurumsal Çevrimiçi Sürüm
-   - Sway
+   - Tuval
 
 ### <a name="microsoft-azure-management"></a>Microsoft Azure yönetimi
 
 Microsoft Azure yönetim uygulaması birden çok temel hizmet içerir. 
 
-   - Azure portalında
+   - Azure portalı
    - Azure Resource Manager sağlayıcı
    - Klasik dağıtım modeli API 'Leri
    - Azure PowerShell
@@ -124,6 +124,7 @@ Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek gör
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Koşullu erişim ilkesi bileşenleri](concept-conditional-access-policies.md)
+- [Koşullu erişim: koşullar](concept-conditional-access-conditions.md)
+
+- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 - [İstemci uygulaması bağımlılıkları](service-dependencies.md)
-- [Microsoft Intune: cihaz kaydı için MFA gerektir](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

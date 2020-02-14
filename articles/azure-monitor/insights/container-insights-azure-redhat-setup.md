@@ -2,13 +2,13 @@
 title: Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift 'te barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979784"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190086"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümelerini kapsayıcılar için Azure Izleyici ile yapılandırma
 
@@ -20,8 +20,8 @@ Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motor
 
 Kapsayıcılar için Azure Izleyici, yeni bir veya daha fazla Azure Red Hat OpenShift dağıtımı için aşağıdaki desteklenen yöntemleri kullanarak etkinleştirilebilir:
 
-- Azure portal veya Azure Resource Manager şablonu kullanarak var olan bir küme için
-- Azure Resource Manager şablonu kullanan yeni bir küme için
+- Azure portal veya Azure Resource Manager şablonu kullanarak var olan bir küme için.
+- Azure Resource Manager şablonu kullanan yeni bir küme için veya [Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)kullanarak yeni bir küme oluştururken.
 
 ## <a name="supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen özellikler
 
@@ -30,7 +30,7 @@ Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview
 - Canlı veriler (Önizleme)
 - Küme düğümlerinden ve yığınlardan [ölçümler toplayın](container-insights-update-metrics.md) ve bunları Azure izleyici ölçümleri veritabanında depolarsınız
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kapsayıcılar için Azure Izleyici 'deki özellikleri etkinleştirmek ve bu özelliklere erişmek için, en azından Azure aboneliğindeki Azure *katkıda* bulunan rolünün bir üyesi olmanız ve kapsayıcılar Için Azure izleyici ile yapılandırılmış Log Analytics çalışma alanının [*Log Analytics katkıda*](../platform/manage-access.md#manage-access-using-azure-permissions) bulunan rolünün bir üyesi olmanız gerekir.
 
@@ -66,11 +66,11 @@ Bir şablon kullanarak kaynakları dağıtma kavramıyla alışkın değilseniz,
 
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
+- [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanı oluşturmak için bunu aracılığıyla ayarlayabilirsiniz [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)temellidir [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), veya [Azure portalında](../../azure-monitor/learn/quick-create-workspace.md).
+Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
 
 1. Aşağıdaki komutları kullanarak izleme eklentisi ile bir küme oluşturmak için bir yerel klasöre, Azure Resource Manager şablonu ve parametre dosyasına indirip kaydedin:
 
@@ -78,7 +78,7 @@ Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log An
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
-2. Azure'da oturum açın
+2. Azure'da oturum açma
 
     ```azurecli
     az login    
@@ -125,19 +125,19 @@ Azure 'da dağıtılan bir Azure Red Hat OpenShift kümesinin izlenmesini etkinl
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. Azure portal menüsünde veya giriş sayfasından **Azure izleyici**' yi seçin. Altında **Insights** bölümünden **kapsayıcıları**.
+2. Azure portal menüsünde veya giriş sayfasından **Azure izleyici**' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin.
 
-3. Üzerinde **İzleyicisi - kapsayıcıları** sayfasında **olmayan izlenen kümeleri**.
+3. **İzleyici-kapsayıcılar** sayfasında, **izlenmeyen kümeler**' ı seçin.
 
 4. İzlenmeyen kümeler listesinden, listeden kümeyi bulun ve **Etkinleştir**' e tıklayın. Sütun **KÜMESI türü**altında, **Aro** değerini arayarak listedeki sonuçları belirleyebilirsiniz.
 
-5. Üzerinde **kapsayıcılar için Azure İzleyici ekleme** sayfasında, mevcut bir Log Analytics varsa küme ile aynı abonelikte çalışma alanı, aşağı açılan listeden seçin.  
+5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.  
     Liste, varsayılan çalışma alanını ve kümenin abonelikte dağıtıldığı konumu önceden seçer.
 
     ![İzlenmeyen kümeler için izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Küme izleme verilerini depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız,'ndaki yönergeleri izleyin [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md). Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın.
+    >İzleme verilerini kümeden depolamak için yeni bir Log Analytics çalışma alanı oluşturmak istiyorsanız, [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md)bölümündeki yönergeleri izleyin. Çalışma alanını, RedHat OpenShift kümesinin dağıtıldığı abonelikte oluşturmayı unutmayın.
 
 İzleme etkinleştirdikten sonra küme için sistem durumu ölçümleri görmeden önce yaklaşık 15 dakika sürebilir.
 
@@ -155,11 +155,11 @@ Bir şablon kullanarak kaynakları dağıtma kavramıyla alışkın değilseniz,
 
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
+- [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanı oluşturmak için bunu aracılığıyla ayarlayabilirsiniz [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)temellidir [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), veya [Azure portalında](../../azure-monitor/learn/quick-create-workspace.md).
+Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanını oluşturmak için [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)aracılığıyla ayarlayabilirsiniz.
 
 1. Aşağıdaki komutları kullanarak kümenizi izleme eklentisi ile güncelleştirmek için şablon ve parametre dosyasını indirin:
 
@@ -167,7 +167,7 @@ Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log An
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
-2. Azure'da oturum açın
+2. Azure'da oturum açma
 
     ```azurecli
     az login    
@@ -187,7 +187,7 @@ Azure PowerShell veya CLı kullanılarak izlemeyi etkinleştirmeden önce Log An
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. **Existingclusterparam. JSON** JSON parametre dosyasını düzenleyin ve *Araresourceıd* ve *Araresorucelocation*değerlerini güncelleştirin. Değeri **workspaceResourceId** çalışma alanı adı içerir, Log Analytics çalışma alanının tam kaynak kimliği.
+5. **Existingclusterparam. JSON** JSON parametre dosyasını düzenleyin ve *Araresourceıd* ve *Araresorucelocation*değerlerini güncelleştirin. **WorkspaceResourceId** değeri, çalışma alanının adı da dahil olmak üzere Log Analytics çalışma alanınızın tam kaynak kimliğidir.
 
 6. Azure CLı ile dağıtmak için aşağıdaki komutları çalıştırın:
 

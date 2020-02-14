@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077613"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186242"
 ---
 # <a name="building-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
@@ -32,15 +32,15 @@ Atamalar bölümü, koşullu erişim ilkesinin kim, ne olduğunu ve nerede oldu�
 
 ### <a name="users-and-groups"></a>Kullanıcılar ve gruplar
 
-Kullanıcılar ve gruplar, ilkenin kimlerin ekleneceğini veya dışlanacağını atar. Bu atama tüm kullanıcıları, belirli kullanıcı gruplarını, Dizin rollerini veya dış Konuk kullanıcıları içerebilir. 
+[Kullanıcılar ve gruplar](concept-conditional-access-users-groups.md) , ilkenin kimlerin ekleneceğini veya dışlanacağını atar. Bu atama tüm kullanıcıları, belirli kullanıcı gruplarını, Dizin rollerini veya dış Konuk kullanıcıları içerebilir. 
 
 ### <a name="cloud-apps-or-actions"></a>Bulut uygulamaları veya eylemleri
 
-Bulut uygulamaları veya eylemleri, ilke ile ilgili olacak bulut uygulamalarını veya kullanıcı eylemlerini içerebilir veya hariç tutabilir.
+[Bulut uygulamaları veya eylemleri](concept-conditional-access-cloud-apps.md) , ilke ile ilgili olacak bulut uygulamalarını veya kullanıcı eylemlerini içerebilir veya hariç tutabilir.
 
 ### <a name="conditions"></a>Koşullar
 
-Bir ilke birden çok koşul içerebilir.
+Bir ilke birden çok [koşul](concept-conditional-access-conditions.md)içerebilir.
 
 #### <a name="sign-in-risk"></a>Oturum açma riski
 
@@ -70,13 +70,15 @@ Bu denetim, karma Azure AD 'ye katılmış olan veya Intune 'da uyumlu bir şeki
 
 Koşullu erişim ilkesinin erişim denetimleri bölümü bir ilkenin nasıl uygulanacağını denetler.
 
-### <a name="grant"></a>Erişim İzni Verme
+### <a name="grant"></a>Semantiği
+
+[Grant](concept-conditional-access-grant.md) , yöneticilere, erişimi engelleyebilecekleri veya izin verebileceği bir ilke zorlamasına yol sunar.
 
 #### <a name="block-access"></a>Erişimi engelle
 
 Erişimi engelle, yalnızca belirtilen atamalar altındaki erişimi engeller. Blok denetimi güçlüdür ve uygun bilgilerle silinmeli.
 
-#### <a name="grant-access"></a>Erişim izni ver
+#### <a name="grant-access"></a>Erişim izni verin
 
 İzin denetimi bir veya daha fazla denetimin zorlanmasını tetikleyebilir. 
 
@@ -93,12 +95,12 @@ Yöneticiler, aşağıdaki seçenekleri kullanarak önceki denetimlerden birini 
 
 ### <a name="session"></a>Oturum
 
-Oturum denetimleri deneyimi sınırlayabilir 
+[Oturum denetimleri](concept-conditional-access-session.md) deneyimi sınırlayabilir 
 
 - Uygulama tarafından zorlanan kısıtlamaları kullan
    - Şu anda yalnızca Exchange Online ve SharePoint Online ile birlikte çalışıyor.
       - Tam veya sınırlı erişim verme deneyiminin denetimine izin vermek için cihaz bilgilerini geçirir.
-- Koşullu Erişim Uygulama Denetimi kullanın
+- Koşullu Erişim Uygulama Denetimi Kullan
    - , Şunun gibi işlemleri yapmak için Microsoft Cloud App Security sinyalleri kullanır: 
       - Gizli belgeleri indirme, kesme, kopyalama ve yazdırma.
       - Riskli oturum davranışını izleyin.
@@ -121,11 +123,11 @@ Koşullu erişim ilkesi, zorlanmak için en azından aşağıdakileri içermelid
 
 ![Boş koşullu erişim ilkesi](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+[Genel koşullu erişim ilkeleri](concept-conditional-access-policy-common.md) makalesi, çoğu kuruluş için faydalı olacağını düşündük bazı ilkeleri içerir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
-
-[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
 
 [Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md)
 

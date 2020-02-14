@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop bileşenleri ve sürümleri-Azure HDInsight
 description: Azure HDInsight 'ta Apache Hadoop bileşenleri ve sürümleri hakkında bilgi edinin.
-keywords: Hadoop sürümleri, Hadoop ekosistemi bileşenleri, Hadoop bileşenleri, Hadoop sürümünü denetleme
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/21/2019
-ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/02/2020
+ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764464"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198965"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
 
@@ -131,7 +130,9 @@ Kurumsal Güvenlik, HDInsight kümenize küme iş akışı oluşturma işlemi ka
 
 - Hadoop (yalnızca HDInsight 3,6)
 - Spark
-- Etkileşimli Sorgu
+- Kafka
+- HBase
+- Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Azure Data Lake Storage için destek
 
@@ -148,10 +149,7 @@ Hizmet düzeyi sözleşmesi (SLA), _destek penceresi_bakımından tanımlanmış
 - Formül 1: HDInsight kümesi sürüm X 'in yayımlandığı tarihe 180 gün ekleyin.
 - Formül 2: HDInsight kümesi sürüm X + 1 ' de Azure portal tarihi ' nde kullanılabilir hale geldiğinde tarihe 90 gün ekleyin.
 
-_Emeklilik tarihi_ , HDInsight 'ta küme sürümünün oluşturuoluşturuoluşturulamadığından tarih olur. 31 Temmuz 2017 ' den itibaren, bir HDInsight kümesini kullanımdan kaldırma tarihinden sonra yeniden boyutlandıramazsınız.
-
-> [!NOTE]  
-> HDInsight Windows kümeleri (2,1, 3,0, 3,1, 3,2 ve 3,3 sürümleri dahil), Windows Server 64 R2 'nin 2012 bit sürümünü kullanan Azure Konuk işletim sistemi ailesi sürüm 4 ' te çalışır. Azure Konuk işletim sistemi ailesi sürüm 4, 4,0, 4,5, 4.5.1 ve 4.5.2 sürümlerinin .NET Framework destekler.
+_Emeklilik tarihi_ , HDInsight 'ta küme sürümünün oluşturuoluşturuoluşturulamadığı tarihtir. 31 Temmuz 2017 ' den itibaren, bir HDInsight kümesini kullanımdan kaldırma tarihinden sonra yeniden boyutlandıramazsınız.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>, HDInsight sürümleriyle ilişkili hortonçalışmalar sürüm notları
 

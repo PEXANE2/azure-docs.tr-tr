@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021835"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195530"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -98,6 +98,11 @@ Kimlik kiracısı tam zamanında (JıT) veya viral kiracınız (yani ayrı, yön
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Konuk Kullanıcı AzureAD PowerShell v1 modülünü kullanamıyor
 
 18 Kasım 2019 itibariyle, dizininizde bulunan Konuk kullanıcılar ( **UserType** özelliğinin **Konuk**olduğu Kullanıcı hesapları olarak tanımlanır), azuread PowerShell v1 modülünü kullanmak için engellenir. İleri giderek, bir kullanıcının üye Kullanıcı ( **UserType** eşittir **üyesi**) olması veya azuread PowerShell V2 modülünü kullanması gerekir.
+
+## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Bir Azure ABD kamu kiracısında bir B2B işbirliği Konuk kullanıcısını davet edemiyorum
+
+Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD devlet bulutu dahilinde olan ve hem B2B işbirliğini destekleyen kiracılar arasında desteklenmektedir. Azure ABD kamu bulutunun parçası olmayan veya henüz B2B işbirliğini desteklemeyen bir kiracıya bir kullanıcı davet ederseniz bir hata alırsınız. Ayrıntılar ve sınırlamalar için bkz. [Azure Active Directory Premium P1 ve P2 Çeşitlemeler](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

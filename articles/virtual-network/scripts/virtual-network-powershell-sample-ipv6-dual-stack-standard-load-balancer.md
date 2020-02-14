@@ -1,25 +1,24 @@
 ---
-title: Azure PowerShell betik örneği-IPv6 sanal ağ uç noktalarını Standart Load Balancer ile yapılandırma (Önizleme)
+title: Azure PowerShell betik örneği-IPv6 ön ucu Standart Load Balancer ile yapılandırma (Önizleme)
 titlesuffix: Azure Virtual Network
 description: Azure sanal ağ 'da PowerShell kullanarak IPv6 uç noktalarını etkinleştirme
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: fc5bc23ffec0956cb53e62f0cd14d7135d5fbcca
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269708"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201331"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Standart Load Balancer (Önizleme) ile sanal ağ betiği örneğindeki IPv6 uç noktalarını yapılandırma
+# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Standart Load Balancer (Önizleme) ile sanal ağ betiği örneğinde IPv6 ön ucu yapılandırma
 
 Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırmasına sahip NIC 'Ler olan sanal makineler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. Çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
 
@@ -35,7 +34,7 @@ Aşağıdaki gibi kaydolun:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Aşağıdaki Azure PowerShell komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz: Kaydı aşağıdaki gibi denetleyin:
+Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Aşağıdaki Azure PowerShell komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz: kaydı şu şekilde denetleyin:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network

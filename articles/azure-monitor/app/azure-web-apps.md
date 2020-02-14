@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407244"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189579"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -116,7 +116,7 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 
 İstemci tarafı izleme, ASP.NET için kabul edilir. İstemci tarafı izlemeyi etkinleştirmek için:
 
-* Seçin **ayarları** > ** **Uygulama ayarları** **
+* **Ayarları** seçin > * * * * uygulama ayarları * * * *
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
      Ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -138,7 +138,7 @@ Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
 * **Uygulama ayarları** > **ayarları** seçin
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
-     ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Değer:`false`
 
@@ -173,7 +173,7 @@ Application Insights ile telemetri toplamayı etkinleştirmek için, yalnızca u
 |ApplicationInsightsAgent_EXTENSION_VERSION | Çalışma zamanı izlemeyi denetleyen ana uzantı. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Yalnızca varsayılan modda, en iyi performansı sağlamak için temel özellikler etkindir. | `default` veya `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | İkili yeniden yazma altyapısının `InstrumentationEngine` açılıp açılmeyeceğini denetler. Bu ayarın performans etkileri vardır ve soğuk başlatma/başlatma süresini etkiler. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | SQL & Azure Tablo metninin bağımlılık çağrılarında birlikte yakalanıp yakalanmayacağını denetler. Performans uyarısı: Bu ayar `InstrumentationEngine`gerektirir. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | SQL & Azure Tablo metninin bağımlılık çağrılarında birlikte yakalanıp yakalanmayacağını denetler. Performans uyarısı: uygulamanın soğuk başlangıç saati etkilenecektir. Bu ayar `InstrumentationEngine`gerektirir. | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Azure Resource Manager ile uygulama ayarlarını App Service
 
@@ -229,6 +229,10 @@ Aşağıda, tüm `AppMonitoredSite` örneklerini site adınızla değiştirme ö
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -308,9 +312,6 @@ Aşağıda, tüm `AppMonitoredSite` örneklerini site adınızla değiştirme ö
 }
 ```
 
-> [!NOTE]
-> Şablon, uygulama ayarlarını "varsayılan" modunda oluşturacaktır. Bu mod performansı en iyi duruma getirilmiştir, ancak istediğiniz özellikleri etkinleştirmek için şablonu değiştirebilirsiniz.
-
 ### <a name="enabling-through-powershell"></a>PowerShell aracılığıyla etkinleştirme
 
 Uygulama izlemeyi PowerShell aracılığıyla etkinleştirmek için, yalnızca temeldeki uygulama ayarlarının değiştirilmesi gerekir. Aşağıda, "Appmonitortoredrg" kaynak grubunda "Appmonitortoredsite" adlı bir Web sitesi için uygulama izlemeye olanak tanıyan bir örnek verilmiştir ve "012345678-abcd-EF01-2345-6789abcd" izleme anahtarına gönderilecek verileri yapılandırır.
@@ -320,8 +321,9 @@ Uygulama izlemeyi PowerShell aracılığıyla etkinleştirmek için, yalnızca t
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
-$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
-$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} # preserve non Application Insights application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights instrumentation key
+$newAppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights connection string
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
 $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
@@ -370,14 +372,14 @@ Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar
         * Benzer bir değer yoksa, uygulamanın Şu anda çalışmadığı veya desteklenmediği anlamına gelir. Uygulamanın çalıştığından emin olmak için, uygulama URL 'si/uygulama uç noktalarını el ile ziyaret etmeyi deneyin, bu, çalışma zamanı bilgilerinin kullanılabilir hale gelmesini sağlar.
 
     * `IKeyExists` `true` olduğunu onaylayın
-        * Yanlış ise, uygulama ayarlarınıza Ikey GUID 'ınızla ' APPINSIGHTS_INSTRUMENTATIONKEY ekleyin.
+        * `false`ise, uygulama ayarlarınıza Ikey GUID 'ınızla `APPINSIGHTS_INSTRUMENTATIONKEY` ve `APPLICATIONINSIGHTS_CONNECTION_STRING` ekleyin.
 
     * `AppAlreadyInstrumented`, `AppContainsDiagnosticSourceAssembly`ve `AppContainsAspNetTelemetryCorrelationAssembly`için hiçbir giriş olmadığını doğrulayın.
         * Bu girdilerden herhangi biri mevcutsa, şu paketleri uygulamanızdan kaldırın: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`ve `Microsoft.AspNet.TelemetryCorrelation`.
 
 Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri ve önerilen düzeltmeleri verilmiştir:
 
-|Sorun değeri|Açıklama|Düzelt
+|Sorun değeri|Açıklama|Düzeltme
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Bu değer, uzantının bir SDK 'nın bazı yönlerinin uygulamada zaten bulunduğunu algıladı ve geri dönecek. Bunun nedeni, `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`veya `Microsoft.ApplicationInsights` bir başvuru olabilir  | Başvuruları kaldırın. Bu başvurulardan bazıları varsayılan olarak belirli Visual Studio şablonlarından eklenir ve Visual Studio 'nun eski sürümleri `Microsoft.ApplicationInsights`başvurular ekleyebilir.
 |`AppAlreadyInstrumented:true` | Uygulama .NET Core 2,1 veya 2,2 ' i hedefliyorsanız ve [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta Package öğesine başvuruyorsa, Application Insights ve uzantı geri açılır. | .NET Core 2.1, 2.2 ' deki müşterilerin yerine Microsoft. AspNetCore. app meta paketini kullanması [önerilir](https://github.com/aspnet/Announcements/issues/287) .|

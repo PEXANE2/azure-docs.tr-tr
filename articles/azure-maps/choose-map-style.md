@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cabf39f017afe440c883a63db57643c5c5367128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911786"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189734"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure haritalar 'da harita stili seçme
 
-[Azure haritalar 'da desteklenen harita stillerinin](./supported-map-styles.md) BIRÇOĞU Web SDK 'da bulunabilir. Bu makalede, harita yükünde bir stil ayarlamak, yeni bir stil ayarlamak ve stil seçici denetimini kullanmak için stille ilgili işlevlerin nasıl kullanılacağı gösterilmektedir.
+[Azure haritalar 'da desteklenen harita stillerinin](./supported-map-styles.md) BIRÇOĞU Web SDK 'da bulunabilir. Bu makalede, stille ilgili işlevlerin nasıl kullanılacağı gösterilmektedir. Harita yüklemeden sonra bir stil ayarlamayı öğrenin ve stil seçici denetimini kullanarak yeni bir harita stili ayarlamayı öğrenin.
 
 ## <a name="set-style-on-map-load"></a>Harita yükünde stil ayarla
 
@@ -30,7 +30,7 @@ Aşağıdaki kodda, eşlemenin `style` seçeneği başlatma sırasında `graysca
 
 ## <a name="update-the-style"></a>Stili Güncelleştir
 
-Aşağıdaki kodda, bir harita örneği yüklendikten sonra harita stili, eşlemenin [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) işlevi kullanılarak `satellite` `road` güncelleştirilir.
+Aşağıdaki kodda, bir harita örneği yüklendikten sonra, bir eşleme stili, [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) işlevi kullanılarak `satellite` `road` güncelleştirilir.
 
 <br/>
 
@@ -39,7 +39,7 @@ Aşağıdaki kodda, bir harita örneği yüklendikten sonra harita stili, eşlem
 
 ## <a name="add-the-style-picker"></a>Stil seçiciyi ekleme
 
-Aşağıdaki kod, kullanıcının farklı harita stilleri arasında kolayca geçiş yapabilmesi için haritaya bir [Stylecontrol](/javascript/api/azure-maps-control/atlas.control.stylecontrol) ekler. 
+Aşağıdaki kod haritaya bir [Stylecontrol](/javascript/api/azure-maps-control/atlas.control.stylecontrol) ekler, böylece kullanıcı farklı harita stilleri arasında kolayca geçiş yapabilir. Harita stilini, sağ üst köşenin yakınında bulunan harita stili denetimini kullanarak değiştirin.
 
 <br/>
 
@@ -47,7 +47,7 @@ Aşağıdaki kod, kullanıcının farklı harita stilleri arasında kolayca geç
 </iframe>
 
 > [!TIP]
-> Varsayılan olarak, varsayılan olarak, Azure Maps 'in S0 fiyatlandırma katmanını kullanırken stil Seçici denetimine sunulan tüm stiller listelenir. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin dizisini stil seçicisinin `mapStyle` seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, stil seçicinin `mapStyles` seçeneğini `"all"`olarak ayarlayın.
+> Varsayılan olarak, Azure haritalar 'ın S0 fiyatlandırma katmanını kullanırken, stil Seçici denetimi tüm kullanılabilir stilleri listeler. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin dizisini stil seçicisinin `mapStyle` seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, stil seçicinin `mapStyles` seçeneğini `"all"`olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

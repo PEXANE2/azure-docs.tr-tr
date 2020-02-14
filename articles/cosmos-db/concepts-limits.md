@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759781"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200053"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -27,9 +27,9 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 | Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) bölüm anahtarı | 10,000 |
 | Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 10 GB |
-| En fazla farklı (mantıksal) bölüm anahtarı sayısı | İş çalışma zamanında |
-| Kapsayıcı başına en fazla depolama alanı | İş çalışma zamanında |
-| Veritabanı başına en fazla depolama alanı | İş çalışma zamanında |
+| En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
+| Kapsayıcı başına en fazla depolama alanı | Sınırsız |
+| Veritabanı başına en fazla depolama alanı | Sınırsız |
 | Hesap başına en fazla ek boyutu (ek özelliği amorti edilir) | 2 GB |
 | 1 GB başına gereken minimum ru | 10 RU/sn |
 
@@ -76,8 +76,8 @@ Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| En fazla veritabanı sayısı | İş çalışma zamanında |
-| Veritabanı başına en fazla kapsayıcı sayısı (veya hesap) | İş çalışma zamanında |
+| En fazla veritabanı sayısı | Sınırsız |
+| Paylaşılan verimlilik içeren bir veritabanında sağlanabilen en fazla kapsayıcı sayısı |25 |
 | En fazla bölge sayısı | Sınır yok (tüm Azure bölgeleri) |
 
 ## <a name="per-container-limits"></a>Kapsayıcı başına sınırlar

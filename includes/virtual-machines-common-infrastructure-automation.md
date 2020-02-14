@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260907"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205686"
 ---
 Oluşturup uygun ölçekte tutarlı bir şekilde Azure sanal makineleri (VM'ler) yönetmek için Otomasyon biçimi genellikle istenildiği gibi. Birçok araca ve tam Azure altyapı dağıtımı ve Yönetimi yaşam döngüsünü otomatikleştirmenize olanak tanıyan çözümler vardır. Bu makalede, Azure'da kullanabileceğiniz altyapı Otomasyonu araçlardan bazıları tanıtılmaktadır. Bu araçlar genellikle aşağıdaki yaklaşımlardan birini sığacak:
 
@@ -27,17 +27,17 @@ Oluşturup uygun ölçekte tutarlı bir şekilde Azure sanal makineleri (VM'ler)
 ## <a name="ansible"></a>Ansible
 [Anormal](https://www.ansible.com/) , yapılandırma YÖNETIMI, VM oluşturma veya uygulama dağıtımı için bir Otomasyon altyapısıdır. Ansible, kimlik doğrulaması ve hedef makineleri yönetmek için genellikle SSH anahtarlarıyla bir aracısız modelini kullanır. Belirli görevleri gerçekleştirmek kullanılabilir olan Ansible modül sayısı ile playbook'ları yapılandırma görevleri tanımlanır. Daha fazla bilgi için bkz. [anormal çalışma](https://www.ansible.com/how-ansible-works).
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure ile kullanmak Için Linux üzerinde erişilebilir ve yapılandırın](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Bir Linux sanal makinesi oluşturun](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Linux sanal makinesini yönetin](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- [Azure ile kullanmak Için Linux üzerinde erişilebilir ve yapılandırın](../articles/ansible/ansible-install-configure.md).
+- [Bir Linux sanal makinesi oluşturun](../articles/ansible/ansible-create-vm.md).
+- [Linux sanal makinesini yönetin](../articles/ansible/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
 [Chef](https://www.chef.io/) , altyapınızın nasıl yapılandırıldığını, dağıtıldığını ve yönetildiğini tanımlamaya yardımcı olan bir Otomasyon platformudur. Uygulama yaşam döngüsü Otomasyon altyapısı yerine, Chef, Habitat ek bileşenler dahil ve güvenlik ve ilke gereksinimlerine uyum Chef yardımcı olan InSpec otomatikleştirin. Chef istemciler, bir veya daha fazla merkezi Chef, yapılandırmaları yönetin ve sunucuları ile hedef makinelerde yüklenir. Daha fazla bilgi için bkz. [Chef 'e genel bakış](https://docs.chef.io/chef_overview.html).
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure Marketi 'Nden Chef otomatikleştirmesini dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
 - [Windows üzerinde Chef 'ı yükleyip Azure VM 'leri oluşturun](../articles/virtual-machines/windows/chef-automation.md).
@@ -46,7 +46,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenin:
 ## <a name="puppet"></a>Puppet
 [Pupevcil hayvan](https://www.puppet.com) , uygulama teslimi ve dağıtım sürecini işleyen kurumsal özellikli bir Otomasyon platformudur. Aracılar Puppet Azure altyapısının istenen yapılandırmasını tanımlamak bildirimleri çalıştırmak için ana ve Vm'leri izin vermek için hedef makinede yüklü. Puppet bir Gelişmiş devops iş akışı için Jenkins ve GitHub gibi diğer çözümlerle tümleştirilebilir. Daha fazla bilgi için bkz. [Pupevcil hayvan nasıl çalıştığını öğrenin](https://puppet.com/products/how-puppet-works).
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure Marketi 'Nden Pupevcil hayvan 'ı dağıtın](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
@@ -67,7 +67,7 @@ Etkin olarak desteklenen Linux distro ortaklarımızla birlikte kullanılabilir 
 
 DSC yapılandırmaları ne bir makineye yükleyin ve ana bilgisayar yapılandırma tanımlar. İstenen Eylemler gönderilen yapılandırmalarına göre işler her hedef düğümde yerel Configuration Manager'ı (LCM) altyapısı çalıştırır. Bir çekme sunucusu DSC yapılandırmaları ve ilişkili kaynakları depolamak için merkezi bir konakta çalışan bir web hizmetidir. Çekme sunucusu, uyumluluk ve gerekli yapılandırmaları sağlamak için her bir hedef ana bilgisayarda LCM altyapısı ile iletişim kurar.
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Temel BIR DSC yapılandırması oluşturun](/powershell/scripting/dsc/quickstarts/website-quickstart).
 - [DSC çekme sunucusu yapılandırın](/powershell/scripting/dsc/pull-server/pullserver).
@@ -79,7 +79,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenin:
 
 Betikler Azure depolama veya GitHub deposu gibi genel bir konumdan indirilebilir. Özel betik uzantısı ile komut dosyaları, kaynak VM üzerinde çalışan herhangi bir dilde yazabilirsiniz. Bu komut dosyaları, uygulamaları yüklemek veya VM olarak istenen yapılandırmak için kullanılabilir. Güvenli kimlik bilgileri için korumalı bir yapılandırmada parolalar gibi hassas bilgileri depolanabilir. Bu kimlik bilgileri, yalnızca sanal makine içinde şifresi çözülür.
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure CLI ile bir LINUX VM oluşturun ve özel Betik uzantısı 'nı kullanın](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
 - [Azure PowerShell ile bir Windows sanal makinesi oluşturun ve özel betik uzantısını kullanın](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
@@ -88,7 +88,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenin:
 ## <a name="packer"></a>Packer
 [Packer](https://www.packer.io) , Azure 'da özel bir VM görüntüsü oluşturduğunuzda derleme işlemini otomatikleştirir. Packer, işletim sistemini tanımlamak ve VM için kendi özel gereksinimlerinize göre özelleştirme yapılandırma sonrası komut dosyalarını çalıştırmak için kullanın. Yapılandırıldıktan sonra VM'ye yönetilen Disk görüntüsü dahil edilir. Packer kaynak VM, ağ ve depolama kaynakları oluşturma, yapılandırma betiklerini çalıştırın ve ardından sanal makine görüntüsü oluşturma işlemini otomatikleştirir.
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure 'da bir LINUX VM görüntüsü oluşturmak Için Packer 'ı kullanın](../articles/virtual-machines/linux/build-image-with-packer.md).
 - [Azure 'da bir WINDOWS VM görüntüsü oluşturmak Için Packer 'ı kullanın](../articles/virtual-machines/windows/build-image-with-packer.md).
@@ -97,7 +97,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenin:
 ## <a name="terraform"></a>Terraform
 [Terkform](https://www.terraform.io) , tek bir şablon biçimi ile Azure altyapısının tamamını tanımlamanıza ve oluşturmanıza olanak tanıyan bir otomasyon aracıdır. Bu, diyez ICORP yapılandırma DILI (HCL). Terraform ile ağ, depolama ve uygulama çözümü için VM kaynakları oluşturma işlemini otomatik hale getiren şablonları tanımlayın. Mevcut Terraform şablonlarınızı tutarlılığı sağlamak ve altyapı dağıtımı için bir Azure Resource Manager şablonu dönüştürmek zorunda kalmadan basitleştirmek için Azure ile diğer platformlar için kullanabilirsiniz.
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure Ile Terrayform 'U yükleyip yapılandırın](../articles/virtual-machines/linux/terraform-install-configure.md).
 - [Terrayform ile bir Azure altyapısı oluşturun](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
@@ -108,7 +108,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenin:
 
 Azure Otomasyonu, Vm'leri belirli bir dizi nasıl yapılandırılmalıdır tanımları oluşturmanıza olanak sağlayan bir Desired State Configuration ' nı (DSC) hizmet de sunar. DSC, ardından gerekli yapılandırma uygulanır ve VM tutarlı kalmasını sağlar. Azure Automation DSC, hem Windows hem de Linux makinelerinde çalışır.
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [PowerShell runbook 'U oluşturun](../articles/automation/automation-first-runbook-textual-powershell.md).
 - [Şirket içi kaynakları yönetmek Için karma Runbook Worker 'ı kullanın](../articles/automation/automation-hybrid-runbook-worker.md).
@@ -118,7 +118,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenin:
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) , kodu paylaşmanıza ve izlemenize, otomatik derlemeler kullanmanıza ve eksiksiz bir sürekli tümleştirme ve GELIŞTIRME (CI/CD) işlem hattı oluşturmanıza yardımcı olan bir araç paketidir. Azure DevOps hizmetleriyle, kullanımı kolaylaştırmak için Visual Studio ve diğer düzenleyiciler ile tümleştirilir. Azure DevOps hizmetleriyle oluşturabilir ve Azure Vm'leri yapılandırabilir ve ardından kod bu bilgisayarlara dağıtın.
 
-Aşağıdakiler hakkında daha fazla bilgi edinin:
+Daha fazla bilgi:
 
 - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 
@@ -126,7 +126,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 ## <a name="jenkins"></a>Jenkins
 [Jenkins](https://www.jenkins.io) , uygulamaları dağıtmaya ve test etmeye ve kod teslimi için otomatik işlem hatları oluşturmaya yardımcı olan bir sürekli tümleştirme sunucusudur. Eklenti temel Jenkins platformu genişletmek için yüzlerce vardır ve diğer birçok ürün ve Web kancaları aracılığıyla çözümler ile de tümleştirebilirsiniz. El ile Jenkins Azure VM üzerinde yüklemek, Jenkins'den Docker kapsayıcısı içinde çalıştırın veya önceden oluşturulmuş Azure Market görüntüsü kullanın.
 
-Aşağıdakileri nasıl yapacağınızı öğrenin:
+Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure 'Da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde bir geliştirme altyapısı oluşturun](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 

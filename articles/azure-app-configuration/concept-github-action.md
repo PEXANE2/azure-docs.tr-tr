@@ -6,14 +6,14 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899616"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190389"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub eylemlerini kullanarak uygulama yapılandırma örneğinizi eşitleme
+# <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions kullanarak Uygulama Yapılandırması örneğinizi eşitleme
 Azure Uygulama yapılandırması, GitHub deposunda gerçekleştirilen bir eylem tarafından tetiklendiğinde bir uygulama yapılandırma örneğini güncelleştirmek için GitHub eylemlerini kullanır. Uygulama yapılandırmasını güncelleştirmek için GitHub iş akışlarından yararlanabilirsiniz ve uygulama yapılandırma güncelleştirmelerinin uygulama kodunu güncelleştirmek için kullanılan iş akışıyla tümleştirilmesini sağlayabilirsiniz.
 
 GitHub eylemleri [iş akışı](https://help.github.com/articles/about-github-actions#workflow) , GitHub deponuzda tanımlanan otomatikleştirilmiş bir işlemdir. Bu işlem GitHub projenizi nasıl derleyip dağıtacağınızı gösterir. Azure Uygulama yapılandırması, kaynak deposunda değişiklik yapıldığında bir uygulama yapılandırma örneğinde güncelleştirmeleri etkinleştirmek için *Azure uygulama yapılandırma eşitleme* eylemini sağlar. 
@@ -25,8 +25,7 @@ Bir depoya gönderim gibi GitHub olayları bir GitHub eylem iş akışını teti
 GitHub [belgeleri](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) , GitHub iş akışlarının ve eylemlerinin ayrıntılı görünümünü sağlar. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Deponuzda GitHub eylemlerini etkinleştirme
-Bu GitHub eylemini kullanmaya başlamak için deponuza gidin ve **Eylemler** sekmesini seçin. "Azure uygulama yapılandırma eşitlemesi" araması yaparak Market 'te GitHub eylemini bulun ve seçin. 
-
+Bu GitHub eylemini kullanmaya başlamak için deponuza gidin ve **Eylemler** sekmesini seçin. "yeni iş akışı" na tıklayın ve ardından "iş akışını kendiniz ayarlayın". Buradan, Market 'te "Azure uygulama yapılandırma eşitlemesi" için arama yapın.
 > [!div class="mx-imgBorder"]
 > ![Eylem sekmesini seçin](media/find-github-action.png)
 
@@ -187,13 +186,13 @@ Giriş parametreleri, çalışma zamanı sırasında eylem tarafından kullanıl
 | Giriş adı | Gerekli mi? | Değer |
 |----|----|----|
 | configurationFile | Evet | Deponun köküne göre depodaki yapılandırma dosyasının yolu.  Glob desenleri desteklenir ve birden çok dosya içerebilir. |
-| biçim | Evet | Yapılandırma dosyasının dosya biçimi.  Geçerli biçimler şunlardır: JSON, YAML, Özellikler. |
+| format | Evet | Yapılandırma dosyasının dosya biçimi.  Geçerli biçimler şunlardır: JSON, YAML, Özellikler. |
 | connectionString | Evet | Uygulama yapılandırma örneği için bağlantı dizesi. Bağlantı dizesi GitHub deposunda bir gizli dizi olarak depolanmalıdır ve yalnızca gizli ad iş akışında kullanılmalıdır. |
 | ayırıcı | Evet | Yapılandırma dosyası anahtar-değer çiftlerine düzleştirilmesi sırasında kullanılan ayırıcı.  Geçerli değerler:. , ; : - _ __ / |
 | prefix | Hayır | Anahtarların başlangıcına eklenecek ön ek. |
 | etiket | Hayır | Anahtar-değer çiftleri ayarlanırken kullanılan etiket. Belirtilmemişse, null bir etiket kullanılır. |
 | sert | Hayır | Katı modunun etkin olup olmadığını belirleyen bir Boole değeri. Varsayılan değer false'tur. |
-| Derinliğini | Hayır | Yapılandırma dosyasını düzleştirme için en yüksek derinlik.  Derinlik pozitif bir sayı olmalıdır.  Varsayılan değer en fazla derinliğe sahip olmayacaktır. |
+| derinliğini | Hayır | Yapılandırma dosyasını düzleştirme için en yüksek derinlik.  Derinlik pozitif bir sayı olmalıdır.  Varsayılan değer en fazla derinliğe sahip olmayacaktır. |
 | etiketler | Hayır | Anahtar-değer çiftleri üzerinde ayarlanan etiketi belirtir.  Beklenen biçim, şu şekildeki bir JSON nesnesinin strıngıingform biçimidir: {[propertyName: String]: dize;} Her özellik adı-değeri bir etiket haline gelir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

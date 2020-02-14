@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972691"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191413"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
@@ -145,10 +145,10 @@ Bu örnekte, Azure 'da bu kaynakları oluşturmak ve dağıtmak için kullanıla
 
 Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizlilikler) değerleri işleyen parametreler dışında, tüm bu parametreler `defaultValue` öznitelikleri içerir, ancak bazı durumlarda varsayılan değerler boş değerlerdir. Bu şablon parametreleri için kullanılacak dağıtım değerleri, bu konunun ilerleyen kısımlarında açıklanan örnek [Parametreler dosyası](#template-parameter-files) tarafından sağlanır.
 
-Şablon parametrelerinin güvenliğini sağlamak için şu konulara bakın:
+Şablon parametrelerinin güvenliğini sağlama hakkında daha fazla bilgi için şu konulara bakın:
 
 * [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Güvenli şablon parametreleri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Şablon parametreleri için güvenliği geliştirme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Diğer şablon nesneleri genellikle şablon parametrelerine başvurur, böylece şablon parametrelerinden geçen değerleri kullanabilirler. Örneğin:
@@ -171,7 +171,7 @@ Parametreleri tanımlamaya yönelik bazı en iyi uygulamalar şunlardır:
 
   * [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Güvenli şablon parametreleri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [Şablon parametreleri için güvenliği geliştirme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
   * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -319,7 +319,7 @@ Mantıksal uygulamanızın kaynak tanımı, bu bilgileri içeren `properties` ne
 
 Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 
-| Öznitelik | Gereklidir | Tür | Açıklama |
+| Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
 | `state` | Evet | Dize | `Enabled`, mantıksal uygulamanızın canlı olduğu ve `Disabled` mantıksal uygulamanızın etkin olmadığı anlamına gelen dağıtımda, mantıksal uygulamanızın durumu. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
 | `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne tümleştirme hesabının KIMLIĞINI belirten `id` özniteliğini içerir. |

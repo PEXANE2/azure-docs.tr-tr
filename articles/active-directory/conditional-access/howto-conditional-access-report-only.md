@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180309"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186079"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma (Önizleme)
 
@@ -41,9 +41,12 @@ Belirli bir oturum açma için yalnızca rapor ilkesinin sonucunu görüntüleme
 1. Bir oturum açma seçin veya dar sonuçlara filtre ekleyin.
 1. **Ayrıntılar** çekmecede, oturum açma sırasında değerlendirilen ilkeleri görüntülemek Için **yalnızca rapor (Önizleme)** sekmesini seçin.
 
+> [!NOTE]
+> Oturum açma günlüklerini karşıdan yüklerken, yalnızca koşullu erişim rapor sonuç verilerini dahil etmek için JSON biçimini seçin.
+
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Azure AD ile Azure Izleyici tümleştirmesini ayarlama
 
-Koşullu erişim ilkelerinin yeni koşullu erişim öngörüleri çalışma kitabını kullanarak toplam etkisini görüntülemek için Azure Izleyici 'yi Azure AD ile tümleştirmeli ve oturum açma günlüklerini dışarı aktarmanız gerekir. Bu tümleştirmeyi ayarlamak için iki adım vardır: 
+Koşullu erişim ilkelerinin yeni koşullu erişim öngörüleri çalışma kitabını kullanarak toplam etkisini görüntülemek için Azure Izleyici 'yi Azure AD ile tümleştirmeli ve oturum açma günlüklerini dışarı aktarmanız gerekir. Bu tümleştirmeyi kurmak için iki adım vardır: 
 
 1. [Azure izleyici aboneliğine kaydolun ve bir çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 1. [Azure AD 'de oturum açma günlüklerini Azure izleyici 'ye aktarın](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
@@ -61,7 +64,7 @@ Azure AD günlüklerinizi Azure Izleyici ile tümleştirdikten sonra, koşullu e
 1. Bir zaman aralığı seçin (zaman aralığı kullanılabilir veri kümesini aşarsa, rapor tüm kullanılabilir verileri gösterir). **Koşullu erişim ilkesini** ve **zaman aralığı** parametrelerini ayarladıktan sonra rapor yüklenir.
    1. İsteğe bağlı olarak, rapor kapsamını daraltmak için bireysel **kullanıcıları** veya **uygulamaları** arayın.
 1. Zaman aralığındaki verileri kullanıcı sayısına veya oturum açma sayısına göre görüntüleme arasında seçim yapın.
-1. **Veri görünümüne**bağlı olarak, **etki Özeti** seçilen parametrelerin kapsamındaki Kullanıcı veya oturum açma sayısını, toplam sayı, **başarı**, **hata**, **Kullanıcı eylemi gerekli**ve uygulanmamış olarak gruplanmış şekilde görüntüler. Belirli bir sonuç türünün oturum açma işlemlerini incelemek için bir kutucuk seçin. 
+1. **Veri görünümüne**bağlı olarak, **etki Özeti** seçilen parametrelerin kapsamındaki Kullanıcı veya oturum açma sayısını, toplam sayı, **başarı**, **hata**, **Kullanıcı eylemi gerekli**ve **uygulanmamış**olarak gruplanmış şekilde görüntüler. Belirli bir sonuç türünün oturum açma işlemlerini incelemek için bir kutucuk seçin. 
    1. Çalışma kitabı parametrelerini değiştirdiyseniz, daha sonra kullanılmak üzere bir kopyasını kaydetmeyi seçebilirsiniz. Raporun üst kısmındaki Kaydet simgesini seçin ve kaydedilecek bir ad ve konum belirtin.
 1. Her koşul için oturum açma dökümlerinin dökümünü görüntülemek için aşağı kaydırın.
 1. Yukarıdaki seçimlere göre filtrelenmiş tek tek oturum açma olaylarını araştırmak için raporun altındaki **oturum açma ayrıntılarını** görüntüleyin.
@@ -69,7 +72,7 @@ Azure AD günlüklerinizi Azure Izleyici ile tümleştirdikten sonra, koşullu e
 > [!TIP] 
 > Belirli bir sorguda detaya gitme veya oturum açma ayrıntılarını dışarı aktarma gerekiyor mu? Sorguyu Log Analytics açmak için herhangi bir sorgunun sağındaki düğmeyi seçin. CSV veya Power BI dışarı aktarmak için dışarı aktar ' ı seçin.
 
-## <a name="common-problems-and-solutions"></a>Yaygın sorunlar ve çözümleri
+## <a name="common-problems-and-solutions"></a>Ortak sorunlar ve çözümleri
 
 ### <a name="why-are-the-queries-in-the-workbook-failing"></a>Çalışma kitabındaki sorgular neden başarısız oluyor?
 

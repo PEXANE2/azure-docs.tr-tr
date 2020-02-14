@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262724"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190852"
 ---
 # <a name="connect-your-domain-name-server"></a>Etki alanı ad sunucunuzu bağlama
 
@@ -50,7 +50,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 ### <a name="data-collection-details"></a>Veri koleksiyonu ayrıntıları
 
-Çözüm, Log Analytics aracısını yüklendiği DNS sunucularından DNS envanteri ve DNS ilgili olay verilerini toplar. DNS sunucuları, bölge ve kaynak kayıtları sayısı gibi envanterle ilişkili veri DNS PowerShell cmdlet'lerini çalıştırarak toplanır. Verileri iki günde bir kez güncelleştirilir. İlgili olay verileri neredeyse gerçek zamanlı olarak toplanan [analiz ve Denetim günlükleri](https://technet.microsoft.com/library/dn800669.aspx#enhanc) Gelişmiş DNS günlüğe kaydetme ve tanılama Windows Server 2012 R2 tarafından sağlanan.
+Çözüm, Log Analytics aracısını yüklendiği DNS sunucularından DNS envanteri ve DNS ilgili olay verilerini toplar. DNS sunucuları, bölge ve kaynak kayıtları sayısı gibi envanterle ilişkili veri DNS PowerShell cmdlet'lerini çalıştırarak toplanır. Verileri iki günde bir kez güncelleştirilir. Olayla ilgili veriler, Windows Server 2012 R2 'de Gelişmiş DNS günlüğü ve tanılama tarafından verilen [analitik ve denetim günlüklerinden](https://technet.microsoft.com/library/dn800669.aspx#enhanc) gerçek zamanlı olarak toplanır.
 
 
 ## <a name="connect-your-dns-appliance"></a>DNS gerecinizi bağlama
@@ -69,11 +69,21 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 3. DNS günlükleri için Log Analytics ilgili şemayı kullanmak için **Dnsevents**' ı arayın.
 
-## <a name="validate"></a>Doğrula 
+## <a name="validate"></a>Doğrulama 
 
 Log Analytics, şema **Dnsevents** için arama yapın ve olayların bulunduğundan emin olun.
 
+## <a name="troubleshooting"></a>Sorun giderme
+
+Arama sorguları Azure Sentinel 'de görünmüyorsa, sorguların düzgün görüntülenmesi için aşağıdaki adımları izleyin:
+1. [Sunucularınızdaki DNS Analizi günlüklerini](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))açın.
+2. DNSEvents Log Analytics koleksiyon listenizde göründüğünden emin olun.
+3. [Azure DNS ANALYTICS](../azure-monitor/insights/dns-analytics.md)'i açın.
+4. Azure DNS Analytics ' te **yapılandırma**altında ayarları değiştirin, kaydedin, sonra gerekirse geri değiştirin ve yeniden kaydedin.
+5. Sorguların görüntülendiğinden emin olmak için Azure DNS analizlerini denetleyin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu belgede, DNS şirket içi gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.

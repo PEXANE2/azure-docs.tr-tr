@@ -1,6 +1,6 @@
 ---
-title: Azure DevOps görev için Azure Veri Gezgini
-description: Bu konu başlığında, bir yayın ardışık düzeni oluşturmak ve dağıtmak öğrenin
+title: Azure Veri Gezgini için Azure DevOps görevi
+description: Bu konu başlığında, bir yayın işlem hattı oluşturup dağıtmayı öğreneceksiniz
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,113 +8,113 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388986"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188170"
 ---
-# <a name="azure-devops-task-for-azure-data-explorer"></a>Azure DevOps görev için Azure Veri Gezgini
+# <a name="azure-devops-task-for-azure-data-explorer"></a>Azure Veri Gezgini için Azure DevOps görevi
 
-[Azure DevOps hizmetleriyle](https://azure.microsoft.com/services/devops/) geliştirme gibi yüksek performanslı işlem hatları, ücretsiz özel Git depoları, sağlanan yapılandırılabilir Kanban panoları ve kapsamlı otomatik ve sürekli test etme özellikleri işbirliği araçları sağlar. [Azure işlem hatları](https://azure.microsoft.com/services/devops/pipelines/) herhangi bir dil, platformu ve bulut ile çalışan yüksek performanslı işlem hatları ile kodunuzu dağıtmak için CI/CD yönetmenize olanak sağlayan bir Azure DevOps özelliktir.
-[Azure Veri Gezgini - yönetici komutları](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) sayesinde sürüm ardışık düzenleri oluşturun ve veritabanınızı dağıtmak Azure işlem hatları görev, Azure Veri Gezgini veritabanlarınızı değiştirir. Ücretsiz olarak kullanılabilir [Visual Studio Market](https://marketplace.visualstudio.com/).
+[Azure DevOps Services](https://azure.microsoft.com/services/devops/) yüksek performanslı işlem hatları, ücretsiz özel Git depoları, yapılandırılabilir Kanban panoları ve kapsamlı otomatikleştirilmiş ve sürekli test özellikleri gibi geliştirme işbirliği araçları sağlar. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) , herhangi bir dil, platform ve bulutla çalışan yüksek performanslı işlem hatları ile kodunuzu DAĞıTMAK üzere CI/CD 'yi yönetmenizi sağlayan bir Azure DevOps özelliğidir.
+[Azure Veri Gezgini-yönetici komutları](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) , yayın işlem hatları oluşturmanızı ve veritabanı değişikliklerinizi Azure Veri Gezgini veritabanlarına dağıtmanızı sağlayan Azure Pipelines görevidir. [Visual Studio Market](https://marketplace.visualstudio.com/)ücretsiz olarak kullanılabilir.
 
-Bu belge, basit bir örnek kullanımını açıklar. **Azure Veri Gezgini – yönetici komutları** şemanızı dağıtmak için görev veritabanınıza değiştirir. Tam CI/CD işlem hatları için başvurmak [Azure DevOps belgeleri](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts).
+Bu belgede, şema değişikliklerinizi veritabanınıza dağıtmak için **Azure Veri Gezgini – yönetici komutları** görevinin kullanımıyla ilgili basit bir örnek açıklanmaktadır. Tüm CI/CD işlem hatları için [Azure DevOps belgelerine](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* Azure Veri Gezgini Küme kurulumu:
-    * Bir [Azure Veri Gezgini kümesi ile veritabanı](/azure/data-explorer/create-cluster-database-portal)
-    * Azure Active Directory (Azure AD) uygulama tarafından oluşturma [bir Azure AD uygulaması sağlama](/azure/kusto/management/access-control/how-to-provision-aad-app).
-    * Azure AD uygulamanızı Azure Veri Gezgini veritabanınız için erişim verin [Azure Veri Gezgini veritabanı izinlerinin yönetilmesi](/azure/data-explorer/manage-database-permissions).
-* Azure DevOps Kurulumu:
-    * [Ücretsiz bir kuruluş için kaydolun](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
-    * [Kuruluş oluştur](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-    * [Azure DevOps proje oluşturma](/azure/devops/organizations/projects/create-project?view=azure-devops)
+* Azure Veri Gezgini kümesi kurulumu:
+    * [Azure Veri Gezgini kümesi ve veritabanı](/azure/data-explorer/create-cluster-database-portal)
+    * [Bir Azure AD uygulaması](/azure/kusto/management/access-control/how-to-provision-aad-app)sağlayarak Azure Active Directory (Azure AD) uygulaması oluşturun.
+    * Azure [Veri Gezgini veritabanı izinlerini yöneterek](/azure/data-explorer/manage-database-permissions)Azure Veri Gezgini veritabanınıza Azure AD uygulaması erişim izni verin.
+* Azure DevOps kurulumu:
+    * [Ücretsiz bir kuruluşa kaydolun](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
+    * [Kuruluş oluşturma](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+    * [Azure DevOps 'da proje oluşturma](/azure/devops/organizations/projects/create-project?view=azure-devops)
     * [Git ile kod](/azure/devops/user-guide/code-with-git?view=azure-devops)
 
 ## <a name="create-folders"></a>Klasör oluşturma
 
-Aşağıdaki örnek klasörler oluşturmanız (*işlevleri*, *ilkeleri*, *tabloları*) Git deponuzda. Dosyaların kopyalanacağı [burada](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) aşağıdaki karşılık gelen klasörlere olarak görülen ve değişiklikleri uygulayın. Örnek dosyaları, aşağıdaki iş akışını yürütmek için sağlanır.
+Git deponuzda aşağıdaki örnek klasörleri (*işlevler*, *ilkeler*, *Tablolar*) oluşturun. Dosyaları [buradan](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) aşağıda görüldüğü gibi ilgili klasörlere kopyalayın ve değişiklikleri kaydedin. Örnek dosyalar aşağıdaki iş akışını yürütmek için verilmiştir.
 
 ![Klasör oluşturma](media/devops/create-folders.png)
 
 > [!TIP]
-> Kendi akışınızı oluştururken, kodu bir kere etkili hale getirme öneririz. Örneğin, [.create birleştirme tablo](/azure/kusto/management/tables#create-merge-tables) yerine [.create tablo](/azure/kusto/management/tables#create-table)ve [.create-veya-alter](/azure/kusto/management/functions#create-or-alter-function) yerine işlev [.create](/azure/kusto/management/functions#create-function) işlev.
+> Kendi iş akışınızı oluştururken, kodunuzu ıdempotent yapmanızı öneririz. Örneğin. Create [-merge tablosunu](/azure/kusto/management/create-table-command#create-merge-table) kullanın. Create [Table](/azure/kusto/management/create-table-command)yerine [. Create](/azure/kusto/management/functions#create-function) [-or-alter](/azure/kusto/management/functions#create-or-alter-function) işlevini kullanın.
 
 ## <a name="create-a-release-pipeline"></a>Yayın işlem hattı oluşturma
 
-1. Oturum açın, [Azure DevOps kuruluş](https://dev.azure.com/).
-1. Seçin **işlem hatları** > **yayınlar** sol taraftaki menüsünden ve select **yeni işlem hattı**.
+1. [Azure DevOps kuruluşunuzda](https://dev.azure.com/)oturum açın.
+1. Sol taraftaki menüden ** > Işlem** **hatları** ' nı seçin ve **Yeni işlem hattı**' nı seçin.
 
     ![Yeni işlem hattı](media/devops/new-pipeline.png)
 
-1. **Yeni yayın işlem hattı** penceresi açılır. İçinde **işlem hatları** sekmesinde **bir şablon seçin** bölmesinde seçin **boş iş**.
+1. **Yeni yayın ardışık düzeni** penceresi açılır. İşlem **hatları** sekmesinde, **şablon seçin** bölmesinde **boş iş**' ı seçin.
 
-     ![Bir şablon seçin](media/devops/select-template.png)
+     ![Şablon seçin](media/devops/select-template.png)
 
-1. Seçin **aşama** düğmesi. İçinde **aşama** bölmesinde Ekle **aşama adı**. Seçin **Kaydet** işlem hattınızı kaydetmek için.
+1. **Aşama** düğmesini seçin. **Aşama** bölmesinde, **aşama adını**ekleyin. İşlem hattınızı kaydetmek için **Kaydet** ' i seçin.
 
-    ![Aşama adı](media/devops/stage-name.png)
+    ![Aşamayı adlandırın](media/devops/stage-name.png)
 
-1. Seçin **bir yapıt ekleme** düğmesi. İçinde **bir yapıt ekleme** bölmesinde kodunuzu bulunduğu depoyu seçin, ilgili bilgileri doldurun ve tıklayın **Ekle**. Seçin **Kaydet** işlem hattınızı kaydetmek için.
+1. **Yapıt Ekle** düğmesini seçin. **Yapıt Ekle** bölmesinde, kodunuzun bulunduğu depoyu seçin, ilgili bilgileri doldurun ve **Ekle**' ye tıklayın. İşlem hattınızı kaydetmek için **Kaydet** ' i seçin.
 
-    ![Bir yapıt ekleme](media/devops/add-artifact.png)
+    ![Yapıt Ekle](media/devops/add-artifact.png)
 
-1. İçinde **değişkenleri** sekmesinde **+ Ekle** için bir değişken oluşturmak için **uç nokta URL'si** görevde kullanılır. Yazma **adı** ve **değer** uç nokta. Seçin **Kaydet** işlem hattınızı kaydetmek için. 
+1. **Değişkenler** sekmesinde **+ Ekle** ' yi seçerek, görevde kullanılacak **uç nokta URL 'si** için bir değişken oluşturun. Uç noktanın **adını** ve **değerini** yazın. İşlem hattınızı kaydetmek için **Kaydet** ' i seçin. 
 
-    ![Değişken oluşturma](media/devops/create-variable.png)
+    ![Değişken Oluştur](media/devops/create-variable.png)
 
-    Genel bakış sayfasında bulunan, Endpoint_URL bulmak için **Azure Veri Gezgini küme** Azure portalı, Azure Veri Gezgini küme URI'si içerir. URI'yi şu biçimde oluşturmak `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Örneğin, https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
+    Endpoint_URL bulmak için, Azure portal **azure Veri Gezgini kümenizin** genel bakış sayfası Azure VERI GEZGINI kümesi URI 'sini içerir. URI 'yi aşağıdaki biçimde oluşturun `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Örneğin, https:\//kustodocs.westus.kusto.Windows.net? DatabaseName = SampleDB
 
-    ![Azure Veri Gezgini küme URI'si](media/devops/adx-cluster-uri.png)
+    ![Azure Veri Gezgini küme URI 'SI](media/devops/adx-cluster-uri.png)
 
-## <a name="create-tasks-to-deploy"></a>Dağıtmak için Görevler oluşturun
+## <a name="create-tasks-to-deploy"></a>Dağıtılacak görevleri oluştur
 
-1. İçinde **işlem hattı** sekmesinde, üzerinde **1 iş, 0 görev** görevler eklemek için. 
+1. İşlem **hattı** sekmesinde, görev eklemek için **1 iş, 0 görev** ' e tıklayın. 
 
-    ![Görev ekleme](media/devops/add-task.png)
+    ![Görev Ekle](media/devops/add-task.png)
 
-1. Dağıtmak için üç görev oluşturma **tabloları**, **işlevleri**, ve **ilkeleri**, sırasıyla. 
+1. **Tabloları**, **işlevleri**ve **ilkeleri**bu sırayla dağıtmak için üç görev oluşturun. 
 
-1. İçinde **görevleri** sekmesinde **+** tarafından **aracı işi**. **Azure Veri Gezgini** için arama yapın. İçinde **Market**, yükleme **Azure Veri Gezgini – yönetici komutları** uzantısı. Ardından, **Ekle** içinde **Azure Veri Gezgini komutu Çalıştır**.
+1. **Görevler** sekmesinde, **Aracı işiyle** **+** ' yi seçin. **Azure Veri Gezgini** için arama yapın. **Market**'te **Azure Veri Gezgini-yönetici komutları** uzantısını yükler. Ardından, **Azure Veri Gezgini Çalıştır komutuyla** **Ekle** ' yi seçin.
 
-     ![Yönetim komutları eklendi](media/devops/add-admin-commands.png)
+     ![Yönetici komutları Ekle](media/devops/add-admin-commands.png)
 
-1. Tıklayarak **Kusto komut** seçeneğini ve güncelleştirme görevi aşağıdaki bilgilerle:
-    * **Görünen ad**: Görevin adı
-    * **Dosya yolu**: İçinde **tabloları** belirtin, görev */Tables/* tablosu oluşturma dosyaları içinde olduğundan .csl *tablo* klasör.
-    * **Uç nokta URL'si**: girin `EndPoint URL`önceki adımda oluşturduğunuz değişkenin.
-    * Seçin **hizmet uç noktası** seçip **+ yeni**.
+1. Soldaki **kusto komutuna** tıklayın ve aşağıdaki bilgilerle görevi güncelleştirin:
+    * **Görünen ad**: görevin adı
+    * **Dosya yolu**: **Tablolar** görevinde tablo oluşturma dosyaları *tablo* klasöründe olduğundan */Tables/* . CSL değerini belirtin.
+    * **Uç nokta URL 'si**: önceki adımda oluşturulan `EndPoint URL`değişkenini girin.
+    * **Hizmet uç noktası kullan** öğesini seçin ve **+ Yeni**' yi seçin.
 
-    ![Kusto komut görevi güncelleştir](media/devops/kusto-command-task.png)
+    ![Kusto komut görevini Güncelleştir](media/devops/kusto-command-task.png)
 
-1. Aşağıdaki bilgileri tamamlayın **hizmet Bağlantısı Ekle Azure Veri Gezgini** penceresi:
+1. **Azure Veri Gezgini hizmet bağlantısı ekleme** penceresinde aşağıdaki bilgileri doldurun:
 
     |Ayar  |Önerilen değer  |
     |---------|---------|
-    |**Bağlantı adı**     |    Bu hizmet uç noktası tanımlamak için bir ad girin     |
-    |**Küme URL'si**    |    Değeri, Azure portalında Azure Veri Gezgini kümenizin genel bakış bölümünde bulunabilir | 
-    |**Hizmet sorumlusu kimliği**    |    (Önkoşul olarak oluşturulan) AAD uygulama kimliği girin     |
-    |**Hizmet sorumlusu uygulama anahtarı**     |    AAD uygulaması (önkoşul olarak oluşturulan) anahtarını girin    |
-    |**AAD Kiracı kimliği**    |      AAD kiracınızın (örn. microsoft.com... contoso.com) girin    |
+    |**Bağlantı adı**     |    Bu hizmet uç noktasını tanımlamak için bir ad girin     |
+    |**Küme URL 'Si**    |    Değer, Azure portal Azure Veri Gezgini kümenizin genel bakış bölümünde bulunabilir | 
+    |**Hizmet sorumlusu kimliği**    |    AAD uygulama KIMLIĞINI girin (önkoşul olarak oluşturulur)     |
+    |**Hizmet sorumlusu uygulama anahtarı**     |    AAD uygulama anahtarını girin (önkoşul olarak oluşturulur)    |
+    |**AAD Kiracı kimliği**    |      AAD kiracınızı girin (örneğin, microsoft.com, contoso.com...)    |
 
-    Seçin **bu bağlantıyı kullanmak tüm işlem hatları izin** onay kutusu. **Tamam**’ı seçin.
+    **Tüm işlem hatlarının bu bağlantıyı kullanmasına Izin ver** onay kutusunu seçin. **Tamam**’ı seçin.
 
-    ![Hizmet Bağlantısı Ekle](media/devops/add-service-connection.png)
+    ![Hizmet bağlantısı ekle](media/devops/add-service-connection.png)
 
-1. Adımları yineleyin 1-5 başka iki kez dosyaları dağıtmak için *işlevleri* ve *ilkeleri* klasörleri. **Kaydet**’i seçin. İçinde **görevleri** sekmesinde, oluşturduğunuz üç görev bakın: **Tabloları dağıtma**, **işlevleri dağıtma**, ve **ilkelerini dağıtmak**.
+1. *İşlevler* ve *ilkeler* klasörlerinden dosyaları dağıtmak için iki kez 1-5 adımı yineleyin. **Kaydet**’i seçin. **Görevler** sekmesinde, oluşturulan üç görev: **tabloları dağıtma**, **işlevleri dağıtma**ve **ilkeleri dağıtma**.
 
-    ![Tüm klasörleri dağıtma](media/devops/deploy-all-folders.png)
+    ![Tüm klasörleri dağıt](media/devops/deploy-all-folders.png)
 
-1. Seçin **+ yayın** > **yayın oluştur** sürüm yapılandırması oluşturmak için.
+1. Yayın oluşturmak için **+ yayın** > **Sürüm Oluştur** ' u seçin.
 
-    ![Bir yayın oluşturun](media/devops/create-release.png)
+    ![Yayın oluştur](media/devops/create-release.png)
 
-1. İçinde **günlükleri** sekmesinde, dağıtım durumu başarılı olup olmadığını denetleyin.
+1. **Günlükler** sekmesinde, dağıtım durumunun başarılı olduğunu denetleyin.
 
     ![Dağıtım başarılı](media/devops/deployment-successful.png)
 
-Üç üretim öncesi görevlere dağıtımı için bir yayın ardışık düzeni oluşturulmasını tamamladınız.
+Önceden üretime üç görevin dağıtılması için bir yayın işlem hattının oluşturulmasını tamamladınız.

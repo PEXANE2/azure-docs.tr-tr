@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928742"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187474"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS tümleştirme çalışma zamanı 'nda paket yürütmeye sorun giderme
 
@@ -142,7 +142,7 @@ Azure-SSIS tümleştirme çalışma zamanının kendi kendine barındırılan t�
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Hata iletisi: "hazırlama görevi hatası: ErrorCode: 2906, ErrorMessage: paket yürütülemedi., çıkış: {" OperationErrorMessages ":" hata: istenen OLE DB sağlayıcı... kayıtlı değil. 64 bitlik sürücü yüklü değilse, paketi 32 bit modda çalıştırın... "
 
-Paketinizdeki OLE DB bağlayıcılarınız tarafından kullanılan karşılık gelen sağlayıcının şirket içinde barındırılan tümleştirme çalışma zamanı makinesine doğru bir şekilde yüklendiğinden emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
+Paketinizdeki OLE DB bağlayıcılarınız tarafından kullanılan karşılık gelen sağlayıcının şirket içinde barındırılan tümleştirme çalışma zamanı makinesine doğru bir şekilde yüklendiğinden emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hata iletisi: "hazırlama görevi hatası: ErrorCode: 2906, ErrorMessage: paket yürütülemedi., çıkış: {" OperationErrorMessages ":" hata: System. ıO. FileLoadException: dosya veya derleme ' Microsoft. WindowsAzure. Storage, Version =... Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri. Konumlandırılan derlemenin bildirim tanımı bütünleştirilmiş kod başvurusuyla eşleşmiyor. ' ..."
 
@@ -157,7 +157,7 @@ Bunun olası nedenlerinden biri, şirket içinde barındırılan tümleştirme �
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Hata iletisi: "hazırlama görevi durumu: başarısız. Hazırlama görevi hatası: ErrorCode: 2906, ErrorMessage: paket yürütülemedi., çıkış: {"OperationErrorMessages": "SSIS yürütücü çıkış kodu:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "Efekttiveıntegrationruntime": "...", "executionDuration":..., "durationInQueue": {"ıntegrationruntimequeue":...}} "
 
-Visual C++ Runtime 'ın şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde yüklü olduğundan emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
+Visual C++ Runtime 'ın şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde yüklü olduğundan emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Birden çok paket yürütmesi beklenmedik şekilde tetikleniyor
 

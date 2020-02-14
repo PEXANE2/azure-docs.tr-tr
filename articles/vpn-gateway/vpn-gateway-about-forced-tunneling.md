@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834595"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201586"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Klasik dağıtım modelini kullanarak zorlamalı tünel yapılandırma
 
@@ -33,27 +33,40 @@ Zorlamalı tünel Azure'da sanal ağ kullanıcı tanımlı yollar (UDR) yapılan
 
 * Her sanal ağ alt ağı, yerleşik bir sistem yönlendirme tablosu vardır. Sistem yönlendirme tablosu yolların aşağıdaki üç grup vardır:
 
-  * **Yerel sanal ağ yolları:** aynı sanal ağdaki VM'ler hedef için doğrudan.
-  * **Şirket içi yolları:** için Azure VPN ağ geçidi.
-  * **Varsayılan yol:** doğrudan Internet'e. Önceki iki yol tarafından kapsandığından değil özel IP adreslerini hedefleyen paketler bırakılır.
+  * **Yerel VNET yolları:** Aynı sanal ağdaki hedef VM 'lere doğrudan.
+  * **Şirket içi rotalar:** Azure VPN ağ geçidine.
+  * **Varsayılan yol:** Doğrudan Internet 'e. Önceki iki yol tarafından kapsandığından değil özel IP adreslerini hedefleyen paketler bırakılır.
 * Kullanıcı tanımlı yollar'ın yayınlanmasıyla birlikte, varsayılan bir yol eklemek için bir yönlendirme tablosu oluşturun ve ardından bu alt ağlarda zorlamalı tüneli etkinleştirmek için sanal ağ alt ağı, başarılı için yönlendirme tablosu ilişkilendirebilirsiniz.
 * "Sanal ağa bağlı bir varsayılan site" şirket içi yerel siteleri arasında ayarlamanız gerekir.
 * Zorlamalı tünel dinamik yönlendirme VPN ağ geçidi (bir statik ağ geçidi sorunsuz değil) sahip bir sanal ağ ile ilişkilendirilmiş olması gerekir.
-* Zorlamalı tünel ExpressRoute Bu mekanizma yapılandırılmamış, ancak bunun yerine, bir varsayılan rota üzerinden ExpressRoute BGP eşliği oturumlarını reklam tarafından etkinleştirilir. Lütfen [ExpressRoute belgeleri](https://azure.microsoft.com/documentation/services/expressroute/) daha fazla bilgi için.
+* Zorlamalı tünel ExpressRoute Bu mekanizma yapılandırılmamış, ancak bunun yerine, bir varsayılan rota üzerinden ExpressRoute BGP eşliği oturumlarını reklam tarafından etkinleştirilir. Daha fazla bilgi için bkz. [ExpressRoute belgeleri](https://azure.microsoft.com/documentation/services/expressroute/) .
 
 ## <a name="configuration-overview"></a>Yapılandırmaya genel bakış
 Aşağıdaki örnekte, ön uç alt ağı değil zorlamalı tünel uygulanmaz. Frontend alt iş yüklerinin kabul etmek ve doğrudan Internet'ten müşteri isteklerine yanıt vermek devam edebilirsiniz. Orta katman ve arka uç alt ağları zorlamalı tünel. Bu iki alt ağa giden tüm bağlantılarından İnternet'e zorlamalı veya bir şirket içi sitede bir S2S VPN tünelleri aracılığıyla yeniden.
 
 Bu kısıtlama ve sanal makinelerinizdeki Internet erişimi denetleme veya çok katmanlı bir hizmet Mimarinizi gerekli etkinleştirmek devam ederken bulut Hizmetleri, azure'da sağlar. Ayrıca, sanal ağlarınızda hiçbir Internet'e yönelik iş yükü, tüm sanal ağları için zorlamalı tünel uygulayabilirsiniz.
 
-![Zorlamalı Tünel Oluşturma](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
+![Zorlanan Tünel](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Yapılandırmaya başlamadan önce aşağıdaki öğelerin bulunduğunu doğrulayın.
+Yapılandırmaya başlamadan önce aşağıdaki öğelerin bulunduğunu doğrulayın:
 
 * Azure aboneliği. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * Yapılandırılmış bir sanal ağ. 
-* Azure PowerShell cmdlet'lerinin en son sürümü. PowerShell cmdlet'lerini yükleme hakkında daha fazla bilgi için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+
+### <a name="to-sign-in"></a>Oturum açmak için
+
+1. PowerShell konsolunuzu yükseltilmiş haklarla açın. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
+
+   ```powershell
+   azure config mode asm
+   ```
+2. Hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="configure-forced-tunneling"></a>Zorlamalı tünel yapılandırma
 Aşağıdaki yordam bir sanal ağ için zorlamalı tünel belirtmenize yardımcı olur. Yapılandırma adımları VNet ağ yapılandırma dosyasına karşılık gelir.

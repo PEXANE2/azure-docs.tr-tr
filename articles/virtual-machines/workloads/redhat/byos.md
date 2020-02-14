@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133828"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190511"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -175,7 +175,7 @@ Aşağıda örnek bir komut dosyası verilmiştir. Kaynak grubu, konum, VM adı,
 
 Red Hat Enterprise Linux kendi aboneliğinizi getir Gold görüntülerinin [Azure disk şifrelemesi](../../linux/disk-encryption-overview.md)kullanılarak güvenliği sağlanmış olabilir. Ancak, şifreleme etkinleştirilmeden önce aboneliğin kayıtlı olması **gerekir** .  Red Hat sitesinde bir RHEL BYOS Gold görüntüsünü kaydetme ayrıntılarına ulaşılabilir. [Red Hat abonelik-Manager kullanarak bir sistemi kaydetme ve Red Hat müşteri portalı 'na abone olma](https://access.redhat.com/solutions/253273)konusuna bakın. etkin bir Red Hat aboneliğiniz varsa, [Red Hat müşteri portalı etkinleştirme anahtarları oluşturmayı](https://access.redhat.com/articles/1378093)da okuyabilirsiniz.
 
-Azure disk şifrelemesi, [Red hat özel görüntülerinde](/linux/redhat-create-upload-vhd)desteklenmez. Ek ADE gereksinimleri ve önkoşulları, [Linux sanal makineleri Için Azure disk şifrelemesi](../../linux/disk-encryption-overview.md#additional-vm-requirements)bölümünde belgelenmiştir.
+Azure disk şifrelemesi, [Red hat özel görüntülerinde](../../linux/redhat-create-upload-vhd.md)desteklenmez. Ek ADE gereksinimleri ve önkoşulları, [Linux sanal makineleri Için Azure disk şifrelemesi](../../linux/disk-encryption-overview.md#additional-vm-requirements)bölümünde belgelenmiştir.
 
 Azure disk şifrelemesi uygulama adımları, Linux VM 'lerinde ve ilgili makalelerde [Azure disk şifrelemesi senaryolarında](../../linux/disk-encryption-linux.md) bulunabilir.
 

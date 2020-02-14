@@ -8,19 +8,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 495fa3837681fb2a78d86e6c34d4b4888b1e37f4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863691"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198658"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell kullanarak bir sanal ağ geçidini silme (klasik)
 
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure portalı](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Klasik - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Klasik-PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 
 Bu makale, PowerShell kullanarak klasik dağıtım modelinde bir VPN ağ geçidini silmenizi sağlar. Sanal ağ geçidi silindikten sonra, artık kullanmadığınız öğeleri kaldırmak için ağ yapılandırma dosyasını değiştirin.
@@ -29,15 +29,22 @@ Bu makale, PowerShell kullanarak klasik dağıtım modelinde bir VPN ağ geçidi
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. en son PowerShell cmdlet 'lerini yükler.
 
-Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="2-connect-to-your-azure-account"></a>2. Azure hesabınıza bağlanın. 
+### <a name="2-connect-to-your-azure-account"></a>2. Azure hesabınıza bağlanın.
 
 PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
-```powershell
-Add-AzureAccount
-```
+1. PowerShell konsolunuzu yükseltilmiş haklarla açın. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
+
+   ```powershell
+   azure config mode asm
+   ```
+2. Hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="export"></a>2. Adım: ağ yapılandırma dosyasını dışarı aktarma ve görüntüleme
 

@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732153"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190666"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
-Standart dosya paylaşımları başlangıçta yalnızca 5 TiB 'a kadar ölçeklendirilebilir. Artık büyük dosya paylaşımlarında 100 TiB 'ye kadar ölçeklenebilirler. Mevcut dosya paylaşımlarınız için bu ölçeklendirmeyi mevcut depolama hesaplarınızda etkinleştirebilirsiniz. Premium dosya paylaşımları, varsayılan olarak 100 TiB 'ye kadar ölçeklenir.
+Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, dosya paylaşımlarınız 100 TiB 'ye kadar ölçeklenebilir. Mevcut dosya paylaşımlarınız için bu ölçeklendirmeyi mevcut depolama hesaplarınızda etkinleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
-## <a name="restrictions"></a>Kısıtlamalar
+## <a name="restrictions"></a>{1&gt;Kısıtlamalar&lt;1}
 
-Şimdilik, LRS veya ZRS 'yi yalnızca büyük dosya paylaşımında etkin hesaplar üzerinde kullanabilirsiniz. GZRS, GRS veya RA-GRS kullanamazsınız.
+Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölgesel olarak yedekli depolama (ZRS), büyük dosya paylaşımında etkinleştirilmiş hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanamazsınız.
 Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir. Bunu etkinleştirdikten sonra, hesabınızı GZRS, GRS veya RA-GRS ' e dönüştüremeyeceksiniz.
 
-## <a name="create-a-new-storage-account"></a>Yeni depolama hesabı oluşturma
+## <a name="create-a-new-storage-account"></a>Yeni bir depolama hesabı oluştur
 
 ### <a name="portal"></a>Portal
 
@@ -49,8 +49,8 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 
    |Alan  |Değer  |
    |---------|---------|
-   |Dağıtım modeli     |Kaynak Yöneticisi         |
-   |Performans     |Standart         |
+   |Dağıtım modeli     |Resource Manager         |
+   |Performans     |Standard         |
    |Hesap türü     |StorageV2 (genel amaçlı v2)         |
    |Erişim katmanı     |Sık Erişimli         |
 
@@ -59,7 +59,7 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 
     ![Azure portal yeni bir depolama hesabında "etkin" seçenek düğmesi ile ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ### <a name="cli"></a>CLI
 

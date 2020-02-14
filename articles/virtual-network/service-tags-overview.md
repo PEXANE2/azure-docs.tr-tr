@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064657"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190485"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri 
 <a name="network-service-tags"></a>
@@ -42,7 +42,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 
 | Etiket | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Azure API Management adanmış dağıtımlar için yönetim trafiği. | Her İkisi | Hayır | Evet |
+| **ApiManagement** | Azure API Management adanmış dağıtımlar için yönetim trafiği. <br/><br/>*Note:* Bu etiket, bölge başına denetim düzlemi için Azure API Management hizmet uç noktasını temsil eder. Bu, müşterilerin API Management hizmetinde yapılandırılmış API 'Ler, Işlemler, Ilkeler, NamedValues üzerinde yönetim işlemleri gerçekleştirmesini sağlar.  | Gelen | Evet | Evet |
 | **Applicationınsi, Savailability** | Kullanılabilirliği Application Insights. | Gelen | Hayır | Hayır |
 | **AppService**    | Azure uygulama hizmeti. Bu etiket, Web uygulaması ön uçları için giden güvenlik kuralları için önerilir. | Giden | Evet | Evet |
 | **AppServiceManagement** | App Service Ortamı adanmış dağıtımlar için yönetim trafiği. | Her İkisi | Hayır | Evet |

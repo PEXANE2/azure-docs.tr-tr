@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840375"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198029"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth2 teknik profili tanımlama
 
@@ -77,7 +77,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
 | Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse Azure AD B2C, belirtecin kimlik sağlayıcısı tarafından döndürülen bir talep içinde olup olmadığını denetler ve belirtilen değere eşittir. |
@@ -91,21 +91,22 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 | ClaimsEndpointFormat | Hayır | Biçim sorgusu dize parametresinin değeri. Örneğin, değeri bu LinkedIn talep uç noktası `https://api.linkedin.com/v1/people/~?format=json``json` olarak ayarlayabilirsiniz. |
 | Adı | Hayır | Kimlik sağlayıcısının adı. |
 | response_mode | Hayır | Kimlik sağlayıcısının sonucu Azure AD B2C geri göndermek için kullandığı yöntem. Olası değerler: `query`, `form_post` (varsayılan) veya `fragment`. |
-| scope | Hayır | OAuth2 Identity Provider belirtimine göre tanımlanan isteğin kapsamı. `openid`, `profile`ve `email`gibi. |
+| kapsam | Hayır | OAuth2 Identity Provider belirtimine göre tanımlanan isteğin kapsamı. `openid`, `profile`ve `email`gibi. |
 | HttpBinding | Hayır | Erişim belirtecine ve talep belirteci uç noktalarına beklenen HTTP bağlaması. Olası değerler: `GET` veya `POST`.  |
 | ResponseErrorCodeParamName | Hayır | HTTP 200 (Tamam) üzerinden döndürülen hata iletisini içeren parametrenin adı. |
 | Extraparamsınaccesstokenendpointresponse | Hayır | Bazı kimlik sağlayıcıları tarafından **Accesstokenendpoint** yanıtı içinde döndürülebilecek ek parametreleri içerir. Örneğin, **Accesstokenendpoint** yanıtı, bir **claimsendpoint** istek sorgu dizesinde access_token yanında zorunlu bir parametre olan `openid`gibi ek bir parametre içerir. Birden çok parametre adının kaçılması ve virgül ', ' sınırlayıcısı ile ayrılması gerekir. |
 | ExtraParamsInClaimsEndpointRequest | Hayır | Bazı kimlik sağlayıcıları tarafından **Claimsendpoint** isteğine döndürülebilecek ek parametreleri içerir. Birden çok parametre adının kaçılması ve virgül ', ' sınırlayıcısı ile ayrılması gerekir. |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız bunu `true`olarak ayarlayın. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
 **Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gereklidir | Açıklama |
+| Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri `code`olarak ayarlandıysa gereklidir. Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler `id_token`olarak ayarlandıysa, şifreleme anahtarını atlayabilirsiniz. |
 
-## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'SI
+## <a name="redirect-uri"></a>Yeniden yönlendirme URI'si
 
 Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`girin. **Kiracınızı** kiracınızın adı (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin tanıtıcısı (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir.
 

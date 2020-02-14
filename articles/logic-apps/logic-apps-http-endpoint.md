@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792022"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191344"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP uç noktalarını kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar
 
@@ -302,17 +302,17 @@ Yanıt eyleminin JSON tanımını ve mantıksal uygulamanızın tamamlanmış JS
 }
 ```
 
-## <a name="q--a"></a>Soru-Cevap
+## <a name="q--a"></a>Soru - Yanıt
 
 #### <a name="q-what-about-url-security"></a>S: URL güvenliği hakkında ne olacak?
 
 Y **: Azure**, [paylaşılan ERIŞIM imzasını (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak mantıksal uygulama geri çağırma URL 'lerini güvenli şekilde oluşturur. Bu imza bir sorgu parametresi olarak geçirilir ve mantıksal uygulamanızın çalıştırılabilmesi için önce doğrulanması gerekir. Azure, mantıksal uygulama başına bir gizli anahtar birleşimi, tetikleyici adı ve gerçekleştirilen işlem ile imza oluşturur. Bu nedenle, gizli mantıksal uygulama anahtarına birisi erişemediği takdirde, geçerli bir imza üretemiyor.
 
 > [!IMPORTANT]
-> Üretim ve güvenli sistemler için aşağıdaki nedenlerden dolayı mantıksal uygulamanızı doğrudan tarayıcıdan çağırmayı önemle tavsiye ederiz:
+> Üretim ve daha yüksek güvenlik sistemleri için aşağıdaki nedenlerden dolayı mantıksal uygulamanızı doğrudan tarayıcıdan çağırmayı önemle tavsiye ederiz:
 >
 > * Paylaşılan erişim anahtarı URL 'de görüntülenir.
-> * Azure Logic Apps müşteriler genelinde paylaşılan etki alanları nedeniyle güvenli içerik ilkelerini yönetemezsiniz.
+> * Azure Logic Apps müşteriler genelinde paylaşılan etki alanları nedeniyle güvenlik içeriği ilkelerini yönetemezsiniz.
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>S: HTTP uç noktalarını başka bir şekilde yapılandırabilir miyim?
 

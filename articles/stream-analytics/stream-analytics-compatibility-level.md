@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989867"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201807"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -49,9 +49,13 @@ Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
 Uyumluluk düzeyini güncelleştirdiğinizde T-derleyicisi, seçili uyumluluk düzeyine karşılık gelen söz dizimi ile işi doğrular.
 
-## <a name="compatibility-level-12"></a>Uyumluluk düzeyi 1.2
+## <a name="compatibility-level-12"></a>Uyumluluk düzeyi 1,2
 
 Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,2 ' de kullanıma sunulmuştur:
+
+###  <a name="amqp-messaging-protocol"></a>AMQP mesajlaşma Protokolü
+
+**1,2 düzeyi**: Azure Stream Analytics Service Bus kuyruklara ve konulara yazmak Için [Gelişmiş ileti sırası Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) mesajlaşma protokolünü kullanır. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar.
 
 ### <a name="geospatial-functions"></a>Jeo-uzamsal işlevler
 
@@ -148,5 +152,5 @@ Uyumluluk düzeyi 1.1 aşağıdaki önemli değişiklikler yapılmıştır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream Analytics girişleri sorunlarını giderme](stream-analytics-troubleshoot-input.md)
+* [Azure Stream Analytics giriş sorunlarını giderme](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics kaynak durumu](stream-analytics-resource-health.md)

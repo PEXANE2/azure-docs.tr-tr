@@ -8,23 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446954"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189052"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
 
 Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 
+## <a name="speech-devices-sdk-190"></a>Konuşma cihazları SDK 1.9.0:
+
+- [Urdaha ıyı DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) için ilk ikililer sağlanır.
+- Roobo v1 artık konuşma SDK 'Sı için Maven kullanıyor
+- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.9.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+
 ## <a name="speech-devices-sdk-170"></a>Konuşma cihazları SDK 1.7.0:
 
 - Linux ARM artık destekleniyor.
-- Roobo v2 için ilk ikili dosyalar sağlanır (Linux ARM64).
+- [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) için ilk ikili dosyalar sağlanır (Linux ARM64).
 - Windows kullanıcıları, kullanılacak mikrofonu belirlemek için `AudioConfig.fromDefaultMicrophoneInput()` veya `AudioConfig.fromMicrophoneInput(deviceName)` kullanabilir.
 - Kitaplık boyutu iyileştirildi.
 - Aynı konuşma/amaç tanıyıcı nesnesini kullanarak çok yönlü tanıma desteği.
@@ -49,7 +55,7 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 - Yeni anahtar sözcük teknolojisi önemli kalite iyileştirmeleri getirir, bkz. son değişiklikler.
 - Geliştirilmiş en fazla alan tanıma için yeni ses işleme işlem hattı.
 
-**Bozucu değişiklikler**
+**Son değişiklikler**
 
 - Yeni anahtar sözcük teknolojisi nedeniyle, geliştirilmiş anahtar sözcük portalımızda tüm anahtar sözcüklerin yeniden oluşturulması gerekir. Eski anahtar sözcükleri cihazdan tamamen kaldırmak için eski uygulamayı kaldırın.
   - ADB com. Microsoft. cogınitiveservices. Speech. Samples. sdsdkstarterapp 'i kaldır
@@ -64,7 +70,7 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 - Anahtar sözcük işleme güncelleştirildi, bkz. son değişiklikler.
 - Örnek uygulama, konuşma tanıma ve çeviri için dil seçimi ekler.
 
-**Bozucu değişiklikler**
+**Son değişiklikler**
 
 - [Anahtar sözcük yükleme](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) basitleştirildi, artık uygulamanın bir parçasıdır ve cihaza ayrı yükleme gerektirmez.
 - Anahtar sözcük tanıma değiştirilmiştir ve iki olay desteklenir.
@@ -83,7 +89,7 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 - Konuşma tanıma doğruluğu, geliştirilmiş ses işleme algoritmamıza göre iyileştirilen
 - Tek bir sürekli tanıma ses oturumu hatası düzeltildi.
 
-**Bozucu değişiklikler**
+**Son değişiklikler**
 
 - Bu sürümle birlikte birkaç önemli değişiklikler yapılmıştır. API 'Lerle ilgili ayrıntılar için lütfen [Bu sayfayı](https://aka.ms/csspeech/breakingchanges_1_0_0) kontrol edin.
 - KWS model dosyaları, konuşma cihazları SDK 1.0.1 ile uyumlu değildir. Yeni anahtar sözcük dosyaları cihaza yazıldıktan sonra var olan anahtar sözcük dosyaları silinir.

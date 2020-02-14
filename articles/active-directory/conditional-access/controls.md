@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424965"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186220"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory erişim denetimleri nelerdir?
 
@@ -51,7 +51,7 @@ Bu konu başlığı altında, Azure AD koşullu erişim 'de kullanılabilen çe�
 
 ![Denetim](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama
+### <a name="multi-factor-authentication"></a>Multi-factor authentication
 
 Bu denetimi, çok faktörlü kimlik doğrulamasının belirtilen bulut uygulamasına erişmesini gerektirmek için kullanabilirsiniz. Bu denetim aşağıdaki Multi-Factor sağlayıcılarını destekler:
 
@@ -85,18 +85,18 @@ Daha fazla bilgi için bkz. [Azure Active Directory cihaz tabanlı koşullu eri�
 Çalışanlarınız hem kişisel hem de iş görevleri için mobil cihaz kullandığından, cihazları sizin yönetmediği durumlarda bile cihazları kullanarak erişilen şirket verilerini koruma olanağına sahip olmak isteyebilirsiniz.
 Kuruluşunuzun verilerini mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak korumanıza yardımcı olması için [Intune uygulama koruma ilkelerini](https://docs.microsoft.com/intune/app-protection-policy) kullanabilirsiniz.
 
-Onaylanan istemci uygulamalarıyla, [Intune uygulama koruma ilkelerini](https://docs.microsoft.com/intune/app-protection-policy)desteklemek için bulut uygulamalarınıza erişmeyi deneyen bir istemci uygulaması isteyebilirsiniz. Örneğin, Exchange Online 'a erişimi Outlook uygulamasıyla kısıtlayabilirsiniz. Onaylanan istemci uygulamaları gerektiren bir koşullu erişim ilkesi, [uygulama tabanlı koşullu erişim ilkesi](app-based-conditional-access.md)olarak da bilinir. Desteklenen onaylanan istemci uygulamalarının listesi için bkz. [onaylanan istemci uygulaması gereksinimi](technical-reference.md#approved-client-app-requirement).
+Onaylanan istemci uygulamalarıyla, [Intune uygulama koruma ilkelerini](https://docs.microsoft.com/intune/app-protection-policy)desteklemek için bulut uygulamalarınıza erişmeyi deneyen bir istemci uygulaması isteyebilirsiniz. Örneğin, Exchange Online 'a erişimi Outlook uygulamasıyla kısıtlayabilirsiniz. Onaylanan istemci uygulamaları gerektiren bir koşullu erişim ilkesi, [uygulama tabanlı koşullu erişim ilkesi](app-based-conditional-access.md)olarak da bilinir. Desteklenen onaylanan istemci uygulamalarının listesi için bkz. [onaylanan istemci uygulaması gereksinimi](concept-conditional-access-grant.md#require-approved-client-app).
 
 ### <a name="app-protection-policy-preview"></a>Uygulama koruma ilkesi (Önizleme)
 
 Çalışanlarınız hem kişisel hem de iş görevleri için mobil cihaz kullandığından, cihazları sizin yönetmediği durumlarda bile cihazları kullanarak erişilen şirket verilerini koruma olanağına sahip olmak isteyebilirsiniz.
 Kuruluşunuzun verilerini mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak korumanıza yardımcı olması için [Intune uygulama koruma ilkelerini](https://docs.microsoft.com/intune/app-protection-policy) kullanabilirsiniz.
 
-Uygulama koruma ilkesi ile, Azure AD 'ye bildirilen istemci uygulamalarına erişimi, [Intune uygulama koruma ilkelerini](https://docs.microsoft.com/intune/app-protection-policy)almış olabilir. Örneğin, Exchange Online 'a erişimi bir Intune uygulama koruma ilkesine sahip Outlook uygulamasıyla kısıtlayabilirsiniz. Uygulama koruma ilkesi gerektiren bir koşullu erişim ilkesi, [Uygulama koruma tabanlı koşullu erişim ilkesi](app-protection-based-conditional-access.md)olarak da bilinir. 
+Uygulama koruma ilkesi ile, Azure AD 'ye bildirilen istemci uygulamalarına erişimi, [Intune uygulama koruma ilkelerini](https://docs.microsoft.com/intune/app-protection-policy)almış olabilir. Örneğin, Exchange Online 'a erişimi bir Intune uygulama koruma ilkesine sahip Outlook uygulamasıyla kısıtlayabilirsiniz. Uygulama koruma ilkesi gerektiren bir koşullu erişim ilkesi, [Uygulama koruma tabanlı koşullu erişim ilkesi](concept-conditional-access-session.md#application-enforced-restrictions)olarak da bilinir. 
 
 Bir uygulamanın ilke korumalı olarak işaretlenbilmesi için cihazınızın Azure AD 'ye kayıtlı olması gerekir.
 
-Desteklenen İlkeyle korunan istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](technical-reference.md#app-protection-policy-requirement).
+Desteklenen İlkeyle korunan istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gereksinimi](concept-conditional-access-session.md#application-enforced-restrictions).
 
 ### <a name="terms-of-use"></a>Kullanım koşulları
 
@@ -161,7 +161,7 @@ Oturum denetimleri, bulut uygulaması içinde sınırlı deneyimi etkinleştirir
 
 Bu denetimi, Azure AD 'nin seçili bulut uygulamalarına cihaz bilgilerini geçmesini gerektirmek için kullanabilirsiniz. Cihaz bilgileri, bulut uygulamalarının bir bağlantının uyumlu veya etki alanına katılmış bir cihazdan başlatılıp başlatılmayacağını bilmesini sağlar. Bu denetim yalnızca seçili bulut uygulamaları olarak SharePoint Online ve Exchange Online 'ı destekler. Seçildiğinde, bulut uygulaması, cihaz durumuna bağlı olarak, sınırlı veya tam bir deneyimle, cihaz bilgilerini Kullanıcı sağlamak için kullanır.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.:
 
 - [SharePoint Online ile sınırlı erişimi etkinleştirme](https://aka.ms/spolimitedaccessdocs)
 - [Exchange Online ile sınırlı erişimi etkinleştirme](https://aka.ms/owalimitedaccess)

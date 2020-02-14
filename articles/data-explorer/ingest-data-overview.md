@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157253"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187988"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Veri Gezgini veri alımı
 
@@ -88,7 +88,7 @@ Kusto, ile veri almak ve sorgulamak için kullanılabilen istemci SDK 'Sı sunar
 
 **Farklı yöntemlerin gecikmesi**:
 
-| Yöntem | Gecikme süresi |
+| Yöntem | Gecikme |
 | --- | --- |
 | **Satır içi Alım** | Hemen |
 | **Sorgudan al** | Sorgu süresi + işleme süresi |
@@ -133,8 +133,8 @@ Sorgudan alma haricinde tüm alım yöntemleri için, verileri Azure Veri Gezgin
 
 Şema eşleme, kaynak veri alanlarını hedef tablo sütunlarına bağlamaya yardımcı olur.
 
-* [CSV eşleme](/azure/kusto/management/mappings?branch=master#csv-mapping) (isteğe bağlı) tüm sıralı tabanlı biçimler ile birlikte kullanılır. Bu, alma komutu parametresi kullanılarak gerçekleştirilebilir veya [tabloda önceden oluşturulmuş](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) ve alma komut parametresinden Başvurulmuş olabilir.
-* [JSON eşlemesi](/azure/kusto/management/mappings?branch=master#json-mapping) (zorunlu) ve [avro eşlemesi](/azure/kusto/management/mappings?branch=master#avro-mapping) (zorunlu), alma komutu parametresi kullanılarak gerçekleştirilebilir. Ayrıca [, tabloda önceden oluşturulmuş](/azure/kusto/management/tables#create-ingestion-mapping) ve alma komut parametresinden başvurulabilirler.
+* [CSV eşleme](/azure/kusto/management/mappings?branch=master#csv-mapping) (isteğe bağlı) tüm sıralı tabanlı biçimler ile birlikte kullanılır. Bu, alma komutu parametresi kullanılarak gerçekleştirilebilir veya [tabloda önceden oluşturulmuş](/azure/kusto/management/create-ingestion-mapping-command) ve alma komut parametresinden Başvurulmuş olabilir.
+* [JSON eşlemesi](/azure/kusto/management/mappings?branch=master#json-mapping) (zorunlu) ve [avro eşlemesi](/azure/kusto/management/mappings?branch=master#avro-mapping) (zorunlu), alma komutu parametresi kullanılarak gerçekleştirilebilir. Ayrıca [, tabloda önceden oluşturulmuş](/azure/kusto/management/create-ingestion-mapping-command) ve alma komut parametresinden başvurulabilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

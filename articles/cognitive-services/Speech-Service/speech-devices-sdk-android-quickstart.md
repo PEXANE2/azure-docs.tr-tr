@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380329"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189132"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Hızlı başlangıç: Android 'de konuşma cihazları SDK örnek uygulamasını çalıştırma
 
@@ -23,9 +23,9 @@ Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir k
 
 Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
-Örnek uygulama için kaynak kodu konuşma cihaz SDK'sı ile dahil edilir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Örnek uygulama için kaynak kodu konuşma cihaz SDK'sı ile dahil edilir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız gerekir:
 
@@ -34,7 +34,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 - [Konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download)en son sürümünü indirin ve. zip dosyasını çalışma dizininize ayıklayın.
 
   > [!NOTE]
-  > Android-Sample-Release. zip dosyası Android örnek uygulamasını içerir ve bu hızlı başlangıç, uygulamanın C:\SDSDK\Android-Sample-Release 'ye ayıklandığını varsayar
+  > Bu hızlı başlangıçta, uygulamanın C:\SDSDK\Android-Sample-Release 'e ayıklanacağı varsayılmaktadır
 
 - [Konuşma hizmetine yönelik bir Azure abonelik anahtarı](get-started.md) almak için
 
@@ -42,9 +42,9 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
 - Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs C#Ile konuşma amaçlarını tanıma ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  Yapabilecekleriniz [basit LUIS modeline oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/) veya LUIS modeline LUIS example.json örneği kullanın. LUIS modeline kullanılabilir örnek [konuşma cihazları SDK indirme sitesi](https://aka.ms/sdsdk-luis). Modelinizin JSON dosyasını karşıya yüklemek için [LUIS portalı](https://www.luis.ai/home)seçin **alma yeni uygulama**ve ardından JSON dosyasını seçin.
+  [Basit BIR luya modeli oluşturabilir](https://docs.microsoft.com/azure/cognitive-services/luis/) veya örnek Luo MODELI, Luu-example. JSON kullanabilirsiniz. Örnek LUSıS modeli, [konuşma cihazları SDK 'sı indirme sitesinden](https://aka.ms/sdsdk-luis)edinilebilir. Modelinizin JSON dosyasını [Lue portalına](https://www.luis.ai/home)yüklemek için **Yeni uygulama al**' ı seçin ve ardından json dosyasını seçin.
 
-- Yükleme [Android Studio](https://developer.android.com/studio/) ve [Vysor](https://vysor.io/download/) PC'nizde.
+- [Android Studio](https://developer.android.com/studio/) ve [vysor](https://vysor.io/download/) 'u bilgisayarınıza yükleyip.
 
 ## <a name="set-up-the-device"></a>Cihazı ayarlama
 
@@ -52,9 +52,9 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
    ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1. Cihazınızı altında listelenmelidir **bir cihaz seçin**. Seçin **görünümü** cihazın yanındaki düğmesi.
+1. Cihazınızın **cihaz Seç**altında listelenmesi gerekir. Cihazın yanındaki **Görünüm** düğmesini seçin.
 
-1. Klasör simgesini seçerek kablosuz ağınıza bağlayın ve ardından **ayarları** > **WLAN**.
+1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve sonra da **WLAN** > **Ayarlar** ' ı seçin.
 
    ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
@@ -65,7 +65,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
    >
    > ![Vysor dosya klasörü](media/speech-devices-sdk/qsg-10.png)
    >
-   > Seçin **ayarları**. "İçin mac adresi" için arama yapın ve ardından **Mac adresi** > **Gelişmiş WLAN**. İletişim kutusunun altına görünen MAC adresi yazın.
+   > **Ayarlar**' ı seçin. "MAC adresi" araması yapın ve ardından **GELIŞMIŞ WLAN** > **Mac adresi** ' ni seçin. İletişim kutusunun altına görünen MAC adresi yazın.
    >
    > ![Vysor MAC adresi](media/speech-devices-sdk/qsg-11.png)
    >
@@ -81,9 +81,32 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    ![Android Studio - mevcut bir projeyi Aç](media/speech-devices-sdk/qsg-5.png)
 
-1. İçin C:\SDSDK\Android-Sample-Release\example gidin. Seçin **Tamam** örnek projesini açın.
+1. İçin C:\SDSDK\Android-Sample-Release\example gidin. Örnek projeyi açmak için **Tamam ' ı** seçin.
 
-1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
+1. Gradle 'i konuşma SDK 'sına başvuracak şekilde yapılandırın. Aşağıdaki dosyalar Android Studio içindeki **Gradle betikler** altında bulunabilir.
+
+    **Build. Gradle (proje: example)** öğesini güncelleştirin, Maven satırlarını ekleyerek allprojects bloğunun aşağıda eşleşmesi gerekir.
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    Bu satırı bağımlılıklar bölümüne ekleyerek **Build. Gradle (Module: App)** öğesini güncelleştirin. 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
+1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
 
    Konuşma ve LUSıS için, bilgileriniz MainActivity. Java içine gider:
 
@@ -129,16 +152,16 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    | Değişken | Anlamı | Kullanılabilir değerler |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Fiziksel MIC yapılandırma | Döngüsel Geliştirme Seti için: `Circular6+1` |
-   |          |         | Doğrusal Geliştirme Seti için: `Linear4` |
-   | `SelectedGeometry` | Yazılım MIC yapılandırması | Tüm mikrofonlardan kullanan bir döngüsel Geliştirme Seti için: `Circular6+1` |
-   |          |         | Dört mikrofonlardan kullanan bir döngüsel Geliştirme Seti için: `Circular3+1` |
-   |          |         | Tüm mikrofonlardan kullanan bir doğrusal Geliştirme Seti için: `Linear4` |
-   |          |         | İki mikrofonlardan kullanan bir doğrusal Geliştirme Seti için: `Linear2` |
+   | `DeviceGeometry` | Fiziksel MIC yapılandırma | Döngüsel bir geliştirici seti için: `Circular6+1` |
+   |          |         | Doğrusal bir geliştirici seti için: `Linear4` |
+   | `SelectedGeometry` | Yazılım MIC yapılandırması | Tüm mikler kullanan bir döngüsel geliştirici seti için: `Circular6+1` |
+   |          |         | Dört miks kullanan dairesel bir geliştirici seti için: `Circular3+1` |
+   |          |         | Tüm mikler kullanan doğrusal bir geliştirici seti için: `Linear4` |
+   |          |         | İki mikü kullanan doğrusal bir geliştirici seti için: `Linear2` |
 
-1. Uygulamayı derlemek için **çalıştırma** menüsünde **'uygulamayı' Çalıştır**. **Dağıtım hedefini seçin** iletişim kutusu görüntülenir.
+1. Uygulamayı derlemek için, **Çalıştır** menüsünde **' uygulama ' Çalıştır '** ı seçin. **Dağıtım hedefi seç** iletişim kutusu görüntülenir.
 
-1. Cihazınızı seçin ve ardından **Tamam** cihaza uygulamayı dağıtmak için.
+1. Cihazınızı seçin ve ardından uygulamayı cihaza dağıtmak için **Tamam** ' ı seçin.
 
    ![Dağıtım hedefi iletişim kutusunu seçin](media/speech-devices-sdk/qsg-7.png)
 
@@ -161,7 +184,7 @@ Konuşma cihazına bağlanamıyorsanız. Komut Istemi penceresinde aşağıdaki 
 ```
 
 > [!NOTE]
-> Bu komut Android Studio yüklemesinin parçası olan `adb.exe`Android Debug Bridge kullanır. Bu araç C:\Users bulunur\[kullanıcı adı] \AppData\Local\Android\Sdk\platform araçları. Bu dizin çağırmak daha kullanışlı hale getirmek için yola ekleyebilirsiniz `adb`. Aksi takdirde, yüklemenizin adb.exe çağıran her komut için tam yolunu belirtmeniz gerekir `adb`.
+> Bu komut Android Studio yüklemesinin parçası olan `adb.exe`Android Debug Bridge kullanır. Bu araç, C:\Users\[Kullanıcı adı] \AppData\Local\Android\Sdk\platform-tools. içinde bulunur Bu dizini, `adb`çağrılmasını daha kolay hale getirmek için yolunuza ekleyebilirsiniz. Aksi takdirde, `adb`çağıran her komutta ADB. exe yüklemenizin tam yolunu belirtmeniz gerekir.
 >
 > `no devices/emulators found` bir hata görürseniz, USB kablonuz bağlı olduğundan ve yüksek kaliteli bir kablonun kullanıldığından emin olun.
 

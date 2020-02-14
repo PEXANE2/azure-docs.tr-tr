@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d8461cb2d98ec8fe914c2cc878e9002d132c9995
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b9c458b42f7436377d41cf5095d404dedbe0ffd1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845829"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191600"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
 
@@ -65,12 +65,12 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 |Azure sanal makineler dağıtım hizmeti|[Sertifikaları, müşteri tarafından yönetilen Key Vault sanal makinelere dağıtın](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Azure Resource Manager şablonu dağıtım hizmeti|[Dağıtım sırasında güvenli değerler geçirin](../azure-resource-manager/templates/key-vault-parameter.md).|
 |Azure disk şifreleme birimi şifreleme hizmeti|Sanal makine dağıtımı sırasında BitLocker anahtarına (Windows VM) veya DM parolasının (Linux VM) ve anahtar şifreleme anahtarına erişime izin verin. Bu, [Azure disk şifrelemesini](../security/fundamentals/encryption-overview.md)mümkün bir şekilde sunar.|
-|Azure Yedekleme|[Azure Backup](../backup/backup-introduction-to-azure-backup.md)kullanarak Azure sanal makineler yedeklemesi sırasında ilgili anahtarların ve parolaların yedeklenme ve geri yüklenmesine izin verin.|
-|Exchange Online & SharePoint Online|[Müşteri anahtarına](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)sahip Azure depolama hizmeti şifrelemesi müşteri anahtarına erişime izin verin.|
+|Azure Backup|[Azure Backup](../backup/backup-introduction-to-azure-backup.md)kullanarak Azure sanal makineler yedeklemesi sırasında ilgili anahtarların ve parolaların yedeklenme ve geri yüklenmesine izin verin.|
+|Exchange Online & SharePoint Online|[Müşteri anahtarına](/microsoft-365/compliance/customer-key-overview)sahip Azure depolama hizmeti şifrelemesi müşteri anahtarına erişime izin verin.|
 |Azure Information Protection|Azure Information Protection için kiracı anahtarına erişime izin ver [.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Key Vault aracılığıyla Azure Web uygulaması sertifikasını dağıtın](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Veritabanı|[Azure SQL veritabanı ve veri ambarı için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
-|Azure Depolama|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../storage/common/storage-service-encryption-customer-managed-keys.md).|
+|Azure Storage|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|Müşteri tarafından yönetilen bir anahtarla [Azure Data Lake Store verilerin şifrelenmesi](../data-lake-store/data-lake-store-encryption.md) .|
 |Azure Databricks|[Hızlı, kolay ve işbirliğine dayalı Apache Spark tabanlı analiz hizmeti](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[MSI kullanarak Key Vault özel etki alanı için sertifika dağıtma](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381114"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186465"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme 
 
-Çalışanlarınız hem kişisel hem de iş görevleri için mobil cihazları kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi, Şirket verilerinizi koruyabilecek onaylanan istemci uygulamalarıyla sınırlandırabilirsiniz.  
+Çalışanlarınız hem kişisel hem de iş amaçlı görevler için mobil cihazlar kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi, Şirket verilerinizi koruyabilecek onaylanan istemci uygulamalarıyla sınırlandırabilirsiniz.  
 
 Bu konuda, onaylanan istemci uygulamaları gerektiren koşul erişim ilkelerinin nasıl yapılandırılacağı açıklanmaktadır.
 
@@ -36,7 +36,7 @@ Koşullu erişim terminolojisinde, bu istemci uygulamaları **onaylanan istemci 
 
 ![Koşullu Erişim](./media/app-based-conditional-access/05.png)
 
-Onaylanan istemci uygulamalarının listesi için bkz. [onaylanan istemci uygulaması gereksinimi](technical-reference.md#approved-client-app-requirement).
+Onaylanan istemci uygulamalarının listesi için bkz. [onaylanan istemci uygulaması gereksinimi](concept-conditional-access-grant.md).
 
 Uygulama tabanlı koşullu erişim ilkelerini, hem kişisel hem de kurumsal cihazların verilerini koruma konusunda esneklik sağlamak için [cihaz tabanlı koşullu erişim ilkeleri](require-managed-devices.md) gibi diğer ilkelerle birleştirebilirsiniz.
 
@@ -44,7 +44,7 @@ Uygulama tabanlı koşullu erişim ilkelerini, hem kişisel hem de kurumsal ciha
 
 Bu konuda, hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 
-- [Onaylanan istemci uygulaması gereksinimi](technical-reference.md#approved-client-app-requirement) teknik başvurusu.
+- [Onaylanan istemci uygulaması gereksinimi](concept-conditional-access-grant.md).
 - [Azure Active Directory ' deki Koşullu erişimin](overview.md)temel kavramları.
 - [Koşullu erişim ilkesini yapılandırma](app-based-mfa.md).
 - [Koşullu erişim ilkelerinin geçişi](best-practices.md#policy-migration).

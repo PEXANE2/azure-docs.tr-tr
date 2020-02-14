@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835009"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201688"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -44,7 +44,7 @@ Kullanılabilir hizmet katmanları ve özellikleri için bkz. [hizmet katmanlar�
 
 Hatalar ve bilinen sorunlar için bkz. [bilinen sorunlar](sql-database-managed-instance-transact-sql-information.md#Issues).
 
-## <a name="new-features"></a>Yeni özellikler
+## <a name="new-features"></a>Yeni Özellikler
 
 **En son özellikleri ve özellikleri genel önizlemede nerede bulabilirim?**
 
@@ -82,21 +82,11 @@ Bir seçenek, [veritabanını BIR BACPAC 'e aktarmak](sql-database-export.md) ve
 
 Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır. Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 vs Gen 5 
-
-**Yönetilen örnek için gen 4 ve Gen 5 donanım oluşturma arasında seçim mi Nasıl yaparım??**
-
-Bazı donanım oluşturma, diğer iş yükü türleri için daha iyi olduğundan iş yükünüze bağımlıdır. Performans konusunun basitleşmesi tercih edilirken, iş yükü performansını etkileyen donanım nesilleri arasında aşağıdaki farklılıklar vardır:
-- Gen 4, fiziksel işlemcilere göre daha iyi bir işlem desteği sağlar ve bu, vCore işlemcilere bağlı olan gen 5 ' tir. İşlem yoğunluğu yoğun iş yükleri için daha avantajlı olabilir.
-- Gen 5, uzak depolama için daha iyi bir GÇ bant genişliğine neden olan hızlandırılmış ağı destekler. Genel Amaçlı hizmeti katmanlarında GÇ yoğun iş yükleri için avantajlı olabilir. Gen 5, gen 4 ' e kıyasla daha hızlı SSD yerel disklerini kullanır. İş açısından kritik hizmet katmanlarında GÇ yoğun iş yükleri için avantajlı olabilir.
-
-Belirli bir durumda hangi donanım oluşturmanın daha iyi çalışacağını öğrenmek için üretime yönelik olarak tasarlanan gerçek iş yüklerinin performansını test etmek önemle önerilir.
-
 ## <a name="switch-hardware-generation"></a>Donanım oluşturmayı Değiştir 
 
 **Yönetilen örnek donanım oluşturma işlemi ile gen 4 ve Gen 5 arasında geçiş yapabilir miyim?**
 
-Yönetilen örneğinizin sağlandığı bölgede her iki donanım nesli de kullanılabiliyorsa, donanım oluşturmaları arasında otomatik çevrimiçi geçiş mümkündür. Bu durumda, donanım oluşturma arasında nasıl geçiş yapılacağını açıklayan [blog gönderisine ait betiği](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) kullanabilirsiniz.
+Yönetilen örneğinizin sağlandığı bölgede her iki donanım nesli de kullanılabiliyorsa, donanım oluşturmaları arasında otomatik çevrimiçi geçiş mümkündür. Bu durumda, donanım nesilleri arasında nasıl geçiş yapılacağını açıklayan [Vcore modeline genel bakış sayfasını](sql-database-service-tiers-vcore.md) kontrol edebilirsiniz.
 
 Arka planda yeni bir yönetilen örnek sağlanacağı ve veritabanlarının sonunda hızlı bir yük devretmeyle, eski ve yeni örnek arasında otomatik olarak aktarılan, bu uzun süredir çalışan bir işlemdir. 
 
@@ -108,8 +98,6 @@ Aynı bölgede her iki donanım neslini de desteklenmiyorsa, donanım oluşturma
 **Yönetilen örneðimin performansı Nasıl yaparım? mi?**
 
 Genel Amaçlı yönetilen örnek, performans için önemli veri ve günlük dosyası boyutu nedeniyle uzak depolama kullanır. Daha fazla bilgi için bkz. [genel amaçlı yönetilen örnek performansı üzerinde günlük dosyası boyutunun etkisi](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
-
-Yoğun GÇ yoğunluklu iş yükleri için Gen 5 donanımı kullanmayı ve işlem yoğunluğu iş yükleri için gen 4 ' ü kullanmayı düşünün. Daha fazla bilgi için bkz. [Gen 4 ve Gen 5 arasında nasıl yaparım? seçme](#gen-4-vs-gen-5).
 
 İş yükünüz çok sayıda küçük işlem içeriyorsa, bağlantı türünü proxy 'den yeniden yönlendirme moduna geçirmeyi düşünün.
 

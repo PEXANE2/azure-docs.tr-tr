@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: f32980b736232449d24de8721f354d9ca5dd03ab
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7a13e50e6b5357264e7096fa58e34a4bcaf6ad8b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064436"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190907"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin
 
@@ -175,8 +175,8 @@ Aşağıdaki diyagramlarda, Azure AD hibrit kimlik çözümünüz ile kullanabil
 |Değerlendirme|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS ile Federasyon|
 |:-----|:-----|:-----|:-----|
 |Kimlik doğrulaması nerede gerçekleşir?|Bulutta|Şirket içi kimlik doğrulama Aracısı ile güvenli bir parola doğrulaması alışverişi sonrasında bulutta|Şirket içi|
-|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Yok|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
-|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Yok|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
+|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Hiçbiri|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
+|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Hiçbiri|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
 |Bir SSL sertifikası gereksinimi var mı?|Hayır|Hayır|Evet|
 |Bir sistem durumu izleme çözümü var mı?|Gerekli değil|[Azure Active Directory Yönetim Merkezi](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) tarafından sunulan Aracı durumu|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Kullanıcılar şirket ağı içindeki etki alanına katılmış cihazlardan bulut kaynaklarına çoklu oturum açma izni veriyor mu?|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|Evet|
@@ -185,7 +185,7 @@ Aşağıdaki diyagramlarda, Azure AD hibrit kimlik çözümünüz ile kullanabil
 |Çok faktörlü kimlik doğrulama seçenekleri nelerdir?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA sunucusu](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Üçüncü taraf MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|
 |Hangi kullanıcı hesabı durumları destekleniyor?|Devre dışı hesaplar<br>(en fazla 30 dakikalık gecikme)|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesap zaman aşımına uğradı<br><br>Parolanın geçerliliği geçildi<br><br>Oturum açma saatleri|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesap zaman aşımına uğradı<br><br>Parolanın geçerliliği geçildi<br><br>Oturum açma saatleri|
 |Koşullu erişim seçenekleri nelerdir?|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)<br><br>[AD FS talep kuralları](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Eski protokollerin engellenmesi destekleniyor mu?|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Eski protokollerin engellenmesi destekleniyor mu?|[Evet](../../active-directory/conditional-access/overview.md)|[Evet](../../active-directory/conditional-access/overview.md)|[Evet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Oturum açma sayfalarında logoyu, resmi ve açıklamayı özelleştirebilir miyim?|[Evet, Azure AD Premium ile](../../active-directory/fundamentals/customize-branding.md)|[Evet, Azure AD Premium ile](../../active-directory/fundamentals/customize-branding.md)|[Evet](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Hangi gelişmiş senaryolar destekleniyor?|[Akıllı parola kilitleme](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Azure AD Premium P2 ile sızdırılan kimlik bilgileri raporları](../../active-directory/reports-monitoring/concept-risk-events.md)|[Akıllı parola kilitleme](../../active-directory/authentication/howto-password-smart-lockout.md)|Çok siteli düşük Gecikmeli kimlik doğrulama sistemi<br><br>[Extranet kilitlemeyi AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Üçüncü taraf kimlik sistemleriyle tümleştirme](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
