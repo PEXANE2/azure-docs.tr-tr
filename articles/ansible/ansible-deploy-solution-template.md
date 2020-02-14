@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Azure 'da barındırılan bir CentOS san
 keywords: anerişilebilir, Azure, DevOps, çözüm şablonu, sanal makine, Azure kaynakları için Yönetilen kimlikler, CentOS, Red Hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156319"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193795"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Hızlı başlangıç: Azure 'da CentOS 'a yönelik anormal çözüm şablonu dağıtma
 
@@ -85,4 +85,4 @@ Azure için anormal çözüm şablonu, bir CentOS sanal makinesi üzerinde anorm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Hızlı başlangıç: Azure 'da bir Linux sanal makinesini kullanarak yapılandırma](/azure/virtual-machines/linux/ansible-create-vm)
+> [Hızlı başlangıç: Azure 'da bir Linux sanal makinesini kullanarak yapılandırma](./ansible-create-vm.md)

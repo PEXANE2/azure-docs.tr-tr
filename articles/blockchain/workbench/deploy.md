@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesi nasıl dağıtıl
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 190f780d7aed30667c23bb97f9ce7726da0f00ca
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779849"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189237"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure blok zincirini dağıtma çalışma ekranı önizlemesi
 
@@ -19,7 +19,7 @@ Blok zinciri çalışma ekranı bileşenleri hakkında daha fazla bilgi için bk
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
+## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
 
 Blok zinciri çalışma ekranı, blok zinciri tabanlı bir uygulama oluşturmak için en sık kullanılan bir dizi ilgili Azure hizmeti ile birlikte bir blok zinciri defteri dağıtmanızı sağlar. Blockzincirine yönelik çalışma ekranı dağıtımı, Azure aboneliğinizdeki bir kaynak grubu içinde sağlanan aşağıdaki Azure hizmetlerine neden olur.
 
@@ -40,7 +40,7 @@ Aşağıda, **myblockzincirin** kaynak grubunda oluşturulan örnek bir dağıt�
 
 Blok zinciri çalışma ekranının maliyeti, temel alınan Azure hizmetlerinin maliyetinin toplamıdır. Azure hizmetleri fiyatlandırma bilgileri, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/)kullanılarak hesaplanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure blok zinciri çalışma ekranı, Azure AD yapılandırması ve uygulama kayıtları gerektirir. Dağıtımdan önce Azure AD [yapılandırmalarının el ile](#azure-ad-configuration) veya bir betik dağıtımı çalıştırmadan önce bu yapılandırmayı seçebilirsiniz. Blok zinciri çalışma ekranı 'nı yeniden dağıtıyorsanız Azure [ad yapılandırması ' na bakın.](#azure-ad-configuration)
 
@@ -173,7 +173,7 @@ Azure blok zinciri çalışma ekranı dağıtımınızı tamamladınız. Dağıt
 
 Dağıtımdan önce Azure AD ayarlarını el ile yapılandırmayı veya doğrulamayı seçerseniz, bu bölümdeki tüm adımları izleyin. Azure AD ayarlarını otomatik olarak yapılandırmak isterseniz, blok zinciri çalışma ekranı 'nı dağıttıktan sonra [Azure AD yapılandırma betiği](#azure-ad-configuration-script) ' ni kullanın.
 
-### <a name="blockchain-workbench-api-app-registration"></a>Blockchain Workbench API'si uygulama kaydı
+### <a name="blockchain-workbench-api-app-registration"></a>Blok zinciri çalışma ekranı API 'SI uygulama kaydı
 
 Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kaydedilmesini gerektirir. Uygulamayı kaydettirmek için bir Azure Active Directory (Azure AD) kiracısına sahip olmanız gerekir. Mevcut bir kiracıyı kullanabilir veya yeni bir kiracı oluşturabilirsiniz. Mevcut bir Azure AD kiracısı kullanıyorsanız, uygulamaları kaydetmek, Graph API izinleri vermek ve bir Azure AD kiracısı içinde Konuk erişimine izin vermek için yeterli izinlere sahip olmanız gerekir. Mevcut bir Azure AD kiracısında yeterli izinlere sahip değilseniz yeni bir kiracı oluşturun.
 
@@ -186,7 +186,7 @@ Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kayde
 
 1. Bir görünen **ad** girin ve **yalnızca bu kuruluş dizininde hesaplar '** ı seçin.
 
-    ![Uygulama kaydı oluşturma](media/deploy/app-registration-create.png)
+    ![Uygulama kaydı oluştur](media/deploy/app-registration-create.png)
 
 1. Azure AD uygulamasını kaydetmek için **Kaydet** ' i seçin.
 
@@ -195,7 +195,7 @@ Blok zinciri çalışma ekranı dağıtımı, bir Azure AD uygulamasının kayde
 Daha sonra, blok zinciri çalışma ekranı yöneticilerini belirtmek için bildirimi Azure AD içindeki uygulama rollerini kullanacak şekilde değiştirmeniz gerekir.  Uygulama bildirimleri hakkında daha fazla bilgi için bkz. [uygulama bildirimi Azure Active Directory](../../active-directory/develop/reference-app-manifest.md).
 
 
-1. Bildirim için bir GUID oluşturmanız gerekir. PowerShell komutunu `[guid]::NewGuid()` veya `New-GUID` cmdlet 'ini kullanarak bir GUID oluşturabilirsiniz. Başka bir seçenek de GUID Oluşturucu Web sitesi kullanmaktır.
+1. Bildirim için bir GUID gereklidir. PowerShell komutunu `[guid]::NewGuid()` veya `New-GUID` cmdlet 'ini kullanarak bir GUID oluşturabilirsiniz. Başka bir seçenek de GUID Oluşturucu Web sitesi kullanmaktır.
 1. Kaydettiğiniz uygulama için **Yönet** bölümünde **bildirim** ' ı seçin.
 1. Sonra, bildirimin **Approles** bölümünü güncelleştirin. `"appRoles": []`, belirtilen JSON ile değiştirin. **Kimlik** alanı değerini, oluşturduğunuz GUID ile değiştirdiğinizden emin olun. 
 
@@ -233,8 +233,15 @@ Daha sonra, blok zinciri çalışma ekranı yöneticilerini belirtmek için bild
 API uygulamasının dizine erişmesi için kullanıcıdan izin istemesi gerekir. API uygulaması için aşağıdaki gerekli izni ayarlayın:
 
 1. *Blok zinciri API 'si* uygulama kaydında, **API izinleri**' ni seçin. Varsayılan olarak, Graph API **User. Read** izni eklenir.
+1. Çalışma ekranı uygulamasının, kullanıcıların temel profil bilgilerine okuma erişimi olması gerekir. *Yapılandırılan izinler*' de, **izin Ekle**' yi seçin. **Microsoft API 'lerinde** **Microsoft Graph**' yi seçin.
+1. Çalışma ekranı uygulaması kimliği doğrulanmış kullanıcı kimlik bilgilerini kullandığından, **temsilci izinleri**' ni seçin.
+1. *Kullanıcı* kategorisinde **Kullanıcı. Readbasic. All** iznini seçin.
 
-1. **Izin verme**' de, etki alanı için **yönetici onayı ver** ' i seçin ve doğrulama istemi için **Evet** ' i seçin.
+    ![User. ReadBasic Microsoft Graph eklemeyi gösteren Azure AD uygulama kaydı yapılandırması. tüm temsilci izinleri](media/deploy/add-graph-user-permission.png)
+
+    **Izin Ekle**' yi seçin.
+
+1. *Yapılandırılan izinler*bölümünde, etki alanı için **yönetici onayı ver** ' i seçin ve doğrulama istemi için **Evet** ' i seçin.
 
    ![İzinleri verme](media/deploy/client-app-grant-permissions.png)
 
@@ -251,7 +258,7 @@ Dağıtım için uygulama KIMLIĞI ve kiracı bilgileri gereklidir. Dağıtım s
 
     | Depolanacak ayar  | Dağıtımda kullan |
     |------------------|-------------------|
-    | Uygulama (istemci) kimliği | Azure Active Directory Kurulum > uygulama KIMLIĞI |
+    | Uygulama (istemci) KIMLIĞI | Azure Active Directory Kurulum > uygulama KIMLIĞI |
 
 ### <a name="get-tenant-domain-name"></a>Kiracı etki alanı adını al
 
@@ -277,7 +284,7 @@ Azure blok zinciri çalışma ekranı dağıtıldıktan sonra, dağıtılan blok
 1. Azure AD istemci uygulamasını kaydettiğiniz kiracıda olduğunuzu doğrulayın.
 1. Sol taraftaki gezinti bölmesinde **Azure Active Directory** hizmetini seçin. **Uygulama kayıtları**'nı seçin.
 1. Önkoşul bölümünde kaydettiğiniz Azure AD istemci uygulamasını seçin.
-1. **Kimlik Doğrulaması**'nı seçin.
+1. **Kimlik doğrulaması**' nı seçin.
 1. [Blok zinciri çalışma ekranı web URL 'si](#blockchain-workbench-web-url) bölümünde aldığınız Azure blok zinciri çalışma ekranı dağıtımının ana Web URL 'sini belirtin. Yanıt URL 'SI `https://`ön ekine sahiptir. Örneğin, `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Kimlik doğrulama yanıtı URL 'Leri](media/deploy/configure-reply-url.png)

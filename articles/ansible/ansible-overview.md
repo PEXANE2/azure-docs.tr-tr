@@ -4,12 +4,12 @@ description: Bulut sağlamayı, yapılandırma yönetimini ve uygulama dağıtı
 keywords: anerişilebilir, Azure, DevOps, genel bakış, bulut sağlama, yapılandırma yönetimi, uygulama dağıtımı, anormal modüller, anerişilebilir PlayBook 'lar
 ms.topic: overview
 ms.date: 04/30/2019
-ms.openlocfilehash: eab2a44257c6769106124c4c9ab6711ba3be531e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e9d5b8858f052083b157c7d4809fe21018518bcd
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155786"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193574"
 ---
 # <a name="using-ansible-with-azure"></a>Azure ile anormal kullanma
 
@@ -57,4 +57,4 @@ Anormal, Azure kaynaklarını sağlama ve yapılandırma konusunda kullanılacak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç: Azure 'da CentOS 'a yönelik anormal çözüm şablonu dağıtma](./ansible-deploy-solution-template.md)
-- [Hızlı başlangıç: Azure 'da Linux sanal makinelerini kullanarak yapılandırma](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)
+- [Hızlı başlangıç: Azure 'da Linux sanal makinelerini kullanarak yapılandırma](./ansible-install-configure.md)

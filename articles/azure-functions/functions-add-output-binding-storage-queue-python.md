@@ -3,12 +3,12 @@ title: Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 description: Bir Azure depolama kuyruğunu bir çıkış bağlaması kullanarak bir Python işleviyle tümleştirin.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715375"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198488"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 
@@ -156,7 +156,7 @@ Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanı
 1. İşiniz bittiğinde, **Ctrl**+**C**ile Konağı durdurun.
 
 > [!TIP]
-> Başlangıç sırasında, ana bilgisayar [depolama bağlama uzantısını](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) ve diğer Microsoft bağlama uzantılarını indirir ve yükler. Bağlama uzantıları *Host. JSON* dosyasında aşağıdaki özelliklerle varsayılan olarak etkinleştirildiğinden, bu yükleme gerçekleşir:
+> Başlangıç sırasında, ana bilgisayar [depolama bağlama uzantısını](functions-bindings-storage-blob.md#add-to-your-functions-app) ve diğer Microsoft bağlama uzantılarını indirir ve yükler. Bağlama uzantıları *Host. JSON* dosyasında aşağıdaki özelliklerle varsayılan olarak etkinleştirildiğinden, bu yükleme gerçekleşir:
 >
 > ```json
 > {

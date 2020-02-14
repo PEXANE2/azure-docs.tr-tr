@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Azure Cloud Shell ile Bash ile çeşitli
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: d04708be82a704c2ce20a928380fca1d325493da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0eb89bcacae1629bdb1f6dcda8f9a25efdb6eedf
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155963"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193659"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Hızlı başlangıç: Azure Cloud Shell Bash aracılığıyla anerişilebilir PlayBook 'ları çalıştırma
 
@@ -47,4 +47,4 @@ Başarılı yapılandırmayı doğrulamak için, bir Azure Kaynak grubu oluştur
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Hızlı başlangıç: Azure 'da sanal makineyi anormal olarak yapılandırma](/azure/virtual-machines/linux/ansible-create-vm)
+> [Hızlı başlangıç: Azure 'da sanal makineyi anormal olarak yapılandırma](./ansible-create-vm.md)

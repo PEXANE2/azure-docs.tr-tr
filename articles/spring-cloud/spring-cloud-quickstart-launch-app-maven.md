@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278916"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201449"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -63,7 +63,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan so
 ## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
 
 1. Hizmete **genel bakış** sayfasında, **yapılandırma sunucusu**' nu seçin.
-1. **Varsayılan depo** bölümünde, **URI** 'yi **https://github.com/Azure-Samples/piggymetrics** olarak ayarlayın, **etiketi** **config**olarak ayarlayın ve ardından değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+1. **Varsayılan depo** bölümünde, **URI** 'yi **https://github.com/Azure-Samples/piggymetrics-config** olarak ayarlayın ve ardından değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![yapılandırma ayarlarını tanımlama ve uygulama](media/maven-qs-apply-config.jpg)

@@ -5,14 +5,14 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 6d09453db0fdf8c09ad6d90c63b27f48508302be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b343adeed5abeecdf55f71f8bc4298659a106e09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230704"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198403"
 ---
-# <a name="create-your-first-function-using-visual-studio"></a>Visual Studio’yu kullanarak ilk işlevinizi oluşturma
+# <a name="create-your-first-function-using-visual-studio"></a>Visual Studio kullanarak ilk işlevinizi oluşturma
 
 Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda yürütmenize olanak tanır.
 
@@ -32,7 +32,7 @@ Bu öğreticiyi tamamlayabilmeniz için öncelikle [Visual Studio 2019](https://
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. Yöntemi üzerindeki `FunctionName` özniteliği, varsayılan olarak `HttpTrigger`olan işlevin adını ayarlar. `HttpTrigger` özniteliği, işlevin bir HTTP isteği tarafından tetiklendiğini belirtir. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
+Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. Yöntemi üzerindeki `FunctionName` özniteliği, varsayılan olarak `Function1`olan işlevin adını ayarlar. `HttpTrigger` özniteliği, işlevin bir HTTP isteği tarafından tetiklendiğini belirtir. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
 
 Yöntemine uygun öznitelikleri uygulayarak giriş ve çıkış bağlamalarını kullanarak işlevinizin yeteneklerini genişletebilirsiniz. Daha fazla bilgi için, [Azure İşlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md#triggers-and-bindings) konusunun [Tetikleyiciler ve bağlayıcılar](functions-dotnet-class-library.md) bölümüne göz atın.
 

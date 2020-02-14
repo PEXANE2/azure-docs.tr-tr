@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137747"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201552"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma
 
@@ -76,9 +76,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu**' nu seçin.
 
-1. **Varsayılan depo** bölümünde, **URI** 'yi "https\://GitHub.com/Azure-Samples/piggymetrics" olarak ayarlayın.
-
-1. **Etiketi** "config" olarak ayarlayın.
+1. **Varsayılan depo** bölümünde, **urı** 'yi "https://github.com/Azure-Samples/piggymetrics-config" olarak ayarlayın.
 
 1. Değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
