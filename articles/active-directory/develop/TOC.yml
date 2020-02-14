@@ -7,6 +7,7 @@
     - name: Microsoft Identity Platform'un gelişimi
       href: about-microsoft-identity-platform.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Kiracı ayarlama
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: Örnekler
   href: sample-v2-code.md
 - name: Kavramlar
+  expanded: true
   items:
     - name: Kimlik doğrulaması temel bilgileri
       href: authentication-scenarios.md
