@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 3064211fe44a416a6288b86c977ed7e2337a7ccd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8fd7f23235dbd94ee8d20aa693ec5b659cb6d64d
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451453"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279617"
 ---
 Ortak çalışanların katkılarının yönetimi, uygulamanın geçerli durumuna bağlıdır.
 
-**[Kaynak geçişi](../luis-migration-authoring.md) yapılan uygulamalar yazmak için**: _katkıda bulunanlar_ , **Access Control (IAM)** sayfasını kullanarak yazma kaynağı için Azure Portal yönetilir. Ortak çalışan e-posta adresini ve _katkıda_ bulunan rolünü kullanarak bir kullanıcı ekleyin. 
+**[Kaynak geçişi](../luis-migration-authoring.md) yapılan uygulamalar yazmak için**: _katkıda bulunanlar_ , **Access Control (IAM)** sayfasını kullanarak yazma kaynağı için Azure Portal yönetilir. Ortak çalışan e-posta adresini ve _katkıda_ bulunan rolünü kullanarak bir kullanıcı ekleyin.
 
-**Henüz geçirilmeyen uygulamalar için**: tüm _ortak çalışanlar_ , her uygulamanın **Manage-> ortak çalışanlar** sayfasından Luo portalında yönetilir. Bu sayfada, [bir kullanıcının e-posta adresini ekleyin](../luis-how-to-collaborate.md). Bu, yalnızca bu uygulamaya yazma erişimi sağlar. 
+**Henüz geçirilmeyen uygulamalar için**: tüm _ortak çalışanlar_ , her uygulamanın **Manage-> ortak çalışanlar** sayfasından Luo portalında yönetilir. Bu sayfada, [bir kullanıcının e-posta adresini ekleyin](../luis-how-to-collaborate.md). Bu, yalnızca bu uygulamaya yazma erişimi sağlar.
 
 
