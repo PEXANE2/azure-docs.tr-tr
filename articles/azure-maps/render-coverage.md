@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025461"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209554"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure haritalar işleme kapsamı
 
-Azure haritalar haritalar oluşturmak için hem raster kutucukları hem de vektör kutucukları kullanır. En düşük çözünürlükte, dünyanın tamamı tek bir kutucuğa sığar. En yüksek çözünürlükte, tek bir kutucuk 38 kare metreyi temsil eder. ' Yi yakınlaştırdığınızda, kıtalar, bölgeler, şehirler ve bireysel Streets hakkında daha fazla ayrıntı görürsünüz. Kutucuklar hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
+Azure haritalar haritalar oluşturmak için hem raster kutucukları hem de vektör kutucukları kullanır. En düşük çözünürlükte, dünyanın tamamı tek bir kutucuğa sığar. En yüksek çözünürlükte, tek bir kutucuk 38 kare metreyi temsil eder. Haritada yakınlaştırdığınızda, kıtalar, bölgeler, şehirler ve bireysel Streets hakkında daha fazla ayrıntı görürsünüz. Kutucuklar hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
 
 Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablolar her bölge için işleyebilmeniz için bilgi düzeyini ayrıntılandırır.
 
@@ -29,7 +29,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Ø | Bölge, Basitleştirilmiş verilerle temsil edilir. |
 
 
-## <a name="africa"></a>Afrika 
+## <a name="africa"></a>Doğu 
 
 
 | Ülke/Bölge | Raster kutucukları Birleşik | Vektör kutucukları Birleşik |
@@ -46,7 +46,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Çad                             | ✓ | Ø |
 | Komorolar                          | ✓ | Ø |
 | Kongo Demokratik Cumhuriyeti | ✓ | ✓ |
-| Fildişi Sahili (Côte d’Ivoire)                    | ✓ | Ø |
+| Fildişi Sahili                    | ✓ | Ø |
 | Cibuti                         | ✓ | Ø |
 | Mısır                            | ✓ | ✓ |
 | Ekvator Ginesi                | ✓ | Ø |
@@ -73,7 +73,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Nijer                            | ✓ | ✓ |
 | Nijerya                          | ✓ | ✓ |
 | Reunion                          | ✓ | ✓ |
-| Ruanda                           | ✓ | ✓ |
+| Rwanda                           | ✓ | ✓ |
 | Saint Helena, Ascension ve Tristan da Cunha | ✓ | Ø |
 | Sao Tome ve Principe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
@@ -100,13 +100,13 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Aruba                     | ✓ | ✓ |
 | Bahamalar                   | ✓ | ✓ |
 | Barbados                  | ✓ | ✓ |
-| Belize                    | ✓ | ✓ |
+| Beliz                    | ✓ | ✓ |
 | Bermuda                   | ✓ | ✓ |
 | Bolivya 'nın plurinsel durumu | ✓ | ✓ |
 | Bonaire, Sint Eustatius ve Saba | ✓ | ✓ |
 | Brezilya                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
-| Cayman Adaları            | ✓ | ✓ |
+| Kayman Adaları            | ✓ | ✓ |
 | Şili                     | ✓ | ✓ |
 | Kolombiya                  | ✓ | ✓ |
 | Kosta Rika                | ✓ | ✓ |
@@ -146,7 +146,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Surinam                  | ✓ | ✓ |
 | Trinidad ve Tobago       | ✓ | ✓ |
 | Turks ve Caicos Adaları  | ✓ | ✓ |
-| Birleşik Devletler             | ✓ | ✓ |
+| Amerika Birleşik Devletleri             | ✓ | ✓ |
 | Uruguay                   | ✓ | ✓ |
 | Venezuela                 | ✓ | ✓ |
 | Virgin Adaları, İngiliz   | ✓ | ✓ |
@@ -160,7 +160,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Bahreyn                   | ✓ | ✓ |
 | Bangladeş                |   | Ø |
 | Butan                    |   | Ø |
-| Britanya Hint Okyanusu Toprakları |   | Ø |
+| İngiliz Hint Okyanusu Toprakları |   | Ø |
 | Barış                    | ✓ | ✓ |
 | Kamboçya                  |   | Ø |
 | Çin                     |   | Ø |
@@ -201,7 +201,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Timor-Leste               |   | Ø |
 | Türkmenistan              |   | Ø |
 | Birleşik Arap Emirlikleri      | ✓ | ✓ |
-| Birleşik Devletler Küçük Harici Adaları |   | Ø |
+| Birleşik Devletler küçük harici Adaları |   | Ø |
 | Özbekistan                |   | Ø |
 | Vietnam                   | ✓ | ✓ |
 | Yemen                     | ✓ | ✓ |
@@ -270,7 +270,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Jan Mayen                 | ✓ | ✓ |
 | Jersey                    | ✓ | ✓ |
 | Letonya                    | ✓ | ✓ |
-| Liechtenstein             | ✓ | ✓ |
+| Lihtenştayn             | ✓ | ✓ |
 | Litvanya                 | ✓ | ✓ |
 | Lüksemburg                | ✓ | ✓ |
 | Kuzey Makedonya           | ✓ | ✓ |

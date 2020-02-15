@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/12/2020
 ms.author: rohogue
-ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645778"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251966"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -70,12 +70,6 @@ Azure sanal ağları ve DNS sunucusu konfigürasyonları hakkında daha fazla bi
 
 Her depolama türünün belirli önkoşulları vardır.
 
-### <a name="nfs-storage-requirements"></a>NFS depolama gereksinimleri
-
-Şirket içi donanım depolama kullanılıyorsa, önbelleğin alt ağından veri merkezine yüksek bant genişliğine sahip ağ erişimi olması gerekir. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) veya benzer erişim önerilir.
-
-NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
-
 ### <a name="blob-storage-requirements"></a>BLOB depolama gereksinimleri
 
 Önbelleğiniz ile Azure Blob depolama 'yı kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir blob kapsayıcısı ya da [verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde açıklandığı gıbı Azure HPC önbellek biçimli verilerle doldurulmuş bir kapsayıcı gerekir.
@@ -93,6 +87,52 @@ Uyumlu bir depolama hesabı oluşturmak için şu ayarları kullanın:
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
 Ayrıca, yukarıdaki [izinlerle](#permissions)belirtilen şekilde, önbellek uygulamasına Azure depolama hesabınıza erişim izni vermeniz gerekir. Önbelleğe gerekli erişim rollerini sağlamak için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yordamı izleyin. Depolama hesabı sahibi değilseniz, sahibi bu adımı izleyin.
+
+### <a name="nfs-storage-requirements"></a>NFS depolama gereksinimleri
+
+Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanıyorsanız, bu gereksinimleri karşıladığından emin olun. Bu ayarları doğrulamak için depolama sisteminizin (veya veri merkezinizdeki) ağ yöneticileri veya güvenlik duvarı yöneticileri ile çalışmanız gerekebilir.
+
+> [!NOTE]
+> Önbellekte NFS depolama sistemine yeterli erişim yoksa depolama hedefi oluşturma işlemi başarısız olur.
+
+* **Ağ bağlantısı:** Azure HPC önbelleğinin önbellek alt ağı ile NFS sisteminin veri merkezi arasında yüksek bant genişliğine sahip ağ erişimi olması gerekir. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) veya benzer erişim önerilir. VPN kullanıyorsanız, büyük paketlerin engellenmediğinden emin olmak için bunu 1350 adresindeki Clamp TCP yönetim paketleri için yapılandırmanız gerekebilir.
+
+* **Bağlantı noktası erişimi:** Önbelleğin depolama sisteminizdeki belirli TCP/UDP bağlantı noktalarına erişmesi gerekir. Farklı depolama türlerinin farklı bağlantı noktası gereksinimleri vardır.
+
+  Depolama sisteminizin ayarlarını denetlemek için bu yordamı izleyin.
+
+  * Gerekli bağlantı noktalarını denetlemek için depolama sisteminize bir `rpcinfo` komutu verin. Aşağıdaki komut, bağlantı noktalarını listeler ve ilgili sonuçları bir tabloyla biçimlendirir. ( *< Storage_IP >* terimi yerıne sisteminizin IP adresini kullanın.)
+
+    Bu komutu, NFS altyapısının yüklü olduğu herhangi bir Linux istemcisinden verebilirsiniz. Küme alt ağı içinde bir istemci kullanırsanız, alt ağ ve depolama sistemi arasındaki bağlantıyı doğrulamaya da yardımcı olabilir.
+
+    ```bash
+    rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
+    ```
+
+  * `rpcinfo` komutu tarafından döndürülen bağlantı noktalarına ek olarak, bu yaygın olarak kullanılan bağlantı noktalarının gelen ve giden trafiğe izin verdiği şekilde emin olun:
+
+    | Protokol | Bağlantı noktası  | Hizmet  |
+    |----------|-------|----------|
+    | TCP/UDP  | 111   | rpcbind  |
+    | TCP/UDP  | 2049  | NFS      |
+    | TCP/UDP  | 4045  | nlockmgr |
+    | TCP/UDP  | 4046  | dağtd   |
+    | TCP/UDP  | 4047  | status   |
+
+  * Bu gerekli bağlantı noktalarının tümünde trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını kontrol edin. Azure 'da kullanılan güvenlik duvarlarını, veri merkezinizdeki şirket içi güvenlik duvarlarını da denetlediğinizden emin olun.
+
+* **Dizin erişimi:** Depolama sisteminde `showmount` komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (riskler dosyası çarpışmaları) erişemadığından emin olmak için bu komutu kullanır.
+
+  > [!NOTE]
+  > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, **`showmount`etkinleştirmeyin** . Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
+
+* **Kök erişimi:** Önbellek, Kullanıcı KIMLIĞI 0 olarak arka uç sistemine bağlanır. Depolama sisteminizde bu ayarları kontrol edin:
+  
+  * `no_root_squash`etkinleştirin. Bu seçenek, uzak kök kullanıcının köke ait dosyalara erişebilmesini sağlar.
+
+  * Önbelleğin alt ağından kök erişim kısıtlamalarını dahil olmadıklarından emin olmak için dışarı aktarma ilkelerini denetleyin.
+
+* NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. Ayrıntılar için Azure HPC önbellek ekibine başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,18 @@
 ---
 Description: Fiyat seçimine, ödeme etkilerine ve vergi sorumluluğuna ilişkin vergilere ilişkin önemli noktaları anlamak için aşağıdaki tablolarda bulunan ülkelere/dağıtım Bölgelerinizle ilgili konulara bakın.
 title: Vergi ayrıntıları | Azure Marketi
-ms.date: 12/10/2019
+ms.date: 2/13/2020
 ms.topic: article
 author: MaggiePucciEvans
 manager: evansma
 ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: a5d11216b43a1361e4f8d108ce6d289e67e31e0a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cd580c43aa25dd4cc33ceb7138785a94a021b771
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933556"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210457"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Ticari Market yayımcıları için vergi ayrıntıları
 
@@ -22,7 +22,7 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 > Ticari genişleme ayarlaması, sınırlı bir ülke/bölge kümesinde ödeme etkilerine sahip olabilir. Ticaret genişletme ayarı ve geçerli olduğu pazarlar hakkında daha fazla ayrıntı için [Yayımcı sözleşmesi Microsoft Azure Market](https://go.microsoft.com/fwlink/p/?LinkID=699560) ve etkilenen ülkelerin/bölgelerin listesini inceleyin.
 
 > [!IMPORTANT]
-> Satıcı ülkeleri/bölgeleri ve koşulları ( [aşağıda](#reseller-countriesregions)açıklandığı gibi) için vergi sorumluluğu, aşağıdaki tabloda yer almayan bilgileri [Microsoft Azure Market yayımcı sözleşmesinin](https://go.microsoft.com/fwlink/p/?LinkID=699560)sergiler.
+> Satıcı ülkeleri/bölgeleri ve koşulları ( [aşağıda](#reseller-countriesregions)açıklandığı gibi) için vergi sorumluluğu, aşağıdaki tabloda yer almayan [Microsoft Azure Market yayımcı sözleşmesinin](https://go.microsoft.com/fwlink/p/?LinkID=699560)bir bölümünde verilmiştir.
 > **Ödeyen** sütununun yalnızca yayımcılar için geçerli olduğunu unutmayın. Bu sütunda belirtilen vergi ücretleri herhangi bir zamanda değişikliğe tabidir ve Microsoft aşağıdaki tablolardaki hızların her zaman doğru olacağını garanti edemez.
 
 
@@ -52,18 +52,18 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Barbados                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Belarus                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                  | Fiyat eksi %20 vergi, eksi mağaza ücreti         | Microsoft          |
 | Belçika                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi 21% vergi, eksi mağaza ücreti | Microsoft          |
-| Belize                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Beliz                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Benin                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Bermuda                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Butan                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Bolivya                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Bonaire                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Bosna - Hersek           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Bosna Hersek           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Botsvana                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Bouvet Adası                    | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Brezilya                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.  | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Britanya Virjin Adaları           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Brunei                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| İngiliz Virgin Adaları           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Barış                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Bulgaristan                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.       | Fiyat eksi %20 vergi, eksi mağaza ücreti   | Microsoft          |
 | Burkina Faso                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Burundi                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
@@ -71,7 +71,7 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Kamboçya                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Kamerun                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Kanada                           | Vergiler, seçilen fiyata eklenir.                                                                                                      | Fiyat eksi mağaza ücreti                 | Microsoft          |
-| Cayman Adaları                   | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Kayman Adaları                   | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Orta Afrika Cumhuriyeti         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Çad                             | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Şili                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.  | Fiyat eksi mağaza ücreti                 | Yayımcı          |
@@ -79,7 +79,7 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Christmas Adası                 | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Cocos (Keeling) Adaları          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Kolombiya                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi %16 vergi, eksi mağaza ücreti  | Microsoft          |
-| Komorlar                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Komorolar                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Kongo Cumhuriyeti                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Kongo (KDC)                      | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Cook Adaları                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
@@ -119,7 +119,7 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Guatemala                        | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.  | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Guernsey                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Gine                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Gine-Bissau                    | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Gine Bissau                    | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Guyana                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Haiti                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Heard Adası ve McDonald Adaları      | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
@@ -149,11 +149,11 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Lesoto                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Liberya                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Libya                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Liechtenstein                    | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi 8% vergi, eksi mağaza ücreti  | Microsoft          |
+| Lihtenştayn                    | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi 8% vergi, eksi mağaza ücreti  | Microsoft          |
 | Litvanya                        | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi 21% vergi, eksi mağaza ücreti | Microsoft          |
 | Lüksemburg                       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat miktarı %17 vergi, eksi mağaza ücreti | Microsoft          |
 | Makao ÖİB                        | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Kuzey Makedonya                | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Makedonya (EYC)                | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Madagaskar                       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Malavi                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Malezya                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
@@ -202,21 +202,21 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Reunion                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Romanya                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi 19% vergi, eksi mağaza ücreti | Microsoft          |
 | Rusya                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi 18% vergi, eksi mağaza ücreti | Microsoft          |
-| Ruanda                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Rwanda                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Saint Barthélimy                 | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Saint Helena, Ascension ve Tristan da Cunha    | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Saint Kitts ve Nevis            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Saint Lucia                      | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Saint MARTIN (Fransız bölümü)       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Saint Vincent ve Grenadinler | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Samoa                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Devleti                            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | San Marino                       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Sao Tome ve Principe            | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Suudi Arabistan                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi %5 vergi, eksi mağaza ücreti                 | Microsoft          |
 | Senegal                          | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Sırbistan                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi %20 vergi, eksi mağaza ücreti | Microsoft          |
-| Seyşeller                       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
-| Sierra Leone                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Seyş                       | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
+| Sierra Taone                     | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Singapur                        | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Sint Maarten (Felemenkçe bölüm)        | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Slovakya                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. Vergiler, ödemesinden önceki fiyattan çıkarılır.              | Fiyat eksi %20 vergi, eksi mağaza ücreti | Microsoft          |

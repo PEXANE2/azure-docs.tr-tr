@@ -14,12 +14,12 @@ ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7e19e9067052c516427391adcc615767446c4049
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697158"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212237"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: çok kiracılı uygulama modelini kullanarak tüm Azure Active Directory kullanıcıları oturum açma
 
@@ -174,9 +174,9 @@ Bir yönetici bir Kiracıdaki tüm kullanıcılar için bir uygulamaya onay veri
 
 Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ile Azure AD arasında çoklu oturum açma (SSO) etkinleştirildikten sonra, uygulamanızı Office 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar. Exchange, SharePoint, OneDrive, OneNote gibi Azure AD ve Office 365 hizmetlerine yönelik API çağrıları yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
 
-## <a name="related-content"></a>İlgili içerikler
+## <a name="related-content"></a>İlgili içerik
 
-* [Çok kiracılı uygulama örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
+* [Çok kiracılı uygulama örneği](https://github.com/mspnp/multitenant-saas-guidance)
 * [Uygulamalar için marka yönergeleri][AAD-App-Branding]
 * [Uygulama nesneleri ve hizmet sorumlusu nesneleri][AAD-App-SP-Objects]
 * [Uygulamaları Azure Active Directory ile tümleştirme][AAD-Integrating-Apps]

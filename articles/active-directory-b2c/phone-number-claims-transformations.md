@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185469"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212197"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C 'de telefon numarası talep dönüşümlerini tanımlayın
 
@@ -32,7 +32,8 @@ Bu talep telefon numarasının biçimini doğrular. Geçerli bir biçimde ise, A
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | ınputclaim | string | Dönüştürme dize türü talebi. |
+| ınputclaim | phoneNumberString | string |  Telefon numarası için dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. Giriş talebi `country` sağlanmışsa telefon numarası yerel biçimindedir (ülke kodu olmadan). |
+| ınputclaim | ülke | string | Seçim Telefon numarasının ülke kodu için ISO3166 biçiminde dize talebi (iki harfli ISO-3166 ülke kodu). |
 | OutputClaim | OutputClaim | phoneNumber | Bu talep dönüştürmesinin sonucu. |
 
 **Convertstringtophonenumberclaim** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profil](self-asserted-technical-profile.md) veya [görüntüleme denetimi](display-controls.md)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **Usermessageifclaimstransformationınvalidphonenumber** kendi kendine onaylanan teknik profil meta verileri, kullanıcıya sunulan hata iletisini denetler.
@@ -44,7 +45,8 @@ Bu talep dönüşümünü, belirtilen dize talebinin geçerli bir telefon numara
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,11 +65,19 @@ Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi k
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Örnek
+### <a name="example-1"></a>Örnek 1
 
 - Giriş talepleri:
-  - **ınputclaim**: + 1 (123) 456-7890
+  - **Phonenumberstring**: 045 456-7890
+  - **ülke**: dk
 - Çıkış talepleri:
+  - **Outputclaim**: + 450546148120
+
+### <a name="example-2"></a>Örnek 2
+
+- Giriş talepleri:
+  - **Phonenumberstring**: + 1 (123) 456-7890
+- Çıkış talepleri: 
   - **Outputclaim**: + 11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>Getülke Alnumberandcountrycodefromphonenumberstring
@@ -76,7 +86,7 @@ Bu, ülke kodunu ve ulusal numarayı giriş talebine ayıklar ve isteğe bağlı
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | phoneNumber | string | Telefon numarasının dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. |
+| ınputclaim | phoneNumber | string | Telefon numarasının dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. |
 | InputParameter | throwExceptionOnFailure | boole | Seçim Telefon numarası geçerli olmadığında bir özel durumun oluşturulup oluşturulmayacağını gösteren bir parametre. Varsayılan değer false 'dur. |
 | InputParameter | countryCodeType | string | Seçim Çıkış talebinde ülke kodu türünü gösteren bir parametre. Kullanılabilir değerler, **Callingcode** (bir ülkenin uluslararası çağrı kodu, örneğin + 1) veya **ISO3166** (iki harfli ISO-3166 ülke kodu). |
 | OutputClaim | Ülke Alnumarası | string | Telefon numarası Ulusal numarası için dize talebi. |

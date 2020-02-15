@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457854"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251643"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code için Service Fabric
 
@@ -21,7 +21,7 @@ Bu makalede, uzantının gereksinimlerine ve kurulumuna ilişkin bir genel bakı
 > [!IMPORTANT]
 > Service Fabric Java uygulamaları Windows makinelerde geliştirilebilir, ancak yalnızca Azure Linux kümelerine dağıtılabilir. Java uygulamalarında hata ayıklama Windows üzerinde desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tüm ortamlarda aşağıdaki önkoşulların yüklü olması gerekir.
 
@@ -69,7 +69,7 @@ VS Code için Service Fabric Reliable Services uzantısı, geliştiricilerin Ser
 
 **Service Fabric: Create application** komutu geçerli çalışma alanınızda yeni bir Service Fabric uygulaması oluşturur. Geliştirme makinenizde hangi yeumman, yüklü olduğuna bağlı olarak, Java, C#, Container ve konuk projeler dahil olmak üzere çeşitli Service Fabric uygulamalar oluşturabilirsiniz. 
 
-1.  **Service Fabric: hizmet ekle** komutunu seçin
+1.  **Service Fabric: uygulama oluştur** komutunu seçin
 2.  Yeni Service Fabric uygulamanızın türünü seçin. 
 3.  Oluşturmak istediğiniz uygulamanın adını girin
 3.  Service Fabric uygulamanıza eklemek istediğiniz hizmetin türünü seçin. 

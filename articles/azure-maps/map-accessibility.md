@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933312"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209792"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 
@@ -61,7 +61,7 @@ Haritanın Yakınlaştırılıp Yakınlaştırılıp döndürülmemiş, döndür
 - Eşlemle odaklanan şekilde SHIFT tuşunu ve yukarı veya aşağı ok tuşlarını kullanın. 
 - Sıklık denetimini fare, dokunmatik veya klavye sekmesi/ENTER tuşları ile kullanma.
 
-**Harita stilini değiştirme** Tüm geliştiriciler, tüm olası harita stillerinin uygulamalarıyla kullanılabilmesini istemeyecektir. Geliştirici, eşleme stilini programlı olarak ayarlayıp değiştirebilir. Geliştirici harita stili seçici denetimini görüntülüyorsa, Kullanıcı Tab/ENTER tuşlarını kullanarak fare, dokunmatik veya klavyeyi kullanarak harita stilini değiştirebilir. Geliştirici, harita stili seçici denetiminde kullanılabilir hale getirmek istedikleri eşleme stillerini belirtebilir. 
+**Harita stilini değiştirme** Tüm geliştiriciler, tüm olası harita stillerinin uygulamalarıyla kullanılabilmesini ister. Geliştirici, harita stilini programlı bir şekilde ayarlayıp değiştirebilir. Geliştirici haritanın stil Seçicisi denetimini görüntülerse Kullanıcı, sekme veya ENTER tuşu ile fare, dokunmatik veya klavyeyi kullanarak harita stilini değiştirebilir. Geliştirici, harita stili seçici denetiminde kullanılabilir hale getirmek istedikleri eşleme stillerini belirtebilir. 
 
 ## <a name="keyboard-shortcuts"></a>Klavye kısayolları
 
@@ -94,7 +94,7 @@ Temel haritaya yerleştirilmiş ek bilgiler, ekran okuyucu kullanıcıları içi
 
 ## <a name="make-popups-keyboard-accessible"></a>Açılır klavyeden erişilebilir yap
 
-Bir işaretleyici veya sembol genellikle haritadaki bir konumu temsil etmek için kullanılır. Bu konum hakkında ek bilgiler genellikle Kullanıcı işaretleyiciyle etkileşime geçtiğinde bir açılan pencerede görüntülenir. Çoğu uygulamada açılan pencere, bir Kullanıcı bir işaretçiye tıkladığında veya dokunduğunda görünür, ancak bu olay kullanıcının fare veya dokunmatik ekran kullanmasını gerektirir. Klavye kullanırken açılır pencerelere erişilebilir hale getirmek iyi bir uygulamadır. Bu işlevsellik, her bir veri noktası için bir açılan pencere oluşturup haritaya eklenerek elde edilebilir. 
+Bir işaretleyici veya sembol genellikle haritadaki bir konumu temsil etmek için kullanılır. Bu konum hakkında ek bilgiler genellikle Kullanıcı işaretleyiciyle etkileşime geçtiğinde bir açılan pencerede görüntülenir. Çoğu uygulamada, bir Kullanıcı bir işaretçiye tıkladığında veya dokunduğunda açılır pencere görünür. Ancak, tıklatmak ve dokunmak, kullanıcının sırasıyla bir fare ve dokunmatik ekran kullanmasını gerektirir. Klavye kullanırken açılır pencerelere erişilebilir hale getirmek iyi bir uygulamadır. Bu işlevsellik, her bir veri noktası için bir açılan pencere oluşturup haritaya eklenerek elde edilebilir. 
 
 Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici noktaları yükler ve her bir ilgi noktası için haritaya bir açılan pencere ekler. Her bir açılan pencerede bir başvuru, her bir veri noktasının özelliklerinde saklanır. Ayrıca, bir işaretleyicinin ne zaman tıklandığı gibi bir işaretleyici için de alınabilir. Haritada odaklandığında Tab tuşuna basmak, kullanıcının haritadaki her açılan pencerede ilerlemenize izin verir.
 
@@ -116,12 +116,12 @@ Web eşleme uygulamanızı daha erişilebilir hale getirmek için bazı ek ipuç
     - Güncelleştirmeleri birkaç saniyede bir kez daha kısıtlama. 
     - İletileri bir mantıksal şekilde birleştirin. 
 - Yalnızca, bilgi ilettiği şekilde renk kullanmaktan kaçının. Rengi tamamlamak veya değiştirmek için metin, simgeler veya desenler kullanın. Bazı hususlar:
-    - Veri noktaları arasındaki göreli değeri göstermek için bir kabarcık katmanı kullanıyorsanız, bunlara ek olarak veya renklendirme için alternatif olarak her kabarcığun yarıçapını ölçeklendirin. 
+    - Veri noktaları arasındaki göreli değeri göstermek için bir kabarcık katmanı kullanıyorsanız, her kabarcığun yarıçapını ölçeklendirin, kabarcığun renklendirilmesini veya her ikisini de göz önünde bulundurun. 
     - Üçgenler, yıldızlar ve kareler gibi farklı ölçüm kategorileri için farklı simgelere sahip bir sembol katmanı kullanmayı düşünün. Sembol katmanı Ayrıca simgenin boyutunu ölçeklendirmeyi destekler. Metin etiketi de görüntülenebilir.
     - Çizgi verileri görüntülenmiyorsa, genişlik veya boyutu temsil etmek için Genişlik kullanılabilir. Çizgi dizisi düzeni, farklı satır kategorilerini temsil etmek için kullanılabilir. Bir sembol katmanı, çizgi üzerinde simgelerin yer aldığı bir satırla birlikte kullanılabilir. Bir ok simgesi kullanmak çizginin akışını veya yönünü göstermek için yararlıdır.
     - Çokgen verileri görüntülenmiyorsa, renk için bir alternatif olarak şerit gibi bir kalıp kullanılabilir. 
 - Heatmaps, döşeme katmanları ve görüntü katmanları gibi bazı görselleştirmeler, görme engelli kullanıcılar için erişilebilir değildir. Bazı hususlar:
-    - Ekran okuyucunun, haritaya eklendiğinde katmanın ne şekilde görüntülediğine ilişkin açıklamayı görüntülemesini sağlayabilirsiniz. Örneğin, bir hava durumu radar kutucuk katmanı görüntüleniyorsa ekran okuyucuyu "haritadaki Hava durumu radar verileri" gibi bir şekilde söyleyin.
+    - Ekran okuyucunun, haritaya eklendiğinde katmanın ne şekilde görüntülediğine ilişkin açıklamayı görüntülemesini sağlayabilirsiniz. Örneğin, bir hava durumu radar kutucuk katmanı görüntüleniyorsa ekran okuyucunuzun "Hava durumu radar verileri haritada yer alır" deyin.
 - Fare üzerine gelme gerektiren işlev miktarını sınırlayın. Bu işlevlere, uygulamanızla etkileşimde bulunmak için klavye veya dokunmatik cihaz kullanan kullanıcılar erişemez. Bu durumda, tıklatılabilir simgeler, bağlantılar ve düğmeler gibi etkileşimli içerik için bir vurgulama stili olması iyi bir uygulamadır.
 - Klavyeyi kullanarak uygulamanıza gezinmenize çalışın. Sekme sıralamanın mantıklı olduğundan emin olun.
 - Klavye kısayolları oluşturuyorsanız, iki anahtar veya daha kısa bir süre sonra sınırlamayı deneyin. 

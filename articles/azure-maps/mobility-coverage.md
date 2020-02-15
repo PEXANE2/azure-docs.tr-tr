@@ -1,23 +1,23 @@
 ---
 title: Mobility (Transit) kapsamı | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları 'nda Mobility kapsamı hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048911"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208259"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure haritalar Mobility kapsamı
 
-Azure haritalar, [Mobility hizmeti](https://aka.ms/AzureMapsMobilityService)sunar. Mobility hizmeti, ortak aktarım, Bisiklet payı ve scooter paylaşma özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Çoklu kalıcı seyahat planlama seçenekleriyle yönlendirme seçeneği sunar. Genel Aktarım Özellikleri, yakındaki istasyonlara yönelik arama, duraklarda arama, aktarım satırları alma, zaman çizelgesi bilgilerini alma, gerçek zamanlı genel transit gelişleri alma ve liste duraklarını ve yönlendirme kılavuzlarını içerir. Hizmet, otomobiller, Bisiklet ve scoas gibi paylaşılan araçlar için gerçek zamanlı ve statik kullanılabilirlik bilgileri döndürür. API, ayrıntılı ve çok kalıcı adım adım yolculuk ve hizmet uyarıları döndürür.
+Azure haritalar, [Mobility hizmeti](https://aka.ms/AzureMapsMobilityService)sunar. Mobility hizmeti, ortak aktarım, Bisiklet payı ve scooter paylaşma özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Genel Aktarım Özellikleri, yakındaki istasyonlara yönelik arama, duraklarda arama, aktarım satırları alma, zaman çizelgesi bilgilerini alma, gerçek zamanlı genel aktarım ve liste duraklarını alma ve yol kılavuzlarını listeleme sayılabilir. Hizmet, otomobiller, Bisiklet ve scoas gibi paylaşılan araçlar için gerçek zamanlı ve statik kullanılabilirlik bilgileri döndürür. Ayrıca, Mobility hizmeti çok kalıcı seyahat planlama seçenekleriyle yönlendirme özellikleri sağlar. Çoklu kalıcı seyahat planlaması, tek bir yolculuğa sahip Bicycling, Ride hakenli ve transit seçeneklerini içerir. Kullanıcılar cam erişimi ayrıntılı ve çok kalıcı adım adım yolculuk ve hizmet uyarıları.
 
 Azure haritalar, tüm şehirler ve ülkeler/bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Transit verilerini çağırma özelliği şehre göre değişir. Veriler, şehri sunan tüm genel aktarım seçeneklerini ve kuruluşlarını içermeyebilir.
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 |--------|---------|
 | Avustralya      | <p>ADELAIDE, Gamze Sprdikler, Bowen, Brisbane, Mindaberg QLD, Burnie, CAIRNS, Canbera, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, manyetik Adası, Maryborough-Hervey Bay, Melbourne, Yeni Güney Galler, Perth, RockHampton, Güney Doğu Queensland, Sidney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Çin | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jina, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yanday, Yiing, Zhuhai, Shanghai, PI, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hong Kong Çin ÖİB | Hong Kong çın ÖIB *|
+| Hong Kong SAR | Hong Kong çın ÖIB *|
 | Makao ÖİB | Makao ÖIB *|
 | Hindistan | Ahmedadbad, Bengaluru, Delhi, Mumbai, hayal uru, Pune|
 | Endonezya | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |

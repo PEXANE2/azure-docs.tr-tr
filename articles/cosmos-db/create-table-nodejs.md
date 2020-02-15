@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Node. js ile Tablo API'si-Azure Cosmos DB"
+title: "Hızlı Başlangıç: Tablo API'si ile Node.js - Azure Cosmos DB"
 description: Bu hızlı başlangıçta Azure portalı ve Node.js ile uygulama oluşturmak için Azure Cosmos DB Tablo API’sinin nasıl kullanılacağı gösterilmektedir
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: sngun
-ms.openlocfilehash: ec2c943bfaecc1170889b1a7247d7532700d47bc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f317b7b5f3ab60f466054f2043027b13e8396abc
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990123"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212818"
 ---
-# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Hızlı Başlangıç: Node. js ve Azure Cosmos DB Tablo API'si uygulama oluşturma
+# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Hızlı Başlangıç: Node.js ve Azure Cosmos DB ile Tablo API’si uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -24,19 +24,13 @@ ms.locfileid: "68990123"
 > * [Python](create-table-python.md)
 > 
 
-Bu hızlı başlangıçta GitHub’dan bir örneği kopyalayarak bir uygulama oluşturmak için Node.js ve Azure Cosmos DB [Tablo API’sini](table-introduction.md) nasıl kullanacağınız gösterilmektedir. Bu hızlı başlangıçta ayrıca Azure Cosmos DB hesabı oluşturma ve web tabanlı Azure portalında tablo ve varlıklar oluşturmak için Veri Gezgini’ni kullanma da gösterilmektedir.
-
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer,geniş sütun ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
+Bu hızlı başlangıçta, bir Azure Cosmos DB Tablo API'si hesabı oluşturursunuz ve tablo ve varlık oluşturmak için GitHub 'dan kopyalanmış olan Veri Gezgini ve Node. js uygulamasını kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-Buna ek olarak:
-
-* [Node.js](https://nodejs.org/en/) sürüm v0.10.29 veya üzeri
-* [Git](https://git-scm.com/)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsü](https://aka.ms/cosmosdb-emulator) ' nü BIR `https://localhost:8081` URI 'siyle ve anahtar `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`de kullanabilirsiniz.
+- [Node. js 0.10.29 +](https://nodejs.org/) .
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -56,7 +50,7 @@ Buna ek olarak:
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub'dan bir Tablo uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz. 
+Şimdi GitHub'dan bir Tablo uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu göreceksiniz. 
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -80,19 +74,19 @@ Buna ek olarak:
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin. Bu, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır. 
 
-1. [Azure portalda](https://portal.azure.com/) **Bağlantı Dizesi**’ne tıklayın. 
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
     ![Bağlantı Dizesi bölmesinde gerekli bağlantı dizesi bilgilerini görüntüleme ve kopyalama](./media/create-table-nodejs/connection-string.png)
 
-2. Sağ taraftaki kopyala düğmesini kullanarak PRIMARY CONNECTION STRING’i kopyalayın.
+2. Sağ taraftaki Kopyala düğmesini kullanarak BIRINCIL bağlantı DIZESINI kopyalayın.
 
-3. App.config dosyasını açıp değeri üçüncü satırda connectionString’e yapıştırın. 
+3. *App. config* dosyasını açın ve değeri üçüncü satır için ConnectionString öğesine yapıştırın. 
 
     > [!IMPORTANT]
     > Uç Noktanız documents.azure.com kullanıyorsa, bir önizleme hesabınız var demektir ve genel olarak kullanılabilir Tablo API’si SDK’ları ile çalışmak için [yeni bir Tablo API’si hesabı](#create-a-database-account) oluşturmanız gerekir.
     >
 
-3. App.config dosyasını kaydedin.
+3. *App. config* dosyasını kaydedin.
 
 Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
 
@@ -104,13 +98,13 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. [azure], [node-uuid], [nconf] ve [async] modüllerini yerel olarak kaydetmek ve package.json dosyasına bunlar için bir giriş kaydetmek için aşağıdaki komutu çalıştırın
+2. [Azure], [Node-UUID], [NConf] ve [Async] modüllerini yerel olarak yüklemek ve bunları *Package. JSON* dosyasına kaydetmek için aşağıdaki komutu çalıştırın.
 
    ```
    npm install azure-storage node-uuid async nconf --save
    ```
 
-2. Git terminal penceresinde, Node uygulamasını başlatmak için aşağıdaki komutları çalıştırın.
+2. Git Terminal penceresinde, Node. js uygulamasını çalıştırmak için aşağıdaki komutları çalıştırın.
 
     ```
     node ./tableSample.js 
@@ -118,7 +112,7 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 
     Konsol penceresi, Azure Cosmos DB içinde yeni tablo veritabanına eklenen tablo verilerini görüntüler.
 
-    Şimdi Veri Gezgini'ne dönüp bu yeni verileri görebilir, sorgulayabilir, değiştirebilir ve onlarla çalışabilirsiniz. 
+    Şimdi veri Gezgini'ne dönün ve bakın, sorgu, değiştirebilir ve bu yeni verilerle çalışabilirsiniz. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 
@@ -130,7 +124,7 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni kullanarak tablo oluşturmayı ve bir uygulamayı çalıştırmayı öğrendiniz.  Şimdi Tablo API'sini kullanarak verilerinizi sorgulayabilirsiniz.  
+Bu hızlı başlangıçta, bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini kullanarak tablo oluşturmayı ve tablo verileri eklemek için Node. js uygulamasını çalıştırmayı öğrendiniz.  Şimdi Tablo API'sini kullanarak verilerinizi sorgulayabilirsiniz.  
 
 > [!div class="nextstepaction"]
 > [Tablo verilerini Tablo API’sine aktarma](table-import.md)

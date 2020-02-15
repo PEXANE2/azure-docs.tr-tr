@@ -1,19 +1,19 @@
 ---
 title: Bölge sınırı için geojson veri biçimi | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure Maps ile bölge oluşturma API 'sinde kullanılabilen bölge verilerinin nasıl hazırlanacağı hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f853962bba7302affd78d5ef267460893ea80a33
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 7d1c9a1587771a020f5c9f89e2497a25eb1bba70
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911587"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210030"
 ---
 # <a name="geofencing-geojson-data"></a>Bölge sınırlaması coğrafi JSON verileri
 
@@ -30,12 +30,12 @@ Bölge veya bölge kümesi için veriler, [rfc7946](https://tools.ietf.org/html/
 * `expiredTime`, bölge sınırlaması verilerinin sona erme tarihidir ve zamanıdır. İstekteki `userTime` değeri bu değerden daha sonra ise, karşılık gelen bölge verileri, süre dolmayan veriler olarak değerlendirilir ve sorgulanmamıştır. Bu durumda, bu bölge verilerinin Geometryıd 'Si, bölge kapsamındaki `expiredGeofenceGeometryId` dizisine dahil edilir.
 * `validityPeriod`, geofence 'nin geçerlilik süresi döneminin bir listesidir. İstekteki `userTime` değeri geçerlilik süresinin dışında kalırsa, ilgili bölge verileri geçersiz olarak kabul edilir ve sorgulanmaz. Bu bölge verilerinin Geometryıd 'si, bölge kimliği içindeki `invalidPeriodGeofenceGeometryId` dizisine dahildir. Aşağıdaki tabloda validityPeriod öğesinin özellikleri gösterilmektedir.
 
-| Ad | Tür | Gereklidir  | Açıklama |
+| Ad | Tür | Gerekli  | Açıklama |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Datetime  | doğru | Geçerlilik zaman döneminin başlangıç tarihi saati. |
-| endTime   | Datetime  | doğru |  Geçerlilik zaman döneminin bitiş tarihi. |
-| Numaralarına | string | yanlış |   Dönemin yinelenme türü. Değer `Daily`, `Weekly`, `Monthly`veya `Yearly`olabilir. Varsayılan değer `Daily`.|
-| yalnızca BusinessDay | Boole | yanlış |  Verilerin yalnızca iş günleri için geçerli olup olmadığını belirtin. Varsayılan değer `false`.|
+| startTime | Tarih saat  | true | Geçerlilik zaman döneminin başlangıç tarihi saati. |
+| endTime   | Tarih saat  | true |  Geçerlilik zaman döneminin bitiş tarihi. |
+| Numaralarına | string | false |   Dönemin yinelenme türü. Değer `Daily`, `Weekly`, `Monthly`veya `Yearly`olabilir. Varsayılan değer `Daily`.|
+| yalnızca BusinessDay | Boole | false |  Verilerin yalnızca iş günleri için geçerli olup olmadığını belirtin. Varsayılan değer `false`.|
 
 
 * Tüm koordinat değerleri, `WGS84`tanımlı [Boylam, Enlem] olarak gösterilir.

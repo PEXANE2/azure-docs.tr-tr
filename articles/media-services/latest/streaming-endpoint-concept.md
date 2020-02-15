@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198726"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206115"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
@@ -59,16 +59,16 @@ SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pri
 
 ## <a name="comparing-streaming-types"></a>Akış türlerini karşılaştırma
 
-Özellik|Standard|Premium
+Özellik|Standart|Premium
 ---|---|---
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Evet|Evet
-Dinamik paketleme|Evet|Evet
-Ölçeklendir|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek SUs
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
-Aşamalı indirme|Evet|Evet
+Dinamik şifreleme|Yes|Yes
+Dinamik paketleme|Yes|Yes
+Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek SUs
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
+Aşamalı indirme|Yes|Yes
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım.
 
 <sup>1</sup> yalnızca CDN uç noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
@@ -147,17 +147,20 @@ Ayrıca, uyarlamalı akışın nasıl çalıştığını göz önünde bulundurm
 
 ### <a name="enable-azure-cdn-integration"></a>Azure CDN tümleştirmeyi etkinleştir
 
+> [!IMPORTANT]
+> Deneme veya öğrenci Azure hesapları için CDN 'yi etkinleştiremezsiniz.
+>
+> CDN tümleştirmesi, Federal kamu ve Çin bölgeleri dışındaki tüm Azure veri merkezlerinde etkinleştirilir.
+
 CDN etkinken bir akış uç noktası sağlandıktan sonra, akış uç noktasını CDN uç noktası ile eşlemek için DNS güncelleştirme işlemi yapılmadan önce Media Services tanımlı bir bekleme süresi vardır.
 
 Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış uç noktanızın **durdurulmuş** durumda olması gerekir. Azure CDN tümleştirmenin etkinleştirilmesi ve değişikliklerin tüm CDN pop 'larda etkin olması iki saate kadar sürebilir. Ancak, akış uç noktasından kesintiler olmadan akış uç noktanızı ve akışınızı başlatabilir ve tümleştirme tamamlandıktan sonra akış CDN 'den dağıtılır. Sağlama süresi boyunca, akış uç noktanız **Başlangıç** durumunda olur ve performans düşüklüğü gözlemleyebilirsiniz.
 
 Standart akış uç noktası oluşturulduğunda, standart Verizon ile varsayılan olarak yapılandırılır. REST API 'Lerini kullanarak Premium Verizon veya standart Akamai sağlayıcılarını yapılandırabilirsiniz.
 
-CDN tümleştirmesi, Çin ve Federal Kamu bölgeleri dışındaki tüm Azure veri merkezlerinde etkin olur.
-
 Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları için **Verizon 'tan Azure CDN** uygulanır. Premium akış uç noktaları, tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları**kullanılarak yapılandırılabilir. 
 
-> [!IMPORTANT]
+> [!NOTE]
 > Azure CDN hakkındaki ayrıntılar için bkz. [CDN 'ye genel bakış](../../cdn/cdn-overview.md).
 
 ### <a name="determine-if-dns-change-was-made"></a>DNS değişikliğinin yapıldığını belirleme

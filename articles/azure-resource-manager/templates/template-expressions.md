@@ -2,13 +2,13 @@
 title: Şablon sözdizimi ve ifadeleri
 description: Azure Resource Manager şablonları için bildirim temelli JSON sözdizimini açıklar.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/13/2020
+ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120608"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207409"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler
 
@@ -16,11 +16,9 @@ ms.locfileid: "77120608"
 
 Şablon ifadesi 24.576 karakterden uzun olamaz.
 
-İfadeler JSON (' null ') özelliğini destekler ve Özellikler değişmez değer olan null değerini destekler. Her iki durumda da Kaynak Yöneticisi şablonlar, özelliği mevcut olmadığı gibi kabul eder.
-
 ## <a name="use-functions"></a>İşlev kullanma
 
-Aşağıdaki örnek, bir parametresinin varsayılan değerindeki bir ifadeyi gösterir:
+Azure Resource Manager, bir şablonda kullanabileceğiniz [işlevleri](template-functions.md) sağlar. Aşağıdaki örnek, bir parametresinin varsayılan değerinde bir işlevi kullanan bir ifade gösterir:
 
 ```json
 "parameters": {
@@ -40,6 +38,12 @@ Bir parametreye parametre olarak bir dize değeri geçirmek için tek tırnak ku
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+Çoğu işlev aynı şekilde bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya dağıtılıp aynı şekilde çalışır. Aşağıdaki işlevlerde kapsama dayalı kısıtlamalar vardır:
+
+* [resourceGroup](template-functions-resource.md#resourcegroup) -yalnızca bir kaynak grubuna yapılan dağıtımlarda kullanılabilir.
+* [RESOURCEID](template-functions-resource.md#resourceid) -herhangi bir kapsamda kullanılabilir, ancak geçerli parametreler kapsama göre değişir.
+* [abonelik](template-functions-resource.md#subscription) -yalnızca bir kaynak grubuna veya aboneliğe yapılan dağıtımlarda kullanılabilir.
 
 ## <a name="escape-characters"></a>Kaçış karakterleri
 
@@ -65,6 +69,15 @@ Ancak, değişmez dize bir köşeli ayraç ile bitmezse ilk köşeli ayracı atm
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>Null değerler
+
+Bir özelliği null olarak ayarlamak için **null** veya **[JSON (' null ')]** kullanabilirsiniz. [JSON işlevi](template-functions-array.md#json) , parametre olarak `null` sağladığınızda boş bir nesne döndürür. Her iki durumda da Kaynak Yöneticisi şablonlar, özelliği mevcut olmadığı gibi kabul eder.
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

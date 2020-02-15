@@ -2,13 +2,13 @@
 title: Tam modda silme
 description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma modu silme işlemini nasıl işleyeceğini gösterir.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715585"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207817"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -121,6 +121,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Migrate](#microsoftmigrate)
 > - [Microsoft. MixedReality](#microsoftmixedreality)
 > - [Microsoft. NetApp](#microsoftnetapp)
+> - [Microsoft. Not defterleri](#microsoftnotebooks)
 > - [Microsoft. Network](#microsoftnetwork)
 > - [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs)
 > - [Microsoft. ObjectStore](#microsoftobjectstore)
@@ -153,6 +154,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Sıterecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft. Solutions](#microsoftsolutions)
+> - [Microsoft. SpoolService](#microsoftspoolservice)
 > - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft. Storage](#microsoftstorage)
@@ -372,6 +374,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | billingAccounts/billingProfiles/yönergeler | Hayır |
 > | billingAccounts/billingProfiles/faturalar | Hayır |
 > | billingAccounts/billingProfiles/faturalar/fiyat listesi | Hayır |
+> | billingAccounts/billingProfiles/faturalar/işlemler | Hayır |
 > | billingAccounts/billingProfiles/ınvoicesections | Hayır |
 > | billingAccounts/billingProfiles/ınvoicesections/billingPermissions | Hayır |
 > | billingAccounts/billingProfiles/ınvoicesections/Billingroleatamaları | Hayır |
@@ -435,7 +438,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | bölümlerinin | Hayır |
 > | kayıt sayısı | Hayır |
 > | faturalardan | Hayır |
-> | girişinde | Hayır |
+> | Girişinde | Hayır |
 > | aktarımlar/acceptTransfer | Hayır |
 > | aktarımlar/declineTransfer | Hayır |
 > | aktarımlar/operationStatus | Hayır |
@@ -481,7 +484,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | botServices/kanallar | Hayır |
 > | botServices/Connections | Hayır |
 > | diller | Hayır |
-> | templates | Hayır |
+> | şablonları | Hayır |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
@@ -489,7 +492,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | Redis | Yes |
-> | RedisConfigDefinition | Hayır |
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
@@ -712,6 +714,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | kayıt defterleri/getBuildSourceUploadUrl 'Si | Hayır |
 > | kayıt defterleri/GetCredentials | Hayır |
 > | kayıt defterleri/ımportımage | Hayır |
+> | kayıt defterleri/Privateendpointconnectionproxy 'Leri | Hayır |
+> | kayıt defterleri/Privateendpointconnectionproxy/doğrulama | Hayır |
+> | kayıt defterleri/privateLinkResources | Hayır |
 > | kayıt defterleri/queueBuild | Hayır |
 > | kayıt defterleri/regenerateCredential | Hayır |
 > | kayıt defterleri/regenerateCredentials | Hayır |
@@ -750,7 +755,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | Uyarılar | Hayır |
-> | billingAccounts | Hayır |
+> | BillingAccounts | Hayır |
 > | Bütçeler | Hayır |
 > | Cloudbağlayıcıları | Hayır |
 > | Bağlayıcılar | Yes |
@@ -772,7 +777,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Sorgu | Hayır |
 > | kaydolunamadı | Hayır |
 > | Reportconfigs | Hayır |
-> | Reports | Hayır |
+> | Raporlar | Hayır |
 > | Ayarlar | Hayır |
 > | showbackRules | Hayır |
 > | Görünümler | Hayır |
@@ -975,7 +980,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Iothubs | Yes |
 > | IotHubs/eventGridFilters | Hayır |
 > | IotHubs/securitySettings | Hayır |
-> | ProvisioningServices | Yes |
+> | provisioningServices | Yes |
 > | vardır | Hayır |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
@@ -1198,7 +1203,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Graf | Yes |
+> | Graph | Yes |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -1397,6 +1402,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | netAppAccounts/Capacityhavuzları/birimleri | Yes |
 > | netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri | Yes |
 > | netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler | Yes |
+
+## <a name="microsoftnotebooks"></a>Microsoft. Not defterleri
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Not defteri proxy 'leri | Hayır |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1512,7 +1524,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | leriniz | Yes |
-> | cihazlar | Hayır |
 > | Bağlantı hedefleri | Hayır |
 > | Storageınsii configs | Hayır |
 > | çalışma alanları | Yes |
@@ -1523,6 +1534,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | çalışma alanları/privateEndpointConnections | Hayır |
 > | çalışma alanları/privateLinkResources | Hayır |
 > | çalışma alanları/sorgu | Hayır |
+> | çalışma alanları/Scopedprivatelinkproxy 'Leri | Hayır |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1745,8 +1757,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | yer işaretleri | Hayır |
 > | çalışmaların | Hayır |
 > | Veri bağlayıcıları | Hayır |
+> | dataConnectorsCheckRequirements | Hayır |
 > | Varlık | Hayır |
 > | entityQueries | Hayır |
+> | Olaylara | Hayır |
 > | officeConsents | Hayır |
 > | ayarlar | Hayır |
 
@@ -1780,6 +1794,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | containerGroupSets | Yes |
 > | edgeclusters | Yes |
 > | edgeclusters/uygulamalar | Hayır |
+> | managedkümeler | Yes |
+> | managedkümeler/nodetypes | Hayır |
 > | ağlar | Yes |
 > | secretmağazaları | Yes |
 > | secretmağazaları/sertifikaları | Hayır |
@@ -1837,6 +1853,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | applicationDefinitions | Yes |
 > | uygulamalar | Yes |
 > | Jistekleri | Yes |
+
+## <a name="microsoftspoolservice"></a>Microsoft. SpoolService
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | registeredSubscriptions | Hayır |
+> | spoir | Yes |
 
 ## <a name="microsoftsql"></a>Microsoft. SQL
 
@@ -1993,6 +2017,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | cihazlar | Yes |
 > | larını | Hayır |
 > | satıcılar/SKU 'lar | Hayır |
+> | satıcılar/vnfs | Hayır |
 > | vnfs | Yes |
 
 ## <a name="microsoftweb"></a>Microsoft. Web

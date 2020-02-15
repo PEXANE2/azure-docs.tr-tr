@@ -1,181 +1,131 @@
 ---
-title: Kaynak kullanımını ve sorgu ölçümlerini izleme
+title: İşlemleri ve etkinlikleri izleme
 titleSuffix: Azure Cognitive Search
 description: Günlüğe kaydetmeyi etkinleştirin, sorgu etkinliği ölçümlerini, kaynak kullanımını ve Azure Bilişsel Arama hizmetinden diğer sistem verilerini alın.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/15/2020
+ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059666"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210559"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Azure Bilişsel Arama kaynak tüketimini ve sorgu etkinliğini izleme
+# <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
-Azure Bilişsel Arama hizmetinizin Genel Bakış sayfasında, kaynak kullanımı ve sorgu ölçümleri hakkındaki sistem verilerini ve daha fazla dizin, Dizin Oluşturucu ve veri kaynağı oluşturmak için ne kadar kota kullanılabildiğini görüntüleyebilirsiniz. Ayrıca, Log Analytics 'i veya kalıcı veri toplama için kullanılan başka bir kaynağı yapılandırmak üzere portalını kullanabilirsiniz. 
+Bu makalede, hizmet (kaynak) düzeyinde izleme iş yükü düzeyinde (sorgular ve dizin oluşturma) açıklanır ve Kullanıcı erişimini izlemek için bir çerçeve önerilir.
 
-Günlükleri ayarlama, kendi kendine tanılama ve işletimsel geçmişi koruma için kullanışlıdır. Dahili olarak, bir destek bileti verirseniz araştırma ve Analize yetecek kadar, günlük arka uçta kısa bir süre boyunca Günlükler bulunur. Denetim ve günlük bilgilerine erişim istiyorsanız, bu makalede açıklanan çözümlerden birini ayarlamanız gerekir.
+SPI genelinde, Azure Izleyici gibi yerleşik altyapının yanı sıra istatistik, sayı ve durum döndüren hizmet API 'Lerinin birleşimini kullanacaksınız. Özellik aralığını anlamak, ortaya çıkan sorunlara yönelik proaktif yanıtlar için etkin bir iletişim sistemi yapılandırmanıza veya oluşturmanıza yardımcı olur.
 
-Bu makalede, izleme seçenekleriniz, günlüğe kaydetme ve günlük depolamayı etkinleştirme ve günlük içeriğinin nasıl görüntüleneceği hakkında bilgi edinin.
+## <a name="use-azure-monitor"></a>Azure İzleyici’yi kullanma
 
-## <a name="metrics-at-a-glance"></a>Bir bakışta ölçümler
+Azure Bilişsel Arama dahil olmak üzere birçok hizmet, uyarılar, ölçümler ve günlük Tanılama verileri için [Azure izleyiciden](https://docs.microsoft.com/azure/azure-monitor/) faydalanır. Azure Bilişsel Arama için yerleşik izleme altyapısı öncelikle kaynak düzeyinde izleme (hizmet durumu) ve [sorgu izleme](search-monitor-queries.md)için kullanılır.
 
-Genel Bakış sayfasında yerleşik olarak bulunan ve kaynak tüketimine ve sorgu yürütme ölçümlerinde bulunan **kullanım** ve **izleme** bölümleri. Bu bilgiler, hizmeti kullanmaya başladığınızda yapılandırma gerekmeden kullanılabilir hale gelir. Bu sayfa birkaç dakikada bir yenilenir. [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
+Aşağıdaki ekran görüntüsü portalda Azure Izleyici özelliklerini bulmanıza yardımcı olur.
 
-**Kullanım** sekmesi, geçerli [limitlere](search-limits-quotas-capacity.md)göre kaynak kullanılabilirliği gösterir. Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
++ Ana Genel Bakış sayfasında bulunan **izleme** sekmesi, önemli ölçümleri bir bakışta gösterir.
++ **Etkinlik günlüğü**, tam olarak aşağıda genel bakış, kaynak düzeyindeki eylemlerle ilgili raporlar: hizmet durumu ve API anahtar isteği bildirimleri.
++ **İzleme**, listede daha fazla azaltma, yapılandırılabilir uyarılar, ölçümler ve tanılama günlükleri sağlar. İhtiyacınız olduğunda bunları oluşturun. Veriler toplandıktan ve depolanıyorsa, Öngörüler hakkındaki bilgileri sorgulayabilir veya görselleştirebilirsiniz.
 
-![Etkin sınırlara göre kullanım durumu](./media/search-monitor-usage/usage-tab.png
- "Etkin sınırlara göre kullanım durumu")
+![Arama hizmetinde Azure Izleyici tümleştirmesi](./media/search-monitor-usage/azure-monitor-search.png
+ "Arama hizmetinde Azure Izleyici tümleştirmesi")
 
-## <a name="queries-per-second-qps-and-other-metrics"></a>Saniyedeki sorgu sayısı (QPS) ve diğer ölçümler
+### <a name="precision-of-reported-numbers"></a>Bildirilen sayıların duyarlığı
 
-**İzleme** sekmesi, dakikada toplanan arama *sorguları* (QPS) gibi ölçümler için hareketli ortalamaları gösterir. 
-*Arama gecikmesi* , arama hizmetinin dakika başına toplanan arama sorgularını işlemesi için ihtiyaç duyduğu süredir. *Kısıtlanmış arama sorguları yüzdesi* (gösterilmez), her dakika toplanmış olan arama sorgularının yüzdesidir.
+Portal sayfaları birkaç dakikada bir yenilenir. Bu nedenle, portalda bildirilen sayılar yaklaşık olarak, sisteminizin istekleri ne kadar iyi hizmet verebildiği konusunda genel bir fikir sunacak şekilde hazırlanmıştır. Saniye başına sorgu (QPS) gibi gerçek ölçümler, sayfada gösterilen sayıdan daha yüksek veya daha düşük olabilir.
 
-Bu sayılar yaklaşık değerlerdir ve sisteminizin istekleri ne kadar iyi bir şekilde sunmakta olduğu konusunda genel bir fikir sunacak şekilde tasarlanmıştır. Gerçek QPS, portalda raporlanan sayıdan daha yüksek veya daha düşük olabilir.
+## <a name="activity-logs-and-service-health"></a>Etkinlik günlükleri ve hizmet durumu
 
-![Saniye başına sorgu etkinliği](./media/search-monitor-usage/monitoring-tab.png "Saniye başına sorgu etkinliği")
+[**Etkinlik günlüğü**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) , Azure Resource Manager bilgileri ve hizmet durumunu değişikliklerle ilgili raporları toplar. Hizmet durumu ile ilgili kritik, hata ve uyarı koşulları için etkinlik günlüğü 'nü izleyebilirsiniz.
 
-## <a name="activity-logs"></a>Etkinlik günlükleri
-
-**Etkinlik günlüğü** Azure Resource Manager bilgi toplar. Etkinlik günlüğünde bulunan bilgilere örnek olarak bir hizmet oluşturma veya silme, kaynak grubunu güncelleştirme, ad kullanılabilirliğini denetleme veya bir isteği işlemek için hizmet erişim anahtarı alma sayılabilir. 
+Sorgular, dizin oluşturma veya nesne oluşturma gibi hizmet içi görevlerde, *yönetici anahtarı al* ve her Istek için *sorgu anahtarları al* gibi genel bilgilendirme bildirimleri görürsünüz, ancak söz konusu eylemin kendisi değildir. Bu gren hakkında bilgi edinmek için tanılama günlüğünü yapılandırmanız gerekir.
 
 **Etkinlik günlüğüne** sol gezinti bölmesinden veya en üstteki pencere Komut çubuğundaki bildirimlerden veya **sorunları Tanıla ve çöz** sayfasından erişebilirsiniz.
 
-Bir dizin oluşturma veya bir veri kaynağını silme gibi hizmet içi görevlerde, her istek için "yönetici anahtarı al" gibi genel bildirimler görürsünüz, ancak söz konusu eylemin kendisi uygulanmaz. Bu bilgi düzeyi için bir eklenti izleme çözümünü etkinleştirmeniz gerekir.
+## <a name="monitor-storage"></a>Depolama alanını izleme
 
-## <a name="add-on-monitoring-solutions"></a>Eklenti izleme çözümleri
+Kaynak kullanımında genel bakış sayfası raporuna yerleştirilmiş sekmeli sayfalar. Bu bilgiler, hizmeti kullanmaya başladığınızda, hiçbir yapılandırma gerekmeden ve sayfa birkaç dakikada bir yenilendiğinde kullanılabilir hale gelir. 
 
-Azure Bilişsel Arama, yönettiği nesnelerden daha fazla veri depolamaz, bu da günlük verilerinin dışarıdan depolanması gerektiği anlamına gelir. Günlük verilerini kalıcı hale getirmek istiyorsanız aşağıdaki kaynakları yapılandırabilirsiniz. 
+[Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin çoğaltma ve bölüm sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı bir şekilde tüketildiğini ve geçerli yapılandırmanın var olan yükü ne kadar iyi işlediğini göstererek bu kararlara yardımcı olabilir.
 
-Aşağıdaki tabloda, günlükleri depolama ve Application Insights aracılığıyla hizmet işlemlerinin ve sorgu iş yüklerinin derinlemesine izlenmesini ekleme seçenekleri karşılaştırılmaktadır.
+Depolama ile ilgili uyarılar Şu anda kullanılamıyor; depolama alanı tüketimi toplu **AzureMetrics**veya oturum açmamış. Kaynakla ilgili bildirimleri almak için özel bir çözüm oluşturmanız gerekir.
 
-| Kaynak | Kullanım alanı: |
-|----------|----------|
-| [Azure İzleyici günlükleri](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri aşağıdaki şemalara göre yapılır. Olaylar Log Analytics çalışma alanına kaydedilir. Günlükte ayrıntılı bilgi döndürmek için sorguları bir çalışma alanına karşı çalıştırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici günlükleri ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
-| [Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri aşağıdaki şemalara göre yapılır. Olaylar bir blob kapsayıcısına kaydedilir ve JSON dosyalarında depolanır. Dosya içeriğini görüntülemek için bir JSON düzenleyicisi kullanın.|
-| [Olay Hub’ı](https://docs.microsoft.com/azure/event-hubs/) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri, bu makalede belgelenen şemaları temel alır. Çok büyük Günlükler için bunu alternatif bir veri toplama hizmeti olarak seçin. |
+Portalda **kullanım** sekmesi, hizmet katmanının uyguladığı geçerli [limitlere](search-limits-quotas-capacity.md) göre kaynak kullanılabilirliği gösterir. 
 
-Azure aboneliklerinizin kullanım ömrü boyunca ücretsiz olarak deneyebilmeniz için Azure Izleyici günlükleri ve BLOB depolama alanı ücretsiz bir hizmet olarak kullanılabilir. Application Insights, uygulama veri boyutu belirli limitlerin altında olduğu sürece, kaydolmak ve kullanmak ücretsizdir (Ayrıntılar için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/monitor/) bakın).
+Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
 
-Sonraki bölümde, Azure Bilişsel Arama işlemleri tarafından oluşturulan günlük verilerini toplamak ve erişmek için Azure Blob Storage 'ı etkinleştirme ve kullanma adımlarında adım adım gösterilmektedir.
+![Katman sınırlarına göre kullanım durumu](./media/search-monitor-usage/usage-tab.png
+ "Katman sınırlarına göre kullanım durumu")
 
-## <a name="enable-logging"></a>Günlüğü etkinleştirme
+## <a name="monitor-workloads"></a>İş yüklerini izleme
 
-Dizin oluşturma ve sorgu iş yükleri için günlüğe kaydetme varsayılan olarak kapalıdır ve hem günlük altyapısı hem de uzun vadeli dış depolama için eklenti çözümlerine bağımlıdır. Yalnızca Azure Bilişsel Arama kalıcı olan veriler oluşturduğu ve yönettiği nesnelerdir, bu nedenle günlüklerin başka bir yerde depolanması gerekir.
+Günlüğe kaydedilen olaylar, dizin oluşturma ve sorgularla ilgili olanları içerir. Log Analytics **Azure tanılama** tablosu sorgular ve dizin oluşturma ile ilgili işletimsel verileri toplar.
 
-Bu bölümde, günlüğe kaydedilen olayları ve ölçüm verilerini depolamak için blob depolamayı nasıl kullanacağınızı öğreneceksiniz.
+Günlüğe kaydedilen verilerin çoğu salt okuma işlemlerine yöneliktir. Günlükte yakalanmayan diğer oluşturma-güncelleştirme silme işlemleri için, arama hizmetini sistem bilgileri için sorgulayabilirsiniz.
 
-1. Henüz yoksa [bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Bu alıştırmada kullanılan tüm kaynakları silmek istiyorsanız, daha sonra temizlemeyi basitleştirmek için Azure Bilişsel Arama ile aynı kaynak grubuna yerleştirebilirsiniz.
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Açıklama |
+|---------------|-------------|
+| ServiceStats | Bu işlem, bir portala genel bakış sayfası yüklendiğinde veya yenilendiğinde, doğrudan veya örtük olarak çağrılan [hizmet Istatistiklerini almak](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)için bir yordam çağrıdır. |
+| Query. Search |  Bir dizinde yapılan sorgu istekleri bkz. günlüğe kaydedilen sorgular hakkında bilgi için [izleyici sorguları](search-monitor-queries.md) .|
+| Dizin oluşturuluyor. Dizin  | Bu işlem, [belge eklemek, güncelleştirmek veya silmek](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)için yapılan bir çağrıdır. |
+| dizinlerde. Örneğini | Bu, verileri Içeri aktarma Sihirbazı tarafından oluşturulan bir dizindir. |
+| Dizin oluşturucular. oluştur | Veri alma Sihirbazı aracılığıyla açıkça veya örtük olarak bir Dizin Oluşturucu oluşturun. |
+| Indexers. Get | Dizin Oluşturucu her çalıştırıldığında bir dizin oluşturucunun adını döndürür. |
+| Dizin oluşturucular. durum | Dizin Oluşturucu her çalıştırıldığında bir dizin oluşturucunun durumunu döndürür. |
+| DataSources. Get | Bir Dizin Oluşturucu her çalıştırıldığında veri kaynağının adını döndürür.|
+| Indexes. Get | Bir Dizin Oluşturucu çalıştırıldığında bir dizinin adını döndürür. |
 
-   Depolama hesabınızın Azure Bilişsel Arama ile aynı bölgede bulunması gerekir.
+### <a name="kusto-queries-about-workloads"></a>İş yükleri hakkında kusto sorguları
 
-2. Arama hizmeti genel bakış sayfasını açın. Sol gezinti bölmesinde **izleme** ' ye kaydırın ve **Tanılama ayarları**' na tıklayın.
+Günlüğe kaydetmeyi etkinleştirdiyseniz, hizmetinizdeki ve ne zaman çalıştırılan işlemlerin bir listesi için **AzureDiagnostics** sorgulama yapabilirsiniz. Ayrıca, performans değişikliklerini araştırmak için etkinlik ile bağıntı de oluşturabilirsiniz.
 
-   ![Tanılama ayarları](./media/search-monitor-usage/diagnostic-settings.png "Tanılama ayarları")
+#### <a name="example-list-operations"></a>Örnek: listeleme işlemleri 
 
-3. **Tanılama ayarı Ekle** 'yi seçin
-
-4. Dışa aktarmak istediğiniz verileri seçin: günlükler, Ölçümler ve her ikisi de. Bir depolama hesabına kopyalayabilir, bunu bir olay hub 'ına gönderebilir veya Azure Izleyici günlüklerine aktarabilirsiniz.
-
-   Blob depolamaya Arşiv için yalnızca depolama hesabının mevcut olması gerekir. Kapsayıcılar ve Bloblar, günlük verileri aktarıldığında gerekli olduğu gibi oluşturulur.
-
-   ![BLOB depolama arşivini yapılandırma](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB depolama arşivini yapılandırma")
-
-5. Profili kaydetme
-
-6. Nesneleri oluşturarak veya silerek (günlük olayları oluşturur) ve sorgular göndererek (ölçüm oluşturur) test günlüğü. 
-
-Profil kaydedildikten sonra günlüğe kaydetme etkinleştirilir. Kapsayıcılar yalnızca günlüğe kaydedilecek veya ölçülecek bir etkinlik olduğunda oluşturulur. Veriler bir depolama hesabına kopyalandığında, veriler JSON olarak biçimlendirilir ve iki kapsayıcıya yerleştirilir:
-
-* ınsights günlükleri operationlogs: arama trafiği günlükleri
-* ınsights ölçümleri pt1m: ölçümler için
-
-**Kapsayıcının blob depolamada görünmesi için bir saat sürer. Her kapsayıcı için bir blob, saat başına bir blob vardır.**
-
-Dosyaları görüntülemek için [Visual Studio Code](#download-and-open-in-visual-studio-code) veya başka bir JSON düzenleyicisi kullanabilirsiniz. 
-
-### <a name="example-path"></a>Örnek yol
+İşlemlerin bir listesini ve her birinin sayımını döndürün.
 
 ```
-resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+AzureDiagnostics
+| summarize count() by OperationName
 ```
 
-## <a name="log-schema"></a>Günlüğü şeması
-Arama hizmeti trafik günlüklerinizi içeren Bloblar, bu bölümde açıklandığı şekilde yapılandırılır. Her Blobun bir dizi günlük nesnesi içeren **kayıtlar** adlı bir kök nesnesi vardır. Her blob aynı saat boyunca gerçekleşen tüm işlemler için kayıtlar içerir.
+#### <a name="example-correlate-operations"></a>Örnek: işlemler bağıntılı
 
-| Adı | Tür | Örnek | Notlar |
-| --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559 Z" |İşlemin zaman damgası |
-| resourceId |string |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VARSAYILAN/RESOURCEGROUPS/SAĞLAYICILARI /<br/> MICROSOFT. ARAMA/SEARCHSERVICES/SEARCHSERVICE" |ResourceId |
-| operationName |string |"Query.Search" |İşlem adı |
-| operationVersion |string |"2019-05-06" |Kullanılan api-version |
-| category |string |"OperationLogs" |sabiti |
-| resultType |string |"Başarılı" |Olası değerler: başarı veya başarısızlık |
-| resultSignature |int |200 |HTTP Sonuç kodu |
-| süre (MS) |int |50 |Milisaniye cinsinden işlem süresi |
-| özellikler |object |aşağıdaki tabloya bakın |İşlem özgü verileri içeren nesne. |
+Sorgu isteğini dizin oluşturma işlemleriyle ilişkilendirin ve işlemlerin çakıştığı görmek için veri noktalarını bir zaman grafiğinde işleme koyun.
 
-**Özellikler şeması**
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
 
-| Adı | Tür | Örnek | Notlar |
-| --- | --- | --- | --- |
-| Açıklama |string |"/İndexes('content')/docs Al" |İşlemin bitiş noktası |
-| Sorgu |string |"? Search = AzureSearch & $count = true & api-Version = 2019-05-06" |Sorgu parametreleri |
-| Belgeler |int |42 |İşlenen belge sayısı |
-| indexName |string |"testindex" |İşlemle ilişkili dizinin adı |
+### <a name="use-search-apis"></a>Arama API 'Lerini kullanma
 
-## <a name="metrics-schema"></a>Ölçüm şeması
-
-Ölçümler, sorgu istekleri için yakalanır.
-
-| Adı | Tür | Örnek | Notlar |
-| --- | --- | --- | --- |
-| resourceId |string |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VARSAYILAN/RESOURCEGROUPS/SAĞLAYICILARI /<br/>MICROSOFT. ARAMA/SEARCHSERVICES/SEARCHSERVICE" |Kaynak KIMLIĞINIZ |
-| metricName |string |"Gecikme süresi" |Ölçüm adı |
-| time |datetime |"2018-12-07T00:00:43.6872559 Z" |işlemin zaman damgası |
-| ortalama |int |64 |Ham örnekleri ölçüm zaman aralığındaki ortalama değeri |
-| en az |int |37 |En düşük değer ölçüm zaman aralığında ham örnekleri |
-| maksimum |int |78 |Ölçüm zaman aralığında ham örnekleri en yüksek değeri |
-| toplam |int |258 |Toplam değer ölçüm zaman aralığında ham örnekleri |
-| {1&gt;count&lt;1} |int |4 |Ölçü oluşturmak için kullanılan ham örnek sayısı |
-| timegrain |string |"PT1M" |ISO 8601 ölçümü, zaman dilimi |
-
-Tüm ölçümler, bir dakikalık aralıklar olarak raporlanır. Her ölçüm, dakika başına en düşük, en yüksek ve ortalama değerleri gösterir.
-
-SearchQueriesPerSecond ölçüm için en az bu dakikasındaki kaydedildiği saniye başına arama sorguları için en düşük değeridir. Aynı en yüksek değeri için geçerlidir. Toplama tamamı ortalama, dakikadır.
-Bir dakika boyunca bu senaryoyu düşünün: yüksek bir saniye yüklemek diğer bir deyişle en fazla SearchQueriesPerSecond 58 saniyelik ortalama yük tarafından izlenen için ve son olarak yalnızca bir sorgu ile bir saniye olan en düşük gereksinimdir.
-
-ThrottledSearchQueriesPercentage için minimum, maksimum, ortalama ve toplam, tümü aynı değere sahip:, arama sorguları bir dakika boyunca toplam sayısı azaltıldı arama sorguları yüzdesi.
-
-## <a name="download-and-open-in-visual-studio-code"></a>Visual Studio Code indir ve aç
-
-Günlük dosyasını görüntülemek için herhangi bir JSON düzenleyicisi kullanabilirsiniz. Hesabınız yoksa [Visual Studio Code](https://code.visualstudio.com/download)önerilir.
-
-1. Azure portal, depolama hesabınızı açın. 
-
-2. Sol gezinti bölmesinde **Bloblar**' a tıklayın. **Öngörüler-logs-operationlogs** ve **Insights-ölçümler-pt1m**görmeniz gerekir. Bu kapsayıcılar, günlük verileri blob depolamaya aktarıldığında Azure Bilişsel Arama tarafından oluşturulur.
-
-3. . JSON dosyasına ulaşana kadar klasör hiyerarşisini aşağı tıklayın.  Dosyayı indirmek için bağlam menüsünü kullanın.
-
-Dosya indirildikten sonra içeriği görüntülemek için bir JSON düzenleyicisinde açın.
-
-## <a name="use-system-apis"></a>Sistem API 'Lerini kullanma
 Hem Azure Bilişsel Arama REST API hem de .NET SDK, hizmet ölçümleri, dizin ve Dizin Oluşturucu bilgilerine ve belge sayılarına programlı erişim sağlar.
 
-* [Hizmet Istatistiklerini al](/rest/api/searchservice/get-service-statistics)
-* [Dizin Istatistiklerini al](/rest/api/searchservice/get-index-statistics)
-* [Belge sayısı](/rest/api/searchservice/count-documents)
-* [Dizin Oluşturucu durumunu al](/rest/api/searchservice/get-indexer-status)
++ [Hizmet Istatistiklerini al](/rest/api/searchservice/get-service-statistics)
++ [Dizin Istatistiklerini al](/rest/api/searchservice/get-index-statistics)
++ [Belge sayılarını al](/rest/api/searchservice/count-documents)
++ [Dizin Oluşturucu durumunu al](/rest/api/searchservice/get-indexer-status)
 
-PowerShell veya Azure CLı kullanımını etkinleştirmek için [buradaki](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)belgelere bakın.
+## <a name="monitor-user-access"></a>Kullanıcı erişimini izleme
+
+Arama dizinleri daha büyük bir istemci uygulamasının bileşeni olduğundan, bir dizine erişimi denetlemek için yerleşik, Kullanıcı başına yöntem yoktur. İsteklerin, yönetici ya da sorgu istekleri için bir istemci uygulamasından geldiği varsayılır. Yönetici okuma yazma işlemleri, tüm hizmet genelinde nesneleri oluşturma, güncelleştirme, silme işlemlerini içerir. Salt okuma işlemleri, tek bir dizin kapsamına alınmış belgeler koleksiyonuna yönelik sorgulardır. 
+
+Bu nedenle günlüklerde göreceğiniz özellikler, yönetici anahtarları veya sorgu anahtarları kullanılarak yapılan çağrılardır. İlgili anahtar, istemci kodundan kaynaklanan isteklere dahildir. Hizmet, kimlik belirteçlerini veya kimliğe bürünme işlemini işleyecek şekilde donatılmış değildir.
+
+Kullanıcı başına yetkilendirme için iş gereksinimleri mevcut olduğunda, öneri Azure Active Directory ile tümleştirilir. Kullanıcının görmemelidir belgelerinin [arama sonuçlarını kırpmak](search-security-trimming-for-azure-search-with-aad.md) için $Filter ve Kullanıcı kimliklerini kullanabilirsiniz. 
+
+Bu bilgileri $filter parametresini içeren sorgu dizesinden ayrı olarak günlüğe kaydetme yolu yoktur. Rapor sorgu dizeleri hakkındaki ayrıntılar için bkz. [sorguları izleme](search-monitor-queries.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet yönetimi ve ayarlama Kılavuzu için [performans ve iyileştirme](search-performance-optimization.md) hakkında daha fazla bilgi için [Microsoft Azure üzerindeki arama hizmetinizi yönetin](search-manage.md) .
+Azure Izleyici ile akıcı olma, Azure Bilişsel Arama gibi kaynaklar dahil olmak üzere tüm Azure hizmetleri hakkında daha fazla bakış için gereklidir. Azure Izleyici hakkında bilgi sahibi değilseniz kaynaklarla ilgili makaleleri gözden geçirme süresini göz atın. Öğreticilere ek olarak, aşağıdaki makale başlamak için iyi bir yerdir.
+
+> [!div class="nextstepaction"]
+> [Azure Izleyici ile Azure kaynaklarını izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)

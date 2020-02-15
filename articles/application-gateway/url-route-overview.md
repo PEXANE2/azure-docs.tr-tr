@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910020"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251847"
 ---
 # <a name="url-path-based-routing-overview"></a>URL Yolu Tabanlı Yönlendirmeye genel bakış
 
@@ -20,14 +20,14 @@ URL Yolu Tabanlı Yönlendirme, trafiği isteğin URL Yollarına göre arka uç 
 
 Senaryolardan biri, farklı içerik türleri için istekleri farklı arka uç sunucu havuzlarına yönlendirmektir.
 
-Aşağıdaki örnekte, Application Gateway üç arka uç sunucu havuzlarından contoso.com için trafiğe hizmet verebilir: VideoServerPool, ımageserverpool ve DefaultServerPool.
+Aşağıdaki örnekte, Application Gateway contoso.com için VideoServerPool, ImageServerPool ve DefaultServerPool gibi üç arka uç sunucu havuzlarından trafik sunmaktadır.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Http\://contoso.com/video/* için istekler videoserverpool 'a yönlendirilir ve http\://contoso.com/images/*, ımageserverpool 'a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
+Http\://contoso.com/video/* için istekler VideoServerPool 'a yönlendirilir ve http\://contoso.com/images/*, ımageserverpool 'a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
 
 > [!IMPORTANT]
-> Kurallar, portalda listelendikleri sırayla işlenir. Temel dinleyiciyi yapılandırmadan önce çok siteli dinleyicileri yapılandırmanız önerilir.  Bu işlem, trafiğin doğru arka uca yönlendirilmesini güvence altına alır. Temel dinleyici listede ilk sıradaysa ve gelen bir istekle eşleşiyorsa, o dinleyici tarafından işlenir.
+> V1 SKU 'SU için kurallar portalda listelendikleri sırada işlenir. Temel dinleyici listede ilk sıradaysa ve gelen bir istekle eşleşiyorsa, o dinleyici tarafından işlenir. V2 SKU 'SU için, tam eşleşmeler daha yüksek önceliğe sahiptir. Ancak, temel bir dinleyiciyi yapılandırmadan önce çok siteli dinleyicileri yapılandırmak kesinlikle önerilir. Bu işlem, trafiğin doğru arka uca yönlendirilmesini güvence altına alır.
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap yapılandırma öğesi
 

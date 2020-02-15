@@ -3,12 +3,12 @@ title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484252"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207494"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager şablonu en iyi uygulamaları
 
@@ -156,7 +156,7 @@ Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken ya
 
 * Benzersiz olması gereken kaynak adları için değişkenleri dahil edin.
 
-* JSON nesnelerinin tekrarlanmış bir modelini oluşturmak için [değişkenlerde bir kopyalama döngüsü](create-multiple-instances.md#variable-iteration) kullanın.
+* JSON nesnelerinin tekrarlanmış bir modelini oluşturmak için [değişkenlerde bir kopyalama döngüsü](copy-variables.md) kullanın.
 
 * Kullanılmayan değişkenleri kaldırın.
 

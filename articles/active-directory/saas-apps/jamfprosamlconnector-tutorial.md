@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68de948261ec8bad429daafcb27e63ca5f7efb7a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207324"
+ms.locfileid: "77251694"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Öğretici: JAMF Pro ile SSO tümleştirmesi Azure Active Directory
 
@@ -151,16 +151,16 @@ Bu bölümde, JAMF Pro 'ya B. Simon erişimi verirsiniz.
 
   b. **Çoklu oturum açma kimlik doğrulamasını etkinleştir** onay kutusunu seçin.
 
-    c. **Kimlik sağlayıcısı** açılan menüsünden **Azure** seçeneğini belirleyin.
+  c. **Kimlik sağlayıcısı** açılan menüsünden **Azure** seçeneğini belirleyin.
 
-    d. **VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** BÖLÜMÜNDEKI **tanımlayıcı (varlık kimliği)** alanına yapıştırın.
+  d. **VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** BÖLÜMÜNDEKI **tanımlayıcı (varlık kimliği)** alanına yapıştırın.
 
-    > [!NOTE]
-    > `<SUBDOMAIN>` alanındaki değeri, Azure portal **temel SAML yapılandırması** bölümünde oturum açma URL 'sini ve yanıt URL 'sini tamamladıktan sonra kullanın.
+> [!NOTE]
+> `<SUBDOMAIN>` alanındaki değeri, Azure portal **temel SAML yapılandırması** bölümünde oturum açma URL 'sini ve yanıt URL 'sini tamamladıktan sonra kullanın.
 
-    e. **Kimlik sağlayıcısı meta veri kaynağı** açılan menüsünden **meta veri URL 'sini** seçin. Görüntülenen alanda, Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
+  e. **Kimlik sağlayıcısı meta veri kaynağı** açılan menüsünden **meta veri URL 'sini** seçin. Görüntülenen alanda, Azure portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
-    f. Seçim Belirteç süre sonu değerini düzenleyin veya "SAML belirteci süre sonunu devre dışı bırak" seçeneğini belirleyin.
+  f. Seçim Belirteç süre sonu değerini düzenleyin veya "SAML belirteci süre sonunu devre dışı bırak" seçeneğini belirleyin.
 
 7. Aynı sayfada, **Kullanıcı eşleme** bölümüne gidin. Ardından, aşağıdaki adımları uygulayın.
 

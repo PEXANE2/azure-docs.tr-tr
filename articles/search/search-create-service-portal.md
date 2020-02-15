@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121711"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209367"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı başlangıç: portalda bir Azure Bilişsel Arama hizmeti oluşturma
 
-Azure Bilişsel Arama, özel uygulamalara bir arama deneyimi eklemek için kullanılan tek başına kaynaktır. Azure Bilişsel Arama diğer Azure hizmetleriyle kolayca tümleştirilebilse de, bunu tek başına bir bileşen olarak kullanabilir veya ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla tümleştirebilirsiniz.
+Azure Bilişsel Arama, bir arama deneyimini özel uygulamalara bağlamak için kullanılan tek başına kaynaktır. Azure Bilişsel Arama, diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilir.
 
 Bu makalede [Azure Portal](https://portal.azure.com/)kaynak oluşturmayı öğrenin.
 
@@ -45,18 +45,18 @@ Birden fazla aboneliğiniz varsa, arama hizmetiniz için bir tane seçin.
 
 ## <a name="set-a-resource-group"></a>Kaynak grubu ayarlama
 
-Kaynak grubu gereklidir ve maliyetler dahil olmak üzere kaynakları yönetmek için faydalıdır. Bir kaynak grubu, bir hizmetten veya birlikte kullanılan birden fazla hizmetten oluşabilir. Örneğin, Azure Cosmos DB bir veritabanının dizinini oluşturmak için Azure Bilişsel Arama kullanıyorsanız, her iki hizmeti de yönetim amaçlarıyla aynı kaynak grubunun parçası yapabilirsiniz. 
+Kaynak grubu, Azure çözümünüz için ilgili kaynakları tutan bir kapsayıcıdır. Arama hizmeti için gereklidir. Ayrıca, maliyetleri dahil olmak üzere kaynakları yönetmek için de kullanışlıdır. Bir kaynak grubu, bir hizmetten veya birlikte kullanılan birden fazla hizmetten oluşabilir. Örneğin, Azure Cosmos DB bir veritabanının dizinini oluşturmak için Azure Bilişsel Arama kullanıyorsanız, her iki hizmeti de yönetim amaçlarıyla aynı kaynak grubunun parçası yapabilirsiniz. 
 
 Kaynakları tek bir grupta birleştirmemişse veya mevcut kaynak grupları ilişkisiz çözümlerde kullanılan kaynaklarla doldurulduysa, yalnızca Azure Bilişsel Arama kaynağınız için yeni bir kaynak grubu oluşturun. 
 
 ![Yeni bir kaynak grubu oluşturun](./media/search-create-service-portal/new-resource-group.png "Yeni bir kaynak grubu oluşturma")
 
-Zaman içinde, geçerli ve tahmini maliyetlerin tümünü izleyebilirsiniz (ekran görüntüsünde gösterildiği gibi) veya tek tek kaynakların ücretlerini görüntülemek için aşağı kaydırın. Aşağıdaki ekran görüntüsünde, en sonunda birden çok kaynağı tek bir grupta birleştirdiğinizde görmeyi bekletirebileceğiniz maliyet bilgilerinin türü gösterilmektedir.
+Zaman içinde, geçerli ve öngörülen maliyetleri tamamen izleyebilir veya tek tek kaynaklar için ücretleri görüntüleyebilirsiniz. Aşağıdaki ekran görüntüsünde, birden çok kaynağı tek bir grupta birleştirdiğinizde görmeyi bekletirebileceğiniz maliyet bilgilerinin türü gösterilmektedir.
 
 ![Kaynak grubu düzeyinde maliyetleri yönetin](./media/search-create-service-portal/resource-group-cost-management.png "Kaynak grubu düzeyinde maliyetleri yönetin")
 
 > [!TIP]
-> Kaynak grupları temizleme işlemini basitleştirir çünkü bir grup silindiğinde aynı zamanda içindeki hizmetler de silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
+> Kaynak grupları temizleme işlemini basitleştirir çünkü bir grup silindiğinde, içindeki tüm hizmetler silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
 
 ## <a name="name-the-service"></a>Hizmeti adlandırın
 
@@ -65,10 +65,10 @@ Zaman içinde, geçerli ve tahmini maliyetlerin tümünü izleyebilirsiniz (ekra
 Hizmet adı gereksinimleri:
 
 * search.windows.net ad alanı içinde benzersiz olmalıdır
-* 2 ila 60 karakter uzunluğunda olmalıdır
-* Küçük harfleri, rakamları veya kısa çizgileri ("-") kullanın
-* İlk 2 karakter olarak veya sondaki tek karakter olarak tire ("-") kullanmaktan kaçının
-* Hiçbir yerde art arda tire ("--") kullanmayın
+* Uzunluğu 2 ile 60 karakter arasında olmalıdır
+* Küçük harf, rakam veya kısa çizgi ("-") kullanmanız gerekir
+* İlk 2 karakterde veya son tek karakter olarak tire ("-") kullanmayın
+* Her yerde ardışık çizgiler ("--") kullanamazsınız
 
 > [!TIP]
 > Birden çok hizmet kullandığınızı düşünüyorsanız, hizmet adına bölge (veya konum) bir adlandırma kuralı olarak dahil etmenizi öneririz. Aynı bölgedeki hizmetler ücretsiz olarak verileri değiş tokuş edebilir, bu nedenle Azure Bilişsel Arama Batı ABD ve aynı zamanda Batı ABD de başka hizmetleriniz varsa, `mysearchservice-westus` gibi bir ad, kaynakları birleştirme veya iliştirme konusunda karar verirken Özellikler sayfasına seyahat edebilir.
@@ -79,7 +79,7 @@ Bir Azure hizmeti olarak Azure Bilişsel Arama dünyanın dört bir yanındaki v
 
 Birden fazla hizmet için aynı konumu seçerek bant genişliği ücretlerini en aza indirebilir veya önleyebilirsiniz. Örneğin, başka bir Azure hizmeti (Azure depolama, Azure Cosmos DB, Azure SQL veritabanı) tarafından sağlanmış olan verileri dizinlendirirken, Azure Bilişsel Arama hizmetinizi aynı bölgede oluşturmak bant genişliği ücretlenmesini önler (giden veriler için bir ücret alınmaz Hizmetler aynı bölgedeyse).
 
-Ayrıca, AI zenginleştirme kullanıyorsanız, hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
+AI zenginleştirme kullanıyorsanız, arama hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
 
 > [!Note]
 > Orta Hindistan, yeni hizmetler için şu anda kullanılamıyor. Zaten Orta Hindistan olan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Bu bölgedeki kısıtlama geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlama artık geçerli olmadığında bu notun kaldırılması gerekir.
@@ -90,7 +90,7 @@ Ayrıca, AI zenginleştirme kullanıyorsanız, hizmetinizi bilişsel hizmetler i
 
 Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar. Katmanlar arasındaki temel farklılıklar bölüm boyutu ve hız, oluşturabileceğiniz nesne sayısı için sınırlar olur.
 
-Hizmet oluşturulduktan sonra bir fiyatlandırma katmanının değiştirilemeyeceğini unutmayın. Daha yüksek veya daha düşük bir katmana ihtiyacınız olursa, hizmeti yeniden oluşturmanız gerekir.
+Hizmet oluşturulduktan sonra bir fiyatlandırma katmanının değiştirilemeyeceğini unutmayın. Daha yüksek veya daha düşük bir katmana ihtiyacınız varsa, hizmeti yeniden oluşturmanız gerekecektir.
 
 ## <a name="create-your-service"></a>Sitenizi oluşturma
 
@@ -98,7 +98,7 @@ Gerekli girişleri sağladıktan sonra, devam edin ve hizmeti oluşturun.
 
 ![Hizmeti gözden geçirin ve oluşturun](./media/search-create-service-portal/new-service3.png "Hizmeti gözden geçirin ve oluşturun")
 
-Hizmetiniz, Azure bildirimleri aracılığıyla izleyebilmeniz için dakikalar içinde dağıtılır. Gelecekte kolay erişim sağlamak için hizmeti panonuza sabitlemeyi göz önünde bulundurun.
+Hizmetiniz dakikalar içinde dağıtılır. İlerlemeyi Azure bildirimleri aracılığıyla izleyebilirsiniz. Gelecekte kolay erişim sağlamak için hizmeti panonuza sabitlemeyi göz önünde bulundurun.
 
 ![Hizmeti izleme ve sabitleme](./media/search-create-service-portal/monitor-notifications.png "Hizmeti izleme ve sabitleme")
 

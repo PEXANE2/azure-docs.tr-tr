@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841191"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210610"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -38,7 +38,7 @@ Varsayılan olarak, yönetilen diskler platform tarafından yönetilen şifrelem
 
 Aşağıdaki diyagramda, yönetilen disklerin müşteri tarafından yönetilen anahtarı kullanarak istek yapmak için Azure Active Directory ve Azure Key Vault nasıl kullandığı gösterilmektedir:
 
-![Yönetilen diskler müşteri tarafından yönetilen anahtarlar iş akışı](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Yönetilen disk ve müşteri tarafından yönetilen anahtarlar iş akışı. Yönetici bir Azure Key Vault oluşturur, ardından bir disk şifreleme kümesi oluşturur ve disk şifreleme kümesini ayarlar. Küme, diskin kimlik doğrulaması için Azure AD 'yi kullanmasına izin veren bir VM ile ilişkilendirilir](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 Aşağıdaki listede diyagram daha da ayrıntılı şekilde açıklanmıştır:

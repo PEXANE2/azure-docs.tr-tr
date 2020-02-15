@@ -1,6 +1,6 @@
 ---
 title: Haritaya sembol katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure Maps web SDK 'sını kullanarak bir haritada sembolleri özelleştirmek ve eklemek için sembol katmanını nasıl kullanacağınızı öğreneceksiniz.
+description: Bu makalede, sembol katmanını kullanarak bir sembolü özelleştirmeyi ve harita üzerinde sembolleri Microsoft Azure Maps web SDK 'sını kullanarak eklemeyi öğreneceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933136"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209707"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Haritaya sembol katmanı ekleme
 
-Bir veri kaynağına bağlı bir sembol ve bir simge ve/veya metni belirli bir noktada işlemek için kullanılır. Sembol katmanları WebGL kullanılarak işlenir ve haritada büyük miktarda noktaları işlemek için kullanılır. HTML işaretleyicisine kıyasla, sembol katmanı haritada çok sayıda nokta verisi işler ve daha iyi performans sağlar. Ancak, sembol katmanı stil için geleneksel CSS ve HTML öğelerini desteklemez.  
+Bir sembolü bir veri kaynağına bağlayın ve belirli bir noktada bir simge veya metin işlemek için kullanın. 
+
+Sembol katmanları WebGL kullanılarak işlenir. Haritada büyük noktaları koleksiyonunu işlemek için bir sembol katmanı kullanın. HTML işaretleyicisine kıyasla, sembol katmanı haritada çok sayıda nokta verisi işler ve daha iyi performans sağlar. Ancak, sembol katmanı stil için geleneksel CSS ve HTML öğelerini desteklemez.  
 
 > [!TIP]
 > Sembol katmanları varsayılan olarak, bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin `filter`, katmanın özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` ayarlamak istiyorsanız, MultiPoint özelliklerini de dahil edebilirsiniz.
@@ -33,7 +35,9 @@ Haritalar görüntü Sprite Manager, sembol katmanı tarafından kullanılan öz
 
 ## <a name="add-a-symbol-layer"></a>Sembol katmanı ekleme
 
-Haritaya bir sembol katmanı ekleyebilmeniz için önce birkaç adım yapmanız gerekir. İlk olarak, bir veri kaynağı oluşturup haritaya ekleyin. Daha sonra veri kaynağından veri almak için bir sembol katmanı oluşturulup veri kaynağında geçirilebilir. Son olarak, işlenecek bir şey olması için verilerin veri kaynağına eklenmesi gerekir. Aşağıdaki kod, yüklendikten sonra haritaya eklenmesi gereken kodu gösterir. Kod, bir sembol katmanını kullanarak haritada tek bir nokta işler. 
+Haritaya bir sembol katmanı ekleyebilmeniz için önce birkaç adım gerçekleştirmeniz gerekir. İlk olarak, bir veri kaynağı oluşturun ve haritaya ekleyin. Bir sembol katmanı oluşturun. Ardından veri kaynağından veri almak için veri kaynağını sembol katmanına geçirin. Son olarak, veri kaynağına veri ekleyerek işlenecek bir şey olması gerekir. 
+
+Aşağıdaki kod, yüklendikten sonra haritaya ne ekleneceğini gösterir. Bu örnek, bir sembol katmanını kullanarak haritada tek bir nokta oluşturur. 
 
 ```javascript
 //Create a data source and add it to the map.

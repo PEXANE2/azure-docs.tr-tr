@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024543"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206183"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Metin Analizi API'si için dil ve bölge desteği
 
@@ -47,11 +47,11 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 > [!NOTE]
 > Adlandırılmış varlık tanıma (NER) v3 genel önizlemesi için ayrıntılı dil desteği için bkz. [adlandırılmış varlık türleri](named-entity-types.md).
 
-| Dil              | Dil kodu | Duygu | Anahtar ifadeler | Adlandırılmış Varlık Tanıma | Varlık bağlama |       Notlar        |
+| Dil              | Dil kodu | Yaklaşım | Anahtar tümceleri | Adlandırılmış Varlık Tanıma | Varlık bağlama |       Notlar        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arapça                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Çekçe                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Çince-Basitleştirilmiş    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Çince-Basitleştirilmiş    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` de kabul edildi                   |
 | Çince-Geleneksel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Danca                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Felemenkçe                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
@@ -64,7 +64,7 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 | İtalyanca               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japonca              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Korece                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| Norveççe (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Norveççe (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` de kabul edildi                   |
 | Lehçe                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Portekizce (Portekiz) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` de kabul edildi |
 | Portekizce (Brezilya)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |

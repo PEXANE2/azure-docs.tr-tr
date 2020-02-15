@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845911"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210234"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Azure 'da ilk PowerShell işlevinizi oluşturma
 
@@ -19,17 +19,17 @@ Bu hızlı başlangıç makalesinde Visual Studio Code kullanarak ilk [sunucusuz
 
 ![Visual Studio Code projesindeki Azure Işlevleri kodu](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
-Kullandığınız [Visual Studio Code için Azure işlevleri uzantısı] yerel olarak bir PowerShell işlevi oluşturmak için ve azure'da yeni bir işlev uygulaması dağıttınız. Uzantı şu an önizleme aşamasındadır. Daha fazla bilgi edinmek için [Visual Studio Code için Azure İşlevleri uzantısı] sayfasına bakın.
+Yerel olarak bir PowerShell işlevi oluşturmak ve ardından bunu Azure 'da yeni bir işlev uygulamasına dağıtmak için [Visual Studio Code için Azure İşlevleri uzantısı] kullanırsınız. Uzantı şu an önizleme aşamasındadır. Daha fazla bilgi edinmek için [Visual Studio Code için Azure İşlevleri uzantısı] sayfasına bakın.
 
 Aşağıdaki adımlar macOS, Windows ve Linux tabanlı işletim sistemlerinde desteklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
 * [PowerShell çekirdeğini](/powershell/scripting/install/installing-powershell-core-on-windows) yükler
 
-* [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms) birinde [Visual Studio Code](https://code.visualstudio.com/)’u yükleyin. 
+* [Desteklenen platformlardan](https://code.visualstudio.com/) birinde [Visual Studio Code](https://code.visualstudio.com/docs/supporting/requirements#_platforms)’u yükleyin. 
 
 * [Visual Studio Code Için PowerShell uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)yükler.
 
@@ -61,7 +61,7 @@ Visual Studio Code'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev 
 1. İlk işleviniz için şablon olarak **http tetikleyicisi** ' ni seçin **, işlev adı**olarak `HTTPTrigger` kullanın ve bir Yetkilendirme düzeyi seçin.
 
     > [!NOTE]
-    > İşlev **Yetkilendirme düzeyi** , Azure 'da işlev uç noktası çağrılırken bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) değeri gerektirir. Bu, yalnızca birisinin işlevinizi çağırazorlamanızı sağlar.
+    > İşlev **Yetkilendirme düzeyi** , Azure 'da işlev uç noktası çağrılırken bir [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) değeri gerektirir. Bu, yalnızca birisinin işlevinizi çağırazorlamanızı sağlar.
 
 1. İstendiğinde **Çalışma alanına ekle**’yi seçin.
 

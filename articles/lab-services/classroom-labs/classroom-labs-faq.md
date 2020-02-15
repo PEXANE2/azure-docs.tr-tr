@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718020"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252068"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
@@ -46,6 +46,12 @@ Bağlantı noktaları: 49152 – 65535. Sınıf laboratuvarları bir yük dengel
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Laboratuvar sanal makinelerine RDP/SSH aracılığıyla bağlanmak için Kuruluşumun güvenlik duvarı ayarlarında ne genel IP adresi aralığı açılmalıyım?
 Azure 'da veri merkezleri için genel IP adresi aralığı sağlayan [genel bulut olan Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)' ne bakın. Laboratuvar hesaplarınızın bulunduğu bölgelerin IP adreslerini açabilirsiniz.
+
+## <a name="virtual-machine-images"></a>Sanal makine görüntüleri
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Laboratuvar Oluşturucusu olarak, yeni bir laboratuvar oluştururken sanal makine görüntüleri açılan menüsünde neden ek görüntü seçeneklerini etkinleştiremiyorum?
+
+Bir yönetici sizi laboratuvar hesabına laboratuvar Oluşturucu olarak eklediğinde, laboratuvarları oluşturma izinleri verilir. Ancak, etkinleştirilmiş sanal makine görüntülerinin listesi de dahil olmak üzere, laboratuvar hesabındaki herhangi bir ayarı düzenleme izniniz yok. Ek görüntüleri etkinleştirmek için laboratuvar hesabı yöneticinizle iletişime geçerek bunu sizin için yapın veya yöneticiden laboratuvar hesabına katkıda bulunan bir rol olarak eklemesini isteyin. Katkıda bulunan rolü, laboratuvar hesabındaki sanal makine görüntüsü listesini düzenleme izinleri verecektir.
 
 ## <a name="users"></a>Kullanıcılar
 

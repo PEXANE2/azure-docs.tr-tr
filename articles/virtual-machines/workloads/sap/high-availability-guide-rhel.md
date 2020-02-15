@@ -1,10 +1,10 @@
 ---
-title: Azure sanal makineler Red Hat Enterprise Linux SAP NetWeaver için yüksek kullanılabilirlik | Microsoft Docs
+title: Azure VM 'lerde SAP NW için yüksek kullanılabilirlik-RHEL Microsoft Docs
 description: Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 02/13/2020
+ms.author: radeltch
+ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905028"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212790"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 
@@ -178,7 +178,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ascs-ön uç**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **kısmına 10.0.0.7**)
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için IP adresi 10.0.0.8
          * ERS için bir IP adresi oluşturmak üzere yukarıdaki adımları tekrarlayın (örneğin, **10.0.0.8** ve **NW1-aers-arka uç**)
    1. Arka uç havuzlarını oluşturma
@@ -196,7 +196,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-ascs-HP**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için bağlantı noktası 621**02**
          * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, 621**02** ve **NW1-aers-HP**)
    1. Yük Dengeleme kuralları
@@ -207,7 +207,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. **Ha bağlantı noktalarını** seçin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
          * ÇÖZÜMLEYICILER için Yük Dengeleme kuralları oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **NW1-lb-ers**)
 1. Alternatif olarak, senaryonuz temel yük dengeleyici (iç) gerektiriyorsa, şu adımları izleyin:  
    1. Ön uç IP adreslerini oluşturma
@@ -215,7 +215,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin, **NW1-ascs-ön uç**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **kısmına 10.0.0.7**)
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için IP adresi 10.0.0.8
          * ERS için bir IP adresi oluşturmak üzere yukarıdaki adımları tekrarlayın (örneğin, **10.0.0.8** ve **NW1-aers-arka uç**)
    1. Arka uç havuzlarını oluşturma
@@ -225,7 +225,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. Sanal makine Ekle ' ye tıklayın.
          1. Daha önce oluşturduğunuz kullanılabilirlik kümesini seçin
          1. (A) SCS kümesinin sanal makinelerini seçin
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için bir arka uç havuzu oluşturma
          * ERS için bir arka uç havuzu oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **NW1-aers-arka uç**)
    1. Sistem durumu araştırmalarını oluşturma
@@ -233,7 +233,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-ascs-HP**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için bağlantı noktası 621**02**
          * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, 621**02** ve **NW1-aers-HP**)
    1. Yük Dengeleme kuralları
@@ -244,7 +244,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. Protokol **TCP**'yi tut, bağlantı noktası **3200** girin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam 'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKS için ek bağlantı noktaları
          * 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları tekrarlayın
       1. YOKLAR için ek bağlantı noktaları
@@ -262,9 +262,9 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver yüklemesi için hazırlanma
 
-Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]** - düğüm 1 yalnızca uygulanabilir veya **[2]** - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
+1. **[A]** kurulum konak adı çözümlemesi
 
    Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
@@ -403,7 +403,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
 
 1. **[1]** SAP NetWeaver yoks 'yi yükler  
 
-   Ass için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adını kullanarak SAP NetWeaver yoks 'yi ilk düğümde kök olarak yükleyin; Örneğin, <b>NW1-ascs</b>, <b>kısmına 10.0.0.7</b> ve araştırması için kullandığınız örnek numarası. yük dengeleyici, örneğin <b>00</b>.
+   Ass için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adını kullanarak SAP NetWeaver yoks 'yi ilk düğümde kök olarak yükleyin; Örneğin, <b>NW1-ascs</b>, <b>kısmına 10.0.0.7</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası, örneğin <b>00</b>.
 
    Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz.
 
@@ -459,7 +459,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
 
 1. **[2]** SAP NetWeaver iciler 'ı yükler  
 
-   SAP NetWeaver ERS 'ı, ERS için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adı ile, örneğin, <b>NW1-aers</b>, <b>10.0.0.8</b> ve araştırma için kullandığınız örnek numarası gibi bir kök olarak yükleyin. Yük Dengeleyici (örneğin <b>02</b>).
+   SAP NetWeaver ERS 'ı, ERS için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adını (örneğin, <b>NW1-aers</b>, <b>10.0.0.8</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası, örneğin <b>02</b>) kullanarak ikinci düğüme kök olarak yükleyin.
 
    Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz.
 
@@ -535,12 +535,15 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -559,12 +562,15 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -575,6 +581,9 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    </code></pre>
 
    Daha eski bir sürümden yükseltiyorsanız ve sıraya alma sunucusu 2 ' ye geçiş yapıyorsanız bkz. SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > Yukarıdaki yapılandırmadaki zaman aşımları yalnızca örnektir ve belirli SAP kurulumuna uyarlanmasını gerektirebilir. 
 
    Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
 

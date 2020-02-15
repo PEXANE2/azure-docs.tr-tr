@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114397"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212243"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -59,7 +59,7 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
-* Orta Kanada
+* Kanada Orta
 * Orta Batı ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -68,28 +68,28 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Orta ABD
 * Batı ABD
 * Batı ABD 2
-* Orta Fransa
+* Fransa Orta
 * Batı Avrupa
 * Kuzey Avrupa
-* Güney Brezilya
-* Batı Birleşik Krallık
-* Güney Birleşik Krallık
-* Doğu Avustralya
-* Güneydoğu Avustralya
+* Brezilya Güney
+* UK Batı
+* UK Güney
+* Avustralya Doğu
+* Avustralya Güneydoğu
 * Doğu Asya
 * Güneydoğu Asya
-* Güney Kore - Orta
+* Kore Orta
 * Orta Hindistan
 * Güney Hindistan
-* Doğu Japonya 
-* Batı Japonya
+* Japonya Doğu 
+* Japonya Batı
 * US Gov Virginia
 * Çin Doğu 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-* Orta Kanada
+* Kanada Orta
 * Orta Batı ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -99,19 +99,19 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Batı ABD
 * Batı ABD 2
 * Orta ABD
-* Orta Fransa
+* Fransa Orta
 * Batı Avrupa
 * Kuzey Avrupa
-* Güney Brezilya
-* Batı Birleşik Krallık
-* Güney Birleşik Krallık
-* Doğu Avustralya
-* Güneydoğu Avustralya
+* Brezilya Güney
+* UK Batı
+* UK Güney
+* Avustralya Doğu
+* Avustralya Güneydoğu
 * Doğu Asya
 * Güneydoğu Asya
-* Güney Kore - Orta
+* Kore Orta
 * Orta Hindistan
-* Doğu Japonya
+* Japonya Doğu
 * US Gov Virginia
 * Çin Doğu 2
 
@@ -182,7 +182,7 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 
 1. **Durum** için *Açık* seçeneğini belirleyin
 2. **Akış günlükleri sürümü**için *sürüm 2* ' yi seçin. Sürüm 2, akış oturumu istatistikleri içerir (bayt ve paket)
-3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. Depolama alanınız "Data Lake Storage 2. hiyerarşik ad alanı etkin değil" özelliğinin true olarak ayarlandığından emin olun. Ayrıca, NSG akış Günlükleri güvenlik duvarı olan bir depolama hesabında depolanamaz. 
+3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. Depolama alanınız "Data Lake Storage 2. hiyerarşik ad alanı etkin değil" özelliğinin true olarak ayarlandığından emin olun.
 4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın.
 > [!IMPORTANT]
 > Şu anda ağ Izleyicisi için ağ [güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) , bekletme ilkesi ayarlarına göre blob depolamadan otomatik olarak silinmediği bir sorun vardır. Sıfır olmayan bir bekletme ilkeniz varsa, herhangi bir ücret ödemeden kaçınmak için saklama süresini aşan depolama bloblarını düzenli aralıklarla silmenizi öneririz. NSG akış günlüğü depolama blogunu silme hakkında daha fazla bilgi için bkz. [NSG akış günlüğü depolama Bloblarını silme](network-watcher-delete-nsg-flow-log-blobs.md).

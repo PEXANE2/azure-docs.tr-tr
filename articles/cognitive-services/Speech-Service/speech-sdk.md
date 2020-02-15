@@ -3,25 +3,25 @@ title: Konuşma SDK 'Sı-konuşma hizmeti hakkında
 titleSuffix: Azure Cognitive Services
 description: Konuşma yazılım geliştirme seti (SDK), uygulamalarınızın konuşma hizmeti işlevlerine yerel erişim sağlayarak yazılım geliştirmeyi kolaylaştırır. Bu makalede, SDK'sı için Windows, Linux ve Android hakkında ek ayrıntılar sağlar.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: wolfma
-ms.openlocfilehash: ea879cbfc3b9b1d1a627add52f26a473aca53cdf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/13/2020
+ms.author: dapine
+ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759884"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212516"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
 Konuşma Yazılım Geliştirme Seti (SDK), konuşma özellikli yazılım geliştirmeyi kolaylaştıran konuşma hizmeti işleve, uygulamaları erişmenizi sağlar. Şu anda SDK 'lar, **konuşmadan metne**, **metinden konuşmaya**, **konuşma çevirisi**, **Amaç tanıma**ve **bot çerçevesinin doğrudan hat konuşma kanalına**erişim sağlar.
 
-Konuşmayı bir mikrofondan kolayca yakalayabilir, bir akıştan okuyabilir veya ses dosyalarına konuşma SDK 'Sı ile erişebilirsiniz. Konuşma SDK'sı WAV/PCM 16 bit, 16 kHz/8 kHz, tek kanallı sesten konuşma tanıma gerçekleştirebilir. Ek ses biçimleri, [konuşmadan metne REST uç noktası](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) veya [toplu iş dökümü hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)kullanılarak desteklenir.
+Konuşmayı bir mikrofondan kolayca yakalayabilir, bir akıştan okuyabilir veya ses dosyalarına konuşma SDK 'Sı ile erişebilirsiniz. Konuşma SDK 'Sı, konuşma tanıma için WAV/PCM 16 bit, 16 kHz/8 kHz, tek kanallı ses ' i destekler. Ek ses biçimleri, [konuşmadan metne REST uç noktası](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) veya [toplu iş dökümü hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)kullanılarak desteklenir.
 
 Yetenekler ve desteklenen platformlar hakkında genel bir bakış belge [giriş sayfasında](https://aka.ms/csspeech)bulunabilir.
 
@@ -31,7 +31,7 @@ Yetenekler ve desteklenen platformlar hakkında genel bir bakış belge [giriş 
 
 ## <a name="get-the-sdk"></a>SDK'yı edinme
 
-### <a name="windows"></a>Windows
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > Konuşma SDK 'Sı Windows 10 veya sonraki sürümlerini destekler. Önceki Windows sürümleri **desteklenmez**.
@@ -40,9 +40,9 @@ Windows için aşağıdaki dilleri destekliyoruz:
 
 * C# (UWP ve .NET), C++: başvuru ve bizim konuşma SDK'sı NuGet paketi en son sürümünü kullanın. Paket, 32-bit ve 64 bit istemci kitaplıkları ve yönetilen (.NET) kitaplıkları içerir. SDK, Visual Studio 'da NuGet, [Microsoft. Biliveservices. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)kullanılarak yüklenebilir.
 
-* Java: Başvurabilir ve yalnızca Windows x64 destekleyen bizim konuşma SDK Maven paketini en son sürümünü kullanın. Maven projenizde ekleyin `https://csspeechstorage.blob.core.windows.net/maven/` bir ek bir depo ve başvuru olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` bağımlılık olarak.
+* Java: Başvurabilir ve yalnızca Windows x64 destekleyen bizim konuşma SDK Maven paketini en son sürümünü kullanın. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ekleyin ve bağımlılık olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` başvurun.
 
-### <a name="linux"></a>Linux
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
 > Şu anda, aşağıdaki hedef mimarilerde yalnızca Ubuntu 16,04, Ubuntu 18,04 ve detik 9 ' u destekliyoruz:
@@ -72,9 +72,9 @@ sudo apt-get install libssl1.0.2 libasound2
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
   ```
 
-* Java: Başvurabilir ve bizim konuşma SDK Maven paketini en son sürümünü kullanın. Maven projenizde ekleyin `https://csspeechstorage.blob.core.windows.net/maven/` bir ek bir depo ve başvuru olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` bağımlılık olarak.
+* Java: Başvurabilir ve bizim konuşma SDK Maven paketini en son sürümünü kullanın. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ekleyin ve bağımlılık olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` başvurun.
 
-* C++: SDK'yı indirin bir [.tar paketinin](https://aka.ms/csspeech/linuxbinary) ve tercih ettiğiniz bir dizindeki dosyaları paket. Aşağıdaki tablo, SDK'sı klasör yapısını gösterir:
+* C++: SDK 'Yı bir [. tar paketi](https://aka.ms/csspeech/linuxbinary) olarak indirin ve seçtiğiniz bir dizindeki dosyaları paketten çıkarın. Aşağıdaki tablo, SDK'sı klasör yapısını gösterir:
 
   |Yol|Açıklama|
   |-|-|
@@ -86,29 +86,31 @@ sudo apt-get install libssl1.0.2 libasound2
 
   Bir uygulama oluşturmak için kopyalayabilir veya gerekli ikili dosyaların (ve kitaplıkları) geliştirme ortamınıza taşıyabilirsiniz. Yapı işleminiz için gereken şekilde bunları ekleyebilirsiniz.
 
-### <a name="android"></a>Android
+# <a name="androidtabandroid"></a>[Android](#tab/android)
 
-Android için Java SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir. Maven deponun barındırılan `https://csspeechstorage.blob.core.windows.net/maven/` paketi olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
+Android için Java SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir. Paket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`olarak `https://csspeechstorage.blob.core.windows.net/maven/` bir Maven deposunda barındırılır.
 
 Android Studio projenizden paketi kullanmak için aşağıdaki değişiklikleri yapın:
 
-* Proje düzeyi build.gradle dosyasına ekleyin `repository` bölümü:
+* Proje düzeyi Build. Gradle dosyasında aşağıdakini `repository` bölümüne ekleyin:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* Modül düzeyi build.gradle dosyasına ekleyin `dependencies` bölümü:
+* Modül düzeyi Build. Gradle dosyasında aşağıdakini `dependencies` bölümüne ekleyin:
 
   ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
   ```
 
-Java SDK'sını da olan parçası [konuşma cihaz SDK'sı](speech-devices-sdk.md).
+Java SDK 'sı Ayrıca [konuşma cihazları SDK 'sının](speech-devices-sdk.md)bir parçasıdır.
+
+---
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [C# ' de Konuşma tanıma öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Bkz. konuşmayı tanımaC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

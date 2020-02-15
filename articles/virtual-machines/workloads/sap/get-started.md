@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 83144738124b223e305b6c0d3ad1065f5dae408e
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087377"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212605"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -121,6 +121,8 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 02/13/2020: [Azure VM 'LERINDE SAP NetWeaver için yüksek kullanılabilirliğe sahıp RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) ve Azure VM 'leri, küme kaynaklarını Red Hat Timeout önerilerine hizalamak için [Azure NetApp Files ile RHEL üzerinde SAP NetWeaver için](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) yüksek kullanılabilirlik sağlar
+- 02/11/2020: Azure [sanal makinelerine Azure büyük örnek geçişi üzerinde SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration) sürümü
 - 02/07/2020: örnek NSG ekran görüntüsünü güncelleştirmek için [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler Için genel uç nokta bağlantısında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) değişiklik yapın
 - 02/03/2020: SLES 'deki küme düğümlerinin ana bilgisayar adlarında Dash kullanma uyarısını kaldırmak üzere SAP uygulamaları için [SLES 'Deki Azure VM](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) 'lerinde SAP NW 'de SAP NW için yüksek kullanılabilirlik ve [yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) olarak değiştirin
 - 01/28/2020: SAP HANA küme kaynaklarını Red Hat zaman aşımı önerilerine hizalamak için [RHEL üzerindeki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) değişikliği yapın

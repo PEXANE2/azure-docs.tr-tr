@@ -1,19 +1,19 @@
 ---
 title: Desteklenen harita stilleri | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları tarafından desteklenen farklı eşleme işleme stilleri hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910636"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208293"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure haritalar desteklenen harita stilleri
 Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita stilini destekler.
@@ -31,7 +31,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 
 ## <a name="blank-and-blank_accessible"></a>boş ve blank_accessible
 
-**Boş** ve **blank_accessible** harita stilleri üzerinde verilerin görselleştirilmesi için boş bir tuval sağlar. **Blank_accessible** stili, temel harita görüntülenmese de haritanın bulunduğu konum ayrıntıları ile ekran okuyucu güncelleştirmeleri sağlamaya devam edecektir.
+**Boş** ve **blank_accessible** harita stilleri üzerinde verilerin görselleştirilmesi için boş bir tuval sağlar. **Blank_accessible** stili, temel harita görüntülenmese de haritanın konum ayrıntıları ile ekran okuyucusu güncelleştirmeleri sağlamaya devam edecektir.
 
 > [!Note]
 > Web SDK 'sında harita DIV öğesinin CSS `background-color` stilini ayarlayarak haritanın arka plan rengini değiştirebilirsiniz.
@@ -39,7 +39,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi
 
-## <a name="satellite"></a>satellite 
+## <a name="satellite"></a>uydu 
 **Uydu** stili, uydu ve hava imasıy 'nin bir birleşimidir.
 
 ![uydu kutucuk harita stili](./media/supported-map-styles/satellite.png)
@@ -80,7 +80,7 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 * Android harita denetimi
 
 
-## <a name="night"></a>Gece
+## <a name="night"></a>Gerçekleştirilmiştir
 **gece** , yol haritası stilinin renkli yollar ve semboller ile karanlık bir sürümüdür.
 
 ![gece harita stili](./media/supported-map-styles/night.png)

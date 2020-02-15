@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665366"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211824"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -31,7 +31,7 @@ Aşağıdaki diyagramda değişiklik analizinin mimarisi gösterilmektedir:
 
 ![Değişiklik analizinin değişiklik verilerini nasıl aldığı ve istemci araçlarına sağladığı mimari diyagramı](./media/change-analysis/overview.png)
 
-Şu anda değişiklik analizi, App Service Web uygulamasındaki **sorunları Tanıla ve çöz** deneyimiyle tümleşiktir ve Azure Portal bir tek başına dikey pencere olarak kullanılabilir.
+Şu anda değişiklik Analizi App Service Web uygulamasındaki **sorunları Tanıla ve çöz** deneyimiyle tümleşiktir ve Azure Portal bir tek başına sekme olarak kullanılabilir.
 Değişiklik Analizi dikey penceresine erişmek için *Azure 'daki tüm kaynaklarla ilgili değişiklikleri görüntüleme* bölümüne ve bu makalenin Ilerleyen kısımlarında Web App Portal içinde kullanmak üzere *Web Apps özelliği için değişiklik analizini* bölümüne bakın.
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>İzlenen Özellikler değişikliklerini Azure Resource Manager
@@ -39,7 +39,7 @@ Değişiklik Analizi dikey penceresine erişmek için *Azure 'daki tüm kaynakla
 [Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)'ni kullanarak, değişiklik analizi, uygulamanızı barındıran Azure kaynaklarının zaman içinde nasıl değiştiğini gösteren bir geçmiş kaydı sağlar. Yönetilen kimlikler, Platform işletim sistemi yükseltmesi ve ana bilgisayar adları gibi izlenen ayarlar algılanabilir.
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager proxy ayar değişiklikleri
-IP yapılandırma kuralı, SSL ayarları ve uzantı sürümleri gibi ayarlar bağımsız değişken içinde henüz kullanılamamaktadır, bu nedenle analiz sorgularını değiştirin ve uygulamada nelerin değiştiğini daha fazla ayrıntı sağlamak için bu değişiklikleri güvenli bir şekilde hesaplar. Bu bilgiler henüz Azure Kaynak grafiğinde kullanılamaz, ancak yakında kullanıma sunulacaktır.
+IP yapılandırma kuralı, SSL ayarları ve uzantı sürümleri gibi ayarlar bağımsız değişken içinde henüz kullanılamamaktadır, bu nedenle analiz sorgularını değiştirin ve uygulamada nelerin değiştirildiği konusunda daha fazla ayrıntı sağlamak için bu değişiklikleri güvenli bir şekilde hesaplar. Bu bilgiler henüz Azure Kaynak grafiğinde kullanılamaz, ancak yakında kullanıma sunulacaktır.
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Web uygulaması dağıtımı ve yapılandırmasındaki değişiklikler (konuk içi değişiklikler)
 
@@ -52,12 +52,13 @@ Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her
 Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunlara neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
 Şu anda aşağıdaki bağımlılıklar desteklenir:
 - Web Apps
-- Azure Depolama
+- Azure Storage
 - Azure SQL
 
 ### <a name="enablement"></a>Etkinleştirme
-"Microsoft. ChangeAnalysis" kaynak sağlayıcısının, Azure Resource Manager izlenen özellikler için bir aboneliğe kayıtlı olması ve proxy ayarları değişiklik verilerinin kullanılabilir olması gerekir. Web uygulamasını girerken sorunları tanılayın ve çözün veya değişiklik Analizi tek başına dikey penceresini getirin, bu kaynak sağlayıcı otomatik olarak kaydedilir. Aboneliğiniz için herhangi bir performans ve maliyet uygulaması yoktur.
-Web uygulaması Konuk içi değişiklikler için, bir Web uygulaması içindeki kod dosyalarını taramak üzere ayrı etkinleştirme gerekir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan *sorunları Tanıla ve çöz aracında bulunan değişiklik analizini etkinleştir* bölümüne bakın.
+"Microsoft. ChangeAnalysis" kaynak sağlayıcısının, Azure Resource Manager izlenen özellikler için bir aboneliğe kayıtlı olması ve proxy ayarları değişiklik verilerinin kullanılabilir olması gerekir. Web uygulaması tanılama ve çözme sorunları aracını girerken veya değişiklik Analizi tek başına sekmesini getirdiğinizde, bu kaynak sağlayıcı otomatik olarak kaydedilir. Aboneliğiniz için herhangi bir performans ve maliyet uygulaması yoktur. Web uygulamaları için değişiklik analizini etkinleştirdiğinizde (veya sorunları Tanıla ve çöz aracında etkinleştirmek), Web uygulaması üzerinde daha fazla performans etkisi olur ve faturalandırma maliyeti yoktur.
+Web uygulaması Konuk içi değişiklikler için, bir Web uygulaması içindeki kod dosyalarını taramak üzere ayrı etkinleştirme gerekir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [sorunları Tanıla ve çöz araç bölümündeki değişiklik analizini etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) bölümüne bakın.
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Azure 'daki tüm kaynaklar için değişiklikleri görüntüleme
 Azure Izleyici 'de, Öngörüler ve uygulama bağımlılıkları kaynaklarıyla ilgili tüm değişiklikleri görüntülemek için değişiklik analizinin tek başına dikey penceresi vardır.
@@ -73,12 +74,12 @@ Değişiklikleri görüntülemeye başlamak için kaynak grubu ve kaynaklar ' ı
 Uygulamanızı barındıran öngörüleri ve ilgili bağımlılıklar kaynaklarını görebilirsiniz. Bu görünüm, geliştiricilerin sorunları gidermelerine yönelik uygulama odaklı olacak şekilde tasarlanmıştır.
 
 Şu anda desteklenen kaynaklar şunlardır:
-- Virtual Machines (Sanal Makineler)
+- Virtual Machines
 - Sanal makine ölçek kümesi
 - Azure ağ kaynakları
 - Konuk içi dosya izleme ve ortam değişkenleri değişiklikleri içeren Web uygulaması
 
-Geri bildirimde bulunmak için lütfen dikey pencere veya e-posta changeanalysisteam@microsoft.comgeri bildirim gönder düğmesini kullanın.
+Her geri bildirimde, dikey pencerede veya e-posta changeanalysisteam@microsoft.comgeri bildirim gönder düğmesini kullanın.
 
 ![Değişiklik Analizi dikey penceresinde geri bildirim düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis-feedback.png)
 

@@ -3,34 +3,34 @@ title: Şablon işlevleri-diziler ve nesneler
 description: Diziler ve nesnelerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 16b36d290a99da56dffe82c9e4c7265a89350391
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484096"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207375"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dizi ve nesne işlevleri
 
 Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler sağlar.
 
-* [array](#array)
-* [coalesce](#coalesce)
-* [concat](#concat)
-* [contains](#contains)
+* [dizide](#array)
+* [Coalesce](#coalesce)
+* [Concat](#concat)
+* [vardır](#contains)
 * [createArray](#createarray)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
+* [olmamalıdır](#empty)
+* [adı](#first)
+* [imin](#intersection)
 * [nesnesinde](#json)
-* [last](#last)
-* [Uzunluğu](#length)
-* [max](#max)
-* [min](#min)
-* [range](#range)
-* [skip](#skip)
-* [take](#take)
-* [union](#union)
+* [soyadına](#last)
+* [uzunluklu](#length)
+* [Biçimlendir](#max)
+* [Min](#min)
+* [aralığı](#range)
+* [Şimdilik](#skip)
+* [almanız](#take)
+* [birleşim](#union)
 
 Bir değere göre ayrılmış dize değerleri dizisini almak için bkz. [split](template-functions-string.md#split).
 
@@ -42,9 +42,9 @@ Değeri bir diziye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Evet |int, string, array veya object |Bir diziye dönüştürülecek değer. |
+| convertToArray |Yes |int, string, array veya object |Bir diziye dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -119,9 +119,9 @@ Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int, string, array veya object |Null için sınanacak ilk değer. |
+| arg1 |Yes |int, string, array veya object |Null için sınanacak ilk değer. |
 | ek bağımsız değişkenler |Hayır |int, string, array veya object |Null için sınanacak ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -184,7 +184,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | ıntoutput | Int | 1 |
 | objectOutput | Nesne | {"First": "varsayılan"} |
 | arrayOutput | Dizi | [1] |
-| Emptızput | Bool | Doğru |
+| Emptızput | Bool | True |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -198,7 +198,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
-## <a name="concat"></a>concat
+## <a name="concat"></a>Concat
 
 `concat(arg1, arg2, arg3, ...)`
 
@@ -206,9 +206,9 @@ Birden çok diziyi birleştirir ve birleştirilmiş diziyi döndürür ya da bir
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |Birleştirme için ilk dizi veya dize. |
+| arg1 |Yes |dizi veya dize |Birleştirme için ilk dizi veya dize. |
 | ek bağımsız değişkenler |Hayır |dizi veya dize |Birleştirme için sıralı sırada ek diziler veya dizeler. |
 
 Bu işlev herhangi bir sayıda bağımsız değişken alabilir ve parametreler için dizeleri ya da dizileri kabul edebilir. Ancak, parametreleri için hem diziler hem de dizeler sağlayamıyoruz. Diziler yalnızca diğer dizilerle birleştirilir.
@@ -258,7 +258,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Dön | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| Döndürülmesini | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -320,10 +320,10 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -386,12 +386,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| stringTrue | Bool | Doğru |
-| stringFalse | Bool | Yanlış |
-| objectTrue | Bool | Doğru |
-| Objectfali | Bool | Yanlış |
-| arrayTrue | Bool | Doğru |
-| arrayFalse | Bool | Yanlış |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| Objectfali | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -413,9 +413,9 @@ Parametrelerden bir dizi oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |String, Integer, array veya Object |Dizideki ilk değer. |
+| arg1 |Yes |String, Integer, array veya Object |Dizideki ilk değer. |
 | ek bağımsız değişkenler |Hayır |String, Integer, array veya Object |Dizideki ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -492,9 +492,9 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -545,9 +545,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | Doğru |
-| objectEmpty | Bool | Doğru |
-| stringEmpty | Bool | Doğru |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -561,7 +561,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
-## <a name="first"></a>adı
+## <a name="first"></a>Adı
 
 `first(arg1)`
 
@@ -569,9 +569,9 @@ Dizinin ilk öğesini veya dizenin ilk karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |İlk öğe veya karakteri alma değeri. |
+| arg1 |Yes |dizi veya dize |İlk öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -633,10 +633,10 @@ Parametrelerden ortak öğelerle tek bir dizi veya nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
+| arg1 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
 | ek bağımsız değişkenler |Hayır |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -703,7 +703,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-## <a name="json"></a>json
+## <a name="json"></a>nesnesinde
 
 `json(arg1)`
 
@@ -711,9 +711,9 @@ JSON nesnesi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |string |JSON 'a dönüştürülecek değer. |
+| arg1 |Yes |string |JSON 'a dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -761,7 +761,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | jsonOutput | Nesne | {"a": "b"} |
-| nullOutput | Boole | Doğru |
+| nullOutput | Boole | True |
 | paramOutput | Nesne | {"a": "demo değeri"}
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
@@ -784,9 +784,9 @@ Dizinin son öğesini veya dizenin son karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |Son öğe veya karakteri alma değeri. |
+| arg1 |Yes |dizi veya dize |Son öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -826,7 +826,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | üç |
-| stringOutput | Dize | e |
+| stringOutput | Dize | a |
 
 Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
 
@@ -848,9 +848,9 @@ Bir dizideki öğelerin sayısını, bir dizedeki karakterleri veya bir nesnedek
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -937,7 +937,7 @@ Bu işlevi, kaynak oluştururken yineleme sayısını belirtmek için bir dizi i
 }
 ```
 
-Bu işlevi bir dizi ile kullanma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](create-multiple-instances.md).
+Bu işlevi bir dizi ile kullanma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 
 ## <a name="max"></a>en büyük
 
@@ -947,9 +947,9 @@ Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1002,7 +1002,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-## <a name="min"></a>dk
+## <a name="min"></a>en küçük
 
 `min(arg1)`
 
@@ -1010,9 +1010,9 @@ Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayıla
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1065,7 +1065,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-## <a name="range"></a>aralık
+## <a name="range"></a>aralığı
 
 `range(startingInteger, numberOfElements)`
 
@@ -1073,10 +1073,10 @@ Bir başlangıç tamnoktasından tamsayılar dizisi oluşturur ve bir dizi öğe
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Evet |int |Dizideki ilk tamsayı. |
-| numberofElements |Evet |int |Dizideki tamsayıların sayısı. |
+| startingInteger |Yes |int |Dizideki ilk tamsayı. |
+| numberofElements |Yes |int |Dizideki tamsayıların sayısı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1128,7 +1128,7 @@ PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
-## <a name="skip"></a>Atla
+## <a name="skip"></a>Şimdilik
 
 `skip(originalValue, numberToSkip)`
 
@@ -1136,10 +1136,10 @@ Dizide belirtilen sayıdan sonraki tüm öğeleri içeren bir dizi döndürür v
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Evet |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
-| numberToSkip |Evet |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
+| originalValue |Yes |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
+| numberToSkip |Yes |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1216,10 +1216,10 @@ Dizinin başından itibaren belirtilen sayıda öğe içeren bir dizi veya dizen
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Evet |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
-| numberToTake |Evet |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
+| originalValue |Yes |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
+| numberToTake |Yes |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1296,10 +1296,10 @@ Parametrelerden tüm öğeleri içeren tek bir dizi veya nesne döndürür. Yine
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
+| arg1 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
 | ek bağımsız değişkenler |Hayır |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -1368,8 +1368,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](template-syntax.md).
-* Birden fazla şablon birleştirmek için bkz: [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](create-multiple-instances.md).
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
+* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 * Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
 

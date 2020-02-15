@@ -3,12 +3,12 @@ title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120534"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207017"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -124,7 +124,7 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](create-multiple-instances.md#property-iteration)ile kullanıldığında, ifade kaynak özelliğine atandığından `input` için liste işlevlerini kullanabilirsiniz. Count, liste işlevi çözümlenmeden önce belirlenmesi gerektiğinden, bunları `count` kullanamazsınız.
+Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak özelliğine atandığından `input` için liste işlevlerini kullanabilirsiniz. Count, liste işlevi çözümlenmeden önce belirlenmesi gerektiğinden, bunları `count` kullanamazsınız.
 
 ### <a name="implementations"></a>Uygulamalar
 
@@ -496,7 +496,7 @@ Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesnede
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Başvuru işlevi yalnızca bir kaynak tanımı özelliklerini ve bir şablonu veya dağıtım çıktılar bölümünü kullanılabilir. [Özellik yinelemesi](create-multiple-instances.md#property-iteration)ile kullanıldığında, ifade kaynak özelliğine atandığından `input` için başvuru işlevini kullanabilirsiniz. Count, başvuru işlevi çözümlenmeden önce belirlenmesi gerektiğinden, bunu `count` kullanamazsınız.
+Başvuru işlevi yalnızca bir kaynak tanımı özelliklerini ve bir şablonu veya dağıtım çıktılar bölümünü kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak özelliğine atandığından `input` için başvuru işlevini kullanabilirsiniz. Count, başvuru işlevi çözümlenmeden önce belirlenmesi gerektiğinden, bunu `count` kullanamazsınız.
 
 İç içe yerleştirilmiş şablonda dağıttığınız bir kaynağı döndürmek için, [iç içe geçmiş bir şablonun](linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, [bağlantılı bir şablon](linked-templates.md#linked-template)kullanın.
 
@@ -758,7 +758,7 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz 
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (içinde GUID biçimi) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
+| subscriptionId |Hayır |dize (içinde GUID biçimi) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
 | resourceGroupName |Hayır |string |Geçerli kaynak grubu varsayılan değerdir. Başka bir kaynak grubunda kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |
@@ -1064,6 +1064,6 @@ Kiracıya dağıtılan bir kaynağın kaynak KIMLIĞINI almak için bu işlevi k
 
 * Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
 * Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
-* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](create-multiple-instances.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 * Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
 

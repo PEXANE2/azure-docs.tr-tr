@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277973"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208893"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -29,7 +29,7 @@ Yerel bilgisayarınızda işlevleri geliştirme ve temel araçları kullanarak b
 > * [İşlevi yerel olarak çalıştırın.](#start)
 > * [Projeyi Azure 'da yayımlayın.](#publish)
 
-## <a name="core-tools-versions"></a>Core Tools sürümleri
+## <a name="core-tools-versions"></a>Temel araçlar sürümleri
 
 Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yerel geliştirme ortamınıza, [dil seçimine](supported-languages.md)ve gerekli destek düzeyine bağlıdır:
 
@@ -218,7 +218,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 İşlev uygulaması ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru konularının ortam değişkenleri bölümüne bakın:
 
 * [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
-* [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#betik (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -373,7 +373,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Yerel olarak çalışırken, HTTP uç noktaları için yetkilendirme zorlanmaz. Bu, tüm yerel HTTP isteklerinin `authLevel = "anonymous"`olarak işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook.md#authorization-keys).
+>Yerel olarak çalışırken, HTTP uç noktaları için yetkilendirme zorlanmaz. Bu, tüm yerel HTTP isteklerinin `authLevel = "anonymous"`olarak işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Test verilerini bir işleve geçirme
 
@@ -517,7 +517,7 @@ Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 
 İşlevlerinizin yürütülmesini izlemek için önerilen yol, Azure Application Insights ile tümleştirilmesine göre yapılır. Ayrıca, yürütme günlüklerini yerel bilgisayarınıza da akışla aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
-### <a name="application-insights-integration"></a>Application Insights tümleştirmesi
+### <a name="application-insights-integration"></a>Application Insights tümleştirme
 
 Azure 'da işlev uygulamanızı oluştururken Application Insights tümleştirme etkinleştirilmelidir. Bazı nedenlerle işlev uygulamanız bir Application Insights örneğine bağlı değilse, bu tümleştirmeyi Azure portal yapmak kolaydır. 
 

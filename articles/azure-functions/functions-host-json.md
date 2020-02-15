@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024679"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208833"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
@@ -19,7 +19,7 @@ ms.locfileid: "77024679"
 *Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede, Azure Işlevleri çalışma zamanının 2. x sürümünden itibaren kullanılabilen ayarlar listelenir.  
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 2. x ve sonraki sürümleri için kullanılır.  İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
+> Bu makale, Azure Işlevleri 2. x ve sonraki sürümleri için kullanılır.  1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -145,21 +145,21 @@ Tüm JSON yapısı için, önceki [örnek Host. JSON dosyasına](#sample-hostjso
 
 | Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
-| samplingSettings | Yok | Bkz. [ApplicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | yok | Bkz. [ApplicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | samplingExcludedTypes | null | Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: bağımlılık, olay, özel durum, PageView, Istek, Izleme. Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
 | Samplingıncludedtypes | null | Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi; boş liste tüm türleri gösterir. Burada listelenen `samplingExcludedTypes` geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: bağımlılık, olay, özel durum, PageView, Istek, Izleme. Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
-| Enableliveölçümleri | doğru | Canlı ölçüm toplamayı etkin bir şekilde sunar. |
-| enableDependencyTracking | doğru | Bağımlılık izlemeyi etkinleştirilir. |
-| enablePerformanceCountersCollection | doğru | Kudu performans sayaçlarını toplamayı etkinleştirilir. |
+| Enableliveölçümleri | true | Canlı ölçüm toplamayı etkin bir şekilde sunar. |
+| enableDependencyTracking | true | Bağımlılık izlemeyi etkinleştirilir. |
+| enablePerformanceCountersCollection | true | Kudu performans sayaçlarını toplamayı etkinleştirilir. |
 | liveMetricsInitializationDelay | 00:00:15 | Yalnızca dahili kullanım içindir. |
-| httpAutoCollectionOptions | Yok | Bkz. [ApplicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | Yok | Bkz. [ApplicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | yok | Bkz. [ApplicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | yok | Bkz. [ApplicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>ApplicationInsights. samplingSettings
 
 |Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
-| isEnabled | doğru | Örneklemeyi etkinleştirilir veya devre dışı bırakır. | 
+| isEnabled | true | Örneklemeyi etkinleştirilir veya devre dışı bırakır. | 
 | maxTelemetryItemsPerSecond | 20 | Her bir sunucu konağında saniyede günlüğe kaydedilen telemetri öğelerinin hedef sayısı. Uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, genel hedef trafik hızında kalacak şekilde küçültün. | 
 | evaluationInterval | 01:00:00 | Geçerli telemetri hızının yeniden değerlendirilme aralığı. Değerlendirme, hareketli ortalama olarak gerçekleştirilir. Telemetriyi ani bursts 'e tabi olursa bu aralığı kısaltmak isteyebilirsiniz. |
 | ınitialörneklingpercentage| 1.0 | Örnekleme işleminin başlangıcında uygulanan ilk örnekleme yüzdesi, yüzdeyi dinamik olarak farklılık gösterir. Hata ayıklarken değeri küçültmeyin. |
@@ -173,9 +173,9 @@ Tüm JSON yapısı için, önceki [örnek Host. JSON dosyasına](#sample-hostjso
 
 |Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
-| Enablehttptriggerextendedınınfocollection | doğru | HTTP Tetikleyicileri için genişletilmiş HTTP isteği bilgilerini etkinleştirilir veya devre dışı bırakır: gelen istek bağıntı üstbilgileri, çok izleme anahtarları desteği, HTTP yöntemi, yol ve yanıt. |
-| enableW3CDistributedTracing | doğru | W3C dağıtılmış izleme protokolünün desteğini etkinleştirir veya devre dışı bırakır (ve eski bağıntı şemasını etkinleştirir). `enableHttpTriggerExtendedInfoCollection` true ise varsayılan olarak etkindir. `enableHttpTriggerExtendedInfoCollection` false ise, bu bayrak gelen istekler için değil yalnızca giden istekler için geçerlidir. |
-| Enableresponseheaderınjection | doğru | Çoklu bileşen bağıntı üstbilgilerinin yanıtlara eklenmesine izin vermez veya devre dışı bırakır. Ekleme özelliğinin etkinleştirilmesi, birden çok izleme anahtarı kullanıldığında Application Insights bir uygulama eşlemesi oluşturmasına izin verir. `enableHttpTriggerExtendedInfoCollection` true ise varsayılan olarak etkindir. `enableHttpTriggerExtendedInfoCollection` false ise, bu ayar uygulanmaz. |
+| Enablehttptriggerextendedınınfocollection | true | HTTP Tetikleyicileri için genişletilmiş HTTP isteği bilgilerini etkinleştirilir veya devre dışı bırakır: gelen istek bağıntı üstbilgileri, çok izleme anahtarları desteği, HTTP yöntemi, yol ve yanıt. |
+| enableW3CDistributedTracing | true | W3C dağıtılmış izleme protokolünün desteğini etkinleştirir veya devre dışı bırakır (ve eski bağıntı şemasını etkinleştirir). `enableHttpTriggerExtendedInfoCollection` true ise varsayılan olarak etkindir. `enableHttpTriggerExtendedInfoCollection` false ise, bu bayrak gelen istekler için değil yalnızca giden istekler için geçerlidir. |
+| Enableresponseheaderınjection | true | Çoklu bileşen bağıntı üstbilgilerinin yanıtlara eklenmesine izin vermez veya devre dışı bırakır. Ekleme özelliğinin etkinleştirilmesi, birden çok izleme anahtarı kullanıldığında Application Insights bir uygulama eşlemesi oluşturmasına izin verir. `enableHttpTriggerExtendedInfoCollection` true ise varsayılan olarak etkindir. `enableHttpTriggerExtendedInfoCollection` false ise, bu ayar uygulanmaz. |
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>ApplicationInsights. snapshotConfiguration
 
@@ -186,20 +186,20 @@ Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarınd
 | Tendtendpoint | null | Application Insights Snapshot Debugger hizmetine bağlanmak için kullanılan uç nokta. Null ise, varsayılan bir uç nokta kullanılır. |
 | captureSnapshotMemoryWeight | 0,5 | Anlık görüntü almak için yeterli bellek olup olmadığı denetlenirken geçerli işlem belleği boyutuna verilen ağırlık. Beklenen değer 0 ' dan büyük bir doğru kesenden (0 < CaptureSnapshotMemoryWeight < 1) fazla. |
 | failedRequestLimit | 3 | Telemetri işlemcisi devre dışı bırakılmadan önce anlık görüntü istemek için başarısız istek sayısı sınırı.|
-| handleUntrackedExceptions | doğru | Application Insights telemetri tarafından izlenmeyen özel durumların izlenmesini mümkün veya devre dışı bırakır. |
-| isEnabled | doğru | Anlık görüntü toplamayı etkinleştirilir veya devre dışı bırakır | 
-| isEnabledInDeveloperMode | yanlış | Geliştirici modunda anlık görüntü toplamayı etkinleştirme veya devre dışı bırakır. |
-| Isenabledwhenprofilleme | doğru | Application Insights Profiler ayrıntılı bir profil oluşturma oturumu toplasa bile, anlık görüntü oluşturmayı etkinleştirilir veya devre dışı bırakır. |
-| ısexceptionsnappointsenabled | yanlış | Özel durumların filtrelenmesini mümkün veya devre dışı bırakır. |
-| ılowprioritysnapshotuploader | doğru | Anlık görüntüyle ayarlana Tuploader işleminin normal öncelikte çalıştırılıp çalıştırılmayacağını belirler. |
+| handleUntrackedExceptions | true | Application Insights telemetri tarafından izlenmeyen özel durumların izlenmesini mümkün veya devre dışı bırakır. |
+| isEnabled | true | Anlık görüntü toplamayı etkinleştirilir veya devre dışı bırakır | 
+| isEnabledInDeveloperMode | false | Geliştirici modunda anlık görüntü toplamayı etkinleştirme veya devre dışı bırakır. |
+| Isenabledwhenprofilleme | true | Application Insights Profiler ayrıntılı bir profil oluşturma oturumu toplasa bile, anlık görüntü oluşturmayı etkinleştirilir veya devre dışı bırakır. |
+| ısexceptionsnappointsenabled | false | Özel durumların filtrelenmesini mümkün veya devre dışı bırakır. |
+| ılowprioritysnapshotuploader | true | Anlık görüntüyle ayarlana Tuploader işleminin normal öncelikte çalıştırılıp çalıştırılmayacağını belirler. |
 | maximumCollectionPlanSize | 50 | Bire 9999 arasında bir aralıkta izleyediğimiz en fazla sorun sayısı. |
 | Maximumanlık görüntüyle gerekli | 3 | Tek bir sorun için toplanan en fazla anlık görüntü sayısı, bire 999 arasındadır. Bir sorun, uygulamanızda tek bir throw deyimleri olarak düşünülebilir. Bir sorun için toplanan anlık görüntü sayısı bu değere ulaştığında, sorun sayaçları sıfırlanana kadar bu sorun için daha fazla anlık görüntü toplanmaz (bkz. `problemCounterResetInterval`) ve `thresholdForSnapshotting` sınırına yeniden ulaşıldı. |
 | Problemcounterresetınterval | 24:00:00 | Bir aralıktaki sorun sayaçlarını bir dakikadan yedi güne sıfırlama sıklığı. Bu aralığa ulaşıldığında, tüm sorun sayıları sıfıra sıfırlanır. Anlık görüntü yapma eşiğine zaten ulaşmış olan ancak `maximumSnapshotsRequired`anlık görüntü sayısı henüz üretilmemiş olan sorunlar, etkin durumda kaldı. |
-| Provideanonymoustelemetrisi | doğru | Microsoft 'a anonim kullanım ve hata telemetrisi gönderileceğini belirler. Bu telemetri, Snapshot Debugger sorunları gidermeye yardımcı olmak için Microsoft 'a başvurdıysanız kullanılabilir. Kullanım düzenlerini izlemek için de kullanılır. |
+| Provideanonymoustelemetrisi | true | Microsoft 'a anonim kullanım ve hata telemetrisi gönderileceğini belirler. Bu telemetri, Snapshot Debugger sorunları gidermeye yardımcı olmak için Microsoft 'a başvurdıysanız kullanılabilir. Kullanım düzenlerini izlemek için de kullanılır. |
 | Reconnectınterval | 00:15:00 | Snapshot Debugger uç noktasına ne sıklıkta yeniden bağlanıyoruz. İzin verilen Aralık, bir güne kadar bir dakikadır. |
 | shadowCopyFolder | null | Gölge kopyalama ikilileri için kullanılacak klasörü belirtir. Ayarlanmamışsa, aşağıdaki ortam değişkenleri tarafından belirtilen klasörler sırayla denenir: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
-| shareUploaderProcess | doğru | True ise, bir Snapshot Tuploader 'ın yalnızca bir örneği, ınstrumentationkey 'i paylaşan birden çok uygulama için anlık görüntüleri toplayıp karşıya yükler. False olarak ayarlanırsa, anlık görüntüyle ilgili Tuploader her bir (ProcessName, ınstrumentationkey) tanımlama grubu için benzersiz olacaktır. |
-| Anlık Ileti Tinlowprioritythread | doğru | Düşük GÇ öncelikli iş parçacığında anlık görüntülerin işleneceğini belirler. Anlık görüntü oluşturma hızlı bir işlemdir, ancak Snapshot Debugger hizmetine bir anlık görüntü yüklemek için öncelikle diske bir mini döküm olarak yazılması gerekir. Bu, anlık görüntüyle ilgili Tuploader sürecinde meydana gelir. Bu değerin true olarak ayarlanması, mini döküm yazmak için düşük öncelikli GÇ kullanır ve bu, kaynaklar için uygulamanızla rekabet etmenize izin vermez. Bu değerin false olarak ayarlanması, uygulamanızı yavaşlatarak mini döküm oluşturma işlemini hızlandırır. |
+| shareUploaderProcess | true | True ise, bir Snapshot Tuploader 'ın yalnızca bir örneği, ınstrumentationkey 'i paylaşan birden çok uygulama için anlık görüntüleri toplayıp karşıya yükler. False olarak ayarlanırsa, anlık görüntüyle ilgili Tuploader her bir (ProcessName, ınstrumentationkey) tanımlama grubu için benzersiz olacaktır. |
+| Anlık Ileti Tinlowprioritythread | true | Düşük GÇ öncelikli iş parçacığında anlık görüntülerin işleneceğini belirler. Anlık görüntü oluşturma hızlı bir işlemdir, ancak Snapshot Debugger hizmetine bir anlık görüntü yüklemek için öncelikle diske bir mini döküm olarak yazılması gerekir. Bu, anlık görüntüyle ilgili Tuploader sürecinde meydana gelir. Bu değerin true olarak ayarlanması, mini döküm yazmak için düşük öncelikli GÇ kullanır ve bu, kaynaklar için uygulamanızla rekabet etmenize izin vermez. Bu değerin false olarak ayarlanması, uygulamanızı yavaşlatarak mini döküm oluşturma işlemini hızlandırır. |
 | Anlık görüntüyle (gün sayısı) | 30 | Bir gün içinde izin verilen en fazla anlık görüntü sayısı (24 saat). Bu sınır Application Insights hizmet tarafında da zorlanır. Karşıya yüklemeler, uygulama başına günlük 50 (yani, izleme anahtarı başına) ile sınırlıdır. Bu değer, karşıya yükleme sırasında reddedilecek ek anlık görüntülerin oluşturulmasına engel olur. Sıfır değeri sınırı tamamen kaldırır, önerilmez. |
 | snapshotsPerTenMinutesLimit | 1 | 10 dakika içinde izin verilen en fazla anlık görüntü sayısı. Bu değerde üst sınır olmasa da, uygulamanızın performansını etkileyebileceğinden, üretim iş yükleri üzerinde dikkatli davranmaya dikkat edin. Anlık görüntü oluşturmak hızlıdır, ancak anlık görüntünün bir mini döküm oluşturması ve Snapshot Debugger hizmetine yüklenmesi, kaynak (hem CPU hem de g/ç) için uygulamanızla rekabet edecek çok daha yavaş bir işlemdir. |
 | tempFolder | null | Mini dökümler ve Uploader günlük dosyalarının yazılacağı klasörü belirtir. Ayarlanmamışsa, *%Temp%\dökümler* kullanılır. |
@@ -218,7 +218,7 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
 
-## <a name="extensions"></a>uzantılardan
+## <a name="extensions"></a>uzantılar
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
@@ -228,7 +228,7 @@ Uzantı paketleri, işlev uygulamanıza uygun bir Işlev kümesi bağlama uzant�
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="functions"></a>işlevler
+## <a name="functions"></a>işlevleri
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -270,7 +270,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|enabled|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
 |healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
@@ -278,9 +278,9 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 ## <a name="http"></a>http
 
-Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md#hostjson-settings)içinde bulunabilir.
+Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook-output.md#hostjson-settings)içinde bulunabilir.
 
-## <a name="logging"></a>açmak
+## <a name="logging"></a>günlük kaydı
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -303,9 +303,9 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always``debugOnly`. |
-|logLevel|Yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|console|Yok| [console](#console) günlüğü ayarı. |
-|applicationInsights|Yok| [ApplicationInsights](#applicationinsights) ayarı. |
+|logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
+|console|yok| [Konsol](#console) günlüğü ayarı. |
+|applicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
 ## <a name="console"></a>console
 
@@ -325,7 +325,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|isEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|isEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
 ## <a name="manageddependency"></a>managedDependency bağımlılığı
 
@@ -339,7 +339,7 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 }
 ```
 
-## <a name="queues"></a>klarında
+## <a name="queues"></a>sıralar
 
 Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
 
@@ -373,7 +373,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|Yok|Kilit alma denemeleri arasındaki Aralık.| 
+|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
 ## <a name="version"></a>version
 

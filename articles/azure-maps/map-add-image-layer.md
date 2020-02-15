@@ -1,6 +1,6 @@
 ---
 title: Haritaya görüntü katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, harita üzerinde Microsoft Azure haritaları Web SDK 'sını kullanarak bir görüntünün nasıl kaplamasıyla ilgili bilgi edineceksiniz.
+description: Bu makalede, harita üzerinde Microsoft Azure haritaları Web SDK 'sını kullanarak bir görüntünün nasıl kaplayacağınızı öğreneceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933208"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209724"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Haritaya görüntü katmanı ekleme
 
-Bu makalede, bir görüntünün harita üzerindeki sabit bir koordinat kümesiyle nasıl kaplamanız gösterilmektedir. Haritalar üzerinde sık sık çakışan görüntü türüne örnek olarak aşağıda verilmiştir:
+Bu makalede bir görüntünün sabit bir koordinat kümesiyle nasıl kaplama yapılacağı gösterilir. Haritalar üzerinde kaplama olabilecek farklı görüntü türlerine birkaç örnek aşağıda verilmiştir:
 
 * Dronlarla 'den yakalanan görüntüler
 * Floorplanlar oluşturma
@@ -62,9 +62,9 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>KML dosyasını arka plan kaplaması olarak içeri aktarma
 
-Bu sonraki örnek, KML zemin kaplama bilgilerinin haritada bir görüntü katmanı olarak nasıl ekleneceğini gösterir. KML sol yer paylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve bir sayaç saat yönünde döndürme sağlar, ancak görüntü katmanı görüntünün her bir köşesinde koordinatları bekler. Bu örnekteki KML zemin kaplaması Chartres Cathedral ' dir ve [Wikımedıa](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'dan kaynaklıdır.
+Bu örnek, KML zemin kaplama bilgilerinin haritada görüntü katmanı olarak nasıl ekleneceğini gösterir. KML zemin Yerpaylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve saat yönünde bir döndürme sağlar. Ancak, görüntü katmanı görüntünün her köşesi için koordinatları bekler. Bu örnekteki KML zemin kaplaması, Chartres Cathedral içindir ve [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'dan kaynaklıdır.
 
-Aşağıdaki kod, [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) sınıfının statik `getCoordinatesFromEdges` işlevini kullanır. Görüntünün dört köşesini Kuzey, Güney, Doğu ve Batı ve KML zemin kaplamasıyla döndürme bilgilerini hesaplar.
+Kod, [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) sınıfından statik `getCoordinatesFromEdges` işlevini kullanır. KML zemin kaplamanın Kuzey, Güney, Doğu, Batı ve döndürme bilgilerini kullanarak görüntünün dört köşesini hesaplar.
 
 <br/>
 

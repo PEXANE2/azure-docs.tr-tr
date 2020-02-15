@@ -3,12 +3,12 @@ title: Dağıtım modları
 description: Azure Resource Manager ile tamamlanmış veya artımlı dağıtım modunun kullanılıp kullanılmayacağını nasıl belirleyeceğiniz açıklanır.
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261033"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207596"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager Dağıtım modları
 
@@ -24,7 +24,7 @@ Tüm modda Kaynak Yöneticisi kaynak grubunda var olan ancak şablonda belirtilm
 
 Şablonunuz, [koşul](conditional-resource-deployment.md) false olarak değerlendirildiği için dağıtılan bir kaynağı içeriyorsa, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, kaynağı siler.
 
-[Kopyalama döngülerine](create-multiple-instances.md)sahip tüm modu kullanırken dikkatli olun. Kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen kaynaklar silinir.
+[Kopyalama döngülerine](copy-resources.md)sahip tüm modu kullanırken dikkatli olun. Kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen kaynaklar silinir.
 
 [Bir şablonda birden fazla kaynak grubuna](cross-resource-group-deployment.md)dağıtırsanız, dağıtım işleminde belirtilen kaynak grubundaki kaynaklar silinebilir. İkincil kaynak gruplarındaki kaynaklar silinmez.
 

@@ -3,12 +3,12 @@ title: Kaynaklar için dağıtım sırasını ayarla
 description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121973"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207698"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak dağıtma sırasını tanımlayın
 
@@ -40,7 +40,7 @@ Aşağıdaki örnek, bir yük dengeleyiciye, sanal ağa ve birden çok depolama 
 }
 ```
 
-Yukarıdaki örnekte, **Storageloop**adlı bir kopya döngüsüyle oluşturulan kaynaklara bir bağımlılık dahildir. Bir örnek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](create-multiple-instances.md).
+Yukarıdaki örnekte, **Storageloop**adlı bir kopya döngüsüyle oluşturulan kaynaklara bir bağımlılık dahildir. Bir örnek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 
 Bağımlılıkları tanımlarken, belirsizlik olmaması için kaynak sağlayıcısı ad alanını ve kaynak türünü dahil edebilirsiniz. Örneğin, diğer kaynaklarla aynı ada sahip olabilecek bir yük dengeleyiciyi ve sanal ağı netleştirmek için aşağıdaki biçimi kullanın:
 

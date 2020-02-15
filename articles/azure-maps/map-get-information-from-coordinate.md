@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988541"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208531"
 ---
 # <a name="get-information-from-a-coordinate"></a>Bir koordinattan bilgi alma
 
 Bu makalede, tıklanan bir açılan konumun adresini gösteren bir ters adres aramasının nasıl yapılacağı gösterilmektedir.
 
-Ters adres araması yapmak için iki yol vardır. Bir yol, [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sini bir hizmet modülü aracılığıyla sorgulamanızı sağlar. Diğer bir deyişle, bir adres bulmak için [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sine bir istek yapmak üzere [getirme API](https://fetch.spec.whatwg.org/) 'sini kullanmak daha da olur. Her iki yol da aşağıda verilmiştir.
+Ters adres araması yapmak için iki yol vardır. Bir yol, [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sini bir hizmet modülü aracılığıyla sorgulamanızı sağlar. Diğer bir deyişle, bir adres bulmak için [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sine bir istek yapmak üzere [Fetch API](https://fetch.spec.whatwg.org/) 'sini kullanmak bu şekilde kullanılır. Her iki yol da aşağıda verilmiştir.
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Hizmet modülü aracılığıyla ters arama isteği oluşturma
 
@@ -37,7 +37,7 @@ Dördüncü kod bloğu, fare tıklaması [olay dinleyicisi](https://docs.microso
 
 Beşinci kod bloğu, tıklanan koordinat konumunun yanıt adresini görüntüleyen HTML açılan içeriğini ayarlar.
 
-İmleç, bir açılan nesne ve tıklama olayının değişikliği, koordinatların bilgileri alınmadan önce haritanın yükünü tamamen sağlamak için haritanın [yük olay dinleyicisinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) oluşturulur.
+İmleç değişikliği, açılan nesne ve Click olayının hepsi haritanın [yükleme olayı dinleyicisinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)oluşturulur. Bu kod yapısı, koordinat bilgilerini almadan önce haritanın tam olarak yüklenmesini sağlar.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Fetch API aracılığıyla ters arama isteği oluşturma
 
@@ -52,7 +52,7 @@ Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur ve kimlik doğru
 
 Üçüncü kod bloğu fare tıklamaları için bir olay dinleyicisi ekler. Fare tıklamasından sonra, tıklanan koordinat adresi için [Azure Maps ters adres ARAMASı API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 'sini sorgulamak üzere [Fetch API](https://fetch.spec.whatwg.org/) 'sini kullanır. Başarılı bir yanıt için, tıklanan konumun adresini toplar. Açılır sınıfın [SetOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) işlevini kullanarak açılan içeriği ve konumu tanımlar.
 
-İmleç, bir açılan nesne ve tıklama olayının değiştirilmesi, koordinatların bilgileri alınmadan önce eşlemenin yükünü tam olarak sağlamak için haritanın [yük olay dinleyicisinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) oluşturulur.
+İmleç değişikliği, açılan nesne ve Click olayının hepsi haritanın [yükleme olayı dinleyicisinde](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)oluşturulur. Bu kod yapısı, koordinat bilgilerini almadan önce haritanın tam olarak yüklenmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

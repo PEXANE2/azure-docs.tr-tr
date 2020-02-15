@@ -3,24 +3,24 @@ title: Şablon işlevleri-sayısal
 description: Sayılarla çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 1a611277bb473d605c76d131a18f9ccb550fab29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483953"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207268"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için sayısal işlevler
 
 Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* [add](#add)
+* [ekleyemiyorum](#add)
 * [Copyındex](#copyindex)
-* [div](#div)
+* [DIV](#div)
 * [float](#float)
-* [int](#int)
-* [max](#max)
-* [min](#min)
+* ['tir](#int)
+* [Biçimlendir](#max)
+* [Min](#min)
 * [alma](#mod)
 * [MUL](#mul)
 * [alt](#sub)
@@ -36,10 +36,10 @@ Belirtilen iki tam sayının toplamını döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Evet |int |Eklenecek ilk numara. |
-|işlenen2 |Evet |int |Eklenecek ikinci sayı. |
+|operand1 |Yes |int |Eklenecek ilk numara. |
+|işlenen2 |Yes |int |Eklenecek ikinci sayı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -107,7 +107,7 @@ Yineleme döngüsünün dizinini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | loopName | Hayır | string | Yinelemeyi alma döngüsünün adı. |
 | offset |Hayır |int |Sıfır tabanlı yineleme değerine eklenecek sayı. |
@@ -118,7 +118,7 @@ Bu işlev her zaman bir **kopyalama** nesnesiyle birlikte kullanılır. **Konum*
 
 **Loopname** özelliği, copyındex 'in bir kaynak yinelemeye mi yoksa Özellik yinelemesine mi başvurmadığını belirtmenizi sağlar. **Loopname**için değer sağlanmazsa, geçerli kaynak türü yinelemesi kullanılır. Bir özellik üzerinde yineleme yaparken **Loopname** için bir değer belirtin. 
  
-**Copyındex**'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](create-multiple-instances.md).
+**Copyındex**'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 
 Bir değişken tanımlarken **Copyındex** kullanımına ilişkin bir örnek için bkz. [değişkenler](template-syntax.md#variables).
 
@@ -153,10 +153,10 @@ Belirtilen iki tamsayının tamsayı bölümünü döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Bölünmekte olan sayı. |
-| işlenen2 |Evet |int |Bölmek için kullanılan sayı. 0 olamaz. |
+| operand1 |Yes |int |Bölünmekte olan sayı. |
+| işlenen2 |Yes |int |Bölmek için kullanılan sayı. 0 olamaz. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -224,9 +224,9 @@ Değeri kayan noktalı sayıya dönüştürür. Bu işlevi yalnızca, bir mantı
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
+| arg1 |Yes |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Kayan nokta sayısı.
@@ -258,9 +258,9 @@ Belirtilen değeri bir tamsayıya dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Evet |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
+| valueToConvert |Yes |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -318,9 +318,9 @@ Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -375,16 +375,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>dk
+## <a name="min"></a>en küçük
 `min (arg1)`
 
 Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayılar listesini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -446,10 +446,10 @@ Belirtilen iki tamsayının kullanıldığı tamsayı bölümünün kalanını d
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Bölünmekte olan sayı. |
-| işlenen2 |Evet |int |Bölmek için kullanılan sayı 0 olamaz. |
+| operand1 |Yes |int |Bölünmekte olan sayı. |
+| işlenen2 |Yes |int |Bölmek için kullanılan sayı 0 olamaz. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Kalanı temsil eden bir tamsayı.
@@ -516,10 +516,10 @@ Belirtilen iki tamsayının çarpma sayısını döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Çarpılacak ilk sayı. |
-| işlenen2 |Evet |int |Çarpılacak ikinci sayı. |
+| operand1 |Yes |int |Çarpılacak ilk sayı. |
+| işlenen2 |Yes |int |Çarpılacak ikinci sayı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -587,10 +587,10 @@ Belirtilen iki tamsayının çıkarma sayısını döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Çıkarılan sayı. |
-| işlenen2 |Evet |int |Çıkarılan sayı. |
+| operand1 |Yes |int |Çıkarılan sayı. |
+| işlenen2 |Yes |int |Çıkarılan sayı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Çıkarma temsil eden bir tamsayı.
@@ -649,8 +649,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](template-syntax.md).
-* Birden fazla şablon birleştirmek için bkz: [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](create-multiple-instances.md).
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
+* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 * Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
 

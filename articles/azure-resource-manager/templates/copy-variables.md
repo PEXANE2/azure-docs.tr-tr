@@ -1,0 +1,319 @@
+---
+title: Bir değişkenin birden çok örneğini tanımlama
+description: Bir değişken oluştururken birden çok kez yinelemek için Azure Resource Manager şablonda kopyalama işlemini kullanın.
+ms.topic: conceptual
+ms.date: 02/13/2020
+ms.openlocfilehash: 9e252a0b9721ffec99535c5d30e609e12e9e67eb
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210820"
+---
+# <a name="variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda değişken yineleme
+
+Bu makalede, Azure Resource Manager şablonunuzda bir değişken için birden fazla değer oluşturma gösterilmektedir. Şablonunuzun değişkenler bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir değişken için öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
+
+Ayrıca, [bir kaynaktaki kaynak](copy-properties.md)ve [](copy-resources.md) özelliklerle Kopyala özelliğini de kullanabilirsiniz.
+
+## <a name="variable-iteration"></a>Değişken yineleme
+
+Copy öğesi aşağıdaki genel biçime sahiptir:
+
+```json
+"copy": [
+  {
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "input": <values-for-the-variable>
+  }
+]
+```
+
+**Name** özelliği, döngüsünü tanımlayan herhangi bir değerdir. **Count** özelliği, değişken için istediğiniz yineleme sayısını belirtir.
+
+**Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun. Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
+
+Aşağıdaki örnek dize değerleri dizisinin nasıl oluşturulacağını gösterir:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "itemCount": {
+            "type": "int",
+            "defaultValue": 5
+        }
+     },
+    "variables": {
+        "copy": [
+            {
+                "name": "stringArray",
+                "count": "[parameters('itemCount')]",
+                "input": "[concat('item', copyIndex('stringArray', 1))]"
+            }
+        ]
+    },
+    "resources": [],
+    "outputs": {
+        "arrayResult": {
+            "type": "array",
+            "value": "[variables('stringArray')]"
+        }
+    }
+}
+```
+
+Önceki şablon, aşağıdaki değerlere sahip bir dizi döndürür:
+
+```json
+[
+    "item1",
+    "item2",
+    "item3",
+    "item4",
+    "item5"
+]
+```
+
+Sonraki örnekte, üç özelliklere (Name, diskSizeGB ve DiskIndex) sahip bir nesne dizisinin nasıl oluşturulacağı gösterilmektedir.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "itemCount": {
+            "type": "int",
+            "defaultValue": 5
+        }
+    },
+    "variables": {
+        "copy": [
+            {
+                "name": "objectArray",
+                "count": "[parameters('itemCount')]",
+                "input": {
+                    "name": "[concat('myDataDisk', copyIndex('objectArray', 1))]",
+                    "diskSizeGB": "1",
+                    "diskIndex": "[copyIndex('objectArray')]"
+                }
+            }
+        ]
+    },
+    "resources": [],
+    "outputs": {
+        "arrayResult": {
+            "type": "array",
+            "value": "[variables('objectArray')]"
+        }
+    }
+}
+```
+
+Yukarıdaki örnek aşağıdaki değerlere sahip bir dizi döndürür:
+
+```json
+[
+    {
+        "name": "myDataDisk1",
+        "diskSizeGB": "1",
+        "diskIndex": 0
+    },
+    {
+        "name": "myDataDisk2",
+        "diskSizeGB": "1",
+        "diskIndex": 1
+    },
+    {
+        "name": "myDataDisk3",
+        "diskSizeGB": "1",
+        "diskIndex": 2
+    },
+    {
+        "name": "myDataDisk4",
+        "diskSizeGB": "1",
+        "diskIndex": 3
+    },
+    {
+        "name": "myDataDisk5",
+        "diskSizeGB": "1",
+        "diskIndex": 4
+    }
+]
+```
+
+> [!NOTE]
+> Değişken yineleme, bir fark bağımsız değişkenini destekler. Konum, Copyındex (' diskNames ', 1) gibi yinelemenin adından sonra gelmelidir. Bir fark değeri sağlamazsanız, ilk örnek için varsayılan değer 0 ' dır.
+>
+
+Ayrıca, bir değişken içinde Copy öğesini de kullanabilirsiniz. Aşağıdaki örnek, değerlerinden biri olarak bir dizi içeren bir nesnesi oluşturur.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "itemCount": {
+            "type": "int",
+            "defaultValue": 5
+        }
+    },
+    "variables": {
+        "topLevelObject": {
+            "sampleProperty": "sampleValue",
+            "copy": [
+                {
+                    "name": "disks",
+                    "count": "[parameters('itemCount')]",
+                    "input": {
+                        "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+                        "diskSizeGB": "1",
+                        "diskIndex": "[copyIndex('disks')]"
+                    }
+                }
+            ]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "objectResult": {
+            "type": "object",
+            "value": "[variables('topLevelObject')]"
+        }
+    }
+}
+```
+
+Yukarıdaki örnek, aşağıdaki değerlere sahip bir nesne döndürür:
+
+```json
+{
+    "sampleProperty": "sampleValue",
+    "disks": [
+        {
+            "name": "myDataDisk1",
+            "diskSizeGB": "1",
+            "diskIndex": 0
+        },
+        {
+            "name": "myDataDisk2",
+            "diskSizeGB": "1",
+            "diskIndex": 1
+        },
+        {
+            "name": "myDataDisk3",
+            "diskSizeGB": "1",
+            "diskIndex": 2
+        },
+        {
+            "name": "myDataDisk4",
+            "diskSizeGB": "1",
+            "diskIndex": 3
+        },
+        {
+            "name": "myDataDisk5",
+            "diskSizeGB": "1",
+            "diskIndex": 4
+        }
+    ]
+}
+```
+
+Sonraki örnekte, değişkenleri ile kopyalama kullanmanın farklı yolları gösterilmektedir.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "disk-array-on-object": {
+      "copy": [
+        {
+          "name": "disks",
+          "count": 5,
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
+          }
+        },
+        {
+          "name": "diskNames",
+          "count": 5,
+          "input": "[concat('myDataDisk', copyIndex('diskNames', 1))]"
+        }
+      ]
+    },
+    "copy": [
+      {
+        "name": "top-level-object-array",
+        "count": 5,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('top-level-object-array', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('top-level-object-array')]"
+        }
+      },
+      {
+        "name": "top-level-string-array",
+        "count": 5,
+        "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+      },
+      {
+        "name": "top-level-integer-array",
+        "count": 5,
+        "input": "[copyIndex('top-level-integer-array')]"
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "exampleObject": {
+      "value": "[variables('disk-array-on-object')]",
+      "type": "object"
+    },
+    "exampleArrayOnObject": {
+      "value": "[variables('disk-array-on-object').disks]",
+      "type" : "array"
+    },
+    "exampleObjectArray": {
+      "value": "[variables('top-level-object-array')]",
+      "type" : "array"
+    },
+    "exampleStringArray": {
+      "value": "[variables('top-level-string-array')]",
+      "type" : "array"
+    },
+    "exampleIntegerArray": {
+      "value": "[variables('top-level-integer-array')]",
+      "type" : "array"
+    }
+  }
+}
+```
+
+## <a name="copy-limits"></a>Sınırları Kopyala
+
+Sayım 800 ' i aşamaz.
+
+Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
+
+## <a name="example-templates"></a>Örnek şablonları
+
+Aşağıdaki örneklerde, bir değişken için birden fazla değer oluşturmak için yaygın senaryolar gösterilmektedir.
+
+|Şablon  |Açıklama  |
+|---------|---------|
+|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
+|[Çoklu güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna birkaç güvenlik kuralı dağıtır. Bir parametreden güvenlik kuralları oluşturur. Parametresi için bkz. [birden çok NSG parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Öğreticiye gitmek için bkz. [öğretici: Kaynak Yöneticisi şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
+* Copy öğesinin diğer kullanımları için, Azure Resource Manager şablonlarındaki Azure Resource Manager şablonlarda ve [özellik yinelemede](copy-properties.md) [kaynak yineleme](copy-resources.md) bölümüne bakın.
+* Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
+* Şablonunuzu dağıtmayı öğrenmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
+

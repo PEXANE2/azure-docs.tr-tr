@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169368"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209282"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -47,7 +47,7 @@ Makalesinde, bu seçeneklerle videolarınızı karşıya yükleme ve dizin oluş
 
     Özel bir URL ise, istekte erişim belirtecinin sağlanması gerekir.
 - URL, `www.youtube.com` sayfasına yönelik bağlantı gibi, bir Web sayfasına değil, geçerli bir medya dosyasına işaret etmek zorunda.
-- Dakikada en fazla 60 film yükleyebilirsiniz.
+- Ücretli bir hesapta, dakikada en fazla 50 film yükleyebilirsiniz ve dakikada 5 filmle bir deneme hesabı kullanabilirsiniz.
 
 > [!Tip]
 > .NET Framework 4.6.2 veya üzeri bir sürümünü kullanmanız önerilir. Eski .NET Framework sürümlerinde varsayılan olarak TLS 1.2 ayarı kullanılmaz.
@@ -66,7 +66,7 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
 2. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
 
-    ![Karşıya Yükleme](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Karşıya Yükle](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar.
 
@@ -91,7 +91,7 @@ Bu parametre, video ile ilişkilendirilecek bir kimlik belirtmenize olanak sağl
 Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir URL (POST isteği kullanılarak):
 
 - Dizin oluşturma durum değişikliği: 
-    - Özellikler:    
+    - Özelliklerinin    
     
         |Ad|Açıklama|
         |---|---|
@@ -160,8 +160,8 @@ Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanı
 
     API anahtarınızı almak için şu akışa gidin:
 
-    * Gidin https://api-portal.videoindexer.ai/
-    * Oturum aç
+    * https://api-portal.videoindexer.ai/ git
+    * Oturum Aç
     *  -> **Yetkilendirme aboneliğine** yönelik **ürün** -> **Yetkilendirme** aboneliği ' ne gidin
     * **Birincil anahtarı** Kopyala
 * Video URL 'SI: endekslenecek video/ses dosyasının URL 'SI. URL bir medya dosyasına yönlendirmelidir (HTML sayfaları desteklenmez). Dosya, URI'nin parçası olarak sunulan bir erişim belirteci tarafından korunabilir ve dosyayı sunan uç noktanın güvenliği TLS 1.2 veya üzeri bir sürümle sağlanmalıdır. URL’nin kodlanması gerekir.
@@ -348,6 +348,7 @@ Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|
+|429||Deneme hesaplarına dakika başına 5 karşıya yükleme izni verilir. Ücretli hesaplara dakika başına 50 yükleme izni verilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

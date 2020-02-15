@@ -1,5 +1,5 @@
 ---
-title: Sorgu ve Dizin iş yükleri için ölçek kapasitesi
+title: Sorgu ve Dizin iş yükleri için kapasiteyi ayarla
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de, her kaynağın faturalandırılabilir arama birimlerinde fiyatlandırıldıkları bölüm ve çoğaltma bilgisayar kaynaklarını ayarlayın.
 manager: nitinme
@@ -7,54 +7,46 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 349587063c528fef1cbdb09d84e61e82443d45d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/14/2020
+ms.openlocfilehash: bc90ecb029afe70ed61e94a727c67c53bb968b96
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906722"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212555"
 ---
-# <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgu ve Dizin iş yükleri için kapasite eklemek üzere bölümleri ve çoğaltmaları ölçeklendirin
+# <a name="adjust-capacity-in-azure-cognitive-search"></a>Azure Bilişsel Arama kapasiteyi ayarlama
 
-[Bir fiyatlandırma katmanı seçip](search-sku-tier.md) [bir arama hizmeti](search-create-service-portal.md)sağladıktan sonra, bir sonraki adım isteğe bağlı olarak hizmetiniz tarafından kullanılan çoğaltma veya bölüm sayısını artırmadır. Her katman, sabit sayıda faturalandırma birimi sunar. Bu makalede, sorgu yürütme, dizin oluşturma ve depolama için gereksinimlerinizi dengeleyen en iyi yapılandırmayı elde etmek üzere bu birimlerin nasıl tahsis edilebileceği açıklanmaktadır.
+Belirli bir fiyatlandırma katmanında [bir arama hizmetini](search-create-service-portal.md) ve kilitlemeyi sağlamadan önce, bir hizmette bulunan kopyaların ve bölümlerin rolünü anlamak için birkaç dakikanızı alın, bu durumda orantılı veya daha hızlı bölümler gerekip gerekmediğini ve hizmeti beklenen yük için nasıl yapılandırabileceğinizi öğrenin.
 
-Kaynak Yapılandırması, [Temel katmanda](https://aka.ms/azuresearchbasic) bir hizmeti veya [Standart ya da depolama için iyileştirilmiş katmanlardan](search-limits-quotas-capacity.md)birini ayarlarken kullanılabilir. Bu katmanlardaki hizmetler için, kapasite her bir bölüm ve çoğaltmanın bir SU olarak sayılabileceği *arama birimlerinin* (SUs) artışlarla satın alınır. 
-
-Daha az sayıda SUs sonucu, orantılı bir şekilde daha düşüktür. Hizmet ayarlandığı sürece faturalandırma yürürlüğe girer. Geçici olarak bir hizmet kullanmıyorsanız, faturalandırma yapmanın tek yolu hizmeti silip daha sonra gerektiğinde yeniden oluşturmaktır.
-
-> [!Note]
-> Hizmet silindiğinde üzerindeki her şey de silinir. Azure Bilişsel Arama hizmetinde kalıcı arama verilerini yedekleme veya geri yükleme olanağı yoktur. Mevcut bir dizini yeni bir hizmette yeniden dağıtmak için, ilk olarak oluşturmak ve yüklemek üzere kullanılan programı çalıştırmanız gerekir. 
+Kapasite, [seçtiğiniz katmanın](search-sku-tier.md) bir işlevidir (Katmanlar, donanım özelliklerini belirleme) ve tasarlanan iş yükleri için gereken çoğaltma ve bölüm birleşimini. Bu makale, çoğaltma ve bölüm birleşimlerine ve etkileşimlere odaklanır.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminoloji: çoğaltmalar ve bölümler
-Çoğaltmalar ve bölümler, bir arama hizmetini geri yükleyen birincil kaynaklardır.
 
-| Kaynak | Tanım |
-|----------|------------|
-|*Bölümler* | Okuma/yazma işlemleri için dizin depolama ve g/ç sağlar (örneğin, bir dizini yeniden oluşturma veya yenileme).|
-|*Çoğaltmaları* | Arama hizmeti örnekleri, öncelikli olarak sorgu işlemlerinin yükünü dengelemek için kullanılır. Her çoğaltma her zaman bir dizinin kopyasını barındırır. 12 çoğaltmadıysanız, hizmete yüklenen her dizinin 12 kopyasına sahip olursunuz.|
-
-> [!NOTE]
-> Bir çoğaltmada hangi dizinlerin çalıştırılacağını doğrudan değiştirmek veya yönetmek için bir yol yoktur. Her yinelemede her bir dizinin bir kopyası, hizmet mimarisinin bir parçasıdır.
->
-
+|||
+|-|-|
+|*Bölümler* | Okuma/yazma işlemleri için dizin depolama ve g/ç sağlar (örneğin, bir dizini yeniden oluşturma veya yenileme). Her bölümde toplam dizinin bir payı vardır. Üç bölüm ayırırsanız, dizininiz üçe bölünür. |
+|*Çoğaltmaları* | Arama hizmeti örnekleri, öncelikli olarak sorgu işlemlerinin yükünü dengelemek için kullanılır. Her çoğaltma bir dizinin bir kopyasıdır. Üç çoğaltma ayırırsanız, sorgu isteklerine hizmet vermek için kullanılabilir bir dizinin üç kopyasına sahip olursunuz.|
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Çoğaltmaları ve bölümleri ayırma
-Azure Bilişsel Arama, bir hizmete başlangıçta bir bölümden ve bir çoğaltmadan oluşan en az düzeyde kaynak ayrılır. Bunu destekleyen katmanlar için, daha fazla depolama ve g/ç gerekiyorsa bölümleri artırarak hesaplama kaynaklarını artımlı olarak ayarlayabilir veya daha büyük sorgu birimleri veya daha iyi performans için daha fazla çoğaltma ekleyebilirsiniz. Tek bir hizmetin tüm iş yüklerini (Dizin oluşturma ve sorgular) işlemek için yeterli kaynak olması gerekir. Birden çok hizmet arasında iş yüklerini bölülemez.
 
-Çoğaltmaları ve bölümleri ayırmayı artırmak veya değiştirmek için Azure portal kullanmanızı öneririz. Portal, en fazla limitlerin altında kalacak izin verilen birleşimler üzerinde sınırlar uygular. Betik tabanlı veya kod tabanlı bir sağlama yaklaşımına ihtiyacınız varsa [Azure PowerShell](search-manage-powershell.md) veya [Yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatif çözümlerdir.
+Başlangıçta, bir hizmete bir bölümden ve bir çoğaltmadan oluşan en az düzeyde kaynak ayrılır. 
 
-Genellikle, özellikle de hizmet işlemleri sorgu iş yükleri altına sunulduğunda arama uygulamalarının bölümden daha fazla çoğaltma yapması gerekir. [Yüksek kullanılabilirlik](#HA) bölümünde bunun neden olduğu açıklanmaktadır.
+Tek bir hizmetin tüm iş yüklerini (Dizin oluşturma ve sorgular) işlemek için yeterli kaynak olması gerekir. Hiçbir iş yükü arka planda çalışır. Sorgu isteklerinin doğal olarak daha az sıklıkla olduğu durumlarda Dizin oluşturmayı zamanlayabilirsiniz, ancak hizmet diğer bir görevi başka bir görev için önceliklendirmez.
+
+Kopyaların ve bölümlerin tahsisini değiştirirken Azure portal kullanmanızı öneririz. Portal, bir katmanın en fazla limitlerini takip eden izin verilen birleşimler üzerinde sınırlar uygular. Ancak, komut dosyası tabanlı veya kod tabanlı bir sağlama yaklaşımına ihtiyacınız varsa [Azure PowerShell](search-manage-powershell.md) veya [Yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatif çözümlerdir.
+
+Genel bir kural olarak, arama uygulamalarında, özellikle de hizmet işlemleri sorgu iş yüklerine yaklaşmanız durumunda bölümden daha fazla çoğaltma olması eğilimindedir. [Yüksek kullanılabilirlik](#HA) bölümünde bunun neden olduğu açıklanmaktadır.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın ve arama hizmetini seçin.
 
-2. **Ayarlar**' da, çoğaltmaları ve bölümleri değiştirmek için **Ölçek** sayfasını açın. 
+1. **Ayarlar**' da, çoğaltmaları ve bölümleri değiştirmek için **Ölçek** sayfasını açın. 
 
    Aşağıdaki ekran görüntüsünde, bir çoğaltma ve bölüm ile sağlanan standart bir hizmet gösterilmektedir. Alttaki formül, kaç arama birimi kullanıldığını gösterir (1). Birim fiyatı $100 (gerçek fiyat değil) ise, bu hizmeti çalıştırmanın aylık maliyeti, ortalama olarak $100 ' dir.
 
    ![Geçerli değerleri gösteren sayfayı Ölçeklendir](media/search-capacity-planning/1-initial-values.png "Geçerli değerleri gösteren sayfayı Ölçeklendir")
 
-3. Bölüm sayısını artırmak veya azaltmak için kaydırıcıyı kullanın. Alttaki formül, kaç tane arama birimi kullanıldığını gösterir.
+1. Bölüm sayısını artırmak veya azaltmak için kaydırıcıyı kullanın. Alttaki formül, kaç tane arama birimi kullanıldığını gösterir.
 
    Bu örnek, iki çoğaltmalarla ve her bir bölümden oluşan kapasiteyi iki katına çıkarır. Arama Birimi sayısına dikkat edin; Fatura formülü bölümler (2 x 2) ile çarpıldığı için artık dördü vardır. Katlama kapasitesi, hizmeti çalıştırmanın maliyetini iki katına çıkarır. Arama birimi maliyeti $100 ise, yeni aylık fatura artık $400 olacaktır.
 
@@ -62,7 +54,7 @@ Genellikle, özellikle de hizmet işlemleri sorgu iş yükleri altına sunulduğ
 
    ![Çoğaltmalar ve bölümler ekleme](media/search-capacity-planning/2-add-2-each.png "Çoğaltmalar ve bölümler ekleme")
 
-3. Değişiklikleri onaylamak için **Kaydet** ' e tıklayın.
+1. Değişiklikleri onaylamak için **Kaydet** ' e tıklayın.
 
    ![Ölçek ve faturalandırma Değişikliklerini Onayla](media/search-capacity-planning/3-save-confirm.png "Ölçek ve faturalandırma Değişikliklerini Onayla")
 
@@ -70,10 +62,10 @@ Genellikle, özellikle de hizmet işlemleri sorgu iş yükleri altına sunulduğ
 
    ![Portalda durum iletisi](media/search-capacity-planning/4-updating.png "Portalda durum iletisi")
 
-
 > [!NOTE]
-> Bir hizmet sağlandıktan sonra, daha yüksek bir SKU 'ya yükseltilemez. Yeni katmanda bir arama hizmeti oluşturmanız ve dizinlerinizi yeniden yüklemeniz gerekir. Hizmet sağlama konusunda yardım için bkz. [portalda Azure bilişsel arama hizmeti oluşturma](search-create-service-portal.md) .
+> Bir hizmet sağlandıktan sonra, daha yüksek bir katmana yükseltilemez. Yeni katmanda bir arama hizmeti oluşturmanız ve dizinlerinizi yeniden yüklemeniz gerekir. Hizmet sağlama konusunda yardım için bkz. [portalda Azure bilişsel arama hizmeti oluşturma](search-create-service-portal.md) .
 >
+> Ayrıca, bölümler ve çoğaltmalar, hizmet tarafından özel olarak ve dahili olarak yönetilir. İşlemci benzeşimi kavramı veya belirli bir düğüme iş yükü atama yoktur.
 >
 
 <a id="chart"></a>
@@ -100,10 +92,10 @@ SUs, fiyatlandırma ve kapasite Azure Web sitesinde ayrıntılı olarak açıkla
 > Çoğaltma ve bölüm sayısı eşit olarak 12 ' ye bölünür (özellikle, 1, 2, 3, 4, 6, 12). Bunun nedeni, Azure Bilişsel Arama her bir dizini tüm bölümler arasında eşit kısımlara yayılabilecek şekilde 12 parçalara böler. Örneğin, hizmetinizin üç bölümü varsa ve bir dizin oluşturursanız, her bölüm dizin dört bölümden oluşur. Azure Bilişsel Arama Dizin oluşturma işlemi, sonraki sürümlerde değişikliğe tabi olan bir uygulama ayrıntısı. Sayı bugün 12 olsa da, bu sayının gelecekte her zaman 12 olması beklenmemelidir.
 >
 
-
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Yüksek kullanılabilirlik
+
 Ölçeği hızla ve nispeten daha hızlı olduğundan, genellikle bir bölüm ve bir veya iki çoğaltma ile başlayıp daha sonra, sorgu birimleri oluşturma olarak ölçeklendirmeniz önerilir. Sorgu iş yükleri birincil olarak çoğaltmalar üzerinde çalışır. Daha fazla üretilen iş veya yüksek kullanılabilirliğe ihtiyacınız varsa, muhtemelen ek çoğaltmalar yapmanız gerekir.
 
 Yüksek kullanılabilirlik için genel öneriler şunlardır:
@@ -116,31 +108,27 @@ Azure Bilişsel Arama için hizmet düzeyi sözleşmeleri (SLA), sorgu işlemler
 
 Temel katman, bir bölümde ve üç çoğaltmadan çıkar. Hem dizin oluşturma hem de sorgu işleme için talepteki dalgalanmaların hemen yanıt vermesini istiyorsanız Standart katmanlardan birini göz önünde bulundurun.  Depolama gereksinimlerinizin sorgu aktarım süresinden çok daha hızlı bir şekilde büyümesini fark ederseniz, depolama için Iyileştirilmiş katmanlardan birini düşünün.
 
-### <a name="index-availability-during-a-rebuild"></a>Yeniden derleme sırasında dizin kullanılabilirliği
-
-Azure Bilişsel Arama için yüksek kullanılabilirlik, bir dizini yeniden oluşturmayı içermeyen sorgularla ve Dizin güncelleştirmeleriyle ilgilidir. Bir alanı siler, bir veri türünü değiştirirseniz veya bir alanı yeniden adlandırırsanız, dizini yeniden oluşturmanız gerekecektir. Dizini yeniden oluşturmak için dizini silmeniz, dizini yeniden oluşturmanız ve verileri yeniden yüklemeniz gerekir.
-
-> [!NOTE]
-> Dizini yeniden oluşturmadan Azure Bilişsel Arama dizinine yeni alanlar ekleyebilirsiniz. Yeni alanın değeri, dizinde bulunan tüm belgeler için null olacaktır.
-
-Dizinin yeniden oluşturulması sırasında, verilerin yeni dizine eklendiği bir süre olacaktır. Bu süre içinde eski dizininizi kullanılabilir hale getirmek istiyorsanız, aynı hizmette farklı bir ada sahip eski dizinin bir kopyasına veya farklı bir hizmette aynı ada sahip bir dizinin kopyasına sahip olmanız gerekir ve sonra kodunuzda yeniden yönlendirme veya yük devretme mantığı sağlar.
-
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
+
 Şu anda olağanüstü durum kurtarma için yerleşik bir mekanizma yoktur. Bölüm veya çoğaltmaları eklemek, olağanüstü durum kurtarma hedeflerini karşılamak için yanlış stratejidir. En yaygın yaklaşım, başka bir bölgede ikinci bir arama hizmeti ayarlayarak hizmet düzeyinde artıklık eklemektir. Dizin yeniden oluşturma sırasında kullanılabilirliğinde olduğu gibi, yeniden yönlendirme veya yük devretme mantığı koddan gelmelidir.
 
-## <a name="increase-query-performance-with-replicas"></a>Çoğaltmalarla sorgu performansını artırma
-Sorgu gecikmesi, ek çoğaltmaların gerekli olduğu bir göstergedir. Genellikle, sorgu performansını iyileştirmeye yönelik ilk adım bu kaynağı daha fazla eklemektir. Çoğaltmaları eklerken, daha büyük sorgu iş yüklerini desteklemek ve isteklerin çoklu çoğaltmalar üzerinden yük dengelenmesi için dizinin ek kopyaları çevrimiçi hale getirilir.
+## <a name="estimate-replicas"></a>Çoğaltmaları tahmin etme
 
-Saniyedeki sorgu sayısı (QPS) için sabit tahminler sağlayamıyoruz: sorgu performansı, sorgunun karmaşıklığına ve rekabet iş yüklerine bağlıdır. Çoğaltmaları ekleme işlemi daha iyi performansa neden olsa da, sonuç kesinlikle doğrusal değildir: üç çoğaltma eklemek Üçlü üretilen iş garantisi vermez.
+Bir üretim hizmetinde, SLA amaçları için üç çoğaltma ayırmanız gerekir. Yavaş sorgu performansına karşılaşıyorsanız, çoğaltma eklemek için bir çözüm daha büyük sorgu iş yüklerini destekleyecek ve isteklerin birden çok çoğaltma üzerinden yük dengelenmesi için çevrimiçi hale getirilir.
 
-İş yükleriniz için QPS tahmini konusunda rehberlik için bkz. [Azure bilişsel arama performans ve iyileştirme konuları](search-performance-optimization.md).
+Sorgu yüklerini karşılamak için kaç yinelemenin gerekli olduğu konusunda yönergeler sağlamayız. Sorgu performansı, sorgunun karmaşıklığına ve rekabet iş yüklerine bağlıdır. Çoğaltmaları ekleme işlemi daha iyi performansa neden olsa da, sonuç kesinlikle doğrusal değildir: üç çoğaltma eklemek Üçlü üretilen iş garantisi vermez.
 
-## <a name="increase-indexing-performance-with-partitions"></a>Bölümler ile dizin oluşturma performansını artırma
+Çözümünüz için QPS tahmini konusunda rehberlik için bkz. performans ve [izleme sorguları](search-monitor-queries.md) [için ölçeklendirme](search-performance-optimization.md)
+
+## <a name="estimate-partitions"></a>Tahmin bölümleri
+
+[Seçtiğiniz katman](search-sku-tier.md) bölüm boyutunu ve hızını belirler ve her katman çeşitli senaryolara uyan bir dizi özellik etrafında en iyi duruma getirilir. Daha yüksek bir katman seçerseniz S1 ile devam ediyorsanız daha az bölüm gerekebilir.
+
 Neredeyse gerçek zamanlı veri yenileme gerektiren uygulamalarda, çoğaltmalara göre orantılı daha fazla bölüm gerekecektir. Bölüm ekleme okuma/yazma işlemlerini çok sayıda bilgi işlem kaynağına yayar. Ayrıca ek dizinleri ve belgeleri depolamak için daha fazla disk alanı sağlar.
 
 Daha büyük dizinler sorgu için daha uzun sürer. Bu nedenle, bölümlerdeki her artımlı artışın çoğaltmalarda daha küçük ancak orantılı bir artış gerektirdiğini fark edebilirsiniz. Sorgularınızın ve sorgu biriminizin karmaşıklığı, sorgu yürütmenin ne kadar hızlı bir şekilde bir şekilde çalıştığını çarpanlara katacaktır.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin](search-sku-tier.md)
+> [!div class="nextstepaction"]
+> [Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin](search-sku-tier.md)

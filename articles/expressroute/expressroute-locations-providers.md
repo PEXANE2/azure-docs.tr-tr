@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f042e12c0069e68d9008c3e520331766a92e7dd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6eaa2c038c75243c2b2ad4361c173fe527ebf3b4
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186960"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212322"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | Orta Batı ABD | yok | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | BAE Kuzey | yok | Etisalat UAE |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | BAE Kuzey | yok | du datamena, Megaport, turuncu, Cumxcom |
-| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | Colt, eir, Equinix, Interxion, Megaport |
+| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | Colt, EIR, Equinix, Eunetçalışmalar, ınterxiyon, Megaport |
 | **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | Colt, DE-CIX, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
 | **Hong Kong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | yok | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
@@ -103,7 +103,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Güney Afrika Kuzey | 'Yi | İngiliz Telekoı, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, turuncu, Teraco |
 | **Kuala Lumpur** | [ZAMAN dotCom Menara AIMS](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | yok | yok | TIME dotCom |
 | **Las Vegas** | [Anahtar LV](https://www.switch.com/las-vegas) | 1 | yok | yok | CenturyLink Cloud Connect, Megaport |
-| **Londra** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | UK Güney | 10G, 100G | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions - Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse - KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
+| **Londra** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | UK Güney | 10G, 100G | & T Netbono, Ingiliz Teleçesi, Equinx, Eunetçalışmalar, Intercloud, Internet Solutions-Cloud Connect, ınterxiyon, JISC, Level 3 Iletişimleri, Megaport, MTN, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telehouse-KDDI, Telenor, Telia taşıyıcısı, Verizon, Vodavfone, Zayo |
 | **London2** | [Telehouse Kuzey Iki](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | UK Güney | 10G, 100G | CenturyLink Cloud Connect, Colt, x REACH, Equinx, Megaport, Telehouse-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | yok | yok | CoreSite, Equinx, Megaport, Neutrona Networks, NTT, Transtelco, Zayo |
 | **Marsilya** |[Interxiyon MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Fransa Güney | yok | DE-CIX, GEANT, ınterxiyon, Jaguar Network |

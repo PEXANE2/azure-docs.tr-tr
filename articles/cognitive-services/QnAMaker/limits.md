@@ -2,13 +2,13 @@
 title: Sınırları ve sınır - soru-cevap Oluşturucu
 description: Soru-cevap Oluşturucu, bölümlerini Bilgi Bankası ve hizmet için meta-sınırlara sahiptir. Sınama ve yayımlama için bu sınırları içinde bilgi bankanızı tutmak önemlidir.
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760241"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252017"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -55,6 +55,8 @@ Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlant
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 
+Meta veriler, daha küçük bir durumda depolanır ve karşılaştırılır.
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Bilişsel Arama fiyatlandırma katmanına göre
 
 Bilgi Bankası başına en fazla meta veri alanı sayısı, **[Azure bilişsel arama katmanı limitlerinizi](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** temel alır.
@@ -87,13 +89,13 @@ Bilgi Bankası'nda içeriği genel sınırlamaları:
 * URL/HTML sayfası: 1.000.000 karakter
 
 ## <a name="create-knowledge-base-call-limits"></a>Bilgi Bankası araması sınırları oluşturun:
-Bu temsil Bilgi Bankası eylem her sınırları oluşturmak; diğer bir deyişle, tıklayıp *oluşturma KB* veya CreateKnowledgeBase API'ye çağrı yapma.
+Bunlar her bir bilgi tabanı oluşturma eyleminin sınırlarını temsil eder; diğer bir deyişle, *BB oluştur* veya CREATEıNFO API 'sini çağırma ' ya tıklayın.
 * Yanıt başına en fazla alternatif soru sayısı: 300
 * URL'leri sayısı: 10
 * En fazla dosya sayısı: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Bilgi Bankası araması sınırları güncelleştir
-Bunlar, her güncelleştirme eylemi sınırlarını temsil eder; diğer bir deyişle, tıklayıp *kaydedin ve eğitme* veya UpdateKnowledgeBase API'ye çağrı yapma.
+Bunlar her bir güncelleştirme eyleminin sınırlarını temsil eder; diğer bir deyişle, *kayıt ve eğitim* ' i ve sonra UPDATEıNFO API 'sini çağırır.
 * Her kaynak adının uzunluğu: 300
 * En fazla eklenen veya silinen diğer soru sayısı: 300
 * Meta veri alanları en fazla sayısını eklendiğinde veya silindiğinde: 10

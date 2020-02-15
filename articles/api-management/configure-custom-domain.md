@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967358"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251219"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -27,9 +27,9 @@ Azure API Management hizmet örneği oluşturduğunuzda Azure, `azure-api.net` b
 > API Management, yalnızca varsayılan etki alanı adı veya yapılandırılmış özel etki alanı adlarından eşleşen [ana bilgisayar üstbilgi](https://tools.ietf.org/html/rfc2616#section-14.23) değerlerine sahip istekleri kabul eder.
 
 > [!WARNING]
-> Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri bir özel etki alanı > adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetolmadıkları sertifikanın özelliklerine, bu önerilen bir uygulama değildir.
+> Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri özel bir etki alanı adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetolmadıkları sertifikanın özelliklerine, bu önerilen bir uygulama değildir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -55,7 +55,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     - **SCM** (varsayılan: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > Yalnızca tüketim katmanında yapılandırma için kullanılabilir olan **ağ geçidi** uç noktası.
+    > Yalnızca **ağ geçidi** uç noktası, tüketim katmanında yapılandırma için kullanılabilir.
     > Tüm uç noktaları veya bunlardan bazılarını güncelleştirebilirsiniz. Genellikle müşteriler **ağ geçidini** güncelleştirir (Bu URL, API Management Ile sunulan API 'yi çağırmak için kullanılır) ve **Portal** (geliştirici portalı URL 'si).
     > **Yönetim** ve **SCM** uç noktaları yalnızca API Management örnek sahipleri tarafından dahili olarak kullanılır ve bu nedenle, özel bir etki alanı adı daha az sıklıkla atanır.
     > **Premium** katmanı, **ağ geçidi** uç noktası için birden çok konak adı ayarlamayı destekler.
@@ -73,7 +73,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     > Sertifikaları yönetmek için Azure Key Vault kullanmanızı ve onları oto döndürme için ayarlamayı öneririz.
     > Özel etki alanı SSL sertifikasını yönetmek için Azure Key Vault kullanıyorsanız, sertifikanın _gizli_değil, [ _sertifika_olarak](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)Key Vault yerleştirildiğinden emin olun.
     >
-    > Bir SSL sertifikası getirmek için, API Management sertifikayı içeren Azure Key Vault üzerinde parolaları Al izinleri listesine sahip olmalıdır. Azure portal kullanırken, tüm gerekli yapılandırma adımları otomatik olarak tamamlanır. Komut satırı araçları veya yönetim API 'SI kullanılırken, bu izinlerin el ile verilmesi gerekir. Bu iki adımda yapılır. İlk olarak, yönetilen kimliğin etkin olduğundan emin olmak için API Management örnekte Yönetilen kimlikler sayfasını kullanın ve bu sayfada gösterilen asıl kimliği bir yere göz önünde yapın. İkincisi, izin listesini verin ve sertifikayı içeren Azure Key Vault bu asıl kimliğe gizli dizi izinleri alın.
+    > Bir SSL sertifikası getirmek için API Management, sertifikayı içeren Azure Key Vault liste ve parolaları al izinlerine sahip olmalıdır. Azure portal kullanırken, tüm gerekli yapılandırma adımları otomatik olarak tamamlanır. Komut satırı araçları veya yönetim API 'SI kullanılırken, bu izinlerin el ile verilmesi gerekir. Bu iki adımda yapılır. İlk olarak, yönetilen kimliğin etkin olduğundan emin olmak için API Management örnekte Yönetilen kimlikler sayfasını kullanın ve bu sayfada gösterilen asıl kimliği bir yere göz önünde yapın. İkincisi, izin listesini verin ve sertifikayı içeren Azure Key Vault bu asıl kimliğe gizli dizi izinleri alın.
     >
     > Sertifika, otomatik döndürme olarak ayarlandıysa, API Management hizmetin herhangi bir kesinti süresi olmadan en son sürümü otomatik olarak seçer (API Management katmanınızda, geliştirici katmanı hariç tüm katmanlarda SLA-i. e.).
 

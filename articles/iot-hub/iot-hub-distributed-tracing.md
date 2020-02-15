@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911890"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212478"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -30,7 +30,7 @@ IoT Hub için dağıtılmış izlemeyi etkinleştirmek aşağıdakileri yapabilm
 
 Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](iot-hub-device-sdk-c-intro.md) kullanırsınız. Diğer SDK 'lar için dağıtılmış izleme desteği hala devam ediyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Dağıtılmış izlemenin önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 
@@ -130,6 +130,9 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Dağıtılmış izlemeyi etkinleştirmek için telemetri gönder örneğini düzenleyin
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">GitHub 'da örneği alın</a>
+
 1. `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` kaynak dosyasını açmak için bir düzenleyici kullanın.
 
 1. `connectionString` sabitinin bildirimini bulun:
@@ -152,7 +155,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_sleep&highlight=8)]
 
-### <a name="compile-and-run"></a>Derleyin ve çalıştırın
+### <a name="compile-and-run"></a>Derle ve Çalıştır
 
 1. Daha önce oluşturduğunuz CMake dizininden (`azure-iot-sdk-c/cmake`) *iothub_ll_telemetry_sample* projesi dizinine gidin ve örneği derleyin:
 
@@ -241,10 +244,10 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 }
 ```
 
-| Öğe adı | Gereklidir | Tür | Açıklama |
+| Öğe adı | Gerekli | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
-| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
+| `sampling_mode` | Yes | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
+| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 
@@ -264,7 +267,7 @@ AzureDiagnostics
 
 Log Analytics gösterildiği gibi örnek Günlükler:
 
-| TimeGenerated | ThrottledRequests | Kategori | Düzey | CorrelationId | Ort | Özellikler |
+| TimeGenerated | için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Kategori | Düzey | CorrelationId | Ort | Özellikler |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"DeviceID": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |

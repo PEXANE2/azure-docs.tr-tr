@@ -1,19 +1,19 @@
 ---
 title: Azure haritalar arama hizmetlerini kullanarak bir konum arayın | Microsoft Azure haritaları
 description: Bu makalede, coğrafi kodlama ve ters coğrafi kodlama için Microsoft Azure haritaları Arama Hizmeti kullanarak bir konumun nasıl aranalınacağını öğreneceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899236"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209894"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 
@@ -27,7 +27,7 @@ Bu makalede şunları öğreneceksiniz:
 * Koordinat konumunu cadde adresine çevirmek için [ters adres araması](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) yapın
 * [Arama adresi ters açık çapraz API 'yi](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet) kullanarak çapraz cadde arama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için öncelikle bir Azure haritalar hesabı oluşturmanız ve hesap abonelik anahtarını eşleirsiniz. Hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
@@ -75,7 +75,7 @@ Bu durumda, tüm adres sorgusu belirttiniz ve yanıt gövdesinde tek bir sonuç 
 
 | Anahtar | Değer | 
 |-----|------------| 
-| typeahead | doğru | 
+| typeahead | true | 
 
 **Typeahead** bayrağı, adres araması API 'sine sorguyu kısmi giriş olarak ele almasını ve bir tahmine dayalı değerler dizisi döndürmesini söyler.
 
@@ -121,7 +121,7 @@ Azure Maps[ ,](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) K
 
     | Anahtar | Değer |
     |------------------|-------------------------|
-    | countrySet | US |
+    | countrySet | ABD |
   
     Sonuçlar artık ülke kodu ile sınırlıdır ve sorgu Birleşik Devletler.
   
@@ -173,7 +173,7 @@ Geriye doğru coğrafi koda sahip bir koordinat konumları kümesine sahipseniz,
 
     | Anahtar | Değer |
     |-----|------------|
-    | number | doğru |
+    | number | true |
 
     [Sayı](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) sorgu parametresi istekle birlikte gönderilirse, yanıt cadde (sol veya sağ) yanı sıra bu numara için de bir konum konumu içerebilir.
   
@@ -181,7 +181,7 @@ Geriye doğru coğrafi koda sahip bir koordinat konumları kümesine sahipseniz,
 
     | Anahtar | Değer |
     |-----|------------|
-    | returnSpeedLimit | doğru |
+    | returnSpeedLimit | true |
   
     [Returnspeedlimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) sorgu parametresi ayarlandığında, yanıt, gönderilen hız sınırını döndürür.
 
@@ -189,7 +189,7 @@ Geriye doğru coğrafi koda sahip bir koordinat konumları kümesine sahipseniz,
 
     | Anahtar | Değer |
     |-----|------------|
-    | returnRoadUse | doğru |
+    | returnRoadUse | true |
 
     [Returnroaduse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) sorgu parametresi ayarlandığında yanıt, ters coğrafi olarak açık coğrafi kodlar için yol kullanım dizisini döndürür.
 
@@ -197,7 +197,7 @@ Geriye doğru coğrafi koda sahip bir koordinat konumları kümesine sahipseniz,
 
     | Anahtar | Değer |
     |-----|------------|
-    | yol kullanımı | doğru |
+    | yol kullanımı | true |
 
     Yol [kullanımı](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) sorgu parametresini kullanarak ters coğrafi kod sorgusunu belirli bir yol türüyle kısıtlayabilirsiniz.
   

@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024356"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252238"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 
@@ -196,7 +196,7 @@ Bağlantı başarılı olursa, Linux terminalini temsil eden aşağıdaki çıkt
 
 SSH oturumundan çıkmak için `exit` yazın.
 
-## <a name="enable-high-availability"></a>Yüksek Kullanılabilirliği Etkinleştir
+## <a name="enable-high-availability"></a>Yüksek kullanılabilirliği etkinleştir
 
 > [!IMPORTANT]
 > Öğreticinin bu bölümünü tamamlamaya yönelik bir RHEL ve yüksek kullanılabilirlik eklentisi aboneliğine sahip olmanız gerekir. Önceki bölümde önerilen bir görüntü kullanıyorsanız, başka bir abonelik kaydetmeniz gerekmez.
@@ -786,7 +786,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 ### <a name="create-the-ag-cluster-resource"></a>AG kümesi kaynağı oluşturma
 
-1. Kaynak `ag_cluster` `ag1`kullanılabilir grupta oluşturmak için aşağıdaki komutu kullanın.
+1. Kaynak `ag_cluster` kullanılabilirlik grubu `ag1`oluşturmak için aşağıdaki komutu kullanın.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true

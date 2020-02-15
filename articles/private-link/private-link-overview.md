@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 88e3077fb64446f5fa70c1785ad3df1d3746de33
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084189"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209333"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
+# <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
 
 > [!IMPORTANT]

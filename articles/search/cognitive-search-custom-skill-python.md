@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122411"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210474"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Örnek: Python kullanarak özel bir yetenek oluşturma
 
@@ -52,7 +52,7 @@ Visual Studio Code'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev 
 1. Python sürümünü seçin (sürüm 3.7.5 Azure Işlevleri tarafından desteklenir)
 1. Projenizin ilk işlevi için bir şablon seçin. Yeni işlev uygulamasında HTTP tetiklemeli bir işlev oluşturmak için **http tetikleyicisi** ' ni seçin.
 1. Bir işlev adı girin. Bu durumda, **Concatenator** kullanalım 
-1. Yetkilendirme düzeyi olarak **işlev** ' ı seçin. Bu, işlevin HTTP uç noktasını çağırmak için bir [işlev anahtarı](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) sağlayacağız anlamına gelir. 
+1. Yetkilendirme düzeyi olarak **işlev** ' ı seçin. Bu, işlevin HTTP uç noktasını çağırmak için bir [işlev anahtarı](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) sağlayacağız anlamına gelir. 
 1. Projenizi nasıl açmak istediğinizi seçin. Bu adım için, geçerli çalışma alanında işlev uygulamasını oluşturmak üzere **çalışma alanına Ekle** ' yi seçin.
 
 Visual Studio Code işlev uygulaması projesini yeni bir çalışma alanında oluşturur. Bu proje [host.json](../azure-functions/functions-host-json.md) ve [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) yapılandırma dosyaları ve tüm dile özgü proje dosyalarını içerir. 

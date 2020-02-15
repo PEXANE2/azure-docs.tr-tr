@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120970"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209231"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -23,7 +23,7 @@ Azure Kubernetes hizmeti (AKS) kümeleri oluştururken veya yönetirken, zaman z
 [Kubernetes kümelerinde sorun gidermeye yönelik resmi kılavuzunu](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)deneyin.
 Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları gidermeye yönelik bir Microsoft mühendis tarafından yayımlanan bir [sorun giderme kılavuzu](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)vardır.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmam gerekir? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmalıyım? 
 
 [Çekirdek istemeniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)gerekir.
 
@@ -32,7 +32,7 @@ Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları g
 Azure portal bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm sayısı ayarı varsayılan olarak 30 ' dur.
 Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu varsayılan ayar, `az aks create` komutunda `–-max-pods` bayrağı kullanılarak değiştirilebilir.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmam gerekir?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
 
 Azure CNı (Gelişmiş ağ) kullanılıyorsa, AKS, yapılandırılmış düğüm başına "en yüksek pods" temelinde IP adresleri ayırır. Düğüm başına yapılandırılan maksimum düğüm sayısına bağlı olarak, alt ağ boyutu düğüm sayısının ve düğüm başına en fazla Pod 'ın ürünüyle daha büyük olmalıdır. Aşağıdaki denklem şunları özetler:
 
@@ -40,7 +40,7 @@ Alt ağ boyutu > kümedeki düğümlerin sayısı (gelecekteki ölçekleme gerek
 
 Daha fazla bilgi için bkz. [kümeniz IÇIN IP adresleme planlaması](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmam gerekir?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmalıyım?
 
 Pod 'un bu modda takılmasının çeşitli nedenleri olabilir. Şöyle görünebilir:
 
@@ -53,17 +53,17 @@ Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda h
 
 Ne yazık ki, mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor. Açıkça yeni kümeler oluşturmanız gerekir. CLı kullanıyorsanız, RBAC varsayılan olarak etkindir. AKS portalını kullanıyorsanız, oluşturma iş akışında RBAC 'yi etkinleştirmek için iki durumlu bir düğme bulunur.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmam gerekir?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
 
 Panodaki uyarıların nedeni, kümenin RBAC ile etkin hale gelir ve erişim varsayılan olarak devre dışı bırakılmıştır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmam gerekir?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmalıyım?
 
 Bir küme dışında hizmetinize erişmenin en kolay yolu, `kubectl proxy`çalıştırmak için, localhost bağlantı noktası 8001 ' e, Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un `kube-system` ad alanında çalışıp çalışmadığını denetleyin. Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmam gerekir?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
 
 Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. `tunnelfront` Pod 'ın, `kubectl get pods --namespace kube-system` komutunu kullanarak *kuin-System* ad alanında çalışıp çalışmadığını denetleyin. Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
 
@@ -120,7 +120,7 @@ Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulan�
 
 * Küme adları 1-63 karakter olmalıdır. Yalnızca harf, sayı, kısa çizgi ve alt çizgi olan karakterler izin verilir. İlk ve son karakter bir harf veya sayı olmalıdır.
 * AKS *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. `MC_resourceGroupName_resourceName_AzureRegion` otomatik olarak oluşturulan sözdizimi 80 karakterden büyük olmamalıdır. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın.
-* *Dnspredüzeltmesinin* alfasayısal değerlerle başlaması ve bitmesi gerekir. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
+* *Dnspredüzeltmesini* alfasayısal değerlerle başlamalı ve bitmeli ve 1-54 karakter arasında olmalıdır. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
 
@@ -155,8 +155,8 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1.12 | 1.12.9 veya üzeri |
-| 1.13 | 1.13.6 veya üzeri |
+| 1,12 | 1.12.9 veya üzeri |
+| 1,13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
 
 
@@ -164,8 +164,8 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1.12 | 1.12.0 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
+| 1,12 | 1.12.0 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 
@@ -265,8 +265,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | -- | :--: |
 | 1,10 | 1.10.10 veya üzeri |
 | 1,11 | 1.11.5 veya üzeri |
-| 1.12 | 1.12.3 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
+| 1,12 | 1.12.3 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, birkaç dakika bekleyip yeniden denemeden sorunu azaltabilirsiniz.
@@ -286,8 +286,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | -- | :--: |
 | 1,10 | 1.10.12 veya üzeri |
 | 1,11 | 1.11.6 veya üzeri |
-| 1.12 | 1.12.4 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
+| 1,12 | 1.12.4 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, aşağıdaki adımları deneyerek sorunu azaltabilirsiniz:
@@ -307,8 +307,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
 | 1,11 | 1.11.9 veya üzeri |
-| 1.12 | 1.12.7 veya üzeri |
-| 1.13 | 1.13.4 veya üzeri |
+| 1,12 | 1.12.7 veya üzeri |
+| 1,13 | 1.13.4 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, diski el ile ayırarak sorunu azaltabilirsiniz.
@@ -321,8 +321,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
-| 1.12 | 1.12.9 veya üzeri |
-| 1.13 | 1.13.6 veya üzeri |
+| 1,12 | 1.12.9 veya üzeri |
+| 1,13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
 | 1,15 ve üzeri | Yok |
 
@@ -341,8 +341,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
-| 1.12 | 1.12.10 veya üzeri |
-| 1.13 | 1.13.8 veya üzeri |
+| 1,12 | 1.12.10 veya üzeri |
+| 1,13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
 | 1,15 ve üzeri | Yok |
 
@@ -364,16 +364,16 @@ Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız 
  
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1.12 | 1.12.6 veya üzeri |
-| 1.13 | 1.13.4 veya üzeri |
+| 1,12 | 1.12.6 veya üzeri |
+| 1,13 | 1.13.4 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Kubernetes 'in hangi sürümleri, Sovereign bulutu üzerinde Azure dosyaları destekliyor?
 
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1.12 | 1.12.0 veya üzeri |
-| 1.13 | 1.13.0 veya üzeri |
+| 1,12 | 1.12.0 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure dosyaları kullanılırken varsayılan mountOptions nedir?
@@ -459,8 +459,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
-| 1.12 | 1.12.6 veya üzeri |
-| 1.13 | 1.13.4 veya üzeri |
+| 1,12 | 1.12.6 veya üzeri |
+| 1,13 | 1.13.4 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor

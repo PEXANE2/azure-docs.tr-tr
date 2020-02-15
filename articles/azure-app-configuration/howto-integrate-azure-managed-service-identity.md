@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7461f378a4f95a43971f5893fe70739511e942ff
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732010"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212219"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure yönetilen kimliklerle tümleştirin
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -95,7 +95,6 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
     ```csharp-interactive
     using Azure.Identity;
-    using Microsoft.Azure.Services.AppAuthentication;
     ```
 
 1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız, `config.AddAzureAppConfiguration()` metodunu değiştirerek `CreateWebHostBuilder` yöntemini güncelleştirin.
@@ -204,7 +203,7 @@ Bu komut, aşağıdaki çıktıya benzer bir işlem sağlar:
 }
 ```
 
-### <a name="deploy-your-project"></a>Projenizi dağıtma
+### <a name="deploy-your-project"></a>Projenizi dağıtın
 
 _Yerel Terminal penceresinde_yerel git deponuza bir Azure uzak ekleyin. _\<URL 'si >_ , [Kudu ile yerel git 'i etkinleştirdiğinizden](#enable-local-git-with-kudu)ALDıĞıNıZ git uzak 'nin URL 'siyle değiştirin.
 

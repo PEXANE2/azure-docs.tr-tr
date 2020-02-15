@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 429b8845e49158c906c02773f654c9487ff98d1e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134741"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210388"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: node. js SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -28,9 +28,11 @@ Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturur 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
-- [Node. js 0.10.29 +](https://nodejs.org/).
-- [Git](https://www.git-scm.com/downloads).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
+
+Ayrıca, şunlar gerekir:
+* [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) sürüm v0.10.29 veya üzeri
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -110,42 +112,54 @@ Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturdu
 * Anahtar/değer varlıkları eklenir.
 
     ```javascript
-    ...
-       {
-          query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
-          params: [5, 'IvanaV', 'Belgaum']
-        }
-    ];
-    client.batch(queries, { prepare: true}, next);
+        function insert(next) {
+            console.log("\insert");
+            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
+            arr.forEach(element => {
+            client.execute(element);
+            });
+            next();
+        },
     ```
 
 * Tüm anahtar değerlerini almak için sorgu.
 
     ```javascript
-   var query = 'SELECT * FROM uprofile.user';
-    client.execute(query, { prepare: true}, function (err, result) {
-      if (err) return next(err);
-      result.rows.forEach(function(row) {
-        console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-      }, this);
-      next();
-    });
+        function selectAll(next) {
+            console.log("\Select ALL");
+            var query = 'SELECT * FROM uprofile.user';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
+            result.rows.forEach(function(row) {
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        },
     ```  
     
 * Bir anahtar-değeri almak için sorgu.
 
     ```javascript
-    function selectById(next) {
-        console.log("\Getting by id");
-        var query = 'SELECT * FROM uprofile.user where user_id=1';
-        client.execute(query, { prepare: true}, function (err, result) {
-        if (err) return next(err);
+        function selectById(next) {
+            console.log("\Getting by id");
+            var query = 'SELECT * FROM uprofile.user where user_id=1';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
             result.rows.forEach(function(row) {
-            console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-        }, this);
-        next();
-        });
-    }
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        }
     ```  
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
@@ -190,19 +204,41 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 3. `uprofile.js` dosyasını kaydedin.
 
+> [!NOTE]
+> Sonraki adımlarda sertifikayla ilgili bir hatayla karşılaşırsanız ve bir Windows makinesinde çalışıyorsanız, bir. CRT dosyasını düzgün şekilde Microsoft. cer biçimine dönüştürme sürecini izlemediğinizden emin olun.
+> 
+> . CRT dosyasına çift tıklayarak sertifika görüntüsüne açın. 
+>
+> ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-nodejs/crtcer1.gif)
+>
+> Sertifika sihirbazında Ileri ' ye basın. Base-64 kodlamalı X. 509.440 (. CER) ve ardından Ileri.
+>
+> ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-nodejs/crtcer2.gif)
+>
+> Araştır ' ı seçin (bir hedef bulmak için) ve bir dosya adı yazın.
+> Ileri ' yi ve ardından tamamlandı seçeneğini belirleyin.
+>
+> Artık düzgün şekilde biçimlendirilen bir. cer dosyanız olmalıdır. `uprofile.js` içindeki yolun bu dosyaya işaret ettiğini doğrulayın.
+
 ## <a name="run-the-nodejs-app"></a>Node.js uygulamasını çalıştırma
 
-1. Git terminal penceresinde `npm install` komutunu çalıştırarak gerekli npm modüllerini yükleyin.
+1. Git Terminal penceresinde, daha önce Klonladığınız örnek dizinde olduğunuzdan emin olun:
 
-2. Node.js uygulamanızı başlatmak için `node uprofile.js` komutunu çalıştırın.
+    ```bash
+    cd azure-cosmos-db-cassandra-nodejs-getting-started
+    ```
 
-3. Sonuçların beklendiği gibi olduğunu komut satırından kontrol edin.
+2. Gerekli NPM modüllerini yüklemek için `npm install` çalıştırın.
+
+3. Node.js uygulamanızı başlatmak için `node uprofile.js` komutunu çalıştırın.
+
+4. Sonuçların beklendiği gibi olduğunu komut satırından kontrol edin.
 
     ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-nodejs/output.png)
 
     Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın. 
 
-4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
+5. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
     ![Veri Gezgini’nde verileri görüntüleme](./media/create-cassandra-nodejs/data-explorer.png) 
 
@@ -220,5 +256,3 @@ Bu hızlı başlangıçta, Cassandra API sahip bir Azure Cosmos DB hesabı oluş
 
 > [!div class="nextstepaction"]
 > [Cassandra verilerini Azure Cosmos DB’ye aktarma](cassandra-import-data.md)
-
-

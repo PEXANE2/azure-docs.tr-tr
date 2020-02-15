@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118821"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206132"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Metin Çevirisi API'si için dil ve bölge desteği
 
@@ -141,7 +141,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Sırpça (Latin) | `sr-Latn` | Latin `Latn` | --> | Kiril `Cyrl`|
 | Tamil dili | `ta` | Tamil dili `Taml` | --> | Latin `Latn` |
 | Telugu dili | `te` | Telugu dili `Telu` | --> | Latin `Latn` |
-| Tay Dili | `th` | Tay dili `Thai` | <--> | Latin `Latn` |
+| Tay Dili | `th` | Tay dili `Thai` | --> | Latin `Latn` |
 
 ## <a name="dictionary"></a>Sözlük
 

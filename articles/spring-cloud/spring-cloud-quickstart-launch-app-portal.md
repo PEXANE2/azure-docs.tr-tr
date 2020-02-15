@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201552"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251830"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma
 
@@ -65,6 +65,9 @@ az extension add --name spring-cloud
 1. **Gözden geçir ve oluştur**' a tıklayın.
 
 1. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
+
+>[!Note]
+> Şablon doğrulamasının tamamlanmasını 3 dakikadan fazla sürerse, lütfen izlemeyi devre dışı bırakıp yeniden deneyin.
 
 Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **genel bakış** sayfası, dağıtıldıktan sonra görüntülenir.
 

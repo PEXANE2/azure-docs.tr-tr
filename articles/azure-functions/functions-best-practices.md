@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963674"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210268"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansını ve güvenilirliğini iyileştirin
 
@@ -112,7 +112,7 @@ Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almay
 
 İşlev uygulamasındaki `host.json` dosyası, ana bilgisayar çalışma zamanı ve tetikleyici davranışları yapılandırmasına izin verir.  İşleme davranışlarına ek olarak, bir dizi tetikleyici için eşzamanlılık yönetebilirsiniz. Genellikle bu seçeneklerdeki değerlerin ayarlanması, her bir örneğin, çağrılan işlevlerin taleplerine uygun şekilde ölçeklendirilmesine yardımcı olabilir.
 
-Host. JSON dosyasındaki ayarlar, işlevin *tek bir örneği* içinde, uygulamadaki tüm işlevler arasında geçerlidir. Örneğin, iki HTTP işlevi olan bir işlev uygulamanız varsa ve [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) istekleri 25 olarak AYARLANDıYSA, http tetikleyicisine yönelik bir istek paylaşılan 25 eşzamanlı istek için doğru sayılır.  Bu işlev uygulaması 10 örneğe ölçeklenirse, iki işlev 250 eşzamanlı istek (10 örnek * örnek başına 25 eşzamanlı istek) etkin bir şekilde izin verir. 
+Host. JSON dosyasındaki ayarlar, işlevin *tek bir örneği* içinde, uygulamadaki tüm işlevler arasında geçerlidir. Örneğin, iki HTTP işlevi olan bir işlev uygulamanız varsa ve [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) istekleri 25 olarak AYARLANDıYSA, http tetikleyicisine yönelik bir istek paylaşılan 25 eşzamanlı istek için doğru sayılır.  Bu işlev uygulaması 10 örneğe ölçeklenirse, iki işlev 250 eşzamanlı istek (10 örnek * örnek başına 25 eşzamanlı istek) etkin bir şekilde izin verir. 
 
 Diğer konak yapılandırma seçenekleri [Host. JSON yapılandırma makalesinde](functions-host-json.md)bulunur.
 

@@ -3,12 +3,12 @@ title: Şablonlarla koşullu dağıtım
 description: Azure Resource Manager şablonunda bir kaynağın koşullu olarak nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122007"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207800"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarda koşullu dağıtım
 
@@ -88,4 +88,4 @@ Bir şablonu, [tamamlanma modu](deployment-modes.md) ile dağıtırsanız ve ko�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Şablon oluşturma hakkında öneriler için bkz. [Azure Resource Manager şablonu en iyi yöntemleri](template-best-practices.md).
-* Bir kaynağın birden çok örneğini oluşturmak için [Azure Resource Manager şablonlarda kaynak, özellik veya değişken yineleme](create-multiple-instances.md)bölümüne bakın.
+* Bir kaynağın birden çok örneğini oluşturmak için, bkz. [Azure Resource Manager şablonlarda kaynak yinelemesi](copy-resources.md).

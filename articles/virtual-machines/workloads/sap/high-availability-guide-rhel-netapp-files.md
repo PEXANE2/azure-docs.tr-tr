@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files ile Red Hat Enterprise Linux on SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliği | Microsoft Docs
+title: Azure VM 'Leri Azure NetApp Files ile RHEL 'de SAP NW için yüksek kullanılabilirlik | Microsoft Docs
 description: Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/13/2020
 ms.author: radeltch
-ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ed18928237d19e9fad2548ee502f9a24266f12c0
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894649"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212870"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
 
@@ -188,7 +188,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **192.168.14.9**)
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için IP adresi 192.168.14.10
          * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **192.168.14.10** ve **ön uç). QAS. ERS**)
    1. Arka uç havuzlarını oluşturma
@@ -204,7 +204,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için bağlantı noktası 621**01**
             * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
    1. Yük Dengeleme kuralları
@@ -215,7 +215,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          1. **Ha bağlantı noktalarını** seçin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
          * ÇÖZÜMLEYICILER için Yük Dengeleme kuralları oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **lb. QAS. ERS**)
 1. Alternatif olarak, senaryonuz temel yük dengeleyici (iç) gerektiriyorsa, şu adımları izleyin:  
    1. Ön uç IP adreslerini oluşturma
@@ -223,7 +223,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **192.168.14.9**)
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için IP adresi 192.168.14.10
          * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **192.168.14.10** ve **ön uç). QAS. ERS**)
    1. Arka uç havuzlarını oluşturma
@@ -233,13 +233,13 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          1. Sanal makine Ekle ' ye tıklayın.
          1. Daha önce yoks için oluşturduğunuz kullanılabilirlik kümesini seçin 
          1. (A) SCS kümesinin sanal makinelerini seçin
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
    1. Sistem durumu araştırmalarını oluşturma
       1. YOKS için bağlantı noktası 620**00**
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKLAR için bağlantı noktası 621**01**
             * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
    1. Yük Dengeleme kuralları
@@ -250,7 +250,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          1. Protokol **TCP**'yi tut, bağlantı noktası **3200** girin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam'a tıklayın
+         1. Tamam’a tıklayın.
       1. YOKS için ek bağlantı noktaları
          * 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları "d" altında yineleyin
       1. YOKLAR için ek bağlantı noktaları
@@ -303,9 +303,9 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver yüklemesi için hazırlanma
 
-Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]** - düğüm 1 yalnızca uygulanabilir veya **[2]** - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
+1. **[A]** kurulum konak adı çözümlemesi
 
    Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
@@ -462,12 +462,14 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo pcs node standby anftstsapcl2
    # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -523,12 +525,14 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    
    # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
@@ -644,12 +648,15 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -669,12 +676,15 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -685,6 +695,9 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
     ```
 
    Daha eski bir sürümden yükseltiyorsanız ve sıraya alma sunucusu 2 ' ye geçiş yapıyorsanız bkz. SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > Yukarıdaki yapılandırmadaki zaman aşımları yalnızca örnektir ve belirli SAP kurulumuna uyarlanmasını gerektirebilir. 
 
    Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
 
@@ -881,7 +894,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    sudo service waagent restart
    ```
 
-## <a name="install-database"></a>Veritabanını yükleme
+## <a name="install-database"></a>Veritabanını yükler
 
 Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için Red Hat Enterprise Linux. For a list of supported databases, see [SAP Note 1928533][1928533][Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik][sap-hana-ha] bölümüne bakın.
 

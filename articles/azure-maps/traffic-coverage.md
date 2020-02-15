@@ -1,19 +1,19 @@
 ---
 title: Trafik kapsamı | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları 'nda trafik kapsamı hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988155"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209537"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure haritalar trafik kapsamı
 
@@ -23,7 +23,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Ülke/Bölge  |Olaylara  |Akış  |
+|Ülke/Bölge  |Olay Sayısı  |Akış  |
 |---------|:---------:|:---------:|
 |Arjantin      |✓         |✓         |
 |Brezilya     |✓         |✓         |
@@ -32,14 +32,14 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Kolombiya      |✓         |✓         |
 |Meksika     |✓         |✓         |
 |Peru       |✓         |✓         | 
-|Birleşik Devletler     |✓         |✓        |
+|Amerika Birleşik Devletleri     |✓         |✓        |
 |\+ Porto Riko     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-|Ülke/Bölge   |Olaylara  |Akış  |
+|Ülke/Bölge   |Olay Sayısı  |Akış  |
 |---------|:---------:|:---------:|
 |Avustralya     |✓         |✓        |
 |Barış   |✓         |✓        |
@@ -59,13 +59,13 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="europe"></a>Avrupa
 
-|Ülke/Bölge   |Olaylara  |Akış  |
+|Ülke/Bölge   |Olay Sayısı  |Akış  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Avusturya     |✓         |✓         |
 |Belarus    |✓         |✓         |
 |Belçika     |✓         |✓         |
-|Bosna - Hersek    |✓         |✓         |
+|Bosna Hersek    |✓         |✓         |
 |Bulgaristan     |✓         |✓         |
 |Hırvatistan     |✓         |✓         |
 |Çek Cumhuriyeti     |✓         |✓         |
@@ -84,7 +84,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Kazakistan    |✓         |✓        |
 |Letonya     |✓         |✓         |
 |Lesoto     |✓         |✓         |
-|Liechtenstein      |✓         |✓         |
+|Lihtenştayn      |✓         |✓         |
 |Litvanya     |✓         |✓         |
 |Lüksemburg     |✓         |✓         |
 |Malta     |✓         |✓         |
@@ -117,7 +117,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-|Ülke/Bölge |Olaylara  |Akış  |
+|Ülke/Bölge |Olay Sayısı  |Akış  |
 |---------|:---------:|:---------:|
 |Bahreyn     |✓         |✓         |
 |Mısır     |✓         |✓         |

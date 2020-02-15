@@ -3,12 +3,12 @@ title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120622"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207664"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -135,7 +135,7 @@ Aşağıdaki şablon boş bir kaynak grubu oluşturur.
 }
 ```
 
-Birden fazla kaynak grubu oluşturmak için kaynak gruplarıyla [Kopyala öğesini](create-multiple-instances.md) kullanın.
+Birden fazla kaynak grubu oluşturmak için kaynak gruplarıyla [Kopyala öğesini](copy-resources.md) kullanın.
 
 ```json
 {
@@ -170,7 +170,7 @@ Birden fazla kaynak grubu oluşturmak için kaynak gruplarıyla [Kopyala öğesi
 }
 ```
 
-Kaynak yinelemesi hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki bir kaynak veya özelliğin birden fazla örneğini dağıtma](./create-multiple-instances.md)ve [öğretici: Kaynak Yöneticisi şablonlarla birden çok kaynak örneği oluşturma](./template-tutorial-create-multiple-instances.md).
+Kaynak yinelemesi hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda bir kaynağın birden fazla örneğini dağıtma](./copy-resources.md)ve [öğretici: Kaynak Yöneticisi şablonlarla birden fazla kaynak örneği oluşturma](./template-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-group-and-resources"></a>Kaynak grubu ve kaynaklar
 

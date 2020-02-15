@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169831"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252085"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -141,11 +141,11 @@ Ayrıca, bir örnek oluşturabilirsiniz
 
 ## <a name="notebookvm"></a>Not defteri VM 'sine ne oldu?
 
-İşlem örnekleri, Not defteri VM 'sini değiştiriyor.  İşlem örneklerinin henüz kullanılamadığı bölgelerde, tam işlevsellikle Not defteri VM 'Leri kullanmaya devam edebilir ve yeni not defteri VM 'Leri oluşturabilirsiniz.
+İşlem örnekleri, Not defteri VM 'sini değiştiriyor.  
 
 Çalışma alanı dosya paylaşımında depolanan tüm not defteri dosyalarına ve çalışma alanı veri depolarındaki verilere bir işlem örneğinden erişilebilecektir. Ancak, daha önce bir not defteri sanal makinesine yüklenmiş olan tüm özel paketlerin, işlem örneğinde yeniden yüklenmesi gerekir. İşlem kümeleri oluşturma için uygulanan kota sınırlamaları, işlem örneği oluşturma için de geçerlidir. 
 
-İşlem örneklerinin kullanılabildiği bölgelerde yeni not defteri VM 'Leri oluşturulamaz. Ancak, tam işlevsellikle oluşturmuş olduğunuz not defteri VM 'lerine erişmeye ve bunları kullanmaya devam edebilirsiniz. İşlem örnekleri, mevcut not defteri VM 'leriyle aynı çalışma alanında oluşturulabilir. 
+Yeni Not defteri VM 'Leri oluşturulamıyor. Ancak, tam işlevsellikle oluşturmuş olduğunuz not defteri VM 'lerine erişmeye ve bunları kullanmaya devam edebilirsiniz. İşlem örnekleri, mevcut not defteri VM 'leriyle aynı çalışma alanında oluşturulabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

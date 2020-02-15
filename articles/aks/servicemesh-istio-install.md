@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d886205e88db780a7a09554391bd975f57eebfe7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561747"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251745"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
 
@@ -98,7 +98,9 @@ Istio için [Helm][helm] yükleme yaklaşımı gelecekte kullanım dışı olaca
 > IBU Şu anda Linux düğümlerinde çalıştırılmak üzere zamanlanmalıdır. Kümenizde Windows Server düğümleriniz varsa, Istio 'ların yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığından emin olmanız gerekir. Düğümlerin doğru düğümlere zamanlandığından emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanacağız.
 
 > [!CAUTION]
-> [SDS (gizli bulma hizmeti)][istio-feature-sds] ve [istio CNI][istio-feature-cni] istio özellikleri şu anda [Alpha][istio-feature-stages]içinde olduğundan, bunlar etkinleştirilmeden önce düşünülmelidir. Ayrıca, [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] Kubernetes ÖZELLIĞI (SDS için bir gereksinim) geçerli aks sürümlerinde etkin değildir.
+> [SDS (gizli bulma hizmeti)][istio-feature-sds] ve [istio CNI][istio-feature-cni] istio özellikleri şu anda [Alpha][istio-feature-stages]içinde olduğundan, bunlar etkinleştirilmeden önce düşünülmelidir. 
+>
+> [Hizmet hesabı belirteci Volume Projection][kubernetes-feature-sa-projected-volume] Kubernetes ÖZELLIĞININ (SDS için bir gereksinim), aks üzerindeki tüm Kubernetes 1,13 ve üzeri sürümler için artık **etkinleştirildiğini** unutmayın.
 
 Aşağıdaki içerikle `istio.aks.yaml` adlı bir dosya oluşturun. Bu dosya, UBO 'ın yapılandırılması için [istio denetim düzlemi belirtim][istio-control-plane] ayrıntılarını tutacaktır.
 

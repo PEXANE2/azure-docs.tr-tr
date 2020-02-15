@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845453"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208855"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Hızlı başlangıç: Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Maven kullanma
 
@@ -21,7 +21,7 @@ Bu makalede, Maven komut satırı aracıyla Azure Işlevleri için bir Java işl
 > You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
 -->
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Java kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
@@ -75,7 +75,7 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 | **leyebilir** | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. Bu hızlı başlangıçtaki örneklerde `com.fabrikam.functions`kullanılır. |
 | **appName** | Azure 'da yeni işlev uygulamanızı tanımlayan genel olarak benzersiz ad. _ArtifactId_ , rastgele bir sayı ile eklenmiş olan varsayılanı kullanın. Bu değeri, daha sonra ihtiyacınız olacağını unutmayın. |
 | **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan: `westus`. Tüm bölgelerin bir listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | İşlev uygulamanızın oluşturulacağı yeni [kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu hızlı başlangıçta örnekleri tarafından kullanılan `myResourceGroup`kullanın. Kaynak grubu, Azure aboneliğiniz için benzersiz olmalıdır.|
+| **Kaynak** | İşlev uygulamanızın oluşturulacağı yeni [kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu hızlı başlangıçta örnekleri tarafından kullanılan `myResourceGroup`kullanın. Kaynak grubu, Azure aboneliğiniz için benzersiz olmalıdır.|
 
 Onaylamak için `Y` yazın veya ENTER tuşuna basın.
 
@@ -119,7 +119,7 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```Output
 Hello AzureFunctions!
 ```
-Yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) gerekli değildir. İşlev kodunu durdurmak için terminalde `Ctrl+C` komutunu kullanın.
+Yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) gerekli değildir. İşlev kodunu durdurmak için terminalde `Ctrl+C` komutunu kullanın.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)

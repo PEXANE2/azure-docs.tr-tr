@@ -3,12 +3,12 @@ title: VMware VM’lerini Azure Backup Sunucusu ile geri yükleme
 description: VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini geri yüklemek için Azure Backup Sunucusu (MABS) kullanın.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: 7c93c3100d8756fd9faf8cf02152a870bd0c106c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171918"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212345"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware sanal makinelerini geri yükleme
 
@@ -44,7 +44,7 @@ Bu makalede, VMware VM kurtarma noktalarını geri yüklemek için Microsoft Azu
 
      * **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı, kaynak havuzu, klasör** ve **yol**bilgilerini girin.
 
-      ![Kurtarma türünü seçin](./media/restore-azure-backup-server-vmware/recovery-type.png)
+      ![Kurtarma Türü’nü Seçin](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
 8. **Özet** ekranında, ayarlarınızı gözden geçirin ve kurtarma işlemini başlatmak için **kurtar** ' ı tıklatın. **Kurtarma durumu** ekranı, kurtarma işleminin ilerlemesini gösterir.
 
@@ -52,24 +52,28 @@ Bu makalede, VMware VM kurtarma noktalarını geri yüklemek için Microsoft Azu
 
 Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz. Bu özellik yalnızca Windows Server VM 'Leri için kullanılabilir. Tek tek dosyaları geri yükleme, VMDK 'ye gözatıp istediğiniz dosya (ler) i, kurtarma işlemini başlatmadan önce, tüm VM 'yi geri yüklemeye benzer. Tek bir dosyayı kurtarmak veya bir Windows Server VM 'sinden dosya seçmek için:
 
+>[!NOTE]
+>Bir VM 'den tek bir dosyanın geri yüklenmesi yalnızca Windows VM ve disk kurtarma noktaları için kullanılabilir.
+
 1. MABS Yönetici Konsolu, **Kurtarma** görünümü ' ne tıklayın.
 
 2. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtiğinizde, bölmedeki Kurtarma noktaları kullanılabilir kurtarma noktalarını görüntüler.
 
-    ![Kullanılabilir kurtarma noktaları](./media/restore-azure-backup-server-vmware/recovery-points.png)
+    ![Kullanılabilir kurtarma noktaları](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
 3. **Için kurtarma noktaları:** bölmesinde, istenen kurtarma noktası (ler) i içeren tarihi seçmek için takvimi kullanın. Yedekleme ilkesinin nasıl yapılandırıldığına bağlı olarak, tarihler birden fazla kurtarma noktasına sahip olabilir. Kurtarma noktasının alındığı günü seçtikten sonra, doğru **kurtarma süresini**seçtiğinizden emin olun. Seçilen tarihin birden çok kurtarma noktası varsa, kurtarma zamanı açılır menüsünde bunu seçerek kurtarma noktanızı seçin. Kurtarma noktasını seçtikten sonra kurtarılabilir öğelerin listesi **yol:** bölmesinde görünür.
 
 4. Kurtarmak istediğiniz dosyaları bulmak için, **yol** bölmesinde **kurtarılabilir öğe** sütunundaki öğeye çift tıklayarak açın. Kurtarmak istediğiniz dosya, dosya veya klasörleri seçin. Birden çok öğe seçmek için, her öğeyi seçerken **CTRL** tuşuna basın. **Kurtarılabilir öğe** sütununda görünen dosya veya klasör listesinde arama yapmak için **yol** bölmesini kullanın. **Aşağıdaki arama listesi** alt klasörlerde arama yapmaz. Alt klasörlerde arama yapmak için klasörü çift tıklayın. Alt bir klasörden üst klasöre geçmek için **yukarı** düğmesini kullanın. Birden çok öğe (dosya ve klasör) seçebilirsiniz, ancak aynı ana klasörde olmaları gerekir. Aynı kurtarma işinde birden çok klasörden öğe kurtaramazsınız.
 
+    ![Kurtarma seçimini İncele](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
+
 5. Kurtarma için öğe (ler) i seçtiğinizde, Yönetici Konsolu araç şeridinde **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı tıklatın. Kurtarma Sihirbazı 'nda, **Kurtarma seçimini İncele** ekranı, kurtarılacak seçili öğeleri gösterir.
-    ![kurtarma seçimini gözden geçirin](./media/restore-azure-backup-server-vmware/review-recovery.png)
 
 6. **Kurtarma seçeneklerini belirtin** ekranında, ağ bant genişliği azaltmayı etkinleştirmek istiyorsanız **Değiştir**' e tıklayın. Ağ azaltmayı devre dışı bırakmak için **İleri**'ye tıklayın. Bu sihirbaz ekranında, VMware VM 'Leri için başka bir seçenek bulunmamaktadır. Ağ bant genişliği kısıtlaması ' nı değiştirmeyi seçerseniz, kısıtlama iletişim kutusunda **ağ bant genişliği kullanımını azaltmayı etkinleştir** ' i seçerek açın. Etkinleştirildikten sonra **ayarları** ve **iş zamanlamasını**yapılandırın.
 7. **Kurtarma türünü seçin** ekranında **İleri**' ye tıklayın. Yalnızca dosya veya klasör (ler) i bir ağ klasörüne kurtarabilirsiniz.
 8. **Hedef belirtin** ekranında, dosyalarınız veya klasörleriniz için bir ağ konumu bulmak üzere **Araştır** ' a tıklayın. MABS, kurtarılan tüm öğelerin kopyalandığı bir klasör oluşturur. Klasör adı, MABS_day-ay-yıl ön ekine sahiptir. Kurtarılan dosyalar veya klasör için bir konum seçtiğinizde, bu konumun (hedef, hedef yol ve kullanılabilir alan) ayrıntıları sağlanır.
 
-       ![Specify location to recover files](./media/restore-azure-backup-server-vmware/specify-destination.png)
+    ![Dosyaların kurtarılacağı konumu belirtin](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
 9. **Kurtarma seçeneklerini belirtin** ekranında, hangi güvenlik ayarının uygulanacağını seçin. Ağ bant genişliği kullanımını azaltmayı tercih edebilirsiniz, ancak daraltma varsayılan olarak devre dışıdır. Ayrıca, **San kurtarma** ve **bildirim** etkin değildir.
 10. **Özet** ekranında, ayarlarınızı gözden geçirin ve kurtarma işlemini başlatmak için **kurtar** ' ı tıklatın. **Kurtarma durumu** ekranı, kurtarma işleminin ilerlemesini gösterir.

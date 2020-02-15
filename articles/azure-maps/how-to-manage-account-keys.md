@@ -1,19 +1,19 @@
 ---
 title: Azure haritalar hesabınızı Azure portal yönetme | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları hesabınızı yönetmek için Azure portal nasıl kullanacağınızı öğreneceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025614"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209979"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure haritalar hesabınızı yönetme
 
@@ -21,7 +21,7 @@ Azure haritalar hesabınızı Azure portal aracılığıyla yönetebilirsiniz. H
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-a-new-account"></a>Yeni hesap oluşturun
+## <a name="create-a-new-account"></a>Yeni hesap oluşturma
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 

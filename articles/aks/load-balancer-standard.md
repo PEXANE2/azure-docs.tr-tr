@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025716"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212421"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -57,7 +57,10 @@ Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önü
 
 ## <a name="use-the-standard-sku-load-balancer"></a>*Standart* SKU yük dengeleyiciyi kullanma
 
-Bir AKS kümesi oluşturduğunuzda, varsayılan olarak, bu kümede Hizmetleri çalıştırdığınızda *Standart* SKU yük dengeleyici kullanılır. Örneğin, [Azure CLI kullanan hızlı başlangıç][aks-quickstart-cli] *Standart* SKU yük dengeleyiciyi kullanan bir örnek uygulama dağıtır. 
+Bir AKS kümesi oluşturduğunuzda, varsayılan olarak, bu kümede Hizmetleri çalıştırdığınızda *Standart* SKU yük dengeleyici kullanılır. Örneğin, [Azure CLI kullanan hızlı başlangıç][aks-quickstart-cli] *Standart* SKU yük dengeleyiciyi kullanan bir örnek uygulama dağıtır.
+
+> [!IMPORTANT]
+> Kullanıcı tanımlı bir yol (UDR) özelleştirilerek genel IP adreslerine kaçınılabilir. Bir AKS kümesinin giden türünü UDR olarak belirtmek, AKS tarafından oluşturulan Azure Yük Dengeleyici için IP sağlama ve arka uç havuzu kurulumunu atlayabilir. Bkz. [küme `outboundType` ' userDefinedRouting ' olarak ayarlanıyor](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Yük dengeleyiciyi iç olarak yapılandırma
 

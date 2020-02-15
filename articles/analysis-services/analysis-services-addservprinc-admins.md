@@ -7,16 +7,20 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573612"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212510"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme 
 
- Katılımsız PowerShell görevlerini otomatikleştirmek için bir hizmet sorumlusu, yönetilmekte olan Analysis Services sunucuda **Sunucu Yöneticisi** ayrıcalıklarına sahip olmalıdır. Bu makalede, bir Azure AS Server 'daki sunucu yöneticileri rolüne bir hizmet sorumlusu nasıl ekleyeceğiniz açıklanır.
+ Katılımsız PowerShell görevlerini otomatikleştirmek için bir hizmet sorumlusu, yönetilmekte olan Analysis Services sunucuda **Sunucu Yöneticisi** ayrıcalıklarına sahip olmalıdır. Bu makalede, bir Azure AS Server 'daki sunucu yöneticileri rolüne bir hizmet sorumlusu nasıl ekleyeceğiniz açıklanır. Bunu SQL Server Management Studio veya bir Kaynak Yöneticisi şablonu kullanarak yapabilirsiniz.
+ 
+> [!NOTE]
+> Azure PowerShell cmdlet 'lerini kullanan sunucu işlemleri için, hizmet sorumlusu Ayrıca [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **sahip** rolüne ait olmalıdır. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu görevi tamamlamadan önce, Azure Active Directory kayıtlı bir hizmet sorumlusu olması gerekir.
@@ -24,10 +28,9 @@ Bu görevi tamamlamadan önce, Azure Active Directory kayıtlı bir hizmet sorum
 [Hizmet sorumlusu oluşturma-Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Hizmet sorumlusu oluşturma - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="required-permissions"></a>Gerekli izinler
-Bu görevi gerçekleştirmek için Azure 'da sunucu [Yöneticisi](analysis-services-server-admins.md) izinlerine sahip olmanız gerekir. 
+## <a name="using-sql-server-management-studio"></a>SQL Server Management Studio Kullanımı
 
-## <a name="add-service-principal-to-server-administrators-role"></a>Hizmet sorumlusunu sunucu yöneticileri rolüne Ekle
+Sunucu yöneticilerini, SQL Server Management Studio (SSMS) kullanarak yapılandırabilirsiniz. Bu görevi gerçekleştirmek için Azure 'da sunucu [Yöneticisi](analysis-services-server-admins.md) izinlerine sahip olmanız gerekir. 
 
 1. SSMS 'de, Azure 'u sunucunuza bağlayın.
 2. **Sunucu özellikleri** > **güvenlik**' te, **Ekle**' ye tıklayın.
@@ -39,9 +42,60 @@ Bu görevi gerçekleştirmek için Azure 'da sunucu [Yöneticisi](analysis-servi
     
     ![Hizmet sorumlusu hesabı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
+## <a name="using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanma
 
-> [!NOTE]
-> Azure PowerShell cmdlet 'lerini kullanan sunucu işlemleri için Zamanlayıcı çalıştıran hizmet sorumlusu, [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **sahip** rolüne de ait olmalıdır. 
+Ayrıca, bir Azure Resource Manager şablonu kullanarak Analysis Services sunucusunu dağıtarak sunucu yöneticilerini yapılandırabilirsiniz. Dağıtımı çalıştıran kimlik, [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için **katkıda** bulunan rolüne ait olmalıdır.
+
+> [!IMPORTANT]
+> Hizmet sorumlusu `app:{service-principal-client-id}@{azure-ad-tenant-id}`biçim kullanılarak eklenmelidir.
+
+Aşağıdaki Kaynak Yöneticisi şablonu, Analysis Services Yönetici rolüne eklenen belirli bir hizmet sorumlusu ile bir Analysis Services sunucusu dağıtır:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "analysisServicesServerName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "analysisServicesSkuName": {
+            "type": "string"
+        },
+        "analysisServicesCapacity": {
+            "type": "int"
+        },
+        "servicePrincipalClientId": {
+            "type": "string"
+        },
+        "servicePrincipalTenantId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('analysisServicesServerName')]",
+            "type": "Microsoft.AnalysisServices/servers",
+            "apiVersion": "2017-08-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('analysisServicesSkuName')]",
+                "capacity": "[parameters('analysisServicesCapacity')]"
+            },
+            "properties": {
+                "asAdministrators": {
+                    "members": [
+                        "[concat('app:', parameters('servicePrincipalClientId'), '@', parameters('servicePrincipalTenantId'))]"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="related-information"></a>İlgili bilgiler
 

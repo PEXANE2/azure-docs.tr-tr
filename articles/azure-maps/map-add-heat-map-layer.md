@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986249"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208548"
 ---
 # <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
@@ -79,10 +79,10 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' enterpolageç ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' doğrusal '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-yoğunluklu '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, ' Transparent ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' mor ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Step ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-yoğunluklu '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Transparent '<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' Navy ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, ' yeşil ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, ' sarı ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, ' Red '<br/>\] |   
 
 - `opacity`: ısı haritası katmanının donuk veya saydam olduğunu belirtir.
-- `intensity`: heatmap 'in genel yoğunluğunu artırmak için her bir veri noktasının ağırlığına bir çarpan uygular. Bu, veri noktalarının ağırlığına bir farklılık yapılmasına yardımcı olur ve görselleştirmeyi kolaylaştırır.
+- `intensity`: heatmap 'in genel yoğunluğunu artırmak için her bir veri noktasının ağırlığına bir çarpan uygular. Veri noktalarının ağırlığına bir farklılık oluşmasına neden olur, bu da görselleştirmeyi kolaylaştırır.
 - `weight`: varsayılan olarak, tüm veri noktalarında 1 ağırlığı vardır ve eşit olarak ağırlıklı şekilde tanımlanır. Ağırlık seçeneği bir çarpan olarak davranır ve bunu sayı veya bir ifade olarak ayarlayabilirsiniz. Bir sayı ağırlık olarak ayarlandıysa, her bir veri noktasının haritaya iki kez yerleştirilmesi denklik olur. Örneğin, ağırlık 2 ise, yoğunluk iki katına çıkar. Weight seçeneğini bir sayı olarak ayarlamak, ısı haritasını, yoğunluk seçeneğini kullanmak için benzer bir şekilde işler. 
 
-  Ancak, bir ifade kullanırsanız her bir veri noktasının ağırlığı her bir veri noktasının özelliklerine bağlı olabilir. Örneğin, her bir veri noktasının bir deprem temsil ettiğini varsayın. Her deprem veri noktasının önemli bir ölçümü büyüklük değeridir. Deprem her zaman gerçekleşir, ancak en az büyüklüğü düşüktür ve fark edilmez. Her bir veri noktasına ağırlığı atamak için bir ifadede büyüklük değerini kullanarak, ısı haritası içinde deprem 'in önemini daha iyi bir şekilde temsil edersiniz.
+  Ancak, bir ifade kullanırsanız her bir veri noktasının ağırlığı her bir veri noktasının özelliklerine bağlı olabilir. Örneğin, her bir veri noktasının bir deprem temsil ettiğini varsayın. Büyüklük değeri her bir deprem veri noktası için önemli bir ölçümdür. Deprem her zaman gerçekleşir, ancak en az büyüklüğü düşüktür ve fark edilmez. Her bir veri noktasına ağırlığı atamak için bir ifadede büyüklük değerini kullanın. Ağırlığı atamak için büyüklük değerini kullanarak, ısı haritası içinde deprem 'in önemini daha iyi bir şekilde temsil edersiniz.
 - `source` ve `source-layer`: veri kaynağını güncelleştirmenizi sağlar.
 
 Farklı ısı haritası katman seçeneklerini test etmek için bir araç aşağıda verilmiştir.

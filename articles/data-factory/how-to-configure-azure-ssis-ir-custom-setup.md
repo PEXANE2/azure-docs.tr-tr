@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187720"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251983"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -121,8 +121,12 @@ Azure-SSIS IR özelleştirmek için aşağıdaki öğeler gereklidir:
 
      * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://hedda.io/ssis-component/)Hizmet satın aldıktan sonra Azure-SSIS IR, GÇ veri kalitesi/oh22 'tan bileşeni Temizleme. Geçerli tümleşik sürüm **1.0.13**.
 
-      * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) veri kalitesini/eşleşen bileşeni yükleyebilirsiniz. Geçerli tümleşik sürüm **1.0.43**.
-   
+     * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) veri kalitesini/eşleşen bileşeni yükleyebilirsiniz. Geçerli tümleşik sürüm **1.0.43**.
+
+     * **Kingswaysoft 'ıN SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) Bağlayıcısı paketini, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR yükleyebilirsiniz. Geçerli tümleşik sürüm **2019,2**' dir.
+
+     * **Kingswaysoft 'ıN SSIS üretkenlik paketi** bileşenini seçerseniz, **Lisans anahtarı** kutusuna onlardan satın aldığınız ürün lisans anahtarını girerek Azure-SSIS IR ssmsoft ' den alınan [SSIS üretkenlik paketi](https://www.kingswaysoft.com/products/ssis-productivity-pack) paketini yükleyebilirsiniz. Geçerli tümleşik sürüm **10,0**' dir.
+
    Eklenmiş hızlı özel kurulumlarınız, **Gelişmiş ayarlar** bölümünde görüntülenir. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil**' i seçin.
 
    ![Özel kurulumlarla Gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964031"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210251"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -38,7 +38,7 @@ Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlev
 > [!IMPORTANT]
 > Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio Code için [Azure işlevleri uzantısı][visual studio code için azure işlevleri uzantısı]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
@@ -71,7 +71,7 @@ Işlevler uzantısı, ilk işlevinizle birlikte bir işlev uygulaması projesi o
 
     ![HTTP tetikleyicisi şablonunu seçin](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. İşlev adı olarak **Httpexample** yazın ve ENTER ' ı seçin ve ardından **işlev** yetkilendirmesi ' ni seçin. Bu yetkilendirme düzeyi, işlev uç noktasını çağırdığınızda bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) sağlamanızı gerektirir.
+1. İşlev adı olarak **Httpexample** yazın ve ENTER ' ı seçin ve ardından **işlev** yetkilendirmesi ' ni seçin. Bu yetkilendirme düzeyi, işlev uç noktasını çağırdığınızda bir [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) sağlamanızı gerektirir.
 
     ![Işlev yetkilendirmesi seçin](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -277,7 +277,7 @@ Proje yeniden oluşturulur, yeniden paketlenmiştir ve Azure 'a yüklenir. Mevcu
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Dağıtılan işlevin URL 'sini al
 
-HTTP ile tetiklenen bir işlevi çağırmak için işlev uygulamanıza dağıtıldığında işlevin URL 'sine ihtiyacınız vardır. Bu URL, gerekli [işlev anahtarlarını](functions-bindings-http-webhook.md#authorization-keys)içerir. Bu URL 'Leri dağıtılan işlevleriniz için almak üzere uzantısını kullanabilirsiniz.
+HTTP ile tetiklenen bir işlevi çağırmak için işlev uygulamanıza dağıtıldığında işlevin URL 'sine ihtiyacınız vardır. Bu URL, gerekli [işlev anahtarlarını](functions-bindings-http-webhook-trigger.md#authorization-keys)içerir. Bu URL 'Leri dağıtılan işlevleriniz için almak üzere uzantısını kullanabilirsiniz.
 
 1. F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: kopyalama işlev URL 'si**komutunu arayıp çalıştırın.
 
@@ -341,7 +341,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 İşlev uygulama ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru makalelerinin ortam değişkenleri bölümlerine bakın:
 
 * [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
-* [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#betik (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 

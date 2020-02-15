@@ -3,14 +3,14 @@ title: Azure Site Recovery 'da yüklemenin olağanüstü durum kurtarması için
 description: Azure Site Recovery ile VMware/fiziksel sunucu olağanüstü durum kurtarma için Mobility hizmetini otomatik olarak yüklemek.
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896019"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252236"
 ---
 # <a name="automate-mobility-service-installation"></a>Mobility hizmeti yüklemesini otomatikleştirin
 
@@ -20,7 +20,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)' de Mobility hizme
 
 - **Anında yükleme**: Azure Portal bir makine için çoğaltmayı etkinleştirdiğinizde Mobility hizmet aracısını Site Recovery yüklemesine izin verin.
 - **El ile yükleme**: Mobility hizmetini her makineye el ile yükleme. Gönderim ve el ile yükleme hakkında [daha fazla bilgi edinin](vmware-physical-mobility-service-overview.md) .
-- **Otomatik dağıtım**: Microsoft uç noktası Configuration Manager veya ıntigua jetpatch gibi üçüncü taraf araçları gibi yazılım dağıtım araçlarıyla yüklemeyi otomatikleştirin.
+- **Otomatik dağıtım**: Microsoft uç noktası Configuration Manager gibi yazılım dağıtım araçlarıyla veya jetpatch gibi üçüncü taraf araçlarla yüklemeyi otomatikleştirin.
 
 Otomatik yükleme ve güncelleştirme, şu durumlarda bir çözüm sağlar:
 
@@ -31,7 +31,7 @@ Otomatik yükleme ve güncelleştirme, şu durumlarda bir çözüm sağlar:
 - Aracı yüklemelerini aynı anda çok sayıda sunucuya ölçeklendirmeniz gerekir.
 - Planlı bakım pencereleri sırasında yüklemeleri ve yükseltmeleri zamanlamak istiyorsunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeyi otomatikleştirmek için aşağıdaki öğeler gereklidir:
 
@@ -352,11 +352,11 @@ cd /tmp
 
 1. **Bu standart programla ilgili bilgileri belirtin** sayfasında, aşağıdaki değerleri belirtin:
 
-    **Parametre** | **Windows değeri** | **Linux değeri**
+    **Parametresinin** | **Windows değeri** | **Linux değeri**
     --- | --- | ---
     **Ad** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
     **Komut satırı** | . bat dosyasını install | ./install_linux. sh
-    **Program çalışabilir** | Kullanıcının oturum açmış olup olmadığı | Kullanıcının oturum açmış olup olmadığı
+    **Program çalışabilir** | Kullanıcı oturumu açsın ya da açmasın | Kullanıcı oturumu açsın ya da açmasın
     **Diğer parametreler** | Varsayılan ayarı kullan | Varsayılan ayarı kullan
 
    ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)

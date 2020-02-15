@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718092"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210593"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Azure Lab Services laboratuvar hesaplarını yapılandırma 
 Azure Lab Services, laboratuvar hesabı, sınıf laboratuvarları gibi yönetilen laboratuvar türleri için bir kapsayıcıdır. Yönetici Azure Lab Services bir laboratuvar hesabı ayarlar ve hesapta laboratuvarları oluşturabileceğiniz laboratuvar sahiplerine erişim sağlar. Bu makalede laboratuvar hesabı oluşturma, tüm laboratuar hesaplarını görüntüleme veya laboratuvar hesabını silme işlemlerinin nasıl yapılacağı açıklanır.
@@ -37,18 +37,6 @@ Sanal bir ağı, laboratuvarın sanal ağına eş ağ olarak bağlamak için şu
 Bu hesapta oluşturulan Labs seçili sanal ağa bağlı. Seçili sanal ağdaki kaynaklara erişebilirler. Daha fazla bilgi için bkz. [Azure Lab Services laboratuvar ağınızı bir eş sanal ağ Ile bağlama](how-to-connect-peer-virtual-network.md).
 
 **Eş sanal ağ** alanı için bir sanal ağ seçtiğinizde, laboratuvar **oluşturucusunun laboratuvar konumunu seçmesine izin ver** seçeneği devre dışı bırakılır. Bunun nedeni, laboratuvar hesabındaki laboratuvarların, eş sanal ağdaki kaynaklarla bağlantı kurmak için laboratuvar hesabıyla aynı bölgede olması gerekir. 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Laboratuvar oluşturucusunun laboratuvar için konum seçmesine izin ver
-Laboratuvar oluşturucusunun aşağıdaki adımları izleyerek laboratuvar hesabı konumundan farklı bir konumda laboratuvarları oluşturmalarına izin verebilirsiniz: 
-
-1. **Laboratuvar hesabı** sayfasında, sol taraftaki menüden **Labs yapılandırması** ' nı seçin.
-2. Laboratuvar oluşturucusunun laboratuvar **konumunu seçmesine Izin ver**için, laboratuvar Oluşturucu 'nun laboratuvar için bir konum seçebilmesini istiyorsanız **etkin** ' i seçin. Devre dışıysa, laboratuvarlar laboratuvar hesabının mevcut olduğu yerde otomatik olarak oluşturulur. 
-    
-    **Eş sanal ağ** alanı için bir sanal ağ seçtiğinizde bu alan devre dışıdır. Bunun nedeni, laboratuvar hesabındaki laboratuvarların, eş sanal ağdaki kaynaklara erişmesi için laboratuvar hesabıyla aynı bölgede olması gerekir. 
-1. Araç çubuğunda **Kaydet**’i seçin. 
-
-    ![Laboratuvar konumu ayarını Yapılandır](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Laboratuvardaki VM 'Ler için bir adres aralığı belirtin
 Aşağıdaki yordamda, laboratuvardaki VM 'Ler için bir adres aralığı belirtme adımları vardır. Daha önce belirttiğiniz aralığı güncelleştirirseniz, değiştirilen adres aralığı yalnızca değişiklik yapıldıktan sonra oluşturulan VM 'Ler için geçerlidir. 

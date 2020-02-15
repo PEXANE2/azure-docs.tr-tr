@@ -1,19 +1,19 @@
 ---
 title: Hava durumu Hizmetleri kavramları | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure Maps Hava durumu Hizmetleri için uygulanan kavramlar hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991400"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208735"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure haritalar 'da Hava durumu Hizmetleri
 
@@ -26,7 +26,7 @@ Hava durumu hizmeti API 'Lerinden bazıları, kullanıcının ölçümde veya ek
 |unitType|Açıklama         |
 |--------|--------------------|
 |0       |fit                |
-|1       |Cm              |
+|1       |cm              |
 |2       |kilometre               |
 |3       |milimetre          |
 |4       |santimetre ölçümü          |
@@ -56,46 +56,46 @@ Hava durumu hizmeti API 'Lerinin bazıları yanıttaki `iconCode` döndürür. `
 
 | Simge numarası |Simge| Gün | Gerçekleştirilmiştir | Metin |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Evet |  Hayır    | Güneşli|
-| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Evet |  Hayır    | Çoğunlukla güneş|
-| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Evet |  Hayır    | Kısmi güneş|
-| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Evet |  Hayır    | Aralıklı bulutlar|
-| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | Evet |  Hayır    | Hazlu güneş ışığı |
-| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | Evet |  Hayır    | Genellikle Cloudy|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Evet |  Evet   | Bulutlu |
-| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Evet |  Evet   | Dreary (fazla atama)|
-| 11           |![](./media/weather-services-concepts/fog-i.png)                       | Evet |  Evet   | Sis|
-| 12           |![](./media/weather-services-concepts/showers-i.png)                   | Evet |  Evet   | Gösteri|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | Evet |  Hayır    | Genellikle, showers ile Cloudy|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | Evet |  Hayır    | Showers ile kısmen güneş|
-| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Evet |  Evet   | Thunderstorms|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Evet |  Hayır    | Çoğunlukla Cloudy, thunderstorms ile|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Evet |  Hayır    | Thunderstorms ile kısmen güneş|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Evet |  Evet   | Yağmur|
-| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Evet |  Evet   | Flurrıes|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Evet |  Hayır    | Genellikle Flurrıes ile Cloudy|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Evet |  Hayır    | Flurrıes ile kısmen güneş|
-| 22           |![](./media/weather-services-concepts/snow-i.png)                      | Evet |  Evet   | Kar|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Evet |  Hayır    | Genellikle kar ile Cloudy|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Evet |  Evet   | CE |
-| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Evet |  Evet   | Uyun|
-| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Evet |  Evet   | Yağmur dondurma|
-| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Evet |  Evet   | Yağmur ve kar|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | Evet |  Evet   | Sık Erişimli|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Evet |  Evet   | Soğuk|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | Evet |  Evet   | Rüzgarlı|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | Hayır  |  Evet   | Temizle|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Hayır  |  Evet   | Çoğunlukla temizle|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Hayır  |  Evet   | Kısmi Cloudy|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Hayır  |  Evet   | Aralıklı bulutlar|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Hayır  |  Evet   | Hazik ma ışığı|
-| 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | Hayır  |  Evet   | Genellikle Cloudy|
-| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Hayır  |  Evet   | Showers ile kısmen Cloudy|
-| 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | Hayır  |  Evet   | Genellikle, showers ile Cloudy|
-| 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | Hayır  |  Evet   | Thunderstorms ile kısmen Cloudy|
-| 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | Hayır  |  Evet   | Çoğunlukla Cloudy, thunderstorms ile|
-| 43           |![](./media/weather-services-concepts/mostly-cloudy-flurries-night.png) | Hayır  |  Evet   | Genellikle Flurrıes ile Cloudy|
-| 44           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Hayır  |  Evet   | Genellikle kar ile Cloudy|
+| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Yes |  Hayır    | Güneşli|
+| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Yes |  Hayır    | Çoğunlukla güneş|
+| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Yes |  Hayır    | Kısmi güneş|
+| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Yes |  Hayır    | Aralıklı bulutlar|
+| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | Yes |  Hayır    | Hazlu güneş ışığı |
+| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | Yes |  Hayır    | Genellikle Cloudy|
+| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Yes |  Yes   | Bulutlu |
+| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Yes |  Yes   | Dreary (fazla atama)|
+| 11           |![](./media/weather-services-concepts/fog-i.png)                       | Yes |  Yes   | Sis|
+| 12           |![](./media/weather-services-concepts/showers-i.png)                   | Yes |  Yes   | Gösteri|
+| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | Yes |  Hayır    | Genellikle, showers ile Cloudy|
+| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | Yes |  Hayır    | Showers ile kısmen güneş|
+| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Yes |  Yes   | Thunderstorms|
+| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Yes |  Hayır    | Çoğunlukla Cloudy, thunderstorms ile|
+| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Yes |  Hayır    | Thunderstorms ile kısmen güneş|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Yes |  Yes   | Maktan|
+| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Yes |  Yes   | Flurrıes|
+| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Yes |  Hayır    | Genellikle Flurrıes ile Cloudy|
+| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Yes |  Hayır    | Flurrıes ile kısmen güneş|
+| 22           |![](./media/weather-services-concepts/snow-i.png)                      | Yes |  Yes   | Kar|
+| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Yes |  Hayır    | Genellikle kar ile Cloudy|
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Yes |  Yes   | CE |
+| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Yes |  Yes   | Uyun|
+| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Yes |  Yes   | Yağmur dondurma|
+| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Yes |  Yes   | Yağmur ve kar|
+| 30           |![](./media/weather-services-concepts/hot-i.png)                       | Yes |  Yes   | Sık Erişimli|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Yes |  Yes   | Soğuk|
+| 32           |![](./media/weather-services-concepts/windy-i.png)                     | Yes |  Yes   | Rüzgarlı|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | Hayır  |  Yes   | Temizle|
+| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Hayır  |  Yes   | Çoğunlukla temizle|
+| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Hayır  |  Yes   | Kısmi Cloudy|
+| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Hayır  |  Yes   | Aralıklı bulutlar|
+| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Hayır  |  Yes   | Hazik ma ışığı|
+| 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | Hayır  |  Yes   | Genellikle Cloudy|
+| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Hayır  |  Yes   | Showers ile kısmen Cloudy|
+| 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | Hayır  |  Yes   | Genellikle, showers ile Cloudy|
+| 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | Hayır  |  Yes   | Thunderstorms ile kısmen Cloudy|
+| 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | Hayır  |  Yes   | Çoğunlukla Cloudy, thunderstorms ile|
+| 43           |![](./media/weather-services-concepts/mostly-cloudy-flurries-night.png) | Hayır  |  Yes   | Genellikle Flurrıes ile Cloudy|
+| 44           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Hayır  |  Yes   | Genellikle kar ile Cloudy|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Radar ve uydu Imagery renk ölçeği

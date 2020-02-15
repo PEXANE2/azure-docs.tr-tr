@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894785"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251915"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 
@@ -113,7 +113,7 @@ Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ
 
 **Alt ağ:** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
 
-**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası] [VM-sanal-ağ-hizmeti-uç noktaları-genel bakış-649d], özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağ. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
+**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
 
 **Sanal ağ kuralı:** SQL veritabanı sunucunuz için bir sanal ağ kuralı, SQL veritabanı sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanınızın ACL 'sinde olması için alt ağın **Microsoft. SQL** tür adını içermesi gerekir. Bir sanal ağ kuralı, SQL veritabanı sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
 
@@ -122,7 +122,7 @@ Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ
 
 Azure SQL Server güvenlik duvarı, iletişimlerin SQL veritabanı 'na kabul edileceği IP adresi aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışında olan kararlı IP adresleri için çok uygundur. Ancak, Azure özel ağı içindeki sanal makineler (VM) *dinamik* IP adresleriyle yapılandırılır. Dinamik IP adresleri, VM 'niz yeniden başlatıldığında değişebilir ve IP tabanlı güvenlik duvarı kuralını geçersiz kılar. Bir güvenlik duvarı kuralında, bir üretim ortamında dinamik bir IP adresi belirtmek de bu şekilde yapılır.
 
-SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma] [VM-configure-Private-IP-Addresses--a-sanal-Machine-------------------321W]. Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamamlandığında maliyetli hale gelir. 
+SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamamlandığında maliyetli hale gelir. 
 
 Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurmak ve yönetmek için daha kolay bir alternatiftir.
 

@@ -3,12 +3,12 @@ title: Şablon işlevleri-dağıtım
 description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484044"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207290"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonlar için dağıtım işlevleri 
 
@@ -17,7 +17,7 @@ Kaynak Yöneticisi, geçerli dağıtımla ilgili değerleri almak için aşağı
 * [dağıtmak](#deployment)
 * [ortamınızın](#environment)
 * [parametreler](#parameters)
-* [variables](#variables)
+* [değişkenlerinin](#variables)
 
 Kaynaklardan, kaynak gruplarından veya aboneliklerden değerler almak için bkz. [kaynak işlevleri](template-functions-resource.md).
 
@@ -239,9 +239,9 @@ Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametr
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Evet |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -344,9 +344,9 @@ Değişkenin değerini döndürür. Belirtilen değişken adının şablonun de�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| variableName |Evet |Dize |Döndürülecek değişkenin adı. |
+| variableName |Yes |Dize |Döndürülecek değişkenin adı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -428,8 +428,8 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 Değişkenleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki değişkenler](template-variables.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](template-syntax.md).
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
 * Çeşitli şablonları birleştirmek için bkz. [bağlantılı şablonları Azure Resource Manager kullanma](linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](create-multiple-instances.md).
-* Oluşturduğunuz bir şablonu dağıtmayı öğrenmek için bkz [Azure Resource Manager şablonu ile uygulama dağıtma](deploy-powershell.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
+* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
 

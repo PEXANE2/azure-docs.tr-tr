@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158171"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251626"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -246,7 +246,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > Bu özellikler Şu anda geliştirme aşamasındadır.
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[Grup Yöneticisi](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[Grup Yöneticisi](#groups-administrator-permissions)
 
 Bu roldeki kullanıcılar, adlandırma ve süre sonu ilkeleri gibi grupları ve ayarlarını oluşturabilir/yönetebilir. Bu role bir Kullanıcı atamanın, bu kullanıcılara Kiracıdaki tüm grupları ekipler, SharePoint, Yammer gibi çeşitli iş yükleri arasında Outlook 'a ek olarak yönetme olanağı sağladığını anlamak önemlidir. Ayrıca, Kullanıcı, çeşitli grup ayarlarını Microsoft Yönetim Merkezi, Azure portal gibi çeşitli yönetim portallarında ve takımlar ve SharePoint yönetim merkezleri gibi iş yüklerinin yanı sıra iş yüküne göre yönetebilecektir.
 
@@ -1081,7 +1081,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. webPortal/allEntities/standart/okuma   | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
 
-### <a name="group-administrator-permissions"></a>Grup Yöneticisi izinleri
+### <a name="groups-administrator-permissions"></a>Gruplar yönetici izinleri
 , Adlandırma ve süre sonu ilkeleri gibi grupların ve Grup ayarlarının tüm yönlerini yönetebilir.
 
 | **Eylemler** | **Açıklama** |

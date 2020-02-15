@@ -1,19 +1,19 @@
 ---
 title: Yerelleştirme desteği | Microsoft Azure haritaları
 description: Bu makalede Microsoft Azure haritaların Hizmetleri için desteklenen diller hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025444"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208157"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
 
@@ -22,7 +22,7 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 
 ## <a name="azure-maps-supported-languages"></a>Azure haritalar desteklenen diller
 
-Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
+Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
 | Kimlik         | Ad                   |  Haritalar | Arama | Yönlendirme | Hava durumu | Trafik olayları | JS eşleme denetimi |
@@ -109,7 +109,7 @@ Azure haritalar, hizmetler genelinde çeşitli dillerde yerelleştirilmiştir. A
 >
 > 1 Ağustos 2019 ' den sonra, **Görünüm** parametresi yukarıda listelenen yeni bölgeler/ülkeler için döndürülen harita içeriğini tanımlar. Azure Maps **Görünüm** parametresi ("Kullanıcı bölgesi parametresi" olarak da bilinir), haritada görüntülenen Kenarlıklar ve Etiketler dahil olmak üzere Azure haritalar Hizmetleri aracılığıyla hangi coğrafi bölge/bölge için doğru haritaları gösterecek olan ıkı harfli ıso-3166 ülke kodudur. 
 
-Hizmetlerinizin kullandığı REST API 'Ler ve SDK 'Lar için **Görünüm** parametresini gerektiği şekilde ayarlamış olduğunuzdan emin olun.
+REST API 'Leri için gereken **Görünüm** parametresini ve hizmetlerinizin kullandığı SDK 'ları ayarladığınızdan emin olun.
 >  
 >
 >  **REST API 'Leri:**
@@ -142,12 +142,12 @@ Hizmetlerinizin kullandığı REST API 'Ler ve SDK 'Lar için **Görünüm** par
 >    * Azure Haritalar Web SDK 'Sı
 >    * Azure Haritalar Android SDK
 
-Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu belirleyin ve sonra bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin yanı sıra Azure Maps aracılığıyla erişmeye yetkili olan üçüncü taraf içeriklerin kullanılabilir hale getirilmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
+Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin yanı sıra Azure Maps aracılığıyla erişmeye yetkili olan üçüncü taraf içeriklerin kullanılabilir hale getirilmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
 
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görüntüle         | Açıklama                            |  Haritalar | Arama | JS Harita Denetimi |
+| Görünüm         | Açıklama                            |  Haritalar | Arama | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |
@@ -166,4 +166,4 @@ Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 | SY           | Suriye (Arapça görünümü)                   |   ✓   |        |     ✓          |
 | Vet           | Yemen (Arapça görünümü)                   |   ✓   |        |     ✓          |
 | Otomatik         | İsteğin IP adresine göre harita verilerini döndürün.|   ✓   |    ✓   |     ✓          |
-| Birleşik      | Birleşik görünüm (diğerleri)                  |   ✓   |   ✓     |     ✓          |
+| Standart      | Birleşik görünüm (diğerleri)                  |   ✓   |   ✓     |     ✓          |

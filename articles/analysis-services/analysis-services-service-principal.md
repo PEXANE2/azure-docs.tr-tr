@@ -4,23 +4,21 @@ description: Azure Analysis Services yönetim görevlerini otomatikleştirmek i�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572599"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251677"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
 Hizmet sorumluları, katılımsız kaynak ve hizmet düzeyinde işlemler gerçekleştirmek için kiracınızın içinde oluşturduğunuz bir Azure Active Directory uygulama kaynağıdır. Bunlar, bir uygulama KIMLIĞI ve parolası ya da sertifikası olan benzersiz bir *Kullanıcı kimliği* türüdür. Bir hizmet sorumlusu yalnızca atandığı roller ve izinler tarafından tanımlanan görevleri gerçekleştirmek için gerekli izinlere sahiptir. 
 
 Analysis Services, hizmet sorumluları, ortak görevleri otomatikleştirmek için Azure Otomasyonu, PowerShell katılımsız modu, özel istemci uygulamaları ve Web uygulamaları ile birlikte kullanılır. Örneğin, sunucuları sağlama, modelleri dağıtma, veri yenileme, ölçek artırma/azaltma ve duraklatma/devam etmeyi hizmet sorumluları kullanılarak otomatik hale getirilebilir. İzinler, normal Azure AD UPN hesaplarına benzer şekilde rol üyeliğiyle, hizmet sorumlularına atanır.
-
-Analysis Services Ayrıca, hizmet sorumlularını kullanan yönetilen kimlikler tarafından gerçekleştirilen işlemleri destekler. Daha fazla bilgi edinmek için bkz. Azure [kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) ve Azure [ad kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).
 
 ## <a name="create-service-principals"></a>Hizmet sorumlusu oluşturma
  
@@ -92,7 +90,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO ve ADOMD 
 
-İstemci uygulamaları ve Web Apps ile bağlanırken, [amo ve ADOMD istemci kitaplıkları](analysis-services-data-providers.md) sürüm 15.0.2 ve bağlantı dizelerindeki NuGet destek hizmeti sorumlularını kullanarak şu sözdizimini kullanarak daha fazla yüklenebilir paketler: `app:AppID` ve parola veya @no_ _t_2_ .`cert:thumbprint` 
+İstemci uygulamaları ve Web Apps ile bağlanırken, [amo ve ADOMD istemci kitaplıkları](analysis-services-data-providers.md) sürüm 15.0.2 ve bağlantı dizelerindeki NuGet destek hizmet sorumluları 'ndan daha fazla yüklenebilir paketler, `app:AppID` ve parola veya `cert:thumbprint`. 
 
 Aşağıdaki örnekte `appID` ve bir `password` model veritabanı yenileme işlemi gerçekleştirmek için kullanılır:
 

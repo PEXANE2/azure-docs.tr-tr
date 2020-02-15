@@ -1,6 +1,6 @@
 ---
 title: Haritaya kabarcık katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya balon katmanı ekleme hakkında bilgi edineceksiniz.
+description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya kabarcık katmanı ekleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933658"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208565"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Haritaya kabarcık katmanı ekleme
 
-Bu makalede, bir veri kaynağındaki nokta verilerinin haritada kabarcık katmanı olarak nasıl oluşturulduğu gösterilir. Kabarcık katmanları, sabit piksel yarıçapı ile haritada daire olarak işleme noktaları. 
+Bu makalede, bir veri kaynağındaki nokta verilerinin haritada kabarcık katmanı olarak nasıl oluşturulduğu gösterilir. Kabarcık katmanları, bir sabit piksel yarıçapı ile haritada daire olarak işleme noktaları. 
 
 > [!TIP]
 > Kabarcık katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin oluşturduğu şekilde sınırlamak için katmanın `filter` özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` de MultiPoint özellikleri eklemek istiyorsanız ayarlayın.
 
 ## <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
 
-Aşağıdaki kod, bir dizi noktayı bir veri kaynağına yükler. Ardından, veri noktaları bir [kabarcık katmanına](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)bağlanır. Kabarcık katmanı, her kabarcığun yarıçapını beş piksel, beyaz renkli bir renk, mavi renkli bir kontur rengi ve altı piksellik bir kontur genişliği olarak işler. 
+Aşağıdaki kod, bir dizi noktayı bir veri kaynağına yükler. Ardından, veri noktalarını bir [kabarcık katmanına](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)bağlar. Kabarcık katmanı, her kabarcığun yarıçapını beş piksel ve bir de beyaz dolgulu bir renk oluşturur. Ve, mavi renkli bir kontur rengi ve altı piksellik bir kontur kalınlığı. 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Kabarcık katmanı içeren etiketleri göster
 
-Aşağıdaki kod, bir etiket işlemek için bir kabarcık katmanını haritada ve sembol katmanının üzerine işlemek için nasıl kullanacağınızı gösterir. Sembol katmanının simgesini gizlemek için, simge seçeneklerinin `image` özelliğini `'none'`olarak ayarlayın.
+Bu kod, haritada bir noktayı işlemek için balon katmanını nasıl kullanacağınızı gösterir. Ve bir etiketi işlemek için bir sembol katmanını kullanma. Sembol katmanının simgesini gizlemek için, simge seçeneklerinin `image` özelliğini `'none'`olarak ayarlayın.
 
 <br/>
 

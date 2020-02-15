@@ -1,22 +1,14 @@
 ---
 title: Çoklu açma konuşmaları-Soru-Cevap Oluşturma
-titleSuffix: Azure Cognitive Services
 description: Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için istemleri ve bağlamı kullanın. Çoklu açma, önceki sorudaki bağlamın bir sonraki soruyu ve yanıtı etkilediği geri ve ileri bir konuşmaya sahip olabilir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843269"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210423"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
@@ -31,6 +23,9 @@ Botunuzun bir sorudan diğerine kadar olan birden çok _dönüşi yönetmek_içi
 Bazı sorular tek bir sırayla yanıtlanamaz. İstemci uygulaması (sohbet botu) konuşmalarınızı tasarlarken, bir kullanıcı doğru yanıtı belirleyebilmek için filtrelenen veya iyileştirilmesi gereken bir soru sorabilir. Bu akışı, kullanıcıyı *takip eden istemlerle*sunarak mümkün olan sorulara göre yaparsınız.
 
 Bir Kullanıcı soru sorarsa, Soru-Cevap Oluşturma yanıtı _ve_ herhangi bir izleme istemini döndürür. Bu yanıt, izleme sorularını seçimler halinde sunmanıza olanak tanır.
+
+> [!CAUTION]
+> Çoklu açma istemleri, SSS belgelerinden ayıklanmaz. Çoklu çift ayıklama gerekiyorsa, QnA çiftlerini SSS olarak belirten soru işaretlerini kaldırın.
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Sohbet botu ile örnek çoklu açma konuşması
 

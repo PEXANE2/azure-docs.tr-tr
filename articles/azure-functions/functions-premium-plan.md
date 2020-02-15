@@ -1,18 +1,18 @@
 ---
-title: Azure İşlevleri Premium planı
+title: Azure Işlevleri Premium planı
 description: Azure Işlevleri Premium planı için Ayrıntılar ve yapılandırma seçenekleri (VNet, soğuk başlatma yok, sınırsız yürütme süresi).
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024645"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212467"
 ---
-# <a name="azure-functions-premium-plan"></a>Azure İşlevleri Premium planı
+# <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
 Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır), işlev uygulamaları için bir barındırma seçeneğidir. Premium planı, VNet bağlantısı, soğuk başlatma ve Premium donanım gibi özellikler sağlar.  Birden çok işlev uygulaması aynı Premium plana dağıtılabilir ve plan, işlem örneği boyutunu, temel plan boyutunu ve maksimum plan boyutunu yapılandırmanıza olanak tanır.  Premium planı ve diğer plan ve barındırma türlerinin karşılaştırması için bkz. [işlev ölçekleme ve barındırma seçenekleri](functions-scale.md).
 
@@ -88,11 +88,16 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
 
-|SKU|Çekirdek|Hafıza|Depolama|
+|SKU|Çekirdek|Bellek|Depolama|
 |--|--|--|--|
-|EP1|1|3,5 GB|250 GB|
-|EP2|2|7 GB|250 GB|
-|EP3|4|14 GB|250 GB|
+|EP1|1|3,5 GB|GB|
+|EP2|2|7 GB|GB|
+|EP3|4|14 GB|GB|
+
+### <a name="memory-utilization-considerations"></a>Bellek kullanımı konuları
+Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın kullanılabilir tüm belleği kullanacağı her zaman anlamına gelmez.
+
+Örneğin, bir JavaScript işlev uygulaması Node. js ' de varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, `--max-old-space-size=<max memory in MB>`bir değer `languageWorkers:node:arguments` uygulama ayarını ekleyin.
 
 ## <a name="regions"></a>Bölgeler
 
@@ -100,28 +105,28 @@ Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmişti
 
 |Bölge| Windows | Linux |
 |--| -- | -- |
-|Orta Avustralya| ✔<sup>1</sup> | |
-|Orta Avustralya 2| ✔<sup>1</sup> | |
-|Doğu Avustralya| ✔ | |
-|Güneydoğu Avustralya | ✔ | ✔<sup>1</sup> |
-|Güney Brezilya| ✔<sup>2</sup> |  |
-|Orta Kanada| ✔ |  |
+|Avustralya Orta| ✔<sup>1</sup> | |
+|Avustralya Orta 2| ✔<sup>1</sup> | |
+|Avustralya Doğu| ✔ | |
+|Avustralya Güneydoğu | ✔ | ✔<sup>1</sup> |
+|Brezilya Güney| ✔<sup>2</sup> |  |
+|Kanada Orta| ✔ |  |
 |Orta ABD| ✔ |  |
 |Doğu Asya| ✔ |  |
 |Doğu ABD | ✔ | ✔<sup>1</sup> |
 |Doğu ABD 2| ✔ |  |
-|Orta Fransa| ✔ |  |
+|Fransa Orta| ✔ |  |
 |Almanya Orta Batı| ✔ | |
-|Doğu Japonya| ✔ | ✔<sup>1</sup> |
-|Batı Japonya| ✔ | |
-|Güney Kore - Orta| ✔ |  |
+|Japonya Doğu| ✔ | ✔<sup>1</sup> |
+|Japonya Batı| ✔ | |
+|Kore Orta| ✔ |  |
 |Orta Kuzey ABD| ✔ |  |
 |Kuzey Avrupa| ✔ | ✔<sup>1</sup> |
 |Orta Güney ABD| ✔ | ✔<sup>1</sup> |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔<sup>1</sup> |
-|Güney Birleşik Krallık| ✔ | |
-|UK, Batı| ✔ |  |
+|UK Güney| ✔ | |
+|UK Batı| ✔ |  |
 |Batı Avrupa| ✔ | ✔<sup>1</sup> |
 |Batı Hindistan| ✔ |  |
 |Batı ABD| ✔ | ✔<sup>1</sup> |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7916bbb28602d64e0916fce7badf16a65c242227
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934326"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251881"
 ---
 # <a name="security-control-network-security"></a>Güvenlik denetimi: ağ güvenliği
 
@@ -21,7 +21,7 @@ Ağ güvenliği önerileri, hangi ağ protokollerini, TCP/UDP bağlantı noktala
 
 ## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: sanal ağınızda Ağ güvenlik gruplarını veya Azure Güvenlik duvarını kullanarak kaynakları koruyun
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.1 | 9,2, 9,4, 14.1-14.3 | Müşteri |
 
@@ -47,7 +47,7 @@ https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: VNet, alt ağlar ve NIC 'lerin yapılandırmasını ve trafiğini izleyin ve günlüğe kaydedin
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.2 | 9,3, 12,2 | Müşteri |
 
@@ -63,7 +63,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ## <a name="13-protect-critical-web-applications"></a>1,3: kritik Web uygulamalarını koruma
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.3 | 9.5 | Müşteri |
 
@@ -75,7 +75,7 @@ https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-a
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: bilinen kötü amaçlı IP adresleriyle iletişimleri reddetme
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.4 | 12,3 | Müşteri |
 
@@ -109,7 +109,7 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 ## <a name="15-record-network-packets-and-flow-logs"></a>1,5: ağ paketlerini ve akış günlüklerini kaydetme
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1,5 | 12,5, 15,8 | Müşteri |
 
@@ -125,7 +125,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: ağ tabanlı yetkisiz giriş algılama/yetkisiz erişim önleme sistemleri (KIMLIKLER/IP 'ler) dağıtma
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.6 | 12,6, 12,7 | Müşteri |
 
@@ -137,7 +137,7 @@ Azure Güvenlik Duvarı ile uyarıları yapılandırma: https://docs.microsoft.c
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1,7: Web uygulamalarına trafiği yönetme
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.7 | 12,9, 12,10 | Müşteri |
 
@@ -157,9 +157,9 @@ https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: ağ güvenlik kurallarının karmaşıklığını ve yönetim yükünü en aza indirme
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 1.8 | 1,5 | Müşteri |
+| 1,8 | 1,5 | Müşteri |
 
 Ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (örn., Apimanaya) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
@@ -169,7 +169,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.9 | 11,1 | Müşteri |
 
@@ -183,7 +183,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Ağ için Azure Ilke örnekleri:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#network
+https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 Azure Blueprint oluşturma:
 
@@ -191,7 +191,7 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 ## <a name="110-document-traffic-configuration-rules"></a>1,10: belge trafiği yapılandırma kuralları
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1.1 | 11.2 | Müşteri |
 
@@ -211,7 +211,7 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: ağ kaynağı yapılandırmasını izlemek ve değişiklikleri algılamak için otomatikleştirilmiş araçları kullanın
 
-| Azure KIMLIĞI | CIS kimlikleri | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 1,11 | 11,3 | Müşteri |
 
@@ -223,7 +223,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Ağ için Azure Ilke örnekleri:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#network
+https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

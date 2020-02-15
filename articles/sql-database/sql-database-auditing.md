@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161962"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212893"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimi 'ni kullanmaya başlama
 
@@ -90,7 +90,7 @@ Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **dep
 
    ![depolama hesabı](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-Bir sanal ağ veya güvenlik duvarı altında bir depolama hesabı yapılandırmak için sunucuda [Active Directory Yöneticisi](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) gerekir, **Güvenilen Microsoft hizmetlerinin depolama hesabındaki bu depolama hesabına erişmesine izin ver** ' i etkinleştirin. Ayrıca, seçilen depolama hesabında ' Microsoft. Authorization/Roleatamalar/Write ' iznine sahip olmanız gerekir.
+Bir sanal ağ veya güvenlik duvarı altında bir depolama hesabı yapılandırmak için sunucuda [Active Directory Yöneticisi](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance) gerekir, **Güvenilen Microsoft hizmetlerinin depolama hesabındaki bu depolama hesabına erişmesine izin ver** ' i etkinleştirin. Ayrıca, seçilen depolama hesabında ' Microsoft. Authorization/Roleatamalar/Write ' iznine sahip olmanız gerekir.
 
 ' Depolama Blobu veri katılımcısı ' rolüne yönetilen kimliğe izin vermek için [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) olmanız önerilir. İzinler ve rol tabanlı erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir?](../role-based-access-control/overview.md) ve [azure RBAC ve Azure Portal kullanarak rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)
 

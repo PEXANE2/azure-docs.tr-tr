@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767449"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251711"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme-Azure CLı kullanarak bir Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -148,6 +148,10 @@ az aks create \
 > [!Note]
 > Parola doğrulama hatası alırsanız, kaynak grubunuzu başka bir bölgede oluşturmayı deneyin.
 > Ardından yeni kaynak grubuyla kümeyi oluşturmayı deneyin.
+
+> [!Note]
+> Sürüm bu bölgede desteklenmediğinden AKS kümesini oluşturamadığı takdirde, bu bölgeye yönelik desteklenen sürüm listesini bulmak için [az aks get-versions--location eastus] komutunu kullanabilirsiniz.
+
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür. Bazen kümenin sağlanması birkaç dakikadan uzun sürebilir. Bu durumlarda en fazla 10 dakika bekleyin. 
 
@@ -288,6 +292,9 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 Örnek uygulamayı eylemde görmek için, hizmetinizin dış IP adresine bir Web tarayıcısı açın.
 
 ![ASP.NET örnek uygulamasına göz atma görüntüsü](media/windows-container/asp-net-sample-app.png)
+
+> [!Note]
+> Sayfayı yüklemeye çalışırken bir bağlantı zaman aşımı alırsanız, örnek uygulamanın şu komutla hazır olduğunu doğrulamanız gerekir [kubectl Get Pod--Watch]. Bazen Windows kapsayıcısı, dış IP adresiniz kullanılabilir olduğunda başlamacaktır.
 
 ## <a name="delete-cluster"></a>Küme silme
 

@@ -4,12 +4,12 @@ description: Azure Işlevleri 'ni kullanarak sunucusuz Python kodunu oluşturun 
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16d4d5627ea297d825092009511915f5b6e734b6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157899"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212427"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir Python işlevi oluşturma
 
@@ -97,7 +97,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     cd LocalFunctionProj
     ```
     
-1. Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişkeni işlevinizin benzersiz adıdır ve `--template` bağımsız değişkeni işlevin tetikleyicisini belirtir. `func new` projenin seçilen diline ve *function. JSON*adlı yapılandırma dosyasına uygun bir kod dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
+1. Aşağıdaki komutu kullanarak, `--name` bağımsız değişkeninin işlevinizin benzersiz adını (Bu durumda HttpExample) belirttiği ve `--template` bağımsız değişkeninin işlevin tetikleyicisini (HTTP tetikleyicisi) belirttiği, projenize bir işlev ekleyin. Bu `func new` komut, projenin seçilen diline ve *function. JSON*adlı yapılandırma dosyasına uygun bir kod dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturur.
 
     ```
     func new --name HttpExample --template "HTTP trigger"
@@ -167,7 +167,7 @@ HTTP tetikleyicisi için işlev, `req` değişkende istek verilerini alır, *fun
 }
 ```
 
-Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisinin tür [`httpTrigger`](functions-bindings-http-webhook.md#trigger) ve [`http`](functions-bindings-http-webhook.md#output)türünde çıkış bağlaması olan bir giriş bağlaması vardır.
+Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisinin tür [`httpTrigger`](functions-bindings-http-webhook-trigger.md) ve [`http`](functions-bindings-http-webhook-output.md)türünde çıkış bağlaması olan bir giriş bağlaması vardır.
 
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma

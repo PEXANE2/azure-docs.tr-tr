@@ -1,19 +1,19 @@
 ---
 title: Coğrafi kodlama kapsamı | Microsoft Azure haritaları
 description: Konum adresini Enlem ve boylam koordinatları olarak dönüştürme işlemi, coğrafi kodlama olarak bilinir. Bu makalede, Microsoft Azure Eşlemlerde coğrafi kodlama kapsamına sahip bölgeler hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911622"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210064"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
 
@@ -36,13 +36,13 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Aruba                                               |                 |                |              |      ✓     |          ✓         |
 | Bahamalar                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Barbados                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Belize                                              |                 |                |              |      ✓     |          ✓         |
+| Beliz                                              |                 |                |              |      ✓     |          ✓         |
 | Bermuda                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bolivya                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bonaire, Sint Eustatius ve Saba                   |                 |                |              |      ✓     |          ✓         |
 | Brezilya                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Cayman Adaları                                      |                 |                |       ✓      |      ✓     |          ✓         |
+| Kayman Adaları                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Şili                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kolombiya                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kosta Rika                                          |                 |                |       ✓      |      ✓     |          ✓         |
@@ -72,18 +72,18 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Saint Barthélimy                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts ve Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
-| Saint Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Marmara                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Pierre ve Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent ve Grenadinler                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Güney Georgia ve Güney Sandwich Adaları        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad ve Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Birleşik Devletler Küçük Harici Adaları                |                 |                |              |      ✓     |          ✓         |
-| Amerika Birleşik Devletleri                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Birleşik Devletler küçük harici Adaları                |                 |                |              |      ✓     |          ✓         |
+| Amerika Birleşik Devletler                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Britanya Virjin Adaları                              |                 |                |              |      ✓     |          ✓         |
+| İngiliz Virgin Adaları                              |                 |                |              |      ✓     |          ✓         |
 | ABD Virgin Adaları                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asya Pasifik
@@ -94,13 +94,13 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Avustralya                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bangladeş                                          |                 |                |              |      ✓     |          ✓         |
 | Butan                                              |                 |                |              |      ✓     |          ✓         |
-| Britanya Hint Okyanusu Toprakları                      |                 |                |              |      ✓     |          ✓         |
-| Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| İngiliz Hint Okyanusu Toprakları                      |                 |                |              |      ✓     |          ✓         |
+| Barış                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kamboçya                                            |                 |                |              |      ✓     |          ✓         |
 | Çin                                               |                 |                |              |      ✓     |          ✓         |
 | Christmas Adası                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Cocos (Keeling) Adaları                             |                 |                |              |      ✓     |          ✓         |
-| Komorlar                                             |                 |                |              |      ✓     |          ✓         |
+| Komorolar                                             |                 |                |              |      ✓     |          ✓         |
 | Cook Adaları                                        |                 |                |              |      ✓     |          ✓         |
 | Fiji                                                |                  |                |              |      ✓     |          ✓        |
 | Fransız Polinezyası                                    |                 |                |              |      ✓     |          ✓         |
@@ -129,7 +129,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Papua Yeni Gine                                    |                 |                |              |      ✓     |          ✓         |
 | Filipinler                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
-| Samoa                                               |                 |                |              |      ✓     |          ✓         |
+| Devleti                                               |                 |                |              |      ✓     |          ✓         |
 | Senkaku Adaları                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Solomon Adaları                                     |                 |                |              |      ✓     |          ✓         |
@@ -183,7 +183,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Kosova                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Kırgızistan                                          |                 |                |              |      ✓     |          ✓         |
 | Letonya                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Lihtenştayn                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litvanya                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Lüksemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kuzey Makedonya                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -233,19 +233,19 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Orta Afrika Cumhuriyeti                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Çad                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongo Cumhuriyeti                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Fildişi Sahili (Côte d’Ivoire)                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Fildişi Sahili                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongo Demokratik Cumhuriyeti                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Cibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Mısır                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ekvator Ginesi, Cumhuriyeti                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritre                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiyopya                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Fransız Güney Toprakları|                        |                |              |      ✓     |          ✓         |
+| Fransız Güney toprakları|                        |                |              |      ✓     |          ✓         |
 | Gabon                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gambiya                                              |                 |                |              |      ✓     |          ✓         |
 | Gana                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gine                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Gine-Bissau                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Gine Bissau                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | İran                                                |                 |                |              |      ✓     |          ✓         |
 | Irak                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | İsrail                                              |        ✓        |       ✓        |              |      ✓     |          ✓         |
@@ -273,12 +273,12 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Umman                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Katar                                               |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Reunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Ruanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
+| Rwanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Suudi Arabistan                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Seyşeller                                          |                 |                |       ✓      |      ✓     |          ✓         |
-| Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Seyş                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Sierra Taone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Somali                                             |                 |                |              |      ✓     |          ✓         |
 | Güney Afrika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Güney Sudan                                         |                 |                |       ✓      |      ✓     |          ✓         |

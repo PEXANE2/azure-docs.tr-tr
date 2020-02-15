@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910886"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208429"
 ---
 # <a name="show-traffic-on-the-map"></a>Haritada trafiği göster
 
 Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
 
 - Olay verileri-oluşturma, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur.
-- Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Trafik akışı verileri genellikle, trafiğin hız sınırına veya başka bir ölçüme göre ne kadar trafik yavaşlatıyor olduğunu temel alarak yollar için kullanılır. Azure haritalar 'daki trafik akışı verileri üç farklı ölçüm ölçümüne sahiptir:
+- Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Genellikle trafik akışı verileri, yolların renklendirmek için kullanılır. Renkler, akışı yavaşlatan, hız sınırına veya başka bir ölçüye göre ne kadar trafik altına göre belirlenir. Azure haritalar 'daki trafik akışı verileri üç farklı ölçüm ölçümüne sahiptir:
     - `relative`-yolun ücretsiz akış hızına bağlıdır.
     - `absolute`-yolda tüm taşıtlardan oluşan mutlak hızdır.
     - `relative-delay`-beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler.

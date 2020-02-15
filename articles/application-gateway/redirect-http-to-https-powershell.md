@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 480ceb4e13843ebeedf155f31aedacc5439a38de
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047431"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251728"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
 
-SSL sonlandırma sertifikası ile bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure PowerShell kullanabilirsiniz. Yönlendirme kuralı, application gateway'iniz HTTPS bağlantı noktasına HTTP trafiğini yönlendirmek için kullanılır. Ayrıca, bu örnekte, oluşturduğunuz bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) iki sanal makine örnekleri içeren application Gateway arka uç havuzu için. 
+SSL sonlandırma sertifikası ile bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure PowerShell kullanabilirsiniz. Yönlendirme kuralı, application gateway'iniz HTTPS bağlantı noktasına HTTP trafiğini yönlendirmek için kullanılır. Bu örnekte, iki sanal makine örneği içeren uygulama ağ geçidinin arka uç havuzu için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturacaksınız. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu öğreticideki komutları çalıştırmak için de çalışmasına ihtiyacınız `Login-AzAccount` Azure ile bir bağlantı oluşturmak için.
+Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu öğreticideki komutları çalıştırmak için, Azure ile bağlantı oluşturmak için `Login-AzAccount` çalıştırmanız gerekir.
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
@@ -283,7 +283,7 @@ Set-AzVmssStorageProfile $vmssConfig `
   -ImageReferencePublisher MicrosoftWindowsServer `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `
-  -ImageReferenceVersion latest
+  -ImageReferenceVersion latest `
   -OsDiskCreateOption FromImage
 Set-AzVmssOsProfile $vmssConfig `
   -AdminUsername azureuser `

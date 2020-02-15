@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496128"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252181"
 ---
 Bu adımda, bir Azure SQL veritabanı tek veritabanı oluşturacaksınız. 
 
@@ -29,14 +30,14 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
    ![Tek veritabanı oluşturma](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. **Temel bilgiler** sekmesinde, **proje ayrıntıları** bölümünde aşağıdaki değerleri yazın veya seçin:
+4. **Temel bilgiler** sekmesinde, **proje ayrıntıları** bölümünde aşağıdaki değerleri yazın veya seçin:
 
    - **Abonelik**: açılır ve görünmüyorsa doğru aboneliği seçin.
    - **Kaynak grubu**: **Yeni oluştur**' u seçin, `myResourceGroup`yazın ve **Tamam**' ı seçin.
 
      ![Yeni SQL veritabanı-temel sekmesi](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. **Veritabanı ayrıntıları** bölümünde, aşağıdaki değerleri yazın veya seçin:
+5. **Veritabanı ayrıntıları** bölümünde, aşağıdaki değerleri yazın veya seçin:
 
    - **Veritabanı adı**: `mySampleDatabase`girin.
    - **Sunucu**: **Yeni oluştur**' u seçin, aşağıdaki değerleri girin ve ardından **Seç**' i seçin.
@@ -63,18 +64,22 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
      - İsteğe bağlı olarak, donanım oluşturma 'yı değiştirmek için **yapılandırmayı Değiştir** ' i de seçebilirsiniz.
    - **Uygula**’yı seçin.
 
-5. **Ek ayarlar** sekmesini seçin. 
-6. **Veri kaynağı** bölümünde, **mevcut verileri kullan**altında `Sample`' yi seçin.
+6. **Ağ** sekmesini seçin ve [**Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine izin vermek**](../sql-database-networkaccess-overview.md)veya [özel bir uç nokta](../../private-link/private-endpoint-overview.md)eklemek istediğinize karar verin.
+
+   ![Ağ sekmesi](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. **Ek ayarlar** sekmesini seçin. 
+8. **Veri kaynağı** bölümünde, **mevcut verileri kullan**altında `Sample`' yi seçin.
 
    ![Ek SQL VERITABANı ayarları](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > Bu verileri kullanan kolayca bu ve diğer Azure SQL veritabanı hızlı başlangıçlarını izleyebilmeniz için **örnek (AdventureWorksLT)** verilerini seçtiğinizden emin olun.
 
-7. Kalan değerleri varsayılan olarak bırakın ve formun altındaki **gözden geçir + oluştur** ' u seçin.
-8. Son ayarları gözden geçirin ve **Oluştur**' u seçin.
+9. Kalan değerleri varsayılan olarak bırakın ve formun altındaki **gözden geçir + oluştur** ' u seçin.
+10. Son ayarları gözden geçirin ve **Oluştur**' u seçin.
 
-9. Kaynak grubunu, sunucuyu ve veritabanını dağıtmak ve sağlamak için **SQL veritabanı** formunda **Oluştur** ' u seçin.
+11. Kaynak grubunu, sunucuyu ve veritabanını dağıtmak ve sağlamak için **SQL veritabanı** formunda **Oluştur** ' u seçin.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

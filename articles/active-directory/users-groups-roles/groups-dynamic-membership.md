@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841038"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206268"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -120,7 +120,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
 | usageLocation |İki kodlu ülke kodu |(User. usageLocation-EQ "US") |
 | userPrincipalName |herhangi bir dize değeri |(User. userPrincipalName-EQ "alias@domain") |
-| userType |üye Konuk *null* |(User. userType-EQ "üye") |
+| UserType |üye Konuk *null* |(User. userType-EQ "üye") |
 
 ### <a name="properties-of-type-string-collection"></a>Dize koleksiyonu türü özellikleri
 
@@ -178,7 +178,7 @@ Bir ifadede kullanılan değerler, aşağıdakiler de dahil olmak üzere çeşit
 
 * Dizeler
 * Boolean – true, false
-* Sayılar
+* Numaralar
 * Diziler – sayı dizisi, dize dizisi
 
 Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdiziminin kullanılması önemlidir. Bazı sözdizimi ipuçları şunlardır:
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Uzantı özellikleri ve özel uzantı özellikleri
 
-Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kurallarında dize özellikleri olarak desteklenir. Uzantı öznitelikleri şirket içi Windows Server AD 'den eşitlenir ve "ExtensionAttributeX" biçimini alır, burada X eşittir 1-15. Bir özellik olarak uzantı özniteliği kullanan bir kurala örnek aşağıda verilmiştir:
+Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kurallarında dize özellikleri olarak desteklenir. [Uzantı öznitelikleri](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) şirket Içi WINDOWS Server ad 'den eşitlenir ve "ExtensionAttributeX" biçimini alır, burada X eşittir 1-15. Bir özellik olarak uzantı özniteliği kullanan bir kurala örnek aşağıda verilmiştir:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Özel uzantı özellikleri, şirket içi Windows Server AD 'den veya bağlı bir SaaS uygulamasından eşitlenir ve `user.extension_[GUID]_[Attribute]`biçimindedir, burada:
+[Özel uzantı özellikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) , şirket Içi WINDOWS Server ad 'den veya bağlı bir SaaS uygulamasından eşitlenir ve `user.extension_[GUID]_[Attribute]`biçimindedir, burada:
 
 * [GUID], Azure AD 'de özelliği oluşturan uygulama için Azure AD 'de benzersiz tanıtıcıdır
 * [Attribute], oluşturulduğu şekliyle özelliğin adıdır

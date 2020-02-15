@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: jgao
-ms.openlocfilehash: f18c9c6efb17f84446b9fee3d2df2c0977bed0c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757312"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251864"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -30,7 +30,7 @@ Dağıtım betiğinin avantajları:
 
 - Kod, kullanım ve hata ayıklama işlemlerini kolayca yapabilirsiniz. Dağıtım betikleri, en sevdiğiniz geliştirme ortamlarınızda geliştirebilirsiniz. Betikler, şablonlara veya dış betik dosyalarına gömülebilir.
 - Betik dilini ve platformunu belirtebilirsiniz. Şu anda yalnızca Linux ortamındaki dağıtım betikleri Azure PowerShell desteklenir.
-- Betikleri yürütmek için kullanılan kimlikleri belirtmeye izin verin. Şu anda yalnızca [Azure Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) desteklenir.
+- Betikleri yürütmek için kullanılan kimlikleri belirtmeye izin verin. Şu anda yalnızca [Azure Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) desteklenir.
 - Komut satırı bağımsız değişkenlerinin betiğe geçirilmesine izin ver.
 - Betik çıkışlarını belirtebilir ve bunları dağıtıma geri geçirebilir.
 
@@ -40,7 +40,7 @@ Dağıtım betiğinin avantajları:
 > [!IMPORTANT]
 > Bir depolama hesabı ve bir kapsayıcı örneği olmak üzere iki dağıtım betiği kaynağı, betik yürütme ve sorun giderme için aynı kaynak grubunda oluşturulur. Bu kaynaklar genellikle dağıtım betiği yürütmesi bir terminal durumunda olduğunda betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [Temizleme dağıtım betiği kaynakları](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Abonelik düzeyinde katkıda bulunan rolü ile Kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. Bir tane oluşturmak için, bkz. Azure portal kullanarak veya [Azure CLI kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)ya da [Azure PowerShell kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
 
@@ -59,7 +59,7 @@ Dağıtım betiğinin avantajları:
 
 - **Azure PowerShell Version 2.7.0, 2.8.0 veya 3.0.0**. Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 
-## <a name="resource-schema"></a>Kaynak şeması
+## <a name="sample-template"></a>Örnek şablon
 
 Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templates/microsoft.resources/deploymentscripts)bulunabilir.
 
@@ -87,7 +87,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
     ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json",
+    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -122,7 +122,7 @@ Aşağıdaki şablonda `Microsoft.Resources/deploymentScripts` türü ile tanım
 > [!NOTE]
 > Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin tek tırnak içine alınması gerekir. PowerShell çıkış karakteri **&#92;** . Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz. Ad parametresinin varsayılan değerine bakın.
 
-Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [kaynak şeması](#resource-schema).
+Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablon](#sample-template).
 
 Betiği çalıştırmak için, Cloud Shell 'i açmak için **dene** ' yi seçin ve ardından aşağıdaki kodu kabuk bölmesine yapıştırın.
 

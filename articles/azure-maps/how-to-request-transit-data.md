@@ -1,20 +1,20 @@
 ---
 title: İstek aktarma verileri | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları Mobility hizmetini kullanarak genel aktarım verileri isteme hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 08a35492a61d7e75680603308aa31bf7a184c036
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 17fbc78b34237c6f5e1e688a88c68bb0a321884f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198182"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209877"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmetini kullanarak genel aktarım verileri isteme 
 

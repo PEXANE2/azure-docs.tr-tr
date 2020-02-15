@@ -1,19 +1,19 @@
 ---
 title: Hava durumu kapsamı | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritalar 'da Hava durumu kapsamı hakkında bilgi edineceksiniz.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989612"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207953"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
 
@@ -39,14 +39,14 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Aruba                                    | ✓ |   |  ✓| 
 | Bahamalar                                  | ✓ |   |  ✓| 
 | Barbados                                 | ✓ |   |  ✓| 
-| Belize                                   | ✓ |   |  ✓| 
+| Beliz                                   | ✓ |   |  ✓| 
 | Bermuda                                  | ✓ |   |  ✓| 
 | Bolivya                                  | ✓ |   |  ✓| 
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brezilya                                   | ✓ |   |  ✓| 
-| Britanya Virjin Adaları                   | ✓ |   |  ✓| 
+| İngiliz Virgin Adaları                   | ✓ |   |  ✓| 
 | Kanada                                   | ✓ | ✓ |  ✓| 
-| Cayman Adaları                           | ✓ |   |  ✓| 
+| Kayman Adaları                           | ✓ |   |  ✓| 
 | Şili                                    | ✓ |   |  ✓| 
 | Kolombiya                                 | ✓ |   |  ✓| 
 | Kosta Rika                               | ✓ |   |  ✓| 
@@ -88,7 +88,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Turks ve Caicos Adaları                 | ✓ |   |  ✓| 
 | ABD harici Adaları                    | ✓ |   |  ✓| 
 | ABD Virgin Adaları                      | ✓ |   |  ✓| 
-| Birleşik Devletler                            | ✓ | ✓ |  ✓| 
+| Amerika Birleşik Devletleri                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
 
@@ -149,7 +149,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Filistin Yönetimi       | ✓               |                              |        ✓| 
 | Katar                       | ✓               |                              |        ✓| 
 | Reunion                     | ✓               |                              |        ✓| 
-| Ruanda                      | ✓               |                              |        ✓| 
+| Rwanda                      | ✓               |                              |        ✓| 
 | Saint Helena, Ascension ve Tristan da Cunha        | ✓               |                              |        ✓| 
 | Sao Tome ve Principe       | ✓               |                              |        ✓| 
 | Suudi Arabistan                | ✓               |                              |        ✓| 
@@ -181,7 +181,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Avustralya                         | ✓ | ✓ |  ✓| 
 | Bangladeş                        | ✓ |   |  ✓| 
 | Butan                            | ✓ |   |  ✓| 
-| Britanya Hint Okyanusu Toprakları    | ✓ |   |  ✓| 
+| İngiliz Hint Okyanusu Toprakları    | ✓ |   |  ✓| 
 | Barış                            | ✓ |   |  ✓| 
 | Kamboçya                          | ✓ |   |  ✓| 
 | Çin                             | ✓ | ✓ |  ✓| 
@@ -250,7 +250,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Azerbaycan             | ✓ |   |  ✓| 
 | Belarus                | ✓ |   |  ✓| 
 | Belçika                | ✓ | ✓ |  ✓| 
-| Bosna - Hersek | ✓ | ✓ |  ✓| 
+| Bosna Hersek | ✓ | ✓ |  ✓| 
 | Bulgaristan               | ✓ |   |  ✓| 
 | Hırvatistan                | ✓ | ✓ |  ✓| 
 | Kıbrıs                 | ✓ |   |  ✓| 
@@ -273,7 +273,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Jersey                 | ✓ |   |  ✓| 
 | Kosova                 | ✓ |   |  ✓| 
 | Letonya                 | ✓ |   |  ✓| 
-| Liechtenstein          | ✓ | ✓ |  ✓| 
+| Lihtenştayn          | ✓ | ✓ |  ✓| 
 | Litvanya              | ✓ |   |  ✓| 
 | Lüksemburg             | ✓ | ✓ |  ✓| 
 | Kuzey Makedonya        | ✓ |   |  ✓| 

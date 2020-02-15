@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687590"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251813"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 'ta Azure App Service SSS
 
@@ -32,7 +32,7 @@ Tüm Docker dosyalarını [GitHub](https://github.com/azure-app-service)üzerind
 
 | Yığın           | Beklenen değer                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java &         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar my-app.jar --server.port=80`) |
+| Java &AMP;         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
 | Tomcat, Yavaya | gerekli yapılandırmaların gerçekleştirileceği bir betiğin konumu (örneğin, `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | PM2 yapılandırma dosyası veya betik dosyanız                                |
 | .Net Core       | `dotnet <myapp>.dll` olarak derlenmiş DLL adı                                 |

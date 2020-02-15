@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202209"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211428"
 ---
 Azure paylaşılan diskler (Önizleme), Azure yönetilen diskleri için birden çok sanal makineye (VM 'Ler) aynı anda bir Azure yönetilen diski eklemeye olanak sağlayan yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
 
@@ -55,7 +55,7 @@ Linux kümeleri [pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)gibi kü
 
 Aşağıdaki diyagramda, bir düğümden diğerine yük devretmeyi etkinleştirmek için SCSI PR 'den yararlanan örnek 2 düğümlü kümelenmiş bir veritabanı uygulaması gösterilmektedir.
 
-![Shared-disk-Updated-Two-node-Cluster-Diagram. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![İki düğümlü küme. Kümede çalışan bir uygulama, diske erişimi işliyor](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 Akış şu şekildedir:
 
@@ -68,7 +68,7 @@ Akış şu şekildedir:
 
 Aşağıdaki diyagramda, makine öğrenimi modellerinin eğitimi gibi paralel süreçler çalıştırmak için diskten veri okuyan birden çok düğümden oluşan başka bir ortak kümelenmiş iş yükü gösterilmektedir.
 
-![Shared-disk-Updated-Machine-Learning-Trainer-model. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Dört düğümlü VM kümesi, her düğüm yazma hedefini kaydeder, uygulama, yazma sonuçlarını düzgün bir şekilde işlemek için özel ayırma alır](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 Akış şu şekildedir:
 

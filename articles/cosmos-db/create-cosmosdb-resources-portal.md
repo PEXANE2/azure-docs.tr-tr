@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 58fa891503342ac0ec9d41e9c458a71d18e58161
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/05/2020
+ms.openlocfilehash: a933caf0b0033cdcd1f27d4f795ba6466f34072a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445614"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210376"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure Cosmos hesabı, veritabanı, kapsayıcı ve öğe oluşturma
 
@@ -30,7 +30,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Bu hızlı başlangıçta Azure portal kullanarak Azure Cosmos DB bir [SQL API](sql-api-introduction.md) hesabı oluşturma, bir belge veritabanı ve kapsayıcı oluşturma ve kapsayıcıya veri ekleme işlemlerinin nasıl yapılacağı gösterilmiştir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -51,15 +51,15 @@ Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabi
     
     **Kapsayıcı Ekle** penceresini görmek için sağa kaydırmanız gerekebilir.
     
-    ![Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Azure portal Veri Gezgini, kapsayıcı bölmesi Ekle](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
 1.  **Kapsayıcı Ekle** bölmesinde, yeni kapsayıcının ayarlarını girin.
     
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
-    |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adı 1 ila 255 karakter içermeli ve içeremezler `/, \\, #, ?`, veya bir boşluk. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
+    |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?`veya sonunda boşluk içermemelidir. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
     |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
-    |**Kapsayıcı Kimliği**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
+    |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimlikleri, veritabanı adlarıyla aynı karakter gereksinimlerine sahiptir.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
 
     

@@ -3,24 +3,24 @@ title: Şablon işlevleri-mantıksal
 description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 48c6a05c5a449626c66f9d75c8578b217906d8e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483966"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207222"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için mantıksal işlevler
 
 Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
-* [and](#and)
+* ['](#and)
 * [bool](#bool)
-* [if](#if)
-* [not](#not)
+* [kullandıysanız](#if)
+* [başlatılmadı](#not)
 * [veya](#or)
 
-## <a name="and"></a>'nı ve
+## <a name="and"></a>ile
 
 `and(arg1, arg2, ...)`
 
@@ -28,10 +28,10 @@ Tüm parametre değerlerinin doğru olup olmadığını denetler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| arg1 |Yes |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
 | ek bağımsız değişkenler |Hayır |boole |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -68,9 +68,9 @@ Yukarıdaki örnekteki çıktı:
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Andexamptaoutput | Bool | Yanlış |
-| Orexamptaoutput | Bool | Doğru |
-| Notexamptaoutput | Bool | Yanlış |
+| Andexamptaoutput | Bool | False |
+| Orexamptaoutput | Bool | True |
+| Notexamptaoutput | Bool | False |
 
 ## <a name="bool"></a>bool
 
@@ -80,9 +80,9 @@ Parametreyi Boole değerine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
+| arg1 |Yes |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 Dönüştürülmüş değerin Boole değeri.
@@ -121,10 +121,10 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| trueString | Bool | Doğru |
-| Yanlışdize | Bool | Yanlış |
-| Trueınt | Bool | Doğru |
-| Yanlışint | Bool | Yanlış |
+| trueString | Bool | True |
+| Yanlışdize | Bool | False |
+| Trueınt | Bool | True |
+| Yanlışint | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -134,11 +134,11 @@ Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| condition |Evet |boole |Doğru veya yanlış olduğunu denetlemek için değer. |
-| trueValue |Evet | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
-| Yanlışdeğer |Evet | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
+| condition |Yes |boole |Doğru veya yanlış olduğunu denetlemek için değer. |
+| trueValue |Yes | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
+| Yanlışdeğer |Yes | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -231,7 +231,7 @@ Aşağıdaki [örnek şablonda](https://github.com/krnese/AzureDeploy/blob/maste
 }
 ```
 
-## <a name="not"></a>değil
+## <a name="not"></a>not
 
 `not(arg1)`
 
@@ -239,9 +239,9 @@ Boole değerini ters değerine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Dönüştürülecek değer. |
+| arg1 |Yes |boole |Dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -277,9 +277,9 @@ Yukarıdaki örnekteki çıktı:
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Andexamptaoutput | Bool | Yanlış |
-| Orexamptaoutput | Bool | Doğru |
-| Notexamptaoutput | Bool | Yanlış |
+| Andexamptaoutput | Bool | False |
+| Orexamptaoutput | Bool | True |
+| Notexamptaoutput | Bool | False |
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) , [eşittir](template-functions-comparison.md#equals)ile **değil** .
 
@@ -301,7 +301,7 @@ Yukarıdaki örnekteki çıktı:
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Checttequals | Bool | Doğru |
+| Checttequals | Bool | True |
 
 ## <a name="or"></a>veya
 
@@ -311,10 +311,10 @@ Herhangi bir parametre değerinin doğru olup olmadığını denetler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gereklidir | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| arg1 |Yes |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
 | ek bağımsız değişkenler |Hayır |boole |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -351,14 +351,14 @@ Yukarıdaki örnekteki çıktı:
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Andexamptaoutput | Bool | Yanlış |
-| Orexamptaoutput | Bool | Doğru |
-| Notexamptaoutput | Bool | Yanlış |
+| Andexamptaoutput | Bool | False |
+| Orexamptaoutput | Bool | True |
+| Notexamptaoutput | Bool | False |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](template-syntax.md).
-* Birden fazla şablon birleştirmek için bkz: [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](create-multiple-instances.md).
-* Oluşturduğunuz bir şablonu dağıtmayı öğrenmek için bkz [Azure Resource Manager şablonu ile uygulama dağıtma](deploy-powershell.md).
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
+* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
+* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
 

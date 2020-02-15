@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 9aed33b44bac16e2f6b0d801a6c26a2174043817
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fc538b55e31a4c133da1bc2f7ecc32b5fada6399
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770875"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210406"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL için Azure veritabanı fiyatlandırma katmanları
 
@@ -52,7 +52,7 @@ Sağladığınız depolama alanı, MySQL için Azure veritabanı sunucunuz için
 | IOPS | Değişken |3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
 
 > [!NOTE]
-> 16 TB 'a kadar depolama alanı ve 20.000 ıOPS, şu bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
+> 16 TB 'a kadar depolama alanı ve 20.000 ıOPS, şu bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Orta Kuzey ABD, Orta Güney ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta , Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
 >
 > Tüm diğer bölgeler 4TB 'a kadar depolamayı ve 6000 ıOPS 'yi destekler.
 >

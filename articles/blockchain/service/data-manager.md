@@ -2,14 +2,14 @@
 title: Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi nedir?
 description: Blok zinciri, Event Grid konularına blok zinciri verilerini yakalayan, dönüştüren ve teslim eden Veri Yöneticisi.
 ms.date: 11/04/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.reviewer: chroyal
-ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326210"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209452"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti için Blok Zinciri Veri Yöneticisi nedir?
 
@@ -25,7 +25,7 @@ Blok zinciri Veri Yöneticisi üç ana işlev gerçekleştirir: yakalama, dönü
 
 Her blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti üye işlem düğümüne bağlanır. Yalnızca işlem düğümüne erişimi olan kullanıcılar, müşteri verilerine doğru erişim denetimi sağlayan bir bağlantı oluşturabilir. Bir blok zinciri Veri Yöneticisi örneği, işlem düğümünden tüm ham blok ve ham işlem verilerini güvenilir bir şekilde yakalar ve kurumsal iş yüklerini destekleyecek şekilde ölçeklendirebilir.
 
-## <a name="transform"></a>Dönüştürme
+## <a name="transform"></a>Dönüşüm
 
 Blok zinciri Veri Yöneticisi içindeki akıllı sözleşme uygulamalarını yapılandırarak olay ve özellik durumunun kodunu çözmek için Blockzincirini Veri Yöneticisi kullanabilirsiniz. Akıllı sözleşme eklemek için sözleşme ABı ve bayt kodu sağlarsınız. Blok zinciri Veri Yöneticisi, anlaşma adreslerini çözmek ve çözmek için akıllı sözleşme yapıtlarını kullanır. Blok zinciri uygulamasını örneğe ekledikten sonra, blok Veri Yöneticisi zinciri akıllı sözleşme Consortium 'a dağıtıldığında akıllı sözleşme adresini dinamik olarak bulur ve yapılandırılan hedeflere kodu çözülmüş olay ve özellik durumunu gönderir.
 

@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029869"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210166"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -51,7 +51,7 @@ Bazı temel kavramlar, dağıtımların Azure Işlevlerinde nasıl çalıştığ
 Tetikleyicilerden herhangi birini değiştirdiğinizde, Işlevler altyapısının değişiklikler farkında olmalıdır. Eşitleme, birçok dağıtım teknolojisi için otomatik olarak gerçekleşir. Ancak, bazı durumlarda tetikleyiclerinizi el ile eşitlemeniz gerekir. Güncelleştirmelerinizi bir dış paket URL 'sine, yerel git 'e, bulut eşitlemesine veya FTP 'ye başvurarak dağıttığınızda, tetikleyiclerinizi el ile eşitlemeniz gerekir. Tetikleyicileri üç yönden biriyle eşitleyebilirsiniz:
 
 * İşlev uygulamanızı Azure portal yeniden başlatın
-* [Ana anahtarı](functions-bindings-http-webhook.md#authorization-keys)kullanarak `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` BIR http post isteği gönderin.
+* [Ana anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys)kullanarak `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` BIR http post isteği gönderin.
 * `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`için bir HTTP POST isteği gönderin. Yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve işlev uygulamanızın adıyla değiştirin.
 
 ### <a name="remote-build"></a>Uzak derleme

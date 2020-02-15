@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422103"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211707"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Web uygulamalarını dağıtma Kılavuzu
 
@@ -90,7 +90,7 @@ Kaynak Yöneticisi şablonunuz MSDeploy kullanıyorsa, dağıtım hata iletileri
 
 1. Sitenin [kudu konsoluna](https://github.com/projectkudu/kudu/wiki/Kudu-console)gidin.
 2. Browse to the folder at D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. AppManagerStatus. xml ve appManagerLog. xml dosyalarını arayın. İlk dosya durumu günlüğe kaydeder. İkinci dosya hatayla ilgili bilgileri günlüğe kaydeder. Hata sizin için açık değilse, forumda yardım isteyip istemediğiniz zaman ekleyebilirsiniz.
+3. AppManagerStatus. xml ve appManagerLog. xml dosyalarını arayın. İlk dosya durumu günlüğe kaydeder. İkinci dosya hatayla ilgili bilgileri günlüğe kaydeder. Hata sizin için açık değilse, [forumda](https://docs.microsoft.com/answers/topics/azure-webapps.html)yardım isteyip istemediğiniz zaman ekleyebilirsiniz.
 
 ## <a name="choose-a-unique-web-app-name"></a>Benzersiz bir Web uygulaması adı seçin
 

@@ -3,12 +3,12 @@ title: Şablonlarda alt kaynaklar
 description: Bir Azure Resource Manager şablonunda alt kaynaklar için ad ve tür ayarlamayı açıklar.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122024"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207902"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür ayarla
 
@@ -27,7 +27,7 @@ Bir kaynak yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst 
 ]
 ```
 
-Sonraki örnekte alt kaynak, üst kaynağın dışında gösterilmektedir. Üst kaynak aynı şablonda dağıtılmamışsa veya birden fazla alt kaynak oluşturmak için [kopyalama](create-multiple-instances.md) kullanmak istiyorsanız bu yaklaşımı kullanabilirsiniz.
+Sonraki örnekte alt kaynak, üst kaynağın dışında gösterilmektedir. Üst kaynak aynı şablonda dağıtılmamışsa veya birden fazla alt kaynak oluşturmak için [kopyalama](copy-resources.md) kullanmak istiyorsanız bu yaklaşımı kullanabilirsiniz.
 
 ```json
 "resources": [

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679967"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207034"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory 'de Azure Işlevi etkinliği
 
@@ -34,7 +34,7 @@ Azure işlevinin dönüş türü geçerli bir `JObject`olmalıdır. ( [Jarray](h
 | --- | --- | --- |
 | type   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | evet |
 | function app url | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net`. Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
-| function key | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını**kopyalayın. Buradan daha fazla bilgi edinebilirsiniz: [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | evet |
+| function key | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını**kopyalayın. Buradan daha fazla bilgi edinebilirsiniz: [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | evet |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure Işlevi etkinliği
@@ -46,7 +46,7 @@ Azure işlevinin dönüş türü geçerli bir `JObject`olmalıdır. ( [Jarray](h
 | linked service | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | evet |
 | function name  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | evet |
 | method  | İşlev çağrısı için REST API yöntemi | Dize desteklenen türler: "GET", "POST", "PUT"   | evet |
-| header  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
+| üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
 | body  | işlevin API metoduna isteğiyle birlikte gönderilen gövde  | Dize (veya dize resultType 'ı olan ifade) veya nesne.   | PUT/POST yöntemleri için gereklidir |
 |   |   |   | |
 

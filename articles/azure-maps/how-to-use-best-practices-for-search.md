@@ -1,19 +1,19 @@
 ---
 title: Azure haritalar 'ı kullanarak verimli bir şekilde arama Arama Hizmeti | Microsoft Azure haritaları
 description: Microsoft Azure haritaları kullanarak Arama Hizmeti için en iyi yöntemleri uygulamayı öğrenin.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e29b3d70c576955637424208aeb0f980669b67bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899162"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209809"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
 
@@ -26,7 +26,7 @@ Bu makalede Arama Hizmeti Azure Maps 'tan veri çağırdığınızda ses uygulam
 * Sonuç türleri arasındaki farkları öğrenin.
 * Adres Arama-Yanıt yapısını okuyun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure haritalar hizmeti API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 
@@ -443,7 +443,7 @@ Java:
 URLEncoder.encode(query, "UTF-8") 
 ```
 
-Python:
+Python
 ```Python
 import urllib.parse 
 urllib.parse.quote(query)
@@ -455,7 +455,7 @@ C++:
 curl_easy_escape(query)
 ```
 
-PHP:
+PHP
 ```PHP
 urlencode(query)
 ```
