@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: Hizmet sınırlamaları
           href: search-limits-quotas-capacity.md
-        - name: Bölümleri ve çoğaltmaları ölçeklendirme
+        - name: Kapasiteyi ayarlama
           href: search-capacity-planning.md
-        - name: Dağıtım stratejileri ve en iyi uygulamalar
+        - name: Performansı ölçeklendirme
           href: search-performance-optimization.md
         - name: Çok kiracılı mimari
           href: search-modeling-multitenant-saas-applications.md

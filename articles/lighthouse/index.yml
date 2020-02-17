@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/25/2019
-  ms.openlocfilehash: 9543ac8a6e7dc30fa44e4bada42ca4786cc53ba0
-  ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+  ms.openlocfilehash: bdda8aca71f09cfe570ffea7e03c63d7c87abbb5
+  ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/11/2019
-  ms.locfileid: "72286564"
+  ms.lasthandoff: 02/14/2020
+  ms.locfileid: "77212594"
 landingContent:
 - title: Azure Lighthouse hakkında
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: ./concepts/azure-delegated-resource-management.md
     - text: Kiracılar arası yönetim deneyimleri
       url: ./concepts/cross-tenant-management-experience.md
-- title: Başlarken
+- title: başlarken
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -45,14 +45,14 @@ landingContent:
       url: ./concepts/enterprise.md
 - title: Market teklifleri
   linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Market’teki Yönetilen Hizmetler teklifleri
-      url: ./concepts/managed-services-offers.md
   - linkListType: how-to-guide
     links:
     - text: Yönetilen Hizmetler tekliflerini yayımlama
       url: ./how-to/publish-managed-services-offers.md
+  - linkListType: concept
+    links:
+    - text: Azure Market’teki Yönetilen Hizmetler teklifleri
+      url: ./concepts/managed-services-offers.md
 - title: Örnekler ve şablonlar
   linkLists:
   - linkListType: deploy
@@ -61,6 +61,22 @@ landingContent:
       url: https://github.com/Azure/Azure-Lighthouse-samples/
     - text: Azure Lighthouse örnekleri dizini
       url: ./samples/index.md
+- title: Azure hizmetleri ile çalışma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Büyük ölçekte Azure İzleyici Günlükleri’ni kullanma
+      url: ./how-to/monitor-at-scale.md
+    - text: Azure İlkesini uygun ölçekte dağıtma
+      url: ./how-to/policy-at-scale.md
+- title: Azure portal deneyimleri
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Müşterileri görüntüleme ve yönetme
+      url: ./how-to/view-manage-customers.md
+    - text: Hizmet sağlayıcılarını görüntüleme ve yönetme
+      url: ./how-to/view-manage-service-providers.md
 - title: Başvuru - İndirmeler
   linkLists:
   - linkListType: download
@@ -85,14 +101,6 @@ landingContent:
       url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - text: Python
       url: /python/api/azure-mgmt-managedservices
-- title: Azure portal deneyimleri
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Müşterileri görüntüleme ve yönetme
-      url: ./how-to/view-manage-customers.md
-    - text: Hizmet sağlayıcılarını görüntüleme ve yönetme
-      url: ./how-to/view-manage-service-providers.md
 - title: Dahil olun
   linkLists:
   - linkListType: get-started
