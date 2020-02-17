@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901768"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188527"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -85,8 +85,6 @@ Abonelikle ilgili veri görmüyorsanız ve aboneliğinizin desteklenen teklifler
 
 Aşağıdaki tablolarda Maliyet Yönetimi'ne dahil olan ve olmayan veriler gösterilmiştir. Tüm maliyetler, fatura oluşturulana kadar tahmini değerlerdir. Gösterilen maliyetler ücretsiz ve ön ödemeli kredileri içermez.
 
-**Maliyet ve kullanım verileri**
-
 | **Dahil** | **Dahil değil** |
 | --- | --- |
 | Azure hizmet kullanımı<sup>5</sup>        | Destek ücretleri - Daha fazla bilgi için bkz. [Fatura terimlerinin açıklaması](../understand/understand-invoice.md). |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> Market satın alma işlemleri şu an için Kullandıkça Öde,
 
 _<sup>**7**</sup> Rezervasyon satın alma işlemleri şu an için yalnızca Kurumsal Anlaşma (EA) hesapları için kullanılabilir._
 
-**Meta veriler**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Maliyet ve kullanım verilerinde etiket kullanımı
 
-| **Dahil** | **Dahil değil** |
-| --- | --- |
-| Kaynak etiketleri<sup>8</sup> | Kaynak grubu etiketleri |
+Azure Maliyet Yönetimi, ayrı hizmetler tarafından gönderilen kullanım kayıtlarıyla birlikte etiketleri de alır. Etiketler için aşağıdaki kısıtlamalar geçerlidir:
 
-_<sup>**8**</sup> Kaynak etiketleri her bir hizmetten gelen kullanım verilerine uygulanır ve geçmişe dönük kullanımı desteklemez._
+- Etiketlerin doğrudan kaynaklara uygulanması gerekir ve üst kaynak grubundaki etiketler devralınmaz.
+- Kaynak etiketleri yalnızca kaynak gruplarına dağıtılmış olan kaynaklar için desteklenir.
+- Dağıtılan kaynakların bazıları etiket desteği sunmayabilir veya kullanım verilerine etiket eklemeyebilir. Bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
+- Kaynak etiketleri yalnızca etiketin uygulanmış olduğu kullanım verilerine dahil edilir. Etiketler, verilere geçmişe dönük olarak uygulanmaz.
+- Kaynak etiketleri Maliyet Yönetimi'nde yalnızca veriler yenilendikten sonra kullanılabilir. Bkz. [Kullanım verileri güncelleştirme sıklığı değişiyor](#usage-data-update-frequency-varies).
+- Kaynak etiketleri Maliyet Yönetimi'nde yalnızca kaynak etkin/çalışır durumda olduğunda ve kullanım kaydı oluşturduğunda kullanılabilir (örneğin, VM'nin serbest bırakılmış olduğu durumlarda kullanılamaz).
+- Etiketlerin yönetilmesi için her bir kaynakta katkıda bulunan erişimi gerekir.
+- Etiket ilkelerinin yönetilmesi için yönetim grubu, abonelik veya kaynak grubu düzeyinde sahip veya ilke katkıda bulunanı erişimi gerekir.
+    
+Maliyet Yönetimi'nde belirli bir etiketi göremiyorsanız şu durumları değerlendirin:
+
+- Etiket doğrudan kaynağa mı uygulandı?
+- Etiketin uygulanmasının üzerinden 24 saat geçti mi? Bkz. [Kullanım verileri güncelleştirme sıklığı değişiyor](#usage-data-update-frequency-varies)
+- Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019 tarihinden itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
+    - Azure Active Directory B2C Dizinleri
+    - Azure Güvenlik Duvarları
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - Yük dengeleyiciler
+    - Ağ İzleyicisi
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - VPN ağ geçidi
+    
+Aşağıda, etiketlerle çalışma konusunda birkaç ipucu verilmiştir:
+
+- Uzun vadeli planlar yapın ve maliyetleri kuruluş, uygulama ve ortam gibi kaynaklara göre ayırmanızı mümkün kılacak bir etiketleme stratejisi tanımlayın.
+- Azure İlkesi'ni kullanarak kaynak grubu etiketlerini kaynaklara kopyalayın ve etiketleme stratejinizi uygulayın.
+- Geçerli etiketlere göre maliyetlere ulaşmak için Query veya UsageDetails ile birlikte Tags API'yi kullanın.
+
 
 **Ücretsiz denemeden kullandıkça öde planına yükseltme**
 

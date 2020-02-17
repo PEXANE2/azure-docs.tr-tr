@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770326"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086851"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Amazon Web Services hesabı bağlama
 
@@ -41,7 +41,7 @@ Aşağıdaki bölümlerde, Cloudyn için erişim sağlama amacıyla salt okunur 
 
 ### <a name="add-aws-read-only-role-based-access"></a>AWS salt okunur rol tabanlı erişimi ekleme
 
-1. https://console.aws.amazon.com/iam/home adresinden AWS konsolunda oturum açın ve **Roller**'i seçin.
+1. [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) adresinden AWS konsolunda oturum açın ve **Roller**'i seçin.
 2. **Rol Oluştur**'a tıklayın ve **Başka bir AWS hesabı**'nı seçin.
 3. **Hesap kimliği** kutusuna `432263259397` değerini yapıştırın. Bu Hesap Kimliği, AWS tarafından Cloudyn hizmetine atanmış olan Cloudyn veri toplayıcısı hesabıdır. Gösterilen Hesap Kimliği olduğu şekilde kullanın.
 4. **Seçenekler**'in yanında **Dış kimlik gerektir**'i seçin. Daha önce, Cloudyn'deki **Dış Kimlik** alanından kopyaladığınız benzersiz değeri yapıştırın. Ardından **İleri: İzinler**'e tıklayın.  
@@ -76,7 +76,7 @@ Aşağıdaki bölümlerde, Cloudyn için erişim sağlama amacıyla salt okunur 
 
 ### <a name="add-aws-read-only-user-based-access"></a>AWS salt okunur kullanıcı tabanlı erişimi ekleme
 
-1. https://console.aws.amazon.com/iam/home adresinden AWS konsolunda oturum açın ve **Kullanıcılar**'ı seçin.
+1. [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) adresinden AWS konsolunda oturum açın ve **Kullanıcılar**'ı seçin.
 2. **Kullanıcı Ekle**'ye tıklayın.
 3. **Kullanıcı adı** alanına bir kullanıcı adı yazın.
 4. **Erişim türü** için **Programlı erişim**'i seçin ve **İleri: İzinler**' e tıklayın.  
@@ -107,7 +107,7 @@ Cloudyn verileri toplamaya ve raporları doldurmaya başlar. Sonraki adım için
 
 AWS Rol ARN'sini almak için aşağıdaki adımları izleyin. Bir faturalama demetine okuma izni vermek için Rol ARN'sini kullanırsınız.
 
-1. https://console.aws.amazon.com adresinden AWS konsolunda oturum açın ve **Hizmetler**'ı seçin.
+1. [https://console.aws.amazon.com](https://console.aws.amazon.com) adresinden AWS konsolunda oturum açın ve **Hizmetler**'i seçin.
 2. Hizmet arama kutusuna *IAM* yazın ve sonuçlardan seçin.
 3. Sol taraftaki menüden **Roller**'i seçin.
 4. Rol listesinde Cloudyn erişimi için oluşturduğunuz rolü seçin.
@@ -117,7 +117,7 @@ AWS Rol ARN'sini almak için aşağıdaki adımları izleyin. Bir faturalama dem
 
 Ayrıntılı faturalandırma bilgilerini depolamak için bir S3 demeti oluşturun.
 
-1. https://console.aws.amazon.com adresinden AWS konsolunda oturum açın ve **Hizmetler**'ı seçin.
+1. [https://console.aws.amazon.com](https://console.aws.amazon.com) adresinden AWS konsolunda oturum açın ve **Hizmetler**'i seçin.
 2. Hizmet arama kutusuna *S3* yazın ve sonuçlardan **S3**'ü seçin.
 3. Amazon S3 sayfasında **Demet oluştur**'a tıklayın.
 4. Demet oluşturma sihirbazında Demek için bir ad ve Bölge seçip **İleri**'ye tıklayın.  

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025708"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367969"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma Azure Active Directory
 
@@ -36,7 +36,7 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 ![Kesintisiz çoklu oturum açma](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Sorunsuz SSO, kullanıcının cihazının **etki alanına katılmış**olmasını gerektirir, ancak CIHAZıN [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md)olması gerekmez.
+>Sorunsuz SSO Kullanıcı cihazının yalnızca **etki alanına katılmış** olmasını gerektirir, ancak [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) veya [karma Azure AD 'ye katılmış] (...) üzerinde kullanılmaz. /active-directory-azureadjoin-overview.md) cihazları. SSO, Azure AD 'ye katılmış ve hibrit Azure AD 'ye katılmış, [birincil yenileme belirteci] (.. /Active-Directory/Devices/Concept-Primary-Refresh-Token.exe)
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 

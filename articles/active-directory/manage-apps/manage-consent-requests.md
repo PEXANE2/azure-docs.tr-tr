@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290708"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367840"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Uygulamalara onayı yönetme ve izin isteklerini değerlendirme
 
@@ -34,7 +34,7 @@ Son Kullanıcı izni devre dışı bırakıldıktan veya kısıtlandıktan sonra
     * İlgili belgeleri, izlemeyi, Otomasyonu vb. güncelleştirin.
     * Tüm etkilenen kullanıcılar, geliştiriciler, destek takımları ve BT yöneticileri için işlem değişikliklerini iletişim kurun.
 
-## <a name="auditing-and-monitoring"></a>Denetim ve izleme
+## <a name="auditing-and-monitoring"></a>Denetleme ve izleme
 
 1. Daha önce verilere erişim izni verilmemesini sağlamak için [uygulamaları denetleyin ve kuruluşunuzdaki izinleri](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) kabul edin.
 
@@ -100,7 +100,7 @@ Bkz. Azure AD PowerShell kullanarak veya onay isteminin kendisinden Azure portal
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Belirli bir kullanıcı adına izin verme
 
-Yönetici, tüm kuruluşa izin vermek yerine, tek bir kullanıcı adına temsilci izinleri izni vermek için [Azure AD Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) da kullanabilir. Bunu yapmak için, `consentType` "Principal" olarak ayarlandığı ve `principalId` izin verilen adına kullanıcının nesne KIMLIĞINE ayarlandığı bir [OAuth2PermissionGrant](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) varlığı oluşturmak için bir `POST` isteği gönderin.
+Yönetici, tüm kuruluş için izin vermek yerine, tek bir kullanıcı adına temsilci izinleri izni vermek için [Microsft Graph API](https://docs.microsoft.com/graph/use-the-api) de kullanabilir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Kullanıcıların uygulamalara erişimini sınırlandırma
 
@@ -110,7 +110,7 @@ Ek karmaşık senaryoların nasıl işleneceği hakkında daha geniş bir genel 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kimlik altyapınızın güvenliğini sağlamak için beş adım](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+[Kimlik altyapınızı güvenli hale getirmenin beş adımı](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 
 [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76294159"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188644"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -61,6 +61,13 @@ Veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için s
 **Özet (halka) grafikler**: Toplam maliyeti ortak bir standart özellikler kümesine ayırarak dinamik özetler sağlar. Geçerli ay için en büyükten en küçüğe kadar tüm maliyetleri gösterir. İstediğiniz zaman farklı bir özet seçerek özet grafikleri değiştirebilirsiniz. Maliyetler varsayılan olarak şu kategorilere ayrılır: hizmet (ölçüm kategorisi), konum (bölge) ve alt kapsam. Örneğin, fatura hesapları altında kayıt hesapları, abonelikler altında kaynak grupları ve kaynak grupları altında kaynaklar bulunur.
 
 ![Azure portalındaki maliyet analizinin ilk görünümü](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+
+### <a name="understand-forecast"></a>Tahmini anlama
+
+Maliyet tahmini, seçili döneme ait maliyetlerinizle ilgili bir tahmin gösterir. Model, zaman serisi regresyon modelini temel alır. Maliyetleri doğru bir şekilde tahmin etmek için en az 10 günlük güncel maliyetler ve kullanım verileri gerekir. Belirli bir süre için tahmin modeli, tahmin dönemine ait eşit eğitim verilerine ihtiyaç duyar. Örneğin üç aylık tahmin için en az üç aylık güncel maliyet ve kullanım verileri gerekir. 
+
+Model, en fazla altı aylık eğitim verilerini kullanarak bir yıllık maliyet tahmininde bulunabilir. Tahminini değiştirmek için en az yedi günlük eğitim verisine ihtiyaç duyar. Bu tahmin, maliyet ve kullanım düzenlerindeki ani artışlar ve düşüşler gibi önemli değişiklikleri temel alır. Tahmin, **Gruplama ölçütü** özelliklerindeki her bir öğe için ayrı tahminler oluşturmaz. Yalnızca toplam birikmiş maliyetlerle ilgili tahmin sunar. Birden çok para birimi kullanıyorsanız model yalnızca ABD doları cinsindeki maliyetler için tahmin sağlar. 
+
 
 ## <a name="customize-cost-views"></a>Maliyet görünümlerini özelleştirme
 
@@ -113,7 +120,7 @@ Maliyet analizi varsayılan olarak tüm kullanım ve satın alma maliyetlerini t
 
 ![Rezervasyon satın alma işlemlerinin döneme yayıldığını ve rezervasyonu kullanan kaynaklara ayrıldığını görmek için gerçek ve amorti edilen maliyetler arasında geçiş yapın](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amorti edilen maliyet, rezervasyon satın alma işlemlerini günlük parçalara böler ve rezervasyon süresine yayar. Örneğin 1 Ocak tarihinde 365 ABD doları tutarında bir satın alma işlemi görmek yerine 1 Ocak ile 31 Aralık arasındaki her gün 1 ABD doları değerinde satın alma işlemi görürsünüz. Bu maliyetler, temel amorti işlemlerinin yanı sıra rezervasyonu kullanan kaynaklara yeniden atanır ve onlarla ilişkilendirilir. Örneğin 1 ABD doları değerindeki günlük ücretin iki sanal makineye ayrılması durumunda gün içinde iki farklı 0,50 ABD doları ücret görürsünüz. Rezervasyonun bir bölümünün aynı gün kullanılmaması halinde ilgili sanal makine ile ilişkilendirilmiş 0,50 ABD doları değerinde ücret ve `UnusedReservation` ücret türüne sahip ayrı bir 0,50 ABD doları harcama görürsünüz. Kullanılmayan rezervasyon maliyetleri yalnızca amorti edilen maliyet görünümünde görüntülenebilir.
+Amorti edilen maliyet, rezervasyon satın alma işlemlerini günlük parçalara böler ve rezervasyon süresine yayar. Örneğin 1 Ocak tarihinde 365 ABD doları tutarında bir satın alma işlemi görmek yerine 1 Ocak ile 31 Aralık arasındaki her gün 1,00 ABD doları değerinde satın alma işlemi görürsünüz. Bu maliyetler, temel amorti işlemlerinin yanı sıra rezervasyonu kullanan kaynaklara yeniden atanır ve onlarla ilişkilendirilir. Örneğin 1,00 ABD doları değerindeki günlük ücretin iki sanal makineye ayrılması durumunda gün içinde iki farklı 0,50 ABD doları ücret görürsünüz. Rezervasyonun bir bölümünün aynı gün kullanılmaması halinde ilgili sanal makine ile ilişkilendirilmiş 0,50 ABD doları değerinde ücret ve `UnusedReservation` ücret türüne sahip ayrı bir 0,50 ABD doları harcama görürsünüz. Kullanılmayan rezervasyon maliyetleri yalnızca amorti edilen maliyet görünümünde görüntülenebilir.
 
 Maliyetlerin gösterilmesindeki değişiklik nedeniyle gerçek maliyet ile amorti edilen maliyet görünümlerinde farklı toplam değerlerin gösterildiğini unutmayın. Genel olarak amorti edilen maliyetler görüntülendiğinde rezervasyon satın alma işlemi gerçekleştirilen ayların toplam maliyeti azalacak, rezervasyon satın alma işlemini takip eden ayların maliyeti ise artacaktır. Amorti etme yalnızca rezervasyon satın alma işlemleri için geçerlidir ve şu an için Azure Market satın alma işlemlerine uygulanmaz.
 

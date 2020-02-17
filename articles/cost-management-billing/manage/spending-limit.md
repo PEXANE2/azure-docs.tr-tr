@@ -2,21 +2,21 @@
 title: Azure harcama limiti | Microsoft Docs
 description: Bu makalede, Azure harcama limitinin nasıl çalıştığı ve nasıl kaldırıldığı açıklanmaktadır.
 author: bandersmsft
-manager: amberb
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76314156"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188338"
 ---
 # <a name="azure-spending-limit"></a>Azure harcama limiti
 
@@ -36,30 +36,48 @@ Harcama limitine ulaştığınızda Azure e-posta bildirimleri gönderir. Harcam
 
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>Azure portalında harcama limitini kaldırma
 
+Azure aboneliğinizle ilişkili geçerli bir ödeme yöntemi olduğu sürece, harcama limitini istediğiniz zaman kaldırabilirsiniz. Visual Studio Enterprise ve Visual Studio Professional gibi birden çok aya yayılan krediler içeren abonelik türleri için, harcama limitini tamamen veya yalnızca bir sonraki faturalama dönemini için kaldırabilirsiniz. Yalnızca geçerli faturalama dönemini seçerseniz harcama limiti bir sonraki faturalama döneminizin başında otomatik olarak etkinleştirilir.
+
+Ücretsiz Azure hesabınız varsa harcama limitinizi kaldırmak için bkz. [Azure aboneliğinizi yükseltme](upgrade-azure-subscription.md). Diğer durumlarda harcama limitinizi kaldırmak için şu adımları izleyin:
+
 <a id="remove"></a>
 
-Azure aboneliğinizle ilişkili geçerli bir ödeme yöntemi olduğu sürece, harcama limitini istediğiniz zaman kaldırabilirsiniz. Visual Studio Enterprise ve Visual Studio Professional gibi birden çok aya yayılan krediler içeren abonelik türleri için, bir sonraki faturalama döneminizin başlangıcında harcama limitini etkinleştirebilirsiniz.
+1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
+1. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-Harcama limitinizi kaldırmak için şu adımları izleyin:
+    ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/spending-limit/search-bar.png)
 
-1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oturum açın.
-1. **Abonelikler**'e gidin.
-1. Aboneliğinizi seçin. Örneğin, *Visual Studio Enterprise*.
-1. Sayfanın üst kısmında **Yönet**'i seçin. https://account.azure.com/ sayfasına yönlendirilirsiniz. Sayfanın sağ tarafında **Harcama limitini kaldır**’ı seçin.  
-  ![Harcama limitini kaldır bağlantısını gösteren örnek](./media/spending-limit/account-azure-com-spending-limit.png)
-1. Azure portalına yeniden yönlendirilirsiniz. Uygun seçeneklerden birini belirledikten sonra bir ödeme yöntemi seçin. **Son**’u seçin.  
-  ![Harcama limitini kaldırmak için bir seçenek belirleyin](./media/spending-limit/remove-spending-limit.png)
+1. **Aboneliklerim** listesinde aboneliğinizi seçin. Örneğin, *Visual Studio Enterprise*. 
 
-| Seçenek | Etki |
-| --- | --- |
-| Harcama limitini süresiz olarak kaldır | Harcama limiti kaldırılır ve bir sonraki faturalama döneminin başlangıcında otomatik olarak yeniden açılmaz. |
-| Geçerli fatura dönemi için harcama limitini kaldır | Harcama limiti kaldırılır ve bir sonraki fatura döneminin başlangıcında otomatik olarak yeniden açılır. |
+   ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Visual Studio aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
+    
+1. Harcama limitini kaldırmak için Abonelik genel görünümünde turuncu renkli başlığa tıklayın.
+    
+    ![Harcama limitini kaldırma başlığını gösteren ekran görüntüsü](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
+
+1. Harcama limitini süresiz olarak mı yoksa yalnızca geçerli fatura dönemi için mi kaldırmak istediğinizi seçin.
+    
+      ![Harcama limitini kaldırma dikey penceresini gösteren ekran görüntüsü](./media/spending-limit/remove-spending-limit-blade-x.png)
+    
+      | Seçenek | Etki |
+      | --- | --- |
+      | Harcama limitini süresiz olarak kaldır | Harcama limiti, bir sonraki fatura döneminin başlangıcında otomatik olarak yeniden açılmaz. Ancak istediğiniz zaman el ile açabilirsiniz. |
+      | Geçerli fatura dönemi için harcama limitini kaldır | Harcama limiti, bir sonraki fatura döneminin başlangıcında otomatik olarak yeniden açılır. |
+
+
+1. Aboneliğiniz için bir ödeme yöntemi seçmek üzere **Ödeme yöntemini seçin**'e tıklayın. Bu yöntem, aboneliğinizin etkin ödeme yöntemi olur.
+
+1. **Son**'a tıklayın.
+
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Harcama limitini neden kaldırmak isteyebilirsiniz?
 
 Harcama limiti, belirli üçüncü taraf ve Microsoft hizmetlerini dağıtmanızı veya kullanmanızı engelleyebilir. Aboneliğinizdeki harcama limitini kaldırmanızı gerektiren senaryolar aşağıda belirtilmiştir.
 
--  Oracle gibi birinci taraf görüntülerini veya Azure DevOps Services gibi hizmetleri dağıtmayı planlıyorsunuz. Bu durumda, harcama limitinize neredeyse anında ulaşılacak ve bunun sonucunda aboneliğiniz devre dışı bırakılacaktır.
+-  Oracle gibi üçüncü taraf görüntülerini veya Azure DevOps Services gibi hizmetleri dağıtmayı planlıyorsunuz. Bu durumda, harcama limitinize neredeyse anında ulaşılacak ve bunun sonucunda aboneliğiniz devre dışı bırakılacaktır.
 - Kesintiye uğramasını istemediğiniz hizmetleriniz var. Harcama limitinize ulaştığında, dağıttığınız Azure kaynakları üretimden kaldırılır, ayrıca Azure sanal makineleriniz durdurulur ve serbest bırakılır. Kesintiye uğramasını istemediğiniz hizmetler varsa harcama limitinizi kaldırmanız gerekir.
 - Sanal IP adresleri gibi ayarlar içeren, kaybetmek istemediğiniz hizmet ve kaynaklarınız var. Bu ayarlar harcama limitinize ulaştığınızda kaybolur ve hizmetler ile kaynaklar yeniden tahsis edilir.
 
@@ -67,9 +85,20 @@ Harcama limiti, belirli üçüncü taraf ve Microsoft hizmetlerini dağıtmanız
 
 Bu özellik yalnızca birden çok aya yayılan krediler içeren abonelik türleri için harcama limiti süresiz olarak kaldırıldığında kullanılabilir. Bu özelliği, bir sonraki fatura döneminin başlangıcında harcama limitini otomatik olarak etkinleştirmek için kullanabilirsiniz.
 
-1. [Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde oturum açın.
-1. Harcama limiti seçeneğini değiştirmek için sarı başlığı seçin.
-1. **Sonraki faturalama döneminde (\<faturalama döneminin başlangıç tarihi\>) harcama limitini aç** seçeneğini belirleyin
+
+1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
+1. **Maliyet Yönetimi + Faturalama** araması yapın.
+
+    ![Maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü ](./media/spending-limit/search-bar.png)
+
+1. **Aboneliklerim** listesinde aboneliğinizi seçin. Örneğin, *Visual Studio Enterprise*. 
+
+   ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Visual Studio aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
+    
+1. Harcama limitini açmak için Abonelik genel bakış sayfasının en üstündeki başlığa tıklayın.
 
 ## <a name="custom-spending-limit"></a>Özel harcama limiti
 

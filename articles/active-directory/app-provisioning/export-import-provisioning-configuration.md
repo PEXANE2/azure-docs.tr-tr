@@ -1,6 +1,6 @@
 ---
-title: Sağlama yapılandırmanızı dışarı aktarma veya Graph API ile içeri aktarma | Microsoft Docs
-description: Graph API kullanarak sağlama yapılandırmasını dışarı ve içeri aktarmayı öğrenin.
+title: Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı aktarma veya içeri aktarma | Microsoft Docs
+description: Microsoft Graph API 'sini kullanarak sağlama yapılandırmasını dışarı ve içeri aktarmayı öğrenin.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066622"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367801"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Sağlama yapılandırmanızı Graph API kullanarak dışarı aktarın veya içeri aktarın
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı aktarma veya içeri aktarma
 
-Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için Microsoft Graph API ve Graf Gezginini kullanabilirsiniz. Sağlama yapılandırmanızın bir yedeğini oluşturmak için burada yakalanan adımları da kullanabilirsiniz. 
+Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için Microsoft Graph API ve Microsoft Graph Gezginini kullanabilirsiniz. Sağlama yapılandırmanızın bir yedeğini oluşturmak için burada yakalanan adımları da kullanabilirsiniz. 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1\. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
 
 1. [Azure Portal](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *Workday 'NIZI ad Kullanıcı sağlama uygulama* eşlemesinde dışarı aktarmak istiyorsanız, uygulamanın Özellikler bölümüne gidin. 
-1. Sağlama uygulamanızın Özellikler bölümünde, *nesne kimliği* ALANıYLA ilişkili GUID değerini kopyalayın. Bu değer, uygulamanızın **Serviceprincipalıd** olarak da adlandırılır ve Graph Explorer işlemlerinde kullanılacaktır.
+1. Sağlama uygulamanızın Özellikler bölümünde, *nesne kimliği* ALANıYLA ilişkili GUID değerini kopyalayın. Bu değer, uygulamanızın **Serviceprincipalıd** olarak da adlandırılır ve Microsoft Graph Explorer işlemlerinde kullanılacaktır.
 
    ![App Service ana iş günü KIMLIĞI](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyas
 1. [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) Başlat
 1. "Microsoft 'a oturum aç" düğmesine tıklayın ve Azure AD Genel yönetici veya uygulama Yöneticisi kimlik bilgilerini kullanarak oturum açın.
 
-    ![Graph oturum açma](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Microsoft Graph oturum açma](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. Başarılı oturum açma işlemi tamamlandıktan sonra, sol bölmedeki Kullanıcı hesabı ayrıntılarını görürsünüz.
 

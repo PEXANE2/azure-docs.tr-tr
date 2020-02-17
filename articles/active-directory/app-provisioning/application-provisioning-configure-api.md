@@ -1,6 +1,6 @@
 ---
-title: Sağlamayı yapılandırmak için MS Graph API 'Lerini kullanma-Azure Active Directory | Microsoft Docs
-description: Bir uygulamanın birden çok örneği için sağlama ayarlanması mı gerekiyor? Otomatik sağlama yapılandırmasını otomatik hale getirmek için MS Graph API 'Lerini kullanarak zamandan tasarruf yapmayı öğrenin.
+title: Sağlamayı yapılandırmak için Microsoft Graph API 'Leri kullanma-Azure Active Directory | Microsoft Docs
+description: Bir uygulamanın birden çok örneği için sağlama ayarlanması mı gerekiyor? Otomatik sağlama yapılandırmasını otomatik hale getirmek için Microsoft Graph API 'Lerini kullanarak zamandan tasarruf yapmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067194"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367831"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API 'Leri kullanarak sağlamayı yapılandırma
 

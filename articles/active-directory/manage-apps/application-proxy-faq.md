@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b40ea0339b564b97d17601415d1071bdc6a6e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443409"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367920"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -146,6 +146,8 @@ Hayır. Azure AD Uygulama Ara Sunucusu, Azure AD ile çalışacak şekilde tasar
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket desteği QlikSense dışındaki uygulamalar için çalışır mı?
 
 Şu anda WebSocket protokol desteği hala genel önizlemede ve diğer uygulamalar için çalışmayabilir. Bazı müşterilerin WebSocket protokolünü diğer uygulamalarla kullanarak karma başarısı vardı. Bu senaryoları test ediyorsanız, sonuçlarınızı duymak isteriz. Lütfen aadapfeedback@microsoft.comadresinden bize geri bildirim gönderin.
+
+Windows Yönetim Merkezi 'ndeki (WAC) veya Uzak Masaüstü Web Istemcisindeki Özellikler (Eventlogs, PowerShell ve Uzak Masaüstü Hizmetleri) Şu anda Azure AD Uygulama Ara Sunucusu üzerinden çalışmaz.
 
 ## <a name="link-translation"></a>Bağlantı çevirisi
 

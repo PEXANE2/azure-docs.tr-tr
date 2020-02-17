@@ -3,19 +3,17 @@ title: Azure Ayrılmış Sanal Makine Örnekleri’ni yönetme
 description: Azure Ayrılmış Sanal Makine Örnekleri’ni nasıl yönetebileceğinizi öğrenin.
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994057"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188515"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
@@ -128,7 +126,7 @@ Rezervasyonun iyileştirme ayarını güncelleştirmek için:
 
 ## <a name="optimize-reservation-use"></a>Rezervasyon kullanımını iyileştirme
 
-Azure rezervasyon tasarrufları ancak sürekli kaynak kullanımında elde edilir. Rezervasyon satın aldığınızda bir veya üç yıllık bir dönemde temelde %100 olası kaynak kullanımı için önceden ödeme yaparsınız. Mümkün olan en iyi kullanımı ve tasarrufu elde etmek için rezervasyonunuzu maksimum düzeye çıkarmaya çalışın. Aşağıdaki bölümlerde rezervasyonu izleme ve kullanımını iyileştirme işlemleri açıklanır.
+Azure rezervasyon tasarrufları ancak sürekli kaynak kullanımında elde edilir. Rezervasyon satın aldığınızda bir veya üç yıllık bir dönemde temelde %100 olası kaynak kullanımı için ödeme yaparsınız. Mümkün olan en iyi kullanımı ve tasarrufu elde etmek için rezervasyonunuzu maksimum düzeye çıkarmaya çalışın. Aşağıdaki bölümlerde rezervasyonu izleme ve kullanımını iyileştirme işlemleri açıklanır.
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>Azure portalında rezervasyon kullanımını görüntüleme
 

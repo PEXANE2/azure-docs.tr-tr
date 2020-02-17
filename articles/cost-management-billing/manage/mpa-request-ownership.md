@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988207"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048204"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
@@ -120,7 +120,7 @@ Aşağıda listelenen abonelik türlerinin fatura sahipliğini isteyebilirsiniz.
 - [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Microsoft Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Kurumsal DevTest aboneliği, aktarım sonrasındaki kullandıkça öde fiyatından faturalandırılır ve Kurumsal DevTest teklifi ile müşterinin Kurumsal Anlaşmasında sunulan indirimler CSP iş ortağı tarafından kullanılamaz.
+\* Geliştirme ve Test aboneliğinin öncelikle destek bileti ile EA Kurumsal teklifine dönüştürülmesi gerekir. Kurumsal Geliştirme ve Test aboneliği aktarıldıktan sonra kullandıkça öde fiyatları üzerinden faturalandırılır. Müşterinin EA şartları gereği sunulan Kurumsal Geliştirme ve Test teklifi ile sağlanan indirimler CSP iş ortağı tarafından kullanılamaz.
 
 ## <a name="additional-information"></a>Ek bilgiler
 

@@ -2,21 +2,21 @@
 title: Azure müşterileri için Açık Bankacılık (P2D2) ve Güçlü Müşteri Kimlik Doğrulaması (SCA)
 description: Bu makalede bazı Azure satın almalarında çok faktörlü kimlik doğrulamasının neden gerekli olduğu ve kimlik doğrulamasının nasıl tamamlanacağı açıklanır.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996046"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133553"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure müşterileri için Açık Bankacılık (P2D2) ve Güçlü Müşteri Kimlik Doğrulaması (SCA)
 
@@ -53,14 +53,13 @@ Banka ücretleri reddederse Azure portalında Azure hesabınızın durumu **Sür
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Market ve rezervasyon satın almaları için ödenmemiş ücretleri ödeme
 
-Market ve rezervasyon satın almaları, Azure hizmetlerinden ayrı faturalanır. Bankanız Market veya rezervasyon ücretlerini reddederse, Azure portalında fatura durumunuz **Süresi geçti** olarak gösterilir. Şu adımları izleyerek Market ve rezervasyon faturalarınızın durumunu denetleyebilirsiniz:
+Market ve rezervasyon satın almaları, Azure hizmetlerinden ayrı faturalanır. Bankanız Market veya rezervasyon ücretlerini reddederse, faturanın süresi dolar ve Azure portalında **Şimdi ödeyin** seçeneği gösterilir. Şu adımları izleyerek süresi geçen Market ve rezervasyon faturalarınızı ödeyebilirsiniz:
 
 1. [Azure portalında](https://portal.azure.com/) Hesap Yöneticisi olarak oturum açın.
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 3. 'Faturalama'nın altında **Faturalar**'ı seçin.
-4. Sağ tarafta **Azure Market ve rezervasyonlar** sekmesine tıklayın.
-5. İlgili aboneliği seçin.
-6. Faturalar kılavuzunda durum sütununu gözden geçirin. Fatura **Bitiş tarihi** veya **Süresi geçti** durumundaysa **Şimdi ödeyin** öğesine tıklayın. İşlem sırasında çok faktörlü kimlik doğrulamasını tamamlamanız istenir.
+5. Abonelik açılan filtresinde Market veya rezervasyon satın alma işlemiyle ilişkili aboneliği seçin.
+6. Faturalar tablosunda tür sütununu gözden geçirin. Tür **Azure Market ve Rezervasyonlar** ise vadesi gelen veya geçen faturalar için **Şimdi ödeyin** bağlantısı gösterilir. **Şimdi ödeyin** bağlantısının görünmemesi, faturanızın ödenmiş olduğu anlamına gelir. Şimdi ödeyin'i seçtikten sonra çok faktörlü kimlik doğrulamasını tamamlamanız istenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure faturasını ödemeniz gerekiyorsa bkz. [Azure aboneliğinizin süresi geçen bakiye sorununu çözme](resolve-past-due-balance.md).

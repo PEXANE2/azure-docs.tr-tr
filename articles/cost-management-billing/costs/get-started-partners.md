@@ -1,25 +1,28 @@
 ---
 title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842427"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117593"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
-Azure Maliyet Yönetimi, müşterilerini bir Microsoft Müşteri Sözleşmesi'ne eklemiş ve [bir Azure Planı satın almış olan](/partner-center/purchase-azure-plan) iş ortakları tarafından yerel olarak kullanılabilir. Bu makalede iş ortaklarının Azure Planı'ndaki aboneliklerin maliyetlerini görüntülemek için [Azure Maliyet Yönetimi](../index.yml) özelliklerini nasıl kullanabilecekleri açıklanmıştır. Ayrıca iş ortaklarının, müşterileri için Maliyet Yönetimi erişimini nasıl etkinleştirebilecekleri de anlatılmıştır. Müşteriler, CSP iş ortakları tarafından etkinleştirilmesi durumunda Maliyet Yönetimi özelliklerini kullanabilir.
+Azure Maliyet Yönetimi, müşterilerini bir Microsoft Müşteri Sözleşmesi'ne eklemiş ve [bir Azure Planı satın almış olan](/partner-center/purchase-azure-plan) doğrudan iş ortakları tarafından yerel olarak kullanılabilir. Bu makalede iş ortaklarının Azure Planı'ndaki aboneliklerin maliyetlerini görüntülemek için [Azure Maliyet Yönetimi](../index.yml) özelliklerini nasıl kullanabilecekleri açıklanmıştır. Ayrıca iş ortaklarının, müşterileri için Maliyet Yönetimi erişimini nasıl etkinleştirebilecekleri de anlatılmıştır.
+
+Doğrudan iş ortakları ve dolaylı sağlayıcılar için genel yönetici ve dolaylı sağlayıcının yönetici aracıları, iş ortağı kiracısında Maliyet Yönetimi'ne erişebilir. Kurumsal bayiler ve müşteriler, Maliyet Yönetimi'ne müşteri kiracısında erişip aboneliklere ait maliyetleri görüntüleyebilir ve bu maliyetler perakende ücretleri üzerinden hesaplanır ve gösterilir. Ancak bu kullanıcıların maliyetleri görüntüleyebilmek için müşteri kiracısında aboneliğe RBAC erişimine sahip olması gerekir. Maliyet görünürlüğü ilkesinin sağlayıcı tarafından müşteri kiracısında etkinleştirilmesi gerekir.
+
+Müşteriler, CSP iş ortakları tarafından etkinleştirilmesi durumunda Maliyet Yönetimi özelliklerini kullanabilir.
 
 CSP iş ortakları, Maliyet Yönetimi ile şu işlemleri gerçekleştirebilir:
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990300"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168761"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Öğretici: Önerilerle maliyetleri iyileştirme
 
@@ -79,7 +79,7 @@ VM ayrıntılarında, sanal makinenin uygun bir yeniden boyutlandırma adayı ol
 
 Geçerli sanal makinenin boyutuna dikkat edin. Sanal makinenin yeniden boyutlandırılması gerektiğini doğruladıktan sonra, sanal makinelerin listesini görmek için VM ayrıntılarını kapatın.
 
-Kapatma veya yeniden boyutlandırma adayları listesinde ** *&lt;FromVirtualMachineSKU&gt;* boyutundaki sanal makineyi *&lt;ToVirtualMachineSKU&gt;* olarak yeniden boyutlandır** ifadesini seçin.
+Kapatma veya yeniden boyutlandırma adayları listesinde **_&lt;FromVirtualMachineSKU&gt;_ boyutundaki sanal makineyi _&lt;ToVirtualMachineSKU&gt;_ olarak yeniden boyutlandır** ifadesini seçin.
 ![Sanal makineyi yeniden boyutlandırma seçeneğine sahip örnek öneri](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Sonraki adımda kullanılabilir yeniden boyutlandırma seçeneklerinin bir listesi sunulur. Senaryonuz için en iyi performansı ve maliyet verimliliğini sağlayacak olanı seçin. Aşağıdaki örnekte **Standard_D8s_v3** boyutundaki sanal makine için **Standard_D2s_v3** boyutu seçilmiştir.
