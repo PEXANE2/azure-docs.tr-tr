@@ -2,28 +2,28 @@
 title: Azure abonelikleri için fatura ile ödeme
 description: Azure abonelikleri için fatura ile nasıl ödeme yapılacağını açıklar.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994343"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133634"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure abonelikleriniz için fatura ile ödeme
 
 Faturayla ödemeye geçmeniz, faturanızı fatura tarihini izleyen 30 gün içinde çek/havale ile ödeyeceğiniz anlamına gelir. Azure aboneliğinizi faturayla ödemeye uygun duruma gelmek için, Azure desteğine bir istek gönderin. İsteğiniz onaylandıktan sonra [Azure portalında](https://portal.azure.com) fatura ödemesine (çek/havale) geçiş yapabilirsiniz.
 
 > [!IMPORTANT]
-> * Fatura ödemesi (çek/havale) yalnızca kurumsal hesaplar için kullanılabilir.
+> * Fatura ödemesi (çek/havale) yalnızca Azure'ı şirket adına kullanan müşteriler tarafından kullanılabilir.
 > * Fatura ödemesine geçiş yapmadan önce tüm kalan ücretleri ödeyin.
 > * Fatura ödemesi Çin’de Küresel Azure için şu anda desteklenmemektedir.
 

@@ -2,22 +2,22 @@
 title: Microsoft Azure faturanızı ödeme | Microsoft Docs
 description: Azure portalında nasıl fatura ödeneceğini açıklar
 keywords: faturalama, süresi geçmiş, bakiye, şimdi ödeme,
-author: jureid
-manager: jureid
+author: banders
+manager: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: d486fe72a43465832ca13ac1a62a7f0a9aeaa65e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 214382693d942152d82b7ae5e487969b8ebaeaff
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989715"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188115"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure faturanızı ödeme
 
@@ -35,21 +35,12 @@ Azure portalında fatura ödemek için faturalama profili sahibi, katkıda bulun
 
 1. [Azure portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. **Genel Bakış** dikey penceresinde *Özet* sekmesine tıklayın.
-
-    ![özet sekmesini gösteren ekran görüntüsü](./media/pay-bill/billing-account-overview.png)
-
-1. Ödenmesi gereken veya süresi geçmiş bir faturanız varsa, ödenmesi gereken toplam tutarı görürsünüz.
-1. Mavi **Şimdi ödeyin** düğmesine tıklayın.
-
-    ![şimdi ödeyin düğmesini gösteren ekran görüntüsü](./media/pay-bill/paynow-button-overview.png)
-
-1. Yeni dikey pencerede, mevcut bir kredi kartını seçmek veya yenisini eklemek için **Bir ödeme yöntemi seçin** seçeneğine tıklayın.<!-- screenshot of select payment method link -->
+1. Soldaki menüde "Faturalama" altındaki **Faturalar**’ı seçin.
+1. Vadesi gelmiş veya geçmiş olan faturalarınız için mavi renkli **Şimdi ödeyin** bağlantısı görüntülenir. **Şimdi ödeyin**'i seçin.
+1. Yeni dikey pencerede, mevcut bir kredi kartını seçmek veya yenisini eklemek için **Bir ödeme yöntemi seçin** seçeneğine tıklayın.
 1. Ödeme yöntemi seçildikten sonra **Şimdi ödeyin** düğmesine tıklayın.
 
 Faturalar dikey penceresinde fatura durumu, ödendi olarak güncelleştirilir.
-
-<!-- pay now from invoice blade -->
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

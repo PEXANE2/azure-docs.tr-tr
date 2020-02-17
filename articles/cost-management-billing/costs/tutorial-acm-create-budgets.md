@@ -1,21 +1,20 @@
 ---
 title: Öğretici - Azure bütçesi oluşturma ve yönetme | Microsoft Docs
 description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle ilgili plan yapmanıza yardımcı olmaktadır.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769763"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132096"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -34,6 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure portalında bütçe oluşturma
+> * PowerShell ile bütçe oluşturma ve düzenleme
 > * Bir bütçeyi düzenleme
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -62,7 +62,7 @@ Bütçe oluşturmak veya görüntülemek için, Azure portalında istediğiniz k
 
 Bütçeleri oluşturduktan sonra bunlar için geçerli harcamalarınızın basit bir görünümü gösterilir.
 
-**Ekle**'ye tıklayın.
+**Add (Ekle)** seçeneğini belirleyin.
 
 ![Önceden oluşturulmuş olan bütçelerin listesini gösteren örnek](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,15 +78,19 @@ Bütçede şu ana kadar seçtiğiniz alanlara bağlı olarak, bütçeniz için k
 
 ![Aylık maliyet verileriyle bütçe oluşturma işlemini gösteren örnek ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Bütçe tutarını yapılandırdıktan sonra bütçe uyarılarını yapılandırmak için **İleri**'ye tıklayın. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gerekir. İsteğe bağlı olarak tek bir bütçeye en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle 20 saatten az bir sürede alınır. Bildirimleri hakkında daha fazla bilgi için, bkz. [Maliyeti uyarılarını kullanma](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md). Aşağıdaki örnekte, bütçenin %90'ına ulaşıldığında bir e-posta uyarısı oluşturulmuştur. Bütçeler API'si ile bütçe oluşturduğunuzda kullanıcılara uyarı gönderilmesi için roller de atayabilirsiniz. Kişilere rol atama işlemi Azure portalında gerçekleştirilemez. Azure Bütçeler API'si hakkında daha fazla bilgi için bkz. [Bütçeler API'si](/rest/api/consumption/budgets).
+Bütçe tutarını yapılandırdıktan sonra bütçe uyarılarını yapılandırmak için **İleri**'yi seçin. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gerekir. İsteğe bağlı olarak tek bir bütçeye en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle 20 saatten az bir sürede alınır.
+
+E-posta almak istiyorsanız, e-postaların önemsiz e-posta klasörünüze gitmemesi için azure-noreply@microsoft.com adresini onaylı gönderenler listenize ekleyin. Bildirimleri hakkında daha fazla bilgi için, bkz. [Maliyeti uyarılarını kullanma](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
+
+Aşağıdaki örnekte, bütçenin %90'ına ulaşıldığında bir e-posta uyarısı oluşturulmuştur. Bütçeler API'si ile bütçe oluşturduğunuzda kullanıcılara uyarı gönderilmesi için roller de atayabilirsiniz. Kişilere rol atama işlemi Azure portalında gerçekleştirilemez. Azure Bütçeler API'si hakkında daha fazla bilgi için bkz. [Bütçeler API'si](/rest/api/consumption/budgets).
 
 ![Uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Bir bütçe oluşturulduktan sonra maliyet analizi bölümünde gösterilir. Bütçenizin harcama eğilimi ile bağlantılı olarak görüntülenmesi, [maliyetlerinizi ve harcamalarınızı analiz etmeye](../../cost-management/quick-acm-cost-analysis.md) başladığınızda kullanacağınız ilk adımlardan biridir.
+Bir bütçe oluşturulduktan sonra maliyet analizi bölümünde gösterilir. Bütçenizin harcama eğilimiyle karşılaştırmalı olarak görüntülenmesi, [maliyetlerinizi ve harcamalarınızı analiz etmeye](../../cost-management/quick-acm-cost-analysis.md) başladığınızda kullanacağınız ilk adımlardan biridir.
 
 ![Maliyet analizinde gösterilen örnek bütçe ve harcama](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-Yukarıdaki örnekte abonelik için bir bütçe oluşturdunuz. Ancak bir kaynak grubu için de bütçe oluşturabilirsiniz. Bir kaynak grubu için bütçe oluşturmak isterseniz **Maliyet Yönetimi + Faturalandırma** &gt; **Abonelikler** &gt; yolunu izleyin, bir abonelik seçin > **Kaynak grupları** > bir kaynak grubu seçin > **Bütçeler** > ve **Ekle**'yi seçerek bir bütçe ekleyin.
+Yukarıdaki örnekte abonelik için bir bütçe oluşturdunuz. Bir kaynak grubu için de bütçe oluşturabilirsiniz. Bir kaynak grubu için bütçe oluşturmak isterseniz **Maliyet Yönetimi + Faturalandırma** &gt; **Abonelikler** &gt; yolunu izleyin, bir abonelik seçin > **Kaynak grupları** > bir kaynak grubu seçin > **Bütçeler** > ve **Ekle**'yi seçerek bir bütçe ekleyin.
 
 ## <a name="costs-in-budget-evaluations"></a>Bütçe maliyeti değerlendirmeleri
 
@@ -106,12 +110,12 @@ Bir abonelik veya kaynak grubu kapsamı için bütçe oluşturma veya düzenleme
 
 
 
-Eylem grubu oluşturmak veya güncelleştirmek için bütçe oluşturma veya düzenleme aşamasında **Eylem gruplarını yönet**'e tıklayın.
+Eylem grubu oluşturmak veya güncelleştirmek için bütçe oluşturma veya düzenleme aşamasında **Eylem gruplarını yönet**'i seçin.
 
 ![Eylem gruplarını yönet seçeneğini gösteren bütçe oluşturma örneği](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-Ardından eylem grubunu oluşturmak için **Eylem grubu ekle**'ye tıklayın.
+Ardından eylem grubunu oluşturmak için **Eylem grubu ekle**'yi seçin.
 
 
 ![Eylem grubu ekle kutusunun görüntüsü](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ Aşağıdaki örnek %50, %75 ve %100 olarak ayarlanmış bütçe eşiklerini gö
 
 Bütçelerin eylem gruplarıyla tümleştirilmesi yalnızca ortak uyarı şeması devre dışı bırakılmış olan eylem grupları için kullanılabilir. Şemayı devre dışı bırakma hakkında daha fazla bilgi için bkz. [Ortam uyarı şemasını nasıl devre dışı bırakabilirim?](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
+## <a name="create-and-edit-budgets-with-powershell"></a>PowerShell ile bütçe oluşturma ve düzenleme
+
+EA müşterileri, Azure PowerShell modülünü kullanarak program aracılığıyla bütçe oluşturabilir ve düzenleyebilir.  Azure PowerShell'in son sürümünü indirmek için aşağıdaki komutu çalıştırın:
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+Aşağıdaki örnek komutlar bir bütçe oluşturur.
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Azure portalında bütçe oluşturma
+> * PowerShell ile bütçe oluşturma ve düzenleme
 > * Bir bütçeyi düzenleme
 
 Maliyet yönetimi verileriniz için yinelenen dışarı aktarma işlemi oluşturmak üzere sonraki öğreticiye ilerleyin.
