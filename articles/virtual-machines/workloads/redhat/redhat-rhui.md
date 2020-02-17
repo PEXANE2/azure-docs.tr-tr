@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169315"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368894"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure'da isteğe bağlı Red Hat Enterprise Linux VM'ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
@@ -27,6 +27,10 @@ Azure 'da yayımlama ve bekletme ilkeleri de dahil olmak üzere RHEL görüntül
 
 Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
 
+> [!IMPORTANT]
+> RHUı yalnızca Kullandıkça Öde (PAYGO) görüntüleri için tasarlanmıştır. Kendi aboneliklerini getir (BYOS) olarak da bilinen özel ve altın görüntülerde, güncelleştirmelerin alınması için sistemin RHSM veya uydu 'e bağlanması gerekir. Daha fazla bilgi için bkz. [Red Hat makalesi](https://access.redhat.com/solutions/253273) .
+
+
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI hakkında önemli bilgiler
 
 * Azure RHUı, Azure 'da oluşturulan tüm RHEL PAYG sanal makinelerini destekleyen güncelleştirme altyapısıdır. Bu, PAYG RHEL VM 'lerinizi abonelik Yöneticisi veya uydu ya da diğer güncelleştirme kaynakları ile kaydetmektir, ancak bunu bir PAYG VM ile yapmanız dolaylı çift faturalandırmaya neden olur. Ayrıntılar için aşağıdaki noktaya bakın.
@@ -35,6 +39,7 @@ Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat 
 * Azure 'daki RHEL SAP PAYG görüntüleri (RHEL for SAP, RHEL for SAP HANA ve RHEL for SAP Business Applications), SAP sertifikası için gereken belirli RHEL alt sürümünde kalan adanmış RHUı kanallarına bağlanır.
 
 * Azure 'da barındırılan RHUı erişim, [Azure veri MERKEZI IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653)Içindeki VM 'lerle sınırlıdır. Proxy kullanıyorsanız tüm VM trafiğe bir şirket içi ağ altyapısı aracılığıyla RHEL PAYG sanal makinelerin Azure RHUI erişmek kullanıcı tanımlı rotalar ayarlama gerekebilir. Bu durumda, _Tüm_ rhuı IP adresleri için Kullanıcı tanımlı yolların eklenmesi gerekecektir.
+
 
 ## <a name="image-update-behavior"></a>Görüntü güncelleştirme davranışı
 

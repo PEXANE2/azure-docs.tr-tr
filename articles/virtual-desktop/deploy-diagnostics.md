@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452419"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368856"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -25,7 +25,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 
@@ -36,8 +36,8 @@ Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir A
 
 Başlamadan önce bu iki PowerShell modülünü de yüklemeniz gerekir:
 
-- [Azure PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD modülü](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Azure PowerShell modülü](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD modülü](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 Oturum açtığınızda abonelik KIMLIĞINIZ için hazırlık yaptığınızdan emin olun.
 
@@ -50,7 +50,7 @@ Bu bölümde, bir hizmet sorumlusu ile Azure Active Directory uygulamasını olu
 >[!NOTE]
 >API izinleri Windows Sanal Masaüstü ' dir, Log Analytics ve Microsoft Graph API izinleri Azure Active Directory uygulamasına eklenir.
 
-1. Yönetici olarak PowerShell’i açın.
+1. PowerShell 'i yönetici olarak açın.
 2. Tanılama aracı için kullanmak istediğiniz Azure aboneliğinde sahip veya katkıda bulunan izinleri olan bir hesapla Azure 'da oturum açın:
    ```powershell
    Login-AzAccount
@@ -253,7 +253,7 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 
     - Eşik: %80 ' den yüksek, sağlıksız olarak işaretlendi.
 
-- [Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Eşik: 2000 MS 'den yüksek, sağlıksız olarak işaretlendi.
 

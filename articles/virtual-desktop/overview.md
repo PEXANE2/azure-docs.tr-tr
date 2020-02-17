@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772778"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367288"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -72,7 +72,7 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
 
-* Bir [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* Bir [Azure Active Directory](/active-directory/)
 * Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, aşağıdakilerden biriyle yapılandırabilirsiniz:
   * Azure AD Connect (Hibrit kuruluşlar için)
   * Azure AD Domain Services (karma veya bulut kurumları için)
@@ -80,7 +80,7 @@ Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere
   
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
 
-* [Standart etki alanına katılmış](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) veya [karma ad 'ye katılmış](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Sanal makineler Azure AD 'ye katılmış olamaz.
+* [Standart etki alanına katılmış](../active-directory-domain-services/active-directory-ds-comparison.md) veya [karma ad 'ye katılmış](../active-directory/devices/hybrid-azuread-join-plan.md). Sanal makineler Azure AD 'ye katılmış olamaz.
 * Aşağıdaki [desteklenen işletim sistemi görüntülerinden](#supported-virtual-machine-os-images)birini çalıştırın.
 
 >[!NOTE]
@@ -95,7 +95,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |*. core.windows.net|TCP bağlantı noktası 443|Aracı trafiği|
 |*.servicebus.windows.net|TCP bağlantı noktası 443|Aracı trafiği|
 |prod.warmpath.msftcloudes.com|TCP bağlantı noktası 443|Aracı trafiği|
-|catalogartifact.azureedge.net|TCP bağlantı noktası 443|Azure Marketi|
+|catalogartifact.azureedge.net|TCP bağlantı noktası 443|Azure Market|
 |kms.core.windows.net|TCP bağlantı noktası 1688|Windows 10 etkinleştirme|
 
 >[!IMPORTANT]
@@ -145,14 +145,14 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
-|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
-|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 7 kurumsal|Evet|Evet|Hayır|Hayır|Manual|
-|Windows Server 2019|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows Server 2016|Evet|Evet|Evet|Evet|Automatic|
-|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Automatic|
+|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 7 kurumsal|Yes|Yes|Hayır|Hayır|El ile|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Automatic|
+|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Automatic|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

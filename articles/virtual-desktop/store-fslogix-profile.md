@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451324"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367194"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri
 
@@ -24,11 +24,11 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 
 ## <a name="azure-platform-details"></a>Azure platformu ayrıntıları
 
-|Özellikler|Azure Dosyaları|Azure NetApp Files|Doğrudan Erişimli Depolama Alanları|
+|Özellikler|Azure Dosyaları|Azure NetApp Files|Depolama Alanları Doğrudan|
 |--------|-----------|------------------|---------------------|
 |Platform hizmeti|Evet, Azure-Native çözümü|Evet, Azure-Native çözümü|Hayır, otomatik olarak yönetilen|
 |Bölgesel kullanılabilirlik|Tüm bölgeler|[Bölge seçin](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Tüm bölgeler|
-|Yedekleme|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|Yerel olarak yedekli|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|
+|Yedeklilik|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|Yerel olarak yedekli|Yerel olarak yedekli/bölge-yedekli/coğrafi olarak yedekli|
 |Katmanlar ve performans|Standart<br>Premium<br>Paylaşma başına 5 Gbps ile, paylaşma başına en fazla 100.000 IOPS, yaklaşık 3 ms gecikme|Standart<br>Premium<br>Çok<br>Yaklaşık 1 ms gecikme süresi içinde birim başına 4,5 GB/sn 'ye kadar 320 KB (16K) ıOPS|Standart HDD: disk başına en çok 500 ıOPS<br>Standart SSD: disk başına en fazla 4k ıOPS<br>Premium SSD: disk başına en fazla 20.000 IOPS sınırı<br>Depolama Alanları Doğrudan için Premium diskler öneriyoruz|
 |Kapasite|paylaşma başına 100 TiB|Her birim için 100 TiB, abonelik başına en fazla 12,5 PiB|Disk başına en fazla 32 TiB|
 |Gerekli altyapı|En az paylaşma boyutu 1 GiB|Minimum kapasite havuzu 4 TiB, minimum birim boyutu 100 GiB|Azure IaaS (+ Cloud tanık) üzerinde iki VM veya disk 'siz ve maliyeti olan en az üç VM|
@@ -36,9 +36,9 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 
 ## <a name="azure-management-details"></a>Azure yönetim ayrıntıları
 
-|Özellikler|Azure Dosyaları|Azure NetApp Files|Doğrudan Erişimli Depolama Alanları|
+|Özellikler|Azure Dosyaları|Azure NetApp Files|Depolama Alanları Doğrudan|
 |--------|-----------|------------------|---------------------|
-|Erişim|Bulut, şirket içi ve karma (Azure dosya eşitleme)|Bulut, şirket içi (ExpressRoute aracılığıyla)|Bulut, şirket içi|
+|Access|Bulut, şirket içi ve karma (Azure dosya eşitleme)|Bulut, şirket içi (ExpressRoute aracılığıyla)|Bulut, şirket içi|
 |Backup|Azure Backup anlık görüntü tümleştirmesi|Azure NetApp Files anlık görüntüler|Azure Backup anlık görüntü tümleştirmesi|
 |Güvenlik ve uyumluluk|[Tüm Azure desteklenen sertifikaları](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO tamamlandı|[Tüm Azure desteklenen sertifikaları](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory tümleştirmesi|Azure Active Directory ve Azure Active Directory Domain Services|[Azure Active Directory Domain Services ve yerel Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Yalnızca yerel Active Directory veya Azure Active Directory Domain Services desteği|
@@ -53,6 +53,6 @@ Kendi FSLogix profil Kapsayıcılarınızı oluşturmaya hazırsanız, şu öğr
 
 - [Windows sanal masaüstündeki Azure dosyalarında FSLogix profil kapsayıcılarıyla çalışmaya başlama](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
 - [Azure NetApp dosyalarını kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](create-fslogix-profile-container.md)
-- [Azure 'DA UPD depolama için iki düğümlü depolama alanları doğrudan genişleme dosya sunucusu dağıtma](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) ' daki yönergeler, bir kullanıcı profili diski yerine FSLogix profil kapsayıcısını kullandığınızda da geçerlidir.
+- [Azure 'DA UPD depolama için iki düğümlü depolama alanları doğrudan genişleme dosya sunucusu dağıtma](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) ' daki yönergeler, bir kullanıcı profili diski yerine FSLogix profil kapsayıcısını kullandığınızda da geçerlidir.
 
 Ayrıca, [Windows sanal masaüstü 'nde kiracı oluşturma bölümünde](tenant-setup-azure-active-directory.md), tek başına başlayıp kendi Windows sanal masaüstü çözümünüzü ayarlayabilirsiniz.

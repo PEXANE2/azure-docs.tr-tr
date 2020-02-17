@@ -3,17 +3,17 @@ title: Şirket içi bir işlem mağazasından Azure Data Box ile Azure depolama 
 description: Şirket içi bir, Azure depolama 'ya veri geçirme
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990972"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368684"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Şirket içi bir işlem mağazasından Azure Data Box ile Azure depolama 'ya geçiş
 
@@ -25,19 +25,19 @@ Bu makale, bu görevleri tamamlamanıza yardımcı olur:
 > * Verilerinizi geçirmeye hazırlanın.
 > * Verilerinizi bir Data Box veya Data Box Heavy cihazına kopyalayın.
 > * Cihazı Microsoft 'a geri gönderin.
-> * Verileri Data Lake Storage 2. üzerine taşıyın.
+> * Dosyalara ve dizinlere erişim izinleri uygulama (yalnızca Data Lake Storage 2.)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geçişi tamamlayabilmeniz için bu şeylere ihtiyacınız vardır.
 
-* İki depolama hesabı; bir hiyerarşik ad alanı üzerinde etkin bir tane ve olmayan bir.
+* Azure Depolama hesabı.
 
 * Kaynak verilerinizi içeren bir şirket içi Hadoop kümesi.
 
 * [Azure Data Box bir cihaz](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)sıralayın. Cihazınızı düzenlerken, hiyerarşik ad alanları **etkin olmayan bir** depolama hesabı seçin. Bunun nedeni Data Box cihazların henüz Azure Data Lake Storage 2. doğrudan alımı desteklemezler. Bir depolama hesabına kopyalamanız ve sonra ADLS 2. hesaba ikinci bir kopya yapmanız gerekir. Bu yönergeler aşağıdaki adımlarda verilmiştir.
+  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)sıralayın. 
 
   * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) şirket içi bir ağa bağlayın.
 
@@ -173,36 +173,14 @@ Data Box cihazını hazırlamak ve Microsoft 'a göndermek için aşağıdaki ad
 
     * Data Box Heavy cihazlar için bkz. [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)gönderme.
 
-5. Microsoft cihazınızı aldıktan sonra veri merkezi ağına bağlanır ve veriler, cihaz sırasını yerleştirdiğinizde belirttiğiniz depolama hesabına (hiyerarşik ad alanları devre dışı bırakılmış olarak) yüklenir. Tüm verilerinizin Azure 'a yüklendiğini, BOM dosyalarına karşı doğrulayın. Artık bu verileri bir Data Lake Storage 2. depolama hesabına taşıyabilirsiniz.
+5. Microsoft cihazınızı aldıktan sonra veri merkezi ağına bağlanır ve veriler cihaz sırasını yerleştirdiğinizde belirttiğiniz depolama hesabına yüklenir. Tüm verilerinizin Azure 'a yüklendiğini, BOM dosyalarına karşı doğrulayın. 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Verileri Azure Data Lake Storage 2. taşıyın
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Dosyalara ve dizinlere erişim izinleri uygulama (yalnızca Data Lake Storage 2.)
 
-Azure depolama hesabınızda zaten verileriniz var. Artık verileri Azure Data Lake depolama hesabınıza kopyalayacak ve dosyalara ve dizinlere erişim izinleri uygulayacaksınız.
+Azure depolama hesabınızda zaten verileriniz var. Artık dosyalara ve dizinlere erişim izinleri uygulayacaksınız.
 
 > [!NOTE]
-> Veri depolduğunuz Azure Data Lake Storage 2. kullanıyorsanız bu adım gereklidir. Veri depeti için hiyerarşik ad alanı olmadan yalnızca bir BLOB depolama hesabı kullanıyorsanız, bu bölümü atlayabilirsiniz.
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Azure Data Lake Storage Gen 2 hesabına veri kopyalama
-
-Azure Data Factory kullanarak veya Azure tabanlı Hadoop kümenizi kullanarak verileri kopyalayabilirsiniz.
-
-* Azure Data Factory kullanmak için bkz. [Azure Data Factory ADLS 2. verileri taşıma](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). **Azure Blob depolamayı** kaynak olarak belirttiğinizden emin olun.
-
-* Azure tabanlı Hadoop kümenizi kullanmak için bu DistCp komutunu çalıştırın:
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * `<source_account>` ve `<dest_account>` yer tutucuları kaynak ve hedef depolama hesaplarının adlarıyla değiştirin.
-
-    * `<source_container>` ve `<dest_container>` yer tutucuları kaynak ve hedef kapsayıcıların adlarıyla değiştirin.
-
-    * `<source_path>` ve `<dest_path>` yer tutucuları kaynak ve hedef dizin yollarıyla değiştirin.
-
-    * `<source_account_key>` yer tutucusunu, verileri içeren depolama hesabının erişim anahtarıyla değiştirin.
-
-    Bu komut, depolama hesabınızdan hem verileri hem de meta verileri Data Lake Storage 2. depolama hesabınıza kopyalar.
+> Bu adım yalnızca veri depolama alanı olarak Azure Data Lake Storage 2. kullanıyorsanız gereklidir. Veri depeti için hiyerarşik ad alanı olmadan yalnızca bir BLOB depolama hesabı kullanıyorsanız, bu bölümü atlayabilirsiniz.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage 2. hesabınız için bir hizmet sorumlusu oluşturma
 

@@ -8,24 +8,25 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60757250"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365311"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Öğretici: Hyper-V'de sağlama Azure veri kutusu ağ geçidi
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Öğretici: Hyper-V ' d a Azure Data Box Gateway sağlama
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide Data Box Gateway'i Windows Server 2016, Windows Server 2012 R2 veya Windows Server 2012'de Hyper-V üzerinde çalışan bir ana bilgisayarda sağlama adımları anlatılmaktadır. 
+Bu öğreticide Data Box Gateway'i Windows Server 2016, Windows Server 2012 R2 veya Windows Server 2012'de Hyper-V üzerinde çalışan bir ana bilgisayarda sağlama adımları anlatılmaktadır.
 
 Sanal cihaz sağlamak ve yapılandırmak için yönetici ayrıcalıklarına sahip olmanız gerekir. Sağlama ve ilk kurulum adımlarını tamamlamak yaklaşık 10 dakika sürecektir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
+>
 > * Ana bilgisayarın minimum cihaz gereksinimlerini karşıladığından emin olma
 > * Hiper yöneticide bir sanal cihaz sağlama
 > * Sanal cihazı başlatma ve IP adresini alma
@@ -36,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Windows Server 2016 veya Windows Server 2012 R2 üzerinde Hyper-V çalıştıran ana bilgisayar sisteminde sanal cihaz sağlama önkoşulları aşağıda belirtilmiştir.
 
-### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway kaynağı için
+### <a name="for-the-data-box-gateway-resource"></a>Box Gateway kaynağı için
 
 Başlamadan önce aşağıdakilerden emin olun:
 
@@ -45,7 +46,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
   > [!IMPORTANT]
   > Data Box Gateway üzerinde çalıştırılan yazılım yalnızca Data Box Gateway kaynağıyla kullanılabilir.
- 
+
 ### <a name="for-the-data-box-gateway-virtual-device"></a>Data Box Gateway sanal cihazı için
 
 Cihazı dağıtmadan önce şunlardan emin olun:
@@ -54,7 +55,7 @@ Cihazı dağıtmadan önce şunlardan emin olun:
 * Ana bilgisayar sistemi sanal cihazınızı sağlamak için aşağıdaki kaynakları ayırabiliyor:
 
   * En az 4 çekirdek.
-  * En az 8 GB RAM. 
+  * En az 8 GB RAM.
   * Bir ağ arabirimi.
   * 250 GB işletim sistemi diski.
   * Veriler için 2 TB sanal disk.
@@ -65,7 +66,6 @@ Başlamadan önce:
 
 - Data Box Gateway dağıtma ağ gereksinimlerini gözden geçirin ve veri merkezi ağını gereksinimlere göre yapılandırın. Daha fazla bilgi için bkz. [Data Box Gateway ağ gereksinimleri](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Cihazın en iyi şekilde çalışması için Internet bant genişliğinin en az 20 Mb/sn olduğundan emin olun.
-
 
 ## <a name="check-the-host-system"></a>Ana bilgisayar sistemini denetleyin
 
@@ -86,64 +86,63 @@ Sanal cihaz oluşturmak için şunlara ihtiyacınız vardır:
 Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleştirin.
 
 1. Windows Server ana bilgisayarınızda sanal cihaz görüntüsünü yerel sürücüye kopyalayın. Bu VHDX görüntüsünü Azure portaldan indirmiştiniz. Bu görüntüyü yordamın ilerleyen bölümlerinde kullanacağınız için kopyaladığınız konumu not edin.
-2. **Sunucu Yöneticisi**'ni açın. Sağ üst köşede **Araçları** seçip **Hyper-V Yöneticisi'ni**.
+2. **Sunucu Yöneticisi**'ni açın. Sağ üst köşede **Araçlar** ' a tıklayın ve **Hyper-V Yöneticisi**' ni seçin.
 
-    ![Sunucu Yöneticisi'nde Hyper-V Yöneticisi'ni seçin.](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
+    ![Sunucu Yöneticisi 'de Hyper-V Yöneticisi 'Ni seçin](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
   
 3. **Hyper-V Yöneticisi**'nin kapsam bölmesinde sistem düğümünüze sağ tıklayarak bağlam menüsünü açın ve **Yeni** > **Sanal Makine**'ye tıklayın.
 
-   ![Hyper-V Yöneticisi'nde yeni bir sanal makine oluşturun](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
+   ![Hyper-V Yöneticisi 'nde yeni sanal makine oluştur](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Yeni Sanal Makine Sihirbazı'nın **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
 5. **Ad ve konum belirtin** sayfasında sanal cihazınız için bir **Ad** girin. **İleri**’ye tıklayın.
 
-   ![Sayfa adı ve konumu belirtin](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
+   ![Ad ve konum sayfasını belirtin](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. **Nesli belirtin** sayfasında .vhdx görüntü türü için **2. Nesil**'i seçin ve **İleri**'ye tıklayın.    
 
-   ![Nesil sayfasına belirtin](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
+   ![Oluşturma sayfasını belirtin](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
 7. **Bellek ata** sayfasında **Başlangıç belleği** değerini en az **8192 MB** yapın, dinamik bellek özelliğini etkinleştirmeyin ve **İleri**'ye tıklayın.
 
-   ![Bellek sayfası atayın](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
+   ![Bellek atama sayfası](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
 8. **Ağı yapılandır** sayfasında İnternete bağlı olan sanal anahtarı belirtin ve **İleri**'ye tıklayın.
 
-   ![Ağ sayfasına yapılandırın](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
+   ![Ağ sayfasını Yapılandır](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
 9. **Sanal sabit disk bağla** sayfasında **Var olan bir sanal sabit disk kullan**'ı seçin, sanal cihaz görüntüsünün konumunu belirtin ve **İleri**'ye tıklayın.
 
-   ![Sanal sabit disk sayfasına bağlanma](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
+   ![Sanal sabit disk sayfasına Bağlan](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
 10. **Özet** sayfasını gözden geçirin ve **Son**'a tıklayarak sanal makineyi oluşturun.
 
     ![Yeni sanal makine Sihirbazı sayfası Tamamlanıyor](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. En düşük gereksinimleri karşılamak üzere 4 sanal işlemci gerekir. 4 sanal işlemci eklemek için **Hyper-V Yöneticisi** penceresinde ana bilgisayar sisteminizi seçin. Sağ tarafta, **Sanal Makineler** listesinin altında bulunan bölmede az önce oluşturduğunuz sanal makineyi bulun. Makine adına sağ tıklayın ve **Ayarlar**'ı seçin.
+11. En düşük gereksinimleri karşılamak için 4 sanal işlemciye ihtiyacınız vardır. 4 sanal işlemci eklemek için **Hyper-V Yöneticisi** penceresinde ana bilgisayar sisteminizi seçin. Sağ tarafta, **Sanal Makineler** listesinin altında bulunan bölmede az önce oluşturduğunuz sanal makineyi bulun. Makine adına sağ tıklayın ve **Ayarlar**'ı seçin.
 
     ![Sanal makine ayarları](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
-12. **Ayarlar** sayfasında sol taraftaki bölmeden **İşlemci**'yi seçin. Sağ taraftaki bölmede **sanal işlemci sayısını** 4 (veya üzeri) olarak ayarlayın. **Uygula**'ya tıklayın.
+12. **Ayarlar** sayfasında sol taraftaki bölmeden **İşlemci**'yi seçin. Sağ taraftaki bölmede **sanal işlemci sayısını** 4 (veya üzeri) olarak ayarlayın. **Apply (Uygula)** düğmesine tıklayın.
 
-    ![Ayarlar sayfasında sanal işlemci sayısını ayarlayın](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
+    ![Ayarlar sayfasındaki sanal işlemcilerin sayısını ayarla](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
 13. Minimum gereksinimleri karşılamak için 2 TB boyutunda sanal veri diski de eklemeniz gerekir. **Ayarlar** sayfasında:
 
     1. Sol taraftaki bölmede **SCSI Denetleyicisi**'ni seçin.
     2. Sağ taraftaki bölmede **Sabit Sürücü**'yü seçin ve **Ekle**'ye tıklayın.
 
-    ![Sabit sürücü Ayarları sayfasında ekleme](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
+    ![Ayarlar sayfasında sabit sürücü ekleme](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
 14. **Sabit sürücü** sayfasında **Sanal sabit disk** seçeneğini belirleyin ve **Yeni**'ye tıklayın. **Yeni Sanal Sabit Disk Sihirbazı** açılır.
 
-    ![Yeni Sanal Sabit Disk Sihirbazı](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
-1. Yeni Sanal Sabit Disk Sihirbazı'nın **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
-2. **Disk Biçimini Seç** sayfasında varsayılan seçenek olan **VHDX** biçimini kabul edin. **İleri**’ye tıklayın.
-   
-17. **Disk Türünü Seç** sayfasında sanal sabit disk türünü **Dinamik olarak genişletilen** (önerilen) olarak ayarlayın. **Sabit boyutlu** diski de seçebilirsiniz ancak daha uzun süre beklemeniz gerekebilir. **Fark kayıt** seçeneğini kullanmamanızı öneririz. **İleri**’ye tıklayın. 
+    ![Yeni sanal sabit disk Sihirbazı](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
+15. Yeni Sanal Sabit Disk Sihirbazı'nın **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
+16. **Disk Biçimini Seç** sayfasında varsayılan seçenek olan **VHDX** biçimini kabul edin. **İleri**’ye tıklayın.
+17. **Disk Türünü Seç** sayfasında sanal sabit disk türünü **Dinamik olarak genişletilen** (önerilen) olarak ayarlayın. **Sabit boyutlu** diski de seçebilirsiniz ancak daha uzun süre beklemeniz gerekebilir. **Fark kayıt** seçeneğini kullanmamanızı öneririz. **İleri**’ye tıklayın.
 
-    ![Disk türü sayfası seçin](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
+    ![Disk türü seçin sayfası](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
 18. **Ad ve Konum Belirtin** sayfasında veri diski için bir **ad** ve **konum** (göz atabilirsiniz) belirtin. **İleri**’ye tıklayın.
 
-    ![Sayfa adı ve konumu belirtin](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. **Diski Yapılandır** sayfasında **Yeni boş sanal sabit disk oluştur** seçeneğini belirleyin ve **2 TB** (veya üzeri) boyutunu seçin. 
+    ![Ad ve konum sayfasını belirtin](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
+19. **Diski Yapılandır** sayfasında **Yeni boş sanal sabit disk oluştur** seçeneğini belirleyin ve **2 TB** (veya üzeri) boyutunu seçin.
     
-    2 TB minimum gereksinimdir ancak isterseniz daha büyük bir disk de sağlayabilirsiniz. Sağlanan diskin boyutunu küçültemeyeceğinizi unutmayın. Cihazdaki tüm yerel verilerin kaybı disk sonuçları daraltmak çalışıyor. Ancak veri diski ekleyerek diski genişletebilirsiniz. **İleri**’ye tıklayın.
+    2 TB minimum gereksinimdir ancak isterseniz daha büyük bir disk de sağlayabilirsiniz. Sağlanan diskin boyutunu küçültemeyeceğinizi unutmayın. Diskin küçültülmeye çalışılması, cihazdaki tüm yerel verilerin kaybedilmesine neden olur. Veri diskinin genişletilmesi desteklenmiyor. **İleri**’ye tıklayın.
 
-    ![Yapılandırma diski sayfası](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
+    ![Disk sayfasını yapılandırma](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. **Özet** sayfasında sanal veri diskinizin ayrıntılarını gözden geçirin ve her şey yolunda görünüyorsa **Son**'a tıklayarak diski oluşturun. Sihirbaz kapanır ve makinenize bir sanal sabit disk eklenir.
 
-    ![Yeni Sanal Sabit Disk Sihirbazı sayfası Tamamlanıyor](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
+    ![Yeni sanal sabit disk Sihirbazı sayfası Tamamlanıyor](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
 21. **Ayarlar** sayfasına geri dönün. **Tamam**'a tıklayarak **Ayarlar** sayfasını kapatın ve Hyper-V Yöneticisi penceresine dönün.
 
     ![Ayarlar sayfası](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
@@ -154,10 +153,10 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
 #### <a name="to-start-the-virtual-device"></a>Sanal cihazı başlatmak için
 1. Sanal cihazı başlatın.
 
-   ![Sanal cihazı başlatın](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
+   ![Sanal cihazı Başlat](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Cihaz çalışmaya başladıktan sonra cihazı ve **Bağlan**'ı seçin.
 
-3. Cihazın hazır olması için 10-15 dakika beklemeniz gerekebilir. Konsolda ilerleme durumunu gösteren bir durum iletisi görüntülenir. Cihaz hazır olduktan sonra **Eylem** bölümüne gidin. Tuşuna `Ctrl + Alt + Delete` sanal cihaza oturum açmak için. Varsayılan kullanıcı *EdgeUser*, varsayılan parola ise *Password1* şeklindedir.
+3. Cihazın hazır olması için 10-15 dakika beklemeniz gerekebilir. Konsolda ilerleme durumunu gösteren bir durum iletisi görüntülenir. Cihaz hazır olduktan sonra **Eylem** bölümüne gidin. Sanal cihazda oturum açmak için `Ctrl + Alt + Delete` tuşuna basın. Varsayılan kullanıcı *EdgeUser*, varsayılan parola ise *Password1* şeklindedir.
 
    ![Sanal cihazda oturum açın](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
    
@@ -171,15 +170,15 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
     
 9. İlk kurulum işlemleri tamamlandıktan ve cihaz önyüklendikten sonra cihaz başlık metnini görürsünüz. Cihazı yönetmek için başlık metninde görüntülenen IP adresini ve URL'yi not edin. Bu IP adresini kullanarak sanal cihazınızın web arabirimine bağlanıp yerel kurulum ve etkinleştirme işlemlerini gerçekleştirebilirsiniz.
 
-   ![IP adresi ve bağlantı URL'si ile sanal cihaz başlığı](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
+   ![IP adresi ve bağlantı URL 'SI olan sanal cihaz başlığı](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
 Cihazınız minimum yapılandırma gereksinimlerini karşılamıyorsa başlık metninde hata iletisi görüntülenir. Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirin. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. En düşük yapılandırma gereksinimleri için bkz. [Konağın en düşük cihaz gereksinimlerini karşıladığından emin olma](#check-the-host-system).
 
-Yerel web kullanıcı arabirimini kullanarak ilk yapılandırma sırasında herhangi bir hata yüz tanıma, aşağıdaki iş akışları için başvurun:
+Yerel Web Kullanıcı arabirimini kullanarak ilk yapılandırma sırasında başka bir hata varsa, aşağıdaki iş akışlarına başvurun:
 
-- [Web kullanıcı Arabirimi kurulum sorunlarını gidermek için tanılama testlerini](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Günlük paketini oluşturma ve günlük dosyalarını görüntülemek](data-box-gateway-troubleshoot.md#collect-support-package).
+- [Web UI kurulumu sorunlarını gidermek için tanılama testlerini çalıştırın](data-box-gateway-troubleshoot.md#run-diagnostics).
+- [Günlük paketi oluşturun ve günlük dosyalarını görüntüleyin](data-box-gateway-troubleshoot.md#collect-support-package).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -194,5 +193,3 @@ Sanal cihazınıza bağlanma, kurulumunu yapma ve etkinleştirme adımları içi
 
 > [!div class="nextstepaction"]
 > [Data Box Gateway cihazınıza bağlanma ve kurulumunu yapma](./data-box-gateway-deploy-connect-setup-activate.md)
-
-

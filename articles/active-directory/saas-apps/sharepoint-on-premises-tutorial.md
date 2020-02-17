@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7feb62bb3e38452a441c505107569457d7c90a3f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233458"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Öğretici: SharePoint şirket içi ile Azure Active Directory tümleştirme
 
@@ -32,7 +32,7 @@ SharePoint şirket içi Azure AD ile tümleştirmek aşağıdaki avantajları sa
 * Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -176,7 +176,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     d. Oturum açma sayfası URL 'SI ayarında, **özel oturum açma sayfası** ' nı seçin ve "/_trust/" değerini sağlayın.
 
-    e. **OK (Tamam)** düğmesine tıklayın.
+    e. **Tamam**'a tıklayın.
 
     ![Kimlik doğrulama sağlayıcınızı yapılandırma](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
@@ -305,7 +305,7 @@ Yapılandırma tek bir Web uygulaması için kullanılabilir, ancak birden fazla
 
 1. Azure portal Azure AD dizinini açın. **Uygulama kayıtları**' a ve ardından **tüm uygulamaları görüntüle**' ye tıklayın. Daha önce oluşturduğunuz uygulamaya (SharePoint SAML tümleştirmesi) tıklayın.
 
-2. **Ayarlar**' a tıklayın.
+2. **Ayarlar**’a tıklayın.
 
 3. Ayarlar dikey penceresinde **yanıt URL 'leri**' ne tıklayın.
 
@@ -330,7 +330,7 @@ Kullanıcılar artık Azure AD 'deki kimlikleri kullanarak SharePoint 2016 'de o
 
 Aradığınız değerlerde bir doğrulama yoktur; bu, yanlış bir talep türü veya Kullanıcı adına, **Soyadı** talebi gibi atamak için yanlış talep türünü seçme ile sonuçlanabilir. Bu, kullanıcıların kaynaklara başarıyla erişmesini engelleyebilir.
 
-Bu senaryoya yardımcı olması için, SharePoint 2016 için özel bir talep sağlayıcı sağlayan [Azurecp](https://yvand.github.io/AzureCP/) adlı açık kaynaklı bir çözüm vardır. Kullanıcıların hangi kullanıcılara girip doğrulama gerçekleştireceğini çözümlemek için Azure AD grafiğini kullanacaktır. [Azurecp](https://yvand.github.io/AzureCP/)'de daha fazla bilgi edinin.
+Bu senaryoya yardımcı olması için, SharePoint 2016 için özel bir talep sağlayıcı sağlayan [Azurecp](https://yvand.github.io/AzureCP/) adlı açık kaynaklı bir çözüm vardır. Kullanıcıların hangi kullanıcılara girip doğrulama gerçekleştireceğini çözümlemek için Microsoft Graph API 'sini kullanır. [Azurecp](https://yvand.github.io/AzureCP/)'de daha fazla bilgi edinin.
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Azure portal Azure AD güvenlik grubunu atama
 

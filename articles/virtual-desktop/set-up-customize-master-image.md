@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013141"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368803"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -22,13 +22,13 @@ Bu makalede, sanal makineler (VM 'Ler) oluşturma ve bunlara yazılım yükleme 
 
 Windows 10 Enterprise çoklu oturum, Azure görüntü Galerisi 'nde kullanılabilir. Bu görüntüyü özelleştirmek için iki seçenek vardır.
 
-İlk seçenek, [yönetilen bir GÖRÜNTÜDEN VM oluşturma](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)' daki yönergeleri izleyerek Azure 'da bir sanal makıne (VM) sağlamak ve ardından [yazılım hazırlığı ve yüklemesine](set-up-customize-master-image.md#software-preparation-and-installation)geri atlamak için kullanılır.
+İlk seçenek, [yönetilen bir GÖRÜNTÜDEN VM oluşturma](../virtual-machines/windows/create-vm-generalized-managed.md)' daki yönergeleri izleyerek Azure 'da bir sanal makıne (VM) sağlamak ve ardından [yazılım hazırlığı ve yüklemesine](set-up-customize-master-image.md#software-preparation-and-installation)geri atlamak için kullanılır.
 
 İkinci seçenek, görüntüyü indirerek, bir Hyper-V VM sağlarken ve bunu gereksinimlerinize uyacak şekilde özelleştirerek aşağıdaki bölümde yer aldığı bir görüntüyü yerel olarak oluşturmaktır.
 
 ### <a name="local-image-creation"></a>Yerel görüntü oluşturma
 
-Görüntüyü yerel bir konuma indirdikten sonra, kopyaladığınız VHD ile VM oluşturmak için **Hyper-V Yöneticisi 'ni** açın. Aşağıdaki yönergeler basit bir sürümdür, ancak [Hyper-V ' d a sanal makine oluşturma](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v)bölümünde daha ayrıntılı yönergeler bulabilirsiniz.
+Görüntüyü yerel bir konuma indirdikten sonra, kopyaladığınız VHD ile VM oluşturmak için **Hyper-V Yöneticisi 'ni** açın. Aşağıdaki yönergeler basit bir sürümdür, ancak [Hyper-V ' d a sanal makine oluşturma](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/)bölümünde daha ayrıntılı yönergeler bulabilirsiniz.
 
 Kopyalanmış VHD ile bir VM oluşturmak için:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Sabit disk
 
-Mevcut bir VHD 'den bir VM oluşturursanız, varsayılan olarak dinamik bir disk oluşturur. Aşağıdaki görüntüde gösterildiği gibi, **diski Düzenle...** seçeneğini belirleyerek sabit bir diske değiştirilebilir. Daha ayrıntılı yönergeler için bkz. [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Mevcut bir VHD 'den bir VM oluşturursanız, varsayılan olarak dinamik bir disk oluşturur. Aşağıdaki görüntüde gösterildiği gibi, **diski Düzenle...** seçeneğini belirleyerek sabit bir diske değiştirilebilir. Daha ayrıntılı yönergeler için bkz. [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
 ![Diski Düzenle seçeneğinin ekran görüntüsü.](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Kullanıcılarınızın belirli LOB uygulamalarına erişmesi gerekiyorsa, bu b�
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Kullanıcı profili kapsayıcısını ayarlama (FSLogix)
 
-FSLogix kapsayıcısını görüntünün bir parçası olarak eklemek için, bir [dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)' daki yönergeleri izleyin. FSLogix kapsayıcısının işlevselliğini [Bu hızlı başlangıç](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)ile test edebilirsiniz.
+FSLogix kapsayıcısını görüntünün bir parçası olarak eklemek için, bir [dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)' daki yönergeleri izleyin. FSLogix kapsayıcısının işlevselliğini [Bu hızlı başlangıç](/fslogix/configure-cloud-cache-tutorial/)ile test edebilirsiniz.
 
 ### <a name="configure-windows-defender"></a>Windows Defender 'ı yapılandırma
 
@@ -78,9 +78,9 @@ VM 'de Windows Defender yapılandırıldıysa, ek sırasında VHD ve VHDX dosyal
 
 Bu yapılandırma yalnızca ek sırasında VHD ve VHDX dosyalarının taranmasını kaldırır, ancak gerçek zamanlı taramayı etkilemez.
 
-Windows Server 'da Windows Defender 'ı yapılandırma hakkında daha ayrıntılı yönergeler için bkz. Windows [Server 'da Windows Defender virüsten koruma dışlamaları yapılandırma](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Windows Server 'da Windows Defender 'ı yapılandırma hakkında daha ayrıntılı yönergeler için bkz. Windows [Server 'da Windows Defender virüsten koruma dışlamaları yapılandırma](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/).
 
-Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. [dosya uzantısına ve klasör konumuna göre dışlamaları yapılandırma ve doğrulama](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. [dosya uzantısına ve klasör konumuna göre dışlamaları yapılandırma ve doğrulama](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/).
 
 ### <a name="disable-automatic-updates"></a>Otomatik güncelleştirmeleri devre dışı bırak
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Windows yansımalarına dil ekleme](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [İsteğe bağlı özellikler](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [İsteğe bağlı dil ve bölge özellikleri (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Windows yansımalarına dil ekleme](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [İsteğe bağlı özellikler](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [İsteğe bağlı dil ve bölge özellikleri (FOD)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>Diğer uygulamalar ve kayıt defteri yapılandırması
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Görüntüyü Azure 'a yüklemek için hazırlama
 
-Yapılandırmayı tamamladıktan ve tüm uygulamaları yükledikten sonra, görüntüyü hazırlamak için [WINDOWS VHD veya vhdx hazırlama bölümündeki yönergeleri Izleyerek Azure 'a yükleyin](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) .
+Yapılandırmayı tamamladıktan ve tüm uygulamaları yükledikten sonra, görüntüyü hazırlamak için [WINDOWS VHD veya vhdx hazırlama bölümündeki yönergeleri Izleyerek Azure 'a yükleyin](../virtual-machines/windows/prepare-for-upload-vhd-image.md) .
 
 Görüntü karşıya yüklenmek üzere hazırlandıktan sonra, sanal makinenin kapalı veya serbest bırakılmış durumunda kaldığından emin olun.
 

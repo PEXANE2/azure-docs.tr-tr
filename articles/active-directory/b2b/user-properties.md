@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608865"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368126"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B işbirliği kullanıcısının özellikleri
 
@@ -73,7 +73,7 @@ Bu özellik kullanıcının nasıl oturum açdığını gösterir.
 
 - Davet edilen Kullanıcı: bu kullanıcı davet edildi ancak henüz bir davet kullanılmadı.
 
-- Dış Active Directory: Bu Kullanıcı bir dış kuruluşta bulunur ve diğer kuruluşa ait bir Azure AD hesabı kullanarak kimlik doğrular. Bu tür bir oturum açma, 1. duruma karşılık gelir.
+- Dış Azure Active Directory: Bu Kullanıcı bir dış kuruluşta bulunur ve diğer kuruluşa ait bir Azure AD hesabı kullanarak kimlik doğrular. Bu tür bir oturum açma, 1. duruma karşılık gelir.
 
 - Microsoft hesabı: Bu Kullanıcı bir Microsoft hesabı bağlı ve bir Microsoft hesabı kullanarak kimlik doğrular. Bu tür bir oturum açma, durum 2 ' ye karşılık gelir.
 

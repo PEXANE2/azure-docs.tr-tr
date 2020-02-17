@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191304"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366238"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -338,7 +338,7 @@ Mantıksal uygulamanızla iyi çalışmak için uç noktanın belirli bir tetikl
   
 | Yanıt | Gerekli | Açıklama | 
 |----------|----------|-------------| 
-| Durum kodu | Evet | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. | 
+| Durum kodu | Yes | "200 OK" durum kodu bir çalıştırma başlatır. Başka herhangi bir durum kodu çalıştırma başlamaz. | 
 | Retry-After üst bilgisi | Hayır | Mantıksal uygulamanız bitiş noktasını yeniden yokladığı saniye sayısı | 
 | Konum üst bilgisi | Hayır | Sonraki yoklama aralığında çağrılacak URL. Belirtilmemişse, özgün URL kullanılır. | 
 |||| 
@@ -1009,7 +1009,7 @@ Bu eylem, ifadeler de dahil olmak üzere birden çok girişin tek bir çıkış�
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
-| <> *girişlerini oluşturma* | Tümü | Tek bir çıkış oluşturmak için girişler | 
+| <> *girişlerini oluşturma* | Herhangi biri | Tek bir çıkış oluşturmak için girişler | 
 |||| 
 
 *Örnek 1*
@@ -1648,7 +1648,7 @@ Sütun üst bilgilerini ve değerlerini belirtmek veya özelleştirmek için `co
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
 | <*sütun adı*> | Dize | Bir sütunun üst bilgi adı | 
-| <*sütun-değer*> | Tümü | Bu sütundaki değer | 
+| <*sütun-değer*> | Herhangi biri | Bu sütundaki değer | 
 |||| 
 
 *Örnek 1*
@@ -2304,7 +2304,7 @@ Bu döngü eylemi, belirtilen koşul doğru olana kadar çalışan eylemleri iç
 | <*eylem-tür*> | Dize | Çalıştırmak istediğiniz eylem türü | 
 | <*eylem-girişler*> | Türlerini | Çalıştırılacak eylemin girişleri | 
 | <*koşulu*> | Dize | Döngüdeki tüm eylemlerin çalışmasını bitirdikten sonra değerlendirilecek koşul veya ifade | 
-| <*Loop-count*> | Tamsayı | Eylemin çalışacağı en çok döngü sayısı sınırı. Varsayılan `count` değeri 60 ' dir. | 
+| <*Loop-count*> | Tamsayı | Eylemin çalışacağı en çok döngü sayısı sınırı. Varsayılan sınır ve en yüksek sınır hakkında daha fazla bilgi için bkz. [Limit ve Configuration for Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). | 
 | <*döngü zaman aşımı*> | Dize | Döngünün en uzun sürede çalışacağı sınır. Varsayılan `timeout` değeri, gereken [ıso 8601 biçimi](https://en.wikipedia.org/wiki/ISO_8601)olan `PT1H`. |
 |||| 
 

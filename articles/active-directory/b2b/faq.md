@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608617"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368104"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
@@ -65,7 +65,7 @@ Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen b
 3. **Yönet**altında **güvenlik**' i seçin.
 4. **Koru**altında **koşullu erişim**' i seçin. **Yeni ilke**' yi seçin.
 5. **Yeni** sayfada, **ad** metin kutusuna ilke için bir ad girin (örneğin, "konukların portala erişimini engelle").
-6. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
+6. **Atamalar**' ın altında **Kullanıcılar ve gruplar**' ı seçin.
 7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç**' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
 9. **Done** (Bitti) öğesini seçin.
 10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler**' i seçin.
@@ -97,7 +97,7 @@ Azure AD 'nin, tüm Azure AD bulut Kullanıcı hesaplarına eşit olarak uygulan
 Federasyon hesapları için parola ilkesi, şirket içi kiralamanın ve kullanıcının Microsoft hesabı ayarlarında uygulanan ilkeye bağlıdır.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Kuruluş, kiracı kullanıcıları ve Konuk kullanıcılar için uygulamalarında farklı deneyimler olmasını isteyebilir. Bunun için standart rehberlik var mı? Kimlik sağlayıcısı talebi kullanılacak doğru modeli mi var?
-Konuk Kullanıcı, kimlik doğrulamak için herhangi bir kimlik sağlayıcısını kullanabilir. Daha fazla bilgi için bkz. [B2B işbirliği kullanıcısının özellikleri](user-properties.md). Kullanıcı deneyimini öğrenmek için **UserType** özelliğini kullanın. **UserType** talebi şu anda belirtece dahil değildir. Uygulamalar, kullanıcının dizinini sorgulamak ve UserType 'ı almak için Graph API kullanmalıdır.
+Konuk Kullanıcı, kimlik doğrulamak için herhangi bir kimlik sağlayıcısını kullanabilir. Daha fazla bilgi için bkz. [B2B işbirliği kullanıcısının özellikleri](user-properties.md). Kullanıcı deneyimini öğrenmek için **UserType** özelliğini kullanın. **UserType** talebi şu anda belirtece dahil değildir. Uygulamalar, kullanıcının dizinini sorgulamak ve UserType 'ı almak için Microsoft Graph API kullanmalıdır.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Çözümleri paylaşmak ve fikir göndermek için bir B2B işbirliği topluluğunu nereden bulabilirim?
 B2B işbirliğinin geliştirilmesi için geri bildirimlerinizi sürekli olarak dinliyoruz. Lütfen Kullanıcı senaryolarınızı, en iyi uygulamalarınızı ve Azure AD B2B işbirliği hakkında beğendiklerinizi paylaşabilirsiniz. [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)'deki tartışmaya katın.

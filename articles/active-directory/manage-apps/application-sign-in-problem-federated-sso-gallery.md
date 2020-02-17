@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97954123b6fc31dce09282c08c702438cd64c476
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159259"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367890"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Federasyon çoklu oturum açma için yapılandırılmış Galeri uygulamasında oturum açma sorunları
 
@@ -39,7 +39,7 @@ Aşağıdaki oturum açma sorunlarını gidermek için aşağıdaki öneriyi izl
 
 Uygulamadan Azure AD 'ye gönderilen `Issuer` özniteliği, Azure AD 'de uygulama için yapılandırılan tanımlayıcı değeriyle eşleşmiyor.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 SAML isteğindeki `Issuer` özniteliğinin Azure AD 'de yapılandırılan tanımlayıcı değeri ile eşleştiğinden emin olun. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, bu adımları el ile izlemeniz gerekmez.
 
@@ -69,7 +69,7 @@ SAML isteğindeki `Issuer` özniteliğinin Azure AD 'de yapılandırılan tanım
 
 SAML isteğindeki `AssertionConsumerServiceURL` değeri, Azure AD 'de yapılandırılan yanıt URL 'SI değeri veya düzeniyle eşleşmiyor. SAML isteğindeki `AssertionConsumerServiceURL` değeri, hatada gördüğünüz URL 'dir.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 SAML isteğindeki `AssertionConsumerServiceURL` değerinin Azure AD 'de yapılandırılan yanıt URL 'SI değeri ile eşleştiğinden emin olun. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, bu adımları el ile izlemeniz gerekmez.
 
@@ -99,7 +99,7 @@ Azure AD 'de yanıt URL 'SI değerini güncelleştirdikten ve SAML isteğindeki 
 
 Azure AD'de kullanıcıya uygulama için erişim verilmedi.​
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Bir uygulamaya doğrudan bir veya daha fazla kullanıcı atamak için aşağıdaki adımları izleyin. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, bu adımları el ile izlemeniz gerekmez.
 
@@ -148,7 +148,7 @@ Azure AD, uygulama tarafından çoklu oturum açma için gönderilen SAML isteğ
 -   SAML isteğinde gerekli alanlar eksik
 -   SAML isteği kodlama yöntemi
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 1. SAML isteğini yakalayın. SAML isteğini nasıl yakalayacağınızı öğrenmek için [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md) öğreticisini izleyin.
 
@@ -162,13 +162,13 @@ Uygulama satıcısı, çoklu oturum açma için Azure AD SAML uygulamasını des
 
 ## <a name="misconfigured-application"></a>Yanlış yapılandırılmış uygulama
 
-*Hata AADSTS650056: yanlış yapılandırılmış uygulama. Bunun nedeni aşağıdakilerden biri olabilir: istemci, istemcinin uygulama kaydında istenen izinlerde ' AAD Graph ' için herhangi bir izin listelenmemiştir. Ya da yönetici kiracıya onaylamadı. Ya da, yapılandırılan istemci uygulama tanımlayıcısıyla eşleştiğinden emin olmak için istekteki uygulama tanımlayıcısını kontrol edin. Kiracı adına yapılandırmayı veya onayı onarmak için lütfen yöneticinize başvurun.*
+*Hata AADSTS650056: yanlış yapılandırılmış uygulama. Bunun nedeni aşağıdakilerden biri olabilir: istemci, istemcinin uygulama kaydında istenen izinlerde herhangi bir izin listelenmemiştir. Ya da yönetici kiracıya onaylamadı. Ya da, yapılandırılan istemci uygulama tanımlayıcısıyla eşleştiğinden emin olmak için istekteki uygulama tanımlayıcısını kontrol edin. Kiracı adına yapılandırmayı veya onayı onarmak için lütfen yöneticinize başvurun.*
 
 **Olası neden**
 
 Uygulamadan Azure AD 'ye gönderilen `Issuer` özniteliği, Azure AD 'de uygulama için yapılandırılan tanımlayıcı değeriyle eşleşmiyor.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 SAML isteğindeki `Issuer` özniteliğinin Azure AD 'de yapılandırılan tanımlayıcı değeri ile eşleştiğinden emin olun. Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) kullanıyorsanız, aşağıdaki adımları el ile izlemeniz gerekmez:
 
@@ -197,7 +197,7 @@ SAML isteğindeki `Issuer` özniteliğinin Azure AD 'de yapılandırılan tanım
 
 Uygulama nesnesi bozuk ve Azure AD uygulama için yapılandırılan sertifikayı tanımıyor.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Yeni bir sertifika silmek ve oluşturmak için aşağıdaki adımları izleyin:
 
@@ -233,7 +233,7 @@ Yeni bir sertifika silmek ve oluşturmak için aşağıdaki adımları izleyin:
 
 Azure AD, HTTP isteğindeki URL parametreleri içindeki SAML isteğini tanımlayamadı. Bu durum, uygulamanın Azure AD 'ye SAML isteği gönderilirken HTTP yeniden yönlendirme bağlamasını kullanmadığı durumlarda meydana gelebilir.
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Uygulamanın, HTTP yeniden yönlendirme bağlamasını kullanarak konum başlığına kodlanmış SAML isteğini gönderebilmesi gerekir. Bunun nasıl gerçekleştirileceği hakkında daha fazla bilgi için [SAML protokolü belirtimi belgesinde](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) HTTP Yeniden Yönlendirme Bağlaması bölümünü okuyun.
 
@@ -245,7 +245,7 @@ Uygulamanın, HTTP yeniden yönlendirme bağlamasını kullanarak konum başlı�
 
 Uygulama galeriden olmayan bir uygulama olarak eklendiğinde, Azure Active Directory bu yanıt URL'sini bir varsayılan değer olarak oluşturuldu. Bu davranış değiştirildi ve Azure Active Directory artık varsayılan olarak bu URL'yi eklemez. 
 
-**Çözünürlüğüne**
+**Çözünürlük**
 
 Uygulama için yapılandırılmış kullanılmayan yanıt URL 'Lerini silin.
 

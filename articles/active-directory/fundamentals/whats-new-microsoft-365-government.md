@@ -1,5 +1,5 @@
 ---
-title: Microsoft 365 Kamu 'daki Azure AD yenilikleri nelerdir? | Microsoft Belgeleri
+title: Microsoft 365 Kamu 'daki Azure AD yenilikleri nelerdir? | Microsoft Docs
 description: Microsoft 365 Kamu bulut örneğindeki Azure Active Directory (Azure AD) üzerinde yapılan bazı değişiklikler hakkında bilgi edinin.
 services: active-directory
 author: eross-msft
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805278"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367951"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Kamu 'daki Azure Active Directory yenilikleri
 
 Aşağıdaki hizmetleri kullanan müşteriler için geçerli olan Microsoft 365 Kamu Bulutu örneğinde Azure Active Directory (Azure AD) üzerinde bazı değişiklikler yaptık:
 
-- Microsoft Azure Government
+- Microsoft Azure Kamu
 
 - Microsoft 365 Kamu – GCC High
 
@@ -51,11 +51,10 @@ Daha önce müşteriler Dünya çapındaki Azure (portal.azure.com) ve Office 36
 
 Aşağıdaki tabloda tüm müşterilerin uç noktaları gösterilmektedir:
 
-| Ad | Uç nokta ayrıntıları |
+| Adı | Uç nokta ayrıntıları |
 |------|------------------|
-| Portallar |Microsoft Azure Kamu: https://portal.azure.us<p>Microsoft 365 Kamu – GCC yüksek: https://portal.office365.us<p>Microsoft 365 Kamu – DoD: https://portal.apps.mil |
+| Barındıran |Microsoft Azure Kamu: https://portal.azure.us<p>Microsoft 365 Kamu – GCC yüksek: https://portal.office365.us<p>Microsoft 365 Kamu – DoD: https://portal.apps.mil |
 | Azure Active Directory yetkilisi uç noktası | https://login.microsoftonline.us |
-| Azure Active Directory Graph API'si | https://graph.windows.net |
 | Microsoft 365 kamu için Microsoft Graph API-GCC High | https://graph.microsoft.us |
 | Microsoft 365 kamu için Microsoft Graph API-DoD | https://dod-graph.microsoft.us |
 | Azure Kamu hizmetleri uç noktaları | Ayrıntılar için bkz. [Azure Kamu Geliştirici Kılavuzu](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |

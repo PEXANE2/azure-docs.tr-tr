@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607473"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367226"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Uzak Masaüstü 'nde grafik performans sorunlarını tanılama
 
@@ -69,9 +69,9 @@ Atlanan herhangi bir çerçeve için yüksek bir değer, sorunun, sayacın izled
 
 Çıkış çerçeveleri/Ikinci sayacı giriş çerçeveleri/Ikinci sayaç ile eşleşiyorsa, hala olağan dışı gecikme veya yanıt olduğunu fark ediyorsanız, ortalama kodlama süresi de olabilir. Kodlama, tek oturum (vGPU) senaryosunda sunucuda ve çoklu oturum senaryosunda sanal makinede gerçekleşen zaman uyumlu bir işlemdir. Ortalama kodlama süresi 33 MS altında olmalıdır. Ortalama kodlama süresi 33 MS altındaysa ancak hala performans sorunlarınız varsa, kullanmakta olduğunuz uygulama veya işletim sistemi ile ilgili bir sorun olabilir.
 
-Uygulamayla ilgili sorunları tanılama hakkında daha fazla bilgi için bkz. [Kullanıcı girişi gecikmesi performans sayaçları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+Uygulamayla ilgili sorunları tanılama hakkında daha fazla bilgi için bkz. [Kullanıcı girişi gecikmesi performans sayaçları](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-RDP, 33 MS ortalama bir kodlama süresini desteklediğinden, en fazla 30 kare/saniye bir giriş çerçevesi hızını destekler. 33 MS 'nin desteklenen en yüksek çerçeve hızının olduğunu unutmayın. Çoğu durumda, bir karenin kaynak tarafından RDP 'ye ne sıklıkta sağlandığını bağlı olarak, Kullanıcı tarafından karşılaşılan çerçeve ücreti daha düşük olacaktır. Örneğin, bir video izleme gibi görevler, tam bir giriş çerçevesi oranının 30 kare/saniye olmasını gerektirir, ancak bir belge sonucunu seyrek olarak düzenlemesi gibi daha az hesaplama gerektiren görevler, kullanıcının deneyim kalitesi.
+RDP, 33 MS ortalama bir kodlama süresini desteklediğinden, en fazla 30 kare/saniye bir giriş çerçevesi hızını destekler. 33 MS 'nin desteklenen en yüksek çerçeve hızının olduğunu unutmayın. Çoğu durumda, bir karenin kaynak tarafından RDP 'ye ne sıklıkta sağlandığını bağlı olarak, Kullanıcı tarafından karşılaşılan çerçeve ücreti daha düşük olacaktır. Örneğin, bir video izleme gibi görevler, tam bir giriş çerçevesi oranının 30 kare/saniye olmasını gerektirir, ancak bir belge sonucunu seyrek olarak düzenlemenin, Kullanıcı deneyimi kalitesine karşı bir azalma olmadan giriş çerçeveleri/saniye için çok daha düşük bir değere sahip olması gibi daha az hesaplama gerektiren görevler.
 
 ### <a name="addressing-poor-frame-quality"></a>Kötü çerçeve kalitesini adresleme
 
@@ -101,6 +101,6 @@ Ağ kaynakları performans sorunlarına neden oluyorsa, oturum başına ağ kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak için bkz. [Windows sanal masaüstü ortamı için grafik işleme birimi (GPU) hızlandırmasını yapılandırma](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- Sorun giderme ve yükseltme izlemelerine genel bakış için bkz. [sorun giderme genel bakış, geri bildirim ve destek](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows masaüstü ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak için bkz. [Windows sanal masaüstü ortamı için grafik işleme birimi (GPU) hızlandırmasını yapılandırma](configure-vm-gpu.md).
+- Sorun giderme ve yükseltme izlemelerine genel bakış için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
+- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows masaüstü ortamı](environment-setup.md).

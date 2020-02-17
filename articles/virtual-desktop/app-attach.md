@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772559"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367620"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -38,7 +38,7 @@ Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler
 1. [Windows Insider portalını](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) açın ve oturum açın.
 
      >[!NOTE]
-     >Windows Insider portalına erişmek için Windows Insider programının üyesi olmanız gerekir. Windows Insider programı hakkında daha fazla bilgi edinmek için [Windows Insider belgelerimize](https://docs.microsoft.com/windows-insider/at-home/)göz atın.
+     >Windows Insider portalına erişmek için Windows Insider programının üyesi olmanız gerekir. Windows Insider programı hakkında daha fazla bilgi edinmek için [Windows Insider belgelerimize](/windows-insider/at-home/)göz atın.
 
 2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (Fast) – Build 19035** veya üzeri ' i seçin.
 
@@ -79,7 +79,7 @@ VHD 'yi Azure 'a yükledikten sonra [Azure Marketi öğreticisini kullanarak bir
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>Uygulamayı MALTı uygulama iliştirme için hazırlama 
 
-Zaten bir MSIX paketiniz varsa [Windows sanal masaüstü altyapısını yapılandırma](#configure-windows-virtual-desktop-infrastructure)bölümüne atlayın. Eski uygulamaları test etmek istiyorsanız, eski uygulamayı bir MSIX paketine dönüştürmek için [BIR sanal makinede bulunan bir masaüstü yükleyicisinden msix paketi oluşturma](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) bölümündeki yönergeleri izleyin.
+Zaten bir MSIX paketiniz varsa [Windows sanal masaüstü altyapısını yapılandırma](#configure-windows-virtual-desktop-infrastructure)bölümüne atlayın. Eski uygulamaları test etmek istiyorsanız, eski uygulamayı bir MSIX paketine dönüştürmek için [BIR sanal makinede bulunan bir masaüstü yükleyicisinden msix paketi oluşturma](/windows/msix/packaging-tool/create-app-package-msi-vm/) bölümündeki yönergeleri izleyin.
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>MSIX için bir VHD veya VHDX paketi oluşturma
 
@@ -149,7 +149,7 @@ Bundan sonra, bu görüntüyü genişleterek MSIX 'yi "genişletmeniz" gerekir. 
 
 3. Bağlı VHD 'ye gidin ve uygulama klasörünü açın ve paket içeriğinin mevcut olduğunu doğrulayın.
 
-4. VHD'yi çıkarın.
+4. VHD 'YI çıkarın.
 
 ## <a name="configure-windows-virtual-desktop-infrastructure"></a>Windows sanal masaüstü altyapısını yapılandırma
 
@@ -184,8 +184,8 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 
 MSIX uygulama iliştirme, aşağıdaki sırayla gerçekleştirilmesi gereken dört farklı aşamaya sahiptir:
 
-1. Stage
-2. Kaydol
+1. Aşama
+2. Kaydolma
 3. Kaydını silmek
 4. Gerçekleştirilen
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>MSIX uygulama iliştirme Aracısı için benzetim betikleri ayarlama
 
-Betikleri oluşturduktan sonra kullanıcılar el ile çalıştırabilir veya başlatma, oturum açma, oturum kapatma ve kapatma betikleri olarak otomatik olarak çalışacak şekilde ayarlayabilir. Bu komut dosyaları türleri hakkında daha fazla bilgi edinmek için bkz. [Grup İlkesi başlatma, kapatma, oturum açma ve oturum kapatma betikleri kullanma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+Betikleri oluşturduktan sonra kullanıcılar el ile çalıştırabilir veya başlatma, oturum açma, oturum kapatma ve kapatma betikleri olarak otomatik olarak çalışacak şekilde ayarlayabilir. Bu komut dosyaları türleri hakkında daha fazla bilgi edinmek için bkz. [Grup İlkesi başlatma, kapatma, oturum açma ve oturum kapatma betikleri kullanma](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
 
 Bu otomatik betiklerin her biri, uygulama komut dosyalarının bir aşamasını çalıştırır:
 
@@ -407,7 +407,7 @@ Lisans dosyalarını yüklemek için, WMI Köprüsü sağlayıcısında MDM_Ente
 
 Lisansları çevrimdışı kullanım için ayarlama: 
 
-1. Iş için Microsoft Store uygulama paketini, lisansları ve gerekli çerçeveleri indirin. Kodlanmış ve kodlanmamış lisans dosyalarının her ikisi de gereklidir. Ayrıntılı indirme yönergeleri [burada](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)bulunabilir.
+1. Iş için Microsoft Store uygulama paketini, lisansları ve gerekli çerçeveleri indirin. Kodlanmış ve kodlanmamış lisans dosyalarının her ikisi de gereklidir. Ayrıntılı indirme yönergeleri [burada](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)bulunabilir.
 2. 3\. adım için komut dosyasında aşağıdaki değişkenleri güncelleştirin:
       1. `$contentID`, kodlanmamış lisans dosyasından (. xml) ContentID değeridir. Lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
       2. `$licenseBlob`, kodlanmış lisans dosyasında (. bin), lisans blobu için tüm dizedir. Kodlanmış lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz. 

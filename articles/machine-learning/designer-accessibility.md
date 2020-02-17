@@ -1,5 +1,5 @@
 ---
-title: Tasarımcıda erişilebilirlik özelliklerini kullanma
+title: Tasarımcıda erişilebilirlik özelliklerini kullanma (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Tasarımcıda bulunan klavye kısayolları ve ekran okuyucusu erişilebilirlik özellikleri hakkında bilgi edinin.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314241"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366201"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanmak için klavye kullanma
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını kullanmak için klavye kullanma (Önizleme)
 
 Azure Machine Learning tasarımcısını kullanmak için klavye ve ekran okuyucu kullanmayı öğrenin. Azure portal her yerde çalışan klavye kısayollarının bir listesi için, bkz [. Azure Portal klavye kısayolları](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
@@ -24,7 +24,7 @@ Bu iş akışı, [ekran okuyucusu](https://support.microsoft.com/help/22798/wind
 
 ## <a name="navigate-the-pipeline-graph"></a>İşlem hattı grafiğinde gezinme
 
-Ardışık düzen grafiği liste listesi olarak düzenlenir. Üst düzey modül listesi, işlem hattının tüm modülünü içerir. Modül listesindeki her öğe, tüm bağlantılarını açıklayan bir bağlantı listesi içerir. 
+Ardışık düzen grafiği, iç içe geçmiş bir liste olarak düzenlenir. Dış liste, ardışık düzen grafiğindeki tüm modülleri açıklayan bir modül listesidir. İç liste, belirli bir modülün tüm bağlantılarını açıklayan bir bağlantı listesidir.  
 
 1. Modül listesinde, modülleri değiştirmek için ok tuşunu kullanın.
 1. Hedef modülün bağlantı listesini açmak için Tab kullanın.
@@ -54,11 +54,11 @@ Modül özelliklerini ayarlamak için:
 
 | Tuş vuruşu | Açıklama |
 |-|-|
-| Ctrl + F6 | Tuval ve modül ağacı arasında odağı değiştirme |
+| CTRL + F6 | Tuval ve modül ağacı arasında odağı değiştirme |
 | Ctrl + F1   | Modül ağacındaki bir düğüme odaklanan bilgi kartını açın |
-| Ctrl + Shift + H | Odak bir düğüm üzerinde olduğunda bağlantı yardımcısını açın |
-| Ctrl + Shift + E | Odak bir düğüm üzerinde olduğunda modül özelliklerini aç |
-| Ctrl + G | İşlem hattı çalıştırması başarısız olursa odağı ilk başarısız düğüme taşı |
+| CTRL + SHIFT + H | Odak bir düğüm üzerinde olduğunda bağlantı yardımcısını açın |
+| CTRL + SHIFT + E | Odak bir düğüm üzerinde olduğunda modül özelliklerini aç |
+| CTRL + G | İşlem hattı çalıştırması başarısız olursa odağı ilk başarısız düğüme taşı |
 
 ## <a name="action-shortcuts"></a>Eylem kısayolları
 
@@ -67,9 +67,9 @@ Erişim anahtarıyla aşağıdaki kısayolları kullanın. Erişim anahtarları 
 | Tuş vuruşu | Eylem |
 |-|-|
 | Erişim tuşu + R | Çalıştırın |
-| Erişim tuşu + P | Yayımlama |
-| Erişim tuşu + C | Kopyala |
-| Erişim tuşu + D | Kurulum |
+| Erişim tuşu + P | Yayımla |
+| Erişim tuşu + C | Kopyalama |
+| Erişim tuşu + D | Dağıtma |
 | Erişim tuşu + ı | Çıkarım ardışık düzeni oluştur/güncelleştir |
 | Erişim tuşu + B | Batch çıkarım ardışık düzeni oluştur/güncelleştir |
 | Erişim tuşu + K | "Çıkarım işlem hattı oluştur" açılan menüsünü aç |

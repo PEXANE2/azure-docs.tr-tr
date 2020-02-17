@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846145"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368652"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure zaman serisi öngörüleri önizlemesi ile şekli olayları
 
@@ -80,7 +80,7 @@ Zaman serisi örneği, cihaz meta verilerini içerir. Bu meta veriler her olayla
 ### <a name="time-series-instance"></a>Zaman serisi örneği 
 
 > [!NOTE]
-> Zaman serisi kimliği *DeviceID*.
+> Zaman serisi KIMLIĞI *DeviceID*'dir.
 
 ```JSON
 [
@@ -115,7 +115,7 @@ Zaman serisi örneği, cihaz meta verilerini içerir. Bu meta veriler her olayla
 ]
 ```
 
-Zaman serisi öngörüleri Önizleme sırasında sorgu süresini (düzleştirme sonra) bir tablo birleştirir. Tabloyu gibi ek sütunlar içeren **türü**. Aşağıdaki örnek, telemetri verilerinizi nasıl [şekillendirebileceğinizi](./time-series-insights-send-events.md#supported-json-shapes) göstermektedir.
+Zaman serisi öngörüleri Önizleme sırasında sorgu süresini (düzleştirme sonra) bir tablo birleştirir. Tablo, **türü**gibi ek sütunlar içerir. Aşağıdaki örnek, telemetri verilerinizi nasıl [şekillendirebileceğinizi](./time-series-insights-send-events.md#supported-json-shapes) göstermektedir.
 
 | deviceId  | Tür | L1 | L2 | timestamp | series_Flow Rate ft3/sn | series_Engine yağ basıncı psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -148,7 +148,7 @@ Aşağıdaki JSON 'ı göz önünde bulundurun:
   "data_flow" : 1.76435072345733643
 }
 ```
-Yukarıdaki örnekte, düzleştirilmiş `data_flow` özelliği `data_flow` özelliği ile bir adlandırma çarpışması sunmalıdır. Bu durumda, *en son* Özellik değeri önceki bir değerin üzerine yazılır. Bu davranış iş senaryolarınız için bir zorluk sunmuşsa, lütfen TSI ekibine başvurun.
+Yukarıdaki örnekte, düzleştirilmiş `data_flow` özelliği `data_flow` özelliği ile bir adlandırma çarpışması sunmalıdır. Bu durumda, *en son* Özellik değeri önceki bir değerin üzerine yazılır. Bu davranış iş senaryolarınız için bir zorluk sunduğunda, lütfen TSI ekibine başvurun.
 
 > [!WARNING] 
 > Düzleştirme veya başka bir mekanizma nedeniyle aynı olay yükünde yinelenen özelliklerin bulunduğu durumlarda, en son özellik değeri, önceki değerlerin üzerine yazılır.

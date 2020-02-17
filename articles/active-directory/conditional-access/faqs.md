@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186042"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368078"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Koşullu erişim SSS
 
@@ -40,7 +40,7 @@ Koşullu erişim ilkesi, bir hizmete erişmek için gereksinimleri ayarlar. Bu h
 
 Koşullu erişim ilkeleri tüm Kullanıcı hesapları için geçerlidir. Bu, hizmet hesapları olarak kullanılan Kullanıcı hesaplarını içerir. Genellikle, katılımsız çalıştıran bir hizmet hesabı, koşullu erişim ilkesinin gereksinimlerini karşılayamaz. Örneğin, çok faktörlü kimlik doğrulaması gerekebilir. Hizmet hesapları, koşullu erişim ilkesi yönetim ayarları kullanılarak bir ilkeden dışlanamaz. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Grafik API 'Leri, koşullu erişim ilkelerini yapılandırmak için kullanılabilir mi?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Koşullu erişim ilkelerini yapılandırmak için Microsoft Graph API 'Leri kullanılabilir mi?
 
 Şu anda, hayır. 
 

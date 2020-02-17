@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161588"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368167"
 ---
 # <a name="what-is-password-writeback"></a>Parola geri yazma nedir?
 
@@ -158,13 +158,13 @@ Parolalar aşağıdaki durumlarda geri yazılır:
 Parolalar aşağıdaki durumlardan herhangi birine *geri yazılmaz:*
 
 * **Desteklenmeyen Son Kullanıcı işlemleri**
-   * PowerShell sürüm 1, sürüm 2 veya Azure AD Graph API kullanarak kendi parolalarını sıfırlayan herhangi bir Son Kullanıcı
+   * PowerShell sürüm 1, sürüm 2 veya Microsoft Graph API 'sini kullanarak kendi parolalarını sıfırlayan herhangi bir Son Kullanıcı
 * **Desteklenmeyen yönetici işlemleri**
-   * Yönetici tarafından başlatılan son kullanıcı parolası PowerShell sürüm 1, sürüm 2 veya Azure AD Graph API sıfırladı
+   * Yönetici tarafından başlatılan son kullanıcı parolası PowerShell sürüm 1, sürüm 2 veya Microsoft Graph API 'sinden sıfırlandı
    * [Microsoft 365 Yönetim merkezinden](https://admin.microsoft.com) yönetici tarafından başlatılan son kullanıcı parolası sıfırlama
 
 > [!WARNING]
-> Şirket içi Active Directory Active Directory Kullanıcıları ve bilgisayarları gibi yönetim araçları veya Active Directory Yönetim Merkezi Azure AD Connect önizleme özelliği olarak desteklenmek üzere "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" onay kutusunun kullanılması. Daha fazla bilgi için [Azure AD Connect eşitleme ile parola karması eşitlemeyi uygulama](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)başlıklı makaleye bakın.
+> Şirket içi Active Directory Active Directory Kullanıcıları ve bilgisayarları gibi yönetim araçları veya Active Directory Yönetim Merkezi Azure AD Connect önizleme özelliği olarak desteklenmek üzere "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" onay kutusunun kullanılması. Daha fazla bilgi için [Azure AD Connect eşitleme ile parola karması eşitlemeyi uygulama](../hybrid/how-to-connect-password-hash-synchronization.md)başlıklı makaleye bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

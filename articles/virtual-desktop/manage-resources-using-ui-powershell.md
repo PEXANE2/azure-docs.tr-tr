@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e55641457e1ed27928e6bf380701b646b672cae8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115910"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368836"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell ile bir Yönetim Aracı dağıtma
 
@@ -36,7 +36,7 @@ Aşağıdaki tarayıcılar yönetim aracıyla uyumludur:
 Yönetim aracını dağıtmadan önce, bir uygulama kaydı oluşturmak ve yönetim kullanıcı arabirimini dağıtmak için bir Azure Active Directory (Azure AD) kullanıcısına sahip olmanız gerekir. Bu Kullanıcı şunları sağlamalıdır:
 
 - Azure aboneliğinizde kaynak oluşturma izniniz var
-- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
+- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
 
 Yönetim aracını başarıyla dağıtıp yapılandırmak için, önce [RDS-Templates GitHub deposundan](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) aşağıdaki PowerShell betiklerini indirmeniz ve bunları yerel makinenizde aynı klasöre kaydetmeniz gerekir.
 

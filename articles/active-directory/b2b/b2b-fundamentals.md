@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480118"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368157"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B en iyi uygulamaları
 Bu makale, Azure Active Directory (Azure AD) ile işletmeler arası (B2B) işbirliği için öneriler ve en iyi uygulamalar içerir.
@@ -33,7 +33,7 @@ Bu makale, Azure Active Directory (Azure AD) ile işletmeler arası (B2B) işbir
 | Multi-Factor Authentication için koşullu erişim ilkelerini zorlama (MFA) | İş ortağı B2B kullanıcılarıyla paylaşmak istediğiniz uygulamalarda MFA ilkelerini zorunlu olarak yapmanızı öneririz. Bu şekilde, iş ortağı kuruluşun MFA kullanıp kullanmadığını fark etmeksizin, MFA, kiracınızdaki uygulamalarda sürekli olarak zorlanır. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md)konusuna bakın. |
 | Cihaz tabanlı koşullu erişim ilkeleri zorlarken, B2B kullanıcılarına erişime izin vermek için dışlama listeleri kullanın | Kuruluşunuzda cihaz tabanlı koşullu erişim ilkeleri etkinse, B2B Konuk Kullanıcı cihazları kuruluşunuz tarafından yönetilmediği için engellenir. Cihaz tabanlı koşullu erişim ilkesinden hariç tutmak üzere belirli iş ortağı kullanıcılarını içeren dışlama listeleri oluşturabilirsiniz. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md)konusuna bakın. |
 | B2B Konuk kullanıcılarınıza doğrudan bağlantılar sağlarken kiracıya özgü bir URL kullanın | Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Bu doğrudan bağlantı kiracıya özgü olmalıdır, yani bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, böylelikle Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. [Konuk Kullanıcı için kullanım deneyimini](redemption-experience.md)inceleyin. |
-| Bir uygulama geliştirirken, Konuk Kullanıcı deneyimini öğrenmek için UserType kullanın  | Bir uygulama geliştiriyorsanız ve kiracı kullanıcıları ve Konuk kullanıcılar için farklı deneyimler sağlamak istiyorsanız UserType özelliğini kullanın. UserType talebi şu anda belirtece dahil değildir. Uygulamalar, kullanıcının UserType değerlerini alması için dizini sorgulamak üzere Graph API kullanmalıdır. |
+| Bir uygulama geliştirirken, Konuk Kullanıcı deneyimini öğrenmek için UserType kullanın  | Bir uygulama geliştiriyorsanız ve kiracı kullanıcıları ve Konuk kullanıcılar için farklı deneyimler sağlamak istiyorsanız UserType özelliğini kullanın. UserType talebi şu anda belirtece dahil değildir. Uygulamalar, kullanıcının UserType değerlerini alması için dizini sorgulamak üzere Microsoft Graph API 'sini kullanmalıdır. |
 | UserType özelliğini *yalnızca* kullanıcının kuruluşla olan ilişkisi değişirse değiştirin | Bir kullanıcının UserType özelliğini bir üyenin üyesine konuğa (ve tam tersi) dönüştürmek için PowerShell 'i kullanmak mümkün olsa da, bu özelliği yalnızca kullanıcının kuruluşunuzla olan ilişkisi değişirse değiştirmelisiniz. [B2B Konuk kullanıcısının özelliklerine](user-properties.md)bakın.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

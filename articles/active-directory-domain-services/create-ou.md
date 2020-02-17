@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705337"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367148"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında kuruluş birimi (OU) oluşturma
 
@@ -54,7 +54,7 @@ Azure AD DS yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kull
 * Azure AD kiracınızdaki tüm eşitlenmiş Kullanıcı hesaplarını içeren *Aaddc kullanıcıları* için varsayılan bir OU oluşturulur.
     * Kullanıcıları veya grupları *Aaddc kullanıcıları* OU 'dan oluşturduğunuz özel OU 'lara taşıyamazsınız. Yalnızca Azure AD DS tarafından yönetilen etki alanında oluşturulan kullanıcı hesapları veya kaynaklar, özel OU 'Lara taşınabilir.
 * Özel OU 'Lar altında oluşturduğunuz Kullanıcı hesapları, gruplar, hizmet hesapları ve bilgisayar nesneleri Azure AD kiracınızda mevcut değildir.
-    * Bu nesneler, Azure AD Graph API veya Azure AD Kullanıcı arabirimindeki ile gösterilmez; Bunlar yalnızca Azure AD DS yönetilen etki alanında kullanılabilir.
+    * Bu nesneler Microsoft Graph API 'sini veya Azure AD Kullanıcı arabirimini kullanarak gösterilmez; Bunlar yalnızca Azure AD DS yönetilen etki alanında kullanılabilir.
 
 ## <a name="create-a-custom-ou"></a>Özel bir OU oluşturma
 

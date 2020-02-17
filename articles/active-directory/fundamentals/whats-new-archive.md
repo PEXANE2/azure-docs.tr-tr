@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185860"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368009"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -1126,7 +1126,7 @@ Aşağıdaki alanlar, oturum açma şemasında değişiyor:
 
 |Alan adı|Değişen|Eski değerler|Yeni değerler|
 |----------|------------|----------|----------|
-|appliedConditionalAccessPolicies|Bu **Conditionalaccesspolicies** alanıdır. Artık **appliedConditionalAccessPolicies** alanıdır.|düzeltme sınıfı,|düzeltme sınıfı,|
+|appliedConditionalAccessPolicies|Bu **Conditionalaccesspolicies** alanıdır. Artık **appliedConditionalAccessPolicies** alanıdır.|Değişiklik yok|Değişiklik yok|
 |conditionalAccessStatus|Oturum açma sırasında koşullu erişim Ilkesi durumunun sonucunu sağlar. Bu, daha önce numaralandırılmıştı, ancak şimdi gerçek değeri gösteriyoruz.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Başarılı</li><li>Hata</li><li>Uygulanmadı</li><li>Devre dışı</li></ul>|
 |appliedConditionalAccessPolicies: sonuç|Oturum açma sırasında bireysel koşullu erişim Ilkesi durumunun sonucunu sağlar. Bu, daha önce numaralandırılmıştı, ancak şimdi gerçek değeri gösteriyoruz.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Başarılı</li><li>Hata</li><li>Uygulanmadı</li><li>Devre dışı</li></ul>|
 
@@ -1158,11 +1158,11 @@ Azure AD yöneticileri artık Microsoft Authenticator uygulama bildirimlerini ve
 
 - Diğer mobil kimlik doğrulayıcı uygulaması/donanım belirteci kodu
 
-- E-posta
+- Email
 
 - Telefon araması
 
-- SMS mesajı
+- Kısa mesaj
 
 Parolaları sıfırlamak için Microsoft Authenticator uygulamasını kullanma hakkında daha fazla bilgi için bkz. [Azure AD self servis parola sıfırlama-mobil uygulama ve SSPR (Önizleme)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr)
 
@@ -1698,7 +1698,7 @@ Bu güncelleştirme, hangi ilkelerin ilke sonucu ile birlikte bir kullanıcı ot
 **Hizmet kategorisi:** Rapor  
 **Ürün yeteneği:** & Raporlamayı izleme
  
-Oturum açma etkinliği günlüklerindeki **Istemci uygulaması** alanının tanıtılmasıyla, müşteriler artık eski kimlik doğrulamaları kullanan kullanıcıları görebilirler. Müşteriler, Azure AD portalındaki oturum açma etkinlik günlükleri aracılığıyla veya bu bilgilere Graph API, eski kimlik doğrulamaları için filtre uygulamak üzere **Istemci uygulama** denetimini kullanabileceğiniz oturum açma etkinliği günlükleri aracılığıyla erişebilir. Daha fazla ayrıntı için belgeleri gözden geçirin.
+Oturum açma etkinliği günlüklerindeki **Istemci uygulaması** alanının tanıtılmasıyla, müşteriler artık eski kimlik doğrulamaları kullanan kullanıcıları görebilirler. Müşteriler, oturum açma Microsoft Graph API 'sini kullanarak veya Azure AD portalındaki oturum açma etkinlik günlükleri aracılığıyla, eski kimlik doğrulamaları için filtre uygulamak üzere **Istemci uygulaması** denetimini kullanabileceğiniz oturum açma etkinliği günlükleri aracılığıyla bu bilgilere erişebilecektir. Daha fazla ayrıntı için belgeleri gözden geçirin.
 
 ---
 
@@ -2092,7 +2092,7 @@ Erişim gözden geçirmesi grupları ve uygulamaları şu anda genel kullanımda
 **Hizmet kategorisi:** Rapor  
 **Ürün yeteneği:** & Raporlamayı izleme
  
-Oturum açma işlemleri ve Denetim günlükleri'nı içeren azure AD etkinlik günlüklerini MS Graph üzerinden kullanıma sunulmuştur. Biz bu günlüklerine erişmek için MS Graph ile iki bitiş noktası kullanıma sunması. Başlamak için Azure AD Raporlama API 'Lerine programlı erişim için [belgelerimizi](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) inceleyin. 
+Oturum açma işlemlerini ve denetim günlüklerini içeren Azure AD etkinlik günlükleri artık Microsoft Graph API aracılığıyla kullanılabilir. Bu günlüklere erişmek için Microsoft Graph API 'SI aracılığıyla iki uç noktası kullanıma sunduk. Başlamak için Azure AD Raporlama API 'Lerine programlı erişim için [belgelerimizi](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) inceleyin. 
 
 ---
  
@@ -2596,7 +2596,7 @@ Bu raporların nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Az
 **Hizmet kategorisi:** Rapor  
 **Ürün yeteneği:** & Raporlamayı izleme
 
-Yönetici olmayan rollerin Azure AD etkinlik erişmesini etkinleştirmek için müşterilerin geri bildirim parçası günlükleri gibi erişim oturum açma ve Azure portalı yanı sıra Graph Apı'lerimizi kullanarak içinde denetim etkinliği için "Rapor okuyucu" rolündeki kullanıcılar için özelliğini etkinleştirdik. 
+Yönetici olmayan rollerin Azure AD etkinlik günlüklerine erişimine sahip olmasını sağlamak için müşterilerin geri bildirimlerinden bir parçası olarak, "rapor okuyucu" rolünde olan kullanıcıların Azure portal içinde oturum açma işlemlerini ve denetim etkinliklerini ve Microsoft Graph kullanma yeteneğini etkinleştirdik. 'Sindeki. 
 
 Bu raporların nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Active Directory raporlama](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
 

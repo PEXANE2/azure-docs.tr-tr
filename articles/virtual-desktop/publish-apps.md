@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769668"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367276"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows sanal masaüstünde yerleşik uygulamaları yayımlama
 
@@ -23,7 +23,7 @@ Bu makalede, Windows sanal masaüstü ortamınızda uygulamaların nasıl yayım
 Yerleşik bir uygulama yayımlamak için:
 
 1. Konak havuzunuzdaki sanal makinelerden birine bağlanın.
-2. [Bu makaledeki](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)yönergeleri izleyerek yayımlamak Istediğiniz uygulamanın **PackageFamilyName** alın.
+2. [Bu makaledeki](/powershell/module/appx/get-appxpackage?view=win10-ps/)yönergeleri izleyerek yayımlamak Istediğiniz uygulamanın **PackageFamilyName** alın.
 3. Son olarak, aşağıdaki cmdlet 'i, önceki adımda bulduğunuz **PackageFamilyName** tarafından değiştirilmiş `<PackageFamilyName>` ile çalıştırın:
    
    ```powershell

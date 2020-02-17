@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159174"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367886"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma
 
@@ -100,9 +100,7 @@ Federasyon oturum açma otomatik hızlandırma veya doğrudan bulut tabanlı uyg
 
 Hizmet sorumlusu üzerinde herhangi bir anda yalnızca bir HRD ilkesi etkin olabilir.  
 
-HRD İlkesi oluşturup yönetmek için Microsoft Azure Active Directory Graph API 'sini doğrudan veya Azure Active Directory PowerShell cmdlet 'lerini kullanabilirsiniz.
-
-İlkeyi işleyen Graph API, MSDN 'deki [ilke üzerinde işlemler](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) makalesinde açıklanmaktadır.
+HRD ilkesini oluşturmak ve yönetmek için Azure Active Directory PowerShell cmdlet 'lerini kullanabilirsiniz.
 
 Örnek bir HRD ilke tanımı aşağıda verilmiştir:
     
@@ -209,7 +207,7 @@ Bunu oluşturduktan sonra HRD ilkesini uygulamak için, birden çok uygulama hiz
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. Adım: ilkenin atanacağı hizmet sorumlusunu bulma  
 İlkeyi atamak istediğiniz hizmet sorumlularının **ObjectID** 'ye ihtiyacınız vardır. Hizmet sorumluları **ObjectID** 'yi bulmanın birkaç yolu vardır.    
 
-Portalı kullanabilir veya [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)sorgulayabilirsiniz. Ayrıca, tüm kuruluşunuzun hizmet sorumlularını görmek için [Graph Explorer aracına](https://developer.microsoft.com/graph/graph-explorer) gidebilir ve Azure AD hesabınızda oturum açabilirsiniz. 
+Portalı kullanabilir veya [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)sorgulayabilirsiniz. Ayrıca, tüm kuruluşunuzun hizmet sorumlularını görmek için [Graph Explorer aracına](https://developer.microsoft.com/graph/graph-explorer) gidebilir ve Azure AD hesabınızda oturum açabilirsiniz. 
 
 PowerShell 'i kullandığınız için, hizmet sorumlularını ve kimliklerini listelemek üzere aşağıdaki cmdlet 'i kullanabilirsiniz.
 

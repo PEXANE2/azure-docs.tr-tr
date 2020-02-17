@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137964"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367647"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -28,7 +28,9 @@ Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt
 
 ### <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
 
-Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler halinde kategorilere ayırma olanağıdır. Örneğin: kişiler, yer ve kuruluşlar.
+Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler, örneğin: kişi, konum, olay, ürün ve kuruluş gibi kategorilere ayırma yeteneğidir.  
+
+Sürüm 3 ' te başlayarak Metin Analizi API'si bu özelliği, telefon numarası, sosyal güvenlik numarası, e-posta adresi ve banka hesap numarası gibi kişisel ve hassas bilgi türlerini de tanımlayabilir.  Bu varlıkların belirlenmesi, hassas belgeleri sınıflandırırken ve kişisel bilgilerin redakklarında yardımcı olabilir.
 
 ## <a name="named-entity-recognition-versions-and-features"></a>Adlandırılmış varlık tanıma sürümleri ve özellikleri
 
@@ -99,7 +101,7 @@ Varlık bağlama
 | DateTime      | Süre      | "1 dakika ve 45 saniye"   |
 | DateTime      | Ayarla           | "her Salı"     |
 | URL'si           | Yok\*         | "https:\//www.bing.com"    |
-| E-posta         | Yok\*         | "support@contoso.com" |
+| Email         | Yok\*         | "support@contoso.com" |
 | ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
 | IP Adresi    | Yok\*         | alana 10.0.0.100 |
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4c5b31c54bf4926caaa1bd793229bdfbb22af2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483645"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368921"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -38,13 +38,13 @@ Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için
 
 - Windows sanal masaüstü 'Nü ayarlama ve yapılandırma
 - Windows sanal masaüstü konak havuzu sağlama
-- [Azure NetApp Files aboneliğinizi etkinleştirme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- [Azure NetApp Files aboneliğinizi etkinleştirme](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>Azure NetApp Files hesabınızı ayarlama
 
 Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinlerine sahip olduğundan emin olun.
 
 2. Azure Cloud Shell açmak için arama çubuğunun sağ tarafındaki **Azure Cloud Shell simgesini** seçin.
 
@@ -189,7 +189,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 1. **PowerShell ISE** 'yi yönetici olarak açın ve Windows sanal masaüstü 'nde oturum açın.
 
-2. Aşağıdaki cmdlet 'leri çalıştırın:
+2. Aşağıdaki cmdlet'leri çalıştırın:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell

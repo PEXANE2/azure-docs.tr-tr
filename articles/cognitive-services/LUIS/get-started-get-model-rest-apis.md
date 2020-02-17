@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/18/2019
+ms.date: 02/14/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 81e3003db9baa4c5df646241d77e01840bcdf21d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3f8013804a2c3f4864719861eea1510c9d849d3
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503776"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368473"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Hızlı başlangıç: REST API 'Leri ile amaç alın
+# <a name="quickstart-change-model-with-rest-apis"></a>Hızlı başlangıç: modeli REST API 'Leri ile değiştirme
 
 Bu hızlı başlangıçta, bir seyahat Aracısı uygulamasına örnek ekleme ve uygulamayı eğitme. Örnek konuşmalar, bir amaçla eşleşmiş kullanıcı konuşma metinleridir. Amaçlar için örnek konuşmalar sağlayarak, LUIS’e kullanıcı tarafından sağlanan hangi tür metinlerin hangi amaca ait olduğunu öğretirsiniz.
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515114"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367139"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -28,7 +28,7 @@ Aynı anda etkin olabilecek kaç etkileşimli oturum, sisteminizin donanım kayn
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Uygulamamın neden Windows 10 Kurumsal Çoklu oturumunu sunucu işletim sistemi olarak raporlıyor?
 
-Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise 'ın sanal bir sürümüdür. Farklardan biri, bu işletim sisteminin (OS) [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) 'ı, Windows Server ile aynı değeri 3 değerine sahip olarak raporlarıdır. Bu özellik, işletim sisteminin mevcut RDSH yönetimi araçları, RDSH çoklu oturum kullanan uygulamalar ve en düşük düzeyde sistem performansı iyileştirmeleri olan RDSH ortamları ile uyumlu kalmasını önler. Bazı uygulama yükleyicileri, ProductType 'ın Istemci olarak ayarlandığını algılamadığına bağlı olarak Windows 10 çoklu oturumunda yüklemeyi engelleyebilir. Uygulamanız yüklenemezse, güncelleştirilmiş bir sürüm için uygulama satıcınıza başvurun. 
+Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise 'ın sanal bir sürümüdür. Farklardan biri, bu işletim sisteminin (OS) [ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/) 'ı, Windows Server ile aynı değeri 3 değerine sahip olarak raporlarıdır. Bu özellik, işletim sisteminin mevcut RDSH yönetimi araçları, RDSH çoklu oturum kullanan uygulamalar ve en düşük düzeyde sistem performansı iyileştirmeleri olan RDSH ortamları ile uyumlu kalmasını önler. Bazı uygulama yükleyicileri, ProductType 'ın Istemci olarak ayarlandığını algılamadığına bağlı olarak Windows 10 çoklu oturumunda yüklemeyi engelleyebilir. Uygulamanız yüklenemezse, güncelleştirilmiş bir sürüm için uygulama satıcınıza başvurun. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Windows 10 Enterprise çoklu oturum 'nı şirket içi çalıştırabilir miyim?
 
@@ -48,7 +48,7 @@ Desteklenen herhangi bir yapılandırma aracını kullanabilirsiniz, ancak Windo
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Windows 10 Enterprise çoklu oturum Azure Active Directory (AD) ile katılmış olabilir mi?
 
-Windows 10 Enterprise çok oturumu şu anda karma Azure AD 'ye katılmış olarak desteklenmektedir. Windows 10 Enterprise çoklu oturum, etki alanına katılmış olduktan sonra Azure AD kaydı 'nı etkinleştirmek için mevcut grup ilkesi nesnesini kullanın. Daha fazla bilgi için bkz. [karma Azure Active Directory JOIN Uygulamanızı planlayın](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
+Windows 10 Enterprise çok oturumu şu anda karma Azure AD 'ye katılmış olarak desteklenmektedir. Windows 10 Enterprise çoklu oturum, etki alanına katılmış olduktan sonra Azure AD kaydı 'nı etkinleştirmek için mevcut grup ilkesi nesnesini kullanın. Daha fazla bilgi için bkz. [karma Azure Active Directory JOIN Uygulamanızı planlayın](../active-directory/devices/hybrid-azuread-join-plan.md).
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü nerede bulabilirim?
 

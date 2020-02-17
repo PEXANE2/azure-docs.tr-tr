@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511901"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368049"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -105,7 +105,7 @@ Kimlik doğrulama seçeneklerinizi daha iyi anlamak için bkz. [Azure Active Dir
 
 ### <a name="programmatic-usage-of-credentials"></a>Kimlik bilgilerinin programlı kullanımı
 
-Graph API kullanarak PowerShell veya uygulamaları kullanan Azure AD betikleri güvenli kimlik doğrulaması gerektirir. Bu komut dosyalarını ve araçları yürüten zayıf kimlik bilgisi yönetimi, kimlik bilgilerinin hırsızlık riskini artırır. Sabit kodlanmış parolalara veya parola istemlerine dayalı betikler veya uygulamalar kullanıyorsanız, öncelikle yapılandırma dosyalarındaki veya kaynak kodundaki parolaları gözden geçirmeniz, ardından bu bağımlılıkları değiştirmeniz ve mümkün olduğunda Azure Yönetilen kimlikler, tümleşik-Windows kimlik doğrulaması veya [Sertifikalar](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) kullanmanız gerekir. Önceki çözümlerin mümkün olmadığı uygulamalar için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanmayı göz önünde bulundurun.
+PowerShell veya Microsoft Graph API kullanan uygulamalar kullanan Azure AD betikleri, güvenli kimlik doğrulaması gerektirir. Bu komut dosyalarını ve araçları yürüten zayıf kimlik bilgisi yönetimi, kimlik bilgilerinin hırsızlık riskini artırır. Sabit kodlanmış parolalara veya parola istemlerine dayalı betikler veya uygulamalar kullanıyorsanız, öncelikle yapılandırma dosyalarındaki veya kaynak kodundaki parolaları gözden geçirmeniz, ardından bu bağımlılıkları değiştirmeniz ve mümkün olduğunda Azure Yönetilen kimlikler, tümleşik-Windows kimlik doğrulaması veya [Sertifikalar](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) kullanmanız gerekir. Önceki çözümlerin mümkün olmadığı uygulamalar için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanmayı göz önünde bulundurun.
 
 Parola kimlik bilgileri ile hizmet sorumluları olduğunu tespit ederseniz ve bu parola kimlik bilgilerinin betikler veya uygulamalar tarafından nasıl sağlandığı hakkında emin değilseniz, kullanım düzenlerini daha iyi anlamak için uygulamanın sahibine başvurun.
 
@@ -141,7 +141,7 @@ Cihazları MDM veya Microsoft Intune ile yönetiyorsanız, ancak koşullu erişi
 #### <a name="device-trust-access-policies-recommended-reading"></a>Okuma için önerilen cihaz güven erişimi ilkeleri
 
 - [Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Kimlik ve cihaz erişim yapılandırması](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>İş İçin Windows Hello
 
@@ -205,7 +205,7 @@ Azure AD 'de [adlandırılmış konumlar](https://docs.microsoft.com/azure/activ
 
 Önceliğe göre, kuruluşunuzun ihtiyaçlarını en iyi şekilde karşılayan önerilen çözümü bulmak için aşağıdaki tabloyu kullanın:
 
-| **Öncelik** | **Senaryo** | **Öneri** |
+| **Öncelik** | **Senaryo** | **Önerilen** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | PHS veya PTA kullanıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
 | 2 | Federe çalışıyorsanız ve "insideCorporateNetwork" talebini kullanmıyorsanız ve adlandırılmış konumlar tanımlanmamışsa | Risk olaylarının algılanmasını geliştirmek için adlandırılmış konumları tanımlayın |
@@ -256,7 +256,7 @@ Koşullu erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için gereken
 #### <a name="conditional-access-recommended-reading"></a>Koşullu erişimin okunması önerilir
 
 - [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Kimlik ve cihaz erişim yapılandırması](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory Koşullu erişim ayarları başvurusu](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Ortak koşullu erişim ilkeleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -305,23 +305,22 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | Office 365 Exchange Online | Olduğundan. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
-| Microsoft Graph | Mail. Read |
+| Microsoft Graph API 'SI | Mail. Read |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
 
 |Kaynak | İzin |
 | :- | :- |
-| Azure AD grafiği | Directory. AccessAsUser. All |
-| Microsoft Graph | Directory. AccessAsUser. All |
+| Microsoft Graph API 'SI| Directory. AccessAsUser. All |
 | Azure REST API | user_impersonation |
 
 Bu senaryoya engel olmak için, Office 365 ' de sahip olduğu tüm uygulamaları belirlemek ve düzeltmek için gerekli olandan daha fazla izin veren uygulamalar belirlemek ve düzeltmek üzere [Office ' de Illicit onay iznini Algıla ve](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) Düzelt bölümüne başvurmalısınız. Sonra [Self-Service ' i tamamen kaldırın](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) ve [idare yordamları oluşturun](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Son olarak, uygulama izinleri için düzenli İncelemeleri zamanlayın ve gerek duyulmadığında kaldırın.
 
 #### <a name="consent-grants-recommended-reading"></a>Onay, önerilen okumaya izin veriyor
 
-- [Microsoft Graph izinleri](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API izinleri](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Kullanıcı ve grup ayarları
 

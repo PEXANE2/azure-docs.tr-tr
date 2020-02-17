@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606946"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367426"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Windows sanal masaüstü 'nde bir rol ataması oluşturun.
 > * Hizmet sorumlusunu kullanarak Windows sanal masaüstü 'nde oturum açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanız gerekir:
 
@@ -38,7 +38,7 @@ Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanı
     Install-Module AzureAD
     ```
 
-2. [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
+2. [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/).
 
 3. Bu makaledeki tüm yönergeleri aynı PowerShell oturumunda izleyin. Pencereyi kapatarak ve daha sonra yeniden açarak PowerShell oturumunuzu keserseniz işlem çalışmayabilir.
 
@@ -58,7 +58,7 @@ Hizmet sorumlusu için rol atamasını oluşturmadan önce, kimlik bilgilerinizi
 
 Aşağıda, yazmanız gereken üç kimlik bilgileri ve bunları almak için çalıştırmanız gereken cmdlet 'ler verilmiştir:
 
-- Parolayı
+- Parola:
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -80,7 +80,7 @@ Aşağıda, yazmanız gereken üç kimlik bilgileri ve bunları almak için çal
 
 Ardından, hizmet sorumlusunun Windows sanal masaüstü 'nde oturum açmasını sağlamak için bir rol ataması oluşturmanız gerekir. Rol atamaları oluşturma izinlerine sahip bir hesapla oturum açmanız emin olun.
 
-İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/) .
 
 Windows sanal masaüstüne bağlanmak ve Kiracılarınızı göstermek için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
 

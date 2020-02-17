@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 94a376c01229de20e6a1264da3f29532becefa8a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190666"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368667"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
@@ -24,16 +24,16 @@ Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, 
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
-## <a name="restrictions"></a>{1&gt;Kısıtlamalar&lt;1}
+## <a name="restrictions"></a>Kısıtlamalar
 
 Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölgesel olarak yedekli depolama (ZRS), büyük dosya paylaşımında etkinleştirilmiş hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanamazsınız.
 Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir. Bunu etkinleştirdikten sonra, hesabınızı GZRS, GRS veya RA-GRS ' e dönüştüremeyeceksiniz.
 
-## <a name="create-a-new-storage-account"></a>Yeni bir depolama hesabı oluştur
+## <a name="create-a-new-storage-account"></a>Yeni depolama hesabı oluşturma
 
 ### <a name="portal"></a>Portal
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portalda **Tüm hizmetler**’i seçin. 
 1. Kaynak listesinde **depolama hesapları**' nı girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Depolama Hesapları**’nı seçin.
 1. Görüntülenen **depolama hesapları** penceresinde **Ekle**' yi seçin.
@@ -43,14 +43,14 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
     ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Ardından, depolama hesabınız için bir ad girin. AD Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 ile 24 karakter uzunluğunda olmalı ve yalnızca rakamlardan ve küçük harflerden oluşabilir.
-1. Depolama hesabınız için bir konum seçin ve [büyük dosya paylaşımları için desteklenen bölgelerin biri](storage-files-planning.md#regional-availability)olduğundan emin olun.
+1. Depolama hesabınız için bir konum seçin ve [büyük dosya paylaşımları için desteklenen çoğaltmanın bir üyesi](storage-files-planning.md#regional-availability)olduğundan emin olun.
 1. Çoğaltmayı **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama**olarak ayarlayın.
 1. Bu alanları varsayılan değerlerinde bırakın:
 
    |Alan  |Değer  |
    |---------|---------|
    |Dağıtım modeli     |Resource Manager         |
-   |Performans     |Standard         |
+   |Performans     |Standart         |
    |Hesap türü     |StorageV2 (genel amaçlı v2)         |
    |Erişim katmanı     |Sık Erişimli         |
 
@@ -59,7 +59,7 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 
     ![Azure portal yeni bir depolama hesabında "etkin" seçenek düğmesi ile ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="cli"></a>CLI
 

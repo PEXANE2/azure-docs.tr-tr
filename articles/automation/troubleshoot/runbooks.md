@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031757"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365216"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 'larda hatalarda sorun giderme
 
@@ -569,53 +569,77 @@ Linux için Log Analytics aracısına ait nxautomationuser hesabı, sudoers dosy
 
 * Sudoers dosyasındaki nxautomationuser hesabının yapılandırmasını doğrulayın. Bkz. [karma Runbook Worker üzerinde runbook 'Ları çalıştırma](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Senaryo: Azure Otomasyonu 'nda PnP PowerShell runbook 'unda başarısız olan cmdlet
+
+### <a name="issue"></a>Sorun
+
+Bir runbook, Azure Otomasyonu çıkışına doğrudan bir PnP PowerShell tarafından oluşturulan nesne yazdığında, cmdlet çıktısı Automation 'a geri akış yapamıyor.
+
+### <a name="cause"></a>Nedeni
+
+Bu sorun, en yaygın olarak, Azure Otomasyonu 'nun PnP PowerShell cmdlet 'lerini çağıran runbook 'ları işlemesinden kaynaklanır, örneğin, return nesnelerini yakalamak zorunda kalmadan, **-pnplistıtem ekleyin**.
+
+### <a name="resolution"></a>Çözüm
+
+Cmdlet 'lerinizi, tüm nesneleri standart çıktıya yazmayı denememesi için, değişkenlere bir dönüş değeri atamak üzere betikleri düzenleyin. Bir komut dosyası çıktı akışını aşağıda gösterildiği gibi bir cmdlet 'e yönlendirebilir.
+
+```azurecli
+  $null = add-pnplistitem
+```
+Komut dosyası cmdlet çıkışını ayrıştırdığında, komut dosyası çıktıyı bir değişkende depolamalıdır ve yalnızca çıktıyı akışa alma yerine değişkeni işleyebilir.
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>Sorun yukarıda listelenmiyor
 
 Aşağıdaki bölümlerde, sorununuzu çözmenize yardımcı olmak üzere belgelerinin desteklenmesinin yanı sıra diğer yaygın hatalar listelenmektedir.
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Karma runbook çalışanı işleri çalıştırmıyor veya yanıt vermiyor
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Karma runbook çalışanı işleri çalıştırmıyor veya yanıt vermiyor
 
 Azure Otomasyonu yerine karma çalışanı kullanarak iş çalıştırıyorsanız, [karma çalışanın üzerinde sorun gidermeniz](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)gerekebilir.
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook "İzin yok" hatasıyla veya benzer bir hatayla başarısız oldu
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook "İzin yok" hatasıyla veya benzer bir hatayla başarısız oldu
 
 Farklı Çalıştır hesapları, geçerli hesabınız olarak Azure kaynaklarında aynı izinlere sahip olmayabilir. Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek için izinlere](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) sahip olduğundan emin olun.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook'lar çalışıyordu ama aniden durduruldu
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook'lar çalışıyordu ama aniden durduruldu
 
 * Runbook 'lar daha önce yürütülerek durdurulmuş olsa da, [farklı çalıştır hesabının](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal) süresi dolmadığından emin olun.
 * Runbook 'ları başlatmak için Web kancaları kullanıyorsanız, [Web kancasının](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) süresi dolmadığından emin olun.
 
-## <a name="issues-passing-parameters-into-webhooks"></a>Web kancalarına parametre geçirme sorunları
+### <a name="issues-passing-parameters-into-webhooks"></a>Web kancalarına parametre geçirme sorunları
 
 Web kancalarına parametre geçirme konusunda yardım için bkz. [Web kancasından runbook başlatma](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="issues-using-az-modules"></a>Az modüller kullanan sorunlar
+### <a name="issues-using-az-modules"></a>Az modüller kullanan sorunlar
 
-Aynı Otomasyon Hesabında hem Az modüllerinin hem de AzureRM modüllerinin kullanılması desteklenmez. Daha fazla bilgi için daha fazla ayrıntı için bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules) .
+Aynı Otomasyon hesabında az modules ve Azurerd modüllerinin kullanılması desteklenmez. Daha fazla bilgi için daha fazla ayrıntı için bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules) .
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Runbook'larda tutarsız davranış
+### <a name="inconsistent-behavior-in-runbooks"></a>Runbook'larda tutarsız davranış
 
 Eşzamanlı işlerle ilgili sorunları, birden çok kez oluşturulmuş kaynakları veya Runbook 'larda diğer zamanlamaya duyarlı mantığı önlemek için [runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) içindeki yönergeleri izleyin.
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook, izin yok, yasak (403) veya bazı çeşitlerle başarısız oluyor
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook, izin yok, yasak (403) veya bazı çeşitlerle başarısız oluyor
 
 Farklı Çalıştır hesapları, geçerli hesabınız olarak Azure kaynaklarında aynı izinlere sahip olmayabilir. Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek için izinlere](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) sahip olduğundan emin olun.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook'lar çalışıyordu ama aniden durduruldu
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook'lar çalışıyordu ama aniden durduruldu
 
 * Runbook 'lar daha önce yürütülerek durdurulmuş olsa da, farklı çalıştır hesabının süresi dolmadığından emin olun. Bkz. [sertifika yenileme](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
 * Runbook 'ları başlatmak için Web kancaları kullanıyorsanız, Web kancasının [süresi dolmadığından](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)emin olun.
 
-## <a name="passing-parameters-into-webhooks"></a>Web kancalarına parametre geçirme
+### <a name="passing-parameters-into-webhooks"></a>Web kancalarına parametre geçirme
 
 Web kancalarına parametre geçirme konusunda yardım için bkz. [Web kancasından runbook başlatma](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="using-az-modules"></a>Az modüllerini kullanma
+### <a name="using-az-modules"></a>Az modüllerini kullanma
 
-Aynı Otomasyon Hesabında hem Az modüllerinin hem de AzureRM modüllerinin kullanılması desteklenmez. Bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules).
+Aynı Otomasyon hesabında az modules ve Azurerd modüllerinin kullanılması desteklenmez. Bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules).
 
-## <a name="using-self-signed-certificates"></a>Otomatik olarak imzalanan sertifikaları kullanma
+### <a name="using-self-signed-certificates"></a>Otomatik olarak imzalanan sertifikaları kullanma
 
 Otomatik olarak Imzalanan sertifikaları kullanmak için bkz. [Yeni sertifika oluşturma](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
 

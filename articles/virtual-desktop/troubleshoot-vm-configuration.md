@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980227"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367171"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -26,7 +26,7 @@ Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle ta
 
 VM 'Leri etki alanına eklerken sorun yaşıyorsanız bu yönergeleri izleyin.
 
-- [Windows Server sanal makinesini yönetilen bir etki alanına ekleme](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) veya [etki alanına ekleme şablonunu](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)kullanma içindeki işlemi kullanarak VM 'yi el ile birleştirin.
+- [Windows Server sanal makinesini yönetilen bir etki alanına ekleme](../active-directory-domain-services/join-windows-vm.md) veya [etki alanına ekleme şablonunu](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)kullanma içindeki işlemi kullanarak VM 'yi el ile birleştirin.
 - VM 'de komut satırından etki alanı adının ping komutunu deneyin.
 - Etki alanına ekleme [hata Iletileriyle Ilgili sorunları gidermek](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)için etki alanına katılması hata iletileri listesini gözden geçirin.
 
@@ -37,7 +37,7 @@ VM 'Leri etki alanına eklerken sorun yaşıyorsanız bu yönergeleri izleyin.
 **Çözüm:** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
 - VM 'Leri bir etki alanına el ile ekleyin.
-- Kimlik bilgileri onaylandıktan sonra şablonu yeniden dağıtın. Bkz. [PowerShell ile konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Kimlik bilgileri onaylandıktan sonra şablonu yeniden dağıtın. Bkz. [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md).
 - [Mevcut bir WINDOWS sanal MAKINESINI ad etki alanına birleştiren](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)bir şablon kullanarak VM 'leri etki alanına katın.
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Hata: Kullanıcı girişi beklenirken zaman aşımı oluştu
@@ -62,17 +62,17 @@ VM 'Leri etki alanına eklerken sorun yaşıyorsanız bu yönergeleri izleyin.
 
 **Neden 1:** VM 'Ler, etki alanının bulunduğu sanal ağ (VNET) ile ilişkilendirilmemiş bir sanal ağ üzerinde bulunuyor.
 
-**1. Çözüm:** VM 'Lerin sağlandığı VNET ile etki alanı denetleyicisinin (DC) çalıştığı VNET arasında VNET eşlemesi oluşturun. Bkz. [sanal ağ eşlemesi oluşturma-kaynak yöneticisi, farklı abonelikler](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**1. Çözüm:** VM 'Lerin sağlandığı VNET ile etki alanı denetleyicisinin (DC) çalıştığı VNET arasında VNET eşlemesi oluşturun. Bkz. [sanal ağ eşlemesi oluşturma-kaynak yöneticisi, farklı abonelikler](../virtual-network/create-peering-different-subscriptions.md).
 
 **Neden 2:** Azure Active Directory Domain Services (Azure AD DS) kullanırken, sanal ağın DNS sunucusu ayarları, yönetilen etki alanı denetleyicilerini işaret etmek üzere güncellenir.
 
-**2. Çözüm:** Azure AD DS içeren sanal ağın DNS ayarlarını güncelleştirmek için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+**2. Çözüm:** Azure AD DS içeren sanal ağın DNS ayarlarını güncelleştirmek için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network).
 
 **Neden 3:** Ağ arabiriminin DNS sunucusu ayarları, sanal ağda uygun DNS sunucusunu göstermiyor.
 
 **3. Çözüm:** Çözümlemek için, [DNS sunucularını değiştirme] bölümündeki adımları izleyerek aşağıdaki eylemlerden birini gerçekleştirin.
-- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) adımları ile **özel** olarak DEĞIŞTIRIN ve sanal ağda DNS sunucularının özel IP adreslerini belirtin.
-- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)adımları ile **sanal ağdan devralacak** şekilde değiştirin, ardından sanal ağın DNS sunucusu ayarlarını [değiştirme DNS sunucuları](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)adımlarından adımları değiştirin.
+- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](../virtual-network/virtual-network-network-interface.md#change-dns-servers) adımları ile **özel** olarak DEĞIŞTIRIN ve sanal ağda DNS sunucularının özel IP adreslerini belirtin.
+- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](../virtual-network/virtual-network-network-interface.md#change-dns-servers)adımları ile **sanal ağdan devralacak** şekilde değiştirin, ardından sanal ağın DNS sunucusu ayarlarını [değiştirme DNS sunucuları](../virtual-network/manage-virtual-network.md#change-dns-servers)adımlarından adımları değiştirin.
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows sanal masaüstü Aracısı ve Windows sanal masaüstü önyükleme yükleyicisi yüklü değil
 
@@ -88,7 +88,7 @@ Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu
 
 **Neden 1:** Azure Resource Manager şablonu için giriş sırasında belirtilen kimlik bilgileri yanlış veya izinler yetersiz.
 
-**1. Çözüm:** [PowerShell ile konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)' yı kullanarak eksik bileşenleri VM 'lere el ile ekleyin.
+**1. Çözüm:** [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md)' yı kullanarak eksik bileşenleri VM 'lere el ile ekleyin.
 
 **Neden 2:** PowerShell DSC, Windows sanal masaüstü 'nde oturum açıp gerekli bilgileri alabilmesi için başlatma ve yürütme işlemi başarısız oldu, ancak tamamlanamayacak.
 
@@ -147,7 +147,7 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 **2. Çözüm:** 443 numaralı bağlantı noktasını açmak için bu yönergeleri izleyin.
 
-1. PSPing aracını [SysInternal araçlarından](https://docs.microsoft.com/sysinternals/downloads/psping)indirerek bağlantı noktası 443 ' nin açık olduğunu doğrulayın.
+1. PSPing aracını [SysInternal araçlarından](/sysinternals/downloads/psping/)indirerek bağlantı noktası 443 ' nin açık olduğunu doğrulayın.
 2. Aracının çalıştığı oturum ana bilgisayar VM 'sine PSPing 'yi yükler.
 3. Komut istemi 'ni yönetici olarak açın ve aşağıdaki komutu verin:
 
@@ -189,7 +189,7 @@ Yan yana yığın yüklenip etkinleştirilirse, **qwinsta** çıktısı çıktı
 
 ![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştubulunursa, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) ' daki yönergeleri izleyin.
+Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştubulunursa, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eş
 **Çözüm:** Oturum Ana bilgisayar VM 'sine yan yana yığın yüklemek için bu yönergeleri izleyin.
 
 1. Doğrudan oturum ana bilgisayar VM 'sine yerel yönetici olarak almak için Uzak Masaüstü Protokolü (RDP) kullanın.
-2. PowerShell oturumunuzda kullanmak için [Windows sanal masaüstü PowerShell modülünü](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) indirip içeri aktarın ve ardından hesabınızda oturum açmak için bu cmdlet 'i çalıştırın:
+2. PowerShell oturumunuzda kullanmak için [Windows sanal masaüstü PowerShell modülünü](/powershell/windows-virtual-desktop/overview/) indirip içeri aktarın ve ardından hesabınızda oturum açmak için bu cmdlet 'i çalıştırın:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. [PowerShell ile bir konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)' yı kullanarak yan yana yığını yükler.
+3. [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md)' yı kullanarak yan yana yığını yükler.
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Düzgün bir şekilde bir Windows sanal masaüstü yan yana yığınını çözme
 
@@ -226,14 +226,14 @@ Yan yana yığının hatalı çalışmasına neden olabilecek bilinen koşullar 
 - Enablesxsstackrc. ps1 birden çok kez çalıştırılıyor
 - Yerel yönetici ayrıcalıklarına sahip olmayan bir hesapta enablesxsstackronc. ps1 çalıştırma
 
-Bu bölümdeki yönergeler, Windows sanal masaüstü 'Nün yan yana yığınını kaldırmanızı sağlamanıza yardımcı olabilir. Yan yana yığını kaldırdıktan sonra yan yana yığını yeniden yüklemek için [PowerShell ile bir konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) bölümünde "VM 'Yi Windows sanal masaüstü ana bilgisayar havuzuna Kaydet" bölümüne gidin.
+Bu bölümdeki yönergeler, Windows sanal masaüstü 'Nün yan yana yığınını kaldırmanızı sağlamanıza yardımcı olabilir. Yan yana yığını kaldırdıktan sonra yan yana yığını yeniden yüklemek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) bölümünde "VM 'Yi Windows sanal masaüstü ana bilgisayar havuzuna Kaydet" bölümüne gidin.
 
 Düzeltmeyi çalıştırmak için kullanılan VM 'nin, hatalı çalışan yan yana Stack ile aynı alt ağda ve etki alanında olması gerekir.
 
 Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki yönergeleri izleyin:
 
 1. Standart Uzak Masaüstü Protokolü (RDP) ile, bu, düzeltmesinin uygulanacağı VM 'ye bağlanın.
-2. https://docs.microsoft.com/sysinternals/downloads/psexec 'den PsExec 'yi indirin.
+2. https://docs.microsoft.com/sysinternals/downloads/psexec'den PsExec 'yi indirin.
 3. İndirilen dosyayı sıkıştırmayı açın.
 4. Komut istemi 'ni yerel yönetici olarak başlatın.
 5. PsExec 'nin sıkıştırısaklandığı klasöre gidin.
@@ -305,7 +305,7 @@ Zaman sınırının süresi dolarsa, "Bu bilgisayar için kullanılabilir uzak m
 Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.  
 
 >[!NOTE]
->Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+>Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](/windows-server/remote/remote-desktop-services/rds-client-access-license/).
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
 

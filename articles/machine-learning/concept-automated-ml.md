@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191199"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366254"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -143,7 +143,7 @@ Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accur
 |-------|----------------|---------------|
 | A | %99,9 | %95 |
 | B | %87 | %87 |
-| Mş | %99,9 | %45 |
+| C | %99,9 | %45 |
 
 Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu eğitim doğruluğunun altındaysa, modelin daha fazla uydurulur. Ancak, test doğruluğu her zaman eğitim doğruluğunu azaltır ve fazla sığdırma ile *uygun şekilde ayrım, daha az doğru* olacaktır. 
 
@@ -211,22 +211,71 @@ Aşağıdaki teknikler, otomatik ML dışında imdengeli verileri işlemek için
 
 Azure Machine Learning, otomatik ML 'yi kullanarak bir Python modeli oluşturabilir ve ONNX biçimine dönüştürülmesini sağlayabilirsiniz. ONNX çalışma zamanı ' C#nı destekler, böylece REST uç noktalarının tanıtılmasını gerektiren veya C# herhangi bir ağ gecikme süresi gerekmeden uygulamalarınızda otomatik olarak oluşturulan modeli kullanabilirsiniz. Bu [Jupyter not defterinde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)bu akışa bir örnek deneyin.
 
-## <a name="automated-ml-across-microsoft"></a>Microsoft genelinde otomatik ML
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning otomatik ML
 
-Otomatikleştirilmiş ML, gibi diğer Microsoft çözümlerinde de kullanılabilir:
+Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar
 
-|Tümleştirmeler|Açıklama|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio kullanarak .NET uygulamalarında otomatik model seçme ve eğitim ve ML.NET otomatik ML ile Visual Studio Code.|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|HDInsight kümelerinde Spark üzerinde otomatik ML eğitim işlerinizi paralel olarak ölçeklendirin.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Makine öğrenimi modellerini doğrudan Power BI çağırın.|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 büyük veri kümelerinde verileriniz üzerinde yeni makine öğrenimi modelleri oluşturun.|
+* Kod ile deneyimli müşteriler için [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* Sınırlı/kod deneyimi müşterisi için Azure Machine Learning Studio [https://ml.azure.com](https://ml.azure.com/)  
+
+Aşağıda, her bir deneyimde desteklenen üst düzey otomatik ML özellikleri özetlenmektedir.
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>Deneme ayarları 
+
+Aşağıdaki ayarlar otomatik ML denemenizi yapılandırmanıza olanak tanır. 
+
+| | Python SDK'sı| Stu
+----|:----:|:----:
+Verileri tren/doğrulama kümelerine Böl| ✓|✓
+ML görevlerini destekler: sınıflandırma, regresyon ve tahmin| ✓| ✓
+Birincil ölçüme göre iyileştirir| ✓| ✓
+İşlem hedefi olarak AML 'yi destekler | ✓|✓
+Tahmin ufku, hedef lags & sıralı pencereyi yapılandırma|✓|✓
+Çıkış ölçütünü ayarla |✓|✓ 
+Eşzamanlı yinelemeleri ayarla| ✓|✓
+Bırakma sütunları| ✓|✓
+Blok algoritmaları|✓|✓
+Çapraz doğrulama |✓|✓
+Azure Databricks kümelerinde eğitimi destekler| ✓|
+Uygulanan özellik adlarını görüntüle|✓|
+Korturleştirme Özeti| ✓|
+Tatil özelliği|✓|
+Günlük dosyaları için ayrıntı düzeyi| ✓|
+
+### <a name="model-settings"></a>Model ayarları
+
+Bu ayarlar, otomatik ML denemenizin bir sonucu olarak en iyi modele uygulanabilir.
+
+||Python SDK'sı|Stu
+----|:----:|:----:
+En iyi model kaydı| ✓|✓
+En iyi model dağıtımı| ✓| ✓
+En iyi model explainability| ✓|✓
+Oylama & yığın zenginme modellerini etkinleştirme| ✓|✓
+Birincil olmayan ölçüye göre en iyi modeli göster|✓|ONNX model uyumluluğunu etkinleştir/devre dışı bırak|✓|
+Modeli test etme | ✓| |
+
+### <a name="run-control-settings"></a>Denetim ayarlarını Çalıştır
+
+Bu ayarlar, deneme çalışmalarınızı ve onun alt çalıştırmalarını incelemenizi ve denetlemenizi sağlar. 
+
+||Python SDK'sı| Stu
+----|:----:|:----:
+Özet tablosunu Çalıştır| ✓|✓
+Çalıştırmayı iptal et| ✓|✓
+Alt çalıştırmayı iptal et| ✓| ✓
+Guardrayal| ✓|✓
+Çalıştırmayı Duraklat| ✓| 
+Çalıştırmayı sürdürür| ✓| 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı öğrenme:
 
-+ [Öğreticiyi izleyin: Azure otomatik Machine Learning regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
++ [Öğreticiyi izleyin: Azure Machine Learning ile regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
 
 + Otomatik eğitim denemenize yönelik ayarları yapılandırın:
   + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-create-portal-experiments.md).
@@ -235,3 +284,5 @@ Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı �
 + Zaman serisi verilerini kullanarak otomatik eğitme yapmayı öğrenin, [Bu adımları kullanın](how-to-auto-train-forecast.md).
 
 + [Otomatik makine öğrenimi için Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/) deneyin
+
+* Otomatikleştirilmiş ML, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) ve [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) gibi diğer Microsoft çözümlerinde de kullanılabilir

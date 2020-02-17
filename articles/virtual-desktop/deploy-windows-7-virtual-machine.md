@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f8aebee72105e4f3218e7ae5f867962d0ed8e23d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896214"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367373"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
 Windows sanal masaüstü üzerinde bir Windows 7 sanal makinesi (VM) dağıtma işlemi, Windows 'un sonraki sürümlerini çalıştıran VM 'lerden biraz farklıdır. Bu kılavuzda, Windows 7 ' nin nasıl dağıtılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin. Bundan sonra, Masaüstü uygulama grubuna bir veya daha fazla kullanıcı atamak için [Azure Marketi 'nde konak havuzları oluşturma](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group) ' daki yönergeleri izleyin.
 
@@ -35,7 +35,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
 7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) yüklüyor.
-8. Yerel Grup İlkesi Düzenleyicisi açın ve **Yönetim Şablonları** > **Windows bileşenleri** ** > Uzak Masaüstü Hizmetleri** ** > Uzak Masaüstü oturumu ana bilgisayarı** **uzak oturum ortamı** > **bilgisayar yapılandırması** ' na gidin.
+8. Yerel Grup İlkesi Düzenleyicisi açın ve **Yönetim Şablonları** > **Windows bileşenleri** ** > Uzak Masaüstü Hizmetleri** ** > Uzak Masaüstü oturumu ana bilgisayarı** **uzak oturum ortamı** > **bilgisayar yapılandırması** ' na gidin. > 
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
 10. Bu sanal makineyi Active Directory etki alanınıza ekleyin.
 11. Aşağıdaki komutu çalıştırarak sanal makineyi yeniden başlatın:
@@ -44,7 +44,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
      shutdown /r /t 0
      ```
     
-12. Kayıt belirteci almak için [buradaki](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) yönergeleri izleyin.
+12. Kayıt belirteci almak için [buradaki](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) yönergeleri izleyin.
 13. Windows [7 Için Windows sanal masaüstü aracısını indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. Windows [7 Için Windows sanal masaüstü Aracısı Yöneticisi 'Ni indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Windows sanal masaüstü Aracısı yükleyicisini açın ve yönergeleri izleyin. İstendiğinde, 12. adımda oluşturduğunuz kayıt anahtarını verin.

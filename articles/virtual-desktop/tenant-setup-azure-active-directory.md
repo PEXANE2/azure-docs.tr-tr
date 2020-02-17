@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459512"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368779"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
@@ -121,7 +121,7 @@ Azure abonelik KIMLIĞINIZI bulmak için:
 
 Azure Active Directory sorgulamak için Windows sanal masaüstü hizmeti izinleri vermiş olduğunuza ve bir kullanıcı hesabına TenantCreator rolünü atadığınıza göre, bir Windows sanal masaüstü kiracısı oluşturabilirsiniz.
 
-İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/) .
 
 Bu cmdlet ile TenantCreator Kullanıcı hesabını kullanarak Windows sanal masaüstü 'nde oturum açın:
 

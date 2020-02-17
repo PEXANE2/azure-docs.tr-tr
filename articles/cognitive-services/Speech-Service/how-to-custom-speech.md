@@ -3,19 +3,19 @@ title: Özel Konuşma Tanıma konuşma hizmeti ile çalışmaya başlama
 titleSuffix: Azure Cognitive Services
 description: Özel Konuşma Tanıma, uygulamalarınız, araçlarınız ve ürünleriniz için konuşmadan metne doğruluğu değerlendirmenize ve iyileştirmenize olanak tanıyan çevrimiçi araçlar kümesidir. Kullanmaya başlamak her şey en çok bir test ses dosyası. Özel bir konuşmaya metin deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806020"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368318"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -60,6 +60,9 @@ Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, [öze
 Veriler, modeller, testler ve uç noktalar gibi içerikler [özel konuşma tanıma portalındaki](https://speech.microsoft.com/customspeech) **Projeler** halinde düzenlenir. Her proje bir etki alanı ve ülke/dil için özeldir. Örneğin, Birleşik Devletler Ingilizce kullanan çağrı merkezleri için bir proje oluşturabilirsiniz.
 
 İlk projenizi oluşturmak için **konuşmayı metne/özel konuşmayı**seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Bir projeyi oluşturduktan sonra, dört sekme görmeniz gerekir: **veri**, **Test**, **eğitim**ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
+
+> [!IMPORTANT]
+> [Özel konuşma tanıma portalı](https://aka.ms/custom-speech) yakın zamanda güncelleştirildi! CRıS portalındaki veya API 'lerde bulunan veri, model, test ve yayımlanan uç noktalarla önceki projeler oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
