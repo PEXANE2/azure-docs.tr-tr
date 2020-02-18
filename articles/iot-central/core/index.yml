@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: cddfdbe709849f81f585ad7537556945ec14c990
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.date: 02/18/2020
+  ms.openlocfilehash: f404ecb676b75258cd44fb819dbafc3b2fb6452e
+  ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77023438"
+  ms.lasthandoff: 02/18/2020
+  ms.locfileid: "77431188"
 landingContent:
 - title: Azure IoT Central hakkında
   linkLists:
@@ -23,14 +23,14 @@ landingContent:
     links:
     - text: Azure IoT Central nedir?
       url: overview-iot-central.md
-    - text: IoT Çözümü seçenekleri
-      url: overview-iot-central-tour.md
     - text: Kullanıcı arabiriminde tura katılma
       url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Azure IoT Central mimarisi
       url: concepts-architecture.md
+    - text: Uygulama şablonları
+      url: concepts-app-templates.md
   - linkListType: quickstart
     links:
     - text: Yeni uygulama oluşturma
@@ -39,12 +39,12 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Cihaz şablonu ayarlama
-      url: howto-set-up-template.md
     - text: IoT Tak Çalıştır (önizleme) cihazını bağlama
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
+    - text: Cihaz şablonu ayarlama
+      url: howto-set-up-template.md
     - text: MX Chip IoT DevKit'i hazırlama ve bağlama
       url: howto-connect-devkit.md
     - text: Diğer IoT bulutlarına bağlanma
@@ -53,8 +53,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Cihaz kümelerini kullanma
-      url: howto-use-device-sets.md
+    - text: Cihaz gruplarını kullanma
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: Cihazlarınızı yönetme
@@ -68,9 +68,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Telemetri kuralları oluşturma
-      url: howto-create-telemetry-rules.md
-    - text: Blob Depolama'ya aktarma
-      url: howto-export-data-blob-storage.md
+      url: tutorial-create-telemetry-rules.md
+    - text: Verileri dışarı aktarma
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Özel kurallar oluşturma

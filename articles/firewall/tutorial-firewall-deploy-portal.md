@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195786"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371343"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -34,17 +34,17 @@ Bu öğreticide kolay dağıtım için üç alt ağa sahip tek bir basitleştiri
 
 ![Öğretici ağı altyapısı](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Test amaçlı ağ ortamı oluşturma
 > * Güvenlik duvarı dağıtma
 > * Varsayılan rota oluşturma
-> * www.google.com erişmesine izin vermek için bir uygulama kuralı yapılandırma
+> * [www.google.com]\(www.google.com) erişmesine izin vermek için bir uygulama kuralı yapılandırma
 > * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
 > * Güvenlik duvarını test etme
 
-Tercih ederseniz, bu öğreticiyi [Azure PowerShell](deploy-ps.md) kullanarak tamamlayabilirsiniz.
+Tercih ederseniz, [Azure PowerShell](deploy-ps.md) kullanarak bu öğreticiyi tamamlayabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -61,7 +61,7 @@ Kaynak grubu, bu öğreticideki tüm kaynakları içerir.
 3. **Kaynak grubu adı**için *Test-FW-RG*yazın.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Kaynak grubu konumu** bölümünde bir konum seçin. Bundan sonra oluşturacağınız tüm kaynakların aynı konumda olması gerekir.
-6. **Oluştur**'u seçin.
+6. **Oluştur**’u seçin.
 
 ### <a name="create-a-vnet"></a>Sanal ağ oluşturma
 
@@ -94,7 +94,7 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 
 **Jump-SN** adına ve **10.0.3.0/24** adres aralığına sahip bir alt ağ daha oluşturun.
 
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
+### <a name="create-virtual-machines"></a>Sanal makineler oluşturun
 
 Şimdi atlama ve iş yükü sanal makinelerini oluşturup uygun alt ağlara yerleştirin.
 
@@ -102,13 +102,13 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 2. **İşlem**’i ve sonra Öne Çıkanlar listesinde **Windows Server 2016 Datacenter**’ı seçin.
 3. Sanal makine için şu değerleri girin:
 
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
    |Kaynak grubu     |**Test-ILT-RG**|
    |Sanal makine adı     |**SRV-zıplama**|
    |Bölge     |Öncekiyle aynı|
    |Yönetici Kullanıcı adı     |**azureuser**|
-   |istemcisiyle yönetilen bir cihaz için)     |**Azure123456!**|
+   |Parola     |**Azure123456!**|
 
 4. **Gelen bağlantı noktası kuralları**altında, **Genel gelen bağlantı noktaları**Için **Seçili bağlantı noktalarına izin ver**' i seçin
 5. **Gelen bağlantı noktaları Seç**için **RDP (3389)** seçeneğini belirleyin.
@@ -123,9 +123,9 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 
 **SRV-Work**adlı başka bir sanal makineyi yapılandırmak için aşağıdaki tablodaki bilgileri kullanın. Yapılandırmanın geri kalanı Srv-Jump sanal makinesiyle aynıdır.
 
-|Ayar  |Value  |
+|Ayar  |Değer  |
 |---------|---------|
-|Subnet|**İş yükü-SN**|
+|Alt ağ|**İş yükü-SN**|
 |Genel IP|**Seçim**|
 |Ortak gelen bağlantı noktaları|**Seçim**|
 
@@ -138,14 +138,14 @@ Güvenlik duvarını sanal ağa dağıtın.
 3. **Güvenlik duvarı** ' nı seçip **Oluştur**' u seçin.
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
    |Abonelik     |\<aboneliğiniz\>|
    |Kaynak grubu     |**Test-ILT-RG** |
-   |Name     |**Test-FW01**|
+   |Adı     |**Test-FW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**: **Test-FW-vn**|
-   |Genel IP adresi     |**Yeni oluşturun**. Genel IP adresinin türü Standart SKU olmalıdır.|
+   |Genel IP adresi     |**Yeni Ekle**. Genel IP adresinin türü Standart SKU olmalıdır.|
 
 5. **İncele ve oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.
@@ -165,7 +165,7 @@ Güvenlik duvarını sanal ağa dağıtın.
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu**için **Test-FW-RG**öğesini seçin.
 7. **Konum** alanında önceden kullandığınız konumu seçin.
-8. **Oluştur**'u seçin.
+8. **Oluştur**’u seçin.
 9. **Yenile**' yi seçin ve ardından **güvenlik duvarı-rota** yol tablosunu seçin.
 10. **Alt ağları** seçip **ilişkilendir**' i seçin.
 11. **Test-FW-VN** > **sanal ağı** seçin.

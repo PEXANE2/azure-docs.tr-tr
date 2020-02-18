@@ -87,6 +87,8 @@
           href: built-in-vulnerability-assessment.md
         - name: Dış tarayıcıları kullanma
           href: partner-vulnerability-assessment.md
+    - name: Kapsayıcılarınızı izleme
+      href: monitor-container-security.md
     - name: Microsoft Defender ATP ile sunucularınızı koruma
       href: security-center-wdatp.md
     - name: Azure VM’lerinde SQL için gelişmiş veri güvenliğini kullanma

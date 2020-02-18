@@ -176,6 +176,9 @@
         - name: Anahtar sözcükler
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
+        - name: Sabitler
+          displayName: 'object, number,array'
+          href: sql-query-constants.md
         - name: İşleçler
           displayName: 'operators, operator, logical operators, equality, comparison'
           href: sql-query-operators.md
@@ -582,8 +585,7 @@
             - name: Akışı değiştirme
               href: cassandra-change-feed.md
             - name: Mağaza ve Spring Verilerini yönetme
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Cassandra ve Spark
               items:
                 - name: Giriş
@@ -658,8 +660,7 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2 - Verileri geçirme
               displayName: import
-              href: /azure/dms/tutorial-mongodb-cosmos-db
-              maintainContext: true
+              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 3 - Verileri sorgulama
               href: tutorial-query-mongodb.md
             - name: 4 - Verileri global olarak dağıtma
@@ -690,8 +691,7 @@
             - name: Veri dizinlemeyi yönetme
               href: mongodb-indexing.md
             - name: Mağaza ve Spring Verilerini yönetme
-              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: MongoDB uzantı komutları
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -755,8 +755,7 @@
             - name: Graf verilerini görselleştirme
               href: graph-visualization.md
             - name: Mağaza ve Spring Verilerini yönetme
-              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Resource Manager şablonlarını kullanarak yönetme
               href: manage-gremlin-with-resource-manager.md
             - name: PowerShell kullanarak yönetme
@@ -951,8 +950,7 @@
         - name: Azure Databricks Spark bağlayıcısı
           href: spark-connector.md
         - name: Apache Kafka ve Cosmos DB ile akış
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Yerleşik Jupyter not defterleri
       items:
         - name: Not defterlerini etkinleştirme
@@ -976,8 +974,7 @@
         - name: Özel uç noktalardan erişimi yapılandırma
           href: how-to-configure-private-endpoints.md
         - name: Cosmos DB hesabına özel olarak bağlanma
-          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
-          maintainContext: true
+          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Başlangıç Noktaları Arası Kaynak Paylaşımı'nı (CORS) yapılandırma
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama
@@ -999,12 +996,11 @@
         - name: Tanılama günlükleriyle izleme
           href: cosmosdb-monitor-resource-logs.md
         - name: Cosmos için Azure İzleyici (önizleme)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Cosmos DB hesabından ölçümleri görüntüleme
           href: use-metrics.md
         - name: Logic Apps ile uygulama günlüğü kaydı
-          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
-          maintainContext: true
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: İzleme verileri başvurusu
           href: monitor-cosmos-db-reference.md
     - name: Yerel olarak geliştirme
@@ -1032,29 +1028,23 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure Bilişsel Arama dizin oluşturucu
-          href: /azure/search/search-howto-index-cosmosdb
-          maintainContext: true
+          href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure İşlevleri
           items:
             - name: Sunucusuz bilgi işlem
               href: serverless-computing-database.md
             - name: Azure İşlev bağlamaları
-              href: /azure/azure-functions/functions-bindings-cosmosdb
-              maintainContext: true
+              href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Factory
-          href: /azure/data-factory/connector-azure-cosmos-db
-          maintainContext: true
+          href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
-          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
-          maintainContext: true
+          href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Event Hubs ve Azure Depolama
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Başlatıcı’yı kullanma
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: Spring Data geliştirici kılavuzu
-          href: /java/azure/spring-framework/how-to-guides-spring-data-cosmosdb
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: ODBC sürücüsü
           href: odbc-driver.md
     - name: Verileri Cosmos DB’ye geçirme
