@@ -39,6 +39,12 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: Bağlantı
       items:
+        - name: NAT
+          items:
+            - name: Genel Bakış
+              href: nat-overview.md
+            - name: Kaynak
+              href: nat-gateway-resource.md
         - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
           items:
             - name: Önsöz ve Test Kurulumu
@@ -111,6 +117,20 @@
           href: virtual-network-nsg-manage-log.md
     - name: Bağlantı
       items:
+        - name: NAT
+          items:
+            - name: NAT ağ geçidi oluşturma - Portal
+              href: quickstart-create-nat-gateway-portal.md
+            - name: NAT ağ geçidi oluşturma - PowerShell
+              href: quickstart-create-nat-gateway-powershell.md
+            - name: NAT ağ geçidi oluşturma - CLI
+              href: quickstart-create-nat-gateway-cli.md
+            - name: NAT ağ geçidi oluşturma ve doğrulama - Portal
+              href: tutorial-create-validate-nat-gateway-portal.md
+            - name: NAT ağ geçidi oluşturma ve doğrulama - PowerShell
+              href: tutorial-create-validate-nat-gateway-powershell.md
+            - name: NAT ağ geçidi oluşturma ve doğrulama - CLI
+              href: tutorial-create-validate-nat-gateway-cli.md
         - name: NIC’leri yönetme
           href: virtual-network-network-interface.md
         - name: Sanal ağı yönetme

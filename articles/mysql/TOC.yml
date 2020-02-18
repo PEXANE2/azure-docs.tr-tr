@@ -95,8 +95,6 @@
           href: concepts-data-access-security-private-link.md
         - name: Veri Şifrelemesi
           href: concepts-data-encryption-mysql.md
-        - name: Veri Şifrelemesi
-          href: concepts-data-encryption-mysql.md
         - name: Azure AD kimlik doğrulaması
           href: concepts-azure-ad-authentication.md
     - name: İş sürekliliği
@@ -222,6 +220,8 @@
           href: howto-troubleshoot-query-performance.md
         - name: Sys şemasında görünümleri kullanma
           href: howto-troubleshoot-sys-schema.md
+        - name: Veri şifreleme sorunlarını giderme
+          href: howto-data-encryption-troubleshoot.md
     - name: Gelişmiş Tehdit Koruması
       items:
         - name: Azure portal

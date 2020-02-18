@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251779"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425655"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -104,6 +104,18 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 | ----- | ----------------------- | --------|
 | {OAuth2: access_token} | Erişim belirteci. | Yok |
 
+
+### <a name="saml"></a>SAML
+
+| İste | Açıklama | Örnek |
+| ----- | ----------- | --------|
+| {SAML: AuthnContextClassReferences} | SAML isteğinden `AuthnContextClassRef` öğesi değeri. | urn: oassıs: adlar: TC: SAML: 2.0: AC: sınıflar: PasswordProtectedTransport |
+| {SAML: Nameıdpolicyformat} | SAML isteğinin `NameIDPolicy` öğesinden `Format` özniteliği. | urn: oassıs: adlar: TC: SAML: 1.1: NameID-Format: Emapostaadı |
+| {SAML: Issuer} |  SAML isteğinin SAML `Issuer` öğesi değeri.| https://contoso.com |
+| {SAML: AllowCreate} | SAML isteğinin `NameIDPolicy` öğesinden `AllowCreate` özniteliği değeri. | True |
+| {SAML: ForceAuthn} | SAML isteğinin `AuthnRequest` öğesinden `ForceAuthN` özniteliği değeri. | True |
+| {SAML: ProviderName} | SAML isteğinin `AuthnRequest` öğesinden `ProviderName` özniteliği değeri.| Contoso.com |
+
 ## <a name="using-claim-resolvers"></a>Talep çözücüler kullanma 
 
 Talep çözümleyicilerine aşağıdaki öğelerle birlikte kullanabilirsiniz: 
@@ -160,7 +172,7 @@ Talep çözümleyicilerine göre, oturum açma adını veya Facebook, LinkedIn v
 
 ### <a name="dynamic-ui-customization"></a>Dinamik UI özelleştirmesi
 
-Azure AD B2C, sayfa içeriğini dinamik olarak oluşturmak için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, bu, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü değiştirebilme olanağı tanır. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](custom-policy-ui-customization-dynamic.md). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
+Azure AD B2C, sayfa içeriğini dinamik olarak oluşturmak için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, bu, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü değiştirebilme olanağı tanır. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](custom-policy-ui-customization.md). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
 
 Aşağıdaki örnek, bir değeri `hawaii`, bir `en-US`**dil** kodu ve istemci kimliğini temsil eden **uygulama** olan **Kampanya NID** adlı sorgu dizesi parametresinde geçirilir:
 

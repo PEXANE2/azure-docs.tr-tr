@@ -39,8 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Avrupa müşterileri için kimlik verisi depolama
       href: active-directory-data-storage-eu.md
-    - name: Avustralya müşterileri için kimlik verisi depolama
-      href: active-directory-data-storage-australia.md
+    - name: Avustralya ve Yeni Zelanda müşterileri için kimlik verisi depolama
+      href: active-directory-data-storage-australia-newzealand.md
     - name: Microsoft 365 Kamu’daki yenilikler
       href: whats-new-microsoft-365-government.md
     - name: Azure AD İşlem başvurusu

@@ -1,116 +1,113 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Sanal Makineler Belgeleri
+summary: Azure’da Windows veya Linux sanal makineleri oluşturma, dağıtma ve yönetme hakkında bilgi edinin.
+brand: azure
 metadata:
-  title: 'Azure Sanal Makine Belgeleri - Öğreticiler, API Başvurusu'
-  meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
+  title: Azure Sanal Makineler
+  description: Azure’da Windows veya Linux sanal makineleri oluşturma, dağıtma ve yönetme hakkında bilgi edinin.
   services: virtual-machines
-  author: georgewallace
-  manager: gwallace
   ms.service: virtual-machines
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: gwallace
-  description: Azure’da Windows ve Linux sanal makineleri oluşturup dağıtma hakkında bilgi edinin.
-sections:
-  - title: null
+  ms.topic: hub-page
+  author: cynthn
+  ms.author: cynthn
+  ms.date: 02/14/2020
+  ms.openlocfilehash: c226f41723fa3247a62af5dfa6318aa2cdd416ce
+  ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 02/16/2020
+  ms.locfileid: "77370634"
+highlightedContent:
+  items:
+  - title: Azure CLI’yi kullanarak Linux sanal makinesi oluşturma
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli
+  - title: PowerShell kullanarak Windows sanal makinesi oluşturma
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+  - title: Portalda sanal makine ölçek kümesi oluşturma
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal
+  - title: 'Spot VM’ler: Kullanılmayan kapasitemizden ciddi maliyet tasarruflarıyla yararlanın.'
+    itemType: concept
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms
+  - title: 'Ayrılmış konaklar: Bir veya daha çok sanal makineyi barındırmaya yönelik fiziksel sunucular.'
+    itemType: concept
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/dedicated-hosts
+  - title: 'Yakınlık yerleştirme grupları: Mümkün olan en yakındaki sanal makineleri daha düşük gecikme süresiyle edinin.'
+    itemType: how-to-guide
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups
+conceptualContent:
+  items:
+  - title: Linux sanal makineleri
+    links:
+    - url: https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros
+      itemType: concept
+      text: Doğrulanan dağıtımlar
+    - url: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks
+      itemType: tutorial
+      text: Diskleri oluşturma ve yönetme
+    - url: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder
+      itemType: how-to-guide
+      text: Azure Görüntü Oluşturucusu
+    footerLink:
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/
+      text: Daha fazla göster
+  - title: Windows sanal makineleri
+    links:
+    - url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+      itemType: how-to-guide
+      text: PowerShell kullanarak VM oluşturma
+    - url: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-data-disk
+      itemType: tutorial
+      text: Diskleri oluşturma ve yönetme
+    - url: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+      itemType: how-to-guide
+      text: Yönetilen kimlikleri yapılandırma
+    footerLink:
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/
+      text: Daha fazla göster
+  - title: Sanal makine ölçek kümeleri
+    links:
+    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-powershell
+      itemType: how-to-guide
+      text: PowerShell kullanarak ölçek kümesi oluşturma
+    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/orchestration-modes
+      itemType: concept
+      text: Düzenleme modları
+    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot
+      itemType: how-to-guide
+      text: Spot örneklerini kullanma
+    footerLink:
+      url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/
+      text: Daha fazla göster
+tools:
+  title: Araçlar
+  summary: Azure sanal makineleri ile çalışmaya yönelik araçlar.
+  items:
+  - title: Azure CLI
+    imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
+    url: https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest
+  - title: Azure PowerShell
+    imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
+    url: https://docs.microsoft.com/powershell/module/az.compute#virtual_machines
+  - title: REST API
+    imageSrc: https://docs.microsoft.com/azure/media/index/azure_dev-6.svg
+    url: https://docs.microsoft.com/rest/api/compute/virtualmachines
+additionalContent:
+  sections:
+  - title: Diğer kaynaklar
+    summary: Azure sanal makineleri ile çalışmaya yönelik ek kaynaklar.
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Windows Sanal Makineleri’ni kullanmaya başlama
-            href: /azure/virtual-machines/windows
-            image:
-              src: media/index/virtual-machines.svg
-              href: /azure/virtual-machines/windows
-          - title: Linux Sanal Makineleri’ni kullanmaya başlama
-            href: /azure/virtual-machines/linux
-            image:
-              src: media/index/get-started.svg
-              href: /azure/virtual-machines/linux
-  - title: 5 dakikalık Linux hızlı başlangıçları
-    items:
-      - type: paragraph
-        text: 'Ubuntu çalıştıran bir Sanal Makine içinde NGINX web sunucusu dağıtmayı öğrenin:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure portal
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-  - title: 5 dakikalık Windows hızlı başlangıçları
-    items:
-      - type: paragraph
-        text: 'Windows Server 2016 çalıştıran bir sanal makine içinde IIS web sunucusu dağıtmayı öğrenin:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=/azure/virtual-machines/windows/toc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/portal.svg'
-            text: Azure portal
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=/azure/virtual-machines/windows/toc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json'
-  - title: Microsoft Learn ile becerilerinizi geliştirin
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure işlemlerine giriş
-            href: /learn/modules/intro-to-azure-compute/
-            image:
-              src: /learn/achievements/intro-to-azure-compute.svg
-              href: /learn/modules/intro-to-azure-compute/
-          - title: Azure Sanal Makineler'e giriş
-            href: /learn/modules/intro-to-azure-virtual-machines/
-            image:
-              src: /learn/achievements/intro-to-azure-virtual-machines.svg
-              href: /learn/modules/intro-to-azure-virtual-machines/
-          - title: Azure Sanal Makineler'de disk ekleme ve boyutlandırma
-            href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
-            image:
-              src: /learn/achievements/add-and-size-disks-in-azure-virtual-machines.svg
-              href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-virtual-machines">Daha fazla etkileşimli öğrenme içeriği...</a>
-  - title: Ücretsiz Pluralsight Video Eğitimi
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Yöneticisi
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Komut Satırı
-            html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-          - title: Diller
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/compute">REST API başvurusu</a></p>
+    - title: Öğrenin
+      links:
+      - text: Öğrenme modüllerine göz atın
+        url: https://docs.microsoft.com/learn/browse/?products=azure-virtual-machines
+    - title: Şablon galerisi
+      links:
+      - text: Hızlı başlangıç şablonu galerisine göz atın
+        url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
+    - title: Sorun giderme
+      links:
+      - text: Sorun giderme hakkında bilgiler
+        url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/

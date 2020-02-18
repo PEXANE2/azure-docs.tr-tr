@@ -32,6 +32,10 @@
         - name: Veri almaya genel bakış
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Kusto Sorgu Dili
+      items:
+        - name: Hızlı başvuru kılavuzu
+          href: kql-quick-reference.md
     - name: Veri görselleştirmeye genel bakış
       href: viz-overview.md
     - name: Güvenliğe genel bakış

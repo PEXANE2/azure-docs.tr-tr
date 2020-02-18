@@ -245,6 +245,8 @@
           items:
             - name: Bağlantı hatalarını giderme
               href: howto-troubleshoot-common-connection-issues.md
+            - name: Veri şifreleme sorunlarını giderme
+              href: howto-data-encryption-troubleshoot.md
         - name: Gelişmiş Tehdit Koruması
           items:
             - name: Azure portal

@@ -1,18 +1,18 @@
 ---
 title: Azure Bloblarını Azure Veri Gezgini 'a alma
 description: Bu makalede, Azure Veri Gezgini bir Event Grid aboneliği kullanarak depolama hesabı verilerinin nasıl gönderileceğini öğreneceksiniz.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667492"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424992"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid bildirimlerine abone olarak Azure Veri Gezgini blob alma
 
@@ -50,8 +50,8 @@ Bu makalede, bir [Azure Event Grid](/azure/event-grid/overview) aboneliğini aya
     | Konu kaynağı | *gridteststorage* | Depolama hesabınızın adı. |
     | Tüm olay türlerine abone ol | *lediğiniz* | Tüm olaylar hakkında bildirim alın. |
     | Tanımlı olay türleri | *Blob oluşturuldu* | Hangi belirli olaylara bildirim alınacak? |
-    | Uç nokta türü | *Olay Hub 'ları* | Olayları göndereceğiniz uç noktanın türü. |
-    | Uç nokta | *test-hub* | Oluşturduğunuz olay hub'ı. |
+    | Uç nokta türü | *Olay hub’ları* | Olayları göndereceğiniz uç noktanın türü. |
+    | Uç Nokta | *test-hub* | Oluşturduğunuz olay hub'ı. |
     | | |
 
 1. Belirli bir kapsayıcıdan dosyaları izlemek istiyorsanız **Filtreler** sekmesini seçin. Bildirimlerin filtrelerini aşağıdaki gibi ayarlayın:
@@ -157,6 +157,11 @@ Verileri bir dosyaya kaydedin ve bu komut dosyasıyla karşıya yükleyin:
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Azure Veri Gezgini, Blobların gönderisini silmez.
+> Beş güne kadar olan Blobları saklayın.
+> Blob silmeyi yönetmek için [Azure Blob depolama yaşam döngüsünü](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) kullanın. 
 
 ## <a name="review-the-data-flow"></a>Veri akışını inceleme
 

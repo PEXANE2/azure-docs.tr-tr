@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: Erişim denetimi ilkesi kullanma
           href: key-vault-group-permissions-for-apps.md
+        - name: HSM korumalı anahtarları içeri aktarma
+          items:
+            - name: Genel Bakış
+              href: key-vault-hsm-protected-keys.md
+            - name: HSM korumalı anahtarları Key Vault’a içeri aktarma (önizleme)
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: HSM korumalı anahtarları Key Vault’a içeri aktarma (eski)
+              href: hsm-protected-keys-legacy.md
     - name: Event Grid ile anahtar kasası bildirimlerini yönlendirme
       href: event-grid-tutorial.md
     - name: Event Grid ve Logic Apps aracılığıyla bildirim alma
@@ -170,8 +178,6 @@
       items:
         - name: Geliştirici kılavuzu
           href: key-vault-developers-guide.md
-        - name: HSM ile korunan anahtarlar
-          href: key-vault-hsm-protected-keys.md
         - name: .NET 2.0’a geçiş
           href: key-vault-dotnet2api-release-notes.md
         - name: Web Uygulaması gizli dizilerini kaydetme
