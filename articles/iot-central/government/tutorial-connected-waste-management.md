@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016502"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426369"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * İşleri yapılandırma
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 -  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
@@ -129,7 +129,7 @@ Azure IoT Central bir cihaz şablonu, telemetri, özellikler veya komut olabilen
 
 Cihaz şablonunu görüntülemek için:
 
-1. IoT Central ' de uygulamanızın sol gezinti bölmesinden **cihaz şablonları** ' na tıklayın. 
+1. IoT Central ' de uygulamanızın sol bölmesindeki **cihaz şablonları** ' na tıklayın. 
 
     ![Cihaz şablonu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazla
 
 ### <a name="to-view-the-devices"></a>Cihazları görüntülemek için:
 
-1. IoT Central sol gezinti bölmesinden **cihaz** ' a gidin. 
+1. IoT Central sol bölmeden **cihaz** ' a gidin. 
 
    ![Cihazlar](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar o
 **Bağlı çöp yönetimi** uygulamasının dört örnek kuralı vardır.
 
 ### <a name="to-view-rules"></a>Kuralları görüntülemek için:
-1. IoT Central sol gezinti bölmesinden **kurallara** git
+1. IoT Central sol bölmedeki **kurallara** git
 
    ![Kurallar](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Yapılandırılan **koşul** karşılandığında e-posta almalısınız.
 > Bir koşul her karşılandığında uygulama e-posta gönderir. Otomatik kuraldan e-posta almayı durdurma kuralını **devre dışı bırakın** . 
   
 Yeni bir kural oluşturmak için: 
-1. Sol gezinti bölmesindeki **kurallarda** **+ Yeni** ' yi seçin.
+1. Sol bölmedeki **kurallarda** **+ Yeni** ' yi seçin.
 
 ## <a name="configure-jobs"></a>Işleri yapılandırma
 
 IoT Central, işler cihaz veya bulut özellikleri güncelleştirmelerini birden çok cihazda tetiklemeniz sağlar. Özelliklere ek olarak, birden çok cihazda cihaz komutlarını tetiklemek için işleri de kullanabilirsiniz. IoT Central, iş akışını sizin için otomatikleştirecektir. 
 
-1. Sol gezinti bölmesindeki **işler** ' e gidin. 
+1. Sol bölmedeki **işler** ' e gidin. 
 2. **+ Yeni** ' ye tıklayın ve bir veya daha fazla iş yapılandırın. 
 
 

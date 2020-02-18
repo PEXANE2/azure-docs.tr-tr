@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 3b96ded52aa2148df9e96d6f1e878d50b821abab
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170473"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424924"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>Sogeign bulutları ile konuşma Hizmetleri
 
 ## <a name="azure-government-united-states"></a>Azure Kamu (Birleşik Devletler)
 
-Denetim altındaki ABD vatandaşları tarafından kontrol edilen işlemlerle bu adanmış örneğe yalnızca ABD’deki federal, eyalet, yerel ve kabile devlet kurumları ile bunların iş ortakları erişebilir.
+Yalnızca ABD Federal, eyalet, yerel ve kaş kamu kurumları ve iş ortakları, denetimli ABD vatandaşları tarafından denetlenen işlemlerle bu adanmış örneğe erişebilir.
 - Bölgeler: US Gov Virginia
 - SpeechSDK 'de SR:*config. FromHost ("WSS://Virginia.STT.Speech.Azure.us", "\<anahtarınızı\>");*
 - SpeechSDK: config içinde TTS *. FromHost ("https[]()://Virginia.TTS.Speech.Azure.us", "\<anahtarınızı\>");*
@@ -35,7 +35,7 @@ Denetim altındaki ABD vatandaşları tarafından kontrol edilen işlemlerle bu 
   - Metin Okuma
   - Konuşma Çeviricisi
 - Desteklenmeyen özellikler
-  - Özel Ses
+  - Özel ses
   - Metin okuma için sinir sesleri
 - Desteklenen yerel ayarlar: aşağıdaki diller için yerel ayarlar desteklenir.
   - Arapça (ar-*)
@@ -54,7 +54,7 @@ Denetim altındaki ABD vatandaşları tarafından kontrol edilen işlemlerle bu 
 - Bölgeler: Çin Doğu 2 (Shanghai)
 - SpeechSDK 'de SR: *config. FromHost ("WSS://chinaeast2.STT.Speech.Azure.cn", "\<anahtarınızı\>");*
 - SpeechSDK: config içinde TTS *. FromHost ("https[]()://chinaeast2.TTS.Speech.Azure.cn", "\<anahtarınızı\>");*
-- Kimlik doğrulama belirteçleri:[]()https://chinaeast2.api.Cognitive.Microsoft.cn/STS/v1.0/issueToken
+- Kimlik doğrulama belirteçleri:[]()https://chinaeast2.api.Cognitive.Azure.cn/STS/v1.0/issueToken
 - Azure portalı: https://portal.azure.cn
 - Özel Konuşma Tanıma Portalı: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
 - Kullanılabilir SKU 'Lar: S0
@@ -64,7 +64,7 @@ Denetim altındaki ABD vatandaşları tarafından kontrol edilen işlemlerle bu 
   - Metin Okuma
   - Konuşma Çeviricisi
 - Desteklenmeyen özellikler
-  - Özel Ses
+  - Özel ses
   - Metin okuma için sinir sesleri
 - Desteklenen yerel ayarlar: aşağıdaki diller için yerel ayarlar desteklenir.
   - Arapça (ar-*)

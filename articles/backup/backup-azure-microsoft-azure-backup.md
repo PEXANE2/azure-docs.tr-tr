@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111603"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425196"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -92,7 +92,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Bir kurtarma hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' a tıklayın.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
@@ -163,14 +163,15 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 2. Hoş Geldiniz ekranında **İleri** düğmesine tıklayın. Bu sizi *önkoşul denetimleri* bölümüne götürür. Bu ekranda, Azure Backup Sunucusu için donanım ve yazılım önkoşullarının karşılanıp karşılanmadığını öğrenmek için **Denetle** ' ye tıklayın. Tüm Önkoşullar başarılı bir şekilde karşılanıyorsa, makinenin gereksinimleri karşıladığını belirten bir ileti görürsünüz. **İleri** düğmesine tıklayın.
 
     ![Azure Backup Sunucusu-hoş geldiniz ve önkoşul denetimi](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup sunucu SQL Server Enterprise gerektiriyor. Ayrıca, Azure Backup Sunucusu yükleme paketi, kendi SQL 'nizi kullanmak istemediğiniz durumlarda gerekli olan uygun SQL Server ikili dosyalarla birlikte paketlenmiştir. Yeni bir Azure Backup Sunucusu yüklemesiyle Başlarken, **Bu kurulum ile yeni SQL Server örneğini yükleme** seçeneğini seçmeniz ve **Çek ve yükleme** düğmesine tıklamanız gerekir. Önkoşullar başarıyla yüklendikten sonra **İleri**' ye tıklayın.
+3. Azure Backup Sunucusu yükleme paketi, gereken uygun SQL Server ikilileriyle birlikte paketlenmiştir. Yeni bir Azure Backup Sunucusu yüklemesi başlatırken, **Bu kurulum ile yeni SQL Server örneğini yükleme** seçeneğini belirleyin ve **Çek ve yükleme** düğmesine tıklayın. Önkoşullar başarıyla yüklendikten sonra **İleri**' ye tıklayın.
+
+    >[!NOTE]
+    >Kendi SQL Server 'nizi kullanmak istiyorsanız desteklenen SQL Server sürümleri SQL Server 2014 SP1 veya üzeri, 2016 ve 2017.  Tüm SQL Server sürümleri Standard veya Enterprise 64-bit olmalıdır.
+    >Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmayacak. Azure Backup Sunucusu tarafından kullanılan örneğin yerel olması gerekir. MABS için mevcut bir SQL Server kullanıyorsanız, MABS kurulumu yalnızca SQL Server 'ın *adlandırılmış örneklerinin* kullanılmasını destekler.
 
     ![Azure Backup Sunucusu-SQL denetimi](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
     Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' ye tıklayın. Herhangi bir SQL yapılandırma sorunu varsa, SQL yönergeleri başına SQL 'i yeniden yapılandırın ve mevcut SQL örneğini kullanarak MABS 'i yüklemeyi/yükseltmeyi yeniden deneyin.
-
-   > [!NOTE]
-   > Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmayacak. Azure Backup Sunucusu tarafından kullanılan örneğin yerel olması gerekir. Mabs için mevcut bir SQL Server kullanıyorsanız, MABS kurulumu yalnızca SQL Server 'ın *adlandırılmış örneklerinin* kullanılmasını destekler.
 
    **El ile yapılandırma**
 

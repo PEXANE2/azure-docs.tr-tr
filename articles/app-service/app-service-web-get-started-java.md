@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Windows üzerinde Java uygulaması oluşturma'
-description: Birkaç dakika içinde Windows üzerinde Azure App Service için ilk Java Merhaba Dünya dağıtın. App Service için Maven eklentisi, Java uygulamalarını dağıtmayı kullanışlı hale getirir.
+description: Birkaç dakika içinde Windows üzerinde Azure App Service için ilk Java Merhaba Dünya dağıtın. Maven için Azure Web uygulaması eklentisi, Java uygulamalarını dağıtmayı kullanışlı hale getirir.
 keywords: Azure, App Service, Web uygulaması, Windows, Java, Maven, hızlı başlangıç
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672169"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425398"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı başlangıç: Windows üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "74672169"
 > Bu makalede bir uygulamanın Windows üzerinde App Service'e dağıtımı yapılır. _Linux_üzerinde App Service dağıtmak için bkz. [Linux üzerinde Java Web uygulaması oluşturma](./containers/quickstart-java.md).
 >
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, Java Web arşivi (WAR) dosyasını dağıtmak üzere [Azure App Service Için Maven eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, bir Java Web arşivi (WAR) dosyası dağıtmak üzere [Maven için Azure Web App eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
 > Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
@@ -43,13 +43,13 @@ mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -Darchetyp
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
 
-Maven'dan dağıtım için, Cloud Shell'deki kod düzenleyiciyi kullanarak `helloworld` dizinindeki proje `pom.xml` dosyasını açın. 
+Maven'dan dağıtım için, Cloud Shell'deki kod düzenleyiciyi kullanarak `pom.xml` dizinindeki proje `helloworld` dosyasını açın. 
 
 ```bash
 code pom.xml
 ```
 
-Sonra `pom.xml` dosyasının `<build>` öğesinin içine aşağıdaki eklenti tanımını ekleyin.
+Sonra `<build>` dosyasının `pom.xml` öğesinin içine aşağıdaki eklenti tanımını ekleyin.
 
 ```xml
 <plugins>

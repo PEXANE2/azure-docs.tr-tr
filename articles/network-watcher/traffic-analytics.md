@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212243"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426235"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -59,7 +59,7 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
-* Kanada Orta
+* Orta Kanada
 * Orta Batı ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -68,28 +68,28 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Orta ABD
 * Batı ABD
 * Batı ABD 2
-* Fransa Orta
+* Orta Fransa
 * Batı Avrupa
 * Kuzey Avrupa
-* Brezilya Güney
-* UK Batı
-* UK Güney
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Güney Brezilya
+* Batı Birleşik Krallık
+* Güney Birleşik Krallık
+* Doğu Avustralya
+* Güneydoğu Avustralya
 * Doğu Asya
 * Güneydoğu Asya
-* Kore Orta
+* Güney Kore - Orta
 * Orta Hindistan
 * Güney Hindistan
-* Japonya Doğu 
-* Japonya Batı
+* Doğu Japonya 
+* Batı Japonya
 * US Gov Virginia
 * Çin Doğu 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-* Kanada Orta
+* Orta Kanada
 * Orta Batı ABD
 * Doğu ABD
 * Doğu ABD 2
@@ -99,19 +99,19 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Batı ABD
 * Batı ABD 2
 * Orta ABD
-* Fransa Orta
+* Orta Fransa
 * Batı Avrupa
 * Kuzey Avrupa
-* Brezilya Güney
-* UK Batı
-* UK Güney
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Güney Brezilya
+* Batı Birleşik Krallık
+* Güney Birleşik Krallık
+* Doğu Avustralya
+* Güneydoğu Avustralya
 * Doğu Asya
 * Güneydoğu Asya
-* Kore Orta
+* Güney Kore - Orta
 * Orta Hindistan
-* Japonya Doğu
+* Doğu Japonya
 * US Gov Virginia
 * Çin Doğu 2
 
@@ -184,9 +184,6 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 2. **Akış günlükleri sürümü**için *sürüm 2* ' yi seçin. Sürüm 2, akış oturumu istatistikleri içerir (bayt ve paket)
 3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. Depolama alanınız "Data Lake Storage 2. hiyerarşik ad alanı etkin değil" özelliğinin true olarak ayarlandığından emin olun.
 4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın.
-> [!IMPORTANT]
-> Şu anda ağ Izleyicisi için ağ [güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) , bekletme ilkesi ayarlarına göre blob depolamadan otomatik olarak silinmediği bir sorun vardır. Sıfır olmayan bir bekletme ilkeniz varsa, herhangi bir ücret ödemeden kaçınmak için saklama süresini aşan depolama bloblarını düzenli aralıklarla silmenizi öneririz. NSG akış günlüğü depolama blogunu silme hakkında daha fazla bilgi için bkz. [NSG akış günlüğü depolama Bloblarını silme](network-watcher-delete-nsg-flow-log-blobs.md).
-
 5. **Trafik Analizi durumu**Için *Açık '* ı seçin.
 6. İşleme aralığını seçin. Seçim yapmanız temelinde, akış günlüklerinizi depolama hesabından toplanacak ve Trafik Analizi tarafından işlenir. Her 1 saatte bir veya 10 dakikada bir işleme aralığı seçebilirsiniz. 
 7. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

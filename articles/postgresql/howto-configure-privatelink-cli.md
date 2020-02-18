@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281317"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425536"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>CLı kullanarak PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-tek sunucu (Önizleme)
 
@@ -20,7 +20,7 @@ ms.locfileid: "76281317"
 > [!NOTE]
 > Bu özellik, PostgreSQL için Azure veritabanı 'nın tek sunuculu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
@@ -38,7 +38,7 @@ Herhangi bir kaynak oluşturabilmeniz için önce sanal ağı barındırmak üze
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Sanal Ağ Oluştur
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 [Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
@@ -129,9 +129,9 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. İndirilen. rdp * dosyasını açın.
+1. *İndirilen. rdp* dosyasını açın.
 
     1. İstendiğinde **Bağlan**’ı seçin.
 
@@ -159,30 +159,31 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) kullandım.
 
-4. In **New connection**, enter or select this information:
+4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
-    | Setting | Value |
+    | Ayar | Değer |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | Sunucu türü| **PostgreSQL**' i seçin.|
+    | Sunucu adı| *Mydemopostgresserver.Privatelink.Postgres.Database.Azure.com* seçin |
+    | Kullanıcı adı | PostgreSQL sunucu oluşturma sırasında belirtilen username@servername Kullanıcı adı girin. |
+    |Parola |PostgreSQL sunucusu oluşturma sırasında bir parola girin. |
+    |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Select Connect.
+5. Bağlan ' ı seçin.
 
-6. Browse databases from left menu.
+6. Sol menüden veritabanlarına gözatamazsınız.
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. I PostgreSQL sunucusundan bilgi oluşturun veya sorgulayın.
 
-8. Close the remote desktop connection to myVm.
+8. MyVm ile uzak masaüstü bağlantısını kapatın.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Kaynakları temizleme 
+Artık gerekli değilse, az Group DELETE ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

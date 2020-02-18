@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046312"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425265"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -95,10 +95,20 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 - **Geçerli bağlantılar**
 
    İstemcilerden Application Gateway etkin olan eşzamanlı bağlantıların toplam sayısı
+   
+- **Tahmini faturalandırılan Kapasite birimleri**
+
+  Faturalandırmayı tahmin eden Kapasite birimi sayısı. Bu, *geçerli kapasite birimleri* ve *sabit faturalanabilir Kapasite birimleri*arasında daha büyük bir değer olarak kullanılır.  
 
 - **Başarısız Istekler**
 
    Application Gateway tarafından sunulan başarısız istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
+   
+- **Sabit faturalanabilir Kapasite birimleri** Application Gateway yapılandırmasındaki *Minimum ölçek birimi* ayarlarına göre sağlanmakta olan kapasite birimi sayısı alt sınırı.
+   
+ - **Saniyedeki yeni bağlantı sayısı**
+
+   İstemcilerden Application Gateway ve Application Gateway arka uç üyelerine kurulan saniye başına yeni TCP bağlantısı sayısı.
 
 
 - **Yanıt durumu**

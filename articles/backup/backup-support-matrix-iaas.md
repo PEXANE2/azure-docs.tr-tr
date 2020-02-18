@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 1dd060840e589d601d87d8be235eda5c34283a4f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 0bc66939fc6bd150d57242f144cdb032db8188d1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369896"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425060"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, Windows Azure VM 'Leri yedeklenirken desteklenen işletim 
 
 **Senaryo** | **İşletim sistemi desteği**
 --- | ---
-Azure VM Aracısı Uzantısı ile yedekleme | -Windows 10 Istemcisi (yalnızca 64 bit) <br/><br/>-Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)  <br/><br/> -Windows 2008 (yalnızca 64 bit)
+Azure VM Aracısı Uzantısı ile yedekleme | -Windows 10 Istemcisi (yalnızca 64 bit) <br/><br/>-Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)  <br/><br/> -Windows Server 2008 (yalnızca 64 bit)
 MARS Aracısı ile yedekleme | [Desteklenen](backup-support-matrix-mars-agent.md#support-for-direct-backups) işletim sistemleri.
 DPM/MABS ile yedekleme | [Mabs](backup-mabs-protection-matrix.md) ve [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)ile yedekleme için desteklenen işletim sistemleri.
 
@@ -212,10 +212,10 @@ Veri güvenliği:
 
 **Makin** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
-Azure VM’leri | ![Evet][green] | ![Evet][green]
-DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+DPM/MABS olmayan şirket içi Windows makineleri | ![Yes][green] | ![Yes][green]
+Azure VM’leri | ![Yes][green] | ![Yes][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
 
 ## <a name="vm-compression-support"></a>VM sıkıştırma desteği
 
@@ -226,10 +226,10 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makin** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Evet][green]
+DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
 Azure VM’leri | NA | NA
-DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

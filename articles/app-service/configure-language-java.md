@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889349"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425298"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
 
@@ -24,7 +24,7 @@ Bu kılavuz, App Service ' de kullanarak Java geliştiricileri için temel kavra
 
 ## <a name="deploying-your-app"></a>Uygulamanızı dağıtma
 
-[Azure App Service Için Maven eklentisini](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) ,. war dosyalarınızı dağıtmak için kullanabilirsiniz. Popüler Ides ile dağıtım, [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) veya [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)ile de desteklenir.
+[Maven Için Azure Web App eklentisini](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) ,. war dosyalarınızı dağıtmak için kullanabilirsiniz. Popüler Ides ile dağıtım, [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) veya [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)ile de desteklenir.
 
 Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
@@ -120,7 +120,7 @@ Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını y
 
 Tomcat uygulamalarının performansını artırmak için, App Service dağıtım yapmadan önce JSP dosyalarınızı derleyebilirsiniz. Apache Sling tarafından sağlanmış [Maven eklentisini](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) veya bu [ant derleme dosyasını](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)kullanarak kullanabilirsiniz.
 
-## <a name="secure-applications"></a>Uygulamaları güvenli hale getirme
+## <a name="secure-applications"></a>Güvenli uygulamalar
 
 App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](/azure/security/security-paas-applications-using-app-services) uygulamaları kümesine sahiptir.
 
@@ -209,7 +209,7 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 
 Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları, seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyası ile doldurmanız gerekir. , Ortak veritabanları için sınıf adları ve sürücü indirmeleri içeren bir tablodur.
 
-| Veritabanı   | Sürücü sınıfı adı                             | JDBC Sürücüsü                                                                      |
+| Database   | Sürücü sınıfı adı                             | JDBC sürücüsü                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("platformdan bağımsız" seçeneğini belirleyin) |

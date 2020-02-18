@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046425"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425316"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -39,7 +39,7 @@ Bu nasıl yapılır kılavuzunu izlemek için:
 ## <a name="private-certificate-requirements"></a>Özel sertifika gereksinimleri
 
 > [!NOTE]
-> Azure Web Apps, **AES256 desteklemez ve** tüm PFX dosyaları TrippleDES ile şifrelenmelidir.
+> Azure Web Apps, **AES256 desteklemez ve** tüm PFX dosyaları TripleDES ile şifrelenmelidir.
 
 [Ücretsiz App Service yönetilen sertifika](#create-a-free-certificate-preview) veya [App Service sertifikası](#import-an-app-service-certificate) App Service gereksinimlerini zaten karşılamış. App Service bir özel sertifikayı karşıya yüklemeyi veya aktarmayı seçerseniz, sertifikanızın aşağıdaki gereksinimleri karşılaması gerekir:
 

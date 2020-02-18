@@ -3,19 +3,19 @@ title: Bant altyapınızı değiştirme
 description: Azure Backup Azure 'da verileri yedeklemeve geri yüklemenize olanak tanıyan bant benzeri semantiğini nasıl sağladığını öğrenin
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4659a4d6fcc7213f8323e23d59411680276fcb28
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173305"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425111"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uzun vadeli depolama alanınızı teypten Azure bulutuna taşıma
 
 Azure Backup ve System Center Data Protection Manager müşteriler şunları yapabilir:
 
 * Kurumsal ihtiyaçlarına en uygun olan zamanlamaya göre verileri yedekleyin.
-* Yedekleme verilerini uzun süreler boyunca sakla
+* Yedekleme verilerini uzun süreler boyunca tutun.
 * Azure 'ı uzun süreli bekletme gereksinimlerinin bir parçası yapın (bant yerine).
 
 Bu makalede, müşterilerin yedekleme ve bekletme ilkelerini nasıl etkinleştirebileceği açıklanmaktadır. Uzun süreli bekletme ihtiyaçlarını karşılamak için bantları kullanan müşterilerin artık bu özelliğin kullanılabilirliğine yönelik güçlü ve uygun bir alternatifi vardır. Özellik, Azure Backup en son sürümünde etkinleştirilir ( [burada](https://aka.ms/azurebackup_agent)kullanılabilir). System Center DPM müşterilerinin, Azure Backup hizmetiyle DPM 'yi kullanmadan önce, en azından DPM 2012 R2 UR5 ' ye güncelleştirilmesi gerekir.
@@ -43,9 +43,9 @@ Bu ilkede belirtilen toplam "bekletme noktası" sayısı 90 (günlük puntolar) 
 ![Örnek ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Günlük bekletme ilkesi**: günlük alınan yedeklemeler yedi gün boyunca depolanır.
-2. **Haftalık bekletme ilkesi**: gece yarısı ve 18:00 Cumartesi günleri her gün alınan yedeklemeler dört hafta boyunca korunur
-3. **Aylık bekletme ilkesi**: her ayın son Cumartesi günü gece yarısı ve 18:00 'de alınan yedeklemeler 12 ay boyunca korunur
-4. **Yıllık bekletme ilkesi**: her Mart 'ın son Cumartesi günü gece yarısından alınan yedeklemeler 10 yıl boyunca korunur
+2. **Haftalık bekletme ilkesi**: gece yarısı ve 6 PM Cumartesi günü dört hafta boyunca korunur.
+3. **Aylık bekletme ilkesi**: her ayın son Cumartesi günü gece yarısı ve 6 PM 'de alınan yedeklemeler 12 ay boyunca korunur.
+4. **Yıllık bekletme ilkesi**: her Mart 'ın son Cumartesi günü gece yarısından alınan yedeklemeler 10 yıl boyunca korunur.
 
 Önceki diyagramda bulunan toplam "bekletme noktası" (bir müşterinin verileri geri yükleme) sayısı aşağıdaki şekilde hesaplanır:
 
@@ -57,7 +57,7 @@ Bu ilkede belirtilen toplam "bekletme noktası" sayısı 90 (günlük puntolar) 
 Toplam kurtarma noktası sayısı 56 ' dir.
 
 > [!NOTE]
-> Azure Backup kullanarak, korumalı örnek başına en fazla 9999 kurtarma noktası oluşturabilirsiniz. Korumalı örnek, Azure 'a yedekleyen bir bilgisayar, sunucu (fiziksel veya sanal) veya iş yüküdür.
+> Azure Backup kullanarak, korumalı örnek başına en fazla 9999 kurtarma noktası oluşturabilirsiniz. Korumalı örnek, Azure’a yedeklenen bir bilgisayar, sunucu (fiziksel veya sanal) veya iş yüküdür.
 >
 
 ## <a name="advanced-configuration"></a>Gelişmiş yapılandırma

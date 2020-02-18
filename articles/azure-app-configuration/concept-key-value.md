@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: fbb30b0a290011a5edfb05c1de9b5d4717a5f733
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898697"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425230"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
 
@@ -25,7 +25,7 @@ Uygulama çerçeveleri içindeki yapılandırma verilerinin kullanımı, anahtar
 
 Uygulama yapılandırmasında depolanan anahtarlar büyük/küçük harfe duyarlıdır ve Unicode tabanlı dizelerdir. *APP1* ve *APP1* anahtarları bir uygulama yapılandırma deposunda farklıdır. Bir uygulama içinde yapılandırma ayarlarını kullandığınızda bu durumu aklınızda tutun çünkü bazı çerçeveler yapılandırma anahtarlarını işle-insensitively. Örneğin, ASP.NET Core yapılandırma sistemi anahtarları büyük/küçük harfe duyarsız dizeler olarak değerlendirir. Uygulama yapılandırmasını bir ASP.NET Core uygulama içinde sorguladığınızda öngörülemeyen davranışları önlemek için, yalnızca büyük/küçük harf bakımından farklı anahtarlar kullanmayın.
 
-`*`, `,`ve `\`dışında, uygulama yapılandırmasına girilen anahtar adlarında herhangi bir Unicode karakteri kullanabilirsiniz. Bu karakterler ayrılmıştır. Ayrılmış bir karakter eklemeniz gerekiyorsa, `\{Reserved Character}`kullanarak bunu atlamanız gerekir. Anahtar-değer çiftinde 10.000 karakterlik Birleşik boyut sınırı vardır. Bu sınır, anahtardaki tüm karakterleri, değerini ve ilişkili tüm isteğe bağlı öznitelikleri içerir. Bu sınırın içinde, anahtarlar için birçok hiyerarşi düzeyine sahip olabilirsiniz.
+`*`, `,`ve `\`dışında, uygulama yapılandırmasına girilen anahtar adlarında herhangi bir Unicode karakteri kullanabilirsiniz. Bu karakterler ayrılmıştır. Ayrılmış bir karakter eklemeniz gerekiyorsa, `\{Reserved Character}`kullanarak bunu atlamanız gerekir. Anahtar-değer çiftinde 10 KB 'lık Birleşik boyut sınırı vardır. Bu sınır, anahtardaki tüm karakterleri, değerini ve ilişkili tüm isteğe bağlı öznitelikleri içerir. Bu sınırın içinde, anahtarlar için birçok hiyerarşi düzeyine sahip olabilirsiniz.
 
 ### <a name="design-key-namespaces"></a>Anahtar ad alanlarını tasarlama
 
@@ -51,7 +51,7 @@ Anahtar adlarınızı bir hiyerarşiye nasıl yapılandıracağınıza dair birk
 
 ### <a name="label-keys"></a>Etiket anahtarları
 
-Uygulama yapılandırmasındaki anahtar değerler, isteğe bağlı olarak bir Label özniteliğine sahip olabilir. Etiketler, anahtar değerlerini aynı anahtarla ayırt etmek için kullanılır. *A* ve *B* etiketleri ile bir Key *APP1* , bir uygulama yapılandırma deposundaki iki ayrı anahtarı oluşturur. Varsayılan olarak, bir anahtar değeri için etiket boştur veya `null`.
+Uygulama yapılandırmasındaki anahtar değerler, isteğe bağlı olarak bir Label özniteliğine sahip olabilir. Etiketler, anahtar değerlerini aynı anahtarla ayırt etmek için kullanılır. *A* ve *B* etiketleri ile bir Key *APP1* , bir uygulama yapılandırma deposundaki iki ayrı anahtarı oluşturur. Varsayılan olarak, bir anahtar değerinin etiketi yoktur. Etiket olmadan bir anahtar değerine açıkça başvurmak için `\0` kullanın (URL `%00`olarak kodlanır).
 
 Etiket, bir anahtarın türevlerini oluşturmak için kullanışlı bir yol sağlar. Etiketlerin yaygın kullanımı, aynı anahtar için birden çok ortam belirtmektir:
 
@@ -74,20 +74,16 @@ Her anahtar değeri, anahtarı ve `null`olabilecek bir etiket tarafından benzer
 | `key` atlanmış veya `key=*` | Tüm anahtarlarla eşleşir |
 | `key=abc` | **ABC** anahtar adı tam olarak eşleşir |
 | `key=abc*` | **ABC** ile başlayan anahtar adlarını eşleştirir |
-| `key=*abc` | **ABC** ile biten anahtar adlarını eşleştirir |
-| `key=*abc*` | **ABC** içeren anahtar adlarını eşleştirir |
 | `key=abc,xyz` | **ABC** veya **xyz**anahtar adlarını eşleştirir, beş CSV ile sınırlıdır |
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
-| Etiket | |
+| Etiketle | |
 |---|---|
 | `label` atlanmış veya `label=*` | `null` içeren herhangi bir etiketle eşleşir |
 | `label=%00` | `null` etiketiyle eşleşir |
 | `label=1.0.0` | Label **1.0.0** ile tam olarak eşleşir |
 | `label=1.0.*` | 1,0 ile başlayan etiketlerle eşleşir **.** |
-| `label=*.0.0` | İle biten etiketlerle eşleşir **. 0,0** |
-| `label=*.0.*` | **. 0** içeren etiketlerle eşleşir. |
 | `label=%00,1.0.0` | `null` veya **1.0.0**etiketleriyle eşleşir, beş CSV ile sınırlıdır |
 
 ## <a name="values"></a>Değerler

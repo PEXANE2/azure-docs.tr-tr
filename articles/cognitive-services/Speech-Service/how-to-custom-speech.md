@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368318"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425009"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -62,7 +62,7 @@ Veriler, modeller, testler ve uç noktalar gibi içerikler [özel konuşma tanı
 İlk projenizi oluşturmak için **konuşmayı metne/özel konuşmayı**seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Bir projeyi oluşturduktan sonra, dört sekme görmeniz gerekir: **veri**, **Test**, **eğitim**ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
 
 > [!IMPORTANT]
-> [Özel konuşma tanıma portalı](https://aka.ms/custom-speech) yakın zamanda güncelleştirildi! CRıS portalındaki veya API 'lerde bulunan veri, model, test ve yayımlanan uç noktalarla önceki projeler oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.
+> [Özel konuşma tanıma portalı](https://aka.ms/custom-speech) yakın zamanda güncelleştirildi! CRIS.ai portalında veya API 'lerle önceki veriler, modeller, testler ve yayımlanmış uç noktalar oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

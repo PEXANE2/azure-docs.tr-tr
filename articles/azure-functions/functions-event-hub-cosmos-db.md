@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849845"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425332"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Öğretici: bir olay hub 'ı tetikleyicisi ve bir Azure Cosmos DB çıktı bağlaması ile Java 'da işlev oluşturma
 
@@ -36,6 +36,8 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdakilerin yüklü olması gereki
 
 > [!IMPORTANT]
 > Bu öğreticiyi tamamlayabilmeniz için `JAVA_HOME` ortam değişkeni JDK 'nin Install konumuna ayarlanmalıdır.
+
+Bu öğreticide doğrudan kodu kullanmayı tercih ediyorsanız, bkz. [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) örnek deposu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -106,7 +108,7 @@ az eventhubs eventhub authorization-rule create \
 
 Event Hubs ad alanı gerçek olay hub 'ını ve yetkilendirme kuralını içerir. Yetkilendirme kuralı, işlevlerinizin hub 'a ileti göndermesini ve ilgili olayları dinlemesini sağlar. Bir işlev telemetri verilerini temsil eden iletiler gönderir. Başka bir işlev olayları dinler, olay verilerini analiz eder ve sonuçları Azure Cosmos DB depolar.
 
-### <a name="create-an-azure-cosmos-db"></a>Bir Azure Cosmos DB oluşturun
+### <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB oluşturma
 
 Ardından, aşağıdaki komutları kullanarak bir Azure Cosmos DB hesabı, veritabanı ve koleksiyonu oluşturun:
 
@@ -201,7 +203,7 @@ Azure kaynaklarınız artık oluşturulmuştur ve birlikte düzgün çalışacak
 
 ## <a name="create-and-test-your-functions"></a>İşlevlerinizi oluşturma ve test etme
 
-Ardından, yerel makinenizde bir proje oluşturacak, Java kodunu ekleyecek ve test edersiniz. Azure Işlevleri ve Azure Functions Core Tools Maven eklentisi ile çalışan komutları kullanacaksınız. İşlevleriniz yerel olarak çalışır, ancak oluşturduğunuz bulut tabanlı kaynakları kullanacaktır. Yerel olarak çalışan işlevleri aldıktan sonra, Maven kullanarak bunları buluta dağıtabilir ve veri ve analiz birikmesini izleyebilirsiniz.
+Ardından, yerel makinenizde bir proje oluşturacak, Java kodunu ekleyecek ve test edersiniz. Maven ve Azure Functions Core Tools için Azure Işlevleri eklentisi ile çalışan komutları kullanacaksınız. İşlevleriniz yerel olarak çalışır, ancak oluşturduğunuz bulut tabanlı kaynakları kullanacaktır. Yerel olarak çalışan işlevleri aldıktan sonra, Maven kullanarak bunları buluta dağıtabilir ve veri ve analiz birikmesini izleyebilirsiniz.
 
 Kaynaklarınızın oluşturulması için Cloud Shell kullandıysanız, Azure 'a yerel olarak Bağlanmayacağız. Bu durumda, tarayıcı tabanlı oturum açma işlemini başlatmak için `az login` komutunu kullanın. Gerekirse, varsayılan aboneliği `az account set --subscription` ve ardından abonelik KIMLIĞI ile ayarlayın. Son olarak, yerel makinenizde bazı ortam değişkenlerini yeniden oluşturmak için aşağıdaki komutları çalıştırın. `<value>` yer tutucuları, daha önce kullandığınız değerlerle değiştirin.
 

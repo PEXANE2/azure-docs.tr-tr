@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280943"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426217"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
 
@@ -20,7 +20,7 @@ ms.locfileid: "76280943"
 > [!NOTE]
 > Bu özellik, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
@@ -38,7 +38,7 @@ Herhangi bir kaynak oluşturabilmeniz için önce sanal ağı barındırmak üze
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Sanal Ağ Oluştur
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 [Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
@@ -129,9 +129,9 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. İndirilen. rdp * dosyasını açın.
+1. *İndirilen. rdp* dosyasını açın.
 
     1. İstendiğinde **Bağlan**’ı seçin.
 
@@ -159,27 +159,28 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Kullanılabilir herhangi bir istemciyi kullanarak MariaDB sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [MySQL çalışma ekranı](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) kullandım.
 
-4. In **New connection**, enter or select this information:
+4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
-    | Setting | Value |
+    | Ayar | Değer |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | Bağlantı Adı| Seçtiğiniz bağlantı adını seçin.|
+    | Ana Bilgisayar Adı | *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
+    | Kullanıcı adı | MariaDB sunucu oluşturma sırasında belirtilen *username@servername* Kullanıcı adı girin. |
+    | Parola | MariaDB sunucu oluşturma sırasında bir parola girin. |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. **Bağlantıyı Sına** veya **Tamam ' ı**seçin.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. I Sol menüden veritabanlarına gözatıp MariaDB veritabanından bilgi oluşturma veya sorgulama
 
-8. Close the remote desktop connection to myVm.
+8. MyVm ile uzak masaüstü bağlantısını kapatın.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Kaynakları temizleme 
+Artık gerekli değilse, az Group DELETE ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

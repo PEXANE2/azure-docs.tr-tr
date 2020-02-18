@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988082"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425026"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -88,15 +88,15 @@ MARS aracısını aşağıda belirtilen işletim sistemlerinde çalışan Azure 
 
 **İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**
 --- | --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Evet | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 8.1 (Enterprise, Pro)| Evet |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 8 (Enterprise, Pro) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
-Windows Server 2016 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, Foundation) | Evet | Evet |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
-Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2019 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows 10 (Enterprise, Pro, Home) | Yes | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8.1 (Enterprise, Pro)| Yes |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8 (Enterprise, Pro) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows Server 2016 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Yes | Yes |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
+Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Yes | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
 Daha fazla bilgi için bkz. [desteklenen MABS ve DPM işletim sistemleri](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
@@ -126,12 +126,13 @@ Windows 7| 1\.700 GB
 Sıkıştırılmış | Destekleniyor.
 Seyrek | Destekleniyor.
 Sıkıştırılmış ve seyrek |Destekleniyor.
-Sabit bağlantılar| Desteklenmez. Atlanmış.
-Yeniden ayrıştırma noktası| Desteklenmez. Atlanmış.
-Şifrelenmiş ve seyrek |Desteklenmez. Atlanmış.
-Sıkıştırılmış akış| Desteklenmez. Atlanmış.
-Seyrek akış| Desteklenmez. Atlanmış.
-OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmez.
+Sabit bağlantılar| Desteklenmiyor. Atlanmış.
+Yeniden ayrıştırma noktası| Desteklenmiyor. Atlanmış.
+Şifrelenmiş ve seyrek |Desteklenmiyor. Atlanmış.
+Sıkıştırılmış akış| Desteklenmiyor. Atlanmış.
+Aralıklı akış| Desteklenmiyor. Atlanmış.
+OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
+DFS Çoğaltma etkin olan klasörler | Desteklenmiyor.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
 
@@ -143,7 +144,7 @@ Ağ paylaşma| Desteklenmiyor |Birimin sunucuda yerel olması gerekir.
 BitLocker-kilitli birimler| Desteklenmiyor |Yedekleme başlamadan önce birimin kilidi açılmış olmalıdır.
 Dosya sistemi kimliği| Desteklenmiyor |Yalnızca NTFS desteklenir.
 Çıkarılabilir medya| Desteklenmiyor |Tüm yedekleme öğesi kaynakları *sabit* bir duruma sahip olmalıdır.
-Yinelenenleri kaldırılmış sürücüler | Desteklenen | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.
+Yinelenenleri kaldırılmış sürücüler | Destekleniyor | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.
 
 ## <a name="support-for-initial-offline-backup"></a>İlk çevrimdışı yedekleme desteği
 

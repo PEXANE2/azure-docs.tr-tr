@@ -2,13 +2,13 @@
 title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031672"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425468"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -55,7 +55,7 @@ Fiziksel makine |  Azure geçişi: Sunucu değerlendirmesi |  Fiziksel sunucular
 **Karma değeri** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V konağı** | Windows Server 2012 R2 veya üstünü çalıştırın.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
-**Keşfini** | Bir gereç, vCenter Server en fazla 5000 VMware VM 'yi bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+**Keşfini** | Bir gereç, 5000 adede kadar Hyper-V VM 'Leri bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 **Gereç bileşenleri** | Yönetim uygulaması: dağıtım sırasında Kullanıcı girişi için gereç 'de Web uygulaması.<br/> Keşif Aracısı: makine yapılandırma verilerini toplar.<br/> Değerlendirme Aracısı: performans verilerini toplayın.<br/>  Otomatik güncelleştirme hizmeti: güncelleştirme bileşenleri (24 saatte bir çalışır).
 
 
@@ -107,7 +107,7 @@ Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri 
 
 **Veriler** | **Sayaç** | **Değerlendirme etkisi**
 --- | --- | ---
-CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
+CPU kullanımı | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
 Disk okuma üretilen işi (MB/saniye) | virtualDisk. Read. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
 Disk yazma miktarı (MB/saniye) | virtualDisk. Write. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
@@ -139,7 +139,7 @@ Bellek (MB) | 'nin. Config. Hardware. MemoryMB
 Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
 Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
-CPU utilization | CPU. Usage. Average
+CPU kullanımı | CPU. Usage. Average
 Bellek kullanımı |mem. kullanım. Ortalama
 **Disk başına Ayrıntılar** | 
 Disk anahtarı değeri | dis. Anahtar

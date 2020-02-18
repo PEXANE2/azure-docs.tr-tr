@@ -3,16 +3,16 @@ title: Dosya ve klasörleri yedekleme-sık sorulan sorular
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720370"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425077"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Dosya ve klasörleri yedekleme hakkında sık sorulan sorular
 
-Bu makalede, [Azure Backup](backup-overview.md) hizmetindeki MICROSOFT Azure kurtarma HIZMETLERI (mars) aracısıyla dosya ve klasörleri yedeklemeye yönelik yaygın soruların yanıtları bulunur.
+Bu makalede, [Azure Backup](backup-overview.md) hizmetindeki MICROSOFT Azure kurtarma HIZMETLERI (mars) aracısıyla dosya ve klasörlerin yedeklenmesiyle ilgili sık karşılaşılan sorular yanıtlanmaktadır.
 
 ## <a name="configure-backups"></a>Yedekleri yapılandırma
 
@@ -90,7 +90,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 Önbellek klasörünün boyutu, yedeklediğiniz veri miktarını belirler.
 
 * Önbellek klasörü birimlerinde toplam yedekleme verileri boyutunun en az% 5-10 ' ü eşit olan boş alan bulunmalıdır.
-* Birimde %5 ' ten az boş alan varsa, birim boyutunu artırın ya da önbellek klasörünü yeterli alana sahip bir birime taşıyın.
+* Birimde %5 ' ten az boş alan varsa, birim boyutunu artırın veya [Bu adımları](#how-do-i-change-the-cache-location-for-the-mars-agent)izleyerek önbellek klasörünü yeterli alana sahip bir birime taşıyın.
 * Windows sistem durumunu yedeklemenizin, önbellek klasörünü içeren birimde ek 30-35 GB boş alan olması gerekir.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Karalama klasörünün geçerli ve erişilebilir olup olmadığını denetleme
@@ -98,35 +98,35 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 1. Varsayılan olarak karalama klasörü `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` konumunda bulunur
 2. Karalama klasörü konumunun yolunun aşağıda gösterilen kayıt defteri anahtarı girişlerinin değerleriyle eşleştiğinden emin olun:
 
-  | Kayıt defteri yolu | Kayıt Defteri Anahtarı | Değer |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Yeni önbellek klasörü konumu* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Yeni önbellek klasörü konumu* |
+    | Kayıt defteri yolu | Kayıt Defteri Anahtarı | Değer |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Yeni önbellek klasörü konumu* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Yeni önbellek klasörü konumu* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Nasıl yaparım? MARS aracısının önbellek konumu değiştirilsin mi?
 
 1. Yedekleme altyapısını durdurmak için bu komutu yükseltilmiş bir komut isteminde çalıştırın:
 
     ```Net stop obengine```
-
 2. Sistem durumu yedeklemesini yapılandırdıysanız, disk yönetimi 'ni açın ve `"CBSSBVol_<ID>"`biçimdeki disk (ler) i çıkarın.
-3. Dosyaları taşımayın. Bunun yerine, önbellek alanı klasörünü yeterli alana sahip farklı bir sürücüye kopyalayın.
-4. Aşağıdaki kayıt defteri girdilerini yeni önbellek klasörünün yoluyla güncelleştirin.
+3. Varsayılan olarak, karalama klasörü `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` konumunda bulunur
+4. Tüm `\Scratch` klasörünü yeterli alana sahip farklı bir sürücüye kopyalayın. İçeriğin kopyalanmadığından ve taşınmadığından emin olun.
+5. Aşağıdaki kayıt defteri girdilerini yeni taşınan karalama klasörünün yoluyla güncelleştirin.
 
     | Kayıt defteri yolu | Kayıt Defteri Anahtarı | Değer |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Yeni önbellek klasörü konumu* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Yeni önbellek klasörü konumu* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Yeni karalama klasörü konumu* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Yeni karalama klasörü konumu* |
 
-5. Yedekleme altyapısını yükseltilmiş bir komut isteminde yeniden başlatın:
+6. Yedekleme altyapısını yükseltilmiş bir komut isteminde yeniden başlatın:
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. İsteğe bağlı yedekleme çalıştırın. Yedekleme işlemi yeni konumu kullanarak başarılı bir şekilde tamamlandıktan sonra özgün önbellek klasörünü kaldırabilirsiniz.
+7. İsteğe bağlı yedekleme çalıştırın. Yedekleme işlemi yeni konumu kullanarak başarılı bir şekilde tamamlandıktan sonra özgün önbellek klasörünü kaldırabilirsiniz.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Önbellek klasörü nerede konumlandırılmalıdır?
 
@@ -153,12 +153,12 @@ Evet, bant genişliğini ve zamanlamayı ayarlamak için MARS aracısındaki **�
 
 ## <a name="restore"></a>Geri Yükleme
 
-### <a name="manage"></a>Yönetin
+### <a name="manage"></a>Yönetme
 
 **Parolamı unuttum, kurtarabilir miyim?**
 Azure Backup Aracısı, geri yükleme sırasında yedeklenen verilerin şifresini çözmek için bir parola (kayıt sırasında verdiğiniz) gerektirir. Kayıp bir parolayı işleme seçeneklerinizi anlamak için aşağıdaki senaryoları gözden geçirin:
 
-| Özgün makine <br> *(yedeklemelerin alındığı kaynak makine)* | Passphrase | Kullanılabilir seçenekler |
+| Özgün makine <br> *(yedeklemelerin alındığı kaynak makine)* | Parola | Kullanılabilir seçenekler |
 | --- | --- | --- |
 | Kullanılabilir |Mesi |Özgün makineniz (yedeklemelerin alındığı yer) kullanılabilir ve aynı kurtarma hizmetleri kasasıyla kaydedilmişse, bu [adımları](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)izleyerek parolayı yeniden oluşturabilirsiniz.  |
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
@@ -177,7 +177,7 @@ Aşağıdaki koşulları göz önünde bulundurun:
 
 Özgün makinenin aynı parolaya sahipseniz (kayıt sırasında sağladıysanız), yedeklenen verileri alternatif bir makineye geri yükleyebilirsiniz. Geri yükleme seçeneklerinizi anlamak için aşağıdaki senaryoları gözden geçirin.
 
-| Özgün makine | Passphrase | Kullanılabilir seçenekler |
+| Özgün makine | Parola | Kullanılabilir seçenekler |
 | --- | --- | --- |
 | Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. Geri yükleme işlemini gerçekleştirmek için **başka bir konum** > **Kurtarma seçeneğini** belirleyin. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) bakın.
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5109c33acf4a92a3227fe79d6d2c997a54adec08
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688823"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425281"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
@@ -20,7 +20,7 @@ Bu öğretici, Azure 'da Java Web uygulamaları oluşturma, yapılandırma, dağ
 
 ![Yay önyükleme uygulaması Azure Cosmos DB verileri depolama](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Cosmos DB veritabanı oluşturun.
@@ -51,7 +51,7 @@ cd e2e-java-experience-in-app-service-linux-part-2
 yes | cp -rf .prep/* .
 ```
 
-## <a name="create-an-azure-cosmos-db"></a>Bir Azure Cosmos DB oluşturun
+## <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB oluşturma
 
 Aboneliğinizde bir Azure Cosmos DB veritabanı oluşturmak için aşağıdaki adımları izleyin. YAPıLACAKLAR listesi uygulaması bu veritabanına bağlanır ve çalışırken verisini depolar, uygulamayı çalıştırdığınız yere bakılmaksızın uygulama durumunu kalıcı hale getirmeyi sağlar.
 
@@ -173,7 +173,7 @@ Uygulama başlatıldıktan sonra Spring TODO uygulamasına bu bağlantıyı kull
 
 ## <a name="configure-azure-deployment"></a>Azure dağıtımını yapılandırma
 
-`initial/spring-boot-todo` dizininde `pom.xml` dosyasını açın ve [Azure App Service yapılandırması için aşağıdaki Maven eklentisini](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) ekleyin.
+`initial/spring-boot-todo` dizininde `pom.xml` dosyasını açın ve [Maven yapılandırması için aşağıdaki Azure Web uygulaması eklentisini](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) ekleyin.
 
 ```xml    
 <plugins> 
@@ -236,7 +236,7 @@ Uygulama başlatıldıktan sonra Spring TODO uygulamasına bu bağlantıyı kull
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service dağıtma
+## <a name="deploy-to-app-service-on-linux"></a>Linux üzerinde App Service'e dağıtma
 
 `azure-webapp:deploy` Maven hedefini kullanarak, TODO uygulamasını Linux üzerinde Azure App Service için dağıtın.
 

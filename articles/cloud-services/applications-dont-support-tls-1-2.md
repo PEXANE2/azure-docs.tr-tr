@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: c4cbe2a99de97b2938d494e80d410a44c4143629
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026841"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425043"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1,2 desteklemeyen uygulamaların sorunlarını giderme
 Bu makalede, eski TLS protokollerinin (TLS 1,0 ve 1,1) nasıl etkinleştirileceği ve Windows Server 2019 bulut hizmeti Web ve çalışan rolleri üzerinde ek protokolleri desteklemek üzere eski şifre paketlerinin uygulanması açıklanmaktadır. 
@@ -27,7 +27,7 @@ Bu makalede, eski TLS protokollerinin (TLS 1,0 ve 1,1) nasıl etkinleştirilece�
 TLS 1,0 ve TLS 1,1 ' nin kullanım dışı bırakılması sırasında müşterilerimizin, kullanımdan kalkmayı planlayabilmeleri için eski protokolleri ve şifre paketlerini desteklemesi gerekebilecek bazı adımları anladık.  Bu eski değerleri yeniden etkinleştirmenizi önermeyiz, ancak müşterilere yardımcı olmaya yönelik rehberlik sunuyoruz. Müşterilerin bu makalede özetlenen değişiklikleri uygulamadan önce gerileme riskini değerlendirmelerini öneririz. 
 
 > [!NOTE]
-> Konuk işletim sistemi ailesi 6 sürümleri, 1.0/1.0 şifrelemelerini devre dışı bırakarak TLS 1,2 ' i zorlar. 
+> Konuk işletim sistemi ailesi 6 sürümleri, 1.0/1.1 şifrelemelerini devre dışı bırakarak TLS 1,2 ' i zorlar. 
 
   
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>TLS 1,0, TLS 1,1 ve daha eski şifre paketlerinin desteğini bırakma 

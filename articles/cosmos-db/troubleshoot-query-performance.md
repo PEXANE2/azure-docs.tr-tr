@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132059"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424941"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
@@ -302,7 +302,7 @@ Alınan belge sayısı yaklaşık olarak çıktı belge sayısına eşitse, sorg
 
 Azure Cosmos DB, Istek birimi ve veri depolama alanı artışına göre bağımsız kapsayıcıları ölçeklendirmek için [bölümleme](partitioning-overview.md) kullanır. Her fiziksel bölümün ayrı ve bağımsız bir dizini vardır. Sorgunuzun, kapsayıcının bölüm anahtarı ile eşleşen bir eşitlik filtresi varsa, yalnızca ilgili bölümün dizinini denetlemeniz gerekir. Bu iyileştirme, sorgunun gerektirdiği toplam RU sayısını azaltır.
 
-Çok sayıda sağlanan RU (30.000 üzerinde) veya büyük miktarda veri (yaklaşık 100 GB) varsa, sorgu RU ücretlerinde önemli bir düşüş görmeniz için büyük olasılıkla çok sayıda kapsayıcınıza sahip olursunuz.
+Çok sayıda sağlanan RU (30.000 üzerinde) veya büyük miktarda veri (yaklaşık 100 GB 'tan fazla) varsa, sorgu RU ücretlerinde önemli bir düşüş görmeniz için büyük olasılıkla çok sayıda kapsayıcınıza sahip olursunuz.
 
 Örneğin, bölüm anahtarı \ Grup olan bir kapsayıcı oluşturuyoruz, aşağıdaki sorguların yalnızca tek bir fiziksel bölümü denetlemesi gerekir:
 
@@ -383,7 +383,7 @@ Azure Cosmos DB hesabından farklı bir bölgeden çalıştırılan sorguların 
 
 ## <a name="increase-provisioned-throughput"></a>Sağlanan aktarım hızını artır
 
-Azure Cosmos DB, sağlanan aktarım hızı Istek birimleri (RU) cinsinden ölçülür. 5 RU 'ın aktarım hızını tüketen bir sorgunuz olduğunu düşünelim. Örneğin, 1.000 RU 'yi sağlarsanız, bu sorguyu saniye başına 200 kez çalıştırabilirsiniz. Yeterli kullanılabilir üretilen iş olmadığında sorguyu çalıştırmaya çalıştınız, Azure Cosmos DB bir HTTP 429 hatası döndürür. Geçerli çekirdek (SQL) API SDK 'sının herhangi biri, kısa bir süre bekledikten sonra bu sorguyu otomatik olarak yeniden dener. Kısıtlanmış isteklerin süresi daha uzun sürer, bu nedenle sağlanan verimlilik arttırıldığında sorgu gecikmesi iyileştirebilirler. Azure portal, [Kısıtlanmış isteklerin toplam sayısını](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) , ölçüm dikey penceresinde gözlemleyebilirsiniz.
+Azure Cosmos DB, sağlanan aktarım hızı Istek birimleri (RU) cinsinden ölçülür. 5 RU 'ın aktarım hızını tüketen bir sorgunuz olduğunu düşünelim. Örneğin, 1.000 RU 'yi sağlarsanız, bu sorguyu saniye başına 200 kez çalıştırabilirsiniz. Yeterli kullanılabilir üretilen iş olmadığında sorguyu çalıştırmaya çalıştınız, Azure Cosmos DB bir HTTP 429 hatası döndürür. Geçerli çekirdek (SQL) API SDK 'sının herhangi biri, kısa bir süre bekledikten sonra bu sorguyu otomatik olarak yeniden dener. Kısıtlanmış isteklerin süresi daha uzun sürer, bu nedenle sağlanan verimlilik arttırıldığında sorgu gecikmesi iyileştirebilirler. [Toplam kısıtlanmış istek sayısını](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) Azure Portal ölçüm dikey penceresinde gözlemleyebilirsiniz.
 
 ## <a name="increase-maxconcurrency"></a>MaxConcurrency 'yi artır
 

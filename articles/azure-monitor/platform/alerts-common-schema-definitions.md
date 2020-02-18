@@ -4,15 +4,15 @@ description: Azure Izleyici için ortak uyarı şeması tanımlarını anlama
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
+author: ofirmanor
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765670"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425179"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
@@ -71,13 +71,13 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 }
 ```
 
-## <a name="essentials"></a>Essentials
+## <a name="essentials"></a>Temel Bileşenler
 
 | Alan | Açıklama|
 |:---|:---|
 | AlertId | GUID, uyarı örneğini benzersiz bir şekilde tanımlıyor. |
 | alertRule | Uyarı örneğini oluşturan uyarı kuralının adı. |
-| Önem Derecesi | Uyarının önem derecesi. Olası değerler: Sev0, Sev1, Sev2, Sev3 veya Sev4. |
+| Severity | Uyarının önem derecesi. Olası değerler: Sev0, Sev1, Sev2, Sev3 veya Sev4. |
 | signalType | Uyarı kuralının tanımlandığı sinyali tanımlar. Olası değerler: ölçüm, günlük veya etkinlik günlüğü. |
 | monitorCondition | Bir uyarı tetiklendiğinde, uyarının izleyici koşulu **tetiklenir**olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu **çözüldü**olarak ayarlanır.   |
 | monitoringService | Uyarıyı oluşturan izleme hizmeti veya çözümü. Uyarı bağlamı alanları izleme hizmeti tarafından dikte edilir. |
@@ -151,7 +151,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 ### <a name="log-alerts"></a>Günlük uyarıları
 
 > [!NOTE]
-> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, e-posta konusu ve/veya yük şemasının aşağıdaki gibi açıklanacak şekilde geri dönmesiyle yapılır. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bunu, bayrağını `IncludedSearchResults`denetleyerek belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
+> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, e-posta konusu ve/veya yük şemasının aşağıdaki gibi açıklanacak şekilde geri dönmesiyle yapılır. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bunu, bayrağını `IncludeSearchResults`denetleyerek belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -214,7 +214,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -277,7 +277,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

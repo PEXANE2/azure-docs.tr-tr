@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 870064406c86e9cef6a45dfbe47c61cdaa9ecab0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976949"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426318"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -27,7 +27,7 @@ Bu makalede, anahtar kasanıza erişimi kısıtlamak için Azure Key Vault güve
 Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma:
 
 1. Güvenli hale getirmek istediğiniz anahtar kasasını inceleyin.
-2. **Güvenlik duvarları ve sanal ağlar ' ı**seçin.
+2. **Ağ iletişimi**' ni seçin ve ardından **güvenlik duvarları ve sanal ağlar** sekmesini seçin.
 3. **Erişime Izin ver**' ın altında **Seçili ağlar**' ı seçin.
 4. Var olan sanal ağları güvenlik duvarları ve sanal ağ kurallarına eklemek için **+ var olan sanal ağları Ekle**' yi seçin.
 5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
@@ -63,12 +63,12 @@ Azure CLı kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
    az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
    ```
 
-6. Bu anahtar kasasının güvenilir hizmetler tarafından erişilebilir olması gerekiyorsa, olarak `bypass` `AzureServices`ayarlayın.
+6. Bu anahtar kasasının herhangi bir güvenilir hizmet tarafından erişilebilir olması gerekiyorsa `bypass` `AzureServices`olarak ayarlayın.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
    ```
 
-7. Varsayılan eylemi olarak `Deny`ayarlayarak ağ kurallarını açın.
+7. Varsayılan eylemi `Deny`olarak ayarlayarak ağ kurallarını açın.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
    ```
@@ -102,20 +102,20 @@ PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
-6. Bu anahtar kasasının güvenilir hizmetler tarafından erişilebilir olması gerekiyorsa, olarak `bypass` `AzureServices`ayarlayın.
+6. Bu anahtar kasasının herhangi bir güvenilir hizmet tarafından erişilebilir olması gerekiyorsa `bypass` `AzureServices`olarak ayarlayın.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
-7. Varsayılan eylemi olarak `Deny`ayarlayarak ağ kurallarını açın.
+7. Varsayılan eylemi `Deny`olarak ayarlayarak ağ kurallarını açın.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
-## <a name="references"></a>Referanslar
+## <a name="references"></a>Başvurular
 
 * Azure CLı komutları: [az keykasa Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Azure PowerShell cmdlet 'leri: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
+* Azure PowerShell cmdlet 'leri: [Get-Azkeykasa,](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault) [Add-azkeyvaultnetworkrule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-azkeyvaultnetworkrule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-azkeyvaultnetworkruleset](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

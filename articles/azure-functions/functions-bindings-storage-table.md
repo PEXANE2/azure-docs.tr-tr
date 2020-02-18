@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 1be6420598e7983ef9014f617da1f87f5550fa6a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbc2e08ab131c591d8857e1cf88b5c9f91db9610
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705369"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425247"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
 
@@ -20,7 +20,7 @@ Bu makalede Azure Işlevleri 'nde Azure Tablo depolama bağlamalarıyla nasıl �
 
 ## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
 
-Tablo depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2. x ' de verilmiştir. Paket için kaynak kodu konusu [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub deposu.
+Tablo depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2. x ' de verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub deposundadır.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -28,7 +28,7 @@ Tablo depolama bağlamaları [Microsoft. Azure. WebJobs](https://www.nuget.org/p
 
 ## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
-Tablo depolama bağlamaları [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet paketi, sürüm 3. x içinde verilmiştir. Paket için kaynak kodu konusu [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub deposu.
+Tablo depolama bağlamaları [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub deposundadır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -40,7 +40,7 @@ Azure depolama hesabındaki bir tabloyu okumak için Azure Tablo depolama giriş
 
 ### <a name="one-entity"></a>Bir varlık
 
-Aşağıdaki örnek, tek bir tablo satırını okuyan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. 
+Aşağıdaki örnek, tek bir tablo satırını okuyan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. Tabloya yerleştirilen her kayıt için, işlev tetiklenecektir.
 
 "{QueueTrigger}" satır anahtarı değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
 
@@ -175,7 +175,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference
 }
 ```
 
-[Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -198,7 +198,7 @@ public class Person
 
 Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference-csharp.md) bağlamayı kullanan betik kodu içindeki tablo girişi bağlamasını gösterir. İşlevi, bir kuyruk iletisinde belirtilen bölüm anahtarı için varlıkları okur.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -222,7 +222,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference
 }
 ```
 
-[Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 C# Betik kodu, varlık türünün `TableEntity`Türetibilmesi Için Azure depolama SDK 'sına bir başvuru ekler:
 
@@ -340,7 +340,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Java
 }
 ```
 
-[Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -475,10 +475,10 @@ public int run(
 
 Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
-* `Table` Özniteliğin `Connection` özelliği.
-* `StorageAccount` Özniteliği aynı parametresine uygulanan `Table` özniteliği.
-* `StorageAccount` İşleve uygulanmış bir öznitelik.
-* `StorageAccount` Sınıfına uygulanan bir öznitelik.
+* `Table` özniteliğin `Connection` özelliği.
+* `StorageAccount` özniteliği `Table` özniteliğiyle aynı parametreye uygulandı.
+* İşleve uygulanan `StorageAccount` özniteliği.
+* Sınıfına uygulanan `StorageAccount` özniteliği.
 * İşlev uygulaması için varsayılan depolama hesabı ("AzureWebJobsStorage" uygulama ayarı).
 
 # <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
@@ -501,19 +501,19 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 ## <a name="input---configuration"></a>Giriş - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Table` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Table` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Ayarlanmalıdır `table`. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
-|**direction** | Yok | Ayarlanmalıdır `in`. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
-|**Adı** | Yok | İşlev kodundaki tabloyu veya varlığı temsil eden değişkenin adı. | 
+|**type** | yok | `table`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**direction** | yok | `in`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki tabloyu veya varlığı temsil eden değişkenin adı. | 
 |**tableName** | **TableName** | Tablonun adı.| 
-|**partitionKey** | **partitionKey** |İsteğe bağlı. Okunacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**partitionKey** | **PartitionKey** |İsteğe bağlı. Okunacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
 |**rowKey** |**RowKey** | İsteğe bağlı. Okunacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
-|**take** |**Almanız** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
-|**filter (filtre)** |**Filtre** | İsteğe bağlı. JavaScript 'te tablo girişi için bir OData filtre ifadesi. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
-|**bağlantı** |**bağlantı** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
+|**almanız** |**Almanız** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**filtreyle** |**Filtreyle** | İsteğe bağlı. JavaScript 'te tablo girişi için bir OData filtre ifadesi. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#input---usage) bölümüne bakın.| 
+|**bağlanma** |**Bağlanma** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -594,7 +594,7 @@ public class TableStorage
 
 Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference-csharp.md) bağlamayı kullanan betik kodu içindeki bir tablo çıkış bağlamasını gösterir. İşlev birden çok tablo varlığı yazar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -616,7 +616,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve [ C# ](functions-reference
 }
 ```
 
-[Yapılandırma](#output---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -649,7 +649,7 @@ public class Person
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tablo çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev birden çok tablo varlığı yazar.
 
-İşte *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -671,7 +671,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tablo çıkış bağ
 }
 ```
 
-[Yapılandırma](#output---configuration) bölümde, bu özellikleri açıklanmaktadır.
+[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -861,7 +861,7 @@ public static MyPoco TableOutput(
 }
 ```
 
-Tam bir örnek için bkz. [çıkış - C# örneği](#output).
+Tam bir örnek için bkz. [Çıkış- C# örnek](#output).
 
 Sınıf, yöntem veya parametre düzeyinde depolama hesabını belirtmek için `StorageAccount` özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [giriş-öznitelikler](#input---attributes-and-annotations).
 
@@ -887,17 +887,17 @@ Sınıf, yöntem veya parametre düzeyinde depolama hesabını belirtmek için `
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Table` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Table` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | Yok | Ayarlanmalıdır `table`. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
-|**direction** | Yok | Ayarlanmalıdır `out`. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
-|**Adı** | Yok | Tablo veya varlığı temsil eden işlev kodunda kullanılan değişken adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.| 
+|**type** | yok | `table`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**direction** | yok | `out`olarak ayarlanmalıdır. Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
+|**ada** | yok | Tablo veya varlığı temsil eden işlev kodunda kullanılan değişken adı. İşlev dönüş değerine başvurmak için `$return` olarak ayarlayın.| 
 |**tableName** |**TableName** | Tablonun adı.| 
-|**partitionKey** |**partitionKey** | Yazılacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım bölümüne](#output---usage) bakın.| 
+|**partitionKey** |**PartitionKey** | Yazılacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım bölümüne](#output---usage) bakın.| 
 |**rowKey** |**RowKey** | Yazılacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım bölümüne](#output---usage) bakın.| 
-|**bağlantı** |**bağlantı** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
+|**bağlanma** |**Bağlanma** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

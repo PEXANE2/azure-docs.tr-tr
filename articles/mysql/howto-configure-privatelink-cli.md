@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 59c38423f771685dc79a8be12a383cfdec6a0266
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 798c80ec2290a96b6f76116120292720c05c9198
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031535"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426276"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>CLı kullanarak MySQL için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
 
@@ -127,7 +127,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. İndirilen. rdp * dosyasını açın.
+1. *İndirilen. rdp* dosyasını açın.
 
     1. İstendiğinde **Bağlan**’ı seçin.
 
@@ -155,30 +155,31 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     Non-authoritative answer:
     Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Kullanılabilir herhangi bir istemciyi kullanarak MySQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [MySQL çalışma ekranı](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) kullandım.
 
 
-4. In **New connection**, enter or select this information:
+4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
-    | Setting | Value |
+    | Ayar | Değer |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MySQL server creation. |
-    | Password | Enter a password provided during the MySQL server creation. |
+    | Bağlantı Adı| Seçtiğiniz bağlantı adını seçin.|
+    | Ana Bilgisayar Adı | *Mydemoserver.Privatelink.MySQL.Database.Azure.com* seçin |
+    | Kullanıcı adı | MySQL sunucusu oluşturma sırasında belirtilen *username@servername* Kullanıcı adını girin. |
+    | Parola | MySQL sunucusu oluşturma sırasında bir parola girin. |
     ||
 
-5. Select Connect.
+5. Bağlan ' ı seçin.
 
-6. Browse databases from left menu.
+6. Sol menüden veritabanlarına gözatamazsınız.
 
-7. (Optionally) Create or query information from the MySQL database.
+7. I MySQL veritabanından bilgi oluşturun veya sorgulayın.
 
-8. Close the remote desktop connection to myVm.
+8. MyVm ile uzak masaüstü bağlantısını kapatın.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Kaynakları temizleme 
+Artık gerekli değilse, az Group DELETE ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

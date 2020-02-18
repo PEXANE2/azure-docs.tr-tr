@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027695"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423770"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
@@ -30,7 +30,7 @@ Aşağı akış cihazların IoT Central uygulamanızla iletişim kurmasını ola
 * Bir operatör tarafından yapılan yazılabilir Özellik güncelleştirmelerine yanıt verir. Örneğin, bir işleç telemetri gönderme aralığını değiştiriyor.
 * Cihazı yeniden başlatma gibi komutları yanıtlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için [bir Azure IoT Central uygulaması oluşturmanız](./quick-deploy-iot-central.md)gerekir.
 
@@ -40,7 +40,7 @@ Bu öğreticide, bir **S1 algılayıcısı** cihazının cihaz şablonları ve s
 
 **S1 algılayıcısı** cihazına yönelik bir cihaz şablonu oluşturmak için:
 
-1. Sol gezinti bölmesinde **cihaz şablonları**' nı seçin. Ardından **+** seçerek şablonu eklemeye başlayın.
+1. Sol bölmede **cihaz şablonları**' nı seçin. Ardından **+** seçerek şablonu eklemeye başlayın.
 
 1. **S1 algılayıcı** cihazının kutucuğunu görene kadar aşağı kaydırın. Kutucuğu seçin ve ardından **İleri: Özelleştir**' i seçin.
 
@@ -48,7 +48,7 @@ Bu öğreticide, bir **S1 algılayıcısı** cihazının cihaz şablonları ve s
 
 ***RS40 doluluk algılayıcısı** cihazı için bir cihaz şablonu oluşturmak için:
 
-1. Sol gezinti bölmesinde **cihaz şablonları**' nı seçin. Ardından **+** seçerek şablonu eklemeye başlayın.
+1. Sol bölmede **cihaz şablonları**' nı seçin. Ardından **+** seçerek şablonu eklemeye başlayın.
 
 1. ***RS40 doluma algılayıcısı** cihazının kutucuğunu görene kadar aşağı kaydırın. Kutucuğu seçin ve ardından **İleri: Özelleştir**' i seçin.
 
@@ -59,13 +59,13 @@ Bu öğreticide, bir **S1 algılayıcısı** cihazının cihaz şablonları ve s
 ![Aşağı akış cihazları için cihaz şablonları](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
 
 
-## <a name="create-a-gateway-device-template"></a>Ağ Geçidi cihaz şablonu oluşturma
+## <a name="create-a-gateway-device-template"></a>Ağ geçidi cihaz şablonu oluşturma
 
 Bu öğreticide, sıfırdan bir ağ geçidi cihazı için bir cihaz şablonu oluşturacaksınız. Bu şablonu daha sonra uygulamanızda bir sanal ağ geçidi cihazı oluşturmak için kullanırsınız.
 
 Uygulamanıza yeni bir ağ geçidi cihaz şablonu eklemek için:
 
-1. Sol gezinti bölmesinde **cihaz şablonları**' nı seçin. Ardından **+** seçerek şablonu eklemeye başlayın.
+1. Sol bölmede **cihaz şablonları**' nı seçin. Ardından **+** seçerek şablonu eklemeye başlayın.
 
 1. **Şablon türü seç** sayfasında **IoT cihaz** kutucuğunu seçin ve ardından **İleri: Özelleştir**' i seçin.
 
@@ -105,12 +105,12 @@ Bir ağ geçidi cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikle
 
     | Görünen ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
-    | Müşteri adı     | Hiçbiri          | Dize |
+    | Son Hizmet Tarihi | Yok          | Tarih   |
+    | Müşteri adı     | Yok          | Dize |
 
 2. **Kaydet**’i seçin.
 
-### <a name="create-views"></a>Görünüm oluşturma
+### <a name="create-views"></a>Görünümleri oluşturma
 
 Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihazı hakkındaki ilgili bilgileri görüntüleyecek şekilde özelleştirebilirsiniz. Özelleştirmeleriniz, uygulamaya bağlı çevresel algılayıcı cihazlarını yönetmek için işlecini etkinleştirir. Cihazlarla etkileşim kurmak için kullanılacak bir operatör için iki tür görünüm oluşturabilirsiniz:
 
@@ -149,7 +149,7 @@ Sanal ağ geçidi cihazı oluşturmak için:
 
 1. Yeni bir cihaz eklemeye başlamak için **+** seçin.
 
-1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**'u seçin.
+1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
 
 Sanal bir aşağı akış cihazları oluşturmak için:
 
@@ -157,13 +157,13 @@ Sanal bir aşağı akış cihazları oluşturmak için:
 
 1. Yeni bir cihaz eklemeye başlamak için **+** seçin.
 
-1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**'u seçin.
+1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
 
 1. **Cihazlar** sayfasında, cihaz şablonları listesinden **S1 algılayıcısı** ' nı seçin.
 
 1. Yeni bir cihaz eklemeye başlamak için **+** seçin.
 
-1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**'u seçin.
+1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
 
 ![Uygulamanızdaki sanal cihazlar](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 

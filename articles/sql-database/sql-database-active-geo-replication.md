@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2019
-ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842673"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426284"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma
 
@@ -113,7 +113,7 @@ Uygulamanızın yük devretmeden sonra yeni birincil sunucuya hemen erişebildi�
 
 ## <a name="configuring-secondary-database"></a>İkincil veritabanını yapılandırma
 
-Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması gerekir. İkincil veritabanının birincil olarak aynı işlem boyutuyla (DTU 'Lar veya sanal çekirdekler) oluşturulması kesinlikle önerilir. Birincil veritabanı ağır bir yazma iş yüküyle karşılaşıyorsa, daha düşük işlem boyutu olan bir ikincil değer buna devam edemeyebilir. İkincil ve olası kullanım dışı durumunda yineleme gecikmesi oluşmasına neden olur. İkincil veritabanının birincil veritabanının gerisinde kalması, zorlamalı yük devretme gerekmesi halinde büyük bir veri kaybı yaşanması riskini de taşır. Bu riskleri azaltmak için, etkin etkin coğrafi çoğaltma, İkincilin yakalamalı olması için birincil günlük hızını azaltacaktır. İmledengelenmiş bir ikincil yapılandırmanın diğer sonucu, yük devretme sonrasında uygulamanın performansının, yeni birincili işlem kapasitesi yetersiz olduğundan, bundan sonra zarar görür. Kesinti azaltılana kadar mümkün olmayacak şekilde, gereken düzeye daha yüksek bir işlem yükseltmesi yapması gerekecektir. 
+Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması gerekir. İkincil veritabanının birincil olarak aynı işlem boyutuyla (DTU 'Lar veya sanal çekirdekler) oluşturulması kesinlikle önerilir. Birincil veritabanı ağır bir yazma iş yüküyle karşılaşıyorsa, daha düşük işlem boyutu olan bir ikincil değer buna devam edemeyebilir. İkincil ve olası kullanım dışı durumunda yineleme gecikmesi oluşmasına neden olur. Birincil zamanda riskli bir yük devretme için büyük bir veri kaybı olması gerekir. Bu riskleri azaltmak için, etkin etkin coğrafi çoğaltma, İkincilin yakalamalı olması için birincil günlük hızını azaltacaktır. İmledengelenmiş bir ikincil yapılandırmanın diğer sonucu, yük devretme sonrasında uygulamanın performansının, yeni birincili işlem kapasitesi yetersiz olduğundan, bundan sonra zarar görür. Kesinti azaltılana kadar mümkün olmayacak şekilde, gereken düzeye daha yüksek bir işlem yükseltmesi yapması gerekecektir. 
 
 
 > [!IMPORTANT]
@@ -145,7 +145,7 @@ Değişiklikleri gerçekleştiren istemcinin birincil sunucuya ağ erişimi olma
 1. Karşılık gelen bir kullanıcı oluşturun ve bunu DBManager rolüne atayın: 
 
    ```sql
-   create user geodrsetup for login gedrsetup
+   create user geodrsetup for login geodrsetup
    alter role geodrsetup dbmanager add member geodrsetup
    ```
 
@@ -247,7 +247,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |SQL veritabanı ve belirtilen ikincil veritabanı arasında bir veri çoğaltmasını sonlandırmak için sunucuda IKINCILI kaldır 'ı kullanın. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Azure SQL veritabanı sunucusundaki her bir veritabanı için varolan tüm çoğaltma bağlantılarıyla ilgili bilgileri döndürür. |
 | [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Belirli bir SQL veritabanının çoğaltma bağlantısı ile ilgili son çoğaltma zamanını, son çoğaltma gecikmesini ve diğer bilgileri alır. |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
+| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |uygulamanın tüm kaydedilmiş işlemler etkin ikincil veritabanı tarafından çoğaltılıncaya ve onaylanana kadar bekleyip beklememesine neden olur. |
 |  | |
 
@@ -271,7 +271,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: tek ve havuza alınmış veritabanlarının yük devretmesini yönetme
 
-| eklentisi | Açıklama |
+| API | Açıklama |
 | --- | --- |
 | [Veritabanı oluştur veya güncelleştir (createMode = restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Birincil veya ikincil bir veritabanını oluşturur, güncelleştirir veya geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Oluşturma işlemi sırasında durumu döndürür. |

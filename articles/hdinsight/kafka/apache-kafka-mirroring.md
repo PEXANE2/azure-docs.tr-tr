@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552218"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425893"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>HDInsight üzerinde Kafka ile Apache Kafka konuları çoğaltmak için MirrorMaker kullanın
 
@@ -305,7 +305,7 @@ Bu belgedeki adımlar farklı Azure Kaynak gruplarında kümeler oluşturdu. Olu
 Bu belgede, [Apache Kafka](https://kafka.apache.org/) kümesinin bir çoğaltmasını oluşturmak Için [mirrormaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 'ın nasıl kullanılacağını öğrendiniz. Kafka ile çalışmanın diğer yollarını saptamak için aşağıdaki bağlantıları kullanın:
 
 * Cwiki.apache.org adresinde [MirrorMaker belgeleri Apache Kafka](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) .
+* [Kafka yansıtma Oluşturucu En Iyi yöntemleri](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [HDInsight üzerinde Apache Kafka kullanmaya başlama](apache-kafka-get-started.md)
 * [HDInsight üzerinde Apache Kafka ile Apache Spark kullanma](../hdinsight-apache-spark-with-kafka.md)
-* [HDInsight üzerinde Apache Kafka ile Apache Storm kullanma](../hdinsight-apache-storm-with-kafka.md)
 * [Azure sanal ağı üzerinden Apache Kafka bağlanma](apache-kafka-connect-vpn-gateway.md)

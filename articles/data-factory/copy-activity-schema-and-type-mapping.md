@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921989"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423648"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema eşleme
 
@@ -87,18 +87,18 @@ Kopyalama etkinliği ' nde eşlenecek sütunları belirtebilirsiniz-> `translato
 
 Aşağıdaki özellikler, `source` ve `sink`> nesne `mappings` `translator` -> altında desteklenir:
 
-| Özellik | Açıklama                                                  | Gereklidir |
+| Özellik | Açıklama                                                  | Gerekli |
 | -------- | ------------------------------------------------------------ | -------- |
 | ad     | Kaynak veya havuz sütununun adı.                           | Yes      |
 | ordinal  | Sütun dizini. 1 ile başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | Hayır       |
 | yol     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik veriler için geçerlidir örn. MongoDB/REST.<br>Kök nesnesi altındaki alanlar için JSON yolu root $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar. | Hayır       |
 | type     | Kaynak veya havuz sütununun geçici veri türü Data Factory. | Hayır       |
 | culture  | Kaynak veya havuz sütununun kültürü. <br>Tür `Datetime` veya `Datetimeoffset`olduğunda geçerlidir. Varsayılan değer: `en-us`. | Hayır       |
-| biçim   | Tür `Datetime` veya `Datetimeoffset`olduğunda kullanılacak biçim dizesi. Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
+| format   | Tür `Datetime` veya `Datetimeoffset`olduğunda kullanılacak biçim dizesi. Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
 
 Aşağıdaki özellikler, `source` ve `sink`nesnesine ek olarak `translator` -> `mappings` altında desteklenir:
 
-| Özellik            | Açıklama                                                  | Gereklidir |
+| Özellik            | Açıklama                                                  | Gerekli |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Yalnızca hiyerarşik veriler (örneğin, MongoDB/REST kaynak olduğunda) desteklenir.<br>Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. | Hayır       |
 
@@ -200,10 +200,10 @@ Sütun eşlemesini belirtmek için `"columnMappings": "UserId: MyUserId, Group: 
 
 MongoDB/REST 'den metin dosyasına kopyalama ve Azure Cosmos DB Oracle 'dan MongoDB için ' a kopyalamak üzere kopyalama etkinliği-> `translator` -> `schemaMapping`. Kopyalama etkinliği `translator` bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Yes |
-| schemaMapping | **Kaynak taraftan havuz tarafına**olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Key:** kaynak temsil eder. **Tablo kaynağı**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Value:** havuz temsil eder. **Tablo havuzu**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar.  | Yes |
+| schemaMapping | **Kaynak taraftan havuz tarafına**olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **anahtar:** kaynağı temsil eder. **Tablo kaynağı**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **değeri:** havuzu temsil eder. **Tablo havuzu**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar.  | Yes |
 | collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | Hayır |
 
 **Örnek: MongoDB 'den Oracle 'a kopyalama:**
@@ -237,7 +237,7 @@ MongoDB/REST 'den metin dosyasına kopyalama ve Azure Cosmos DB Oracle 'dan Mong
 
 Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve ortak kök bilgiyle *(numara, tarih ve şehir)* çapraz birleştirmeyi düzleştirerek, bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
-| Sipariş numarası | orderDate | order_pd | order_price | city |
+| Sipariş numarası | OrderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
 | 01 | 20170122 | P1 | 23 | Seattle |
 | 01 | 20170122 | P2 | 13 | Seattle |
@@ -259,11 +259,11 @@ Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve ortak kök bilgi
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -271,7 +271,7 @@ Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve ortak kök bilgi
 }
 ```
 
-## <a name="data-type-mapping"></a>Veri türü eşlemesi
+## <a name="data-type-mapping"></a>Veri türü eşleme
 
 Kopyalama etkinliği, aşağıdaki 2 adımlı yaklaşımla birlikte havuz türleri eşleme için kaynak türleri gerçekleştirir:
 
@@ -286,10 +286,10 @@ Data Factory aşağıdaki geçici veri türlerini destekler: [veri kümesi yapı
 
 * Byte[]
 * Boole
-* Datetime
+* Tarih saat
 * Datetimeoffset
-* Decimal
-* Double
+* Ondalık
+* çift
 * Guid
 * Int16
 * Int32
@@ -301,4 +301,4 @@ Data Factory aşağıdaki geçici veri türlerini destekler: [veri kümesi yapı
 ## <a name="next-steps"></a>Sonraki adımlar
 Bir kopyalama etkinliği makalelere bakın:
 
-- [Kopyalama etkinliği'ne genel bakış](copy-activity-overview.md)
+- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)

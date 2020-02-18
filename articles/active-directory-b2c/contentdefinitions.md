@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372803"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425638"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
-| RecoveryUri | 0:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. |
+| RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. |
 | DataUri | 1:1 | Adım için çağrılacak Kullanıcı deneyimini sağlayan bir HTML dosyasının göreli URL 'sini içeren bir dize. |
 | Meta Veriler | 0:1 | İçerik tanımı tarafından kullanılan meta verileri içeren bir anahtar/değer çiftleri koleksiyonu. |
 | LocalizedResourcesReferences | 0:1 | Yerelleştirilmiş kaynaklar koleksiyonu başvuruları. Bir kullanıcı arabirimi ve talepler özniteliği yerelleştirmesini özelleştirmek için bu öğeyi kullanın. |
@@ -86,7 +86,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 | `unifiedssp` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. Bu değer ayrıca "Oturumumu Açık bırak" ve "parolanızı unuttum mı" değerlerini de sağlar. bağlantı. |
 | `unifiedssd` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. |
 | `multifactor` | Kaydolma veya oturum açma sırasında metin veya ses kullanarak telefon numaralarını doğrular. |
-| `selfasserted` | Kullanıcıların profillerini oluşturmalarına veya güncelleştirmesine olanak sağlayan bir form görüntüler. |
+| `selfasserted` | Kullanıcıdan veri toplamak için bir form görüntüler. Örneğin, kullanıcıların profillerini oluşturmalarına veya güncelleştirmesine olanak sağlar. |
 
 ### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
 

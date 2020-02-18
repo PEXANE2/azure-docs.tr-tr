@@ -2,18 +2,18 @@
 title: Azure geçişi ile makineleri geçişe hazırlama
 description: Azure geçişi ile geçiş için şirket içi makineleri nasıl hazırlayacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 02/17/2020
 ms.custom: MVC
-ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: adbe9e4b30bf57e8a2038b970306c126035abbe1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028760"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426257"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
-Bu makalede, [Azure geçişi sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)ile Azure 'a geçirmeye başlamadan önce şirket içi makinelerin nasıl hazırlanacağı açıklanmaktadır.
+Bu makalede, [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)ile Azure 'a geçirmeye başlamadan önce şirket içi makinelerin nasıl hazırlanacağı açıklanmaktadır.
 
 
 Bu makalede şunları yapacaksınız:
@@ -40,7 +40,7 @@ Bu makalede şunları yapacaksınız:
 
 ## <a name="check-whats-supported"></a>Nelerin desteklendiğini denetleyin
 
-- VMware VM 'Leri için Azure geçişi sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler. VMware VM [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware-migration.md)doğrulayın.
+- VMware VM 'Leri için, sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler. VMware VM [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware-migration.md)doğrulayın.
 - Hyper-V için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v-migration.md) doğrulayın.
 - Şirket içi fiziksel makineler veya diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical-migration.md) doğrulayın. 
 

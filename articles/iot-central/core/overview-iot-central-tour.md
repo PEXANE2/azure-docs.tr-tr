@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024169"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426188"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Azure IoT Central Kullanıcı Arabirimi turuna katılın
 
@@ -59,10 +59,10 @@ Uygulama oluşturma sırasında sizin veya çözüm oluşturucunun seçim yaptı
 
 ## <a name="navigate-your-application"></a>Uygulamanızda gezinin
 
-IoT uygulamanızın içindeyken, farklı alanlara erişmek için sol bölmeyi kullanın. Gezinti çubuğunun üstündeki üç çizgili simgeyi seçerek gezinti çubuğunu genişletebilir veya daraltabilirsiniz:
+IoT uygulamanızın içindeyken, farklı alanlara erişmek için sol bölmeyi kullanın. Bölmenin en üstünde yer alan üç çizgili simgeyi seçerek sol bölmeyi genişletebilir veya daraltabilirsiniz:
 
 > [!NOTE]
-> Gezinti çubuğunda gördüğünüz öğeler, Kullanıcı rolünüze göre değişir. [Kullanıcıları ve rolleri yönetme](howto-manage-users-roles.md)hakkında daha fazla bilgi edinin. 
+> Sol bölmede gördüğünüz öğeler, Kullanıcı rolünüze göre değişir. [Kullanıcıları ve rolleri yönetme](howto-manage-users-roles.md)hakkında daha fazla bilgi edinin. 
 
 :::row:::
   :::column span="":::
@@ -98,7 +98,7 @@ IoT uygulamanızın içindeyken, farklı alanlara erişmek için sol bölmeyi ku
 Üstteki menü her sayfada görünür:
 
 > [!div class="mx-imgBorder"]
-> ![Araç Çubuğu](media/overview-iot-central-tour/toolbar-pnp.png)
+> ![araç çubuğu](media/overview-iot-central-tour/toolbar-pnp.png)
 
 * Cihaz şablonlarını ve cihazlarını aramak için bir **arama** değeri girin.
 * Kullanıcı arabirimi dilini veya temasını değiştirmek için **Ayarlar** simgesini seçin. [Uygulama tercihlerinizi yönetme](howto-manage-preferences.md) hakkında daha fazla bilgi edinin
@@ -153,7 +153,7 @@ Kurallar sayfası, cihazların telemetri, durum veya olaylarını temel alan kur
 
 Analiz, uygulamanızdan Öngörüler elde etmek için cihaz verilerinin üzerine özel görünümler oluşturmanızı sağlar. Daha fazla bilgi için bkz. [Azure IoT Central için analiz oluşturma uygulamanız](howto-create-analytics.md) makalesi.
 
-### <a name="jobs"></a>İş
+### <a name="jobs"></a>İşler
 
 > [!div class="mx-imgBorder"]
 > ![Işleri sayfası](media/overview-iot-central-tour/jobs-pnp.png)

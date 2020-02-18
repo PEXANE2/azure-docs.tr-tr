@@ -2,21 +2,22 @@
 title: Azure geçişi 'nde sık sorulan sorular-bulma, değerlendirme ve bağımlılık Analizi
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059496"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426301"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan sorular
 
-Bu makalede, Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizleri hakkında sık sorulan sorular yanıtlanmaktadır. Bu makaleyi okuduktan sonra daha fazla sorgunuz varsa, bunları [Azure geçişi forumuna](https://aka.ms/AzureMigrateForum)gönderin. Başka sorularınız varsa, şu makaleleri gözden geçirin:
+Bu makalede, Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizleri hakkında sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa, şu makaleleri gözden geçirin:
 
 - Azure geçişi hakkında [genel sorular](resources-faq.md) .
 - Azure geçişi gereci hakkında [sorular](common-questions-appliance.md) .
 - Sunucu geçişi hakkında [sorular](common-questions-server-migration.md) .
+- [Azure geçişi forumuna](https://aka.ms/AzureMigrateForum) soru gönderin
 
 
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 76e9526ab39cbccd45a48d2cd24e05867c953774
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280841"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425927"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı (Önizleme) için özel bağlantı oluşturma ve yönetme
 
@@ -22,8 +22,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > [!NOTE]
 > Bu özellik, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-vm"></a>Azure VM oluşturma
 
@@ -37,7 +37,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *MyVirtualNetwork*girin. |
+    | Adı | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
@@ -47,7 +47,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     |||
 3. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
-### <a name="create-virtual-machine"></a>Sanal Makine oluşturun
+### <a name="create-virtual-machine"></a>Sanal Makine Oluştur
 
 1. Azure portal ekranın sol üst kısmında, **sanal makine** > **Işlem** > **kaynak oluştur** ' u seçin.
 
@@ -62,14 +62,14 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Sanal makine adı | *Myvm*' i girin. |
     | Bölge | **Batı Avrupa**'yı seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
-    | Resim | **Windows Server 2019 Datacenter**öğesini seçin. |
+    | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETICI HESABı** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Genel gelen bağlantı noktası | Varsayılanı **yok**olarak bırakın. |
+    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
@@ -86,7 +86,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     |||
 
@@ -139,7 +139,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek ayrıntıları** |  |
-    | Ad | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
+    | Adı | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**Batı Avrupa**'yı seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
@@ -180,7 +180,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 
@@ -210,34 +210,35 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     Non-authoritative answer:
     Name:    mydemoMariaDBserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Kullanılabilir herhangi bir istemciyi kullanarak MariaDB sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [MySQL çalışma ekranı](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) kullandım.
 
 
-4. In **New connection**, enter or select this information:
+4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
-    | Setting | Value |
+    | Ayar | Değer |
     | ------- | ----- |
-    | Server type| Select **MariaDB**.|
-    | Server name| Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the MariaDB server creation. |
-    |Password |Enter a password provided during the MariaDB server creation. |
-    |SSL|Select **Required**.|
+    | Sunucu türü| **MariaDB**öğesini seçin.|
+    | Sunucu adı| *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
+    | Kullanıcı adı | MariaDB sunucu oluşturma sırasında belirtilen username@servername Kullanıcı adı girin. |
+    |Parola |MariaDB sunucu oluşturma sırasında bir parola girin. |
+    |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Select **Test Connection** or **OK**.
+5. **Bağlantıyı Sına** veya **Tamam ' ı**seçin.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. I Sol menüden veritabanlarına gözatıp MariaDB veritabanından bilgi oluşturma veya sorgulama
 
-7. Close the remote desktop connection to myVm.
+7. MyVm ile uzak masaüstü bağlantısını kapatın.
 
-## Clean up resources
-When you're done using the private endpoint, MariaDB server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+Özel uç nokta, MariaDB sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* girin ve arama sonuçlarından *myresourcegroup* öğesini seçin.
+2. **Kaynak grubunu sil**'i seçin.
+3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 
-## Next steps
+## <a name="next-steps"></a>Sonraki adımlar
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MariaDB, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MariaDB server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Bu nasıl yapılır, bir sanal ağ üzerinde bir VM oluşturdunuz, MariaDB için Azure veritabanı ve özel erişim için özel bir uç nokta. İnternet 'ten bir VM 'ye bağlandınız ve özel bağlantı kullanarak MariaDB sunucusuna güvenli bir şekilde iletilecaksınız. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
