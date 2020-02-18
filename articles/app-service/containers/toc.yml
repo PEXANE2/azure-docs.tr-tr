@@ -43,8 +43,6 @@
           href: tutorial-python-postgresql-app.md
         - name: Spring Data ile Java
           href: tutorial-java-spring-cosmosdb.md
-        - name: Postgres ile Java Enterprise
-          href: tutorial-java-enterprise-postgresql-app.md
     - name: Birden çok kapsayıcılı uygulamalar
       href: tutorial-multi-container-app.md
     - name: ACR’den kapsayıcı çalıştırma
