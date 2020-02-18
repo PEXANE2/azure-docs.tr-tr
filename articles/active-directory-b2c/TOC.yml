@@ -177,8 +177,6 @@
             - name: Kullanıcı arabirimini özelleştirme
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: Kullanıcı arabirimini dinamik olarak özelleştirme
-              href: custom-policy-ui-customization-dynamic.md
             - name: Özel e-posta
               href: custom-email.md
               displayName: verification

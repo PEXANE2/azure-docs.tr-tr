@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050453"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370528"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Azure Databricks SCıM bağlayıcısını yapılandırma
 
@@ -57,7 +57,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 3. **Belirteci**kopyalayın. Bu değer, Azure portal Azure Databricks SCıM bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>3\. Adım Azure AD uygulama galerisinden Azure Databricks SCıM Bağlayıcısı ekleme
+## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>Adım 3: Azure AD uygulama galerisinden Azure Databricks SCıM Bağlayıcısı ekleme
 
 Azure AD uygulama galerisinden Azure Databricks SCıM bağlayıcısını, Azure Databricks SCıM bağlayıcısına sağlamayı yönetmeye başlamak için ekleyin. Daha önce SSO için Azure Databricks SCıM bağlayıcısını ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
@@ -96,7 +96,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümü altında, Azure Databricks SCIM bağlayıcı yönetici kimlik bilgilerinizi ve Kullanıcı adınızı girin. Azure AD 'nin Azure Databricks SCıM bağlayıcısına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Azure Databricks SCıM bağlayıcı hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL**'sinde SCIM uç noktası değerini girin. Kiracı URL 'SI, **bölgenin** Azure Databricks GIRIŞ sayfası URL 'niz içinde bulunabileceği `https://<region>.azuredatabricks.net/api/2.0/preview/scim` biçimde olmalıdır. Örneğin, **westus** Region IÇIN BIR SCIM uç noktası `https://westus.azuredatabricks.net/api/2.0/preview/scim`olacaktır. Daha önce **gizli bir belirteçte**alınan belirteç değerini girin. Azure AD 'nin Azure Databricks SCıM bağlayıcısına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Azure Databricks SCıM bağlayıcı hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![alınıyor](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 

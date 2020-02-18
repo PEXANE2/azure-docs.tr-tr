@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209605"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370192"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bölge bölge ayarlama
 
@@ -176,7 +176,7 @@ Bu bölümde, bildirimleri alan bir olay işleyicisi oluşturacağız. Bu olay i
 
 Giriş ve çıkış olaylarını işlemek için iki [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) hizmeti sunuyoruz. Logic Apps tetikdeki olaylar, sırayla daha fazla etkinlik tetikler. Fikir, bu e-postalarda uyarı göndermek Operations Manager. Aşağıdaki şekilde, bölge sınırı Enter olayı için bir mantıksal uygulama oluşturma gösterilmektedir. Benzer şekilde, çıkış olayı için başka bir tane de oluşturabilirsiniz. Daha fazla bilgi için [desteklenen tüm olay işleyicilerini](https://docs.microsoft.com/azure/event-grid/event-handlers) görebilirsiniz.
 
-1. Azure portal bir mantıksal uygulama oluşturma
+1. Azure portal ' de bir mantıksal uygulama oluşturun. Azure Marketi 'nde mantıksal uygulamayı seçin. Ardından **Oluştur** düğmesini seçin.
 
    ![Bölge olaylarını işlemek için Azure Logic Apps oluşturma](./media/tutorial-geofence/logic-app.png)
 

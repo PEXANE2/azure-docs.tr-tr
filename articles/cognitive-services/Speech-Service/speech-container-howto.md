@@ -112,25 +112,25 @@ Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullan
 
 # <a name="speech-to-texttabstt"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[Metin okuma](#tab/tts)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[Özel metin okuma](#tab/ctts)
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Depo |
 |-----------|------------|
 | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 

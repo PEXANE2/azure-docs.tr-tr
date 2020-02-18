@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087485"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370673"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Genesys tarafından Purecre 'yi yapılandırma
 
@@ -44,18 +44,18 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Purecyüksek bir [kuruluş](https://help.mypurecloud.com/?p=81984).
 * OAuth Istemcisi oluşturma [izinlerine](https://help.mypurecloud.com/?p=24360) sahip bir kullanıcı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Genesys tarafından Azure AD Ile Purecre arasında eşlenecek](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verileri belirleme. 
 
-## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>2\. Adım. Azure AD ile sağlamayı desteklemek için Genesys tarafından Pureci 'yi yapılandırma
+## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>2\. Adım Azure AD ile sağlamayı desteklemek için Genesys tarafından Pureci 'yi yapılandırma
 
 1. Purecyüksek kuruluşunuzda yapılandırılmış bir [OAuth istemcisi](https://help.mypurecloud.com/?p=188023) oluşturun.
 2. [OAuth istemcinizle](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)bir belirteç oluşturun.
 3. Purecm içinde Grup üyeliğini otomatik olarak sağlamak istiyorsanız, Azure AD 'deki gruba aynı adı taşıyan purecm 'de [gruplar oluşturmanız](https://help.mypurecloud.com/?p=52397) gerekir.
 
-## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>3\. Adım. Azure AD Uygulama Galerisi 'nden Genesys tarafından Porecre 'ler ekleyin
+## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>Adım 3: Azure AD Uygulama Galerisi 'nden Genesys tarafından Porecre 'ler ekleyin
 
 Azure AD Uygulama Galerisi 'nden Genesys 'e göre Pureci 'yi Genesys 'e göre Purecre 'e yönetmeye başlamak için bir şekilde ekleyin. SSO için Genesys tarafından daha önce Pureck ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Azure AD 'de Genesys tarafından otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -90,7 +90,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, Genesys API URL 'Sine göre Pureck ve **kiracı URL** 'si ve **gizli belirteç** alanlarındaki OAuth belirtecini girin. Azure AD 'nin Genesys tarafından Purecre 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Genesys hesabının yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, Genesys API URL 'Sine göre Pureck ve **kiracı URL** 'si ve **gizli belirteç** alanlarındaki OAuth belirtecini girin. API URL 'SI, [Purecyüksek geliştirici merkezinden](https://developer.mypurecloud.com/api/rest/index.html)purecı BÖLGESI için API URL 'si kullanılarak `{{API Url}}/api/v2/scim/v2`olarak yapılandırılır. Azure AD 'nin Genesys tarafından Purecre 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Genesys hesabının yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![alınıyor](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 

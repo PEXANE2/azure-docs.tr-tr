@@ -87,7 +87,7 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |Kategori|Açıklama|
 |-------|-----------|
 |Uygulama yönetimi|Uygulama Ara sunucusu kullanarak Bulut ve şirket içi uygulamalarınızı yönetin çoklu oturum açma, uygulamalarım portalında (erişim paneli olarak da bilinir) ve yazılım hizmet (SaaS) uygulamaları olarak. Daha fazla bilgi için bkz. Şirket [içi uygulamalara güvenli uzaktan erişim sağlama](../manage-apps/application-proxy.md) ve [uygulama yönetimi belgeleri](../manage-apps/index.yml).|
-|Kimlik Doğrulaması|Azure Active Directory Self Servis parola sıfırlama, çok faktörlü kimlik doğrulaması, özel yasaklı parola listesi ve akıllı kilitleme yönetin. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulaması belgeleri](../authentication/index.yml).|
+|Kimlik Doğrulama|Azure Active Directory Self Servis parola sıfırlama, çok faktörlü kimlik doğrulaması, özel yasaklı parola listesi ve akıllı kilitleme yönetin. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulaması belgeleri](../authentication/index.yml).|
 |İşletmeden İşletmeye (B2B)|Konuk kullanıcıları ve dış iş ortakları, şirket verilerinizin kontrolünü korurken yönetin. Daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B belgeleri](../b2b/index.yml).|
 |İşletmeden Müşteriye (B2C)|Özelleştirme ve denetim nasıl, kullanıcıların oturum açın ve uygulamalarınızı kullanırken profillerini yönetme. Daha fazla bilgi için bkz. [Azure Active Directory B2C belgeleri](../../active-directory-b2c/index.yml).|
 |Koşullu Erişim|Bulut uygulamalarınıza erişimi yönetin. Daha fazla bilgi için bkz. [Azure AD koşullu erişim belgeleri](../conditional-access/index.yml).|

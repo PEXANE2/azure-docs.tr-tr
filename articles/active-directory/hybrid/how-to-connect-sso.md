@@ -63,12 +63,12 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
-|Windows 8.1|Evet\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows 8|Evet\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows 7|Evet\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows Server 2012 R2 veya üzeri|Evet\*\*|Yok|Yes|Evet\*\*\*|Yok
-|Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
+|Windows 10|Evet\*|Evet|Evet|Evet\*\*\*|YOK
+|Windows 8.1|Evet\*|YOK|Evet|Evet\*\*\*|YOK
+|Windows 8|Evet\*|YOK|Evet|Evet\*\*\*|YOK
+|Windows 7|Evet\*|YOK|Evet|Evet\*\*\*|YOK
+|Windows Server 2012 R2 veya üzeri|Evet\*\*|YOK|Evet|Evet\*\*\*|YOK
+|Mac OS X|YOK|YOK|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 
 \*Için Internet Explorer sürümleri 10 veya üzeri gerekir

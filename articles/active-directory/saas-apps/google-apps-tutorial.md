@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf148ec64ceed28577224741033258bad0e62372
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d5ef5816759074073c57ef0f616ddea4a159956f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047967"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Öğretici: G Suite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, G Suite 'i Azure Active Directory (Azure AD) ile tümleştirmey
 * Kullanıcılarınızın Azure AD hesaplarıyla G Suite 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -136,6 +136,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
 
+    c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın: 
+
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
+
 1. **Temel SAML yapılandırması** bölümünde **Google Cloud Platform** için yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
@@ -149,12 +157,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
     
+    c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın: 
+    
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. G Suite çoklu oturum açma yapılandırmasında varlık KIMLIĞI/tanımlayıcı değeri sağlamıyor; bu nedenle, **etki alanına özel veren** seçeneğinin Işaretini kaldırdığınızda tanımlayıcı değeri `google.com`olur. **Etki alanına özel veren** seçeneğini denetederseniz `google.com/a/<yourdomainname.com>`olacaktır. **Etki alanına özel veren** seçeneğini denetlemek/işaretini kaldırmak için Öğreticinin ilerleyen kısımlarında açıklanan **G paketi SSO 'yu Yapılandır** bölümüne gitmeniz gerekir. Daha fazla bilgi için [G Suite istemci desteği ekibine](https://www.google.com/contact/)başvurun.
 
 1. G Suite uygulamanız belirli bir biçimde SAML onayları bekler, bu da SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde buna bir örnek gösterilmektedir. **Benzersiz kullanıcı tanımlayıcısının** varsayılan değeri **User. UserPrincipalName** , ancak G Suite bunun kullanıcının e-posta adresiyle eşleştirilmesini bekliyor. Bu şekilde, listeden **User. Mail** özniteliğini kullanabilir veya kuruluşunuzun yapılandırmasına göre uygun öznitelik değerini kullanabilirsiniz.
 
-    ![image](common/default-attributes.png)
+    ![görüntü](common/default-attributes.png)
 
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
@@ -247,14 +262,18 @@ Erişim panelinde G Suite kutucuğuna tıkladığınızda, SSO 'yu ayarladığı
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
 - [Kullanıcı sağlamayı yapılandırma](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+
 - [Azure AD ile G Suite 'i deneyin](https://aad.portal.azure.com/)
+
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Gelişmiş görünürlük ve denetimlerle G Suite 'i koruma](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

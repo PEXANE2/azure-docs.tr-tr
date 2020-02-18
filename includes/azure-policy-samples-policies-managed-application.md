@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: eb0f64d796ec92d7848cc418d4baca38589e9cba
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 91be4115ee1d641062c1452178d34977fb0a004c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193042"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77370765"
 ---
-|Ad |Açıklama |Efekt (ler) |Sürüm |
+|Adı |Açıklama |Efekt (ler) |Sürüm |Kaynak |
 |---|---|---|---|
-|[Yönetilen bir uygulama için ilişkilendirmeleri dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Managed%20Application/AssociationForManagedApplication_Deploy.json) |Seçilen kaynak türlerini belirtilen yönetilen uygulamayla ilişkilendiren bir ilişki kaynağı dağıtır.  Bu ilke dağıtımı, iç içe geçmiş kaynak türlerini desteklemez. |deployIfNotExists |1.0.0 |
+|[Yönetilen bir uygulama için ilişkilendirmeleri dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17763ad9-70c0-4794-9397-53d765932634) |Seçilen kaynak türlerini belirtilen yönetilen uygulamayla ilişkilendiren bir ilişki kaynağı dağıtır.  Bu ilke dağıtımı, iç içe geçmiş kaynak türlerini desteklemez. |deployIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Managed%20Application/AssociationForManagedApplication_Deploy.json)

@@ -1,5 +1,5 @@
 ---
-title: Avustralya müşterileri için kimlik veri depolaması-Azure AD
+title: Avustralya ve Yeni Zelanda müşterileri için kimlik verileri depolama-Azure AD
 description: Azure Active Directory, Avustralya müşterileri için kimlikle ilgili verileri nerede depoladığını öğrenin.
 services: active-directory
 author: msaburnley
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbe4befa824990c2f8b2627e7709913f564c0486
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751425"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370301"
 ---
-# <a name="identity-data-storage-for-australian-customers-in-azure-active-directory"></a>Azure Active Directory 'de Avustralya müşterileri için kimlik verileri depolama
+# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 'de Avustralya ve Yeni Zelanda müşterileri için kimlik verileri depolama
 
 Kimlik verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik müşteri verilerinizin depolandığı yer hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
 
 > [!NOTE]
 > Azure AD ile tümleştirilen hizmetler ve uygulamalar, kimlik müşteri verilerine erişebilir. Kimlik müşteri verilerinin, belirli bir hizmet ve uygulama tarafından nasıl işlendiğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını öğrenmek için kullandığınız her hizmeti ve uygulamayı değerlendirin. Microsoft hizmetlerinin veri yerleşimi hakkında daha fazla bilgi için verileriniz nerede bulunur? bölümüne bakın. Microsoft Güven Merkezi 'nin bölümü.
 
-Avustralya 'da adres sağlayan müşteriler için Azure AD, Avustralya veri merkezleri içindeki bu hizmetler için kimlik verilerini tutar: 
+Avustralya veya Yeni Zelanda 'da adres sağlayan müşteriler için Azure AD, Avustralya veri merkezleri içindeki bu hizmetler için kimlik verilerini tutar: 
 - Azure AD dizin yönetimi 
-- Kimlik Doğrulaması
+- Kimlik Doğrulama
 
 Diğer tüm Azure AD Hizmetleri, müşteri verilerini küresel veri merkezlerinde depolar. Bir hizmetin veri merkezini bulmak için bkz. [Azure Active Directory – verileriniz nerede bulunur?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 

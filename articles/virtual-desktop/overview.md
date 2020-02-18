@@ -35,7 +35,7 @@ Windows sanal masaüstü hakkında, neden benzersiz olduğunu ve bu videodaki ye
 
 Windows sanal masaüstü hakkında daha fazla video için [çalma listemize](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)bakın.
 
-## <a name="key-capabilities"></a>Temel işlevler
+## <a name="key-capabilities"></a>Temel özellikler
 
 Windows sanal masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz:
 
@@ -145,14 +145,14 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows 7 kurumsal|Yes|Yes|Hayır|Hayır|El ile|
-|Windows Server 2019|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows Server 2016|Yes|Yes|Yes|Yes|Automatic|
-|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Otomatik|
+|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Otomatik|
+|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows 7 kurumsal|Evet|Evet|Hayır|Hayır|Elle|
+|Windows Server 2019|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows Server 2016|Evet|Evet|Evet|Evet|Otomatik|
+|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Otomatik|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -176,7 +176,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     d. Oturum açma sayfası URL 'SI ayarında, **özel oturum açma sayfası** ' nı seçin ve "/_trust/" değerini sağlayın.
 
-    e. **Tamam**'a tıklayın.
+    e. **Tamam** düğmesine tıklayın.
 
     ![Kimlik doğrulama sağlayıcınızı yapılandırma](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 

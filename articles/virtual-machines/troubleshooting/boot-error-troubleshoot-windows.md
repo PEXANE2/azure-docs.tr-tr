@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makineleri yeniden başlatması, hizmetleri yeniden başlatma, kapatma veya durdurma sırasında takıldı | Microsoft Docs
+title: Azure sanal makineleri kapatma, yeniden başlatma, kapatma veya hizmetleri durdurma sırasında takıldı | Microsoft Docs
 description: Bu makale, Azure Windows Sanal Makineleri 'de hizmet hatalarını gidermenize yardımcı olur.
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477414"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371362"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM yeniden başlatması "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" durumunda takıldı
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM kapatma, "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" üzerine takılmış
 
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) yeniden başlattığınızda karşılaşabileceğiniz "yeniden başlatma", "kapatma" veya "hizmetleri durdurma" iletilerinin sorunları çözümlenme adımları sağlanmaktadır.
 
@@ -81,9 +81,9 @@ Değişikliklerin işlenmesi beklendikten sonra Sorun çözümlenmezse, bir bell
 
 **İşletim sistemi diskini bir kurtarma VM 'sine iliştirme**
 
-1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
 
-2. [İşletim sistemi diskini bir kurtarma VM'si ekleme](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
 3. Kurtarma sanal makinesine uzak masaüstü.
 

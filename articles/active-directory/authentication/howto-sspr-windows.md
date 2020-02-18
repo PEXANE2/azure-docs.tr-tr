@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847295"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370061"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
@@ -27,6 +27,8 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 ## <a name="general-limitations"></a>Genel sınırlamalar
 
 - Parola sıfırlama, uzak bir masaüstünden veya Hyper-V gelişmiş oturumlarından Şu anda desteklenmiyor.
+- Bazı 3 taraf kimlik bilgileri sağlayıcılarının bu özellikle ilgili sorunlara neden olduğu bilinmektedir.
+- [EnableLUA kayıt defteri anahtarı](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) DEĞIŞIKLIĞI aracılığıyla UAC 'nin devre dışı bırakılması, sorunlara yol açabilecek şekilde bilinmektedir.
 - Bu özellik, 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda ve "Kullanıcı oturum açmadan hemen önce gerçekleştir" seçeneği için çalışmaz. 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda, bu özelliği etkinleştirmek için makine kimlik doğrulamasının kullanılması önerilir.
 - Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır.
 - Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
@@ -50,7 +52,7 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 - Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
 - **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
 - Ağ proxy 'si gereksinimleri
-   - Windows 10 cihazlar 
+   - Windows 10 cihazları 
        - `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com` bağlantı noktası 443
        - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
 - En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:
@@ -76,8 +78,8 @@ Oturum açma ekranından parola sıfırlama yapılmasını sağlayan yapılandı
       - **OMA-URI** olarak `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` ayarlayın
       - **Veri türü** olarak **Tamsayı** ayarlayın
       - **Değer** olarak **1** ayarlayın
-      - **Tamam**’a tıklayın.
-   - **Tamam**’a tıklayın.
+      - **Tamam**'a tıklayın
+   - **Tamam**'a tıklayın
 1. **Oluştur**'a tıklayın
 1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
 

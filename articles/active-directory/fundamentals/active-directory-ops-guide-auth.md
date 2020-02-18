@@ -309,7 +309,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
 
 |Kaynak | İzin |
 | :- | :- |

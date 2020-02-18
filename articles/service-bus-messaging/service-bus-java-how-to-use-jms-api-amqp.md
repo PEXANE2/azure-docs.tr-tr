@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c0c7e8b6066626966e2a72d474306bae4ead14c2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027216"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371258"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmeti 'ni (JMS) kullanma
 Bu makalede, popüler Java Ileti hizmeti (JMS) API standardı kullanılarak Java uygulamalarından Azure Service Bus mesajlaşma özelliklerinin (kuyruklar ve yayımlama/abone olma konuları) nasıl kullanılacağı açıklanmaktadır. Azure Service Bus .NET API 'SI ile nasıl yapılacağını açıklayan bir [yardımcı makale](service-bus-amqp-dotnet.md) vardır. AMQP 1,0 kullanarak platformlar arası mesajlaşma hakkında bilgi edinmek için bu iki Kılavuzu birlikte kullanabilirsiniz.
@@ -29,7 +29,7 @@ Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0, güçlü, platformlar aras
 Azure Service Bus ' de AMQP 1,0 desteği, verimli bir ikili protokol kullanarak bir dizi platformda sıraya alma ve yayımlama/Aracılı mesajlaşma özelliklerini de kullanabileceğiniz anlamına gelir. Ayrıca, bir dil, çerçeve ve işletim sistemi karışımı kullanılarak oluşturulan bileşenlerden oluşan uygulamalar oluşturabilirsiniz.
 
 ## <a name="get-started-with-service-bus"></a>Service Bus’ı kullanmaya başlama
-Bu kılavuzda, **basicqueue**adlı bir sırayı içeren bir Service Bus ad alanınız zaten var. Bunu yapmazsanız, [Azure Portal](https://portal.azure.com)kullanarak [ad alanını ve kuyruğu oluşturabilirsiniz](service-bus-create-namespace-portal.md) . Service Bus ad alanları ve kuyrukları oluşturma hakkında daha fazla bilgi için, bkz. [Service Bus kuyrukları kullanmaya başlama](service-bus-dotnet-get-started-with-queues.md).
+Bu kılavuzda, `basicqueue`adlı bir sırayı içeren bir Service Bus ad alanınız zaten var. Bunu yapmazsanız, [Azure Portal](https://portal.azure.com)kullanarak [ad alanını ve kuyruğu oluşturabilirsiniz](service-bus-create-namespace-portal.md) . Service Bus ad alanları ve kuyrukları oluşturma hakkında daha fazla bilgi için, bkz. [Service Bus kuyrukları kullanmaya başlama](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > Bölümlenmiş kuyruklar ve konular AMQP 'yi de destekler. Daha fazla bilgi için bkz. bölümlenmiş [mesajlaşma varlıkları](service-bus-partitioning.md) ve [Service Bus bölümlenmiş kuyruklar ve konular için AMQP 1,0 desteği](service-bus-partitioned-queues-and-topics-amqp-overview.md).
@@ -49,7 +49,7 @@ Aşağıdaki dört JAR dosyasını Apache Qpid JMS AMQP 1,0 dağıtım arşivind
 
 ## <a name="coding-java-applications"></a>Java uygulamalarını kodlama
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java adlandırma ve Dizin arabirimi (JNDI)
-JMS, mantıksal adlar ve fiziksel adlar arasında bir ayrım oluşturmak için Java adlandırma ve Dizin arabirimini (JNDı) kullanır. JNDı: ConnectionFactory ve Destination kullanılarak iki tür JMS nesnesi çözümlenir. JNDı, ad çözümlemesi görevlerini işlemek üzere farklı Dizin Hizmetleri ekleyebileceğiniz bir sağlayıcı modeli kullanır. Apache Qpid JMS AMQP 1,0 kitaplığı, aşağıdaki biçimdeki bir özellikler dosyası kullanılarak yapılandırılmış basit bir özellikler dosya tabanlı JNDı sağlayıcısı ile birlikte gelir:
+JMS, mantıksal adlar ve fiziksel adlar arasında bir ayrım oluşturmak için Java adlandırma ve Dizin arabirimini (JNDı) kullanır. JNDı: ConnectionFactory ve Destination kullanılarak iki tür JMS nesnesi çözümlenir. JNDı, ad çözümlemesi görevlerini işlemek üzere farklı Dizin Hizmetleri ekleyebileceğiniz bir sağlayıcı modeli kullanır. Apache Qpid JMS AMQP 1,0 kitaplığı, aşağıdaki biçimdeki bir özellikler dosyası kullanılarak yapılandırılan basit özellik dosya tabanlı JNDı sağlayıcısı ile birlikte gelir:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>JNDı bağlamını kurma ve ConnectionFactory 'yi yapılandırma
 
-**Birincil bağlantı dizesi** altındaki [Azure portalındaki](https://portal.azure.com) ' paylaşılan erişim ilkeleri ' içinde kullanılabilir olan **ConnectionString**
+**Birincil bağlantı dizesinde** [Azure Portal](https://portal.azure.com) ' paylaşılan erişim ilkeleri ' içinde kullanılabilir olan **ConnectionString** öğesine başvuruluyor
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
@@ -136,7 +136,7 @@ Context context = new InitialContext(hashtable);
 ### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Service Bus kuyruğu kullanan basit bir JMS uygulaması
 Aşağıdaki örnek program, JNDı mantıksal adına sahip bir Service Bus kuyruğuna JMS TextMessages gönderir ve iletileri geri alır.
 
-Tüm kaynak kodu ve yapılandırma bilgilerine, [JMS kuyruğundan Azure Service Bus örnekleri hızlı başlangıç](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart) erişebilirsiniz
+Tüm kaynak kodu ve yapılandırma bilgilerine [Azure Service Bus örnekleri JMS kuyruğu hızlı](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart) başlangıcı ' ndan erişebilirsiniz
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -342,15 +342,15 @@ MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
 ## <a name="jms-topics-vs-service-bus-topics"></a>JMS konuları ile Service Bus konuları
-Java Ileti hizmeti (JMS) API 'SI aracılığıyla Azure Service Bus konuları ve abonelikleri kullanmak, temel gönderme ve alma özellikleri sağlar. JMS uyumlu API 'Ler ile diğer ileti aracılarından uygulamalar taşırken kullanışlı bir seçenektir. Service Bus konular, JMS konularından farklı olsa da birkaç ayarlama gerektirir. 
+Java Ileti hizmeti (JMS) API 'SI aracılığıyla Azure Service Bus konuları ve abonelikleri kullanmak, temel gönderme ve alma özellikleri sağlar. Bu, JMS uyumlu API 'lerle diğer ileti aracılarından uygulamalar taşırken kullanışlı bir seçenektir, ancak Service Bus konular JMS konularından farklıdır ve birkaç ayar gerektirse. 
 
-Azure Service Bus, iletileri Azure Kaynak yönetimi arabirimi, Azure komut satırı araçları veya Azure portal aracılığıyla yönetilen adlandırılmış, paylaşılan ve dayanıklı aboneliklere yönlendirir. Her abonelik, her biri bir filtre koşuluna sahip olabilecek ve SQL filtreleri için de bir meta veri dönüştürme eylemi olan 2000 adede kadar seçim kuralına izin verir. Her filtre koşulu eşleşmesi, aboneliğe kopyalanacak giriş iletisini seçer.  
+Azure Service Bus konular, iletileri Azure Kaynak yönetimi arabirimi, Azure komut satırı araçları veya Azure portal aracılığıyla yönetilen adlandırılmış, paylaşılan ve dayanıklı aboneliklere yönlendirir. Her abonelik, her biri bir filtre koşuluna sahip olabilecek ve SQL filtreleri için de bir meta veri dönüştürme eylemi olan 2000 adede kadar seçim kuralına izin verir. Her filtre koşulu eşleşmesi, aboneliğe kopyalanacak giriş iletisini seçer.  
 
 Aboneliklerden ileti alma, kuyruklardan alınan iletileri aynı alıyor. Her aboneliğin ilişkili bir atılacak ileti sırası ve iletileri otomatik olarak başka bir kuyruğa veya konuya iletme yeteneği vardır. 
 
-JMS konuları, istemcilerin isteğe bağlı olarak ileti seçiciyle ileti filtrelemesine izin veren dayanıklı ve dayanıklı aboneler dinamik olarak oluşturmalarına olanak tanır. Bu paylaşılmayan varlıklar Service Bus tarafından desteklenmez. Service Bus için SQL filtre kuralı sözdizimi, ancak JMS tarafından desteklenen ileti seçici sözdizimine benzer. 
+JMS konuları, istemcilerin isteğe bağlı olarak ileti seçiciyle ileti filtrelemesine izin veren dayanıklı ve dayanıklı aboneler dinamik olarak oluşturmalarına olanak tanır. Bu paylaşılmayan varlıklar Service Bus tarafından desteklenmez. Service Bus için SQL filtre kuralı sözdizimi, ancak JMS tarafından desteklenen ileti seçici söz dizimine benzer. 
 
-JMS konu yayımcı tarafı, bu örnekte gösterildiği gibi Service Bus uyumludur, ancak dinamik aboneler değildir. Aşağıdaki topolojiyle ilgili JMS API 'Leri Service Bus desteklenmez. 
+JMS konu yayımcı tarafı, bu örnekte gösterildiği gibi Service Bus ile uyumludur, ancak dinamik aboneler değildir. Topoloji ile ilgili aşağıdaki JMS API 'Leri Service Bus desteklenmez. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Desteklenmeyen özellikler ve kısıtlamalar
 Aşağıdaki kısıtlamalar, Service Bus ile AMQP 1,0 üzerinden JMS kullanılırken mevcuttur, yani:
@@ -358,7 +358,7 @@ Aşağıdaki kısıtlamalar, Service Bus ile AMQP 1,0 üzerinden JMS kullanılı
 * **Oturum**başına yalnızca bir **Messageproducer** veya **messageconsumer** 'a izin verilir. Bir uygulamada birden çok **MessageProducers** veya **messagetüketiciler** oluşturmanız gerekiyorsa, bunların her biri için özel bir **oturum** oluşturun.
 * Geçici konu abonelikleri şu anda desteklenmiyor.
 * **Messageseçiciler** Şu anda desteklenmiyor.
-* İşlem temelli oturumlar ve dağıtılmış işlemler desteklenmez.
+* Dağıtılmış işlemler desteklenmez (ancak işlenen oturumlar desteklenir).
 
 Ayrıca, Azure Service Bus denetim düzlemi 'ni veri düzleminden ayırır ve bu nedenle JMS 'nin dinamik topoloji işlevlerinin birkaçını desteklemez:
 

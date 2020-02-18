@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543504"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370473"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Bu makalede, Azure Storage hizmetlerindeki verilerinize Azure Machine Learning v
 
 [Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. Desteklenmeyen depolama çözümleri için ve Machine Learning denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen Azure depolama çözümlerine [taşımanızı](#move) öneririz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Gerekenler:
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -80,7 +80,7 @@ Bir Azure depolama çözümünü bir veri deposu olarak kaydettiğinizde, bu ver
 <br>
 Ancak, Azure Data Lake Storage Gen 1 ve 2 veri depoları için, bu doğrulama daha sonra [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) veya [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) gibi veri erişim yöntemleri çağrıldığında oluşur. 
 
-### <a name="python-sdk"></a>Python SDK
+### <a name="python-sdk"></a>Python SDK'sı
 
 Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıftır ve formun `register_azure_*`vardır.
 
@@ -134,7 +134,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 2. nesil
 
-Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, hizmet sorumlusu izinleriyle bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
+Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
 
 Aşağıdaki kod, `adlsgen2_datastore_name` veri deposunu oluşturup `ws` çalışma alanına kaydeder. Bu veri deposu, belirtilen hizmet sorumlusu kimlik bilgilerini kullanarak `account_name` depolama hesabındaki dosya sistemine `test` erişir.
 
@@ -211,7 +211,7 @@ ws.set_default_datastore('your datastore name')
 
 Aşağıdaki örneklerde açıklanan [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) ve [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) yöntemleri, [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) ve [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) sınıfları için de aynıdır ve aynı şekilde çalışır.
 
-### <a name="upload"></a>Karşıya Yükleme
+### <a name="upload"></a>Karşıya yükle
 
 Python SDK kullanarak veri deposuna bir dizin veya tek bir dosya yükleyin:
 
@@ -226,7 +226,7 @@ datastore.upload(src_dir='your source directory',
 
 Tek tek dosyaların listesini `upload_files()` yöntemi aracılığıyla veri deposuna da yükleyebilirsiniz.
 
-### <a name="download"></a>İndirin
+### <a name="download"></a>İndirme
 
 Veri deposundaki verileri yerel dosya sisteminize indirin:
 
@@ -236,7 +236,7 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-`target_path` parametresi, verilerin indirileceği yerel dizinin konumudur. Dosya Paylaşımı (veya blob kapsayıcısı) indirmek için klasöre bir yol belirtmek için bu yolun sağlamak `prefix`. `prefix` `None`, dosya paylaşımınızın (veya blob kapsayıcısının) tüm içerikleri indirilir.
+`target_path` parametresi, verilerin indirileceği yerel dizinin konumudur. İndirilecek dosya paylaşımında (veya blob kapsayıcısında) klasörün yolunu belirtmek için bu yolu `prefix`sağlayın. `prefix` `None`, dosya paylaşımınızın (veya blob kapsayıcısının) tüm içerikleri indirilir.
 
 <a name="train"></a>
 
@@ -278,5 +278,5 @@ Azure Data Factory, ek ücret ödemeden 80 taneden fazla yerleşik bağlayıcı 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Machine Learning veri kümesi oluşturma](how-to-create-register-datasets.md)
-* [Bir model eğitip](how-to-train-ml-models.md)
+* [Model eğitme](how-to-train-ml-models.md)
 * [Model dağıtma](how-to-deploy-and-where.md)

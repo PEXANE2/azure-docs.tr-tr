@@ -1,38 +1,28 @@
 ---
 title: En iyi uygulamalar - soru-cevap Oluşturucu
-titleSuffix: Azure Cognitive Services
 description: Bilgi bankanızı artırmak ve uygulama/sohbet Robotu ait son kullanıcılara daha iyi sonuçlar sağlamak için bu en iyi uygulamaları kullanın.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 2fd85e43fb2aa53299b4e37eca5163b7da8fc6ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/15/2020
+ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843812"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370107"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-cevap Oluşturucu Bilgi Bankası en iyi yöntemleri
 
-[Bilgi Bankası geliştirme yaşam döngüsü](../Concepts/development-lifecycle-knowledge-base.md) başlangıçtan bitişe kadar KB yönetme konusunda size yol gösterir. Bilgi bankanızı geliştirmek ve istemci uygulamanıza veya sohbet bot 'un son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi yöntemleri kullanın.
+[Bilgi Bankası geliştirme yaşam döngüsü](../Concepts/development-lifecycle-knowledge-base.md) , KB 'nizi baştan sona nasıl yönetebileceğinizi size rehberlik eder. Bilgi bankanızı geliştirmek ve istemci uygulamanıza veya sohbet bot 'un son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi yöntemleri kullanın.
 
 ## <a name="extraction"></a>Ayıklama
 
-Soru-cevap Oluşturucu hizmetini sürekli olarak içerik ve desteklenen dosya ve HTML biçimleri listesini genişleterek Bankalarıyla ayıklamak algoritmaları gelişiyor. İzleyin [yönergeleri](../Concepts/content-types.md) için belge türüne göre veri ayıklama.
+Soru-cevap Oluşturucu hizmetini sürekli olarak içerik ve desteklenen dosya ve HTML biçimleri listesini genişleterek Bankalarıyla ayıklamak algoritmaları gelişiyor. Belge türüne göre veri ayıklama [yönergelerini](../Concepts/content-types.md) izleyin.
 
 Genel olarak, SSS sayfaları, tek başına ve diğer bilgilerle birleşik olması gerekir. Ürün kılavuzlarını, NET başlıklar ve tercihen dizin sayfası olması gerekir.
 
 ### <a name="configuring-multi-turn"></a>Çoklu açmayı yapılandırma
 
 Çoklu açma ayıklama özelliği etkinken [Bilgi Bankası 'Nizi oluşturun](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) . Bilgi tabanınız soru hiyerarşisini destekliyorsa veya destekliyorsa, bu hiyerarşi belgeden ayıklanamaz veya belge ayıklandıktan sonra oluşturulmuş olabilir.
-
-<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>İyi sorular ve yanıtlar oluşturma
 
@@ -57,7 +47,7 @@ En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. `yes` ve `no`gi
 |Müşteri Hizmetleri, günde 24 saat boyunca telefon, Skype ve kısa mesaj yoluyla kullanılabilir.|* Sales için iletişim bilgileri.<br> * Office ve mağaza konumları ve saatleri bir kişi için ziyaret edin.<br> * Bir yüzey dizüstü bilgisayar için aksesuarlar.|
 
 ## <a name="chit-chat"></a>Chit sohbet
-Botunuzun daha damıtarak konuşma bağlamında kullanılabilen ve ilgi çekici, botunuzun yapmak için chit sohbet ekleme az çaba. KB 'nizi oluştururken önceden tanımlanmış kişiselleştirimler aracılığıyla kolayca CHIT-chat veri kümeleri ekleyebilir ve bunları dilediğiniz zaman değiştirebilirsiniz. Bilgi edinmek için nasıl [chit sohbet eklemek için KB](../How-To/chit-chat-knowledge-base.md).
+Botunuzun daha damıtarak konuşma bağlamında kullanılabilen ve ilgi çekici, botunuzun yapmak için chit sohbet ekleme az çaba. KB 'nizi oluştururken önceden tanımlanmış kişiselleştirimler aracılığıyla kolayca CHIT-chat veri kümeleri ekleyebilir ve bunları dilediğiniz zaman değiştirebilirsiniz. [KB 'nize Chit sohbeti ekleme](../How-To/chit-chat-knowledge-base.md)hakkında bilgi edinin.
 
 Chit-sohbet [birçok dilde](../how-to/chit-chat-knowledge-base.md#language-support)desteklenmektedir.
 
@@ -66,10 +56,10 @@ Chit-sohbet, önceden tanımlanmış birkaç kişisel için desteklenir:
 
 |Kişilik |Soru-Cevap Oluşturma veri kümesi dosyası |
 |---------|-----|
-|Profesyonel |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
-|Uygun |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Wtty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|Giriş |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Professional |[qna_chitchat_professional. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Uygun |[qna_chitchat_friendly. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Wtty |[qna_chitchat_witty. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Giriş |[qna_chitchat_caring. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
 |Heyecanlandırdı |[qna_chitchat_enthusiastic. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
 Yanıtları aralıktan biçimsel resmi olmayan ve saygısız. En yakın botunuz için istediğiniz sesi birlikte hizalanır kişilik seçmeniz gerekir. [Veri kümelerini](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)görüntüleyebilir ve botunuzun temeli olarak işlev gören bir tane seçebilir ve ardından yanıtları özelleştirebilirsiniz.
@@ -104,15 +94,15 @@ Soru-cevap Oluşturucu desteklediği derecelendirme özellikleri en iyi kullanı
 
 ### <a name="choosing-a-threshold"></a>Bir eşiği seçme
 
-Eşik olarak kullanılan varsayılan [Güvenirlik puanı](confidence-score.md) 50 ' dir, ancak GEREKSINIMLERINIZE göre KB 'nizin [eşiğini değiştirebilirsiniz](confidence-score.md#set-threshold) . Her KB farklı olduğundan, test edin ve en iyi eşiği için KB uygun seçin gerekir.
+Eşik olarak kullanılan varsayılan [Güvenirlik puanı](confidence-score.md) 0 ' dır, ancak GEREKSINIMLERINIZE göre KB 'nizin [eşiğini değiştirebilirsiniz](confidence-score.md#set-threshold) . Her KB farklı olduğundan, test edin ve en iyi eşiği için KB uygun seçin gerekir.
 
 ### <a name="choosing-ranker-type"></a>Ranker türü seçiliyor
 Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için GenerateAnswer isteğinin GÖNDERI gövdesinde `RankerType=QuestionOnly` kullanın.
 
 ### <a name="add-alternate-questions"></a>Diğer sorular ekleyin
-[Diğer sorular](../How-To/edit-knowledge-base.md) bir kullanıcı sorgu ile bir eşleşme olasılığını artırın. Diğer sorular, aynı soruyu istenebilir birden çok yol olduğunda yararlıdır. Word-style ve cümle yapısı içinde bu değişiklikleri içerebilir.
+[Alternatif sorular](../How-To/edit-knowledge-base.md) , bir kullanıcı sorgusuyla eşleşme olasılığını artırır. Diğer sorular, aynı soruyu istenebilir birden çok yol olduğunda yararlıdır. Word-style ve cümle yapısı içinde bu değişiklikleri içerebilir.
 
-|Özgün sorgu|Diğer sorgular|Değiştir|
+|Özgün sorgu|Diğer sorgular|Değişiklik|
 |--|--|--|
 |Kullanılabilir park olan?|Araba park var mı?|cümle yapısı|
  |Merhaba|Yo<br>Hey var!|Word stil veya argo kullanımlar|
@@ -121,7 +111,7 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Soruları ve yanıtları filtrelemek için meta veri etiketlerini kullanma
 
-[Meta veriler](../How-To/edit-knowledge-base.md) , bir istemci uygulamanın tüm yanıtları getirmemelidir, ancak meta veri etiketlerine göre bir Kullanıcı sorgusunun sonuçlarını daraltmak için bu özelliği ekler. Sorgu aynı olsa bile, Bilgi Bankası yanıt meta veri etiketine göre değişebilir. Örneğin, *"bulunan park olduğu"* Restoran dalın konumu farklıdır - diğer bir deyişle, meta veriler, farklı bir yanıt olabilir *konumu: Seattle* karşı *konumu: Redmond*.
+[Meta veriler](../How-To/edit-knowledge-base.md) , bir istemci uygulamanın tüm yanıtları getirmemelidir, ancak meta veri etiketlerine göre bir Kullanıcı sorgusunun sonuçlarını daraltmak için bu özelliği ekler. Sorgu aynı olsa bile, Bilgi Bankası yanıt meta veri etiketine göre değişebilir. Örneğin, *"nerede park yeri"* , Restoran dalının konumu farklıysa farklı bir yanıta sahip olabilir. Bu, meta veriler *Konum: Seattle* ve *Konum: Redmond*.
 
 ### <a name="use-synonyms"></a>Eş anlamlıları kullanma
 Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı biçimde olan anahtar sözcüklere eşanlamlı ekler eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Eş anlamlılar Soru-Cevap Oluşturma hizmet düzeyinde eklenir ve hizmetteki tüm bilgi tabanları tarafından paylaşılır.
@@ -137,13 +127,13 @@ Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelend
 
 |Bankalarıyla|
 |--|
-|Park olduğu *konumu*|
+|Park *konumu* nerede|
 |Burada ATM *konumudur*|
 
-Bu iki Bankalarıyla çok benzer kelimelerinizle tümcecik oluşturulmuş olduğundan, bu gibi tümcecik oluşturulmuş çok sayıda kullanıcı sorgu çok benzer puanları neden olabilecek *"nerede olduğunu `<x>` konumu"* . Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek " *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
+Bu iki QnAs çok benzer sözcüklerle phrased olduğundan, bu benzerlik çok sayıda kullanıcı sorgusunun *"where `<x>` konumu"* olduğu gibi çok benzer puanlara neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek " *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
 ## <a name="collaborate"></a>İşbirliği yapın
-Soru-cevap Oluşturucu, kullanıcılara sağlayan [işbirliği](../How-to/collaborate-knowledge-base.md) Bilgi Bankası üzerinde. Kullanıcıların bilgi bankalarından erişmek için soru-cevap Oluşturucu Azure kaynak grubuna erişim gerekir. Bazı kuruluşlar Bilgi Bankası düzenleme ve Bakım dış ve Azure kaynaklarına erişim hala koruyabilmesini isteyebilirsiniz. Bu düzenleyici onaylayan modeli iki özdeş ayarlayarak yapılır [soru-cevap Oluşturucu Hizmetleri](../How-to/set-up-qnamaker-service-azure.md) farklı Aboneliklerde ve bir düzenleme test döngüsü için seçme. Test tamamlandıktan sonra Bilgi Bankası içerikleri ile aktarılır bir [içeri / dışarı aktarma](../Tutorials/migrate-knowledge-base.md) son Bilgi Bankası yayımlama ve uç noktayı güncelleştirmek onaylayanın soru-cevap Oluşturucu hizmeti için işlem.
+Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak sağlar. Kullanıcıların bilgi bankalarından erişmek için soru-cevap Oluşturucu Azure kaynak grubuna erişim gerekir. Bazı kuruluşlar Bilgi Bankası düzenleme ve Bakım dış ve Azure kaynaklarına erişim hala koruyabilmesini isteyebilirsiniz. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
 
 
 
@@ -154,4 +144,4 @@ Soru-cevap Oluşturucu, kullanıcılara sağlayan [işbirliği](../How-to/collab
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası Düzenle](../How-to/edit-knowledge-base.md)
+> [Bilgi Bankası düzenleme](../How-to/edit-knowledge-base.md)

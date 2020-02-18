@@ -6,25 +6,25 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418725"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370658"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Bileşik kaynakları kullanarak Azure Otomasyonu durum yapılandırması 'nda (DSC) DSC yapılandırmaları oluşturma
 
 Bir kaynağın, tek bir istenen durum yapılandırması (DSC) yapılandırmasıyla yönetilmesi gerektiğinde en iyi yol [bileşik kaynakları](/powershell/scripting/dsc/resources/authoringresourcecomposite)kullanmaktır. Bileşik kaynak, başka bir yapılandırma içinde DSC kaynağı olarak kullanılan iç içe ve parametreli bir yapılandırmadır. Bu, temel alınan bileşik kaynakların (parametreli yapılandırmaların) tek tek yönetilmesine ve oluşturulmasına izin verirken karmaşık yapılandırmaların oluşturulmasına olanak sağlar.
 
-Azure Otomasyonu [bileşik kaynakların içeri ve derlemesini](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources)sunar.
+Azure Otomasyonu [bileşik kaynakların içeri ve derlemesini](automation-dsc-compile.md)sunar.
 Bileşik kaynaklar Otomasyon hesabınıza alındıktan sonra, **Durum Yapılandırması (DSC)** sayfasında **yapılandırma deneyimi oluştur** ' u kullanabilirsiniz.
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Bileşik kaynaklardan yapılandırma oluşturma
 
 Azure portal bileşik kaynaklardan yapılan bir yapılandırmayı atamadan önce oluşturmanız gerekir. Bu işlem, **yapılandırmalar** veya **derlenen yapılandırmalar** SEKMELERINDE **Durum Yapılandırması (DSC)** sayfasında **yapılandırma oluştur** kullanılarak yapılabilir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol tarafta **tüm kaynaklar** ' a ve ardından Otomasyon hesabınızın adına tıklayın.
 1. **Otomasyon hesabı** sayfasında, **yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** öğesini seçin.
 1. **Durum Yapılandırması (DSC)** sayfasında, **yapılandırmalar** veya **derlenen yapılandırmalar** sekmesine tıklayın ve ardından sayfanın en üstündeki menüde **yapılandırma oluştur** ' a tıklayın.

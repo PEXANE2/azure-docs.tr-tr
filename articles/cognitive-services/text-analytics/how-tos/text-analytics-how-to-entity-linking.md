@@ -90,7 +90,7 @@ Varlık bağlama
 | Miktar      | Yüzde    | "%50", "50 yüzdesi"|
 | Miktar      | Numarasını       | "2.", "saniye"     |
 | Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
-| Miktar      | Para birimi      | "$10,99"     |
+| Miktar      | Para Birimi      | "$10,99"     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
 | DateTime      | Yok\*         | "6:12:30 4, 2012"      |
@@ -100,7 +100,7 @@ Varlık bağlama
 | DateTime      | TimeRange     | "6pm-7pm"     |
 | DateTime      | Süre      | "1 dakika ve 45 saniye"   |
 | DateTime      | Ayarla           | "her Salı"     |
-| URL'si           | Yok\*         | "https:\//www.bing.com"    |
+| {1&gt;URL&lt;1}           | Yok\*         | "https:\//www.bing.com"    |
 | Email         | Yok\*         | "support@contoso.com" |
 | ABD telefon numarası  | Yok\*         | (Yalnızca ABD telefon numaraları) "(312) 555-0176" |
 | IP Adresi    | Yok\*         | alana 10.0.0.100 |

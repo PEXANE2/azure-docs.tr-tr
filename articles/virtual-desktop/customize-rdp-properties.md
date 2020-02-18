@@ -32,7 +32,7 @@ Varsayılan olarak, yayımlanan RDP dosyaları aşağıdaki özellikleri içerir
 
 |RDP özellikleri | Masaüstü bilgisayarlar | RemoteApps |
 |---|---| --- |
-| Çoklu monitör modu | Etkin | Yok |
+| Çoklu monitör modu | Etkin | YOK |
 | Sürücü yeniden yönlendirmeleri etkin | Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar| Sürücüler, pano ve Yazıcılar |
 | Uzak ses modu | Yerel olarak oynat | Yerel olarak oynat |
 
